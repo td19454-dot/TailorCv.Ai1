@@ -1,0 +1,119 @@
+{
+  "name": "Shubham Sarkar",
+  "contact": {
+    "email": "shubhamsarkarthe1@gmail.com",
+    "phone": "",
+    "address": "",
+    "linkedin": "https://www.linkedin.com/in/shubham-sarkar-57438b27a",
+    "github": "http://github.com/SSarkar-1",
+    "portfolio": "",
+    "kaggle": "https://www.kaggle.com/code/shubhamsarkarss/multimodal-working",
+    "leetcode": "https://leetcode.com/u/ShubhamSarkar243",
+    "codeforces": "",
+    "codechef": "",
+    "google_scholar": ""
+  },
+  "summary": "Machine Learning Engineer with hands-on experience designing and deploying NLP-driven systems for document analysis, semantic search, and intelligent insights. Strong background in text preprocessing, embedding-based retrieval, multimodal learning, and scalable ML pipelines. Proven ability to collaborate across data, product, and infrastructure teams to deliver low-latency, production-ready AI systems using Python, PyTorch/TensorFlow, Docker, and cloud platforms.",
+  "experience": [
+    {
+      "title": "Machine Learning Engineer",
+      "company": "Alignerr",
+      "dates": "Jan 2026-Present",
+      "bullets": [
+        "Enhanced model prediction accuracy by 15% by analyzing agent responses on different rubrics and state scenarios",
+        "Transcribed 50+ audio and video files to provide quality training and test data",
+        "Evaluated LLM conversations to assess correctness of tool usage, API calls, and reasoning flow"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Smart Product Pricing Model, Amazon ML Challenge 2025",
+      "github": "https://www.kaggle.com/code/shubhamsarkarss/multimodal-working",
+      "url": "",
+      "bullets": [
+        "Created a NLP and CV pipeline to analyze 150,000 image and text data using transformer-based text encoders and CNN-based image embeddings, integrating them through a fusion neural network for price prediction",
+        "Implemented data preprocessing, including text cleaning, tokenization, and streaming image feature extraction with ResNet and CLIP representations to handle large dataset",
+        "Applied feature engineering, outlier handling, and SMAPE-based evaluation to optimize prediction accuracy",
+        "Built and fine-tuned models using TensorFlow and scikit-learn, accomplished 142 rank out of 50,000 participants"
+      ]
+    },
+    {
+      "name": "Tailorcv.ai",
+      "github": "github.com/SSarkar-1/TailorCV.ai",
+      "url": "https://tailorcv-ai.onrender.com",
+      "bullets": [
+        "Built an AI web app that tailors resumes to job descriptions using LLMs and NLP pipelines, improving resume relevance by up to 80%",
+        "Designed a Python and FastAPI backend and HTML CSS and Javascript for frontend and deployed on AWS",
+        "Got 50+ users within the first week of launch, demonstrating strong early adoption and real-world impact"
+      ]
+    },
+    {
+      "name": "RAG System",
+      "github": "github.com/SSarkar-1/RAG",
+      "url": "",
+      "bullets": [
+        "Made a production-ready RAG pipeline integrating semantic vector retrieval with LLM generation to produce context-grounded responses",
+        "Engineered multiple chunking strategies and a scalable ingestion, retrieval, generation flow for efficient semantic search and generation",
+        "Implemented history-aware and multimodal augmentations, and evaluated retrieval outputs to measure relevance and quality"
+      ]
+    },
+    {
+      "name": "Youtube Sentiment Analysis",
+      "github": "https://github.com/SSarkar-1/Youtube_Sentiment_Insights",
+      "url": "",
+      "bullets": [
+        "Created an end-to-end YouTube sentiment analysis pipeline processing 10k+ user comments, improving sentiment classification performance through NLP preprocessing (tokenization, lemmatization, stopword removal)",
+        "Tracked multiple model experiments using MLflow and DVC, enabling reproducible training and systematic comparison of models built with scikit-learn and NLP libraries",
+        "Deployed the pipeline on AWS using Docker and exposed predictions via Flask REST APIs, enabling scalable and reproducible inference"
+      ]
+    }
+  ],
+  "skills": [
+    "Machine Learning & AI: Supervised & Unsupervised Learning, NLP, Computer Vision, LLM Fine Tuning, Retrieval Augmented Generation(RAG)",
+    "Frameworks & Libraries: TensorFlow, PyTorch, scikit-learn, Hugging Face, Pandas, NumPy",
+    "MLOps & Deployment: Amazon Web Services (AWS), Docker, MLflow, DVC, FastAPI, Flask, Streamlit, CI/CD",
+    "Data & Systems: SQL, ETL Pipelines, Linux, AWS, Vector Databases",
+    "Programming: Python, C, Javascript, HTML, CSS, Data Structures and Algorithms"
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Technology",
+      "school": "Jadavpur University",
+      "year": "2023-2027",
+      "links": ""
+    },
+    {
+      "degree": "High School",
+      "school": "Hariyana Vidya Mandir",
+      "year": "2020-2022",
+      "links": ""
+    }
+  ],
+  "certifications": [],
+  "achievements": [
+    "Secured 98.5 percentile in JEE Mains out of 1,400,000 students and 1458 rank in WBJEE",
+    "Scored 96% in class 10 to get into one of the best schools in Kolkata. 92% in class 12"
+  ],
+  "extracurriculars": [
+    {
+      "role": "Core Member",
+      "organization": "Jadavpur University Entrepreneurship Cell",
+      "url": "",
+      "bullets": [
+        "Organized national-level flagship events such as E-Summit 2025 and Hult Prize 2025, achieving 5,000+ registrations and 1,000+ on-campus attendees",
+        "Contributed to the establishment of an Incubation Center at Jadavpur University under the Institution's Innovation Council (IIC)"
+      ]
+    },
+    {
+      "role": "Coordinator",
+      "organization": "Jadavpur University Finance Club",
+      "url": "",
+      "bullets": [
+        "Led planning and execution of Finspire 2025, a national-level finance event with 1,000+ registrations and 500+ on-ground attendees, strengthening the club's national presence",
+        "Delivered high-impact trading and investment courses to 100+ students, improving engagement in financial markets"
+      ]
+    }
+  ],
+  "publications": []
+}

@@ -1,0 +1,340 @@
+@page {
+    size: A4;
+    margin: 0.14in 0.22in 0.18in;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: var(--body-size);
+    line-height: var(--body-line);
+    color: #4a4a4a;
+    background: #fff;
+}
+
+.resume-container {
+    width: 100%;
+    --body-size: 12.6px;
+    --body-line: 1.18;
+    --header-size: 30px;
+    --contact-size: 9.8px;
+    --section-size: 13.6px;
+    --title-size: 13px;
+    --meta-size: 11px;
+    --project-title-size: 13.3px;
+    --project-meta-size: 11.1px;
+    --skill-size: 11.1px;
+    --section-gap: 5px;
+    --entry-gap: 3px;
+    --project-gap: 6px;
+    --bullet-gap: 2px;
+    --bullet-line: 1.16;
+    --header-gap: 7px;
+}
+
+.resume-container.scale-xl {
+    --body-size: 14.8px;
+    --body-line: 1.22;
+    --header-size: 36px;
+    --contact-size: 11px;
+    --section-size: 16px;
+    --title-size: 15.2px;
+    --meta-size: 12.6px;
+    --project-title-size: 15.5px;
+    --project-meta-size: 12.8px;
+    --skill-size: 12.8px;
+    --section-gap: 8px;
+    --entry-gap: 5px;
+    --project-gap: 8px;
+    --bullet-gap: 4px;
+    --bullet-line: 1.22;
+    --header-gap: 10px;
+}
+
+.resume-container.scale-lg {
+    --body-size: 13.8px;
+    --body-line: 1.2;
+    --header-size: 33px;
+    --contact-size: 10.4px;
+    --section-size: 14.8px;
+    --title-size: 14.2px;
+    --meta-size: 11.8px;
+    --project-title-size: 14.5px;
+    --project-meta-size: 12px;
+    --skill-size: 12px;
+    --section-gap: 6px;
+    --entry-gap: 4px;
+    --project-gap: 7px;
+    --bullet-gap: 3px;
+    --bullet-line: 1.18;
+    --header-gap: 8px;
+}
+
+.resume-container.scale-sm {
+    --body-size: 11.8px;
+    --body-line: 1.12;
+    --header-size: 27px;
+    --contact-size: 9.1px;
+    --section-size: 12.8px;
+    --title-size: 12.2px;
+    --meta-size: 10.4px;
+    --project-title-size: 12.4px;
+    --project-meta-size: 10.5px;
+    --skill-size: 11.6px;
+    --section-gap: 4px;
+    --entry-gap: 2px;
+    --project-gap: 4px;
+    --bullet-gap: 1px;
+    --bullet-line: 1.12;
+    --header-gap: 6px;
+}
+
+.resume-container.scale-xs {
+    --body-size: 11.1px;
+    --body-line: 1.08;
+    --header-size: 24px;
+    --contact-size: 8.4px;
+    --section-size: 11.8px;
+    --title-size: 11.2px;
+    --meta-size: 9.6px;
+    --project-title-size: 11.5px;
+    --project-meta-size: 9.7px;
+    --skill-size: 11.2px;
+    --section-gap: 3px;
+    --entry-gap: 1px;
+    --project-gap: 3px;
+    --bullet-gap: 0px;
+    --bullet-line: 1.04;
+    --header-gap: 4px;
+}
+
+.resume-header {
+    text-align: center;
+    margin-bottom: var(--header-gap);
+}
+
+.resume-header h1 {
+    font-size: var(--header-size);
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    font-variant: small-caps;
+    margin-bottom: 2px;
+}
+
+.contact-line {
+    font-size: calc(var(--contact-size) + 0.6px);
+    line-height: calc(var(--body-line) - 0.08);
+    text-align: center;
+}
+
+.secondary-contact {
+    margin-top: 1px;
+}
+
+.contact-item {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.contact-item + .contact-item::before {
+    content: " | ";
+    color: #111;
+}
+
+.contact-icon {
+    display: inline-block;
+    min-width: 13px;
+    margin-right: 2px;
+    font-size: 9.4px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.code-icon {
+    min-width: 15px;
+    letter-spacing: -0.2px;
+}
+
+a {
+    color: #111;
+    text-decoration: none;
+}
+
+.resume-section {
+    margin-bottom: var(--section-gap);
+    page-break-inside: avoid;
+}
+
+.resume-section h2 {
+    font-size: calc(var(--section-size) + 3px);
+    font-weight: 700;
+    margin-bottom: 3px;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #c4c4c4;
+    color: #222;
+}
+
+.entry {
+    margin-bottom: var(--entry-gap);
+    page-break-inside: avoid;
+}
+
+.entry-top {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.entry-left,
+.entry-right {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.entry-right {
+    width: 30%;
+    text-align: right;
+    padding-left: 10px;
+}
+
+.primary {
+    font-size: var(--title-size);
+    font-weight: 600;
+    color: #222;
+}
+
+.secondary,
+.inline-link,
+.date {
+    font-size: var(--meta-size);
+    color: #444;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.date {
+    font-weight: 600;
+    white-space: nowrap;
+    font-style: italic;
+}
+
+.inline-link {
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.project-entry {
+    margin-bottom: var(--project-gap);
+}
+
+.experience-entry,
+.education-entry {
+    margin-bottom: 5px;
+}
+
+.project-title-row {
+    font-size: 0;
+}
+
+.experience-title,
+.education-title {
+    font-size: calc(var(--title-size) + 0.3px);
+    font-weight: 600;
+}
+
+.extracurricular-title {
+    font-size: calc(var(--title-size) - 0.1px);
+    font-weight: 500;
+    color: #333;
+}
+
+.project-title {
+    font-size: var(--project-title-size);
+    font-weight: 600;
+    color: #222;
+}
+
+.experience-meta,
+.experience-location,
+.education-meta,
+.education-score,
+.project-meta,
+.project-links {
+    font-size: var(--project-meta-size);
+}
+
+.experience-meta,
+.experience-location,
+.education-meta,
+.education-score,
+.project-meta {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.project-links a {
+    color: #1f1f1f;
+    text-decoration: underline;
+    text-underline-offset: 1px;
+    font-style: italic;
+}
+
+.project-link-mark {
+    display: inline-block;
+    margin-left: 1px;
+    font-style: normal;
+    font-weight: 600;
+    color: #1f1f1f;
+}
+
+.bullet-list {
+    margin-top: 1px;
+    margin-left: 15px;
+    line-height: calc(var(--bullet-line) + 0.06);
+}
+
+.bullet-list li {
+    margin-bottom: calc(var(--bullet-gap) + 1px);
+    padding-left: 1px;
+    color: #4a4a4a;
+    font-style: normal;
+}
+
+.bullet-list.compact {
+    margin-top: 0;
+}
+
+.skills-block {
+    line-height: 1.18;
+    margin-top: 3px;
+}
+
+.skill-row {
+    margin-bottom: 2px;
+    font-size: calc(var(--body-size) + 1.8px);
+    color: #444;
+    font-style: normal;
+    line-height: 1.12;
+}
+
+.skill-label {
+    font-weight: 600;
+    color: #222;
+    font-style: normal;
+    margin-right: 3px;
+}
+
+.skill-value {
+    font-weight: 400;
+}
+
+.skills-section .skill-row:last-child {
+    margin-bottom: 0;
+}

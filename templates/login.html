@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('/static/back5.jpg');
+      background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Optional: keeps image fixed when scrolling */
+    background-color: #cccccc;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      width: 340px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .input-group input:focus {
+      border-color: #667eea;
+      outline: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #667eea;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+      margin-bottom: 10px;
+    }
+
+    .btn:hover {
+      background: #5a67d8;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 12px;
+      color: #888;
+    }
+
+    .extra {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .extra a {
+      color: #667eea;
+      text-decoration: none;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+
+    #googleBtn {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Login</h2>
+
+  <div class="input-group">
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Enter your email" />
+    <div class="error" id="emailError">Invalid email</div>
+  </div>
+
+  <div class="input-group">
+    <label>Password</label>
+    <input type="password" id="password" placeholder="Enter your password" />
+    <div class="error" id="passwordError">Password must be at least 6 characters</div>
+  </div>
+
+  <button class="btn" onclick="login()">Login</button>
+
+  <div class="divider">OR</div>
+
+  <!-- Google Sign-In Button -->
+  <div id="googleBtn"></div>
+
+  <div class="extra">
+    <p><a href="#">Forgot Password?</a></p>
+    <p>Don't have an account? <a href="#">Sign up</a></p>
+  </div>
+</div>
+
+<script>
+  function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+
+    let valid = true;
+
+    if (!email.includes('@')) {
+      emailError.style.display = 'block';
+      valid = false;
+    } else {
+      emailError.style.display = 'none';
+    }
+
+    if (password.length < 6) {
+      passwordError.style.display = 'block';
+      valid = false;
+    } else {
+      passwordError.style.display = 'none';
+    }
+
+    if (valid) {
+      alert('Login Successful!');
+    }
+  }
+
+  // Google Login Setup
+  window.onload = function () {
+    google.accounts.id.initialize({
+      client_id: "YOUR_GOOGLE_CLIENT_ID",
+      callback: handleCredentialResponse
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("googleBtn"),
+      { theme: "outline", size: "large" }
+    );
+  };
+
+  function handleCredentialResponse(response) {
+    console.log("Encoded JWT ID token: " + response.credential);
+    alert("Google Login Successful!");
+
+    // You can send this token to your backend for verification
+  }
+</script>
+
+</body>
+</html>

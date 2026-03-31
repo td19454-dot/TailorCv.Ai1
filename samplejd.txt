@@ -1,0 +1,21 @@
+Architect and implement AI agents from the ground up using frameworks such as LangChain for chaining LLMs and tools, and LangGraph for stateful, graph-based agent workflows, including perception modules (e.g., using computer vision or NLP), decision-making logic (e.g., via reinforcement learning or planning algorithms), and action execution components.
+Develop and train machine learning models using frameworks like TensorFlow, PyTorch, or Scikit-learn to enable agent learning and adaptation, integrating with LangChain/LangGraph for advanced agent orchestration.
+Integrate AI agents with external systems, APIs, databases, and environments (e.g., simulation tools like OpenAI Gym or real-world interfaces), ensuring seamless tool usage and memory management via LangChain components.
+Optimize agents for performance, scalability, and robustness, including handling edge cases, ethical considerations, and safety protocols within graph-structured agent designs.
+Collaborate with cross-functional teams (e.g., data scientists, software engineers) to iterate on agent designs based on feedback and testing.
+Conduct experiments, simulations, and evaluations to refine agent behaviors and ensure reliability in production.
+Document code, architectures, and methodologies for reproducibility and team knowledge sharing.
+Stay current with advancements in AI agent technologies, such as large language models (LLMs), multi-agent systems, and emerging frameworks like LangChain and LangGraph.
+Required Skills and Qualifications
+Bachelor's or Master's degree in Computer Science, Artificial Intelligence, Machine Learning, or a related field.
+Proficiency in Python programming, with strong experience in ML libraries (e.g., TensorFlow, PyTorch, NumPy, Pandas) and agent-specific tools (e.g., LangChain, LangGraph, AutoGen, RLlib, Hugging Face Transformers).
+Hands-on experience building AI agents from scratch using LangChain for tool integration and agent chains, LangGraph for multi-step reasoning and state management, including reinforcement learning, state machines, graph-based planning, or evolutionary algorithms.
+Solid understanding of data structures, algorithms, software engineering principles, and version control (e.g., Git).
+Familiarity with cloud platforms (e.g., AWS, Google Cloud, Azure) for deploying agents, and tools like Docker/Kubernetes for containerization.
+Strong problem-solving skills, with the ability to debug complex systems and work in agile, fast-paced environments.
+Excellent communication skills to articulate technical designs and collaborate effectively.
+Preferred Qualifications
+Experience with specialized domains like natural language processing (NLP), computer vision, robotics (e.g., ROS), or game AI, integrated with LangChain/LangGraph.
+Knowledge of big data tools (e.g., Spark, Hadoop) or databases (SQL/NoSQL) for handling large-scale agent data.
+Prior work with multi-agent systems, ethical AI, or real-time applications using advanced frameworks.
+Contributions to open-source AI projects or a portfolio demonstrating agent-building expertise (e.g., GitHub repos showcasing LangChain/LangGraph implementations).

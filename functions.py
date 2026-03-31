@@ -1,0 +1,787 @@
+import os
+from pathlib import Path
+
+import httpx
+import pdfplumber
+from dotenv import load_dotenv
+from openai import OpenAI
+import re
+import json
+
+
+def normalize_links(text):
+    return re.sub(
+        r'(?<!https://)(?<!http://)(\b[a-zA-Z0-9.-]+\.(com|in|org|io|dev|ai|net)\b)',
+        r'https://\1',
+        text
+    )
+
+
+def _slice_section(text: str, start_markers: list[str], stop_markers: list[str]) -> str:
+    """
+    Best-effort extraction of a resume section from raw PDF text.
+    Uses simple marker matching because PDF text extraction is noisy.
+    """
+    raw = str(text or "")
+    if not raw.strip():
+        return ""
+
+    lines = [line.rstrip() for line in raw.splitlines()]
+    lowered = [line.strip().lower() for line in lines]
+
+    start_idx = None
+    for i, line in enumerate(lowered):
+        if any(marker in line for marker in start_markers):
+            start_idx = i
+            break
+    if start_idx is None:
+        return ""
+
+    stop_idx = len(lines)
+    for j in range(start_idx + 1, len(lines)):
+        line = lowered[j]
+        if any(marker in line for marker in stop_markers):
+            stop_idx = j
+            break
+
+    return "\n".join(lines[start_idx:stop_idx]).strip()
+
+
+def extract_project_links(text: str) -> list[str]:
+    """
+    Extract only project-related URLs from the Projects section.
+
+    This avoids grabbing contact links (gmail/leetcode/linkedin/etc) that appear
+    outside Projects and were previously being injected into projects incorrectly.
+    """
+    projects_block = _slice_section(
+        text,
+        start_markers=["projects"],
+        stop_markers=[
+            "technical skills",
+            "skills",
+            "education",
+            "experience",
+            "certifications",
+            "achievements",
+            "publications",
+            "extracurricular",
+            "leadership",
+        ],
+    )
+    if not projects_block:
+        return []
+
+    normalized = normalize_links(projects_block)
+    links = extract_links(normalized)
+
+    # Filter obvious non-project/contact domains that sometimes appear inline.
+    deny_substrings = (
+        "mailto:",
+        "tel:",
+        "linkedin.com",
+        "leetcode.com",
+        "gmail.com",
+        "outlook.com",
+        "yahoo.com",
+    )
+    filtered = []
+    for url in links:
+        u = str(url).strip().lower()
+        if any(bad in u for bad in deny_substrings):
+            continue
+        filtered.append(url)
+    return filtered
+
+
+def map_project_demo_links(text: str) -> list[tuple[str, str]]:
+    """
+    Like `map_demo_links`, but scoped to Projects and supports both:
+    - label line contains ↗ and next line contains the URL
+    - label line contains ↗ and the URL is on the same line (common in PDFs)
+    """
+    projects_block = _slice_section(
+        text,
+        start_markers=["projects"],
+        stop_markers=[
+            "technical skills",
+            "skills",
+            "education",
+            "experience",
+            "certifications",
+            "achievements",
+            "publications",
+            "extracurricular",
+            "leadership",
+        ],
+    )
+    if not projects_block:
+        return []
+
+    normalized = normalize_links(projects_block)
+    lines = normalized.split("\n")
+    mapped: list[tuple[str, str]] = []
+
+    for i in range(len(lines)):
+        line = lines[i].strip()
+        if "↗" not in line:
+            continue
+
+        # Prefer URL on same line
+        same_line_urls = extract_links(line)
+        if same_line_urls:
+            label = line.replace("↗", "").strip()
+            mapped.append((label, same_line_urls[0]))
+            continue
+
+        # Fallback to next line URL
+        if i + 1 < len(lines):
+            next_line = lines[i + 1].strip()
+            next_urls = extract_links(next_line)
+            if next_urls:
+                label = line.replace("↗", "").strip()
+                mapped.append((label, next_urls[0]))
+
+    # Apply the same deny-list filtering as extract_project_links
+    deny_substrings = ("mailto:", "tel:", "linkedin.com", "leetcode.com", "gmail.com", "outlook.com", "yahoo.com")
+    cleaned: list[tuple[str, str]] = []
+    for label, url in mapped:
+        u = str(url).strip().lower()
+        if any(bad in u for bad in deny_substrings):
+            continue
+        cleaned.append((label, url))
+
+    return cleaned
+
+
+def extract_project_link_map(text: str) -> dict[str, list[tuple[str, str]]]:
+    """
+    Extract a best-effort mapping: project_name -> [(label, url), ...]
+    from the PDF "Projects" section only.
+
+    This is used to inject the correct URL under the correct project
+    (instead of injecting links in a global order).
+    """
+    projects_block = _slice_section(
+        text,
+        start_markers=["projects"],
+        stop_markers=[
+            "technical skills",
+            "skills",
+            "education",
+            "experience",
+            "certifications",
+            "achievements",
+            "publications",
+            "extracurricular",
+            "leadership",
+        ],
+    )
+    if not projects_block:
+        return {}
+
+    normalized = normalize_links(projects_block)
+    lines = [ln.strip() for ln in normalized.splitlines() if ln.strip()]
+
+    deny_substrings = ("mailto:", "tel:", "linkedin.com", "leetcode.com", "gmail.com", "outlook.com", "yahoo.com")
+
+    def clean_url(url: str) -> str:
+        u = str(url or "").strip().strip("<>")
+        u = u.rstrip(").,;:\"'!?]}")
+        return u
+
+    def clean_project_name(line: str) -> str:
+        # Keep left side before stack separator if present.
+        # Examples: "TailorCV.ai | HTML, CSS" -> TailorCV.ai
+        base = line.replace("↗", " ").strip()
+        if "|" in base:
+            base = base.split("|", 1)[0].strip()
+        # Remove common link labels if they appear in same line.
+        base = re.split(r"\b(Live|Demo|GitHub|Project Link)\b", base, flags=re.IGNORECASE)[0].strip()
+        return base
+
+    mapping: dict[str, list[tuple[str, str]]] = {}
+
+    for i in range(len(lines)):
+        line = lines[i]
+        if "↗" not in line:
+            continue
+
+        # Prefer URL on same line; otherwise use next line.
+        urls_same_line = extract_links(line)
+        url = clean_url(urls_same_line[0]) if urls_same_line else ""
+        label = line.replace("↗", "").strip()
+
+        if not url and i + 1 < len(lines):
+            next_line = lines[i + 1]
+            urls_next = extract_links(next_line)
+            if urls_next:
+                url = clean_url(urls_next[0])
+
+        if not url:
+            continue
+
+        if any(bad in url.lower() for bad in deny_substrings):
+            continue
+
+        pname = clean_project_name(label)
+        if not pname:
+            continue
+
+        mapping.setdefault(pname, [])
+        # Store both label and url; label is for display (can be "Live Demo", etc.)
+        if (label, url) not in mapping[pname]:
+            mapping[pname].append((label, url))
+
+    return mapping
+
+
+def extract_links(text):
+    # Preserve first-seen order (sets destroy ordering, which breaks link<->project alignment)
+    found = re.findall(r'https?://\S+', text)
+    seen = set()
+    ordered = []
+    for link in found:
+        # PDF extraction sometimes captures trailing punctuation.
+        link = link.strip().strip("<>")
+        link = link.rstrip(").,;:\"'!?]}")
+        if link not in seen:
+            seen.add(link)
+            ordered.append(link)
+    return ordered
+
+
+def map_demo_links(text):
+    lines = text.split("\n")
+    mapped = []
+
+    for i in range(len(lines) - 1):
+        if "↗" in lines[i]:
+            label = lines[i].replace("↗", "").strip()
+            next_line = lines[i + 1].strip()
+
+            if re.search(r'(https?://|\w+\.(com|in|org|io|dev|ai))', next_line):
+                if not next_line.startswith("http"):
+                    next_line = "https://" + next_line
+                next_line = next_line.strip().strip("<>")
+                next_line = next_line.rstrip(").,;:\"'!?]}")  # clean trailing punctuation
+                mapped.append((label, next_line))
+
+    return mapped
+
+
+def inject_links(data, links, mapped_links):
+    """
+    Backfill missing project URLs in the AI JSON using URLs extracted from the original PDF text.
+
+    Important: only fill projects that are missing their own project links. This avoids showing
+    unrelated URLs when the user/resume contains multiple projects/links.
+    """
+    if not isinstance(data, dict):
+        return data
+    projects = data.get("projects")
+    if not isinstance(projects, list) or not projects:
+        return data
+
+    # Ensure every project has a "links" list for downstream rendering.
+    for project in projects:
+        if isinstance(project, dict):
+            project.setdefault("links", [])
+
+    def _project_has_any_link(p: dict) -> bool:
+        if not isinstance(p, dict):
+            return False
+        if str(p.get("url") or "").strip():
+            return True
+        if str(p.get("github_link") or "").strip():
+            return True
+        # Check nested links array for any usable url.
+        for item in p.get("links") or []:
+            if not isinstance(item, dict):
+                continue
+            if str(item.get("url") or item.get("href") or item.get("link") or "").strip():
+                return True
+        return False
+
+    for project in projects:
+        if not isinstance(project, dict):
+            continue
+        if _project_has_any_link(project):
+            continue
+
+        # Name-based injection first (prevents Gmail/LeetCode from landing under wrong projects).
+        pname = str(project.get("name", "")).strip().lower()
+        injected = False
+        if isinstance(links, dict):
+            # Backward-compatible: if `links` is actually a project_link_map, handle it.
+            project_link_map = links
+            for key, url_pairs in project_link_map.items():
+                k = str(key or "").strip().lower()
+                if not k:
+                    continue
+                if pname == k or pname in k or k in pname:
+                    for label, url in url_pairs:
+                        project.setdefault("links", []).append(
+                            {"label": str(label or "Link").strip(), "url": url}
+                        )
+                    injected = True
+                    break
+
+        # If name-based injection didn't happen, do nothing (safer than wrong links).
+        if not injected:
+            # Only inject sequentially when no name-map is provided.
+            if not isinstance(links, dict):
+                # Prefer label-specific mapped links (typically coming from "Live Demo ↗" style lines).
+                # (order-based fallback - used only when name-map isn't available)
+                if mapped_links:
+                    label, url = mapped_links[0]
+                    project.setdefault("links", []).append(
+                        {"label": str(label or "Link").strip(), "url": url}
+                    )
+                    # Consume first mapping so next project doesn't get same link repeatedly
+                    mapped_links = mapped_links[1:]
+
+                # If still empty and there are extracted URLs, use next one.
+                elif links:
+                    # `links` might be a list[str] of URLs
+                    if isinstance(links, list) and links:
+                        url = links[0]
+                        mapped_links = mapped_links
+                        project.setdefault("links", []).append({"label": "Project Link", "url": url})
+                        links = links[1:]
+
+    return data
+
+BASE_DIR = Path(__file__).resolve().parent
+load_dotenv(dotenv_path=BASE_DIR / ".env")
+
+
+def _build_openai_client():
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError(
+            "OPENAI_API_KEY is not set. Add it to your .env file before using ATS analysis or resume optimization."
+        )
+    # Ignore broken system proxy settings when talking to OpenAI.
+    http_client = httpx.Client(trust_env=False, timeout=60.0)
+    return OpenAI(api_key=api_key, http_client=http_client, max_retries=2)
+
+
+def _normalize_openai_error(exc: Exception) -> RuntimeError:
+    message = str(exc)
+    if "insufficient_quota" in message or "You exceeded your current quota" in message:
+        return RuntimeError(
+            "OpenAI quota exceeded for the configured API key. Add billing or use a different key, then restart the app."
+        )
+    if "invalid_api_key" in message:
+        return RuntimeError(
+            "The configured OPENAI_API_KEY is invalid. Replace it in .env and restart the app."
+        )
+    return RuntimeError(f"OpenAI request failed: {message}")
+
+def create_prompt(resume_string,jd_string):
+    """Creates a detailed prompt for AI-powered resume optimization based on a job description.
+
+    This function generates a structured prompt that guides the AI to:
+    - Tailor the resume to match job requirements
+    - Optimize for ATS systems
+    - Provide actionable improvement suggestions
+    - Format the output in clean Markdown
+
+    Args:
+        resume_string (str): The input resume text
+        jd_string (str): The target job description text
+
+    Returns:
+        str: A formatted prompt string containing instructions for resume optimization"""
+    
+    return f"""
+Your objective is to generate a professional, compelling resume content according to the provided job description, maximizing interview chances by integrating best practices in content quality, keyword optimization, measurable achievements, and proper formatting.
+
+Rewrite the content resume to better match the job description and return in json.
+Only improve wording and keyword alignment
+
+IMPORTANT:
+You are NOT formatting a resume.
+You are ONLY returning structured content.
+You must preserve factual details already present in the resume such as dates, CGPA/SGPA, percentages, marks, locations, and links.
+Do not remove or rewrite those details unless the resume itself clearly contains an error.
+For every section, prefer copying factual values from the original resume verbatim and only improve wording around them.
+
+### OUTPUT RULES (MANDATORY)
+- Output **ONLY valid JSON**
+- No explanations, no markdown, no extra text
+
+Guidelines to Follow:
+1)Keyword and Skill Optimization:
+Rule01:If a tool, framework or skill doesn't match the ones mentioned in the Job description but a similar skill is mentioned, replace the tool/skill/framework with that keyword to match the JD. For example, if Tableau is mentioned but the requirement asks for PowerBI, replace it with PowerBI, if . Be ethical, don't replace if it is not logical.
+
+Analyze the job description and identify relevant keywords (hard and soft skills).
+Match as much as possible of the job description’s keywords following the rule above to align with applicant tracking systems (ATS).
+Prioritize industry-relevant hard skills and soft skills in dedicated sections and throughout bullet points.
+
+Incorporate Measurable Metrics:
+Quantify achievements using the XYZ formula if the user has put such quantifications but not formatted it if user has not put anything quantifyable don't do it: Accomplished X, measured by Y, by doing Z.
+
+Include as many  measurable results as possible to clearly demonstrate impact.
+Don't use vague statements; use metrics to highlight value and effectiveness.
+
+
+Content Quality and Language:
+Eliminate buzzwords, clichés, and pronouns (e.g., “I,” “me,” “my”).
+Use action-oriented, impactful language to emphasize accomplishments over duties.
+Replace generic phrases with specific examples that showcase expertise and success.
+Focus on selling professional experience, skills, and results, not merely summarizing past roles.
+
+Additional Instructions:
+Keyword Optimize and be specific for each section (Professional Summary, Experience, Skills, Education) to reflect relevance to the job.
+Ensure consistent formatting, professional fonts
+Use concise bullet points, each starting with a strong action verb.
+Preserve all existing links from the resume exactly when they exist. Do not remove project, GitHub, LinkedIn, portfolio, or other URLs.
+If a project has a GitHub/repository/demo/live link in the original resume, keep it in the output using `github_link`, `url`, or `links`.
+Preserve all original date ranges exactly whenever they are present in experience, projects, education, certifications, extracurriculars, and publications.
+Preserve education scores exactly whenever they are present, including values like CGPA, SGPA, GPA, percentage, marks, and rank.
+If the original resume contains a field value and the job description does not conflict with it, keep that original value.
+Never leave `dates`, `score`, `github_link`, `url`, `links`, `linkedin`, `github`, `portfolio`, or `leetcode` blank if that value exists in the original resume.
+When education contains CGPA/SGPA/percentage/marks, place it in `score` exactly as written.
+When a project title line contains tools or stack details, place them in `subtitle`.
+
+Follow this EXACT schema
+
+{{
+  "name": "",
+
+  "contact": {{
+    "email": "",
+    "phone": "",
+    "address": "",
+    "linkedin": "",
+    "github": "",
+    "portfolio": "",
+    "kaggle": "",
+    "leetcode": "",
+    "codeforces": "",
+    "codechef": "",
+    "google_scholar": ""
+  }},
+
+  "summary": "",
+
+  "experience": [
+    {{
+      "title": "",
+      "company": "",
+      "dates": "",
+      "location": "",
+      "bullets": []
+    }}
+  ],
+
+  "projects": [
+    {{
+      "name": "",
+      "dates": "",
+      "subtitle": "",
+      "github_link": "",
+      "url": "",
+      "links": [
+        {{
+          "label": "",
+          "url": ""
+        }}
+      ],
+      "bullets": []
+    }}
+  ],
+
+  "skills": [],
+
+  "education": [
+    {{
+      "degree": "",
+      "school": "",
+      "year": "",
+      "score": "",
+      "links":""
+    }}
+  ],
+
+  "certifications": [
+    {{
+      "name": "",
+      "issuer": "",
+      "year": "",
+      "url":""
+    }}
+  ],
+
+  "achievements": [],
+
+  "extracurriculars": [
+    {{
+      "role": "",
+      "organization": "",
+      "dates": "",
+      "bullets": [],
+      "url": ""
+    }}
+  ],
+
+  "publications": [
+    {{
+      "title": "",
+      "publisher": "",
+      "year": "",
+      "url": ""
+    }}
+  ]
+}}
+
+My Resume:
+{resume_string}
+Job Description:
+{jd_string}
+
+"""
+def get_resume_response(prompt,model="gpt-4o-mini",temperature: float = 0.1):
+    """
+    Sends a resume optimization prompt to OpenAI's API and returns the optimized resume response.
+
+    This function:
+    - Initializes the OpenAI client
+    - Makes an API call with the provided prompt
+    - Returns the generated response
+
+    Args:
+        prompt (str): The formatted prompt containing resume and job description
+        api_key (str): OpenAI API key for authentication
+        model (str, optional): The OpenAI model to use. Defaults to "gpt-4-turbo-preview"
+        temperature (float, optional): Controls randomness in the response. Defaults to 0.7
+
+    Returns:
+        str: The AI-generated optimized resume and suggestions
+
+    Raises:
+        OpenAIError: If there's an issue with the API call
+    """
+    #Setting up openAI client
+    client = _build_openai_client()
+
+    #Make call
+    try:
+        response=client.chat.completions.create(model=model,
+                                                response_format={"type": "json_object"},
+                                                messages=[
+                                                    {'role':'system',"content":'Expert resume writer and reviewer'},
+                                                    {'role':'user','content':prompt}
+                                                ],temperature=temperature)
+    except Exception as exc:
+        raise _normalize_openai_error(exc) from exc
+    return response.choices[0].message.content
+
+def ats_scoring(resume_string, jd_string):
+    """Gives ats score for the resume highlignting strengths and weaknesses"""
+    base_prompt=f"""You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
+    Your task is to analyze a resume against a job description and generate a Jobscan-style Match Report.
+    Output ONLY valid JSON. Do NOT wrap the JSON in quotes
+    INPUTS 
+    Resume:
+    {resume_string}
+    Job Description:
+    {jd_string}
+  
+    ANALYSIS INSTRUCTIONS
+    Evaluate the resume using ATS logic based on:
+    - Searchability: 1)Contact information : is email present ,is phone number present, is name present
+                     2)Professional summary: is it present, presents my abilities clearly and precisely, is it relevant to the job description
+                     3)Section Headings: are Work Experience, Education, Skills, Projects present
+                     4) Does Job title Match
+                     5)Are the dates in chronological order
+                     6) Are there any spelling mistakes in the resume
+                     7) Does the resume have relevant links to all projects and achievements
+    - Hard skills and Soft skills  match
+    - cliches : Does the resume have generic cliche words with no measurable impact.
+    - Experience relevance: does the candidate have the experience required in the JD
+    - Formatting: 1) Is the resume free from any pictures, watermarks
+                  2) Is the resume single column
+                  3) Does the resume have too much color and design (too much means more than two)
+                  4) Does the resume have unessacery sections like extracurriculars, hobbies, interests
+    Be strict, realistic, and recruiter-focused.
+    Do NOT assume or hallucinate skills or experience not explicitly stated.
+
+    ### SCORING
+    - Compute a Match Rate between 0 and 100
+    - Weighting:
+    - Hard skills keywords: 40%
+    - Experience & cliches: 10%
+    - Searchability & formatting: 50%
+
+    ### OUTPUT RULES (MANDATORY)
+    - Output **ONLY valid JSON**
+    - No explanations, no markdown, no extra text
+    - JSON must strictly follow the schema below
+
+    ### REQUIRED JOBSCAN-STYLE JSON FORMAT
+    """
+    json_schema='''{
+    "match_rate": <integer 0-100>,
+    "match_level": "<Poor | Fair | Good | Strong | Excellent>",
+
+    "hard_skills": {
+        "matched": ["<skill1>", "<skill2>"],
+        "missing": ["<skill1>", "<skill2>"]
+    },
+    "soft_skills": {
+        "matched": ["<skill1>", "<skill2>"],
+        "missing": ["<skill1>", "<skill2>"]
+    },
+    "keywords": {
+        "matched": ["<keyword1>", "<keyword2>"],
+        "missing": ["<keyword1>", "<keyword2>"]
+    },
+    "tools_and_technologies": {
+        "matched": ["<tool1>", "<tool2>"],
+        "missing": ["<tool1>", "<tool2>"]
+    },
+
+    "experience": {
+        "job_requirement": "<years or description from JD>",
+        "resume_experience": "<summary of experience from resume>",
+        "match_status": "<Low | Partial | Strong>",
+        "relevance_score": <integer 0-100>,
+        "notes": "<short explanation of how well the experience matches the JD>"
+    },
+
+    "job_title_match": {
+        "job_title_in_jd": "<title from JD>",
+        "resume_titles": ["<title1 from resume>", "<title2 from resume>"],
+        "match_status": "<Low | Partial | Strong>"
+    },
+
+    "searchability": {
+        "score": <integer 0-100>,
+        "contact_information": {
+        "has_name": <true | false>,
+        "has_email": <true | false>,
+        "has_phone": <true | false>
+        },
+        "professional_summary": {
+        "is_present": <true | false>,
+        "is_clear_and_concise": <true | false>,
+        "is_relevant_to_jd": <true | false>
+        },
+        "section_headings": {
+        "has_work_experience": <true | false>,
+        "has_education": <true | false>,
+        "has_skills": <true | false>,
+        "has_projects": <true | false>,
+        "missing_sections": ["<missing_section1>", "<missing_section2>"]
+        },
+        "chronology": {
+        "is_chronological": <true | false>,
+        "issues": ["<issue about date ordering, if any>"]
+        },
+        "spelling_grammar": {
+        "has_spelling_or_grammar_errors": <true | false>,
+        "examples": ["<example error 1>", "<example error 2>"]
+        },
+        "links": {
+        "has_relevant_links": <true | false>,
+        "missing_recommended_links": ["<missing_link_description1>", "<missing_link_description2>"]
+        },
+        "issues": [
+        "<high-level searchability issue 1>",
+        "<high-level searchability issue 2>"
+        ]
+    },
+
+    "cliches": {
+        "has_cliches": <true | false>,
+        "examples": ["<cliche phrase 1>", "<cliche phrase 2>"]
+    },
+
+    "formatting": {
+        "is_photo_free": <true | false>,
+        "is_single_column": <true | false>,
+        "has_minimal_color_and_design": <true | false>,  // false if more than two strong colors/design elements
+        "unnecessary_sections_present": <true | false>,
+        "unnecessary_sections": ["<section name 1>", "<section name 2>"]
+    },
+
+    "recruiter_tips": [
+        "<actionable improvement 1 based on above analysis>",
+        "<actionable improvement 2>",
+        "<actionable improvement 3>"
+    ]} '''
+    prompt = base_prompt + "\n" + json_schema
+    model="gpt-4o-mini"
+    temperature=0.1
+    client = _build_openai_client()
+
+    #Make call
+    try:
+        response=client.chat.completions.create(model=model,
+                                                response_format={"type": "json_object"},
+                                                messages=[
+                                                    {'role':'system',"content":'Applicant Tracking System (ATS) resume scanner similar to Jobscan'},
+                                                    {'role':'user','content':prompt}
+                                                ],temperature=temperature)
+    except Exception as exc:
+        raise _normalize_openai_error(exc) from exc
+    return response.choices[0].message.content
+
+def process_resume(resume_name,jd_string):
+    """
+    Process a resume file against a job description to create an optimized version.
+
+    Args:
+        resume (file): A file object containing the resume in markdown format
+        jd_string (str): The job description text to optimize the resume against
+
+    Returns:
+        tuple: A tuple containing three elements:
+            - str: The optimized resume in markdown format (for display)
+            - str: The same optimized resume (for editing)
+            
+    """
+     
+    def extract_pdf_text(path):
+        text = ""
+        with pdfplumber.open(path) as pdf:
+            for page in pdf.pages:
+                text += page.extract_text() + "\n"
+        return text
+    resume_string=extract_pdf_text(f"uploads/{resume_name}")
+
+    resume_string = normalize_links(resume_string)
+    links = extract_links(resume_string)
+    mapped_links = map_demo_links(resume_string)
+
+    # create prompt
+    prompt = create_prompt(resume_string, jd_string)
+
+    # Generate response
+    try:
+        response_string = get_resume_response(prompt)
+    except Exception as e:
+        return f"Failed to generate resume from the AI: {e}", ""
+
+    # Return two outputs to match Gradio: Markdown display and editable text
+    new_resume = response_string
+    try:
+       data = json.loads(response_string)
+       data = inject_links(data, links, mapped_links)
+       return json.dumps(data, indent=2)
+    except Exception:
+      return response_string
+    # try:
+    #     output_pdf_file = "resumes/optimized_resume.pdf"
+
+    #     # convert markdown to HTML
+    #     html_content = markdown(new_resume)
+
+    #     # Convert HTML to PDF and save (use existing styles filename)
+    #     HTML(string=html_content).write_pdf(output_pdf_file, stylesheets=['resumes/style.css'])
+    #     return f"Successfully exported resume to {output_pdf_file} 🎉"
+    # except Exception as e:
+    #     return f"Failed to export resume: {str(e)} 💔"

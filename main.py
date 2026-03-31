@@ -1,0 +1,1075 @@
+import json
+import os
+from secrets import token_hex
+
+import pdfplumber
+import uvicorn
+from fastapi import FastAPI, File, HTTPException, Request, UploadFile
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from functions import (
+    ats_scoring,
+    create_prompt,
+    get_resume_response,
+    extract_links,
+    inject_links,
+    map_demo_links,
+    extract_project_links,
+    map_project_demo_links,
+    extract_project_link_map,
+    normalize_links,
+)
+
+
+app = FastAPI(title="Resume Optimizer Backend")
+
+# Add CORS middleware to allow frontend requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Configure this for production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Get the base directory (where main.py is located)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+templates_dir = os.path.join(BASE_DIR, "templates")
+static_dir = os.path.join(BASE_DIR, "static")
+uploads_dir = os.path.join(BASE_DIR, "uploads")
+resumes_dir = os.path.join(BASE_DIR, "resumes")
+
+# Ensure directories exist
+os.makedirs(uploads_dir, exist_ok=True)
+os.makedirs(resumes_dir, exist_ok=True)
+os.makedirs(templates_dir, exist_ok=True)
+os.makedirs(static_dir, exist_ok=True)
+
+# Mount static files and configure templates with absolute paths
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
+templates = Jinja2Templates(directory=templates_dir)
+
+
+def extract_pdf_text(path: str) -> str:
+    text = ""
+    with pdfplumber.open(path) as pdf:
+        for page in pdf.pages:
+            text += (page.extract_text() or "") + "\n"
+    return text
+
+
+def _normalize_key(text: str) -> str:
+    return "".join(ch.lower() for ch in str(text or "") if ch.isalnum())
+
+
+def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> dict[str, list[tuple[str, str]]]:
+    """
+    Extract *clickable* link annotations (URIs) from the PDF and map them to the nearest
+    project name based on page text proximity. This is far more reliable than trying
+    to recover URLs from extracted text when the resume uses link icons (↗).
+    """
+    try:
+        from pypdf import PdfReader
+    except Exception:
+        return {}
+
+    names = [str(n or "").strip() for n in (project_names or []) if str(n or "").strip()]
+    if not names:
+        return {}
+
+    norm_to_name = {_normalize_key(n): n for n in names}
+    norm_names = sorted(norm_to_name.keys(), key=len, reverse=True)
+
+    def best_match(line_text: str) -> str | None:
+        k = _normalize_key(line_text)
+        if not k:
+            return None
+        for nn in norm_names:
+            if nn and (nn in k or k in nn):
+                return norm_to_name[nn]
+        return None
+
+    # Build line boxes using pdfplumber so we can locate nearby text for each link annotation.
+    line_boxes: dict[int, list[dict]] = {}
+    with pdfplumber.open(pdf_path) as pdf:
+        for page_idx, page in enumerate(pdf.pages):
+            words = page.extract_words(use_text_flow=True, keep_blank_chars=False) or []
+            # Group words into lines by y position (tolerant grouping).
+            lines: list[dict] = []
+            for w in words:
+                text = str(w.get("text", "")).strip()
+                if not text:
+                    continue
+                top = float(w.get("top", 0.0))
+                bottom = float(w.get("bottom", 0.0))
+                x0 = float(w.get("x0", 0.0))
+                x1 = float(w.get("x1", 0.0))
+
+                placed = False
+                for ln in lines:
+                    # Same line if vertical overlap close enough
+                    if abs(top - ln["top"]) <= 2.5:
+                        ln["text"] = (ln["text"] + " " + text).strip()
+                        ln["x0"] = min(ln["x0"], x0)
+                        ln["x1"] = max(ln["x1"], x1)
+                        ln["top"] = min(ln["top"], top)
+                        ln["bottom"] = max(ln["bottom"], bottom)
+                        placed = True
+                        break
+                if not placed:
+                    lines.append({"text": text, "x0": x0, "x1": x1, "top": top, "bottom": bottom})
+
+            line_boxes[page_idx] = lines
+
+    reader = PdfReader(pdf_path)
+    result: dict[str, list[tuple[str, str]]] = {}
+
+    for page_idx, page in enumerate(reader.pages):
+        annots = page.get("/Annots") or []
+        for annot_ref in annots:
+            try:
+                annot = annot_ref.get_object()
+            except Exception:
+                continue
+            a = annot.get("/A") or {}
+            uri = a.get("/URI")
+            if not uri:
+                continue
+            uri = str(uri).strip()
+            if not uri:
+                continue
+            if not uri.startswith(("http://", "https://", "mailto:", "tel:")):
+                uri = "https://" + uri
+            # Reject garbage URIs that are actually just label text (e.g. "https://Live%20Demo")
+            lowered_uri = uri.lower()
+            if lowered_uri.startswith(("http://", "https://")):
+                # decode a bit for matching
+                decoded_hint = lowered_uri.replace("%20", " ")
+                if "live demo" in decoded_hint or "live%20demo" in lowered_uri:
+                    continue
+                # require a plausible host (a dot in the hostname or known good domains)
+                # this filters out things like "https://live"
+                host_part = lowered_uri.split("://", 1)[1].split("/", 1)[0]
+                if "." not in host_part and "localhost" not in host_part:
+                    continue
+            rect = annot.get("/Rect")
+            if not rect or len(rect) < 4:
+                continue
+
+            try:
+                x0, y0, x1, y1 = [float(v) for v in rect[:4]]
+            except Exception:
+                continue
+
+            # pypdf uses PDF coords (origin bottom-left). pdfplumber uses origin top-left.
+            # Convert: plumber_top = page_height - y1, plumber_bottom = page_height - y0
+            try:
+                page_height = float(reader.pages[page_idx].mediabox.height)
+            except Exception:
+                page_height = None
+            if not page_height:
+                continue
+            top = page_height - y1
+            bottom = page_height - y0
+
+            # Find nearest text line above/overlapping this link rect.
+            candidates = line_boxes.get(page_idx, [])
+            best_ln = None
+            best_dist = 1e9
+            for ln in candidates:
+                # Prefer lines close in vertical axis
+                dist = abs(float(ln["top"]) - top)
+                if dist < best_dist:
+                    best_dist = dist
+                    best_ln = ln
+
+            nearest_text = (best_ln["text"] if best_ln else "") or ""
+            matched_project = best_match(nearest_text)
+            if not matched_project:
+                # fallback: scan last ~15 lines above the rect for a project name mention
+                nearby = sorted(candidates, key=lambda l: l["top"])
+                # take lines within a window above the rect
+                window = [l for l in nearby if l["top"] <= top + 25]
+                window = window[-15:]
+                for ln in reversed(window):
+                    matched_project = best_match(ln["text"])
+                    if matched_project:
+                        break
+
+            if not matched_project:
+                continue
+
+            result.setdefault(matched_project, [])
+            # Label should primarily follow the actual URL domain (most reliable),
+            # not the nearby text which can contain "Live Demo" even when the link is GitHub.
+            uri_lower = uri.lower()
+            label = "Link"
+            if "github.com" in uri_lower:
+                label = "GitHub"
+            else:
+                lt = nearest_text.lower()
+                if "live" in lt or "demo" in lt:
+                    label = "Live Demo"
+                elif "github" in lt:
+                    label = "GitHub"
+            pair = (label, uri)
+            if pair not in result[matched_project]:
+                result[matched_project].append(pair)
+
+    return result
+
+
+def save_uploaded_pdf(file: UploadFile) -> str:
+    filename = file.filename or ""
+    if not filename.lower().endswith(".pdf"):
+        raise HTTPException(status_code=400, detail="Only PDF files are accepted")
+
+    file_ext = filename.rsplit(".", 1)[-1].lower()
+    file_name = token_hex(10)
+    return os.path.join(uploads_dir, f"{file_name}.{file_ext}")
+
+
+def normalize_list_of_strings(items):
+    return [str(item).strip() for item in (items or []) if str(item).strip()]
+
+
+def normalize_url(value: str) -> str:
+    value = str(value or "").strip()
+    if not value:
+        return ""
+    if value.startswith(("http://", "https://", "mailto:", "tel:")):
+        return value
+    if "@" in value and " " not in value and "/" not in value:
+        return f"mailto:{value}"
+    if value.replace("+", "").replace("-", "").replace(" ", "").isdigit():
+        return f"tel:{value}"
+    return f"https://{value}"
+
+
+def display_link(value: str) -> str:
+    value = str(value or "").strip()
+    if not value:
+        return ""
+    for prefix in ("https://", "http://", "mailto:", "tel:"):
+        if value.startswith(prefix):
+            value = value[len(prefix):]
+            break
+    return value.rstrip("/")
+
+
+def group_skills(skills: list[str]) -> list[str]:
+    grouped = {
+        "Languages": [],
+        "Developer Tools": [],
+        "Technologies/Frameworks": [],
+    }
+    uncategorized = []
+
+    language_terms = {
+        "python", "c", "c++", "java", "javascript", "typescript", "sql",
+        "html", "html5", "css", "css3", "r", "go", "rust", "php"
+    }
+    tool_terms = {
+        "git", "github", "vscode", "visual studio code", "postman", "docker",
+        "aws", "power bi", "powerbi", "excel", "mlflow", "dvc", "linux"
+    }
+
+    def add_unique(bucket: list[str], value: str):
+        if value and value not in bucket:
+            bucket.append(value)
+
+    for skill in skills:
+        text = str(skill or "").strip()
+        if not text:
+            continue
+
+        if ":" in text:
+            label, value = text.split(":", 1)
+            label = label.strip().lower()
+            value = value.strip()
+            if label in {"languages", "language", "programming"}:
+                for item in [part.strip() for part in value.split(",") if part.strip()]:
+                    add_unique(grouped["Languages"], item)
+                continue
+            if label in {"developer tools", "tools", "tooling"}:
+                for item in [part.strip() for part in value.split(",") if part.strip()]:
+                    add_unique(grouped["Developer Tools"], item)
+                continue
+            if label in {"technologies/frameworks", "technologies", "frameworks", "frameworks & libraries", "libraries"}:
+                for item in [part.strip() for part in value.split(",") if part.strip()]:
+                    add_unique(grouped["Technologies/Frameworks"], item)
+                continue
+            uncategorized.append(text)
+            continue
+
+        lowered = text.lower()
+        normalized = lowered.replace("react js", "react").replace("restful apis", "rest apis")
+        if normalized in language_terms:
+            add_unique(grouped["Languages"], text)
+        elif normalized in tool_terms:
+            add_unique(grouped["Developer Tools"], text)
+        else:
+            add_unique(grouped["Technologies/Frameworks"], text)
+
+    result = []
+    for label in ("Languages", "Developer Tools", "Technologies/Frameworks"):
+        if grouped[label]:
+            result.append(f"{label}: {', '.join(grouped[label])}")
+    result.extend(uncategorized)
+    return result
+
+
+def collect_project_links(project: dict) -> list[dict]:
+    candidates = [
+        ("GitHub", project.get("github_link") or project.get("github") or project.get("repo") or project.get("repository")),
+        ("Live", project.get("url") or project.get("live_link") or project.get("live") or project.get("website") or project.get("project_link")),
+        ("Demo", project.get("demo") or project.get("demo_link")),
+        ("Link", project.get("link")),
+    ]
+
+    links = []
+    seen = set()
+    for label, raw_value in candidates:
+        value = str(raw_value or "").strip()
+        if not value:
+            continue
+        href = normalize_url(value)
+        key = (label, href)
+        if key in seen:
+            continue
+        seen.add(key)
+        links.append({
+            "label": label,
+            "href": href,
+            "display": display_link(value),
+        })
+
+    extra_links = project.get("links", [])
+    if isinstance(extra_links, list):
+        for item in extra_links:
+            if isinstance(item, dict):
+                label = str(item.get("label", "Link")).strip() or "Link"
+                value = str(item.get("url") or item.get("href") or item.get("link") or "").strip()
+                if not value:
+                    continue
+                href = normalize_url(value)
+                key = (label, href)
+                if key in seen:
+                    continue
+                seen.add(key)
+                links.append({
+                    "label": label,
+                    "href": href,
+                    "display": display_link(value),
+                })
+
+    return links
+
+
+def compute_layout_scale(experience: list, projects: list, education: list, skills: list, extracurriculars: list, achievements: list, certifications: list, publications: list) -> str:
+    bullet_count = sum(len(item.get("bullets", [])) for item in experience)
+    bullet_count += sum(len(item.get("bullets", [])) for item in projects)
+    bullet_count += sum(len(item.get("bullets", [])) for item in extracurriculars)
+
+    section_items = (
+        len(experience) * 5
+        + len(projects) * 5
+        + len(education) * 3
+        + len(skills) * 2
+        + len(extracurriculars) * 4
+        + len(achievements) * 2
+        + len(certifications) * 2
+        + len(publications) * 2
+    )
+    density_score = bullet_count + section_items
+
+    if density_score <= 28:
+        return "scale-xl"
+    if density_score <= 40:
+        return "scale-lg"
+    if density_score >= 78:
+        return "scale-xs"
+    if density_score >= 64:
+        return "scale-sm"
+    return "scale-md"
+
+
+def build_resume_plain_text(parsed: dict) -> str:
+    sections = []
+
+    name = str(parsed.get("name", "")).strip()
+    if name:
+        sections.append(name)
+
+    contact = parsed.get("contact", {}) or parsed.get("contact_information", {}) or {}
+    contact_lines = []
+    for key in ("email", "phone", "address", "linkedin", "github", "portfolio", "kaggle", "leetcode", "codeforces", "codechef", "google_scholar"):
+        value = str(contact.get(key, "")).strip()
+        if value:
+            contact_lines.append(value)
+    if contact_lines:
+        sections.append("Contact\n" + "\n".join(contact_lines))
+
+    summary = str(parsed.get("summary", "")).strip()
+    if summary:
+        sections.append("Summary\n" + summary)
+
+    experience_lines = []
+    for exp in parsed.get("experience", []) or []:
+        if not isinstance(exp, dict):
+            continue
+        line_parts = [
+            str(exp.get("company", "")).strip(),
+            str(exp.get("title", "")).strip(),
+            str(exp.get("dates", "")).strip(),
+            str(exp.get("location", "")).strip(),
+        ]
+        headline = " | ".join(part for part in line_parts if part)
+        bullets = [f"- {str(bullet).strip()}" for bullet in exp.get("bullets", []) or [] if str(bullet).strip()]
+        entry = "\n".join(part for part in [headline, *bullets] if part)
+        if entry:
+            experience_lines.append(entry)
+    if experience_lines:
+        sections.append("Experience\n" + "\n".join(experience_lines))
+
+    project_lines = []
+    for project in parsed.get("projects", []) or []:
+        if not isinstance(project, dict):
+            continue
+        line_parts = [
+            str(project.get("name", "")).strip(),
+            str(project.get("subtitle", "")).strip(),
+            str(project.get("dates", "")).strip(),
+        ]
+        headline = " | ".join(part for part in line_parts if part)
+        bullets = [f"- {str(bullet).strip()}" for bullet in project.get("bullets", []) or [] if str(bullet).strip()]
+        entry = "\n".join(part for part in [headline, *bullets] if part)
+        if entry:
+            project_lines.append(entry)
+    if project_lines:
+        sections.append("Projects\n" + "\n".join(project_lines))
+
+    skills = parsed.get("skills", []) or []
+    if skills:
+        sections.append("Skills\n" + "\n".join(str(skill).strip() for skill in skills if str(skill).strip()))
+
+    education_lines = []
+    for edu in parsed.get("education", []) or []:
+        if not isinstance(edu, dict):
+            continue
+        line_parts = [
+            str(edu.get("school", "")).strip(),
+            str(edu.get("degree", "")).strip(),
+            str(edu.get("year", "")).strip(),
+            str(edu.get("score", "")).strip(),
+        ]
+        line = " | ".join(part for part in line_parts if part)
+        if line:
+            education_lines.append(line)
+    if education_lines:
+        sections.append("Education\n" + "\n".join(education_lines))
+
+    for section_name, key in (
+        ("Achievements", "achievements"),
+        ("Certifications", "certifications"),
+        ("Leadership / Extracurricular", "extracurriculars"),
+        ("Publications", "publications"),
+    ):
+        lines = []
+        for item in parsed.get(key, []) or []:
+            if isinstance(item, dict):
+                values = [str(value).strip() for value in item.values() if str(value).strip() and not isinstance(value, list)]
+                bullets = item.get("bullets", []) if isinstance(item.get("bullets", []), list) else []
+                values.extend(f"- {str(bullet).strip()}" for bullet in bullets if str(bullet).strip())
+                line = "\n".join(values)
+            else:
+                line = str(item).strip()
+            if line:
+                lines.append(line)
+        if lines:
+            sections.append(section_name + "\n" + "\n".join(lines))
+
+    return "\n\n".join(section for section in sections if section).strip()
+
+
+def parse_ai_json_response(response_string: str) -> dict:
+    try:
+        parsed = json.loads(response_string)
+    except Exception as e:
+        try:
+            import re
+            match = re.search(r"\{[\s\S]*\}\s*$", response_string)
+            if match:
+                parsed = json.loads(match.group(0))
+            else:
+                raise
+        except Exception:
+            raise HTTPException(status_code=500, detail=f"Failed to parse AI JSON response: {e}")
+
+    if not isinstance(parsed, dict):
+        raise HTTPException(status_code=500, detail="AI response JSON is not an object")
+    return parsed
+
+
+def build_resume_context(parsed: dict) -> dict:
+    contact = parsed.get("contact", {}) or parsed.get("contact_information", {}) or {}
+    test_scores = parsed.get("test_scores", {}) or {}
+    email = str(contact.get("email", "")).strip()
+    phone = str(contact.get("phone", "")).strip()
+    address = str(contact.get("address", "")).strip()
+    linkedin = str(contact.get("linkedin", "")).strip()
+    github = str(contact.get("github", "")).strip()
+    portfolio = str(contact.get("portfolio", "")).strip()
+    kaggle = str(contact.get("kaggle", "")).strip()
+    leetcode = str(contact.get("leetcode", "")).strip()
+    codeforces = str(contact.get("codeforces", "")).strip()
+    codechef = str(contact.get("codechef", "")).strip()
+    google_scholar = str(contact.get("google_scholar", "")).strip()
+
+    experience = []
+    for job in parsed.get("experience", []) or []:
+        if not isinstance(job, dict):
+            continue
+        experience.append({
+            "title": str(job.get("title", "")).strip(),
+            "company": str(job.get("company", "")).strip(),
+            "dates": str(job.get("dates", "")).strip(),
+            "location": str(job.get("location", "")).strip(),
+            "bullets": normalize_list_of_strings(job.get("bullets", [])),
+        })
+
+    projects = []
+    for project in parsed.get("projects", []) or []:
+        if not isinstance(project, dict):
+            continue
+        links = collect_project_links(project)
+        # Prefer showing a non-GitHub link as the primary inline link (e.g., Live/Demo).
+        primary_link = None
+        for candidate in links:
+            href = str(candidate.get("href", "")).lower()
+            label = str(candidate.get("label", "")).lower()
+            if "github.com" in href or "github" in label:
+                continue
+            primary_link = candidate
+            break
+        if not primary_link and links:
+            primary_link = links[0]
+
+        # Some model outputs only populate `links` but leave `github_link`/`url` blank.
+        # Backfill those fields so older templates still show icons.
+        github_link = str(project.get("github_link") or project.get("github", "")).strip()
+        url = str(project.get("url") or project.get("website") or project.get("project_link") or "").strip()
+        if (not github_link or not url) and links:
+            for link in links:
+                label = str(link.get("label", "")).lower()
+                href = str(link.get("href", "")).strip()
+                if not href:
+                    continue
+                if not github_link and "github" in label:
+                    github_link = href
+                # Label might not contain "github" (recovered labels can be whole lines),
+                # so also detect github from the href itself.
+                if not github_link and "github.com" in href:
+                    github_link = href
+                # Labels can be like "Live Demo" (from the PDF) so match by substring.
+                if (
+                    not url
+                    and (
+                        label in {"link", "project link", "live", "demo"}
+                        or "live" in label
+                        or "demo" in label
+                    )
+                ):
+                    url = href
+                # If we still don't know the type, treat non-GitHub href as the project's URL.
+                if not url and href and "github.com" not in href:
+                    url = href
+
+        projects.append({
+            "name": str(project.get("name", "")).strip(),
+            "github_link": github_link,
+            "url": url,
+            "dates": str(project.get("dates") or project.get("date", "")).strip(),
+            "subtitle": str(project.get("subtitle") or project.get("stack") or project.get("technologies", "")).strip(),
+            "links": links,
+            "primary_link": primary_link,
+            "bullets": normalize_list_of_strings(project.get("bullets") or project.get("achievements") or project.get("details") or []),
+        })
+
+    education = []
+    education_items = parsed.get("education", []) or []
+    for edu in education_items:
+        if not isinstance(edu, dict):
+            continue
+        degree = str(edu.get("degree", "")).strip()
+        school = str(edu.get("school") or edu.get("institution") or edu.get("university") or "").strip()
+        year = str(edu.get("year") or edu.get("years") or edu.get("dates") or "").strip()
+        score = str(edu.get("score") or edu.get("cgpa") or edu.get("sgpa") or edu.get("gpa") or edu.get("percentage") or edu.get("marks") or "").strip()
+        school_text = f"{degree} {school}".lower()
+        if not score:
+            if "higher secondary" in school_text or "class 12" in school_text or "12" in school_text:
+                class_12 = test_scores.get("class_12_score")
+                if class_12 not in (None, ""):
+                    score = f"12th Marks - {class_12}%"
+            elif "secondary" in school_text or "class 10" in school_text or "10" in school_text:
+                class_10 = test_scores.get("class_10_score")
+                if class_10 not in (None, ""):
+                    score = f"10th Marks - {class_10}%"
+        education.append({
+            "degree": degree,
+            "school": school,
+            "year": year,
+            "score": score,
+            "links": str(edu.get("links", "")).strip(),
+        })
+
+    certifications = []
+    for cert in parsed.get("certifications", []) or []:
+        if not isinstance(cert, dict):
+            continue
+        certifications.append({
+            "name": str(cert.get("name", "")).strip(),
+            "issuer": str(cert.get("issuer", "")).strip(),
+            "year": str(cert.get("year", "")).strip(),
+            "url": str(cert.get("url", "")).strip(),
+        })
+
+    extracurriculars = []
+    for item in parsed.get("extracurriculars", []) or []:
+        if not isinstance(item, dict):
+            continue
+        extracurriculars.append({
+            "role": str(item.get("role", "")).strip(),
+            "organization": str(item.get("organization", "")).strip(),
+            "dates": str(item.get("dates", "")).strip(),
+            "bullets": normalize_list_of_strings(item.get("bullets", [])),
+            "url": str(item.get("url", "")).strip(),
+        })
+
+    publications = []
+    for item in parsed.get("publications", []) or []:
+        if not isinstance(item, dict):
+            continue
+        publications.append({
+            "title": str(item.get("title", "")).strip(),
+            "publisher": str(item.get("publisher", "")).strip(),
+            "year": str(item.get("year", "")).strip(),
+            "url": str(item.get("url", "")).strip(),
+        })
+
+    raw_skills = []
+    for skill in parsed.get("skills", []) or []:
+        if isinstance(skill, str) and skill.strip():
+            raw_skills.append(skill.strip())
+        elif isinstance(skill, dict):
+            for key, value in skill.items():
+                key_text = str(key).strip()
+                value_text = str(value).strip()
+                raw_skills.append(f"{key_text}: {value_text}" if value_text else key_text)
+    skills = group_skills(raw_skills)
+    layout_scale = compute_layout_scale(
+        experience,
+        projects,
+        education,
+        skills,
+        extracurriculars,
+        normalize_list_of_strings(parsed.get("achievements", [])),
+        certifications,
+        publications,
+    )
+
+    achievements = normalize_list_of_strings(parsed.get("achievements", []))
+
+    return {
+        "name": str(parsed.get("name", "")).strip(),
+        "layout_scale": layout_scale,
+        "contact": {
+            "email": email,
+            "email_href": normalize_url(email),
+            "phone": phone,
+            "phone_href": normalize_url(phone),
+            "address": address,
+            "linkedin": linkedin,
+            "linkedin_href": normalize_url(linkedin),
+            "linkedin_display": display_link(linkedin),
+            "github": github,
+            "github_href": normalize_url(github),
+            "github_display": display_link(github),
+            "portfolio": portfolio,
+            "portfolio_href": normalize_url(portfolio),
+            "portfolio_display": display_link(portfolio),
+            "kaggle": kaggle,
+            "kaggle_href": normalize_url(kaggle),
+            "kaggle_display": display_link(kaggle),
+            "leetcode": leetcode,
+            "leetcode_href": normalize_url(leetcode),
+            "leetcode_display": display_link(leetcode),
+            "codeforces": codeforces,
+            "codeforces_href": normalize_url(codeforces),
+            "codeforces_display": display_link(codeforces),
+            "codechef": codechef,
+            "codechef_href": normalize_url(codechef),
+            "codechef_display": display_link(codechef),
+            "google_scholar": google_scholar,
+            "google_scholar_href": normalize_url(google_scholar),
+            "google_scholar_display": display_link(google_scholar),
+        },
+        "summary": str(parsed.get("summary", "")).strip(),
+        "experience": experience,
+        "projects": projects,
+        "skills": skills,
+        "education": education,
+        "certifications": certifications,
+        "achievements": achievements,
+        "extracurriculars": extracurriculars,
+        "publications": publications,
+    }
+
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for deployment verification"""
+    return {
+        "status": "healthy",
+        "templates_dir": templates_dir,
+        "static_dir": static_dir,
+        "uploads_dir": uploads_dir,
+        "resumes_dir": resumes_dir,
+        "templates_exist": os.path.exists(templates_dir),
+        "static_exist": os.path.exists(static_dir),
+        "templates_files": os.listdir(templates_dir) if os.path.exists(templates_dir) else [],
+        "static_files": os.listdir(static_dir) if os.path.exists(static_dir) else []
+    }
+
+@app.get("/", response_class=HTMLResponse)
+async def landing_page(request: Request):
+    """Landing page inspired by Tsenta marketing site."""
+    return templates.TemplateResponse(request, "index.html")
+
+
+@app.get("/solutions", response_class=HTMLResponse)
+async def solutions_page(request: Request):
+    """Solutions page where users upload resume & JD."""
+    return templates.TemplateResponse(request, "solutions.html")
+
+
+@app.get("/login", response_class=HTMLResponse)
+async def login_page(request: Request):
+    """Simple login page (frontend only for now)."""
+    return templates.TemplateResponse(request, "login.html")
+
+
+@app.get("/about", response_class=HTMLResponse)
+async def about_page(request: Request):
+    """About page for the marketing frontend."""
+    return templates.TemplateResponse(request, "aboutus.html")
+
+
+@app.post("/get-optimised-resume")
+async def upload_resume(request: Request, jd_string: str, file: UploadFile = File(...), template_id: int = 1, style_id: int = 1):
+    """Upload a resume PDF file and JD with selected template and style"""
+    file_path = None
+    try:
+        file_path = save_uploaded_pdf(file)
+        with open(file_path, "wb") as f:
+            content = await file.read()
+            f.write(content)
+
+        resume_string = extract_pdf_text(file_path)
+        # Try to recover URLs that might be lost behind PDF hyperlink icons.
+        normalized_resume_string = normalize_links(resume_string)
+        # IMPORTANT: Only consider URLs from the Projects section, otherwise contact links
+        # (gmail/leetcode/linkedin) get incorrectly attached to projects.
+        extracted_links = extract_project_links(normalized_resume_string)
+        mapped_links = map_project_demo_links(normalized_resume_string)
+        project_link_map = extract_project_link_map(normalized_resume_string)
+
+        prompt = create_prompt(resume_string, jd_string)
+
+        try:
+            response_string = get_resume_response(prompt)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"AI generation error: {e}")
+
+        # The AI should return a JSON string following the schema in `functions.create_prompt`.
+        parsed = parse_ai_json_response(response_string)
+        # Extract *actual clickable* PDF hyperlinks and map them to project names.
+        pdf_project_link_map = extract_project_links_from_pdf(
+            file_path,
+            [p.get("name") for p in (parsed.get("projects") or []) if isinstance(p, dict)],
+        )
+        # Prefer PDF annotation mapping; fallback to text-based project mapping if needed.
+        effective_map = pdf_project_link_map or project_link_map
+        parsed = inject_links(parsed, effective_map, mapped_links)
+
+        # Basic validation: ensure some expected keys are present
+        expected_keys = ["name", "contact", "summary", "experience", "skills"]
+        ok = any(k in parsed for k in expected_keys)
+        if not ok:
+            raise HTTPException(status_code=500, detail="AI response JSON missing expected resume fields")
+
+        try:
+            original_ats = parse_ai_json_response(ats_scoring(resume_string, jd_string))
+            optimized_resume_text = build_resume_plain_text(parsed)
+            optimized_ats = parse_ai_json_response(ats_scoring(optimized_resume_text, jd_string))
+        except HTTPException:
+            raise
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to score optimized resume: {e}")
+
+        use_default_template = template_id == 0
+        template_content = None
+
+        # Load the selected template
+        if not use_default_template:
+            template_filename = f"template{template_id}.html"
+            template_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "html", template_filename)
+
+            try:
+                with open(template_path, 'r', encoding='utf-8') as f:
+                    template_content = f.read()
+            except FileNotFoundError:
+                # Fall back to default resume_template if selected not found
+                try:
+                    template = templates.env.get_template('resume_template.html')
+                    use_default_template = True
+                except Exception:
+                    raise HTTPException(status_code=500, detail=f"Template {template_filename} not found")
+        else:
+            template = templates.env.get_template('resume_template.html')
+        
+        # Load the selected CSS style
+        style_filename = f"style{style_id}.css"
+        style_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "css", style_filename)
+        
+        css_content = ""
+        try:
+            with open(style_path, 'r', encoding='utf-8') as f:
+                css_content = f.read()
+        except FileNotFoundError:
+            # Fall back to default style.css if selected not found
+            default_style_path = os.path.join(BASE_DIR, 'resumes', 'style.css')
+            try:
+                with open(default_style_path, 'r', encoding='utf-8') as f:
+                    css_content = f.read()
+            except FileNotFoundError:
+                pass
+
+        # Prepare context
+        context = build_resume_context(parsed)
+
+        # Render template
+        if not use_default_template and template_content:
+            # Use loaded template file
+            from jinja2 import Template as Jinja2Template
+            jinja_template = Jinja2Template(template_content)
+            html_content = jinja_template.render(**context)
+            # Replace stylesheet placeholder with inline CSS
+            html_content = html_content.replace('href="STYLESHEET_PLACEHOLDER"', '')
+            # Add CSS inline before closing head
+            html_content = html_content.replace('</head>', f'<style>{css_content}</style></head>')
+        else:
+            # Use default resume_template.html
+            template = templates.env.get_template('resume_template.html')
+            html_content = template.render(**context)
+
+        output_pdf_file = os.path.join(resumes_dir, "optimized_resume.pdf")
+        try:
+            from weasyprint import HTML
+
+            # If using custom template, CSS is already inlined
+            if not use_default_template and template_content:
+                HTML(string=html_content).write_pdf(output_pdf_file)
+            else:
+                # If using default, use stylesheet
+                css_path = os.path.join(resumes_dir, 'style.css')
+                HTML(string=html_content).write_pdf(output_pdf_file, stylesheets=[css_path])
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+
+        pdf_path = output_pdf_file
+        if not os.path.exists(pdf_path):
+            raise HTTPException(status_code=404, detail="PDF file not found after generation")
+
+        wants_meta = request.headers.get("X-Return-Meta", "").lower() == "true"
+        if wants_meta:
+            return JSONResponse({
+                "success": True,
+                "download_url": "/download-optimized-resume",
+                "original_ats": original_ats,
+                "optimized_ats": optimized_ats,
+            })
+
+        return FileResponse(
+            pdf_path,
+            media_type="application/pdf",
+            filename="optimized_resume.pdf"
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error uploading file: {str(e)}")
+    finally:
+        if file_path and os.path.exists(file_path):
+            os.remove(file_path)
+
+@app.post("/get-ats-score")
+async def get_score(jd_string: str, file: UploadFile = File(...)):
+    """Upload a resume PDF file and JD"""
+    file_path = None
+    try:
+        file_path = save_uploaded_pdf(file)
+        with open(file_path, "wb") as f:
+            content = await file.read()
+            f.write(content)
+        resume_string = extract_pdf_text(file_path)
+        ats_score = ats_scoring(resume_string, jd_string)
+        return parse_ai_json_response(ats_score)
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error uploading file: {str(e)}")
+    finally:
+        if file_path and os.path.exists(file_path):
+            os.remove(file_path)
+
+
+@app.get("/download-optimized-resume")
+async def download_optimized_resume():
+    pdf_path = os.path.join(resumes_dir, "optimized_resume.pdf")
+    if not os.path.exists(pdf_path):
+        raise HTTPException(status_code=404, detail="Optimized resume PDF not found")
+    return FileResponse(
+        pdf_path,
+        media_type="application/pdf",
+        filename="optimized_resume.pdf"
+    )
+# @app.post("/optimize-resume")
+# async def optimize_resume(
+#     resume_name: str = Form(..., description="Name of the uploaded resume file"),
+#     job_description: str = Form(..., description="Job description text")
+# ):
+#     """
+#     Process an uploaded resume with a job description to create an optimized version.
+    
+#     Args:
+#         file_name: Name of the uploaded resume file in the uploads folder
+#         job_description: Text of the job description to optimize for
+    
+#     Returns:
+#         dict: Contains the optimized resume in markdown format
+#     """
+#     try:
+#         # Construct the file path
+#         resume_path=f"uploads/{resume_name}"
+
+        
+        
+#         # Check if file exists
+#         if not os.path.exists(resume_path):
+#             raise HTTPException(status_code=404, detail=f"Resume file '{resume_name}' not found in uploads folder")
+        
+#         # Process the resume
+#         new_resume = process_resume(resume_name, job_description)
+        
+#         # if new_resume.startswith("Failed"):
+#         #     raise HTTPException(status_code=500, detail=new_resume)
+        
+#         output_pdf_file = "resumes/optimized_resume.pdf"
+#         html_content = markdown(new_resume)
+    
+
+#         # Convert HTML to PDF and save (use existing styles filename)
+#         HTML(string=html_content).write_pdf(output_pdf_file, stylesheets=['resumes/style.css'])
+#         pdf_path = "resumes/optimized_resume.pdf"
+#         if not os.path.exists(pdf_path):
+#             raise HTTPException(status_code=404, detail="PDF file not found")
+        
+#         return FileResponse(
+#             pdf_path,
+#             media_type="application/pdf",
+#             filename="optimized_resume.pdf"
+#         )
+    
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=f"Error exporting resume: {str(e)}")
+
+
+       
+
+
+# @app.post("/export-resume")
+# async def export_resume_endpoint(
+#     resume_content: str = Form(..., description="Markdown content of the resume")
+# ):
+#     """
+#     Export the optimized resume to PDF format.
+    
+#     Args:
+#         resume_content: Markdown formatted resume content
+    
+#     Returns:
+#         FileResponse: PDF file download
+#     """
+#     try:
+#         # Export the resume to PDF
+#         result = export_resume(resume_content)
+        
+        
+#         # Return the PDF file
+#         pdf_path = "resumes/resume_new.pdf"
+#         if not os.path.exists(pdf_path):
+#             raise HTTPException(status_code=404, detail="PDF file not found")
+        
+#         return FileResponse(
+#             pdf_path,
+#             media_type="application/pdf",
+#             filename="optimized_resume.pdf"
+#         )
+    
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=f"Error exporting resume: {str(e)}")
+
+
+# @app.get("/")
+# async def root():
+#     """Health check endpoint"""
+#     return {
+#         "message": "Resume Optimizer API is running",
+#         "endpoints": {
+#             "POST /upload-resume": "Upload resume PDF file",
+#             "POST /optimize-resume": "Process uploaded resume with job description",
+#             "POST /export-resume": "Export optimized resume to PDF"
+#         }
+#     }
+
+
+# @app.get("/list-resumes")
+# async def list_resumes():
+#     """List all uploaded resume files"""
+#     try:
+#         files = [f for f in os.listdir("uploads") if f.endswith('.pdf')]
+#         return {
+#             "success": True,
+#             "files": files,
+#             "count": len(files)
+#         }
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=f"Error listing files: {str(e)}")
+
+
+if __name__ == "__main__":
+    # For production, use environment variable PORT (set by hosting platforms)
+    port = int(os.environ.get("PORT", 8000))
+    # Keep local startup single-process by default on Windows.
+    reload = os.environ.get("ENABLE_RELOAD", "false").lower() == "true"
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=port,
+        reload=reload,
+        reload_excludes=[".venv/*", "__pycache__/*", "uploads/*", "resumes/*"],
+    )

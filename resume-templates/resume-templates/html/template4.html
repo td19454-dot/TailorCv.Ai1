@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} - Resume</title>
+    <link rel="stylesheet" href="STYLESHEET_PLACEHOLDER">
+</head>
+<body>
+    <div class="resume-container {{ layout_scale }}">
+        <header class="resume-header">
+            <h1>{{ name }}</h1>
+
+            <div class="contact-line">
+                {% if contact.phone %}<span class="contact-item"><span class="contact-icon">&#9990;</span><a href="{{ contact.phone_href }}">{{ contact.phone }}</a></span>{% endif %}
+                {% if contact.email %}<span class="contact-item"><span class="contact-icon">&#9993;</span><a href="{{ contact.email_href }}">{{ contact.email }}</a></span>{% endif %}
+                {% if contact.linkedin %}<span class="contact-item"><span class="contact-icon">in</span><a href="{{ contact.linkedin_href }}">{{ contact.linkedin_display or contact.linkedin }}</a></span>{% endif %}
+                {% if contact.github %}<span class="contact-item"><span class="contact-icon">gh</span><a href="{{ contact.github_href }}">{{ contact.github_display or contact.github }}</a></span>{% endif %}
+            </div>
+
+            {% if contact.leetcode or contact.portfolio or contact.kaggle or contact.address %}
+            <div class="contact-line secondary-contact">
+                {% if contact.leetcode %}<span class="contact-item"><span class="contact-icon code-icon">&lt;/&gt;</span><a href="{{ contact.leetcode_href }}">{{ contact.leetcode_display or contact.leetcode }}</a></span>{% endif %}
+                {% if contact.portfolio %}<span class="contact-item"><a href="{{ contact.portfolio_href }}">{{ contact.portfolio_display or contact.portfolio }}</a></span>{% endif %}
+                {% if contact.kaggle %}<span class="contact-item"><a href="{{ contact.kaggle_href }}">{{ contact.kaggle_display or contact.kaggle }}</a></span>{% endif %}
+                {% if contact.address %}<span class="contact-item">{{ contact.address }}</span>{% endif %}
+            </div>
+            {% endif %}
+        </header>
+
+        {% if education %}
+        <section class="resume-section">
+            <h2>Education</h2>
+            {% for edu in education %}
+            <div class="entry education-entry">
+                <div class="entry-top">
+                    <div class="entry-left">
+                        <div class="primary education-title">{{ edu.school }}</div>
+                        {% if edu.degree %}<div class="secondary italic education-meta">{{ edu.degree }}</div>{% endif %}
+                    </div>
+                    <div class="entry-right">
+                        {% if edu.year %}<div class="date">{{ edu.year }}</div>{% endif %}
+                        {% if edu.score %}<div class="secondary italic education-score">{{ edu.score }}</div>{% elif edu.links %}<div class="secondary italic education-score">{{ edu.links }}</div>{% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        {% if experience %}
+        <section class="resume-section">
+            <h2>Experience</h2>
+            {% for exp in experience %}
+            <div class="entry experience-entry">
+                <div class="entry-top">
+                    <div class="entry-left">
+                        {% if exp.company %}
+                        <div class="primary experience-title">{{ exp.company }}</div>
+                        {% endif %}
+                        {% if exp.title %}
+                        <div class="{% if exp.company %}secondary italic experience-meta{% else %}primary experience-title{% endif %}">{{ exp.title }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="entry-right">
+                        {% if exp.dates %}<div class="date">{{ exp.dates }}</div>{% endif %}
+                        {% if exp.location %}<div class="secondary italic experience-location">{{ exp.location }}</div>{% endif %}
+                    </div>
+                </div>
+                {% if exp.bullets %}
+                <ul class="bullet-list">
+                    {% for bullet in exp.bullets %}
+                    <li>{{ bullet }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        {% if projects %}
+        <section class="resume-section">
+            <h2>Projects</h2>
+            {% for project in projects %}
+            <div class="entry project-entry">
+                <div class="entry-top">
+                    <div class="entry-left">
+                        <div class="primary project-title-row">
+                            <span class="project-title">{{ project.name }}</span>
+                            {% if project.subtitle %}<span class="inline-link project-meta">| {{ project.subtitle }}</span>{% endif %}
+                            {% if project.links %}
+                            <span class="inline-link project-links">
+                                {% for link in project.links %}
+                                    <a href="{{ link.href }}" title="{{ link.display or link.href }}">{{ link.label }}</a><span class="project-link-mark">↗</span>{% if not loop.last %} | {% endif %}
+                                {% endfor %}
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="entry-right">
+                        {% if project.dates %}<div class="date">{{ project.dates }}</div>{% endif %}
+                    </div>
+                </div>
+                {% if project.bullets %}
+                <ul class="bullet-list">
+                    {% for bullet in project.bullets %}
+                    <li>{{ bullet }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        {% if skills %}
+        <section class="resume-section skills-section">
+            <h2>Technical Skills</h2>
+            <div class="skills-block">
+                {% for skill in skills %}
+                    {% if skill %}
+                    <div class="skill-row">
+                        {% if ':' in skill %}
+                            {% set skill_parts = skill.split(':', 1) %}
+                            <span class="skill-label">{{ skill_parts[0] }}:</span>
+                            <span class="skill-value">{{ skill_parts[1].strip() }}</span>
+                        {% else %}
+                            <span class="skill-value">{{ skill }}</span>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        {% if extracurriculars %}
+        <section class="resume-section">
+            <h2>Leadership / Extracurricular</h2>
+            {% for activity in extracurriculars %}
+            <div class="entry">
+                <div class="entry-top">
+                    <div class="entry-left">
+                        <div class="primary extracurricular-title">{{ activity.role }}{% if activity.organization %} at {{ activity.organization }}{% endif %}</div>
+                    </div>
+                    <div class="entry-right">
+                        {% if activity.dates %}<div class="date">{{ activity.dates }}</div>{% endif %}
+                    </div>
+                </div>
+                {% if activity.bullets %}
+                <ul class="bullet-list">
+                    {% for bullet in activity.bullets %}
+                    <li>{{ bullet }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        {% if achievements %}
+        <section class="resume-section">
+            <h2>Achievements</h2>
+            <ul class="bullet-list compact">
+                {% for achievement in achievements %}
+                <li>{{ achievement }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+        {% if certifications %}
+        <section class="resume-section">
+            <h2>Certifications</h2>
+            <ul class="bullet-list compact">
+                {% for cert in certifications %}
+                <li>{{ cert.name }}{% if cert.issuer %}, {{ cert.issuer }}{% endif %}{% if cert.year %}, {{ cert.year }}{% endif %}{% if cert.url %} | {{ cert.url }}{% endif %}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+        {% if publications %}
+        <section class="resume-section">
+            <h2>Publications</h2>
+            <ul class="bullet-list compact">
+                {% for publication in publications %}
+                <li>{{ publication.title }}{% if publication.publisher %}, {{ publication.publisher }}{% endif %}{% if publication.year %}, {{ publication.year }}{% endif %}{% if publication.url %} | {{ publication.url }}{% endif %}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    </div>
+</body>
+</html>

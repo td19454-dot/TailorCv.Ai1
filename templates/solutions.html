@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Optimizer - Solutions</title>
+    <link rel="stylesheet" href="/static/style2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="left">
+            <div class="logo">
+                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+            </div>
+            <nav class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/solutions" class="nav-link active">Solutions</a>
+                <a href="/about" class="nav-link">About Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="solutions-section">
+        <div class="container">
+            <div class="solutions-header">
+                <h1 class="solutions-title">Optimize Your Resume</h1>
+                <p class="solutions-subtitle">
+                    Upload your resume and paste the job description to generate an optimized resume tailored for the role.
+                </p>
+            </div>
+
+            <div class="solutions-content">
+                <div class="upload-section">
+                    <div class="form-card">
+                        <h2 class="form-title">Upload Your Resume</h2>
+                        <form id="resume-form" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="resume-file" class="form-label">Resume (PDF only)</label>
+                                <div class="file-upload-wrapper">
+                                    <input type="file" id="resume-file" name="file" accept=".pdf" class="file-input" required>
+                                    <label for="resume-file" class="file-label">
+                                        <span class="file-icon">📄</span>
+                                        <span class="file-text">Choose PDF file</span>
+                                        <span class="file-name" id="file-name">No file chosen</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="job-description" class="form-label">Job Description</label>
+                                <textarea
+                                    id="job-description"
+                                    name="job_description"
+                                    class="form-textarea"
+                                    rows="10"
+                                    placeholder="Paste the job description here..."
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" id="analyze-btn" class="btn btn-secondary">
+                                    <span class="btn-text">Get ATS Score</span>
+                                    <span class="btn-loader" style="display: none;">...</span>
+                                </button>
+                                <button type="button" id="optimize-btn" class="btn btn-primary">
+                                    <span class="btn-text">Optimize Resume</span>
+                                    <span class="btn-loader" style="display: none;">...</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="results-section" style="display: none;">
+                    <div id="ats-results" class="results-card" style="display: none;">
+                        <div class="results-header">
+                            <h2 class="results-title">ATS Score Analysis</h2>
+                            <button class="close-btn" onclick="closeResults('ats-results')">x</button>
+                        </div>
+                        <div id="ats-content" class="results-content"></div>
+                    </div>
+
+                    <div id="optimize-results" class="results-card" style="display: none;">
+                        <div class="results-header">
+                            <h2 class="results-title">Optimized Resume Ready</h2>
+                            <button class="close-btn" onclick="closeResults('optimize-results')">x</button>
+                        </div>
+                        <div id="optimize-content" class="results-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">ResumeOptimizer</h4>
+                    <p class="footer-text">AI-powered resume optimization for your career success.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/solutions" class="footer-link">Solutions</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/main_new.js?v=20260330b"></script>
+</body>
+</html>
