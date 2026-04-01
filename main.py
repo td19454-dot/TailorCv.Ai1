@@ -806,19 +806,19 @@ async def upload_resume(request: Request, jd_string: str, file: UploadFile = Fil
         parsed = inject_links(parsed, effective_map, mapped_links)
 
         # Basic validation: ensure some expected keys are present
-        expected_keys = ["name", "contact", "summary", "experience", "skills"]
-        ok = any(k in parsed for k in expected_keys)
-        if not ok:
-            raise HTTPException(status_code=500, detail="AI response JSON missing expected resume fields")
+        # expected_keys = ["name", "contact", "summary", "experience", "skills"]
+        # ok = any(k in parsed for k in expected_keys)
+        # if not ok:
+        #     raise HTTPException(status_code=500, detail="AI response JSON missing expected resume fields")
 
-        try:
-            original_ats = parse_ai_json_response(ats_scoring(resume_string, jd_string))
-            optimized_resume_text = build_resume_plain_text(parsed)
-            optimized_ats = parse_ai_json_response(ats_scoring(optimized_resume_text, jd_string))
-        except HTTPException:
-            raise
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Failed to score optimized resume: {e}")
+        # try:
+        #     original_ats = parse_ai_json_response(ats_scoring(resume_string, jd_string))
+        #     optimized_resume_text = build_resume_plain_text(parsed)
+        #     optimized_ats = parse_ai_json_response(ats_scoring(optimized_resume_text, jd_string))
+        # except HTTPException:
+        #     raise
+        # except Exception as e:
+        #     raise HTTPException(status_code=500, detail=f"Failed to score optimized resume: {e}")
 
         use_default_template = template_id == 0
         template_content = None
@@ -899,8 +899,8 @@ async def upload_resume(request: Request, jd_string: str, file: UploadFile = Fil
             return JSONResponse({
                 "success": True,
                 "download_url": "/download-optimized-resume",
-                "original_ats": original_ats,
-                "optimized_ats": optimized_ats,
+                # "original_ats": original_ats,
+                # "optimized_ats": optimized_ats,
             })
 
         return FileResponse(
