@@ -35,7 +35,7 @@
       margin: 0 auto;
       background: #fff;
       box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14);
-      padding: 5mm 5mm 5mm;
+      padding: 5mm 5mm 16mm;
     }
 
     h1 {
@@ -72,6 +72,11 @@
 
     section {
       margin-top: 10px;
+    }
+
+    .section-block {
+      break-inside: avoid;
+      page-break-inside: avoid;
     }
 
     h2 {
@@ -172,6 +177,18 @@
       background: var(--line);
       margin: 8px 0 16px;
     }
+
+    .activity-role {
+      margin: 1px 0 0;
+      font-size: 12.6px;
+      color: #2b4c6f;
+    }
+
+    .extracurricular-section {
+      break-inside: avoid;
+      page-break-inside: avoid;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -180,25 +197,25 @@
       <h1>{{ name }}</h1>
       <div class="contact">
         {% if contact.phone %}
-        <div class="contact-item"><span class="dot"></span><a href="{{ contact.phone_href or '#' }}" style="color: inherit; text-decoration: none;">{{ contact.phone }}</a></div>
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.phone_href or ('tel:' ~ (contact.phone | replace(' ', ''))) }}" style="color: inherit; text-decoration: none;">{{ contact.phone }}</a></div>
         {% endif %}
         {% if contact.email %}
-        <div class="contact-item"><span class="dot"></span><a href="{{ contact.email_href or '#' }}" style="color: inherit; text-decoration: none;">{{ contact.email }}</a></div>
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.email_href or ('mailto:' ~ contact.email) }}" style="color: inherit; text-decoration: none;">{{ contact.email }}</a></div>
         {% endif %}
         {% if contact.address %}
         <div class="contact-item"><span class="dot"></span><span>{{ contact.address }}</span></div>
         {% endif %}
-        {% if contact.linkedin_display %}
-        <div class="contact-item"><span class="dot"></span><a href="{{ contact.linkedin_href or '#' }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.linkedin_display }}</a></div>
+        {% if contact.linkedin or contact.linkedin_display %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.linkedin_href if contact.linkedin_href else ('https://' ~ contact.linkedin) }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.linkedin_display or contact.linkedin }}</a></div>
         {% endif %}
-        {% if contact.github_display %}
-        <div class="contact-item"><span class="dot"></span><a href="{{ contact.github_href or '#' }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.github_display }}</a></div>
+        {% if contact.github or contact.github_display %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.github_href or ('https://' ~ contact.github) }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.github_display or contact.github }}</a></div>
         {% endif %}
-        {% if contact.leetcode_display %}
-        <div class="contact-item"><span class="dot"></span><a href="{{ contact.leetcode_href or '#' }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.leetcode_display }}</a></div>
+        {% if contact.leetcode or contact.leetcode_display %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.leetcode_href or ('https://' ~ contact.leetcode) }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.leetcode_display or contact.leetcode }}</a></div>
         {% endif %}
-        {% if contact.portfolio_display %}
-        <div class="contact-item"><span class="dot"></span><a href="{{ contact.portfolio_href or '#' }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.portfolio_display }}</a></div>
+        {% if contact.portfolio or contact.portfolio_display %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.portfolio_href or ('https://' ~ contact.portfolio) }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.portfolio_display or contact.portfolio }}</a></div>
         {% endif %}
       </div>
     </header>
@@ -215,9 +232,13 @@
       <h2>Skills</h2>
       <div class="pill-wrap">
         {% for skill in skills %}
-          {% for part in skill.split(',') %}
+          {% set skill_text = skill|string %}
+          {% if ':' in skill_text %}
+            {% set skill_text = skill_text.split(':', 1)[1] %}
+          {% endif %}
+          {% for part in skill_text.replace(';', ',').split(',') %}
             {% set label = part.strip() %}
-            {% if label %}
+            {% if label and label.lower() not in ['languages', 'developer tools', 'technologies/frameworks'] %}
             <span class="pill">{{ label }}</span>
             {% endif %}
           {% endfor %}
@@ -272,21 +293,73 @@
     {% endif %}
 
     {% if projects %}
-    <section>
+    <section class="section-block">
       <h2>Projects</h2>
       {% for project in projects %}
+      {% set project_link = namespace(href=project.github_link) %}
+      {% if not project_link.href and project.links %}
+        {% for link in project.links %}
+          {% set link_label = (link.label or link.display or link.href) | string %}
+          {% if not project_link.href and ('github' in link_label|lower or 'github.com' in (link.href | lower)) %}
+            {% set project_link.href = link.href %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if not project_link.href and project.primary_link %}
+        {% set primary_label = (project.primary_link.label or project.primary_link.display or project.primary_link.href) | string %}
+        {% if 'github' in primary_label|lower or 'github.com' in (project.primary_link.href | lower) %}
+          {% set project_link.href = project.primary_link.href %}
+        {% endif %}
+      {% endif %}
+      {% if not project_link.href and project.links %}
+        {% set project_link.href = project.links[0].href %}
+      {% endif %}
+      {% if not project_link.href and project.primary_link %}
+        {% set project_link.href = project.primary_link.href %}
+      {% endif %}
       <div class="entry">
         <div class="entry-head">
           <div>
             <p class="entry-title">{{ project.name }}</p>
             {% if project.subtitle %}<p class="entry-role">{{ project.subtitle }}</p>{% endif %}
-            {% if project.url %}<p class="entry-location">{{ project.url }}</p>{% endif %}
+            {% if project_link.href %}
+              <p class="entry-location">
+                <a href="{{ project_link.href if project_link.href.startswith(('http://', 'https://')) else 'https://' ~ project_link.href }}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+                  GitHub
+                </a>
+              </p>
+            {% endif %}
           </div>
           {% if project.dates %}<div class="entry-meta">{{ project.dates }}</div>{% endif %}
         </div>
         {% if project.bullets %}
         <ul class="bullets">
           {% for bullet in project.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if extracurriculars %}
+    <section class="section-block extracurricular-section">
+      <h2>Extracurricular Activities</h2>
+      {% for activity in extracurriculars %}
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <p class="entry-title">{{ activity.role }}</p>
+            {% if activity.organization %}<p class="activity-role">{{ activity.organization }}</p>{% endif %}
+            {% if activity.location %}<p class="entry-location">{{ activity.location }}</p>{% endif %}
+          </div>
+          {% if activity.dates %}<div class="entry-meta">{{ activity.dates }}</div>{% endif %}
+        </div>
+        {% if activity.bullets %}
+        <ul class="bullets">
+          {% for bullet in activity.bullets %}
           <li>{{ bullet }}</li>
           {% endfor %}
         </ul>
