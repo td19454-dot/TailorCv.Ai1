@@ -41,10 +41,10 @@
 
     .top {
       display: grid;
-      grid-template-columns: 1fr 220px;
-      gap: 12px;
+      grid-template-columns: 1fr 200px;
+      gap: 10px;
       align-items: start;
-      padding: 12px 16px 7px;
+      padding: 10px 14px 6px;
       border-bottom: 1px solid #e3eceb;
     }
 
@@ -56,9 +56,9 @@
 
     .name h1 {
       margin: 0;
-      font-size: 23px;
+      font-size: 24px;
       line-height: 1.05;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--ink);
     }
 
@@ -69,21 +69,25 @@
       border-radius: 3px;
       background: var(--accent);
       color: #fff;
-      font-size: 10.5px;
+      font-size: 10px;
       font-style: italic;
       box-shadow: 0 3px 10px rgba(53, 182, 173, 0.16);
     }
 
     .contact {
       text-align: right;
-      font-size: 10.5px;
-      line-height: 1.25;
+      font-size: 10px;
+      line-height: 1.18;
       color: var(--ink);
       padding-top: 0;
     }
 
-    .contact div {
-      margin-bottom: 1px;
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-bottom: 2px;
     }
 
     .contact a {
@@ -92,20 +96,27 @@
       font-weight: 700;
     }
 
-    .contact span {
+    .contact-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 14px;
       color: var(--accent-dark);
       font-weight: 700;
-      margin-left: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
+      font-size: 10px;
+    }
+
+    .contact-text {
+      color: #202a36;
     }
 
     .summary-bar {
       background: linear-gradient(90deg, #37b8af, #2f9b95);
       color: #ffffff;
-      padding: 12px 16px 11px;
-      font-size: 11px;
-      line-height: 1.34;
+      padding: 14px 18px 14px;
+      font-size: 12px;
+      line-height: 1.45;
+      min-height: 4.8em;
     }
 
     .layout {
@@ -281,17 +292,17 @@
         </div>
       </div>
       <div class="contact">
-        {% if contact.phone %}<div><a href="{{ contact.phone_href or contact.phone }}">{{ contact.phone }}</a> <span>tel</span></div>{% endif %}
-        {% if contact.email %}<div><a href="{{ contact.email_href or contact.email }}">{{ contact.email }}</a> <span>mail</span></div>{% endif %}
-        {% if contact.linkedin_display or contact.linkedin %}<div><a href="{{ contact.linkedin_href or contact.linkedin }}" target="_blank" rel="noopener noreferrer">{{ contact.linkedin_display or contact.linkedin }}</a> <span>in</span></div>{% endif %}
-        {% if contact.github_display or contact.github %}<div><a href="{{ contact.github_href or contact.github }}" target="_blank" rel="noopener noreferrer">{{ contact.github_display or contact.github }}</a> <span>gh</span></div>{% endif %}
-        {% if contact.portfolio_display or contact.portfolio %}<div><a href="{{ contact.portfolio_href or contact.portfolio }}" target="_blank" rel="noopener noreferrer">{{ contact.portfolio_display or contact.portfolio }}</a> <span>web</span></div>{% endif %}
-        {% if contact.leetcode_display or contact.leetcode %}<div><a href="{{ contact.leetcode_href or contact.leetcode }}" target="_blank" rel="noopener noreferrer">{{ contact.leetcode_display or contact.leetcode }}</a> <span>lc</span></div>{% endif %}
-        {% if contact.codeforces_display or contact.codeforces %}<div><a href="{{ contact.codeforces_href or contact.codeforces }}" target="_blank" rel="noopener noreferrer">{{ contact.codeforces_display or contact.codeforces }}</a> <span>cf</span></div>{% endif %}
-        {% if contact.codechef_display or contact.codechef %}<div><a href="{{ contact.codechef_href or contact.codechef }}" target="_blank" rel="noopener noreferrer">{{ contact.codechef_display or contact.codechef }}</a> <span>cc</span></div>{% endif %}
-        {% if contact.google_scholar_display or contact.google_scholar %}<div><a href="{{ contact.google_scholar_href or contact.google_scholar }}" target="_blank" rel="noopener noreferrer">{{ contact.google_scholar_display or contact.google_scholar }}</a> <span>gs</span></div>{% endif %}
-        {% if contact.kaggle_display or contact.kaggle %}<div><a href="{{ contact.kaggle_href or contact.kaggle }}" target="_blank" rel="noopener noreferrer">{{ contact.kaggle_display or contact.kaggle }}</a> <span>kg</span></div>{% endif %}
-        {% if contact.address %}<div>{{ contact.address }} <span>loc</span></div>{% endif %}
+        {% if contact.phone %}<div class="contact-row"><a href="{{ contact.phone_href or contact.phone }}" class="contact-text">{{ contact.phone }}</a><span class="contact-icon">☎</span></div>{% endif %}
+        {% if contact.email %}<div class="contact-row"><a href="{{ contact.email_href or contact.email }}" class="contact-text">{{ contact.email }}</a><span class="contact-icon">✉</span></div>{% endif %}
+        {% if contact.linkedin_display or contact.linkedin %}{% set linkedin_url = contact.linkedin_href or contact.linkedin %}{% if linkedin_url and not linkedin_url.startswith(('http://', 'https://', 'mailto:', 'tel:')) %}{% set linkedin_url = 'https://' ~ linkedin_url %}{% endif %}<div class="contact-row"><a href="{{ linkedin_url }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.linkedin_display or contact.linkedin }}</a><span class="contact-icon">in</span></div>{% endif %}
+        {% if contact.github_display or contact.github %}<div class="contact-row"><a href="{{ contact.github_href or contact.github }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.github_display or contact.github }}</a><span class="contact-icon">gh</span></div>{% endif %}
+        {% if contact.portfolio_display or contact.portfolio %}<div class="contact-row"><a href="{{ contact.portfolio_href or contact.portfolio }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.portfolio_display or contact.portfolio }}</a><span class="contact-icon">web</span></div>{% endif %}
+        {% if contact.leetcode_display or contact.leetcode %}<div class="contact-row"><a href="{{ contact.leetcode_href or contact.leetcode }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.leetcode_display or contact.leetcode }}</a><span class="contact-icon">lc</span></div>{% endif %}
+        {% if contact.codeforces_display or contact.codeforces %}<div class="contact-row"><a href="{{ contact.codeforces_href or contact.codeforces }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.codeforces_display or contact.codeforces }}</a><span class="contact-icon">cf</span></div>{% endif %}
+        {% if contact.codechef_display or contact.codechef %}<div class="contact-row"><a href="{{ contact.codechef_href or contact.codechef }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.codechef_display or contact.codechef }}</a><span class="contact-icon">cc</span></div>{% endif %}
+        {% if contact.google_scholar_display or contact.google_scholar %}<div class="contact-row"><a href="{{ contact.google_scholar_href or contact.google_scholar }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.google_scholar_display or contact.google_scholar }}</a><span class="contact-icon">gs</span></div>{% endif %}
+        {% if contact.kaggle_display or contact.kaggle %}<div class="contact-row"><a href="{{ contact.kaggle_href or contact.kaggle }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.kaggle_display or contact.kaggle }}</a><span class="contact-icon">kg</span></div>{% endif %}
+        {% if contact.address %}<div class="contact-row"><span class="contact-text">{{ contact.address }}</span><span class="contact-icon">loc</span></div>{% endif %}
       </div>
     </div>
 
@@ -405,29 +416,18 @@
               {% if skill_text %}
                 {% if ':' in skill_text %}
                   {% set skill_parts = skill_text.split(':', 1) %}
-                  {% set skill_label = skill_parts[0].strip().lower() %}
-                  {% if skill_label not in ['languages', 'language', 'programming'] %}
-                    {% for item in skill_parts[1].split(',') %}
-                      {% set skill_item = item.strip() %}
-                      {% if skill_item %}
-                      <li>{{ skill_item }}</li>
-                      {% endif %}
-                    {% endfor %}
-                  {% endif %}
+                  {% for item in skill_parts[1].split(',') %}
+                    {% set skill_item = item.strip() %}
+                    {% if skill_item %}
+                    <li>{{ skill_item }}</li>
+                    {% endif %}
+                  {% endfor %}
                 {% else %}
                   <li>{{ skill_text }}</li>
                 {% endif %}
               {% endif %}
             {% endfor %}
           </ul>
-          {% if languages %}
-          <div class="stack" style="margin-top:6px; font-style:normal; color:var(--accent); font-weight:700;">Programming Languages</div>
-          <ul class="sidebar-list">
-            {% for lang in languages %}
-            <li>{{ lang }}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
         </section>
         {% endif %}
 
