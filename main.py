@@ -354,6 +354,19 @@ def normalize_contact_link(value: str, service: str) -> str:
     if service == "linkedin":
         if "linkedin.com/" in lower:
             value = value[lower.index("linkedin.com/"):]
+            path = value[len("linkedin.com/"):].lstrip("/")
+            if path and not path.startswith((
+                "in/",
+                "company/",
+                "school/",
+                "feed/",
+                "posts/",
+                "jobs/",
+                "pulse/",
+                "learning/",
+                "pub/",
+            )):
+                value = f"linkedin.com/in/{path}"
         elif lower.startswith("inin/"):
             value = value[2:]
         elif lower.startswith("in/"):
