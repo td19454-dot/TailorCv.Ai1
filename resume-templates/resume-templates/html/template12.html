@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ name }} - Resume</title>
+  <style>
+    :root {
+      --primary: #1d74c4;
+      --primary-light: #e7f1fb;
+      --text: #1f2d3d;
+      --muted: #5d6b7a;
+      --line: #c8d6e5;
+      --bg: #f2f5f9;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      font-family: "Calibri", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14);
+      padding: 5mm 5mm 5mm;
+    }
+
+    h1 {
+      margin: 0 0 4px;
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      color: #1c3c5c;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      font-size: 12.2px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+    }
+
+    .contact-item .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: inline-block;
+    }
+
+    section {
+      margin-top: 10px;
+    }
+
+    h2 {
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h2::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background: var(--primary);
+      opacity: 0.65;
+    }
+
+    .summary {
+      margin: 0;
+      font-size: 12.8px;
+      line-height: 1.55;
+      color: #2c3e50;
+    }
+
+    .pill-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      background: var(--primary-light);
+      color: #0e61aa;
+      border: none;
+      border-radius: 14px;
+      padding: 5px 9px 4px;
+      font-size: 11.8px;
+      line-height: 1.18;
+      white-space: normal;
+      flex: 0 1 auto;
+      word-break: break-word;
+      max-width: 100%;
+    }
+
+    .entry {
+      margin-bottom: 6px;
+    }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .entry-title {
+      margin: 0;
+      font-size: 14.4px;
+      font-weight: 700;
+      color: #1f3c5a;
+    }
+
+    .entry-role {
+      margin: 1px 0 0;
+      font-size: 12.6px;
+      color: #2b4c6f;
+    }
+
+    .entry-meta {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .entry-location {
+      margin: 2px 0 0;
+      font-style: italic;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .bullets {
+      margin: 4px 0 0 0;
+      padding-left: 16px;
+      color: #2c3e50;
+      font-size: 12.4px;
+    }
+
+    .bullets li { margin-bottom: 2px; }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 8px 0 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>{{ name }}</h1>
+      <div class="contact">
+        {% if contact.phone %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.phone_href or '#' }}" style="color: inherit; text-decoration: none;">{{ contact.phone }}</a></div>
+        {% endif %}
+        {% if contact.email %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.email_href or '#' }}" style="color: inherit; text-decoration: none;">{{ contact.email }}</a></div>
+        {% endif %}
+        {% if contact.address %}
+        <div class="contact-item"><span class="dot"></span><span>{{ contact.address }}</span></div>
+        {% endif %}
+        {% if contact.linkedin_display %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.linkedin_href or '#' }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.linkedin_display }}</a></div>
+        {% endif %}
+        {% if contact.github_display %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.github_href or '#' }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.github_display }}</a></div>
+        {% endif %}
+        {% if contact.leetcode_display %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.leetcode_href or '#' }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.leetcode_display }}</a></div>
+        {% endif %}
+        {% if contact.portfolio_display %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ contact.portfolio_href or '#' }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.portfolio_display }}</a></div>
+        {% endif %}
+      </div>
+    </header>
+
+    {% if summary %}
+    <section>
+      <h2>Professional Summary</h2>
+      <p class="summary">{{ summary }}</p>
+    </section>
+    {% endif %}
+
+    {% if skills %}
+    <section>
+      <h2>Skills</h2>
+      <div class="pill-wrap">
+        {% for skill in skills %}
+          {% for part in skill.split(',') %}
+            {% set label = part.strip() %}
+            {% if label %}
+            <span class="pill">{{ label }}</span>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if education %}
+    <section>
+      <h2>Education</h2>
+      {% for edu in education %}
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <p class="entry-title">{{ edu.school }}</p>
+            {% if edu.degree %}<p class="entry-role">{{ edu.degree }}</p>{% endif %}
+            {% if edu.score %}<p class="entry-role" style="font-weight:500;">{{ edu.score }}</p>{% endif %}
+            {% if edu.links %}<p class="entry-location">{{ edu.links }}</p>{% endif %}
+          </div>
+          {% if edu.year %}<div class="entry-meta">{{ edu.year }}</div>{% endif %}
+        </div>
+        {% if edu.location %}<p class="entry-location">{{ edu.location }}</p>{% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if experience %}
+    <section>
+      <h2>Experience</h2>
+      {% for exp in experience %}
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <p class="entry-title">{{ exp.company }}</p>
+            {% if exp.title %}<p class="entry-role">{{ exp.title }}</p>{% endif %}
+            {% if exp.location %}<p class="entry-location">{{ exp.location }}</p>{% endif %}
+          </div>
+          {% if exp.dates %}<div class="entry-meta">{{ exp.dates }}</div>{% endif %}
+        </div>
+        {% if exp.bullets %}
+        <ul class="bullets">
+          {% for bullet in exp.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if projects %}
+    <section>
+      <h2>Projects</h2>
+      {% for project in projects %}
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <p class="entry-title">{{ project.name }}</p>
+            {% if project.subtitle %}<p class="entry-role">{{ project.subtitle }}</p>{% endif %}
+            {% if project.url %}<p class="entry-location">{{ project.url }}</p>{% endif %}
+          </div>
+          {% if project.dates %}<div class="entry-meta">{{ project.dates }}</div>{% endif %}
+        </div>
+        {% if project.bullets %}
+        <ul class="bullets">
+          {% for bullet in project.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if achievements %}
+    <section>
+      <h2>Accomplishments</h2>
+      <ul class="bullets">
+        {% for item in achievements %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  </div>
+</body>
+</html>

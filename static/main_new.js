@@ -14,7 +14,8 @@ const templates = [
     { id: 8, name: 'Teal Sidebar', image: 'pic8.jpg'},
     { id: 9, name: 'Burgundy Sidebar', image: 'template9.svg' },
     { id: 10, name: 'Slate Sidebar', image: 'template10.svg' },
-    { id: 11, name: 'Forest Sidebar', image: 'template11.svg' }
+    { id: 11, name: 'Forest Sidebar', image: 'template11.svg' },
+    { id: 12, name: 'Skyline Blue', image: 'template12.svg' }
 ];
 
 const styles = [
