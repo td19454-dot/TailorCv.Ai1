@@ -79,7 +79,7 @@
     .name-card {
       position: relative;
       margin: 14px -10px 14px -2px;
-      padding: 18px 106px 16px 18px;
+      padding: 18px 18px 16px 18px;
       border-radius: 0 14px 14px 0;
       background: linear-gradient(180deg, #4a78bb, #3a69aa);
       box-shadow: 0 12px 22px rgba(22, 47, 88, 0.18);
@@ -104,19 +104,6 @@
       display: block;
       height: 1px;
       margin-top: 3px;
-      background: rgba(255, 255, 255, 0.18);
-    }
-
-    .profile-display {
-      position: absolute;
-      top: 12px;
-      right: 14px;
-      width: 74px;
-      height: 74px;
-      border-radius: 12px;
-      object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 8px 16px rgba(22, 47, 88, 0.18);
       background: rgba(255, 255, 255, 0.18);
     }
 
@@ -374,7 +361,6 @@
             <h1 class="name">{{ name }}</h1>
             {% if headline %}<p class="headline">{{ headline }}</p>{% endif %}
             <span class="mini-rule"></span>
-            <img class="profile-display" src="/static/pic7.jpg" alt="Template preview image">
           </div>
 
           <section class="sidebar-section">
