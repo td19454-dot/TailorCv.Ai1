@@ -14,7 +14,7 @@ const templates = [
     { id: 8, name: 'Teal Sidebar', image: 'pic8.jpg'},
     { id: 9, name: 'Burgundy Sidebar', image: 'pic9.jpg' },
     { id: 10, name: 'Slate Sidebar', image: 'template10.svg' },
-    { id: 11, name: 'Forest Sidebar', image: 'pic11.jpg' },
+    { id: 11, name: 'Forest Sidebar', image: 'pic11_new.jpg' },
     { id: 12, name: 'Skyline Blue', image: 'pic12.jpg' }
 ];
 
