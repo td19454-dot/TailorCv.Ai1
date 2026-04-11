@@ -10,7 +10,7 @@ const templates = [
     { id: 4, name: 'Classic Academic', image: 'pic4.jpg' },
     { id: 5, name: 'Modern Elegant', image: 'pic5.jpg' },
     { id: 6, name: 'Professional Classic', image: 'pic6.jpg' },
-    { id: 7, name: 'Navy Sidebar', image: 'template7.svg' },
+    { id: 7, name: 'Navy Sidebar', image: 'pic7.jpg' },
     { id: 8, name: 'Teal Sidebar', image: 'pic8.jpg'},
     { id: 9, name: 'Burgundy Sidebar', image: 'template9.svg' },
     { id: 10, name: 'Slate Sidebar', image: 'template10.svg' },
