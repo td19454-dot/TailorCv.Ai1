@@ -19,7 +19,11 @@
 
     @page {
       size: A4;
-      margin: 0;
+      margin: 8mm 0 0;
+    }
+
+    @page :first {
+      margin-top: 0;
     }
 
     * {
@@ -368,8 +372,13 @@
             <ul class="contact-list">
               {% if contact.phone %}<li><span class="contact-label">Phone</span><a href="{{ contact.phone_href }}">{{ contact.phone }}</a></li>{% endif %}
               {% if contact.email %}<li><span class="contact-label">Email</span><a href="{{ contact.email_href }}">{{ contact.email }}</a></li>{% endif %}
-              {% if contact.linkedin %}<li><span class="contact-label">LinkedIn</span><a href="{{ contact.linkedin_href }}">{{ contact.linkedin_display or contact.linkedin }}</a></li>{% endif %}
-              {% if contact.github %}<li><span class="contact-label">GitHub</span><a href="{{ contact.github_href }}">{{ contact.github_display or contact.github }}</a></li>{% endif %}
+              {% set linkedin_raw = contact.linkedin_href or contact.linkedin_display or contact.linkedin or '' %}
+              {% set linkedin_href = linkedin_raw %}
+              {% if linkedin_raw and not linkedin_raw.startswith(('http://', 'https://', 'mailto:', 'tel:')) %}{% if 'linkedin.com' in linkedin_raw|lower %}{% set linkedin_href = 'https://' ~ linkedin_raw %}{% else %}{% set linkedin_href = 'https://www.linkedin.com/in/' ~ linkedin_raw.lstrip('/') %}{% endif %}{% endif %}
+              {% set github_href = contact.github_href or contact.github %}
+              {% if github_href and not github_href.startswith(('http://', 'https://', 'mailto:', 'tel:')) %}{% set github_href = 'https://' ~ github_href %}{% endif %}
+              {% if contact.linkedin or contact.linkedin_display or contact.linkedin_href %}<li><span class="contact-label">LinkedIn</span><a href="{{ linkedin_href }}" target="_blank" rel="noopener noreferrer">{{ linkedin_href }}</a></li>{% endif %}
+              {% if contact.github or contact.github_display or contact.github_href %}<li><span class="contact-label">GitHub</span><a href="{{ github_href }}" target="_blank" rel="noopener noreferrer">{{ contact.github_display or contact.github }}</a></li>{% endif %}
               {% if contact.leetcode %}<li><span class="contact-label">LeetCode</span><a href="{{ contact.leetcode_href }}">{{ contact.leetcode_display or contact.leetcode }}</a></li>{% endif %}
               {% if contact.portfolio %}<li><span class="contact-label">Portfolio</span><a href="{{ contact.portfolio_href }}">{{ contact.portfolio_display or contact.portfolio }}</a></li>{% endif %}
               {% if contact.address %}<li><span class="contact-label">Address</span>{{ contact.address }}</li>{% endif %}
@@ -401,22 +410,6 @@
                 {% endif %}
               {% endif %}
             {% endfor %}
-          </section>
-          {% endif %}
-
-          {% if education %}
-          <section class="sidebar-section">
-            <h2>Education</h2>
-            <ul class="simple-list">
-              {% for edu in education %}
-              <li>
-                <strong>{{ edu.degree or edu.school }}</strong><br>
-                {% if edu.degree and edu.school %}{{ edu.school }}<br>{% endif %}
-                {% if edu.year %}{{ edu.year }}<br>{% endif %}
-                {% if edu.score %}{{ edu.score }}{% endif %}
-              </li>
-              {% endfor %}
-            </ul>
           </section>
           {% endif %}
 
@@ -456,16 +449,6 @@
           </section>
           {% endif %}
 
-          {% if publications %}
-          <section class="sidebar-section">
-            <h2>Publications</h2>
-            <ul class="simple-list">
-              {% for publication in publications %}
-              <li>{{ publication.title }}{% if publication.publisher %}, {{ publication.publisher }}{% endif %}{% if publication.year %}, {{ publication.year }}{% endif %}</li>
-              {% endfor %}
-            </ul>
-          </section>
-          {% endif %}
         </aside>
 
         <main class="main">
@@ -541,8 +524,15 @@
                 {% set project_link = {'href': project.url, 'label': 'Link', 'display': project.url} %}
               {% endif %}
               {% if project_link %}
+              {% set project_link_href = project_link.href or project_link.display or project_link.label or '' %}
+              {% set project_link_text = 'Link' %}
+              {% if 'github' in project_link_href|lower or 'github.com' in project_link_href|lower %}
+                {% set project_link_text = 'GitHub' %}
+              {% elif 'kaggle' in project_link_href|lower or 'kaggle.com' in project_link_href|lower %}
+                {% set project_link_text = 'Kaggle' %}
+              {% endif %}
               <div class="project-links">
-                <a href="{{ project_link.href }}" target="_blank" rel="noopener noreferrer">Link</a>
+                <a href="{{ project_link_href if project_link_href.startswith(('http://', 'https://')) else 'https://' ~ project_link_href }}" target="_blank" rel="noopener noreferrer">{{ project_link_text }}</a>
               </div>
               {% endif %}
 
@@ -558,16 +548,23 @@
           </section>
           {% endif %}
 
-          {% if awards %}
+          {% if publications %}
           <section class="section">
-            <h2 class="awards-icon">Awards</h2>
-            <ul class="bullets">
-              {% for award in awards %}
-              <li>{{ award }}</li>
-              {% endfor %}
-            </ul>
+            <h2>Publications</h2>
+            {% for publication in publications %}
+            <article class="entry">
+              <div class="entry-head">
+                <div>
+                  <p class="entry-title">{{ publication.title }}</p>
+                  {% if publication.publisher %}<p class="entry-subtitle">{{ publication.publisher }}</p>{% endif %}
+                </div>
+                {% if publication.year %}<div class="entry-meta">{{ publication.year }}</div>{% endif %}
+              </div>
+            </article>
+            {% endfor %}
           </section>
           {% endif %}
+
         </main>
       </div>
     </div>

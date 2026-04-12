@@ -16,7 +16,7 @@
 
     @page {
       size: A4;
-      margin: 0;
+      margin: 7mm 0 0;
     }
 
     * { box-sizing: border-box; }
@@ -35,7 +35,7 @@
       margin: 0 auto;
       background: #fff;
       box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14);
-      padding: 5mm 5mm 16mm;
+      padding: 1mm 5mm 16mm;
     }
 
     h1 {
@@ -75,8 +75,8 @@
     }
 
     .section-block {
-      break-inside: avoid;
-      page-break-inside: avoid;
+      break-inside: auto;
+      page-break-inside: auto;
     }
 
     h2 {
@@ -109,25 +109,28 @@
     .pill-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px 8px;
     }
 
     .pill {
-      background: var(--primary-light);
-      color: #0e61aa;
+      display: inline-flex;
+      align-items: center;
+      background: #eaf3ff;
+      color: #1d74c4;
       border: none;
-      border-radius: 14px;
-      padding: 5px 9px 4px;
-      font-size: 11.8px;
-      line-height: 1.18;
+      border-radius: 999px;
+      padding: 3px 10px 2px;
+      font-size: 9.8px;
+      line-height: 1;
       white-space: normal;
       flex: 0 1 auto;
       word-break: break-word;
       max-width: 100%;
+      box-shadow: none;
     }
 
     .entry {
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .entry-head {
@@ -164,7 +167,7 @@
     }
 
     .bullets {
-      margin: 4px 0 0 0;
+      margin: 3px 0 0 0;
       padding-left: 16px;
       color: #2c3e50;
       font-size: 12.4px;
@@ -185,9 +188,13 @@
     }
 
     .extracurricular-section {
-      break-inside: avoid;
-      page-break-inside: avoid;
-      margin-top: 10px;
+      break-inside: auto;
+      page-break-inside: auto;
+      margin-top: 6px;
+    }
+
+    .awards-section {
+      color: #2c3e50;
     }
   </style>
 </head>
@@ -205,11 +212,24 @@
         {% if contact.address %}
         <div class="contact-item"><span class="dot"></span><span>{{ contact.address }}</span></div>
         {% endif %}
-        {% if contact.linkedin or contact.linkedin_display %}
-        <div class="contact-item"><span class="dot"></span><a href="{{ contact.linkedin_href if contact.linkedin_href else ('https://' ~ contact.linkedin) }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.linkedin_display or contact.linkedin }}</a></div>
+        {% set linkedin_raw = contact.linkedin_href or contact.linkedin_display or contact.linkedin or '' %}
+        {% set linkedin_href = linkedin_raw %}
+        {% if linkedin_raw and not linkedin_raw.startswith(('http://', 'https://', 'mailto:', 'tel:')) %}
+        {% if 'linkedin.com' in linkedin_raw|lower %}
+        {% set linkedin_href = 'https://' ~ linkedin_raw %}
+        {% else %}
+        {% set linkedin_href = 'https://www.linkedin.com/in/' ~ linkedin_raw.lstrip('/') %}
         {% endif %}
-        {% if contact.github or contact.github_display %}
-        <div class="contact-item"><span class="dot"></span><a href="{{ contact.github_href or ('https://' ~ contact.github) }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.github_display or contact.github }}</a></div>
+        {% endif %}
+        {% set github_href = contact.github_href or contact.github %}
+        {% if github_href and not github_href.startswith(('http://', 'https://', 'mailto:', 'tel:')) %}
+        {% set github_href = 'https://' ~ github_href %}
+        {% endif %}
+        {% if contact.linkedin or contact.linkedin_display or contact.linkedin_href %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ linkedin_href }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ linkedin_href }}</a></div>
+        {% endif %}
+        {% if contact.github or contact.github_display or contact.github_href %}
+        <div class="contact-item"><span class="dot"></span><a href="{{ github_href }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.github_display or contact.github or contact.github_href }}</a></div>
         {% endif %}
         {% if contact.leetcode or contact.leetcode_display %}
         <div class="contact-item"><span class="dot"></span><a href="{{ contact.leetcode_href or ('https://' ~ contact.leetcode) }}" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener noreferrer">{{ contact.leetcode_display or contact.leetcode }}</a></div>
@@ -296,26 +316,31 @@
     <section class="section-block">
       <h2>Projects</h2>
       {% for project in projects %}
-      {% set project_link = namespace(href=project.github_link) %}
+      {% set project_link = namespace(href=project.github_link or project.primary_link.href or project.primary_link.display or project.primary_link.label or project.url or '') %}
       {% if not project_link.href and project.links %}
         {% for link in project.links %}
-          {% set link_label = (link.label or link.display or link.href) | string %}
-          {% if not project_link.href and ('github' in link_label|lower or 'github.com' in (link.href | lower)) %}
-            {% set project_link.href = link.href %}
+          {% set link_label = (link.label or link.display or link.href or '') | string %}
+          {% set link_href = link.href or link.display or link.label or '' %}
+          {% if not project_link.href and ('github' in link_label|lower or 'github.com' in (link_href | lower) or 'kaggle' in link_label|lower or 'kaggle.com' in (link_href | lower)) %}
+            {% set project_link.href = link_href %}
           {% endif %}
         {% endfor %}
       {% endif %}
       {% if not project_link.href and project.primary_link %}
         {% set primary_label = (project.primary_link.label or project.primary_link.display or project.primary_link.href) | string %}
-        {% if 'github' in primary_label|lower or 'github.com' in (project.primary_link.href | lower) %}
-          {% set project_link.href = project.primary_link.href %}
+        {% set primary_href = project.primary_link.href or project.primary_link.display or project.primary_link.label or '' %}
+        {% if 'github' in primary_label|lower or 'github.com' in (primary_href | lower) or 'kaggle' in primary_label|lower or 'kaggle.com' in (primary_href | lower) %}
+          {% set project_link.href = primary_href %}
         {% endif %}
       {% endif %}
       {% if not project_link.href and project.links %}
-        {% set project_link.href = project.links[0].href %}
+        {% set project_link.href = project.links[0].href or project.links[0].display or project.links[0].label or '' %}
       {% endif %}
       {% if not project_link.href and project.primary_link %}
-        {% set project_link.href = project.primary_link.href %}
+        {% set project_link.href = project.primary_link.href or project.primary_link.display or project.primary_link.label or '' %}
+      {% endif %}
+      {% if not project_link.href and project.url %}
+        {% set project_link.href = project.url %}
       {% endif %}
       <div class="entry">
         <div class="entry-head">
@@ -325,9 +350,37 @@
             {% if project_link.href %}
               <p class="entry-location">
                 <a href="{{ project_link.href if project_link.href.startswith(('http://', 'https://')) else 'https://' ~ project_link.href }}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
-                  GitHub
+                  {% set project_url = project_link.href if project_link.href.startswith(('http://', 'https://')) else 'https://' ~ project_link.href %}
+                  {% set project_label = 'Link' %}
+                  {% if 'github' in project_url|lower or 'github.com' in project_url|lower %}
+                    {% set project_label = 'GitHub' %}
+                  {% elif 'kaggle' in project_url|lower or 'kaggle.com' in project_url|lower %}
+                    {% set project_label = 'Kaggle' %}
+                  {% endif %}
+                  {{ project_label }}
                 </a>
               </p>
+            {% endif %}
+            {% if project.links %}
+              {% for link in project.links %}
+                {% set extra_link = link.href or link.display or link.label or '' %}
+                {% if extra_link %}
+                  {% set extra_url = extra_link if extra_link.startswith(('http://', 'https://')) else 'https://' ~ extra_link %}
+                  {% if extra_url != (project_link.href if project_link.href.startswith(('http://', 'https://')) else 'https://' ~ project_link.href) %}
+                    <p class="entry-location">
+                      <a href="{{ extra_url }}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+                        {% set extra_label = 'Link' %}
+                        {% if 'github' in extra_url|lower or 'github.com' in extra_url|lower %}
+                          {% set extra_label = 'GitHub' %}
+                        {% elif 'kaggle' in extra_url|lower or 'kaggle.com' in extra_url|lower %}
+                          {% set extra_label = 'Kaggle' %}
+                        {% endif %}
+                        {{ extra_label }}
+                      </a>
+                    </p>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
             {% endif %}
           </div>
           {% if project.dates %}<div class="entry-meta">{{ project.dates }}</div>{% endif %}
@@ -369,11 +422,27 @@
     </section>
     {% endif %}
 
-    {% if achievements %}
-    <section>
-      <h2>Accomplishments</h2>
+    {% if publications %}
+    <section class="section-block">
+      <h2>Publications</h2>
       <ul class="bullets">
-        {% for item in achievements %}
+        {% for publication in publications %}
+        <li>
+          {{ publication.title }}
+          {% if publication.publisher %}, {{ publication.publisher }}{% endif %}
+          {% if publication.year %}, {{ publication.year }}{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% set award_items = awards or achievements %}
+    {% if award_items %}
+    <section class="awards-section">
+      <h2>Awards</h2>
+      <ul class="bullets">
+        {% for item in award_items %}
         <li>{{ item }}</li>
         {% endfor %}
       </ul>

@@ -14,7 +14,9 @@
             <div class="contact-line">
                 {% if contact.phone %}<span class="contact-item"><span class="contact-icon">&#9990;</span><a href="{{ contact.phone_href }}">{{ contact.phone }}</a></span>{% endif %}
                 {% if contact.email %}<span class="contact-item"><span class="contact-icon">&#9993;</span><a href="{{ contact.email_href }}">{{ contact.email }}</a></span>{% endif %}
-                {% if contact.linkedin %}<span class="contact-item"><span class="contact-icon">in</span><a href="{{ contact.linkedin_href }}">{{ contact.linkedin_display or contact.linkedin }}</a></span>{% endif %}
+                {% set linkedin_href = contact.linkedin_href or contact.linkedin %}
+                {% if linkedin_href and not linkedin_href.startswith(('http://', 'https://', 'mailto:', 'tel:')) %}{% set linkedin_href = 'https://' ~ linkedin_href %}{% endif %}
+                {% if contact.linkedin %}<span class="contact-item"><span class="contact-icon">in</span><a href="{{ linkedin_href }}" target="_blank" rel="noopener noreferrer">{{ contact.linkedin_display or contact.linkedin }}</a></span>{% endif %}
                 {% if contact.github %}<span class="contact-item"><span class="contact-icon">gh</span><a href="{{ contact.github_href }}">{{ contact.github_display or contact.github }}</a></span>{% endif %}
             </div>
 

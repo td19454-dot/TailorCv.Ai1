@@ -130,6 +130,11 @@
       margin-bottom: 8px;
     }
 
+    .sidebar-block {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
     .section h2,
     .sidebar-block h3 {
       display: flex;
@@ -294,8 +299,8 @@
       <div class="contact">
         {% if contact.phone %}<div class="contact-row"><a href="{{ contact.phone_href or contact.phone }}" class="contact-text">{{ contact.phone }}</a><span class="contact-icon">☎</span></div>{% endif %}
         {% if contact.email %}<div class="contact-row"><a href="{{ contact.email_href or contact.email }}" class="contact-text">{{ contact.email }}</a><span class="contact-icon">✉</span></div>{% endif %}
-        {% if contact.linkedin_display or contact.linkedin %}{% set linkedin_url = contact.linkedin_href or contact.linkedin %}{% if linkedin_url and not linkedin_url.startswith(('http://', 'https://', 'mailto:', 'tel:')) %}{% set linkedin_url = 'https://' ~ linkedin_url %}{% endif %}<div class="contact-row"><a href="{{ linkedin_url }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.linkedin_display or contact.linkedin }}</a><span class="contact-icon">in</span></div>{% endif %}
-        {% if contact.github_display or contact.github %}<div class="contact-row"><a href="{{ contact.github_href or contact.github }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.github_display or contact.github }}</a><span class="contact-icon">gh</span></div>{% endif %}
+        {% if contact.linkedin_display or contact.linkedin or contact.linkedin_href %}{% set linkedin_raw = contact.linkedin_href or contact.linkedin_display or contact.linkedin or '' %}{% set linkedin_url = linkedin_raw %}{% if linkedin_raw and not linkedin_raw.startswith(('http://', 'https://', 'mailto:', 'tel:')) %}{% if 'linkedin.com' in linkedin_raw|lower %}{% set linkedin_url = 'https://' ~ linkedin_raw %}{% else %}{% set linkedin_url = 'https://www.linkedin.com/in/' ~ linkedin_raw.lstrip('/') %}{% endif %}{% endif %}<div class="contact-row"><a href="{{ linkedin_url }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ linkedin_url }}</a><span class="contact-icon">in</span></div>{% endif %}
+        {% if contact.github_display or contact.github or contact.github_href %}{% set github_url = contact.github_href or contact.github_display or contact.github %}{% if github_url and not github_url.startswith(('http://', 'https://', 'mailto:', 'tel:')) %}{% set github_url = 'https://' ~ github_url %}{% endif %}<div class="contact-row"><a href="{{ github_url }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ github_url }}</a><span class="contact-icon">gh</span></div>{% endif %}
         {% if contact.portfolio_display or contact.portfolio %}<div class="contact-row"><a href="{{ contact.portfolio_href or contact.portfolio }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.portfolio_display or contact.portfolio }}</a><span class="contact-icon">web</span></div>{% endif %}
         {% if contact.leetcode_display or contact.leetcode %}<div class="contact-row"><a href="{{ contact.leetcode_href or contact.leetcode }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.leetcode_display or contact.leetcode }}</a><span class="contact-icon">lc</span></div>{% endif %}
         {% if contact.codeforces_display or contact.codeforces %}<div class="contact-row"><a href="{{ contact.codeforces_href or contact.codeforces }}" target="_blank" rel="noopener noreferrer" class="contact-text">{{ contact.codeforces_display or contact.codeforces }}</a><span class="contact-icon">cf</span></div>{% endif %}
@@ -370,16 +375,70 @@
             </div>
             {% if project.links or project.primary_link or project.github_link or project.url %}
             <div class="project-links">
-              {% if project.primary_link %}
-                <a href="{{ project.primary_link.href }}" target="_blank" rel="noopener noreferrer">{{ project.primary_link.label or project.primary_link.display or project.primary_link.href }}</a>
-              {% elif project.links %}
-                {% for link in project.links %}
-                <a href="{{ link.href }}" target="_blank" rel="noopener noreferrer">{{ link.label or link.display or link.href }}</a>{% if not loop.last %} <span>|</span> {% endif %}
-                {% endfor %}
-              {% else %}
-                {% if project.github_link %}<a href="{{ project.github_link if project.github_link.startswith(('http://', 'https://')) else 'https://' ~ project.github_link }}" target="_blank" rel="noopener noreferrer">GitHub</a>{% endif %}
-                {% if project.url %}{% if project.github_link %} <span>|</span> {% endif %}<a href="{{ project.url if project.url.startswith(('http://', 'https://')) else 'https://' ~ project.url }}" target="_blank" rel="noopener noreferrer">Live Demo</a>{% endif %}
+            {% set project_state = namespace(count=0, seen='') %}
+            {% if project.primary_link %}
+              {% set primary_href = project.primary_link.href or project.primary_link.display or project.primary_link.label or '' %}
+              {% set primary_url = primary_href if primary_href.startswith(('http://', 'https://')) else 'https://' ~ primary_href %}
+              {% if primary_url %}
+                {% set project_label = 'Link' %}
+                {% if 'github' in primary_url|lower or 'github.com' in primary_url|lower %}
+                  {% set project_label = 'GitHub' %}
+                {% elif 'kaggle' in primary_url|lower or 'kaggle.com' in primary_url|lower %}
+                  {% set project_label = 'Kaggle' %}
+                {% endif %}
+                <a href="{{ primary_url }}" target="_blank" rel="noopener noreferrer">{{ project_label }}</a>
+                {% set project_state.count = project_state.count + 1 %}
+                {% set project_state.seen = primary_url %}
               {% endif %}
+            {% endif %}
+            {% if project.links %}
+              {% for link in project.links %}
+                {% set link_href = link.href or link.display or link.label or '' %}
+                {% set link_url = link_href if link_href.startswith(('http://', 'https://')) else 'https://' ~ link_href %}
+                {% if link_url and link_url != project_state.seen %}
+                  {% if project_state.count > 0 %} <span>|</span> {% endif %}
+                  {% set project_label = 'Link' %}
+                  {% if 'github' in link_url|lower or 'github.com' in link_url|lower %}
+                    {% set project_label = 'GitHub' %}
+                  {% elif 'kaggle' in link_url|lower or 'kaggle.com' in link_url|lower %}
+                    {% set project_label = 'Kaggle' %}
+                  {% endif %}
+                  <a href="{{ link_url }}" target="_blank" rel="noopener noreferrer">{{ project_label }}</a>
+                  {% set project_state.count = project_state.count + 1 %}
+                  {% set project_state.seen = link_url %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if project.github_link %}
+              {% set github_url = project.github_link if project.github_link.startswith(('http://', 'https://')) else 'https://' ~ project.github_link %}
+              {% if github_url and github_url != project_state.seen %}
+                {% if project_state.count > 0 %} <span>|</span> {% endif %}
+                {% set project_label = 'Link' %}
+                {% if 'github' in github_url|lower or 'github.com' in github_url|lower %}
+                  {% set project_label = 'GitHub' %}
+                {% elif 'kaggle' in github_url|lower or 'kaggle.com' in github_url|lower %}
+                  {% set project_label = 'Kaggle' %}
+                {% endif %}
+                <a href="{{ github_url }}" target="_blank" rel="noopener noreferrer">{{ project_label }}</a>
+                {% set project_state.count = project_state.count + 1 %}
+                {% set project_state.seen = github_url %}
+              {% endif %}
+            {% endif %}
+            {% if project.url %}
+              {% set project_url = project.url if project.url.startswith(('http://', 'https://')) else 'https://' ~ project.url %}
+              {% if project_url and project_url != project_state.seen %}
+                {% if project_state.count > 0 %} <span>|</span> {% endif %}
+                {% set project_label = 'Link' %}
+                {% if 'github' in project_url|lower or 'github.com' in project_url|lower %}
+                  {% set project_label = 'GitHub' %}
+                {% elif 'kaggle' in project_url|lower or 'kaggle.com' in project_url|lower %}
+                  {% set project_label = 'Kaggle' %}
+                {% endif %}
+                <a href="{{ project_url }}" target="_blank" rel="noopener noreferrer">{{ project_label }}</a>
+                {% set project_state.count = project_state.count + 1 %}
+                {% set project_state.seen = project_url %}
+              {% endif %}
+            {% endif %}
             </div>
             {% endif %}
             {% if project.bullets %}
@@ -394,14 +453,20 @@
         </section>
         {% endif %}
 
-        {% if awards %}
-        <section class="section">
-          <h2>Awards</h2>
-          <ul class="bullets">
-            {% for item in awards %}
-            <li>{{ item }}</li>
-            {% endfor %}
-          </ul>
+        {% if publications %}
+        <section class="section publications-section">
+          <h2>Publications</h2>
+          {% for publication in publications %}
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <p class="entry-title">{{ publication.title }}</p>
+                {% if publication.publisher %}<p class="entry-subtitle">{{ publication.publisher }}</p>{% endif %}
+              </div>
+              {% if publication.year %}<div class="entry-meta">{{ publication.year }}</div>{% endif %}
+            </div>
+          </article>
+          {% endfor %}
         </section>
         {% endif %}
       </main>
@@ -455,6 +520,17 @@
               {{ item.role }}{% if item.organization %} - {{ item.organization }}{% endif %}
               {% if item.dates %}<span class="muted">{{ item.dates }}</span>{% endif %}
             </li>
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
+
+        {% if awards %}
+        <section class="sidebar-block">
+          <h3>Awards</h3>
+          <ul class="sidebar-list">
+            {% for item in awards %}
+            <li>{{ item }}</li>
             {% endfor %}
           </ul>
         </section>
