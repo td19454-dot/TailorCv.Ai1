@@ -813,17 +813,30 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
         if not isinstance(project, dict):
             continue
         links = collect_project_links(project)
+        render_links = []
+        seen_render_hrefs = set()
+        for link in links:
+            href = str(link.get("href", "")).strip()
+            href_key = href.lower()
+            if not href or href_key in seen_render_hrefs:
+                continue
+            seen_render_hrefs.add(href_key)
+            render_links.append({
+                "label": str(link.get("label", "Link")).strip() or "Link",
+                "href": href,
+                "display": str(link.get("display", "")).strip(),
+            })
         # Prefer showing a non-GitHub link as the primary inline link (e.g., Live/Demo).
         primary_link = None
-        for candidate in links:
+        for candidate in render_links:
             href = str(candidate.get("href", "")).lower()
             label = str(candidate.get("label", "")).lower()
             if "github.com" in href or "github" in label:
                 continue
             primary_link = candidate
             break
-        if not primary_link and links:
-            primary_link = links[0]
+        if not primary_link and render_links:
+            primary_link = render_links[0]
 
         # Some model outputs only populate `links` but leave `github_link`/`url` blank.
         # Backfill those fields so older templates still show icons.
@@ -862,6 +875,7 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
             "dates": str(project.get("dates") or project.get("date", "")).strip(),
             "subtitle": str(project.get("subtitle") or project.get("stack") or project.get("technologies", "")).strip(),
             "links": links,
+            "render_links": render_links,
             "primary_link": primary_link,
             "bullets": normalize_list_of_strings(project.get("bullets") or project.get("achievements") or project.get("details") or []),
         })

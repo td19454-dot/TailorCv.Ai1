@@ -427,38 +427,49 @@
           {% endif %}
           {% if project.primary_link or project.links %}
           <div class="project-links">
-            {% set project_state = namespace(primary='') %}
+            {% set project_state = namespace(seen='|', rendered=false) %}
             {% if project.primary_link %}
               {% set project_url = project.primary_link.href or project.primary_link.display or project.primary_link.label or '' %}
-              {% set project_label = 'Link' %}
-              {% if 'github' in project_url|lower or 'github.com' in project_url|lower %}
-                {% set project_label = 'GitHub' %}
-              {% elif 'kaggle' in project_url|lower or 'kaggle.com' in project_url|lower %}
-                {% set project_label = 'Kaggle' %}
-              {% endif %}
               {% set normalized_primary = project_url if project_url.startswith(('http://', 'https://')) else 'https://' ~ project_url %}
-              {% set project_state.primary = normalized_primary %}
-              <a href="{{ normalized_primary }}">{{ project_label }}</a>
+              {% set primary_key = normalized_primary|lower %}
+              {% if primary_key and ('|' ~ primary_key ~ '|') not in project_state.seen %}
+                {% set project_state.seen = project_state.seen ~ primary_key ~ '|' %}
+                {% if project_state.rendered %} <span>|</span> {% endif %}
+                {% set project_label = 'Link' %}
+                {% if 'github' in project_url|lower or 'github.com' in project_url|lower %}
+                  {% set project_label = 'GitHub' %}
+                {% elif 'kaggle' in project_url|lower or 'kaggle.com' in project_url|lower %}
+                  {% set project_label = 'Kaggle' %}
+                {% endif %}
+                <a href="{{ normalized_primary }}">{{ project_label }}</a>
+                {% set project_state.rendered = true %}
+              {% endif %}
             {% endif %}
             {% if project.links %}
               {% for link in project.links %}
               {% set project_url = link.href or link.display or link.label or '' %}
               {% set normalized_link = project_url if project_url.startswith(('http://', 'https://')) else 'https://' ~ project_url %}
-              {% if normalized_link != project_state.primary %}
+              {% set link_key = normalized_link|lower %}
+              {% if link_key and ('|' ~ link_key ~ '|') not in project_state.seen %}
+              {% set project_state.seen = project_state.seen ~ link_key ~ '|' %}
+              {% if project_state.rendered %} <span>|</span> {% endif %}
               {% set project_label = 'Link' %}
               {% if 'github' in project_url|lower or 'github.com' in project_url|lower %}
                 {% set project_label = 'GitHub' %}
               {% elif 'kaggle' in project_url|lower or 'kaggle.com' in project_url|lower %}
                 {% set project_label = 'Kaggle' %}
               {% endif %}
-              <a href="{{ normalized_link }}">{{ project_label }}</a>{% if not loop.last %} <span>|</span> {% endif %}
+              <a href="{{ normalized_link }}">{{ project_label }}</a>
+              {% set project_state.rendered = true %}
               {% endif %}
               {% endfor %}
             {% endif %}
             {% if project.github_link %}
               {% set github_url = project.github_link if project.github_link.startswith(('http://', 'https://')) else 'https://' ~ project.github_link %}
-              {% if github_url != project_state.primary %}
-                {% if project_state.primary %} <span>|</span> {% endif %}
+              {% set github_key = github_url|lower %}
+              {% if github_key and ('|' ~ github_key ~ '|') not in project_state.seen %}
+                {% set project_state.seen = project_state.seen ~ github_key ~ '|' %}
+                {% if project_state.rendered %} <span>|</span> {% endif %}
                 {% set project_label = 'Link' %}
                 {% if 'github' in github_url|lower or 'github.com' in github_url|lower %}
                   {% set project_label = 'GitHub' %}
@@ -466,12 +477,15 @@
                   {% set project_label = 'Kaggle' %}
                 {% endif %}
                 <a href="{{ github_url }}">{{ project_label }}</a>
+                {% set project_state.rendered = true %}
               {% endif %}
             {% endif %}
             {% if project.url %}
               {% set project_url = project.url if project.url.startswith(('http://', 'https://')) else 'https://' ~ project.url %}
-              {% if project_url != project_state.primary and project_url != project.github_link %}
-                {% if project_state.primary or project.github_link %} <span>|</span> {% endif %}
+              {% set project_key = project_url|lower %}
+              {% if project_key and ('|' ~ project_key ~ '|') not in project_state.seen %}
+                {% set project_state.seen = project_state.seen ~ project_key ~ '|' %}
+                {% if project_state.rendered %} <span>|</span> {% endif %}
                 {% set project_label = 'Link' %}
                 {% if 'github' in project_url|lower or 'github.com' in project_url|lower %}
                   {% set project_label = 'GitHub' %}
@@ -479,6 +493,7 @@
                   {% set project_label = 'Kaggle' %}
                 {% endif %}
                 <a href="{{ project_url }}">{{ project_label }}</a>
+                {% set project_state.rendered = true %}
               {% endif %}
             {% endif %}
           </div>

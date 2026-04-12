@@ -617,7 +617,7 @@
               {% for raw_url in project_sources %}
                 {% if raw_url %}
                   {% set project_url = raw_url if raw_url.startswith(('http://', 'https://')) else 'https://' ~ raw_url %}
-                  {% if project_url != project_state.seen %}
+                  {% if ('|' ~ project_url ~ '|') not in project_state.seen %}
                     {% set project_label = 'Link' %}
                     {% if 'github' in project_url|lower or 'github.com' in project_url|lower %}
                       {% set project_label = 'GitHub' %}
@@ -626,7 +626,7 @@
                     {% endif %}
                     {% if project_state.seen %} <span>|</span> {% endif %}
                     <a href="{{ project_url }}" target="_blank" rel="noopener noreferrer">{{ project_label }}</a>
-                    {% set project_state.seen = project_url %}
+                    {% set project_state.seen = project_state.seen ~ '|' ~ project_url ~ '|' %}
                   {% endif %}
                 {% endif %}
               {% endfor %}

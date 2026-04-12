@@ -436,39 +436,76 @@
                     {% endfor %}
                   </ul>
                 {% endif %}
-                {% if project.github_link or project.github_display or project.github or project.links %}
+                {% if project.render_links or project.github_link or project.github_display or project.github or project.links %}
                   <div class="project-links">
-                    {% set project_state = namespace(seen='') %}
-                    {% set project_sources = [] %}
-                    {% if project.github_link or project.github_display or project.github %}
-                      {% set project_sources = project_sources + [project.github_link or project.github_display or project.github or ''] %}
-                    {% endif %}
-                    {% if project.links %}
-                      {% for link in project.links %}
-                        {% set project_sources = project_sources + [link.href or link.display or link.label or ''] %}
+                    {% set project_state = namespace(seen='|', rendered=false) %}
+                    {% if project.render_links %}
+                      {% for link in project.render_links %}
+                        {% set project_url = link.href or link.display or link.label or '' %}
+                        {% set project_key = project_url|lower %}
+                        {% if project_url and ('|' ~ project_key ~ '|') not in project_state.seen %}
+                          {% set project_state.seen = project_state.seen ~ project_key ~ '|' %}
+                          {% if project_state.rendered %} <span>|</span> {% endif %}
+                          {% set project_label = link.label or 'Link' %}
+                          <a href="{{ project_url }}" target="_blank" rel="noopener noreferrer">{{ project_label }}</a>
+                          {% set project_state.rendered = true %}
+                        {% endif %}
                       {% endfor %}
-                    {% endif %}
-                    {% if project.url %}
-                      {% set project_sources = project_sources + [project.url] %}
-                    {% endif %}
-                    {% for project_url_raw in project_sources %}
-                      {% if project_url_raw %}
+                    {% else %}
+                      {% if project.github_link or project.github_display or project.github %}
+                        {% set project_url_raw = project.github_link or project.github_display or project.github or '' %}
                         {% set project_url = project_url_raw if project_url_raw.startswith(('http://', 'https://')) else 'https://' ~ project_url_raw %}
-                        {% if project_url != project_state.seen %}
+                        {% set project_key = project_url|lower %}
+                        {% if project_url and ('|' ~ project_key ~ '|') not in project_state.seen %}
+                          {% set project_state.seen = project_state.seen ~ project_key ~ '|' %}
+                          {% if project_state.rendered %} <span>|</span> {% endif %}
                           {% set project_label = 'Link' %}
                           {% if 'github' in project_url|lower or 'github.com' in project_url|lower %}
                             {% set project_label = 'GitHub' %}
                           {% elif 'kaggle' in project_url|lower or 'kaggle.com' in project_url|lower %}
                             {% set project_label = 'Kaggle' %}
                           {% endif %}
-                          {% if project_state.seen %}
-                            <span>|</span>
-                          {% endif %}
                           <a href="{{ project_url }}" target="_blank" rel="noopener noreferrer">{{ project_label }}</a>
-                          {% set project_state.seen = project_url %}
+                          {% set project_state.rendered = true %}
                         {% endif %}
                       {% endif %}
-                    {% endfor %}
+                      {% if project.links %}
+                        {% for link in project.links %}
+                          {% set project_url_raw = link.href or link.display or link.label or '' %}
+                          {% set project_url = project_url_raw if project_url_raw.startswith(('http://', 'https://')) else 'https://' ~ project_url_raw %}
+                          {% set project_key = project_url|lower %}
+                          {% if project_url and ('|' ~ project_key ~ '|') not in project_state.seen %}
+                            {% set project_state.seen = project_state.seen ~ project_key ~ '|' %}
+                            {% if project_state.rendered %} <span>|</span> {% endif %}
+                            {% set project_label = 'Link' %}
+                            {% if 'github' in project_url|lower or 'github.com' in project_url|lower %}
+                              {% set project_label = 'GitHub' %}
+                            {% elif 'kaggle' in project_url|lower or 'kaggle.com' in project_url|lower %}
+                              {% set project_label = 'Kaggle' %}
+                            {% endif %}
+                            <a href="{{ project_url }}" target="_blank" rel="noopener noreferrer">{{ project_label }}</a>
+                            {% set project_state.rendered = true %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                      {% if project.url %}
+                        {% set project_url_raw = project.url %}
+                        {% set project_url = project_url_raw if project_url_raw.startswith(('http://', 'https://')) else 'https://' ~ project_url_raw %}
+                        {% set project_key = project_url|lower %}
+                        {% if project_url and ('|' ~ project_key ~ '|') not in project_state.seen %}
+                          {% set project_state.seen = project_state.seen ~ project_key ~ '|' %}
+                          {% if project_state.rendered %} <span>|</span> {% endif %}
+                          {% set project_label = 'Link' %}
+                          {% if 'github' in project_url|lower or 'github.com' in project_url|lower %}
+                            {% set project_label = 'GitHub' %}
+                          {% elif 'kaggle' in project_url|lower or 'kaggle.com' in project_url|lower %}
+                            {% set project_label = 'Kaggle' %}
+                          {% endif %}
+                          <a href="{{ project_url }}" target="_blank" rel="noopener noreferrer">{{ project_label }}</a>
+                          {% set project_state.rendered = true %}
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
                   </div>
                 {% endif %}
               </article>
