@@ -25,7 +25,7 @@ pypdf>=4.0.0
 # Markdown processing
 markdown>=3.5.0
 
-# Development dependencies (optional, can be removed for production)
+# Production dependencies 
 # jupyterlab
 # ipykernel
 # ipywidgets
