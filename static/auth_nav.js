@@ -64,8 +64,15 @@
 
     if (logoutBtn) {
       logoutBtn.addEventListener("click", function () {
-        clearStoredUser();
-        window.location.href = "/";
+        fetch('/logout', {method: 'POST'})
+        .then(() => {
+          clearStoredUser();
+          window.location.href = "/";
+        })
+        .catch(() => {
+          clearStoredUser();
+          window.location.href = "/";
+        });
       });
     }
   }
