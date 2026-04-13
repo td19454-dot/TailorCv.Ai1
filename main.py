@@ -8,8 +8,11 @@ import smtplib
 from secrets import token_hex
 from datetime import datetime, timedelta
 from email.message import EmailMessage
+import uuid
 
 import pdfplumber
+import tempfile
+import shutil
 import uvicorn
 from dotenv import load_dotenv
 from pydantic import ValidationError
@@ -18,6 +21,7 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from starlette.background import BackgroundTask
 from sqlalchemy.orm import Session
 from auth import hash_password, verify_password
 from database import Base, SessionLocal, engine
@@ -89,6 +93,19 @@ async def startup_event() -> None:
 
 def get_db() -> Session:
     return SessionLocal()
+
+
+def _cleanup_files(file_paths: list[str]) -> None:
+    for path in file_paths:
+        try:
+            if path and os.path.exists(path):
+                os.remove(path)
+        except OSError:
+            pass
+
+
+MAX_CONCURRENT_REQUESTS = int(os.getenv("MAX_CONCURRENT_REQUESTS", "4"))
+request_semaphore = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
 
 
 def get_email_settings() -> tuple[str, int, str, str, str]:
@@ -877,7 +894,7 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
             "school": school,
             "year": year,
             "score": score,
-            "links": str(edu.get("links", "")).strip(),
+            "links": normalize_url(str(edu.get("links", "")).strip()),
         })
 
     certifications = []
@@ -888,7 +905,7 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
             "name": str(cert.get("name", "")).strip(),
             "issuer": str(cert.get("issuer", "")).strip(),
             "year": str(cert.get("year", "")).strip(),
-            "url": str(cert.get("url", "")).strip(),
+            "url": normalize_url(str(cert.get("url", "")).strip()),
         })
 
     extracurriculars = []
@@ -900,7 +917,7 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
             "organization": str(item.get("organization", "")).strip(),
             "dates": str(item.get("dates", "")).strip(),
             "bullets": normalize_list_of_strings(item.get("bullets", [])),
-            "url": str(item.get("url", "")).strip(),
+            "url": normalize_url(str(item.get("url", "")).strip()),
         })
 
     publications = []
@@ -911,7 +928,7 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
             "title": str(item.get("title", "")).strip(),
             "publisher": str(item.get("publisher", "")).strip(),
             "year": str(item.get("year", "")).strip(),
-            "url": str(item.get("url", "")).strip(),
+            "url": normalize_url(str(item.get("url", "")).strip()),
         })
 
     raw_skills = []
@@ -1271,150 +1288,120 @@ async def reset_password(request: Request):
 async def upload_resume(request: Request, jd_string: str, file: UploadFile = File(...), template_id: int = 1, style_id: int = 1):
     """Upload a resume PDF file and JD with selected template and style"""
     file_path = None
+    pdf_path = None
+    response = None
     try:
         file_path = save_uploaded_pdf(file)
         with open(file_path, "wb") as f:
             content = await file.read()
             f.write(content)
 
-        resume_string = extract_pdf_text(file_path)
-        # Try to recover URLs that might be lost behind PDF hyperlink icons.
-        normalized_resume_string = normalize_links(resume_string)
-        # IMPORTANT: Only consider URLs from the Projects section, otherwise contact links
-        # (gmail/leetcode/linkedin) get incorrectly attached to projects.
-        extracted_links = extract_project_links(normalized_resume_string)
-        mapped_links = map_project_demo_links(normalized_resume_string)
-        project_link_map = extract_project_link_map(normalized_resume_string)
+        async with request_semaphore:
+            resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
+            normalized_resume_string = normalize_links(resume_string)
+            extracted_links = extract_project_links(normalized_resume_string)
+            mapped_links = map_project_demo_links(normalized_resume_string)
+            project_link_map = extract_project_link_map(normalized_resume_string)
 
-        prompt = create_prompt(resume_string, jd_string)
-
-        try:
-            response_string = get_resume_response(prompt)
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"AI generation error: {e}")
-
-        # The AI should return a JSON string following the schema in `functions.create_prompt`.
-        parsed = parse_ai_json_response(response_string)
-        # Extract *actual clickable* PDF hyperlinks and map them to project names.
-        pdf_project_link_map = extract_project_links_from_pdf(
-            file_path,
-            [p.get("name") for p in (parsed.get("projects") or []) if isinstance(p, dict)],
-        )
-        # Prefer PDF annotation mapping; fallback to text-based project mapping if needed.
-        effective_map = pdf_project_link_map or project_link_map
-        parsed = inject_links(parsed, effective_map, mapped_links)
-
-        # Basic validation: ensure some expected keys are present
-        # expected_keys = ["name", "contact", "summary", "experience", "skills"]
-        # ok = any(k in parsed for k in expected_keys)
-        # if not ok:
-        #     raise HTTPException(status_code=500, detail="AI response JSON missing expected resume fields")
-
-        # try:
-        #     original_ats = parse_ai_json_response(ats_scoring(resume_string, jd_string))
-        #     optimized_resume_text = build_resume_plain_text(parsed)
-        #     optimized_ats = parse_ai_json_response(ats_scoring(optimized_resume_text, jd_string))
-        # except HTTPException:
-        #     raise
-        # except Exception as e:
-        #     raise HTTPException(status_code=500, detail=f"Failed to score optimized resume: {e}")
-
-        use_default_template = template_id == 0
-        template_content = None
-
-        # Load the selected template
-        if not use_default_template:
-            template_filename = f"template{template_id}.html"
-            template_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "html", template_filename)
-
+            prompt = create_prompt(resume_string, jd_string)
             try:
-                with open(template_path, 'r', encoding='utf-8') as f:
-                    template_content = f.read()
-            except FileNotFoundError:
-                # Fall back to default resume_template if selected not found
-                try:
-                    template = templates.env.get_template('resume_template.html')
-                    use_default_template = True
-                except Exception:
-                    raise HTTPException(status_code=500, detail=f"Template {template_filename} not found")
-        else:
-            template = templates.env.get_template('resume_template.html')
-        
-        # Keep template 6 on a fixed stylesheet so its look stays stable.
-        if template_id == 6:
-            style_filename = "style3.css"
-        elif template_id < 7:
-            style_filename = f"style{style_id}.css"
-        else:
-            style_filename = ""
+                response_string = await asyncio.to_thread(get_resume_response, prompt)
+            except Exception as e:
+                raise HTTPException(status_code=500, detail=f"AI generation error: {e}")
 
-        css_content = ""
-        if style_filename:
-            style_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "css", style_filename)
+            parsed = parse_ai_json_response(response_string)
+            pdf_project_link_map = await asyncio.to_thread(
+                extract_project_links_from_pdf,
+                file_path,
+                [p.get("name") for p in (parsed.get("projects") or []) if isinstance(p, dict)],
+            )
+            effective_map = pdf_project_link_map or project_link_map
+            parsed = inject_links(parsed, effective_map, mapped_links)
 
-            try:
-                with open(style_path, 'r', encoding='utf-8') as f:
-                    css_content = f.read()
-            except FileNotFoundError:
-                # Fall back to default style.css if selected not found
-                default_style_path = os.path.join(BASE_DIR, 'resumes', 'style.css')
+            use_default_template = template_id == 0
+            template_content = None
+
+            if not use_default_template:
+                template_filename = f"template{template_id}.html"
+                template_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "html", template_filename)
                 try:
-                    with open(default_style_path, 'r', encoding='utf-8') as f:
+                    with open(template_path, 'r', encoding='utf-8') as f:
+                        template_content = f.read()
+                except FileNotFoundError:
+                    try:
+                        template = templates.env.get_template('resume_template.html')
+                        use_default_template = True
+                    except Exception:
+                        raise HTTPException(status_code=500, detail=f"Template {template_filename} not found")
+            else:
+                template = templates.env.get_template('resume_template.html')
+
+            if template_id == 6:
+                style_filename = "style3.css"
+            elif template_id < 7:
+                style_filename = f"style{style_id}.css"
+            else:
+                style_filename = ""
+
+            css_content = ""
+            if style_filename:
+                style_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "css", style_filename)
+                try:
+                    with open(style_path, 'r', encoding='utf-8') as f:
                         css_content = f.read()
                 except FileNotFoundError:
-                    pass
+                    default_style_path = os.path.join(BASE_DIR, 'resumes', 'style.css')
+                    try:
+                        with open(default_style_path, 'r', encoding='utf-8') as f:
+                            css_content = f.read()
+                    except FileNotFoundError:
+                        pass
 
-        # Prepare context
-        context = build_resume_context(parsed, jd_string)
-
-        # Render template
-        if not use_default_template and template_content:
-            # Use loaded template file
-            from jinja2 import Template as Jinja2Template
-            jinja_template = Jinja2Template(template_content)
-            html_content = jinja_template.render(**context)
-            # Replace stylesheet placeholder with inline CSS
-            html_content = html_content.replace('href="STYLESHEET_PLACEHOLDER"', '')
-            # Add CSS inline before closing head for the older themed templates.
-            if css_content:
-                html_content = html_content.replace('</head>', f'<style>{css_content}</style></head>')
-        else:
-            # Use default resume_template.html
-            template = templates.env.get_template('resume_template.html')
-            html_content = template.render(**context)
-
-        output_pdf_file = os.path.join(resumes_dir, "optimized_resume.pdf")
-        try:
-            from weasyprint import HTML
-
-            # If using custom template, CSS is already inlined
+            context = build_resume_context(parsed, jd_string)
             if not use_default_template and template_content:
-                HTML(string=html_content).write_pdf(output_pdf_file)
+                from jinja2 import Template as Jinja2Template
+                jinja_template = Jinja2Template(template_content)
+                html_content = jinja_template.render(**context)
+                html_content = html_content.replace('href="STYLESHEET_PLACEHOLDER"', '')
+                if css_content:
+                    html_content = html_content.replace('</head>', f'<style>{css_content}</style></head>')
             else:
-                # If using default, use stylesheet
-                css_path = os.path.join(resumes_dir, 'style.css')
-                HTML(string=html_content).write_pdf(output_pdf_file, stylesheets=[css_path])
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+                template = templates.env.get_template('resume_template.html')
+                html_content = template.render(**context)
 
-        pdf_path = output_pdf_file
-        if not os.path.exists(pdf_path):
-            raise HTTPException(status_code=404, detail="PDF file not found after generation")
+            pdf_path = os.path.join(resumes_dir, f"optimized_resume_{uuid.uuid4()}.pdf")
 
-        wants_meta = request.headers.get("X-Return-Meta", "").lower() == "true"
-        if wants_meta:
-            return JSONResponse({
-                "success": True,
-                "download_url": "/download-optimized-resume",
-                # "original_ats": original_ats,
-                # "optimized_ats": optimized_ats,
-            })
+            def _render_pdf():
+                from weasyprint import HTML
+                if not use_default_template and template_content:
+                    HTML(string=html_content).write_pdf(pdf_path)
+                else:
+                    css_path = os.path.join(resumes_dir, 'style.css')
+                    HTML(string=html_content).write_pdf(pdf_path, stylesheets=[css_path])
 
-        return FileResponse(
-            pdf_path,
-            media_type="application/pdf",
-            filename="optimized_resume.pdf"
-        )
+            try:
+                await asyncio.to_thread(_render_pdf)
+            except Exception as e:
+                raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+
+            if not os.path.exists(pdf_path):
+                raise HTTPException(status_code=404, detail="PDF file not found after generation")
+
+            wants_meta = request.headers.get("X-Return-Meta", "").lower() == "true"
+            if wants_meta:
+                response = JSONResponse({
+                    "success": True,
+                    "download_url": "/download-optimized-resume",
+                })
+            else:
+                response = FileResponse(
+                    pdf_path,
+                    media_type="application/pdf",
+                    filename="optimized_resume.pdf",
+                    background=BackgroundTask(_cleanup_files, [pdf_path])
+                )
+
+            return response
     except HTTPException:
         raise
     except Exception as e:
@@ -1422,6 +1409,8 @@ async def upload_resume(request: Request, jd_string: str, file: UploadFile = Fil
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
+        if pdf_path and os.path.exists(pdf_path) and not isinstance(response, FileResponse):
+            os.remove(pdf_path)
 
 @app.post("/get-ats-score")
 async def get_score(jd_string: str, file: UploadFile = File(...)):
@@ -1432,8 +1421,11 @@ async def get_score(jd_string: str, file: UploadFile = File(...)):
         with open(file_path, "wb") as f:
             content = await file.read()
             f.write(content)
-        resume_string = extract_pdf_text(file_path)
-        ats_score = ats_scoring(resume_string, jd_string)
+
+        async with request_semaphore:
+            resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
+            ats_score = await asyncio.to_thread(ats_scoring, resume_string, jd_string)
+
         return parse_ai_json_response(ats_score)
     except HTTPException:
         raise
@@ -1445,8 +1437,11 @@ async def get_score(jd_string: str, file: UploadFile = File(...)):
 
 
 @app.get("/download-optimized-resume")
-async def download_optimized_resume():
-    pdf_path = os.path.join(resumes_dir, "optimized_resume.pdf")
+async def download_optimized_resume(file_name: str | None = None):
+    if not file_name:
+        raise HTTPException(status_code=400, detail="A file_name query parameter is required")
+
+    pdf_path = os.path.join(resumes_dir, os.path.basename(file_name))
     if not os.path.exists(pdf_path):
         raise HTTPException(status_code=404, detail="Optimized resume PDF not found")
     return FileResponse(
