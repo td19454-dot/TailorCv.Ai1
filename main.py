@@ -41,9 +41,20 @@ from models import PasswordResetToken, SignupVerificationCode, User
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 
 
+from starlette.middleware.sessions import SessionMiddleware
+
 app = FastAPI(title="Resume Optimizer Backend")
 logger = logging.getLogger(__name__)
 db_init_status = {"ok": None, "error": None}
+
+# Add session middleware
+app.add_middleware(SessionMiddleware, secret_key=os.getenv("SECRET_KEY", "your-secret-key"))
+
+# Add global exception handler for logging
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    logger.exception(f"Unhandled exception: {exc}")
+    return JSONResponse(status_code=500, content={"detail": "Internal server error"})
 
 # Add CORS middleware to allow frontend requests
 app.add_middleware(
@@ -1177,6 +1188,9 @@ async def signup_user(request: Request):
         db.commit()
         db.refresh(user)
 
+        request.session['user_id'] = user.id
+        request.session['email'] = user.email
+
         return JSONResponse(
             {
                 "success": True,
@@ -1201,6 +1215,9 @@ async def login_user(request: Request):
         if not user or not verify_password(payload.password, user.hashed_password):
             raise HTTPException(status_code=401, detail="Invalid email or password")
 
+        request.session['user_id'] = user.id
+        request.session['email'] = user.email
+
         return JSONResponse(
             {
                 "success": True,
@@ -1210,6 +1227,13 @@ async def login_user(request: Request):
         )
     finally:
         db.close()
+
+
+@app.post("/logout")
+async def logout(request: Request):
+    print("Session before clear:", dict(request.session))
+    request.session.clear()
+    return JSONResponse({"success": True})
 
 
 @app.post("/api/login/verify")
@@ -1314,6 +1338,11 @@ async def reset_password(request: Request):
 @app.post("/get-optimised-resume")
 async def upload_resume(request: Request, jd_string: str, file: UploadFile = File(...), template_id: int = 1, style_id: int = 1):
     """Upload a resume PDF file and JD with selected template and style"""
+    user_id = request.session.get('user_id')
+    print("Session:", dict(request.session))
+    if not user_id:
+        return JSONResponse(status_code=401, content={"error": "Not logged in"})
+    
     file_path = None
     pdf_path = None
     response = None
