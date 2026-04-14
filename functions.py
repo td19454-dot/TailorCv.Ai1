@@ -6,7 +6,7 @@ from openai import AsyncOpenAI
 import re
 import json
 import asyncio
-from tenacity import retry, stop_after_attempt, wait_exponential_multiplicative
+from tenacity import retry, stop_after_attempt, wait_exponential
 
 
 def normalize_links(text):
