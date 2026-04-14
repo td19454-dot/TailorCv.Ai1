@@ -2128,3 +2128,83 @@ header {
 .comparison-grid {
     display: none !important;
 }
+
+/* Login required modal */
+.login-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    backdrop-filter: blur(4px);
+}
+
+.login-modal {
+    width: min(420px, 92vw);
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 18px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(148, 163, 184, 0.15);
+    padding: 24px 22px;
+    text-align: center;
+    animation: modal-pop 160ms ease-out;
+}
+
+.login-modal h3 {
+    font-size: 1.3rem;
+    margin: 0 0 10px;
+    color: #f8fafc;
+}
+
+.login-modal p {
+    margin: 0 0 18px;
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+.login-modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.login-modal .btn-link {
+    padding: 12px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 120ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.login-modal .btn-primary-link {
+    background: linear-gradient(120deg, #6366f1, #8b5cf6);
+    color: #f8fafc;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+}
+
+.login-modal .btn-secondary-link {
+    background: rgba(148, 163, 184, 0.12);
+    color: #e2e8f0;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.login-modal .btn-link:hover {
+    transform: translateY(-1px);
+}
+
+@keyframes modal-pop {
+    from {
+        transform: translateY(8px) scale(0.98);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
