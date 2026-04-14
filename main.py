@@ -1365,7 +1365,7 @@ async def upload_resume(request: Request, jd_string: str, file: UploadFile = Fil
 
             prompt = create_prompt(resume_string, jd_string)
             try:
-                response_string = await asyncio.to_thread(get_resume_response, prompt)
+                response_string = await get_resume_response(prompt)
             except Exception as e:
                 raise HTTPException(status_code=500, detail=f"AI generation error: {e}")
 
