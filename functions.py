@@ -612,7 +612,7 @@ Job Description:
 """
 @retry(
     stop=stop_after_attempt(5),
-    wait=wait_exponential_multiplicative(multiplier=1, min=4, max=60)
+    wait=wait_exponential(multiplier=1, min=4, max=60)
 )
 async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0.1) -> str:
     """
