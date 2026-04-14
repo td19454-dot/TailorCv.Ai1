@@ -16,7 +16,7 @@ import shutil
 import uvicorn
 from dotenv import load_dotenv
 from pydantic import ValidationError
-from fastapi import FastAPI, File, HTTPException, Request, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -1339,8 +1339,20 @@ async def reset_password(request: Request):
 
 
 @app.post("/get-optimised-resume")
-async def upload_resume(request: Request, jd_string: str, file: UploadFile = File(...), template_id: int = 1, style_id: int = 1):
+async def upload_resume(
+    request: Request,
+    jd_string: str | None = Form(None),
+    file: UploadFile = File(...),
+    template_id: int | None = Form(1),
+    style_id: int | None = Form(1),
+):
     """Upload a resume PDF file and JD with selected template and style"""
+    if jd_string is None:
+        jd_string = request.query_params.get("jd_string", "")
+    if template_id is None:
+        template_id = int(request.query_params.get("template_id", 1))
+    if style_id is None:
+        style_id = int(request.query_params.get("style_id", 1))
     user_id = request.session.get('user_id')
     print("Session:", dict(request.session))
     if not user_id:

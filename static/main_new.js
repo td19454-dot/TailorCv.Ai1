@@ -295,19 +295,24 @@ async function handleResumeOptimization() {
 
     const formData = new FormData();
     formData.append('file', fileInput.files[0]);
-    const jdString = encodeURIComponent(jdInput.value.trim());
+    formData.append('jd_string', jdInput.value.trim());
     
     // Using ID 1 for style as default if not explicitly selected
     const templateId = selectedTemplate.id;
     const styleId = selectedStyle; 
+    formData.append('template_id', templateId);
+    formData.append('style_id', styleId);
 
     try {
-        const response = await fetch(`/get-optimised-resume?jd_string=${jdString}&template_id=${templateId}&style_id=${styleId}`, {
+        const response = await fetch(`/get-optimised-resume`, {
             method: 'POST',
             body: formData
         });
 
-        if (!response.ok) throw new Error('Optimization failed');
+        if (!response.ok) {
+            const text = await response.text();
+            throw new Error(text || 'Optimization failed');
+        }
 
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
