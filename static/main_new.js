@@ -273,6 +273,38 @@ function triggerPdfDownload(pdfUrl, filename) {
     document.body.removeChild(link);
 }
 
+function showLoginRequiredModal() {
+    // Create once and reuse
+    let overlay = document.getElementById('login-required-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'login-required-overlay';
+        overlay.className = 'login-modal-overlay';
+        overlay.innerHTML = `
+            <div class="login-modal" role="dialog" aria-modal="true">
+                <h3>Login Required</h3>
+                <p>You need to log in before optimizing your resume. Please sign in to continue.</p>
+                <div class="login-modal-actions">
+                    <a class="btn-link btn-primary-link" href="/login">Go to Login</a>
+                    <button type="button" class="btn-link btn-secondary-link" id="login-modal-close">Maybe Later</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const closeBtn = overlay.querySelector('#login-modal-close');
+        closeBtn?.addEventListener('click', () => {
+            overlay.remove();
+        });
+
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                overlay.remove();
+            }
+        });
+    }
+}
+
 // Handle Resume Optimization
 async function handleResumeOptimization() {
     const fileInput = document.getElementById('resume-file');
@@ -311,7 +343,9 @@ async function handleResumeOptimization() {
 
         if (!response.ok) {
             const text = await response.text();
-            throw new Error(text || 'Optimization failed');
+            const error = new Error(text || 'Optimization failed');
+            error.status = response.status;
+            throw error;
         }
 
         const blob = await response.blob();
@@ -327,7 +361,12 @@ async function handleResumeOptimization() {
         optimizeResults.style.display = 'none';
         resultsSection.style.display = 'none';
         templateSection.style.display = 'block';
-        alert(`Optimization failed: ${error.message}`);
+        const message = (error.message || '').toLowerCase();
+        if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
+            showLoginRequiredModal();
+        } else {
+            alert(`Optimization failed: ${error.message}`);
+        }
     } finally {
         confirmBtn.disabled = false;
         confirmBtn.textContent = 'Confirm & Generate PDF';
