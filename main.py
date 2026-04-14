@@ -15,6 +15,8 @@ import tempfile
 import shutil
 import uvicorn
 from dotenv import load_dotenv
+from google.oauth2 import id_token
+from google.auth.transport import requests as google_requests
 from pydantic import ValidationError
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
@@ -76,6 +78,7 @@ templates_dir = os.path.join(BASE_DIR, "templates")
 static_dir = os.path.join(BASE_DIR, "static")
 uploads_dir = os.path.join(BASE_DIR, "uploads")
 resumes_dir = os.path.join(BASE_DIR, "resumes")
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "").strip()
 
 # Ensure directories exist
 os.makedirs(uploads_dir, exist_ok=True)
@@ -1082,41 +1085,72 @@ async def health_check():
 @app.get("/", response_class=HTMLResponse)
 async def landing_page(request: Request):
     """Landing page inspired by Tsenta marketing site."""
-    return templates.TemplateResponse(request, "index.html")
+    return templates.TemplateResponse(
+        request,
+        "index.html",
+        {"request": request},
+    )
 
 
 @app.get("/solutions", response_class=HTMLResponse)
 async def solutions_page(request: Request):
     """Solutions page where users upload resume & JD."""
-    return templates.TemplateResponse(request, "solutions.html")
+    return templates.TemplateResponse(
+        request,
+        "solutions.html",
+        {"request": request},
+    )
 
 
 @app.get("/login", response_class=HTMLResponse)
 async def login_page(request: Request):
     """Login page."""
-    return templates.TemplateResponse(request, "login.html")
+    return templates.TemplateResponse(
+        request,
+        "login.html",
+        {
+            "request": request,
+            "google_client_id": GOOGLE_CLIENT_ID,
+        },
+    )
 
 
 @app.get("/signup", response_class=HTMLResponse)
 async def signup_page(request: Request):
     """Signup page."""
-    return templates.TemplateResponse(request, "signup.html")
+    return templates.TemplateResponse(
+        request,
+        "signup.html",
+        {"request": request},
+    )
 
 
 @app.get("/forgot-password", response_class=HTMLResponse)
 async def forgot_password_page(request: Request):
-    return templates.TemplateResponse(request, "forgot_password.html")
+    return templates.TemplateResponse(
+        request,
+        "forgot_password.html",
+        {"request": request},
+    )
 
 
 @app.get("/reset-password", response_class=HTMLResponse)
 async def reset_password_page(request: Request):
-    return templates.TemplateResponse(request, "reset_password.html")
+    return templates.TemplateResponse(
+        request,
+        "reset_password.html",
+        {"request": request},
+    )
 
 
 @app.get("/about", response_class=HTMLResponse)
 async def about_page(request: Request):
     """About page for the marketing frontend."""
-    return templates.TemplateResponse(request, "aboutus.html")
+    return templates.TemplateResponse(
+        request,
+        "aboutus.html",
+        {"request": request},
+    )
 
 
 @app.post("/api/signup/request-code")
@@ -1220,6 +1254,54 @@ async def login_user(request: Request):
 
         request.session['user_id'] = user.id
         request.session['email'] = user.email
+
+        return JSONResponse(
+            {
+                "success": True,
+                "message": "Login successful",
+                "user": {"id": user.id, "name": user.name, "email": user.email},
+            }
+        )
+    finally:
+        db.close()
+
+
+@app.post("/api/login/google")
+async def login_with_google(request: Request):
+    """Verify a Google ID token and log the user in (create user if first time)."""
+    body = await request.json()
+    token = body.get("credential") or body.get("id_token") or body.get("token")
+
+    if not GOOGLE_CLIENT_ID:
+        raise HTTPException(status_code=500, detail="Google login is not configured on this server.")
+
+    if not token:
+        raise HTTPException(status_code=400, detail="Missing Google credential.")
+
+    try:
+        idinfo = id_token.verify_oauth2_token(token, google_requests.Request(), GOOGLE_CLIENT_ID)
+    except Exception:
+        logger.exception("Google token verification failed")
+        raise HTTPException(status_code=401, detail="Invalid Google token.")
+
+    email = (idinfo.get("email") or "").lower().strip()
+    if not email:
+        raise HTTPException(status_code=400, detail="Google account email is required.")
+
+    name = idinfo.get("name") or idinfo.get("given_name") or email.split("@")[0]
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.email == email).first()
+        if not user:
+            # Create a password placeholder so the column constraint is satisfied.
+            user = User(name=name, email=email, hashed_password=hash_password(token_hex(16)))
+            db.add(user)
+            db.commit()
+            db.refresh(user)
+
+        request.session["user_id"] = user.id
+        request.session["email"] = user.email
 
         return JSONResponse(
             {
