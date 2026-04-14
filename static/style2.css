@@ -1051,7 +1051,7 @@ header {
 }
 .template-image-container {
     width: 100%;
-    height: 380px; /* 🔥 increase height */
+    height: 520px; /* 🔥 increased image height */
     overflow: hidden;
     border-radius: 12px;
 }
@@ -1923,13 +1923,20 @@ header {
     padding: 20px 0;
 }
 
+.templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
 .template-card {
     background: linear-gradient(180deg, #0f4ea3 0%, #0a336d 100%);
     border-radius: 12px;
     overflow: hidden;
     border: 2px solid rgba(255, 255, 255, 0.14);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
     box-shadow: 0 10px 24px rgba(6, 24, 57, 0.28);
 }
 
@@ -1945,9 +1952,11 @@ header {
 
 .template-image-container {
     position: relative;
-    height: 250px;
+    width: 100%;
+    height: 520px;
     background: rgba(255, 255, 255, 0.08);
     overflow: hidden;
+    border-radius: 12px;
 }
 
 .template-img {
@@ -1955,6 +1964,7 @@ header {
     height: 100%;
     object-fit: cover;
     object-position: top;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .template-info {
@@ -1966,7 +1976,10 @@ header {
 
 .template-overlay {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(29, 78, 216, 0.78);
     display: flex;
     align-items: center;
@@ -1980,50 +1993,16 @@ header {
     opacity: 1;
 }
 
-
-.templates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* bigger cards */
-    gap: 20px;
-}
-
-.template-card {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.template-card:hover {
-    transform: scale(1.03);
-}
-
-.template-image-container {
-    width: 100%;
-    height: 380px; /* 🔥 increase height */
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-.template-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* keeps it clean */
-}
-
-
-.templates-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-}
-
-.template-image-container {
-    height: 500px;
-}
-.template-img {
-    transition: transform 0.3s ease;
-}
-
 .template-card:hover .template-img {
     transform: scale(1.1);
 }
+
+.template-card:hover .template-info,
+.template-card:hover .template-option-name,
+.template-card:hover .template-option-style {
+    color: #f8fbff;
+}
+
 
 @media (max-width: 1024px) {
     .templates-grid {
@@ -2031,7 +2010,7 @@ header {
     }
 
     .template-image-container {
-        height: 420px;
+        height: 620px;
     }
 }
 
@@ -2041,7 +2020,7 @@ header {
     }
 
     .template-image-container {
-        height: 320px;
+        height: 520px;
     }
 }
 
@@ -2051,7 +2030,7 @@ header {
     }
 
     .template-image-container {
-        height: 260px;
+        height: 420px;
     }
 }
 

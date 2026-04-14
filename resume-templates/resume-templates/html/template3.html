@@ -190,7 +190,7 @@
             <h2>Publications</h2>
             <ul class="bullet-list compact">
                 {% for publication in publications %}
-                <li>{{ publication.title }}{% if publication.publisher %}, {{ publication.publisher }}{% endif %}{% if publication.year %}, {{ publication.year }}{% endif %}{% if publication.url %} | {{ publication.url }}{% endif %}</li>
+                <li>{{ publication.title }}{% if publication.publisher %}, {{ publication.publisher }}{% endif %}{% if publication.year %}, {{ publication.year }}{% endif %}{% if publication.url %} | <a href="{{ publication.url }}">{{ publication.url }}</a>{% endif %}{% if publication.link and not publication.url %} | <a href="{{ publication.link }}">{{ publication.link }}</a>{% endif %}</li>
                 {% endfor %}
             </ul>
         </section>

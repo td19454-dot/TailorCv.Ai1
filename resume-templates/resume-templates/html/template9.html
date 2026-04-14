@@ -462,6 +462,7 @@
               <div>
                 <p class="entry-title">{{ publication.title }}</p>
                 {% if publication.publisher %}<p class="entry-subtitle">{{ publication.publisher }}</p>{% endif %}
+                {% if publication.url or publication.link %}<p class="entry-subtitle"><a href="{{ publication.url or publication.link }}">{{ publication.url or publication.link }}</a></p>{% endif %}
               </div>
               {% if publication.year %}<div class="entry-meta">{{ publication.year }}</div>{% endif %}
             </div>

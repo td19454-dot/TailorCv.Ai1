@@ -1,12 +1,12 @@
 import os
 from pathlib import Path
-
-import httpx
 import pdfplumber
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import AsyncOpenAI
 import re
 import json
+import asyncio
+from tenacity import retry, stop_after_attempt, wait_exponential_multiplicative
 
 
 def normalize_links(text):
@@ -270,85 +270,150 @@ def map_demo_links(text):
     return mapped
 
 
-def inject_links(data, links, mapped_links):
+def extract_publication_links(text: str) -> list[str]:
     """
-    Backfill missing project URLs in the AI JSON using URLs extracted from the original PDF text.
+    Extract publication-related URLs from the Publications section.
+    Includes DOI, arXiv, conference/journal URLs, and generic http links.
+    """
+    pub_block = _slice_section(
+        text,
+        start_markers=["publications", "selected publications"],
+        stop_markers=[
+            "technical skills",
+            "skills",
+            "education",
+            "experience",
+            "certifications",
+            "achievements",
+            "extracurricular",
+            "leadership",
+        ],
+    )
+    if not pub_block:
+        return []
 
-    Important: only fill projects that are missing their own project links. This avoids showing
+    normalized = normalize_links(pub_block)
+    links = extract_links(normalized)
+
+    # Allow publication-specific URLs
+    allow_substrings = (
+        "doi.org",
+        "arxiv.org",
+        "scholar.google.com",
+        "researchgate.net",
+        "github.com",
+    )
+
+    filtered = []
+    for url in links:
+        u = str(url).strip().lower()
+        # Keep publication-specific URLs
+        if any(sub in u for sub in allow_substrings):
+            filtered.append(url)
+        # Keep generic URLs (not contact info)
+        elif not any(blocked in u for blocked in ["gmail", "linkedin.com", "leetcode", "outlook", "yahoo"]):
+            filtered.append(url)
+    return filtered
+
+
+def inject_links(data, links, mapped_links, pub_links=None):
+    """
+    Backfill missing project and publication URLs in the AI JSON using URLs extracted from the original PDF text.
+
+    Important: only fill projects/publications that are missing their own links. This avoids showing
     unrelated URLs when the user/resume contains multiple projects/links.
     """
+    if pub_links is None:
+        pub_links = []
+    
     if not isinstance(data, dict):
         return data
+
+    # Handle Projects
     projects = data.get("projects")
-    if not isinstance(projects, list) or not projects:
-        return data
+    if isinstance(projects, list) and projects:
+        # Ensure every project has a "links" list for downstream rendering.
+        for project in projects:
+            if isinstance(project, dict):
+                project.setdefault("links", [])
 
-    # Ensure every project has a "links" list for downstream rendering.
-    for project in projects:
-        if isinstance(project, dict):
-            project.setdefault("links", [])
-
-    def _project_has_any_link(p: dict) -> bool:
-        if not isinstance(p, dict):
-            return False
-        if str(p.get("url") or "").strip():
-            return True
-        if str(p.get("github_link") or "").strip():
-            return True
-        # Check nested links array for any usable url.
-        for item in p.get("links") or []:
-            if not isinstance(item, dict):
-                continue
-            if str(item.get("url") or item.get("href") or item.get("link") or "").strip():
+        def _project_has_any_link(p: dict) -> bool:
+            if not isinstance(p, dict):
+                return False
+            if str(p.get("url") or "").strip():
                 return True
-        return False
-
-    for project in projects:
-        if not isinstance(project, dict):
-            continue
-        if _project_has_any_link(project):
-            continue
-
-        # Name-based injection first (prevents Gmail/LeetCode from landing under wrong projects).
-        pname = str(project.get("name", "")).strip().lower()
-        injected = False
-        if isinstance(links, dict):
-            # Backward-compatible: if `links` is actually a project_link_map, handle it.
-            project_link_map = links
-            for key, url_pairs in project_link_map.items():
-                k = str(key or "").strip().lower()
-                if not k:
+            if str(p.get("github_link") or "").strip():
+                return True
+            # Check nested links array for any usable url.
+            for item in p.get("links") or []:
+                if not isinstance(item, dict):
                     continue
-                if pname == k or pname in k or k in pname:
-                    for label, url in url_pairs:
+                if str(item.get("url") or item.get("href") or item.get("link") or "").strip():
+                    return True
+            return False
+
+        for project in projects:
+            if not isinstance(project, dict):
+                continue
+            if _project_has_any_link(project):
+                continue
+
+            # Name-based injection first (prevents Gmail/LeetCode from landing under wrong projects).
+            pname = str(project.get("name", "")).strip().lower()
+            injected = False
+            if isinstance(links, dict):
+                # Backward-compatible: if `links` is actually a project_link_map, handle it.
+                project_link_map = links
+                for key, url_pairs in project_link_map.items():
+                    k = str(key or "").strip().lower()
+                    if not k:
+                        continue
+                    if pname == k or pname in k or k in pname:
+                        for label, url in url_pairs:
+                            project.setdefault("links", []).append(
+                                {"label": str(label or "Link").strip(), "url": url}
+                            )
+                        injected = True
+                        break
+
+            # If name-based injection didn't happen, do nothing (safer than wrong links).
+            if not injected:
+                # Only inject sequentially when no name-map is provided.
+                if not isinstance(links, dict):
+                    # Prefer label-specific mapped links (typically coming from "Live Demo ↗" style lines).
+                    # (order-based fallback - used only when name-map isn't available)
+                    if mapped_links:
+                        label, url = mapped_links[0]
                         project.setdefault("links", []).append(
                             {"label": str(label or "Link").strip(), "url": url}
                         )
-                    injected = True
-                    break
+                        # Consume first mapping so next project doesn't get same link repeatedly
+                        mapped_links = mapped_links[1:]
 
-        # If name-based injection didn't happen, do nothing (safer than wrong links).
-        if not injected:
-            # Only inject sequentially when no name-map is provided.
-            if not isinstance(links, dict):
-                # Prefer label-specific mapped links (typically coming from "Live Demo ↗" style lines).
-                # (order-based fallback - used only when name-map isn't available)
-                if mapped_links:
-                    label, url = mapped_links[0]
-                    project.setdefault("links", []).append(
-                        {"label": str(label or "Link").strip(), "url": url}
-                    )
-                    # Consume first mapping so next project doesn't get same link repeatedly
-                    mapped_links = mapped_links[1:]
+                    # If still empty and there are extracted URLs, use next one.
+                    elif links:
+                        # `links` might be a list[str] of URLs
+                        if isinstance(links, list) and links:
+                            url = links[0]
+                            mapped_links = mapped_links
+                            project.setdefault("links", []).append({"label": "Project Link", "url": url})
+                            links = links[1:]
 
-                # If still empty and there are extracted URLs, use next one.
-                elif links:
-                    # `links` might be a list[str] of URLs
-                    if isinstance(links, list) and links:
-                        url = links[0]
-                        mapped_links = mapped_links
-                        project.setdefault("links", []).append({"label": "Project Link", "url": url})
-                        links = links[1:]
+    # Handle Publications
+    publications = data.get("publications")
+    if isinstance(publications, list) and publications and pub_links:
+        pub_link_idx = 0
+        for pub in publications:
+            if not isinstance(pub, dict):
+                continue
+            # Skip if publication already has a URL
+            if str(pub.get("url") or "").strip():
+                continue
+
+            # Inject next available publication link
+            if pub_link_idx < len(pub_links):
+                pub["url"] = pub_links[pub_link_idx]
+                pub_link_idx += 1
 
     return data
 
@@ -356,15 +421,17 @@ BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(dotenv_path=BASE_DIR / ".env")
 
 
-def _build_openai_client():
+async def _build_openai_client():
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError(
             "OPENAI_API_KEY is not set. Add it to your .env file before using ATS analysis or resume optimization."
         )
-    # Ignore broken system proxy settings when talking to OpenAI.
-    http_client = httpx.Client(trust_env=False, timeout=60.0)
-    return OpenAI(api_key=api_key, http_client=http_client, max_retries=2)
+    return AsyncOpenAI(
+        api_key=api_key,
+        timeout=120.0,
+        max_retries=3
+    )
 
 
 def _normalize_openai_error(exc: Exception) -> RuntimeError:
@@ -543,41 +610,28 @@ Job Description:
 {jd_string}
 
 """
-def get_resume_response(prompt,model="gpt-4o-mini",temperature: float = 0.1):
+@retry(
+    stop=stop_after_attempt(5),
+    wait=wait_exponential_multiplicative(multiplier=1, min=4, max=60)
+)
+async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0.1) -> str:
     """
-    Sends a resume optimization prompt to OpenAI's API and returns the optimized resume response.
-
-    This function:
-    - Initializes the OpenAI client
-    - Makes an API call with the provided prompt
-    - Returns the generated response
-
-    Args:
-        prompt (str): The formatted prompt containing resume and job description
-        api_key (str): OpenAI API key for authentication
-        model (str, optional): The OpenAI model to use. Defaults to "gpt-4-turbo-preview"
-        temperature (float, optional): Controls randomness in the response. Defaults to 0.7
-
-    Returns:
-        str: The AI-generated optimized resume and suggestions
-
-    Raises:
-        OpenAIError: If there's an issue with the API call
+    Async OpenAI call for resume optimization with retries.
     """
-    #Setting up openAI client
-    client = _build_openai_client()
-
-    #Make call
+    client = await _build_openai_client()
     try:
-        response=client.chat.completions.create(model=model,
-                                                response_format={"type": "json_object"},
-                                                messages=[
-                                                    {'role':'system',"content":'Expert resume writer and reviewer'},
-                                                    {'role':'user','content':prompt}
-                                                ],temperature=temperature)
+        response = await client.chat.completions.create(
+            model=model,
+            response_format={"type": "json_object"},
+            messages=[
+                {'role': 'system', "content": 'Expert resume writer and reviewer'},
+                {'role': 'user', 'content': prompt}
+            ],
+            temperature=temperature
+        )
+        return response.choices[0].message.content
     except Exception as exc:
         raise _normalize_openai_error(exc) from exc
-    return response.choices[0].message.content
 
 def ats_scoring(resume_string, jd_string):
     """Gives ats score for the resume highlignting strengths and weaknesses"""
@@ -756,6 +810,7 @@ def process_resume(resume_name,jd_string):
     resume_string = normalize_links(resume_string)
     links = extract_links(resume_string)
     mapped_links = map_demo_links(resume_string)
+    pub_links = extract_publication_links(resume_string)
 
     # create prompt
     prompt = create_prompt(resume_string, jd_string)
@@ -770,7 +825,7 @@ def process_resume(resume_name,jd_string):
     new_resume = response_string
     try:
        data = json.loads(response_string)
-       data = inject_links(data, links, mapped_links)
+       data = inject_links(data, links, mapped_links, pub_links)
        return json.dumps(data, indent=2)
     except Exception:
       return response_string

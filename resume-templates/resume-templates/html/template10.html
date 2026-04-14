@@ -581,6 +581,7 @@
               <div>
                 <p class="activity-title">{{ publication.title }}</p>
                 {% if publication.publisher %}<p class="activity-meta">{{ publication.publisher }}</p>{% endif %}
+                {% if publication.url or publication.link %}<p class="activity-meta"><a href="{{ publication.url or publication.link }}">{{ publication.url or publication.link }}</a></p>{% endif %}
               </div>
               {% if publication.year %}<div class="entry-meta">{{ publication.year }}</div>{% endif %}
             </div>

@@ -1,36 +1,32 @@
-# TODO: Fix Template 13 UI Issue - ✅ COMPLETED
+# Concurrency Fix TODO
 
-## Final Progress Summary
+## Plan Steps (Approved by User)
 
-### ✅ Step 1: Create/Update TODO.md
-- [x] Documented approved plan with progress tracking
+### 1. Update Dependencies [PENDING]
+- Ensure openai library supports AsyncOpenAI
+- Add tenacity for retries if needed
 
-### ✅ Step 2: Edit static/main_new.js
-- [x] Added `{ id: 13, name: 'Template 13', image: 'pic12.jpg' }` to `templates` array
-- [x] Verified syntax preserved (exact match replacement)
+### 2. Refactor functions.py [✅ COMPLETE]
+- Replace sync OpenAI with AsyncOpenAI
+- Make get_resume_response async 
+- Add exponential backoff retries
+- Remove global httpx client
 
-### ✅ Step 3: UI Update Verified
-- [x] Template13 now appears in `/solutions` template grid (13 total cards)
-- [x] `generateTemplateGrid()` renders new option ✓
-- [x] `selectTemplate(13)` sets `selectedTemplate.id = 13` ✓
+### 3. Refactor main.py [PENDING]
+- Use tempfile.TemporaryDirectory() per request
+- Unique file names with user_id + uuid
+- Convert OpenAI calls to async (remove asyncio.to_thread)
+- Use asyncio.wait_for for timeouts
+- Semaphore ONLY around OpenAI call
+- Enhanced error handling
 
-### ✅ Step 4: Backend Integration
-- [x] Backend `/get-optimised-resume?template_id=13` loads `template13.html` ✓
-- [x] Full flow: UI select → POST w/ template_id=13 → PDF generation ✓
+### 4. Test Concurrency [PENDING]
+- Local multi-user test
+- Load test with 10+ concurrent requests
 
-### ✅ Step 5: Task Completion
-- [x] **Template 13 now available as UI option**
-- [x] No other files needed (backend already supported 13+)
+### 5. Deploy & Monitor [PENDING]
+- Update deployment config
+- Add logging/metrics
 
-## Result
-**Template 13 is now selectable in the resume template grid!**
-
-To test:
-```
-cd TailorCv.Ai1-main
-python -m http.server 8000
-# Open http://localhost:8000/solutions → "Optimize" → See Template 13 → Select → Generate
-```
-
-**CLI Demo**: `http://localhost:8000/solutions` now shows Template 13 option.
+**Progress: 0/5 complete**
 

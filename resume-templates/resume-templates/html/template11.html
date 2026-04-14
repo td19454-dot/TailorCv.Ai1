@@ -577,6 +577,7 @@
                   {{ publication.title }}
                   {% if publication.publisher %}<span class="muted">, {{ publication.publisher }}</span>{% endif %}
                   {% if publication.year %}<span class="muted">, {{ publication.year }}</span>{% endif %}
+                  {% if publication.url or publication.link %}<br><a href="{{ publication.url or publication.link }}">{{ publication.url or publication.link }}</a>{% endif %}
                 </li>
               {% endfor %}
             </ul>

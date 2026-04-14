@@ -33,10 +33,13 @@ from functions import (
     inject_links,
     map_demo_links,
     extract_project_links,
+    extract_publication_links,
     map_project_demo_links,
     extract_project_link_map,
     normalize_links,
 )
+
+from extraction import process_resume
 from models import PasswordResetToken, SignupVerificationCode, User
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 
@@ -1356,6 +1359,7 @@ async def upload_resume(request: Request, jd_string: str, file: UploadFile = Fil
             resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
             normalized_resume_string = normalize_links(resume_string)
             extracted_links = extract_project_links(normalized_resume_string)
+            extracted_pub_links = extract_publication_links(normalized_resume_string)
             mapped_links = map_project_demo_links(normalized_resume_string)
             project_link_map = extract_project_link_map(normalized_resume_string)
 
@@ -1366,13 +1370,16 @@ async def upload_resume(request: Request, jd_string: str, file: UploadFile = Fil
                 raise HTTPException(status_code=500, detail=f"AI generation error: {e}")
 
             parsed = parse_ai_json_response(response_string)
+            original_data = await asyncio.to_thread(process_resume, file_path)
+            if "publications" not in parsed and original_data.get("publications"):
+                parsed["publications"] = original_data["publications"]
             pdf_project_link_map = await asyncio.to_thread(
                 extract_project_links_from_pdf,
                 file_path,
                 [p.get("name") for p in (parsed.get("projects") or []) if isinstance(p, dict)],
             )
             effective_map = pdf_project_link_map or project_link_map
-            parsed = inject_links(parsed, effective_map, mapped_links)
+            parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
 
             use_default_template = template_id == 0
             template_content = None
