@@ -51,19 +51,74 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Optimize Your Resume with
-                    <span class="gradient-text">AI-Powered Precision</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Tailor your resume to match any job description. Get instant ATS scores, 
-                    identify strengths and weaknesses, and receive an optimized resume that 
-                    gets you noticed.
-                </p>
-                <div class="hero-cta">
-                    <a href="/solutions" class="btn btn-primary btn-large">Start Optimizing</a>
-                    <a href="#features" class="btn btn-secondary btn-large">Learn More</a>
+            <div class="hero-content hero-split">
+                <div class="hero-copy">
+                    <h1 class="hero-title">
+                        Land more interviews with
+                        <span class="gradient-text">AI-Optimized Resume</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Tailor your resume to match any job description. Get instant ATS scores,
+                        identify strengths and weaknesses, and receive an optimized resume that
+                        gets you noticed.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="/solutions" class="btn btn-primary btn-large">Start Optimizing</a>
+                        <a href="#features" class="btn btn-secondary btn-large">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="resume-card" id="heroResumeCard">
+                        <div class="scan-line" id="heroScanLine"></div>
+
+                        <div class="r-name">Shubham Sarkar</div>
+                        <div class="r-title">Machine Learning Engineer - Kolkata, India</div>
+
+                        <div class="r-section">
+                            <div class="r-heading">EXPERIENCE</div>
+                            <div class="r-exp-title">Machine Learning Engineer - Acme Corp</div>
+                            <div class="r-exp-co">2022 - Present</div>
+                            <div class="exp-bullet">Built <span class="kw" id="heroKw1">statistical models</span> for churn prediction, improving prediction accuracy by ~18–25% and enabling retention strategies that reduced customer churn by ~10–15%.</div>
+                            <div class="exp-bullet">Deployed <span class="kw" id="heroKw2">batch pipelines</span> on legacy infrastructure, reducing model deployment time by ~40–60% and improving system reliability.</div>
+                            <div class="exp-bullet">Used <span class="kw" id="heroKw3">deep learning frameworks</span> to develop and evaluate models, reducing manual analysis effort by ~50% </div>
+                        </div>
+
+                        <div class="r-section">
+                            <div class="r-heading">EDUCATION</div>
+                            <div class="r-line">B.Tech Computer Science - IIT Kharagpur</div>
+                            <div class="r-line dim">2018 - 2022</div>
+                        </div>
+
+                        <div class="r-section">
+                            <div class="r-heading">SKILLS</div>
+                            <div class="skills-wrap" id="heroSkillsWrap"></div>
+                        </div>
+
+                        <div class="ats-bar-wrap">
+                            <div class="ats-score-row">
+                                <span class="ats-score-label">ATS score</span>
+                                <span>
+                                    <span class="ats-score-num" id="heroAtsNum">48</span>
+                                    <span class="badge-new" id="heroBadge">optimized</span>
+                                </span>
+                            </div>
+                            <div class="ats-row">
+                                <span class="ats-label">Keywords</span>
+                                <div class="ats-track"><div class="ats-fill" id="heroBarKw"></div></div>
+                            </div>
+                            <div class="ats-row">
+                                <span class="ats-label">Formatting</span>
+                                <div class="ats-track"><div class="ats-fill" id="heroBarFmt"></div></div>
+                            </div>
+                            <div class="ats-row">
+                                <span class="ats-label">Relevance</span>
+                                <div class="ats-track"><div class="ats-fill" id="heroBarRel"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status-msg" id="heroStatusMsg">AI scan ready</div>
                 </div>
             </div>
         </div>
@@ -238,5 +293,160 @@
     <script src="/static/auth_nav.js"></script>
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/main.js"></script>
+    <script>
+        (function () {
+            const expSwaps = [
+                { id: "heroKw1", from: "statistical models", to: "deep learning models" },
+                { id: "heroKw2", from: "batch pipelines", to: "MLOps pipelines" },
+                { id: "heroKw3", from: "deep learning frameworks", to: "Keras and TensorFlow" }
+            ];
+            const baseSkills = [
+                { id: "heroSkPython", label: "Python" },
+                { id: "heroSkSql", label: "SQL" },
+                { id: "heroSkExcel", label: "Excel" },
+                { id: "heroSkTableau", label: "Tableau" },
+                { id: "heroSkDatabricks", label: "Databricks" },
+                { id: "heroSkDa", label: "Data Analysis" }
+            ];
+            const toRemove = ["heroSkExcel", "heroSkTableau", "heroSkDatabricks", "heroSkDa"];
+            const toAdd = [
+                { id: "heroSkKeras", label: "Keras" },
+                { id: "heroSkMl", label: "Machine Learning" },
+                { id: "heroSkPostgres", label: "PostgreSQL" },
+                { id: "heroSkTf", label: "TensorFlow" }
+            ];
+
+            let running = false;
+            let autoLoop = null;
+
+            function sleep(ms) {
+                return new Promise(function (resolve) {
+                    setTimeout(resolve, ms);
+                });
+            }
+
+            function animateCount(from, to, duration, el) {
+                const start = performance.now();
+                return new Promise(function (resolve) {
+                    function step(now) {
+                        const progress = Math.min((now - start) / duration, 1);
+                        el.textContent = Math.round(from + (to - from) * progress);
+                        if (progress < 1) {
+                            requestAnimationFrame(step);
+                        } else {
+                            resolve();
+                        }
+                    }
+                    requestAnimationFrame(step);
+                });
+            }
+
+            function renderSkills(list) {
+                const wrap = document.getElementById("heroSkillsWrap");
+                wrap.innerHTML = "";
+                list.forEach(function (skill) {
+                    const el = document.createElement("span");
+                    el.className = "skill";
+                    el.id = skill.id;
+                    el.textContent = skill.label;
+                    wrap.appendChild(el);
+                });
+            }
+
+            function resetState() {
+                expSwaps.forEach(function (swap) {
+                    const el = document.getElementById(swap.id);
+                    if (!el) return;
+                    el.className = "kw";
+                    el.textContent = swap.from;
+                });
+
+                renderSkills(baseSkills);
+
+                document.getElementById("heroAtsNum").textContent = "48";
+                document.getElementById("heroAtsNum").style.color = "#2d2f67";
+                document.getElementById("heroBadge").style.opacity = "0";
+                document.getElementById("heroBarKw").style.width = "0%";
+                document.getElementById("heroBarFmt").style.width = "0%";
+                document.getElementById("heroBarRel").style.width = "0%";
+                const line = document.getElementById("heroScanLine");
+                line.style.opacity = "0";
+                line.style.transition = "none";
+                line.style.top = "0";
+            }
+
+            async function runAnimation() {
+                if (running) return;
+                running = true;
+
+                const status = document.getElementById("heroStatusMsg");
+                const scanLine = document.getElementById("heroScanLine");
+                const card = document.getElementById("heroResumeCard");
+
+                resetState();
+                await sleep(200);
+
+                status.textContent = "Scanning resume...";
+                scanLine.style.opacity = "1";
+                await sleep(40);
+                scanLine.style.transition = "top 1.4s linear";
+                scanLine.style.top = card.offsetHeight + "px";
+                await sleep(1600);
+                scanLine.style.opacity = "0";
+                await sleep(220);
+
+                status.textContent = "Updating role keywords...";
+                for (const swap of expSwaps) {
+                    const el = document.getElementById(swap.id);
+                    el.classList.add("old-kw");
+                    await sleep(320);
+                    el.textContent = swap.to;
+                    el.className = "kw new-kw";
+                    await sleep(280);
+                }
+
+                status.textContent = "Refreshing skills for the target job...";
+                for (const id of toRemove) {
+                    const el = document.getElementById(id);
+                    if (!el) continue;
+                    el.classList.add("removing");
+                    await sleep(220);
+                    el.classList.add("removed");
+                    await sleep(120);
+                }
+
+                const skillsWrap = document.getElementById("heroSkillsWrap");
+                for (const skill of toAdd) {
+                    const el = document.createElement("span");
+                    el.className = "skill adding";
+                    el.id = skill.id;
+                    el.textContent = skill.label;
+                    skillsWrap.appendChild(el);
+                    await sleep(210);
+                }
+
+                status.textContent = "Calculating ATS score...";
+                document.getElementById("heroBarKw").style.width = "88%";
+                document.getElementById("heroBarFmt").style.width = "96%";
+                document.getElementById("heroBarRel").style.width = "82%";
+
+                await animateCount(48, 91, 1150, document.getElementById("heroAtsNum"));
+                document.getElementById("heroAtsNum").style.color = "#1e6b3c";
+                document.getElementById("heroBadge").style.opacity = "1";
+                status.textContent = "Resume optimized: ATS score 48 -> 91";
+
+                running = false;
+            }
+
+            runAnimation();
+            autoLoop = setInterval(function () {
+                if (!running) runAnimation();
+            }, 9000);
+
+            window.addEventListener("beforeunload", function () {
+                if (autoLoop) clearInterval(autoLoop);
+            });
+        })();
+    </script>
 </body>
 </html>
