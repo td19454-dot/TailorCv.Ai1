@@ -15,8 +15,6 @@ import tempfile
 import shutil
 import uvicorn
 from dotenv import load_dotenv
-from google.oauth2 import id_token
-from google.auth.transport import requests as google_requests
 from pydantic import ValidationError
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
@@ -47,6 +45,13 @@ from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeReque
 
 
 from starlette.middleware.sessions import SessionMiddleware
+
+try:
+    from google.oauth2 import id_token
+    from google.auth.transport import requests as google_requests
+except ImportError:
+    id_token = None
+    google_requests = None
 
 app = FastAPI(title="Resume Optimizer Backend")
 logger = logging.getLogger(__name__)
@@ -1271,6 +1276,12 @@ async def login_with_google(request: Request):
     """Verify a Google ID token and log the user in (create user if first time)."""
     body = await request.json()
     token = body.get("credential") or body.get("id_token") or body.get("token")
+
+    if id_token is None or google_requests is None:
+        raise HTTPException(
+            status_code=503,
+            detail="Google sign-in is unavailable because the google-auth package is not installed.",
+        )
 
     if not GOOGLE_CLIENT_ID:
         raise HTTPException(status_code=500, detail="Google login is not configured on this server.")
