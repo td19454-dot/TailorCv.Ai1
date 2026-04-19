@@ -196,69 +196,116 @@ function displayATSResults(data) {
 function displayOptimizeLoading() {
     const optimizeContent = document.getElementById('optimize-content');
     optimizeContent.innerHTML = `
-        <div class="optimize-loading">
-            <div class="optimize-loading-title">Optimizing your resume...</div>
-            <div class="optimize-loading-message">
-                Please wait while we tailor your resume to the selected job description.
+        <div class="optimize-progress-container">
+            <div class="optimize-floating-dots">
+                <div class="optimize-dot"></div>
+                <div class="optimize-dot"></div>
+                <div class="optimize-dot"></div>
             </div>
-            <div class="progress-meta">
-                <span class="progress-label">Processing</span>
-                <span class="progress-value" id="progress-value">0%</span>
+            <div class="optimize-status-text" id="optimize-status-text">Upload your resume...</div>
+            <div class="optimize-steps" id="optimize-steps">
+                <div class="optimize-step active" data-step="1">
+                    <div class="optimize-step-icon">1</div>
+                    <div class="optimize-step-label">Upload</div>
+                </div>
+                <div class="optimize-step" data-step="2">
+                    <div class="optimize-step-icon">2</div>
+                    <div class="optimize-step-label">Analyzing</div>
+                </div>
+                <div class="optimize-step" data-step="3">
+                    <div class="optimize-step-icon">3</div>
+                    <div class="optimize-step-label">Optimizing</div>
+                </div>
+                <div class="optimize-step" data-step="4">
+                    <div class="optimize-step-icon">4</div>
+                    <div class="optimize-step-label">Completed</div>
+                </div>
             </div>
-            <div class="progress-shell">
-                <div class="progress-bar" id="progress-bar"></div>
+            <div class="optimize-progress-bar">
+                <div class="optimize-progress-fill" id="optimize-progress-fill">
+                    <div class="optimize-shimmer"></div>
+                </div>
+                <div class="optimize-percentage" id="optimize-percentage">0%</div>
             </div>
         </div>
     `;
 }
 
-function startOptimizeProgress() {
-    const progressBar = document.getElementById('progress-bar');
-    const progressValue = document.getElementById('progress-value');
-    let progress = 0;
+const optimizeStepsData = [
+    { step: 1, text: 'Uploading resume...', percent: 25 },
+    { step: 2, text: 'Analyzing your experience...', percent: 50 },
+    { step: 3, text: 'Optimizing for ATS systems...', percent: 75 },
+    { step: 4, text: 'Optimization completed! 🎉', percent: 99 }
+];
 
-    const intervalId = window.setInterval(() => {
-        if (progress >= 99) {
-            window.clearInterval(intervalId);
-            return;
+function updateOptimizeProgress(percent) {
+    const progressFill = document.getElementById('optimize-progress-fill');
+    const percentage = document.getElementById('optimize-percentage');
+    
+    if (progressFill) progressFill.style.width = percent + '%';
+    if (percentage) percentage.textContent = percent + '%';
+}
+
+function updateOptimizeStep(stepIndex) {
+    const steps = document.querySelectorAll('.optimize-step');
+    
+    steps.forEach((step, index) => {
+        step.classList.remove('active', 'completed');
+        if (index < stepIndex) {
+            step.classList.add('completed');
+        } else if (index === stepIndex) {
+            step.classList.add('active');
         }
+    });
+}
 
-        if (progress < 35) {
-            progress += 4;
-        } else if (progress < 65) {
-            progress += 3;
-        } else if (progress < 82) {
-            progress += 2;
-        } else if (progress < 92) {
-            progress += 1;
-        } else {
-            progress += 0.5;
-        }
+function updateOptimizeStatus(text) {
+    const statusText = document.getElementById('optimize-status-text');
+    if (statusText) statusText.textContent = text;
+}
 
-        progress = Math.min(progress, 99);
-        const roundedProgress = Math.floor(progress);
-
-        if (progressBar) {
-            progressBar.style.width = `${roundedProgress}%`;
-        }
-
-        if (progressValue) {
-            progressValue.textContent = `${roundedProgress}%`;
-        }
-    }, 300);
-
-    return {
-        complete() {
-            window.clearInterval(intervalId);
-            if (progressBar) {
-                progressBar.style.width = '100%';
+async function animateToOptimizeStep(stepData) {
+    return new Promise(resolve => {
+        updateOptimizeStep(stepData.step - 1);
+        updateOptimizeStatus(stepData.text);
+        
+        const startPercent = parseInt(document.getElementById('optimize-percentage')?.textContent || '0');
+        const targetPercent = stepData.percent;
+        
+const duration = 5000;
+        const startTime = performance.now();
+        
+        function animate(time) {
+            const elapsed = time - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            
+            const currentPercent = startPercent + (targetPercent - startPercent) * easeProgress;
+            updateOptimizeProgress(Math.round(currentPercent));
+            
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                resolve();
             }
-            if (progressValue) {
-                progressValue.textContent = '100%';
+        }
+        
+        requestAnimationFrame(animate);
+    });
+}
+
+function startOptimizeProgress() {
+    return {
+        async startDemo() {
+            for (let i = 0; i < optimizeStepsData.length; i++) {
+                await animateToOptimizeStep(optimizeStepsData[i]);
+                if (i < optimizeStepsData.length - 1) {
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                }
             }
         },
         stop() {
-            window.clearInterval(intervalId);
+            // No interval to clear, just stop
         }
     };
 }
@@ -324,6 +371,10 @@ async function handleResumeOptimization() {
     displayOptimizeLoading();
     optimizeResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
     const progressController = startOptimizeProgress();
+    // Start advanced step animation
+    setTimeout(() => {
+        progressController.startDemo().catch(console.error);
+    }, 800);
 
     const formData = new FormData();
     formData.append('file', fileInput.files[0]);
@@ -351,7 +402,7 @@ async function handleResumeOptimization() {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
 
-        progressController.complete();
+        // progressController.complete(); // Not needed for async demo
         displayOptimizeResults(url);
         triggerPdfDownload(url, 'optimized_resume.pdf');
 
