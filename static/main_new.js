@@ -26,7 +26,7 @@ const styles = [
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // File upload handler
+// File upload handler
     const fileInput = document.getElementById('resume-file');
     const fileName = document.getElementById('file-name');
     
@@ -38,6 +38,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 fileName.textContent = 'No file chosen';
             }
         });
+    }
+
+    // Ensure job description textarea is paste-enabled (safety fix)
+    const jdInput = document.getElementById('job-description');
+    if (jdInput) {
+        jdInput.removeAttribute('readonly');
+        jdInput.style.userSelect = 'text';
+        jdInput.style.webkitUserSelect = 'text';
+        jdInput.style.pointerEvents = 'auto';
+        
+        // Debug paste events
+        jdInput.addEventListener('paste', function(e) {
+            console.log('Paste event on job-description textarea:', e.clipboardData.getData('text'));
+        });
+        
+        console.log('Job description textarea paste-ready');
     }
 
     // Analyze button handler
@@ -64,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
+            optimizeBtn.classList.add('loading', 'animate-shimmer');
+            optimizeBtn.querySelector('.btn-text').textContent = 'Loading templates...';
             // Show template selection
             const templateSection = document.getElementById('template-selection-section');
             if (templateSection) {
@@ -71,6 +89,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 generateTemplateGrid();
                 templateSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+            setTimeout(() => {
+                optimizeBtn.classList.remove('loading', 'animate-shimmer');
+                optimizeBtn.querySelector('.btn-text').textContent = 'Select Template & Optimize';
+            }, 1200);
         });
     }
 
@@ -143,6 +165,7 @@ async function handleATSAnalysis() {
     }
 
     analyzeBtn.disabled = true;
+    analyzeBtn.classList.add('loading', 'animate-shimmer');
     analyzeBtn.querySelector('.btn-text').textContent = 'Analyzing...';
     analyzeBtn.querySelector('.btn-loader').style.display = 'inline-block';
 
@@ -168,6 +191,7 @@ async function handleATSAnalysis() {
         alert('Error analyzing resume: ' + error.message);
     } finally {
         analyzeBtn.disabled = false;
+        analyzeBtn.classList.remove('loading', 'animate-shimmer');
         analyzeBtn.querySelector('.btn-text').textContent = 'Get ATS Score';
         analyzeBtn.querySelector('.btn-loader').style.display = 'none';
     }
@@ -363,6 +387,7 @@ async function handleResumeOptimization() {
     const resultsSection = document.getElementById('results-section');
 
     confirmBtn.disabled = true;
+    confirmBtn.classList.add('loading', 'animate-shimmer');
     confirmBtn.textContent = 'Generating PDF...';
 
     templateSection.style.display = 'none';
@@ -419,6 +444,7 @@ async function handleResumeOptimization() {
             alert(`Optimization failed: ${error.message}`);
         }
     } finally {
+        confirmBtn.classList.remove('loading', 'animate-shimmer');
         confirmBtn.disabled = false;
         confirmBtn.textContent = 'Confirm & Generate PDF';
     }

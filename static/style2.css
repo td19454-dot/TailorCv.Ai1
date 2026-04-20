@@ -118,10 +118,39 @@ header.navbar {
     50% { transform: translateY(-4px); }
 }
 
+
+
 @keyframes headerSlideDown {
     from { transform: translateY(-100%); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+@keyframes titleSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@keyframes glowPulse {
+    0%, 100% { 
+        text-shadow: 0 0 20px rgba(205, 229, 239, 0.5);
+    }
+    50% { 
+        text-shadow: 0 0 40px rgba(147, 197, 253, 0.8), 0 0 60px rgba(96, 165, 250, 0.4);
+    }
+}
+
+
 
 
 
@@ -138,17 +167,45 @@ header.navbar {
 }
 
 .solutions-title {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 5rem;
+    font-weight: 350;
     margin-bottom: 1rem;
     color: rgb(205, 229, 239);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgb(205,229,239), #93c5fd, #60a5fa, rgb(205,229,239));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleSlideUp 1s ease-out forwards, textShimmer 2s linear infinite;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.solutions-title:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
 }
 
 .solutions-subtitle {
-    font-size: 1.125rem;
-    color: pink;
-    max-width: 600px;
+   font-size: 2rem;
+    color: #d5c8eb;
     margin: 0 auto;
+    font-weight: 300;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #d5c8eb, #e6d4f8, pink, #d5c8eb);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleSlideUp 1.2s ease-out 0.2s both, textShimmer 3s linear infinite 0.4s;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.solutions-subtitle:hover {
+    transform: scale(1.01);
+    filter: brightness(1.1);
 }
 
 
@@ -158,18 +215,52 @@ header.navbar {
 
 /* Form Styles */
 .form-card {
-    background:  linear-gradient(rgb(3, 14, 117), rgb(85, 2, 112));;
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow:rgb(0, 0, 8);
-    margin-bottom: 2rem;
-    margin-left: 190px;
-    margin-right: 190px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(4, 0, 16, 0.12);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    margin: 0 auto 3rem;
+    max-width: 900px;
+    width: 90%;
+    position: relative;
+    overflow: visible;
+    pointer-events: auto;
+}
+
+.form-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.form-card:hover::before {
+    opacity: 1;
+}
+
+.form-card {
+    animation: cardFloat 6s ease-in-out infinite, cardShimmer 4s linear infinite;
+}
+
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0px) rotateX(0deg); }
+    50% { transform: translateY(-8px) rotateX(2deg); }
+}
+
+@keyframes cardShimmer {
+    0% { box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08); }
+    50% { box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45), 0 0 20px rgba(59, 130, 246, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.15); }
+    100% { box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08); }
 }
 
 .form-title {
-    font-size: 1.75rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 300;
     margin-bottom: 2rem;
     color: rgb(221, 241, 246);
 }
@@ -177,6 +268,8 @@ header.navbar {
 .form-group {
     margin-bottom: 1.5rem;
     color : white;
+    position: relative;
+    pointer-events: auto;
 }
 
 .form-label {
@@ -249,6 +342,22 @@ header.navbar {
 .form-textarea:focus {
     outline: none;
     border-color:  rgb(242, 234, 242);
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10;
+}
+
+.form-textarea {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    pointer-events: auto !important;
+    -webkit-appearance: textfield !important;
 }
 
 .form-actions {
@@ -1023,11 +1132,39 @@ header.navbar {
 
     .solutions-title {
         font-size: 1.8rem;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, rgb(205,229,239), #93c5fd, #60a5fa, rgb(205,229,239));
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: titleSlideUp 1s ease-out forwards, textShimmer 2s linear infinite;
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .solutions-title:hover {
+        transform: scale(1.02);
+        filter: brightness(1.1);
     }
 
     .solutions-subtitle {
         font-size: 0.95rem;
         padding: 0 10px;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #d5c8eb, #e6d4f8, pink, #d5c8eb);
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: titleSlideUp 1.2s ease-out 0.2s both, textShimmer 3s linear infinite 0.4s;
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .solutions-subtitle:hover {
+        transform: scale(1.01);
+        filter: brightness(1.1);
     }
 @media (max-width: 768px) {
     body {
@@ -1184,15 +1321,18 @@ header.navbar {
     padding : 10px;
     border-radius: 70px;
     font-size: 20px;
-    background-color: rgb(2, 40, 56);
+    background: linear-gradient(145deg, rgb(2, 40, 56), rgb(5, 15, 35));
     border : 1px solid rgba(255, 255, 255, 0.22);
     cursor: pointer;
     color : white;
     position: relative;
     overflow: hidden;
     isolation: isolate;
-    box-shadow: 0 10px 24px rgba(8, 27, 64, 0.28);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    box-shadow: 
+        0 10px 24px rgba(8, 27, 64, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: btnIdlePulse 3s ease-in-out infinite;
 }
 
 .btn::before {
@@ -1216,13 +1356,17 @@ header.navbar {
 }
 
 .btn:hover{
-     transform: translateY(-3px) scale(1.01);
-     box-shadow: 0 16px 34px rgba(8, 27, 64, 0.36);
-     border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(8, 27, 64, 0.45),
+        0 0 30px rgba(96, 165, 250, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+    animation: btnShimmer 1.5s ease-in-out;
 }
 
 .btn:active {
-    transform: translateY(-1px) scale(0.995);
+    transform: translateY(-1px) scale(0.98);
+    animation: btnRipple 0.6s ease-out;
 }
 
 #confirm-optimize-btn {
@@ -1230,12 +1374,61 @@ header.navbar {
 }
 
 @keyframes buttonBorderFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@keyframes btnIdlePulse {
+    0%, 100% { 
+        box-shadow: 0 10px 24px rgba(8, 27, 64, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 
+            0 12px 28px rgba(8, 27, 64, 0.35), 
+            0 0 20px rgba(96, 165, 250, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        transform: scale(1.01);
+    }
+}
+
+@keyframes btnShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@keyframes btnRipple {
     0% {
-        background-position: 0% 50%;
+        box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7);
+    }
+    40% {
+        box-shadow: 0 0 0 10px rgba(96, 165, 250, 0.3);
     }
     100% {
-        background-position: 200% 50%;
+        box-shadow: 0 0 0 20px rgba(96, 165, 250, 0);
     }
+}
+
+.btn.loading {
+    cursor: not-allowed;
+    transform: none !important;
+    animation: none !important;
+}
+
+.btn.loading .btn-text {
+    opacity: 0.7;
+}
+
+.btn.loading::before {
+    animation-duration: 2s;
+}
+
+.btn-primary::before {
+    background: linear-gradient(120deg, #dbeafe, #60a5fa, #8b5cf6, #dbeafe) !important;
+}
+
+.btn-secondary::before {
+    background: linear-gradient(120deg, #f3f4f6, #d1d5db, #9ca3af, #f3f4f6) !important;
 }
 
 .btn-loader {
