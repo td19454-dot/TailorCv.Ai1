@@ -58,6 +58,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (continueBtn) {
         continueBtn.addEventListener('click', goToUploadForm);
     }
+
+    const modifyCvBtn = document.getElementById('modify-cv-btn');
+    if (modifyCvBtn) {
+        modifyCvBtn.addEventListener('click', () => {
+            window.location.href = '/modify-cv';
+        });
+    }
 });
 
 // Generate template selection grid

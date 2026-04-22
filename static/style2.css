@@ -1079,6 +1079,17 @@ header.navbar {
     width: 90%;
 }
 
+.manual-cv-card {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.manual-cv-description {
+    color: #dbeafe;
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+}
+
 /* Make buttons flexible */
 .btn {
     width: 100%;
