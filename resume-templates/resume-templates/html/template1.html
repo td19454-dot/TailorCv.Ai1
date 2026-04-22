@@ -10,8 +10,6 @@
     <div class="resume-container {{ layout_scale }}">
 <header class="resume-header">
             <h1>{{ name }}</h1>
-            <img class="profile-photo" src="/static/pic1.jpg" alt="Profile Photo" />
-
             <div class="contact-line">
                 {% if contact.phone %}<span class="contact-item"><span class="contact-icon">&#9990;</span><a href="{{ contact.phone_href }}">{{ contact.phone }}</a></span>{% endif %}
                 {% if contact.email %}<span class="contact-item"><span class="contact-icon">&#9993;</span><a href="{{ contact.email_href }}">{{ contact.email }}</a></span>{% endif %}
