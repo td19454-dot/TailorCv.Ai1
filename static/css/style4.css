@@ -1,0 +1,139 @@
+/* style4.css - Pretty & Usable Modify CV Enhancement */
+/* Fixes interactivity + subtle visual polish (glows, transitions, focus states) */
+/* Matches TailorCV.ai glassmorphism theme - NO LAYOUT CHANGES */
+
+#modify-cv-sidebar,
+#sections-container,
+.section-input,
+.section-textarea,
+.sidebar-nav-btn,
+.small-btn,
+.section-controls button,
+[data-scroll-to],
+[data-oninput],
+[data-add-entry],
+[data-remove-entry],
+[data-template-id] {
+    pointer-events: auto !important;
+    user-select: auto !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    -webkit-appearance: textfield !important;
+}
+
+/* Enhanced Interactive Elements */
+.section-input,
+.section-textarea {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+}
+
+.section-input:focus,
+.section-textarea:focus {
+    box-shadow: 
+        0 0 0 3px rgba(59, 130, 246, 0.2),
+        0 4px 12px rgba(59, 130, 246, 0.15),
+        0 1px 3px rgba(0, 0, 0, 0.15) inset !important;
+    transform: translateY(-1px) !important;
+    border-color: rgba(59, 130, 246, 0.6) !important;
+}
+
+.sidebar-nav-btn,
+.small-btn {
+    cursor: pointer !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-nav-btn:hover,
+.small-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3) !important;
+}
+
+.sidebar-nav-btn:active,
+.small-btn:active {
+    transform: translateY(0) scale(0.98) !important;
+}
+
+/* Focus States (Accessibility + Pretty) */
+.sidebar-nav-btn:focus,
+.small-btn:focus,
+.section-input:focus,
+.section-textarea:focus {
+    outline: none !important;
+    box-shadow: 
+        0 0 0 3px rgba(59, 130, 246, 0.3),
+        0 0 0 6px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Smooth Scrolling for Tabs */
+[data-scroll-to] {
+    cursor: pointer !important;
+}
+
+[data-scroll-to]:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.15)) !important;
+}
+
+/* Template Cards Enhancement */
+.template-card-mini:hover {
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 12px 40px rgba(96, 165, 250, 0.4) !important;
+}
+
+/* Overlay Management */
+.login-modal-overlay,
+.profile-dropdown,
+.navbar.nav-open .nav-links,
+.navbar.nav-open .nav-actions {
+    z-index: 100 !important;
+}
+
+.modify-cv-section,
+.modify-cv-layout {
+    isolation: isolate;
+    position: relative;
+    z-index: 200;
+}
+
+/* Responsive Polish */
+@media (max-width: 860px) {
+    .section-input,
+    .section-textarea,
+    .sidebar-nav-btn,
+    .small-btn {
+        pointer-events: auto !important;
+    }
+    
+    .sidebar-nav-btn:active,
+    .small-btn:active {
+        transform: none !important;
+    }
+}
+
+/* Loading States */
+.btn.loading {
+    cursor: progress !important;
+    position: relative;
+}
+
+.btn.loading::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
