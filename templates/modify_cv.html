@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify CV - TailorCV.ai</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/style2.css">
+    <link rel="stylesheet" href="/static/css/modify_cv.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="left">
+            <div class="logo">
+                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+            </div>
+        </div>
+        <button
+            type="button"
+            class="mobile-menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="primary-nav-modify"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-links" id="primary-nav-modify">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/solutions" class="nav-link active">Solutions</a>
+            <a href="/about" class="nav-link">About Us</a>
+        </nav>
+        <div class="nav-actions">
+            <div id="auth-nav-slot"></div>
+        </div>
+    </header>
+
+    <section class="modify-cv-section">
+        <div class="modify-cv-layout container">
+            <aside id="modify-cv-sidebar" class="modify-cv-sidebar"></aside>
+
+            <main class="modify-cv-main">
+                <div class="modify-cv-header-card">
+                    <h1 class="modify-cv-title">Modify Your CV</h1>
+                    <p class="modify-cv-subtitle">Edit each section, pick a template, and preview the final resume in real time.</p>
+                </div>
+
+                <div id="sections-container" class="sections-container"></div>
+
+                <div class="modify-cv-actions form-card">
+                    <button id="save-draft-btn" class="btn btn-secondary" type="button">Save Draft</button>
+                    <button id="download-pdf-btn" class="btn btn-primary" type="button">Download PDF</button>
+                    <button id="reoptimize-btn" class="btn btn-primary" type="button">Re-optimize with AI</button>
+                </div>
+            </main>
+
+            <aside class="preview-panel form-card">
+                <h3 class="preview-title">Live Preview</h3>
+                <p class="preview-subtitle">Select a template to preview with your current resume data.</p>
+                <div id="preview-empty-state" class="preview-empty">Choose a template to start previewing.</div>
+                <iframe id="template-preview-frame" class="template-preview-frame" title="Resume Template Preview"></iframe>
+            </aside>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">ResumeOptimizer</h4>
+                    <p class="footer-text">AI-powered resume optimization for your career success.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/solutions" class="footer-link">Solutions</a>
+                    <a href="/about" class="footer-link">About Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/auth_nav.js"></script>
+    <script src="/static/mobile_nav.js"></script>
+    <script src="/static/js/modify_cv.js?v=4"></script>
+</body>
+</html>

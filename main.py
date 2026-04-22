@@ -1107,6 +1107,16 @@ async def solutions_page(request: Request):
     )
 
 
+@app.get("/modify-cv", response_class=HTMLResponse)
+async def modify_cv_page(request: Request):
+    """Manual CV editing page."""
+    return templates.TemplateResponse(
+        request,
+        "modify_cv.html",
+        {"request": request},
+    )
+
+
 @app.get("/login", response_class=HTMLResponse)
 async def login_page(request: Request):
     """Login page."""
@@ -1602,6 +1612,317 @@ async def get_score(jd_string: str, file: UploadFile = File(...)):
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
+
+
+@app.get("/api/resume-templates")
+async def list_resume_templates():
+    """Return available built-in resume templates."""
+    templates_html_dir = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "html")
+    if not os.path.isdir(templates_html_dir):
+        raise HTTPException(status_code=404, detail="Resume templates directory not found")
+
+    items = []
+    for filename in sorted(os.listdir(templates_html_dir)):
+        if not filename.lower().endswith(".html"):
+            continue
+        match = re.match(r"template(\d+)\.html$", filename.lower())
+        if not match:
+            continue
+        template_id = int(match.group(1))
+        items.append(
+            {
+                "id": template_id,
+                "name": f"Template {template_id}",
+                "filename": filename,
+            }
+        )
+    return {"templates": items}
+
+
+@app.post("/api/render-template-preview")
+async def render_template_preview(request: Request):
+    """Render selected template HTML with provided cvData."""
+    payload = await request.json()
+    template_id = int(payload.get("templateId", 1))
+    cv_data = payload.get("cvData") or payload.get("resumeData", {}) or {}
+    html_output = _render_custom_cv_html(template_id, cv_data)
+    return {"html": html_output}
+
+
+@app.post("/api/download-cv-pdf")
+async def download_cv_pdf(request: Request):
+    """Generate a styled PDF from modify-cv builder data."""
+    payload = await request.json()
+    template_id = int(payload.get("templateId", 1))
+    cv_data = payload.get("cvData") or payload.get("resumeData", {}) or {}
+
+    html_output = _render_custom_cv_html(template_id, cv_data)
+    pdf_path = os.path.join(resumes_dir, f"custom_cv_{uuid.uuid4()}.pdf")
+    try:
+        from weasyprint import HTML
+
+        await asyncio.to_thread(lambda: HTML(string=html_output).write_pdf(pdf_path))
+        return FileResponse(
+            pdf_path,
+            media_type="application/pdf",
+            filename="custom_cv.pdf",
+            background=BackgroundTask(_cleanup_files, [pdf_path])
+        )
+    except Exception as exc:
+        if os.path.exists(pdf_path):
+            os.remove(pdf_path)
+        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
+
+
+@app.post("/api/download-cv-pdf-browser")
+async def download_cv_pdf_browser(
+    template_id: int = Form(...),
+    cv_data_json: str = Form(...),
+):
+    """Browser-native PDF download via form submit."""
+    try:
+        cv_data = json.loads(cv_data_json)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid CV data payload")
+
+    html_output = _render_custom_cv_html(template_id, cv_data)
+    pdf_path = os.path.join(resumes_dir, f"custom_cv_{uuid.uuid4()}.pdf")
+    try:
+        from weasyprint import HTML
+
+        await asyncio.to_thread(lambda: HTML(string=html_output).write_pdf(pdf_path))
+        return FileResponse(
+            pdf_path,
+            media_type="application/pdf",
+            filename="custom_cv.pdf",
+            background=BackgroundTask(_cleanup_files, [pdf_path])
+        )
+    except Exception as exc:
+        if os.path.exists(pdf_path):
+            os.remove(pdf_path)
+        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
+
+
+def _render_custom_cv_html(template_id: int, cv_data: dict) -> str:
+    template_filename = f"template{template_id}.html"
+    template_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "html", template_filename)
+    if not os.path.exists(template_path):
+        raise HTTPException(status_code=404, detail="Selected template not found")
+
+    try:
+        with open(template_path, "r", encoding="utf-8") as f:
+            template_content = f.read()
+    except OSError as exc:
+        raise HTTPException(status_code=500, detail=f"Unable to read template: {exc}")
+
+    context = _build_custom_cv_context(cv_data)
+
+    try:
+        from jinja2 import Template as Jinja2Template
+        jinja_template = Jinja2Template(template_content)
+        html_output = jinja_template.render(**context)
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to render template: {exc}")
+
+    style_filename = ""
+    if template_id == 6:
+        style_filename = "style3.css"
+    elif template_id < 7:
+        style_filename = "style1.css"
+
+    if style_filename:
+        style_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "css", style_filename)
+        css_content = ""
+        try:
+            with open(style_path, "r", encoding="utf-8") as f:
+                css_content = f.read()
+        except OSError:
+            css_content = ""
+        if css_content:
+            html_output = html_output.replace('href="STYLESHEET_PLACEHOLDER"', "")
+            html_output = html_output.replace("</head>", f"<style>{css_content}</style></head>")
+
+    return html_output
+
+
+def _build_custom_cv_context(cv_data: dict) -> dict:
+    data = cv_data if isinstance(cv_data, dict) else {}
+    personal = data.get("personalInfo", {}) if isinstance(data.get("personalInfo", {}), dict) else {}
+    education_data = data.get("education", []) if isinstance(data.get("education", []), list) else []
+    experience_data = data.get("experience", []) if isinstance(data.get("experience", []), list) else []
+    projects_data = data.get("projects", []) if isinstance(data.get("projects", []), list) else []
+    publications_data = data.get("publications", []) if isinstance(data.get("publications", []), list) else []
+    skills_data = data.get("skills", []) if isinstance(data.get("skills", []), list) else []
+    certifications_data = data.get("certifications", []) if isinstance(data.get("certifications", []), list) else []
+    extracurriculars_data = data.get("extracurriculars", []) if isinstance(data.get("extracurriculars", []), list) else []
+    awards_data = data.get("awards", []) if isinstance(data.get("awards", []), list) else []
+
+    def split_bullets(value: str) -> list[str]:
+        text = str(value or "").strip()
+        if not text:
+            return []
+        return [line.strip().lstrip("-").strip() for line in text.splitlines() if line.strip()]
+
+    normalized_education = []
+    for edu in education_data:
+        if not isinstance(edu, dict):
+            continue
+        if not any(str(edu.get(key, "")).strip() for key in ("school", "degree", "year", "score", "details")):
+            continue
+        normalized_education.append(
+            {
+                "school": str(edu.get("school", "")).strip(),
+                "degree": str(edu.get("degree", "")).strip(),
+                "year": str(edu.get("year", "")).strip(),
+                "score": str(edu.get("score", "")).strip() or str(edu.get("details", "")).strip(),
+            }
+        )
+
+    normalized_experience = []
+    for exp in experience_data:
+        if not isinstance(exp, dict):
+            continue
+        bullets = exp.get("bullets") if isinstance(exp.get("bullets"), list) else split_bullets(exp.get("details", ""))
+        if not any(str(exp.get(key, "")).strip() for key in ("company", "title", "dates", "location", "details")) and not bullets:
+            continue
+        normalized_experience.append(
+            {
+                "company": str(exp.get("company", "")).strip(),
+                "title": str(exp.get("title", "")).strip(),
+                "dates": str(exp.get("dates", "")).strip(),
+                "location": str(exp.get("location", "")).strip(),
+                "bullets": [str(item).strip() for item in bullets if str(item).strip()],
+            }
+        )
+
+    normalized_projects = []
+    for project in projects_data:
+        if not isinstance(project, dict):
+            continue
+        bullets = project.get("bullets") if isinstance(project.get("bullets"), list) else split_bullets(project.get("details", ""))
+        if not any(str(project.get(key, "")).strip() for key in ("name", "subtitle", "dates", "url", "github_link", "details")) and not bullets:
+            continue
+        links = []
+        if str(project.get("github_link", "")).strip():
+            href = normalize_url(str(project.get("github_link", "")).strip())
+            links.append({"label": "GitHub", "href": href, "display": display_link(href)})
+        if str(project.get("url", "")).strip():
+            href = normalize_url(str(project.get("url", "")).strip())
+            links.append({"label": "Live Demo", "href": href, "display": display_link(href)})
+        normalized_projects.append(
+            {
+                "name": str(project.get("name", "")).strip(),
+                "subtitle": str(project.get("subtitle", "")).strip(),
+                "dates": str(project.get("dates", "")).strip(),
+                "url": str(project.get("url", "")).strip(),
+                "github_link": str(project.get("github_link", "")).strip(),
+                "links": links,
+                "bullets": [str(item).strip() for item in bullets if str(item).strip()],
+            }
+        )
+
+    normalized_publications = []
+    for publication in publications_data:
+        if not isinstance(publication, dict):
+            continue
+        if not any(str(publication.get(key, "")).strip() for key in ("title", "publisher", "year", "url", "details")):
+            continue
+        normalized_publications.append(
+            {
+                "title": str(publication.get("title", "")).strip(),
+                "publisher": str(publication.get("publisher", "")).strip(),
+                "year": str(publication.get("year", "")).strip(),
+                "url": str(publication.get("url", "")).strip(),
+            }
+        )
+
+    normalized_skills = []
+    for skill in skills_data:
+        if isinstance(skill, dict):
+            name = str(skill.get("name", "")).strip()
+            details = str(skill.get("details", "")).strip()
+            if not name and not details:
+                continue
+            normalized_skills.append(f"{name}: {details}" if details else name)
+        elif isinstance(skill, str) and skill.strip():
+            normalized_skills.append(skill.strip())
+
+    normalized_extracurriculars = []
+    for item in extracurriculars_data:
+        if not isinstance(item, dict):
+            continue
+        bullets = item.get("bullets") if isinstance(item.get("bullets"), list) else split_bullets(item.get("details", ""))
+        if not any(str(item.get(key, "")).strip() for key in ("role", "organization", "dates", "url", "details")) and not bullets:
+            continue
+        normalized_extracurriculars.append(
+            {
+                "role": str(item.get("role", "")).strip(),
+                "organization": str(item.get("organization", "")).strip(),
+                "dates": str(item.get("dates", "")).strip(),
+                "url": str(item.get("url", "")).strip(),
+                "bullets": [str(bullet).strip() for bullet in bullets if str(bullet).strip()],
+            }
+        )
+
+    normalized_certifications = []
+    for cert in certifications_data:
+        if not isinstance(cert, dict):
+            continue
+        if not any(str(cert.get(key, "")).strip() for key in ("name", "issuer", "year", "url", "details")):
+            continue
+        normalized_certifications.append(
+            {
+                "name": str(cert.get("name", "")).strip(),
+                "issuer": str(cert.get("issuer", "")).strip(),
+                "year": str(cert.get("year", "")).strip(),
+                "url": str(cert.get("url", "")).strip(),
+            }
+        )
+
+    normalized_awards = []
+    for award in awards_data:
+        if isinstance(award, dict):
+            title = str(award.get("title", "")).strip()
+            if title:
+                normalized_awards.append(title)
+        elif isinstance(award, str) and award.strip():
+            normalized_awards.append(award.strip())
+
+    return {
+        "name": personal.get("name", ""),
+        "headline": personal.get("headline", ""),
+        "summary": personal.get("summary", ""),
+        "contact": {
+            "email": personal.get("email", ""),
+            "phone": personal.get("phone", ""),
+            "address": personal.get("location", ""),
+            "linkedin": personal.get("linkedin", ""),
+            "github": personal.get("github", ""),
+            "portfolio": personal.get("portfolio", ""),
+            "kaggle": personal.get("kaggle", ""),
+            "email_href": normalize_url(personal.get("email", "")),
+            "phone_href": normalize_url(personal.get("phone", "")),
+            "linkedin_href": normalize_url(personal.get("linkedin", "")),
+            "github_href": normalize_url(personal.get("github", "")),
+            "portfolio_href": normalize_url(personal.get("portfolio", "")),
+            "kaggle_href": normalize_url(personal.get("kaggle", "")),
+            "linkedin_display": display_link(personal.get("linkedin", "")),
+            "github_display": display_link(personal.get("github", "")),
+            "portfolio_display": display_link(personal.get("portfolio", "")),
+            "kaggle_display": display_link(personal.get("kaggle", "")),
+        },
+        "education": normalized_education,
+        "experience": normalized_experience,
+        "projects": normalized_projects,
+        "skills": normalized_skills,
+        "publications": normalized_publications,
+        "certifications": normalized_certifications,
+        "awards": normalized_awards,
+        "achievements": normalized_awards,
+        "extracurriculars": normalized_extracurriculars,
+        "languages": [],
+        "layout_scale": "scale-md",
+    }
 
 
 @app.get("/download-optimized-resume")
