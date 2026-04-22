@@ -330,14 +330,14 @@
         if (!cvData[section]) return;
         cvData[section].push(factories[section]());
         renderAll();
-        updatePreview();
+        debouncedPreview();
     }
 
     function removeEntry(section, index) {
         if (!cvData[section]) return;
         cvData[section].splice(index, 1);
         renderAll();
-        updatePreview();
+        debouncedPreview();
     }
 
     async function loadTemplates() {
@@ -346,7 +346,7 @@
         templates = data.templates || [];
     }
 
-    async function updatePreview() {
+async function updatePreview() {
         const frame = document.getElementById("template-preview-frame");
         const emptyState = document.getElementById("preview-empty-state");
         if (!frame || !emptyState || !selectedTemplate) {
@@ -370,6 +370,17 @@
         }
     }
 
+    // Debounce utility to prevent input blocking from rapid API calls
+    function debounce(func, delay) {
+        let timeoutId;
+        return function(...args) {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+
+    let debouncedPreview = debounce(updatePreview, 300);
+
     function bindInteractions() {
         document.querySelectorAll("[data-scroll-to]").forEach((button) => {
             button.addEventListener("click", () => {
@@ -382,9 +393,10 @@
 
         document.querySelectorAll("[data-oninput]").forEach((input) => {
             const eventType = input.tagName === "TEXTAREA" ? "input" : "input";
-            input.addEventListener(eventType, async (event) => {
+            input.readOnly = false; // Ensure editable
+            input.addEventListener(eventType, (event) => {
                 setValueByPath(input.dataset.oninput, event.target.value);
-                await updatePreview();
+                debouncedPreview();
             });
         });
 
@@ -397,10 +409,10 @@
         });
 
         document.querySelectorAll("[data-template-id]").forEach((card) => {
-            card.addEventListener("click", async () => {
+            card.addEventListener("click", () => {
                 selectedTemplate = Number(card.dataset.templateId);
                 renderAll();
-                await updatePreview();
+                debouncedPreview();
             });
         });
     }
