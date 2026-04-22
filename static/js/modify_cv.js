@@ -267,8 +267,11 @@
                         .map(
                             (template) => `
                             <div class="template-card-mini ${selectedTemplate === template.id ? "selected" : ""}" data-template-id="${template.id}">
-                                <div class="template-thumb">Preview ${template.id}</div>
-                                <div class="template-name">${template.name}</div>
+<div class="template-thumb">
+    <img src="/static/pic${template.id}.jpg" alt="Template ${template.id} Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <div style="display:none; grid-area:1/1/1/1; place-items:center; color:#eff6ff; font-size:0.95rem;">Preview ${template.id}</div>
+</div>
+                                <div class="template-name">Template ${template.id}</div>
                             </div>
                         `
                         )
@@ -395,6 +398,7 @@ async function updatePreview() {
             const eventType = input.tagName === "TEXTAREA" ? "input" : "input";
             input.readOnly = false; // Ensure editable
             input.addEventListener(eventType, (event) => {
+                event.preventDefault();
                 setValueByPath(input.dataset.oninput, event.target.value);
                 debouncedPreview();
             });
