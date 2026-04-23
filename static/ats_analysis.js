@@ -185,7 +185,9 @@
     function wireTabs() {
         const tabs = document.querySelectorAll(".tab-btn");
         tabs.forEach((btn) => {
-            btn.addEventListener("click", () => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 tabs.forEach((b) => b.classList.remove("active"));
                 document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
                 btn.classList.add("active");
