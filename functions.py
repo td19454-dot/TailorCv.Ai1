@@ -633,7 +633,7 @@ async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperatu
     except Exception as exc:
         raise _normalize_openai_error(exc) from exc
 
-def ats_scoring(resume_string, jd_string):
+async def ats_scoring(resume_string, jd_string):
     """Gives ats score for the resume highlignting strengths and weaknesses"""
     base_prompt=f"""You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
     Your task is to analyze a resume against a job description and generate a Jobscan-style Match Report.
@@ -770,16 +770,19 @@ def ats_scoring(resume_string, jd_string):
     prompt = base_prompt + "\n" + json_schema
     model="gpt-4o-mini"
     temperature=0.1
-    client = _build_openai_client()
+    client = await _build_openai_client()
 
     #Make call
     try:
-        response=client.chat.completions.create(model=model,
-                                                response_format={"type": "json_object"},
-                                                messages=[
-                                                    {'role':'system',"content":'Applicant Tracking System (ATS) resume scanner similar to Jobscan'},
-                                                    {'role':'user','content':prompt}
-                                                ],temperature=temperature)
+        response = await client.chat.completions.create(
+            model=model,
+            response_format={"type": "json_object"},
+            messages=[
+                {'role': 'system', "content": 'Applicant Tracking System (ATS) resume scanner similar to Jobscan'},
+                {'role': 'user', 'content': prompt}
+            ],
+            temperature=temperature
+        )
     except Exception as exc:
         raise _normalize_openai_error(exc) from exc
     return response.choices[0].message.content
