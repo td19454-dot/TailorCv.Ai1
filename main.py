@@ -1107,6 +1107,16 @@ async def solutions_page(request: Request):
     )
 
 
+@app.get("/ats-analysis", response_class=HTMLResponse)
+async def ats_analysis_page(request: Request):
+    """Dedicated ATS analysis page."""
+    return templates.TemplateResponse(
+        request,
+        "ats_analysis.html",
+        {"request": request},
+    )
+
+
 @app.get("/modify-cv", response_class=HTMLResponse)
 async def modify_cv_page(request: Request):
     """Manual CV editing page."""
@@ -1602,7 +1612,7 @@ async def get_score(jd_string: str, file: UploadFile = File(...)):
 
         async with request_semaphore:
             resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
-            ats_score = await asyncio.to_thread(ats_scoring, resume_string, jd_string)
+            ats_score = await ats_scoring(resume_string, jd_string)
 
         return parse_ai_json_response(ats_score)
     except HTTPException:
