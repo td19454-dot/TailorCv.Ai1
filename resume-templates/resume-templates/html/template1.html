@@ -17,11 +17,12 @@
                 {% if contact.github %}<span class="contact-item"><span class="contact-icon">gh</span><a href="{{ contact.github_href }}">{{ contact.github_display or contact.github }}</a></span>{% endif %}
             </div>
 
-            {% if contact.leetcode or contact.portfolio or contact.kaggle or contact.address %}
+            {% if contact.leetcode or contact.portfolio or contact.kaggle or contact.googleScholar or contact.address %}
             <div class="contact-line secondary-contact">
                 {% if contact.leetcode %}<span class="contact-item"><span class="contact-icon code-icon">&lt;/&gt;</span><a href="{{ contact.leetcode_href }}">{{ contact.leetcode_display or contact.leetcode }}</a></span>{% endif %}
                 {% if contact.portfolio %}<span class="contact-item"><a href="{{ contact.portfolio_href }}">{{ contact.portfolio_display or contact.portfolio }}</a></span>{% endif %}
                 {% if contact.kaggle %}<span class="contact-item"><a href="{{ contact.kaggle_href }}">{{ contact.kaggle_display or contact.kaggle }}</a></span>{% endif %}
+                {% if contact.googleScholar %}<span class="contact-item"><a href="{{ contact.googleScholar }}">Google Scholar</a></span>{% endif %}
                 {% if contact.address %}<span class="contact-item">{{ contact.address }}</span>{% endif %}
             </div>
             {% endif %}
