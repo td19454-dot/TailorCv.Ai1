@@ -1336,15 +1336,18 @@ header.navbar {
     object-fit: cover; /* keeps it clean */
 }
 
-
+.btn{
+    width : 100%;
+    max-width: 800px;
+}
 .btn{
     flex : 1;
-    width : 400px;
+    width : 600px;
     height : 60px;
     padding : 10px;
     border-radius: 70px;
     font-size: 20px;
-    background: linear-gradient(145deg, rgb(2, 40, 56), rgb(5, 15, 35));
+    background: linear-gradient(145deg, rgb(49, 31, 212), rgb(5, 15, 35));
     border : 1px solid rgba(255, 255, 255, 0.22);
     cursor: pointer;
     color : white;
@@ -1476,12 +1479,13 @@ header.navbar {
     padding : 10px;
     border-radius: 70px;
     font-size: 20px;
-    background-color: rgb(2, 40, 56);
+    background-color: linear-gradient(145deg, rgb(2, 40, 56), rgb(5, 15, 35));
     border : 1px solid rgba(255, 255, 255, 0.22);
     cursor: pointer;
     color : white;
     position: relative;
     overflow: hidden;
+    text-decoration: none;
     isolation: isolate;
     box-shadow: 0 10px 24px rgba(8, 27, 64, 0.28);
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
