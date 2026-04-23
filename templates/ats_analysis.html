@@ -4,18 +4,63 @@
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATS Score Analysis</title>
+    <title>ATS Score Analysis - TailorCV.ai</title>
     <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/style2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/back90.avif') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-attachment: fixed !important;
+        }
+        .analysis-page {
+            padding: 4rem 0;
+        }
+        .analysis-shell {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* Load ats_analysis.css styles normally, header/footer from style2.css */
+    </style>
     <link rel="stylesheet" href="/static/ats_analysis.css">
+
 </head>
-<body>
+<body> 
+    <header class="navbar">
+        <div class="left">
+            <div class="logo">
+                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+            </div>
+        </div>
+        <button
+            type="button"
+            class="mobile-menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="primary-nav-ats"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-links" id="primary-nav-ats">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/solutions" class="nav-link active">Solutions</a>
+            <a href="/about" class="nav-link">About Us</a>
+        </nav>
+        <div class="nav-actions">
+            <div id="auth-nav-slot"></div>
+        </div>
+    </header>
+
     <main class="analysis-page">
         <div class="analysis-shell">
             <header class="analysis-header-row">
-                <button id="back-to-resume-btn" class="btn-outline-small" type="button">← Back to resume</button>
+<a href="/solutions" id="back-to-resume-btn" class="btn-outline-small">← Back to resume</a>
                 <p id="analysis-meta" class="analysis-meta">Analyzed for role · company · date</p>
             </header>
 
@@ -41,7 +86,7 @@
                             </div>
                         </div>
                         <div id="match-badge" class="match-badge">Match</div>
-                        <p id="score-rank-text" class="muted-text">Top applicants benchmark not available</p>
+                        <p id="score-rank-text" class="score-subtext">Top applicants benchmark not available</p>
                     </article>
 
                     <article class="surface-card">
@@ -76,10 +121,11 @@
 
                 <div class="cta-row">
                     <button id="download-report-btn" class="btn-outline" type="button">Download report</button>
-                    <a href="/solutions" class="btn-primary">Rewrite resume with AI</a>
+<a href="/solutions" class="btn-primary ai-rewrite-btn">✨ Rewrite Resume with AI ✨</a>
                 </div>
             </section>
 
+            <!-- Other tab panels remain the same -->
             <section id="tab-keywords" class="tab-panel">
                 <article class="surface-card">
                     <h3 class="section-title">Keyword analysis</h3>
@@ -122,6 +168,30 @@
         </div>
     </main>
 
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">ResumeOptimizer</h4>
+                    <p class="footer-text">AI-powered resume optimization for your career success.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/solutions" class="footer-link">Solutions</a>
+                    <a href="/about" class="footer-link">About Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/auth_nav.js"></script>
+    <script src="/static/mobile_nav.js"></script>
+    <script src="/static/main_new.js"></script>
     <script src="/static/ats_analysis.js"></script>
 </body>
 </html>
+

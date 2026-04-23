@@ -1,3 +1,4 @@
+
 import os
 from pathlib import Path
 import pdfplumber
@@ -6,6 +7,8 @@ from openai import AsyncOpenAI
 import re
 import json
 import asyncio
+import math
+from collections import Counter
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 
@@ -633,8 +636,128 @@ async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperatu
     except Exception as exc:
         raise _normalize_openai_error(exc) from exc
 
+
+def _tokenize_for_ats(text: str) -> list[str]:
+    return re.findall(r"[a-zA-Z][a-zA-Z0-9+#.-]{1,}", str(text or "").lower())
+
+
+def _cosine_similarity(vec_a: dict[str, float], vec_b: dict[str, float]) -> float:
+    if not vec_a or not vec_b:
+        return 0.0
+    common = set(vec_a).intersection(vec_b)
+    numerator = sum(vec_a[k] * vec_b[k] for k in common)
+    denom_a = math.sqrt(sum(v * v for v in vec_a.values()))
+    denom_b = math.sqrt(sum(v * v for v in vec_b.values()))
+    if denom_a == 0 or denom_b == 0:
+        return 0.0
+    return numerator / (denom_a * denom_b)
+
+
+def _tfidf_vectors(tokens_a: list[str], tokens_b: list[str]) -> tuple[dict[str, float], dict[str, float]]:
+    tf_a = Counter(tokens_a)
+    tf_b = Counter(tokens_b)
+    vocab = set(tf_a.keys()).union(tf_b.keys())
+    n_docs = 2
+    vec_a: dict[str, float] = {}
+    vec_b: dict[str, float] = {}
+    for term in vocab:
+        df = int(term in tf_a) + int(term in tf_b)
+        idf = math.log((n_docs + 1) / (df + 1)) + 1.0
+        vec_a[term] = tf_a.get(term, 0) * idf
+        vec_b[term] = tf_b.get(term, 0) * idf
+    return vec_a, vec_b
+
+
+def _extract_years_of_experience(text: str) -> int:
+    years = [int(match) for match in re.findall(r"\b(\d{1,2})\s*\+?\s*(?:years?|yrs?)\b", str(text or "").lower())]
+    return max(years) if years else 0
+
+
+def _extract_skill_candidates(text: str) -> set[str]:
+    content = str(text or "").lower()
+    known_skills = {
+        "python", "java", "javascript", "typescript", "sql", "pandas", "numpy", "tensorflow", "pytorch",
+        "scikit-learn", "langchain", "langgraph", "autogen", "rllib", "docker", "kubernetes", "aws",
+        "azure", "gcp", "git", "fastapi", "flask", "react", "node", "nlp", "computer vision", "spark",
+        "hadoop", "mongodb", "postgresql", "mysql", "redis", "linux", "ci/cd", "rest", "api"
+    }
+    found = {skill for skill in known_skills if skill in content}
+    extra = re.findall(r"\b[a-z][a-z0-9+#.-]{2,}\b", content)
+    for token in extra:
+        if token in {"experience", "skills", "ability", "strong", "using", "with", "from", "have", "role"}:
+            continue
+        if len(token) >= 4:
+            found.add(token)
+    return found
+
+
+def _formatting_structure_score(resume_text: str) -> float:
+    text = str(resume_text or "").lower()
+    checks = [
+        bool(re.search(r"\bexperience\b", text)),
+        bool(re.search(r"\beducation\b", text)),
+        bool(re.search(r"\bskills?\b", text)),
+        bool(re.search(r"\bprojects?\b", text)),
+        bool(re.search(r"\bsummary\b", text)),
+        bool(re.search(r"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}", text)),
+        bool(re.search(r"\+?\d[\d\-\s()]{7,}", text)),
+    ]
+    return sum(1 for check in checks if check) / len(checks)
+
+
+def compute_deterministic_ats_score_breakdown(resume_text: str, jd_text: str) -> dict[str, float]:
+    resume_tokens = _tokenize_for_ats(resume_text)
+    jd_tokens = _tokenize_for_ats(jd_text)
+    vec_resume, vec_jd = _tfidf_vectors(resume_tokens, jd_tokens)
+    keyword_score = max(0.0, min(1.0, _cosine_similarity(vec_resume, vec_jd)))
+
+    # Semantic similarity uses the same deterministic TF-IDF family with bigram tokens.
+    resume_bigrams = [f"{resume_tokens[i]}_{resume_tokens[i+1]}" for i in range(len(resume_tokens) - 1)]
+    jd_bigrams = [f"{jd_tokens[i]}_{jd_tokens[i+1]}" for i in range(len(jd_tokens) - 1)]
+    vec_resume_bg, vec_jd_bg = _tfidf_vectors(resume_bigrams, jd_bigrams)
+    semantic_score = max(0.0, min(1.0, _cosine_similarity(vec_resume_bg, vec_jd_bg)))
+
+    jd_skills = _extract_skill_candidates(jd_text)
+    resume_skills = _extract_skill_candidates(resume_text)
+    skill_score = (len(jd_skills.intersection(resume_skills)) / len(jd_skills)) if jd_skills else keyword_score
+    skill_score = max(0.0, min(1.0, skill_score))
+
+    required_years = _extract_years_of_experience(jd_text)
+    resume_years = _extract_years_of_experience(resume_text)
+    if required_years > 0:
+        experience_score = max(0.0, min(1.0, resume_years / required_years))
+    else:
+        experience_score = 1.0 if resume_years > 0 else 0.5
+
+    formatting_score = _formatting_structure_score(resume_text)
+    formatting_component = (0.6 * formatting_score) + (0.4 * experience_score)
+
+    final_score = (
+        0.40 * keyword_score
+        + 0.30 * skill_score
+        + 0.20 * semantic_score
+        + 0.10 * formatting_component
+    ) * 100.0
+
+    return {
+        "final_score": round(max(0.0, min(100.0, final_score)), 2),
+        "keyword_score": round(keyword_score, 4),
+        "skill_score": round(skill_score, 4),
+        "semantic_score": round(semantic_score, 4),
+        "experience_score": round(experience_score, 4),
+        "formatting_score": round(formatting_score, 4),
+    }
+
+
+def compute_deterministic_ats_score(resume_text: str, jd_text: str) -> float:
+    breakdown = compute_deterministic_ats_score_breakdown(resume_text, jd_text)
+    return round(float(breakdown["final_score"]), 2)
+
 async def ats_scoring(resume_string, jd_string):
     """Gives ats score for the resume highlignting strengths and weaknesses"""
+    deterministic_breakdown = compute_deterministic_ats_score_breakdown(resume_string, jd_string)
+    deterministic_score = deterministic_breakdown["final_score"]
+
     base_prompt=f"""You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
     Your task is to analyze a resume against a job description and generate a Jobscan-style Match Report.
     Output ONLY valid JSON. Do NOT wrap the JSON in quotes
@@ -663,12 +786,12 @@ async def ats_scoring(resume_string, jd_string):
     Be strict, realistic, and recruiter-focused.
     Do NOT assume or hallucinate skills or experience not explicitly stated.
 
-    ### SCORING
-    - Compute a Match Rate between 0 and 100
-    - Weighting:
-    - Hard skills keywords: 40%
-    - Experience & cliches: 10%
-    - Searchability & formatting: 50%
+    IMPORTANT:
+    - Numeric ATS score is already computed deterministically server-side.
+    - Do NOT recalculate score with AI.
+    - Focus on qualitative analysis, strengths, gaps, and actionable recruiter tips.
+    - Use this deterministic score exactly:
+      deterministic_match_rate={deterministic_score}
 
     ### OUTPUT RULES (MANDATORY)
     - Output **ONLY valid JSON**
@@ -785,7 +908,31 @@ async def ats_scoring(resume_string, jd_string):
         )
     except Exception as exc:
         raise _normalize_openai_error(exc) from exc
-    return response.choices[0].message.content
+
+    content = response.choices[0].message.content
+    try:
+        parsed = json.loads(content)
+    except Exception:
+        match = re.search(r"\{[\s\S]*\}\s*$", content)
+        parsed = json.loads(match.group(0)) if match else {}
+
+    if not isinstance(parsed, dict):
+        parsed = {}
+
+    parsed["match_rate"] = deterministic_score
+    if deterministic_score < 40:
+        parsed["match_level"] = "Poor"
+    elif deterministic_score < 60:
+        parsed["match_level"] = "Fair"
+    elif deterministic_score < 75:
+        parsed["match_level"] = "Good"
+    elif deterministic_score < 90:
+        parsed["match_level"] = "Strong"
+    else:
+        parsed["match_level"] = "Excellent"
+    parsed["deterministic_breakdown"] = deterministic_breakdown
+
+    return json.dumps(parsed)
 
 def process_resume(resume_name,jd_string):
     """
