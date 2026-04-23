@@ -156,8 +156,6 @@ async function handleATSAnalysis() {
     const fileInput = document.getElementById('resume-file');
     const jdInput = document.getElementById('job-description');
     const analyzeBtn = document.getElementById('analyze-btn');
-    const resultsSection = document.getElementById('results-section');
-    const atsResults = document.getElementById('ats-results');
 
     if (!fileInput.files[0] || !jdInput.value.trim()) {
         alert('Please provide both a resume and a job description');
@@ -182,10 +180,9 @@ async function handleATSAnalysis() {
         if (!response.ok) throw new Error('Analysis failed');
 
         const data = await response.json();
-        displayATSResults(data);
-        resultsSection.style.display = 'block';
-        atsResults.style.display = 'block';
-        atsResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const analysisPayload = transformATSDataForPage(data, jdInput.value.trim());
+        sessionStorage.setItem('atsAnalysisPayload', JSON.stringify(analysisPayload));
+        window.location.href = '/ats-analysis';
 
     } catch (error) {
         alert('Error analyzing resume: ' + error.message);
@@ -197,24 +194,91 @@ async function handleATSAnalysis() {
     }
 }
 
-function displayATSResults(data) {
-    const atsContent = document.getElementById('ats-content');
-    let scoreColor = data.match_rate >= 80 ? '#10b981' : (data.match_rate >= 60 ? '#f59e0b' : '#ef4444');
+function transformATSDataForPage(data, jdString) {
+    const getArray = (value) => Array.isArray(value) ? value.filter(Boolean) : [];
+    const roleFromJD = inferRoleAndCompany(jdString);
+    const keywordMatched = getArray(data?.keywords?.matched);
+    const keywordMissing = getArray(data?.keywords?.missing);
+    const hardMatched = getArray(data?.hard_skills?.matched);
+    const hardMissing = getArray(data?.hard_skills?.missing);
+    const softMatched = getArray(data?.soft_skills?.matched);
+    const softMissing = getArray(data?.soft_skills?.missing);
+    const expScore = Number(data?.experience?.relevance_score || 0);
+    const searchScore = Number(data?.searchability?.score || 0);
+    const summaryPresent = !!data?.searchability?.professional_summary?.is_present;
 
-    atsContent.innerHTML = `
-        <div class="ats-score-display">
-            <div class="score-circle" style="background: ${scoreColor};">
-                ${data.match_rate || 0}%
-            </div>
-            <div class="match-level">Match Level: ${data.match_level || 'Not rated'}</div>
-        </div>
-        ${data.recruiter_tips ? `
-            <div class="recruiter-tips">
-                <div class="recruiter-tips-title">💡 Recruiter Tips</div>
-                <ul>${data.recruiter_tips.map(tip => `<li>${tip}</li>`).join('')}</ul>
-            </div>
-        ` : ''}
-    `;
+    const matchedKeywords = [...new Set([...keywordMatched, ...hardMatched, ...softMatched])];
+    const missingKeywords = [...new Set([...keywordMissing, ...hardMissing, ...softMissing])];
+    const bulletPoints = Number(data?.bullet_points || 0);
+    const metricsUsed = Number(data?.metrics_used || 0);
+    const wordCount = Number(data?.word_count || 0);
+    const pages = Number(data?.pages || 1);
+
+    const tips = getArray(data?.recruiter_tips).slice(0, 6).map((tip) => {
+        const text = String(tip);
+        let priority = 'medium';
+        if (/missing|must|urgent|critical|improve/i.test(text)) priority = 'high';
+        else if (/good|optional|consider/i.test(text)) priority = 'low';
+        return {
+            priority,
+            text,
+            reason: priority === 'high'
+                ? 'High-impact gap for ATS ranking.'
+                : priority === 'low'
+                    ? 'Helpful polish after core gaps are fixed.'
+                    : 'Improves ranking quality and readability.'
+        };
+    });
+
+    return {
+        score: Number(data?.match_rate || 0),
+        jobTitle: data?.job_title_match?.job_title_in_jd || roleFromJD.jobTitle,
+        company: roleFromJD.company,
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+        breakdown: [
+            { category: 'Keyword match', score: percentageFromRatio(keywordMatched.length, keywordMatched.length + keywordMissing.length) },
+            { category: 'Skills alignment', score: percentageFromRatio(hardMatched.length + softMatched.length, hardMatched.length + softMatched.length + hardMissing.length + softMissing.length) },
+            { category: 'Experience fit', score: expScore },
+            { category: 'Format & structure', score: searchScore },
+            { category: 'Quantified impact', score: metricsUsed > 0 ? Math.min(100, metricsUsed * 10) : 0 },
+            { category: 'Summary section', score: summaryPresent ? 100 : 'none' },
+        ],
+        matchedKeywords,
+        missingKeywords,
+        resumeStats: { wordCount, pages, bulletPoints, metricsUsed },
+        tips: tips.length ? tips : [{
+            priority: 'medium',
+            text: 'Add measurable impact and role-specific keywords.',
+            reason: 'No detailed recruiter tips were returned.'
+        }],
+    };
+}
+
+function percentageFromRatio(part, total) {
+    if (!total) return 0;
+    return Math.round((part / total) * 100);
+}
+
+function inferRoleAndCompany(jdText) {
+    const lines = String(jdText || '')
+        .split('\n')
+        .map((line) => line.trim())
+        .filter(Boolean)
+        .slice(0, 8);
+
+    const titleLine = lines.find((line) => /engineer|developer|manager|analyst|scientist|designer/i.test(line));
+    let company = 'Target Company';
+    const companyLine = lines.find((line) => /company|at\s+[A-Z][\w&.-]+/i.test(line));
+    if (companyLine) {
+        const atMatch = companyLine.match(/at\s+([A-Za-z0-9&.\- ]+)/i);
+        if (atMatch && atMatch[1]) {
+            company = atMatch[1].trim();
+        }
+    }
+    return {
+        jobTitle: titleLine || 'Target Role',
+        company,
+    };
 }
 
 function displayOptimizeLoading() {

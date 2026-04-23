@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATS Score Analysis</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/ats_analysis.css">
+</head>
+<body>
+    <main class="analysis-page">
+        <div class="analysis-shell">
+            <header class="analysis-header-row">
+                <button id="back-to-resume-btn" class="btn-outline-small" type="button">← Back to resume</button>
+                <p id="analysis-meta" class="analysis-meta">Analyzed for role · company · date</p>
+            </header>
+
+            <nav class="analysis-tabs" aria-label="ATS sections">
+                <button class="tab-btn active" type="button" data-tab="overview">Overview</button>
+                <button class="tab-btn" type="button" data-tab="keywords">Keywords</button>
+                <button class="tab-btn" type="button" data-tab="improvements">Improvements</button>
+                <button class="tab-btn" type="button" data-tab="side-by-side">Side-by-side</button>
+            </nav>
+
+            <section id="tab-overview" class="tab-panel active">
+                <div class="top-grid">
+                    <article class="surface-card score-card">
+                        <h3 class="section-title">ATS score</h3>
+                        <div class="score-ring-wrap">
+                            <svg class="score-ring" viewBox="0 0 120 120" role="img" aria-label="ATS score ring">
+                                <circle class="ring-bg" cx="60" cy="60" r="50"></circle>
+                                <circle id="score-ring-progress" class="ring-progress" cx="60" cy="60" r="50"></circle>
+                            </svg>
+                            <div class="score-center">
+                                <div id="score-value" class="score-value">0</div>
+                                <div class="score-subtext">out of 100</div>
+                            </div>
+                        </div>
+                        <div id="match-badge" class="match-badge">Match</div>
+                        <p id="score-rank-text" class="muted-text">Top applicants benchmark not available</p>
+                    </article>
+
+                    <article class="surface-card">
+                        <h3 class="section-title">Score breakdown</h3>
+                        <div id="breakdown-list" class="breakdown-list"></div>
+                    </article>
+                </div>
+
+                <div class="middle-grid">
+                    <article class="surface-card">
+                        <h3 class="section-title">Keyword analysis</h3>
+                        <div class="keywords-group">
+                            <p id="matched-label" class="keywords-title">Matched (0)</p>
+                            <div id="matched-keywords" class="pill-list"></div>
+                        </div>
+                        <div class="keywords-group">
+                            <p id="missing-label" class="keywords-title">Missing (0)</p>
+                            <div id="missing-keywords" class="pill-list"></div>
+                        </div>
+                    </article>
+
+                    <article class="surface-card">
+                        <h3 class="section-title">Resume at a glance</h3>
+                        <div id="stats-grid" class="stats-grid"></div>
+                    </article>
+                </div>
+
+                <article class="surface-card">
+                    <h3 class="section-title">Suggested improvements</h3>
+                    <div id="tips-list" class="tips-list"></div>
+                </article>
+
+                <div class="cta-row">
+                    <button id="download-report-btn" class="btn-outline" type="button">Download report</button>
+                    <a href="/solutions" class="btn-primary">Rewrite resume with AI</a>
+                </div>
+            </section>
+
+            <section id="tab-keywords" class="tab-panel">
+                <article class="surface-card">
+                    <h3 class="section-title">Keyword analysis</h3>
+                    <p class="tab-helper-text">Detailed keyword extraction from your resume vs. target job description.</p>
+                    <div class="keywords-group">
+                        <p id="keywords-tab-matched-label" class="keywords-title">Matched (0)</p>
+                        <div id="keywords-tab-matched" class="pill-list"></div>
+                    </div>
+                    <div class="keywords-group">
+                        <p id="keywords-tab-missing-label" class="keywords-title">Missing (0)</p>
+                        <div id="keywords-tab-missing" class="pill-list"></div>
+                    </div>
+                </article>
+            </section>
+
+            <section id="tab-improvements" class="tab-panel">
+                <article class="surface-card">
+                    <h3 class="section-title">Suggested improvements</h3>
+                    <p class="tab-helper-text">Actionable recommendations ranked by expected ATS impact.</p>
+                    <div id="tips-tab-list" class="tips-list"></div>
+                </article>
+            </section>
+
+            <section id="tab-side-by-side" class="tab-panel">
+                <article class="surface-card">
+                    <h3 class="section-title">Side-by-side</h3>
+                    <p class="tab-helper-text">Compare keyword coverage and targeted fixes before your next application.</p>
+                    <div class="side-by-side-grid">
+                        <div>
+                            <p class="side-title">Matched keywords</p>
+                            <div id="side-matched" class="pill-list"></div>
+                        </div>
+                        <div>
+                            <p class="side-title">Missing keywords</p>
+                            <div id="side-missing" class="pill-list"></div>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <script src="/static/ats_analysis.js"></script>
+</body>
+</html>
