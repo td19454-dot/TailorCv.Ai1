@@ -13,7 +13,10 @@
     ];
 
     let cvData = {
-        personalInfo: {},
+        personalInfo: {
+            googleScholar: "",
+            leetcode: ""
+        },
         education: [],
         experience: [],
         projects: [],
@@ -28,6 +31,13 @@
     let templates = [];
 
     function createInput(label, value, onInput, placeholder = "") {
+        const isDetails = label === "Details";
+        if (isDetails) {
+            return `
+                <label class="form-label">${label}</label>
+                <textarea class="section-textarea" data-oninput="${onInput}" rows="4" placeholder="${escapeHtml(placeholder)}">${escapeHtml(value || "")}</textarea>
+            `;
+        }
         return `
             <label class="form-label">${label}</label>
             <input class="section-input" value="${escapeHtml(value || "")}" placeholder="${escapeHtml(placeholder)}" data-oninput="${onInput}" />
@@ -68,6 +78,8 @@
                     <div>${createInput("Kaggle", info.kaggle, "personalInfo.kaggle", "kaggle.com/username")}</div>
                     <div>${createInput("GitHub", info.github, "personalInfo.github", "github.com/username")}</div>
                     <div>${createInput("Portfolio", info.portfolio, "personalInfo.portfolio", "yourportfolio.com")}</div>
+                    <div>${createInput("Google Scholar", info.googleScholar, "personalInfo.googleScholar", "scholar.google.com/citations?user=...")}</div>
+                    <div>${createInput("LeetCode", info.leetcode, "personalInfo.leetcode", "leetcode.com/username")}</div>
                 </div>
                 <label class="form-label">Summary</label>
                 <textarea class="section-textarea" data-oninput="personalInfo.summary">${escapeHtml(info.summary || "")}</textarea>
@@ -95,8 +107,7 @@
                                         })
                                         .join("")}
                                 </div>
-                                <label class="form-label">Details</label>
-                                <textarea class="section-textarea" data-oninput="${id}.${index}.details">${escapeHtml(item.details || "")}</textarea>
+
                                 <div class="section-controls">
                                     <button type="button" class="small-btn" data-remove-entry="${id}" data-index="${index}">Remove</button>
                                 </div>
@@ -122,7 +133,7 @@
                 { key: "score", label: "Score", placeholder: "CGPA 8.8" },
             ],
             cvData.education,
-            () => ({ school: "", degree: "", year: "", score: "", details: "" })
+            () => ({ school: "", degree: "", year: "", score: "" })
         );
     }
 
@@ -135,6 +146,7 @@
                 { key: "title", label: "Title", placeholder: "Frontend Developer" },
                 { key: "dates", label: "Dates", placeholder: "Jan 2024 - Present" },
                 { key: "location", label: "Location", placeholder: "Remote" },
+                { key: "details", label: "Details", placeholder: "• Bullet point achievements and responsibilities...\n• Use bullet points for each item" },
             ],
             cvData.experience,
             () => ({ company: "", title: "", dates: "", location: "", details: "" })
@@ -151,6 +163,7 @@
                 { key: "dates", label: "Dates", placeholder: "Jan 2025 - Mar 2025" },
                 { key: "url", label: "Live URL", placeholder: "https://..." },
                 { key: "github_link", label: "GitHub URL", placeholder: "https://github.com/..." },
+                { key: "details", label: "Details", placeholder: "• Key features implemented\n• Technologies and tools used\n• Results and impact achieved" },
             ],
             cvData.projects,
             () => ({ name: "", subtitle: "", dates: "", url: "", github_link: "", details: "" })
@@ -158,7 +171,7 @@
     }
 
     function SkillsSection() {
-        const skills = cvData.skills.length ? cvData.skills : [{ name: "", details: "" }];
+        const skills = cvData.skills.length ? cvData.skills : [{ name: ""}];
         return `
             <section id="skills" class="form-card section-card">
                 <h2 class="form-title">Skills</h2>
@@ -168,8 +181,6 @@
                         <div class="entry-card">
                             <label class="form-label">Skill / Category</label>
                             <input class="section-input" value="${escapeHtml(skill.name || "")}" data-oninput="skills.${index}.name" placeholder="Languages: JavaScript, Python" />
-                            <label class="form-label">Details</label>
-                            <textarea class="section-textarea" data-oninput="skills.${index}.details">${escapeHtml(skill.details || "")}</textarea>
                             <div class="section-controls">
                                 <button type="button" class="small-btn" data-remove-entry="skills" data-index="${index}">Remove</button>
                             </div>
@@ -195,7 +206,7 @@
                 { key: "url", label: "URL", placeholder: "https://..." },
             ],
             cvData.publications,
-            () => ({ title: "", publisher: "", year: "", url: "", details: "" })
+            () => ({ title: "", publisher: "", year: "", url: ""})
         );
     }
 
@@ -210,7 +221,7 @@
                 { key: "url", label: "URL", placeholder: "https://..." },
             ],
             cvData.extracurriculars,
-            () => ({ role: "", organization: "", dates: "", url: "", details: "" })
+            () => ({ role: "", organization: "", dates: "", url: "" })
         );
     }
 
@@ -321,14 +332,14 @@
 
     function addEntry(section) {
         const factories = {
-            education: () => ({ school: "", degree: "", year: "", score: "", details: "" }),
+            education: () => ({ school: "", degree: "", year: "", score: ""}),
             experience: () => ({ company: "", title: "", dates: "", location: "", details: "" }),
             projects: () => ({ name: "", subtitle: "", dates: "", url: "", github_link: "", details: "" }),
-            skills: () => ({ name: "", details: "" }),
-            extracurriculars: () => ({ role: "", organization: "", dates: "", url: "", details: "" }),
-            certifications: () => ({ name: "", issuer: "", year: "", url: "", details: "" }),
+            skills: () => ({ name: "" }),
+            extracurriculars: () => ({ role: "", organization: "", dates: "", url: "" }),
+            certifications: () => ({ name: "", issuer: "", year: "", url: ""}),
             awards: () => ({ title: "" }),
-            publications: () => ({ title: "", publisher: "", year: "", url: "", details: "" }),
+            publications: () => ({ title: "", publisher: "", year: "", url: ""}),
         };
         if (!cvData[section]) return;
         cvData[section].push(factories[section]());
