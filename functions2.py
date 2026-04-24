@@ -5,6 +5,11 @@ from dotenv import load_dotenv
 import pdfplumber
 load_dotenv()
 
+
+def _escape_braces(text: str) -> str:
+    """Escape curly braces so user text with { or } does not crash f-string formatting."""
+    return str(text or "").replace("{", "{{").replace("}", "}}")
+
 def create_prompt(resume_string,jd_string):
     """Creates a detailed prompt for AI-powered resume optimization based on a job description.
 
@@ -85,9 +90,9 @@ Ensure consistent formatting, professional fonts, and appropriate use of whitesp
 Use concise bullet points, each starting with a strong action verb.
 
 My Resume:
-{resume_string}
+{_escape_braces(resume_string)}
 Job Description:
-{jd_string}
+{_escape_braces(jd_string)}
 
 
 Generate the resume in markdown format to be further written to a PDF file. Return only the resume content and nothing else.Return raw Markdown only.
@@ -133,9 +138,9 @@ def ats_scoring(resume_string, jd_string):
     Output ONLY valid JSON. Do NOT wrap the JSON in quotes
     INPUTS 
     Resume:
-    {resume_string}
+    {_escape_braces(resume_string)}
     Job Description:
-    {jd_string}
+    {_escape_braces(jd_string)}
   
 
     ANALYSIS INSTRUCTIONS

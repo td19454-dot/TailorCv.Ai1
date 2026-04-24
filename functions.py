@@ -20,6 +20,11 @@ def normalize_links(text):
     )
 
 
+def _escape_braces(text: str) -> str:
+    """Escape curly braces so user text with { or } does not crash f-string formatting."""
+    return str(text or "").replace("{", "{{").replace("}", "}}")
+
+
 def _slice_section(text: str, start_markers: list[str], stop_markers: list[str]) -> str:
     """
     Best-effort extraction of a resume section from raw PDF text.
@@ -608,9 +613,9 @@ Follow this EXACT schema
 }}
 
 My Resume:
-{resume_string}
+{_escape_braces(resume_string)}
 Job Description:
-{jd_string}
+{_escape_braces(jd_string)}
 
 """
 @retry(
@@ -763,9 +768,9 @@ async def ats_scoring(resume_string, jd_string):
     Output ONLY valid JSON. Do NOT wrap the JSON in quotes
     INPUTS 
     Resume:
-    {resume_string}
+    {_escape_braces(resume_string)}
     Job Description:
-    {jd_string}
+    {_escape_braces(jd_string)}
   
     ANALYSIS INSTRUCTIONS
     Evaluate the resume using ATS logic based on:

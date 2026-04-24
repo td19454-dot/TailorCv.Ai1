@@ -4,6 +4,11 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 load_dotenv()
+
+
+def _escape_braces(text: str) -> str:
+    """Escape curly braces so user text with { or } does not crash f-string formatting."""
+    return str(text or "").replace("{", "{{").replace("}", "}}")
 def extract_text_from_pdf(pdf_path):
     """Extract text from PDF using PyMuPDF"""
     doc = pymupdf.open(pdf_path)
@@ -20,7 +25,7 @@ If a field is not found, use null. Ensure the output is valid JSON only, no othe
 Based on the fiels are present create field and write the information corresponding to the field
 All the text in the resume must be extracted and put in relevant sections
 Resume text:
-{pdf_text}"""
+{_escape_braces(pdf_text)}"""
     client = OpenAI()
     temperature=0
     model="gpt-4o-mini"
