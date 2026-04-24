@@ -432,15 +432,14 @@ body {
 }
 
 .nav-links a {
-    font-size: 25px;
-    letter-spacing: .3px;
+       font-size: 12px;
+    letter-spacing: 0px;
     color: rgb(246, 247, 248);
-    font-weight: 400;
+    font-weight: 500;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 38px ;
+    padding: 32px;
     border-bottom: 4px solid #033067;
-
 }
 
 .nav-links a:hover {
