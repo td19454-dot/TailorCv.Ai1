@@ -24,6 +24,92 @@ const styles = [
     { id: 3, name: 'Clean', color: '#059669' }
 ];
 
+// LocalStorage helpers for persistent inputs
+const LS_KEYS = {
+    jobDescription: 'tailorcv_jobDescription',
+    resumeFile: 'tailorcv_resumeFile'
+};
+
+function saveJobDescription(value) {
+    localStorage.setItem(LS_KEYS.jobDescription, value);
+}
+
+function getJobDescription() {
+    return localStorage.getItem(LS_KEYS.jobDescription) || '';
+}
+
+function saveResumeFile(fileDataUrl, fileName, fileType) {
+    localStorage.setItem(LS_KEYS.resumeFile, JSON.stringify({
+        data: fileDataUrl,
+        name: fileName,
+        type: fileType
+    }));
+}
+
+function getResumeFile() {
+    try {
+        const raw = localStorage.getItem(LS_KEYS.resumeFile);
+        return raw ? JSON.parse(raw) : null;
+    } catch {
+        return null;
+    }
+}
+
+function clearStoredInputs() {
+    localStorage.removeItem(LS_KEYS.jobDescription);
+    localStorage.removeItem(LS_KEYS.resumeFile);
+}
+
+function dataUrlToFile(dataUrl, filename, mimeType) {
+    const arr = dataUrl.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mimeType || mime });
+}
+
+function getResumeFileForUpload() {
+    const fileInput = document.getElementById('resume-file');
+    if (fileInput && fileInput.files[0]) return fileInput.files[0];
+    const stored = getResumeFile();
+    if (stored) {
+        return dataUrlToFile(stored.data, stored.name, stored.type);
+    }
+    return null;
+}
+
+function updateStoredFileUI(name) {
+    const info = document.getElementById('stored-file-info');
+    const nameEl = document.getElementById('stored-file-name');
+    if (info && nameEl) {
+        nameEl.textContent = name;
+        info.style.display = 'block';
+    }
+}
+
+function hideStoredFileUI() {
+    const info = document.getElementById('stored-file-info');
+    if (info) info.style.display = 'none';
+}
+
+function restoreSavedInputs() {
+    const jdInput = document.getElementById('job-description');
+    if (jdInput) {
+        const savedJD = getJobDescription();
+        if (savedJD) jdInput.value = savedJD;
+    }
+    const storedFile = getResumeFile();
+    if (storedFile) {
+        updateStoredFileUI(storedFile.name);
+        const fileName = document.getElementById('file-name');
+        if (fileName) fileName.textContent = storedFile.name;
+    }
+}
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
 // File upload handler
@@ -33,7 +119,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (fileInput && fileName) {
         fileInput.addEventListener('change', function(e) {
             if (e.target.files.length > 0) {
-                fileName.textContent = e.target.files[0].name;
+                const file = e.target.files[0];
+                fileName.textContent = file.name;
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    saveResumeFile(evt.target.result, file.name, file.type);
+                    updateStoredFileUI(file.name);
+                };
+                reader.readAsDataURL(file);
             } else {
                 fileName.textContent = 'No file chosen';
             }
@@ -53,8 +146,31 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Paste event on job-description textarea:', e.clipboardData.getData('text'));
         });
         
+        // Save job description as user types
+        jdInput.addEventListener('input', function() {
+            saveJobDescription(jdInput.value);
+        });
+        
         console.log('Job description textarea paste-ready');
     }
+
+    // Clear stored inputs button
+    const clearStoredBtn = document.getElementById('clear-stored-btn');
+    if (clearStoredBtn) {
+        clearStoredBtn.addEventListener('click', function() {
+            clearStoredInputs();
+            const fileInput = document.getElementById('resume-file');
+            const fileName = document.getElementById('file-name');
+            const jdInput = document.getElementById('job-description');
+            if (fileInput) fileInput.value = '';
+            if (fileName) fileName.textContent = 'No file chosen';
+            if (jdInput) jdInput.value = '';
+            hideStoredFileUI();
+        });
+    }
+
+    // Restore previously saved inputs on load
+    restoreSavedInputs();
 
     // Analyze button handler
     const analyzeBtn = document.getElementById('analyze-btn');
@@ -70,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const fileInput = document.getElementById('resume-file');
             const jdInput = document.getElementById('job-description');
             
-            if (!fileInput.files[0]) {
+            if (!getResumeFileForUpload()) {
                 alert('Please upload a resume file');
                 return;
             }
@@ -156,8 +272,9 @@ async function handleATSAnalysis() {
     const fileInput = document.getElementById('resume-file');
     const jdInput = document.getElementById('job-description');
     const analyzeBtn = document.getElementById('analyze-btn');
+    const resumeFile = getResumeFileForUpload();
 
-    if (!fileInput.files[0] || !jdInput.value.trim()) {
+    if (!resumeFile || !jdInput.value.trim()) {
         alert('Please provide both a resume and a job description');
         return;
     }
@@ -168,7 +285,7 @@ async function handleATSAnalysis() {
     analyzeBtn.querySelector('.btn-loader').style.display = 'inline-block';
 
     const formData = new FormData();
-    formData.append('file', fileInput.files[0]);
+    formData.append('file', resumeFile);
     const jdString = encodeURIComponent(jdInput.value.trim());
 
     try {
@@ -465,8 +582,9 @@ async function handleResumeOptimization() {
         progressController.startDemo().catch(console.error);
     }, 800);
 
+    const resumeFile = getResumeFileForUpload();
     const formData = new FormData();
-    formData.append('file', fileInput.files[0]);
+    formData.append('file', resumeFile);
     formData.append('jd_string', jdInput.value.trim());
     
     // Using ID 1 for style as default if not explicitly selected
