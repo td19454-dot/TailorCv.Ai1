@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ name }} - Resume</title>
+  <style>
+    :root {
+      --page-bg: #ffffff;
+      --paper-bg: #ffffff;
+      --ink: #2b2b2b;
+      --muted: #5f5f5f;
+      --line: white ;
+      --accent: #3b3b3b;
+      --link: #2f2f2f;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--page-bg);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: var(--paper-bg);
+      padding: 5.5mm 6mm 5.5mm;
+    }
+
+    .header {
+      text-align: center;
+    }
+
+    .name {
+      margin: 0;
+      font-size: 10.8mm;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: #222;
+    }
+
+    .headline {
+      margin: 0.55mm 0 0.7mm;
+      font-size: 4.3mm;
+      line-height: 1.1;
+      font-weight: 600;
+      color: #3e3e3e;
+    }
+
+    .contact-row {
+      margin: 0 auto;
+      font-size: 3.05mm;
+      line-height: 1.22;
+      color: #454545;
+      max-width: 188mm;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-row + .contact-row {
+      margin-top: 0.2mm;
+    }
+
+    .contact-row a {
+      color: var(--link);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .top-rule {
+      border: 0;
+      border-top: 0.45mm solid var(--line);
+      margin: 1.6mm 0 1.5mm;
+    }
+
+    .section {
+      margin-bottom: 1.55mm;
+    }
+
+    .section-title {
+      margin: 0 0 0.65mm;
+      font-size: 4.3mm;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      border-bottom: 0.32mm solid #c6c6c6;
+      padding-bottom: 0.45mm;
+    }
+
+    .summary-text {
+      margin: 0;
+      font-size: 3.25mm;
+      line-height: 1.3;
+      color: #363636;
+    }
+
+    .skills-list {
+      columns: 3;
+      column-gap: 7mm;
+      margin: 0;
+      padding-left: 4.4mm;
+      font-size: 3.25mm;
+      line-height: 1.21;
+      color: #2f2f2f;
+    }
+
+    .skills-list li {
+      margin-bottom: 0.3mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .entry {
+      margin-bottom: 1mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .entry:last-child { margin-bottom: 0; }
+
+    .entry-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.7mm;
+      align-items: baseline;
+    }
+
+    .entry-title {
+      margin: 0;
+      font-size: 3.9mm;
+      line-height: 1.13;
+      font-weight: 760;
+      color: #323232;
+    }
+
+    .entry-date {
+      margin: 0;
+      font-size: 3.05mm;
+      line-height: 1.14;
+      font-weight: 700;
+      color: #505050;
+      white-space: nowrap;
+    }
+
+    .entry-subline {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.7mm;
+      margin-top: 0.25mm;
+      align-items: baseline;
+    }
+
+    .entry-org {
+      margin: 0;
+      font-size: 3.3mm;
+      line-height: 1.15;
+      color: #444;
+      font-style: italic;
+    }
+
+    .entry-location {
+      margin: 0;
+      font-size: 2.95mm;
+      line-height: 1.12;
+      color: #676767;
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .bullets {
+      margin: 0.45mm 0 0 4.1mm;
+      padding: 0;
+      font-size: 3.15mm;
+      line-height: 1.16;
+      color: #2f2f2f;
+    }
+
+    .bullets li { margin-bottom: 0.28mm; }
+
+    .links-row {
+      margin-top: 0.3mm;
+      margin-left: 4.1mm;
+      font-size: 2.85mm;
+      line-height: 1.1;
+      color: #575757;
+    }
+
+    .links-row a {
+      color: #404040;
+      text-decoration: none;
+      border-bottom: 0.2mm solid #a8a8a8;
+    }
+
+    .simple-list {
+      margin: 0;
+      padding-left: 4.4mm;
+      font-size: 3.15mm;
+      line-height: 1.15;
+      color: #2f2f2f;
+    }
+
+    .simple-list li {
+      margin-bottom: 0.28mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1 class="name">{{ name or "Resume" }}</h1>
+      {% if headline %}<p class="headline">{{ headline }}</p>{% endif %}
+
+      <div class="contact-row">
+        {% set primary_sep = joiner("  |  ") %}
+        {% if contact.phone %}{{ primary_sep() }}{{ contact.phone }}{% endif %}
+        {% if contact.email %}{{ primary_sep() }}<a href="{{ contact.email_href or ('mailto:' ~ contact.email) }}">{{ contact.email }}</a>{% endif %}
+        {% if contact.address %}{{ primary_sep() }}{{ contact.address }}{% endif %}
+      </div>
+
+      <div class="contact-row">
+        {% set social_sep = joiner("  |  ") %}
+        {% if contact.linkedin_display or contact.linkedin %}{{ social_sep() }}<a href="{{ contact.linkedin_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.linkedin_display or contact.linkedin }}</a>{% endif %}
+        {% if contact.github_display or contact.github %}{{ social_sep() }}<a href="{{ contact.github_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.github_display or contact.github }}</a>{% endif %}
+        {% if contact.portfolio_display or contact.portfolio %}{{ social_sep() }}<a href="{{ contact.portfolio_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.portfolio_display or contact.portfolio }}</a>{% endif %}
+        {% if contact.kaggle_display or contact.kaggle %}{{ social_sep() }}<a href="{{ contact.kaggle_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.kaggle_display or contact.kaggle }}</a>{% endif %}
+        {% if contact.leetcode_display or contact.leetcode %}{{ social_sep() }}<a href="{{ contact.leetcode_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.leetcode_display or contact.leetcode }}</a>{% endif %}
+        {% if contact.google_scholar_display or contact.google_scholar %}{{ social_sep() }}<a href="{{ contact.google_scholar_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.google_scholar_display or contact.google_scholar }}</a>{% endif %}
+      </div>
+    </header>
+
+    <hr class="top-rule">
+
+    {% if summary %}
+    <section class="section">
+      <h2 class="section-title">Summary</h2>
+      <p class="summary-text">{{ summary }}</p>
+    </section>
+    {% endif %}
+
+    {% if skills %}
+    <section class="section">
+      <h2 class="section-title">Skills</h2>
+      <ul class="skills-list">
+        {% for skill in skills %}
+          {% set skill_text = skill|string %}
+          {% if ':' in skill_text %}
+            {% set skill_text = skill_text.split(':', 1)[1] %}
+          {% endif %}
+          {% for token in skill_text.replace(';', ',').split(',') %}
+            {% set cleaned_skill = token.strip() %}
+            {% if cleaned_skill %}
+            <li>{{ cleaned_skill }}</li>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% if experience %}
+    <section class="section">
+      <h2 class="section-title">Experience</h2>
+      {% for exp in experience %}
+      <article class="entry">
+        <div class="entry-head">
+          <p class="entry-title">{{ exp.title or exp.company }}</p>
+          {% if exp.dates %}<p class="entry-date">{{ exp.dates }}</p>{% endif %}
+        </div>
+        {% set show_company_line = exp.company and exp.title and (exp.company != exp.title) %}
+        {% if show_company_line or exp.location %}
+        <div class="entry-subline">
+          <p class="entry-org">{% if show_company_line %}{{ exp.company }}{% endif %}</p>
+          {% if exp.location %}<p class="entry-location">{{ exp.location }}</p>{% endif %}
+        </div>
+        {% endif %}
+        {% if exp.bullets %}
+        <ul class="bullets">
+          {% for bullet in exp.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if education %}
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      {% for edu in education %}
+      <article class="entry">
+        <div class="entry-head">
+          <p class="entry-title">{{ edu.degree or edu.school }}</p>
+          {% if edu.year %}<p class="entry-date">{{ edu.year }}</p>{% endif %}
+        </div>
+        <div class="entry-subline">
+          <p class="entry-org">{{ edu.school or edu.degree }}{% if edu.score %} | {{ edu.score }}{% endif %}</p>
+          {% if edu.location %}<p class="entry-location">{{ edu.location }}</p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if projects %}
+    <section class="section">
+      <h2 class="section-title">Projects</h2>
+      {% for project in projects %}
+      <article class="entry">
+        <div class="entry-head">
+          <p class="entry-title">{{ project.name }}</p>
+          {% if project.dates %}<p class="entry-date">{{ project.dates }}</p>{% endif %}
+        </div>
+        {% if project.subtitle %}
+        <div class="entry-subline">
+          <p class="entry-org">{{ project.subtitle }}</p>
+        </div>
+        {% endif %}
+        {% if project.bullets %}
+        <ul class="bullets">
+          {% for bullet in project.bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if project.links or project.github_link or project.url %}
+        <div class="links-row">
+          {% set state = namespace(rendered=false, seen='|') %}
+          {% if project.links %}
+            {% for link in project.links %}
+              {% set link_href = link.href or '' %}
+              {% if link_href %}
+                {% set normalized = link_href if link_href.startswith(('http://', 'https://')) else 'https://' ~ link_href %}
+                {% set key = normalized|lower %}
+                {% if ('|' ~ key ~ '|') not in state.seen %}
+                  {% if state.rendered %} | {% endif %}<a href="{{ normalized }}" target="_blank" rel="noopener noreferrer">{{ link.label or link.display or link.href }}</a>{% set state.rendered = true %}{% set state.seen = state.seen ~ key ~ '|' %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          {% if project.github_link %}
+            {% set github_href = project.github_link if project.github_link.startswith(('http://', 'https://')) else 'https://' ~ project.github_link %}
+            {% set github_key = github_href|lower %}
+            {% if ('|' ~ github_key ~ '|') not in state.seen %}
+              {% if state.rendered %} | {% endif %}<a href="{{ github_href }}" target="_blank" rel="noopener noreferrer">GitHub</a>{% set state.rendered = true %}{% set state.seen = state.seen ~ github_key ~ '|' %}
+            {% endif %}
+          {% endif %}
+          {% if project.url %}
+            {% set live_href = project.url if project.url.startswith(('http://', 'https://')) else 'https://' ~ project.url %}
+            {% set live_key = live_href|lower %}
+            {% if ('|' ~ live_key ~ '|') not in state.seen %}
+              {% if state.rendered %} | {% endif %}<a href="{{ live_href }}" target="_blank" rel="noopener noreferrer">Live Demo</a>{% set state.rendered = true %}{% set state.seen = state.seen ~ live_key ~ '|' %}
+            {% endif %}
+          {% endif %}
+        </div>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if extracurriculars %}
+    <section class="section">
+      <h2 class="section-title">Extracurricular Activity</h2>
+      <ul class="simple-list">
+        {% for item in extracurriculars %}
+        <li>
+          {% if item is string %}
+            {{ item }}
+          {% else %}
+            {{ item.role or item.title or item.name }}{% if item.organization %} - {{ item.organization }}{% endif %}{% if item.dates %} ({{ item.dates }}){% endif %}
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% if publications %}
+    <section class="section">
+      <h2 class="section-title">Publications</h2>
+      <ul class="simple-list">
+        {% for publication in publications %}
+        <li>
+          {% if publication is string %}
+            {{ publication }}
+          {% else %}
+            {{ publication.title or publication.name }}{% if publication.publisher %} - {{ publication.publisher }}{% endif %}{% if publication.year %} ({{ publication.year }}){% endif %}
+            {% if publication.url or publication.link %}
+              {% set publication_href = publication.url or publication.link %}
+              {% set publication_href = publication_href if publication_href.startswith(('http://', 'https://')) else 'https://' ~ publication_href %}
+              | <a href="{{ publication_href }}" target="_blank" rel="noopener noreferrer">{{ publication.url or publication.link }}</a>
+            {% endif %}
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% if awards %}
+    <section class="section">
+      <h2 class="section-title">Awards</h2>
+      <ul class="simple-list">
+        {% for item in awards %}
+        <li>
+          {% if item is string %}
+            {{ item }}
+          {% else %}
+            {{ item.title or item.name }}{% if item.issuer %} - {{ item.issuer }}{% endif %}{% if item.year %} ({{ item.year }}){% endif %}
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% if certifications %}
+    <section class="section">
+      <h2 class="section-title">Certifications</h2>
+      <ul class="simple-list">
+        {% for cert in certifications %}
+        <li>
+          {% if cert is string %}
+            {{ cert }}
+          {% else %}
+            {{ cert.name or cert.title }}{% if cert.issuer %} - {{ cert.issuer }}{% endif %}{% if cert.year %} ({{ cert.year }}){% endif %}
+            {% if cert.url %}
+              {% set cert_href = cert.url if cert.url.startswith(('http://', 'https://')) else 'https://' ~ cert.url %}
+              | <a href="{{ cert_href }}" target="_blank" rel="noopener noreferrer">{{ cert.url }}</a>
+            {% endif %}
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  </div>
+</body>
+</html>

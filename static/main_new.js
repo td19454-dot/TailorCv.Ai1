@@ -18,7 +18,9 @@ const templates = [
     { id: 12, name: 'Skyline Blue', image: 'pic12.jpg' },
     { id: 13, name: 'Gray Executive Panel', image: 'pic13.png' },
     { id: 14, name: 'Olive Timeline Pro', image: 'pic14.png' },
-    { id: 15, name: 'Aqua Timeline Modern', image: 'pic15.png' }
+    { id: 15, name: 'Aqua Timeline Modern', image: 'pic15.png' },
+    { id: 16, name: 'Navy Rail Editorial', image: 'pic16.png' },
+    { id: 17, name: 'Executive Gray Board', image: 'pic17.png' }
 ];
 
 const styles = [
