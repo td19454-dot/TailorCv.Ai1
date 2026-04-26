@@ -1058,6 +1058,16 @@ header.navbar {
     padding: 0.42rem 0.58rem;
 }
 
+.cv-import-text-block {
+    margin-top: 0.9rem;
+}
+
+#existing-cv-text.section-textarea {
+    width: 100%;
+    min-height: 170px;
+    resize: vertical;
+}
+
 .manual-cv-description {
     margin-bottom: 0.8rem;
     color: #d7e7ff;
