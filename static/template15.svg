@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="760" viewBox="0 0 540 760">
+  <rect width="540" height="760" fill="#eceff3"/>
+  <rect x="18" y="18" width="504" height="724" rx="12" fill="#ffffff" stroke="#d7dfe7"/>
+  <text x="40" y="70" font-family="Arial, sans-serif" font-size="38" fill="#333c46">Template 15</text>
+  <rect x="40" y="88" width="190" height="10" fill="#52c0ca"/>
+  <rect x="340" y="40" width="150" height="100" fill="none" stroke="#93d7dd" stroke-width="3"/>
+  <rect x="40" y="160" width="460" height="6" fill="#4bbbc9"/>
+  <rect x="40" y="190" width="120" height="12" fill="#3f95bd"/>
+  <line x1="54" y1="214" x2="54" y2="520" stroke="#c0d2de" stroke-width="2"/>
+  <g fill="#5d86ce">
+    <circle cx="54" cy="228" r="4"/>
+    <circle cx="54" cy="302" r="4"/>
+    <circle cx="54" cy="376" r="4"/>
+  </g>
+  <rect x="68" y="222" width="200" height="10" fill="#2f495f" opacity="0.9"/>
+  <rect x="68" y="238" width="160" height="8" fill="#46b3c2" opacity="0.7"/>
+  <rect x="68" y="256" width="332" height="8" fill="#5f6d79" opacity="0.42"/>
+  <rect x="420" y="222" width="78" height="18" rx="9" fill="#5878bf"/>
+  <rect x="68" y="296" width="200" height="10" fill="#2f495f" opacity="0.9"/>
+  <rect x="68" y="312" width="160" height="8" fill="#46b3c2" opacity="0.7"/>
+  <rect x="68" y="330" width="332" height="8" fill="#5f6d79" opacity="0.42"/>
+  <rect x="420" y="296" width="78" height="18" rx="9" fill="#5878bf"/>
+  <rect x="40" y="548" width="90" height="12" fill="#3f95bd"/>
+  <g fill="#61c4ce">
+    <rect x="40" y="572" width="84" height="18" rx="5"/>
+    <rect x="130" y="572" width="84" height="18" rx="5"/>
+    <rect x="220" y="572" width="84" height="18" rx="5"/>
+    <rect x="310" y="572" width="84" height="18" rx="5"/>
+  </g>
+</svg>

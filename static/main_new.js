@@ -15,7 +15,10 @@ const templates = [
     { id: 9, name: 'Burgundy Sidebar', image: 'pic9.jpg' },
     { id: 10, name: 'Slate Sidebar', image: 'pic10.jpg' },
     { id: 11, name: 'Forest Sidebar', image: 'pic11.jpg' },
-    { id: 12, name: 'Skyline Blue', image: 'pic12.jpg' }
+    { id: 12, name: 'Skyline Blue', image: 'pic12.jpg' },
+    { id: 13, name: 'Gray Executive Panel', image: 'pic13.png' },
+    { id: 14, name: 'Olive Timeline Pro', image: 'pic14.png' },
+    { id: 15, name: 'Aqua Timeline Modern', image: 'pic15.png' }
 ];
 
 const styles = [

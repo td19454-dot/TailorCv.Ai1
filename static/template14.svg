@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="760" viewBox="0 0 540 760">
+  <rect width="540" height="760" fill="#e8eef0"/>
+  <rect x="18" y="18" width="504" height="724" rx="8" fill="#ffffff" stroke="#d4ddd1"/>
+  <rect x="18" y="108" width="504" height="88" fill="#5a734d"/>
+  <text x="40" y="70" font-family="Arial, sans-serif" font-size="30" fill="#32363c">Template <tspan fill="#5a734d" font-weight="700">14</tspan></text>
+  <rect x="40" y="134" width="250" height="10" fill="#ffffff" opacity="0.9"/>
+  <rect x="40" y="152" width="332" height="10" fill="#ffffff" opacity="0.75"/>
+  <rect x="40" y="230" width="120" height="12" fill="#5a734d"/>
+  <rect x="40" y="250" width="460" height="4" fill="#90a584"/>
+  <rect x="40" y="282" width="78" height="18" rx="9" fill="#6f865f"/>
+  <rect x="130" y="283" width="170" height="10" fill="#30353b" opacity="0.8"/>
+  <rect x="130" y="300" width="352" height="8" fill="#5f6a74" opacity="0.45"/>
+  <rect x="130" y="315" width="340" height="8" fill="#5f6a74" opacity="0.35"/>
+  <rect x="40" y="345" width="78" height="18" rx="9" fill="#6f865f"/>
+  <rect x="130" y="346" width="170" height="10" fill="#30353b" opacity="0.8"/>
+  <rect x="130" y="363" width="352" height="8" fill="#5f6a74" opacity="0.45"/>
+  <rect x="130" y="378" width="340" height="8" fill="#5f6a74" opacity="0.35"/>
+  <rect x="40" y="430" width="120" height="12" fill="#5a734d"/>
+  <rect x="40" y="450" width="460" height="4" fill="#90a584"/>
+  <g fill="#f3f7f2" stroke="#b4beb1">
+    <rect x="40" y="480" width="72" height="20" rx="8"/>
+    <rect x="118" y="480" width="72" height="20" rx="8"/>
+    <rect x="196" y="480" width="72" height="20" rx="8"/>
+    <rect x="274" y="480" width="72" height="20" rx="8"/>
+    <rect x="352" y="480" width="72" height="20" rx="8"/>
+  </g>
+</svg>

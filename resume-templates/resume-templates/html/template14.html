@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ name }} - Resume</title>
+  <style>
+    :root {
+      --paper: #ffffff;
+      --bg: #edf2f4;
+      --ink: #2f343a;
+      --muted: #63707a;
+      --green: #5a734d;
+      --line: #b8c6b3;
+      --pill: #6f865f;
+      --teal-pill:#5a734d;
+      --teal-link: #5a734d;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid #d8e1d5;
+      border-radius: 4mm;
+      box-shadow: 0 10px 30px rgba(16, 26, 19, 0.16);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 5.6mm 7mm 4mm;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4.8mm;
+      align-items: start;
+      border-top: 1.5mm solid #bcd3e6;
+    }
+
+    .name {
+      margin: 0;
+      font-size: 9.7mm;
+      line-height: 1;
+      font-weight: 500;
+      color: #2f3238;
+    }
+
+    .name-last {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .headline {
+      margin: 1mm 0 0;
+      font-size: 3.35mm;
+      color: #6f7680;
+      font-weight: 600;
+    }
+
+    .contact {
+      font-size: 2.85mm;
+      color: #444c55;
+      text-align: right;
+      line-height: 1.32;
+      max-width: 68mm;
+      word-break: break-word;
+    }
+
+    .contact a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact div {
+      margin-bottom: 0.5mm;
+    }
+
+    .summary-band {
+      background: var(--green);
+      color: #fff;
+      padding: 2.7mm 7mm 3.1mm;
+    }
+
+    .summary-band h2 {
+      margin: 0 0 1.2mm;
+      font-size: 3.95mm;
+      line-height: 1;
+      font-weight: 800;
+      text-transform: none;
+    }
+
+    .summary-text {
+      margin: 0;
+      font-size: 3.05mm;
+      line-height: 1.33;
+      color: rgba(255, 255, 255, 0.96);
+    }
+
+    .content {
+      padding: 3.6mm 7mm 5.4mm;
+    }
+
+    .section {
+      margin-bottom: 2.9mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .section h3 {
+      margin: 0 0 1.55mm;
+      font-size: 3.95mm;
+      line-height: 1;
+      color: var(--green);
+      font-weight: 800;
+      text-transform: none;
+      border-bottom: 0.5mm solid var(--line);
+      padding-bottom: 1.1mm;
+    }
+
+    .edu-card {
+      margin-bottom: 1.3mm;
+    }
+
+    .edu-school {
+      margin: 0;
+      font-size: 3.7mm;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .edu-meta {
+      margin: 0.45mm 0 0;
+      font-size: 2.95mm;
+      color: #464d56;
+      font-weight: 700;
+    }
+
+    .edu-sub {
+      margin: 0.4mm 0 0;
+      font-size: 2.7mm;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 27mm 1fr;
+      gap: 2.1mm;
+      margin-bottom: 2mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .timeline-left {
+      border-right: 0.35mm dotted #b8bfb7;
+      padding-right: 1.5mm;
+      position: relative;
+    }
+
+    .timeline-left::after {
+      content: "";
+      position: absolute;
+      right: -1.2mm;
+      top: 1.3mm;
+      width: 1.95mm;
+      height: 1.95mm;
+      border-radius: 50%;
+      background: #667f59;
+      border: 0.35mm solid #e8efe6;
+    }
+
+    .date-pill {
+      display: inline-block;
+      margin-top: 0.7mm;
+      background: var(--pill);
+      color: #fff;
+      font-size: 2.55mm;
+      font-weight: 700;
+      border-radius: 8px;
+      padding: 0.7mm 1.6mm;
+      line-height: 1.08;
+    }
+
+    .company {
+      margin: 0;
+      font-size: 3.55mm;
+      font-weight: 800;
+      line-height: 1.08;
+    }
+
+    .location {
+      margin: 0.35mm 0 0;
+      font-size: 2.55mm;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .role {
+      margin: 0;
+      font-size: 3.35mm;
+      line-height: 1.08;
+      font-weight: 800;
+      color: #2f343a;
+    }
+
+    .bullets {
+      margin: 0.75mm 0 0 3mm;
+      padding: 0;
+      font-size: 2.8mm;
+      line-height: 1.22;
+      color: #2f343a;
+    }
+
+    .bullets li { margin-bottom: 0.55mm; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85mm;
+    }
+
+    .skill {
+      display: inline-flex;
+      background: var(--teal-pill);
+      color: #ffffff;
+      border-radius: 5px;
+      padding: 0.62mm 1.55mm;
+      font-size: 2.58mm;
+      line-height: 1.08;
+    }
+
+    .project-links {
+      margin-top: 0.55mm;
+      margin-left: 2.5mm;
+      font-size: 2.58mm;
+      line-height: 1.16;
+      color: #4e5b69;
+    }
+
+    .project-links a {
+      color: var(--teal-link);
+      text-decoration: none;
+    }
+
+    .dense-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6mm 2.8mm;
+      align-items: start;
+    }
+
+    .mini-list {
+      margin: 0 0 0 2.5mm;
+      padding: 0;
+      font-size: 2.7mm;
+      line-height: 1.2;
+      color: #2f3640;
+    }
+
+    .mini-list li {
+      margin-bottom: 0.5mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .mini-list a {
+      color: var(--teal-link);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div>
+        {% set name_parts = name.split(' ', 1) if name else ['Resume', ''] %}
+        <h1 class="name">{{ name_parts[0] }} {% if name_parts|length > 1 %}<span class="name-last">{{ name_parts[1] }}</span>{% endif %}</h1>
+        {% if headline %}<p class="headline">{{ headline }}</p>{% endif %}
+      </div>
+      <div class="contact">
+        {% if contact.phone %}<div>{{ contact.phone }}</div>{% endif %}
+        {% if contact.email %}<div><a href="{{ contact.email_href or ('mailto:' ~ contact.email) }}">{{ contact.email }}</a></div>{% endif %}
+        {% if contact.linkedin_display or contact.linkedin %}<div><a href="{{ contact.linkedin_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.linkedin_display or contact.linkedin }}</a></div>{% endif %}
+        {% if contact.github_display or contact.github %}<div><a href="{{ contact.github_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.github_display or contact.github }}</a></div>{% endif %}
+        {% if contact.portfolio_display or contact.portfolio %}<div><a href="{{ contact.portfolio_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.portfolio_display or contact.portfolio }}</a></div>{% endif %}
+        {% if contact.kaggle_display or contact.kaggle %}<div><a href="{{ contact.kaggle_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.kaggle_display or contact.kaggle }}</a></div>{% endif %}
+        {% if contact.leetcode_display or contact.leetcode %}<div><a href="{{ contact.leetcode_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.leetcode_display or contact.leetcode }}</a></div>{% endif %}
+        {% if contact.google_scholar_display or contact.google_scholar %}<div><a href="{{ contact.google_scholar_href or '#' }}" target="_blank" rel="noopener noreferrer">{{ contact.google_scholar_display or contact.google_scholar }}</a></div>{% endif %}
+        {% if contact.address %}<div>{{ contact.address }}</div>{% endif %}
+      </div>
+    </header>
+
+    {% if summary %}
+    <section class="summary-band">
+      <h2>Professional Summary</h2>
+      <p class="summary-text">{{ summary }}</p>
+    </section>
+    {% endif %}
+
+    <div class="content">
+      {% if education %}
+      <section class="section">
+        <h3>Education</h3>
+        {% for edu in education %}
+        <article class="edu-card">
+          <p class="edu-school">{{ edu.school or edu.degree }}</p>
+          {% if edu.degree %}<p class="edu-meta">{{ edu.degree }}{% if edu.score %}, {{ edu.score }}{% endif %}</p>{% endif %}
+          {% if edu.year %}<span class="date-pill">{{ edu.year }}</span>{% endif %}
+          {% if edu.location %}<p class="edu-sub">{{ edu.location }}</p>{% endif %}
+        </article>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if experience %}
+      <section class="section">
+        <h3>Experience</h3>
+        {% for exp in experience %}
+        <article class="timeline-row">
+          <div class="timeline-left">
+            <p class="company">{{ exp.company or exp.title }}</p>
+            {% if exp.location %}<p class="location">{{ exp.location }}</p>{% endif %}
+            {% if exp.dates %}<span class="date-pill">{{ exp.dates }}</span>{% endif %}
+          </div>
+          <div>
+            {% if exp.title %}<p class="role">{{ exp.title }}</p>{% endif %}
+            {% if exp.bullets %}
+            <ul class="bullets">
+              {% for bullet in exp.bullets %}
+              <li>{{ bullet }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if projects %}
+      <section class="section">
+        <h3>Projects</h3>
+        {% for project in projects %}
+        <article class="timeline-row">
+          <div class="timeline-left">
+            <p class="company">{{ project.name }}</p>
+            {% if project.dates %}<span class="date-pill">{{ project.dates }}</span>{% endif %}
+          </div>
+          <div>
+            {% if project.subtitle %}<p class="role">{{ project.subtitle }}</p>{% endif %}
+            {% if project.bullets %}
+            <ul class="bullets">
+              {% for bullet in project.bullets %}
+              <li>{{ bullet }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if project.links or project.github_link or project.url %}
+            <div class="project-links">
+              {% set state = namespace(rendered=false, seen='|') %}
+              {% if project.links %}
+                {% for link in project.links %}
+                  {% set link_href = link.href or '' %}
+                  {% if link_href %}
+                    {% set normalized = link_href if link_href.startswith(('http://', 'https://')) else 'https://' ~ link_href %}
+                    {% set key = normalized|lower %}
+                    {% if ('|' ~ key ~ '|') not in state.seen %}
+                      {% if state.rendered %} | {% endif %}<a href="{{ normalized }}" target="_blank" rel="noopener noreferrer">{{ link.label or link.display or link.href }}</a>{% set state.rendered = true %}{% set state.seen = state.seen ~ key ~ '|' %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              {% if project.github_link %}
+                {% set github_href = project.github_link if project.github_link.startswith(('http://', 'https://')) else 'https://' ~ project.github_link %}
+                {% set github_key = github_href|lower %}
+                {% if ('|' ~ github_key ~ '|') not in state.seen %}
+                  {% if state.rendered %} | {% endif %}<a href="{{ github_href }}" target="_blank" rel="noopener noreferrer">GitHub</a>{% set state.rendered = true %}{% set state.seen = state.seen ~ github_key ~ '|' %}
+                {% endif %}
+              {% endif %}
+              {% if project.url %}
+                {% set live_href = project.url if project.url.startswith(('http://', 'https://')) else 'https://' ~ project.url %}
+                {% set live_key = live_href|lower %}
+                {% if ('|' ~ live_key ~ '|') not in state.seen %}
+                  {% if state.rendered %} | {% endif %}<a href="{{ live_href }}" target="_blank" rel="noopener noreferrer">Live Demo</a>{% set state.rendered = true %}{% set state.seen = state.seen ~ live_key ~ '|' %}
+                {% endif %}
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if skills %}
+      <section class="section">
+        <h3>Skills</h3>
+        <div class="skills">
+          {% for skill in skills %}
+            {% set skill_text = skill|string %}
+            {% if ':' in skill_text %}
+              {% set skill_text = skill_text.split(':', 1)[1] %}
+            {% endif %}
+            {% for token in skill_text.replace(';', ',').split(',') %}
+              {% set cleaned_skill = token.strip() %}
+              {% if cleaned_skill %}
+              <span class="skill">{{ cleaned_skill }}</span>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      {% if awards or publications or extracurriculars %}
+      <section class="section">
+        <div class="dense-grid">
+          {% if awards %}
+          <div>
+            <h3>Awards</h3>
+            <ul class="mini-list">
+              {% for item in awards %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {% if publications %}
+          <div>
+            <h3>Publications</h3>
+            <ul class="mini-list">
+              {% for publication in publications %}
+              <li>
+                {{ publication.title }}
+                {% if publication.publisher %} - {{ publication.publisher }}{% endif %}
+                {% if publication.year %} ({{ publication.year }}){% endif %}
+                {% if publication.url or publication.link %}
+                  {% set publication_href = publication.url or publication.link %}
+                  {% set publication_href = publication_href if publication_href.startswith(('http://', 'https://')) else 'https://' ~ publication_href %}
+                  - <a href="{{ publication_href }}" target="_blank" rel="noopener noreferrer">{{ publication.url or publication.link }}</a>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {% if extracurriculars %}
+          <div>
+            <h3>Extracurricular</h3>
+            <ul class="mini-list">
+              {% for item in extracurriculars %}
+              <li>
+                {{ item.role }}{% if item.organization %} - {{ item.organization }}{% endif %}{% if item.dates %} ({{ item.dates }}){% endif %}
+                {% if item.url %}
+                  {% set activity_href = item.url if item.url.startswith(('http://', 'https://')) else 'https://' ~ item.url %}
+                  - <a href="{{ activity_href }}" target="_blank" rel="noopener noreferrer">{{ item.url }}</a>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+      </section>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
