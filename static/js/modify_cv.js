@@ -215,9 +215,85 @@
         }
     }
 
+    async function handleExistingCvTextExtraction() {
+        const textInput = document.getElementById("existing-cv-text");
+        const extractTextBtn = document.getElementById("extract-existing-cv-text-btn");
+        const cvText = (textInput?.value || "").trim();
+
+        if (!cvText) {
+            setImportStatus("Please paste your CV text first.", true);
+            return;
+        }
+
+        if (cvText.length < 60) {
+            setImportStatus("Pasted CV text is too short. Please paste more complete content.", true);
+            return;
+        }
+
+        const shouldReplace = hasUserEnteredData(cvData)
+            ? window.confirm("This will replace your current form content with extracted data. Continue?")
+            : true;
+
+        if (!shouldReplace) {
+            setImportStatus("Import canceled. Your current form data is unchanged.");
+            return;
+        }
+
+        if (extractTextBtn) {
+            extractTextBtn.disabled = true;
+            extractTextBtn.textContent = "Extracting...";
+        }
+        setImportStatus("Extracting data from pasted CV text...");
+
+        try {
+            let response = await fetch("/api/extract-cv-from-text", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ cvText }),
+            });
+            if (response.status === 404) {
+                response = await fetch("/extract-cv-from-text", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ cvText }),
+                });
+            }
+
+            const payload = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                const detail = payload?.detail || "Could not extract data from pasted CV text.";
+                throw new Error(detail);
+            }
+
+            const incoming = normalizeIncomingCvData(payload.cvData || payload.resumeData || {});
+            if (!hasUserEnteredData(incoming)) {
+                setImportStatus("We could not detect enough structured data. You can still edit manually.", true);
+                return;
+            }
+
+            cvData = incoming;
+            renderAll();
+            await updatePreview();
+
+            const detectedSections = Array.isArray(payload?.meta?.detected_sections)
+                ? payload.meta.detected_sections
+                : [];
+            const suffix = detectedSections.length ? ` Detected: ${detectedSections.join(", ")}.` : "";
+            setImportStatus(`CV text extracted successfully.${suffix}`);
+        } catch (error) {
+            setImportStatus(error.message || "Text extraction failed. Please try again.", true);
+        } finally {
+            if (extractTextBtn) {
+                extractTextBtn.disabled = false;
+                extractTextBtn.textContent = "Extract From Text";
+            }
+        }
+    }
+
     function setupCvImport() {
         const extractBtn = document.getElementById("extract-existing-cv-btn");
         const fileInput = document.getElementById("existing-cv-file");
+        const extractTextBtn = document.getElementById("extract-existing-cv-text-btn");
 
         if (fileInput) {
             fileInput.addEventListener("change", () => {
@@ -232,6 +308,9 @@
 
         if (extractBtn) {
             extractBtn.addEventListener("click", handleExistingCvExtraction);
+        }
+        if (extractTextBtn) {
+            extractTextBtn.addEventListener("click", handleExistingCvTextExtraction);
         }
     }
 

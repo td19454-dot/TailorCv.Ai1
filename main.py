@@ -457,6 +457,20 @@ def _clean_resume_line(line: str) -> str:
     return line.strip("|_: ")
 
 
+def _normalize_resume_text(text: str) -> str:
+    value = str(text or "")
+    replacements = {
+        "â€“": "-",
+        "â€”": "-",
+        "â€": "\"",
+        "â€¢": "•",
+        "\u00a0": " ",
+    }
+    for bad, good in replacements.items():
+        value = value.replace(bad, good)
+    return value
+
+
 def _split_resume_sections(text: str) -> dict[str, list[str]]:
     section_aliases = {
         "summary": ["summary", "professional summary", "profile", "objective"],
@@ -849,85 +863,402 @@ def _cv_data_quality_score(payload: dict) -> int:
     return score
 
 
+def _to_text(value) -> str:
+    return str(value or "").strip()
+
+
+def _normalize_string_list(value) -> list[str]:
+    if isinstance(value, list):
+        candidates = value
+    elif value is None:
+        candidates = []
+    else:
+        candidates = [value]
+
+    seen: set[str] = set()
+    output: list[str] = []
+    for item in candidates:
+        text = _to_text(item)
+        if not text:
+            continue
+        key = text.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        output.append(text)
+    return output
+
+
+def _join_date_range(start_date: str, end_date: str) -> str:
+    start = _to_text(start_date)
+    end = _to_text(end_date)
+    if end.lower() in {"current", "present"}:
+        end = "Present"
+    if start and end:
+        return f"{start} - {end}"
+    return start or end
+
+
+def _strict_schema_to_editor_payload(parsed: dict) -> dict:
+    data = parsed if isinstance(parsed, dict) else {}
+    personal = data.get("personal_info", {}) if isinstance(data.get("personal_info"), dict) else {}
+
+    summary = _to_text(data.get("summary"))
+    personal_summary = summary
+
+    cv_data: dict = {
+        "personalInfo": {
+            "name": _to_text(personal.get("full_name")),
+            "headline": _to_text(personal.get("headline")),
+            "email": _to_text(personal.get("email")),
+            "phone": _to_text(personal.get("phone")),
+            "location": _to_text(personal.get("location")),
+            "linkedin": _to_text(personal.get("linkedin")),
+            "kaggle": _to_text(personal.get("kaggle")),
+            "github": _to_text(personal.get("github")),
+            "portfolio": _to_text(personal.get("portfolio")),
+            "googleScholar": _to_text(personal.get("google_scholar")),
+            "leetcode": _to_text(personal.get("leetcode")),
+            "summary": personal_summary,
+        },
+        "education": [],
+        "experience": [],
+        "projects": [],
+        "skills": [],
+        "extracurriculars": [],
+        "certifications": [],
+        "awards": [],
+        "publications": [],
+    }
+
+    for skill in _normalize_string_list(data.get("skills")):
+        cv_data["skills"].append({"name": skill})
+
+    for edu in data.get("education", []) if isinstance(data.get("education"), list) else []:
+        if not isinstance(edu, dict):
+            continue
+        degree = _to_text(edu.get("degree"))
+        field = _to_text(edu.get("field_of_study"))
+        if degree and field and field.lower() not in degree.lower():
+            degree_value = f"{degree} - {field}"
+        else:
+            degree_value = degree or field
+        description = _to_text(edu.get("description"))
+        cv_data["education"].append(
+            {
+                "school": _to_text(edu.get("institution")),
+                "degree": degree_value,
+                "year": _join_date_range(edu.get("start_date"), edu.get("end_date")),
+                "score": description,
+            }
+        )
+
+    for exp in data.get("experience", []) if isinstance(data.get("experience"), list) else []:
+        if not isinstance(exp, dict):
+            continue
+        bullets = _normalize_string_list(exp.get("description"))
+        technologies = _normalize_string_list(exp.get("technologies"))
+        details_lines = bullets[:]
+        if technologies:
+            details_lines.append(f"Technologies: {', '.join(technologies)}")
+
+        cv_data["experience"].append(
+            {
+                "company": _to_text(exp.get("company")),
+                "title": _to_text(exp.get("role")),
+                "dates": _join_date_range(exp.get("start_date"), exp.get("end_date")),
+                "location": _to_text(exp.get("location")),
+                "details": "\n".join(details_lines).strip(),
+            }
+        )
+
+    for project in data.get("projects", []) if isinstance(data.get("projects"), list) else []:
+        if not isinstance(project, dict):
+            continue
+        bullets = _normalize_string_list(project.get("description"))
+        technologies = _normalize_string_list(project.get("technologies"))
+        details_lines = bullets[:]
+        if technologies:
+            details_lines.append(f"Technologies: {', '.join(technologies)}")
+        cv_data["projects"].append(
+            {
+                "name": _to_text(project.get("name")),
+                "subtitle": ", ".join(technologies),
+                "dates": "",
+                "url": _to_text(project.get("link")),
+                "github_link": "",
+                "details": "\n".join(details_lines).strip(),
+            }
+        )
+
+    for award in data.get("awards", []) if isinstance(data.get("awards"), list) else []:
+        if not isinstance(award, dict):
+            continue
+        title = _to_text(award.get("title"))
+        issuer = _to_text(award.get("issuer"))
+        date = _to_text(award.get("date"))
+        desc = _to_text(award.get("description"))
+        parts = [part for part in [title, issuer, date, desc] if part]
+        if parts:
+            cv_data["awards"].append({"title": " | ".join(parts)})
+
+    for pub in data.get("publications", []) if isinstance(data.get("publications"), list) else []:
+        if not isinstance(pub, dict):
+            continue
+        publisher = _to_text(pub.get("publisher"))
+        authors = _normalize_string_list(pub.get("authors"))
+        description = _to_text(pub.get("description"))
+        if authors:
+            publisher = f"{publisher} | Authors: {', '.join(authors)}" if publisher else f"Authors: {', '.join(authors)}"
+        if description:
+            publisher = f"{publisher} | {description}" if publisher else description
+        cv_data["publications"].append(
+            {
+                "title": _to_text(pub.get("title")),
+                "publisher": publisher,
+                "year": _to_text(pub.get("date")),
+                "url": _to_text(pub.get("link")),
+            }
+        )
+
+    for activity in data.get("extracurricular_activities", []) if isinstance(data.get("extracurricular_activities"), list) else []:
+        if not isinstance(activity, dict):
+            continue
+        descriptions = _normalize_string_list(activity.get("description"))
+        role = _to_text(activity.get("role"))
+        if descriptions:
+            role = f"{role} | {'; '.join(descriptions)}" if role else "; ".join(descriptions)
+        cv_data["extracurriculars"].append(
+            {
+                "role": role,
+                "organization": _to_text(activity.get("organization")),
+                "dates": _join_date_range(activity.get("start_date"), activity.get("end_date")),
+                "url": "",
+            }
+        )
+
+    for cert in data.get("certifications", []) if isinstance(data.get("certifications"), list) else []:
+        if not isinstance(cert, dict):
+            continue
+        cv_data["certifications"].append(
+            {
+                "name": _to_text(cert.get("name")),
+                "issuer": _to_text(cert.get("issuer")),
+                "year": _to_text(cert.get("date")),
+                "url": _to_text(cert.get("link")),
+            }
+        )
+
+    additional = data.get("additional_sections", [])
+    if isinstance(additional, list):
+        for section in additional:
+            if not isinstance(section, dict):
+                continue
+            section_name = _to_text(section.get("section_name")) or "Additional Section"
+            entries = section.get("entries", [])
+            if not isinstance(entries, list):
+                continue
+            for entry in entries:
+                if not isinstance(entry, dict):
+                    continue
+                title = _to_text(entry.get("title"))
+                org = _to_text(entry.get("organization"))
+                date = _to_text(entry.get("date"))
+                desc = _to_text(entry.get("description"))
+                parts = [part for part in [section_name, title, org, date, desc] if part]
+                if parts:
+                    cv_data["awards"].append({"title": " | ".join(parts)})
+
+    detected_sections = [
+        key
+        for key, value in data.items()
+        if key in {
+            "summary",
+            "skills",
+            "education",
+            "experience",
+            "projects",
+            "awards",
+            "publications",
+            "extracurricular_activities",
+            "certifications",
+            "additional_sections",
+        }
+        and (value if not isinstance(value, list) else len(value) > 0)
+    ]
+
+    return {
+        "cvData": cv_data,
+        "meta": {"detected_sections": detected_sections},
+    }
+
+
 async def _parse_cv_text_to_editor_data_ai(raw_text: str) -> dict | None:
     if not str(raw_text or "").strip():
         return None
 
     prompt = f"""
-Extract structured resume data from this resume text and return ONLY valid JSON.
-Use this exact schema:
+You are an advanced resume/CV parser. Your task is to extract structured data from raw, messy CV text (including PDF-extracted text).
+
+Return STRICT JSON following the schema below.
+
+CRITICAL RULES:
+- Output ONLY valid JSON. No explanations or markdown.
+- Never hallucinate or invent information.
+- If a field is missing -> return null or [].
+- Preserve ALL relevant information.
+- Merge repeated sections into one.
+- Handle multiple subsections correctly.
+
+CORE PARSING LOGIC:
+1. MULTIPLE SUBSECTIONS:
+- Any section (Experience, Projects, Education, Awards, etc.) may contain multiple entries.
+- Each entry MUST be extracted as a separate object.
+- Detect new entries using titles, organizations, dates, and bullet groups.
+- NEVER merge multiple entries into one.
+
+2. REPEATED SECTIONS:
+- If a section appears multiple times, merge into one array.
+
+3. UNKNOWN / EXTRA SECTIONS:
+- If new sections appear, map them to the closest existing category OR store in "additional_sections".
+
+4. SPLIT CONTENT:
+- If one entry is broken across lines/pages, combine into one.
+
+5. BULLET POINTS:
+- Always store as arrays of strings.
+
+OUTPUT JSON SCHEMA:
 {{
-  "cvData": {{
-    "personalInfo": {{
-      "name": "",
-      "headline": "",
-      "email": "",
-      "phone": "",
-      "location": "",
-      "linkedin": "",
-      "kaggle": "",
-      "github": "",
-      "portfolio": "",
-      "googleScholar": "",
-      "leetcode": "",
-      "summary": ""
-    }},
-    "education": [{{ "school": "", "degree": "", "year": "", "score": "" }}],
-    "experience": [{{ "company": "", "title": "", "dates": "", "location": "", "details": "" }}],
-    "projects": [{{ "name": "", "subtitle": "", "dates": "", "url": "", "github_link": "", "details": "" }}],
-    "skills": [{{ "name": "" }}],
-    "extracurriculars": [{{ "role": "", "organization": "", "dates": "", "url": "" }}],
-    "certifications": [{{ "name": "", "issuer": "", "year": "", "url": "" }}],
-    "awards": [{{ "title": "" }}],
-    "publications": [{{ "title": "", "publisher": "", "year": "", "url": "" }}]
+  "personal_info": {{
+    "full_name": null,
+    "headline": null,
+    "email": null,
+    "phone": null,
+    "location": null,
+    "linkedin": null,
+    "github": null,
+    "portfolio": null,
+    "kaggle": null,
+    "google_scholar": null,
+    "leetcode": null
   }},
-  "meta": {{
-    "detected_sections": []
-  }}
+  "summary": null,
+  "skills": [],
+  "education": [
+    {{
+      "institution": null,
+      "degree": null,
+      "field_of_study": null,
+      "start_date": null,
+      "end_date": null,
+      "description": null
+    }}
+  ],
+  "experience": [
+    {{
+      "company": null,
+      "role": null,
+      "start_date": null,
+      "end_date": null,
+      "location": null,
+      "description": [],
+      "technologies": []
+    }}
+  ],
+  "projects": [
+    {{
+      "name": null,
+      "description": [],
+      "technologies": [],
+      "link": null
+    }}
+  ],
+  "awards": [
+    {{
+      "title": null,
+      "issuer": null,
+      "date": null,
+      "description": null
+    }}
+  ],
+  "publications": [
+    {{
+      "title": null,
+      "authors": [],
+      "publisher": null,
+      "date": null,
+      "link": null,
+      "description": null
+    }}
+  ],
+  "extracurricular_activities": [
+    {{
+      "organization": null,
+      "role": null,
+      "start_date": null,
+      "end_date": null,
+      "description": []
+    }}
+  ],
+  "certifications": [
+    {{
+      "name": null,
+      "issuer": null,
+      "date": null,
+      "link": null
+    }}
+  ],
+  "additional_sections": [
+    {{
+      "section_name": "",
+      "entries": [
+        {{
+          "title": null,
+          "organization": null,
+          "date": null,
+          "description": null
+        }}
+      ]
+    }}
+  ]
 }}
 
-Rules:
-- Preserve project/contact URLs accurately.
-- Put multi-point achievements in "details" with newline-separated bullets.
-- Keep missing fields empty (do not hallucinate).
-- Normalize awards as objects with a "title" key.
+SECTION MAPPING GUIDE:
+- Work Experience / Professional Experience -> experience
+- Projects / Personal Projects -> projects
+- Education -> education
+- Achievements / Honors -> awards
+- Research / Papers -> publications
+- Activities / Leadership -> extracurricular_activities
+- Certifications / Courses -> certifications
+- If unsure, use additional_sections.
 
-Resume text:
+DATA NORMALIZATION:
+- Dates -> "MMM YYYY" (e.g., "Nov 2025")
+- "Present" and "Current" -> "Present"
+- Remove duplicates in skills
+- Extract technologies from descriptions where possible
+
+FINAL VALIDATION:
+- Ensure multiple entries are preserved
+- Ensure repeated sections are merged
+- Ensure no data is lost
+- Ensure valid JSON format
+
+INPUT:
+\"\"\"
 {raw_text}
+\"\"\"
 """
     try:
         ai_response = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.0)
-        parsed = parse_ai_json_response(ai_response)
-        if not isinstance(parsed, dict):
+        strict_parsed = parse_ai_json_response(ai_response)
+        if not isinstance(strict_parsed, dict):
             return None
-        cv_data = parsed.get("cvData", {})
-        if not isinstance(cv_data, dict):
-            return None
-
-        if not isinstance(cv_data.get("personalInfo"), dict):
-            cv_data["personalInfo"] = {}
-
-        for key in ("education", "experience", "projects", "skills", "extracurriculars", "certifications", "awards", "publications"):
-            if not isinstance(cv_data.get(key), list):
-                cv_data[key] = []
-
-        normalized_awards = []
-        for award in cv_data.get("awards", []):
-            if isinstance(award, dict):
-                title = str(award.get("title") or award.get("name") or award.get("text") or award.get("label") or "").strip()
-            else:
-                title = str(award).strip()
-            if title:
-                normalized_awards.append({"title": title})
-        cv_data["awards"] = normalized_awards
-        parsed["cvData"] = cv_data
-
-        if not isinstance(parsed.get("meta"), dict):
-            parsed["meta"] = {}
-        if not isinstance(parsed["meta"].get("detected_sections"), list):
-            parsed["meta"]["detected_sections"] = []
-
-        return parsed
+        normalized_payload = _strict_schema_to_editor_payload(strict_parsed)
+        return normalized_payload
     except Exception:
         return None
 
@@ -2135,6 +2466,35 @@ async def extract_cv_from_pdf(file: UploadFile = File(...)):
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
+
+
+@app.post("/api/extract-cv-from-text")
+@app.post("/api/extract-cv-from-text/")
+@app.post("/extract-cv-from-text")
+@app.post("/extract-cv-from-text/")
+async def extract_cv_from_text(request: Request):
+    """Extract structured CV data from pasted plain text for the Modify CV editor."""
+    try:
+        payload = await request.json()
+        cv_text = ""
+        if isinstance(payload, dict):
+            cv_text = str(payload.get("cvText") or payload.get("cv_text") or "").strip()
+
+        if not cv_text:
+            raise HTTPException(status_code=400, detail="No CV text provided.")
+        if len(cv_text) < 60:
+            raise HTTPException(status_code=400, detail="CV text is too short to extract reliable data.")
+
+        parsed_payload = _parse_cv_text_to_editor_data(cv_text)
+        if _cv_data_quality_score(parsed_payload) < 8:
+            ai_payload = await _parse_cv_text_to_editor_data_ai(cv_text)
+            if ai_payload and _cv_data_quality_score(ai_payload) >= _cv_data_quality_score(parsed_payload):
+                parsed_payload = ai_payload
+        return parsed_payload
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to extract CV data from text: {exc}")
 
 
 @app.get("/api/resume-templates")
