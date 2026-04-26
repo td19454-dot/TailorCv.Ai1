@@ -37,14 +37,11 @@
       min-height: 297mm;
       margin: 0 auto;
       background: var(--paper);
-      border: 1px solid #d8e1d5;
-      border-radius: 4mm;
-      box-shadow: 0 10px 30px rgba(16, 26, 19, 0.16);
       overflow: hidden;
     }
 
     .header {
-      padding: 5.6mm 7mm 4mm;
+      padding: 2.8mm 3.6mm 2.2mm;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 4.8mm;
@@ -93,7 +90,7 @@
     .summary-band {
       background: var(--green);
       color: #fff;
-      padding: 2.7mm 7mm 3.1mm;
+      padding: 1.8mm 3.6mm 2.1mm;
     }
 
     .summary-band h2 {
@@ -112,7 +109,7 @@
     }
 
     .content {
-      padding: 3.6mm 7mm 5.4mm;
+      padding: 2.2mm 3.6mm 3.2mm;
     }
 
     .section {
@@ -428,7 +425,7 @@
       </section>
       {% endif %}
 
-      {% if awards or publications or extracurriculars %}
+      {% if awards or publications or extracurriculars or certifications %}
       <section class="section">
         <div class="dense-grid">
           {% if awards %}
@@ -464,7 +461,7 @@
 
           {% if extracurriculars %}
           <div>
-            <h3>Extracurricular</h3>
+            <h3>Extracurricular Activity</h3>
             <ul class="mini-list">
               {% for item in extracurriculars %}
               <li>
@@ -472,6 +469,23 @@
                 {% if item.url %}
                   {% set activity_href = item.url if item.url.startswith(('http://', 'https://')) else 'https://' ~ item.url %}
                   - <a href="{{ activity_href }}" target="_blank" rel="noopener noreferrer">{{ item.url }}</a>
+                {% endif %}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          {% if certifications %}
+          <div>
+            <h3>Certifications</h3>
+            <ul class="mini-list">
+              {% for cert in certifications %}
+              <li>
+                {{ cert.name }}{% if cert.issuer %} - {{ cert.issuer }}{% endif %}{% if cert.year %} ({{ cert.year }}){% endif %}
+                {% if cert.url %}
+                  {% set cert_href = cert.url if cert.url.startswith(('http://', 'https://')) else 'https://' ~ cert.url %}
+                  - <a href="{{ cert_href }}" target="_blank" rel="noopener noreferrer">{{ cert.url }}</a>
                 {% endif %}
               </li>
               {% endfor %}
