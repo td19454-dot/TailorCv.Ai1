@@ -52,6 +52,7 @@
             15: "pic15.png",
             16: "pic16.png",
             17: "pic17.png",
+            18: "pic18.png",
         };
         const filename = previewMap[id] || `pic${id}.jpg`;
         return `/static/${filename}`;
