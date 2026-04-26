@@ -12,23 +12,48 @@
         { id: "templates", label: "Templates" },
     ];
 
-    let cvData = {
-        personalInfo: {
-            googleScholar: "",
-            leetcode: ""
-        },
-        education: [],
-        experience: [],
-        projects: [],
-        skills: [],
-        extracurriculars: [],
-        certifications: [],
-        awards: [],
-        publications: []
-    };
+    function createEmptyCvData() {
+        return {
+            personalInfo: {
+                name: "",
+                headline: "",
+                email: "",
+                phone: "",
+                location: "",
+                linkedin: "",
+                kaggle: "",
+                github: "",
+                portfolio: "",
+                googleScholar: "",
+                leetcode: "",
+                summary: ""
+            },
+            education: [],
+            experience: [],
+            projects: [],
+            skills: [],
+            extracurriculars: [],
+            certifications: [],
+            awards: [],
+            publications: []
+        };
+    }
+
+    let cvData = createEmptyCvData();
 
     let selectedTemplate = null;
     let templates = [];
+
+    function getTemplatePreviewSrc(templateId) {
+        const id = Number(templateId);
+        const previewMap = {
+            13: "pic13.png",
+            14: "pic14.png",
+            15: "pic15.png",
+        };
+        const filename = previewMap[id] || `pic${id}.jpg`;
+        return `/static/${filename}`;
+    }
 
     function createInput(label, value, onInput, placeholder = "") {
         const isDetails = label === "Details";
@@ -50,6 +75,164 @@
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;");
+    }
+
+    function setImportStatus(message, isError = false) {
+        const statusEl = document.getElementById("cv-import-status");
+        if (!statusEl) return;
+        statusEl.textContent = message || "";
+        statusEl.style.color = isError ? "#fca5a5" : "#cfe4ff";
+    }
+
+    function normalizeIncomingCvData(incoming) {
+        const data = incoming && typeof incoming === "object" ? incoming : {};
+        const personalInfo = data.personalInfo && typeof data.personalInfo === "object" ? data.personalInfo : {};
+
+        const normalizeArray = (value) => (Array.isArray(value) ? value : []);
+        const toString = (value) => (value == null ? "" : String(value).trim());
+
+        const normalizeAwards = (awards) =>
+            normalizeArray(awards)
+                .map((item) => {
+                    if (item && typeof item === "object") {
+                        return { title: toString(item.title || item.name || item.text || item.label) };
+                    }
+                    return { title: toString(item) };
+                })
+                .filter((item) => item.title);
+
+        return {
+            personalInfo: {
+                name: toString(personalInfo.name),
+                headline: toString(personalInfo.headline),
+                email: toString(personalInfo.email),
+                phone: toString(personalInfo.phone),
+                location: toString(personalInfo.location),
+                linkedin: toString(personalInfo.linkedin),
+                kaggle: toString(personalInfo.kaggle),
+                github: toString(personalInfo.github),
+                portfolio: toString(personalInfo.portfolio),
+                googleScholar: toString(personalInfo.googleScholar),
+                leetcode: toString(personalInfo.leetcode),
+                summary: toString(personalInfo.summary),
+            },
+            education: normalizeArray(data.education),
+            experience: normalizeArray(data.experience),
+            projects: normalizeArray(data.projects),
+            skills: normalizeArray(data.skills),
+            extracurriculars: normalizeArray(data.extracurriculars),
+            certifications: normalizeArray(data.certifications),
+            awards: normalizeAwards(data.awards),
+            publications: normalizeArray(data.publications),
+        };
+    }
+
+    function hasNonEmptyValue(value) {
+        if (value == null) return false;
+        if (typeof value === "string") return value.trim().length > 0;
+        if (Array.isArray(value)) return value.some((item) => hasNonEmptyValue(item));
+        if (typeof value === "object") return Object.values(value).some((item) => hasNonEmptyValue(item));
+        return Boolean(value);
+    }
+
+    function hasUserEnteredData(data) {
+        return hasNonEmptyValue(data);
+    }
+
+    async function handleExistingCvExtraction() {
+        const fileInput = document.getElementById("existing-cv-file");
+        const extractBtn = document.getElementById("extract-existing-cv-btn");
+        const file = fileInput?.files?.[0];
+
+        if (!file) {
+            setImportStatus("Please choose a PDF file first.", true);
+            return;
+        }
+
+        if (!file.name.toLowerCase().endsWith(".pdf")) {
+            setImportStatus("Only PDF files are supported.", true);
+            return;
+        }
+
+        const shouldReplace = hasUserEnteredData(cvData)
+            ? window.confirm("This will replace your current form content with extracted data. Continue?")
+            : true;
+
+        if (!shouldReplace) {
+            setImportStatus("Import canceled. Your current form data is unchanged.");
+            return;
+        }
+
+        if (extractBtn) {
+            extractBtn.disabled = true;
+            extractBtn.textContent = "Extracting...";
+        }
+        setImportStatus("Extracting data from your PDF...");
+
+        try {
+            const formData = new FormData();
+            formData.append("file", file);
+
+            let response = await fetch("/api/extract-cv-from-pdf", {
+                method: "POST",
+                body: formData,
+            });
+            if (response.status === 404) {
+                response = await fetch("/extract-cv-from-pdf", {
+                    method: "POST",
+                    body: formData,
+                });
+            }
+
+            const payload = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                const detail = payload?.detail || "Could not extract data from the uploaded CV.";
+                throw new Error(detail);
+            }
+
+            const incoming = normalizeIncomingCvData(payload.cvData || payload.resumeData || {});
+            if (!hasUserEnteredData(incoming)) {
+                setImportStatus("We could not detect enough structured data. You can still edit manually.", true);
+                return;
+            }
+
+            cvData = incoming;
+            renderAll();
+            await updatePreview();
+
+            const detectedSections = Array.isArray(payload?.meta?.detected_sections)
+                ? payload.meta.detected_sections
+                : [];
+            const suffix = detectedSections.length ? ` Detected: ${detectedSections.join(", ")}.` : "";
+            setImportStatus(`CV data extracted successfully.${suffix}`);
+        } catch (error) {
+            setImportStatus(error.message || "Extraction failed. Please try another PDF.", true);
+        } finally {
+            if (extractBtn) {
+                extractBtn.disabled = false;
+                extractBtn.textContent = "Extract CV Data";
+            }
+        }
+    }
+
+    function setupCvImport() {
+        const extractBtn = document.getElementById("extract-existing-cv-btn");
+        const fileInput = document.getElementById("existing-cv-file");
+
+        if (fileInput) {
+            fileInput.addEventListener("change", () => {
+                const file = fileInput.files?.[0];
+                if (!file) {
+                    setImportStatus("");
+                    return;
+                }
+                setImportStatus(`Selected file: ${file.name}`);
+            });
+        }
+
+        if (extractBtn) {
+            extractBtn.addEventListener("click", handleExistingCvExtraction);
+        }
     }
 
     function Sidebar() {
@@ -279,7 +462,7 @@
                             (template) => `
                             <div class="template-card-mini ${selectedTemplate === template.id ? "selected" : ""}" data-template-id="${template.id}">
 <div class="template-thumb">
-    <img src="/static/pic${template.id}.jpg" alt="Template ${template.id} Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <img src="${getTemplatePreviewSrc(template.id)}" alt="Template ${template.id} Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
     <div style="display:none; grid-area:1/1/1/1; place-items:center; color:#eff6ff; font-size:0.95rem;">Preview ${template.id}</div>
 </div>
                                 <div class="template-name">Template ${template.id}</div>
@@ -510,17 +693,7 @@ async function updatePreview() {
             const parsed = JSON.parse(raw);
             const incoming = parsed.cvData || parsed.resumeData;
             if (incoming) {
-                cvData = {
-                    personalInfo: incoming.personalInfo || {},
-                    education: incoming.education || [],
-                    experience: incoming.experience || [],
-                    projects: incoming.projects || [],
-                    skills: incoming.skills || [],
-                    extracurriculars: incoming.extracurriculars || [],
-                    certifications: incoming.certifications || [],
-                    awards: incoming.awards || [],
-                    publications: incoming.publications || [],
-                };
+                cvData = normalizeIncomingCvData(incoming);
             }
             if (parsed.selectedTemplate) {
                 selectedTemplate = Number(parsed.selectedTemplate);
@@ -535,6 +708,7 @@ async function updatePreview() {
             await loadTemplates();
             hydrateDraft();
             renderAll();
+            setupCvImport();
             setupActionButtons();
             if (selectedTemplate) {
                 await updatePreview();

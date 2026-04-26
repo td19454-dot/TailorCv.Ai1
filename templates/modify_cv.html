@@ -53,6 +53,18 @@
                     <p class="modify-cv-subtitle">Edit each section, pick a template, and preview the final resume in real time.</p>
                 </div>
 
+                <section class="form-card cv-import-card" aria-labelledby="cv-import-title">
+                    <h2 id="cv-import-title" class="form-title">Start With Existing CV (Optional)</h2>
+                    <p class="manual-cv-description">
+                        Have an existing resume PDF? Upload it to auto-fill sections below. If not, skip this and build your CV manually.
+                    </p>
+                    <div class="cv-import-row">
+                        <input id="existing-cv-file" class="section-input" type="file" accept="application/pdf" />
+                        <button id="extract-existing-cv-btn" class="btn btn-secondary" type="button">Extract CV Data</button>
+                    </div>
+                    <p id="cv-import-status" class="cv-import-status" role="status" aria-live="polite"></p>
+                </section>
+
                 <div id="sections-container" class="sections-container" style="pointer-events: auto;"></div>
 
                 <div class="modify-cv-actions form-card">
@@ -97,6 +109,6 @@
 
     <script src="/static/auth_nav.js"></script>
     <script src="/static/mobile_nav.js"></script>
-    <script src="/static/js/modify_cv.js?v=4"></script>
+    <script src="/static/js/modify_cv.js?v=7"></script>
 </body>
 </html>

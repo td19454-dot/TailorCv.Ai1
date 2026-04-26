@@ -209,7 +209,7 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> d
     """
     Extract *clickable* link annotations (URIs) from the PDF and map them to the nearest
     project name based on page text proximity. This is far more reliable than trying
-    to recover URLs from extracted text when the resume uses link icons (↗).
+    to recover URLs from extracted text when the resume uses link icons (â†—).
     """
     try:
         from pypdf import PdfReader
@@ -450,6 +450,486 @@ def display_link(value: str) -> str:
             value = value[len(prefix):]
             break
     return value.rstrip("/")
+
+
+def _clean_resume_line(line: str) -> str:
+    line = re.sub(r"\s+", " ", str(line or "")).strip()
+    return line.strip("|_: ")
+
+
+def _split_resume_sections(text: str) -> dict[str, list[str]]:
+    section_aliases = {
+        "summary": ["summary", "professional summary", "profile", "objective"],
+        "education": ["education", "academic background", "academics"],
+        "experience": ["experience", "work experience", "employment", "professional experience"],
+        "projects": ["projects", "project"],
+        "skills": ["skills", "technical skills", "core competencies"],
+        "certifications": ["certifications", "certification", "licenses"],
+        "awards": ["awards", "achievements", "accomplishments", "honors"],
+        "publications": ["publications", "publication", "research papers"],
+        "extracurriculars": ["extracurricular", "extracurriculars", "activities", "leadership", "volunteer"],
+    }
+
+    alias_to_section = {}
+    for section, aliases in section_aliases.items():
+        for alias in aliases:
+            alias_to_section[re.sub(r"[^a-z]", "", alias.lower())] = section
+
+    sections: dict[str, list[str]] = {key: [] for key in section_aliases}
+    current_section = "summary"
+
+    raw_lines = [str(line).rstrip() for line in str(text or "").splitlines()]
+    for raw_line in raw_lines:
+        line = _clean_resume_line(raw_line)
+        if not line:
+            if sections[current_section] and sections[current_section][-1] != "":
+                sections[current_section].append("")
+            continue
+
+        normalized = re.sub(r"[^a-z]", "", line.lower().rstrip(":"))
+        line_no_colon = line.rstrip(":").strip()
+        upper_ratio = (
+            sum(1 for ch in line_no_colon if ch.isupper()) / max(1, sum(1 for ch in line_no_colon if ch.isalpha()))
+            if any(ch.isalpha() for ch in line_no_colon)
+            else 0.0
+        )
+        is_heading_like = len(line_no_colon) <= 45 and (line_no_colon.isupper() or upper_ratio > 0.7 or line.endswith(":"))
+        matched_section = alias_to_section.get(normalized)
+        if not matched_section and is_heading_like:
+            for alias_key, section_key in alias_to_section.items():
+                if alias_key and (normalized == alias_key or normalized.startswith(alias_key) or alias_key.startswith(normalized)):
+                    matched_section = section_key
+                    break
+
+        if matched_section:
+            current_section = matched_section
+            continue
+
+        sections[current_section].append(line)
+
+    return sections
+
+
+def _extract_contact_from_resume_text(text: str, lines: list[str]) -> dict[str, str]:
+    email_match = re.search(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b", text)
+    email = email_match.group(0).strip() if email_match else ""
+
+    phone = ""
+    for match in re.finditer(r"(?:\+?\d[\d()\-\s]{7,}\d)", text):
+        candidate = re.sub(r"\s+", " ", match.group(0)).strip()
+        digits = re.sub(r"\D", "", candidate)
+        if 8 <= len(digits) <= 15:
+            phone = candidate
+            break
+
+    urls = re.findall(r"(https?://[^\s)]+|www\.[^\s)]+|[A-Za-z0-9.-]+\.(?:com|in|org|io|dev|ai|net)/[^\s)]*)", text)
+    normalized_urls = []
+    for url in urls:
+        clean = str(url).strip().rstrip(".,);")
+        if not clean:
+            continue
+        normalized_urls.append(clean if clean.startswith(("http://", "https://")) else f"https://{clean}")
+
+    def first_url_containing(keyword: str) -> str:
+        for url in normalized_urls:
+            if keyword in url.lower():
+                return url
+        return ""
+
+    linkedin = first_url_containing("linkedin")
+    github = first_url_containing("github")
+    kaggle = first_url_containing("kaggle")
+    leetcode = first_url_containing("leetcode")
+    google_scholar = first_url_containing("scholar.google")
+
+    portfolio = ""
+    for url in normalized_urls:
+        lower = url.lower()
+        if all(token not in lower for token in ("linkedin", "github", "kaggle", "leetcode", "scholar.google")):
+            portfolio = url
+            break
+
+    top_lines = [_clean_resume_line(line) for line in lines[:8] if _clean_resume_line(line)]
+    location = ""
+    for line in top_lines:
+        if email and email in line:
+            continue
+        if phone and phone in line:
+            continue
+        if "@" in line or "http" in line.lower() or "www." in line.lower():
+            continue
+        if re.search(r"\b(?:india|usa|united states|uk|canada|australia|remote)\b", line.lower()) or "," in line:
+            location = line
+            break
+
+    return {
+        "email": email,
+        "phone": phone,
+        "linkedin": display_link(linkedin) if linkedin else "",
+        "github": display_link(github) if github else "",
+        "kaggle": display_link(kaggle) if kaggle else "",
+        "leetcode": display_link(leetcode) if leetcode else "",
+        "googleScholar": display_link(google_scholar) if google_scholar else "",
+        "portfolio": display_link(portfolio) if portfolio else "",
+        "location": location,
+    }
+
+
+def _split_paragraphs(lines: list[str]) -> list[list[str]]:
+    paragraphs: list[list[str]] = []
+    current: list[str] = []
+    for line in lines:
+        clean = _clean_resume_line(line)
+        if not clean:
+            if current:
+                paragraphs.append(current)
+                current = []
+            continue
+        current.append(clean)
+    if current:
+        paragraphs.append(current)
+    return paragraphs
+
+
+def _parse_cv_text_to_editor_data(text: str) -> dict:
+    raw_text = str(text or "")
+    raw_lines = [line for line in raw_text.splitlines()]
+    lines = [_clean_resume_line(line) for line in raw_lines if _clean_resume_line(line)]
+    sections = _split_resume_sections(raw_text)
+
+    contact = _extract_contact_from_resume_text(raw_text, lines)
+    top_lines = lines[:8]
+    likely_name = ""
+    likely_headline = ""
+    for line in top_lines:
+        lower = line.lower()
+        if re.search(r"[@]|https?://|www\.|linkedin|github|kaggle|leetcode|\d{8,}", lower):
+            continue
+        if len(line.split()) <= 5 and not likely_name:
+            likely_name = line
+            continue
+        if len(line.split()) <= 10 and not likely_headline:
+            likely_headline = line
+            break
+
+    summary_lines = sections.get("summary", [])
+    summary = " ".join(summary_lines[:4]).strip()
+    if not summary and len(lines) > 3:
+        summary = " ".join(lines[2:5]).strip()
+
+    education = []
+    for paragraph in _split_paragraphs(sections.get("education", []))[:6]:
+        school = ""
+        degree = ""
+        year = ""
+        score = ""
+        for line in paragraph:
+            lower = line.lower()
+            if not school and re.search(r"\b(university|college|school|institute|academy)\b", lower):
+                school = line
+            elif not degree and re.search(r"\b(b\.?tech|bachelor|master|m\.?tech|mba|phd|diploma|b\.?e\.?|m\.?s\.?)\b", lower):
+                degree = line
+            if not year:
+                match = re.search(r"(19|20)\d{2}(?:\s*[-–]\s*(19|20)?\d{2}|(?:\s*-\s*present)|(?:\s*to\s*present))?", line, re.IGNORECASE)
+                if match:
+                    year = match.group(0)
+            if not score and re.search(r"\b(cgpa|gpa|grade|percentage|percent|score)\b", lower):
+                score = line
+        if paragraph and not school:
+            school = paragraph[0]
+        if paragraph and not degree and len(paragraph) > 1:
+            degree = paragraph[1]
+        if school or degree or year or score:
+            education.append({"school": school, "degree": degree, "year": year, "score": score})
+
+    experience = []
+    for paragraph in _split_paragraphs(sections.get("experience", []))[:8]:
+        company = paragraph[0] if paragraph else ""
+        title = paragraph[1] if len(paragraph) > 1 else ""
+        dates = ""
+        location = ""
+        detail_lines = []
+        if paragraph and "|" in paragraph[0]:
+            left, right = [part.strip() for part in paragraph[0].split("|", 1)]
+            if left and right:
+                title = left
+                company = right
+        elif paragraph and " at " in paragraph[0].lower():
+            parts = re.split(r"\bat\b", paragraph[0], flags=re.IGNORECASE, maxsplit=1)
+            if len(parts) == 2:
+                title = parts[0].strip() or title
+                company = parts[1].strip() or company
+        for line in paragraph:
+            if not dates:
+                date_match = re.search(r"(19|20)\d{2}(?:\s*[-–]\s*(?:present|(19|20)\d{2}))?", line, re.IGNORECASE)
+                if date_match:
+                    dates = date_match.group(0)
+            if not location and "," in line and len(line.split()) <= 8 and not re.search(r"@|https?://|www\.", line.lower()):
+                location = line
+            if re.match(r"^[\-\u2022\*]\s*", line):
+                detail_lines.append(re.sub(r"^[\-\u2022\*]\s*", "", line).strip())
+        if not detail_lines:
+            detail_lines = [line for line in paragraph[2:6] if line and line != dates and line != location]
+        details = "\n".join(detail_lines).strip()
+        if any((company, title, dates, location, details)):
+            experience.append(
+                {
+                    "company": company,
+                    "title": title,
+                    "dates": dates,
+                    "location": location,
+                    "details": details,
+                }
+            )
+
+    projects = []
+    for paragraph in _split_paragraphs(sections.get("projects", []))[:8]:
+        name = paragraph[0] if paragraph else ""
+        subtitle = paragraph[1] if len(paragraph) > 1 else ""
+        dates = ""
+        urls = re.findall(r"(https?://[^\s)]+|www\.[^\s)]+|[A-Za-z0-9.-]+\.(?:com|in|org|io|dev|ai|net)/[^\s)]*)", "\n".join(paragraph))
+        normalized_urls = []
+        for url in urls:
+            clean = str(url).strip().rstrip(".,);")
+            if clean:
+                normalized_urls.append(clean if clean.startswith(("http://", "https://")) else f"https://{clean}")
+
+        github_link = ""
+        live_url = ""
+        for url in normalized_urls:
+            if "github" in url.lower() and not github_link:
+                github_link = url
+            elif not live_url:
+                live_url = url
+
+        for line in paragraph:
+            if not dates:
+                date_match = re.search(r"(19|20)\d{2}(?:\s*[-–]\s*(?:present|(19|20)\d{2}))?", line, re.IGNORECASE)
+                if date_match:
+                    dates = date_match.group(0)
+
+        detail_lines = []
+        for line in paragraph:
+            if re.match(r"^[\-\u2022\*]\s*", line):
+                detail_lines.append(re.sub(r"^[\-\u2022\*]\s*", "", line).strip())
+        if not detail_lines:
+            detail_lines = [line for line in paragraph[2:6] if line not in normalized_urls and line != dates]
+        details = "\n".join(detail_lines).strip()
+
+        if any((name, subtitle, dates, github_link, live_url, details)):
+            projects.append(
+                {
+                    "name": name,
+                    "subtitle": subtitle,
+                    "dates": dates,
+                    "url": live_url,
+                    "github_link": github_link,
+                    "details": details,
+                }
+            )
+
+    skills = []
+    for line in sections.get("skills", [])[:30]:
+        clean = re.sub(r"^[\-\u2022\*]\s*", "", line).strip()
+        if not clean:
+            continue
+        if ":" in clean and len(clean.split(":", 1)[0]) <= 25:
+            skills.append({"name": clean})
+            continue
+        tokens = [token.strip() for token in re.split(r"[,\|;/]", clean) if token.strip()]
+        if len(tokens) > 1:
+            for token in tokens:
+                skills.append({"name": token})
+        else:
+            skills.append({"name": clean})
+    deduped_skills = []
+    seen_skills = set()
+    for skill in skills:
+        name = str(skill.get("name", "")).strip()
+        key = name.lower()
+        if not name or key in seen_skills:
+            continue
+        seen_skills.add(key)
+        deduped_skills.append({"name": name})
+    skills = deduped_skills[:40]
+
+    certifications = []
+    for line in sections.get("certifications", [])[:20]:
+        clean = re.sub(r"^[\-\u2022\*]\s*", "", line).strip()
+        if not clean:
+            continue
+        year_match = re.search(r"(19|20)\d{2}", clean)
+        certifications.append(
+            {
+                "name": clean,
+                "issuer": "",
+                "year": year_match.group(0) if year_match else "",
+                "url": "",
+            }
+        )
+
+    awards = []
+    for line in sections.get("awards", [])[:20]:
+        clean = re.sub(r"^[\-\u2022\*]\s*", "", line).strip()
+        if clean:
+            awards.append({"title": clean})
+
+    publications = []
+    for line in sections.get("publications", [])[:20]:
+        clean = re.sub(r"^[\-\u2022\*]\s*", "", line).strip()
+        if not clean:
+            continue
+        year_match = re.search(r"(19|20)\d{2}", clean)
+        publications.append(
+            {
+                "title": clean,
+                "publisher": "",
+                "year": year_match.group(0) if year_match else "",
+                "url": "",
+            }
+        )
+
+    extracurriculars = []
+    for line in sections.get("extracurriculars", [])[:20]:
+        clean = re.sub(r"^[\-\u2022\*]\s*", "", line).strip()
+        if not clean:
+            continue
+        extracurriculars.append({"role": clean, "organization": "", "dates": "", "url": ""})
+
+    detected_sections = [
+        section
+        for section, values in sections.items()
+        if values and section in {"summary", "education", "experience", "projects", "skills", "certifications", "awards", "publications", "extracurriculars"}
+    ]
+
+    return {
+        "cvData": {
+            "personalInfo": {
+                "name": likely_name,
+                "headline": likely_headline,
+                "email": contact["email"],
+                "phone": contact["phone"],
+                "location": contact["location"],
+                "linkedin": contact["linkedin"],
+                "kaggle": contact["kaggle"],
+                "github": contact["github"],
+                "portfolio": contact["portfolio"],
+                "googleScholar": contact["googleScholar"],
+                "leetcode": contact["leetcode"],
+                "summary": summary,
+            },
+            "education": education,
+            "experience": experience,
+            "projects": projects,
+            "skills": skills,
+            "extracurriculars": extracurriculars,
+            "certifications": certifications,
+            "awards": awards,
+            "publications": publications,
+        },
+        "meta": {
+            "detected_sections": detected_sections,
+        },
+    }
+
+
+def _cv_data_quality_score(payload: dict) -> int:
+    cv_data = payload.get("cvData", {}) if isinstance(payload, dict) else {}
+    if not isinstance(cv_data, dict):
+        return 0
+    score = 0
+    personal = cv_data.get("personalInfo", {}) if isinstance(cv_data.get("personalInfo", {}), dict) else {}
+    for field in ("name", "email", "phone", "summary", "headline"):
+        if str(personal.get(field, "")).strip():
+            score += 1
+    for section in ("education", "experience", "projects", "skills", "certifications", "awards", "publications", "extracurriculars"):
+        items = cv_data.get(section, [])
+        if isinstance(items, list) and items:
+            score += 2
+    return score
+
+
+async def _parse_cv_text_to_editor_data_ai(raw_text: str) -> dict | None:
+    if not str(raw_text or "").strip():
+        return None
+
+    prompt = f"""
+Extract structured resume data from this resume text and return ONLY valid JSON.
+Use this exact schema:
+{{
+  "cvData": {{
+    "personalInfo": {{
+      "name": "",
+      "headline": "",
+      "email": "",
+      "phone": "",
+      "location": "",
+      "linkedin": "",
+      "kaggle": "",
+      "github": "",
+      "portfolio": "",
+      "googleScholar": "",
+      "leetcode": "",
+      "summary": ""
+    }},
+    "education": [{{ "school": "", "degree": "", "year": "", "score": "" }}],
+    "experience": [{{ "company": "", "title": "", "dates": "", "location": "", "details": "" }}],
+    "projects": [{{ "name": "", "subtitle": "", "dates": "", "url": "", "github_link": "", "details": "" }}],
+    "skills": [{{ "name": "" }}],
+    "extracurriculars": [{{ "role": "", "organization": "", "dates": "", "url": "" }}],
+    "certifications": [{{ "name": "", "issuer": "", "year": "", "url": "" }}],
+    "awards": [{{ "title": "" }}],
+    "publications": [{{ "title": "", "publisher": "", "year": "", "url": "" }}]
+  }},
+  "meta": {{
+    "detected_sections": []
+  }}
+}}
+
+Rules:
+- Preserve project/contact URLs accurately.
+- Put multi-point achievements in "details" with newline-separated bullets.
+- Keep missing fields empty (do not hallucinate).
+- Normalize awards as objects with a "title" key.
+
+Resume text:
+{raw_text}
+"""
+    try:
+        ai_response = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.0)
+        parsed = parse_ai_json_response(ai_response)
+        if not isinstance(parsed, dict):
+            return None
+        cv_data = parsed.get("cvData", {})
+        if not isinstance(cv_data, dict):
+            return None
+
+        if not isinstance(cv_data.get("personalInfo"), dict):
+            cv_data["personalInfo"] = {}
+
+        for key in ("education", "experience", "projects", "skills", "extracurriculars", "certifications", "awards", "publications"):
+            if not isinstance(cv_data.get(key), list):
+                cv_data[key] = []
+
+        normalized_awards = []
+        for award in cv_data.get("awards", []):
+            if isinstance(award, dict):
+                title = str(award.get("title") or award.get("name") or award.get("text") or award.get("label") or "").strip()
+            else:
+                title = str(award).strip()
+            if title:
+                normalized_awards.append({"title": title})
+        cv_data["awards"] = normalized_awards
+        parsed["cvData"] = cv_data
+
+        if not isinstance(parsed.get("meta"), dict):
+            parsed["meta"] = {}
+        if not isinstance(parsed["meta"].get("detected_sections"), list):
+            parsed["meta"]["detected_sections"] = []
+
+        return parsed
+    except Exception:
+        return None
 
 
 def infer_headline_from_jd(jd_string: str) -> str:
@@ -1624,6 +2104,39 @@ async def get_score(jd_string: str, file: UploadFile = File(...)):
             os.remove(file_path)
 
 
+@app.post("/api/extract-cv-from-pdf")
+@app.post("/api/extract-cv-from-pdf/")
+@app.post("/extract-cv-from-pdf")
+@app.post("/extract-cv-from-pdf/")
+async def extract_cv_from_pdf(file: UploadFile = File(...)):
+    """Extract structured CV data from an uploaded PDF for the Modify CV editor."""
+    file_path = None
+    try:
+        file_path = save_uploaded_pdf(file)
+        with open(file_path, "wb") as buffer:
+            content = await file.read()
+            buffer.write(content)
+
+        extracted_text = await asyncio.to_thread(extract_pdf_text, file_path)
+        if not extracted_text or not extracted_text.strip():
+            raise HTTPException(status_code=400, detail="No extractable text found in this PDF.")
+
+        parsed_payload = _parse_cv_text_to_editor_data(extracted_text)
+        # Heuristic parser first, AI fallback for difficult resume layouts.
+        if _cv_data_quality_score(parsed_payload) < 8:
+            ai_payload = await _parse_cv_text_to_editor_data_ai(extracted_text)
+            if ai_payload and _cv_data_quality_score(ai_payload) >= _cv_data_quality_score(parsed_payload):
+                parsed_payload = ai_payload
+        return parsed_payload
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to extract CV data: {exc}")
+    finally:
+        if file_path and os.path.exists(file_path):
+            os.remove(file_path)
+
+
 @app.get("/api/resume-templates")
 async def list_resume_templates():
     """Return available built-in resume templates."""
@@ -2077,3 +2590,4 @@ if __name__ == "__main__":
         reload=reload,
         reload_excludes=[".venv/*", "__pycache__/*", "uploads/*", "resumes/*"],
     )
+
