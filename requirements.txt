@@ -26,7 +26,7 @@ pymupdf
 spacy
 fitz
 pypdf>=4.0.0
-
+passlib
 # Markdown processing
 markdown>=3.5.0
 

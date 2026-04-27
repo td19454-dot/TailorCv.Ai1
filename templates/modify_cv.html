@@ -32,7 +32,7 @@
         </button>
 <nav class="nav-links" id="primary-nav-modify">
             <a href="/" class="nav-link">Home</a>
-            <a href="/ats-analysis" class="nav-link">Get ATS Score</a>
+            <a href="/solutions" class="nav-link">Get ATS Score</a>
             <a href="/modify-cv" class="nav-link active">Make CV</a>
             <a href="/solutions" class="nav-link">Optimize CV with AI</a>
             <a href="/pricing" class="nav-link">Pricing</a>
@@ -52,33 +52,6 @@
                     <h1 class="modify-cv-title">Modify Your CV</h1>
                     <p class="modify-cv-subtitle">Edit each section, pick a template, and preview the final resume in real time.</p>
                 </div>
-
-                <section class="form-card cv-import-card" aria-labelledby="cv-import-title" style="display: none;">
-                    <h2 id="cv-import-title" class="form-title">Start With Existing CV (Optional)</h2>
-                    <p class="manual-cv-description">
-                        Have an existing resume PDF? Upload it to auto-fill sections below. If not, skip this and build your CV manually.
-                    </p>
-                    <div class="cv-import-row">
-                        <input id="existing-cv-file" class="section-input" type="file" accept="application/pdf" />
-                        <button id="extract-existing-cv-btn" class="btn btn-secondary" type="button">Extract CV Data</button>
-                    </div>
-                    <p class="manual-cv-description">
-                        If PDF extraction misses data, paste your CV text below for better extraction.
-                    </p>
-                    <div class="cv-import-text-block">
-                        <label class="form-label" for="existing-cv-text">Paste CV Text</label>
-                        <textarea
-                            id="existing-cv-text"
-                            class="section-textarea"
-                            rows="10"
-                            placeholder="Paste your full CV text here..."
-                        ></textarea>
-                        <div class="cv-import-row">
-                            <button id="extract-existing-cv-text-btn" class="btn btn-secondary" type="button">Extract From Text</button>
-                        </div>
-                    </div>
-                    <p id="cv-import-status" class="cv-import-status" role="status" aria-live="polite"></p>
-                </section>
 
                 <div id="sections-container" class="sections-container" style="pointer-events: auto;"></div>
 
@@ -108,7 +81,7 @@
 <div class="footer-section">
                     <h4 class="footer-title">Quick Links</h4>
                     <a href="/" class="footer-link">Home</a>
-                    <a href="/ats-analysis" class="footer-link">Get ATS Score</a>
+                    <a href="/solutions" class="footer-link">Get ATS Score</a>
                     <a href="/modify-cv" class="footer-link">Make CV</a>
                     <a href="/solutions" class="footer-link">Optimize CV with AI</a>
                     <a href="/pricing" class="footer-link">Pricing</a>
@@ -124,6 +97,6 @@
 
     <script src="/static/auth_nav.js"></script>
     <script src="/static/mobile_nav.js"></script>
-    <script src="/static/js/modify_cv.js?v=11"></script>
+    <script src="/static/js/modify_cv.js?v=13"></script>
 </body>
 </html>

@@ -33,7 +33,8 @@ const styles = [
 // LocalStorage helpers for persistent inputs
 const LS_KEYS = {
     jobDescription: 'tailorcv_jobDescription',
-    resumeFile: 'tailorcv_resumeFile'
+    resumeFile: 'tailorcv_resumeFile',
+    selectedTemplate: 'tailorcv_selected_template'
 };
 
 function saveJobDescription(value) {
@@ -116,6 +117,44 @@ function restoreSavedInputs() {
     }
 }
 
+function getTemplateIdFromNavigation() {
+    const params = new URLSearchParams(window.location.search);
+    const fromQuery = Number(params.get('template'));
+    if (Number.isInteger(fromQuery) && templates.some(t => Number(t.id) === fromQuery)) {
+        return fromQuery;
+    }
+
+    if (window.location.pathname !== '/optimize') {
+        return null;
+    }
+
+    const fromStorage = Number(localStorage.getItem(LS_KEYS.selectedTemplate));
+    if (Number.isInteger(fromStorage) && templates.some(t => Number(t.id) === fromStorage)) {
+        return fromStorage;
+    }
+    return null;
+}
+
+function showTemplateSelectionSection() {
+    const templateSection = document.getElementById('template-selection-section');
+    if (!templateSection) return;
+    templateSection.style.display = 'block';
+}
+
+function applyTemplateFromNavigation() {
+    const templateId = getTemplateIdFromNavigation();
+    if (!templateId) return;
+
+    selectedTemplate = templates.find(t => Number(t.id) === Number(templateId)) || null;
+    showTemplateSelectionSection();
+    generateTemplateGrid();
+
+    const card = document.querySelector(`.template-card[data-template-id="${templateId}"]`);
+    if (card && selectedTemplate) {
+        card.classList.add('selected');
+    }
+}
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
 // File upload handler
@@ -177,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Restore previously saved inputs on load
     restoreSavedInputs();
+    applyTemplateFromNavigation();
 
     // Analyze button handler
     const analyzeBtn = document.getElementById('analyze-btn');
@@ -237,7 +277,7 @@ function generateTemplateGrid() {
     if (!grid) return;
 
     grid.innerHTML = templates.map(temp => `
-        <div class="template-card" onclick="selectTemplate(${temp.id}, this)">
+        <div class="template-card ${selectedTemplate && Number(selectedTemplate.id) === Number(temp.id) ? 'selected' : ''}" data-template-id="${temp.id}" onclick="selectTemplate(${temp.id}, this)">
             <div class="template-image-container">
                 <img src="/static/${temp.image}?v=8" alt="${temp.name}" class="template-img">
                 <div class="template-overlay">
@@ -254,6 +294,7 @@ function generateTemplateGrid() {
 // Handle template selection visuals
 function selectTemplate(id, element) {
     selectedTemplate = templates.find(t => t.id === id);
+    localStorage.setItem(LS_KEYS.selectedTemplate, String(id));
     
     // Remove 'selected' class from all cards
     document.querySelectorAll('.template-card').forEach(card => {
@@ -289,6 +330,17 @@ async function handleATSAnalysis() {
     analyzeBtn.classList.add('loading', 'animate-shimmer');
     analyzeBtn.querySelector('.btn-text').textContent = 'Analyzing...';
     analyzeBtn.querySelector('.btn-loader').style.display = 'inline-block';
+    displayATSLoading();
+    const atsProgressSection = document.getElementById('ats-progress-section');
+    if (atsProgressSection) {
+        atsProgressSection.style.display = 'block';
+        atsProgressSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    const atsProgressController = startATSProgress();
+    const progressStartTime = Date.now();
+
+    // Ensure the browser paints the progress UI before network work begins.
+    await new Promise((resolve) => requestAnimationFrame(resolve));
 
     const formData = new FormData();
     formData.append('file', resumeFile);
@@ -305,9 +357,24 @@ async function handleATSAnalysis() {
         const data = await response.json();
         const analysisPayload = transformATSDataForPage(data, jdInput.value.trim());
         sessionStorage.setItem('atsAnalysisPayload', JSON.stringify(analysisPayload));
-        window.location.href = '/ats-analysis';
+
+        // Keep progress visible for a short minimum duration for clear UX feedback.
+        const elapsed = Date.now() - progressStartTime;
+        const minVisibleMs = 1600;
+        if (elapsed < minVisibleMs) {
+            await new Promise((resolve) => setTimeout(resolve, minVisibleMs - elapsed));
+        }
+
+        atsProgressController.complete();
+        setTimeout(() => {
+            window.location.href = '/ats-analysis';
+        }, 380);
 
     } catch (error) {
+        atsProgressController.stop();
+        if (atsProgressSection) {
+            atsProgressSection.style.display = 'none';
+        }
         alert('Error analyzing resume: ' + error.message);
     } finally {
         analyzeBtn.disabled = false;
@@ -315,6 +382,116 @@ async function handleATSAnalysis() {
         analyzeBtn.querySelector('.btn-text').textContent = 'Get ATS Score';
         analyzeBtn.querySelector('.btn-loader').style.display = 'none';
     }
+}
+
+const atsStepsData = [
+    { step: 1, text: 'Uploading resume...', percent: 20 },
+    { step: 2, text: 'Scanning keyword match...', percent: 45 },
+    { step: 3, text: 'Checking ATS compatibility...', percent: 70 },
+    { step: 4, text: 'Preparing score report...', percent: 92 }
+];
+
+function displayATSLoading() {
+    const atsContent = document.getElementById('ats-progress-content');
+    if (!atsContent) return;
+    atsContent.innerHTML = `
+        <div class="optimize-progress-container">
+            <div class="optimize-floating-dots">
+                <div class="optimize-dot"></div>
+                <div class="optimize-dot"></div>
+                <div class="optimize-dot"></div>
+            </div>
+            <div class="optimize-status-text" id="ats-status-text">Uploading resume...</div>
+            <div class="optimize-steps">
+                <div class="optimize-step active" data-ats-step="1">
+                    <div class="optimize-step-icon">1</div>
+                    <div class="optimize-step-label">Upload</div>
+                </div>
+                <div class="optimize-step" data-ats-step="2">
+                    <div class="optimize-step-icon">2</div>
+                    <div class="optimize-step-label">Keywords</div>
+                </div>
+                <div class="optimize-step" data-ats-step="3">
+                    <div class="optimize-step-icon">3</div>
+                    <div class="optimize-step-label">ATS Check</div>
+                </div>
+                <div class="optimize-step" data-ats-step="4">
+                    <div class="optimize-step-icon">4</div>
+                    <div class="optimize-step-label">Report</div>
+                </div>
+            </div>
+            <div class="optimize-progress-bar">
+                <div class="optimize-progress-fill" id="ats-progress-fill">
+                    <div class="optimize-shimmer"></div>
+                </div>
+                <div class="optimize-percentage" id="ats-percentage">0%</div>
+            </div>
+        </div>
+    `;
+}
+
+function updateATSProgress(percent) {
+    const progressFill = document.getElementById('ats-progress-fill');
+    const percentage = document.getElementById('ats-percentage');
+    if (progressFill) progressFill.style.width = `${percent}%`;
+    if (percentage) percentage.textContent = `${percent}%`;
+}
+
+function updateATSStatus(text) {
+    const statusText = document.getElementById('ats-status-text');
+    if (statusText) statusText.textContent = text;
+}
+
+function updateATSStep(stepNumber) {
+    const steps = document.querySelectorAll('[data-ats-step]');
+    steps.forEach((stepEl) => {
+        const current = Number(stepEl.getAttribute('data-ats-step'));
+        stepEl.classList.remove('active', 'completed');
+        if (current < stepNumber) {
+            stepEl.classList.add('completed');
+        } else if (current === stepNumber) {
+            stepEl.classList.add('active');
+        }
+    });
+}
+
+function startATSProgress() {
+    let timer = null;
+    let percent = 0;
+    let stepIndex = 0;
+
+    const tick = () => {
+        if (stepIndex < atsStepsData.length) {
+            const step = atsStepsData[stepIndex];
+            if (percent < step.percent) {
+                percent += 1;
+                updateATSProgress(percent);
+            } else {
+                updateATSStep(step.step);
+                updateATSStatus(step.text);
+                stepIndex += 1;
+            }
+        }
+    };
+
+    updateATSStep(1);
+    updateATSStatus(atsStepsData[0].text);
+    timer = setInterval(tick, 80);
+
+    return {
+        stop() {
+            if (timer) {
+                clearInterval(timer);
+                timer = null;
+            }
+        },
+        complete() {
+            this.stop();
+            updateATSStep(4);
+            updateATSStatus('Analysis completed! Redirecting...');
+            updateATSProgress(100);
+        }
+    };
 }
 
 function transformATSDataForPage(data, jdString) {

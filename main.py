@@ -496,6 +496,36 @@ def _split_resume_sections(text: str) -> dict[str, list[str]]:
     sections: dict[str, list[str]] = {key: [] for key in section_aliases}
     current_section = "summary"
 
+    def is_heading_line(value: str) -> bool:
+        candidate = str(value or "").strip()
+        if not candidate:
+            return False
+        line_no_colon = candidate.rstrip(":").strip()
+        if len(line_no_colon) < 2 or len(line_no_colon) > 55:
+            return False
+        if re.search(r"[@]|https?://|www\.|\d{4,}", line_no_colon.lower()):
+            return False
+        words = [w for w in line_no_colon.split() if w]
+        if len(words) > 6:
+            return False
+        alpha_chars = [ch for ch in line_no_colon if ch.isalpha()]
+        upper_ratio = (
+            sum(1 for ch in alpha_chars if ch.isupper()) / max(1, len(alpha_chars))
+            if alpha_chars
+            else 0.0
+        )
+        title_ratio = (
+            sum(1 for w in words if w[:1].isupper()) / max(1, len(words))
+            if words
+            else 0.0
+        )
+        return (
+            candidate.endswith(":")
+            or line_no_colon.isupper()
+            or upper_ratio > 0.72
+            or title_ratio > 0.9
+        )
+
     raw_lines = [str(line).rstrip() for line in str(text or "").splitlines()]
     for raw_line in raw_lines:
         line = _clean_resume_line(raw_line)
@@ -505,17 +535,21 @@ def _split_resume_sections(text: str) -> dict[str, list[str]]:
             continue
 
         normalized = re.sub(r"[^a-z]", "", line.lower().rstrip(":"))
-        line_no_colon = line.rstrip(":").strip()
-        upper_ratio = (
-            sum(1 for ch in line_no_colon if ch.isupper()) / max(1, sum(1 for ch in line_no_colon if ch.isalpha()))
-            if any(ch.isalpha() for ch in line_no_colon)
-            else 0.0
-        )
-        is_heading_like = len(line_no_colon) <= 45 and (line_no_colon.isupper() or upper_ratio > 0.7 or line.endswith(":"))
-        matched_section = alias_to_section.get(normalized)
+        is_heading_like = is_heading_line(line)
+        matched_section = alias_to_section.get(normalized) if is_heading_like else None
         if not matched_section and is_heading_like:
             for alias_key, section_key in alias_to_section.items():
-                if alias_key and (normalized == alias_key or normalized.startswith(alias_key) or alias_key.startswith(normalized)):
+                if not alias_key:
+                    continue
+                if normalized == alias_key:
+                    matched_section = section_key
+                    break
+                if normalized.startswith(alias_key):
+                    suffix = normalized[len(alias_key):]
+                    if suffix in {"", "andtools", "andtechnologies", "tools", "technologies", "details"}:
+                        matched_section = section_key
+                        break
+                if alias_key.startswith(normalized) and len(normalized) >= 4:
                     matched_section = section_key
                     break
 
@@ -609,6 +643,76 @@ def _split_paragraphs(lines: list[str]) -> list[list[str]]:
     return paragraphs
 
 
+def _is_contact_or_location_line(line: str) -> bool:
+    value = _clean_resume_line(line)
+    if not value:
+        return True
+    lower = value.lower()
+    if re.search(r"[@]|https?://|www\.|linkedin|github|kaggle|leetcode|scholar\.google", lower):
+        return True
+    if re.search(r"\b\d{5,}\b", lower):
+        return True
+    if re.search(r"(?:\+?\d[\d()\-\s]{7,}\d)", value):
+        return True
+    if re.search(r"\b(?:road|rd|street|st|avenue|ave|lane|ln|apt|apartment|sector|block|zip|pincode|pin)\b", lower):
+        return True
+    if re.search(r"\b(?:india|usa|united states|uk|canada|australia|remote)\b", lower):
+        return True
+    if "," in value and len(value.split()) <= 8:
+        return True
+    return False
+
+
+def _is_probable_name_line(line: str) -> bool:
+    value = _clean_resume_line(line)
+    if not value:
+        return False
+    if _is_contact_or_location_line(value):
+        return False
+    words = [w for w in value.split() if w]
+    if not (2 <= len(words) <= 5):
+        return False
+    if any(re.search(r"\d", w) for w in words):
+        return False
+    # Typical name line should not include heavy punctuation.
+    if re.search(r"[|/\\:;@]", value):
+        return False
+    return True
+
+
+def _is_probable_headline_line(line: str) -> bool:
+    value = _clean_resume_line(line)
+    if not value:
+        return False
+    if _is_contact_or_location_line(value):
+        return False
+    if len(value.split()) < 2 or len(value.split()) > 12:
+        return False
+    lower = value.lower()
+    role_keywords = (
+        "engineer", "developer", "analyst", "scientist", "manager", "designer",
+        "consultant", "intern", "student", "architect", "specialist", "lead"
+    )
+    return any(keyword in lower for keyword in role_keywords)
+
+
+def _is_likely_skill_token(token: str) -> bool:
+    value = _clean_resume_line(token).strip(",.;")
+    if not value:
+        return False
+    lower = value.lower()
+    if re.search(r"(19|20)\d{2}", lower):
+        return False
+    if re.search(r"\b(led|organized|volunteer|captain|coordinator|member|participated|managed|responsible)\b", lower):
+        return False
+    words = [w for w in value.split() if w]
+    if len(words) > 6 and ":" not in value:
+        return False
+    if len(words) > 12:
+        return False
+    return True
+
+
 def _parse_cv_text_to_editor_data(text: str) -> dict:
     raw_text = str(text or "")
     raw_lines = [line for line in raw_text.splitlines()]
@@ -616,24 +720,51 @@ def _parse_cv_text_to_editor_data(text: str) -> dict:
     sections = _split_resume_sections(raw_text)
 
     contact = _extract_contact_from_resume_text(raw_text, lines)
-    top_lines = lines[:8]
+    top_lines = lines[:12]
     likely_name = ""
     likely_headline = ""
     for line in top_lines:
-        lower = line.lower()
-        if re.search(r"[@]|https?://|www\.|linkedin|github|kaggle|leetcode|\d{8,}", lower):
-            continue
-        if len(line.split()) <= 5 and not likely_name:
+        if _is_probable_name_line(line) and not likely_name:
             likely_name = line
             continue
-        if len(line.split()) <= 10 and not likely_headline:
+        if _is_probable_headline_line(line) and not likely_headline:
             likely_headline = line
-            break
+    if not likely_headline:
+        for line in top_lines:
+            clean = _clean_resume_line(line)
+            if not clean or clean == likely_name:
+                continue
+            if _is_contact_or_location_line(clean):
+                continue
+            if 2 <= len(clean.split()) <= 8:
+                likely_headline = clean
+                break
 
     summary_lines = sections.get("summary", [])
-    summary = " ".join(summary_lines[:4]).strip()
-    if not summary and len(lines) > 3:
-        summary = " ".join(lines[2:5]).strip()
+    filtered_summary_lines = []
+    for line in summary_lines:
+        clean = _clean_resume_line(line)
+        if not clean:
+            continue
+        if clean in {likely_name, likely_headline}:
+            continue
+        if _is_contact_or_location_line(clean):
+            continue
+        if len(clean.split()) < 5:
+            continue
+        filtered_summary_lines.append(clean)
+    summary = " ".join(filtered_summary_lines[:4]).strip() if filtered_summary_lines else ""
+    if not summary:
+        fallback_summary = []
+        for line in lines[2:12]:
+            clean = _clean_resume_line(line)
+            if not clean or clean in {likely_name, likely_headline}:
+                continue
+            if _is_contact_or_location_line(clean):
+                continue
+            if len(clean.split()) >= 7:
+                fallback_summary.append(clean)
+        summary = " ".join(fallback_summary[:2]).strip()
 
     education = []
     for paragraph in _split_paragraphs(sections.get("education", []))[:6]:
@@ -751,13 +882,17 @@ def _parse_cv_text_to_editor_data(text: str) -> dict:
         clean = re.sub(r"^[\-\u2022\*]\s*", "", line).strip()
         if not clean:
             continue
+        if not _is_likely_skill_token(clean):
+            continue
         if ":" in clean and len(clean.split(":", 1)[0]) <= 25:
-            skills.append({"name": clean})
+            if _is_likely_skill_token(clean.split(":", 1)[1]):
+                skills.append({"name": clean})
             continue
         tokens = [token.strip() for token in re.split(r"[,\|;/]", clean) if token.strip()]
         if len(tokens) > 1:
             for token in tokens:
-                skills.append({"name": token})
+                if _is_likely_skill_token(token):
+                    skills.append({"name": token})
         else:
             skills.append({"name": clean})
     deduped_skills = []
@@ -864,6 +999,22 @@ def _cv_data_quality_score(payload: dict) -> int:
         items = cv_data.get(section, [])
         if isinstance(items, list) and items:
             score += 2
+    headline = str(personal.get("headline", "")).strip()
+    if headline and _is_contact_or_location_line(headline):
+        score -= 3
+
+    skills_items = cv_data.get("skills", [])
+    if isinstance(skills_items, list) and skills_items:
+        skill_names = [
+            str(item.get("name", "")).strip()
+            for item in skills_items
+            if isinstance(item, dict)
+        ]
+        suspicious = [name for name in skill_names if name and not _is_likely_skill_token(name)]
+        if skill_names and len(suspicious) >= max(2, len(skill_names) // 3):
+            score -= 3
+
+    score = max(0, score)
     return score
 
 
@@ -1918,6 +2069,26 @@ async def solutions_page(request: Request):
     return templates.TemplateResponse(
         request,
         "solutions.html",
+        {"request": request},
+    )
+
+
+@app.get("/optimize", response_class=HTMLResponse)
+async def optimize_page(request: Request):
+    """Alias route for optimization flow; renders Solutions page."""
+    return templates.TemplateResponse(
+        request,
+        "solutions.html",
+        {"request": request},
+    )
+
+
+@app.get("/templates", response_class=HTMLResponse)
+async def templates_page(request: Request):
+    """Templates gallery page."""
+    return templates.TemplateResponse(
+        request,
+        "templates.html",
         {"request": request},
     )
 

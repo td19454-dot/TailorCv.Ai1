@@ -764,6 +764,58 @@ def compute_deterministic_ats_score(resume_text: str, jd_text: str) -> float:
     breakdown = compute_deterministic_ats_score_breakdown(resume_text, jd_text)
     return round(float(breakdown["final_score"]), 2)
 
+
+def _compute_resume_stats(resume_text: str) -> dict:
+    """
+    Compute resume statistics: word count, pages, bullet points, and metrics used.
+    """
+    text = str(resume_text or "")
+    
+    # Word count
+    words = text.split()
+    word_count = len(words)
+    
+    # Estimate pages (assuming ~500 words per page for a typical resume)
+    pages = max(1, round(word_count / 500))
+    
+    # Count bullet points (lines starting with -, *, •, or numbered items)
+    bullet_pattern = r'^[\s]*[-*•►]\s+|^\s*\d+[.)]\s+'
+    bullet_points = len(re.findall(bullet_pattern, text, re.MULTILINE))
+    
+    # Also count bullet points in common resume formats like "•" anywhere in line
+    bullet_points_alt = len(re.findall(r'[•\-\*]\s+[\w]', text))
+    bullet_points = max(bullet_points, bullet_points_alt)
+    
+    # Count metrics used (numbers with units, percentages, $, etc.)
+    # Patterns: percentages, currency, quantities with units, numbers > 10
+    metrics_patterns = [
+        r'\d+%',                    # percentages like 50%, 100%
+        r'\$\d+[\d,]*',             # dollar amounts like $1000, $50,000
+        r'\d+\s*(million|billion|M|B|K|k)\b',  # abbreviated numbers
+        r'\d+\s*(users|customers|clients|employees|people|years|months|days)\b',  # quantities
+        r'\b\d{2,}\b',              # any number >= 10
+    ]
+    metrics_used = 0
+    for pattern in metrics_patterns:
+        metrics_used += len(re.findall(pattern, text, re.IGNORECASE))
+    
+    # Deduplicate - if a line has multiple metrics, count it once
+    lines_with_metrics = set()
+    for line in text.split('\n'):
+        for pattern in metrics_patterns:
+            if re.search(pattern, line, re.IGNORECASE):
+                lines_with_metrics.add(line.strip())
+                break
+    metrics_used = len(lines_with_metrics)
+    
+    return {
+        "word_count": word_count,
+        "pages": pages,
+        "bullet_points": bullet_points,
+        "metrics_used": metrics_used
+    }
+
+
 async def ats_scoring(resume_string, jd_string):
     """Gives ats score for the resume highlignting strengths and weaknesses"""
     deterministic_breakdown = compute_deterministic_ats_score_breakdown(resume_string, jd_string)
@@ -942,6 +994,13 @@ async def ats_scoring(resume_string, jd_string):
     else:
         parsed["match_level"] = "Excellent"
     parsed["deterministic_breakdown"] = deterministic_breakdown
+
+    # Add resume statistics
+    resume_stats = _compute_resume_stats(resume_string)
+    parsed["word_count"] = resume_stats["word_count"]
+    parsed["pages"] = resume_stats["pages"]
+    parsed["bullet_points"] = resume_stats["bullet_points"]
+    parsed["metrics_used"] = resume_stats["metrics_used"]
 
     return json.dumps(parsed)
 

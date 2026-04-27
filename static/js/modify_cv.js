@@ -80,13 +80,6 @@
             .replace(/"/g, "&quot;");
     }
 
-    function setImportStatus(message, isError = false) {
-        const statusEl = document.getElementById("cv-import-status");
-        if (!statusEl) return;
-        statusEl.textContent = message || "";
-        statusEl.style.color = isError ? "#fca5a5" : "#cfe4ff";
-    }
-
     function normalizeIncomingCvData(incoming) {
         const data = incoming && typeof incoming === "object" ? incoming : {};
         const personalInfo = data.personalInfo && typeof data.personalInfo === "object" ? data.personalInfo : {};
@@ -128,193 +121,6 @@
             awards: normalizeAwards(data.awards),
             publications: normalizeArray(data.publications),
         };
-    }
-
-    function hasNonEmptyValue(value) {
-        if (value == null) return false;
-        if (typeof value === "string") return value.trim().length > 0;
-        if (Array.isArray(value)) return value.some((item) => hasNonEmptyValue(item));
-        if (typeof value === "object") return Object.values(value).some((item) => hasNonEmptyValue(item));
-        return Boolean(value);
-    }
-
-    function hasUserEnteredData(data) {
-        return hasNonEmptyValue(data);
-    }
-
-    async function handleExistingCvExtraction() {
-        const fileInput = document.getElementById("existing-cv-file");
-        const extractBtn = document.getElementById("extract-existing-cv-btn");
-        const file = fileInput?.files?.[0];
-
-        if (!file) {
-            setImportStatus("Please choose a PDF file first.", true);
-            return;
-        }
-
-        if (!file.name.toLowerCase().endsWith(".pdf")) {
-            setImportStatus("Only PDF files are supported.", true);
-            return;
-        }
-
-        const shouldReplace = hasUserEnteredData(cvData)
-            ? window.confirm("This will replace your current form content with extracted data. Continue?")
-            : true;
-
-        if (!shouldReplace) {
-            setImportStatus("Import canceled. Your current form data is unchanged.");
-            return;
-        }
-
-        if (extractBtn) {
-            extractBtn.disabled = true;
-            extractBtn.textContent = "Extracting...";
-        }
-        setImportStatus("Extracting data from your PDF...");
-
-        try {
-            const formData = new FormData();
-            formData.append("file", file);
-
-            let response = await fetch("/api/extract-cv-from-pdf", {
-                method: "POST",
-                body: formData,
-            });
-            if (response.status === 404) {
-                response = await fetch("/extract-cv-from-pdf", {
-                    method: "POST",
-                    body: formData,
-                });
-            }
-
-            const payload = await response.json().catch(() => ({}));
-            if (!response.ok) {
-                const detail = payload?.detail || "Could not extract data from the uploaded CV.";
-                throw new Error(detail);
-            }
-
-            const incoming = normalizeIncomingCvData(payload.cvData || payload.resumeData || {});
-            if (!hasUserEnteredData(incoming)) {
-                setImportStatus("We could not detect enough structured data. You can still edit manually.", true);
-                return;
-            }
-
-            cvData = incoming;
-            renderAll();
-            await updatePreview();
-
-            const detectedSections = Array.isArray(payload?.meta?.detected_sections)
-                ? payload.meta.detected_sections
-                : [];
-            const suffix = detectedSections.length ? ` Detected: ${detectedSections.join(", ")}.` : "";
-            setImportStatus(`CV data extracted successfully.${suffix}`);
-        } catch (error) {
-            setImportStatus(error.message || "Extraction failed. Please try another PDF.", true);
-        } finally {
-            if (extractBtn) {
-                extractBtn.disabled = false;
-                extractBtn.textContent = "Extract CV Data";
-            }
-        }
-    }
-
-    async function handleExistingCvTextExtraction() {
-        const textInput = document.getElementById("existing-cv-text");
-        const extractTextBtn = document.getElementById("extract-existing-cv-text-btn");
-        const cvText = (textInput?.value || "").trim();
-
-        if (!cvText) {
-            setImportStatus("Please paste your CV text first.", true);
-            return;
-        }
-
-        if (cvText.length < 60) {
-            setImportStatus("Pasted CV text is too short. Please paste more complete content.", true);
-            return;
-        }
-
-        const shouldReplace = hasUserEnteredData(cvData)
-            ? window.confirm("This will replace your current form content with extracted data. Continue?")
-            : true;
-
-        if (!shouldReplace) {
-            setImportStatus("Import canceled. Your current form data is unchanged.");
-            return;
-        }
-
-        if (extractTextBtn) {
-            extractTextBtn.disabled = true;
-            extractTextBtn.textContent = "Extracting...";
-        }
-        setImportStatus("Extracting data from pasted CV text...");
-
-        try {
-            let response = await fetch("/api/extract-cv-from-text", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ cvText }),
-            });
-            if (response.status === 404) {
-                response = await fetch("/extract-cv-from-text", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ cvText }),
-                });
-            }
-
-            const payload = await response.json().catch(() => ({}));
-            if (!response.ok) {
-                const detail = payload?.detail || "Could not extract data from pasted CV text.";
-                throw new Error(detail);
-            }
-
-            const incoming = normalizeIncomingCvData(payload.cvData || payload.resumeData || {});
-            if (!hasUserEnteredData(incoming)) {
-                setImportStatus("We could not detect enough structured data. You can still edit manually.", true);
-                return;
-            }
-
-            cvData = incoming;
-            renderAll();
-            await updatePreview();
-
-            const detectedSections = Array.isArray(payload?.meta?.detected_sections)
-                ? payload.meta.detected_sections
-                : [];
-            const suffix = detectedSections.length ? ` Detected: ${detectedSections.join(", ")}.` : "";
-            setImportStatus(`CV text extracted successfully.${suffix}`);
-        } catch (error) {
-            setImportStatus(error.message || "Text extraction failed. Please try again.", true);
-        } finally {
-            if (extractTextBtn) {
-                extractTextBtn.disabled = false;
-                extractTextBtn.textContent = "Extract From Text";
-            }
-        }
-    }
-
-    function setupCvImport() {
-        const extractBtn = document.getElementById("extract-existing-cv-btn");
-        const fileInput = document.getElementById("existing-cv-file");
-        const extractTextBtn = document.getElementById("extract-existing-cv-text-btn");
-
-        if (fileInput) {
-            fileInput.addEventListener("change", () => {
-                const file = fileInput.files?.[0];
-                if (!file) {
-                    setImportStatus("");
-                    return;
-                }
-                setImportStatus(`Selected file: ${file.name}`);
-            });
-        }
-
-        if (extractBtn) {
-            extractBtn.addEventListener("click", handleExistingCvExtraction);
-        }
-        if (extractTextBtn) {
-            extractTextBtn.addEventListener("click", handleExistingCvTextExtraction);
-        }
     }
 
     function Sidebar() {
@@ -785,12 +591,25 @@ async function updatePreview() {
         }
     }
 
+    function hydrateSelectedTemplateFromQuery() {
+        const params = new URLSearchParams(window.location.search);
+        const templateParam = Number(params.get("template"));
+        if (!Number.isInteger(templateParam) || templateParam <= 0) {
+            return;
+        }
+        if (!templates.some((template) => Number(template.id) === templateParam)) {
+            return;
+        }
+        selectedTemplate = templateParam;
+        localStorage.setItem("tailorcv_modify_draft", JSON.stringify({ cvData, selectedTemplate }));
+    }
+
     document.addEventListener("DOMContentLoaded", async () => {
         try {
             await loadTemplates();
             hydrateDraft();
+            hydrateSelectedTemplateFromQuery();
             renderAll();
-            setupCvImport();
             setupActionButtons();
             if (selectedTemplate) {
                 await updatePreview();

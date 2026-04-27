@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Templates - TailorCV.ai</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/style2.css">
+    <link rel="stylesheet" href="/static/templates.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="left">
+            <div class="logo">
+                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+            </div>
+        </div>
+        <button
+            type="button"
+            class="mobile-menu-toggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="primary-nav-templates"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-links" id="primary-nav-templates">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/solutions" class="nav-link">Get ATS Score</a>
+            <a href="/modify-cv" class="nav-link">Make CV</a>
+            <a href="/solutions" class="nav-link">Optimize CV with AI</a>
+            <a href="/pricing" class="nav-link">Pricing</a>
+            <a href="/templates" class="nav-link active">Templates</a>
+        </nav>
+        <div class="nav-actions">
+            <div id="auth-nav-slot"></div>
+        </div>
+    </header>
+
+    <main class="templates-page">
+        <section class="templates-header">
+            <h1 class="templates-title">Choose Your Resume Template</h1>
+            <p class="templates-subtitle">
+                Select a template first, then continue to either edit your CV manually or optimize it with AI.
+            </p>
+        </section>
+
+        <section id="templates-grid" class="templates-grid" aria-live="polite"></section>
+
+        <section class="templates-actions">
+            <button id="modify-cv-btn" class="templates-btn templates-btn-secondary" disabled>
+                Modify CV
+            </button>
+            <button id="optimize-ai-btn" class="templates-btn templates-btn-primary" disabled>
+                Optimize with AI
+            </button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">ResumeOptimizer</h4>
+                    <p class="footer-text">AI-powered resume optimization for your career success.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/solutions" class="footer-link">Get ATS Score</a>
+                    <a href="/modify-cv" class="footer-link">Make CV</a>
+                    <a href="/solutions" class="footer-link">Optimize CV with AI</a>
+                    <a href="/pricing" class="footer-link">Pricing</a>
+                    <a href="/templates" class="footer-link">Templates</a>
+                    <a href="/about" class="footer-link">About Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/auth_nav.js"></script>
+    <script src="/static/mobile_nav.js"></script>
+    <script>
+        (function () {
+            const SELECTED_TEMPLATE_KEY = "tailorcv_selected_template";
+            const gridEl = document.getElementById("templates-grid");
+            const modifyBtn = document.getElementById("modify-cv-btn");
+            const optimizeBtn = document.getElementById("optimize-ai-btn");
+
+            let templates = [];
+            let selectedTemplateId = null;
+
+            function getPreviewSrc(templateId) {
+                const id = Number(templateId);
+                const pngPreviewMap = {
+                    13: "pic13.png",
+                    14: "pic14.png",
+                    15: "pic15.png",
+                    16: "pic16.png",
+                    17: "pic17.png",
+                    18: "pic18.png"
+                };
+                const fileName = pngPreviewMap[id] || `pic${id}.jpg`;
+                return `/static/${fileName}`;
+            }
+
+            function renderGrid() {
+                gridEl.innerHTML = templates.map((template) => `
+                    <article class="template-card ${selectedTemplateId === template.id ? "selected" : ""}" data-template-id="${template.id}">
+                        <div class="template-preview">
+                            <img src="${getPreviewSrc(template.id)}" alt="${template.name} preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <div class="preview-fallback">Preview ${template.id}</div>
+                        </div>
+                        <div class="template-name">${template.name}</div>
+                    </article>
+                `).join("");
+
+                document.querySelectorAll("[data-template-id]").forEach((card) => {
+                    card.addEventListener("click", () => {
+                        selectedTemplateId = Number(card.getAttribute("data-template-id"));
+                        localStorage.setItem(SELECTED_TEMPLATE_KEY, String(selectedTemplateId));
+                        updateButtons();
+                        renderGrid();
+                    });
+                });
+            }
+
+            function updateButtons() {
+                const enabled = Number.isInteger(selectedTemplateId) && selectedTemplateId > 0;
+                modifyBtn.disabled = !enabled;
+                optimizeBtn.disabled = !enabled;
+            }
+
+            function goTo(path) {
+                if (!selectedTemplateId) {
+                    alert("Please select a template");
+                    return;
+                }
+                const url = `${path}?template=${encodeURIComponent(selectedTemplateId)}`;
+                window.location.href = url;
+            }
+
+            async function initialize() {
+                try {
+                    const response = await fetch("/api/resume-templates");
+                    const data = await response.json();
+                    templates = Array.isArray(data.templates) ? data.templates : [];
+
+                    const stored = Number(localStorage.getItem(SELECTED_TEMPLATE_KEY));
+                    if (stored && templates.some((template) => Number(template.id) === stored)) {
+                        selectedTemplateId = stored;
+                    }
+
+                    renderGrid();
+                    updateButtons();
+                } catch (error) {
+                    console.error("Failed to load templates", error);
+                    gridEl.innerHTML = "<p>Unable to load templates right now.</p>";
+                }
+            }
+
+            modifyBtn.addEventListener("click", () => goTo("/modify-cv"));
+            optimizeBtn.addEventListener("click", () => goTo("/optimize"));
+
+            initialize();
+        })();
+    </script>
+</body>
+</html>
