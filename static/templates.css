@@ -1,9 +1,9 @@
 /* Templates page overrides and dedicated styles */
 
 .templates-page {
-    max-width: 1240px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 2.2rem 1rem 4rem;
+    padding: 2.2rem 1.5rem 4rem;
     position: relative;
 }
 
@@ -11,67 +11,73 @@
     content: "";
     position: absolute;
     inset: 0 auto auto 50%;
-    width: min(900px, 92vw);
-    height: 280px;
+    width: min(1000px, 95vw);
+    height: 340px;
     transform: translateX(-50%);
     border-radius: 999px;
-    background: radial-gradient(circle at center, rgba(125, 211, 252, 0.28), rgba(59, 130, 246, 0.04) 72%, transparent 100%);
+    background: radial-gradient(circle at center, rgba(125, 211, 252, 0.32), rgba(59, 130, 246, 0.06) 72%, transparent 100%);
     pointer-events: none;
-    filter: blur(6px);
+    filter: blur(8px);
 }
 
 .templates-header {
     text-align: center;
-    margin: 0 auto 2rem;
+    margin: 0 auto 3rem;
     position: relative;
     z-index: 1;
+    padding: 1.5rem 1rem;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.6), rgba(30, 27, 75, 0.5));
+    border-radius: 24px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 50px rgba(2, 8, 23, 0.35);
 }
 
 .templates-title {
     margin: 0;
-    font-size: clamp(2rem, 4.6vw, 3.15rem);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
     color: #f8fafc;
-    text-shadow: 0 8px 24px rgba(14, 116, 144, 0.35);
+    text-shadow: 0 8px 30px rgba(14, 116, 144, 0.4);
 }
 
 .templates-subtitle {
-    margin: 0.95rem auto 0;
-    max-width: 780px;
-    color: #dbeafe;
-    font-size: clamp(0.98rem, 1.8vw, 1.08rem);
-    line-height: 1.62;
+    margin: 1.2rem auto 0;
+    max-width: 720px;
+    color: #bfdbfe;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.7;
 }
 
 .templates-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.05rem;
-    margin-top: 1.3rem;
+    gap: 1.4rem;
+    margin-top: 1.5rem;
     position: relative;
     z-index: 1;
 }
 
 .template-card {
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.9));
-    border: 1px solid rgba(148, 163, 184, 0.34);
-    border-radius: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95));
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 10px 30px rgba(2, 8, 23, 0.28);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 14px 40px rgba(2, 8, 23, 0.35);
 }
 
 .template-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(56, 189, 248, 0.86);
-    box-shadow: 0 14px 30px rgba(2, 132, 199, 0.2);
+    transform: translateY(-6px) scale(1.01);
+    border-color: rgba(56, 189, 248, 0.8);
+    box-shadow: 0 20px 50px rgba(2, 132, 199, 0.28);
 }
 
 .template-card.selected {
     border-color: #0ea5e9;
-    box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.4), 0 16px 30px rgba(2, 132, 199, 0.24);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.45), 0 20px 50px rgba(2, 132, 199, 0.3);
 }
 
 .template-preview {
@@ -79,21 +85,24 @@
     background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
     position: relative;
     overflow: hidden;
+    border-radius: 16px 16px 0 0;
 }
 
 .template-preview img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    padding: 8px;
+    background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
 }
 
 .template-preview::after {
     content: "";
     position: absolute;
     inset: auto 0 0 0;
-    height: 30%;
-    background: linear-gradient(180deg, rgba(2, 6, 23, 0) 0%, rgba(2, 6, 23, 0.6) 100%);
+    height: 25%;
+    background: linear-gradient(180deg, rgba(2, 6, 23, 0) 0%, rgba(2, 6, 23, 0.5) 100%);
     pointer-events: none;
 }
 
@@ -109,36 +118,60 @@
 }
 
 .template-name {
-    padding: 0.85rem 0.95rem 1rem;
+    padding: 1.1rem 1rem 1.2rem;
     color: #f8fafc;
     font-weight: 600;
     text-align: center;
-    font-size: 0.98rem;
+    font-size: 1.1rem;
     letter-spacing: 0.01em;
 }
 
 .templates-actions {
     display: flex;
-    gap: 0.8rem;
+    gap: 1.2rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     position: relative;
     z-index: 1;
 }
 
 .templates-btn {
-    border: 1px solid transparent;
-    border-radius: 999px;
-    padding: 0.86rem 1.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 70px;
+    padding: 1.2rem 2.4rem;
     font-weight: 700;
-    letter-spacing: 0.01em;
-    font-size: 0.98rem;
+    letter-spacing: 0.02em;
+    font-size: 1.25rem;
     cursor: pointer;
-    min-width: 200px;
-    transition: transform 0.16s ease, box-shadow 0.2s ease, opacity 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
+    min-width: 280px;
+    color: #ffffff;
     position: relative;
+    overflow: hidden;
     isolation: isolate;
+    background: linear-gradient(135deg, #0f4ea3 0%, #132c7a 55%, #3c1361 100%);
+    box-shadow: 0 14px 32px rgba(8, 27, 64, 0.32);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, filter 0.25s ease;
+}
+
+.templates-btn::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(120deg, #dbeafe, #60a5fa, #8b5cf6, #dbeafe);
+    background-size: 220% 220%;
+    animation: buttonBorderFlow 4s linear infinite;
+    z-index: -2;
+}
+
+.templates-btn::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #0f4ea3 0%, #132c7a 55%, #3c1361 100%);
+    z-index: -1;
 }
 
 .templates-btn:disabled {
@@ -148,27 +181,36 @@
     transform: none;
 }
 
+.templates-btn:disabled::before,
+.templates-btn:disabled::after {
+    animation: none;
+}
+
 .templates-btn-primary {
-    background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 55%, #0f766e 100%);
+    background: linear-gradient(135deg, #0f4ea3 0%, #132c7a 55%, #3c1361 100%);
     color: #f8fafc;
-    box-shadow: 0 12px 28px rgba(3, 105, 161, 0.36);
 }
 
 .templates-btn-secondary {
-    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
-    border-color: rgba(125, 211, 252, 0.4);
+    background: linear-gradient(135deg, #0f4ea3 0%, #132c7a 55%, #3c1361 100%);
     color: #f8fafc;
-    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.35);
 }
 
 .templates-btn:not(:disabled):hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 16px 34px rgba(8, 27, 64, 0.36);
+    border-color: rgba(255, 255, 255, 0.4);
     filter: brightness(1.05);
 }
 
 .templates-btn:not(:disabled):active {
-    transform: translateY(-1px);
+    transform: translateY(-1px) scale(0.995);
     filter: brightness(0.98);
+}
+
+@keyframes buttonBorderFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
 }
 
 @media (max-width: 1080px) {
@@ -204,3 +246,4 @@
         grid-template-columns: 1fr;
     }
 }
+
