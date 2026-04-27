@@ -15,7 +15,7 @@ Familiarity with cloud platforms (e.g., AWS, Google Cloud, Azure) for deploying 
 Strong problem-solving skills, with the ability to debug complex systems and work in agile, fast-paced environments.
 Excellent communication skills to articulate technical designs and collaborate effectively.
 Preferred Qualifications
-Experience with specialized domains like natural language processing (NLP), computer vision, robotics (e.g., ROS), or game AI, integrated with LangChain/LangGraph.
+Experience with specialized domains like natural language processing (NLP), computer vision, or game AI, integrated with LangChain/LangGraph.
 Knowledge of big data tools (e.g., Spark, Hadoop) or databases (SQL/NoSQL) for handling large-scale agent data.
 Prior work with multi-agent systems, ethical AI, or real-time applications using advanced frameworks.
 Contributions to open-source AI projects or a portfolio demonstrating agent-building expertise (e.g., GitHub repos showcasing LangChain/LangGraph implementations).
