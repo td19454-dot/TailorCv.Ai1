@@ -428,18 +428,24 @@ def inject_links(data, links, mapped_links, pub_links=None):
 BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(dotenv_path=BASE_DIR / ".env")
 
+# OPTIMIZATION: Reuse a single OpenAI client instance instead of creating new ones
+_openai_client = None
+
 
 async def _build_openai_client():
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        raise RuntimeError(
-            "OPENAI_API_KEY is not set. Add it to your .env file before using ATS analysis or resume optimization."
+    global _openai_client
+    if _openai_client is None:
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key:
+            raise RuntimeError(
+                "OPENAI_API_KEY is not set. Add it to your .env file before using ATS analysis or resume optimization."
+            )
+        _openai_client = AsyncOpenAI(
+            api_key=api_key,
+            timeout=120.0,
+            max_retries=3
         )
-    return AsyncOpenAI(
-        api_key=api_key,
-        timeout=120.0,
-        max_retries=3
-    )
+    return _openai_client
 
 
 def _normalize_openai_error(exc: Exception) -> RuntimeError:
