@@ -443,10 +443,14 @@ function displayOptimizeLoading() {
 }
 
 const optimizeStepsData = [
-    { step: 1, text: 'Uploading resume...', percent: 25 },
-    { step: 2, text: 'Analyzing your experience...', percent: 50 },
-    { step: 3, text: 'Optimizing for ATS systems...', percent: 75 },
-    { step: 4, text: 'Optimization completed! 🎉', percent: 99 }
+    { step: 1, text: 'Uploading resume...', percent: 15 },
+    { step: 2, text: 'Parsing resume structure...', percent: 25 },
+    { step: 3, text: 'Analyzing your experience...', percent: 35 },
+    { step: 4, text: 'Extracting relevant keywords...', percent: 45 },
+    { step: 5, text: 'Matching with job description...', percent: 60 },
+    { step: 6, text: 'Optimizing bullet points...', percent: 75 },
+    { step: 7, text: 'Enhancing ATS compatibility...', percent: 90 },
+    { step: 8, text: 'Optimization completed! 🎉', percent: 100 }
 ];
 
 function updateOptimizeProgress(percent) {
@@ -483,7 +487,7 @@ async function animateToOptimizeStep(stepData) {
         const startPercent = parseInt(document.getElementById('optimize-percentage')?.textContent || '0');
         const targetPercent = stepData.percent;
         
-const duration = 5000;
+const duration = 12000;
         const startTime = performance.now();
         
         function animate(time) {

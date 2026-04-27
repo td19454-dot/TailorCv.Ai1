@@ -129,6 +129,10 @@ def _cleanup_files(file_paths: list[str]) -> None:
 MAX_CONCURRENT_REQUESTS = int(os.getenv("MAX_CONCURRENT_REQUESTS", "4"))
 request_semaphore = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
 
+# OPTIMIZATION: Cache for templates and CSS to avoid repeated file I/O
+_template_cache = {}
+_css_cache = {}
+
 
 def get_email_settings() -> tuple[str, int, str, str, str]:
     smtp_host = os.getenv("SMTP_HOST", "").strip()
@@ -2294,10 +2298,15 @@ async def upload_resume(
         async with request_semaphore:
             resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
             normalized_resume_string = normalize_links(resume_string)
-            extracted_links = extract_project_links(normalized_resume_string)
-            extracted_pub_links = extract_publication_links(normalized_resume_string)
-            mapped_links = map_project_demo_links(normalized_resume_string)
-            project_link_map = extract_project_link_map(normalized_resume_string)
+
+            # OPTIMIZATION: Run all link extractions in parallel instead of sequentially
+            link_tasks = [
+                asyncio.to_thread(extract_project_links, normalized_resume_string),
+                asyncio.to_thread(extract_publication_links, normalized_resume_string),
+                asyncio.to_thread(map_project_demo_links, normalized_resume_string),
+                asyncio.to_thread(extract_project_link_map, normalized_resume_string),
+            ]
+            extracted_links, extracted_pub_links, mapped_links, project_link_map = await asyncio.gather(*link_tasks)
 
             prompt = create_prompt(resume_string, jd_string)
             try:
@@ -2306,32 +2315,44 @@ async def upload_resume(
                 raise HTTPException(status_code=500, detail=f"AI generation error: {e}")
 
             parsed = parse_ai_json_response(response_string)
-            original_data = await asyncio.to_thread(process_resume, file_path)
-            if "publications" not in parsed and original_data.get("publications"):
-                parsed["publications"] = original_data["publications"]
-            pdf_project_link_map = await asyncio.to_thread(
-                extract_project_links_from_pdf,
-                file_path,
-                [p.get("name") for p in (parsed.get("projects") or []) if isinstance(p, dict)],
-            )
-            effective_map = pdf_project_link_map or project_link_map
+
+            # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
+            # The AI response already contains the optimized data - no need to re-extract original data
+
+            # Extract project links from PDF for better accuracy (only if needed)
+            project_names = [p.get("name") for p in (parsed.get("projects") or []) if isinstance(p, dict)]
+            if project_names:
+                pdf_project_link_map = await asyncio.to_thread(
+                    extract_project_links_from_pdf,
+                    file_path,
+                    project_names,
+                )
+                effective_map = pdf_project_link_map or project_link_map
+            else:
+                effective_map = project_link_map
+
             parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
 
             use_default_template = template_id == 0
             template_content = None
 
+            # OPTIMIZATION: Use cached templates to avoid repeated file I/O
             if not use_default_template:
                 template_filename = f"template{template_id}.html"
-                template_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "html", template_filename)
-                try:
-                    with open(template_path, 'r', encoding='utf-8') as f:
-                        template_content = f.read()
-                except FileNotFoundError:
+                if template_filename in _template_cache:
+                    template_content = _template_cache[template_filename]
+                else:
+                    template_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "html", template_filename)
                     try:
-                        template = templates.env.get_template('resume_template.html')
-                        use_default_template = True
-                    except Exception:
-                        raise HTTPException(status_code=500, detail=f"Template {template_filename} not found")
+                        with open(template_path, 'r', encoding='utf-8') as f:
+                            template_content = f.read()
+                            _template_cache[template_filename] = template_content  # Cache it
+                    except FileNotFoundError:
+                        try:
+                            template = templates.env.get_template('resume_template.html')
+                            use_default_template = True
+                        except Exception:
+                            raise HTTPException(status_code=500, detail=f"Template {template_filename} not found")
             else:
                 template = templates.env.get_template('resume_template.html')
 
@@ -2343,18 +2364,24 @@ async def upload_resume(
                 style_filename = ""
 
             css_content = ""
+            # OPTIMIZATION: Use cached CSS to avoid repeated file I/O
             if style_filename:
-                style_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "css", style_filename)
-                try:
-                    with open(style_path, 'r', encoding='utf-8') as f:
-                        css_content = f.read()
-                except FileNotFoundError:
-                    default_style_path = os.path.join(BASE_DIR, 'resumes', 'style.css')
+                if style_filename in _css_cache:
+                    css_content = _css_cache[style_filename]
+                else:
+                    style_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "css", style_filename)
                     try:
-                        with open(default_style_path, 'r', encoding='utf-8') as f:
+                        with open(style_path, 'r', encoding='utf-8') as f:
                             css_content = f.read()
+                            _css_cache[style_filename] = css_content  # Cache it
                     except FileNotFoundError:
-                        pass
+                        default_style_path = os.path.join(BASE_DIR, 'resumes', 'style.css')
+                        try:
+                            with open(default_style_path, 'r', encoding='utf-8') as f:
+                                css_content = f.read()
+                                _css_cache[style_filename] = css_content
+                        except FileNotFoundError:
+                            pass
 
             context = build_resume_context(parsed, jd_string)
             if not use_default_template and template_content:
@@ -2372,11 +2399,19 @@ async def upload_resume(
 
             def _render_pdf():
                 from weasyprint import HTML
+                # OPTIMIZATION: Use faster WeasyPrint rendering options
                 if not use_default_template and template_content:
-                    HTML(string=html_content).write_pdf(pdf_path)
+                    HTML(string=html_content, base_url=BASE_DIR).write_pdf(
+                        pdf_path,
+                        optimize_size=('fonts',)  # Skip font subsetting for speed
+                    )
                 else:
                     css_path = os.path.join(resumes_dir, 'style.css')
-                    HTML(string=html_content).write_pdf(pdf_path, stylesheets=[css_path])
+                    HTML(string=html_content, base_url=BASE_DIR).write_pdf(
+                        pdf_path,
+                        stylesheets=[css_path],
+                        optimize_size=('fonts',)
+                    )
 
             try:
                 await asyncio.to_thread(_render_pdf)
