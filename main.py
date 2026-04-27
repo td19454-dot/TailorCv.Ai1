@@ -1993,6 +1993,34 @@ async def about_page(request: Request):
     )
 
 
+@app.get("/pricing", response_class=HTMLResponse)
+async def pricing_page(request: Request):
+    """Pricing page for the marketing frontend."""
+    return templates.TemplateResponse(
+        request,
+        "pricing.html",
+        {"request": request},
+    )
+
+
+@app.get("/style2.css", include_in_schema=False)
+async def style2_css():
+    """Compatibility route for templates using ../style2.css."""
+    css_path = os.path.join(static_dir, "style2.css")
+    if not os.path.exists(css_path):
+        raise HTTPException(status_code=404, detail="style2.css not found")
+    return FileResponse(css_path, media_type="text/css")
+
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    """Serve favicon for browsers requesting /favicon.ico."""
+    favicon_png = os.path.join(static_dir, "favicon.png")
+    if not os.path.exists(favicon_png):
+        raise HTTPException(status_code=404, detail="favicon not found")
+    return FileResponse(favicon_png, media_type="image/png")
+
+
 @app.post("/api/signup/request-code")
 async def request_signup_code(request: Request):
     try:
