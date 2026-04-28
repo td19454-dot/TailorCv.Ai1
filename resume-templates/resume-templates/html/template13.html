@@ -17,7 +17,12 @@
 
     @page {
       size: A4;
-      margin: 0;
+      margin: 8mm 0 8mm 0;
+    }
+
+    @page :first {
+      size: A4;
+      margin: 0 0 8mm 0;
     }
 
     * { box-sizing: border-box; }
@@ -41,6 +46,7 @@
     }
 
     .header {
+      margin: 0;
       background: var(--header);
       color: #fff;
       text-align: center;
@@ -90,8 +96,8 @@
 
     .section {
       margin-bottom: 2.9mm;
-      break-inside: avoid;
-      page-break-inside: avoid;
+      break-inside: auto;
+      page-break-inside: auto;
     }
 
     .section h2 {
