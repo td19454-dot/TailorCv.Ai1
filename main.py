@@ -2053,10 +2053,10 @@ async def health_check():
         "static_files": os.listdir(static_dir) if os.path.exists(static_dir) else []
     }
 
-@app.get("/favicon.ico", include_in_schema=False)
+@app.get("/favicon.png", include_in_schema=False)
 async def favicon_ico():
     return FileResponse(
-        os.path.join(static_dir, "favicon.ico"),
+        os.path.join(static_dir, "favicon.png"),
         media_type="image/x-icon",
     )
 
