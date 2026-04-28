@@ -55,20 +55,29 @@
         <section id="templates-grid" class="templates-grid" aria-live="polite"></section>
 
         <section class="templates-upload-card">
-            <h2 class="templates-upload-title">Create Resume With Selected Template</h2>
+            <h2 class="templates-upload-title">Modify your  Resume With Selected Template</h2>
             <p class="templates-upload-subtitle">Upload your resume and Change  it directly with the selected template. </p>
             <div class="templates-upload-controls">
                 <input id="templates-cv-file" class="templates-file-input" type="file" accept=".pdf,application/pdf">
                 <button id="template-only-optimize-btn" class="templates-btn templates-btn-primary" disabled>
-                    Optimize Resume
+                    modify Resume 
                 </button>
+                <button id="template-only-download-btn" class="templates-btn templates-btn-secondary" disabled>
+                    Download Optimized Resume
+                </button>
+            </div>
+            <div id="templates-optimize-progress" class="templates-progress" style="display:none;">
+                <div class="templates-progress-track">
+                    <div id="templates-progress-fill" class="templates-progress-fill"></div>
+                </div>
+                <p id="templates-progress-label" class="templates-progress-label">Starting optimization...</p>
             </div>
             <p id="templates-upload-status" class="templates-upload-status" aria-live="polite"></p>
         </section>
 
         <section class="templates-actions">
             <button id="modify-cv-btn" class="templates-btn templates-btn-secondary" disabled>
-                Modify CV
+                create CV
             </button>
             <button id="optimize-ai-btn" class="templates-btn templates-btn-primary" disabled>
                 Optimize with AI
@@ -110,10 +119,17 @@
             const optimizeBtn = document.getElementById("optimize-ai-btn");
             const uploadInput = document.getElementById("templates-cv-file");
             const templateOnlyOptimizeBtn = document.getElementById("template-only-optimize-btn");
+            const templateOnlyDownloadBtn = document.getElementById("template-only-download-btn");
             const uploadStatusEl = document.getElementById("templates-upload-status");
+            const progressWrap = document.getElementById("templates-optimize-progress");
+            const progressFill = document.getElementById("templates-progress-fill");
+            const progressLabel = document.getElementById("templates-progress-label");
 
             let templates = [];
             let selectedTemplateId = null;
+            let latestOptimizedBlob = null;
+            let latestOptimizedUrl = "";
+            let progressTimer = null;
 
             function getPreviewSrc(templateId) {
                 const id = Number(templateId);
@@ -172,6 +188,67 @@
                 if (kind) uploadStatusEl.classList.add(kind);
             }
 
+            function startProgress() {
+                if (progressTimer) {
+                    clearInterval(progressTimer);
+                    progressTimer = null;
+                }
+                progressWrap.style.display = "block";
+                progressFill.style.width = "4%";
+                progressLabel.textContent = "Reading resume...";
+                let progress = 4;
+                const phases = [
+                    { at: 20, label: "Parsing resume content..." },
+                    { at: 45, label: "Applying selected template..." },
+                    { at: 70, label: "Optimizing structure and formatting..." },
+                    { at: 88, label: "Generating PDF..." }
+                ];
+                progressTimer = setInterval(() => {
+                    if (progress >= 92) return;
+                    progress += Math.random() * 4;
+                    for (const phase of phases) {
+                        if (progress >= phase.at) {
+                            progressLabel.textContent = phase.label;
+                        }
+                    }
+                    progressFill.style.width = `${Math.min(progress, 92)}%`;
+                }, 420);
+            }
+
+            function finishProgress(success) {
+                if (progressTimer) {
+                    clearInterval(progressTimer);
+                    progressTimer = null;
+                }
+                progressFill.style.width = success ? "100%" : "0%";
+                progressLabel.textContent = success ? "Done." : "Optimization failed.";
+                setTimeout(() => {
+                    progressWrap.style.display = "none";
+                }, success ? 1000 : 1400);
+            }
+
+            function saveLatestBlob(blob) {
+                latestOptimizedBlob = blob;
+                if (latestOptimizedUrl) {
+                    window.URL.revokeObjectURL(latestOptimizedUrl);
+                }
+                latestOptimizedUrl = window.URL.createObjectURL(blob);
+                templateOnlyDownloadBtn.disabled = false;
+            }
+
+            function downloadLatest() {
+                if (!latestOptimizedUrl) {
+                    setUploadStatus("No optimized resume available yet. Optimize first.", "is-error");
+                    return;
+                }
+                const link = document.createElement("a");
+                link.href = latestOptimizedUrl;
+                link.download = "optimized_resume.pdf";
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+            }
+
             async function handleTemplateOnlyOptimize() {
                 if (!selectedTemplateId) {
                     setUploadStatus("Please select a template first.", "is-error");
@@ -192,8 +269,10 @@
 
                 const originalText = templateOnlyOptimizeBtn.textContent;
                 templateOnlyOptimizeBtn.disabled = true;
+                templateOnlyDownloadBtn.disabled = true;
                 templateOnlyOptimizeBtn.textContent = "Optimizing...";
                 setUploadStatus("Optimizing resume with selected template...", "is-loading");
+                startProgress();
 
                 try {
                     const formData = new FormData();
@@ -221,18 +300,13 @@
                     }
 
                     const blob = await response.blob();
-                    const url = window.URL.createObjectURL(blob);
-                    const link = document.createElement("a");
-                    link.href = url;
-                    link.download = "optimized_resume.pdf";
-                    document.body.appendChild(link);
-                    link.click();
-                    link.remove();
-                    setTimeout(() => window.URL.revokeObjectURL(url), 2000);
-
+                    saveLatestBlob(blob);
+                    downloadLatest();
+                    finishProgress(true);
                     setUploadStatus("Optimized resume generated successfully.", "is-success");
                 } catch (error) {
                     console.error("Template-only optimize failed", error);
+                    finishProgress(false);
                     setUploadStatus(error.message || "Could not optimize this resume.", "is-error");
                 } finally {
                     templateOnlyOptimizeBtn.disabled = false;
@@ -262,6 +336,7 @@
             modifyBtn.addEventListener("click", () => goTo("/modify-cv"));
             optimizeBtn.addEventListener("click", () => goTo("/optimize"));
             templateOnlyOptimizeBtn.addEventListener("click", handleTemplateOnlyOptimize);
+            templateOnlyDownloadBtn.addEventListener("click", downloadLatest);
 
             initialize();
         })();
