@@ -54,6 +54,18 @@
 
         <section id="templates-grid" class="templates-grid" aria-live="polite"></section>
 
+        <section class="templates-upload-card">
+            <h2 class="templates-upload-title">Create Resume With Selected Template</h2>
+            <p class="templates-upload-subtitle">Upload your resume and Change  it directly with the selected template. </p>
+            <div class="templates-upload-controls">
+                <input id="templates-cv-file" class="templates-file-input" type="file" accept=".pdf,application/pdf">
+                <button id="template-only-optimize-btn" class="templates-btn templates-btn-primary" disabled>
+                    Optimize Resume
+                </button>
+            </div>
+            <p id="templates-upload-status" class="templates-upload-status" aria-live="polite"></p>
+        </section>
+
         <section class="templates-actions">
             <button id="modify-cv-btn" class="templates-btn templates-btn-secondary" disabled>
                 Modify CV
@@ -96,6 +108,9 @@
             const gridEl = document.getElementById("templates-grid");
             const modifyBtn = document.getElementById("modify-cv-btn");
             const optimizeBtn = document.getElementById("optimize-ai-btn");
+            const uploadInput = document.getElementById("templates-cv-file");
+            const templateOnlyOptimizeBtn = document.getElementById("template-only-optimize-btn");
+            const uploadStatusEl = document.getElementById("templates-upload-status");
 
             let templates = [];
             let selectedTemplateId = null;
@@ -139,6 +154,7 @@
                 const enabled = Number.isInteger(selectedTemplateId) && selectedTemplateId > 0;
                 modifyBtn.disabled = !enabled;
                 optimizeBtn.disabled = !enabled;
+                templateOnlyOptimizeBtn.disabled = !enabled;
             }
 
             function goTo(path) {
@@ -148,6 +164,80 @@
                 }
                 const url = `${path}?template=${encodeURIComponent(selectedTemplateId)}`;
                 window.location.href = url;
+            }
+
+            function setUploadStatus(message, kind = "") {
+                uploadStatusEl.textContent = message || "";
+                uploadStatusEl.classList.remove("is-loading", "is-success", "is-error");
+                if (kind) uploadStatusEl.classList.add(kind);
+            }
+
+            async function handleTemplateOnlyOptimize() {
+                if (!selectedTemplateId) {
+                    setUploadStatus("Please select a template first.", "is-error");
+                    return;
+                }
+                const file = uploadInput?.files?.[0];
+                if (!file) {
+                    setUploadStatus("Please choose a PDF file.", "is-error");
+                    return;
+                }
+
+                const name = String(file.name || "").toLowerCase();
+                const type = String(file.type || "").toLowerCase();
+                if (!name.endsWith(".pdf") && type !== "application/pdf") {
+                    setUploadStatus("Only PDF files are supported.", "is-error");
+                    return;
+                }
+
+                const originalText = templateOnlyOptimizeBtn.textContent;
+                templateOnlyOptimizeBtn.disabled = true;
+                templateOnlyOptimizeBtn.textContent = "Optimizing...";
+                setUploadStatus("Optimizing resume with selected template...", "is-loading");
+
+                try {
+                    const formData = new FormData();
+                    formData.append("file", file);
+                    formData.append("template_id", String(selectedTemplateId));
+                    formData.append("style_id", "1");
+                    formData.append("jd_string", "");
+
+                    // Reuse existing production endpoint/pipeline (upload -> parse -> AI -> template render -> PDF).
+                    const response = await fetch("/get-optimised-resume", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        if (response.status === 401) {
+                            throw new Error("Please log in to optimize your resume.");
+                        }
+                        let detail = "Failed to optimize resume.";
+                        try {
+                            const payload = await response.json();
+                            detail = payload?.detail || payload?.error || detail;
+                        } catch (_) {}
+                        throw new Error(detail);
+                    }
+
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.download = "optimized_resume.pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+                    setTimeout(() => window.URL.revokeObjectURL(url), 2000);
+
+                    setUploadStatus("Optimized resume generated successfully.", "is-success");
+                } catch (error) {
+                    console.error("Template-only optimize failed", error);
+                    setUploadStatus(error.message || "Could not optimize this resume.", "is-error");
+                } finally {
+                    templateOnlyOptimizeBtn.disabled = false;
+                    templateOnlyOptimizeBtn.textContent = originalText;
+                }
             }
 
             async function initialize() {
@@ -171,6 +261,7 @@
 
             modifyBtn.addEventListener("click", () => goTo("/modify-cv"));
             optimizeBtn.addEventListener("click", () => goTo("/optimize"));
+            templateOnlyOptimizeBtn.addEventListener("click", handleTemplateOnlyOptimize);
 
             initialize();
         })();
