@@ -136,6 +136,58 @@
     z-index: 1;
 }
 
+.templates-upload-card {
+    margin-top: 2rem;
+    padding: 1.2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    background: linear-gradient(160deg, rgba(15, 35, 90, 0.82), rgba(10, 25, 80, 0.9));
+    box-shadow: 0 14px 40px rgba(5, 20, 80, 0.28);
+    position: relative;
+    z-index: 1;
+}
+
+.templates-upload-title {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 1.35rem;
+}
+
+.templates-upload-subtitle {
+    margin: 0.6rem 0 0;
+    color: #bfdbfe;
+    line-height: 1.5;
+}
+
+.templates-upload-controls {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.templates-file-input {
+    flex: 1 1 360px;
+    min-width: 240px;
+    border-radius: 12px;
+    border: 1px solid rgba(191, 219, 254, 0.35);
+    padding: 0.7rem 0.8rem;
+    background: rgba(2, 6, 23, 0.45);
+    color: #e2e8f0;
+}
+
+.templates-upload-status {
+    margin: 0.75rem 0 0;
+    min-height: 1.2rem;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+.templates-upload-status.is-loading { color: #bfdbfe; }
+.templates-upload-status.is-success { color: #86efac; }
+.templates-upload-status.is-error { color: #fca5a5; }
+
 .templates-btn {
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 70px;
