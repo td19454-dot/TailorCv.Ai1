@@ -2053,6 +2053,38 @@ async def health_check():
         "static_files": os.listdir(static_dir) if os.path.exists(static_dir) else []
     }
 
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon_ico():
+    return FileResponse(
+        os.path.join(static_dir, "favicon.ico"),
+        media_type="image/x-icon",
+    )
+
+
+@app.get("/logo.png", include_in_schema=False)
+async def site_logo():
+    return FileResponse(
+        os.path.join(static_dir, "logo.png"),
+        media_type="image/png",
+    )
+
+
+@app.get("/site.webmanifest", include_in_schema=False)
+async def site_webmanifest():
+    return FileResponse(
+        os.path.join(static_dir, "site.webmanifest"),
+        media_type="application/manifest+json",
+    )
+
+
+@app.get("/robots.txt", include_in_schema=False)
+async def robots_txt():
+    return FileResponse(
+        os.path.join(static_dir, "robots.txt"),
+        media_type="text/plain",
+    )
+
+
 @app.get("/", response_class=HTMLResponse)
 async def landing_page(request: Request):
     """Landing page inspired by Tsenta marketing site."""
