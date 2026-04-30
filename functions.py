@@ -742,7 +742,7 @@ def compute_deterministic_ats_score_breakdown(resume_text: str, jd_text: str) ->
 
     formatting_score = _formatting_structure_score(resume_text)
     formatting_component = (0.6 * formatting_score) + (0.4 * experience_score)
-
+    print(keyword_score,skill_score,semantic_score,formatting_component)
     final_score = (
         0.30 * keyword_score*2.5
         + 0.50 * skill_score*3
