@@ -11,6 +11,203 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Gelasio:ital,wght@0,400..700;1,400..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #07102b;
+    --bg-card:  #0f1e44;
+    --bg-feat:  #141f4a;
+    --border:   rgba(80, 110, 200, 0.22);
+    --border-feat: rgba(74, 106, 255, 0.55);
+    --text-h:   #ffffff;
+    --text-sub: #8899bb;
+    --text-body:#99aacc;
+    --accent:   #4a6aff;
+    --star:     #f0c04a;
+    --fade-bg:  #07102b;
+  }
+
+  /* ─── Section ─── */
+  .testimonials-section {
+    width: 100%;
+    overflow: hidden;
+    padding: 64px 0 72px;
+  }
+
+  /* ─── Header ─── */
+  .section-header {
+    text-align: center;
+    margin-bottom: 52px;
+    padding: 0 24px;
+  }
+
+  .section-header .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400;
+    color: var(--text-h);
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+    line-height: 1.1;
+  }
+
+  .section-header .section-subtitle {
+    font-size: 15px;
+    color: var(--text-sub);
+    line-height: 1.7;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* ─── Carousel rows ─── */
+  .carousel-row {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .carousel-row:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* Fade masks */
+  .carousel-row::before,
+  .carousel-row::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .carousel-row::before {
+    left: 0;
+    background: linear-gradient(to right, var(--fade-bg) 30%, transparent);
+  }
+
+  .carousel-row::after {
+    right: 0;
+    background: linear-gradient(to left, var(--fade-bg) 30%, transparent);
+  }
+
+  /* Track */
+  .carousel-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    padding: 8px 0 12px;
+    will-change: transform;
+  }
+
+  .row-forward  .carousel-track { animation: scroll-left 38s linear infinite; }
+  .row-backward .carousel-track { animation: scroll-right 44s linear infinite; }
+  .carousel-row:hover .carousel-track { animation-play-state: paused; }
+
+  @keyframes scroll-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+  /* ─── Card ─── */
+  .t-card {
+    width: 400px;
+    flex-shrink: 0;
+    background: var(--bg-card);
+    border: 0.5px solid var(--border);
+    border-radius: 18px;
+    padding: 26px 24px;
+    transition: border-color 0.25s, transform 0.25s;
+    cursor: default;
+    user-select: none;
+    box-shadow: 0px 3px 27px 6px rgba(106,2,242,0.49);
+  }
+
+  .t-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .t-card.featured {
+    background: var(--bg-feat);
+    border-color: var(--border-feat);
+  }
+
+  /* Card top row */
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  /* Avatar */
+  .avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .card-meta { min-width: 0; }
+
+  .card-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-h);
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-role {
+    font-size: 12px;
+    color: var(--text-sub);
+  }
+
+  /* Stars */
+  .stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 14px;
+  }
+
+  .star {
+    width: 11px; height: 11px;
+    background: var(--star);
+    clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  }
+
+  /* Quote text */
+  .card-quote {
+    font-size: 13.5px;
+    color: var(--text-body);
+    line-height: 1.7;
+  }
+
+  /* ─── Dots ─── */
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  .dot {
+    height: 6px;
+    border-radius: 3px;
+    background: #2a3660;
+    transition: width 0.3s, background 0.3s;
+  }
+
+  .dot.active {
+    width: 24px;
+    background: var(--accent);
+  }
+
+  .dot:not(.active) { width: 6px; }
+</style>
+
 </head>
 <body>
     <!-- Navigation -->
@@ -258,7 +455,28 @@
     </section>
 
 
-
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What People Say</h2>
+                <p class="section-subtitle">Real success stories from professionals who improved their resume and interview flow.</p>
+            </div>
+            <!-- Row 1 — scrolls left -->
+            <div class="carousel-row row-forward" aria-hidden="true">
+                <div class="carousel-track" id="track1"></div>
+            </div>
+            <!-- Row 2 — scrolls right -->
+            <div class="carousel-row row-backward" aria-hidden="true">
+                <div class="carousel-track" id="track2"></div>
+            </div>
+            <div class="carousel-dots" role="presentation">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- CTA Section -->
@@ -463,6 +681,63 @@
             });
         })();
     </script>
+
+<script>
+  /* ── Testimonial data ── */
+  const row1Data = [
+    { name:"Sarah Johnson",   role:"Atlassian",  image:"/static/user_imges/12.jpg", quote:"Since integrating this solution into our workflow, we've experienced a significant improvement in efficiency and collaboration.", stars:5 },
+    { name:"David Patel",     role:"PayPal",       image:"/static/user_imges/13.jpg", quote:"I've tested numerous options in this category, but one stands out for its intuitive design and comprehensive functionality.", stars:5, featured:true },
+    { name:"Emily Carter",    role:"SAP",    image:"/static/user_imges/19.jpg", quote:"The tool we've adopted has surpassed our expectations, providing invaluable insights as our business continues to grow.", stars:5 },
+    { name:"James Wu",        role:"IMC",  image:"/static/user_imges/22.jpg", quote:"Onboarding took minutes. Within a week our whole team had adopted it — that's rare for any new enterprise tool.", stars:5 },
+    { name:"Priya Mehta",     role:"Tata Consultancy Services",      image:"/static/user_imges/26.jpg", quote:"The UX is genuinely delightful. It feels built for people who actually use it daily, not just for a demo.", stars:5 },
+    { name:"Raja Karmakar",   role:"PWC",        image:"/static/user_imges/4.jpg",  quote:"Our close rate improved noticeably after switching. The reporting alone is worth the subscription price.", stars:5 },
+  ];
+
+  const row2Data = [
+    { name:"Nina Park",         role:"Head of Marketing",     image:"/static/user_imges/51.jpg", quote:"Finally a product that does exactly what it promises. Our campaigns are performing better than ever.", stars:5 },
+    { name:"Alex Thompson",     role:"Freelance Consultant",  image:"/static/user_imges/52.jpg", quote:"I recommend this to every client. Setup is painless and the results speak clearly for themselves.", stars:5 },
+    { name:"Fatima Al-Hassan",  role:"CFO",                   image:"/static/user_imges/68.jpg", quote:"ROI was clear within 60 days — a rare win for both the finance and operations teams simultaneously.", stars:5 },
+    { name:"Liam O'Brien",      role:"Startup Founder",       image:"/static/user_imges/70.jpg", quote:"We scaled from 10 to 80 users without any growing pains. An incredibly reliable and robust platform.", stars:5 },
+    { name:"Yuki Tanaka",       role:"Data Analyst",          image:"/static/user_imges/75.jpg", quote:"The analytics dashboard is best-in-class. I spend less time in spreadsheets and more time on strategy.", stars:5 },
+    { name:"Maya Rosenberg",    role:"HR Manager",            image:"/static/user_imges/82.jpg", quote:"Employee onboarding went from 3 days to half a day. The whole team loves how smooth the experience is.", stars:5 },
+  ];
+
+  /* ── Build a card ── */
+  function makeCard(t) {
+    const stars = Array(t.stars).fill('<div class="star"></div>').join('');
+    return `
+      <article class="t-card${t.featured ? ' featured' : ''}">
+        <div class="card-top">
+          <img src="${t.image}" alt="${t.name}" class="avatar">
+          <div class="card-meta">
+            <div class="card-name">${t.name}</div>
+            <div class="card-role">${t.role}</div>
+          </div>
+        </div>
+        <div class="stars" aria-label="${t.stars} stars">${stars}</div>
+        <p class="card-quote">"${t.quote}"</p>
+      </article>`;
+  }
+
+  /* ── Populate track (doubled for infinite loop) ── */
+  function buildTrack(id, data) {
+    const track = document.getElementById(id);
+    const doubled = [...data, ...data];
+    track.innerHTML = doubled.map(makeCard).join('');
+  }
+
+  buildTrack('track1', row1Data);
+  buildTrack('track2', row2Data);
+
+  /* ── Dots animation ── */
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+  setInterval(() => {
+    dots[current].classList.remove('active');
+    current = (current + 1) % dots.length;
+    dots[current].classList.add('active');
+  }, 3000);
+</script>
 
 
 
