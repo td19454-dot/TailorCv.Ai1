@@ -748,7 +748,7 @@ def compute_deterministic_ats_score_breakdown(resume_text: str, jd_text: str) ->
         + 0.50 * skill_score*3
         + 0.10 * semantic_score*2.5
         + 0.10 * formatting_component*2.5
-    ) * 100.0
+    ) * 100.0 - 7.00
 
     return {
         "final_score": round(max(0.0, min(100.0, final_score)), 2),
