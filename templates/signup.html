@@ -4,95 +4,415 @@
   {% include "_google_analytics.html" %}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up</title>
+  <title>Sign Up - TailorCV</title>
   {% include "_seo_head.html" %}
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --indigo: #1e1b4b;
+      --accent: #6c63ff;
+      --sky: #5dafdb;
+      --text-bright: #ffffff;
+      --text-muted: rgba(255,255,255,0.6);
+      --text-faint: rgba(255,255,255,0.35);
+      --panel-bg: #0c0a2e;
+      --form-bg: #0f0c29;
+      --input-bg: rgba(255,255,255,0.06);
+      --input-border: rgba(255,255,255,0.12);
+      --input-focus: rgba(108,99,255,0.4);
+      --card-border: rgba(255,255,255,0.08);
+      --divider: rgba(255,255,255,0.1);
     }
 
-    body {
-      min-height: 100vh;
+    html, body {
+      height: 100%;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--panel-bg);
+      color: var(--text-bright);
+      overflow: hidden;
+    }
+
+    .page {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+    }
+
+    .left {
+      position: relative;
+      background: var(--indigo);
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 44px 48px;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .orb-1 {
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(108,99,255,0.35) 0%, transparent 70%);
+      top: -80px; left: -100px;
+    }
+    .orb-2 {
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(93,175,219,0.25) 0%, transparent 70%);
+      bottom: 60px; right: -60px;
+      animation: drift2 14s ease-in-out infinite alternate;
+    }
+    .orb-3 {
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(108,99,255,0.18) 0%, transparent 70%);
+      bottom: 200px; left: 60px;
+      animation: drift1 18s ease-in-out infinite alternate;
+    }
+    @keyframes drift1 {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(20px, 30px); }
+    }
+    @keyframes drift2 {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(-25px, -20px); }
+    }
+
+    .left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .brand {
+      position: relative;
+      z-index: 2;
+      display: flex;
       align-items: center;
-      background: url('/static/back5.jpg') center/cover no-repeat fixed;
+      gap: 10px;
+      animation: fadeUp 0.6s 0.1s both;
     }
 
-    .container {
-      width: min(400px, 92vw);
-      background: rgba(255, 255, 255, 0.98);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
     }
 
-    h2 {
+    .brand-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--sky));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700;
+      color: white;
+    }
+
+    .brand-name {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -0.3px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.6s 0.25s both;
+    }
+
+    .hero-tagline {
+      font-family: 'Fraunces', serif;
+      font-size: 42px;
+      font-weight: 300;
+      line-height: 1.18;
+      letter-spacing: -1.5px;
+      color: var(--text-bright);
+      margin-bottom: 18px;
+    }
+
+    .hero-tagline em {
+      font-style: italic;
+      background: linear-gradient(90deg, var(--accent), var(--sky));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 340px;
+      margin-bottom: 36px;
+    }
+
+    .testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .testimonial {
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      backdrop-filter: blur(10px);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .testimonial:hover {
+      background: rgba(108,99,255,0.1);
+      border-color: rgba(108,99,255,0.3);
+    }
+
+    .testimonial-text {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .av-purple { background: rgba(108,99,255,0.3); color: #a99fff; }
+    .av-sky    { background: rgba(93,175,219,0.3); color: #89ccee; }
+
+    .author-info .name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-bright);
+    }
+    .author-info .role {
+      font-size: 11px;
+      color: var(--text-faint);
+    }
+
+    .stars {
+      margin-left: auto;
+      display: flex;
+      gap: 2px;
+    }
+
+    .star {
+      width: 10px; height: 10px;
+      background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .right {
+      background: var(--form-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 52px;
+      position: relative;
+      border-left: 0.5px solid var(--card-border);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-wrapper {
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .form-header {
+      margin-bottom: 26px;
+    }
+
+    .form-title {
+      font-family: 'Fraunces', serif;
+      font-size: 30px;
+      font-weight: 300;
+      letter-spacing: -0.8px;
+      margin-bottom: 8px;
+    }
+
+    .form-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .form-sub a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .google-btn-stack {
+      position: relative;
+      width: 100%;
+      min-height: 46px;
+      padding: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 0.5px solid var(--input-border);
+      border-radius: 12px;
+      color: var(--text-bright);
+      transition: background 0.2s, border-color 0.2s;
+      margin-bottom: 18px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .google-btn-stack:not(.google-btn-stack--missing):hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .google-btn-stack--missing {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .google-btn-label {
+      position: relative;
+      z-index: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .google-signin-mount {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.04;
+    }
+
+    .google-signin-mount > div {
+      width: 100% !important;
+    }
+
+    .google-note {
+      font-size: 12px;
+      color: var(--text-faint);
       text-align: center;
+      margin-top: -10px;
+      margin-bottom: 18px;
+      line-height: 1.45;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       margin-bottom: 20px;
     }
 
-    .input-group {
-      margin-bottom: 15px;
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 0.5px;
+      background: var(--divider);
     }
+
+    .divider span {
+      font-size: 12px;
+      color: var(--text-faint);
+    }
+
+    .input-group { margin-bottom: 14px; }
 
     label {
       display: block;
       margin-bottom: 6px;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
     }
 
     input {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #d1d5db;
+      padding: 12px 14px;
+      border: 0.5px solid var(--input-border);
       border-radius: 10px;
       font-size: 14px;
+      background: var(--input-bg);
+      color: rgba(255,255,255,0.95);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
+    input::placeholder { color: rgba(255,255,255,0.25); }
+
     input:focus {
-      outline: none;
-      border-color: #667eea;
+      border-color: rgba(108,99,255,0.5);
+      box-shadow: 0 0 0 3px var(--input-focus);
+      background: rgba(108,99,255,0.06);
     }
 
     .btn {
       width: 100%;
       padding: 12px;
       border: none;
-      background: #667eea;
-      color: white;
-      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent), var(--sky));
+      color: #fff;
+      border-radius: 12px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       margin-top: 8px;
+      transition: transform 0.15s, box-shadow 0.2s, opacity 0.15s;
     }
 
     .btn:hover {
-      background: #5a67d8;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(108,99,255,0.45);
     }
 
     .btn.secondary {
-      background: #334155;
-      margin-top: 0;
-      margin-bottom: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 0.5px solid var(--input-border);
+      margin-top: 4px;
+      margin-bottom: 8px;
     }
 
     .btn.secondary:hover {
-      background: #1e293b;
+      background: rgba(255,255,255,0.16);
+      box-shadow: none;
     }
 
-    .btn:disabled {
-      opacity: 0.7;
-      cursor: wait;
-    }
+    .btn:disabled { opacity: 0.7; cursor: wait; transform: none; }
 
     .error {
-      color: #dc2626;
+      color: #f87171;
       font-size: 12px;
       margin-top: 5px;
       display: none;
@@ -105,68 +425,174 @@
       display: none;
     }
 
-    .status.success {
-      color: #047857;
-    }
-
-    .status.error {
-      color: #b91c1c;
-    }
+    .status.success { color: #34d399; display: block; }
+    .status.error { color: #f87171; display: block; }
 
     .extra {
       margin-top: 18px;
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
+      color: var(--text-faint);
+      line-height: 1.7;
     }
 
     .extra a {
-      color: #667eea;
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
+    }
+
+    .extra a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      html, body { overflow: auto; }
+      .page { grid-template-columns: 1fr; height: auto; }
+      .left { padding: 36px 28px; min-height: auto; }
+      .hero-tagline { font-size: 30px; }
+      .testimonials { flex-direction: row; overflow-x: auto; gap: 10px; }
+      .testimonial { min-width: 260px; }
+      .right { padding: 40px 28px; border-left: none; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Create Account</h2>
+  <div class="page">
+    <div class="left">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
 
-    <div class="input-group">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" placeholder="Enter your full name" />
-      <div class="error" id="nameError">Name must be at least 2 characters</div>
+      <div class="brand">
+        <a href="/" class="brand-link" aria-label="TailorCV home">
+          <div class="brand-icon">T</div>
+          <span class="brand-name">TailorCV</span>
+        </a>
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-tagline">
+          Your resume,<br>
+          <em>perfectly fitted</em><br>
+          every time.
+        </h1>
+        <p class="hero-sub">
+          Land more interviews with AI-tailored resumes that match job descriptions in seconds — not hours.
+        </p>
+
+        <div class="testimonials">
+          <div class="testimonial">
+            <p class="testimonial-text">"Landed 3 interviews in my first week. The tailored resume made an immediate difference."</p>
+            <div class="testimonial-author">
+              <div class="avatar av-purple">PM</div>
+              <div class="author-info">
+                <div class="name">Priya M.</div>
+                <div class="role">Product Manager, Bangalore</div>
+              </div>
+              <div class="stars">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <p class="testimonial-text">"Used to spend hours rewriting my CV. Now it takes 2 minutes and the results are better."</p>
+            <div class="testimonial-author">
+              <div class="avatar av-sky">RK</div>
+              <div class="author-info">
+                <div class="name">Rahul K.</div>
+                <div class="role">Software Engineer, Mumbai</div>
+              </div>
+              <div class="stars">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="input-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email" />
-      <div class="error" id="emailError">Please enter a valid email</div>
-    </div>
+    <div class="right">
+      <div class="form-wrapper">
+        <div class="form-header">
+          <h2 class="form-title">Create account</h2>
+          <p class="form-sub">Already have an account? <a href="/login">Sign in</a></p>
+        </div>
 
-    <div class="input-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Create a password" />
-      <div class="error" id="passwordError">Password must be at least 6 characters</div>
-    </div>
+        {% if google_client_id %}
+        <div class="google-btn-stack" id="googleBtnStack" aria-label="Sign up with Google">
+          <div class="google-btn-label">
+            <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Sign up with Google
+          </div>
+          <div id="google-signin-mount" class="google-signin-mount"></div>
+        </div>
+        <p class="google-note">We only use your email to create your TailorCV account.</p>
+        {% else %}
+        <div class="google-btn-stack google-btn-stack--missing" aria-disabled="true">
+          <div class="google-btn-label">Sign up with Google</div>
+        </div>
+        <p class="google-note" style="color:#f87171;">Google sign-up is not configured. Ask admin to set GOOGLE_CLIENT_ID.</p>
+        {% endif %}
 
-    <button class="btn secondary" id="sendCodeBtn" onclick="sendSignupCode()">Send Verification Code</button>
+        <div class="divider"><span>or sign up with email</span></div>
 
-    <div class="input-group" id="codeGroup" style="display: none;">
-      <label for="signupCode">Verification Code</label>
-      <input type="text" id="signupCode" placeholder="Enter code from your email" />
-      <div class="error" id="codeError">Please enter the verification code</div>
-    </div>
+        <div class="input-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your full name" autocomplete="name" />
+          <div class="error" id="nameError">Name must be at least 2 characters</div>
+        </div>
 
-    <button class="btn" id="signupBtn" onclick="signup()">Verify Email & Sign Up</button>
-    <div class="status" id="statusMessage"></div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" autocomplete="email" />
+          <div class="error" id="emailError">Please enter a valid email</div>
+        </div>
 
-    <div class="extra">
-      <p>Already have an account? <a href="/login">Login</a></p>
-      <p style="margin-top: 8px;"><a href="/">Back to home</a></p>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Create a password" autocomplete="new-password" />
+          <div class="error" id="passwordError">Password must be at least 6 characters</div>
+        </div>
+
+        <button class="btn secondary" id="sendCodeBtn" type="button" onclick="sendSignupCode()">Send Verification Code</button>
+
+        <div class="input-group" id="codeGroup" style="display: none;">
+          <label for="signupCode">Verification Code</label>
+          <input type="text" id="signupCode" placeholder="Enter code from your email" autocomplete="one-time-code" />
+          <div class="error" id="codeError">Please enter the verification code</div>
+        </div>
+
+        <button class="btn" id="signupBtn" type="button" onclick="signup()">Verify Email & Sign Up</button>
+        <div class="status" id="statusMessage"></div>
+
+        <div class="extra">
+          <p>Already have an account? <a href="/login">Login</a></p>
+          <p><a href="/">Back to home</a></p>
+        </div>
+      </div>
     </div>
   </div>
 
   <script>
+    {% if google_client_id %}
+    window.TAILORCV_GOOGLE_CLIENT_ID = '{{ google_client_id }}';
+    {% endif %}
+
     let codeRequested = false;
+
+    function apiErrorDetail(data) {
+      const d = data && data.detail;
+      if (typeof d === 'string') return d;
+      if (Array.isArray(d) && d.length) {
+        return d.map(function (e) { return (e && e.msg) ? e.msg : ''; }).filter(Boolean).join(' ') || 'Request failed';
+      }
+      return 'Request failed';
+    }
 
     function validateSignupFields() {
       const name = document.getElementById('name').value.trim();
@@ -185,6 +611,7 @@
         email,
         password,
         valid: name.length >= 2 && email.includes('@') && password.length >= 6,
+        invalidField: name.length < 2 ? 'name' : (email.includes('@') ? (password.length >= 6 ? '' : 'password') : 'email'),
       };
     }
 
@@ -199,6 +626,7 @@
         return;
       }
 
+      statusMessage.className = 'status';
       statusMessage.style.display = 'none';
       sendCodeBtn.disabled = true;
       sendCodeBtn.textContent = 'Sending code...';
@@ -206,14 +634,11 @@
       try {
         const response = await fetch('/api/signup/request-code', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email })
         });
 
         const data = await response.json();
-
         if (!response.ok) {
           throw new Error(data.detail || 'Could not send verification code');
         }
@@ -221,7 +646,6 @@
         codeRequested = true;
         codeGroup.style.display = 'block';
         signupBtn.textContent = 'Verify Email & Sign Up';
-
         statusMessage.textContent = data.message || 'Verification code sent. Check your email.';
         statusMessage.className = 'status success';
         statusMessage.style.display = 'block';
@@ -258,6 +682,7 @@
         return;
       }
 
+      statusMessage.className = 'status';
       statusMessage.style.display = 'none';
       signupBtn.disabled = true;
       signupBtn.textContent = 'Verifying...';
@@ -265,14 +690,11 @@
       try {
         const response = await fetch('/api/signup', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, password, code })
         });
 
         const data = await response.json();
-
         if (!response.ok) {
           throw new Error(data.detail || 'Signup failed');
         }
@@ -280,10 +702,7 @@
         statusMessage.textContent = 'Account created successfully. Redirecting to login...';
         statusMessage.className = 'status success';
         statusMessage.style.display = 'block';
-
-        setTimeout(() => {
-          window.location.href = '/login';
-        }, 1400);
+        setTimeout(() => { window.location.href = '/login'; }, 1400);
       } catch (error) {
         statusMessage.textContent = error.message;
         statusMessage.className = 'status error';
@@ -293,6 +712,88 @@
         signupBtn.textContent = 'Verify Email & Sign Up';
       }
     }
+
+    function tailorCvInitGoogleSignUp() {
+      if (!window.TAILORCV_GOOGLE_CLIENT_ID || !window.google?.accounts?.id) return;
+      const mount = document.getElementById('google-signin-mount');
+      const stack = document.getElementById('googleBtnStack');
+      if (!mount || mount.dataset.rendered === '1') return;
+      if (window.__tailorCvGsiInitOnce) return;
+
+      try {
+        window.__tailorCvGsiInitOnce = true;
+        google.accounts.id.initialize({
+          client_id: window.TAILORCV_GOOGLE_CLIENT_ID,
+          callback: handleGoogleCredential,
+          ux_mode: 'popup',
+          auto_select: false,
+        });
+
+        const w = stack ? Math.min(Math.max(stack.offsetWidth, 280), 400) : 360;
+        google.accounts.id.renderButton(mount, {
+          type: 'standard',
+          theme: 'outline',
+          size: 'large',
+          shape: 'rectangular',
+          text: 'continue_with',
+          logo_alignment: 'left',
+          width: w,
+        });
+        mount.dataset.rendered = '1';
+      } catch (e) {
+        window.__tailorCvGsiInitOnce = false;
+      }
+    }
+
+    async function handleGoogleCredential(response) {
+      const statusMessage = document.getElementById('statusMessage');
+      statusMessage.textContent = 'Verifying Google account...';
+      statusMessage.className = 'status success';
+
+      try {
+        const res = await fetch('/api/login/google', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ credential: response.credential })
+        });
+
+        const raw = await res.text();
+        let data = {};
+        try { data = raw ? JSON.parse(raw) : {}; }
+        catch { data = { detail: raw || 'Unexpected server response' }; }
+
+        if (!res.ok) throw new Error(apiErrorDetail(data) || 'Google signup failed');
+        if (!data.user) throw new Error(data.message || 'Signup succeeded but user details were missing.');
+
+        if (window.TailorCVAuth) window.TailorCVAuth.saveUser(data.user);
+
+        statusMessage.textContent = `Welcome, ${data.user.name}! Redirecting...`;
+        statusMessage.className = 'status success';
+        setTimeout(() => { window.location.href = '/solutions'; }, 700);
+      } catch (error) {
+        statusMessage.textContent = error.message;
+        statusMessage.className = 'status error';
+      }
+    }
+
+    window.addEventListener('load', function () {
+      tailorCvInitGoogleSignUp();
+    });
+
+    (function tailorCvPollGsi() {
+      if (!window.TAILORCV_GOOGLE_CLIENT_ID || !document.getElementById('google-signin-mount')) return;
+      var left = 200;
+      var t = setInterval(function () {
+        left--;
+        if (window.google && window.google.accounts && window.google.accounts.id) {
+          clearInterval(t);
+          tailorCvInitGoogleSignUp();
+        } else if (left <= 0) clearInterval(t);
+      }, 75);
+    })();
   </script>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="/static/auth_nav.js"></script>
 </body>
 </html>
