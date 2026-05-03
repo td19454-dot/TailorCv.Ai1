@@ -2166,7 +2166,10 @@ async def signup_page(request: Request):
     return templates.TemplateResponse(
         request,
         "signup.html",
-        {"request": request},
+        {
+            "request": request,
+            "google_client_id": GOOGLE_CLIENT_ID,
+        },
     )
 
 
@@ -2255,10 +2258,20 @@ async def request_signup_code(request: Request):
         db.commit()
 
         try:
-            send_signup_code_email(normalized_email, signup_code)
+            email_sent = send_signup_code_email(normalized_email, signup_code)
+            if not email_sent:
+                raise RuntimeError("Signup verification email is not configured")
         except Exception:
             logger.exception("Failed to send sign-up verification email")
-            raise HTTPException(status_code=500, detail="Could not send verification email. Please try again.")
+            if is_production_environment():
+                raise HTTPException(status_code=500, detail="Could not send verification email. Please try again.")
+            return JSONResponse(
+                {
+                    "success": True,
+                    "message": "Email sending is not configured. Using development verification code.",
+                    "dev_code": signup_code,
+                }
+            )
 
         return JSONResponse({"success": True, "message": "Verification code sent to your email."})
     finally:
