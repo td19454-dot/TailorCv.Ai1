@@ -49,9 +49,11 @@ from starlette.middleware.sessions import SessionMiddleware
 try:
     from google.oauth2 import id_token
     from google.auth.transport import requests as google_requests
+    from google.auth.exceptions import TransportError
 except ImportError:
     id_token = None
     google_requests = None
+    TransportError = None  # type: ignore[misc, assignment]
 
 app = FastAPI(title="Resume Optimizer Backend")
 logger = logging.getLogger(__name__)
@@ -2327,11 +2329,44 @@ async def login_with_google(request: Request):
     if not token:
         raise HTTPException(status_code=400, detail="Missing Google credential.")
 
-    try:
-        idinfo = id_token.verify_oauth2_token(token, google_requests.Request(), GOOGLE_CLIENT_ID)
-    except Exception:
-        logger.exception("Google token verification failed")
-        raise HTTPException(status_code=401, detail="Invalid Google token.")
+    # One Request instance reuses a requests.Session (connection pool helps flaky TLS paths).
+    transport_req = google_requests.Request()
+    cert_backoffs = [0.0, 0.35, 0.8, 1.75]
+    idinfo = None
+    last_transport_exc: BaseException | None = None
+
+    for attempt, pause in enumerate(cert_backoffs):
+        if pause > 0:
+            await asyncio.sleep(pause)
+        try:
+            idinfo = id_token.verify_oauth2_token(token, transport_req, GOOGLE_CLIENT_ID)
+            break
+        except ValueError as exc:
+            logger.info("Google ID token rejected: %s", exc)
+            raise HTTPException(status_code=401, detail="Invalid Google token.")
+        except Exception as exc:
+            if TransportError is not None and isinstance(exc, TransportError):
+                last_transport_exc = exc
+                logger.warning(
+                    "Google cert fetch transport error (attempt %s/%s): %s",
+                    attempt + 1,
+                    len(cert_backoffs),
+                    exc,
+                )
+                continue
+            logger.exception("Google token verification failed")
+            raise HTTPException(status_code=401, detail="Invalid Google token.")
+
+    if idinfo is None:
+        logger.error("Google OAuth unreachable after retries: %s", last_transport_exc)
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "Cannot reach Google to verify sign-in (SSL/network). Try again shortly. "
+                "If this persists: run `pip install -U certifi urllib3 requests`, "
+                "or disable VPN/antivirus HTTPS scanning, or set REQUESTS_CA_BUNDLE to your corp CA bundle."
+            ),
+        )
 
     email = (idinfo.get("email") or "").lower().strip()
     if not email:
