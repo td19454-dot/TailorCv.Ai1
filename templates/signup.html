@@ -646,7 +646,7 @@
         codeRequested = true;
         codeGroup.style.display = 'block';
         signupBtn.textContent = 'Verify Email & Sign Up';
-        statusMessage.textContent = data.message || 'Verification code sent. Check your email.';
+        statusMessage.textContent = (data.message || 'Verification code sent. Check your email.') + ' If you do not see the email, please check your Spam/Junk.';
         statusMessage.className = 'status success';
         statusMessage.style.display = 'block';
       } catch (error) {
