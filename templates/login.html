@@ -4,194 +4,755 @@
   {% include "_google_analytics.html" %}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
+  <title>Login – TailorCV</title>
   {% include "_seo_head.html" %}
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
+    *, *::before, *::after {
+      margin: 0; padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
     }
 
-    body {
-      min-height: 100vh;
+    :root {
+      --indigo: #1e1b4b;
+      --indigo-mid: #2d2870;
+      --accent: #6c63ff;
+      --accent-light: rgba(108,99,255,0.15);
+      --accent-glow: rgba(108,99,255,0.35);
+      --sky: #5dafdb;
+      --text-bright: #ffffff;
+      --text-muted: rgba(255,255,255,0.5);
+      --text-faint: rgba(255,255,255,0.3);
+      --panel-bg: #0c0a2e;
+      --form-bg: #0f0c29;
+      --input-bg: rgba(255,255,255,0.06);
+      --input-border: rgba(255,255,255,0.12);
+      --input-focus: rgba(108,99,255,0.4);
+      --card-border: rgba(255,255,255,0.08);
+      --divider: rgba(255,255,255,0.1);
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--panel-bg);
+      color: var(--text-bright);
+      overflow: hidden;
+    }
+
+    /* ─── Layout ─────────────────────────────────── */
+    .page {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+    }
+
+    /* ─── Left Panel ─────────────────────────────── */
+    .left {
+      position: relative;
+      background: var(--indigo);
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 44px 48px;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .orb-1 {
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(108,99,255,0.35) 0%, transparent 70%);
+      top: -80px; left: -100px;
+      animation: drift1 10s ease-in-out infinite alternate;
+    }
+    .orb-2 {
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(93,175,219,0.25) 0%, transparent 70%);
+      bottom: 60px; right: -60px;
+      animation: drift2 14s ease-in-out infinite alternate;
+    }
+    .orb-3 {
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(108,99,255,0.18) 0%, transparent 70%);
+      bottom: 200px; left: 60px;
+      animation: drift1 18s ease-in-out infinite alternate;
+    }
+    @keyframes drift1 {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(20px, 30px); }
+    }
+    @keyframes drift2 {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(-25px, -20px); }
+    }
+
+    .left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .brand {
+      position: relative;
+      z-index: 2;
+      display: flex;
       align-items: center;
-      background: url('/static/back5.jpg') center/cover no-repeat fixed;
+      gap: 10px;
+      animation: fadeUp 0.6s 0.1s both;
     }
 
-    .container {
-      width: min(380px, 92vw);
-      background: rgba(255, 255, 255, 0.98);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
     }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .input-group {
-      margin-bottom: 15px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #d1d5db;
+    .brand-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--sky));
       border-radius: 10px;
-      font-size: 14px;
-    }
-
-    input:focus {
-      outline: none;
-      border-color: #667eea;
-    }
-
-    .btn {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      background: #667eea;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700;
       color: white;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-      margin-top: 8px;
     }
 
-    .btn:hover {
-      background: #5a67d8;
+    .brand-name {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 400;
+      letter-spacing: -0.3px;
     }
 
-    .btn:disabled {
-      opacity: 0.7;
-      cursor: wait;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.6s 0.25s both;
     }
 
-    .error {
-      color: #dc2626;
+    .hero-tagline {
+      font-family: 'Fraunces', serif;
+      font-size: 42px;
+      font-weight: 300;
+      line-height: 1.18;
+      letter-spacing: -1.5px;
+      color: var(--text-bright);
+      margin-bottom: 18px;
+    }
+
+    .hero-tagline em {
+      font-style: italic;
+      background: linear-gradient(90deg, var(--accent), var(--sky));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 340px;
+      margin-bottom: 36px;
+    }
+
+    .testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .testimonial {
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid var(--card-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      backdrop-filter: blur(10px);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .testimonial:hover {
+      background: rgba(108,99,255,0.1);
+      border-color: rgba(108,99,255,0.3);
+    }
+
+    .testimonial-text {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .av-purple { background: rgba(108,99,255,0.3); color: #a99fff; }
+    .av-sky    { background: rgba(93,175,219,0.3); color: #89ccee; }
+
+    .author-info .name {
       font-size: 12px;
-      margin-top: 5px;
-      display: none;
+      font-weight: 500;
+      color: var(--text-bright);
+    }
+    .author-info .role {
+      font-size: 11px;
+      color: var(--text-faint);
     }
 
-    .status {
-      margin-top: 14px;
-      text-align: center;
+    .stars {
+      margin-left: auto;
+      display: flex;
+      gap: 2px;
+    }
+
+    .star {
+      width: 10px; height: 10px;
+      background: var(--accent);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    /* ─── Right Panel ────────────────────────────── */
+    .right {
+      background: var(--form-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 52px;
+      position: relative;
+      border-left: 0.5px solid var(--card-border);
+    }
+
+    .right::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--sky), transparent);
+      opacity: 0.6;
+    }
+
+    .form-wrapper {
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .form-header {
+      margin-bottom: 32px;
+      animation: fadeUp 0.5s 0.15s both;
+    }
+
+    .form-title {
+      font-family: 'Fraunces', serif;
+      font-size: 30px;
+      font-weight: 300;
+      letter-spacing: -0.8px;
+      margin-bottom: 6px;
+    }
+
+    .form-sub {
       font-size: 14px;
-      display: none;
+      font-weight: 300;
+      color: var(--text-muted);
     }
 
-    .status.success {
-      color: #047857;
+    .form-sub a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .form-sub a:hover { color: var(--sky); }
+
+    /* Google: styled shell + GIS renderButton overlay */
+    .google-btn-stack {
+      position: relative;
+      width: 100%;
+      min-height: 46px;
+      padding: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 0.5px solid var(--input-border);
+      border-radius: 12px;
+      color: var(--text-bright);
+      transition: background 0.2s, border-color 0.2s;
+      animation: fadeUp 0.5s 0.2s both;
+      margin-bottom: 24px;
+      overflow: hidden;
+      cursor: pointer;
     }
 
-    .status.error {
-      color: #b91c1c;
+    .google-btn-stack:not(.google-btn-stack--missing):hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .google-btn-stack--missing {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .google-btn-label {
+      position: relative;
+      z-index: 0;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .google-signin-mount {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.04;
+    }
+
+    .google-signin-mount > div {
+      width: 100% !important;
+    }
+
+    .g-icon {
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+    }
+
+    .google-note {
+      font-size: 12px;
+      color: var(--text-faint);
+      text-align: center;
+      margin-top: -16px;
+      margin-bottom: 20px;
+      line-height: 1.45;
+      animation: fadeUp 0.5s 0.22s both;
     }
 
     .divider {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin: 18px 0 12px;
-      color: #9ca3af;
-      font-size: 13px;
-      font-weight: 600;
+      gap: 12px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.5s 0.25s both;
     }
-
-    .divider::before,
-    .divider::after {
-      content: "";
+    .divider::before, .divider::after {
+      content: '';
       flex: 1;
-      height: 1px;
-      background: #e5e7eb;
+      height: 0.5px;
+      background: var(--divider);
     }
-
-    .google-note {
-      margin-top: 8px;
+    .divider span {
       font-size: 12px;
-      color: #6b7280;
-      text-align: center;
+      color: var(--text-faint);
+      font-weight: 400;
     }
 
-    .extra {
-      margin-top: 18px;
-      text-align: center;
+    .field {
+      margin-bottom: 16px;
+    }
+    .field:nth-of-type(1) { animation: fadeUp 0.5s 0.3s both; }
+    .field:nth-of-type(2) { animation: fadeUp 0.5s 0.38s both; }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--input-bg);
+      border: 0.5px solid var(--input-border);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
       font-size: 14px;
+      color: rgba(255,255,255,0.9);
+      -webkit-text-fill-color: rgba(255,255,255,0.9);
+      caret-color: var(--accent);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .extra a {
-      color: #667eea;
+    input::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+
+    input:focus {
+      border-color: rgba(108,99,255,0.5);
+      box-shadow: 0 0 0 3px var(--input-focus);
+      background: rgba(108,99,255,0.06);
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0px 1000px rgba(20,17,70,0.98) inset !important;
+      -webkit-text-fill-color: rgba(255,255,255,0.9) !important;
+      caret-color: white !important;
+    }
+
+    .toggle-pw {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-faint);
+      padding: 4px;
+      line-height: 0;
+      transition: color 0.2s;
+    }
+    .toggle-pw:hover { color: var(--text-muted); }
+
+    .field-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .forgot {
+      font-size: 12px;
+      color: var(--text-faint);
       text-decoration: none;
-      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .forgot:hover { color: var(--accent); }
+
+    .error-msg {
+      font-size: 12px;
+      color: #f87171;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(90deg, var(--accent), var(--sky));
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: transform 0.15s, box-shadow 0.2s, opacity 0.15s;
+      animation: fadeUp 0.5s 0.46s both;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(108,99,255,0.45);
+    }
+    .submit-btn:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow: none;
+    }
+    .submit-btn:disabled {
+      opacity: 0.65;
+      cursor: wait;
+      transform: none;
+    }
+
+    .status {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 13.5px;
+      display: none;
+      animation: fadeUp 0.3s both;
+    }
+    .status.success { color: #34d399; display: block; }
+    .status.error   { color: #f87171; display: block; }
+
+    .form-footer {
+      margin-top: 22px;
+      text-align: center;
+      animation: fadeUp 0.5s 0.52s both;
+    }
+    .form-footer p {
+      font-size: 13px;
+      color: var(--text-faint);
+    }
+    .form-footer a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .form-footer a:hover { color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Responsive ─────────────────────────────── */
+    @media (max-width: 768px) {
+      html, body { overflow: auto; }
+      .page { grid-template-columns: 1fr; height: auto; }
+      .left {
+        padding: 36px 28px;
+        min-height: auto;
+      }
+      .hero-tagline { font-size: 30px; }
+      .testimonials { flex-direction: row; overflow-x: auto; gap: 10px; }
+      .testimonial { min-width: 260px; }
+      .right { padding: 40px 28px; border-left: none; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Login</h2>
+  <div class="page">
 
-    <div class="input-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email" />
-      <div class="error" id="emailError">Please enter a valid email</div>
-    </div>
+    <!-- ══ Left Panel ══ -->
+    <div class="left">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
 
-    <div class="input-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Enter your password" />
-      <div class="error" id="passwordError">Password must be at least 6 characters</div>
-    </div>
-
-    <button class="btn" id="loginBtn" onclick="login()">Login</button>
-    <div class="status" id="statusMessage"></div>
-
-    <div class="divider"><span>or</span></div>
-    <div id="googleArea">
-      {% if google_client_id %}
-      <div id="g_id_onload"
-           data-client_id="{{ google_client_id }}"
-           data-context="signin"
-           data-ux_mode="popup"
-           data-callback="handleGoogleCredential"
-           data-auto_select="false">
+      <div class="brand">
+        <a href="/" class="brand-link" aria-label="TailorCV home">
+          <div class="brand-icon">T</div>
+          <span class="brand-name">TailorCV</span>
+        </a>
       </div>
-      <div class="g_id_signin"
-           data-type="standard"
-           data-size="large"
-           data-theme="outline"
-           data-shape="rectangular"
-           data-text="continue_with"
-           data-logo_alignment="left">
+
+      <div class="hero-content">
+        <h1 class="hero-tagline">
+          Your resume,<br>
+          <em>perfectly fitted</em><br>
+          every time.
+        </h1>
+        <p class="hero-sub">
+          Land more interviews with AI-tailored resumes that match job descriptions in seconds — not hours.
+        </p>
+
+        <div class="testimonials">
+          <div class="testimonial">
+            <p class="testimonial-text">"Landed 3 interviews in my first week. The tailored resume made an immediate difference."</p>
+            <div class="testimonial-author">
+              <div class="avatar av-purple">PM</div>
+              <div class="author-info">
+                <div class="name">Priya M.</div>
+                <div class="role">Product Manager, Bangalore</div>
+              </div>
+              <div class="stars">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial">
+            <p class="testimonial-text">"Used to spend hours rewriting my CV. Now it takes 2 minutes and the results are better."</p>
+            <div class="testimonial-author">
+              <div class="avatar av-sky">RK</div>
+              <div class="author-info">
+                <div class="name">Rahul K.</div>
+                <div class="role">Software Engineer, Mumbai</div>
+              </div>
+              <div class="stars">
+                <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="google-note">We only use your email to create your TailorCV account.</div>
-      {% else %}
-      <div class="google-note" style="color:#b91c1c;">Google Sign-In is not configured. Ask the admin to set GOOGLE_CLIENT_ID.</div>
-      {% endif %}
     </div>
 
-    <div class="extra">
-      <p><a href="#" onclick="handleForgotPassword(event)">Forgot Password?</a></p>
-      <p>Don't have an account? <a href="/signup">Sign up</a></p>
-      <p style="margin-top: 8px;"><a href="/">Back to home</a></p>
+    <!-- ══ Right Panel ══ -->
+    <div class="right">
+      <div class="form-wrapper">
+
+        <div class="form-header">
+          <h2 class="form-title">Sign in</h2>
+          <p class="form-sub">New here? <a href="/signup">Create a free account</a></p>
+        </div>
+
+        {% if google_client_id %}
+        <div class="google-btn-stack" id="googleBtnStack" aria-label="Continue with Google">
+          <div class="google-btn-label">
+            <svg class="g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </div>
+          <div id="google-signin-mount" class="google-signin-mount"></div>
+        </div>
+        <p class="google-note">We only use your email to create your TailorCV account.</p>
+        {% else %}
+        <div class="google-btn-stack google-btn-stack--missing" aria-disabled="true">
+          <div class="google-btn-label">
+            <svg class="g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </div>
+        </div>
+        <p class="google-note" style="color:#f87171;">Google sign-in is not configured. Ask the admin to set GOOGLE_CLIENT_ID.</p>
+        {% endif %}
+
+        <div class="divider"><span>or sign in with email</span></div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <div class="input-wrap">
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="error-msg" id="emailError">Please enter a valid email address.</div>
+        </div>
+
+        <div class="field">
+          <div class="field-row">
+            <label for="password">Password</label>
+            <a href="#" class="forgot" onclick="handleForgotPassword(event)">Forgot password?</a>
+          </div>
+          <div class="input-wrap">
+            <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" style="padding-right: 44px;" />
+            <button class="toggle-pw" onclick="togglePassword()" type="button" aria-label="Toggle password visibility">
+              <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+          <div class="error-msg" id="passwordError">Password must be at least 6 characters.</div>
+        </div>
+
+        <button class="submit-btn" id="loginBtn" type="button" onclick="login()">Sign in</button>
+        <div class="status" id="statusMessage"></div>
+
+        <div class="form-footer">
+          <p>Don't have an account? <a href="/signup">Sign up free</a></p>
+          
+        </div>
+
+      </div>
     </div>
   </div>
 
   <script>
+    {% if google_client_id %}
+    window.TAILORCV_GOOGLE_CLIENT_ID = '{{ google_client_id }}';
+    {% endif %}
+
+    function togglePassword() {
+      const pw = document.getElementById('password');
+      const eye = document.getElementById('eyeIcon');
+      if (pw.type === 'password') {
+        pw.type = 'text';
+        eye.innerHTML = `
+          <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+          <line x1="1" y1="1" x2="23" y2="23"></line>`;
+      } else {
+        pw.type = 'password';
+        eye.innerHTML = `
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+          <circle cx="12" cy="12" r="3"></circle>`;
+      }
+    }
+
+    function tailorCvInitGoogleSignIn() {
+      if (!window.TAILORCV_GOOGLE_CLIENT_ID || !window.google?.accounts?.id) {
+        return;
+      }
+      const mount = document.getElementById('google-signin-mount');
+      const stack = document.getElementById('googleBtnStack');
+      if (!mount || mount.dataset.rendered === '1') return;
+      if (window.__tailorCvGsiInitOnce) return;
+
+      try {
+        window.__tailorCvGsiInitOnce = true;
+        google.accounts.id.initialize({
+          client_id: window.TAILORCV_GOOGLE_CLIENT_ID,
+          callback: handleGoogleCredential,
+          ux_mode: 'popup',
+          auto_select: false,
+        });
+
+        const w = stack ? Math.min(Math.max(stack.offsetWidth, 280), 400) : 360;
+        google.accounts.id.renderButton(mount, {
+          type: 'standard',
+          theme: 'outline',
+          size: 'large',
+          shape: 'rectangular',
+          text: 'continue_with',
+          logo_alignment: 'left',
+          width: w,
+        });
+        mount.dataset.rendered = '1';
+      } catch (e) {
+        window.__tailorCvGsiInitOnce = false;
+      }
+    }
+
+    function apiErrorDetail(data) {
+      const d = data && data.detail;
+      if (typeof d === 'string') return d;
+      if (Array.isArray(d) && d.length) {
+        return d.map(function (e) { return (e && e.msg) ? e.msg : ''; }).filter(Boolean).join(' ') || 'Request failed';
+      }
+      return 'Request failed';
+    }
+
+    window.addEventListener('load', tailorCvInitGoogleSignIn);
+
+    (function tailorCvPollGsi() {
+      if (!window.TAILORCV_GOOGLE_CLIENT_ID || !document.getElementById('google-signin-mount')) return;
+      var left = 200;
+      var t = setInterval(function () {
+        left--;
+        if (window.google && window.google.accounts && window.google.accounts.id) {
+          clearInterval(t);
+          tailorCvInitGoogleSignIn();
+        } else if (left <= 0) clearInterval(t);
+      }, 75);
+    })();
+
     async function login() {
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
@@ -203,68 +764,47 @@
       emailError.style.display = email.includes('@') ? 'none' : 'block';
       passwordError.style.display = password.length >= 6 ? 'none' : 'block';
 
-      if (!email.includes('@') || password.length < 6) {
-        return;
-      }
+      if (!email.includes('@') || password.length < 6) return;
 
+      statusMessage.className = 'status';
       statusMessage.style.display = 'none';
       loginBtn.disabled = true;
-      loginBtn.textContent = 'Checking account...';
+      loginBtn.textContent = 'Signing in…';
 
       try {
         const response = await fetch('/api/login', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
         });
 
         const raw = await response.text();
         let data = {};
-        try {
-          data = raw ? JSON.parse(raw) : {};
-        } catch {
-          data = { detail: raw || 'Unexpected server response' };
-        }
+        try { data = raw ? JSON.parse(raw) : {}; }
+        catch { data = { detail: raw || 'Unexpected server response' }; }
 
-        if (!response.ok) {
-          throw new Error(data.detail || 'Login failed');
-        }
+        if (!response.ok) throw new Error(apiErrorDetail(data) || 'Login failed');
+        if (data.requires_verification) throw new Error('Please verify your email before signing in.');
+        if (!data.user) throw new Error(data.message || 'Login succeeded but user details were missing.');
 
-        if (data.requires_verification) {
-          throw new Error('Server is using old login verification flow. Restart backend and try again.');
-        }
-
-        if (!data.user) {
-          throw new Error(data.message || 'Login succeeded but user details were missing.');
-        }
-
-        if (window.TailorCVAuth) {
-          window.TailorCVAuth.saveUser(data.user);
-        }
+        if (window.TailorCVAuth) window.TailorCVAuth.saveUser(data.user);
 
         statusMessage.textContent = `Welcome back, ${data.user.name}!`;
         statusMessage.className = 'status success';
-        statusMessage.style.display = 'block';
-        setTimeout(() => {
-          window.location.href = '/solutions';
-        }, 900);
+        setTimeout(() => { window.location.href = '/solutions'; }, 900);
       } catch (error) {
         statusMessage.textContent = error.message;
         statusMessage.className = 'status error';
-        statusMessage.style.display = 'block';
       } finally {
         loginBtn.disabled = false;
-        loginBtn.textContent = 'Login';
+        loginBtn.textContent = 'Sign in';
       }
     }
 
     async function handleGoogleCredential(response) {
       const statusMessage = document.getElementById('statusMessage');
-      statusMessage.textContent = 'Checking Google account...';
-      statusMessage.className = 'status';
-      statusMessage.style.display = 'block';
+      statusMessage.textContent = 'Verifying Google account…';
+      statusMessage.className = 'status success';
 
       try {
         const res = await fetch('/api/login/google', {
@@ -275,53 +815,36 @@
 
         const raw = await res.text();
         let data = {};
-        try {
-          data = raw ? JSON.parse(raw) : {};
-        } catch {
-          data = { detail: raw || 'Unexpected server response' };
-        }
+        try { data = raw ? JSON.parse(raw) : {}; }
+        catch { data = { detail: raw || 'Unexpected server response' }; }
 
-        if (!res.ok) {
-          throw new Error(data.detail || 'Google login failed');
-        }
+        if (!res.ok) throw new Error(apiErrorDetail(data) || 'Google login failed');
+        if (!data.user) throw new Error(data.message || 'Login succeeded but user details were missing.');
 
-        if (!data.user) {
-          throw new Error(data.message || 'Login succeeded but user details were missing.');
-        }
-
-        if (window.TailorCVAuth) {
-          window.TailorCVAuth.saveUser(data.user);
-        }
+        if (window.TailorCVAuth) window.TailorCVAuth.saveUser(data.user);
 
         statusMessage.textContent = `Welcome, ${data.user.name}!`;
         statusMessage.className = 'status success';
-        statusMessage.style.display = 'block';
-        setTimeout(() => {
-          window.location.href = '/solutions';
-        }, 700);
+        setTimeout(() => { window.location.href = '/solutions'; }, 700);
       } catch (error) {
         statusMessage.textContent = error.message;
         statusMessage.className = 'status error';
-        statusMessage.style.display = 'block';
       }
     }
 
     async function handleForgotPassword(event) {
       event.preventDefault();
-
       const email = document.getElementById('email').value.trim();
       const statusMessage = document.getElementById('statusMessage');
 
       if (!email.includes('@')) {
-        statusMessage.textContent = 'Enter your registered email first, then click Forgot Password.';
+        statusMessage.textContent = 'Enter your registered email above, then click Forgot password.';
         statusMessage.className = 'status error';
-        statusMessage.style.display = 'block';
         return;
       }
 
-      statusMessage.textContent = 'Preparing reset code...';
+      statusMessage.textContent = 'Sending reset link…';
       statusMessage.className = 'status success';
-      statusMessage.style.display = 'block';
 
       try {
         const response = await fetch('/api/forgot-password', {
@@ -332,33 +855,23 @@
 
         const raw = await response.text();
         let data = {};
-        try {
-          data = raw ? JSON.parse(raw) : {};
-        } catch {
-          data = { detail: raw || 'Unexpected server response' };
-        }
+        try { data = raw ? JSON.parse(raw) : {}; }
+        catch { data = { detail: raw || 'Unexpected server response' }; }
 
-        if (!response.ok) {
-          throw new Error(data.detail || 'Could not send reset code');
-        }
+        if (!response.ok) throw new Error(apiErrorDetail(data) || 'Could not send reset link');
 
-        const backendMessage = data.message || 'Reset code prepared.';
-        statusMessage.textContent = backendMessage;
+        statusMessage.textContent = data.message || 'Reset link sent!';
         statusMessage.className = 'status success';
-        statusMessage.style.display = 'block';
-
-        const resetUrl = `/reset-password?email=${encodeURIComponent(email)}`;
-
         setTimeout(() => {
-          window.location.href = resetUrl;
+          window.location.href = `/reset-password?email=${encodeURIComponent(email)}`;
         }, 1000);
       } catch (error) {
         statusMessage.textContent = error.message;
         statusMessage.className = 'status error';
-        statusMessage.style.display = 'block';
       }
     }
   </script>
+
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="/static/auth_nav.js"></script>
 </body>
