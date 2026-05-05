@@ -67,11 +67,11 @@
         fetch('/logout', {method: 'POST'})
         .then(() => {
           clearStoredUser();
-          window.location.href = "/";
+          window.location.href = "/login";
         })
         .catch(() => {
           clearStoredUser();
-          window.location.href = "/";
+          window.location.href = "/login";
         });
       });
     }
