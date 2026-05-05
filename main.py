@@ -2728,10 +2728,6 @@ async def upload_resume(
 @app.post("/get-ats-score")
 async def get_score(request: Request, jd_string: str, file: UploadFile = File(...)):
     """Upload a resume PDF file and JD"""
-    user_id = request.session.get("user_id")
-    if not user_id:
-        return JSONResponse(status_code=401, content={"error": "Not logged in"})
-
     file_path = None
     try:
         file_path = save_uploaded_pdf(file)
@@ -2853,10 +2849,6 @@ async def render_template_preview(request: Request):
 @app.post("/api/download-cv-pdf")
 async def download_cv_pdf(request: Request):
     """Generate a styled PDF from modify-cv builder data."""
-    user_id = request.session.get("user_id")
-    if not user_id:
-        return JSONResponse(status_code=401, content={"error": "Not logged in"})
-
     payload = await request.json()
     template_id = int(payload.get("templateId", 1))
     cv_data = payload.get("cvData") or payload.get("resumeData", {}) or {}
@@ -2886,10 +2878,6 @@ async def download_cv_pdf_browser(
     cv_data_json: str = Form(...),
 ):
     """Browser-native PDF download via form submit."""
-    user_id = request.session.get("user_id")
-    if not user_id:
-        raise HTTPException(status_code=401, detail="Not logged in")
-
     try:
         cv_data = json.loads(cv_data_json)
     except Exception:
