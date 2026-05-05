@@ -518,33 +518,9 @@ async function updatePreview() {
         const downloadBtn = document.getElementById("download-pdf-btn");
         const reoptBtn = document.getElementById("reoptimize-btn");
 
-        function showLoginRequiredModalForDownload() {
-            let overlay = document.getElementById("login-required-overlay");
-            if (!overlay) {
-                const nextUrl = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
-                overlay = document.createElement("div");
-                overlay.id = "login-required-overlay";
-                overlay.className = "login-modal-overlay";
-                overlay.innerHTML = `
-                    <div class="login-modal" role="dialog" aria-modal="true">
-                        <h3>Login Required</h3>
-                        <p>Please log in to download your CV.</p>
-                        <div class="login-modal-actions">
-                            <a class="btn-link btn-primary-link" href="/login?next=${nextUrl}">Go to Login</a>
-                            <button type="button" class="btn-link btn-secondary-link" id="login-modal-close">Maybe Later</button>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(overlay);
-
-                const closeBtn = overlay.querySelector("#login-modal-close");
-                closeBtn?.addEventListener("click", () => overlay.remove());
-                overlay.addEventListener("click", (event) => {
-                    if (event.target === overlay) {
-                        overlay.remove();
-                    }
-                });
-            }
+        function redirectToLogin() {
+            const nextUrl = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
+            window.location.href = `/login?next=${nextUrl}`;
         }
 
         if (saveBtn) {
@@ -590,7 +566,7 @@ async function updatePreview() {
                     const message = (error?.message || "").toLowerCase();
                     const blockedByAuth = error?.status === 401 || error?.status === 403 || message.includes("not logged in") || message.includes("login");
                     if (blockedByAuth) {
-                        showLoginRequiredModalForDownload();
+                        redirectToLogin();
                         return;
                     }
                     console.warn("Primary download failed, using fallback.", error);
