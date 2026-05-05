@@ -1,4 +1,5 @@
 (function () {
+    const MODIFY_DRAFT_KEY = "tailorcv_modify_draft";
     const sidebarSections = [
         { id: "personal-info", label: "Personal Info" },
         { id: "education", label: "Education" },
@@ -401,6 +402,10 @@
         target[parts[parts.length - 1]] = value;
     }
 
+    function persistDraft() {
+        localStorage.setItem(MODIFY_DRAFT_KEY, JSON.stringify({ cvData, selectedTemplate }));
+    }
+
     function addEntry(section) {
         const factories = {
             education: () => ({ school: "", degree: "", year: "", score: ""}),
@@ -416,6 +421,7 @@
         cvData[section].push(factories[section]());
         renderAll();
         debouncedPreview();
+        persistDraft();
     }
 
     function removeEntry(section, index) {
@@ -423,6 +429,7 @@
         cvData[section].splice(index, 1);
         renderAll();
         debouncedPreview();
+        persistDraft();
     }
 
     async function loadTemplates() {
@@ -465,6 +472,7 @@ async function updatePreview() {
     }
 
     let debouncedPreview = debounce(updatePreview, 300);
+    let debouncedPersistDraft = debounce(persistDraft, 500);
 
     function bindInteractions() {
         document.querySelectorAll("[data-scroll-to]").forEach((button) => {
@@ -483,6 +491,7 @@ async function updatePreview() {
                 event.preventDefault();
                 setValueByPath(input.dataset.oninput, event.target.value);
                 debouncedPreview();
+                debouncedPersistDraft();
             });
         });
 
@@ -499,6 +508,7 @@ async function updatePreview() {
                 selectedTemplate = Number(card.dataset.templateId);
                 renderAll();
                 debouncedPreview();
+                persistDraft();
             });
         });
     }
@@ -508,9 +518,38 @@ async function updatePreview() {
         const downloadBtn = document.getElementById("download-pdf-btn");
         const reoptBtn = document.getElementById("reoptimize-btn");
 
+        function showLoginRequiredModalForDownload() {
+            let overlay = document.getElementById("login-required-overlay");
+            if (!overlay) {
+                const nextUrl = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
+                overlay = document.createElement("div");
+                overlay.id = "login-required-overlay";
+                overlay.className = "login-modal-overlay";
+                overlay.innerHTML = `
+                    <div class="login-modal" role="dialog" aria-modal="true">
+                        <h3>Login Required</h3>
+                        <p>Please log in to download your CV.</p>
+                        <div class="login-modal-actions">
+                            <a class="btn-link btn-primary-link" href="/login?next=${nextUrl}">Go to Login</a>
+                            <button type="button" class="btn-link btn-secondary-link" id="login-modal-close">Maybe Later</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+
+                const closeBtn = overlay.querySelector("#login-modal-close");
+                closeBtn?.addEventListener("click", () => overlay.remove());
+                overlay.addEventListener("click", (event) => {
+                    if (event.target === overlay) {
+                        overlay.remove();
+                    }
+                });
+            }
+        }
+
         if (saveBtn) {
             saveBtn.addEventListener("click", () => {
-                localStorage.setItem("tailorcv_modify_draft", JSON.stringify({ cvData, selectedTemplate }));
+                persistDraft();
                 alert("Draft saved locally.");
             });
         }
@@ -528,7 +567,14 @@ async function updatePreview() {
                         body: JSON.stringify({ templateId: selectedTemplate, cvData })
                     });
                     if (!response.ok) {
-                        throw new Error("Primary download route failed");
+                        let detail = "Primary download route failed";
+                        try {
+                            const payload = await response.json();
+                            detail = payload?.detail || payload?.error || detail;
+                        } catch {}
+                        const error = new Error(detail);
+                        error.status = response.status;
+                        throw error;
                     }
                     const blob = await response.blob();
                     const url = window.URL.createObjectURL(blob);
@@ -541,6 +587,12 @@ async function updatePreview() {
                     setTimeout(() => window.URL.revokeObjectURL(url), 2000);
                     return;
                 } catch (error) {
+                    const message = (error?.message || "").toLowerCase();
+                    const blockedByAuth = error?.status === 401 || error?.status === 403 || message.includes("not logged in") || message.includes("login");
+                    if (blockedByAuth) {
+                        showLoginRequiredModalForDownload();
+                        return;
+                    }
                     console.warn("Primary download failed, using fallback.", error);
                 }
 
@@ -575,7 +627,7 @@ async function updatePreview() {
     }
 
     function hydrateDraft() {
-        const raw = localStorage.getItem("tailorcv_modify_draft");
+        const raw = localStorage.getItem(MODIFY_DRAFT_KEY);
         if (!raw) return;
         try {
             const parsed = JSON.parse(raw);
@@ -601,7 +653,7 @@ async function updatePreview() {
             return;
         }
         selectedTemplate = templateParam;
-        localStorage.setItem("tailorcv_modify_draft", JSON.stringify({ cvData, selectedTemplate }));
+        persistDraft();
     }
 
     document.addEventListener("DOMContentLoaded", async () => {

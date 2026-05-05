@@ -27,6 +27,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+function showLoginRequiredModal() {
+    let overlay = document.getElementById('login-required-overlay');
+    if (!overlay) {
+        const nextUrl = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
+        overlay = document.createElement('div');
+        overlay.id = 'login-required-overlay';
+        overlay.className = 'login-modal-overlay';
+        overlay.innerHTML = `
+            <div class="login-modal" role="dialog" aria-modal="true">
+                <h3>Login Required</h3>
+                <p>You need to log in before using ATS score analysis.</p>
+                <div class="login-modal-actions">
+                    <a class="btn-link btn-primary-link" href="/login?next=${nextUrl}">Go to Login</a>
+                    <button type="button" class="btn-link btn-secondary-link" id="login-modal-close">Maybe Later</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        const closeBtn = overlay.querySelector('#login-modal-close');
+        closeBtn?.addEventListener('click', () => overlay.remove());
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) overlay.remove();
+        });
+    }
+}
+
 // Handle ATS Score Analysis
 async function handleATSAnalysis() {
     const fileInput = document.getElementById('resume-file');
@@ -64,8 +90,17 @@ async function handleATSAnalysis() {
         });
 
         if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(errorText || 'Failed to get ATS score');
+            let detail = 'Failed to get ATS score';
+            try {
+                const payload = await response.json();
+                detail = payload?.detail || payload?.error || detail;
+            } catch {
+                const errorText = await response.text();
+                detail = errorText || detail;
+            }
+            const err = new Error(detail);
+            err.status = response.status;
+            throw err;
         }
 
         const data = await response.json();
@@ -80,7 +115,12 @@ async function handleATSAnalysis() {
 
     } catch (error) {
         console.error('Error:', error);
-        alert('Error analyzing resume: ' + error.message);
+        const message = (error.message || '').toLowerCase();
+        if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
+            showLoginRequiredModal();
+        } else {
+            alert('Error analyzing resume: ' + error.message);
+        }
     } finally {
         // Reset button state
         analyzeBtn.disabled = false;

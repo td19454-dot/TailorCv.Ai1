@@ -352,7 +352,16 @@ async function handleATSAnalysis() {
             body: formData
         });
 
-        if (!response.ok) throw new Error('Analysis failed');
+        if (!response.ok) {
+            let detail = 'Analysis failed';
+            try {
+                const payload = await response.json();
+                detail = payload?.detail || payload?.error || detail;
+            } catch {}
+            const error = new Error(detail);
+            error.status = response.status;
+            throw error;
+        }
 
         const data = await response.json();
         const analysisPayload = transformATSDataForPage(data, jdInput.value.trim());
@@ -375,7 +384,12 @@ async function handleATSAnalysis() {
         if (atsProgressSection) {
             atsProgressSection.style.display = 'none';
         }
-        alert('Error analyzing resume: ' + error.message);
+        const message = (error.message || '').toLowerCase();
+        if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
+            showLoginRequiredModal();
+        } else {
+            alert('Error analyzing resume: ' + error.message);
+        }
     } finally {
         analyzeBtn.disabled = false;
         analyzeBtn.classList.remove('loading', 'animate-shimmer');
@@ -719,12 +733,13 @@ function showLoginRequiredModal() {
         overlay = document.createElement('div');
         overlay.id = 'login-required-overlay';
         overlay.className = 'login-modal-overlay';
+        const nextUrl = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
         overlay.innerHTML = `
             <div class="login-modal" role="dialog" aria-modal="true">
                 <h3>Login Required</h3>
-                <p>You need to log in before optimizing your resume. Please sign in to continue.</p>
+                <p>You need to log in to continue.</p>
                 <div class="login-modal-actions">
-                    <a class="btn-link btn-primary-link" href="/login">Go to Login</a>
+                    <a class="btn-link btn-primary-link" href="/login?next=${nextUrl}">Go to Login</a>
                     <button type="button" class="btn-link btn-secondary-link" id="login-modal-close">Maybe Later</button>
                 </div>
             </div>
