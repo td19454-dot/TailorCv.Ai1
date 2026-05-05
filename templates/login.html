@@ -739,6 +739,16 @@
       return 'Request failed';
     }
 
+    function getPostLoginRedirect() {
+      const params = new URLSearchParams(window.location.search);
+      const next = params.get('next') || '';
+      if (!next) return '/solutions';
+      // Only allow same-origin relative paths.
+      if (!next.startsWith('/')) return '/solutions';
+      if (next.startsWith('//')) return '/solutions';
+      return next;
+    }
+
     window.addEventListener('load', tailorCvInitGoogleSignIn);
 
     (function tailorCvPollGsi() {
@@ -791,7 +801,7 @@
 
         statusMessage.textContent = `Welcome back, ${data.user.name}!`;
         statusMessage.className = 'status success';
-        setTimeout(() => { window.location.href = '/solutions'; }, 900);
+        setTimeout(() => { window.location.href = getPostLoginRedirect(); }, 900);
       } catch (error) {
         statusMessage.textContent = error.message;
         statusMessage.className = 'status error';
@@ -825,7 +835,7 @@
 
         statusMessage.textContent = `Welcome, ${data.user.name}!`;
         statusMessage.className = 'status success';
-        setTimeout(() => { window.location.href = '/solutions'; }, 700);
+        setTimeout(() => { window.location.href = getPostLoginRedirect(); }, 700);
       } catch (error) {
         statusMessage.textContent = error.message;
         statusMessage.className = 'status error';

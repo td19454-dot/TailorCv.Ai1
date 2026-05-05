@@ -8,7 +8,7 @@
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/header-footer.css">
     <link rel="stylesheet" href="/static/style2.css">
-    <link rel="stylesheet" href="/static/templates.css?v=2">
+    <link rel="stylesheet" href="/static/templates.css?v=4">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -55,12 +55,13 @@
         <section id="templates-grid" class="templates-grid" aria-live="polite"></section>
 
         <section class="templates-upload-card">
-            <h2 class="templates-upload-title">Modify your  Resume With Selected Template</h2>
-            <p class="templates-upload-subtitle">Upload your resume and Change  it directly with the selected template. </p>
+            <span class="templates-upload-kicker">Template Resume Lab</span>
+            <h2 class="templates-upload-title">Modify Your Resume with the Selected Template</h2>
+            <p class="templates-upload-subtitle">Upload your resume and edit it directly with your chosen template.</p>
             <div class="templates-upload-controls">
                 <input id="templates-cv-file" class="templates-file-input" type="file" accept=".pdf,application/pdf">
                 <button id="template-only-optimize-btn" class="templates-btn templates-btn-primary" disabled>
-                    modify Resume 
+                    Modify Resume
                 </button>
                 <button id="template-only-download-btn" class="templates-btn templates-btn-secondary" disabled>
                     Download Optimized Resume
@@ -77,7 +78,7 @@
 
         <section class="templates-actions">
             <button id="modify-cv-btn" class="templates-btn templates-btn-secondary" disabled>
-                create CV
+                Create CV
             </button>
             <button id="optimize-ai-btn" class="templates-btn templates-btn-primary" disabled>
                 Optimize with AI
@@ -124,6 +125,7 @@
             const progressWrap = document.getElementById("templates-optimize-progress");
             const progressFill = document.getElementById("templates-progress-fill");
             const progressLabel = document.getElementById("templates-progress-label");
+            const RESUME_FILE_KEY = "tailorcv_resumeFile";
 
             let templates = [];
             let selectedTemplateId = null;
@@ -183,9 +185,60 @@
             }
 
             function setUploadStatus(message, kind = "") {
-                uploadStatusEl.textContent = message || "";
+                uploadStatusEl.innerHTML = message || "";
                 uploadStatusEl.classList.remove("is-loading", "is-success", "is-error");
                 if (kind) uploadStatusEl.classList.add(kind);
+            }
+
+            function saveTemplateLabDraft() {
+                const file = uploadInput?.files?.[0];
+                if (!file) {
+                    setUploadStatus("Select a PDF first, then click Save Draft.", "is-error");
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (evt) {
+                    localStorage.setItem(RESUME_FILE_KEY, JSON.stringify({
+                        data: evt.target.result,
+                        name: file.name,
+                        type: file.type || "application/pdf"
+                    }));
+                    setUploadStatus("Draft saved locally. You can now log in and continue.", "is-success");
+                };
+                reader.readAsDataURL(file);
+            }
+
+            function showLoginRequiredModal() {
+                let overlay = document.getElementById("login-required-overlay");
+                if (!overlay) {
+                    const nextUrl = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
+                    overlay = document.createElement("div");
+                    overlay.id = "login-required-overlay";
+                    overlay.className = "login-modal-overlay";
+                    overlay.innerHTML = `
+                        <div class="login-modal" role="dialog" aria-modal="true">
+                            <h3>Login Required</h3>
+                            <p>You need to log in before optimizing your resume. Please sign in to continue.</p>
+                            <div class="login-modal-actions">
+                                <a class="btn-link btn-primary-link" href="/login?next=${nextUrl}">Go to Login</a>
+                                <button type="button" class="btn-link btn-secondary-link" id="login-modal-close">Maybe Later</button>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(overlay);
+
+                    const closeBtn = overlay.querySelector("#login-modal-close");
+                    closeBtn?.addEventListener("click", () => {
+                        overlay.remove();
+                    });
+
+                    overlay.addEventListener("click", (event) => {
+                        if (event.target === overlay) {
+                            overlay.remove();
+                        }
+                    });
+                }
             }
 
             function startProgress() {
@@ -289,7 +342,9 @@
 
                     if (!response.ok) {
                         if (response.status === 401) {
-                            throw new Error("Please log in to optimize your resume.");
+                            setUploadStatus("Please log in to optimize your resume.", "is-error");
+                            showLoginRequiredModal();
+                            return;
                         }
                         let detail = "Failed to optimize resume.";
                         try {
