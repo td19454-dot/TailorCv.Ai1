@@ -2145,6 +2145,17 @@ async def ats_analysis_page(request: Request):
     )
 
 
+@app.get("/optimized-editor", response_class=HTMLResponse)
+async def optimized_editor_page(request: Request):
+    """Live editor page for optimized resume preview."""
+    require_logged_in(request)
+    return templates.TemplateResponse(
+        request,
+        "optimized_editor.html",
+        {"request": request},
+    )
+
+
 @app.get("/modify-cv", response_class=HTMLResponse)
 async def modify_cv_page(request: Request):
     """Manual CV editing page."""
@@ -2682,6 +2693,14 @@ async def upload_resume(
                 template = templates.env.get_template('resume_template.html')
                 html_content = template.render(**context)
 
+            wants_editor_mode = request.headers.get("X-Editor-Mode", "").lower() == "true"
+            if wants_editor_mode:
+                return JSONResponse({
+                    "success": True,
+                    "html": html_content,
+                    "template_id": template_id,
+                })
+
             pdf_path = os.path.join(resumes_dir, f"optimized_resume_{uuid.uuid4()}.pdf")
 
             def _render_pdf():
@@ -2732,6 +2751,37 @@ async def upload_resume(
             os.remove(file_path)
         if pdf_path and os.path.exists(pdf_path) and not isinstance(response, FileResponse):
             os.remove(pdf_path)
+
+
+@app.post("/api/download-html-pdf")
+async def download_html_pdf(request: Request):
+    """Generate a PDF directly from edited resume HTML."""
+    require_logged_in(request)
+    payload = await request.json()
+    html = str(payload.get("html", "")).strip()
+    raw_scale = payload.get("pdf_scale", 1)
+    try:
+        pdf_scale = float(raw_scale)
+    except (TypeError, ValueError):
+        pdf_scale = 1.0
+    pdf_scale = max(0.6, min(1.8, pdf_scale))
+    if not html:
+        raise HTTPException(status_code=400, detail="Missing HTML payload")
+
+    pdf_path = os.path.join(resumes_dir, f"edited_resume_{uuid.uuid4()}.pdf")
+    try:
+        from weasyprint import HTML
+        await asyncio.to_thread(lambda: HTML(string=html, base_url=BASE_DIR).write_pdf(pdf_path, zoom=pdf_scale))
+        return FileResponse(
+            pdf_path,
+            media_type="application/pdf",
+            filename="optimized_resume_edited.pdf",
+            background=BackgroundTask(_cleanup_files, [pdf_path])
+        )
+    except Exception as exc:
+        if os.path.exists(pdf_path):
+            os.remove(pdf_path)
+        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
 
 @app.post("/get-ats-score")
 async def get_score(request: Request, jd_string: str, file: UploadFile = File(...)):
