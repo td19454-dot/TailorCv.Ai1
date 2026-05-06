@@ -34,7 +34,8 @@ const styles = [
 const LS_KEYS = {
     jobDescription: 'tailorcv_jobDescription',
     resumeFile: 'tailorcv_resumeFile',
-    selectedTemplate: 'tailorcv_selected_template'
+    selectedTemplate: 'tailorcv_selected_template',
+    optimizedEditorPayload: 'tailorcv_optimized_editor_payload'
 };
 
 function saveJobDescription(value) {
@@ -784,6 +785,9 @@ async function handleResumeOptimization() {
     try {
         const response = await fetch(`/get-optimised-resume`, {
             method: 'POST',
+            headers: {
+                'X-Editor-Mode': 'true'
+            },
             body: formData
         });
 
@@ -794,10 +798,19 @@ async function handleResumeOptimization() {
             throw error;
         }
 
+        const contentType = (response.headers.get('content-type') || '').toLowerCase();
+        if (contentType.includes('application/json')) {
+            const payload = await response.json();
+            if (!payload || !payload.html) {
+                throw new Error('Optimization completed but preview payload is missing');
+            }
+            sessionStorage.setItem(LS_KEYS.optimizedEditorPayload, JSON.stringify(payload));
+            window.location.href = '/optimized-editor';
+            return;
+        }
+
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
-
-        // progressController.complete(); // Not needed for async demo
         displayOptimizeResults(url);
         triggerPdfDownload(url, 'optimized_resume.pdf');
 
