@@ -524,9 +524,10 @@ async function updatePreview() {
         }
 
         if (saveBtn) {
+            saveBtn.textContent = "Saved automatically";
             saveBtn.addEventListener("click", () => {
                 persistDraft();
-                alert("Draft saved locally.");
+                alert("Your CV is already auto-saved while you type.");
             });
         }
 
@@ -632,6 +633,154 @@ async function updatePreview() {
         persistDraft();
     }
 
+    function mapLinkedInDataToCv(parsed) {
+        const data = parsed && typeof parsed === "object" ? parsed : {};
+        const toText = (value) => (value == null ? "" : String(value).trim());
+        const asArray = (value) => (Array.isArray(value) ? value : []);
+
+        const mapped = createEmptyCvData();
+        mapped.personalInfo.name = toText(data.full_name);
+        mapped.personalInfo.headline = toText(data.headline);
+        mapped.personalInfo.location = toText(data.location);
+        mapped.personalInfo.email = toText(data.email);
+        mapped.personalInfo.phone = toText(data.phone);
+        mapped.personalInfo.summary = toText(data.summary);
+        mapped.personalInfo.linkedin = toText(data.linkedin_url || data.profile_url);
+
+        mapped.experience = asArray(data.experience).map((exp) => {
+            const start = toText(exp?.start_date);
+            const end = toText(exp?.end_date);
+            const dates = [start, end].filter(Boolean).join(" - ");
+            return {
+                company: toText(exp?.company),
+                title: toText(exp?.title),
+                dates,
+                location: toText(exp?.location),
+                details: toText(exp?.description),
+            };
+        }).filter((exp) => exp.company || exp.title || exp.details);
+
+        mapped.education = asArray(data.education).map((edu) => {
+            const degree = [toText(edu?.degree), toText(edu?.field)].filter(Boolean).join(" - ");
+            const year = [toText(edu?.start_year), toText(edu?.end_year)].filter(Boolean).join(" - ");
+            return {
+                school: toText(edu?.institution),
+                degree,
+                year,
+                score: "",
+            };
+        }).filter((edu) => edu.school || edu.degree);
+
+        mapped.skills = asArray(data.skills)
+            .map((skill) => ({ name: toText(skill) }))
+            .filter((skill) => skill.name);
+
+        mapped.certifications = asArray(data.certifications).map((cert) => ({
+            name: toText(cert?.name),
+            issuer: toText(cert?.issuer),
+            year: toText(cert?.date),
+            url: "",
+        })).filter((cert) => cert.name || cert.issuer);
+
+        mapped.projects = asArray(data.projects).map((project) => ({
+            name: toText(project?.name),
+            subtitle: "",
+            dates: "",
+            url: toText(project?.url),
+            github_link: "",
+            details: toText(project?.description),
+        })).filter((project) => project.name || project.details);
+
+        return mapped;
+    }
+
+    function setupLinkedInImport() {
+        const openBtn = document.getElementById("linkedin-import-btn");
+        const overlay = document.getElementById("linkedin-modal-overlay");
+        const closeBtn = document.getElementById("linkedin-modal-close");
+        const cancelBtn = document.getElementById("linkedin-cancel-btn");
+        const submitBtn = document.getElementById("linkedin-import-submit-btn");
+        const urlInput = document.getElementById("linkedin-url-input");
+        const errorDiv = document.getElementById("linkedin-error");
+        const loadingDiv = document.getElementById("linkedin-loading");
+        const footer = document.getElementById("linkedin-modal-footer");
+
+        if (
+            !openBtn || !overlay || !closeBtn || !cancelBtn || !submitBtn ||
+            !urlInput || !errorDiv || !loadingDiv || !footer
+        ) {
+            return;
+        }
+
+        async function applyLinkedInData(parsedData) {
+            cvData = normalizeIncomingCvData(mapLinkedInDataToCv(parsedData));
+            renderAll();
+            persistDraft();
+            if (selectedTemplate) {
+                await updatePreview();
+            }
+        }
+
+        const openModal = () => {
+            overlay.style.display = "flex";
+        };
+        const closeModal = () => {
+            overlay.style.display = "none";
+            urlInput.disabled = false;
+            urlInput.value = "";
+            errorDiv.style.display = "none";
+            loadingDiv.style.display = "none";
+            footer.style.display = "flex";
+            submitBtn.disabled = false;
+        };
+
+        openBtn.addEventListener("click", openModal);
+        closeBtn.addEventListener("click", closeModal);
+        cancelBtn.addEventListener("click", closeModal);
+        overlay.addEventListener("click", (event) => {
+            if (event.target === overlay) closeModal();
+        });
+
+        submitBtn.addEventListener("click", async () => {
+            const url = (urlInput.value || "").trim();
+            errorDiv.style.display = "none";
+
+            if (!url || !url.includes("linkedin.com/in/")) {
+                errorDiv.textContent = "Please enter a valid LinkedIn URL (e.g. https://linkedin.com/in/yourname)";
+                errorDiv.style.display = "block";
+                return;
+            }
+
+            loadingDiv.style.display = "block";
+            footer.style.display = "none";
+            urlInput.disabled = true;
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch("/api/linkedin-import", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ url }),
+                });
+                const result = await response.json();
+                if (!response.ok || !result?.success) {
+                    throw new Error(result?.detail || result?.error || "Import failed. Please try again.");
+                }
+
+                await applyLinkedInData(result.data);
+                closeModal();
+                alert("CV imported from LinkedIn! Please review and edit any missing details.");
+            } catch (error) {
+                loadingDiv.style.display = "none";
+                footer.style.display = "flex";
+                urlInput.disabled = false;
+                submitBtn.disabled = false;
+                errorDiv.textContent = error?.message || "Import failed. Please try again.";
+                errorDiv.style.display = "block";
+            }
+        });
+    }
+
     document.addEventListener("DOMContentLoaded", async () => {
         try {
             await loadTemplates();
@@ -639,6 +788,7 @@ async function updatePreview() {
             hydrateSelectedTemplateFromQuery();
             renderAll();
             setupActionButtons();
+            setupLinkedInImport();
             if (selectedTemplate) {
                 await updatePreview();
             }
