@@ -42,6 +42,7 @@ from functions import (
 from extraction import process_resume
 from models import PasswordResetToken, SignupVerificationCode, User
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
+from routers.linkedin import router as linkedin_router
 
 
 from starlette.middleware.sessions import SessionMiddleware
@@ -96,6 +97,7 @@ os.makedirs(static_dir, exist_ok=True)
 # Mount static files and configure templates with absolute paths
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 templates = Jinja2Templates(directory=templates_dir)
+app.include_router(linkedin_router)
 
 
 def initialize_database() -> None:
@@ -117,6 +119,12 @@ async def startup_event() -> None:
 
 def get_db() -> Session:
     return SessionLocal()
+
+
+def require_logged_in(request: Request) -> None:
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
 
 
 def _cleanup_files(file_paths: list[str]) -> None:
@@ -2728,6 +2736,7 @@ async def upload_resume(
 @app.post("/get-ats-score")
 async def get_score(request: Request, jd_string: str, file: UploadFile = File(...)):
     """Upload a resume PDF file and JD"""
+    require_logged_in(request)
     file_path = None
     try:
         file_path = save_uploaded_pdf(file)
@@ -2849,6 +2858,7 @@ async def render_template_preview(request: Request):
 @app.post("/api/download-cv-pdf")
 async def download_cv_pdf(request: Request):
     """Generate a styled PDF from modify-cv builder data."""
+    require_logged_in(request)
     payload = await request.json()
     template_id = int(payload.get("templateId", 1))
     cv_data = payload.get("cvData") or payload.get("resumeData", {}) or {}
@@ -2878,6 +2888,7 @@ async def download_cv_pdf_browser(
     cv_data_json: str = Form(...),
 ):
     """Browser-native PDF download via form submit."""
+    require_logged_in(request)
     try:
         cv_data = json.loads(cv_data_json)
     except Exception:

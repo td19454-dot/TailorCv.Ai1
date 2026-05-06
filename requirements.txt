@@ -17,6 +17,7 @@ google-auth>=2.29.0
 
 # AI/ML dependencies
 openai>=1.3.0
+anthropic>=0.34.0
 tenacity>=8.5.0
 
 # PDF processing
@@ -35,3 +36,4 @@ markdown>=3.5.0
 # ipykernel
 # ipywidgets
 # gradio
+httpx>=0.27.0

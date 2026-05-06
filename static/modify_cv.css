@@ -98,6 +98,81 @@ body {
     border-color: rgba(148, 163, 184, 0.45);
 }
 
+.linkedin-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+    padding: 1rem;
+}
+
+.linkedin-modal {
+    width: min(880px, 100%);
+    background: #0f1b3d;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(2, 6, 23, 0.4);
+    color: #e2e8f0;
+}
+
+.linkedin-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.linkedin-modal-close {
+    background: transparent;
+    border: 0;
+    color: #e2e8f0;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.linkedin-modal-body {
+    padding: 1rem;
+}
+
+.linkedin-instructions {
+    background: rgba(59, 130, 246, 0.14);
+    border: 1px solid rgba(96, 165, 250, 0.4);
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.linkedin-instructions ol {
+    margin: 0.35rem 0 0 1rem;
+}
+
+.linkedin-paste-area {
+    width: 100%;
+    min-height: 230px;
+}
+
+.linkedin-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.7rem;
+    padding: 0.9rem 1rem 1rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.linkedin-modal-footer-between {
+    justify-content: space-between;
+}
+
+.linkedin-parse-error {
+    margin-top: 0.55rem;
+    color: #fca5a5;
+    font-size: 0.92rem;
+}
+
  body {
     font-family: 'Inter', sans-serif;
      background-image: url('back90.avif');

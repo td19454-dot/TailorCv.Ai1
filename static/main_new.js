@@ -321,6 +321,11 @@ async function handleATSAnalysis() {
     const analyzeBtn = document.getElementById('analyze-btn');
     const resumeFile = getResumeFileForUpload();
 
+    if (!isUserLoggedIn()) {
+        redirectToLogin();
+        return;
+    }
+
     if (!resumeFile || !jdInput.value.trim()) {
         alert('Please provide both a resume and a job description');
         return;
@@ -386,7 +391,7 @@ async function handleATSAnalysis() {
         }
         const message = (error.message || '').toLowerCase();
         if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
-            showLoginRequiredModal();
+            redirectToLogin();
         } else {
             alert('Error analyzing resume: ' + error.message);
         }
@@ -729,6 +734,15 @@ function triggerPdfDownload(pdfUrl, filename) {
 function redirectToLogin() {
     const nextUrl = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
     window.location.href = `/login?next=${nextUrl}`;
+}
+
+function isUserLoggedIn() {
+    try {
+        const user = JSON.parse(localStorage.getItem('tailorcv_user') || 'null');
+        return !!(user && (user.email || user.name));
+    } catch (error) {
+        return false;
+    }
 }
 
 // Handle Resume Optimization
