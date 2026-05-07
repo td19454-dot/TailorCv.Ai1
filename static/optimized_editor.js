@@ -11,6 +11,9 @@
     let currentHtml = "";
     let currentZoom = 1;
     let baseFitScale = 1;
+    let templateId = 1;
+    let intrinsicContentWidth = null;
+    let baseFontsCaptured = false;
 
     function setStatus(message) {
         if (statusEl) statusEl.textContent = message || "";
@@ -59,20 +62,51 @@ document.addEventListener("DOMContentLoaded", function () {
         const body = doc.body;
         if (!root || !body) return 1;
 
-        const contentWidth = Math.max(root.scrollWidth, body.scrollWidth, 1);
+        const isTemplateOneToSix = templateId >= 1 && templateId <= 6;
+        const contentWidth = isTemplateOneToSix
+            ? Math.max(root.scrollWidth, body.scrollWidth, 1)
+            : Math.max(intrinsicContentWidth || root.scrollWidth || body.scrollWidth || 1, 1);
         const availableWidth = Math.max(320, previewWrap.clientWidth - 16);
         const fitByWidth = availableWidth / contentWidth;
         return Math.min(fitByWidth, 1);
+    }
+
+    function captureBaseFontsForTemplate7Plus(doc) {
+        if (baseFontsCaptured || !doc || !doc.body) return;
+        const selectors = "h1,h2,h3,h4,h5,h6,p,li,span,a,strong,em,b,i,small,label,td,th";
+        const nodes = doc.body.querySelectorAll(selectors);
+        nodes.forEach((node) => {
+            const computed = doc.defaultView ? doc.defaultView.getComputedStyle(node) : null;
+            if (!computed) return;
+            const value = parseFloat(computed.fontSize || "");
+            if (!Number.isFinite(value) || value <= 0) return;
+            node.setAttribute("data-tailorcv-base-font", String(value));
+        });
+        baseFontsCaptured = true;
+    }
+
+    function applyFontScaleForTemplate7Plus(doc, scale) {
+        if (!doc || !doc.body) return;
+        const selectors = "h1,h2,h3,h4,h5,h6,p,li,span,a,strong,em,b,i,small,label,td,th";
+        const nodes = doc.body.querySelectorAll(selectors);
+        nodes.forEach((node) => {
+            const base = parseFloat(node.getAttribute("data-tailorcv-base-font") || "");
+            if (!Number.isFinite(base) || base <= 0) return;
+            const next = Math.max(8, Math.min(72, base * scale));
+            node.style.setProperty("font-size", `${next}px`, "important");
+        });
     }
 
     function applyPreviewZoom() {
         if (!frame || !frame.contentDocument) return;
         const doc = frame.contentDocument;
         baseFitScale = calculateBaseFitScale();
-        const effectiveScale = Math.max(0.3, Math.min(2.4, baseFitScale));
+        const isTemplateOneToSix = templateId >= 1 && templateId <= 6;
+        const effectiveScale = Math.max(0.3, Math.min(2.4, baseFitScale * currentZoom));
+        const fitOnlyScale = Math.max(0.3, Math.min(2.4, baseFitScale));
         let fitStyleTag = doc.getElementById("tailorcv-preview-fit-style");
 
-        const fitCss = `
+        const fitCss = isTemplateOneToSix ? `
 html {
   overflow-x: hidden !important;
   overflow-y: auto !important;
@@ -80,9 +114,22 @@ html {
 body {
   overflow-x: hidden !important;
   overflow-y: auto !important;
-  transform: scale(${Math.max(0.3, Math.min(2.4, baseFitScale * currentZoom))}) !important;
+  transform: scale(${effectiveScale}) !important;
   transform-origin: top left !important;
-  width: ${100 / Math.max(0.3, Math.min(2.4, baseFitScale * currentZoom))}% !important;
+  width: ${100 / effectiveScale}% !important;
+  margin: 0 !important;
+}
+` : `
+html {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
+body {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  transform: scale(${Math.max(0.3, Math.min(2.4, fitOnlyScale * currentZoom))}) !important;
+  transform-origin: top left !important;
+  width: ${100 / fitOnlyScale}% !important;
   margin: 0 !important;
 }
 `;
@@ -94,6 +141,10 @@ body {
         }
 
         fitStyleTag.textContent = fitCss;
+        if (!isTemplateOneToSix) {
+            captureBaseFontsForTemplate7Plus(doc);
+            applyFontScaleForTemplate7Plus(doc, currentZoom);
+        }
         frame.style.height = `${Math.round(getAvailablePreviewHeight())}px`;
     }
 
@@ -123,9 +174,7 @@ body {
         // Remove preview-only scaling style so PDF uses normal template dimensions.
         const previewFitStyle = exportDoc.querySelector("#tailorcv-preview-fit-style");
         if (previewFitStyle) previewFitStyle.remove();
-        const userFontStyle = exportDoc.querySelector("#tailorcv-user-font-style");
-        if (userFontStyle) userFontStyle.remove();
-
+        const isTemplateOneToSix = templateId >= 1 && templateId <= 6;
         // Remove edit-mode artifacts from export.
         exportDoc.querySelectorAll("script").forEach((script) => script.remove());
         if (exportBody) {
@@ -139,19 +188,20 @@ body {
             exportBody.style.removeProperty("margin");
         }
 
-        // Apply the chosen size directly to export HTML so downloaded PDF matches preview controls.
-        const exportScale = Math.max(0.6, Math.min(1.8, currentZoom));
-        let exportScaleStyle = exportDoc.querySelector("#tailorcv-export-scale-style");
-        if (!exportScaleStyle) {
-            exportScaleStyle = exportDoc.ownerDocument
-                ? exportDoc.ownerDocument.createElement("style")
-                : null;
-        }
-        if (!exportScaleStyle) {
-            exportScaleStyle = sourceDoc.createElement("style");
-        }
-        exportScaleStyle.id = "tailorcv-export-scale-style";
-        exportScaleStyle.textContent = `
+        if (isTemplateOneToSix) {
+            // Keep legacy export behavior for templates 1-6.
+            const exportScale = Math.max(0.6, Math.min(1.8, currentZoom));
+            let exportScaleStyle = exportDoc.querySelector("#tailorcv-export-scale-style");
+            if (!exportScaleStyle) {
+                exportScaleStyle = exportDoc.ownerDocument
+                    ? exportDoc.ownerDocument.createElement("style")
+                    : null;
+            }
+            if (!exportScaleStyle) {
+                exportScaleStyle = sourceDoc.createElement("style");
+            }
+            exportScaleStyle.id = "tailorcv-export-scale-style";
+            exportScaleStyle.textContent = `
 html { overflow: hidden !important; }
 body {
   transform: scale(${exportScale}) !important;
@@ -159,8 +209,9 @@ body {
   width: ${100 / exportScale}% !important;
 }
 `;
-        const exportHead = exportDoc.querySelector("head");
-        if (exportHead) exportHead.appendChild(exportScaleStyle);
+            const exportHead = exportDoc.querySelector("head");
+            if (exportHead) exportHead.appendChild(exportScaleStyle);
+        }
 
         const html = "<!DOCTYPE html>\n" + exportDoc.outerHTML;
         setStatus("Generating edited PDF...");
@@ -171,7 +222,7 @@ body {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     html,
-                    pdf_scale: 1
+                    pdf_scale: isTemplateOneToSix ? 1 : Math.max(0.6, Math.min(1.8, currentZoom))
                 })
             });
             if (!response.ok) {
@@ -201,9 +252,19 @@ body {
             setStatus("No optimized resume found. Please optimize first.");
             return;
         }
+        templateId = Number(payload.template_id || 1);
+        baseFontsCaptured = false;
         currentHtml = addEditingOverlay(payload.html);
         frame.srcdoc = currentHtml;
         frame.addEventListener("load", function () {
+            if (!(templateId >= 1 && templateId <= 6) && frame.contentDocument) {
+                const doc = frame.contentDocument;
+                intrinsicContentWidth = Math.max(
+                    (doc.documentElement && doc.documentElement.scrollWidth) || 0,
+                    (doc.body && doc.body.scrollWidth) || 0,
+                    1
+                );
+            }
             applyPreviewZoom();
             updateFontSizeBadge();
             setStatus("Tip: Click inside resume preview and edit text live.");
