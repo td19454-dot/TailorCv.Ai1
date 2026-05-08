@@ -21,6 +21,198 @@ class LinkedInImportRequest(BaseModel):
     url: str
 
 
+def _to_text(value) -> str:
+    return "" if value is None else str(value).strip()
+
+
+def _pick_first(payload: dict, keys: list[str]) -> str:
+    for key in keys:
+        value = payload.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return ""
+
+
+def _extract_linkedin_fallback(profile_raw: dict, linkedin_url: str) -> dict:
+    def score_profile_shape(node: dict) -> int:
+        if not isinstance(node, dict):
+            return -1
+        score = 0
+        keyset = {str(k).lower() for k in node.keys()}
+        for hint in ("full_name", "fullname", "first_name", "firstname", "headline", "summary", "about", "experience", "experiences", "education", "skills"):
+            if hint in keyset:
+                score += 2
+        if any(isinstance(node.get(k), list) for k in ("experience", "experiences", "education", "skills", "projects")):
+            score += 3
+        return score
+
+    def best_profile_node(root: dict) -> dict:
+        best = root if isinstance(root, dict) else {}
+        best_score = score_profile_shape(best)
+        stack = [root] if isinstance(root, dict) else []
+        while stack:
+            cur = stack.pop()
+            if not isinstance(cur, dict):
+                continue
+            cur_score = score_profile_shape(cur)
+            if cur_score > best_score:
+                best = cur
+                best_score = cur_score
+            for value in cur.values():
+                if isinstance(value, dict):
+                    stack.append(value)
+                elif isinstance(value, list):
+                    for item in value:
+                        if isinstance(item, dict):
+                            stack.append(item)
+        return best if isinstance(best, dict) else {}
+
+    source_root = profile_raw if isinstance(profile_raw, dict) else {}
+    source = best_profile_node(source_root)
+
+    full_name = _pick_first(source, ["full_name", "fullName", "name"])
+    first_name = _pick_first(source, ["first_name", "firstName"])
+    last_name = _pick_first(source, ["last_name", "lastName"])
+    if not full_name:
+        full_name = f"{first_name} {last_name}".strip()
+
+    headline = _pick_first(source, ["headline", "occupation", "title"])
+    location = _pick_first(source, ["location", "city", "geo"])
+    summary = _pick_first(source, ["summary", "about", "bio", "description"])
+    email = _pick_first(source, ["email", "emailAddress"])
+    phone = _pick_first(source, ["phone", "phoneNumber"])
+
+    experience_raw = source.get("experiences") or source.get("experience") or []
+    if not isinstance(experience_raw, list):
+        experience_raw = []
+    experience = []
+    for exp in experience_raw:
+        if not isinstance(exp, dict):
+            continue
+        start = _pick_first(exp, ["start_date", "startDate", "starts_at", "from"])
+        end = _pick_first(exp, ["end_date", "endDate", "ends_at", "to"])
+        if not end and bool(exp.get("is_current")):
+            end = "Present"
+        experience.append(
+            {
+                "title": _pick_first(exp, ["title", "position"]),
+                "company": _pick_first(exp, ["company", "company_name", "companyName"]),
+                "location": _pick_first(exp, ["location"]),
+                "start_date": start,
+                "end_date": end,
+                "description": _pick_first(exp, ["description", "summary"]),
+            }
+        )
+    experience = [e for e in experience if any(_to_text(v) for v in e.values())]
+
+    education_raw = source.get("education") or source.get("educations") or []
+    if not isinstance(education_raw, list):
+        education_raw = []
+    education = []
+    for edu in education_raw:
+        if not isinstance(edu, dict):
+            continue
+        education.append(
+            {
+                "degree": _pick_first(edu, ["degree"]),
+                "institution": _pick_first(edu, ["institution", "school", "school_name", "schoolName"]),
+                "field": _pick_first(edu, ["field", "field_of_study", "fieldOfStudy"]),
+                "start_year": _pick_first(edu, ["start_year", "startYear"]),
+                "end_year": _pick_first(edu, ["end_year", "endYear"]),
+            }
+        )
+    education = [e for e in education if any(_to_text(v) for v in e.values())]
+
+    skills_raw = source.get("skills") or []
+    skills = []
+    if isinstance(skills_raw, list):
+        for skill in skills_raw:
+            if isinstance(skill, str) and skill.strip():
+                skills.append(skill.strip())
+            elif isinstance(skill, dict):
+                name = _pick_first(skill, ["name", "skill"])
+                if name:
+                    skills.append(name)
+
+    certs_raw = source.get("certifications") or []
+    certifications = []
+    if isinstance(certs_raw, list):
+        for cert in certs_raw:
+            if not isinstance(cert, dict):
+                continue
+            certifications.append(
+                {
+                    "name": _pick_first(cert, ["name", "title"]),
+                    "issuer": _pick_first(cert, ["issuer", "organization", "authority"]),
+                    "date": _pick_first(cert, ["date", "year"]),
+                }
+            )
+    certifications = [c for c in certifications if any(_to_text(v) for v in c.values())]
+
+    langs_raw = source.get("languages") or []
+    languages = []
+    if isinstance(langs_raw, list):
+        for lang in langs_raw:
+            if isinstance(lang, str) and lang.strip():
+                languages.append(lang.strip())
+            elif isinstance(lang, dict):
+                name = _pick_first(lang, ["name", "language"])
+                if name:
+                    languages.append(name)
+
+    projects_raw = source.get("projects") or []
+    projects = []
+    if isinstance(projects_raw, list):
+        for proj in projects_raw:
+            if not isinstance(proj, dict):
+                continue
+            projects.append(
+                {
+                    "name": _pick_first(proj, ["name", "title"]),
+                    "description": _pick_first(proj, ["description", "summary"]),
+                    "url": _pick_first(proj, ["url", "link"]),
+                }
+            )
+    projects = [p for p in projects if any(_to_text(v) for v in p.values())]
+
+    return {
+        "full_name": full_name,
+        "headline": headline,
+        "location": location,
+        "email": email,
+        "phone": phone,
+        "summary": summary,
+        "experience": experience,
+        "education": education,
+        "skills": skills,
+        "certifications": certifications,
+        "languages": languages,
+        "projects": projects,
+        "linkedin_url": linkedin_url,
+    }
+
+
+def _merge_ai_with_fallback(ai_data: dict, fallback_data: dict) -> dict:
+    if not isinstance(ai_data, dict):
+        return fallback_data
+
+    merged = dict(fallback_data)
+    for key, fallback_value in fallback_data.items():
+        ai_value = ai_data.get(key)
+        if isinstance(fallback_value, list):
+            merged[key] = ai_value if isinstance(ai_value, list) and len(ai_value) > 0 else fallback_value
+        elif isinstance(fallback_value, str):
+            merged[key] = ai_value if isinstance(ai_value, str) and ai_value.strip() else fallback_value
+        else:
+            merged[key] = ai_value if ai_value is not None else fallback_value
+
+    for key, ai_value in ai_data.items():
+        if key not in merged and ai_value is not None:
+            merged[key] = ai_value
+
+    return merged
+
+
 def _extract_json_block(raw: str) -> str:
     text = (raw or "").strip()
     if text.startswith("```"):
@@ -239,9 +431,9 @@ async def import_linkedin(body: LinkedInImportRequest):
     try:
         async with httpx.AsyncClient(timeout=15.0) as http:
             resp = await http.get(
-                "https://linkedin-profile-data4.p.rapidapi.com/profile",
+                "https://linkedin-data-api.p.rapidapi.com/get-profile-data-by-url",
                 headers={
-                    "x-rapidapi-host": "linkedin-profile-data4.p.rapidapi.com",
+                    "x-rapidapi-host": "linkedin-data-api.p.rapidapi.com",
                     "x-rapidapi-key": rapidapi_key,
                 },
                 params={"url": linkedin_url},
@@ -262,13 +454,21 @@ async def import_linkedin(body: LinkedInImportRequest):
         raise HTTPException(status_code=500, detail=f"Failed to fetch profile: {exc}")
 
     try:
+        fallback = _extract_linkedin_fallback(profile_raw, linkedin_url)
         payload_for_ai = profile_raw.get("data") if isinstance(profile_raw, dict) and isinstance(profile_raw.get("data"), (dict, list)) else profile_raw
         raw_for_ai = json.dumps(payload_for_ai, ensure_ascii=False, indent=2)
         parsed = _parse_cv_with_openai(api_key, raw_for_ai[:50000])
-        if isinstance(parsed, dict):
-            parsed.setdefault("linkedin_url", linkedin_url)
-        return {"success": True, "data": parsed}
+        merged = _merge_ai_with_fallback(parsed, fallback)
+        merged.setdefault("linkedin_url", linkedin_url)
+        return {"success": True, "data": merged}
     except json.JSONDecodeError as exc:
         raise HTTPException(status_code=500, detail=f"Could not structure profile data: {exc}")
+    except HTTPException:
+        raise
     except Exception as exc:
+        fallback = _extract_linkedin_fallback(profile_raw, linkedin_url)
+        if any(_to_text(fallback.get(k)) for k in ("full_name", "headline", "summary")) or any(
+            isinstance(fallback.get(k), list) and len(fallback.get(k)) > 0 for k in ("experience", "education", "skills", "projects")
+        ):
+            return {"success": True, "data": fallback}
         raise HTTPException(status_code=500, detail=f"Server error: {exc}")

@@ -721,6 +721,19 @@ async function updatePreview() {
             }
         }
 
+        function showImportBanner(message, isError) {
+            const host = document.querySelector(".modify-cv-main");
+            if (!host) return;
+            const existing = document.getElementById("linkedin-import-banner");
+            if (existing) existing.remove();
+            const banner = document.createElement("div");
+            banner.id = "linkedin-import-banner";
+            banner.className = `form-card ${isError ? "linkedin-import-banner-error" : "linkedin-import-banner-success"}`;
+            banner.style.marginBottom = "12px";
+            banner.textContent = message;
+            host.insertBefore(banner, host.firstChild);
+        }
+
         const openModal = () => {
             overlay.style.display = "flex";
         };
@@ -769,7 +782,11 @@ async function updatePreview() {
 
                 await applyLinkedInData(result.data);
                 closeModal();
-                alert("CV imported from LinkedIn! Please review and edit any missing details.");
+                const expCount = Array.isArray(cvData.experience) ? cvData.experience.length : 0;
+                const eduCount = Array.isArray(cvData.education) ? cvData.education.length : 0;
+                const projCount = Array.isArray(cvData.projects) ? cvData.projects.length : 0;
+                const skillCount = Array.isArray(cvData.skills) ? cvData.skills.length : 0;
+                showImportBanner(`CV imported from LinkedIn. Added ${expCount} experience, ${eduCount} education, ${projCount} projects, ${skillCount} skills.`, false);
             } catch (error) {
                 loadingDiv.style.display = "none";
                 footer.style.display = "flex";
@@ -777,6 +794,7 @@ async function updatePreview() {
                 submitBtn.disabled = false;
                 errorDiv.textContent = error?.message || "Import failed. Please try again.";
                 errorDiv.style.display = "block";
+                showImportBanner(errorDiv.textContent, true);
             }
         });
     }
