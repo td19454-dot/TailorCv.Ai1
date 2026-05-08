@@ -8,7 +8,7 @@
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="stylesheet" href="/static/header-footer.css">
-    <link rel="stylesheet" href="/static/optimized_editor.css?v=5">
+    <link rel="stylesheet" href="/static/optimized_editor.css?v=13">
 </head>
 <body>
     <header class="navbar">
@@ -42,29 +42,36 @@
     </header>
 
     <main class="editor-page">
-        <section class="editor-top">
-            <h1>Optimized Resume Editor</h1>
-            <p>Edit live preview directly, adjust font size, then download as PDF.</p>
-        </section>
+        <aside class="editor-sidebar">
+            <section class="editor-top">
+                <h1>One Page. More Impact.</h1>
+                <p>Fit your resume into a single professional page with smart optimization that keeps it clean, readable, and impactful.</p>
+            </section>
 
-        <section class="editor-controls">
-            <div class="font-group">
-                <button class="font-btn" id="font-decrease-btn" type="button">A-</button>
-                <button class="font-btn" id="font-reset-btn" type="button">A</button>
-                <button class="font-btn" id="font-increase-btn" type="button">A+</button>
-                <span class="font-size-badge" id="font-size-badge">100%</span>
-            </div>
-            <div class="action-group">
-                <button id="download-edited-btn" class="primary-btn">Download Edited PDF</button>
-                <a href="/solutions" class="secondary-btn">Back to Solutions</a>
-            </div>
-        </section>
+            <section class="editor-controls">
+                <div class="control-title">Font Size</div>
+                <div class="font-group">
+                    <button class="font-btn" id="font-decrease-btn" type="button">A-</button>
+                    <button class="font-btn" id="font-reset-btn" type="button">A</button>
+                    <button class="font-btn" id="font-increase-btn" type="button">A+</button>
+                    <span class="font-size-badge" id="font-size-badge">100%</span>
+                    <span class="page-count-badge" id="page-index-badge">Current Pages: 1</span>
+                </div>
+            </section>
+
+            <section class="editor-controls actions-card">
+                <div class="action-group">
+                    <button id="download-edited-btn" class="primary-btn">Download Edited PDF</button>
+                    <a href="/solutions" class="secondary-btn">Back to Solutions</a>
+                </div>
+            </section>
+
+            <p id="editor-status" class="editor-status" aria-live="polite"></p>
+        </aside>
 
         <section class="editor-preview-wrap">
             <iframe id="resume-preview-frame" title="Live resume preview"></iframe>
         </section>
-
-        <p id="editor-status" class="editor-status" aria-live="polite"></p>
     </main>
 
     <footer class="footer">
@@ -93,6 +100,6 @@
 
     <script src="/static/auth_nav.js"></script>
     <script src="/static/mobile_nav.js"></script>
-    <script src="/static/optimized_editor.js?v=22"></script>
+    <script src="/static/optimized_editor.js?v=61"></script>
 </body>
 </html>

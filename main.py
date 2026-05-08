@@ -2783,6 +2783,32 @@ async def download_html_pdf(request: Request):
             os.remove(pdf_path)
         raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
 
+
+@app.post("/api/estimate-html-pages")
+async def estimate_html_pages(request: Request):
+    """Estimate rendered PDF pages for edited resume HTML."""
+    require_logged_in(request)
+    payload = await request.json()
+    html = str(payload.get("html", "")).strip()
+    raw_scale = payload.get("pdf_scale", 1)
+    try:
+        pdf_scale = float(raw_scale)
+    except (TypeError, ValueError):
+        pdf_scale = 1.0
+    pdf_scale = max(0.6, min(1.8, pdf_scale))
+    if not html:
+        raise HTTPException(status_code=400, detail="Missing HTML payload")
+
+    try:
+        from weasyprint import HTML
+        def _count_pages() -> int:
+            doc = HTML(string=html, base_url=BASE_DIR).render(zoom=pdf_scale)
+            return max(1, len(getattr(doc, "pages", []) or []))
+        pages = await asyncio.to_thread(_count_pages)
+        return {"success": True, "pages": pages}
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to estimate pages: {exc}")
+
 @app.post("/get-ats-score")
 async def get_score(request: Request, jd_string: str, file: UploadFile = File(...)):
     """Upload a resume PDF file and JD"""

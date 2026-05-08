@@ -7,13 +7,27 @@
     const fontResetBtn = document.getElementById("font-reset-btn");
     const fontIncreaseBtn = document.getElementById("font-increase-btn");
     const fontSizeBadge = document.getElementById("font-size-badge");
+    const pageIndexBadge = document.getElementById("page-index-badge");
     const previewWrap = document.querySelector(".editor-preview-wrap");
     let currentHtml = "";
     let currentZoom = 1;
     let baseFitScale = 1;
     let templateId = 1;
     let intrinsicContentWidth = null;
+    let intrinsicContentHeight = null;
     let baseFontsCaptured = false;
+    let estimatedPages = 1;
+    let currentPage = 1;
+    let lastPageHeightDoc = 1;
+    let estimateTimer = null;
+    let estimateRequestId = 0;
+    let serverEstimatedPages = null;
+
+    function updatePageBadge() {
+        if (pageIndexBadge) {
+            pageIndexBadge.textContent = `Current Pages: ${estimatedPages}`;
+        }
+    }
 
     function setStatus(message) {
         if (statusEl) statusEl.textContent = message || "";
@@ -49,10 +63,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function getAvailablePreviewHeight() {
-        if (!previewWrap) return Math.max(500, window.innerHeight * 0.65);
+        if (!previewWrap) return Math.max(640, window.innerHeight * 0.82);
         const rect = previewWrap.getBoundingClientRect();
-        const bottomGap = 28;
-        return Math.max(500, window.innerHeight - rect.top - bottomGap);
+        const bottomGap = 10;
+        return Math.max(640, window.innerHeight - rect.top - bottomGap);
     }
 
     function calculateBaseFitScale() {
@@ -63,12 +77,35 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!root || !body) return 1;
 
         const isTemplateOneToSix = templateId >= 1 && templateId <= 6;
-        const contentWidth = isTemplateOneToSix
-            ? Math.max(root.scrollWidth, body.scrollWidth, 1)
-            : Math.max(intrinsicContentWidth || root.scrollWidth || body.scrollWidth || 1, 1);
-        const availableWidth = Math.max(320, previewWrap.clientWidth - 16);
+        const rawWidth = Math.max(intrinsicContentWidth || root.scrollWidth || body.scrollWidth || 1, 1);
+        const clientWidthRef = Math.max(root.clientWidth || 0, body.clientWidth || 0, 1);
+        // Some templates (notably 1-6) can report very large scrollWidth because of
+        // long inline runs, which makes preview text tiny. Clamp pathological width.
+        const widthSpikeRatio = rawWidth / clientWidthRef;
+        const contentWidth = widthSpikeRatio > 1.35
+            ? Math.max(clientWidthRef * 1.08, 1)
+            : rawWidth;
+        const contentHeight = Math.max(intrinsicContentHeight || root.scrollHeight || body.scrollHeight || 1, 1);
+        const safeSideGutter = (templateId >= 1 && templateId <= 6) ? 72 : 24;
+        const availableWidth = Math.max(320, previewWrap.clientWidth - safeSideGutter);
+        const availableHeight = Math.max(420, getAvailablePreviewHeight() - 16);
         const fitByWidth = availableWidth / contentWidth;
-        return Math.min(fitByWidth, 1);
+        const fitByHeight = availableHeight / contentHeight;
+        // Bias toward readability: allow slight vertical overflow rather than over-shrinking.
+        const easedHeightFit = fitByHeight * 1.22;
+        return Math.min(fitByWidth, easedHeightFit, 1);
+    }
+
+    function captureIntrinsicMetrics(doc) {
+        if (!doc || !doc.documentElement || !doc.body) return;
+        const root = doc.documentElement;
+        const body = doc.body;
+        const styleTag = doc.getElementById("tailorcv-preview-fit-style");
+        const prevCss = styleTag ? styleTag.textContent : null;
+        if (styleTag) styleTag.textContent = "";
+        intrinsicContentWidth = Math.max(root.scrollWidth || 0, body.scrollWidth || 0, 1);
+        intrinsicContentHeight = Math.max(root.scrollHeight || 0, body.scrollHeight || 0, 1);
+        if (styleTag && prevCss != null) styleTag.textContent = prevCss;
     }
 
     function captureBaseFontsForTemplate7Plus(doc) {
@@ -97,40 +134,114 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    function getCssPxPerMm(doc) {
+        if (!doc || !doc.body) return 96 / 25.4;
+        const probe = doc.createElement("div");
+        probe.style.position = "absolute";
+        probe.style.left = "-99999px";
+        probe.style.top = "0";
+        probe.style.width = "100mm";
+        probe.style.height = "1px";
+        probe.style.visibility = "hidden";
+        probe.style.pointerEvents = "none";
+        doc.body.appendChild(probe);
+        const px = probe.getBoundingClientRect().width;
+        probe.remove();
+        return (Number.isFinite(px) && px > 0) ? (px / 100) : (96 / 25.4);
+    }
+
+    function renderPageGuides(doc, pageHeightDoc, totalHeightDoc) {
+        if (!doc || !doc.body) return;
+        const old = doc.getElementById("tailorcv-page-guides");
+        if (old) old.remove();
+        if (!Number.isFinite(pageHeightDoc) || pageHeightDoc <= 0) return;
+        if (!Number.isFinite(totalHeightDoc) || totalHeightDoc <= pageHeightDoc) return;
+
+        const guideHost = doc.createElement("div");
+        guideHost.id = "tailorcv-page-guides";
+        guideHost.style.position = "absolute";
+        guideHost.style.left = "0";
+        guideHost.style.top = "0";
+        guideHost.style.width = "100%";
+        guideHost.style.height = `${Math.ceil(totalHeightDoc)}px`;
+        guideHost.style.minHeight = `${Math.ceil(totalHeightDoc)}px`;
+        guideHost.style.pointerEvents = "none";
+        guideHost.style.zIndex = "2147483646";
+
+        const breaks = Math.max(0, Math.ceil(totalHeightDoc / pageHeightDoc) - 1);
+        for (let i = 1; i <= breaks; i += 1) {
+            const y = i * pageHeightDoc;
+            const line = doc.createElement("div");
+            line.style.position = "absolute";
+            line.style.left = "0";
+            line.style.right = "0";
+            line.style.top = `${y}px`;
+            line.style.borderTop = "3px dotted rgba(29, 78, 216, 0.98)";
+            line.style.boxShadow = "0 0 8px rgba(29,78,216,0.28)";
+            guideHost.appendChild(line);
+
+            const label = doc.createElement("div");
+            label.textContent = `Page ${i + 1} starts`;
+            label.style.position = "absolute";
+            label.style.left = "50%";
+            label.style.transform = "translateX(-50%)";
+            label.style.top = `${y - 24}px`;
+            label.style.padding = "3px 10px";
+            label.style.borderRadius = "999px";
+            label.style.background = "rgba(15, 23, 42, 0.9)";
+            label.style.border = "1px solid rgba(29,78,216,0.95)";
+            label.style.color = "#dbeafe";
+            label.style.fontSize = "12px";
+            label.style.fontWeight = "700";
+            label.style.letterSpacing = "0.02em";
+            label.style.boxShadow = "0 2px 8px rgba(2,6,23,0.35)";
+            label.style.fontFamily = "Inter, sans-serif";
+            guideHost.appendChild(label);
+        }
+
+        const currentPosition = doc.defaultView ? doc.defaultView.getComputedStyle(doc.body).position : "";
+        if (!currentPosition || currentPosition === "static") {
+            doc.body.style.position = "relative";
+        }
+        doc.body.appendChild(guideHost);
+    }
+
     function applyPreviewZoom() {
         if (!frame || !frame.contentDocument) return;
         const doc = frame.contentDocument;
+        const root = doc.documentElement;
+        const body = doc.body;
         baseFitScale = calculateBaseFitScale();
         const isTemplateOneToSix = templateId >= 1 && templateId <= 6;
         const effectiveScale = Math.max(0.3, Math.min(2.4, baseFitScale * currentZoom));
         const fitOnlyScale = Math.max(0.3, Math.min(2.4, baseFitScale));
         let fitStyleTag = doc.getElementById("tailorcv-preview-fit-style");
 
-        const fitCss = isTemplateOneToSix ? `
+const fitCss = `
 html {
+  background: transparent !important;
+  display: flex !important;
+  justify-content: center !important;
+  padding: ${isTemplateOneToSix ? "14px 28px" : "10px 16px"} !important;
+  box-sizing: border-box !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;
+  scrollbar-width: none !important;
 }
+html::-webkit-scrollbar { display: none !important; }
 body {
   overflow-x: hidden !important;
   overflow-y: auto !important;
-  transform: scale(${effectiveScale}) !important;
-  transform-origin: top left !important;
-  width: ${100 / effectiveScale}% !important;
-  margin: 0 !important;
-}
-` : `
-html {
-  overflow-x: auto !important;
-  overflow-y: auto !important;
-}
-body {
-  overflow-x: auto !important;
-  overflow-y: auto !important;
+  background: transparent !important;
+  color: inherit !important;
   transform: scale(${Math.max(0.3, Math.min(2.4, fitOnlyScale * currentZoom))}) !important;
-  transform-origin: top left !important;
+  transform-origin: top center !important;
   width: ${100 / fitOnlyScale}% !important;
-  margin: 0 !important;
+  max-width: calc(100% - ${isTemplateOneToSix ? "40px" : "24px"}) !important;
+  margin: 12px auto !important;
+  border-radius: 10px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2) !important;
 }
 `;
 
@@ -141,11 +252,57 @@ body {
         }
 
         fitStyleTag.textContent = fitCss;
+        if (previewWrap) {
+            previewWrap.style.background = "linear-gradient(180deg, rgba(30, 41, 59, 0.45), rgba(15, 23, 42, 0.3))";
+        }
+        if (frame) {
+            frame.style.background = "rgba(226, 232, 240, 0.15)";
+        }
         if (!isTemplateOneToSix) {
             captureBaseFontsForTemplate7Plus(doc);
             applyFontScaleForTemplate7Plus(doc, currentZoom);
         }
+        captureIntrinsicMetrics(doc);
+
+        if (root && body) {
+            const contentWidthDoc = Math.max(intrinsicContentWidth || root.scrollWidth || body.scrollWidth || 1, 1);
+            const contentHeightDoc = Math.max(intrinsicContentHeight || root.scrollHeight || body.scrollHeight || 1, 1);
+            // Prefer template-defined page height when present (more accurate than ratio estimates).
+            let pageHeightDoc = 0;
+            const pageEl = body.querySelector(".page");
+            if (pageEl && doc.defaultView) {
+                const styles = doc.defaultView.getComputedStyle(pageEl);
+                const minHeightPx = parseFloat(styles.minHeight || "");
+                const heightPx = parseFloat(styles.height || "");
+                const marginTopPx = parseFloat(styles.marginTop || "") || 0;
+                const marginBottomPx = parseFloat(styles.marginBottom || "") || 0;
+                if (Number.isFinite(minHeightPx) && minHeightPx > 0) {
+                    pageHeightDoc = minHeightPx + marginTopPx + marginBottomPx;
+                } else if (Number.isFinite(heightPx) && heightPx > 0 && styles.height !== "auto") {
+                    pageHeightDoc = heightPx + marginTopPx + marginBottomPx;
+                }
+            }
+            if (!pageHeightDoc || !Number.isFinite(pageHeightDoc)) {
+                // Fallback: true A4 page height (297mm) in CSS px for templates without .page.
+                pageHeightDoc = Math.max(400, 297 * getCssPxPerMm(doc));
+            }
+            const localEstimatedPages = Math.max(1, Math.ceil(contentHeightDoc / pageHeightDoc));
+            // Keep badge aligned with what user sees in preview.
+            // Server estimate is useful for export, but can overcount in live view.
+            const effectivePages = localEstimatedPages;
+            const adjustedPageHeight = Math.max(1, pageHeightDoc * 0.96);
+            const effectivePageHeight = effectivePages > 1
+                ? Math.max(adjustedPageHeight, Math.max(1, contentHeightDoc / effectivePages))
+                : adjustedPageHeight;
+            lastPageHeightDoc = effectivePageHeight;
+            estimatedPages = effectivePages;
+            currentPage = Math.min(currentPage, estimatedPages);
+            renderPageGuides(doc, effectivePageHeight, contentHeightDoc);
+        }
+
         frame.style.height = `${Math.round(getAvailablePreviewHeight())}px`;
+        updatePageBadge();
+        schedulePageEstimate();
     }
 
     function changeFontScale(delta) {
@@ -162,6 +319,87 @@ body {
         setStatus("Font size reset to 100%.");
     }
 
+    function bindPageTracking() {
+        if (!frame || !frame.contentWindow) return;
+        const win = frame.contentWindow;
+        const onScroll = function () {
+            if (!lastPageHeightDoc) return;
+            const y = win.scrollY || win.pageYOffset || 0;
+            currentPage = Math.max(1, Math.min(estimatedPages, Math.floor(y / lastPageHeightDoc) + 1));
+            updatePageBadge();
+        };
+        win.addEventListener("scroll", onScroll, { passive: true });
+    }
+
+    function buildExportHtmlForEstimation() {
+        if (!frame || !frame.contentDocument) return "";
+        const sourceDoc = frame.contentDocument;
+        const exportDoc = sourceDoc.documentElement.cloneNode(true);
+        const exportBody = exportDoc.querySelector("body");
+        const previewFitStyle = exportDoc.querySelector("#tailorcv-preview-fit-style");
+        if (previewFitStyle) previewFitStyle.remove();
+        const pageGuides = exportDoc.querySelector("#tailorcv-page-guides");
+        if (pageGuides) pageGuides.remove();
+        exportDoc.querySelectorAll("script").forEach((script) => script.remove());
+        if (exportBody) {
+            exportBody.removeAttribute("contenteditable");
+            exportBody.removeAttribute("spellcheck");
+            exportBody.style.removeProperty("transform");
+            exportBody.style.removeProperty("transform-origin");
+            exportBody.style.removeProperty("width");
+            exportBody.style.removeProperty("max-width");
+            exportBody.style.removeProperty("overflow-x");
+            exportBody.style.removeProperty("overflow-y");
+            exportBody.style.removeProperty("margin");
+        }
+        return "<!DOCTYPE html>\n" + exportDoc.outerHTML;
+    }
+
+    async function refreshEstimatedPagesFromServer() {
+        const requestId = ++estimateRequestId;
+        const html = buildExportHtmlForEstimation();
+        if (!html) return;
+        try {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 2200);
+            const response = await fetch("/api/estimate-html-pages", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    html,
+                    pdf_scale: templateId >= 1 && templateId <= 6 ? 1 : Math.max(0.6, Math.min(1.8, currentZoom))
+                }),
+                signal: controller.signal
+            });
+            clearTimeout(timeout);
+            if (!response.ok) return;
+            if (requestId !== estimateRequestId) return;
+            const data = await response.json();
+            const pages = Number(data && data.pages);
+            if (!Number.isFinite(pages) || pages < 1) return;
+            const normalizedPages = Math.max(1, Math.ceil(pages));
+            const didChange = normalizedPages !== Math.max(1, Math.ceil(Number(serverEstimatedPages || 0)));
+            serverEstimatedPages = pages;
+            // Use server value for badge reliability, but keep visual break positions local.
+            estimatedPages = normalizedPages;
+            currentPage = Math.min(currentPage, estimatedPages);
+            if (didChange) updatePageBadge();
+            else updatePageBadge();
+        } catch (error) {
+            // Keep local estimate on network/server issues.
+        }
+    }
+
+    function schedulePageEstimate() {
+        if (estimateTimer) {
+            clearTimeout(estimateTimer);
+            estimateTimer = null;
+        }
+        estimateTimer = setTimeout(() => {
+            refreshEstimatedPagesFromServer().catch(() => {});
+        }, 90);
+    }
+
     async function downloadEditedPdf() {
         if (!frame || !frame.contentDocument) {
             setStatus("Preview not ready.");
@@ -174,6 +412,8 @@ body {
         // Remove preview-only scaling style so PDF uses normal template dimensions.
         const previewFitStyle = exportDoc.querySelector("#tailorcv-preview-fit-style");
         if (previewFitStyle) previewFitStyle.remove();
+        const pageGuides = exportDoc.querySelector("#tailorcv-page-guides");
+        if (pageGuides) pageGuides.remove();
         const isTemplateOneToSix = templateId >= 1 && templateId <= 6;
         // Remove edit-mode artifacts from export.
         exportDoc.querySelectorAll("script").forEach((script) => script.remove());
@@ -267,6 +507,8 @@ body {
             }
             applyPreviewZoom();
             updateFontSizeBadge();
+            updatePageBadge();
+            bindPageTracking();
             setStatus("Tip: Click inside resume preview and edit text live.");
         });
         window.addEventListener("resize", applyPreviewZoom);
