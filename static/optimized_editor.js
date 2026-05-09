@@ -150,6 +150,10 @@ document.addEventListener("DOMContentLoaded", function () {
         return (Number.isFinite(px) && px > 0) ? (px / 100) : (96 / 25.4);
     }
 
+    function getRawCssPxPerMm(doc) {
+        return getCssPxPerMm(doc);
+    }
+
     function renderPageGuides(doc, pageHeightDoc, totalHeightDoc) {
         if (!doc || !doc.body) return;
         const old = doc.getElementById("tailorcv-page-guides");
@@ -211,11 +215,93 @@ document.addEventListener("DOMContentLoaded", function () {
         const doc = frame.contentDocument;
         const root = doc.documentElement;
         const body = doc.body;
+        if (!root || !body) return;
+
+        // STEP 1: strip fit CSS before measuring
+        let fitStyleTag = doc.getElementById("tailorcv-preview-fit-style");
+        const savedCss = fitStyleTag ? fitStyleTag.textContent : "";
+        if (fitStyleTag) fitStyleTag.textContent = "";
+
+        // STEP 2: temporarily disable contentEditable
+        const wasEditable = body.contentEditable === "true" || body.isContentEditable;
+        if (wasEditable) {
+            body.contentEditable = "false";
+            void body.offsetHeight;
+        }
+
+        // STEP 3: use scrollHeight/offsetHeight measurements in document pixels
+        let rawContentHeight = 0;
+        const primaryContainer = body.querySelector(
+            ".page, .resume-shell, .resume-container, .page-wrap, .cv-page"
+        );
+        if (primaryContainer) {
+            rawContentHeight = Math.max(
+                primaryContainer.scrollHeight || 0,
+                primaryContainer.offsetHeight || 0,
+                1
+            );
+        }
+        if (!rawContentHeight || rawContentHeight < 100) {
+            rawContentHeight = Math.max(
+                body.scrollHeight || 0,
+                body.offsetHeight || 0,
+                1
+            );
+        }
+        const rawContentWidth = Math.max(
+            root.scrollWidth || 0, body.scrollWidth || 0, 1
+        );
+
+        // STEP 4: restore contentEditable
+        if (wasEditable) {
+            body.contentEditable = "true";
+        }
+
+        // STEP 5: true px-per-mm
+        const pxPerMm = getRawCssPxPerMm(doc);
+
+        // STEP 6: page height in unscaled document pixels
+        let pageHeightPx = 0;
+        const pageEl = body.querySelector(".page");
+        if (pageEl) {
+            const candidate = Math.max(pageEl.scrollHeight || 0, pageEl.offsetHeight || 0);
+            if (candidate > 100) {
+                pageHeightPx = candidate;
+            }
+        }
+        if (!pageHeightPx || !Number.isFinite(pageHeightPx)) {
+            if (pageEl && doc.defaultView) {
+                const styles = doc.defaultView.getComputedStyle(pageEl);
+                const minH = parseFloat(styles.minHeight || "");
+                const h = parseFloat(styles.height || "");
+                const mt = parseFloat(styles.marginTop || "") || 0;
+                const mb = parseFloat(styles.marginBottom || "") || 0;
+                if (Number.isFinite(minH) && minH > 0) pageHeightPx = minH + mt + mb;
+                else if (Number.isFinite(h) && h > 0 && styles.height !== "auto")
+                    pageHeightPx = h + mt + mb;
+            }
+        }
+        if (!pageHeightPx || !Number.isFinite(pageHeightPx)) {
+            pageHeightPx = 297 * pxPerMm;
+        }
+
+        // STEP 7: 1% tolerance now that measurements are accurate
+        const OVERFLOW_TOLERANCE = 0.01;
+        const rawRatio = rawContentHeight / Math.max(1, pageHeightPx);
+        estimatedPages = Math.max(1,
+            rawRatio > 1 + OVERFLOW_TOLERANCE ? Math.ceil(rawRatio) : 1
+        );
+        lastPageHeightDoc = Math.max(1, pageHeightPx);
+        intrinsicContentWidth = rawContentWidth;
+        intrinsicContentHeight = rawContentHeight;
+
+        // STEP 8: restore fit CSS
+        if (fitStyleTag) fitStyleTag.textContent = savedCss;
+
         baseFitScale = calculateBaseFitScale();
         const isTemplateOneToSix = templateId >= 1 && templateId <= 6;
-        const effectiveScale = Math.max(0.3, Math.min(2.4, baseFitScale * currentZoom));
+        const isTemplateOneToSeven = templateId >= 1 && templateId <= 7;
         const fitOnlyScale = Math.max(0.3, Math.min(2.4, baseFitScale));
-        let fitStyleTag = doc.getElementById("tailorcv-preview-fit-style");
 
 const fitCss = `
 html {
@@ -232,13 +318,16 @@ html::-webkit-scrollbar { display: none !important; }
 body {
   overflow-x: hidden !important;
   overflow-y: auto !important;
-  background: transparent !important;
+  background: ${isTemplateOneToSeven ? "#ffffff" : "transparent"} !important;
   color: inherit !important;
   transform: scale(${Math.max(0.3, Math.min(2.4, fitOnlyScale * currentZoom))}) !important;
   transform-origin: top center !important;
   width: ${100 / fitOnlyScale}% !important;
   max-width: calc(100% - ${isTemplateOneToSix ? "40px" : "24px"}) !important;
+  min-width: 0 !important;
   margin: 12px auto !important;
+  left: auto !important;
+  right: auto !important;
   border-radius: 10px !important;
   box-sizing: border-box !important;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2) !important;
@@ -262,46 +351,11 @@ body {
             captureBaseFontsForTemplate7Plus(doc);
             applyFontScaleForTemplate7Plus(doc, currentZoom);
         }
-        captureIntrinsicMetrics(doc);
-
-        if (root && body) {
-            const contentWidthDoc = Math.max(intrinsicContentWidth || root.scrollWidth || body.scrollWidth || 1, 1);
-            const contentHeightDoc = Math.max(intrinsicContentHeight || root.scrollHeight || body.scrollHeight || 1, 1);
-            // Prefer template-defined page height when present (more accurate than ratio estimates).
-            let pageHeightDoc = 0;
-            const pageEl = body.querySelector(".page");
-            if (pageEl && doc.defaultView) {
-                const styles = doc.defaultView.getComputedStyle(pageEl);
-                const minHeightPx = parseFloat(styles.minHeight || "");
-                const heightPx = parseFloat(styles.height || "");
-                const marginTopPx = parseFloat(styles.marginTop || "") || 0;
-                const marginBottomPx = parseFloat(styles.marginBottom || "") || 0;
-                if (Number.isFinite(minHeightPx) && minHeightPx > 0) {
-                    pageHeightDoc = minHeightPx + marginTopPx + marginBottomPx;
-                } else if (Number.isFinite(heightPx) && heightPx > 0 && styles.height !== "auto") {
-                    pageHeightDoc = heightPx + marginTopPx + marginBottomPx;
-                }
-            }
-            if (!pageHeightDoc || !Number.isFinite(pageHeightDoc)) {
-                // Fallback: true A4 page height (297mm) in CSS px for templates without .page.
-                pageHeightDoc = Math.max(400, 297 * getCssPxPerMm(doc));
-            }
-            const localEstimatedPages = Math.max(1, Math.ceil(contentHeightDoc / pageHeightDoc));
-            // Keep badge aligned with what user sees in preview.
-            // Server estimate is useful for export, but can overcount in live view.
-            const effectivePages = localEstimatedPages;
-            const adjustedPageHeight = Math.max(1, pageHeightDoc * 0.96);
-            const effectivePageHeight = effectivePages > 1
-                ? Math.max(adjustedPageHeight, Math.max(1, contentHeightDoc / effectivePages))
-                : adjustedPageHeight;
-            lastPageHeightDoc = effectivePageHeight;
-            estimatedPages = effectivePages;
-            currentPage = Math.min(currentPage, estimatedPages);
-            renderPageGuides(doc, effectivePageHeight, contentHeightDoc);
-        }
 
         frame.style.height = `${Math.round(getAvailablePreviewHeight())}px`;
+        currentPage = Math.min(currentPage, estimatedPages);
         updatePageBadge();
+        renderPageGuides(doc, pageHeightPx, rawContentHeight);
         schedulePageEstimate();
     }
 

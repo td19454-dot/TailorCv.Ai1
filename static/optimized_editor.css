@@ -179,13 +179,16 @@ body {
     backdrop-filter: blur(6px);
     min-height: 78vh;
     padding: 8px;
+    overflow-y: auto !important;
+    max-height: 90vh;
 }
 
 #resume-preview-frame {
     width: 100%;
     min-height: 70vh;
+    height: auto !important;
     border: 0;
-    background: rgba(226, 232, 240, 0.15);
+    background: #e8eaed;
     border-radius: 12px;
 }
 
