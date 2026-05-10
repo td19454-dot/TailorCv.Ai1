@@ -1,5 +1,6 @@
 (function () {
     const STORAGE_KEY = "tailorcv_optimized_editor_payload";
+    const AUTO_DOWNLOAD_ON_OPEN = true;
     const frame = document.getElementById("resume-preview-frame");
     const statusEl = document.getElementById("editor-status");
     const downloadBtn = document.getElementById("download-edited-btn");
@@ -8,6 +9,7 @@
     const fontIncreaseBtn = document.getElementById("font-increase-btn");
     const fontSizeBadge = document.getElementById("font-size-badge");
     const pageIndexBadge = document.getElementById("page-index-badge");
+    const fitGuidance = document.getElementById("fit-guidance");
     const previewWrap = document.querySelector(".editor-preview-wrap");
     let currentHtml = "";
     let currentZoom = 1;
@@ -19,17 +21,51 @@
     let estimatedPages = 1;
     let currentPage = 1;
     let lastPageHeightDoc = 1;
+    let lastPageStartDoc = 0;
     let estimateTimer = null;
     let estimateRequestId = 0;
     let serverEstimatedPages = null;
+    let lastEstimatedPages = 1;
+    let lastFillRatio = 1;
+    let hasAutoDownloaded = false;
 
     function updatePageBadge() {
         if (pageIndexBadge) {
-            pageIndexBadge.textContent = `Current Pages: ${estimatedPages}`;
+            const fillPct = Math.max(1, Math.min(100, Math.round(lastFillRatio * 100)));
+            pageIndexBadge.textContent = `Current Pages: ${estimatedPages} | Fill: ${fillPct}%`;
         }
     }
 
+    function updateFitGuidance() {
+        const fillPct = Math.max(1, Math.min(100, Math.round(lastFillRatio * 100)));
+        if (estimatedPages > 1) {
+            setStatus(`Page ${estimatedPages} started. Press A- to fit into 1 page.`);
+            return;
+        }
+
+        if (fillPct >= 90) {
+            setStatus("Perfect fit on 1 page. Stop here and download.");
+            if (lastEstimatedPages > 1) {
+                const pulseTarget = fitGuidance || statusEl;
+                if (pulseTarget) {
+                    pulseTarget.classList.remove("pulse-success");
+                    void pulseTarget.offsetWidth;
+                    pulseTarget.classList.add("pulse-success");
+                }
+            }
+            return;
+        }
+
+        if (fillPct <= 78) {
+            setStatus("You still have space. Press A+ to increase font for a fuller page.");
+            return;
+        }
+
+        setStatus("Good fit. You can slightly increase font (A+) if you want.");
+    }
+
     function setStatus(message) {
+        if (fitGuidance) fitGuidance.textContent = message || "";
         if (statusEl) statusEl.textContent = message || "";
     }
 
@@ -154,12 +190,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return getCssPxPerMm(doc);
     }
 
-    function renderPageGuides(doc, pageHeightDoc, totalHeightDoc) {
+    function renderPageGuides(doc, pageHeightDoc, totalHeightDoc, startOffsetDoc = 0) {
         if (!doc || !doc.body) return;
         const old = doc.getElementById("tailorcv-page-guides");
         if (old) old.remove();
         if (!Number.isFinite(pageHeightDoc) || pageHeightDoc <= 0) return;
         if (!Number.isFinite(totalHeightDoc) || totalHeightDoc <= pageHeightDoc) return;
+        const startOffset = Math.max(0, Number(startOffsetDoc) || 0);
+        const pageableHeight = Math.max(0, totalHeightDoc - startOffset);
+        if (pageableHeight <= pageHeightDoc) return;
 
         const guideHost = doc.createElement("div");
         guideHost.id = "tailorcv-page-guides";
@@ -172,9 +211,9 @@ document.addEventListener("DOMContentLoaded", function () {
         guideHost.style.pointerEvents = "none";
         guideHost.style.zIndex = "2147483646";
 
-        const breaks = Math.max(0, Math.ceil(totalHeightDoc / pageHeightDoc) - 1);
+        const breaks = Math.max(0, Math.ceil(pageableHeight / pageHeightDoc) - 1);
         for (let i = 1; i <= breaks; i += 1) {
-            const y = i * pageHeightDoc;
+            const y = startOffset + (i * pageHeightDoc);
             const line = doc.createElement("div");
             line.style.position = "absolute";
             line.style.left = "0";
@@ -234,6 +273,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const primaryContainer = body.querySelector(
             ".page, .resume-shell, .resume-container, .page-wrap, .cv-page"
         );
+        const startOffsetDoc = primaryContainer
+            ? Math.max(0, primaryContainer.offsetTop || 0)
+            : 0;
         if (primaryContainer) {
             rawContentHeight = Math.max(
                 primaryContainer.scrollHeight || 0,
@@ -288,10 +330,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // STEP 7: 1% tolerance now that measurements are accurate
         const OVERFLOW_TOLERANCE = 0.01;
         const rawRatio = rawContentHeight / Math.max(1, pageHeightPx);
+        lastFillRatio = rawRatio;
         estimatedPages = Math.max(1,
             rawRatio > 1 + OVERFLOW_TOLERANCE ? Math.ceil(rawRatio) : 1
         );
         lastPageHeightDoc = Math.max(1, pageHeightPx);
+        lastPageStartDoc = startOffsetDoc;
         intrinsicContentWidth = rawContentWidth;
         intrinsicContentHeight = rawContentHeight;
 
@@ -355,7 +399,9 @@ body {
         frame.style.height = `${Math.round(getAvailablePreviewHeight())}px`;
         currentPage = Math.min(currentPage, estimatedPages);
         updatePageBadge();
-        renderPageGuides(doc, pageHeightPx, rawContentHeight);
+        updateFitGuidance();
+        renderPageGuides(doc, pageHeightPx, rawContentHeight + startOffsetDoc, startOffsetDoc);
+        lastEstimatedPages = estimatedPages;
         schedulePageEstimate();
     }
 
@@ -432,13 +478,36 @@ body {
             const pages = Number(data && data.pages);
             if (!Number.isFinite(pages) || pages < 1) return;
             const normalizedPages = Math.max(1, Math.ceil(pages));
-            const didChange = normalizedPages !== Math.max(1, Math.ceil(Number(serverEstimatedPages || 0)));
-            serverEstimatedPages = pages;
-            // Use server value for badge reliability, but keep visual break positions local.
+            serverEstimatedPages = normalizedPages;
             estimatedPages = normalizedPages;
             currentPage = Math.min(currentPage, estimatedPages);
-            if (didChange) updatePageBadge();
-            else updatePageBadge();
+            updatePageBadge();
+            updateFitGuidance();
+
+            // Keep page-break guides in sync with server truth for ALL templates.
+            if (frame && frame.contentDocument) {
+                const doc = frame.contentDocument;
+                const root = doc.documentElement;
+                const body = doc.body;
+                if (root && body) {
+                    if (normalizedPages <= 1) {
+                        const existing = doc.getElementById("tailorcv-page-guides");
+                        if (existing) existing.remove();
+                    } else {
+                        const startOffsetDoc = Math.max(0, Number(lastPageStartDoc) || 0);
+                        const pageHeightDoc = Math.max(1, Number(lastPageHeightDoc) || 1);
+                        const totalHeightDoc = Math.max(
+                            (Number(intrinsicContentHeight) || 0) + startOffsetDoc,
+                            startOffsetDoc + (pageHeightDoc * normalizedPages),
+                            root.scrollHeight || 0,
+                            body.scrollHeight || 0,
+                            1
+                        );
+                        renderPageGuides(doc, pageHeightDoc, totalHeightDoc, startOffsetDoc);
+                    }
+                }
+            }
+            lastEstimatedPages = estimatedPages;
         } catch (error) {
             // Keep local estimate on network/server issues.
         }
@@ -454,7 +523,7 @@ body {
         }, 90);
     }
 
-    async function downloadEditedPdf() {
+    async function downloadEditedPdf(isAuto = false) {
         if (!frame || !frame.contentDocument) {
             setStatus("Preview not ready.");
             return;
@@ -508,7 +577,7 @@ body {
         }
 
         const html = "<!DOCTYPE html>\n" + exportDoc.outerHTML;
-        setStatus("Generating edited PDF...");
+        setStatus(isAuto ? "Auto-downloading optimized resume..." : "Generating edited PDF...");
         downloadBtn.disabled = true;
         try {
             const response = await fetch("/api/download-html-pdf", {
@@ -532,9 +601,13 @@ body {
             link.click();
             link.remove();
             window.URL.revokeObjectURL(url);
-            setStatus("Edited PDF downloaded.");
+            if (isAuto) {
+                setStatus("Auto-download complete. You can edit font size and click Download Edited PDF anytime.");
+            } else {
+                setStatus("Edited PDF downloaded.");
+            }
         } catch (error) {
-            setStatus("Could not download edited PDF.");
+            setStatus(isAuto ? "Auto-download failed. Please use Download Edited PDF." : "Could not download edited PDF.");
         } finally {
             downloadBtn.disabled = false;
         }
@@ -564,12 +637,26 @@ body {
             updatePageBadge();
             bindPageTracking();
             setStatus("Tip: Click inside resume preview and edit text live.");
+            if (AUTO_DOWNLOAD_ON_OPEN && !hasAutoDownloaded) {
+                hasAutoDownloaded = true;
+                setTimeout(() => {
+                    downloadEditedPdf(true).catch(() => {});
+                }, 250);
+            }
         });
         window.addEventListener("resize", applyPreviewZoom);
 
         if (fontDecreaseBtn) fontDecreaseBtn.addEventListener("click", function () { changeFontScale(-0.05); });
         if (fontIncreaseBtn) fontIncreaseBtn.addEventListener("click", function () { changeFontScale(0.05); });
         if (fontResetBtn) fontResetBtn.addEventListener("click", resetFontScale);
+        const pulseTarget = fitGuidance || statusEl;
+        if (pulseTarget) {
+            pulseTarget.addEventListener("animationend", function (event) {
+                if (event && event.animationName === "pulse-success") {
+                    pulseTarget.classList.remove("pulse-success");
+                }
+            });
+        }
         downloadBtn.addEventListener("click", downloadEditedPdf);
     }
 

@@ -87,6 +87,7 @@ static_dir = os.path.join(BASE_DIR, "static")
 uploads_dir = os.path.join(BASE_DIR, "uploads")
 resumes_dir = os.path.join(BASE_DIR, "resumes")
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "").strip()
+SHOW_OPTIMIZED_EDITOR = os.getenv("SHOW_OPTIMIZED_EDITOR", "false").strip().lower() == "true"
 
 # Ensure directories exist
 os.makedirs(uploads_dir, exist_ok=True)
@@ -2108,20 +2109,28 @@ async def landing_page(request: Request):
 @app.get("/solutions", response_class=HTMLResponse)
 async def solutions_page(request: Request):
     """Solutions page where users upload resume & JD."""
+    is_localhost = request.url.hostname in {"127.0.0.1", "localhost"}
     return templates.TemplateResponse(
         request,
         "solutions.html",
-        {"request": request},
+        {
+            "request": request,
+            "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
+        },
     )
 
 
 @app.get("/optimize", response_class=HTMLResponse)
 async def optimize_page(request: Request):
     """Alias route for optimization flow; renders Solutions page."""
+    is_localhost = request.url.hostname in {"127.0.0.1", "localhost"}
     return templates.TemplateResponse(
         request,
         "solutions.html",
-        {"request": request},
+        {
+            "request": request,
+            "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
+        },
     )
 
 
@@ -2149,6 +2158,9 @@ async def ats_analysis_page(request: Request):
 async def optimized_editor_page(request: Request):
     """Live editor page for optimized resume preview."""
     require_logged_in(request)
+    is_localhost = request.url.hostname in {"127.0.0.1", "localhost"}
+    if not (SHOW_OPTIMIZED_EDITOR or is_localhost):
+        raise HTTPException(status_code=404, detail="Not found")
     return templates.TemplateResponse(
         request,
         "optimized_editor.html",
@@ -2571,6 +2583,7 @@ async def upload_resume(
     file: UploadFile = File(...),
     template_id: int | None = Form(1),
     style_id: int | None = Form(1),
+    editor_mode: str | None = Form(None),
 ):
     """Upload a resume PDF file and JD with selected template and style"""
     if jd_string is None:
@@ -2693,7 +2706,10 @@ async def upload_resume(
                 template = templates.env.get_template('resume_template.html')
                 html_content = template.render(**context)
 
-            wants_editor_mode = request.headers.get("X-Editor-Mode", "").lower() == "true"
+            header_editor_mode = request.headers.get("X-Editor-Mode", "").lower() == "true"
+            form_editor_mode = str(editor_mode or "").strip().lower() == "true"
+            query_editor_mode = request.query_params.get("editor_mode", "").strip().lower() == "true"
+            wants_editor_mode = header_editor_mode or form_editor_mode or query_editor_mode
             if wants_editor_mode:
                 return JSONResponse({
                     "success": True,
