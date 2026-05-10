@@ -1,243 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-W7G56LJF');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W7G56LJF');</script>
     <!-- End Google Tag Manager -->
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TailorCV.ai - AI-Powered Resume Tailoring</title>
     <link rel="stylesheet" href="/static/style3.css">
-     <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/header-footer.css">
     {% include "_seo_head.html" %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Gelasio:ital,wght@0,400..700;1,400..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Gelasio:ital,wght@0,400..700;1,400..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap"
+        rel="stylesheet">
 
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  :root {
-    --bg:       #07102b;
-    --bg-card:  #0f1e44;
-    --bg-feat:  #141f4a;
-    --border:   rgba(80, 110, 200, 0.22);
-    --border-feat: rgba(74, 106, 255, 0.55);
-    --text-h:   #ffffff;
-    --text-sub: #8899bb;
-    --text-body:#99aacc;
-    --accent:   #4a6aff;
-    --star:     #f0c04a;
-    --fade-bg:  #07102b;
-  }
+        :root {
+            --bg: #07102b;
+            --bg-card: #0f1e44;
+            --bg-feat: #141f4a;
+            --border: rgba(80, 110, 200, 0.22);
+            --border-feat: rgba(74, 106, 255, 0.55);
+            --text-h: #ffffff;
+            --text-sub: #8899bb;
+            --text-body: #99aacc;
+            --accent: #4a6aff;
+            --star: #f0c04a;
+            --fade-bg: #07102b;
+        }
+        /* ── Moving background ── */
 
-  /* ─── Section ─── */
-  .testimonials-section {
-    width: 100%;
-    overflow: hidden;
-    padding: 64px 0 72px;
-  }
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes floatOrb1 {
+  0%,100% { transform: translate(0,0) scale(1); opacity: 0.6; }
+  50%      { transform: translate(60px,-40px) scale(1.15); opacity: 0.9; }
+}
+@keyframes floatOrb2 {
+  0%,100% { transform: translate(0,0) scale(1); opacity: 0.4; }
+  50%      { transform: translate(-50px,30px) scale(1.1); opacity: 0.7; }
+}
 
-  /* ─── Header ─── */
-  .section-header {
-    text-align: center;
-    margin-bottom: 52px;
-    padding: 0 24px;
-  }
 
-  .section-header .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 400;
-    color: var(--text-h);
-    letter-spacing: -0.02em;
-    margin-bottom: 14px;
-    line-height: 1.1;
-  }
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.orb-blue   { width:280px; height:280px; background:#3a00cc; filter:blur(70px); top:-70px; left:-60px; animation: floatOrb1 7s ease-in-out infinite; }
+.orb-violet { width:240px; height:240px; background:#6b00ff; filter:blur(65px); bottom:-50px; right:-30px; animation: floatOrb2 9s ease-in-out infinite; }
 
-  .section-header .section-subtitle {
-    font-size: 15px;
-    color: var(--text-sub);
-    line-height: 1.7;
-    max-width: 420px;
-    margin: 0 auto;
-  }
+header, main, section, footer, .hero, .features,
+.how-it-works, .testimonials-section, .cta-section {
+  position: relative;
+  z-index: 1;
+}
 
-  /* ─── Carousel rows ─── */
-  .carousel-row {
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 20px;
-  }
+body {
+  background: linear-gradient(
+    135deg,
+    #020010, #06002a, #12003a,
+    #001830, #0a0020, #1a0030, #020010
+  );
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
+}
 
-  .carousel-row:last-of-type {
-    margin-bottom: 0;
-  }
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.orb-violet  { width:300px;height:300px; background:radial-gradient(circle,#7700ff,#3300aa); filter:blur(70px); top:-80px; left:-60px; animation:floatOrb1 8s ease-in-out infinite; }
+.orb-magenta { width:260px;height:260px; background:radial-gradient(circle,#cc00ff,#880099); filter:blur(65px); bottom:-50px; right:-20px; animation:floatOrb2 11s ease-in-out infinite; }
+.orb-blue    { width:220px;height:220px; background:radial-gradient(circle,#0044ff,#002288); filter:blur(60px); top:40%; left:25%; animation:floatOrb3 14s ease-in-out infinite; }
+.orb-rose    { width:200px;height:200px; background:radial-gradient(circle,#ff0077,#990044); filter:blur(60px); bottom:20px; left:0; animation:floatOrb4 9s ease-in-out infinite; }
+.orb-cyan    { width:180px;height:180px; background:radial-gradient(circle,#00ccff,#006688); filter:blur(55px); top:10px; right:60px; animation:floatOrb5 12s ease-in-out infinite; }
+.orb-amber   { width:170px;height:170px; background:radial-gradient(circle,#ff6600,#882200); filter:blur(55px); bottom:40px; right:160px; animation:floatOrb6 10s ease-in-out infinite; }
 
-  /* Fade masks */
-  .carousel-row::before,
-  .carousel-row::after {
-    content: '';
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 120px;
-    z-index: 2;
-    pointer-events: none;
-  }
+.bg-star { position:fixed; width:2px; height:2px; background:#fff; border-radius:50%; pointer-events:none; z-index:0; }
 
-  .carousel-row::before {
-    left: 0;
-    background: linear-gradient(to right, var(--fade-bg) 30%, transparent);
-  }
+/* Make sure all content sits above the orbs */
+header, main, section, footer, .hero, .features,
+.how-it-works, .testimonials-section, .cta-section {
+  position: relative;
+  z-index: 1;
+}
+        /* ─── Section ─── */
+        .testimonials-section {
+            width: 100%;
+            overflow: hidden;
+            padding: 64px 0 72px;
+        }
 
-  .carousel-row::after {
-    right: 0;
-    background: linear-gradient(to left, var(--fade-bg) 30%, transparent);
-  }
+        /* ─── Header ─── */
+        .section-header {
+            text-align: center;
+            margin-bottom: 52px;
+            padding: 0 24px;
+        }
 
-  /* Track */
-  .carousel-track {
-    display: flex;
-    gap: 30px;
-    width: max-content;
-    padding: 8px 0 12px;
-    will-change: transform;
-  }
+        .section-header .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 400;
+            color: var(--text-h);
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+            line-height: 1.1;
+        }
 
-  .row-forward  .carousel-track { animation: scroll-left 38s linear infinite; }
-  .row-backward .carousel-track { animation: scroll-right 44s linear infinite; }
-  .carousel-row:hover .carousel-track { animation-play-state: paused; }
+        .section-header .section-subtitle {
+            font-size: 15px;
+            color: var(--text-sub);
+            line-height: 1.7;
+            max-width: 420px;
+            margin: 0 auto;
+        }
 
-  @keyframes scroll-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+        /* ─── Carousel rows ─── */
+        .carousel-row {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
 
-  /* ─── Card ─── */
-  .t-card {
-    width: 400px;
-    flex-shrink: 0;
-    background: var(--bg-card);
-    border: 0.5px solid var(--border);
-    border-radius: 18px;
-    padding: 26px 24px;
-    transition: border-color 0.25s, transform 0.25s;
-    cursor: default;
-    user-select: none;
-    box-shadow: 0px 3px 27px 6px rgba(106,2,242,0.49);
-  }
+        .carousel-row:last-of-type {
+            margin-bottom: 0;
+        }
 
-  .t-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-  }
+        /* Fade masks */
+        .carousel-row::before,
+        .carousel-row::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
 
-  .t-card.featured {
-    background: var(--bg-feat);
-    border-color: var(--border-feat);
-  }
+        .carousel-row::before {
+            left: 0;
+            background: linear-gradient(to right, var(--fade-bg) 30%, transparent);
+        }
 
-  /* Card top row */
-  .card-top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
+        .carousel-row::after {
+            right: 0;
+            background: linear-gradient(to left, var(--fade-bg) 30%, transparent);
+        }
 
-  /* Avatar */
-  .avatar {
-    width: 46px; height: 46px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+        /* Track */
+        .carousel-track {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            padding: 8px 0 12px;
+            will-change: transform;
+        }
 
-  .card-meta { min-width: 0; }
+        .row-forward .carousel-track {
+            animation: scroll-left 38s linear infinite;
+        }
 
-  .card-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-h);
-    margin-bottom: 2px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+        .row-backward .carousel-track {
+            animation: scroll-right 44s linear infinite;
+        }
 
-  .card-role {
-    font-size: 12px;
-    color: var(--text-sub);
-  }
+        .carousel-row:hover .carousel-track {
+            animation-play-state: paused;
+        }
 
-  /* Stars */
-  .stars {
-    display: flex;
-    gap: 3px;
-    margin-bottom: 14px;
-  }
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
 
-  .star {
-    width: 11px; height: 11px;
-    background: var(--star);
-    clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-  }
+            to {
+                transform: translateX(-50%);
+            }
+        }
 
-  /* Quote text */
-  .card-quote {
-    font-size: 13.5px;
-    color: var(--text-body);
-    line-height: 1.7;
-  }
+        @keyframes scroll-right {
+            from {
+                transform: translateX(-50%);
+            }
 
-  /* ─── Dots ─── */
-  .carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 32px;
-  }
+            to {
+                transform: translateX(0);
+            }
+        }
 
-  .dot {
-    height: 6px;
-    border-radius: 3px;
-    background: #2a3660;
-    transition: width 0.3s, background 0.3s;
-  }
+        /* ─── Card ─── */
+        .t-card {
+            width: 400px;
+            flex-shrink: 0;
+            background: var(--bg-card);
+            border: 0.5px solid var(--border);
+            border-radius: 18px;
+            padding: 26px 24px;
+            transition: border-color 0.25s, transform 0.25s;
+            cursor: default;
+            user-select: none;
+            box-shadow: 0px 3px 27px 6px rgba(106, 2, 242, 0.49);
+        }
 
-  .dot.active {
-    width: 24px;
-    background: var(--accent);
-  }
+        .t-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
 
-  .dot:not(.active) { width: 6px; }
-</style>
+        .t-card.featured {
+            background: var(--bg-feat);
+            border-color: var(--border-feat);
+        }
+
+        /* Card top row */
+        .card-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        /* Avatar */
+        .avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .card-meta {
+            min-width: 0;
+        }
+
+        .card-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-h);
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-role {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        /* Stars */
+        .stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 14px;
+        }
+
+        .star {
+            width: 11px;
+            height: 11px;
+            background: var(--star);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        /* Quote text */
+        .card-quote {
+            font-size: 13.5px;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        /* ─── Dots ─── */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 32px;
+        }
+
+        .dot {
+            height: 6px;
+            border-radius: 3px;
+            background: #2a3660;
+            transition: width 0.3s, background 0.3s;
+        }
+
+        .dot.active {
+            width: 24px;
+            background: var(--accent);
+        }
+
+        .dot:not(.active) {
+            width: 6px;
+        }
+    </style>
 
 </head>
+
 <body>
+<div class="bg-orb orb-blue"></div>
+<div class="bg-orb orb-violet"></div>
+    <div class="wave-bg" aria-hidden="true">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </div>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7G56LJF"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7G56LJF" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- Navigation -->
     <header class="navbar">
         <div class="logo">
             <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
         </div>
-        <button
-            type="button"
-            class="mobile-menu-toggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="primary-nav-index"
-        >
+        <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false"
+            aria-controls="primary-nav-index">
             <span></span>
             <span></span>
             <span></span>
         </button>
-<nav class="nav-links" id="primary-nav-index">
+        <nav class="nav-links" id="primary-nav-index">
             <a href="/" class="nav-link active">Home</a>
             <a href="/solutions" class="nav-link">Get ATS Score</a>
             <a href="/modify-cv" class="nav-link">Make CV</a>
@@ -254,6 +364,157 @@
 
     </header>
 
+    <!-- Trust Banner -->
+    <div class="trust-banner">
+        <div class="pulse-ring">
+           
+        </div>
+        <div class="pulse-text">
+            Trusted by <span class="trust-num">10,000+</span> job seekers worldwide
+        </div>
+        <div class="pulse-ring">
+           
+        </div>
+    </div>
+
+    <style>
+        .trust-banner {
+            width: 100%;
+            animation: tbGradient 6s ease infinite;
+            padding: 11px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        @keyframes tbGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .pulse-ring {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            flex-shrink: 0;
+        }
+
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(167, 139, 250, 0.5);
+            animation: tbRing 2s ease-out infinite;
+        }
+
+        
+
+        @keyframes tbRing {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(2.4);
+                opacity: 0;
+            }
+        }
+
+        @keyframes tbDot {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(0.8);
+            }
+        }
+
+        .pulse-text {
+            font-size: 30px;
+            font-weight: 600;
+            color: #84b2d4;
+            letter-spacing: 0.02em;
+            animation: tbText 2.5s ease-in-out infinite;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .trust-num {
+            font-weight: 800;
+            font-size: 32px;
+            color: #DDD6FE;
+            animation: tbNum 2.5s ease-in-out infinite;
+        }
+
+        @keyframes tbText {
+
+            0%,
+            100% {
+                opacity: 1;
+                text-shadow: none;
+            }
+
+            50% {
+                opacity: 0.85;
+                text-shadow: 0 0 18px rgba(177, 172, 181, 0.55);
+            }
+        }
+
+        @keyframes tbNum {
+
+            0%,
+            100% {
+                color: #DDD6FE;
+                text-shadow: none;
+            }
+
+            50% {
+                color: #fff;
+                text-shadow: 0 0 14px rgba(221, 214, 254, 0.9);
+            }
+        }
+
+        .trust-badge {
+            background: rgba(255, 255, 255, 0.13);
+            color: #f0ebed;
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 13px;
+            border-radius: 20px;
+            border: 0.5px solid rgba(120, 160, 209, 0.22);
+            animation: tbBadge 2.5s ease-in-out infinite;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+
+        @keyframes tbBadge {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: none;
+            }
+
+            50% {
+                opacity: 0.75;
+                box-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
+            }
+        }
+    </style>
 
 
 
@@ -297,9 +558,14 @@
                             <div class="r-heading">EXPERIENCE</div>
                             <div class="r-exp-title">Machine Learning Engineer - Acme Corp</div>
                             <div class="r-exp-co">2022 - Present</div>
-                            <div class="exp-bullet">Built <span class="kw" id="heroKw1">statistical models</span> for churn prediction, improving prediction accuracy by ~18–25% and enabling retention strategies that reduced customer churn by ~10–15%.</div>
-                            <div class="exp-bullet">Deployed <span class="kw" id="heroKw2">batch pipelines</span> on legacy infrastructure, reducing model deployment time by ~40–60% and improving system reliability.</div>
-                            <div class="exp-bullet">Used <span class="kw" id="heroKw3">deep learning frameworks</span> to develop and evaluate models, reducing manual analysis effort by ~50% </div>
+                            <div class="exp-bullet">Built <span class="kw" id="heroKw1">statistical models</span> for
+                                churn prediction, improving prediction accuracy by ~18–25% and enabling retention
+                                strategies that reduced customer churn by ~10–15%.</div>
+                            <div class="exp-bullet">Deployed <span class="kw" id="heroKw2">batch pipelines</span> on
+                                legacy infrastructure, reducing model deployment time by ~40–60% and improving system
+                                reliability.</div>
+                            <div class="exp-bullet">Used <span class="kw" id="heroKw3">deep learning frameworks</span>
+                                to develop and evaluate models, reducing manual analysis effort by ~50% </div>
                         </div>
 
                         <div class="r-section">
@@ -323,15 +589,21 @@
                             </div>
                             <div class="ats-row">
                                 <span class="ats-label">Keywords</span>
-                                <div class="ats-track"><div class="ats-fill" id="heroBarKw"></div></div>
+                                <div class="ats-track">
+                                    <div class="ats-fill" id="heroBarKw"></div>
+                                </div>
                             </div>
                             <div class="ats-row">
                                 <span class="ats-label">Formatting</span>
-                                <div class="ats-track"><div class="ats-fill" id="heroBarFmt"></div></div>
+                                <div class="ats-track">
+                                    <div class="ats-fill" id="heroBarFmt"></div>
+                                </div>
                             </div>
                             <div class="ats-row">
                                 <span class="ats-label">Relevance</span>
-                                <div class="ats-track"><div class="ats-fill" id="heroBarRel"></div></div>
+                                <div class="ats-track">
+                                    <div class="ats-fill" id="heroBarRel"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -357,7 +629,7 @@
                     <div class="feature-icon">🎯</div>
                     <h3 class="feature-title">ATS Optimization</h3>
                     <p class="feature-description">
-                        Get detailed ATS scores with keyword matching, skill analysis, 
+                        Get detailed ATS scores with keyword matching, skill analysis,
                         and formatting recommendations to pass applicant tracking systems.
                     </p>
                 </div>
@@ -365,7 +637,7 @@
                     <div class="feature-icon">✨</div>
                     <h3 class="feature-title">AI-Powered Tailoring</h3>
                     <p class="feature-description">
-                        Our advanced AI analyzes job descriptions and optimizes your resume 
+                        Our advanced AI analyzes job descriptions and optimizes your resume
                         to highlight relevant skills and experiences.
                     </p>
                 </div>
@@ -373,7 +645,7 @@
                     <div class="feature-icon">📊</div>
                     <h3 class="feature-title">Detailed Analysis</h3>
                     <p class="feature-description">
-                        Receive comprehensive feedback on strengths, weaknesses, missing keywords, 
+                        Receive comprehensive feedback on strengths, weaknesses, missing keywords,
                         and actionable improvement suggestions.
                     </p>
                 </div>
@@ -381,7 +653,7 @@
                     <div class="feature-icon">⚡</div>
                     <h3 class="feature-title">Instant Results</h3>
                     <p class="feature-description">
-                        Get your optimized resume and analysis in seconds. No waiting, 
+                        Get your optimized resume and analysis in seconds. No waiting,
                         no delays—just fast, accurate results.
                     </p>
                 </div>
@@ -389,7 +661,7 @@
                     <div class="feature-icon">🔒</div>
                     <h3 class="feature-title">Secure & Private</h3>
                     <p class="feature-description">
-                        Your resume data is processed securely and deleted immediately after 
+                        Your resume data is processed securely and deleted immediately after
                         optimization. Your privacy is our priority.
                     </p>
                 </div>
@@ -397,7 +669,7 @@
                     <div class="feature-icon">💼</div>
                     <h3 class="feature-title">Professional Formatting</h3>
                     <p class="feature-description">
-                        Receive a beautifully formatted PDF resume that's ready to submit 
+                        Receive a beautifully formatted PDF resume that's ready to submit
                         to any employer or job board.
                     </p>
                 </div>
@@ -405,22 +677,22 @@
 
 
                 <div class="feature-card">
-    <div class="feature-icon">🧠</div>
-    <h3 class="feature-title">Smart Skill Suggestions</h3>
-    <p class="feature-description">
-        Discover in-demand skills tailored to your target role. Get AI-driven 
-        recommendations to enhance your profile and stay competitive.
-    </p>
-</div>
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">Smart Skill Suggestions</h3>
+                    <p class="feature-description">
+                        Discover in-demand skills tailored to your target role. Get AI-driven
+                        recommendations to enhance your profile and stay competitive.
+                    </p>
+                </div>
 
-<div class="feature-card">
-    <div class="feature-icon">🌍</div>
-    <h3 class="feature-title">Job Market Insights</h3>
-    <p class="feature-description">
-        Access real-time insights on industry trends, salary benchmarks, 
-        and hiring patterns to make informed career decisions.
-    </p>
-</div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">Job Market Insights</h3>
+                    <p class="feature-description">
+                        Access real-time insights on industry trends, salary benchmarks,
+                        and hiring patterns to make informed career decisions.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -441,7 +713,7 @@
                     <div class="step-number">1</div>
                     <h3 class="step-title">Upload Your Resume</h3>
                     <p class="step-description">
-                        Upload your current resume in PDF format. Our system will extract 
+                        Upload your current resume in PDF format. Our system will extract
                         and analyze all your skills and experiences.
                     </p>
                 </div>
@@ -449,7 +721,7 @@
                     <div class="step-number">2</div>
                     <h3 class="step-title">Paste Job Description</h3>
                     <p class="step-description">
-                        Copy and paste the job description you're applying for. Our AI 
+                        Copy and paste the job description you're applying for. Our AI
                         will identify key requirements and keywords.
                     </p>
                 </div>
@@ -457,7 +729,7 @@
                     <div class="step-number">3</div>
                     <h3 class="step-title">Get Results</h3>
                     <p class="step-description">
-                        Receive your ATS score analysis and download your optimized resume 
+                        Receive your ATS score analysis and download your optimized resume
                         tailored specifically for that role.
                     </p>
                 </div>
@@ -471,7 +743,8 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">What People Say</h2>
-                <p class="section-subtitle">Real success stories from professionals who improved their resume and interview flow.</p>
+                <p class="section-subtitle">Real success stories from professionals who improved their resume and
+                    interview flow.</p>
             </div>
             <!-- Row 1 — scrolls left -->
             <div class="carousel-row row-forward" aria-hidden="true">
@@ -496,7 +769,7 @@
             <div class="cta-content">
                 <h2 class="cta-title">Ready to Optimize Your Resume?</h2>
                 <p class="cta-subtitle">
-                    Join thousands of job seekers who have improved their chances 
+                    Join thousands of job seekers who have improved their chances
                     of landing interviews with our AI-powered resume optimizer.
                 </p>
                 <a href="/solutions" class="btn btn-primary btn-large">Get Started Now</a>
@@ -516,7 +789,7 @@
                     <h4 class="footer-title">ResumeOptimizer</h4>
                     <p class="footer-text">AI-powered resume optimization for your career success.</p>
                 </div>
-<div class="footer-section">
+                <div class="footer-section">
                     <h4 class="footer-title">Quick Links</h4>
                     <a href="/" class="footer-link">Home</a>
                     <a href="/solutions" class="footer-link">Get ATS Score</a>
@@ -524,7 +797,7 @@
                     <a href="/solutions" class="footer-link">Optimize CV with AI</a>
                     <a href="/pricing" class="footer-link">Pricing</a>
                     <a href="/templates" class="footer-link">Templates</a>
-                      <a href="/about" class="footer-link">About Us</a>
+                    <a href="/about" class="footer-link">About Us</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -693,30 +966,30 @@
         })();
     </script>
 
-<script>
-  /* ── Testimonial data ── */
-  const row1Data = [
-    { name:"Sarah Johnson",   role:"Atlassian",  image:"/static/user_imges/12.jpg", quote:"I was getting zero responses for weeks. After using TailorCV, my resume score jumped from 48 to 87—and I got 3 interview calls in 5 days.", stars:5 },
-    { name:"David Patel",     role:"PayPal",       image:"/static/user_imges/13.jpg", quote:"The JD matching feature is insane. It literally shows what you’re missing and fixes it instantly. This saved me hours of manual editing", stars:5, featured:true },
-    { name:"Emily Carter",    role:"HBSC",    image:"/static/user_imges/19.jpg", quote:"I used TailorCV before applying to a Product Analyst role, and I finally started getting callbacks. The ATS optimization actually works", stars:5 },
-    { name:"James Wu",        role:"Apple",  image:"/static/user_imges/22.jpg", quote:"I’ve tried multiple resume tools, but this is the first one that feels tailored—not generic AI output. It understands the job description deeply.", stars:5 },
-    { name:"Priya Mehta",     role:"Tata Consultancy Services",      image:"/static/user_imges/26.jpg", quote:"The biggest difference? Clarity. My resume now looks sharper, more relevant, and aligned with what recruiters want.", stars:5 },
-    { name:"Raja Karmakar",   role:"PWC",        image:"/static/user_imges/4.jpg",  quote:"I improved my ATS score from 52 to 91 in under 2 minutes. That alone makes this tool worth it.", stars:5 },
-  ];
+    <script>
+        /* ── Testimonial data ── */
+        const row1Data = [
+            { name: "Sarah Johnson", role: "Atlassian", image: "/static/user_imges/12.jpg", quote: "I was getting zero responses for weeks. After using TailorCV, my resume score jumped from 48 to 87—and I got 3 interview calls in 5 days.", stars: 5 },
+            { name: "David Patel", role: "PayPal", image: "/static/user_imges/13.jpg", quote: "The JD matching feature is insane. It literally shows what you’re missing and fixes it instantly. This saved me hours of manual editing", stars: 5, featured: true },
+            { name: "Emily Carter", role: "HBSC", image: "/static/user_imges/19.jpg", quote: "I used TailorCV before applying to a Product Analyst role, and I finally started getting callbacks. The ATS optimization actually works", stars: 5 },
+            { name: "James Wu", role: "Apple", image: "/static/user_imges/22.jpg", quote: "I’ve tried multiple resume tools, but this is the first one that feels tailored—not generic AI output. It understands the job description deeply.", stars: 5 },
+            { name: "Priya Mehta", role: "Tata Consultancy Services", image: "/static/user_imges/26.jpg", quote: "The biggest difference? Clarity. My resume now looks sharper, more relevant, and aligned with what recruiters want.", stars: 5 },
+            { name: "Raja Karmakar", role: "PWC", image: "/static/user_imges/4.jpg", quote: "I improved my ATS score from 52 to 91 in under 2 minutes. That alone makes this tool worth it.", stars: 5 },
+        ];
 
-  const row2Data = [
-    { name:"Nina Park",         role:"Visa",     image:"/static/user_imges/51.jpg", quote:"Finally a product that does exactly what it promises. Our campaigns are performing better than ever.", stars:5 },
-    { name:"Alex Thompson",     role:"Mercor",  image:"/static/user_imges/52.jpg", quote:"Before TailorCV, I didn’t even know why my resume was getting rejected. Now I can clearly see gaps and fix them instantly.", stars:5 },
-    { name:"Fatima Al-Hassan",  role:"Netflix",                   image:"/static/user_imges/68.jpg", quote:"The speed is crazy. Upload, paste JD, done. No unnecessary steps. Perfect for someone applying to multiple jobs daily.", stars:5 },
-    { name:"Liam O'Brien",      role:"Amazon",       image:"/static/user_imges/70.jpg", quote:"This feels like having a personal career coach + resume expert combined into one tool.", stars:5 },
-    { name:"Yuki Tanaka",       role:"PepsiCo",          image:"/static/user_imges/75.jpg", quote:"I used TailorCV for 10 job applications and got responses from 4 of them. That’s a huge jump compared to before.", stars:5 },
-    { name:"Maya Rosenberg",    role:"General Motors",            image:"/static/user_imges/82.jpg", quote:"The keyword optimization alone makes a big difference. My resume now actually passes ATS filters.", stars:5 },
-  ];
+        const row2Data = [
+            { name: "Nina Park", role: "Visa", image: "/static/user_imges/51.jpg", quote: "Finally a product that does exactly what it promises. Our campaigns are performing better than ever.", stars: 5 },
+            { name: "Alex Thompson", role: "Mercor", image: "/static/user_imges/52.jpg", quote: "Before TailorCV, I didn’t even know why my resume was getting rejected. Now I can clearly see gaps and fix them instantly.", stars: 5 },
+            { name: "Fatima Al-Hassan", role: "Netflix", image: "/static/user_imges/68.jpg", quote: "The speed is crazy. Upload, paste JD, done. No unnecessary steps. Perfect for someone applying to multiple jobs daily.", stars: 5 },
+            { name: "Liam O'Brien", role: "Amazon", image: "/static/user_imges/70.jpg", quote: "This feels like having a personal career coach + resume expert combined into one tool.", stars: 5 },
+            { name: "Yuki Tanaka", role: "PepsiCo", image: "/static/user_imges/75.jpg", quote: "I used TailorCV for 10 job applications and got responses from 4 of them. That’s a huge jump compared to before.", stars: 5 },
+            { name: "Maya Rosenberg", role: "General Motors", image: "/static/user_imges/82.jpg", quote: "The keyword optimization alone makes a big difference. My resume now actually passes ATS filters.", stars: 5 },
+        ];
 
-  /* ── Build a card ── */
-  function makeCard(t) {
-    const stars = Array(t.stars).fill('<div class="star"></div>').join('');
-    return `
+        /* ── Build a card ── */
+        function makeCard(t) {
+            const stars = Array(t.stars).fill('<div class="star"></div>').join('');
+            return `
       <article class="t-card${t.featured ? ' featured' : ''}">
         <div class="card-top">
           <img src="${t.image}" alt="${t.name}" class="avatar">
@@ -728,29 +1001,41 @@
         <div class="stars" aria-label="${t.stars} stars">${stars}</div>
         <p class="card-quote">"${t.quote}"</p>
       </article>`;
+        }
+
+        /* ── Populate track (doubled for infinite loop) ── */
+        function buildTrack(id, data) {
+            const track = document.getElementById(id);
+            const doubled = [...data, ...data];
+            track.innerHTML = doubled.map(makeCard).join('');
+        }
+
+        buildTrack('track1', row1Data);
+        buildTrack('track2', row2Data);
+
+        /* ── Dots animation ── */
+        const dots = document.querySelectorAll('.dot');
+        let current = 0;
+        setInterval(() => {
+            dots[current].classList.remove('active');
+            current = (current + 1) % dots.length;
+            dots[current].classList.add('active');
+        }, 3000);
+
+  const starsContainer = document.getElementById('bg-stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.className = 'bg-star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top  = Math.random() * 100 + '%';
+    s.style.opacity = Math.random() * 0.4 + 0.1;
+    s.style.animation = `twinkle ${(2 + Math.random() * 4).toFixed(1)}s ease-in-out ${(Math.random() * 4).toFixed(1)}s infinite`;
+    starsContainer.appendChild(s);
   }
-
-  /* ── Populate track (doubled for infinite loop) ── */
-  function buildTrack(id, data) {
-    const track = document.getElementById(id);
-    const doubled = [...data, ...data];
-    track.innerHTML = doubled.map(makeCard).join('');
-  }
-
-  buildTrack('track1', row1Data);
-  buildTrack('track2', row2Data);
-
-  /* ── Dots animation ── */
-  const dots = document.querySelectorAll('.dot');
-  let current = 0;
-  setInterval(() => {
-    dots[current].classList.remove('active');
-    current = (current + 1) % dots.length;
-    dots[current].classList.add('active');
-  }, 3000);
-</script>
+    </script>
 
 
 
 </body>
+
 </html>

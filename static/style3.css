@@ -1,31 +1,26 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    background-image: 
-        url('../static/back.jpg'),
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.25) 0%, transparent 50%);
-    background-repeat: no-repeat;
-    background-size: cover, 200px 200px, 200px 200px, 150px 150px;
-    background-position: center, 20px 80px, calc(100% - 20px) 20px, 40% 40%;
-    /* animation: particleFloat 20s ease-in-out infinite; DISABLED - caused page shifts */
-    min-height: 100vh;
-    height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-}
 
 @keyframes particleFloat {
-    0%, 100% { transform: translateY(0px) scale(1); }
-    33% { transform: translateY(-10px) scale(1.05); }
-    66% { transform: translateY(-5px) scale(0.98); }
+
+    0%,
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+
+    33% {
+        transform: translateY(-10px) scale(1.05);
+    }
+
+    66% {
+        transform: translateY(-5px) scale(0.98);
+    }
 }
 
 /* New Beautiful Animations - Global Keyframes */
@@ -34,6 +29,7 @@ body {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -41,25 +37,57 @@ body {
 }
 
 @keyframes glowPulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(175, 64, 255, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(175, 64, 255, 0.6), 0 0 60px rgba(0, 221, 235, 0.4); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(175, 64, 255, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(175, 64, 255, 0.6), 0 0 60px rgba(0, 221, 235, 0.4);
+    }
 }
 
 @keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 @keyframes floatGentle {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-8px) rotate(1deg); }
-    66% { transform: translateY(-3px) rotate(-1deg); }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+
+    66% {
+        transform: translateY(-3px) rotate(-1deg);
+    }
 }
 
 @keyframes shimmerRipple {
-    0% { box-shadow: 0 0 0 0 rgba(175, 64, 255, 0.7); }
-    70% { box-shadow: 0 0 0 20px rgba(175, 64, 255, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(175, 64, 255, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(175, 64, 255, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 20px rgba(175, 64, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(175, 64, 255, 0);
+    }
 }
 
 .animate-fadeup {
@@ -68,13 +96,22 @@ body {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.animate-glow { animation: glowPulse 2s ease-in-out infinite; }
-.animate-gradient { 
+.animate-glow {
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-gradient {
     background-size: 400% 400%;
     animation: gradientShift 3s ease infinite;
 }
-.animate-float { animation: floatGentle 4s ease-in-out infinite; }
-.btn-ripple { animation: shimmerRipple 1.5s ease-out; }
+
+.animate-float {
+    animation: floatGentle 4s ease-in-out infinite;
+}
+
+.btn-ripple {
+    animation: shimmerRipple 1.5s ease-out;
+}
 
 /* Header from style2.css - glassmorphism navbar */
 .left {
@@ -87,7 +124,7 @@ body {
     margin-top: 30px;
 }
 
-.logo-text {  
+.logo-text {
     margin: 30px;
     height: 300px;
     width: 300px;
@@ -112,7 +149,8 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 25px 32px; /* Adjusted for 100px height */
+    padding: 25px 32px;
+    /* Adjusted for 100px height */
     position: relative;
     transition: all 0.3s ease;
     border-radius: 12px;
@@ -168,13 +206,27 @@ header.navbar {
 }
 
 @keyframes logoFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-4px); }
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
 }
 
 @keyframes headerSlideDown {
-    from { transform: translateY(-100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Profile icon made more beautiful */
@@ -247,8 +299,15 @@ header.navbar {
 }
 
 @keyframes dropdownSlide {
-    from { opacity: 0; transform: translateY(-8px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .profile-name {
@@ -501,8 +560,13 @@ header.navbar {
 }
 
 @keyframes footerShine {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .footer-content {
@@ -587,20 +651,223 @@ header.navbar {
 
 
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    background-image: url('back.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    /* Optional: keeps image fixed when scrolling */
-    background-color: #cccccc;
-    /* Optional: a fallback color if the image doesn't load */
-    min-height: 100vh;
-    height: 100%
+html {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
 }
+
+
+/* =========================
+   STRIPE-STYLE MOVING WAVES
+========================= */
+
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    background: linear-gradient(
+        135deg,
+        #0a0012,
+        #0d0033,
+        #0a0a2e,
+        #150025,
+        #0a0012
+    ) !important;
+    background-size: 400% 400% !important;
+    animation: bgMove 8s ease infinite !important;
+}
+@keyframes bgMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes floatOrb1 {
+  0%,100% { transform: translate(0,0) scale(1); opacity: 0.6; }
+  50%      { transform: translate(60px,-40px) scale(1.15); opacity: 0.9; }
+}
+@keyframes floatOrb2 {
+  0%,100% { transform: translate(0,0) scale(1); opacity: 0.4; }
+  50%      { transform: translate(-50px,30px) scale(1.1); opacity: 0.7; }
+}
+.orb-blue   { width:280px; height:280px; background:#3a00cc; filter:blur(70px); top:-70px; left:-60px; animation: floatOrb1 7s ease-in-out infinite; }
+.orb-violet { width:240px; height:240px; background:#6b00ff; filter:blur(65px); bottom:-50px; right:-30px; animation: floatOrb2 9s ease-in-out infinite; }
+
+header, main, section, footer, .hero, .features,
+.how-it-works, .testimonials-section, .cta-section, .trust-banner {
+  position: relative;
+  z-index: 1;
+}
+/* CONTENT */
+.content {
+  position: relative;
+  z-index: 10;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+}
+
+/* BACKGROUND */
+.wave-bg {
+
+   display: none;
+}
+
+/* WAVES */
+.wave {
+  position: absolute;
+
+  width: 170%;
+  height: 340px;
+
+  left: -35%;
+
+  border-radius: 45%;
+
+  filter: blur(35px);
+
+  will-change: transform, opacity;
+
+  opacity: 0.7;
+}
+
+/* WAVE 1 */
+.wave1 {
+  top: 10%;
+
+  background: linear-gradient(
+    90deg,
+    rgba(88, 28, 135, 0.9),
+    rgba(37, 99, 235, 0.8)
+  );
+
+  animation: moveWave1 14s linear infinite;
+}
+
+/* WAVE 2 */
+.wave2 {
+  top: 40%;
+
+  background: linear-gradient(
+    90deg,
+    rgba(67, 56, 202, 0.8),
+    rgba(30, 64, 175, 0.7)
+  );
+
+  animation: moveWave2 18s linear infinite;
+}
+
+/* WAVE 3 */
+.wave3 {
+  top: 70%;
+
+  background: linear-gradient(
+    90deg,
+    rgba(76, 29, 149, 0.7),
+    rgba(29, 78, 216, 0.6)
+  );
+
+  animation: moveWave3 22s linear infinite;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+/* LEFT -> RIGHT */
+@keyframes moveWave1 {
+  0% {
+    transform: translateX(-80%) translateY(0px) rotate(-8deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: translateX(0%) translateY(-25px) rotate(-3deg);
+    opacity: 0.55;
+  }
+
+  90% {
+    opacity: 0.25;
+  }
+
+  100% {
+    transform: translateX(80%) translateY(20px) rotate(-10deg);
+    opacity: 0;
+  }
+}
+
+/* RIGHT -> LEFT */
+@keyframes moveWave2 {
+  0% {
+    transform: translateX(80%) translateY(0px) rotate(8deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.65;
+  }
+
+  50% {
+    transform: translateX(0%) translateY(25px) rotate(3deg);
+    opacity: 0.45;
+  }
+
+  90% {
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateX(-80%) translateY(-20px) rotate(10deg);
+    opacity: 0;
+  }
+}
+
+/* DIAGONAL FLOW */
+@keyframes moveWave3 {
+  0% {
+    transform: translateX(-60%) translateY(20px) rotate(-5deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateX(10%) translateY(-20px) rotate(0deg);
+    opacity: 0.35;
+  }
+
+  90% {
+    opacity: 0.15;
+  }
+
+  100% {
+    transform: translateX(70%) translateY(15px) rotate(-8deg);
+    opacity: 0;
+  }
+}
+
 
 
 
@@ -629,7 +896,7 @@ body {
 }
 
 .nav-links a {
-       font-size: 12px;
+    font-size: 12px;
     letter-spacing: 0px;
     color: rgb(246, 247, 248);
     font-weight: 500;
@@ -747,14 +1014,12 @@ header {
     left: -100%;
     width: 70%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.15) 40%,
-        rgba(255, 255, 255, 0.45) 50%,
-        rgba(255, 255, 255, 0.15) 60%,
-        transparent 100%
-    );
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.15) 40%,
+            rgba(255, 255, 255, 0.45) 50%,
+            rgba(255, 255, 255, 0.15) 60%,
+            transparent 100%);
     transform: skewX(-15deg);
     transition: left 0.55s ease;
 }
@@ -899,7 +1164,7 @@ header {
     text-align: left;
 }
 
-.hero-copy > * {
+.hero-copy>* {
     opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -1209,7 +1474,28 @@ header {
         transform: scale(1);
     }
 }
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0,0) scale(1); opacity: 0.6; }
+  50%       { transform: translate(60px,-40px) scale(1.15); opacity: 0.9; }
+}
+
+/* Glowing orbs (add as divs inside body) */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb 9s ease-in-out infinite;
+}
+.orb-blue   { width:300px; height:300px; background:#3a00cc; top:-80px; left:-60px; }
+.orb-violet { width:260px; height:260px; background:#6b00ff; bottom:-60px; right:-40px; animation-duration:11s; }
 .ats-bar-wrap {
     margin-top: 14px;
     padding-top: 11px;
@@ -1396,14 +1682,12 @@ header {
     left: -100%;
     width: 70%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.4) 40%,
-        rgba(255, 255, 255, 0.7) 50%,
-        rgba(255, 255, 255, 0.4) 60%,
-        transparent 100%
-    );
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.4) 40%,
+            rgba(255, 255, 255, 0.7) 50%,
+            rgba(255, 255, 255, 0.4) 60%,
+            transparent 100%);
     transform: skewX(-15deg);
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1435,6 +1719,7 @@ header {
         min-width: 196px;
     }
 }
+
 .btn-secondary {
     padding: 0.75rem 2rem;
     border: none;
@@ -1454,7 +1739,7 @@ header {
 .btn-secondary:hover {
     background: #030004;
     transform: translateY(-2px);
-    color:#f9fbfb;
+    color: #f9fbfb;
     box-shadow: rgb(0, 0, 12);
 }
 
@@ -1505,9 +1790,20 @@ header {
     margin-right: 30px;
 }
 
-.features-grid > .feature-card:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0; }
-.features-grid > .feature-card:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.5s forwards; opacity: 0; }
-.features-grid > .feature-card:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.7s forwards; opacity: 0; }
+.features-grid>.feature-card:nth-child(1) {
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+.features-grid>.feature-card:nth-child(2) {
+    animation: fadeInUp 0.8s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+.features-grid>.feature-card:nth-child(3) {
+    animation: fadeInUp 0.8s ease-out 0.7s forwards;
+    opacity: 0;
+}
 
 .feature-card {
     margin: 20px;
@@ -1603,6 +1899,7 @@ header {
         transform: translateX(-50%) scaleX(0.3);
         opacity: 1;
     }
+
     100% {
         transform: translateX(-50%) scaleX(1.8);
         opacity: 0;
@@ -1694,6 +1991,7 @@ header {
         opacity: 1;
         transform: translate(-50%, -50%) scale(0);
     }
+
     100% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(3) rotate(180deg);
