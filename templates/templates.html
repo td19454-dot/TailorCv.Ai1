@@ -8,7 +8,7 @@
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/header-footer.css">
     <link rel="stylesheet" href="/static/style2.css">
-    <link rel="stylesheet" href="/static/templates.css?v=4">
+    <link rel="stylesheet" href="/static/templates.css?v=5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -46,25 +46,35 @@
 
     <main class="templates-page">
         <section class="templates-header">
-            <h1 class="templates-title">Choose Your Resume Template</h1>
+            <p class="templates-eyebrow">Step 1 of 2</p>
+            <h1 class="templates-title">Pick a Template. Launch Faster.</h1>
             <p class="templates-subtitle">
-                Select a template first, then continue to either edit your CV manually or optimize it with AI.
+                Choose a layout, then either optimize with AI or continue with CV editing.
             </p>
+            <div class="templates-quick-points">
+                <span>18 layouts</span>
+                <span>ATS-friendly formatting</span>
+                <span>Instant PDF export</span>
+            </div>
         </section>
 
+        <section class="templates-section-head">
+            <h2>Choose a resume style</h2>
+            <p>Click any card to select. You can change it later.</p>
+        </section>
         <section id="templates-grid" class="templates-grid" aria-live="polite"></section>
 
         <section class="templates-upload-card">
-            <span class="templates-upload-kicker">Template Resume Lab</span>
-            <h2 class="templates-upload-title">Modify Your Resume with the Selected Template</h2>
-            <p class="templates-upload-subtitle">Upload your resume and edit it directly with your chosen template.</p>
+            <span class="templates-upload-kicker">Optional Quick Run</span>
+            <h2 class="templates-upload-title">Test the selected template with your resume</h2>
+            <p class="templates-upload-subtitle">Upload PDF and generate a template-based output in one click.</p>
             <div class="templates-upload-controls">
                 <input id="templates-cv-file" class="templates-file-input" type="file" accept=".pdf,application/pdf">
                 <button id="template-only-optimize-btn" class="templates-btn templates-btn-primary" disabled>
-                    Modify Resume
+                    Run Template
                 </button>
                 <button id="template-only-download-btn" class="templates-btn templates-btn-secondary" disabled>
-                    Download Optimized Resume
+                    Download PDF
                 </button>
             </div>
             <div id="templates-optimize-progress" class="templates-progress" style="display:none;">
@@ -81,7 +91,7 @@
                 Create CV
             </button>
             <button id="optimize-ai-btn" class="templates-btn templates-btn-primary" disabled>
-                Optimize with AI
+                Continue to Optimize
             </button>
         </section>
     </main>
