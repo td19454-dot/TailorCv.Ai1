@@ -874,7 +874,7 @@ function displayOptimizeResults(pdfUrl, hasEditorPayload = false) {
         ? `<button id="download-from-success-btn" class="download-btn" type="button" style="font-size: 1.9rem; font-weight: 700;">Download your PDF</button>`
         : `<a href="${pdfUrl}" download="optimized_resume.pdf" class="download-btn">Download Optimized Resume</a>`;
     const editorBtnHtml = hasEditorPayload
-        ? `<a href="/optimized-editor" class="btn btn-secondary" style="display:none; margin-left:10px;">Go to Editor (Edit Font Size)</a>`
+        ? `<a href="/optimized-editor" class="btn btn-secondary" style="margin-left:10px;">Go to Editor (Edit Font Size)</a>`
         : '';
 
     optimizeContent.innerHTML = `

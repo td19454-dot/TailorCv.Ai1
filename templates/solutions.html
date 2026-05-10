@@ -6,13 +6,359 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Optimizer - Solutions</title>
     {% include "_seo_head.html" %}
-<link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/header-footer.css">
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .cv2-solutions {
+            position: relative;
+            overflow: hidden;
+            padding: 1.8rem 0 2.6rem;
+            min-height: calc(100vh - 180px);
+            background:
+                radial-gradient(circle at 16% 20%, rgba(41, 121, 255, 0.23), transparent 34%),
+                radial-gradient(circle at 84% 82%, rgba(56, 189, 248, 0.16), transparent 36%),
+                linear-gradient(180deg, #020b1c 0%, #031027 56%, #041333 100%);
+        }
+        .cv2-solutions::before,
+        .cv2-solutions::after {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(8px);
+        }
+        .cv2-solutions::before {
+            width: 42rem;
+            height: 42rem;
+            left: -10rem;
+            top: -12rem;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.21) 0%, rgba(37, 99, 235, 0.03) 42%, transparent 70%);
+            animation: cv2FloatA 14s ease-in-out infinite alternate;
+        }
+        .cv2-solutions::after {
+            width: 38rem;
+            height: 38rem;
+            right: -8rem;
+            bottom: -10rem;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(56, 189, 248, 0.03) 42%, transparent 72%);
+            animation: cv2FloatB 16s ease-in-out infinite alternate;
+        }
+        .cv2-shell {
+            position: relative;
+            z-index: 1;
+        }
+        @keyframes cv2FloatA {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(70px, 35px, 0) scale(1.08); }
+            100% { transform: translate3d(30px, 75px, 0) scale(0.96); }
+        }
+        @keyframes cv2FloatB {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(-60px, -40px, 0) scale(1.06); }
+            100% { transform: translate3d(-25px, -80px, 0) scale(0.94); }
+        }
+        .cv2-shell {
+            max-width: 1450px;
+            margin: 0 auto;
+            padding: 0 1.45rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .cv2-hero {
+            text-align: left;
+            margin: 0 auto 1.25rem;
+            max-width: 1360px;
+        }
+        .cv2-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.42rem;
+            border: 1px solid rgba(59, 130, 246, 0.45);
+            border-radius: 999px;
+            padding: 0.38rem 0.82rem;
+            color: #60a5fa;
+            font-size: 0.82rem;
+            letter-spacing: 0.02em;
+            background: rgba(2, 12, 34, 0.75);
+            margin-bottom: 0.95rem;
+        }
+        .cv2-hero h1 {
+            margin: 0;
+            font-size: clamp(2.1rem, 4.2vw, 4rem);
+            color: #ecf4ff;
+            font-weight: 700;
+            line-height: 1.12;
+            max-width: 760px;
+            letter-spacing: -0.01em;
+            text-transform: none;
+        }
+        .cv2-hero .cv2-highlight {
+            color: #3392ff;
+        }
+        .cv2-hero p {
+            margin: 0.55rem auto 0;
+            max-width: 760px;
+            color: #6f99d2;
+            font-size: 1.08rem;
+            line-height: 1.45;
+            margin-left: 0;
+        }
+        .cv2-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1.1rem;
+            max-width: 100%;
+        }
+        .cv2-chip {
+            border: 1px solid rgba(30, 100, 220, 0.35);
+            background: rgba(3, 17, 43, 0.7);
+            border-radius: 10px;
+            padding: 0.55rem 0.9rem;
+            color: #7fb6ff;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+        .cv2-chip span {
+            color: white;
+        }
+        .cv2-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.95rem;
+            align-items: start;
+            width: 96%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .cv2-card {
+            background: linear-gradient(165deg, rgba(3, 20, 50, 0.88), rgba(3, 18, 46, 0.82));
+            border: 1px solid rgba(20, 95, 220, 0.48);
+            border-radius: 14px;
+            box-shadow: 0 8px 18px rgba(2, 6, 23, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 1.1rem;
+            width : 100%;
+        }
+        .cv2-form-head h2 {
+            margin: 0;
+            color:white;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            line-height: 1;
+        }
+        .cv2-form-head p {
+            margin: 0.3rem 0 0.7rem;
+            color: #cbdbee;
+            font-size: 0.98rem;
+        }
+        .cv2-label {
+            display: block;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.55rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+        .cv2-file-box {
+            border: 1px dashed rgba(30, 100, 220, 0.45);
+            border-radius: 14px;
+            padding: 0.78rem;
+            margin-bottom: 0.65rem;
+            background: rgba(2, 12, 34, 0.6);
+        }
+        .cv2-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+        .cv2-input-grid {
+            display: grid;
+            grid-template-columns: 0.95fr 1.05fr;
+            gap: 0.65rem;
+            align-items: start;
+        }
+        .cv2-side-list {
+            display: grid;
+            gap: 0.55rem;
+        }
+        .cv2-side-item {
+            border: 1px solid rgba(30, 100, 220, 0.32);
+            border-radius: 14px;
+            padding: 0.85rem 0.9rem;
+            background: rgba(4, 20, 48, 0.58);
+        }
+        .cv2-side-item h3 {
+            margin: 0;
+            color: #1f67c6;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+        .cv2-side-item p {
+            margin: 0.35rem 0 0;
+            color: #4d77aa;
+            font-size: 0.95rem;
+            line-height: 1.42;
+        }
+        .cv2-mini {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.45rem;
+            margin-top: 0.62rem;
+        }
+        .cv2-pill {
+            text-align: center;
+            border-radius: 10px;
+            padding: 0.4rem 0.25rem;
+            background: rgba(2, 14, 38, 0.7);
+            border: 1px solid rgba(30, 100, 220, 0.35);
+        }
+        .cv2-pill strong {
+            display: block;
+            color: #74b5ff;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .cv2-pill span {
+            color: #3f6ca0;
+            font-size: 1.55rem;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0;
+            line-height: 1.1;
+            margin-top: 0.1rem;
+            display: block;
+        }
+        .cv2-pill br {
+            display: none;
+        }
+        .cv2-pill span.cv2-long {
+            font-size: 0.82rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            line-height: 1.2;
+        }
+        .cv2-actions .btn {
+            height: 60px;
+            font-size: 1.35rem;
+            box-shadow: none;
+            border-radius: 12px;
+        }
+        #job-description.form-textarea {
+            min-height: 206px;
+            background: rgba(3, 17, 41, 0.92);
+            color: #d8e8ff;
+            border: 1px solid rgba(30, 100, 220, 0.45);
+            border-radius: 10px;
+        }
+        #job-description.form-textarea::placeholder {
+            color: #6b94c8;
+        }
+        .file-label {
+            min-height: 206px;
+            border-radius: 10px;
+            background: rgba(3, 17, 41, 0.86);
+            border: 1px solid rgba(30, 100, 220, 0.45);
+            color: #77aee9;
+            box-shadow: none;
+        }
+        .file-icon { color: #3b82f6; font-size: 2.25rem; }
+        .file-text { color: #74b5ff; font-size: 1.75rem; }
+        .file-name { color: #3f6ca0; font-size: 0.95rem; }
+        .btn-secondary::after {
+            background: linear-gradient(135deg, #031939 0%, #062453 100%);
+        }
+        .btn-primary::after {
+            background: linear-gradient(135deg, #0a2f6d 0%, #0e3a82 100%);
+        }
+        .manual-cv-card .btn {
+            max-width: 100%;
+        }
+        #template-selection-section,
+        #ats-progress-section,
+        #results-section {
+            margin-top: 1rem !important;
+        }
+        @media (max-width: 980px) {
+            .cv2-shell {
+                max-width: 100%;
+                padding: 0 1rem;
+            }
+            .cv2-grid {
+                grid-template-columns: 1fr;
+                width: 100%;
+            }
+            .cv2-hero h1 {
+                font-size: clamp(1.8rem, 8.4vw, 2.8rem);
+            }
+            .cv2-hero p {
+                font-size: 0.96rem;
+            }
+            .cv2-form-head h2,
+            .cv2-side-item h3 {
+                font-size: 1.2rem;
+            }
+            .cv2-form-head p,
+            .cv2-side-item p {
+                font-size: 0.95rem;
+            }
+            .cv2-label {
+                font-size: 0.95rem;
+            }
+            .cv2-pill strong {
+                font-size: 1rem;
+            }
+            .cv2-pill span {
+                font-size: 0.75rem;
+            }
+            .file-icon { font-size: 1.5rem; }
+            .file-text { font-size: 1rem; }
+            .file-name { font-size: 0.9rem; }
+            .cv2-chip {
+                font-size: 0.86rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .cv2-shell {
+                padding: 0 0.75rem;
+            }
+            .cv2-grid {
+                width: 100%;
+                margin: 0;
+            }
+            .cv2-hero {
+                max-width: 100%;
+            }
+            .cv2-input-grid {
+                grid-template-columns: 1fr;
+            }
+            .cv2-actions {
+                grid-template-columns: 1fr;
+            }
+            .cv2-mini {
+                grid-template-columns: 1fr;
+            }
+            .cv2-hero p {
+                font-size: 0.95rem;
+            }
+            .cv2-chip {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+    </style>
 </head>
-<body> 
+<body>
 
     <header class="navbar">
         <div class="left">
@@ -44,73 +390,82 @@
         </div>
     </header>
 
-    <section class="solutions-section">
-        <div class="container">
-            <div class="solutions-header">
-                <h1 class="solutions-title">Optimize Your Resume</h1>
-                <p class="solutions-subtitle">
-                    Upload your resume and paste the job description to get instant analysis 
-                    and an optimized resume tailored for the role.
-                </p>
+    <section class="solutions-section cv2-solutions">
+        <div class="cv2-shell">
+            <div class="cv2-hero">
+                <span class="cv2-kicker">Free AI Resume Optimizer</span>
+                <h1>Turn every application into <span class="cv2-highlight">a strong match.</span></h1>
+                <p>Upload your resume and paste the job description. Get ATS insights plus a tailored PDF.</p>
+                <div class="cv2-chips">
+                    <div class="cv2-chip">◔ 2-3 min <span>Typical run</span></div>
+                    <div class="cv2-chip">✓ ATS-ready <span>Role focused</span></div>
+                    <div class="cv2-chip">⇩ PDF output <span>Instant download</span></div>
+                    <div class="cv2-chip">🔒 Free <span>Always</span></div>
+                </div>
             </div>
-            
+
             <div class="solutions-content">
-                <div class="upload-section">
-                    <div class="form-card">
-                        <h2 class="form-title">Upload Your Resume</h2>
+                <div class="cv2-grid">
+                    <div class="cv2-card">
+                        <div class="cv2-form-head">
+                            <h2>Start Optimization</h2>
+                            <p>Step 1: Add your resume and job description. Step 2: choose ATS score or optimized resume.</p>
+                        </div>
                         <form id="resume-form" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="resume-file" class="form-label">Resume (PDF only)</label>
-                                <div class="file-upload-wrapper">
-                                    <input type="file" id="resume-file" name="file" accept=".pdf" class="file-input" required>
-                                    <label for="resume-file" class="file-label">
-                                        <span class="file-icon">📄</span>
-                                        <span class="file-text">Choose PDF file</span>
-                                        <span class="file-name" id="file-name">No file chosen</span>
-                                    </label>
+                            <div class="cv2-input-grid">
+                                <div class="form-group">
+                                    <label for="resume-file" class="cv2-label">Resume (PDF only)</label>
+                                    <div class="cv2-file-box">
+                                        <div class="file-upload-wrapper">
+                                            <input type="file" id="resume-file" name="file" accept=".pdf" class="file-input" required>
+                                            <label for="resume-file" class="file-label">
+                                                <span class="file-icon" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12 15V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                                        <path d="M8.8 11.2L12 8L15.2 11.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M7 16.8C7 17.46 7.54 18 8.2 18H15.8C16.46 18 17 17.46 17 16.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                                    </svg>
+                                                </span>
+                                                <span class="file-text">Choose PDF file</span>
+                                                <span class="file-name" id="file-name">No file chosen</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div id="stored-file-info" style="display:none; margin-top:6px; font-size:0.85rem; color:#c8d7fb;">
+                                        <span>Saved: <strong id="stored-file-name"></strong></span>
+                                        <button type="button" id="clear-stored-btn" style="margin-left:8px; background:none; border:none; color:#fca5a5; cursor:pointer; font-size:0.85rem; text-decoration:underline;">Change / Clear</button>
+                                    </div>
                                 </div>
-                                <div id="stored-file-info" style="display:none; margin-top:6px; font-size:0.85rem; color:#475569;">
-                                    <span>💾 Saved: <strong id="stored-file-name"></strong></span>
-                                    <button type="button" id="clear-stored-btn" style="margin-left:8px; background:none; border:none; color:#ef4444; cursor:pointer; font-size:0.85rem; text-decoration:underline;">Change / Clear</button>
+
+                                <div class="form-group">
+                                    <label for="job-description" class="cv2-label">Job Description</label>
+                                    <textarea
+                                        id="job-description"
+                                        name="job_description"
+                                        class="form-textarea"
+                                        rows="10"
+                                        placeholder="Paste full JD with skills, responsibilities, and requirements..."
+                                        required
+                                    ></textarea>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="job-description" class="form-label">Job Description</label>
-                                <textarea 
-                                    id="job-description" 
-                                    name="job_description" 
-                                    class="form-textarea" 
-                                    rows="10" 
-                                    placeholder="Paste the job description here..."
-                                    required
-                                ></textarea>
-                            </div>
-
-                            <div class="form-actions">
+                            <div class="form-actions cv2-actions">
                                 <button type="button" id="analyze-btn" class="btn btn-secondary">
                                     <span class="btn-text">Get ATS Score</span>
-                                    <span class="btn-loader" style="display: none;">⏳</span>
+                                    <span class="btn-loader" style="display: none;">?</span>
                                 </button>
 
                                 <button type="button" id="optimize-btn" class="btn btn-primary">
                                     <span class="btn-text">Optimize Resume</span>
-                                    <span class="btn-loader" style="display: none;">⏳</span>
+                                    <span class="btn-loader" style="display: none;">?</span>
                                 </button>
                             </div>
                         </form>
                     </div>
 
-                    <div class="form-card manual-cv-card">
-                        <h2 class="form-title">No CV? No Problem.</h2>
-                        <p class="manual-cv-description">
-                            Create your first professional CV in minutes with guided templates and easy editing.
-                        </p>
-                        <a type="button" id="optimize-btn" href="/modify-cv" class="btn btn-primary">
-                            <span class="btn-text">Create CV</span>
-                        </a>
+                    <div class="cv2-side-list">
                     </div>
-
                 </div>
 
                 <div id="template-selection-section" class="results-card" style="display: none; margin-top: 2rem;">
@@ -121,7 +476,7 @@
                         <p style="text-align: center; margin-bottom: 1.5rem; color: #64748b;">
                             Click on a preview to select your preferred layout.
                         </p>
-                        
+
                         <div class="templates-grid" id="templates-grid"></div>
 
                         <div style="text-align: center; margin-top: 30px;">
@@ -146,7 +501,7 @@
                             <h2 class="results-title">Optimized Resume Ready</h2>
                         </div>
                         <div id="optimize-content" class="results-content">
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
