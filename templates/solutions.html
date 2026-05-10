@@ -12,40 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .cv2-solutions {
-            position: relative;
-            overflow: hidden;
-            padding: 1.8rem 0 2.6rem;
-            min-height: calc(100vh - 180px);
-            background:
-                radial-gradient(circle at 16% 20%, rgba(41, 121, 255, 0.23), transparent 34%),
-                radial-gradient(circle at 84% 82%, rgba(56, 189, 248, 0.16), transparent 36%),
-                linear-gradient(180deg, #020b1c 0%, #031027 56%, #041333 100%);
-        }
-        .cv2-solutions::before,
-        .cv2-solutions::after {
-            content: "";
-            position: absolute;
-            pointer-events: none;
-            z-index: 0;
-            filter: blur(8px);
-        }
-        .cv2-solutions::before {
-            width: 42rem;
-            height: 42rem;
-            left: -10rem;
-            top: -12rem;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.21) 0%, rgba(37, 99, 235, 0.03) 42%, transparent 70%);
-            animation: cv2FloatA 14s ease-in-out infinite alternate;
-        }
-        .cv2-solutions::after {
-            width: 38rem;
-            height: 38rem;
-            right: -8rem;
-            bottom: -10rem;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(56, 189, 248, 0.03) 42%, transparent 72%);
-            animation: cv2FloatB 16s ease-in-out infinite alternate;
-        }
+     
+   
+    
         .cv2-shell {
             position: relative;
             z-index: 1;
@@ -359,7 +328,7 @@
     </style>
 </head>
 <body>
-
+<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
     <header class="navbar">
         <div class="left">
             <div class="logo">
@@ -532,8 +501,55 @@
         </div>
     </footer>
 
+
     <script src="/static/auth_nav.js"></script>
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/main_new.js?v=30"></script>
+<script>
+(function(){
+  const canvas = document.getElementById('wave-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const waves = [
+    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
+    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
+    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
+    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
+    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
+    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
+  ];
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now();
+    waves.forEach(wv => {
+      ctx.beginPath();
+      for(let x = 0; x <= W; x += 2){
+        const y = H * wv.yf
+          + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
+          + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
+          + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const [r,g,b] = wv.color;
+      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+      gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
+      gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
+      gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
+      ctx.fillStyle = gr;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+
+
 </body>
 </html>

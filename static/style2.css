@@ -9,16 +9,13 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-   
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    background-image: url('back90.avif');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Optional: keeps image fixed when scrolling */
-    background-color: #cccccc; /* Optional: a fallback color if the image doesn't load */
-    min-height: 100vh; 
-    height : 100%
+    background: linear-gradient(135deg, #030014, #06002a, #0a0a2e, #001830);
+background-size: 300% 300%;
+animation: bgMove 10s ease infinite;
+    min-height: 100vh;
+    height: 100%;
     
 }
 
