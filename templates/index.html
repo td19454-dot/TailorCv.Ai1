@@ -445,7 +445,7 @@ header, main, section, footer, .hero, .features,
         .pulse-text {
             font-size: 30px;
             font-weight: 600;
-            color: #84b2d4;
+            color: #9609f4;
             letter-spacing: 0.02em;
             animation: tbText 2.5s ease-in-out infinite;
             font-family: 'Inter', sans-serif;
@@ -454,7 +454,7 @@ header, main, section, footer, .hero, .features,
         .trust-num {
             font-weight: 800;
             font-size: 32px;
-            color: #DDD6FE;
+            color: #9524d1;
             animation: tbNum 2.5s ease-in-out infinite;
         }
 
@@ -468,7 +468,7 @@ header, main, section, footer, .hero, .features,
 
             50% {
                 opacity: 0.85;
-                text-shadow: 0 0 18px rgba(177, 172, 181, 0.55);
+                text-shadow: 0 0 18px rgba(156, 46, 240, 0.55);
             }
         }
 
@@ -615,6 +615,223 @@ header, main, section, footer, .hero, .features,
 
 
 
+    <!-- Logo Marquee Section -->
+    <section class="logo-marquee-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Trusted by Professionals at</h2>
+            </div>
+            <div class="marquee-wrapper">
+                <div class="marquee-container">
+                    <div class="marquee-track" id="marqueeTrack">
+                        <!-- Logos will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Logo Marquee Styles */
+        .logo-marquee-section {
+            width: 100%;
+            padding: 72px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-marquee-section .section-header {
+            margin-bottom: 48px;
+        }
+
+        .logo-marquee-section .section-title {
+            font-size: clamp(28px, 4vw, 42px);
+        }
+
+        .marquee-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        /* Gradient fade masks */
+        .marquee-wrapper::before,
+        .marquee-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 120px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .marquee-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg) 30%, transparent 100%);
+        }
+
+        .marquee-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg) 30%, transparent 100%);
+        }
+
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 2px;
+            background-color: #fefefe;
+        }
+
+        .marquee-track {
+            display: flex;
+            align-items: center;
+            width: max-content;
+            gap: 0;
+            animation: marquee-scroll 23s linear infinite;
+            will-change: transform;
+        
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .logo-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 140px;
+            padding: 0 60px;
+            flex-shrink: 0;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .logo-item:last-child {
+            border-right: none;
+        }
+
+        .logo-item:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .logo-item img {
+            height: 100px;
+            width: auto;
+            object-fit: contain;
+            max-width: 280px;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+        }
+
+        @keyframes marquee-scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .marquee-wrapper::before,
+            .marquee-wrapper::after {
+                width: 60px;
+            }
+
+            .logo-item {
+                padding: 0 40px;
+                height: 80px;
+            }
+
+            .logo-item img {
+                height: 80px;
+            }
+
+            .marquee-track {
+                animation: marquee-scroll 20s linear infinite;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .marquee-wrapper::before,
+            .marquee-wrapper::after {
+                width: 40px;
+            }
+
+            .logo-item {
+                padding: 0 25px;
+                height: 80px;
+            }
+
+            .logo-item img {
+                height: 70px;
+            }
+
+            .marquee-track {
+                animation: marquee-scroll 18s linear infinite;
+            }
+        }
+    </style>
+
+    <script>
+        (function() {
+            const logoFiles = [
+                'amazon.png',
+                'mckinsey.png',
+                'goldmansachs.png',
+                'databricks.png',
+                'microsoft.png',
+                'google.webp',
+                'apple_logo_black.svg',
+                'oracle.png',
+                'netflix.png',
+                'uber.png'
+            ];
+
+            const basePath = '/static/company_logos/';
+            const track = document.getElementById('marqueeTrack');
+
+            // Create logo items
+            function createLogoItems() {
+                // Create duplicates for seamless infinite scroll
+                const allLogos = [...logoFiles, ...logoFiles];
+                
+                allLogos.forEach((filename, index) => {
+                    const logoItem = document.createElement('div');
+                    logoItem.className = 'logo-item';
+                    
+                    const img = document.createElement('img');
+                    img.src = basePath + filename;
+                    img.alt = filename.split('.')[0];
+                    img.loading = 'lazy';
+                    
+                    // For PNG files, use screen blend mode to remove white backgrounds
+                    if (filename.toLowerCase().endsWith('.png')) {
+                        img.style.mixBlendMode = 'screen';
+                    }
+                    
+                    // Add error handling for broken images
+                    img.onerror = function() {
+                        this.style.display = 'none';
+                    };
+
+                    logoItem.appendChild(img);
+                    track.appendChild(logoItem);
+                });
+            }
+
+            // Initialize on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', createLogoItems);
+            } else {
+                createLogoItems();
+            }
+        })();
+    </script>
+
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
@@ -694,10 +911,6 @@ header, main, section, footer, .hero, .features,
             </div>
         </div>
     </section>
-
-
-
-
 
     <!-- How It Works Section -->
     <section class="how-it-works">
