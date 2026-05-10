@@ -737,6 +737,35 @@ function redirectToLogin() {
     window.location.href = `/login?next=${nextUrl}`;
 }
 
+async function downloadPdfFromEditorPayload() {
+    const raw = sessionStorage.getItem(LS_KEYS.optimizedEditorPayload);
+    if (!raw) {
+        throw new Error('No optimized editor payload found');
+    }
+    const payload = JSON.parse(raw);
+    if (!payload || !payload.html) {
+        throw new Error('Optimized payload is missing HTML');
+    }
+    const response = await fetch("/api/download-html-pdf", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ html: payload.html, pdf_scale: 1 })
+    });
+    if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || "Failed to generate PDF");
+    }
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "optimized_resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.URL.revokeObjectURL(url);
+}
+
 function isUserLoggedIn() {
     try {
         const user = JSON.parse(localStorage.getItem('tailorcv_user') || 'null');
@@ -781,6 +810,7 @@ async function handleResumeOptimization() {
     const styleId = selectedStyle; 
     formData.append('template_id', templateId);
     formData.append('style_id', styleId);
+    formData.append('editor_mode', 'true');
 
     try {
         const response = await fetch(`/get-optimised-resume`, {
@@ -805,13 +835,18 @@ async function handleResumeOptimization() {
                 throw new Error('Optimization completed but preview payload is missing');
             }
             sessionStorage.setItem(LS_KEYS.optimizedEditorPayload, JSON.stringify(payload));
-            window.location.href = '/optimized-editor';
+            displayOptimizeResults(null, true);
+            try {
+                await downloadPdfFromEditorPayload();
+            } catch (error) {
+                console.warn('Auto-download failed after optimization:', error);
+            }
             return;
         }
 
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
-        displayOptimizeResults(url);
+        displayOptimizeResults(url, false);
         triggerPdfDownload(url, 'optimized_resume.pdf');
 
     } catch (error) {
@@ -833,16 +868,43 @@ async function handleResumeOptimization() {
     }
 }
 
-function displayOptimizeResults(pdfUrl) {
+function displayOptimizeResults(pdfUrl, hasEditorPayload = false) {
     const optimizeContent = document.getElementById('optimize-content');
+    const downloadBtnHtml = hasEditorPayload
+        ? `<button id="download-from-success-btn" class="download-btn" type="button" style="font-size: 1.9rem; font-weight: 700;">Download your PDF</button>`
+        : `<a href="${pdfUrl}" download="optimized_resume.pdf" class="download-btn">Download Optimized Resume</a>`;
+    const editorBtnHtml = hasEditorPayload
+        ? `<a href="/optimized-editor" class="btn btn-secondary" style="display:none; margin-left:10px;">Go to Editor (Edit Font Size)</a>`
+        : '';
+
     optimizeContent.innerHTML = `
         <div class="optimize-success">
             <div class="optimize-success-icon">✅</div>
             <div class="optimize-success-title">Resume Optimized!</div>
             <div class="optimize-success-message">Your tailored resume is ready.</div>
             <div class="optimize-success-actions">
-                <a href="${pdfUrl}" download="optimized_resume.pdf" class="download-btn">Download Optimized Resume</a>
+                ${downloadBtnHtml}
+                ${editorBtnHtml}
             </div>
         </div>
     `;
+
+    if (hasEditorPayload) {
+        const btn = document.getElementById('download-from-success-btn');
+        if (btn) {
+            btn.addEventListener('click', async () => {
+                const originalText = btn.textContent;
+                btn.disabled = true;
+                btn.textContent = 'Preparing PDF...';
+                try {
+                    await downloadPdfFromEditorPayload();
+                } catch (error) {
+                    alert(`Download failed: ${error.message}`);
+                } finally {
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                }
+            });
+        }
+    }
 }
