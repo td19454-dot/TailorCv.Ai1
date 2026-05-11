@@ -1238,15 +1238,16 @@ header {
 }
 
 .hero-subtitle {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 2.5rem;
     opacity: 0.95;
     line-height: 1.8;
-    color: rgb(159, 242, 241);
+    color: rgb(189, 181, 222);
     font-size: 20px;
 }
 
 .hero-cta {
+
     display: flex;
     gap: 1rem;
     justify-content: flex-start;
