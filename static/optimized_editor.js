@@ -1,663 +1,578 @@
 (function () {
-    const STORAGE_KEY = "tailorcv_optimized_editor_payload";
+    "use strict";
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       CONSTANTS & CONFIG
+    ───────────────────────────────────────────────────────────────────────── */
+    const STORAGE_KEY        = "tailorcv_optimized_editor_payload";
     const AUTO_DOWNLOAD_ON_OPEN = true;
-    const frame = document.getElementById("resume-preview-frame");
-    const statusEl = document.getElementById("editor-status");
-    const downloadBtn = document.getElementById("download-edited-btn");
+
+    // A4 paper dimensions (mm → px at 96 dpi)
+    const A4_WIDTH_MM        = 210;
+    const A4_HEIGHT_MM       = 297;
+    const MM_TO_PX           = 96 / 25.4;          // ≈ 3.7795 px/mm
+    const A4_WIDTH_PX        = A4_WIDTH_MM  * MM_TO_PX; // ≈ 794 px
+    const A4_HEIGHT_PX       = A4_HEIGHT_MM * MM_TO_PX; // ≈ 1123 px
+
+    // Gap between page sheets (Word-style grey gutter)
+    const PAGE_GAP_PX        = 24;
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       DOM REFS
+    ───────────────────────────────────────────────────────────────────────── */
+    const frame           = document.getElementById("resume-preview-frame");
+    const statusEl        = document.getElementById("editor-status");
+    const downloadBtn     = document.getElementById("download-edited-btn");
     const fontDecreaseBtn = document.getElementById("font-decrease-btn");
-    const fontResetBtn = document.getElementById("font-reset-btn");
+    const fontResetBtn    = document.getElementById("font-reset-btn");
     const fontIncreaseBtn = document.getElementById("font-increase-btn");
-    const fontSizeBadge = document.getElementById("font-size-badge");
-    const pageIndexBadge = document.getElementById("page-index-badge");
-    const fitGuidance = document.getElementById("fit-guidance");
-    const previewWrap = document.querySelector(".editor-preview-wrap");
-    let currentHtml = "";
-    let currentZoom = 1;
-    let baseFitScale = 1;
-    let templateId = 1;
-    let intrinsicContentWidth = null;
-    let intrinsicContentHeight = null;
-    let baseFontsCaptured = false;
-    let estimatedPages = 1;
-    let currentPage = 1;
-    let lastPageHeightDoc = 1;
-    let lastPageStartDoc = 0;
-    let estimateTimer = null;
-    let estimateRequestId = 0;
-    let serverEstimatedPages = null;
-    let lastEstimatedPages = 1;
-    let lastFillRatio = 1;
-    let hasAutoDownloaded = false;
+    const fontSizeBadge   = document.getElementById("font-size-badge");
+    const pageIndexBadge  = document.getElementById("page-index-badge");
+    const fitGuidance     = document.getElementById("fit-guidance");
+    const previewWrap     = document.querySelector(".editor-preview-wrap");
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       STATE
+    ───────────────────────────────────────────────────────────────────────── */
+    let currentHtml        = "";
+    let currentZoom        = 1.0;     // user font-scale multiplier (0.6 – 1.8)
+    let templateId         = 1;
+    let estimatedPages     = 1;
+    let lastFillRatio      = 1;
+    let hasAutoDownloaded  = false;
+
+    // Base font sizes captured once after first load (for templates 7+)
+    let baseFontsCaptured  = false;
+
+    // Server-side page-count polling
+    let estimateTimer      = null;
+    let estimateRequestId  = 0;
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       HELPERS – STATUS / BADGE
+    ───────────────────────────────────────────────────────────────────────── */
+    function setStatus(msg) {
+        if (fitGuidance) fitGuidance.textContent = msg || "";
+        if (statusEl)    statusEl.textContent    = msg || "";
+    }
+
+    function updateFontSizeBadge() {
+        if (fontSizeBadge)
+            fontSizeBadge.textContent = `${Math.round(currentZoom * 100)}%`;
+    }
 
     function updatePageBadge() {
-        if (pageIndexBadge) {
-            const fillPct = Math.max(1, Math.min(100, Math.round(lastFillRatio * 100)));
-            pageIndexBadge.textContent = `Current Pages: ${estimatedPages} | Fill: ${fillPct}%`;
-        }
+        if (!pageIndexBadge) return;
+        const fillPct = Math.max(1, Math.min(100, Math.round(lastFillRatio * 100)));
+        pageIndexBadge.textContent = `Pages: ${estimatedPages} | Fill: ${fillPct}%`;
     }
 
     function updateFitGuidance() {
         const fillPct = Math.max(1, Math.min(100, Math.round(lastFillRatio * 100)));
         if (estimatedPages > 1) {
-            setStatus(`Page ${estimatedPages} started. Press A- to fit into 1 page.`);
+            setStatus(`${estimatedPages} pages — press A- to shrink back to 1 page.`);
             return;
         }
-
-        if (fillPct >= 90) {
-            setStatus("Perfect fit on 1 page. Stop here and download.");
-            if (lastEstimatedPages > 1) {
-                const pulseTarget = fitGuidance || statusEl;
-                if (pulseTarget) {
-                    pulseTarget.classList.remove("pulse-success");
-                    void pulseTarget.offsetWidth;
-                    pulseTarget.classList.add("pulse-success");
-                }
-            }
-            return;
-        }
-
-        if (fillPct <= 78) {
-            setStatus("You still have space. Press A+ to increase font for a fuller page.");
-            return;
-        }
-
-        setStatus("Good fit. You can slightly increase font (A+) if you want.");
+        if (fillPct >= 90) { setStatus("Perfect fit on 1 page. Ready to download!"); return; }
+        if (fillPct <= 78) { setStatus("Lots of space left — press A+ to increase font size."); return; }
+        setStatus("Good fit. You can nudge font (A+) if you like.");
     }
 
-    function setStatus(message) {
-        if (fitGuidance) fitGuidance.textContent = message || "";
-        if (statusEl) statusEl.textContent = message || "";
-    }
-
-    function updateFontSizeBadge() {
-        if (fontSizeBadge) {
-            fontSizeBadge.textContent = `${Math.round(currentZoom * 100)}%`;
-        }
-    }
-
+    /* ─────────────────────────────────────────────────────────────────────────
+       PAYLOAD
+    ───────────────────────────────────────────────────────────────────────── */
     function getPayload() {
-        try {
-            return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "null");
-        } catch (error) {
-            return null;
-        }
+        try { return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "null"); }
+        catch { return null; }
     }
 
+    /* ─────────────────────────────────────────────────────────────────────────
+       EDITING OVERLAY
+       Injected into the iframe so the user can click-and-type directly.
+    ───────────────────────────────────────────────────────────────────────── */
     function addEditingOverlay(html) {
-        const editScript = `
-<script>
+        const script = `<script>
 document.addEventListener("DOMContentLoaded", function () {
   document.body.contentEditable = "true";
-  document.body.spellcheck = false;
-  document.body.style.outline = "none";
+  document.body.spellcheck      = false;
+  document.body.style.outline   = "none";
 });
-</script>`;
-        if (html.includes("</body>")) {
-            return html.replace("</body>", editScript + "</body>");
-        }
-        return html + editScript;
+<\/script>`;
+        return html.includes("</body>")
+            ? html.replace("</body>", script + "</body>")
+            : html + script;
     }
 
-    function getAvailablePreviewHeight() {
-        if (!previewWrap) return Math.max(640, window.innerHeight * 0.82);
-        const rect = previewWrap.getBoundingClientRect();
-        const bottomGap = 10;
-        return Math.max(640, window.innerHeight - rect.top - bottomGap);
-    }
-
-    function calculateBaseFitScale() {
-        if (!frame || !frame.contentDocument || !previewWrap) return 1;
-        const doc = frame.contentDocument;
-        const root = doc.documentElement;
-        const body = doc.body;
-        if (!root || !body) return 1;
-
-        const isTemplateOneToSix = templateId >= 1 && templateId <= 6;
-        const rawWidth = Math.max(intrinsicContentWidth || root.scrollWidth || body.scrollWidth || 1, 1);
-        const clientWidthRef = Math.max(root.clientWidth || 0, body.clientWidth || 0, 1);
-        // Some templates (notably 1-6) can report very large scrollWidth because of
-        // long inline runs, which makes preview text tiny. Clamp pathological width.
-        const widthSpikeRatio = rawWidth / clientWidthRef;
-        const contentWidth = widthSpikeRatio > 1.35
-            ? Math.max(clientWidthRef * 1.08, 1)
-            : rawWidth;
-        const contentHeight = Math.max(intrinsicContentHeight || root.scrollHeight || body.scrollHeight || 1, 1);
-        const safeSideGutter = (templateId >= 1 && templateId <= 6) ? 72 : 24;
-        const availableWidth = Math.max(320, previewWrap.clientWidth - safeSideGutter);
-        const availableHeight = Math.max(420, getAvailablePreviewHeight() - 16);
-        const fitByWidth = availableWidth / contentWidth;
-        const fitByHeight = availableHeight / contentHeight;
-        // Bias toward readability: allow slight vertical overflow rather than over-shrinking.
-        const easedHeightFit = fitByHeight * 1.22;
-        return Math.min(fitByWidth, easedHeightFit, 1);
-    }
-
-    function captureIntrinsicMetrics(doc) {
-        if (!doc || !doc.documentElement || !doc.body) return;
-        const root = doc.documentElement;
-        const body = doc.body;
-        const styleTag = doc.getElementById("tailorcv-preview-fit-style");
-        const prevCss = styleTag ? styleTag.textContent : null;
-        if (styleTag) styleTag.textContent = "";
-        intrinsicContentWidth = Math.max(root.scrollWidth || 0, body.scrollWidth || 0, 1);
-        intrinsicContentHeight = Math.max(root.scrollHeight || 0, body.scrollHeight || 0, 1);
-        if (styleTag && prevCss != null) styleTag.textContent = prevCss;
-    }
-
-    function captureBaseFontsForTemplate7Plus(doc) {
+    /* ─────────────────────────────────────────────────────────────────────────
+       FONT SCALE HELPERS (templates 7+)
+       For templates 1-6 the CSS transform approach already works well;
+       for 7+ we scale individual font-size properties.
+    ───────────────────────────────────────────────────────────────────────── */
+    function captureBaseFonts(doc) {
         if (baseFontsCaptured || !doc || !doc.body) return;
-        const selectors = "h1,h2,h3,h4,h5,h6,p,li,span,a,strong,em,b,i,small,label,td,th";
-        const nodes = doc.body.querySelectorAll(selectors);
-        nodes.forEach((node) => {
-            const computed = doc.defaultView ? doc.defaultView.getComputedStyle(node) : null;
-            if (!computed) return;
-            const value = parseFloat(computed.fontSize || "");
-            if (!Number.isFinite(value) || value <= 0) return;
-            node.setAttribute("data-tailorcv-base-font", String(value));
+        const SEL = "h1,h2,h3,h4,h5,h6,p,li,span,a,strong,em,b,i,small,label,td,th";
+        doc.body.querySelectorAll(SEL).forEach(node => {
+            const fs = doc.defaultView
+                ? parseFloat(doc.defaultView.getComputedStyle(node).fontSize)
+                : NaN;
+            if (Number.isFinite(fs) && fs > 0)
+                node.setAttribute("data-base-font", String(fs));
         });
         baseFontsCaptured = true;
     }
 
-    function applyFontScaleForTemplate7Plus(doc, scale) {
+    function applyFontScale(doc, scale) {
         if (!doc || !doc.body) return;
-        const selectors = "h1,h2,h3,h4,h5,h6,p,li,span,a,strong,em,b,i,small,label,td,th";
-        const nodes = doc.body.querySelectorAll(selectors);
-        nodes.forEach((node) => {
-            const base = parseFloat(node.getAttribute("data-tailorcv-base-font") || "");
+        const SEL = "h1,h2,h3,h4,h5,h6,p,li,span,a,strong,em,b,i,small,label,td,th";
+        doc.body.querySelectorAll(SEL).forEach(node => {
+            const base = parseFloat(node.getAttribute("data-base-font") || "");
             if (!Number.isFinite(base) || base <= 0) return;
-            const next = Math.max(8, Math.min(72, base * scale));
-            node.style.setProperty("font-size", `${next}px`, "important");
+            node.style.setProperty("font-size", `${Math.max(8, Math.min(72, base * scale))}px`, "important");
         });
     }
 
-    function getCssPxPerMm(doc) {
-        if (!doc || !doc.body) return 96 / 25.4;
-        const probe = doc.createElement("div");
-        probe.style.position = "absolute";
-        probe.style.left = "-99999px";
-        probe.style.top = "0";
-        probe.style.width = "100mm";
-        probe.style.height = "1px";
-        probe.style.visibility = "hidden";
-        probe.style.pointerEvents = "none";
-        doc.body.appendChild(probe);
-        const px = probe.getBoundingClientRect().width;
-        probe.remove();
-        return (Number.isFinite(px) && px > 0) ? (px / 100) : (96 / 25.4);
-    }
+    /* ─────────────────────────────────────────────────────────────────────────
+       CORE: applyWordStylePreview
+       ─────────────────────────────────────────────────────────────────────────
+       This is the heart of the MS-Word-style renderer.
 
-    function getRawCssPxPerMm(doc) {
-        return getCssPxPerMm(doc);
-    }
-
-    function renderPageGuides(doc, pageHeightDoc, totalHeightDoc, startOffsetDoc = 0) {
-        if (!doc || !doc.body) return;
-        const old = doc.getElementById("tailorcv-page-guides");
-        if (old) old.remove();
-        if (!Number.isFinite(pageHeightDoc) || pageHeightDoc <= 0) return;
-        if (!Number.isFinite(totalHeightDoc) || totalHeightDoc <= pageHeightDoc) return;
-        const startOffset = Math.max(0, Number(startOffsetDoc) || 0);
-        const pageableHeight = Math.max(0, totalHeightDoc - startOffset);
-        if (pageableHeight <= pageHeightDoc) return;
-
-        const guideHost = doc.createElement("div");
-        guideHost.id = "tailorcv-page-guides";
-        guideHost.style.position = "absolute";
-        guideHost.style.left = "0";
-        guideHost.style.top = "0";
-        guideHost.style.width = "100%";
-        guideHost.style.height = `${Math.ceil(totalHeightDoc)}px`;
-        guideHost.style.minHeight = `${Math.ceil(totalHeightDoc)}px`;
-        guideHost.style.pointerEvents = "none";
-        guideHost.style.zIndex = "2147483646";
-
-        const breaks = Math.max(0, Math.ceil(pageableHeight / pageHeightDoc) - 1);
-        for (let i = 1; i <= breaks; i += 1) {
-            const y = startOffset + (i * pageHeightDoc);
-            const line = doc.createElement("div");
-            line.style.position = "absolute";
-            line.style.left = "0";
-            line.style.right = "0";
-            line.style.top = `${y}px`;
-            line.style.borderTop = "3px dotted rgba(29, 78, 216, 0.98)";
-            line.style.boxShadow = "0 0 8px rgba(29,78,216,0.28)";
-            guideHost.appendChild(line);
-
-            const label = doc.createElement("div");
-            label.textContent = `Page ${i + 1} starts`;
-            label.style.position = "absolute";
-            label.style.left = "50%";
-            label.style.transform = "translateX(-50%)";
-            label.style.top = `${y - 24}px`;
-            label.style.padding = "3px 10px";
-            label.style.borderRadius = "999px";
-            label.style.background = "rgba(15, 23, 42, 0.9)";
-            label.style.border = "1px solid rgba(29,78,216,0.95)";
-            label.style.color = "#dbeafe";
-            label.style.fontSize = "12px";
-            label.style.fontWeight = "700";
-            label.style.letterSpacing = "0.02em";
-            label.style.boxShadow = "0 2px 8px rgba(2,6,23,0.35)";
-            label.style.fontFamily = "Inter, sans-serif";
-            guideHost.appendChild(label);
-        }
-
-        const currentPosition = doc.defaultView ? doc.defaultView.getComputedStyle(doc.body).position : "";
-        if (!currentPosition || currentPosition === "static") {
-            doc.body.style.position = "relative";
-        }
-        doc.body.appendChild(guideHost);
-    }
-
-    function applyPreviewZoom() {
+       Approach:
+         1.  The iframe is given a fixed A4 width (794 px) and a very tall height
+             so it can lay out its content naturally, without any clipping.
+         2.  We measure the true scrollHeight of the content.
+         3.  We calculate how many A4 pages that content spans.
+         4.  We set the outer #resume-preview-frame height to exactly
+             (pages × A4_HEIGHT + gaps) so the frame scrolls naturally inside
+             the .editor-preview-wrap scrollable container.
+         5.  We inject a CSS style tag into the iframe that:
+               • Removes any previous transform-scaling.
+               • Sets the body width to A4_WIDTH_PX so the template lays out
+                 as if it were being printed.
+               • Adds a "page-break shadow" every A4_HEIGHT interval using a
+                 repeating-linear-gradient on the <html> element.
+               • Adds a subtle drop-shadow under each page to mimic paper.
+         6.  Page-break dividers (solid lines + "Page N" labels) are injected
+             as absolutely-positioned elements inside the iframe body.
+    ───────────────────────────────────────────────────────────────────────── */
+    function applyWordStylePreview() {
         if (!frame || !frame.contentDocument) return;
-        const doc = frame.contentDocument;
+        const doc  = frame.contentDocument;
         const root = doc.documentElement;
         const body = doc.body;
         if (!root || !body) return;
 
-        // STEP 1: strip fit CSS before measuring
-        let fitStyleTag = doc.getElementById("tailorcv-preview-fit-style");
-        const savedCss = fitStyleTag ? fitStyleTag.textContent : "";
-        if (fitStyleTag) fitStyleTag.textContent = "";
+        const isT1to6 = templateId >= 1 && templateId <= 6;
 
-        // STEP 2: temporarily disable contentEditable
+        /* ── Step 1: strip old preview style & page guides ── */
+        let fitStyle = doc.getElementById("tailorcv-preview-fit-style");
+        if (fitStyle) fitStyle.textContent = "";
+
+        removePageGuides(doc);
+
+        /* ── Step 2: temporarily disable contentEditable for accurate measurement ── */
         const wasEditable = body.contentEditable === "true" || body.isContentEditable;
-        if (wasEditable) {
-            body.contentEditable = "false";
-            void body.offsetHeight;
+        if (wasEditable) { body.contentEditable = "false"; void body.offsetHeight; }
+
+        /* ── Step 3: apply font scaling BEFORE measuring content height ── */
+        if (!isT1to6) {
+            captureBaseFonts(doc);
+            applyFontScale(doc, currentZoom);
         }
 
-        // STEP 3: use scrollHeight/offsetHeight measurements in document pixels
-        let rawContentHeight = 0;
-        const primaryContainer = body.querySelector(
-            ".page, .resume-shell, .resume-container, .page-wrap, .cv-page"
-        );
-        const startOffsetDoc = primaryContainer
-            ? Math.max(0, primaryContainer.offsetTop || 0)
+        /* ── Step 4: measure content dimensions at natural (un-scaled) layout ── */
+        // We need to know the A4 scale factor: how much do we need to zoom the
+        // 794px-wide document to fit inside the available preview panel width?
+        const availableWidth  = previewWrap ? Math.max(320, previewWrap.clientWidth - 32) : 760;
+        const viewScale       = Math.min(1, availableWidth / A4_WIDTH_PX); // never zoom >100%
+
+        // Set the iframe to "natural" A4 width so content reflows correctly
+        frame.style.width  = `${A4_WIDTH_PX}px`;
+        frame.style.height = "9999px"; // temp tall height for measurement
+
+        // Force layout
+        void root.offsetHeight;
+
+        // Measure the primary content container if possible
+        const primaryEl = body.querySelector(".page, .resume-shell, .resume-container, .page-wrap, .cv-page");
+        let contentHeightPx = primaryEl
+            ? Math.max(primaryEl.scrollHeight || 0, primaryEl.offsetHeight || 0)
             : 0;
-        if (primaryContainer) {
-            rawContentHeight = Math.max(
-                primaryContainer.scrollHeight || 0,
-                primaryContainer.offsetHeight || 0,
-                1
-            );
-        }
-        if (!rawContentHeight || rawContentHeight < 100) {
-            rawContentHeight = Math.max(
-                body.scrollHeight || 0,
-                body.offsetHeight || 0,
-                1
-            );
-        }
-        const rawContentWidth = Math.max(
-            root.scrollWidth || 0, body.scrollWidth || 0, 1
-        );
-
-        // STEP 4: restore contentEditable
-        if (wasEditable) {
-            body.contentEditable = "true";
+        if (contentHeightPx < 100) {
+            contentHeightPx = Math.max(body.scrollHeight || 0, body.offsetHeight || 0, 100);
         }
 
-        // STEP 5: true px-per-mm
-        const pxPerMm = getRawCssPxPerMm(doc);
-
-        // STEP 6: page height in unscaled document pixels
-        let pageHeightPx = 0;
-        const pageEl = body.querySelector(".page");
-        if (pageEl) {
-            const candidate = Math.max(pageEl.scrollHeight || 0, pageEl.offsetHeight || 0);
-            if (candidate > 100) {
-                pageHeightPx = candidate;
-            }
-        }
-        if (!pageHeightPx || !Number.isFinite(pageHeightPx)) {
-            if (pageEl && doc.defaultView) {
-                const styles = doc.defaultView.getComputedStyle(pageEl);
-                const minH = parseFloat(styles.minHeight || "");
-                const h = parseFloat(styles.height || "");
-                const mt = parseFloat(styles.marginTop || "") || 0;
-                const mb = parseFloat(styles.marginBottom || "") || 0;
-                if (Number.isFinite(minH) && minH > 0) pageHeightPx = minH + mt + mb;
-                else if (Number.isFinite(h) && h > 0 && styles.height !== "auto")
-                    pageHeightPx = h + mt + mb;
-            }
-        }
-        if (!pageHeightPx || !Number.isFinite(pageHeightPx)) {
-            pageHeightPx = 297 * pxPerMm;
-        }
-
-        // STEP 7: 1% tolerance now that measurements are accurate
-        const OVERFLOW_TOLERANCE = 0.01;
-        const rawRatio = rawContentHeight / Math.max(1, pageHeightPx);
-        lastFillRatio = rawRatio;
+        /* ── Step 5: calculate page count ── */
+        lastFillRatio  = contentHeightPx / A4_HEIGHT_PX;
         estimatedPages = Math.max(1,
-            rawRatio > 1 + OVERFLOW_TOLERANCE ? Math.ceil(rawRatio) : 1
+            lastFillRatio > 1.01 ? Math.ceil(lastFillRatio) : 1
         );
-        lastPageHeightDoc = Math.max(1, pageHeightPx);
-        lastPageStartDoc = startOffsetDoc;
-        intrinsicContentWidth = rawContentWidth;
-        intrinsicContentHeight = rawContentHeight;
 
-        // STEP 8: restore fit CSS
-        if (fitStyleTag) fitStyleTag.textContent = savedCss;
+        /* ── Step 6: restore contentEditable ── */
+        if (wasEditable) body.contentEditable = "true";
 
-        baseFitScale = calculateBaseFitScale();
-        const isTemplateOneToSix = templateId >= 1 && templateId <= 6;
-        const isTemplateOneToSeven = templateId >= 1 && templateId <= 7;
-        const fitOnlyScale = Math.max(0.3, Math.min(2.4, baseFitScale));
+        /* ── Step 7: build the Word-style CSS ── */
+        // Total height of all page sheets stacked with gaps
+        const totalSheetHeight = (estimatedPages * A4_HEIGHT_PX) + ((estimatedPages - 1) * PAGE_GAP_PX);
 
-const fitCss = `
+        // For templates 1-6 we still use transform-scale on the body to handle
+        // their fixed-width layouts; for 7+ font-scale is already applied above.
+        const bodyScaleForT1to6 = isT1to6 ? currentZoom : 1;
+
+        const wordCss = `
+/* ── TailorCV Word-Style Preview ── */
 html {
-  background: transparent !important;
-  display: flex !important;
-  justify-content: center !important;
-  padding: ${isTemplateOneToSix ? "14px 28px" : "10px 16px"} !important;
+  background: #525659 !important;
+  margin: 0 !important;
+  padding: ${PAGE_GAP_PX}px 0 !important;
   box-sizing: border-box !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;
-  scrollbar-width: none !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(148,163,184,0.35) transparent !important;
+  min-height: ${totalSheetHeight + PAGE_GAP_PX * 2}px !important;
+  display: block !important;
 }
-html::-webkit-scrollbar { display: none !important; }
 body {
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-  background: ${isTemplateOneToSeven ? "#ffffff" : "transparent"} !important;
-  color: inherit !important;
-  transform: scale(${Math.max(0.3, Math.min(2.4, fitOnlyScale * currentZoom))}) !important;
-  transform-origin: top center !important;
-  width: ${100 / fitOnlyScale}% !important;
-  max-width: calc(100% - ${isTemplateOneToSix ? "40px" : "24px"}) !important;
-  min-width: 0 !important;
-  margin: 12px auto !important;
+  width:  ${A4_WIDTH_PX}px !important;
+  min-height: ${A4_HEIGHT_PX}px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.25) !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  position: relative !important;
+  transform: ${isT1to6 ? `scale(${bodyScaleForT1to6})` : "none"} !important;
+  transform-origin: ${isT1to6 ? "top center" : "unset"} !important;
   left: auto !important;
   right: auto !important;
-  border-radius: 10px !important;
-  box-sizing: border-box !important;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2) !important;
+  border-radius: 2px !important;
 }
 `;
 
-        if (!fitStyleTag) {
-            fitStyleTag = doc.createElement("style");
-            fitStyleTag.id = "tailorcv-preview-fit-style";
-            doc.head.appendChild(fitStyleTag);
+        /* ── Step 8: inject / update the style tag ── */
+        if (!fitStyle) {
+            fitStyle = doc.createElement("style");
+            fitStyle.id = "tailorcv-preview-fit-style";
+            doc.head.appendChild(fitStyle);
         }
+        fitStyle.textContent = wordCss;
 
-        fitStyleTag.textContent = fitCss;
+        /* ── Step 9: render page-break dividers inside the iframe ── */
+        renderPageBreaks(doc, estimatedPages);
+
+        /* ── Step 10: size the outer iframe wrapper ── */
+        // The iframe itself needs to be tall enough to hold all pages +
+        // the grey gaps. We then scale the whole thing down with CSS zoom
+        // to fit the panel width.
+        const scaledTotalHeight = totalSheetHeight + PAGE_GAP_PX * 2;
+        frame.style.width       = `${A4_WIDTH_PX}px`;
+        frame.style.height      = `${Math.ceil(contentHeightPx + PAGE_GAP_PX * (estimatedPages + 1))}px`;
+        frame.style.transform   = `scale(${viewScale})`;
+        frame.style.transformOrigin = "top left";
+        frame.style.display     = "block";
+        frame.style.background  = "transparent";
+        frame.style.border      = "none";
+
+        // Make the wrapper match the visual (scaled) height so the outer
+        // scrollbar reflects real content, not iframe overflow
         if (previewWrap) {
-            previewWrap.style.background = "linear-gradient(180deg, rgba(30, 41, 59, 0.45), rgba(15, 23, 42, 0.3))";
-        }
-        if (frame) {
-            frame.style.background = "rgba(226, 232, 240, 0.15)";
-        }
-        if (!isTemplateOneToSix) {
-            captureBaseFontsForTemplate7Plus(doc);
-            applyFontScaleForTemplate7Plus(doc, currentZoom);
+            const visibleH = Math.ceil((contentHeightPx + PAGE_GAP_PX * (estimatedPages + 1)) * viewScale);
+            frame.parentElement.style.minHeight = `${visibleH + 32}px`;
+            previewWrap.style.background = "#525659";
         }
 
-        frame.style.height = `${Math.round(getAvailablePreviewHeight())}px`;
-        currentPage = Math.min(currentPage, estimatedPages);
         updatePageBadge();
         updateFitGuidance();
-        renderPageGuides(doc, pageHeightPx, rawContentHeight + startOffsetDoc, startOffsetDoc);
-        lastEstimatedPages = estimatedPages;
-        schedulePageEstimate();
+        scheduleServerEstimate();
     }
 
+    /* ─────────────────────────────────────────────────────────────────────────
+       PAGE BREAK DIVIDERS
+       Injects horizontal "page break" lines + "Page N" labels between pages
+       directly inside the iframe document, absolutely positioned.
+    ───────────────────────────────────────────────────────────────────────── */
+    function removePageGuides(doc) {
+        const el = doc.getElementById("tailorcv-page-guides");
+        if (el) el.remove();
+    }
+
+    function renderPageBreaks(doc, pages) {
+        removePageGuides(doc);
+        if (pages <= 1) return;
+
+        const host = doc.createElement("div");
+        host.id = "tailorcv-page-guides";
+        host.setAttribute("aria-hidden", "true");
+        Object.assign(host.style, {
+            position:      "absolute",
+            top:           "0",
+            left:          "0",
+            width:         "100%",
+            height:        `${A4_HEIGHT_PX * pages}px`,
+            pointerEvents: "none",
+            zIndex:        "2147483646",
+            overflow:      "visible",
+        });
+
+        for (let i = 1; i < pages; i++) {
+            const y = A4_HEIGHT_PX * i; // position of each break in doc-pixels
+
+            // ── White gap strip (simulates paper edge / gutter) ──
+            const gap = doc.createElement("div");
+            Object.assign(gap.style, {
+                position:   "absolute",
+                left:       "-40px",
+                right:      "-40px",
+                top:        `${y - 10}px`,
+                height:     "20px",
+                background: "#525659",
+                zIndex:     "2147483645",
+            });
+            host.appendChild(gap);
+
+            // ── Dashed page boundary line ──
+            const line = doc.createElement("div");
+            Object.assign(line.style, {
+                position:    "absolute",
+                left:        "0",
+                right:       "0",
+                top:         `${y}px`,
+                height:      "0",
+                borderTop:   "2px dashed rgba(37,99,235,0.75)",
+                boxShadow:   "0 0 6px rgba(37,99,235,0.3)",
+                zIndex:      "2147483647",
+            });
+            host.appendChild(line);
+
+            // ── "Page N starts" label ──
+            const label = doc.createElement("div");
+            label.textContent = `Page ${i + 1} starts here`;
+            Object.assign(label.style, {
+                position:       "absolute",
+                left:           "50%",
+                top:            `${y - 22}px`,
+                transform:      "translateX(-50%)",
+                padding:        "3px 12px",
+                borderRadius:   "999px",
+                background:     "rgba(15,23,42,0.92)",
+                border:         "1px solid rgba(37,99,235,0.85)",
+                color:          "#bfdbfe",
+                fontSize:       "11px",
+                fontWeight:     "700",
+                letterSpacing:  "0.03em",
+                fontFamily:     "Inter, system-ui, sans-serif",
+                whiteSpace:     "nowrap",
+                boxShadow:      "0 2px 8px rgba(2,6,23,0.4)",
+                zIndex:         "2147483647",
+                pointerEvents:  "none",
+            });
+            host.appendChild(label);
+        }
+
+        // Ensure body is positioned so absolute children work
+        if (!doc.body.style.position || doc.body.style.position === "static") {
+            doc.body.style.position = "relative";
+        }
+        doc.body.appendChild(host);
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       FONT SCALE CONTROLS
+    ───────────────────────────────────────────────────────────────────────── */
     function changeFontScale(delta) {
         currentZoom = Math.max(0.6, Math.min(1.8, currentZoom + delta));
-        applyPreviewZoom();
+        applyWordStylePreview();
         updateFontSizeBadge();
-        setStatus(`Font size set to ${Math.round(currentZoom * 100)}%.`);
+        setStatus(`Font size: ${Math.round(currentZoom * 100)}%`);
     }
 
     function resetFontScale() {
-        currentZoom = 1;
-        applyPreviewZoom();
+        currentZoom = 1.0;
+        applyWordStylePreview();
         updateFontSizeBadge();
         setStatus("Font size reset to 100%.");
     }
 
-    function bindPageTracking() {
-        if (!frame || !frame.contentWindow) return;
-        const win = frame.contentWindow;
-        const onScroll = function () {
-            if (!lastPageHeightDoc) return;
-            const y = win.scrollY || win.pageYOffset || 0;
-            currentPage = Math.max(1, Math.min(estimatedPages, Math.floor(y / lastPageHeightDoc) + 1));
-            updatePageBadge();
-        };
-        win.addEventListener("scroll", onScroll, { passive: true });
+    /* ─────────────────────────────────────────────────────────────────────────
+       SERVER-SIDE PAGE COUNT ESTIMATE (secondary validation)
+    ───────────────────────────────────────────────────────────────────────── */
+    function scheduleServerEstimate() {
+        if (estimateTimer) { clearTimeout(estimateTimer); estimateTimer = null; }
+        estimateTimer = setTimeout(() => refreshServerEstimate().catch(() => {}), 120);
     }
 
-    function buildExportHtmlForEstimation() {
+    function buildExportHtml() {
         if (!frame || !frame.contentDocument) return "";
-        const sourceDoc = frame.contentDocument;
-        const exportDoc = sourceDoc.documentElement.cloneNode(true);
-        const exportBody = exportDoc.querySelector("body");
-        const previewFitStyle = exportDoc.querySelector("#tailorcv-preview-fit-style");
-        if (previewFitStyle) previewFitStyle.remove();
-        const pageGuides = exportDoc.querySelector("#tailorcv-page-guides");
-        if (pageGuides) pageGuides.remove();
-        exportDoc.querySelectorAll("script").forEach((script) => script.remove());
-        if (exportBody) {
-            exportBody.removeAttribute("contenteditable");
-            exportBody.removeAttribute("spellcheck");
-            exportBody.style.removeProperty("transform");
-            exportBody.style.removeProperty("transform-origin");
-            exportBody.style.removeProperty("width");
-            exportBody.style.removeProperty("max-width");
-            exportBody.style.removeProperty("overflow-x");
-            exportBody.style.removeProperty("overflow-y");
-            exportBody.style.removeProperty("margin");
+        const src    = frame.contentDocument;
+        const clone  = src.documentElement.cloneNode(true);
+        const body   = clone.querySelector("body");
+        clone.querySelector("#tailorcv-preview-fit-style")?.remove();
+        clone.querySelector("#tailorcv-page-guides")?.remove();
+        clone.querySelectorAll("script").forEach(s => s.remove());
+        if (body) {
+            body.removeAttribute("contenteditable");
+            body.removeAttribute("spellcheck");
+            ["transform","transform-origin","width","max-width",
+             "overflow-x","overflow-y","margin"].forEach(p => body.style.removeProperty(p));
         }
-        return "<!DOCTYPE html>\n" + exportDoc.outerHTML;
+        return "<!DOCTYPE html>\n" + clone.outerHTML;
     }
 
-    async function refreshEstimatedPagesFromServer() {
-        const requestId = ++estimateRequestId;
-        const html = buildExportHtmlForEstimation();
+    async function refreshServerEstimate() {
+        const reqId = ++estimateRequestId;
+        const html  = buildExportHtml();
         if (!html) return;
         try {
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 2200);
-            const response = await fetch("/api/estimate-html-pages", {
-                method: "POST",
+            const ctrl    = new AbortController();
+            const timeout = setTimeout(() => ctrl.abort(), 2400);
+            const res     = await fetch("/api/estimate-html-pages", {
+                method:  "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
+                body:    JSON.stringify({
                     html,
-                    pdf_scale: templateId >= 1 && templateId <= 6 ? 1 : Math.max(0.6, Math.min(1.8, currentZoom))
+                    pdf_scale: (templateId >= 1 && templateId <= 6)
+                        ? 1
+                        : Math.max(0.6, Math.min(1.8, currentZoom))
                 }),
-                signal: controller.signal
+                signal: ctrl.signal,
             });
             clearTimeout(timeout);
-            if (!response.ok) return;
-            if (requestId !== estimateRequestId) return;
-            const data = await response.json();
-            const pages = Number(data && data.pages);
+            if (!res.ok || reqId !== estimateRequestId) return;
+            const data  = await res.json();
+            const pages = Number(data?.pages);
             if (!Number.isFinite(pages) || pages < 1) return;
-            const normalizedPages = Math.max(1, Math.ceil(pages));
-            serverEstimatedPages = normalizedPages;
-            estimatedPages = normalizedPages;
-            currentPage = Math.min(currentPage, estimatedPages);
-            updatePageBadge();
-            updateFitGuidance();
-
-            // Keep page-break guides in sync with server truth for ALL templates.
-            if (frame && frame.contentDocument) {
-                const doc = frame.contentDocument;
-                const root = doc.documentElement;
-                const body = doc.body;
-                if (root && body) {
-                    if (normalizedPages <= 1) {
-                        const existing = doc.getElementById("tailorcv-page-guides");
-                        if (existing) existing.remove();
-                    } else {
-                        const startOffsetDoc = Math.max(0, Number(lastPageStartDoc) || 0);
-                        const pageHeightDoc = Math.max(1, Number(lastPageHeightDoc) || 1);
-                        const totalHeightDoc = Math.max(
-                            (Number(intrinsicContentHeight) || 0) + startOffsetDoc,
-                            startOffsetDoc + (pageHeightDoc * normalizedPages),
-                            root.scrollHeight || 0,
-                            body.scrollHeight || 0,
-                            1
-                        );
-                        renderPageGuides(doc, pageHeightDoc, totalHeightDoc, startOffsetDoc);
-                    }
-                }
+            const np = Math.max(1, Math.ceil(pages));
+            if (np !== estimatedPages) {
+                estimatedPages = np;
+                updatePageBadge();
+                updateFitGuidance();
+                // Re-render page breaks to match server truth
+                if (frame.contentDocument)
+                    renderPageBreaks(frame.contentDocument, estimatedPages);
             }
-            lastEstimatedPages = estimatedPages;
-        } catch (error) {
-            // Keep local estimate on network/server issues.
-        }
+        } catch { /* network error – keep local estimate */ }
     }
 
-    function schedulePageEstimate() {
-        if (estimateTimer) {
-            clearTimeout(estimateTimer);
-            estimateTimer = null;
-        }
-        estimateTimer = setTimeout(() => {
-            refreshEstimatedPagesFromServer().catch(() => {});
-        }, 90);
-    }
-
+    /* ─────────────────────────────────────────────────────────────────────────
+       PDF DOWNLOAD
+    ───────────────────────────────────────────────────────────────────────── */
     async function downloadEditedPdf(isAuto = false) {
-        if (!frame || !frame.contentDocument) {
-            setStatus("Preview not ready.");
-            return;
-        }
-        const sourceDoc = frame.contentDocument;
-        const exportDoc = sourceDoc.documentElement.cloneNode(true);
-        const exportBody = exportDoc.querySelector("body");
+        if (!frame || !frame.contentDocument) { setStatus("Preview not ready."); return; }
 
-        // Remove preview-only scaling style so PDF uses normal template dimensions.
-        const previewFitStyle = exportDoc.querySelector("#tailorcv-preview-fit-style");
-        if (previewFitStyle) previewFitStyle.remove();
-        const pageGuides = exportDoc.querySelector("#tailorcv-page-guides");
-        if (pageGuides) pageGuides.remove();
-        const isTemplateOneToSix = templateId >= 1 && templateId <= 6;
-        // Remove edit-mode artifacts from export.
-        exportDoc.querySelectorAll("script").forEach((script) => script.remove());
-        if (exportBody) {
-            exportBody.removeAttribute("contenteditable");
-            exportBody.removeAttribute("spellcheck");
-            exportBody.style.removeProperty("transform");
-            exportBody.style.removeProperty("transform-origin");
-            exportBody.style.removeProperty("width");
-            exportBody.style.removeProperty("overflow-x");
-            exportBody.style.removeProperty("overflow-y");
-            exportBody.style.removeProperty("margin");
-        }
+        const html = buildExportHtml();
+        if (!html) { setStatus("Could not read resume content."); return; }
 
-        if (isTemplateOneToSix) {
-            // Keep legacy export behavior for templates 1-6.
-            const exportScale = Math.max(0.6, Math.min(1.8, currentZoom));
-            let exportScaleStyle = exportDoc.querySelector("#tailorcv-export-scale-style");
-            if (!exportScaleStyle) {
-                exportScaleStyle = exportDoc.ownerDocument
-                    ? exportDoc.ownerDocument.createElement("style")
-                    : null;
-            }
-            if (!exportScaleStyle) {
-                exportScaleStyle = sourceDoc.createElement("style");
-            }
-            exportScaleStyle.id = "tailorcv-export-scale-style";
-            exportScaleStyle.textContent = `
-html { overflow: hidden !important; }
-body {
-  transform: scale(${exportScale}) !important;
-  transform-origin: top left !important;
-  width: ${100 / exportScale}% !important;
-}
-`;
-            const exportHead = exportDoc.querySelector("head");
-            if (exportHead) exportHead.appendChild(exportScaleStyle);
-        }
-
-        const html = "<!DOCTYPE html>\n" + exportDoc.outerHTML;
-        setStatus(isAuto ? "Auto-downloading optimized resume..." : "Generating edited PDF...");
+        setStatus(isAuto ? "Auto-downloading optimised resume…" : "Generating PDF…");
         downloadBtn.disabled = true;
         try {
-            const response = await fetch("/api/download-html-pdf", {
-                method: "POST",
+            const res = await fetch("/api/download-html-pdf", {
+                method:  "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
+                body:    JSON.stringify({
                     html,
-                    pdf_scale: isTemplateOneToSix ? 1 : Math.max(0.6, Math.min(1.8, currentZoom))
-                })
+                    pdf_scale: (templateId >= 1 && templateId <= 6)
+                        ? 1
+                        : Math.max(0.6, Math.min(1.8, currentZoom))
+                }),
             });
-            if (!response.ok) {
-                const text = await response.text();
-                throw new Error(text || "Failed to generate PDF");
-            }
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = "optimized_resume_edited.pdf";
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-            window.URL.revokeObjectURL(url);
-            if (isAuto) {
-                setStatus("Auto-download complete. You can edit font size and click Download Edited PDF anytime.");
-            } else {
-                setStatus("Edited PDF downloaded.");
-            }
-        } catch (error) {
-            setStatus(isAuto ? "Auto-download failed. Please use Download Edited PDF." : "Could not download edited PDF.");
+            if (!res.ok) throw new Error(await res.text() || "Server error");
+            const blob = await res.blob();
+            const url  = URL.createObjectURL(blob);
+            const a    = document.createElement("a");
+            a.href     = url;
+            a.download = "optimized_resume_edited.pdf";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+            setStatus(isAuto
+                ? "Auto-download complete. Adjust font size then click Download Edited PDF."
+                : "PDF downloaded successfully.");
+        } catch (err) {
+            setStatus(isAuto
+                ? "Auto-download failed — use Download Edited PDF button."
+                : "Could not download PDF. Please try again.");
         } finally {
             downloadBtn.disabled = false;
         }
     }
 
+    /* ─────────────────────────────────────────────────────────────────────────
+       CSS for .editor-preview-wrap  (injected once into the host page)
+       We override the outer container so it becomes the Word-app background.
+    ───────────────────────────────────────────────────────────────────────── */
+    function injectHostPageStyles() {
+        if (document.getElementById("tailorcv-host-override")) return;
+        const s = document.createElement("style");
+        s.id = "tailorcv-host-override";
+        s.textContent = `
+.editor-preview-wrap {
+  background: #525659 !important;
+  overflow-y: auto !important;
+  overflow-x: auto !important;
+  padding: 0 !important;
+  border-radius: 10px !important;
+  border: none !important;
+  /* Allow the iframe to size the scroll area naturally */
+  display: block !important;
+}
+#resume-preview-frame {
+  display: block !important;
+  border: 0 !important;
+  background: transparent !important;
+  /* transform + transform-origin set dynamically by JS */
+}
+`;
+        document.head.appendChild(s);
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       INIT
+    ───────────────────────────────────────────────────────────────────────── */
     function init() {
         const payload = getPayload();
         if (!payload || !payload.html) {
-            setStatus("No optimized resume found. Please optimize first.");
+            setStatus("No optimised resume found. Please optimise first.");
             return;
         }
-        templateId = Number(payload.template_id || 1);
+
+        templateId        = Number(payload.template_id || 1);
         baseFontsCaptured = false;
-        currentHtml = addEditingOverlay(payload.html);
+        currentHtml       = addEditingOverlay(payload.html);
+
+        injectHostPageStyles();
+
         frame.srcdoc = currentHtml;
-        frame.addEventListener("load", function () {
-            if (!(templateId >= 1 && templateId <= 6) && frame.contentDocument) {
-                const doc = frame.contentDocument;
-                intrinsicContentWidth = Math.max(
-                    (doc.documentElement && doc.documentElement.scrollWidth) || 0,
-                    (doc.body && doc.body.scrollWidth) || 0,
-                    1
-                );
-            }
-            applyPreviewZoom();
+        frame.addEventListener("load", function onLoad() {
+            applyWordStylePreview();
             updateFontSizeBadge();
             updatePageBadge();
-            bindPageTracking();
-            setStatus("Tip: Click inside resume preview and edit text live.");
+            setStatus("Tip: Click inside the resume to edit text live.");
+
             if (AUTO_DOWNLOAD_ON_OPEN && !hasAutoDownloaded) {
                 hasAutoDownloaded = true;
-                setTimeout(() => {
-                    downloadEditedPdf(true).catch(() => {});
-                }, 250);
+                setTimeout(() => downloadEditedPdf(true).catch(() => {}), 300);
             }
         });
-        window.addEventListener("resize", applyPreviewZoom);
 
-        if (fontDecreaseBtn) fontDecreaseBtn.addEventListener("click", function () { changeFontScale(-0.05); });
-        if (fontIncreaseBtn) fontIncreaseBtn.addEventListener("click", function () { changeFontScale(0.05); });
-        if (fontResetBtn) fontResetBtn.addEventListener("click", resetFontScale);
+        // Re-apply on window resize (panel width change)
+        window.addEventListener("resize", () => applyWordStylePreview(), { passive: true });
+
+        // Font controls
+        fontDecreaseBtn?.addEventListener("click", () => changeFontScale(-0.05));
+        fontIncreaseBtn?.addEventListener("click", () => changeFontScale(+0.05));
+        fontResetBtn?.addEventListener("click",    () => resetFontScale());
+
+        // Download
+        downloadBtn?.addEventListener("click", () => downloadEditedPdf(false));
+
+        // Pulse animation cleanup
         const pulseTarget = fitGuidance || statusEl;
-        if (pulseTarget) {
-            pulseTarget.addEventListener("animationend", function (event) {
-                if (event && event.animationName === "pulse-success") {
-                    pulseTarget.classList.remove("pulse-success");
-                }
-            });
-        }
-        downloadBtn.addEventListener("click", downloadEditedPdf);
+        pulseTarget?.addEventListener("animationend", e => {
+            if (e?.animationName === "pulse-success")
+                pulseTarget.classList.remove("pulse-success");
+        });
     }
 
     init();
