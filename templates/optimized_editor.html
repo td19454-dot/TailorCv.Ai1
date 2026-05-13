@@ -8,7 +8,7 @@
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="stylesheet" href="/static/header-footer.css">
-    <link rel="stylesheet" href="/static/optimized_editor.css?v=13">
+    <link rel="stylesheet" href="/static/optimized_editor.css?v=14">
 </head>
 <body>
     <header class="navbar">
@@ -43,31 +43,72 @@
 
     <main class="editor-page">
         <aside class="editor-sidebar">
+
+            <!-- Title -->
             <section class="editor-top">
                 <h1>One Page. More Impact.</h1>
-                <p>Fit your resume into a single professional page with smart optimization that keeps it clean, readable, and impactful.</p>
+                <p>Fine-tune font, spacing, colors, and template — then download your perfect resume.</p>
             </section>
 
+            <!-- Font Size -->
             <section class="editor-controls">
                 <div class="control-title">Font Size</div>
                 <div class="font-group">
-                    <button class="font-btn" id="font-decrease-btn" type="button">A-</button>
-                    <button class="font-btn" id="font-reset-btn" type="button">A</button>
-                    <button class="font-btn" id="font-increase-btn" type="button">A+</button>
+                    <button class="font-btn" id="font-decrease-btn" type="button" title="Decrease font size">A−</button>
+                    <button class="font-btn" id="font-reset-btn" type="button" title="Reset font size">A</button>
+                    <button class="font-btn" id="font-increase-btn" type="button" title="Increase font size">A+</button>
                     <span class="font-size-badge" id="font-size-badge">100%</span>
-                    <span class="page-count-badge" id="page-index-badge">Current Pages: 1</span>
                 </div>
+                <span class="page-count-badge" id="page-index-badge">Pages: 1 | Fill: —</span>
                 <p id="fit-guidance" class="fit-guidance" aria-live="polite"></p>
             </section>
 
+            <!-- Line Spacing -->
+            <section class="editor-controls">
+                <div class="control-title">Line Spacing</div>
+                <div class="font-group">
+                    <button class="font-btn" id="spacing-decrease-btn" type="button" title="Tighten spacing">S−</button>
+                    <button class="font-btn" id="spacing-reset-btn"    type="button" title="Reset spacing">S</button>
+                    <button class="font-btn" id="spacing-increase-btn" type="button" title="Loosen spacing">S+</button>
+                    <span class="font-size-badge" id="spacing-badge">100%</span>
+                </div>
+                <p id="spacing-guidance" style="font-size:0.8rem;color:#64748b;margin:0;">Default spacing.</p>
+            </section>
+
+            <!-- Accent Color -->
+            <!-- <section class="editor-controls">
+                <div class="control-title">Accent Color</div>
+                <div id="tc-accent-panel-container">-->
+                    <!-- Built by JS after iframe loads -->
+                    <!-- <p style="font-size:0.82rem;color:#475569;margin:0;">Loading color picker…</p>
+                </div>
+            </section>-->
+
+            <!-- Switch Template -->
+            <!--<section class="editor-controls">
+                <div class="control-title">Template</div>
+                <button id="switch-template-btn" class="switch-btn" type="button">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                    </svg>
+                    Switch Template
+                </button>
+                <p style="font-size:0.78rem;color:#475569;margin:0;">Pick a different layout without re-uploading your resume.</p>
+            </section>-->
+
+            <!-- Download / Back -->
             <section class="editor-controls actions-card">
                 <div class="action-group">
-                    <button id="download-edited-btn" class="primary-btn">Download Edited PDF</button>
-                    <a href="/solutions" class="secondary-btn">Back to Solutions</a>
+                    <button id="download-edited-btn" class="primary-btn" type="button">⬇ Download Edited PDF</button>
+                    <a href="/solutions" class="secondary-btn">← Back to Solutions</a>
                 </div>
             </section>
 
             <p id="editor-status" class="editor-status" aria-live="polite"></p>
+
         </aside>
 
         <section class="editor-preview-wrap">
@@ -101,6 +142,6 @@
 
     <script src="/static/auth_nav.js"></script>
     <script src="/static/mobile_nav.js"></script>
-    <script src="/static/optimized_editor.js?v=74"></script>
+    <script src="/static/optimized_editor.js?v=75"></script>
 </body>
 </html>

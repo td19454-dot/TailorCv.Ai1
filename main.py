@@ -3002,7 +3002,50 @@ async def download_cv_pdf_browser(
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
         raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
+from bs4 import BeautifulSoup
 
+@app.post("/api/rerender-template")
+async def rerender_template(request: Request):
+    """
+    Re-render the current resume HTML into a new template shell.
+    Pure HTML extraction + re-render — NO AI involved.
+    """
+    require_logged_in(request)
+    payload = await request.json()
+    current_html = str(payload.get("current_html", "")).strip()
+    template_id  = int(payload.get("template_id", 1))
+
+    if not current_html:
+        raise HTTPException(status_code=400, detail="Missing current_html")
+
+    # 1. Extract structured data from the current iframe HTML (BeautifulSoup, no AI)
+    soup = BeautifulSoup(current_html, "html.parser")
+
+    def text(selector):
+        el = soup.select_one(selector)
+        return el.get_text(" ", strip=True) if el else ""
+
+    # Pull the already-rendered context back out of the HTML body text
+    # then re-use _build_custom_cv_context which accepts cvData dict format.
+    # The simplest approach: read the sessionStorage payload's cvData that
+    # the frontend already stored — but since we only get HTML here, we
+    # re-parse it into a minimal cvData dict via BeautifulSoup.
+
+    body_text = soup.get_text("\n", strip=True)
+
+    # Re-use the existing text parser (no AI)
+    parsed_payload = _parse_cv_text_to_editor_data(body_text)
+    cv_data = parsed_payload.get("cvData", {})
+
+    # 2. Render into the new template shell (no AI)
+    try:
+        new_html = _render_custom_cv_html(template_id, cv_data)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to render template: {exc}")
+
+    return JSONResponse({"html": new_html, "template_id": template_id})
 
 def _render_custom_cv_html(template_id: int, cv_data: dict) -> str:
     template_filename = f"template{template_id}.html"

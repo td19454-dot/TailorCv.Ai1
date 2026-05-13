@@ -870,41 +870,373 @@ async function handleResumeOptimization() {
 
 function displayOptimizeResults(pdfUrl, hasEditorPayload = false) {
     const optimizeContent = document.getElementById('optimize-content');
-    const downloadBtnHtml = hasEditorPayload
-        ? `<button id="download-from-success-btn" class="download-btn" type="button" style="font-size: 1.9rem; font-weight: 700;">Download your PDF</button>`
-        : `<a href="${pdfUrl}" download="optimized_resume.pdf" class="download-btn">Download Optimized Resume</a>`;
-    const editorBtnHtml = hasEditorPayload
-        ? `<a href="/optimized-editor" class="btn btn-secondary" style="margin-left:10px;  display : none ">Go to Editor (Edit Font Size)</a>`
-        : '';
 
+    // Step 1: trigger auto-download immediately
+    if (hasEditorPayload) {
+        downloadPdfFromEditorPayload().catch(err => {
+            console.warn('Auto-download failed:', err);
+        });
+    } else if (pdfUrl) {
+        triggerPdfDownload(pdfUrl, 'optimized_resume.pdf');
+    }
+showOptimizedAlert(() => {
+    let secs = 4;
+    const countdownEl = document.getElementById('optdone-countdown');
+    const timer = setInterval(() => {
+        secs -= 1;
+        if (countdownEl) {
+            countdownEl.textContent = secs > 0
+                ? `Opening editor in ${secs}s…`
+                : 'Opening editor…';
+        }
+        if (secs <= 0) {
+            clearInterval(timer);
+            window.location.href = '/optimized-editor';
+        }
+    }, 1000);
+});
+    // Step 2: show animated success overlay
     optimizeContent.innerHTML = `
-        <div class="optimize-success">
-            <div class="optimize-success-icon">✅</div>
-            <div class="optimize-success-title">Resume Optimized!</div>
-            <div class="optimize-success-message">Your tailored resume is ready.</div>
-            <div class="optimize-success-actions">
-                ${downloadBtnHtml}
-                ${editorBtnHtml}
+        <div class="optdone-overlay" id="optdone-overlay">
+            <div class="optdone-ring">
+                <svg viewBox="0 0 80 80" width="80" height="80">
+                    <circle class="optdone-track" cx="40" cy="40" r="34" fill="none" stroke-width="5"/>
+                    <circle class="optdone-circle" cx="40" cy="40" r="34" fill="none" stroke-width="5"
+                        stroke-dasharray="213" stroke-dashoffset="213"/>
+                    <polyline class="optdone-check" points="24,41 35,52 56,30"
+                        fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
+            <h2 class="optdone-title">Resume Optimized!</h2>
+            <p class="optdone-line1">Your PDF is downloading now.</p>
+            <p class="optdone-line2">
+                You can adjust font size to fit everything on one page.<br>
+                <span class="optdone-hint">No buttons needed — editor opens automatically.</span>
+            </p>
+            <div class="optdone-bar-wrap">
+                <div class="optdone-bar" id="optdone-bar"></div>
+            </div>
+            <p class="optdone-countdown" id="optdone-countdown">Opening editor in 4s…</p>
         </div>
     `;
 
-    if (hasEditorPayload) {
-        const btn = document.getElementById('download-from-success-btn');
-        if (btn) {
-            btn.addEventListener('click', async () => {
-                const originalText = btn.textContent;
-                btn.disabled = true;
-                btn.textContent = 'Preparing PDF...';
-                try {
-                    await downloadPdfFromEditorPayload();
-                } catch (error) {
-                    alert(`Download failed: ${error.message}`);
-                } finally {
-                    btn.disabled = false;
-                    btn.textContent = originalText;
-                }
-            });
-        }
+    // Step 3: inject styles
+    if (!document.getElementById('optdone-styles')) {
+        const style = document.createElement('style');
+        style.id = 'optdone-styles';
+        style.textContent = `
+            .optdone-overlay {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 2.5rem 1.5rem 2rem;
+                text-align: center;
+                animation: optdone-fadein 0.5s ease both;
+            }
+            @keyframes optdone-fadein {
+                from { opacity: 0; transform: translateY(18px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+            .optdone-ring {
+                margin-bottom: 1.2rem;
+            }
+            .optdone-track {
+                stroke: rgba(148,163,184,0.18);
+            }
+            .optdone-circle {
+                stroke: #22c55e;
+                stroke-linecap: round;
+                transform-origin: center;
+                transform: rotate(-90deg);
+                animation: optdone-ring 0.7s 0.2s cubic-bezier(0.4,0,0.2,1) forwards;
+            }
+            @keyframes optdone-ring {
+                to { stroke-dashoffset: 0; }
+            }
+            .optdone-check {
+                stroke: #22c55e;
+                stroke-dasharray: 50;
+                stroke-dashoffset: 50;
+                animation: optdone-tick 0.4s 0.85s ease forwards;
+            }
+            @keyframes optdone-tick {
+                to { stroke-dashoffset: 0; }
+            }
+            .optdone-title {
+                margin: 0 0 0.5rem;
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: #e2e8f0;
+            }
+            .optdone-line1 {
+                margin: 0 0 0.4rem;
+                font-size: 1.05rem;
+                color: #86efac;
+            }
+            .optdone-line2 {
+                margin: 0 0 1.6rem;
+                font-size: 0.97rem;
+                color: #94a3b8;
+                line-height: 1.55;
+            }
+            .optdone-hint {
+                display: inline-block;
+                margin-top: 0.25rem;
+                color: #60a5fa;
+                font-size: 0.88rem;
+            }
+            .optdone-bar-wrap {
+                width: min(340px, 90%);
+                height: 5px;
+                background: rgba(148,163,184,0.15);
+                border-radius: 999px;
+                overflow: hidden;
+                margin-bottom: 0.7rem;
+            }
+            .optdone-bar {
+                height: 100%;
+                width: 0%;
+                background: linear-gradient(90deg, #3b82f6, #22c55e);
+                border-radius: 999px;
+                animation: optdone-progress 4s 0.3s linear forwards;
+            }
+            @keyframes optdone-progress {
+                to { width: 100%; }
+            }
+            .optdone-countdown {
+                font-size: 0.88rem;
+                color: #64748b;
+                margin: 0;
+            }
+        `;
+        document.head.appendChild(style);
     }
+
+    // Step 4: live countdown then redirect
+    let secs = 4;
+    const countdownEl = document.getElementById('optdone-countdown');
+    const timer = setInterval(() => {
+        secs -= 1;
+        if (countdownEl) {
+            countdownEl.textContent = secs > 0
+                ? `Opening editor in ${secs}s…`
+                : 'Opening editor…';
+        }
+        if (secs <= 0) {
+            clearInterval(timer);
+            window.location.href = '/optimized-editor';
+        }
+    }, 1000);
+}
+function showOptimizedAlert(onClose) {
+    const overlay = document.createElement('div');
+    overlay.id = 'optdone-alert-overlay';
+    overlay.innerHTML = `
+        <div class="oalert-backdrop" id="oalert-backdrop"></div>
+        <div class="oalert-modal" id="oalert-modal" role="dialog" aria-modal="true" aria-label="Resume Optimized">
+            <div class="oalert-icon-wrap">
+                <svg viewBox="0 0 80 80" width="72" height="72">
+                    <circle class="oalert-track" cx="40" cy="40" r="34" fill="none" stroke-width="5"/>
+                    <circle class="oalert-circle" cx="40" cy="40" r="34" fill="none" stroke-width="5"
+                        stroke-dasharray="213" stroke-dashoffset="213"/>
+                    <polyline class="oalert-check" points="24,41 35,52 56,30"
+                        fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <h2 class="oalert-title">Resume Optimized!</h2>
+
+            <div class="oalert-rows">
+                <div class="oalert-row" style="animation-delay:0.55s">
+                    <span class="oalert-row-icon">📥</span>
+                    <span class="oalert-row-text">Your PDF is <strong>downloading now</strong></span>
+                </div>
+                <div class="oalert-row" style="animation-delay:0.75s">
+                    <span class="oalert-row-icon">✏️</span>
+                    <span class="oalert-row-text">Use <strong>A+</strong> / <strong>A−</strong> in the editor to adjust font size and fit everything on one page</span>
+                </div>
+                <div class="oalert-row" style="animation-delay:0.95s">
+                    <span class="oalert-row-icon">➡️</span>
+                    <span class="oalert-row-text">Editor opens automatically — <strong>no buttons needed</strong></span>
+                </div>
+            </div>
+
+            <button class="oalert-btn" id="oalert-btn" type="button">
+                Got it, open editor
+            </button>
+        </div>
+    `;
+
+    // Inject styles once
+    if (!document.getElementById('oalert-styles')) {
+        const style = document.createElement('style');
+        style.id = 'oalert-styles';
+        style.textContent = `
+            #optdone-alert-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 99999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .oalert-backdrop {
+                position: absolute;
+                inset: 0;
+                background: rgba(2, 8, 24, 0.72);
+                backdrop-filter: blur(6px);
+                animation: oalert-bgin 0.35s ease both;
+            }
+            @keyframes oalert-bgin {
+                from { opacity: 0; }
+                to   { opacity: 1; }
+            }
+            .oalert-modal {
+                position: relative;
+                z-index: 2;
+                background: linear-gradient(160deg, #0d1f3c 0%, #0a1628 100%);
+                border: 1px solid rgba(59, 130, 246, 0.35);
+                border-radius: 20px;
+                padding: 2.2rem 2rem 1.8rem;
+                width: min(440px, 92vw);
+                box-shadow: 0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                animation: oalert-modal-in 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+            }
+            @keyframes oalert-modal-in {
+                from { opacity: 0; transform: scale(0.82) translateY(24px); }
+                to   { opacity: 1; transform: scale(1) translateY(0); }
+            }
+            .oalert-icon-wrap {
+                margin-bottom: 1.1rem;
+            }
+            .oalert-track {
+                stroke: rgba(148,163,184,0.15);
+            }
+            .oalert-circle {
+                stroke: #22c55e;
+                stroke-linecap: round;
+                transform-origin: center;
+                transform: rotate(-90deg);
+                animation: oalert-ring 0.8s 0.25s cubic-bezier(0.4,0,0.2,1) forwards;
+            }
+            @keyframes oalert-ring {
+                to { stroke-dashoffset: 0; }
+            }
+            .oalert-check {
+                stroke: #22c55e;
+                stroke-dasharray: 50;
+                stroke-dashoffset: 50;
+                animation: oalert-tick 0.38s 1s ease forwards;
+            }
+            @keyframes oalert-tick {
+                to { stroke-dashoffset: 0; }
+            }
+            .oalert-title {
+                margin: 0 0 1.2rem;
+                font-size: 1.55rem;
+                font-weight: 700;
+                color: #e2e8f0;
+                letter-spacing: -0.01em;
+            }
+            .oalert-rows {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+                margin-bottom: 1.6rem;
+            }
+            .oalert-row {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                background: rgba(255,255,255,0.04);
+                border: 1px solid rgba(255,255,255,0.07);
+                border-radius: 12px;
+                padding: 0.75rem 0.9rem;
+                text-align: left;
+                opacity: 0;
+                transform: translateX(-14px);
+                animation: oalert-row-in 0.4s ease forwards;
+            }
+            @keyframes oalert-row-in {
+                to { opacity: 1; transform: translateX(0); }
+            }
+            .oalert-row-icon {
+                font-size: 1.2rem;
+                flex-shrink: 0;
+                margin-top: 1px;
+            }
+            .oalert-row-text {
+                font-size: 0.95rem;
+                color: #94a3b8;
+                line-height: 1.5;
+            }
+            .oalert-row-text strong {
+                color: #e2e8f0;
+                font-weight: 600;
+            }
+            .oalert-btn {
+                width: 100%;
+                padding: 0.85rem 1.2rem;
+                border-radius: 12px;
+                border: none;
+                background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                color: #fff;
+                font-size: 1rem;
+                font-weight: 700;
+                cursor: pointer;
+                letter-spacing: 0.01em;
+                transition: transform 0.15s ease, box-shadow 0.15s ease;
+                box-shadow: 0 4px 20px rgba(37,99,235,0.45);
+                animation: oalert-btn-in 0.4s 1.1s ease both;
+            }
+            @keyframes oalert-btn-in {
+                from { opacity: 0; transform: translateY(10px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+            .oalert-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 28px rgba(37,99,235,0.55);
+            }
+            .oalert-btn:active {
+                transform: scale(0.97);
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    document.body.appendChild(overlay);
+
+    // Close on button click OR backdrop click
+    const close = () => {
+        const modal = document.getElementById('oalert-modal');
+        const backdrop = document.getElementById('oalert-backdrop');
+        if (modal) modal.style.animation = 'oalert-modal-out 0.25s ease forwards';
+        if (backdrop) backdrop.style.animation = 'oalert-bgin 0.25s ease reverse forwards';
+
+        // Add exit keyframe once
+        if (!document.getElementById('oalert-exit-style')) {
+            const s = document.createElement('style');
+            s.id = 'oalert-exit-style';
+            s.textContent = `
+                @keyframes oalert-modal-out {
+                    to { opacity: 0; transform: scale(0.9) translateY(16px); }
+                }
+            `;
+            document.head.appendChild(s);
+        }
+
+        setTimeout(() => {
+            overlay.remove();
+            if (onClose) onClose();
+        }, 260);
+    };
+
+    document.getElementById('oalert-btn').addEventListener('click', close);
+    document.getElementById('oalert-backdrop').addEventListener('click', close);
 }
