@@ -5,7 +5,7 @@
        CONSTANTS & CONFIG
     ───────────────────────────────────────────────────────────────────────── */
     const STORAGE_KEY           = "tailorcv_optimized_editor_payload";
-    const AUTO_DOWNLOAD_ON_OPEN = true;
+    const AUTO_DOWNLOAD_ON_OPEN = false;
 
     const A4_WIDTH_MM  = 210;
     const A4_HEIGHT_MM = 297;
