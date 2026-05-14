@@ -2158,9 +2158,6 @@ async def ats_analysis_page(request: Request):
 async def optimized_editor_page(request: Request):
     """Live editor page for optimized resume preview."""
     require_logged_in(request)
-    is_localhost = request.url.hostname in {"127.0.0.1", "localhost"}
-    if not (SHOW_OPTIMIZED_EDITOR or is_localhost):
-        raise HTTPException(status_code=404, detail="Not found")
     return templates.TemplateResponse(
         request,
         "optimized_editor.html",
