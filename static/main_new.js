@@ -871,30 +871,23 @@ async function handleResumeOptimization() {
 function displayOptimizeResults(pdfUrl, hasEditorPayload = false) {
     const optimizeContent = document.getElementById('optimize-content');
 
-    // Step 1: trigger auto-download immediately
-    if (hasEditorPayload) {
-        downloadPdfFromEditorPayload().catch(err => {
-            console.warn('Auto-download failed:', err);
-        });
-    } else if (pdfUrl) {
-        triggerPdfDownload(pdfUrl, 'optimized_resume.pdf');
-    }
-showOptimizedAlert(() => {
-    let secs = 4;
-    const countdownEl = document.getElementById('optdone-countdown');
-    const timer = setInterval(() => {
-        secs -= 1;
-        if (countdownEl) {
-            countdownEl.textContent = secs > 0
-                ? `Opening editor in ${secs}s…`
-                : 'Opening editor…';
-        }
-        if (secs <= 0) {
-            clearInterval(timer);
-            window.location.href = '/optimized-editor';
-        }
-    }, 1000);
-});
+    // Display success message and redirect to editor
+    showOptimizedAlert(() => {
+        let secs = 4;
+        const countdownEl = document.getElementById('optdone-countdown');
+        const timer = setInterval(() => {
+            secs -= 1;
+            if (countdownEl) {
+                countdownEl.textContent = secs > 0
+                    ? `Opening editor in ${secs}s…`
+                    : 'Opening editor…';
+            }
+            if (secs <= 0) {
+                clearInterval(timer);
+                window.location.href = '/optimized-editor';
+            }
+        }, 1000);
+    });
     // Step 2: show animated success overlay
     optimizeContent.innerHTML = `
         <div class="optdone-overlay" id="optdone-overlay">
