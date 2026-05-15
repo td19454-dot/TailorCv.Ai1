@@ -900,7 +900,7 @@ header, main, section, footer, .hero, .features,
 
 .nav-links {
     display: flex;
-    min-width: 700px;
+    min-width: 560px;
     justify-content: space-evenly;
 }
 
@@ -911,13 +911,13 @@ header, main, section, footer, .hero, .features,
 }
 
 .nav-links a {
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0px;
     color: rgb(246, 247, 248);
     font-weight: 500;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 32px;
+    padding: 18px 12px;
     border-bottom: 4px solid #033067;
 }
 

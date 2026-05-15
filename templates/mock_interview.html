@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mock Interview - TailorCV.ai</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <style>
+        body { font-family: Inter, sans-serif; background:#07102b; color:#fff; margin:0; }
+        .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 16px 56px; }
+        .panel { background:#0f1e44; border:1px solid rgba(80,110,200,.22); border-radius:16px; padding:20px; margin-top:16px; }
+        .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        @media (max-width: 800px){ .grid { grid-template-columns:1fr; } }
+        input,select,textarea,button { font: inherit; }
+        input,select,textarea { width:100%; background:#141f4a; color:#fff; border:1px solid rgba(80,110,200,.3); border-radius:10px; padding:10px; }
+        textarea { min-height: 100px; }
+        .btn { border:0; border-radius:10px; padding:10px 16px; cursor:pointer; background:linear-gradient(135deg,#4a6aff,#7c3aed); color:#fff; font-weight:700; }
+        .muted { color:#9bb0d8; font-size:.92rem; }
+        .hidden { display:none; }
+        #questionText { font-size:1.06rem; line-height:1.6; min-height:60px; }
+        #transcript { background:#141f4a; border-radius:10px; padding:12px; min-height:80px; }
+        .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+        .history { max-height: 220px; overflow:auto; display:flex; flex-direction:column; gap:8px; }
+        .item { border-radius:10px; padding:10px; font-size:.9rem; }
+        .ai { background:rgba(74,106,255,.2); }
+        .user { background:rgba(34,197,94,.15); }
+        .timer { margin-top:8px; font-weight:700; color:#facc15; }
+        .score-grid { display:grid; grid-template-columns:repeat(3,minmax(120px,1fr)); gap:10px; margin:12px 0 16px; }
+        @media (max-width: 700px){ .score-grid { grid-template-columns:1fr 1fr; } }
+        .score-metric { background:#141f4a; border:1px solid rgba(80,110,200,.3); border-radius:10px; padding:10px; }
+        .score-metric .k { color:#9bb0d8; font-size:.78rem; text-transform:uppercase; }
+        .score-metric .v { font-size:1.25rem; font-weight:700; margin-top:4px; }
+        .score-section-title { margin:16px 0 8px; font-size:1rem; }
+        .score-list { margin:0; padding-left:18px; color:#d6e8ff; }
+        .score-list li { margin:6px 0; }
+        .qa-item { background:#141f4a; border:1px solid rgba(80,110,200,.3); border-radius:10px; padding:10px; margin:8px 0; }
+        .qa-item .q { color:#9bb0d8; font-size:.85rem; margin-bottom:6px; }
+    </style>
+</head>
+<body>
+<header class="navbar">
+    <div class="logo"><a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a></div>
+    <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav-mi"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="primary-nav-mi">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/solutions" class="nav-link">Get ATS Score</a>
+        <a href="/modify-cv" class="nav-link">Make CV</a>
+        <a href="/solutions" class="nav-link">Optimize CV with AI</a>
+        <a href="/pricing" class="nav-link">Pricing</a>
+        <a href="/templates" class="nav-link">Templates</a>
+        <a href="/interview-prep" class="nav-link">Interview Prep</a>
+        <a href="/mock-interview" class="nav-link active">Mock Interview</a>
+        <a href="/solutions" class="mobile-get-started">Get Started</a>
+    </nav>
+    <div class="nav-actions"><div id="auth-nav-slot"></div><a href="/solutions" class="getstarted">Get Started</a></div>
+</header>
+
+<main class="wrap">
+    <h1>AI Mock Interview</h1>
+    <p class="muted">Real-time Zara interview with follow-ups, speech recognition, and scorecard.</p>
+
+    <section class="panel" id="setupPanel">
+        <div class="grid">
+            <div><label>Name</label><input id="userName" placeholder="Your name"></div>
+            <div><label>Target Role</label><input id="targetRole" placeholder="ML Engineer"></div>
+            <div><label>Interview Type</label><select id="interviewType"><option value="behavioral">Behavioral</option><option value="technical">Technical</option><option value="mixed" selected>Mixed</option></select></div>
+            <div><label>Questions</label><select id="numQuestions"><option>5</option><option selected>8</option><option>10</option></select></div>
+            <div style="grid-column:1/-1">
+                <label>Resume PDF (required)</label>
+                <input id="resumeFile" type="file" accept=".pdf,application/pdf" required>
+                <div class="muted">Upload your resume as PDF to begin the interview.</div>
+            </div>
+            <div style="grid-column:1/-1">
+                <label>Job Description (required)</label>
+                <textarea id="jobDesc" required placeholder="Paste the full job description here..."></textarea>
+                <div class="muted">Required for role-specific questions and accurate scoring.</div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:12px"><button class="btn" onclick="startInterview()">Begin Interview</button><span class="muted" id="statusText">Ready</span></div>
+    </section>
+
+    <section class="panel hidden" id="livePanel">
+        <div class="muted" id="qCount">Q 0/0</div>
+        <div class="timer" id="timerText">Time left: 60s</div>
+        <div id="questionText">Preparing...</div>
+        <div style="margin-top:12px"><div id="transcript"><span class="muted">Press mic and answer.</span></div></div>
+        <div class="row" style="margin-top:10px">
+            <button class="btn" id="micBtn" onclick="toggleMic()">Start Mic</button>
+            <button class="btn" id="submitBtn" onclick="submitAnswer()">Submit Answer</button>
+            <button class="btn" onclick="endInterview()">End Interview</button>
+        </div>
+        <h3>History</h3>
+        <div class="history" id="history"></div>
+    </section>
+
+    <section class="panel hidden" id="scorePanel">
+        <h2>Score Card</h2>
+        <div id="scoreView"></div>
+        <button class="btn" onclick="location.reload()">New Interview</button>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="footer-title">ResumeOptimizer</h4>
+                <p class="footer-text">AI-powered resume optimization for your career success.</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <a href="/" class="footer-link">Home</a>
+                <a href="/solutions" class="footer-link">Get ATS Score</a>
+                <a href="/modify-cv" class="footer-link">Make CV</a>
+                <a href="/solutions" class="footer-link">Optimize CV with AI</a>
+                <a href="/pricing" class="footer-link">Pricing</a>
+                <a href="/templates" class="footer-link">Templates</a>
+                <a href="/interview-prep" class="footer-link">Interview Prep</a>
+                <a href="/mock-interview" class="footer-link">Mock Interview</a>
+                <a href="/about" class="footer-link">About Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="/static/auth_nav.js"></script>
+<script src="/static/mobile_nav.js"></script>
+<script>
+const STATE = { userName:'', role:'', type:'mixed', numQuestions:8, resumeText:'', jobDesc:'', questionIndex:0, currentQuestion:'', conversation_history:[], qa_log:[], currentTranscript:'', fillerCount:0, totalWords:0, speechRec:null, isRecording:false, timerSec:60, timerId:null };
+const FILLERS = ['um','uh','like','you know','basically','literally','actually','sort of','kind of','i mean'];
+
+function setStatus(t){ document.getElementById('statusText').textContent=t; }
+function addHistory(role,text){ const el=document.createElement('div'); el.className='item '+(role==='assistant'?'ai':'user'); el.textContent=(role==='assistant'?'Zara: ':'You: ')+text; const h=document.getElementById('history'); h.appendChild(el); h.scrollTop=h.scrollHeight; }
+function updateCount(){ document.getElementById('qCount').textContent=`Q ${STATE.questionIndex}/${STATE.numQuestions}`; }
+function countFillers(text){ const low=text.toLowerCase(); STATE.totalWords += low.split(/\s+/).filter(Boolean).length; for(const f of FILLERS){ const m = low.match(new RegExp(`\\b${f}\\b`,'g')); if(m) STATE.fillerCount += m.length; }}
+function speakQuestion(text, onDone){
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.rate = 1.22; u.pitch = 1.04; u.volume = 1;
+  const voices = window.speechSynthesis.getVoices();
+  const female = voices.find(v => /female|zira|samantha|karen|moira|fiona|victoria/i.test(v.name));
+  if(female) u.voice = female;
+  u.onend = () => { if(onDone) onDone(); };
+  window.speechSynthesis.speak(u);
+}
+function stopTimer(){
+  if(STATE.timerId){ clearInterval(STATE.timerId); STATE.timerId = null; }
+}
+function startTimer(){
+  stopTimer();
+  STATE.timerSec = 60;
+  const timerEl = document.getElementById('timerText');
+  timerEl.textContent = `Time left: ${STATE.timerSec}s`;
+  STATE.timerId = setInterval(async () => {
+    STATE.timerSec -= 1;
+    timerEl.textContent = `Time left: ${STATE.timerSec}s`;
+    if(STATE.timerSec <= 10){ timerEl.style.color = '#ef4444'; } else { timerEl.style.color = '#facc15'; }
+    if(STATE.timerSec <= 0){
+      stopTimer();
+      if(STATE.isRecording) toggleMic();
+      if(!STATE.currentTranscript.trim()){
+        STATE.currentTranscript = 'No response provided within time limit.';
+      }
+      await submitAnswer(true);
+    }
+  }, 1000);
+}
+
+function initSpeech(){ const SR = window.SpeechRecognition || window.webkitSpeechRecognition; if(!SR) return false; const rec=new SR(); rec.continuous=true; rec.interimResults=true; rec.lang='en-US'; rec.onresult=(e)=>{ let final=''; let interim=''; for(let i=e.resultIndex;i<e.results.length;i++){ const t=e.results[i][0].transcript; if(e.results[i].isFinal) final+=t; else interim+=t; } if(final){ STATE.currentTranscript += final+' '; countFillers(final); } document.getElementById('transcript').textContent=(STATE.currentTranscript+interim).trim() || 'Listening...'; }; rec.onend=()=>{ if(STATE.isRecording) rec.start(); }; STATE.speechRec=rec; return true; }
+function toggleMic(){ if(!STATE.speechRec && !initSpeech()){ alert('SpeechRecognition not supported. Use Chrome.'); return; } if(!STATE.isRecording){ STATE.currentTranscript=''; document.getElementById('transcript').textContent='Listening...'; STATE.speechRec.start(); STATE.isRecording=true; document.getElementById('micBtn').textContent='Stop Mic'; } else { STATE.isRecording=false; try{ STATE.speechRec.stop(); }catch(e){} document.getElementById('micBtn').textContent='Start Mic'; }}
+
+async function startInterview(){
+  STATE.userName=document.getElementById('userName').value.trim()||'Candidate';
+  STATE.role=document.getElementById('targetRole').value.trim()||'Software Engineer';
+  STATE.type=document.getElementById('interviewType').value; STATE.numQuestions=parseInt(document.getElementById('numQuestions').value,10)||8;
+  STATE.resumeText=''; STATE.jobDesc=document.getElementById('jobDesc').value.trim();
+  const resumeFile = document.getElementById('resumeFile').files[0];
+  if(!resumeFile){
+    alert('Please upload your resume PDF to start.');
+    return;
+  }
+  if(!STATE.jobDesc){
+    alert('Please paste the job description to start.');
+    return;
+  }
+  setStatus('Generating first question...');
+  const formData = new FormData();
+  formData.append('file', resumeFile);
+  formData.append('role', STATE.role);
+  formData.append('interview_type', STATE.type);
+  formData.append('num_questions', String(STATE.numQuestions));
+  formData.append('job_desc', STATE.jobDesc);
+  const r = await fetch('/api/interview/start-with-pdf', { method:'POST', body: formData });
+  const data = await r.json();
+  if(r.ok && data.resume_text){ STATE.resumeText = data.resume_text; }
+  if(!r.ok || !data.success){ alert(data.detail || 'Failed to start interview'); return; }
+  document.getElementById('setupPanel').classList.add('hidden'); document.getElementById('livePanel').classList.remove('hidden');
+  STATE.questionIndex=1; STATE.currentQuestion=data.question; updateCount();
+  document.getElementById('questionText').textContent=data.question; addHistory('assistant',data.question); STATE.conversation_history.push({role:'assistant',content:data.question});
+  speakQuestion(data.question, () => { startTimer(); });
+  setStatus('Interview started');
+}
+
+async function submitAnswer(fromTimer=false){
+  stopTimer();
+  if(STATE.isRecording) toggleMic();
+  const answer = STATE.currentTranscript.trim(); if(!answer && !fromTimer){ alert('Please record an answer first.'); return; }
+  addHistory('user',answer); STATE.qa_log.push({question:STATE.currentQuestion,answer});
+  const r = await fetch('/api/interview/next',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({resume_text:STATE.resumeText,role:STATE.role,interview_type:STATE.type,num_questions:STATE.numQuestions,question_index:STATE.questionIndex,job_desc:STATE.jobDesc,conversation_history:STATE.conversation_history,user_answer:answer})});
+  const data = await r.json();
+  if(!r.ok || !data.success){ alert(data.detail || 'Failed to fetch next question'); return; }
+  STATE.conversation_history.push({role:'user',content:answer});
+  if(data.done || STATE.questionIndex >= STATE.numQuestions){ endInterview(); return; }
+  STATE.questionIndex += 1; STATE.currentQuestion = `${data.ack} ${data.question}`.trim(); updateCount();
+  document.getElementById('questionText').textContent = STATE.currentQuestion; addHistory('assistant',STATE.currentQuestion); STATE.conversation_history.push({role:'assistant',content:STATE.currentQuestion});
+  speakQuestion(STATE.currentQuestion, () => { startTimer(); });
+  STATE.currentTranscript=''; document.getElementById('transcript').textContent='Press mic and answer.';
+}
+
+async function endInterview(){
+  stopTimer();
+  window.speechSynthesis.cancel();
+  const r = await fetch('/api/interview/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({role:STATE.role,interview_type:STATE.type,resume_text:STATE.resumeText,qa_log:STATE.qa_log,filler_count:STATE.fillerCount,total_words:STATE.totalWords})});
+  const data = await r.json();
+  document.getElementById('livePanel').classList.add('hidden'); document.getElementById('scorePanel').classList.remove('hidden');
+  renderScoreCard(data.scores || data);
+}
+
+function renderScoreCard(s){
+  const safe = (v, d='-') => (v === undefined || v === null || v === '') ? d : v;
+  const qa = Array.isArray(s.qa_scores) ? s.qa_scores : [];
+  const strengths = Array.isArray(s.strengths) ? s.strengths : [];
+  const improvements = Array.isArray(s.improvements) ? s.improvements : [];
+  const scoreView = document.getElementById('scoreView');
+  scoreView.innerHTML = `
+    <div class="score-grid">
+      <div class="score-metric"><div class="k">Overall</div><div class="v">${safe(s.overall)}%</div></div>
+      <div class="score-metric"><div class="k">Communication</div><div class="v">${safe(s.communication)}%</div></div>
+      <div class="score-metric"><div class="k">Depth</div><div class="v">${safe(s.depth)}%</div></div>
+      <div class="score-metric"><div class="k">Relevance</div><div class="v">${safe(s.relevance)}%</div></div>
+      <div class="score-metric"><div class="k">Confidence</div><div class="v">${safe(s.confidence)}%</div></div>
+      <div class="score-metric"><div class="k">Keywords Hit</div><div class="v">${safe(s.keywords_hit)}%</div></div>
+    </div>
+    <div><strong>Grade:</strong> ${safe(s.grade)}</div>
+    <div class="score-section-title">Strengths</div>
+    <ul class="score-list">${strengths.map(x => `<li>${x}</li>`).join('') || '<li>No strengths returned.</li>'}</ul>
+    <div class="score-section-title">Improvements</div>
+    <ul class="score-list">${improvements.map(x => `<li>${x}</li>`).join('') || '<li>No improvements returned.</li>'}</ul>
+    <div class="score-section-title">Per-Question Review</div>
+    ${qa.map(x => `<div class="qa-item"><div class="q">Q${safe(x.index)} - Score ${safe(x.score)}/10</div><div>${safe(x.feedback,'No feedback')}</div></div>`).join('') || '<div class="qa-item">No per-question review returned.</div>'}
+  `;
+}
+</script>
+</body>
+</html>
+
