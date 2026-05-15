@@ -5,12 +5,10 @@ date: 2026-05-10
 author: TailorCV Team
 tags: [ATS, resume, job search]
 category: Resume Optimization
-image: /public/blog-images/ats-score-guide.webp
+image: public\blog-images\ats.jpg
 slug: ats-score-guide
 keywords: ats score, resume optimization, resume keywords
 ---
-
-# ATS Resume Score Guide for 2026
 
 Most companies filter resumes through an Applicant Tracking System before a recruiter reads them.
 

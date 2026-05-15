@@ -17,17 +17,35 @@
     <meta name="twitter:title" content="{{ meta_title }}">
     <meta name="twitter:description" content="{{ meta_description }}">
     <meta name="twitter:image" content="{{ og_image }}">
+    <link rel="stylesheet" href="/static/style3.css">
     <link rel="stylesheet" href="/static/blog.css">
     <link rel="icon" type="image/png" href="/static/favicon.png">
 </head>
 <body>
-<header class="blog-nav">
-    <a class="brand" href="/">TailorCV.ai</a>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/solutions">Optimizer</a>
-        <a href="/blog" aria-current="page">Blog</a>
+<header class="navbar">
+    <div class="logo">
+        <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+    </div>
+    <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false"
+        aria-controls="primary-nav-blog-list">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav class="nav-links" id="primary-nav-blog-list">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/solutions" class="nav-link">Get ATS Score</a>
+        <a href="/modify-cv" class="nav-link">Make CV</a>
+        <a href="/solutions" class="nav-link">Optimize CV with AI</a>
+        <a href="/blog" class="nav-link active">Blog</a>
+        <a href="/pricing" class="nav-link">Pricing</a>
+        <a href="/templates" class="nav-link">Templates</a>
+        <a href="/solutions" class="mobile-get-started">Get Started</a>
     </nav>
+    <div class="nav-actions">
+        <div id="auth-nav-slot"></div>
+        <a href="/solutions" class="getstarted">Get Started</a>
+    </div>
 </header>
 <main class="blog-main">
     <section class="blog-listing-head">
@@ -83,5 +101,7 @@
     </nav>
 </main>
 <footer class="blog-footer"><p>© 2026 TailorCV.ai</p></footer>
+<script src="/static/auth_nav.js"></script>
+<script src="/static/mobile_nav.js"></script>
 </body>
 </html>
