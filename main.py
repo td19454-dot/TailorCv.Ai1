@@ -37,6 +37,8 @@ from functions import (
     map_project_demo_links,
     extract_project_link_map,
     normalize_links,
+    generate_interview_questions,
+    evaluate_interview_answer,
 )
 
 from extraction import process_resume
@@ -2047,6 +2049,61 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
     }
 
 
+@app.get("/interview-prep", response_class=HTMLResponse)
+async def interview_prep_page(request: Request):
+    """Interview Question Generator page"""
+    return templates.TemplateResponse(request, "interview_prep.html", {"request": request})
+
+
+@app.post("/api/generate-interview-questions")
+async def api_generate_interview_questions(
+    request: Request,
+    file: UploadFile = File(...),
+    jd_string: str = Form(""),
+):
+    """Generate interview questions from resume PDF + job description"""
+    file_path = None
+    try:
+        file_path = os.path.join(uploads_dir, f"iq_{uuid.uuid4()}.pdf")
+        with open(file_path, "wb") as f:
+            content = await file.read()
+            f.write(content)
+
+        async with request_semaphore:
+            resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
+            result = await generate_interview_questions(resume_string, jd_string)
+            return JSONResponse({"success": True, "data": result})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if file_path and os.path.exists(file_path):
+            os.remove(file_path)
+
+
+@app.post("/api/evaluate-interview-answer")
+async def api_evaluate_interview_answer(payload: dict):
+    """Evaluate a candidate's interview answer."""
+    try:
+        question = str(payload.get("question", "")).strip()
+        model_answer = str(payload.get("model_answer", "")).strip()
+        candidate_answer = str(payload.get("candidate_answer", "")).strip()
+        if not question:
+            raise HTTPException(status_code=400, detail="Question is required")
+        if not candidate_answer:
+            raise HTTPException(status_code=400, detail="Candidate answer is required")
+
+        result = await evaluate_interview_answer(
+            question=question,
+            model_answer=model_answer,
+            candidate_answer=candidate_answer,
+        )
+        return JSONResponse({"success": True, **result})
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
 @app.get("/health")
 async def health_check():
     """Health check endpoint for deployment verification"""
@@ -2469,7 +2526,6 @@ async def login_with_google(request: Request):
 
 @app.post("/logout")
 async def logout(request: Request):
-    print("Session before clear:", dict(request.session))
     request.session.clear()
     return JSONResponse({"success": True})
 
@@ -2532,8 +2588,6 @@ async def forgot_password(request: Request):
 
         if not is_production_environment():
             response_data["reset_code"] = reset_code
-            if email_error:
-                response_data["email_debug"] = email_error
 
         response_data["redirect_url"] = "/reset-password"
 
@@ -2590,7 +2644,6 @@ async def upload_resume(
     if style_id is None:
         style_id = int(request.query_params.get("style_id", 1))
     user_id = request.session.get('user_id')
-    print("Session:", dict(request.session))
     if not user_id:
         return JSONResponse(status_code=401, content={"error": "Not logged in"})
     

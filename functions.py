@@ -1060,3 +1060,146 @@ def process_resume(resume_name,jd_string):
     #     return f"Successfully exported resume to {output_pdf_file} 🎉"
     # except Exception as e:
     #     return f"Failed to export resume: {str(e)} 💔"
+
+async def generate_interview_questions(resume_string: str, jd_string: str) -> dict:
+    """Generate role-specific interview questions based on resume and job description."""
+    prompt = f"""You are an expert technical recruiter and interview coach.
+Analyze the resume and job description below, then generate targeted interview questions.
+
+Resume:
+{resume_string}
+
+Job Description:
+{jd_string}
+
+Generate exactly 50 interview questions grouped into 4 categories.
+Output ONLY valid JSON. No markdown, no extra text.
+
+{{
+  "job_title": "<inferred job title from JD>",
+  "company": "<company name if mentioned, else 'the company'>",
+  "categories": [
+    {{
+      "name": "Technical Skills",
+      "icon": "TS",
+      "questions": [
+        {{"q": "<question>", "tip": "<1-sentence answer tip for the candidate>", "answer": "<medium-length model answer (70-110 words), direct and role-specific>"}}
+      ]
+    }},
+    {{
+      "name": "Experience & Projects",
+      "icon": "EP",
+      "questions": [
+        {{"q": "<question>", "tip": "<1-sentence answer tip>", "answer": "<medium-length model answer (70-110 words), direct and role-specific>"}}
+      ]
+    }},
+    {{
+      "name": "Behavioural",
+      "icon": "BH",
+      "questions": [
+        {{"q": "<question>", "tip": "<1-sentence answer tip>", "answer": "<medium-length model answer (70-110 words), direct and role-specific>"}}
+      ]
+    }},
+    {{
+      "name": "Culture & Motivation",
+      "icon": "CM",
+      "questions": [
+        {{"q": "<question>", "tip": "<1-sentence answer tip>", "answer": "<medium-length model answer (70-110 words), direct and role-specific>"}}
+      ]
+    }}
+  ]
+}}
+
+Distribute questions: 15 Technical, 15 Experience, 10 Behavioural, 10 Culture. Total = 50.
+Make questions specific to the candidate's actual resume and the role. Not generic.
+For every model answer:
+- write 70-110 words
+- provide a direct sample answer only
+- include concrete project/work context, tools/skills used, and outcome
+- do not include coaching advice, response tips, or phrases like "How to shape your response"."""
+
+    client = await _build_openai_client()
+    try:
+        response = await client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.4,
+            max_tokens=8000,
+        )
+        raw = (response.choices[0].message.content or "").strip()
+        raw = re.sub(r"^```json\s*", "", raw)
+        raw = re.sub(r"\s*```$", "", raw)
+        parsed = json.loads(raw)
+
+        categories = parsed.get("categories") if isinstance(parsed, dict) else []
+        if isinstance(categories, list):
+            for cat in categories:
+                if not isinstance(cat, dict):
+                    continue
+                questions = cat.get("questions")
+                if not isinstance(questions, list):
+                    cat["questions"] = []
+                    continue
+                for question in questions:
+                    if not isinstance(question, dict):
+                        continue
+                    question["q"] = str(question.get("q", "")).strip()
+                    question["tip"] = str(question.get("tip", "")).strip()
+                    answer = str(question.get("answer", "")).strip()
+                    if len(answer) < 180:
+                        base = answer or (
+                            "In this case, I focused on solving the core requirement by breaking the problem into clear steps and prioritizing reliability first."
+                        )
+                        answer = (
+                            f"{base} I worked with the relevant tools for the role, handled trade-offs around performance and maintainability, "
+                            f"and coordinated implementation to keep delivery predictable. The result was a measurable improvement in quality and speed, "
+                            f"while keeping the solution easy for the team to maintain and extend."
+                        )
+                    question["answer"] = answer
+        return parsed
+    except Exception as exc:
+        raise RuntimeError(f"Interview question generation failed: {exc}") from exc
+
+
+async def evaluate_interview_answer(question: str, model_answer: str, candidate_answer: str) -> dict:
+    """Evaluate a candidate answer against the question and model answer."""
+    prompt = f"""You are an expert interview evaluator.
+Score the candidate answer fairly on a 0-10 scale.
+
+Question:
+{question}
+
+Model answer:
+{model_answer}
+
+Candidate answer:
+{candidate_answer}
+
+Return ONLY valid JSON with this exact schema:
+{{
+  "score": <number between 0 and 10>,
+  "strengths": "<one short sentence>",
+  "improvements": "<one short sentence>",
+  "verdict": "<Excellent | Good | Fair | Needs Improvement>"
+}}
+"""
+    client = await _build_openai_client()
+    try:
+        response = await client.chat.completions.create(
+            model="gpt-4o-mini",
+            response_format={"type": "json_object"},
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.2,
+            max_tokens=400,
+        )
+        raw = (response.choices[0].message.content or "").strip()
+        parsed = json.loads(raw)
+        score = max(0.0, min(10.0, float(parsed.get("score", 0))))
+        return {
+            "score": round(score, 1),
+            "strengths": str(parsed.get("strengths", "")).strip(),
+            "improvements": str(parsed.get("improvements", "")).strip(),
+            "verdict": str(parsed.get("verdict", "")).strip() or "Fair",
+        }
+    except Exception as exc:
+        raise RuntimeError(f"Interview answer evaluation failed: {exc}") from exc

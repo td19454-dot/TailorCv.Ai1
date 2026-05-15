@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Question Generator - TailorCV.ai</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #020c22;
+            color: #e2ecff;
+            min-height: 100vh;
+        }
+
+        /* HERO */
+        .iq-hero {
+            text-align: center;
+            padding: 3.5rem 1.5rem 2rem;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .iq-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid rgba(59,130,246,.45);
+            border-radius: 999px;
+            padding: 0.35rem 0.9rem;
+            color: #60a5fa;
+            font-size: 0.82rem;
+            background: rgba(2,12,34,.75);
+            margin-bottom: 1rem;
+        }
+        .iq-hero h1 {
+            font-size: clamp(1.9rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.12;
+            color: #ecf4ff;
+            letter-spacing: -.01em;
+        }
+        .iq-hero h1 span { color: #3392ff; }
+        .iq-hero p {
+            margin-top: .7rem;
+            color: #6f99d2;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        /* UPLOAD CARD */
+        .iq-card {
+            background: rgba(6,20,55,.7);
+            border: 1px solid rgba(30,80,200,.3);
+            border-radius: 18px;
+            padding: 2rem;
+            max-width: 760px;
+            margin: 0 auto 2rem;
+        }
+
+        .iq-drop-zone {
+            border: 2px dashed rgba(51,146,255,.4);
+            border-radius: 12px;
+            padding: 2rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color .2s, background .2s;
+            position: relative;
+            background: rgba(2,12,34,.4);
+        }
+        .iq-drop-zone:hover, .iq-drop-zone.drag-over {
+            border-color: #3392ff;
+            background: rgba(51,146,255,.07);
+        }
+        .iq-drop-zone input[type=file] {
+            position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+        }
+        .iq-drop-icon { font-size: 2.4rem; margin-bottom: .5rem; }
+        .iq-drop-label { color: #7fb6ff; font-size: .95rem; }
+        .iq-drop-label span { color: #3392ff; text-decoration: underline; }
+        .iq-file-name {
+            margin-top: .6rem;
+            font-size: .85rem;
+            color: #50d890;
+            display: none;
+        }
+
+        .iq-label {
+            display: block;
+            font-size: .85rem;
+            color: #7fb6ff;
+            font-weight: 600;
+            margin: 1.2rem 0 .45rem;
+            letter-spacing: .03em;
+            text-transform: uppercase;
+        }
+
+        .iq-textarea {
+            width: 100%;
+            min-height: 130px;
+            background: rgba(2,12,34,.6);
+            border: 1px solid rgba(51,146,255,.25);
+            border-radius: 10px;
+            padding: .8rem 1rem;
+            color: #d6e8ff;
+            font-family: 'Inter', sans-serif;
+            font-size: .95rem;
+            resize: vertical;
+            outline: none;
+            transition: border-color .2s;
+        }
+        .iq-textarea:focus { border-color: #3392ff; }
+        .iq-textarea::placeholder { color: #3a5a8c; }
+
+        .iq-btn {
+            margin-top: 1.4rem;
+            width: 100%;
+            padding: .9rem 1.5rem;
+            background: linear-gradient(135deg, #1a6aff, #0d4fcf);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: opacity .2s, transform .1s;
+            letter-spacing: .02em;
+        }
+        .iq-btn:hover:not(:disabled) { opacity: .9; transform: translateY(-1px); }
+        .iq-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+        /* LOADER */
+        .iq-loader {
+            display: none;
+            text-align: center;
+            padding: 2.5rem;
+        }
+        .iq-loader.active { display: block; }
+        .iq-spinner {
+            width: 48px; height: 48px;
+            border: 4px solid rgba(51,146,255,.2);
+            border-top-color: #3392ff;
+            border-radius: 50%;
+            animation: spin .8s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .iq-loader p { color: #6f99d2; font-size: .95rem; }
+        .iq-progress-wrap {
+            max-width: 420px;
+            margin: .75rem auto 0;
+            text-align: left;
+        }
+        .iq-progress-track {
+            width: 100%;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(51,146,255,.18);
+            overflow: hidden;
+            border: 1px solid rgba(51,146,255,.25);
+        }
+        .iq-progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #1a6aff, #4cc9f0);
+            transition: width .35s ease;
+        }
+        .iq-progress-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: .35rem;
+            font-size: .78rem;
+            color: #8fb8ef;
+        }
+
+        /* RESULTS */
+        #iq-results { display: none; max-width: 760px; margin: 0 auto 4rem; }
+        #iq-results.active { display: block; }
+
+        .iq-result-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .iq-result-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ecf4ff;
+        }
+        .iq-result-header p { color: #6f99d2; margin-top: .3rem; font-size: .95rem; }
+
+        .iq-stats-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .iq-stat {
+            flex: 1;
+            min-width: 140px;
+            background: rgba(6,20,55,.7);
+            border: 1px solid rgba(30,80,200,.25);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            text-align: center;
+        }
+        .iq-stat .num { font-size: 2rem; font-weight: 800; color: #3392ff; }
+        .iq-stat .lbl { font-size: .8rem; color: #6f99d2; margin-top: .15rem; }
+
+        .iq-category {
+            background: rgba(6,20,55,.7);
+            border: 1px solid rgba(30,80,200,.25);
+            border-radius: 14px;
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+        }
+        .iq-cat-header {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            padding: 1rem 1.4rem;
+            cursor: pointer;
+            user-select: none;
+            background: rgba(51,146,255,.05);
+            border-bottom: 1px solid rgba(30,80,200,.2);
+            transition: background .2s;
+        }
+        .iq-cat-header:hover { background: rgba(51,146,255,.1); }
+        .iq-cat-icon { font-size: 1.4rem; }
+        .iq-cat-name { font-size: 1rem; font-weight: 700; color: #ecf4ff; flex: 1; }
+        .iq-cat-count {
+            font-size: .78rem;
+            color: #3392ff;
+            background: rgba(51,146,255,.12);
+            border: 1px solid rgba(51,146,255,.25);
+            border-radius: 999px;
+            padding: .2rem .6rem;
+        }
+        .iq-cat-arrow {
+            color: #3392ff;
+            font-size: .9rem;
+            transition: transform .25s;
+        }
+        .iq-cat-arrow.open { transform: rotate(180deg); }
+
+        .iq-questions { padding: .6rem 0; }
+        .iq-question-item {
+            padding: .9rem 1.4rem;
+            border-bottom: 1px solid rgba(30,80,200,.12);
+            transition: background .15s;
+            cursor: pointer;
+        }
+        .iq-question-item:last-child { border-bottom: none; }
+        .iq-question-item:hover { background: rgba(51,146,255,.04); }
+
+        .iq-q-num {
+            display: inline-block;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: rgba(51,146,255,.15);
+            border: 1px solid rgba(51,146,255,.3);
+            color: #3392ff;
+            font-size: .72rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 22px;
+            margin-right: .6rem;
+            flex-shrink: 0;
+        }
+        .iq-q-row { display: flex; align-items: flex-start; gap: 0; }
+        .iq-q-text { font-size: .97rem; color: #d6e8ff; line-height: 1.5; font-weight: 500; }
+
+        .iq-tip {
+            margin-top: .55rem;
+            margin-left: 30px;
+            background: rgba(51,146,255,.07);
+            border-left: 3px solid rgba(51,146,255,.4);
+            border-radius: 0 6px 6px 0;
+            padding: .5rem .8rem;
+            color: #7fb6ff;
+            font-size: .84rem;
+            line-height: 1.45;
+            display: none;
+        }
+        .iq-tip.visible { display: block; }
+        .iq-tip-label {
+            font-size: .72rem;
+            font-weight: 700;
+            color: #3392ff;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            margin-bottom: .2rem;
+        }
+        .iq-model-answer {
+            margin-top: .55rem;
+            margin-left: 30px;
+            background: rgba(34,197,94,.08);
+            border-left: 3px solid rgba(74,222,128,.5);
+            border-radius: 0 6px 6px 0;
+            padding: .9rem 1rem;
+            color: #bbf7d0;
+            font-size: .92rem;
+            line-height: 1.6;
+            min-height: 110px;
+            white-space: pre-wrap;
+            display: none;
+        }
+        .iq-model-answer.visible { display: block; }
+        .iq-show-answer-btn {
+            margin-top: .55rem;
+            margin-left: 30px;
+            align-self: flex-start;
+            border: 1px solid rgba(74,222,128,.45);
+            background: rgba(34,197,94,.12);
+            color: #86efac;
+            border-radius: 8px;
+            padding: .34rem .68rem;
+            font-size: .78rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .iq-answer-box {
+            margin-top: .6rem;
+            margin-left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        .iq-answer-input {
+            width: 100%;
+            min-height: 86px;
+            border-radius: 8px;
+            border: 1px solid rgba(51,146,255,.32);
+            background: rgba(2,12,34,.55);
+            color: #dbeafe;
+            padding: .55rem .7rem;
+            resize: vertical;
+            font-family: 'Inter', sans-serif;
+            font-size: .88rem;
+        }
+        .iq-eval-btn {
+            align-self: flex-start;
+            border: 1px solid rgba(59,130,246,.45);
+            background: rgba(37,99,235,.16);
+            color: #93c5fd;
+            border-radius: 8px;
+            padding: .38rem .75rem;
+            font-size: .8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .iq-eval-result {
+            display: none;
+            margin-top: .1rem;
+            border: 1px solid rgba(148,163,184,.24);
+            border-radius: 8px;
+            background: rgba(15,23,42,.58);
+            padding: .5rem .65rem;
+            color: #cbd5e1;
+            font-size: .82rem;
+            line-height: 1.45;
+        }
+        .iq-eval-result.visible { display: block; }
+
+        /* COPY ALL BTN */
+        .iq-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .iq-action-btn {
+            flex: 1;
+            min-width: 160px;
+            padding: .75rem 1rem;
+            border-radius: 10px;
+            font-size: .9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity .2s;
+            text-align: center;
+        }
+        .iq-action-btn:hover { opacity: .85; }
+        .iq-action-primary {
+            background: linear-gradient(135deg, #1a6aff, #0d4fcf);
+            color: #fff;
+            border: none;
+        }
+        .iq-action-secondary {
+            background: transparent;
+            color: #3392ff;
+            border: 1px solid rgba(51,146,255,.35);
+        }
+
+        /* TOAST */
+        .iq-toast {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: #1a3a7a;
+            border: 1px solid rgba(51,146,255,.4);
+            color: #d6e8ff;
+            padding: .7rem 1.4rem;
+            border-radius: 999px;
+            font-size: .88rem;
+            font-weight: 500;
+            transition: transform .3s;
+            z-index: 9999;
+            white-space: nowrap;
+        }
+        .iq-toast.show { transform: translateX(-50%) translateY(0); }
+
+        /* TRY AGAIN */
+        .iq-try-again {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .iq-try-again button {
+            background: transparent;
+            border: 1px solid rgba(51,146,255,.3);
+            color: #3392ff;
+            padding: .55rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: .88rem;
+            font-family: 'Inter', sans-serif;
+            transition: background .2s;
+        }
+        .iq-try-again button:hover { background: rgba(51,146,255,.08); }
+
+        /* responsive */
+        @media (max-width: 600px) {
+            .iq-hero { padding: 2rem 1rem 1.5rem; }
+            .iq-card { padding: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+        </div>
+        <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav-iq">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="nav-links" id="primary-nav-iq">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/solutions" class="nav-link">Get ATS Score</a>
+            <a href="/modify-cv" class="nav-link">Make CV</a>
+            <a href="/solutions" class="nav-link">Optimize CV with AI</a>
+            <a href="/pricing" class="nav-link">Pricing</a>
+            <a href="/templates" class="nav-link">Templates</a>
+            <a href="/interview-prep" class="nav-link active">Interview Prep</a>
+            <a href="/solutions" class="mobile-get-started">Get Started</a>
+        </nav>
+        <div class="nav-actions">
+            <div id="auth-nav-slot"></div>
+            <a href="/solutions" class="getstarted">Get Started</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <div class="iq-hero">
+        <div class="iq-kicker">AI-Powered Interview Coach</div>
+        <h1>Know What They'll <span>Ask You</span> Before You Walk In</h1>
+        <p>Upload your resume + paste the job description. Our AI generates 50 targeted interview questions - specific to <em>your</em> profile and the role.</p>
+    </div>
+
+    <!-- UPLOAD CARD -->
+    <div class="iq-card" id="iq-upload-card">
+        <label class="iq-label">Your Resume (PDF)</label>
+        <div class="iq-drop-zone" id="drop-zone">
+            <input type="file" id="resume-file" accept=".pdf" />
+            <div class="iq-drop-icon">PDF</div>
+            <div class="iq-drop-label">Drop your PDF here, or <span>browse</span></div>
+            <div class="iq-file-name" id="file-name-display"></div>
+        </div>
+
+        <label class="iq-label" for="jd-input">Job Description <span style="color:#3a5a8c;font-weight:400;text-transform:none;font-size:.8rem;">(paste the full JD for best results)</span></label>
+        <textarea class="iq-textarea" id="jd-input" placeholder="Paste the job description here..."></textarea>
+
+        <button class="iq-btn" id="generate-btn" disabled>Generate My Interview Questions</button>
+    </div>
+
+    <!-- LOADER -->
+    <div class="iq-loader" id="iq-loader">
+        <div class="iq-spinner"></div>
+        <p id="iq-loader-status">Analysing your resume &amp; crafting targeted questions...</p>
+        <div class="iq-progress-wrap">
+            <div class="iq-progress-track">
+                <div class="iq-progress-fill" id="iq-progress-fill"></div>
+            </div>
+            <div class="iq-progress-meta">
+                <span id="iq-progress-step">Starting...</span>
+                <span id="iq-progress-pct">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div id="iq-results">
+        <div class="iq-result-header">
+            <h2 id="result-title">Your Interview Questions</h2>
+            <p id="result-subtitle"></p>
+        </div>
+
+        <div class="iq-stats-row" id="stats-row"></div>
+
+        <div id="categories-container"></div>
+
+        <div class="iq-actions">
+            <button class="iq-action-btn iq-action-primary" id="copy-all-btn">Copy All Questions</button>
+            <button class="iq-action-btn iq-action-secondary" id="optimize-cv-btn" onclick="window.location.href='/solutions'">Optimize My CV Too</button>
+        </div>
+
+        <div class="iq-try-again">
+            <button id="try-again-btn">Try with a different resume / JD</button>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="iq-toast" id="toast"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">ResumeOptimizer</h4>
+                    <p class="footer-text">AI-powered resume optimization for your career success.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/solutions" class="footer-link">Get ATS Score</a>
+                    <a href="/modify-cv" class="footer-link">Make CV</a>
+                    <a href="/solutions" class="footer-link">Optimize CV with AI</a>
+                    <a href="/pricing" class="footer-link">Pricing</a>
+                    <a href="/templates" class="footer-link">Templates</a>
+                    <a href="/interview-prep" class="footer-link">Interview Prep</a>
+                    <a href="/about" class="footer-link">About Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/auth_nav.js"></script>
+    <script src="/static/mobile_nav.js"></script>
+
+    <script>
+    (function () {
+        const fileInput   = document.getElementById('resume-file');
+        const dropZone    = document.getElementById('drop-zone');
+        const fileNameEl  = document.getElementById('file-name-display');
+        const jdInput     = document.getElementById('jd-input');
+        const generateBtn = document.getElementById('generate-btn');
+        const loader      = document.getElementById('iq-loader');
+        const loaderStatus = document.getElementById('iq-loader-status');
+        const progressFill = document.getElementById('iq-progress-fill');
+        const progressStep = document.getElementById('iq-progress-step');
+        const progressPct  = document.getElementById('iq-progress-pct');
+        const uploadCard  = document.getElementById('iq-upload-card');
+        const results     = document.getElementById('iq-results');
+        const toast       = document.getElementById('toast');
+
+        let selectedFile = null;
+        let progressTimer = null;
+        let progressValue = 0;
+
+        function setProgress(value, stepText) {
+            progressValue = Math.max(0, Math.min(100, value));
+            progressFill.style.width = `${progressValue}%`;
+            progressPct.textContent = `${Math.round(progressValue)}%`;
+            if (stepText) progressStep.textContent = stepText;
+        }
+
+        function startProgress() {
+            if (progressTimer) clearInterval(progressTimer);
+            loaderStatus.textContent = 'Analysing your resume & crafting targeted questions...';
+            setProgress(4, 'Uploading files');
+            const steps = [
+                { at: 18, text: 'Extracting resume text' },
+                { at: 38, text: 'Understanding job description' },
+                { at: 58, text: 'Generating personalized questions' },
+                { at: 76, text: 'Drafting model answers' },
+                { at: 90, text: 'Finalizing output' }
+            ];
+            progressTimer = setInterval(() => {
+                if (progressValue >= 90) return;
+                const next = Math.min(90, progressValue + (progressValue < 40 ? 3 : 2));
+                let currentStep = steps[0];
+                for (let i = 0; i < steps.length; i++) {
+                    if (next >= steps[i].at) currentStep = steps[i];
+                }
+                setProgress(next, currentStep.text);
+            }, 500);
+        }
+
+        function finishProgress() {
+            if (progressTimer) {
+                clearInterval(progressTimer);
+                progressTimer = null;
+            }
+            setProgress(100, 'Done');
+        }
+
+        // --- Restore saved file + JD from localStorage (same pattern as solutions page) ---
+        (function restoreSaved() {
+            try {
+                const savedJD = localStorage.getItem('tailorcv_jobDescription');
+                if (savedJD) jdInput.value = savedJD;
+
+                const raw = localStorage.getItem('tailorcv_resumeFile');
+                if (raw) {
+                    const stored = JSON.parse(raw);
+                    if (stored && stored.data && stored.name) {
+                        // Reconstruct File from stored base64
+                        const arr  = stored.data.split(',');
+                        const mime = arr[0].match(/:(.*?);/)[1];
+                        const bstr = atob(arr[1]);
+                        let n = bstr.length;
+                        const u8 = new Uint8Array(n);
+                        while (n--) u8[n] = bstr.charCodeAt(n);
+                        selectedFile = new File([u8], stored.name, { type: mime });
+                        fileNameEl.textContent = 'Saved: ' + stored.name;
+                        fileNameEl.style.display = 'block';
+                    }
+                }
+            } catch (e) { /* storage unavailable */ }
+            checkReady();
+        })();
+
+        // File selection
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files[0]) setFile(fileInput.files[0]);
+        });
+        dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+        dropZone.addEventListener('drop', e => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            const f = e.dataTransfer.files[0];
+            if (f && f.type === 'application/pdf') setFile(f);
+        });
+
+        function setFile(f) {
+            selectedFile = f;
+            fileNameEl.textContent = 'Uploaded: ' + f.name;
+            fileNameEl.style.display = 'block';
+            checkReady();
+        }
+
+        jdInput.addEventListener('input', checkReady);
+        function checkReady() {
+            generateBtn.disabled = !(selectedFile && jdInput.value.trim().length > 20);
+        }
+
+        // Generate
+        generateBtn.addEventListener('click', async () => {
+            if (!selectedFile) return;
+            uploadCard.style.display = 'none';
+            loader.classList.add('active');
+            results.classList.remove('active');
+            startProgress();
+
+            const fd = new FormData();
+            fd.append('file', selectedFile);
+            fd.append('jd_string', jdInput.value.trim());
+
+            try {
+                const resp = await fetch('/api/generate-interview-questions', { method: 'POST', body: fd });
+                const json = await resp.json();
+                if (!resp.ok || !json.success) throw new Error(json.detail || 'Generation failed');
+                finishProgress();
+                renderResults(json.data);
+            } catch (err) {
+                if (progressTimer) {
+                    clearInterval(progressTimer);
+                    progressTimer = null;
+                }
+                loader.classList.remove('active');
+                uploadCard.style.display = 'block';
+                showToast('Error: ' + (err.message || 'Something went wrong. Please try again.'));
+            }
+        });
+
+        // Render results
+        function renderResults(data) {
+            loader.classList.remove('active');
+            const evalScores = {};
+            const cleanText = (v, fallback) => {
+                const s = String(v ?? '').trim();
+                if (!s) return fallback || '';
+                return s;
+            };
+            const cleanIcon = (v) => {
+                const s = cleanText(v, '');
+                if (!s || s.length > 6) return 'Q';
+                return s;
+            };
+
+            document.getElementById('result-title').textContent =
+                'Interview Questions for ' + data.job_title;
+            document.getElementById('result-subtitle').textContent =
+                'Tailored to your resume for ' + data.company;
+
+            // Stats
+            const totalQ = data.categories.reduce((s, c) => s + c.questions.length, 0);
+            const statsRow = document.getElementById('stats-row');
+            statsRow.innerHTML = '';
+            [
+                { num: totalQ,  lbl: 'Total Questions' },
+                { num: data.categories.length, lbl: 'Categories' },
+                { num: '0/' + totalQ, lbl: 'Evaluated' },
+                { num: '-', lbl: 'Avg Score' },
+            ].forEach(s => {
+                const d = document.createElement('div');
+                d.className = 'iq-stat';
+                d.innerHTML = `<div class="num">${s.num}</div><div class="lbl">${s.lbl}</div>`;
+                statsRow.appendChild(d);
+            });
+            const statNums = statsRow.querySelectorAll('.num');
+            const evaluatedStatNum = statNums[2];
+            const avgScoreStatNum  = statNums[3];
+
+            function updateEvalStats() {
+                const entries = Object.values(evalScores);
+                const count = entries.length;
+                evaluatedStatNum.textContent = `${count}/${totalQ}`;
+                if (!count) { avgScoreStatNum.textContent = '-'; return; }
+                const avg = entries.reduce((a, b) => a + b, 0) / count;
+                avgScoreStatNum.textContent = `${avg.toFixed(1)}/10`;
+            }
+
+            // Categories
+            const container = document.getElementById('categories-container');
+            container.innerHTML = '';
+            let globalNum = 0;
+
+            data.categories.forEach((cat, ci) => {
+                const block = document.createElement('div');
+                block.className = 'iq-category';
+
+                const hdr = document.createElement('div');
+                hdr.className = 'iq-cat-header';
+                const safeIcon = cleanIcon(cat.icon);
+                const safeName = cleanText(cat.name, 'Category');
+                hdr.innerHTML = `
+                    <span class="iq-cat-icon">${safeIcon}</span>
+                    <span class="iq-cat-name">${safeName}</span>
+                    <span class="iq-cat-count">${cat.questions.length} questions</span>
+                    <span class="iq-cat-arrow open">&#9660;</span>`;
+
+                const ql = document.createElement('div');
+                ql.className = 'iq-questions';
+
+                cat.questions.forEach((item, qi) => {
+                    globalNum++;
+                    const qId = `${ci}-${qi}`;
+                    const modelAnswer = cleanText(item.answer, '');
+                    const qItem = document.createElement('div');
+                    qItem.className = 'iq-question-item';
+                    qItem.innerHTML = `
+                        <div class="iq-q-row">
+                            <span class="iq-q-num">${globalNum}</span>
+                            <span class="iq-q-text">${item.q}</span>
+                        </div>
+                        <div class="iq-tip" id="tip-${ci}-${qi}">
+                            <div class="iq-tip-label">Answer Tip</div>
+                            ${item.tip}
+                        </div>
+                        <button class="iq-show-answer-btn" id="show-answer-${qId}" type="button">Show Answer</button>
+                        <div class="iq-model-answer" id="model-answer-${qId}">
+                            <div class="iq-tip-label">Model Answer</div>
+                            ${modelAnswer || 'No model answer available.'}
+                        </div>
+                        <div class="iq-answer-box">
+                            <textarea class="iq-answer-input" id="ans-${qId}" placeholder="Write your answer here..."></textarea>
+                            <button class="iq-eval-btn" id="eval-${qId}" type="button">Evaluate My Answer</button>
+                            <div class="iq-eval-result" id="eval-result-${qId}"></div>
+                        </div>`;
+
+                    qItem.addEventListener('click', () => {
+                        document.getElementById(`tip-${ci}-${qi}`).classList.toggle('visible');
+                    });
+
+                    const evalBtn      = qItem.querySelector(`#eval-${qId}`);
+                    const answerInput  = qItem.querySelector(`#ans-${qId}`);
+                    const evalResult   = qItem.querySelector(`#eval-result-${qId}`);
+                    const showAnswerBtn   = qItem.querySelector(`#show-answer-${qId}`);
+                    const modelAnswerEl  = qItem.querySelector(`#model-answer-${qId}`);
+
+                    showAnswerBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const isVisible = modelAnswerEl.classList.contains('visible');
+                        modelAnswerEl.classList.toggle('visible', !isVisible);
+                        showAnswerBtn.textContent = isVisible ? 'Show Answer' : 'Hide Answer';
+                    });
+
+                    evalBtn.addEventListener('click', async (e) => {
+                        e.stopPropagation();
+                        const candidateAnswer = (answerInput.value || '').trim();
+                        if (!candidateAnswer) { showToast('Please write your answer first.'); return; }
+                        evalBtn.disabled = true;
+                        evalBtn.textContent = 'Evaluating...';
+                        try {
+                            const res = await fetch('/api/evaluate-interview-answer', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    question: item.q,
+                                    model_answer: modelAnswer,
+                                    candidate_answer: candidateAnswer
+                                })
+                            });
+                            const out = await res.json();
+                            if (!res.ok || !out.success) throw new Error(out.detail || 'Evaluation failed');
+                            const score = Number(out.score || 0);
+                            evalScores[qId] = score;
+                            updateEvalStats();
+                            evalResult.innerHTML = `
+                                <strong>Score:</strong> ${score.toFixed(1)}/10<br>
+                                <strong>Strengths:</strong> ${out.strengths || '-'}<br>
+                                <strong>Improvements:</strong> ${out.improvements || '-'}<br>
+                                <strong>Verdict:</strong> ${out.verdict || '-'}
+                            `;
+                            evalResult.classList.add('visible');
+                        } catch (err) {
+                            showToast('Evaluation failed: ' + (err.message || 'Please try again.'));
+                        } finally {
+                            evalBtn.disabled = false;
+                            evalBtn.textContent = 'Evaluate My Answer';
+                        }
+                    });
+
+                    ql.appendChild(qItem);
+                });
+
+                hdr.addEventListener('click', () => {
+                    const arrow = hdr.querySelector('.iq-cat-arrow');
+                    const isOpen = arrow.classList.contains('open');
+                    ql.style.display = isOpen ? 'none' : 'block';
+                    arrow.classList.toggle('open', !isOpen);
+                });
+
+                block.appendChild(hdr);
+                block.appendChild(ql);
+                container.appendChild(block);
+            });
+
+            results.classList.add('active');
+            results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Copy all
+            document.getElementById('copy-all-btn').onclick = () => {
+                let text = `Interview Questions for ${data.job_title} at ${data.company}\n\n`;
+                let n = 0;
+                data.categories.forEach(cat => {
+                    text += `\n-- ${cleanIcon(cat.icon)} ${cleanText(cat.name, 'Category')} --\n`;
+                    cat.questions.forEach(q => {
+                        n++;
+                        text += `${n}. ${q.q}\n   Tip: ${q.tip}\n   Model answer: ${q.answer || '-'}\n\n`;
+                    });
+                });
+                navigator.clipboard.writeText(text).then(() => showToast('All questions copied!'));
+            };
+        }
+
+        // Try again
+        document.getElementById('try-again-btn').addEventListener('click', () => {
+            results.classList.remove('active');
+            uploadCard.style.display = 'block';
+            generateBtn.disabled = true;
+            fileInput.value = '';
+            fileNameEl.style.display = 'none';
+            jdInput.value = '';
+            selectedFile = null;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+    })();
+    </script>
+</body>
+</html>
