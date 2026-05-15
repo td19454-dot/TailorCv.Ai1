@@ -146,7 +146,7 @@ class BlogService:
         slug = self._slugify(str(frontmatter.get("slug") or os.path.splitext(os.path.basename(file_path))[0]))
         author = str(frontmatter.get("author") or self.default_author).strip()
         category = str(frontmatter.get("category") or "").strip()
-        image = str(frontmatter.get("image") or "").strip()
+        image = self._normalize_image_path(str(frontmatter.get("image") or "").strip())
         keywords = str(frontmatter.get("keywords") or "").strip()
 
         tags = self._coerce_list(frontmatter.get("tags"))
@@ -263,6 +263,19 @@ class BlogService:
             except ValueError:
                 continue
         return None
+
+    @staticmethod
+    def _normalize_image_path(value: str) -> str:
+        if not value:
+            return ""
+        cleaned = value.replace("\\", "/").strip()
+        if cleaned.startswith(("http://", "https://", "/")):
+            return cleaned
+        if cleaned.startswith("public/"):
+            return "/" + cleaned
+        if cleaned.startswith("static/"):
+            return "/" + cleaned
+        return "/public/" + cleaned
 
 
 @lru_cache(maxsize=1)
