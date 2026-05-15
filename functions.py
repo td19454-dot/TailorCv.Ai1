@@ -430,6 +430,7 @@ load_dotenv(dotenv_path=BASE_DIR / ".env")
 
 # OPTIMIZATION: Reuse a single OpenAI client instance instead of creating new ones
 _openai_client = None
+MOCK_INTERVIEW_MODEL = "gpt-4o-mini"
 
 
 async def _build_openai_client():
@@ -1203,3 +1204,162 @@ Return ONLY valid JSON with this exact schema:
         }
     except Exception as exc:
         raise RuntimeError(f"Interview answer evaluation failed: {exc}") from exc
+
+
+def _build_mock_interview_system_prompt(
+    resume_text: str,
+    role: str,
+    interview_type: str,
+    num_questions: int,
+    job_desc: str = "",
+) -> str:
+    return f"""You are Zara, a professional AI interviewer for TailorCV.ai.
+You are interviewing a candidate for the role of "{role}".
+Interview type: {interview_type}.
+Total questions to ask: {num_questions}.
+
+Candidate resume/background:
+{resume_text or "Not provided."}
+
+Job description:
+{job_desc or "Not provided."}
+
+Rules:
+- Ask ONE question at a time, concise and spoken-friendly (max 40 words).
+- Blend behavioral and technical depth according to interview type.
+- Ask context-aware follow-up questions based on prior answers.
+- Be warm and professional.
+- Do not mention internal model/provider names.
+"""
+
+
+async def generate_mock_interview_first_question(
+    resume_text: str,
+    role: str,
+    interview_type: str,
+    num_questions: int,
+    job_desc: str = "",
+) -> str:
+    client = await _build_openai_client()
+    system_prompt = _build_mock_interview_system_prompt(
+        resume_text=resume_text,
+        role=role,
+        interview_type=interview_type,
+        num_questions=num_questions,
+        job_desc=job_desc,
+    )
+    response = await client.chat.completions.create(
+        model=MOCK_INTERVIEW_MODEL,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": "Start the interview with question 1."},
+        ],
+        temperature=0.5,
+        max_tokens=220,
+    )
+    return str(response.choices[0].message.content or "").strip()
+
+
+async def generate_mock_interview_next_question(
+    resume_text: str,
+    role: str,
+    interview_type: str,
+    num_questions: int,
+    question_index: int,
+    job_desc: str,
+    conversation_history: list[dict],
+    user_answer: str,
+) -> dict:
+    client = await _build_openai_client()
+    system_prompt = _build_mock_interview_system_prompt(
+        resume_text=resume_text,
+        role=role,
+        interview_type=interview_type,
+        num_questions=num_questions,
+        job_desc=job_desc,
+    ) + f"\nCurrent question index already completed: {question_index}\n"
+
+    messages = [{"role": "system", "content": system_prompt}]
+    for msg in conversation_history or []:
+        role_val = str(msg.get("role", "")).strip()
+        content_val = str(msg.get("content", "")).strip()
+        if role_val in {"user", "assistant"} and content_val:
+            messages.append({"role": role_val, "content": content_val})
+    messages.append({"role": "user", "content": user_answer})
+    messages.append(
+        {
+            "role": "user",
+            "content": (
+                "Return JSON only: "
+                '{"done": <true|false>, "ack": "<one short encouraging sentence>", '
+                '"question": "<next question or empty if done>"}'
+            ),
+        }
+    )
+
+    response = await client.chat.completions.create(
+        model=MOCK_INTERVIEW_MODEL,
+        response_format={"type": "json_object"},
+        messages=messages,
+        temperature=0.45,
+        max_tokens=300,
+    )
+    raw = str(response.choices[0].message.content or "").strip()
+    try:
+        parsed = json.loads(raw)
+    except Exception:
+        parsed = {"done": False, "ack": "Thanks for sharing that.", "question": raw}
+    return {
+        "done": bool(parsed.get("done", False)),
+        "ack": str(parsed.get("ack", "")).strip() or "Thanks for sharing that.",
+        "question": str(parsed.get("question", "")).strip(),
+    }
+
+
+async def score_mock_interview(
+    role: str,
+    interview_type: str,
+    resume_text: str,
+    qa_log: list[dict],
+    filler_count: int,
+    total_words: int,
+) -> dict:
+    client = await _build_openai_client()
+    qa_text = "\n\n".join(
+        [
+            f"Q{i+1}: {str(item.get('question', '')).strip()}\nA: {str(item.get('answer', '')).strip()}"
+            for i, item in enumerate(qa_log or [])
+        ]
+    )
+    prompt = f"""You are a professional interview evaluator.
+Role: {role}
+Interview type: {interview_type}
+Resume: {resume_text or "Not provided"}
+Filler words detected: {filler_count} out of ~{total_words} words.
+
+Q&A Transcript:
+{qa_text}
+
+Return JSON only:
+{{
+  "overall": <0-100>,
+  "communication": <0-100>,
+  "depth": <0-100>,
+  "relevance": <0-100>,
+  "confidence": <0-100>,
+  "keywords_hit": <0-100>,
+  "grade": "<Excellent|Good|Average|Needs Work>",
+  "strengths": ["<point>", "<point>", "<point>"],
+  "improvements": ["<point>", "<point>", "<point>"],
+  "qa_scores": [{{"index":1,"score":<0-10>,"feedback":"<brief feedback>"}}]
+}}"""
+    response = await client.chat.completions.create(
+        model=MOCK_INTERVIEW_MODEL,
+        response_format={"type": "json_object"},
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.2,
+        max_tokens=1200,
+    )
+    raw = str(response.choices[0].message.content or "").strip()
+    parsed = json.loads(raw)
+    return parsed

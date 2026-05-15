@@ -39,6 +39,9 @@ from functions import (
     normalize_links,
     generate_interview_questions,
     evaluate_interview_answer,
+    generate_mock_interview_first_question,
+    generate_mock_interview_next_question,
+    score_mock_interview,
 )
 
 from extraction import process_resume
@@ -2053,6 +2056,102 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
 async def interview_prep_page(request: Request):
     """Interview Question Generator page"""
     return templates.TemplateResponse(request, "interview_prep.html", {"request": request})
+
+
+@app.get("/mock-interview", response_class=HTMLResponse)
+async def mock_interview_page(request: Request):
+    """Real-time mock interview room."""
+    return templates.TemplateResponse(request, "mock_interview.html", {"request": request})
+
+
+@app.post("/api/interview/start")
+async def api_interview_start(payload: dict):
+    try:
+        resume_text = str(payload.get("resume_text", "")).strip()
+        role = str(payload.get("role", "")).strip() or "Software Engineer"
+        interview_type = str(payload.get("interview_type", "mixed")).strip() or "mixed"
+        num_questions = int(payload.get("num_questions", 8))
+        job_desc = str(payload.get("job_desc", "")).strip()
+        if not job_desc:
+            raise HTTPException(status_code=400, detail="Job description is required")
+
+        question = await generate_mock_interview_first_question(
+            resume_text=resume_text,
+            role=role,
+            interview_type=interview_type,
+            num_questions=num_questions,
+            job_desc=job_desc,
+        )
+        return JSONResponse({"success": True, "question": question})
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.post("/api/interview/start-with-pdf")
+async def api_interview_start_with_pdf(
+    file: UploadFile = File(...),
+    role: str = Form("Software Engineer"),
+    interview_type: str = Form("mixed"),
+    num_questions: int = Form(8),
+    job_desc: str = Form(...),
+):
+    file_path = None
+    try:
+        if not str(job_desc or "").strip():
+            raise HTTPException(status_code=400, detail="Job description is required")
+        file_path = os.path.join(uploads_dir, f"mock_iq_{uuid.uuid4()}.pdf")
+        with open(file_path, "wb") as f:
+            content = await file.read()
+            f.write(content)
+
+        resume_text = await asyncio.to_thread(extract_pdf_text, file_path)
+        question = await generate_mock_interview_first_question(
+            resume_text=resume_text,
+            role=str(role or "Software Engineer").strip() or "Software Engineer",
+            interview_type=str(interview_type or "mixed").strip() or "mixed",
+            num_questions=int(num_questions or 8),
+            job_desc=str(job_desc or "").strip(),
+        )
+        return JSONResponse({"success": True, "question": question, "resume_text": resume_text})
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+    finally:
+        if file_path and os.path.exists(file_path):
+            os.remove(file_path)
+
+
+@app.post("/api/interview/next")
+async def api_interview_next(payload: dict):
+    try:
+        result = await generate_mock_interview_next_question(
+            resume_text=str(payload.get("resume_text", "")).strip(),
+            role=str(payload.get("role", "")).strip() or "Software Engineer",
+            interview_type=str(payload.get("interview_type", "mixed")).strip() or "mixed",
+            num_questions=int(payload.get("num_questions", 8)),
+            question_index=int(payload.get("question_index", 1)),
+            job_desc=str(payload.get("job_desc", "")).strip(),
+            conversation_history=payload.get("conversation_history") or [],
+            user_answer=str(payload.get("user_answer", "")).strip(),
+        )
+        return JSONResponse({"success": True, **result})
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.post("/api/interview/score")
+async def api_interview_score(payload: dict):
+    try:
+        scores = await score_mock_interview(
+            role=str(payload.get("role", "")).strip() or "Software Engineer",
+            interview_type=str(payload.get("interview_type", "mixed")).strip() or "mixed",
+            resume_text=str(payload.get("resume_text", "")).strip(),
+            qa_log=payload.get("qa_log") or [],
+            filler_count=int(payload.get("filler_count", 0)),
+            total_words=int(payload.get("total_words", 0)),
+        )
+        return JSONResponse({"success": True, "scores": scores})
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
 
 
 @app.post("/api/generate-interview-questions")
