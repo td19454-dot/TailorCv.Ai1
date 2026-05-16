@@ -11,40 +11,61 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        header.navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            z-index: 1000 !important;
+        }
+        .navbar .nav-links {
+            min-width: 560px;
+            gap: 2px;
+        }
+        .navbar .nav-links .nav-link {
+            font-size: 11px;
+            padding: 18px 10px;
+            letter-spacing: 0;
+        }
+        html, body { overflow-x: hidden; }
+        .modify-cv-section { padding-top: 100px; }
+    </style>
 </head>
 <body>
     <header class="navbar">
-        <div class="left">
-            <div class="logo">
-                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
-            </div>
+    <div class="left">
+        <div class="logo">
+            <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
         </div>
-        <button
-            type="button"
-            class="mobile-menu-toggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="primary-nav-modify"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-<nav class="nav-links" id="primary-nav-modify">
-            <a href="/" class="nav-link">Home</a>
-            <a href="/solutions" class="nav-link">Get ATS Score</a>
-            <a href="/modify-cv" class="nav-link active">Make CV</a>
-            <a href="/solutions" class="nav-link">Optimize CV with AI</a>
-            <a href="/blog" class="nav-link">Blog</a>
-            <a href="/pricing" class="nav-link">Pricing</a>
-            <a href="/templates" class="nav-link">Templates</a>
-            <a href="/interview-prep" class="nav-link">Interview Prep</a>
-            <a href="/mock-interview" class="nav-link">Mock Interview</a>
-        </nav>
-        <div class="nav-actions">
-            <div id="auth-nav-slot"></div>
-        </div>
-    </header>
+    </div>
+    <button
+        type="button"
+        class="mobile-menu-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="primary-nav-shared"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav class="nav-links" id="primary-nav-shared">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/solutions" class="nav-link">Get ATS Score</a>
+        <a href="/modify-cv" class="nav-link active">Make CV</a>
+        <a href="/solutions" class="nav-link">Optimize CV with AI</a>
+        <a href="/blog" class="nav-link">Blog</a>
+        <a href="/pricing" class="nav-link">Pricing</a>
+        <a href="/templates" class="nav-link">Templates</a>
+        <a href="/interview-prep" class="nav-link">Interview Prep</a>
+        <a href="/mock-interview" class="nav-link">Mock Interview</a>
+    </nav>
+    <div class="nav-actions">
+        <div id="auth-nav-slot"></div>
+    </div>
+</header>
 
     <section class="modify-cv-section">
         <div class="modify-cv-layout container">
@@ -133,3 +154,4 @@
     <script src="/static/js/modify_cv.js?v=21"></script>
 </body>
 </html>
+

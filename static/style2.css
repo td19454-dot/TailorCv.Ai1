@@ -22,8 +22,11 @@ animation: bgMove 10s ease infinite;
 
 /* header section - Style3 Glassmorphism */
 header.navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 1000;
     display: flex;
     background: linear-gradient(135deg, rgba(15, 1, 13, 0.95), rgba(19, 19, 107, 0.9));
@@ -39,7 +42,7 @@ header.navbar {
 
 header.navbar + * {
     margin-top: 0;
-    padding-top: 0.75rem;
+    padding-top: 100px;
 }
 
 .left {
