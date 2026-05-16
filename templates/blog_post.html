@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "_google_analytics.html" %}
@@ -18,6 +18,7 @@
     <meta name="twitter:description" content="{{ meta_description }}">
     <meta name="twitter:image" content="{{ og_image }}">
     <link rel="stylesheet" href="/static/style3.css">
+    <link rel="stylesheet" href="/static/header-footer.css">
     <link rel="stylesheet" href="/static/blog.css">
     {% if codehilite_css %}<style>{{ codehilite_css }}</style>{% endif %}
     <script type="application/ld+json">{{ blog_schema_json | safe }}</script>
@@ -26,16 +27,23 @@
 <body>
 <div class="progress" id="readingProgress"></div>
 <header class="navbar">
-    <div class="logo">
-        <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+    <div class="left">
+        <div class="logo">
+            <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+        </div>
     </div>
-    <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false"
-        aria-controls="primary-nav-blog-post">
+    <button
+        type="button"
+        class="mobile-menu-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="primary-nav-shared"
+    >
         <span></span>
         <span></span>
         <span></span>
     </button>
-    <nav class="nav-links" id="primary-nav-blog-post">
+    <nav class="nav-links" id="primary-nav-shared">
         <a href="/" class="nav-link">Home</a>
         <a href="/solutions" class="nav-link">Get ATS Score</a>
         <a href="/modify-cv" class="nav-link">Make CV</a>
@@ -43,11 +51,11 @@
         <a href="/blog" class="nav-link active">Blog</a>
         <a href="/pricing" class="nav-link">Pricing</a>
         <a href="/templates" class="nav-link">Templates</a>
-        <a href="/solutions" class="mobile-get-started">Get Started</a>
+        <a href="/interview-prep" class="nav-link">Interview Prep</a>
+        <a href="/mock-interview" class="nav-link">Mock Interview</a>
     </nav>
     <div class="nav-actions">
         <div id="auth-nav-slot"></div>
-        <a href="/solutions" class="getstarted">Get Started</a>
     </div>
 </header>
 <main class="blog-post-wrap">
@@ -112,8 +120,34 @@
         </div>
     </section>
 </main>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="footer-title">ResumeOptimizer</h4>
+                <p class="footer-text">AI-powered resume optimization for your career success.</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <a href="/" class="footer-link">Home</a>
+                <a href="/solutions" class="footer-link">Get ATS Score</a>
+                <a href="/modify-cv" class="footer-link">Make CV</a>
+                <a href="/solutions" class="footer-link">Optimize CV with AI</a>
+                <a href="/pricing" class="footer-link">Pricing</a>
+                <a href="/templates" class="footer-link">Templates</a>
+                <a href="/interview-prep" class="footer-link">Interview Prep</a>
+                <a href="/mock-interview" class="footer-link">Mock Interview</a>
+                <a href="/about" class="footer-link">About Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 <script src="/static/blog.js" defer></script>
 <script src="/static/auth_nav.js"></script>
 <script src="/static/mobile_nav.js"></script>
 </body>
 </html>
+
