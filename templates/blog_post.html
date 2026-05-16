@@ -53,11 +53,26 @@
 <main class="blog-post-wrap">
     <article class="blog-post">
         <header class="post-header">
-            <p class="meta">{{ post.date_display }} - {{ post.read_time }} min read</p>
-            <h1>{{ post.title }}</h1>
-            <p class="lead">{{ post.description }}</p>
-            <p class="author">By {{ post.author }}</p>
-            {% if post.image %}<img class="post-cover" src="{{ post.image }}" alt="{{ post.title }}" loading="eager" decoding="async">{% endif %}
+            <div class="post-hero">
+                {% if post.image %}
+                <img class="post-cover" src="{{ post.image }}" alt="{{ post.title }}" loading="eager" decoding="async">
+                {% endif %}
+                <div class="post-hero-overlay"></div>
+                <div class="post-hero-content">
+                    <h1>{{ post.title }}</h1>
+                    <p class="lead">{{ post.description }}</p>
+                    <div class="post-hero-meta-row">
+                        <div class="author-chip">
+                            <span class="author-badge">TC</span>
+                            <span class="author"> {{ post.author }}</span>
+                        </div>
+                        <div class="meta-pills">
+                            <span class="meta-pill">{{ post.date_display }}</span>
+                            <span class="meta-pill">{{ post.read_time }} min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </header>
 
         <div class="post-layout">
