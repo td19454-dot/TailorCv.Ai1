@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mock Interview - TailorCV.ai</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <style>
+        body { font-family: Inter, sans-serif; background:#07102b; color:#fff; margin:0; }
+        .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 16px 56px; }
+        .panel { background:#0f1e44; border:1px solid rgba(80,110,200,.22); border-radius:16px; padding:20px; margin-top:16px; }
+        .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        @media (max-width: 800px){ .grid { grid-template-columns:1fr; } }
+        input,select,textarea,button { font: inherit; }
+        input,select,textarea { width:100%; background:#141f4a; color:#fff; border:1px solid rgba(80,110,200,.3); border-radius:10px; padding:10px; }
+        textarea { min-height: 100px; }
+        .btn { border:0; border-radius:10px; padding:10px 16px; cursor:pointer; background:linear-gradient(135deg,#4a6aff,#7c3aed); color:#fff; font-weight:700; }
+        .muted { color:#9bb0d8; font-size:.92rem; }
+        .hidden { display:none; }
+        #questionText { font-size:1.06rem; line-height:1.6; min-height:60px; }
+        #transcript { background:#141f4a; border-radius:10px; padding:12px; min-height:80px; }
+        .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+        .item { border-radius:10px; padding:10px; font-size:.9rem; }
+        .ai { background:rgba(74,106,255,.2); }
+        .user { background:rgba(34,197,94,.15); }
+        .timer { margin-top:8px; font-weight:700; color:#facc15; }
+        .score-grid { display:grid; grid-template-columns:repeat(3,minmax(120px,1fr)); gap:10px; margin:12px 0 16px; }
+        @media (max-width: 700px){ .score-grid { grid-template-columns:1fr 1fr; } }
+        .score-metric { background:#141f4a; border:1px solid rgba(80,110,200,.3); border-radius:10px; padding:10px; }
+        .score-metric .k { color:#9bb0d8; font-size:.78rem; text-transform:uppercase; }
+        .score-metric .v { font-size:1.25rem; font-weight:700; margin-top:4px; }
+        .score-section-title { margin:16px 0 8px; font-size:1rem; }
+        .score-list { margin:0; padding-left:18px; color:#d6e8ff; }
+        .score-list li { margin:6px 0; }
+        .qa-item { background:#141f4a; border:1px solid rgba(80,110,200,.3); border-radius:10px; padding:10px; margin:8px 0; }
+        .qa-item .q { color:#9bb0d8; font-size:.85rem; margin-bottom:6px; }
+        .live-grid { display:grid; grid-template-columns:2fr 1fr; gap:12px; align-items:start; }
+        @media (max-width: 900px){ .live-grid { grid-template-columns:1fr; } }
+        .camera-panel { background:#141f4a; border:1px solid rgba(80,110,200,.3); border-radius:12px; padding:10px; }
+        #camPreview { width:100%; aspect-ratio:16/9; border-radius:10px; background:#0b153a; object-fit:cover; }
+        #screenPreview { width:100%; aspect-ratio:16/9; border-radius:10px; background:#0b153a; object-fit:cover; margin-top:8px; }
+        #camPreviewSetup { width:100%; aspect-ratio:16/9; border-radius:10px; background:#0b153a; object-fit:cover; margin-top:6px; display:none; }
+        .preview-note { color:#9bb0d8; font-size:.88rem; }
+        .stepbar { display:flex; gap:8px; margin:0 0 14px; flex-wrap:wrap; }
+        .step-chip { padding:6px 12px; border-radius:999px; border:1px solid rgba(80,110,200,.35); color:#9bb0d8; font-size:.82rem; }
+        .step-chip.active { color:#fff; border-color:rgba(124,58,237,.8); background:rgba(124,58,237,.25); }
+        .welcome-card { background:linear-gradient(135deg, rgba(74,106,255,.2), rgba(124,58,237,.18)); border:1px solid rgba(124,58,237,.45); border-radius:12px; padding:12px; margin-bottom:12px; }
+        .setup-actions { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+    </style>
+</head>
+<body>
+<header class="navbar">
+    <div class="logo"><a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a></div>
+    <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav-mi"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="primary-nav-mi">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/solutions" class="nav-link">Get ATS Score</a>
+        <a href="/modify-cv" class="nav-link">Make CV</a>
+        <a href="/solutions" class="nav-link">Optimize CV with AI</a>
+        <a href="/pricing" class="nav-link">Pricing</a>
+        <a href="/templates" class="nav-link">Templates</a>
+        <a href="/interview-prep" class="nav-link">Interview Prep</a>
+        <a href="/mock-interview" class="nav-link active">Mock Interview</a>
+        <a href="/solutions" class="mobile-get-started">Get Started</a>
+    </nav>
+    <div class="nav-actions"><div id="auth-nav-slot"></div><a href="/solutions" class="getstarted">Get Started</a></div>
+</header>
+
+<main class="wrap">
+    <h1>AI Mock Interview</h1>
+    <p class="muted">Real-time Zara interview with follow-ups, speech recognition, and scorecard.</p>
+
+    <section class="panel" id="setupPanel">
+        <div class="stepbar">
+            <span class="step-chip active" id="chip1">1. Details</span>
+            <span class="step-chip" id="chip2">2. Setup</span>
+            <span class="step-chip" id="chip3">3. Interview</span>
+        </div>
+
+        <div id="detailsStep">
+            <div class="grid">
+                <div><label>Name</label><input id="userName" placeholder="Your name"></div>
+                <div><label>Target Role</label><input id="targetRole" placeholder="ML Engineer"></div>
+                <div><label>Interview Type</label><select id="interviewType"><option value="behavioral">Behavioral</option><option value="technical">Technical</option><option value="mixed" selected>Mixed</option></select></div>
+                <div><label>Questions</label><select id="numQuestions"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select></div>
+                <div style="grid-column:1/-1">
+                    <label>Resume PDF (required)</label>
+                    <input id="resumeFile" type="file" accept=".pdf,application/pdf" required>
+                    <div class="muted">Upload your resume as PDF to begin the interview.</div>
+                </div>
+                <div style="grid-column:1/-1">
+                    <label>Job Description (required)</label>
+                    <textarea id="jobDesc" required placeholder="Paste the full job description here..."></textarea>
+                    <div class="muted">Required for role-specific questions and accurate scoring.</div>
+                </div>
+            </div>
+            <div class="setup-actions">
+                <button class="btn" onclick="goToSetupStep()">Continue To Setup</button>
+            </div>
+        </div>
+
+        <div id="deviceStep" class="hidden">
+            <div class="welcome-card">
+                <div id="welcomeText" style="font-weight:700;">Welcome.</div>
+                <div class="muted" style="margin-top:4px;">Please complete your interview setup. Enable mic and camera, then begin.</div>
+            </div>
+            <div class="row" style="margin-top:10px">
+                <button class="btn" id="micBtnSetup" onclick="startMic()">Enable Mic</button>
+                <button class="btn" id="camBtnSetup" onclick="startCamera()">Enable Camera</button>
+                <button class="btn" id="screenBtnSetup" onclick="startScreenShare()">Enable Screen Share</button>
+            </div>
+            <aside class="camera-panel" style="margin-top:12px;">
+                <div class="muted" style="margin-bottom:8px;">Webcam Preview</div>
+                <div class="preview-note" id="camSetupNote">Camera preview appears after you enable camera.</div>
+                <video id="camPreviewSetup" autoplay playsinline muted></video>
+            </aside>
+            <div class="setup-actions">
+                <button class="btn" onclick="backToDetailsStep()">Back</button>
+                <button class="btn" onclick="startInterview()">Begin Interview</button>
+                <span class="muted" id="statusText">Ready (start mic and camera first)</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel hidden" id="livePanel">
+        <div class="live-grid">
+            <div>
+                <div class="muted" id="qCount">Q 0/0</div>
+                <div class="timer" id="timerText">Time left: 60s</div>
+                <div id="questionText">Preparing...</div>
+                <div style="margin-top:12px"><div id="transcript"><span class="muted">Your response will be captured automatically.</span></div></div>
+                <div class="row" style="margin-top:10px">
+                    <button class="btn" id="submitBtn" onclick="submitAnswer()">Submit Answer</button>
+                    <button class="btn" onclick="endInterview()">End Interview</button>
+                </div>
+            </div>
+            <aside class="camera-panel">
+                <div class="muted" style="margin-bottom:8px;">Webcam Preview</div>
+                <video id="camPreview" autoplay playsinline muted></video>
+                <div class="muted" style="margin:8px 0 6px;">Screen Share Preview (optional)</div>
+                <video id="screenPreview" autoplay playsinline muted></video>
+            </aside>
+        </div>
+    </section>
+
+    <section class="panel hidden" id="scorePanel">
+        <h2>Score Card</h2>
+        <div id="scoreView"></div>
+        <button class="btn" onclick="location.reload()">New Interview</button>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4 class="footer-title">ResumeOptimizer</h4>
+                <p class="footer-text">AI-powered resume optimization for your career success.</p>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title">Quick Links</h4>
+                <a href="/" class="footer-link">Home</a>
+                <a href="/solutions" class="footer-link">Get ATS Score</a>
+                <a href="/modify-cv" class="footer-link">Make CV</a>
+                <a href="/solutions" class="footer-link">Optimize CV with AI</a>
+                <a href="/pricing" class="footer-link">Pricing</a>
+                <a href="/templates" class="footer-link">Templates</a>
+                <a href="/interview-prep" class="footer-link">Interview Prep</a>
+                <a href="/mock-interview" class="footer-link">Mock Interview</a>
+                <a href="/about" class="footer-link">About Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="/static/auth_nav.js"></script>
+<script src="/static/mobile_nav.js"></script>
+<script>
+const STATE = { userName:'', role:'', type:'mixed', numQuestions:10, resumeText:'', jobDesc:'', questionIndex:0, currentQuestion:'', conversation_history:[], qa_log:[], currentTranscript:'', liveInterim:'', fillerCount:0, totalWords:0, speechRec:null, isRecording:false, timerSec:60, timerId:null, camStream:null, isCameraOn:false, screenStream:null, isScreenSharing:false, isRejected:false, faceDetector:null, camMonTimer:null, camSamples:0, camGoodSamples:0 };
+const FILLERS = ['um','uh','like','you know','basically','literally','actually','sort of','kind of','i mean'];
+
+function setStatus(t){ document.getElementById('statusText').textContent=t; }
+function addHistory(role,text){ /* history hidden from UI by design */ }
+function updateCount(){ document.getElementById('qCount').textContent=`Q ${STATE.questionIndex}/${STATE.numQuestions}`; }
+function setStep(active){
+  const c1=document.getElementById('chip1'); const c2=document.getElementById('chip2'); const c3=document.getElementById('chip3');
+  if(c1) c1.classList.toggle('active', active===1);
+  if(c2) c2.classList.toggle('active', active===2);
+  if(c3) c3.classList.toggle('active', active===3);
+}
+function goToSetupStep(){
+  const name=(document.getElementById('userName').value || '').trim();
+  const role=(document.getElementById('targetRole').value || '').trim();
+  const jd=(document.getElementById('jobDesc').value || '').trim();
+  const resumeFile = document.getElementById('resumeFile').files[0];
+  if(!resumeFile){ alert('Please upload your resume PDF first.'); return; }
+  if(!jd){ alert('Please paste the job description first.'); return; }
+  const w = document.getElementById('welcomeText');
+  if(w) w.textContent = `Welcome ${name || 'Candidate'} - ${role || 'Software Engineer'} interview setup`;
+  document.getElementById('detailsStep').classList.add('hidden');
+  document.getElementById('deviceStep').classList.remove('hidden');
+  setStep(2);
+}
+function backToDetailsStep(){
+  document.getElementById('deviceStep').classList.add('hidden');
+  document.getElementById('detailsStep').classList.remove('hidden');
+  setStep(1);
+}
+function countFillers(text){ const low=text.toLowerCase(); STATE.totalWords += low.split(/\s+/).filter(Boolean).length; for(const f of FILLERS){ const m = low.match(new RegExp(`\\b${f}\\b`,'g')); if(m) STATE.fillerCount += m.length; }}
+async function sampleCameraAttention(){
+  if(!STATE.isCameraOn || !STATE.faceDetector) return;
+  const video = document.getElementById('camPreview');
+  if(!video || video.readyState < 2 || !video.videoWidth || !video.videoHeight) return;
+  try{
+    const faces = await STATE.faceDetector.detect(video);
+    STATE.camSamples += 1;
+    if(Array.isArray(faces) && faces.length){
+      const f = faces[0].boundingBox || {};
+      const vw = video.videoWidth || 1;
+      const vh = video.videoHeight || 1;
+      const cx = ((f.x || 0) + (f.width || 0) / 2) / vw;
+      const cy = ((f.y || 0) + (f.height || 0) / 2) / vh;
+      const areaRatio = ((f.width || 0) * (f.height || 0)) / (vw * vh);
+      const centered = Math.abs(cx - 0.5) < 0.2 && Math.abs(cy - 0.5) < 0.2;
+      const visible = areaRatio > 0.03;
+      if(centered && visible) STATE.camGoodSamples += 1;
+    }
+  }catch(e){}
+}
+function startCameraMonitoring(){
+  stopCameraMonitoring();
+  if('FaceDetector' in window){
+    try{ STATE.faceDetector = new FaceDetector({ fastMode:true, maxDetectedFaces:1 }); }catch(e){ STATE.faceDetector = null; }
+  } else {
+    STATE.faceDetector = null;
+  }
+  STATE.camSamples = 0;
+  STATE.camGoodSamples = 0;
+  if(STATE.faceDetector){
+    STATE.camMonTimer = setInterval(sampleCameraAttention, 2000);
+  }
+}
+function stopCameraMonitoring(){
+  if(STATE.camMonTimer){ clearInterval(STATE.camMonTimer); STATE.camMonTimer = null; }
+}
+function getCameraFocusScore(){
+  if(!STATE.camSamples) return null;
+  return Math.max(0, Math.min(100, Math.round((STATE.camGoodSamples / STATE.camSamples) * 100)));
+}
+function speakQuestion(text, onDone){
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.rate = 1.22; u.pitch = 1.04; u.volume = 1;
+  const voices = window.speechSynthesis.getVoices();
+  const female = voices.find(v => /female|zira|samantha|karen|moira|fiona|victoria/i.test(v.name));
+  if(female) u.voice = female;
+  u.onend = () => { if(onDone) onDone(); };
+  window.speechSynthesis.speak(u);
+}
+function stopTimer(){
+  if(STATE.timerId){ clearInterval(STATE.timerId); STATE.timerId = null; }
+}
+function startTimer(){
+  stopTimer();
+  STATE.timerSec = 60;
+  const timerEl = document.getElementById('timerText');
+  timerEl.textContent = `Time left: ${STATE.timerSec}s`;
+  STATE.timerId = setInterval(async () => {
+    STATE.timerSec -= 1;
+    timerEl.textContent = `Time left: ${STATE.timerSec}s`;
+    if(STATE.timerSec <= 10){ timerEl.style.color = '#ef4444'; } else { timerEl.style.color = '#facc15'; }
+    if(STATE.timerSec <= 0){
+      stopTimer();
+      if(STATE.isRecording) stopMic();
+      if(!STATE.currentTranscript.trim()){
+        STATE.currentTranscript = 'No response provided within time limit.';
+      }
+      await submitAnswer(true);
+    }
+  }, 1000);
+}
+
+function initSpeech(){ const SR = window.SpeechRecognition || window.webkitSpeechRecognition; if(!SR) return false; const rec=new SR(); rec.continuous=true; rec.interimResults=true; rec.lang='en-US'; rec.onresult=(e)=>{ let final=''; let interim=''; for(let i=e.resultIndex;i<e.results.length;i++){ const t=e.results[i][0].transcript; if(e.results[i].isFinal) final+=t; else interim+=t; } if(final){ STATE.currentTranscript += final+' '; countFillers(final); } STATE.liveInterim = interim || ''; document.getElementById('transcript').textContent=(STATE.currentTranscript+STATE.liveInterim).trim() || 'Listening...'; }; rec.onend=()=>{ if(STATE.isRecording) rec.start(); }; STATE.speechRec=rec; return true; }
+function stopMic(){ STATE.isRecording=false; try{ if(STATE.speechRec) STATE.speechRec.stop(); }catch(e){} }
+function startMic(){ if(!STATE.speechRec && !initSpeech()){ alert('SpeechRecognition not supported. Use Chrome.'); return; } if(STATE.isRecording) return; STATE.currentTranscript=''; STATE.liveInterim=''; document.getElementById('transcript').textContent='Listening...'; STATE.speechRec.start(); STATE.isRecording=true; const btnSetup=document.getElementById('micBtnSetup'); if(btnSetup){ btnSetup.textContent='Mic Enabled'; btnSetup.disabled=true; btnSetup.style.opacity='0.7'; } }
+function getCapturedAnswer(){
+  const text = `${STATE.currentTranscript || ''} ${STATE.liveInterim || ''}`.replace(/\s+/g, ' ').trim();
+  return text;
+}
+function stopCamera(){
+  if(STATE.camStream){
+    for(const track of STATE.camStream.getTracks()) track.stop();
+  }
+  STATE.camStream = null;
+  STATE.isCameraOn = false;
+  const video = document.getElementById('camPreview');
+  if(video) video.srcObject = null;
+  const videoSetup = document.getElementById('camPreviewSetup');
+  if(videoSetup){ videoSetup.srcObject = null; videoSetup.style.display = 'none'; }
+  const noteSetup = document.getElementById('camSetupNote');
+  if(noteSetup) noteSetup.style.display = 'block';
+  const btn = document.getElementById('camBtn');
+  if(btn) btn.textContent = 'Enable Camera';
+  const btnSetup = document.getElementById('camBtnSetup');
+  if(btnSetup) btnSetup.textContent = 'Enable Camera';
+}
+function stopScreenShare(){
+  if(STATE.screenStream){
+    for(const track of STATE.screenStream.getTracks()) track.stop();
+  }
+  STATE.screenStream = null;
+  STATE.isScreenSharing = false;
+  const video = document.getElementById('screenPreview');
+  if(video) video.srcObject = null;
+  const videoSetup = document.getElementById('screenPreviewSetup');
+  if(videoSetup){ videoSetup.srcObject = null; videoSetup.style.display = 'none'; }
+  const noteSetup = document.getElementById('screenSetupNote');
+  if(noteSetup) noteSetup.style.display = 'block';
+  const btn = document.getElementById('screenBtn');
+  if(btn) btn.textContent = 'Enable Screen Share';
+  const btnSetup = document.getElementById('screenBtnSetup');
+  if(btnSetup) btnSetup.textContent = 'Enable Screen Share';
+}
+async function startScreenShare(){
+  if(STATE.isScreenSharing) return;
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia){
+    alert('Screen sharing is not supported in this browser.');
+    return;
+  }
+  try{
+    const stream = await navigator.mediaDevices.getDisplayMedia({ video:true, audio:false });
+    STATE.screenStream = stream;
+    STATE.isScreenSharing = true;
+    const video = document.getElementById('screenPreview');
+    video.srcObject = stream;
+    const videoSetup = document.getElementById('screenPreviewSetup');
+    if(videoSetup){ videoSetup.srcObject = stream; videoSetup.style.display = 'block'; }
+    const noteSetup = document.getElementById('screenSetupNote');
+    if(noteSetup) noteSetup.style.display = 'none';
+    const btnSetup = document.getElementById('screenBtnSetup');
+    if(btnSetup){ btnSetup.textContent = 'Screen Sharing Enabled'; btnSetup.disabled=true; btnSetup.style.opacity='0.7'; }
+    const [track] = stream.getVideoTracks();
+    if(track){
+      track.onended = () => {
+        stopScreenShare();
+      };
+    }
+  }catch(e){
+    alert('Could not start screen sharing. Please allow permission.');
+  }
+}
+async function startCamera(){
+  if(STATE.isCameraOn) return;
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    alert('Webcam is not supported in this browser.');
+    return;
+  }
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({ video:true, audio:false });
+    STATE.camStream = stream;
+    STATE.isCameraOn = true;
+    const video = document.getElementById('camPreview');
+    video.srcObject = stream;
+    const videoSetup = document.getElementById('camPreviewSetup');
+    if(videoSetup){ videoSetup.srcObject = stream; videoSetup.style.display = 'block'; }
+    const noteSetup = document.getElementById('camSetupNote');
+    if(noteSetup) noteSetup.style.display = 'none';
+    const btnSetup = document.getElementById('camBtnSetup');
+    if(btnSetup){ btnSetup.textContent = 'Camera Enabled'; btnSetup.disabled=true; btnSetup.style.opacity='0.7'; }
+  }catch(e){
+    alert('Could not access webcam. Please allow camera permission.');
+  }
+}
+
+async function startInterview(){
+  if(!STATE.isCameraOn){
+    alert('Please start your webcam before beginning the interview.');
+    return;
+  }
+  if(!STATE.isRecording){
+    alert('Please start your microphone before beginning the interview.');
+    return;
+  }
+  STATE.userName=document.getElementById('userName').value.trim()||'Candidate';
+  STATE.role=document.getElementById('targetRole').value.trim()||'Software Engineer';
+  STATE.type=document.getElementById('interviewType').value; STATE.numQuestions=parseInt(document.getElementById('numQuestions').value,10)||10;
+  STATE.resumeText=''; STATE.jobDesc=document.getElementById('jobDesc').value.trim();
+  const resumeFile = document.getElementById('resumeFile').files[0];
+  if(!resumeFile){
+    alert('Please upload your resume PDF to start.');
+    return;
+  }
+  if(!STATE.jobDesc){
+    alert('Please paste the job description to start.');
+    return;
+  }
+  setStatus('Generating first question...');
+  const formData = new FormData();
+  formData.append('file', resumeFile);
+  formData.append('role', STATE.role);
+  formData.append('interview_type', STATE.type);
+  formData.append('num_questions', String(STATE.numQuestions));
+  formData.append('job_desc', STATE.jobDesc);
+  const r = await fetch('/api/interview/start-with-pdf', { method:'POST', body: formData });
+  const data = await r.json();
+  if(r.ok && data.resume_text){ STATE.resumeText = data.resume_text; }
+  if(!r.ok || !data.success){ alert(data.detail || 'Failed to start interview'); return; }
+  document.getElementById('setupPanel').classList.add('hidden'); document.getElementById('livePanel').classList.remove('hidden');
+  setStep(3);
+  startCameraMonitoring();
+  STATE.questionIndex=1; STATE.currentQuestion=data.question; updateCount();
+  document.getElementById('questionText').textContent=data.question; addHistory('assistant',data.question); STATE.conversation_history.push({role:'assistant',content:data.question});
+  speakQuestion(data.question, () => { startTimer(); startMic(); });
+  setStatus('Interview started');
+}
+
+async function submitAnswer(fromTimer=false){
+  stopTimer();
+  if(STATE.isRecording){ stopMic(); await new Promise(r => setTimeout(r, 220)); }
+  const answer = getCapturedAnswer();
+  if(!answer && !fromTimer){ alert('Please record an answer first.'); return; }
+  addHistory('user',answer); STATE.qa_log.push({question:STATE.currentQuestion,answer});
+  const r = await fetch('/api/interview/next',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({resume_text:STATE.resumeText,role:STATE.role,interview_type:STATE.type,num_questions:STATE.numQuestions,question_index:STATE.questionIndex,job_desc:STATE.jobDesc,conversation_history:STATE.conversation_history,user_answer:answer})});
+  const data = await r.json();
+  if(!r.ok || !data.success){ alert(data.detail || 'Failed to fetch next question'); return; }
+  STATE.conversation_history.push({role:'user',content:answer});
+  if(data.done || STATE.questionIndex >= STATE.numQuestions){ endInterview(); return; }
+  STATE.questionIndex += 1; STATE.currentQuestion = `${data.ack} ${data.question}`.trim(); updateCount();
+  document.getElementById('questionText').textContent = STATE.currentQuestion; addHistory('assistant',STATE.currentQuestion); STATE.conversation_history.push({role:'assistant',content:STATE.currentQuestion});
+  speakQuestion(STATE.currentQuestion, () => { startTimer(); startMic(); });
+  STATE.currentTranscript=''; document.getElementById('transcript').textContent='Your response will be captured automatically.';
+}
+
+async function endInterview(){
+  if(STATE.isRejected) return;
+  stopTimer();
+  window.speechSynthesis.cancel();
+  if(STATE.isRecording) stopMic();
+  stopCamera();
+  stopScreenShare();
+  stopCameraMonitoring();
+  const cameraFocusScore = getCameraFocusScore();
+  const r = await fetch('/api/interview/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({role:STATE.role,interview_type:STATE.type,resume_text:'',qa_log:STATE.qa_log,filler_count:STATE.fillerCount,total_words:STATE.totalWords,camera_focus_score:cameraFocusScore})});
+  const data = await r.json();
+  document.getElementById('livePanel').classList.add('hidden'); document.getElementById('scorePanel').classList.remove('hidden');
+  renderScoreCard(data.scores || data);
+}
+function rejectInterview(reason){
+  if(STATE.isRejected) return;
+  STATE.isRejected = true;
+  stopTimer();
+  window.speechSynthesis.cancel();
+  if(STATE.isRecording) stopMic();
+  stopCamera();
+  stopScreenShare();
+  document.getElementById('livePanel').classList.add('hidden');
+  document.getElementById('scorePanel').classList.remove('hidden');
+  document.getElementById('scoreView').innerHTML = `
+    <div class="score-metric">
+      <div class="k">Interview Status</div>
+      <div class="v">Rejected</div>
+    </div>
+    <div style="margin-top:10px; color:#d6e8ff;">${reason}</div>
+  `;
+}
+window.addEventListener('beforeunload', stopCamera);
+window.addEventListener('beforeunload', stopScreenShare);
+document.addEventListener('visibilitychange', () => {
+  const liveActive = !document.getElementById('livePanel').classList.contains('hidden');
+  if (liveActive && STATE.isScreenSharing && document.hidden) {
+    rejectInterview('Interview rejected: you switched away from the interview tab while screen sharing.');
+  }
+});
+
+function renderScoreCard(s){
+  const safe = (v, d='-') => (v === undefined || v === null || v === '') ? d : v;
+  const qa = Array.isArray(s.qa_scores) ? s.qa_scores : [];
+  const strengths = Array.isArray(s.strengths) ? s.strengths : [];
+  const improvements = Array.isArray(s.improvements) ? s.improvements : [];
+  const scoreView = document.getElementById('scoreView');
+  scoreView.innerHTML = `
+    <div class="score-grid">
+      <div class="score-metric"><div class="k">Overall</div><div class="v">${safe(s.overall)}%</div></div>
+      <div class="score-metric"><div class="k">Communication</div><div class="v">${safe(s.communication)}%</div></div>
+      <div class="score-metric"><div class="k">Depth</div><div class="v">${safe(s.depth)}%</div></div>
+      <div class="score-metric"><div class="k">Relevance</div><div class="v">${safe(s.relevance)}%</div></div>
+      <div class="score-metric"><div class="k">Confidence</div><div class="v">${safe(s.confidence)}%</div></div>
+      <div class="score-metric"><div class="k">Camera Focus</div><div class="v">${safe(s.camera_focus,'-')}%</div></div>
+      <div class="score-metric"><div class="k">Keywords Hit</div><div class="v">${safe(s.keywords_hit)}%</div></div>
+    </div>
+    <div><strong>Grade:</strong> ${safe(s.grade)}</div>
+    <div class="score-section-title">Strengths</div>
+    <ul class="score-list">${strengths.map(x => `<li>${x}</li>`).join('') || '<li>No strengths returned.</li>'}</ul>
+    <div class="score-section-title">Improvements</div>
+    <ul class="score-list">${improvements.map(x => `<li>${x}</li>`).join('') || '<li>No improvements returned.</li>'}</ul>
+    <div class="score-section-title">Per-Question Review</div>
+    ${qa.map(x => `<div class="qa-item"><div class="q">Q${safe(x.index)} - Score ${safe(x.score)}/10</div><div>${safe(x.feedback,'No feedback')}</div></div>`).join('') || '<div class="qa-item">No per-question review returned.</div>'}
+  `;
+}
+</script>
+</body>
+</html>
+

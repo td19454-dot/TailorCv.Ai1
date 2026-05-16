@@ -1113,6 +1113,10 @@ Output ONLY valid JSON. No markdown, no extra text.
 
 Distribute questions: 15 Technical, 15 Experience, 10 Behavioural, 10 Culture. Total = 50.
 Make questions specific to the candidate's actual resume and the role. Not generic.
+Set overall difficulty to advanced: prefer senior-level, scenario-based, tradeoff-oriented questions.
+At least 60% of questions should require decision-making under constraints (time, scale, reliability, security, unclear requirements, stakeholder pressure).
+Include probing follow-up style wording in questions where appropriate (e.g., "why this approach", "what failed", "what would you change now").
+Avoid simple textbook/definition questions unless directly tied to a real project in the resume or JD.
 For every model answer:
 - write 70-110 words
 - provide a direct sample answer only
@@ -1228,6 +1232,10 @@ Rules:
 - Ask ONE question at a time, concise and spoken-friendly (max 40 words).
 - Blend behavioral and technical depth according to interview type.
 - Ask context-aware follow-up questions based on prior answers.
+- Default to a high-difficulty bar: ask senior-level, scenario-driven, tradeoff-heavy questions.
+- Avoid basic definition-style questions unless the candidate answer reveals a gap.
+- Include pressure-test prompts (ambiguity, constraints, failure modes, scaling, security, and prioritization).
+- Escalate difficulty when answers are strong; drill deeper with "why" and "what would you change now?" follow-ups.
 - Be warm and professional.
 - Do not mention internal model/provider names.
 """
@@ -1323,8 +1331,36 @@ async def score_mock_interview(
     qa_log: list[dict],
     filler_count: int,
     total_words: int,
+    camera_focus_score: int | None = None,
 ) -> dict:
     client = await _build_openai_client()
+    answered_items = []
+    for item in qa_log or []:
+        ans = str(item.get("answer", "")).strip()
+        if ans and ans.lower() not in {"no response provided within time limit.", "no response", "n/a", "na"}:
+            answered_items.append(item)
+
+    if not answered_items:
+        return {
+            "overall": 12,
+            "communication": 15,
+            "depth": 8,
+            "relevance": 10,
+            "confidence": 12,
+            "keywords_hit": 5,
+            "grade": "Needs Work",
+            "strengths": ["Interview was initiated successfully."],
+            "improvements": [
+                "Provide spoken answers for each question.",
+                "Share concrete examples with tools, decisions, and outcomes.",
+                "Reduce pauses and filler words by structuring responses."
+            ],
+            "qa_scores": [
+                {"index": i + 1, "score": 0, "feedback": "No answer was provided for this question."}
+                for i, _ in enumerate(qa_log or [])
+            ],
+        }
+
     qa_text = "\n\n".join(
         [
             f"Q{i+1}: {str(item.get('question', '')).strip()}\nA: {str(item.get('answer', '')).strip()}"
@@ -1334,11 +1370,18 @@ async def score_mock_interview(
     prompt = f"""You are a professional interview evaluator.
 Role: {role}
 Interview type: {interview_type}
-Resume: {resume_text or "Not provided"}
 Filler words detected: {filler_count} out of ~{total_words} words.
+Camera attention score (0-100, higher means candidate stayed focused toward camera): {camera_focus_score if camera_focus_score is not None else "Not available"}
 
 Q&A Transcript:
 {qa_text}
+
+Scoring policy:
+- Score ONLY based on interview performance in the transcript above.
+- Do NOT infer capability from resume, role title prestige, or assumptions.
+- If an answer is missing, vague, or off-topic, score it low.
+- Reward specificity, structured thinking, tradeoff clarity, and correctness shown in answers.
+- Use camera attention score as a minor modifier to confidence/professional presence only (not core technical depth).
 
 Return JSON only:
 {{
@@ -1347,6 +1390,7 @@ Return JSON only:
   "depth": <0-100>,
   "relevance": <0-100>,
   "confidence": <0-100>,
+  "camera_focus": <0-100>,
   "keywords_hit": <0-100>,
   "grade": "<Excellent|Good|Average|Needs Work>",
   "strengths": ["<point>", "<point>", "<point>"],
