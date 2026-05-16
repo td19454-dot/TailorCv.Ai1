@@ -17,7 +17,7 @@ import uvicorn
 from dotenv import load_dotenv
 from pydantic import ValidationError
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
-from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -48,6 +48,7 @@ from extraction import process_resume
 from models import PasswordResetToken, SignupVerificationCode, User
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
+from blog_system import BlogService, codehilite_css, xml_escape
 
 
 from starlette.middleware.sessions import SessionMiddleware
@@ -89,21 +90,28 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 templates_dir = os.path.join(BASE_DIR, "templates")
 static_dir = os.path.join(BASE_DIR, "static")
+public_dir = os.path.join(BASE_DIR, "public")
 uploads_dir = os.path.join(BASE_DIR, "uploads")
 resumes_dir = os.path.join(BASE_DIR, "resumes")
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "").strip()
 SHOW_OPTIMIZED_EDITOR = os.getenv("SHOW_OPTIMIZED_EDITOR", "false").strip().lower() == "true"
+SITE_URL = os.getenv("SITE_URL", "https://thetailorcv.com").rstrip("/")
+BLOG_CONTENT_DIR = os.path.join(BASE_DIR, "content", "blogs")
 
 # Ensure directories exist
 os.makedirs(uploads_dir, exist_ok=True)
 os.makedirs(resumes_dir, exist_ok=True)
 os.makedirs(templates_dir, exist_ok=True)
 os.makedirs(static_dir, exist_ok=True)
+os.makedirs(public_dir, exist_ok=True)
+os.makedirs(BLOG_CONTENT_DIR, exist_ok=True)
 
 # Mount static files and configure templates with absolute paths
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
+app.mount("/public", StaticFiles(directory=public_dir), name="public")
 templates = Jinja2Templates(directory=templates_dir)
 app.include_router(linkedin_router)
+blog_service = BlogService(BLOG_CONTENT_DIR)
 
 
 def initialize_database() -> None:
@@ -2221,6 +2229,46 @@ async def health_check():
         "static_files": os.listdir(static_dir) if os.path.exists(static_dir) else []
     }
 
+
+def build_absolute_url(path: str) -> str:
+    return f"{SITE_URL}{path}"
+
+
+def build_blogposting_schema(post, canonical_url: str) -> str:
+    image_url = post.image if str(post.image).startswith("http") else build_absolute_url(post.image or "/static/logo.png")
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": post.description,
+        "image": [image_url],
+        "author": {"@type": "Person", "name": post.author},
+        "publisher": {
+            "@type": "Organization",
+            "name": "TailorCV",
+            "logo": {"@type": "ImageObject", "url": build_absolute_url("/static/logo.png")},
+        },
+        "datePublished": post.date_iso,
+        "dateModified": post.lastmod_iso,
+        "mainEntityOfPage": canonical_url,
+        "keywords": post.keywords,
+    }
+    return json.dumps(schema, separators=(",", ":"))
+
+
+def build_breadcrumb_schema(post, canonical_url: str) -> str:
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": build_absolute_url("/")},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": build_absolute_url("/blog")},
+            {"@type": "ListItem", "position": 3, "name": post.title, "item": canonical_url},
+        ],
+    }
+    return json.dumps(schema, separators=(",", ":"))
+
+
 @app.get("/favicon.png", include_in_schema=False)
 async def favicon_ico():
     return FileResponse(
@@ -2247,10 +2295,8 @@ async def site_webmanifest():
 
 @app.get("/robots.txt", include_in_schema=False)
 async def robots_txt():
-    return FileResponse(
-        os.path.join(static_dir, "robots.txt"),
-        media_type="text/plain",
-    )
+    robots_body = f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n"
+    return PlainTextResponse(content=robots_body, media_type="text/plain")
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -2394,6 +2440,120 @@ async def pricing_page(request: Request):
         "pricing.html",
         {"request": request},
     )
+
+
+@app.get("/blog", response_class=HTMLResponse)
+async def blog_listing_page(
+    request: Request,
+    q: str = "",
+    tag: str = "",
+    category: str = "",
+    page: int = 1,
+):
+    results = blog_service.search_posts(query=q, tag=tag, category=category, page=page, per_page=9)
+    filters = blog_service.list_filters()
+    canonical_url = build_absolute_url("/blog")
+    return templates.TemplateResponse(
+        request,
+        "blog_list.html",
+        {
+            "request": request,
+            "posts": results["items"],
+            "page": results["page"],
+            "total_pages": results["total_pages"],
+            "q": q,
+            "selected_tag": tag,
+            "selected_category": category,
+            "tags": filters["tags"],
+            "categories": filters["categories"],
+            "meta_title": "Resume Optimization Blog | TailorCV.ai",
+            "meta_description": "Read ATS, resume, and job search strategies to improve interview outcomes.",
+            "meta_keywords": "resume optimization blog, ats resume tips, job search guide",
+            "canonical_url": canonical_url,
+            "og_image": build_absolute_url("/static/logo.png"),
+        },
+    )
+
+
+@app.get("/blog/{slug}", response_class=HTMLResponse)
+async def blog_post_page(request: Request, slug: str):
+    post = blog_service.get_post(slug)
+    if post is None:
+        raise HTTPException(status_code=404, detail="Blog post not found")
+    related_posts = blog_service.related_posts(post, limit=3)
+    canonical_url = build_absolute_url(f"/blog/{post.slug}")
+    og_image = post.image if str(post.image).startswith("http") else build_absolute_url(post.image or "/static/logo.png")
+    return templates.TemplateResponse(
+        request,
+        "blog_post.html",
+        {
+            "request": request,
+            "post": post,
+            "related_posts": related_posts,
+            "canonical_url": canonical_url,
+            "meta_title": f"{post.title} | TailorCV Blog",
+            "meta_description": post.description,
+            "meta_keywords": post.keywords or ", ".join(post.tags),
+            "og_image": og_image,
+            "codehilite_css": codehilite_css(),
+            "blog_schema_json": build_blogposting_schema(post, canonical_url),
+            "breadcrumb_schema_json": build_breadcrumb_schema(post, canonical_url),
+        },
+    )
+
+
+@app.get("/sitemap.xml", include_in_schema=False)
+async def sitemap_xml():
+    static_urls = [
+        ("/", datetime.utcnow().strftime("%Y-%m-%d")),
+        ("/solutions", datetime.utcnow().strftime("%Y-%m-%d")),
+        ("/pricing", datetime.utcnow().strftime("%Y-%m-%d")),
+        ("/templates", datetime.utcnow().strftime("%Y-%m-%d")),
+        ("/about", datetime.utcnow().strftime("%Y-%m-%d")),
+        ("/blog", datetime.utcnow().strftime("%Y-%m-%d")),
+    ]
+    post_urls = [(f"/blog/{p.slug}", p.lastmod_iso) for p in blog_service.load_posts()]
+    all_urls = static_urls + post_urls
+
+    entries = []
+    for path, lastmod in all_urls:
+        entries.append(
+            f"<url><loc>{xml_escape(build_absolute_url(path))}</loc><lastmod>{xml_escape(lastmod)}</lastmod></url>"
+        )
+    xml = (
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+        "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"
+        + "".join(entries)
+        + "</urlset>"
+    )
+    return Response(content=xml, media_type="application/xml")
+
+
+@app.get("/rss.xml", include_in_schema=False)
+async def rss_feed():
+    posts = blog_service.load_posts()[:50]
+    items = []
+    for post in posts:
+        link = build_absolute_url(f"/blog/{post.slug}")
+        items.append(
+            "<item>"
+            f"<title>{xml_escape(post.title)}</title>"
+            f"<link>{xml_escape(link)}</link>"
+            f"<guid>{xml_escape(link)}</guid>"
+            f"<description>{xml_escape(post.description)}</description>"
+            f"<pubDate>{datetime.strptime(post.date_iso, '%Y-%m-%d').strftime('%a, %d %b %Y 00:00:00 GMT')}</pubDate>"
+            "</item>"
+        )
+    rss = (
+        "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+        "<rss version=\"2.0\"><channel>"
+        "<title>TailorCV Blog</title>"
+        f"<link>{xml_escape(build_absolute_url('/blog'))}</link>"
+        "<description>ATS and resume optimization insights from TailorCV.</description>"
+        + "".join(items)
+        + "</channel></rss>"
+    )
+    return Response(content=rss, media_type="application/rss+xml")
 
 
 @app.get("/style2.css", include_in_schema=False)
