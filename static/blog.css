@@ -354,7 +354,8 @@ a:hover { text-decoration: underline; }
 .post-layout .toc {
   position: sticky;
   top: 120px;
-  max-height: calc(100vh - 140px);
+  height: calc(100vh - 120px);
+  max-height: calc(100vh - 120px);
   overflow-y: auto;
   overscroll-behavior: contain;
   border-right: 1px solid #171c27;

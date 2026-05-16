@@ -76,12 +76,10 @@
         </header>
 
         <div class="post-layout">
-            {% if post.toc_html %}
             <aside class="toc">
                 <h2>Table of contents</h2>
                 {{ post.toc_html | safe }}
             </aside>
-            {% endif %}
 
             <section class="post-content">{{ post.content_html | safe }}</section>
         </div>

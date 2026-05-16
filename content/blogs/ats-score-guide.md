@@ -402,7 +402,7 @@ It helps identify:
 
 Check it here:
 
-https://thetailorcv.com/solutions
+[Check ATS score](/solutions)
 
 ---
 
@@ -460,7 +460,7 @@ Benefits include:
 
 Try it here:
 
-https://thetailorcv.com/solutions
+[Check ATS Score for Free](/solutions)
 
 ---
 
@@ -497,7 +497,7 @@ For job seekers applying to multiple roles, this can be a massive time saver.
 
 Use it here:
 
-https://thetailorcv.com/solutions
+[Check ATS Score for Free](/solutions)
 
 ---
 
@@ -614,4 +614,4 @@ If you want faster results, tools like the ATS Score Checker and Resume Optimize
 
 Start optimizing today:
 
-https://thetailorcv.com/solutions
+[Check ATS Score for Free](/solutions)
