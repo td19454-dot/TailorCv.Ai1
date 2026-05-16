@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_description }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta name="keywords" content="{{ meta_keywords }}">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:image" content="{{ og_image }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ meta_title }}">
+    <meta name="twitter:description" content="{{ meta_description }}">
+    <meta name="twitter:image" content="{{ og_image }}">
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="stylesheet" href="/static/blog.css">
+    {% if codehilite_css %}<style>{{ codehilite_css }}</style>{% endif %}
+    <script type="application/ld+json">{{ blog_schema_json | safe }}</script>
+    <script type="application/ld+json">{{ breadcrumb_schema_json | safe }}</script>
+</head>
+<body>
+<div class="progress" id="readingProgress"></div>
+<header class="navbar">
+    <div class="logo">
+        <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+    </div>
+    <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false"
+        aria-controls="primary-nav-blog-post">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav class="nav-links" id="primary-nav-blog-post">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/solutions" class="nav-link">Get ATS Score</a>
+        <a href="/modify-cv" class="nav-link">Make CV</a>
+        <a href="/solutions" class="nav-link">Optimize CV with AI</a>
+        <a href="/blog" class="nav-link active">Blog</a>
+        <a href="/pricing" class="nav-link">Pricing</a>
+        <a href="/templates" class="nav-link">Templates</a>
+        <a href="/solutions" class="mobile-get-started">Get Started</a>
+    </nav>
+    <div class="nav-actions">
+        <div id="auth-nav-slot"></div>
+        <a href="/solutions" class="getstarted">Get Started</a>
+    </div>
+</header>
+<main class="blog-post-wrap">
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="post-hero">
+                {% if post.image %}
+                <img class="post-cover" src="{{ post.image }}" alt="{{ post.title }}" loading="eager" decoding="async">
+                {% endif %}
+                <div class="post-hero-overlay"></div>
+                <div class="post-hero-content">
+                    <h1>{{ post.title }}</h1>
+                    <p class="lead">{{ post.description }}</p>
+                    <div class="post-hero-meta-row">
+                        <div class="author-chip">
+                            <span class="author-badge">TC</span>
+                            <span class="author"> {{ post.author }}</span>
+                        </div>
+                        <div class="meta-pills">
+                            <span class="meta-pill">{{ post.date_display }}</span>
+                            <span class="meta-pill">{{ post.read_time }} min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="post-layout">
+            <aside class="toc">
+                <h2>Table of contents</h2>
+                {{ post.toc_html | safe }}
+            </aside>
+
+            <section class="post-content">{{ post.content_html | safe }}</section>
+        </div>
+
+        <section class="cta">
+            <h2>Want a stronger resume for this role?</h2>
+            <p>Use TailorCV to optimize for ATS and recruiter keywords in minutes.</p>
+            <a href="/solutions" class="cta-btn">Optimize My Resume</a>
+        </section>
+
+        <section class="share-row">
+            <button id="copyLinkBtn" type="button">Copy link</button>
+            <a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url={{ canonical_url }}">Share on LinkedIn</a>
+            <a target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url={{ canonical_url }}&text={{ post.title }}">Share on X</a>
+        </section>
+    </article>
+
+    <section class="related">
+        <h2>Related articles</h2>
+        <div class="blog-grid">
+            {% for rel in related_posts %}
+            <article class="blog-card">
+                <a href="/blog/{{ rel.slug }}">{% if rel.image %}<img src="{{ rel.image }}" alt="{{ rel.title }}" loading="lazy" decoding="async" class="blog-cover">{% endif %}</a>
+                <div class="blog-card-body">
+                    <p class="meta">{{ rel.date_display }} - {{ rel.read_time }} min read</p>
+                    <h3><a href="/blog/{{ rel.slug }}">{{ rel.title }}</a></h3>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+<script src="/static/blog.js" defer></script>
+<script src="/static/auth_nav.js"></script>
+<script src="/static/mobile_nav.js"></script>
+</body>
+</html>
