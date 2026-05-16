@@ -2148,6 +2148,7 @@ async def api_interview_score(payload: dict):
             qa_log=payload.get("qa_log") or [],
             filler_count=int(payload.get("filler_count", 0)),
             total_words=int(payload.get("total_words", 0)),
+            camera_focus_score=(int(payload.get("camera_focus_score")) if payload.get("camera_focus_score") is not None else None),
         )
         return JSONResponse({"success": True, "scores": scores})
     except Exception as exc:
