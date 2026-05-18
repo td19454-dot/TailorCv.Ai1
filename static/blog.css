@@ -209,6 +209,13 @@ a:hover { text-decoration: underline; }
   max-width: 760px;
 }
 
+.post-hero-content h1,
+.post-hero-content .lead,
+.post-hero-content .author,
+.post-hero-content .meta {
+  color: #ffffff;
+}
+
 .post-hero-meta-row {
   display: flex;
   flex-wrap: wrap;
@@ -270,6 +277,17 @@ a:hover { text-decoration: underline; }
   margin-left: 0;
   margin-right: 0;
   max-width: 16ch;
+}
+
+.blog-post .post-hero-content h1,
+.blog-post .post-hero-content .lead,
+.blog-post .post-hero-content .author,
+.blog-post .post-hero-content .meta {
+  color: #ffffff !important;
+}
+
+h1.post-hero-title {
+  color: #ffffff !important;
 }
 
 .blog-post .lead {
