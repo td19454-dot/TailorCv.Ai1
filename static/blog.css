@@ -214,6 +214,13 @@ a:hover { text-decoration: underline; }
   max-width: 760px;
 }
 
+.post-hero-content h1,
+.post-hero-content .lead,
+.post-hero-content .author,
+.post-hero-content .meta {
+  color: #ffffff;
+}
+
 .post-hero-meta-row {
   display: flex;
   flex-wrap: wrap;
@@ -271,10 +278,21 @@ a:hover { text-decoration: underline; }
   font-size: clamp(2.6rem, 5vw, 5rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
-  color: #f2f5fb;
+  color: var(--ink);
   margin-left: 0;
   margin-right: 0;
   max-width: 16ch;
+}
+
+.blog-post .post-hero-content h1,
+.blog-post .post-hero-content .lead,
+.blog-post .post-hero-content .author,
+.blog-post .post-hero-content .meta {
+  color: #ffffff !important;
+}
+
+h1.post-hero-title {
+  color: #ffffff !important;
 }
 
 .blog-post .lead {
@@ -365,10 +383,10 @@ a:hover { text-decoration: underline; }
 .post-layout .toc {
   position: sticky;
   top: 120px;
+  width: 260px;
   height: calc(100vh - 120px);
   max-height: calc(100vh - 120px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  overflow: hidden;
   border-right: 1px solid #171c27;
   scrollbar-width: thin;
   scrollbar-color: #2b3342 transparent;
