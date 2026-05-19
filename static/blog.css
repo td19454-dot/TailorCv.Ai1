@@ -184,7 +184,7 @@ a:hover { text-decoration: underline; }
 
 .post-hero {
   position: relative;
-  min-height: clamp(380px, 54vh, 560px);
+  min-height: clamp(460px, 62vh, 760px);
   border-bottom: 1px solid #171c27;
   border-radius: 0;
   overflow: hidden;
@@ -270,13 +270,13 @@ a:hover { text-decoration: underline; }
 
 .blog-post h1 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.6rem, 5vw, 5rem);
-  line-height: 1.05;
+  font-size: clamp(2rem, 3.6vw, 3.8rem);
+  line-height: 1.14;
   letter-spacing: -0.02em;
   color: var(--ink);
   margin-left: 0;
   margin-right: 0;
-  max-width: 16ch;
+  max-width: 22ch;
 }
 
 .blog-post .post-hero-content h1,
@@ -403,7 +403,7 @@ h1.post-hero-title {
 
 .post-content {
   color: var(--ink-soft);
-  font-size: 1.12rem;
+  font-size: 1.3rem;
   background: var(--paper);
   padding: clamp(26px, 4vw, 52px);
   min-height: 78vh;
@@ -466,6 +466,12 @@ h1.post-hero-title {
   border-radius: 0;
   padding: 24px clamp(26px, 4vw, 52px) 8px;
   color: var(--ink-soft);
+}
+.cta h2{
+  font-size:2rem;
+}
+.cta p{
+  font-size:1.4rem;
 }
 
 .cta-btn {
