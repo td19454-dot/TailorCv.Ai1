@@ -2069,7 +2069,12 @@ async def interview_prep_page(request: Request):
 @app.get("/mock-interview", response_class=HTMLResponse)
 async def mock_interview_page(request: Request):
     """Real-time mock interview room."""
-    return templates.TemplateResponse(request, "mock_interview.html", {"request": request})
+    is_logged_in = bool(request.session.get("user_id"))
+    return templates.TemplateResponse(
+        request,
+        "mock_interview.html",
+        {"request": request, "is_logged_in": is_logged_in},
+    )
 
 
 @app.post("/api/interview/start")

@@ -49,9 +49,28 @@
         .step-chip.active { color:#fff; border-color:rgba(124,58,237,.8); background:rgba(124,58,237,.25); }
         .welcome-card { background:linear-gradient(135deg, rgba(74,106,255,.2), rgba(124,58,237,.18)); border:1px solid rgba(124,58,237,.45); border-radius:12px; padding:12px; margin-bottom:12px; }
         .setup-actions { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+        #loginOverlay { position:fixed; inset:0; z-index:9999; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(2,6,22,.95); }
+        #loginOverlay.visible { display:flex; }
+        #loginOverlay .overlay-card { width:100%; max-width:520px; border-radius:22px; padding:30px; background:#101a3d; border:1px solid rgba(124,58,237,.35); box-shadow:0 24px 60px rgba(0,0,0,.35); text-align:center; }
+        #loginOverlay .overlay-card h2 { margin:0 0 12px; font-size:1.5rem; color:#fff; }
+        #loginOverlay .overlay-card p { margin:0 0 20px; color:#c7d1ff; line-height:1.6; }
+        #loginOverlay .progress-track { width:100%; height:12px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; margin:20px 0; }
+        #loginOverlay .progress-fill { width:0%; height:100%; background:linear-gradient(90deg,#5b8bff,#b267ff); transition:width .25s ease; }
+        #loginOverlay .action-row { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+        #loginOverlay .action-row a, #loginOverlay .action-row button { min-width:140px; }
     </style>
 </head>
 <body>
+<div id="loginOverlay" class="overlay">
+    <div class="overlay-card">
+        <h2>Login required to start</h2>
+        <p>Only login is required — no payment, no plan, and no worry. You will be redirected to login automatically.</p>
+        <div class="progress-track"><div id="loginProgressFill" class="progress-fill"></div></div>
+        <div class="action-row">
+            <a href="/login?next=/mock-interview" class="btn" id="loginNowBtn">Login Now</a>
+        </div>
+    </div>
+</div>
 <header class="navbar">
     <div class="left">
         <div class="logo">
@@ -518,6 +537,43 @@ function renderScoreCard(s){
     ${qa.map(x => `<div class="qa-item"><div class="q">Q${safe(x.index)} - Score ${safe(x.score)}/10</div><div>${safe(x.feedback,'No feedback')}</div></div>`).join('') || '<div class="qa-item">No per-question review returned.</div>'}
   `;
 }
+
+const isLoggedIn = {{ 'true' if is_logged_in else 'false' }};
+let loginRedirectTimer = null;
+function initLoginRedirect() {
+    const overlay = document.getElementById('loginOverlay');
+    const progressFill = document.getElementById('loginProgressFill');
+    if (!overlay) return;
+    if (isLoggedIn) {
+        overlay.classList.remove('visible');
+        return;
+    }
+    overlay.classList.add('visible');
+    let remaining = 3;
+    progressFill.style.width = '0%';
+    loginRedirectTimer = setInterval(() => {
+        remaining -= 1;
+        const percent = Math.min(100, ((3 - remaining) / 3) * 100);
+        progressFill.style.width = `${percent}%`;
+        if (remaining <= 0) {
+            clearInterval(loginRedirectTimer);
+            window.location.href = '/login?next=/mock-interview';
+        }
+    }, 1000);
+}
+
+function cancelLoginRedirect() {
+    const overlay = document.getElementById('loginOverlay');
+    if (loginRedirectTimer) {
+        clearInterval(loginRedirectTimer);
+        loginRedirectTimer = null;
+    }
+    if (overlay) {
+        overlay.classList.remove('visible');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initLoginRedirect);
 </script>
 </body>
 </html>
