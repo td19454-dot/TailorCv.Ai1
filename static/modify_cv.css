@@ -39,6 +39,224 @@ body {
     height: 100%;
 }
 
+/* Final responsive guardrails for Make CV page */
+@media (max-width: 860px) {
+    .modify-cv-section {
+        padding: 88px 0.75rem 2rem !important;
+    }
+
+    .modify-cv-layout {
+        grid-template-columns: 1fr !important;
+        gap: 0.9rem;
+    }
+
+    .modify-cv-sidebar,
+    .preview-panel {
+        position: static !important;
+        top: auto !important;
+    }
+
+    .modify-cv-title {
+        font-size: 1.45rem;
+        line-height: 1.25;
+    }
+
+    .section-row {
+        grid-template-columns: 1fr !important;
+    }
+
+    .modify-cv-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .modify-cv-actions .btn {
+        width: 100%;
+        min-height: 46px;
+    }
+
+    .template-preview-frame {
+        height: 60vh;
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 768px) {
+    header.navbar {
+        height: 74px !important;
+        padding: 0 12px !important;
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .logo {
+        margin: 0 !important;
+    }
+
+    .logo-text {
+        width: 215px !important;
+        height: 64px !important;
+        margin: 0 !important;
+        object-fit: contain;
+    }
+
+    .mobile-menu-toggle {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 10px;
+        background: rgba(15, 23, 42, 0.35);
+        margin-left: auto;
+        z-index: 1002;
+    }
+
+    .mobile-menu-toggle span {
+        width: 20px;
+        height: 2px;
+        background: #ffffff;
+    }
+
+    .nav-actions {
+        display: none !important;
+    }
+
+    .navbar .nav-links {
+        position: fixed !important;
+        top: 74px !important;
+        left: 0;
+        right: 0;
+        min-width: 0 !important;
+        width: 100%;
+        padding: 0.7rem 0.9rem 1rem;
+        display: none !important;
+        flex-direction: column;
+        gap: 0.4rem;
+        background: rgba(5, 10, 25, 0.97);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0 0 12px 12px;
+        z-index: 1001;
+    }
+
+    .navbar.nav-open .nav-links {
+        display: flex !important;
+    }
+
+    .navbar .nav-links .nav-link {
+        width: 100%;
+        text-align: left;
+        padding: 12px 10px !important;
+        font-size: 13px !important;
+        border-radius: 10px;
+    }
+}
+
+/* Match mobile navbar sizing/spacing with Solutions page */
+@media (max-width: 768px) {
+    header.navbar {
+        height: 80px !important;
+        padding: 0 14px 0 10px !important;
+        background: #260104;
+    }
+
+    .navbar .left {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+        flex: 0 1 auto;
+    }
+
+    .navbar .logo {
+        margin: 0 !important;
+    }
+
+    .navbar .logo-text {
+        width: 136px !important;
+        height: auto !important;
+        margin: 0 !important;
+    }
+
+    .navbar .mobile-menu-toggle {
+        display: inline-flex !important;
+        margin-left: auto;
+        z-index: 1002;
+        flex: 0 0 auto;
+        width: 92px;
+        height: 38px;
+        border-radius: 10px;
+    }
+
+    .navbar .nav-links {
+        position: absolute !important;
+        top: calc(100% + 10px) !important;
+        left: 10px;
+        right: 10px;
+        display: none !important;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        min-width: 0 !important;
+        width: auto;
+        padding: 16px 18px 8px;
+        border-radius: 18px 18px 12px 12px;
+        background: #0b1436;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        z-index: 1001;
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
+    }
+
+    .navbar .nav-links a {
+        padding: 12px 0 !important;
+        font-size: 15px !important;
+        text-align: left;
+        border-bottom: none;
+        color: #f8fafc !important;
+    }
+
+    .navbar .nav-actions {
+        position: static !important;
+        display: flex !important;
+        min-width: 0;
+        margin: 0 0 0 8px;
+        padding: 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 6px;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        z-index: 1002;
+    }
+
+    .navbar.nav-open .nav-links {
+        display: flex !important;
+    }
+
+    .navbar.nav-open .mobile-menu-toggle span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .navbar.nav-open .mobile-menu-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navbar.nav-open .mobile-menu-toggle span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo-text {
+        width: 124px !important;
+    }
+}
+
 .login-modal-overlay {
     position: fixed;
     inset: 0;
@@ -226,16 +444,17 @@ header.navbar {
 .nav-links {
     display: flex;
     min-width: 500px;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 0;
 }
 
 .nav-links a {
-    font-size: 13.5px;
+    font-size: 12.5px;
     color: rgba(255, 255, 255, 0.9);
     font-weight: 600;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 25px 32px;
+    padding: 24px 2px;
     position: relative;
     transition: all 0.3s ease;
     border-radius: 12px;
@@ -264,13 +483,16 @@ header.navbar {
 }
 
 .nav-links a.active {
-    color: #3b82f6;
-    background: rgba(59, 130, 246, 0.2);
+    color: #ffffff;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.35), rgba(29, 78, 216, 0.28));
+    border: 1px solid rgba(96, 165, 250, 0.55);
 }
 
 .nav-links a.active::after {
-    width: 80%;
-    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    width: 86%;
+    height: 3px;
+    background: #3b82f6;
+    border-radius: 999px;
 }
 
 @keyframes logoFloat {
