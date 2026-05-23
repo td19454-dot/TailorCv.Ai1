@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "_google_analytics.html" %}
@@ -80,35 +80,58 @@
 
     <main class="templates-page">
         <section class="templates-header">
-            <p class="templates-eyebrow">Step 1 of 2</p>
-            <h1 class="templates-title">Pick a Template. Launch Faster.</h1>
-            <p class="templates-subtitle">
-                Choose a layout, then either optimize with AI or continue with CV editing.
-            </p>
-            <div class="templates-quick-points">
-                <span>18 layouts</span>
-                <span>ATS-friendly formatting</span>
-                <span>Instant PDF export</span>
+            <h1 class="templates-title">Pick a Template. <span class="templates-title-accent">Launch Faster.</span></h1>
+            <div class="templates-stepper" aria-label="Template flow progress">
+                <span class="step-item step-1 is-active"><em>1</em> Pick your goal</span>
+                <span class="step-arrow" aria-hidden="true">&rarr;</span>
+                <span class="step-item step-2"><em>2</em> Choose a template</span>
+                <span class="step-arrow" aria-hidden="true">&rarr;</span>
+                <span class="step-item step-3"><em>3</em> Done</span>
+            </div>
+        </section>
+        <section class="intent-inline-wrap" aria-labelledby="intent-heading">
+            <h2 id="intent-heading" class="intent-heading-inline" hidden>Goal</h2>
+            <div class="intent-cards">
+                <button class="intent-card" data-intent="reformat" type="button">
+                    <span class="intent-icon" aria-hidden="true">&#128196;</span>
+                    <span class="intent-title">Reformat my existing resume</span>
+                    <span class="intent-copy">I have a resume &mdash; apply a new template to it</span>
+                    <span class="intent-proof">&#9989; ATS-friendly output in 30 seconds</span>
+                </button>
+                <button class="intent-card" data-intent="build" type="button">
+                    <span class="intent-icon" aria-hidden="true">&#127381;</span>
+                    <span class="intent-title">Build a resume from scratch</span>
+                    <span class="intent-copy">I don't have a resume &mdash; create one with a template</span>
+                    <span class="intent-proof">&#9989; Guided editor &middot; No writing experience needed</span>
+                </button>
+                <button class="intent-card" data-intent="optimize" type="button">
+                    <span class="intent-icon" aria-hidden="true">&#10024;</span>
+                    <span class="intent-title">Optimize my resume for a job</span>
+                    <span class="intent-copy">I have a resume + a job description &mdash; tailor and reformat it</span>
+                    <span class="intent-proof">&#9989; 3x more interview callbacks on average</span>
+                </button>
             </div>
         </section>
 
-        <section class="templates-section-head">
-            <h2>Choose a resume style</h2>
-            <p>Click any card to select. You can change it later.</p>
-        </section>
         <section id="templates-grid" class="templates-grid" aria-live="polite"></section>
+        <p id="templates-grid-status" class="templates-grid-status" aria-live="polite"></p>
+        <section id="template-confirm-card" class="template-confirm-card" hidden>
+            <h3 id="template-confirm-title">Use this template?</h3>
+            <p id="template-confirm-copy">Do you want to continue with this template?</p>
+            <div class="template-confirm-actions">
+                <button id="template-confirm-yes" class="templates-btn templates-btn-primary" type="button">Yes, continue</button>
+                <button id="template-confirm-no" class="templates-btn templates-btn-secondary" type="button">No, choose another</button>
+            </div>
+        </section>
 
-        <section class="templates-upload-card">
-            <span class="templates-upload-kicker">Optional Quick Run</span>
-            <h2 class="templates-upload-title">Test the selected template with your resume</h2>
-            <p class="templates-upload-subtitle">Upload PDF and generate a template-based output in one click.</p>
+        <section id="templates-upload-card" class="templates-upload-card" hidden>
+            <span class="templates-upload-kicker">Reformat Resume</span>
+            <h2 class="templates-upload-title">Upload your resume PDF</h2>
+            <p class="templates-upload-subtitle">Choose your PDF, then run the selected template.</p>
             <div class="templates-upload-controls">
                 <input id="templates-cv-file" class="templates-file-input" type="file" accept=".pdf,application/pdf">
                 <button id="template-only-optimize-btn" class="templates-btn templates-btn-primary" disabled>
                     Run Template
-                </button>
-                <button id="template-only-download-btn" class="templates-btn templates-btn-secondary" disabled>
-                    Download PDF
                 </button>
             </div>
             <div id="templates-optimize-progress" class="templates-progress" style="display:none;">
@@ -118,15 +141,6 @@
                 <p id="templates-progress-label" class="templates-progress-label">Starting optimization...</p>
             </div>
             <p id="templates-upload-status" class="templates-upload-status" aria-live="polite"></p>
-        </section>
-
-        <section class="templates-actions">
-            <button id="modify-cv-btn" class="templates-btn templates-btn-secondary" disabled>
-                Create CV
-            </button>
-            <button id="optimize-ai-btn" class="templates-btn templates-btn-primary" disabled>
-                Continue to Optimize
-            </button>
         </section>
     </main>
 
@@ -158,24 +172,41 @@
     <script src="/static/mobile_nav.js"></script>
     <script>
         (function () {
-            const SELECTED_TEMPLATE_KEY = "tailorcv_selected_template";
             const gridEl = document.getElementById("templates-grid");
-            const modifyBtn = document.getElementById("modify-cv-btn");
-            const optimizeBtn = document.getElementById("optimize-ai-btn");
             const uploadInput = document.getElementById("templates-cv-file");
             const templateOnlyOptimizeBtn = document.getElementById("template-only-optimize-btn");
-            const templateOnlyDownloadBtn = document.getElementById("template-only-download-btn");
             const uploadStatusEl = document.getElementById("templates-upload-status");
+            const gridStatusEl = document.getElementById("templates-grid-status");
             const progressWrap = document.getElementById("templates-optimize-progress");
             const progressFill = document.getElementById("templates-progress-fill");
             const progressLabel = document.getElementById("templates-progress-label");
-            const RESUME_FILE_KEY = "tailorcv_resumeFile";
+            const uploadCard = document.getElementById("templates-upload-card");
+            const confirmCard = document.getElementById("template-confirm-card");
+            const confirmTitle = document.getElementById("template-confirm-title");
+            const confirmCopy = document.getElementById("template-confirm-copy");
+            const confirmYesBtn = document.getElementById("template-confirm-yes");
+            const confirmNoBtn = document.getElementById("template-confirm-no");
+            const stepItems = document.querySelectorAll(".step-item");
 
             let templates = [];
             let selectedTemplateId = null;
-            let latestOptimizedBlob = null;
-            let latestOptimizedUrl = "";
             let progressTimer = null;
+            let userIntent = null;
+
+            const confirmTextMap = {
+                reformat: {
+                    title: "Use this template for resume reformatting?",
+                    copy: "If yes, we will open the upload step for your PDF resume."
+                },
+                build: {
+                    title: "Use this template for CV creation?",
+                    copy: "If yes, we'll continue to CV Builder with this template."
+                },
+                optimize: {
+                    title: "Use this template for CV optimization?",
+                    copy: "If yes, we'll continue to the optimization page with this template."
+                }
+            };
 
             function getPreviewSrc(templateId) {
                 const id = Number(templateId);
@@ -190,6 +221,31 @@
                 const fileName = pngPreviewMap[id] || `pic${id}.jpg`;
                 return `/static/${fileName}`;
             }
+            
+            function getDisplayName(template) {
+                const id = Number(template?.id);
+                const nameMap = {
+                    1: "ATS Friendly Classic",
+                    2: "Modern Minimal",
+                    3: "Professional Clean",
+                    4: "Executive Edge",
+                    5: "Corporate Blue",
+                    6: "Compact One-Page",
+                    7: "Fresh Graduate",
+                    8: "Skill Spotlight",
+                    9: "Chronological Pro",
+                    10: "Creative Balanced",
+                    11: "Elegant Serif",
+                    12: "Impact Resume",
+                    13: "Tech Specialist",
+                    14: "Data Analyst Pro",
+                    15: "Product Manager Fit",
+                    16: "Marketing Highlight",
+                    17: "Modern ATS Plus",
+                    18: "Premium Executive"
+                };
+                return nameMap[id] || template?.name || `Template ${id}`;
+            }
 
             function renderGrid() {
                 gridEl.innerHTML = templates.map((template) => `
@@ -198,34 +254,37 @@
                             <img src="${getPreviewSrc(template.id)}" alt="${template.name} preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                             <div class="preview-fallback">Preview ${template.id}</div>
                         </div>
-                        <div class="template-name">${template.name}</div>
+                        <div class="template-name">${getDisplayName(template)}</div>
                     </article>
                 `).join("");
 
                 document.querySelectorAll("[data-template-id]").forEach((card) => {
                     card.addEventListener("click", () => {
+                        if (!userIntent) {
+                            setGridStatus("Please choose your goal first.", "is-error");
+                            alert("Please choose your goal first.");
+                            return;
+                        }
+                        setGridStatus("");
+                        setUploadStatus("");
                         selectedTemplateId = Number(card.getAttribute("data-template-id"));
-                        localStorage.setItem(SELECTED_TEMPLATE_KEY, String(selectedTemplateId));
-                        updateButtons();
                         renderGrid();
+                        showTemplateConfirmation();
                     });
                 });
+                updateStepState();
             }
-
-            function updateButtons() {
-                const enabled = Number.isInteger(selectedTemplateId) && selectedTemplateId > 0;
-                modifyBtn.disabled = !enabled;
-                optimizeBtn.disabled = !enabled;
-                templateOnlyOptimizeBtn.disabled = !enabled;
-            }
-
-            function goTo(path) {
-                if (!selectedTemplateId) {
-                    alert("Please select a template");
-                    return;
-                }
-                const url = `${path}?template=${encodeURIComponent(selectedTemplateId)}`;
-                window.location.href = url;
+            
+            function updateStepState() {
+                const hasIntent = Boolean(userIntent);
+                const hasTemplate = Number.isInteger(selectedTemplateId) && selectedTemplateId > 0;
+                stepItems.forEach((el) => el.classList.remove("is-active", "is-done"));
+                const step1 = document.querySelector(".step-1");
+                const step2 = document.querySelector(".step-2");
+                const step3 = document.querySelector(".step-3");
+                if (step1) step1.classList.add(hasIntent ? "is-done" : "is-active");
+                if (step2 && hasIntent) step2.classList.add(hasTemplate ? "is-done" : "is-active");
+                if (step3 && hasTemplate) step3.classList.add("is-active");
             }
 
             function setUploadStatus(message, kind = "") {
@@ -233,24 +292,12 @@
                 uploadStatusEl.classList.remove("is-loading", "is-success", "is-error");
                 if (kind) uploadStatusEl.classList.add(kind);
             }
-
-            function saveTemplateLabDraft() {
-                const file = uploadInput?.files?.[0];
-                if (!file) {
-                    setUploadStatus("Select a PDF first, then click Save Draft.", "is-error");
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = function (evt) {
-                    localStorage.setItem(RESUME_FILE_KEY, JSON.stringify({
-                        data: evt.target.result,
-                        name: file.name,
-                        type: file.type || "application/pdf"
-                    }));
-                    setUploadStatus("Draft saved locally. You can now log in and continue.", "is-success");
-                };
-                reader.readAsDataURL(file);
+            
+            function setGridStatus(message, kind = "") {
+                if (!gridStatusEl) return;
+                gridStatusEl.innerHTML = message || "";
+                gridStatusEl.classList.remove("is-loading", "is-success", "is-error");
+                if (kind) gridStatusEl.classList.add(kind);
             }
 
             function redirectToLogin() {
@@ -297,28 +344,6 @@
                 }, success ? 1000 : 1400);
             }
 
-            function saveLatestBlob(blob) {
-                latestOptimizedBlob = blob;
-                if (latestOptimizedUrl) {
-                    window.URL.revokeObjectURL(latestOptimizedUrl);
-                }
-                latestOptimizedUrl = window.URL.createObjectURL(blob);
-                templateOnlyDownloadBtn.disabled = false;
-            }
-
-            function downloadLatest() {
-                if (!latestOptimizedUrl) {
-                    setUploadStatus("No optimized resume available yet. Optimize first.", "is-error");
-                    return;
-                }
-                const link = document.createElement("a");
-                link.href = latestOptimizedUrl;
-                link.download = "optimized_resume.pdf";
-                document.body.appendChild(link);
-                link.click();
-                link.remove();
-            }
-
             async function handleTemplateOnlyOptimize() {
                 if (!selectedTemplateId) {
                     setUploadStatus("Please select a template first.", "is-error");
@@ -339,7 +364,6 @@
 
                 const originalText = templateOnlyOptimizeBtn.textContent;
                 templateOnlyOptimizeBtn.disabled = true;
-                templateOnlyDownloadBtn.disabled = true;
                 templateOnlyOptimizeBtn.textContent = "Optimizing...";
                 setUploadStatus("Optimizing resume with selected template...", "is-loading");
                 startProgress();
@@ -372,8 +396,14 @@
                     }
 
                     const blob = await response.blob();
-                    saveLatestBlob(blob);
-                    downloadLatest();
+                    const downloadUrl = window.URL.createObjectURL(blob);
+                    const link = document.createElement("a");
+                    link.href = downloadUrl;
+                    link.download = "optimized_resume.pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+                    setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 8000);
                     finishProgress(true);
                     setUploadStatus("Optimized resume generated successfully.", "is-success");
                 } catch (error) {
@@ -386,29 +416,115 @@
                 }
             }
 
+            function hideUploadSection() {
+                uploadCard.classList.remove("is-visible");
+                uploadCard.hidden = true;
+                setUploadStatus("");
+                uploadInput.value = "";
+            }
+            function hideTemplateConfirmation() {
+                confirmCard.classList.remove("is-visible");
+                confirmCard.hidden = true;
+            }
+            function showTemplateConfirmation() {
+                if (!selectedTemplateId || !userIntent) return;
+                if (userIntent === "reformat") {
+                    hideTemplateConfirmation();
+                    handleTemplateSelection();
+                    return;
+                }
+                const copy = confirmTextMap[userIntent] || confirmTextMap.reformat;
+                confirmTitle.textContent = copy.title;
+                confirmCopy.textContent = copy.copy;
+                confirmCard.hidden = false;
+                requestAnimationFrame(() => confirmCard.classList.add("is-visible"));
+                confirmCard.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+
+            function showUploadSection() {
+                uploadCard.hidden = false;
+                requestAnimationFrame(() => {
+                    uploadCard.classList.add("is-visible");
+                });
+                templateOnlyOptimizeBtn.disabled = !Number.isInteger(selectedTemplateId);
+                uploadCard.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+
+            function handleTemplateSelection() {
+                if (!selectedTemplateId || !userIntent) return;
+
+                if (userIntent === "build") {
+                    window.location.href = `/modify-cv?template=${encodeURIComponent(selectedTemplateId)}`;
+                    return;
+                }
+                if (userIntent === "optimize") {
+                    window.location.href = `/solutions?template=${encodeURIComponent(selectedTemplateId)}`;
+                    return;
+                }
+                if (userIntent === "reformat") {
+                    showUploadSection();
+                }
+            }
+
+            function closeOverlayWithIntent(intent) {
+                userIntent = intent;
+                document.querySelectorAll(".intent-card").forEach((el) => {
+                    el.classList.toggle("is-selected", el.getAttribute("data-intent") === intent);
+                });
+                updateStepState();
+            }
+
+            function resetGoalSelection() {
+                userIntent = null;
+                selectedTemplateId = null;
+                hideUploadSection();
+                hideTemplateConfirmation();
+                renderGrid();
+                document.querySelectorAll(".intent-card").forEach((el) => el.classList.remove("is-selected"));
+                updateStepState();
+            }
+
             async function initialize() {
                 try {
                     const response = await fetch("/api/resume-templates");
                     const data = await response.json();
                     templates = Array.isArray(data.templates) ? data.templates : [];
-
-                    const stored = Number(localStorage.getItem(SELECTED_TEMPLATE_KEY));
-                    if (stored && templates.some((template) => Number(template.id) === stored)) {
-                        selectedTemplateId = stored;
-                    }
-
                     renderGrid();
-                    updateButtons();
+                    hideUploadSection();
+                    hideTemplateConfirmation();
+                    updateStepState();
                 } catch (error) {
                     console.error("Failed to load templates", error);
                     gridEl.innerHTML = "<p>Unable to load templates right now.</p>";
                 }
             }
 
-            modifyBtn.addEventListener("click", () => goTo("/modify-cv"));
-            optimizeBtn.addEventListener("click", () => goTo("/optimize"));
             templateOnlyOptimizeBtn.addEventListener("click", handleTemplateOnlyOptimize);
-            templateOnlyDownloadBtn.addEventListener("click", downloadLatest);
+            confirmYesBtn.addEventListener("click", () => {
+                hideTemplateConfirmation();
+                handleTemplateSelection();
+            });
+            confirmNoBtn.addEventListener("click", () => {
+                selectedTemplateId = null;
+                hideUploadSection();
+                hideTemplateConfirmation();
+                renderGrid();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                updateStepState();
+            });
+            document.querySelectorAll(".intent-card").forEach((card) => {
+                card.addEventListener("click", () => {
+                    const nextIntent = card.getAttribute("data-intent");
+                    if (userIntent !== nextIntent) {
+                        selectedTemplateId = null;
+                        hideUploadSection();
+                        hideTemplateConfirmation();
+                        renderGrid();
+                    }
+                    closeOverlayWithIntent(nextIntent);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
+            });
 
             initialize();
         })();
