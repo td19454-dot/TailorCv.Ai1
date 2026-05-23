@@ -1987,14 +1987,14 @@ header {
     opacity: 0.95;
 }
 
-.cta-section .btn-primary:hover {
-    background: white;
-}
-
 .cta-section .btn-primary {
     width: auto;
     max-width: none;
     align-self: center;
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    color: #ffffff;
+    border: 0;
+    box-shadow: rgba(151, 65, 252, 0.28) 0 15px 30px -5px;
 }
 
 .cta-section .btn-primary:hover {
