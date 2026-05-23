@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -15,6 +15,7 @@ class User(Base):
     hashed_password = Column("password", String(255), nullable=False)
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
+    job_applications = relationship("JobApplication", back_populates="user", cascade="all, delete-orphan")
 
 
 class PasswordResetToken(Base):
@@ -52,3 +53,20 @@ class SignupVerificationCode(Base):
     expires_at = Column(DateTime, nullable=False)
     used = Column(Boolean, default=False, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+
+class JobApplication(Base):
+    __tablename__ = "job_applications"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    company = Column(String(200), nullable=False)
+    role = Column(String(200), nullable=False)
+    stage = Column(String(50), nullable=False, default="saved")  # saved, applied, interview, offer, rejected
+    salary_ctc = Column(String(100), nullable=True)
+    interview_date = Column(String(50), nullable=True)
+    job_url = Column(String(500), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+    user = relationship("User", back_populates="job_applications")

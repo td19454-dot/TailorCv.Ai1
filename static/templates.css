@@ -377,6 +377,32 @@
 .templates-grid-status.is-success { color: #86efac; }
 .templates-grid-status.is-error { color: #fca5a5; }
 
+.template-action-chooser {
+    margin-top: 0.75rem;
+    padding: 0.95rem;
+    border-radius: 14px;
+    border: 1px solid rgba(96, 165, 250, 0.34);
+    background: linear-gradient(160deg, rgba(10, 28, 78, 0.9), rgba(6, 18, 50, 0.95));
+    box-shadow: 0 10px 26px rgba(5, 20, 80, 0.24);
+}
+.template-action-chooser[hidden] {
+    display: none !important;
+}
+.template-action-chooser.is-visible {
+    animation: uploadSlideIn .26s ease both;
+}
+.template-action-chooser h3 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 1.02rem;
+}
+.template-action-chooser-buttons {
+    margin-top: 0.72rem;
+    display: grid;
+    gap: 0.7rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .templates-inline-link {
     color: #93c5fd;
     font-weight: 700;
@@ -634,6 +660,9 @@
     .templates-btn {
         width: 100%;
         min-width: 0;
+    }
+    .template-action-chooser-buttons {
+        grid-template-columns: 1fr;
     }
 
     .intent-cards {
