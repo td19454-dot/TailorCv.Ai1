@@ -530,7 +530,7 @@ header, main, section, footer, .hero, .features,
                     </p>
                     <div class="hero-cta">
                         <a href="/solutions" class="btn btn-primary btn-large">Fix my Resume(Free)</a>
-                        <a href="#features" class="btn btn-secondary btn-large">Learn More</a>
+                        <a href="/mock-interview" class="btn btn-secondary btn-large">Mock Interview</a>
                         <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span> Takes 2 minutes &bull; No credit card needed &bull; Free to start</p>
                         
                     </div>
@@ -544,6 +544,68 @@ header, main, section, footer, .hero, .features,
                             <span class="avatar-plus">+</span>
                         </div>
                         <p class="social-proof-text-hero"><strong>1200+</strong> resumes optimized this month</p>
+                    </div>
+                    <div class="hero-testimonials" aria-label="User testimonials">
+                        <article class="hero-t-card">
+                            <div class="hero-t-stars">★★★★★</div>
+                            <p class="hero-t-quote">"I applied to 12 jobs before TailorCV. Got zero callbacks. After optimizing, I had 3 interviews in a week."</p>
+                            <div class="hero-t-badge">Hired at Google</div>
+                            <div class="hero-t-user">
+                                <img src="/static/user_imges/4.jpg" alt="Rahul K." class="hero-t-avatar">
+                                <div>
+                                    <p class="hero-t-name">Rahul K.</p>
+                                    <p class="hero-t-role">Software Engineer</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="hero-t-card">
+                            <div class="hero-t-stars">★★★★★</div>
+                            <p class="hero-t-quote">"Took me 90 seconds. The AI rewrote my bullets to match the job description perfectly. Felt like cheating."</p>
+                            <div class="hero-t-badge">Hired at Deloitte</div>
+                            <div class="hero-t-user">
+                                <img src="/static/user_imges/12.jpg" alt="Sara P." class="hero-t-avatar">
+                                <div>
+                                    <p class="hero-t-name">Sara P.</p>
+                                    <p class="hero-t-role">Data Analyst</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="hero-t-card">
+                            <div class="hero-t-stars">★★★★★</div>
+                            <p class="hero-t-quote">"Was skeptical at first. But my ATS score jumped from 42% to 91% after one optimization. I'm a believer now."</p>
+                            <div class="hero-t-badge">Hired at Amazon</div>
+                            <div class="hero-t-user">
+                                <img src="/static/user_imges/68.jpg" alt="Arjun M." class="hero-t-avatar">
+                                <div>
+                                    <p class="hero-t-name">Arjun M.</p>
+                                    <p class="hero-t-role">Product Manager</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="hero-t-card">
+                            <div class="hero-t-stars">★★★★★</div>
+                            <p class="hero-t-quote">"I finally started hearing back from recruiters. The JD match suggestions made my resume much sharper in minutes."</p>
+                            <div class="hero-t-badge">Hired at PayPal</div>
+                            <div class="hero-t-user">
+                                <img src="/static/user_imges/13.jpg" alt="Nina R." class="hero-t-avatar">
+                                <div>
+                                    <p class="hero-t-name">Nina R.</p>
+                                    <p class="hero-t-role">Business Analyst</p>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="hero-t-card">
+                            <div class="hero-t-stars">★★★★★</div>
+                            <p class="hero-t-quote">"The ATS breakdown told me exactly what was missing. One optimization later, my profile started converting to interviews."</p>
+                            <div class="hero-t-badge">Hired at Apple</div>
+                            <div class="hero-t-user">
+                                <img src="/static/user_imges/22.jpg" alt="Karan V." class="hero-t-avatar">
+                                <div>
+                                    <p class="hero-t-name">Karan V.</p>
+                                    <p class="hero-t-role">Frontend Developer</p>
+                                </div>
+                            </div>
+                        </article>
                     </div>
                     <style>
                         .hero-cta-meta {
@@ -576,10 +638,97 @@ header, main, section, footer, .hero, .features,
                             margin-top:20px;
                         }
 
+                        .hero-testimonials {
+                            margin-top: 24px;
+                            display: grid;
+                            grid-template-columns: repeat(5, minmax(0, 1fr));
+                            gap: 14px;
+                            width: calc(100vw - 160px);
+                            max-width: calc(100vw - 160px);
+                            margin-left: 0;
+                            margin-right: 0;
+                            overflow-x: hidden;
+                            padding-bottom: 6px;
+                            align-items: center;
+                            box-sizing: border-box;
+                        }
+
+                        .hero-t-card {
+                            background: rgba(12, 18, 56, 0.86);
+                            border: 1px solid rgba(119, 147, 255, 0.25);
+                            border-radius: 16px;
+                            padding: 16px 16px 14px;
+                            box-shadow: 0 8px 28px rgba(1, 7, 35, 0.35);
+                        }
+
+                        .hero-t-stars {
+                            color: #f6c54a;
+                            letter-spacing: 2px;
+                            font-size: 14px;
+                            margin-bottom: 10px;
+                        }
+
+                        .hero-t-quote {
+                            color: #dce7ff;
+                            font-size: 14px;
+                            line-height: 1.55;
+                            margin-bottom: 12px;
+                        }
+
+                        .hero-t-badge {
+                            display: inline-block;
+                            margin-bottom: 14px;
+                            padding: 5px 10px;
+                            border-radius: 999px;
+                            background: rgba(13, 153, 118, 0.18);
+                            border: 1px solid rgba(29, 201, 149, 0.45);
+                            color: #34e3b2;
+                            font-size: 13px;
+                            font-weight: 700;
+                        }
+
+                        .hero-t-user {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+
+                        .hero-t-avatar {
+                            width: 38px;
+                            height: 38px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            border: 1px solid rgba(167, 184, 255, 0.45);
+                        }
+
+                        .hero-t-name {
+                            margin: 0;
+                            color: #f7fbff;
+                            font-size: 15px;
+                            font-weight: 700;
+                            line-height: 1.1;
+                        }
+
+                        .hero-t-role {
+                            margin: 2px 0 0;
+                            color: #9fb3d9;
+                            font-size: 13px;
+                        }
+
                         @media (max-width: 768px) {
                             .hero-cta-meta {
                                 font-size: 14px;
                                 flex-wrap: wrap;
+                            }
+
+                            .hero-testimonials {
+                                width: 100%;
+                                max-width: 100%;
+                                margin-left: 0;
+                                margin-right: 0;
+                                grid-template-columns: repeat(5, minmax(250px, 1fr));
+                                overflow-x: auto;
+                                scrollbar-width: thin;
                             }
                         }
                     </style>
@@ -594,7 +743,7 @@ header, main, section, footer, .hero, .features,
 
                         <div class="r-section">
                             <div class="r-heading">EXPERIENCE</div>
-                            <div class="r-exp-title">Machine Learning Engineer - Acme Corp</div>
+                            <div class="r-exp-title">Machine Learning Engineer - Apple</div>
                             <div class="r-exp-co">2022 - Present</div>
                             <div class="exp-bullet">Built <span class="kw" id="heroKw1">statistical models</span> for
                                 churn prediction, improving prediction accuracy by ~18–25% and enabling retention
