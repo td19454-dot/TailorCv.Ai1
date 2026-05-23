@@ -115,6 +115,14 @@
 
         <section id="templates-grid" class="templates-grid" aria-live="polite"></section>
         <p id="templates-grid-status" class="templates-grid-status" aria-live="polite"></p>
+        <section id="template-action-chooser" class="template-action-chooser" hidden>
+            <h3>What do you want to do with this template?</h3>
+            <div class="template-action-chooser-buttons">
+                <button id="choose-build-btn" type="button" class="templates-btn templates-btn-secondary">Create CV</button>
+                <button id="choose-optimize-btn" type="button" class="templates-btn templates-btn-primary">Optimize CV with JD</button>
+                <button id="choose-reformat-btn" type="button" class="templates-btn templates-btn-secondary">Change Format</button>
+            </div>
+        </section>
         <section id="template-confirm-card" class="template-confirm-card" hidden>
             <h3 id="template-confirm-title">Use this template?</h3>
             <p id="template-confirm-copy">Do you want to continue with this template?</p>
@@ -178,6 +186,10 @@
             const templateOnlyOptimizeBtn = document.getElementById("template-only-optimize-btn");
             const uploadStatusEl = document.getElementById("templates-upload-status");
             const gridStatusEl = document.getElementById("templates-grid-status");
+            const actionChooserEl = document.getElementById("template-action-chooser");
+            const chooseBuildBtn = document.getElementById("choose-build-btn");
+            const chooseOptimizeBtn = document.getElementById("choose-optimize-btn");
+            const chooseReformatBtn = document.getElementById("choose-reformat-btn");
             const progressWrap = document.getElementById("templates-optimize-progress");
             const progressFill = document.getElementById("templates-progress-fill");
             const progressLabel = document.getElementById("templates-progress-label");
@@ -261,15 +273,18 @@
 
                 document.querySelectorAll("[data-template-id]").forEach((card) => {
                     card.addEventListener("click", () => {
-                        if (!userIntent) {
-                            setGridStatus("Please choose your goal first.", "is-error");
-                            alert("Please choose your goal first.");
-                            return;
-                        }
-                        setGridStatus("");
-                        setUploadStatus("");
                         selectedTemplateId = Number(card.getAttribute("data-template-id"));
                         renderGrid();
+                        if (!userIntent) {
+                            hideUploadSection();
+                            hideTemplateConfirmation();
+                            showActionChooser();
+                            setGridStatus("Template selected. Choose an action below.", "is-success");
+                            return;
+                        }
+                        hideActionChooser();
+                        setGridStatus("");
+                        setUploadStatus("");
                         showTemplateConfirmation();
                     });
                 });
@@ -458,6 +473,17 @@
                 setUploadStatus("");
                 uploadInput.value = "";
             }
+            function showActionChooser() {
+                if (!actionChooserEl) return;
+                actionChooserEl.hidden = false;
+                actionChooserEl.classList.add("is-visible");
+                actionChooserEl.scrollIntoView({ behavior: "smooth", block: "end" });
+            }
+            function hideActionChooser() {
+                if (!actionChooserEl) return;
+                actionChooserEl.classList.remove("is-visible");
+                actionChooserEl.hidden = true;
+            }
             function hideTemplateConfirmation() {
                 confirmCard.classList.remove("is-visible");
                 confirmCard.hidden = true;
@@ -514,6 +540,7 @@
                 userIntent = null;
                 selectedTemplateId = null;
                 hideUploadSection();
+                hideActionChooser();
                 hideTemplateConfirmation();
                 renderGrid();
                 document.querySelectorAll(".intent-card").forEach((el) => el.classList.remove("is-selected"));
@@ -527,6 +554,7 @@
                     templates = Array.isArray(data.templates) ? data.templates : [];
                     renderGrid();
                     hideUploadSection();
+                    hideActionChooser();
                     hideTemplateConfirmation();
                     updateStepState();
                 } catch (error) {
@@ -543,10 +571,29 @@
             confirmNoBtn.addEventListener("click", () => {
                 selectedTemplateId = null;
                 hideUploadSection();
+                hideActionChooser();
                 hideTemplateConfirmation();
                 renderGrid();
                 window.scrollTo({ top: 0, behavior: "smooth" });
                 updateStepState();
+            });
+            chooseBuildBtn?.addEventListener("click", () => {
+                if (!selectedTemplateId) return;
+                closeOverlayWithIntent("build");
+                hideActionChooser();
+                showTemplateConfirmation();
+            });
+            chooseOptimizeBtn?.addEventListener("click", () => {
+                if (!selectedTemplateId) return;
+                closeOverlayWithIntent("optimize");
+                hideActionChooser();
+                showTemplateConfirmation();
+            });
+            chooseReformatBtn?.addEventListener("click", () => {
+                if (!selectedTemplateId) return;
+                closeOverlayWithIntent("reformat");
+                hideActionChooser();
+                showTemplateConfirmation();
             });
             document.querySelectorAll(".intent-card").forEach((card) => {
                 card.addEventListener("click", () => {
@@ -554,6 +601,7 @@
                     if (userIntent !== nextIntent) {
                         selectedTemplateId = null;
                         hideUploadSection();
+                        hideActionChooser();
                         hideTemplateConfirmation();
                         renderGrid();
                     }
