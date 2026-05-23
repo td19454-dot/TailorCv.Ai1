@@ -172,6 +172,7 @@
     <script src="/static/mobile_nav.js"></script>
     <script>
         (function () {
+            const OPTIMIZED_EDITOR_PAYLOAD_KEY = "tailorcv_optimized_editor_payload";
             const gridEl = document.getElementById("templates-grid");
             const uploadInput = document.getElementById("templates-cv-file");
             const templateOnlyOptimizeBtn = document.getElementById("template-only-optimize-btn");
@@ -374,10 +375,12 @@
                     formData.append("template_id", String(selectedTemplateId));
                     formData.append("style_id", "1");
                     formData.append("jd_string", "");
+                    formData.append("editor_mode", "true");
 
-                    // Reuse existing production endpoint/pipeline (upload -> parse -> AI -> template render -> PDF).
+                    // Reuse existing production endpoint/pipeline and ask for editor payload.
                     const response = await fetch("/get-optimised-resume", {
                         method: "POST",
+                        headers: { "X-Editor-Mode": "true" },
                         body: formData
                     });
 
@@ -395,17 +398,50 @@
                         throw new Error(detail);
                     }
 
-                    const blob = await response.blob();
-                    const downloadUrl = window.URL.createObjectURL(blob);
-                    const link = document.createElement("a");
-                    link.href = downloadUrl;
-                    link.download = "optimized_resume.pdf";
-                    document.body.appendChild(link);
-                    link.click();
-                    link.remove();
-                    setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 8000);
+                    const contentType = String(response.headers.get("content-type") || "").toLowerCase();
+                    if (contentType.includes("application/json")) {
+                        const payload = await response.json();
+                        if (!payload || !payload.html) {
+                            throw new Error("Template applied, but editor payload is missing.");
+                        }
+                        sessionStorage.setItem(OPTIMIZED_EDITOR_PAYLOAD_KEY, JSON.stringify(payload));
+
+                        const pdfRes = await fetch("/api/download-html-pdf", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                html: payload.html,
+                                pdf_scale: 1
+                            })
+                        });
+                        if (!pdfRes.ok) {
+                            throw new Error("Could not generate PDF from editor payload.");
+                        }
+                        const pdfBlob = await pdfRes.blob();
+                        const pdfUrl = window.URL.createObjectURL(pdfBlob);
+                        const a = document.createElement("a");
+                        a.href = pdfUrl;
+                        a.download = "optimized_resume.pdf";
+                        document.body.appendChild(a);
+                        a.click();
+                        a.remove();
+                        setTimeout(() => window.URL.revokeObjectURL(pdfUrl), 8000);
+                    } else {
+                        const blob = await response.blob();
+                        const downloadUrl = window.URL.createObjectURL(blob);
+                        const link = document.createElement("a");
+                        link.href = downloadUrl;
+                        link.download = "optimized_resume.pdf";
+                        document.body.appendChild(link);
+                        link.click();
+                        link.remove();
+                        setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 8000);
+                    }
                     finishProgress(true);
-                    setUploadStatus("Optimized resume generated successfully.", "is-success");
+                    setUploadStatus("Resume generated. Opening editor...", "is-success");
+                    setTimeout(() => {
+                        window.location.href = "/optimized-editor";
+                    }, 700);
                 } catch (error) {
                     console.error("Template-only optimize failed", error);
                     finishProgress(false);
