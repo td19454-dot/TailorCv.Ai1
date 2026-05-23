@@ -4,10 +4,10 @@
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modify CV - TailorCV.ai</title>
+    <title>Make CV - TailorCV.ai</title>
     {% include "_seo_head.html" %}
 <link rel="stylesheet" href="/static/header-footer.css">
-    <link rel="stylesheet" href="/static/modify_cv.css?v=2">
+    <link rel="stylesheet" href="/static/modify_cv.css?v=15">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,14 +20,28 @@
             width: 100% !important;
             z-index: 1000 !important;
         }
-        .navbar .nav-links {
-            min-width: 560px;
-            gap: 2px;
-        }
-        .navbar .nav-links .nav-link {
-            font-size: 11px;
-            padding: 18px 10px;
-            letter-spacing: 0;
+        /* Match Solutions desktop navbar sizing */
+        @media (min-width: 769px) {
+            .navbar .nav-links {
+                min-width: 560px !important;
+                gap: 2px !important;
+                justify-content: space-evenly !important;
+            }
+            .navbar .nav-links .nav-link {
+                font-size: 11px !important;
+                padding: 18px 10px !important;
+                letter-spacing: 0 !important;
+            }
+            .navbar .nav-links .nav-link.active {
+                color: #3b82f6 !important;
+                background: rgba(59, 130, 246, 0.2) !important;
+                border: none !important;
+            }
+            .navbar .nav-links .nav-link.active::after {
+                width: 80% !important;
+                height: 2px !important;
+                background: linear-gradient(90deg, #3b82f6, #1d4ed8) !important;
+            }
         }
         html, body { overflow-x: hidden; }
         .modify-cv-section { padding-top: 100px; }
@@ -73,7 +87,7 @@
 
             <main class="modify-cv-main">
                 <div class="modify-cv-header-card">
-                    <h1 class="modify-cv-title">Modify Your CV</h1>
+                    <h1 class="modify-cv-title">Make Your CV</h1>
                     <p class="modify-cv-subtitle">Edit each section, pick a template, and preview the final resume in real time.</p>
                 </div>
 
