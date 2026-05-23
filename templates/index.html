@@ -367,14 +367,10 @@ header, main, section, footer, .hero, .features,
 
     <!-- Trust Banner -->
     <div class="trust-banner">
-        <div class="pulse-ring">
            
         </div>
         <div class="pulse-text">
             Trusted by <span class="trust-num">10,000+</span> job seekers worldwide
-        </div>
-        <div class="pulse-ring">
-           
         </div>
     </div>
 
@@ -382,7 +378,7 @@ header, main, section, footer, .hero, .features,
         .trust-banner {
             width: 100%;
             animation: tbGradient 6s ease infinite;
-            padding: 11px 28px;
+            padding: 1px 28px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -446,18 +442,19 @@ header, main, section, footer, .hero, .features,
         }
 
         .pulse-text {
-            font-size: 40px;
+            font-size: 25px;
             font-weight: 600;
-            color: #5b5bf7;
+            color: #f5f5f8;
             letter-spacing: 0.02em;
             animation: tbText 2.5s ease-in-out infinite;
             font-family: 'Inter', sans-serif;
+            text-align: center;
         }
 
         .trust-num {
             font-weight: 800;
             font-size: 32px;
-            color: #9524d1;
+            color: #9e3ed1;
             animation: tbNum 2.5s ease-in-out infinite;
         }
 
@@ -479,12 +476,12 @@ header, main, section, footer, .hero, .features,
 
             0%,
             100% {
-                color: #DDD6FE;
+                color: #faf8fa;
                 text-shadow: none;
             }
 
             50% {
-                color: #fff;
+                color: #e97ff7;
                 text-shadow: 0 0 14px rgba(221, 214, 254, 0.9);
             }
         }
@@ -529,11 +526,13 @@ header, main, section, footer, .hero, .features,
                     </h1>
                     <span class="gradient-text">AI Resume Optimization</span>
                     <p class="hero-subtitle">
-                        Upload your resume → Paste Job description → AI optimizes resume with job description → Get more callbacks
+                        Upload resume → Paste Job description → AI optimizes resume with job description in 60 sec → Get more callbacks
                     </p>
                     <div class="hero-cta">
                         <a href="/solutions" class="btn btn-primary btn-large">Fix my Resume(Free)</a>
                         <a href="#features" class="btn btn-secondary btn-large">Learn More</a>
+                        <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span> Takes 2 minutes &bull; No credit card needed &bull; Free to start</p>
+                        
                     </div>
 
                     <div class="social-proof-hero">
@@ -547,9 +546,41 @@ header, main, section, footer, .hero, .features,
                         <p class="social-proof-text-hero"><strong>1200+</strong> resumes optimized this month</p>
                     </div>
                     <style>
+                        .hero-cta-meta {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            margin: 10px 0 4px;
+                            font-size: 16px;
+                            font-weight: 600;
+                            color: #d8e6ff;
+                            line-height: 1.2;
+                        }
+
+                        .hero-cta-meta-icon {
+                            width: 22px;
+                            height: 22px;
+                            border-radius: 50%;
+                            background: #00c06f;
+                            color: #061733;
+                            font-size: 14px;
+                            font-weight: 800;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex: 0 0 auto;
+                        }
+
                         .social-proof-text-hero{
                             font-size: 30px;
                             margin-top:20px;
+                        }
+
+                        @media (max-width: 768px) {
+                            .hero-cta-meta {
+                                font-size: 14px;
+                                flex-wrap: wrap;
+                            }
                         }
                     </style>
                 </div>
