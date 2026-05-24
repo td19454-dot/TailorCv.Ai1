@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "_google_analytics.html" %}
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/static/header-footer.css">
     <style>
         body { font-family: Inter, sans-serif; background:#07102b; color:#fff; margin:0; }
-        .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 16px 56px; }
+        .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 16px 56px; display:none; }
         .panel { background:#0f1e44; border:1px solid rgba(80,110,200,.22); border-radius:16px; padding:20px; margin-top:16px; }
         .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
         @media (max-width: 800px){ .grid { grid-template-columns:1fr; } }
@@ -64,7 +64,7 @@
 <div id="loginOverlay" class="overlay">
     <div class="overlay-card">
         <h2>Login required to start</h2>
-        <p>Only login is required â€” no payment, no plan, and no worry. You will be redirected to login automatically.</p>
+        <p>Only login is required — no payment, no plan, and no worry. You will be redirected to login automatically.</p>
         <div class="progress-track"><div id="loginProgressFill" class="progress-fill"></div></div>
         <div class="action-row">
             <a href="/login?next=/mock-interview" class="btn" id="loginNowBtn">Login Now</a>
@@ -104,6 +104,278 @@
     </div>
 </header>
 
+<div id="zaraIntroPage" style="
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  padding: 100px 20px 40px;
+  background: #07102b;
+">
+  <div style="
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 40px;
+    align-items: start;
+  ">
+    <div style="
+      background: #0f1e44;
+      border: 1px solid rgba(80,110,200,.22);
+      border-radius: 16px;
+      padding: 24px;
+    ">
+      <div style="
+        color: rgba(255,255,255,0.4);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      ">What people are saying</div>
+      <div style="
+        background: #141f4a;
+        border: 1px solid rgba(80,110,200,.3);
+        border-radius: 10px;
+        padding: 14px;
+        margin-bottom: 10px;
+      ">
+        <div style="color:#facc15;font-size:13px;margin-bottom:8px;">★★★★★</div>
+        <div style="color:#d6e8ff;font-size:13px;line-height:1.5;margin-bottom:8px;">
+          "Zara grilled me harder than my actual
+          Google interview. I walked in prepared
+          and the nerves just disappeared."
+        </div>
+        <div style="color:#9bb0d8;font-size:12px;">— Rahul K., hired at Google 🇮🇳</div>
+      </div>
+      <div style="
+        background: #141f4a;
+        border: 1px solid rgba(80,110,200,.3);
+        border-radius: 10px;
+        padding: 14px;
+        margin-bottom: 10px;
+      ">
+        <div style="color:#facc15;font-size:13px;margin-bottom:8px;">★★★★★</div>
+        <div style="color:#d6e8ff;font-size:13px;line-height:1.5;margin-bottom:8px;">
+          "I failed 4 interviews before this.
+          After 2 sessions with Zara I finally
+          understood what I was doing wrong."
+        </div>
+        <div style="color:#9bb0d8;font-size:12px;">— Priya S., hired at Infosys 🇮🇳</div>
+      </div>
+      <div style="
+        background: #141f4a;
+        border: 1px solid rgba(80,110,200,.3);
+        border-radius: 10px;
+        padding: 14px;
+        margin-bottom: 20px;
+      ">
+        <div style="color:#facc15;font-size:13px;margin-bottom:8px;">★★★★★</div>
+        <div style="color:#d6e8ff;font-size:13px;line-height:1.5;margin-bottom:8px;">
+          "The questions were based on MY resume —
+          not generic ones. That's what makes
+          this completely different."
+        </div>
+        <div style="color:#9bb0d8;font-size:12px;">— Arjun M., hired at Wipro 🇮🇳</div>
+      </div>
+      <div style="
+        color: rgba(255,255,255,0.4);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      ">Sample Scorecard</div>
+      <div style="
+        background: #141f4a;
+        border: 1px solid rgba(80,110,200,.3);
+        border-radius: 10px;
+        padding: 14px;
+      ">
+        <div style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+        ">
+          <span style="color:#fff;font-size:13px;font-weight:600;">Score Card</span>
+          <span style="
+            background: rgba(108,99,255,0.2);
+            border: 0.5px solid rgba(108,99,255,0.4);
+            color: #8b83ff;
+            font-size: 9px;
+            padding: 2px 8px;
+            border-radius: 20px;
+          ">SAMPLE</span>
+        </div>
+        <div class="score-grid" style="margin:0 0 10px;">
+          <div class="score-metric"><div class="k">Overall</div><div class="v" style="color:#34d399">78%</div></div>
+          <div class="score-metric"><div class="k">Communication</div><div class="v" style="color:#34d399">85%</div></div>
+          <div class="score-metric"><div class="k">Depth</div><div class="v" style="color:#6c63ff">72%</div></div>
+          <div class="score-metric"><div class="k">Relevance</div><div class="v" style="color:#34d399">80%</div></div>
+          <div class="score-metric"><div class="k">Confidence</div><div class="v" style="color:#6c63ff">70%</div></div>
+          <div class="score-metric"><div class="k">Keywords Hit</div><div class="v" style="color:#6c63ff">65%</div></div>
+        </div>
+        <div style="color:#9bb0d8;font-size:11px;margin-bottom:8px;">
+          <strong style="color:#fff">Grade:</strong>
+          Good Job 👍
+        </div>
+        <div style="
+          color:rgba(255,255,255,0.3);
+          font-size:10px;text-align:center;
+          margin-top:8px;
+          padding-top:8px;
+          border-top:1px solid rgba(255,255,255,0.06);">
+          Your real scorecard generated after interview
+        </div>
+      </div>
+      <div style="
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 8px;
+        margin-top: 16px;
+      ">
+        <div style="text-align:center;background:#141f4a;border-radius:10px;padding:10px 6px;">
+          <div style="color:#6c63ff;font-size:18px;font-weight:700;">10K+</div>
+          <div style="color:#9bb0d8;font-size:10px;">Interviews</div>
+        </div>
+        <div style="text-align:center;background:#141f4a;border-radius:10px;padding:10px 6px;">
+          <div style="color:#34d399;font-size:18px;font-weight:700;">89%</div>
+          <div style="color:#9bb0d8;font-size:10px;">Improvement</div>
+        </div>
+        <div style="text-align:center;background:#141f4a;border-radius:10px;padding:10px 6px;">
+          <div style="color:#facc15;font-size:18px;font-weight:700;">4.9★</div>
+          <div style="color:#9bb0d8;font-size:10px;">User Rating</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:20px 0;">
+      <div id="zaraAvatar" style="
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(135deg,#4a6aff,#7c3aed);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        font-size: 36px;
+        font-weight: 700;
+        color: #fff;
+        box-shadow: 0 0 30px rgba(108,99,255,0.4);
+        animation: floatZara 3s ease-in-out infinite;
+      ">Z</div>
+      <div id="zaraGreeting" style="
+        color: rgba(255,255,255,0.7);
+        font-size: 15px;
+        margin-bottom: 12px;
+      "></div>
+      <h1 style="font-size:3rem;font-weight:800;margin:0 0 8px;color:#fff;">Hi, I'm Zara.</h1>
+      <p style="color:#8b83ff;font-size:18px;margin:0 0 16px;font-weight:500;">Your personal AI interviewer.</p>
+      <p style="
+        color: rgba(255,255,255,0.6);
+        font-size: 15px;
+        line-height: 1.7;
+        max-width: 480px;
+        margin: 0 auto 12px;">
+        I won't ask you generic questions.
+        I'll read your resume, understand your
+        experience, and ask exactly what a real
+        interviewer at your target company would ask.
+      </p>
+      <p style="color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:24px;">
+        Real questions. Real follow-ups.
+        Honest feedback. 10 minutes.
+      </p>
+      <div style="
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 20px;">
+        <span style="background:rgba(74,106,255,0.15);border:1px solid rgba(74,106,255,0.3);color:#9bb0d8;padding:8px 16px;border-radius:999px;font-size:13px;">📄 Resume-based questions</span>
+        <span style="background:rgba(74,106,255,0.15);border:1px solid rgba(74,106,255,0.3);color:#9bb0d8;padding:8px 16px;border-radius:999px;font-size:13px;">🎯 Role-specific follow-ups</span>
+        <span style="background:rgba(74,106,255,0.15);border:1px solid rgba(74,106,255,0.3);color:#9bb0d8;padding:8px 16px;border-radius:999px;font-size:13px;">📊 Detailed scorecard</span>
+      </div>
+      <p style="color:rgba(255,255,255,0.25);font-size:12px;margin-bottom:28px;">
+        Free to try · No signup needed ·
+        Used by 10,000+ job seekers
+      </p>
+      <div id="zaraSpeaking" style="
+        display: none;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+      ">
+        <div style="display:flex;gap:5px;align-items:center;">
+          <div class="speak-dot"></div>
+          <div class="speak-dot" style="animation-delay:0.2s!important"></div>
+          <div class="speak-dot" style="animation-delay:0.4s!important"></div>
+        </div>
+        <span style="color:#8b83ff;font-size:13px;">
+          Zara is introducing herself...
+        </span>
+      </div>
+      <button id="letBeginBtn" onclick="zaraSpeak()" style="
+        background: linear-gradient(135deg,#4a6aff,#7c3aed);
+        color: #fff;
+        border: 0;
+        border-radius: 12px;
+        padding: 16px 48px;
+        font-size: 17px;
+        font-weight: 700;
+        cursor: pointer;
+        width: 100%;
+        max-width: 360px;
+        box-shadow: 0 8px 30px rgba(108,99,255,0.35);">Let's Begin →</button>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes floatZara {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes speakPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(108,99,255,0.4);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 50px rgba(108,99,255,0.8);
+  }
+}
+.zara-speaking-anim {
+  animation: speakPulse 0.6s ease-in-out infinite !important;
+}
+.speak-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6c63ff;
+  animation: speakBounce 0.6s ease-in-out infinite;
+}
+@keyframes speakBounce {
+  0%, 100% { transform: translateY(0); opacity:0.4; }
+  50% { transform: translateY(-6px); opacity:1; }
+}
+@media (max-width: 768px) {
+  #zaraIntroPage > div {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 600px) {
+  #micCard, #cameraCard, #screenCard {
+    grid-column: 1 / -1 !important;
+  }
+}
+</style>
+
 <main class="wrap">
     <h1>AI Mock Interview</h1>
     <p class="muted">Real-time Zara interview with follow-ups, speech recognition, and scorecard.</p>
@@ -120,7 +392,28 @@
                 <div><label>Name</label><input id="userName" placeholder="Your name"></div>
                 <div><label>Target Role</label><input id="targetRole" placeholder="ML Engineer"></div>
                 <div><label>Interview Type</label><select id="interviewType"><option value="behavioral">Behavioral</option><option value="technical">Technical</option><option value="mixed" selected>Mixed</option></select></div>
-                <div><label>Questions</label><select id="numQuestions"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>25</option><option>30</option></select></div>
+                <div style="grid-column:1/-1">
+                    <label>Questions</label>
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px;">
+                      <div onclick="selectQCount(this,5)" class="qcount-card" style="background:#141f4a;border:2px solid rgba(80,110,200,.3);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
+                        <div style="color:#fff;font-weight:700;font-size:15px;">Quick</div>
+                        <div style="color:#9bb0d8;font-size:12px;">5 questions</div>
+                        <div style="color:#9bb0d8;font-size:11px;">~10 mins</div>
+                      </div>
+                      <div onclick="selectQCount(this,10)" class="qcount-card selected-qcount" style="background:#141f4a;border:2px solid rgba(124,58,237,.8);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
+                        <div style="color:#fff;font-weight:700;font-size:15px;">Standard</div>
+                        <div style="color:#9bb0d8;font-size:12px;">10 questions</div>
+                        <div style="color:#9bb0d8;font-size:11px;">~15 mins</div>
+                      </div>
+                      <div onclick="selectQCount(this,20)" class="qcount-card" style="background:#141f4a;border:2px solid rgba(80,110,200,.3);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
+                        <div style="color:#fff;font-weight:700;font-size:15px;">Deep Dive</div>
+                        <div style="color:#9bb0d8;font-size:12px;">20 questions</div>
+                        <div style="color:#9bb0d8;font-size:11px;">~20 mins</div>
+                      </div>
+                    </div>
+                    <input type="hidden" id="numQuestions" value="10">
+                </div>
+                <div style="grid-column:1/-1; color:#c7d1ff; font-size:.9rem; font-weight:600;">Almost there — just two more things</div>
                 <div style="grid-column:1/-1">
                     <label>Resume PDF (required)</label>
                     <input id="resumeFile" type="file" accept=".pdf,application/pdf" required>
@@ -138,25 +431,42 @@
         </div>
 
         <div id="deviceStep" class="hidden">
-            <div class="welcome-card">
-                <div id="welcomeText" style="font-weight:700;">Welcome.</div>
-                <div class="muted" style="margin-top:4px;">Please complete your interview setup. Enable mic and camera, then begin.</div>
+            <div style="margin-bottom:24px;">
+              <div style="color:rgba(255,255,255,0.4);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Step 2 of 3</div>
+              <h2 style="color:#fff;font-size:20px;font-weight:600;margin:0;">Let's get you set up, <span id="setupName" style="color:#8b83ff;"></span> 👋</h2>
+              <p style="color:rgba(255,255,255,0.4);font-size:13px;margin:6px 0 0;">Enable your mic and camera to begin</p>
             </div>
-            <div class="row" style="margin-top:10px">
-                <button class="btn" id="micBtnSetup" onclick="startMic()">Enable Mic</button>
-                <button class="btn" id="camBtnSetup" onclick="startCamera()">Enable Camera</button>
-                <button class="btn" id="screenBtnSetup" onclick="startScreenShare()">Enable Screen Share</button>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+              <div id="micCard" style="background:#141f4a;border:1px solid rgba(80,110,200,.3);border-radius:12px;padding:20px 16px;text-align:center;cursor:pointer;transition:all 0.2s;" onclick="enableMicCard()">
+                <div style="font-size:28px;margin-bottom:8px;">🎙️</div>
+                <div style="color:#fff;font-size:13px;font-weight:600;margin-bottom:4px;">Microphone</div>
+                <div id="micStatus" style="color:rgba(255,255,255,0.4);font-size:11px;margin-bottom:10px;">Required</div>
+                <div id="micBtn" style="background:linear-gradient(135deg,#4a6aff,#7c3aed);color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;width:100%;">Enable</div>
+              </div>
+              <div id="cameraCard" style="background:#141f4a;border:1px solid rgba(80,110,200,.3);border-radius:12px;padding:20px 16px;text-align:center;cursor:pointer;transition:all 0.2s;" onclick="enableCameraCard()">
+                <div style="font-size:28px;margin-bottom:8px;">📷</div>
+                <div style="color:#fff;font-size:13px;font-weight:600;margin-bottom:4px;">Camera</div>
+                <div id="cameraStatus" style="color:rgba(255,255,255,0.4);font-size:11px;margin-bottom:10px;">Required</div>
+                <div id="cameraBtn" style="background:linear-gradient(135deg,#4a6aff,#7c3aed);color:#fff;border:0;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;width:100%;">Enable</div>
+              </div>
+              <div id="screenCard" style="background:#141f4a;border:1px solid rgba(80,110,200,.3);border-radius:12px;padding:20px 16px;text-align:center;cursor:pointer;transition:all 0.2s;" onclick="enableScreenCard()">
+                <div style="font-size:28px;margin-bottom:8px;">🖥️</div>
+                <div style="color:#fff;font-size:13px;font-weight:600;margin-bottom:4px;">Screen Share</div>
+                <div id="screenStatus" style="color:rgba(255,255,255,0.4);font-size:11px;margin-bottom:10px;">Optional</div>
+                <div id="screenBtn" style="background:rgba(80,110,200,0.25);color:#9bb0d8;border:1px solid rgba(80,110,200,.3);border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;width:100%;">Enable</div>
+              </div>
             </div>
-            <aside class="camera-panel" style="margin-top:12px;">
-                <div class="muted" style="margin-bottom:8px;">Webcam Preview</div>
-                <div class="preview-note" id="camSetupNote">Camera preview appears after you enable camera.</div>
-                <video id="camPreviewSetup" autoplay playsinline muted></video>
-            </aside>
-            <div class="setup-actions">
-                <button class="btn" onclick="backToDetailsStep()">Back</button>
-                <button class="btn" onclick="startInterview()">Begin Interview</button>
-                <span class="muted" id="statusText">Ready (start mic and camera first)</span>
+
+            <div id="webcamPreviewWrap" style="background:#141f4a;border:1px solid rgba(80,110,200,.3);border-radius:12px;overflow:hidden;margin-bottom:20px;display:none;">
+              <video id="camPreviewSetup" autoplay muted playsinline style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;"></video>
             </div>
+
+            <div style="display:flex;gap:12px;align-items:center;">
+              <button onclick="goBackToDetails()" style="background:transparent;border:1px solid rgba(80,110,200,.4);color:#9bb0d8;border-radius:10px;padding:12px 20px;font-size:14px;cursor:pointer;font-weight:600;">← Back</button>
+              <button id="beginInterviewBtn" onclick="startInterview()" disabled style="flex:1;background:rgba(74,106,255,0.3);border:1px solid rgba(74,106,255,0.3);color:rgba(255,255,255,0.4);border-radius:10px;padding:14px;font-size:15px;font-weight:700;cursor:not-allowed;">Enable mic and camera to begin</button>
+            </div>
+            <span class="muted" id="statusText" style="display:block;margin-top:8px;">Ready (start mic and camera first)</span>
         </div>
     </section>
 
@@ -268,6 +578,8 @@ function goToSetupStep(){
   document.getElementById('detailsStep').classList.add('hidden');
   document.getElementById('deviceStep').classList.remove('hidden');
   setStep(2);
+  setSetupName();
+  updateSetupCards();
 }
 function backToDetailsStep(){
   document.getElementById('deviceStep').classList.add('hidden');
@@ -350,7 +662,7 @@ function startTimer(){
 
 function initSpeech(){ const SR = window.SpeechRecognition || window.webkitSpeechRecognition; if(!SR) return false; const rec=new SR(); rec.continuous=true; rec.interimResults=true; rec.lang='en-US'; rec.onresult=(e)=>{ let final=''; let interim=''; for(let i=e.resultIndex;i<e.results.length;i++){ const t=e.results[i][0].transcript; if(e.results[i].isFinal) final+=t; else interim+=t; } if(final){ STATE.currentTranscript += final+' '; countFillers(final); } STATE.liveInterim = interim || ''; document.getElementById('transcript').textContent=(STATE.currentTranscript+STATE.liveInterim).trim() || 'Listening...'; }; rec.onend=()=>{ if(STATE.isRecording) rec.start(); }; STATE.speechRec=rec; return true; }
 function stopMic(){ STATE.isRecording=false; try{ if(STATE.speechRec) STATE.speechRec.stop(); }catch(e){} }
-function startMic(){ if(!STATE.speechRec && !initSpeech()){ alert('SpeechRecognition not supported. Use Chrome.'); return; } if(STATE.isRecording) return; STATE.currentTranscript=''; STATE.liveInterim=''; document.getElementById('transcript').textContent='Listening...'; STATE.speechRec.start(); STATE.isRecording=true; const btnSetup=document.getElementById('micBtnSetup'); if(btnSetup){ btnSetup.textContent='Mic Enabled'; btnSetup.disabled=true; btnSetup.style.opacity='0.7'; } }
+function startMic(){ if(!STATE.speechRec && !initSpeech()){ alert('SpeechRecognition not supported. Use Chrome.'); return; } if(STATE.isRecording) return; STATE.currentTranscript=''; STATE.liveInterim=''; document.getElementById('transcript').textContent='Listening...'; STATE.speechRec.start(); STATE.isRecording=true; const btnSetup=document.getElementById('micBtnSetup'); if(btnSetup){ btnSetup.textContent='Mic Enabled'; btnSetup.disabled=true; btnSetup.style.opacity='0.7'; } updateSetupCards(); }
 function getCapturedAnswer(){
   const text = `${STATE.currentTranscript || ''} ${STATE.liveInterim || ''}`.replace(/\s+/g, ' ').trim();
   return text;
@@ -435,6 +747,7 @@ async function startCamera(){
     if(noteSetup) noteSetup.style.display = 'none';
     const btnSetup = document.getElementById('camBtnSetup');
     if(btnSetup){ btnSetup.textContent = 'Camera Enabled'; btnSetup.disabled=true; btnSetup.style.opacity='0.7'; }
+    updateSetupCards();
   }catch(e){
     alert('Could not access webcam. Please allow camera permission.');
   }
@@ -547,22 +860,141 @@ function renderScoreCard(s){
   const improvements = Array.isArray(s.improvements) ? s.improvements : [];
   const scoreView = document.getElementById('scoreView');
   scoreView.innerHTML = `
-    <div class="score-grid">
-      <div class="score-metric"><div class="k">Overall</div><div class="v">${safe(s.overall)}%</div></div>
-      <div class="score-metric"><div class="k">Communication</div><div class="v">${safe(s.communication)}%</div></div>
-      <div class="score-metric"><div class="k">Depth</div><div class="v">${safe(s.depth)}%</div></div>
-      <div class="score-metric"><div class="k">Relevance</div><div class="v">${safe(s.relevance)}%</div></div>
-      <div class="score-metric"><div class="k">Confidence</div><div class="v">${safe(s.confidence)}%</div></div>
-      <div class="score-metric"><div class="k">Camera Focus</div><div class="v">${safe(s.camera_focus,'-')}%</div></div>
-      <div class="score-metric"><div class="k">Keywords Hit</div><div class="v">${safe(s.keywords_hit)}%</div></div>
+  <div style="text-align:center;margin-bottom:20px;">
+    <div style="
+      width:100px;height:100px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#4a6aff,#7c3aed);
+      display:flex;align-items:center;
+      justify-content:center;
+      margin:0 auto 10px;
+      box-shadow:0 0 30px rgba(108,99,255,0.5);
+      font-size:28px;font-weight:800;color:#fff;
+    ">${safe(s.overall)}%</div>
+    <div style="color:#fff;font-size:18px;
+                font-weight:600;">
+      ${(s.overall>=90)?'Excellent 🏆'
+       :(s.overall>=75)?'Good Job 👍'
+       :(s.overall>=60)?'Getting There 💪'
+       :'Needs Work 📚'}
     </div>
-    <div><strong>Grade:</strong> ${safe(s.grade)}</div>
-    <div class="score-section-title">Strengths</div>
-    <ul class="score-list">${strengths.map(x => `<li>${x}</li>`).join('') || '<li>No strengths returned.</li>'}</ul>
-    <div class="score-section-title">Improvements</div>
-    <ul class="score-list">${improvements.map(x => `<li>${x}</li>`).join('') || '<li>No improvements returned.</li>'}</ul>
-    <div class="score-section-title">Per-Question Review</div>
-    ${qa.map(x => `<div class="qa-item"><div class="q">Q${safe(x.index)} - Score ${safe(x.score)}/10</div><div>${safe(x.feedback,'No feedback')}</div></div>`).join('') || '<div class="qa-item">No per-question review returned.</div>'}
+  </div>
+
+  <div class="score-grid">
+    <div class="score-metric">
+      <div class="k">Overall</div>
+      <div class="v" style="color:${s.overall>=75?'#34d399':'#f59e0b'}">
+        ${safe(s.overall)}%
+      </div>
+    </div>
+    <div class="score-metric">
+      <div class="k">Communication</div>
+      <div class="v" style="color:${s.communication>=75?'#34d399':'#6c63ff'}">
+        ${safe(s.communication)}%
+      </div>
+    </div>
+    <div class="score-metric">
+      <div class="k">Depth</div>
+      <div class="v" style="color:${s.depth>=75?'#34d399':'#6c63ff'}">
+        ${safe(s.depth)}%
+      </div>
+    </div>
+    <div class="score-metric">
+      <div class="k">Relevance</div>
+      <div class="v" style="color:${s.relevance>=75?'#34d399':'#6c63ff'}">
+        ${safe(s.relevance)}%
+      </div>
+    </div>
+    <div class="score-metric">
+      <div class="k">Confidence</div>
+      <div class="v" style="color:${s.confidence>=75?'#34d399':'#6c63ff'}">
+        ${safe(s.confidence)}%
+      </div>
+    </div>
+    <div class="score-metric">
+      <div class="k">Camera Focus</div>
+      <div class="v" style="color:#9bb0d8">
+        ${safe(s.camera_focus,'N/A')}
+        ${s.camera_focus?'%':''}
+      </div>
+    </div>
+    <div class="score-metric">
+      <div class="k">Keywords Hit</div>
+      <div class="v" style="color:${s.keywords_hit>=75?'#34d399':'#6c63ff'}">
+        ${safe(s.keywords_hit)}%
+      </div>
+    </div>
+  </div>
+
+  <div style="
+    background:rgba(52,211,153,0.08);
+    border-left:3px solid #34d399;
+    border-radius:0 8px 8px 0;
+    padding:12px;margin:16px 0 8px;
+  ">
+    <div style="color:#34d399;font-size:12px;
+                font-weight:600;text-transform:uppercase;
+                letter-spacing:0.08em;margin-bottom:8px;">
+      Strengths
+    </div>
+    <ul class="score-list" style="color:#d6e8ff;">
+      ${strengths.map(x=>`<li>${x}</li>`).join('')
+        ||'<li>Complete the interview to see strengths.</li>'}
+    </ul>
+  </div>
+
+  <div style="
+    background:rgba(108,99,255,0.08);
+    border-left:3px solid #6c63ff;
+    border-radius:0 8px 8px 0;
+    padding:12px;margin-bottom:16px;
+  ">
+    <div style="color:#8b83ff;font-size:12px;
+                font-weight:600;text-transform:uppercase;
+                letter-spacing:0.08em;margin-bottom:8px;">
+      Improvements
+    </div>
+    <ul class="score-list" style="color:#d6e8ff;">
+      ${improvements.map(x=>`<li>${x}</li>`).join('')
+        ||'<li>Complete the interview to see improvements.</li>'}
+    </ul>
+  </div>
+
+  <div style="
+    color:#9bb0d8;font-size:14px;
+    margin-bottom:12px;
+  ">
+    <strong style="color:#fff">Grade:</strong>
+    ${safe(s.grade)}
+  </div>
+
+  <div class="score-section-title">
+    Per-Question Review
+  </div>
+  ${qa.map(x=>`
+    <div class="qa-item">
+      <div class="q">
+        Q${safe(x.index)} — Score ${safe(x.score)}/10
+      </div>
+      <div>${safe(x.feedback,'No feedback')}</div>
+    </div>
+  `).join('')||'<div class="qa-item">Complete the interview to see per-question review.</div>'}
+
+  <div style="
+    display:flex;gap:12px;
+    margin-top:20px;flex-wrap:wrap;
+  ">
+    <button onclick="location.reload()"
+            class="btn" style="flex:1;
+            background:transparent;
+            border:1px solid rgba(124,58,237,.5);">
+      Try Again →
+    </button>
+    <button onclick="location.href='/templates'"
+            class="btn" style="flex:1;">
+      Fix My Resume →
+    </button>
+  </div>
   `;
 }
 
@@ -599,6 +1031,170 @@ function cancelLoginRedirect() {
     if (overlay) {
         overlay.classList.remove('visible');
     }
+}
+
+function selectQCount(el, val){
+  document.querySelectorAll('.qcount-card')
+    .forEach(c => {
+      c.style.borderColor = 'rgba(80,110,200,.3)';
+    });
+  el.style.borderColor = 'rgba(124,58,237,.8)';
+  document.getElementById('numQuestions').value = val;
+}
+
+// ── Zara Intro Page Logic ──────────────────
+(function(){
+  const hour = new Date().getHours();
+  const greetings = {
+    morning:   'Good Morning! ☀️',
+    afternoon: 'Good Afternoon! 👋',
+    evening:   'Good Evening! 🌙',
+    night:     'Good Night! ⭐'
+  };
+  const key = hour>=5&&hour<12 ? 'morning'
+            : hour>=12&&hour<17 ? 'afternoon'
+            : hour>=17&&hour<21 ? 'evening'
+            : 'night';
+  const el = document.getElementById('zaraGreeting');
+  if(el) el.textContent = greetings[key];
+})();
+
+function zaraSpeak(){
+  const hour = new Date().getHours();
+  const scripts = {
+    morning: "Hello, I am Zara, your interviewer. Let's start.",
+    afternoon: "Hello, I am Zara, your interviewer. Let's start.",
+    evening: "Hello, I am Zara, your interviewer. Let's start.",
+    night: "Hello, I am Zara, your interviewer. Let's start."
+  };
+  const key = hour>=5&&hour<12?'morning'
+            : hour>=12&&hour<17?'afternoon'
+            : hour>=17&&hour<21?'evening':'night';
+
+  if(!('speechSynthesis' in window)){
+    showMainContent();
+    return;
+  }
+
+  const utterance =
+    new SpeechSynthesisUtterance(scripts[key]);
+
+  const applyVoice = () => {
+    const voices = speechSynthesis.getVoices();
+    const pick = voices.find(v =>
+      v.name.includes('Samantha') ||
+      v.name.includes('Victoria') ||
+      v.name.includes('Karen')    ||
+      v.name.includes('Zira')     ||
+      v.name.includes('Google UK English Female') ||
+      (v.lang==='en-US' &&
+       v.name.toLowerCase().includes('female'))
+    ) || voices.find(v=>v.lang.startsWith('en'));
+
+    if(pick) utterance.voice = pick;
+    utterance.rate = 0.90;
+    utterance.pitch = 1.15;
+    utterance.volume = 1.0;
+
+    document.getElementById('zaraSpeaking')
+      .style.display = 'flex';
+    document.getElementById('zaraAvatar')
+      .classList.add('zara-speaking-anim');
+    document.getElementById('letBeginBtn')
+      .disabled = true;
+    document.getElementById('letBeginBtn')
+      .textContent = 'Please wait...';
+    document.getElementById('letBeginBtn')
+      .style.opacity = '0.6';
+    document.getElementById('letBeginBtn')
+      .style.cursor = 'not-allowed';
+
+    utterance.onend = showMainContent;
+    speechSynthesis.speak(utterance);
+  };
+
+  if(speechSynthesis.getVoices().length > 0){
+    applyVoice();
+  } else {
+    speechSynthesis.onvoiceschanged = applyVoice;
+  }
+
+}
+
+function showMainContent(){
+  const intro = document.getElementById('zaraIntroPage');
+  if(intro){
+    intro.style.opacity = '0';
+    intro.style.transition = 'opacity 0.4s';
+    setTimeout(() => intro.style.display = 'none', 400);
+  }
+  const wrap = document.querySelector('.wrap');
+  if(wrap){
+    wrap.style.display = 'block';
+    wrap.style.opacity = '0';
+    setTimeout(() => {
+      wrap.style.transition = 'opacity 0.4s';
+      wrap.style.opacity = '1';
+    }, 420);
+  }
+}
+// ── End Zara Intro Logic ───────────────────
+
+function enableMic(){ startMic(); }
+function enableCamera(){ startCamera(); }
+function goBackToDetails(){ backToDetailsStep(); }
+function enableMicCard(){
+  enableMic();
+}
+function enableCameraCard(){
+  enableCamera();
+  const wrap = document.getElementById('webcamPreviewWrap');
+  if(wrap) wrap.style.display = 'block';
+}
+function enableScreenCard(){
+  startScreenShare();
+}
+function updateSetupCards(){
+  const micOn = !!STATE.isRecording;
+  const camOn = !!STATE.isCameraOn;
+
+  if(micOn){
+    const micCard = document.getElementById('micCard');
+    const micStatus = document.getElementById('micStatus');
+    const micBtn = document.getElementById('micBtn');
+    if(micCard) micCard.style.borderColor = '#34d399';
+    if(micStatus){ micStatus.textContent = '✓ Enabled'; micStatus.style.color = '#34d399'; }
+    if(micBtn){ micBtn.textContent = 'Enabled ✓'; micBtn.style.background = 'rgba(52,211,153,0.15)'; micBtn.style.color = '#34d399'; }
+  }
+
+  if(camOn){
+    const cameraCard = document.getElementById('cameraCard');
+    const cameraStatus = document.getElementById('cameraStatus');
+    const cameraBtn = document.getElementById('cameraBtn');
+    if(cameraCard) cameraCard.style.borderColor = '#34d399';
+    if(cameraStatus){ cameraStatus.textContent = '✓ Enabled'; cameraStatus.style.color = '#34d399'; }
+    if(cameraBtn){ cameraBtn.textContent = 'Enabled ✓'; cameraBtn.style.background = 'rgba(52,211,153,0.15)'; cameraBtn.style.color = '#34d399'; }
+    const wrap = document.getElementById('webcamPreviewWrap');
+    if(wrap) wrap.style.display = 'block';
+  }
+
+  if(micOn && camOn){
+    const btn = document.getElementById('beginInterviewBtn');
+    if(btn){
+      btn.disabled = false;
+      btn.style.background = 'linear-gradient(135deg,#4a6aff,#7c3aed)';
+      btn.style.borderColor = 'transparent';
+      btn.style.color = '#fff';
+      btn.style.cursor = 'pointer';
+      btn.textContent = 'Begin Interview →';
+    }
+  }
+}
+function setSetupName(){
+  const nameInput = document.getElementById('userName');
+  const name = (nameInput && nameInput.value) ? nameInput.value : 'there';
+  const el = document.getElementById('setupName');
+  if(el) el.textContent = name;
 }
 
 document.addEventListener('DOMContentLoaded', initLoginRedirect);
