@@ -58,9 +58,25 @@
         #loginOverlay .progress-fill { width:0%; height:100%; background:linear-gradient(90deg,#5b8bff,#b267ff); transition:width .25s ease; }
         #loginOverlay .action-row { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
         #loginOverlay .action-row a, #loginOverlay .action-row button { min-width:140px; }
+        #prepOverlay { position:fixed; inset:0; z-index:10000; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(2,6,22,.92); }
+        #prepOverlay.visible { display:flex; }
+        #prepOverlay .prep-card { width:100%; max-width:520px; border-radius:18px; padding:24px; background:#101a3d; border:1px solid rgba(124,58,237,.35); box-shadow:0 24px 60px rgba(0,0,0,.35); text-align:center; }
+        #prepOverlay .prep-title { margin:0 0 14px; font-size:1.1rem; color:#fff; }
+        #prepOverlay .prep-track { width:100%; height:10px; border-radius:999px; background:rgba(255,255,255,.1); overflow:hidden; }
+        #prepOverlay .prep-fill { width:40%; height:100%; border-radius:999px; background:linear-gradient(90deg,#5b8bff,#b267ff); animation:prepSlide 1.2s ease-in-out infinite; }
+        @keyframes prepSlide {
+          0% { transform:translateX(-130%); }
+          100% { transform:translateX(330%); }
+        }
     </style>
 </head>
 <body>
+<div id="prepOverlay">
+    <div class="prep-card">
+        <h3 class="prep-title">Your interview session is preparing...</h3>
+        <div class="prep-track"><div class="prep-fill"></div></div>
+    </div>
+</div>
 <div id="loginOverlay" class="overlay">
     <div class="overlay-card">
         <h2>Login required to start</h2>
@@ -629,6 +645,14 @@ const STATE = { userName:'', role:'', type:'mixed', numQuestions:10, resumeText:
 const FILLERS = ['um','uh','like','you know','basically','literally','actually','sort of','kind of','i mean'];
 
 function setStatus(t){ document.getElementById('statusText').textContent=t; }
+function showPrepOverlay(){
+  const overlay = document.getElementById('prepOverlay');
+  if(overlay) overlay.classList.add('visible');
+}
+function hidePrepOverlay(){
+  const overlay = document.getElementById('prepOverlay');
+  if(overlay) overlay.classList.remove('visible');
+}
 function addHistory(role,text){ /* history hidden from UI by design */ }
 function updateCount(){ document.getElementById('qCount').textContent=`Q ${STATE.questionIndex}/${STATE.numQuestions}`; }
 function setStep(active){
@@ -862,6 +886,7 @@ async function startInterview(){
     alert('Please paste the job description to start.');
     return;
   }
+  showPrepOverlay();
   setStatus('Generating first question...');
   const formData = new FormData();
   formData.append('file', resumeFile);
@@ -869,11 +894,31 @@ async function startInterview(){
   formData.append('interview_type', STATE.type);
   formData.append('num_questions', String(STATE.numQuestions));
   formData.append('job_desc', STATE.jobDesc);
-  const r = await fetch('/api/interview/start-with-pdf', { method:'POST', body: formData });
-  const data = await r.json();
+  formData.append('difficulty', 'hard');
+  formData.append('question_style',
+    'Ask deep resume-specific questions. ' +
+    'Reference exact projects, technologies, ' +
+    'and experiences from the resume. ' +
+    'Ask follow-up probing questions. ' +
+    'Match questions to exact job requirements. ' +
+    'Do not ask generic questions like ' +
+    'tell me about yourself or strengths weaknesses. ' +
+    'Ask tough technical and situational questions ' +
+    'that only someone with this exact experience ' +
+    'can answer well.');
+  let r, data;
+  try{
+    r = await fetch('/api/interview/start-with-pdf', { method:'POST', body: formData });
+    data = await r.json();
+  }catch(e){
+    hidePrepOverlay();
+    alert('Failed to start interview');
+    return;
+  }
   if(r.ok && data.resume_text){ STATE.resumeText = data.resume_text; }
-  if(!r.ok || !data.success){ alert(data.detail || 'Failed to start interview'); return; }
+  if(!r.ok || !data.success){ hidePrepOverlay(); alert(data.detail || 'Failed to start interview'); return; }
   document.getElementById('setupPanel').classList.add('hidden'); document.getElementById('livePanel').classList.remove('hidden');
+  hidePrepOverlay();
   window.scrollTo({ top: 0, behavior: 'smooth' });
   document.getElementById('livePanel')
     .scrollIntoView({ behavior: 'smooth',
@@ -892,7 +937,7 @@ async function submitAnswer(fromTimer=false){
   const answer = getCapturedAnswer();
   if(!answer && !fromTimer){ alert('Please record an answer first.'); return; }
   addHistory('user',answer); STATE.qa_log.push({question:STATE.currentQuestion,answer});
-  const r = await fetch('/api/interview/next',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({resume_text:STATE.resumeText,role:STATE.role,interview_type:STATE.type,num_questions:STATE.numQuestions,question_index:STATE.questionIndex,job_desc:STATE.jobDesc,conversation_history:STATE.conversation_history,user_answer:answer})});
+  const r = await fetch('/api/interview/next',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({resume_text:STATE.resumeText,role:STATE.role,interview_type:STATE.type,num_questions:STATE.numQuestions,question_index:STATE.questionIndex,job_desc:STATE.jobDesc,conversation_history:STATE.conversation_history,user_answer:answer,difficulty:'hard',question_style:'Ask deep follow-up questions based on ' + 'the candidate previous answer. ' + 'Probe deeper into their projects. ' + 'Ask about specific decisions they made. ' + 'Challenge their answers with harder follow-ups. ' + 'Reference their resume and job description. ' + 'Never ask generic interview questions.'})});
   const data = await r.json();
   if(!r.ok || !data.success){ alert(data.detail || 'Failed to fetch next question'); return; }
   STATE.conversation_history.push({role:'user',content:answer});
@@ -946,6 +991,26 @@ document.addEventListener('visibilitychange', () => {
 });
 
 function renderScoreCard(s){
+  const hasRealAnswer = Array.isArray(STATE.qa_log) &&
+    STATE.qa_log.some(item => {
+      const ans = (item && item.answer)
+        ? String(item.answer).trim().toLowerCase()
+        : '';
+      return ans &&
+        ans !== 'no response provided within time limit.';
+    });
+  if(!hasRealAnswer){
+    s = {
+      ...s,
+      overall: 0,
+      communication: 0,
+      depth: 0,
+      relevance: 0,
+      confidence: 0,
+      keywords_hit: 0,
+      grade: 'No response submitted'
+    };
+  }
   const safe = (v, d='-') => (v === undefined || v === null || v === '') ? d : v;
   const qa = Array.isArray(s.qa_scores) ? s.qa_scores : [];
   const strengths = Array.isArray(s.strengths) ? s.strengths : [];
@@ -1304,33 +1369,152 @@ document.addEventListener('DOMContentLoaded',
   restoreDetailsFromStorage);
 
 function startNewInterview(){
-  // Clear saved details from localStorage
-  localStorage.removeItem('mock_userName');
-  localStorage.removeItem('mock_targetRole');
-  localStorage.removeItem('mock_interviewType');
-  localStorage.removeItem('mock_numQuestions');
-  // Go back to intro page
+  // Stop all active streams
+  stopTimer();
+  window.speechSynthesis.cancel();
+  if(STATE.isRecording) stopMic();
+  stopCamera();
+  stopScreenShare();
+  stopCameraMonitoring();
+
+  // Reset STATE completely
+  STATE.userName = '';
+  STATE.role = '';
+  STATE.type = 'mixed';
+  STATE.numQuestions = 10;
+  STATE.resumeText = '';
+  STATE.jobDesc = '';
+  STATE.questionIndex = 0;
+  STATE.currentQuestion = '';
+  STATE.conversation_history = [];
+  STATE.qa_log = [];
+  STATE.currentTranscript = '';
+  STATE.liveInterim = '';
+  STATE.fillerCount = 0;
+  STATE.totalWords = 0;
+  STATE.speechRec = null;
+  STATE.isRecording = false;
+  STATE.timerSec = 60;
+  STATE.timerId = null;
+  STATE.camStream = null;
+  STATE.isCameraOn = false;
+  STATE.screenStream = null;
+  STATE.isScreenSharing = false;
+  STATE.isRejected = false;
+
+  // Hide score panel
   document.getElementById('scorePanel')
     .classList.add('hidden');
-  document.querySelector('.wrap')
-    .style.display = 'none';
+
+  // Show setup panel + details step
+  document.getElementById('setupPanel')
+    .classList.remove('hidden');
+  document.getElementById('detailsStep')
+    .classList.remove('hidden');
+  document.getElementById('deviceStep')
+    .classList.add('hidden');
+
+  // Hide live panel
+  document.getElementById('livePanel')
+    .classList.add('hidden');
+
+  // Reset step indicator
+  setStep(1);
+
+  // Restore saved form data
+  restoreFromStorage();
+
+  // Reset resume file input
+  const resumeInput = document.getElementById(
+    'resumeFile');
+  if(resumeInput) resumeInput.value = '';
+
+  // Reset mic and camera buttons
+  const micBtn = document.getElementById(
+    'micBtnSetup');
+  if(micBtn){
+    micBtn.textContent = 'Enable Mic';
+    micBtn.disabled = false;
+    micBtn.style.opacity = '1';
+  }
+  const camBtn = document.getElementById(
+    'camBtnSetup');
+  if(camBtn){
+    camBtn.textContent = 'Enable Camera';
+    camBtn.disabled = false;
+    camBtn.style.opacity = '1';
+  }
+  const micCard = document.getElementById('micCard');
+  const micStatus = document.getElementById('micStatus');
+  const micSetupBtn = document.getElementById('micBtn');
+  if(micCard) micCard.style.borderColor =
+    'rgba(80,110,200,.3)';
+  if(micStatus){
+    micStatus.textContent = 'Required';
+    micStatus.style.color = 'rgba(255,255,255,0.4)';
+  }
+  if(micSetupBtn){
+    micSetupBtn.textContent = 'Enable';
+    micSetupBtn.style.background =
+      'linear-gradient(135deg,#4a6aff,#7c3aed)';
+    micSetupBtn.style.color = '#fff';
+  }
+  const cameraCard = document.getElementById('cameraCard');
+  const cameraStatus = document.getElementById('cameraStatus');
+  const cameraSetupBtn = document.getElementById('cameraBtn');
+  if(cameraCard) cameraCard.style.borderColor =
+    'rgba(80,110,200,.3)';
+  if(cameraStatus){
+    cameraStatus.textContent = 'Required';
+    cameraStatus.style.color = 'rgba(255,255,255,0.4)';
+  }
+  if(cameraSetupBtn){
+    cameraSetupBtn.textContent = 'Enable';
+    cameraSetupBtn.style.background =
+      'linear-gradient(135deg,#4a6aff,#7c3aed)';
+    cameraSetupBtn.style.color = '#fff';
+  }
+  const beginBtn = document.getElementById(
+    'beginInterviewBtn');
+  if(beginBtn){
+    beginBtn.disabled = true;
+    beginBtn.style.background =
+      'rgba(74,106,255,0.3)';
+    beginBtn.style.borderColor =
+      'rgba(74,106,255,0.3)';
+    beginBtn.style.color =
+      'rgba(255,255,255,0.4)';
+    beginBtn.style.cursor = 'not-allowed';
+    beginBtn.textContent =
+      'Enable mic and camera to begin';
+  }
+  const webcamWrap = document.getElementById(
+    'webcamPreviewWrap');
+  if(webcamWrap) webcamWrap.style.display = 'none';
+
+  // Scroll to top
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  // Show Zara intro page if it exists
   const intro = document.getElementById(
     'zaraIntroPage');
-  intro.style.display = 'flex';
-  intro.style.opacity = '1';
-  // Reset Zara avatar
-  document.getElementById('zaraAvatar')
-    .classList.remove('zara-speaking-anim');
-  // Reset Let's Begin button
-  const btn = document.getElementById(
-    'letBeginBtn');
-  btn.disabled = false;
-  btn.textContent = "Let's Begin →";
-  btn.style.opacity = '1';
-  btn.style.cursor = 'pointer';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if(intro){
+    document.querySelector('.wrap')
+      .style.display = 'none';
+    intro.style.display = 'flex';
+    intro.style.opacity = '1';
+    const btn = document.getElementById(
+      'letBeginBtn');
+    if(btn){
+      btn.disabled = false;
+      btn.textContent = "Let's Begin →";
+      btn.style.opacity = '1';
+      btn.style.cursor = 'pointer';
+    }
+    document.getElementById('zaraAvatar')
+      .classList.remove('zara-speaking-anim');
+  }
 }
-
 // ── localStorage Save & Restore ──────────
 
 function saveToStorage(){
@@ -1409,10 +1593,14 @@ document.addEventListener('DOMContentLoaded',
   }
 );
 
+
 // ── End localStorage ──────────────────────
 </script>
 </body>
 </html>
+
+
+
 
 
 
