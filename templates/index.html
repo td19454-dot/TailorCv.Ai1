@@ -731,6 +731,66 @@ header, main, section, footer, .hero, .features,
                                 scrollbar-width: thin;
                             }
                         }
+
+                        @media (max-width: 768px) {
+                            .hero-copy > * {
+                                opacity: 1 !important;
+                                animation: none !important;
+                                transform: none !important;
+                            }
+                            .hero-split {
+                                grid-template-columns: 1fr !important;
+                                gap: 20px !important;
+                            }
+                            .hero-visual {
+                                width: 100% !important;
+                                max-width: 100% !important;
+                                min-width: 0 !important;
+                                overflow: hidden !important;
+                            }
+                            .resume-card {
+                                width: 100% !important;
+                                overflow: hidden !important;
+                                transform: none !important;
+                            }
+                            .hero-title {
+                                font-size: 2rem !important;
+                            }
+                            .gradient-text {
+                                font-size: 1.6rem !important;
+                            }
+                            .hero-subtitle {
+                                font-size: 15px !important;
+                            }
+                            .hero-cta {
+                                flex-direction: column !important;
+                                align-items: center !important;
+                            }
+                            .hero-cta a,
+                            .hero-cta button {
+                                width: 100% !important;
+                                max-width: 100% !important;
+                                box-sizing: border-box !important;
+                            }
+                            .hero-testimonials {
+                                display: flex !important;
+                                flex-direction: column !important;
+                                gap: 12px !important;
+                                overflow: visible !important;
+                            }
+                            .hero-t-card {
+                                width: 100% !important;
+                                min-width: 0 !important;
+                                max-width: 100% !important;
+                            }
+                            .social-proof-text-hero {
+                                white-space: normal !important;
+                            }
+                            .social-proof-hero {
+                                flex-wrap: wrap !important;
+                                justify-content: center !important;
+                            }
+                        }
                     </style>
                 </div>
 
