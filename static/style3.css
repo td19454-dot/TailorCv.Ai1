@@ -1,4 +1,4 @@
-*,
+﻿*,
 *::before,
 *::after {
     box-sizing: border-box;
@@ -1682,7 +1682,7 @@ header {
 
 .btn-primary {
     align-items: center;
-    background-image: linear-gradient(144deg, #AF40FF,0 #00DDEB);
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border: 0;
     border-radius: 30px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
@@ -2478,7 +2478,7 @@ header {
 }
 
 /* ==============================================
-   MOBILE EMERGENCY FIX � HOMEPAGE
+   MOBILE EMERGENCY FIX ï¿½ HOMEPAGE
    ============================================== */
 
 html, body {
@@ -2494,7 +2494,7 @@ html, body {
 /* -- Tablet 768px -- */
 @media (max-width: 768px) {
 
-    /* Fix the grid � this is the main overflow cause */
+    /* Fix the grid ï¿½ this is the main overflow cause */
     .hero-split {
         grid-template-columns: 1fr !important;
         gap: 24px !important;
@@ -2611,7 +2611,7 @@ html, body {
         text-align: center;
     }
 
-    /* Hide background orbs � they cause overflow */
+    /* Hide background orbs ï¿½ they cause overflow */
     .bg-orb,
     .orb-blue,
     .orb-violet,
@@ -2656,7 +2656,7 @@ html, body {
         font-size: 1.5rem !important;
     }
 
-    /* Resume card inside hero � scale it down */
+    /* Resume card inside hero ï¿½ scale it down */
     .resume-card {
         transform: scale(0.85);
         transform-origin: top center;
@@ -2746,3 +2746,5 @@ html, body {
 /* ==============================================
    END HERO MARGIN BALANCE FIX
    ============================================== */
+
+
