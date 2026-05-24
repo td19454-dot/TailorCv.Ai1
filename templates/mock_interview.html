@@ -147,7 +147,27 @@
           Google interview. I walked in prepared
           and the nerves just disappeared."
         </div>
-        <div style="color:#9bb0d8;font-size:12px;">— Rahul K., hired at Google 🇮🇳</div>
+        <div style="
+          display:flex;
+          align-items:center;
+          gap:10px;
+          margin-top:8px;
+        ">
+          <img src="https://i.pravatar.cc/36?img=11"
+               style="
+                 width:36px;height:36px;
+                 border-radius:50%;
+                 object-fit:cover;
+                 border:2px solid rgba(108,99,255,0.4);
+               " alt="Rahul">
+          <div>
+            <div style="color:#fff;font-size:12px;
+                        font-weight:600;">Rahul K.</div>
+            <div style="color:#9bb0d8;font-size:11px;">
+              Software Engineer · hired at Google 🇮🇳
+            </div>
+          </div>
+        </div>
       </div>
       <div style="
         background: #141f4a;
@@ -162,7 +182,27 @@
           After 2 sessions with Zara I finally
           understood what I was doing wrong."
         </div>
-        <div style="color:#9bb0d8;font-size:12px;">— Priya S., hired at Infosys 🇮🇳</div>
+        <div style="
+          display:flex;
+          align-items:center;
+          gap:10px;
+          margin-top:8px;
+        ">
+          <img src="https://i.pravatar.cc/36?img=5"
+               style="
+                 width:36px;height:36px;
+                 border-radius:50%;
+                 object-fit:cover;
+                 border:2px solid rgba(108,99,255,0.4);
+               " alt="Priya">
+          <div>
+            <div style="color:#fff;font-size:12px;
+                        font-weight:600;">Priya S.</div>
+            <div style="color:#9bb0d8;font-size:11px;">
+              Data Analyst · hired at Infosys 🇮🇳
+            </div>
+          </div>
+        </div>
       </div>
       <div style="
         background: #141f4a;
@@ -177,7 +217,27 @@
           not generic ones. That's what makes
           this completely different."
         </div>
-        <div style="color:#9bb0d8;font-size:12px;">— Arjun M., hired at Wipro 🇮🇳</div>
+        <div style="
+          display:flex;
+          align-items:center;
+          gap:10px;
+          margin-top:8px;
+        ">
+          <img src="https://i.pravatar.cc/36?img=8"
+               style="
+                 width:36px;height:36px;
+                 border-radius:50%;
+                 object-fit:cover;
+                 border:2px solid rgba(108,99,255,0.4);
+               " alt="Arjun">
+          <div>
+            <div style="color:#fff;font-size:12px;
+                        font-weight:600;">Arjun M.</div>
+            <div style="color:#9bb0d8;font-size:11px;">
+              Backend Dev · hired at Wipro 🇮🇳
+            </div>
+          </div>
+        </div>
       </div>
       <div style="
         color: rgba(255,255,255,0.4);
@@ -331,6 +391,18 @@
         width: 100%;
         max-width: 360px;
         box-shadow: 0 8px 30px rgba(108,99,255,0.35);">Let's Begin →</button>
+      <button onclick="showMainContent()" style="
+        background: transparent;
+        border: 0;
+        color: rgba(255,255,255,0.35);
+        font-size: 12px;
+        cursor: pointer;
+        margin-top: 12px;
+        text-decoration: underline;
+        display: block;
+        width: 100%;
+        text-align: center;
+      ">Skip introduction →</button>
     </div>
   </div>
 </div>
@@ -395,17 +467,17 @@
                 <div style="grid-column:1/-1">
                     <label>Questions</label>
                     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px;">
-                      <div onclick="selectQCount(this,5)" class="qcount-card" style="background:#141f4a;border:2px solid rgba(80,110,200,.3);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
+                      <div onclick="selectQCount(this,5)" class="qcount-card" data-val="5" style="background:#141f4a;border:2px solid rgba(80,110,200,.3);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
                         <div style="color:#fff;font-weight:700;font-size:15px;">Quick</div>
                         <div style="color:#9bb0d8;font-size:12px;">5 questions</div>
                         <div style="color:#9bb0d8;font-size:11px;">~10 mins</div>
                       </div>
-                      <div onclick="selectQCount(this,10)" class="qcount-card selected-qcount" style="background:#141f4a;border:2px solid rgba(124,58,237,.8);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
+                      <div onclick="selectQCount(this,10)" class="qcount-card selected-qcount" data-val="10" style="background:#141f4a;border:2px solid rgba(124,58,237,.8);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
                         <div style="color:#fff;font-weight:700;font-size:15px;">Standard</div>
                         <div style="color:#9bb0d8;font-size:12px;">10 questions</div>
                         <div style="color:#9bb0d8;font-size:11px;">~15 mins</div>
                       </div>
-                      <div onclick="selectQCount(this,20)" class="qcount-card" style="background:#141f4a;border:2px solid rgba(80,110,200,.3);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
+                      <div onclick="selectQCount(this,20)" class="qcount-card" data-val="20" style="background:#141f4a;border:2px solid rgba(80,110,200,.3);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
                         <div style="color:#fff;font-weight:700;font-size:15px;">Deep Dive</div>
                         <div style="color:#9bb0d8;font-size:12px;">20 questions</div>
                         <div style="color:#9bb0d8;font-size:11px;">~20 mins</div>
@@ -426,7 +498,7 @@
                 </div>
             </div>
             <div class="setup-actions">
-                <button class="btn" onclick="goToSetupStep()">Continue To Setup</button>
+                <button class="btn" onclick="saveDetailsToStorage(); goToSetupStep()">Continue To Setup</button>
             </div>
         </div>
 
@@ -494,7 +566,6 @@
     <section class="panel hidden" id="scorePanel">
         <h2>Score Card</h2>
         <div id="scoreView"></div>
-        <button class="btn" onclick="location.reload()">New Interview</button>
     </section>
 </main>
 
@@ -567,12 +638,14 @@ function setStep(active){
   if(c3) c3.classList.toggle('active', active===3);
 }
 function goToSetupStep(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   const name=(document.getElementById('userName').value || '').trim();
   const role=(document.getElementById('targetRole').value || '').trim();
   const jd=(document.getElementById('jobDesc').value || '').trim();
   const resumeFile = document.getElementById('resumeFile').files[0];
   if(!resumeFile){ alert('Please upload your resume PDF first.'); return; }
   if(!jd){ alert('Please paste the job description first.'); return; }
+  saveToStorage();
   const w = document.getElementById('welcomeText');
   if(w) w.textContent = `Welcome ${name || 'Candidate'} - ${role || 'Software Engineer'} interview setup`;
   document.getElementById('detailsStep').classList.add('hidden');
@@ -642,7 +715,20 @@ function stopTimer(){
 }
 function startTimer(){
   stopTimer();
-  STATE.timerSec = 60;
+  const qCount = parseInt(
+    document.getElementById('numQuestions')
+      .value || '10');
+
+  // Set timer based on question count
+  // Quick (5q/10min) = 120s per question
+  // Standard (10q/15min) = 90s per question
+  // Deep Dive (20q/20min) = 60s per question
+  let secsPerQ = 60;
+  if(qCount <= 5) secsPerQ = 120;
+  else if(qCount <= 10) secsPerQ = 90;
+  else secsPerQ = 60;
+
+  STATE.timerSec = secsPerQ;
   const timerEl = document.getElementById('timerText');
   timerEl.textContent = `Time left: ${STATE.timerSec}s`;
   STATE.timerId = setInterval(async () => {
@@ -754,6 +840,7 @@ async function startCamera(){
 }
 
 async function startInterview(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   if(!STATE.isCameraOn){
     alert('Please start your webcam before beginning the interview.');
     return;
@@ -787,6 +874,10 @@ async function startInterview(){
   if(r.ok && data.resume_text){ STATE.resumeText = data.resume_text; }
   if(!r.ok || !data.success){ alert(data.detail || 'Failed to start interview'); return; }
   document.getElementById('setupPanel').classList.add('hidden'); document.getElementById('livePanel').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('livePanel')
+    .scrollIntoView({ behavior: 'smooth',
+                      block: 'start' });
   setStep(3);
   startCameraMonitoring();
   STATE.questionIndex=1; STATE.currentQuestion=data.question; updateCount();
@@ -813,6 +904,7 @@ async function submitAnswer(fromTimer=false){
 }
 
 async function endInterview(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   if(STATE.isRejected) return;
   stopTimer();
   window.speechSynthesis.cancel();
@@ -984,13 +1076,13 @@ function renderScoreCard(s){
     display:flex;gap:12px;
     margin-top:20px;flex-wrap:wrap;
   ">
-    <button onclick="location.reload()"
+    <button onclick="startNewInterview()"
             class="btn" style="flex:1;
             background:transparent;
             border:1px solid rgba(124,58,237,.5);">
-      Try Again →
+      New Interview →
     </button>
-    <button onclick="location.href='/templates'"
+    <button onclick="location.href='/solutions'"
             class="btn" style="flex:1;">
       Fix My Resume →
     </button>
@@ -1040,6 +1132,16 @@ function selectQCount(el, val){
     });
   el.style.borderColor = 'rgba(124,58,237,.8)';
   document.getElementById('numQuestions').value = val;
+}
+
+// Save form details to localStorage
+function saveDetailsToStorage(){
+  saveToStorage();
+}
+
+// Restore saved details from localStorage
+function restoreDetailsFromStorage(){
+  restoreFromStorage();
 }
 
 // ── Zara Intro Page Logic ──────────────────
@@ -1198,6 +1300,116 @@ function setSetupName(){
 }
 
 document.addEventListener('DOMContentLoaded', initLoginRedirect);
+document.addEventListener('DOMContentLoaded',
+  restoreDetailsFromStorage);
+
+function startNewInterview(){
+  // Clear saved details from localStorage
+  localStorage.removeItem('mock_userName');
+  localStorage.removeItem('mock_targetRole');
+  localStorage.removeItem('mock_interviewType');
+  localStorage.removeItem('mock_numQuestions');
+  // Go back to intro page
+  document.getElementById('scorePanel')
+    .classList.add('hidden');
+  document.querySelector('.wrap')
+    .style.display = 'none';
+  const intro = document.getElementById(
+    'zaraIntroPage');
+  intro.style.display = 'flex';
+  intro.style.opacity = '1';
+  // Reset Zara avatar
+  document.getElementById('zaraAvatar')
+    .classList.remove('zara-speaking-anim');
+  // Reset Let's Begin button
+  const btn = document.getElementById(
+    'letBeginBtn');
+  btn.disabled = false;
+  btn.textContent = "Let's Begin →";
+  btn.style.opacity = '1';
+  btn.style.cursor = 'pointer';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── localStorage Save & Restore ──────────
+
+function saveToStorage(){
+  try {
+    localStorage.setItem('mock_userName',
+      document.getElementById('userName')
+        .value || '');
+    localStorage.setItem('mock_targetRole',
+      document.getElementById('targetRole')
+        .value || '');
+    localStorage.setItem('mock_interviewType',
+      document.getElementById('interviewType')
+        .value || 'mixed');
+    localStorage.setItem('mock_numQuestions',
+      document.getElementById('numQuestions')
+        .value || '10');
+    localStorage.setItem('mock_jobDesc',
+      document.getElementById('jobDesc')
+        .value || '');
+  } catch(e) {
+    console.log('Storage save error:', e);
+  }
+}
+
+function restoreFromStorage(){
+  try {
+    const name = localStorage.getItem(
+      'mock_userName');
+    const role = localStorage.getItem(
+      'mock_targetRole');
+    const type = localStorage.getItem(
+      'mock_interviewType');
+    const num = localStorage.getItem(
+      'mock_numQuestions');
+    const jd = localStorage.getItem(
+      'mock_jobDesc');
+
+    if(name) document.getElementById('userName')
+      .value = name;
+    if(role) document.getElementById('targetRole')
+      .value = role;
+    if(type) document.getElementById('interviewType')
+      .value = type;
+    if(jd) document.getElementById('jobDesc')
+      .value = jd;
+    if(num) {
+      const numEl = document.getElementById(
+        'numQuestions');
+      if(numEl) numEl.value = num;
+    }
+  } catch(e) {
+    console.log('Storage restore error:', e);
+  }
+}
+
+// Restore on page load
+document.addEventListener('DOMContentLoaded',
+  restoreFromStorage);
+
+document.addEventListener('DOMContentLoaded',
+  function(){
+    restoreFromStorage();
+
+    // Auto-save on every field change
+    ['userName','targetRole',
+     'interviewType','numQuestions',
+     'jobDesc'].forEach(id => {
+      const el = document.getElementById(id);
+      if(el){
+        el.addEventListener('change',
+          saveToStorage);
+        el.addEventListener('input',
+          saveToStorage);
+      }
+    });
+  }
+);
+
+// ── End localStorage ──────────────────────
 </script>
 </body>
 </html>
