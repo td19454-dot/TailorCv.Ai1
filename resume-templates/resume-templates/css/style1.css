@@ -21,8 +21,8 @@ body {
     width: 100%;
     --body-size: 11.6px;
     --body-line: 1.18;
-    --header-size: 30px;
-    --contact-size: 9.8px;
+    --header-size: 32px;
+    --contact-size: 10.3px;
     --section-size: 13.6px;
     --title-size: 13px;
     --meta-size: 11px;
@@ -40,8 +40,8 @@ body {
 .resume-container.scale-xl {
     --body-size: 14.8px;
     --body-line: 1.22;
-    --header-size: 26px;
-    --contact-size: 11px;
+    --header-size: 28px;
+    --contact-size: 11.5px;
     --section-size: 16px;
     --title-size: 15.2px;
     --meta-size: 12.6px;
@@ -59,8 +59,8 @@ body {
 .resume-container.scale-lg {
     --body-size: 13.8px;
     --body-line: 1.2;
-    --header-size: 33px;
-    --contact-size: 10.4px;
+    --header-size: 35px;
+    --contact-size: 10.9px;
     --section-size: 14.8px;
     --title-size: 14.2px;
     --meta-size: 11.8px;
@@ -78,8 +78,8 @@ body {
 .resume-container.scale-sm {
     --body-size: 11.8px;
     --body-line: 1.12;
-    --header-size: 27px;
-    --contact-size: 9.1px;
+    --header-size: 29px;
+    --contact-size: 9.6px;
     --section-size: 12.8px;
     --title-size: 12.2px;
     --meta-size: 10.4px;
@@ -97,8 +97,8 @@ body {
 .resume-container.scale-xs {
     --body-size: 11.1px;
     --body-line: 1.08;
-    --header-size: 24px;
-    --contact-size: 8.4px;
+    --header-size: 26px;
+    --contact-size: 8.9px;
     --section-size: 11.8px;
     --title-size: 11.2px;
     --meta-size: 9.6px;
@@ -127,7 +127,7 @@ body {
 }
 
 .contact-line {
-    font-size: calc(var(--contact-size) + 0.6px);
+    font-size: calc(var(--contact-size) + 3px);
     line-height: calc(var(--body-line) - 0.08);
     text-align: center;
 }
@@ -214,6 +214,7 @@ a {
 .date {
     font-size: var(--meta-size);
     color: #080808;
+    font-weight: 400;
 }
 
 .italic {
@@ -228,7 +229,7 @@ a {
 }
 
 .date {
-    font-weight: 600;
+    font-weight: 500;
     white-space: nowrap;
     font-style: italic;
 }
@@ -315,6 +316,7 @@ a {
     padding-left: 1px;
     color: #030303;
     font-style: normal;
+    font-weight: 400;
 }
 
 .bullet-list.compact {
