@@ -486,12 +486,12 @@
                       <div onclick="selectQCount(this,5)" class="qcount-card" data-val="5" style="background:#141f4a;border:2px solid rgba(80,110,200,.3);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
                         <div style="color:#fff;font-weight:700;font-size:15px;">Quick</div>
                         <div style="color:#9bb0d8;font-size:12px;">5 questions</div>
-                        <div style="color:#9bb0d8;font-size:11px;">~10 mins</div>
+                        <div style="color:#9bb0d8;font-size:11px;">~5 mins</div>
                       </div>
                       <div onclick="selectQCount(this,10)" class="qcount-card selected-qcount" data-val="10" style="background:#141f4a;border:2px solid rgba(124,58,237,.8);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
                         <div style="color:#fff;font-weight:700;font-size:15px;">Standard</div>
                         <div style="color:#9bb0d8;font-size:12px;">10 questions</div>
-                        <div style="color:#9bb0d8;font-size:11px;">~15 mins</div>
+                        <div style="color:#9bb0d8;font-size:11px;">~10 mins</div>
                       </div>
                       <div onclick="selectQCount(this,20)" class="qcount-card" data-val="20" style="background:#141f4a;border:2px solid rgba(80,110,200,.3);border-radius:10px;padding:12px;cursor:pointer;text-align:center;">
                         <div style="color:#fff;font-weight:700;font-size:15px;">Deep Dive</div>
@@ -641,7 +641,7 @@
 <script src="/static/auth_nav.js"></script>
 <script src="/static/mobile_nav.js"></script>
 <script>
-const STATE = { userName:'', role:'', type:'mixed', numQuestions:10, resumeText:'', jobDesc:'', questionIndex:0, currentQuestion:'', conversation_history:[], qa_log:[], currentTranscript:'', liveInterim:'', fillerCount:0, totalWords:0, speechRec:null, isRecording:false, timerSec:60, timerId:null, camStream:null, isCameraOn:false, screenStream:null, isScreenSharing:false, isRejected:false, faceDetector:null, camMonTimer:null, camSamples:0, camGoodSamples:0 };
+const STATE = { userName:'', role:'', type:'mixed', numQuestions:10, resumeText:'', jobDesc:'', questionIndex:0, currentQuestion:'', conversation_history:[], qa_log:[], currentTranscript:'', liveInterim:'', fillerCount:0, totalWords:0, speechRec:null, isRecording:false, timerSec:60, timerId:null, camStream:null, isCameraOn:false, screenStream:null, isScreenSharing:false, isRejected:false, isInterviewEnded:false, faceDetector:null, camMonTimer:null, camSamples:0, camGoodSamples:0 };
 const FILLERS = ['um','uh','like','you know','basically','literally','actually','sort of','kind of','i mean'];
 
 function setStatus(t){ document.getElementById('statusText').textContent=t; }
@@ -725,13 +725,17 @@ function getCameraFocusScore(){
   return Math.max(0, Math.min(100, Math.round((STATE.camGoodSamples / STATE.camSamples) * 100)));
 }
 function speakQuestion(text, onDone){
+  if(STATE.isInterviewEnded) return;
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.rate = 1.22; u.pitch = 1.04; u.volume = 1;
   const voices = window.speechSynthesis.getVoices();
   const female = voices.find(v => /female|zira|samantha|karen|moira|fiona|victoria/i.test(v.name));
   if(female) u.voice = female;
-  u.onend = () => { if(onDone) onDone(); };
+  u.onend = () => {
+    if(STATE.isInterviewEnded) return;
+    if(onDone) onDone();
+  };
   window.speechSynthesis.speak(u);
 }
 function stopTimer(){
@@ -739,20 +743,7 @@ function stopTimer(){
 }
 function startTimer(){
   stopTimer();
-  const qCount = parseInt(
-    document.getElementById('numQuestions')
-      .value || '10');
-
-  // Set timer based on question count
-  // Quick (5q/10min) = 120s per question
-  // Standard (10q/15min) = 90s per question
-  // Deep Dive (20q/20min) = 60s per question
-  let secsPerQ = 60;
-  if(qCount <= 5) secsPerQ = 120;
-  else if(qCount <= 10) secsPerQ = 90;
-  else secsPerQ = 60;
-
-  STATE.timerSec = secsPerQ;
+  STATE.timerSec = 60;
   const timerEl = document.getElementById('timerText');
   timerEl.textContent = `Time left: ${STATE.timerSec}s`;
   STATE.timerId = setInterval(async () => {
@@ -864,6 +855,7 @@ async function startCamera(){
 }
 
 async function startInterview(){
+  STATE.isInterviewEnded = false;
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if(!STATE.isCameraOn){
     alert('Please start your webcam before beginning the interview.');
@@ -951,6 +943,7 @@ async function submitAnswer(fromTimer=false){
 async function endInterview(){
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if(STATE.isRejected) return;
+  STATE.isInterviewEnded = true;
   stopTimer();
   window.speechSynthesis.cancel();
   if(STATE.isRecording) stopMic();
@@ -966,6 +959,7 @@ async function endInterview(){
 function rejectInterview(reason){
   if(STATE.isRejected) return;
   STATE.isRejected = true;
+  STATE.isInterviewEnded = true;
   stopTimer();
   window.speechSynthesis.cancel();
   if(STATE.isRecording) stopMic();
@@ -1401,6 +1395,7 @@ function startNewInterview(){
   STATE.screenStream = null;
   STATE.isScreenSharing = false;
   STATE.isRejected = false;
+  STATE.isInterviewEnded = true;
 
   // Hide score panel
   document.getElementById('scorePanel')
