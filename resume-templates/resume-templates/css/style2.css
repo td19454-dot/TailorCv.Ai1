@@ -128,7 +128,7 @@ body {
 }
 
 .contact-line {
-    font-size: calc(var(--contact-size) + 0.6px);
+    font-size: calc(var(--contact-size) + 3px);
     line-height: calc(var(--body-line) - 0.08);
     text-align: center;
 }
