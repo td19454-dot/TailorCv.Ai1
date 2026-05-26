@@ -1,15 +1,15 @@
 ﻿.footer {
     position: relative;
-    margin-top: 3.5rem;
-    padding: 30px;
+    margin-top: 2.2rem;
+    padding: 18px 20px;
     color: #e8ecff;
-    border: 1px solid rgba(117, 139, 255, 0.2);
+    border: 1px solid rgba(190, 165, 255, 0.34);
     border-radius: 18px 18px 0 0;
     overflow: hidden;
-    background: linear-gradient(145deg, rgba(7, 8, 34, 0.92), rgba(11, 12, 44, 0.88));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 14px 40px rgba(5, 7, 28, 0.35);
+    background: linear-gradient(145deg, rgba(112, 84, 170, 0.22), rgba(69, 52, 125, 0.18));
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    box-shadow: 0 18px 48px rgba(50, 24, 88, 0.32);
 }
 
 .footer::before {
@@ -18,8 +18,8 @@
     inset: 0;
     pointer-events: none;
     background:
-        radial-gradient(circle at 12% -8%, rgba(80, 146, 255, 0.2), transparent 35%),
-        radial-gradient(circle at 92% 6%, rgba(129, 94, 255, 0.2), transparent 30%);
+        radial-gradient(circle at 12% -8%, rgba(194, 157, 255, 0.30), transparent 35%),
+        radial-gradient(circle at 92% 6%, rgba(154, 117, 255, 0.26), transparent 30%);
 }
 
 .footer .container {
@@ -31,15 +31,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.75rem;
+    gap: 0.5rem;
     flex-wrap: wrap;
-    padding: 1rem 0 0.95rem;
+    padding: 0.6rem 0 0.55rem;
     border-bottom: 1px solid rgba(117, 139, 255, 0.2);
 }
 
 .footer-top-item {
     font-size: 0.95rem;
-    color: #a8b4ff;
+    color: #32ef71;
     font-weight: 600;
 }
 
@@ -51,7 +51,7 @@
     border-radius: 999px;
     border: 1px solid rgba(122, 146, 255, 0.35);
     background: rgba(34, 39, 102, 0.35);
-    color: #c3d2ff;
+    color: #a054f7;
     font-size: 0.95rem;
     font-weight: 700;
 }
@@ -59,20 +59,20 @@
 .footer-content {
     display: grid;
     grid-template-columns: 1.3fr 1fr 1fr;
-    gap: 2rem;
-    padding: 2.1rem 0;
+    gap: 1.1rem;
+    padding: 1.2rem 0;
 }
 
 .footer-title {
-    margin: 0 0 0.75rem;
-    color: #eef2ff;
+    margin: 0 0 0.5rem;
+    color: #a054f7;
     font-size: 2rem;
     line-height: 1.1;
     font-weight: 700;
 }
 
 .footer-text {
-    margin: 0 0 1rem;
+    margin: 0 0 0.7rem;
     color: #f4f5f6;
     max-width: 380px;
     font-size: 1.02rem;
@@ -90,7 +90,7 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 1.05rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.65rem;
     transition: all 0.2s ease;
     background: rgba(16, 20, 64, 0.5);
 }
@@ -103,7 +103,7 @@
 
 .footer-socials {
     display: flex;
-    gap: 0.7rem;
+    gap: 0.5rem;
 }
 
 .footer-social {
@@ -141,13 +141,13 @@
     background: #ffffff;
 }
 
-.footer-social[aria-label="Instagram"] svg {
-    color: #ffffff;
-}
-
 .footer-social[aria-label="Instagram"] {
     background: linear-gradient(45deg, #f58529, #feda77, #dd2a7b, #8134af, #515bd4);
     border-color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-social[aria-label="Instagram"] svg {
+    color: #ffffff;
 }
 
 .footer-social:hover {
@@ -157,9 +157,9 @@
 }
 
 .footer-heading {
-    margin: 0 0 0.95rem;
-    color: #8b97df;
-    font-size: 1.02rem;
+    margin: 0 0 0.55rem;
+    color: #9e68ee;
+    font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -169,7 +169,7 @@
     display: block;
     color: #fafbfe;
     text-decoration: none;
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.42rem;
     font-size: 1.05rem;
     font-weight: 600;
     transition: color 0.2s ease, transform 0.2s ease;
@@ -184,8 +184,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.8rem;
-    padding: 1.05rem 0 1.2rem;
+    gap: 0.5rem;
+    padding: 0.7rem 0 0.75rem;
     border-top: 1px solid rgba(117, 139, 255, 0.2);
 }
 
@@ -213,7 +213,7 @@
 @media (max-width: 900px) {
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .footer-title {
