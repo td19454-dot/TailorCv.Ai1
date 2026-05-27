@@ -269,6 +269,7 @@
             color: ghostwhite;
             min-height: 60px;
             height: 60px;
+            transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease, transform 0.28s ease;
         }
         .cv2-actions .btn.cv2-uiverse-btn .btn-text,
         .cv2-actions .btn.cv2-uiverse-btn .btn-loader {
@@ -278,7 +279,7 @@
         }
         .cv2-actions .btn.cv2-uiverse-btn:hover .btn-text,
         .cv2-actions .btn.cv2-uiverse-btn:hover .btn-loader {
-            color: black;
+            color: #0b1020;
         }
         .cv2-actions .btn.cv2-uiverse-btn::before,
         .cv2-actions .btn.cv2-uiverse-btn::after {
@@ -291,7 +292,7 @@
         }
         .cv2-actions .btn.cv2-uiverse-btn::before {
             content: "";
-            background: #000;
+            
             width: 120%;
             left: -10%;
             transform: skew(30deg);
@@ -299,6 +300,19 @@
         }
         .cv2-actions .btn.cv2-uiverse-btn:hover::before {
             transform: translate3d(100%, 0, 0);
+        }
+        .cv2-actions .btn.btn-secondary.cv2-uiverse-btn:hover {
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+            border-color: rgba(191, 219, 254, 0.95);
+            color: #0b1020;
+        }
+        .cv2-actions .btn.btn-primary.cv2-uiverse-btn:hover {
+            background: linear-gradient(135deg, #a78bfa 0%, #7a09f4 100%);
+            border-color: rgba(165, 243, 252, 0.95);
+            color: #0b1020;
+        }
+        .cv2-actions .btn.cv2-uiverse-btn:hover::after {
+            background: linear-gradient(135deg, #a78bfa 0%, #7a09f4  100%) !important;
         }
         #job-description.form-textarea {
             min-height: 206px;
@@ -612,7 +626,7 @@
 
     <script src="/static/auth_nav.js"></script>
     <script src="/static/mobile_nav.js"></script>
-    <script src="/static/main_new.js?v=30"></script>
+    <script src="/static/main_new.js?v=31"></script>
 <script>
 (function(){
   const canvas = document.getElementById('wave-canvas');
