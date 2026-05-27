@@ -57,7 +57,7 @@
 </header>
 <main class="blog-main">
     <section class="blog-listing-head">
-        <h1>Resume Optimization Blog</h1>
+        <h1>TailorCV Blog</h1>
         <p>Actionable guides to improve ATS score, resume quality, and job search outcomes.</p>
         <form class="blog-search" method="get" action="/blog">
             <input type="search" name="q" value="{{ q }}" placeholder="Search guides, ATS tips, and examples">
@@ -70,9 +70,9 @@
             <button type="submit">Search</button>
         </form>
         <div class="tags-row">
-            <a class="tag {% if not selected_tag %}active{% endif %}" href="/blog?q={{ q }}&category={{ selected_category }}">All</a>
-            {% for tag in tags %}
-            <a class="tag {% if tag == selected_tag %}active{% endif %}" href="/blog?tag={{ tag }}&q={{ q }}&category={{ selected_category }}">{{ tag }}</a>
+            <a class="tag {% if not selected_category %}active{% endif %}" href="/blog?q={{ q }}&category=">All</a>
+            {% for c in categories %}
+            <a class="tag {% if c == selected_category %}active{% endif %}" href="/blog?q={{ q }}&category={{ c }}">{{ c }}</a>
             {% endfor %}
         </div>
     </section>
@@ -91,7 +91,6 @@
                 <p>{{ post.description }}</p>
                 <div class="blog-meta-tags">
                     {% if post.category %}<span>{{ post.category }}</span>{% endif %}
-                    {% for tag in post.tags %}<span>#{{ tag }}</span>{% endfor %}
                 </div>
             </div>
         </article>
