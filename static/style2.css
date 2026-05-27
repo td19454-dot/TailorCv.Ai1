@@ -85,6 +85,9 @@ header.navbar + * {
     transition: all 0.3s ease;
     border-radius: 12px;
 }
+.ai-rewrite-btn{
+    color: rgb(144, 33, 33);
+}
 
 .nav-links a::after {
     content: '';
