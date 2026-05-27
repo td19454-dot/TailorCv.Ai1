@@ -2307,10 +2307,14 @@ async def robots_txt():
 @app.get("/", response_class=HTMLResponse)
 async def landing_page(request: Request):
     """Landing page inspired by Tsenta marketing site."""
+    home_posts = blog_service.search_posts(page=1, per_page=3)["items"]
     return templates.TemplateResponse(
         request,
         "index.html",
-        {"request": request},
+        {
+            "request": request,
+            "home_posts": home_posts,
+        },
     )
 
 
