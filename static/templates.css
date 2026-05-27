@@ -632,12 +632,16 @@
 
 @media (max-width: 760px) {
     .templates-page {
-        padding: 1.25rem 0.8rem 2.8rem;
+        padding: 1rem 0.45rem 2.8rem;
     }
 
     .templates-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.7rem;
+        gap: 0.55rem;
+    }
+
+    .template-preview img {
+        padding: 4px;
     }
 
     .templates-header {
@@ -688,8 +692,22 @@
 }
 
 @media (max-width: 460px) {
+    .templates-page {
+        padding-left: 0.35rem;
+        padding-right: 0.35rem;
+    }
+
     .templates-grid {
         grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .template-preview img {
+        padding: 2px;
+    }
+
+    .template-name {
+        padding: 0.6rem 0.45rem 0.7rem;
     }
 }
 
