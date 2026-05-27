@@ -695,7 +695,12 @@ body {
 .tc-sw-card.active { border-color: #22c55e; box-shadow: 0 0 0 2px rgba(34,197,94,0.3); }
 .tc-sw-card img {
     width: 100%; aspect-ratio: 0.707;
-    object-fit: cover; display: block;
+    object-fit: contain; object-position: top center;
+    display: block; background: rgba(255,255,255,0.06);
+}
+@media (max-width: 640px) {
+    .tc-sw-modal { padding: 1rem 0.65rem; width: min(820px, 100vw); }
+    .tc-sw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
 }
 .tc-sw-card-name {
     padding: 0.4rem 0.5rem;

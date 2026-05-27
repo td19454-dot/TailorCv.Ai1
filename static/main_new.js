@@ -305,6 +305,15 @@ function selectTemplate(id, element) {
     // Add 'selected' class to the clicked one
     element.classList.add('selected');
     console.log('Template Selected:', selectedTemplate.name);
+
+    // Match templates page behavior: bring the confirm CTA into view
+    // right after a template is selected.
+    const confirmBtn = document.getElementById('confirm-optimize-btn');
+    if (confirmBtn) {
+        requestAnimationFrame(() => {
+            confirmBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    }
 }
 
 // Close results or template selection
