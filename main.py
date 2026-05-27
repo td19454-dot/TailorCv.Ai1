@@ -45,7 +45,7 @@ from functions import (
 )
 
 from extraction import process_resume
-from models import PasswordResetToken, SignupVerificationCode, User
+from models import PasswordResetToken, SignupVerificationCode, User, WelcomeEmailLog
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
 from blog_system import BlogService, codehilite_css, xml_escape
@@ -215,6 +215,48 @@ def send_signup_code_email(recipient_email: str, signup_code: str) -> bool:
         server.send_message(message)
 
     return True
+
+
+def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
+    smtp_host, smtp_port, smtp_username, smtp_password, smtp_from = get_email_settings()
+
+    if not (smtp_host and smtp_username and smtp_password and smtp_from):
+        return False
+
+    message = EmailMessage()
+    message["Subject"] = "Welcome to TailorCV.ai"
+    message["From"] = smtp_from
+    message["To"] = recipient_email
+    message.set_content(
+        f"Hi {recipient_name or 'there'},\n\n"
+        "Welcome to TailorCV.ai.\n\n"
+        "You can now:\n"
+        "- Get your ATS score\n"
+        "- Optimize your resume for a specific role\n"
+        "- Use AI mock interview practice\n\n"
+        "Thanks for joining us,\n"
+        "TailorCV.ai Team"
+    )
+
+    with smtplib.SMTP(smtp_host, smtp_port) as server:
+        server.starttls()
+        server.login(smtp_username, smtp_password)
+        server.send_message(message)
+
+    return True
+
+
+def send_welcome_email_once(db: Session, user: User, source: str) -> None:
+    existing_log = db.query(WelcomeEmailLog).filter(WelcomeEmailLog.user_id == user.id).first()
+    if existing_log:
+        return
+
+    sent = send_welcome_email(user.email, user.name)
+    if not sent:
+        return
+
+    db.add(WelcomeEmailLog(user_id=user.id, source=source))
+    db.commit()
 
 
 def is_production_environment() -> bool:
@@ -2661,6 +2703,11 @@ async def signup_user(request: Request):
         db.commit()
         db.refresh(user)
 
+        try:
+            send_welcome_email_once(db, user, source="signup")
+        except Exception:
+            logger.exception("Failed to send signup welcome email")
+
         request.session['user_id'] = user.id
         request.session['email'] = user.email
 
@@ -2687,6 +2734,11 @@ async def login_user(request: Request):
         user = db.query(User).filter(User.email == payload.email.lower()).first()
         if not user or not verify_password(payload.password, user.hashed_password):
             raise HTTPException(status_code=401, detail="Invalid email or password")
+
+        try:
+            send_welcome_email_once(db, user, source="login")
+        except Exception:
+            logger.exception("Failed to send first-login welcome email")
 
         request.session['user_id'] = user.id
         request.session['email'] = user.email
@@ -2774,6 +2826,11 @@ async def login_with_google(request: Request):
             db.add(user)
             db.commit()
             db.refresh(user)
+
+        try:
+            send_welcome_email_once(db, user, source="google_login")
+        except Exception:
+            logger.exception("Failed to send Google-login welcome email")
 
         request.session["user_id"] = user.id
         request.session["email"] = user.email
