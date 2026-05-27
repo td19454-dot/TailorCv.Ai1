@@ -1330,7 +1330,8 @@ header.navbar + * {
 }
 .template-image-container {
     width: 100%;
-    height: 520px; /* 🔥 increased image height */
+    aspect-ratio: 8.5 / 11;
+    height: auto;
     overflow: hidden;
     border-radius: 12px;
 }
@@ -1338,7 +1339,8 @@ header.navbar + * {
 .template-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* keeps it clean */
+    object-fit: contain;
+    object-position: top center;
 }
 
 .btn{
@@ -2289,7 +2291,8 @@ header.navbar + * {
 .template-image-container {
     position: relative;
     width: 100%;
-    height: 520px;
+    aspect-ratio: 8.5 / 11;
+    height: auto;
     background: rgba(255, 255, 255, 0.08);
     overflow: hidden;
     border-radius: 12px;
@@ -2298,8 +2301,8 @@ header.navbar + * {
 .template-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top;
+    object-fit: contain;
+    object-position: top center;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
@@ -2344,19 +2347,50 @@ header.navbar + * {
     .templates-grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
-
-    .template-image-container {
-        height: 620px;
-    }
 }
 
 @media (max-width: 768px) {
+    #template-selection-section .template-card {
+        width: 100%;
+    }
+
+    #template-selection-section .template-image-container {
+        aspect-ratio: 8.5 / 11 !important;
+        height: auto !important;
+    }
+
+    #template-selection-section .template-img {
+        object-fit: contain !important;
+        object-position: top center !important;
+        transform: none !important;
+    }
+
+    #template-selection-section.results-card {
+        padding: 1rem 0.5rem;
+    }
+
+    #template-selection-section .results-content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .templates-grid {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 0;
     }
 
     .template-image-container {
-        height: 520px;
+        aspect-ratio: 8.5 / 11;
+        height: auto;
+    }
+
+    .template-info {
+        padding: 0.65rem 0.5rem;
+    }
+
+    #template-selection-section .template-card:hover .template-img {
+        transform: none;
     }
 }
 
@@ -2365,8 +2399,8 @@ header.navbar + * {
         grid-template-columns: 1fr;
     }
 
-    .template-image-container {
-        height: 420px;
+    #template-selection-section.results-card {
+        padding: 0.75rem 0.35rem;
     }
 }
 
@@ -2652,6 +2686,78 @@ header.navbar + * {
     background: linear-gradient(90deg, #7dd3fc, #60a5fa, #c084fc);
     box-shadow: 0 0 18px rgba(125, 211, 252, 0.35);
     transition: width 0.3s ease;
+}
+
+/* Mobile: collapse optimization progress into vertical stepper */
+@media (max-width: 640px) {
+    .optimize-progress-container {
+        padding: 1.5rem 1.25rem;
+        border-radius: 18px;
+    }
+
+    .optimize-loading-title {
+        font-size: 1.4rem;
+    }
+
+    .optimize-status-text {
+        font-size: 1.05rem;
+        margin-bottom: 1rem;
+    }
+
+    .optimize-steps {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+        margin-bottom: 1.75rem;
+        padding-left: 1.75rem;
+        position: relative;
+    }
+
+    .optimize-steps::before {
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(180deg, rgba(148, 163, 184, 0.4), rgba(59, 130, 246, 0.8));
+        opacity: 0.9;
+    }
+
+    .optimize-step {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0.75rem;
+        width: 100%;
+    }
+
+    .optimize-step:not(:last-child)::after {
+        display: none;
+    }
+
+    .optimize-step-icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .optimize-step-label {
+        font-size: 0.8rem;
+        text-align: left;
+    }
+
+    .progress-meta {
+        width: 100%;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .progress-shell {
+        width: 100%;
+        height: 12px;
+    }
 }
 
 /* Hide comparison widgets (Original/Optimized ATS and score change) */
