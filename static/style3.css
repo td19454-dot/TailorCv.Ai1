@@ -146,10 +146,10 @@
 
 .nav-links > a,
 .nav-links > .nav-dropdown > .nav-dropdown-toggle {
-    font-size: 15px;
-    letter-spacing: 0.4px;
+    font-size: 14px;
+    letter-spacing: 0.35px;
     color: rgba(255, 255, 255, 0.9);
-    font-weight: 700;
+    font-weight: 650;
     text-transform: uppercase;
     text-decoration: none;
     padding: 12px 16px;
@@ -158,6 +158,10 @@
     border-radius: 14px;
     line-height: 1;
     border-bottom: none !important;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Keep all primary nav items visually equal */
@@ -168,7 +172,7 @@
 }
 
 .nav-links > .nav-dropdown > .nav-dropdown-toggle {
-    min-height: 43px;
+    min-height: 42px;
 }
 
 .nav-links > a::after,
@@ -940,19 +944,21 @@ header, main, section, footer, .hero, .features,
     font-size: 20px;
 }
 
-.nav-links a {
-    font-size: 11px;
-    letter-spacing: 0px;
+.nav-links a,
+.nav-links .nav-dropdown-toggle {
+    font-size: 14px;
+    letter-spacing: 0.35px;
     color: rgb(246, 247, 248);
-    font-weight: 500;
+    font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 18px 12px;
-    border-bottom: 4px solid #033067;
+    padding: 12px 16px;
+    border-bottom: none;
 }
 
-.nav-links a:hover {
-    border-bottom: 4px solid #160011;
+.nav-links a:hover,
+.nav-links .nav-dropdown-toggle:hover {
+    border-bottom: none;
 }
 
 header {
@@ -1371,9 +1377,9 @@ header {
 }
 
 .nav-caret {
-    font-size: 10px;
+    font-size: 9px;
     line-height: 1;
-    opacity: 0.9;
+    opacity: 0.85;
     transform: translateY(0);
     transition: transform 0.2s ease;
 }
