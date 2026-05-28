@@ -16,6 +16,7 @@ class User(Base):
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
     job_applications = relationship("JobApplication", back_populates="user", cascade="all, delete-orphan")
+    welcome_emails = relationship("WelcomeEmailLog", back_populates="user", cascade="all, delete-orphan")
 
 
 class PasswordResetToken(Base):
@@ -70,3 +71,14 @@ class JobApplication(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
     user = relationship("User", back_populates="job_applications")
+
+
+class WelcomeEmailLog(Base):
+    __tablename__ = "welcome_email_logs"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True, unique=True)
+    sent_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    source = Column(String(30), nullable=False, default="login")
+
+    user = relationship("User", back_populates="welcome_emails")

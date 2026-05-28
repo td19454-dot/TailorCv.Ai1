@@ -345,7 +345,12 @@ header, main, section, footer, .hero, .features,
         </button>
         <nav class="nav-links" id="primary-nav-index">
             <a href="/" class="nav-link active">Home</a>
-            <div class="nav-dropdown">
+            <a href="/solutions" class="nav-link mobile-feature-link">Get ATS Score</a>
+            <a href="/modify-cv" class="nav-link mobile-feature-link">Make CV</a>
+            <a href="/solutions" class="nav-link mobile-feature-link">Optimize CV with AI</a>
+            <a href="/interview-prep" class="nav-link mobile-feature-link">Interview Prep</a>
+            <a href="/mock-interview" class="nav-link mobile-feature-link">Mock Interview</a>
+            <div class="nav-dropdown features-dropdown">
                 <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false">
                     <span>Features</span>
                     <span class="nav-caret" aria-hidden="true">&#9662;</span>
@@ -412,6 +417,21 @@ header, main, section, footer, .hero, .features,
     </div>
 
     <style>
+        #primary-nav-index .mobile-feature-link {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            #primary-nav-index .mobile-feature-link {
+                display: block;
+                text-align: center;
+            }
+
+            #primary-nav-index .features-dropdown {
+                display: none;
+            }
+        }
+
         .trust-banner {
             width: 100%;
             animation: tbGradient 6s ease infinite;
@@ -1386,7 +1406,7 @@ header, main, section, footer, .hero, .features,
             <span id="salesPopName">Someone</span> from
             <span id="salesPopCountry">USA</span>
             <span id="salesPopAction">just logged in and is optimizing their resume right now</span> on
-            <strong id="salesPopPlan">TailorCV.com</strong>
+            <strong id="salesPopPlan">TailorCV</strong>
         </p>
         <button type="button" class="sales-pop-close" id="salesPopClose" aria-label="Close notification">&times;</button>
     </div>
@@ -1744,13 +1764,13 @@ header, main, section, footer, .hero, .features,
   const closeBtn = document.getElementById("salesPopClose");
 
   const entries = [
-    ["Someone", "USA", "just logged in and is optimizing their resume right now", "TailorCV.com"],
-    ["Someone", "Canada", "is practicing a mock interview right now", "TailorCV.com"],
-    ["Someone", "India", "is checking their ATS score now", "TailorCV.com"],
-    ["Someone", "United Kingdom", "is making their CV right now", "TailorCV.com"],
-    ["Today", "USA", "almost 100 users are active here", "TailorCV.com"],
-    ["Today", "Canada", "over 60 users are optimizing resumes now", "TailorCV.com"],
-    ["Today", "India", "more than 140 users checked ATS scores", "TailorCV.com"]
+    ["Someone", "USA", "just logged in and is optimizing their resume right now", "TailorCV"],
+    ["Someone", "Canada", "is practicing a mock interview right now", "TailorCV"],
+    ["Someone", "India", "is checking their ATS score now", "TailorCV"],
+    ["Someone", "United Kingdom", "is making their CV right now", "TailorCV"],
+    ["Today", "USA", "almost 100 users are active here", "TailorCV"],
+    ["Today", "Canada", "over 60 users are optimizing resumes now", "TailorCV"],
+    ["Today", "India", "more than 140 users checked ATS scores", "TailorCV"]
   ];
 
   let idx = 0;
