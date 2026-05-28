@@ -229,13 +229,16 @@ def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
     message["To"] = recipient_email
     message.set_content(
         f"Hi {recipient_name or 'there'},\n\n"
-        "Welcome to TailorCV.ai.\n\n"
-        "You can now:\n"
-        "- Get your ATS score\n"
-        "- Optimize your resume for a specific role\n"
-        "- Use AI mock interview practice\n\n"
-        "Thanks for joining us,\n"
-        "TailorCV.ai Team"
+        "I am the Co-Founder of TailorCV, and I would love your feedback on our platform.\n\n"
+        "Here are the tools you can explore:\n"
+        "- https://thetailorcv.com/solutions: Optimizing resume for job description, Checking ATS score\n"
+        "- https://thetailorcv.com/templates : ATS friendly resume templates\n"
+        "- https://thetailorcv.com/modify-cv: Build resume from scratch\n"
+        "- https://thetailorcv.com/interview-prep: Generate interview questions\n"
+        "- https://thetailorcv.com/mock-interview: Mock interview practice\n\n"
+        "Please reply to this email and share your feedback. It will really help us improve TailorCV.\n\n"
+        "Thanks,\n"
+        "Co-Founder, TailorCV"
     )
 
     with smtplib.SMTP(smtp_host, smtp_port) as server:
