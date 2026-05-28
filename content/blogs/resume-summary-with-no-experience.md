@@ -16,6 +16,8 @@ This is the section that decides whether the recruiter reads further.
 In this post you will learn exactly how to write a resume summary with no experience.
 You will also get 10 resume summary examples for freshers and a proven formula to write your own.
 
+For the rest of your resume, use the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience), browse [beginner resume templates](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience), and check your resume with the [ATS score checker](https://www.thetailorcv.com/solutions).
+
 ![How to Write a Resume Summary With No Experience](public/blog-images/How%20to%20Write%20a%20Resume%20Summary%20With%20No%20Experience%20(10%20Real%20Examples%20for%202026).png)
 
 ---

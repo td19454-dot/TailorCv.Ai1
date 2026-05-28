@@ -13,6 +13,8 @@ keywords: first time resume with no experience, resume for freshers with no expe
 
 Writing your **first time resume with no experience** can feel overwhelming, especially when most job descriptions ask for experience. The good news is that employers hiring freshers and students understand that everyone starts somewhere.
 
+You can make the process easier with [resume templates for beginners](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience), examples for a [resume summary with no experience](https://thetailorcv.com/blog/resume-summary-with-no-experience), and the [ATS score checker](https://www.thetailorcv.com/solutions).
+
 Whether you are:
 - A college student
 - A recent graduate

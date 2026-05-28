@@ -446,6 +446,34 @@ h1.post-hero-title {
 .post-content ul,
 .post-content ol { padding-left: 22px; }
 
+.post-content table {
+  width: 100%;
+  margin: 22px 0 28px;
+  border-collapse: collapse;
+  table-layout: auto;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.post-content th,
+.post-content td {
+  padding: 12px 14px;
+  border: 1px solid #cfd2c8;
+  text-align: left;
+  vertical-align: top;
+}
+
+.post-content th {
+  background: #e4e5dd;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.post-content tr:nth-child(even) td {
+  background: #f5f4ef;
+}
+
 .post-content blockquote {
   margin: 18px 0;
   padding: 12px 16px;
@@ -561,6 +589,11 @@ header.navbar {
   .post-content {
     padding: 24px 16px;
     min-height: auto;
+    overflow-x: auto;
+  }
+  .post-content table {
+    min-width: 680px;
+    font-size: 0.98rem;
   }
   .post-hero { min-height: clamp(320px, 48vh, 520px); }
 }

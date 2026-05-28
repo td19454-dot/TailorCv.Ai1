@@ -13,6 +13,8 @@ keywords: tailor resume to job description, ATS resume optimization, ATS friendl
 
 ## Why You Must Tailor Your Resume for Every Job Application
 
+If you are new to ATS, first read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), then learn [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) and test your resume with the [ATS score checker](https://www.thetailorcv.com/solutions).
+
 Most job seekers believe their resume is “good enough.”
 
 It looks professional.  

@@ -12,6 +12,8 @@ keywords: resume mistakes to avoid, Common resume mistakes , Common resume mista
 
 ## Introduction
 
+You can fix many of these faster by reviewing the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), using the [resume optimization tool](https://www.thetailorcv.com/solutions), and starting from [resume templates for beginners](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience).
+
 Landing your first job is exciting, but it can also feel frustrating when you keep applying and hear nothing back.
 
 Most freshers assume the problem is lack of experience. In reality, the issue is often the resume itself.

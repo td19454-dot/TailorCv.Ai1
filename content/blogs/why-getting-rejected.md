@@ -27,6 +27,8 @@ And honestly? It’s exhausting.
 
 You spend hours tailoring applications, improving projects, learning new skills, updating LinkedIn, and still feel invisible in the hiring process.
 
+If this sounds familiar, start by checking your [ATS score](https://www.thetailorcv.com/solutions), reviewing the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide), and practicing with the [mock interview tool](https://thetailorcv.com/mock-interview) once callbacks begin.
+
 The frustrating part is this:
 
 You *are* qualified.
