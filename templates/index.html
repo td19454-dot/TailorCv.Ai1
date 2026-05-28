@@ -20,11 +20,8 @@
     <link rel="stylesheet" href="/static/header-footer.css">
     {% include "_seo_head.html" %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&family=Gelasio:ital,wght@0,400..700;1,400..700&family=Karla:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Varela+Round&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         *,
@@ -327,6 +324,7 @@ header, main, section, footer, .hero, .features,
 <body>
 <div class="bg-orb orb-blue"></div>
 <div class="bg-orb orb-violet"></div>
+<div id="bg-stars" aria-hidden="true"></div>
     <div class="wave-bg" aria-hidden="true">
     <canvas id="wave-canvas"></canvas>
 </div>
@@ -347,15 +345,55 @@ header, main, section, footer, .hero, .features,
         </button>
         <nav class="nav-links" id="primary-nav-index">
             <a href="/" class="nav-link active">Home</a>
-            <a href="/solutions" class="nav-link">Get ATS Score</a>
-            <a href="/modify-cv" class="nav-link">Make CV</a>
-            <a href="/solutions" class="nav-link">Optimize CV with AI</a>
-            <a href="/blog" class="nav-link">Blog</a>
-            <a href="/pricing" class="nav-link">Pricing</a>
+            <div class="nav-dropdown">
+                <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false">
+                    <span>Features</span>
+                    <span class="nav-caret" aria-hidden="true">&#9662;</span>
+                </button>
+                <div class="nav-dropdown-menu" aria-label="Features submenu">
+                    <a href="/mock-interview" class="nav-mega-item">
+                        <span class="nav-mega-icon" aria-hidden="true">&#127909;</span>
+                        <span class="nav-mega-copy">
+                            <span class="nav-mega-title">Mock Interview</span>
+                            <span class="nav-mega-desc">Practice realistic interviews with instant AI feedback.</span>
+                        </span>
+                    </a>
+                    <a href="/interview-prep" class="nav-mega-item">
+                        <span class="nav-mega-icon" aria-hidden="true">&#128161;</span>
+                        <span class="nav-mega-copy">
+                            <span class="nav-mega-title">Interview Prep</span>
+                            <span class="nav-mega-desc">Role-based prep plans and focused question drills.</span>
+                        </span>
+                    </a>
+                    <a href="/ats-analysis" class="nav-mega-item">
+                        <span class="nav-mega-icon" aria-hidden="true">&#128202;</span>
+                        <span class="nav-mega-copy">
+                            <span class="nav-mega-title">ATS Score</span>
+                            <span class="nav-mega-desc">Check ATS match and fix rejection triggers faster.</span>
+                        </span>
+                    </a>
+                    <a href="/solutions" class="nav-mega-item">
+                        <span class="nav-mega-icon" aria-hidden="true">&#9998;</span>
+                        <span class="nav-mega-copy">
+                            <span class="nav-mega-title">Optimize CV with AI</span>
+                            <span class="nav-mega-desc">Tailor your resume for each role in minutes.</span>
+                        </span>
+                    </a>
+                    <a href="/solutions" class="nav-mega-cta">Explore All Features &#8594;</a>
+                </div>
+            </div>
             <a href="/templates" class="nav-link">Templates</a>
-            <a href="/interview-prep" class="nav-link">Interview Prep</a>
-            <a href="/mock-interview" class="nav-link">Mock Interview</a>
-            <a href="/solutions" class="mobile-get-started">Get Started</a>
+            <a href="/pricing" class="nav-link">Pricing</a>
+            <div class="nav-dropdown">
+                <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false">
+                    <span>Resources</span>
+                    <span class="nav-caret" aria-hidden="true">&#9662;</span>
+                </button>
+                <div class="nav-dropdown-menu nav-dropdown-menu-compact" aria-label="Resources submenu">
+                    <a href="/about" class="nav-sub-link">About Us</a>
+                    <a href="/blog" class="nav-sub-link">Blog</a>
+                </div>
+            </div>
         </nav>
 
         <div class="nav-actions">
@@ -367,8 +405,7 @@ header, main, section, footer, .hero, .features,
 
     <!-- Trust Banner -->
     <div class="trust-banner">
-           
-        </div>
+        <span class="pulse-ring" aria-hidden="true"></span>
         <div class="pulse-text">
             Trusted by <span class="trust-num">10,000+</span> job seekers worldwide
         </div>
@@ -522,17 +559,23 @@ header, main, section, footer, .hero, .features,
             <div class="hero-content hero-split">
                 <div class="hero-copy">
                     <h1 class="hero-title">
-                        Land 3x more interviews with
+                        Your resume is getting ignored
                     </h1>
-                    <span class="gradient-text">AI Resume Optimization</span>
+                    <span class="gradient-text">we fix that in 60 seconds.</span>
                     <p class="hero-subtitle">
-                        Upload resume → Paste Job description → AI optimizes resume with job description in 60 sec → Get more callbacks
+                        Paste any job description. Our AI rewrites your resume to match it perfectly — right keywords, right bullets, more callbacks.
                     </p>
                     <div class="hero-cta">
-                        <a href="/solutions" class="btn btn-primary btn-large">Fix my Resume(Free)</a>
-                        <a href="/mock-interview" class="btn btn-secondary btn-large">Mock Interview</a>
+                        <a href="/solutions" class="btn btn-primary btn-large">Optimize My Resume — Free</a>
                         <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span> Takes 2 minutes &bull; No credit card needed &bull; Free to start</p>
-                        
+                    </div>
+                    <div class="hero-quickstart" aria-label="Quick start steps">
+                        <p class="hero-quickstart-title">Start in 3 quick steps</p>
+                        <ol class="hero-quickstart-list">
+                            <li>Upload your resume</li>
+                            <li>Paste job description</li>
+                            <li>Get ATS-ready rewrite</li>
+                        </ol>
                     </div>
 
                     <div class="social-proof-hero">
@@ -541,7 +584,7 @@ header, main, section, footer, .hero, .features,
                             <img src="/static/user_imges/4.jpg" alt="User" class="avatar-hero">
                             <img src="/static/user_imges/68.jpg" alt="User" class="avatar-hero">
                             <img src="/static/user_imges/85.jpg" alt="User" class="avatar-hero">
-                            <span class="avatar-plus">+</span>
+                            <span class="avatar-live-dot" aria-hidden="true"></span>
                         </div>
                         <p class="social-proof-text-hero"><strong>1200+</strong> resumes optimized this month</p>
                     </div>
@@ -1085,77 +1128,48 @@ header, main, section, footer, .hero, .features,
     <section id="features" class="features">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Why Choose TailorCV?</h2>
-                <p class="section-subtitle">Everything you need to land your dream job</p>
+                <h2 class="section-title">From Job Search Stress to Interview Momentum</h2>
+                <p class="section-subtitle">See how TailorCV transforms the way you apply.</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3 class="feature-title">ATS Optimization</h3>
-                    <p class="feature-description">
-                        Get detailed ATS scores with keyword matching, skill analysis,
-                        and formatting recommendations to pass applicant tracking systems.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3 class="feature-title">AI-Powered Tailoring</h3>
-                    <p class="feature-description">
-                        Our advanced AI analyzes job descriptions and optimizes your resume
-                        to highlight relevant skills and experiences.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3 class="feature-title">Detailed Analysis</h3>
-                    <p class="feature-description">
-                        Receive comprehensive feedback on strengths, weaknesses, missing keywords,
-                        and actionable improvement suggestions.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Instant Results</h3>
-                    <p class="feature-description">
-                        Get your optimized resume and analysis in seconds. No waiting,
-                        no delays—just fast, accurate results.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3 class="feature-title">Secure & Private</h3>
-                    <p class="feature-description">
-                        Your resume data is processed securely and deleted immediately after
-                        optimization. Your privacy is our priority.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💼</div>
-                    <h3 class="feature-title">Professional Formatting</h3>
-                    <p class="feature-description">
-                        Receive a beautifully formatted PDF resume that's ready to submit
-                        to any employer or job board.
-                    </p>
+            <div class="career-compare">
+                <div class="career-col career-col-before">
+                    <p class="career-col-label">Before TailorCV</p>
+                    <h3 class="career-col-title">Applying more, hearing back less</h3>
+
+                    <article class="career-item">
+                        <h4 class="career-item-title">Low ATS Match</h4>
+                        <p class="career-item-text">Resumes miss role-specific keywords, so applications get filtered out early.</p>
+                    </article>
+                    <article class="career-item">
+                        <h4 class="career-item-title">Manual Rewriting</h4>
+                        <p class="career-item-text">Every new job post means re-editing bullets from scratch and losing hours.</p>
+                    </article>
+                    <article class="career-item">
+                        <h4 class="career-item-title">No Clear Direction</h4>
+                        <p class="career-item-text">It is hard to know what to change first to improve callback rate.</p>
+                    </article>
                 </div>
 
-
-
-                <div class="feature-card">
-                    <div class="feature-icon">🧠</div>
-                    <h3 class="feature-title">Smart Skill Suggestions</h3>
-                    <p class="feature-description">
-                        Discover in-demand skills tailored to your target role. Get AI-driven
-                        recommendations to enhance your profile and stay competitive.
-                    </p>
+                <div class="career-shift-arrow" aria-hidden="true">
+                    <span class="career-shift-dot">&#8594;</span>
                 </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3 class="feature-title">Job Market Insights</h3>
-                    <p class="feature-description">
-                        Access real-time insights on industry trends, salary benchmarks,
-                        and hiring patterns to make informed career decisions.
-                    </p>
+                <div class="career-col career-col-after">
+                    <p class="career-col-label">After TailorCV</p>
+                    <h3 class="career-col-title">Targeted applications that convert</h3>
+
+                    <article class="career-item">
+                        <h4 class="career-item-title">High ATS Alignment</h4>
+                        <p class="career-item-text">Get role-matched wording and keywords so your resume passes screening faster.</p>
+                    </article>
+                    <article class="career-item">
+                        <h4 class="career-item-title">2-Minute Optimization</h4>
+                        <p class="career-item-text">Paste JD, optimize instantly, and apply with confidence in minutes.</p>
+                    </article>
+                    <article class="career-item">
+                        <h4 class="career-item-title">Actionable Guidance</h4>
+                        <p class="career-item-text">See what changed, why it matters, and what boosts your interview chances.</p>
+                    </article>
                 </div>
             </div>
         </div>
@@ -1165,38 +1179,85 @@ header, main, section, footer, .hero, .features,
     <section class="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-subtitle">Three simple steps to your optimized resume</p>
+                <h2 class="section-title">Powerful AI Features, Built for Job Seekers</h2>
+                <p class="section-subtitle">From ATS scoring to interview prep, everything works together in one flow.</p>
             </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Upload Your Resume</h3>
-                    <p class="step-description">
-                        Upload your current resume in PDF format. Our system will extract
-                        and analyze all your skills and experiences.
-                    </p>
+
+            <div class="feature-showcase-list">
+                <article class="feature-showcase-item">
+                    <div class="feature-showcase-copy">
+                        <p class="feature-showcase-kicker">ATS Score Analyzer</p>
+                        <h3 class="feature-showcase-title">Know exactly why your resume gets rejected</h3>
+                        <p class="feature-showcase-text">
+                            Upload your resume and get an instant ATS breakdown with keyword match, formatting issues, and actionable fixes to boost shortlist chances.
+                        </p>
+                        <a href="/solutions#ats-start" class="feature-showcase-btn">Check ATS Score</a>
+                    </div>
+                    <div class="feature-showcase-visual tone-blue" aria-hidden="true">
+                        <div class="mock-card">
+                            <p class="mock-title">ATS Report</p>
+                            <div class="mock-row"><span>Keyword Match</span><strong>84%</strong></div>
+                            <div class="mock-bar"><i style="width:84%"></i></div>
+                            <div class="mock-row"><span>Format Compliance</span><strong>92%</strong></div>
+                            <div class="mock-bar"><i style="width:92%"></i></div>
+                            <div class="mock-row"><span>Role Relevance</span><strong>79%</strong></div>
+                            <div class="mock-bar"><i style="width:79%"></i></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="feature-showcase-item reverse">
+                    <div class="feature-showcase-copy">
+                        <p class="feature-showcase-kicker">Optimize CV with AI</p>
+                        <h3 class="feature-showcase-title">Tailor every resume to the job in minutes</h3>
+                        <p class="feature-showcase-text">
+                            Paste any job description and TailorCV rewrites bullets, upgrades wording, and aligns skills so your resume matches what recruiters are searching for.
+                        </p>
+                        <a href="/solutions" class="feature-showcase-btn">Optimize My Resume</a>
+                    </div>
+                    <div class="feature-showcase-visual tone-violet" aria-hidden="true">
+                        <div class="mock-card">
+                            <p class="mock-title">Generate Optimized CV</p>
+                            <div class="mock-form-box">
+                                <p class="mock-form-label">Upload CV (PDF)</p>
+                                <div class="mock-upload-field">Choose resume file</div>
+                            </div>
+                            <div class="mock-form-box">
+                                <p class="mock-form-label">Upload / Paste Job Description</p>
+                                <div class="mock-upload-field">Paste JD or upload text</div>
+                            </div>
+                            <button type="button" class="mock-generate-btn">Generate CV</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="feature-showcase-item">
+                    <div class="feature-showcase-copy">
+                        <p class="feature-showcase-kicker">AI Mock Interview</p>
+                        <h3 class="feature-showcase-title">Practice real interview questions with feedback</h3>
+                        <p class="feature-showcase-text">
+                            Run role-specific mock interviews, improve your answers with AI coaching, and build confidence before the real interview.
+                        </p>
+                        <a href="/mock-interview" class="feature-showcase-btn">Start Mock Interview</a>
+                    </div>
+                    <div class="feature-showcase-visual tone-green" aria-hidden="true">
+                        <div class="mock-card">
+                            <p class="mock-title">AI Mock Interview</p>
+                            <div class="mock-form-box">
+                                <p class="mock-form-label">Target Role</p>
+                                <div class="mock-upload-field">Frontend Developer</div>
+                            </div>
+                            <div class="mock-form-box">
+                                <p class="mock-form-label">Interview Type</p>
+                                <div class="mock-upload-field">Behavioral + Technical</div>
+                            </div>
+                            <button type="button" class="mock-generate-btn">Start Mock Interview</button>
+                        </div>
+                    </div>
+                </article>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Paste Job Description</h3>
-                    <p class="step-description">
-                        Copy and paste the job description you're applying for. Our AI
-                        will identify key requirements and keywords.
-                    </p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Get Results</h3>
-                    <p class="step-description">
-                        Receive your ATS score analysis and download your optimized resume
-                        tailored specifically for that role.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
-
 
     <!-- Testimonials Section -->
     <section class="testimonials-section">
@@ -1223,33 +1284,137 @@ header, main, section, footer, .hero, .features,
     </section>
 
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Results Section -->
+    <section class="results-section">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Ready to Optimize Your Resume?</h2>
-                <p class="cta-subtitle">
-                    Join thousands of job seekers who have improved their chances
-                    of landing interviews with our AI-powered resume optimizer.
-                </p>
-                <a href="/solutions" class="btn btn-primary btn-large">Get Started Now</a>
+            <div class="section-header">
+                <h2 class="section-title">Real Outcomes for Job Seekers</h2>
+                <p class="section-subtitle">More interviews, faster responses, and stronger applications.</p>
+            </div>
+
+            <div class="results-grid">
+                <article class="result-card">
+                    <p class="result-metric">10K+</p>
+                    <p class="result-label">Resumes Optimized</p>
+                </article>
+                <article class="result-card">
+                    <p class="result-metric">60%</p>
+                    <p class="result-label">Faster Interview Calls</p>
+                </article>
+                <article class="result-card">
+                    <p class="result-metric">2x</p>
+                    <p class="result-label">Higher Shortlist Rate</p>
+                </article>
+            </div>
+
+            <div class="results-cta-wrap">
+                <a href="/login?next=/solutions" class="results-login-btn">Login to Start Free</a>
             </div>
         </div>
     </section>
 
+    <!-- Pricing Preview Section -->
+    <section class="pricing-preview-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Simple Pricing, Built for Your Growth</h2>
+                <p class="section-subtitle">TailorCV is fully free right now. Paid billing starts in about 3 months.</p>
+            </div>
+
+            <div class="pricing-preview-grid">
+                <article class="pricing-preview-card basic">
+                    <p class="pricing-plan-name">Start for Free</p>
+                    <p class="pricing-plan-price">Free</p>
+                    <p class="pricing-plan-note">Everything below is available right now at no cost:</p>
+                    <ul class="pricing-feature-list">
+                        <li>Instant ATS score with keyword + formatting feedback</li>
+                        <li>AI resume optimization based on any job description</li>
+                        <li>Role-based AI mock interview practice</li>
+                        <li>Download-ready improved resume output</li>
+                    </ul>
+                    <a href="/login?next=/solutions" class="pricing-plan-btn">Start for Free</a>
+                </article>
+
+                <article class="pricing-preview-card featured">
+                    <p class="pricing-badge">Coming Soon</p>
+                    <p class="pricing-plan-name">Monthly Plan</p>
+                    <p class="pricing-plan-price">₹200<span>/month</span></p>
+                    <p class="pricing-plan-note">Planned for launch in about 3 months. It will include:</p>
+                    <ul class="pricing-feature-list">
+                        <li>All free features</li>
+                        <li>Priority processing during peak usage</li>
+                        <li>Higher monthly usage limits</li>
+                        <li>Early access to new AI upgrades</li>
+                    </ul>
+                    <a href="/login?next=/solutions" class="pricing-plan-btn">Start for Free</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="home-resources-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Insightful <span class="resources-accent">Resources</span></h2>
+                <p class="section-subtitle">Helpful reads from our blog to improve your resume and job-search strategy.</p>
+            </div>
+
+            <div class="home-resources-grid">
+                {% for post in home_posts %}
+                <article class="home-resource-card">
+                    <a href="/blog/{{ post.slug }}" class="home-resource-thumb" aria-label="Read {{ post.title }}">
+                        {% if post.image %}
+                        <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy" decoding="async" class="home-resource-image">
+                        {% endif %}
+                    </a>
+                    <h3><a href="/blog/{{ post.slug }}">{{ post.title }}</a></h3>
+                    <p>{{ post.description }}</p>
+                </article>
+                {% endfor %}
+            </div>
+
+            <div class="home-resources-cta-wrap">
+                <a href="/blog" class="home-resources-cta">Explore All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="sales-pop" id="salesPop" aria-live="polite" aria-atomic="true">
+        <div class="sales-pop-map" aria-hidden="true"></div>
+        <p class="sales-pop-text">
+            <span id="salesPopName">Someone</span> from
+            <span id="salesPopCountry">USA</span>
+            <span id="salesPopAction">just logged in and is optimizing their resume right now</span> on
+            <strong id="salesPopPlan">TailorCV.com</strong>
+        </p>
+        <button type="button" class="sales-pop-close" id="salesPopClose" aria-label="Close notification">&times;</button>
+    </div>
+
+    <a href="/solutions" class="mobile-sticky-cta" aria-label="Optimize resume for free">Optimize Resume Free</a>
 
 
 
+
+
+    <section class="prefooter-cta-section">
+        <div class="container">
+            <div class="prefooter-cta-shell">
+                <p class="prefooter-kicker">Career Acceleration Starts Here</p>
+                <h2 class="prefooter-title">Take Control of Your Next Career Move</h2>
+                <p class="prefooter-copy">
+                    Join job seekers using TailorCV to improve ATS scores, tailor resumes, and practice interviews with AI-powered feedback.
+                </p>
+                <div class="prefooter-actions">
+                    <a href="/signup" class="prefooter-primary-btn">Start Free Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
         <footer class="footer">
         <div class="container">
-            <div class="footer-topbar">
-                <span class="footer-top-item">&bull; AI systems online</span>
-                <span class="footer-top-pill">50,000+ optimized</span>
-                <span class="footer-top-pill">92% ATS improvement</span>
-            </div>
-
             <div class="footer-content">
                 <div class="footer-section footer-brand">
                     <h4 class="footer-title">TailorCV</h4>
@@ -1296,9 +1461,9 @@ header, main, section, footer, .hero, .features,
         </div>
     </footer>
 
-    <script src="/static/auth_nav.js"></script>
-    <script src="/static/mobile_nav.js"></script>
-    <script src="/static/main.js"></script>
+    <script src="/static/auth_nav.js" defer></script>
+    <script src="/static/mobile_nav.js" defer></script>
+    <script src="/static/main.js" defer></script>
 
     <script>
         (function () {
@@ -1567,10 +1732,55 @@ header, main, section, footer, .hero, .features,
   draw();
 })();
 </script>
+<script>
+(() => {
+  const pop = document.getElementById("salesPop");
+  if (!pop) return;
+
+  const nameEl = document.getElementById("salesPopName");
+  const countryEl = document.getElementById("salesPopCountry");
+  const actionEl = document.getElementById("salesPopAction");
+  const planEl = document.getElementById("salesPopPlan");
+  const closeBtn = document.getElementById("salesPopClose");
+
+  const entries = [
+    ["Someone", "USA", "just logged in and is optimizing their resume right now", "TailorCV.com"],
+    ["Someone", "Canada", "is practicing a mock interview right now", "TailorCV.com"],
+    ["Someone", "India", "is checking their ATS score now", "TailorCV.com"],
+    ["Someone", "United Kingdom", "is making their CV right now", "TailorCV.com"],
+    ["Today", "USA", "almost 100 users are active here", "TailorCV.com"],
+    ["Today", "Canada", "over 60 users are optimizing resumes now", "TailorCV.com"],
+    ["Today", "India", "more than 140 users checked ATS scores", "TailorCV.com"]
+  ];
+
+  let idx = 0;
+  let timer = null;
+
+  function showEntry(i) {
+    const [name, country, action, brand] = entries[i % entries.length];
+    nameEl.textContent = name;
+    countryEl.textContent = country;
+    actionEl.textContent = action;
+    planEl.textContent = brand;
+    pop.classList.remove("visible");
+    requestAnimationFrame(() => pop.classList.add("visible"));
+  }
+
+  function startLoop() {
+    showEntry(idx++);
+    timer = setInterval(() => showEntry(idx++), 7000);
+  }
+
+  closeBtn.addEventListener("click", () => {
+    pop.classList.remove("visible");
+    if (timer) clearInterval(timer);
+  });
+
+  setTimeout(startLoop, 6000);
+})();
+</script>
 
 
 </body>
 
 </html>
-
-
