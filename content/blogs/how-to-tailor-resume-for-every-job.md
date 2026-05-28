@@ -12,6 +12,8 @@ keywords: how to tailor resume for job, tailor resume to job description, custom
 
 Most people send the same resume to every job and wonder why they get no callbacks.
 
+For stronger results, use this guide together with the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), the [resume optimization tool](https://www.thetailorcv.com/solutions), and [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
 They assume the hiring manager will make an exception.
 
 They do not.

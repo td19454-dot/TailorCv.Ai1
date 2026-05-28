@@ -11,6 +11,8 @@ keywords: how to add projects in resume for freshers, projects in resume for fre
 ---
 ## How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters
 
+If you are building a full fresher resume, also read the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience), choose [ATS-friendly beginner templates](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience), and check your match with the [ATS score checker](https://www.thetailorcv.com/solutions).
+
 
 
 If you’re a fresher applying for your first job, you may feel stuck because you don’t have professional experience yet. The good news? Recruiters don’t expect years of work experience from fresh graduates. What they *do* expect is proof that you have skills, initiative, and problem-solving ability. That’s where projects come in.
@@ -18,37 +20,6 @@ If you’re a fresher applying for your first job, you may feel stuck because yo
 Understanding **how to add projects in resume for freshers** can make a huge difference in your job search. Academic projects, personal projects, internships, freelance assignments, or even hackathon participation can showcase your capabilities and help recruiters trust your potential.
 
 In this detailed guide, you’ll learn exactly how to present projects in your resume, where to place them, what details to include, mistakes to avoid, and examples you can follow.
-
----
-
-## Table of Contents
-
-| Heading Level | Topic |
-|---|---|
-| H2 | How to Add Projects in Resume for Freshers |
-| H2 | Why Projects Matter in a Fresher Resume |
-| H2 | Types of Projects You Can Include |
-| H3 | Academic Projects |
-| H3 | Personal Projects |
-| H3 | Internship Projects |
-| H3 | Freelance or Volunteer Projects |
-| H2 | Best Place to Add Projects in Resume |
-| H2 | How to Write a Project Section Properly |
-| H3 | Project Title |
-| H3 | Technologies Used |
-| H3 | Your Role |
-| H3 | Achievements and Results |
-| H2 | Resume Format for Freshers with Projects |
-| H2 | Project Description Examples |
-| H2 | Common Mistakes Freshers Make |
-| H2 | Tips to Make Your Projects Stand Out |
-| H2 | ATS Optimization for Project Sections |
-| H2 | Best Resume Templates for Freshers |
-| H2 | How Recruiters Evaluate Fresher Projects |
-| H2 | FAQs |
-| H2 | Conclusion |
-
----
 
 ## Why Projects Matter in a Fresher Resume
 
