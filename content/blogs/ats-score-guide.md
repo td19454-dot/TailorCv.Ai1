@@ -12,6 +12,8 @@ keywords: ats score, resume optimization, resume keywords
 
 The hiring process has changed dramatically over the last few years. In 2026, most companies use Applicant Tracking Systems (ATS) to filter resumes before a recruiter ever sees them. That means your resume needs to impress not just humans, but software too.
 
+If you want to go deeper after this guide, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide), compare your resume with the [ATS score checker](https://www.thetailorcv.com/solutions), and use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) before applying.
+
 If your resume fails ATS screening, you may never get an interview — even if you’re qualified.
 
 That’s why understanding ATS scores is now essential for job seekers.

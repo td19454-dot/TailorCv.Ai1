@@ -11,6 +11,8 @@ keywords: computer science oversaturated, is computer science worth it in 2026, 
 ---
 ## The CS Degree Bubble Is Real — But Not for the Reason You Think
 
+If you are still trying to stand out in tech hiring, build stronger proof with [resume projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), sharpen your [technical skills section](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide), and check your resume with the [ATS resume tool](https://www.thetailorcv.com/solutions).
+
 A few years ago, computer science seemed like the safest career decision anyone could make.
 
 The formula appeared simple:
