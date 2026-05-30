@@ -469,60 +469,14 @@
         </button>
         <nav class="nav-links" id="primary-nav-index">
             <a href="/" class="nav-link active">Home</a>
-            <a href="/solutions" class="nav-link mobile-feature-link" id="nav_get_ats_score">Get ATS Score</a>
-            <a href="/modify-cv" class="nav-link mobile-feature-link">Make CV</a>
-            <a href="/solutions" class="nav-link mobile-feature-link " id="nav_optimize_cv_with_ai">Optimize CV with AI</a>
-            <a href="/interview-prep" class="nav-link mobile-feature-link">Interview Prep</a>
-            <a href="/mock-interview" class="nav-link mobile-feature-link">Mock Interview</a>
-            <div class="nav-dropdown features-dropdown">
-                <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false">
-                    <span>Features</span>
-                    <span class="nav-caret" aria-hidden="true">&#9662;</span>
-                </button>
-                <div class="nav-dropdown-menu" aria-label="Features submenu">
-                    <a href="/mock-interview" class="nav-mega-item">
-                        <span class="nav-mega-icon" aria-hidden="true">&#127909;</span>
-                        <span class="nav-mega-copy">
-                            <span class="nav-mega-title">Mock Interview</span>
-                            <span class="nav-mega-desc">Practice realistic interviews with instant AI feedback.</span>
-                        </span>
-                    </a>
-                    <a href="/interview-prep" class="nav-mega-item">
-                        <span class="nav-mega-icon" aria-hidden="true">&#128161;</span>
-                        <span class="nav-mega-copy">
-                            <span class="nav-mega-title">Interview Prep</span>
-                            <span class="nav-mega-desc">Role-based prep plans and focused question drills.</span>
-                        </span>
-                    </a>
-                    <a href="/ats-analysis" class="nav-mega-item">
-                        <span class="nav-mega-icon" aria-hidden="true">&#128202;</span>
-                        <span class="nav-mega-copy">
-                            <span class="nav-mega-title">ATS Score</span>
-                            <span class="nav-mega-desc">Check ATS match and fix rejection triggers faster.</span>
-                        </span>
-                    </a>
-                    <a href="/solutions" class="nav-mega-item" id="nav_dropdown_optimize_cv">
-                        <span class="nav-mega-icon" aria-hidden="true">&#9998;</span>
-                        <span class="nav-mega-copy">
-                            <span class="nav-mega-title ">Optimize CV with AI</span>
-                            <span class="nav-mega-desc">Tailor your resume for each role in minutes.</span>
-                        </span>
-                    </a>
-                    <a href="/solutions" class="nav-mega-cta" id="nav_dropdown_explore_all_features">Explore All Features &#8594;</a>
-                </div>
-            </div>
+            <a href="/solutions" class="nav-link" id="nav_optimize_cv_with_ai">ATS Score</a>
+            <a href="/modify-cv" class="nav-link ">Make CV</a>
+            <a href="/solutions" class="nav-link" id="nav_optimize_cv_with_ai">Optimize CV with ai</a>
+            <a href="/interview-prep" class="nav-link ">Interview Prep</a>
+            <a href="/mock-interview" class="nav-link ">Mock Interview</a>
             <a href="/templates" class="nav-link">Templates</a>
             <a href="/pricing" class="nav-link">Pricing</a>
-            <div class="nav-dropdown">
-                <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false">
-                    <span>Resources</span>
-                    <span class="nav-caret" aria-hidden="true">&#9662;</span>
-                </button>
-                <div class="nav-dropdown-menu nav-dropdown-menu-compact" aria-label="Resources submenu">
-                    <a href="/about" class="nav-sub-link">About Us</a>
-                    <a href="/blog" class="nav-sub-link">Blog</a>
-                </div>
-            </div>
+            <a href="/blog" class="nav-link">Blog</a>
         </nav>
 
         <div class="nav-actions">
@@ -1005,12 +959,12 @@
                     <div class="resume-card" id="heroResumeCard">
                         <div class="scan-line" id="heroScanLine"></div>
 
-                        <div class="r-name">Shubham Sarkar</div>
-                        <div class="r-title">Machine Learning Engineer - Kolkata, India</div>
+                        <div class="r-name">Alex Mitchell</div>
+                        <div class="r-title">Senior Software Engineer - San Francisco, CA</div>
 
                         <div class="r-section">
                             <div class="r-heading">EXPERIENCE</div>
-                            <div class="r-exp-title">Machine Learning Engineer - Apple</div>
+                            <div class="r-exp-title">Senior Software Engineer - Google</div>
                             <div class="r-exp-co">2022 - Present</div>
                             <div class="exp-bullet">Built <span class="kw" id="heroKw1">statistical models</span> for
                                 churn prediction, improving prediction accuracy by ~18–25% and enabling retention
@@ -1024,7 +978,7 @@
 
                         <div class="r-section">
                             <div class="r-heading">EDUCATION</div>
-                            <div class="r-line">B.Tech Computer Science - IIT Kharagpur</div>
+                            <div class="r-line">University of Michigan</div>
                             <div class="r-line dim">2018 - 2022</div>
                         </div>
 
@@ -1491,6 +1445,136 @@
     </section>
 
     <!-- Pricing Preview Section -->
+    <!-- Founder Section -->
+    <section class="founder-section" style="padding: 80px 0; background: transparent;">
+        <style>
+            .founder-card {
+                background: #0f1e44;
+                border: 1px solid rgba(80,110,200,0.22);
+                border-radius: 20px;
+                padding: 36px 32px;
+                max-width: 360px;
+                text-align: center;
+                box-shadow: 0 8px 32px rgba(79,127,255,0.08);
+                transition: transform 0.2s, box-shadow 0.2s;
+                position: relative;
+                overflow: hidden;
+            }
+            .founder-card::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0; right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #4F7FFF, #C9B8FF);
+                border-radius: 20px 20px 0 0;
+            }
+            .founder-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 16px 48px rgba(79,127,255,0.15);
+            }
+            .founder-photo {
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin: 0 auto 16px;
+                display: block;
+                border: 3px solid rgba(79,127,255,0.4);
+            }
+            .founder-name {
+                color: #F0EDE6;
+                font-size: 19px;
+                font-weight: 700;
+                margin-bottom: 4px;
+            }
+            .founder-role {
+                color: #4F7FFF;
+                font-size: 13px;
+                font-weight: 500;
+                margin-bottom: 18px;
+            }
+            .founder-quote {
+                color: #8899bb;
+                font-size: 14px;
+                line-height: 1.75;
+                font-style: italic;
+                margin-bottom: 20px;
+            }
+            .founder-linkedin {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                color: white;
+                font-size: 13px;
+                font-weight: 500;
+                text-decoration: none;
+                background: #0077B5;
+                padding: 8px 18px;
+                border-radius: 20px;
+                transition: opacity 0.2s;
+            }
+            .founder-linkedin:hover { opacity: 0.85; }
+            .feedback-float-btn {
+                position: fixed;
+                bottom: 80px;
+                right: 24px;
+                background: linear-gradient(135deg, #4F7FFF, #C9B8FF);
+                color: white;
+                border: none;
+                border-radius: 50px;
+                padding: 12px 20px;
+                font-size: 13px;
+                font-weight: 600;
+                cursor: pointer;
+                z-index: 999;
+                box-shadow: 0 4px 20px rgba(79,127,255,0.4);
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                text-decoration: none;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .feedback-float-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 28px rgba(79,127,255,0.5);
+            }
+        </style>
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 48px;">
+                <h2 class="section-title">Built by Job Seekers, for Job Seekers</h2>
+                <p class="section-subtitle">We didn't build TailorCV in a boardroom. We built it after going through the exact same frustration you're feeling right now.</p>
+            </div>
+            <div style="display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;">
+                <div class="founder-card">
+                    <img src="/static/user_imges/Trisha.png" alt="Trisha Debnath" class="founder-photo">
+                    <div class="founder-name">Trisha Debnath</div>
+                    <div class="founder-role">Co-Founder · Frontend & Product</div>
+                    <p class="founder-quote">"I sent 47 job applications last semester. Got 3 responses. I had the skills, the projects, the CGPA. I just didn't know my resume was invisible to ATS. That frustration is exactly why I built TailorCV."</p>
+                    <a href="https://www.linkedin.com/in/trisha-debnath-159008317" target="_blank" class="founder-linkedin">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
+                        LinkedIn
+                    </a>
+                </div>
+                <div class="founder-card">
+                    <img src="/static/user_imges/Shubham.jpg" alt="Shubham Sarkar" class="founder-photo">
+                    <div class="founder-name">Shubham Sarkar</div>
+                    <div class="founder-role">Co-Founder · AI & Backend</div>
+                    <p class="founder-quote">"I sent 67 applications. Same story. Then I realized — I'm a machine learning engineer. I know exactly how ATS systems parse text. So Trisha and I stayed up one night and started building. Two months later, TailorCV was live."</p>
+                    <a href="https://www.linkedin.com/in/shubham-sarkar-57438b27a" target="_blank" class="founder-linkedin">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Feedback Button -->
+    <a href="mailto:td19454@gmail.com?subject=TailorCV Feedback&body=Hi Trisha and Shubham,%0A%0AI wanted to share some feedback about TailorCV:%0A%0A" class="feedback-float-btn" title="Send us feedback">
+        💬 Feedback
+    </a>
+
+
     <section class="pricing-preview-section">
         <div class="container">
             <div class="section-header">
@@ -1525,6 +1609,72 @@
                     </ul>
                     <a href="/login?next=/solutions" class="pricing-plan-btn" id="pricing_monthly_plan_start">Start for Free</a>
                 </article>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="faq-section" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 48px;">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know before getting started.</p>
+            </div>
+            <div style="max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
+
+                <details style="background: #0f1e44; border: 1px solid rgba(80,110,200,0.22); border-radius: 12px; padding: 20px 24px; cursor: pointer;">
+                    <summary style="color: #ffffff; font-size: 15px; font-weight: 500; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        Is TailorCV really free? <span class="faq-chevron" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.08);flex-shrink:0;transition:transform 0.2s;">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8899bb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+                    </summary>
+                    <p style="color: #8899bb; font-size: 14px; line-height: 1.7; margin-top: 12px;">Yes — completely free right now. All features including ATS scoring, AI resume optimization, mock interview, and templates are free to use. Paid plans are planned for about 3 months from now.</p>
+                </details>
+
+                <details style="background: #0f1e44; border: 1px solid rgba(80,110,200,0.22); border-radius: 12px; padding: 20px 24px; cursor: pointer;">
+                    <summary style="color: #ffffff; font-size: 15px; font-weight: 500; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        Will recruiters or ATS detect that my resume was AI-optimized? <span class="faq-chevron" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.08);flex-shrink:0;transition:transform 0.2s;">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8899bb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+                    </summary>
+                    <p style="color: #8899bb; font-size: 14px; line-height: 1.7; margin-top: 12px;">No. TailorCV doesn't add fake skills or fabricate experience. It rewrites your existing experience using the exact keywords and language from the job description — so your real skills finally get seen. It's your resume, just better phrased.</p>
+                </details>
+
+                <details style="background: #0f1e44; border: 1px solid rgba(80,110,200,0.22); border-radius: 12px; padding: 20px 24px; cursor: pointer;">
+                    <summary style="color: #ffffff; font-size: 15px; font-weight: 500; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        Is my resume data safe and private? <span class="faq-chevron" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.08);flex-shrink:0;transition:transform 0.2s;">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8899bb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+                    </summary>
+                    <p style="color: #8899bb; font-size: 14px; line-height: 1.7; margin-top: 12px;">Yes. Your resume is used only to generate your optimized output and is not stored permanently or shared with anyone. We take privacy seriously.</p>
+                </details>
+
+                <details style="background: #0f1e44; border: 1px solid rgba(80,110,200,0.22); border-radius: 12px; padding: 20px 24px; cursor: pointer;">
+                    <summary style="color: #ffffff; font-size: 15px; font-weight: 500; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        What file formats does TailorCV support? <span class="faq-chevron" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.08);flex-shrink:0;transition:transform 0.2s;">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8899bb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+                    </summary>
+                    <p style="color: #8899bb; font-size: 14px; line-height: 1.7; margin-top: 12px;">You can upload your resume as a PDF. The optimized output can be downloaded as a PDF as well — clean, ATS-friendly, and ready to submit.</p>
+                </details>
+
+                <details style="background: #0f1e44; border: 1px solid rgba(80,110,200,0.22); border-radius: 12px; padding: 20px 24px; cursor: pointer;">
+                    <summary style="color: #ffffff; font-size: 15px; font-weight: 500; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        Do I need to create an account? <span class="faq-chevron" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.08);flex-shrink:0;transition:transform 0.2s;">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8899bb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+                    </summary>
+                    <p style="color: #8899bb; font-size: 14px; line-height: 1.7; margin-top: 12px;">Yes, a free account is required to use TailorCV. Signing up takes less than a minute — no credit card needed.</p>
+                </details>
+
+                <details style="background: #0f1e44; border: 1px solid rgba(80,110,200,0.22); border-radius: 12px; padding: 20px 24px; cursor: pointer;">
+                    <summary style="color: #ffffff; font-size: 15px; font-weight: 500; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                        How is TailorCV different from ChatGPT for resume writing? <span class="faq-chevron" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.08);flex-shrink:0;transition:transform 0.2s;">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8899bb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+                    </summary>
+                    <p style="color: #8899bb; font-size: 14px; line-height: 1.7; margin-top: 12px;">ChatGPT is a general tool — you'd need to manually copy-paste your resume and job description and craft the right prompts. TailorCV is purpose-built for this exact task. It analyzes both documents, gives you an ATS score, shows exactly what's missing, and outputs a formatted ready-to-download resume — all in one flow.</p>
+                </details>
+
             </div>
         </div>
     </section>
@@ -2071,6 +2221,16 @@
 
         });
     </script>
+
+<style>
+details[open] .faq-chevron {
+    transform: rotate(180deg);
+    background: rgba(74,106,255,0.15);
+}
+details[open] .faq-chevron svg {
+    stroke: #4a6aff;
+}
+</style>
 </body>
 
 </html>
