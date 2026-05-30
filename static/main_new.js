@@ -575,7 +575,7 @@ function transformATSDataForPage(data, jdString) {
             { category: 'Experience fit', score: expScore },
             { category: 'Format & structure', score: searchScore },
             { category: 'Quantified impact', score: metricsUsed > 0 ? Math.min(100, metricsUsed * 10) : 0 },
-            { category: 'Summary section', score: summaryPresent ? 100 : 'none' },
+         
         ],
         matchedKeywords,
         missingKeywords,
