@@ -946,13 +946,13 @@ header, main, section, footer, .hero, .features,
 
 .nav-links a,
 .nav-links .nav-dropdown-toggle {
-    font-size: 14px;
-    letter-spacing: 0.35px;
+    font-size: 12px;
+    letter-spacing: 0px;
     color: rgb(246, 247, 248);
-    font-weight: 700;
+    font-weight: 340;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 12px 16px;
+    padding: 5px;
     border-bottom: none;
 }
 
