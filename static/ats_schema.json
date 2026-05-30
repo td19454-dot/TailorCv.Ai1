@@ -1,0 +1,163 @@
+{
+  "contact_information": {
+    "email": {
+      "present": "<false|true>"
+    },
+    "phone": {
+      "present": "<false|true>"
+    },
+    "linkedin": {
+      "present": "<false|true>"
+    }
+  },
+
+  "spelling_and_grammar": {
+    "spelling": {
+      "passed":"<false|true>",
+      "explanation": "<Provide_exp>",
+      "action":"<Provide_act>"
+    },
+
+    "grammar": {
+      "passed": "<false|true>",
+      "explanation": "",
+      "action": ""
+    },
+
+    "buzzwords": {
+      "passed": "<false|true>",
+      "explanation": "",
+      "action": ""
+    },
+
+    "personal_pronouns": {
+      "passed": "<false|true>",
+      "explanation": "",
+      "action":""
+    }
+  },
+
+  "skills": {
+    "hard_skills": {
+      "matched": [],
+      "missing": []
+      
+    },
+
+    "soft_skills": {
+      "matched": [],
+      "missing": []
+      
+    }
+  },
+
+  "sections": {
+    "projects": {
+      "present": "<false|true>"
+    },
+
+    "experience": {
+      "present": "<false|true>"
+    },
+
+    "skills": {
+      "present": "<false|true>"
+    },
+
+    "education": {
+      "present": "<false|true>"
+    },
+
+    "chronological_dates": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "formatting": {
+    "single_column": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "photos_or_graphics": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "excessive_design": {
+      "passed": "<false|true>",
+      "explanation":""
+    },
+
+    "unnecessary_sections": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "education": {
+    "qualification_match": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "experience": {
+    "experience_match": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "company_names": {
+      "present": "<false|true>"                                                      
+    },
+
+    "job_titles": {
+      "present": "<false|true>"
+    },
+
+    "action_verbs": {
+      "passed": "<false|true>",
+      "explanation": ""
+      
+    },
+
+    "quantified_impact": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "projects": {
+    "project_links": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "action_verbs": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "quantified_impact": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "top_priority_fixes": [
+    {
+      "issue": "",
+      "action": ""
+    },
+    {
+      "issue": "",
+      "action": ""
+    },
+    {
+      "issue": "",
+      "action": ""
+    }
+  ]
+}

@@ -382,8 +382,8 @@ async function handleATSAnalysis() {
         }
 
         const data = await response.json();
-        const analysisPayload = transformATSDataForPage(data, jdInput.value.trim());
-        sessionStorage.setItem('atsAnalysisPayload', JSON.stringify(analysisPayload));
+        // Store raw API response so ats_analysis.js can render the full audit schema.
+        sessionStorage.setItem('atsAnalysisPayload', JSON.stringify(data));
 
         // Keep progress visible for a short minimum duration for clear UX feedback.
         const elapsed = Date.now() - progressStartTime;
@@ -575,7 +575,6 @@ function transformATSDataForPage(data, jdString) {
             { category: 'Experience fit', score: expScore },
             { category: 'Format & structure', score: searchScore },
             { category: 'Quantified impact', score: metricsUsed > 0 ? Math.min(100, metricsUsed * 10) : 0 },
-         
         ],
         matchedKeywords,
         missingKeywords,
