@@ -6,21 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATS Score Analysis - TailorCV.ai</title>
     {% include "_seo_head.html" %}
-<link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/header-footer.css">
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .navbar .nav-links {
-            min-width: 560px;
-            gap: 2px;
-        }
-        .navbar .nav-links .nav-link {
-            font-size: 11px;
-            padding: 18px 10px;
-            letter-spacing: 0;
-        }
         html, body { overflow-x: hidden; }
         body {
             background-image: url('/static/back90.avif') !important;
@@ -28,179 +19,93 @@
             background-position: center !important;
             background-attachment: fixed !important;
         }
-        .analysis-page {
-            padding: 4rem 0;
-        }
-        .analysis-shell {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        /* Load ats_analysis.css styles normally, header/footer from style2.css */
-
-        /* Match 'Optimize Resume' / 'Get ATS Score' button style from solutions page */
-        .ai-rewrite-btn.btn.cv2-uiverse-btn {
-            outline: none;
-            cursor: pointer;
-            border: none;
-            padding: 0.9rem 2rem;
-            margin: 0;
-            font-family: inherit;
-            font-size: 17px;
-            position: relative;
-            display: inline-block;
-            letter-spacing: 0.05rem;
-            font-weight: 700;
-            border-radius: 500px;
-            overflow: hidden;
-            background: #66ff66;
-            color: ghostwhite;
-            min-height: 56px;
-            height: 56px;
-            transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease, transform 0.28s ease;
-        }
-        .ai-rewrite-btn.cv2-uiverse-btn .btn-text,
-        .ai-rewrite-btn.cv2-uiverse-btn .btn-loader {
-            position: relative;
-            z-index: 10;
-            transition: color 0.4s;
-        }
-        .ai-rewrite-btn.cv2-uiverse-btn::before,
-        .ai-rewrite-btn.cv2-uiverse-btn::after {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        .ai-rewrite-btn.cv2-uiverse-btn::before {
-            content: "";
-            width: 120%;
-            left: -10%;
-            transform: skew(30deg);
-            transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        .ai-rewrite-btn.cv2-uiverse-btn::after {
-            content: "";
-            border-radius: inherit;
-            background: linear-gradient(135deg, #0f4ea3 0%, #132c7a 55%, #3c1361 100%);
-        }
-        .ai-rewrite-btn.cv2-uiverse-btn:hover::before {
-            transform: translate3d(100%, 0, 0);
-        }
-        .ai-rewrite-btn.cv2-uiverse-btn:hover .btn-text,
-        .ai-rewrite-btn.cv2-uiverse-btn:hover .btn-loader {
-            color: #0b1020;
-        }
-        .ai-rewrite-btn.btn.btn-primary.cv2-uiverse-btn:hover {
-            background: linear-gradient(135deg, #a78bfa 0%, #7a09f4 100%);
-            border-color: rgba(165, 243, 252, 0.95);
-            color: #0b1020;
-        }
-        .ai-rewrite-btn.cv2-uiverse-btn:hover::after {
-            background: linear-gradient(135deg, #a78bfa 0%, #7a09f4 100%) !important;
-        }
+        .navbar .nav-links { min-width: 560px; gap: 2px; }
+        .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
+        .analysis-page { padding: 4rem 0; }
+        .analysis-shell { max-width: 1200px; margin: 0 auto; }
     </style>
     <link rel="stylesheet" href="/static/ats_analysis.css">
-
 </head>
-<body> 
+<body>
     <header class="navbar">
-    <div class="left">
-        <div class="logo">
-            <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+        <div class="left">
+            <div class="logo">
+                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+            </div>
         </div>
-    </div>
-    <button
-        type="button"
-        class="mobile-menu-toggle"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="primary-nav-shared"
-    >
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    <nav class="nav-links" id="primary-nav-shared">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/solutions" class="nav-link active">Get ATS Score</a>
-        <a href="/modify-cv" class="nav-link">Make CV</a>
-        <a href="/solutions" class="nav-link">Optimize CV with AI</a>
-        <a href="/blog" class="nav-link">Blog</a>
-        <a href="/pricing" class="nav-link">Pricing</a>
-        <a href="/templates" class="nav-link">Templates</a>
-        <a href="/interview-prep" class="nav-link">Interview Prep</a>
-        <a href="/mock-interview" class="nav-link">Mock Interview</a>
-    </nav>
-    <div class="nav-actions">
-        <div id="auth-nav-slot"></div>
-    </div>
-</header>
+        <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu"
+                aria-expanded="false" aria-controls="primary-nav-shared">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="nav-links" id="primary-nav-shared">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/solutions" class="nav-link active">Get ATS Score</a>
+            <a href="/modify-cv" class="nav-link">Make CV</a>
+            <a href="/solutions" class="nav-link">Optimize CV with AI</a>
+            <a href="/blog" class="nav-link">Blog</a>
+            <a href="/pricing" class="nav-link">Pricing</a>
+            <a href="/templates" class="nav-link">Templates</a>
+            <a href="/interview-prep" class="nav-link">Interview Prep</a>
+            <a href="/mock-interview" class="nav-link">Mock Interview</a>
+        </nav>
+        <div class="nav-actions">
+            <div id="auth-nav-slot"></div>
+        </div>
+    </header>
 
     <main class="analysis-page">
         <div class="analysis-shell">
+
+            <!-- Header -->
             <header class="analysis-header-row">
-<a href="/solutions" id="back-to-resume-btn" class="btn-outline-small">← Back to resume</a>
-                <p id="analysis-meta" class="analysis-meta">Analyzed for role · company · date</p>
+                <a href="/solutions" id="back-to-resume-btn" class="btn-outline-small">← Back to resume</a>
+                <p id="analysis-meta" class="analysis-meta">Loading analysis…</p>
             </header>
 
+            <!-- Tabs -->
             <nav class="analysis-tabs" aria-label="ATS sections">
                 <button class="tab-btn active" type="button" data-tab="overview">Overview</button>
-                <button class="tab-btn" type="button" data-tab="keywords">Keywords</button>
-                <button class="tab-btn" type="button" data-tab="improvements">Improvements</button>
-                <button class="tab-btn" type="button" data-tab="side-by-side">Side-by-side</button>
+                <button class="tab-btn" type="button" data-tab="contact">Contact</button>
+                <button class="tab-btn" type="button" data-tab="skills">Skills</button>
+                <button class="tab-btn" type="button" data-tab="sections">Sections</button>
+                <button class="tab-btn" type="button" data-tab="formatting">Formatting</button>
+                <button class="tab-btn" type="button" data-tab="education">Education</button>
+                <button class="tab-btn" type="button" data-tab="experience">Experience</button>
+                <button class="tab-btn" type="button" data-tab="projects">Projects</button>
+                <button class="tab-btn" type="button" data-tab="fixes">Priority Fixes</button>
             </nav>
 
+            <!-- ════════════ TAB: OVERVIEW ════════════ -->
             <section id="tab-overview" class="tab-panel active">
-                <div class="top-grid">
-                    <article class="surface-card score-card">
-                        <h3 class="section-title">ATS score</h3>
+
+                <!-- Score + summary -->
+                <div class="overview-grid">
+
+                    <!-- Score card -->
+                    <div class="card score-card">
+                        <div class="card-title">ATS Score</div>
                         <div class="score-ring-wrap">
-                            <svg class="score-ring" viewBox="0 0 120 120" role="img" aria-label="ATS score ring">
-                                <circle class="ring-bg" cx="60" cy="60" r="50"></circle>
-                                <circle id="score-ring-progress" class="ring-progress" cx="60" cy="60" r="50"></circle>
+                            <svg class="score-ring" viewBox="0 0 150 150" role="img" aria-label="ATS score ring">
+                                <circle class="ring-bg"   cx="75" cy="75" r="65"></circle>
+                                <circle id="ring-fill" class="ring-fill" cx="75" cy="75" r="65"></circle>
                             </svg>
                             <div class="score-center">
-                                <div id="score-value" class="score-value">0</div>
-                                <div class="score-subtext">out of 100</div>
+                                <div id="score-number" class="score-number">—</div>
+                                <div class="score-denom">/ 100</div>
                             </div>
                         </div>
-                        <div id="match-badge" class="match-badge">Match</div>
-                        <p id="score-rank-text" class="score-subtext">Top applicants benchmark not available</p>
-                    </article>
+                        <div id="match-badge" class="match-badge">Analysing…</div>
+                        <div id="score-stats-row" class="score-stats-row"></div>
+                    </div>
 
-                    <article class="surface-card">
-                        <h3 class="section-title">Score breakdown</h3>
-                        <div id="breakdown-list" class="breakdown-list"></div>
-                    </article>
+                    <!-- All-checks summary -->
+                    <div class="card" style="overflow-y:auto;max-height:540px;">
+                        <div class="card-title">All Checks</div>
+                        <div id="overview-checks" class="summary-checks"></div>
+                    </div>
                 </div>
 
-                <div class="middle-grid">
-                    <article class="surface-card">
-                        <h3 class="section-title">Keyword analysis</h3>
-                        <div class="keywords-group">
-                            <p id="matched-label" class="keywords-title">Matched (0)</p>
-                            <div id="matched-keywords" class="pill-list"></div>
-                        </div>
-                        <div class="keywords-group">
-                            <p id="missing-label" class="keywords-title">Missing (0)</p>
-                            <div id="missing-keywords" class="pill-list"></div>
-                        </div>
-                    </article>
-
-                    <article class="surface-card">
-                        <h3 class="section-title">Resume at a glance</h3>
-                        <div id="stats-grid" class="stats-grid"></div>
-                    </article>
-                </div>
-
-                <article class="surface-card">
-                    <h3 class="section-title">Suggested improvements</h3>
-                    <div id="tips-list" class="tips-list"></div>
-                </article>
-
+                <!-- CTA -->
                 <div class="cta-row">
                     <button id="download-report-btn" class="btn-outline" type="button">Download report</button>
                     <button id="open-share-modal-btn" type="button" style="outline:none;cursor:pointer;border:none;padding:0 1.8rem;font-family:inherit;font-size:15px;font-weight:600;border-radius:500px;background:linear-gradient(135deg,#4F7FFF,#C9B8FF);color:white;min-height:56px;height:56px;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.2s;">
@@ -213,52 +118,91 @@
                 </div>
             </section>
 
-            <!-- Other tab panels remain the same -->
-            <section id="tab-keywords" class="tab-panel">
-                <article class="surface-card">
-                    <h3 class="section-title">Keyword analysis</h3>
-                    <p class="tab-helper-text">Detailed keyword extraction from your resume vs. target job description.</p>
-                    <div class="keywords-group">
-                        <p id="keywords-tab-matched-label" class="keywords-title">Matched (0)</p>
-                        <div id="keywords-tab-matched" class="pill-list"></div>
-                    </div>
-                    <div class="keywords-group">
-                        <p id="keywords-tab-missing-label" class="keywords-title">Missing (0)</p>
-                        <div id="keywords-tab-missing" class="pill-list"></div>
-                    </div>
-                </article>
+            <!-- ════════════ TAB: CONTACT ════════════ -->
+            <section id="tab-contact" class="tab-panel">
+                <div class="card">
+                    <div class="card-title">Contact Information</div>
+                    <div id="contact-list" class="contact-list"></div>
+                </div>
             </section>
 
-            <section id="tab-improvements" class="tab-panel">
-                <article class="surface-card">
-                    <h3 class="section-title">Suggested improvements</h3>
-                    <p class="tab-helper-text">Actionable recommendations ranked by expected ATS impact.</p>
-                    <div id="tips-tab-list" class="tips-list"></div>
-                </article>
+            <!-- ════════════ TAB: SKILLS ════════════ -->
+            <section id="tab-skills" class="tab-panel">
+                <div class="section-grid">
+                    <div class="card">
+                        <div class="card-title">Hard Skills</div>
+                        <div id="hard-matched" class="pill-section"></div>
+                        <div id="hard-missing" class="pill-section"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Soft Skills</div>
+                        <div id="soft-matched" class="pill-section"></div>
+                        <div id="soft-missing" class="pill-section"></div>
+                    </div>
+                </div>
             </section>
 
-            <section id="tab-side-by-side" class="tab-panel">
-                <article class="surface-card">
-                    <h3 class="section-title">Side-by-side</h3>
-                    <p class="tab-helper-text">Compare keyword coverage and targeted fixes before your next application.</p>
-                    <div class="side-by-side-grid">
-                        <div>
-                            <p class="side-title">Matched keywords</p>
-                            <div id="side-matched" class="pill-list"></div>
-                        </div>
-                        <div>
-                            <p class="side-title">Missing keywords</p>
-                            <div id="side-missing" class="pill-list"></div>
-                        </div>
-                    </div>
-                </article>
+            <!-- ════════════ TAB: SECTIONS ════════════ -->
+            <section id="tab-sections" class="tab-panel">
+                <div class="card">
+                    <div class="card-title">Sections Audit</div>
+                    <div id="sections-accordion" class="accordion"></div>
+                </div>
             </section>
-        </div>
+
+            <!-- ════════════ TAB: FORMATTING ════════════ -->
+            <section id="tab-formatting" class="tab-panel">
+                <div class="card">
+                    <div class="card-title">Formatting Audit</div>
+                    <div id="formatting-accordion" class="accordion"></div>
+                </div>
+            </section>
+
+            <!-- ════════════ TAB: EDUCATION ════════════ -->
+            <section id="tab-education" class="tab-panel">
+                <div class="card">
+                    <div class="card-title">Education Audit</div>
+                    <div id="education-accordion" class="accordion"></div>
+                </div>
+            </section>
+
+            <!-- ════════════ TAB: EXPERIENCE ════════════ -->
+            <section id="tab-experience" class="tab-panel">
+                <div class="card">
+                    <div class="card-title">Experience Audit</div>
+                    <div id="experience-accordion" class="accordion"></div>
+                </div>
+            </section>
+
+            <!-- ════════════ TAB: PROJECTS ════════════ -->
+            <section id="tab-projects" class="tab-panel">
+                <div class="card">
+                    <div class="card-title">Projects Audit</div>
+                    <div id="projects-accordion" class="accordion"></div>
+                </div>
+            </section>
+
+            <!-- ════════════ TAB: PRIORITY FIXES ════════════ -->
+            <section id="tab-fixes" class="tab-panel">
+                <div class="card">
+                    <div class="card-title">🔥 Priority Fixes</div>
+                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+                        Address these issues first for the highest ATS ranking improvement.
+                    </p>
+                    <div id="priority-fixes" class="fix-list"></div>
+                </div>
+                <div class="cta-row">
+                    <a href="/solutions" class="btn btn-primary cv2-uiverse-btn ai-rewrite-btn">
+                        <span class="btn-text">Fix Resume with AI</span>
+                    </a>
+                </div>
+            </section>
+
+        </div><!-- /.analysis-shell -->
     </main>
 
-            <footer class="footer">
+    <footer class="footer">
         <div class="container">
-            
             <div class="footer-content">
                 <div class="footer-section footer-brand">
                     <h4 class="footer-title">ResumeOptimizer</h4>
@@ -279,7 +223,6 @@
                         </a>
                     </div>
                 </div>
-
                 <div class="footer-section">
                     <h4 class="footer-heading">Product</h4>
                     <a href="/" class="footer-link">Home</a>
@@ -289,7 +232,6 @@
                     <a href="/templates" class="footer-link">Templates</a>
                     <a href="/pricing" class="footer-link">Pricing</a>
                 </div>
-
                 <div class="footer-section">
                     <h4 class="footer-heading">Company</h4>
                     <a href="/about" class="footer-link">About us</a>
@@ -297,7 +239,6 @@
                     <a href="/blog" class="footer-link">Blog</a>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
                 <a href="/" class="footer-secure">Secure &amp; private</a>
