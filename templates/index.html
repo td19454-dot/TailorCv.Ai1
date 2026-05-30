@@ -1982,6 +1982,12 @@
          * PostHog – Solutions CTA tracking
          * Tracks every clickable element on the homepage that navigates to /solutions.
          * Event: solutions_cta_clicked
+         *
+         * FIX: <a> tags navigate immediately on click, unloading the page before
+         * PostHog's async request can complete. We intercept the click, call
+         * posthog.capture() with a _onCapture callback that performs the navigation
+         * once the event is queued. A 300 ms safety timeout ensures navigation always
+         * happens even if PostHog is blocked or unavailable.
          */
         document.addEventListener("DOMContentLoaded", function () {
 
@@ -2020,11 +2026,46 @@
                 var el = document.getElementById(cta.id);
                 if (!el) return;
 
-                el.addEventListener("click", function () {
-                    posthog.capture("solutions_cta_clicked", {
-                        source_page: "homepage",
-                        element_name: cta.element_name
-                    });
+                el.addEventListener("click", function (e) {
+                    // Only intercept plain left-clicks (not Ctrl/Cmd+click to open in new tab)
+                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+                    var href = el.getAttribute("href");
+
+                    // If PostHog isn't loaded, navigate immediately and bail out
+                    if (typeof posthog === "undefined" || typeof posthog.capture !== "function") {
+                        return;
+                    }
+
+                    e.preventDefault();
+
+                    var navigated = false;
+
+                    function navigate() {
+                        if (navigated) return;
+                        navigated = true;
+                        window.location.href = href;
+                    }
+
+                    // Safety net: always navigate within 300 ms even if PostHog stalls
+                    var safetyTimer = setTimeout(navigate, 300);
+
+                    posthog.capture(
+                        "solutions_cta_clicked",
+                        {
+                            source_page: "homepage",
+                            element_name: cta.element_name
+                        },
+                        {
+                            // transport uses sendBeacon where available — survives page unload
+                            transport: "sendBeacon",
+                            // PostHog calls this once the event is queued/sent
+                            _onCapture: function () {
+                                clearTimeout(safetyTimer);
+                                navigate();
+                            }
+                        }
+                    );
                 });
             });
 
