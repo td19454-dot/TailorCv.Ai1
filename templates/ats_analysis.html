@@ -203,6 +203,9 @@
 
                 <div class="cta-row">
                     <button id="download-report-btn" class="btn-outline" type="button">Download report</button>
+                    <button id="open-share-modal-btn" type="button" style="outline:none;cursor:pointer;border:none;padding:0 1.8rem;font-family:inherit;font-size:15px;font-weight:600;border-radius:500px;background:linear-gradient(135deg,#4F7FFF,#C9B8FF);color:white;min-height:56px;height:56px;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.2s;">
+                        🎯 Share My Score
+                    </button>
                     <a href="/solutions" class="btn btn-primary cv2-uiverse-btn ai-rewrite-btn">
                         <span class="btn-text">Rewrite Resume with AI</span>
                         <span class="btn-loader" style="display:none;">●</span>
@@ -306,11 +309,110 @@
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/main_new.js"></script>
     <script src="/static/ats_analysis.js"></script>
+
+    <!-- Share Score Modal -->
+    <div id="share-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:99999;align-items:center;justify-content:center;">
+        <div style="background:linear-gradient(145deg,#1a2040,#0f1425);border:1px solid rgba(79,127,255,0.25);border-radius:24px;padding:44px 36px;max-width:440px;width:92%;text-align:center;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.6);">
+            <button id="close-share-modal" style="position:absolute;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,0.35);font-size:26px;cursor:pointer;line-height:1;">&times;</button>
+            <div style="width:56px;height:4px;background:linear-gradient(90deg,#4F7FFF,#C9B8FF);border-radius:4px;margin:0 auto 28px;"></div>
+            <p style="color:rgba(255,255,255,0.35);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;">My ATS Resume Score</p>
+            <div id="modal-score-display" style="font-size:88px;font-weight:800;background:linear-gradient(135deg,#4F7FFF,#C9B8FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:6px;">0</div>
+            <p style="color:rgba(255,255,255,0.35);font-size:14px;margin-bottom:20px;">out of 100</p>
+            <p style="color:rgba(255,255,255,0.65);font-size:14px;margin-bottom:6px;">Analyzed with <strong style="color:#4F7FFF;">TailorCV</strong></p>
+            <p style="color:rgba(255,255,255,0.2);font-size:12px;margin-bottom:32px;">thetailorcv.com</p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <button id="share-linkedin-btn" type="button" style="background:#0077B5;color:white;border:none;padding:13px 22px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.2s;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
+                    Post on LinkedIn
+                </button>
+                <button id="copy-text-btn" type="button" style="background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.12);padding:13px 22px;border-radius:10px;font-size:14px;cursor:pointer;">
+                    📋 Copy Text
+                </button>
+            </div>
+            <p id="share-success-msg" style="color:#4ade80;font-size:13px;margin-top:16px;display:none;line-height:1.5;"></p>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var openBtn = document.getElementById('open-share-modal-btn');
+        var closeBtn = document.getElementById('close-share-modal');
+        var overlay = document.getElementById('share-modal-overlay');
+        var modalScore = document.getElementById('modal-score-display');
+        var linkedinBtn = document.getElementById('share-linkedin-btn');
+        var copyBtn = document.getElementById('copy-text-btn');
+        var successMsg = document.getElementById('share-success-msg');
+
+        function getScore() {
+            var el = document.getElementById('score-value');
+            return el ? el.textContent.trim() : '0';
+        }
+
+        function getPostText(score) {
+            return "🎯 Just checked my resume ATS score — got " + score + "/100.\n\nIf you're job hunting and not getting callbacks, your resume might be getting filtered out by ATS before any human reads it.\n\nI used TailorCV (completely free) to find out exactly what was missing and fix it in 60 seconds.\n\nTry it free → thetailorcv.com\n\n#JobSearch #ResumeAdvice #ATS #CareerTips #Resume";
+        }
+
+        function doCopy(text, cb) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(cb).catch(function() {
+                    fallbackCopy(text); cb();
+                });
+            } else { fallbackCopy(text); cb(); }
+        }
+
+        function fallbackCopy(text) {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+            document.body.appendChild(ta);
+            ta.focus(); ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+        }
+
+        if (openBtn) openBtn.addEventListener('click', function() {
+            if (modalScore) modalScore.textContent = getScore();
+            if (overlay) overlay.style.display = 'flex';
+            if (successMsg) successMsg.style.display = 'none';
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', function() {
+            if (overlay) overlay.style.display = 'none';
+        });
+
+        if (overlay) overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) overlay.style.display = 'none';
+        });
+
+        if (linkedinBtn) linkedinBtn.addEventListener('click', function() {
+            var score = getScore();
+            var text = getPostText(score);
+            doCopy(text, function() {
+                successMsg.innerHTML = '✓ Post text copied to clipboard!<br>LinkedIn is opening — click <strong>Start a post</strong> and press <strong>Ctrl+V</strong> to paste.';
+                successMsg.style.display = 'block';
+                linkedinBtn.textContent = '✓ Opening LinkedIn...';
+                setTimeout(function() {
+                    window.open('https://www.linkedin.com/feed/', '_blank', 'noopener,noreferrer');
+                }, 600);
+                setTimeout(function() {
+                    linkedinBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg> Post on LinkedIn';
+                }, 3500);
+            });
+        });
+
+        if (copyBtn) copyBtn.addEventListener('click', function() {
+            var score = getScore();
+            doCopy(getPostText(score), function() {
+                successMsg.textContent = '✓ Copied! Open LinkedIn and paste it as a new post.';
+                successMsg.style.display = 'block';
+                copyBtn.textContent = '✓ Copied!';
+                setTimeout(function() {
+                    copyBtn.textContent = '📋 Copy Text';
+                    successMsg.style.display = 'none';
+                }, 3000);
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
-
-
-
-
-
-
