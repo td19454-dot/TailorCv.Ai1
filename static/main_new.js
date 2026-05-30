@@ -329,6 +329,7 @@ async function handleATSAnalysis() {
     const fileInput = document.getElementById('resume-file');
     const jdInput = document.getElementById('job-description');
     const analyzeBtn = document.getElementById('analyze-btn');
+    const optimizeBtn = document.getElementById('optimize-btn');
     const resumeFile = getResumeFileForUpload();
 
     if (!isUserLoggedIn()) {
@@ -342,8 +343,10 @@ async function handleATSAnalysis() {
     }
 
     analyzeBtn.disabled = true;
+    optimizeBtn.disabled = true;
     analyzeBtn.classList.add('loading', 'animate-shimmer');
     analyzeBtn.querySelector('.btn-text').textContent = 'Analyzing...';
+    optimizeBtn.querySelector('.btn-text').textContent = 'Please wait till analysis completes';
     analyzeBtn.querySelector('.btn-loader').style.display = 'inline-block';
     displayATSLoading();
     const atsProgressSection = document.getElementById('ats-progress-section');
@@ -407,8 +410,10 @@ async function handleATSAnalysis() {
         }
     } finally {
         analyzeBtn.disabled = false;
+        optimizeBtn.disabled = false;
         analyzeBtn.classList.remove('loading', 'animate-shimmer');
         analyzeBtn.querySelector('.btn-text').textContent = 'Get ATS Score';
+        optimizeBtn.querySelector('.btn-text').textContent = 'Optimize Resume';
         analyzeBtn.querySelector('.btn-loader').style.display = 'none';
     }
 }
@@ -793,7 +798,9 @@ async function handleResumeOptimization() {
     const optimizeContent = document.getElementById('optimize-content');
     const templateSection = document.getElementById('template-selection-section');
     const resultsSection = document.getElementById('results-section');
-
+    const analyzeBtn = document.getElementById('analyze-btn');
+    analyzeBtn.querySelector('.btn-text').textContent = 'Please wait till process completes...';
+    analyzeBtn.disabled = true;
     confirmBtn.disabled = true;
     confirmBtn.classList.add('loading', 'animate-shimmer');
     confirmBtn.textContent = 'Generating PDF...';
@@ -873,6 +880,8 @@ async function handleResumeOptimization() {
     } finally {
         confirmBtn.classList.remove('loading', 'animate-shimmer');
         confirmBtn.disabled = false;
+        analyzeBtn.disabled = false;
+        analyzeBtn.querySelector('.btn-text').textContent = 'Get ATS Score';
         confirmBtn.textContent = 'Confirm & Generate PDF';
     }
 }

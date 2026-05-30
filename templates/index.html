@@ -16,6 +16,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TailorCV.ai - AI-Powered Resume Tailoring</title>
+    <meta name="description"
+        content="TailorCV helps job seekers optimize resumes for ATS, tailor resumes to specific job descriptions, generate cover letters, and practice AI-powered interviews to increase interview callbacks.">
     <link rel="stylesheet" href="/static/style3.css">
     <link rel="stylesheet" href="/static/header-footer.css">
     {% include "_seo_head.html" %}
@@ -45,69 +47,191 @@
             --star: #f0c04a;
             --fade-bg: #07102b;
         }
+
         /* ── Moving background ── */
 
-@keyframes gradientShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes floatOrb1 {
-  0%,100% { transform: translate(0,0) scale(1); opacity: 0.6; }
-  50%      { transform: translate(60px,-40px) scale(1.15); opacity: 0.9; }
-}
-@keyframes floatOrb2 {
-  0%,100% { transform: translate(0,0) scale(1); opacity: 0.4; }
-  50%      { transform: translate(-50px,30px) scale(1.1); opacity: 0.7; }
-}
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes floatOrb1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translate(60px, -40px) scale(1.15);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes floatOrb2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translate(-50px, 30px) scale(1.1);
+                opacity: 0.7;
+            }
+        }
 
 
-.bg-orb {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-.orb-blue   { width:280px; height:280px; background:#3a00cc; filter:blur(70px); top:-70px; left:-60px; animation: floatOrb1 7s ease-in-out infinite; }
-.orb-violet { width:240px; height:240px; background:#6b00ff; filter:blur(65px); bottom:-50px; right:-30px; animation: floatOrb2 9s ease-in-out infinite; }
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-header, main, section, footer, .hero, .features,
-.how-it-works, .testimonials-section, .cta-section {
-  position: relative;
-  z-index: 1;
-}
+        .orb-blue {
+            width: 280px;
+            height: 280px;
+            background: #3a00cc;
+            filter: blur(70px);
+            top: -70px;
+            left: -60px;
+            animation: floatOrb1 7s ease-in-out infinite;
+        }
 
-body {
-  background: linear-gradient(
-    135deg,
-    #020010, #06002a, #12003a,
-    #001830, #0a0020, #1a0030, #020010
-  );
-  background-size: 600% 600%;
-  animation: gradientShift 15s ease infinite;
-}
+        .orb-violet {
+            width: 240px;
+            height: 240px;
+            background: #6b00ff;
+            filter: blur(65px);
+            bottom: -50px;
+            right: -30px;
+            animation: floatOrb2 9s ease-in-out infinite;
+        }
 
-.bg-orb {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-.orb-violet  { width:300px;height:300px; background:radial-gradient(circle,#7700ff,#3300aa); filter:blur(70px); top:-80px; left:-60px; animation:floatOrb1 8s ease-in-out infinite; }
-.orb-magenta { width:260px;height:260px; background:radial-gradient(circle,#cc00ff,#880099); filter:blur(65px); bottom:-50px; right:-20px; animation:floatOrb2 11s ease-in-out infinite; }
-.orb-blue    { width:220px;height:220px; background:radial-gradient(circle,#0044ff,#002288); filter:blur(60px); top:40%; left:25%; animation:floatOrb3 14s ease-in-out infinite; }
-.orb-rose    { width:200px;height:200px; background:radial-gradient(circle,#ff0077,#990044); filter:blur(60px); bottom:20px; left:0; animation:floatOrb4 9s ease-in-out infinite; }
-.orb-cyan    { width:180px;height:180px; background:radial-gradient(circle,#00ccff,#006688); filter:blur(55px); top:10px; right:60px; animation:floatOrb5 12s ease-in-out infinite; }
-.orb-amber   { width:170px;height:170px; background:radial-gradient(circle,#ff6600,#882200); filter:blur(55px); bottom:40px; right:160px; animation:floatOrb6 10s ease-in-out infinite; }
+        header,
+        main,
+        section,
+        footer,
+        .hero,
+        .features,
+        .how-it-works,
+        .testimonials-section,
+        .cta-section {
+            position: relative;
+            z-index: 1;
+        }
 
-.bg-star { position:fixed; width:2px; height:2px; background:#fff; border-radius:50%; pointer-events:none; z-index:0; }
+        body {
+            background: linear-gradient(135deg,
+                    #020010, #06002a, #12003a,
+                    #001830, #0a0020, #1a0030, #020010);
+            background-size: 600% 600%;
+            animation: gradientShift 15s ease infinite;
+        }
 
-/* Make sure all content sits above the orbs */
-header, main, section, footer, .hero, .features,
-.how-it-works, .testimonials-section, .cta-section {
-  position: relative;
-  z-index: 1;
-}
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-violet {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #7700ff, #3300aa);
+            filter: blur(70px);
+            top: -80px;
+            left: -60px;
+            animation: floatOrb1 8s ease-in-out infinite;
+        }
+
+        .orb-magenta {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, #cc00ff, #880099);
+            filter: blur(65px);
+            bottom: -50px;
+            right: -20px;
+            animation: floatOrb2 11s ease-in-out infinite;
+        }
+
+        .orb-blue {
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, #0044ff, #002288);
+            filter: blur(60px);
+            top: 40%;
+            left: 25%;
+            animation: floatOrb3 14s ease-in-out infinite;
+        }
+
+        .orb-rose {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #ff0077, #990044);
+            filter: blur(60px);
+            bottom: 20px;
+            left: 0;
+            animation: floatOrb4 9s ease-in-out infinite;
+        }
+
+        .orb-cyan {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, #00ccff, #006688);
+            filter: blur(55px);
+            top: 10px;
+            right: 60px;
+            animation: floatOrb5 12s ease-in-out infinite;
+        }
+
+        .orb-amber {
+            width: 170px;
+            height: 170px;
+            background: radial-gradient(circle, #ff6600, #882200);
+            filter: blur(55px);
+            bottom: 40px;
+            right: 160px;
+            animation: floatOrb6 10s ease-in-out infinite;
+        }
+
+        .bg-star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Make sure all content sits above the orbs */
+        header,
+        main,
+        section,
+        footer,
+        .hero,
+        .features,
+        .how-it-works,
+        .testimonials-section,
+        .cta-section {
+            position: relative;
+            z-index: 1;
+        }
+
         /* ─── Section ─── */
         .testimonials-section {
             width: 100%;
@@ -322,12 +446,12 @@ header, main, section, footer, .hero, .features,
 </head>
 
 <body>
-<div class="bg-orb orb-blue"></div>
-<div class="bg-orb orb-violet"></div>
-<div id="bg-stars" aria-hidden="true"></div>
+    <div class="bg-orb orb-blue"></div>
+    <div class="bg-orb orb-violet"></div>
+    <div id="bg-stars" aria-hidden="true"></div>
     <div class="wave-bg" aria-hidden="true">
-    <canvas id="wave-canvas"></canvas>
-</div>
+        <canvas id="wave-canvas"></canvas>
+    </div>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7G56LJF" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
@@ -345,9 +469,9 @@ header, main, section, footer, .hero, .features,
         </button>
         <nav class="nav-links" id="primary-nav-index">
             <a href="/" class="nav-link active">Home</a>
-            <a href="/solutions" class="nav-link mobile-feature-link">Get ATS Score</a>
+            <a href="/solutions" class="nav-link mobile-feature-link" id="nav_get_ats_score">Get ATS Score</a>
             <a href="/modify-cv" class="nav-link mobile-feature-link">Make CV</a>
-            <a href="/solutions" class="nav-link mobile-feature-link">Optimize CV with AI</a>
+            <a href="/solutions" class="nav-link mobile-feature-link " id="nav_optimize_cv_with_ai">Optimize CV with AI</a>
             <a href="/interview-prep" class="nav-link mobile-feature-link">Interview Prep</a>
             <a href="/mock-interview" class="nav-link mobile-feature-link">Mock Interview</a>
             <div class="nav-dropdown features-dropdown">
@@ -377,14 +501,14 @@ header, main, section, footer, .hero, .features,
                             <span class="nav-mega-desc">Check ATS match and fix rejection triggers faster.</span>
                         </span>
                     </a>
-                    <a href="/solutions" class="nav-mega-item">
+                    <a href="/solutions" class="nav-mega-item" id="nav_dropdown_optimize_cv">
                         <span class="nav-mega-icon" aria-hidden="true">&#9998;</span>
                         <span class="nav-mega-copy">
-                            <span class="nav-mega-title">Optimize CV with AI</span>
+                            <span class="nav-mega-title ">Optimize CV with AI</span>
                             <span class="nav-mega-desc">Tailor your resume for each role in minutes.</span>
                         </span>
                     </a>
-                    <a href="/solutions" class="nav-mega-cta">Explore All Features &#8594;</a>
+                    <a href="/solutions" class="nav-mega-cta" id="nav_dropdown_explore_all_features">Explore All Features &#8594;</a>
                 </div>
             </div>
             <a href="/templates" class="nav-link">Templates</a>
@@ -403,7 +527,7 @@ header, main, section, footer, .hero, .features,
 
         <div class="nav-actions">
             <div id="auth-nav-slot"></div>
-            <a href="/solutions" class="getstarted">Get Started</a>
+            <a href="/solutions" class="getstarted" id="optimize-get-started-nav">Get Started</a>
         </div>
 
     </header>
@@ -472,7 +596,7 @@ header, main, section, footer, .hero, .features,
             animation: tbRing 2s ease-out infinite;
         }
 
-        
+
 
         @keyframes tbRing {
             0% {
@@ -583,11 +707,14 @@ header, main, section, footer, .hero, .features,
                     </h1>
                     <span class="gradient-text">we fix that in 60 seconds.</span>
                     <p class="hero-subtitle">
-                        Paste any job description. Our AI rewrites your resume to match it perfectly — right keywords, right bullets, more callbacks.
+                        Paste any job description. Our AI rewrites your resume to match it perfectly — right keywords,
+                        right bullets, more callbacks.
                     </p>
                     <div class="hero-cta">
-                        <a href="/solutions" class="btn btn-primary btn-large">Optimize My Resume — Free</a>
-                        <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span> Takes 2 minutes &bull; No credit card needed &bull; Free to start</p>
+                        <a href="/solutions" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
+                            >Optimize My Resume — Free</a>
+                        <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span>
+                            Takes 2 minutes &bull; No credit card needed &bull; Free to start</p>
                     </div>
                     <div class="hero-quickstart" aria-label="Quick start steps">
                         <p class="hero-quickstart-title">Start in 3 quick steps</p>
@@ -601,7 +728,7 @@ header, main, section, footer, .hero, .features,
                     <div class="social-proof-hero">
                         <div class="user-avatars-hero">
                             <img src="/static/user_imges/26.jpg" alt="User" class="avatar-hero">
-                            <img src="/static/user_imges/4.jpg" alt="User" class="avatar-hero">
+                            <img src="/static/user_imges/95.jpg" alt="User" class="avatar-hero">
                             <img src="/static/user_imges/68.jpg" alt="User" class="avatar-hero">
                             <img src="/static/user_imges/85.jpg" alt="User" class="avatar-hero">
                             <span class="avatar-live-dot" aria-hidden="true"></span>
@@ -611,22 +738,24 @@ header, main, section, footer, .hero, .features,
                     <div class="hero-testimonials" aria-label="User testimonials">
                         <article class="hero-t-card">
                             <div class="hero-t-stars">★★★★★</div>
-                            <p class="hero-t-quote">"I applied to 12 jobs before TailorCV. Got zero callbacks. After optimizing, I had 3 interviews in a week."</p>
+                            <p class="hero-t-quote">"I applied to 12 jobs before TailorCV. Got zero callbacks. After
+                                optimizing, I had 3 interviews in a week."</p>
                             <div class="hero-t-badge">Hired at Google</div>
                             <div class="hero-t-user">
-                                <img src="/static/user_imges/4.jpg" alt="Rahul K." class="hero-t-avatar">
+                                <img src="/static/user_imges/4.jpg" alt="Ken Hopkins" class="hero-t-avatar">
                                 <div>
-                                    <p class="hero-t-name">Rahul K.</p>
+                                    <p class="hero-t-name">Ken Hopkins</p>
                                     <p class="hero-t-role">Software Engineer</p>
                                 </div>
                             </div>
                         </article>
                         <article class="hero-t-card">
                             <div class="hero-t-stars">★★★★★</div>
-                            <p class="hero-t-quote">"Took me 90 seconds. The AI rewrote my bullets to match the job description perfectly. Felt like cheating."</p>
+                            <p class="hero-t-quote">"Took me 90 seconds. The AI rewrote my bullets to match the job
+                                description perfectly. Felt like cheating."</p>
                             <div class="hero-t-badge">Hired at Deloitte</div>
                             <div class="hero-t-user">
-                                <img src="/static/user_imges/12.jpg" alt="Sara P." class="hero-t-avatar">
+                                <img src="/static/user_imges/37.jpg" alt="Sara P." class="hero-t-avatar">
                                 <div>
                                     <p class="hero-t-name">Sara P.</p>
                                     <p class="hero-t-role">Data Analyst</p>
@@ -635,7 +764,8 @@ header, main, section, footer, .hero, .features,
                         </article>
                         <article class="hero-t-card">
                             <div class="hero-t-stars">★★★★★</div>
-                            <p class="hero-t-quote">"Was skeptical at first. But my ATS score jumped from 42% to 91% after one optimization. I'm a believer now."</p>
+                            <p class="hero-t-quote">"Was skeptical at first. But my ATS score jumped from 42% to 91%
+                                after one optimization. I'm a believer now."</p>
                             <div class="hero-t-badge">Hired at Amazon</div>
                             <div class="hero-t-user">
                                 <img src="/static/user_imges/68.jpg" alt="Arjun M." class="hero-t-avatar">
@@ -647,7 +777,8 @@ header, main, section, footer, .hero, .features,
                         </article>
                         <article class="hero-t-card">
                             <div class="hero-t-stars">★★★★★</div>
-                            <p class="hero-t-quote">"I finally started hearing back from recruiters. The JD match suggestions made my resume much sharper in minutes."</p>
+                            <p class="hero-t-quote">"I finally started hearing back from recruiters. The JD match
+                                suggestions made my resume much sharper in minutes."</p>
                             <div class="hero-t-badge">Hired at PayPal</div>
                             <div class="hero-t-user">
                                 <img src="/static/user_imges/13.jpg" alt="Nina R." class="hero-t-avatar">
@@ -659,7 +790,8 @@ header, main, section, footer, .hero, .features,
                         </article>
                         <article class="hero-t-card">
                             <div class="hero-t-stars">★★★★★</div>
-                            <p class="hero-t-quote">"The ATS breakdown told me exactly what was missing. One optimization later, my profile started converting to interviews."</p>
+                            <p class="hero-t-quote">"The ATS breakdown told me exactly what was missing. One
+                                optimization later, my profile started converting to interviews."</p>
                             <div class="hero-t-badge">Hired at Apple</div>
                             <div class="hero-t-user">
                                 <img src="/static/user_imges/22.jpg" alt="Karan V." class="hero-t-avatar">
@@ -696,9 +828,9 @@ header, main, section, footer, .hero, .features,
                             flex: 0 0 auto;
                         }
 
-                        .social-proof-text-hero{
+                        .social-proof-text-hero {
                             font-size: 30px;
-                            margin-top:20px;
+                            margin-top: 20px;
                         }
 
                         .hero-testimonials {
@@ -796,59 +928,71 @@ header, main, section, footer, .hero, .features,
                         }
 
                         @media (max-width: 768px) {
-                            .hero-copy > * {
+                            .hero-copy>* {
                                 opacity: 1 !important;
                                 animation: none !important;
                                 transform: none !important;
                             }
+
                             .hero-split {
                                 grid-template-columns: 1fr !important;
                                 gap: 20px !important;
                             }
+
                             .hero-visual {
                                 width: 100% !important;
                                 max-width: 100% !important;
                                 min-width: 0 !important;
                                 overflow: hidden !important;
                             }
+
                             .resume-card {
                                 width: 100% !important;
                                 overflow: hidden !important;
                                 transform: none !important;
                             }
+
                             .hero-title {
                                 font-size: 2rem !important;
                             }
+
                             .gradient-text {
                                 font-size: 1.6rem !important;
                             }
+
                             .hero-subtitle {
                                 font-size: 15px !important;
                             }
+
                             .hero-cta {
                                 flex-direction: column !important;
                                 align-items: center !important;
                             }
+
                             .hero-cta a,
                             .hero-cta button {
                                 width: 100% !important;
                                 max-width: 100% !important;
                                 box-sizing: border-box !important;
                             }
+
                             .hero-testimonials {
                                 display: flex !important;
                                 flex-direction: column !important;
                                 gap: 12px !important;
                                 overflow: visible !important;
                             }
+
                             .hero-t-card {
                                 width: 100% !important;
                                 min-width: 0 !important;
                                 max-width: 100% !important;
                             }
+
                             .social-proof-text-hero {
                                 white-space: normal !important;
                             }
+
                             .social-proof-hero {
                                 flex-wrap: wrap !important;
                                 justify-content: center !important;
@@ -1002,7 +1146,7 @@ header, main, section, footer, .hero, .features,
             gap: 0;
             animation: marquee-scroll 23s linear infinite;
             will-change: transform;
-        
+
         }
 
         .marquee-track:hover {
@@ -1042,12 +1186,14 @@ header, main, section, footer, .hero, .features,
             0% {
                 transform: translateX(0);
             }
+
             100% {
                 transform: translateX(-50%);
             }
         }
 
         @media (max-width: 768px) {
+
             .marquee-wrapper::before,
             .marquee-wrapper::after {
                 width: 60px;
@@ -1068,6 +1214,7 @@ header, main, section, footer, .hero, .features,
         }
 
         @media (max-width: 480px) {
+
             .marquee-wrapper::before,
             .marquee-wrapper::after {
                 width: 40px;
@@ -1087,9 +1234,9 @@ header, main, section, footer, .hero, .features,
             }
         }
     </style>
-
+    
     <script>
-        (function() {
+        (function () {
             const logoFiles = [
                 'amazon.png',
                 'mckinsey.png',
@@ -1110,23 +1257,23 @@ header, main, section, footer, .hero, .features,
             function createLogoItems() {
                 // Create duplicates for seamless infinite scroll
                 const allLogos = [...logoFiles, ...logoFiles];
-                
+
                 allLogos.forEach((filename, index) => {
                     const logoItem = document.createElement('div');
                     logoItem.className = 'logo-item';
-                    
+
                     const img = document.createElement('img');
                     img.src = basePath + filename;
                     img.alt = filename.split('.')[0];
                     img.loading = 'lazy';
-                    
+
                     // For PNG files, use screen blend mode to remove white backgrounds
                     if (filename.toLowerCase().endsWith('.png')) {
                         img.style.mixBlendMode = 'screen';
                     }
-                    
+
                     // Add error handling for broken images
-                    img.onerror = function() {
+                    img.onerror = function () {
                         this.style.display = 'none';
                     };
 
@@ -1158,15 +1305,18 @@ header, main, section, footer, .hero, .features,
 
                     <article class="career-item">
                         <h4 class="career-item-title">Low ATS Match</h4>
-                        <p class="career-item-text">Resumes miss role-specific keywords, so applications get filtered out early.</p>
+                        <p class="career-item-text">Resumes miss role-specific keywords, so applications get filtered
+                            out early.</p>
                     </article>
                     <article class="career-item">
                         <h4 class="career-item-title">Manual Rewriting</h4>
-                        <p class="career-item-text">Every new job post means re-editing bullets from scratch and losing hours.</p>
+                        <p class="career-item-text">Every new job post means re-editing bullets from scratch and losing
+                            hours.</p>
                     </article>
                     <article class="career-item">
                         <h4 class="career-item-title">No Clear Direction</h4>
-                        <p class="career-item-text">It is hard to know what to change first to improve callback rate.</p>
+                        <p class="career-item-text">It is hard to know what to change first to improve callback rate.
+                        </p>
                     </article>
                 </div>
 
@@ -1180,15 +1330,18 @@ header, main, section, footer, .hero, .features,
 
                     <article class="career-item">
                         <h4 class="career-item-title">High ATS Alignment</h4>
-                        <p class="career-item-text">Get role-matched wording and keywords so your resume passes screening faster.</p>
+                        <p class="career-item-text">Get role-matched wording and keywords so your resume passes
+                            screening faster.</p>
                     </article>
                     <article class="career-item">
                         <h4 class="career-item-title">2-Minute Optimization</h4>
-                        <p class="career-item-text">Paste JD, optimize instantly, and apply with confidence in minutes.</p>
+                        <p class="career-item-text">Paste JD, optimize instantly, and apply with confidence in minutes.
+                        </p>
                     </article>
                     <article class="career-item">
                         <h4 class="career-item-title">Actionable Guidance</h4>
-                        <p class="career-item-text">See what changed, why it matters, and what boosts your interview chances.</p>
+                        <p class="career-item-text">See what changed, why it matters, and what boosts your interview
+                            chances.</p>
                     </article>
                 </div>
             </div>
@@ -1200,7 +1353,8 @@ header, main, section, footer, .hero, .features,
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Powerful AI Features, Built for Job Seekers</h2>
-                <p class="section-subtitle">From ATS scoring to interview prep, everything works together in one flow.</p>
+                <p class="section-subtitle">From ATS scoring to interview prep, everything works together in one flow.
+                </p>
             </div>
 
             <div class="feature-showcase-list">
@@ -1209,9 +1363,10 @@ header, main, section, footer, .hero, .features,
                         <p class="feature-showcase-kicker">ATS Score Analyzer</p>
                         <h3 class="feature-showcase-title">Know exactly why your resume gets rejected</h3>
                         <p class="feature-showcase-text">
-                            Upload your resume and get an instant ATS breakdown with keyword match, formatting issues, and actionable fixes to boost shortlist chances.
+                            Upload your resume and get an instant ATS breakdown with keyword match, formatting issues,
+                            and actionable fixes to boost shortlist chances.
                         </p>
-                        <a href="/solutions#ats-start" class="feature-showcase-btn">Check ATS Score</a>
+                        <a href="/solutions#ats-start" class="feature-showcase-btn" id="features_check_ats_score">Check ATS Score</a>
                     </div>
                     <div class="feature-showcase-visual tone-blue" aria-hidden="true">
                         <div class="mock-card">
@@ -1228,12 +1383,13 @@ header, main, section, footer, .hero, .features,
 
                 <article class="feature-showcase-item reverse">
                     <div class="feature-showcase-copy">
-                        <p class="feature-showcase-kicker">Optimize CV with AI</p>
+                        <p class="feature-showcase-kicker" id="optimize-cta-nav">Optimize CV with AI</p>
                         <h3 class="feature-showcase-title">Tailor every resume to the job in minutes</h3>
                         <p class="feature-showcase-text">
-                            Paste any job description and TailorCV rewrites bullets, upgrades wording, and aligns skills so your resume matches what recruiters are searching for.
+                            Paste any job description and TailorCV rewrites bullets, upgrades wording, and aligns skills
+                            so your resume matches what recruiters are searching for.
                         </p>
-                        <a href="/solutions" class="feature-showcase-btn">Optimize My Resume</a>
+                        <a href="/solutions" class="feature-showcase-btn" id="features_optimize_my_resume">Optimize My Resume</a>
                     </div>
                     <div class="feature-showcase-visual tone-violet" aria-hidden="true">
                         <div class="mock-card">
@@ -1256,7 +1412,8 @@ header, main, section, footer, .hero, .features,
                         <p class="feature-showcase-kicker">AI Mock Interview</p>
                         <h3 class="feature-showcase-title">Practice real interview questions with feedback</h3>
                         <p class="feature-showcase-text">
-                            Run role-specific mock interviews, improve your answers with AI coaching, and build confidence before the real interview.
+                            Run role-specific mock interviews, improve your answers with AI coaching, and build
+                            confidence before the real interview.
                         </p>
                         <a href="/mock-interview" class="feature-showcase-btn">Start Mock Interview</a>
                     </div>
@@ -1275,7 +1432,7 @@ header, main, section, footer, .hero, .features,
                         </div>
                     </div>
                 </article>
-                </div>
+            </div>
         </div>
     </section>
 
@@ -1328,7 +1485,7 @@ header, main, section, footer, .hero, .features,
             </div>
 
             <div class="results-cta-wrap">
-                <a href="/login?next=/solutions" class="results-login-btn">Login to Start Free</a>
+                <a href="/login?next=/solutions" class="results-login-btn" id="results_login_to_start_free">Login to Start Free</a>
             </div>
         </div>
     </section>
@@ -1352,13 +1509,13 @@ header, main, section, footer, .hero, .features,
                         <li>Role-based AI mock interview practice</li>
                         <li>Download-ready improved resume output</li>
                     </ul>
-                    <a href="/login?next=/solutions" class="pricing-plan-btn">Start for Free</a>
+                    <a href="/login?next=/solutions" class="pricing-plan-btn" id="pricing_free_plan_start">Start for Free</a>
                 </article>
 
                 <article class="pricing-preview-card featured">
                     <p class="pricing-badge">Coming Soon</p>
                     <p class="pricing-plan-name">Monthly Plan</p>
-                    <p class="pricing-plan-price">₹200<span>/month</span></p>
+                    <p class="pricing-plan-price">$5<span>/month</span></p>
                     <p class="pricing-plan-note">Planned for launch in about 3 months. It will include:</p>
                     <ul class="pricing-feature-list">
                         <li>All free features</li>
@@ -1366,7 +1523,7 @@ header, main, section, footer, .hero, .features,
                         <li>Higher monthly usage limits</li>
                         <li>Early access to new AI upgrades</li>
                     </ul>
-                    <a href="/login?next=/solutions" class="pricing-plan-btn">Start for Free</a>
+                    <a href="/login?next=/solutions" class="pricing-plan-btn" id="pricing_monthly_plan_start">Start for Free</a>
                 </article>
             </div>
         </div>
@@ -1377,7 +1534,8 @@ header, main, section, footer, .hero, .features,
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Insightful <span class="resources-accent">Resources</span></h2>
-                <p class="section-subtitle">Helpful reads from our blog to improve your resume and job-search strategy.</p>
+                <p class="section-subtitle">Helpful reads from our blog to improve your resume and job-search strategy.
+                </p>
             </div>
 
             <div class="home-resources-grid">
@@ -1385,7 +1543,8 @@ header, main, section, footer, .hero, .features,
                 <article class="home-resource-card">
                     <a href="/blog/{{ post.slug }}" class="home-resource-thumb" aria-label="Read {{ post.title }}">
                         {% if post.image %}
-                        <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy" decoding="async" class="home-resource-image">
+                        <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy" decoding="async"
+                            class="home-resource-image">
                         {% endif %}
                     </a>
                     <h3><a href="/blog/{{ post.slug }}">{{ post.title }}</a></h3>
@@ -1408,10 +1567,11 @@ header, main, section, footer, .hero, .features,
             <span id="salesPopAction">just logged in and is optimizing their resume right now</span> on
             <strong id="salesPopPlan">TailorCV</strong>
         </p>
-        <button type="button" class="sales-pop-close" id="salesPopClose" aria-label="Close notification">&times;</button>
+        <button type="button" class="sales-pop-close" id="salesPopClose"
+            aria-label="Close notification">&times;</button>
     </div>
 
-    <a href="/solutions" class="mobile-sticky-cta" aria-label="Optimize resume for free">Optimize Resume Free</a>
+    <a href="/solutions" class="mobile-sticky-cta" id="mobile_sticky_optimize_resume" aria-label="Optimize resume for free">Optimize Resume Free</a>
 
 
 
@@ -1423,7 +1583,8 @@ header, main, section, footer, .hero, .features,
                 <p class="prefooter-kicker">Career Acceleration Starts Here</p>
                 <h2 class="prefooter-title">Take Control of Your Next Career Move</h2>
                 <p class="prefooter-copy">
-                    Join job seekers using TailorCV to improve ATS scores, tailor resumes, and practice interviews with AI-powered feedback.
+                    Join job seekers using TailorCV to improve ATS scores, tailor resumes, and practice interviews with
+                    AI-powered feedback.
                 </p>
                 <div class="prefooter-actions">
                     <a href="/signup" class="prefooter-primary-btn">Start Free Now</a>
@@ -1433,25 +1594,41 @@ header, main, section, footer, .hero, .features,
     </section>
 
     <!-- Footer -->
-        <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section footer-brand">
                     <h4 class="footer-title">TailorCV</h4>
-                    <p class="footer-text">AI-powered resume optimization for your career success. Land more interviews, faster.</p>
-                    <a href="/solutions" class="footer-cta">Fix my Resume</a>
-                                        <div class="footer-socials" aria-label="Social links">
+                    <p class="footer-text">AI-powered resume optimization for your career success. Land more interviews,
+                        faster.</p>
+                    <a href="/solutions" class="footer-cta " id="footer_fix_my_resume">Fix my Resume</a>
+                    <div class="footer-socials" aria-label="Social links">
                         <a href="https://x.com/sarkar53765" class="footer-social" aria-label="X" title="X">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 2H22l-6.77 7.74L23 22h-6.1l-4.78-6.26L6.64 22H3.5l7.24-8.28L1 2h6.26l4.32 5.7L18.9 2z"/></svg>
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M18.9 2H22l-6.77 7.74L23 22h-6.1l-4.78-6.26L6.64 22H3.5l7.24-8.28L1 2h6.26l4.32 5.7L18.9 2z" />
+                            </svg>
                         </a>
-                        <a href="https://www.linkedin.com/company/thetailorcv/" class="footer-social" aria-label="LinkedIn" title="LinkedIn">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
+                        <a href="https://www.linkedin.com/company/thetailorcv/" class="footer-social"
+                            aria-label="LinkedIn" title="LinkedIn">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z" />
+                            </svg>
                         </a>
-                        <a href="https://www.instagram.com/thetailorcv/" class="footer-social" aria-label="Instagram" title="Instagram">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.9A3.85 3.85 0 0 0 3.9 7.75v8.5a3.85 3.85 0 0 0 3.85 3.85h8.5a3.85 3.85 0 0 0 3.85-3.85v-8.5a3.85 3.85 0 0 0-3.85-3.85h-8.5zM12 7.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.3-2.2a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+                        <a href="https://www.instagram.com/thetailorcv/" class="footer-social" aria-label="Instagram"
+                            title="Instagram">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.9A3.85 3.85 0 0 0 3.9 7.75v8.5a3.85 3.85 0 0 0 3.85 3.85h8.5a3.85 3.85 0 0 0 3.85-3.85v-8.5a3.85 3.85 0 0 0-3.85-3.85h-8.5zM12 7.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.3-2.2a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z" />
+                            </svg>
                         </a>
-                        <a href="https://www.youtube.com/@thetailorcv" class="footer-social" aria-label="YouTube" title="YouTube">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 12s0-3.1-.4-4.6a3.3 3.3 0 0 0-2.3-2.3C18.8 4.7 12 4.7 12 4.7s-6.8 0-8.3.4A3.3 3.3 0 0 0 1.4 7.4C1 8.9 1 12 1 12s0 3.1.4 4.6a3.3 3.3 0 0 0 2.3 2.3c1.5.4 8.3.4 8.3.4s6.8 0 8.3-.4a3.3 3.3 0 0 0 2.3-2.3c.4-1.5.4-4.6.4-4.6zM9.2 15.5V8.5l6 3.5-6 3.5z"/></svg>
+                        <a href="https://www.youtube.com/@thetailorcv" class="footer-social" aria-label="YouTube"
+                            title="YouTube">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M23 12s0-3.1-.4-4.6a3.3 3.3 0 0 0-2.3-2.3C18.8 4.7 12 4.7 12 4.7s-6.8 0-8.3.4A3.3 3.3 0 0 0 1.4 7.4C1 8.9 1 12 1 12s0 3.1.4 4.6a3.3 3.3 0 0 0 2.3 2.3c1.5.4 8.3.4 8.3.4s6.8 0 8.3-.4a3.3 3.3 0 0 0 2.3-2.3c.4-1.5.4-4.6.4-4.6zM9.2 15.5V8.5l6 3.5-6 3.5z" />
+                            </svg>
                         </a>
                     </div>
                 </div>
@@ -1459,9 +1636,9 @@ header, main, section, footer, .hero, .features,
                 <div class="footer-section">
                     <h4 class="footer-heading">Product</h4>
                     <a href="/" class="footer-link">Home</a>
-                    <a href="/solutions" class="footer-link">Get ATS score</a>
+                    <a href="/solutions" class="footer-link" id="footer_get_ats_score">Get ATS score</a>
                     <a href="/modify-cv" class="footer-link">Make CV</a>
-                    <a href="/solutions" class="footer-link">Optimize with AI</a>
+                    <a href="/solutions" class="footer-link " id="footer_optimize_with_ai">Optimize with AI</a>
                     <a href="/templates" class="footer-link">Templates</a>
                     <a href="/pricing" class="footer-link">Pricing</a>
                 </div>
@@ -1645,11 +1822,11 @@ header, main, section, footer, .hero, .features,
         /* ── Testimonial data ── */
         const row1Data = [
             { name: "Sarah Johnson", role: "Atlassian", image: "/static/user_imges/12.jpg", quote: "I was getting zero responses for weeks. After using TailorCV, my resume score jumped from 48 to 87—and I got 3 interview calls in 5 days.", stars: 5 },
-            { name: "David Patel", role: "PayPal", image: "/static/user_imges/13.jpg", quote: "The JD matching feature is insane. It literally shows what you’re missing and fixes it instantly. This saved me hours of manual editing", stars: 5, featured: true },
+            { name: "Vicki Bryant", role: "PayPal", image: "/static/user_imges/13.jpg", quote: "The JD matching feature is insane. It literally shows what you’re missing and fixes it instantly. This saved me hours of manual editing", stars: 5, featured: true },
             { name: "Emily Carter", role: "HBSC", image: "/static/user_imges/19.jpg", quote: "I used TailorCV before applying to a Product Analyst role, and I finally started getting callbacks. The ATS optimization actually works", stars: 5 },
             { name: "James Wu", role: "Apple", image: "/static/user_imges/22.jpg", quote: "I’ve tried multiple resume tools, but this is the first one that feels tailored—not generic AI output. It understands the job description deeply.", stars: 5 },
             { name: "Priya Mehta", role: "Tata Consultancy Services", image: "/static/user_imges/26.jpg", quote: "The biggest difference? Clarity. My resume now looks sharper, more relevant, and aligned with what recruiters want.", stars: 5 },
-            { name: "Raja Karmakar", role: "PWC", image: "/static/user_imges/4.jpg", quote: "I improved my ATS score from 52 to 91 in under 2 minutes. That alone makes this tool worth it.", stars: 5 },
+            { name: "Emily Graves", role: "PWC", image: "/static/user_imges/79.jpg", quote: "I improved my ATS score from 52 to 91 in under 2 minutes. That alone makes this tool worth it.", stars: 5 },
         ];
 
         const row2Data = [
@@ -1658,7 +1835,7 @@ header, main, section, footer, .hero, .features,
             { name: "Fatima Al-Hassan", role: "Netflix", image: "/static/user_imges/68.jpg", quote: "The speed is crazy. Upload, paste JD, done. No unnecessary steps. Perfect for someone applying to multiple jobs daily.", stars: 5 },
             { name: "Liam O'Brien", role: "Amazon", image: "/static/user_imges/70.jpg", quote: "This feels like having a personal career coach + resume expert combined into one tool.", stars: 5 },
             { name: "Yuki Tanaka", role: "PepsiCo", image: "/static/user_imges/75.jpg", quote: "I used TailorCV for 10 job applications and got responses from 4 of them. That’s a huge jump compared to before.", stars: 5 },
-            { name: "Maya Rosenberg", role: "General Motors", image: "/static/user_imges/82.jpg", quote: "The keyword optimization alone makes a big difference. My resume now actually passes ATS filters.", stars: 5 },
+            { name: "David Patel", role: "General Motors", image: "/static/user_imges/82.jpg", quote: "The keyword optimization alone makes a big difference. My resume now actually passes ATS filters.", stars: 5 },
         ];
 
         /* ── Build a card ── */
@@ -1697,110 +1874,203 @@ header, main, section, footer, .hero, .features,
             dots[current].classList.add('active');
         }, 3000);
 
-  const starsContainer = document.getElementById('bg-stars');
-  for (let i = 0; i < 60; i++) {
-    const s = document.createElement('div');
-    s.className = 'bg-star';
-    s.style.left = Math.random() * 100 + '%';
-    s.style.top  = Math.random() * 100 + '%';
-    s.style.opacity = Math.random() * 0.4 + 0.1;
-    s.style.animation = `twinkle ${(2 + Math.random() * 4).toFixed(1)}s ease-in-out ${(Math.random() * 4).toFixed(1)}s infinite`;
-    starsContainer.appendChild(s);
-  }
+        const starsContainer = document.getElementById('bg-stars');
+        for (let i = 0; i < 60; i++) {
+            const s = document.createElement('div');
+            s.className = 'bg-star';
+            s.style.left = Math.random() * 100 + '%';
+            s.style.top = Math.random() * 100 + '%';
+            s.style.opacity = Math.random() * 0.4 + 0.1;
+            s.style.animation = `twinkle ${(2 + Math.random() * 4).toFixed(1)}s ease-in-out ${(Math.random() * 4).toFixed(1)}s infinite`;
+            starsContainer.appendChild(s);
+        }
     </script>
-<script>
-(function(){
-  const canvas = document.getElementById('wave-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H;
-  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-  resize();
-  window.addEventListener('resize', resize);
+    <script>
+        (function () {
+            const canvas = document.getElementById('wave-canvas');
+            const ctx = canvas.getContext('2d');
+            let W, H;
+            function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+            resize();
+            window.addEventListener('resize', resize);
 
-  const waves = [
-    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
-    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
-    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
-    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
-    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
-    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
-  ];
+            const waves = [
+                { amp: 100, freq: 0.0016, speed: 0.00035, color: [59, 130, 246], yf: 0.38, alpha: 0.14 },
+                { amp: 80, freq: 0.0022, speed: 0.00028, color: [79, 70, 229], yf: 0.50, alpha: 0.11 },
+                { amp: 90, freq: 0.0014, speed: 0.00042, color: [99, 102, 241], yf: 0.60, alpha: 0.10 },
+                { amp: 60, freq: 0.0026, speed: 0.00050, color: [37, 99, 235], yf: 0.44, alpha: 0.09 },
+                { amp: 65, freq: 0.0012, speed: 0.00022, color: [124, 58, 237], yf: 0.70, alpha: 0.09 },
+                { amp: 40, freq: 0.0030, speed: 0.00055, color: [6, 182, 212], yf: 0.54, alpha: 0.07 },
+            ];
 
-  function draw(){
-    ctx.clearRect(0, 0, W, H);
-    const t = Date.now();
-    waves.forEach(wv => {
-      ctx.beginPath();
-      for(let x = 0; x <= W; x += 2){
-        const y = H * wv.yf
-          + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
-          + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
-          + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
-        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-      const [r,g,b] = wv.color;
-      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
-      gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
-      gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
-      gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
-      ctx.fillStyle = gr;
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-</script>
-<script>
-(() => {
-  const pop = document.getElementById("salesPop");
-  if (!pop) return;
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+                const t = Date.now();
+                waves.forEach(wv => {
+                    ctx.beginPath();
+                    for (let x = 0; x <= W; x += 2) {
+                        const y = H * wv.yf
+                            + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
+                            + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
+                            + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+                        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+                    }
+                    ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+                    const [r, g, b] = wv.color;
+                    const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+                    gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
+                    gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
+                    gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
+                    ctx.fillStyle = gr;
+                    ctx.fill();
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+    </script>
+    <script>
+        (() => {
+            const pop = document.getElementById("salesPop");
+            if (!pop) return;
 
-  const nameEl = document.getElementById("salesPopName");
-  const countryEl = document.getElementById("salesPopCountry");
-  const actionEl = document.getElementById("salesPopAction");
-  const planEl = document.getElementById("salesPopPlan");
-  const closeBtn = document.getElementById("salesPopClose");
+            const nameEl = document.getElementById("salesPopName");
+            const countryEl = document.getElementById("salesPopCountry");
+            const actionEl = document.getElementById("salesPopAction");
+            const planEl = document.getElementById("salesPopPlan");
+            const closeBtn = document.getElementById("salesPopClose");
 
-  const entries = [
-    ["Someone", "USA", "just logged in and is optimizing their resume right now", "TailorCV"],
-    ["Someone", "Canada", "is practicing a mock interview right now", "TailorCV"],
-    ["Someone", "India", "is checking their ATS score now", "TailorCV"],
-    ["Someone", "United Kingdom", "is making their CV right now", "TailorCV"],
-    ["Today", "USA", "almost 100 users are active here", "TailorCV"],
-    ["Today", "Canada", "over 60 users are optimizing resumes now", "TailorCV"],
-    ["Today", "India", "more than 140 users checked ATS scores", "TailorCV"]
-  ];
+            const entries = [
+                ["Someone", "USA", "just logged in and is optimizing their resume right now", "TailorCV"],
+                ["Someone", "Canada", "is practicing a mock interview right now", "TailorCV"],
+                ["Someone", "India", "is checking their ATS score now", "TailorCV"],
+                ["Someone", "United Kingdom", "is making their CV right now", "TailorCV"],
+                ["Today", "USA", "almost 100 users are active here", "TailorCV"],
+                ["Today", "Canada", "over 60 users are optimizing resumes now", "TailorCV"],
+                ["Today", "India", "more than 140 users checked ATS scores", "TailorCV"]
+            ];
 
-  let idx = 0;
-  let timer = null;
+            let idx = 0;
+            let timer = null;
 
-  function showEntry(i) {
-    const [name, country, action, brand] = entries[i % entries.length];
-    nameEl.textContent = name;
-    countryEl.textContent = country;
-    actionEl.textContent = action;
-    planEl.textContent = brand;
-    pop.classList.remove("visible");
-    requestAnimationFrame(() => pop.classList.add("visible"));
-  }
+            function showEntry(i) {
+                const [name, country, action, brand] = entries[i % entries.length];
+                nameEl.textContent = name;
+                countryEl.textContent = country;
+                actionEl.textContent = action;
+                planEl.textContent = brand;
+                pop.classList.remove("visible");
+                requestAnimationFrame(() => pop.classList.add("visible"));
+            }
 
-  function startLoop() {
-    showEntry(idx++);
-    timer = setInterval(() => showEntry(idx++), 7000);
-  }
+            function startLoop() {
+                showEntry(idx++);
+                timer = setInterval(() => showEntry(idx++), 7000);
+            }
 
-  closeBtn.addEventListener("click", () => {
-    pop.classList.remove("visible");
-    if (timer) clearInterval(timer);
-  });
+            closeBtn.addEventListener("click", () => {
+                pop.classList.remove("visible");
+                if (timer) clearInterval(timer);
+            });
 
-  setTimeout(startLoop, 6000);
-})();
-</script>
+            setTimeout(startLoop, 6000);
+        })();
+    </script>
 
+    <script>
+        /**
+         * PostHog – Solutions CTA tracking
+         * Tracks every clickable element on the homepage that navigates to /solutions.
+         * Event: solutions_cta_clicked
+         *
+         * FIX: <a> tags navigate immediately on click, unloading the page before
+         * PostHog's async request can complete. We intercept the click, call
+         * posthog.capture() with a _onCapture callback that performs the navigation
+         * once the event is queued. A 300 ms safety timeout ensures navigation always
+         * happens even if PostHog is blocked or unavailable.
+         */
+        document.addEventListener("DOMContentLoaded", function () {
 
+            var solutionsCTAs = [
+                // ── Navbar ──────────────────────────────────────────────────────────
+                { id: "nav_get_ats_score",                  element_name: "nav_get_ats_score" },
+                { id: "nav_optimize_cv_with_ai",            element_name: "nav_optimize_cv_with_ai" },
+                { id: "nav_dropdown_optimize_cv",           element_name: "nav_dropdown_optimize_cv" },
+                { id: "nav_dropdown_explore_all_features",  element_name: "nav_dropdown_explore_all_features" },
+                { id: "optimize-get-started-nav",           element_name: "nav_get_started_button" },
+
+                // ── Hero ─────────────────────────────────────────────────────────────
+                { id: "hero_optimize_my_resume_free",       element_name: "hero_optimize_my_resume_free" },
+
+                // ── Features / How-it-works section ──────────────────────────────────
+                { id: "features_check_ats_score",           element_name: "features_check_ats_score" },
+                { id: "features_optimize_my_resume",        element_name: "features_optimize_my_resume" },
+
+                // ── Results section ───────────────────────────────────────────────────
+                { id: "results_login_to_start_free",        element_name: "results_login_to_start_free" },
+
+                // ── Pricing section ───────────────────────────────────────────────────
+                { id: "pricing_free_plan_start",            element_name: "pricing_free_plan_start" },
+                { id: "pricing_monthly_plan_start",         element_name: "pricing_monthly_plan_start" },
+
+                // ── Mobile sticky banner ──────────────────────────────────────────────
+                { id: "mobile_sticky_optimize_resume",      element_name: "mobile_sticky_optimize_resume" },
+
+                // ── Footer ────────────────────────────────────────────────────────────
+                { id: "footer_fix_my_resume",               element_name: "footer_fix_my_resume" },
+                { id: "footer_get_ats_score",               element_name: "footer_get_ats_score" },
+                { id: "footer_optimize_with_ai",            element_name: "footer_optimize_with_ai" }
+            ];
+
+            solutionsCTAs.forEach(function (cta) {
+                var el = document.getElementById(cta.id);
+                if (!el) return;
+
+                el.addEventListener("click", function (e) {
+                    // Only intercept plain left-clicks (not Ctrl/Cmd+click to open in new tab)
+                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+                    var href = el.getAttribute("href");
+
+                    // If PostHog isn't loaded, navigate immediately and bail out
+                    if (typeof posthog === "undefined" || typeof posthog.capture !== "function") {
+                        return;
+                    }
+
+                    e.preventDefault();
+
+                    var navigated = false;
+
+                    function navigate() {
+                        if (navigated) return;
+                        navigated = true;
+                        window.location.href = href;
+                    }
+
+                    // Safety net: always navigate within 300 ms even if PostHog stalls
+                    var safetyTimer = setTimeout(navigate, 300);
+
+                    posthog.capture(
+                        "solutions_cta_clicked",
+                        {
+                            source_page: "homepage",
+                            element_name: cta.element_name
+                        },
+                        {
+                            // transport uses sendBeacon where available — survives page unload
+                            transport: "sendBeacon",
+                            // PostHog calls this once the event is queued/sent
+                            _onCapture: function () {
+                                clearTimeout(safetyTimer);
+                                navigate();
+                            }
+                        }
+                    );
+                });
+            });
+
+        });
+    </script>
 </body>
 
 </html>
