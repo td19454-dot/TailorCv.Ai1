@@ -717,11 +717,12 @@ def _formatting_structure_score(resume_text: str) -> float:
     return sum(1 for check in checks if check) / len(checks)
 
 
-def compute_deterministic_ats_score_breakdown(resume_text: str, jd_text: str) -> dict[str, float]:
+def compute_deterministic_ats_score_breakdown(resume_text: str, jd_text: str, skill_match_score) -> dict[str, float]:
     resume_tokens = _tokenize_for_ats(resume_text)
     jd_tokens = _tokenize_for_ats(jd_text)
     vec_resume, vec_jd = _tfidf_vectors(resume_tokens, jd_tokens)
-    keyword_score = max(0.0, min(1.0, _cosine_similarity(vec_resume, vec_jd)))
+    # keyword_score = max(0.0, min(1.0, _cosine_similarity(vec_resume, vec_jd)))
+    keyword_score=skill_match_score
 
     # Semantic similarity uses the same deterministic TF-IDF family with bigram tokens.
     resume_bigrams = [f"{resume_tokens[i]}_{resume_tokens[i+1]}" for i in range(len(resume_tokens) - 1)]
@@ -729,10 +730,11 @@ def compute_deterministic_ats_score_breakdown(resume_text: str, jd_text: str) ->
     vec_resume_bg, vec_jd_bg = _tfidf_vectors(resume_bigrams, jd_bigrams)
     semantic_score = max(0.0, min(1.0, _cosine_similarity(vec_resume_bg, vec_jd_bg)))
 
-    jd_skills = _extract_skill_candidates(jd_text)
-    resume_skills = _extract_skill_candidates(resume_text)
-    skill_score = (len(jd_skills.intersection(resume_skills)) / len(jd_skills)) if jd_skills else keyword_score
-    skill_score = max(0.0, min(1.0, skill_score))
+    # jd_skills = _extract_skill_candidates(jd_text)
+    # resume_skills = _extract_skill_candidates(resume_text)
+    # skill_score = (len(jd_skills.intersection(resume_skills)) / len(jd_skills)) if jd_skills else keyword_score
+    skill_score=skill_match_score
+    
 
     required_years = _extract_years_of_experience(jd_text)
     resume_years = _extract_years_of_experience(resume_text)
@@ -819,8 +821,7 @@ def _compute_resume_stats(resume_text: str) -> dict:
 
 async def ats_scoring(resume_string, jd_string):
     """Gives ats score for the resume highlignting strengths and weaknesses"""
-    deterministic_breakdown = compute_deterministic_ats_score_breakdown(resume_string, jd_string)
-    deterministic_score = deterministic_breakdown["final_score"]
+    
 
     base_prompt=f"""You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
     Your task is to analyze a resume against a job description and generate a Jobscan-style Match Report.
@@ -832,131 +833,320 @@ async def ats_scoring(resume_string, jd_string):
     {_escape_braces(jd_string)}
   
     ANALYSIS INSTRUCTIONS
-    Evaluate the resume using ATS logic based on:
-    - Searchability: 1)Contact information : is email present ,is phone number present, is name present
-                     2)Professional summary: is it present, presents my abilities clearly and precisely, is it relevant to the job description
-                     3)Section Headings: are Work Experience, Education, Skills, Projects present
-                     4) Does Job title Match
-                     5)Are the dates in chronological order
-                     6) Are there any spelling mistakes in the resume
-                     7) Does the resume have relevant links to all projects and achievements
-    - Hard skills and Soft skills  match
-    - cliches : Does the resume have generic cliche words with no measurable impact.
-    - Experience relevance: does the candidate have the experience required in the JD
-    - Formatting: 1) Is the resume free from any pictures, watermarks
-                  2) Is the resume single column
-                  3) Does the resume have too much color and design (too much means more than two)
-                  4) Does the resume have unessacery sections like extracurriculars, hobbies, interests
-    Be strict, realistic, and recruiter-focused.
-    Do NOT assume or hallucinate skills or experience not explicitly stated.
+Evaluate the resume using ATS logic based on:
 
-    IMPORTANT:
-    - Numeric ATS score is already computed deterministically server-side.
-    - Do NOT recalculate score with AI.
-    - Focus on qualitative analysis, strengths, gaps, and actionable recruiter tips.
-    - Use this deterministic score exactly:
-      deterministic_match_rate={deterministic_score}
+* Contact Information
 
-    ### OUTPUT RULES (MANDATORY)
-    - Output **ONLY valid JSON**
-    - No explanations, no markdown, no extra text
-    - JSON must strictly follow the schema below
+  1. Is email present?
+  2. Is phone number present?
+  3. Is LinkedIn present?
+
+* Skills Match
+
+  1. Hard skills matched vs missing
+  2. Soft skills matched vs missing
+
+* Resume Sections
+
+  1. Projects section present
+  2. Experience section present
+  3. Skills section present
+  4. Education section present
+
+* Chronology
+
+  1. Are dates in reverse chronological order?
+
+* Spelling and Grammar
+
+  1. Are there spelling mistakes?
+  2. Are there grammar mistakes?
+
+* Buzzwords and Personal Pronouns
+
+  1. Does the resume contain generic buzzwords or clichés with no measurable impact?
+  2. Does the resume contain personal pronouns such as I, Me, My, Mine, We, Our?
+
+* Education
+
+  1. Does the resume meet the educational requirements mentioned in the job description?
+
+* Experience
+
+  1. Does the resume meet the experience requirements mentioned in the job description?
+  2. Are company names provided?
+  3. Are job titles provided?
+  4. Are strong action verbs used?
+  5. Are achievements quantified with metrics?
+
+* Projects
+
+  1. Are relevant project links present?
+  2. Are strong action verbs used?
+  3. Are achievements quantified with metrics?
+
+* Formatting
+
+  1. Is the resume free from pictures, graphics, icons, and watermarks?
+  2. Is the resume single-column?
+  3. Does the resume contain excessive design elements, colors, tables, or text boxes that may hurt ATS parsing?
+  4. Does the resume contain unnecessary sections such as hobbies, interests, extracurriculars, references, or unrelated information?
+
+Be strict, realistic, and recruiter-focused.
+
+Do NOT assume or hallucinate skills, qualifications, experience, projects, certifications, or achievements that are not explicitly stated.
+
+IMPORTANT:
+
+* Numeric ATS score is already computed deterministically server-side.
+* Do NOT recalculate or estimate ATS score.
+* Focus on qualitative analysis, strengths, gaps, and actionable recruiter recommendations.
+* The explanation and action fields are extremely important.
+
+EXPLANATION RULES
+
+Whenever a check fails:
+
+* Clearly identify the exact issue.
+* Mention where the issue occurs whenever possible.
+* Quote the problematic text whenever possible.
+* Explain what is wrong in a recruiter-focused manner.
+* Avoid generic explanations.
+
+BAD:
+"Spelling mistakes found."
+
+GOOD:
+"The word 'Experiance' appears in the Work Experience section and is misspelled."
+
+BAD:
+"Action verbs missing."
+
+GOOD:
+"The bullet point 'Worked on customer churn prediction model' uses weak wording and does not demonstrate ownership."
+
+BAD:
+"Missing project links."
+
+GOOD:
+"The project 'Housing Price Predictor' does not contain a GitHub repository URL or live demo link."
+
+ACTION RULES
+
+Actions must provide concrete fixes.
+
+BAD:
+"Fix spelling mistakes."
+
+GOOD:
+"Replace 'Experiance' with 'Experience' in the Work Experience section."
+
+BAD:
+"Add action verbs."
+
+GOOD:
+"Rewrite 'Worked on customer churn model' as 'Developed a customer churn prediction model using XGBoost'."
+
+BAD:
+"Add metrics."
+
+GOOD:
+"Add measurable results to the bullet 'Built recommendation engine' by including accuracy improvements, user count, revenue impact, or processing time reduction."
+
+BAD:
+"Add skills."
+
+GOOD:
+"Add Docker and AWS to the Skills section only if you genuinely possess those skills, as they are explicitly required by the job description."
+
+SPECIFICITY REQUIREMENTS
+
+For every failed check:
+
+1. Explain exactly what is wrong.
+2. Explain where it occurs.
+3. Explain why it matters.
+4. Provide an exact corrective action.
+5. Reference actual resume content whenever possible.
+
+The user should be able to immediately fix the issue without asking additional questions.
+
+### OUTPUT RULES (MANDATORY)
+
+* Output ONLY valid JSON.
+* No explanations outside JSON.
+* No markdown.
+* No extra text.
+* JSON must strictly follow the schema below.
 
     ### REQUIRED JOBSCAN-STYLE JSON FORMAT
     """
     json_schema='''{
-    "match_rate": <integer 0-100>,
-    "match_level": "<Poor | Fair | Good | Strong | Excellent>",
+  "contact_information": {
+    "email": {
+      "present": "<false|true>"
+    },
+    "phone": {
+      "present": "<false|true>"
+    },
+    "linkedin": {
+      "present": "<false|true>"
+    }
+  },
 
+  "spelling_and_grammar": {
+    "spelling": {
+      "passed":"<false|true>",
+      "explanation": "<Provide_exp>",
+      "action":"<Provide_act>"
+    },
+
+    "grammar": {
+      "passed": "<false|true>",
+      "explanation": "",
+      "action": ""
+    },
+
+    "buzzwords": {
+      "passed": "<false|true>",
+      "explanation": "",
+      "action": ""
+    },
+
+    "personal_pronouns": {
+      "passed": "<false|true>",
+      "explanation": "",
+      "action":""
+    }
+  },
+
+  "skills": {
     "hard_skills": {
-        "matched": ["<skill1>", "<skill2>"],
-        "missing": ["<skill1>", "<skill2>"]
+      "matched": [],
+      "missing": []
+      
     },
+
     "soft_skills": {
-        "matched": ["<skill1>", "<skill2>"],
-        "missing": ["<skill1>", "<skill2>"]
-    },
-    "keywords": {
-        "matched": ["<keyword1>", "<keyword2>"],
-        "missing": ["<keyword1>", "<keyword2>"]
-    },
-    "tools_and_technologies": {
-        "matched": ["<tool1>", "<tool2>"],
-        "missing": ["<tool1>", "<tool2>"]
+      "matched": [],
+      "missing": []
+      
+    }
+  },
+
+  "sections": {
+    "projects": {
+      "present": "<false|true>"
     },
 
     "experience": {
-        "job_requirement": "<years or description from JD>",
-        "resume_experience": "<summary of experience from resume>",
-        "match_status": "<Low | Partial | Strong>",
-        "relevance_score": <integer 0-100>,
-        "notes": "<short explanation of how well the experience matches the JD>"
+      "present": "<false|true>"
     },
 
-    "job_title_match": {
-        "job_title_in_jd": "<title from JD>",
-        "resume_titles": ["<title1 from resume>", "<title2 from resume>"],
-        "match_status": "<Low | Partial | Strong>"
+    "skills": {
+      "present": "<false|true>"
     },
 
-    "searchability": {
-        "score": <integer 0-100>,
-        "contact_information": {
-        "has_name": <true | false>,
-        "has_email": <true | false>,
-        "has_phone": <true | false>
-        },
-        "professional_summary": {
-        "is_present": <true | false>,
-        "is_clear_and_concise": <true | false>,
-        "is_relevant_to_jd": <true | false>
-        },
-        "section_headings": {
-        "has_work_experience": <true | false>,
-        "has_education": <true | false>,
-        "has_skills": <true | false>,
-        "has_projects": <true | false>,
-        "missing_sections": ["<missing_section1>", "<missing_section2>"]
-        },
-        "chronology": {
-        "is_chronological": <true | false>,
-        "issues": ["<issue about date ordering, if any>"]
-        },
-        "spelling_grammar": {
-        "has_spelling_or_grammar_errors": <true | false>,
-        "examples": ["<example error 1>", "<example error 2>"]
-        },
-        "links": {
-        "has_relevant_links": <true | false>,
-        "missing_recommended_links": ["<missing_link_description1>", "<missing_link_description2>"]
-        },
-        "issues": [
-        "<high-level searchability issue 1>",
-        "<high-level searchability issue 2>"
-        ]
+    "education": {
+      "present": "<false|true>"
     },
 
-    "cliches": {
-        "has_cliches": <true | false>,
-        "examples": ["<cliche phrase 1>", "<cliche phrase 2>"]
+    "chronological_dates": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "formatting": {
+    "single_column": {
+      "passed": "<false|true>",
+      "explanation": ""
     },
 
-    "formatting": {
-        "is_photo_free": <true | false>,
-        "is_single_column": <true | false>,
-        "has_minimal_color_and_design": <true | false>,  // false if more than two strong colors/design elements
-        "unnecessary_sections_present": <true | false>,
-        "unnecessary_sections": ["<section name 1>", "<section name 2>"]
+    "photos_or_graphics": {
+      "passed": "<false|true>",
+      "explanation": ""
     },
 
-    "recruiter_tips": [
-        "<actionable improvement 1 based on above analysis>",
-        "<actionable improvement 2>",
-        "<actionable improvement 3>"
-    ]} '''
+    "excessive_design": {
+      "passed": "<false|true>",
+      "explanation":""
+    },
+
+    "unnecessary_sections": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "education": {
+    "qualification_match": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "experience": {
+    "experience_match": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "company_names": {
+      "present": "<false|true>"                                                      
+    },
+
+    "job_titles": {
+      "present": "<false|true>"
+    },
+
+    "action_verbs": {
+      "passed": "<false|true>",
+      "explanation": ""
+      
+    },
+
+    "quantified_impact": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "projects": {
+    "project_links": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "action_verbs": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "quantified_impact": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "top_priority_fixes": [
+    {
+      "issue": "",
+      "action": ""
+    },
+    {
+      "issue": "",
+      "action": ""
+    },
+    {
+      "issue": "",
+      "action": ""
+    }
+  ]
+} '''
     prompt = base_prompt + "\n" + json_schema
     model="gpt-4o-mini"
-    temperature=0.1
+    temperature=0
     client = await _build_openai_client()
 
     #Make call
@@ -982,7 +1172,16 @@ async def ats_scoring(resume_string, jd_string):
 
     if not isinstance(parsed, dict):
         parsed = {}
-
+    
+    matched_keywords=parsed.get("keywords",{}).get("matched",[])
+    missing_keywords=parsed.get("keywords",{}).get("missing",[])
+    total_keywords=len(matched_keywords)+len(missing_keywords)
+    
+    skill_match_score = round(len(matched_keywords)/total_keywords, 2) if total_keywords > 0 else 0
+    
+    deterministic_breakdown = compute_deterministic_ats_score_breakdown(resume_string, jd_string, skill_match_score)
+    deterministic_score = deterministic_breakdown["final_score"]
+    
     parsed["match_rate"] = deterministic_score
     if deterministic_score < 40:
         parsed["match_level"] = "Poor"
