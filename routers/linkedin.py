@@ -448,43 +448,61 @@ async def parse_linkedin(body: LinkedInParseRequest):
 
 
 async def _fetch_linkedin_html_text(linkedin_url: str) -> str:
-    """Fetch a public LinkedIn profile page and return its plain text content."""
+    """Fetch a public LinkedIn profile page, strip login-wall noise, return cleaned text."""
+    _LOGIN_NOISE = {
+        "sign in", "sign in with email", "sign in with google", "email or phone",
+        "forgot password?", "new to linkedin?", "join now", "show", "password",
+        "or", "by clicking continue to join or sign in, you agree to linkedin's",
+        "user agreement", "privacy policy", "cookie policy", "continue",
+        "get the linkedin app", "skip to main content",
+    }
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/124.0.0.0 Safari/537.36"
+            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
         ),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.9",
         "Accept-Encoding": "gzip, deflate, br",
         "Connection": "keep-alive",
-        "Upgrade-Insecure-Requests": "1",
         "Cache-Control": "no-cache",
     }
     try:
-        async with httpx.AsyncClient(
-            timeout=20.0,
-            follow_redirects=True,
-            headers=headers,
-        ) as http:
+        async with httpx.AsyncClient(timeout=20.0, follow_redirects=True, headers=headers) as http:
             resp = await http.get(linkedin_url)
             if resp.status_code != 200:
                 return ""
-            html = resp.text
             from bs4 import BeautifulSoup
-            soup = BeautifulSoup(html, "html.parser")
+            soup = BeautifulSoup(resp.text, "html.parser")
+
+            # og: meta tags are always present even behind login walls
+            meta_prefix = ""
+            og_title = soup.find("meta", property="og:title")
+            og_desc = soup.find("meta", property="og:description")
+            if og_title and og_title.get("content"):
+                meta_prefix += f"Profile Title: {og_title['content']}\n"
+            if og_desc and og_desc.get("content"):
+                meta_prefix += f"Profile Summary: {og_desc['content']}\n\n"
+
             for tag in soup(["script", "style", "nav", "footer", "iframe", "noscript"]):
                 tag.decompose()
-            text = soup.get_text(separator="\n", strip=True)
-            # Detect login-wall redirect
-            low = text.lower()
-            if (
-                ("join linkedin" in low or "sign in" in low or "authwall" in low)
-                and len(text) < 3000
-            ):
-                return ""
-            return text[:40000]
+            raw = soup.get_text(separator="\n", strip=True)
+            low = raw.lower()
+
+            # Deduplicate and strip login-form boilerplate when page is walled
+            if "sign in to view" in low or "authwall" in low:
+                seen: set[str] = set()
+                filtered = []
+                for line in raw.split("\n"):
+                    s = line.strip()
+                    if not s or s.lower() in _LOGIN_NOISE or s in seen:
+                        continue
+                    seen.add(s)
+                    filtered.append(s)
+                raw = "\n".join(filtered)
+
+            combined = (meta_prefix + raw).strip()
+            return combined[:40000] if len(combined) >= 80 else ""
     except Exception:
         return ""
 
@@ -499,11 +517,12 @@ async def import_linkedin(body: LinkedInImportRequest):
     if not api_key:
         raise HTTPException(status_code=500, detail="OPENAI_API_KEY is not configured.")
 
-    # ── Primary: direct HTML scrape ──────────────────────────────────────────
+    # ── Primary: HTML scrape + GPT ───────────────────────────────────────────
     profile_text = await _fetch_linkedin_html_text(linkedin_url)
     if profile_text:
         try:
-            parsed = await _parse_cv_with_openai(api_key, profile_text)
+            import asyncio as _asyncio
+            parsed = await _asyncio.to_thread(_parse_cv_with_openai, api_key, profile_text)
             parsed.setdefault("linkedin_url", linkedin_url)
             return {"success": True, "data": parsed}
         except Exception:
@@ -558,7 +577,18 @@ async def import_linkedin(body: LinkedInImportRequest):
             ),
         )
 
+    # RapidAPI may return 200 with {"success": false} when the service is down
+    if isinstance(profile_raw, dict) and profile_raw.get("success") is False:
+        raise HTTPException(
+            status_code=422,
+            detail=(
+                "Could not fetch this LinkedIn profile automatically. "
+                "Make sure your LinkedIn profile is set to Public and try again."
+            ),
+        )
+
     try:
+        import asyncio as _asyncio
         fallback = _extract_linkedin_fallback(profile_raw, linkedin_url)
         payload_for_ai = (
             profile_raw.get("data")
@@ -566,7 +596,7 @@ async def import_linkedin(body: LinkedInImportRequest):
             else profile_raw
         )
         raw_for_ai = json.dumps(payload_for_ai, ensure_ascii=False, indent=2)
-        parsed = await _parse_cv_with_openai(api_key, raw_for_ai[:50000])
+        parsed = await _asyncio.to_thread(_parse_cv_with_openai, api_key, raw_for_ai[:50000])
         merged = _merge_ai_with_fallback(parsed, fallback)
         merged.setdefault("linkedin_url", linkedin_url)
         return {"success": True, "data": merged}
