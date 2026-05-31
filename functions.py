@@ -717,49 +717,244 @@ def _formatting_structure_score(resume_text: str) -> float:
     return sum(1 for check in checks if check) / len(checks)
 
 
-def compute_deterministic_ats_score_breakdown(resume_text: str, jd_text: str, skill_match_score) -> dict[str, float]:
-    resume_tokens = _tokenize_for_ats(resume_text)
-    jd_tokens = _tokenize_for_ats(jd_text)
-    vec_resume, vec_jd = _tfidf_vectors(resume_tokens, jd_tokens)
-    # keyword_score = max(0.0, min(1.0, _cosine_similarity(vec_resume, vec_jd)))
-    keyword_score=skill_match_score
+def bool_score(value):
+    return str(value).lower() == "true"
 
-    # Semantic similarity uses the same deterministic TF-IDF family with bigram tokens.
-    resume_bigrams = [f"{resume_tokens[i]}_{resume_tokens[i+1]}" for i in range(len(resume_tokens) - 1)]
-    jd_bigrams = [f"{jd_tokens[i]}_{jd_tokens[i+1]}" for i in range(len(jd_tokens) - 1)]
-    vec_resume_bg, vec_jd_bg = _tfidf_vectors(resume_bigrams, jd_bigrams)
-    semantic_score = max(0.0, min(1.0, _cosine_similarity(vec_resume_bg, vec_jd_bg)))
 
-    # jd_skills = _extract_skill_candidates(jd_text)
-    # resume_skills = _extract_skill_candidates(resume_text)
-    # skill_score = (len(jd_skills.intersection(resume_skills)) / len(jd_skills)) if jd_skills else keyword_score
-    skill_score=skill_match_score
-    
+def compute_deterministic_ats_score_breakdown(parsed):
 
-    required_years = _extract_years_of_experience(jd_text)
-    resume_years = _extract_years_of_experience(resume_text)
-    if required_years > 0:
-        experience_score = max(0.0, min(1.0, resume_years / required_years))
-    else:
-        experience_score = 1.0 if resume_years > 0 else 0.5
+    score = 0.0
 
-    formatting_score = _formatting_structure_score(resume_text)
-    formatting_component = (0.6 * formatting_score) + (0.4 * experience_score)
-    print(keyword_score,skill_score,semantic_score,formatting_component)
-    final_score = (
-        0.30 * keyword_score*2.5
-        + 0.50 * skill_score*3
-        + 0.10 * semantic_score*2.5
-        + 0.10 * formatting_component*2.5
-    ) * 100.0 - 7.00
+    # =====================
+    # CONTACT INFO (10)
+    # =====================
+
+    contact = parsed.get("contact_information", {})
+
+    if bool_score(contact.get("email", {}).get("present")):
+        score += 4
+
+    if bool_score(contact.get("phone", {}).get("present")):
+        score += 3
+
+    if bool_score(contact.get("linkedin", {}).get("present")):
+        score += 3
+
+    # =====================
+    # SECTIONS (15)
+    # =====================
+
+    sections = parsed.get("sections", {})
+
+    section_checks = [
+        sections.get("projects", {}).get("present"),
+        sections.get("experience", {}).get("present"),
+        sections.get("skills", {}).get("present"),
+        sections.get("education", {}).get("present"),
+        sections.get("chronological_dates", {}).get("passed")
+    ]
+
+    score += (
+        sum(bool_score(x) for x in section_checks)
+        / len(section_checks)
+    ) * 15
+
+    # =====================
+    # SKILLS MATCH (25)
+    # =====================
+
+    skills = parsed.get("skills", {})
+
+    hard_matched = len(
+        skills.get("hard_skills", {}).get("matched", [])
+    )
+
+    hard_missing = len(
+        skills.get("hard_skills", {}).get("missing", [])
+    )
+
+    soft_matched = len(
+        skills.get("soft_skills", {}).get("matched", [])
+    )
+
+    soft_missing = len(
+        skills.get("soft_skills", {}).get("missing", [])
+    )
+
+    total_skills = (
+        hard_matched +
+        hard_missing +
+        soft_matched +
+        soft_missing
+    )
+
+    if total_skills > 0:
+        score += (
+            (hard_matched + soft_matched)
+            / total_skills
+        ) * 25
+
+    # =====================
+    # EXPERIENCE (20)
+    # =====================
+
+    experience = parsed.get("experience", {})
+
+    if bool_score(
+        experience.get(
+            "experience_match",
+            {}
+        ).get("passed")
+    ):
+        score += 8
+
+    if bool_score(
+        experience.get(
+            "company_names",
+            {}
+        ).get("present")
+    ):
+        score += 2
+
+    if bool_score(
+        experience.get(
+            "job_titles",
+            {}
+        ).get("present")
+    ):
+        score += 2
+
+    if bool_score(
+        experience.get(
+            "action_verbs",
+            {}
+        ).get("passed")
+    ):
+        score += 4
+
+    if bool_score(
+        experience.get(
+            "quantified_impact",
+            {}
+        ).get("passed")
+    ):
+        score += 4
+
+    # =====================
+    # PROJECTS (10)
+    # =====================
+
+    projects = parsed.get("projects", {})
+
+    project_checks = [
+        projects.get(
+            "project_links",
+            {}
+        ).get("passed"),
+
+        projects.get(
+            "action_verbs",
+            {}
+        ).get("passed"),
+
+        projects.get(
+            "quantified_impact",
+            {}
+        ).get("passed")
+    ]
+
+    score += (
+        sum(bool_score(x) for x in project_checks)
+        / len(project_checks)
+    ) * 10
+
+    # =====================
+    # EDUCATION (5)
+    # =====================
+
+    education = parsed.get("education", {})
+
+    if bool_score(
+        education.get(
+            "qualification_match",
+            {}
+        ).get("passed")
+    ):
+        score += 5
+
+    # =====================
+    # FORMATTING (10)
+    # =====================
+
+    formatting = parsed.get("formatting", {})
+
+    formatting_checks = [
+
+        formatting.get(
+            "single_column",
+            {}
+        ).get("passed"),
+
+        formatting.get(
+            "photos_or_graphics",
+            {}
+        ).get("passed"),
+
+        formatting.get(
+            "excessive_design",
+            {}
+        ).get("passed"),
+
+        formatting.get(
+            "unnecessary_sections",
+            {}
+        ).get("passed")
+    ]
+
+    score += (
+        sum(bool_score(x) for x in formatting_checks)
+        / len(formatting_checks)
+    ) * 10
+
+    # =====================
+    # GRAMMAR (5)
+    # =====================
+
+    grammar = parsed.get(
+        "spelling_and_grammar",
+        {}
+    )
+
+    grammar_checks = [
+
+        grammar.get(
+            "spelling",
+            {}
+        ).get("passed"),
+
+        grammar.get(
+            "grammar",
+            {}
+        ).get("passed"),
+
+        grammar.get(
+            "buzzwords",
+            {}
+        ).get("passed"),
+
+        grammar.get(
+            "personal_pronouns",
+            {}
+        ).get("passed")
+    ]
+
+    score += (
+        sum(bool_score(x) for x in grammar_checks)
+        / len(grammar_checks)
+    ) * 5
 
     return {
-        "final_score": round(max(0.0, min(100.0, final_score)), 2),
-        "keyword_score": round(keyword_score, 4),
-        "skill_score": round(skill_score, 4),
-        "semantic_score": round(semantic_score, 4),
-        "experience_score": round(experience_score, 4),
-        "formatting_score": round(formatting_score, 4),
+        "final_score": round(score, 2)
     }
 
 
@@ -824,160 +1019,451 @@ async def ats_scoring(resume_string, jd_string):
     
 
     base_prompt=f"""You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
-    Your task is to analyze a resume against a job description and generate a Jobscan-style Match Report.
-    Output ONLY valid JSON. Do NOT wrap the JSON in quotes
-    INPUTS 
-    Resume:
-    {_escape_braces(resume_string)}
-    Job Description:
-    {_escape_braces(jd_string)}
-  
-    ANALYSIS INSTRUCTIONS
-Evaluate the resume using ATS logic based on:
 
-* Contact Information
+Your task is to analyze a resume against a job description and generate a structured ATS Match Report.
 
-  1. Is email present?
-  2. Is phone number present?
-  3. Is LinkedIn present?
+OUTPUT ONLY VALID JSON.
 
-* Skills Match
+Do NOT output markdown.
 
-  1. Hard skills matched vs missing
-  2. Soft skills matched vs missing
+Do NOT output explanations outside JSON.
 
-* Resume Sections
+Do NOT estimate or calculate ATS scores.
 
-  1. Projects section present
-  2. Experience section present
-  3. Skills section present
-  4. Education section present
+Do NOT hallucinate information.
 
-* Chronology
+Do NOT assume skills, experience, education, certifications, projects, achievements, links, or qualifications that are not explicitly present in the resume.
 
-  1. Are dates in reverse chronological order?
+INPUTS
 
-* Spelling and Grammar
+Resume:
+{resume_string}
 
-  1. Are there spelling mistakes?
-  2. Are there grammar mistakes?
+Job Description:
+{jd_string}
 
-* Buzzwords and Personal Pronouns
+==================================================
+OBJECTIVITY RULES (MANDATORY)
+=============================
 
-  1. Does the resume contain generic buzzwords or clichés with no measurable impact?
-  2. Does the resume contain personal pronouns such as I, Me, My, Mine, We, Our?
+You are performing a rule-based ATS audit.
 
-* Education
+Every pass/fail decision must be based only on observable evidence in the resume and job description.
 
-  1. Does the resume meet the educational requirements mentioned in the job description?
+If evidence is unclear, choose FALSE.
 
-* Experience
+Never reward implied experience.
 
-  1. Does the resume meet the experience requirements mentioned in the job description?
-  2. Are company names provided?
-  3. Are job titles provided?
-  4. Are strong action verbs used?
-  5. Are achievements quantified with metrics?
+Never reward inferred skills.
 
-* Projects
+Never reward potential.
 
-  1. Are relevant project links present?
-  2. Are strong action verbs used?
-  3. Are achievements quantified with metrics?
+Never reward assumptions.
 
-* Formatting
+Use only information explicitly written in the resume.
 
-  1. Is the resume free from pictures, graphics, icons, and watermarks?
-  2. Is the resume single-column?
-  3. Does the resume contain excessive design elements, colors, tables, or text boxes that may hurt ATS parsing?
-  4. Does the resume contain unnecessary sections such as hobbies, interests, extracurriculars, references, or unrelated information?
+The same resume and same job description should produce the same output every time.
 
-Be strict, realistic, and recruiter-focused.
+When uncertain, use the stricter interpretation.
 
-Do NOT assume or hallucinate skills, qualifications, experience, projects, certifications, or achievements that are not explicitly stated.
+==================================================
+CONTACT INFORMATION RULES
+=========================
 
-IMPORTANT:
+Email
 
-* Numeric ATS score is already computed deterministically server-side.
-* Do NOT recalculate or estimate ATS score.
-* Focus on qualitative analysis, strengths, gaps, and actionable recruiter recommendations.
-* The explanation and action fields are extremely important.
+Pass if a valid email address is explicitly present.
 
+Fail otherwise.
+
+Phone
+
+Pass if a valid phone number is explicitly present.
+
+Fail otherwise.
+
+LinkedIn
+
+Pass only if:
+
+* linkedin.com appears in the resume text
+  OR
+* a LinkedIn URL is explicitly provided.
+
+Fail otherwise.
+
+Do not assume LinkedIn exists because the word "LinkedIn" appears.
+
+==================================================
+SKILLS MATCH RULES
+==================
+
+Hard Skills
+
+1. Extract technical skills explicitly required by the job description.
+2. Extract technical skills explicitly present in the resume.
+3. Match only exact skills or obvious equivalents.
+
+Examples:
+
+Python = Python
+PyTorch = PyTorch
+Docker = Docker
+
+Do NOT treat:
+
+AWS = Azure
+PyTorch = TensorFlow
+Power BI = Tableau
+
+Matched Skills
+
+Skills present in both resume and job description.
+
+Missing Skills
+
+Skills required by the job description but not found in the resume.
+
+Never hallucinate skills.
+
+Soft Skills
+
+Extract soft skills explicitly mentioned in the job description.
+
+Match only if clearly demonstrated in the resume through achievements, leadership, communication, collaboration, mentoring, stakeholder management, ownership, or similar evidence.
+
+==================================================
+RESUME SECTION RULES
+====================
+
+Projects Section
+
+Pass if a dedicated Projects section exists.
+
+Experience Section
+
+Pass if a dedicated Experience, Work Experience, Employment, Internship, or Professional Experience section exists.
+
+Skills Section
+
+Pass if a dedicated Skills or Technical Skills section exists.
+
+Education Section
+
+Pass if a dedicated Education section exists.
+
+==================================================
+CHRONOLOGY RULES
+================
+
+Pass if work experience entries appear in reverse chronological order.
+
+Most recent role first.
+
+Fail if:
+
+* dates are missing
+* ordering is inconsistent
+* chronology cannot be determined
+
+==================================================
+SPELLING RULES
+==============
+
+Pass if no obvious spelling mistakes are found.
+
+Fail only when a word is objectively misspelled.
+
+Do not fail for style preferences.
+
+==================================================
+GRAMMAR RULES
+=============
+
+Pass if no objective grammar mistakes significantly affecting readability are found.
+
+Minor stylistic preferences should not cause failure.
+
+Fail only for actual grammar errors.
+
+==================================================
+BUZZWORD RULES
+==============
+
+Flag only if unsupported buzzwords appear.
+
+Examples:
+
+Hardworking
+Team Player
+Go Getter
+Results Driven
+Dynamic Professional
+Fast Learner
+Self Starter
+Motivated Individual
+
+Pass if these phrases are absent or supported by measurable evidence.
+
+==================================================
+PERSONAL PRONOUN RULES
+======================
+
+Fail if first-person pronouns are used.
+
+Examples:
+
+I
+Me
+My
+Mine
+We
+Our
+Ours
+
+Pass otherwise.
+
+==================================================
+EDUCATION MATCH RULES
+=====================
+
+Pass if the resume satisfies educational requirements explicitly stated in the job description.
+
+Fail otherwise.
+
+Explain exactly which requirement is missing.
+
+==================================================
+EXPERIENCE MATCH RULES
+======================
+
+Pass if BOTH conditions are met:
+
+1. Required years of experience are satisfied.
+
+AND
+
+2. At least 50% of the primary responsibilities required by the job description are represented in the resume.
+
+Fail otherwise.
+
+The explanation must clearly identify:
+
+* missing years of experience
+* missing responsibilities
+* missing technologies
+* missing domain expertise
+
+==================================================
+COMPANY NAME RULES
+==================
+
+Pass if company names are provided for work experience.
+
+Fail otherwise.
+
+==================================================
+JOB TITLE RULES
+===============
+
+Pass if job titles are provided for work experience.
+
+Fail otherwise.
+
+==================================================
+ACTION VERB RULES
+=================
+
+Review all experience and project bullet points.
+
+Strong action verbs include:
+
+Developed
+Built
+Implemented
+Designed
+Engineered
+Created
+Led
+Optimized
+Automated
+Managed
+Analyzed
+Delivered
+Reduced
+Increased
+Generated
+Architected
+Deployed
+Migrated
+Produced
+Directed
+Established
+
+Weak verbs include:
+
+Worked on
+Helped
+Assisted
+Participated
+Responsible for
+Involved in
+Contributed to
+
+Pass if at least 70% of bullets begin with strong action verbs.
+
+Fail otherwise.
+
+==================================================
+QUANTIFIED IMPACT RULES
+=======================
+
+Count bullets containing measurable results.
+
+Examples:
+
+15%
+20%
+$50,000
+1000 users
+30% improvement
+2x increase
+50ms reduction
+95% accuracy
+
+Pass if at least 30% of experience/project bullets contain measurable metrics.
+
+Fail otherwise.
+
+==================================================
+PROJECT LINK RULES
+==================
+
+Pass if project links, GitHub links, repository links, demo links, or portfolio links are explicitly present.
+
+Fail otherwise.
+
+Do not assume links exist.
+
+==================================================
+FORMATTING RULES
+================
+
+Single Column
+
+Pass if the resume appears primarily single-column.
+
+Fail if multiple columns are clearly present.
+
+Photos or Graphics
+
+Fail if photographs, graphics, icons, watermarks, or visual elements likely to confuse ATS systems are present.
+
+Pass otherwise.
+
+Excessive Design
+
+Fail if excessive colors, tables, text boxes, decorative elements, or ATS-unfriendly layouts are present.
+
+Pass otherwise.
+
+Unnecessary Sections
+
+Fail if the resume contains:
+
+* Hobbies
+* Interests
+* References
+* Personal Information
+* Irrelevant Activities
+
+Pass otherwise.
+
+==================================================
 EXPLANATION RULES
+=================
 
-Whenever a check fails:
+Only provide explanations when a check fails.
 
-* Clearly identify the exact issue.
-* Mention where the issue occurs whenever possible.
-* Quote the problematic text whenever possible.
-* Explain what is wrong in a recruiter-focused manner.
-* Avoid generic explanations.
+Every explanation must:
 
-BAD:
-"Spelling mistakes found."
+1. Identify the exact issue.
+2. Identify where it occurs.
+3. Explain why it matters.
+4. Reference actual resume content whenever possible.
 
-GOOD:
-"The word 'Experiance' appears in the Work Experience section and is misspelled."
+Bad:
 
-BAD:
 "Action verbs missing."
 
-GOOD:
-"The bullet point 'Worked on customer churn prediction model' uses weak wording and does not demonstrate ownership."
+Good:
 
-BAD:
-"Missing project links."
+"The bullet point 'Worked on customer churn prediction model' uses weak wording and does not demonstrate ownership or impact."
 
-GOOD:
+Bad:
+
+"Project links missing."
+
+Good:
+
 "The project 'Housing Price Predictor' does not contain a GitHub repository URL or live demo link."
 
+==================================================
 ACTION RULES
+============
 
-Actions must provide concrete fixes.
+Only provide actions when a check fails.
 
-BAD:
-"Fix spelling mistakes."
+Actions must be specific and directly actionable.
 
-GOOD:
-"Replace 'Experiance' with 'Experience' in the Work Experience section."
+Bad:
 
-BAD:
-"Add action verbs."
-
-GOOD:
-"Rewrite 'Worked on customer churn model' as 'Developed a customer churn prediction model using XGBoost'."
-
-BAD:
 "Add metrics."
 
-GOOD:
-"Add measurable results to the bullet 'Built recommendation engine' by including accuracy improvements, user count, revenue impact, or processing time reduction."
+Good:
 
-BAD:
+"Rewrite 'Built recommendation engine' to include measurable outcomes such as user count, latency reduction, revenue impact, or accuracy improvement."
+
+Bad:
+
 "Add skills."
 
-GOOD:
-"Add Docker and AWS to the Skills section only if you genuinely possess those skills, as they are explicitly required by the job description."
+Good:
 
-SPECIFICITY REQUIREMENTS
+"Add Docker and AWS to the Skills section only if you genuinely possess those skills and can demonstrate them through experience or projects."
 
-For every failed check:
+==================================================
+TOP PRIORITY FIXES RULES
+========================
 
-1. Explain exactly what is wrong.
-2. Explain where it occurs.
-3. Explain why it matters.
-4. Provide an exact corrective action.
-5. Reference actual resume content whenever possible.
+Return exactly 3 fixes.
 
-The user should be able to immediately fix the issue without asking additional questions.
+Prioritize:
 
-### OUTPUT RULES (MANDATORY)
+1. Experience gaps
+2. Missing critical skills
+3. Missing ATS-critical sections
+4. Missing measurable achievements
+5. Formatting problems
 
-* Output ONLY valid JSON.
-* No explanations outside JSON.
-* No markdown.
-* No extra text.
-* JSON must strictly follow the schema below.
+Do not include minor issues unless no major issues exist.
+
+==================================================
+OUTPUT RULES
+============
+
+Output ONLY valid JSON.
+
+No markdown.
+
+No extra text.
+
+No commentary.
+
+No explanations outside JSON.
+
+The JSON must strictly follow the schema provided below.
+
 
     ### REQUIRED JOBSCAN-STYLE JSON FORMAT
     """
@@ -1173,13 +1659,37 @@ The user should be able to immediately fix the issue without asking additional q
     if not isinstance(parsed, dict):
         parsed = {}
     
-    matched_keywords=parsed.get("keywords",{}).get("matched",[])
-    missing_keywords=parsed.get("keywords",{}).get("missing",[])
-    total_keywords=len(matched_keywords)+len(missing_keywords)
+    hard_matched = parsed.get("skills", {}) \
+                     .get("hard_skills", {}) \
+                     .get("matched", [])
+
+    hard_missing = parsed.get("skills", {}) \
+                        .get("hard_skills", {}) \
+                        .get("missing", [])
+
+    soft_matched = parsed.get("skills", {}) \
+                        .get("soft_skills", {}) \
+                        .get("matched", [])
+
+    soft_missing = parsed.get("skills", {}) \
+                        .get("soft_skills", {}) \
+                        .get("missing", [])
+
+    matched_count = len(hard_matched) + len(soft_matched)
+    missing_count = len(hard_missing) + len(soft_missing)
+
+    total = matched_count + missing_count
+
+    skill_match_score = (
+        round(matched_count / total, 2)
+        if total > 0 else 0
+    )
     
-    skill_match_score = round(len(matched_keywords)/total_keywords, 2) if total_keywords > 0 else 0
-    
-    deterministic_breakdown = compute_deterministic_ats_score_breakdown(resume_string, jd_string, skill_match_score)
+    deterministic_breakdown = (
+    compute_deterministic_ats_score_breakdown(
+        parsed
+    )
+)
     deterministic_score = deterministic_breakdown["final_score"]
     
     parsed["match_rate"] = deterministic_score
@@ -1438,6 +1948,18 @@ Rules:
 - Be warm and professional.
 - Do not mention internal model/provider names.
 """
+
+
+async def generate_tts_audio(text: str) -> bytes:
+    """Generate speech using OpenAI TTS-1 with the 'nova' voice (natural female)."""
+    client = await _build_openai_client()
+    response = await client.audio.speech.create(
+        model="tts-1",
+        voice="nova",
+        input=text[:1000],
+        speed=1.0,
+    )
+    return response.content
 
 
 async def generate_mock_interview_first_question(
