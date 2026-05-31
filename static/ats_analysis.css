@@ -22,7 +22,7 @@
   --border:       rgba(255,255,255,.07);
   --border-2:     rgba(255,255,255,.13);
 
-  --text:         #42b7f2;
+  --text:         #f7fafc;
   --muted:        rgb(251, 253, 255);
 
   --card-bg:      rgba(12,18,38,.80);
@@ -245,19 +245,22 @@ body {
 .stat-pill.fail { background: var(--fail-bg); border-color: var(--fail-border); color: var(--fail); }
 
 /* ─── Overview — dot check list ─────────────────────────────────────────────── */
-.overview-checks-list { display: flex; flex-direction: column; }
+.overview-checks-list { display: flex; flex-direction: column; gap: 12px; }
 
 .ov-check-row {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 10px 8px;
-  border-bottom: 1px solid var(--border);
-  border-radius: 6px;
+  padding: 14px 12px;
+  border: 1px solid var(--border);
+  border-left: 4px solid transparent;
+  border-radius: 10px;
+  margin-bottom: 0;
   transition: background .14s;
 }
-.ov-check-row:last-child { border-bottom: none; }
 .ov-check-row:hover { background: var(--surface); }
+.ov-check-row.pass { border-left-color: var(--pass); }
+.ov-check-row.fail { border-left-color: var(--fail); }
 
 .ov-dot {
   width: 9px;
@@ -270,7 +273,9 @@ body {
 .ov-dot.warn { background: var(--warn); box-shadow: 0 0 6px var(--warn); }
 
 .ov-check-main     { flex: 1; min-width: 0; }
-.ov-check-label    { font-size: 18px; color: var(--text); font-weight: 600; }
+.ov-check-label    { font-size: 25px; color: var(--text); font-weight: 600; }
+.ov-check-row.pass .ov-check-label { color: var(--pass); }
+.ov-check-row.fail .ov-check-label { color: var(--fail); }
 .ov-check-explanation { font-size: 18px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
 .ov-check-why      { font-size: 17px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
 .ov-check-category { font-size: 16px; color: var(--muted); font-weight: 500; white-space: nowrap; }
@@ -296,13 +301,13 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 13px 16px;
-  cursor: pointer;
+  cursor: default;
   background: var(--surface);
   transition: background .18s;
   user-select: none;
   gap: 10px;
 }
-.acc-head:hover  { background: var(--surface-hov); }
+.acc-head:hover  { background: var(--surface); }
 .acc-head.pass   { border-left: 3px solid var(--pass); }
 .acc-head.fail   { border-left: 3px solid var(--fail); }
 .acc-head.warn   { border-left: 3px solid var(--warn); }
@@ -310,6 +315,7 @@ body {
 .acc-head-left  { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
 .acc-head-title { font-size: 17px; font-weight: 600; }
 .acc-chevron    { font-size: 14px; color: var(--muted); transition: transform .22s; flex-shrink: 0; }
+.acc-chevron    { display: none; }
 .acc-item.open .acc-chevron { transform: rotate(180deg); }
 
 .acc-body {

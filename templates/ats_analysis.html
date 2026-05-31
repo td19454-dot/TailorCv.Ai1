@@ -13,10 +13,17 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         html, body { overflow-x: hidden; }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         body {
-            background-image: url('/static/back90.avif') !important;
-            background-size: cover !important;
-            background-position: center !important;
+            background: linear-gradient(135deg,
+                    #020010, #06002a, #12003a,
+                    #001830, #0a0020, #1a0030, #020010) !important;
+            background-size: 600% 600% !important;
+            animation: gradientShift 15s ease infinite;
             background-attachment: fixed !important;
         }
         /* Clip the oversized logo so it doesn't intercept sidebar/content clicks */
