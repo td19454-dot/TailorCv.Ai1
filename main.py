@@ -1,4 +1,5 @@
 import asyncio
+import base64
 import json
 import logging
 import os
@@ -42,6 +43,7 @@ from functions import (
     generate_mock_interview_first_question,
     generate_mock_interview_next_question,
     score_mock_interview,
+    generate_tts_audio,
 )
 
 from extraction import process_resume
@@ -2170,7 +2172,13 @@ async def api_interview_start_with_pdf(
             num_questions=int(num_questions or 8),
             job_desc=str(job_desc or "").strip(),
         )
-        return JSONResponse({"success": True, "question": question, "resume_text": resume_text})
+        audio_b64 = None
+        try:
+            audio_bytes = await generate_tts_audio(question)
+            audio_b64 = base64.b64encode(audio_bytes).decode()
+        except Exception:
+            pass
+        return JSONResponse({"success": True, "question": question, "resume_text": resume_text, "audio_b64": audio_b64})
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
     finally:
@@ -2191,7 +2199,15 @@ async def api_interview_next(payload: dict):
             conversation_history=payload.get("conversation_history") or [],
             user_answer=str(payload.get("user_answer", "")).strip(),
         )
-        return JSONResponse({"success": True, **result})
+        audio_b64 = None
+        if result.get("success") and not result.get("done"):
+            try:
+                speak_text = f"{result.get('ack', '')} {result.get('question', '')}".strip()
+                audio_bytes = await generate_tts_audio(speak_text)
+                audio_b64 = base64.b64encode(audio_bytes).decode()
+            except Exception:
+                pass
+        return JSONResponse({"success": True, **result, "audio_b64": audio_b64})
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
 
@@ -2209,6 +2225,18 @@ async def api_interview_score(payload: dict):
             camera_focus_score=(int(payload.get("camera_focus_score")) if payload.get("camera_focus_score") is not None else None),
         )
         return JSONResponse({"success": True, "scores": scores})
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc))
+
+
+@app.post("/api/tts")
+async def api_tts(payload: dict):
+    text = (payload.get("text") or "").strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="Text required")
+    try:
+        audio_bytes = await generate_tts_audio(text)
+        return Response(content=audio_bytes, media_type="audio/mpeg")
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
 
