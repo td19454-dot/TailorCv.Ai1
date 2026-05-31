@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact TailorCV for support, feedback, partnerships, or product questions.">
+    <title>Contact | TailorCV.ai</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 18% 12%, rgba(74, 106, 255, 0.26), transparent 32%),
+                radial-gradient(circle at 86% 18%, rgba(20, 184, 166, 0.18), transparent 30%),
+                linear-gradient(135deg, #050816 0%, #071530 48%, #120d25 100%);
+            color: #edf2ff;
+            font-family: Inter, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .navbar .nav-links {
+            min-width: 560px;
+            gap: 2px;
+        }
+
+        .navbar .nav-links .nav-link {
+            font-size: 11px;
+            padding: 18px 10px;
+            letter-spacing: 0;
+        }
+
+        .contact-page {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 110px 0 56px;
+        }
+
+        .contact-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .contact-intro {
+            padding: 46px 0;
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: #5eead4;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .contact-title {
+            max-width: 720px;
+            margin: 0;
+            color: #ffffff;
+            font-size: clamp(2.3rem, 5vw, 4.8rem);
+            line-height: 1.02;
+            letter-spacing: 0;
+        }
+
+        .contact-subtitle {
+            max-width: 620px;
+            margin: 20px 0 0;
+            color: #b8c6e8;
+            font-size: 1.08rem;
+            line-height: 1.75;
+        }
+
+        .contact-panel {
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            border-radius: 8px;
+            background: rgba(8, 17, 42, 0.78);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+            padding: 28px;
+            backdrop-filter: blur(18px);
+        }
+
+        .contact-card-title {
+            margin: 0 0 10px;
+            color: #ffffff;
+            font-size: 1.35rem;
+        }
+
+        .contact-card-text {
+            margin: 0 0 22px;
+            color: #aebde0;
+            line-height: 1.65;
+        }
+
+        .email-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            min-height: 58px;
+            padding: 14px 16px;
+            border: 1px solid rgba(94, 234, 212, 0.4);
+            border-radius: 8px;
+            background: rgba(13, 148, 136, 0.14);
+            color: #f8fbff;
+            text-decoration: none;
+            font-weight: 800;
+            overflow-wrap: anywhere;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .email-link:hover {
+            transform: translateY(-2px);
+            border-color: rgba(94, 234, 212, 0.8);
+            background: rgba(13, 148, 136, 0.24);
+        }
+
+        .email-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .email-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 34px;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: rgba(94, 234, 212, 0.18);
+            color: #5eead4;
+        }
+
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 26px;
+        }
+
+        .contact-option {
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.56);
+            padding: 18px;
+        }
+
+        .contact-option h2 {
+            margin: 0 0 8px;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .contact-option p {
+            margin: 0;
+            color: #aebde0;
+            font-size: 0.94rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .contact-hero,
+            .contact-options {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-page {
+                padding-top: 92px;
+            }
+
+            .contact-intro {
+                padding: 28px 0 4px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-actions {
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
+                padding: 0;
+                gap: 0;
+                min-width: 0;
+            }
+
+            .navbar #auth-nav-slot {
+                display: flex;
+                align-items: center;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="left">
+            <div class="logo">
+                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+            </div>
+        </div>
+        <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav-shared">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-links" id="primary-nav-shared">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/solutions" class="nav-link">ATS Score</a>
+            <a href="/modify-cv" class="nav-link">Make CV</a>
+            <a href="/solutions" class="nav-link">Optimize CV with AI</a>
+            <a href="/interview-prep" class="nav-link">Interview Prep</a>
+            <a href="/mock-interview" class="nav-link">Mock Interview</a>
+            <a href="/templates" class="nav-link">Templates</a>
+            <a href="/pricing" class="nav-link">Pricing</a>
+            <a href="/blog" class="nav-link">Blog</a>
+        </nav>
+        <div class="nav-actions">
+            <div id="auth-nav-slot"></div>
+        </div>
+    </header>
+
+    <main class="contact-page">
+        <section class="contact-hero">
+            <div class="contact-intro">
+                <p class="eyebrow">Contact TailorCV</p>
+                <h1 class="contact-title">Questions, feedback, or support.</h1>
+                <p class="contact-subtitle">Send a note about resume optimization, ATS scoring, mock interviews, partnerships, or anything that would help make TailorCV better.</p>
+            </div>
+
+            <aside class="contact-panel" aria-label="Email contact">
+                <h2 class="contact-card-title">Email us directly</h2>
+                <p class="contact-card-text">We read every message and try to reply as soon as possible.</p>
+                <div class="email-list">
+                    <a class="email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=td19454@gmail.com&su=TailorCV%20Contact" target="_blank" rel="noopener">
+                        <span class="email-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        td19454@gmail.com
+                    </a>
+                    <a class="email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=shubhamsarkarthe1@gmail.com&su=TailorCV%20Contact" target="_blank" rel="noopener">
+                        <span class="email-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        shubhamsarkarthe1@gmail.com
+                    </a>
+                </div>
+            </aside>
+        </section>
+
+        <section class="contact-options" aria-label="Reasons to contact TailorCV">
+            <article class="contact-option">
+                <h2>Support</h2>
+                <p>Get help with uploads, downloads, ATS reports, templates, or account access.</p>
+            </article>
+            <article class="contact-option">
+                <h2>Feedback</h2>
+                <p>Share what worked, what felt confusing, or what you want TailorCV to build next.</p>
+            </article>
+            <article class="contact-option">
+                <h2>Partnerships</h2>
+                <p>Reach out for colleges, career communities, recruiting teams, or collaboration ideas.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <h4 class="footer-title">TailorCV</h4>
+                    <p class="footer-text">AI-powered resume optimization for your career success. Land more interviews, faster.</p>
+                    <a href="/solutions" class="footer-cta">Get your free ATS score</a>
+                    <div class="footer-socials" aria-label="Social links">
+                        <a href="https://x.com/sarkar53765" class="footer-social" aria-label="X" title="X" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.9 2H22l-6.77 7.74L23 22h-6.1l-4.78-6.26L6.64 22H3.5l7.24-8.28L1 2h6.26l4.32 5.7L18.9 2z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/thetailorcv/" class="footer-social" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/thetailorcv/" class="footer-social" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.9A3.85 3.85 0 0 0 3.9 7.75v8.5a3.85 3.85 0 0 0 3.85 3.85h8.5a3.85 3.85 0 0 0 3.85-3.85v-8.5a3.85 3.85 0 0 0-3.85-3.85h-8.5zM12 7.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.3-2.2a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@thetailorcv" class="footer-social" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 12s0-3.1-.4-4.6a3.3 3.3 0 0 0-2.3-2.3C18.8 4.7 12 4.7 12 4.7s-6.8 0-8.3.4A3.3 3.3 0 0 0 1.4 7.4C1 8.9 1 12 1 12s0 3.1.4 4.6a3.3 3.3 0 0 0 2.3 2.3c1.5.4 8.3.4 8.3.4s6.8 0 8.3-.4a3.3 3.3 0 0 0 2.3-2.3c.4-1.5.4-4.6.4-4.6zM9.2 15.5V8.5l6 3.5-6 3.5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">Product</h4>
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/solutions" class="footer-link">Get ATS score</a>
+                    <a href="/modify-cv" class="footer-link">Make CV</a>
+                    <a href="/solutions" class="footer-link">Optimize with AI</a>
+                    <a href="/templates" class="footer-link">Templates</a>
+                    <a href="/pricing" class="footer-link">Pricing</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">Company</h4>
+                    <a href="/about" class="footer-link">About us</a>
+                    <a href="/contact" class="footer-link">Contact</a>
+                    <a href="/blog" class="footer-link">Blog</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+                <a href="/" class="footer-secure">Secure &amp; private</a>
+            </div>
+        </div>
+    </footer>
+    <script src="/static/auth_nav.js"></script>
+    <script src="/static/mobile_nav.js"></script>
+</body>
+</html>
