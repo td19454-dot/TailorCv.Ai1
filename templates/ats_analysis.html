@@ -18,6 +18,18 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+        @keyframes floatOrb1 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+            50% { transform: translate(60px, -40px) scale(1.15); opacity: 0.9; }
+        }
+        @keyframes floatOrb2 {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+            50% { transform: translate(-50px, 30px) scale(1.1); opacity: 0.7; }
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: .15; }
+            50% { opacity: .55; }
+        }
         body {
             background: linear-gradient(135deg,
                     #020010, #06002a, #12003a,
@@ -26,6 +38,56 @@
             animation: gradientShift 15s ease infinite;
             background-attachment: fixed !important;
         }
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .orb-blue {
+            width: 280px;
+            height: 280px;
+            background: #3a00cc;
+            filter: blur(70px);
+            top: -70px;
+            left: -60px;
+            animation: floatOrb1 7s ease-in-out infinite;
+        }
+        .orb-violet {
+            width: 240px;
+            height: 240px;
+            background: #6b00ff;
+            filter: blur(65px);
+            bottom: -50px;
+            right: -30px;
+            animation: floatOrb2 9s ease-in-out infinite;
+        }
+        #bg-stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bg-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+        }
+        .wave-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: .75;
+        }
+        #wave-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        header, main, footer { position: relative; z-index: 1; }
         /* Clip the oversized logo so it doesn't intercept sidebar/content clicks */
         header.navbar { overflow: hidden; }
         @media (min-width: 769px) {
@@ -36,6 +98,12 @@
     <link rel="stylesheet" href="/static/ats_analysis.css">
 </head>
 <body>
+    <div class="bg-orb orb-blue"></div>
+    <div class="bg-orb orb-violet"></div>
+    <div id="bg-stars" aria-hidden="true"></div>
+    <div class="wave-bg" aria-hidden="true">
+        <canvas id="wave-canvas"></canvas>
+    </div>
     <header class="navbar">
         <div class="left">
             <div class="logo">
@@ -356,6 +424,64 @@
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/main_new.js"></script>
     <script src="/static/ats_analysis.js"></script>
+    <script>
+    (function () {
+        const starsContainer = document.getElementById('bg-stars');
+        if (starsContainer) {
+            for (let i = 0; i < 60; i++) {
+                const s = document.createElement('div');
+                s.className = 'bg-star';
+                s.style.left = Math.random() * 100 + '%';
+                s.style.top = Math.random() * 100 + '%';
+                s.style.opacity = Math.random() * 0.4 + 0.1;
+                s.style.animation = `twinkle ${(2 + Math.random() * 4).toFixed(1)}s ease-in-out ${(Math.random() * 4).toFixed(1)}s infinite`;
+                starsContainer.appendChild(s);
+            }
+        }
+
+        const canvas = document.getElementById('wave-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let W, H;
+        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const waves = [
+            { amp: 100, freq: 0.0016, speed: 0.00035, color: [59, 130, 246], yf: 0.38, alpha: 0.14 },
+            { amp: 80, freq: 0.0022, speed: 0.00028, color: [79, 70, 229], yf: 0.50, alpha: 0.11 },
+            { amp: 90, freq: 0.0014, speed: 0.00042, color: [99, 102, 241], yf: 0.60, alpha: 0.10 },
+            { amp: 60, freq: 0.0026, speed: 0.00050, color: [37, 99, 235], yf: 0.44, alpha: 0.09 },
+            { amp: 65, freq: 0.0012, speed: 0.00022, color: [124, 58, 237], yf: 0.70, alpha: 0.09 },
+            { amp: 40, freq: 0.0030, speed: 0.00055, color: [6, 182, 212], yf: 0.54, alpha: 0.07 },
+        ];
+
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+            const t = Date.now();
+            waves.forEach(wv => {
+                ctx.beginPath();
+                for (let x = 0; x <= W; x += 2) {
+                    const y = H * wv.yf
+                        + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
+                        + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
+                        + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+                    x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+                }
+                ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+                const [r, g, b] = wv.color;
+                const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+                gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
+                gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
+                gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
+                ctx.fillStyle = gr;
+                ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+    </script>
 
     <!-- Share Score Modal -->
     <div id="share-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:99999;align-items:center;justify-content:center;">
