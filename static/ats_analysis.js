@@ -334,6 +334,31 @@
     return row;
   }
 
+  function detailCheckRow(ruleKey, rawPassed, llmExp, llmAct) {
+    const passed = bool(rawPassed);
+    const { title, category, explanation, why, action } = resolve(ruleKey, passed, llmExp, llmAct);
+    const whyExpanded = enrichWhyText(why, category);
+    const row = el("div", `ov-check-row ${passed ? "pass" : "fail"}`);
+
+    let extra = "";
+    if (whyExpanded) {
+      extra += `<div class="ov-check-why"><strong>Why it matters:</strong> ${whyExpanded}</div>`;
+    }
+    if (!passed && action) {
+      extra += `<div class="ov-check-fix"><strong>How to fix:</strong> ${action}</div>`;
+    }
+
+    row.innerHTML = `
+      <div class="ov-dot ${passed ? "pass" : "fail"}"></div>
+      <div class="ov-check-main">
+        <div class="ov-check-label">${title}</div>
+        <div class="ov-check-explanation">${explanation}</div>
+        ${extra}
+      </div>
+      <span class="ov-check-category">${category}</span>`;
+    return row;
+  }
+
   function renderOverviewChecks(d) {
     const container = document.getElementById("overview-checks");
     if (!container) return;
@@ -375,53 +400,28 @@
       ["projects.quantified_impact",             pr.quantified_impact?.passed,    pr.quantified_impact?.explanation,   pr.quantified_impact?.action],
     ];
 
+    const grouped = new Map();
     rows.forEach(([ruleKey, rawPassed, llmExp, llmAct]) => {
-      container.appendChild(ovCheckRow(ruleKey, rawPassed, llmExp, llmAct));
+      const category = resolve(ruleKey, bool(rawPassed), llmExp, llmAct).category || "Other";
+      if (!grouped.has(category)) grouped.set(category, []);
+      grouped.get(category).push([ruleKey, rawPassed, llmExp, llmAct]);
+    });
+
+    grouped.forEach((groupRows, category) => {
+      const section = el("div", "ov-group");
+      section.appendChild(el("div", "ov-group-title", category));
+      const list = el("div", "ov-group-list");
+      groupRows.forEach(([ruleKey, rawPassed, llmExp, llmAct]) => {
+        list.appendChild(ovCheckRow(ruleKey, rawPassed, llmExp, llmAct));
+      });
+      section.appendChild(list);
+      container.appendChild(section);
     });
   }
 
   /* ─── Accordion item ─────────────────────────────────────────────────────── */
   function accItem(ruleKey, rawPassed, llmExplanation, llmAction) {
-    const passed = bool(rawPassed);
-    const r      = resolve(ruleKey, passed, llmExplanation, llmAction);
-    const cls    = passed ? "pass" : "fail";
-    const icon   = passed ? "✓" : "✗";
-
-    const item = el("div", "acc-item open");
-    const head = el("div", `acc-head ${cls}`);
-    head.innerHTML = `
-      <div class="acc-head-left">
-        <div class="check-icon">${icon}</div>
-        <span class="acc-head-title">${r.title}</span>
-      </div>
-      <span class="acc-chevron">▼</span>`;
-
-    const body = el("div", "acc-body");
-
-    if (r.why) {
-      const whyRow = el("div", "acc-row");
-      whyRow.appendChild(el("div", "acc-row-label", "Why it matters"));
-      whyRow.appendChild(el("div", "acc-row-text",  r.why));
-      body.appendChild(whyRow);
-    }
-
-    if (r.explanation) {
-      const expRow = el("div", "acc-row");
-      expRow.appendChild(el("div", "acc-row-label", passed ? "Status" : "Problem found"));
-      expRow.appendChild(el("div", "acc-row-text",  r.explanation));
-      body.appendChild(expRow);
-    }
-
-    if (r.action && !passed) {
-      const actRow = el("div", "acc-row");
-      actRow.appendChild(el("div", "acc-row-label", "Recommended fix"));
-      actRow.appendChild(el("div", "acc-row-action", "💡 " + r.action));
-      body.appendChild(actRow);
-    }
-
-    item.appendChild(head);
-    item.appendChild(body);
-    return item;
+    return detailCheckRow(ruleKey, rawPassed, llmExplanation, llmAction);
   }
 
   /* ─── Sidebar badges ─────────────────────────────────────────────────────── */
@@ -485,23 +485,12 @@
     target.innerHTML = "";
     const ci   = d?.contact_information || {};
     const defs = [
-      { icon: "✉️", key: "email",    ruleKey: "contact_information.email"    },
-      { icon: "📞", key: "phone",    ruleKey: "contact_information.phone"    },
-      { icon: "🔗", key: "linkedin", ruleKey: "contact_information.linkedin" },
+      { key: "email",    ruleKey: "contact_information.email"    },
+      { key: "phone",    ruleKey: "contact_information.phone"    },
+      { key: "linkedin", ruleKey: "contact_information.linkedin" },
     ];
-    defs.forEach(({ icon, key, ruleKey }) => {
-      const passed = bool(ci[key]?.present);
-      const r      = resolve(ruleKey, passed, "", "");
-      const div    = el("div", `contact-item ${passed ? "pass" : "fail"}`);
-      div.innerHTML = `
-        <span class="contact-icon">${icon}</span>
-        <div class="contact-info">
-          <div class="contact-name">${r.title}</div>
-          <div class="contact-status">${r.explanation}</div>
-          <div class="contact-why">${r.why}</div>
-        </div>
-        <div class="check-icon">${passed ? "✓" : "✗"}</div>`;
-      target.appendChild(div);
+    defs.forEach(({ key, ruleKey }) => {
+      target.appendChild(detailCheckRow(ruleKey, ci[key]?.present, "", ""));
     });
   }
 
