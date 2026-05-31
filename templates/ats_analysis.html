@@ -19,6 +19,11 @@
             background-position: center !important;
             background-attachment: fixed !important;
         }
+        /* style2.css sets .logo-text to 300×300px inside a 100px navbar with no
+           overflow:hidden — the transparent logo <a href="/"> extends ~230px below
+           the navbar, covering the tab buttons and intercepting their clicks.
+           Clip it here so the logo cannot capture clicks outside the navbar. */
+        header.navbar { overflow: hidden; }
         @media (min-width: 769px) {
             .navbar .nav-links { min-width: 560px; gap: 2px; }
             .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }

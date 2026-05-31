@@ -28,6 +28,7 @@ from auth import hash_password, verify_password
 from database import Base, SessionLocal, engine
 from functions import (
     ats_scoring,
+    compute_deterministic_ats_score_breakdown,
     create_prompt,
     get_resume_response,
     extract_links,
@@ -3245,6 +3246,69 @@ async def estimate_html_pages(request: Request):
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Failed to estimate pages: {exc}")
 
+def _detect_two_column_layout(pdf_path: str) -> bool:
+    """
+    Returns True only when a genuine right column is detected.
+
+    A real two-column layout has many lines starting at the SAME x position
+    (the right column's consistent left margin). Right-aligned dates in a
+    single-column resume produce scattered x0 values — no single cluster.
+
+    Strategy: bucket all word x0s into 10pt bins. If any bin in the
+    middle 38-65% of page width holds >= 8 words AND >= 5% of all words,
+    that consistent start position indicates a right column margin.
+    """
+    try:
+        with pdfplumber.open(pdf_path) as pdf:
+            all_x0s = []
+            page_width = None
+            for page in pdf.pages[:3]:
+                if page_width is None:
+                    page_width = float(page.width or 612)
+                for w in (page.extract_words() or []):
+                    if len(str(w.get("text", "")).strip()) > 1:
+                        all_x0s.append(float(w.get("x0", 0)))
+
+            if len(all_x0s) < 25 or not page_width:
+                return False
+
+            bins: dict[int, int] = {}
+            for x in all_x0s:
+                b = int(x / 10) * 10
+                bins[b] = bins.get(b, 0) + 1
+
+            total = len(all_x0s)
+            lo = page_width * 0.38
+            hi = page_width * 0.65
+
+            for bucket, count in sorted(bins.items(), key=lambda kv: kv[1], reverse=True)[:8]:
+                if lo <= bucket <= hi and count >= 8 and count / total >= 0.05:
+                    return True
+
+    except Exception:
+        pass
+    return False
+
+
+def _extract_linkedin_url_from_pdf(pdf_path: str) -> str:
+    """Scan PDF link annotations for a LinkedIn URL. Returns the URL or ''."""
+    try:
+        from pypdf import PdfReader
+        reader = PdfReader(pdf_path)
+        for page in reader.pages:
+            for annot_ref in (page.get("/Annots") or []):
+                try:
+                    annot = annot_ref.get_object()
+                except Exception:
+                    continue
+                uri = str((annot.get("/A") or {}).get("/URI") or "").strip()
+                if "linkedin.com" in uri.lower() or "/in/" in uri.lower():
+                    return uri
+    except Exception:
+        pass
+    return ""
+
+
 @app.post("/get-ats-score")
 async def get_score(request: Request, jd_string: str, file: UploadFile = File(...)):
     """Upload a resume PDF file and JD"""
@@ -3258,9 +3322,44 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
 
         async with request_semaphore:
             resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
+            # Append any LinkedIn URL found in PDF annotations (pdfplumber extracts
+            # hyperlinked text as just the anchor word, losing the actual URL).
+            linkedin_url, is_two_col = await asyncio.gather(
+                asyncio.to_thread(_extract_linkedin_url_from_pdf, file_path),
+                asyncio.to_thread(_detect_two_column_layout, file_path),
+            )
+            if linkedin_url:
+                resume_string += f"\nLinkedIn: {linkedin_url}"
             ats_score = await ats_scoring(resume_string, jd_string)
 
-        return parse_ai_json_response(ats_score)
+        result = parse_ai_json_response(ats_score)
+
+        if is_two_col:
+            fmt = result.setdefault("formatting", {})
+            sc = fmt.setdefault("single_column", {})
+            was_passing = str(sc.get("passed", "false")).lower() == "true"
+            sc["passed"] = "false"
+            sc["explanation"] = (
+                "Two-column layout detected. Most ATS systems cannot reliably "
+                "parse multi-column resumes — content in the second column may "
+                "be skipped or scrambled."
+            )
+            if was_passing:
+                breakdown = compute_deterministic_ats_score_breakdown(
+                    result, resume_text=resume_string
+                )
+                result["match_rate"] = breakdown["final_score"]
+                result["deterministic_breakdown"] = breakdown
+                s = result["match_rate"]
+                result["match_level"] = (
+                    "Poor" if s < 40 else
+                    "Fair" if s < 60 else
+                    "Good" if s < 75 else
+                    "Strong" if s < 90 else
+                    "Excellent"
+                )
+
+        return result
     except HTTPException:
         raise
     except Exception as e:

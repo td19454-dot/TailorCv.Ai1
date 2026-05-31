@@ -721,7 +721,7 @@ def bool_score(value):
     return str(value).lower() == "true"
 
 
-def compute_deterministic_ats_score_breakdown(parsed):
+def compute_deterministic_ats_score_breakdown(parsed, resume_text: str = ""):
 
     score = 0.0
 
@@ -737,7 +737,15 @@ def compute_deterministic_ats_score_breakdown(parsed):
     if bool_score(contact.get("phone", {}).get("present")):
         score += 3
 
-    if bool_score(contact.get("linkedin", {}).get("present")):
+    # Deterministic LinkedIn check: pdfplumber extracts hyperlinked LinkedIn URLs
+    # as just the word "LinkedIn" (not the URL), so we check the raw text directly.
+    _raw = str(resume_text or "").lower()
+    _linkedin_in_text = bool(
+        re.search(r"linkedin\.com", _raw) or
+        re.search(r"\blinkedin\b", _raw) or
+        re.search(r"linkedin\.com/in/", _raw)
+    )
+    if bool_score(contact.get("linkedin", {}).get("present")) or _linkedin_in_text:
         score += 3
 
     # =====================
@@ -1084,15 +1092,13 @@ Fail otherwise.
 
 LinkedIn
 
-Pass only if:
+Pass if any of the following are true:
 
 * linkedin.com appears in the resume text
-  OR
-* a LinkedIn URL is explicitly provided.
+* a LinkedIn URL is explicitly provided
+* the word "LinkedIn" appears in the contact section or header of the resume
 
-Fail otherwise.
-
-Do not assume LinkedIn exists because the word "LinkedIn" appears.
+Fail only if there is no mention of LinkedIn anywhere in the resume.
 
 ==================================================
 SKILLS MATCH RULES
@@ -1685,11 +1691,16 @@ The JSON must strictly follow the schema provided below.
         if total > 0 else 0
     )
     
-    deterministic_breakdown = (
-    compute_deterministic_ats_score_breakdown(
-        parsed
+    # Deterministic LinkedIn fix: pdfplumber extracts hyperlinked LinkedIn URLs
+    # as just the word "LinkedIn" — override AI's answer if the word appears in text.
+    _raw_lower = str(resume_string or "").lower()
+    if re.search(r"linkedin\.com|/in/|\blinkedin\b", _raw_lower):
+        ci = parsed.setdefault("contact_information", {})
+        ci.setdefault("linkedin", {})["present"] = "true"
+
+    deterministic_breakdown = compute_deterministic_ats_score_breakdown(
+        parsed, resume_text=resume_string
     )
-)
     deterministic_score = deterministic_breakdown["final_score"]
     
     parsed["match_rate"] = deterministic_score
