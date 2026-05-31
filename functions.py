@@ -1504,13 +1504,25 @@ async def generate_mock_interview_next_question(
         content_val = str(msg.get("content", "")).strip()
         if role_val in {"user", "assistant"} and content_val:
             messages.append({"role": role_val, "content": content_val})
-    messages.append({"role": "user", "content": user_answer})
+    _answer_quality_hint = (
+        "empty or no response"
+        if not (user_answer or "").strip()
+           or (user_answer or "").strip().lower() in {
+               "no response provided within time limit.", "no response", "n/a", "na"
+           }
+        else "has content"
+    )
+    messages.append({"role": "user", "content": user_answer or "[No answer provided]"})
     messages.append(
         {
             "role": "user",
             "content": (
                 "Return JSON only: "
-                '{"done": <true|false>, "ack": "<one short encouraging sentence>", '
+                '{"done": <true|false>, '
+                '"ack": "<honest one-sentence acknowledgment — '
+                'ONLY say positive things like \'Great answer\' or \'Well said\' if the answer was genuinely good and detailed; '
+                'if the answer was weak, vague, or missing say something neutral like \'Okay, let\'s move on\' or \'Got it\'; '
+                f'the answer quality is: {_answer_quality_hint}>", '
                 '"question": "<next question or empty if done>"}'
             ),
         }
@@ -1535,6 +1547,25 @@ async def generate_mock_interview_next_question(
     }
 
 
+def _completion_penalty(answered: int, total: int) -> float:
+    """Direct ratio multiplier — score is capped at completion percentage.
+    2/5 answered → max 40 pts regardless of answer quality.
+    Works identically for 5, 10, and 20 question interviews."""
+    if total <= 0:
+        return 1.0
+    return round(min(answered, total) / total, 4)
+
+
+def _grade_from_score(score: float) -> str:
+    if score >= 80:
+        return "Excellent"
+    if score >= 65:
+        return "Good"
+    if score >= 50:
+        return "Average"
+    return "Needs Work"
+
+
 async def score_mock_interview(
     role: str,
     interview_type: str,
@@ -1543,56 +1574,71 @@ async def score_mock_interview(
     filler_count: int,
     total_words: int,
     camera_focus_score: int | None = None,
+    num_questions: int | None = None,
 ) -> dict:
     client = await _build_openai_client()
-    answered_items = []
-    for item in qa_log or []:
-        ans = str(item.get("answer", "")).strip()
-        if ans and ans.lower() not in {"no response provided within time limit.", "no response", "n/a", "na"}:
-            answered_items.append(item)
+
+    _SKIP = {"no response provided within time limit.", "no response", "n/a", "na", ""}
+    answered_items = [
+        item for item in (qa_log or [])
+        if str(item.get("answer", "")).strip().lower() not in _SKIP
+    ]
+    total_q = num_questions if (num_questions and num_questions > 0) else max(len(qa_log or []), 1)
+    answered_count = len(answered_items)
+
+    # Completion penalty multiplier applied to all numeric scores after LLM
+    penalty = _completion_penalty(answered_count, total_q)
+
+    skipped_indices = {
+        i + 1
+        for i, item in enumerate(qa_log or [])
+        if str(item.get("answer", "")).strip().lower() in _SKIP
+    }
+    # Add placeholder entries for questions that were never reached
+    full_qa_log = list(qa_log or [])
+    for extra in range(len(full_qa_log), total_q):
+        full_qa_log.append({"question": f"Question {extra + 1} (not reached)", "answer": ""})
 
     if not answered_items:
         return {
-            "overall": 12,
-            "communication": 15,
-            "depth": 8,
-            "relevance": 10,
-            "confidence": 12,
-            "keywords_hit": 5,
+            "overall": 12, "communication": 15, "depth": 8,
+            "relevance": 10, "confidence": 12, "keywords_hit": 5,
+            "completion_rate": 0,
             "grade": "Needs Work",
             "strengths": ["Interview was initiated successfully."],
             "improvements": [
                 "Provide spoken answers for each question.",
                 "Share concrete examples with tools, decisions, and outcomes.",
-                "Reduce pauses and filler words by structuring responses."
+                "Reduce pauses and filler words by structuring responses.",
             ],
             "qa_scores": [
                 {"index": i + 1, "score": 0, "feedback": "No answer was provided for this question."}
-                for i, _ in enumerate(qa_log or [])
+                for i in range(total_q)
             ],
         }
 
     qa_text = "\n\n".join(
-        [
-            f"Q{i+1}: {str(item.get('question', '')).strip()}\nA: {str(item.get('answer', '')).strip()}"
-            for i, item in enumerate(qa_log or [])
-        ]
+        f"Q{i+1}: {str(item.get('question', '')).strip()}\n"
+        f"A: {str(item.get('answer', '')).strip() or '[No answer — skipped or timed out]'}"
+        for i, item in enumerate(full_qa_log)
     )
+
     prompt = f"""You are a professional interview evaluator.
 Role: {role}
 Interview type: {interview_type}
 Filler words detected: {filler_count} out of ~{total_words} words.
-Camera attention score (0-100, higher means candidate stayed focused toward camera): {camera_focus_score if camera_focus_score is not None else "Not available"}
+Camera attention score (0-100): {camera_focus_score if camera_focus_score is not None else "Not available"}
+Questions answered: {answered_count} out of {total_q}
 
 Q&A Transcript:
 {qa_text}
 
 Scoring policy:
-- Score ONLY based on interview performance in the transcript above.
+- Score ONLY based on the quality of the answers actually given.
+- Questions marked [No answer — skipped or timed out] must receive a score of 0 with feedback "Not answered".
 - Do NOT infer capability from resume, role title prestige, or assumptions.
-- If an answer is missing, vague, or off-topic, score it low.
-- Reward specificity, structured thinking, tradeoff clarity, and correctness shown in answers.
-- Use camera attention score as a minor modifier to confidence/professional presence only (not core technical depth).
+- Reward specificity, structured thinking, tradeoff clarity, and correctness.
+- Use camera score as a minor modifier to confidence only.
 
 Return JSON only:
 {{
@@ -1608,6 +1654,7 @@ Return JSON only:
   "improvements": ["<point>", "<point>", "<point>"],
   "qa_scores": [{{"index":1,"score":<0-10>,"feedback":"<brief feedback>"}}]
 }}"""
+
     response = await client.chat.completions.create(
         model=MOCK_INTERVIEW_MODEL,
         response_format={"type": "json_object"},
@@ -1617,4 +1664,46 @@ Return JSON only:
     )
     raw = str(response.choices[0].message.content or "").strip()
     parsed = json.loads(raw)
+
+    # All question indices that must score 0
+    all_q_indices = set(range(1, total_q + 1))
+    answered_q_indices = set(range(1, len(qa_log or []) + 1)) - skipped_indices
+    zero_indices = all_q_indices - answered_q_indices  # skipped + never reached
+
+    # Ensure qa_scores has an entry for every question; zero out unanswered ones
+    existing = {qs.get("index"): qs for qs in parsed.get("qa_scores", [])}
+    full_qa_scores = []
+    for idx in range(1, total_q + 1):
+        if idx in existing:
+            qs = existing[idx]
+        else:
+            qs = {"index": idx, "score": 0, "feedback": "Not answered."}
+        if idx in zero_indices:
+            qs["score"] = 0
+            qs["feedback"] = "Not answered."
+        else:
+            try:
+                qs["score"] = max(0, min(10, int(float(qs.get("score", 0)))))
+            except (TypeError, ValueError):
+                qs["score"] = 0
+        full_qa_scores.append(qs)
+    parsed["qa_scores"] = full_qa_scores
+
+    # Derive overall deterministically from qa_scores — immune to LLM inflation
+    total_possible = total_q * 10
+    actual_sum = sum(qs["score"] for qs in full_qa_scores)
+    parsed["overall"] = round(actual_sum / total_possible * 100) if total_possible > 0 else 0
+
+    # Apply completion penalty to sub-scores (handles string values too)
+    sub_keys = ["communication", "depth", "relevance", "confidence", "keywords_hit", "camera_focus"]
+    for k in sub_keys:
+        val = parsed.get(k)
+        if val is not None:
+            try:
+                parsed[k] = round(float(val) * penalty)
+            except (TypeError, ValueError):
+                pass
+
+    parsed["grade"] = _grade_from_score(parsed["overall"])
+    parsed["completion_rate"] = round(answered_count / total_q * 100)
     return parsed

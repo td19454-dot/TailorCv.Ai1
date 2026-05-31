@@ -7,7 +7,7 @@ from urllib.parse import urlencode
 import httpx
 from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.responses import RedirectResponse
-from openai import OpenAI
+from openai import AsyncOpenAI
 from pydantic import BaseModel
 
 router = APIRouter()
@@ -30,7 +30,29 @@ def _pick_first(payload: dict, keys: list[str]) -> str:
         value = payload.get(key)
         if isinstance(value, str) and value.strip():
             return value.strip()
+        if isinstance(value, dict):
+            # Handle nested location-style objects: {"city":"...", "country":"..."}
+            parts = [str(v).strip() for v in value.values() if v and str(v).strip()]
+            if parts:
+                return ", ".join(parts)
     return ""
+
+
+def _format_period(start, end, is_current=False) -> tuple[str, str]:
+    """Extract start/end date strings from either string or {year, month} dict."""
+    def _period_str(raw) -> str:
+        if not raw:
+            return ""
+        if isinstance(raw, str):
+            return raw.strip()
+        if isinstance(raw, dict):
+            year = raw.get("year") or raw.get("Year") or ""
+            month = raw.get("month") or raw.get("Month") or ""
+            if year and month:
+                return f"{month}/{year}"
+            return str(year).strip() if year else ""
+        return ""
+    return _period_str(start), "Present" if is_current else _period_str(end)
 
 
 def _extract_linkedin_fallback(profile_raw: dict, linkedin_url: str) -> dict:
@@ -39,10 +61,10 @@ def _extract_linkedin_fallback(profile_raw: dict, linkedin_url: str) -> dict:
             return -1
         score = 0
         keyset = {str(k).lower() for k in node.keys()}
-        for hint in ("full_name", "fullname", "first_name", "firstname", "headline", "summary", "about", "experience", "experiences", "education", "skills"):
+        for hint in ("full_name", "fullname", "first_name", "firstname", "headline", "summary", "about", "experience", "experiences", "positions", "education", "educations", "skills"):
             if hint in keyset:
                 score += 2
-        if any(isinstance(node.get(k), list) for k in ("experience", "experiences", "education", "skills", "projects")):
+        if any(isinstance(node.get(k), list) for k in ("experience", "experiences", "positions", "education", "educations", "skills", "projects")):
             score += 3
         return score
 
@@ -82,22 +104,28 @@ def _extract_linkedin_fallback(profile_raw: dict, linkedin_url: str) -> dict:
     email = _pick_first(source, ["email", "emailAddress"])
     phone = _pick_first(source, ["phone", "phoneNumber"])
 
-    experience_raw = source.get("experiences") or source.get("experience") or []
+    # LinkedIn API uses "positions" for work experience; also try "experiences"/"experience"
+    experience_raw = (
+        source.get("positions")
+        or source.get("experiences")
+        or source.get("experience")
+        or []
+    )
     if not isinstance(experience_raw, list):
         experience_raw = []
     experience = []
     for exp in experience_raw:
         if not isinstance(exp, dict):
             continue
-        start = _pick_first(exp, ["start_date", "startDate", "starts_at", "from"])
-        end = _pick_first(exp, ["end_date", "endDate", "ends_at", "to"])
-        if not end and bool(exp.get("is_current")):
-            end = "Present"
+        start_raw = exp.get("start") or exp.get("start_date") or exp.get("startDate") or exp.get("starts_at") or exp.get("from")
+        end_raw = exp.get("end") or exp.get("end_date") or exp.get("endDate") or exp.get("ends_at") or exp.get("to")
+        is_current = bool(exp.get("isCurrent") or exp.get("is_current"))
+        start, end = _format_period(start_raw, end_raw, is_current)
         experience.append(
             {
-                "title": _pick_first(exp, ["title", "position"]),
-                "company": _pick_first(exp, ["company", "company_name", "companyName"]),
-                "location": _pick_first(exp, ["location"]),
+                "title": _pick_first(exp, ["title", "position", "roleName"]),
+                "company": _pick_first(exp, ["companyName", "company", "company_name", "organizationName"]),
+                "location": _pick_first(exp, ["location", "locationName"]),
                 "start_date": start,
                 "end_date": end,
                 "description": _pick_first(exp, ["description", "summary"]),
@@ -105,20 +133,23 @@ def _extract_linkedin_fallback(profile_raw: dict, linkedin_url: str) -> dict:
         )
     experience = [e for e in experience if any(_to_text(v) for v in e.values())]
 
-    education_raw = source.get("education") or source.get("educations") or []
+    education_raw = source.get("educations") or source.get("education") or []
     if not isinstance(education_raw, list):
         education_raw = []
     education = []
     for edu in education_raw:
         if not isinstance(edu, dict):
             continue
+        start_raw = edu.get("start") or edu.get("start_year") or edu.get("startYear")
+        end_raw = edu.get("end") or edu.get("end_year") or edu.get("endYear")
+        start_yr, end_yr = _format_period(start_raw, end_raw)
         education.append(
             {
-                "degree": _pick_first(edu, ["degree"]),
-                "institution": _pick_first(edu, ["institution", "school", "school_name", "schoolName"]),
-                "field": _pick_first(edu, ["field", "field_of_study", "fieldOfStudy"]),
-                "start_year": _pick_first(edu, ["start_year", "startYear"]),
-                "end_year": _pick_first(edu, ["end_year", "endYear"]),
+                "degree": _pick_first(edu, ["degree", "degreeName"]),
+                "institution": _pick_first(edu, ["schoolName", "institution", "school", "school_name"]),
+                "field": _pick_first(edu, ["fieldOfStudy", "field", "field_of_study"]),
+                "start_year": start_yr or _pick_first(edu, ["start_year", "startYear"]),
+                "end_year": end_yr or _pick_first(edu, ["end_year", "endYear"]),
             }
         )
     education = [e for e in education if any(_to_text(v) for v in e.values())]
@@ -222,36 +253,38 @@ def _extract_json_block(raw: str) -> str:
     return text
 
 
-def _parse_cv_with_openai(api_key: str, raw_text: str) -> dict:
-    client = OpenAI(api_key=api_key)
-    response = client.chat.completions.create(
+async def _parse_cv_with_openai(api_key: str, raw_text: str) -> dict:
+    client = AsyncOpenAI(api_key=api_key)
+    response = await client.chat.completions.create(
         model="gpt-4o-mini",
-        max_tokens=2500,
+        max_tokens=3500,
+        response_format={"type": "json_object"},
         messages=[
             {
                 "role": "system",
-                "content": "You are a professional CV builder. Convert LinkedIn profile data into structured CV JSON. Return ONLY valid JSON, no markdown, no explanation, no code fences.",
+                "content": "You are a professional CV builder. Convert LinkedIn profile data into structured CV JSON. Return ONLY valid JSON matching the exact schema provided.",
             },
             {
                 "role": "user",
-                "content": f"""Convert this LinkedIn profile into a structured CV.
-Return ONLY this exact JSON structure with real data filled in:
+                "content": f"""Convert this LinkedIn profile data into a structured CV.
+Return ONLY this exact JSON schema with real values. Use empty string for missing fields, empty array [] for missing lists.
+
 {{
   "full_name": "string",
   "headline": "string",
   "location": "string",
-  "email": "",
-  "phone": "",
-  "summary": "string (professional summary from About + experience)",
-  "experience": [{{"title":"","company":"","location":"","start_date":"","end_date":"","description":""}}],
-  "education": [{{"degree":"","institution":"","field":"","start_year":"","end_year":""}}],
-  "skills": [],
-  "certifications": [{{"name":"","issuer":"","date":""}}],
-  "languages": [],
-  "projects": [{{"name":"","description":"","url":""}}]
+  "email": "string",
+  "phone": "string",
+  "summary": "string (write a professional 2-3 sentence summary based on the profile)",
+  "experience": [{{"title":"string","company":"string","location":"string","start_date":"string","end_date":"string","description":"string"}}],
+  "education": [{{"degree":"string","institution":"string","field":"string","start_year":"string","end_year":"string"}}],
+  "skills": ["skill1","skill2"],
+  "certifications": [{{"name":"string","issuer":"string","date":"string"}}],
+  "languages": ["language1","language2"],
+  "projects": [{{"name":"string","description":"string","url":"string"}}]
 }}
 
-LinkedIn text:
+LinkedIn data:
 {raw_text}""",
             },
         ],
@@ -406,12 +439,54 @@ async def parse_linkedin(body: LinkedInParseRequest):
         raw_text = raw_text[:20000]
         if len(raw_text) < 100:
             raise HTTPException(status_code=400, detail="Please paste more text from your LinkedIn profile.")
-        parsed = _parse_cv_with_openai(api_key, raw_text)
+        parsed = await _parse_cv_with_openai(api_key, raw_text)
         return {"success": True, "data": parsed}
     except json.JSONDecodeError as exc:
         raise HTTPException(status_code=500, detail=f"Could not parse response: {exc}")
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Server error: {exc}")
+
+
+async def _fetch_linkedin_html_text(linkedin_url: str) -> str:
+    """Fetch a public LinkedIn profile page and return its plain text content."""
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+        "Cache-Control": "no-cache",
+    }
+    try:
+        async with httpx.AsyncClient(
+            timeout=20.0,
+            follow_redirects=True,
+            headers=headers,
+        ) as http:
+            resp = await http.get(linkedin_url)
+            if resp.status_code != 200:
+                return ""
+            html = resp.text
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(html, "html.parser")
+            for tag in soup(["script", "style", "nav", "footer", "iframe", "noscript"]):
+                tag.decompose()
+            text = soup.get_text(separator="\n", strip=True)
+            # Detect login-wall redirect
+            low = text.lower()
+            if (
+                ("join linkedin" in low or "sign in" in low or "authwall" in low)
+                and len(text) < 3000
+            ):
+                return ""
+            return text[:40000]
+    except Exception:
+        return ""
 
 
 @router.post("/api/linkedin-import")
@@ -420,16 +495,34 @@ async def import_linkedin(body: LinkedInImportRequest):
     if "linkedin.com/in/" not in linkedin_url:
         raise HTTPException(status_code=400, detail="Please enter a valid LinkedIn profile URL.")
 
-    rapidapi_key = os.getenv("RAPIDAPI_KEY", "").strip()
-    if not rapidapi_key:
-        raise HTTPException(status_code=500, detail="RAPIDAPI_KEY is not configured.")
-
     api_key = os.getenv("OPENAI_API_KEY", "").strip()
     if not api_key:
         raise HTTPException(status_code=500, detail="OPENAI_API_KEY is not configured.")
 
+    # ── Primary: direct HTML scrape ──────────────────────────────────────────
+    profile_text = await _fetch_linkedin_html_text(linkedin_url)
+    if profile_text:
+        try:
+            parsed = await _parse_cv_with_openai(api_key, profile_text)
+            parsed.setdefault("linkedin_url", linkedin_url)
+            return {"success": True, "data": parsed}
+        except Exception:
+            pass  # fall through to RapidAPI
+
+    # ── Fallback: RapidAPI ───────────────────────────────────────────────────
+    rapidapi_key = os.getenv("RAPIDAPI_KEY", "").strip()
+    if not rapidapi_key:
+        raise HTTPException(
+            status_code=422,
+            detail=(
+                "Could not fetch this LinkedIn profile. "
+                "Make sure your profile is set to Public, then try again. "
+                "Alternatively, use the 'Paste Profile Text' tab."
+            ),
+        )
+
     try:
-        async with httpx.AsyncClient(timeout=15.0) as http:
+        async with httpx.AsyncClient(timeout=20.0) as http:
             resp = await http.get(
                 "https://linkedin-data-api.p.rapidapi.com/get-profile-data-by-url",
                 headers={
@@ -442,8 +535,14 @@ async def import_linkedin(body: LinkedInImportRequest):
                 raise HTTPException(status_code=404, detail="LinkedIn profile not found. Make sure it is set to Public.")
             if resp.status_code == 429:
                 raise HTTPException(status_code=429, detail="Too many requests. Please try again shortly.")
-            if resp.status_code == 401 or resp.status_code == 403:
-                raise HTTPException(status_code=502, detail="RapidAPI authorization failed. Check RAPIDAPI_KEY/subscription.")
+            if resp.status_code in (401, 403):
+                raise HTTPException(
+                    status_code=422,
+                    detail=(
+                        "Could not import this LinkedIn profile automatically. "
+                        "Please use the 'Paste Profile Text' tab instead."
+                    ),
+                )
             resp.raise_for_status()
             profile_raw = resp.json()
     except httpx.TimeoutException:
@@ -451,24 +550,31 @@ async def import_linkedin(body: LinkedInImportRequest):
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to fetch profile: {exc}")
+        raise HTTPException(
+            status_code=500,
+            detail=(
+                f"Failed to fetch profile ({exc}). "
+                "Try the 'Paste Profile Text' tab instead."
+            ),
+        )
 
     try:
         fallback = _extract_linkedin_fallback(profile_raw, linkedin_url)
-        payload_for_ai = profile_raw.get("data") if isinstance(profile_raw, dict) and isinstance(profile_raw.get("data"), (dict, list)) else profile_raw
+        payload_for_ai = (
+            profile_raw.get("data")
+            if isinstance(profile_raw, dict) and isinstance(profile_raw.get("data"), (dict, list))
+            else profile_raw
+        )
         raw_for_ai = json.dumps(payload_for_ai, ensure_ascii=False, indent=2)
-        parsed = _parse_cv_with_openai(api_key, raw_for_ai[:50000])
+        parsed = await _parse_cv_with_openai(api_key, raw_for_ai[:50000])
         merged = _merge_ai_with_fallback(parsed, fallback)
         merged.setdefault("linkedin_url", linkedin_url)
         return {"success": True, "data": merged}
-    except json.JSONDecodeError as exc:
-        raise HTTPException(status_code=500, detail=f"Could not structure profile data: {exc}")
-    except HTTPException:
-        raise
     except Exception as exc:
         fallback = _extract_linkedin_fallback(profile_raw, linkedin_url)
         if any(_to_text(fallback.get(k)) for k in ("full_name", "headline", "summary")) or any(
-            isinstance(fallback.get(k), list) and len(fallback.get(k)) > 0 for k in ("experience", "education", "skills", "projects")
+            isinstance(fallback.get(k), list) and len(fallback.get(k)) > 0
+            for k in ("experience", "education", "skills", "projects")
         ):
             return {"success": True, "data": fallback}
         raise HTTPException(status_code=500, detail=f"Server error: {exc}")

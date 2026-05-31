@@ -642,7 +642,7 @@ function startTimer(){
     if(STATE.timerSec <= 10){ timerEl.style.color = '#ef4444'; } else { timerEl.style.color = '#facc15'; }
     if(STATE.timerSec <= 0){
       stopTimer();
-      if(STATE.isRecording) stopMic();
+      if(STATE.isRecording) await stopMicAndFlush();
       if(!STATE.currentTranscript.trim()){
         STATE.currentTranscript = 'No response provided within time limit.';
       }
@@ -651,9 +651,91 @@ function startTimer(){
   }, 1000);
 }
 
-function initSpeech(){ const SR = window.SpeechRecognition || window.webkitSpeechRecognition; if(!SR) return false; const rec=new SR(); rec.continuous=true; rec.interimResults=true; rec.lang='en-US'; rec.onresult=(e)=>{ let final=''; let interim=''; for(let i=e.resultIndex;i<e.results.length;i++){ const t=e.results[i][0].transcript; if(e.results[i].isFinal) final+=t; else interim+=t; } if(final){ STATE.currentTranscript += final+' '; countFillers(final); } STATE.liveInterim = interim || ''; document.getElementById('transcript').textContent=(STATE.currentTranscript+STATE.liveInterim).trim() || 'Listening...'; }; rec.onend=()=>{ if(STATE.isRecording) rec.start(); }; STATE.speechRec=rec; return true; }
-function stopMic(){ STATE.isRecording=false; try{ if(STATE.speechRec) STATE.speechRec.stop(); }catch(e){} }
-function startMic(){ if(!STATE.speechRec && !initSpeech()){ alert('SpeechRecognition not supported. Use Chrome.'); return; } if(STATE.isRecording) return; STATE.currentTranscript=''; STATE.liveInterim=''; document.getElementById('transcript').textContent='Listening...'; STATE.speechRec.start(); STATE.isRecording=true; const btnSetup=document.getElementById('micBtnSetup'); if(btnSetup){ btnSetup.textContent='Mic Enabled'; btnSetup.disabled=true; btnSetup.style.opacity='0.7'; } updateSetupCards(); }
+function initSpeech(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR) return false;
+  const rec = new SR();
+  rec.continuous       = true;
+  rec.interimResults   = true;
+  rec.maxAlternatives  = 5;   // get up to 5 alternatives per result
+  rec.lang             = 'en-US';
+
+  rec.onresult = (e) => {
+    let final = '', interim = '';
+    for(let i = e.resultIndex; i < e.results.length; i++){
+      // Pick the alternative with the highest confidence score
+      let best = e.results[i][0];
+      for(let a = 1; a < e.results[i].length; a++){
+        if(e.results[i][a].confidence > best.confidence) best = e.results[i][a];
+      }
+      if(e.results[i].isFinal){
+        // Accept unless confidence is explicitly very low (some browsers always report 0)
+        if(best.confidence === 0 || best.confidence >= 0.45) final += best.transcript;
+      } else {
+        interim += best.transcript;
+      }
+    }
+    if(final){ STATE.currentTranscript += final + ' '; countFillers(final); }
+    STATE.liveInterim = interim;
+    const tEl = document.getElementById('transcript');
+    if(tEl) tEl.textContent = (STATE.currentTranscript + STATE.liveInterim).trim() || 'Listening…';
+  };
+
+  rec.onerror = (e) => {
+    if(e.error === 'no-speech' || e.error === 'aborted') return; // non-fatal
+    console.warn('SpeechRecognition error:', e.error);
+    // Restart on recoverable errors without resetting transcript
+    if(STATE.isRecording){
+      setTimeout(() => { if(STATE.isRecording){ try{ rec.start(); }catch(err){} } }, 300);
+    }
+  };
+
+  rec.onend = () => {
+    if(STATE.isRecording){
+      // Small gap prevents a tight restart loop on some browsers
+      setTimeout(() => { if(STATE.isRecording){ try{ rec.start(); }catch(err){} } }, 80);
+    }
+  };
+
+  STATE.speechRec = rec;
+  return true;
+}
+
+function stopMic(){ STATE.isRecording = false; try{ if(STATE.speechRec) STATE.speechRec.stop(); }catch(e){} }
+
+// Stop mic and wait for the recognition engine to fully finalize its last utterance
+function stopMicAndFlush(){
+  return new Promise(resolve => {
+    if(!STATE.isRecording || !STATE.speechRec){ resolve(); return; }
+    STATE.isRecording = false;
+    const rec = STATE.speechRec;
+    const finish = () => {
+      // Flush any pending interim into the final transcript
+      if(STATE.liveInterim && STATE.liveInterim.trim()){
+        STATE.currentTranscript += STATE.liveInterim.trim() + ' ';
+        STATE.liveInterim = '';
+      }
+      resolve();
+    };
+    const guard = setTimeout(finish, 600); // hard timeout
+    const origOnEnd = rec.onend;
+    rec.onend = () => { clearTimeout(guard); rec.onend = origOnEnd; finish(); };
+    try{ rec.stop(); }catch(e){ clearTimeout(guard); finish(); }
+  });
+}
+
+function startMic(){
+  if(!STATE.speechRec && !initSpeech()){ alert('SpeechRecognition not supported. Use Chrome.'); return; }
+  if(STATE.isRecording) return;
+  STATE.currentTranscript = ''; STATE.liveInterim = '';
+  const tEl = document.getElementById('transcript');
+  if(tEl) tEl.textContent = 'Listening…';
+  STATE.speechRec.start();
+  STATE.isRecording = true;
+  const btnSetup = document.getElementById('micBtnSetup');
+  if(btnSetup){ btnSetup.textContent = 'Mic Enabled'; btnSetup.disabled = true; btnSetup.style.opacity = '0.7'; }
+  updateSetupCards();
+}
 function getCapturedAnswer(){
   const text = `${STATE.currentTranscript || ''} ${STATE.liveInterim || ''}`.replace(/\s+/g, ' ').trim();
   return text;
@@ -816,7 +898,7 @@ async function startInterview(){
 
 async function submitAnswer(fromTimer=false){
   stopTimer();
-  if(STATE.isRecording){ stopMic(); await new Promise(r => setTimeout(r, 220)); }
+  if(STATE.isRecording){ await stopMicAndFlush(); }
   const answer = getCapturedAnswer();
   if(!answer && !fromTimer){ alert('Please record an answer first.'); return; }
   addHistory('user',answer); STATE.qa_log.push({question:STATE.currentQuestion,answer});
@@ -844,7 +926,7 @@ async function endInterview(){
   stopScreenShare();
   stopCameraMonitoring();
   const cameraFocusScore = getCameraFocusScore();
-  const r = await fetch('/api/interview/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({role:STATE.role,interview_type:STATE.type,resume_text:'',qa_log:STATE.qa_log,filler_count:STATE.fillerCount,total_words:STATE.totalWords,camera_focus_score:cameraFocusScore})});
+  const r = await fetch('/api/interview/score',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({role:STATE.role,interview_type:STATE.type,resume_text:'',qa_log:STATE.qa_log,filler_count:STATE.fillerCount,total_words:STATE.totalWords,camera_focus_score:cameraFocusScore,num_questions:STATE.numQuestions})});
   const data = await r.json();
   document.getElementById('livePanel').classList.add('hidden'); document.getElementById('scorePanel').classList.remove('hidden');
   renderScoreCard(data.scores || data);
@@ -924,11 +1006,23 @@ function renderScoreCard(s){
     </div>
   </div>
 
+  ${(s.completion_rate !== undefined && s.completion_rate < 100) ? `
+  <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.35);border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;">
+    <span style="font-size:18px;">⚠️</span>
+    <span style="color:#fbbf24;font-size:13px;">Interview incomplete — you answered <strong>${s.completion_rate}%</strong> of questions. Scores are penalised accordingly.</span>
+  </div>` : ''}
+
   <div class="score-grid">
     <div class="score-metric">
       <div class="k">Overall</div>
       <div class="v" style="color:${s.overall>=75?'#34d399':'#f59e0b'}">
         ${safe(s.overall)}%
+      </div>
+    </div>
+    <div class="score-metric">
+      <div class="k">Completion</div>
+      <div class="v" style="color:${(s.completion_rate>=100)?'#34d399':(s.completion_rate>=60)?'#f59e0b':'#ef4444'}">
+        ${safe(s.completion_rate,'–')}${s.completion_rate!==undefined?'%':''}
       </div>
     </div>
     <div class="score-metric">
@@ -958,8 +1052,7 @@ function renderScoreCard(s){
     <div class="score-metric">
       <div class="k">Camera Focus</div>
       <div class="v" style="color:#9bb0d8">
-        ${safe(s.camera_focus,'N/A')}
-        ${s.camera_focus?'%':''}
+        ${safe(s.camera_focus,'N/A')}${s.camera_focus?'%':''}
       </div>
     </div>
     <div class="score-metric">

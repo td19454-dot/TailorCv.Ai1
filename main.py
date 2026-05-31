@@ -2223,6 +2223,7 @@ async def api_interview_score(payload: dict):
             filler_count=int(payload.get("filler_count", 0)),
             total_words=int(payload.get("total_words", 0)),
             camera_focus_score=(int(payload.get("camera_focus_score")) if payload.get("camera_focus_score") is not None else None),
+            num_questions=int(payload.get("num_questions") or len(payload.get("qa_log") or [])),
         )
         return JSONResponse({"success": True, "scores": scores})
     except Exception as exc:
@@ -3269,6 +3270,138 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
             os.remove(file_path)
 
 
+def _template_parsed_to_editor_payload(parsed: dict) -> dict:
+    """Convert AI output (template schema from create_prompt) to editor cvData format."""
+    def t(v) -> str:
+        return str(v or "").strip()
+
+    def bullets_to_details(items) -> str:
+        lines = normalize_list_of_strings(items or [])
+        result = []
+        for line in lines:
+            result.append(line if line.startswith("•") else f"• {line}")
+        return "\n".join(result)
+
+    contact = parsed.get("contact", {}) or {}
+
+    # skills: list of strings or list of dicts like {"category": "values"}
+    skill_entries = []
+    for skill in parsed.get("skills", []) or []:
+        if isinstance(skill, str) and skill.strip():
+            skill_entries.append({"name": skill.strip()})
+        elif isinstance(skill, dict):
+            name = skill.get("name") or skill.get("category")
+            if name:
+                skill_entries.append({"name": t(name)})
+
+    cv_data = {
+        "personalInfo": {
+            "name": t(parsed.get("name")),
+            "headline": t(
+                parsed.get("headline")
+                or parsed.get("title")
+                or parsed.get("current_title")
+            ),
+            "email": t(contact.get("email")),
+            "phone": t(contact.get("phone")),
+            "location": t(contact.get("address")),
+            "linkedin": normalize_contact_link(t(contact.get("linkedin")), "linkedin"),
+            "kaggle": t(contact.get("kaggle")),
+            "github": normalize_contact_link(t(contact.get("github")), "github"),
+            "portfolio": t(contact.get("portfolio")),
+            "googleScholar": t(contact.get("google_scholar")),
+            "leetcode": normalize_contact_link(t(contact.get("leetcode")), "leetcode"),
+            "summary": t(parsed.get("summary")),
+        },
+        "education": [
+            {
+                "school": t(edu.get("school") or edu.get("institution") or edu.get("university")),
+                "degree": t(edu.get("degree")),
+                "year": t(edu.get("year") or edu.get("years") or edu.get("dates")),
+                "score": t(
+                    edu.get("score") or edu.get("cgpa") or edu.get("sgpa")
+                    or edu.get("gpa") or edu.get("percentage") or edu.get("marks")
+                ),
+            }
+            for edu in (parsed.get("education", []) or [])
+            if isinstance(edu, dict)
+        ],
+        "experience": [
+            {
+                "company": t(exp.get("company")),
+                "title": t(exp.get("title")),
+                "dates": t(exp.get("dates")),
+                "location": t(exp.get("location")),
+                "details": bullets_to_details(exp.get("bullets") or exp.get("responsibilities") or []),
+            }
+            for exp in (parsed.get("experience", []) or [])
+            if isinstance(exp, dict)
+        ],
+        "projects": [
+            {
+                "name": t(proj.get("name")),
+                "subtitle": t(
+                    proj.get("subtitle") or proj.get("stack") or proj.get("technologies")
+                ),
+                "dates": t(proj.get("dates") or proj.get("date")),
+                "url": normalize_url(t(
+                    proj.get("url") or proj.get("website") or proj.get("project_link")
+                )),
+                "github_link": normalize_url(t(
+                    proj.get("github_link") or proj.get("github")
+                )),
+                "details": bullets_to_details(
+                    proj.get("bullets") or proj.get("achievements") or proj.get("description") or []
+                ),
+            }
+            for proj in (parsed.get("projects", []) or [])
+            if isinstance(proj, dict)
+        ],
+        "skills": skill_entries,
+        "extracurriculars": [
+            {
+                "role": t(item.get("role")),
+                "organization": t(item.get("organization")),
+                "dates": t(item.get("dates")),
+                "url": normalize_url(t(item.get("url"))),
+                "details": bullets_to_details(
+                    item.get("bullets") or item.get("description") or []
+                ),
+            }
+            for item in (parsed.get("extracurriculars", []) or [])
+            if isinstance(item, dict)
+        ],
+        "certifications": [
+            {
+                "name": t(cert.get("name")),
+                "issuer": t(cert.get("issuer")),
+                "year": t(cert.get("year")),
+                "url": normalize_url(t(cert.get("url"))),
+            }
+            for cert in (parsed.get("certifications", []) or [])
+            if isinstance(cert, dict)
+        ],
+        "awards": [
+            {"title": t(a)}
+            for a in normalize_list_of_strings(
+                (parsed.get("achievements") or []) + (parsed.get("awards") or [])
+            )
+            if t(a)
+        ],
+        "publications": [
+            {
+                "title": t(pub.get("title")),
+                "publisher": t(pub.get("publisher")),
+                "year": t(pub.get("year")),
+                "url": normalize_url(t(pub.get("url"))),
+            }
+            for pub in (parsed.get("publications", []) or [])
+            if isinstance(pub, dict)
+        ],
+    }
+    return {"cvData": cv_data, "meta": {}}
+
+
 @app.post("/api/extract-cv-from-pdf")
 @app.post("/api/extract-cv-from-pdf/")
 @app.post("/extract-cv-from-pdf")
@@ -3282,17 +3415,20 @@ async def extract_cv_from_pdf(file: UploadFile = File(...)):
             content = await file.read()
             buffer.write(content)
 
-        extracted_text = await asyncio.to_thread(extract_pdf_text, file_path)
-        if not extracted_text or not extracted_text.strip():
+        resume_text = await asyncio.to_thread(extract_pdf_text, file_path)
+        if not resume_text or not resume_text.strip():
             raise HTTPException(status_code=400, detail="No extractable text found in this PDF.")
 
-        parsed_payload = _parse_cv_text_to_editor_data(extracted_text)
-        # Heuristic parser first, AI fallback for difficult resume layouts.
-        if _cv_data_quality_score(parsed_payload) < 8:
-            ai_payload = await _parse_cv_text_to_editor_data_ai(extracted_text)
-            if ai_payload and _cv_data_quality_score(ai_payload) >= _cv_data_quality_score(parsed_payload):
-                parsed_payload = ai_payload
-        return parsed_payload
+        # Use the same AI parsing path as the template-change feature for accurate,
+        # fully-structured output (each project / experience as a separate entry).
+        prompt = create_prompt(resume_text, "")
+        try:
+            response_string = await get_resume_response(prompt)
+        except Exception as exc:
+            raise HTTPException(status_code=500, detail=f"AI generation error: {exc}")
+
+        parsed = parse_ai_json_response(response_string)
+        return _template_parsed_to_editor_payload(parsed)
     except HTTPException:
         raise
     except Exception as exc:
