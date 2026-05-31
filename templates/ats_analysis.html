@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "_google_analytics.html" %}
@@ -19,10 +19,7 @@
             background-position: center !important;
             background-attachment: fixed !important;
         }
-        /* style2.css sets .logo-text to 300×300px inside a 100px navbar with no
-           overflow:hidden — the transparent logo <a href="/"> extends ~230px below
-           the navbar, covering the tab buttons and intercepting their clicks.
-           Clip it here so the logo cannot capture clicks outside the navbar. */
+        /* Clip the oversized logo so it doesn't intercept sidebar/content clicks */
         header.navbar { overflow: hidden; }
         @media (min-width: 769px) {
             .navbar .nav-links { min-width: 560px; gap: 2px; }
@@ -59,36 +56,128 @@
     </header>
 
     <main class="analysis-page">
-        <div class="analysis-shell">
+        <div class="analysis-layout">
 
-            <!-- Header -->
-            <header class="analysis-header-row">
-                <a href="/solutions" id="back-to-resume-btn" class="btn-outline-small">← Back to resume</a>
-                <p id="analysis-meta" class="analysis-meta">Loading analysis…</p>
-            </header>
+            <!-- ════════════════════════════════════════════
+                 SIDEBAR
+            ════════════════════════════════════════════ -->
+            <aside class="sidebar" id="analysis-sidebar">
+                <div class="sidebar-header">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                    Resume score
+                </div>
+                <nav class="sidebar-nav" aria-label="ATS sections">
 
-            <!-- Tabs -->
-            <nav class="analysis-tabs" aria-label="ATS sections">
-                <button class="tab-btn active" type="button" data-tab="overview">Overview</button>
-                <button class="tab-btn" type="button" data-tab="contact">Contact</button>
-                <button class="tab-btn" type="button" data-tab="skills">Skills</button>
-                <button class="tab-btn" type="button" data-tab="sections">Sections</button>
-                <button class="tab-btn" type="button" data-tab="formatting">Formatting</button>
-                <button class="tab-btn" type="button" data-tab="education">Education</button>
-                <button class="tab-btn" type="button" data-tab="experience">Experience</button>
-                <button class="tab-btn" type="button" data-tab="projects">Projects</button>
-                <button class="tab-btn" type="button" data-tab="fixes">Priority Fixes</button>
-            </nav>
+                    <button class="sidebar-btn active" type="button" data-tab="overview">
+                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1"/>
+                        </svg>
+                        <span class="sidebar-btn-label">Overview</span>
+                    </button>
 
-            <!-- ════════════ TAB: OVERVIEW ════════════ -->
-            <section id="tab-overview" class="tab-panel active">
+                    <button class="sidebar-btn" type="button" data-tab="contact">
+                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <span class="sidebar-btn-label">Contact</span>
+                        <span class="sidebar-badge" id="badge-contact" style="display:none;"></span>
+                    </button>
 
-                <!-- Score + summary -->
-                <div class="overview-grid">
+                    <button class="sidebar-btn" type="button" data-tab="skills">
+                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                        <span class="sidebar-btn-label">Skills</span>
+                        <span class="sidebar-badge" id="badge-skills" style="display:none;"></span>
+                    </button>
 
-                    <!-- Score card -->
-                    <div class="card score-card">
-                        <div class="card-title">ATS Score</div>
+                    <button class="sidebar-btn" type="button" data-tab="sections">
+                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24">
+                            <line x1="8" y1="6" x2="21" y2="6"/>
+                            <line x1="8" y1="12" x2="21" y2="12"/>
+                            <line x1="8" y1="18" x2="21" y2="18"/>
+                            <line x1="3" y1="6" x2="3.01" y2="6"/>
+                            <line x1="3" y1="12" x2="3.01" y2="12"/>
+                            <line x1="3" y1="18" x2="3.01" y2="18"/>
+                        </svg>
+                        <span class="sidebar-btn-label">Sections</span>
+                        <span class="sidebar-badge" id="badge-sections" style="display:none;"></span>
+                    </button>
+
+                    <button class="sidebar-btn" type="button" data-tab="formatting">
+                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24">
+                            <polyline points="4 7 4 4 20 4 20 7"/>
+                            <line x1="9" y1="20" x2="15" y2="20"/>
+                            <line x1="12" y1="4" x2="12" y2="20"/>
+                        </svg>
+                        <span class="sidebar-btn-label">Formatting</span>
+                        <span class="sidebar-badge" id="badge-formatting" style="display:none;"></span>
+                    </button>
+
+                    <button class="sidebar-btn" type="button" data-tab="education">
+                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                        <span class="sidebar-btn-label">Education</span>
+                        <span class="sidebar-badge" id="badge-education" style="display:none;"></span>
+                    </button>
+
+                    <button class="sidebar-btn" type="button" data-tab="experience">
+                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                        <span class="sidebar-btn-label">Experience</span>
+                        <span class="sidebar-badge" id="badge-experience" style="display:none;"></span>
+                    </button>
+
+                    <button class="sidebar-btn" type="button" data-tab="projects">
+                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        <span class="sidebar-btn-label">Projects</span>
+                        <span class="sidebar-badge" id="badge-projects" style="display:none;"></span>
+                    </button>
+
+                    <button class="sidebar-btn" type="button" data-tab="fixes">
+                        <svg class="sidebar-btn-icon" viewBox="0 0 24 24">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <span class="sidebar-btn-label">Priority Fixes</span>
+                    </button>
+
+                </nav>
+            </aside>
+
+            <!-- ════════════════════════════════════════════
+                 CONTENT AREA
+            ════════════════════════════════════════════ -->
+            <div class="content-area">
+
+                <!-- Header -->
+                <header class="analysis-header-row">
+                    <a href="/solutions" id="back-to-resume-btn" class="btn-outline-small">← Back to resume</a>
+                    <p id="analysis-meta" class="analysis-meta">Loading analysis…</p>
+                </header>
+
+                <!-- ──────────── TAB: OVERVIEW ──────────── -->
+                <section id="tab-overview" class="tab-panel active">
+
+                    <!-- Score + summary card -->
+                    <div class="card overview-score-card">
                         <div class="score-ring-wrap">
                             <svg class="score-ring" viewBox="0 0 150 150" role="img" aria-label="ATS score ring">
                                 <circle class="ring-bg"   cx="75" cy="75" r="65"></circle>
@@ -99,111 +188,116 @@
                                 <div class="score-denom">/ 100</div>
                             </div>
                         </div>
-                        <div id="match-badge" class="match-badge">Analysing…</div>
-                        <div id="score-stats-row" class="score-stats-row"></div>
+                        <div class="score-summary">
+                            <div id="match-badge" class="match-title">Analysing…</div>
+                            <p id="score-stats-text" class="score-stats-text"></p>
+                            <div id="score-stats-row" class="score-stats-row"></div>
+                        </div>
                     </div>
 
-                    <!-- All-checks summary -->
-                    <div class="card" style="overflow-y:auto;max-height:540px;">
+                    <!-- All checks dot list -->
+                    <div class="card">
                         <div class="card-title">All Checks</div>
-                        <div id="overview-checks" class="summary-checks"></div>
+                        <div id="overview-checks" class="overview-checks-list"></div>
                     </div>
-                </div>
 
-                <!-- CTA -->
-                <div class="cta-row">
-                    <button id="download-report-btn" class="btn-outline" type="button">Download report</button>
-                    <button id="open-share-modal-btn" type="button" style="outline:none;cursor:pointer;border:none;padding:0 1.8rem;font-family:inherit;font-size:15px;font-weight:600;border-radius:500px;background:linear-gradient(135deg,#4F7FFF,#C9B8FF);color:white;min-height:56px;height:56px;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.2s;">
-                        🎯 Share My Score
-                    </button>
-                    <a href="/solutions" class="btn btn-primary cv2-uiverse-btn ai-rewrite-btn">
-                        <span class="btn-text">Rewrite Resume with AI</span>
-                        <span class="btn-loader" style="display:none;">●</span>
-                    </a>
-                </div>
-            </section>
+                    <!-- CTA -->
+                    <div class="cta-row">
+                        <button id="download-report-btn" class="btn-outline" type="button">Download report</button>
+                        <button id="open-share-modal-btn" type="button"
+                                style="outline:none;cursor:pointer;border:none;padding:0 1.8rem;font-family:inherit;font-size:15px;font-weight:600;border-radius:500px;background:linear-gradient(135deg,#4F7FFF,#C9B8FF);color:white;min-height:48px;height:48px;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.2s;">
+                            🎯 Share My Score
+                        </button>
+                        <a href="/solutions" class="btn btn-primary cv2-uiverse-btn ai-rewrite-btn">
+                            <span class="btn-text">Rewrite Resume with AI</span>
+                            <span class="btn-loader" style="display:none;">●</span>
+                        </a>
+                    </div>
+                </section>
 
-            <!-- ════════════ TAB: CONTACT ════════════ -->
-            <section id="tab-contact" class="tab-panel">
-                <div class="card">
-                    <div class="card-title">Contact Information</div>
-                    <div id="contact-list" class="contact-list"></div>
-                </div>
-            </section>
-
-            <!-- ════════════ TAB: SKILLS ════════════ -->
-            <section id="tab-skills" class="tab-panel">
-                <div class="section-grid">
+                <!-- ──────────── TAB: CONTACT ──────────── -->
+                <section id="tab-contact" class="tab-panel">
                     <div class="card">
-                        <div class="card-title">Hard Skills</div>
-                        <div id="hard-matched" class="pill-section"></div>
-                        <div id="hard-missing" class="pill-section"></div>
+                        <div class="card-title">Contact Information</div>
+                        <div id="contact-list" class="contact-list"></div>
                     </div>
+                </section>
+
+                <!-- ──────────── TAB: SKILLS ──────────── -->
+                <section id="tab-skills" class="tab-panel">
+                    <div class="section-grid">
+                        <div class="card">
+                            <div class="card-title">Hard Skills</div>
+                            <div id="hard-matched" class="pill-section"></div>
+                            <div id="hard-missing" class="pill-section"></div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Soft Skills</div>
+                            <div id="soft-matched" class="pill-section"></div>
+                            <div id="soft-missing" class="pill-section"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ──────────── TAB: SECTIONS ──────────── -->
+                <section id="tab-sections" class="tab-panel">
                     <div class="card">
-                        <div class="card-title">Soft Skills</div>
-                        <div id="soft-matched" class="pill-section"></div>
-                        <div id="soft-missing" class="pill-section"></div>
+                        <div class="card-title">Sections Audit</div>
+                        <div id="sections-accordion" class="accordion"></div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- ════════════ TAB: SECTIONS ════════════ -->
-            <section id="tab-sections" class="tab-panel">
-                <div class="card">
-                    <div class="card-title">Sections Audit</div>
-                    <div id="sections-accordion" class="accordion"></div>
-                </div>
-            </section>
+                <!-- ──────────── TAB: FORMATTING ──────────── -->
+                <section id="tab-formatting" class="tab-panel">
+                    <div class="card">
+                        <div class="card-title">Formatting Audit</div>
+                        <div id="formatting-accordion" class="accordion"></div>
+                    </div>
+                </section>
 
-            <!-- ════════════ TAB: FORMATTING ════════════ -->
-            <section id="tab-formatting" class="tab-panel">
-                <div class="card">
-                    <div class="card-title">Formatting Audit</div>
-                    <div id="formatting-accordion" class="accordion"></div>
-                </div>
-            </section>
+                <!-- ──────────── TAB: EDUCATION ──────────── -->
+                <section id="tab-education" class="tab-panel">
+                    <div class="card">
+                        <div class="card-title">Education Audit</div>
+                        <div id="education-accordion" class="accordion"></div>
+                    </div>
+                </section>
 
-            <!-- ════════════ TAB: EDUCATION ════════════ -->
-            <section id="tab-education" class="tab-panel">
-                <div class="card">
-                    <div class="card-title">Education Audit</div>
-                    <div id="education-accordion" class="accordion"></div>
-                </div>
-            </section>
+                <!-- ──────────── TAB: EXPERIENCE ──────────── -->
+                <section id="tab-experience" class="tab-panel">
+                    <div class="card">
+                        <div class="card-title">Experience Audit</div>
+                        <div id="experience-accordion" class="accordion"></div>
+                    </div>
+                </section>
 
-            <!-- ════════════ TAB: EXPERIENCE ════════════ -->
-            <section id="tab-experience" class="tab-panel">
-                <div class="card">
-                    <div class="card-title">Experience Audit</div>
-                    <div id="experience-accordion" class="accordion"></div>
-                </div>
-            </section>
+                <!-- ──────────── TAB: PROJECTS ──────────── -->
+                <section id="tab-projects" class="tab-panel">
+                    <div class="card">
+                        <div class="card-title">Projects Audit</div>
+                        <div id="projects-accordion" class="accordion"></div>
+                    </div>
+                </section>
 
-            <!-- ════════════ TAB: PROJECTS ════════════ -->
-            <section id="tab-projects" class="tab-panel">
-                <div class="card">
-                    <div class="card-title">Projects Audit</div>
-                    <div id="projects-accordion" class="accordion"></div>
-                </div>
-            </section>
+                <!-- ──────────── TAB: PRIORITY FIXES ──────────── -->
+                <section id="tab-fixes" class="tab-panel">
+                    <div class="card">
+                        <div class="card-title">🔥 Priority Fixes</div>
+                        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
+                            Address these issues first for the highest ATS ranking improvement.
+                        </p>
+                        <div id="priority-fixes" class="fix-list"></div>
+                    </div>
+                    <div class="cta-row">
+                        <a href="/solutions" class="btn btn-primary cv2-uiverse-btn ai-rewrite-btn">
+                            <span class="btn-text">Fix Resume with AI</span>
+                        </a>
+                    </div>
+                </section>
 
-            <!-- ════════════ TAB: PRIORITY FIXES ════════════ -->
-            <section id="tab-fixes" class="tab-panel">
-                <div class="card">
-                    <div class="card-title">🔥 Priority Fixes</div>
-                    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">
-                        Address these issues first for the highest ATS ranking improvement.
-                    </p>
-                    <div id="priority-fixes" class="fix-list"></div>
-                </div>
-                <div class="cta-row">
-                    <a href="/solutions" class="btn btn-primary cv2-uiverse-btn ai-rewrite-btn">
-                        <span class="btn-text">Fix Resume with AI</span>
-                    </a>
-                </div>
-            </section>
+            </div><!-- /.content-area -->
 
-        </div><!-- /.analysis-shell -->
+        </div><!-- /.analysis-layout -->
     </main>
 
     <footer class="footer">
@@ -281,16 +375,16 @@
 
     <script>
     (function() {
-        var openBtn = document.getElementById('open-share-modal-btn');
-        var closeBtn = document.getElementById('close-share-modal');
-        var overlay = document.getElementById('share-modal-overlay');
+        var openBtn    = document.getElementById('open-share-modal-btn');
+        var closeBtn   = document.getElementById('close-share-modal');
+        var overlay    = document.getElementById('share-modal-overlay');
         var modalScore = document.getElementById('modal-score-display');
         var linkedinBtn = document.getElementById('share-linkedin-btn');
-        var copyBtn = document.getElementById('copy-text-btn');
+        var copyBtn    = document.getElementById('copy-text-btn');
         var successMsg = document.getElementById('share-success-msg');
 
         function getScore() {
-            var el = document.getElementById('score-value');
+            var el = document.getElementById('score-number');
             return el ? el.textContent.trim() : '0';
         }
 
@@ -300,9 +394,7 @@
 
         function doCopy(text, cb) {
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(cb).catch(function() {
-                    fallbackCopy(text); cb();
-                });
+                navigator.clipboard.writeText(text).then(cb).catch(function() { fallbackCopy(text); cb(); });
             } else { fallbackCopy(text); cb(); }
         }
 
@@ -318,7 +410,7 @@
 
         if (openBtn) openBtn.addEventListener('click', function() {
             if (modalScore) modalScore.textContent = getScore();
-            if (overlay) overlay.style.display = 'flex';
+            if (overlay)    overlay.style.display  = 'flex';
             if (successMsg) successMsg.style.display = 'none';
         });
 
@@ -332,8 +424,7 @@
 
         if (linkedinBtn) linkedinBtn.addEventListener('click', function() {
             var score = getScore();
-            var text = getPostText(score);
-            doCopy(text, function() {
+            doCopy(getPostText(score), function() {
                 successMsg.innerHTML = '✓ Post text copied to clipboard!<br>LinkedIn is opening — click <strong>Start a post</strong> and press <strong>Ctrl+V</strong> to paste.';
                 successMsg.style.display = 'block';
                 linkedinBtn.textContent = '✓ Opening LinkedIn...';
