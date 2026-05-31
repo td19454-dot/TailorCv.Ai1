@@ -12,7 +12,7 @@ keywords: best free online certificates, free online certifications for resume, 
 
 ## 15 Best Free Online Certificates That Actually Look Good on a Resume in 2026
 
-After choosing a certificate, pair it with a stronger resume using the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide), the [ATS score checker](https://www.thetailorcv.com/solutions), and this guide on [adding projects to your resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+After choosing a certificate, pair it with a stronger resume using the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide), the [ATS score checker](https://www.thetailorcv.com/solutions), and this guide on [adding projects to your resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). If you are targeting data roles, use the [data analyst resume 2026 guide](https://thetailorcv.com/blog/data-analyst-resume-2026) to decide which analytics certificates deserve space on your resume.
 
 In today’s competitive job market, having a degree alone is no longer enough. Recruiters increasingly look for candidates who continuously learn new skills and stay updated with industry trends. That’s why free online certificates have become one of the smartest ways to improve your resume without spending thousands of dollars.
 

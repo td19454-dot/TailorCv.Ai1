@@ -12,7 +12,7 @@
 
 ## Technical Skills in Resume for Freshers With No Experience (2026 Guide)
 
-Once you choose your skills, strengthen the proof with [resume projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), improve your [first-time resume](https://thetailorcv.com/blog/first-time-resume-with-no-experience), and check ATS alignment with the [resume optimization tool](https://www.thetailorcv.com/solutions).
+Once you choose your skills, strengthen the proof with [resume projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), improve your [first-time resume](https://thetailorcv.com/blog/first-time-resume-with-no-experience), and check ATS alignment with the [resume optimization tool](https://www.thetailorcv.com/solutions). For role-specific skills, compare the [FAANG software engineer resume guide](https://thetailorcv.com/blog/software-engineer-resume-faang) with the [data analyst resume guide](https://thetailorcv.com/blog/data-analyst-resume-2026).
 
 The hiring market in 2026 is more skill-focused than ever before. Recruiters are no longer selecting freshers only based on degrees or academic scores. Instead, companies now prioritize candidates who can demonstrate practical abilities, technical expertise, and industry-relevant skills.
 
