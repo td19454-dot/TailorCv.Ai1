@@ -291,9 +291,10 @@
                 { key: "organization", label: "Organization", placeholder: "Coding Club" },
                 { key: "dates", label: "Dates", placeholder: "2023 - 2024" },
                 { key: "url", label: "URL", placeholder: "https://..." },
+                { key: "details", label: "Details", placeholder: "• Led weekly coding workshops\n• Organised annual hackathon" },
             ],
             cvData.extracurriculars,
-            () => ({ role: "", organization: "", dates: "", url: "" })
+            () => ({ role: "", organization: "", dates: "", url: "", details: "" })
         );
     }
 
@@ -672,7 +673,12 @@ async function updatePreview() {
         }).filter((edu) => edu.school || edu.degree);
 
         mapped.skills = asArray(data.skills)
-            .map((skill) => ({ name: toText(skill) }))
+            .map((skill) => {
+                const name = skill && typeof skill === "object"
+                    ? toText(skill.name || skill.skill || Object.values(skill)[0])
+                    : toText(skill);
+                return { name };
+            })
             .filter((skill) => skill.name);
 
         mapped.certifications = asArray(data.certifications).map((cert) => ({
@@ -694,31 +700,158 @@ async function updatePreview() {
         return mapped;
     }
 
+    function setupCvUploadImport() {
+        const openBtn = document.getElementById("cv-upload-import-btn");
+        const overlay = document.getElementById("cv-upload-modal-overlay");
+        const closeBtn = document.getElementById("cv-upload-modal-close");
+        const cancelBtn = document.getElementById("cv-upload-cancel-btn");
+        const submitBtn = document.getElementById("cv-upload-submit-btn");
+        const fileInput = document.getElementById("cv-upload-file-input");
+        const dropzone = document.getElementById("cv-upload-dropzone");
+        const dropzoneLabel = document.getElementById("cv-upload-dropzone-label");
+        const errorDiv = document.getElementById("cv-upload-error");
+        const loadingDiv = document.getElementById("cv-upload-loading");
+        const footer = document.getElementById("cv-upload-modal-footer");
+
+        if (!openBtn || !overlay || !fileInput) return;
+
+        let selectedFile = null;
+
+        function resetModal() {
+            overlay.style.display = "none";
+            fileInput.value = "";
+            selectedFile = null;
+            submitBtn.disabled = true;
+            dropzoneLabel.textContent = "Click to choose a PDF";
+            errorDiv.style.display = "none";
+            loadingDiv.style.display = "none";
+            footer.style.display = "flex";
+            submitBtn.disabled = true;
+            dropzone.style.borderColor = "rgba(16,185,129,0.4)";
+        }
+
+        function showImportBanner(message, isError) {
+            const host = document.querySelector(".modify-cv-main");
+            if (!host) return;
+            const existing = document.getElementById("cv-upload-import-banner");
+            if (existing) existing.remove();
+            const banner = document.createElement("div");
+            banner.id = "cv-upload-import-banner";
+            banner.className = `form-card ${isError ? "linkedin-import-banner-error" : "linkedin-import-banner-success"}`;
+            banner.style.marginBottom = "12px";
+            banner.textContent = message;
+            host.insertBefore(banner, host.firstChild);
+        }
+
+        function onFileSelected(file) {
+            const isPdf = file && (
+                file.type === "application/pdf" ||
+                file.type === "" ||
+                (file.name && file.name.toLowerCase().endsWith(".pdf"))
+            );
+            if (!file || !isPdf) {
+                errorDiv.textContent = "Please select a PDF file.";
+                errorDiv.style.display = "block";
+                selectedFile = null;
+                submitBtn.disabled = true;
+                return;
+            }
+            errorDiv.style.display = "none";
+            selectedFile = file;
+            dropzoneLabel.textContent = file.name;
+            dropzone.style.borderColor = "rgba(16,185,129,0.85)";
+            submitBtn.disabled = false;
+        }
+
+        openBtn.addEventListener("click", () => { overlay.style.display = "flex"; });
+        closeBtn.addEventListener("click", resetModal);
+        cancelBtn.addEventListener("click", resetModal);
+        overlay.addEventListener("click", (e) => { if (e.target === overlay) resetModal(); });
+
+        fileInput.addEventListener("change", () => {
+            if (fileInput.files && fileInput.files[0]) onFileSelected(fileInput.files[0]);
+        });
+
+        // Drag and drop
+        dropzone.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropzone.style.borderColor = "rgba(16,185,129,0.85)";
+            dropzone.style.background = "rgba(16,185,129,0.12)";
+        });
+        dropzone.addEventListener("dragleave", () => {
+            if (!selectedFile) dropzone.style.borderColor = "rgba(16,185,129,0.4)";
+            dropzone.style.background = "rgba(16,185,129,0.04)";
+        });
+        dropzone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropzone.style.background = "rgba(16,185,129,0.04)";
+            const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+            if (file) onFileSelected(file);
+        });
+
+        submitBtn.addEventListener("click", async () => {
+            if (!selectedFile) return;
+            errorDiv.style.display = "none";
+            loadingDiv.style.display = "block";
+            footer.style.display = "none";
+            submitBtn.disabled = true;
+
+            try {
+                const formData = new FormData();
+                formData.append("file", selectedFile);
+                const response = await fetch("/api/extract-cv-from-pdf", {
+                    method: "POST",
+                    body: formData,
+                });
+                const result = await response.json();
+                if (!response.ok) {
+                    throw new Error(result.detail || result.error || "Extraction failed. Please try again.");
+                }
+                const cvPayload = result.cvData || result;
+                if (!cvPayload || typeof cvPayload !== "object") {
+                    throw new Error("Could not read CV data from the response.");
+                }
+                cvData = normalizeIncomingCvData(cvPayload);
+                renderAll();
+                persistDraft();
+                if (selectedTemplate) await updatePreview();
+                resetModal();
+                const expCount = Array.isArray(cvData.experience) ? cvData.experience.length : 0;
+                const eduCount = Array.isArray(cvData.education) ? cvData.education.length : 0;
+                const skillCount = Array.isArray(cvData.skills) ? cvData.skills.length : 0;
+                showImportBanner(
+                    `CV imported successfully. Found ${expCount} experience, ${eduCount} education, ${skillCount} skills. Review and edit each section below.`,
+                    false
+                );
+                document.getElementById("sections-container").scrollIntoView({ behavior: "smooth", block: "start" });
+            } catch (error) {
+                loadingDiv.style.display = "none";
+                footer.style.display = "flex";
+                submitBtn.disabled = false;
+                errorDiv.textContent = error.message || "Import failed. Please try again.";
+                errorDiv.style.display = "block";
+            }
+        });
+    }
+
     function setupLinkedInImport() {
-        const openBtn = document.getElementById("linkedin-import-btn");
-        const overlay = document.getElementById("linkedin-modal-overlay");
+        const openBtn  = document.getElementById("linkedin-import-btn");
+        const overlay  = document.getElementById("linkedin-modal-overlay");
         const closeBtn = document.getElementById("linkedin-modal-close");
         const cancelBtn = document.getElementById("linkedin-cancel-btn");
         const submitBtn = document.getElementById("linkedin-import-submit-btn");
-        const urlInput = document.getElementById("linkedin-url-input");
-        const errorDiv = document.getElementById("linkedin-error");
+        const urlInput  = document.getElementById("linkedin-url-input");
+        const errorDiv  = document.getElementById("linkedin-error");
         const loadingDiv = document.getElementById("linkedin-loading");
-        const footer = document.getElementById("linkedin-modal-footer");
+        const footer    = document.getElementById("linkedin-modal-footer");
 
-        if (
-            !openBtn || !overlay || !closeBtn || !cancelBtn || !submitBtn ||
-            !urlInput || !errorDiv || !loadingDiv || !footer
-        ) {
-            return;
-        }
+        if (!openBtn || !overlay) return;
 
         async function applyLinkedInData(parsedData) {
             cvData = normalizeIncomingCvData(mapLinkedInDataToCv(parsedData));
             renderAll();
             persistDraft();
-            if (selectedTemplate) {
-                await updatePreview();
-            }
+            if (selectedTemplate) await updatePreview();
         }
 
         function showImportBanner(message, isError) {
@@ -734,39 +867,35 @@ async function updatePreview() {
             host.insertBefore(banner, host.firstChild);
         }
 
-        const openModal = () => {
-            overlay.style.display = "flex";
-        };
-        const closeModal = () => {
+        function resetModal() {
             overlay.style.display = "none";
-            urlInput.disabled = false;
-            urlInput.value = "";
-            errorDiv.style.display = "none";
-            loadingDiv.style.display = "none";
+            if (urlInput)   { urlInput.value = ""; urlInput.disabled = false; }
+            if (errorDiv)   errorDiv.style.display = "none";
+            if (loadingDiv) loadingDiv.style.display = "none";
             footer.style.display = "flex";
             submitBtn.disabled = false;
-        };
+        }
 
-        openBtn.addEventListener("click", openModal);
-        closeBtn.addEventListener("click", closeModal);
-        cancelBtn.addEventListener("click", closeModal);
-        overlay.addEventListener("click", (event) => {
-            if (event.target === overlay) closeModal();
-        });
+        openBtn.addEventListener("click", () => { overlay.style.display = "flex"; });
+        closeBtn.addEventListener("click", resetModal);
+        cancelBtn.addEventListener("click", resetModal);
+        overlay.addEventListener("click", (e) => { if (e.target === overlay) resetModal(); });
 
         submitBtn.addEventListener("click", async () => {
-            const url = (urlInput.value || "").trim();
-            errorDiv.style.display = "none";
+            const url = (urlInput ? urlInput.value : "").trim();
+            if (errorDiv) errorDiv.style.display = "none";
 
             if (!url || !url.includes("linkedin.com/in/")) {
-                errorDiv.textContent = "Please enter a valid LinkedIn URL (e.g. https://linkedin.com/in/yourname)";
-                errorDiv.style.display = "block";
+                if (errorDiv) {
+                    errorDiv.textContent = "Please enter a valid LinkedIn URL (e.g. https://www.linkedin.com/in/your-name)";
+                    errorDiv.style.display = "block";
+                }
                 return;
             }
 
-            loadingDiv.style.display = "block";
+            if (loadingDiv) loadingDiv.style.display = "block";
             footer.style.display = "none";
-            urlInput.disabled = true;
+            if (urlInput) urlInput.disabled = true;
             submitBtn.disabled = true;
 
             try {
@@ -777,24 +906,24 @@ async function updatePreview() {
                 });
                 const result = await response.json();
                 if (!response.ok || !result?.success) {
-                    throw new Error(result?.detail || result?.error || "Import failed. Please try again.");
+                    throw new Error(result?.detail || result?.error || "Import failed. Make sure your profile is Public and try again.");
                 }
-
                 await applyLinkedInData(result.data);
-                closeModal();
-                const expCount = Array.isArray(cvData.experience) ? cvData.experience.length : 0;
-                const eduCount = Array.isArray(cvData.education) ? cvData.education.length : 0;
-                const projCount = Array.isArray(cvData.projects) ? cvData.projects.length : 0;
-                const skillCount = Array.isArray(cvData.skills) ? cvData.skills.length : 0;
-                showImportBanner(`CV imported from LinkedIn. Added ${expCount} experience, ${eduCount} education, ${projCount} projects, ${skillCount} skills.`, false);
-            } catch (error) {
-                loadingDiv.style.display = "none";
+                resetModal();
+                const expCount   = Array.isArray(cvData.experience) ? cvData.experience.length : 0;
+                const eduCount   = Array.isArray(cvData.education)  ? cvData.education.length  : 0;
+                const skillCount = Array.isArray(cvData.skills)     ? cvData.skills.length     : 0;
+                showImportBanner(`LinkedIn profile imported. Found ${expCount} experience, ${eduCount} education, ${skillCount} skills. Review and edit below.`, false);
+                document.getElementById("sections-container").scrollIntoView({ behavior: "smooth", block: "start" });
+            } catch (err) {
+                if (loadingDiv) loadingDiv.style.display = "none";
                 footer.style.display = "flex";
-                urlInput.disabled = false;
+                if (urlInput) urlInput.disabled = false;
                 submitBtn.disabled = false;
-                errorDiv.textContent = error?.message || "Import failed. Please try again.";
-                errorDiv.style.display = "block";
-                showImportBanner(errorDiv.textContent, true);
+                if (errorDiv) {
+                    errorDiv.textContent = err?.message || "Import failed. Make sure your profile is Public and try again.";
+                    errorDiv.style.display = "block";
+                }
             }
         });
     }
@@ -806,7 +935,8 @@ async function updatePreview() {
             hydrateSelectedTemplateFromQuery();
             renderAll();
             setupActionButtons();
-            setupLinkedInImport();
+            setupCvUploadImport();
+        setupLinkedInImport();
             if (selectedTemplate) {
                 await updatePreview();
             }
