@@ -322,7 +322,7 @@
     const passed = bool(rawPassed);
     const { title, category, explanation, why } = resolve(ruleKey, passed, llmExp, llmAct);
     const whyExpanded = enrichWhyText(why, category);
-    const row = el("div", "ov-check-row");
+    const row = el("div", `ov-check-row ${passed ? "pass" : "fail"}`);
     row.innerHTML = `
       <div class="ov-dot ${passed ? "pass" : "fail"}"></div>
       <div class="ov-check-main">
@@ -387,7 +387,7 @@
     const cls    = passed ? "pass" : "fail";
     const icon   = passed ? "✓" : "✗";
 
-    const item = el("div", "acc-item");
+    const item = el("div", "acc-item open");
     const head = el("div", `acc-head ${cls}`);
     head.innerHTML = `
       <div class="acc-head-left">
@@ -419,7 +419,6 @@
       body.appendChild(actRow);
     }
 
-    head.addEventListener("click", () => item.classList.toggle("open"));
     item.appendChild(head);
     item.appendChild(body);
     return item;
