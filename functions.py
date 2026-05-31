@@ -1440,6 +1440,18 @@ Rules:
 """
 
 
+async def generate_tts_audio(text: str) -> bytes:
+    """Generate speech using OpenAI TTS-1 with the 'nova' voice (natural female)."""
+    client = await _build_openai_client()
+    response = await client.audio.speech.create(
+        model="tts-1",
+        voice="nova",
+        input=text[:1000],
+        speed=1.0,
+    )
+    return response.content
+
+
 async def generate_mock_interview_first_question(
     resume_text: str,
     role: str,
