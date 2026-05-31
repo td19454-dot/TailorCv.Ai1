@@ -11,7 +11,7 @@ keywords: how to add projects in resume for freshers, projects in resume for fre
 ---
 ## How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters
 
-If you are building a full fresher resume, also read the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience), choose [ATS-friendly beginner templates](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience), and check your match with the [ATS score checker](https://www.thetailorcv.com/solutions).
+If you are building a full fresher resume, also read the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience), choose [ATS-friendly beginner templates](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience), and check your match with the [ATS score checker](https://www.thetailorcv.com/solutions). For role-specific project examples, see the [FAANG software engineer resume guide](https://thetailorcv.com/blog/software-engineer-resume-faang) and the [data analyst resume guide](https://thetailorcv.com/blog/data-analyst-resume-2026).
 
 
 
