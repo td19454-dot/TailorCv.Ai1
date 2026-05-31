@@ -191,6 +191,24 @@
     };
   }
 
+  function enrichWhyText(why, category) {
+    const base = (why || "").trim();
+    if (!base) return "";
+
+    const categoryHints = {
+      Contact: "This improves recruiter trust and ensures they can reach you quickly for next steps.",
+      Sections: "Clear structure helps ATS and recruiters find key qualifications without missing important details.",
+      Formatting: "ATS-friendly formatting reduces parsing errors and improves how accurately your resume is indexed.",
+      Education: "Strong education alignment helps you pass early screening requirements for many roles.",
+      Experience: "Stronger experience signals improve role fit and increase confidence in your ability to deliver results.",
+      Projects: "Well-presented projects reinforce practical skills and make your profile more compelling for interviews.",
+      Quality: "Clean, professional writing improves readability and leaves a stronger first impression."
+    };
+
+    const hint = categoryHints[category] || "This helps your resume perform better in both ATS screening and recruiter review.";
+    return `${base} ${hint}`;
+  }
+
   /* ─── Utilities ──────────────────────────────────────────────────────────── */
   function load() {
     try {
@@ -303,13 +321,14 @@
   function ovCheckRow(ruleKey, rawPassed, llmExp, llmAct) {
     const passed = bool(rawPassed);
     const { title, category, explanation, why } = resolve(ruleKey, passed, llmExp, llmAct);
+    const whyExpanded = enrichWhyText(why, category);
     const row = el("div", "ov-check-row");
     row.innerHTML = `
       <div class="ov-dot ${passed ? "pass" : "fail"}"></div>
       <div class="ov-check-main">
         <div class="ov-check-label">${title}</div>
         <div class="ov-check-explanation">${explanation}</div>
-        <div class="ov-check-why"><strong>Why it matters:</strong> ${why}</div>
+        <div class="ov-check-why"><strong>Why it matters:</strong> ${whyExpanded}</div>
       </div>
       <span class="ov-check-category">${category}</span>`;
     return row;
