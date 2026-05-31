@@ -48,7 +48,7 @@ from functions import (
 )
 
 from extraction import process_resume
-from models import PasswordResetToken, SignupVerificationCode, User, WelcomeEmailLog
+from models import JobApplication, PasswordResetToken, SignupVerificationCode, User, WelcomeEmailLog
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
 from blog_system import BlogService, codehilite_css, xml_escape
@@ -2290,6 +2290,56 @@ async def api_evaluate_interview_answer(payload: dict):
         raise
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
+
+
+# ── Chrome Extension API ─────────────────────────────────────────────────────
+
+@app.get("/api/extension/profile")
+async def extension_profile(request: Request):
+    """Return basic profile info for the logged-in user (used by the Chrome extension)."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+        return {"id": user.id, "name": user.name, "email": user.email}
+    finally:
+        db.close()
+
+
+@app.post("/api/extension/log-application")
+async def extension_log_application(request: Request):
+    """Save an auto-applied job to the user's job tracker."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    body = await request.json()
+    company = (body.get("company") or "").strip()[:200]
+    role    = (body.get("role")    or "").strip()[:200]
+    url     = (body.get("url")     or "").strip()[:500]
+
+    if not company or not role:
+        raise HTTPException(status_code=400, detail="company and role are required")
+
+    db = get_db()
+    try:
+        app_record = JobApplication(
+            user_id=user_id,
+            company=company,
+            role=role,
+            stage="applied",
+            job_url=url or None,
+        )
+        db.add(app_record)
+        db.commit()
+        db.refresh(app_record)
+        return {"success": True, "id": app_record.id}
+    finally:
+        db.close()
 
 
 @app.get("/health")

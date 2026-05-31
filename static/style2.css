@@ -2848,3 +2848,143 @@ header.navbar + * {
         opacity: 1;
     }
 }
+
+/* ── Extension Nav Button ───────────────────────────── */
+
+.tcv-ext-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    background: linear-gradient(135deg, #4f7fff22, #7c3aed22);
+    border: 1px solid rgba(79, 127, 255, 0.45);
+    border-radius: 8px;
+    color: #a5b8ff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    font-family: inherit;
+}
+.tcv-ext-nav-btn:hover {
+    background: linear-gradient(135deg, #4f7fff44, #7c3aed44);
+    border-color: rgba(79, 127, 255, 0.8);
+    color: #c9d8ff;
+}
+.tcv-ext-nav-btn svg {
+    flex-shrink: 0;
+}
+
+/* ── Extension Install Modal ────────────────────────── */
+
+#tcv-ext-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+}
+#tcv-ext-modal-overlay.open {
+    display: flex;
+}
+
+#tcv-ext-modal {
+    background: linear-gradient(160deg, #0f1629, #0e1a2e);
+    border: 1px solid rgba(79, 127, 255, 0.3);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 440px;
+    width: 90%;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+    animation: modal-pop 0.2s ease;
+    position: relative;
+    color: #f1f5f9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+#tcv-ext-modal .ext-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #64748b;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+}
+#tcv-ext-modal .ext-modal-close:hover { color: #94a3b8; }
+
+#tcv-ext-modal h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    background: linear-gradient(135deg, #4f7fff, #c9b8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+#tcv-ext-modal .ext-modal-sub {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0 0 24px;
+}
+
+#tcv-ext-modal ol {
+    margin: 0 0 24px;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+#tcv-ext-modal ol li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+#tcv-ext-modal ol li .step-num {
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(79, 127, 255, 0.2);
+    border: 1px solid rgba(79, 127, 255, 0.4);
+    color: #93c5fd;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+#tcv-ext-modal ol li strong {
+    color: #f1f5f9;
+}
+#tcv-ext-modal ol li code {
+    background: rgba(255,255,255,0.08);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #a5b8ff;
+}
+
+#tcv-ext-modal .ext-modal-note {
+    font-size: 12px;
+    color: #64748b;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 10px 14px;
+    line-height: 1.55;
+}
+
+@media (max-width: 768px) {
+    .tcv-ext-nav-btn span.ext-btn-label { display: none; }
+}
