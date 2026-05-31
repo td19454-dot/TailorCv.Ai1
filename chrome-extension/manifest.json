@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "TailorCV Auto Apply",
+  "version": "1.0.0",
+  "description": "Auto-apply to jobs on Naukri & Internshala using your TailorCV profile",
+  "permissions": ["storage", "tabs", "activeTab", "cookies"],
+  "host_permissions": [
+    "*://*.naukri.com/*",
+    "*://*.internshala.com/*",
+    "https://thetailorcv.com/*",
+    "http://127.0.0.1:8005/*",
+    "http://localhost:8005/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.naukri.com/*"],
+      "js": ["content_naukri.js"],
+      "css": ["sidebar.css"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://*.internshala.com/*"],
+      "js": ["content_internshala.js"],
+      "css": ["sidebar.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16":  "icons/icon16.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

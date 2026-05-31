@@ -2516,6 +2516,16 @@ async def about_page(request: Request):
     )
 
 
+@app.get("/contact", response_class=HTMLResponse)
+async def contact_page(request: Request):
+    """Contact page for the marketing frontend."""
+    return templates.TemplateResponse(
+        request,
+        "contact.html",
+        {"request": request},
+    )
+
+
 @app.get("/pricing", response_class=HTMLResponse)
 async def pricing_page(request: Request):
     """Pricing page for the marketing frontend."""
@@ -2594,6 +2604,7 @@ async def sitemap_xml():
         ("/pricing", datetime.utcnow().strftime("%Y-%m-%d")),
         ("/templates", datetime.utcnow().strftime("%Y-%m-%d")),
         ("/about", datetime.utcnow().strftime("%Y-%m-%d")),
+        ("/contact", datetime.utcnow().strftime("%Y-%m-%d")),
         ("/blog", datetime.utcnow().strftime("%Y-%m-%d")),
     ]
     post_urls = [(f"/blog/{p.slug}", p.lastmod_iso) for p in blog_service.load_posts()]
