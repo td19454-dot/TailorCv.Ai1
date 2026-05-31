@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<div class="popup">
+  <div class="header">
+    <span class="logo">TailorCV</span>
+    <span class="badge">Auto Apply</span>
+  </div>
+
+  <div id="status" class="status loading">Checking login…</div>
+  <div id="user-info" class="user-info" style="display:none;"></div>
+
+  <div class="divider"></div>
+
+  <div class="sites">
+    <div class="site-row">
+      <span>Naukri.com</span>
+      <span class="tag green">Active</span>
+    </div>
+    <div class="site-row">
+      <span>Internshala.com</span>
+      <span class="tag green">Active</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="hint">
+    Go to a <strong>Naukri</strong> or <strong>Internshala</strong> job search
+    results page, then click <strong>Start Auto Apply</strong> in the sidebar.
+  </p>
+
+  <a id="login-link" href="#" class="link-btn" style="display:none;" target="_blank">
+    Log in to TailorCV →
+  </a>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
