@@ -31,7 +31,7 @@ body {
 }
 
 /* ─── Page shell ───────────────────────────────────────────────────── */
-.analysis-page  { padding: 28px 16px 60px; }
+.analysis-page  { padding: 120px 16px 60px; }
 .analysis-shell { max-width: 1140px; margin: 0 auto; }
 
 /* ─── Header row ───────────────────────────────────────────────────── */
@@ -386,11 +386,22 @@ body {
   .cta-row .btn-outline,
   .cta-row .btn-primary { justify-content: center; }
 }
+@media (max-width: 768px) {
+  /* On mobile the navbar is 80px tall — clear it properly */
+  .analysis-page { padding-top: 96px; }
+  .analysis-tabs { gap: 2px; }
+  .tab-btn { padding: 9px 12px; font-size: 12px; }
+}
+
 @media (max-width: 560px) {
+  .analysis-page { padding-top: 90px; padding-left: 12px; padding-right: 12px; }
   .card { padding: 16px; }
   .score-ring-wrap { width: 130px; height: 130px; }
   .score-ring      { width: 130px; height: 130px; }
   .score-number    { font-size: 32px; }
+  .analysis-header-row { gap: 8px; }
+  .analysis-tabs { margin-bottom: 14px; }
+  .tab-btn { padding: 8px 10px; font-size: 11px; }
 }
 
 /* ─── Uiverse AI button (preserved) ────────────────────────────────── */
