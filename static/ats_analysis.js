@@ -118,6 +118,18 @@
       success_explanation: "Project links are present.",
       success_action: "No action required."
     },
+    "experience.action_verbs": {
+      title: "Action Verbs in Experience",
+      why_it_matters: "Strong action verbs signal ownership and impact to recruiters.",
+      success_explanation: "Experience bullets begin with strong action verbs.",
+      success_action: "No action required."
+    },
+    "projects.action_verbs": {
+      title: "Action Verbs in Projects",
+      why_it_matters: "Action verbs make project contributions concrete and credible.",
+      success_explanation: "Project descriptions use strong action verbs.",
+      success_action: "No action required."
+    },
     "projects.quantified_impact": {
       title: "Project Impact",
       why_it_matters: "Metrics demonstrate project effectiveness.",
