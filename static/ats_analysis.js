@@ -3,190 +3,185 @@
 
   const STORAGE_KEY = "atsAnalysisPayload";
 
-  /* ══════════════════════════════════════════════════════════════════
-     ATS_RULES — master schema for titles, why-it-matters, and the
-     default success copy shown when the LLM returns true.
-     When the LLM returns false the LLM's own explanation + action
-     replace the success defaults.
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─────────────────────────────────────────────────────────────────────────────
+     ATS_RULES — master schema: title, category, why-it-matters, success copy.
+     category is used for the right-hand label in the overview dot list.
+  ───────────────────────────────────────────────────────────────────────────── */
   const ATS_RULES = {
     "contact_information.email": {
-      title: "Email Address",
+      title: "Email Address", category: "Contact",
       why_it_matters: "Recruiters need a way to contact candidates.",
       success_explanation: "Professional email address detected.",
       success_action: "No action required."
     },
     "contact_information.phone": {
-      title: "Phone Number",
+      title: "Phone Number", category: "Contact",
       why_it_matters: "Recruiters often use phone screening.",
       success_explanation: "Phone number is present.",
       success_action: "No action required."
     },
     "contact_information.linkedin": {
-      title: "LinkedIn Profile",
+      title: "LinkedIn Profile", category: "Contact",
       why_it_matters: "LinkedIn helps recruiters validate experience.",
       success_explanation: "LinkedIn profile detected.",
       success_action: "No action required."
     },
     "sections.projects": {
-      title: "Projects Section",
+      title: "Projects Section", category: "Sections",
       why_it_matters: "Projects demonstrate practical experience.",
       success_explanation: "Projects section is present.",
       success_action: "No action required."
     },
     "sections.experience": {
-      title: "Work Experience",
+      title: "Work Experience", category: "Sections",
       why_it_matters: "Work experience is a primary hiring signal.",
       success_explanation: "Experience section detected.",
       success_action: "No action required."
     },
     "sections.skills": {
-      title: "Skills Section",
+      title: "Skills Section", category: "Sections",
       why_it_matters: "ATS systems rely heavily on skills matching.",
       success_explanation: "Skills section detected.",
       success_action: "No action required."
     },
     "sections.education": {
-      title: "Education Section",
+      title: "Education Section", category: "Sections",
       why_it_matters: "Education is commonly required for screening.",
       success_explanation: "Education section detected.",
       success_action: "No action required."
     },
     "sections.chronological_dates": {
-      title: "Chronological Dates",
+      title: "Chronological Dates", category: "Sections",
       why_it_matters: "Recruiters need a clear timeline.",
       success_explanation: "Dates appear in logical chronological order.",
       success_action: "No action required."
     },
     "formatting.single_column": {
-      title: "Single Column Layout",
+      title: "Single Column Layout", category: "Formatting",
       why_it_matters: "ATS systems parse single-column resumes more reliably.",
       success_explanation: "Resume uses ATS-friendly single-column formatting.",
       success_action: "No action required."
     },
     "formatting.photos_or_graphics": {
-      title: "Photos & Graphics",
+      title: "Photos & Graphics", category: "Formatting",
       why_it_matters: "Images can break ATS parsing.",
       success_explanation: "No problematic photos or graphics detected.",
       success_action: "No action required."
     },
     "formatting.excessive_design": {
-      title: "Visual Design",
+      title: "Visual Design", category: "Formatting",
       why_it_matters: "Over-designed resumes often confuse ATS systems.",
       success_explanation: "Resume design remains ATS-friendly.",
       success_action: "No action required."
     },
     "formatting.unnecessary_sections": {
-      title: "Resume Relevance",
+      title: "Resume Relevance", category: "Formatting",
       why_it_matters: "Irrelevant sections waste valuable resume space.",
       success_explanation: "No unnecessary sections detected.",
       success_action: "No action required."
     },
     "education.qualification_match": {
-      title: "Qualification Match",
+      title: "Qualification Match", category: "Education",
       why_it_matters: "Employers often require specific educational backgrounds.",
       success_explanation: "Education meets job requirements.",
       success_action: "No action required."
     },
     "experience.experience_match": {
-      title: "Experience Match",
+      title: "Experience Match", category: "Experience",
       why_it_matters: "Years and type of experience must align with the JD.",
       success_explanation: "Experience level matches the job requirements.",
       success_action: "No action required."
     },
     "experience.company_names": {
-      title: "Company Names",
+      title: "Company Names", category: "Experience",
       why_it_matters: "Recruiters expect company names for credibility.",
       success_explanation: "Company names are clearly listed.",
       success_action: "No action required."
     },
     "experience.job_titles": {
-      title: "Job Titles",
+      title: "Job Titles", category: "Experience",
       why_it_matters: "Titles help ATS map experience to requirements.",
       success_explanation: "Job titles are clearly identified.",
       success_action: "No action required."
     },
     "experience.quantified_impact": {
-      title: "Quantified Impact",
+      title: "Quantified Impact", category: "Experience",
       why_it_matters: "Numbers increase recruiter confidence.",
       success_explanation: "Achievements include measurable impact.",
       success_action: "No action required."
     },
     "projects.project_links": {
-      title: "Project Links",
+      title: "Project Links", category: "Projects",
       why_it_matters: "Recruiters can verify project work.",
       success_explanation: "Project links are present.",
       success_action: "No action required."
     },
     "experience.action_verbs": {
-      title: "Action Verbs in Experience",
+      title: "Action Verbs in Experience", category: "Experience",
       why_it_matters: "Strong action verbs signal ownership and impact to recruiters.",
       success_explanation: "Experience bullets begin with strong action verbs.",
       success_action: "No action required."
     },
     "projects.action_verbs": {
-      title: "Action Verbs in Projects",
+      title: "Action Verbs in Projects", category: "Projects",
       why_it_matters: "Action verbs make project contributions concrete and credible.",
       success_explanation: "Project descriptions use strong action verbs.",
       success_action: "No action required."
     },
     "projects.quantified_impact": {
-      title: "Project Impact",
+      title: "Project Impact", category: "Projects",
       why_it_matters: "Metrics demonstrate project effectiveness.",
       success_explanation: "Projects contain measurable outcomes.",
       success_action: "No action required."
     },
     "spelling_and_grammar.spelling": {
-      title: "Spelling",
+      title: "Spelling", category: "Quality",
       why_it_matters: "Spelling errors hurt professionalism.",
       success_explanation: "No spelling issues detected.",
       success_action: "No action required."
     },
     "spelling_and_grammar.grammar": {
-      title: "Grammar",
+      title: "Grammar", category: "Quality",
       why_it_matters: "Grammar errors reduce credibility.",
       success_explanation: "Grammar appears correct.",
       success_action: "No action required."
     },
     "spelling_and_grammar.buzzwords": {
-      title: "Buzzwords",
+      title: "Buzzwords", category: "Quality",
       why_it_matters: "Overused buzzwords reduce impact.",
       success_explanation: "Resume avoids excessive buzzwords.",
       success_action: "No action required."
     },
     "spelling_and_grammar.personal_pronouns": {
-      title: "Personal Pronouns",
+      title: "Personal Pronouns", category: "Quality",
       why_it_matters: "Professional resumes generally avoid first-person pronouns.",
       success_explanation: "No unnecessary personal pronouns detected.",
       success_action: "No action required."
     }
   };
 
-  /* ══════════════════════════════════════════════════════════════════
-     resolve() — the single source of truth for what text to display.
-
-     Logic:
-       • passed = true  → use ATS_RULES success_explanation + success_action
-       • passed = false → use LLM's explanation + action (fallback to rule
-                          why_it_matters if LLM left those fields empty)
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─────────────────────────────────────────────────────────────────────────────
+     resolve() — single source of truth for display text.
+     pass=true  → use ATS_RULES success copy.
+     pass=false → use LLM explanation/action (fallback to rule copy if empty).
+  ───────────────────────────────────────────────────────────────────────────── */
   function resolve(ruleKey, passed, llmExplanation, llmAction) {
     const rule = ATS_RULES[ruleKey] || {};
-    const title = rule.title || ruleKey;
+    const title    = rule.title    || ruleKey;
+    const category = rule.category || "";
 
     if (passed) {
       return {
-        title,
-        why: rule.why_it_matters  || "",
+        title, category,
+        why:         rule.why_it_matters      || "",
         explanation: rule.success_explanation || "Check passed.",
         action:      rule.success_action      || "No action required."
       };
     }
 
-    // Failure: prefer LLM text; fall back to rule copy so nothing is ever blank
     return {
-      title,
-      why: rule.why_it_matters || "",
+      title, category,
+      why:         rule.why_it_matters || "",
       explanation: (llmExplanation && llmExplanation.trim())
                     ? llmExplanation.trim()
                     : (rule.why_it_matters || "This check did not pass."),
@@ -196,9 +191,25 @@
     };
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     General utilities
-  ══════════════════════════════════════════════════════════════════ */
+  function enrichWhyText(why, category) {
+    const base = (why || "").trim();
+    if (!base) return "";
+
+    const categoryHints = {
+      Contact: "This improves recruiter trust and ensures they can reach you quickly for next steps.",
+      Sections: "Clear structure helps ATS and recruiters find key qualifications without missing important details.",
+      Formatting: "ATS-friendly formatting reduces parsing errors and improves how accurately your resume is indexed.",
+      Education: "Strong education alignment helps you pass early screening requirements for many roles.",
+      Experience: "Stronger experience signals improve role fit and increase confidence in your ability to deliver results.",
+      Projects: "Well-presented projects reinforce practical skills and make your profile more compelling for interviews.",
+      Quality: "Clean, professional writing improves readability and leaves a stronger first impression."
+    };
+
+    const hint = categoryHints[category] || "This helps your resume perform better in both ATS screening and recruiter review.";
+    return `${base} ${hint}`;
+  }
+
+  /* ─── Utilities ──────────────────────────────────────────────────────────── */
   function load() {
     try {
       const raw = sessionStorage.getItem(STORAGE_KEY);
@@ -206,7 +217,6 @@
     } catch { return null; }
   }
 
-  /** Safely coerce "true"/"false" strings and booleans → boolean */
   function bool(v) {
     if (typeof v === "boolean") return v;
     if (typeof v === "string")  return v.trim().toLowerCase() === "true";
@@ -227,14 +237,12 @@
   }
 
   function scoreColor(score) {
-    if (score >= 75) return { stroke: "#22c55e", label: "Strong Match", labelCls: "pass" };
-    if (score >= 55) return { stroke: "#f59e0b", label: "Good Match",   labelCls: "warn" };
-    return               { stroke: "#ef4444", label: "Needs Work",   labelCls: "fail" };
+    if (score >= 75) return { stroke: "#20d870", label: "Strong Match" };
+    if (score >= 55) return { stroke: "#ffb020", label: "Good Match"   };
+    return               { stroke: "#ff4d6d", label: "Needs Work"   };
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Count checks for mini-stat row
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Count checks ───────────────────────────────────────────────────────── */
   function countChecks(d) {
     let passed = 0, failed = 0;
     const checks = [
@@ -268,80 +276,64 @@
       if (v === undefined || v === null) return;
       bool(v) ? passed++ : failed++;
     });
-    return { passed, failed, warned: 0 };
+    return { passed, failed };
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Score ring
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Score ring ─────────────────────────────────────────────────────────── */
   function renderScore(score) {
-    const style = scoreColor(score);
-    const circ  = 2 * Math.PI * 65;
+    const style  = scoreColor(score);
+    const circ   = 2 * Math.PI * 65;
     const offset = circ - (score / 100) * circ;
 
     const numEl   = document.getElementById("score-number");
     const ringEl  = document.getElementById("ring-fill");
-    const badgeEl = document.getElementById("match-badge");
+    const titleEl = document.getElementById("match-badge");
 
-    if (numEl) numEl.textContent = Math.round(score);
+    if (numEl)  numEl.textContent = Math.round(score);
     if (ringEl) {
       ringEl.style.stroke = style.stroke;
       ringEl.style.strokeDasharray  = circ;
       ringEl.style.strokeDashoffset = circ;
       requestAnimationFrame(() => { ringEl.style.strokeDashoffset = offset; });
     }
-    if (badgeEl) {
-      badgeEl.textContent      = style.label;
-      badgeEl.className        = `match-badge ${style.labelCls}`;
-      badgeEl.style.color      = style.stroke;
-      badgeEl.style.borderColor= style.stroke + "55";
-      badgeEl.style.background = style.stroke + "18";
+    if (titleEl) {
+      titleEl.textContent = style.label;
+      titleEl.style.color = style.stroke;
     }
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Mini stats
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Mini stats → stat pills ────────────────────────────────────────────── */
   function renderMiniStats(counts) {
-    const grid = document.getElementById("score-stats-row");
-    if (!grid) return;
-    grid.innerHTML = `
-      <div class="mini-stat pass">
-        <span class="mini-stat-num">${counts.passed}</span>
-        <span class="mini-stat-label">Passed</span>
-      </div>
-      <div class="mini-stat fail">
-        <span class="mini-stat-num">${counts.failed}</span>
-        <span class="mini-stat-label">Failed</span>
-      </div>
-      <div class="mini-stat warn">
-        <span class="mini-stat-num">${counts.warned}</span>
-        <span class="mini-stat-label">Warnings</span>
-      </div>`;
+    const textEl = document.getElementById("score-stats-text");
+    if (textEl) {
+      textEl.textContent =
+        `${counts.passed} checks passed · ${counts.failed} failed`;
+    }
+
+    const rowEl = document.getElementById("score-stats-row");
+    if (!rowEl) return;
+    rowEl.innerHTML = `
+      <span class="stat-pill pass">${counts.passed} passed</span>
+      <span class="stat-pill fail">${counts.failed} failed</span>`;
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     checkRow — used in the Overview "All Checks" panel.
-     Pulls resolved text via resolve() so the detail shown is always
-     the success copy (pass) or the LLM text (fail).
-  ══════════════════════════════════════════════════════════════════ */
-  function checkRow(ruleKey, passed, llmExplanation, llmAction) {
-    const { title, explanation } = resolve(ruleKey, passed, llmExplanation, llmAction);
-    const cls  = passed ? "pass" : "fail";
-    const icon = passed ? "✓" : "✗";
-    const row  = el("div", `check-row ${cls}`);
+  /* ─── Overview — dot check rows ──────────────────────────────────────────── */
+  function ovCheckRow(ruleKey, rawPassed, llmExp, llmAct) {
+    const passed = bool(rawPassed);
+    const { title, category, explanation, why } = resolve(ruleKey, passed, llmExp, llmAct);
+    const whyExpanded = enrichWhyText(why, category);
+    const row = el("div", "ov-check-row");
     row.innerHTML = `
-      <div class="check-icon">${icon}</div>
-      <div class="check-body">
-        <div class="check-label">${title}</div>
-        <div class="check-detail">${explanation}</div>
-      </div>`;
+      <div class="ov-dot ${passed ? "pass" : "fail"}"></div>
+      <div class="ov-check-main">
+        <div class="ov-check-label">${title}</div>
+        <div class="ov-check-explanation">${explanation}</div>
+        <div class="ov-check-why"><strong>Why it matters:</strong> ${whyExpanded}</div>
+      </div>
+      <span class="ov-check-category">${category}</span>`;
     return row;
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Overview checks panel
-  ══════════════════════════════════════════════════════════════════ */
   function renderOverviewChecks(d) {
     const container = document.getElementById("overview-checks");
     if (!container) return;
@@ -355,50 +347,45 @@
     const ex = d?.experience             || {};
     const pr = d?.projects               || {};
 
-    // [ruleKey, passedValue, llmExplanation, llmAction]
     const rows = [
-      ["contact_information.email",              ci.email?.present,                  "",                                  ""],
-      ["contact_information.phone",              ci.phone?.present,                  "",                                  ""],
-      ["contact_information.linkedin",           ci.linkedin?.present,               "",                                  ""],
-      ["spelling_and_grammar.spelling",          sg.spelling?.passed,                sg.spelling?.explanation,            sg.spelling?.action],
-      ["spelling_and_grammar.grammar",           sg.grammar?.passed,                 sg.grammar?.explanation,             sg.grammar?.action],
-      ["spelling_and_grammar.buzzwords",         sg.buzzwords?.passed,               sg.buzzwords?.explanation,           sg.buzzwords?.action],
-      ["spelling_and_grammar.personal_pronouns", sg.personal_pronouns?.passed,       sg.personal_pronouns?.explanation,   sg.personal_pronouns?.action],
-      ["sections.projects",                      sc.projects?.present,               "",                                  ""],
-      ["sections.experience",                    sc.experience?.present,             "",                                  ""],
-      ["sections.skills",                        sc.skills?.present,                 "",                                  ""],
-      ["sections.education",                     sc.education?.present,              "",                                  ""],
-      ["sections.chronological_dates",           sc.chronological_dates?.passed,     sc.chronological_dates?.explanation, ""],
-      ["formatting.single_column",               fm.single_column?.passed,           fm.single_column?.explanation,       ""],
-      ["formatting.photos_or_graphics",          fm.photos_or_graphics?.passed,      fm.photos_or_graphics?.explanation,  ""],
-      ["formatting.excessive_design",            fm.excessive_design?.passed,        fm.excessive_design?.explanation,    ""],
-      ["formatting.unnecessary_sections",        fm.unnecessary_sections?.passed,    fm.unnecessary_sections?.explanation,""],
-      ["education.qualification_match",          ed.qualification_match?.passed,     ed.qualification_match?.explanation, ""],
-      ["experience.experience_match",            ex.experience_match?.passed,        ex.experience_match?.explanation,    ex.experience_match?.action],
-      ["experience.company_names",               ex.company_names?.present,          "",                                  ""],
-      ["experience.job_titles",                  ex.job_titles?.present,             "",                                  ""],
-      ["experience.action_verbs",                ex.action_verbs?.passed,            ex.action_verbs?.explanation,        ex.action_verbs?.action],
-      ["experience.quantified_impact",           ex.quantified_impact?.passed,       ex.quantified_impact?.explanation,   ex.quantified_impact?.action],
-      ["projects.project_links",                 pr.project_links?.passed,           pr.project_links?.explanation,       pr.project_links?.action],
-      ["projects.action_verbs",                  pr.action_verbs?.passed,            pr.action_verbs?.explanation,        pr.action_verbs?.action],
-      ["projects.quantified_impact",             pr.quantified_impact?.passed,       pr.quantified_impact?.explanation,   pr.quantified_impact?.action],
+      ["contact_information.email",              ci.email?.present,               "", ""],
+      ["contact_information.phone",              ci.phone?.present,               "", ""],
+      ["contact_information.linkedin",           ci.linkedin?.present,            "", ""],
+      ["spelling_and_grammar.spelling",          sg.spelling?.passed,             sg.spelling?.explanation,            sg.spelling?.action],
+      ["spelling_and_grammar.grammar",           sg.grammar?.passed,              sg.grammar?.explanation,             sg.grammar?.action],
+      ["spelling_and_grammar.buzzwords",         sg.buzzwords?.passed,            sg.buzzwords?.explanation,           sg.buzzwords?.action],
+      ["spelling_and_grammar.personal_pronouns", sg.personal_pronouns?.passed,    sg.personal_pronouns?.explanation,   sg.personal_pronouns?.action],
+      ["sections.projects",                      sc.projects?.present,            "", ""],
+      ["sections.experience",                    sc.experience?.present,          "", ""],
+      ["sections.skills",                        sc.skills?.present,              "", ""],
+      ["sections.education",                     sc.education?.present,           "", ""],
+      ["sections.chronological_dates",           sc.chronological_dates?.passed,  sc.chronological_dates?.explanation, ""],
+      ["formatting.single_column",               fm.single_column?.passed,        fm.single_column?.explanation,       ""],
+      ["formatting.photos_or_graphics",          fm.photos_or_graphics?.passed,   fm.photos_or_graphics?.explanation,  ""],
+      ["formatting.excessive_design",            fm.excessive_design?.passed,     fm.excessive_design?.explanation,    ""],
+      ["formatting.unnecessary_sections",        fm.unnecessary_sections?.passed, fm.unnecessary_sections?.explanation,""],
+      ["education.qualification_match",          ed.qualification_match?.passed,  ed.qualification_match?.explanation, ""],
+      ["experience.experience_match",            ex.experience_match?.passed,     ex.experience_match?.explanation,    ex.experience_match?.action],
+      ["experience.company_names",               ex.company_names?.present,       "", ""],
+      ["experience.job_titles",                  ex.job_titles?.present,          "", ""],
+      ["experience.action_verbs",                ex.action_verbs?.passed,         ex.action_verbs?.explanation,        ex.action_verbs?.action],
+      ["experience.quantified_impact",           ex.quantified_impact?.passed,    ex.quantified_impact?.explanation,   ex.quantified_impact?.action],
+      ["projects.project_links",                 pr.project_links?.passed,        pr.project_links?.explanation,       pr.project_links?.action],
+      ["projects.action_verbs",                  pr.action_verbs?.passed,         pr.action_verbs?.explanation,        pr.action_verbs?.action],
+      ["projects.quantified_impact",             pr.quantified_impact?.passed,    pr.quantified_impact?.explanation,   pr.quantified_impact?.action],
     ];
 
     rows.forEach(([ruleKey, rawPassed, llmExp, llmAct]) => {
-      container.appendChild(checkRow(ruleKey, bool(rawPassed), llmExp, llmAct));
+      container.appendChild(ovCheckRow(ruleKey, rawPassed, llmExp, llmAct));
     });
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Accordion item — resolve() drives what body text is shown.
-     On pass: shows why_it_matters + success copy (subtle, reassuring).
-     On fail: shows why_it_matters + LLM's specific explanation + action.
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Accordion item ─────────────────────────────────────────────────────── */
   function accItem(ruleKey, rawPassed, llmExplanation, llmAction) {
-    const passed  = bool(rawPassed);
-    const r       = resolve(ruleKey, passed, llmExplanation, llmAction);
-    const cls     = passed ? "pass" : "fail";
-    const icon    = passed ? "✓" : "✗";
+    const passed = bool(rawPassed);
+    const r      = resolve(ruleKey, passed, llmExplanation, llmAction);
+    const cls    = passed ? "pass" : "fail";
+    const icon   = passed ? "✓" : "✗";
 
     const item = el("div", "acc-item");
     const head = el("div", `acc-head ${cls}`);
@@ -411,7 +398,6 @@
 
     const body = el("div", "acc-body");
 
-    // Why it matters — always shown
     if (r.why) {
       const whyRow = el("div", "acc-row");
       whyRow.appendChild(el("div", "acc-row-label", "Why it matters"));
@@ -419,7 +405,6 @@
       body.appendChild(whyRow);
     }
 
-    // Explanation
     if (r.explanation) {
       const expRow = el("div", "acc-row");
       expRow.appendChild(el("div", "acc-row-label", passed ? "Status" : "Problem found"));
@@ -427,7 +412,6 @@
       body.appendChild(expRow);
     }
 
-    // Action — only meaningful to show on fail (success action is always "No action required.")
     if (r.action && !passed) {
       const actRow = el("div", "acc-row");
       actRow.appendChild(el("div", "acc-row-label", "Recommended fix"));
@@ -441,21 +425,71 @@
     return item;
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Contact tab
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Sidebar badges ─────────────────────────────────────────────────────── */
+  function updateSidebarBadges(d) {
+    const ci = d?.contact_information || {};
+    const sc = d?.sections            || {};
+    const fm = d?.formatting          || {};
+    const ed = d?.education           || {};
+    const ex = d?.experience          || {};
+    const pr = d?.projects            || {};
+
+    const sections = {
+      contact:    [ci.email?.present, ci.phone?.present, ci.linkedin?.present],
+      sections:   [sc.projects?.present, sc.experience?.present, sc.skills?.present,
+                   sc.education?.present, sc.chronological_dates?.passed],
+      formatting: [fm.single_column?.passed, fm.photos_or_graphics?.passed,
+                   fm.excessive_design?.passed, fm.unnecessary_sections?.passed],
+      education:  [ed.qualification_match?.passed],
+      experience: [ex.experience_match?.passed, ex.company_names?.present,
+                   ex.job_titles?.present, ex.action_verbs?.passed, ex.quantified_impact?.passed],
+      projects:   [pr.project_links?.passed, pr.action_verbs?.passed, pr.quantified_impact?.passed],
+    };
+
+    Object.entries(sections).forEach(([tab, checks]) => {
+      const badgeEl = document.getElementById(`badge-${tab}`);
+      if (!badgeEl || !checks.length) return;
+      const defined = checks.filter(v => v !== undefined && v !== null);
+      if (!defined.length) return;
+      const fails = defined.filter(v => !bool(v)).length;
+      if (fails === 0) {
+        badgeEl.textContent = "OK";
+        badgeEl.className   = "sidebar-badge ok";
+      } else {
+        badgeEl.textContent = `${fails} fix`;
+        badgeEl.className   = "sidebar-badge fix";
+      }
+      badgeEl.style.display = "";
+    });
+
+    // Skills badge: show if any missing skills
+    const skillsBadge = document.getElementById("badge-skills");
+    if (skillsBadge) {
+      const missing = (d?.skills?.hard_skills?.missing?.length || 0) +
+                      (d?.skills?.soft_skills?.missing?.length || 0);
+      if (missing > 0) {
+        skillsBadge.textContent = `${missing} gap`;
+        skillsBadge.className   = "sidebar-badge warn";
+        skillsBadge.style.display = "";
+      } else {
+        skillsBadge.textContent = "OK";
+        skillsBadge.className   = "sidebar-badge ok";
+        skillsBadge.style.display = "";
+      }
+    }
+  }
+
+  /* ─── Contact tab ────────────────────────────────────────────────────────── */
   function renderContact(d) {
     const target = document.getElementById("contact-list");
     if (!target) return;
     target.innerHTML = "";
-
-    const ci = d?.contact_information || {};
+    const ci   = d?.contact_information || {};
     const defs = [
       { icon: "✉️", key: "email",    ruleKey: "contact_information.email"    },
       { icon: "📞", key: "phone",    ruleKey: "contact_information.phone"    },
       { icon: "🔗", key: "linkedin", ruleKey: "contact_information.linkedin" },
     ];
-
     defs.forEach(({ icon, key, ruleKey }) => {
       const passed = bool(ci[key]?.present);
       const r      = resolve(ruleKey, passed, "", "");
@@ -472,21 +506,17 @@
     });
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Skills tab
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Skills tab ─────────────────────────────────────────────────────────── */
   function renderSkills(d) {
     const skills = d?.skills || {};
     const hard   = skills.hard_skills || {};
     const soft   = skills.soft_skills || {};
-
     const groups = [
-      { id: "hard-matched", items: hard.matched || [], kind: "matched", label: "Matched Hard Skills"  },
-      { id: "hard-missing", items: hard.missing || [], kind: "missing", label: "Missing Hard Skills"  },
-      { id: "soft-matched", items: soft.matched || [], kind: "matched", label: "Matched Soft Skills"  },
-      { id: "soft-missing", items: soft.missing || [], kind: "missing", label: "Missing Soft Skills"  },
+      { id: "hard-matched", items: hard.matched || [], kind: "matched", label: "Matched Hard Skills" },
+      { id: "hard-missing", items: hard.missing || [], kind: "missing", label: "Missing Hard Skills" },
+      { id: "soft-matched", items: soft.matched || [], kind: "matched", label: "Matched Soft Skills" },
+      { id: "soft-missing", items: soft.missing || [], kind: "missing", label: "Missing Soft Skills" },
     ];
-
     groups.forEach(({ id, items, kind, label }) => {
       const container = document.getElementById(id);
       if (!container) return;
@@ -499,44 +529,36 @@
     });
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Sections tab
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Sections tab ───────────────────────────────────────────────────────── */
   function renderSectionsAudit(d) {
     const target = document.getElementById("sections-accordion");
     if (!target) return;
     target.innerHTML = "";
     const sc = d?.sections || {};
-
     [
-      ["sections.projects",             sc.projects?.present,           "",                                  ""],
-      ["sections.experience",           sc.experience?.present,         "",                                  ""],
-      ["sections.skills",               sc.skills?.present,             "",                                  ""],
-      ["sections.education",            sc.education?.present,          "",                                  ""],
-      ["sections.chronological_dates",  sc.chronological_dates?.passed, sc.chronological_dates?.explanation, ""],
-    ].forEach(([ruleKey, v, exp, act]) => target.appendChild(accItem(ruleKey, v, exp, act)));
+      ["sections.projects",            sc.projects?.present,           "",                                  ""],
+      ["sections.experience",          sc.experience?.present,         "",                                  ""],
+      ["sections.skills",              sc.skills?.present,             "",                                  ""],
+      ["sections.education",           sc.education?.present,          "",                                  ""],
+      ["sections.chronological_dates", sc.chronological_dates?.passed, sc.chronological_dates?.explanation, ""],
+    ].forEach(([rk, v, exp, act]) => target.appendChild(accItem(rk, v, exp, act)));
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Formatting tab
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Formatting tab ─────────────────────────────────────────────────────── */
   function renderFormattingAudit(d) {
     const target = document.getElementById("formatting-accordion");
     if (!target) return;
     target.innerHTML = "";
     const fm = d?.formatting || {};
-
     [
-      ["formatting.single_column",        fm.single_column?.passed,        fm.single_column?.explanation,       ""],
-      ["formatting.photos_or_graphics",   fm.photos_or_graphics?.passed,   fm.photos_or_graphics?.explanation,  ""],
-      ["formatting.excessive_design",     fm.excessive_design?.passed,     fm.excessive_design?.explanation,    ""],
-      ["formatting.unnecessary_sections", fm.unnecessary_sections?.passed, fm.unnecessary_sections?.explanation,""],
-    ].forEach(([ruleKey, v, exp, act]) => target.appendChild(accItem(ruleKey, v, exp, act)));
+      ["formatting.single_column",        fm.single_column?.passed,        fm.single_column?.explanation,        ""],
+      ["formatting.photos_or_graphics",   fm.photos_or_graphics?.passed,   fm.photos_or_graphics?.explanation,   ""],
+      ["formatting.excessive_design",     fm.excessive_design?.passed,     fm.excessive_design?.explanation,     ""],
+      ["formatting.unnecessary_sections", fm.unnecessary_sections?.passed, fm.unnecessary_sections?.explanation, ""],
+    ].forEach(([rk, v, exp, act]) => target.appendChild(accItem(rk, v, exp, act)));
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Education tab
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Education tab ──────────────────────────────────────────────────────── */
   function renderEducationAudit(d) {
     const target = document.getElementById("education-accordion");
     if (!target) return;
@@ -545,43 +567,35 @@
     target.appendChild(accItem("education.qualification_match", qm.passed, qm.explanation, ""));
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Experience tab
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Experience tab ─────────────────────────────────────────────────────── */
   function renderExperienceAudit(d) {
     const target = document.getElementById("experience-accordion");
     if (!target) return;
     target.innerHTML = "";
     const ex = d?.experience || {};
-
     [
       ["experience.experience_match",  ex.experience_match?.passed,  ex.experience_match?.explanation,  ex.experience_match?.action],
       ["experience.company_names",     ex.company_names?.present,    "",                                ""],
       ["experience.job_titles",        ex.job_titles?.present,       "",                                ""],
       ["experience.action_verbs",      ex.action_verbs?.passed,      ex.action_verbs?.explanation,      ex.action_verbs?.action],
       ["experience.quantified_impact", ex.quantified_impact?.passed, ex.quantified_impact?.explanation, ex.quantified_impact?.action],
-    ].forEach(([ruleKey, v, exp, act]) => target.appendChild(accItem(ruleKey, v, exp, act)));
+    ].forEach(([rk, v, exp, act]) => target.appendChild(accItem(rk, v, exp, act)));
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Projects tab
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Projects tab ───────────────────────────────────────────────────────── */
   function renderProjectsAudit(d) {
     const target = document.getElementById("projects-accordion");
     if (!target) return;
     target.innerHTML = "";
     const pr = d?.projects || {};
-
     [
       ["projects.project_links",     pr.project_links?.passed,     pr.project_links?.explanation,     pr.project_links?.action],
       ["projects.action_verbs",      pr.action_verbs?.passed,      pr.action_verbs?.explanation,      pr.action_verbs?.action],
       ["projects.quantified_impact", pr.quantified_impact?.passed, pr.quantified_impact?.explanation, pr.quantified_impact?.action],
-    ].forEach(([ruleKey, v, exp, act]) => target.appendChild(accItem(ruleKey, v, exp, act)));
+    ].forEach(([rk, v, exp, act]) => target.appendChild(accItem(rk, v, exp, act)));
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Priority fixes tab
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Priority fixes tab ─────────────────────────────────────────────────── */
   function renderPriorityFixes(d) {
     const target = document.getElementById("priority-fixes");
     if (!target) return;
@@ -612,9 +626,7 @@
     });
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Meta bar
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Meta bar ───────────────────────────────────────────────────────────── */
   function renderMeta(d) {
     const metaEl = document.getElementById("analysis-meta");
     if (!metaEl) return;
@@ -624,22 +636,27 @@
     metaEl.textContent = `${rate}${level}${date}`;
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Tabs + actions
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Tabs (sidebar buttons) ─────────────────────────────────────────────── */
   function wireTabs() {
-    const tabs = document.querySelectorAll(".tab-btn");
-    tabs.forEach(btn => {
+    const btns = document.querySelectorAll(".sidebar-btn");
+    btns.forEach(btn => {
       btn.addEventListener("click", () => {
-        tabs.forEach(b => b.classList.remove("active"));
+        btns.forEach(b => b.classList.remove("active"));
         document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
         btn.classList.add("active");
         const panel = document.getElementById("tab-" + btn.dataset.tab);
         if (panel) panel.classList.add("active");
+
+        // On mobile scroll content into view
+        const content = document.querySelector(".content-area");
+        if (content && window.innerWidth <= 760) {
+          content.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       });
     });
   }
 
+  /* ─── Actions ────────────────────────────────────────────────────────────── */
   function wireActions() {
     const back = document.getElementById("back-to-resume-btn");
     if (back) back.addEventListener("click", () => { window.location.href = "/solutions"; });
@@ -656,24 +673,23 @@
     });
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     No-data fallback
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── No-data fallback ───────────────────────────────────────────────────── */
   function showNoData() {
-    const shell = document.querySelector(".analysis-shell");
-    if (!shell) return;
-    shell.innerHTML = `
-      <div style="text-align:center;padding:80px 20px;">
-        <div style="font-size:48px;margin-bottom:16px;">📄</div>
-        <h2 style="margin-bottom:8px;">No analysis found</h2>
-        <p style="color:var(--muted);margin-bottom:24px;">Run an ATS analysis first from the Solutions page.</p>
-        <a href="/solutions" class="btn-primary" style="text-decoration:none;display:inline-flex;padding:12px 28px;">← Back to Solutions</a>
+    const layout = document.querySelector(".analysis-layout");
+    if (!layout) return;
+    layout.innerHTML = `
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:80px 20px;text-align:center;">
+        <div>
+          <div style="font-size:48px;margin-bottom:16px;">📄</div>
+          <h2 style="margin-bottom:8px;color:var(--text);">No analysis found</h2>
+          <p style="color:var(--muted);margin-bottom:24px;">Run an ATS analysis first from the Solutions page.</p>
+          <a href="/solutions" class="btn-primary"
+             style="text-decoration:none;display:inline-flex;padding:12px 28px;">← Back to Solutions</a>
+        </div>
       </div>`;
   }
 
-  /* ══════════════════════════════════════════════════════════════════
-     Init
-  ══════════════════════════════════════════════════════════════════ */
+  /* ─── Init ───────────────────────────────────────────────────────────────── */
   function init() {
     wireTabs();
     wireActions();
@@ -696,6 +712,7 @@
     renderExperienceAudit(d);
     renderProjectsAudit(d);
     renderPriorityFixes(d);
+    updateSidebarBadges(d);
   }
 
   if (document.readyState === "loading") {
