@@ -25,16 +25,16 @@
   --text:         #f7fafc;
   --muted:        rgb(251, 253, 255);
 
-  --card-bg:      rgba(12,18,38,.80);
+  --card-bg:      rgba(7,12,28,.86);
   --sidebar-bg:   rgba(7,11,24,.93);
 
   --radius:       12px;
   --radius-sm:    8px;
   --sidebar-w:    224px;
   --navbar-h:     80px;
-  --neo-hi:       rgba(255,255,255,.06);
-  --neo-lo:       rgba(0,0,0,.55);
-  --neo-surface:  linear-gradient(145deg, rgba(20,28,56,.72), rgba(10,16,36,.86));
+  --neo-hi:       rgba(255,255,255,.14);
+  --neo-lo:       rgba(0,0,0,.72);
+  --neo-surface:  linear-gradient(145deg, rgba(34,46,88,.86), rgba(15,24,52,.92));
 }
 
 /* ─── Reset / Base ───────────────────────────────────────────────────────────── */
@@ -254,13 +254,34 @@ body {
 
 /* ─── Overview — dot check list ─────────────────────────────────────────────── */
 .overview-checks-list { display: flex; flex-direction: column; gap: 12px; }
+.ov-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ov-group + .ov-group {
+  margin-top: 8px;
+}
+.ov-group-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 2px;
+}
+.ov-group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .ov-check-row {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   padding: 14px 12px;
-  border: 1px solid rgba(255,255,255,.07);
+  border: 1px solid rgba(150,178,255,.22);
   border-left: 4px solid transparent;
   border-radius: 10px;
   margin-bottom: 0;
@@ -268,11 +289,13 @@ body {
   background: var(--neo-surface);
   box-shadow:
     inset 1px 1px 0 var(--neo-hi),
-    inset -1px -1px 0 rgba(0,0,0,.45),
-    8px 8px 18px var(--neo-lo),
-    -6px -6px 16px rgba(36,48,92,.16);
+    inset -1px -1px 0 rgba(0,0,0,.52),
+    10px 10px 22px var(--neo-lo),
+    -8px -8px 18px rgba(78,104,192,.22);
 }
-.ov-check-row:hover { background: var(--surface); }
+.ov-check-row:hover {
+  background: linear-gradient(145deg, rgba(44,58,104,.90), rgba(18,29,60,.94));
+}
 .ov-check-row.pass { border-left-color: var(--pass); }
 .ov-check-row.fail { border-left-color: var(--fail); }
 
@@ -292,6 +315,14 @@ body {
 .ov-check-row.fail .ov-check-label { color: var(--fail); }
 .ov-check-explanation { font-size: 18px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
 .ov-check-why      { font-size: 17px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+.ov-check-fix {
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.5;
+  border-left: 2px solid var(--blue);
+  padding-left: 10px;
+}
 .ov-check-category { font-size: 16px; color: var(--muted); font-weight: 500; white-space: nowrap; }
 
 /* ─── Section 2-col grid ─────────────────────────────────────────────────────── */
@@ -307,14 +338,14 @@ body {
 
 .acc-item {
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255,255,255,.07);
+  border: 1px solid rgba(150,178,255,.2);
   overflow: hidden;
   background: var(--neo-surface);
   box-shadow:
     inset 1px 1px 0 var(--neo-hi),
-    inset -1px -1px 0 rgba(0,0,0,.42),
-    8px 8px 18px var(--neo-lo),
-    -6px -6px 16px rgba(36,48,92,.14);
+    inset -1px -1px 0 rgba(0,0,0,.48),
+    10px 10px 22px var(--neo-lo),
+    -8px -8px 18px rgba(78,104,192,.2);
 }
 .acc-head {
   display: flex;
@@ -390,12 +421,12 @@ body {
   gap: 12px;
   padding: 14px 16px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255,255,255,.08);
+  border: 1px solid rgba(150,178,255,.2);
   box-shadow:
     inset 1px 1px 0 var(--neo-hi),
-    inset -1px -1px 0 rgba(0,0,0,.42),
-    8px 8px 18px var(--neo-lo),
-    -6px -6px 14px rgba(36,48,92,.14);
+    inset -1px -1px 0 rgba(0,0,0,.48),
+    10px 10px 22px var(--neo-lo),
+    -8px -8px 16px rgba(78,104,192,.2);
 }
 .contact-item.pass { background: var(--pass-bg); border-color: var(--pass-border); }
 .contact-item.fail { background: var(--fail-bg); border-color: var(--fail-border); }
@@ -442,13 +473,13 @@ body {
   gap: 12px;
   padding: 16px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255,255,255,.08);
-  background: linear-gradient(145deg, rgba(60,24,44,.52), rgba(30,12,28,.82));
+  border: 1px solid rgba(255,166,188,.28);
+  background: linear-gradient(145deg, rgba(86,34,62,.68), rgba(42,16,34,.88));
   box-shadow:
-    inset 1px 1px 0 rgba(255,255,255,.06),
-    inset -1px -1px 0 rgba(0,0,0,.4),
-    8px 8px 18px var(--neo-lo),
-    -6px -6px 14px rgba(62,26,54,.12);
+    inset 1px 1px 0 rgba(255,255,255,.12),
+    inset -1px -1px 0 rgba(0,0,0,.46),
+    10px 10px 22px var(--neo-lo),
+    -8px -8px 16px rgba(136,46,88,.18);
 }
 .fix-num {
   width: 26px; height: 26px;
