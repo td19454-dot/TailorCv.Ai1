@@ -106,12 +106,6 @@
       success_explanation: "Job titles are clearly identified.",
       success_action: "No action required."
     },
-    "experience.action_verbs": {
-      title: "Action Verbs",
-      why_it_matters: "Strong action verbs increase perceived impact.",
-      success_explanation: "Experience bullets use strong action verbs.",
-      success_action: "No action required."
-    },
     "experience.quantified_impact": {
       title: "Quantified Impact",
       why_it_matters: "Numbers increase recruiter confidence.",
@@ -122,12 +116,6 @@
       title: "Project Links",
       why_it_matters: "Recruiters can verify project work.",
       success_explanation: "Project links are present.",
-      success_action: "No action required."
-    },
-    "projects.action_verbs": {
-      title: "Project Action Verbs",
-      why_it_matters: "Strong language improves project descriptions.",
-      success_explanation: "Project descriptions use impactful language.",
       success_action: "No action required."
     },
     "projects.quantified_impact": {
