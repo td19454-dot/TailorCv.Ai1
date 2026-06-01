@@ -614,6 +614,17 @@ Confidence improves with repetition.
 
 ---
 
+## Related Guides
+
+- [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
+- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
+- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
+- [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+
 ## Conclusion
 
 If you’re qualified but no interviews are coming, it does NOT automatically mean you lack talent.

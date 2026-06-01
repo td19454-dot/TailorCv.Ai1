@@ -276,3 +276,16 @@ When you research the company, study the job description, practice STAR stories,
 Use tools like [TailorCV.ai](https://www.thetailorcv.com/solutions) to understand how your resume matches the role, then carry that same focus into your interview preparation.
 
 [Try TailorCV free → thetailorcv.com](https://www.thetailorcv.com)
+
+---
+
+## Related Guides
+
+- [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
+- [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
+- [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+- [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
+- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
+- [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [How to Practice Mock Interviews Online for Free Using AI](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai)

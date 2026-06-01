@@ -1,3 +1,26 @@
+// CSRF fetch interceptor — runs on every page since auth_nav.js is universal
+(function () {
+  function _getCsrfToken() {
+    var m = document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/);
+    return m ? decodeURIComponent(m[1]) : "";
+  }
+  var _origFetch = window.fetch.bind(window);
+  window.fetch = function (input, init) {
+    init = init || {};
+    var method = (init.method || "GET").toUpperCase();
+    if (["GET", "HEAD", "OPTIONS"].indexOf(method) === -1) {
+      var token = _getCsrfToken();
+      if (token) {
+        init.headers = Object.assign({}, init.headers, {
+          "X-CSRFToken": token,
+          "X-Requested-With": "XMLHttpRequest"
+        });
+      }
+    }
+    return _origFetch(input, init);
+  };
+})();
+
 (function () {
   function getStoredUser() {
     try {
