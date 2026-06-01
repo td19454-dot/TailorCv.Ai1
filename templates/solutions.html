@@ -506,7 +506,7 @@
                                     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:0.55rem;">
                                         <label for="job-description" class="cv2-label" style="margin-bottom:0;">Job Description</label>
                                         <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
-                                            <span style="color:#4ade80;font-size:15px;font-weight:700;white-space:nowrap;letter-spacing:0.01em;">Use default JD:</span>
+                                            <span style="color:#7b48f0;font-size:15px;font-weight:700;white-space:nowrap;letter-spacing:0.01em;">Use sample JD:</span>
                                             <div id="jd-picker-wrapper" style="position:relative;min-width:210px;"></div>
                                         </div>
                                     </div>
@@ -1320,7 +1320,7 @@ Nice to have:
         btn.type = "button";
         btn.id = "jd-picker-btn";
         btn.innerHTML = `
-            <span id="jd-picker-label" style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">— pick a role —</span>
+            <span id="jd-picker-label" style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; color:white">— pick a role —</span>
             <svg id="jd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease;"><polyline points="6 9 12 15 18 9"/></svg>
         `;
         Object.assign(btn.style, {
