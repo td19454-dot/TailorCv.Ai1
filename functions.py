@@ -100,8 +100,7 @@ def extract_project_links(text: str) -> list[str]:
             continue
         filtered.append(url)
     return filtered
-
-
+        
 def map_project_demo_links(text: str) -> list[tuple[str, str]]:
     """
     Like `map_demo_links`, but scoped to Projects and supports both:
@@ -1175,11 +1174,10 @@ Fail if:
 ==================================================
 SPELLING RULES
 ==============
-
+Find all spelling mistakes
 Pass if no obvious spelling mistakes are found.
-
-Fail only when a word is objectively misspelled.
-
+Fail only when words is misspelled. Give explanation for all misspelled words without missing any.
+Do not miss any mispelled words.
 Do not fail for style preferences.
 
 ==================================================
@@ -1489,7 +1487,7 @@ The JSON must strictly follow the schema provided below.
   "spelling_and_grammar": {
     "spelling": {
       "passed":"<false|true>",
-      "explanation": "<Provide_exp>",
+      "explanation": "<Provide_exp with all the incorrect spellings. Do not miss any mispelled words>",
       "action":"<Provide_act>"
     },
 
@@ -1654,7 +1652,7 @@ The JSON must strictly follow the schema provided below.
         )
     except Exception as exc:
         raise _normalize_openai_error(exc) from exc
-
+    
     content = response.choices[0].message.content
     try:
         parsed = json.loads(content)
@@ -1664,7 +1662,6 @@ The JSON must strictly follow the schema provided below.
 
     if not isinstance(parsed, dict):
         parsed = {}
-    
     hard_matched = parsed.get("skills", {}) \
                      .get("hard_skills", {}) \
                      .get("matched", [])
@@ -1683,7 +1680,7 @@ The JSON must strictly follow the schema provided below.
 
     matched_count = len(hard_matched) + len(soft_matched)
     missing_count = len(hard_missing) + len(soft_missing)
-
+    
     total = matched_count + missing_count
 
     skill_match_score = (
