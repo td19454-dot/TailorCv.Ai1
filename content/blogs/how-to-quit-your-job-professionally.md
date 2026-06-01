@@ -5,12 +5,14 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Quit Job, Resignation, Career Advice, Job Transition, Professional Etiquette]
 category: Career Advice
-image: public/blog-images/quit-job.png
+image: public/blog-images/how-to-quit-job.png
 slug: how-to-quit-your-job-professionally
 keywords: how to quit your job, resignation guide 2026, how to resign professionally, resignation letter, two weeks notice, how to tell your boss you are quitting, notice period
 ---
 
 How you leave a job matters almost as much as how you perform in it. The world is smaller than it seems — former managers become references, ex-colleagues become future hiring managers, and industries have long memories. Quitting professionally protects your reputation and your network. Quitting badly can follow you for years.
+
+![How to Quit Your Job](public/blog-images/how-to-quit-job.png)
 
 This guide covers exactly how to resign professionally: timing, the conversation, the resignation letter, notice periods, and handling counteroffers.
 

@@ -5,12 +5,14 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Certifications, Resume Tips, Resume Writing, Career Advice, ATS Resume]
 category: Resume Writing
-image: public/blog-images/list-certifications.png
+image: public/blog-images/how-to-list-certifications.png
 slug: how-to-list-certifications-on-resume
 keywords: how to list certifications on resume, certifications on resume 2026, where to put certifications resume, resume certification format, listing certifications resume
 ---
 
 Certifications can strengthen your resume significantly — especially for technical, healthcare, finance, and project management roles where credentials are screening criteria. But many candidates list them incorrectly, bury them, or include irrelevant ones. This guide shows you exactly how to list certifications for maximum impact.
+
+![How to List Certifications](public/blog-images/how-to-list-certifications.png)
 
 Before finalizing, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) — many job descriptions list required certifications as keywords, and the ATS scans for them. Use an [ATS-friendly template](https://www.thetailorcv.com/templates).
 
