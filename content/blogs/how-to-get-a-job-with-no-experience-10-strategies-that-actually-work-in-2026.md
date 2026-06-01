@@ -236,3 +236,16 @@ Your goal is to make your value visible. Translate your background into transfer
 You do not need a perfect background to get started. You need a clear target, consistent effort, and a resume that shows why you are worth interviewing.
 
 [Try TailorCV free → thetailorcv.com](https://www.thetailorcv.com)
+
+---
+
+## Related Guides
+
+- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
+- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
+- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [The CS Degree Bubble Is Real](https://thetailorcv.com/blog/cs-degree-bubble-oversaturated-2026)
+- [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
