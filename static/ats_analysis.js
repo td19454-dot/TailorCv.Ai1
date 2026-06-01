@@ -600,6 +600,16 @@
     });
   }
 
+  /* ─── Job role display ───────────────────────────────────────────────────── */
+  function renderJobRole(d) {
+    const role = d?.job_title_match?.job_title_in_jd;
+    if (!role) return;
+    const titleEl   = document.getElementById("job-role-title");
+    const displayEl = document.getElementById("job-role-display");
+    if (titleEl)   titleEl.textContent  = role;
+    if (displayEl) displayEl.style.display = "flex";
+  }
+
   /* ─── Meta bar ───────────────────────────────────────────────────────────── */
   function renderMeta(d) {
     const metaEl = document.getElementById("analysis-meta");
@@ -675,6 +685,7 @@
     const counts = countChecks(d);
 
     renderMeta(d);
+    renderJobRole(d);
     renderScore(score);
     renderMiniStats(counts);
     renderOverviewChecks(d);
