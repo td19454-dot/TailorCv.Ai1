@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Education, Resume Tips, Resume Writing, Career Advice, ATS Resume]
 category: Resume Writing
-image: public/blog-images/list-education.png
+image: public/blog-images/how to list education.png
 slug: how-to-list-education-on-resume
 keywords: how to list education on resume, education on resume 2026, resume education section, where to put education resume, GPA on resume, resume education format
 ---
