@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Group Discussion, GD Tips, Interview Preparation, Campus Placement, Career Advice]
 category: Interview Preparation
-image: public/blog-images/group-discussion.png
+image: public/blog-images/group1.png
 slug: group-discussion-tips
 keywords: group discussion tips, GD tips 2026, group discussion topics, how to crack group discussion, GD round preparation, campus placement GD, group discussion strategies
 ---
