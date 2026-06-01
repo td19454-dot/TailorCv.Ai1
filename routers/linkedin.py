@@ -521,8 +521,7 @@ async def import_linkedin(body: LinkedInImportRequest):
     profile_text = await _fetch_linkedin_html_text(linkedin_url)
     if profile_text:
         try:
-            import asyncio as _asyncio
-            parsed = await _asyncio.to_thread(_parse_cv_with_openai, api_key, profile_text)
+            parsed = await _parse_cv_with_openai(api_key, profile_text)
             parsed.setdefault("linkedin_url", linkedin_url)
             return {"success": True, "data": parsed}
         except Exception:
@@ -588,7 +587,6 @@ async def import_linkedin(body: LinkedInImportRequest):
         )
 
     try:
-        import asyncio as _asyncio
         fallback = _extract_linkedin_fallback(profile_raw, linkedin_url)
         payload_for_ai = (
             profile_raw.get("data")
@@ -596,7 +594,7 @@ async def import_linkedin(body: LinkedInImportRequest):
             else profile_raw
         )
         raw_for_ai = json.dumps(payload_for_ai, ensure_ascii=False, indent=2)
-        parsed = await _asyncio.to_thread(_parse_cv_with_openai, api_key, raw_for_ai[:50000])
+        parsed = await _parse_cv_with_openai(api_key, raw_for_ai[:50000])
         merged = _merge_ai_with_fallback(parsed, fallback)
         merged.setdefault("linkedin_url", linkedin_url)
         return {"success": True, "data": merged}
