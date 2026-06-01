@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Campus Placement, Placement Preparation, Student Career, Fresher Jobs, Interview Preparation]
 category: Career Growth
-image: public/blog-images/campus-placement.png
+image: public/blog-images/how to prepare for campus placement.png
 slug: how-to-prepare-for-campus-placement
 keywords: campus placement preparation, how to prepare for placements 2026, placement preparation guide, campus recruitment, fresher placement tips, college placement preparation
 ---

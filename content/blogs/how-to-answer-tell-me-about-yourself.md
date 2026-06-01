@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Interview Tips, Tell Me About Yourself, Job Interview, Career Advice, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/tell-me-about-yourself.png
+image: public/blog-images/tell me about urself.png
 slug: how-to-answer-tell-me-about-yourself
 keywords: how to answer tell me about yourself, tell me about yourself interview answer, interview introduction 2026, job interview opening question, elevator pitch interview
 ---
