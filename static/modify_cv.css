@@ -1095,7 +1095,7 @@ header.navbar {
 }
 .modify-cv-layout {
     display: grid;
-    grid-template-columns: 250px minmax(0, 1fr) 360px;
+    grid-template-columns: 220px minmax(0, 1fr) 480px;
     gap: 1.25rem;
     align-items: start;
 }
@@ -1247,7 +1247,9 @@ header.navbar {
 
 .template-preview-frame {
     width: 100%;
-    height: 700px;
+    height: calc(100vh - 220px);
+    min-height: 700px;
+    max-height: 1100px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 12px;
     background: #ffffff;
@@ -1367,13 +1369,18 @@ header.navbar {
     flex-wrap: wrap;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1380px) {
     .modify-cv-layout {
-        grid-template-columns: 220px minmax(0, 1fr);
+        grid-template-columns: 200px minmax(0, 1fr);
     }
     .preview-panel {
         grid-column: 1 / -1;
         position: static;
+    }
+    .template-preview-frame {
+        height: 85vh;
+        min-height: 600px;
+        max-height: none;
     }
 }
 
