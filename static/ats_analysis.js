@@ -191,22 +191,8 @@
     };
   }
 
-  function enrichWhyText(why, category) {
-    const base = (why || "").trim();
-    if (!base) return "";
-
-    const categoryHints = {
-      Contact: "This improves recruiter trust and ensures they can reach you quickly for next steps.",
-      Sections: "Clear structure helps ATS and recruiters find key qualifications without missing important details.",
-      Formatting: "ATS-friendly formatting reduces parsing errors and improves how accurately your resume is indexed.",
-      Education: "Strong education alignment helps you pass early screening requirements for many roles.",
-      Experience: "Stronger experience signals improve role fit and increase confidence in your ability to deliver results.",
-      Projects: "Well-presented projects reinforce practical skills and make your profile more compelling for interviews.",
-      Quality: "Clean, professional writing improves readability and leaves a stronger first impression."
-    };
-
-    const hint = categoryHints[category] || "This helps your resume perform better in both ATS screening and recruiter review.";
-    return `${base} ${hint}`;
+  function enrichWhyText(why) {
+    return (why || "").trim();
   }
 
   /* ─── Utilities ──────────────────────────────────────────────────────────── */
@@ -321,7 +307,7 @@
   function ovCheckRow(ruleKey, rawPassed, llmExp, llmAct) {
     const passed = bool(rawPassed);
     const { title, category, explanation, why } = resolve(ruleKey, passed, llmExp, llmAct);
-    const whyExpanded = enrichWhyText(why, category);
+    const whyExpanded = enrichWhyText(why);
     const row = el("div", `ov-check-row ${passed ? "pass" : "fail"}`);
     row.innerHTML = `
       <div class="ov-dot ${passed ? "pass" : "fail"}"></div>
@@ -337,7 +323,7 @@
   function detailCheckRow(ruleKey, rawPassed, llmExp, llmAct) {
     const passed = bool(rawPassed);
     const { title, category, explanation, why, action } = resolve(ruleKey, passed, llmExp, llmAct);
-    const whyExpanded = enrichWhyText(why, category);
+    const whyExpanded = enrichWhyText(why);
     const row = el("div", `ov-check-row ${passed ? "pass" : "fail"}`);
 
     let extra = "";
@@ -614,6 +600,16 @@
     });
   }
 
+  /* ─── Job role display ───────────────────────────────────────────────────── */
+  function renderJobRole(d) {
+    const role = d?.job_title_match?.job_title_in_jd;
+    if (!role) return;
+    const titleEl   = document.getElementById("job-role-title");
+    const displayEl = document.getElementById("job-role-display");
+    if (titleEl)   titleEl.textContent  = role;
+    if (displayEl) displayEl.style.display = "flex";
+  }
+
   /* ─── Meta bar ───────────────────────────────────────────────────────────── */
   function renderMeta(d) {
     const metaEl = document.getElementById("analysis-meta");
@@ -689,6 +685,7 @@
     const counts = countChecks(d);
 
     renderMeta(d);
+    renderJobRole(d);
     renderScore(score);
     renderMiniStats(counts);
     renderOverviewChecks(d);
