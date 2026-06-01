@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Decline Job Offer, Job Offer, Career Advice, Professional Etiquette, Job Search]
 category: Career Advice
-image: public/blog-images/decline-offer.png
+image: public/blog-images/how to decline a job offer.png
 slug: how-to-decline-job-offer
 keywords: how to decline a job offer, decline job offer email, turning down a job offer, reject job offer professionally, decline offer template, how to say no to a job offer
 ---
