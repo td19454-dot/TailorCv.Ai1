@@ -234,12 +234,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const jdInput = document.getElementById('job-description');
             
             if (!getResumeFileForUpload()) {
-                alert('Please upload a resume file');
+                showToast('Please upload a resume PDF file first.', 'warn');
                 return;
             }
             
             if (!jdInput.value.trim()) {
-                alert('Please paste the job description');
+                showToast('Please paste a job description before continuing.', 'warn');
                 return;
             }
             
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (confirmBtn) {
         confirmBtn.addEventListener('click', function() {
             if (!selectedTemplate) {
-                alert('Please select a template from the list above');
+                showToast('Please select a template from the list above.', 'warn');
                 return;
             }
             handleResumeOptimization();
@@ -338,7 +338,7 @@ async function handleATSAnalysis() {
     }
 
     if (!resumeFile || !jdInput.value.trim()) {
-        alert('Please provide both a resume and a job description');
+        showToast('Please upload a resume and paste a job description first.', 'warn');
         return;
     }
 
@@ -363,6 +363,11 @@ async function handleATSAnalysis() {
     const formData = new FormData();
     formData.append('file', resumeFile);
     const jdString = encodeURIComponent(jdInput.value.trim());
+
+    // Show a reassurance toast if the server takes longer than 30s
+    const slowToastTimer = setTimeout(() => {
+        showToast('Still working — AI analysis can take up to 60s. Please keep this tab open.', 'info', 'Taking a little longer…');
+    }, 30000);
 
     try {
         const response = await fetch(`/get-ats-score?jd_string=${jdString}`, {
@@ -392,12 +397,14 @@ async function handleATSAnalysis() {
             await new Promise((resolve) => setTimeout(resolve, minVisibleMs - elapsed));
         }
 
+        clearTimeout(slowToastTimer);
         atsProgressController.complete();
         setTimeout(() => {
             window.location.href = '/ats-analysis';
         }, 380);
 
     } catch (error) {
+        clearTimeout(slowToastTimer);
         atsProgressController.stop();
         if (atsProgressSection) {
             atsProgressSection.style.display = 'none';
@@ -406,7 +413,7 @@ async function handleATSAnalysis() {
         if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
             redirectToLogin();
         } else {
-            alert('Error analyzing resume: ' + error.message);
+            showToast(error.message || 'Analysis failed. Please try again.', 'error', 'ATS Analysis Failed');
         }
     } finally {
         analyzeBtn.disabled = false;
@@ -819,13 +826,18 @@ async function handleResumeOptimization() {
     const formData = new FormData();
     formData.append('file', resumeFile);
     formData.append('jd_string', jdInput.value.trim());
-    
+
     // Using ID 1 for style as default if not explicitly selected
     const templateId = selectedTemplate.id;
-    const styleId = selectedStyle; 
+    const styleId = selectedStyle;
     formData.append('template_id', templateId);
     formData.append('style_id', styleId);
     formData.append('editor_mode', 'true');
+
+    // Reassurance toast if optimization takes longer than 30s
+    const optSlowTimer = setTimeout(() => {
+        showToast('AI is rewriting your resume — this can take up to 90s. Please keep this tab open.', 'info', 'Still optimizing…');
+    }, 30000);
 
     try {
         const response = await fetch(`/get-optimised-resume`, {
@@ -849,6 +861,7 @@ async function handleResumeOptimization() {
             if (!payload || !payload.html) {
                 throw new Error('Optimization completed but preview payload is missing');
             }
+            clearTimeout(optSlowTimer);
             sessionStorage.setItem(LS_KEYS.optimizedEditorPayload, JSON.stringify(payload));
             displayOptimizeResults(null, true);
             try {
@@ -859,12 +872,14 @@ async function handleResumeOptimization() {
             return;
         }
 
+        clearTimeout(optSlowTimer);
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         displayOptimizeResults(url, false);
         triggerPdfDownload(url, 'optimized_resume.pdf');
 
     } catch (error) {
+        clearTimeout(optSlowTimer);
         progressController.stop();
         optimizeContent.innerHTML = '';
         optimizeResults.style.display = 'none';
@@ -874,7 +889,7 @@ async function handleResumeOptimization() {
         if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
             redirectToLogin();
         } else {
-            alert(`Optimization failed: ${error.message}`);
+            showToast(error.message || 'Optimization failed. Please try again.', 'error', 'Optimization Failed');
         }
     } finally {
         confirmBtn.classList.remove('loading', 'animate-shimmer');

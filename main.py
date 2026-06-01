@@ -72,11 +72,45 @@ db_init_status = {"ok": None, "error": None}
 # Add session middleware
 app.add_middleware(SessionMiddleware, secret_key=os.getenv("SECRET_KEY", "your-secret-key"))
 
+# ── CSRF protection (double-submit cookie) ────────────────────────────────────
+@app.middleware("http")
+async def csrf_middleware(request: Request, call_next):
+    EXEMPT_PATHS = {"/api/linkedin/oauth/callback"}
+    SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
+
+    if request.method not in SAFE_METHODS and request.url.path not in EXEMPT_PATHS:
+        cookie_token = request.cookies.get("csrftoken", "")
+        header_token = request.headers.get("X-CSRFToken", "")
+        if not cookie_token or cookie_token != header_token:
+            # Only block if the request is NOT same-origin via browser navigation
+            # (browser form POSTs won't have the header — let session-protected routes handle those)
+            content_type = request.headers.get("content-type", "")
+            is_ajax = request.headers.get("X-Requested-With") == "XMLHttpRequest" or "application/json" in content_type
+            if is_ajax and not (cookie_token and cookie_token == header_token):
+                return JSONResponse(status_code=403, content={"detail": "CSRF token invalid."})
+
+    response = await call_next(request)
+
+    # Set CSRF cookie on every response so JS can read it
+    if "csrftoken" not in request.cookies:
+        import secrets as _secrets
+        response.set_cookie(
+            "csrftoken",
+            _secrets.token_hex(32),
+            samesite="lax",
+            httponly=False,   # JS must be able to read it
+            secure=False,     # set True in production behind HTTPS
+        )
+    return response
+
 # Add global exception handler for logging
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
     logger.exception(f"Unhandled exception: {exc}")
-    return JSONResponse(status_code=500, content={"detail": "Internal server error"})
+    accept = request.headers.get("accept", "")
+    if "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest":
+        return templates.TemplateResponse("error.html", {"request": request, "status_code": 500, "message": "Something went wrong on our end. Please try again."}, status_code=500)
+    return JSONResponse(status_code=500, content={"detail": "Internal server error. Please try again."})
 
 # Add CORS middleware to allow frontend requests
 app.add_middleware(
@@ -84,7 +118,7 @@ app.add_middleware(
     allow_origins=["*"],  # Configure this for production
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*", "X-CSRFToken", "X-Requested-With"],
 )
 
 # Get the base directory (where main.py is located)
