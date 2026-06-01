@@ -5,12 +5,14 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Interview Prep, Company Research, Job Interview, Career Advice, Interview Tips 2026]
 category: Interview Preparation
-image: public/blog-images/company-research.png
+image: public/blog-images/how-to-research-a-company.png
 slug: how-to-research-company-before-interview
 keywords: how to research company before interview, company research interview 2026, interview preparation company research, what to know before job interview, company background check
 ---
 
 Company research before an interview is one of the most impactful things you can do — and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, recent product launches, competitive position, engineering culture, and specific team challenges is research.
+
+![How to Research a Company](public/blog-images/how-to-research-a-company.png)
 
 Interviewers ask "What do you know about us?" and "Why do you want to work here?" — and the answers that get job offers are specific, demonstrating genuine understanding of the company's situation. This guide tells you exactly what to research, where to find it, and how to use it.
 
