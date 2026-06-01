@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Graphic Designer Resume, Design Resume, Adobe Resume, ATS Resume, Creative Resume]
 category: Resume Examples
-image: public/blog-images/graphic-designer-resume.png
+image: public/blog-images/graphic.png
 slug: graphic-designer-resume-2026
 keywords: graphic designer resume, graphic design resume 2026, Adobe Creative Suite resume, brand designer resume, graphic design ATS keywords, visual designer resume
 ---

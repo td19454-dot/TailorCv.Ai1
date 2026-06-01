@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Full Stack Resume, React Resume, Node.js Resume, ATS Resume, Web Developer Resume]
 category: Resume Examples
-image: public/blog-images/fullstack-resume.png
+image: public/blog-images/fullstack.png
 slug: full-stack-developer-resume-2026
 keywords: full stack developer resume, full stack resume 2026, React Node.js resume, web developer resume, full stack ATS keywords, JavaScript developer resume
 ---
