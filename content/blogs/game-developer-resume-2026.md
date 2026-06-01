@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Game Developer Resume, Unity Resume, Unreal Resume, Game Programmer Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/game-developer-resume.png
+image: public/blog-images/game.png
 slug: game-developer-resume-2026
 keywords: game developer resume, game developer resume 2026, unity developer resume, unreal engine resume, game programmer resume, gameplay engineer resume, game dev ATS keywords
 ---

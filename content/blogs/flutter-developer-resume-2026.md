@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Flutter Developer Resume, Dart Resume, Mobile Developer Resume, Cross-Platform Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/flutter-developer-resume.png
+image: public/blog-images/flutter.png
 slug: flutter-developer-resume-2026
 keywords: flutter developer resume, flutter developer resume 2026, dart resume, cross platform developer resume, mobile app developer resume, flutter ATS keywords
 ---

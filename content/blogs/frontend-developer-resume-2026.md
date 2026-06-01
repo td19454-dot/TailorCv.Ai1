@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Frontend Resume, React Resume, JavaScript Resume, ATS Resume, Web Developer]
 category: Resume Examples
-image: public/blog-images/frontend-resume.png
+image: public/blog-images/frontend.png
 slug: frontend-developer-resume-2026
 keywords: frontend developer resume, frontend resume 2026, React developer resume, JavaScript resume, ATS frontend keywords, UI developer resume
 ---
