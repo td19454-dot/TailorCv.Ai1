@@ -34,10 +34,29 @@ header.navbar {
         gap: 0.9rem;
     }
 
+    .modify-cv-sidebar-col,
+    .preview-panel-col {
+        width: auto !important;
+        display: block !important;
+    }
+
     .modify-cv-sidebar,
     .preview-panel {
         position: static !important;
         top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: auto !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: visible !important;
+        z-index: auto !important;
+    }
+
+    .template-preview-frame {
+        flex: none;
+        height: 60vh;
+        min-height: 360px;
     }
 
     .modify-cv-title {
@@ -851,16 +870,27 @@ header.navbar {
 
 .modify-cv-layout {
     display: grid;
-    grid-template-columns: 260px 1fr 340px;
-    gap: 1.5rem;
-    max-width: 1400px;
+    grid-template-columns: 220px minmax(0, 1fr) 480px;
+    gap: 1.25rem;
+    max-width: 1800px;
     margin: auto;
 }
 
 /* ===== SIDEBAR ===== */
+.modify-cv-sidebar-col {
+    /* Acts as a grid spacer so the layout columns don't collapse */
+    width: 220px;
+    flex-shrink: 0;
+}
+
 .modify-cv-sidebar {
-    position: sticky;
-    top: 110px;
+    position: fixed;
+    top: 115px;
+    left: max(0.5rem, calc((100vw - 1800px) / 2));
+    width: 220px;
+    height: calc(100vh - 125px);
+    overflow-y: auto;
+    z-index: 99;
     padding: 1rem;
     border-radius: 18px;
     background: linear-gradient(145deg, rgba(20,30,60,0.9), rgba(40,20,80,0.8));
@@ -1013,14 +1043,27 @@ header.navbar {
 }
 
 /* ===== PREVIEW PANEL ===== */
+.preview-panel-col {
+    /* Grid spacer so main content doesn't expand into preview's space */
+    width: 480px;
+    flex-shrink: 0;
+}
+
 .preview-panel {
-    position: sticky;
-    top: 110px;
+    position: fixed;
+    top: 115px;
+    right: max(0.5rem, calc((100vw - 1800px) / 2));
+    width: 480px;
+    height: calc(100vh - 125px);
+    overflow-y: auto;
+    z-index: 99;
     padding: 1rem;
     border-radius: 18px;
     background: linear-gradient(145deg, rgba(20,30,60,0.9), rgba(40,20,80,0.8));
     backdrop-filter: blur(14px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
 }
 
 .preview-title {
@@ -1034,7 +1077,8 @@ header.navbar {
 
 .template-preview-frame {
     width: 100%;
-    height: 500px;
+    flex: 1;
+    min-height: 300px;
     border-radius: 10px;
     border: none;
     background: white;
@@ -1053,9 +1097,14 @@ header.navbar {
         grid-template-columns: 220px 1fr;
     }
 
+    .preview-panel-col {
+        display: none;
+    }
+
     .preview-panel {
-        grid-column: 1 / -1;
-        position: static;
+        position: fixed;
+        right: 0.5rem;
+        width: min(480px, calc(100vw - 240px));
     }
 }
 
@@ -1081,12 +1130,19 @@ header.navbar {
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr) 480px;
     gap: 1.25rem;
+    max-width: 1800px;
+    margin: 0 auto;
     align-items: start;
 }
 
 .modify-cv-sidebar {
-    position: sticky;
+    position: fixed;
     top: 115px;
+    left: max(0.5rem, calc((100vw - 1800px) / 2));
+    width: 220px;
+    height: calc(100vh - 125px);
+    overflow-y: auto;
+    z-index: 99;
     background: linear-gradient(145deg, rgba(5, 20, 48, 0.88), rgba(40, 16, 68, 0.82));
     backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -1215,8 +1271,15 @@ header.navbar {
 }
 
 .preview-panel {
-    position: sticky;
+    position: fixed;
     top: 115px;
+    right: max(0.5rem, calc((100vw - 1800px) / 2));
+    width: 480px;
+    height: calc(100vh - 125px);
+    overflow-y: auto;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
 }
 
 .preview-title {
@@ -1357,14 +1420,16 @@ header.navbar {
     .modify-cv-layout {
         grid-template-columns: 200px minmax(0, 1fr);
     }
+    .preview-panel-col {
+        display: none;
+    }
     .preview-panel {
-        grid-column: 1 / -1;
-        position: static;
+        position: fixed;
+        right: 0.5rem;
+        width: min(480px, calc(100vw - 220px));
     }
     .template-preview-frame {
-        height: 85vh;
-        min-height: 600px;
-        max-height: none;
+        min-height: 300px;
     }
 }
 
@@ -1372,8 +1437,27 @@ header.navbar {
     .modify-cv-layout {
         grid-template-columns: 1fr;
     }
-    .modify-cv-sidebar {
+    .modify-cv-sidebar-col,
+    .preview-panel-col {
+        width: auto;
+        display: block;
+    }
+    .modify-cv-sidebar,
+    .preview-panel {
         position: static;
+        top: auto;
+        left: auto;
+        right: auto;
+        width: auto;
+        height: auto;
+        max-height: none;
+        overflow-y: visible;
+        z-index: auto;
+    }
+    .template-preview-frame {
+        flex: none;
+        height: 60vh;
+        min-height: 360px;
     }
     .section-row {
         grid-template-columns: 1fr;
