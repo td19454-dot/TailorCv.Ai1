@@ -176,6 +176,10 @@ Connect your past examples to their specific context. "At [Company], I solved a 
 - [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 - [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
 - [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
+- [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
+- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
+- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
+- [Technical Interview Preparation Guide](https://thetailorcv.com/blog/technical-interview-preparation-guide)
 
 ## Conclusion
 

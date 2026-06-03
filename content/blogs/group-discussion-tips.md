@@ -164,6 +164,10 @@ Not building on others or ignoring the discussion flow signals weak teamwork.
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
 - [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 - [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
+- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
+- [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
+- [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
 
 ## Conclusion
 

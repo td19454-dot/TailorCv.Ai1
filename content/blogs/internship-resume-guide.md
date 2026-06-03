@@ -193,7 +193,7 @@ Google Data Analytics Professional Certificate | Coursera | 2026
 
 ## How to Write Internship Resume Bullets
 
-Even if your experience is limited, use action verbs and be specific:
+Even if your experience is limited, use [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume) and be specific:
 
 Weak:
 - Helped with data analysis
@@ -239,6 +239,10 @@ Tailor your resume to each role. Your Python and ML resume for a data science in
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+- [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 
 ## Conclusion
 

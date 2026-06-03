@@ -164,6 +164,10 @@ GAAP, IFRS, SOX, or local tax compliance — name the standards you work under. 
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 - [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
+- [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
+- [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
+- [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
+- [Data Scientist Resume](https://thetailorcv.com/blog/data-scientist-resume-2026)
 
 ## Conclusion
 

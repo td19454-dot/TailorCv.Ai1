@@ -192,7 +192,7 @@ The ATS evaluates how closely your skill set matches the employer’s requiremen
 Strong resumes typically include:
 
 - Technical skills
-- Soft skills
+- [Soft skills](https://thetailorcv.com/blog/soft-skills-for-resume)
 - Industry-specific tools
 - Certifications
 
@@ -410,7 +410,7 @@ Check it here:
 
 ## Best ATS Resume Formats in 2026
 
-The best ATS-friendly format is the reverse chronological resume.
+The best [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) format is the reverse chronological resume.
 
 Why?
 
@@ -603,6 +603,10 @@ The ATS Score Checker from The Tailor CV is a strong option for analyzing resume
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
+- [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
+- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
+- [15 Best Free Online Certificates That Actually Look Good on a Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
 
 ## Conclusion
 

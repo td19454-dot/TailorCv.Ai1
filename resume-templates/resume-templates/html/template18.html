@@ -259,6 +259,7 @@
         </div>
         {% if exp.company and exp.title and (exp.company != exp.title) %}<p class="entry-subtitle">{{ exp.company }}</p>{% endif %}
         {% if exp.location %}<p class="entry-meta">{{ exp.location }}</p>{% endif %}
+        {% if exp.url %}<p class="entry-meta"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_display or exp.url }}</a></p>{% endif %}
         {% if exp.bullets %}
         <ul class="bullets">
           {% for bullet in exp.bullets %}
@@ -281,6 +282,7 @@
           {% if edu.year %}<p class="entry-date">{{ edu.year }}</p>{% endif %}
         </div>
         {% if edu.school and edu.degree and (edu.school != edu.degree) %}<p class="entry-subtitle">{{ edu.school }}</p>{% endif %}
+        {% if edu.links %}<p class="entry-subtitle"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links }}</a></p>{% endif %}
         {% if edu.score %}
         <ul class="bullets">
           <li>{{ edu.score }}</li>

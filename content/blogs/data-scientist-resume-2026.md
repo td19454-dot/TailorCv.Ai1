@@ -58,7 +58,7 @@ Databases: PostgreSQL, MySQL, BigQuery, Snowflake, MongoDB
 Cloud and MLOps: AWS SageMaker, GCP Vertex AI, MLflow, Airflow, Docker, Kubernetes
 Statistics: Hypothesis Testing, A/B Testing, Regression, Bayesian Methods, Time Series
 
-Only list tools you can defend in a technical interview.
+Only list tools you can defend in a [technical interview](https://thetailorcv.com/blog/technical-interview-preparation-guide).
 
 ---
 
@@ -196,6 +196,10 @@ This guide uses hiring context from the [BLS Data Scientists Occupational Outloo
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
+- [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
+- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
+- [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
 
 ## Conclusion
 

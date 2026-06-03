@@ -126,7 +126,7 @@ Generic resume bullet:
 
 "Worked with customers to solve problems and answer questions."
 
-ATS-friendly tailored bullet:
+[ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) tailored bullet:
 
 "Managed SaaS onboarding and product training for 40+ customer accounts, using CRM notes and account health tracking to support retention and renewal conversations."
 
@@ -234,3 +234,8 @@ In 2026, the strongest applicants are not always the people with the fanciest re
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
+

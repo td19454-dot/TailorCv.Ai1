@@ -163,6 +163,10 @@ Add request volumes, event rates, or concurrent connection counts.
 - [Flutter Developer Resume](https://thetailorcv.com/blog/flutter-developer-resume-2026)
 - [Frontend Developer Resume](https://thetailorcv.com/blog/frontend-developer-resume-2026)
 - [Full Stack Developer Resume](https://thetailorcv.com/blog/full-stack-developer-resume-2026)
+- [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
+- [iOS Developer Resume](https://thetailorcv.com/blog/ios-developer-resume-2026)
+- [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
+- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 
 ## Conclusion
 

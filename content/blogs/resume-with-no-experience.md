@@ -21,7 +21,7 @@ Whether you are:
 - A fresher applying for your first job
 - Someone changing careers
 
-you can still create a professional and ATS-friendly resume that helps you stand out.
+you can still create a professional and [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) resume that helps you stand out.
 
 This guide will teach you how to build a strong **resume for freshers with no experience** and increase your chances of landing interviews.
 
@@ -103,7 +103,7 @@ Your header should include:
 - Full name
 - Phone number
 - Professional email
-- LinkedIn profile
+- [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - Portfolio link (if available)
 
 ### Example
@@ -351,6 +351,10 @@ You can explore professional fresher resume templates here:
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+- [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 
 ## Conclusion
 

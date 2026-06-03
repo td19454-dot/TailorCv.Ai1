@@ -159,6 +159,10 @@ Use the [free AI mock interview tool](https://thetailorcv.com/mock-interview) to
 - [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 - [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
 - [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
+- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
+- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
 
 ## Conclusion
 

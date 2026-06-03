@@ -162,6 +162,10 @@ If a company's culture makes balance impossible, individual habits can only do s
 - [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [Data Analyst vs Data Scientist](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
+- [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
+- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 
 ## Conclusion
 

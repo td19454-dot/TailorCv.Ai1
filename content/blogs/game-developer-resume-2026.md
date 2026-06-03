@@ -155,6 +155,10 @@ On shipped titles, specify exactly what systems you built, not just "worked on t
 - [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 - [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
 - [Electrical Engineer Resume](https://thetailorcv.com/blog/electrical-engineer-resume-2026)
+- [Embedded Systems Engineer Resume](https://thetailorcv.com/blog/embedded-systems-engineer-resume-2026)
+- [Flutter Developer Resume](https://thetailorcv.com/blog/flutter-developer-resume-2026)
+- [Frontend Developer Resume](https://thetailorcv.com/blog/frontend-developer-resume-2026)
+- [Full Stack Developer Resume](https://thetailorcv.com/blog/full-stack-developer-resume-2026)
 
 ## Conclusion
 

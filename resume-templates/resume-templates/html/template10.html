@@ -372,6 +372,7 @@
                 {% if edu.school %}<p class="education-meta">{{ edu.school }}</p>{% endif %}
                 {% if edu.location %}<p class="education-meta">{{ edu.location }}</p>{% endif %}
                 {% if edu.score %}<p class="education-score">{{ edu.score }}</p>{% endif %}
+                {% if edu.links %}<p class="education-score"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links }}</a></p>{% endif %}
               </div>
               {% if edu.year %}<div class="entry-meta">{{ edu.year }}</div>{% endif %}
             </div>
@@ -391,6 +392,7 @@
               <p class="entry-title">{{ exp.title }}</p>
               {% if exp.company %}<p class="entry-subtitle">{{ exp.company }}</p>{% endif %}
               {% if exp.location %}<p class="entry-location">{{ exp.location }}</p>{% endif %}
+              {% if exp.url %}<p class="entry-location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_display or exp.url }}</a></p>{% endif %}
             </div>
             {% if exp.dates %}<div class="entry-meta">{{ exp.dates }}</div>{% endif %}
           </div>

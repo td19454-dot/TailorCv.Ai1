@@ -144,6 +144,10 @@ Save compensation and benefits questions for the recruiter, later rounds, or the
 - [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
 - [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
 - [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
+- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
+- [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
+- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
+- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 
 ## Conclusion
 
