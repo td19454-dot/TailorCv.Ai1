@@ -382,7 +382,7 @@ def _section_of(headings: list[tuple[int, float, str]], page_idx: int, top: floa
     return current
 
 
-def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> dict[str, list[tuple[str, str]]]:
+def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], section: str = "projects") -> dict[str, list[tuple[str, str]]]:
     """
     Extract *clickable* link annotations (URIs) from the PDF and map them to the nearest
     project name based on page text proximity. This is far more reliable than trying
@@ -512,7 +512,7 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> d
     # certification link being pulled into a project). Only enforced when a Projects
     # heading is actually detected, so resumes without clear headings still work.
     headings = _detect_section_headings(pdf_path)
-    enforce_section = any(name == "projects" for (_p, _t, name) in headings)
+    enforce_section = any(name == section for (_p, _t, name) in headings)
 
     for page_idx, page in enumerate(reader.pages):
         annots = page.get("/Annots") or []
@@ -562,7 +562,7 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> d
             bottom = page_height - y0
 
             # Reject links that don't live in the Projects section.
-            if enforce_section and _section_of(headings, page_idx, top) != "projects":
+            if enforce_section and _section_of(headings, page_idx, top) != section:
                 continue
 
             matched_project, dist = match_project(top, bottom, candidates)
@@ -888,43 +888,6 @@ def extract_named_item_links_from_pdf(pdf_path: str, names: list[str], section: 
     except Exception:
         return result
     return result
-
-
-def _assign_section_links(parsed: dict, section_key: str, field: str, ordered_urls: list[str], used: set[str]) -> None:
-    """
-    Assign annotation-recovered URLs to the items of a section (education /
-    experience / certifications) in document order. Only fills items whose link
-    field is empty, and never reuses a URL already placed elsewhere.
-    """
-    items = parsed.get(section_key)
-    if not isinstance(items, list) or not items:
-        return
-    avail = [u for u in (ordered_urls or []) if u and u.lower() not in used]
-    idx = 0
-
-    def _is_real_url(v: str) -> bool:
-        v = str(v or "").strip().lower()
-        if not v:
-            return False
-        # Real link = explicit scheme, or a domain dot with no spaces (not just plain
-        # text the AI dropped in, e.g. an issuer name like "IBM" or "Coursera").
-        if v.startswith(("http://", "https://")):
-            return True
-        return "." in v and " " not in v
-
-    for item in items:
-        if not isinstance(item, dict):
-            continue
-        existing = str(item.get(field, "") or "").strip()
-        if _is_real_url(existing):
-            used.add(existing.lower())
-            continue
-        # Existing value is empty or junk (not a URL) -> overwrite with a real link.
-        if idx < len(avail):
-            url = avail[idx]
-            idx += 1
-            item[field] = url
-            used.add(url.lower())
 
 
 def _collect_used_urls(parsed: dict) -> set[str]:
@@ -2397,18 +2360,83 @@ def build_resume_plain_text(parsed: dict) -> str:
     return "\n\n".join(section for section in sections if section).strip()
 
 
+def _repair_truncated_json(text: str) -> dict | None:
+    """Best-effort repair of a JSON object truncated mid-output (e.g. the model hit
+    the token limit on a very long resume). Trims to the last complete top-level
+    item and closes any open brackets/braces so partial content still renders
+    instead of failing the whole optimization."""
+    s = str(text or "")
+    start = s.find("{")
+    if start == -1:
+        return None
+    s = s[start:]
+    # Walk the string tracking string state and bracket depth; remember the last
+    # position where the structure was at a "safe" point (after a complete value).
+    depth_stack = []
+    in_str = False
+    esc = False
+    last_safe = None
+    for i, ch in enumerate(s):
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+            continue
+        if ch == '"':
+            in_str = True
+        elif ch in "{[":
+            depth_stack.append("}" if ch == "{" else "]")
+        elif ch in "}]":
+            if depth_stack:
+                depth_stack.pop()
+        elif ch == "," and len(depth_stack) <= 2:
+            last_safe = i  # after a complete element near the top levels
+    # Truncate trailing incomplete fragment, then close open brackets.
+    candidate = s
+    for cut in (None, last_safe):
+        frag = s if cut is None else s[:cut]
+        frag = frag.rstrip().rstrip(",")
+        # recompute open brackets for this fragment
+        ds, ins, es = [], False, False
+        for ch in frag:
+            if ins:
+                if es: es = False
+                elif ch == "\\": es = True
+                elif ch == '"': ins = False
+                continue
+            if ch == '"': ins = True
+            elif ch in "{[": ds.append("}" if ch == "{" else "]")
+            elif ch in "}]":
+                if ds: ds.pop()
+        repaired = frag + ("" if not ins else '"') + "".join(reversed(ds))
+        try:
+            obj = json.loads(repaired)
+            if isinstance(obj, dict):
+                return obj
+        except Exception:
+            continue
+    return None
+
+
 def parse_ai_json_response(response_string: str) -> dict:
     try:
         parsed = json.loads(response_string)
     except Exception as e:
+        parsed = None
         try:
-            import re
             match = re.search(r"\{[\s\S]*\}\s*$", response_string)
             if match:
                 parsed = json.loads(match.group(0))
-            else:
-                raise
         except Exception:
+            parsed = None
+        if parsed is None:
+            # Truncated/invalid JSON (e.g. very long resume cut at token limit) —
+            # repair to the last complete item so partial content still renders.
+            parsed = _repair_truncated_json(response_string)
+        if parsed is None:
             raise HTTPException(status_code=500, detail=f"Failed to parse AI JSON response: {e}")
 
     if not isinstance(parsed, dict):
@@ -2594,7 +2622,8 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
         p_title = str(item.get("title", "")).strip()
         p_publisher = str(item.get("publisher", "")).strip()
         p_year = str(item.get("year", "")).strip()
-        p_url = normalize_url(str(item.get("url", "")).strip())
+        p_url_raw = str(item.get("url", "") or item.get("link", "")).strip()
+        p_url = normalize_url(p_url_raw)
         # Skip empty publication entries so a blank "Publications" section (with a
         # stray bullet) is not rendered when the resume has no real publications.
         if not (p_title or p_publisher or p_url):
@@ -2604,6 +2633,7 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
             "publisher": p_publisher,
             "year": p_year,
             "url": p_url,
+            "url_label": smart_link_label(p_url_raw, fallback="Link"),
         })
 
     raw_skills = []
@@ -3731,79 +3761,93 @@ async def upload_resume(
             try:
                 section_used = _collect_used_urls(parsed)
 
-                # Certifications: the cert NAME is usually the clickable link, often in a
-                # 1- or 2-column layout. Match links to certs by the text under each link
-                # rectangle (robust for multi-column). This runs first and is authoritative.
-                certs = parsed.get("certifications")
-                if isinstance(certs, list) and certs:
-                    cert_names = [
-                        str(c.get("name", "")).strip()
-                        for c in certs if isinstance(c, dict) and str(c.get("name", "")).strip()
-                    ]
-                    if cert_names:
-                        cert_link_map = await asyncio.to_thread(
-                            extract_named_item_links_from_pdf, file_path, cert_names, "certifications"
-                        )
-                        if cert_link_map:
-                            norm_map = {_normalize_key(k): v for k, v in cert_link_map.items()}
-                            for c in certs:
-                                if not isinstance(c, dict):
-                                    continue
-                                cur = str(c.get("url", "") or "").strip().lower()
-                                is_real = cur.startswith(("http://", "https://")) or ("." in cur and " " not in cur)
-                                if is_real:
-                                    section_used.add(cur)
-                                    continue
-                                u = norm_map.get(_normalize_key(c.get("name", "")))
-                                if u and u.lower() not in section_used:
-                                    c["url"] = u
-                                    section_used.add(u.lower())
+                def _real(v: str) -> bool:
+                    v = str(v or "").strip().lower()
+                    return v.startswith(("http://", "https://")) or ("." in v and " " not in v)
 
-                # Experience: match each entry's link by the company/title text under the
-                # link rectangle, bounded to the Experience section (so a project or
-                # contact link can never land on an experience entry).
-                exps = parsed.get("experience")
-                if isinstance(exps, list) and exps:
-                    exp_names = []
-                    for e in exps:
-                        if isinstance(e, dict):
-                            for f in ("company", "title"):
-                                v = str(e.get(f, "")).strip()
-                                if v:
-                                    exp_names.append(v)
-                    if exp_names:
-                        exp_map = await asyncio.to_thread(
-                            extract_named_item_links_from_pdf, file_path, exp_names, "experience"
-                        )
-                        if exp_map:
-                            norm_map = {_normalize_key(k): v for k, v in exp_map.items()}
-                            for e in exps:
-                                if not isinstance(e, dict):
-                                    continue
-                                cur = str(e.get("url", "") or "").strip().lower()
-                                if cur.startswith(("http://", "https://")) or ("." in cur and " " not in cur):
-                                    section_used.add(cur)
-                                    continue
-                                u = (norm_map.get(_normalize_key(e.get("company", "")))
-                                     or norm_map.get(_normalize_key(e.get("title", ""))))
-                                if u and u.lower() not in section_used:
-                                    e["url"] = u
-                                    section_used.add(u.lower())
+                async def _match_entry_links(section_key, id_fields, field, use_above):
+                    """Assign each entry's link using two position-correct matchers:
+                    (1) text under the link rectangle (column-aware) and, optionally,
+                    (2) the nearest entry-title above the link. Both bind a link to the
+                    entry it physically belongs to — recovering links without ever moving
+                    a link to a different sub-section. Global `section_used` prevents reuse."""
+                    items = [i for i in (parsed.get(section_key) or []) if isinstance(i, dict)]
+                    if not items:
+                        return
+                    names = []
+                    for it in items:
+                        for f in id_fields:
+                            v = str(it.get(f, "")).strip()
+                            if v:
+                                names.append(v)
+                    if not names:
+                        return
+                    # (1) precise: text physically under the link rectangle
+                    m1 = await asyncio.to_thread(
+                        extract_named_item_links_from_pdf, file_path, names, section_key
+                    ) or {}
+                    norm1 = {_normalize_key(k): v for k, v in m1.items()}
+                    # (2) recovery: nearest entry-title above the link (single-column safe)
+                    norm2 = {}
+                    if use_above:
+                        m2 = await asyncio.to_thread(
+                            extract_project_links_from_pdf, file_path, names, section_key
+                        ) or {}
+                        for k, pairs in m2.items():
+                            bucket = norm2.setdefault(_normalize_key(k), [])
+                            for _lab, uri in pairs:
+                                bucket.append(uri)
+                    for it in items:
+                        cur = str(it.get(field, "") or "").strip()
+                        if _real(cur):
+                            section_used.add(cur.lower())
+                            continue
+                        keys = [_normalize_key(it.get(f, "")) for f in id_fields if str(it.get(f, "")).strip()]
+                        chosen = None
+                        for k in keys:
+                            u = norm1.get(k)
+                            if u and u.lower() not in section_used:
+                                chosen = u
+                                break
+                        if not chosen:
+                            for k in keys:
+                                for u in norm2.get(k, []):
+                                    if u and u.lower() not in section_used:
+                                        chosen = u
+                                        break
+                                if chosen:
+                                    break
+                        if chosen:
+                            it[field] = chosen
+                            section_used.add(chosen.lower())
 
-                # Education / Experience / Certifications: position-based fallback for
-                # any entry the name-based passes above did not fill.
+                # Certifications use text-under-rect only (2-column safe). Experience and
+                # education also use nearest-title-above to recover icon-style links.
+                await _match_entry_links("certifications", ("name",), "url", use_above=False)
+                await _match_entry_links("experience", ("company", "title"), "url", use_above=True)
+                await _match_entry_links("education", ("school", "degree"), "links", use_above=True)
+
+                # Unambiguous-only position fallback: fill a leftover section link ONLY when
+                # there is exactly one empty entry and exactly one unused link in that
+                # section. This guarantees a link can never land on the wrong sub-section.
                 for section_key, field in (
                     ("education", "links"),
                     ("certifications", "url"),
                     ("experience", "url"),
                 ):
-                    if not parsed.get(section_key):
+                    items = [i for i in (parsed.get(section_key) or []) if isinstance(i, dict)]
+                    if not items:
+                        continue
+                    empties = [i for i in items if not _real(str(i.get(field, "") or ""))]
+                    if len(empties) != 1:
                         continue
                     section_urls = await asyncio.to_thread(
                         extract_section_annotation_links, file_path, section_key
                     )
-                    if section_urls:
-                        _assign_section_links(parsed, section_key, field, section_urls, section_used)
+                    avail = [u for u in (section_urls or []) if u and u.lower() not in section_used]
+                    if len(avail) == 1:
+                        empties[0][field] = avail[0]
+                        section_used.add(avail[0].lower())
             except Exception:
                 pass
 

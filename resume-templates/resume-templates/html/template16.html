@@ -413,7 +413,7 @@
             {% if publication.url or publication.link %}
               {% set publication_href = publication.url or publication.link %}
               {% set publication_href = publication_href if publication_href.startswith(('http://', 'https://')) else 'https://' ~ publication_href %}
-              | <a href="{{ publication_href }}" target="_blank" rel="noopener noreferrer">{{ publication.url or publication.link }}</a>
+              | <a href="{{ publication_href }}" target="_blank" rel="noopener noreferrer">{{ publication.url_label }}</a>
             {% endif %}
           {% endif %}
         </li>
