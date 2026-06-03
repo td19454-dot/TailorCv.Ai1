@@ -1052,6 +1052,40 @@ def display_link(value: str) -> str:
     return value.rstrip("/")
 
 
+# Domain -> short, human-friendly label. Used so links display "GitHub", "Kaggle",
+# "Live Demo", "Coursera", etc. instead of a generic "Link" or a giant URL.
+_LINK_LABELS = (
+    ("github.com", "GitHub"), ("gitlab.com", "GitLab"), ("bitbucket.org", "Bitbucket"),
+    ("kaggle.com", "Kaggle"), ("linkedin.com", "LinkedIn"), ("leetcode.com", "LeetCode"),
+    ("coursera.org", "Coursera"), ("udemy.com", "Udemy"), ("udacity.com", "Udacity"),
+    ("credly.com", "Credly"), ("edx.org", "edX"), ("datacamp.com", "DataCamp"),
+    ("hackerrank.com", "HackerRank"), ("codeforces.com", "Codeforces"), ("codechef.com", "CodeChef"),
+    ("drive.google.com", "Google Drive"), ("docs.google.com", "Google Docs"),
+    ("youtube.com", "YouTube"), ("youtu.be", "YouTube"), ("medium.com", "Medium"),
+    ("huggingface.co", "Hugging Face"), ("devpost.com", "Devpost"), ("notion.so", "Notion"),
+    ("scholar.google", "Google Scholar"), ("researchgate.net", "ResearchGate"),
+    ("arxiv.org", "arXiv"), ("doi.org", "DOI"), ("dev.to", "Dev.to"),
+    ("learn.microsoft.com", "Microsoft"), ("microsoft.com", "Microsoft"),
+    ("cloud.google.com", "Google Cloud"), ("aws.amazon.com", "AWS"),
+    # Hosting platforms -> these are almost always a live deployment.
+    ("vercel.app", "Live Demo"), ("netlify.app", "Live Demo"), ("onrender.com", "Live Demo"),
+    ("herokuapp.com", "Live Demo"), ("streamlit.app", "Live Demo"), ("render.com", "Live Demo"),
+    ("github.io", "Live Demo"), ("pages.dev", "Live Demo"), ("web.app", "Live Demo"),
+    ("firebaseapp.com", "Live Demo"), ("railway.app", "Live Demo"), ("fly.dev", "Live Demo"),
+)
+
+
+def smart_link_label(url: str, fallback: str = "Link") -> str:
+    """Return a short, recognizable label for a URL based on its domain."""
+    u = str(url or "").strip().lower()
+    if not u:
+        return fallback
+    for domain, label in _LINK_LABELS:
+        if domain in u:
+            return label
+    return fallback
+
+
 def _clean_resume_line(line: str) -> str:
     line = re.sub(r"\s+", " ", str(line or "")).strip()
     return line.strip("|_: ")
@@ -2176,17 +2210,17 @@ def collect_project_links(project: dict) -> list[dict]:
         href_l = str(href or "").lower()
         label_l = label.lower()
 
-        if "github.com" in href_l or "github" in label_l:
+        # Domain-based label first (GitHub, Kaggle, Live Demo, etc.) — most reliable.
+        domain_label = smart_link_label(href, fallback="")
+        if domain_label:
+            return domain_label
+        # Fall back to hints in the original label text.
+        if "github" in label_l:
             return "GitHub"
-        if any(token in label_l or token in href_l for token in ("live", "demo", "preview", "site", "website")):
+        if any(token in label_l for token in ("live", "demo", "preview", "site", "website")):
             return "Live Demo"
-        if any(token in label_l or token in href_l for token in ("link", "url", "project")):
-            return "Link"
         if _looks_like_url_label(label):
-            if "github.com" in href_l:
-                return "GitHub"
-            if href_l:
-                return "Link"
+            return "Link"
         return label or "Link"
 
     candidates = [
@@ -2409,6 +2443,7 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
             "location": str(job.get("location", "")).strip(),
             "url": normalize_url(exp_url),
             "url_display": display_link(exp_url),
+            "url_label": smart_link_label(exp_url),
             "bullets": normalize_list_of_strings(job.get("bullets", [])),
         })
 
@@ -2508,12 +2543,14 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
                     score = f"10th Marks - {class_10}%"
         if not (degree or school or score or year):
             continue
+        edu_links = str(edu.get("links", "")).strip()
         education.append({
             "degree": degree,
             "school": school,
             "year": year,
             "score": score,
-            "links": normalize_url(str(edu.get("links", "")).strip()),
+            "links": normalize_url(edu_links),
+            "links_label": smart_link_label(edu_links),
         })
 
     certifications = []
@@ -2524,11 +2561,13 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
         c_issuer = str(cert.get("issuer", "")).strip()
         if not (c_name or c_issuer):
             continue
+        cert_url = str(cert.get("url", "")).strip()
         certifications.append({
             "name": c_name,
             "issuer": c_issuer,
             "year": str(cert.get("year", "")).strip(),
-            "url": normalize_url(str(cert.get("url", "")).strip()),
+            "url": normalize_url(cert_url),
+            "url_label": smart_link_label(cert_url, fallback="Certificate"),
         })
 
     extracurriculars = []

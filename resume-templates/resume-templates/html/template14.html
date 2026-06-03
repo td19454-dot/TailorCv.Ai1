@@ -322,7 +322,7 @@
         <article class="edu-card">
           <p class="edu-school">{{ edu.school or edu.degree }}</p>
           {% if edu.degree %}<p class="edu-meta">{{ edu.degree }}{% if edu.score %}, {{ edu.score }}{% endif %}</p>{% endif %}
-          {% if edu.links %}<p class="edu-meta"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links }}</a></p>{% endif %}
+          {% if edu.links %}<p class="edu-meta"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links_label }}</a></p>{% endif %}
           {% if edu.year %}<span class="date-pill">{{ edu.year }}</span>{% endif %}
           {% if edu.location %}<p class="edu-sub">{{ edu.location }}</p>{% endif %}
         </article>
@@ -338,7 +338,7 @@
           <div class="timeline-left">
             <p class="company">{{ exp.company or exp.title }}</p>
             {% if exp.location %}<p class="location">{{ exp.location }}</p>{% endif %}
-            {% if exp.url %}<p class="location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_display or exp.url }}</a></p>{% endif %}
+            {% if exp.url %}<p class="location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_label }}</a></p>{% endif %}
             {% if exp.dates %}<span class="date-pill">{{ exp.dates }}</span>{% endif %}
           </div>
           <div>
@@ -492,7 +492,7 @@
                 {{ cert.name }}{% if cert.issuer %} - {{ cert.issuer }}{% endif %}{% if cert.year %} ({{ cert.year }}){% endif %}
                 {% if cert.url %}
                   {% set cert_href = cert.url if cert.url.startswith(('http://', 'https://')) else 'https://' ~ cert.url %}
-                  - <a href="{{ cert_href }}" target="_blank" rel="noopener noreferrer">{{ cert.url }}</a>
+                  - <a href="{{ cert_href }}" target="_blank" rel="noopener noreferrer">{{ cert.url_label }}</a>
                 {% endif %}
               </li>
               {% endfor %}
