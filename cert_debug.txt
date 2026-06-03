@@ -1,72 +1,7 @@
 === CERT NAMES (from AI) ===
-  - IBM Machine Learning Specialization Professional Certificate
-  - Deep Learning Specialization
-  - Microsoft Azure AI Fundamentals AI-900 Exam Prep Specialization
-  - Prompt Engineering for ChatGPT
-  - Machine Learning Engineering for Production (MLOps)
-  - AI Product Management
-  - Generative Adversarial Networks (GANs) Specialization
-  - IBM Generative AI Product Managers
-  - Preparing for Google Cloud Certification: Machine Learning Engineer
-  - IBM AI Product Manager
-  - AWS Cloud Solutions Architect Professional Certificate
-  - Google Project Management: Professional Certificate
-  - Practical Data Science on the AWS Cloud Specialization
-  - Machine Learning Specialization
-  - MLOps | Machine Learning Operations Specialization
-  - Google Business Intelligence Professional Certificate
-  - Advanced Machine Learning on Google Cloud Specialization
-  - Large Language Model Operations (LLMOps)
-  - Google Advanced Data Analytics Professional Certificate
 
-=== CERT SECTION LINKS (reading order) [16] ===
-  - https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~43MEYXPEG6LN/CERTIFICATE_LANDING_PAGE~43MEYXPEG6LN.jpeg
-  - https://www.coursera.org/account/accomplishments/specialization/certificate/HWZZYNBSFG32
-  - https://coursera.org/share/755dfe327c6bc8db580bff3b5811daf1
-  - https://www.coursera.org/account/accomplishments/verify/DN5WBK7R43XU
-  - https://www.coursera.org/account/accomplishments/specialization/UAD3A59SYGG6
-  - https://www.coursera.org/account/accomplishments/specialization/certificate/SGRN86P8FDD9
-  - https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~9WA5GBGD2NDF/CERTIFICATE_LANDING_PAGE~9WA5GBGD2NDF.jpeg
-  - https://www.coursera.org/account/accomplishments/professional-cert/SSSRENRGAF6K
-  - https://www.coursera.org/account/accomplishments/professional-cert/H85XMDEXYVA3
-  - https://coursera.org/share/61316053a65a5c43271fd184795c94a0
-  - https://www.coursera.org/account/accomplishments/specialization/certificate/LSNPUFS8RJ38
-  - https://coursera.org/share/0f6e8375f03ec1841b0dade1b3a379b0
-  - https://www.coursera.org/account/accomplishments/specialization/certificate/47LPSGGVSDD9
-  - https://www.coursera.org/account/accomplishments/specialization/7QSHR6SFCC39
-  - https://www.coursera.org/account/accomplishments/specialization/5QUN7BSA7ZW9
-  - https://coursera.org/verify/specialization/O68TF2FEKLWL
+=== CERT SECTION LINKS (reading order) [0] ===
 
 === FINAL cert.url PER ENTRY ===
-  - IBM Machine Learning Specialization Professional Certificate  ->  https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~43MEYXPEG6LN/CERTIFICATE_LANDING_PAGE~43MEYXPEG6LN.jpeg
-  - Deep Learning Specialization  ->  https://www.coursera.org/account/accomplishments/specialization/certificate/HWZZYNBSFG32
-  - Microsoft Azure AI Fundamentals AI-900 Exam Prep Specialization  ->  https://coursera.org/share/755dfe327c6bc8db580bff3b5811daf1
-  - Prompt Engineering for ChatGPT  ->  https://www.coursera.org/account/accomplishments/specialization/certificate/SGRN86P8FDD9
-  - Machine Learning Engineering for Production (MLOps)  ->  https://www.coursera.org/account/accomplishments/verify/DN5WBK7R43XU
-  - AI Product Management  ->  https://www.coursera.org/account/accomplishments/specialization/UAD3A59SYGG6
-  - Generative Adversarial Networks (GANs) Specialization  ->  https://www.coursera.org/account/accomplishments/professional-cert/SSSRENRGAF6K
-  - IBM Generative AI Product Managers  ->  https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~9WA5GBGD2NDF/CERTIFICATE_LANDING_PAGE~9WA5GBGD2NDF.jpeg
-  - Preparing for Google Cloud Certification: Machine Learning Engineer  ->  https://coursera.org/share/61316053a65a5c43271fd184795c94a0
-  - IBM AI Product Manager  ->  https://www.coursera.org/account/accomplishments/professional-cert/H85XMDEXYVA3
-  - AWS Cloud Solutions Architect Professional Certificate  ->  https://coursera.org/share/0f6e8375f03ec1841b0dade1b3a379b0
-  - Google Project Management: Professional Certificate  ->  https://www.coursera.org/account/accomplishments/specialization/certificate/LSNPUFS8RJ38
-  - Practical Data Science on the AWS Cloud Specialization  ->  https://www.coursera.org/account/accomplishments/specialization/certificate/47LPSGGVSDD9
-  - Machine Learning Specialization  ->  https://www.coursera.org/account/accomplishments/specialization/7QSHR6SFCC39
-  - MLOps | Machine Learning Operations Specialization  ->  https://www.coursera.org/account/accomplishments/specialization/5QUN7BSA7ZW9
-  - Google Business Intelligence Professional Certificate  ->  https://coursera.org/verify/specialization/O68TF2FEKLWL
-  - Advanced Machine Learning on Google Cloud Specialization  ->  
-  - Large Language Model Operations (LLMOps)  ->  
-  - Google Advanced Data Analytics Professional Certificate  ->  
 
-=== READING-ORDER FILL ASSIGNED [11] ===
-  - IBM Machine Learning Specialization Professional Certificate  ->  https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~43MEYXPEG6LN/CERTIFICATE_LANDING_PAGE~43MEYXPEG6LN.jpeg
-  - Deep Learning Specialization  ->  https://www.coursera.org/account/accomplishments/specialization/certificate/HWZZYNBSFG32
-  - Microsoft Azure AI Fundamentals AI-900 Exam Prep Specialization  ->  https://coursera.org/share/755dfe327c6bc8db580bff3b5811daf1
-  - Machine Learning Engineering for Production (MLOps)  ->  https://www.coursera.org/account/accomplishments/verify/DN5WBK7R43XU
-  - AI Product Management  ->  https://www.coursera.org/account/accomplishments/specialization/UAD3A59SYGG6
-  - Generative Adversarial Networks (GANs) Specialization  ->  https://www.coursera.org/account/accomplishments/professional-cert/SSSRENRGAF6K
-  - Preparing for Google Cloud Certification: Machine Learning Engineer  ->  https://coursera.org/share/61316053a65a5c43271fd184795c94a0
-  - Google Project Management: Professional Certificate  ->  https://www.coursera.org/account/accomplishments/specialization/certificate/LSNPUFS8RJ38
-  - Practical Data Science on the AWS Cloud Specialization  ->  https://www.coursera.org/account/accomplishments/specialization/certificate/47LPSGGVSDD9
-  - Machine Learning Specialization  ->  https://www.coursera.org/account/accomplishments/specialization/7QSHR6SFCC39
-  - MLOps | Machine Learning Operations Specialization  ->  https://www.coursera.org/account/accomplishments/specialization/5QUN7BSA7ZW9
+=== READING-ORDER FILL ASSIGNED [0] ===
