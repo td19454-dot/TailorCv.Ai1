@@ -1,4 +1,20 @@
 
+/* Computer Modern (Latin Modern) — the authentic LaTeX typeface. */
+@font-face { font-family: 'CMU Serif'; font-weight: normal; font-style: normal;
+    src: url('static/fonts/cmunrm.woff') format('woff'), url('/static/fonts/cmunrm.woff') format('woff'); }
+@font-face { font-family: 'CMU Serif'; font-weight: bold; font-style: normal;
+    src: url('static/fonts/cmunbx.woff') format('woff'), url('/static/fonts/cmunbx.woff') format('woff'); }
+@font-face { font-family: 'CMU Serif'; font-weight: normal; font-style: italic;
+    src: url('static/fonts/cmunti.woff') format('woff'), url('/static/fonts/cmunti.woff') format('woff'); }
+@font-face { font-family: 'CMU Serif'; font-weight: bold; font-style: italic;
+    src: url('static/fonts/cmunbi.woff') format('woff'), url('/static/fonts/cmunbi.woff') format('woff'); }
+
+/* FontAwesome — contact icons. */
+@font-face { font-family: 'FA Solid'; font-weight: 900; font-style: normal;
+    src: url('static/fonts/fa-solid-900.woff2') format('woff2'), url('/static/fonts/fa-solid-900.woff2') format('woff2'); }
+@font-face { font-family: 'FA Brand'; font-weight: 400; font-style: normal;
+    src: url('static/fonts/fa-brands-400.woff2') format('woff2'), url('/static/fonts/fa-brands-400.woff2') format('woff2'); }
+
 @page {
     size: A4;
     margin: 0.14in 0.22in 0.18in;
@@ -11,7 +27,7 @@
 }
 
 body {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: 'CMU Serif', Georgia, "Times New Roman", serif;
     font-size: var(--body-size);
     line-height: var(--body-line);
     color: #080808;
@@ -160,6 +176,17 @@ body {
     letter-spacing: -0.2px;
 }
 
+.contact-icon.fa-solid,
+.contact-icon.fa-brand {
+    font-weight: 900;
+    font-size: 10px;
+    line-height: 1;
+    vertical-align: baseline;
+}
+
+.contact-icon.fa-solid { font-family: 'FA Solid'; }
+.contact-icon.fa-brand { font-family: 'FA Brand'; font-weight: 400; }
+
 a {
     color: #111;
     text-decoration: underline;
@@ -300,7 +327,7 @@ a {
 .project-link-mark {
     display: inline-block;
     margin-left: 1px;
-    font-style: 13px;
+    font-size: 11px;
     font-weight: 600;
     color: #0c0c0c;
 }
