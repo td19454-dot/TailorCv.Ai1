@@ -187,8 +187,8 @@ body {
 .contact-icon.fa-brand { font-family: 'FA Brand'; font-weight: 400; }
 
 a {
-    color: #111;
-    text-decoration: underline;
+    color: inherit;
+    text-decoration: none;
 }
 
 .resume-section {
@@ -317,11 +317,9 @@ a {
 }
 
 .project-links a {
-    color: #030303;
-    text-decoration: underline;
-    text-underline-offset: 1px;
+    color: inherit;
+    text-decoration: none;
     font-style: italic;
-
 }
 
 .project-link-mark {
@@ -330,6 +328,21 @@ a {
     font-size: 11px;
     font-weight: 600;
     color: #0c0c0c;
+}
+
+/* LaTeX-style links: dark, no underline; separated stack/links, and a small
+   external-link arrow so labels still read as clickable. */
+.project-title-row .project-meta,
+.project-title-row .project-links {
+    margin-left: 4px;
+}
+
+.entry-right a::after,
+.bullet-list a::after {
+    content: "\2197";
+    font-size: 0.8em;
+    margin-left: 1px;
+    vertical-align: 1px;
 }
 
 .bullet-list {

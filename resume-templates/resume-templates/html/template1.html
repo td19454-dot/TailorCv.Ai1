@@ -17,13 +17,14 @@
                 {% if contact.github %}<span class="contact-item"><span class="contact-icon fa-brand">&#xf09b;</span><a href="{{ contact.github_href }}">{{ contact.github_display or contact.github }}</a></span>{% endif %}
             </div>
 
-            {% if contact.leetcode or contact.portfolio or contact.kaggle or contact.googleScholar or contact.address %}
+            {% if contact.leetcode or contact.codeforces or contact.kaggle or contact.portfolio or contact.google_scholar or contact.address %}
             <div class="contact-line secondary-contact">
                 {% if contact.leetcode %}<span class="contact-item"><span class="contact-icon fa-solid">&#xf121;</span><a href="{{ contact.leetcode_href }}">{{ contact.leetcode_display or contact.leetcode }}</a></span>{% endif %}
-                {% if contact.portfolio %}<span class="contact-item"><a href="{{ contact.portfolio_href }}">{{ contact.portfolio_display or contact.portfolio }}</a></span>{% endif %}
-                {% if contact.kaggle %}<span class="contact-item"><a href="{{ contact.kaggle_href }}">{{ contact.kaggle_display or contact.kaggle }}</a></span>{% endif %}
-                {% if contact.googleScholar %}<span class="contact-item"><a href="{{ contact.googleScholar }}">Google Scholar</a></span>{% endif %}
-                {% if contact.address %}<span class="contact-item">{{ contact.address }}</span>{% endif %}
+                {% if contact.portfolio %}<span class="contact-item"><span class="contact-icon fa-solid">&#xf0ac;</span><a href="{{ contact.portfolio_href }}">{{ contact.portfolio_display or contact.portfolio }}</a></span>{% endif %}
+                {% if contact.kaggle %}<span class="contact-item"><span class="contact-icon fa-brand">&#xf5fa;</span><a href="{{ contact.kaggle_href }}">{{ contact.kaggle_display or contact.kaggle }}</a></span>{% endif %}
+                {% if contact.codeforces %}<span class="contact-item"><span class="contact-icon fa-solid">&#xf5fc;</span><a href="{{ contact.codeforces_href }}">{{ contact.codeforces_display or contact.codeforces }}</a></span>{% endif %}
+                {% if contact.google_scholar %}<span class="contact-item"><span class="contact-icon fa-solid">&#xf19d;</span><a href="{{ contact.google_scholar_href }}">{{ contact.google_scholar_display or "Google Scholar" }}</a></span>{% endif %}
+                {% if contact.address %}<span class="contact-item"><span class="contact-icon fa-solid">&#xf3c5;</span>{{ contact.address }}</span>{% endif %}
             </div>
             {% endif %}
         </header>
