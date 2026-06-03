@@ -153,6 +153,10 @@ This guide uses career data from the [BLS Civil Engineers Occupational Outlook H
 - [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 - [DevOps Engineer Resume](https://thetailorcv.com/blog/devops-engineer-resume-2026)
 - [Embedded Systems Engineer Resume](https://thetailorcv.com/blog/embedded-systems-engineer-resume-2026)
+- [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
+- [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
+- [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
+- [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
 
 ## Conclusion
 

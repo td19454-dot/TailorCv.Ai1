@@ -10,7 +10,7 @@ slug: how-to-use-linkedin-for-job-search
 keywords: how to use LinkedIn for job search, LinkedIn job search tips 2026, LinkedIn profile optimization, LinkedIn recruiter, LinkedIn job alerts, networking on LinkedIn
 ---
 
-LinkedIn is the most important professional platform for job seekers in 2026. Over 90% of recruiters use LinkedIn to find and evaluate candidates. Having a weak LinkedIn profile while applying for jobs is like submitting a great resume but leaving your contact information blank.
+LinkedIn is the most important professional platform for job seekers in 2026. Over 90% of recruiters use LinkedIn to find and evaluate candidates. Having a weak [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) while applying for jobs is like submitting a great resume but leaving your contact information blank.
 
 ![How to Use LinkedIn](public/blog-images/how-to-use-linkedin.png)
 
@@ -92,7 +92,7 @@ LinkedIn tracks application timing. Applying within the first 24–48 hours of a
 
 ### Use the "Easy Apply" Feature Selectively
 
-Easy Apply lets you apply with your LinkedIn profile. It is fast but impersonal. Use it for roles you are moderately interested in. For roles you really want, apply on the company website with a tailored resume and cover letter.
+Easy Apply lets you apply with your LinkedIn profile. It is fast but impersonal. Use it for roles you are moderately interested in. For roles you really want, apply on the company website with a tailored resume and [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026).
 
 ### Check the "People Also Viewed" Section
 
@@ -208,6 +208,10 @@ If your profile has no activity, no photo, and no current content, it looks aban
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
 - [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 
 ## Conclusion
 

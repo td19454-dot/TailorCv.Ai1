@@ -192,6 +192,10 @@ Keep degree, institution, and date formatting consistent throughout.
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
+- [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
 
 ## Conclusion
 

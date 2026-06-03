@@ -126,7 +126,7 @@ Unfortunately, fancy resumes often fail ATS parsing.
 | Bullet points | Long paragraphs |
 | Single-column layout | Multi-column layouts |
 
-Using ATS-friendly templates from [ATS-Friendly Resume Templates](https://www.thetailorcv.com/templates) can improve resume readability and ATS parsing accuracy.
+Using [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) templates from [ATS-Friendly Resume Templates](https://www.thetailorcv.com/templates) can improve resume readability and ATS parsing accuracy.
 
 ## Writing a Weak Resume Summary
 
@@ -184,7 +184,7 @@ Your resume should naturally include those terms where relevant.
 
 ### Where to Add Keywords
 
-- Resume summary
+- [Resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - Skills section
 - Project descriptions
 - Internship experience
@@ -380,7 +380,7 @@ Before applying to any role, review this checklist.
 - Professional email address used
 - Resume limited to one page
 - Relevant certifications included
-- Action verbs used effectively
+- [Action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume) used effectively
 
 ## Pro Tips to Improve Your Resume Faster
 
@@ -545,7 +545,6 @@ Yes. ATS systems can automatically rank resumes lower if they:
 - Have parsing issues
 - Fail relevance checks
 
-
 ---
 
 ## Related Guides
@@ -558,6 +557,10 @@ Yes. ATS systems can automatically rank resumes lower if they:
 - [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
 - [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
+- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 
 ## Conclusion
 

@@ -23,7 +23,7 @@ Before addressing gaps, make sure the rest of your resume is strong. Use the [AT
 There is no universal rule, but general guidance:
 
 - **Under 3 months** — Usually not noticed or asked about. No explanation typically needed.
-- **3–6 months** — May come up. One-sentence explanation on resume or in cover letter is helpful.
+- **3–6 months** — May come up. One-sentence explanation on resume or in [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) is helpful.
 - **6–12 months** — Should be addressed proactively on resume, cover letter, or LinkedIn.
 - **Over 12 months** — Needs an honest, clear explanation with evidence of what you did during the time. Upskilling, freelancing, certifications, or caregiving context helps significantly.
 
@@ -181,6 +181,10 @@ If you have a long gap, do something during it — even a free Google certificat
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
 
 ## Conclusion
 

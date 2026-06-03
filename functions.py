@@ -359,6 +359,35 @@ def inject_links(data, links, mapped_links, pub_links=None):
                     return True
             return False
 
+        # Track every URL already assigned to a project so the same link can never
+        # bleed into a second project (the core "one project shows 4 links" bug).
+        used_urls: set[str] = set()
+        for project in projects:
+            if not isinstance(project, dict):
+                continue
+            for item in project.get("links") or []:
+                if isinstance(item, dict):
+                    u = str(item.get("url") or item.get("href") or item.get("link") or "").strip().lower()
+                    if u:
+                        used_urls.add(u)
+            for fld in ("url", "github_link"):
+                u = str(project.get(fld) or "").strip().lower()
+                if u:
+                    used_urls.add(u)
+
+        def _match_name(pname: str, key: str) -> bool:
+            if not pname or not key:
+                return False
+            if pname == key:
+                return True
+            # Containment only with a length guard, to avoid a short name matching
+            # an unrelated longer project title.
+            if key in pname and len(key) >= 5:
+                return True
+            if pname in key and len(pname) >= 5:
+                return True
+            return False
+
         for project in projects:
             if not isinstance(project, dict):
                 continue
@@ -371,40 +400,54 @@ def inject_links(data, links, mapped_links, pub_links=None):
             if isinstance(links, dict):
                 # Backward-compatible: if `links` is actually a project_link_map, handle it.
                 project_link_map = links
-                for key, url_pairs in project_link_map.items():
+                # Prefer an exact name match over a loose containment match.
+                ordered_keys = sorted(
+                    project_link_map.keys(),
+                    key=lambda key: 0 if str(key or "").strip().lower() == pname else 1,
+                )
+                for key in ordered_keys:
                     k = str(key or "").strip().lower()
-                    if not k:
+                    if not _match_name(pname, k):
                         continue
-                    if pname == k or pname in k or k in pname:
-                        for label, url in url_pairs:
-                            project.setdefault("links", []).append(
-                                {"label": str(label or "Link").strip(), "url": url}
-                            )
+                    for label, url in project_link_map[key]:
+                        u = str(url or "").strip()
+                        if not u or u.lower() in used_urls:
+                            continue  # never reuse a URL already shown elsewhere
+                        project.setdefault("links", []).append(
+                            {"label": str(label or "Link").strip(), "url": u}
+                        )
+                        used_urls.add(u.lower())
                         injected = True
+                    if injected:
                         break
 
-            # If name-based injection didn't happen, do nothing (safer than wrong links).
+            # If name-based injection didn't cover this project, fall back to the
+            # text-based "Name ↗ / url" pairs (runs even when a name-map exists, so
+            # projects the map missed are still covered). Global dedup prevents reuse.
             if not injected:
-                # Only inject sequentially when no name-map is provided.
-                if not isinstance(links, dict):
-                    # Prefer label-specific mapped links (typically coming from "Live Demo ↗" style lines).
-                    # (order-based fallback - used only when name-map isn't available)
-                    if mapped_links:
-                        label, url = mapped_links[0]
-                        project.setdefault("links", []).append(
-                            {"label": str(label or "Link").strip(), "url": url}
-                        )
-                        # Consume first mapping so next project doesn't get same link repeatedly
-                        mapped_links = mapped_links[1:]
+                while mapped_links and not injected:
+                    label, url = mapped_links[0]
+                    mapped_links = mapped_links[1:]
+                    u = str(url or "").strip()
+                    if not u or u.lower() in used_urls:
+                        continue
+                    project.setdefault("links", []).append(
+                        {"label": str(label or "Link").strip(), "url": u}
+                    )
+                    used_urls.add(u.lower())
+                    injected = True
 
-                    # If still empty and there are extracted URLs, use next one.
-                    elif links:
-                        # `links` might be a list[str] of URLs
-                        if isinstance(links, list) and links:
-                            url = links[0]
-                            mapped_links = mapped_links
-                            project.setdefault("links", []).append({"label": "Project Link", "url": url})
-                            links = links[1:]
+                # Last resort: a plain list of extracted project URLs (only when no
+                # name-map was provided, i.e. `links` is itself the URL list).
+                if not injected and isinstance(links, list):
+                    while links and not injected:
+                        url = str(links[0] or "").strip()
+                        links = links[1:]
+                        if not url or url.lower() in used_urls:
+                            continue
+                        project.setdefault("links", []).append({"label": "Project Link", "url": url})
+                        used_urls.add(url.lower())
+                        injected = True
 
     # Handle Publications
     publications = data.get("publications")
@@ -554,6 +597,7 @@ Follow this EXACT schema
       "company": "",
       "dates": "",
       "location": "",
+      "url": "",
       "bullets": []
     }}
   ],

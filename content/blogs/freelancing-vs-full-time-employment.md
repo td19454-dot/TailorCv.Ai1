@@ -170,6 +170,10 @@ This hybrid approach is increasingly viable in 2026 with remote work normalizing
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
+- [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 
 ## Conclusion
 

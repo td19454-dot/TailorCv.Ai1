@@ -266,6 +266,7 @@
               <p class="entry-title">{{ exp.title or exp.company }}</p>
               {% if exp.company %}<p class="entry-company">{{ exp.company }}</p>{% endif %}
               {% if exp.location %}<p class="entry-location">{{ exp.location }}</p>{% endif %}
+              {% if exp.url %}<p class="entry-location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_display or exp.url }}</a></p>{% endif %}
             </div>
             {% if exp.bullets %}
             <ul class="bullets">
@@ -289,6 +290,7 @@
               <p class="entry-title">{{ edu.degree or edu.school }}</p>
               {% if edu.school %}<p class="entry-company">{{ edu.school }}</p>{% endif %}
               {% if edu.score %}<p class="entry-location">{{ edu.score }}</p>{% endif %}
+              {% if edu.links %}<p class="entry-location"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links }}</a></p>{% endif %}
             </div>
           </article>
           {% endfor %}
@@ -438,7 +440,7 @@
           <h2>Certifications</h2>
           <ul class="side-list">
             {% for cert in certifications %}
-            <li>{{ cert.name }}{% if cert.year %} ({{ cert.year }}){% endif %}</li>
+            <li>{{ cert.name }}{% if cert.year %} ({{ cert.year }}){% endif %}{% if cert.url %} | <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.url }}</a>{% endif %}</li>
             {% endfor %}
           </ul>
         </section>

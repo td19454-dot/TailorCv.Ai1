@@ -167,6 +167,10 @@ If you have real achievements, they demonstrate soft skills automatically. You r
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [MBA Resume](https://thetailorcv.com/blog/mba-resume-2026)
 
 ## Conclusion
 

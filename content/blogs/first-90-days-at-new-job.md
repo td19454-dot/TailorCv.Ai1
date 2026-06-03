@@ -156,6 +156,10 @@ Document your wins from day one. When promotion or raise time comes, you will ne
 - [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
 - [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
+- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
+- [How to Write a Two Weeks Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
+- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
 
 ## Conclusion
 

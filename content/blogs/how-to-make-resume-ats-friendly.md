@@ -24,7 +24,7 @@ When you submit your resume, the ATS:
 
 1. Parses the document, extracting text into structured fields (name, contact, experience, skills, education)
 2. Stores this data in a database
-3. Matches your resume keywords against the job description requirements
+3. Matches your [resume keywords](https://thetailorcv.com/blog/resume-keywords-guide) against the job description requirements
 4. Ranks or scores applicants based on keyword match and other criteria
 5. Surfaces top matches to recruiters
 
@@ -157,6 +157,10 @@ A skills infographic looks great but is invisible to the ATS. Everything importa
 - [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
+- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 
 ## Conclusion
 

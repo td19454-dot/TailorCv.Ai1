@@ -156,6 +156,10 @@ This guide uses career data from the [BLS Human Resources Managers Occupational 
 - [Social Media Manager Resume](https://thetailorcv.com/blog/social-media-manager-resume-2026)
 - [Supply Chain Manager Resume](https://thetailorcv.com/blog/supply-chain-manager-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
+- [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
+- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
+- [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 
 ## Conclusion
 

@@ -196,6 +196,10 @@ Even technically strong students fail HR and GD rounds due to communication. Pra
 - [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
+- [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+- [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
+- [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
+- [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
 
 ## Conclusion
 

@@ -117,7 +117,7 @@ Examples:
 
 ATS systems often struggle to parse these correctly.
 
-Instead, use clean ATS-friendly templates like the ones available at:  
+Instead, use clean [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) templates like the ones available at:  
 [ATS-Friendly Resume Templates](https://www.thetailorcv.com/templates)
 
 These are designed specifically to improve ATS readability.
@@ -624,6 +624,10 @@ Confidence improves with repetition.
 - [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
 - [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
 - [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
+- [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
+- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
+- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
 
 ## Conclusion
 

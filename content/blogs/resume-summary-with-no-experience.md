@@ -10,7 +10,7 @@ slug: resume-summary-with-no-experience
 keywords: resume summary with no experience, resume summary for freshers, resume objective vs summary, how to write resume summary, resume summary examples 2026
 ---
 
-The resume summary is the first thing a recruiter reads.
+The [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) is the first thing a recruiter reads.
 Most freshers either leave it blank or write something generic that kills their chances.
 This is the section that decides whether the recruiter reads further.
 In this post you will learn exactly how to write a resume summary with no experience.
@@ -78,7 +78,7 @@ This formula makes your resume summary direct and easy to customize.
 
 - Seeking [target role] to [value you bring]
   - Tie your goal to what the company needs
-  - Focus on measurable value, even if it is soft skills based
+  - Focus on measurable value, even if it is [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) based
 
 #### Pro Tip
 Even internships, college projects, or freelance work counts as experience.
@@ -145,7 +145,7 @@ When you have zero experience, your summary should still show momentum.
 Use concrete examples from academics and personal work.
 Show that you can learn fast and contribute quickly.
 
-If you want a quick ATS-friendly resume check, [Check Your ATS Score](/solutions).
+If you want a quick [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) resume check, [Check Your ATS Score](/solutions).
 
 ---
 
@@ -250,6 +250,10 @@ Show the value you bring instead of generic buzzwords.
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
 - [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [Resume Mistakes Every Fresher Makes (And How to Fix Them](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
+- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 
 ## Conclusion
 

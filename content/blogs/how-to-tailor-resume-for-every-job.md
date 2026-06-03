@@ -417,6 +417,10 @@ But tools save time and improve keyword coverage.
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [Career Change Resume](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
+- [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 
 ## Conclusion
 

@@ -87,7 +87,7 @@ When interviewing with executives:
 
 Final rounds heavily weigh culture and values fit:
 - Show genuine alignment with the company's values (which you researched)
-- Demonstrate the soft skills that matter: collaboration, communication, adaptability
+- Demonstrate the [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) that matter: collaboration, communication, adaptability
 - Be authentic — forced fit is detectable
 - Show enthusiasm for the team and mission
 
@@ -171,6 +171,10 @@ Generic questions at the final round signal weak engagement. Ask strategic, seni
 - [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [How to Practice Mock Interviews Online for Free Using AI](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai)
+- [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
+- [System Design Interview Guide](https://thetailorcv.com/blog/system-design-interview-guide)
 
 ## Conclusion
 

@@ -490,3 +490,8 @@ Computer Science is not dying.
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [Data Analyst vs Data Scientist](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
 - [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
+

@@ -43,7 +43,7 @@ AI can help you remember and articulate accomplishments by asking you questions 
 
 ### 5. Generating Summaries
 
-AI can draft a resume summary from your experience that you then refine and verify.
+AI can draft a [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) from your experience that you then refine and verify.
 
 ---
 
@@ -80,7 +80,7 @@ Write down your real experience, accomplishments, and numbers — even roughly. 
 ### Step 2: Use AI to Refine, Not Generate
 
 Feed your real bullets to AI with a prompt like:
-"Improve these resume bullets for clarity and impact. Keep all facts and numbers exactly as I provided. Use strong action verbs. Do not invent any details."
+"Improve these resume bullets for clarity and impact. Keep all facts and numbers exactly as I provided. Use strong [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume). Do not invent any details."
 
 ### Step 3: Tailor to the Job Description
 
@@ -153,6 +153,10 @@ AI is a tool. Use it to communicate your real value more effectively — not to 
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
 
 ## Conclusion
 

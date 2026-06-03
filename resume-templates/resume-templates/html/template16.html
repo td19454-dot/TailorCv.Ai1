@@ -291,6 +291,7 @@
         <div class="entry-subline">
           <p class="entry-org">{% if show_company_line %}{{ exp.company }}{% endif %}</p>
           {% if exp.location %}<p class="entry-location">{{ exp.location }}</p>{% endif %}
+          {% if exp.url %}<p class="entry-location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_display or exp.url }}</a></p>{% endif %}
         </div>
         {% endif %}
         {% if exp.bullets %}
@@ -316,6 +317,7 @@
         </div>
         <div class="entry-subline">
           <p class="entry-org">{{ edu.school or edu.degree }}{% if edu.score %} | {{ edu.score }}{% endif %}</p>
+          {% if edu.links %}<p class="entry-org"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links }}</a></p>{% endif %}
           {% if edu.location %}<p class="entry-location">{{ edu.location }}</p>{% endif %}
         </div>
       </article>

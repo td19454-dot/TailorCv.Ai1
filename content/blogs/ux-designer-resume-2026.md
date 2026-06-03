@@ -174,6 +174,10 @@ In product design roles, thinking process and business impact matter as much as 
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
+- [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
+- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
+- [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
+- [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
 
 ## Conclusion
 

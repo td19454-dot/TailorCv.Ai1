@@ -172,6 +172,10 @@ Senior backend roles expect tested code. Add a line about unit tests, integratio
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
 - [Data Scientist Resume](https://thetailorcv.com/blog/data-scientist-resume-2026)
 - [Flutter Developer Resume](https://thetailorcv.com/blog/flutter-developer-resume-2026)
+- [Frontend Developer Resume](https://thetailorcv.com/blog/frontend-developer-resume-2026)
+- [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
+- [iOS Developer Resume](https://thetailorcv.com/blog/ios-developer-resume-2026)
+- [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
 
 ## Conclusion
 

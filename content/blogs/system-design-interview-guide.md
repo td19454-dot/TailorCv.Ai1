@@ -190,6 +190,10 @@ Always discuss what breaks at scale and how you would handle single points of fa
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
 - [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
+- [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+- [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
+- [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
+- [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
 
 ## Conclusion
 

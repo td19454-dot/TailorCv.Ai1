@@ -158,7 +158,7 @@ Project scheduling, stakeholder communication, task tracking, risk documentation
 
 ### Avoid Generic Skill Lists
 
-Do not rely only on soft skills like teamwork, creativity, and hard work. Include concrete skills, tools, and methods from the job description.
+Do not rely only on [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) like teamwork, creativity, and hard work. Include concrete skills, tools, and methods from the job description.
 
 ## Rewrite Experience Bullets for Relevance
 
@@ -230,7 +230,7 @@ Projects can improve ATS alignment because they allow you to include target-fiel
 
 ## Address the Career Change in Your Cover Letter
 
-Your cover letter should explain the move directly and positively. Do not spend half the letter apologizing for not having the traditional background.
+Your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) should explain the move directly and positively. Do not spend half the letter apologizing for not having the traditional background.
 
 ### Simple Cover Letter Structure
 
@@ -296,3 +296,8 @@ Your career path does not have to be perfectly linear to be valuable. It just ha
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [ATS Score Guide for](https://thetailorcv.com/blog/ats-score-guide)
+- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
+

@@ -29,7 +29,7 @@ Modern hiring is driven by ATS software, resume screening tools, keyword matchin
 
 That means sending the same generic resume to 100 jobs is no longer effective.
 
-If you want more interviews, you need to tailor your resume to job descriptions, optimize resume keywords, and improve ATS score for every application.
+If you want more interviews, you need to tailor your resume to job descriptions, optimize [resume keywords](https://thetailorcv.com/blog/resume-keywords-guide), and improve ATS score for every application.
 
 The good news?
 
@@ -107,7 +107,7 @@ These systems use resume parsers to analyze resumes section by section.
 - Industry keywords
 - Certifications
 - Technical skills
-- Action verbs
+- [Action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 
 ### ATS Systems Penalize
 
@@ -442,7 +442,7 @@ If you want more interviews, you should:
 - Optimize ATS keywords
 - Match job descriptions carefully
 - Improve ATS score
-- Use ATS-friendly formatting
+- Use [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) formatting
 - Focus on relevance
 
 Even small resume changes can dramatically improve your results.
@@ -591,3 +591,8 @@ You can quickly optimize resume keywords using [TailorCV.ai](https://www.thetail
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 - [15 Best Free Online Certificates That Actually Look Good on a Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
+- [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [Career Change Resume](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
+- [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
+- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+

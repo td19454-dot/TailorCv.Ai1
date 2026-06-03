@@ -217,6 +217,10 @@ This guide draws on hiring context from [Google Product Manager role requirement
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
 - [Operations Manager Resume](https://thetailorcv.com/blog/operations-manager-resume-2026)
 - [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
+- [Social Media Manager Resume](https://thetailorcv.com/blog/social-media-manager-resume-2026)
+- [Supply Chain Manager Resume](https://thetailorcv.com/blog/supply-chain-manager-resume-2026)
+- [Teacher Resume](https://thetailorcv.com/blog/teacher-resume-2026)
+- [UX Designer Resume](https://thetailorcv.com/blog/ux-designer-resume-2026)
 
 ## Conclusion
 

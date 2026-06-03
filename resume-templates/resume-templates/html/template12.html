@@ -256,6 +256,7 @@
             <p class="entry-title">{{ exp.company }}</p>
             {% if exp.title %}<p class="entry-role">{{ exp.title }}</p>{% endif %}
             {% if exp.location %}<p class="entry-location">{{ exp.location }}</p>{% endif %}
+            {% if exp.url %}<p class="entry-location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_display or exp.url }}</a></p>{% endif %}
           </div>
           {% if exp.dates %}<div class="entry-meta">{{ exp.dates }}</div>{% endif %}
         </div>

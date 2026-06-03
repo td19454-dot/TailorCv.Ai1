@@ -149,6 +149,10 @@ Lean, Six Sigma, and S&OP experience are valued. Include them if you have them.
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
+- [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
+- [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
+- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 
 ## Conclusion
 

@@ -54,7 +54,7 @@ What to do:
 
 ### Technical Round Rejection
 
-You completed a coding test, technical interview, or case study and did not advance.
+You completed a coding test, [technical interview](https://thetailorcv.com/blog/technical-interview-preparation-guide), or case study and did not advance.
 
 What it likely means:
 - DSA gaps — unfamiliar problem patterns
@@ -180,6 +180,10 @@ If you are consistently failing technical rounds, the answer is not just to appl
 - [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Work-Life Balance Tips for Professionals](https://thetailorcv.com/blog/work-life-balance-tips)
+- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 
 ## Conclusion
 

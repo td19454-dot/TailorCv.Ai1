@@ -171,6 +171,10 @@ Memorized solutions break when the problem varies slightly. Understand the under
 - [System Design Interview Guide](https://thetailorcv.com/blog/system-design-interview-guide)
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
+- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
+- [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
+- [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+- [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
 
 ## Conclusion
 
