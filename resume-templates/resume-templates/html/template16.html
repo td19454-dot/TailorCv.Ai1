@@ -291,7 +291,7 @@
         <div class="entry-subline">
           <p class="entry-org">{% if show_company_line %}{{ exp.company }}{% endif %}</p>
           {% if exp.location %}<p class="entry-location">{{ exp.location }}</p>{% endif %}
-          {% if exp.url %}<p class="entry-location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_display or exp.url }}</a></p>{% endif %}
+          {% if exp.url %}<p class="entry-location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_label }}</a></p>{% endif %}
         </div>
         {% endif %}
         {% if exp.bullets %}
@@ -317,7 +317,7 @@
         </div>
         <div class="entry-subline">
           <p class="entry-org">{{ edu.school or edu.degree }}{% if edu.score %} | {{ edu.score }}{% endif %}</p>
-          {% if edu.links %}<p class="entry-org"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links }}</a></p>{% endif %}
+          {% if edu.links %}<p class="entry-org"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links_label }}</a></p>{% endif %}
           {% if edu.location %}<p class="entry-location">{{ edu.location }}</p>{% endif %}
         </div>
       </article>
@@ -451,7 +451,7 @@
             {{ cert.name or cert.title }}{% if cert.issuer %} - {{ cert.issuer }}{% endif %}{% if cert.year %} ({{ cert.year }}){% endif %}
             {% if cert.url %}
               {% set cert_href = cert.url if cert.url.startswith(('http://', 'https://')) else 'https://' ~ cert.url %}
-              | <a href="{{ cert_href }}" target="_blank" rel="noopener noreferrer">{{ cert.url }}</a>
+              | <a href="{{ cert_href }}" target="_blank" rel="noopener noreferrer">{{ cert.url_label }}</a>
             {% endif %}
           {% endif %}
         </li>

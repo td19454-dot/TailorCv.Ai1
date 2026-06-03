@@ -327,7 +327,7 @@
                 <p class="entry-title">{{ exp.company }}</p>
                 {% if exp.title %}<p class="entry-subtitle">{{ exp.title }}</p>{% endif %}
                 {% if exp.location %}<p class="entry-location">{{ exp.location }}</p>{% endif %}
-                {% if exp.url %}<p class="entry-location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_display or exp.url }}</a></p>{% endif %}
+                {% if exp.url %}<p class="entry-location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_label }}</a></p>{% endif %}
               </div>
               {% if exp.dates %}<div class="entry-meta">{{ exp.dates }}</div>{% endif %}
             </div>
@@ -357,7 +357,7 @@
               {% if edu.year %}<div class="entry-meta">{{ edu.year }}</div>{% endif %}
             </div>
             {% if edu.score %}<p class="stack">{{ edu.score }}</p>{% endif %}
-            {% if edu.links %}<p class="stack"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links }}</a></p>{% endif %}
+            {% if edu.links %}<p class="stack"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links_label }}</a></p>{% endif %}
           </article>
           {% endfor %}
         </section>
@@ -508,7 +508,7 @@
               {{ cert.name }}
               {% if cert.issuer %}<span class="muted">{{ cert.issuer }}</span>{% endif %}
               {% if cert.year %}<span class="muted">{{ cert.year }}</span>{% endif %}
-              {% if cert.url %}<a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.url }}</a>{% endif %}
+              {% if cert.url %}<a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.url_label }}</a>{% endif %}
             </li>
             {% endfor %}
           </ul>
