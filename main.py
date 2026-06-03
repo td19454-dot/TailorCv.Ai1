@@ -794,19 +794,6 @@ def extract_named_item_links_from_pdf(pdf_path: str, names: list[str], section: 
     norm_to_name = {_normalize_key(n): n for n in names}
     norm_names = sorted((k for k in norm_to_name if k), key=len, reverse=True)
 
-    def best_match(text: str) -> str | None:
-        k = _normalize_key(text)
-        if not k:
-            return None
-        for nn in norm_names:
-            if len(nn) < 4:
-                continue
-            if nn in k:
-                return norm_to_name[nn]
-            if k in nn and len(k) >= max(5, int(0.6 * len(nn))):
-                return norm_to_name[nn]
-        return None
-
     # Word boxes per page.
     words_by_page: dict[int, list[dict]] = {}
     try:
@@ -826,7 +813,10 @@ def extract_named_item_links_from_pdf(pdf_path: str, names: list[str], section: 
     except Exception:
         return {}
 
-    result: dict[str, str] = {}
+    # Collect every (uri, text-under-link) pair first, then resolve with 1:1 best-score
+    # matching so similar names (e.g. many "... Machine Learning Specialization" certs)
+    # don't collide and steal each other's links.
+    link_texts: list[tuple[str, str]] = []  # (uri, normalized text under the link)
     seen_uris: set[str] = set()
     try:
         reader = PdfReader(pdf_path)
@@ -879,14 +869,39 @@ def extract_named_item_links_from_pdf(pdf_path: str, names: list[str], section: 
                     row.sort(key=lambda w: abs(w["x0"] - r_xa))
                     seg = row[:10]
                 seg.sort(key=lambda w: (w["top"], w["x0"]))
-                text = " ".join(w["text"] for w in seg)
-                matched = best_match(text)
-                if not matched:
+                text_norm = _normalize_key(" ".join(w["text"] for w in seg))
+                if not text_norm:
                     continue
                 seen_uris.add(uri)
-                result.setdefault(matched, uri)  # first link per item wins
+                link_texts.append((uri, text_norm))
     except Exception:
-        return result
+        pass
+
+    # Score every (link, name) pair; higher score = stronger, more specific match.
+    pairs = []  # (score, uri, original_name)
+    for uri, tnorm in link_texts:
+        for nnorm in norm_names:
+            if len(nnorm) < 4:
+                continue
+            if nnorm in tnorm:
+                score = len(nnorm)                      # full name sits under the link (best)
+            elif tnorm in nnorm and len(tnorm) >= max(5, int(0.6 * len(nnorm))):
+                score = len(tnorm)                      # link covers most of the name
+            else:
+                continue
+            pairs.append((score, uri, norm_to_name[nnorm]))
+    pairs.sort(key=lambda p: p[0], reverse=True)
+
+    # Greedy 1:1 assignment: each link to one name, each name to one link.
+    result: dict[str, str] = {}
+    used_uri: set[str] = set()
+    used_name: set[str] = set()
+    for _score, uri, name in pairs:
+        if uri in used_uri or name in used_name:
+            continue
+        result[name] = uri
+        used_uri.add(uri)
+        used_name.add(name)
     return result
 
 
