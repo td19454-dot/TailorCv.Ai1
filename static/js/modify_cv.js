@@ -439,8 +439,37 @@
         templates = data.templates || [];
     }
 
-async function updatePreview() {
+    // Scale the iframe to fit the scaler container as a miniature A4 model.
+    function applyPreviewScale() {
+        const scaler = document.getElementById("preview-frame-scaler");
         const frame = document.getElementById("template-preview-frame");
+        if (!scaler || !frame) return;
+
+        const A4_WIDTH = 794;
+        const availableWidth = scaler.clientWidth;
+        if (availableWidth <= 0) return;
+
+        const scale = availableWidth / A4_WIDTH;
+
+        // Measure actual content height; fall back to A4 aspect ratio.
+        let contentHeight = Math.round(A4_WIDTH * 1.4142);
+        try {
+            const doc = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
+            if (doc && doc.documentElement) {
+                const h = doc.documentElement.scrollHeight;
+                if (h > 100) contentHeight = h;
+            }
+        } catch (_) {}
+
+        frame.style.width = A4_WIDTH + "px";
+        frame.style.height = contentHeight + "px";
+        frame.style.transform = "scale(" + scale + ")";
+        scaler.style.height = Math.ceil(contentHeight * scale) + "px";
+    }
+
+    async function updatePreview() {
+        const frame = document.getElementById("template-preview-frame");
+        const scaler = document.getElementById("preview-frame-scaler");
         const emptyState = document.getElementById("preview-empty-state");
         if (!frame || !emptyState || !selectedTemplate) {
             return;
@@ -457,7 +486,14 @@ async function updatePreview() {
             const data = await response.json();
             frame.srcdoc = data.html || "";
             frame.style.display = "block";
+            if (scaler) scaler.style.display = "block";
             emptyState.style.display = "none";
+            // Scale once the iframe content has rendered.
+            frame.onload = () => {
+                applyPreviewScale();
+                // Re-measure after fonts/images settle.
+                setTimeout(applyPreviewScale, 400);
+            };
         } catch (error) {
             console.error("Preview rendering failed", error);
         }
@@ -474,6 +510,7 @@ async function updatePreview() {
 
     let debouncedPreview = debounce(updatePreview, 300);
     let debouncedPersistDraft = debounce(persistDraft, 500);
+    window.addEventListener("resize", debounce(applyPreviewScale, 120));
 
     function bindInteractions() {
         document.querySelectorAll("[data-scroll-to]").forEach((button) => {
