@@ -405,9 +405,22 @@
     </section>
     {% endif %}
 
-    {% if awards or publications or extracurriculars %}
+    {% if awards or publications or extracurriculars or certifications %}
     <section class="section">
       <div class="dense-grid">
+        {% if certifications %}
+        <div>
+          <h2>Certifications</h2>
+          <ul class="mini-list">
+            {% for cert in certifications %}
+            <li>
+              {{ cert.name }}{% if cert.issuer %} - {{ cert.issuer }}{% endif %}{% if cert.year %} ({{ cert.year }}){% endif %}{% if cert.url %} - <a href="{{ cert.url if cert.url.startswith(('http://', 'https://')) else 'https://' ~ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.url_label }}</a>{% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
         {% if awards %}
         <div>
           <h2>Awards</h2>

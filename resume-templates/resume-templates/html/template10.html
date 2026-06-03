@@ -573,6 +573,25 @@
       </section>
       {% endif %}
 
+      {% if certifications %}
+      <section class="section publications-section">
+        <h2>Certifications</h2>
+        <ul class="activity-list">
+          {% for cert in certifications %}
+          <li>
+            <div class="entry-head">
+              <div>
+                <p class="activity-title">{{ cert.name }}{% if cert.url %} <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.url_label }}</a>{% endif %}</p>
+                {% if cert.issuer %}<p class="activity-meta">{{ cert.issuer }}</p>{% endif %}
+              </div>
+              {% if cert.year %}<div class="entry-meta">{{ cert.year }}</div>{% endif %}
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
       {% if publications %}
       <section class="section publications-section">
         <h2>Publications</h2>
