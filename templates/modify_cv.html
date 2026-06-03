@@ -8,7 +8,7 @@
     <title>Resume Builder - theTailorCV</title>
     {% include "_seo_head.html" %}
 <link rel="stylesheet" href="/static/header-footer.css">
-    <link rel="stylesheet" href="/static/modify_cv.css?v=20">
+    <link rel="stylesheet" href="/static/modify_cv.css?v=21">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -138,7 +138,9 @@
                     <h3 class="preview-title">Live Preview</h3>
                     <p class="preview-subtitle">Select a template to preview with your current resume data.</p>
                     <div id="preview-empty-state" class="preview-empty">Choose a template to start previewing.</div>
-                    <iframe id="template-preview-frame" class="template-preview-frame" title="Resume Template Preview"></iframe>
+                    <div class="preview-frame-scaler" id="preview-frame-scaler">
+                        <iframe id="template-preview-frame" class="template-preview-frame" title="Resume Template Preview"></iframe>
+                    </div>
                 </aside>
             </div>
         </div>

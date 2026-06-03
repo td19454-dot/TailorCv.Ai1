@@ -53,12 +53,6 @@ header.navbar {
         z-index: auto !important;
     }
 
-    .template-preview-frame {
-        flex: none;
-        height: 60vh;
-        min-height: 360px;
-    }
-
     .modify-cv-title {
         font-size: 1.45rem;
         line-height: 1.25;
@@ -76,11 +70,6 @@ header.navbar {
     .modify-cv-actions .btn {
         width: 100%;
         min-height: 46px;
-    }
-
-    .template-preview-frame {
-        height: 60vh;
-        min-height: 360px;
     }
 }
 
@@ -1075,13 +1064,25 @@ header.navbar {
     margin-bottom: 0.8rem;
 }
 
-.template-preview-frame {
+.preview-frame-scaler {
     width: 100%;
     flex: 1;
-    min-height: 300px;
-    border-radius: 10px;
-    border: none;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
     background: white;
+}
+
+.template-preview-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* A4 at 96 dpi — JS will scale this down to fit the panel */
+    width: 794px;
+    height: 1123px;
+    transform-origin: top left;
+    border: none;
+    display: block;
 }
 
 .preview-empty {
@@ -1293,13 +1294,7 @@ header.navbar {
 }
 
 .template-preview-frame {
-    width: 100%;
-    height: calc(100vh - 220px);
-    min-height: 700px;
-    max-height: 1100px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 12px;
-    background: #ffffff;
+    /* Dimensions + transform managed by applyPreviewScale() in JS */
     display: none;
 }
 
@@ -1428,9 +1423,6 @@ header.navbar {
         right: 0.5rem;
         width: min(480px, calc(100vw - 220px));
     }
-    .template-preview-frame {
-        min-height: 300px;
-    }
 }
 
 @media (max-width: 860px) {
@@ -1453,11 +1445,6 @@ header.navbar {
         max-height: none;
         overflow-y: visible;
         z-index: auto;
-    }
-    .template-preview-frame {
-        flex: none;
-        height: 60vh;
-        min-height: 360px;
     }
     .section-row {
         grid-template-columns: 1fr;
