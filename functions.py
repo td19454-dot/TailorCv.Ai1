@@ -486,8 +486,6 @@ IMPORTANT:
 You are NOT formatting a resume.
 You are ONLY returning structured content.
 You must preserve factual details already present in the resume such as dates, CGPA/SGPA, percentages, marks, locations, and links.
-Do not remove or rewrite those details unless the resume itself clearly contains an error.
-For every section, prefer copying factual values from the original resume verbatim and only improve wording around them.
 
 ### OUTPUT RULES (MANDATORY)
 - Output **ONLY valid JSON**
@@ -495,28 +493,28 @@ For every section, prefer copying factual values from the original resume verbat
 
 Guidelines to Follow:
 1)Keyword and Skill Optimization:
-Rule01:If a tool, framework or skill doesn't match the ones mentioned in the Job description but a similar skill is mentioned, replace the tool/skill/framework with that keyword to match the JD. For example, if Tableau is mentioned but the requirement asks for PowerBI, add PowerBI to skills. Be ethical, don't replace if it is not logical or closely related.
+Rule01: Maximize Job Description keyword coverage. Add all relevant skills, tools, frameworks, technologies, and methodologies required in the JD to the resume's skill section. If a related skill already exists, keep it and add the JD keyword instead of replacing it. Integrate keywords naturally across Skills, Projects, Experience, and Summary sections. Do not fabricate experience, expertise, or accomplishments.
 
 Analyze the job description and identify relevant keywords (hard and soft skills).
 Match as much as possible of the job description’s keywords following the rule above to align with applicant tracking systems (ATS).
 Prioritize industry-relevant hard skills and soft skills in dedicated sections and throughout bullet points.
 
-Incorporate Measurable Metrics:
+Rule 2:Incorporate Measurable Metrics:
 Quantify achievements using the XYZ formula if the user has put such quantifications but not formatted it if user has not put anything quantifyable don't do it: Accomplished X, measured by Y, by doing Z.
 
-Include as many  measurable results as possible to clearly demonstrate impact.
+Use existing metrics whenever available. Do not create, estimate, infer, or invent numerical results, percentages, revenue impact, time savings, rankings, or performance improvements.
 Don't use vague statements; use metrics to highlight value and effectiveness.
 
 
 Content Quality and Language:
 Eliminate buzzwords, clichés, and pronouns (e.g., “I,” “me,” “my”).
 Use action-oriented, impactful language to emphasize accomplishments over duties.
+
 Replace generic phrases with specific examples that showcase expertise and success.
 Focus on selling professional experience, skills, and results, not merely summarizing past roles.
 
 Additional Instructions:
 Keyword Optimize and be specific for each section (Professional Summary, Experience, Skills, Education) to reflect relevance to the job.
-Ensure consistent formatting, professional fonts
 Use concise bullet points, each starting with a strong action verb.
 Preserve all existing links from the resume exactly when they exist. Do not remove project, GitHub, LinkedIn, portfolio, or other URLs.
 If a project has a GitHub/repository/demo/live link in the original resume, keep it in the output using `github_link`, `url`, or `links`.
@@ -628,7 +626,7 @@ Job Description:
     stop=stop_after_attempt(5),
     wait=wait_exponential(multiplier=1, min=4, max=60)
 )
-async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0.1) -> str:
+async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0) -> str:
     """
     Async OpenAI call for resume optimization with retries.
     """
