@@ -317,7 +317,12 @@ hr, .divider, [class*="divider"],
             applyAccentColor(doc, currentAccentColor);
         }
 
-        const availableWidth = previewWrap ? Math.max(320, previewWrap.clientWidth - 32) : 760;
+        const isMobile       = window.innerWidth <= 900;
+        /* On mobile, use the full container width so the resume fills edge-to-edge.
+           On desktop, subtract 32 px to leave a comfortable gutter. */
+        const availableWidth = previewWrap
+            ? Math.max(320, previewWrap.clientWidth - (isMobile ? 0 : 32))
+            : 760;
         const viewScale      = Math.min(1, availableWidth / A4_WIDTH_PX);
 
         frame.style.width  = `${A4_WIDTH_PX}px`;
@@ -390,7 +395,18 @@ body {
 
         if (previewWrap) {
             const visibleH = Math.ceil((contentHeightPx + PAGE_GAP_PX * (estimatedPages + 1)) * viewScale);
-            frame.parentElement.style.minHeight = `${visibleH + 32}px`;
+            if (isMobile) {
+                /* On mobile the iframe is scaled via transform; its layout dimensions stay
+                   at A4 size. Pin the wrapper to the exact visual height so no grey gap
+                   appears below the resume. */
+                previewWrap.style.height    = `${visibleH}px`;
+                previewWrap.style.minHeight = 'unset';
+                previewWrap.style.overflow  = 'hidden';
+            } else {
+                previewWrap.style.height    = '';
+                previewWrap.style.minHeight = `${visibleH + 32}px`;
+                previewWrap.style.overflow  = '';
+            }
             previewWrap.style.background = "#525659";
         }
 
