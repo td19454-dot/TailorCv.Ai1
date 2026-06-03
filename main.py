@@ -33,6 +33,7 @@ from functions import (
     get_resume_response,
     extract_links,
     inject_links,
+    inject_jd_hard_skills,
     map_demo_links,
     extract_project_links,
     extract_publication_links,
@@ -3109,6 +3110,7 @@ async def upload_resume(
                 effective_map = project_link_map
 
             parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
+            parsed = inject_jd_hard_skills(parsed, jd_string)
 
             use_default_template = template_id == 0
             template_content = None
