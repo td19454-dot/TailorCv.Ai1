@@ -315,6 +315,72 @@ def _normalize_key(text: str) -> str:
     return "".join(ch.lower() for ch in str(text or "") if ch.isalnum())
 
 
+_SECTION_HEADING_KEYS = {
+    "projects": "projects", "project": "projects", "personalprojects": "projects",
+    "academicprojects": "projects", "keyprojects": "projects",
+    "publications": "publications", "publication": "publications",
+    "researchpublications": "publications", "selectedpublications": "publications",
+    "papers": "publications", "researchpapers": "publications",
+    "experience": "experience", "workexperience": "experience",
+    "professionalexperience": "experience", "employment": "experience", "workhistory": "experience",
+    "education": "education", "academics": "education",
+    "skills": "skills", "technicalskills": "skills", "coreskills": "skills",
+    "certifications": "certifications", "certification": "certifications",
+    "licenses": "certifications", "licensescertifications": "certifications",
+    "achievements": "achievements", "awards": "achievements", "honors": "achievements",
+    "awardsachievements": "achievements", "accomplishments": "achievements",
+    "extracurricular": "extracurricular", "extracurriculars": "extracurricular",
+    "leadership": "extracurricular", "activities": "extracurricular",
+    "positionsofresponsibility": "extracurricular", "volunteer": "extracurricular",
+    "summary": "summary", "profile": "summary", "objective": "summary",
+    "professionalsummary": "summary", "contact": "contact",
+}
+
+
+def _detect_section_headings(pdf_path: str) -> list[tuple[int, float, str]]:
+    """Return ordered (page_idx, top, section_name) for every detected section heading."""
+    headings: list[tuple[int, float, str]] = []
+    try:
+        with pdfplumber.open(pdf_path) as pdf:
+            for page_idx, page in enumerate(pdf.pages):
+                words = page.extract_words(use_text_flow=True, keep_blank_chars=False) or []
+                lines: list[dict] = []
+                for w in words:
+                    t = str(w.get("text", "")).strip()
+                    if not t:
+                        continue
+                    top = float(w.get("top", 0.0))
+                    placed = False
+                    for ln in lines:
+                        if abs(top - ln["top"]) <= 2.5:
+                            ln["text"] = (ln["text"] + " " + t).strip()
+                            ln["top"] = min(ln["top"], top)
+                            placed = True
+                            break
+                    if not placed:
+                        lines.append({"text": t, "top": top})
+                for ln in lines:
+                    nk = _normalize_key(ln["text"])
+                    if nk in _SECTION_HEADING_KEYS and len(ln["text"].split()) <= 4:
+                        headings.append((page_idx, float(ln["top"]), _SECTION_HEADING_KEYS[nk]))
+    except Exception:
+        return []
+    headings.sort(key=lambda h: (h[0], h[1]))
+    return headings
+
+
+def _section_of(headings: list[tuple[int, float, str]], page_idx: int, top: float) -> str | None:
+    """Which section a (page, top) position belongs to. None = header/contact region
+    (above the first content heading)."""
+    current = None
+    for (hp, ht, name) in headings:
+        if (hp, ht) <= (page_idx, top):
+            current = name
+        else:
+            break
+    return current
+
+
 def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> dict[str, list[tuple[str, str]]]:
     """
     Extract *clickable* link annotations (URIs) from the PDF and map them to the nearest
@@ -386,11 +452,12 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> d
     reader = PdfReader(pdf_path)
 
     # Contact / social domains must NOT be attached to projects — they belong to the
-    # contact section and were a source of links bleeding into the wrong place.
+    # Section bounding (below) already restricts links to the Projects region, so a
+    # project may legitimately link to Kaggle, GitHub, Drive, a live demo, etc.
+    # Only email/phone and personal social-profile links are never project links.
     contact_deny = (
-        "linkedin.com", "leetcode.com", "gmail.com", "outlook.com", "yahoo.com",
-        "mailto:", "tel:", "kaggle.com", "codeforces.com", "codechef.com",
-        "scholar.google.", "twitter.com", "x.com", "facebook.com", "instagram.com",
+        "mailto:", "tel:", "gmail.com", "outlook.com", "yahoo.com", "hotmail.com",
+        "linkedin.com/in/", "twitter.com", "x.com/", "facebook.com", "instagram.com",
     )
 
     SAME_LINE_TOL = 9.0    # link icon sits on the same row as the project title
@@ -439,6 +506,13 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> d
     # URL can never appear under two different projects).
     best_for_uri: dict[str, tuple[str, float, str]] = {}  # uri -> (project, dist, label)
 
+    # Section bounding: a project link must physically lie inside the Projects section.
+    # This is what prevents cross-section "exchanges" (a contact GitHub or a
+    # certification link being pulled into a project). Only enforced when a Projects
+    # heading is actually detected, so resumes without clear headings still work.
+    headings = _detect_section_headings(pdf_path)
+    enforce_section = any(name == "projects" for (_p, _t, name) in headings)
+
     for page_idx, page in enumerate(reader.pages):
         annots = page.get("/Annots") or []
         try:
@@ -486,6 +560,10 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> d
             top = page_height - y1
             bottom = page_height - y0
 
+            # Reject links that don't live in the Projects section.
+            if enforce_section and _section_of(headings, page_idx, top) != "projects":
+                continue
+
             matched_project, dist = match_project(top, bottom, candidates)
             if not matched_project:
                 continue
@@ -527,10 +605,20 @@ def extract_contact_links_from_pdf(pdf_path: str) -> dict[str, str]:
         "twitter": ("twitter.com", "x.com"),
     }
     found: dict[str, str] = {}
+    # Contact links live in the header region (above the first content heading). Bounding
+    # to that region prevents a project/certification GitHub (inside a content section)
+    # from being misclassified as the contact GitHub.
+    headings = _detect_section_headings(pdf_path)
+    enforce_header = bool(headings)
+    header_ok = {None, "summary", "contact"}
     try:
         from pypdf import PdfReader
         reader = PdfReader(pdf_path)
-        for page in reader.pages:
+        for page_idx, page in enumerate(reader.pages):
+            try:
+                page_height = float(reader.pages[page_idx].mediabox.height)
+            except Exception:
+                page_height = None
             for annot_ref in (page.get("/Annots") or []):
                 try:
                     annot = annot_ref.get_object()
@@ -545,6 +633,16 @@ def extract_contact_links_from_pdf(pdf_path: str) -> dict[str, str]:
                 if not low.startswith(("http://", "https://")):
                     uri = "https://" + uri
                     low = uri.lower()
+                # Restrict to the header/contact region.
+                if enforce_header and page_height:
+                    rect = annot.get("/Rect")
+                    if rect and len(rect) >= 4:
+                        try:
+                            top = page_height - float(rect[3])
+                            if _section_of(headings, page_idx, top) not in header_ok:
+                                continue
+                        except Exception:
+                            pass
                 matched_service = None
                 for service, domains in services.items():
                     if any(d in low for d in domains):
@@ -560,28 +658,6 @@ def extract_contact_links_from_pdf(pdf_path: str) -> dict[str, str]:
     return found
 
 
-_SECTION_HEADING_KEYS = {
-    "projects": "projects", "project": "projects", "personalprojects": "projects",
-    "academicprojects": "projects", "keyprojects": "projects",
-    "publications": "publications", "publication": "publications",
-    "researchpublications": "publications", "selectedpublications": "publications",
-    "papers": "publications", "researchpapers": "publications",
-    "experience": "experience", "workexperience": "experience",
-    "professionalexperience": "experience", "employment": "experience",
-    "education": "education", "academics": "education",
-    "skills": "skills", "technicalskills": "skills", "coreskills": "skills",
-    "certifications": "certifications", "certification": "certifications",
-    "licenses": "certifications", "licensescertifications": "certifications",
-    "achievements": "achievements", "awards": "achievements", "honors": "achievements",
-    "awardsachievements": "achievements", "accomplishments": "achievements",
-    "extracurricular": "extracurricular", "extracurriculars": "extracurricular",
-    "leadership": "extracurricular", "activities": "extracurricular",
-    "positionsofresponsibility": "extracurricular", "volunteer": "extracurricular",
-    "summary": "summary", "profile": "summary", "objective": "summary",
-    "professionalsummary": "summary", "contact": "contact",
-}
-
-
 def extract_section_annotation_links(pdf_path: str, section: str) -> list[str]:
     """
     Return clickable annotation URLs that fall inside a specific resume section
@@ -595,10 +671,12 @@ def extract_section_annotation_links(pdf_path: str, section: str) -> list[str]:
     except Exception:
         return []
 
+    # Inside a section (after its heading) links are legitimate section content —
+    # a credential on credly/coursera/github/linkedin-learning, a company site, etc.
+    # Only skip email/phone and personal-email domains. (Contact/social profile links
+    # live above the first heading, so they fall outside every section range anyway.)
     contact_deny = (
-        "linkedin.com", "leetcode.com", "gmail.com", "outlook.com", "yahoo.com",
-        "mailto:", "tel:", "kaggle.com", "codeforces.com", "codechef.com",
-        "twitter.com", "x.com", "facebook.com", "instagram.com",
+        "mailto:", "tel:", "gmail.com", "outlook.com", "yahoo.com", "hotmail.com",
     )
 
     # Build ordered section headings: list of (page_idx, top, section_name).
@@ -691,6 +769,126 @@ def extract_section_annotation_links(pdf_path: str, section: str) -> list[str]:
     return ordered
 
 
+def extract_named_item_links_from_pdf(pdf_path: str, names: list[str], section: str | None = None) -> dict[str, str]:
+    """
+    Match clickable link annotations to named items (e.g. certifications) by the
+    text physically UNDER each link rectangle (horizontal + vertical overlap).
+
+    This is robust for multi-column layouts where the item NAME itself is the link
+    (common for certifications) — position/section-range matching fails there
+    because pdfplumber merges both columns into one row. Returns {item_name: url}.
+
+    When `section` is given, only links physically inside that section are considered,
+    which prevents cross-section link exchanges.
+    """
+    try:
+        from pypdf import PdfReader
+    except Exception:
+        return {}
+    names = [str(n or "").strip() for n in (names or []) if str(n or "").strip()]
+    if not names:
+        return {}
+    headings = _detect_section_headings(pdf_path) if section else []
+    enforce_section = bool(section) and any(nm == section for (_p, _t, nm) in headings)
+    norm_to_name = {_normalize_key(n): n for n in names}
+    norm_names = sorted((k for k in norm_to_name if k), key=len, reverse=True)
+
+    def best_match(text: str) -> str | None:
+        k = _normalize_key(text)
+        if not k:
+            return None
+        for nn in norm_names:
+            if len(nn) < 4:
+                continue
+            if nn in k:
+                return norm_to_name[nn]
+            if k in nn and len(k) >= max(5, int(0.6 * len(nn))):
+                return norm_to_name[nn]
+        return None
+
+    # Word boxes per page.
+    words_by_page: dict[int, list[dict]] = {}
+    try:
+        with pdfplumber.open(pdf_path) as pdf:
+            for page_idx, page in enumerate(pdf.pages):
+                ws = []
+                for w in page.extract_words(use_text_flow=True, keep_blank_chars=False) or []:
+                    t = str(w.get("text", "")).strip()
+                    if not t:
+                        continue
+                    ws.append({
+                        "text": t,
+                        "x0": float(w.get("x0", 0.0)), "x1": float(w.get("x1", 0.0)),
+                        "top": float(w.get("top", 0.0)), "bottom": float(w.get("bottom", 0.0)),
+                    })
+                words_by_page[page_idx] = ws
+    except Exception:
+        return {}
+
+    result: dict[str, str] = {}
+    seen_uris: set[str] = set()
+    try:
+        reader = PdfReader(pdf_path)
+        for page_idx, page in enumerate(reader.pages):
+            try:
+                page_height = float(reader.pages[page_idx].mediabox.height)
+            except Exception:
+                continue
+            ws = words_by_page.get(page_idx, [])
+            for annot_ref in (page.get("/Annots") or []):
+                try:
+                    annot = annot_ref.get_object()
+                except Exception:
+                    continue
+                uri = str((annot.get("/A") or {}).get("/URI") or "").strip()
+                if not uri:
+                    continue
+                low = uri.lower()
+                if low.startswith(("mailto:", "tel:")):
+                    continue
+                if not low.startswith(("http://", "https://")):
+                    uri = "https://" + uri
+                    low = uri.lower()
+                if any(b in low for b in ("gmail.com", "outlook.com", "yahoo.com", "hotmail.com")):
+                    continue
+                if uri in seen_uris:
+                    continue
+                rect = annot.get("/Rect")
+                if not rect or len(rect) < 4:
+                    continue
+                try:
+                    rx0, ry0, rx1, ry1 = [float(v) for v in rect[:4]]
+                except Exception:
+                    continue
+                r_top = page_height - ry1
+                r_bot = page_height - ry0
+                r_xa, r_xb = min(rx0, rx1), max(rx0, rx1)
+                # Reject links outside the target section (prevents cross-section exchange).
+                if enforce_section and _section_of(headings, page_idx, r_top) != section:
+                    continue
+                # Words overlapping the link rectangle (the anchor text = the item name).
+                seg = [
+                    w for w in ws
+                    if not (w["bottom"] < r_top - 2 or w["top"] > r_bot + 2)
+                    and not (w["x1"] < r_xa - 2 or w["x0"] > r_xb + 2)
+                ]
+                if not seg:
+                    # Fallback: nearest words on the same row starting at the rect.
+                    row = [w for w in ws if not (w["bottom"] < r_top - 2 or w["top"] > r_bot + 2)]
+                    row.sort(key=lambda w: abs(w["x0"] - r_xa))
+                    seg = row[:10]
+                seg.sort(key=lambda w: (w["top"], w["x0"]))
+                text = " ".join(w["text"] for w in seg)
+                matched = best_match(text)
+                if not matched:
+                    continue
+                seen_uris.add(uri)
+                result.setdefault(matched, uri)  # first link per item wins
+    except Exception:
+        return result
+    return result
+
+
 def _assign_section_links(parsed: dict, section_key: str, field: str, ordered_urls: list[str], used: set[str]) -> None:
     """
     Assign annotation-recovered URLs to the items of a section (education /
@@ -702,13 +900,25 @@ def _assign_section_links(parsed: dict, section_key: str, field: str, ordered_ur
         return
     avail = [u for u in (ordered_urls or []) if u and u.lower() not in used]
     idx = 0
+
+    def _is_real_url(v: str) -> bool:
+        v = str(v or "").strip().lower()
+        if not v:
+            return False
+        # Real link = explicit scheme, or a domain dot with no spaces (not just plain
+        # text the AI dropped in, e.g. an issuer name like "IBM" or "Coursera").
+        if v.startswith(("http://", "https://")):
+            return True
+        return "." in v and " " not in v
+
     for item in items:
         if not isinstance(item, dict):
             continue
         existing = str(item.get(field, "") or "").strip()
-        if existing:
+        if _is_real_url(existing):
             used.add(existing.lower())
             continue
+        # Existing value is empty or junk (not a URL) -> overwrite with a real link.
         if idx < len(avail):
             url = avail[idx]
             idx += 1
@@ -3479,6 +3689,68 @@ async def upload_resume(
             # loses them. Assigned in document order, never reusing a placed URL.
             try:
                 section_used = _collect_used_urls(parsed)
+
+                # Certifications: the cert NAME is usually the clickable link, often in a
+                # 1- or 2-column layout. Match links to certs by the text under each link
+                # rectangle (robust for multi-column). This runs first and is authoritative.
+                certs = parsed.get("certifications")
+                if isinstance(certs, list) and certs:
+                    cert_names = [
+                        str(c.get("name", "")).strip()
+                        for c in certs if isinstance(c, dict) and str(c.get("name", "")).strip()
+                    ]
+                    if cert_names:
+                        cert_link_map = await asyncio.to_thread(
+                            extract_named_item_links_from_pdf, file_path, cert_names, "certifications"
+                        )
+                        if cert_link_map:
+                            norm_map = {_normalize_key(k): v for k, v in cert_link_map.items()}
+                            for c in certs:
+                                if not isinstance(c, dict):
+                                    continue
+                                cur = str(c.get("url", "") or "").strip().lower()
+                                is_real = cur.startswith(("http://", "https://")) or ("." in cur and " " not in cur)
+                                if is_real:
+                                    section_used.add(cur)
+                                    continue
+                                u = norm_map.get(_normalize_key(c.get("name", "")))
+                                if u and u.lower() not in section_used:
+                                    c["url"] = u
+                                    section_used.add(u.lower())
+
+                # Experience: match each entry's link by the company/title text under the
+                # link rectangle, bounded to the Experience section (so a project or
+                # contact link can never land on an experience entry).
+                exps = parsed.get("experience")
+                if isinstance(exps, list) and exps:
+                    exp_names = []
+                    for e in exps:
+                        if isinstance(e, dict):
+                            for f in ("company", "title"):
+                                v = str(e.get(f, "")).strip()
+                                if v:
+                                    exp_names.append(v)
+                    if exp_names:
+                        exp_map = await asyncio.to_thread(
+                            extract_named_item_links_from_pdf, file_path, exp_names, "experience"
+                        )
+                        if exp_map:
+                            norm_map = {_normalize_key(k): v for k, v in exp_map.items()}
+                            for e in exps:
+                                if not isinstance(e, dict):
+                                    continue
+                                cur = str(e.get("url", "") or "").strip().lower()
+                                if cur.startswith(("http://", "https://")) or ("." in cur and " " not in cur):
+                                    section_used.add(cur)
+                                    continue
+                                u = (norm_map.get(_normalize_key(e.get("company", "")))
+                                     or norm_map.get(_normalize_key(e.get("title", ""))))
+                                if u and u.lower() not in section_used:
+                                    e["url"] = u
+                                    section_used.add(u.lower())
+
+                # Education / Experience / Certifications: position-based fallback for
+                # any entry the name-based passes above did not fill.
                 for section_key, field in (
                     ("education", "links"),
                     ("certifications", "url"),
