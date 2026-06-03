@@ -529,8 +529,6 @@ IMPORTANT:
 You are NOT formatting a resume.
 You are ONLY returning structured content.
 You must preserve factual details already present in the resume such as dates, CGPA/SGPA, percentages, marks, locations, and links.
-Do not remove or rewrite those details unless the resume itself clearly contains an error.
-For every section, prefer copying factual values from the original resume verbatim and only improve wording around them.
 
 ### OUTPUT RULES (MANDATORY)
 - Output **ONLY valid JSON**
@@ -538,28 +536,28 @@ For every section, prefer copying factual values from the original resume verbat
 
 Guidelines to Follow:
 1)Keyword and Skill Optimization:
-Rule01:If a tool, framework or skill doesn't match the ones mentioned in the Job description but a similar skill is mentioned, replace the tool/skill/framework with that keyword to match the JD. For example, if Tableau is mentioned but the requirement asks for PowerBI, add PowerBI to skills. Be ethical, don't replace if it is not logical or closely related.
+Rule01: MANDATORY SKILLS INJECTION — The `skills` array in the output JSON MUST contain EVERY hard skill (programming languages, frameworks, tools, technologies, platforms, libraries) that is explicitly mentioned in the job description. Do NOT skip any. Even if the candidate does not have a skill, it must still appear in the `skills` array for ATS keyword matching purposes. If a related skill already exists, keep it AND also add the exact JD keyword. Integrate other keywords naturally across Skills, Projects, Experience, and Summary sections. Do not fabricate experience, expertise, or accomplishments.
 
 Analyze the job description and identify relevant keywords (hard and soft skills).
 Match as much as possible of the job description’s keywords following the rule above to align with applicant tracking systems (ATS).
 Prioritize industry-relevant hard skills and soft skills in dedicated sections and throughout bullet points.
 
-Incorporate Measurable Metrics:
+Rule 2:Incorporate Measurable Metrics:
 Quantify achievements using the XYZ formula if the user has put such quantifications but not formatted it if user has not put anything quantifyable don't do it: Accomplished X, measured by Y, by doing Z.
 
-Include as many  measurable results as possible to clearly demonstrate impact.
+Use existing metrics whenever available. Do not create, estimate, infer, or invent numerical results, percentages, revenue impact, time savings, rankings, or performance improvements.
 Don't use vague statements; use metrics to highlight value and effectiveness.
 
 
 Content Quality and Language:
 Eliminate buzzwords, clichés, and pronouns (e.g., “I,” “me,” “my”).
 Use action-oriented, impactful language to emphasize accomplishments over duties.
+
 Replace generic phrases with specific examples that showcase expertise and success.
 Focus on selling professional experience, skills, and results, not merely summarizing past roles.
 
 Additional Instructions:
 Keyword Optimize and be specific for each section (Professional Summary, Experience, Skills, Education) to reflect relevance to the job.
-Ensure consistent formatting, professional fonts
 Use concise bullet points, each starting with a strong action verb.
 Preserve all existing links from the resume exactly when they exist. Do not remove project, GitHub, LinkedIn, portfolio, or other URLs.
 If a project has a GitHub/repository/demo/live link in the original resume, keep it in the output using `github_link`, `url`, or `links`.
@@ -672,7 +670,7 @@ Job Description:
     stop=stop_after_attempt(5),
     wait=wait_exponential(multiplier=1, min=4, max=60)
 )
-async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0.1) -> str:
+async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0) -> str:
     """
     Async OpenAI call for resume optimization with retries.
     """
@@ -726,6 +724,115 @@ def _tfidf_vectors(tokens_a: list[str], tokens_b: list[str]) -> tuple[dict[str, 
 def _extract_years_of_experience(text: str) -> int:
     years = [int(match) for match in re.findall(r"\b(\d{1,2})\s*\+?\s*(?:years?|yrs?)\b", str(text or "").lower())]
     return max(years) if years else 0
+
+
+_HARD_SKILL_KEYWORDS: list[str] = [
+    # Languages
+    "Python", "Java", "JavaScript", "TypeScript", "C++", "C#", "Go", "Golang",
+    "Rust", "Swift", "Kotlin", "Scala", "R", "MATLAB", "PHP", "Ruby", "Perl",
+    "Bash", "Shell", "Objective-C", "Dart", "Groovy", "Lua", "Haskell",
+    # Web / Frontend
+    "React", "Angular", "Vue.js", "Vue", "Node.js", "Express.js", "Express",
+    "Next.js", "Nuxt.js", "Svelte", "Gatsby", "jQuery", "Bootstrap", "Tailwind CSS",
+    "HTML", "CSS", "SASS", "SCSS", "Webpack", "Vite", "Babel", "Redux",
+    # Backend / Frameworks
+    "Django", "Flask", "FastAPI", "Spring", "Spring Boot", "Rails", "Laravel",
+    "ASP.NET", ".NET", "Gin", "Echo", "REST API", "gRPC", "GraphQL",
+    "Microservices", "Serverless", "WebSocket",
+    # ML / AI / Data Science
+    "TensorFlow", "PyTorch", "Keras", "scikit-learn", "Pandas", "NumPy", "SciPy",
+    "Hugging Face", "LangChain", "LangGraph", "OpenAI", "LLM", "RAG",
+    "Computer Vision", "NLP", "NLTK", "spaCy", "OpenCV", "Transformers",
+    "Machine Learning", "Deep Learning", "Reinforcement Learning",
+    "MLflow", "Weights & Biases",
+    # Databases
+    "SQL", "MySQL", "PostgreSQL", "SQLite", "Oracle", "MongoDB", "Redis",
+    "Elasticsearch", "Cassandra", "DynamoDB", "Firebase", "Supabase",
+    "Snowflake", "BigQuery", "Redshift", "Databricks",
+    # Cloud
+    "AWS", "GCP", "Azure", "Google Cloud", "Amazon Web Services",
+    "EC2", "S3", "Lambda", "EKS", "ECS", "GKE", "AKS",
+    # DevOps / Infrastructure
+    "Docker", "Kubernetes", "Terraform", "Ansible", "Helm",
+    "Jenkins", "CI/CD", "GitHub Actions", "GitLab CI", "CircleCI", "ArgoCD",
+    "Prometheus", "Grafana", "Datadog", "New Relic", "Splunk",
+    # Data Engineering
+    "Apache Spark", "Spark", "Hadoop", "Airflow", "dbt", "Kafka",
+    "RabbitMQ", "Flink", "Hive", "Trino",
+    # Analytics / BI
+    "Tableau", "Power BI", "Looker", "Matplotlib", "Seaborn", "Plotly",
+    # Vector DBs
+    "Pinecone", "Weaviate", "ChromaDB", "Qdrant",
+    # Tools
+    "Git", "GitHub", "GitLab", "Bitbucket", "Jira", "Confluence", "Linux", "Unix",
+    "Postman", "Swagger", "OpenAPI",
+]
+
+
+def _extract_hard_skills_from_jd(jd_string: str) -> list[str]:
+    """Extract hard skills mentioned in the JD, returning a de-duplicated list."""
+    jd = str(jd_string or "")
+    jd_lower = jd.lower()
+    found: list[str] = []
+    seen_lower: set[str] = set()
+
+    def _add(skill: str) -> None:
+        s = skill.strip()
+        key = s.lower()
+        if s and key not in seen_lower and 1 < len(s) <= 50:
+            seen_lower.add(key)
+            found.append(s)
+
+    for kw in _HARD_SKILL_KEYWORDS:
+        if kw.lower() in jd_lower:
+            _add(kw)
+
+    skill_list_pattern = re.compile(
+        r'(?:proficien(?:cy|t)\s+(?:in|with)|'
+        r'experience\s+(?:in|with)|'
+        r'knowledge\s+of|'
+        r'expertise\s+in|'
+        r'familiarity\s+with|'
+        r'skills?\s*(?:include|required|:)|'
+        r'technologies?\s*(?:include|used|:)|'
+        r'tools?\s*(?:include|used|:)|'
+        r'frameworks?\s*(?:include|used|:)|'
+        r'(?:strong|solid)\s+(?:experience|background)\s+(?:in|with))\s*:?\s*([^\n.]+)',
+        re.IGNORECASE,
+    )
+    for m in skill_list_pattern.finditer(jd):
+        segment = m.group(1)
+        for tok in re.split(r'[,;/]|\band\b|\bor\b', segment):
+            tok = tok.strip().strip('•-*()[]').strip()
+            if tok and len(tok) >= 2 and not tok.lower().startswith(('the ', 'a ', 'an ')):
+                _add(tok)
+
+    return found
+
+
+def inject_jd_hard_skills(data: dict, jd_string: str) -> dict:
+    """
+    Post-process: ensure every hard skill from the JD appears in the resume's skills array.
+    Adds missing skills without touching existing ones.
+    """
+    if not isinstance(data, dict) or not jd_string:
+        return data
+
+    skills = data.get("skills")
+    if not isinstance(skills, list):
+        return data
+
+    existing_text = " ".join(str(s) for s in skills).lower()
+
+    skills_to_add = []
+    for skill in _extract_hard_skills_from_jd(jd_string):
+        if skill.lower().strip() not in existing_text:
+            skills_to_add.append(skill)
+
+    if skills_to_add:
+        data["skills"] = skills + skills_to_add
+
+    return data
 
 
 def _extract_skill_candidates(text: str) -> set[str]:
