@@ -156,7 +156,7 @@ Courses and certificates without projects do not prove ability. Build real thing
 
 ### Mistake 2: Hiding the career change
 
-Address your transition openly and confidently in your summary and cover letter. Frame it as intentional, not desperate.
+Address your transition openly and confidently in your summary and [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026). Frame it as intentional, not desperate.
 
 ### Mistake 3: Ignoring domain advantage
 
@@ -178,6 +178,10 @@ Career changers benefit enormously from networking and referrals, which bypass t
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
+- [How to Write a Two Weeks Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
 
 ## Conclusion
 

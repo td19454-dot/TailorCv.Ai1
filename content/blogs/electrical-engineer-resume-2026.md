@@ -182,6 +182,10 @@ This guide uses career context from the [BLS Electrical and Electronics Engineer
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 - [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 - [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
+- [Graphic Designer Resume](https://thetailorcv.com/blog/graphic-designer-resume-2026)
+- [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
+- [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
+- [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
 
 ## Conclusion
 

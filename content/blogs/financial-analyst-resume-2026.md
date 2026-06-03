@@ -156,6 +156,10 @@ This guide uses career context from the [BLS Financial Analysts Occupational Out
 - [MBA Resume](https://thetailorcv.com/blog/mba-resume-2026)
 - [Product Manager Resume](https://thetailorcv.com/blog/product-manager-resume-2026)
 - [Teacher Resume](https://thetailorcv.com/blog/teacher-resume-2026)
+- [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
+- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
+- [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
+- [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
 
 ## Conclusion
 

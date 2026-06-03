@@ -140,6 +140,10 @@ Markdown, Git, OpenAPI, Docusaurus — modern technical writing is tool-driven. 
 - [Frontend Developer Resume](https://thetailorcv.com/blog/frontend-developer-resume-2026)
 - [Full Stack Developer Resume](https://thetailorcv.com/blog/full-stack-developer-resume-2026)
 - [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
+- [Go (Golang) Developer Resume](https://thetailorcv.com/blog/golang-developer-resume-2026)
+- [iOS Developer Resume](https://thetailorcv.com/blog/ios-developer-resume-2026)
+- [Java Developer Resume](https://thetailorcv.com/blog/java-developer-resume-2026)
+- [Python Developer Resume](https://thetailorcv.com/blog/python-developer-resume-2026)
 
 ## Conclusion
 

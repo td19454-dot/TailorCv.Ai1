@@ -337,8 +337,17 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> d
         k = _normalize_key(line_text)
         if not k:
             return None
+        # norm_names is sorted longest-first, so the most specific project wins.
         for nn in norm_names:
-            if nn and (nn in k or k in nn):
+            if not nn or len(nn) < 4:
+                continue
+            # Primary: the text line contains the project name.
+            if nn in k:
+                return norm_to_name[nn]
+            # Secondary: the line itself is (almost) the project name. Require the
+            # line to be a substantial fraction of the name to avoid a stray short
+            # word matching a long project title (a common cause of link bleed).
+            if k in nn and len(k) >= max(4, int(0.5 * len(nn))):
                 return norm_to_name[nn]
         return None
 
@@ -375,10 +384,71 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> d
             line_boxes[page_idx] = lines
 
     reader = PdfReader(pdf_path)
-    result: dict[str, list[tuple[str, str]]] = {}
+
+    # Contact / social domains must NOT be attached to projects — they belong to the
+    # contact section and were a source of links bleeding into the wrong place.
+    contact_deny = (
+        "linkedin.com", "leetcode.com", "gmail.com", "outlook.com", "yahoo.com",
+        "mailto:", "tel:", "kaggle.com", "codeforces.com", "codechef.com",
+        "scholar.google.", "twitter.com", "x.com", "facebook.com", "instagram.com",
+    )
+
+    SAME_LINE_TOL = 9.0    # link icon sits on the same row as the project title
+    NEAR_WINDOW = 60.0     # or within the project's block, a few lines below the title
+
+    def match_project(top: float, bottom: float, candidates: list[dict]) -> tuple[str | None, float]:
+        center = (top + bottom) / 2.0
+        # 1) Same-line match (strongest signal).
+        best_ln, best_d = None, 1e9
+        for ln in candidates:
+            ln_center = (float(ln["top"]) + float(ln["bottom"])) / 2.0
+            d = abs(ln_center - center)
+            if d < best_d:
+                best_d, best_ln = d, ln
+        if best_ln is not None and best_d <= SAME_LINE_TOL:
+            mp = best_match(best_ln["text"])
+            if mp:
+                return mp, best_d
+        # 2) Nearest project title at/above the link (titles sit above their bullets),
+        #    scanning upward first, then a small window below. Closest match wins.
+        scored = []
+        for ln in candidates:
+            ln_top = float(ln["top"])
+            ln_center = (ln_top + float(ln["bottom"])) / 2.0
+            # allow the title to be above the link (preferred) or slightly below
+            if (top - NEAR_WINDOW) <= ln_top <= (bottom + SAME_LINE_TOL):
+                scored.append((abs(ln_center - center), ln))
+        scored.sort(key=lambda t: t[0])
+        for d, ln in scored:
+            mp = best_match(ln["text"])
+            if mp:
+                return mp, d
+        # 3) Last resort: nearest project-name line anywhere on the page (closest center).
+        #    Global URL dedup downstream still guarantees no link appears twice.
+        all_scored = sorted(
+            candidates,
+            key=lambda ln: abs(((float(ln["top"]) + float(ln["bottom"])) / 2.0) - center),
+        )
+        for ln in all_scored[:25]:
+            mp = best_match(ln["text"])
+            if mp:
+                return mp, abs(((float(ln["top"]) + float(ln["bottom"])) / 2.0) - center)
+        return None, 1e9
+
+    # Collect each unique URL's single best project assignment (global dedup so one
+    # URL can never appear under two different projects).
+    best_for_uri: dict[str, tuple[str, float, str]] = {}  # uri -> (project, dist, label)
 
     for page_idx, page in enumerate(reader.pages):
         annots = page.get("/Annots") or []
+        try:
+            page_height = float(reader.pages[page_idx].mediabox.height)
+        except Exception:
+            page_height = None
+        if not page_height:
+            continue
+        candidates = line_boxes.get(page_idx, [])
+
         for annot_ref in annots:
             try:
                 annot = annot_ref.get_object()
@@ -393,83 +463,287 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str]) -> d
                 continue
             if not uri.startswith(("http://", "https://", "mailto:", "tel:")):
                 uri = "https://" + uri
-            # Reject garbage URIs that are actually just label text (e.g. "https://Live%20Demo")
             lowered_uri = uri.lower()
+            # Skip contact/social links — they are not project links.
+            if any(bad in lowered_uri for bad in contact_deny):
+                continue
+            # Reject garbage URIs that are actually just label text (e.g. "https://Live%20Demo").
             if lowered_uri.startswith(("http://", "https://")):
-                # decode a bit for matching
                 decoded_hint = lowered_uri.replace("%20", " ")
                 if "live demo" in decoded_hint or "live%20demo" in lowered_uri:
                     continue
-                # require a plausible host (a dot in the hostname or known good domains)
-                # this filters out things like "https://live"
                 host_part = lowered_uri.split("://", 1)[1].split("/", 1)[0]
                 if "." not in host_part and "localhost" not in host_part:
                     continue
             rect = annot.get("/Rect")
             if not rect or len(rect) < 4:
                 continue
-
             try:
                 x0, y0, x1, y1 = [float(v) for v in rect[:4]]
             except Exception:
                 continue
-
-            # pypdf uses PDF coords (origin bottom-left). pdfplumber uses origin top-left.
-            # Convert: plumber_top = page_height - y1, plumber_bottom = page_height - y0
-            try:
-                page_height = float(reader.pages[page_idx].mediabox.height)
-            except Exception:
-                page_height = None
-            if not page_height:
-                continue
+            # pypdf uses PDF coords (origin bottom-left); pdfplumber uses origin top-left.
             top = page_height - y1
             bottom = page_height - y0
 
-            # Find nearest text line above/overlapping this link rect.
-            candidates = line_boxes.get(page_idx, [])
-            best_ln = None
-            best_dist = 1e9
-            for ln in candidates:
-                # Prefer lines close in vertical axis
-                dist = abs(float(ln["top"]) - top)
-                if dist < best_dist:
-                    best_dist = dist
-                    best_ln = ln
-
-            nearest_text = (best_ln["text"] if best_ln else "") or ""
-            matched_project = best_match(nearest_text)
-            if not matched_project:
-                # fallback: scan last ~15 lines above the rect for a project name mention
-                nearby = sorted(candidates, key=lambda l: l["top"])
-                # take lines within a window above the rect
-                window = [l for l in nearby if l["top"] <= top + 25]
-                window = window[-15:]
-                for ln in reversed(window):
-                    matched_project = best_match(ln["text"])
-                    if matched_project:
-                        break
-
+            matched_project, dist = match_project(top, bottom, candidates)
             if not matched_project:
                 continue
 
-            result.setdefault(matched_project, [])
-            # Label should primarily follow the actual URL domain (most reliable),
-            # not the nearby text which can contain "Live Demo" even when the link is GitHub.
-            uri_lower = uri.lower()
-            label = "Link"
-            if "github.com" in uri_lower:
-                label = "GitHub"
-            else:
-                lt = nearest_text.lower()
-                if "live" in lt or "demo" in lt:
-                    label = "Live Demo"
-                elif "github" in lt:
-                    label = "GitHub"
-            pair = (label, uri)
-            if pair not in result[matched_project]:
-                result[matched_project].append(pair)
+            label = "GitHub" if "github.com" in lowered_uri else "Link"
+            prev = best_for_uri.get(uri)
+            # Keep the closest (most confident) project for each unique URL.
+            if prev is None or dist < prev[1]:
+                best_for_uri[uri] = (matched_project, dist, label)
+
+    result: dict[str, list[tuple[str, str]]] = {}
+    for uri, (project, _dist, label) in best_for_uri.items():
+        result.setdefault(project, [])
+        pair = (label, uri)
+        if pair not in result[project]:
+            result[project].append(pair)
 
     return result
+
+
+def extract_contact_links_from_pdf(pdf_path: str) -> dict[str, str]:
+    """
+    Scan ALL clickable link annotations in the PDF and classify them into contact
+    services (linkedin, github, portfolio, leetcode, kaggle, codeforces, codechef,
+    google_scholar, twitter). PDFs frequently render these as short anchor text
+    ("LinkedIn", "GitHub") while the real URL lives only in the annotation, so
+    pdfplumber's text extraction loses them. This recovers the true URLs.
+
+    Returns a dict of {service: full_url}. The first plausible URL wins per service.
+    """
+    services = {
+        "linkedin": ("linkedin.com",),
+        "github": ("github.com",),
+        "leetcode": ("leetcode.com",),
+        "kaggle": ("kaggle.com",),
+        "codeforces": ("codeforces.com",),
+        "codechef": ("codechef.com",),
+        "google_scholar": ("scholar.google.",),
+        "twitter": ("twitter.com", "x.com"),
+    }
+    found: dict[str, str] = {}
+    try:
+        from pypdf import PdfReader
+        reader = PdfReader(pdf_path)
+        for page in reader.pages:
+            for annot_ref in (page.get("/Annots") or []):
+                try:
+                    annot = annot_ref.get_object()
+                except Exception:
+                    continue
+                uri = str((annot.get("/A") or {}).get("/URI") or "").strip()
+                if not uri:
+                    continue
+                low = uri.lower()
+                if low.startswith(("mailto:", "tel:")):
+                    continue
+                if not low.startswith(("http://", "https://")):
+                    uri = "https://" + uri
+                    low = uri.lower()
+                matched_service = None
+                for service, domains in services.items():
+                    if any(d in low for d in domains):
+                        matched_service = service
+                        break
+                if matched_service:
+                    found.setdefault(matched_service, uri)
+                # Note: we deliberately do NOT treat arbitrary links as "portfolio"
+                # here — a project's live-demo annotation could be wrongly captured as
+                # the user's portfolio. Only unambiguous exact-domain services above.
+    except Exception:
+        pass
+    return found
+
+
+_SECTION_HEADING_KEYS = {
+    "projects": "projects", "project": "projects", "personalprojects": "projects",
+    "academicprojects": "projects", "keyprojects": "projects",
+    "publications": "publications", "publication": "publications",
+    "researchpublications": "publications", "selectedpublications": "publications",
+    "papers": "publications", "researchpapers": "publications",
+    "experience": "experience", "workexperience": "experience",
+    "professionalexperience": "experience", "employment": "experience",
+    "education": "education", "academics": "education",
+    "skills": "skills", "technicalskills": "skills", "coreskills": "skills",
+    "certifications": "certifications", "certification": "certifications",
+    "licenses": "certifications", "licensescertifications": "certifications",
+    "achievements": "achievements", "awards": "achievements", "honors": "achievements",
+    "awardsachievements": "achievements", "accomplishments": "achievements",
+    "extracurricular": "extracurricular", "extracurriculars": "extracurricular",
+    "leadership": "extracurricular", "activities": "extracurricular",
+    "positionsofresponsibility": "extracurricular", "volunteer": "extracurricular",
+    "summary": "summary", "profile": "summary", "objective": "summary",
+    "professionalsummary": "summary", "contact": "contact",
+}
+
+
+def extract_section_annotation_links(pdf_path: str, section: str) -> list[str]:
+    """
+    Return clickable annotation URLs that fall inside a specific resume section
+    (e.g. "publications"), in document order. PDFs often render these links as
+    anchor text only, so pdfplumber text extraction misses them entirely.
+
+    The section's vertical range is bounded by its heading and the next heading.
+    """
+    try:
+        from pypdf import PdfReader
+    except Exception:
+        return []
+
+    contact_deny = (
+        "linkedin.com", "leetcode.com", "gmail.com", "outlook.com", "yahoo.com",
+        "mailto:", "tel:", "kaggle.com", "codeforces.com", "codechef.com",
+        "twitter.com", "x.com", "facebook.com", "instagram.com",
+    )
+
+    # Build ordered section headings: list of (page_idx, top, section_name).
+    headings: list[tuple[int, float, str]] = []
+    try:
+        with pdfplumber.open(pdf_path) as pdf:
+            for page_idx, page in enumerate(pdf.pages):
+                words = page.extract_words(use_text_flow=True, keep_blank_chars=False) or []
+                lines: list[dict] = []
+                for w in words:
+                    text = str(w.get("text", "")).strip()
+                    if not text:
+                        continue
+                    top = float(w.get("top", 0.0))
+                    placed = False
+                    for ln in lines:
+                        if abs(top - ln["top"]) <= 2.5:
+                            ln["text"] = (ln["text"] + " " + text).strip()
+                            ln["top"] = min(ln["top"], top)
+                            placed = True
+                            break
+                    if not placed:
+                        lines.append({"text": text, "top": top})
+                for ln in lines:
+                    nk = _normalize_key(ln["text"])
+                    if nk in _SECTION_HEADING_KEYS and len(ln["text"].split()) <= 4:
+                        headings.append((page_idx, float(ln["top"]), _SECTION_HEADING_KEYS[nk]))
+    except Exception:
+        return []
+
+    headings.sort(key=lambda h: (h[0], h[1]))
+    # Locate the requested section's [start, end) range.
+    start = None
+    end = None
+    for i, (pg, top, name) in enumerate(headings):
+        if name == section:
+            start = (pg, top)
+            end = (headings[i + 1][0], headings[i + 1][1]) if i + 1 < len(headings) else None
+            break
+    if start is None:
+        return []
+
+    def in_range(pg: int, top: float) -> bool:
+        if (pg, top) < start:
+            return False
+        if end is not None and (pg, top) >= end:
+            return False
+        return True
+
+    ordered: list[str] = []
+    seen: set[str] = set()
+    try:
+        reader = PdfReader(pdf_path)
+        for page_idx, page in enumerate(reader.pages):
+            try:
+                page_height = float(reader.pages[page_idx].mediabox.height)
+            except Exception:
+                continue
+            annot_items = []
+            for annot_ref in (page.get("/Annots") or []):
+                try:
+                    annot = annot_ref.get_object()
+                except Exception:
+                    continue
+                uri = str((annot.get("/A") or {}).get("/URI") or "").strip()
+                if not uri:
+                    continue
+                if not uri.startswith(("http://", "https://")):
+                    if uri.startswith(("mailto:", "tel:")):
+                        continue
+                    uri = "https://" + uri
+                if any(bad in uri.lower() for bad in contact_deny):
+                    continue
+                rect = annot.get("/Rect")
+                if not rect or len(rect) < 4:
+                    continue
+                try:
+                    y1 = float(rect[3])
+                except Exception:
+                    continue
+                top = page_height - y1
+                annot_items.append((top, uri))
+            annot_items.sort(key=lambda t: t[0])
+            for top, uri in annot_items:
+                if in_range(page_idx, top) and uri not in seen:
+                    seen.add(uri)
+                    ordered.append(uri)
+    except Exception:
+        return ordered
+    return ordered
+
+
+def _assign_section_links(parsed: dict, section_key: str, field: str, ordered_urls: list[str], used: set[str]) -> None:
+    """
+    Assign annotation-recovered URLs to the items of a section (education /
+    experience / certifications) in document order. Only fills items whose link
+    field is empty, and never reuses a URL already placed elsewhere.
+    """
+    items = parsed.get(section_key)
+    if not isinstance(items, list) or not items:
+        return
+    avail = [u for u in (ordered_urls or []) if u and u.lower() not in used]
+    idx = 0
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        existing = str(item.get(field, "") or "").strip()
+        if existing:
+            used.add(existing.lower())
+            continue
+        if idx < len(avail):
+            url = avail[idx]
+            idx += 1
+            item[field] = url
+            used.add(url.lower())
+
+
+def _collect_used_urls(parsed: dict) -> set[str]:
+    """Gather every URL already placed (contact, projects, publications) so section
+    link injection never duplicates a link across sections."""
+    used: set[str] = set()
+    contact = parsed.get("contact")
+    if isinstance(contact, dict):
+        for v in contact.values():
+            v = str(v or "").strip().lower()
+            if v:
+                used.add(v)
+    for p in parsed.get("projects") or []:
+        if not isinstance(p, dict):
+            continue
+        for l in p.get("links") or []:
+            if isinstance(l, dict):
+                u = str(l.get("url") or l.get("href") or l.get("link") or "").strip().lower()
+                if u:
+                    used.add(u)
+        for fld in ("url", "github_link"):
+            u = str(p.get(fld) or "").strip().lower()
+            if u:
+                used.add(u)
+    for pub in parsed.get("publications") or []:
+        if isinstance(pub, dict):
+            u = str(pub.get("url") or "").strip().lower()
+            if u:
+                used.add(u)
+    return used
 
 
 def save_uploaded_pdf(file: UploadFile) -> str:
@@ -548,6 +822,11 @@ def normalize_url(value: str) -> str:
         return f"mailto:{value}"
     if value.replace("+", "").replace("-", "").replace(" ", "").isdigit():
         return f"tel:{value}"
+    # Guard against broken anchor-text values like "linkedin", "github", "LinkedIn".
+    # Without a "." (a real domain) and without a "/" path, prefixing https:// would
+    # produce a dead link such as "https://linkedin". Reject those.
+    if "." not in value and "/" not in value:
+        return ""
     return f"https://{value}"
 
 
@@ -1911,19 +2190,40 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
     for job in parsed.get("experience", []) or []:
         if not isinstance(job, dict):
             continue
+        exp_url = str(job.get("url") or job.get("link") or job.get("company_url") or "").strip()
         experience.append({
             "title": str(job.get("title", "")).strip(),
             "company": str(job.get("company", "")).strip(),
             "dates": str(job.get("dates", "")).strip(),
             "location": str(job.get("location", "")).strip(),
+            "url": normalize_url(exp_url),
+            "url_display": display_link(exp_url),
             "bullets": normalize_list_of_strings(job.get("bullets", [])),
         })
 
     projects = []
+    # Cross-project dedup: a URL must never appear under more than one project, and
+    # cap per-project links — the AI sometimes dumps every resume link onto a single
+    # project (e.g. the last one), producing "GitHub | Link | Link | Link ..." rows.
+    seen_project_hrefs: set[str] = set()
+    MAX_PROJECT_LINKS = 4
     for project in parsed.get("projects", []) or []:
         if not isinstance(project, dict):
             continue
         links = collect_project_links(project)
+        _filtered = []
+        _seen_here: set[str] = set()
+        for _l in links:
+            _h = str(_l.get("href", "")).strip().lower()
+            if not _h or _h in _seen_here or _h in seen_project_hrefs:
+                continue
+            _seen_here.add(_h)
+            _filtered.append(_l)
+            if len(_filtered) >= MAX_PROJECT_LINKS:
+                break
+        for _l in _filtered:
+            seen_project_hrefs.add(str(_l.get("href", "")).strip().lower())
+        links = _filtered
         render_links = []
         seen_render_hrefs = set()
         for link in links:
@@ -1949,35 +2249,20 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
         if not primary_link and render_links:
             primary_link = render_links[0]
 
-        # Some model outputs only populate `links` but leave `github_link`/`url` blank.
-        # Backfill those fields so older templates still show icons.
-        github_link = str(project.get("github_link") or project.get("github", "")).strip()
-        url = str(project.get("url") or project.get("website") or project.get("project_link") or "").strip()
-        if (not github_link or not url) and links:
-            for link in links:
-                label = str(link.get("label", "")).lower()
-                href = str(link.get("href", "")).strip()
-                if not href:
-                    continue
-                if not github_link and "github" in label:
-                    github_link = href
-                # Label might not contain "github" (recovered labels can be whole lines),
-                # so also detect github from the href itself.
-                if not github_link and "github.com" in href:
-                    github_link = href
-                # Labels can be like "Live Demo" (from the PDF) so match by substring.
-                if (
-                    not url
-                    and (
-                        label in {"link", "project link", "live", "demo"}
-                        or "live" in label
-                        or "demo" in label
-                    )
-                ):
-                    url = href
-                # If we still don't know the type, treat non-GitHub href as the project's URL.
-                if not url and href and "github.com" not in href:
-                    url = href
+        # Derive github_link/url ONLY from the already-filtered links, so templates
+        # that render project.github_link / project.url directly (e.g. 13-18) stay in
+        # sync with the deduped+capped list and never show a bleeding/duplicate URL.
+        github_link = ""
+        url = ""
+        for link in links:
+            href = str(link.get("href", "")).strip()
+            label = str(link.get("label", "")).lower()
+            if not href:
+                continue
+            if not github_link and ("github" in label or "github.com" in href):
+                github_link = href
+            elif not url and "github.com" not in href:
+                url = href
 
         projects.append({
             "name": str(project.get("name", "")).strip(),
@@ -2010,6 +2295,8 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
                 class_10 = test_scores.get("class_10_score")
                 if class_10 not in (None, ""):
                     score = f"10th Marks - {class_10}%"
+        if not (degree or school or score or year):
+            continue
         education.append({
             "degree": degree,
             "school": school,
@@ -2022,9 +2309,13 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
     for cert in parsed.get("certifications", []) or []:
         if not isinstance(cert, dict):
             continue
+        c_name = str(cert.get("name", "")).strip()
+        c_issuer = str(cert.get("issuer", "")).strip()
+        if not (c_name or c_issuer):
+            continue
         certifications.append({
-            "name": str(cert.get("name", "")).strip(),
-            "issuer": str(cert.get("issuer", "")).strip(),
+            "name": c_name,
+            "issuer": c_issuer,
             "year": str(cert.get("year", "")).strip(),
             "url": normalize_url(str(cert.get("url", "")).strip()),
         })
@@ -2033,11 +2324,16 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
     for item in parsed.get("extracurriculars", []) or []:
         if not isinstance(item, dict):
             continue
+        e_role = str(item.get("role", "")).strip()
+        e_org = str(item.get("organization", "")).strip()
+        e_bullets = normalize_list_of_strings(item.get("bullets", []))
+        if not (e_role or e_org or e_bullets):
+            continue
         extracurriculars.append({
-            "role": str(item.get("role", "")).strip(),
-            "organization": str(item.get("organization", "")).strip(),
+            "role": e_role,
+            "organization": e_org,
             "dates": str(item.get("dates", "")).strip(),
-            "bullets": normalize_list_of_strings(item.get("bullets", [])),
+            "bullets": e_bullets,
             "url": normalize_url(str(item.get("url", "")).strip()),
         })
 
@@ -2045,11 +2341,19 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
     for item in parsed.get("publications", []) or []:
         if not isinstance(item, dict):
             continue
+        p_title = str(item.get("title", "")).strip()
+        p_publisher = str(item.get("publisher", "")).strip()
+        p_year = str(item.get("year", "")).strip()
+        p_url = normalize_url(str(item.get("url", "")).strip())
+        # Skip empty publication entries so a blank "Publications" section (with a
+        # stray bullet) is not rendered when the resume has no real publications.
+        if not (p_title or p_publisher or p_url):
+            continue
         publications.append({
-            "title": str(item.get("title", "")).strip(),
-            "publisher": str(item.get("publisher", "")).strip(),
-            "year": str(item.get("year", "")).strip(),
-            "url": normalize_url(str(item.get("url", "")).strip()),
+            "title": p_title,
+            "publisher": p_publisher,
+            "year": p_year,
+            "url": p_url,
         })
 
     raw_skills = []
@@ -3104,11 +3408,91 @@ async def upload_resume(
                     file_path,
                     project_names,
                 )
-                effective_map = pdf_project_link_map or project_link_map
+                # Merge annotation-based map (most reliable) with the text-based map so
+                # projects missed by one source can still be covered by the other.
+                effective_map = {}
+                for src in (pdf_project_link_map or {}), (project_link_map or {}):
+                    if not isinstance(src, dict):
+                        continue
+                    for key, pairs in src.items():
+                        bucket = effective_map.setdefault(key, [])
+                        for pair in pairs:
+                            if pair not in bucket:
+                                bucket.append(pair)
             else:
                 effective_map = project_link_map
 
+            # Recover publication links from PDF annotations (publications often use
+            # clickable anchor text, so plain text extraction misses the real URLs).
+            if parsed.get("publications"):
+                try:
+                    annot_pub_links = await asyncio.to_thread(
+                        extract_section_annotation_links, file_path, "publications"
+                    )
+                except Exception:
+                    annot_pub_links = []
+                if annot_pub_links:
+                    merged_pub = list(annot_pub_links)
+                    for u in (extracted_pub_links or []):
+                        if u not in merged_pub:
+                            merged_pub.append(u)
+                    extracted_pub_links = merged_pub
+
             parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
+
+            # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
+            # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
+            # the true URL lives in the annotation, so the AI loses or mangles them.
+            # We override the AI value only when it is missing OR not a real URL.
+            try:
+                pdf_contact_links = await asyncio.to_thread(extract_contact_links_from_pdf, file_path)
+                if pdf_contact_links:
+                    contact = parsed.get("contact")
+                    if not isinstance(contact, dict):
+                        contact = {}
+                        parsed["contact"] = contact
+
+                    def _is_real_url(v: str) -> bool:
+                        v = str(v or "").strip()
+                        if not v:
+                            return False
+                        # A usable contact value must contain a domain dot or an explicit path.
+                        return ("." in v) or v.lower().startswith(("http://", "https://"))
+
+                    # For exact-domain social services the annotation is the ground truth
+                    # (the AI sometimes drops the URL or hallucinates a different one), so
+                    # always prefer it. Portfolio is heuristic, so only fill when missing.
+                    authoritative = {
+                        "linkedin", "github", "leetcode", "kaggle",
+                        "codeforces", "codechef", "google_scholar", "twitter",
+                    }
+                    for service, real_url in pdf_contact_links.items():
+                        current = str(contact.get(service, "") or "").strip()
+                        if service in authoritative or not _is_real_url(current):
+                            contact[service] = real_url
+            except Exception:
+                pass
+
+            # Recover links inside Education, Experience and Certifications sections
+            # from PDF annotations (course/credential verification URLs, company
+            # sites, etc.). These are anchor-text-only in many resumes, so the AI
+            # loses them. Assigned in document order, never reusing a placed URL.
+            try:
+                section_used = _collect_used_urls(parsed)
+                for section_key, field in (
+                    ("education", "links"),
+                    ("certifications", "url"),
+                    ("experience", "url"),
+                ):
+                    if not parsed.get(section_key):
+                        continue
+                    section_urls = await asyncio.to_thread(
+                        extract_section_annotation_links, file_path, section_key
+                    )
+                    if section_urls:
+                        _assign_section_links(parsed, section_key, field, section_urls, section_used)
+            except Exception:
+                pass
 
             use_default_template = template_id == 0
             template_content = None

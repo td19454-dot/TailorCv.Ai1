@@ -88,7 +88,7 @@ If the role focuses on leadership, prepare leadership stories. If it focuses on 
 
 ## Use the STAR Method
 
-The STAR method helps you answer behavioral interview questions clearly.
+The STAR method helps you answer [behavioral interview](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) questions clearly.
 
 STAR stands for:
 
@@ -289,3 +289,8 @@ Use tools like [TailorCV.ai](https://www.thetailorcv.com/solutions) to understan
 - [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
 - [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 - [How to Practice Mock Interviews Online for Free Using AI](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai)
+- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
+- [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
+- [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
+- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
+

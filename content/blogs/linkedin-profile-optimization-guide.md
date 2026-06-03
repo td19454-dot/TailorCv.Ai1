@@ -38,7 +38,7 @@ The banner (the rectangle behind your profile photo) is one of the most overlook
 
 Use it to communicate:
 - Your professional identity (e.g., "Backend Engineer | Python | AWS")
-- Your personal brand (e.g., a subtle tech or design background image)
+- Your [personal brand](https://thetailorcv.com/blog/personal-branding-for-professionals) (e.g., a subtle tech or design background image)
 - A portfolio call-to-action (e.g., "Portfolio: yourname.dev")
 
 Create a free banner on Canva using one of their LinkedIn banner templates. A professional-looking banner immediately elevates your profile credibility.
@@ -214,6 +214,10 @@ Even 30 minutes per week of LinkedIn activity can double your profile view count
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
 - [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
 
 ## Conclusion
 

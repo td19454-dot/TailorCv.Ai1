@@ -179,6 +179,10 @@ A two weeks notice is brief. A few sentences is enough — do not write an essay
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
 
 ## Conclusion
 

@@ -172,6 +172,10 @@ If you only ever worked in a single development environment, practice building r
 - [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
 - [Electrical Engineer Resume](https://thetailorcv.com/blog/electrical-engineer-resume-2026)
 - [Embedded Systems Engineer Resume](https://thetailorcv.com/blog/embedded-systems-engineer-resume-2026)
+- [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
+- [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
+- [Mechanical Engineer Resume](https://thetailorcv.com/blog/mechanical-engineer-resume-2026)
+- [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
 
 ## Conclusion
 

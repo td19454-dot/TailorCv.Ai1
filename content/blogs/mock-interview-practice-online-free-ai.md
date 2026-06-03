@@ -88,7 +88,7 @@ Interview anxiety is real.
 
 Even strong candidates panic when facing recruiters for the first time.
 
-Regular behavioral interview practice helps your brain treat interviews as routine conversations rather than high-pressure situations.
+Regular [behavioral interview](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) practice helps your brain treat interviews as routine conversations rather than high-pressure situations.
 
 ---
 
@@ -158,7 +158,7 @@ A good example is [The Tailor CV Mock Interview Platform](https://thetailorcv.co
 AI tools usually support:
 - HR interview rounds
 - Behavioral interview practice
-- Technical interview practice
+- [Technical interview](https://thetailorcv.com/blog/technical-interview-preparation-guide) practice
 - Situational questions
 - Leadership questions
 - Communication analysis
@@ -515,6 +515,10 @@ You can also use:
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
+- [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
+- [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+- [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
+- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
 
 ## Conclusion
 

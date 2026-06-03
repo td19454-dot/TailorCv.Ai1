@@ -157,6 +157,10 @@ Always decline graciously. Connect with the recruiter or hiring manager on Linke
 - [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 
 ## Conclusion
 

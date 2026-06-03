@@ -100,7 +100,7 @@ Closed / Generated / Exceeded / Grew + [deal type or pipeline] + [territory, seg
 ### Strong Bullet Points
 
 - Closed $1.92M in net new ARR in FY2025, 121% of quota, across 22 SMB and mid-market accounts in the APAC region.
-- Generated $6.8M in qualified pipeline in 12 months through outbound prospecting via cold email, LinkedIn, and SDR partnership — averaging 18 qualified meetings per month.
+- Generated $6.8M in qualified pipeline in 12 months through outbound prospecting via [cold email](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter), LinkedIn, and SDR partnership — averaging 18 qualified meetings per month.
 - Closed a $340K enterprise deal with a healthcare network of 12 hospitals, managing a 6-month deal cycle involving procurement, legal, IT, and clinical leadership stakeholders.
 - Expanded 8 existing accounts through upsell and cross-sell, generating $480K in expansion ARR representing 28% of total annual revenue.
 - Reduced average sales cycle from 92 days to 57 days by implementing a structured discovery framework and deal health scoring in Salesforce, improving quarterly forecast accuracy from ±22% to ±8%.
@@ -154,6 +154,10 @@ A sales summary without attainment numbers is immediately weaker than one with t
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
+- [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
+- [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
+- [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
+- [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
 
 ## Conclusion
 

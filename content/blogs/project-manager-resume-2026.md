@@ -164,6 +164,10 @@ Senior PM roles require budget and risk ownership. Show budget sizes you managed
 - [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
 - [Social Media Manager Resume](https://thetailorcv.com/blog/social-media-manager-resume-2026)
 - [Supply Chain Manager Resume](https://thetailorcv.com/blog/supply-chain-manager-resume-2026)
+- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
+- [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
+- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
+- [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
 
 ## Conclusion
 

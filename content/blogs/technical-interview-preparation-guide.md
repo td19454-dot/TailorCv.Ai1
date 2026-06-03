@@ -166,6 +166,10 @@ Practice all of this with the [free AI mock interview tool](https://thetailorcv.
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
 - [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
 - [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+- [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
+- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
+- [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 
 ## Conclusion
 

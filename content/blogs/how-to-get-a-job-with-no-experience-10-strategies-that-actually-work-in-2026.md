@@ -60,7 +60,7 @@ Strong transferable skills include communication, organization, research, teamwo
 
 ### Match Skills to the Job
 
-Do not list every skill you have. Read the job description and identify which transferable skills matter most. Then show evidence in your resume, cover letter, and interview answers.
+Do not list every skill you have. Read the job description and identify which transferable skills matter most. Then show evidence in your resume, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview answers.
 
 ## 3. Build Projects That Prove Ability
 
@@ -80,7 +80,7 @@ Volunteer work counts when it builds relevant skills. Many nonprofit organizatio
 
 ### Treat Volunteer Work Like Professional Experience
 
-On your resume, describe volunteer work with the same seriousness as paid work. Use action verbs and measurable outcomes.
+On your resume, describe volunteer work with the same seriousness as paid work. Use [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume) and measurable outcomes.
 
 Instead of:
 
@@ -211,7 +211,7 @@ That answer shows leadership, organization, and follow-through.
 
 If you want momentum, take practical action this week.
 
-Choose one target role. Save five job descriptions. Highlight repeated skills. Update your resume summary and skills section. Add one project or volunteer example. Run your resume through [TailorCV.ai](https://www.thetailorcv.com/solutions) to check ATS fit. Send five tailored applications instead of twenty generic ones.
+Choose one target role. Save five job descriptions. Highlight repeated skills. Update your [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) and skills section. Add one project or volunteer example. Run your resume through [TailorCV.ai](https://www.thetailorcv.com/solutions) to check ATS fit. Send five tailored applications instead of twenty generic ones.
 
 ### Track Your Applications
 
@@ -249,3 +249,8 @@ You do not need a perfect background to get started. You need a clear target, co
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [The CS Degree Bubble Is Real](https://thetailorcv.com/blog/cs-degree-bubble-oversaturated-2026)
 - [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+

@@ -166,6 +166,10 @@ Some companies are remote-first (fully distributed, async-first culture). Others
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
 
 ## Conclusion
 

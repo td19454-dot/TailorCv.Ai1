@@ -47,7 +47,7 @@ These tools scan resumes for:
 
 If your resume lacks the right skills and keywords, it may never reach the recruiter.
 
-That’s why building an ATS-friendly and skills-based resume is one of the most important career strategies for freshers in 2026.
+That’s why building an [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and skills-based resume is one of the most important career strategies for freshers in 2026.
 
 If you're just starting out, you can also read our detailed guide on how to write a resume with no experience:  
 [How to write a resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
@@ -417,7 +417,7 @@ Cybersecurity awareness is increasingly valuable in IT roles.
 
 ## 8. Microsoft Excel & Office Skills
 
-Excel remains one of the most important technical and soft skills resume categories.
+Excel remains one of the most important technical and [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) resume categories.
 
 ### Top Excel Skills
 
@@ -780,7 +780,7 @@ Freshers often struggle with:
 
 > “Which technical skills should I add for each job?”
 
-Different roles require completely different resume keywords.
+Different roles require completely different [resume keywords](https://thetailorcv.com/blog/resume-keywords-guide).
 
 For example:
 
@@ -923,6 +923,10 @@ Ideally:
 - [ATS Score Guide for](https://thetailorcv.com/blog/ats-score-guide)
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
+- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
+- [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 
 ## Conclusion
 

@@ -155,6 +155,10 @@ This leaves a positive final impression. Companies sometimes come back to runner
 - [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
 - [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
 - [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
+- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 
 ## Conclusion
 

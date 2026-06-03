@@ -196,6 +196,10 @@ One strong story can often be adapted to answer 3–4 different questions by cha
 - [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
 - [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
 - [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
+- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
+- [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
+- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
+- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 
 ## Conclusion
 

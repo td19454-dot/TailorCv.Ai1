@@ -136,7 +136,7 @@ A simple portfolio site with your projects, resume, and contact link — hosted 
 Do not mass-apply to 200 companies with the same resume. Apply to 5–10 per week with tailored resumes and track every application.
 
 **Tier 1 — Dream companies** (2–3 per week)
-Fully tailor your resume. Write a cover letter. Research the company. Try to find someone in your network who works there.
+Fully tailor your resume. Write a [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026). Research the company. Try to find someone in your network who works there.
 
 **Tier 2 — Strong fit companies** (3–5 per week)
 Tailor resume to the job description. No cover letter required unless asked.
@@ -208,6 +208,10 @@ The 2–4 month timeline is achievable for most candidates who invest consistent
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 - [The CS Degree Bubble Is Real](https://thetailorcv.com/blog/cs-degree-bubble-oversaturated-2026)
 - [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 
 ## Conclusion
 

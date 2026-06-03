@@ -146,6 +146,10 @@ This guide uses career context from the [BLS Pharmacists Occupational Outlook Ha
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
+- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
+- [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
+- [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
+- [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
 
 ## Conclusion
 

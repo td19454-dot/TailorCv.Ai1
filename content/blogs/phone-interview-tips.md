@@ -40,7 +40,7 @@ It is a filter, not a deep evaluation. Your goal is simply to advance to the nex
 - Re-read the job description and your own resume
 - Prepare your "Tell me about yourself" answer
 - Research salary range for the role and decide your number
-- Prepare 2–3 questions to ask
+- Prepare 2–3 [questions to ask](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
 - Have your resume, the job description, and notes in front of you (a key advantage of phone interviews)
 
 ### Logistics Setup
@@ -163,6 +163,10 @@ Always have 2–3 questions ready. "No questions" signals disinterest.
 - [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
 - [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
 - [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
+- [System Design Interview Guide](https://thetailorcv.com/blog/system-design-interview-guide)
+- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
+- [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 
 ## Conclusion
 

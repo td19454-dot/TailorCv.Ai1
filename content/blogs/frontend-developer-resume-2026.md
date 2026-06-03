@@ -177,6 +177,10 @@ In 2026, React and TypeScript are standard expectations. If your resume only sho
 - [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
 - [Go (Golang) Developer Resume](https://thetailorcv.com/blog/golang-developer-resume-2026)
 - [iOS Developer Resume](https://thetailorcv.com/blog/ios-developer-resume-2026)
+- [Java Developer Resume](https://thetailorcv.com/blog/java-developer-resume-2026)
+- [Python Developer Resume](https://thetailorcv.com/blog/python-developer-resume-2026)
+- [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
+- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 
 ## Conclusion
 

@@ -152,6 +152,10 @@ In 2026, marketing managers are expected to be proficient with HubSpot, Salesfor
 - [Operations Manager Resume](https://thetailorcv.com/blog/operations-manager-resume-2026)
 - [Project Manager Resume](https://thetailorcv.com/blog/project-manager-resume-2026)
 - [Supply Chain Manager Resume](https://thetailorcv.com/blog/supply-chain-manager-resume-2026)
+- [Teacher Resume](https://thetailorcv.com/blog/teacher-resume-2026)
+- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
+- [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
+- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 
 ## Conclusion
 

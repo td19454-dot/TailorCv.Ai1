@@ -168,6 +168,10 @@ A 6-line paragraph is not a summary. Keep it to 2–4 lines.
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 
 ## Conclusion
 

@@ -40,7 +40,7 @@ That means relevant certifications can help your resume:
 
 If you’re a fresher or career switcher, certifications can be especially valuable because they prove you’re actively learning.
 
-If you’re unsure whether your resume is ATS-friendly, tools like [The Tailor CV ATS checker](https://www.thetailorcv.com/solutions) can help analyze and improve your resume naturally.
+If you’re unsure whether your resume is [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), tools like [The Tailor CV ATS checker](https://www.thetailorcv.com/solutions) can help analyze and improve your resume naturally.
 
 You may also find this detailed ATS guide useful:
 [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
@@ -175,7 +175,7 @@ It’s especially useful for:
 
 **Best for:**
 - General professional development
-- Soft skills
+- [Soft skills](https://thetailorcv.com/blog/soft-skills-for-resume)
 - Office productivity
 
 Popular courses include:
@@ -554,3 +554,8 @@ By choosing the right certifications strategically, you’ll stand out far more 
 - [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [ATS Score Guide for](https://thetailorcv.com/blog/ats-score-guide)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+

@@ -159,6 +159,10 @@ Many schools require a specific resume format. Follow it exactly.
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [Marketing Manager Resume](https://thetailorcv.com/blog/marketing-manager-resume-2026)
+- [Product Manager Resume](https://thetailorcv.com/blog/product-manager-resume-2026)
+- [Sales Executive Resume](https://thetailorcv.com/blog/sales-executive-resume-2026)
+- [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
+- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 
 ## Conclusion
 
