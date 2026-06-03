@@ -1,5 +1,6 @@
 
 import os
+import logging
 from pathlib import Path
 import pdfplumber
 from dotenv import load_dotenv
@@ -10,6 +11,8 @@ import asyncio
 import math
 from collections import Counter
 from tenacity import retry, stop_after_attempt, wait_exponential
+
+logger = logging.getLogger(__name__)
 
 
 def normalize_links(text):
@@ -530,6 +533,13 @@ You are NOT formatting a resume.
 You are ONLY returning structured content.
 You must preserve factual details already present in the resume such as dates, CGPA/SGPA, percentages, marks, locations, and links.
 
+### CONTENT COMPLETENESS (MANDATORY — DO NOT DROP ANYTHING)
+- Include EVERY section that exists in the original resume (summary, experience, projects, education, skills, certifications, publications, achievements, extracurriculars, etc.).
+- Include EVERY entry/sub-section. If the resume has 5 experiences, 8 projects, and 20 certifications, the output MUST contain ALL 5 experiences, ALL 8 projects, and ALL 20 certifications — same count, none merged, summarized away, or omitted.
+- Keep EVERY bullet point of every entry. Do not drop bullets to save space.
+- Never truncate the output. Return the COMPLETE JSON for the entire resume, however long it is. Length is not a reason to omit content.
+- Preserve EVERY link (project, GitHub, Live/demo, LinkedIn, certification, publication, portfolio, company) on the exact entry it belongs to.
+
 ### OUTPUT RULES (MANDATORY)
 - Output **ONLY valid JSON**
 - No explanations, no markdown, no extra text
@@ -683,9 +693,15 @@ async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperatu
                 {'role': 'system', "content": 'Expert resume writer and reviewer'},
                 {'role': 'user', 'content': prompt}
             ],
-            temperature=temperature
+            temperature=temperature,
+            max_tokens=16384,  # gpt-4o-mini max output; avoids truncating long resumes
         )
-        return response.choices[0].message.content
+        choice = response.choices[0] if response.choices else None
+        content = choice.message.content if choice else ""
+        # If the model still ran out of room, surface it so the caller can repair the JSON.
+        if choice and getattr(choice, "finish_reason", "") == "length":
+            logger.warning("Resume AI response hit the output token limit; JSON may be truncated.")
+        return content
     except Exception as exc:
         raise _normalize_openai_error(exc) from exc
 
