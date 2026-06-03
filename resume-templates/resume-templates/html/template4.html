@@ -46,7 +46,7 @@
                     <div class="entry-right">
                         {% if exp.dates %}<div class="date">{{ exp.dates }}</div>{% endif %}
                         {% if exp.location %}<div class="secondary italic experience-location">{{ exp.location }}</div>{% endif %}
-                        {% if exp.url %}<div class="secondary italic experience-link"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_display or exp.url }}</a></div>{% endif %}
+                        {% if exp.url %}<div class="secondary italic experience-link"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_label }}</a></div>{% endif %}
                     </div>
                 </div>
                 {% if exp.bullets %}
@@ -108,7 +108,7 @@
                     </div>
                     <div class="entry-right">
                         {% if edu.year %}<div class="date">{{ edu.year }}</div>{% endif %}
-                        {% if edu.score %}<div class="secondary italic education-score">{{ edu.score }}</div>{% elif edu.links %}<div class="secondary italic education-score"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links }}</a></div>{% endif %}
+                        {% if edu.score %}<div class="secondary italic education-score">{{ edu.score }}</div>{% elif edu.links %}<div class="secondary italic education-score"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links_label }}</a></div>{% endif %}
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@
             <h2>Certifications</h2>
             <ul class="bullet-list compact">
                 {% for cert in certifications %}
-                <li>{{ cert.name }}{% if cert.issuer %}, {{ cert.issuer }}{% endif %}{% if cert.year %}, {{ cert.year }}{% endif %}{% if cert.url %} | <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.url }}</a>{% endif %}</li>
+                <li>{{ cert.name }}{% if cert.issuer %}, {{ cert.issuer }}{% endif %}{% if cert.year %}, {{ cert.year }}{% endif %}{% if cert.url %} | <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.url_label }}</a>{% endif %}</li>
                 {% endfor %}
             </ul>
         </section>

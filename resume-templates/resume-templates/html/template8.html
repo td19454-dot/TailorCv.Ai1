@@ -521,7 +521,7 @@
           <h2>Certifications</h2>
           <ul class="stack-list">
             {% for cert in certifications %}
-            <li>{{ cert.name }}{% if cert.issuer %}<br><span class="muted">{{ cert.issuer }}</span>{% endif %}{% if cert.year %}<br><span class="muted">{{ cert.year }}</span>{% endif %}{% if cert.url %}<br><a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.url }}</a>{% endif %}</li>
+            <li>{{ cert.name }}{% if cert.issuer %}<br><span class="muted">{{ cert.issuer }}</span>{% endif %}{% if cert.year %}<br><span class="muted">{{ cert.year }}</span>{% endif %}{% if cert.url %}<br><a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.url_label }}</a>{% endif %}</li>
             {% endfor %}
           </ul>
         </section>
@@ -549,7 +549,7 @@
               <div>
                 <p class="entry-title">{{ edu.school }}</p>
                 {% if edu.degree %}<p class="entry-subtitle">{{ edu.degree }}{% if edu.score %}, {{ edu.score }}{% endif %}</p>{% endif %}
-                {% if edu.links %}<p class="entry-subtitle"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links }}</a></p>{% endif %}
+                {% if edu.links %}<p class="entry-subtitle"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links_label }}</a></p>{% endif %}
                 {% if edu.location %}<p class="entry-location">{{ edu.location }}</p>{% endif %}
               </div>
               {% if edu.year %}<div class="entry-meta">{{ edu.year }}</div>{% endif %}
@@ -569,7 +569,7 @@
                 <p class="entry-title">{{ exp.company }}</p>
                 {% if exp.title %}<p class="entry-subtitle">{{ exp.title }}</p>{% endif %}
                 {% if exp.location %}<p class="entry-location">{{ exp.location }}</p>{% endif %}
-                {% if exp.url %}<p class="entry-location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_display or exp.url }}</a></p>{% endif %}
+                {% if exp.url %}<p class="entry-location"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_label }}</a></p>{% endif %}
               </div>
               {% if exp.dates %}<div class="entry-meta">{{ exp.dates }}</div>{% endif %}
             </div>
