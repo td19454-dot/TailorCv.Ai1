@@ -12,15 +12,15 @@
             <h1>{{ name }}</h1>
 
             <div class="contact-line">
-                {% if contact.phone %}<span class="contact-item"><span class="contact-icon">&#9990;</span><a href="{{ contact.phone_href }}">{{ contact.phone }}</a></span>{% endif %}
-                {% if contact.email %}<span class="contact-item"><span class="contact-icon">&#9993;</span><a href="{{ contact.email_href }}">{{ contact.email }}</a></span>{% endif %}
-                {% if contact.linkedin %}<span class="contact-item"><span class="contact-icon">in</span><a href="{{ contact.linkedin_href }}">{{ contact.linkedin_display or contact.linkedin }}</a></span>{% endif %}
-                {% if contact.github %}<span class="contact-item"><span class="contact-icon">gh</span><a href="{{ contact.github_href }}">{{ contact.github_display or contact.github }}</a></span>{% endif %}
+                {% if contact.phone %}<span class="contact-item"><span class="contact-icon fa-solid">&#xf095;</span><a href="{{ contact.phone_href }}">{{ contact.phone }}</a></span>{% endif %}
+                {% if contact.email %}<span class="contact-item"><span class="contact-icon fa-solid">&#xf0e0;</span><a href="{{ contact.email_href }}">{{ contact.email }}</a></span>{% endif %}
+                {% if contact.linkedin %}<span class="contact-item"><span class="contact-icon fa-brand">&#xf08c;</span><a href="{{ contact.linkedin_href }}">{{ contact.linkedin_display or contact.linkedin }}</a></span>{% endif %}
+                {% if contact.github %}<span class="contact-item"><span class="contact-icon fa-brand">&#xf09b;</span><a href="{{ contact.github_href }}">{{ contact.github_display or contact.github }}</a></span>{% endif %}
             </div>
 
             {% if contact.leetcode or contact.portfolio or contact.kaggle or contact.address %}
             <div class="contact-line secondary-contact">
-                {% if contact.leetcode %}<span class="contact-item"><span class="contact-icon code-icon">&lt;/&gt;</span><a href="{{ contact.leetcode_href }}">{{ contact.leetcode_display or contact.leetcode }}</a></span>{% endif %}
+                {% if contact.leetcode %}<span class="contact-item"><span class="contact-icon fa-solid">&#xf121;</span><a href="{{ contact.leetcode_href }}">{{ contact.leetcode_display or contact.leetcode }}</a></span>{% endif %}
                 {% if contact.portfolio %}<span class="contact-item"><a href="{{ contact.portfolio_href }}">{{ contact.portfolio_display or contact.portfolio }}</a></span>{% endif %}
                 {% if contact.kaggle %}<span class="contact-item"><a href="{{ contact.kaggle_href }}">{{ contact.kaggle_display or contact.kaggle }}</a></span>{% endif %}
                 {% if contact.address %}<span class="contact-item">{{ contact.address }}</span>{% endif %}
