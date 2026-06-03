@@ -33,6 +33,7 @@ from functions import (
     get_resume_response,
     extract_links,
     inject_links,
+    inject_jd_hard_skills,
     map_demo_links,
     extract_project_links,
     extract_publication_links,
@@ -3439,6 +3440,7 @@ async def upload_resume(
                     extracted_pub_links = merged_pub
 
             parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
+            parsed = inject_jd_hard_skills(parsed, jd_string)
 
             # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
             # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
