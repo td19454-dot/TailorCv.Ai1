@@ -698,6 +698,11 @@
     renderProjectsAudit(d);
     renderPriorityFixes(d);
     updateSidebarBadges(d);
+
+    // Expose score globally as fallback for the share modal listener
+    window._atsFinalScore = score;
+    // Fire event so the share modal can react to the final score
+    document.dispatchEvent(new CustomEvent("atsScoreReady", { detail: { score } }));
   }
 
   if (document.readyState === "loading") {
