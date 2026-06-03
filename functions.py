@@ -698,9 +698,44 @@ async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperatu
         )
         choice = response.choices[0] if response.choices else None
         content = choice.message.content if choice else ""
-        # If the model still ran out of room, surface it so the caller can repair the JSON.
-        if choice and getattr(choice, "finish_reason", "") == "length":
-            logger.warning("Resume AI response hit the output token limit; JSON may be truncated.")
+        finish_reason = getattr(choice, "finish_reason", "") if choice else ""
+
+        # Long resume overflowed the output token cap: the JSON is cut mid-way and the
+        # tail (whole entries / their bullet points) would be lost. Instead of dropping
+        # it, ask the model to CONTINUE from exactly where it stopped, then stitch the
+        # fragments together so no bullet or sub-section is ever removed.
+        rounds = 0
+        while finish_reason == "length" and rounds < 6:
+            rounds += 1
+            logger.warning(
+                "Resume AI response hit the output token limit; requesting continuation %d.", rounds
+            )
+            try:
+                cont = await client.chat.completions.create(
+                    model=model,
+                    messages=[
+                        {'role': 'system', "content": 'Expert resume writer and reviewer'},
+                        {'role': 'user', 'content': prompt},
+                        {'role': 'assistant', 'content': content},
+                        {'role': 'user', 'content': (
+                            "Your previous message was cut off because it was too long. "
+                            "Continue the JSON output from the EXACT character where you "
+                            "stopped. Do NOT repeat anything already sent, do NOT restart, "
+                            "do NOT add explanations or markdown fences — output only the raw "
+                            "remaining JSON so the two parts concatenate into one valid object."
+                        )},
+                    ],
+                    temperature=temperature,
+                    max_tokens=16384,
+                )
+            except Exception:
+                break
+            cont_choice = cont.choices[0] if cont.choices else None
+            piece = (cont_choice.message.content if cont_choice else "") or ""
+            if not piece.strip():
+                break
+            content += piece
+            finish_reason = getattr(cont_choice, "finish_reason", "") if cont_choice else ""
         return content
     except Exception as exc:
         raise _normalize_openai_error(exc) from exc

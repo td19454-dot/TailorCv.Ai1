@@ -281,7 +281,7 @@
           <div>
             <p class="entry-title">{{ project.name }}</p>
             {% if project.subtitle %}<p class="entry-role">{{ project.subtitle }}</p>{% endif %}
-            {% if project.url %}<p class="entry-location">{{ project.url }}</p>{% endif %}
+            {% if project.links %}<p class="entry-location">{% for link in project.links %}{% set lhref = link.href or link.display or link.label or '' %}{% set lnorm = lhref if lhref.startswith(('http://', 'https://')) else 'https://' ~ lhref %}{% if lhref %}{% if not loop.first %} | {% endif %}<a href="{{ lnorm }}" target="_blank" rel="noopener noreferrer">{{ link.label or link.display or 'Link' }}</a>{% endif %}{% endfor %}</p>{% elif project.url %}<p class="entry-location"><a href="{{ project.url if project.url.startswith(('http://', 'https://')) else 'https://' ~ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.url_label or 'Link' }}</a></p>{% endif %}
           </div>
           {% if project.dates %}<div class="entry-meta">{{ project.dates }}</div>{% endif %}
         </div>
@@ -292,6 +292,41 @@
           {% endfor %}
         </ul>
         {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if certifications %}
+    <section>
+      <h2>Certifications</h2>
+      {% for cert in certifications %}
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <p class="entry-title">{{ cert.name }}{% if cert.url %} <a href="{{ cert.url if cert.url.startswith(('http://', 'https://')) else 'https://' ~ cert.url }}" target="_blank" rel="noopener noreferrer" style="font-size:12px;font-weight:500;">{{ cert.url_label }}</a>{% endif %}</p>
+            {% if cert.issuer %}<p class="entry-role">{{ cert.issuer }}</p>{% endif %}
+          </div>
+          {% if cert.year %}<div class="entry-meta">{{ cert.year }}</div>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if publications %}
+    <section>
+      <h2>Publications</h2>
+      {% for publication in publications %}
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <p class="entry-title">{{ publication.title }}</p>
+            {% if publication.publisher %}<p class="entry-role">{{ publication.publisher }}</p>{% endif %}
+            {% if publication.url %}<p class="entry-location"><a href="{{ publication.url if publication.url.startswith(('http://', 'https://')) else 'https://' ~ publication.url }}" target="_blank" rel="noopener noreferrer">{{ publication.url_label }}</a></p>{% endif %}
+          </div>
+          {% if publication.year %}<div class="entry-meta">{{ publication.year }}</div>{% endif %}
+        </div>
       </div>
       {% endfor %}
     </section>
