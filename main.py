@@ -755,14 +755,16 @@ def extract_section_annotation_links(pdf_path: str, section: str) -> list[str]:
                 if not rect or len(rect) < 4:
                     continue
                 try:
+                    x0 = float(rect[0])
                     y1 = float(rect[3])
                 except Exception:
                     continue
                 top = page_height - y1
-                annot_items.append((top, uri))
-            annot_items.sort(key=lambda t: t[0])
-            for top, uri in annot_items:
-                if in_range(page_idx, top) and uri not in seen:
+                annot_items.append((page_idx, top, x0, uri))
+            # Reading order: row band (top rounded to ~12pt), then column (x0).
+            annot_items.sort(key=lambda t: (t[0], round(t[1] / 12.0), t[2]))
+            for pg, top, x0, uri in annot_items:
+                if in_range(pg, top) and uri not in seen:
                     seen.add(uri)
                     ordered.append(uri)
     except Exception:
@@ -947,6 +949,150 @@ def save_uploaded_pdf(file: UploadFile) -> str:
 
 def normalize_list_of_strings(items):
     return [str(item).strip() for item in (items or []) if str(item).strip()]
+
+
+# ---------------------------------------------------------------------------
+# Bullet-loss recovery
+# ---------------------------------------------------------------------------
+# On long resumes the optimizer model sometimes silently drops or merges bullet
+# points even though the prompt forbids it (the JSON still comes back complete,
+# just shorter — so it is NOT a truncation issue). To guarantee no content is
+# lost, we re-read the ORIGINAL resume text after the AI returns and restore any
+# bullet whose content is missing from the optimized entry. This is done with
+# two hard safety guards so it can never cause sub-section exchange or duplicate
+# text:
+#   1. Anchoring is section-bounded and per-entry: a candidate line is only ever
+#      added to the one entry whose title uniquely sits above it, within the same
+#      section range. Ambiguous/duplicate titles are skipped entirely.
+#   2. A candidate is only restored when most of its words are absent from the
+#      entry's existing (reworded) bullets, so kept-but-rephrased content is
+#      never duplicated.
+_RESTORE_MARKERS = "•‣◦⁃∙*·▪●❖✧»>–—-"
+
+
+def _restore_tokens(text: str) -> set:
+    return set(re.findall(r"[a-z0-9]+", str(text or "").lower()))
+
+
+def _restore_is_meta_line(line: str) -> bool:
+    """A line that is a date range, a link, or contact/metadata — never a bullet."""
+    l = str(line or "").strip()
+    if not l:
+        return True
+    low = l.lower()
+    if "http://" in low or "https://" in low or "www." in low:
+        return True
+    if re.match(r"^(github|gitlab|kaggle|linkedin|leetcode|codeforces|codechef|"
+                r"demo|email|url|link|portfolio|website|tel|phone|live|mobile)\b[:\s]", low):
+        return True
+    # Date-range-only line (e.g. "Oct 2025 - Nov 2025", "May 2025 – Present").
+    if re.match(r"^[A-Za-z]{0,9}\.?\s*\d{4}\s*[-–—]\s*([A-Za-z]{0,9}\.?\s*\d{4}|present)\s*$", l, re.I):
+        return True
+    return False
+
+
+def _restore_section_lines(resume_string: str) -> list:
+    """Tag every resume line with the canonical section it belongs to (heading
+    lines themselves are dropped so they can't be mistaken for bullets)."""
+    out = []
+    cur = None
+    for raw in str(resume_string or "").splitlines():
+        line = raw.rstrip()
+        nk = _normalize_key(line)
+        if nk in _SECTION_HEADING_KEYS and len(line.split()) <= 4:
+            cur = _SECTION_HEADING_KEYS[nk]
+            continue
+        out.append((line, cur))
+    return out
+
+
+def _original_entry_candidates(section_lines: list, section: str, identifiers: list) -> dict:
+    """For each entry identifier, return the original content lines that sit under
+    its title within `section`'s range. Returns {identifier: [lines]}."""
+    rng = [i for i, (_l, s) in enumerate(section_lines) if s == section]
+    if not rng:
+        return {}
+    lo, hi = rng[0], rng[-1] + 1
+    norm = [_normalize_key(l) for l, _s in section_lines]
+    positions = []
+    for ident in identifiers:
+        ik = _normalize_key(ident)
+        pos = -1
+        if ik and len(ik) >= 4:
+            for i in range(lo, hi):
+                if ik in norm[i]:
+                    pos = i
+                    break
+        positions.append(pos)
+    result = {}
+    for j, (ident, start) in enumerate(zip(identifiers, positions)):
+        if start < 0 or positions.count(start) > 1:  # missing or ambiguous title -> skip (safety)
+            continue
+        end = hi
+        for k in positions[j + 1:]:
+            if k > start:
+                end = k
+                break
+        cands = []
+        for i in range(start + 1, end):
+            line = section_lines[i][0]
+            # Hard boundary: a new entry title. Titles in virtually every template
+            # carry a "|" stack/role separator while bullets never do — stopping
+            # here prevents capturing a following entry the optimizer may have
+            # dropped (which would otherwise be restored onto the wrong entry).
+            if "|" in line and not _restore_is_meta_line(line):
+                break
+            if _restore_is_meta_line(line):
+                continue
+            clean = line.strip().lstrip(_RESTORE_MARKERS + " ").strip()
+            if len(clean.split()) >= 3:
+                cands.append(clean)
+        result[ident] = cands
+    return result
+
+
+def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
+    """Append any original bullet whose content the optimizer dropped, back onto
+    the exact entry it came from. Safe against sub-section exchange and against
+    duplicating reworded content (see module guards above)."""
+    if not isinstance(parsed, dict) or not resume_string:
+        return parsed
+    section_lines = _restore_section_lines(resume_string)
+    plan = (
+        ("experience", "experience", ("company", "title")),
+        ("projects", "projects", ("name",)),
+        ("extracurricular", "extracurriculars", ("role", "organization")),
+    )
+    for heading_section, parsed_key, id_fields in plan:
+        entries = [e for e in (parsed.get(parsed_key) or []) if isinstance(e, dict)]
+        if not entries:
+            continue
+        identifiers = []
+        for e in entries:
+            vals = [str(e.get(f, "")).strip() for f in id_fields if str(e.get(f, "")).strip()]
+            identifiers.append(max(vals, key=len) if vals else "")
+        orig = _original_entry_candidates(section_lines, heading_section, identifiers)
+        for e, ident in zip(entries, identifiers):
+            cands = orig.get(ident)
+            if not cands:
+                continue
+            ai_bullets = [str(b).strip() for b in (e.get("bullets") or []) if str(b).strip()]
+            ai_tokens = set()
+            for b in ai_bullets:
+                ai_tokens |= _restore_tokens(b)
+            added = False
+            for c in cands:
+                ct = _restore_tokens(c)
+                if not ct:
+                    continue
+                shared = len(ct & ai_tokens) / len(ct)
+                if shared < 0.4:  # most of this content is absent -> it was dropped
+                    ai_bullets.append(c)
+                    ai_tokens |= ct
+                    added = True
+            if added:
+                e["bullets"] = ai_bullets
+    return parsed
 
 
 def normalize_contact_link(value: str, service: str) -> str:
@@ -3692,6 +3838,10 @@ async def upload_resume(
 
             parsed = parse_ai_json_response(response_string)
 
+            # Recover any bullet point the optimizer silently dropped/merged on a
+            # long resume, restoring it onto the exact entry it came from.
+            parsed = restore_dropped_bullets(parsed, resume_string)
+
             # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
             # The AI response already contains the optimized data - no need to re-extract original data
 
@@ -3842,12 +3992,12 @@ async def upload_resume(
                 await _match_entry_links("experience", ("company", "title"), "url", use_above=True)
                 await _match_entry_links("education", ("school", "degree"), "links", use_above=True)
 
-                # Unambiguous-only position fallback: fill a leftover section link ONLY when
-                # there is exactly one empty entry and exactly one unused link in that
-                # section. This guarantees a link can never land on the wrong sub-section.
+                # Unambiguous-only position fallback for experience/education: fill a
+                # leftover section link ONLY when there is exactly one empty entry and
+                # exactly one unused link. Guarantees a link never lands on the wrong
+                # sub-section (these sections are often only partially linked).
                 for section_key, field in (
                     ("education", "links"),
-                    ("certifications", "url"),
                     ("experience", "url"),
                 ):
                     items = [i for i in (parsed.get(section_key) or []) if isinstance(i, dict)]
@@ -3863,6 +4013,50 @@ async def upload_resume(
                     if len(avail) == 1:
                         empties[0][field] = avail[0]
                         section_used.add(avail[0].lower())
+
+                # Certifications: a flat list that is typically FULLY linked (each cert
+                # name is the clickable link). Section links now arrive in true reading
+                # order (row band, then column) — the same order the AI reads the PDF —
+                # so assign any remaining links to remaining certs 1:1 in order. This
+                # recovers every cert link even in dense 2-column layouts (e.g. ~20 certs)
+                # where per-name matching misses some, without sub-section exchange.
+                cert_dbg = {"names": [], "section_links": [], "assigned": []}
+                try:
+                    cert_items = [i for i in (parsed.get("certifications") or []) if isinstance(i, dict)]
+                    cert_dbg["names"] = [str(i.get("name", "")).strip() for i in cert_items]
+                    if cert_items:
+                        cert_urls = await asyncio.to_thread(
+                            extract_section_annotation_links, file_path, "certifications"
+                        ) or []
+                        cert_dbg["section_links"] = list(cert_urls)
+                        avail = [u for u in cert_urls if u and u.lower() not in section_used]
+                        empties = [i for i in cert_items if not _real(str(i.get("url", "") or ""))]
+                        for it, uri in zip(empties, avail):
+                            it["url"] = uri
+                            section_used.add(uri.lower())
+                            cert_dbg["assigned"].append((str(it.get("name", "")).strip(), uri))
+                except Exception:
+                    pass
+                # Persisted diagnostics (file is uploaded resume's sibling, survives cleanup).
+                try:
+                    import json as _json
+                    dbg_path = os.path.join(BASE_DIR, "cert_debug.txt")
+                    with open(dbg_path, "w", encoding="utf-8") as _df:
+                        _df.write("=== CERT NAMES (from AI) ===\n")
+                        for n in cert_dbg["names"]:
+                            _df.write(f"  - {n}\n")
+                        _df.write(f"\n=== CERT SECTION LINKS (reading order) [{len(cert_dbg['section_links'])}] ===\n")
+                        for u in cert_dbg["section_links"]:
+                            _df.write(f"  - {u}\n")
+                        _df.write(f"\n=== FINAL cert.url PER ENTRY ===\n")
+                        for it in (parsed.get("certifications") or []):
+                            if isinstance(it, dict):
+                                _df.write(f"  - {str(it.get('name','')).strip()}  ->  {it.get('url','')}\n")
+                        _df.write(f"\n=== READING-ORDER FILL ASSIGNED [{len(cert_dbg['assigned'])}] ===\n")
+                        for n, u in cert_dbg["assigned"]:
+                            _df.write(f"  - {n}  ->  {u}\n")
+                except Exception:
+                    pass
             except Exception:
                 pass
 
@@ -4346,6 +4540,7 @@ async def extract_cv_from_pdf(file: UploadFile = File(...)):
             raise HTTPException(status_code=500, detail=f"AI generation error: {exc}")
 
         parsed = parse_ai_json_response(response_string)
+        parsed = restore_dropped_bullets(parsed, resume_text)
         return _template_parsed_to_editor_payload(parsed)
     except HTTPException:
         raise
