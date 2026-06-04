@@ -304,9 +304,6 @@ hr, .divider, [class*="divider"],
 
         removePageGuides(doc);
 
-        const wasEditable = body.contentEditable === "true" || body.isContentEditable;
-        if (wasEditable) { body.contentEditable = "false"; void body.offsetHeight; }
-
         captureBaseFonts(doc);
         applyFontScale(doc, currentZoom);
 
@@ -342,8 +339,6 @@ hr, .divider, [class*="divider"],
         estimatedPages = Math.max(1,
             lastFillRatio > 1.01 ? Math.ceil(lastFillRatio) : 1
         );
-
-        if (wasEditable) body.contentEditable = "true";
 
         const wordCss = `
 /* ── TailorCV Word-Style Preview ── */
@@ -1021,7 +1016,11 @@ body {
             }
         });
 
-        window.addEventListener("resize", () => applyWordStylePreview(), { passive: true });
+        window.addEventListener("resize", () => {
+            // On mobile the soft keyboard firing resize must not disturb an active edit session.
+            if (frame && frame.contentDocument && frame.contentDocument.hasFocus()) return;
+            applyWordStylePreview();
+        }, { passive: true });
 
         fontDecreaseBtn?.addEventListener("click", () => changeFontScale(-0.05));
         fontIncreaseBtn?.addEventListener("click", () => changeFontScale(+0.05));
