@@ -589,5 +589,176 @@
         });
     })();
     </script>
+
+<!-- ===== ATS SCORE SHARE MODAL ===== -->
+<div id="ats-share-modal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:1rem;pointer-events:auto;">
+    <!-- Backdrop -->
+    <div id="ats-share-backdrop" style="position:absolute;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);pointer-events:none;"></div>
+
+    <!-- Card -->
+    <div style="position:relative;max-width:480px;width:100%;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.7);pointer-events:auto;">
+
+        <!-- Confetti strip -->
+        <div id="ats-confetti-strip" style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#f59e0b,#10b981,#3b82f6,#8b5cf6,#ec4899);animation:ats-shimmer 2s linear infinite;background-size:200%;"></div>
+
+        <!-- Body -->
+        <div style="background:linear-gradient(145deg,#0d1b3e,#1a0a3d);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:2rem 1.75rem 1.75rem;text-align:center;">
+
+            <!-- Trophy -->
+            <div style="font-size:3.5rem;line-height:1;margin-bottom:0.5rem;animation:ats-bounce 0.6s cubic-bezier(.36,.07,.19,.97) both;">🏆</div>
+
+            <!-- Headline -->
+            <h2 style="margin:0 0 0.4rem;font-size:1.55rem;font-weight:800;background:linear-gradient(135deg,#fbbf24,#f472b6,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                Top <span id="ats-share-score">0</span>% ATS Score!
+            </h2>
+            <p style="margin:0 0 0.25rem;color:#c7d8ff;font-size:0.95rem;font-weight:500;">
+                Your resume just beat most applicants.
+            </p>
+            <p style="margin:0 0 1.5rem;color:#7fa8d8;font-size:0.85rem;">
+                Less than <strong style="color:#fbbf24;">25% of resumes</strong> hit this score. Share it — you've earned it.
+            </p>
+
+            <!-- Share buttons -->
+            <div style="display:flex;flex-direction:column;gap:0.65rem;margin-bottom:1.25rem;">
+
+                <!-- LinkedIn -->
+                <button id="ats-share-linkedin-btn" style="display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:0.75rem 1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#0077b5,#005582);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;letter-spacing:0.01em;"
+                    onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(0,119,181,0.45)'"
+                    onmouseout="this.style.transform='';this.style.boxShadow=''">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    Share on LinkedIn
+                </button>
+
+                <!-- Twitter / X -->
+                <button id="share-twitter-btn" style="display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:0.75rem 1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#1a1a1a,#333);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;"
+                    onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(255,255,255,0.12)'"
+                    onmouseout="this.style.transform='';this.style.boxShadow=''">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    Share on X (Twitter)
+                </button>
+
+                <!-- Instagram (copy text) -->
+                <button id="share-instagram-btn" style="display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:0.75rem 1rem;border-radius:12px;border:none;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;font-size:0.9rem;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;"
+                    onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(253,29,29,0.35)'"
+                    onmouseout="this.style.transform='';this.style.boxShadow=''">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    <span id="insta-btn-text">Copy Caption for Instagram</span>
+                </button>
+            </div>
+
+            <!-- Maybe later -->
+            <button id="ats-share-close" style="background:none;border:none;color:#5a7a9a;font-size:0.82rem;cursor:pointer;text-decoration:underline;letter-spacing:0.02em;"
+                onmouseover="this.style.color='#93c5fd'"
+                onmouseout="this.style.color='#5a7a9a'">
+                Maybe later
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes ats-shimmer { 0%{background-position:0%} 100%{background-position:200%} }
+@keyframes ats-bounce  { 0%{transform:scale(0.3) rotate(-15deg);opacity:0} 60%{transform:scale(1.15) rotate(5deg)} 80%{transform:scale(0.95)} 100%{transform:scale(1) rotate(0deg);opacity:1} }
+@keyframes ats-modal-in{ 0%{transform:scale(0.85) translateY(30px);opacity:0} 100%{transform:scale(1) translateY(0);opacity:1} }
+#ats-share-modal > div:last-child { animation: ats-modal-in 0.4s cubic-bezier(0.175,0.885,0.32,1.275) both; }
+</style>
+
+<script>
+(function () {
+    var _modalOpen = false;
+
+    function buildShareText(score) {
+        return "🏆 Just scored " + score + "% on my ATS Resume Check — beating 75%+ of applicants!\n\nUsed TailorCV.ai to optimize my resume for any job description.\n\nTry it free 👉 https://thetailorcv.ai\n\n#JobSearch #Resume #ATS #CareerTips #TailorCV";
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("ats-share-modal");
+        if (modal) modal.style.display = "none";
+        _modalOpen = false;
+    }
+
+    function showShareModal(score) {
+        if (_modalOpen) return;
+        _modalOpen = true;
+
+        var modal = document.getElementById("ats-share-modal");
+        var scoreEl = document.getElementById("ats-share-score");
+        if (!modal) return;
+
+        if (scoreEl) scoreEl.textContent = score;
+        modal.style.display = "flex";
+
+        // Backdrop + close button
+        var backdrop = document.getElementById("ats-share-backdrop");
+        var closeBtn = document.getElementById("ats-share-close");
+        if (backdrop) backdrop.onclick = closeModal;
+        if (closeBtn) closeBtn.onclick = closeModal;
+
+        // LinkedIn (ats-share-modal uses id="ats-share-linkedin-btn" to avoid conflict with share-modal-overlay)
+        var liBtn = document.getElementById("ats-share-linkedin-btn");
+        if (liBtn) liBtn.onclick = function () {
+            var caption = buildShareText(score);
+            var origHTML = liBtn.innerHTML;
+            // Open LinkedIn immediately — don't gate on clipboard
+            window.open("https://www.linkedin.com/feed/", "_blank", "noopener,noreferrer");
+            // Try clipboard as a bonus so they can paste into LinkedIn
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(caption).then(function () {
+                    liBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6L9 17l-5-5"/></svg> Copied! Paste into LinkedIn';
+                    setTimeout(function () { liBtn.innerHTML = origHTML; }, 3000);
+                }).catch(function () { /* clipboard denied — LinkedIn already opened */ });
+            } else {
+                prompt("Copy this text and paste it in LinkedIn:", caption);
+            }
+        };
+
+        // Twitter / X
+        var twBtn = document.getElementById("share-twitter-btn");
+        if (twBtn) twBtn.onclick = function () {
+            var tweet = encodeURIComponent("🏆 Scored " + score + "% on my ATS Resume Check — top 25%!\n\nOptimized with TailorCV.ai — try it free 👉 https://thetailorcv.ai\n\n#Resume #ATS #JobSearch #CareerTips");
+            window.open("https://twitter.com/intent/tweet?text=" + tweet, "_blank", "noopener,width=600,height=500");
+        };
+
+        // Instagram — copy caption
+        var igBtn = document.getElementById("share-instagram-btn");
+        if (igBtn) igBtn.onclick = function () {
+            var caption = buildShareText(score);
+            var label = document.getElementById("insta-btn-text");
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(caption).then(function () {
+                    if (label) label.textContent = "✓ Copied! Paste it in Instagram";
+                    setTimeout(function () { if (label) label.textContent = "Copy Caption for Instagram"; }, 3000);
+                }).catch(function () { prompt("Copy this caption:", caption); });
+            } else {
+                prompt("Copy this caption:", caption);
+            }
+        };
+
+        // Escape key
+        function onKey(e) {
+            if (e.key === "Escape") { closeModal(); document.removeEventListener("keydown", onKey); }
+        }
+        document.addEventListener("keydown", onKey);
+    }
+
+    function maybeShow(score) {
+        if (score > 75) {
+            setTimeout(function () { showShareModal(score); }, 1000);
+        }
+    }
+
+    // Primary: custom event from ats_analysis.js
+    document.addEventListener("atsScoreReady", function (e) {
+        if (e && e.detail) maybeShow(e.detail.score);
+    });
+
+    // Fallback: in case event already fired before this listener was ready
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof window._atsFinalScore === "number") {
+            maybeShow(window._atsFinalScore);
+        }
+    });
+})();
+</script>
 </body>
 </html>
