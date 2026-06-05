@@ -628,12 +628,12 @@ body {
        TEMPLATE SWITCHER PANEL
     ───────────────────────────────────────────────────────────────────────── */
     const TEMPLATES = [
-        { id: 1,  name: "Modern Professional",      image: "pic1.jpg"  },
-        { id: 2,  name: "Executive Minimal",         image: "pic2.jpg"  },
-        { id: 3,  name: "Creative Tech",             image: "pic3.jpg"  },
-        { id: 4,  name: "Classic Academic",          image: "pic4.jpg"  },
-        { id: 5,  name: "Modern Elegant",            image: "pic5.jpg"  },
-        { id: 6,  name: "Professional Classic",      image: "pic6.jpg"  },
+        { id: 1,  name: "Modern Professional",      image: "pic1.png"  },
+        { id: 2,  name: "Executive Minimal",         image: "pic2.png"  },
+        { id: 3,  name: "Creative Tech",             image: "pic3.png"  },
+        { id: 4,  name: "Classic Academic",          image: "pic4.png"  },
+        { id: 5,  name: "Modern Elegant",            image: "pic5.png"  },
+        { id: 6,  name: "Professional Classic",      image: "pic6.png"  },
         { id: 7,  name: "Navy Sidebar",              image: "pic7.jpg"  },
         { id: 8,  name: "Teal Sidebar",              image: "pic8.jpg"  },
         { id: 9,  name: "Burgundy Sidebar",          image: "pic9.jpg"  },
@@ -646,6 +646,10 @@ body {
         { id: 16, name: "Navy Rail Editorial",       image: "pic16.png" },
         { id: 17, name: "Executive Gray Board",      image: "pic17.png" },
         { id: 18, name: "Classic Gray Professional", image: "pic18.png" },
+        { id: 19, name: "LaTeX Academic",            image: "pic19.png" },
+        { id: 20, name: "ATS Friendly",              image: "pic20.png" },
+        { id: 21, name: "Modern Tech",               image: "pic21.png" },
+        { id: 22, name: "Academic Serif",            image: "pic22.png" },
     ];
 
     function buildTemplateSwitcher() {
