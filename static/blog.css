@@ -501,6 +501,33 @@ h1.post-hero-title {
   border-radius: 8px;
 }
 
+.author-box {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin: 8px clamp(26px, 4vw, 52px) 24px;
+  padding: 20px;
+  border: 1px solid #d5d7ce;
+  border-radius: 12px;
+  background: var(--paper);
+}
+.author-box-badge {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.author-box-name { margin: 0 0 4px; font-weight: 700; color: var(--ink); }
+.author-box-title { font-weight: 500; color: var(--muted); }
+.author-box-bio { margin: 0 0 8px; color: var(--ink-soft); line-height: 1.55; }
+.author-box-link { font-weight: 600; }
+
 .cta {
   margin: 0;
   border: 0;
