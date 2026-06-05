@@ -166,6 +166,10 @@ Embedded is hardware-software integration. Show that you understand and work wit
 - [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
 - [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
+- [Android Developer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/android-developer-resume-2026)
+- [DevOps Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/devops-engineer-resume-2026)
+- [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

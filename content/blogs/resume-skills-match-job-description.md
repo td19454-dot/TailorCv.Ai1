@@ -316,6 +316,13 @@ A flat list or clearly labeled categories using standard ATS-readable text (no i
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
 - [How to Match Your Resume Summary to a Job Description](https://thetailorcv.com/blog/resume-summary-match-job-description)
+- [How to Improve Your Resume-to-Job Match Score — 10 Proven Strategies for 2026](https://thetailorcv.com/blog/improve-resume-job-match-score)
+- [Resume to Job Description Match Percentage — What Score Do You Need in 2026?](https://thetailorcv.com/blog/resume-job-description-match-percentage)
+- [Resume Keywords Guide 2026 — How to Find and Use the Right Keywords](https://thetailorcv.com/blog/resume-keywords-guide)
+- [Soft Skills for Resume in 2026 — How to Show Them (Not Just List Them)](https://thetailorcv.com/blog/soft-skills-for-resume)
+- [12 Common Resume and Job Description Mismatch Mistakes (And How to Fix Each One)](https://thetailorcv.com/blog/common-resume-job-description-mismatch-mistakes)
+- [Career Change Resume — How to Write a Resume When Switching Industries in 2026](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
+- [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 
 ---
 

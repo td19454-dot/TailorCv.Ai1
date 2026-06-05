@@ -293,4 +293,6 @@ Use tools like [TailorCV.ai](https://www.thetailorcv.com/solutions) to understan
 - [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [How to Prepare for Campus Placement in 2026 — Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 

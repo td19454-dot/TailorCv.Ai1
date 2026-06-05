@@ -183,6 +183,12 @@ A two weeks notice is brief. A few sentences is enough — do not write an essay
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
+- [How to Write a Resume Headline in 2026 — With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary in 2026 — With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [Data Analyst vs Data Scientist in 2026 — Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [Freelancing vs Full-Time Employment in 2026 — Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [Work-Life Balance Tips for Professionals in 2026 — Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 
 ## Conclusion
 

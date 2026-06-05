@@ -172,6 +172,10 @@ A 6-line paragraph is not a summary. Keep it to 2–4 lines.
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
 - [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [How to Write a Resume with AI in 2026 — Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [How to Match Your Resume Summary to a Job Description in 2026](https://thetailorcv.com/blog/resume-summary-match-job-description)
+- [Cover Letter Guide 2026 — How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [MBA Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
 
 ## Conclusion
 

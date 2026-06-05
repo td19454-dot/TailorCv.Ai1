@@ -159,6 +159,9 @@ On shipped titles, specify exactly what systems you built, not just "worked on t
 - [Flutter Developer Resume](https://thetailorcv.com/blog/flutter-developer-resume-2026)
 - [Frontend Developer Resume](https://thetailorcv.com/blog/frontend-developer-resume-2026)
 - [Full Stack Developer Resume](https://thetailorcv.com/blog/full-stack-developer-resume-2026)
+- [Go (Golang) Developer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/golang-developer-resume-2026)
+- [iOS Developer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/ios-developer-resume-2026)
+- [Java Developer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/java-developer-resume-2026)
 
 ## Conclusion
 

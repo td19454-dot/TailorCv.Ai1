@@ -146,6 +146,10 @@ No tool can guarantee an interview, but a high score dramatically increases your
 - [How to Increase Your ATS Score](https://thetailorcv.com/blog/how-to-increase-ats-score)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
+- [Free ATS Resume Scan — Test Your Resume in 60 Seconds (2026)](https://thetailorcv.com/blog/free-ats-resume-scan)
+- [ATS Resume Checker — How It Works and How to Pass (2026)](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)
+- [ATS Score vs Resume Score — What's the Difference? (2026)](https://thetailorcv.com/blog/ats-score-vs-resume-score)
+- [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
 
 ---
 

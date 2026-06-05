@@ -263,6 +263,14 @@ Very. Most tech companies use Agile methodologies. If you have worked in sprints
 - [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
 - [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
+- [How to Match Your Resume to a Remote Job Description in 2026](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description)
+- [How to Match Your Resume When You're Overqualified for the Job (2026 Guide)](https://thetailorcv.com/blog/overqualified-resume-match-job-description)
+- [How to Match Your Resume to a Data Analyst Job Description in 2026](https://thetailorcv.com/blog/resume-matching-data-analyst)
+- [Resume Matching for Experienced Professionals — How to Stay Relevant in 2026](https://thetailorcv.com/blog/resume-matching-experienced-professionals)
+- [ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)](https://thetailorcv.com/blog/ats-mistakes-tech-professionals)
+- [Resume Matching for Career Changers — How to Bridge the Gap in 2026](https://thetailorcv.com/blog/resume-matching-for-career-changers)
+- [How to Match Your Resume to a Marketing Job Description in 2026](https://thetailorcv.com/blog/resume-matching-marketing)
+- [Resume Matching with No Experience — How to Match a Job Description When You're Starting Out (2026)](https://thetailorcv.com/blog/resume-matching-no-experience)
 
 ---
 

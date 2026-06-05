@@ -17,13 +17,14 @@
     <meta name="twitter:title" content="{{ meta_title }}">
     <meta name="twitter:description" content="{{ meta_description }}">
     <meta name="twitter:image" content="{{ og_image }}">
+    {% if post.image %}<link rel="preload" as="image" href="{{ post.image }}" fetchpriority="high">{% endif %}
     <link rel="stylesheet" href="/static/style3.css">
     <link rel="stylesheet" href="/static/header-footer.css">
     <link rel="stylesheet" href="/static/style2.css?v=7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css">
+    <link rel="stylesheet" href="/static/blog.css?v=3">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -91,7 +92,7 @@
         <header class="post-header">
             <div class="post-hero">
                 {% if post.image %}
-                <img class="post-cover" src="{{ post.image }}" alt="{{ post.title }}" loading="eager" decoding="async">
+                <img class="post-cover" src="{{ post.image }}" alt="{{ post.title }}" loading="eager" decoding="async" fetchpriority="high">
                 {% endif %}
                 <div class="post-hero-overlay"></div>
                 <div class="post-hero-content">
@@ -100,7 +101,7 @@
                     <div class="post-hero-meta-row">
                         <div class="author-chip">
                             <span class="author-badge">TC</span>
-                            <span class="author"> {{ post.author }}</span>
+                            <span class="author"> {{ author_profile.name if author_profile else post.author }}</span>
                         </div>
                         <div class="meta-pills">
                             <span class="meta-pill">{{ post.date_display }}</span>
@@ -131,6 +132,17 @@
             <a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url={{ canonical_url }}">Share on LinkedIn</a>
             <a target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url={{ canonical_url }}&text={{ post.title }}">Share on X</a>
         </section>
+
+        {% if author_profile %}
+        <section class="author-box">
+            <span class="author-box-badge">TC</span>
+            <div class="author-box-body">
+                <p class="author-box-name">{{ author_profile.name }}<span class="author-box-title"> · {{ author_profile.title }}</span></p>
+                <p class="author-box-bio">{{ author_profile.bio }}</p>
+                <a class="author-box-link" href="{{ author_profile.url }}">More about theTailorCV →</a>
+            </div>
+        </section>
+        {% endif %}
     </article>
 
     <section class="related">

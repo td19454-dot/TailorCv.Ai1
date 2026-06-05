@@ -180,6 +180,10 @@ For entry-level tech roles, negotiating base salary up by 5–10% is very common
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [How to Explain Resume Gaps in 2026 — Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [Work-Life Balance Tips for Professionals in 2026 — Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
+- [Data Analyst vs Data Scientist in 2026 — Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [How to Follow Up After a Job Interview in 2026 — What to Send and When](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 
 ## Conclusion
 

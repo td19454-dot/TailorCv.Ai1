@@ -150,6 +150,9 @@ In 2026, SRE candidates without SLO/SLI/error budget experience are at a disadva
 - [Embedded Systems Engineer Resume](https://thetailorcv.com/blog/embedded-systems-engineer-resume-2026)
 - [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
 - [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
+- [Mechanical Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/mechanical-engineer-resume-2026)
+- [QA Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/qa-engineer-resume-2026)
+- [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
 
 ## Conclusion
 

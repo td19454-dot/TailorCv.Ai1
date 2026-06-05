@@ -183,6 +183,7 @@ Senior full stack roles expect engineers who test their code and automate deploy
 - [Python Developer Resume](https://thetailorcv.com/blog/python-developer-resume-2026)
 - [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

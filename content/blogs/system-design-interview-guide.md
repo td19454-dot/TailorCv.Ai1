@@ -194,6 +194,8 @@ Always discuss what breaks at scale and how you would handle single points of fa
 - [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
 - [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
+- [How to Prepare for Campus Placement in 2026 — Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 
 ## Conclusion
 

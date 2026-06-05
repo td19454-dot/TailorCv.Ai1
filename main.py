@@ -3093,18 +3093,50 @@ def build_absolute_url(path: str) -> str:
     return f"{SITE_URL}{path}"
 
 
+# ---------------------------------------------------------------------------
+# Author profile for E-E-A-T (byline, about-the-author box, schema author).
+# To attribute posts to a named individual instead, change "@type" to "Person"
+# and set name/jobTitle accordingly — everything else flows from here.
+# ---------------------------------------------------------------------------
+AUTHOR_PROFILE = {
+    "type": "Organization",
+    "name": "theTailorCV Team",
+    "title": "Resume & ATS Specialists",
+    "bio": (
+        "The theTailorCV team builds an AI-powered resume optimizer and free ATS "
+        "score checker used by job seekers worldwide. Our guides are written and "
+        "reviewed by specialists in resume writing, ATS optimization, and job search."
+    ),
+    "url": "https://thetailorcv.com/about",
+    "sameAs": [
+        "https://www.linkedin.com/company/thetailorcv/",
+        "https://www.instagram.com/thetailorcv/",
+        "https://www.youtube.com/@thetailorcv",
+    ],
+}
+
+
 def build_blogposting_schema(post, canonical_url: str) -> str:
     image_url = post.image if str(post.image).startswith("http") else build_absolute_url(post.image or "/static/logo.png")
+    author = {
+        "@type": AUTHOR_PROFILE["type"],
+        "name": AUTHOR_PROFILE["name"],
+        "url": AUTHOR_PROFILE["url"],
+        "sameAs": AUTHOR_PROFILE["sameAs"],
+    }
+    if AUTHOR_PROFILE["type"] == "Person":
+        author["jobTitle"] = AUTHOR_PROFILE["title"]
     schema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": post.title,
         "description": post.description,
         "image": [image_url],
-        "author": {"@type": "Person", "name": post.author},
+        "author": author,
         "publisher": {
             "@type": "Organization",
-            "name": "TailorCV",
+            "name": "theTailorCV",
+            "url": SITE_URL,
             "logo": {"@type": "ImageObject", "url": build_absolute_url("/static/logo.png")},
         },
         "datePublished": post.date_iso,
@@ -3447,6 +3479,7 @@ async def blog_post_page(request: Request, slug: str):
             "blog_schema_json": build_blogposting_schema(post, canonical_url),
             "breadcrumb_schema_json": build_breadcrumb_schema(post, canonical_url),
             "faq_schema_json": build_faq_schema(post),
+            "author_profile": AUTHOR_PROFILE,
         },
     )
 

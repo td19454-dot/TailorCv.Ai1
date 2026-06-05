@@ -183,6 +183,11 @@ A headline that does not match the target job creates an immediate mismatch impr
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [How to Write a Resume with AI in 2026 — Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [Cover Letter Guide 2026 — How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
+- [MBA Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
+- [How to Write a Two Weeks Notice in 2026 — Templates and Examples](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
 
 ## Conclusion
 
