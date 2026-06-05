@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ name }} - Resume</title>
+  <style>
+    @font-face { font-family: 'FA Solid'; font-weight: 900; font-style: normal;
+      src: url('static/fonts/fa-solid-900.woff2') format('woff2'), url('/static/fonts/fa-solid-900.woff2') format('woff2'); }
+    @font-face { font-family: 'FA Brand'; font-weight: 400; font-style: normal;
+      src: url('static/fonts/fa-brands-400.woff2') format('woff2'), url('/static/fonts/fa-brands-400.woff2') format('woff2'); }
+
+    :root {
+      --ink: #2b2b2b;
+      --muted: #6c6c6c;
+      --accent: #4a90d9;
+      --accent-d: #3b7dc4;
+      --rule: #b9d3ec;
+    }
+
+    @page { size: A4; margin: 9mm 15mm 13mm; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #fff; color: var(--ink);
+      font-family: "Lato", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+      font-size: 11px; line-height: 1.4; }
+
+    /* ---------- Header ---------- */
+    header { text-align: center; margin-bottom: 6px; }
+    .name { margin: 0; font-size: 33px; font-weight: 800; letter-spacing: 0.5px; color: var(--ink); }
+    .role { margin: 3px 0 7px; font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--accent); }
+    .contact { font-size: 10.4px; color: var(--muted); }
+    .contact .item { white-space: nowrap; }
+    .contact .item + .item::before { content: "  "; }
+    .contact .ic { font-family: 'FA Solid'; font-weight: 900; font-size: 9px; margin: 0 3px 0 6px; color: var(--accent); }
+    .contact .ic.b { font-family: 'FA Brand'; font-weight: 400; }
+    .contact .item:first-child .ic { margin-left: 0; }
+    .contact a { color: var(--muted); text-decoration: none; }
+
+    /* ---------- Sections ---------- */
+    a { color: var(--accent-d); text-decoration: none; }
+
+    .section { margin-top: 11px; page-break-inside: auto; }
+    .section h2 { margin: 0 0 6px; font-size: 15px; font-weight: 800; color: var(--accent);
+      display: flex; align-items: center; gap: 8px; page-break-after: avoid; }
+    .section h2::after { content: ""; flex: 1; height: 1.5px; background: var(--rule); }
+
+    .summary { margin: 0; color: #444; text-align: justify; }
+
+    .entry { margin-bottom: 7px; page-break-inside: avoid; }
+    .erow { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .eorg { font-size: 12px; font-weight: 700; color: var(--ink); }
+    .erole { font-size: 11px; font-variant: small-caps; letter-spacing: 0.4px; color: var(--muted); }
+    .eright { font-size: 10.6px; font-style: italic; color: var(--accent); white-space: nowrap; }
+    .note { font-weight: 400; font-style: italic; color: var(--muted); }
+
+    ul.bullets { margin: 2px 0 0; padding-left: 16px; }
+    ul.bullets li { margin-bottom: 1px; color: #444; }
+
+    .links { margin-top: 1px; font-size: 10.4px; }
+    .links .sep { color: #bbb; margin: 0 5px; }
+
+    /* ---------- Skills ---------- */
+    .skill-row { display: flex; gap: 10px; margin-bottom: 3px; align-items: baseline; }
+    .skill-key { flex: 0 0 78px; font-weight: 700; color: var(--ink); }
+    .skill-val { color: #444; }
+
+    .compact { margin: 0; padding-left: 16px; }
+    .compact li { margin-bottom: 1px; color: #444; }
+  </style>
+</head>
+<body>
+{% macro plink(href, label, ns) %}{% set u = href if href.startswith(('http://', 'https://')) else 'https://' ~ href %}{% set k = u|lower %}{% if href and ('|' ~ k ~ '|') not in ns.seen %}{% set ns.seen = ns.seen ~ k ~ '|' %}{% if ns.n > 0 %}<span class="sep">|</span>{% endif %}<a href="{{ u }}" target="_blank" rel="noopener noreferrer">{{ label or 'Link' }}</a>{% set ns.n = ns.n + 1 %}{% endif %}{% endmacro %}
+  <header>
+    <h1 class="name">{{ name }}</h1>
+    {% if summary and summary|length <= 64 %}<p class="role">{{ summary }}</p>{% endif %}
+    <div class="contact">
+      {% if contact.phone %}<span class="item"><span class="ic">&#xf095;</span><a href="{{ contact.phone_href }}">{{ contact.phone }}</a></span>{% endif %}
+      {% if contact.email %}<span class="item"><span class="ic">&#xf0e0;</span><a href="{{ contact.email_href }}">{{ contact.email }}</a></span>{% endif %}
+      {% if contact.github %}<span class="item"><span class="ic b">&#xf09b;</span><a href="{{ contact.github_href }}" target="_blank" rel="noopener noreferrer">{{ contact.github_display or contact.github }}</a></span>{% endif %}
+      {% if contact.linkedin %}<span class="item"><span class="ic b">&#xf08c;</span><a href="{{ contact.linkedin_href }}" target="_blank" rel="noopener noreferrer">{{ contact.linkedin_display or contact.linkedin }}</a></span>{% endif %}
+      {% if contact.portfolio %}<span class="item"><span class="ic">&#xf0ac;</span><a href="{{ contact.portfolio_href }}" target="_blank" rel="noopener noreferrer">{{ contact.portfolio_display or contact.portfolio }}</a></span>{% endif %}
+      {% if contact.leetcode %}<span class="item"><span class="ic">&#xf121;</span><a href="{{ contact.leetcode_href }}" target="_blank" rel="noopener noreferrer">{{ contact.leetcode_display or contact.leetcode }}</a></span>{% endif %}
+      {% if contact.codeforces %}<span class="item"><span class="ic">&#xf5fc;</span><a href="{{ contact.codeforces_href }}" target="_blank" rel="noopener noreferrer">{{ contact.codeforces_display or contact.codeforces }}</a></span>{% endif %}
+      {% if contact.kaggle %}<span class="item"><span class="ic b">&#xf5fa;</span><a href="{{ contact.kaggle_href }}" target="_blank" rel="noopener noreferrer">{{ contact.kaggle_display or contact.kaggle }}</a></span>{% endif %}
+      {% if contact.google_scholar %}<span class="item"><span class="ic">&#xf19d;</span><a href="{{ contact.google_scholar_href }}" target="_blank" rel="noopener noreferrer">Google Scholar</a></span>{% endif %}
+      {% if contact.address %}<span class="item"><span class="ic">&#xf3c5;</span>{{ contact.address }}</span>{% endif %}
+    </div>
+  </header>
+
+  {% if summary and summary|length > 64 %}
+  <section class="section">
+    <h2>Summary</h2>
+    <p class="summary">{{ summary }}</p>
+  </section>
+  {% endif %}
+
+  {% if education %}
+  <section class="section">
+    <h2>Education</h2>
+    {% for edu in education %}
+    <div class="entry">
+      <div class="erow">
+        <span class="eorg">{{ edu.school }}</span>
+        {% if edu.year %}<span class="eright">{{ edu.year }}</span>{% endif %}
+      </div>
+      {% if edu.degree or edu.score %}
+      <div class="erow">
+        <span class="erole">{{ edu.degree }}{% if edu.degree and edu.score %}, {{ edu.score }}{% elif edu.score %}{{ edu.score }}{% endif %}</span>
+        {% if edu.links %}<span class="eright"><a href="{{ edu.links }}" target="_blank" rel="noopener noreferrer">{{ edu.links_label or "Link" }}</a></span>{% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if skills %}
+  <section class="section">
+    <h2>Skills</h2>
+    {% for skill in skills %}{% if skill %}
+      {% if ':' in skill %}{% set parts = skill.split(':', 1) %}<div class="skill-row"><span class="skill-key">{{ parts[0] }}</span><span class="skill-val">{{ parts[1].strip() }}</span></div>
+      {% else %}<div class="skill-row"><span class="skill-val">{{ skill }}</span></div>{% endif %}
+    {% endif %}{% endfor %}
+  </section>
+  {% endif %}
+
+  {% if experience %}
+  <section class="section">
+    <h2>Experience</h2>
+    {% for exp in experience %}
+    <div class="entry">
+      <div class="erow">
+        <span class="eorg">{{ exp.company or exp.title }}</span>
+        {% if exp.location %}<span class="eright">{{ exp.location }}</span>{% elif not (exp.company and exp.title) and exp.dates %}<span class="eright">{{ exp.dates }}</span>{% endif %}
+      </div>
+      {% if (exp.company and exp.title) or (exp.location and exp.dates) %}
+      <div class="erow">
+        <span class="erole">{% if exp.company and exp.title %}{{ exp.title }}{% endif %}</span>
+        {% if exp.dates and (exp.location or (exp.company and exp.title)) %}<span class="eright">{{ exp.dates }}</span>{% endif %}
+      </div>
+      {% endif %}
+      {% if exp.url %}<div class="links"><a href="{{ exp.url }}" target="_blank" rel="noopener noreferrer">{{ exp.url_label or "Link" }}</a></div>{% endif %}
+      {% if exp.bullets %}<ul class="bullets">{% for b in exp.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if projects %}
+  <section class="section">
+    <h2>Projects</h2>
+    {% for project in projects %}
+    <div class="entry">
+      <div class="erow">
+        <span class="eorg">{{ project.name }}</span>
+        {% if project.dates %}<span class="eright">{{ project.dates }}</span>{% endif %}
+      </div>
+      {% if project.subtitle %}<div class="erow"><span class="erole">{{ project.subtitle }}</span></div>{% endif %}
+      {% set ns = namespace(seen='|', n=0) %}
+      {% set linkout %}{% if project.primary_link %}{{ plink(project.primary_link.href or project.primary_link.display or '', project.primary_link.label, ns) }}{% endif %}{% for l in project.links or [] %}{{ plink(l.href or l.display or '', l.label, ns) }}{% endfor %}{% if project.github_link %}{{ plink(project.github_link, 'GitHub', ns) }}{% endif %}{% if project.url %}{{ plink(project.url, project.url_label or 'Link', ns) }}{% endif %}{% endset %}
+      {% if ns.n > 0 %}<div class="links">{{ linkout }}</div>{% endif %}
+      {% if project.bullets %}<ul class="bullets">{% for b in project.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if extracurriculars %}
+  <section class="section">
+    <h2>Leadership &amp; Activities</h2>
+    {% for item in extracurriculars %}
+    <div class="entry">
+      <div class="erow">
+        <span class="eorg">{{ item.organization or item.role }}</span>
+        {% if item.dates %}<span class="eright">{{ item.dates }}</span>{% endif %}
+      </div>
+      {% if item.organization and item.role %}<div class="erow"><span class="erole">{{ item.role }}</span></div>{% endif %}
+      {% if item.bullets %}<ul class="bullets">{% for b in item.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if certifications %}
+  <section class="section">
+    <h2>Certifications</h2>
+    <ul class="compact">
+      {% for cert in certifications %}<li>{{ cert.name }}{% if cert.issuer %}, {{ cert.issuer }}{% endif %}{% if cert.year %}, {{ cert.year }}{% endif %}{% if cert.url %} | <a href="{{ cert.url if cert.url.startswith(('http://', 'https://')) else 'https://' ~ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.url_label or "Link" }}</a>{% endif %}</li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if publications %}
+  <section class="section">
+    <h2>Publications</h2>
+    <ul class="compact">
+      {% for publication in publications %}<li>{{ publication.title }}{% if publication.publisher %}, {{ publication.publisher }}{% endif %}{% if publication.year %} ({{ publication.year }}){% endif %}{% if publication.url %} | <a href="{{ publication.url if publication.url.startswith(('http://', 'https://')) else 'https://' ~ publication.url }}" target="_blank" rel="noopener noreferrer">{{ publication.url_label or "Link" }}</a>{% endif %}</li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if achievements %}
+  <section class="section">
+    <h2>Achievements</h2>
+    <ul class="compact">
+      {% for a in achievements %}<li>{{ a }}</li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</body>
+</html>

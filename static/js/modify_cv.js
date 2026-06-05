@@ -48,12 +48,22 @@
     function getTemplatePreviewSrc(templateId) {
         const id = Number(templateId);
         const previewMap = {
+            1: "pic1.png",
+            2: "pic2.png",
+            3: "pic3.png",
+            4: "pic4.png",
+            5: "pic5.png",
+            6: "pic6.png",
             13: "pic13.png",
             14: "pic14.png",
             15: "pic15.png",
             16: "pic16.png",
             17: "pic17.png",
             18: "pic18.png",
+            19: "pic19.png",
+            20: "pic20.png",
+            21: "pic21.png",
+            22: "pic22.png",
         };
         const filename = previewMap[id] || `pic${id}.jpg`;
         return `/static/${filename}`;
