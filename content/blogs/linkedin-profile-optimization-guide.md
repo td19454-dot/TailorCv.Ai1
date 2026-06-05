@@ -218,6 +218,11 @@ Even 30 minutes per week of LinkedIn activity can double your profile view count
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
+- [How to Follow Up After a Job Interview in 2026 — What to Send and When](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [Work-Life Balance Tips for Professionals in 2026 — Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
+- [Data Analyst vs Data Scientist in 2026 — Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [Freelancing vs Full-Time Employment in 2026 — Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [How to Explain Resume Gaps in 2026 — Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 
 ## Conclusion
 

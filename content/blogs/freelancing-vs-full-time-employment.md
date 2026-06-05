@@ -174,6 +174,9 @@ This hybrid approach is increasingly viable in 2026 with remote work normalizing
 - [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
 - [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
+- [First 90 Days at a New Job in 2026 — How to Succeed and Stand Out](https://thetailorcv.com/blog/first-90-days-at-new-job)
+- [How to Ask for a Raise in 2026 — Scripts, Timing, and Strategy](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
+- [Personal Branding for Professionals in 2026 — Complete Guide](https://thetailorcv.com/blog/personal-branding-for-professionals)
 
 ## Conclusion
 

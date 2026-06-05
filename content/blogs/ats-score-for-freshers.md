@@ -117,6 +117,8 @@ Pull keywords from your real coursework, projects, certifications, and internshi
 - [Technical Skills in Resume for Freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [How to Write a Resume With No Experience](https://thetailorcv.com/blog/resume-with-no-experience)
 - [Resume Templates for Beginners](https://thetailorcv.com/blog/resume-templates-for-beginners)
+- [ATS Resume Checker — How It Works and How to Pass (2026)](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)
+- [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
 
 ---
 

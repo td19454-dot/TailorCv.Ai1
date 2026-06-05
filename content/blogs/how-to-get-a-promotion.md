@@ -165,6 +165,11 @@ If you cannot list your specific quantified achievements, you cannot make a stro
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [How to Handle Job Rejection in 2026 — Practical Guide for Job Seekers](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Negotiate a Salary Offer in 2026 — Tactics That Actually Work](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
+- [How to Quit Your Job Professionally in 2026 — Complete Guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
+- [How to Write a Resume Headline in 2026 — With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
 
 ## Conclusion
 

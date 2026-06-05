@@ -300,4 +300,9 @@ Your career path does not have to be perfectly linear to be valuable. It just ha
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
 - [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
+- [Resume Matching for Career Changers — How to Bridge the Gap in 2026](https://thetailorcv.com/blog/resume-matching-for-career-changers)
+- [How to Write a Resume Headline in 2026 — With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary in 2026 — With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [How to Write a Resume with AI in 2026 — Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [How to Match Your Resume Skills Section to Any Job Description in 2026](https://thetailorcv.com/blog/resume-skills-match-job-description)
 

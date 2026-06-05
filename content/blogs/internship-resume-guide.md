@@ -243,6 +243,11 @@ Tailor your resume to each role. Your Python and ML resume for a data science in
 - [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [Business Analyst Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [Data Analyst Resume 2026](https://thetailorcv.com/blog/data-analyst-resume-2026)
+- [Financial Analyst Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/financial-analyst-resume-2026)
+- [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
+- [How to Write a Resume Summary in 2026 — With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
 
 ## Conclusion
 

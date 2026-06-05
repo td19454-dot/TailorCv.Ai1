@@ -176,6 +176,8 @@ If you only ever worked in a single development environment, practice building r
 - [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
 - [Mechanical Engineer Resume](https://thetailorcv.com/blog/mechanical-engineer-resume-2026)
 - [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
+- [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

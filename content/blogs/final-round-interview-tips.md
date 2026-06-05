@@ -175,6 +175,8 @@ Generic questions at the final round signal weak engagement. Ask strategic, seni
 - [How to Practice Mock Interviews Online for Free Using AI](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai)
 - [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
 - [System Design Interview Guide](https://thetailorcv.com/blog/system-design-interview-guide)
+- [Technical Interview Preparation Guide 2026 — Complete Roadmap](https://thetailorcv.com/blog/technical-interview-preparation-guide)
+- [How to Prepare for Campus Placement in 2026 — Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 
 ## Conclusion
 

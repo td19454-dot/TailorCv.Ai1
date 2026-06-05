@@ -214,6 +214,13 @@ Before submitting every application, run through this:
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [What Not to Put on a Resume in 2026 — 25 Things to Remove Immediately](https://thetailorcv.com/blog/what-not-to-put-on-resume)
+- [How to Write a Resume with AI in 2026 — Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [Soft Skills for Resume in 2026 — How to Show Them (Not Just List Them)](https://thetailorcv.com/blog/soft-skills-for-resume)
+- [Why Is My ATS Score So Low? 12 Reasons and Fixes (2026)](https://thetailorcv.com/blog/why-is-my-ats-score-low)
+- [ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)](https://thetailorcv.com/blog/ats-mistakes-tech-professionals)
 
 ## Conclusion
 

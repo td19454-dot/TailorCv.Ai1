@@ -172,6 +172,7 @@ In 2026, GA4, GA4 reports, and Google Ads Performance Max are standard. If your 
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 - [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

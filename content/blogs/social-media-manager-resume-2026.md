@@ -144,6 +144,9 @@ Link to accounts you have grown or a portfolio of your content and campaign resu
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [HR Manager Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/hr-manager-resume-2026)
+- [How to Match Your Resume to a Marketing Job Description in 2026](https://thetailorcv.com/blog/resume-matching-marketing)
 
 ## Conclusion
 
