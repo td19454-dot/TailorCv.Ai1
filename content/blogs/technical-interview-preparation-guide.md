@@ -170,6 +170,8 @@ Practice all of this with the [free AI mock interview tool](https://thetailorcv.
 - [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 - [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [How to Prepare for Campus Placement in 2026 — Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 
 ## Conclusion
 

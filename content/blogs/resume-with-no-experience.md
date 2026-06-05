@@ -355,6 +355,10 @@ You can explore professional fresher resume templates here:
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Ideal Resume Length in 2026 — One Page or Two? Complete Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [How to Write a Resume Summary in 2026 — With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [How to Improve Your ATS Score in 2026](https://thetailorcv.com/blog/resume-optimization-guide)
+- [Soft Skills for Resume in 2026 — How to Show Them (Not Just List Them)](https://thetailorcv.com/blog/soft-skills-for-resume)
 
 ## Conclusion
 

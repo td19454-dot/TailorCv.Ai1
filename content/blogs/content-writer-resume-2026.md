@@ -151,6 +151,10 @@ Employers know AI writing tools exist. Position yourself as a writer who uses AI
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [How to List Certifications on a Resume in 2026 — With Examples](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+- [How to Write a Resume Headline in 2026 — With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary in 2026 — With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
 
 ## Conclusion
 

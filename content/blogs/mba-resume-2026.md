@@ -163,6 +163,11 @@ Many schools require a specific resume format. Follow it exactly.
 - [Sales Executive Resume](https://thetailorcv.com/blog/sales-executive-resume-2026)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
+- [How to Quantify Resume Achievements — With 50 Examples](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Write a Resume Headline in 2026 — With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary in 2026 — With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [200 Best Action Verbs for Resume in 2026 — By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [Top Skills to Add to Your Resume in 2026 — By Industry and Role](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 
 ## Conclusion
 

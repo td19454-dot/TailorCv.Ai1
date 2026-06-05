@@ -181,6 +181,11 @@ A great personal brand cannot compensate for a weak resume or profile. Get the f
 - [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 - [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [MBA Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
+- [Behavioral Interview Questions and Answers — Complete 2026 Guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [How to Prepare for a Job Interview in 2026 — Complete Guide for Every Industry](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 
 ## Conclusion
 

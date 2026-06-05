@@ -168,6 +168,12 @@ Not building on others or ignoring the discussion flow signals weak teamwork.
 - [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
 - [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Phone Interview Tips 2026 — How to Ace the Phone Screen](https://thetailorcv.com/blog/phone-interview-tips)
+- [How to Explain Resume Gaps in 2026 — Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to Get a Job With No Experience — 10 Strategies That Actually Work in 2026](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [Networking Tips for Job Search in 2026 — Even If You Hate Networking](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [System Design Interview Guide 2026 — Framework and Examples](https://thetailorcv.com/blog/system-design-interview-guide)
 
 ## Conclusion
 

@@ -157,6 +157,12 @@ AI is a tool. Use it to communicate your real value more effectively — not to 
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
+- [Ideal Resume Length in 2026 — One Page or Two? Complete Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [Why Your Resume Never Gets a Response — 12 Hidden ATS Mistakes Killing Your Job Search in 2026](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search)
+- [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
+- [How to Match Your Resume Summary to a Job Description in 2026](https://thetailorcv.com/blog/resume-summary-match-job-description)
+- [ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)](https://thetailorcv.com/blog/ats-keyword-mistakes)
+- [Career Change Resume — How to Write a Resume When Switching Industries in 2026](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
 
 ## Conclusion
 

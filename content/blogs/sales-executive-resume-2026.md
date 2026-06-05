@@ -158,6 +158,7 @@ A sales summary without attainment numbers is immediately weaker than one with t
 - [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
 - [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 - [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

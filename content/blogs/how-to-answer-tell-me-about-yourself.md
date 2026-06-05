@@ -163,6 +163,12 @@ Use the [free AI mock interview tool](https://thetailorcv.com/mock-interview) to
 - [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
+- [System Design Interview Guide 2026 — Framework and Examples](https://thetailorcv.com/blog/system-design-interview-guide)
+- [How to List Certifications on a Resume in 2026 — With Examples](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [How to Prepare for Campus Placement in 2026 — Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [How to Quantify Resume Achievements — With 50 Examples](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Write a Resume Headline in 2026 — With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
 
 ## Conclusion
 

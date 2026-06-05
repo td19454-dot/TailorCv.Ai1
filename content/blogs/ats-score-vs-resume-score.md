@@ -120,6 +120,10 @@ Always check your **ATS score against the specific job description** before appl
 - [ATS Resume Checker — How It Works](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)
 - [How to Increase Your ATS Score](https://thetailorcv.com/blog/how-to-increase-ats-score)
 - [ATS Score Guide for 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
+- [Free ATS Resume Scan — Test Your Resume in 60 Seconds (2026)](https://thetailorcv.com/blog/free-ats-resume-scan)
+- [Why Is My ATS Score So Low? 12 Reasons and Fixes (2026)](https://thetailorcv.com/blog/why-is-my-ats-score-low)
+- [ATS Keywords — How to Find and Add Them to Boost Your Score (2026)](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
 
 ---
 

@@ -162,6 +162,11 @@ This 5-minute process can be the difference between getting filtered out and get
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [How to Match Resume Keywords to Job Description — 2026 Guide](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
+- [Why Your Resume Never Gets a Response — 12 Hidden ATS Mistakes Killing Your Job Search in 2026](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search)
+- [Job Description Keyword Extraction — Complete Guide for 2026](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- [ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)](https://thetailorcv.com/blog/ats-keyword-mistakes)
+- [How to Improve Your Resume-to-Job Match Score — 10 Proven Strategies for 2026](https://thetailorcv.com/blog/improve-resume-job-match-score)
 
 ## Conclusion
 
