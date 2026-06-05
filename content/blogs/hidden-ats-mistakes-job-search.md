@@ -4,7 +4,7 @@ description: Discover the 12 less-obvious ATS mistakes that prevent your resume 
 date: 2026-06-03
 author: TailorCV Team
 tags: [Hidden ATS Mistakes, ATS Resume, Resume Tips, Job Search, Resume Optimization 2026]
-category: Resume Writing
+category: ATS Optimization
 image: public/blog-images/hidden-ats-mistakes.png
 slug: hidden-ats-mistakes-job-search
 keywords: hidden ATS mistakes, ATS resume problems, why resume not getting responses, ATS rejection reasons, ATS mistakes 2026, why is my resume not working, silent resume rejection

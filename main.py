@@ -3128,6 +3128,79 @@ def build_breadcrumb_schema(post, canonical_url: str) -> str:
     return json.dumps(schema, separators=(",", ":"))
 
 
+def _strip_html(fragment: str) -> str:
+    """Strip tags and unescape entities to plain text (for schema values)."""
+    import html as _html
+    text = re.sub(r"<[^>]+>", " ", fragment or "")
+    text = _html.unescape(text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def build_faq_schema(post) -> str:
+    """Generate FAQPage JSON-LD from a post's FAQ section, if it has one.
+
+    Looks for an H2 like "Frequently Asked Questions" and turns each following
+    H3 (question) + answer HTML into a Question/Answer pair. Returns "" when no
+    valid FAQ (at least 2 Q&A) is found, so non-FAQ posts emit nothing.
+    """
+    html_content = post.content_html or ""
+    heading = re.search(
+        r"<h2[^>]*>\s*(?:Frequently Asked Questions|FAQs?|Common Questions)\s*</h2>",
+        html_content,
+        re.IGNORECASE,
+    )
+    if not heading:
+        return ""
+    section = html_content[heading.end():]
+    next_h2 = re.search(r"<h2[\s>]", section)
+    if next_h2:
+        section = section[:next_h2.start()]
+
+    parts = re.split(r"<h3[^>]*>(.*?)</h3>", section, flags=re.DOTALL)
+    qas = []
+    for i in range(1, len(parts) - 1, 2):
+        question = _strip_html(parts[i])
+        answer = _strip_html(parts[i + 1])
+        if question and answer:
+            qas.append((question, answer))
+    if len(qas) < 2:
+        return ""
+
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": q,
+                "acceptedAnswer": {"@type": "Answer", "text": a},
+            }
+            for q, a in qas
+        ],
+    }
+    return json.dumps(schema, separators=(",", ":"))
+
+
+def build_software_app_schema() -> str:
+    """SoftwareApplication JSON-LD for the free ATS checker / resume optimizer."""
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "theTailorCV ATS Score Checker & Resume Optimizer",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "url": build_absolute_url("/solutions"),
+        "description": (
+            "Free AI-powered ATS score checker and resume optimizer. Upload your "
+            "resume and a job description to get an instant ATS score, missing "
+            "keywords, and optimization tips."
+        ),
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "publisher": {"@type": "Organization", "name": "theTailorCV", "url": SITE_URL},
+    }
+    return json.dumps(schema, separators=(",", ":"))
+
+
 @app.get("/favicon.png", include_in_schema=False)
 async def favicon_ico():
     return FileResponse(
@@ -3182,6 +3255,7 @@ async def solutions_page(request: Request):
         {
             "request": request,
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
+            "software_schema_json": build_software_app_schema(),
         },
     )
 
@@ -3196,6 +3270,7 @@ async def optimize_page(request: Request):
         {
             "request": request,
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
+            "software_schema_json": build_software_app_schema(),
         },
     )
 
@@ -3371,6 +3446,7 @@ async def blog_post_page(request: Request, slug: str):
             "codehilite_css": codehilite_css(),
             "blog_schema_json": build_blogposting_schema(post, canonical_url),
             "breadcrumb_schema_json": build_breadcrumb_schema(post, canonical_url),
+            "faq_schema_json": build_faq_schema(post),
         },
     )
 

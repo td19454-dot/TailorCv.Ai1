@@ -751,7 +751,7 @@ body {
                     ${TEMPLATES.map(t => `
                         <div class="tc-sw-card ${t.id === templateId ? "active" : ""}"
                              data-tid="${t.id}" title="${t.name}">
-                            <img src="/static/${t.image}?v=8" alt="${t.name}" loading="lazy">
+                            <img src="/static/${t.image}?v=9" alt="${t.name}" loading="lazy">
                             <div class="tc-sw-card-name">${t.name}</div>
                         </div>
                     `).join("")}

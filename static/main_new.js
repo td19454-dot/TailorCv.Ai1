@@ -284,7 +284,7 @@ function generateTemplateGrid() {
     grid.innerHTML = templates.map(temp => `
         <div class="template-card ${selectedTemplate && Number(selectedTemplate.id) === Number(temp.id) ? 'selected' : ''}" data-template-id="${temp.id}" onclick="selectTemplate(${temp.id}, this)">
             <div class="template-image-container">
-                <img src="/static/${temp.image}?v=8" alt="${temp.name}" class="template-img">
+                <img src="/static/${temp.image}?v=9" alt="${temp.name}" class="template-img">
                 <div class="template-overlay">
                     <span>Click to Select</span>
                 </div>
