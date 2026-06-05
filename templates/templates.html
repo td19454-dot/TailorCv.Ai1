@@ -250,22 +250,22 @@
             function getPreviewSrc(templateId) {
                 const id = Number(templateId);
                 const pngPreviewMap = {
-                    1: "pic1.png",
-                    2: "pic2.png",
-                    3: "pic3.png",
-                    4: "pic4.png",
-                    5: "pic5.png",
-                    6: "pic6.png",
-                    13: "pic13.png",
-                    14: "pic14.png",
-                    15: "pic15.png",
-                    16: "pic16.png",
-                    17: "pic17.png",
-                    18: "pic18.png",
-                    19: "pic19.png",
-                    20: "pic20.png",
-                    21: "pic21.png",
-                    22: "pic22.png"
+                    1: "pic1.webp",
+                    2: "pic2.webp",
+                    3: "pic3.webp",
+                    4: "pic4.webp",
+                    5: "pic5.webp",
+                    6: "pic6.webp",
+                    13: "pic13.webp",
+                    14: "pic14.webp",
+                    15: "pic15.webp",
+                    16: "pic16.webp",
+                    17: "pic17.webp",
+                    18: "pic18.webp",
+                    19: "pic19.webp",
+                    20: "pic20.webp",
+                    21: "pic21.webp",
+                    22: "pic22.webp"
                 };
                 const fileName = pngPreviewMap[id] || `pic${id}.jpg`;
                 return `/static/${fileName}?v=9`;
