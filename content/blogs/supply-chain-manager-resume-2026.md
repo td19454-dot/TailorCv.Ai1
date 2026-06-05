@@ -153,6 +153,8 @@ Lean, Six Sigma, and S&OP experience are valued. Include them if you have them.
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [HR Manager Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/hr-manager-resume-2026)
 
 ## Conclusion
 

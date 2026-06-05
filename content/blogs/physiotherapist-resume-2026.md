@@ -144,6 +144,8 @@ Orthopedic, neuro, sports, pediatric — clarify your focus so employers can mat
 - [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
 - [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
+- [Cybersecurity Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

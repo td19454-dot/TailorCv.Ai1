@@ -160,6 +160,12 @@ Document your wins from day one. When promotion or raise time comes, you will ne
 - [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 - [How to Write a Two Weeks Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [Freelancing vs Full-Time Employment in 2026 — Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [How to Write a Resume Headline in 2026 — With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary in 2026 — With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [200 Best Action Verbs for Resume in 2026 — By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [20 Common Interview Mistakes to Avoid in 2026](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 
 ## Conclusion
 

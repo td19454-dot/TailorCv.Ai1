@@ -171,6 +171,12 @@ If you have real achievements, they demonstrate soft skills automatically. You r
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
 - [MBA Resume](https://thetailorcv.com/blog/mba-resume-2026)
+- [Cover Letter Guide 2026 — How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Why Your Resume Never Gets a Response — 12 Hidden ATS Mistakes Killing Your Job Search in 2026](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [20 Common Interview Mistakes to Avoid in 2026](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
+- [How to Answer "Tell Me About Yourself" in 2026 — With Examples](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
 
 ## Conclusion
 

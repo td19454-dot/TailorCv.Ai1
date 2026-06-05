@@ -184,6 +184,10 @@ This guide uses hiring context from TailorCV analysis of 400+ data engineering j
 - [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
 - [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
 - [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
+- [DevOps Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/devops-engineer-resume-2026)
+- [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
+- [ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)](https://thetailorcv.com/blog/ats-mistakes-tech-professionals)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

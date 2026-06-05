@@ -175,6 +175,10 @@ The effort of a good cover letter is only worth it when you are genuinely intere
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
+- [How to Explain Resume Gaps in 2026 — Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to Write a Resume Headline in 2026 — With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary in 2026 — With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [200 Best Action Verbs for Resume in 2026 — By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 
 ## Conclusion
 

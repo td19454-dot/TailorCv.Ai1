@@ -268,6 +268,11 @@ No. Omit pronouns entirely. "Led a team of 6 engineers" not "I led a team of 6 e
 - [How to Match Your Resume Skills Section to Any Job Description](https://thetailorcv.com/blog/resume-skills-match-job-description)
 - [Resume Matching for Career Changers](https://thetailorcv.com/blog/resume-matching-for-career-changers)
 - [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
+- [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
+- [Resume Matching for Experienced Professionals — How to Stay Relevant in 2026](https://thetailorcv.com/blog/resume-matching-experienced-professionals)
+- [How to Write a Resume with AI in 2026 — Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [How to Improve Your Resume-to-Job Match Score — 10 Proven Strategies for 2026](https://thetailorcv.com/blog/improve-resume-job-match-score)
+- [Resume to Job Description Match Percentage — What Score Do You Need in 2026?](https://thetailorcv.com/blog/resume-job-description-match-percentage)
 
 ---
 

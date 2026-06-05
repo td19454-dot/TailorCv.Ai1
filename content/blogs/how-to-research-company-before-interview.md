@@ -180,6 +180,12 @@ Connect your past examples to their specific context. "At [Company], I solved a 
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
 - [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
 - [Technical Interview Preparation Guide](https://thetailorcv.com/blog/technical-interview-preparation-guide)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [200 Best Action Verbs for Resume in 2026 — By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [Cover Letter Guide 2026 — How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [First 90 Days at a New Job in 2026 — How to Succeed and Stand Out](https://thetailorcv.com/blog/first-90-days-at-new-job)
+- [How to Build a Professional Portfolio in 2026 — Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 
 ## Conclusion
 

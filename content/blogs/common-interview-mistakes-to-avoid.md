@@ -139,6 +139,11 @@ Multiple follow-ups in quick succession or demanding a decision pressures the em
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
 - [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [What Not to Put on a Resume in 2026 — 25 Things to Remove Immediately](https://thetailorcv.com/blog/what-not-to-put-on-resume)
+- [How to Prepare for Campus Placement in 2026 — Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [Soft Skills for Resume in 2026 — How to Show Them (Not Just List Them)](https://thetailorcv.com/blog/soft-skills-for-resume)
+- [System Design Interview Guide 2026 — Framework and Examples](https://thetailorcv.com/blog/system-design-interview-guide)
 
 ## Conclusion
 

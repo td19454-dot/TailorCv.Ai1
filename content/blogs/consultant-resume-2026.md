@@ -156,6 +156,8 @@ Consulting resumes are judged partly on communication and structure. A cluttered
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
+- [ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)](https://thetailorcv.com/blog/ats-keyword-mistakes)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

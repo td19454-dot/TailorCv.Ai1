@@ -187,6 +187,14 @@ Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
 - [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
 - [How to Tailor Your Resume for Every Job Application](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
+- [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
+- [ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)](https://thetailorcv.com/blog/ats-mistakes-tech-professionals)
+- [How to List Certifications on a Resume in 2026 — With Examples](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [What Not to Put on a Resume in 2026 — 25 Things to Remove Immediately](https://thetailorcv.com/blog/what-not-to-put-on-resume)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [Cover Letter Guide 2026 — How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Explain Resume Gaps in 2026 — Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 
 ## Conclusion
 

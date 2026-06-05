@@ -130,6 +130,13 @@ They are the biggest factor, but formatting, achievements, and job-title fit als
 - [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes)
 - [Why Is My ATS Score So Low?](https://thetailorcv.com/blog/why-is-my-ats-score-low)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [ATS Resume Checker — How It Works and How to Pass (2026)](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)
+- [ATS Score for Freshers — How to Pass With No Experience (2026)](https://thetailorcv.com/blog/ats-score-for-freshers)
+- [ATS Score vs Resume Score — What's the Difference? (2026)](https://thetailorcv.com/blog/ats-score-vs-resume-score)
+- [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
+- [Free ATS Resume Scan — Test Your Resume in 60 Seconds (2026)](https://thetailorcv.com/blog/free-ats-resume-scan)
+- [ATS Score Guide for 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 
 ---
 

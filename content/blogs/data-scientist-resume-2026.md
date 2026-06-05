@@ -200,6 +200,8 @@ This guide uses hiring context from the [BLS Data Scientists Occupational Outloo
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 - [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
+- [Data Analyst Resume 2026](https://thetailorcv.com/blog/data-analyst-resume-2026)
+- [ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)](https://thetailorcv.com/blog/ats-mistakes-tech-professionals)
 
 ## Conclusion
 

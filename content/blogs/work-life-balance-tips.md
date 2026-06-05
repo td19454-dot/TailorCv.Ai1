@@ -166,6 +166,10 @@ If a company's culture makes balance impossible, individual habits can only do s
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
 - [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
+- [How to Use LinkedIn for Job Search in 2026 — Complete Guide](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [LinkedIn Profile Optimization Guide 2026 — Get Found by Recruiters](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Networking Tips for Job Search in 2026 — Even If You Hate Networking](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 
 ## Conclusion
 

@@ -226,6 +226,14 @@ One page for 0–5 years. Two pages for 5+ years or if you have significant, var
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
+- [How to Match Your Resume to a Remote Job Description in 2026](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description)
+- [How to Match Your Resume to a Data Analyst Job Description in 2026](https://thetailorcv.com/blog/resume-matching-data-analyst)
+- [How to Match Your Resume to a Marketing Job Description in 2026](https://thetailorcv.com/blog/resume-matching-marketing)
+- [How to Match Your Resume When You're Overqualified for the Job (2026 Guide)](https://thetailorcv.com/blog/overqualified-resume-match-job-description)
+- [Resume Matching for Experienced Professionals — How to Stay Relevant in 2026](https://thetailorcv.com/blog/resume-matching-experienced-professionals)
+- [Resume Matching for Career Changers — How to Bridge the Gap in 2026](https://thetailorcv.com/blog/resume-matching-for-career-changers)
+- [Resume Matching with No Experience — How to Match a Job Description When You're Starting Out (2026)](https://thetailorcv.com/blog/resume-matching-no-experience)
+- [How to Match Your Resume to a Software Engineering Job Description in 2026](https://thetailorcv.com/blog/resume-matching-software-engineer)
 
 ---
 
