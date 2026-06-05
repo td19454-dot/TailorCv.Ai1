@@ -4,7 +4,7 @@ description: Learn how to make your resume ATS-friendly in 2026. Covers formatti
 date: 2026-06-01
 author: TailorCV Team
 tags: [ATS Resume, ATS Friendly Resume, Resume Formatting, Resume Tips, Applicant Tracking System]
-category: Resume Writing
+category: ATS Optimization
 image: public/blog-images/how to make resume ats friendly.png
 slug: how-to-make-resume-ats-friendly
 keywords: how to make resume ATS friendly, ATS friendly resume 2026, applicant tracking system resume, ATS resume format, beat the ATS, ATS resume tips

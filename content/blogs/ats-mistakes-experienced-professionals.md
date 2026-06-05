@@ -4,7 +4,7 @@ description: Senior professionals make unique ATS mistakes that prevent strong r
 date: 2026-06-03
 author: TailorCV Team
 tags: [ATS Mistakes Experienced Professionals, Senior Resume ATS, ATS Resume 2026, Career Advice, Mid-Career Resume Tips]
-category: Resume Writing
+category: ATS Optimization
 image: public/blog-images/ats-mistakes-experienced-professionals.png
 slug: ats-mistakes-experienced-professionals
 keywords: ATS mistakes experienced professionals, senior resume ATS mistakes, experienced professional resume tips 2026, why is my resume not working, ATS resume senior candidates, mid-career resume ATS errors

@@ -4,7 +4,7 @@ description: 15 Powerful Tips to Improve Your ATS Score and Get More Interviews
 date: 2026-05-10
 author: TailorCV Team
 tags: [ATS, resume, job search]
-category: Resume Optimization
+category: ATS Optimization
 image: public\blog-images\resume_review.png
 slug: ats-score-guide
 keywords: ats score, resume optimization, resume keywords
@@ -595,6 +595,16 @@ The ATS Score Checker from The Tailor CV is a strong option for analyzing resume
 
 ## Related Guides
 
+- [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free)
+- [What Is a Good ATS Score?](https://thetailorcv.com/blog/what-is-a-good-ats-score)
+- [Why Is My ATS Score So Low?](https://thetailorcv.com/blog/why-is-my-ats-score-low)
+- [How to Increase Your ATS Score](https://thetailorcv.com/blog/how-to-increase-ats-score)
+- [ATS Resume Checker — How It Works](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)
+- [Does My Resume Pass ATS?](https://thetailorcv.com/blog/does-my-resume-pass-ats)
+- [ATS Score for Freshers](https://thetailorcv.com/blog/ats-score-for-freshers)
+- [Free ATS Resume Scan](https://thetailorcv.com/blog/free-ats-resume-scan)
+- [ATS Keywords to Boost Your Score](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
+- [ATS Score vs Resume Score](https://thetailorcv.com/blog/ats-score-vs-resume-score)
 - [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
 - [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
