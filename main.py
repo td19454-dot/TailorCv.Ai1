@@ -4588,7 +4588,7 @@ async def list_resume_templates():
         raise HTTPException(status_code=404, detail="Resume templates directory not found")
 
     items = []
-    for filename in sorted(os.listdir(templates_html_dir)):
+    for filename in os.listdir(templates_html_dir):
         if not filename.lower().endswith(".html"):
             continue
         match = re.match(r"template(\d+)\.html$", filename.lower())
@@ -4602,6 +4602,7 @@ async def list_resume_templates():
                 "filename": filename,
             }
         )
+    items.sort(key=lambda t: t["id"])  # numeric order (1,2,...,21) not string order
     return {"templates": items}
 
 
