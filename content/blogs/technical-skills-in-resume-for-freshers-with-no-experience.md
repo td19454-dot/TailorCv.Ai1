@@ -927,6 +927,8 @@ Ideally:
 - [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
 - [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
+- [Internship Resume Guide 2026 — How to Write a Resume for Your First Internship](https://thetailorcv.com/blog/internship-resume-guide)
+- [Business Analyst Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/business-analyst-resume-2026)
 
 ## Conclusion
 

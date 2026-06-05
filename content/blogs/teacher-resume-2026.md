@@ -201,6 +201,11 @@ This guide uses career context from the [BLS Teachers Occupational Outlook Handb
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
+- [Consultant Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/consultant-resume-2026)
+- [Customer Service Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/customer-service-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [Behavioral Interview Questions and Answers — Complete 2026 Guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 
 ## Conclusion
 

@@ -176,6 +176,8 @@ Senior backend roles expect tested code. Add a line about unit tests, integratio
 - [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
 - [iOS Developer Resume](https://thetailorcv.com/blog/ios-developer-resume-2026)
 - [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
+- [React Developer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/react-developer-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

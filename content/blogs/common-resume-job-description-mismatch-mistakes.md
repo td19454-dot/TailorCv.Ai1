@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Mistakes, Job Description Mismatch, ATS Mistakes, Resume Optimization, Resume Tips 2026]
 category: Resume Optimization
-image: public/blog-images/common-resume-mistakes.png
+image: public\blog-images\common-resume-job-description-mismatch-mistakes.png
 slug: common-resume-job-description-mismatch-mistakes
 keywords: resume job description mismatch mistakes, resume mistakes ATS, common resume mistakes 2026, why resume doesn't match job description, resume mismatch fix
 ---
@@ -289,6 +289,12 @@ Focus on the ones relevant to your resume. You may already be doing some right. 
 - [How to Match Your Resume Skills Section to Any Job Description](https://thetailorcv.com/blog/resume-skills-match-job-description)
 - [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
 - [Why Am I Not Getting Interviews](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Why Your Resume Doesn't Match the Job Description (And How to Fix It Fast in 2026)](https://thetailorcv.com/blog/why-resume-doesnt-match-job-description)
+- [How to Match Your Resume to a Job Description in Under 10 Minutes (2026 Guide)](https://thetailorcv.com/blog/how-to-match-resume-to-job-description-fast)
+- [How to Improve Your Resume-to-Job Match Score — 10 Proven Strategies for 2026](https://thetailorcv.com/blog/improve-resume-job-match-score)
+- [Resume to Job Description Match Percentage — What Score Do You Need in 2026?](https://thetailorcv.com/blog/resume-job-description-match-percentage)
+- [What Recruiters Actually Look for When Matching Your Resume to a Job Description in 2026](https://thetailorcv.com/blog/what-recruiters-look-for-resume-job-match)
+- [Resume Keywords Guide 2026 — How to Find and Use the Right Keywords](https://thetailorcv.com/blog/resume-keywords-guide)
 
 ---
 

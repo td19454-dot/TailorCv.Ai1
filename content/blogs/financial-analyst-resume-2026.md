@@ -160,6 +160,10 @@ This guide uses career context from the [BLS Financial Analysts Occupational Out
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
+- [Data Analyst Resume 2026](https://thetailorcv.com/blog/data-analyst-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [How to List Certifications on a Resume in 2026 — With Examples](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+- [How to Quantify Resume Achievements — With 50 Examples](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 
 ## Conclusion
 

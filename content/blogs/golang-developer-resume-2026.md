@@ -167,6 +167,7 @@ Add request volumes, event rates, or concurrent connection counts.
 - [iOS Developer Resume](https://thetailorcv.com/blog/ios-developer-resume-2026)
 - [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

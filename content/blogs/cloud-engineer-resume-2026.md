@@ -175,6 +175,9 @@ Cloud security is an expected component of cloud engineering. Show IAM design, c
 - [Mechanical Engineer Resume](https://thetailorcv.com/blog/mechanical-engineer-resume-2026)
 - [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
 - [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
+- [Accountant Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/accountant-resume-2026)
+- [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

@@ -246,6 +246,10 @@ A design with no explanation of the problem it solved, or a dashboard with no de
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [How to Follow Up After a Job Interview in 2026 — What to Send and When](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Work-Life Balance Tips for Professionals in 2026 — Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 
 ## Conclusion
 

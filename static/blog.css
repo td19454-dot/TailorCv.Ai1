@@ -487,8 +487,18 @@ h1.post-hero-title {
   overflow-x: auto;
   padding: 12px;
   border-radius: 8px;
-  background: #0f141b;
-  border: 1px solid #1d2530;
+  background: #ffffff;
+  border: 1px solid #e1e4ea;
+}
+.post-content pre,
+.post-content pre code,
+.post-content pre .codehilite {
+  color: #1f2733;
+  background: transparent;
+}
+.post-content .codehilite {
+  background: #ffffff;
+  border-radius: 8px;
 }
 
 .cta {

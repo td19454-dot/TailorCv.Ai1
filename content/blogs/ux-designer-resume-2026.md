@@ -178,6 +178,7 @@ In product design roles, thinking process and business impact matter as much as 
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 - [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
+- [Marketing Manager Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/marketing-manager-resume-2026)
 
 ## Conclusion
 

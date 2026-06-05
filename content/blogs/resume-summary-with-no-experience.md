@@ -254,6 +254,10 @@ Show the value you bring instead of generic buzzwords.
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to List Certifications on a Resume in 2026 — With Examples](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [How to Write a Resume with AI in 2026 — Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [How to Match Your Resume Summary to a Job Description in 2026](https://thetailorcv.com/blog/resume-summary-match-job-description)
 
 ## Conclusion
 

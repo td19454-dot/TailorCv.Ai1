@@ -110,6 +110,10 @@ As many as you need. Re-scan after each edit until your score is strong.
 - [Does My Resume Pass ATS?](https://thetailorcv.com/blog/does-my-resume-pass-ats)
 - [How to Increase Your ATS Score](https://thetailorcv.com/blog/how-to-increase-ats-score)
 - [ATS Score Guide for 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [ATS Score vs Resume Score — What's the Difference? (2026)](https://thetailorcv.com/blog/ats-score-vs-resume-score)
+- [ATS Keywords — How to Find and Add Them to Boost Your Score (2026)](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
+- [ATS Score for Freshers — How to Pass With No Experience (2026)](https://thetailorcv.com/blog/ats-score-for-freshers)
+- [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 
 ---
 

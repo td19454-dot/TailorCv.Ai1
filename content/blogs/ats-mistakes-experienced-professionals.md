@@ -233,6 +233,12 @@ Yes — more than ever. The more experience you have, the more content you have 
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
 - [Career Change Resume Guide 2026](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
+- [20 Common Interview Mistakes to Avoid in 2026](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
+- [What Not to Put on a Resume in 2026 — 25 Things to Remove Immediately](https://thetailorcv.com/blog/what-not-to-put-on-resume)
+- [ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)](https://thetailorcv.com/blog/ats-mistakes-tech-professionals)
+- [First 90 Days at a New Job in 2026 — How to Succeed and Stand Out](https://thetailorcv.com/blog/first-90-days-at-new-job)
+- [How to Build a Professional Portfolio in 2026 — Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Follow Up After a Job Interview in 2026 — What to Send and When](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 
 ## Conclusion
 

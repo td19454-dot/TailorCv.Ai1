@@ -225,6 +225,13 @@ Yes. The majority of tech companies — including large employers and many start
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
 - [How to Tailor Your Resume for Every Job Application](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [Why Your Resume Never Gets a Response — 12 Hidden ATS Mistakes Killing Your Job Search in 2026](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search)
+- [How to Match Your Resume to a Software Engineering Job Description in 2026](https://thetailorcv.com/blog/resume-matching-software-engineer)
+- [Data Analyst Resume 2026](https://thetailorcv.com/blog/data-analyst-resume-2026)
+- [Data Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/data-engineer-resume-2026)
+- [Data Scientist Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/data-scientist-resume-2026)
+- [Game Developer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/game-developer-resume-2026)
 
 ## Conclusion
 
