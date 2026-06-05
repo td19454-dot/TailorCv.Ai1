@@ -50,6 +50,7 @@
     {% if codehilite_css %}<style>{{ codehilite_css }}</style>{% endif %}
     <script type="application/ld+json">{{ blog_schema_json | safe }}</script>
     <script type="application/ld+json">{{ breadcrumb_schema_json | safe }}</script>
+    {% if faq_schema_json %}<script type="application/ld+json">{{ faq_schema_json | safe }}</script>{% endif %}
 </head>
 <body>
 <div class="progress" id="readingProgress"></div>

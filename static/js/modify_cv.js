@@ -66,7 +66,7 @@
             22: "pic22.png",
         };
         const filename = previewMap[id] || `pic${id}.jpg`;
-        return `/static/${filename}`;
+        return `/static/${filename}?v=9`;
     }
 
     function createInput(label, value, onInput, placeholder = "") {
