@@ -95,6 +95,41 @@
             .navbar .nav-links { min-width: 560px; gap: 2px; }
             .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
         }
+        @keyframes shareScoreGlow {
+            0%, 100% { box-shadow: 0 0 18px rgba(139,92,246,0.6), 0 6px 28px rgba(109,40,217,0.4); }
+            50%       { box-shadow: 0 0 34px rgba(167,139,250,0.9), 0 8px 38px rgba(139,92,246,0.6); }
+        }
+        #open-share-modal-btn {
+            all: unset;
+            box-sizing: border-box;
+            cursor: pointer;
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #5b21b6 100%) !important;
+            border: 1.5px solid rgba(167,139,250,0.7) !important;
+            color: #ffffff !important;
+            font-family: inherit;
+            font-size: 1.05rem;
+            font-weight: 700;
+            padding: 0.75rem 1.4rem;
+            border-radius: 12px !important;
+            letter-spacing: 0.02em;
+            display: inline-flex !important;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            animation: shareScoreGlow 2.2s ease-in-out infinite;
+            transition: transform 0.2s, background 0.2s, border-color 0.2s;
+        }
+        #open-share-modal-btn:hover {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+            border-color: rgba(196,181,253,0.95) !important;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 42px rgba(139,92,246,0.95), 0 10px 40px rgba(109,40,217,0.55) !important;
+            animation: none;
+        }
+        #open-share-modal-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
     </style>
     <link rel="stylesheet" href="/static/ats_analysis.css">
 </head>
@@ -283,9 +318,7 @@
 
                     <!-- CTA -->
                     <div class="cta-row">
-                        <button id="download-report-btn" class="btn-outline" type="button">Download report</button>
-                        <button id="open-share-modal-btn" type="button"
-                                style="outline:none;cursor:pointer;border:none;padding:0 1.8rem;font-family:inherit;font-size:15px;font-weight:600;border-radius:500px;background:linear-gradient(135deg,#4F7FFF,#C9B8FF);color:white;min-height:48px;height:48px;display:inline-flex;align-items:center;gap:8px;transition:opacity 0.2s;">
+                        <button id="open-share-modal-btn" type="button">
                             🎯 Share My Score
                         </button>
                         <a href="/solutions" class="btn btn-primary cv2-uiverse-btn ai-rewrite-btn">
