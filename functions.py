@@ -1376,12 +1376,16 @@ Fail if:
 ==================================================
 SPELLING RULES
 ==============
-Find all spelling mistakes
+Find all spelling mistakes.
 Pass if no obvious spelling mistakes are found.
 Fail only when a word is genuinely misspelled. Give explanation for all misspelled words without missing any.
 Do not miss any misspelled words.
 Do not fail for style preferences.
-Important: Do NOT flag words that appear to be PDF text extraction artifacts where multiple correctly-spelled words have been concatenated together without spaces (e.g. "formulatingtechnicaldesigns"). These are extraction issues, not spelling errors.
+
+MANDATORY PDF EXTRACTION ARTIFACT RULE — NEVER VIOLATE:
+Resume text is extracted from PDF files. PDF extraction sometimes merges multiple correctly-spelled words into one long token without spaces (e.g., "Firstrankandallrounderoftheyear", "formulatingtechnicaldesigns", "TackledotherchallengessuchasbuildingPrometheus"). This is a technical extraction artifact — the original resume has proper spaces.
+RULE: If a token looks like 3 or more recognizable English words run together without spaces, treat it as a PDF extraction artifact and DO NOT flag it as a spelling error. Never mention it in your spelling feedback.
+RULE: Capitalization differences (e.g., "Medals" vs "medals", "Java", "Team") are NOT spelling errors. Only flag tokens where the letters themselves are wrong (e.g., "acomplishment" → "accomplishment").
 
 ==================================================
 GRAMMAR RULES
