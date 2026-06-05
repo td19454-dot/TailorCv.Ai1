@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     "use strict";
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -623,28 +623,28 @@ body {
        TEMPLATE SWITCHER PANEL
     ───────────────────────────────────────────────────────────────────────── */
     const TEMPLATES = [
-        { id: 1,  name: "Modern Professional",      image: "pic1.png"  },
-        { id: 2,  name: "Executive Minimal",         image: "pic2.png"  },
-        { id: 3,  name: "Creative Tech",             image: "pic3.png"  },
-        { id: 4,  name: "Classic Academic",          image: "pic4.png"  },
-        { id: 5,  name: "Modern Elegant",            image: "pic5.png"  },
-        { id: 6,  name: "Professional Classic",      image: "pic6.png"  },
-        { id: 7,  name: "Navy Sidebar",              image: "pic7.jpg"  },
-        { id: 8,  name: "Teal Sidebar",              image: "pic8.jpg"  },
-        { id: 9,  name: "Burgundy Sidebar",          image: "pic9.jpg"  },
-        { id: 10, name: "Slate Sidebar",             image: "pic10.jpg" },
-        { id: 11, name: "Forest Sidebar",            image: "pic11.jpg" },
-        { id: 12, name: "Skyline Blue",              image: "pic12.jpg" },
-        { id: 13, name: "Gray Executive Panel",      image: "pic13.png" },
-        { id: 14, name: "Olive Timeline Pro",        image: "pic14.png" },
-        { id: 15, name: "Aqua Timeline Modern",      image: "pic15.png" },
-        { id: 16, name: "Navy Rail Editorial",       image: "pic16.png" },
-        { id: 17, name: "Executive Gray Board",      image: "pic17.png" },
-        { id: 18, name: "Classic Gray Professional", image: "pic18.png" },
-        { id: 19, name: "LaTeX Academic",            image: "pic19.png" },
-        { id: 20, name: "ATS Friendly",              image: "pic20.png" },
-        { id: 21, name: "Modern Tech",               image: "pic21.png" },
-        { id: 22, name: "Academic Serif",            image: "pic22.png" },
+        { id: 1,  name: "Modern Professional",      image: "pic1.webp"  },
+        { id: 2,  name: "Executive Minimal",         image: "pic2.webp"  },
+        { id: 3,  name: "Creative Tech",             image: "pic3.webp"  },
+        { id: 4,  name: "Classic Academic",          image: "pic4.webp"  },
+        { id: 5,  name: "Modern Elegant",            image: "pic5.webp"  },
+        { id: 6,  name: "Professional Classic",      image: "pic6.webp"  },
+        { id: 7,  name: "Navy Sidebar",              image: "pic7.webp"  },
+        { id: 8,  name: "Teal Sidebar",              image: "pic8.webp"  },
+        { id: 9,  name: "Burgundy Sidebar",          image: "pic9.webp"  },
+        { id: 10, name: "Slate Sidebar",             image: "pic10.webp" },
+        { id: 11, name: "Forest Sidebar",            image: "pic11.webp" },
+        { id: 12, name: "Skyline Blue",              image: "pic12.webp" },
+        { id: 13, name: "Gray Executive Panel",      image: "pic13.webp" },
+        { id: 14, name: "Olive Timeline Pro",        image: "pic14.webp" },
+        { id: 15, name: "Aqua Timeline Modern",      image: "pic15.webp" },
+        { id: 16, name: "Navy Rail Editorial",       image: "pic16.webp" },
+        { id: 17, name: "Executive Gray Board",      image: "pic17.webp" },
+        { id: 18, name: "Classic Gray Professional", image: "pic18.webp" },
+        { id: 19, name: "LaTeX Academic",            image: "pic19.webp" },
+        { id: 20, name: "ATS Friendly",              image: "pic20.webp" },
+        { id: 21, name: "Modern Tech",               image: "pic21.webp" },
+        { id: 22, name: "Academic Serif",            image: "pic22.webp" },
     ];
 
     function buildTemplateSwitcher() {
