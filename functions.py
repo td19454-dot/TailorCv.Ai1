@@ -1378,9 +1378,10 @@ SPELLING RULES
 ==============
 Find all spelling mistakes
 Pass if no obvious spelling mistakes are found.
-Fail only when words is misspelled. Give explanation for all misspelled words without missing any.
-Do not miss any mispelled words.
+Fail only when a word is genuinely misspelled. Give explanation for all misspelled words without missing any.
+Do not miss any misspelled words.
 Do not fail for style preferences.
+Important: Do NOT flag words that appear to be PDF text extraction artifacts where multiple correctly-spelled words have been concatenated together without spaces (e.g. "formulatingtechnicaldesigns"). These are extraction issues, not spelling errors.
 
 ==================================================
 GRAMMAR RULES
