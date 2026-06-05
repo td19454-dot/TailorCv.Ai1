@@ -56,12 +56,6 @@
       success_explanation: "Dates appear in logical chronological order.",
       success_action: "No action required."
     },
-    "formatting.single_column": {
-      title: "Single Column Layout", category: "Formatting",
-      why_it_matters: "ATS systems parse single-column resumes more reliably.",
-      success_explanation: "Resume uses ATS-friendly single-column formatting.",
-      success_action: "No action required."
-    },
     "formatting.photos_or_graphics": {
       title: "Photos & Graphics", category: "Formatting",
       why_it_matters: "Images can break ATS parsing.",
@@ -108,12 +102,6 @@
       title: "Quantified Impact", category: "Experience",
       why_it_matters: "Numbers increase recruiter confidence.",
       success_explanation: "Achievements include measurable impact.",
-      success_action: "No action required."
-    },
-    "projects.project_links": {
-      title: "Project Links", category: "Projects",
-      why_it_matters: "Recruiters can verify project work.",
-      success_explanation: "Project links are present.",
       success_action: "No action required."
     },
     "experience.action_verbs": {
@@ -244,7 +232,6 @@
       d?.sections?.skills?.present,
       d?.sections?.education?.present,
       d?.sections?.chronological_dates?.passed,
-      d?.formatting?.single_column?.passed,
       d?.formatting?.photos_or_graphics?.passed,
       d?.formatting?.excessive_design?.passed,
       d?.formatting?.unnecessary_sections?.passed,
@@ -254,7 +241,6 @@
       d?.experience?.job_titles?.present,
       d?.experience?.action_verbs?.passed,
       d?.experience?.quantified_impact?.passed,
-      d?.projects?.project_links?.passed,
       d?.projects?.action_verbs?.passed,
       d?.projects?.quantified_impact?.passed,
     ];
@@ -371,7 +357,6 @@
       ["sections.skills",                        sc.skills?.present,              "", ""],
       ["sections.education",                     sc.education?.present,           "", ""],
       ["sections.chronological_dates",           sc.chronological_dates?.passed,  sc.chronological_dates?.explanation, ""],
-      ["formatting.single_column",               fm.single_column?.passed,        fm.single_column?.explanation,       ""],
       ["formatting.photos_or_graphics",          fm.photos_or_graphics?.passed,   fm.photos_or_graphics?.explanation,  ""],
       ["formatting.excessive_design",            fm.excessive_design?.passed,     fm.excessive_design?.explanation,    ""],
       ["formatting.unnecessary_sections",        fm.unnecessary_sections?.passed, fm.unnecessary_sections?.explanation,""],
@@ -381,7 +366,6 @@
       ["experience.job_titles",                  ex.job_titles?.present,          "", ""],
       ["experience.action_verbs",                ex.action_verbs?.passed,         ex.action_verbs?.explanation,        ex.action_verbs?.action],
       ["experience.quantified_impact",           ex.quantified_impact?.passed,    ex.quantified_impact?.explanation,   ex.quantified_impact?.action],
-      ["projects.project_links",                 pr.project_links?.passed,        pr.project_links?.explanation,       pr.project_links?.action],
       ["projects.action_verbs",                  pr.action_verbs?.passed,         pr.action_verbs?.explanation,        pr.action_verbs?.action],
       ["projects.quantified_impact",             pr.quantified_impact?.passed,    pr.quantified_impact?.explanation,   pr.quantified_impact?.action],
     ];
@@ -423,12 +407,12 @@
       contact:    [ci.email?.present, ci.phone?.present, ci.linkedin?.present],
       sections:   [sc.projects?.present, sc.experience?.present, sc.skills?.present,
                    sc.education?.present, sc.chronological_dates?.passed],
-      formatting: [fm.single_column?.passed, fm.photos_or_graphics?.passed,
+      formatting: [fm.photos_or_graphics?.passed,
                    fm.excessive_design?.passed, fm.unnecessary_sections?.passed],
       education:  [ed.qualification_match?.passed],
       experience: [ex.experience_match?.passed, ex.company_names?.present,
                    ex.job_titles?.present, ex.action_verbs?.passed, ex.quantified_impact?.passed],
-      projects:   [pr.project_links?.passed, pr.action_verbs?.passed, pr.quantified_impact?.passed],
+      projects:   [pr.action_verbs?.passed, pr.quantified_impact?.passed],
     };
 
     Object.entries(sections).forEach(([tab, checks]) => {
@@ -525,7 +509,6 @@
     target.innerHTML = "";
     const fm = d?.formatting || {};
     [
-      ["formatting.single_column",        fm.single_column?.passed,        fm.single_column?.explanation,        ""],
       ["formatting.photos_or_graphics",   fm.photos_or_graphics?.passed,   fm.photos_or_graphics?.explanation,   ""],
       ["formatting.excessive_design",     fm.excessive_design?.passed,     fm.excessive_design?.explanation,     ""],
       ["formatting.unnecessary_sections", fm.unnecessary_sections?.passed, fm.unnecessary_sections?.explanation, ""],
@@ -563,7 +546,6 @@
     target.innerHTML = "";
     const pr = d?.projects || {};
     [
-      ["projects.project_links",     pr.project_links?.passed,     pr.project_links?.explanation,     pr.project_links?.action],
       ["projects.action_verbs",      pr.action_verbs?.passed,      pr.action_verbs?.explanation,      pr.action_verbs?.action],
       ["projects.quantified_impact", pr.quantified_impact?.passed, pr.quantified_impact?.explanation, pr.quantified_impact?.action],
     ].forEach(([rk, v, exp, act]) => target.appendChild(accItem(rk, v, exp, act)));
