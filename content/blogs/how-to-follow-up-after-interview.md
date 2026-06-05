@@ -159,6 +159,12 @@ This leaves a positive final impression. Companies sometimes come back to runner
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
 - [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [How to Build a Professional Portfolio in 2026 — Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [LinkedIn Profile Optimization Guide 2026 — Get Found by Recruiters](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Networking Tips for Job Search in 2026 — Even If You Hate Networking](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [How to Explain Resume Gaps in 2026 — Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to Negotiate a Salary Offer in 2026 — Tactics That Actually Work](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 
 ## Conclusion
 

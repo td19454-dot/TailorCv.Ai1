@@ -595,4 +595,6 @@ You can quickly optimize resume keywords using [TailorCV.ai](https://www.thetail
 - [Career Change Resume](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Match Resume Keywords to Job Description — 2026 Guide](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
+- [How to Improve Your Resume-to-Job Match Score — 10 Proven Strategies for 2026](https://thetailorcv.com/blog/improve-resume-job-match-score)
 

@@ -196,6 +196,13 @@ Yes. Two pages maximum for most roles. More than two pages signals inability to 
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [How to Match Resume Keywords to Job Description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
 - [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
+- [How to Match Your Resume to a Remote Job Description in 2026](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description)
+- [How to Match Your Resume to a Data Analyst Job Description in 2026](https://thetailorcv.com/blog/resume-matching-data-analyst)
+- [How to Match Your Resume to a Marketing Job Description in 2026](https://thetailorcv.com/blog/resume-matching-marketing)
+- [Resume Matching with No Experience — How to Match a Job Description When You're Starting Out (2026)](https://thetailorcv.com/blog/resume-matching-no-experience)
+- [Resume Matching for Career Changers — How to Bridge the Gap in 2026](https://thetailorcv.com/blog/resume-matching-for-career-changers)
+- [How to Match Your Resume to a Product Manager Job Description in 2026](https://thetailorcv.com/blog/resume-matching-product-manager)
+- [How to Match Your Resume to a Software Engineering Job Description in 2026](https://thetailorcv.com/blog/resume-matching-software-engineer)
 
 ---
 

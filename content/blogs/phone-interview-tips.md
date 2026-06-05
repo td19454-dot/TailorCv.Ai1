@@ -167,6 +167,9 @@ Always have 2–3 questions ready. "No questions" signals disinterest.
 - [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
 - [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
 - [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [How to Prepare for Campus Placement in 2026 — Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [Technical Interview Preparation Guide 2026 — Complete Roadmap](https://thetailorcv.com/blog/technical-interview-preparation-guide)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 
 ## Conclusion
 

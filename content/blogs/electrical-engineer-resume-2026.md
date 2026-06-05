@@ -186,6 +186,7 @@ This guide uses career context from the [BLS Electrical and Electronics Engineer
 - [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
 - [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
 - [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
+- [DevOps Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/devops-engineer-resume-2026)
 
 ## Conclusion
 

@@ -217,6 +217,11 @@ After:
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
 - [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [Chronological vs Functional Resume in 2026 — Which Format to Use](https://thetailorcv.com/blog/chronological-vs-functional-resume)
+- [Cover Letter Guide 2026 — How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [MBA Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [How to Answer "Tell Me About Yourself" in 2026 — With Examples](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
 
 ## Conclusion
 

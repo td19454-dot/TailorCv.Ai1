@@ -203,6 +203,12 @@ This 15–20 minute process should be done for every job application. It is the 
 - [How to Make Your Resume ATS-Friendly in 2026](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
+- [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
+- [Job Description Keyword Extraction — Complete Guide for 2026](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- [ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)](https://thetailorcv.com/blog/ats-mistakes-tech-professionals)
+- [How to Match Resume Keywords to Job Description — 2026 Guide](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
+- [How to Explain Resume Gaps in 2026 — Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to Negotiate a Salary Offer in 2026 — Tactics That Actually Work](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 
 ## Conclusion
 

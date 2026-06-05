@@ -158,6 +158,7 @@ CSM or PSM is largely expected for scrum master roles. If you do not have one, g
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
 - [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
 - [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Conclusion
 

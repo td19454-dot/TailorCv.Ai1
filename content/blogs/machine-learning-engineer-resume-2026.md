@@ -183,6 +183,10 @@ MLE resumes should look more like software engineer resumes than data scientist 
 - [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
 - [Mechanical Engineer Resume](https://thetailorcv.com/blog/mechanical-engineer-resume-2026)
 - [Python Developer Resume](https://thetailorcv.com/blog/python-developer-resume-2026)
+- [QA Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/qa-engineer-resume-2026)
+- [Site Reliability Engineer (SRE) Resume 2026 — Complete Guide](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
+- [DevOps Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/devops-engineer-resume-2026)
+- [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
 
 ## Conclusion
 

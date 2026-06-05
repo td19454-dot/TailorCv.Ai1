@@ -168,6 +168,8 @@ Senior PM roles require budget and risk ownership. Show budget sizes you managed
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [HR Manager Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/hr-manager-resume-2026)
 
 ## Conclusion
 

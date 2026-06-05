@@ -236,6 +236,13 @@ Your summary and top bullets need to work for both simultaneously. ATS checks ke
 - [Why Am I Not Getting Interviews](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 - [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
 - [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [How to Match Resume Keywords to Job Description — 2026 Guide](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
+- [How to Match Your Resume to a Job Description in Under 10 Minutes (2026 Guide)](https://thetailorcv.com/blog/how-to-match-resume-to-job-description-fast)
+- [Why Your Resume Doesn't Match the Job Description (And How to Fix It Fast in 2026)](https://thetailorcv.com/blog/why-resume-doesnt-match-job-description)
+- [How AI Resume Matching Works — And How to Use It to Your Advantage in 2026](https://thetailorcv.com/blog/how-ai-resume-matching-works)
+- [How to Improve Your Resume-to-Job Match Score — 10 Proven Strategies for 2026](https://thetailorcv.com/blog/improve-resume-job-match-score)
+- [Resume to Job Description Match Percentage — What Score Do You Need in 2026?](https://thetailorcv.com/blog/resume-job-description-match-percentage)
+- [How to Improve Your ATS Score in 2026](https://thetailorcv.com/blog/resume-optimization-guide)
 
 ---
 

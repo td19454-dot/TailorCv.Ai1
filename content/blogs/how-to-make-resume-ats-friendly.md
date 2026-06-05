@@ -161,6 +161,8 @@ A skills infographic looks great but is invisible to the ATS. Everything importa
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
+- [Business Analyst Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/business-analyst-resume-2026)
 
 ## Conclusion
 
