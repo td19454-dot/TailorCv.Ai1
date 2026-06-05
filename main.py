@@ -305,11 +305,22 @@ def is_production_environment() -> bool:
 
 
 def extract_pdf_text(path: str) -> str:
-    text = ""
+    text_parts = []
     with pdfplumber.open(path) as pdf:
         for page in pdf.pages:
-            text += (page.extract_text() or "") + "\n"
-    return text
+            words = page.extract_words(x_tolerance=3, y_tolerance=3)
+            if not words:
+                text_parts.append(page.extract_text() or "")
+                continue
+            # Group words into lines by vertical position (4pt bucket) then sort left-to-right
+            lines: dict[int, list] = {}
+            for word in words:
+                bucket = round(word["top"] / 4) * 4
+                lines.setdefault(bucket, []).append(word)
+            for bucket_key in sorted(lines):
+                line_words = sorted(lines[bucket_key], key=lambda w: w["x0"])
+                text_parts.append(" ".join(w["text"] for w in line_words))
+    return "\n".join(text_parts)
 
 
 def _normalize_key(text: str) -> str:
