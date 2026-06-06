@@ -853,7 +853,11 @@ def _extract_hard_skills_from_jd(jd_string: str) -> list[str]:
     )
     for m in skill_list_pattern.finditer(jd):
         segment = m.group(1)
-        for tok in re.split(r'[,;/]|\band\b|\bor\b', segment):
+        # Split on parentheses/brackets too, so a categorized list like
+        # "modern JavaScript (ES6+, ESNext), state management (Redux, Zustand)"
+        # never yields fragments carrying an unbalanced "(" — which previously
+        # produced broken skill entries like "state management (Redux".
+        for tok in re.split(r'[,;/()\[\]]|\band\b|\bor\b', segment):
             tok = tok.strip().strip('•-*()[]').strip()
             if tok and len(tok) >= 2 and not tok.lower().startswith(('the ', 'a ', 'an ')):
                 _add(tok)
