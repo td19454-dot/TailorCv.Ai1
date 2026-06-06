@@ -441,6 +441,11 @@
         white-space: normal;
     }
 
+    .pricing-btn-link{
+        max-width: fit-content;
+        max-height: fit-content;
+    }
+
     .pricing-page .solutions-header {
         padding-inline: 1.2rem;
     }
