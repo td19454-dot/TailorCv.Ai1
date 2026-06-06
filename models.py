@@ -83,7 +83,7 @@ class SavedResume(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     title = Column(String(255), nullable=False, default="Untitled Resume")
     candidate_name = Column(String(255), nullable=True)
-    jd_snippet = Column(String(500), nullable=True)
+    jd_snippet = Column(Text, nullable=True)                    # full job description text
     template_id = Column(Integer, nullable=True)
     style_id = Column(Integer, nullable=True)
     ats_score = Column(Integer, nullable=True)

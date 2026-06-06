@@ -193,16 +193,24 @@ def _ensure_saved_resume_columns() -> None:
     insp = _inspect(engine)
     if not insp.has_table("saved_resumes"):
         return
-    existing = {c["name"] for c in insp.get_columns("saved_resumes")}
+    cols = {c["name"]: c for c in insp.get_columns("saved_resumes")}
     to_add = []
-    if "company" not in existing:
+    if "company" not in cols:
         to_add.append("ADD COLUMN company VARCHAR(200)")
-    if "status" not in existing:
+    if "status" not in cols:
         to_add.append("ADD COLUMN status VARCHAR(30) DEFAULT 'saved'")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
                 conn.execute(_text(f"ALTER TABLE saved_resumes {clause}"))
+
+    # Widen jd_snippet from VARCHAR(500) to TEXT so the FULL job description fits.
+    # (SQLite is dynamically typed, so only relational DBs need the ALTER.)
+    if engine.dialect.name != "sqlite":
+        jd_col = cols.get("jd_snippet")
+        if jd_col is not None and "TEXT" not in str(jd_col.get("type", "")).upper():
+            with engine.begin() as conn:
+                conn.execute(_text("ALTER TABLE saved_resumes ALTER COLUMN jd_snippet TYPE TEXT"))
 
 
 def initialize_database() -> None:
@@ -271,7 +279,7 @@ def save_user_resume(user_id: int, parsed: dict, html_content: str, jd_string: s
         # candidate's name when the JD has no usable title.
         target_role = _derive_target_role_from_jd(jd_string)
         title = (target_role or candidate_name or "Untitled Resume")[:255]
-        jd_snippet = (str(jd_string or "").strip()[:500]) or None
+        jd_snippet = (str(jd_string or "").strip()) or None  # full JD, untruncated
 
         record = SavedResume(
             user_id=user_id,
@@ -3699,12 +3707,13 @@ async def my_resumes_count(request: Request):
 
 @app.post("/api/save-edited-resume", include_in_schema=False)
 async def save_edited_resume(request: Request):
-    """Persist the edited resume from the optimized-resume editor.
+    """Explicitly save the edited resume from the editor (user clicked "Save").
 
-    The editor lets users tweak font/spacing/template after optimization, so the
-    downloaded PDF differs from what was first saved. On download we update the
-    user's most recent saved resume with this edited HTML (keeping its title/JD
-    metadata), or create a minimal entry if none exists.
+    This is the ONLY place a resume is persisted to My Resumes — there is no
+    auto-save, so "Not now" truly means not saved and reformat sessions are never
+    saved. Create-or-update is keyed on an explicit resume_id round-tripped to the
+    client, so re-saving within the same editor session updates the same row
+    instead of duplicating or clobbering a different resume.
     """
     user_id = request.session.get("user_id")
     if not user_id:
@@ -3716,35 +3725,37 @@ async def save_edited_resume(request: Request):
     html = (body or {}).get("html")
     template_id = (body or {}).get("template_id")
     jd = (body or {}).get("jd")
-    jd_snippet = (str(jd).strip()[:500] or None) if jd else None
+    resume_id = (body or {}).get("resume_id")
+    jd_snippet = (str(jd).strip() or None) if jd else None  # full JD, untruncated
     if not html or not isinstance(html, str):
         return JSONResponse(status_code=400, content={"error": "Missing resume HTML"})
+    try:
+        tid = int(template_id) if template_id is not None else None
+    except (TypeError, ValueError):
+        tid = None
 
     db = get_db()
     try:
-        record = (
-            db.query(SavedResume)
-            .filter(SavedResume.user_id == user_id)
-            .order_by(SavedResume.created_at.desc())
-            .first()
-        )
-        if record:
+        record = None
+        if resume_id is not None:
+            try:
+                record = (
+                    db.query(SavedResume)
+                    .filter(SavedResume.id == int(resume_id), SavedResume.user_id == user_id)
+                    .first()
+                )
+            except (TypeError, ValueError):
+                record = None
+
+        if record:  # update this session's existing row
             record.html_content = html
-            # Keep the JD with the resume so My Resumes doubles as a job tracker.
+            if tid is not None:
+                record.template_id = tid
             if jd_snippet:
                 record.jd_snippet = jd_snippet
                 if not record.title or record.title == "Edited Resume":
                     record.title = _derive_target_role_from_jd(jd) or record.title
-            try:
-                if template_id is not None:
-                    record.template_id = int(template_id)
-            except (TypeError, ValueError):
-                pass
-        else:
-            try:
-                tid = int(template_id) if template_id is not None else None
-            except (TypeError, ValueError):
-                tid = None
+        else:  # first save for this resume — create a new row
             record = SavedResume(
                 user_id=user_id,
                 title=_derive_target_role_from_jd(jd) or "Edited Resume",
@@ -4662,14 +4673,10 @@ async def upload_resume(
                 template = templates.env.get_template('resume_template.html')
                 html_content = template.render(**context)
 
-            # Persist this optimized resume to the user's account (My Resumes).
-            # Best-effort — never let a save error break the optimization response.
-            try:
-                await asyncio.to_thread(
-                    save_user_resume, user_id, parsed, html_content, jd_string, template_id, style_id
-                )
-            except Exception:
-                logger.exception("save_user_resume dispatch failed (non-fatal)")
+            # NOTE: we intentionally do NOT auto-save here. Saving to My Resumes
+            # is now an explicit user choice made in the editor ("Save to My
+            # Resumes"). This keeps reformat/change-format sessions from being
+            # saved, and makes "Not now" actually mean not saved.
 
             header_editor_mode = request.headers.get("X-Editor-Mode", "").lower() == "true"
             form_editor_mode = str(editor_mode or "").strip().lower() == "true"
