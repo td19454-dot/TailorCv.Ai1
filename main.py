@@ -308,7 +308,7 @@ def extract_pdf_text(path: str) -> str:
     text_parts = []
     with pdfplumber.open(path) as pdf:
         for page in pdf.pages:
-            words = page.extract_words(x_tolerance=3, y_tolerance=3)
+            words = page.extract_words(x_tolerance=1, y_tolerance=3)
             if not words:
                 text_parts.append(page.extract_text() or "")
                 continue
