@@ -4,8 +4,8 @@
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Browse professional resume templates on theTailorCV. Choose a design that passes ATS and impresses hiring managers.">
-    <title>Resume Templates - theTailorCV</title>
+    <meta name="description" content="Free ATS-friendly resume templates including Jake's Resume template. Pick a clean, recruiter-approved design that passes applicant tracking systems and impresses hiring managers.">
+    <title>Jake's Resume Template & Free ATS Resume Templates | theTailorCV</title>
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/header-footer.css">
     <link rel="stylesheet" href="/static/style2.css">
@@ -310,7 +310,7 @@
                 gridEl.innerHTML = templates.map((template) => `
                     <article class="template-card ${selectedTemplateId === template.id ? "selected" : ""}" data-template-id="${template.id}">
                         <div class="template-preview">
-                            <img src="${getPreviewSrc(template.id)}" alt="${template.name} preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <img src="${getPreviewSrc(template.id)}" alt="${template.name} resume template preview" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                             <div class="preview-fallback">Preview ${template.id}</div>
                         </div>
                         <div class="template-name">${getDisplayName(template)}</div>

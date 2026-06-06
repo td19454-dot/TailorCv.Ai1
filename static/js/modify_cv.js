@@ -368,7 +368,7 @@
                             (template) => `
                             <div class="template-card-mini ${selectedTemplate === template.id ? "selected" : ""}" data-template-id="${template.id}">
 <div class="template-thumb">
-    <img src="${getTemplatePreviewSrc(template.id)}" alt="Template ${template.id} Preview" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <img src="${getTemplatePreviewSrc(template.id)}" alt="Template ${template.id} resume preview" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
     <div style="display:none; grid-area:1/1/1/1; place-items:center; color:#eff6ff; font-size:0.95rem;">Preview ${template.id}</div>
 </div>
                                 <div class="template-name">Template ${template.id}</div>

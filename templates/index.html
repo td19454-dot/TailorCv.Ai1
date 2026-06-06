@@ -15,9 +15,9 @@
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TailorCV - AI-Powered Resume Tailoring</title>
+    <title>theTailorCV — AI Resume Optimizer & Free ATS Score Checker</title>
     <meta name="description"
-        content="TailorCV helps job seekers optimize resumes for ATS, tailor resumes to specific job descriptions, generate cover letters, and practice AI-powered interviews to increase interview callbacks.">
+        content="Free ATS resume checker and AI resume optimizer. Get an instant ATS score, tailor your resume to any job description, use Jake's resume template, and practice mock interviews online. Built for CS students and software engineers.">
     <link rel="stylesheet" href="/static/style3.css">
     <link rel="stylesheet" href="/static/header-footer.css">
     {% include "_seo_head.html" %}
@@ -1546,7 +1546,7 @@
             </div>
             <div style="display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;">
                 <div class="founder-card">
-                    <img src="/static/user_imges/Trisha.png" alt="Trisha Debnath" class="founder-photo">
+                    <img src="/static/user_imges/Trisha.png" alt="Trisha Debnath" class="founder-photo" loading="lazy" decoding="async">
                     <div class="founder-name">Trisha Debnath</div>
                     <div class="founder-role">Co-Founder & Full Stack Developer</div>
                     <p class="founder-quote">"I sent 47 job applications last semester. Got 3 responses. I had the skills, the projects, the CGPA. I just didn't know my resume was invisible to ATS. That frustration is exactly why I built TailorCV."</p>
@@ -1556,7 +1556,7 @@
                     </a>
                 </div>
                 <div class="founder-card">
-                    <img src="/static/user_imges/Shubham.jpg" alt="Shubham Sarkar" class="founder-photo">
+                    <img src="/static/user_imges/Shubham.jpg" alt="Shubham Sarkar" class="founder-photo" loading="lazy" decoding="async">
                     <div class="founder-name">Shubham Sarkar</div>
                     <div class="founder-role">Co-Founder · AI & Backend</div>
                     <p class="founder-quote">"I sent 67 applications. Same story. Then I realized — I'm a machine learning engineer. I know exactly how ATS systems parse text. So Trisha and I stayed up one night and started building. Two months later, TailorCV was live."</p>
@@ -1786,11 +1786,18 @@
                 <div class="footer-section">
                     <h4 class="footer-heading">Product</h4>
                     <a href="/" class="footer-link">Home</a>
-                    <a href="/solutions" class="footer-link" id="footer_get_ats_score">Get ATS score</a>
-                    <a href="/modify-cv" class="footer-link">Make CV</a>
-                    <a href="/solutions" class="footer-link " id="footer_optimize_with_ai">Optimize with AI</a>
-                    <a href="/templates" class="footer-link">Templates</a>
+                    <a href="/ats-analysis" class="footer-link" id="footer_get_ats_score">Free ATS Score Checker</a>
+                    <a href="/solutions" class="footer-link " id="footer_optimize_with_ai">AI Resume Optimizer</a>
+                    <a href="/modify-cv" class="footer-link">ATS-Friendly Resume Builder</a>
+                    <a href="/templates" class="footer-link">Resume Templates</a>
                     <a href="/pricing" class="footer-link">Pricing</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">Interview Prep</h4>
+                    <a href="/mock-interview" class="footer-link">AI Mock Interview</a>
+                    <a href="/interview-prep" class="footer-link">Interview Questions</a>
+                    <a href="/blog" class="footer-link">Career Blog</a>
                 </div>
 
                 <div class="footer-section">
@@ -1994,7 +2001,7 @@
             return `
       <article class="t-card${t.featured ? ' featured' : ''}">
         <div class="card-top">
-          <img src="${t.image}" alt="${t.name}" class="avatar">
+          <img src="${t.image}" alt="${t.name}" class="avatar" loading="lazy" decoding="async">
           <div class="card-meta">
             <div class="card-name">${t.name}</div>
             <div class="card-role">${t.role}</div>
