@@ -977,6 +977,12 @@ async function handleResumeOptimization() {
             }
             clearTimeout(optSlowTimer);
             sessionStorage.setItem(LS_KEYS.optimizedEditorPayload, JSON.stringify(payload));
+            // Mark as an optimize session (has JD) so the editor shows the
+            // "save with JD" prompt on download. Fresh session → no existing row.
+            try {
+                sessionStorage.setItem("tailorcv_editor_source", "optimize");
+                sessionStorage.removeItem("tailorcv_current_resume_id");
+            } catch (e) {}
             displayOptimizeResults(null, true);
             try {
                 await downloadPdfFromEditorPayload();

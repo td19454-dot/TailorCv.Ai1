@@ -585,9 +585,14 @@ body {
                 ? "Auto-download complete. Adjust font size then click Download Edited PDF."
                 : "PDF downloaded successfully.");
             // On a real (manual) download, offer to save the edited version
-            // (and its job description) to the user's account.
+            // (and its job description) to the user's account — but NOT for a
+            // reformat/change-format session, which has no job description.
             if (!isAuto) {
-                promptSaveToMyResumes(html);
+                let editorSource = "";
+                try { editorSource = sessionStorage.getItem("tailorcv_editor_source") || ""; } catch (e) {}
+                if (editorSource !== "reformat") {
+                    promptSaveToMyResumes(html);
+                }
             }
         } catch {
             setStatus(isAuto
@@ -668,14 +673,23 @@ body {
                 saveBtn.textContent = "Saving…";
                 let jd = "";
                 try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
+                // Re-saving within the same editor session updates the same row.
+                let savedId = null;
+                try { savedId = sessionStorage.getItem("tailorcv_current_resume_id"); } catch (e) {}
                 let ok = false;
                 try {
                     const res = await fetch("/api/save-edited-resume", {
                         method:  "POST",
                         headers: { "Content-Type": "application/json" },
-                        body:    JSON.stringify({ html, template_id: templateId, jd }),
+                        body:    JSON.stringify({ html, template_id: templateId, jd, resume_id: savedId }),
                     });
                     ok = res.ok;
+                    if (ok) {
+                        try {
+                            const d = await res.json();
+                            if (d && d.id) sessionStorage.setItem("tailorcv_current_resume_id", String(d.id));
+                        } catch (e) {}
+                    }
                 } catch (e) { ok = false; }
                 if (ok) {
                     const icon = overlay.querySelector(".rspq-icon");
