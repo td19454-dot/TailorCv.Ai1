@@ -18,6 +18,9 @@
     <meta name="twitter:description" content="{{ meta_description }}">
     <meta name="twitter:image" content="{{ og_image }}">
     {% if post.image %}<link rel="preload" as="image" href="{{ post.image }}" fetchpriority="high">{% endif %}
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon.png">
+    {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
     <link rel="stylesheet" href="/static/style3.css">
     <link rel="stylesheet" href="/static/header-footer.css">
     <link rel="stylesheet" href="/static/style2.css?v=7">

@@ -1,8 +1,42 @@
+{# ---------------------------------------------------------------------------
+   Shared SEO <head> partial. Included by every page after its own <title> and
+   <meta name="description">. Emits: favicons, canonical, Open Graph, Twitter
+   Card, and Organization + WebSite JSON-LD. Optional per-page overrides (set
+   before the include or pass from the route):
+     canonical_url        - absolute canonical URL (default: derived from request)
+     seo_og_title         - Open Graph / Twitter title
+     seo_og_description   - Open Graph / Twitter description
+     seo_og_image         - social share image (absolute URL)
+     seo_og_type          - og:type (default: website)
+     software_schema_json - SoftwareApplication JSON-LD string (raw)
+     faq_schema_json      - FAQPage JSON-LD string (raw)
+     page_schema_json     - any extra JSON-LD string (raw)
+--------------------------------------------------------------------------- #}
+{%- set _seo_canonical = canonical_url if canonical_url is defined and canonical_url else 'https://thetailorcv.com' ~ request.url.path -%}
+{%- set _seo_og_title = seo_og_title if seo_og_title is defined and seo_og_title else 'theTailorCV — AI Resume Optimizer & Free ATS Score Checker' -%}
+{%- set _seo_og_description = seo_og_description if seo_og_description is defined and seo_og_description else 'Optimize your resume with AI, check your ATS score for free, build ATS-friendly resumes, and practice mock interviews. Built for CS students and software engineers.' -%}
+{%- set _seo_og_image = seo_og_image if seo_og_image is defined and seo_og_image else 'https://thetailorcv.com/static/logo.png' -%}
+{%- set _seo_og_type = seo_og_type if seo_og_type is defined and seo_og_type else 'website' -%}
 <link rel="icon" href="https://thetailorcv.com/favicon.png" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="https://thetailorcv.com/static/favicon.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://thetailorcv.com/static/favicon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://thetailorcv.com/static/favicon.png">
 <link rel="manifest" href="https://thetailorcv.com/site.webmanifest">
+
+<link rel="canonical" href="{{ _seo_canonical }}">
+
+<meta property="og:site_name" content="theTailorCV">
+<meta property="og:type" content="{{ _seo_og_type }}">
+<meta property="og:title" content="{{ _seo_og_title }}">
+<meta property="og:description" content="{{ _seo_og_description }}">
+<meta property="og:url" content="{{ _seo_canonical }}">
+<meta property="og:image" content="{{ _seo_og_image }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ _seo_og_title }}">
+<meta name="twitter:description" content="{{ _seo_og_description }}">
+<meta name="twitter:image" content="{{ _seo_og_image }}">
+
+{% if google_site_verification is defined and google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,3 +65,6 @@
   }
 }
 </script>
+{% if software_schema_json is defined and software_schema_json %}<script type="application/ld+json">{{ software_schema_json | safe }}</script>{% endif %}
+{% if faq_schema_json is defined and faq_schema_json %}<script type="application/ld+json">{{ faq_schema_json | safe }}</script>{% endif %}
+{% if page_schema_json is defined and page_schema_json %}<script type="application/ld+json">{{ page_schema_json | safe }}</script>{% endif %}
