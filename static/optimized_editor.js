@@ -584,12 +584,122 @@ body {
             setStatus(isAuto
                 ? "Auto-download complete. Adjust font size then click Download Edited PDF."
                 : "PDF downloaded successfully.");
+            // On a real (manual) download, offer to save the edited version
+            // (and its job description) to the user's account.
+            if (!isAuto) {
+                promptSaveToMyResumes(html);
+            }
         } catch {
             setStatus(isAuto
                 ? "Auto-download failed — use Download Edited PDF button."
                 : "Could not download PDF. Please try again.");
         } finally {
             if (downloadBtn) downloadBtn.disabled = false;
+        }
+    }
+
+    /* Big, BLOCKING modal that asks the user to save the edited resume (and its
+       job description) to their account. It stays on screen until the user
+       answers — no auto-dismiss, no click-outside-to-close. Saving stores the JD
+       too, so My Resumes doubles as a lightweight job tracker. */
+    function promptSaveToMyResumes(html) {
+        try {
+            const existing = document.getElementById("rsp-quick");
+            if (existing) existing.remove();
+
+            if (!document.getElementById("rsp-quick-style")) {
+                const style = document.createElement("style");
+                style.id = "rsp-quick-style";
+                style.textContent = `
+                    #rsp-quick { position: fixed; inset: 0; z-index: 100000;
+                        display: flex; align-items: center; justify-content: center;
+                        background: rgba(6,11,26,.62); backdrop-filter: blur(5px);
+                        animation: rspqFade .2s ease; font-family: Inter, -apple-system, sans-serif; }
+                    #rsp-quick .rspq-card { width: min(94vw, 500px); text-align: center;
+                        background: linear-gradient(160deg,#16203c,#0e1730);
+                        border: 1px solid rgba(59,130,246,.45); border-radius: 22px;
+                        padding: 38px 34px 32px; box-shadow: 0 30px 90px rgba(0,0,0,.62);
+                        animation: rspqPop .34s cubic-bezier(.34,1.56,.64,1); }
+                    #rsp-quick .rspq-icon { width: 74px; height: 74px; margin: 0 auto 18px;
+                        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+                        font-size: 38px; color: #fff;
+                        background: linear-gradient(135deg,#3392ff,#4c1d95);
+                        box-shadow: 0 8px 30px rgba(59,130,246,.45); }
+                    #rsp-quick .rspq-title { font-size: 1.6rem; font-weight: 800; color: #eaf1ff; margin: 0 0 10px; }
+                    #rsp-quick .rspq-msg { font-size: 1.02rem; color: #aab9d6; line-height: 1.6; margin: 0 0 26px; }
+                    #rsp-quick .rspq-msg strong { color: #d7e3ff; }
+                    #rsp-quick .rspq-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+                    #rsp-quick button { font-size: 1rem; font-weight: 700; padding: 14px 26px; border-radius: 12px;
+                        cursor: pointer; border: 1px solid transparent; }
+                    #rsp-quick .rspq-save { background: linear-gradient(135deg,#3392ff,#4c1d95); color: #fff; }
+                    #rsp-quick .rspq-save:hover { filter: brightness(1.08); }
+                    #rsp-quick .rspq-skip { background: transparent; color: #aab9d6; border-color: rgba(150,170,210,.3); }
+                    #rsp-quick .rspq-skip:hover { background: rgba(255,255,255,.05); color: #eaf1ff; }
+                    #rsp-quick a { color: #9cc2ff; text-decoration: underline; }
+                    @keyframes rspqFade { from { opacity:0; } to { opacity:1; } }
+                    @keyframes rspqPop { from { opacity:0; transform: translateY(16px) scale(.94); } to { opacity:1; transform:none; } }
+                `;
+                document.head.appendChild(style);
+            }
+
+            const overlay = document.createElement("div");
+            overlay.id = "rsp-quick";
+            overlay.innerHTML = `
+                <div class="rspq-card" role="dialog" aria-modal="true" aria-label="Save resume">
+                    <div class="rspq-icon">💾</div>
+                    <div class="rspq-title">Save this resume?</div>
+                    <div class="rspq-msg">Keep this version <strong>and its job description</strong> in My Resumes so you can track this application and re-download anytime.</div>
+                    <div class="rspq-actions">
+                        <button type="button" class="rspq-save" id="rspq-save">Save to My Resumes</button>
+                        <button type="button" class="rspq-skip" id="rspq-skip">Not now</button>
+                    </div>
+                </div>
+            `;
+            const remove = () => overlay.remove();
+            // Deliberately blocking: NO click-outside-to-close and NO auto-dismiss.
+            // The popup stays until the user clicks Save or Not now.
+            document.body.appendChild(overlay);
+            overlay.querySelector("#rspq-skip").addEventListener("click", remove);
+
+            overlay.querySelector("#rspq-save").addEventListener("click", async () => {
+                const saveBtn = overlay.querySelector("#rspq-save");
+                const skipBtn = overlay.querySelector("#rspq-skip");
+                saveBtn.disabled = true; if (skipBtn) skipBtn.disabled = true;
+                saveBtn.textContent = "Saving…";
+                let jd = "";
+                try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
+                let ok = false;
+                try {
+                    const res = await fetch("/api/save-edited-resume", {
+                        method:  "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body:    JSON.stringify({ html, template_id: templateId, jd }),
+                    });
+                    ok = res.ok;
+                } catch (e) { ok = false; }
+                if (ok) {
+                    const icon = overlay.querySelector(".rspq-icon");
+                    icon.textContent = "✓";
+                    icon.style.background = "linear-gradient(135deg,#22c55e,#16a34a)";
+                    overlay.querySelector(".rspq-title").textContent = "Resume saved!";
+                    overlay.querySelector(".rspq-msg").innerHTML =
+                        'Find it anytime under your <strong>profile menu → <a href="/my-resumes">My Resumes</a></strong>.';
+                    overlay.querySelector(".rspq-actions").innerHTML =
+                        '<button type="button" class="rspq-save" onclick="window.location.href=\'/my-resumes\'">View My Resumes</button>' +
+                        '<button type="button" class="rspq-skip" id="rspq-done">Close</button>';
+                    overlay.querySelector("#rspq-done").addEventListener("click", remove);
+                } else {
+                    saveBtn.disabled = false; if (skipBtn) skipBtn.disabled = false;
+                    saveBtn.textContent = "Try again";
+                    if (typeof showToast === "function") {
+                        showToast("Could not save right now. Please try again.", "error", "Save failed");
+                    }
+                }
+            });
+        } catch (e) {
+            if (typeof showToast === "function") {
+                showToast("Open your profile menu → My Resumes to find saved resumes.", "info");
+            }
         }
     }
 

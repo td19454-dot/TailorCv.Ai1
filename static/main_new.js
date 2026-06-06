@@ -72,6 +72,28 @@ function clearStoredInputs() {
     localStorage.removeItem(LS_KEYS.resumeFile);
 }
 
+// --- Auto-resume ATS analysis across the login step -----------------------
+// When a logged-out user submits resume + JD, we send them to login and set
+// this flag. On their return (now logged in, inputs restored from localStorage)
+// we finish the analysis automatically instead of making them re-click
+// "Get ATS Score". Self-contained: remove this block + its 3 call sites to revert.
+const PENDING_ATS_KEY = 'tailorcv_pending_ats';
+
+function markPendingATS() {
+    try { sessionStorage.setItem(PENDING_ATS_KEY, '1'); } catch (e) {}
+}
+
+function maybeResumePendingATS() {
+    if (sessionStorage.getItem(PENDING_ATS_KEY) !== '1') return;
+    sessionStorage.removeItem(PENDING_ATS_KEY); // consume once, never loop
+    if (!isUserLoggedIn()) return;
+    const jdInput = document.getElementById('job-description');
+    const analyzeBtn = document.getElementById('analyze-btn');
+    if (!analyzeBtn || !getResumeFileForUpload() || !(jdInput && jdInput.value.trim())) return;
+    // Defer so the restored inputs + progress UI are fully in place.
+    setTimeout(() => handleATSAnalysis(), 150);
+}
+
 function dataUrlToFile(dataUrl, filename, mimeType) {
     const arr = dataUrl.split(',');
     const mime = arr[0].match(/:(.*?);/)[1];
@@ -229,6 +251,9 @@ document.addEventListener('DOMContentLoaded', function() {
         analyzeBtn.addEventListener('click', handleATSAnalysis);
     }
 
+    // If the user was sent to login mid-analysis, finish it now that they're back.
+    maybeResumePendingATS();
+
     // Optimize button handler - SHOW TEMPLATES FIRST
     const optimizeBtn = document.getElementById('optimize-btn');
     if (optimizeBtn) {
@@ -337,6 +362,11 @@ async function handleATSAnalysis() {
     const resumeFile = getResumeFileForUpload();
 
     if (!isUserLoggedIn()) {
+        // Preserve intent: if they already gave us resume + JD, resume the
+        // analysis automatically after they log in.
+        if (resumeFile && jdInput && jdInput.value.trim()) {
+            markPendingATS();
+        }
         redirectToLogin();
         return;
     }
@@ -415,6 +445,7 @@ async function handleATSAnalysis() {
         }
         const message = (error.message || '').toLowerCase();
         if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
+            markPendingATS();
             redirectToLogin();
         } else {
             showToast(error.message || 'Analysis failed. Please try again.', 'error', 'ATS Analysis Failed');
@@ -759,6 +790,85 @@ function triggerPdfDownload(pdfUrl, filename) {
 function redirectToLogin() {
     const nextUrl = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
     window.location.href = `/login?next=${nextUrl}`;
+}
+
+// Big, centered confirmation that the optimized resume was saved to the user's
+// account — prominent enough that it's unmissable, with a CTA to the dashboard.
+// Optimization requires login, so the resume is always saved at this point.
+function notifyResumeSaved() {
+    try {
+        const old = document.getElementById('resume-saved-pop');
+        if (old) old.remove();
+
+        if (!document.getElementById('resume-saved-pop-style')) {
+            const style = document.createElement('style');
+            style.id = 'resume-saved-pop-style';
+            style.textContent = `
+                #resume-saved-pop {
+                    position: fixed; inset: 0; z-index: 100000;
+                    display: flex; align-items: center; justify-content: center;
+                    background: rgba(6, 11, 26, 0.55); backdrop-filter: blur(4px);
+                    animation: rspFade .2s ease;
+                    font-family: Inter, -apple-system, sans-serif;
+                }
+                #resume-saved-pop .rsp-card {
+                    width: min(92vw, 460px); text-align: center;
+                    background: linear-gradient(160deg, #16203c, #0e1730);
+                    border: 1px solid rgba(34,197,94,.4);
+                    border-radius: 20px; padding: 34px 30px 28px;
+                    box-shadow: 0 24px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(34,197,94,.08);
+                    animation: rspPop .32s cubic-bezier(.34,1.56,.64,1);
+                }
+                #resume-saved-pop .rsp-check {
+                    width: 64px; height: 64px; margin: 0 auto 16px;
+                    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+                    font-size: 34px; color: #fff; font-weight: 800;
+                    background: linear-gradient(135deg, #22c55e, #16a34a);
+                    box-shadow: 0 8px 28px rgba(34,197,94,.45);
+                }
+                #resume-saved-pop .rsp-title { font-size: 1.55rem; font-weight: 800; color: #eaf1ff; margin: 0 0 8px; }
+                #resume-saved-pop .rsp-msg { font-size: .98rem; color: #aab9d6; line-height: 1.55; margin: 0 0 22px; }
+                #resume-saved-pop .rsp-msg strong { color: #d7e3ff; }
+                #resume-saved-pop .rsp-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+                #resume-saved-pop .rsp-btn-primary, #resume-saved-pop .rsp-btn-secondary {
+                    font-size: .95rem; font-weight: 700; padding: 12px 22px; border-radius: 11px;
+                    cursor: pointer; text-decoration: none; border: 1px solid transparent;
+                }
+                #resume-saved-pop .rsp-btn-primary { background: linear-gradient(135deg, #3392ff, #4c1d95); color: #fff; }
+                #resume-saved-pop .rsp-btn-primary:hover { filter: brightness(1.08); }
+                #resume-saved-pop .rsp-btn-secondary { background: transparent; color: #aab9d6; border-color: rgba(150,170,210,.3); }
+                #resume-saved-pop .rsp-btn-secondary:hover { background: rgba(255,255,255,.05); color: #eaf1ff; }
+                @keyframes rspFade { from { opacity: 0; } to { opacity: 1; } }
+                @keyframes rspPop { from { opacity: 0; transform: translateY(16px) scale(.94); } to { opacity: 1; transform: none; } }
+            `;
+            document.head.appendChild(style);
+        }
+
+        const overlay = document.createElement('div');
+        overlay.id = 'resume-saved-pop';
+        overlay.innerHTML = `
+            <div class="rsp-card" role="dialog" aria-live="assertive" aria-label="Resume saved">
+                <div class="rsp-check">✓</div>
+                <div class="rsp-title">Resume saved!</div>
+                <div class="rsp-msg">Your optimized resume is now in <strong>My Resumes</strong>. Come back and re-download it anytime — no need to start over.</div>
+                <div class="rsp-actions">
+                    <a class="rsp-btn-primary" href="/my-resumes">View My Resumes</a>
+                    <button type="button" class="rsp-btn-secondary" id="rsp-close">Got it</button>
+                </div>
+            </div>
+        `;
+        function close() { overlay.remove(); }
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+        document.body.appendChild(overlay);
+        const closeBtn = overlay.querySelector('#rsp-close');
+        if (closeBtn) closeBtn.addEventListener('click', close);
+        // Auto-dismiss after a while in case they walk away.
+        setTimeout(() => { if (document.body.contains(overlay)) close(); }, 9000);
+    } catch (e) {
+        if (typeof showToast === 'function') {
+            showToast('Saved to My Resumes — re-download anytime.', 'success', 'Resume saved ✓');
+        }
+    }
 }
 
 async function downloadPdfFromEditorPayload() {
