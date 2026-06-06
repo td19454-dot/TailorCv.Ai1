@@ -470,10 +470,14 @@
     const hard   = skills.hard_skills || {};
     const soft   = skills.soft_skills || {};
     const groups = [
-      { id: "hard-matched", items: hard.matched || [], kind: "matched", label: "Matched Hard Skills" },
-      { id: "hard-missing", items: hard.missing || [], kind: "missing", label: "Missing Hard Skills" },
-      { id: "soft-matched", items: soft.matched || [], kind: "matched", label: "Matched Soft Skills" },
-      { id: "soft-missing", items: soft.missing || [], kind: "missing", label: "Missing Soft Skills" },
+      { id: "hard-matched",    items: hard.matched || [], kind: "matched", label: "Matched Hard Skills" },
+      { id: "hard-missing",    items: hard.missing || [], kind: "missing", label: "Missing Hard Skills" },
+      { id: "soft-matched",    items: soft.matched || [], kind: "matched", label: "Matched Soft Skills" },
+      { id: "soft-missing",    items: soft.missing || [], kind: "missing", label: "Missing Soft Skills" },
+      { id: "ov-hard-matched", items: hard.matched || [], kind: "matched", label: "Matched Hard Skills" },
+      { id: "ov-hard-missing", items: hard.missing || [], kind: "missing", label: "Missing Hard Skills" },
+      { id: "ov-soft-matched", items: soft.matched || [], kind: "matched", label: "Matched Soft Skills" },
+      { id: "ov-soft-missing", items: soft.missing || [], kind: "missing", label: "Missing Soft Skills" },
     ];
     groups.forEach(({ id, items, kind, label }) => {
       const container = document.getElementById(id);
@@ -553,33 +557,36 @@
 
   /* ─── Priority fixes tab ─────────────────────────────────────────────────── */
   function renderPriorityFixes(d) {
-    const target = document.getElementById("priority-fixes");
-    if (!target) return;
-    target.innerHTML = "";
     const fixes = Array.isArray(d?.top_priority_fixes) ? d.top_priority_fixes : [];
 
-    if (!fixes.length) {
-      target.innerHTML = `
-        <div class="check-row pass">
-          <div class="check-icon">✓</div>
-          <div class="check-body">
-            <div class="check-label">No critical issues found</div>
-            <div class="check-detail">Great work — your resume passed all key checks.</div>
-          </div>
-        </div>`;
-      return;
+    function populateTarget(target) {
+      if (!target) return;
+      target.innerHTML = "";
+      if (!fixes.length) {
+        target.innerHTML = `
+          <div class="check-row pass">
+            <div class="check-icon">✓</div>
+            <div class="check-body">
+              <div class="check-label">No critical issues found</div>
+              <div class="check-detail">Great work — your resume passed all key checks.</div>
+            </div>
+          </div>`;
+        return;
+      }
+      fixes.forEach((fix, i) => {
+        const div = el("div", "fix-item");
+        div.innerHTML = `
+          <div class="fix-num">${i + 1}</div>
+          <div class="fix-body">
+            <div class="fix-issue">${fix.issue  || "Issue"}</div>
+            <div class="fix-action">${fix.action || ""}</div>
+          </div>`;
+        target.appendChild(div);
+      });
     }
 
-    fixes.forEach((fix, i) => {
-      const div = el("div", "fix-item");
-      div.innerHTML = `
-        <div class="fix-num">${i + 1}</div>
-        <div class="fix-body">
-          <div class="fix-issue">${fix.issue  || "Issue"}</div>
-          <div class="fix-action">${fix.action || ""}</div>
-        </div>`;
-      target.appendChild(div);
-    });
+    populateTarget(document.getElementById("priority-fixes"));
+    populateTarget(document.getElementById("ov-priority-fixes"));
   }
 
   /* ─── Job role display ───────────────────────────────────────────────────── */
