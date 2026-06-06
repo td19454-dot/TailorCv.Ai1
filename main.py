@@ -134,6 +134,13 @@ resumes_dir = os.path.join(BASE_DIR, "resumes")
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "").strip()
 SHOW_OPTIMIZED_EDITOR = os.getenv("SHOW_OPTIMIZED_EDITOR", "false").strip().lower() == "true"
 SITE_URL = os.getenv("SITE_URL", "https://thetailorcv.com").rstrip("/")
+# Google Search Console verification.
+#   GOOGLE_SITE_VERIFICATION = the token from the "HTML tag" method (renders a
+#     <meta name="google-site-verification"> tag site-wide via _seo_head.html).
+#   GOOGLE_VERIFICATION_FILE = the "HTML file" method filename, e.g.
+#     "google1234abcd5678.html" — served at /<that-filename>.
+GOOGLE_SITE_VERIFICATION = os.getenv("GOOGLE_SITE_VERIFICATION", "").strip()
+GOOGLE_VERIFICATION_FILE = os.getenv("GOOGLE_VERIFICATION_FILE", "").strip()
 BLOG_CONTENT_DIR = os.path.join(BASE_DIR, "content", "blogs")
 
 # Ensure directories exist
@@ -148,8 +155,29 @@ os.makedirs(BLOG_CONTENT_DIR, exist_ok=True)
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 app.mount("/public", StaticFiles(directory=public_dir), name="public")
 templates = Jinja2Templates(directory=templates_dir)
+# Make the GSC verification token available to every template (used by
+# _seo_head.html to emit the verification meta tag).
+templates.env.globals["google_site_verification"] = GOOGLE_SITE_VERIFICATION
 app.include_router(linkedin_router)
 blog_service = BlogService(BLOG_CONTENT_DIR)
+
+
+# Google Search Console "HTML file" verification. Registered as an exact literal
+# path (e.g. /google1234abcd.html) only when configured, so it can never shadow
+# other routes. The body is exactly what Google expects.
+if GOOGLE_VERIFICATION_FILE:
+    _gsc_filename = GOOGLE_VERIFICATION_FILE
+    if _gsc_filename.startswith("google") and _gsc_filename.endswith(".html"):
+        async def _google_verification_file():
+            from fastapi.responses import PlainTextResponse as _PTR
+            return _PTR(content=f"google-site-verification: {_gsc_filename}\n", media_type="text/html")
+
+        app.add_api_route(
+            f"/{_gsc_filename}",
+            _google_verification_file,
+            methods=["GET"],
+            include_in_schema=False,
+        )
 
 
 def initialize_database() -> None:
@@ -3244,6 +3272,54 @@ def build_software_app_schema() -> str:
     return json.dumps(schema, separators=(",", ":"))
 
 
+# Static FAQ used for FAQPage rich results on the homepage / ATS checker pages.
+# Targets high-intent queries (free ATS checker, ATS-friendly resume, etc.).
+HOMEPAGE_FAQS = [
+    (
+        "Is the ATS score checker free?",
+        "Yes. theTailorCV's ATS score checker is completely free. Upload your "
+        "resume and paste a job description to get an instant ATS score, missing "
+        "keywords, and optimization tips at no cost.",
+    ),
+    (
+        "How does the AI resume optimizer work?",
+        "Our AI reads your resume and the target job description, then rewrites and "
+        "tailors each section to match the role — adding missing keywords and "
+        "improving phrasing so your resume passes applicant tracking systems (ATS).",
+    ),
+    (
+        "What is an ATS-friendly resume?",
+        "An ATS-friendly resume uses a clean, single-column layout, standard section "
+        "headings, and keywords from the job description so applicant tracking "
+        "systems can parse it correctly. theTailorCV's templates, including Jake's "
+        "Resume template, are built to be ATS-friendly.",
+    ),
+    (
+        "Can I practice mock interviews online?",
+        "Yes. theTailorCV includes an AI mock interview tool that asks role-specific "
+        "technical and behavioral questions, then gives real-time feedback and a "
+        "scorecard so you can practice before your real interview.",
+    ),
+]
+
+
+def build_faq_page_schema(faqs=HOMEPAGE_FAQS) -> str:
+    """FAQPage JSON-LD from a list of (question, answer) tuples."""
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": q,
+                "acceptedAnswer": {"@type": "Answer", "text": a},
+            }
+            for q, a in faqs
+        ],
+    }
+    return json.dumps(schema, separators=(",", ":"))
+
+
 @app.get("/favicon.png", include_in_schema=False)
 async def favicon_ico():
     return FileResponse(
@@ -3270,8 +3346,22 @@ async def site_webmanifest():
 
 @app.get("/robots.txt", include_in_schema=False)
 async def robots_txt():
-    robots_body = f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n"
-    return PlainTextResponse(content=robots_body, media_type="text/plain")
+    # Allow crawling of all public/marketing/tool pages; keep auth, account, and
+    # API endpoints out of the index (they have no SEO value and can leak query
+    # params / thin pages into search results).
+    disallow_paths = [
+        "/api/",
+        "/login",
+        "/signup",
+        "/forgot-password",
+        "/reset-password",
+        "/optimized-editor",
+        "/download-optimized-resume",
+    ]
+    lines = ["User-agent: *", "Allow: /"]
+    lines += [f"Disallow: {path}" for path in disallow_paths]
+    lines += ["", f"Sitemap: {SITE_URL}/sitemap.xml", ""]
+    return PlainTextResponse(content="\n".join(lines), media_type="text/plain")
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -3284,6 +3374,9 @@ async def landing_page(request: Request):
         {
             "request": request,
             "home_posts": home_posts,
+            "canonical_url": build_absolute_url("/"),
+            "software_schema_json": build_software_app_schema(),
+            "faq_schema_json": build_faq_page_schema(),
         },
     )
 
@@ -3298,7 +3391,9 @@ async def solutions_page(request: Request):
         {
             "request": request,
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
+            "canonical_url": build_absolute_url("/solutions"),
             "software_schema_json": build_software_app_schema(),
+            "faq_schema_json": build_faq_page_schema(),
         },
     )
 
@@ -3313,7 +3408,11 @@ async def optimize_page(request: Request):
         {
             "request": request,
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
+            # Alias of /solutions — canonical points to the primary URL to avoid
+            # duplicate-content indexing.
+            "canonical_url": build_absolute_url("/solutions"),
             "software_schema_json": build_software_app_schema(),
+            "faq_schema_json": build_faq_page_schema(),
         },
     )
 
@@ -3334,7 +3433,12 @@ async def ats_analysis_page(request: Request):
     return templates.TemplateResponse(
         request,
         "ats_analysis.html",
-        {"request": request},
+        {
+            "request": request,
+            "canonical_url": build_absolute_url("/ats-analysis"),
+            "software_schema_json": build_software_app_schema(),
+            "faq_schema_json": build_faq_page_schema(),
+        },
     )
 
 
@@ -3497,22 +3601,32 @@ async def blog_post_page(request: Request, slug: str):
 
 @app.get("/sitemap.xml", include_in_schema=False)
 async def sitemap_xml():
-    static_urls = [
-        ("/", datetime.utcnow().strftime("%Y-%m-%d")),
-        ("/solutions", datetime.utcnow().strftime("%Y-%m-%d")),
-        ("/pricing", datetime.utcnow().strftime("%Y-%m-%d")),
-        ("/templates", datetime.utcnow().strftime("%Y-%m-%d")),
-        ("/about", datetime.utcnow().strftime("%Y-%m-%d")),
-        ("/contact", datetime.utcnow().strftime("%Y-%m-%d")),
-        ("/blog", datetime.utcnow().strftime("%Y-%m-%d")),
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    # (path, changefreq, priority) for public, indexable pages.
+    static_pages = [
+        ("/", "daily", "1.0"),
+        ("/solutions", "weekly", "0.9"),
+        ("/ats-analysis", "weekly", "0.9"),
+        ("/templates", "weekly", "0.8"),
+        ("/mock-interview", "weekly", "0.8"),
+        ("/interview-prep", "weekly", "0.7"),
+        ("/modify-cv", "weekly", "0.7"),
+        ("/pricing", "monthly", "0.6"),
+        ("/about", "monthly", "0.5"),
+        ("/contact", "monthly", "0.4"),
+        ("/blog", "daily", "0.7"),
     ]
-    post_urls = [(f"/blog/{p.slug}", p.lastmod_iso) for p in blog_service.load_posts()]
+    static_urls = [(path, today, changefreq, priority) for path, changefreq, priority in static_pages]
+    post_urls = [(f"/blog/{p.slug}", p.lastmod_iso, "monthly", "0.6") for p in blog_service.load_posts()]
     all_urls = static_urls + post_urls
 
     entries = []
-    for path, lastmod in all_urls:
+    for path, lastmod, changefreq, priority in all_urls:
         entries.append(
-            f"<url><loc>{xml_escape(build_absolute_url(path))}</loc><lastmod>{xml_escape(lastmod)}</lastmod></url>"
+            f"<url><loc>{xml_escape(build_absolute_url(path))}</loc>"
+            f"<lastmod>{xml_escape(lastmod)}</lastmod>"
+            f"<changefreq>{changefreq}</changefreq>"
+            f"<priority>{priority}</priority></url>"
         )
     xml = (
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
