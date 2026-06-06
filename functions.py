@@ -1477,9 +1477,20 @@ Do not miss any misspelled words.
 Do not fail for style preferences.
 
 MANDATORY PDF EXTRACTION ARTIFACT RULE — NEVER VIOLATE:
-Resume text is extracted from PDF files. PDF extraction sometimes merges multiple correctly-spelled words into one long token without spaces (e.g., "Firstrankandallrounderoftheyear", "formulatingtechnicaldesigns", "TackledotherchallengessuchasbuildingPrometheus"). This is a technical extraction artifact — the original resume has proper spaces.
-RULE: If a token looks like 3 or more recognizable English words run together without spaces, treat it as a PDF extraction artifact and DO NOT flag it as a spelling error. Never mention it in your spelling feedback.
-RULE: Capitalization differences (e.g., "Medals" vs "medals", "Java", "Team") are NOT spelling errors. Only flag tokens where the letters themselves are wrong (e.g., "acomplishment" → "accomplishment").
+Resume text is extracted from PDF files. PDF extraction frequently merges multiple correctly-spelled words into one long token without spaces. This is a very common technical artifact — the original resume has correct spelling and proper spacing.
+
+ARTIFACT EXAMPLES — these are NOT spelling errors, ignore them completely:
+- "Formulatingtechnicaldesignsforindependentend-to-endproblems" → real text: "Formulating technical designs for independent end-to-end problems"
+- "drivingcross-teamcollaboration" → real text: "driving cross-team collaboration"
+- "upholdingsoftware" → real text: "upholding software"
+- "Firstrankandallrounderoftheyear" → real text: "First rank and all-rounder of the year"
+- "TackledotherchallengessuchasbuildingPrometheus" → real text: "Tackled other challenges such as building Prometheus"
+
+DETECTION RULES — apply every one of these:
+RULE: Any token containing 2 or more recognizable English words merged together (with or without a hyphen between some of them) is an extraction artifact. Do NOT flag it as a spelling error. Never mention it in feedback.
+RULE: Any token where recognizable words are merged around a hyphen (e.g., "drivingcross-teamcollaboration", "end-to-endproblems") is an extraction artifact. Ignore it entirely.
+RULE: When uncertain whether a long token (10+ characters) is an artifact or a genuine misspelling, treat it as an artifact and do NOT flag it.
+RULE: Capitalization differences (e.g., "Medals" vs "medals", "Java", "Team") are NOT spelling errors. Only flag tokens where the specific letters themselves are wrong (e.g., "acomplishment" → "accomplishment").
 
 ==================================================
 GRAMMAR RULES
@@ -1939,7 +1950,6 @@ The JSON must strictly follow the schema provided below.
     model="gpt-4o-mini"
     temperature=0
     client = await _build_openai_client()
-
     #Make call
     try:
         response = await client.chat.completions.create(
