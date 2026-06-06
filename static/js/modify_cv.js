@@ -48,23 +48,29 @@
     function getTemplatePreviewSrc(templateId) {
         const id = Number(templateId);
         const previewMap = {
-            1: "pic1.webp",
-            2: "pic2.webp",
-            3: "pic3.webp",
-            4: "pic4.webp",
-            5: "pic5.webp",
-            6: "pic6.webp",
-            13: "pic13.webp",
-            14: "pic14.webp",
-            15: "pic15.webp",
-            16: "pic16.webp",
-            17: "pic17.webp",
-            18: "pic18.webp",
-            19: "pic19.webp",
-            20: "pic20.webp",
-            21: "pic21.webp",
-            22: "pic22.webp",
-        };
+                    1: "pic1.webp",
+                    2: "pic2.webp",
+                    3: "pic3.webp",
+                    4: "pic4.webp",
+                    5: "pic5.webp",
+                    6: "pic6.webp",
+                    7: "pic7.webp",
+                    8: "pic8.webp",
+                    9: "pic9.webp",
+                    10: "pic10.webp",
+                    11: "pic11.webp",
+                    12: "pic12.webp",
+                    13: "pic13.webp",
+                    14: "pic14.webp",
+                    15: "pic15.webp",
+                    16: "pic16.webp",
+                    17: "pic17.webp",
+                    18: "pic18.webp",
+                    19: "pic19.webp",
+                    20: "pic20.webp",
+                    21: "pic21.webp",
+                    22: "pic22.webp"
+                };
         const filename = previewMap[id] || `pic${id}.jpg`;
         return `/static/${filename}?v=9`;
     }
