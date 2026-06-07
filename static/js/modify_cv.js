@@ -142,6 +142,7 @@
 
     function Sidebar() {
         return `
+            <button type="button" id="mobile-sidebar-close-inner" class="mobile-sidebar-close-inner" aria-label="Close menu">&times;</button>
             <div class="sidebar-title">Modify Sections</div>
             ${sidebarSections
                 .map(
@@ -981,6 +982,47 @@
         });
     }
 
+    function setupMobileNav() {
+        function getSidebar()    { return document.getElementById("modify-cv-sidebar"); }
+        function getBackdrop()   { return document.getElementById("mobile-sidebar-backdrop"); }
+        function getPreviewPanel() { return document.getElementById("preview-panel"); }
+
+        function openSidebar() {
+            const s = getSidebar(), b = getBackdrop();
+            if (s) s.classList.add("sidebar-open");
+            if (b) b.classList.add("open");
+        }
+        function closeSidebar() {
+            const s = getSidebar(), b = getBackdrop();
+            if (s) s.classList.remove("sidebar-open");
+            if (b) b.classList.remove("open");
+        }
+        function openPreview() {
+            const p = getPreviewPanel();
+            if (p) p.classList.add("preview-open");
+            try { applyPreviewScale(); } catch (e) { /* preview not ready yet */ }
+        }
+        function closePreview() {
+            const p = getPreviewPanel();
+            if (p) p.classList.remove("preview-open");
+        }
+
+        // Document-level delegation — works regardless of element init order
+        document.addEventListener("click", function (e) {
+            if (e.target.closest("#mobile-sidebar-toggle"))    { openSidebar();  return; }
+            if (e.target.closest("#mobile-sidebar-backdrop"))  { closeSidebar(); return; }
+            if (e.target.closest("#mobile-preview-fab"))       { openPreview();  return; }
+            if (e.target.closest("#mobile-preview-close"))     { closePreview(); return; }
+            if (e.target.closest("#mobile-sidebar-close-inner")) { closeSidebar(); return; }
+            // Tapping a section nav link closes the drawer
+            const navBtn = e.target.closest("[data-scroll-to]");
+            if (navBtn) {
+                const s = getSidebar();
+                if (s && s.classList.contains("sidebar-open")) closeSidebar();
+            }
+        });
+    }
+
     document.addEventListener("DOMContentLoaded", async () => {
         try {
             await loadTemplates();
@@ -989,7 +1031,8 @@
             renderAll();
             setupActionButtons();
             setupCvUploadImport();
-        setupLinkedInImport();
+            setupLinkedInImport();
+            setupMobileNav();
             if (selectedTemplate) {
                 await updatePreview();
             }
