@@ -37,7 +37,7 @@ markdown>=3.5.0
 # ipywidgets
 # gradio
 httpx>=0.27.0
-
+resend
 #Analytics
 posthog
 
