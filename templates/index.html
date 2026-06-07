@@ -2237,7 +2237,59 @@ details[open] .faq-chevron {
 details[open] .faq-chevron svg {
     stroke: #4a6aff;
 }
+
+/* ── Scroll-reveal + hover animations (respect reduced motion) ───────────── */
+@media (prefers-reduced-motion: no-preference) {
+    .tc-reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity .75s cubic-bezier(.22,.61,.36,1), transform .75s cubic-bezier(.22,.61,.36,1);
+        will-change: opacity, transform;
+    }
+    .tc-reveal.tc-in { opacity: 1; transform: none; }
+}
+.result-card, .founder-card, .mock-card {
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+.result-card:hover, .founder-card:hover, .mock-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 42px rgba(10, 20, 60, .35);
+}
 </style>
+<script>
+(function () {
+    // No-op (content shows normally) when unsupported or reduced motion is preferred.
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var selectors = ['.section-title', '.career-item', '.result-card', '.founder-card', '.mock-card', '.feature-showcase-title'];
+    var els = [];
+    document.querySelectorAll(selectors.join(',')).forEach(function (el) {
+        if (el.closest('.hero')) return; // leave the hero's own animations alone
+        el.classList.add('tc-reveal');
+        els.push(el);
+    });
+
+    // Subtle stagger for cards that sit side-by-side in the same row.
+    document.querySelectorAll('.result-card.tc-reveal, .founder-card.tc-reveal, .career-item.tc-reveal').forEach(function (el) {
+        var sibs = Array.prototype.filter.call(el.parentElement.children, function (c) {
+            return c.classList && c.classList.contains('tc-reveal');
+        });
+        var idx = sibs.indexOf(el);
+        if (idx > 0) el.style.transitionDelay = (idx * 80) + 'ms';
+    });
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('tc-in'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+
+    // Safety net: never leave content hidden if the observer misbehaves.
+    setTimeout(function () { els.forEach(function (el) { el.classList.add('tc-in'); }); }, 2500);
+})();
+</script>
 </body>
 
 </html>
