@@ -890,6 +890,96 @@ def inject_jd_hard_skills(data: dict, jd_string: str) -> dict:
     return data
 
 
+# Bullet / list-marker characters that sometimes leak into AI output values.
+_BULLET_CHARS = "•‣▪◦●·*–—-"
+
+
+def _balance_parentheses(text: str) -> str:
+    """Drop unmatched parentheses while keeping matched pairs intact.
+
+    Defense-in-depth against broken entries like "state management (Redux" (an
+    unmatched "(") that previously rendered as garbage in the skills line. A
+    balanced value like "JavaScript (ES6+)" is returned unchanged.
+    """
+    result: list[str] = []
+    open_positions: list[int] = []  # indices in `result` of unmatched "("
+    for ch in text:
+        if ch == "(":
+            open_positions.append(len(result))
+            result.append(ch)
+        elif ch == ")":
+            if open_positions:
+                open_positions.pop()
+                result.append(ch)
+            # else: unmatched ")", skip it
+        else:
+            result.append(ch)
+    # Remove any remaining unmatched "(" (delete right-to-left to keep indices valid).
+    for idx in reversed(open_positions):
+        del result[idx]
+    return "".join(result)
+
+
+def _clean_inline_text(text: str) -> str:
+    """Normalize a single inline value: strip stray bullets, balance parens,
+    tidy whitespace. Used for skills, summary, and bullet points."""
+    t = str(text or "").strip().strip(_BULLET_CHARS).strip()
+    t = _balance_parentheses(t)
+    # Tidy spacing left behind by removing a paren, and collapse runs of spaces.
+    t = re.sub(r"\(\s+", "(", t)
+    t = re.sub(r"\s+\)", ")", t)
+    t = re.sub(r"\s{2,}", " ", t)
+    # Drop a dangling separator/space before a closing context.
+    t = re.sub(r"\s+([,;])", r"\1", t)
+    return t.strip(" ,;").strip()
+
+
+def sanitize_resume_data(data: dict) -> dict:
+    """Final safety net run on the optimized resume right before rendering.
+
+    Guarantees the AI/post-processing output is presentable:
+      - skills: cleaned, balanced parens, de-duplicated (case-insensitive), no
+        empty/oversized noise, original order preserved
+      - summary + bullet points: cleaned and paren-balanced
+    Never raises — any unexpected shape is returned untouched.
+    """
+    if not isinstance(data, dict):
+        return data
+
+    # --- Skills -----------------------------------------------------------
+    skills = data.get("skills")
+    if isinstance(skills, list):
+        cleaned: list[str] = []
+        seen: set[str] = set()
+        for raw in skills:
+            s = _clean_inline_text(raw)
+            if not s or len(s) > 80:
+                continue
+            key = s.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            cleaned.append(s)
+        data["skills"] = cleaned
+
+    # --- Summary ----------------------------------------------------------
+    if isinstance(data.get("summary"), str):
+        data["summary"] = _clean_inline_text(data["summary"])
+
+    # --- Bulleted sections ------------------------------------------------
+    for section in ("experience", "projects", "extracurriculars"):
+        items = data.get(section)
+        if not isinstance(items, list):
+            continue
+        for item in items:
+            if isinstance(item, dict) and isinstance(item.get("bullets"), list):
+                item["bullets"] = [
+                    b for b in (_clean_inline_text(x) for x in item["bullets"]) if b
+                ]
+
+    return data
+
+
 def _extract_skill_candidates(text: str) -> set[str]:
     content = str(text or "").lower()
     known_skills = {

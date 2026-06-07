@@ -18,7 +18,7 @@ import uvicorn
 from dotenv import load_dotenv
 from pydantic import ValidationError
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
-from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -34,6 +34,7 @@ from functions import (
     extract_links,
     inject_links,
     inject_jd_hard_skills,
+    sanitize_resume_data,
     map_demo_links,
     extract_project_links,
     extract_publication_links,
@@ -49,7 +50,7 @@ from functions import (
 )
 
 from extraction import process_resume
-from models import PasswordResetToken, SignupVerificationCode, User, WelcomeEmailLog
+from models import PasswordResetToken, SavedResume, SignupVerificationCode, User, WelcomeEmailLog
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
 from blog_system import BlogService, codehilite_css, xml_escape
@@ -180,10 +181,43 @@ if GOOGLE_VERIFICATION_FILE:
         )
 
 
+def _ensure_saved_resume_columns() -> None:
+    """Lightweight migration: add columns to an existing saved_resumes table.
+
+    Base.metadata.create_all only creates missing *tables*, never new columns on
+    an existing one, so newly added model fields (company, status) must be
+    ALTERed in. Safe to run on every startup; only adds what's missing.
+    """
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    insp = _inspect(engine)
+    if not insp.has_table("saved_resumes"):
+        return
+    cols = {c["name"]: c for c in insp.get_columns("saved_resumes")}
+    to_add = []
+    if "company" not in cols:
+        to_add.append("ADD COLUMN company VARCHAR(200)")
+    if "status" not in cols:
+        to_add.append("ADD COLUMN status VARCHAR(30) DEFAULT 'saved'")
+    if to_add:
+        with engine.begin() as conn:
+            for clause in to_add:
+                conn.execute(_text(f"ALTER TABLE saved_resumes {clause}"))
+
+    # Widen jd_snippet from VARCHAR(500) to TEXT so the FULL job description fits.
+    # (SQLite is dynamically typed, so only relational DBs need the ALTER.)
+    if engine.dialect.name != "sqlite":
+        jd_col = cols.get("jd_snippet")
+        if jd_col is not None and "TEXT" not in str(jd_col.get("type", "")).upper():
+            with engine.begin() as conn:
+                conn.execute(_text("ALTER TABLE saved_resumes ALTER COLUMN jd_snippet TYPE TEXT"))
+
+
 def initialize_database() -> None:
     """Create tables if the configured database is reachable."""
     try:
         Base.metadata.create_all(bind=engine)
+        _ensure_saved_resume_columns()
         db_init_status["ok"] = True
         db_init_status["error"] = None
     except Exception as exc:
@@ -205,6 +239,80 @@ def require_logged_in(request: Request) -> None:
     user_id = request.session.get("user_id")
     if not user_id:
         raise HTTPException(status_code=401, detail="Not logged in")
+
+
+# Keep at most this many saved resumes per user (newest kept) to bound storage.
+MAX_SAVED_RESUMES_PER_USER = 25
+
+
+def _derive_target_role_from_jd(jd_string: str) -> str:
+    """Best-effort target job title from the JD — almost always its first line.
+
+    Used to title a saved resume by the job it was tailored *for* (e.g.
+    "Backend Software Engineer"), so a user who tailors one resume to many
+    roles gets distinguishable cards instead of N identical ones.
+    """
+    for raw in str(jd_string or "").splitlines():
+        line = raw.strip().strip("-•*#:").strip()
+        if len(line) < 2:
+            continue
+        if len(line) > 70:  # looks like a paragraph, not a title — clip it
+            line = line[:60].rstrip() + "…"
+        return line
+    return ""
+
+
+def save_user_resume(user_id: int, parsed: dict, html_content: str, jd_string: str,
+                     template_id, style_id) -> None:
+    """Persist an optimized resume to the user's account for the My Resumes page.
+
+    Best-effort: any failure here must never break the optimization response,
+    so the caller wraps this and we swallow/log errors internally.
+    """
+    db = get_db()
+    try:
+        candidate_name = ""
+        if isinstance(parsed, dict):
+            candidate_name = str(parsed.get("name") or "").strip()[:255]
+        # Title by the job this resume was tailored FOR (from the JD), so multiple
+        # versions of the same resume are distinguishable. Fall back to the
+        # candidate's name when the JD has no usable title.
+        target_role = _derive_target_role_from_jd(jd_string)
+        title = (target_role or candidate_name or "Untitled Resume")[:255]
+        jd_snippet = (str(jd_string or "").strip()) or None  # full JD, untruncated
+
+        record = SavedResume(
+            user_id=user_id,
+            title=title,
+            candidate_name=candidate_name or None,
+            jd_snippet=jd_snippet,
+            template_id=int(template_id) if template_id is not None else None,
+            style_id=int(style_id) if style_id is not None else None,
+            resume_json=json.dumps(parsed, separators=(",", ":")) if isinstance(parsed, dict) else None,
+            html_content=html_content or None,
+        )
+        db.add(record)
+        db.commit()
+
+        # Prune to the newest MAX_SAVED_RESUMES_PER_USER for this user.
+        ids = [
+            r.id for r in db.query(SavedResume.id)
+            .filter(SavedResume.user_id == user_id)
+            .order_by(SavedResume.created_at.desc())
+            .all()
+        ]
+        stale = ids[MAX_SAVED_RESUMES_PER_USER:]
+        if stale:
+            db.query(SavedResume).filter(SavedResume.id.in_(stale)).delete(synchronize_session=False)
+            db.commit()
+    except Exception:
+        logger.exception("Failed to save user resume (non-fatal)")
+        try:
+            db.rollback()
+        except Exception:
+            pass
+    finally:
+        db.close()
 
 
 def _cleanup_files(file_paths: list[str]) -> None:
@@ -3463,6 +3571,210 @@ async def modify_cv_page(request: Request):
     )
 
 
+@app.get("/my-resumes", response_class=HTMLResponse)
+async def my_resumes_page(request: Request):
+    """Dashboard of the logged-in user's saved (optimized) resumes."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return RedirectResponse(url="/login?next=/my-resumes", status_code=302)
+    db = get_db()
+    try:
+        resumes = (
+            db.query(SavedResume)
+            .filter(SavedResume.user_id == user_id)
+            .order_by(SavedResume.created_at.desc())
+            .all()
+        )
+    finally:
+        db.close()
+    return templates.TemplateResponse(
+        request,
+        "my_resumes.html",
+        {"request": request, "resumes": resumes},
+    )
+
+
+@app.get("/my-resumes/{resume_id}/download", include_in_schema=False)
+async def download_saved_resume(request: Request, resume_id: int):
+    """Re-render a saved resume to PDF from its stored HTML (no AI re-run)."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        record = (
+            db.query(SavedResume)
+            .filter(SavedResume.id == resume_id, SavedResume.user_id == user_id)
+            .first()
+        )
+        html_content = record.html_content if record else None
+    finally:
+        db.close()
+    if not record:
+        raise HTTPException(status_code=404, detail="Resume not found")
+    if not html_content:
+        raise HTTPException(status_code=410, detail="This saved resume has no stored content to download.")
+
+    pdf_path = os.path.join(resumes_dir, f"saved_resume_{uuid.uuid4()}.pdf")
+
+    def _render_pdf():
+        from weasyprint import HTML
+        HTML(string=html_content, base_url=BASE_DIR).write_pdf(pdf_path, optimize_size=("fonts",))
+
+    try:
+        await asyncio.to_thread(_render_pdf)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+
+    return FileResponse(
+        pdf_path,
+        media_type="application/pdf",
+        filename="optimized_resume.pdf",
+        background=BackgroundTask(_cleanup_files, [pdf_path]),
+    )
+
+
+@app.post("/my-resumes/{resume_id}/delete", include_in_schema=False)
+async def delete_saved_resume(request: Request, resume_id: int):
+    """Delete one of the user's saved resumes."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        deleted = (
+            db.query(SavedResume)
+            .filter(SavedResume.id == resume_id, SavedResume.user_id == user_id)
+            .delete(synchronize_session=False)
+        )
+        db.commit()
+    finally:
+        db.close()
+    if not deleted:
+        raise HTTPException(status_code=404, detail="Resume not found")
+    return RedirectResponse(url="/my-resumes", status_code=303)
+
+
+# Application stages a saved resume can be tagged with (job-tracker).
+SAVED_RESUME_STATUSES = {"saved", "applied", "interview", "selected", "rejected"}
+
+
+@app.post("/my-resumes/{resume_id}/update", include_in_schema=False)
+async def update_saved_resume(
+    request: Request,
+    resume_id: int,
+    company: str = Form(""),
+    status: str = Form("saved"),
+):
+    """Update the job-tracker fields (company, application status) of a resume."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    status = (status or "saved").strip().lower()
+    if status not in SAVED_RESUME_STATUSES:
+        status = "saved"
+    db = get_db()
+    try:
+        record = (
+            db.query(SavedResume)
+            .filter(SavedResume.id == resume_id, SavedResume.user_id == user_id)
+            .first()
+        )
+        if not record:
+            raise HTTPException(status_code=404, detail="Resume not found")
+        record.company = (company or "").strip()[:200] or None
+        record.status = status
+        db.commit()
+    finally:
+        db.close()
+    return RedirectResponse(url="/my-resumes", status_code=303)
+
+
+@app.get("/api/my-resumes/count", include_in_schema=False)
+async def my_resumes_count(request: Request):
+    """How many resumes the current user has saved. Drives the one-time
+    discoverability hint (shown only to users who actually have resumes)."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return JSONResponse(status_code=401, content={"count": 0})
+    db = get_db()
+    try:
+        n = db.query(SavedResume).filter(SavedResume.user_id == user_id).count()
+    finally:
+        db.close()
+    return JSONResponse({"count": n})
+
+
+@app.post("/api/save-edited-resume", include_in_schema=False)
+async def save_edited_resume(request: Request):
+    """Explicitly save the edited resume from the editor (user clicked "Save").
+
+    This is the ONLY place a resume is persisted to My Resumes — there is no
+    auto-save, so "Not now" truly means not saved and reformat sessions are never
+    saved. Create-or-update is keyed on an explicit resume_id round-tripped to the
+    client, so re-saving within the same editor session updates the same row
+    instead of duplicating or clobbering a different resume.
+    """
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return JSONResponse(status_code=401, content={"error": "Not logged in"})
+    try:
+        body = await request.json()
+    except Exception:
+        body = {}
+    html = (body or {}).get("html")
+    template_id = (body or {}).get("template_id")
+    jd = (body or {}).get("jd")
+    resume_id = (body or {}).get("resume_id")
+    jd_snippet = (str(jd).strip() or None) if jd else None  # full JD, untruncated
+    if not html or not isinstance(html, str):
+        return JSONResponse(status_code=400, content={"error": "Missing resume HTML"})
+    try:
+        tid = int(template_id) if template_id is not None else None
+    except (TypeError, ValueError):
+        tid = None
+
+    db = get_db()
+    try:
+        record = None
+        if resume_id is not None:
+            try:
+                record = (
+                    db.query(SavedResume)
+                    .filter(SavedResume.id == int(resume_id), SavedResume.user_id == user_id)
+                    .first()
+                )
+            except (TypeError, ValueError):
+                record = None
+
+        if record:  # update this session's existing row
+            record.html_content = html
+            if tid is not None:
+                record.template_id = tid
+            if jd_snippet:
+                record.jd_snippet = jd_snippet
+                if not record.title or record.title == "Edited Resume":
+                    record.title = _derive_target_role_from_jd(jd) or record.title
+        else:  # first save for this resume — create a new row
+            record = SavedResume(
+                user_id=user_id,
+                title=_derive_target_role_from_jd(jd) or "Edited Resume",
+                html_content=html, template_id=tid, jd_snippet=jd_snippet,
+            )
+            db.add(record)
+        db.commit()
+        return JSONResponse({"success": True, "id": record.id})
+    except Exception:
+        logger.exception("save_edited_resume failed")
+        try:
+            db.rollback()
+        except Exception:
+            pass
+        return JSONResponse(status_code=500, content={"error": "Could not save resume"})
+    finally:
+        db.close()
+
+
 @app.get("/login", response_class=HTMLResponse)
 async def login_page(request: Request):
     """Login page."""
@@ -4294,6 +4606,11 @@ async def upload_resume(
             except Exception:
                 pass
 
+            # Final safety net: clean the optimized data (balance parens, dedupe
+            # skills, strip stray bullets) so malformed AI/post-processing output
+            # never reaches the rendered resume. Must run after all injection.
+            parsed = sanitize_resume_data(parsed)
+
             use_default_template = template_id == 0
             template_content = None
 
@@ -4355,6 +4672,11 @@ async def upload_resume(
             else:
                 template = templates.env.get_template('resume_template.html')
                 html_content = template.render(**context)
+
+            # NOTE: we intentionally do NOT auto-save here. Saving to My Resumes
+            # is now an explicit user choice made in the editor ("Save to My
+            # Resumes"). This keeps reformat/change-format sessions from being
+            # saved, and makes "Not now" actually mean not saved.
 
             header_editor_mode = request.headers.get("X-Editor-Mode", "").lower() == "true"
             form_editor_mode = str(editor_mode or "").strip().lower() == "true"

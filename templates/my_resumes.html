@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your saved, AI-optimized resumes on theTailorCV. Re-download or manage every resume you've tailored to a job description.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>My Resumes | theTailorCV</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/style2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .my-resumes-page {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 48px 20px 80px;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .my-resumes-head { margin-bottom: 28px; }
+        .my-resumes-head h1 {
+            font-size: 2rem; font-weight: 800; color: #eaf1ff; margin: 0 0 6px;
+        }
+        .my-resumes-head p { color: #9fb0cc; font-size: 1rem; margin: 0; }
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 18px;
+        }
+        .resume-card {
+            background: linear-gradient(160deg, rgba(30,41,69,.65), rgba(17,24,42,.85));
+            border: 1px solid rgba(99,130,200,.22);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .resume-card-title {
+            font-size: 1.05rem; font-weight: 700; color: #eaf1ff; line-height: 1.3;
+        }
+        .resume-card-meta { font-size: .82rem; color: #8da3c6; display: flex; flex-wrap: wrap; gap: 10px; }
+        .resume-card-jd {
+            font-size: .82rem; color: #aab9d6; background: rgba(255,255,255,.03);
+            border-radius: 8px; padding: 8px 10px; max-height: 56px; overflow: hidden;
+        }
+        .resume-card-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+        .badge {
+            font-size: .72rem; font-weight: 600; padding: 3px 9px; border-radius: 999px;
+            background: rgba(59,130,246,.16); color: #9cc2ff; border: 1px solid rgba(59,130,246,.28);
+        }
+        .badge.score { background: rgba(16,185,129,.16); color: #6ee7b7; border-color: rgba(16,185,129,.3); }
+        .resume-card-actions { display: flex; gap: 10px; margin-top: auto; padding-top: 6px; }
+        .btn-dl, .btn-del {
+            flex: 1; text-align: center; font-size: .85rem; font-weight: 600; padding: 9px 12px;
+            border-radius: 9px; cursor: pointer; border: 1px solid transparent; text-decoration: none;
+        }
+        .btn-dl {
+            background: linear-gradient(135deg, #3392ff, #4c1d95); color: #fff;
+        }
+        .btn-dl:hover { filter: brightness(1.08); }
+        .btn-del {
+            background: transparent; color: #ff9a9a; border-color: rgba(239,68,68,.35);
+        }
+        .btn-del:hover { background: rgba(239,68,68,.12); }
+        .resume-empty {
+            text-align: center; padding: 64px 20px;
+            border: 1px dashed rgba(99,130,200,.28); border-radius: 16px;
+            background: rgba(255,255,255,.02);
+        }
+        .resume-empty h2 { color: #eaf1ff; font-size: 1.3rem; margin: 0 0 8px; }
+        .resume-empty p { color: #9fb0cc; margin: 0 0 22px; }
+        .resume-empty a {
+            display: inline-block; background: linear-gradient(135deg, #3392ff, #4c1d95);
+            color: #fff; text-decoration: none; font-weight: 700; padding: 12px 26px; border-radius: 10px;
+        }
+        .resume-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+        .status-badge {
+            font-size: .72rem; font-weight: 700; padding: 4px 10px; border-radius: 999px;
+            text-transform: capitalize; white-space: nowrap; flex-shrink: 0;
+        }
+        .status-saved    { background: rgba(148,163,184,.18); color: #cbd5e1; border: 1px solid rgba(148,163,184,.35); }
+        .status-applied  { background: rgba(59,130,246,.18);  color: #93c5fd; border: 1px solid rgba(59,130,246,.4); }
+        .status-interview{ background: rgba(234,179,8,.18);   color: #fde68a; border: 1px solid rgba(234,179,8,.4); }
+        .status-selected { background: rgba(34,197,94,.18);   color: #86efac; border: 1px solid rgba(34,197,94,.4); }
+        .status-rejected { background: rgba(239,68,68,.18);   color: #fca5a5; border: 1px solid rgba(239,68,68,.4); }
+        .resume-card-jd-wrap { font-size: .82rem; }
+        .resume-card-jd-wrap summary {
+            cursor: pointer; color: #9cc2ff; font-weight: 600; font-size: .8rem; padding: 4px 0; user-select: none;
+        }
+        .resume-card-jd-wrap .resume-card-jd {
+            margin-top: 6px; max-height: 160px; overflow-y: auto;
+        }
+        .tracker-form {
+            display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+            padding: 10px 0; border-top: 1px solid rgba(99,130,200,.16);
+        }
+        .tracker-input, .tracker-select {
+            background: rgba(255,255,255,.04); border: 1px solid rgba(99,130,200,.3);
+            color: #eaf1ff; border-radius: 8px; padding: 8px 10px; font-size: .82rem;
+        }
+        .tracker-input { flex: 1; min-width: 110px; }
+        .tracker-select { cursor: pointer; }
+        .tracker-select option { background: #16203c; color: #eaf1ff; }
+        .tracker-save {
+            background: rgba(59,130,246,.2); color: #cfe0ff; border: 1px solid rgba(59,130,246,.4);
+            border-radius: 8px; padding: 8px 14px; font-size: .82rem; font-weight: 700; cursor: pointer;
+        }
+        .tracker-save:hover { background: rgba(59,130,246,.32); }
+        /* Keep the nav on one line (base .nav-links a is 18px/large padding). */
+        .navbar .nav-links { min-width: auto; flex-wrap: nowrap; gap: 2px; }
+        .navbar .nav-links a { font-size: 12px; padding: 22px 12px; letter-spacing: 0; white-space: nowrap; }
+        @media (max-width: 1100px) { .navbar .nav-links a { font-size: 11px; padding: 20px 8px; } }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="left">
+            <div class="logo">
+                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
+            </div>
+        </div>
+        <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav-shared">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="nav-links" id="primary-nav-shared">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/solutions" class="nav-link">Get ATS Score</a>
+            <a href="/modify-cv" class="nav-link">Make CV</a>
+            <a href="/solutions" class="nav-link">Optimize CV with AI</a>
+            <a href="/my-resumes" class="nav-link active">My Resumes</a>
+            <a href="/blog" class="nav-link">Blog</a>
+            <a href="/pricing" class="nav-link">Pricing</a>
+            <a href="/templates" class="nav-link">Templates</a>
+        </nav>
+        <div class="nav-actions">
+            <div id="auth-nav-slot"></div>
+        </div>
+    </header>
+
+    <main class="my-resumes-page">
+        <div class="my-resumes-head">
+            <h1>My Resumes</h1>
+            <p>Every resume you've optimized is saved here. Re-download anytime — no need to start over.</p>
+        </div>
+
+        {% if resumes %}
+        <section class="resume-grid">
+            {% for r in resumes %}
+            {% set st = r.status or 'saved' %}
+            <article class="resume-card">
+                <div class="resume-card-top">
+                    <div class="resume-card-title">{{ r.title or "Untitled Resume" }}</div>
+                    <span class="status-badge status-{{ st }}">{{ st }}</span>
+                </div>
+                <div class="resume-card-meta">
+                    <span>{{ r.created_at.strftime('%b %d, %Y') }}</span>
+                    {% if r.company %}<span>· {{ r.company }}</span>{% endif %}
+                    {% if r.candidate_name %}<span>· {{ r.candidate_name }}</span>{% endif %}
+                </div>
+                <div class="resume-card-badges">
+                    {% if r.template_id %}<span class="badge">Template {{ r.template_id }}</span>{% endif %}
+                    {% if r.ats_score is not none %}<span class="badge score">ATS {{ r.ats_score }}</span>{% endif %}
+                </div>
+                {% if r.jd_snippet %}
+                <details class="resume-card-jd-wrap">
+                    <summary>View job description</summary>
+                    <div class="resume-card-jd">{{ r.jd_snippet }}</div>
+                </details>
+                {% endif %}
+                <form class="tracker-form" method="post" action="/my-resumes/{{ r.id }}/update">
+                    <input type="text" name="company" value="{{ r.company or '' }}" placeholder="Company name" class="tracker-input">
+                    <select name="status" class="tracker-select" aria-label="Application status">
+                        {% for s in ['saved', 'applied', 'interview', 'selected', 'rejected'] %}
+                        <option value="{{ s }}" {% if st == s %}selected{% endif %}>{{ s|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="tracker-save">Update</button>
+                </form>
+                <div class="resume-card-actions">
+                    <a class="btn-dl" href="/my-resumes/{{ r.id }}/download">Download PDF</a>
+                    <form method="post" action="/my-resumes/{{ r.id }}/delete" style="flex:1;margin:0;"
+                          onsubmit="return confirm('Delete this resume? This cannot be undone.');">
+                        <button type="submit" class="btn-del" style="width:100%;">Delete</button>
+                    </form>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+        {% else %}
+        <section class="resume-empty">
+            <h2>No saved resumes yet</h2>
+            <p>Optimize a resume against a job description and it'll show up here automatically.</p>
+            <a href="/solutions">Optimize my resume</a>
+        </section>
+        {% endif %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <h4 class="footer-title">TailorCV</h4>
+                    <p class="footer-text">AI-powered resume optimization for your career success. Land more interviews, faster.</p>
+                    <a href="/solutions" class="footer-cta">Fix my Resume</a>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Product</h4>
+                    <a href="/ats-analysis" class="footer-link">Free ATS Score Checker</a>
+                    <a href="/solutions" class="footer-link">AI Resume Optimizer</a>
+                    <a href="/modify-cv" class="footer-link">ATS-Friendly Resume Builder</a>
+                    <a href="/my-resumes" class="footer-link">My Resumes</a>
+                    <a href="/templates" class="footer-link">Resume Templates</a>
+                    <a href="/pricing" class="footer-link">Pricing</a>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Company</h4>
+                    <a href="/about" class="footer-link">About us</a>
+                    <a href="/contact" class="footer-link">Contact</a>
+                    <a href="/blog" class="footer-link">Blog</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/auth_nav.js?v=2" defer></script>
+    <script src="/static/mobile_nav.js" defer></script>
+</body>
+</html>

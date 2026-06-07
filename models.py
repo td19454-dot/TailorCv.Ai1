@@ -82,6 +82,29 @@ class JobApplication(Base):
     user = relationship("User", back_populates="job_applications")
 
 
+class SavedResume(Base):
+    """An optimized resume persisted to a user's account so they can return to
+    re-download or re-edit it. The foundation of the 'My Resumes' dashboard."""
+    __tablename__ = "saved_resumes"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    title = Column(String(255), nullable=False, default="Untitled Resume")
+    candidate_name = Column(String(255), nullable=True)
+    jd_snippet = Column(Text, nullable=True)                    # full job description text
+    template_id = Column(Integer, nullable=True)
+    style_id = Column(Integer, nullable=True)
+    ats_score = Column(Integer, nullable=True)
+    company = Column(String(200), nullable=True)               # job tracker: company applied to
+    status = Column(String(30), nullable=False, default="saved")  # saved, applied, interview, selected, rejected
+    resume_json = Column(Text, nullable=True)   # the optimized resume dict, JSON-encoded
+    html_content = Column(Text, nullable=True)  # rendered HTML, for instant re-download
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+    user = relationship("User", back_populates="saved_resumes")
+
+
 class WelcomeEmailLog(Base):
     __tablename__ = "welcome_email_logs"
 
