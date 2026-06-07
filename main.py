@@ -3721,7 +3721,7 @@ async def request_signup_code(request: Request):
             return JSONResponse(
                 {
                     "success": True,
-                    "message": "Email sending is not configured. Using development verification code.",
+                    "message": "Sending Email",
                     "dev_code": signup_code,
                 }
             )

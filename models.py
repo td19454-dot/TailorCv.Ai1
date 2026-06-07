@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -13,10 +13,19 @@ class User(Base):
     name = Column("full_name", String(120), nullable=False)
     email = Column(String(255), unique=True, index=True, nullable=False)
     hashed_password = Column("password", String(255), nullable=False)
+
+    # Subscription fields
+    plan = Column(String(20), default="free", nullable=False, server_default="free")
+    stripe_customer_id = Column(String(100), nullable=True, unique=True)
+    stripe_subscription_id = Column(String(100), nullable=True)
+    subscription_status = Column(String(30), nullable=True)  # active, canceled, past_due, trialing
+    subscription_ends_at = Column(DateTime(timezone=True), nullable=True)
+
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
     job_applications = relationship("JobApplication", back_populates="user", cascade="all, delete-orphan")
     welcome_emails = relationship("WelcomeEmailLog", back_populates="user", cascade="all, delete-orphan")
+    usage_records = relationship("UsageRecord", back_populates="user", cascade="all, delete-orphan")
 
 
 class PasswordResetToken(Base):
@@ -82,3 +91,20 @@ class WelcomeEmailLog(Base):
     source = Column(String(30), nullable=False, default="login")
 
     user = relationship("User", back_populates="welcome_emails")
+
+
+class UsageRecord(Base):
+    """Tracks monthly feature usage per user for enforcing free-tier limits."""
+    __tablename__ = "usage_records"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    month = Column(String(7), nullable=False)  # "2026-06"
+    ats_scans = Column(Integer, default=0, nullable=False)
+    ai_optimizations = Column(Integer, default=0, nullable=False)
+    mock_interviews = Column(Integer, default=0, nullable=False)
+    interview_questions = Column(Integer, default=0, nullable=False)
+
+    __table_args__ = (UniqueConstraint("user_id", "month", name="uq_user_month"),)
+
+    user = relationship("User", back_populates="usage_records")
