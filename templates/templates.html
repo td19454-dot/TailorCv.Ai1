@@ -202,7 +202,7 @@
         </div>
     </footer>
 
-    <script src="/static/auth_nav.js"></script>
+    <script src="/static/auth_nav.js?v=2"></script>
     <script src="/static/mobile_nav.js"></script>
     <script>
         (function () {
@@ -500,6 +500,12 @@
                     }
                     finishProgress(true);
                     setUploadStatus("Resume generated. Opening editor...", "is-success");
+                    // Mark this as a reformat (no job description) so the editor
+                    // does NOT show the "save with JD" prompt on download.
+                    try {
+                        sessionStorage.setItem("tailorcv_editor_source", "reformat");
+                        sessionStorage.removeItem("tailorcv_current_resume_id");
+                    } catch (e) {}
                     setTimeout(() => {
                         window.location.href = "/optimized-editor";
                     }, 700);
