@@ -14,13 +14,6 @@ class User(Base):
     email = Column(String(255), unique=True, index=True, nullable=False)
     hashed_password = Column("password", String(255), nullable=False)
 
-    # Subscription fields
-    plan = Column(String(20), default="free", nullable=False, server_default="free")
-    stripe_customer_id = Column(String(100), nullable=True, unique=True)
-    stripe_subscription_id = Column(String(100), nullable=True)
-    subscription_status = Column(String(30), nullable=True)  # active, canceled, past_due, trialing
-    subscription_ends_at = Column(DateTime(timezone=True), nullable=True)
-
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
     job_applications = relationship("JobApplication", back_populates="user", cascade="all, delete-orphan")
