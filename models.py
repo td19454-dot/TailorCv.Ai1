@@ -19,6 +19,7 @@ class User(Base):
     job_applications = relationship("JobApplication", back_populates="user", cascade="all, delete-orphan")
     welcome_emails = relationship("WelcomeEmailLog", back_populates="user", cascade="all, delete-orphan")
     usage_records = relationship("UsageRecord", back_populates="user", cascade="all, delete-orphan")
+    saved_resumes = relationship("SavedResume", back_populates="user", cascade="all, delete-orphan")
 
 
 class PasswordResetToken(Base):
