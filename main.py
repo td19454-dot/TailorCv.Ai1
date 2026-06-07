@@ -5,10 +5,9 @@ import logging
 import os
 import random
 import re
-import smtplib
+import resend
 from secrets import token_hex
 from datetime import datetime, timedelta
-from email.message import EmailMessage
 import uuid
 
 import pdfplumber
@@ -384,94 +383,77 @@ _template_cache = {}
 _css_cache = {}
 
 
-def get_email_settings() -> tuple[str, int, str, str, str]:
-    smtp_host = os.getenv("SMTP_HOST", "").strip()
-    smtp_port = int(os.getenv("SMTP_PORT", "587"))
-    smtp_username = os.getenv("SMTP_USERNAME", os.getenv("SMTP_USER", "")).strip()
-    smtp_password = os.getenv("SMTP_PASSWORD", os.getenv("SMTP_PASS", "")).strip()
-    smtp_from = os.getenv("SMTP_FROM_EMAIL", os.getenv("SMTP_FROM", smtp_username)).strip()
-    return smtp_host, smtp_port, smtp_username, smtp_password, smtp_from
+def _resend_from() -> str:
+    return os.getenv("EMAIL_FROM", "").strip()
 
 
 def send_password_reset_email(recipient_email: str, reset_code: str) -> bool:
-    smtp_host, smtp_port, smtp_username, smtp_password, smtp_from = get_email_settings()
-
-    if not (smtp_host and smtp_username and smtp_password and smtp_from):
+    api_key = os.getenv("RESEND_API_KEY", "").strip()
+    from_addr = _resend_from()
+    if not (api_key and from_addr):
         return False
 
-    message = EmailMessage()
-    message["Subject"] = "Your TailorCV password reset code"
-    message["From"] = smtp_from
-    message["To"] = recipient_email
-    message.set_content(
-        "We received a request to reset your TailorCV password.\n\n"
-        f"Your verification code is: {reset_code}\n\n"
-        "This code expires in 10 minutes.\n\n"
-        "If you did not request this, you can ignore this email."
-    )
-
-    with smtplib.SMTP(smtp_host, smtp_port) as server:
-        server.starttls()
-        server.login(smtp_username, smtp_password)
-        server.send_message(message)
-
+    resend.api_key = api_key
+    resend.Emails.send({
+        "from": from_addr,
+        "to": [recipient_email],
+        "subject": "Your TailorCV password reset code",
+        "text": (
+            "We received a request to reset your TailorCV password.\n\n"
+            f"Your verification code is: {reset_code}\n\n"
+            "This code expires in 10 minutes.\n\n"
+            "If you did not request this, you can ignore this email."
+        ),
+    })
     return True
 
 
 def send_signup_code_email(recipient_email: str, signup_code: str) -> bool:
-    smtp_host, smtp_port, smtp_username, smtp_password, smtp_from = get_email_settings()
-
-    if not (smtp_host and smtp_username and smtp_password and smtp_from):
+    api_key = os.getenv("RESEND_API_KEY", "").strip()
+    from_addr = _resend_from()
+    if not (api_key and from_addr):
         return False
 
-    message = EmailMessage()
-    message["Subject"] = "Your TailorCV sign-up verification code"
-    message["From"] = smtp_from
-    message["To"] = recipient_email
-    message.set_content(
-        "Welcome to TailorCV.\n\n"
-        f"Your sign-up verification code is: {signup_code}\n\n"
-        "This code expires in 10 minutes.\n\n"
-        "If you did not request this, you can ignore this email."
-    )
-
-    with smtplib.SMTP(smtp_host, smtp_port) as server:
-        server.starttls()
-        server.login(smtp_username, smtp_password)
-        server.send_message(message)
-
+    resend.api_key = api_key
+    resend.Emails.send({
+        "from": from_addr,
+        "to": [recipient_email],
+        "subject": "Your TailorCV sign-up verification code",
+        "text": (
+            "Welcome to TailorCV.\n\n"
+            f"Your sign-up verification code is: {signup_code}\n\n"
+            "This code expires in 10 minutes.\n\n"
+            "If you did not request this, you can ignore this email."
+        ),
+    })
     return True
 
 
 def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
-    smtp_host, smtp_port, smtp_username, smtp_password, smtp_from = get_email_settings()
-
-    if not (smtp_host and smtp_username and smtp_password and smtp_from):
+    api_key = os.getenv("RESEND_API_KEY", "").strip()
+    from_addr = _resend_from()
+    if not (api_key and from_addr):
         return False
 
-    message = EmailMessage()
-    message["Subject"] = "Welcome to TailorCV.ai"
-    message["From"] = smtp_from
-    message["To"] = recipient_email
-    message.set_content(
-        f"Hi {recipient_name or 'there'},\n\n"
-        "I am the Co-Founder of TailorCV, and I would love your feedback on our platform.\n\n"
-        "Here are the tools you can explore:\n"
-        "- https://thetailorcv.com/solutions: Optimizing resume for job description, Checking ATS score\n"
-        "- https://thetailorcv.com/templates : ATS friendly resume templates\n"
-        "- https://thetailorcv.com/modify-cv: Build resume from scratch\n"
-        "- https://thetailorcv.com/interview-prep: Generate interview questions\n"
-        "- https://thetailorcv.com/mock-interview: Mock interview practice\n\n"
-        "Please reply to this email and share your feedback. It will really help us improve TailorCV.\n\n"
-        "Thanks,\n"
-        "Co-Founder, TailorCV"
-    )
-
-    with smtplib.SMTP(smtp_host, smtp_port) as server:
-        server.starttls()
-        server.login(smtp_username, smtp_password)
-        server.send_message(message)
-
+    resend.api_key = api_key
+    resend.Emails.send({
+        "from": from_addr,
+        "to": [recipient_email],
+        "subject": "Welcome to TailorCV.ai",
+        "text": (
+            f"Hi {recipient_name or 'there'},\n\n"
+            "I am the Co-Founder of TailorCV, and I would love your feedback on our platform.\n\n"
+            "Here are the tools you can explore:\n"
+            "- https://thetailorcv.com/solutions: Optimizing resume for job description, Checking ATS score\n"
+            "- https://thetailorcv.com/templates : ATS friendly resume templates\n"
+            "- https://thetailorcv.com/modify-cv: Build resume from scratch\n"
+            "- https://thetailorcv.com/interview-prep: Generate interview questions\n"
+            "- https://thetailorcv.com/mock-interview: Mock interview practice\n\n"
+            "Please reply to this email and share your feedback. It will really help us improve TailorCV.\n\n"
+            "Thanks,\n"
+            "Co-Founder, TailorCV"
+        ),
+    })
     return True
 
 
@@ -4085,7 +4067,7 @@ async def request_signup_code(request: Request):
             return JSONResponse(
                 {
                     "success": True,
-                    "message": "Email sending is not configured. Using development verification code.",
+                    "message": "Sending Email",
                     "dev_code": signup_code,
                 }
             )
