@@ -12,6 +12,10 @@ services:
         sync: false  # Set this from your Render PostgreSQL database
       - key: OPENAI_API_KEY
         sync: false  # Set this manually in Render dashboard
+      - key: SECRET_KEY
+        generateValue: true  # Render generates a strong random value; required in production
+      - key: SENTRY_DSN
+        sync: false  # Paste your Sentry project DSN here to enable error tracking
       - key: ENVIRONMENT
         value: production
       - key: PORT

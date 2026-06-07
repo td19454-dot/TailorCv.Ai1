@@ -1,7 +1,0 @@
-=== CERT NAMES (from AI) ===
-
-=== CERT SECTION LINKS (reading order) [0] ===
-
-=== FINAL cert.url PER ENTRY ===
-
-=== READING-ORDER FILL ASSIGNED [0] ===

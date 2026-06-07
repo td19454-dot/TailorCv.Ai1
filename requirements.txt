@@ -40,3 +40,6 @@ httpx>=0.27.0
 
 #Analytics
 posthog
+
+# Error tracking
+sentry-sdk[fastapi]>=2.0.0
