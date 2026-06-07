@@ -1,8 +1,13 @@
 # Ignore environment files
 .env
 
+# Local database (contains user accounts / password hashes — never commit)
+*.db
+users.db
+
 # Ignore any venv files
 .venv
+venv/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

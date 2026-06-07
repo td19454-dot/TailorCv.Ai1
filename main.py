@@ -67,12 +67,60 @@ except ImportError:
     google_requests = None
     TransportError = None  # type: ignore[misc, assignment]
 
+# ── Error tracking (Sentry) ───────────────────────────────────────────────────
+# Initialized before the app so Sentry's FastAPI/Starlette integration attaches.
+# Entirely a no-op unless SENTRY_DSN is set, so local/dev runs are unaffected.
+sentry_sdk = None
+_sentry_dsn = os.getenv("SENTRY_DSN", "").strip()
+if _sentry_dsn:
+    try:
+        import sentry_sdk as _sentry
+        _sentry.init(
+            dsn=_sentry_dsn,
+            environment=os.getenv("ENVIRONMENT", "development"),
+            traces_sample_rate=float(os.getenv("SENTRY_TRACES_SAMPLE_RATE", "0.0")),
+            send_default_pii=False,  # don't ship user data to Sentry
+        )
+        sentry_sdk = _sentry
+    except Exception:
+        logging.getLogger(__name__).exception("Sentry initialization failed (non-fatal)")
+
 app = FastAPI(title="Resume Optimizer Backend")
 logger = logging.getLogger(__name__)
 db_init_status = {"ok": None, "error": None}
 
+# ── Environment & security config ─────────────────────────────────────────────
+IS_PRODUCTION = os.getenv("ENVIRONMENT", "development").lower() == "production"
+
+# Session signing key. Prefer the SECRET_KEY env var. If it is not set we fall
+# back to the original default so EXISTING user sessions stay valid (deploying
+# this change never forces a logout). This default is insecure — set SECRET_KEY
+# in the environment to close the gap; doing so logs everyone out exactly once,
+# which is why it's left as a deliberate, scheduled step rather than forced here.
+_SECRET_KEY = os.getenv("SECRET_KEY", "").strip()
+if not _SECRET_KEY:
+    _SECRET_KEY = "your-secret-key"
+    if IS_PRODUCTION:
+        logger.warning(
+            "SECRET_KEY is not set; using an insecure default. "
+            "Set SECRET_KEY in the environment to secure user sessions."
+        )
+
+# Allowed CORS origins. A wildcard "*" combined with credentials is both unsafe
+# and rejected by browsers, so restrict to explicit origins. Override in any
+# environment with a comma-separated CORS_ALLOW_ORIGINS; the default covers the
+# public site and local development.
+_default_cors_origins = (
+    "https://thetailorcv.com,https://www.thetailorcv.com,"
+    "http://localhost:8005,http://127.0.0.1:8005"
+)
+ALLOWED_ORIGINS = [
+    o.strip() for o in os.getenv("CORS_ALLOW_ORIGINS", _default_cors_origins).split(",")
+    if o.strip()
+]
+
 # Add session middleware
-app.add_middleware(SessionMiddleware, secret_key=os.getenv("SECRET_KEY", "your-secret-key"))
+app.add_middleware(SessionMiddleware, secret_key=_SECRET_KEY)
 
 # ── CSRF protection (double-submit cookie) ────────────────────────────────────
 @app.middleware("http")
@@ -100,8 +148,8 @@ async def csrf_middleware(request: Request, call_next):
             "csrftoken",
             _secrets.token_hex(32),
             samesite="lax",
-            httponly=False,   # JS must be able to read it
-            secure=False,     # set True in production behind HTTPS
+            httponly=False,         # JS must be able to read it
+            secure=IS_PRODUCTION,   # HTTPS-only cookie in production
         )
     return response
 
@@ -109,6 +157,10 @@ async def csrf_middleware(request: Request, call_next):
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
     logger.exception(f"Unhandled exception: {exc}")
+    # This handler "handles" the error, so report it to Sentry explicitly —
+    # otherwise the automatic integration would never see it.
+    if sentry_sdk is not None:
+        sentry_sdk.capture_exception(exc)
     accept = request.headers.get("accept", "")
     if "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest":
         return templates.TemplateResponse("error.html", {"request": request, "status_code": 500, "message": "Something went wrong on our end. Please try again."}, status_code=500)
@@ -117,7 +169,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 # Add CORS middleware to allow frontend requests
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure this for production
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*", "X-CSRFToken", "X-Requested-With"],
