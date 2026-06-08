@@ -1,6 +1,6 @@
 ---
-title: How to Tailor Your Resume for Every Job Application (Step-by-Step)
-description: Learn how to tailor your resume for every job application with a proven step-by-step process. Match keywords, beat ATS filters, and get more interviews in 2026.
+title: How to Tailor Your Resume for Every Job — ATS Friendly Guide 2026
+description: Learn how to tailor your resume for every job description in minutes. Step by step ATS optimization guide for freshers and experienced professionals.
 date: 2026-05-29
 author: TailorCV Team
 tags: [Resume Tailoring, ATS Optimization, Job Application, Resume Keywords, Career Tips]
