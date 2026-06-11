@@ -695,7 +695,7 @@ function displayOptimizeLoading() {
 }
 
 const optimizeStepsData = [
-    { step: 1, text: 'Uploading resume...', percent: 15 },
+    { step: 1, text: 'Uploading resume... Takes 1 min. Please wait', percent: 15 },
     { step: 2, text: 'Parsing resume structure...', percent: 25 },
     { step: 3, text: 'Analyzing your experience...', percent: 35 },
     { step: 4, text: 'Extracting relevant keywords...', percent: 45 },
