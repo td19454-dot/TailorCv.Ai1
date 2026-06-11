@@ -1,0 +1,145 @@
+"""Regression tests for the bullet-restore meta/header detection.
+
+The optimizer's bullet-restore step (restore_dropped_bullets) re-adds bullets the
+AI silently drops. Repeatedly, header/date rows leaked in as bullets:
+  - a stray "2 January 2026" date bullet
+  - "Freelancer Dec 2025 - Present"            (role + date range)
+  - "Data Analyst Research Intern Kolkata"     (role + location, no date)
+  - "San Francisco, USA 12/2022 - 11/2024"     (location + numeric date range)
+
+These tests lock in that all of those are skipped while real bullets — including
+ones that legitimately mention a date — are kept.
+
+No external services and no API keys required.
+Run:  python test_restore_bullets.py
+"""
+
+import sys
+import traceback
+
+import main
+
+is_meta = main._restore_is_meta_line
+
+
+# --------------------------------------------------------------------------- #
+# Date / header rows that must NEVER become a bullet (is_meta -> True)
+# --------------------------------------------------------------------------- #
+META_ROWS = [
+    # bare dates — text and numeric
+    "2 January 2026", "January 2026", "Jan 2026", "12/2022", "01/2022",
+    # date ranges — text and numeric, hyphen and en-dash
+    "Sep 2025 - Present", "May 2025 – Present", "Oct 2025 - Nov 2025",
+    "01/2022 - 12/2022", "12/2022 – 11/2024",
+    # role/company + date range
+    "Freelancer Dec 2025 – Present",
+    "Machine Learning Engineer Sep 2025 - Present",
+    # location + numeric date range
+    "San Francisco, USA 12/2022 – 11/2024",
+    "Thailand 01/2022 - 12/2022",
+    "Lahore, Pakistan 01/2021 - 12/2021",
+    # open-ended ranges that say "Currently" / "Current" instead of "Present"
+    "12/2024 - Currently",
+    "New York, United States 12/2024 – Currently",
+    "California, United States 08/2024 – Currently",
+    "Bangalore, India Jan 2024 - Current",
+]
+
+
+def test_meta_rows_are_skipped():
+    for row in META_ROWS:
+        assert is_meta(row) is True, f"should be skipped but wasn't: {row!r}"
+
+
+# --------------------------------------------------------------------------- #
+# Real bullets that must be KEPT (is_meta -> False)
+# --------------------------------------------------------------------------- #
+REAL_BULLETS = [
+    "Led a team of four mentees, enhancing their skills in data science.",
+    "Developed an Anti-spoofing Face-App, reducing identity fraud by 70%.",
+    "Secured a position among the Top 100 Kaggle contributors globally in 2024",
+    "Launched the new dashboard in March 2026 for all users",
+    "Shipped the feature in December 2025 ahead of schedule",
+    "Reduced operational costs in 01/2022 by streamlining the pipeline",
+    "Advanced expertise in EDA, Machine Learning, and Deep Learning.",
+    "Actively contributing to open-source LLM projects currently driving innovation",
+]
+
+
+def test_real_bullets_are_kept():
+    for bullet in REAL_BULLETS:
+        assert is_meta(bullet) is False, f"real bullet wrongly skipped: {bullet!r}"
+
+
+# --------------------------------------------------------------------------- #
+# Header echo: role/location row with NO date (handled separately)
+# --------------------------------------------------------------------------- #
+def test_header_echo_role_plus_location():
+    headers = ["Data Analyst Research Intern", "Jadavpur University CMATER Lab", "Kolkata"]
+    assert main._restore_is_header_echo("Data Analyst Research Intern Kolkata", headers) is True
+    # a genuine bullet that mentions the role is a full sentence -> not an echo
+    long_bullet = "As a Data Analyst Research Intern I conducted EDA on 1,097 CT scan images across classes."
+    assert main._restore_is_header_echo(long_bullet, headers) is False
+
+
+# --------------------------------------------------------------------------- #
+# End-to-end: restore_dropped_bullets must not leak headers, but must still
+# restore genuinely-dropped bullets.
+# --------------------------------------------------------------------------- #
+def test_restore_does_not_leak_but_restores_dropped():
+    resume = (
+        "Experience\n"
+        "GOOGLE-KAGGLE 12/2022 – 11/2024\n"
+        "AI Data Scientist Kaggle Master Mentor San Francisco, USA\n"
+        "Championed mentorship initiatives through the Kaggle-X BIPOC program.\n"
+        "Led a team of four mentees, enhancing their skills in machine learning.\n"
+        "San Francisco, USA 12/2022 – 11/2024\n"
+        "Jadavpur University CMATER Lab May 2025 - Sep 2025\n"
+        "Data Analyst Research Intern Kolkata\n"
+        "Conducted exploratory data analysis on 1,097 lung CT scan images.\n"
+        "Evaluated model generalization across three medical datasets achieving high accuracy.\n"
+        "Projects\n"
+        "Some Project | Python\n"
+        "Built something useful for many people.\n"
+    )
+    parsed = {
+        "experience": [
+            {"company": "GOOGLE-KAGGLE", "title": "AI Data Scientist Kaggle Master Mentor",
+             "location": "San Francisco, USA",
+             "bullets": ["Championed mentorship through the Kaggle-X BIPOC program."]},
+            {"company": "Jadavpur University CMATER Lab", "title": "Data Analyst Research Intern",
+             "location": "Kolkata",
+             "bullets": ["Conducted EDA on 1,097 lung CT scan images."]},
+        ]
+    }
+    out = main.restore_dropped_bullets(parsed, resume)
+    all_bullets = [b for e in out["experience"] for b in e["bullets"]]
+
+    leaks = [b for b in all_bullets if is_meta(b)]
+    assert not leaks, f"header/date rows leaked as bullets: {leaks}"
+
+    # genuinely-dropped bullets were restored
+    joined = " ".join(all_bullets).lower()
+    assert "led a team of four mentees" in joined, "dropped bullet not restored"
+    assert "evaluated model generalization" in joined, "dropped bullet not restored"
+
+
+def main_runner() -> int:
+    tests = [v for k, v in sorted(globals().items())
+             if k.startswith("test_") and callable(v)]
+    passed, failures = 0, []
+    for t in tests:
+        try:
+            t()
+            passed += 1
+            print(f"  PASS  {t.__name__}")
+        except Exception as exc:  # noqa: BLE001
+            failures.append(t.__name__)
+            print(f"  FAIL  {t.__name__}: {exc}")
+            traceback.print_exc()
+    print(f"\n{passed}/{len(tests)} passed, {len(failures)} failed")
+    return 1 if failures else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main_runner())

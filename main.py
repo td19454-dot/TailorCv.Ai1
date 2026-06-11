@@ -1155,8 +1155,29 @@ def _restore_tokens(text: str) -> set:
     return set(re.findall(r"[a-z0-9]+", str(text or "").lower()))
 
 
+# Date fragments used to spot header/date rows that must never become bullets.
+# Month names are anchored (not "any word") so achievement lines like
+# "Best Project 2024" are never mistaken for a date. Covers "Jan 2026",
+# "2 January 2026", and numeric "12/2022" / "12/31/2022" formats.
+_RESTORE_MONTH = r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?"
+_RESTORE_DATE = (
+    r"(?:\d{1,2}/\d{1,2}/\d{2,4}"
+    r"|\d{1,2}/\d{4}"
+    r"|(?:\d{1,2}\s+)?" + _RESTORE_MONTH + r"\s*,?\s*\d{4})"
+)
+# Open-ended range words: "Present", "Current", "Currently", "Now", "Ongoing",
+# "Till Date", "To Date", etc. (a range like "12/2024 - Currently").
+_RESTORE_OPEN_END = r"(?:present|current(?:ly)?|ongoing|now|(?:to|till)\s*(?:date|now|present))"
+_RESTORE_DATE_RANGE = (
+    _RESTORE_DATE + r"\s*[-–—]\s*(?:" + _RESTORE_DATE + r"|" + _RESTORE_OPEN_END + r")"
+)
+
+
 def _restore_is_meta_line(line: str) -> bool:
-    """A line that is a date range, a link, or contact/metadata — never a bullet."""
+    """A line that is a date, a date range, a link, or an entry header — never a
+    bullet. Restoring these as bullets produces garbage like a stray
+    "2 January 2026" bullet, or bleeds an entry's "San Francisco, USA 12/2022 -
+    11/2024" header row into its bullets."""
     l = str(line or "").strip()
     if not l:
         return True
@@ -1166,9 +1187,24 @@ def _restore_is_meta_line(line: str) -> bool:
     if re.match(r"^(github|gitlab|kaggle|linkedin|leetcode|codeforces|codechef|"
                 r"demo|email|url|link|portfolio|website|tel|phone|live|mobile)\b[:\s]", low):
         return True
-    # Date-range-only line (e.g. "Oct 2025 - Nov 2025", "May 2025 – Present").
-    if re.match(r"^[A-Za-z]{0,9}\.?\s*\d{4}\s*[-–—]\s*([A-Za-z]{0,9}\.?\s*\d{4}|present)\s*$", l, re.I):
+    # A line that is ONLY a date or a date range (e.g. "May 2025 – Present",
+    # "2 January 2026", "01/2022 - 12/2022").
+    if re.fullmatch(_RESTORE_DATE_RANGE, l, re.I) or re.fullmatch(_RESTORE_DATE, l, re.I):
         return True
+    # Entry-header row that leaked: a short, title-case label (a role, or a
+    # location like "San Francisco, USA" / "Thailand") followed by a trailing
+    # date or date range, e.g. "Thailand 01/2022 - 12/2022", "Freelancer Dec
+    # 2025 - Present". Real bullets are full sentences; requiring the prefix to
+    # be title-case (no lowercase connector words) keeps ordinary bullets that
+    # merely end in a month-year safe.
+    date_tail = re.search(r"(?:" + _RESTORE_DATE_RANGE + r"|" + _RESTORE_DATE + r")\s*$", l, re.I)
+    if date_tail and date_tail.start() > 0:
+        prefix = l[: date_tail.start()].strip(" -–—|,·•/")
+        words = prefix.split()
+        if (1 <= len(words) <= 5
+                and not prefix.endswith((".", ":"))
+                and all((not w[0].isalpha()) or w[0].isupper() for w in words)):
+            return True
     return False
 
 
@@ -1232,6 +1268,27 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
     return result
 
 
+def _restore_is_header_echo(candidate: str, header_values: list) -> bool:
+    """True when a candidate line is really the entry's own header — its role,
+    company, or location — e.g. "Data Analyst Research Intern Kolkata". These
+    sit just under the entry title and must never be restored as a bullet.
+
+    Matches only when a header field's text is contained in the candidate AND the
+    candidate is about as short as that header (a real bullet that merely mentions
+    the title is a full sentence and stays much longer)."""
+    cand_norm = _normalize_key(candidate)
+    if not cand_norm:
+        return False
+    cand_words = len(candidate.split())
+    for hv in header_values:
+        hv_norm = _normalize_key(hv)
+        if len(hv_norm) < 5:
+            continue
+        if hv_norm in cand_norm and cand_words <= len(hv.split()) + 2:
+            return True
+    return False
+
+
 def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
     """Append any original bullet whose content the optimizer dropped, back onto
     the exact entry it came from. Safe against sub-section exchange and against
@@ -1255,6 +1312,16 @@ def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
         orig = _original_entry_candidates(section_lines, heading_section, identifiers)
         for e, ident in zip(entries, identifiers):
             cands = orig.get(ident)
+            if not cands:
+                continue
+            # Drop candidates that are really this entry's own header row (role,
+            # company, location) — e.g. "Data Analyst Research Intern Kolkata".
+            header_values = [
+                str(e.get(k, "")).strip()
+                for k in ("company", "title", "role", "organization", "name", "location", "place", "city")
+            ]
+            header_values = [h for h in header_values if h]
+            cands = [c for c in cands if not _restore_is_header_echo(c, header_values)]
             if not cands:
                 continue
             ai_bullets = [str(b).strip() for b in (e.get("bullets") or []) if str(b).strip()]
