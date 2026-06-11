@@ -560,7 +560,9 @@
                 requestAnimationFrame(() => {
                     uploadCard.classList.add("is-visible");
                 });
-                templateOnlyOptimizeBtn.disabled = !Number.isInteger(selectedTemplateId);
+                // Keep "Run Template" disabled until BOTH a template and a PDF are chosen.
+                const hasFile = uploadInput.files && uploadInput.files.length > 0;
+                templateOnlyOptimizeBtn.disabled = !(Number.isInteger(selectedTemplateId) && hasFile);
                 uploadCard.scrollIntoView({ behavior: "smooth", block: "start" });
             }
 
@@ -614,6 +616,28 @@
                     gridEl.innerHTML = "<p>Unable to load templates right now.</p>";
                 }
             }
+
+            // Give feedback the moment a file is chosen (filename + PDF check) and
+            // only enable "Run Template" once a valid PDF is selected. Without this,
+            // choosing a file looked like nothing happened.
+            uploadInput.addEventListener("change", () => {
+                const file = uploadInput.files && uploadInput.files[0];
+                if (!file) {
+                    templateOnlyOptimizeBtn.disabled = true;
+                    setUploadStatus("");
+                    return;
+                }
+                const name = String(file.name || "");
+                const isPdf = name.toLowerCase().endsWith(".pdf")
+                    || String(file.type || "").toLowerCase() === "application/pdf";
+                if (!isPdf) {
+                    templateOnlyOptimizeBtn.disabled = true;
+                    setUploadStatus("Only PDF files are supported. Please choose a .pdf file.", "is-error");
+                    return;
+                }
+                templateOnlyOptimizeBtn.disabled = !Number.isInteger(selectedTemplateId);
+                setUploadStatus(`Selected: ${name}. Click "Run Template" to continue.`, "is-success");
+            });
 
             templateOnlyOptimizeBtn.addEventListener("click", handleTemplateOnlyOptimize);
             confirmYesBtn.addEventListener("click", () => {
