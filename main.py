@@ -3916,8 +3916,53 @@ async def blog_listing_page(
     )
 
 
+# Blog posts merged into stronger "pillar" posts to fix keyword cannibalization.
+# Each old slug 301-redirects to its pillar and is excluded from the sitemap, so
+# Google consolidates ranking signals instead of splitting them across near-duplicates.
+# The source .md files are kept on disk (harmless) but no longer served — fully
+# reversible: remove an entry here to bring a post back.
+BLOG_REDIRECTS = {
+    # "check my ATS score free" → one canonical checker page
+    "how-to-check-ats-score-free": "ats-score-checker-free",
+    "free-ats-resume-scan": "ats-score-checker-free",
+    "ats-resume-checker-how-it-works": "ats-score-checker-free",
+    "does-my-resume-pass-ats": "ats-score-checker-free",
+    # "what is a good ATS score" / "what is an ATS score"
+    "ats-score-vs-resume-score": "what-is-a-good-ats-score",
+    "what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it": "ats-score-guide",
+    # "ATS mistakes" (kept pillars: ats-keyword-mistakes + ats-resume-formatting-mistakes)
+    "ats-mistakes-tech-professionals": "ats-keyword-mistakes",
+    "ats-mistakes-experienced-professionals": "ats-keyword-mistakes",
+    "hidden-ats-mistakes-job-search": "ats-keyword-mistakes",
+    # "resume matching to job description" → matching pillar / tailoring pillar
+    "how-to-match-resume-keywords-to-job-description": "resume-matching-with-job-description-complete-guide",
+    "how-to-match-resume-to-job-description-fast": "how-to-tailor-resume-for-every-job",
+    "improve-resume-job-match-score": "resume-matching-with-job-description-complete-guide",
+    "resume-job-description-match-percentage": "resume-matching-with-job-description-complete-guide",
+    "resume-matching-checklist": "resume-matching-with-job-description-complete-guide",
+    "resume-matching-for-multiple-jobs": "resume-matching-with-job-description-complete-guide",
+    "why-resume-doesnt-match-job-description": "resume-matching-with-job-description-complete-guide",
+    "common-resume-job-description-mismatch-mistakes": "resume-matching-with-job-description-complete-guide",
+    "what-recruiters-look-for-resume-job-match": "resume-matching-with-job-description-complete-guide",
+    "how-ai-resume-matching-works": "resume-matching-with-job-description-complete-guide",
+    "resume-skills-match-job-description": "resume-matching-with-job-description-complete-guide",
+    "resume-summary-match-job-description": "resume-matching-with-job-description-complete-guide",
+    "how-to-match-resume-to-remote-job-description": "resume-matching-with-job-description-complete-guide",
+    "overqualified-resume-match-job-description": "resume-matching-with-job-description-complete-guide",
+    # persona "resume-matching-X" spin-offs (kept: software-engineer, data-analyst, no-experience)
+    "resume-matching-experienced-professionals": "resume-matching-with-job-description-complete-guide",
+    "resume-matching-for-career-changers": "resume-matching-with-job-description-complete-guide",
+    "resume-matching-marketing": "resume-matching-with-job-description-complete-guide",
+    "resume-matching-product-manager": "resume-matching-with-job-description-complete-guide",
+}
+
+
 @app.get("/blog/{slug}", response_class=HTMLResponse)
 async def blog_post_page(request: Request, slug: str):
+    # Consolidate merged duplicates: permanent-redirect old slugs to their pillar.
+    target = BLOG_REDIRECTS.get(slug)
+    if target:
+        return RedirectResponse(url=f"/blog/{target}", status_code=301)
     post = blog_service.get_post(slug)
     if post is None:
         raise HTTPException(status_code=404, detail="Blog post not found")
@@ -3963,7 +4008,11 @@ async def sitemap_xml():
         ("/blog", "daily", "0.7"),
     ]
     static_urls = [(path, today, changefreq, priority) for path, changefreq, priority in static_pages]
-    post_urls = [(f"/blog/{p.slug}", p.lastmod_iso, "monthly", "0.6") for p in blog_service.load_posts()]
+    post_urls = [
+        (f"/blog/{p.slug}", p.lastmod_iso, "monthly", "0.6")
+        for p in blog_service.load_posts()
+        if p.slug not in BLOG_REDIRECTS  # merged duplicates 301 elsewhere; keep them out of the index
+    ]
     all_urls = static_urls + post_urls
 
     entries = []
