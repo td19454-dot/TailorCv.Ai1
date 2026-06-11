@@ -5,6 +5,7 @@ date: 2026-06-08
 author: TailorCV Team
 tags: [Mock Interview Practice, Interview Preparation, AI Interview, Free Mock Interview, Job Search]
 category: Interview Preparation
+image: public/blog-images/free-mock-interview-practice.png
 slug: mock-interview-practice-free
 keywords: mock interview practice free, free mock interview practice online, ai mock interview, mock interview online, interview practice free
 ---
