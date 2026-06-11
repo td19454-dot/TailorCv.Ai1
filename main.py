@@ -2413,23 +2413,89 @@ def infer_headline_from_jd(jd_string: str) -> str:
 def group_skills(skills: list[str]) -> list[str]:
     grouped = {
         "Languages": [],
-        "Developer Tools": [],
-        "Technologies/Frameworks": [],
+        "AI/ML": [],
+        "Frameworks/Libraries": [],
+        "Databases": [],
+        "Tools & Platforms": [],
     }
     uncategorized = []
 
-    language_terms = {
-        "python", "c", "c++", "java", "javascript", "typescript", "sql",
-        "html", "html5", "css", "css3", "r", "go", "rust", "php"
-    }
     human_language_terms = {
         "english", "french", "german", "spanish", "hindi", "marathi", "tamil",
         "telugu", "kannada", "malayalam", "punjabi", "urdu", "arabic", "chinese",
         "japanese", "korean", "italian", "portuguese", "russian"
     }
+    language_terms = {
+        "python", "c", "c++", "java", "javascript", "typescript", "sql",
+        "html", "html5", "css", "css3", "r", "go", "rust", "php",
+        "kotlin", "swift", "scala", "perl", "ruby", "matlab", "bash",
+        "shell", "c#", "dart", "groovy", "julia", "solidity", "assembly",
+        "haskell", "elixir", "erlang", "f#", "vba", "cobol", "fortran"
+    }
+    ai_ml_terms = {
+        "machine learning", "deep learning", "generative ai", "gen ai",
+        "natural language processing", "nlp", "computer vision",
+        "reinforcement learning", "data science", "llm", "llms",
+        "large language models", "prompt engineering", "rag",
+        "retrieval augmented generation", "agentic ai", "fine tuning",
+        "fine-tuning", "finetuning", "llm fine tuning", "llm finetuning",
+        "transfer learning", "artificial intelligence", "mlops",
+        "feature engineering", "supervised learning", "unsupervised learning",
+        "object detection", "image classification", "text classification",
+        "sentiment analysis", "speech recognition", "text generation",
+        "image generation", "neural networks", "neural network",
+        "data mining", "anomaly detection", "recommendation systems",
+        "time series analysis", "time series forecasting",
+        "embeddings", "semantic search", "knowledge graphs",
+        "multimodal", "vision language models", "vlm"
+    }
+    framework_terms = {
+        "numpy", "pandas", "scikit-learn", "sklearn", "scipy",
+        "pytorch", "tensorflow", "keras", "jax",
+        "langchain", "langgraph", "llamaindex", "llama index",
+        "flask", "fastapi", "django", "express", "expressjs",
+        "react", "reactjs", "vue", "vuejs", "angular",
+        "node.js", "nodejs", "spring", "spring boot",
+        "matplotlib", "seaborn", "plotly", "bokeh",
+        "streamlit", "gradio", "hugging face",
+        "sqlalchemy", "celery", "spark", "pyspark", "hadoop", "flink",
+        "rest api", "restful api", "restful apis", "graphql", "grpc",
+        "opencv", "nltk", "spacy", "gensim",
+        "xgboost", "lightgbm", "catboost", "statsmodels",
+        "bootstrap", "tailwindcss", "tailwind",
+        "etl pipelines", "data pipelines",
+        "crewai", "autogen", "dspy", "haystack",
+        "next.js", "nextjs", "svelte", "nuxt", "nestjs", "fasthtml"
+    }
+    database_terms = {
+        "mongodb", "mysql", "postgresql", "postgres", "sqlite",
+        "redis", "cassandra", "dynamodb", "oracle", "sql server",
+        "mariadb", "firestore", "firebase",
+        "faiss", "pinecone", "chroma", "chromadb", "weaviate",
+        "milvus", "qdrant", "elasticsearch", "opensearch",
+        "neo4j", "supabase", "snowflake", "bigquery",
+        "redshift", "databricks", "clickhouse",
+        "vector databases", "vector database", "nosql",
+        "influxdb", "timescaledb", "cockroachdb"
+    }
     tool_terms = {
-        "git", "github", "vscode", "visual studio code", "postman", "docker",
-        "aws", "power bi", "powerbi", "excel", "mlflow", "dvc", "linux"
+        "git", "github", "gitlab", "bitbucket",
+        "docker", "kubernetes", "k8s", "helm",
+        "aws", "amazon web services", "azure", "gcp",
+        "google cloud", "google cloud platform",
+        "linux", "ubuntu", "centos",
+        "vscode", "visual studio code", "visual studio",
+        "postman", "insomnia", "swagger",
+        "jenkins", "github actions", "gitlab ci", "circleci",
+        "ci/cd", "ci", "cd", "devops",
+        "mlflow", "dvc", "wandb", "weights & biases",
+        "power bi", "powerbi", "tableau", "grafana",
+        "excel", "jira", "confluence",
+        "terraform", "ansible", "nginx", "apache",
+        "vercel", "netlify", "heroku",
+        "cloud platforms", "serverless",
+        "kubeflow", "airflow", "prefect", "dagster", "kafka",
+        "pytest", "jest", "selenium", "cuda", "jupyter"
     }
 
     def add_unique(bucket: list[str], value: str):
@@ -2437,8 +2503,29 @@ def group_skills(skills: list[str]) -> list[str]:
             bucket.append(value)
 
     def split_skill_items(text: str) -> list[str]:
-        parts = [part.strip() for part in re.split(r"[,;/]", text) if part.strip()]
+        parts = [part.strip() for part in re.split(r"[,;]", text) if part.strip()]
         return parts if len(parts) > 1 else [text.strip()]
+
+    def classify_item(item: str) -> str:
+        item_norm = (item.lower().strip()
+                     .replace("react js", "react")
+                     .replace("restful apis", "restful api")
+                     .replace("node js", "node.js"))
+        if item_norm in human_language_terms:
+            return "human_language"
+        if item_norm in language_terms:
+            return "Languages"
+        if item_norm in database_terms:
+            return "Databases"
+        if "vector database" in item_norm or "vector db" in item_norm:
+            return "Databases"
+        if item_norm in tool_terms:
+            return "Tools & Platforms"
+        if item_norm in ai_ml_terms:
+            return "AI/ML"
+        if item_norm in framework_terms:
+            return "Frameworks/Libraries"
+        return "uncategorized"
 
     for skill in skills:
         text = str(skill or "").strip()
@@ -2447,51 +2534,58 @@ def group_skills(skills: list[str]) -> list[str]:
 
         if ":" in text:
             label, value = text.split(":", 1)
-            label = label.strip().lower()
+            label_lower = label.strip().lower()
             value = value.strip()
-            if label in {"languages", "language", "programming"}:
-                for item in [part.strip() for part in re.split(r"[,;/]", value) if part.strip()]:
-                    item_lower = item.lower()
-                    if item_lower in human_language_terms:
-                        continue
-                    if item_lower in language_terms:
+            if label_lower in {"languages", "language", "programming", "programming languages"}:
+                for item in [p.strip() for p in re.split(r"[,;/]", value) if p.strip()]:
+                    if item.lower() not in human_language_terms:
                         add_unique(grouped["Languages"], item)
                 continue
-            if label in {"developer tools", "tools", "tooling"}:
-                for item in [part.strip() for part in value.split(",") if part.strip()]:
-                    add_unique(grouped["Developer Tools"], item)
+            if label_lower in {"developer tools", "tools", "tooling", "tools & platforms",
+                                "tools and platforms", "platforms", "devops"}:
+                for item in [p.strip() for p in value.split(",") if p.strip()]:
+                    add_unique(grouped["Tools & Platforms"], item)
                 continue
-            if label in {"technologies/frameworks", "technologies", "frameworks", "frameworks & libraries", "libraries"}:
-                for item in [part.strip() for part in value.split(",") if part.strip()]:
-                    add_unique(grouped["Technologies/Frameworks"], item)
+            if label_lower in {"technologies/frameworks", "technologies", "frameworks",
+                                "frameworks & libraries", "frameworks/libraries", "libraries",
+                                "technologies & frameworks"}:
+                for item in [p.strip() for p in value.split(",") if p.strip()]:
+                    cat = classify_item(item)
+                    target = cat if cat not in ("uncategorized", "human_language") else "Frameworks/Libraries"
+                    add_unique(grouped[target], item)
                 continue
-            uncategorized.append(text)
+            if label_lower in {"ai", "ml", "ai/ml", "machine learning", "artificial intelligence",
+                                "data science", "ai/ml & data science", "ai & ml"}:
+                for item in [p.strip() for p in value.split(",") if p.strip()]:
+                    add_unique(grouped["AI/ML"], item)
+                continue
+            if label_lower in {"databases", "database", "db", "data stores", "data storage",
+                                "databases & storage"}:
+                for item in [p.strip() for p in value.split(",") if p.strip()]:
+                    add_unique(grouped["Databases"], item)
+                continue
+            # Unknown label: classify each value item individually
+            for item in [p.strip() for p in re.split(r"[,;]", value) if p.strip()]:
+                cat = classify_item(item)
+                if cat in ("uncategorized", "human_language"):
+                    uncategorized.append(item)
+                else:
+                    add_unique(grouped[cat], item)
             continue
 
-        lowered = text.lower()
-        normalized = lowered.replace("react js", "react").replace("restful apis", "rest apis")
+        # No colon: split and classify each token
         raw_items = split_skill_items(text)
-        if len(raw_items) > 1:
-            for item in raw_items:
-                item_lower = item.lower()
-                if item_lower in human_language_terms:
-                    continue
-                if item_lower in language_terms:
-                    add_unique(grouped["Languages"], item)
-                elif item_lower in tool_terms:
-                    add_unique(grouped["Developer Tools"], item)
-                else:
-                    add_unique(grouped["Technologies/Frameworks"], item)
-            continue
-        if normalized in language_terms:
-            add_unique(grouped["Languages"], text)
-        elif normalized in tool_terms:
-            add_unique(grouped["Developer Tools"], text)
-        else:
-            add_unique(grouped["Technologies/Frameworks"], text)
+        for item in raw_items:
+            cat = classify_item(item)
+            if cat == "human_language":
+                continue
+            if cat == "uncategorized":
+                add_unique(grouped["Frameworks/Libraries"], item)
+            else:
+                add_unique(grouped[cat], item)
 
     result = []
-    for label in ("Languages", "Developer Tools", "Technologies/Frameworks"):
+    for label in ("Languages", "AI/ML", "Frameworks/Libraries", "Databases", "Tools & Platforms"):
         if grouped[label]:
             result.append(f"{label}: {', '.join(grouped[label])}")
     result.extend(uncategorized)
