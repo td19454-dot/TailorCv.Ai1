@@ -6,7 +6,7 @@ import os
 import random
 import re
 import resend
-from secrets import token_hex
+from secrets import token_hex, token_urlsafe
 from datetime import datetime, timedelta
 import uuid
 
@@ -49,7 +49,8 @@ from functions import (
 )
 
 from extraction import process_resume
-from models import PasswordResetToken, SavedResume, SignupVerificationCode, User, WelcomeEmailLog
+from models import PasswordResetToken, PersonalityCard, SavedResume, SignupVerificationCode, User, WelcomeEmailLog
+from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
 from blog_system import BlogService, codehilite_css, xml_escape
@@ -3368,6 +3369,62 @@ def build_absolute_url(path: str) -> str:
     return f"{SITE_URL}{path}"
 
 
+def _build_personality_card_prompt(resume_data: dict) -> str:
+    """Build the GPT-4o-mini prompt for career personality card generation."""
+    pi = resume_data.get("personal_info") or {}
+    name = str(pi.get("name") or resume_data.get("name") or "").strip()
+    experience = resume_data.get("experience") or []
+    education = resume_data.get("education") or []
+    skills = resume_data.get("skills") or {}
+    projects = resume_data.get("projects") or []
+    certifications = resume_data.get("certifications") or []
+
+    summary = json.dumps({
+        "name": name,
+        "experience": experience[:6],
+        "education": education[:3],
+        "skills": skills,
+        "projects": [{"name": p.get("name"), "tech": p.get("technologies")} for p in projects[:5]],
+        "certifications": [c.get("name") for c in certifications[:5]],
+    }, separators=(",", ":"))
+
+    return f"""You are a career coach creating a fun, flattering "Career Personality Card" for a professional.
+
+Analyze the resume data below and return ONLY a valid JSON object with exactly these fields:
+
+{{
+  "archetype": "A 3-5 word title like 'The Strategic Builder' or 'The Data Storyteller' — evocative and specific to their career",
+  "tagline": "Two punchy, flattering sentences (max 30 words total) that capture their career identity. Make the person feel proud to share this.",
+  "story": "A dramatic, metaphorical 2-3 line narrative about this person's work identity. Use vivid imagery — nautical, space, battle, or explorer metaphors. Written as a series of short punchy phrases joined by commas or periods. Example style: 'Navigator of algorithmic oceans, hunter of hidden patterns, and builder of machines that learn. Breaker of bottlenecks and keeper of scalability.'",
+  "traits": [
+    {{"emoji": "🔥", "label": "Trait Name", "description": "One short sentence about this trait as it applies to them"}},
+    {{"emoji": "🎯", "label": "Trait Name", "description": "..."}},
+    {{"emoji": "🚀", "label": "Trait Name", "description": "..."}},
+    {{"emoji": "💡", "label": "Trait Name", "description": "..."}}
+  ],
+  "stats": {{
+    "years_experience": 0,
+    "companies_count": 0,
+    "industries_list": ["Industry 1"],
+    "top_3_skills": ["Skill 1", "Skill 2", "Skill 3"],
+    "total_projects": 0
+  }}
+}}
+
+Rules:
+- Return 3 to 4 traits (never fewer than 3, never more than 4)
+- archetypes must feel aspirational and shareable on LinkedIn — avoid generic labels like "Hard Worker"
+- tagline must be something the person would genuinely want to post publicly
+- story must use dramatic, poetic language — avoid corporate jargon
+- top_3_skills must come from the actual skills in the resume — pick the most impressive/specific ones
+- years_experience: calculate from earliest start_date to present; if no dates, estimate from graduation year; minimum 0
+- industries_list: infer from company names and job titles (e.g., "FinTech", "SaaS", "Healthcare")
+- If resume data is sparse (student, entry-level), still produce a positive, encouraging card with aspirational language
+
+Resume data:
+{summary}"""
+
+
 # ---------------------------------------------------------------------------
 # Author profile for E-E-A-T (byline, about-the-author box, schema author).
 # To attribute posts to a named individual instead, change "@type" to "Person"
@@ -3833,6 +3890,176 @@ async def my_resumes_count(request: Request):
     return JSONResponse({"count": n})
 
 
+@app.post("/api/generate-personality-card", include_in_schema=False)
+async def generate_personality_card(request: Request):
+    """Generate (or return cached) career personality card for a saved resume."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return JSONResponse(status_code=401, content={"error": "Not logged in"})
+
+    try:
+        body = await request.json()
+    except Exception:
+        return JSONResponse(status_code=400, content={"error": "Invalid JSON body"})
+
+    resume_id = body.get("resume_id")
+    if not resume_id:
+        return JSONResponse(status_code=400, content={"error": "resume_id is required"})
+    try:
+        resume_id = int(resume_id)
+    except (TypeError, ValueError):
+        return JSONResponse(status_code=400, content={"error": "resume_id must be an integer"})
+
+    db = get_db()
+    try:
+        resume = (
+            db.query(SavedResume)
+            .filter(SavedResume.id == resume_id, SavedResume.user_id == user_id)
+            .first()
+        )
+        if not resume:
+            return JSONResponse(status_code=404, content={"error": "Resume not found"})
+
+        # Return cached card immediately if it exists
+        existing = db.query(PersonalityCard).filter(PersonalityCard.resume_id == resume_id).first()
+        if existing:
+            return JSONResponse({
+                "success": True, "cached": True,
+                "card": {
+                    "archetype": existing.archetype,
+                    "tagline": existing.tagline,
+                    "story": existing.story,
+                    "traits": json.loads(existing.traits),
+                    "stats": json.loads(existing.stats),
+                    "token": existing.token,
+                    "share_url": f"{SITE_URL}/card/{existing.token}",
+                    "candidate_name": resume.candidate_name or "",
+                }
+            })
+
+        resume_data = {}
+        if resume.resume_json:
+            try:
+                resume_data = json.loads(resume.resume_json)
+            except (json.JSONDecodeError, TypeError):
+                resume_data = {}
+
+        if not resume_data:
+            return JSONResponse(status_code=422, content={
+                "error": "This resume has no structured data. Optimize it with AI first."
+            })
+    finally:
+        db.close()
+
+    # Run GPT outside DB session to avoid holding a connection during AI latency
+    try:
+        prompt = _build_personality_card_prompt(resume_data)
+        raw_response = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.7)
+        card_data = json.loads(raw_response)
+    except (json.JSONDecodeError, TypeError):
+        logger.error("Personality card GPT returned non-JSON")
+        return JSONResponse(status_code=500, content={"error": "AI returned invalid data. Please try again."})
+    except Exception:
+        logger.exception("Personality card generation failed")
+        return JSONResponse(status_code=500, content={"error": "Generation failed. Please try again."})
+
+    archetype = str(card_data.get("archetype") or "").strip()
+    tagline = str(card_data.get("tagline") or "").strip()
+    story = str(card_data.get("story") or "").strip()
+    traits = card_data.get("traits") or []
+    stats = card_data.get("stats") or {}
+    if not archetype or not tagline or not traits:
+        return JSONResponse(status_code=500, content={"error": "AI returned incomplete card data. Please try again."})
+
+    token = token_urlsafe(16)
+
+    db = get_db()
+    try:
+        existing = db.query(PersonalityCard).filter(PersonalityCard.resume_id == resume_id).first()
+        if existing:
+            card = existing
+        else:
+            card = PersonalityCard(
+                user_id=user_id,
+                resume_id=resume_id,
+                token=token,
+                archetype=archetype,
+                tagline=tagline,
+                story=story,
+                traits=json.dumps(traits, separators=(",", ":")),
+                stats=json.dumps(stats, separators=(",", ":")),
+            )
+            db.add(card)
+            try:
+                db.commit()
+                db.refresh(card)
+            except IntegrityError:
+                db.rollback()
+                card = db.query(PersonalityCard).filter(PersonalityCard.resume_id == resume_id).first()
+
+        candidate_name = resume_data.get("personal_info", {}).get("name") or resume_data.get("name") or ""
+        return JSONResponse({
+            "success": True, "cached": False,
+            "card": {
+                "archetype": card.archetype,
+                "tagline": card.tagline,
+                "story": card.story,
+                "traits": json.loads(card.traits),
+                "stats": json.loads(card.stats),
+                "token": card.token,
+                "share_url": f"{SITE_URL}/card/{card.token}",
+                "candidate_name": str(candidate_name).strip(),
+            }
+        })
+    except Exception:
+        logger.exception("Failed to persist personality card")
+        try:
+            db.rollback()
+        except Exception:
+            pass
+        return JSONResponse(status_code=500, content={"error": "Failed to save card. Please try again."})
+    finally:
+        db.close()
+
+
+@app.get("/card/{token}", response_class=HTMLResponse, include_in_schema=False)
+async def personality_card_public(request: Request, token: str):
+    """Public shareable personality card page. No login required."""
+    if not token or len(token) > 64:
+        raise HTTPException(status_code=404, detail="Card not found")
+
+    db = get_db()
+    try:
+        card = db.query(PersonalityCard).filter(PersonalityCard.token == token).first()
+        if not card:
+            raise HTTPException(status_code=404, detail="Card not found")
+
+        resume = db.query(SavedResume).filter(SavedResume.id == card.resume_id).first()
+        candidate_name = (resume.candidate_name or "") if resume else ""
+        traits = json.loads(card.traits) if card.traits else []
+        stats = json.loads(card.stats) if card.stats else {}
+        story = card.story or ""
+    finally:
+        db.close()
+
+    card_url = f"{SITE_URL}/card/{token}"
+    og_title = f"{(candidate_name + ' is ') if candidate_name else ''}{card.archetype} | TailorCv.AI Career Card"
+
+    return templates.TemplateResponse(request, "personality_card_public.html", {
+        "request": request,
+        "card": card,
+        "candidate_name": candidate_name,
+        "story": story,
+        "traits": traits,
+        "stats": stats,
+        "card_url": card_url,
+        "seo_og_title": og_title,
+        "seo_og_description": card.tagline,
+        "seo_og_image": f"{SITE_URL}/static/personality-card-og.png",
+        "canonical_url": card_url,
+    })
+
+
 @app.post("/api/save-edited-resume", include_in_schema=False)
 async def save_edited_resume(request: Request):
     """Explicitly save the edited resume from the editor (user clicked "Save").
@@ -3854,9 +4081,14 @@ async def save_edited_resume(request: Request):
     template_id = (body or {}).get("template_id")
     jd = (body or {}).get("jd")
     resume_id = (body or {}).get("resume_id")
+    resume_data = (body or {}).get("resume_data")
+    candidate_name = (body or {}).get("candidate_name")
     jd_snippet = (str(jd).strip() or None) if jd else None  # full JD, untruncated
     if not html or not isinstance(html, str):
         return JSONResponse(status_code=400, content={"error": "Missing resume HTML"})
+    if not isinstance(resume_data, dict):
+        resume_data = None
+    candidate_name = str(candidate_name or "").strip()[:255] or None
     try:
         tid = int(template_id) if template_id is not None else None
     except (TypeError, ValueError):
@@ -3883,11 +4115,32 @@ async def save_edited_resume(request: Request):
                 record.jd_snippet = jd_snippet
                 if not record.title or record.title == "Edited Resume":
                     record.title = _derive_target_role_from_jd(jd) or record.title
+            if resume_data:
+                record.resume_json = json.dumps(resume_data, separators=(",", ":"))
+            if candidate_name:
+                record.candidate_name = candidate_name
         else:  # first save for this resume — create a new row
+            # Copy resume_json from the most recently auto-saved (AI-optimized) resume
+            # for this user so the personality card generator has structured data.
+            recent_with_json = (
+                db.query(SavedResume)
+                .filter(SavedResume.user_id == user_id, SavedResume.resume_json.isnot(None))
+                .order_by(SavedResume.created_at.desc())
+                .first()
+            )
             record = SavedResume(
                 user_id=user_id,
                 title=_derive_target_role_from_jd(jd) or "Edited Resume",
                 html_content=html, template_id=tid, jd_snippet=jd_snippet,
+                resume_json=(
+                    json.dumps(resume_data, separators=(",", ":"))
+                    if resume_data else
+                    (recent_with_json.resume_json if recent_with_json else None)
+                ),
+                candidate_name=(
+                    candidate_name or
+                    (recent_with_json.candidate_name if recent_with_json else None)
+                ),
             )
             db.add(record)
         db.commit()
@@ -4815,6 +5068,11 @@ async def upload_resume(
                     "success": True,
                     "html": html_content,
                     "template_id": template_id,
+                    "resume_data": parsed if isinstance(parsed, dict) else None,
+                    "candidate_name": (
+                        str((parsed or {}).get("name") or "").strip()[:255]
+                        if isinstance(parsed, dict) else None
+                    ),
                 })
 
             pdf_path = os.path.join(resumes_dir, f"optimized_resume_{uuid.uuid4()}.pdf")
