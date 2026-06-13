@@ -20,28 +20,26 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 16px 64px;
+            padding: 12px 10px 36px;
         }
 
-        /* ── The shareable card — strict 9:16 for Stories ──────── */
+        /* ── Card: wide & short — targets ~4:5 or squarish on mobile ── */
         #personality-card {
             width: 100%;
-            max-width: 420px;
-            /* Explicit height from width so content never overflows the 9:16 frame */
-            height: calc(min(420px, 100vw - 32px) * 16 / 9);
+            max-width: 560px;
             background: linear-gradient(145deg, #16003a 0%, #1e0045 40%, #0d1a3e 100%);
             border: 1px solid rgba(167, 139, 250, 0.38);
-            border-radius: 22px;
-            padding: 28px 26px 20px;
+            border-radius: 20px;
+            padding: 16px 16px 14px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 0 60px rgba(139, 92, 246, 0.22), 0 24px 48px rgba(0,0,0,.6);
             display: flex;
             flex-direction: column;
+            gap: 10px;
             container-type: inline-size;
         }
 
-        /* Subtle corner glow accents for visual depth */
         #personality-card::before {
             content: '';
             position: absolute; top: -60px; right: -60px;
@@ -66,110 +64,121 @@
         }
         @keyframes shimmer { 0%{background-position:0%} 100%{background-position:300%} }
 
-        .card-brand {
-            font-size: 2cqi; letter-spacing: .15em; text-transform: uppercase;
-            color: rgba(167,139,250,.6); margin-bottom: 14px; position: relative; z-index: 1;
-        }
-        .card-name  { font-size: 2.8cqi; color: rgba(255,255,255,.5); margin-bottom: 4px; position: relative; z-index: 1; }
-        .card-archetype {
-            font-size: 6.8cqi; font-weight: 900;
-            background: linear-gradient(135deg, #fbbf24, #f472b6, #818cf8);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; line-height: 1.15; margin-bottom: 12px;
+        /* ── Header row: brand + name + archetype side by side ── */
+        .card-header {
+            display: flex;
+            flex-direction: column;
             position: relative; z-index: 1;
         }
+        .card-brand {
+            font-size: 1.7cqi; letter-spacing: .15em; text-transform: uppercase;
+            color: rgba(167,139,250,.6); margin-bottom: 2px;
+        }
+        .card-name { font-size: 2.4cqi; color: rgba(255,255,255,.5); margin-bottom: 2px; }
+        .card-archetype {
+            font-size: 5.8cqi; font-weight: 900;
+            background: linear-gradient(135deg, #fbbf24, #f472b6, #818cf8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; line-height: 1.15;
+        }
 
-        /* ── Story paragraph — clamped to prevent overflow ──────── */
+        /* ── Story: hard 3-line clamp ── */
         .card-story {
-            font-size: 3cqi; color: rgba(244,247,255,.9); line-height: 1.75;
-            margin-bottom: 14px;
-            padding: 3.5cqi 3.5cqi 3cqi;
+            font-size: 2.6cqi; color: rgba(244,247,255,.88); line-height: 1.6;
+            padding: 2.5cqi 3cqi;
             background: linear-gradient(180deg, rgba(139,92,246,.12), rgba(59,130,246,.08));
             border: 1px solid rgba(139,92,246,.24);
             border-left: 4px solid rgba(167,139,250,.65);
-            border-radius: 12px;
-            flex: 1;
-            min-height: 0;
+            border-radius: 10px;
             overflow: hidden;
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 6;
+            -webkit-line-clamp: 3;
             position: relative; z-index: 1;
         }
 
-        /* ── Trait pills ─────────────────────────────────────────── */
+        /* ── Traits: 2x2 grid, compact ── */
         .traits-grid {
-            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 2cqi; margin-bottom: 14px; position: relative; z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.4cqi;
+            position: relative; z-index: 1;
         }
         .trait-card {
             background: rgba(15,23,42,.42); border: 1px solid rgba(139,92,246,.22);
-            border-radius: 12px; padding: 2.5cqi 2.5cqi 2cqi;
+            border-radius: 10px; padding: 1.8cqi 2cqi 1.6cqi;
         }
         .trait-head {
-            display: flex; align-items: center; gap: 1.5cqi; margin-bottom: 1.2cqi;
-            color: #ddd6fe; font-size: 2.8cqi; font-weight: 700;
+            display: flex; align-items: center; gap: 1cqi; margin-bottom: 0.8cqi;
+            color: #ddd6fe; font-size: 2.4cqi; font-weight: 700;
         }
         .trait-desc {
-            font-size: 2.4cqi; line-height: 1.5; color: rgba(226,232,240,.82);
+            font-size: 2.1cqi; line-height: 1.45; color: rgba(226,232,240,.82);
             overflow: hidden;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
         }
 
-        /* ── Stats row ───────────────────────────────────────────── */
-        .stats-row {
-            display: flex; border-top: 1px solid rgba(255,255,255,.08); padding-top: 14px;
+        /* ── Stats + skills on one row ── */
+        .bottom-row {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding-top: 10px;
             position: relative; z-index: 1;
         }
-        .stat-item { flex: 1; text-align: center; padding: 0 6px; }
+        .stats-row {
+            display: flex;
+            flex-shrink: 0;
+        }
+        .stat-item { text-align: center; padding: 0 10px; }
         .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,.08); }
-        .stat-value { font-size: 5cqi; font-weight: 800; color: #fbbf24; display: block; }
-        .stat-label { font-size: 1.8cqi; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .08em; }
+        .stat-value { font-size: 4.5cqi; font-weight: 800; color: #fbbf24; display: block; }
+        .stat-label { font-size: 1.6cqi; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .08em; }
 
-        /* ── Top skills ──────────────────────────────────────────── */
         .skills-chips {
-            display: flex; flex-wrap: wrap; gap: 1.5cqi;
-            margin-top: 10px; padding-top: 10px;
-            border-top: 1px solid rgba(255,255,255,.08);
-            position: relative; z-index: 1;
+            display: flex; flex-wrap: wrap; gap: 1.2cqi;
+            padding-left: 10px;
+            border-left: 1px solid rgba(255,255,255,.08);
+            margin-left: 4px;
         }
         .skill-chip {
             background: rgba(59,130,246,.15); border: 1px solid rgba(59,130,246,.3);
-            border-radius: 5px; padding: 1cqi 2.2cqi;
-            font-size: 2cqi; color: #93c5fd; font-weight: 600;
+            border-radius: 5px; padding: 0.8cqi 1.8cqi;
+            font-size: 1.9cqi; color: #93c5fd; font-weight: 600;
         }
 
         .card-footer-brand {
-            margin-top: 10px; font-size: 1.8cqi; color: rgba(255,255,255,.2);
+            font-size: 1.6cqi; color: rgba(255,255,255,.2);
             text-align: right; position: relative; z-index: 1;
         }
 
-        /* ── CTA section ─────────────────────────────────────────── */
+        /* ── CTA section ── */
         .cta-section {
-            width: 100%; max-width: 420px; margin-top: 24px; text-align: center;
+            width: 100%; max-width: 560px; margin-top: 18px; text-align: center;
         }
-        .cta-headline { font-size: 1.1rem; font-weight: 700; color: #eaf1ff; margin-bottom: 8px; }
-        .cta-sub { font-size: .88rem; color: #9fb0cc; margin-bottom: 20px; }
+        .cta-headline { font-size: 1.05rem; font-weight: 700; color: #eaf1ff; margin-bottom: 6px; }
+        .cta-sub { font-size: .85rem; color: #9fb0cc; margin-bottom: 16px; }
         .cta-btn {
             display: inline-block;
             background: linear-gradient(135deg, #7c3aed, #4c1d95);
-            color: #fff; font-weight: 700; font-size: 1rem;
-            padding: 14px 36px; border-radius: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: .95rem;
+            padding: 12px 32px; border-radius: 12px; text-decoration: none;
             transition: filter .2s, transform .2s;
         }
         .cta-btn:hover { filter: brightness(1.12); transform: translateY(-2px); }
 
-        /* ── Share buttons ───────────────────────────────────────── */
+        /* ── Share buttons ── */
         .share-row {
-            display: flex; gap: 10px; justify-content: center;
-            flex-wrap: wrap; margin-top: 20px;
+            display: flex; gap: 8px; justify-content: center;
+            flex-wrap: wrap; margin-top: 16px;
         }
         .share-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 11px 18px; border-radius: 10px; border: none;
-            font-size: .85rem; font-weight: 700; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 10px 16px; border-radius: 10px; border: none;
+            font-size: .82rem; font-weight: 700; cursor: pointer;
             transition: transform .15s, filter .15s; text-decoration: none;
         }
         .share-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
@@ -177,24 +186,18 @@
         .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; }
         .btn-download { background: rgba(255,255,255,.08); color: #eaf1ff; border: 1px solid rgba(255,255,255,.15); }
         .btn-copy    { background: rgba(139,92,246,.2); color: #c4b5fd; border: 1px solid rgba(139,92,246,.4); }
-
-        @media (max-width: 480px) {
-            body { padding: 24px 16px 48px; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Shareable card — this element is captured by html2canvas -->
     <div id="personality-card">
         <div class="card-shimmer"></div>
-        <div class="card-brand">TailorCv.AI &middot; Career Personality</div>
 
-        {% if candidate_name %}
-        <div class="card-name">{{ candidate_name }}</div>
-        {% endif %}
-
-        <div class="card-archetype" id="card-arch-text">{{ card.archetype }}</div>
+        <div class="card-header">
+            <div class="card-brand">TailorCv.AI &middot; Career Personality</div>
+            {% if candidate_name %}<div class="card-name">{{ candidate_name }}</div>{% endif %}
+            <div class="card-archetype" id="card-arch-text">{{ card.archetype }}</div>
+        </div>
 
         {% if story %}
         <div class="card-story">{{ story }}</div>
@@ -212,33 +215,34 @@
             {% endfor %}
         </div>
 
-        <div class="stats-row">
-            <div class="stat-item">
-                <span class="stat-value">{{ stats.years_experience or 0 }}+</span>
-                <span class="stat-label">Years</span>
+        <div class="bottom-row">
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-value">{{ stats.years_experience or 0 }}+</span>
+                    <span class="stat-label">Years</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{{ stats.companies_count or 0 }}</span>
+                    <span class="stat-label">Cos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{{ stats.total_projects or 0 }}</span>
+                    <span class="stat-label">Projs</span>
+                </div>
             </div>
-            <div class="stat-item">
-                <span class="stat-value">{{ stats.companies_count or 0 }}</span>
-                <span class="stat-label">Companies</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value">{{ stats.total_projects or 0 }}</span>
-                <span class="stat-label">Projects</span>
-            </div>
-        </div>
 
-        {% if stats.top_3_skills %}
-        <div class="skills-chips">
-            {% for skill in stats.top_3_skills %}
-            <span class="skill-chip">{{ skill }}</span>
-            {% endfor %}
+            {% if stats.top_3_skills %}
+            <div class="skills-chips">
+                {% for skill in stats.top_3_skills %}
+                <span class="skill-chip">{{ skill }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
 
         <div class="card-footer-brand">thetailorcv.com</div>
     </div>
 
-    <!-- CTA for non-users landing from a share -->
     <div class="cta-section">
         <div class="cta-headline">Discover your Career Personality</div>
         <div class="cta-sub">Free for every professional &mdash; takes 30 seconds.</div>
@@ -246,14 +250,14 @@
 
         <div class="share-row">
             <button class="share-btn btn-linkedin" id="li-share-btn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
                 LinkedIn
             </button>
             <button class="share-btn btn-whatsapp" id="wa-share-btn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 WhatsApp
             </button>
-            <button class="share-btn btn-download" id="download-png-btn">&#8595; Story (1080&times;1920)</button>
+            <button class="share-btn btn-download" id="download-png-btn">&#8595; Save Card</button>
             <button class="share-btn btn-copy" id="copy-link-btn">&#128279; Copy Link</button>
         </div>
     </div>
@@ -267,79 +271,70 @@
         var tagline   = {{ card.tagline | tojson }};
 
         var shareText = "Just discovered my career personality with TailorCv.AI 🎯\n\n"
-            + "I’m " + archetype + " — " + tagline + "\n\n"
+            + "I'm " + archetype + " — " + tagline + "\n\n"
             + "Find out yours → " + cardUrl
             + "\n\n#CareerPersonality #TailorCvAI #JobSearch";
 
-        /* LinkedIn share */
-        document.getElementById(‘li-share-btn’).addEventListener(‘click’, function () {
+        document.getElementById('li-share-btn').addEventListener('click', function () {
             window.open("https://www.linkedin.com/feed/", "_blank", "noopener,noreferrer");
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(shareText).catch(function () {});
             }
         });
 
-        /* WhatsApp share */
-        document.getElementById(‘wa-share-btn’).addEventListener(‘click’, function () {
-            var waText = encodeURIComponent(shareText);
-            window.open("https://wa.me/?text=" + waText, "_blank", "noopener,noreferrer");
+        document.getElementById('wa-share-btn').addEventListener('click', function () {
+            window.open("https://wa.me/?text=" + encodeURIComponent(shareText), "_blank", "noopener,noreferrer");
         });
 
-        /* Capture card as PNG at exactly 1080×1920 (9:16 story format) */
         function captureCard(callback) {
-            var cardEl  = document.getElementById(‘personality-card’);
-            var archEl  = document.getElementById(‘card-arch-text’);
-            var shimmer = cardEl.querySelector(‘.card-shimmer’);
+            var cardEl  = document.getElementById('personality-card');
+            var archEl  = document.getElementById('card-arch-text');
+            var shimmer = cardEl.querySelector('.card-shimmer');
             var origArch = archEl.style.cssText;
 
-            /* Stop animation and flatten gradient text for canvas */
-            if (shimmer) shimmer.style.animation = ‘none’;
+            if (shimmer) shimmer.style.animation = 'none';
             archEl.style.cssText = origArch
-                + ‘;-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;’
-                + ‘background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;’;
+                + ';-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;'
+                + 'background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;';
 
-            /* Scale so card renders at exactly 1080px wide → 1920px tall (9:16) */
-            var storyScale = 1080 / cardEl.offsetWidth;
+            var exportScale = 1080 / cardEl.offsetWidth;
 
             html2canvas(cardEl, {
-                scale: storyScale, backgroundColor: null, useCORS: true, logging: false
+                scale: exportScale, backgroundColor: null, useCORS: true, logging: false
             }).then(function (canvas) {
                 callback(null, canvas);
             }).catch(function (err) {
                 callback(err);
             }).finally(function () {
-                if (shimmer) shimmer.style.animation = ‘’;
+                if (shimmer) shimmer.style.animation = '';
                 archEl.style.cssText = origArch;
             });
         }
 
-        /* Download Story PNG */
-        document.getElementById(‘download-png-btn’).addEventListener(‘click’, function () {
+        document.getElementById('download-png-btn').addEventListener('click', function () {
             var btn = this;
-            btn.textContent = ‘Generating…’;
+            btn.textContent = 'Generating…';
             btn.disabled = true;
-
             captureCard(function (err, canvas) {
                 if (err) {
-                    alert(‘PNG generation failed. Right-click the card and save as image instead.’);
+                    alert('PNG generation failed. Right-click the card and save as image instead.');
                 } else {
-                    var a = document.createElement(‘a’);
-                    a.download = ‘career-personality-’ + archetype.toLowerCase().replace(/\s+/g, ‘-’) + ‘-story.png’;
-                    a.href = canvas.toDataURL(‘image/png’);
+                    var a = document.createElement('a');
+                    a.download = 'career-personality-' + archetype.toLowerCase().replace(/\s+/g, '-') + '.png';
+                    a.href = canvas.toDataURL('image/png');
                     a.click();
                 }
-                btn.innerHTML = ‘&#8595; Story (1080&times;1920)’;
+                btn.innerHTML = '&#8595; Save Card';
                 btn.disabled = false;
             });
         });
 
-        /* Copy link */
-        document.getElementById(‘copy-link-btn’).addEventListener(‘click’, function () {
+        document.getElementById('copy-link-btn').addEventListener('click', function () {
             var btn = this;
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(cardUrl).then(function () {
-                    btn.textContent = ‘✓ Copied!’;
-                    setTimeout(function () { btn.innerHTML = ‘&#128279; Copy Link’; }, 2500);
+                    btn.textContent = '✓ Copied!';
+                    setTimeout(function () { btn.innerHTML = '&#128279; Copy Link'; }, 2500);
                 }).catch(function () { btn.textContent = cardUrl; });
             } else {
                 btn.textContent = cardUrl;
