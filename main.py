@@ -3369,35 +3369,126 @@ def build_absolute_url(path: str) -> str:
     return f"{SITE_URL}{path}"
 
 
+PERSONALITY_CARD_MIN_STORY_LEN = 190
+
+
+def _personality_card_needs_refresh(card: PersonalityCard | None) -> bool:
+    if not card:
+        return True
+    story = str(getattr(card, "story", "") or "").strip()
+    if len(story) < PERSONALITY_CARD_MIN_STORY_LEN:
+        return True
+    try:
+        traits = json.loads(card.traits or "[]")
+    except (TypeError, json.JSONDecodeError):
+        return True
+    if not isinstance(traits, list) or len(traits) < 3:
+        return True
+    detailed_trait_count = 0
+    for trait in traits:
+        if isinstance(trait, dict) and len(str(trait.get("description") or "").strip()) >= 40:
+            detailed_trait_count += 1
+    return detailed_trait_count < 3
+
+
+def _personality_skill_list(skills: object) -> list[str]:
+    items: list[str] = []
+    if isinstance(skills, dict):
+        for _, values in skills.items():
+            if isinstance(values, list):
+                for value in values:
+                    value_text = str(value or "").strip()
+                    if value_text:
+                        items.append(value_text)
+            elif values:
+                value_text = str(values).strip()
+                if value_text:
+                    items.append(value_text)
+    elif isinstance(skills, list):
+        for value in skills:
+            value_text = str(value or "").strip()
+            if value_text:
+                items.append(value_text)
+
+    seen: set[str] = set()
+    deduped: list[str] = []
+    for item in items:
+        key = item.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(item)
+    return deduped
+
+
 def _build_personality_card_prompt(resume_data: dict) -> str:
     """Build the GPT-4o-mini prompt for career personality card generation."""
     pi = resume_data.get("personal_info") or {}
     name = str(pi.get("name") or resume_data.get("name") or "").strip()
+    headline = str(
+        resume_data.get("headline")
+        or resume_data.get("title")
+        or resume_data.get("current_title")
+        or resume_data.get("role")
+        or ""
+    ).strip()
+    summary_text = str(resume_data.get("summary") or "").strip()
     experience = resume_data.get("experience") or []
     education = resume_data.get("education") or []
     skills = resume_data.get("skills") or {}
     projects = resume_data.get("projects") or []
     certifications = resume_data.get("certifications") or []
+    achievements = resume_data.get("achievements") or []
+    awards = resume_data.get("awards") or []
+    extracurriculars = resume_data.get("extracurriculars") or []
 
     summary = json.dumps({
         "name": name,
-        "experience": experience[:6],
+        "headline": headline,
+        "summary": summary_text,
+        "experience": [
+            {
+                "title": str(exp.get("title") or "").strip(),
+                "company": str(exp.get("company") or "").strip(),
+                "dates": str(exp.get("dates") or "").strip(),
+                "location": str(exp.get("location") or "").strip(),
+                "bullets": (exp.get("bullets") or [])[:3],
+            }
+            for exp in experience[:5] if isinstance(exp, dict)
+        ],
         "education": education[:3],
-        "skills": skills,
-        "projects": [{"name": p.get("name"), "tech": p.get("technologies")} for p in projects[:5]],
+        "skills": _personality_skill_list(skills)[:12],
+        "projects": [
+            {
+                "name": str(p.get("name") or "").strip(),
+                "stack": str(p.get("subtitle") or p.get("stack") or p.get("technologies") or "").strip(),
+                "bullets": (p.get("bullets") or p.get("achievements") or p.get("details") or [])[:3],
+            }
+            for p in projects[:5] if isinstance(p, dict)
+        ],
         "certifications": [c.get("name") for c in certifications[:5]],
+        "achievements": [str(a).strip() for a in achievements[:5] if str(a).strip()],
+        "awards": [str(a).strip() for a in awards[:4] if str(a).strip()],
+        "extracurriculars": [
+            {
+                "role": str(item.get("role") or "").strip(),
+                "organization": str(item.get("organization") or "").strip(),
+                "achievements": (item.get("achievements") or [])[:2],
+            }
+            for item in extracurriculars[:3] if isinstance(item, dict)
+        ],
     }, separators=(",", ":"))
 
-    return f"""You are a career coach creating a fun, flattering "Career Personality Card" for a professional.
+    return f"""You are a career coach creating a flattering "Career Personality Card" for a professional.
 
 Analyze the resume data below and return ONLY a valid JSON object with exactly these fields:
 
 {{
-  "archetype": "A 3-5 word title like 'The Strategic Builder' or 'The Data Storyteller' — evocative and specific to their career",
-  "tagline": "Two punchy, flattering sentences (max 30 words total) that capture their career identity. Make the person feel proud to share this.",
-  "story": "A dramatic, metaphorical 2-3 line narrative about this person's work identity. Use vivid imagery — nautical, space, battle, or explorer metaphors. Written as a series of short punchy phrases joined by commas or periods. Example style: 'Navigator of algorithmic oceans, hunter of hidden patterns, and builder of machines that learn. Breaker of bottlenecks and keeper of scalability.'",
+  "archetype": "A 3-5 word title like 'The Strategic Builder' or 'The Data Storyteller' that feels specific to their actual career path",
+  "tagline": "Two punchy, flattering sentences (max 30 words total) that capture their career identity and feel worth sharing publicly",
+  "story": "A personalized 3-4 sentence profile, around 60-100 words. It should sound recognizably like this person based on their actual resume. Mention concrete details such as projects, tools, domains, impact, academic path, leadership, or employers when available.",
   "traits": [
-    {{"emoji": "🔥", "label": "Trait Name", "description": "One short sentence about this trait as it applies to them"}},
+    {{"emoji": "🔥", "label": "Trait Name", "description": "One specific sentence about this trait as it applies to them, grounded in resume evidence."}},
     {{"emoji": "🎯", "label": "Trait Name", "description": "..."}},
     {{"emoji": "🚀", "label": "Trait Name", "description": "..."}},
     {{"emoji": "💡", "label": "Trait Name", "description": "..."}}
@@ -3413,18 +3504,19 @@ Analyze the resume data below and return ONLY a valid JSON object with exactly t
 
 Rules:
 - Return 3 to 4 traits (never fewer than 3, never more than 4)
-- archetypes must feel aspirational and shareable on LinkedIn — avoid generic labels like "Hard Worker"
+- archetypes must feel aspirational and shareable on LinkedIn, not generic
 - tagline must be something the person would genuinely want to post publicly
-- story must use dramatic, poetic language — avoid corporate jargon
-- top_3_skills must come from the actual skills in the resume — pick the most impressive/specific ones
+- story must be personalized, concrete, and written in clear natural language
+- story must mention at least 2 concrete resume details when enough data exists, such as project names, technologies, scale, outcomes, employers, university, or leadership work
+- each trait description must be 14 to 28 words and tie back to something visible in the resume
+- top_3_skills must come from the actual skills in the resume
 - years_experience: calculate from earliest start_date to present; if no dates, estimate from graduation year; minimum 0
 - industries_list: infer from company names and job titles (e.g., "FinTech", "SaaS", "Healthcare")
+- Do not invent employers, metrics, tools, awards, or domains that are not supported by the resume data
 - If resume data is sparse (student, entry-level), still produce a positive, encouraging card with aspirational language
 
 Resume data:
 {summary}"""
-
-
 # ---------------------------------------------------------------------------
 # Author profile for E-E-A-T (byline, about-the-author box, schema author).
 # To attribute posts to a named individual instead, change "@type" to "Person"
@@ -3920,9 +4012,9 @@ async def generate_personality_card(request: Request):
         if not resume:
             return JSONResponse(status_code=404, content={"error": "Resume not found"})
 
-        # Return cached card immediately if it exists
+        # Return cached card immediately if it already has the richer story/traits format.
         existing = db.query(PersonalityCard).filter(PersonalityCard.resume_id == resume_id).first()
-        if existing:
+        if existing and not _personality_card_needs_refresh(existing):
             return JSONResponse({
                 "success": True, "cached": True,
                 "card": {
@@ -3968,7 +4060,7 @@ async def generate_personality_card(request: Request):
     story = str(card_data.get("story") or "").strip()
     traits = card_data.get("traits") or []
     stats = card_data.get("stats") or {}
-    if not archetype or not tagline or not traits:
+    if not archetype or not tagline or not story or not traits:
         return JSONResponse(status_code=500, content={"error": "AI returned incomplete card data. Please try again."})
 
     token = token_urlsafe(16)
@@ -3978,6 +4070,17 @@ async def generate_personality_card(request: Request):
         existing = db.query(PersonalityCard).filter(PersonalityCard.resume_id == resume_id).first()
         if existing:
             card = existing
+            card.archetype = archetype
+            card.tagline = tagline
+            card.story = story
+            card.traits = json.dumps(traits, separators=(",", ":"))
+            card.stats = json.dumps(stats, separators=(",", ":"))
+            try:
+                db.commit()
+                db.refresh(card)
+            except IntegrityError:
+                db.rollback()
+                card = db.query(PersonalityCard).filter(PersonalityCard.resume_id == resume_id).first()
         else:
             card = PersonalityCard(
                 user_id=user_id,
@@ -6022,3 +6125,4 @@ if __name__ == "__main__":
         reload=reload,
         reload_excludes=[".venv/*", "__pycache__/*", "uploads/*", "resumes/*"],
     )
+
