@@ -4,7 +4,7 @@
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generate a tailored, ATS-friendly cover letter in seconds. Paste your resume and the job description — theTailorCV's AI writes a cover letter matched to the role.">
+    <meta name="description" content="Generate a tailored, ATS-friendly cover letter in seconds. Upload your resume PDF and the job description — theTailorCV's AI writes a cover letter matched to the role.">
     <title>AI Cover Letter Generator | theTailorCV</title>
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/header-footer.css">
@@ -16,123 +16,163 @@
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background: #020c22; color: #e2ecff; min-height: 100vh; }
+        body { font-family: 'Inter', sans-serif; background: radial-gradient(circle at top left, rgba(79, 150, 255, 0.18), transparent 28%), radial-gradient(circle at top right, rgba(182, 128, 255, 0.12), transparent 22%), linear-gradient(180deg, #040812 0%, #08122a 100%); color: #eef2ff; min-height: 100vh; }
+        a { color: inherit; }
 
-        .cl-hero { text-align: center; padding: 3.25rem 1.5rem 1.25rem; max-width: 760px; margin: 0 auto; }
-        .cl-kicker { display: inline-flex; background: rgba(51,146,255,0.12); border: 1px solid rgba(51,146,255,0.3); border-radius: 999px; padding: 7px 16px; font-size: 13px; color: #7db9ff; font-weight: 500; margin-bottom: 16px; }
-        .cl-hero h1 { font-size: 2.3rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
-        .cl-hero h1 span { background: linear-gradient(135deg, #5b8cff, #b07cf0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .cl-hero p { color: #9fb6d6; font-size: 1.02rem; line-height: 1.6; }
 
-        .cl-wrap { max-width: 1080px; margin: 0 auto; padding: 1rem 1.5rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media (max-width: 900px) { .cl-wrap { grid-template-columns: 1fr; } }
+        .cl-wrap { max-width: 1080px; margin: 0 auto; padding: 1.25rem 1rem 2.5rem; display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 18px; }
+        @media (max-width: 1080px) { .cl-wrap { grid-template-columns: 1fr; } }
 
-        .cl-card { background: #0a1730; border: 1px solid rgba(91,140,255,0.18); border-radius: 18px; padding: 22px; }
-        .cl-label { display: block; font-size: 13px; font-weight: 600; color: #cfe0ff; margin-bottom: 8px; }
-        .cl-hint { font-size: 12px; color: #6f87aa; margin-bottom: 6px; }
-        textarea, select, input[type=file] { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; color: #eaf1ff; font-family: inherit; font-size: 13.5px; padding: 12px; }
-        textarea { resize: vertical; line-height: 1.55; }
-        textarea#resume-text, textarea#jd-text { min-height: 150px; }
-        textarea#letter-output { min-height: 360px; }
-        .cl-row { margin-bottom: 16px; }
-        .cl-tone-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-        .cl-tone-row select { max-width: 220px; cursor: pointer; }
-        .cl-tone-row select option { background: #0a1730; }
+        .cl-card { background: rgba(9, 18, 38, 0.96); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 18px; box-shadow: 0 14px 32px rgba(0,0,0,0.16); }
+        .cl-card.secondary { background: rgba(15, 24, 46, 0.88); border-color: rgba(94, 142, 255, 0.12); }
+        .cl-section-title { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; margin-bottom: 12px; border-radius: 999px; background: rgba(81, 116, 255, 0.12); color: #9ec5ff; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; }
+        .cl-label { display: block; font-size: 0.9rem; font-weight: 700; color: #eaf1ff; margin-bottom: 6px; }
+        .cl-hint { font-size: 0.88rem; color: #9fb6d6; margin-bottom: 8px; }
+        .cl-note { font-size: 0.86rem; color: #9fb6d6; margin-top: 6px; }
+        textarea, select, input[type=file], input[type=text] { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.13); border-radius: 12px; color: #eef2ff; font-family: inherit; font-size: 13px; padding: 10px 12px; transition: border-color .2s, background .2s, box-shadow .2s; }
+        textarea { resize: vertical; line-height: 1.55; min-height: 110px; }
+        textarea#jd-text { min-height: 120px; }
+        textarea#letter-output { min-height: 220px; border-radius: 18px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); }
+        input[type=file] { padding: 9px 10px; }
+        input[type=file]::-webkit-file-upload-button { cursor: pointer; border: none; background: transparent; color: #c7d6ff; font-weight: 700; }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: rgba(79, 148, 255, 0.9); background: rgba(255,255,255,0.08); box-shadow: 0 0 0 6px rgba(71, 135, 255, 0.12); }
 
-        .cl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer; font-weight: 700; font-size: 14px; padding: 13px 22px; border-radius: 11px; transition: transform .15s, box-shadow .15s, opacity .15s; }
-        .cl-btn-primary { background: linear-gradient(135deg, #3392ff, #6d28d9); color: #fff; width: 100%; }
-        .cl-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(51,146,255,0.35); }
-        .cl-btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; box-shadow: none; }
-        .cl-btn-ghost { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: #dceafe; }
+        .cl-element-row { margin-bottom: 14px; }
+        .cl-tone-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
+        .cl-tone-row select { max-width: 200px; cursor: pointer; }
+
+        .cl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer; font-weight: 700; font-size: 0.88rem; padding: 10px 16px; border-radius: 14px; transition: transform .18s, box-shadow .18s, opacity .18s; }
+        .cl-btn-primary { background: linear-gradient(135deg, #4f7fff, #8d5cf7); color: #fff; width: 100%; }
+        .cl-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 14px 28px rgba(79, 126, 255, 0.2); }
+        .cl-btn-primary:disabled { opacity: 0.65; cursor: not-allowed; transform: none; box-shadow: none; }
+        .cl-btn-ghost { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); color: #d8e3ff; }
         .cl-btn-ghost:hover { background: rgba(255,255,255,0.12); }
 
-        .cl-actions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
-        .cl-status { font-size: 13px; margin-top: 12px; min-height: 18px; }
+        .cl-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+        @media (max-width: 640px) { .cl-actions { grid-template-columns: 1fr; } }
+        .cl-status { font-size: 0.88rem; margin-top: 10px; min-height: 18px; }
         .cl-status.error { color: #fca5a5; }
         .cl-status.ok { color: #4ade80; }
-        .cl-file-or { font-size: 12px; color: #6f87aa; text-align: center; margin: 8px 0; }
-        .cl-empty-hint { color: #6f87aa; font-size: 13px; }
-        .cl-link-btn { display: inline-block; margin-top: 10px; background: none; border: none; color: #7db9ff; font-size: 12.5px; cursor: pointer; text-decoration: underline; padding: 0; }
 
-        .cl-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
-        .cl-detail-grid input { width: 100%; }
-        .cl-tpl-label { font-size: 13px; font-weight: 600; color: #cfe0ff; margin: 16px 0 8px; }
-        .cl-templates { display: flex; gap: 10px; margin-bottom: 14px; }
-        .cl-tpl { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 11px; cursor: pointer; color: #cfe0ff; font-size: 13px; font-weight: 600; transition: border-color .15s, background .15s; }
-        .cl-tpl:hover { border-color: rgba(99,132,255,.5); }
-        .cl-tpl.active { border-color: #3392ff; background: rgba(51,146,255,0.16); color: #fff; }
-        .cl-preview-wrap { background: #4b4f52; border-radius: 10px; padding: 14px; overflow: auto; max-height: 560px; }
-        #cl-preview { width: 100%; height: 780px; border: none; border-radius: 4px; background: #fff; display: block; }
-        @media (max-width: 900px) { .cl-detail-grid { grid-template-columns: 1fr; } #cl-preview { height: 600px; } }
+        .cl-link-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; background: none; border: none; color: #7db9ff; font-size: 0.95rem; cursor: pointer; text-decoration: underline; padding: 0; }
+
+        .cl-detail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+        .cl-detail-grid input { width: 100%; min-height: 46px; border-radius: 14px; }
+        .cl-detail-grid input#cl-name { background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #eef2ff; }
+        .cl-detail-grid input#cl-name::placeholder { color: rgba(255,255,255,0.55); }
+        .cl-detail-grid input#cl-location { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); }
+        .cl-tpl-label { font-size: 0.88rem; font-weight: 700; color: #eef2ff; margin: 14px 0 10px; }
+        .cl-templates { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+        .cl-tpl { min-height: 42px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 10px 12px; cursor: pointer; color: #cfdcff; font-size: 0.88rem; font-weight: 700; transition: border-color .15s, background .15s, transform .15s; }
+        .cl-tpl:hover { transform: translateY(-1px); border-color: rgba(102, 124, 255, 0.55); }
+        .cl-tpl.active { border-color: #558dff; background: rgba(81, 116, 255, 0.18); color: #fff; }
+
+        .cl-preview-wrap { background: rgba(255,255,255,0.04); border-radius: 16px; padding: 12px; overflow: hidden; min-height: 400px; border: 1px solid rgba(255,255,255,0.1); }
+        #cl-preview { width: 100%; min-height: 320px; border: none; border-radius: 14px; background: #fff; display: block; }
+        .cl-page-header { position: relative; max-width: 1080px; margin: 0 auto 1.85rem; padding: 0 1rem; }
+        .cl-page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(95, 147, 255, 0.2), transparent 32%), radial-gradient(circle at top right, rgba(142, 84, 255, 0.14), transparent 22%); pointer-events: none; opacity: 0.95; filter: blur(28px); }
+        .cl-page-header::after { content: ''; position: absolute; left: 50%; bottom: 0; width: 90%; height: 1px; background: rgba(255,255,255,0.08); transform: translateX(-50%); }
+        .cl-page-header .cl-hero-card { position: relative; z-index: 1; padding: 2rem 2rem 1.8rem; background: rgba(10, 18, 38, 0.92); border: 1px solid rgba(255,255,255,0.12); border-radius: 30px; box-shadow: 0 28px 65px rgba(0, 0, 0, 0.28); backdrop-filter: blur(18px); }
+        .cl-page-header .cl-title { font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 900; margin-bottom: 0.85rem; letter-spacing: -0.04em; line-height: 1.05; text-shadow: 0 18px 45px rgba(16, 28, 62, 0.18); }
+        .cl-page-header .cl-title-start { color: #ffffff; }
+        .cl-page-header .cl-title-highlight { color: #1d4ed8; }
+        .cl-page-header .cl-subtitle { font-size: 1rem; color: #ffffff; max-width: 720px; line-height: 1.8; margin-bottom: 1.4rem; }
+        .cl-page-header .cl-badges { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+        .cl-page-header .cl-badge { display: inline-flex; align-items: center; gap: 0.7rem; padding: 0.78rem 1rem; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #d8e2ff; font-size: 0.9rem; }
+        .cl-page-header .cl-badge span { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, #6c88ff, #47d2ff); box-shadow: 0 0 12px rgba(70, 170, 255, 0.3); }
+        @media (max-width: 900px) { .cl-detail-grid { grid-template-columns: 1fr; } .cl-preview-wrap { min-height: 340px; } #cl-preview { min-height: 280px; } .cl-page-header .cl-hero-card { padding: 1.7rem 1.5rem 1.5rem; } }
+
+        .cl-info { display: grid; gap: 16px; margin-top: 24px; }
+        .cl-tip-list { display: grid; gap: 12px; list-style: none; padding: 0; margin: 0; }
+        .cl-tip-list li { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 16px; font-size: 0.94rem; color: #bfccf6; }
+        .cl-tip-list li strong { color: #fff; }
+
+        .cl-file-or { font-size: 0.95rem; color: #9fb6d6; text-align: center; margin: 12px 0 0; }
+        .cl-footer-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: 12px; color: #a5c7ff; }
     </style>
 </head>
 <body>
     {% include "_nav.html" %}
 
-    <div class="cl-hero">
-        <div class="cl-kicker">AI Cover Letter Generator</div>
-        <h1>A cover letter <span>tailored to the job</span> — in seconds</h1>
-        <p>Paste your resume and the job description. Our AI writes a focused cover letter that pulls real achievements from your resume and matches them to the role.</p>
-    </div>
+    <header class="cl-page-header">
+        <div class="cl-hero-card">
+            <div class="cl-title"><span class="cl-title-start">Start</span> <span class="cl-title-highlight">here</span></div>
+            <p class="cl-subtitle">Upload your resume PDF, add the job description, choose a tone, and generate your cover letter. Preview the final layout and download the PDF when ready.</p>
+            <div class="cl-badges">
+                <span class="cl-badge"><span></span>AI-powered cover letters</span>
+                <span class="cl-badge"><span></span>Optimized for hiring managers</span>
+                <span class="cl-badge"><span></span>PDF-ready preview</span>
+            </div>
+        </div>
+    </header>
 
     <div class="cl-wrap">
-        <!-- INPUTS -->
-        <div class="cl-card">
-            <div class="cl-row">
-                <label class="cl-label" for="resume-file">Your Resume (PDF)</label>
-                <div class="cl-hint">Just upload your resume PDF — that's all we need.</div>
-                <input type="file" id="resume-file" accept=".pdf">
-                <div id="resume-file-name" class="cl-hint" style="margin-top:8px;"></div>
-                <button type="button" id="toggle-paste" class="cl-link-btn">or paste resume text instead</button>
-                <textarea id="resume-text" placeholder="Paste your resume here…" style="display:none;margin-top:8px;"></textarea>
+        <div>
+            <div class="cl-card">
+                <div class="cl-section-title">1. Share your resume</div>
+                <div class="cl-element-row">
+                    <label class="cl-label" for="resume-file">Resume PDF</label>
+                    <input type="file" id="resume-file" accept=".pdf">
+                    <div id="resume-file-name" class="cl-hint" style="margin-top:10px;"></div>
+                    <div class="cl-hint" style="margin-top:8px;">Upload your resume PDF. Your uploaded resume will be used to generate the cover letter.</div>
+                </div>
+
+                <div class="cl-element-row">
+                    <label class="cl-label" for="jd-text">Job description</label>
+                    <textarea id="jd-text" placeholder="Paste the job description you're applying to…"></textarea>
+                </div>
+
+                <div class="cl-element-row cl-tone-row">
+                    <label class="cl-label" for="tone" style="margin:0;">Cover letter tone</label>
+                    <select id="tone">
+                        <option value="professional">Professional</option>
+                        <option value="warm">Warm</option>
+                        <option value="concise">Concise</option>
+                    </select>
+                </div>
+
+                <button id="generate-btn" class="cl-btn cl-btn-primary" type="button">Generate Cover Letter</button>
+                <div id="status" class="cl-status"></div>
             </div>
 
-            <div class="cl-row">
-                <label class="cl-label" for="jd-text">Job Description</label>
-                <textarea id="jd-text" placeholder="Paste the job description you're applying to…"></textarea>
+            <div class="cl-card secondary">
+                <div class="cl-section-title">Quick tips</div>
+                <ul class="cl-tip-list">
+                    <li><strong>Upload a resume PDF</strong> for the fastest, most accurate results.</li>
+                    <li><strong>Paste a strong job description</strong> with skills and responsibilities.</li>
+                    <li><strong>Review and personalize</strong> the letter before downloading.</li>
+                </ul>
             </div>
-
-            <div class="cl-tone-row">
-                <label class="cl-label" for="tone" style="margin:0;">Tone</label>
-                <select id="tone">
-                    <option value="professional">Professional</option>
-                    <option value="warm">Warm</option>
-                    <option value="concise">Concise</option>
-                </select>
-            </div>
-
-            <button id="generate-btn" class="cl-btn cl-btn-primary" type="button">
-                Generate Cover Letter
-            </button>
-            <div id="status" class="cl-status"></div>
         </div>
 
-        <!-- OUTPUT -->
-        <div class="cl-card">
-            <label class="cl-label" for="letter-output">Your Cover Letter</label>
-            <div class="cl-hint">Editable — tweak the text, add your details, then pick a template.</div>
-            <textarea id="letter-output" placeholder="Your generated cover letter will appear here. You can edit it before downloading."></textarea>
+        <div>
+            <div class="cl-card">
+                <div class="cl-section-title">2. Preview your cover letter</div>
+                <label class="cl-label" for="letter-output">Your Cover Letter</label>
+                <div class="cl-hint">The generated letter appears below. Choose a template to preview the final layout and download when ready.</div>
+                <textarea id="letter-output" style="display:none;"></textarea>
 
-            <div class="cl-detail-grid">
-                <input type="text" id="cl-name" placeholder="Your full name">
-                <input type="text" id="cl-contact" placeholder="Email · Phone · City (optional)">
-            </div>
+                <div class="cl-detail-grid">
+                    <input type="text" id="cl-name" placeholder="Your full name">
+                    <input type="text" id="cl-location" placeholder="City, State or Location">
+                </div>
 
-            <div class="cl-tpl-label">Template</div>
-            <div class="cl-templates">
-                <button type="button" class="cl-tpl active" data-tpl="classic">Classic</button>
-                <button type="button" class="cl-tpl" data-tpl="modern">Modern</button>
-                <button type="button" class="cl-tpl" data-tpl="monogram">Monogram</button>
-            </div>
+                <div class="cl-tpl-label">Choose a template</div>
+                <div class="cl-templates">
+                    <button type="button" class="cl-tpl active" data-tpl="classic">Classic</button>
+                    <button type="button" class="cl-tpl" data-tpl="modern">Modern</button>
+                    <button type="button" class="cl-tpl" data-tpl="monogram">Monogram</button>
+                </div>
 
-            <div class="cl-preview-wrap">
-                <iframe id="cl-preview" title="Cover letter preview"></iframe>
-            </div>
+                <div class="cl-preview-wrap">
+                    <iframe id="cl-preview" title="Cover letter preview"></iframe>
+                </div>
 
-            <div class="cl-actions">
-                <button id="copy-btn" class="cl-btn cl-btn-ghost" type="button">📋 Copy text</button>
-                <button id="download-btn" class="cl-btn cl-btn-ghost" type="button">⬇ .txt</button>
-                <button id="download-pdf-btn" class="cl-btn cl-btn-primary" type="button" style="width:auto;flex:1;">⬇ Download PDF</button>
+                <div class="cl-actions">
+                    <button id="copy-btn" class="cl-btn cl-btn-ghost" type="button">📋 Copy text</button>
+                    <button id="download-btn" class="cl-btn cl-btn-ghost" type="button">⬇ .txt</button>
+                    <button id="download-pdf-btn" class="cl-btn cl-btn-primary" type="button" style="width:auto;flex:1;">⬇ Download PDF</button>
+                </div>
             </div>
         </div>
     </div>
@@ -172,10 +212,8 @@
     <script src="/static/mobile_nav.js"></script>
     <script>
     (function () {
-        var resumeText = document.getElementById('resume-text');
         var resumeFile = document.getElementById('resume-file');
         var resumeName = document.getElementById('resume-file-name');
-        var togglePaste = document.getElementById('toggle-paste');
         var jdText     = document.getElementById('jd-text');
         var toneSel    = document.getElementById('tone');
         var genBtn     = document.getElementById('generate-btn');
@@ -193,12 +231,6 @@
             statusEl.className = 'cl-status' + (cls ? ' ' + cls : '');
         }
 
-        togglePaste.addEventListener('click', function () {
-            var show = resumeText.style.display === 'none';
-            resumeText.style.display = show ? 'block' : 'none';
-            togglePaste.textContent = show ? 'hide paste box' : 'or paste resume text instead';
-        });
-
         resumeFile.addEventListener('change', function () {
             var f = resumeFile.files && resumeFile.files[0];
             resumeName.textContent = f ? ('Selected: ' + f.name) : '';
@@ -207,20 +239,18 @@
 
         genBtn.addEventListener('click', function () {
             var file = resumeFile.files && resumeFile.files[0];
-            var rt = (resumeText.value || '').trim();
             var jd = (jdText.value || '').trim();
 
-            if (!file && rt.length < 50) {
-                setStatus('Upload your resume PDF (or paste your resume text).', 'error'); return;
+            if (!file) {
+                setStatus('Upload your resume PDF before generating a cover letter.', 'error'); return;
             }
             if (jd.length < 30) { setStatus('Please paste the job description.', 'error'); return; }
 
-            // Resume PDF (preferred) + JD sent as multipart; the server extracts the PDF.
+            // Resume PDF + JD sent as multipart; the server extracts the PDF.
             var fd = new FormData();
             fd.append('job_description', jd);
             fd.append('tone', toneSel.value);
-            if (file) fd.append('resume_pdf', file);
-            if (rt)   fd.append('resume_text', rt);
+            fd.append('resume_pdf', file);
 
             genBtn.disabled = true;
             var orig = genBtn.textContent;
@@ -269,7 +299,7 @@
 
         /* ── Cover-letter templates ─────────────────────────────────────────── */
         var nameEl   = document.getElementById('cl-name');
-        var contactEl = document.getElementById('cl-contact');
+        var locationEl = document.getElementById('cl-location');
         var previewFrame = document.getElementById('cl-preview');
         var pdfBtn   = document.getElementById('download-pdf-btn');
         var tplBtns  = document.querySelectorAll('.cl-tpl');
@@ -282,7 +312,7 @@
         function data() {
             return {
                 name: (nameEl.value || '').trim(),
-                contact: (contactEl.value || '').trim(),
+                location: (locationEl.value || '').trim(),
                 body: (output.value || '').trim(),
                 date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
             };
@@ -313,7 +343,7 @@
         function classic(d) {
             return doc('<div style="font-family:Georgia,\'Times New Roman\',serif;color:#111;font-size:12.5px;line-height:1.55;padding:54px 60px;">'
                 + '<div style="border-bottom:2px solid #111;padding-bottom:8px;text-align:right;"><span style="font-size:22px;font-weight:700;letter-spacing:.5px;">' + esc(d.name || 'First Name Last Name') + '</span></div>'
-                + (d.contact ? '<div style="text-align:right;font-size:10.5px;color:#444;margin-top:5px;letter-spacing:.3px;">' + esc(d.contact) + '</div>' : '')
+                + (d.location ? '<div style="text-align:right;font-size:10.5px;color:#444;margin-top:5px;letter-spacing:.3px;">' + esc(d.location) + '</div>' : '')
                 + '<div style="text-align:right;margin:20px 0 22px;">' + esc(d.date) + '</div>'
                 + paras(d.body, 'justify') + sig(d, '#111') + '</div>');
         }
@@ -321,21 +351,20 @@
             var n = nameParts(d.name);
             return doc('<div style="font-family:Arial,Helvetica,sans-serif;color:#222;font-size:12.5px;line-height:1.6;padding:50px 58px;">'
                 + '<div style="font-size:26px;font-weight:800;letter-spacing:1px;text-transform:uppercase;"><span style="color:#1aa3a3;font-weight:500;">' + n.first + '</span> <span style="color:#0e7c7c;">' + n.last + '</span></div>'
-                + (d.contact ? '<div style="font-size:10.5px;color:#777;margin-top:6px;">' + esc(d.contact) + '</div>' : '')
+                + (d.location ? '<div style="font-size:10.5px;color:#777;margin-top:6px;">' + esc(d.location) + '</div>' : '')
                 + '<div style="margin:22px 0;color:#444;">' + esc(d.date) + '</div>'
                 + paras(d.body, 'left') + sig(d, '#0e7c7c') + '</div>');
         }
         function monogram(d) {
             var n = nameParts(d.name);
             var letter = esc(((d.name || 'L').trim().charAt(0) || 'L').toUpperCase());
-            var contactLines = (d.contact || '').split(/[·|\n]+/).map(function (x) { return x.trim(); })
-                .filter(Boolean).map(function (x) { return '<div style="margin-bottom:3px;">' + esc(x) + '</div>'; }).join('');
+            var locationLine = d.location ? '<div style="font-size:10.5px;color:#555;margin-top:12px;">' + esc(d.location) + '</div>' : '';
             return doc('<div style="font-family:Arial,Helvetica,sans-serif;color:#222;font-size:12px;line-height:1.6;padding:46px 50px;">'
                 + '<table style="width:100%;border-collapse:collapse;"><tr>'
                 + '<td style="width:158px;vertical-align:top;padding-right:24px;">'
                 + '<div style="width:54px;height:54px;background:#1f2937;color:#34d399;font-size:30px;font-weight:800;text-align:center;line-height:54px;border-radius:4px;">' + letter + '</div>'
                 + '<div style="color:#0e7c7c;font-weight:800;font-size:15px;margin-top:14px;line-height:1.25;">' + n.first + '<br>' + n.last + '</div>'
-                + '<div style="font-size:10.5px;color:#555;margin-top:12px;">' + contactLines + '</div>'
+                + locationLine
                 + '</td><td style="vertical-align:top;">'
                 + '<div style="margin:0 0 18px;">' + esc(d.date) + '</div>'
                 + paras(d.body, 'left') + sig(d, '#111') + '</td></tr></table></div>');
@@ -354,7 +383,7 @@
                 renderPreview();
             });
         });
-        [nameEl, contactEl, output].forEach(function (el) {
+        [nameEl, locationEl, output].forEach(function (el) {
             if (el) el.addEventListener('input', renderPreview);
         });
 
@@ -367,7 +396,17 @@
                 headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf() },
                 body: JSON.stringify({ html: build(), filename: 'cover-letter.pdf' })
             })
-            .then(function (r) { if (!r.ok) throw new Error('PDF failed'); return r.blob(); })
+            .then(function (r) {
+                if (r.status === 401) {
+                    throw new Error('login-required');
+                }
+                if (!r.ok) {
+                    return r.json().catch(function () { return {}; }).then(function (body) {
+                        throw new Error(body.detail || 'PDF failed');
+                    });
+                }
+                return r.blob();
+            })
             .then(function (blob) {
                 var url = URL.createObjectURL(blob);
                 var a = document.createElement('a');
@@ -376,7 +415,14 @@
                 URL.revokeObjectURL(url);
                 setStatus('PDF downloaded.', 'ok');
             })
-            .catch(function () { setStatus('Could not generate PDF. Please try again.', 'error'); })
+            .catch(function (e) {
+                if (e.message === 'login-required') {
+                    setStatus('Please log in to download the PDF.', 'error');
+                    setTimeout(function () { window.location.href = '/login?next=/cover-letter'; }, 1200);
+                    return;
+                }
+                setStatus(e.message || 'Could not generate PDF. Please try again.', 'error');
+            })
             .finally(function () { pdfBtn.disabled = false; });
         });
 
