@@ -20,6 +20,7 @@ class User(Base):
     welcome_emails = relationship("WelcomeEmailLog", back_populates="user", cascade="all, delete-orphan")
     usage_records = relationship("UsageRecord", back_populates="user", cascade="all, delete-orphan")
     saved_resumes = relationship("SavedResume", back_populates="user", cascade="all, delete-orphan")
+    personality_cards = relationship("PersonalityCard", back_populates="user", cascade="all, delete-orphan")
 
 
 class PasswordResetToken(Base):
@@ -97,6 +98,24 @@ class SavedResume(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
     user = relationship("User", back_populates="saved_resumes")
+
+
+class PersonalityCard(Base):
+    __tablename__ = "personality_cards"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    resume_id = Column(Integer, ForeignKey("saved_resumes.id", ondelete="CASCADE"), nullable=False, unique=True, index=True)
+    token = Column(String(32), unique=True, index=True, nullable=False)
+    archetype = Column(String(120), nullable=False)
+    tagline = Column(Text, nullable=False)
+    story = Column(Text, nullable=False)          # dramatic metaphorical narrative
+    traits = Column(Text, nullable=False)          # JSON-encoded list
+    stats = Column(Text, nullable=False)           # JSON-encoded dict
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    user = relationship("User", back_populates="personality_cards")
+    resume = relationship("SavedResume")
 
 
 class WelcomeEmailLog(Base):
