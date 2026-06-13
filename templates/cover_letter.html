@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate a tailored, ATS-friendly cover letter in seconds. Paste your resume and the job description — theTailorCV's AI writes a cover letter matched to the role.">
+    <title>AI Cover Letter Generator | theTailorCV</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/style2.css?v=7">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .navbar .nav-links { min-width: 560px; gap: 2px; }
+        .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #020c22; color: #e2ecff; min-height: 100vh; }
+
+        .cl-hero { text-align: center; padding: 3.25rem 1.5rem 1.25rem; max-width: 760px; margin: 0 auto; }
+        .cl-kicker { display: inline-flex; background: rgba(51,146,255,0.12); border: 1px solid rgba(51,146,255,0.3); border-radius: 999px; padding: 7px 16px; font-size: 13px; color: #7db9ff; font-weight: 500; margin-bottom: 16px; }
+        .cl-hero h1 { font-size: 2.3rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .cl-hero h1 span { background: linear-gradient(135deg, #5b8cff, #b07cf0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .cl-hero p { color: #9fb6d6; font-size: 1.02rem; line-height: 1.6; }
+
+        .cl-wrap { max-width: 1080px; margin: 0 auto; padding: 1rem 1.5rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 900px) { .cl-wrap { grid-template-columns: 1fr; } }
+
+        .cl-card { background: #0a1730; border: 1px solid rgba(91,140,255,0.18); border-radius: 18px; padding: 22px; }
+        .cl-label { display: block; font-size: 13px; font-weight: 600; color: #cfe0ff; margin-bottom: 8px; }
+        .cl-hint { font-size: 12px; color: #6f87aa; margin-bottom: 6px; }
+        textarea, select, input[type=file] { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; color: #eaf1ff; font-family: inherit; font-size: 13.5px; padding: 12px; }
+        textarea { resize: vertical; line-height: 1.55; }
+        textarea#resume-text, textarea#jd-text { min-height: 150px; }
+        textarea#letter-output { min-height: 360px; }
+        .cl-row { margin-bottom: 16px; }
+        .cl-tone-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .cl-tone-row select { max-width: 220px; cursor: pointer; }
+        .cl-tone-row select option { background: #0a1730; }
+
+        .cl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer; font-weight: 700; font-size: 14px; padding: 13px 22px; border-radius: 11px; transition: transform .15s, box-shadow .15s, opacity .15s; }
+        .cl-btn-primary { background: linear-gradient(135deg, #3392ff, #6d28d9); color: #fff; width: 100%; }
+        .cl-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(51,146,255,0.35); }
+        .cl-btn-primary:disabled { opacity: .6; cursor: not-allowed; transform: none; box-shadow: none; }
+        .cl-btn-ghost { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: #dceafe; }
+        .cl-btn-ghost:hover { background: rgba(255,255,255,0.12); }
+
+        .cl-actions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+        .cl-status { font-size: 13px; margin-top: 12px; min-height: 18px; }
+        .cl-status.error { color: #fca5a5; }
+        .cl-status.ok { color: #4ade80; }
+        .cl-file-or { font-size: 12px; color: #6f87aa; text-align: center; margin: 8px 0; }
+        .cl-empty-hint { color: #6f87aa; font-size: 13px; }
+        .cl-link-btn { display: inline-block; margin-top: 10px; background: none; border: none; color: #7db9ff; font-size: 12.5px; cursor: pointer; text-decoration: underline; padding: 0; }
+
+        .cl-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+        .cl-detail-grid input { width: 100%; }
+        .cl-tpl-label { font-size: 13px; font-weight: 600; color: #cfe0ff; margin: 16px 0 8px; }
+        .cl-templates { display: flex; gap: 10px; margin-bottom: 14px; }
+        .cl-tpl { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px; padding: 11px; cursor: pointer; color: #cfe0ff; font-size: 13px; font-weight: 600; transition: border-color .15s, background .15s; }
+        .cl-tpl:hover { border-color: rgba(99,132,255,.5); }
+        .cl-tpl.active { border-color: #3392ff; background: rgba(51,146,255,0.16); color: #fff; }
+        .cl-preview-wrap { background: #4b4f52; border-radius: 10px; padding: 14px; overflow: auto; max-height: 560px; }
+        #cl-preview { width: 100%; height: 780px; border: none; border-radius: 4px; background: #fff; display: block; }
+        @media (max-width: 900px) { .cl-detail-grid { grid-template-columns: 1fr; } #cl-preview { height: 600px; } }
+    </style>
+</head>
+<body>
+    {% include "_nav.html" %}
+
+    <div class="cl-hero">
+        <div class="cl-kicker">AI Cover Letter Generator</div>
+        <h1>A cover letter <span>tailored to the job</span> — in seconds</h1>
+        <p>Paste your resume and the job description. Our AI writes a focused cover letter that pulls real achievements from your resume and matches them to the role.</p>
+    </div>
+
+    <div class="cl-wrap">
+        <!-- INPUTS -->
+        <div class="cl-card">
+            <div class="cl-row">
+                <label class="cl-label" for="resume-file">Your Resume (PDF)</label>
+                <div class="cl-hint">Just upload your resume PDF — that's all we need.</div>
+                <input type="file" id="resume-file" accept=".pdf">
+                <div id="resume-file-name" class="cl-hint" style="margin-top:8px;"></div>
+                <button type="button" id="toggle-paste" class="cl-link-btn">or paste resume text instead</button>
+                <textarea id="resume-text" placeholder="Paste your resume here…" style="display:none;margin-top:8px;"></textarea>
+            </div>
+
+            <div class="cl-row">
+                <label class="cl-label" for="jd-text">Job Description</label>
+                <textarea id="jd-text" placeholder="Paste the job description you're applying to…"></textarea>
+            </div>
+
+            <div class="cl-tone-row">
+                <label class="cl-label" for="tone" style="margin:0;">Tone</label>
+                <select id="tone">
+                    <option value="professional">Professional</option>
+                    <option value="warm">Warm</option>
+                    <option value="concise">Concise</option>
+                </select>
+            </div>
+
+            <button id="generate-btn" class="cl-btn cl-btn-primary" type="button">
+                Generate Cover Letter
+            </button>
+            <div id="status" class="cl-status"></div>
+        </div>
+
+        <!-- OUTPUT -->
+        <div class="cl-card">
+            <label class="cl-label" for="letter-output">Your Cover Letter</label>
+            <div class="cl-hint">Editable — tweak the text, add your details, then pick a template.</div>
+            <textarea id="letter-output" placeholder="Your generated cover letter will appear here. You can edit it before downloading."></textarea>
+
+            <div class="cl-detail-grid">
+                <input type="text" id="cl-name" placeholder="Your full name">
+                <input type="text" id="cl-contact" placeholder="Email · Phone · City (optional)">
+            </div>
+
+            <div class="cl-tpl-label">Template</div>
+            <div class="cl-templates">
+                <button type="button" class="cl-tpl active" data-tpl="classic">Classic</button>
+                <button type="button" class="cl-tpl" data-tpl="modern">Modern</button>
+                <button type="button" class="cl-tpl" data-tpl="monogram">Monogram</button>
+            </div>
+
+            <div class="cl-preview-wrap">
+                <iframe id="cl-preview" title="Cover letter preview"></iframe>
+            </div>
+
+            <div class="cl-actions">
+                <button id="copy-btn" class="cl-btn cl-btn-ghost" type="button">📋 Copy text</button>
+                <button id="download-btn" class="cl-btn cl-btn-ghost" type="button">⬇ .txt</button>
+                <button id="download-pdf-btn" class="cl-btn cl-btn-primary" type="button" style="width:auto;flex:1;">⬇ Download PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <h4 class="footer-title">ResumeOptimizer</h4>
+                    <p class="footer-text">AI-powered resume optimization for your career success. Land more interviews, faster.</p>
+                    <a href="/solutions" class="footer-cta">Get your free ATS score</a>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Product</h4>
+                    <a href="/" class="footer-link">Home</a>
+                    <a href="/solutions" class="footer-link">Get ATS score</a>
+                    <a href="/modify-cv" class="footer-link">Make CV</a>
+                    <a href="/cover-letter" class="footer-link">Cover Letter</a>
+                    <a href="/auto-apply" class="footer-link">Auto Apply</a>
+                    <a href="/templates" class="footer-link">Templates</a>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading">Company</h4>
+                    <a href="/about" class="footer-link">About us</a>
+                    <a href="/contact" class="footer-link">Contact</a>
+                    <a href="/blog" class="footer-link">Blog</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
+                <a href="/" class="footer-secure">Secure &amp; private</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/auth_nav.js?v=2"></script>
+    <script src="/static/mobile_nav.js"></script>
+    <script>
+    (function () {
+        var resumeText = document.getElementById('resume-text');
+        var resumeFile = document.getElementById('resume-file');
+        var resumeName = document.getElementById('resume-file-name');
+        var togglePaste = document.getElementById('toggle-paste');
+        var jdText     = document.getElementById('jd-text');
+        var toneSel    = document.getElementById('tone');
+        var genBtn     = document.getElementById('generate-btn');
+        var output     = document.getElementById('letter-output');
+        var copyBtn    = document.getElementById('copy-btn');
+        var dlBtn      = document.getElementById('download-btn');
+        var statusEl   = document.getElementById('status');
+
+        function csrf() {
+            var m = document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/);
+            return m ? decodeURIComponent(m[1]) : '';
+        }
+        function setStatus(msg, cls) {
+            statusEl.textContent = msg || '';
+            statusEl.className = 'cl-status' + (cls ? ' ' + cls : '');
+        }
+
+        togglePaste.addEventListener('click', function () {
+            var show = resumeText.style.display === 'none';
+            resumeText.style.display = show ? 'block' : 'none';
+            togglePaste.textContent = show ? 'hide paste box' : 'or paste resume text instead';
+        });
+
+        resumeFile.addEventListener('change', function () {
+            var f = resumeFile.files && resumeFile.files[0];
+            resumeName.textContent = f ? ('Selected: ' + f.name) : '';
+            if (f) setStatus('');
+        });
+
+        genBtn.addEventListener('click', function () {
+            var file = resumeFile.files && resumeFile.files[0];
+            var rt = (resumeText.value || '').trim();
+            var jd = (jdText.value || '').trim();
+
+            if (!file && rt.length < 50) {
+                setStatus('Upload your resume PDF (or paste your resume text).', 'error'); return;
+            }
+            if (jd.length < 30) { setStatus('Please paste the job description.', 'error'); return; }
+
+            // Resume PDF (preferred) + JD sent as multipart; the server extracts the PDF.
+            var fd = new FormData();
+            fd.append('job_description', jd);
+            fd.append('tone', toneSel.value);
+            if (file) fd.append('resume_pdf', file);
+            if (rt)   fd.append('resume_text', rt);
+
+            genBtn.disabled = true;
+            var orig = genBtn.textContent;
+            genBtn.textContent = 'Generating…';
+            setStatus(file ? 'Reading your PDF and writing your cover letter…' : 'Writing your cover letter…');
+
+            fetch('/api/generate-cover-letter', {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'X-CSRFToken': csrf() },
+                body: fd
+            })
+            .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, status: r.status, d: d }; }); })
+            .then(function (res) {
+                if (res.status === 401) {
+                    setStatus('Please log in to generate a cover letter.', 'error');
+                    setTimeout(function () { window.location.href = '/login?next=/cover-letter'; }, 1200);
+                    return;
+                }
+                if (!res.ok) throw new Error(res.d.detail || 'Generation failed');
+                output.value = res.d.cover_letter || '';
+                renderPreview();
+                setStatus('Done. Add your name, pick a template, then download.', 'ok');
+            })
+            .catch(function (e) { setStatus(e.message || 'Something went wrong.', 'error'); })
+            .finally(function () { genBtn.disabled = false; genBtn.textContent = orig; });
+        });
+
+        copyBtn.addEventListener('click', function () {
+            if (!output.value.trim()) { setStatus('Nothing to copy yet.', 'error'); return; }
+            var done = function () { setStatus('Copied to clipboard.', 'ok'); };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(output.value).then(done).catch(function () { output.select(); document.execCommand('copy'); done(); });
+            } else { output.select(); document.execCommand('copy'); done(); }
+        });
+
+        dlBtn.addEventListener('click', function () {
+            if (!output.value.trim()) { setStatus('Nothing to download yet.', 'error'); return; }
+            var blob = new Blob([output.value], { type: 'text/plain;charset=utf-8' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url; a.download = 'cover-letter.txt';
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        /* ── Cover-letter templates ─────────────────────────────────────────── */
+        var nameEl   = document.getElementById('cl-name');
+        var contactEl = document.getElementById('cl-contact');
+        var previewFrame = document.getElementById('cl-preview');
+        var pdfBtn   = document.getElementById('download-pdf-btn');
+        var tplBtns  = document.querySelectorAll('.cl-tpl');
+        var currentTpl = 'classic';
+
+        function esc(s) {
+            return String(s == null ? '' : s)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+        function data() {
+            return {
+                name: (nameEl.value || '').trim(),
+                contact: (contactEl.value || '').trim(),
+                body: (output.value || '').trim(),
+                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+            };
+        }
+        function paras(body, align) {
+            if (!body) return '<p style="color:#999;">Your letter will appear here…</p>';
+            var blocks = body.split(/\n\s*\n/);
+            if (blocks.length === 1) blocks = body.split(/\n/);
+            return blocks.filter(function (b) { return b.trim(); }).map(function (b) {
+                return '<p style="margin:0 0 12px;text-align:' + align + ';">' + esc(b.trim()).replace(/\n/g, '<br>') + '</p>';
+            }).join('');
+        }
+        function hasClosing(b) {
+            return /(sincerely|regards|best regards|yours (sincerely|truly)|thank you)[\s,]*$/i.test((b || '').trim());
+        }
+        function sig(d, color) {
+            var s = hasClosing(d.body) ? '' : '<div style="margin-top:24px;">Sincerely,</div>';
+            if (d.name) s += '<div style="font-family:\'Brush Script MT\',\'Segoe Script\',cursive;font-size:24px;margin-top:8px;color:' + color + ';">' + esc(d.name) + '</div>';
+            return s;
+        }
+        function doc(inner) {
+            return '<!doctype html><html><head><meta charset="utf-8"><style>@page{margin:0}html,body{margin:0;padding:0;background:#fff;}*{box-sizing:border-box;}</style></head><body>' + inner + '</body></html>';
+        }
+        function nameParts(name) {
+            var p = (name || 'First Name Last Name').split(/\s+/);
+            return { first: esc(p.shift() || ''), last: esc(p.join(' ')) };
+        }
+        function classic(d) {
+            return doc('<div style="font-family:Georgia,\'Times New Roman\',serif;color:#111;font-size:12.5px;line-height:1.55;padding:54px 60px;">'
+                + '<div style="border-bottom:2px solid #111;padding-bottom:8px;text-align:right;"><span style="font-size:22px;font-weight:700;letter-spacing:.5px;">' + esc(d.name || 'First Name Last Name') + '</span></div>'
+                + (d.contact ? '<div style="text-align:right;font-size:10.5px;color:#444;margin-top:5px;letter-spacing:.3px;">' + esc(d.contact) + '</div>' : '')
+                + '<div style="text-align:right;margin:20px 0 22px;">' + esc(d.date) + '</div>'
+                + paras(d.body, 'justify') + sig(d, '#111') + '</div>');
+        }
+        function modern(d) {
+            var n = nameParts(d.name);
+            return doc('<div style="font-family:Arial,Helvetica,sans-serif;color:#222;font-size:12.5px;line-height:1.6;padding:50px 58px;">'
+                + '<div style="font-size:26px;font-weight:800;letter-spacing:1px;text-transform:uppercase;"><span style="color:#1aa3a3;font-weight:500;">' + n.first + '</span> <span style="color:#0e7c7c;">' + n.last + '</span></div>'
+                + (d.contact ? '<div style="font-size:10.5px;color:#777;margin-top:6px;">' + esc(d.contact) + '</div>' : '')
+                + '<div style="margin:22px 0;color:#444;">' + esc(d.date) + '</div>'
+                + paras(d.body, 'left') + sig(d, '#0e7c7c') + '</div>');
+        }
+        function monogram(d) {
+            var n = nameParts(d.name);
+            var letter = esc(((d.name || 'L').trim().charAt(0) || 'L').toUpperCase());
+            var contactLines = (d.contact || '').split(/[·|\n]+/).map(function (x) { return x.trim(); })
+                .filter(Boolean).map(function (x) { return '<div style="margin-bottom:3px;">' + esc(x) + '</div>'; }).join('');
+            return doc('<div style="font-family:Arial,Helvetica,sans-serif;color:#222;font-size:12px;line-height:1.6;padding:46px 50px;">'
+                + '<table style="width:100%;border-collapse:collapse;"><tr>'
+                + '<td style="width:158px;vertical-align:top;padding-right:24px;">'
+                + '<div style="width:54px;height:54px;background:#1f2937;color:#34d399;font-size:30px;font-weight:800;text-align:center;line-height:54px;border-radius:4px;">' + letter + '</div>'
+                + '<div style="color:#0e7c7c;font-weight:800;font-size:15px;margin-top:14px;line-height:1.25;">' + n.first + '<br>' + n.last + '</div>'
+                + '<div style="font-size:10.5px;color:#555;margin-top:12px;">' + contactLines + '</div>'
+                + '</td><td style="vertical-align:top;">'
+                + '<div style="margin:0 0 18px;">' + esc(d.date) + '</div>'
+                + paras(d.body, 'left') + sig(d, '#111') + '</td></tr></table></div>');
+        }
+        function build() {
+            var d = data();
+            return currentTpl === 'modern' ? modern(d) : currentTpl === 'monogram' ? monogram(d) : classic(d);
+        }
+        function renderPreview() { if (previewFrame) previewFrame.srcdoc = build(); }
+
+        tplBtns.forEach(function (b) {
+            b.addEventListener('click', function () {
+                tplBtns.forEach(function (x) { x.classList.remove('active'); });
+                b.classList.add('active');
+                currentTpl = b.getAttribute('data-tpl') || 'classic';
+                renderPreview();
+            });
+        });
+        [nameEl, contactEl, output].forEach(function (el) {
+            if (el) el.addEventListener('input', renderPreview);
+        });
+
+        pdfBtn.addEventListener('click', function () {
+            if (!output.value.trim()) { setStatus('Generate a letter first.', 'error'); return; }
+            setStatus('Preparing PDF…');
+            pdfBtn.disabled = true;
+            fetch('/api/download-html-pdf', {
+                method: 'POST', credentials: 'include',
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf() },
+                body: JSON.stringify({ html: build(), filename: 'cover-letter.pdf' })
+            })
+            .then(function (r) { if (!r.ok) throw new Error('PDF failed'); return r.blob(); })
+            .then(function (blob) {
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url; a.download = 'cover-letter.pdf';
+                document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                setStatus('PDF downloaded.', 'ok');
+            })
+            .catch(function () { setStatus('Could not generate PDF. Please try again.', 'error'); })
+            .finally(function () { pdfBtn.disabled = false; });
+        });
+
+        renderPreview();
+    })();
+    </script>
+</body>
+</html>

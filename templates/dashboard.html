@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Dashboard | theTailorCV</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/app_shell.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --bg:#070f24; --panel:#0c1733; --panel-2:#0a1430; --border:rgba(99,130,200,.18); --muted:#9fb0cc; --accent:#3392ff; --ink:#e2ecff; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; padding-top: 76px; }
+        a { text-decoration: none !important; }
+
+        .app { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 76px); }
+
+        /* Sidebar — single icon color (currentColor), tight */
+        .side { background: #081024; border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 16px 14px; position: sticky; top: 76px; height: calc(100vh - 76px); overflow-y: auto; }
+        .side-nav { display: flex; flex-direction: column; gap: 2px; }
+        .side-link { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 10px; color: #b7c6e6; font-size: 14px; font-weight: 500; transition: background .15s, color .15s; }
+        .side-link:hover { background: rgba(99,132,255,.12); color: #fff; }
+        .side-link.active { background: rgba(51,146,255,.18); color: #fff; }
+        .side-link svg { width: 19px; height: 19px; flex-shrink: 0; color: #8aa0c8; }      /* all icons same color */
+        .side-link:hover svg, .side-link.active svg { color: #cfe0ff; }
+        .side-foot { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
+        /* Burger collapses the sidebar (desktop) */
+        body.dash-collapsed .app { grid-template-columns: 1fr; }
+        body.dash-collapsed .side { display: none; }
+
+        .main { padding: 30px 34px 60px; max-width: 1180px; }
+        .greet { font-size: 2rem; font-weight: 800; margin-bottom: 22px; }
+
+        /* Promo banner */
+        .promo { display: flex; align-items: center; gap: 18px; background: linear-gradient(110deg, rgba(51,146,255,.14), rgba(124,58,237,.12)); border: 1px solid var(--border); border-radius: 16px; padding: 18px 22px; margin-bottom: 22px; position: relative; }
+        .promo .tag { background: #f59e0b; color: #1a1206; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 6px; letter-spacing: .04em; }
+        .promo h3 { font-size: 1.05rem; margin-bottom: 3px; display: flex; align-items: center; gap: 10px; }
+        .promo p { color: var(--muted); font-size: .9rem; }
+        .promo .go { margin-left: auto; background: linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:600; font-size:.85rem; padding:10px 18px; border-radius:10px; white-space:nowrap; }
+
+        .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 22px; }
+        .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+        .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+        .card-head h3 { font-size: .95rem; font-weight: 700; display: flex; align-items: center; gap: 9px; }
+        .card-head svg { width: 18px; height: 18px; color: #8aa0c8; }
+        .card-head a { color: var(--muted); }
+        .stat { display: flex; align-items: baseline; gap: 10px; }
+        .stat .num { font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1; }
+        .stat .lbl { color: var(--muted); font-size: .9rem; }
+        .pill { display:inline-block; margin-top:12px; font-size:.8rem; font-weight:600; padding:4px 11px; border-radius:999px; background:rgba(16,185,129,.16); color:#6ee7b7; border:1px solid rgba(16,185,129,.3); }
+        .mini-list { list-style:none; display:flex; flex-direction:column; gap:9px; margin-top:14px; }
+        .mini-list li { display:flex; justify-content:space-between; gap:10px; font-size:.86rem; color:#c4d4ef; border-bottom:1px solid rgba(255,255,255,.06); padding-bottom:8px; }
+        .mini-list li span.co { color: var(--muted); }
+        .empty { color: var(--muted); font-size: .9rem; margin-top: 10px; }
+        .card .cta { display:inline-block; margin-top:16px; background:linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:600; font-size:.84rem; padding:9px 16px; border-radius:9px; }
+
+        /* New scan box */
+        .newscan { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 26px; }
+        .newscan h2 { font-size: 1.35rem; font-weight: 800; margin-bottom: 4px; }
+        .newscan .cap { color: var(--muted); font-size: .92rem; margin-bottom: 20px; }
+        .scan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .scan-box { background: var(--panel-2); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+        .scan-box .step { font-size: .8rem; font-weight: 700; color: #8aa0c8; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px; }
+        .scan-box textarea { width: 100%; min-height: 150px; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 10px; color: var(--ink); font-family: inherit; font-size: 13px; padding: 12px; resize: vertical; }
+        .scan-actions { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+        .scan-actions .go { background: linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:700; font-size:.92rem; padding:13px 26px; border-radius:11px; border:none; cursor:pointer; }
+        .scan-actions .ghost { color: var(--muted); font-size: .85rem; }
+        .scan-msg { font-size: .85rem; margin-left: auto; color: #fca5a5; }
+
+        @media (max-width: 980px) { .cards { grid-template-columns: 1fr; } .scan-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 860px) {
+            .app { grid-template-columns: 1fr; }
+            .side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; gap: 4px; }
+            .side-logo { width: 100%; }
+            .side-nav { flex-direction: row; flex-wrap: wrap; }
+            .side-foot { margin: 0; border: none; padding: 0; }
+            .main { padding: 22px 16px 50px; }
+        }
+    </style>
+</head>
+<body>
+    {% set initial = (user_name or user_email or 'U')[0]|upper %}
+    <!-- Top app bar (matches the other pages) -->
+    <header class="tcv-top">
+        <button class="tcv-burger" id="dashBurger" aria-label="Toggle menu" title="Menu">&#9776;</button>
+        <a class="tcv-top-logo" href="/dashboard"><img src="/static/logo6.png" alt="theTailorCV"></a>
+        <div class="tcv-top-right">
+            <div class="tcv-profile">
+                <button class="tcv-avatar" aria-haspopup="true" aria-expanded="false">{{ initial }}</button>
+                <div class="tcv-profile-menu">
+                    <div class="tcv-profile-head">
+                        <span class="tcv-pf-av">{{ initial }}</span>
+                        <div class="tcv-pf-id"><strong>{{ user_name }}</strong><small>{{ user_email }}</small></div>
+                    </div>
+                    <a class="tcv-pf-link" href="/pricing">Get free scans</a>
+                    <a class="tcv-pf-link" href="/pricing">Account Settings</a>
+                    <a class="tcv-pf-link" href="/privacy">Privacy Policy</a>
+                    <a class="tcv-pf-link" href="/terms">Terms</a>
+                    <a class="tcv-pf-link" href="#" id="dashProfileLogout">Log out</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="app">
+        <!-- Sidebar (monochrome icons) -->
+        <aside class="side">
+            <nav class="side-nav">
+                <a class="side-link active" href="/dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/></svg> Home</a>
+                <a class="side-link" href="/modify-cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg> Make CV</a>
+                <a class="side-link" href="/optimize"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.9L18.7 9l-4.9 1.8L12 16l-1.8-5.2L5.3 9l4.9-1.1z"/><path d="M19 14l.7 1.9L21.5 17l-1.8.6L19 19l-.7-1.4L16.5 17l1.8-.6z"/></svg> AI Optimize</a>
+                <a class="side-link" href="/solutions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20V11"/><path d="M12 20V5"/><path d="M18 20v-6"/></svg> Get ATS Score</a>
+                <a class="side-link" href="/cover-letter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> Cover Letter</a>
+                <a class="side-link" href="/auto-apply"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg> Auto Apply</a>
+                <a class="side-link" href="/my-resumes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> My Resumes</a>
+                <a class="side-link" href="/templates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Templates</a>
+                <a class="side-link" href="/interview-prep"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 4.7 1.4c0 1.7-2.2 2.1-2.2 3.4"/><path d="M12 17h.01"/></svg> Interview Prep</a>
+                <a class="side-link" href="/mock-interview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg> Mock Interview</a>
+            </nav>
+            <div class="side-foot">
+                <a class="side-link" href="#" id="dash-logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="main">
+            <div class="greet">Welcome, {{ user_name }}!</div>
+
+            <!-- Promo -->
+            <div class="promo">
+                <div>
+                    <h3><span class="tag">NEW</span> Auto Apply</h3>
+                    <p>Apply smarter, not just more — auto-apply to matching jobs on Naukri &amp; Internshala.</p>
+                </div>
+                <a class="go" href="/auto-apply">Try it now</a>
+            </div>
+
+            <!-- Cards -->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-head">
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20V11"/><path d="M12 20V5"/><path d="M18 20v-6"/></svg> Latest Resume Score</h3>
+                        <a href="/my-resumes">→</a>
+                    </div>
+                    {% if latest_ats is not none %}
+                    <div class="stat"><span class="num">{{ latest_ats }}</span><span class="lbl">/ 100 ATS</span></div>
+                    <span class="pill">{{ resume_count }} resume{{ '' if resume_count == 1 else 's' }} saved</span>
+                    {% else %}
+                    <p class="empty">No scans yet. Run your resume against a job to get your ATS score.</p>
+                    <a class="cta" href="/optimize">New scan</a>
+                    {% endif %}
+                </div>
+
+                <div class="card">
+                    <div class="card-head">
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16"/></svg> Job Tracker</h3>
+                        <a href="/auto-apply">→</a>
+                    </div>
+                    <div class="stat"><span class="num">{{ application_count }}</span><span class="lbl">applications</span></div>
+                    {% if recent_applications %}
+                    <ul class="mini-list">
+                        {% for a in recent_applications %}
+                        <li><span>{{ a.role }}</span><span class="co">{{ a.company }}</span></li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="empty">No applications tracked yet.</p>
+                    {% endif %}
+                </div>
+
+                <div class="card">
+                    <div class="card-head">
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.9L18.7 9l-4.9 1.8L12 16l-1.8-5.2L5.3 9l4.9-1.1z"/></svg> Quick actions</h3>
+                    </div>
+                    <ul class="mini-list" style="margin-top:4px;">
+                        <li><a href="/cover-letter" style="color:#cfe0ff;">Write a cover letter</a><span class="co">→</span></li>
+                        <li><a href="/modify-cv?import=linkedin" style="color:#cfe0ff;">Build CV from LinkedIn</a><span class="co">→</span></li>
+                        <li><a href="/mock-interview" style="color:#cfe0ff;">Practice a mock interview</a><span class="co">→</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- New scan -->
+            <div class="newscan">
+                <h2>New scan</h2>
+                <p class="cap">Paste your resume and a job description — we'll score it and optimize it.</p>
+                <div class="scan-grid">
+                    <div class="scan-box">
+                        <div class="step">Step 1 · Job description</div>
+                        <textarea id="ns-jd" placeholder="Paste the job description here…"></textarea>
+                    </div>
+                    <a class="scan-box" href="/optimize" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--muted);gap:10px;">
+                        <div class="step" style="margin:0;">Step 2 · Your resume</div>
+                        <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#6ee7b7" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 18v-6M9 15h6"/></svg>
+                        <span style="font-size:.88rem;color:#9fb6d6;">Upload your resume on the next step →</span>
+                    </a>
+                </div>
+                <div class="scan-actions">
+                    <button class="go" id="ns-go" type="button">Start scan</button>
+                    <span class="ghost">You'll add your resume next</span>
+                    <span class="scan-msg" id="ns-msg"></span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/auth_nav.js?v=2"></script>
+    <script>
+    (function () {
+        function doLogout(e) {
+            e.preventDefault();
+            fetch('/logout', { method: 'POST' }).then(function () {
+                try { if (window.TailorCVAuth) window.TailorCVAuth.clearUser(); } catch (e) {}
+                window.location.href = '/login';
+            }).catch(function () { window.location.href = '/login'; });
+        }
+        var btn = document.getElementById('dash-logout');
+        if (btn) btn.addEventListener('click', doLogout);
+        var pBtn = document.getElementById('dashProfileLogout');
+        if (pBtn) pBtn.addEventListener('click', doLogout);
+
+        var burger = document.getElementById('dashBurger');
+        if (burger) burger.addEventListener('click', function () {
+            document.body.classList.toggle('dash-collapsed');
+        });
+
+        // New scan: carry the JD to the optimizer page; resume is uploaded there.
+        var go = document.getElementById('ns-go');
+        if (go) go.addEventListener('click', function () {
+            var jd = (document.getElementById('ns-jd').value || '').trim();
+            var msg = document.getElementById('ns-msg');
+            if (jd.length < 30) {
+                msg.textContent = 'Paste the job description to start.';
+                return;
+            }
+            try { sessionStorage.setItem('tcv_prefill_jd', jd); } catch (e) {}
+            window.location.href = '/optimize';
+        });
+    })();
+    </script>
+</body>
+</html>

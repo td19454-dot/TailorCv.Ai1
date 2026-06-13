@@ -49,38 +49,7 @@
     </style>
 </head>
 <body>
-    <header class="navbar">
-    <div class="left">
-        <div class="logo">
-            <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
-        </div>
-    </div>
-    <button
-        type="button"
-        class="mobile-menu-toggle"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="primary-nav-shared"
-    >
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    <nav class="nav-links" id="primary-nav-shared">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/solutions" class="nav-link">Get ATS Score</a>
-        <a href="/modify-cv" class="nav-link active">Make CV</a>
-        <a href="/solutions" class="nav-link">Optimize CV with AI</a>
-        <a href="/blog" class="nav-link">Blog</a>
-        <a href="/pricing" class="nav-link">Pricing</a>
-        <a href="/templates" class="nav-link">Templates</a>
-        <a href="/interview-prep" class="nav-link">Interview Prep</a>
-        <a href="/mock-interview" class="nav-link">Mock Interview</a>
-    </nav>
-    <div class="nav-actions">
-        <div id="auth-nav-slot"></div>
-    </div>
-</header>
+    {% include "_nav.html" %}
 
     <!-- Mobile sidebar backdrop -->
     <div id="mobile-sidebar-backdrop" class="mobile-sidebar-backdrop"></div>
@@ -128,6 +97,16 @@
                             >
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
                                 Upload Existing CV
+                            </button>
+                            <button
+                                id="linkedin-import-btn"
+                                type="button"
+                                style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;border:1px solid rgba(59,130,246,0.5);background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(59,130,246,0.06));color:#93c5fd;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:border-color .2s,box-shadow .2s;"
+                                onmouseover="this.style.borderColor='rgba(59,130,246,0.85)';this.style.boxShadow='0 4px 14px rgba(59,130,246,0.22)';"
+                                onmouseout="this.style.borderColor='rgba(59,130,246,0.5)';this.style.boxShadow='';"
+                            >
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
+                                Import from LinkedIn
                             </button>
                         </div>
                     </div>
@@ -197,6 +176,42 @@
             <div class="linkedin-modal-footer" id="cv-upload-modal-footer">
                 <button type="button" class="btn btn-secondary" id="cv-upload-cancel-btn">Cancel</button>
                 <button type="button" id="cv-upload-submit-btn" class="btn btn-primary" disabled>Extract &amp; Fill CV</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import from LinkedIn modal -->
+    <div id="linkedin-modal-overlay" class="linkedin-modal-overlay" style="display:none;">
+        <div class="linkedin-modal" role="dialog" aria-modal="true" aria-labelledby="linkedin-modal-title">
+            <div class="linkedin-modal-header">
+                <h3 id="linkedin-modal-title">Import from LinkedIn</h3>
+                <button id="linkedin-modal-close" type="button" class="linkedin-modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="linkedin-modal-body">
+                <p class="manual-cv-description" style="margin-bottom:10px;">
+                    Paste your public LinkedIn profile URL below. LinkedIn blocks some profiles from being read automatically — if the URL doesn't work, use the paste option, which is the most reliable.
+                </p>
+                <label for="linkedin-url-input" style="display:block;font-size:13px;font-weight:600;color:#cfe0ff;margin-bottom:6px;">Profile URL</label>
+                <input id="linkedin-url-input" type="text" placeholder="https://www.linkedin.com/in/your-name"
+                       style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);border-radius:10px;color:#eaf1ff;padding:11px;font-size:14px;">
+
+                <details style="margin-top:16px;">
+                    <summary style="cursor:pointer;color:#93c5fd;font-size:13px;font-weight:600;">URL not working? Paste your profile text instead</summary>
+                    <p style="color:#9bb0d8;font-size:12px;margin:8px 0;">Open your LinkedIn profile, select all (Ctrl+A), copy, and paste it here.</p>
+                    <textarea id="linkedin-paste-input" placeholder="Paste your LinkedIn profile text here…"
+                              style="width:100%;min-height:140px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);border-radius:10px;color:#eaf1ff;padding:11px;font-size:13.5px;resize:vertical;"></textarea>
+                    <button type="button" id="linkedin-paste-submit-btn" class="btn btn-primary" style="margin-top:10px;">Import from pasted text</button>
+                </details>
+
+                <div id="linkedin-error" style="display:none;color:#fca5a5;font-size:13px;margin-top:10px;"></div>
+                <div id="linkedin-loading" style="display:none;text-align:center;padding:1rem 0;color:#9bb0d8;">
+                    <div style="margin-bottom:4px;font-size:14px;">Importing your LinkedIn profile…</div>
+                    <small style="opacity:0.8;">This usually takes 5–15 seconds</small>
+                </div>
+            </div>
+            <div class="linkedin-modal-footer" id="linkedin-modal-footer">
+                <button type="button" class="btn btn-secondary" id="linkedin-cancel-btn">Cancel</button>
+                <button type="button" id="linkedin-import-submit-btn" class="btn btn-primary">Import from URL</button>
             </div>
         </div>
     </div>
