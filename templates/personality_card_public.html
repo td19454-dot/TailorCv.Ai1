@@ -20,20 +20,41 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 48px 16px 80px;
+            padding: 40px 16px 64px;
         }
 
-        /* ── The shareable card ─────────────────────────────────── */
+        /* ── The shareable card — strict 9:16 for Stories ──────── */
         #personality-card {
             width: 100%;
-            max-width: 480px;
+            max-width: 420px;
+            /* Explicit height from width so content never overflows the 9:16 frame */
+            height: calc(min(420px, 100vw - 32px) * 16 / 9);
             background: linear-gradient(145deg, #16003a 0%, #1e0045 40%, #0d1a3e 100%);
             border: 1px solid rgba(167, 139, 250, 0.38);
-            border-radius: 24px;
-            padding: 36px 32px;
+            border-radius: 22px;
+            padding: 28px 26px 20px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 0 60px rgba(139, 92, 246, 0.22), 0 24px 48px rgba(0,0,0,.6);
+            display: flex;
+            flex-direction: column;
+            container-type: inline-size;
+        }
+
+        /* Subtle corner glow accents for visual depth */
+        #personality-card::before {
+            content: '';
+            position: absolute; top: -60px; right: -60px;
+            width: 180px; height: 180px;
+            background: radial-gradient(circle, rgba(139,92,246,.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        #personality-card::after {
+            content: '';
+            position: absolute; bottom: -60px; left: -60px;
+            width: 180px; height: 180px;
+            background: radial-gradient(circle, rgba(59,130,246,.14) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .card-shimmer {
@@ -41,74 +62,93 @@
             background: linear-gradient(90deg, #f59e0b, #8b5cf6, #ec4899, #3b82f6, #10b981);
             background-size: 300%;
             animation: shimmer 3s linear infinite;
+            z-index: 1;
         }
         @keyframes shimmer { 0%{background-position:0%} 100%{background-position:300%} }
 
         .card-brand {
-            font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
-            color: rgba(167,139,250,.6); margin-bottom: 22px;
+            font-size: 2cqi; letter-spacing: .15em; text-transform: uppercase;
+            color: rgba(167,139,250,.6); margin-bottom: 14px; position: relative; z-index: 1;
         }
-        .card-name  { font-size: .9rem; color: rgba(255,255,255,.5); margin-bottom: 5px; }
+        .card-name  { font-size: 2.8cqi; color: rgba(255,255,255,.5); margin-bottom: 4px; position: relative; z-index: 1; }
         .card-archetype {
-            font-size: 1.9rem; font-weight: 900;
+            font-size: 6.8cqi; font-weight: 900;
             background: linear-gradient(135deg, #fbbf24, #f472b6, #818cf8);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; line-height: 1.2; margin-bottom: 14px;
+            background-clip: text; line-height: 1.15; margin-bottom: 12px;
+            position: relative; z-index: 1;
         }
 
-        /* ── Dramatic story paragraph ───────────────────────────── */
+        /* ── Story paragraph — clamped to prevent overflow ──────── */
         .card-story {
-            font-size: 1.05rem; color: rgba(244,247,255,.9); line-height: 1.82;
-            margin-bottom: 22px;
-            padding: 18px 18px 16px;
+            font-size: 3cqi; color: rgba(244,247,255,.9); line-height: 1.75;
+            margin-bottom: 14px;
+            padding: 3.5cqi 3.5cqi 3cqi;
             background: linear-gradient(180deg, rgba(139,92,246,.12), rgba(59,130,246,.08));
             border: 1px solid rgba(139,92,246,.24);
             border-left: 4px solid rgba(167,139,250,.65);
-            border-radius: 14px;
+            border-radius: 12px;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 6;
+            position: relative; z-index: 1;
         }
 
         /* ── Trait pills ─────────────────────────────────────────── */
-        .traits-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 24px; }
+        .traits-grid {
+            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2cqi; margin-bottom: 14px; position: relative; z-index: 1;
+        }
         .trait-card {
             background: rgba(15,23,42,.42); border: 1px solid rgba(139,92,246,.22);
-            border-radius: 14px; padding: 12px 12px 11px;
+            border-radius: 12px; padding: 2.5cqi 2.5cqi 2cqi;
         }
         .trait-head {
-            display: flex; align-items: center; gap: 8px; margin-bottom: 6px;
-            color: #ddd6fe; font-size: .92rem; font-weight: 700;
+            display: flex; align-items: center; gap: 1.5cqi; margin-bottom: 1.2cqi;
+            color: #ddd6fe; font-size: 2.8cqi; font-weight: 700;
         }
         .trait-desc {
-            font-size: .84rem; line-height: 1.58; color: rgba(226,232,240,.82);
+            font-size: 2.4cqi; line-height: 1.5; color: rgba(226,232,240,.82);
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
         }
 
         /* ── Stats row ───────────────────────────────────────────── */
         .stats-row {
-            display: flex; border-top: 1px solid rgba(255,255,255,.08); padding-top: 18px;
+            display: flex; border-top: 1px solid rgba(255,255,255,.08); padding-top: 14px;
+            position: relative; z-index: 1;
         }
-        .stat-item { flex: 1; text-align: center; padding: 0 8px; }
+        .stat-item { flex: 1; text-align: center; padding: 0 6px; }
         .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,.08); }
-        .stat-value { font-size: 1.5rem; font-weight: 800; color: #fbbf24; display: block; }
-        .stat-label { font-size: .7rem; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .08em; }
+        .stat-value { font-size: 5cqi; font-weight: 800; color: #fbbf24; display: block; }
+        .stat-label { font-size: 1.8cqi; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .08em; }
 
         /* ── Top skills ──────────────────────────────────────────── */
         .skills-chips {
-            display: flex; flex-wrap: wrap; gap: 7px;
-            margin-top: 14px; padding-top: 14px;
+            display: flex; flex-wrap: wrap; gap: 1.5cqi;
+            margin-top: 10px; padding-top: 10px;
             border-top: 1px solid rgba(255,255,255,.08);
+            position: relative; z-index: 1;
         }
         .skill-chip {
             background: rgba(59,130,246,.15); border: 1px solid rgba(59,130,246,.3);
-            border-radius: 6px; padding: 4px 10px;
-            font-size: .74rem; color: #93c5fd; font-weight: 600;
+            border-radius: 5px; padding: 1cqi 2.2cqi;
+            font-size: 2cqi; color: #93c5fd; font-weight: 600;
         }
 
         .card-footer-brand {
-            margin-top: 18px; font-size: .68rem; color: rgba(255,255,255,.2); text-align: right;
+            margin-top: 10px; font-size: 1.8cqi; color: rgba(255,255,255,.2);
+            text-align: right; position: relative; z-index: 1;
         }
 
         /* ── CTA section ─────────────────────────────────────────── */
         .cta-section {
-            width: 100%; max-width: 480px; margin-top: 28px; text-align: center;
+            width: 100%; max-width: 420px; margin-top: 24px; text-align: center;
         }
         .cta-headline { font-size: 1.1rem; font-weight: 700; color: #eaf1ff; margin-bottom: 8px; }
         .cta-sub { font-size: .88rem; color: #9fb0cc; margin-bottom: 20px; }
@@ -128,20 +168,18 @@
         }
         .share-btn {
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 11px 20px; border-radius: 10px; border: none;
-            font-size: .88rem; font-weight: 700; cursor: pointer;
+            padding: 11px 18px; border-radius: 10px; border: none;
+            font-size: .85rem; font-weight: 700; cursor: pointer;
             transition: transform .15s, filter .15s; text-decoration: none;
         }
         .share-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
         .btn-linkedin { background: linear-gradient(135deg, #0077b5, #005582); color: #fff; }
+        .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; }
         .btn-download { background: rgba(255,255,255,.08); color: #eaf1ff; border: 1px solid rgba(255,255,255,.15); }
         .btn-copy    { background: rgba(139,92,246,.2); color: #c4b5fd; border: 1px solid rgba(139,92,246,.4); }
 
-        @media (max-width: 520px) {
-            #personality-card { padding: 28px 20px; }
-            .card-archetype  { font-size: 1.5rem; }
-            .traits-grid { grid-template-columns: 1fr; }
-            .card-story { font-size: .99rem; padding: 16px 15px 15px; }
+        @media (max-width: 480px) {
+            body { padding: 24px 16px 48px; }
         }
     </style>
 </head>
@@ -209,9 +247,13 @@
         <div class="share-row">
             <button class="share-btn btn-linkedin" id="li-share-btn">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
-                Share on LinkedIn
+                LinkedIn
             </button>
-            <button class="share-btn btn-download" id="download-png-btn">&#8595; Download PNG</button>
+            <button class="share-btn btn-whatsapp" id="wa-share-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+            </button>
+            <button class="share-btn btn-download" id="download-png-btn">&#8595; Story (1080&times;1920)</button>
             <button class="share-btn btn-copy" id="copy-link-btn">&#128279; Copy Link</button>
         </div>
     </div>
@@ -220,63 +262,84 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
     (function () {
-        var cardUrl      = {{ card_url | tojson }};
-        var archetype    = {{ card.archetype | tojson }};
-        var tagline      = {{ card.tagline | tojson }};
+        var cardUrl   = {{ card_url | tojson }};
+        var archetype = {{ card.archetype | tojson }};
+        var tagline   = {{ card.tagline | tojson }};
 
-        /* LinkedIn share — opens feed in new tab + copies pre-filled text */
-        document.getElementById('li-share-btn').addEventListener('click', function () {
-            var text = "Just discovered my career personality with TailorCv.AI 🎯\n\n"
-                + "I’m " + archetype + " — " + tagline + "\n\n"
-                + "Find out yours → " + cardUrl
-                + "\n\n#CareerPersonality #TailorCvAI #JobSearch";
+        var shareText = "Just discovered my career personality with TailorCv.AI 🎯\n\n"
+            + "I’m " + archetype + " — " + tagline + "\n\n"
+            + "Find out yours → " + cardUrl
+            + "\n\n#CareerPersonality #TailorCvAI #JobSearch";
+
+        /* LinkedIn share */
+        document.getElementById(‘li-share-btn’).addEventListener(‘click’, function () {
             window.open("https://www.linkedin.com/feed/", "_blank", "noopener,noreferrer");
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).catch(function () {});
+                navigator.clipboard.writeText(shareText).catch(function () {});
             }
         });
 
-        /* Download PNG via html2canvas */
-        document.getElementById('download-png-btn').addEventListener('click', function () {
-            var btn     = this;
-            var cardEl  = document.getElementById('personality-card');
-            var archEl  = document.getElementById('card-arch-text');
-            var shimmer = cardEl.querySelector('.card-shimmer');
+        /* WhatsApp share */
+        document.getElementById(‘wa-share-btn’).addEventListener(‘click’, function () {
+            var waText = encodeURIComponent(shareText);
+            window.open("https://wa.me/?text=" + waText, "_blank", "noopener,noreferrer");
+        });
+
+        /* Capture card as PNG at exactly 1080×1920 (9:16 story format) */
+        function captureCard(callback) {
+            var cardEl  = document.getElementById(‘personality-card’);
+            var archEl  = document.getElementById(‘card-arch-text’);
+            var shimmer = cardEl.querySelector(‘.card-shimmer’);
             var origArch = archEl.style.cssText;
 
-            btn.textContent = 'Generating…';
-            btn.disabled = true;
-
-            /* Disable animation + fix gradient text for canvas capture */
-            if (shimmer) shimmer.style.animation = 'none';
+            /* Stop animation and flatten gradient text for canvas */
+            if (shimmer) shimmer.style.animation = ‘none’;
             archEl.style.cssText = origArch
-                + ';-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;'
-                + 'background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;';
+                + ‘;-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;’
+                + ‘background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;’;
+
+            /* Scale so card renders at exactly 1080px wide → 1920px tall (9:16) */
+            var storyScale = 1080 / cardEl.offsetWidth;
 
             html2canvas(cardEl, {
-                scale: 2, backgroundColor: null, useCORS: true, logging: false
+                scale: storyScale, backgroundColor: null, useCORS: true, logging: false
             }).then(function (canvas) {
-                var a = document.createElement('a');
-                a.download = 'career-personality-' + archetype.toLowerCase().replace(/\s+/g, '-') + '.png';
-                a.href = canvas.toDataURL('image/png');
-                a.click();
-            }).catch(function () {
-                alert('PNG generation failed. Right-click the card and save as image instead.');
+                callback(null, canvas);
+            }).catch(function (err) {
+                callback(err);
             }).finally(function () {
-                if (shimmer) shimmer.style.animation = '';
+                if (shimmer) shimmer.style.animation = ‘’;
                 archEl.style.cssText = origArch;
-                btn.textContent = '↓ Download PNG';
+            });
+        }
+
+        /* Download Story PNG */
+        document.getElementById(‘download-png-btn’).addEventListener(‘click’, function () {
+            var btn = this;
+            btn.textContent = ‘Generating…’;
+            btn.disabled = true;
+
+            captureCard(function (err, canvas) {
+                if (err) {
+                    alert(‘PNG generation failed. Right-click the card and save as image instead.’);
+                } else {
+                    var a = document.createElement(‘a’);
+                    a.download = ‘career-personality-’ + archetype.toLowerCase().replace(/\s+/g, ‘-’) + ‘-story.png’;
+                    a.href = canvas.toDataURL(‘image/png’);
+                    a.click();
+                }
+                btn.innerHTML = ‘&#8595; Story (1080&times;1920)’;
                 btn.disabled = false;
             });
         });
 
         /* Copy link */
-        document.getElementById('copy-link-btn').addEventListener('click', function () {
+        document.getElementById(‘copy-link-btn’).addEventListener(‘click’, function () {
             var btn = this;
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(cardUrl).then(function () {
-                    btn.textContent = '✓ Copied!';
-                    setTimeout(function () { btn.textContent = '🔗 Copy Link'; }, 2500);
+                    btn.textContent = ‘✓ Copied!’;
+                    setTimeout(function () { btn.innerHTML = ‘&#128279; Copy Link’; }, 2500);
                 }).catch(function () { btn.textContent = cardUrl; });
             } else {
                 btn.textContent = cardUrl;
