@@ -591,7 +591,9 @@ body {
                 let editorSource = "";
                 try { editorSource = sessionStorage.getItem("tailorcv_editor_source") || ""; } catch (e) {}
                 if (editorSource !== "reformat") {
-                    promptSaveToMyResumes(html);
+                    promptSaveToMyResumes(html, showPersonalityCornerPopup);
+                } else {
+                    setTimeout(showPersonalityCornerPopup, 1500);
                 }
             }
         } catch {
@@ -607,7 +609,7 @@ body {
        job description) to their account. It stays on screen until the user
        answers — no auto-dismiss, no click-outside-to-close. Saving stores the JD
        too, so My Resumes doubles as a lightweight job tracker. */
-    function promptSaveToMyResumes(html) {
+    function promptSaveToMyResumes(html, afterClose) {
         try {
             const existing = document.getElementById("rsp-quick");
             if (existing) existing.remove();
@@ -660,7 +662,7 @@ body {
                     </div>
                 </div>
             `;
-            const remove = () => overlay.remove();
+            const remove = () => { overlay.remove(); if (typeof afterClose === 'function') afterClose(); };
             // Deliberately blocking: NO click-outside-to-close and NO auto-dismiss.
             // The popup stays until the user clicks Save or Not now.
             document.body.appendChild(overlay);
@@ -676,12 +678,20 @@ body {
                 // Re-saving within the same editor session updates the same row.
                 let savedId = null;
                 try { savedId = sessionStorage.getItem("tailorcv_current_resume_id"); } catch (e) {}
+                const payload = getPayload() || null;
                 let ok = false;
                 try {
                     const res = await fetch("/api/save-edited-resume", {
                         method:  "POST",
                         headers: { "Content-Type": "application/json" },
-                        body:    JSON.stringify({ html, template_id: templateId, jd, resume_id: savedId }),
+                        body:    JSON.stringify({
+                            html,
+                            template_id: templateId,
+                            jd,
+                            resume_id: savedId,
+                            resume_data: payload && payload.resume_data ? payload.resume_data : null,
+                            candidate_name: payload && payload.candidate_name ? payload.candidate_name : null
+                        }),
                     });
                     ok = res.ok;
                     if (ok) {
@@ -1172,5 +1182,345 @@ body {
     }
 
     init();
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       PERSONALITY CARD — Corner popup + full modal
+    ───────────────────────────────────────────────────────────────────────── */
+
+    let _personalityPopupShown = false;
+
+    function showPersonalityCornerPopup() {
+        if (_personalityPopupShown) return;
+        _personalityPopupShown = true;
+
+        if (!document.getElementById("pc-popup-style")) {
+            const s = document.createElement("style");
+            s.id = "pc-popup-style";
+            s.textContent = `
+                #pc-corner-popup{
+                    position:fixed;bottom:24px;right:24px;z-index:110000;
+                    width:min(92vw,320px);
+                    background:linear-gradient(145deg,#12003a,#1a0040);
+                    border:1px solid rgba(167,139,250,.45);border-radius:18px;
+                    padding:18px 20px;
+                    box-shadow:0 16px 48px rgba(0,0,0,.6),0 0 40px rgba(139,92,246,.2);
+                    font-family:Inter,system-ui,sans-serif;
+                    animation:pcSlideUp .4s cubic-bezier(.34,1.56,.64,1);
+                }
+                @keyframes pcSlideUp{from{opacity:0;transform:translateY(24px) scale(.95)}to{opacity:1;transform:none}}
+                #pc-corner-popup .pcp-shimmer{
+                    position:absolute;top:0;left:0;right:0;height:2px;border-radius:18px 18px 0 0;
+                    background:linear-gradient(90deg,#f59e0b,#8b5cf6,#ec4899,#3b82f6);
+                    background-size:300%;animation:pcpShimmer 3s linear infinite;
+                }
+                @keyframes pcpShimmer{0%{background-position:0%}100%{background-position:300%}}
+                #pc-corner-popup .pcp-close{
+                    position:absolute;top:10px;right:14px;background:none;border:none;
+                    color:rgba(255,255,255,.3);font-size:20px;cursor:pointer;line-height:1;padding:0;
+                }
+                #pc-corner-popup .pcp-close:hover{color:rgba(255,255,255,.7);}
+                #pc-corner-popup .pcp-icon{font-size:1.5rem;margin-bottom:7px;display:block;}
+                #pc-corner-popup .pcp-title{font-size:.95rem;font-weight:800;color:#eaf1ff;margin:0 0 5px;}
+                #pc-corner-popup .pcp-sub{font-size:.77rem;color:#9fb0cc;margin:0 0 13px;line-height:1.5;}
+                #pc-corner-popup .pcp-btn{
+                    display:flex;align-items:center;justify-content:center;gap:6px;
+                    background:linear-gradient(135deg,#7c3aed,#4c1d95);color:#fff;
+                    border:none;border-radius:10px;padding:10px 18px;
+                    font-size:.85rem;font-weight:700;cursor:pointer;width:100%;
+                    transition:filter .15s;
+                }
+                #pc-corner-popup .pcp-btn:hover{filter:brightness(1.12);}
+            `;
+            document.head.appendChild(s);
+        }
+
+        const popup = document.createElement("div");
+        popup.id = "pc-corner-popup";
+        popup.innerHTML = `
+            <div class="pcp-shimmer"></div>
+            <button class="pcp-close" aria-label="Dismiss">&times;</button>
+            <span class="pcp-icon">&#10024;</span>
+            <div class="pcp-title">Your Career Personality is ready</div>
+            <div class="pcp-sub">Discover your archetype and share it on LinkedIn</div>
+            <button class="pcp-btn" id="pcp-discover-btn">Discover &amp; Share &#8594;</button>
+        `;
+        document.body.appendChild(popup);
+
+        const autoDismiss = setTimeout(() => popup.remove(), 9000);
+
+        popup.querySelector(".pcp-close").addEventListener("click", () => {
+            clearTimeout(autoDismiss); popup.remove();
+        });
+        popup.querySelector("#pcp-discover-btn").addEventListener("click", () => {
+            clearTimeout(autoDismiss); popup.remove();
+            _openPersonalityCardFlow();
+        });
+    }
+
+    function _openPersonalityCardFlow() {
+        let resumeId = null;
+        try { resumeId = sessionStorage.getItem("tailorcv_current_resume_id"); } catch (e) {}
+        if (!resumeId) { _showPersonalitySaveFirst(); return; }
+        _fetchAndShowPersonalityCard(parseInt(resumeId, 10));
+    }
+
+    function _showPersonalitySaveFirst() {
+        if (!document.getElementById("pc-modal-style")) _injectPersonalityModalStyle();
+        const overlay = document.createElement("div");
+        overlay.id = "pc-modal-overlay";
+        overlay.className = "pc-overlay";
+        overlay.innerHTML = `
+            <div class="pc-modal-box" role="dialog" aria-modal="true">
+                <button class="pc-modal-close" onclick="document.getElementById('pc-modal-overlay').remove()">&times;</button>
+                <div style="text-align:center;padding:20px 0;">
+                    <div style="font-size:2.4rem;margin-bottom:14px;">&#10024;</div>
+                    <div style="font-size:1.15rem;font-weight:800;color:#eaf1ff;margin-bottom:10px;">Save your resume first</div>
+                    <div style="font-size:.88rem;color:#9fb0cc;line-height:1.6;margin-bottom:24px;">
+                        Your Career Personality card is generated from your saved resume.<br>
+                        Click Download again and save to your account to unlock it.
+                    </div>
+                    <button onclick="document.getElementById('pc-modal-overlay').remove()"
+                        style="background:linear-gradient(135deg,#7c3aed,#4c1d95);color:#fff;border:none;
+                        border-radius:10px;padding:12px 26px;font-size:.95rem;font-weight:700;cursor:pointer;">
+                        Got it
+                    </button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        overlay.addEventListener("click", (e) => { if (e.target === overlay) overlay.remove(); });
+        document.addEventListener("keydown", function pcEsc(e) {
+            if (e.key === "Escape") { overlay.remove(); document.removeEventListener("keydown", pcEsc); }
+        });
+    }
+
+    function _injectPersonalityModalStyle() {
+        const s = document.createElement("style");
+        s.id = "pc-modal-style";
+        s.textContent = `
+            .pc-overlay{
+                position:fixed;inset:0;z-index:120000;display:flex;align-items:center;justify-content:center;
+                background:rgba(6,11,26,.78);backdrop-filter:blur(6px);padding:16px;
+                font-family:Inter,system-ui,sans-serif;animation:pcFadeIn .2s ease;
+            }
+            @keyframes pcFadeIn{from{opacity:0}to{opacity:1}}
+            .pc-modal-box{
+                position:relative;background:linear-gradient(145deg,#12003a,#0d1a3e);
+                border:1px solid rgba(167,139,250,.35);border-radius:24px;padding:32px 28px;
+                width:100%;max-width:520px;box-shadow:0 30px 80px rgba(0,0,0,.7);
+                max-height:92vh;overflow-y:auto;
+                animation:pcModalPop .3s cubic-bezier(.34,1.56,.64,1);
+            }
+            @keyframes pcModalPop{from{opacity:0;transform:translateY(16px) scale(.95)}to{opacity:1;transform:none}}
+            .pc-modal-close{
+                position:absolute;top:16px;right:20px;background:none;border:none;
+                color:rgba(255,255,255,.3);font-size:26px;cursor:pointer;line-height:1;padding:0;
+            }
+            .pc-modal-close:hover{color:rgba(255,255,255,.7);}
+            .pc-card-inner{
+                background:linear-gradient(145deg,#16003a 0%,#1e0045 40%,#0d1a3e 100%);
+                border:1px solid rgba(167,139,250,.35);border-radius:20px;
+                padding:28px 24px;margin-bottom:20px;position:relative;overflow:hidden;
+            }
+            .pc-card-shimmer-inner{
+                position:absolute;top:0;left:0;right:0;height:3px;
+                background:linear-gradient(90deg,#f59e0b,#8b5cf6,#ec4899,#3b82f6,#10b981);
+                background-size:300%;animation:pcpShimmer 3s linear infinite;
+            }
+            .pc-brand{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(167,139,250,.6);margin-bottom:18px;}
+            .pc-cand{font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:5px;}
+            .pc-arch{
+                font-size:1.7rem;font-weight:900;
+                background:linear-gradient(135deg,#fbbf24,#f472b6,#818cf8);
+                -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                background-clip:text;line-height:1.2;margin-bottom:12px;
+            }
+            .pc-story{
+                font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.75;
+                font-style:italic;margin-bottom:20px;padding:12px 14px;
+                background:rgba(139,92,246,.08);border-left:2px solid rgba(139,92,246,.4);
+                border-radius:0 8px 8px 0;
+            }
+            .pc-traits{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+            .pc-trait-pill{
+                display:flex;align-items:center;gap:6px;
+                background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.35);
+                border-radius:999px;padding:7px 13px;font-size:.8rem;font-weight:600;color:#c4b5fd;
+            }
+            .pc-stats{display:flex;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;margin-bottom:14px;}
+            .pc-stat{flex:1;text-align:center;padding:0 6px;}
+            .pc-stat+.pc-stat{border-left:1px solid rgba(255,255,255,.08);}
+            .pc-stat-val{font-size:1.3rem;font-weight:800;color:#fbbf24;display:block;}
+            .pc-stat-label{font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;}
+            .pc-skills{display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px;}
+            .pc-skill{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);border-radius:6px;padding:3px 9px;font-size:.72rem;color:#93c5fd;font-weight:600;}
+            .pc-footer-brand{font-size:.68rem;color:rgba(255,255,255,.2);text-align:right;margin-top:12px;}
+            .pc-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+            .pc-action-btn{
+                flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
+                padding:11px 14px;border-radius:10px;border:none;
+                font-size:.85rem;font-weight:700;cursor:pointer;
+                transition:transform .15s,filter .15s;text-decoration:none;
+            }
+            .pc-action-btn:hover{transform:translateY(-2px);filter:brightness(1.1);}
+            .pc-btn-li{background:linear-gradient(135deg,#0077b5,#005582);color:#fff;}
+            .pc-btn-dl{background:rgba(255,255,255,.07);color:#eaf1ff;border:1px solid rgba(255,255,255,.15)!important;}
+            .pc-btn-copy{background:rgba(139,92,246,.2);color:#c4b5fd;border:1px solid rgba(139,92,246,.4)!important;}
+            .pc-btn-view{background:rgba(59,130,246,.12);color:#93c5fd;border:1px solid rgba(59,130,246,.35)!important;}
+            .pc-spinner{
+                width:36px;height:36px;border:3px solid rgba(139,92,246,.2);
+                border-top-color:#8b5cf6;border-radius:50%;
+                animation:pcSpin .7s linear infinite;margin:0 auto 14px;
+            }
+            @keyframes pcSpin{to{transform:rotate(360deg)}}
+        `;
+        document.head.appendChild(s);
+    }
+
+    async function _fetchAndShowPersonalityCard(resumeId) {
+        if (!document.getElementById("pc-modal-style")) _injectPersonalityModalStyle();
+
+        const overlay = document.createElement("div");
+        overlay.id = "pc-modal-overlay";
+        overlay.className = "pc-overlay";
+        overlay.innerHTML = `
+            <div class="pc-modal-box" role="dialog" aria-modal="true">
+                <button class="pc-modal-close" onclick="document.getElementById('pc-modal-overlay').remove()">&times;</button>
+                <div id="pc-modal-body">
+                    <div style="text-align:center;padding:30px 0;">
+                        <div class="pc-spinner"></div>
+                        <p style="color:#c4b5fd;font-size:.9rem;">Discovering your career archetype…</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+        overlay.addEventListener("click", (e) => { if (e.target === overlay) overlay.remove(); });
+        document.addEventListener("keydown", function pcEsc(e) {
+            if (e.key === "Escape") { overlay.remove(); document.removeEventListener("keydown", pcEsc); }
+        });
+
+        try {
+            const csrfToken = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || "";
+            const res  = await fetch("/api/generate-personality-card", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken,
+                    "X-Requested-With": "XMLHttpRequest",
+                },
+                body: JSON.stringify({ resume_id: resumeId }),
+            });
+            const data = await res.json();
+            if (!data.success) {
+                const bodyEl = document.getElementById("pc-modal-body");
+                if (bodyEl) bodyEl.innerHTML = `
+                    <div style="text-align:center;padding:24px 0;">
+                        <div style="font-size:2rem;margin-bottom:12px;">&#9888;&#65039;</div>
+                        <p style="color:#fca5a5;font-size:.9rem;">${_escHtml(data.error || "Generation failed. Please try again.")}</p>
+                    </div>`;
+                return;
+            }
+            _renderPersonalityCardModal(data.card);
+        } catch (_err) {
+            const bodyEl = document.getElementById("pc-modal-body");
+            if (bodyEl) bodyEl.innerHTML = `<div style="text-align:center;padding:24px;color:#fca5a5;">Network error. Please try again.</div>`;
+        }
+    }
+
+    function _renderPersonalityCardModal(card) {
+        const bodyEl = document.getElementById("pc-modal-body");
+        if (!bodyEl) return;
+
+        const traits = (card.traits || []).map(t =>
+            `<div class="pc-trait-pill"><span>${_escHtml(t.emoji)}</span><span>${_escHtml(t.label)}</span></div>`
+        ).join("");
+
+        const s = card.stats || {};
+        const statsHtml = [
+            { v: (s.years_experience || 0) + "+", l: "Years" },
+            { v: s.companies_count || 0,           l: "Companies" },
+            { v: s.total_projects || 0,            l: "Projects" },
+        ].map(item =>
+            `<div class="pc-stat"><span class="pc-stat-val">${item.v}</span><span class="pc-stat-label">${item.l}</span></div>`
+        ).join("");
+
+        const skills = (s.top_3_skills || []).map(sk =>
+            `<span class="pc-skill">${_escHtml(sk)}</span>`
+        ).join("");
+
+        bodyEl.innerHTML = `
+            <div class="pc-card-inner" id="pc-capturable-card">
+                <div class="pc-card-shimmer-inner"></div>
+                <div class="pc-brand">TailorCv.AI &middot; Career Personality</div>
+                ${card.candidate_name ? `<div class="pc-cand">${_escHtml(card.candidate_name)}</div>` : ""}
+                <div class="pc-arch" id="pc-arch-text">${_escHtml(card.archetype)}</div>
+                ${card.story ? `<div class="pc-story">${_escHtml(card.story)}</div>` : ""}
+                <div class="pc-traits">${traits}</div>
+                <div class="pc-stats">${statsHtml}</div>
+                ${skills ? `<div class="pc-skills">${skills}</div>` : ""}
+                <div class="pc-footer-brand">thetailorcv.com</div>
+            </div>
+            <div class="pc-actions">
+                <button class="pc-action-btn pc-btn-li" id="pc-li-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
+                    Share on LinkedIn
+                </button>
+                <button class="pc-action-btn pc-btn-dl" id="pc-dl-btn">&#8595; Download PNG</button>
+            </div>
+            <div class="pc-actions" style="margin-top:0;">
+                <button class="pc-action-btn pc-btn-copy" id="pc-copy-btn">&#128279; Copy Link</button>
+                <a class="pc-action-btn pc-btn-view" href="${_escHtml(card.share_url)}" target="_blank" rel="noopener">&#8599; Full Page</a>
+            </div>
+        `;
+
+        document.getElementById("pc-li-btn").onclick = () => {
+            const text = `Just discovered my career personality with TailorCv.AI 🎯\n\nI'm ${card.archetype} — ${card.tagline}\n\nFind out yours → ${card.share_url}\n\n#CareerPersonality #TailorCvAI #JobSearch`;
+            window.open("https://www.linkedin.com/feed/", "_blank", "noopener,noreferrer");
+            navigator.clipboard?.writeText(text).catch(() => {});
+        };
+
+        document.getElementById("pc-dl-btn").onclick = () => {
+            const btn    = document.getElementById("pc-dl-btn");
+            const cardEl = document.getElementById("pc-capturable-card");
+            const archEl = document.getElementById("pc-arch-text");
+            const shimmer = cardEl.querySelector(".pc-card-shimmer-inner");
+            const origArch = archEl.style.cssText;
+
+            btn.textContent = "Generating…";
+            btn.disabled = true;
+            if (shimmer) shimmer.style.animation = "none";
+            archEl.style.cssText = origArch + ";-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;";
+
+            window.html2canvas(cardEl, { scale: 2, backgroundColor: null, useCORS: true, logging: false })
+                .then(canvas => {
+                    const a = document.createElement("a");
+                    a.download = "career-personality-" + card.archetype.toLowerCase().replace(/\s+/g, "-") + ".png";
+                    a.href = canvas.toDataURL("image/png");
+                    a.click();
+                })
+                .catch(() => alert("PNG generation failed. Use the Full Page link to save the image."))
+                .finally(() => {
+                    if (shimmer) shimmer.style.animation = "";
+                    archEl.style.cssText = origArch;
+                    btn.textContent = "↓ Download PNG";
+                    btn.disabled = false;
+                });
+        };
+
+        document.getElementById("pc-copy-btn").onclick = function () {
+            const btn = this;
+            navigator.clipboard?.writeText(card.share_url).then(() => {
+                btn.textContent = "✓ Copied!";
+                setTimeout(() => { btn.textContent = "🔗 Copy Link"; }, 2500);
+            }).catch(() => { btn.textContent = card.share_url; });
+        };
+    }
+
+    function _escHtml(str) {
+        return String(str || "")
+            .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+    }
 
 })();
