@@ -28,7 +28,7 @@ html.tcv-app header.navbar + * { padding-top: 16px !important; margin-top: 0 !im
 }
 .tcv-burger:hover { background: rgba(99, 132, 255, 0.16); }
 .tcv-top-logo { display: inline-flex; align-items: center; text-decoration: none; height: 76px; overflow: hidden; }
-.tcv-top-logo img { height: 66px; width: auto; display: block; object-fit: contain; }
+.tcv-top-logo img { height: 250px; width: auto; display: block; object-fit: contain; }
 .tcv-top-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
 
 /* Profile avatar + dropdown menu */
