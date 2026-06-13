@@ -584,14 +584,12 @@ body {
             setStatus(isAuto
                 ? "Auto-download complete. Adjust font size then click Download Edited PDF."
                 : "PDF downloaded successfully.");
-            // On a real (manual) download, offer to save the edited version
-            // (and its job description) to the user's account — but NOT for a
-            // reformat/change-format session, which has no job description.
             if (!isAuto) {
                 let editorSource = "";
                 try { editorSource = sessionStorage.getItem("tailorcv_editor_source") || ""; } catch (e) {}
                 if (editorSource !== "reformat") {
-                    promptSaveToMyResumes(html, showPersonalityCornerPopup);
+                    await saveEditedResumeSilently(html);
+                    setTimeout(showPersonalityCornerPopup, 1500);
                 } else {
                     setTimeout(showPersonalityCornerPopup, 1500);
                 }
@@ -605,125 +603,42 @@ body {
         }
     }
 
-    /* Big, BLOCKING modal that asks the user to save the edited resume (and its
-       job description) to their account. It stays on screen until the user
-       answers — no auto-dismiss, no click-outside-to-close. Saving stores the JD
-       too, so My Resumes doubles as a lightweight job tracker. */
-    function promptSaveToMyResumes(html, afterClose) {
+    async function saveEditedResumeSilently(html) {
+        if (!html) return false;
+
+        let jd = "";
+        try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
+
+        let savedId = null;
+        try { savedId = sessionStorage.getItem("tailorcv_current_resume_id"); } catch (e) {}
+
+        const payload = getPayload() || null;
         try {
-            const existing = document.getElementById("rsp-quick");
-            if (existing) existing.remove();
-
-            if (!document.getElementById("rsp-quick-style")) {
-                const style = document.createElement("style");
-                style.id = "rsp-quick-style";
-                style.textContent = `
-                    #rsp-quick { position: fixed; inset: 0; z-index: 100000;
-                        display: flex; align-items: center; justify-content: center;
-                        background: rgba(6,11,26,.62); backdrop-filter: blur(5px);
-                        animation: rspqFade .2s ease; font-family: Inter, -apple-system, sans-serif; }
-                    #rsp-quick .rspq-card { width: min(94vw, 500px); text-align: center;
-                        background: linear-gradient(160deg,#16203c,#0e1730);
-                        border: 1px solid rgba(59,130,246,.45); border-radius: 22px;
-                        padding: 38px 34px 32px; box-shadow: 0 30px 90px rgba(0,0,0,.62);
-                        animation: rspqPop .34s cubic-bezier(.34,1.56,.64,1); }
-                    #rsp-quick .rspq-icon { width: 74px; height: 74px; margin: 0 auto 18px;
-                        border-radius: 50%; display: flex; align-items: center; justify-content: center;
-                        font-size: 38px; color: #fff;
-                        background: linear-gradient(135deg,#3392ff,#4c1d95);
-                        box-shadow: 0 8px 30px rgba(59,130,246,.45); }
-                    #rsp-quick .rspq-title { font-size: 1.6rem; font-weight: 800; color: #eaf1ff; margin: 0 0 10px; }
-                    #rsp-quick .rspq-msg { font-size: 1.02rem; color: #aab9d6; line-height: 1.6; margin: 0 0 26px; }
-                    #rsp-quick .rspq-msg strong { color: #d7e3ff; }
-                    #rsp-quick .rspq-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-                    #rsp-quick button { font-size: 1rem; font-weight: 700; padding: 14px 26px; border-radius: 12px;
-                        cursor: pointer; border: 1px solid transparent; }
-                    #rsp-quick .rspq-save { background: linear-gradient(135deg,#3392ff,#4c1d95); color: #fff; }
-                    #rsp-quick .rspq-save:hover { filter: brightness(1.08); }
-                    #rsp-quick .rspq-skip { background: transparent; color: #aab9d6; border-color: rgba(150,170,210,.3); }
-                    #rsp-quick .rspq-skip:hover { background: rgba(255,255,255,.05); color: #eaf1ff; }
-                    #rsp-quick a { color: #9cc2ff; text-decoration: underline; }
-                    @keyframes rspqFade { from { opacity:0; } to { opacity:1; } }
-                    @keyframes rspqPop { from { opacity:0; transform: translateY(16px) scale(.94); } to { opacity:1; transform:none; } }
-                `;
-                document.head.appendChild(style);
-            }
-
-            const overlay = document.createElement("div");
-            overlay.id = "rsp-quick";
-            overlay.innerHTML = `
-                <div class="rspq-card" role="dialog" aria-modal="true" aria-label="Save resume">
-                    <div class="rspq-icon">💾</div>
-                    <div class="rspq-title">Save this resume?</div>
-                    <div class="rspq-msg">Keep this version <strong>and its job description</strong> in My Resumes so you can track this application and re-download anytime.</div>
-                    <div class="rspq-actions">
-                        <button type="button" class="rspq-save" id="rspq-save">Save to My Resumes</button>
-                        <button type="button" class="rspq-skip" id="rspq-skip">Not now</button>
-                    </div>
-                </div>
-            `;
-            const remove = () => { overlay.remove(); if (typeof afterClose === 'function') afterClose(); };
-            // Deliberately blocking: NO click-outside-to-close and NO auto-dismiss.
-            // The popup stays until the user clicks Save or Not now.
-            document.body.appendChild(overlay);
-            overlay.querySelector("#rspq-skip").addEventListener("click", remove);
-
-            overlay.querySelector("#rspq-save").addEventListener("click", async () => {
-                const saveBtn = overlay.querySelector("#rspq-save");
-                const skipBtn = overlay.querySelector("#rspq-skip");
-                saveBtn.disabled = true; if (skipBtn) skipBtn.disabled = true;
-                saveBtn.textContent = "Saving…";
-                let jd = "";
-                try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
-                // Re-saving within the same editor session updates the same row.
-                let savedId = null;
-                try { savedId = sessionStorage.getItem("tailorcv_current_resume_id"); } catch (e) {}
-                const payload = getPayload() || null;
-                let ok = false;
-                try {
-                    const res = await fetch("/api/save-edited-resume", {
-                        method:  "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body:    JSON.stringify({
-                            html,
-                            template_id: templateId,
-                            jd,
-                            resume_id: savedId,
-                            resume_data: payload && payload.resume_data ? payload.resume_data : null,
-                            candidate_name: payload && payload.candidate_name ? payload.candidate_name : null
-                        }),
-                    });
-                    ok = res.ok;
-                    if (ok) {
-                        try {
-                            const d = await res.json();
-                            if (d && d.id) sessionStorage.setItem("tailorcv_current_resume_id", String(d.id));
-                        } catch (e) {}
-                    }
-                } catch (e) { ok = false; }
-                if (ok) {
-                    const icon = overlay.querySelector(".rspq-icon");
-                    icon.textContent = "✓";
-                    icon.style.background = "linear-gradient(135deg,#22c55e,#16a34a)";
-                    overlay.querySelector(".rspq-title").textContent = "Resume saved!";
-                    overlay.querySelector(".rspq-msg").innerHTML =
-                        'Find it anytime under your <strong>profile menu → <a href="/my-resumes">My Resumes</a></strong>.';
-                    overlay.querySelector(".rspq-actions").innerHTML =
-                        '<button type="button" class="rspq-save" onclick="window.location.href=\'/my-resumes\'">View My Resumes</button>' +
-                        '<button type="button" class="rspq-skip" id="rspq-done">Close</button>';
-                    overlay.querySelector("#rspq-done").addEventListener("click", remove);
-                } else {
-                    saveBtn.disabled = false; if (skipBtn) skipBtn.disabled = false;
-                    saveBtn.textContent = "Try again";
-                    if (typeof showToast === "function") {
-                        showToast("Could not save right now. Please try again.", "error", "Save failed");
-                    }
-                }
+            const res = await fetch("/api/save-edited-resume", {
+                method:  "POST",
+                headers: { "Content-Type": "application/json" },
+                body:    JSON.stringify({
+                    html,
+                    template_id: templateId,
+                    jd,
+                    resume_id: savedId,
+                    resume_data: payload && payload.resume_data ? payload.resume_data : null,
+                    candidate_name: payload && payload.candidate_name ? payload.candidate_name : null
+                }),
             });
+            if (!res.ok) throw new Error("Save failed");
+            try {
+                const data = await res.json();
+                if (data && data.id) {
+                    sessionStorage.setItem("tailorcv_current_resume_id", String(data.id));
+                }
+            } catch (e) {}
+            return true;
         } catch (e) {
             if (typeof showToast === "function") {
-                showToast("Open your profile menu → My Resumes to find saved resumes.", "info");
+                showToast("PDF downloaded, but saving to My Resumes failed this time.", "error", "Save failed");
             }
+            return false;
         }
     }
 
@@ -1336,16 +1251,26 @@ body {
                 background-clip:text;line-height:1.2;margin-bottom:12px;
             }
             .pc-story{
-                font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.75;
-                font-style:italic;margin-bottom:20px;padding:12px 14px;
-                background:rgba(139,92,246,.08);border-left:2px solid rgba(139,92,246,.4);
-                border-radius:0 8px 8px 0;
+                font-size:1.03rem;color:rgba(244,247,255,.88);line-height:1.8;
+                margin-bottom:22px;padding:18px 18px 16px;
+                background:linear-gradient(180deg,rgba(139,92,246,.12),rgba(59,130,246,.08));
+                border:1px solid rgba(139,92,246,.24);border-left:4px solid rgba(167,139,250,.65);
+                border-radius:14px;
             }
-            .pc-traits{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
-            .pc-trait-pill{
-                display:flex;align-items:center;gap:6px;
-                background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.35);
-                border-radius:999px;padding:7px 13px;font-size:.8rem;font-weight:600;color:#c4b5fd;
+            .pc-traits{
+                display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+                gap:10px;margin-bottom:20px;
+            }
+            .pc-trait-card{
+                background:rgba(15,23,42,.42);border:1px solid rgba(139,92,246,.22);
+                border-radius:14px;padding:12px 12px 11px;
+            }
+            .pc-trait-head{
+                display:flex;align-items:center;gap:8px;margin-bottom:6px;
+                color:#ddd6fe;font-size:.9rem;font-weight:700;
+            }
+            .pc-trait-desc{
+                font-size:.82rem;line-height:1.55;color:rgba(226,232,240,.82);
             }
             .pc-stats{display:flex;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;margin-bottom:14px;}
             .pc-stat{flex:1;text-align:center;padding:0 6px;}
@@ -1371,6 +1296,10 @@ body {
                 width:36px;height:36px;border:3px solid rgba(139,92,246,.2);
                 border-top-color:#8b5cf6;border-radius:50%;
                 animation:pcSpin .7s linear infinite;margin:0 auto 14px;
+            }
+            @media (max-width:560px){
+                .pc-traits{grid-template-columns:1fr;}
+                .pc-story{font-size:.98rem;padding:16px 15px 15px;}
             }
             @keyframes pcSpin{to{transform:rotate(360deg)}}
         `;
@@ -1433,7 +1362,10 @@ body {
         if (!bodyEl) return;
 
         const traits = (card.traits || []).map(t =>
-            `<div class="pc-trait-pill"><span>${_escHtml(t.emoji)}</span><span>${_escHtml(t.label)}</span></div>`
+            `<div class="pc-trait-card">
+                <div class="pc-trait-head"><span>${_escHtml(t.emoji)}</span><span>${_escHtml(t.label)}</span></div>
+                <div class="pc-trait-desc">${_escHtml(t.description)}</div>
+            </div>`
         ).join("");
 
         const s = card.stats || {};
@@ -1452,7 +1384,7 @@ body {
         bodyEl.innerHTML = `
             <div class="pc-card-inner" id="pc-capturable-card">
                 <div class="pc-card-shimmer-inner"></div>
-                <div class="pc-brand">TailorCv.AI &middot; Career Personality</div>
+                <div class="pc-brand">TailorCV &middot; Career Personality</div>
                 ${card.candidate_name ? `<div class="pc-cand">${_escHtml(card.candidate_name)}</div>` : ""}
                 <div class="pc-arch" id="pc-arch-text">${_escHtml(card.archetype)}</div>
                 ${card.story ? `<div class="pc-story">${_escHtml(card.story)}</div>` : ""}

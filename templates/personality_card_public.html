@@ -58,21 +58,27 @@
 
         /* ── Dramatic story paragraph ───────────────────────────── */
         .card-story {
-            font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.75;
-            font-style: italic; margin-bottom: 22px;
-            padding: 13px 15px;
-            background: rgba(139,92,246,.08);
-            border-left: 2px solid rgba(139,92,246,.45);
-            border-radius: 0 8px 8px 0;
+            font-size: 1.05rem; color: rgba(244,247,255,.9); line-height: 1.82;
+            margin-bottom: 22px;
+            padding: 18px 18px 16px;
+            background: linear-gradient(180deg, rgba(139,92,246,.12), rgba(59,130,246,.08));
+            border: 1px solid rgba(139,92,246,.24);
+            border-left: 4px solid rgba(167,139,250,.65);
+            border-radius: 14px;
         }
 
         /* ── Trait pills ─────────────────────────────────────────── */
-        .traits-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
-        .trait-pill {
-            display: flex; align-items: center; gap: 7px;
-            background: rgba(139,92,246,.15); border: 1px solid rgba(139,92,246,.35);
-            border-radius: 999px; padding: 8px 14px;
-            font-size: .82rem; font-weight: 600; color: #c4b5fd;
+        .traits-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 24px; }
+        .trait-card {
+            background: rgba(15,23,42,.42); border: 1px solid rgba(139,92,246,.22);
+            border-radius: 14px; padding: 12px 12px 11px;
+        }
+        .trait-head {
+            display: flex; align-items: center; gap: 8px; margin-bottom: 6px;
+            color: #ddd6fe; font-size: .92rem; font-weight: 700;
+        }
+        .trait-desc {
+            font-size: .84rem; line-height: 1.58; color: rgba(226,232,240,.82);
         }
 
         /* ── Stats row ───────────────────────────────────────────── */
@@ -134,6 +140,8 @@
         @media (max-width: 520px) {
             #personality-card { padding: 28px 20px; }
             .card-archetype  { font-size: 1.5rem; }
+            .traits-grid { grid-template-columns: 1fr; }
+            .card-story { font-size: .99rem; padding: 16px 15px 15px; }
         }
     </style>
 </head>
@@ -156,9 +164,12 @@
 
         <div class="traits-grid">
             {% for trait in traits %}
-            <div class="trait-pill">
-                <span>{{ trait.emoji }}</span>
-                <span>{{ trait.label }}</span>
+            <div class="trait-card">
+                <div class="trait-head">
+                    <span>{{ trait.emoji }}</span>
+                    <span>{{ trait.label }}</span>
+                </div>
+                <div class="trait-desc">{{ trait.description }}</div>
             </div>
             {% endfor %}
         </div>
