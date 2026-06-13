@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ card.tagline }}">
+    <title>{{ card.archetype }} | TailorCv.AI Career Personality</title>
+    {% include "_seo_head.html" %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0015 0%, #0d0025 40%, #020010 100%);
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #eaf1ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 16px 80px;
+        }
+
+        /* ── The shareable card ─────────────────────────────────── */
+        #personality-card {
+            width: 100%;
+            max-width: 480px;
+            background: linear-gradient(145deg, #16003a 0%, #1e0045 40%, #0d1a3e 100%);
+            border: 1px solid rgba(167, 139, 250, 0.38);
+            border-radius: 24px;
+            padding: 36px 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.22), 0 24px 48px rgba(0,0,0,.6);
+        }
+
+        .card-shimmer {
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, #f59e0b, #8b5cf6, #ec4899, #3b82f6, #10b981);
+            background-size: 300%;
+            animation: shimmer 3s linear infinite;
+        }
+        @keyframes shimmer { 0%{background-position:0%} 100%{background-position:300%} }
+
+        .card-brand {
+            font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+            color: rgba(167,139,250,.6); margin-bottom: 22px;
+        }
+        .card-name  { font-size: .9rem; color: rgba(255,255,255,.5); margin-bottom: 5px; }
+        .card-archetype {
+            font-size: 1.9rem; font-weight: 900;
+            background: linear-gradient(135deg, #fbbf24, #f472b6, #818cf8);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; line-height: 1.2; margin-bottom: 14px;
+        }
+
+        /* ── Dramatic story paragraph ───────────────────────────── */
+        .card-story {
+            font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.75;
+            font-style: italic; margin-bottom: 22px;
+            padding: 13px 15px;
+            background: rgba(139,92,246,.08);
+            border-left: 2px solid rgba(139,92,246,.45);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* ── Trait pills ─────────────────────────────────────────── */
+        .traits-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+        .trait-pill {
+            display: flex; align-items: center; gap: 7px;
+            background: rgba(139,92,246,.15); border: 1px solid rgba(139,92,246,.35);
+            border-radius: 999px; padding: 8px 14px;
+            font-size: .82rem; font-weight: 600; color: #c4b5fd;
+        }
+
+        /* ── Stats row ───────────────────────────────────────────── */
+        .stats-row {
+            display: flex; border-top: 1px solid rgba(255,255,255,.08); padding-top: 18px;
+        }
+        .stat-item { flex: 1; text-align: center; padding: 0 8px; }
+        .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,.08); }
+        .stat-value { font-size: 1.5rem; font-weight: 800; color: #fbbf24; display: block; }
+        .stat-label { font-size: .7rem; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .08em; }
+
+        /* ── Top skills ──────────────────────────────────────────── */
+        .skills-chips {
+            display: flex; flex-wrap: wrap; gap: 7px;
+            margin-top: 14px; padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+        .skill-chip {
+            background: rgba(59,130,246,.15); border: 1px solid rgba(59,130,246,.3);
+            border-radius: 6px; padding: 4px 10px;
+            font-size: .74rem; color: #93c5fd; font-weight: 600;
+        }
+
+        .card-footer-brand {
+            margin-top: 18px; font-size: .68rem; color: rgba(255,255,255,.2); text-align: right;
+        }
+
+        /* ── CTA section ─────────────────────────────────────────── */
+        .cta-section {
+            width: 100%; max-width: 480px; margin-top: 28px; text-align: center;
+        }
+        .cta-headline { font-size: 1.1rem; font-weight: 700; color: #eaf1ff; margin-bottom: 8px; }
+        .cta-sub { font-size: .88rem; color: #9fb0cc; margin-bottom: 20px; }
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #7c3aed, #4c1d95);
+            color: #fff; font-weight: 700; font-size: 1rem;
+            padding: 14px 36px; border-radius: 12px; text-decoration: none;
+            transition: filter .2s, transform .2s;
+        }
+        .cta-btn:hover { filter: brightness(1.12); transform: translateY(-2px); }
+
+        /* ── Share buttons ───────────────────────────────────────── */
+        .share-row {
+            display: flex; gap: 10px; justify-content: center;
+            flex-wrap: wrap; margin-top: 20px;
+        }
+        .share-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 11px 20px; border-radius: 10px; border: none;
+            font-size: .88rem; font-weight: 700; cursor: pointer;
+            transition: transform .15s, filter .15s; text-decoration: none;
+        }
+        .share-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .btn-linkedin { background: linear-gradient(135deg, #0077b5, #005582); color: #fff; }
+        .btn-download { background: rgba(255,255,255,.08); color: #eaf1ff; border: 1px solid rgba(255,255,255,.15); }
+        .btn-copy    { background: rgba(139,92,246,.2); color: #c4b5fd; border: 1px solid rgba(139,92,246,.4); }
+
+        @media (max-width: 520px) {
+            #personality-card { padding: 28px 20px; }
+            .card-archetype  { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Shareable card — this element is captured by html2canvas -->
+    <div id="personality-card">
+        <div class="card-shimmer"></div>
+        <div class="card-brand">TailorCv.AI &middot; Career Personality</div>
+
+        {% if candidate_name %}
+        <div class="card-name">{{ candidate_name }}</div>
+        {% endif %}
+
+        <div class="card-archetype" id="card-arch-text">{{ card.archetype }}</div>
+
+        {% if story %}
+        <div class="card-story">{{ story }}</div>
+        {% endif %}
+
+        <div class="traits-grid">
+            {% for trait in traits %}
+            <div class="trait-pill">
+                <span>{{ trait.emoji }}</span>
+                <span>{{ trait.label }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <span class="stat-value">{{ stats.years_experience or 0 }}+</span>
+                <span class="stat-label">Years</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">{{ stats.companies_count or 0 }}</span>
+                <span class="stat-label">Companies</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">{{ stats.total_projects or 0 }}</span>
+                <span class="stat-label">Projects</span>
+            </div>
+        </div>
+
+        {% if stats.top_3_skills %}
+        <div class="skills-chips">
+            {% for skill in stats.top_3_skills %}
+            <span class="skill-chip">{{ skill }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="card-footer-brand">thetailorcv.com</div>
+    </div>
+
+    <!-- CTA for non-users landing from a share -->
+    <div class="cta-section">
+        <div class="cta-headline">Discover your Career Personality</div>
+        <div class="cta-sub">Free for every professional &mdash; takes 30 seconds.</div>
+        <a href="/signup" class="cta-btn">Generate yours free &rarr;</a>
+
+        <div class="share-row">
+            <button class="share-btn btn-linkedin" id="li-share-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
+                Share on LinkedIn
+            </button>
+            <button class="share-btn btn-download" id="download-png-btn">&#8595; Download PNG</button>
+            <button class="share-btn btn-copy" id="copy-link-btn">&#128279; Copy Link</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+    (function () {
+        var cardUrl      = {{ card_url | tojson }};
+        var archetype    = {{ card.archetype | tojson }};
+        var tagline      = {{ card.tagline | tojson }};
+
+        /* LinkedIn share — opens feed in new tab + copies pre-filled text */
+        document.getElementById('li-share-btn').addEventListener('click', function () {
+            var text = "Just discovered my career personality with TailorCv.AI 🎯\n\n"
+                + "I’m " + archetype + " — " + tagline + "\n\n"
+                + "Find out yours → " + cardUrl
+                + "\n\n#CareerPersonality #TailorCvAI #JobSearch";
+            window.open("https://www.linkedin.com/feed/", "_blank", "noopener,noreferrer");
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).catch(function () {});
+            }
+        });
+
+        /* Download PNG via html2canvas */
+        document.getElementById('download-png-btn').addEventListener('click', function () {
+            var btn     = this;
+            var cardEl  = document.getElementById('personality-card');
+            var archEl  = document.getElementById('card-arch-text');
+            var shimmer = cardEl.querySelector('.card-shimmer');
+            var origArch = archEl.style.cssText;
+
+            btn.textContent = 'Generating…';
+            btn.disabled = true;
+
+            /* Disable animation + fix gradient text for canvas capture */
+            if (shimmer) shimmer.style.animation = 'none';
+            archEl.style.cssText = origArch
+                + ';-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;'
+                + 'background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;';
+
+            html2canvas(cardEl, {
+                scale: 2, backgroundColor: null, useCORS: true, logging: false
+            }).then(function (canvas) {
+                var a = document.createElement('a');
+                a.download = 'career-personality-' + archetype.toLowerCase().replace(/\s+/g, '-') + '.png';
+                a.href = canvas.toDataURL('image/png');
+                a.click();
+            }).catch(function () {
+                alert('PNG generation failed. Right-click the card and save as image instead.');
+            }).finally(function () {
+                if (shimmer) shimmer.style.animation = '';
+                archEl.style.cssText = origArch;
+                btn.textContent = '↓ Download PNG';
+                btn.disabled = false;
+            });
+        });
+
+        /* Copy link */
+        document.getElementById('copy-link-btn').addEventListener('click', function () {
+            var btn = this;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(cardUrl).then(function () {
+                    btn.textContent = '✓ Copied!';
+                    setTimeout(function () { btn.textContent = '🔗 Copy Link'; }, 2500);
+                }).catch(function () { btn.textContent = cardUrl; });
+            } else {
+                btn.textContent = cardUrl;
+            }
+        });
+    }());
+    </script>
+</body>
+</html>
