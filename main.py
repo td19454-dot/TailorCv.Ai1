@@ -3479,16 +3479,18 @@ def _build_personality_card_prompt(resume_data: dict) -> str:
         ],
     }, separators=(",", ":"))
 
-    return f"""You are a career coach creating a flattering "Career Personality Card" for a professional.
+    return f"""You are a mythmaker writing a dramatic "Career Personality Card" — not a resume summary, not a LinkedIn bio. Your job is to reveal WHO this person IS: their mind, their instincts, their superpowers, their way of moving through the world.
+
+Use the resume only as a source of signals about their personality and abilities. DO NOT describe job history. DO NOT name employers or titles flatly. Transform everything into vivid, epic, character-driven language.
 
 Analyze the resume data below and return ONLY a valid JSON object with exactly these fields:
 
 {{
-  "archetype": "A 3-5 word title like 'The Strategic Builder' or 'The Data Storyteller' that feels specific to their actual career path",
-  "tagline": "Two punchy, flattering sentences (max 30 words total) that capture their career identity and feel worth sharing publicly",
-  "story": "A personalized 3-4 sentence profile, around 60-100 words. It should sound recognizably like this person based on their actual resume. Mention concrete details such as projects, tools, domains, impact, academic path, leadership, or employers when available.",
+  "archetype": "A 3-5 word mythic title that names their personality — not their job. Examples: 'The Architect of Order', 'The Chaos Tamer', 'The Quiet Force', 'The Pattern Whisperer'.",
+  "tagline": "Two punchy, legendary sentences (max 30 words total) that describe their MIND and ABILITIES using vivid metaphors — not what they've done, but what they ARE. Examples: 'Navigator of vast oceans of algorithmic knowledge. Cartographer of hidden patterns buried deep within data.' or 'Slayer of latency and guardian of performance. Defender of uptime against the forces of downtime.' or 'Conjurer of structure from the swirling chaos of complexity. Architect of systems that outlive the hands that built them.'",
+  "story": "3-4 sentences, around 60-80 words, written like the opening of an epic. Describe their intellectual character, instincts, and way of thinking — not their job history. Use dramatic metaphors. Make it feel like a portrait of a person, not a career timeline. Good example: 'There are those who see problems — and then there are those who see the hidden geometry beneath them. This is someone who operates in the second category: methodical yet bold, drawn to the edges of what is known, building bridges across the gap between vision and reality.'",
   "traits": [
-    {{"emoji": "🔥", "label": "Trait Name", "description": "One specific sentence about this trait as it applies to them, grounded in resume evidence."}},
+    {{"emoji": "🔥", "label": "Trait Name (e.g. 'The Relentless Builder')", "description": "One cinematic sentence about this personality trait — what it looks like when this person is at their best. No job titles. Pure character."}},
     {{"emoji": "🎯", "label": "Trait Name", "description": "..."}},
     {{"emoji": "🚀", "label": "Trait Name", "description": "..."}},
     {{"emoji": "💡", "label": "Trait Name", "description": "..."}}
@@ -3504,16 +3506,14 @@ Analyze the resume data below and return ONLY a valid JSON object with exactly t
 
 Rules:
 - Return 3 to 4 traits (never fewer than 3, never more than 4)
-- archetypes must feel aspirational and shareable on LinkedIn, not generic
-- tagline must be something the person would genuinely want to post publicly
-- story must be personalized, concrete, and written in clear natural language
-- story must mention at least 2 concrete resume details when enough data exists, such as project names, technologies, scale, outcomes, employers, university, or leadership work
-- each trait description must be 14 to 28 words and tie back to something visible in the resume
+- archetype must name a personality type or mindset, never a job title
+- tagline must sound legendary — two bold metaphorical sentences about their mind or abilities, never about where they worked
+- story must read like the opening of an epic novel about a person, not a career summary; NO job titles, NO company names, NO dates
+- trait descriptions must paint a picture of the person's character — how they think, how they act under pressure, what drives them; 14 to 28 words each
 - top_3_skills must come from the actual skills in the resume
 - years_experience: calculate from earliest start_date to present; if no dates, estimate from graduation year; minimum 0
 - industries_list: infer from company names and job titles (e.g., "FinTech", "SaaS", "Healthcare")
-- Do not invent employers, metrics, tools, awards, or domains that are not supported by the resume data
-- If resume data is sparse (student, entry-level), still produce a positive, encouraging card with aspirational language
+- If resume data is sparse, still produce a vivid, aspirational portrait — infer personality from whatever signals exist
 
 Resume data:
 {summary}"""
