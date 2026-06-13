@@ -52,6 +52,10 @@
         </button>
         <div class="profile-dropdown" id="profileDropdown">
           <div class="profile-name">${safeName}</div>
+          <a class="profile-link tc-myresumes-link" href="/dashboard">
+            <span class="tc-pl-ic">📊</span>
+            <span class="tc-pl-tx"><strong>Dashboard</strong><small>Your job-hunt home base</small></span>
+          </a>
           <a class="profile-link tc-myresumes-link" href="/my-resumes">
             <span class="tc-pl-ic">📄</span>
             <span class="tc-pl-tx"><strong>My Resumes</strong><small>Saved resumes &amp; job tracker</small></span>

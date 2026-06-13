@@ -146,6 +146,13 @@
         }
         .iq-textarea:focus { border-color: #3392ff; }
         .iq-textarea::placeholder { color: #3a5a8c; }
+        /* Resume + JD side by side */
+        .iq-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 1rem; }
+        .iq-two-col .iq-col { display: flex; flex-direction: column; }
+        .iq-two-col .iq-col .iq-label { margin-top: 0; }
+        .iq-two-col .iq-drop-zone { flex: 1; min-height: 230px; margin-bottom: 0; }
+        .iq-two-col .iq-textarea { flex: 1; min-height: 230px; margin-bottom: 0; }
+        @media (max-width: 760px) { .iq-two-col { grid-template-columns: 1fr; } }
 
         .iq-btn {
             margin-top: 1.4rem;
@@ -473,38 +480,7 @@
 <body>
 
     <!-- NAV -->
-    <header class="navbar">
-        <div class="left">
-            <div class="logo">
-                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
-            </div>
-        </div>
-        <button
-            type="button"
-            class="mobile-menu-toggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="primary-nav-solutions"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-<nav class="nav-links" id="primary-nav-solutions">
-            <a href="/" class="nav-link">Home</a>
-            <a href="/solutions" class="nav-link">Get ATS Score</a>
-            <a href="/modify-cv" class="nav-link">Make CV</a>
-            <a href="/solutions" class="nav-link">Optimize CV with AI</a>
-            <a href="/blog" class="nav-link">Blog</a>
-            <a href="/pricing" class="nav-link">Pricing</a>
-            <a href="/templates" class="nav-link">Templates</a>
-            <a href="/interview-prep" class="nav-link active">Interview Prep</a>
-            <a href="/mock-interview" class="nav-link">Mock Interview</a>
-        </nav>
-        <div class="nav-actions">
-            <div id="auth-nav-slot"></div>
-        </div>
-    </header>
+    {% include "_nav.html" %}
 
     <!-- HERO -->
     <div class="iq-hero">
@@ -524,16 +500,21 @@
 
     <!-- UPLOAD CARD -->
     <div class="iq-card" id="iq-upload-card">
-        <label class="iq-label">Your Resume (PDF)</label>
-        <div class="iq-drop-zone" id="drop-zone">
-            <input type="file" id="resume-file" accept=".pdf" />
-            <div class="iq-drop-icon">PDF</div>
-            <div class="iq-drop-label">Drop your PDF here, or <span>browse</span></div>
-            <div class="iq-file-name" id="file-name-display"></div>
+        <div class="iq-two-col">
+            <div class="iq-col">
+                <label class="iq-label">Your Resume (PDF)</label>
+                <div class="iq-drop-zone" id="drop-zone">
+                    <input type="file" id="resume-file" accept=".pdf" />
+                    <div class="iq-drop-icon">PDF</div>
+                    <div class="iq-drop-label">Drop your PDF here, or <span>browse</span></div>
+                    <div class="iq-file-name" id="file-name-display"></div>
+                </div>
+            </div>
+            <div class="iq-col">
+                <label class="iq-label" for="jd-input">Job Description <span style="color:#3a5a8c;font-weight:400;text-transform:none;font-size:.8rem;">(paste the full JD for best results)</span></label>
+                <textarea class="iq-textarea" id="jd-input" placeholder="Paste the job description here..."></textarea>
+            </div>
         </div>
-
-        <label class="iq-label" for="jd-input">Job Description <span style="color:#3a5a8c;font-weight:400;text-transform:none;font-size:.8rem;">(paste the full JD for best results)</span></label>
-        <textarea class="iq-textarea" id="jd-input" placeholder="Paste the job description here..."></textarea>
 
         <button class="iq-btn" id="generate-btn" disabled>Generate My Interview Questions</button>
     </div>

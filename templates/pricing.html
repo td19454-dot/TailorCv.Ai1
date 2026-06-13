@@ -44,38 +44,7 @@
     </style>
 </head>
 <body>
-    <header class="navbar">
-    <div class="left">
-        <div class="logo">
-            <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
-        </div>
-    </div>
-    <button
-        type="button"
-        class="mobile-menu-toggle"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="primary-nav-shared"
-    >
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    <nav class="nav-links" id="primary-nav-shared">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/solutions" class="nav-link">ATS Score</a>
-        <a href="/modify-cv" class="nav-link">Make CV</a>
-        <a href="/solutions" class="nav-link">Optimize CV with AI</a>
-        <a href="/interview-prep" class="nav-link">Interview Prep</a>
-        <a href="/mock-interview" class="nav-link">Mock Interview</a>
-        <a href="/templates" class="nav-link">Templates</a>
-        <a href="/pricing" class="nav-link active">Pricing</a>
-        <a href="/blog" class="nav-link">Blog</a>
-    </nav>
-    <div class="nav-actions">
-        <div id="auth-nav-slot"></div>
-    </div>
-</header>
+    {% include "_nav.html" %}
 
     <main class="solutions-section pricing-page">
         <div class="container">
