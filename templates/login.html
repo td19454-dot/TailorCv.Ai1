@@ -743,10 +743,10 @@
     function getPostLoginRedirect() {
       const params = new URLSearchParams(window.location.search);
       const next = params.get('next') || '';
-      if (!next) return '/solutions';
+      if (!next) return '/dashboard';
       // Only allow same-origin relative paths.
-      if (!next.startsWith('/')) return '/solutions';
-      if (next.startsWith('//')) return '/solutions';
+      if (!next.startsWith('/')) return '/dashboard';
+      if (next.startsWith('//')) return '/dashboard';
       return next;
     }
 

@@ -424,38 +424,7 @@
 </head>
 <body>
 <canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
-    <header class="navbar">
-        <div class="left">
-            <div class="logo">
-                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
-            </div>
-        </div>
-        <button
-            type="button"
-            class="mobile-menu-toggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="primary-nav-solutions"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-<nav class="nav-links" id="primary-nav-solutions">
-            <a href="/" class="nav-link">Home</a>
-            <a href="/solutions" class="nav-link">ATS Score</a>
-            <a href="/modify-cv" class="nav-link">Make CV</a>
-            <a href="/solutions" class="nav-link active">Optimize CV with AI</a>
-            <a href="/interview-prep" class="nav-link">Interview Prep</a>
-            <a href="/mock-interview" class="nav-link">Mock Interview</a>
-            <a href="/templates" class="nav-link">Templates</a>
-            <a href="/pricing" class="nav-link">Pricing</a>
-            <a href="/blog" class="nav-link">Blog</a>
-        </nav>
-        <div class="nav-actions">
-            <div id="auth-nav-slot"></div>
-        </div>
-    </header>
+    {% include "_nav.html" %}
 
     <section class="solutions-section cv2-solutions">
         <div class="cv2-shell">
@@ -2098,6 +2067,20 @@ Nice to have:
 })();
 </script>
 
+<script>
+/* Prefill the job description when arriving from the dashboard "New scan" box. */
+(function () {
+    try {
+        var jd = sessionStorage.getItem("tcv_prefill_jd");
+        if (!jd) return;
+        sessionStorage.removeItem("tcv_prefill_jd");
+        document.addEventListener("DOMContentLoaded", function () {
+            var ta = document.getElementById("job-description");
+            if (ta) { ta.value = jd; ta.dispatchEvent(new Event("input", { bubbles: true })); }
+        });
+    } catch (e) {}
+})();
+</script>
 
 </body>
 </html>

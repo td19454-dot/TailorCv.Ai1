@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="/static/app_shell.css">
+<script src="/static/app_shell.js"></script>
+<header class="navbar">
+    <div class="left">
+        <div class="logo">
+            <a href="/"><img class="logo-text" src="/static/logo6.png" alt="theTailorCV Home"></a>
+        </div>
+    </div>
+    <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu"
+            aria-expanded="false" aria-controls="primary-nav">
+        <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="primary-nav">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/modify-cv" class="nav-link">Make CV</a>
+        <div class="nav-dropdown">
+            <button type="button" class="nav-link nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Features <span class="nav-caret">▾</span></button>
+            <div class="nav-dropdown-menu nav-mega-menu">
+                <a class="nav-mega-item" href="/solutions">
+                    <span class="nav-mega-ic">📊</span>
+                    <span class="nav-mega-tx"><strong>Resume Optimizer</strong><small>Tailor your resume &amp; pass ATS scans</small></span>
+                </a>
+                <a class="nav-mega-item" href="/cover-letter">
+                    <span class="nav-mega-ic">✉️</span>
+                    <span class="nav-mega-tx"><strong>AI Cover Letter</strong><small>Cover letters matched to the job</small></span>
+                </a>
+                <a class="nav-mega-item" href="/auto-apply">
+                    <span class="nav-mega-ic">🚀</span>
+                    <span class="nav-mega-tx"><strong>Auto Apply</strong><small>Auto-apply on Naukri &amp; Internshala</small></span>
+                </a>
+                <a class="nav-mega-item" href="/modify-cv?import=linkedin">
+                    <span class="nav-mega-ic">💼</span>
+                    <span class="nav-mega-tx"><strong>CV from LinkedIn</strong><small>Build your CV from your profile</small></span>
+                </a>
+                <a class="nav-mega-item" href="/templates">
+                    <span class="nav-mega-ic">🎨</span>
+                    <span class="nav-mega-tx"><strong>Resume Templates</strong><small>ATS-friendly, recruiter-ready</small></span>
+                </a>
+                <a class="nav-mega-item" href="/interview-prep">
+                    <span class="nav-mega-ic">❓</span>
+                    <span class="nav-mega-tx"><strong>Interview Prep</strong><small>Tailored interview questions</small></span>
+                </a>
+                <a class="nav-mega-item" href="/mock-interview">
+                    <span class="nav-mega-ic">🎤</span>
+                    <span class="nav-mega-tx"><strong>Mock Interview</strong><small>Practice live with AI feedback</small></span>
+                </a>
+                <a class="nav-mega-item" href="/my-resumes">
+                    <span class="nav-mega-ic">📁</span>
+                    <span class="nav-mega-tx"><strong>Job Tracker</strong><small>Track applications &amp; saved resumes</small></span>
+                </a>
+            </div>
+        </div>
+        <a href="/pricing" class="nav-link">Pricing</a>
+        <a href="/blog" class="nav-link">Blog</a>
+    </nav>
+    <div class="nav-actions">
+        <div id="auth-nav-slot"></div>
+    </div>
+</header>

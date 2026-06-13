@@ -49,7 +49,7 @@ from functions import (
 )
 
 from extraction import process_resume
-from models import PasswordResetToken, SavedResume, SignupVerificationCode, User, WelcomeEmailLog
+from models import JobApplication, PasswordResetToken, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
 from blog_system import BlogService, codehilite_css, xml_escape
@@ -124,7 +124,7 @@ app.add_middleware(SessionMiddleware, secret_key=_SECRET_KEY)
 # ── CSRF protection (double-submit cookie) ────────────────────────────────────
 @app.middleware("http")
 async def csrf_middleware(request: Request, call_next):
-    EXEMPT_PATHS = {"/api/linkedin/oauth/callback"}
+    EXEMPT_PATHS = {"/api/linkedin/oauth/callback", "/api/extension/log-application"}
     SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
 
     if request.method not in SAFE_METHODS and request.url.path not in EXEMPT_PATHS:
@@ -3885,6 +3885,288 @@ async def update_saved_resume(
     return RedirectResponse(url="/my-resumes", status_code=303)
 
 
+# ══════════════════════════════════════════════════════════════════════════════
+#  COVER LETTER GENERATOR
+# ══════════════════════════════════════════════════════════════════════════════
+
+@app.get("/cover-letter", response_class=HTMLResponse)
+async def cover_letter_page(request: Request):
+    """Standalone cover-letter generator (paste/upload resume + JD → AI letter)."""
+    return templates.TemplateResponse(
+        request,
+        "cover_letter.html",
+        {"request": request},
+    )
+
+
+COVER_LETTER_TONES = {
+    "professional": "professional and confident",
+    "warm": "warm and personable",
+    "concise": "concise and direct",
+}
+
+
+@app.post("/api/generate-cover-letter")
+async def generate_cover_letter(request: Request):
+    """Generate a tailored cover letter from a resume (PDF upload — preferred — or
+    pasted text) plus a job description.
+
+    Login-gated to match the signup-capture pattern used by the ATS score.
+    Reuses the existing AI helper (functions.get_resume_response), which enforces a
+    JSON response — so we ask for {"cover_letter": "..."} and parse it out."""
+    require_logged_in(request)
+
+    resume_text = ""
+    job_description = ""
+    tone_key = "professional"
+    file_path = None
+
+    try:
+        content_type = request.headers.get("content-type", "")
+        if "multipart/form-data" in content_type:
+            form = await request.form()
+            job_description = str(form.get("job_description") or "").strip()
+            tone_key = str(form.get("tone") or "professional").strip().lower()
+            resume_text = str(form.get("resume_text") or "").strip()
+            upload = form.get("resume_pdf")
+            # Prefer the uploaded PDF: extract its text server-side so the user only
+            # has to provide the PDF.
+            if not resume_text and upload is not None and getattr(upload, "filename", ""):
+                file_path = save_uploaded_pdf(upload)
+                with open(file_path, "wb") as buffer:
+                    buffer.write(await upload.read())
+                extracted = await asyncio.to_thread(extract_pdf_text, file_path)
+                resume_text = (extracted or "").strip()
+        else:
+            payload = await request.json()
+            resume_text = str(payload.get("resume_text") or "").strip()
+            job_description = str(payload.get("job_description") or "").strip()
+            tone_key = str(payload.get("tone") or "professional").strip().lower()
+    except HTTPException:
+        raise
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request.")
+    finally:
+        if file_path and os.path.exists(file_path):
+            os.remove(file_path)
+
+    tone = COVER_LETTER_TONES.get(tone_key, COVER_LETTER_TONES["professional"])
+
+    if len(resume_text) < 50:
+        raise HTTPException(
+            status_code=400,
+            detail="Couldn't read your resume. Upload a text-based PDF (not a scanned image), or paste your resume text.",
+        )
+    if len(job_description) < 30:
+        raise HTTPException(status_code=400, detail="Please provide the job description.")
+
+    # Bound input size to keep prompts within token limits.
+    resume_text = resume_text[:8000]
+    job_description = job_description[:6000]
+
+    prompt = (
+        "You are an expert career writer. Write a tailored cover letter for the candidate "
+        "below, matching the job description.\n\n"
+        f"Tone: {tone}.\n"
+        "Rules:\n"
+        "- 3 to 4 short paragraphs, under 300 words total.\n"
+        "- Open with genuine interest in the specific role; avoid clichés like "
+        "\"I am writing to apply\".\n"
+        "- Use concrete, relevant achievements and skills FROM THE RESUME that match the "
+        "job description. Never invent experience that is not in the resume.\n"
+        "- Close with a confident call to action. No markdown, no placeholder brackets, "
+        "no sign-off name line.\n\n"
+        "Return ONLY a JSON object of the form "
+        "{\"cover_letter\": \"<the full letter as plain text, with \\n between paragraphs>\"}.\n\n"
+        f"=== RESUME ===\n{resume_text}\n\n"
+        f"=== JOB DESCRIPTION ===\n{job_description}\n"
+    )
+
+    try:
+        raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+        parsed = parse_ai_json_response(raw)
+        letter = ((parsed.get("cover_letter") if isinstance(parsed, dict) else "") or "").strip()
+        if not letter:
+            raise ValueError("Empty cover letter returned")
+    except Exception:
+        logger.exception("Cover letter generation failed")
+        raise HTTPException(status_code=502, detail="Could not generate the cover letter. Please try again.")
+
+    return JSONResponse({"cover_letter": letter})
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  AUTO JOB APPLY — backend for the "TailorCV Auto Apply" Chrome extension
+# ══════════════════════════════════════════════════════════════════════════════
+
+@app.get("/auto-apply", response_class=HTMLResponse)
+async def auto_apply_page(request: Request):
+    """Landing + install page for auto-apply; lists the user's logged applications."""
+    user_id = request.session.get("user_id")
+    applications = []
+    if user_id:
+        db = get_db()
+        try:
+            applications = (
+                db.query(JobApplication)
+                .filter(JobApplication.user_id == user_id)
+                .order_by(JobApplication.created_at.desc())
+                .all()
+            )
+        finally:
+            db.close()
+    return templates.TemplateResponse(
+        request,
+        "auto_apply.html",
+        {"request": request, "applications": applications, "logged_in": bool(user_id)},
+    )
+
+
+@app.get("/api/extension/profile")
+async def extension_profile(request: Request):
+    """Profile the Chrome extension fetches to confirm the user is logged in and to
+    fill applications. Returns 401 when not logged in so the extension can prompt."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        latest = (
+            db.query(SavedResume)
+            .filter(SavedResume.user_id == user_id)
+            .order_by(SavedResume.created_at.desc())
+            .first()
+        )
+        profile = {
+            "name": user.name,
+            "email": user.email,
+            "has_resume": bool(latest),
+            "resume_title": latest.title if latest else None,
+        }
+    finally:
+        db.close()
+    return JSONResponse(profile)
+
+
+@app.post("/api/extension/log-application")
+async def extension_log_application(request: Request):
+    """Record a job the extension auto-applied to (CSRF-exempt; see EXEMPT_PATHS)."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+
+    company = (payload.get("company") or "Unknown Company").strip()[:200]
+    role = (payload.get("role") or "Unknown Role").strip()[:200]
+    url = (payload.get("url") or "").strip()[:500] or None
+
+    db = get_db()
+    try:
+        record = JobApplication(
+            user_id=user_id,
+            company=company,
+            role=role,
+            stage="applied",
+            job_url=url,
+        )
+        db.add(record)
+        db.commit()
+        db.refresh(record)
+        new_id = record.id
+    finally:
+        db.close()
+    return JSONResponse({"success": True, "id": new_id})
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  DASHBOARD — logged-in home base
+# ══════════════════════════════════════════════════════════════════════════════
+
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard_page(request: Request):
+    """Logged-in home base: a snapshot of the user's resumes, applications and tools."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return RedirectResponse(url="/login?next=/dashboard", status_code=302)
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            return RedirectResponse(url="/login?next=/dashboard", status_code=302)
+        resumes = (
+            db.query(SavedResume)
+            .filter(SavedResume.user_id == user_id)
+            .order_by(SavedResume.created_at.desc())
+            .all()
+        )
+        applications = (
+            db.query(JobApplication)
+            .filter(JobApplication.user_id == user_id)
+            .order_by(JobApplication.created_at.desc())
+            .all()
+        )
+        month = datetime.utcnow().strftime("%Y-%m")
+        usage = (
+            db.query(UsageRecord)
+            .filter(UsageRecord.user_id == user_id, UsageRecord.month == month)
+            .first()
+        )
+        # Most recent resume that actually has an ATS score.
+        latest_ats = next((r.ats_score for r in resumes if r.ats_score is not None), None)
+        ctx = {
+            "request": request,
+            "user_name": user.name,
+            "user_email": user.email,
+            "resume_count": len(resumes),
+            "recent_resumes": resumes[:5],
+            "latest_ats": latest_ats,
+            "application_count": len(applications),
+            "recent_applications": applications[:5],
+            "usage": usage,
+        }
+    finally:
+        db.close()
+    return templates.TemplateResponse(request, "dashboard.html", ctx)
+
+
+# Simple legal pages (linked from the profile menu).
+_LEGAL_PAGE = (
+    "<!doctype html><html><head><meta charset='utf-8'>"
+    "<meta name='viewport' content='width=device-width, initial-scale=1'>"
+    "<meta name='robots' content='noindex'><title>{title} | theTailorCV</title>"
+    "<style>body{{font-family:Inter,system-ui,sans-serif;background:#070f24;color:#dbe6ff;"
+    "margin:0;padding:60px 22px;}}.wrap{{max-width:760px;margin:0 auto;}}h1{{font-size:1.8rem;"
+    "margin-bottom:14px;}}p{{color:#9fb0cc;line-height:1.7;}}a{{color:#7db9ff;}}</style></head>"
+    "<body><div class='wrap'><a href='/dashboard'>&larr; Back</a><h1>{title}</h1>{body}</div></body></html>"
+)
+
+
+@app.get("/privacy", response_class=HTMLResponse, include_in_schema=False)
+async def privacy_page():
+    return HTMLResponse(_LEGAL_PAGE.format(
+        title="Privacy Policy",
+        body="<p>We respect your privacy. theTailorCV stores only the information needed to provide "
+             "resume optimization, ATS scoring, cover letters and job-application features. We do not "
+             "sell your data. Contact us to request deletion of your account and data.</p>",
+    ))
+
+
+@app.get("/terms", response_class=HTMLResponse, include_in_schema=False)
+async def terms_page():
+    return HTMLResponse(_LEGAL_PAGE.format(
+        title="Terms of Service",
+        body="<p>By using theTailorCV you agree to use the service lawfully and not to misuse the "
+             "tools or attempt to disrupt the platform. The service is provided as-is. We may update "
+             "these terms; continued use constitutes acceptance.</p>",
+    ))
+
+
 @app.get("/api/my-resumes/count", include_in_schema=False)
 async def my_resumes_count(request: Request):
     """How many resumes the current user has saved. Drives the one-time
@@ -5000,6 +5282,12 @@ async def download_html_pdf(request: Request):
     if not html:
         raise HTTPException(status_code=400, detail="Missing HTML payload")
 
+    # Optional caller-supplied download name (e.g. cover letters reuse this endpoint).
+    dl_name = str(payload.get("filename", "") or "").strip() or "optimized_resume_edited.pdf"
+    if not dl_name.lower().endswith(".pdf"):
+        dl_name += ".pdf"
+    dl_name = os.path.basename(dl_name)
+
     pdf_path = os.path.join(resumes_dir, f"edited_resume_{uuid.uuid4()}.pdf")
     try:
         from weasyprint import HTML
@@ -5007,7 +5295,7 @@ async def download_html_pdf(request: Request):
         return FileResponse(
             pdf_path,
             media_type="application/pdf",
-            filename="optimized_resume_edited.pdf",
+            filename=dl_name,
             background=BackgroundTask(_cleanup_files, [pdf_path])
         )
     except Exception as exc:
