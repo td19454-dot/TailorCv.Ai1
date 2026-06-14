@@ -40,6 +40,11 @@
         .cl-element-row { margin-bottom: 14px; }
         .cl-tone-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
         .cl-tone-row select { max-width: 200px; cursor: pointer; }
+        .cl-jd-head { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:8px; }
+        .cl-jd-head .cl-label { margin:0; text-transform:uppercase; letter-spacing:.04em; }
+        .cl-jd-picker-row { display:flex; align-items:center; gap:10px; color:#9b6cff; font-size:.86rem; font-weight:800; white-space:nowrap; }
+        .cl-jd-picker { position:relative; min-width:210px; }
+        @media (max-width: 720px) { .cl-jd-head { align-items:flex-start; flex-direction:column; } .cl-jd-picker-row, .cl-jd-picker { width:100%; } }
 
         .cl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer; font-weight: 700; font-size: 0.88rem; padding: 10px 16px; border-radius: 14px; transition: transform .18s, box-shadow .18s, opacity .18s; }
         .cl-btn-primary { background: linear-gradient(135deg, #4f7fff, #8d5cf7); color: #fff; width: 100%; }
@@ -114,12 +119,16 @@
                 <div class="cl-element-row">
                     <label class="cl-label" for="resume-file">Resume PDF</label>
                     <input type="file" id="resume-file" accept=".pdf">
-                    <div id="resume-file-name" class="cl-hint" style="margin-top:10px;"></div>
-                    <div class="cl-hint" style="margin-top:8px;">Upload your resume PDF. Your uploaded resume will be used to generate the cover letter.</div>
                 </div>
 
                 <div class="cl-element-row">
-                    <label class="cl-label" for="jd-text">Job description</label>
+                    <div class="cl-jd-head">
+                        <label class="cl-label" for="jd-text">Job description</label>
+                        <div class="cl-jd-picker-row">
+                            <span>Use sample JD:</span>
+                            <div id="jd-picker-wrapper" class="cl-jd-picker"></div>
+                        </div>
+                    </div>
                     <textarea id="jd-text" placeholder="Paste the job description you're applying to…"></textarea>
                 </div>
 
@@ -186,7 +195,6 @@
     <script>
     (function () {
         var resumeFile = document.getElementById('resume-file');
-        var resumeName = document.getElementById('resume-file-name');
         var jdText     = document.getElementById('jd-text');
         var toneSel    = document.getElementById('tone');
         var genBtn     = document.getElementById('generate-btn');
@@ -205,10 +213,1407 @@
         }
 
         resumeFile.addEventListener('change', function () {
-            var f = resumeFile.files && resumeFile.files[0];
-            resumeName.textContent = f ? ('Selected: ' + f.name) : '';
-            if (f) setStatus('');
+            if (resumeFile.files && resumeFile.files[0]) setStatus('');
         });
+
+    const DEFAULT_JDS = {
+        "backend": `Backend Software Engineer
+
+We are looking for a Backend Software Engineer to build and maintain scalable server-side systems.
+
+Responsibilities:
+- Design, develop, and maintain RESTful APIs and microservices
+- Optimize database queries and data models for performance and scalability
+- Collaborate with frontend engineers to define API contracts
+- Write unit and integration tests, maintain >80% code coverage
+- Participate in code reviews and technical design discussions
+- Monitor production systems and resolve incidents
+
+Requirements:
+- 2+ years of experience in backend development
+- Proficiency in Python, Java, Go, or Node.js
+- Experience with relational databases (PostgreSQL, MySQL) and NoSQL (Redis, MongoDB)
+- Familiarity with Docker, Kubernetes, and CI/CD pipelines
+- Understanding of REST, gRPC, and message queues (Kafka, RabbitMQ)
+- Strong problem-solving skills and attention to code quality
+
+Nice to have:
+- Experience with cloud platforms (AWS, GCP, Azure)
+- Knowledge of distributed systems and system design principles`,
+
+        "frontend": `Frontend Software Engineer
+
+We are seeking a Frontend Engineer to craft fast, accessible, and beautiful user interfaces.
+
+Responsibilities:
+- Build responsive, performant UI components using React or Vue.js
+- Collaborate with designers to implement pixel-perfect interfaces from Figma
+- Optimise web performance (Core Web Vitals, bundle size, lazy loading)
+- Write unit and end-to-end tests using Jest and Cypress
+- Integrate with RESTful and GraphQL APIs
+- Maintain and improve the component library and design system
+
+Requirements:
+- 2+ years of experience with modern JavaScript (ES6+)
+- Strong proficiency in React.js or Vue.js
+- Solid understanding of HTML5, CSS3, and responsive design
+- Experience with state management (Redux, Zustand, Pinia)
+- Familiarity with build tools (Webpack, Vite) and CI/CD
+- Understanding of web accessibility (WCAG 2.1)
+
+Nice to have:
+- TypeScript experience
+- Knowledge of SSR/SSG frameworks (Next.js, Nuxt)`,
+
+        "fullstack": `Full Stack Software Engineer
+
+We are hiring a Full Stack Engineer to own features end-to-end across our web platform.
+
+Responsibilities:
+- Develop and maintain features across the entire stack (React frontend + Node.js/Python backend)
+- Design and implement database schemas and RESTful APIs
+- Deploy and monitor services on cloud infrastructure (AWS/GCP)
+- Collaborate with product managers and designers in an agile environment
+- Conduct code reviews and mentor junior engineers
+- Identify and fix performance bottlenecks across the stack
+
+Requirements:
+- 3+ years of full stack development experience
+- Proficiency in React or Angular on the frontend
+- Proficiency in Node.js, Python, or Java on the backend
+- Experience with PostgreSQL or MongoDB
+- Familiarity with Docker and basic DevOps practices
+- Strong understanding of RESTful API design
+
+Nice to have:
+- Experience with TypeScript
+- Exposure to microservices architecture`,
+
+        "data-scientist": `Data Scientist
+
+We are looking for a Data Scientist to extract actionable insights from large datasets and build predictive models.
+
+Responsibilities:
+- Develop and deploy machine learning models for classification, regression, and recommendation
+- Conduct exploratory data analysis (EDA) and communicate findings to stakeholders
+- Build data pipelines to clean, transform, and prepare datasets for modelling
+- A/B test product features and analyse experiment results
+- Collaborate with engineering teams to productionise models
+- Present results and recommendations to non-technical audiences
+
+Requirements:
+- 2+ years of experience in data science or a related field
+- Strong proficiency in Python (pandas, NumPy, scikit-learn)
+- Experience with machine learning frameworks (TensorFlow, PyTorch, or XGBoost)
+- Solid understanding of statistics, probability, and experimental design
+- Experience with SQL and working with large datasets
+- Familiarity with data visualisation tools (Matplotlib, Seaborn, Tableau)
+
+Nice to have:
+- Experience with cloud ML platforms (SageMaker, Vertex AI)
+- Knowledge of NLP or computer vision`,
+
+        "ml-engineer": `Machine Learning Engineer
+
+We are seeking an ML Engineer to bridge research and production — building reliable, scalable ML systems.
+
+Responsibilities:
+- Design, train, and deploy machine learning models into production
+- Build and maintain ML pipelines and feature stores
+- Optimise models for latency, throughput, and cost
+- Collaborate with data scientists to productionise experimental models
+- Monitor model performance and implement retraining workflows
+- Write high-quality, well-tested Python code
+
+Requirements:
+- 3+ years of experience in ML engineering or software engineering with an ML focus
+- Strong Python skills and experience with PyTorch or TensorFlow
+- Experience deploying models via REST APIs or model serving frameworks (TorchServe, TF Serving)
+- Knowledge of MLOps tools (MLflow, Kubeflow, Airflow)
+- Familiarity with Docker, Kubernetes, and cloud platforms (AWS/GCP/Azure)
+- Understanding of data processing at scale (Spark, Dask)
+
+Nice to have:
+- Experience with LLMs and prompt engineering
+- Background in distributed training`,
+
+        "devops": `DevOps / Cloud Engineer
+
+We are hiring a DevOps Engineer to build and maintain the infrastructure that powers our products.
+
+Responsibilities:
+- Design and manage cloud infrastructure on AWS / GCP using Terraform or CDK
+- Build and maintain CI/CD pipelines (GitHub Actions, Jenkins, GitLab CI)
+- Manage Kubernetes clusters and containerised workloads
+- Implement observability stack — logging, metrics, and alerting (Datadog, Prometheus, Grafana)
+- Automate security hardening, patching, and compliance checks
+- Collaborate with engineering teams to improve deployment velocity and reliability
+
+Requirements:
+- 3+ years of DevOps or SRE experience
+- Strong experience with AWS or GCP services (EC2, EKS, RDS, S3, GKE, Cloud Run)
+- Proficiency in infrastructure-as-code (Terraform, Pulumi)
+- Experience with Docker and Kubernetes
+- Scripting skills in Bash and Python
+- Knowledge of networking (VPC, DNS, load balancers, firewalls)
+
+Nice to have:
+- Certified AWS Solutions Architect or GCP Professional Cloud Engineer
+- Experience with service mesh (Istio, Linkerd)`,
+
+        "data-engineer": `Data Engineer
+
+We are looking for a Data Engineer to build robust data pipelines and maintain our analytics infrastructure.
+
+Responsibilities:
+- Design, build, and maintain ELT/ETL pipelines using Apache Airflow or dbt
+- Manage data warehouse architecture (Snowflake, BigQuery, or Redshift)
+- Ensure data quality, lineage, and observability across all pipelines
+- Collaborate with data scientists and analysts to understand data requirements
+- Optimise query performance and storage costs
+- Build and maintain real-time streaming pipelines (Kafka, Flink)
+
+Requirements:
+- 2+ years of data engineering experience
+- Strong SQL skills and experience with columnar databases (BigQuery, Redshift, Snowflake)
+- Proficiency in Python for data processing and automation
+- Experience with Apache Airflow or similar orchestration tools
+- Familiarity with cloud storage (S3, GCS) and data lake patterns
+- Understanding of data modelling (star schema, dimensional modelling)
+
+Nice to have:
+- Experience with dbt (data build tool)
+- Knowledge of streaming technologies (Kafka, Spark Streaming)`,
+
+        "android": `Android Engineer
+
+We are seeking an Android Engineer to build high-quality, user-friendly mobile applications.
+
+Responsibilities:
+- Design and develop new features for our Android application
+- Write clean, maintainable Kotlin code following MVVM architecture
+- Collaborate with designers to implement UI from Figma designs
+- Integrate with REST APIs and manage local data with Room
+- Write unit and UI tests using JUnit and Espresso
+- Publish releases and monitor app performance on the Play Store
+
+Requirements:
+- 2+ years of Android development experience
+- Proficiency in Kotlin (and/or Java)
+- Strong understanding of Android SDK, Jetpack components (ViewModel, LiveData, Navigation)
+- Experience with Retrofit, OkHttp, and coroutines
+- Knowledge of Material Design guidelines
+- Familiarity with Git and CI/CD for mobile (Fastlane, GitHub Actions)
+
+Nice to have:
+- Experience with Jetpack Compose
+- Knowledge of performance profiling tools (Android Profiler)`,
+
+        "ios": `iOS Engineer
+
+We are hiring an iOS Engineer to deliver polished, performant experiences on Apple platforms.
+
+Responsibilities:
+- Develop new features and maintain existing code for our iOS application
+- Write Swift code following MVVM or Clean Architecture patterns
+- Implement responsive UI using UIKit and/or SwiftUI
+- Integrate REST APIs using URLSession or Alamofire
+- Write unit and snapshot tests using XCTest
+- Submit builds via Xcode and monitor crashes via Crashlytics / Firebase
+
+Requirements:
+- 2+ years of iOS development experience
+- Proficiency in Swift
+- Strong knowledge of UIKit and/or SwiftUI
+- Experience with Combine or async/await for concurrency
+- Familiarity with Core Data or Realm for local persistence
+- Understanding of App Store submission and review guidelines
+
+Nice to have:
+- Experience with cross-platform tools (React Native, Flutter)
+- Knowledge of Instruments for performance profiling`,
+
+        "sre": `Site Reliability Engineer (SRE)
+
+We are looking for an SRE to keep our platform reliable, scalable, and observable.
+
+Responsibilities:
+- Define and track SLOs, SLIs, and error budgets for critical services
+- Respond to and lead post-mortems for production incidents
+- Automate manual operational tasks to reduce toil
+- Build and maintain observability tooling (Prometheus, Grafana, PagerDuty)
+- Partner with engineering teams to build reliability into services from the start
+- Manage capacity planning and performance tuning
+
+Requirements:
+- 3+ years of SRE or production engineering experience
+- Strong Linux administration and scripting skills (Bash, Python)
+- Experience with Kubernetes and cloud platforms (AWS/GCP)
+- Proficiency with monitoring and alerting tools (Prometheus, Datadog)
+- Solid understanding of distributed systems, networking, and storage
+- Experience with incident management and on-call rotations
+
+Nice to have:
+- Experience with chaos engineering (Chaos Monkey, Gremlin)
+- Background in software development`,
+
+        "qa": `QA / Test Engineer
+
+We are seeking a QA Engineer to ensure the quality and reliability of our software products.
+
+Responsibilities:
+- Design and execute manual and automated test plans for new features and regression
+- Build and maintain test automation frameworks using Selenium, Playwright, or Cypress
+- Perform API testing with Postman and write automated API tests
+- Identify, document, and track bugs through to resolution
+- Collaborate with developers and product managers during sprint planning
+- Drive quality metrics — test coverage, defect escape rate, and automation rate
+
+Requirements:
+- 2+ years of QA or test engineering experience
+- Experience writing automated tests in Python, JavaScript, or Java
+- Proficiency with Selenium, Playwright, or Cypress
+- Knowledge of REST API testing tools (Postman, RestAssured)
+- Understanding of CI/CD and integrating tests into pipelines
+- Solid knowledge of SDLC and agile methodologies
+
+Nice to have:
+- Experience with performance testing (JMeter, k6)
+- ISTQB certification`,
+
+        "security": `Security Engineer
+
+We are hiring a Security Engineer to protect our infrastructure, applications, and customer data.
+
+Responsibilities:
+- Conduct threat modelling, security code reviews, and penetration testing
+- Implement and monitor SIEM, IDS/IPS, and vulnerability scanning tools
+- Design and enforce security policies for cloud infrastructure (AWS/GCP)
+- Respond to security incidents and lead post-incident investigations
+- Ensure compliance with SOC 2, ISO 27001, or GDPR requirements
+- Educate engineering teams on secure coding practices (OWASP Top 10)
+
+Requirements:
+- 3+ years of experience in application or cloud security
+- Strong knowledge of web application security vulnerabilities (OWASP Top 10)
+- Experience with cloud security (IAM, VPC, security groups, KMS)
+- Familiarity with penetration testing tools (Burp Suite, Metasploit, Nmap)
+- Understanding of cryptography and PKI
+- Experience with security automation and scripting in Python or Bash
+
+Nice to have:
+- Security certifications (CISSP, CEH, OSCP)
+- Experience with bug bounty programmes`,
+
+        "data-analyst": `Data Analyst
+
+We are looking for a Data Analyst to turn raw data into clear insights that drive business decisions.
+
+Responsibilities:
+- Collect, clean, and analyse large datasets from multiple sources
+- Build and maintain dashboards and reports in Tableau, Power BI, or Looker
+- Write complex SQL queries to extract insights from data warehouses
+- Partner with business stakeholders to define KPIs and success metrics
+- Perform A/B test analysis and present statistical findings
+- Identify trends, anomalies, and opportunities in business data
+
+Requirements:
+- 2+ years of experience in data analysis or a related role
+- Advanced SQL skills (window functions, CTEs, query optimisation)
+- Proficiency in Python or R for data analysis (pandas, NumPy, Matplotlib)
+- Experience with BI tools (Tableau, Power BI, Looker, or Google Data Studio)
+- Strong understanding of statistics and data visualisation best practices
+- Ability to communicate findings clearly to non-technical stakeholders
+
+Nice to have:
+- Experience with data warehouses (BigQuery, Redshift, Snowflake)
+- Knowledge of Excel / Google Sheets for quick analysis`,
+
+        "mechanical": `Mechanical Engineer
+
+We are seeking a Mechanical Engineer to design, develop, and improve mechanical systems and products.
+
+Responsibilities:
+- Design and develop mechanical components and assemblies using CAD software (SolidWorks, AutoCAD, CATIA)
+- Perform engineering calculations, stress analysis, and FEA simulations
+- Create detailed engineering drawings, BOMs, and technical documentation
+- Collaborate with manufacturing teams to ensure design-for-manufacturability (DFM)
+- Conduct prototype testing, root cause analysis, and design iterations
+- Ensure designs meet regulatory standards (ISO, ASME, DIN)
+
+Requirements:
+- Bachelor's degree in Mechanical Engineering or related field
+- 2+ years of industry experience in product design or manufacturing
+- Proficiency in CAD software (SolidWorks, AutoCAD, or CATIA)
+- Knowledge of materials science, thermodynamics, and fluid mechanics
+- Familiarity with GD&T and engineering drawing standards
+- Experience with FEA tools (ANSYS, ABAQUS) is a plus
+
+Nice to have:
+- Experience with PLM systems (Siemens Teamcenter, PTC Windchill)
+- Exposure to lean manufacturing or Six Sigma methodologies`,
+
+        "electrical": `Electrical Engineer
+
+We are hiring an Electrical Engineer to design, test, and maintain electrical systems and components.
+
+Responsibilities:
+- Design electrical schematics, PCB layouts, and wiring diagrams
+- Develop and test embedded systems and firmware for hardware products
+- Perform power system analysis, load flow studies, and circuit simulations (SPICE, MATLAB)
+- Collaborate with mechanical and software teams on integrated system design
+- Conduct lab testing, debugging, and root cause failure analysis
+- Ensure compliance with electrical safety standards (IEC, UL, NEC)
+
+Requirements:
+- Bachelor's degree in Electrical Engineering or Electronics
+- 2+ years of experience in electrical or electronics engineering
+- Proficiency in PCB design tools (Altium Designer, KiCad, Eagle)
+- Strong knowledge of analog/digital circuits, power electronics, and signal processing
+- Familiarity with microcontrollers and embedded C/C++ programming
+- Understanding of EMC/EMI testing and certification processes
+
+Nice to have:
+- Experience with FPGA design (VHDL, Verilog)
+- Knowledge of motor drives, power converters, or battery management systems`,
+
+        "chemical": `Chemical Engineer
+
+We are looking for a Chemical Engineer to design processes and optimise production operations.
+
+Responsibilities:
+- Design and optimise chemical processes, reactors, and separation systems
+- Develop and review process flow diagrams (PFDs) and piping & instrumentation diagrams (P&IDs)
+- Perform material and energy balance calculations and process simulations (Aspen Plus, HYSYS)
+- Ensure safe operation of chemical plants in compliance with OSHA and EPA regulations
+- Lead scale-up activities from lab to pilot to full-scale production
+- Investigate process deviations, conduct root cause analysis, and implement corrective actions
+
+Requirements:
+- Bachelor's degree in Chemical Engineering
+- 2+ years of experience in process engineering, plant operations, or R&D
+- Proficiency in process simulation software (Aspen Plus, Aspen HYSYS, or CHEMCAD)
+- Strong foundation in thermodynamics, reaction kinetics, and mass transfer
+- Familiarity with process safety management (PSM) and HAZOP studies
+- Knowledge of quality systems (ISO 9001, GMP for pharma or food)
+
+Nice to have:
+- Professional Engineer (PE) license
+- Experience in petrochemicals, pharmaceuticals, or specialty chemicals`,
+
+        "civil": `Civil Engineer
+
+We are seeking a Civil Engineer to plan, design, and oversee construction and infrastructure projects.
+
+Responsibilities:
+- Design structural, transportation, or hydraulic systems using AutoCAD Civil 3D and STAAD.Pro
+- Prepare engineering reports, specifications, and cost estimates
+- Manage project timelines, contractor coordination, and site inspections
+- Ensure compliance with local building codes, environmental regulations, and safety standards
+- Perform geotechnical assessments, soil analysis, and foundation design
+- Coordinate with government agencies, clients, and multidisciplinary teams
+
+Requirements:
+- Bachelor's degree in Civil Engineering
+- 2+ years of experience in structural, transportation, or water resources engineering
+- Proficiency in AutoCAD, Civil 3D, or Revit
+- Knowledge of structural analysis software (STAAD.Pro, SAP2000, ETABS)
+- Understanding of codes and standards (ACI, ASCE, IS codes)
+- Strong project management and communication skills
+
+Nice to have:
+- Professional Engineer (PE) or chartered engineer status
+- Experience with BIM (Building Information Modelling)`,
+
+        "embedded": `Embedded Systems Engineer
+
+We are hiring an Embedded Systems Engineer to develop firmware and low-level software for hardware products.
+
+Responsibilities:
+- Develop and maintain firmware for microcontrollers and SoCs (ARM Cortex-M, RISC-V)
+- Write real-time software in C/C++ for bare-metal and RTOS environments (FreeRTOS, Zephyr)
+- Integrate hardware peripherals: UART, SPI, I2C, CAN, USB, Ethernet
+- Debug hardware-software issues using oscilloscopes, logic analysers, and JTAG
+- Collaborate with hardware engineers during board bring-up and PCB validation
+- Write low-level device drivers and BSPs
+
+Requirements:
+- 2+ years of embedded firmware development experience
+- Proficiency in C/C++ for resource-constrained environments
+- Strong understanding of microcontroller architectures and peripherals
+- Experience with at least one RTOS (FreeRTOS, ThreadX, Zephyr)
+- Familiarity with version control (Git) and build systems (CMake, Make)
+- Hands-on debugging experience with JTAG, GDB, and lab instruments
+
+Nice to have:
+- Experience with Linux kernel drivers or Yocto Project
+- Knowledge of wireless protocols (BLE, Wi-Fi, LoRa, Zigbee)`,
+
+        "nurse-general": `Registered Nurse (General)
+
+We are seeking a compassionate and skilled Registered Nurse to deliver high-quality patient care.
+
+Responsibilities:
+- Assess, plan, implement, and evaluate nursing care for assigned patients
+- Administer medications, IV therapy, and treatments as prescribed
+- Monitor and document patient vital signs, symptoms, and response to treatment
+- Collaborate with physicians, allied health professionals, and multidisciplinary teams
+- Educate patients and families on diagnoses, medications, and discharge planning
+- Maintain accurate and up-to-date patient records using EMR systems (Epic, Cerner)
+- Respond promptly to changes in patient condition and initiate emergency protocols
+
+Requirements:
+- Valid Registered Nurse (RN) license in the relevant state/country
+- Bachelor of Science in Nursing (BSN) preferred
+- 1+ year of clinical nursing experience (new graduates considered)
+- Current BLS/CPR certification (ACLS preferred)
+- Strong clinical assessment and critical thinking skills
+- Excellent communication, empathy, and teamwork abilities
+
+Nice to have:
+- Experience with specific patient populations (medical-surgical, oncology, orthopedics)
+- Additional certifications (CMSRN, ONC)`,
+
+        "nurse-icu": `ICU / Critical Care Nurse
+
+We are seeking an experienced ICU Nurse to deliver expert care to critically ill patients.
+
+Responsibilities:
+- Provide direct nursing care to critically ill patients in the intensive care unit
+- Continuously monitor haemodynamic status, ventilator settings, and invasive lines
+- Administer vasoactive medications, sedation, and complex IV infusions via titration protocols
+- Assist with invasive procedures (central lines, arterial lines, intubation)
+- Interpret ABGs, cardiac rhythms, and laboratory values to guide care decisions
+- Communicate patient status changes urgently to the attending physician and care team
+- Support families during stressful situations with empathy and clear communication
+
+Requirements:
+- Valid RN license with 2+ years of critical care or ICU experience
+- Current ACLS and BLS certification; CCRN certification preferred
+- Proficiency with mechanical ventilators, haemodynamic monitoring, and vasoactive drips
+- Strong knowledge of critical care pharmacology and protocols
+- Experience with EMR systems (Epic, Cerner, Meditech)
+- Ability to work calmly under pressure in a fast-paced environment
+
+Nice to have:
+- Experience in CVICU, MICU, SICU, or Neuro ICU
+- ECMO training or experience`,
+
+        "teacher-school": `School Teacher (K-12)
+
+We are looking for an enthusiastic and dedicated School Teacher to inspire students and deliver high-quality education.
+
+Responsibilities:
+- Plan, prepare, and deliver engaging lessons aligned with the national/state curriculum
+- Create a positive, inclusive, and stimulating classroom environment
+- Assess and track student progress through formative and summative evaluations
+- Provide constructive feedback and differentiated instruction to meet diverse learning needs
+- Communicate regularly with parents and guardians regarding student progress and behaviour
+- Participate in staff meetings, professional development, and extracurricular activities
+- Maintain accurate student records and reports
+
+Requirements:
+- Bachelor's degree in Education (B.Ed.) or relevant subject discipline
+- Valid teaching licence/certificate for the relevant state or country
+- 1+ year of classroom teaching experience (student teaching considered)
+- Strong knowledge of curriculum standards and pedagogy
+- Excellent communication, patience, and classroom management skills
+- Ability to use educational technology tools (Google Classroom, MS Teams, interactive whiteboards)
+
+Nice to have:
+- Experience with differentiated instruction or project-based learning (PBL)
+- Additional certifications in special education or ESL`,
+
+        "teacher-science": `Science / Mathematics Teacher
+
+We are seeking a motivated Science or Mathematics Teacher to deliver challenging and engaging STEM lessons.
+
+Responsibilities:
+- Teach Science (Physics, Chemistry, Biology) or Mathematics to students in grades 6–12
+- Develop lesson plans, lab activities, and assessments aligned to curriculum standards
+- Conduct safe and effective laboratory sessions, demonstrating experimental procedures
+- Use data-driven instruction to identify learning gaps and adjust teaching strategies
+- Prepare students for national/state standardised examinations
+- Integrate technology and STEM resources into daily instruction
+- Mentor students in science fairs, Olympiads, or math competitions
+
+Requirements:
+- Bachelor's or Master's degree in Science, Mathematics, or Education
+- Valid state teaching certificate in Science or Mathematics
+- 1+ year of secondary school teaching experience
+- Deep subject-matter knowledge and ability to make complex concepts accessible
+- Experience with laboratory safety and equipment management
+- Familiarity with learning management systems (LMS) and digital tools
+
+Nice to have:
+- Experience coaching Science Olympiad, robotics, or math teams
+- Knowledge of AP, IB, or A-Level curriculum`,
+
+        "teacher-english": `English / Language Arts Teacher
+
+We are hiring an English / Language Arts Teacher to cultivate strong literacy, communication, and critical thinking skills.
+
+Responsibilities:
+- Teach reading, writing, grammar, and literature to students across grade levels
+- Design and implement engaging lessons on literary analysis, creative writing, and research skills
+- Facilitate Socratic seminars and classroom discussions to develop critical thinking
+- Assess student writing using rubrics and provide detailed, constructive feedback
+- Prepare students for standardised English/Language Arts assessments
+- Support English Language Learners (ELL) with differentiated instruction
+- Incorporate diverse texts, authors, and perspectives into the curriculum
+
+Requirements:
+- Bachelor's degree in English, Literature, Education, or related field
+- Valid teaching licence for English / Language Arts
+- 1+ year of teaching experience at the relevant grade level
+- Strong written and verbal communication skills
+- Ability to engage students with varied reading levels and learning styles
+- Familiarity with writing workshop models and evidence-based literacy strategies
+
+Nice to have:
+- ESL/ESOL certification
+- Experience teaching AP English Literature or Language and Composition`,
+
+        "teacher-university": `University Lecturer / Assistant Professor
+
+We are seeking a University Lecturer to teach undergraduate or postgraduate courses and contribute to departmental research.
+
+Responsibilities:
+- Deliver lectures, seminars, and tutorials for undergraduate and/or postgraduate students
+- Develop course syllabi, reading lists, assessments, and examination papers
+- Provide academic supervision and mentorship to students on dissertations and projects
+- Conduct and publish original research in peer-reviewed journals and conferences
+- Participate in departmental committees, curriculum review, and accreditation processes
+- Support student welfare and academic progress through office hours and feedback sessions
+- Pursue external funding opportunities (grants, research partnerships)
+
+Requirements:
+- PhD or Master's degree in the relevant discipline (PhD strongly preferred)
+- Demonstrated teaching experience at the higher education level
+- Active research profile with publications or ongoing research projects
+- Excellent public speaking, facilitation, and academic writing skills
+- Ability to supervise student research at undergraduate and postgraduate levels
+- Familiarity with LMS platforms (Blackboard, Moodle, Canvas)
+
+Nice to have:
+- Postgraduate Certificate in Higher Education (PGCHE) or equivalent teaching qualification
+- Experience attracting research grants or external funding`,
+
+        "teacher-special": `Special Education Teacher
+
+We are hiring a compassionate Special Education Teacher to support students with diverse learning needs.
+
+Responsibilities:
+- Develop and implement Individualised Education Plans (IEPs) for students with disabilities
+- Deliver specialised instruction to students with learning disabilities, autism, ADHD, or physical impairments
+- Collaborate with general education teachers, therapists, and administrators to provide inclusive support
+- Monitor and document student progress toward IEP goals using data-driven methods
+- Communicate regularly with parents and guardians about student goals and progress
+- Adapt curriculum materials, assessments, and classroom environments to meet individual needs
+- Manage paraprofessionals and support staff assigned to the classroom
+
+Requirements:
+- Bachelor's or Master's degree in Special Education or related field
+- Valid Special Education teaching licence/certification
+- 1+ year of experience working with students with special needs
+- Knowledge of IEP development, IDEA regulations, and disability law
+- Strong ability to differentiate instruction and use assistive technology
+- Patient, empathetic, and skilled in positive behaviour support strategies
+
+Nice to have:
+- Board Certified Behaviour Analyst (BCBA) credential
+- Experience with AAC (Augmentative and Alternative Communication) devices`,
+
+        "product-manager": `Product Manager
+
+We are looking for a strategic and customer-obsessed Product Manager to drive the vision, strategy, and execution of our product roadmap.
+
+Responsibilities:
+- Define and communicate the product vision, strategy, and roadmap aligned with business goals
+- Gather and prioritise product requirements from customers, stakeholders, and market research
+- Write detailed product requirements documents (PRDs) and user stories for engineering teams
+- Collaborate with engineering, design, marketing, and sales to deliver high-quality features on time
+- Define and track key product metrics (DAU, retention, conversion, NPS) to measure success
+- Conduct user interviews, usability tests, and A/B experiments to validate product decisions
+- Manage the product backlog, prioritise features, and facilitate sprint planning in agile ceremonies
+- Present product updates, roadmaps, and business cases to executive stakeholders
+
+Requirements:
+- 3+ years of product management experience in a software or technology company
+- Strong ability to translate customer problems into clear product requirements
+- Experience working in agile/scrum environments with cross-functional teams
+- Data-driven mindset — comfortable with SQL, analytics tools (Mixpanel, Amplitude, Looker)
+- Excellent written and verbal communication skills; ability to influence without authority
+- Experience conducting user research and synthesising insights into actionable decisions
+
+Nice to have:
+- Technical background (engineering, computer science) or MBA
+- Experience with B2B SaaS, marketplace, or consumer products
+- Familiarity with product frameworks (RICE, OKRs, Jobs-to-be-Done)`,
+
+        "business-analyst": `Business Analyst
+
+We are seeking a Business Analyst to bridge the gap between business needs and technology solutions, driving data-informed decision making.
+
+Responsibilities:
+- Elicit, document, and validate business requirements from stakeholders across departments
+- Translate business requirements into functional specifications, process flows, and use cases
+- Analyse business processes, identify inefficiencies, and recommend improvements
+- Develop dashboards, reports, and ad-hoc analyses to support business decision making
+- Work with IT and development teams to ensure solutions meet business needs
+- Facilitate workshops, stakeholder interviews, and requirements-gathering sessions
+- Perform gap analysis between current and future-state business processes
+- Support UAT by developing test cases and coordinating user acceptance testing
+
+Requirements:
+- 2+ years of experience as a Business Analyst or in a similar analytical role
+- Strong analytical and problem-solving skills with high attention to detail
+- Proficiency in SQL for data extraction and analysis
+- Experience with data visualisation tools (Power BI, Tableau, or Looker)
+- Ability to create clear documentation: BRDs, user stories, process maps, and wireframes
+- Excellent communication and stakeholder management skills
+- Familiarity with agile and waterfall project methodologies
+
+Nice to have:
+- CBAP (Certified Business Analysis Professional) or PMI-PBA certification
+- Experience with ERP systems (SAP, Oracle) or CRM platforms (Salesforce)
+- Knowledge of process modelling tools (Visio, Lucidchart, BPMN)`,
+
+        "financial-analyst": `Financial Analyst
+
+We are hiring a Financial Analyst to support financial planning, analysis, and reporting that drives strategic business decisions.
+
+Responsibilities:
+- Build and maintain financial models for budgeting, forecasting, and long-range planning
+- Prepare monthly, quarterly, and annual financial reports with variance analysis and commentary
+- Conduct profitability analysis, cost modelling, and scenario/sensitivity analysis
+- Partner with business unit leaders to provide financial insights and support decision making
+- Analyse financial performance against budget and prior periods; identify trends and risks
+- Support month-end and year-end close processes in collaboration with accounting teams
+- Assist in preparing board presentations, investor decks, and executive management reports
+- Evaluate capital expenditure requests and investment proposals using NPV, IRR, and payback analysis
+
+Requirements:
+- Bachelor's degree in Finance, Accounting, Economics, or related field
+- 2+ years of experience in financial analysis, FP&A, investment banking, or consulting
+- Advanced Excel skills (financial modelling, pivot tables, Power Query)
+- Strong understanding of financial statements (P&L, balance sheet, cash flow)
+- Experience with ERP or financial planning tools (SAP, Oracle, Adaptive Planning, Anaplan)
+- Excellent analytical, quantitative, and presentation skills
+
+Nice to have:
+- CFA (Chartered Financial Analyst) candidate or charterholder
+- Experience with Power BI or Tableau for financial dashboards
+- Background in a high-growth startup, investment bank, or Big 4 consulting firm`,
+
+        "nurse-pediatric": `Pediatric Nurse
+
+We are looking for a dedicated Pediatric Nurse to provide compassionate, family-centred care to children.
+
+Responsibilities:
+- Assess and monitor the health status of paediatric patients from neonates to adolescents
+- Administer age-appropriate medications, vaccinations, and treatments
+- Perform paediatric-specific assessments and recognise signs of deterioration using PEWS
+- Communicate diagnosis, treatment plans, and care instructions to parents and guardians
+- Provide emotional support and age-appropriate distraction during procedures
+- Collaborate with paediatricians, therapists, and social workers in multidisciplinary rounds
+- Document care accurately in the electronic medical record (EMR)
+
+Requirements:
+- Valid RN license with 1+ year of paediatric or neonatal nursing experience
+- Current BLS/PALS certification
+- Knowledge of growth and development across paediatric age groups
+- Ability to build trust and rapport with children and their families
+- Strong clinical assessment skills in a paediatric setting
+- Experience with paediatric EMR workflows (Epic, Cerner)
+
+Nice to have:
+- Certified Paediatric Nurse (CPN) credential
+- NICU or PICU experience`,
+
+        "cloud-architect": `Cloud Architect
+
+We are seeking an experienced Cloud Architect to design, build, and govern our cloud infrastructure strategy.
+
+Responsibilities:
+- Design scalable, secure, and cost-optimised cloud architectures on AWS, GCP, or Azure
+- Define cloud standards, patterns, and best practices across engineering teams
+- Lead cloud migration initiatives from on-premises to cloud-native environments
+- Evaluate and recommend cloud services, tools, and third-party integrations
+- Collaborate with security and compliance teams to ensure regulatory requirements are met
+- Provide technical leadership and mentoring to DevOps and platform engineering teams
+- Develop disaster recovery, backup, and business continuity strategies
+
+Requirements:
+- 5+ years of experience in cloud infrastructure or solutions architecture
+- Deep expertise in AWS, GCP, or Azure (multi-cloud experience preferred)
+- Strong knowledge of networking, security, identity management, and cost optimisation
+- Experience with IaC tools (Terraform, Pulumi, CloudFormation)
+- Proficiency in containerisation and orchestration (Docker, Kubernetes)
+- Excellent communication skills to present architecture decisions to stakeholders
+
+Nice to have:
+- AWS Solutions Architect Professional, GCP Professional Cloud Architect, or Azure Solutions Architect Expert certification
+- Experience with FinOps and cloud cost management`,
+
+        "technical-lead": `Technical Lead / Staff Engineer
+
+We are looking for a Technical Lead to guide engineering execution, uphold code quality, and shape the technical direction of our platform.
+
+Responsibilities:
+- Lead the technical design and delivery of complex, cross-team features
+- Conduct code reviews, define coding standards, and enforce engineering best practices
+- Break down large initiatives into well-scoped tasks for the engineering team
+- Collaborate closely with product managers to assess technical feasibility and trade-offs
+- Mentor and coach junior and mid-level engineers through pairing and design reviews
+- Drive technical debt reduction, refactoring initiatives, and performance improvements
+- Contribute to hiring by conducting technical interviews and evaluating candidates
+
+Requirements:
+- 5+ years of software engineering experience with 2+ years in a tech lead or senior IC role
+- Strong proficiency in one or more languages (Python, Go, Java, TypeScript)
+- Demonstrated ability to design scalable distributed systems
+- Experience leading delivery in agile teams
+- Excellent written and verbal communication skills for technical documentation
+- Strong sense of ownership and ability to drive projects to completion
+
+Nice to have:
+- Experience in a high-growth startup or large-scale distributed systems environment
+- Background in platform engineering or developer experience`,
+
+        "blockchain-engineer": `Blockchain / Web3 Engineer
+
+We are hiring a Blockchain Engineer to build decentralised applications and smart contract infrastructure.
+
+Responsibilities:
+- Design, develop, and audit smart contracts in Solidity or Rust (Ethereum, Solana, or Polygon)
+- Build and maintain Web3 frontend integrations using ethers.js, wagmi, or web3.js
+- Develop and deploy DeFi protocols, NFT platforms, or DAO governance systems
+- Write comprehensive unit and integration tests for on-chain and off-chain components
+- Implement indexing and data pipelines using The Graph or custom subgraphs
+- Stay current with blockchain ecosystem developments, EIPs, and security best practices
+
+Requirements:
+- 2+ years of blockchain or Web3 development experience
+- Proficiency in Solidity and familiarity with the EVM
+- Experience with Hardhat, Foundry, or Truffle for development and testing
+- Understanding of DeFi primitives: AMMs, lending protocols, tokenomics
+- Strong knowledge of cryptography fundamentals and common smart contract vulnerabilities
+- Familiarity with IPFS, Chainlink, or other decentralised infrastructure
+
+Nice to have:
+- Experience with Layer 2 solutions (Arbitrum, Optimism, zkSync)
+- Smart contract security audit experience`,
+
+        "ux-designer": `UX/UI Designer
+
+We are looking for a UX/UI Designer to craft intuitive, beautiful, and accessible user experiences.
+
+Responsibilities:
+- Lead end-to-end design processes: research, wireframing, prototyping, and visual design
+- Create high-fidelity mockups and interactive prototypes in Figma
+- Conduct user research, usability testing, and analyse qualitative feedback
+- Collaborate with product managers and engineers to ship polished features
+- Build and maintain a scalable, consistent design system and component library
+- Define and apply information architecture, user flows, and navigation patterns
+- Advocate for accessibility (WCAG 2.1 AA) and inclusive design principles
+
+Requirements:
+- 2+ years of UX/UI design experience for web or mobile products
+- Proficiency in Figma (or Sketch/Adobe XD)
+- Strong portfolio demonstrating end-to-end product design work
+- Solid understanding of user-centred design principles and design thinking
+- Experience conducting user interviews and synthesising research into design decisions
+- Ability to work closely with engineering teams and understand technical constraints
+
+Nice to have:
+- Experience with motion design (Lottie, Framer)
+- Knowledge of front-end basics (HTML, CSS, React)`,
+
+        "product-designer": `Product Designer
+
+We are hiring a Product Designer to define and own the experience of our core product.
+
+Responsibilities:
+- Define product experiences from first principles: identify user problems and design elegant solutions
+- Create user journey maps, service blueprints, wireframes, and high-fidelity prototypes
+- Drive design sprints and cross-functional workshops with product, engineering, and data teams
+- Establish and evolve the product's visual language, design system, and interaction patterns
+- Measure design impact through A/B tests, funnel analysis, and NPS feedback
+- Present design rationale and trade-offs clearly to leadership and stakeholders
+- Mentor junior designers and contribute to team culture and critiques
+
+Requirements:
+- 3+ years of product design experience at a software or technology company
+- Expert-level Figma skills and a strong portfolio of shipped products
+- Deep understanding of user psychology, product metrics, and business goals
+- Experience conducting generative and evaluative user research
+- Strong storytelling and communication skills for stakeholder presentations
+- Ability to balance user needs, business outcomes, and technical feasibility
+
+Nice to have:
+- Background in both UX research and visual design
+- Experience with 0-to-1 product design`,
+
+        "graphic-designer": `Graphic Designer
+
+We are seeking a talented Graphic Designer to create compelling visual content across digital and print channels.
+
+Responsibilities:
+- Design marketing materials including social media graphics, email templates, ads, and landing pages
+- Develop brand identity assets: logos, typography, colour palettes, and brand guidelines
+- Collaborate with marketing and content teams to produce campaign visuals
+- Create presentations, infographics, and data visualisations for internal and external use
+- Ensure brand consistency across all touchpoints and design channels
+- Prepare production-ready files for both digital and print outputs
+
+Requirements:
+- 2+ years of graphic design experience in a professional or agency setting
+- Proficiency in Adobe Creative Suite (Illustrator, Photoshop, InDesign)
+- Strong portfolio showcasing a range of digital and print design work
+- Solid understanding of typography, colour theory, and visual hierarchy
+- Ability to manage multiple projects and meet tight deadlines
+- Experience working with brand guidelines and maintaining visual consistency
+
+Nice to have:
+- Motion graphics experience (After Effects, Premiere Pro)
+- Familiarity with Figma for digital/UI design assets`,
+
+        "digital-marketing-manager": `Digital Marketing Manager
+
+We are looking for a data-driven Digital Marketing Manager to grow our online presence and drive customer acquisition.
+
+Responsibilities:
+- Plan and execute digital marketing campaigns across paid (Google Ads, Meta, LinkedIn) and organic channels
+- Develop and manage SEO/SEM strategies to increase search visibility and traffic
+- Lead content marketing efforts: blog posts, case studies, email campaigns, and landing pages
+- Manage marketing automation workflows and CRM integrations (HubSpot, Marketo, Klaviyo)
+- Track, analyse, and report on campaign performance using Google Analytics, Looker, or Mixpanel
+- Collaborate with product, design, and sales teams to align marketing messaging
+- Manage marketing budget allocation and optimise spend for ROI
+
+Requirements:
+- 3+ years of digital marketing experience
+- Hands-on experience with Google Ads, Meta Ads, and LinkedIn Campaign Manager
+- Strong knowledge of SEO best practices, keyword research, and on-page optimisation
+- Proficiency in Google Analytics 4 and marketing analytics tools
+- Experience with email marketing platforms and marketing automation
+- Data-driven mindset with strong analytical and reporting skills
+
+Nice to have:
+- Google Ads or HubSpot certification
+- Experience in B2B SaaS or e-commerce marketing`,
+
+        "content-writer": `Content Writer / Copywriter
+
+We are seeking a skilled Content Writer to produce compelling, SEO-friendly content that engages our audience and drives growth.
+
+Responsibilities:
+- Write and edit high-quality blog posts, articles, landing pages, and product copy
+- Develop long-form content assets: whitepapers, eBooks, case studies, and guides
+- Collaborate with SEO team to optimise content for search intent and target keywords
+- Create email newsletters, nurture sequences, and in-app copy
+- Adapt tone and messaging across different formats, audiences, and channels
+- Interview subject matter experts and translate technical topics into accessible content
+- Track content performance and iterate based on traffic, engagement, and conversion data
+
+Requirements:
+- 2+ years of professional content writing or copywriting experience
+- Exceptional writing, editing, and proofreading skills in English
+- Strong understanding of SEO fundamentals and content strategy
+- Experience writing for digital audiences across B2B or B2C contexts
+- Ability to self-manage deadlines and maintain quality under volume
+- Comfortable using content management systems (WordPress, Webflow) and analytics tools
+
+Nice to have:
+- Experience in a specific vertical (tech, finance, healthcare, SaaS)
+- Portfolio of published long-form content or high-ranking articles`,
+
+        "seo-specialist": `SEO Specialist
+
+We are hiring an SEO Specialist to grow our organic search traffic and improve our rankings across target markets.
+
+Responsibilities:
+- Conduct keyword research, competitive analysis, and content gap audits
+- Perform technical SEO audits and work with engineers to fix crawlability, indexation, and Core Web Vitals issues
+- Develop and execute on-page and off-page SEO strategies
+- Build and manage link acquisition campaigns (outreach, digital PR, partnerships)
+- Collaborate with content teams to brief, optimise, and refresh web pages and blog posts
+- Track rankings, organic traffic, and conversions using Google Search Console, Ahrefs, and SEMrush
+- Report on SEO performance and provide actionable recommendations to stakeholders
+
+Requirements:
+- 2+ years of SEO experience in an agency or in-house role
+- Strong understanding of on-page, off-page, and technical SEO
+- Proficiency with SEO tools: Ahrefs, SEMrush, Google Search Console, Screaming Frog
+- Familiarity with HTML, JavaScript rendering, and site architecture concepts
+- Experience analysing data and translating insights into strategy
+- Excellent written communication for content briefs and stakeholder reports
+
+Nice to have:
+- Experience with international or multilingual SEO
+- Knowledge of schema markup and structured data`,
+
+        "social-media-manager": `Social Media Manager
+
+We are looking for a creative Social Media Manager to build our brand presence and community across social platforms.
+
+Responsibilities:
+- Develop and execute social media strategies for LinkedIn, Instagram, X (Twitter), TikTok, and YouTube
+- Create, schedule, and publish engaging content (copy, graphics, short-form video)
+- Manage community engagement: respond to comments, DMs, and mentions in a timely manner
+- Collaborate with design, content, and product teams to align social with campaigns and launches
+- Monitor social media trends, competitor activity, and platform algorithm changes
+- Track and report on social KPIs: reach, engagement, follower growth, and link clicks
+- Manage influencer or creator partnerships and co-marketing opportunities
+
+Requirements:
+- 2+ years of social media management experience
+- Strong writing and creative copywriting skills with a distinctive brand voice
+- Proficiency with social scheduling tools (Buffer, Hootsuite, Sprout Social)
+- Experience with short-form video creation and basic video editing
+- Data-literate: comfortable reading analytics dashboards and extracting insights
+- Up-to-date with platform trends, meme culture, and viral content formats
+
+Nice to have:
+- Graphic design skills (Canva, Adobe Express, Figma)
+- Experience growing a brand account from scratch`,
+
+        "sales-manager": `Sales Manager
+
+We are seeking an experienced Sales Manager to lead and scale our sales team to hit aggressive growth targets.
+
+Responsibilities:
+- Lead, coach, and develop a team of Account Executives and SDRs
+- Build and manage a healthy pipeline; forecast monthly and quarterly revenue accurately
+- Define sales processes, playbooks, and qualification frameworks (MEDDIC, SPIN, Challenger)
+- Collaborate with marketing to align on lead quality, ICP, and campaign messaging
+- Manage key enterprise deals and support AEs in complex, multi-stakeholder negotiations
+- Analyse CRM data (Salesforce, HubSpot) to identify trends, blockers, and coaching opportunities
+- Partner with Customer Success to ensure smooth handoffs and drive expansion revenue
+
+Requirements:
+- 4+ years of B2B sales experience with 2+ years in a sales management or team lead role
+- Proven track record of hitting or exceeding quota as an individual contributor and manager
+- Deep experience with CRM systems (Salesforce preferred)
+- Strong coaching and people management skills
+- Excellent negotiation, presentation, and executive communication skills
+- Data-driven approach to pipeline management and forecast accuracy
+
+Nice to have:
+- Experience selling SaaS, fintech, or enterprise software
+- Familiarity with sales engagement platforms (Outreach, Salesloft)`,
+
+        "account-executive": `Account Executive
+
+We are hiring an Account Executive to drive new business and expand our customer base.
+
+Responsibilities:
+- Manage the full sales cycle: prospecting, discovery, demo, proposal, negotiation, and close
+- Build and maintain a self-sourced pipeline of qualified opportunities
+- Conduct compelling product demonstrations tailored to each prospect's pain points
+- Partner with SDRs, solutions engineers, and marketing to move deals forward
+- Accurately forecast monthly and quarterly pipeline in Salesforce
+- Negotiate and close deals across SMB, mid-market, or enterprise segments
+- Maintain strong relationships with champions and economic buyers through the sales process
+
+Requirements:
+- 2+ years of B2B sales experience, ideally selling SaaS or technology solutions
+- Proven track record of meeting or exceeding quota
+- Strong consultative selling and objection-handling skills
+- Experience with CRM tools (Salesforce, HubSpot) and sales engagement platforms
+- Excellent communication, active listening, and presentation skills
+- Self-motivated with a high level of activity and resilience in a quota-carrying role
+
+Nice to have:
+- Experience with deal values of $20K-$200K+ ACV
+- MEDDIC, Sandler, or Challenger sales methodology training`,
+
+        "customer-success-manager": `Customer Success Manager
+
+We are looking for a Customer Success Manager to drive adoption, retention, and expansion across our customer portfolio.
+
+Responsibilities:
+- Own the post-sale customer journey: onboarding, training, business reviews, and renewals
+- Build deep relationships with key stakeholders and champion product value continuously
+- Monitor customer health scores, usage data, and engagement signals to identify risks and opportunities
+- Lead quarterly business reviews (QBRs) to align on goals and demonstrate ROI
+- Collaborate with sales to identify upsell and cross-sell opportunities
+- Act as the voice of the customer internally, surfacing feedback to product and engineering
+- Drive net revenue retention (NRR) and reduce churn through proactive engagement
+
+Requirements:
+- 2+ years of customer success, account management, or customer-facing experience in a SaaS company
+- Strong relationship-building and consultative communication skills
+- Experience with CS platforms (Gainsight, Totango, ChurnZero) and CRM (Salesforce)
+- Data-driven approach to managing a book of business and prioritising at-risk accounts
+- Excellent presentation skills for executive-level business reviews
+- Ability to manage a portfolio of 20-50 accounts simultaneously
+
+Nice to have:
+- Technical background or ability to understand and explain product integrations
+- Experience with enterprise customer success and complex stakeholder management`,
+
+        "hr-manager": `HR Manager
+
+We are seeking an experienced HR Manager to lead people operations, build a strong culture, and support our growing team.
+
+Responsibilities:
+- Oversee core HR functions: recruitment, onboarding, performance management, and offboarding
+- Develop and implement HR policies, employee handbooks, and compliance frameworks
+- Partner with managers to resolve employee relations issues and support disciplinary processes
+- Drive learning and development initiatives: training programmes, manager coaching, and career pathways
+- Manage compensation benchmarking, benefits administration, and payroll coordination
+- Lead diversity, equity, and inclusion (DEI) initiatives and employee engagement programmes
+- Maintain HRIS data accuracy and produce people analytics reports for leadership
+
+Requirements:
+- 4+ years of HR generalist or HR manager experience
+- Strong knowledge of employment law and compliance requirements
+- Experience with HRIS platforms (Workday, BambooHR, HiBob)
+- Excellent interpersonal, conflict-resolution, and coaching skills
+- Ability to work confidentially and handle sensitive employee matters with discretion
+- Strong project management skills to run multiple HR initiatives simultaneously
+
+Nice to have:
+- SHRM-CP/SCP or CIPD Level 5/7 certification
+- Experience in a high-growth startup or scaling environment`,
+
+        "recruiter": `Recruiter / Talent Acquisition Specialist
+
+We are hiring a Recruiter to attract, engage, and hire top talent across our engineering, product, and business teams.
+
+Responsibilities:
+- Manage the full recruitment lifecycle: job briefing, sourcing, screening, interviewing, and offer management
+- Partner with hiring managers to define role requirements and interview processes
+- Source passive candidates through LinkedIn, GitHub, referrals, and talent communities
+- Build and maintain talent pipelines for high-priority and recurring roles
+- Deliver an outstanding candidate experience at every stage of the hiring process
+- Track recruiting metrics (time-to-hire, offer acceptance rate, source quality) and report to leadership
+- Support employer branding initiatives through events, content, and campus programmes
+
+Requirements:
+- 2+ years of in-house or agency recruiting experience
+- Proven track record of successfully closing technical and non-technical roles
+- Proficiency with ATS platforms (Greenhouse, Lever, Workable)
+- Strong LinkedIn Recruiter skills and creative sourcing techniques
+- Excellent communication and negotiation skills
+- Ability to manage multiple requisitions simultaneously in a fast-paced environment
+
+Nice to have:
+- Experience recruiting for technical roles (software engineers, data scientists)
+- Knowledge of compensation benchmarking and equity structures`,
+
+        "operations-manager": `Operations Manager
+
+We are looking for an Operations Manager to streamline business processes and drive operational excellence.
+
+Responsibilities:
+- Design, implement, and optimise end-to-end business processes across operations or customer fulfilment
+- Identify inefficiencies and lead continuous improvement initiatives using Lean or Six Sigma methodologies
+- Manage cross-functional projects from planning to delivery, ensuring on-time and on-budget execution
+- Build and monitor operational KPIs, dashboards, and reporting frameworks
+- Collaborate with finance, HR, technology, and business teams to align operations with company goals
+- Lead, develop, and manage an operations team of individual contributors
+- Vendor management: negotiate contracts, manage SLAs, and maintain supplier relationships
+
+Requirements:
+- 4+ years of operations management experience
+- Strong project management skills with proficiency in tools (Asana, Jira, Monday.com)
+- Analytical mindset with proficiency in Excel, SQL, or BI tools (Tableau, Power BI)
+- Experience with process mapping and improvement frameworks (Lean, Six Sigma, BPM)
+- Excellent stakeholder management and cross-functional leadership skills
+- Strong written and verbal communication for executive-level reporting
+
+Nice to have:
+- PMP, PRINCE2, or Six Sigma Green/Black Belt certification
+- Experience in a high-growth tech company or e-commerce operations`,
+
+        "project-manager": `Project Manager
+
+We are seeking a Project Manager to lead complex projects from initiation to successful delivery.
+
+Responsibilities:
+- Define project scope, objectives, deliverables, and success criteria in collaboration with stakeholders
+- Develop detailed project plans, schedules, resource plans, and risk registers
+- Lead project kickoffs, status meetings, and retrospectives using agile or waterfall methodologies
+- Track project progress, identify risks and blockers, and implement mitigation strategies
+- Manage stakeholder communication and provide regular status updates to leadership
+- Coordinate cross-functional teams across engineering, design, product, and business units
+- Ensure projects are delivered on time, within scope, and within budget
+
+Requirements:
+- 3+ years of project management experience
+- Proficiency with project management tools (Jira, Asana, MS Project, Smartsheet)
+- Strong knowledge of agile (Scrum, Kanban) and/or waterfall methodologies
+- Excellent organisational, planning, and prioritisation skills
+- Proven ability to manage multiple concurrent projects under tight deadlines
+- Strong communication and stakeholder management skills
+
+Nice to have:
+- PMP or PRINCE2 certification
+- Experience managing software development or technology projects`,
+
+        "doctor": `Doctor / General Practitioner (GP)
+
+We are seeking a qualified Doctor to deliver comprehensive primary care and clinical services to patients.
+
+Responsibilities:
+- Conduct patient consultations, physical examinations, and health assessments
+- Diagnose and treat a wide range of acute and chronic medical conditions
+- Order and interpret diagnostic tests (blood panels, imaging, ECGs) and refer to specialists as needed
+- Develop and manage long-term care plans for patients with chronic diseases (diabetes, hypertension, COPD)
+- Prescribe medications and provide evidence-based clinical advice
+- Maintain accurate and confidential electronic health records (EHR/EMR)
+- Participate in clinical governance, audits, and continuing professional development (CPD)
+
+Requirements:
+- MBBS, MD, or equivalent medical degree from an accredited institution
+- Valid medical licence and registration with the relevant regulatory body (GMC, AMC, or equivalent)
+- 2+ years of post-graduate clinical experience (internship and residency included)
+- Strong clinical reasoning, diagnostic skills, and patient communication
+- Commitment to evidence-based medicine and patient-centred care
+- Experience with EMR/EHR systems
+
+Nice to have:
+- MRCGP, FRACGP, or equivalent specialist general practice qualification
+- Experience in telehealth or digital health platforms`,
+
+        "pharmacist": `Pharmacist
+
+We are hiring a qualified Pharmacist to provide expert pharmaceutical care and ensure the safe use of medications.
+
+Responsibilities:
+- Dispense prescription and over-the-counter medications accurately and safely
+- Counsel patients on medication use, dosage, side effects, interactions, and storage
+- Review and verify prescriptions for clinical appropriateness, drug interactions, and dosing errors
+- Collaborate with physicians and healthcare teams to optimise patient medication therapy
+- Manage pharmacy inventory, order stock, and ensure controlled substances compliance
+- Provide immunisation services and health screening programmes (where licensed)
+- Maintain accurate dispensing records and comply with regulatory requirements
+
+Requirements:
+- Bachelor of Pharmacy (BPharm) or Doctor of Pharmacy (PharmD)
+- Valid pharmacist licence in the relevant state/country
+- 1+ year of post-registration experience (community, hospital, or clinical)
+- Strong knowledge of pharmacology, drug interactions, and therapeutic guidelines
+- Excellent attention to detail and commitment to patient safety
+- Effective communication and patient counselling skills
+
+Nice to have:
+- Experience in a specialist area (oncology, paediatrics, infectious disease)
+- Independent prescribing qualification`,
+
+        "accountant": `Accountant / CPA
+
+We are looking for a detail-oriented Accountant to manage financial records, ensure compliance, and support business decision-making.
+
+Responsibilities:
+- Prepare and maintain accurate financial statements (P&L, balance sheet, cash flow)
+- Manage month-end and year-end close processes including journal entries and reconciliations
+- Oversee accounts payable and receivable, payroll processing, and bank reconciliations
+- Ensure compliance with GAAP, IFRS, or local accounting standards and tax regulations
+- Prepare and file tax returns (corporate, VAT/GST, payroll taxes) and liaise with external auditors
+- Support budgeting, forecasting, and variance analysis with the FP&A team
+- Implement and improve accounting processes, controls, and ERP workflows
+
+Requirements:
+- Bachelor's degree in Accounting, Finance, or a related field
+- CPA, ACCA, CIMA, or CA qualification (or actively pursuing)
+- 2+ years of accounting experience in a corporate or public accounting environment
+- Proficiency in accounting software (QuickBooks, Xero, Sage, or NetSuite)
+- Strong Excel skills and experience with ERP systems (SAP, Oracle)
+- Excellent attention to detail, analytical skills, and knowledge of accounting standards
+
+Nice to have:
+- Experience with Big 4 or mid-tier public accounting firms
+- Background in a specific industry (technology, retail, manufacturing, financial services)`
+    };
+
+    const ROLES = [
+        { group: "Software Engineering", color: "#60a5fa", items: [
+            { value: "backend",   label: "Backend Engineer" },
+            { value: "frontend",  label: "Frontend Engineer" },
+            { value: "fullstack", label: "Full Stack Engineer" },
+            { value: "android",   label: "Android Engineer" },
+            { value: "ios",       label: "iOS Engineer" },
+            { value: "qa",        label: "QA / Test Engineer" },
+            { value: "security",  label: "Security Engineer" },
+            { value: "sre",       label: "Site Reliability Engineer" },
+            { value: "devops",              label: "DevOps / Cloud Engineer" },
+            { value: "cloud-architect",     label: "Cloud Architect" },
+            { value: "technical-lead",      label: "Technical Lead / Staff Engineer" },
+            { value: "blockchain-engineer", label: "Blockchain / Web3 Engineer" },
+        ]},
+        { group: "Data & AI", color: "#a78bfa", items: [
+            { value: "data-scientist", label: "Data Scientist" },
+            { value: "data-analyst",   label: "Data Analyst" },
+            { value: "ml-engineer",    label: "ML Engineer" },
+            { value: "data-engineer",  label: "Data Engineer" },
+        ]},
+        { group: "Core Engineering", color: "#fb923c", items: [
+            { value: "mechanical", label: "Mechanical Engineer" },
+            { value: "electrical", label: "Electrical Engineer" },
+            { value: "chemical",   label: "Chemical Engineer" },
+            { value: "civil",      label: "Civil Engineer" },
+            { value: "embedded",   label: "Embedded Systems Engineer" },
+        ]},
+        { group: "Business & Finance", color: "#fbbf24", items: [
+            { value: "product-manager",   label: "Product Manager" },
+            { value: "business-analyst",  label: "Business Analyst" },
+            { value: "financial-analyst", label: "Financial Analyst" },
+            { value: "accountant",        label: "Accountant / CPA" },
+        ]},
+        { group: "Healthcare", color: "#f472b6", items: [
+            { value: "nurse-general",   label: "Registered Nurse" },
+            { value: "nurse-icu",       label: "ICU / Critical Care Nurse" },
+            { value: "nurse-pediatric", label: "Pediatric Nurse" },
+            { value: "doctor",          label: "Doctor / GP" },
+            { value: "pharmacist",      label: "Pharmacist" },
+        ]},
+        { group: "Education", color: "#34d399", items: [
+            { value: "teacher-school",      label: "School Teacher (K-12)" },
+            { value: "teacher-science",     label: "Science / Math Teacher" },
+            { value: "teacher-english",     label: "English Teacher" },
+            { value: "teacher-university",  label: "University Lecturer" },
+            { value: "teacher-special",     label: "Special Education Teacher" },
+        ]},
+        { group: "Design", color: "#f9a8d4", items: [
+            { value: "ux-designer",      label: "UX/UI Designer" },
+            { value: "product-designer", label: "Product Designer" },
+            { value: "graphic-designer", label: "Graphic Designer" },
+        ]},
+        { group: "Marketing & Growth", color: "#86efac", items: [
+            { value: "digital-marketing-manager", label: "Digital Marketing Manager" },
+            { value: "content-writer",            label: "Content Writer / Copywriter" },
+            { value: "seo-specialist",            label: "SEO Specialist" },
+            { value: "social-media-manager",      label: "Social Media Manager" },
+        ]},
+        { group: "Sales & CX", color: "#fda4af", items: [
+            { value: "sales-manager",            label: "Sales Manager" },
+            { value: "account-executive",        label: "Account Executive" },
+            { value: "customer-success-manager", label: "Customer Success Manager" },
+        ]},
+        { group: "HR & People", color: "#c4b5fd", items: [
+            { value: "hr-manager", label: "HR Manager" },
+            { value: "recruiter",  label: "Recruiter / Talent Acquisition" },
+        ]},
+        { group: "Operations & PM", color: "#67e8f9", items: [
+            { value: "operations-manager", label: "Operations Manager" },
+            { value: "project-manager",    label: "Project Manager" },
+        ]},
+    ];
+
+        (function buildSampleJdPicker() {
+            var wrapper = document.getElementById('jd-picker-wrapper');
+            var textarea = jdText;
+            if (!wrapper || !textarea) return;
+
+            var currentValue = '';
+            var btn = document.createElement('button');
+            btn.type = 'button';
+            btn.id = 'jd-picker-btn';
+            btn.innerHTML = '<span id="jd-picker-label" style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:white">-- pick a role --</span>'
+                + '<svg id="jd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease;"><polyline points="6 9 12 15 18 9"/></svg>';
+            Object.assign(btn.style, {
+                display: 'flex', alignItems: 'center', gap: '10px', width: '100%',
+                background: 'rgba(3,17,41,0.95)', border: '1.5px solid rgba(74,222,128,0.45)',
+                borderRadius: '10px', color: '#4ade80', fontSize: '13px', fontWeight: '600',
+                padding: '8px 13px', cursor: 'pointer', transition: 'border-color .2s,box-shadow .2s',
+                whiteSpace: 'nowrap', minWidth: '210px'
+            });
+
+            var panel = document.createElement('div');
+            panel.id = 'jd-picker-panel';
+            Object.assign(panel.style, {
+                display: 'none', position: 'absolute', right: '0', top: 'calc(100% + 6px)',
+                minWidth: '260px', maxHeight: '380px', overflowY: 'auto',
+                background: 'rgba(4,16,44,0.98)', border: '1px solid rgba(74,222,128,0.28)',
+                borderRadius: '14px', boxShadow: '0 24px 56px rgba(0,0,0,0.6)',
+                backdropFilter: 'blur(24px)', zIndex: '300', padding: '6px 0'
+            });
+
+            var scrollStyle = document.createElement('style');
+            scrollStyle.textContent = '#jd-picker-panel::-webkit-scrollbar{width:4px}#jd-picker-panel::-webkit-scrollbar-track{background:transparent}#jd-picker-panel::-webkit-scrollbar-thumb{background:rgba(74,222,128,0.3);border-radius:4px}#jd-picker-panel .jd-opt:hover{background:rgba(74,222,128,0.1)!important;color:#4ade80!important}';
+            document.head.appendChild(scrollStyle);
+
+            ROLES.forEach(function (cat, ci) {
+                if (ci > 0) {
+                    var div = document.createElement('div');
+                    Object.assign(div.style, { height: '1px', background: 'rgba(255,255,255,0.07)', margin: '5px 10px' });
+                    panel.appendChild(div);
+                }
+                var header = document.createElement('div');
+                header.textContent = cat.group.toUpperCase();
+                Object.assign(header.style, {
+                    color: cat.color, fontSize: '10px', fontWeight: '800',
+                    letterSpacing: '0.12em', padding: '9px 16px 4px', opacity: '0.9'
+                });
+                panel.appendChild(header);
+
+                cat.items.forEach(function (item) {
+                    var opt = document.createElement('div');
+                    opt.className = 'jd-opt';
+                    opt.dataset.value = item.value;
+                    opt.dataset.catColor = cat.color;
+                    opt.innerHTML = '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:' + cat.color + ';margin-right:9px;opacity:0.7;flex-shrink:0;vertical-align:middle;margin-top:-1px;"></span>' + item.label;
+                    Object.assign(opt.style, {
+                        padding: '9px 16px', color: '#c8d7fb', fontSize: '13.5px',
+                        cursor: 'pointer', transition: 'background .15s,color .15s',
+                        display: 'flex', alignItems: 'center'
+                    });
+                    opt.addEventListener('click', function () {
+                        var jd = DEFAULT_JDS[item.value];
+                        if (!jd) return;
+                        if (currentValue) {
+                            var prev = panel.querySelector('.jd-opt[data-value="' + currentValue + '"]');
+                            if (prev) { prev.style.background = ''; prev.style.color = '#c8d7fb'; prev.style.fontWeight = ''; }
+                        }
+                        currentValue = item.value;
+                        document.getElementById('jd-picker-label').textContent = item.label;
+                        opt.style.background = 'rgba(74,222,128,0.12)';
+                        opt.style.color = cat.color;
+                        opt.style.fontWeight = '700';
+                        textarea.value = jd;
+                        textarea.dispatchEvent(new Event('input', { bubbles: true }));
+                        closePanel();
+                    });
+                    panel.appendChild(opt);
+                });
+            });
+
+            wrapper.appendChild(btn);
+            wrapper.appendChild(panel);
+
+            function openPanel() {
+                panel.style.display = 'block';
+                document.getElementById('jd-chevron').style.transform = 'rotate(180deg)';
+                btn.style.borderColor = 'rgba(74,222,128,0.85)';
+                btn.style.boxShadow = '0 0 0 3px rgba(74,222,128,0.12)';
+            }
+            function closePanel() {
+                panel.style.display = 'none';
+                document.getElementById('jd-chevron').style.transform = 'rotate(0deg)';
+                btn.style.borderColor = 'rgba(74,222,128,0.45)';
+                btn.style.boxShadow = '';
+            }
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                panel.style.display === 'none' ? openPanel() : closePanel();
+            });
+            document.addEventListener('click', closePanel);
+            panel.addEventListener('click', function (e) { e.stopPropagation(); });
+
+            textarea.addEventListener('input', function () {
+                if (currentValue && textarea.value !== DEFAULT_JDS[currentValue]) {
+                    var prev = panel.querySelector('.jd-opt[data-value="' + currentValue + '"]');
+                    if (prev) { prev.style.background = ''; prev.style.color = '#c8d7fb'; prev.style.fontWeight = ''; }
+                    currentValue = '';
+                    document.getElementById('jd-picker-label').textContent = '-- pick a role --';
+                }
+            });
+        })();
 
         genBtn.addEventListener('click', function () {
             var file = resumeFile.files && resumeFile.files[0];
