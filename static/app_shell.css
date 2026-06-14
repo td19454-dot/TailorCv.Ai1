@@ -28,7 +28,7 @@ html.tcv-app header.navbar + * { padding-top: 16px !important; margin-top: 0 !im
 }
 .tcv-burger:hover { background: rgba(99, 132, 255, 0.16); }
 .tcv-top-logo { display: inline-flex; align-items: center; text-decoration: none; height: 76px; overflow: hidden; }
-.tcv-top-logo img { height: 250px; width: auto; display: block; object-fit: contain; }
+.tcv-top-logo img { height: 350px; width: 400px; display: block; object-fit: contain; }
 .tcv-top-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
 
 /* Profile avatar + dropdown menu */
@@ -69,7 +69,7 @@ html.tcv-app header.navbar + * { padding-top: 16px !important; margin-top: 0 !im
 .tcv-rail-link {
     position: relative; width: 44px; height: 44px; border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
-    color: #9fb0cc; font-size: 19px; text-decoration: none;
+    color: #eaf1ff; font-size: 19px; text-decoration: none;
     transition: background .15s, color .15s;
 }
 .tcv-rail-link:hover { background: rgba(99, 132, 255, .14); color: #fff; }
