@@ -26,21 +26,17 @@
             padding: 16px 16px 28px;
         }
 
-        /* ── Card: portrait, centered, max 360px wide, height fits content ── */
+        /* ── Card: fixed 9:16 frame, centered, max 360px wide ── */
         #personality-card {
             width: 100%;
             max-width: 360px;
-            /* no aspect-ratio — height grows to fit all content, nothing clipped */
+            aspect-ratio: 9 / 16;
             background: linear-gradient(160deg, #16003a 0%, #1e0045 50%, #0d1a3e 100%);
             border: 1px solid rgba(167, 139, 250, 0.35);
             border-radius: 20px;
-            padding: 20px 18px 16px;
             position: relative;
-            overflow: visible;
+            overflow: hidden;
             box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2), 0 24px 48px rgba(0,0,0,.6);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
         }
 
         /* decorative glows */
@@ -59,13 +55,28 @@
             pointer-events: none;
         }
 
+        /* ── Inner content wrapper: scaled via JS to fit the 9:16 frame ── */
+        .card-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 18px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transform-origin: top left;
+            z-index: 1;
+            box-sizing: border-box;
+        }
+
         .card-shimmer {
             position: absolute; top: 0; left: 0; right: 0; height: 3px;
             background: linear-gradient(90deg, #f59e0b, #8b5cf6, #ec4899, #3b82f6, #10b981);
             background-size: 300%;
             animation: shimmer 3s linear infinite;
             border-radius: 20px 20px 0 0;
-            z-index: 1;
+            z-index: 2;
         }
         @keyframes shimmer { 0%{background-position:0%} 100%{background-position:300%} }
 
@@ -74,7 +85,6 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            position: relative; z-index: 1;
         }
         .card-brand {
             font-size: 8px;
@@ -89,9 +99,6 @@
         }
 
         /* ── Archetype hero ── */
-        .card-archetype-wrap {
-            position: relative; z-index: 1;
-        }
         .card-archetype {
             font-size: 26px;
             font-weight: 900;
@@ -110,7 +117,6 @@
             border: 1px solid rgba(255,255,255,.08);
             border-radius: 10px;
             padding: 8px 0;
-            position: relative; z-index: 1;
         }
         .stat-item { text-align: center; flex: 1; }
         .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,.08); }
@@ -123,7 +129,6 @@
             flex-wrap: wrap;
             gap: 5px;
             justify-content: center;
-            position: relative; z-index: 1;
         }
         .skill-chip {
             background: rgba(59,130,246,.15);
@@ -144,7 +149,6 @@
             background: rgba(139,92,246,.10);
             border-left: 3px solid rgba(167,139,250,.6);
             border-radius: 0 6px 6px 0;
-            position: relative; z-index: 1;
         }
 
         /* ── Traits: 2×2 grid ── */
@@ -152,8 +156,6 @@
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 7px;
-            flex: 1;
-            position: relative; z-index: 1;
         }
         .trait-card {
             background: rgba(15,23,42,.45);
@@ -184,7 +186,6 @@
             font-size: 7.5px;
             color: rgba(255,255,255,.18);
             text-align: center;
-            position: relative; z-index: 1;
         }
 
         /* ── CTA section (below card) ── */
@@ -230,61 +231,65 @@
     <div id="personality-card">
         <div class="card-shimmer"></div>
 
-        <!-- Brand + candidate name -->
-        <div class="card-brand-row">
-            <div class="card-brand">TailorCv.AI &middot; Career Personality</div>
-            {% if candidate_name %}<div class="card-name">{{ candidate_name }}</div>{% endif %}
-        </div>
+        <div class="card-inner" id="card-inner">
 
-        <!-- Archetype hero -->
-        <div class="card-archetype-wrap">
-            <div class="card-archetype" id="card-arch-text">{{ card.archetype }}</div>
-        </div>
-
-        <!-- Stats -->
-        <div class="stats-row">
-            <div class="stat-item">
-                <span class="stat-value">{{ stats.years_experience or 0 }}+</span>
-                <span class="stat-label">Years</span>
+            <!-- Brand + candidate name -->
+            <div class="card-brand-row">
+                <div class="card-brand">TailorCv.AI &middot; Career Personality</div>
+                {% if candidate_name %}<div class="card-name">{{ candidate_name }}</div>{% endif %}
             </div>
-            <div class="stat-item">
-                <span class="stat-value">{{ stats.companies_count or 0 }}</span>
-                <span class="stat-label">Companies</span>
+
+            <!-- Archetype hero -->
+            <div class="card-archetype-wrap">
+                <div class="card-archetype" id="card-arch-text">{{ card.archetype }}</div>
             </div>
-            <div class="stat-item">
-                <span class="stat-value">{{ stats.total_projects or 0 }}</span>
-                <span class="stat-label">Projects</span>
-            </div>
-        </div>
 
-        <!-- Skill chips -->
-        {% if stats.top_3_skills %}
-        <div class="skills-chips">
-            {% for skill in stats.top_3_skills %}
-            <span class="skill-chip">{{ skill }}</span>
-            {% endfor %}
-        </div>
-        {% endif %}
-
-        <!-- Story -->
-        {% if story %}
-        <div class="card-story">{{ story }}</div>
-        {% endif %}
-
-        <!-- Traits 2×2 -->
-        <div class="traits-grid">
-            {% for trait in traits %}
-            <div class="trait-card">
-                <div class="trait-head">
-                    <span>{{ trait.emoji }}</span>
-                    <span>{{ trait.label }}</span>
+            <!-- Stats -->
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-value">{{ stats.years_experience or 0 }}+</span>
+                    <span class="stat-label">Years</span>
                 </div>
-                <div class="trait-desc">{{ trait.description }}</div>
+                <div class="stat-item">
+                    <span class="stat-value">{{ stats.companies_count or 0 }}</span>
+                    <span class="stat-label">Companies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{{ stats.total_projects or 0 }}</span>
+                    <span class="stat-label">Projects</span>
+                </div>
             </div>
-            {% endfor %}
-        </div>
 
-        <div class="card-footer-brand">thetailorcv.com</div>
+            <!-- Skill chips -->
+            {% if stats.top_3_skills %}
+            <div class="skills-chips">
+                {% for skill in stats.top_3_skills %}
+                <span class="skill-chip">{{ skill }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Story -->
+            {% if story %}
+            <div class="card-story">{{ story }}</div>
+            {% endif %}
+
+            <!-- Traits 2×2 -->
+            <div class="traits-grid">
+                {% for trait in traits %}
+                <div class="trait-card">
+                    <div class="trait-head">
+                        <span>{{ trait.emoji }}</span>
+                        <span>{{ trait.label }}</span>
+                    </div>
+                    <div class="trait-desc">{{ trait.description }}</div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="card-footer-brand">thetailorcv.com</div>
+
+        </div>
     </div>
 
     <div class="cta-section">
@@ -336,41 +341,128 @@
             window.open("https://wa.me/?text=" + encodeURIComponent(shareText), "_blank", "noopener,noreferrer");
         });
 
+        /* ── Shrink-to-fit for the LIVE PREVIEW: scale .card-inner down so its
+               full content fits inside the fixed 9:16 frame without clipping. ── */
+        function fitCardContent() {
+            var card  = document.getElementById('personality-card');
+            var inner = document.getElementById('card-inner');
+
+            inner.style.transform = 'none';
+            inner.style.width = '100%';
+
+            var cardHeight    = card.clientHeight;
+            var contentHeight = inner.scrollHeight;
+
+            var scale = cardHeight / contentHeight;
+            if (scale > 1) scale = 1;
+
+            inner.style.width = (100 / scale) + '%';
+            inner.style.transform = 'scale(' + scale + ')';
+        }
+
+        window.addEventListener('load', fitCardContent);
+        window.addEventListener('resize', fitCardContent);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(fitCardContent);
+        }
+
+        /* Draws a rounded-rect path (manual, for browsers without ctx.roundRect) */
+        function roundRectPath(ctx, x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y,     x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x,     y + h, r);
+            ctx.arcTo(x,     y + h, x,     y,     r);
+            ctx.arcTo(x,     y,     x + w, y,     r);
+            ctx.closePath();
+        }
+
+        /* ── Capture the card for download/sharing.
+               Strategy: capture the card at its NATURAL, unscaled, full-content
+               height (no clipping needed at this stage), then composite the
+               result onto a fixed 1080x1920 (9:16) canvas using "contain"
+               scaling so the export is always exactly 9:16, with nothing
+               cut off — regardless of how long the content is. ── */
         function captureCard(callback) {
             var cardEl  = document.getElementById('personality-card');
+            var inner   = document.getElementById('card-inner');
             var archEl  = document.getElementById('card-arch-text');
             var shimmer = cardEl.querySelector('.card-shimmer');
-            var origArch = archEl.style.cssText;
 
-            /* freeze shimmer animation so it doesn't flicker in screenshot */
+            var origArch          = archEl.style.cssText;
+            var origInnerTransform = inner.style.transform;
+            var origInnerWidth     = inner.style.width;
+            var origCardOverflow   = cardEl.style.overflow;
+            var origCardAspect     = cardEl.style.aspectRatio;
+            var origCardHeight     = cardEl.style.height;
+
             if (shimmer) shimmer.style.animation = 'none';
 
-            /* fix gradient text for html2canvas (it can't render -webkit-text-fill-color) */
+            /* fix gradient text for html2canvas (can't render -webkit-text-fill-color) */
             archEl.style.cssText = origArch
                 + ';-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;'
                 + 'background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;';
 
-            /* ensure full height is captured — use scrollHeight, not offsetHeight */
-            var fullWidth  = cardEl.offsetWidth;
-            var fullHeight = cardEl.scrollHeight;
-            var exportScale = 1080 / fullWidth;
+            /* expand the card to its natural full-content height for capture —
+               this avoids relying on html2canvas to honor overflow:hidden + transform */
+            inner.style.transform = 'none';
+            inner.style.width = '100%';
+            cardEl.style.aspectRatio = 'auto';
+            cardEl.style.overflow = 'visible';
+            cardEl.style.height = inner.scrollHeight + 'px';
+
+            var naturalWidth  = cardEl.offsetWidth;
+            var naturalHeight = cardEl.scrollHeight;
 
             html2canvas(cardEl, {
-                scale: exportScale,
+                scale: 1080 / naturalWidth, // crisp output regardless of final compositing size
                 backgroundColor: null,
                 useCORS: true,
                 logging: false,
-                width: fullWidth,
-                height: fullHeight,
-                windowWidth: fullWidth,
-                windowHeight: fullHeight
-            }).then(function (canvas) {
-                callback(null, canvas);
+                width: naturalWidth,
+                height: naturalHeight,
+                windowWidth: naturalWidth,
+                windowHeight: naturalHeight
+            }).then(function (contentCanvas) {
+                var outW = 1080, outH = 1920;
+                var out = document.createElement('canvas');
+                out.width = outW;
+                out.height = outH;
+                var ctx = out.getContext('2d');
+
+                /* fill the full 9:16 frame with the card's background gradient,
+                   so any letterbox space blends in */
+                var grad = ctx.createLinearGradient(0, 0, outW * 0.35, outH);
+                grad.addColorStop(0,   '#16003a');
+                grad.addColorStop(0.5, '#1e0045');
+                grad.addColorStop(1,   '#0d1a3e');
+                ctx.fillStyle = grad;
+                roundRectPath(ctx, 0, 0, outW, outH, 44);
+                ctx.fill();
+
+                /* "contain" fit: scale the captured content to fit inside the
+                   9:16 frame, centered, without cropping anything */
+                var scale = Math.min(outW / contentCanvas.width, outH / contentCanvas.height);
+                var drawW = contentCanvas.width * scale;
+                var drawH = contentCanvas.height * scale;
+                var dx = (outW - drawW) / 2;
+                var dy = (outH - drawH) / 2;
+
+                ctx.drawImage(contentCanvas, dx, dy, drawW, drawH);
+
+                callback(null, out);
             }).catch(function (err) {
                 callback(err);
             }).finally(function () {
+                /* restore the live preview exactly as it was */
+                inner.style.transform = origInnerTransform;
+                inner.style.width = origInnerWidth;
+                cardEl.style.aspectRatio = origCardAspect;
+                cardEl.style.overflow = origCardOverflow;
+                cardEl.style.height = origCardHeight;
                 if (shimmer) shimmer.style.animation = '';
                 archEl.style.cssText = origArch;
+                fitCardContent();
             });
         }
 
