@@ -563,7 +563,6 @@
             font-weight: 800;
             font-size: 32px;
             color: #9e3ed1;
-            animation: tbNum 2.5s ease-in-out infinite;
         }
 
         @keyframes tbText {
@@ -1363,6 +1362,100 @@
         </div>
     </section>
 
+    <!-- ATS-Friendly Templates Section -->
+    <style>
+        /* Give the feature + templates sections real side margins (the global
+           .container has no max-width/padding, so content was flush to the edge). */
+        .how-it-works .container,
+        .ats-templates .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .ats-templates { padding: 6rem 0; position: relative; z-index: 1; }
+        .ats-tmpl-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+            margin-top: 2.6rem;
+        }
+        .ats-tmpl-card {
+            display: flex;
+            flex-direction: column;
+            background: rgba(15, 30, 68, 0.55);
+            border: 1px solid rgba(80, 110, 200, 0.22);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+        }
+        .ats-tmpl-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 132, 255, 0.6);
+            box-shadow: 0 20px 44px rgba(3, 10, 36, 0.5);
+        }
+        .ats-tmpl-shot { display: block; background: #fff; padding: 14px; }
+        .ats-tmpl-shot img { width: 100%; height: auto; display: block; border-radius: 8px; }
+        .ats-tmpl-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 4px; }
+        .ats-tmpl-name { color: #fff; font-size: 1.05rem; font-weight: 700; }
+        .ats-tmpl-tag { color: #8aa0c8; font-size: 0.85rem; margin-bottom: 12px; }
+        .ats-tmpl-btn {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #3392ff, #6d28d9);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .ats-tmpl-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(51, 146, 255, 0.4); }
+        .ats-tmpl-all { text-align: center; margin-top: 2.4rem; }
+        .ats-tmpl-all a { color: #9cc2ff; font-weight: 700; text-decoration: none; font-size: 1rem; }
+        .ats-tmpl-all a:hover { text-decoration: underline; }
+        @media (max-width: 860px) {
+            .ats-tmpl-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+        }
+    </style>
+    <section class="ats-templates">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ATS-Friendly Resume Templates</h2>
+                <p class="section-subtitle">Recruiter-ready, ATS-safe designs. Pick one and build or reformat your resume in minutes.</p>
+            </div>
+            <div class="ats-tmpl-grid">
+                <article class="ats-tmpl-card">
+                    <a class="ats-tmpl-shot" href="/modify-cv?template=6"><img src="/static/pic6.webp?v=9" alt="Compact One-Page ATS resume template" loading="lazy"></a>
+                    <div class="ats-tmpl-body">
+                        <span class="ats-tmpl-name">Compact One-Page</span>
+                        <span class="ats-tmpl-tag">Clean single-page &middot; ATS-safe</span>
+                        <a class="ats-tmpl-btn" href="/modify-cv?template=6">Use this template</a>
+                    </div>
+                </article>
+                <article class="ats-tmpl-card">
+                    <a class="ats-tmpl-shot" href="/modify-cv?template=19"><img src="/static/pic19.webp?v=9" alt="LaTeX Academic ATS resume template" loading="lazy"></a>
+                    <div class="ats-tmpl-body">
+                        <span class="ats-tmpl-name">LaTeX Academic</span>
+                        <span class="ats-tmpl-tag">LaTeX-style &middot; Academic</span>
+                        <a class="ats-tmpl-btn" href="/modify-cv?template=19">Use this template</a>
+                    </div>
+                </article>
+                <article class="ats-tmpl-card">
+                    <a class="ats-tmpl-shot" href="/modify-cv?template=22"><img src="/static/pic22.webp?v=9" alt="Academic Serif ATS resume template" loading="lazy"></a>
+                    <div class="ats-tmpl-body">
+                        <span class="ats-tmpl-name">Academic Serif</span>
+                        <span class="ats-tmpl-tag">Elegant serif &middot; Academic</span>
+                        <a class="ats-tmpl-btn" href="/modify-cv?template=22">Use this template</a>
+                    </div>
+                </article>
+            </div>
+            <p class="ats-tmpl-all"><a href="/templates">Browse all templates &rarr;</a></p>
+        </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section class="testimonials-section">
         <div class="container">
@@ -1717,76 +1810,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section footer-brand">
-                    <h4 class="footer-title">TailorCV</h4>
-                    <p class="footer-text">AI-powered resume optimization for your career success. Land more interviews,
-                        faster.</p>
-                    <a href="/solutions" class="footer-cta " id="footer_fix_my_resume">Fix my Resume</a>
-                    <div class="footer-socials" aria-label="Social links">
-                        <a href="https://x.com/sarkar53765" class="footer-social" aria-label="X" title="X">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill="currentColor"
-                                    d="M18.9 2H22l-6.77 7.74L23 22h-6.1l-4.78-6.26L6.64 22H3.5l7.24-8.28L1 2h6.26l4.32 5.7L18.9 2z" />
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/company/thetailorcv/" class="footer-social"
-                            aria-label="LinkedIn" title="LinkedIn">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill="currentColor"
-                                    d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z" />
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/thetailorcv/" class="footer-social" aria-label="Instagram"
-                            title="Instagram">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill="currentColor"
-                                    d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.9A3.85 3.85 0 0 0 3.9 7.75v8.5a3.85 3.85 0 0 0 3.85 3.85h8.5a3.85 3.85 0 0 0 3.85-3.85v-8.5a3.85 3.85 0 0 0-3.85-3.85h-8.5zM12 7.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.3-2.2a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z" />
-                            </svg>
-                        </a>
-                        <a href="https://www.youtube.com/@thetailorcv" class="footer-social" aria-label="YouTube"
-                            title="YouTube">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill="currentColor"
-                                    d="M23 12s0-3.1-.4-4.6a3.3 3.3 0 0 0-2.3-2.3C18.8 4.7 12 4.7 12 4.7s-6.8 0-8.3.4A3.3 3.3 0 0 0 1.4 7.4C1 8.9 1 12 1 12s0 3.1.4 4.6a3.3 3.3 0 0 0 2.3 2.3c1.5.4 8.3.4 8.3.4s6.8 0 8.3-.4a3.3 3.3 0 0 0 2.3-2.3c.4-1.5.4-4.6.4-4.6zM9.2 15.5V8.5l6 3.5-6 3.5z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4 class="footer-heading">Product</h4>
-                    <a href="/" class="footer-link">Home</a>
-                    <a href="/ats-analysis" class="footer-link" id="footer_get_ats_score">Free ATS Score Checker</a>
-                    <a href="/solutions" class="footer-link " id="footer_optimize_with_ai">AI Resume Optimizer</a>
-                    <a href="/modify-cv" class="footer-link">ATS-Friendly Resume Builder</a>
-                    <a href="/templates" class="footer-link">Resume Templates</a>
-                    <a href="/pricing" class="footer-link">Pricing</a>
-                </div>
-
-                <div class="footer-section">
-                    <h4 class="footer-heading">Interview Prep</h4>
-                    <a href="/mock-interview" class="footer-link">AI Mock Interview</a>
-                    <a href="/interview-prep" class="footer-link">Interview Questions</a>
-                    <a href="/blog" class="footer-link">Career Blog</a>
-                </div>
-
-                <div class="footer-section">
-                    <h4 class="footer-heading">Company</h4>
-                    <a href="/about" class="footer-link">About us</a>
-                    <a href="/contact" class="footer-link">Contact</a>
-                    <a href="/blog" class="footer-link">Blog</a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
-                <a href="/" class="footer-secure">Secure &amp; private</a>
-            </div>
-        </div>
-    </footer>
+    {% include "_footer.html" %}
 
     <script src="/static/auth_nav.js?v=2" defer></script>
     <script src="/static/mobile_nav.js" defer></script>

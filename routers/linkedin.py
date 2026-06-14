@@ -1,3 +1,4 @@
+import asyncio
 import json
 import os
 import re
@@ -507,6 +508,55 @@ async def _fetch_linkedin_html_text(linkedin_url: str) -> str:
         return ""
 
 
+async def _fetch_rapidapi_profile(linkedin_url: str, rapidapi_key: str, attempts: int = 3):
+    """Fetch profile data from a RapidAPI LinkedIn data API, with retries on
+    transient failures (429 / 5xx / timeout). Returns the parsed JSON, or raises
+    HTTPException for definitive failures (404, not authorized).
+
+    The provider is configurable so you can point at whichever live API you've
+    subscribed to on RapidAPI (the previous default, linkedin-data-api, was shut
+    down). Defaults to linkedin-api8, which uses the same `?url=` request shape.
+    Override with env vars RAPIDAPI_LINKEDIN_HOST / RAPIDAPI_LINKEDIN_PATH /
+    RAPIDAPI_LINKEDIN_PARAM if your chosen API differs."""
+    host = os.getenv("RAPIDAPI_LINKEDIN_HOST", "fresh-linkedin-profile-data.p.rapidapi.com").strip()
+    path = os.getenv("RAPIDAPI_LINKEDIN_PATH", "/get-linkedin-profile").strip()
+    param = os.getenv("RAPIDAPI_LINKEDIN_PARAM", "linkedin_url").strip()
+    endpoint = f"https://{host}{path if path.startswith('/') else '/' + path}"
+
+    last_status = None
+    for i in range(attempts):
+        try:
+            async with httpx.AsyncClient(timeout=25.0) as http:
+                resp = await http.get(
+                    endpoint,
+                    headers={
+                        "x-rapidapi-host": host,
+                        "x-rapidapi-key": rapidapi_key,
+                    },
+                    params={param: linkedin_url},
+                )
+            if resp.status_code == 404:
+                raise HTTPException(status_code=404, detail="LinkedIn profile not found. Make sure it is set to Public.")
+            if resp.status_code in (401, 403):
+                # Key not subscribed/authorized — definitive, don't retry.
+                raise HTTPException(
+                    status_code=422,
+                    detail="Automatic LinkedIn import isn't available right now. Paste your profile text instead — it always works.",
+                )
+            if resp.status_code == 429 or resp.status_code >= 500:
+                last_status = resp.status_code
+                await asyncio.sleep(0.8 * (i + 1))
+                continue
+            resp.raise_for_status()
+            return resp.json()
+        except httpx.TimeoutException:
+            last_status = "timeout"
+            await asyncio.sleep(0.8 * (i + 1))
+            continue
+    # Exhausted retries on transient errors.
+    raise HTTPException(status_code=503, detail="LinkedIn import is busy right now. Try again in a moment, or paste your profile text.")
+
+
 @router.post("/api/linkedin-import")
 async def import_linkedin(body: LinkedInImportRequest):
     linkedin_url = (body.url or "").strip()
@@ -517,7 +567,42 @@ async def import_linkedin(body: LinkedInImportRequest):
     if not api_key:
         raise HTTPException(status_code=500, detail="OPENAI_API_KEY is not configured.")
 
-    # ── Primary: HTML scrape + GPT ───────────────────────────────────────────
+    rapidapi_key = os.getenv("RAPIDAPI_KEY", "").strip()
+
+    # ── Primary: RapidAPI profile data (the reliable source when subscribed) ──
+    if rapidapi_key:
+        profile_raw = None
+        try:
+            profile_raw = await _fetch_rapidapi_profile(linkedin_url, rapidapi_key)
+        except HTTPException:
+            profile_raw = None  # non-fatal — fall through to the HTML scrape
+        except Exception:
+            profile_raw = None
+
+        service_down = isinstance(profile_raw, dict) and profile_raw.get("success") is False
+        if profile_raw is not None and not service_down:
+            try:
+                fallback = _extract_linkedin_fallback(profile_raw, linkedin_url)
+                payload_for_ai = (
+                    profile_raw.get("data")
+                    if isinstance(profile_raw, dict) and isinstance(profile_raw.get("data"), (dict, list))
+                    else profile_raw
+                )
+                raw_for_ai = json.dumps(payload_for_ai, ensure_ascii=False, indent=2)
+                parsed = await _parse_cv_with_openai(api_key, raw_for_ai[:50000])
+                merged = _merge_ai_with_fallback(parsed, fallback)
+                merged.setdefault("linkedin_url", linkedin_url)
+                return {"success": True, "data": merged}
+            except Exception:
+                fb = _extract_linkedin_fallback(profile_raw, linkedin_url)
+                if any(_to_text(fb.get(k)) for k in ("full_name", "headline", "summary")) or any(
+                    isinstance(fb.get(k), list) and len(fb.get(k)) > 0
+                    for k in ("experience", "education", "skills", "projects")
+                ):
+                    fb.setdefault("linkedin_url", linkedin_url)
+                    return {"success": True, "data": fb}
+
+    # ── Fallback: public HTML scrape + GPT (best-effort; LinkedIn often blocks) ──
     profile_text = await _fetch_linkedin_html_text(linkedin_url)
     if profile_text:
         try:
@@ -525,84 +610,9 @@ async def import_linkedin(body: LinkedInImportRequest):
             parsed.setdefault("linkedin_url", linkedin_url)
             return {"success": True, "data": parsed}
         except Exception:
-            pass  # fall through to RapidAPI
+            pass
 
-    # ── Fallback: RapidAPI ───────────────────────────────────────────────────
-    rapidapi_key = os.getenv("RAPIDAPI_KEY", "").strip()
-    if not rapidapi_key:
-        raise HTTPException(
-            status_code=422,
-            detail=(
-                "Could not fetch this LinkedIn profile. "
-                "Make sure your profile is set to Public, then try again. "
-                "Alternatively, use the 'Paste Profile Text' tab."
-            ),
-        )
-
-    try:
-        async with httpx.AsyncClient(timeout=20.0) as http:
-            resp = await http.get(
-                "https://linkedin-data-api.p.rapidapi.com/get-profile-data-by-url",
-                headers={
-                    "x-rapidapi-host": "linkedin-data-api.p.rapidapi.com",
-                    "x-rapidapi-key": rapidapi_key,
-                },
-                params={"url": linkedin_url},
-            )
-            if resp.status_code == 404:
-                raise HTTPException(status_code=404, detail="LinkedIn profile not found. Make sure it is set to Public.")
-            if resp.status_code == 429:
-                raise HTTPException(status_code=429, detail="Too many requests. Please try again shortly.")
-            if resp.status_code in (401, 403):
-                raise HTTPException(
-                    status_code=422,
-                    detail=(
-                        "Could not import this LinkedIn profile automatically. "
-                        "Please use the 'Paste Profile Text' tab instead."
-                    ),
-                )
-            resp.raise_for_status()
-            profile_raw = resp.json()
-    except httpx.TimeoutException:
-        raise HTTPException(status_code=504, detail="Request timed out. Please try again.")
-    except HTTPException:
-        raise
-    except Exception as exc:
-        raise HTTPException(
-            status_code=500,
-            detail=(
-                f"Failed to fetch profile ({exc}). "
-                "Try the 'Paste Profile Text' tab instead."
-            ),
-        )
-
-    # RapidAPI may return 200 with {"success": false} when the service is down
-    if isinstance(profile_raw, dict) and profile_raw.get("success") is False:
-        raise HTTPException(
-            status_code=422,
-            detail=(
-                "Could not fetch this LinkedIn profile automatically. "
-                "Make sure your LinkedIn profile is set to Public and try again."
-            ),
-        )
-
-    try:
-        fallback = _extract_linkedin_fallback(profile_raw, linkedin_url)
-        payload_for_ai = (
-            profile_raw.get("data")
-            if isinstance(profile_raw, dict) and isinstance(profile_raw.get("data"), (dict, list))
-            else profile_raw
-        )
-        raw_for_ai = json.dumps(payload_for_ai, ensure_ascii=False, indent=2)
-        parsed = await _parse_cv_with_openai(api_key, raw_for_ai[:50000])
-        merged = _merge_ai_with_fallback(parsed, fallback)
-        merged.setdefault("linkedin_url", linkedin_url)
-        return {"success": True, "data": merged}
-    except Exception as exc:
-        fallback = _extract_linkedin_fallback(profile_raw, linkedin_url)
-        if any(_to_text(fallback.get(k)) for k in ("full_name", "headline", "summary")) or any(
-            isinstance(fallback.get(k), list) and len(fallback.get(k)) > 0
-            for k in ("experience", "education", "skills", "projects")
-        ):
-            return {"success": True, "data": fallback}
-        raise HTTPException(status_code=500, detail=f"Server error: {exc}")
+    raise HTTPException(
+        status_code=422,
+        detail="Couldn't fetch this profile automatically. Paste your LinkedIn profile text instead — that always works.",
+    )

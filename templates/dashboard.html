@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "_google_analytics.html" %}
@@ -25,8 +25,8 @@
         .side-link { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 10px; color: #b7c6e6; font-size: 14px; font-weight: 500; transition: background .15s, color .15s; }
         .side-link:hover { background: rgba(99,132,255,.12); color: #fff; }
         .side-link.active { background: rgba(51,146,255,.18); color: #fff; }
-        .side-link svg { width: 19px; height: 19px; flex-shrink: 0; color: #8aa0c8; }      /* all icons same color */
-        .side-link:hover svg, .side-link.active svg { color: #cfe0ff; }
+        .side-link svg { width: 19px; height: 19px; flex-shrink: 0; color: #e6edff; }      /* all icons white */
+        .side-link:hover svg, .side-link.active svg { color: #ffffff; }
         .side-foot { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
         /* Burger collapses the sidebar (desktop) */
         body.dash-collapsed .app { grid-template-columns: 1fr; }
@@ -111,11 +111,10 @@
         <aside class="side">
             <nav class="side-nav">
                 <a class="side-link active" href="/dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/></svg> Home</a>
-                <a class="side-link" href="/modify-cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg> Make CV</a>
+                <a class="side-link" href="/modify-cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg> Resume Builder</a>
                 <a class="side-link" href="/optimize"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.9L18.7 9l-4.9 1.8L12 16l-1.8-5.2L5.3 9l4.9-1.1z"/><path d="M19 14l.7 1.9L21.5 17l-1.8.6L19 19l-.7-1.4L16.5 17l1.8-.6z"/></svg> AI Optimize</a>
                 <a class="side-link" href="/solutions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20V11"/><path d="M12 20V5"/><path d="M18 20v-6"/></svg> Get ATS Score</a>
                 <a class="side-link" href="/cover-letter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> Cover Letter</a>
-                <a class="side-link" href="/auto-apply"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg> Auto Apply</a>
                 <a class="side-link" href="/my-resumes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> My Resumes</a>
                 <a class="side-link" href="/templates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Templates</a>
                 <a class="side-link" href="/interview-prep"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 4.7 1.4c0 1.7-2.2 2.1-2.2 3.4"/><path d="M12 17h.01"/></svg> Interview Prep</a>
@@ -133,10 +132,10 @@
             <!-- Promo -->
             <div class="promo">
                 <div>
-                    <h3><span class="tag">NEW</span> Auto Apply</h3>
-                    <p>Apply smarter, not just more — auto-apply to matching jobs on Naukri &amp; Internshala.</p>
+                    <h3><span class="tag">TIP</span> Tailor every application</h3>
+                    <p>Optimize your resume for each job description to boost your ATS score and get more callbacks.</p>
                 </div>
-                <a class="go" href="/auto-apply">Try it now</a>
+                <a class="go" href="/optimize">Optimize a resume</a>
             </div>
 
             <!-- Cards -->
@@ -157,18 +156,18 @@
 
                 <div class="card">
                     <div class="card-head">
-                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16"/></svg> Job Tracker</h3>
-                        <a href="/auto-apply">→</a>
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> My Resumes</h3>
+                        <a href="/my-resumes">→</a>
                     </div>
-                    <div class="stat"><span class="num">{{ application_count }}</span><span class="lbl">applications</span></div>
-                    {% if recent_applications %}
+                    <div class="stat"><span class="num">{{ resume_count }}</span><span class="lbl">saved</span></div>
+                    {% if recent_resumes %}
                     <ul class="mini-list">
-                        {% for a in recent_applications %}
-                        <li><span>{{ a.role }}</span><span class="co">{{ a.company }}</span></li>
+                        {% for r in recent_resumes %}
+                        <li><span>{{ r.title or "Untitled" }}</span><span class="co">{{ r.created_at.strftime('%d %b') }}</span></li>
                         {% endfor %}
                     </ul>
                     {% else %}
-                    <p class="empty">No applications tracked yet.</p>
+                    <p class="empty">No saved resumes yet.</p>
                     {% endif %}
                 </div>
 
@@ -191,6 +190,15 @@
                 <div class="scan-grid">
                     <div class="scan-box">
                         <div class="step">Step 1 · Job description</div>
+                        <select id="ns-role" style="width:100%;margin-bottom:10px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:10px;color:var(--ink);font-family:inherit;font-size:13px;padding:10px 12px;cursor:pointer;">
+                            <option value="">— or pick a sample role —</option>
+                            <option value="backend">Backend Software Engineer</option>
+                            <option value="frontend">Frontend Developer</option>
+                            <option value="data-analyst">Data Analyst</option>
+                            <option value="data-scientist">Data Scientist</option>
+                            <option value="product-manager">Product Manager</option>
+                            <option value="marketing">Digital Marketing</option>
+                        </select>
                         <textarea id="ns-jd" placeholder="Paste the job description here…"></textarea>
                     </div>
                     <a class="scan-box" href="/optimize" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--muted);gap:10px;">
@@ -228,6 +236,21 @@
             document.body.classList.toggle('dash-collapsed');
         });
 
+        // Default JD presets (concise) — pick a role to fill the box.
+        var NS_JDS = {
+            'backend': 'Backend Software Engineer\n\nResponsibilities:\n- Design and build scalable RESTful APIs and microservices\n- Optimize database queries and data models\n- Write unit/integration tests and participate in code reviews\n\nRequirements:\n- 2+ years backend experience (Python, Java, Go, or Node.js)\n- Relational + NoSQL databases, Docker, CI/CD\n- Strong problem-solving and code quality focus',
+            'frontend': 'Frontend Developer\n\nResponsibilities:\n- Build responsive, accessible web UIs\n- Implement designs with HTML, CSS, and modern JS frameworks\n- Optimize performance and cross-browser compatibility\n\nRequirements:\n- 2+ years with React/Vue/Angular\n- Strong CSS, state management, REST/GraphQL APIs\n- Attention to UX detail and testing',
+            'data-analyst': 'Data Analyst\n\nResponsibilities:\n- Collect, clean, and analyse large datasets from multiple sources\n- Build dashboards and reports in Tableau, Power BI, or Looker\n- Write complex SQL queries to extract insights\n- Partner with stakeholders to define KPIs and metrics\n\nRequirements:\n- Strong SQL and Excel; Python or R a plus\n- Data visualization and storytelling skills',
+            'data-scientist': 'Data Scientist\n\nResponsibilities:\n- Build and evaluate machine learning models\n- Perform statistical analysis and A/B testing\n- Communicate findings to stakeholders\n\nRequirements:\n- Python (pandas, scikit-learn), SQL, statistics\n- Experience with ML pipelines and model deployment',
+            'product-manager': 'Product Manager\n\nResponsibilities:\n- Define product strategy and roadmap\n- Gather and prioritize requirements from users and stakeholders\n- Work with engineering and design to ship features\n\nRequirements:\n- 3+ years in product management\n- Strong analytical, communication, and prioritization skills',
+            'marketing': 'Digital Marketing Specialist\n\nResponsibilities:\n- Plan and run campaigns across SEO, SEM, email, and social\n- Analyze performance and optimize for ROI\n- Create content and manage the marketing calendar\n\nRequirements:\n- Experience with Google Analytics, ad platforms, and CRM tools\n- Strong copywriting and data-driven mindset'
+        };
+        var roleSel = document.getElementById('ns-role');
+        if (roleSel) roleSel.addEventListener('change', function () {
+            var jd = NS_JDS[roleSel.value];
+            if (jd) document.getElementById('ns-jd').value = jd;
+        });
+
         // New scan: carry the JD to the optimizer page; resume is uploaded there.
         var go = document.getElementById('ns-go');
         if (go) go.addEventListener('click', function () {
@@ -237,7 +260,10 @@
                 msg.textContent = 'Paste the job description to start.';
                 return;
             }
-            try { sessionStorage.setItem('tcv_prefill_jd', jd); } catch (e) {}
+            try {
+                sessionStorage.setItem('tcv_prefill_jd', jd);
+                localStorage.setItem('tailorcv_jobDescription', jd);
+            } catch (e) {}
             window.location.href = '/optimize';
         });
     })();
