@@ -334,6 +334,9 @@ hr, .divider, [class*="divider"],
         if (contentHeightPx < 100) {
             contentHeightPx = Math.max(body.scrollHeight || 0, body.offsetHeight || 0, 100);
         }
+        
+        // Ensure content fills at least one full page
+        contentHeightPx = Math.max(contentHeightPx, A4_HEIGHT_PX);
 
         lastFillRatio  = contentHeightPx / A4_HEIGHT_PX;
         estimatedPages = Math.max(1,
@@ -351,8 +354,8 @@ html {
   overflow-y: auto !important;
   scrollbar-width: thin !important;
   scrollbar-color: rgba(148,163,184,0.35) transparent !important;
-  min-height: ${(estimatedPages * A4_HEIGHT_PX) + PAGE_GAP_PX * (estimatedPages + 1)}px !important;
   display: block !important;
+  height: auto !important;
 }
 body {
   width:  ${A4_WIDTH_PX}px !important;
@@ -368,6 +371,8 @@ body {
   left: auto !important;
   right: auto !important;
   border-radius: 2px !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 `;
 
@@ -380,8 +385,12 @@ body {
 
         renderPageBreaks(doc, estimatedPages);
 
+        // Ensure frame height is at least one full page, with appropriate gaps
+        const minFrameHeight = A4_HEIGHT_PX + PAGE_GAP_PX * 2;
+        const frameHeight = Math.max(minFrameHeight, contentHeightPx + PAGE_GAP_PX * (estimatedPages + 1));
+
         frame.style.width           = `${A4_WIDTH_PX}px`;
-        frame.style.height          = `${Math.ceil(contentHeightPx + PAGE_GAP_PX * (estimatedPages + 1))}px`;
+        frame.style.height          = `${Math.ceil(frameHeight)}px`;
         frame.style.transform       = `scale(${viewScale})`;
         frame.style.transformOrigin = "top left";
         frame.style.display         = "block";
@@ -389,7 +398,7 @@ body {
         frame.style.border          = "none";
 
         if (previewWrap) {
-            const visibleH = Math.ceil((contentHeightPx + PAGE_GAP_PX * (estimatedPages + 1)) * viewScale);
+            const visibleH = Math.ceil(frameHeight * viewScale);
             if (isMobile) {
                 /* On mobile the iframe is scaled via transform; its layout dimensions stay
                    at A4 size. Pin the wrapper to the exact visual height so no grey gap
@@ -1235,51 +1244,57 @@ body {
             .pc-card-inner{
                 background:linear-gradient(145deg,#16003a 0%,#1e0045 40%,#0d1a3e 100%);
                 border:1px solid rgba(167,139,250,.35);border-radius:20px;
-                padding:28px 24px;margin-bottom:20px;position:relative;overflow:hidden;
+                margin:0 auto 20px;position:relative;overflow:hidden;
+                aspect-ratio:9/16;width:100%;max-width:340px;
+                box-shadow:0 12px 40px rgba(139,92,246,.2),0 24px 48px rgba(0,0,0,.6);
+            }
+            .pc-card-content{
+                position:absolute;top:0;left:0;width:100%;
+                padding:20px 18px 16px;display:flex;flex-direction:column;gap:12px;
+                transform-origin:top left;z-index:1;box-sizing:border-box;
             }
             .pc-card-shimmer-inner{
                 position:absolute;top:0;left:0;right:0;height:3px;
                 background:linear-gradient(90deg,#f59e0b,#8b5cf6,#ec4899,#3b82f6,#10b981);
                 background-size:300%;animation:pcpShimmer 3s linear infinite;
             }
-            .pc-brand{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(167,139,250,.6);margin-bottom:18px;}
-            .pc-cand{font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:5px;}
+            .pc-brand-row{display:flex;align-items:center;justify-content:space-between;}
+            .pc-brand{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(167,139,250,.55);}
+            .pc-cand{font-size:9px;color:rgba(255,255,255,.4);text-align:right;}
             .pc-arch{
-                font-size:1.7rem;font-weight:900;
+                font-size:26px;font-weight:900;
                 background:linear-gradient(135deg,#fbbf24,#f472b6,#818cf8);
                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-                background-clip:text;line-height:1.2;margin-bottom:12px;
+                background-clip:text;line-height:1.1;
             }
+            .pc-stats{
+                display:flex;justify-content:center;
+                background:rgba(255,255,255,.04);
+                border:1px solid rgba(255,255,255,.08);
+                border-radius:10px;padding:8px 0;
+            }
+            .pc-stat{flex:1;text-align:center;}
+            .pc-stat+.pc-stat{border-left:1px solid rgba(255,255,255,.08);}
+            .pc-stat-val{font-size:18px;font-weight:800;color:#fbbf24;display:block;}
+            .pc-stat-label{font-size:7px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;}
+            .pc-skills{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;}
+            .pc-skill{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);border-radius:20px;padding:3px 10px;font-size:9px;color:#93c5fd;font-weight:600;}
             .pc-story{
-                font-size:1.03rem;color:rgba(244,247,255,.88);line-height:1.8;
-                margin-bottom:22px;padding:18px 18px 16px;
-                background:linear-gradient(180deg,rgba(139,92,246,.12),rgba(59,130,246,.08));
-                border:1px solid rgba(139,92,246,.24);border-left:4px solid rgba(167,139,250,.65);
-                border-radius:14px;
+                font-size:10.5px;color:rgba(244,247,255,.82);line-height:1.55;
+                padding:9px 11px;background:rgba(139,92,246,.10);
+                border-left:3px solid rgba(167,139,250,.6);border-radius:0 6px 6px 0;
             }
-            .pc-traits{
-                display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-                gap:10px;margin-bottom:20px;
-            }
+            .pc-traits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;}
             .pc-trait-card{
-                background:rgba(15,23,42,.42);border:1px solid rgba(139,92,246,.22);
-                border-radius:14px;padding:12px 12px 11px;
+                background:rgba(15,23,42,.45);border:1px solid rgba(139,92,246,.2);
+                border-radius:10px;padding:9px 10px 8px;display:flex;flex-direction:column;
             }
             .pc-trait-head{
-                display:flex;align-items:center;gap:8px;margin-bottom:6px;
-                color:#ddd6fe;font-size:.9rem;font-weight:700;
+                display:flex;align-items:center;gap:4px;margin-bottom:4px;
+                color:#ddd6fe;font-size:10px;font-weight:700;line-height:1.2;
             }
-            .pc-trait-desc{
-                font-size:.82rem;line-height:1.55;color:rgba(226,232,240,.82);
-            }
-            .pc-stats{display:flex;border-top:1px solid rgba(255,255,255,.08);padding-top:16px;margin-bottom:14px;}
-            .pc-stat{flex:1;text-align:center;padding:0 6px;}
-            .pc-stat+.pc-stat{border-left:1px solid rgba(255,255,255,.08);}
-            .pc-stat-val{font-size:1.3rem;font-weight:800;color:#fbbf24;display:block;}
-            .pc-stat-label{font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;}
-            .pc-skills{display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid rgba(255,255,255,.08);padding-top:12px;}
-            .pc-skill{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);border-radius:6px;padding:3px 9px;font-size:.72rem;color:#93c5fd;font-weight:600;}
-            .pc-footer-brand{font-size:.68rem;color:rgba(255,255,255,.2);text-align:right;margin-top:12px;}
+            .pc-trait-desc{font-size:9px;line-height:1.45;color:rgba(226,232,240,.72);}
+            .pc-footer-brand{font-size:7.5px;color:rgba(255,255,255,.18);text-align:center;}
             .pc-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
             .pc-action-btn{
                 flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
@@ -1296,10 +1311,6 @@ body {
                 width:36px;height:36px;border:3px solid rgba(139,92,246,.2);
                 border-top-color:#8b5cf6;border-radius:50%;
                 animation:pcSpin .7s linear infinite;margin:0 auto 14px;
-            }
-            @media (max-width:560px){
-                .pc-traits{grid-template-columns:1fr;}
-                .pc-story{font-size:.98rem;padding:16px 15px 15px;}
             }
             @keyframes pcSpin{to{transform:rotate(360deg)}}
         `;
@@ -1357,6 +1368,20 @@ body {
         }
     }
 
+    function fitPcCardContent() {
+        const card  = document.getElementById("pc-capturable-card");
+        const inner = document.getElementById("pc-card-content");
+        if (!card || !inner) return;
+        inner.style.transform = "none";
+        inner.style.width     = "100%";
+        const cardH    = card.clientHeight;
+        const contentH = inner.scrollHeight;
+        let scale = cardH / contentH;
+        if (scale > 1) scale = 1;
+        inner.style.width     = (100 / scale) + "%";
+        inner.style.transform = `scale(${scale})`;
+    }
+
     function _renderPersonalityCardModal(card) {
         const bodyEl = document.getElementById("pc-modal-body");
         if (!bodyEl) return;
@@ -1384,14 +1409,18 @@ body {
         bodyEl.innerHTML = `
             <div class="pc-card-inner" id="pc-capturable-card">
                 <div class="pc-card-shimmer-inner"></div>
-                <div class="pc-brand">TailorCV &middot; Career Personality</div>
-                ${card.candidate_name ? `<div class="pc-cand">${_escHtml(card.candidate_name)}</div>` : ""}
-                <div class="pc-arch" id="pc-arch-text">${_escHtml(card.archetype)}</div>
-                ${card.story ? `<div class="pc-story">${_escHtml(card.story)}</div>` : ""}
-                <div class="pc-traits">${traits}</div>
-                <div class="pc-stats">${statsHtml}</div>
-                ${skills ? `<div class="pc-skills">${skills}</div>` : ""}
-                <div class="pc-footer-brand">thetailorcv.com</div>
+                <div class="pc-card-content" id="pc-card-content">
+                    <div class="pc-brand-row">
+                        <div class="pc-brand">TailorCV &middot; Career Personality</div>
+                        ${card.candidate_name ? `<div class="pc-cand">${_escHtml(card.candidate_name)}</div>` : ""}
+                    </div>
+                    <div class="pc-arch" id="pc-arch-text">${_escHtml(card.archetype)}</div>
+                    <div class="pc-stats">${statsHtml}</div>
+                    ${skills ? `<div class="pc-skills">${skills}</div>` : ""}
+                    ${card.story ? `<div class="pc-story">${_escHtml(card.story)}</div>` : ""}
+                    <div class="pc-traits">${traits}</div>
+                    <div class="pc-footer-brand">thetailorcv.com</div>
+                </div>
             </div>
             <div class="pc-actions">
                 <button class="pc-action-btn pc-btn-li" id="pc-li-btn">
@@ -1406,6 +1435,12 @@ body {
             </div>
         `;
 
+        requestAnimationFrame(() => fitPcCardContent());
+        setTimeout(fitPcCardContent, 150);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(() => requestAnimationFrame(fitPcCardContent));
+        }
+
         document.getElementById("pc-li-btn").onclick = () => {
             const text = `Just discovered my career personality with TailorCv.AI 🎯\n\nI'm ${card.archetype} — ${card.tagline}\n\nFind out yours → ${card.share_url}\n\n#CareerPersonality #TailorCvAI #JobSearch`;
             window.open("https://www.linkedin.com/feed/", "_blank", "noopener,noreferrer");
@@ -1413,31 +1448,83 @@ body {
         };
 
         document.getElementById("pc-dl-btn").onclick = () => {
-            const btn    = document.getElementById("pc-dl-btn");
-            const cardEl = document.getElementById("pc-capturable-card");
-            const archEl = document.getElementById("pc-arch-text");
+            const btn     = document.getElementById("pc-dl-btn");
+            const cardEl  = document.getElementById("pc-capturable-card");
+            const archEl  = document.getElementById("pc-arch-text");
+            const innerEl = document.getElementById("pc-card-content");
             const shimmer = cardEl.querySelector(".pc-card-shimmer-inner");
-            const origArch = archEl.style.cssText;
+            const origArch           = archEl.style.cssText;
+            const origInnerTransform = innerEl ? innerEl.style.transform : "";
+            const origInnerWidth     = innerEl ? innerEl.style.width     : "";
+            const origCardOverflow   = cardEl.style.overflow;
+            const origCardAspect     = cardEl.style.aspectRatio;
+            const origCardHeight     = cardEl.style.height;
 
             btn.textContent = "Generating…";
             btn.disabled = true;
             if (shimmer) shimmer.style.animation = "none";
             archEl.style.cssText = origArch + ";-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;";
 
-            window.html2canvas(cardEl, { scale: 2, backgroundColor: null, useCORS: true, logging: false })
-                .then(canvas => {
-                    const a = document.createElement("a");
-                    a.download = "career-personality-" + card.archetype.toLowerCase().replace(/\s+/g, "-") + ".png";
-                    a.href = canvas.toDataURL("image/png");
-                    a.click();
-                })
-                .catch(() => alert("PNG generation failed. Use the Full Page link to save the image."))
-                .finally(() => {
-                    if (shimmer) shimmer.style.animation = "";
-                    archEl.style.cssText = origArch;
-                    btn.textContent = "↓ Download PNG";
-                    btn.disabled = false;
-                });
+            if (innerEl) { innerEl.style.transform = "none"; innerEl.style.width = "100%"; }
+            cardEl.style.aspectRatio = "auto";
+            cardEl.style.overflow    = "visible";
+            cardEl.style.height      = (innerEl ? innerEl.scrollHeight : cardEl.scrollHeight) + "px";
+
+            const naturalWidth  = cardEl.offsetWidth;
+            const naturalHeight = cardEl.scrollHeight;
+
+            window.html2canvas(cardEl, {
+                scale: 1080 / naturalWidth,
+                backgroundColor: null,
+                useCORS: true,
+                logging: false,
+                width:  naturalWidth,
+                height: naturalHeight,
+                windowWidth:  naturalWidth,
+                windowHeight: naturalHeight,
+            }).then(contentCanvas => {
+                const outW = 1080, outH = 1920;
+                const out = document.createElement("canvas");
+                out.width = outW; out.height = outH;
+                const ctx = out.getContext("2d");
+
+                const grad = ctx.createLinearGradient(0, 0, outW * 0.35, outH);
+                grad.addColorStop(0,   "#16003a");
+                grad.addColorStop(0.5, "#1e0045");
+                grad.addColorStop(1,   "#0d1a3e");
+                ctx.fillStyle = grad;
+                const r = 44;
+                ctx.beginPath();
+                ctx.moveTo(r, 0);
+                ctx.arcTo(outW, 0,    outW, outH, r);
+                ctx.arcTo(outW, outH, 0,    outH, r);
+                ctx.arcTo(0,    outH, 0,    0,    r);
+                ctx.arcTo(0,    0,    outW, 0,    r);
+                ctx.closePath();
+                ctx.fill();
+
+                const scale = Math.min(outW / contentCanvas.width, outH / contentCanvas.height);
+                const drawW = contentCanvas.width  * scale;
+                const drawH = contentCanvas.height * scale;
+                ctx.drawImage(contentCanvas, (outW - drawW) / 2, (outH - drawH) / 2, drawW, drawH);
+
+                const a = document.createElement("a");
+                a.download = "career-personality-" + card.archetype.toLowerCase().replace(/\s+/g, "-") + ".png";
+                a.href = out.toDataURL("image/png");
+                a.click();
+            })
+            .catch(() => alert("PNG generation failed. Use the Full Page link to save the image."))
+            .finally(() => {
+                if (shimmer) shimmer.style.animation = "";
+                archEl.style.cssText = origArch;
+                if (innerEl) { innerEl.style.transform = origInnerTransform; innerEl.style.width = origInnerWidth; }
+                cardEl.style.aspectRatio = origCardAspect;
+                cardEl.style.overflow    = origCardOverflow;
+                cardEl.style.height      = origCardHeight;
+                fitPcCardContent();
+                btn.textContent = "↓ Download PNG";
+                btn.disabled = false;
+            });
         };
 
         document.getElementById("pc-copy-btn").onclick = function () {

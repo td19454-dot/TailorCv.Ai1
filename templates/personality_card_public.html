@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
@@ -9,9 +10,11 @@
     {% include "_seo_head.html" %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
             min-height: 100vh;
             background: linear-gradient(135deg, #0a0015 0%, #0d0025 40%, #020010 100%);
@@ -20,39 +23,51 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 12px 10px 36px;
+            padding: 16px 16px 28px;
         }
 
-        /* ── Card: wide & short — targets ~4:5 or squarish on mobile ── */
+        /* ── Card: fixed 9:16 frame, centered, max 360px wide ── */
         #personality-card {
             width: 100%;
-            max-width: 560px;
-            background: linear-gradient(145deg, #16003a 0%, #1e0045 40%, #0d1a3e 100%);
-            border: 1px solid rgba(167, 139, 250, 0.38);
+            max-width: 360px;
+            aspect-ratio: 9 / 16;
+            background: linear-gradient(160deg, #16003a 0%, #1e0045 50%, #0d1a3e 100%);
+            border: 1px solid rgba(167, 139, 250, 0.35);
             border-radius: 20px;
-            padding: 16px 16px 14px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 60px rgba(139, 92, 246, 0.22), 0 24px 48px rgba(0,0,0,.6);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            container-type: inline-size;
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2), 0 24px 48px rgba(0,0,0,.6);
         }
 
+        /* decorative glows */
         #personality-card::before {
             content: '';
             position: absolute; top: -60px; right: -60px;
-            width: 180px; height: 180px;
-            background: radial-gradient(circle, rgba(139,92,246,.18) 0%, transparent 70%);
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(139,92,246,.2) 0%, transparent 70%);
             pointer-events: none;
         }
         #personality-card::after {
             content: '';
             position: absolute; bottom: -60px; left: -60px;
-            width: 180px; height: 180px;
-            background: radial-gradient(circle, rgba(59,130,246,.14) 0%, transparent 70%);
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(59,130,246,.15) 0%, transparent 70%);
             pointer-events: none;
+        }
+
+        /* ── Inner content wrapper: scaled via JS to fit the 9:16 frame ── */
+        .card-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 18px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transform-origin: top left;
+            z-index: 1;
+            box-sizing: border-box;
         }
 
         .card-shimmer {
@@ -60,126 +75,148 @@
             background: linear-gradient(90deg, #f59e0b, #8b5cf6, #ec4899, #3b82f6, #10b981);
             background-size: 300%;
             animation: shimmer 3s linear infinite;
-            z-index: 1;
+            border-radius: 20px 20px 0 0;
+            z-index: 2;
         }
         @keyframes shimmer { 0%{background-position:0%} 100%{background-position:300%} }
 
-        /* ── Header row: brand + name + archetype side by side ── */
-        .card-header {
+        /* ── Brand + name row ── */
+        .card-brand-row {
             display: flex;
-            flex-direction: column;
-            position: relative; z-index: 1;
+            align-items: center;
+            justify-content: space-between;
         }
         .card-brand {
-            font-size: 1.7cqi; letter-spacing: .15em; text-transform: uppercase;
-            color: rgba(167,139,250,.6); margin-bottom: 2px;
+            font-size: 8px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: rgba(167,139,250,.55);
         }
-        .card-name { font-size: 2.4cqi; color: rgba(255,255,255,.5); margin-bottom: 2px; }
+        .card-name {
+            font-size: 9px;
+            color: rgba(255,255,255,.4);
+            text-align: right;
+        }
+
+        /* ── Archetype hero ── */
         .card-archetype {
-            font-size: 5.8cqi; font-weight: 900;
+            font-size: 26px;
+            font-weight: 900;
             background: linear-gradient(135deg, #fbbf24, #f472b6, #818cf8);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; line-height: 1.15;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
         }
 
-        /* ── Story: hard 3-line clamp ── */
-        .card-story {
-            font-size: 2.6cqi; color: rgba(244,247,255,.88); line-height: 1.6;
-            padding: 2.5cqi 3cqi;
-            background: linear-gradient(180deg, rgba(139,92,246,.12), rgba(59,130,246,.08));
-            border: 1px solid rgba(139,92,246,.24);
-            border-left: 4px solid rgba(167,139,250,.65);
+        /* ── Stats row: horizontal, centered ── */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.08);
             border-radius: 10px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
-            position: relative; z-index: 1;
+            padding: 8px 0;
+        }
+        .stat-item { text-align: center; flex: 1; }
+        .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,.08); }
+        .stat-value { font-size: 18px; font-weight: 800; color: #fbbf24; display: block; }
+        .stat-label { font-size: 7px; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: .1em; }
+
+        /* ── Skill chips: centered ── */
+        .skills-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+        }
+        .skill-chip {
+            background: rgba(59,130,246,.15);
+            border: 1px solid rgba(59,130,246,.3);
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 9px;
+            color: #93c5fd;
+            font-weight: 600;
         }
 
-        /* ── Traits: 2x2 grid, compact ── */
+        /* ── Story ── */
+        .card-story {
+            font-size: 10.5px;
+            color: rgba(244,247,255,.82);
+            line-height: 1.55;
+            padding: 9px 11px;
+            background: rgba(139,92,246,.10);
+            border-left: 3px solid rgba(167,139,250,.6);
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* ── Traits: 2×2 grid ── */
         .traits-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1.4cqi;
-            position: relative; z-index: 1;
+            gap: 7px;
         }
         .trait-card {
-            background: rgba(15,23,42,.42); border: 1px solid rgba(139,92,246,.22);
-            border-radius: 10px; padding: 1.8cqi 2cqi 1.6cqi;
+            background: rgba(15,23,42,.45);
+            border: 1px solid rgba(139,92,246,.2);
+            border-radius: 10px;
+            padding: 9px 10px 8px;
+            display: flex;
+            flex-direction: column;
         }
         .trait-head {
-            display: flex; align-items: center; gap: 1cqi; margin-bottom: 0.8cqi;
-            color: #ddd6fe; font-size: 2.4cqi; font-weight: 700;
-        }
-        .trait-desc {
-            font-size: 2.1cqi; line-height: 1.45; color: rgba(226,232,240,.82);
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-        }
-
-        /* ── Stats + skills on one row ── */
-        .bottom-row {
             display: flex;
             align-items: center;
-            gap: 0;
-            border-top: 1px solid rgba(255,255,255,.08);
-            padding-top: 10px;
-            position: relative; z-index: 1;
+            gap: 4px;
+            margin-bottom: 4px;
+            color: #ddd6fe;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1.2;
         }
-        .stats-row {
-            display: flex;
-            flex-shrink: 0;
-        }
-        .stat-item { text-align: center; padding: 0 10px; }
-        .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,.08); }
-        .stat-value { font-size: 4.5cqi; font-weight: 800; color: #fbbf24; display: block; }
-        .stat-label { font-size: 1.6cqi; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .08em; }
-
-        .skills-chips {
-            display: flex; flex-wrap: wrap; gap: 1.2cqi;
-            padding-left: 10px;
-            border-left: 1px solid rgba(255,255,255,.08);
-            margin-left: 4px;
-        }
-        .skill-chip {
-            background: rgba(59,130,246,.15); border: 1px solid rgba(59,130,246,.3);
-            border-radius: 5px; padding: 0.8cqi 1.8cqi;
-            font-size: 1.9cqi; color: #93c5fd; font-weight: 600;
+        .trait-desc {
+            font-size: 9px;
+            line-height: 1.45;
+            color: rgba(226,232,240,.72);
         }
 
+        /* ── Footer ── */
         .card-footer-brand {
-            font-size: 1.6cqi; color: rgba(255,255,255,.2);
-            text-align: right; position: relative; z-index: 1;
+            font-size: 7.5px;
+            color: rgba(255,255,255,.18);
+            text-align: center;
         }
 
-        /* ── CTA section ── */
+        /* ── CTA section (below card) ── */
         .cta-section {
-            width: 100%; max-width: 560px; margin-top: 18px; text-align: center;
+            width: 100%;
+            max-width: 360px;
+            margin-top: 18px;
+            text-align: center;
         }
-        .cta-headline { font-size: 1.05rem; font-weight: 700; color: #eaf1ff; margin-bottom: 6px; }
-        .cta-sub { font-size: .85rem; color: #9fb0cc; margin-bottom: 16px; }
+        .cta-headline { font-size: 14px; font-weight: 700; color: #eaf1ff; margin-bottom: 4px; }
+        .cta-sub { font-size: 12px; color: #9fb0cc; margin-bottom: 14px; }
         .cta-btn {
             display: inline-block;
             background: linear-gradient(135deg, #7c3aed, #4c1d95);
-            color: #fff; font-weight: 700; font-size: .95rem;
-            padding: 12px 32px; border-radius: 12px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 14px;
+            padding: 11px 28px; border-radius: 12px; text-decoration: none;
             transition: filter .2s, transform .2s;
         }
         .cta-btn:hover { filter: brightness(1.12); transform: translateY(-2px); }
 
         /* ── Share buttons ── */
         .share-row {
-            display: flex; gap: 8px; justify-content: center;
-            flex-wrap: wrap; margin-top: 16px;
+            display: flex; gap: 7px; justify-content: center;
+            flex-wrap: wrap; margin-top: 14px;
         }
         .share-btn {
-            display: inline-flex; align-items: center; gap: 7px;
-            padding: 10px 16px; border-radius: 10px; border: none;
-            font-size: .82rem; font-weight: 700; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 9px 14px; border-radius: 10px; border: none;
+            font-size: 12px; font-weight: 700; cursor: pointer;
             transition: transform .15s, filter .15s; text-decoration: none;
+            font-family: 'Inter', system-ui, sans-serif;
         }
         .share-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
         .btn-linkedin { background: linear-gradient(135deg, #0077b5, #005582); color: #fff; }
@@ -188,34 +225,26 @@
         .btn-copy    { background: rgba(139,92,246,.2); color: #c4b5fd; border: 1px solid rgba(139,92,246,.4); }
     </style>
 </head>
+
 <body>
 
     <div id="personality-card">
         <div class="card-shimmer"></div>
 
-        <div class="card-header">
-            <div class="card-brand">TailorCv.AI &middot; Career Personality</div>
-            {% if candidate_name %}<div class="card-name">{{ candidate_name }}</div>{% endif %}
-            <div class="card-archetype" id="card-arch-text">{{ card.archetype }}</div>
-        </div>
+        <div class="card-inner" id="card-inner">
 
-        {% if story %}
-        <div class="card-story">{{ story }}</div>
-        {% endif %}
-
-        <div class="traits-grid">
-            {% for trait in traits %}
-            <div class="trait-card">
-                <div class="trait-head">
-                    <span>{{ trait.emoji }}</span>
-                    <span>{{ trait.label }}</span>
-                </div>
-                <div class="trait-desc">{{ trait.description }}</div>
+            <!-- Brand + candidate name -->
+            <div class="card-brand-row">
+                <div class="card-brand">TailorCv.AI &middot; Career Personality</div>
+                {% if candidate_name %}<div class="card-name">{{ candidate_name }}</div>{% endif %}
             </div>
-            {% endfor %}
-        </div>
 
-        <div class="bottom-row">
+            <!-- Archetype hero -->
+            <div class="card-archetype-wrap">
+                <div class="card-archetype" id="card-arch-text">{{ card.archetype }}</div>
+            </div>
+
+            <!-- Stats -->
             <div class="stats-row">
                 <div class="stat-item">
                     <span class="stat-value">{{ stats.years_experience or 0 }}+</span>
@@ -223,14 +252,15 @@
                 </div>
                 <div class="stat-item">
                     <span class="stat-value">{{ stats.companies_count or 0 }}</span>
-                    <span class="stat-label">Cos</span>
+                    <span class="stat-label">Companies</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-value">{{ stats.total_projects or 0 }}</span>
-                    <span class="stat-label">Projs</span>
+                    <span class="stat-label">Projects</span>
                 </div>
             </div>
 
+            <!-- Skill chips -->
             {% if stats.top_3_skills %}
             <div class="skills-chips">
                 {% for skill in stats.top_3_skills %}
@@ -238,9 +268,28 @@
                 {% endfor %}
             </div>
             {% endif %}
-        </div>
 
-        <div class="card-footer-brand">thetailorcv.com</div>
+            <!-- Story -->
+            {% if story %}
+            <div class="card-story">{{ story }}</div>
+            {% endif %}
+
+            <!-- Traits 2×2 -->
+            <div class="traits-grid">
+                {% for trait in traits %}
+                <div class="trait-card">
+                    <div class="trait-head">
+                        <span>{{ trait.emoji }}</span>
+                        <span>{{ trait.label }}</span>
+                    </div>
+                    <div class="trait-desc">{{ trait.description }}</div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="card-footer-brand">thetailorcv.com</div>
+
+        </div>
     </div>
 
     <div class="cta-section">
@@ -250,11 +299,17 @@
 
         <div class="share-row">
             <button class="share-btn btn-linkedin" id="li-share-btn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z" />
+                </svg>
                 LinkedIn
             </button>
             <button class="share-btn btn-whatsapp" id="wa-share-btn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
                 WhatsApp
             </button>
             <button class="share-btn btn-download" id="download-png-btn">&#8595; Save Card</button>
@@ -262,13 +317,13 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
     <script>
-    (function () {
-        var cardUrl   = {{ card_url | tojson }};
+        (function () {
+            var cardUrl = {{ card_url | tojson }};
         var archetype = {{ card.archetype | tojson }};
-        var tagline   = {{ card.tagline | tojson }};
+        var tagline = {{ card.tagline | tojson }};
 
         var shareText = "Just discovered my career personality with TailorCv.AI 🎯\n\n"
             + "I'm " + archetype + " — " + tagline + "\n\n"
@@ -278,7 +333,7 @@
         document.getElementById('li-share-btn').addEventListener('click', function () {
             window.open("https://www.linkedin.com/feed/", "_blank", "noopener,noreferrer");
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(shareText).catch(function () {});
+                navigator.clipboard.writeText(shareText).catch(function () { });
             }
         });
 
@@ -286,28 +341,128 @@
             window.open("https://wa.me/?text=" + encodeURIComponent(shareText), "_blank", "noopener,noreferrer");
         });
 
+        /* ── Shrink-to-fit for the LIVE PREVIEW: scale .card-inner down so its
+               full content fits inside the fixed 9:16 frame without clipping. ── */
+        function fitCardContent() {
+            var card  = document.getElementById('personality-card');
+            var inner = document.getElementById('card-inner');
+
+            inner.style.transform = 'none';
+            inner.style.width = '100%';
+
+            var cardHeight    = card.clientHeight;
+            var contentHeight = inner.scrollHeight;
+
+            var scale = cardHeight / contentHeight;
+            if (scale > 1) scale = 1;
+
+            inner.style.width = (100 / scale) + '%';
+            inner.style.transform = 'scale(' + scale + ')';
+        }
+
+        window.addEventListener('load', fitCardContent);
+        window.addEventListener('resize', fitCardContent);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(fitCardContent);
+        }
+
+        /* Draws a rounded-rect path (manual, for browsers without ctx.roundRect) */
+        function roundRectPath(ctx, x, y, w, h, r) {
+            ctx.beginPath();
+            ctx.moveTo(x + r, y);
+            ctx.arcTo(x + w, y,     x + w, y + h, r);
+            ctx.arcTo(x + w, y + h, x,     y + h, r);
+            ctx.arcTo(x,     y + h, x,     y,     r);
+            ctx.arcTo(x,     y,     x + w, y,     r);
+            ctx.closePath();
+        }
+
+        /* ── Capture the card for download/sharing.
+               Strategy: capture the card at its NATURAL, unscaled, full-content
+               height (no clipping needed at this stage), then composite the
+               result onto a fixed 1080x1920 (9:16) canvas using "contain"
+               scaling so the export is always exactly 9:16, with nothing
+               cut off — regardless of how long the content is. ── */
         function captureCard(callback) {
             var cardEl  = document.getElementById('personality-card');
+            var inner   = document.getElementById('card-inner');
             var archEl  = document.getElementById('card-arch-text');
             var shimmer = cardEl.querySelector('.card-shimmer');
-            var origArch = archEl.style.cssText;
+
+            var origArch          = archEl.style.cssText;
+            var origInnerTransform = inner.style.transform;
+            var origInnerWidth     = inner.style.width;
+            var origCardOverflow   = cardEl.style.overflow;
+            var origCardAspect     = cardEl.style.aspectRatio;
+            var origCardHeight     = cardEl.style.height;
 
             if (shimmer) shimmer.style.animation = 'none';
+
+            /* fix gradient text for html2canvas (can't render -webkit-text-fill-color) */
             archEl.style.cssText = origArch
                 + ';-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;'
                 + 'background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;';
 
-            var exportScale = 1080 / cardEl.offsetWidth;
+            /* expand the card to its natural full-content height for capture —
+               this avoids relying on html2canvas to honor overflow:hidden + transform */
+            inner.style.transform = 'none';
+            inner.style.width = '100%';
+            cardEl.style.aspectRatio = 'auto';
+            cardEl.style.overflow = 'visible';
+            cardEl.style.height = inner.scrollHeight + 'px';
+
+            var naturalWidth  = cardEl.offsetWidth;
+            var naturalHeight = cardEl.scrollHeight;
 
             html2canvas(cardEl, {
-                scale: exportScale, backgroundColor: null, useCORS: true, logging: false
-            }).then(function (canvas) {
-                callback(null, canvas);
+                scale: 1080 / naturalWidth, // crisp output regardless of final compositing size
+                backgroundColor: null,
+                useCORS: true,
+                logging: false,
+                width: naturalWidth,
+                height: naturalHeight,
+                windowWidth: naturalWidth,
+                windowHeight: naturalHeight
+            }).then(function (contentCanvas) {
+                var outW = 1080, outH = 1920;
+                var out = document.createElement('canvas');
+                out.width = outW;
+                out.height = outH;
+                var ctx = out.getContext('2d');
+
+                /* fill the full 9:16 frame with the card's background gradient,
+                   so any letterbox space blends in */
+                var grad = ctx.createLinearGradient(0, 0, outW * 0.35, outH);
+                grad.addColorStop(0,   '#16003a');
+                grad.addColorStop(0.5, '#1e0045');
+                grad.addColorStop(1,   '#0d1a3e');
+                ctx.fillStyle = grad;
+                roundRectPath(ctx, 0, 0, outW, outH, 44);
+                ctx.fill();
+
+                /* "contain" fit: scale the captured content to fit inside the
+                   9:16 frame, centered, without cropping anything */
+                var scale = Math.min(outW / contentCanvas.width, outH / contentCanvas.height);
+                var drawW = contentCanvas.width * scale;
+                var drawH = contentCanvas.height * scale;
+                var dx = (outW - drawW) / 2;
+                var dy = (outH - drawH) / 2;
+
+                ctx.drawImage(contentCanvas, dx, dy, drawW, drawH);
+
+                callback(null, out);
             }).catch(function (err) {
                 callback(err);
             }).finally(function () {
+                /* restore the live preview exactly as it was */
+                inner.style.transform = origInnerTransform;
+                inner.style.width = origInnerWidth;
+                cardEl.style.aspectRatio = origCardAspect;
+                cardEl.style.overflow = origCardOverflow;
+                cardEl.style.height = origCardHeight;
                 if (shimmer) shimmer.style.animation = '';
                 archEl.style.cssText = origArch;
+                fitCardContent();
             });
         }
 
@@ -343,4 +498,5 @@
     }());
     </script>
 </body>
+
 </html>
