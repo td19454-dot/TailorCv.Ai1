@@ -65,3 +65,26 @@
         </div>
     </div>
 </footer>
+<script>
+/* Footer accordion on mobile (≤480px): tap a column heading to expand/collapse
+   its links. On larger screens the headings are inert and all links stay shown. */
+(function () {
+    var cols = document.querySelectorAll('.site-footer .sf-col:not(.sf-brand)');
+    cols.forEach(function (col) {
+        var heading = col.querySelector('.sf-heading');
+        if (!heading) return;
+        heading.setAttribute('role', 'button');
+        heading.setAttribute('tabindex', '0');
+        heading.setAttribute('aria-expanded', 'false');
+        function toggle() {
+            if (window.innerWidth > 480) return;
+            var open = col.classList.toggle('sf-open');
+            heading.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        heading.addEventListener('click', toggle);
+        heading.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+    });
+})();
+</script>

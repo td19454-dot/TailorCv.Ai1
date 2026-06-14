@@ -638,7 +638,7 @@
                     </p>
                     <div class="hero-cta">
                         <a href="/solutions" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
-                            >Optimize My Resume — Free</a>
+                            ><span class="cta-label-full">Optimize My Resume — Free</span><span class="cta-label-short">Optimize for Free</span></a>
                         <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span>
                             Takes 2 minutes &bull; No credit card needed &bull; Free to start</p>
                     </div>
@@ -928,6 +928,11 @@
                 </div>
 
                 <div class="hero-visual">
+                    <!-- Compact ATS badge shown only on small screens (replaces the animated preview). -->
+                    <div class="hero-ats-badge" aria-hidden="true">
+                        <div class="hero-ats-ring"><span class="hero-ats-num">92</span><span class="hero-ats-of">/100</span></div>
+                        <div class="hero-ats-tx"><strong>ATS-Optimized</strong><span>Keyword match &amp; format checked</span></div>
+                    </div>
                     <div class="resume-card" id="heroResumeCard">
                         <div class="scan-line" id="heroScanLine"></div>
 
@@ -1476,6 +1481,14 @@
                 <div class="dot active"></div>
                 <div class="dot"></div>
                 <div class="dot"></div>
+            </div>
+            <!-- Mobile-only swipeable carousel with a "1 of N" counter + dots -->
+            <div class="t-mobile" id="tMobile" aria-label="Testimonials">
+                <div class="t-mobile-track" id="tMobileTrack"></div>
+                <div class="t-mobile-bar">
+                    <span class="t-mobile-counter" id="tMobileCounter">1 of 6</span>
+                    <div class="t-mobile-dots" id="tMobileDots"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -2038,7 +2051,119 @@
             s.style.animation = `twinkle ${(2 + Math.random() * 4).toFixed(1)}s ease-in-out ${(Math.random() * 4).toFixed(1)}s infinite`;
             starsContainer.appendChild(s);
         }
+
+        /* ── Mobile swipe carousel (real swipe + dots + "1 of N" counter) ── */
+        (function () {
+            var mt = document.getElementById('tMobileTrack');
+            var dotsWrap = document.getElementById('tMobileDots');
+            var counter = document.getElementById('tMobileCounter');
+            if (!mt || !dotsWrap || !counter || typeof row1Data === 'undefined') return;
+            var data = row1Data;
+            mt.innerHTML = data.map(makeCard).join('');
+            dotsWrap.innerHTML = data.map(function (_, i) {
+                return '<button class="t-mobile-dot' + (i === 0 ? ' active' : '') + '" type="button" aria-label="Go to testimonial ' + (i + 1) + '"></button>';
+            }).join('');
+            var dotEls = Array.prototype.slice.call(dotsWrap.children);
+            counter.textContent = '1 of ' + data.length;
+            function update() {
+                var cards = mt.children;
+                if (!cards.length) return;
+                var cw = cards[0].getBoundingClientRect().width + 14;
+                var idx = Math.max(0, Math.min(data.length - 1, Math.round(mt.scrollLeft / cw)));
+                counter.textContent = (idx + 1) + ' of ' + data.length;
+                dotEls.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+            }
+            var raf;
+            mt.addEventListener('scroll', function () {
+                if (raf) cancelAnimationFrame(raf);
+                raf = requestAnimationFrame(update);
+            }, { passive: true });
+            dotEls.forEach(function (d, i) {
+                d.addEventListener('click', function () {
+                    var cards = mt.children;
+                    if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                });
+            });
+        })();
     </script>
+
+    <style>
+        /* ===================== MOBILE FIXES (≤480 / ≤640px) ===================== */
+        /* Task 3 — short CTA label on small screens */
+        .cta-label-short { display: none; }
+        @media (max-width: 480px) {
+            .cta-label-full { display: none; }
+            .cta-label-short { display: inline; }
+        }
+
+        /* Task 1 — 44px tap targets in the mobile nav drawer */
+        @media (max-width: 768px) {
+            .navbar .nav-links > a,
+            .navbar .nav-links .nav-dropdown-toggle,
+            .navbar .nav-dropdown-item,
+            .navbar .nav-mega-item {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        /* Task 5 — hide animated resume preview <640px, show compact ATS badge */
+        .hero-ats-badge { display: none; }
+        @media (max-width: 640px) {
+            .hero-visual .resume-card { display: none !important; }
+            .hero-ats-badge {
+                display: flex; align-items: center; gap: 16px;
+                background: linear-gradient(160deg, rgba(20,32,68,.92), rgba(12,18,42,.94));
+                border: 1px solid rgba(99,132,255,.35); border-radius: 18px;
+                padding: 18px 20px; box-shadow: 0 16px 40px rgba(3,10,36,.45);
+                max-width: 360px; margin: 6px auto 0;
+            }
+            .hero-ats-ring {
+                flex: 0 0 86px; width: 86px; height: 86px; border-radius: 50%;
+                display: flex; flex-direction: column; align-items: center; justify-content: center;
+                background: radial-gradient(circle at 50% 45%, rgba(51,146,255,.22), transparent 72%);
+                border: 3px solid #3392ff;
+            }
+            .hero-ats-num { font-size: 1.75rem; font-weight: 800; color: #fff; line-height: 1; }
+            .hero-ats-of { font-size: .72rem; color: #9fb6d6; }
+            .hero-ats-tx { display: flex; flex-direction: column; gap: 3px; }
+            .hero-ats-tx strong { color: #fff; font-size: 1.05rem; }
+            .hero-ats-tx span { color: #9fb6d6; font-size: .85rem; }
+        }
+
+        /* Task 2 — stat row: 2 columns with the 3rd centered below */
+        @media (max-width: 480px) {
+            .results-grid { grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
+            .results-grid .result-card:nth-child(3) { grid-column: 1 / -1; }
+        }
+
+        /* Task 6 — feature cards single column */
+        @media (max-width: 480px) {
+            .feature-showcase-item { grid-template-columns: 1fr !important; }
+            .feature-showcase-item.reverse .feature-showcase-copy,
+            .feature-showcase-item.reverse .feature-showcase-visual { order: 0; }
+            .ats-tmpl-grid { grid-template-columns: 1fr !important; }
+        }
+
+        /* Task 4 — mobile testimonial carousel */
+        .t-mobile { display: none; }
+        @media (max-width: 480px) {
+            .carousel-row, .carousel-dots { display: none !important; }
+            .t-mobile { display: block; margin-top: 8px; }
+            .t-mobile-track {
+                display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch; padding: 4px 16px 10px; scrollbar-width: none;
+            }
+            .t-mobile-track::-webkit-scrollbar { display: none; }
+            .t-mobile-track > .t-card { flex: 0 0 86%; scroll-snap-align: center; margin: 0; }
+            .t-mobile-bar { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 12px; }
+            .t-mobile-counter { color: #9fb6d6; font-size: .85rem; font-weight: 600; }
+            .t-mobile-dots { display: flex; gap: 7px; }
+            .t-mobile-dot { width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0; cursor: pointer; background: rgba(159,182,214,.35); transition: width .2s, background .2s; }
+            .t-mobile-dot.active { background: #3392ff; width: 22px; border-radius: 5px; }
+        }
+    </style>
     <script>
         (function () {
             const canvas = document.getElementById('wave-canvas');
