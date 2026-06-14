@@ -1453,74 +1453,75 @@ body {
             const archEl  = document.getElementById("pc-arch-text");
             const innerEl = document.getElementById("pc-card-content");
             const shimmer = cardEl.querySelector(".pc-card-shimmer-inner");
-            const origArch           = archEl.style.cssText;
-            const origInnerTransform = innerEl ? innerEl.style.transform : "";
-            const origInnerWidth     = innerEl ? innerEl.style.width     : "";
-            const origCardOverflow   = cardEl.style.overflow;
-            const origCardAspect     = cardEl.style.aspectRatio;
-            const origCardHeight     = cardEl.style.height;
 
             btn.textContent = "Generating…";
             btn.disabled = true;
+
+            /* Capture at 360×640 (9:16) @ 3× DPR → 1080×1920 output.
+               This guarantees the PNG matches the in-app preview exactly. */
+            const capW = 360, capH = 640, DPR = 3;
+
+            const origArch           = archEl.style.cssText;
+            const origInnerTransform = innerEl ? innerEl.style.transform : "";
+            const origInnerWidth     = innerEl ? innerEl.style.width     : "";
+            const origCardWidth      = cardEl.style.width;
+            const origCardHeight     = cardEl.style.height;
+            const origCardMaxWidth   = cardEl.style.maxWidth;
+            const origCardAspect     = cardEl.style.aspectRatio;
+            const origCardOverflow   = cardEl.style.overflow;
+
+            /* Fix gradient text so html2canvas can render it (it can't handle
+               -webkit-text-fill-color: transparent with background-clip) */
+            archEl.style.cssText = origArch
+                + ";-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;"
+                + "background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;";
+
             if (shimmer) shimmer.style.animation = "none";
-            archEl.style.cssText = origArch + ";-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;";
 
-            if (innerEl) { innerEl.style.transform = "none"; innerEl.style.width = "100%"; }
+            /* Pin card to the exact capture frame */
+            cardEl.style.width      = capW + "px";
+            cardEl.style.height     = capH + "px";
+            cardEl.style.maxWidth   = "none";
             cardEl.style.aspectRatio = "auto";
-            cardEl.style.overflow    = "visible";
-            cardEl.style.height      = (innerEl ? innerEl.scrollHeight : cardEl.scrollHeight) + "px";
+            cardEl.style.overflow   = "hidden";
 
-            const naturalWidth  = cardEl.offsetWidth;
-            const naturalHeight = cardEl.scrollHeight;
+            /* Recompute the scale-to-fit for this capture size */
+            if (innerEl) {
+                innerEl.style.transform = "none";
+                innerEl.style.width     = "100%";
+                const contentH = innerEl.scrollHeight;
+                let sc = capH / contentH;
+                if (sc > 1) sc = 1;
+                innerEl.style.width     = (100 / sc) + "%";
+                innerEl.style.transform = `scale(${sc})`;
+            }
 
             window.html2canvas(cardEl, {
-                scale: 1080 / naturalWidth,
+                scale:           DPR,
                 backgroundColor: null,
-                useCORS: true,
-                logging: false,
-                width:  naturalWidth,
-                height: naturalHeight,
-                windowWidth:  naturalWidth,
-                windowHeight: naturalHeight,
-            }).then(contentCanvas => {
-                const outW = 1080, outH = 1920;
-                const out = document.createElement("canvas");
-                out.width = outW; out.height = outH;
-                const ctx = out.getContext("2d");
-
-                const grad = ctx.createLinearGradient(0, 0, outW * 0.35, outH);
-                grad.addColorStop(0,   "#16003a");
-                grad.addColorStop(0.5, "#1e0045");
-                grad.addColorStop(1,   "#0d1a3e");
-                ctx.fillStyle = grad;
-                const r = 44;
-                ctx.beginPath();
-                ctx.moveTo(r, 0);
-                ctx.arcTo(outW, 0,    outW, outH, r);
-                ctx.arcTo(outW, outH, 0,    outH, r);
-                ctx.arcTo(0,    outH, 0,    0,    r);
-                ctx.arcTo(0,    0,    outW, 0,    r);
-                ctx.closePath();
-                ctx.fill();
-
-                const scale = Math.min(outW / contentCanvas.width, outH / contentCanvas.height);
-                const drawW = contentCanvas.width  * scale;
-                const drawH = contentCanvas.height * scale;
-                ctx.drawImage(contentCanvas, (outW - drawW) / 2, (outH - drawH) / 2, drawW, drawH);
-
+                useCORS:         true,
+                logging:         false,
+                width:           capW,
+                height:          capH,
+            }).then(canvas => {
                 const a = document.createElement("a");
                 a.download = "career-personality-" + card.archetype.toLowerCase().replace(/\s+/g, "-") + ".png";
-                a.href = out.toDataURL("image/png");
+                a.href = canvas.toDataURL("image/png");
                 a.click();
             })
             .catch(() => alert("PNG generation failed. Use the Full Page link to save the image."))
             .finally(() => {
                 if (shimmer) shimmer.style.animation = "";
-                archEl.style.cssText = origArch;
-                if (innerEl) { innerEl.style.transform = origInnerTransform; innerEl.style.width = origInnerWidth; }
-                cardEl.style.aspectRatio = origCardAspect;
-                cardEl.style.overflow    = origCardOverflow;
-                cardEl.style.height      = origCardHeight;
+                archEl.style.cssText         = origArch;
+                if (innerEl) {
+                    innerEl.style.transform  = origInnerTransform;
+                    innerEl.style.width      = origInnerWidth;
+                }
+                cardEl.style.width           = origCardWidth;
+                cardEl.style.height          = origCardHeight;
+                cardEl.style.maxWidth        = origCardMaxWidth;
+                cardEl.style.aspectRatio     = origCardAspect;
+                cardEl.style.overflow        = origCardOverflow;
                 fitPcCardContent();
                 btn.textContent = "↓ Download PNG";
                 btn.disabled = false;
