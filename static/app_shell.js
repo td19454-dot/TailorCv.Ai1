@@ -92,7 +92,8 @@
         rail.className = "tcv-rail";
         rail.id = "tcvRail";
         rail.innerHTML =
-            '<nav class="tcv-rail-nav">' + items + '</nav>'
+            '<button class="tcv-rail-close" id="tcvRailClose" aria-label="Close menu" title="Close">&times;</button>'
+            + '<nav class="tcv-rail-nav">' + items + '</nav>'
             + '<div class="tcv-rail-foot"><a class="tcv-rail-link" href="#" id="tcvLogout" aria-label="Logout">'
             + '<span class="tcv-rail-ic">' + IC.out + '</span><span class="tcv-rail-tip">Logout</span></a></div>';
 
@@ -117,6 +118,11 @@
             }
         });
         backdrop.addEventListener("click", function () {
+            rail.classList.remove("open");
+            backdrop.classList.remove("open");
+        });
+        var railClose = document.getElementById("tcvRailClose");
+        if (railClose) railClose.addEventListener("click", function () {
             rail.classList.remove("open");
             backdrop.classList.remove("open");
         });

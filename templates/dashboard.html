@@ -28,9 +28,11 @@
         .side-link svg { width: 19px; height: 19px; flex-shrink: 0; color: #e6edff; }      /* all icons white */
         .side-link:hover svg, .side-link.active svg { color: #ffffff; }
         .side-foot { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
-        /* Burger collapses the sidebar (desktop) */
-        body.dash-collapsed .app { grid-template-columns: 1fr; }
-        body.dash-collapsed .side { display: none; }
+        /* Burger toggles the sidebar. Desktop: collapse it to reclaim space. */
+        @media (min-width: 861px) {
+            body.dash-nav-open .app { grid-template-columns: 1fr; }
+            body.dash-nav-open .side { display: none; }
+        }
 
         .main { padding: 30px 34px 60px; max-width: 1180px; }
         .greet { font-size: 2rem; font-weight: 800; margin-bottom: 22px; }
@@ -55,6 +57,25 @@
         .mini-list { list-style:none; display:flex; flex-direction:column; gap:9px; margin-top:14px; }
         .mini-list li { display:flex; justify-content:space-between; gap:10px; font-size:.86rem; color:#c4d4ef; border-bottom:1px solid rgba(255,255,255,.06); padding-bottom:8px; }
         .mini-list li span.co { color: var(--muted); }
+
+        /* Task 4 — clickable, truncating "My Resumes" rows with a chevron */
+        .resume-rows { display: flex; flex-direction: column; gap: 4px; margin-top: 14px; }
+        .resume-rows .mini-row {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 6px; border-radius: 9px; color: #c4d4ef;
+            cursor: pointer; transition: background .15s;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+        .resume-rows .mini-row:active,
+        .resume-rows .mini-row:hover { background: rgba(99,132,255,.14); }
+        .resume-rows .mr-title { flex: 1 1 auto; max-width: calc(100% - 56px); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .88rem; }
+        .resume-rows .mr-date { flex: 0 0 auto; width: 48px; text-align: right; white-space: nowrap; color: var(--muted); font-size: .8rem; }
+        .resume-rows .mr-chev { flex: 0 0 auto; color: #8aa0c8; font-size: 1.1rem; line-height: 1; }
+
+        /* Task 5 — full-width "New scan" button in the empty ATS card */
+        .card .cta.cta-block { display: block; width: 100%; text-align: center; padding: 12px; }
+        /* Task 7 — capitalise the user's display name */
+        .greet { text-transform: capitalize; }
         .empty { color: var(--muted); font-size: .9rem; margin-top: 10px; }
         .card .cta { display:inline-block; margin-top:16px; background:linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:600; font-size:.84rem; padding:9px 16px; border-radius:9px; }
 
@@ -73,12 +94,37 @@
 
         @media (max-width: 980px) { .cards { grid-template-columns: 1fr; } .scan-grid { grid-template-columns: 1fr; } }
         @media (max-width: 860px) {
+            body { padding-top: 52px; }   /* match the 52px mobile top bar */
             .app { grid-template-columns: 1fr; }
-            .side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; gap: 4px; }
-            .side-logo { width: 100%; }
-            .side-nav { flex-direction: row; flex-wrap: wrap; }
-            .side-foot { margin: 0; border: none; padding: 0; }
+            /* Sidebar becomes a slide-in drawer toggled by the burger. */
+            .side {
+                position: fixed; top: 52px; left: 0; z-index: 4000;
+                width: 250px; max-width: 82vw; height: calc(100vh - 52px);
+                flex-direction: column; flex-wrap: nowrap;
+                transform: translateX(-100%); transition: transform .2s ease;
+                box-shadow: 0 0 40px rgba(0,0,0,.5);
+            }
+            body.dash-nav-open .side { transform: none; }
+            body.dash-nav-open::after {
+                content: ""; position: fixed; inset: 52px 0 0 0; background: rgba(0,0,0,.5); z-index: 3900;
+            }
+            .side-close {
+                display: inline-flex; align-items: center; justify-content: center;
+                align-self: flex-end; width: 44px; height: 44px; margin: -4px -2px 6px auto;
+                background: transparent; border: none; border-radius: 10px;
+                color: #cfe0ff; font-size: 26px; line-height: 1; cursor: pointer;
+            }
+            .side-close:hover { background: rgba(255,255,255,.08); }
             .main { padding: 22px 16px 50px; }
+            .greet { font-size: 1.5rem; }
+        }
+        .side-close { display: none; }
+        @media (max-width: 560px) {
+            .promo { flex-direction: column; align-items: flex-start; }
+            .promo .go { margin-left: 0; }
+            .newscan { padding: 18px; }
+            .scan-actions { flex-wrap: wrap; }
+            .scan-msg { margin-left: 0; }
         }
     </style>
 </head>
@@ -109,6 +155,7 @@
     <div class="app">
         <!-- Sidebar (monochrome icons) -->
         <aside class="side">
+            <button class="side-close" id="dashSideClose" type="button" aria-label="Close menu" title="Close">&times;</button>
             <nav class="side-nav">
                 <a class="side-link active" href="/dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/></svg> Home</a>
                 <a class="side-link" href="/modify-cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg> Resume Builder</a>
@@ -149,8 +196,8 @@
                     <div class="stat"><span class="num">{{ latest_ats }}</span><span class="lbl">/ 100 ATS</span></div>
                     <span class="pill">{{ resume_count }} resume{{ '' if resume_count == 1 else 's' }} saved</span>
                     {% else %}
-                    <p class="empty">No scans yet. Run your resume against a job to get your ATS score.</p>
-                    <a class="cta" href="/optimize">New scan</a>
+                    <p class="empty">Run your resume against a job to get your ATS match score.</p>
+                    <a class="cta cta-block" href="/optimize">New scan</a>
                     {% endif %}
                 </div>
 
@@ -161,11 +208,15 @@
                     </div>
                     <div class="stat"><span class="num">{{ resume_count }}</span><span class="lbl">saved</span></div>
                     {% if recent_resumes %}
-                    <ul class="mini-list">
+                    <div class="resume-rows">
                         {% for r in recent_resumes %}
-                        <li><span>{{ r.title or "Untitled" }}</span><span class="co">{{ r.created_at.strftime('%d %b') }}</span></li>
+                        <a class="mini-row" href="/my-resumes">
+                            <span class="mr-title">{{ r.title or "Untitled" }}</span>
+                            <span class="mr-date">{{ r.created_at.strftime('%d %b') }}</span>
+                            <span class="mr-chev" aria-hidden="true">&rsaquo;</span>
+                        </a>
                         {% endfor %}
-                    </ul>
+                    </div>
                     {% else %}
                     <p class="empty">No saved resumes yet.</p>
                     {% endif %}
@@ -232,8 +283,22 @@
         if (pBtn) pBtn.addEventListener('click', doLogout);
 
         var burger = document.getElementById('dashBurger');
-        if (burger) burger.addEventListener('click', function () {
-            document.body.classList.toggle('dash-collapsed');
+        var sideEl = document.querySelector('.side');
+        if (burger) burger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            document.body.classList.toggle('dash-nav-open');
+        });
+        var sideClose = document.getElementById('dashSideClose');
+        if (sideClose) sideClose.addEventListener('click', function () {
+            document.body.classList.remove('dash-nav-open');
+        });
+        // Mobile: tapping outside the open drawer closes it.
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth > 860) return;
+            if (!document.body.classList.contains('dash-nav-open')) return;
+            if (sideEl && sideEl.contains(e.target)) return;
+            if (burger && burger.contains(e.target)) return;
+            document.body.classList.remove('dash-nav-open');
         });
 
         // Default JD presets (concise) — pick a role to fill the box.

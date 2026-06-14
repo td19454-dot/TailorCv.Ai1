@@ -27,8 +27,13 @@
         .my-resumes-head p { color: #9fb0cc; font-size: 1rem; margin: 0; }
         .resume-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
             gap: 18px;
+        }
+        @media (max-width: 560px) {
+            .my-resumes-page { padding: 30px 14px 60px; }
+            .my-resumes-head h1 { font-size: 1.5rem; }
+            .resume-grid { grid-template-columns: 1fr; }
         }
         .resume-card {
             background: linear-gradient(160deg, rgba(30,41,69,.65), rgba(17,24,42,.85));

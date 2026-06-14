@@ -95,6 +95,39 @@
 
         .cl-file-or { font-size: 0.95rem; color: #9fb6d6; text-align: center; margin: 12px 0 0; }
         .cl-footer-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: 12px; color: #a5c7ff; }
+
+        /* Custom upload zone (replaces the native file input — taps open the
+           picker on iOS Safari & Android Chrome via the <label for>). */
+        .cl-upload {
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+            width: 100%; min-height: 56px; padding: 12px 14px;
+            border: 1.5px dashed rgba(120, 150, 255, 0.5); border-radius: 8px;
+            background: rgba(255, 255, 255, 0.04); color: #c7d6ff; cursor: pointer; text-align: center;
+            transition: border-color .2s, background .2s;
+        }
+        .cl-upload:hover, .cl-upload:focus-within { border-color: #6b8cff; background: rgba(99, 132, 255, 0.1); }
+        .cl-upload-icon { width: 22px; height: 22px; color: #9ec5ff; }
+        .cl-upload-label { font-size: 13px; font-weight: 600; }
+        .cl-upload-file { font-size: 12px; color: #8fa6cf; word-break: break-all; }
+        .cl-upload-file:empty { display: none; }
+        .cl-upload.has-file { border-style: solid; border-color: rgba(110, 231, 183, 0.55); background: rgba(16, 185, 129, 0.08); }
+        .cl-upload.has-file .cl-upload-label,
+        .cl-upload.has-file .cl-upload-icon { color: #6ee7b7; }
+
+        /* Task 2 — sentence-case form labels (were uppercase) */
+        .cl-section-title { text-transform: none; font-weight: 500; font-size: 12px; letter-spacing: 0.03em; }
+        .cl-jd-head .cl-label { text-transform: none; font-weight: 500; font-size: 12px; letter-spacing: 0.03em; }
+
+        /* Task 3 — collapse the hero card on phones so the form sits above the fold */
+        @media (max-width: 480px) {
+            .cl-page-header .cl-hero-card { padding: 1.1rem 1.1rem 1rem; border-radius: 18px; }
+            .cl-page-header .cl-badges { display: none; }
+            .cl-title { font-size: 1.5rem; }
+            .cl-subtitle {
+                display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+                overflow: hidden; font-size: 0.9rem; margin-bottom: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -118,7 +151,12 @@
                 <div class="cl-section-title">1. Share your resume</div>
                 <div class="cl-element-row">
                     <label class="cl-label" for="resume-file">Resume PDF</label>
-                    <input type="file" id="resume-file" accept=".pdf">
+                    <label class="cl-upload" for="resume-file" id="resume-dropzone">
+                        <svg class="cl-upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M5 20h14"/></svg>
+                        <span class="cl-upload-label">Tap to upload your resume PDF</span>
+                        <span class="cl-upload-file" id="resume-file-name"></span>
+                    </label>
+                    <input type="file" id="resume-file" accept=".pdf" hidden>
                 </div>
 
                 <div class="cl-element-row">
@@ -195,6 +233,17 @@
     <script>
     (function () {
         var resumeFile = document.getElementById('resume-file');
+        // Custom upload zone: reflect the chosen filename + a "selected" state.
+        (function () {
+            var dz = document.getElementById('resume-dropzone');
+            var nameEl = document.getElementById('resume-file-name');
+            if (!resumeFile || !dz || !nameEl) return;
+            resumeFile.addEventListener('change', function () {
+                var f = resumeFile.files && resumeFile.files[0];
+                if (f) { nameEl.textContent = f.name; dz.classList.add('has-file'); }
+                else { nameEl.textContent = ''; dz.classList.remove('has-file'); }
+            });
+        })();
         var jdText     = document.getElementById('jd-text');
         var toneSel    = document.getElementById('tone');
         var genBtn     = document.getElementById('generate-btn');
