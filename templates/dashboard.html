@@ -244,7 +244,7 @@
                     <span class="pill">{{ resume_count }} resume{{ '' if resume_count == 1 else 's' }} saved</span>
                     {% else %}
                     <p class="empty">Run your resume against a job to get your ATS match score.</p>
-                    <a class="cta cta-block" href="/optimize">New scan</a>
+                    <a class="cta cta-block" href="/solutions">New scan</a>
                     {% endif %}
                 </div>
 
@@ -1836,14 +1836,14 @@ Nice to have:
                     return r.json();
                 })
                 .then(function (data) {
-                    // Hand the result to the dedicated ATS analysis page (full breakdown).
+                    // Hand the result to the solutions page for full ATS and optimization flow.
                     try { sessionStorage.setItem('atsAnalysisPayload', JSON.stringify(data)); } catch (e) {}
-                    msg.style.color = '#9fb6d6'; msg.textContent = 'Opening your ATS report…';
+                    msg.style.color = '#9fb6d6'; msg.textContent = 'Opening solutions page…';
                     completeNSProgress();
-                    setTimeout(function () { window.location.href = '/ats-analysis'; }, 250);
+                    setTimeout(function () { window.location.href = '/solutions'; }, 250);
                 })
                 .catch(function (err) { if (err.message !== 'login') { msg.style.color = '#fca5a5'; msg.textContent = err.message || 'Something went wrong. Try again.'; stopNSProgress(); } })
-                .finally(function () { if (!window.location.href.includes('/ats-analysis')) { go.disabled = false; go.textContent = original; } });
+                .finally(function () { if (!window.location.href.includes('/solutions')) { go.disabled = false; go.textContent = original; } });
         });
     })();
     </script>
