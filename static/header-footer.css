@@ -1,4 +1,10 @@
-﻿/* ══════════════════════════════════════════════════════════════════════════
+﻿/* Mobile guard: never allow the whole page to scroll sideways. Individual wide
+   elements are handled per-page; this stops the worst symptom site-wide. */
+@media (max-width: 768px) {
+    html, body { overflow-x: hidden; max-width: 100%; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
    SITE FOOTER (shared partial templates/_footer.html)
    Uses the sf-* namespace so it is styled ONLY here (loaded on every page) and
    is immune to the conflicting .footer rules in style2.css / style3.css. This
@@ -132,6 +138,37 @@
 }
 @media (max-width: 400px) {
     .site-footer .sf-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile accordion: each link column collapses; tap the heading to expand.
+   The brand column stays open. JS in _footer.html toggles .sf-open. */
+@media (max-width: 480px) {
+    .site-footer .sf-grid { grid-template-columns: 1fr; gap: 0; }
+    .site-footer .sf-brand { margin-bottom: 14px; }
+    .site-footer .sf-col:not(.sf-brand) {
+        border-top: 1px solid rgba(99, 130, 200, 0.16);
+    }
+    .site-footer .sf-col:not(.sf-brand) .sf-heading {
+        margin: 0;
+        padding: 15px 2px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 44px;
+    }
+    .site-footer .sf-col:not(.sf-brand) .sf-heading::after {
+        content: "+";
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: #8aa0c8;
+        line-height: 1;
+    }
+    .site-footer .sf-col.sf-open .sf-heading::after { content: "\2212"; }
+    .site-footer .sf-col:not(.sf-brand) .sf-link { display: none; }
+    .site-footer .sf-col.sf-open .sf-link { display: block; }
+    .site-footer .sf-col.sf-open { padding-bottom: 12px; }
+    .site-footer .sf-col:not(.sf-brand) .sf-link { min-height: 40px; }
 }
 
 /* Logged-in app shell hides the shared footer (same as the old .footer). */
@@ -400,17 +437,22 @@ html.tcv-app .site-footer { display: none !important; }
    .nav-dropdown-menu rules (which otherwise force display:block / single column). */
 /* Unify primary nav link + Features toggle size (fixes Features-bigger mismatch)
    and make the marketing/home nav text larger. */
-.navbar .nav-links > a.nav-link,
-.navbar .nav-links > .nav-dropdown > .nav-dropdown-toggle {
-    font-size: 19px !important;
-    font-weight: 500 !important;
-    padding: 12px 16px !important;
-    letter-spacing: 0.2px !important;
-    line-height: 1 !important;
-    /* Anchors get text-transform:uppercase from style2/style3 but the dropdown
-       toggles are <button>s and miss it — uppercase them too so "Features" and
-       "Company" match the size/weight of the other links. */
-    text-transform: uppercase !important;
+/* Desktop only — on mobile the drawer (style2/style3 @media max-width:768px)
+   sizes its own links (15px). Leaving this unscoped made the drawer links 19px
+   and broke the mobile layout. */
+@media (min-width: 769px) {
+    .navbar .nav-links > a.nav-link,
+    .navbar .nav-links > .nav-dropdown > .nav-dropdown-toggle {
+        font-size: 19px !important;
+        font-weight: 500 !important;
+        padding: 12px 16px !important;
+        letter-spacing: 0.2px !important;
+        line-height: 1 !important;
+        /* Anchors get text-transform:uppercase from style2/style3 but the dropdown
+           toggles are <button>s and miss it — uppercase them too so "Features" and
+           "Company" match the size/weight of the other links. */
+        text-transform: uppercase !important;
+    }
 }
 
 /* ── Unified nav LAYOUT (single source of truth) ───────────────────────────
@@ -489,7 +531,11 @@ html.tcv-app .site-footer { display: none !important; }
     box-shadow: 0 12px 28px rgba(51, 146, 255, 0.42);
 }
 @media (max-width: 768px) {
-    .navbar .nav-getstarted { padding: 8px 14px; font-size: 0.88rem; }
+    /* The top bar only has room for the logo, Login and the hamburger on a
+       phone — hide the extra Get Started pill so the bar isn't broken/overflowing.
+       (Navigation lives in the drawer; signup is still reachable via Login.) */
+    .navbar .nav-getstarted { display: none !important; }
+    .navbar #auth-nav-slot .login { padding: 8px 13px; font-size: 0.85rem; }
 }
 
 /* ── Plain dropdown (Company) — force a narrow vertical card ────────────────
@@ -503,11 +549,22 @@ html.tcv-app .site-footer { display: none !important; }
     min-width: 210px;
     grid-template-columns: none;
 }
-.navbar .nav-dropdown:hover .nav-dropdown-menu,
-.navbar .nav-dropdown:focus-within .nav-dropdown-menu,
+/* Tap-to-open (.open) works at every width. Hover/focus-open is desktop only —
+   on touch, :focus-within kept the menu stuck open and fought the tap toggle. */
 .navbar .nav-dropdown.open .nav-dropdown-menu {
     display: flex;
     flex-direction: column;
+    opacity: 1;
+    visibility: visible;
+}
+@media (min-width: 769px) {
+    .navbar .nav-dropdown:hover .nav-dropdown-menu,
+    .navbar .nav-dropdown:focus-within .nav-dropdown-menu {
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+        visibility: visible;
+    }
 }
 .navbar .nav-dropdown .nav-dropdown-item {
     display: block;
@@ -546,12 +603,18 @@ html.tcv-app .site-footer { display: none !important; }
     box-shadow: 0 28px 70px rgba(15, 23, 42, 0.22);
 }
 /* Keep it a grid in every "shown" state (overrides style3's display:block). */
-.navbar .nav-dropdown:hover .nav-dropdown-menu.nav-mega-menu,
-.navbar .nav-dropdown:focus-within .nav-dropdown-menu.nav-mega-menu,
 .navbar .nav-dropdown.open .nav-dropdown-menu.nav-mega-menu {
     display: grid;
     opacity: 1;
     visibility: visible;
+}
+@media (min-width: 769px) {
+    .navbar .nav-dropdown:hover .nav-dropdown-menu.nav-mega-menu,
+    .navbar .nav-dropdown:focus-within .nav-dropdown-menu.nav-mega-menu {
+        display: grid;
+        opacity: 1;
+        visibility: visible;
+    }
 }
 .navbar .nav-mega-item {
     display: flex;
@@ -645,28 +708,70 @@ html.tcv-app .site-footer { display: none !important; }
 .navbar .nav-mega-cta:hover { background: #e4edff; border-color: rgba(37, 99, 235, 0.34); }
 .navbar .nav-mega-cta svg { width: 18px; height: 18px; }
 
+/* ── Mobile drawer dropdowns (≤768px) ──────────────────────────────────────
+   Inside the hamburger drawer, Features (mega) and Company must NOT float as a
+   white popup. They collapse by default and expand INLINE when their toggle is
+   tapped (.open, set by mobile_nav.js). Labels are sentence-case, rows ≥44px. */
 @media (max-width: 768px) {
-    .navbar .nav-dropdown .nav-dropdown-menu.nav-mega-menu {
-        grid-template-columns: 1fr; width: 100%; padding: 10px; gap: 2px;
-    }
-    .navbar .nav-mega-item { padding: 10px 8px; }
-    .navbar .nav-mega-ic { flex-basis: 38px; width: 38px; height: 38px; }
-}
+    .navbar .nav-dropdown { display: block; width: 100%; }
+    .navbar .nav-caret { display: inline-block; }
 
-/* On mobile the navbar collapses to a vertical drawer — show the dropdown
-   items inline so nothing is hidden behind a hover that touch can't trigger. */
-@media (max-width: 768px) {
-    .nav-dropdown { display: block; width: 100%; }
-    .nav-dropdown-menu {
-        position: static;
-        transform: none;
-        opacity: 1;
-        visibility: visible;
-        box-shadow: none;
-        border: none;
-        background: transparent;
-        padding: 0 0 0 12px;
-        min-width: 0;
+    /* All dropdown menus (incl. .nav-mega-menu): static, full-width, no card,
+       hidden until the dropdown is .open. */
+    .navbar .nav-dropdown .nav-dropdown-menu,
+    .navbar .nav-dropdown .nav-dropdown-menu.nav-mega-menu,
+    .navbar .nav-dropdown .nav-dropdown-menu.nav-company-menu {
+        position: static !important;
+        display: none;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        transform: none !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 2px 0 6px 14px !important;
+        gap: 0 !important;
     }
-    .nav-caret { display: none; }
+    .navbar .nav-dropdown.open .nav-dropdown-menu,
+    .navbar .nav-dropdown.open .nav-dropdown-menu.nav-mega-menu,
+    .navbar .nav-dropdown.open .nav-dropdown-menu.nav-company-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* Mega/Company items become plain inline rows (no light-blue card). */
+    .navbar .nav-mega-item {
+        background: transparent !important;
+        border: none !important;
+        padding: 11px 8px !important;
+        gap: 12px;
+        min-height: 44px;
+        align-items: center;
+    }
+    .navbar .nav-mega-item .nav-mega-ic {
+        flex: 0 0 30px; width: 30px; height: 30px; background: transparent !important; border: none !important;
+    }
+    .navbar .nav-mega-item .nav-mega-ic svg { stroke: #9ec5ff !important; }
+    .navbar .nav-mega-item .nav-mega-tx strong {
+        color: #eaf1ff !important; -webkit-text-fill-color: #eaf1ff !important;
+        font-size: 14px; font-weight: 600;
+    }
+    .navbar .nav-mega-item .nav-mega-tx small { display: none; }   /* hide descriptions in the drawer */
+    .navbar .nav-mega-badge { display: none !important; }
+
+    /* Sentence-case, 44px primary nav links + toggles. */
+    .navbar .nav-links > a.nav-link,
+    .navbar .nav-links > .nav-dropdown > .nav-dropdown-toggle {
+        text-transform: none !important;
+        letter-spacing: normal !important;
+        font-size: 15px !important;
+        min-height: 44px;
+        display: flex !important;
+        align-items: center;
+    }
 }
