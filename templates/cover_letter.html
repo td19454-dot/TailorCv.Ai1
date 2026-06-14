@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "_google_analytics.html" %}
@@ -54,7 +54,8 @@
         .cl-status.error { color: #fca5a5; }
         .cl-status.ok { color: #4ade80; }
 
-        .cl-link-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; background: none; border: none; color: #7db9ff; font-size: 0.95rem; cursor: pointer; text-decoration: underline; padding: 0; }
+        .cl-link-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; background: none; border: none; color: #7db9ff; font-size: 0.95rem; cursor: pointer; text-decoration: none; padding: 0; }
+        .cl-link-btn:hover { color: #a9ccff; }
 
         .cl-detail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
         .cl-detail-grid input { width: 100%; min-height: 46px; border-radius: 14px; }
@@ -73,9 +74,9 @@
         .cl-page-header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(95, 147, 255, 0.2), transparent 32%), radial-gradient(circle at top right, rgba(142, 84, 255, 0.14), transparent 22%); pointer-events: none; opacity: 0.95; filter: blur(28px); }
         .cl-page-header::after { content: ''; position: absolute; left: 50%; bottom: 0; width: 90%; height: 1px; background: rgba(255,255,255,0.08); transform: translateX(-50%); }
         .cl-page-header .cl-hero-card { position: relative; z-index: 1; padding: 2rem 2rem 1.8rem; background: rgba(10, 18, 38, 0.92); border: 1px solid rgba(255,255,255,0.12); border-radius: 30px; box-shadow: 0 28px 65px rgba(0, 0, 0, 0.28); backdrop-filter: blur(18px); }
-        .cl-page-header .cl-title { font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 900; margin-bottom: 0.85rem; letter-spacing: -0.04em; line-height: 1.05; text-shadow: 0 18px 45px rgba(16, 28, 62, 0.18); }
+        .cl-page-header .cl-title { font-size: clamp(1.9rem, 3.2vw, 2.6rem); font-weight: 800; margin-bottom: 0.7rem; letter-spacing: -0.03em; line-height: 1.1; }
         .cl-page-header .cl-title-start { color: #ffffff; }
-        .cl-page-header .cl-title-highlight { color: #1d4ed8; }
+        .cl-page-header .cl-title-highlight { background: linear-gradient(135deg, #5b8cff, #b07cf0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .cl-page-header .cl-subtitle { font-size: 1rem; color: #ffffff; max-width: 720px; line-height: 1.8; margin-bottom: 1.4rem; }
         .cl-page-header .cl-badges { display: flex; flex-wrap: wrap; gap: 0.85rem; }
         .cl-page-header .cl-badge { display: inline-flex; align-items: center; gap: 0.7rem; padding: 0.78rem 1rem; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #d8e2ff; font-size: 0.9rem; }
@@ -96,8 +97,8 @@
 
     <header class="cl-page-header">
         <div class="cl-hero-card">
-            <div class="cl-title"><span class="cl-title-start">Start</span> <span class="cl-title-highlight">here</span></div>
-            <p class="cl-subtitle">Upload your resume PDF, add the job description, choose a tone, and generate your cover letter. Preview the final layout and download the PDF when ready.</p>
+            <div class="cl-title"><span class="cl-title-start">Your cover letter,</span> <span class="cl-title-highlight">tailored to the job</span></div>
+            <p class="cl-subtitle">Upload your resume PDF, add the job description, choose a tone, and generate. Preview the final layout in a real template and download the PDF when ready.</p>
             <div class="cl-badges">
                 <span class="cl-badge"><span></span>AI-powered cover letters</span>
                 <span class="cl-badge"><span></span>Optimized for hiring managers</span>
@@ -155,6 +156,7 @@
                 <div class="cl-detail-grid">
                     <input type="text" id="cl-name" placeholder="Your full name">
                     <input type="text" id="cl-location" placeholder="City, State or Location">
+                    <input type="email" id="cl-email" placeholder="name@gmail.com">
                 </div>
 
                 <div class="cl-tpl-label">Choose a template</div>
@@ -177,36 +179,7 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section footer-brand">
-                    <h4 class="footer-title">ResumeOptimizer</h4>
-                    <p class="footer-text">AI-powered resume optimization for your career success. Land more interviews, faster.</p>
-                    <a href="/solutions" class="footer-cta">Get your free ATS score</a>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-heading">Product</h4>
-                    <a href="/" class="footer-link">Home</a>
-                    <a href="/solutions" class="footer-link">Get ATS score</a>
-                    <a href="/modify-cv" class="footer-link">Make CV</a>
-                    <a href="/cover-letter" class="footer-link">Cover Letter</a>
-                    <a href="/auto-apply" class="footer-link">Auto Apply</a>
-                    <a href="/templates" class="footer-link">Templates</a>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-heading">Company</h4>
-                    <a href="/about" class="footer-link">About us</a>
-                    <a href="/contact" class="footer-link">Contact</a>
-                    <a href="/blog" class="footer-link">Blog</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
-                <a href="/" class="footer-secure">Secure &amp; private</a>
-            </div>
-        </div>
-    </footer>
+    {% include "_footer.html" %}
 
     <script src="/static/auth_nav.js?v=2"></script>
     <script src="/static/mobile_nav.js"></script>

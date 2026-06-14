@@ -1,4 +1,4 @@
-/* Logged-in app shell: a top bar + persistent sidebar on tool pages (Jobscan-style).
+﻿/* Logged-in app shell: a top bar + persistent sidebar on tool pages (Jobscan-style).
    Loaded everywhere via _nav.html but only activates for a logged-in user on a
    known tool page — marketing pages and logged-out visitors stay untouched. */
 (function () {
@@ -45,11 +45,10 @@
     };
     var LINKS = [
         ["/dashboard", IC.home, "Home"],
-        ["/modify-cv", IC.cv, "Make CV"],
+        ["/modify-cv", IC.cv, "Resume Builder"],
         ["/optimize", IC.opt, "AI Optimize (Resume + JD)"],
         ["/solutions", IC.ats, "Get ATS Score"],
         ["/cover-letter", IC.mail, "Cover Letter"],
-        ["/auto-apply", IC.send, "Auto Apply"],
         ["/my-resumes", IC.folder, "My Resumes"],
         ["/templates", IC.grid, "Templates"],
         ["/interview-prep", IC.help, "Interview Prep"],

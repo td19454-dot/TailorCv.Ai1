@@ -74,7 +74,7 @@ header.navbar + * {
 }
 
 .nav-links a {
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: .5px;
     color: rgba(255, 255, 255, 0.9);
     font-weight: 600;

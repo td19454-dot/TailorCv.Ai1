@@ -154,6 +154,22 @@
     const user = getStoredUser();
     slot.innerHTML = createAuthWidget(user);
 
+    // "Get Started" CTA shows only on the marketing pages (home, pricing, blog,
+    // contact, about) and only when logged out — elsewhere (or once signed in)
+    // it's hidden so the navbar isn't cluttered with a stray signup button.
+    const getStartedBtn = document.querySelector(".nav-getstarted");
+    if (getStartedBtn) {
+      const p = window.location.pathname;
+      const onAllowedPage =
+        p === "/" ||
+        p === "/pricing" ||
+        p === "/contact" ||
+        p === "/about" ||
+        p === "/blog" ||
+        p.indexOf("/blog/") === 0;
+      getStartedBtn.style.display = (!user && onAllowedPage) ? "" : "none";
+    }
+
     if (!user) return;
 
     injectAuthStyles();
