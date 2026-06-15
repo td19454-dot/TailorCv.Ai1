@@ -5,8 +5,8 @@
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ card.tagline }}">
-    <title>{{ card.archetype }} | TailorCv.AI Career Personality</title>
+    <meta name="description" content="{{ seo_og_description }}">
+    <title>{{ card.archetype }} | TailorCv.AI Career DNA</title>
     {% include "_seo_head.html" %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,233 +26,403 @@
             padding: 16px 16px 28px;
         }
 
-        /* ── Card: fixed 9:16 frame, centered, max 360px wide ── */
+        /* ── Theme variables — driven by data-theme on #personality-card ── */
+        #personality-card {
+            --c-shimmer: linear-gradient(90deg,#f59e0b,#8b5cf6,#ec4899,#3b82f6,#10b981);
+            --c-bg: linear-gradient(160deg,#16003a 0%,#1e0045 50%,#0d1a3e 100%);
+            --c-border: rgba(167,139,250,.35);
+            --c-glow-tl: rgba(139,92,246,.2);
+            --c-glow-br: rgba(59,130,246,.15);
+            --c-archetype: linear-gradient(135deg,#fbbf24,#f472b6,#818cf8);
+            --c-archetype-solid: #fbbf24;
+            --c-stat: #fbbf24;
+            --c-rarity-bg: linear-gradient(135deg,rgba(251,191,36,.18),rgba(251,191,36,.06));
+            --c-rarity-border: rgba(251,191,36,.45);
+            --c-rarity-text: #fbbf24;
+            --c-score-fill: linear-gradient(90deg,#fbbf24,#f472b6);
+            --c-chip-bg: rgba(59,130,246,.15);
+            --c-chip-border: rgba(59,130,246,.3);
+            --c-chip-text: #93c5fd;
+            --c-story-bg: rgba(139,92,246,.10);
+            --c-story-border: rgba(167,139,250,.6);
+            --c-superpower-border: rgba(167,139,250,.35);
+            --c-trait-bg: rgba(15,23,42,.45);
+            --c-trait-border: rgba(139,92,246,.2);
+        }
+        #personality-card[data-theme="gold"] {
+            --c-bg: linear-gradient(160deg,#1a0a00 0%,#2d1500 50%,#1a0c00 100%);
+            --c-border: rgba(251,191,36,.4);
+            --c-glow-tl: rgba(251,191,36,.25);
+            --c-glow-br: rgba(234,88,12,.18);
+            --c-archetype: linear-gradient(135deg,#fde68a,#fbbf24,#f97316);
+            --c-archetype-solid: #fbbf24;
+            --c-stat: #fbbf24;
+            --c-rarity-bg: linear-gradient(135deg,rgba(251,191,36,.22),rgba(251,191,36,.08));
+            --c-rarity-border: rgba(251,191,36,.55);
+            --c-score-fill: linear-gradient(90deg,#fbbf24,#f97316);
+            --c-chip-bg: rgba(251,191,36,.12);
+            --c-chip-border: rgba(251,191,36,.35);
+            --c-chip-text: #fde68a;
+            --c-story-bg: rgba(251,191,36,.07);
+            --c-story-border: rgba(251,191,36,.5);
+            --c-superpower-border: rgba(251,191,36,.3);
+            --c-trait-bg: rgba(20,10,0,.55);
+            --c-trait-border: rgba(251,191,36,.18);
+        }
+        #personality-card[data-theme="steel"] {
+            --c-bg: linear-gradient(160deg,#001828 0%,#002a3a 50%,#001020 100%);
+            --c-border: rgba(34,211,238,.35);
+            --c-glow-tl: rgba(34,211,238,.2);
+            --c-glow-br: rgba(6,182,212,.15);
+            --c-archetype: linear-gradient(135deg,#a5f3fc,#67e8f9,#818cf8);
+            --c-archetype-solid: #67e8f9;
+            --c-stat: #67e8f9;
+            --c-rarity-bg: linear-gradient(135deg,rgba(34,211,238,.18),rgba(34,211,238,.06));
+            --c-rarity-border: rgba(34,211,238,.45);
+            --c-rarity-text: #67e8f9;
+            --c-score-fill: linear-gradient(90deg,#67e8f9,#818cf8);
+            --c-chip-bg: rgba(34,211,238,.12);
+            --c-chip-border: rgba(34,211,238,.3);
+            --c-chip-text: #a5f3fc;
+            --c-story-bg: rgba(34,211,238,.07);
+            --c-story-border: rgba(34,211,238,.5);
+            --c-superpower-border: rgba(34,211,238,.3);
+            --c-trait-bg: rgba(0,20,35,.55);
+            --c-trait-border: rgba(34,211,238,.18);
+        }
+        #personality-card[data-theme="fire"] {
+            --c-bg: linear-gradient(160deg,#1a0000 0%,#2d0500 50%,#1a0005 100%);
+            --c-border: rgba(239,68,68,.38);
+            --c-glow-tl: rgba(239,68,68,.22);
+            --c-glow-br: rgba(249,115,22,.18);
+            --c-archetype: linear-gradient(135deg,#fca5a5,#f87171,#fb923c);
+            --c-archetype-solid: #f87171;
+            --c-stat: #f87171;
+            --c-rarity-bg: linear-gradient(135deg,rgba(239,68,68,.2),rgba(239,68,68,.06));
+            --c-rarity-border: rgba(239,68,68,.48);
+            --c-rarity-text: #fca5a5;
+            --c-score-fill: linear-gradient(90deg,#f87171,#fb923c);
+            --c-chip-bg: rgba(239,68,68,.12);
+            --c-chip-border: rgba(239,68,68,.3);
+            --c-chip-text: #fca5a5;
+            --c-story-bg: rgba(239,68,68,.07);
+            --c-story-border: rgba(239,68,68,.5);
+            --c-superpower-border: rgba(239,68,68,.3);
+            --c-trait-bg: rgba(20,0,0,.55);
+            --c-trait-border: rgba(239,68,68,.18);
+        }
+        #personality-card[data-theme="ocean"] {
+            --c-bg: linear-gradient(160deg,#000d2a 0%,#001845 50%,#000d20 100%);
+            --c-border: rgba(99,102,241,.38);
+            --c-glow-tl: rgba(99,102,241,.22);
+            --c-glow-br: rgba(59,130,246,.18);
+            --c-archetype: linear-gradient(135deg,#c7d2fe,#a5b4fc,#818cf8);
+            --c-archetype-solid: #a5b4fc;
+            --c-stat: #a5b4fc;
+            --c-rarity-bg: linear-gradient(135deg,rgba(99,102,241,.2),rgba(99,102,241,.06));
+            --c-rarity-border: rgba(99,102,241,.48);
+            --c-rarity-text: #c7d2fe;
+            --c-score-fill: linear-gradient(90deg,#a5b4fc,#67e8f9);
+            --c-chip-bg: rgba(99,102,241,.12);
+            --c-chip-border: rgba(99,102,241,.3);
+            --c-chip-text: #c7d2fe;
+            --c-story-bg: rgba(99,102,241,.07);
+            --c-story-border: rgba(99,102,241,.5);
+            --c-superpower-border: rgba(99,102,241,.3);
+            --c-trait-bg: rgba(0,5,25,.55);
+            --c-trait-border: rgba(99,102,241,.2);
+        }
+
+        /* ── Card: fixed 9:16 frame ── */
         #personality-card {
             width: 100%;
             max-width: 360px;
             aspect-ratio: 9 / 16;
-            background: linear-gradient(160deg, #16003a 0%, #1e0045 50%, #0d1a3e 100%);
-            border: 1px solid rgba(167, 139, 250, 0.35);
+            background: var(--c-bg);
+            border: 1px solid var(--c-border);
             border-radius: 20px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2), 0 24px 48px rgba(0,0,0,.6);
+            box-shadow: 0 12px 40px rgba(139,92,246,.2), 0 24px 48px rgba(0,0,0,.6);
         }
-
-        /* decorative glows */
         #personality-card::before {
-            content: '';
-            position: absolute; top: -60px; right: -60px;
-            width: 200px; height: 200px;
-            background: radial-gradient(circle, rgba(139,92,246,.2) 0%, transparent 70%);
-            pointer-events: none;
+            content:''; position:absolute; top:-60px; right:-60px;
+            width:200px; height:200px;
+            background: radial-gradient(circle, var(--c-glow-tl) 0%, transparent 70%);
+            pointer-events:none;
         }
         #personality-card::after {
-            content: '';
-            position: absolute; bottom: -60px; left: -60px;
-            width: 200px; height: 200px;
-            background: radial-gradient(circle, rgba(59,130,246,.15) 0%, transparent 70%);
-            pointer-events: none;
+            content:''; position:absolute; bottom:-60px; left:-60px;
+            width:200px; height:200px;
+            background: radial-gradient(circle, var(--c-glow-br) 0%, transparent 70%);
+            pointer-events:none;
         }
 
-        /* ── Inner content wrapper: scaled via JS to fit the 9:16 frame ── */
+        /* ── Inner content wrapper ── */
         .card-inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 18px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            transform-origin: top left;
-            z-index: 1;
-            box-sizing: border-box;
+            position:absolute; top:0; left:0; width:100%;
+            padding:18px 16px 14px;
+            display:flex; flex-direction:column; gap:9px;
+            transform-origin:top left; z-index:1; box-sizing:border-box;
         }
 
+        /* ── Shimmer bar at top ── */
         .card-shimmer {
-            position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, #f59e0b, #8b5cf6, #ec4899, #3b82f6, #10b981);
-            background-size: 300%;
+            position:absolute; top:0; left:0; right:0; height:3px;
+            background: var(--c-shimmer);
+            background-size:300%;
             animation: shimmer 3s linear infinite;
-            border-radius: 20px 20px 0 0;
-            z-index: 2;
+            border-radius:20px 20px 0 0; z-index:2;
         }
         @keyframes shimmer { 0%{background-position:0%} 100%{background-position:300%} }
 
-        /* ── Brand + name row ── */
+        /* ── Brand row ── */
         .card-brand-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            display:flex; align-items:center; justify-content:space-between;
         }
-        .card-brand {
-            font-size: 8px;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            color: rgba(167,139,250,.55);
+        .card-brand { font-size:7.5px; letter-spacing:.14em; text-transform:uppercase; color:rgba(167,139,250,.55); }
+        .card-brand-date { font-size:7.5px; color:rgba(255,255,255,.3); text-align:right; }
+        .card-name { font-size:8.5px; color:rgba(255,255,255,.38); text-align:right; }
+
+        /* ── Rarity badge row ── */
+        .rarity-row {
+            display:flex; align-items:center; justify-content:space-between; gap:6px;
+            background: var(--c-rarity-bg);
+            border:1px solid var(--c-rarity-border);
+            border-radius:8px; padding:5px 10px;
         }
-        .card-name {
-            font-size: 9px;
-            color: rgba(255,255,255,.4);
-            text-align: right;
+        .rarity-badge {
+            font-size:8.5px; font-weight:800; letter-spacing:.08em;
+            color: var(--c-rarity-text); text-transform:uppercase;
+            display:flex; align-items:center; gap:4px;
+        }
+        .rarity-badge-hex { font-size:10px; }
+        .rarity-tier {
+            font-size:7.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+            background: var(--c-rarity-border);
+            border:1px solid var(--c-rarity-border);
+            border-radius:4px; padding:2px 6px;
+            color: var(--c-rarity-text);
         }
 
         /* ── Archetype hero ── */
         .card-archetype {
-            font-size: 26px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #fbbf24, #f472b6, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.1;
+            font-size:38px; font-weight:900;
+            background: var(--c-archetype);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text;
+            line-height:1.08; letter-spacing:-.02em;
         }
 
-        /* ── Stats row: horizontal, centered ── */
+        /* ── Tagline (italic quote under archetype) ── */
+        .card-tagline {
+            font-size:9.5px; font-style:italic; color:rgba(226,232,240,.6);
+            line-height:1.45; padding-left:2px;
+            border-left:2px solid var(--c-rarity-border);
+            padding-left:8px;
+        }
+
+        /* ── Career Score bar ── */
+        .score-row {
+            display:flex; align-items:center; gap:7px;
+        }
+        .score-label {
+            font-size:7px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+            color:rgba(255,255,255,.35); flex-shrink:0;
+        }
+        .score-bar-wrap {
+            flex:1; height:5px; background:rgba(255,255,255,.07); border-radius:99px; overflow:hidden;
+        }
+        .score-bar-fill {
+            height:100%; border-radius:99px;
+            background: var(--c-score-fill);
+        }
+        .score-num {
+            font-size:13px; font-weight:900; color: var(--c-stat); flex-shrink:0; min-width:22px; text-align:right;
+        }
+
+        /* ── Stats row ── */
         .stats-row {
-            display: flex;
-            justify-content: center;
-            background: rgba(255,255,255,.04);
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 10px;
-            padding: 8px 0;
+            display:flex; justify-content:center;
+            background:rgba(255,255,255,.04);
+            border:1px solid rgba(255,255,255,.08);
+            border-radius:10px; padding:6px 0;
         }
-        .stat-item { text-align: center; flex: 1; }
-        .stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,.08); }
-        .stat-value { font-size: 18px; font-weight: 800; color: #fbbf24; display: block; }
-        .stat-label { font-size: 7px; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: .1em; }
+        .stat-item { text-align:center; flex:1; }
+        .stat-item + .stat-item { border-left:1px solid rgba(255,255,255,.08); }
+        .stat-value { font-size:15px; font-weight:800; color: var(--c-stat); display:block; }
+        .stat-value-sm { font-size:10px; font-weight:800; color: var(--c-stat); display:block; }
+        .stat-label { font-size:6.5px; color:rgba(255,255,255,.32); text-transform:uppercase; letter-spacing:.1em; }
 
-        /* ── Skill chips: centered ── */
-        .skills-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            justify-content: center;
-        }
+        /* ── Skill chips ── */
+        .skills-chips { display:flex; flex-wrap:wrap; gap:4px; justify-content:center; }
         .skill-chip {
-            background: rgba(59,130,246,.15);
-            border: 1px solid rgba(59,130,246,.3);
-            border-radius: 20px;
-            padding: 3px 10px;
-            font-size: 9px;
-            color: #93c5fd;
-            font-weight: 600;
+            background: var(--c-chip-bg);
+            border:1px solid var(--c-chip-border);
+            border-radius:20px; padding:2px 9px;
+            font-size:8.5px; color: var(--c-chip-text); font-weight:600;
         }
+
+        /* ── #1 Superpower card ── */
+        .superpower-card {
+            background:rgba(15,23,42,.5);
+            border:1px solid var(--c-superpower-border);
+            border-radius:10px; padding:9px 11px;
+        }
+        .superpower-kicker {
+            font-size:6.5px; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+            color: var(--c-rarity-text); margin-bottom:4px; display:block;
+        }
+        .superpower-head {
+            font-size:11px; font-weight:800; color:#eaf1ff;
+            display:flex; align-items:center; gap:5px; margin-bottom:3px;
+        }
+        .superpower-desc { font-size:9px; line-height:1.45; color:rgba(226,232,240,.72); }
 
         /* ── Story ── */
         .card-story {
-            font-size: 10.5px;
-            color: rgba(244,247,255,.82);
-            line-height: 1.55;
-            padding: 9px 11px;
-            background: rgba(139,92,246,.10);
-            border-left: 3px solid rgba(167,139,250,.6);
-            border-radius: 0 6px 6px 0;
+            font-size:9.5px; color:rgba(244,247,255,.8);
+            line-height:1.5; padding:8px 10px;
+            background: var(--c-story-bg);
+            border-left:2.5px solid var(--c-story-border);
+            border-radius:0 6px 6px 0;
         }
 
-        /* ── Traits: 2×2 grid ── */
+        /* ── Remaining traits: 2×2 grid ── */
         .traits-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 7px;
+            display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px;
         }
         .trait-card {
-            background: rgba(15,23,42,.45);
-            border: 1px solid rgba(139,92,246,.2);
-            border-radius: 10px;
-            padding: 9px 10px 8px;
-            display: flex;
-            flex-direction: column;
+            background: var(--c-trait-bg);
+            border:1px solid var(--c-trait-border);
+            border-radius:9px; padding:7px 8px 6px;
+            display:flex; flex-direction:column;
         }
         .trait-head {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            margin-bottom: 4px;
-            color: #ddd6fe;
-            font-size: 10px;
-            font-weight: 700;
-            line-height: 1.2;
+            display:flex; align-items:center; gap:4px; margin-bottom:3px;
+            color:#ddd6fe; font-size:9px; font-weight:700; line-height:1.2;
         }
-        .trait-desc {
-            font-size: 9px;
-            line-height: 1.45;
-            color: rgba(226,232,240,.72);
+        .trait-desc { font-size:8px; line-height:1.4; color:rgba(226,232,240,.68); }
+
+        /* ── Compatibility row ── */
+        .compat-row {
+            font-size:8px; color:rgba(226,232,240,.5); line-height:1.5;
+            display:flex; flex-direction:column; gap:1px;
         }
+        .compat-row em { color:rgba(226,232,240,.8); font-style:normal; font-weight:600; }
 
         /* ── Footer ── */
-        .card-footer-brand {
-            font-size: 7.5px;
-            color: rgba(255,255,255,.18);
-            text-align: center;
-        }
+        .card-footer-brand { font-size:7px; color:rgba(255,255,255,.15); text-align:center; }
 
         /* ── CTA section (below card) ── */
         .cta-section {
-            width: 100%;
-            max-width: 360px;
-            margin-top: 18px;
-            text-align: center;
+            width:100%; max-width:360px; margin-top:18px; text-align:center;
         }
-        .cta-headline { font-size: 14px; font-weight: 700; color: #eaf1ff; margin-bottom: 4px; }
-        .cta-sub { font-size: 12px; color: #9fb0cc; margin-bottom: 14px; }
+        .cta-social-proof {
+            font-size:11px; color:rgba(167,139,250,.7); margin-bottom:6px;
+            letter-spacing:.01em;
+        }
+        .cta-headline { font-size:14px; font-weight:700; color:#eaf1ff; margin-bottom:3px; }
+        .cta-sub { font-size:12px; color:#9fb0cc; margin-bottom:14px; }
         .cta-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #7c3aed, #4c1d95);
-            color: #fff; font-weight: 700; font-size: 14px;
-            padding: 11px 28px; border-radius: 12px; text-decoration: none;
-            transition: filter .2s, transform .2s;
+            display:inline-block;
+            background:linear-gradient(135deg,#7c3aed,#4c1d95);
+            color:#fff; font-weight:700; font-size:14px;
+            padding:11px 28px; border-radius:12px; text-decoration:none;
+            transition:filter .2s,transform .2s;
         }
-        .cta-btn:hover { filter: brightness(1.12); transform: translateY(-2px); }
+        .cta-btn:hover { filter:brightness(1.12); transform:translateY(-2px); }
 
         /* ── Share buttons ── */
         .share-row {
-            display: flex; gap: 7px; justify-content: center;
-            flex-wrap: wrap; margin-top: 14px;
+            display:flex; gap:6px; justify-content:center;
+            flex-wrap:wrap; margin-top:14px;
         }
         .share-btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 9px 14px; border-radius: 10px; border: none;
-            font-size: 12px; font-weight: 700; cursor: pointer;
-            transition: transform .15s, filter .15s; text-decoration: none;
-            font-family: 'Inter', system-ui, sans-serif;
+            display:inline-flex; align-items:center; gap:6px;
+            padding:9px 13px; border-radius:10px; border:none;
+            font-size:11.5px; font-weight:700; cursor:pointer;
+            transition:transform .15s,filter .15s; text-decoration:none;
+            font-family:'Inter',system-ui,sans-serif;
         }
-        .share-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
-        .btn-linkedin { background: linear-gradient(135deg, #0077b5, #005582); color: #fff; }
-        .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; }
-        .btn-download { background: rgba(255,255,255,.08); color: #eaf1ff; border: 1px solid rgba(255,255,255,.15); }
-        .btn-copy    { background: rgba(139,92,246,.2); color: #c4b5fd; border: 1px solid rgba(139,92,246,.4); }
+        .share-btn:hover { transform:translateY(-2px); filter:brightness(1.1); }
+        .btn-linkedin { background:linear-gradient(135deg,#0077b5,#005582); color:#fff; }
+        .btn-whatsapp { background:linear-gradient(135deg,#25D366,#128C7E); color:#fff; }
+        .btn-download { background:rgba(255,255,255,.08); color:#eaf1ff; border:1px solid rgba(255,255,255,.15); }
+        .btn-stories  { background:linear-gradient(135deg,#e1306c,#c13584,#833ab4); color:#fff; }
+        .btn-copy     { background:rgba(139,92,246,.2); color:#c4b5fd; border:1px solid rgba(139,92,246,.4); }
     </style>
 </head>
 
 <body>
 
-    <div id="personality-card">
+    {% set _theme = vitals.theme if vitals is defined else "purple" %}
+    {% set _rarity = vitals.rarity_pct if vitals is defined else 8 %}
+    {% set _tier = vitals.tier if vitals is defined else "Rare" %}
+    {% set _score = vitals.career_score if vitals is defined else 82 %}
+    {% set _compat = vitals.compatible_archetype if vitals is defined else "The Analytical Sage" %}
+
+    {% set _now_month = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"] %}
+
+    <div id="personality-card" data-theme="{{ _theme }}">
         <div class="card-shimmer"></div>
 
         <div class="card-inner" id="card-inner">
 
-            <!-- Brand + candidate name -->
+            <!-- Brand + date -->
             <div class="card-brand-row">
-                <div class="card-brand">TailorCv.AI &middot; Career Personality</div>
-                {% if candidate_name %}<div class="card-name">{{ candidate_name }}</div>{% endif %}
+                <div class="card-brand">TailorCv.AI &middot; Career DNA</div>
+                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1px;">
+                    {% if candidate_name %}<div class="card-name">{{ candidate_name }}</div>{% endif %}
+                    <div class="card-brand-date" id="card-date-stamp"></div>
+                </div>
+            </div>
+
+            <!-- Rarity badge -->
+            <div class="rarity-row">
+                <div class="rarity-badge">
+                    <span class="rarity-badge-hex">⬡</span>
+                    TOP {{ _rarity }}% &nbsp;·&nbsp; 1 in {{ (100 / _rarity) | int }} professionals
+                </div>
+                <span class="rarity-tier">{{ _tier }}</span>
             </div>
 
             <!-- Archetype hero -->
-            <div class="card-archetype-wrap">
+            <div>
                 <div class="card-archetype" id="card-arch-text">{{ card.archetype }}</div>
+                {% if card.tagline %}
+                <div class="card-tagline" style="margin-top:6px;">"{{ card.tagline }}"</div>
+                {% endif %}
+            </div>
+
+            <!-- Career score bar -->
+            <div class="score-row">
+                <span class="score-label">Career Score</span>
+                <div class="score-bar-wrap">
+                    <div class="score-bar-fill" style="width:{{ _score }}%"></div>
+                </div>
+                <span class="score-num">{{ _score }}</span>
             </div>
 
             <!-- Stats -->
             <div class="stats-row">
                 <div class="stat-item">
-                    <span class="stat-value">{{ stats.years_experience or 0 }}+</span>
+                    {% if stats.years_experience and stats.years_experience > 0 %}
+                    <span class="stat-value">{{ stats.years_experience }}+</span>
                     <span class="stat-label">Years</span>
+                    {% else %}
+                    <span class="stat-value-sm">Rising</span>
+                    <span class="stat-label">Early Career</span>
+                    {% endif %}
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value">{{ stats.companies_count or 0 }}</span>
+                    {% if stats.companies_count and stats.companies_count > 0 %}
+                    <span class="stat-value">{{ stats.companies_count }}</span>
                     <span class="stat-label">Companies</span>
+                    {% else %}
+                    <span class="stat-value-sm">Building</span>
+                    <span class="stat-label">Legacy</span>
+                    {% endif %}
                 </div>
                 <div class="stat-item">
                     <span class="stat-value">{{ stats.total_projects or 0 }}</span>
@@ -269,14 +439,27 @@
             </div>
             {% endif %}
 
+            <!-- #1 Superpower (first trait, full-width) -->
+            {% if traits and traits|length > 0 %}
+            <div class="superpower-card">
+                <span class="superpower-kicker">#1 Superpower</span>
+                <div class="superpower-head">
+                    <span>{{ traits[0].emoji }}</span>
+                    <span>{{ traits[0].label }}</span>
+                </div>
+                <div class="superpower-desc">{{ traits[0].description }}</div>
+            </div>
+            {% endif %}
+
             <!-- Story -->
             {% if story %}
             <div class="card-story">{{ story }}</div>
             {% endif %}
 
-            <!-- Traits 2×2 -->
+            <!-- Remaining traits 2×2 -->
+            {% if traits and traits|length > 1 %}
             <div class="traits-grid">
-                {% for trait in traits %}
+                {% for trait in traits[1:] %}
                 <div class="trait-card">
                     <div class="trait-head">
                         <span>{{ trait.emoji }}</span>
@@ -286,6 +469,13 @@
                 </div>
                 {% endfor %}
             </div>
+            {% endif %}
+
+            <!-- Compatibility -->
+            <div class="compat-row">
+                <span>✦ Pairs with: <em>{{ _compat }}</em></span>
+                <span>✦ Tag a colleague — what's their archetype?</span>
+            </div>
 
             <div class="card-footer-brand">thetailorcv.com</div>
 
@@ -293,47 +483,64 @@
     </div>
 
     <div class="cta-section">
-        <div class="cta-headline">Discover your Career Personality</div>
-        <div class="cta-sub">Free for every professional &mdash; takes 30 seconds.</div>
-        <a href="/signup" class="cta-btn">Generate yours free &rarr;</a>
+        <div class="cta-social-proof">🔥 18,000+ professionals have discovered their archetype</div>
+        <div class="cta-headline">What's your Career DNA?</div>
+        <div class="cta-sub">Takes 30 seconds &mdash; free forever.</div>
+        <a href="/signup" class="cta-btn">Discover yours &rarr;</a>
 
         <div class="share-row">
             <button class="share-btn btn-linkedin" id="li-share-btn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                        d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z" />
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/>
                 </svg>
                 LinkedIn
             </button>
             <button class="share-btn btn-whatsapp" id="wa-share-btn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path
-                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
                 WhatsApp
             </button>
-            <button class="share-btn btn-download" id="download-png-btn">&#8595; Save Card</button>
-            <button class="share-btn btn-copy" id="copy-link-btn">&#128279; Copy Link</button>
+            <button class="share-btn btn-stories" id="stories-btn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+                </svg>
+                Stories
+            </button>
+            <button class="share-btn btn-download" id="download-png-btn">&#8595; Save</button>
+            <button class="share-btn btn-copy" id="copy-link-btn">&#128279; Copy</button>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous"
-        referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        (function () {
-            var cardUrl = {{ card_url | tojson }};
+    (function () {
+        var cardUrl  = {{ card_url | tojson }};
         var archetype = {{ card.archetype | tojson }};
-        var tagline = {{ card.tagline | tojson }};
+        var tagline  = {{ card.tagline | tojson }};
+        var rarityPct = {{ _rarity }};
+        var tier     = {{ _tier | tojson }};
 
-        var shareText = "Just discovered my career personality with TailorCv.AI 🎯\n\n"
-            + "I'm " + archetype + " — " + tagline + "\n\n"
-            + "Find out yours → " + cardUrl
-            + "\n\n#CareerPersonality #TailorCvAI #JobSearch";
+        // Stamp the month+year
+        (function() {
+            var d = new Date();
+            var months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+            var el = document.getElementById('card-date-stamp');
+            if (el) el.textContent = months[d.getMonth()] + " '" + String(d.getFullYear()).slice(-2);
+        })();
+
+        // Curiosity-gap share copy
+        var shareText =
+            "Just found out I'm in the top " + rarityPct + "% of professionals with this career archetype 👀\n\n" +
+            archetype + " — only 1 in " + Math.round(100 / rarityPct) + " people get this.\n\n" +
+            "What archetype are YOU? 👇\n" +
+            cardUrl + "\n\n" +
+            "#CareerDNA #CareerPersonality #TailorCvAI";
 
         document.getElementById('li-share-btn').addEventListener('click', function () {
             window.open("https://www.linkedin.com/feed/", "_blank", "noopener,noreferrer");
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(shareText).catch(function () { });
+                navigator.clipboard.writeText(shareText).catch(function () {});
             }
         });
 
@@ -341,49 +548,29 @@
             window.open("https://wa.me/?text=" + encodeURIComponent(shareText), "_blank", "noopener,noreferrer");
         });
 
-        /* ── Shrink-to-fit for the LIVE PREVIEW: scale .card-inner down so its
-               full content fits inside the fixed 9:16 frame without clipping. ── */
+        /* ── Shrink-to-fit live preview ── */
         function fitCardContent() {
             var card  = document.getElementById('personality-card');
             var inner = document.getElementById('card-inner');
-
             inner.style.transform = 'none';
             inner.style.width = '100%';
-
-            var cardHeight    = card.clientHeight;
-            var contentHeight = inner.scrollHeight;
-
-            var scale = cardHeight / contentHeight;
+            var scale = card.clientHeight / inner.scrollHeight;
             if (scale > 1) scale = 1;
-
             inner.style.width = (100 / scale) + '%';
             inner.style.transform = 'scale(' + scale + ')';
         }
-
         window.addEventListener('load', fitCardContent);
         window.addEventListener('resize', fitCardContent);
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(fitCardContent);
-        }
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitCardContent);
 
-        /* Draws a rounded-rect path (manual, for browsers without ctx.roundRect) */
         function roundRectPath(ctx, x, y, w, h, r) {
             ctx.beginPath();
-            ctx.moveTo(x + r, y);
-            ctx.arcTo(x + w, y,     x + w, y + h, r);
-            ctx.arcTo(x + w, y + h, x,     y + h, r);
-            ctx.arcTo(x,     y + h, x,     y,     r);
-            ctx.arcTo(x,     y,     x + w, y,     r);
-            ctx.closePath();
+            ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+            ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
         }
 
-        /* ── Capture the card for download/sharing.
-               Strategy: capture the card at its NATURAL, unscaled, full-content
-               height (no clipping needed at this stage), then composite the
-               result onto a fixed 1080x1920 (9:16) canvas using "contain"
-               scaling so the export is always exactly 9:16, with nothing
-               cut off — regardless of how long the content is. ── */
-        function captureCard(callback) {
+        /* ── Core capture: renders card at full natural height then composites onto target canvas ── */
+        function captureCard(outW, outH, callback) {
             var cardEl  = document.getElementById('personality-card');
             var inner   = document.getElementById('card-inner');
             var archEl  = document.getElementById('card-arch-text');
@@ -398,13 +585,11 @@
 
             if (shimmer) shimmer.style.animation = 'none';
 
-            /* fix gradient text for html2canvas (can't render -webkit-text-fill-color) */
+            // Fix gradient text for html2canvas
             archEl.style.cssText = origArch
-                + ';-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;'
+                + ';-webkit-text-fill-color:var(--c-archetype-solid,#fbbf24)!important;color:var(--c-archetype-solid,#fbbf24)!important;'
                 + 'background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;';
 
-            /* expand the card to its natural full-content height for capture —
-               this avoids relying on html2canvas to honor overflow:hidden + transform */
             inner.style.transform = 'none';
             inner.style.width = '100%';
             cardEl.style.aspectRatio = 'auto';
@@ -415,46 +600,35 @@
             var naturalHeight = cardEl.scrollHeight;
 
             html2canvas(cardEl, {
-                scale: 1080 / naturalWidth, // crisp output regardless of final compositing size
-                backgroundColor: null,
-                useCORS: true,
-                logging: false,
-                width: naturalWidth,
-                height: naturalHeight,
-                windowWidth: naturalWidth,
-                windowHeight: naturalHeight
+                scale: outW / naturalWidth,
+                backgroundColor: null, useCORS: true, logging: false,
+                width: naturalWidth, height: naturalHeight,
+                windowWidth: naturalWidth, windowHeight: naturalHeight
             }).then(function (contentCanvas) {
-                var outW = 1080, outH = 1920;
                 var out = document.createElement('canvas');
-                out.width = outW;
-                out.height = outH;
+                out.width = outW; out.height = outH;
                 var ctx = out.getContext('2d');
 
-                /* fill the full 9:16 frame with the card's background gradient,
-                   so any letterbox space blends in */
+                // Background gradient matching the card theme
                 var grad = ctx.createLinearGradient(0, 0, outW * 0.35, outH);
                 grad.addColorStop(0,   '#16003a');
                 grad.addColorStop(0.5, '#1e0045');
                 grad.addColorStop(1,   '#0d1a3e');
                 ctx.fillStyle = grad;
-                roundRectPath(ctx, 0, 0, outW, outH, 44);
+                roundRectPath(ctx, 0, 0, outW, outH, Math.round(outW * 0.044));
                 ctx.fill();
 
-                /* "contain" fit: scale the captured content to fit inside the
-                   9:16 frame, centered, without cropping anything */
+                // "contain" fit — scale the captured content to fill as much of the frame as possible
                 var scale = Math.min(outW / contentCanvas.width, outH / contentCanvas.height);
-                var drawW = contentCanvas.width * scale;
+                var drawW = contentCanvas.width  * scale;
                 var drawH = contentCanvas.height * scale;
                 var dx = (outW - drawW) / 2;
                 var dy = (outH - drawH) / 2;
-
                 ctx.drawImage(contentCanvas, dx, dy, drawW, drawH);
 
                 callback(null, out);
-            }).catch(function (err) {
-                callback(err);
-            }).finally(function () {
-                /* restore the live preview exactly as it was */
+            }).catch(function(err){ callback(err); })
+            .finally(function () {
                 inner.style.transform = origInnerTransform;
                 inner.style.width = origInnerWidth;
                 cardEl.style.aspectRatio = origCardAspect;
@@ -466,20 +640,30 @@
             });
         }
 
+        function downloadCanvas(canvas, filename) {
+            var a = document.createElement('a');
+            a.download = filename;
+            a.href = canvas.toDataURL('image/png');
+            a.click();
+        }
+
+        // Standard 9:16 download
         document.getElementById('download-png-btn').addEventListener('click', function () {
-            var btn = this;
-            btn.textContent = 'Generating…';
-            btn.disabled = true;
-            captureCard(function (err, canvas) {
-                if (err) {
-                    alert('PNG generation failed. Right-click the card and save as image instead.');
-                } else {
-                    var a = document.createElement('a');
-                    a.download = 'career-personality-' + archetype.toLowerCase().replace(/\s+/g, '-') + '.png';
-                    a.href = canvas.toDataURL('image/png');
-                    a.click();
-                }
-                btn.innerHTML = '&#8595; Save Card';
+            var btn = this; btn.textContent = '…'; btn.disabled = true;
+            captureCard(1080, 1920, function (err, canvas) {
+                if (err) alert('PNG generation failed. Right-click the card and save as image instead.');
+                else downloadCanvas(canvas, 'career-dna-' + archetype.toLowerCase().replace(/\s+/g,'-') + '.png');
+                btn.innerHTML = '&#8595; Save'; btn.disabled = false;
+            });
+        });
+
+        // Instagram Stories (1080×1920 same size, optimised label)
+        document.getElementById('stories-btn').addEventListener('click', function () {
+            var btn = this; btn.textContent = '…'; btn.disabled = true;
+            captureCard(1080, 1920, function (err, canvas) {
+                if (err) alert('Stories export failed. Try the Save button instead.');
+                else downloadCanvas(canvas, 'career-dna-story-' + archetype.toLowerCase().replace(/\s+/g,'-') + '.png');
+                btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg> Stories';
                 btn.disabled = false;
             });
         });
@@ -489,7 +673,7 @@
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(cardUrl).then(function () {
                     btn.textContent = '✓ Copied!';
-                    setTimeout(function () { btn.innerHTML = '&#128279; Copy Link'; }, 2500);
+                    setTimeout(function () { btn.innerHTML = '&#128279; Copy'; }, 2500);
                 }).catch(function () { btn.textContent = cardUrl; });
             } else {
                 btn.textContent = cardUrl;
