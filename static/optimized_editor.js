@@ -662,7 +662,7 @@ body {
 .editor-preview-wrap {
   background: #525659 !important;
   overflow-y: auto !important;
-  overflow-x: auto !important;
+  overflow-x: hidden !important;
   padding: 0 !important;
   border-radius: 10px !important;
   border: none !important;
@@ -1260,13 +1260,28 @@ body {
             }
             .pc-brand-row{display:flex;align-items:center;justify-content:space-between;}
             .pc-brand{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(167,139,250,.55);}
+            .pc-brand-right{display:flex;flex-direction:column;align-items:flex-end;gap:1px;}
             .pc-cand{font-size:9px;color:rgba(255,255,255,.4);text-align:right;}
+            .pc-brand-date{font-size:8px;color:rgba(255,255,255,.28);text-align:right;}
+            .pc-rarity-row{
+                display:flex;align-items:center;justify-content:space-between;gap:6px;
+                background:linear-gradient(135deg,rgba(251,191,36,.16),rgba(251,191,36,.05));
+                border:1px solid rgba(251,191,36,.42);border-radius:8px;padding:5px 9px;
+            }
+            .pc-rarity-badge{font-size:8px;font-weight:800;letter-spacing:.07em;color:#fbbf24;text-transform:uppercase;display:flex;align-items:center;gap:4px;}
+            .pc-rarity-tier{font-size:7px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(251,191,36,.18);border:1px solid rgba(251,191,36,.38);border-radius:4px;padding:2px 6px;color:#fbbf24;}
             .pc-arch{
-                font-size:26px;font-weight:900;
+                font-size:38px;font-weight:900;
                 background:linear-gradient(135deg,#fbbf24,#f472b6,#818cf8);
                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-                background-clip:text;line-height:1.1;
+                background-clip:text;line-height:1.08;letter-spacing:-.02em;
             }
+            .pc-tagline{font-size:9px;font-style:italic;color:rgba(226,232,240,.6);line-height:1.45;border-left:2px solid rgba(251,191,36,.4);padding-left:7px;margin-top:4px;}
+            .pc-score-row{display:flex;align-items:center;gap:7px;}
+            .pc-score-label{font-size:7px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.32);flex-shrink:0;}
+            .pc-score-bar-wrap{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden;}
+            .pc-score-bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,#fbbf24,#f472b6);}
+            .pc-score-num{font-size:14px;font-weight:900;color:#fbbf24;flex-shrink:0;min-width:24px;text-align:right;}
             .pc-stats{
                 display:flex;justify-content:center;
                 background:rgba(255,255,255,.04);
@@ -1276,9 +1291,14 @@ body {
             .pc-stat{flex:1;text-align:center;}
             .pc-stat+.pc-stat{border-left:1px solid rgba(255,255,255,.08);}
             .pc-stat-val{font-size:18px;font-weight:800;color:#fbbf24;display:block;}
+            .pc-stat-val-sm{font-size:11px;font-weight:800;color:#fbbf24;display:block;}
             .pc-stat-label{font-size:7px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;}
             .pc-skills{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;}
             .pc-skill{background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);border-radius:20px;padding:3px 10px;font-size:9px;color:#93c5fd;font-weight:600;}
+            .pc-superpower-card{background:rgba(15,23,42,.5);border:1px solid rgba(167,139,250,.32);border-radius:10px;padding:9px 11px;}
+            .pc-superpower-kicker{font-size:6.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#fbbf24;margin-bottom:4px;display:block;}
+            .pc-superpower-head{font-size:11px;font-weight:800;color:#eaf1ff;display:flex;align-items:center;gap:5px;margin-bottom:3px;}
+            .pc-superpower-desc{font-size:9px;line-height:1.45;color:rgba(226,232,240,.72);}
             .pc-story{
                 font-size:10.5px;color:rgba(244,247,255,.82);line-height:1.55;
                 padding:9px 11px;background:rgba(139,92,246,.10);
@@ -1294,17 +1314,22 @@ body {
                 color:#ddd6fe;font-size:10px;font-weight:700;line-height:1.2;
             }
             .pc-trait-desc{font-size:9px;line-height:1.45;color:rgba(226,232,240,.72);}
+            .pc-compat-row{font-size:8px;color:rgba(226,232,240,.5);line-height:1.6;display:flex;flex-direction:column;gap:1px;}
+            .pc-compat-row em{color:rgba(226,232,240,.8);font-style:normal;font-weight:600;}
             .pc-footer-brand{font-size:7.5px;color:rgba(255,255,255,.18);text-align:center;}
-            .pc-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+            .pc-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
             .pc-action-btn{
                 flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
                 padding:11px 14px;border-radius:10px;border:none;
                 font-size:.85rem;font-weight:700;cursor:pointer;
                 transition:transform .15s,filter .15s;text-decoration:none;
+                font-family:inherit;
             }
             .pc-action-btn:hover{transform:translateY(-2px);filter:brightness(1.1);}
             .pc-btn-li{background:linear-gradient(135deg,#0077b5,#005582);color:#fff;}
+            .pc-btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;}
             .pc-btn-dl{background:rgba(255,255,255,.07);color:#eaf1ff;border:1px solid rgba(255,255,255,.15)!important;}
+            .pc-btn-stories{background:linear-gradient(135deg,#e1306c,#c13584,#833ab4);color:#fff;}
             .pc-btn-copy{background:rgba(139,92,246,.2);color:#c4b5fd;border:1px solid rgba(139,92,246,.4)!important;}
             .pc-btn-view{background:rgba(59,130,246,.12);color:#93c5fd;border:1px solid rgba(59,130,246,.35)!important;}
             .pc-spinner{
@@ -1386,7 +1411,11 @@ body {
         const bodyEl = document.getElementById("pc-modal-body");
         if (!bodyEl) return;
 
-        const traits = (card.traits || []).map(t =>
+        const allTraits = card.traits || [];
+        const superpower = allTraits[0] || null;
+        const restTraits = allTraits.slice(1);
+
+        const traitsHtml = restTraits.map(t =>
             `<div class="pc-trait-card">
                 <div class="pc-trait-head"><span>${_escHtml(t.emoji)}</span><span>${_escHtml(t.label)}</span></div>
                 <div class="pc-trait-desc">${_escHtml(t.description)}</div>
@@ -1394,44 +1423,94 @@ body {
         ).join("");
 
         const s = card.stats || {};
+        const yrs = s.years_experience || 0;
+        const cos = s.companies_count  || 0;
         const statsHtml = [
-            { v: (s.years_experience || 0) + "+", l: "Years" },
-            { v: s.companies_count || 0,           l: "Companies" },
-            { v: s.total_projects || 0,            l: "Projects" },
+            yrs > 0
+                ? { v: yrs + "+", l: "Years",     cls: "pc-stat-val" }
+                : { v: "Rising",  l: "Early Career", cls: "pc-stat-val-sm" },
+            cos > 0
+                ? { v: cos,       l: "Companies", cls: "pc-stat-val" }
+                : { v: "Building", l: "Legacy",   cls: "pc-stat-val-sm" },
+            { v: s.total_projects || 0, l: "Projects", cls: "pc-stat-val" },
         ].map(item =>
-            `<div class="pc-stat"><span class="pc-stat-val">${item.v}</span><span class="pc-stat-label">${item.l}</span></div>`
+            `<div class="pc-stat"><span class="${item.cls}">${item.v}</span><span class="pc-stat-label">${item.l}</span></div>`
         ).join("");
 
         const skills = (s.top_3_skills || []).map(sk =>
             `<span class="pc-skill">${_escHtml(sk)}</span>`
         ).join("");
 
+        const rarityPct  = card.rarity_pct  || 8;
+        const tier       = card.tier         || "Rare";
+        const careerScore= card.career_score || 82;
+        const compat     = card.compatible_archetype || "The Analytical Sage";
+
+        const nowMonths = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+        const d = new Date();
+        const dateStamp = nowMonths[d.getMonth()] + " '" + String(d.getFullYear()).slice(-2);
+
+        const shareText =
+            `Just found out I'm in the top ${rarityPct}% of professionals with this career archetype 👀\n\n` +
+            `${card.archetype} — only 1 in ${Math.round(100 / rarityPct)} people get this.\n\n` +
+            `What archetype are YOU? 👇\n${card.share_url}\n\n#CareerDNA #CareerPersonality #TailorCvAI`;
+
         bodyEl.innerHTML = `
             <div class="pc-card-inner" id="pc-capturable-card">
                 <div class="pc-card-shimmer-inner"></div>
                 <div class="pc-card-content" id="pc-card-content">
                     <div class="pc-brand-row">
-                        <div class="pc-brand">TailorCV &middot; Career Personality</div>
-                        ${card.candidate_name ? `<div class="pc-cand">${_escHtml(card.candidate_name)}</div>` : ""}
+                        <div class="pc-brand">TailorCv.AI &middot; Career DNA</div>
+                        <div class="pc-brand-right">
+                            ${card.candidate_name ? `<div class="pc-cand">${_escHtml(card.candidate_name)}</div>` : ""}
+                            <div class="pc-brand-date">${dateStamp}</div>
+                        </div>
                     </div>
-                    <div class="pc-arch" id="pc-arch-text">${_escHtml(card.archetype)}</div>
+                    <div class="pc-rarity-row">
+                        <div class="pc-rarity-badge">&#11041; TOP ${rarityPct}% &nbsp;&middot;&nbsp; 1 in ${Math.round(100 / rarityPct)}</div>
+                        <span class="pc-rarity-tier">${_escHtml(tier)}</span>
+                    </div>
+                    <div>
+                        <div class="pc-arch" id="pc-arch-text">${_escHtml(card.archetype)}</div>
+                        ${card.tagline ? `<div class="pc-tagline">"${_escHtml(card.tagline)}"</div>` : ""}
+                    </div>
+                    <div class="pc-score-row">
+                        <span class="pc-score-label">Career Score</span>
+                        <div class="pc-score-bar-wrap"><div class="pc-score-bar-fill" style="width:${careerScore}%"></div></div>
+                        <span class="pc-score-num">${careerScore}</span>
+                    </div>
                     <div class="pc-stats">${statsHtml}</div>
                     ${skills ? `<div class="pc-skills">${skills}</div>` : ""}
+                    ${superpower ? `
+                    <div class="pc-superpower-card">
+                        <span class="pc-superpower-kicker">#1 Superpower</span>
+                        <div class="pc-superpower-head"><span>${_escHtml(superpower.emoji)}</span><span>${_escHtml(superpower.label)}</span></div>
+                        <div class="pc-superpower-desc">${_escHtml(superpower.description)}</div>
+                    </div>` : ""}
                     ${card.story ? `<div class="pc-story">${_escHtml(card.story)}</div>` : ""}
-                    <div class="pc-traits">${traits}</div>
+                    ${traitsHtml ? `<div class="pc-traits">${traitsHtml}</div>` : ""}
+                    <div class="pc-compat-row">
+                        <span>&#10022; Pairs with: <em>${_escHtml(compat)}</em></span>
+                        <span>&#10022; Tag a colleague &mdash; what&rsquo;s their archetype?</span>
+                    </div>
                     <div class="pc-footer-brand">thetailorcv.com</div>
                 </div>
             </div>
             <div class="pc-actions">
                 <button class="pc-action-btn pc-btn-li" id="pc-li-btn">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3zM20.44 13.2c0-3.1-1.66-4.7-3.88-4.7-1.79 0-2.59.98-3.03 1.67V8.5h-3.38V20h3.38v-6.06c0-1.6.3-3.14 2.28-3.14 1.95 0 1.98 1.82 1.98 3.24V20H21v-6.8z"/></svg>
-                    Share on LinkedIn
+                    LinkedIn
                 </button>
-                <button class="pc-action-btn pc-btn-dl" id="pc-dl-btn">&#8595; Download PNG</button>
+                <button class="pc-action-btn pc-btn-wa" id="pc-wa-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </button>
             </div>
             <div class="pc-actions" style="margin-top:0;">
-                <button class="pc-action-btn pc-btn-copy" id="pc-copy-btn">&#128279; Copy Link</button>
-                <a class="pc-action-btn pc-btn-view" href="${_escHtml(card.share_url)}" target="_blank" rel="noopener">&#8599; Full Page</a>
+                <button class="pc-action-btn pc-btn-stories" id="pc-stories-btn">&#10024; Stories</button>
+                <button class="pc-action-btn pc-btn-dl" id="pc-dl-btn">&#8595; Save PNG</button>
+                <button class="pc-action-btn pc-btn-copy" id="pc-copy-btn">&#128279; Copy</button>
+                <a class="pc-action-btn pc-btn-view" href="${_escHtml(card.share_url)}" target="_blank" rel="noopener">&#8599; View</a>
             </div>
         `;
 
@@ -1442,24 +1521,20 @@ body {
         }
 
         document.getElementById("pc-li-btn").onclick = () => {
-            const text = `Just discovered my career personality with TailorCv.AI 🎯\n\nI'm ${card.archetype} — ${card.tagline}\n\nFind out yours → ${card.share_url}\n\n#CareerPersonality #TailorCvAI #JobSearch`;
             window.open("https://www.linkedin.com/feed/", "_blank", "noopener,noreferrer");
-            navigator.clipboard?.writeText(text).catch(() => {});
+            navigator.clipboard?.writeText(shareText).catch(() => {});
         };
 
-        document.getElementById("pc-dl-btn").onclick = () => {
-            const btn     = document.getElementById("pc-dl-btn");
+        document.getElementById("pc-wa-btn").onclick = () => {
+            window.open("https://wa.me/?text=" + encodeURIComponent(shareText), "_blank", "noopener,noreferrer");
+        };
+
+        function _captureCard(outW, outH, onDone) {
             const cardEl  = document.getElementById("pc-capturable-card");
             const archEl  = document.getElementById("pc-arch-text");
             const innerEl = document.getElementById("pc-card-content");
-            const shimmer = cardEl.querySelector(".pc-card-shimmer-inner");
-
-            btn.textContent = "Generating…";
-            btn.disabled = true;
-
-            /* Capture at 360×640 (9:16) @ 3× DPR → 1080×1920 output.
-               This guarantees the PNG matches the in-app preview exactly. */
-            const capW = 360, capH = 640, DPR = 3;
+            const shimmer = cardEl ? cardEl.querySelector(".pc-card-shimmer-inner") : null;
+            if (!cardEl || !archEl) { onDone(new Error("missing elements"), null); return; }
 
             const origArch           = archEl.style.cssText;
             const origInnerTransform = innerEl ? innerEl.style.transform : "";
@@ -1470,61 +1545,77 @@ body {
             const origCardAspect     = cardEl.style.aspectRatio;
             const origCardOverflow   = cardEl.style.overflow;
 
-            /* Fix gradient text so html2canvas can render it (it can't handle
-               -webkit-text-fill-color: transparent with background-clip) */
             archEl.style.cssText = origArch
                 + ";-webkit-text-fill-color:#fbbf24!important;color:#fbbf24!important;"
                 + "background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;";
-
             if (shimmer) shimmer.style.animation = "none";
 
-            /* Pin card to the exact capture frame */
-            cardEl.style.width      = capW + "px";
-            cardEl.style.height     = capH + "px";
-            cardEl.style.maxWidth   = "none";
-            cardEl.style.aspectRatio = "auto";
-            cardEl.style.overflow   = "hidden";
-
-            /* Recompute the scale-to-fit for this capture size */
             if (innerEl) {
                 innerEl.style.transform = "none";
-                innerEl.style.width     = "100%";
-                const contentH = innerEl.scrollHeight;
-                let sc = capH / contentH;
-                if (sc > 1) sc = 1;
-                innerEl.style.width     = (100 / sc) + "%";
-                innerEl.style.transform = `scale(${sc})`;
+                innerEl.style.width = "100%";
             }
+            cardEl.style.width = "360px";
+            cardEl.style.maxWidth = "none";
+            cardEl.style.aspectRatio = "auto";
+            cardEl.style.overflow = "visible";
+            cardEl.style.height = (innerEl ? innerEl.scrollHeight : 640) + "px";
+
+            const natW = cardEl.offsetWidth;
+            const natH = cardEl.scrollHeight;
 
             window.html2canvas(cardEl, {
-                scale:           DPR,
-                backgroundColor: null,
-                useCORS:         true,
-                logging:         false,
-                width:           capW,
-                height:          capH,
-            }).then(canvas => {
-                const a = document.createElement("a");
-                a.download = "career-personality-" + card.archetype.toLowerCase().replace(/\s+/g, "-") + ".png";
-                a.href = canvas.toDataURL("image/png");
-                a.click();
-            })
-            .catch(() => alert("PNG generation failed. Use the Full Page link to save the image."))
+                scale: outW / natW,
+                backgroundColor: null, useCORS: true, logging: false,
+                width: natW, height: natH,
+            }).then(content => {
+                const out = document.createElement("canvas");
+                out.width = outW; out.height = outH;
+                const ctx = out.getContext("2d");
+                const grad = ctx.createLinearGradient(0, 0, outW * 0.35, outH);
+                grad.addColorStop(0, "#16003a"); grad.addColorStop(0.5, "#1e0045"); grad.addColorStop(1, "#0d1a3e");
+                ctx.fillStyle = grad;
+                const r = Math.round(outW * 0.044);
+                ctx.beginPath();
+                ctx.moveTo(r,0); ctx.arcTo(outW,0,outW,outH,r); ctx.arcTo(outW,outH,0,outH,r);
+                ctx.arcTo(0,outH,0,0,r); ctx.arcTo(0,0,outW,0,r); ctx.closePath();
+                ctx.fill();
+                const sc = Math.min(outW / content.width, outH / content.height);
+                ctx.drawImage(content, (outW - content.width * sc) / 2, (outH - content.height * sc) / 2, content.width * sc, content.height * sc);
+                onDone(null, out);
+            }).catch(err => onDone(err, null))
             .finally(() => {
+                archEl.style.cssText = origArch;
                 if (shimmer) shimmer.style.animation = "";
-                archEl.style.cssText         = origArch;
-                if (innerEl) {
-                    innerEl.style.transform  = origInnerTransform;
-                    innerEl.style.width      = origInnerWidth;
-                }
-                cardEl.style.width           = origCardWidth;
-                cardEl.style.height          = origCardHeight;
-                cardEl.style.maxWidth        = origCardMaxWidth;
-                cardEl.style.aspectRatio     = origCardAspect;
-                cardEl.style.overflow        = origCardOverflow;
+                if (innerEl) { innerEl.style.transform = origInnerTransform; innerEl.style.width = origInnerWidth; }
+                cardEl.style.width = origCardWidth; cardEl.style.height = origCardHeight;
+                cardEl.style.maxWidth = origCardMaxWidth; cardEl.style.aspectRatio = origCardAspect;
+                cardEl.style.overflow = origCardOverflow;
                 fitPcCardContent();
-                btn.textContent = "↓ Download PNG";
-                btn.disabled = false;
+            });
+        }
+
+        function _triggerDownload(canvas, filename) {
+            const a = document.createElement("a");
+            a.download = filename;
+            a.href = canvas.toDataURL("image/png");
+            a.click();
+        }
+
+        document.getElementById("pc-dl-btn").onclick = function () {
+            const btn = this; btn.textContent = "…"; btn.disabled = true;
+            _captureCard(1080, 1920, (err, canvas) => {
+                if (err) alert("PNG generation failed. Use the View link to save the image.");
+                else _triggerDownload(canvas, "career-dna-" + card.archetype.toLowerCase().replace(/\s+/g, "-") + ".png");
+                btn.innerHTML = "&#8595; Save PNG"; btn.disabled = false;
+            });
+        };
+
+        document.getElementById("pc-stories-btn").onclick = function () {
+            const btn = this; btn.textContent = "…"; btn.disabled = true;
+            _captureCard(1080, 1920, (err, canvas) => {
+                if (err) alert("Stories export failed. Try Save PNG instead.");
+                else _triggerDownload(canvas, "career-dna-story-" + card.archetype.toLowerCase().replace(/\s+/g, "-") + ".png");
+                btn.innerHTML = "&#10024; Stories"; btn.disabled = false;
             });
         };
 
@@ -1532,7 +1623,7 @@ body {
             const btn = this;
             navigator.clipboard?.writeText(card.share_url).then(() => {
                 btn.textContent = "✓ Copied!";
-                setTimeout(() => { btn.textContent = "🔗 Copy Link"; }, 2500);
+                setTimeout(() => { btn.innerHTML = "&#128279; Copy"; }, 2500);
             }).catch(() => { btn.textContent = card.share_url; });
         };
     }

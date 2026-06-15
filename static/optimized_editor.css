@@ -258,13 +258,6 @@ header.navbar .nav-links a {
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   ACCENT COLOR PANEL
-───────────────────────────────────────────────────────────────────────────── */
-#tc-accent-panel-container {
-    /* populated by JS */
-}
-
-/* ─────────────────────────────────────────────────────────────────────────────
    WORD-STYLE PREVIEW PANEL
 ───────────────────────────────────────────────────────────────────────────── */
 .editor-preview-wrap {
@@ -288,7 +281,8 @@ header.navbar .nav-links a {
     background: transparent;
     margin: 0;
     padding: 0;
-    max-width: 100%;
+    /* width & height are set entirely by JS — do NOT constrain with max-width here
+       because that shrinks the iframe viewport and clips the resume content */
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
