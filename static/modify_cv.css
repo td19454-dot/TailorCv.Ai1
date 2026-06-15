@@ -401,14 +401,9 @@ header.navbar {
 
  body {
     font-family: 'Inter', sans-serif;
-     background-image: url('back90.avif');
-     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Optional: keeps image fixed when scrolling */
-    background-color: #cccccc; /* Optional: a fallback color if the image doesn't load */
-    min-height: 100vh; 
-    height : 100%;
+    background: linear-gradient(135deg, #030014, #06002a, #0a0a2e, #001830);
+    min-height: 100vh;
+    height: 100%;
     margin: 0;
 }
 header.navbar {
