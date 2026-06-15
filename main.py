@@ -1,5 +1,6 @@
 import asyncio
 import base64
+import hashlib
 import json
 import logging
 import os
@@ -3488,6 +3489,60 @@ def _personality_skill_list(skills: object) -> list[str]:
     return deduped
 
 
+def _personality_card_vitals(archetype: str) -> dict:
+    """Derive deterministic viral metadata (rarity, tier, score, theme, compatibility) from the archetype string.
+    All values are hash-derived so they are stable across requests but feel personal."""
+    h = int(hashlib.md5(archetype.lower().encode()).hexdigest(), 16)
+
+    # Rarity: always feels exclusive (4–14 %) — never 0 or 100
+    rarity_pct = 4 + (h % 11)
+
+    if rarity_pct <= 5:
+        tier = "Mythic"
+    elif rarity_pct <= 8:
+        tier = "Legendary"
+    elif rarity_pct <= 11:
+        tier = "Rare"
+    else:
+        tier = "Uncommon"
+
+    # Career score: feels earned (75–97)
+    career_score = 75 + (h % 23)
+
+    # Color theme keyed to archetype keywords
+    a = archetype.lower()
+    if any(k in a for k in ("alchemist", "visionary", "dreamer", "creator", "mage", "wizard", "mystic", "prophet")):
+        theme = "gold"
+    elif any(k in a for k in ("architect", "builder", "engineer", "strategist", "planner", "designer", "operator")):
+        theme = "steel"
+    elif any(k in a for k in ("disruptor", "rebel", "challenger", "pioneer", "maverick", "warrior", "catalyst")):
+        theme = "fire"
+    elif any(k in a for k in ("sage", "oracle", "analyst", "thinker", "scholar", "navigator", "detective")):
+        theme = "ocean"
+    else:
+        theme = "purple"
+
+    # Compatibility: one of several archetypes, stable for this archetype string
+    _pool = [
+        "The Analytical Sage", "The Strategic Architect", "The Creative Disruptor",
+        "The Quiet Force", "The Bridge Builder", "The Systems Thinker",
+        "The Pattern Whisperer", "The Chaos Tamer", "The Relentless Builder",
+        "The Empathic Catalyst", "The Bold Pioneer", "The Deep Diver",
+    ]
+    compatible = _pool[h % len(_pool)]
+    # Avoid trivially matching own archetype
+    if archetype.lower() in compatible.lower() or compatible.lower() in archetype.lower():
+        compatible = _pool[(h + 1) % len(_pool)]
+
+    return {
+        "rarity_pct": rarity_pct,
+        "tier": tier,
+        "career_score": career_score,
+        "theme": theme,
+        "compatible_archetype": compatible,
+    }
+
+
 def _build_personality_card_prompt(resume_data: dict) -> str:
     """Build the GPT-4o-mini prompt for career personality card generation."""
     pi = resume_data.get("personal_info") or {}
@@ -4364,6 +4419,7 @@ async def generate_personality_card(request: Request):
         # Return cached card immediately if it already has the richer story/traits format.
         existing = db.query(PersonalityCard).filter(PersonalityCard.resume_id == resume_id).first()
         if existing and not _personality_card_needs_refresh(existing):
+            vitals = _personality_card_vitals(existing.archetype)
             return JSONResponse({
                 "success": True, "cached": True,
                 "card": {
@@ -4375,6 +4431,7 @@ async def generate_personality_card(request: Request):
                     "token": existing.token,
                     "share_url": f"{SITE_URL}/card/{existing.token}",
                     "candidate_name": resume.candidate_name or "",
+                    **vitals,
                 }
             })
 
@@ -4450,6 +4507,7 @@ async def generate_personality_card(request: Request):
                 card = db.query(PersonalityCard).filter(PersonalityCard.resume_id == resume_id).first()
 
         candidate_name = resume_data.get("personal_info", {}).get("name") or resume_data.get("name") or ""
+        vitals = _personality_card_vitals(card.archetype)
         return JSONResponse({
             "success": True, "cached": False,
             "card": {
@@ -4461,6 +4519,7 @@ async def generate_personality_card(request: Request):
                 "token": card.token,
                 "share_url": f"{SITE_URL}/card/{card.token}",
                 "candidate_name": str(candidate_name).strip(),
+                **vitals,
             }
         })
     except Exception:
@@ -4495,7 +4554,12 @@ async def personality_card_public(request: Request, token: str):
         db.close()
 
     card_url = f"{SITE_URL}/card/{token}"
+    vitals = _personality_card_vitals(card.archetype)
     og_title = f"{(candidate_name + ' is ') if candidate_name else ''}{card.archetype} | TailorCv.AI Career Card"
+    og_desc = (
+        f"Only {vitals['rarity_pct']}% of professionals earn this archetype. "
+        f"Find out yours → thetailorcv.com"
+    )
 
     return templates.TemplateResponse(request, "personality_card_public.html", {
         "request": request,
@@ -4505,8 +4569,9 @@ async def personality_card_public(request: Request, token: str):
         "traits": traits,
         "stats": stats,
         "card_url": card_url,
+        "vitals": vitals,
         "seo_og_title": og_title,
-        "seo_og_description": card.tagline,
+        "seo_og_description": og_desc,
         "seo_og_image": f"{SITE_URL}/static/personality-card-og.png",
         "canonical_url": card_url,
     })
