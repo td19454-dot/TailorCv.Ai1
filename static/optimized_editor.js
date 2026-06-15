@@ -1249,8 +1249,9 @@ body {
                 box-shadow:0 12px 40px rgba(139,92,246,.2),0 24px 48px rgba(0,0,0,.6);
             }
             .pc-card-content{
-                position:absolute;top:0;left:0;width:100%;
-                padding:20px 18px 16px;display:flex;flex-direction:column;gap:12px;
+                position:absolute;top:0;left:0;right:0;bottom:0;
+                padding:20px 18px 16px;display:flex;flex-direction:column;gap:0;
+                justify-content:space-between;
                 transform-origin:top left;z-index:1;box-sizing:border-box;
             }
             .pc-card-shimmer-inner{
@@ -1397,14 +1398,22 @@ body {
         const card  = document.getElementById("pc-capturable-card");
         const inner = document.getElementById("pc-card-content");
         if (!card || !inner) return;
+        // Reset to measure natural (tightly packed) content height
         inner.style.transform = "none";
         inner.style.width     = "100%";
-        const cardH    = card.clientHeight;
+        inner.style.height    = "auto";
+        const cardH    = card.clientHeight || card.offsetHeight;
         const contentH = inner.scrollHeight;
-        let scale = cardH / contentH;
-        if (scale > 1) scale = 1;
-        inner.style.width     = (100 / scale) + "%";
-        inner.style.transform = `scale(${scale})`;
+        if (contentH > cardH) {
+            // Content overflows — scale down to fit
+            const scale = cardH / contentH;
+            inner.style.width  = (100 / scale) + "%";
+            inner.style.height = (100 / scale) + "%";
+            inner.style.transform = `scale(${scale})`;
+        } else {
+            // Content fits — stretch to fill full card height via space-between
+            inner.style.height = "100%";
+        }
     }
 
     function _renderPersonalityCardModal(card) {
@@ -1539,6 +1548,7 @@ body {
             const origArch           = archEl.style.cssText;
             const origInnerTransform = innerEl ? innerEl.style.transform : "";
             const origInnerWidth     = innerEl ? innerEl.style.width     : "";
+            const origInnerHeight    = innerEl ? innerEl.style.height    : "";
             const origCardWidth      = cardEl.style.width;
             const origCardHeight     = cardEl.style.height;
             const origCardMaxWidth   = cardEl.style.maxWidth;
@@ -1550,43 +1560,52 @@ body {
                 + "background:none!important;-webkit-background-clip:initial!important;background-clip:initial!important;";
             if (shimmer) shimmer.style.animation = "none";
 
+            // Capture at a fixed 9:16 size (360×640) so the PNG is always the right ratio
+            const captureW = 360;
+            const captureH = Math.round(captureW * 16 / 9);  // 640
+            cardEl.style.width       = captureW + "px";
+            cardEl.style.maxWidth    = "none";
+            cardEl.style.aspectRatio = "auto";
+            cardEl.style.overflow    = "hidden";
+            cardEl.style.height      = captureH + "px";
+
+            // Fit content into capture dimensions (same logic as fitPcCardContent)
             if (innerEl) {
                 innerEl.style.transform = "none";
-                innerEl.style.width = "100%";
+                innerEl.style.width     = "100%";
+                innerEl.style.height    = "auto";
+                const captureContentH = innerEl.scrollHeight;
+                if (captureContentH > captureH) {
+                    const scale = captureH / captureContentH;
+                    innerEl.style.width  = (100 / scale) + "%";
+                    innerEl.style.height = (100 / scale) + "%";
+                    innerEl.style.transform = `scale(${scale})`;
+                } else {
+                    innerEl.style.height = "100%";
+                }
             }
-            cardEl.style.width = "360px";
-            cardEl.style.maxWidth = "none";
-            cardEl.style.aspectRatio = "auto";
-            cardEl.style.overflow = "visible";
-            cardEl.style.height = (innerEl ? innerEl.scrollHeight : 640) + "px";
-
-            const natW = cardEl.offsetWidth;
-            const natH = cardEl.scrollHeight;
 
             window.html2canvas(cardEl, {
-                scale: outW / natW,
+                scale: outW / captureW,
                 backgroundColor: null, useCORS: true, logging: false,
-                width: natW, height: natH,
+                width: captureW, height: captureH,
             }).then(content => {
                 const out = document.createElement("canvas");
                 out.width = outW; out.height = outH;
                 const ctx = out.getContext("2d");
+                // Fill background in case of transparent corners from border-radius
                 const grad = ctx.createLinearGradient(0, 0, outW * 0.35, outH);
                 grad.addColorStop(0, "#16003a"); grad.addColorStop(0.5, "#1e0045"); grad.addColorStop(1, "#0d1a3e");
                 ctx.fillStyle = grad;
-                const r = Math.round(outW * 0.044);
-                ctx.beginPath();
-                ctx.moveTo(r,0); ctx.arcTo(outW,0,outW,outH,r); ctx.arcTo(outW,outH,0,outH,r);
-                ctx.arcTo(0,outH,0,0,r); ctx.arcTo(0,0,outW,0,r); ctx.closePath();
-                ctx.fill();
-                const sc = Math.min(outW / content.width, outH / content.height);
-                ctx.drawImage(content, (outW - content.width * sc) / 2, (outH - content.height * sc) / 2, content.width * sc, content.height * sc);
+                ctx.fillRect(0, 0, outW, outH);
+                // Card captured at exact 9:16 — draw at full output size
+                ctx.drawImage(content, 0, 0, outW, outH);
                 onDone(null, out);
             }).catch(err => onDone(err, null))
             .finally(() => {
                 archEl.style.cssText = origArch;
                 if (shimmer) shimmer.style.animation = "";
-                if (innerEl) { innerEl.style.transform = origInnerTransform; innerEl.style.width = origInnerWidth; }
+                if (innerEl) { innerEl.style.transform = origInnerTransform; innerEl.style.width = origInnerWidth; innerEl.style.height = origInnerHeight; }
                 cardEl.style.width = origCardWidth; cardEl.style.height = origCardHeight;
                 cardEl.style.maxWidth = origCardMaxWidth; cardEl.style.aspectRatio = origCardAspect;
                 cardEl.style.overflow = origCardOverflow;
