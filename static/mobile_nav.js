@@ -55,5 +55,13 @@
         }
       });
     });
+
+    // Highlight the nav entry for the current page. The shared _nav.html carries no
+    // per-page "active" class, so derive it from the path here.
+    var here = (location.pathname || "/").replace(/\/+$/, "") || "/";
+    document.querySelectorAll(".navbar .nav-link[href], .navbar .nav-mega-item[href]").forEach(function (a) {
+      var href = (a.getAttribute("href") || "").split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
+      if (href === here) a.classList.add("active");
+    });
   });
 })();

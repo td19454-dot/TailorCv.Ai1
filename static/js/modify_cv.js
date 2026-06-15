@@ -898,6 +898,8 @@
         const errorDiv  = document.getElementById("linkedin-error");
         const loadingDiv = document.getElementById("linkedin-loading");
         const footer    = document.getElementById("linkedin-modal-footer");
+        const pasteInput = document.getElementById("linkedin-paste-input");
+        const pasteBtn  = document.getElementById("linkedin-paste-submit-btn");
 
         if (!openBtn || !overlay) return;
 
@@ -928,12 +930,22 @@
             if (loadingDiv) loadingDiv.style.display = "none";
             footer.style.display = "flex";
             submitBtn.disabled = false;
+            if (pasteBtn) pasteBtn.disabled = false;
         }
 
         openBtn.addEventListener("click", () => { overlay.style.display = "flex"; });
         closeBtn.addEventListener("click", resetModal);
         cancelBtn.addEventListener("click", resetModal);
         overlay.addEventListener("click", (e) => { if (e.target === overlay) resetModal(); });
+
+        // Deep link: /modify-cv?import=linkedin auto-opens the import modal, so the
+        // LinkedIn feature can be promoted from nav / landing pages.
+        try {
+            if (new URLSearchParams(window.location.search).get("import") === "linkedin") {
+                overlay.style.display = "flex";
+                if (urlInput) urlInput.focus();
+            }
+        } catch (e) { /* no-op */ }
 
         submitBtn.addEventListener("click", async () => {
             const url = (urlInput ? urlInput.value : "").trim();
@@ -976,6 +988,48 @@
                 submitBtn.disabled = false;
                 if (errorDiv) {
                     errorDiv.textContent = err?.message || "Import failed. Make sure your profile is Public and try again.";
+                    errorDiv.style.display = "block";
+                }
+            }
+        });
+
+        // Paste-text path: the reliable fallback when LinkedIn blocks URL scraping.
+        if (pasteBtn) pasteBtn.addEventListener("click", async () => {
+            const text = (pasteInput ? pasteInput.value : "").trim();
+            if (errorDiv) errorDiv.style.display = "none";
+            if (text.length < 100) {
+                if (errorDiv) {
+                    errorDiv.textContent = "Please paste more of your LinkedIn profile text (at least a few lines).";
+                    errorDiv.style.display = "block";
+                }
+                return;
+            }
+            if (loadingDiv) loadingDiv.style.display = "block";
+            footer.style.display = "none";
+            pasteBtn.disabled = true;
+            try {
+                const response = await fetch("/api/linkedin-parse", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ text }),
+                });
+                const result = await response.json();
+                if (!response.ok || !result?.success) {
+                    throw new Error(result?.detail || "Could not read that profile text. Try copying the whole page.");
+                }
+                await applyLinkedInData(result.data);
+                resetModal();
+                const expCount   = Array.isArray(cvData.experience) ? cvData.experience.length : 0;
+                const eduCount   = Array.isArray(cvData.education)  ? cvData.education.length  : 0;
+                const skillCount = Array.isArray(cvData.skills)     ? cvData.skills.length     : 0;
+                showImportBanner(`LinkedIn profile imported. Found ${expCount} experience, ${eduCount} education, ${skillCount} skills. Review and edit below.`, false);
+                document.getElementById("sections-container").scrollIntoView({ behavior: "smooth", block: "start" });
+            } catch (err) {
+                if (loadingDiv) loadingDiv.style.display = "none";
+                footer.style.display = "flex";
+                pasteBtn.disabled = false;
+                if (errorDiv) {
+                    errorDiv.textContent = err?.message || "Could not import from pasted text. Please try again.";
                     errorDiv.style.display = "block";
                 }
             }

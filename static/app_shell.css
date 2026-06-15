@@ -1,0 +1,175 @@
+/* ───────────────────────────────────────────────────────────────────────────
+   Logged-in APP SHELL — top bar (76px) + slim icon rail (64px), Jobscan-style.
+   app_shell.js adds `tcv-app` to <html> for a logged-in user on a tool page and
+   injects the top bar + icon rail. Marketing navbar/footer are hidden and content
+   is shifted. Marketing pages / logged-out visitors never get the class.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+html.tcv-app .navbar { display: none !important; }
+html.tcv-app .footer { display: none !important; }
+html.tcv-app body { overflow-x: hidden; }
+
+/* The marketing nav is position:fixed, so pages add `header.navbar + * {padding-top:100px}`
+   to clear it. With the navbar hidden that becomes dead space — neutralize it. */
+html.tcv-app header.navbar + * { padding-top: 16px !important; margin-top: 0 !important; }
+
+/* Top app bar */
+.tcv-top {
+    position: fixed; top: 0; left: 0; right: 0; height: 76px;
+    background: rgba(255, 255, 255, 0.04); background-color: #0a1430;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 4200; display: flex; flex-direction: row; align-items: center;
+    justify-content: flex-start; gap: 14px; padding: 0 16px;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+/* Guard: style2.css/style3.css have bare `header { flex-direction: column }`
+   rules in their ≤768px blocks that would stack the injected
+   <header class="tcv-top"> vertically and break the burger. The class selector
+   (higher specificity than the bare element) keeps the bar a proper row. */
+.tcv-top { flex-direction: row !important; }
+/* Plain hamburger icon — no box/border (matches the avatar's flat treatment). */
+.tcv-burger {
+    width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0;
+    background: transparent; border: none;
+    color: #dbe6ff; font-size: 22px; line-height: 1; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+}
+.tcv-burger:hover { background: rgba(255, 255, 255, 0.06); }
+.tcv-top-logo { display: inline-flex; align-items: center; text-decoration: none; height: 76px; overflow: hidden; }
+.tcv-top-logo img { height: 350px; width: 400px; display: block; object-fit: contain; }
+.tcv-top-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+
+/* Profile avatar + dropdown menu */
+.tcv-profile { position: relative; }
+.tcv-avatar {
+    width: 36px; height: 36px; border-radius: 50%; border: none; cursor: pointer;
+    background: linear-gradient(135deg, #3392ff, #6d28d9); color: #fff;
+    font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center;
+}
+.tcv-profile-menu {
+    position: absolute; right: 0; top: calc(100% + 12px); min-width: 250px;
+    background: #0b1430; border: 1px solid rgba(99, 130, 200, 0.3); border-radius: 14px;
+    padding: 6px; box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+    opacity: 0; visibility: hidden; transform: translateY(6px);
+    transition: opacity .15s ease, transform .15s ease, visibility .15s; z-index: 5000;
+}
+/* invisible bridge so the menu doesn't close while moving the cursor onto it */
+.tcv-profile-menu::before { content: ""; position: absolute; top: -12px; left: 0; right: 0; height: 12px; }
+.tcv-profile:hover .tcv-profile-menu,
+.tcv-profile:focus-within .tcv-profile-menu { opacity: 1; visibility: visible; transform: none; }
+.tcv-profile-head { display: flex; align-items: center; gap: 10px; padding: 12px 12px 10px; border-bottom: 1px solid rgba(99, 130, 200, 0.2); margin-bottom: 6px; }
+.tcv-pf-av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #3392ff, #6d28d9); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tcv-pf-id { display: flex; flex-direction: column; min-width: 0; }
+.tcv-pf-id strong { font-size: .9rem; color: #fff; }
+.tcv-pf-id small { font-size: .76rem; color: #9fb0cc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 184px; }
+.tcv-pf-link { display: block; padding: 10px 12px; border-radius: 8px; color: #cfe0ff; font-size: .88rem; text-decoration: none; }
+.tcv-pf-link:hover { background: rgba(99, 132, 255, .14); color: #fff; }
+
+/* Slim icon rail (sits below the top bar) */
+.tcv-rail {
+    position: fixed; top: 76px; left: 0; width: 64px; height: calc(100vh - 76px);
+    background: #081024; border-right: 1px solid rgba(99, 130, 200, 0.2);
+    z-index: 4000; display: flex; flex-direction: column; align-items: center;
+    padding: 12px 0; transition: transform .2s ease;
+}
+.tcv-rail-nav { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100%; }
+.tcv-rail-foot { margin-top: auto; width: 100%; display: flex; justify-content: center; }
+.tcv-rail-link {
+    position: relative; width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: #eaf1ff; font-size: 19px; text-decoration: none;
+    transition: background .15s, color .15s;
+}
+.tcv-rail-link:hover { background: rgba(99, 132, 255, .14); color: #fff; }
+.tcv-rail-link.active { background: rgba(51, 146, 255, .2); color: #fff; }
+.tcv-rail-ic { display: inline-flex; align-items: center; justify-content: center; }
+.tcv-rail-ic svg { width: 20px; height: 20px; }
+.tcv-rail-link.active::before {
+    content: ""; position: absolute; left: -12px; top: 50%; transform: translateY(-50%);
+    width: 3px; height: 22px; border-radius: 0 3px 3px 0; background: #3392ff;
+}
+/* Hover tooltip label */
+.tcv-rail-tip {
+    position: absolute; left: 54px; top: 50%; transform: translateY(-50%);
+    background: #0b1430; border: 1px solid rgba(99, 130, 200, 0.35); color: #e8eeff;
+    font-size: 12px; font-weight: 600; padding: 6px 10px; border-radius: 8px; white-space: nowrap;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .45);
+    opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .12s ease; z-index: 5000;
+}
+.tcv-rail-link:hover .tcv-rail-tip { opacity: 1; visibility: visible; }
+
+.tcv-side-backdrop { display: none; position: fixed; inset: 76px 0 0 0; background: rgba(0, 0, 0, .5); z-index: 3900; }
+
+/* Drawer close (X) — only shown when the rail is a mobile drawer. */
+.tcv-rail-close { display: none; }
+@media (max-width: 860px) {
+    .tcv-rail-close {
+        display: inline-flex; align-items: center; justify-content: center;
+        align-self: flex-end; width: 44px; height: 44px; margin: -4px -4px 6px auto;
+        background: transparent; border: none; border-radius: 10px;
+        color: #cfe0ff; font-size: 26px; line-height: 1; cursor: pointer;
+    }
+    .tcv-rail-close:hover { background: rgba(255, 255, 255, .08); }
+}
+
+/* Desktop: reserve the rail width; collapse hides it and reclaims the space. */
+@media (min-width: 861px) {
+    html.tcv-app body { padding-top: 76px; padding-left: 64px; }
+    html.tcv-app.tcv-collapsed body { padding-left: 0; }
+    html.tcv-app.tcv-collapsed .tcv-rail { transform: translateX(-100%); }
+}
+
+/* Pages with their OWN fixed left sidebar (ATS results, Make CV): shift past the
+   64px rail and align to the 76px top bar so the columns line up. */
+@media (min-width: 861px) {
+    html.tcv-app .analysis-page { padding-top: 0 !important; }
+    html.tcv-app .analysis-page .sidebar {
+        left: 64px !important; top: 76px !important; height: calc(100vh - 76px) !important;
+    }
+    html.tcv-app .modify-cv-layout { margin: 0 !important; max-width: none !important; }
+    html.tcv-app .modify-cv-sidebar {
+        left: 64px !important; top: 108px !important; height: calc(100vh - 120px) !important;
+    }
+    html.tcv-app .preview-panel {
+        right: 16px !important; top: 108px !important; height: calc(100vh - 120px) !important;
+    }
+}
+
+/* Mobile: top bar stays; the rail slides in over content via the burger.
+   On mobile the rail becomes a proper LABELLED drawer (icon + text), not the
+   cryptic 64px icon-only strip — much clearer as a navigation menu. */
+@media (max-width: 860px) {
+    /* Compact 52px top bar on phones. */
+    .tcv-top { height: 52px; gap: 8px; padding: 0 16px; }
+    html.tcv-app body { padding-top: 52px; padding-left: 0; }
+    .tcv-rail {
+        width: 250px; max-width: 84vw; padding: 14px 12px;
+        top: 52px; height: calc(100vh - 52px);
+        align-items: stretch;
+        transform: translateX(-100%); box-shadow: 0 0 40px rgba(0,0,0,.5);
+    }
+    .tcv-side-backdrop { inset: 52px 0 0 0; }
+    .tcv-rail.open { transform: none; }
+    .tcv-rail-nav { gap: 4px; align-items: stretch; }
+    .tcv-rail-foot { justify-content: stretch; }
+    .tcv-rail-link {
+        width: 100%; height: 48px; justify-content: flex-start;
+        gap: 14px; padding: 0 14px; border-radius: 10px; font-size: 15px;
+    }
+    .tcv-rail-link.active::before { display: none; }
+    /* Turn the hover tooltip into an inline text label inside the drawer. */
+    .tcv-rail-tip {
+        position: static; transform: none; opacity: 1; visibility: visible;
+        background: none; border: none; box-shadow: none; padding: 0;
+        font-size: 15px; font-weight: 500; color: inherit;
+        pointer-events: auto; white-space: nowrap;
+    }
+    .tcv-side-backdrop.open { display: block; }
+    /* Layout: ☰ (left) — logo (centered) — avatar (right, 16px from edge).
+       The logo box is 400px wide on desktop, so cap + crop it on phones. */
+    .tcv-top-logo {
+        position: absolute; left: 50%; transform: translateX(-50%);
+        height: 52px; overflow: visible;
+    }
+    .tcv-top-logo img { width: 300px; height: 300px; max-width: none; }
+}
