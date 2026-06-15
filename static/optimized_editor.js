@@ -1563,16 +1563,27 @@ body {
             // Capture at a fixed 9:16 size (360×640) so the PNG is always the right ratio
             const captureW = 360;
             const captureH = Math.round(captureW * 16 / 9);  // 640
-            if (innerEl) {
-                innerEl.style.transform = "none";
-                innerEl.style.width  = "100%";
-                innerEl.style.height = "100%";
-            }
             cardEl.style.width       = captureW + "px";
             cardEl.style.maxWidth    = "none";
             cardEl.style.aspectRatio = "auto";
             cardEl.style.overflow    = "hidden";
             cardEl.style.height      = captureH + "px";
+
+            // Fit content into capture dimensions (same logic as fitPcCardContent)
+            if (innerEl) {
+                innerEl.style.transform = "none";
+                innerEl.style.width     = "100%";
+                innerEl.style.height    = "auto";
+                const captureContentH = innerEl.scrollHeight;
+                if (captureContentH > captureH) {
+                    const scale = captureH / captureContentH;
+                    innerEl.style.width  = (100 / scale) + "%";
+                    innerEl.style.height = (100 / scale) + "%";
+                    innerEl.style.transform = `scale(${scale})`;
+                } else {
+                    innerEl.style.height = "100%";
+                }
+            }
 
             window.html2canvas(cardEl, {
                 scale: outW / captureW,
