@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Auto-apply to jobs on Naukri and Internshala with theTailorCV. Install the browser extension and apply to dozens of matching roles in one click, tracked in your dashboard.">
+    <title>Auto Job Apply — Naukri & Internshala | theTailorCV</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/style2.css?v=7">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .navbar .nav-links { min-width: 560px; gap: 2px; }
+        .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #020c22; color: #e2ecff; min-height: 100vh; }
+
+        .aa-hero { text-align: center; padding: 3.25rem 1.5rem 1.5rem; max-width: 780px; margin: 0 auto; }
+        .aa-kicker { display: inline-flex; background: rgba(124,58,237,0.14); border: 1px solid rgba(124,58,237,0.32); border-radius: 999px; padding: 7px 16px; font-size: 13px; color: #b07cf0; font-weight: 500; margin-bottom: 16px; }
+        .aa-hero h1 { font-size: 2.35rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+        .aa-hero h1 span { background: linear-gradient(135deg, #5b8cff, #b07cf0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .aa-hero p { color: #9fb6d6; font-size: 1.02rem; line-height: 1.6; }
+
+        .aa-wrap { max-width: 960px; margin: 0 auto; padding: 1rem 1.5rem 4rem; }
+        .aa-card { background: #0a1730; border: 1px solid rgba(91,140,255,0.18); border-radius: 18px; padding: 26px; margin-bottom: 22px; }
+        .aa-card h2 { font-size: 1.15rem; margin-bottom: 14px; }
+
+        .aa-steps { list-style: none; display: grid; gap: 14px; }
+        .aa-steps li { display: flex; gap: 12px; align-items: flex-start; color: #c4d4ef; font-size: 14px; line-height: 1.5; }
+        .aa-num { flex: 0 0 26px; width: 26px; height: 26px; border-radius: 50%; background: rgba(51,146,255,0.18); border: 1px solid rgba(51,146,255,0.4); color: #7db9ff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+        .aa-portals { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+        .aa-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 6px 14px; font-size: 13px; color: #dceafe; }
+
+        .aa-cta { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #3392ff, #6d28d9); color: #fff; border: none; cursor: pointer; font-weight: 700; font-size: 14px; padding: 13px 24px; border-radius: 11px; text-decoration: none; }
+
+        .aa-login-note { background: rgba(234,179,8,.1); border: 1px solid rgba(234,179,8,.35); color: #fde68a; border-radius: 12px; padding: 14px 18px; font-size: 14px; }
+        .aa-login-note a { color: #fde68a; font-weight: 700; }
+
+        table.aa-table { width: 100%; border-collapse: collapse; }
+        table.aa-table th, table.aa-table td { text-align: left; padding: 11px 12px; font-size: 13.5px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+        table.aa-table th { color: #8aa0d8; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+        table.aa-table td a { color: #7db9ff; text-decoration: none; }
+        .aa-stage { background: rgba(59,130,246,.18); color: #93c5fd; border: 1px solid rgba(59,130,246,.4); border-radius: 999px; padding: 3px 11px; font-size: 12px; }
+        .aa-empty { color: #6f87aa; font-size: 14px; }
+    </style>
+</head>
+<body>
+    {% include "_nav.html" %}
+
+    <div class="aa-hero">
+        <div class="aa-kicker">Auto Job Apply</div>
+        <h1>Apply to dozens of jobs <span>in one click</span></h1>
+        <p>Install the TailorCV browser extension, open a search results page on Naukri or Internshala, and let it apply to matching roles for you — every application logged here in your dashboard.</p>
+        <div class="aa-portals" style="justify-content:center;">
+            <span class="aa-chip">Naukri</span>
+            <span class="aa-chip">Internshala</span>
+        </div>
+    </div>
+
+    <div class="aa-wrap">
+        {% if not logged_in %}
+        <div class="aa-card">
+            <div class="aa-login-note">
+                You need to be logged in for auto-apply to use your profile.
+                <a href="/login?next=/auto-apply">Log in</a> or <a href="/signup">create a free account</a> first.
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="aa-card">
+            <h2>How it works</h2>
+            <ol class="aa-steps">
+                <li><span class="aa-num">1</span><div>Make sure you're <strong>logged in to theTailorCV</strong> in this browser — the extension uses your profile.</div></li>
+                <li><span class="aa-num">2</span><div>Install the <strong>TailorCV Auto Apply</strong> browser extension and pin it.</div></li>
+                <li><span class="aa-num">3</span><div>Go to a <strong>search results page</strong> on Naukri or Internshala. A TailorCV sidebar appears.</div></li>
+                <li><span class="aa-num">4</span><div>Click <strong>Start</strong>. The extension applies to listings one by one — every application shows up below.</div></li>
+            </ol>
+        </div>
+
+        <div class="aa-card">
+            <h2>Your applications</h2>
+            {% if logged_in %}
+                {% if applications %}
+                <table class="aa-table">
+                    <thead>
+                        <tr><th>Role</th><th>Company</th><th>Stage</th><th>When</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        {% for app in applications %}
+                        <tr>
+                            <td>{{ app.role }}</td>
+                            <td>{{ app.company }}</td>
+                            <td><span class="aa-stage">{{ app.stage }}</span></td>
+                            <td>{{ app.created_at.strftime('%d %b %Y') }}</td>
+                            <td>{% if app.job_url %}<a href="{{ app.job_url }}" target="_blank" rel="noopener">View ↗</a>{% endif %}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="aa-empty">No applications yet. Once the extension applies to jobs, they'll appear here.</p>
+                {% endif %}
+            {% else %}
+                <p class="aa-empty">Log in to see the jobs you've auto-applied to.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% include "_footer.html" %}
+
+    <script src="/static/auth_nav.js?v=2"></script>
+    <script src="/static/mobile_nav.js"></script>
+</body>
+</html>

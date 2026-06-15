@@ -4,609 +4,357 @@
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Check your ATS score instantly. Paste your resume and get a detailed breakdown of what passed and what failed. 25 checks. Completely free. Just sign in.">
-    <title>Free ATS Resume Score Checker — See Your Score in 30 Seconds | TailorCV</title>
-    {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/header-footer.css">
-    <link rel="stylesheet" href="/static/style2.css?v=7">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Dashboard | theTailorCV</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/app_shell.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .navbar .nav-links {
-            min-width: 560px;
-            gap: 2px;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --bg:#070f24; --panel:#0c1733; --panel-2:#0a1430; --border:rgba(99,130,200,.18); --muted:#9fb0cc; --accent:#3392ff; --ink:#e2ecff; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; padding-top: 76px; }
+        a { text-decoration: none !important; }
+
+        .app { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 76px); }
+
+        /* Sidebar — single icon color (currentColor), tight */
+        .side { background: #081024; border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 16px 14px; position: sticky; top: 76px; height: calc(100vh - 76px); overflow-y: auto; }
+        .side-nav { display: flex; flex-direction: column; gap: 2px; }
+        .side-link { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 10px; color: #b7c6e6; font-size: 14px; font-weight: 500; transition: background .15s, color .15s; }
+        .side-link:hover { background: rgba(99,132,255,.12); color: #fff; }
+        .side-link.active { background: rgba(51,146,255,.18); color: #fff; }
+        .side-link svg { width: 19px; height: 19px; flex-shrink: 0; color: #e6edff; }      /* all icons white */
+        .side-link:hover svg, .side-link.active svg { color: #ffffff; }
+        .side-foot { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
+        /* Burger toggles the sidebar. Desktop: collapse it to reclaim space. */
+        @media (min-width: 861px) {
+            body.dash-nav-open .app { grid-template-columns: 1fr; }
+            body.dash-nav-open .side { display: none; }
         }
-        .navbar .nav-links .nav-link {
-            font-size: 11px;
-            padding: 18px 10px;
-            letter-spacing: 0;
+
+        .main { padding: 30px 34px 60px; max-width: 1180px; }
+        .greet { font-size: 2rem; font-weight: 800; margin-bottom: 22px; }
+
+        /* Promo banner */
+        .promo { display: flex; align-items: center; gap: 18px; background: linear-gradient(110deg, rgba(51,146,255,.14), rgba(124,58,237,.12)); border: 1px solid var(--border); border-radius: 16px; padding: 18px 22px; margin-bottom: 22px; position: relative; }
+        .promo .tag { background: #f59e0b; color: #1a1206; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 6px; letter-spacing: .04em; }
+        .promo h3 { font-size: 1.05rem; margin-bottom: 3px; display: flex; align-items: center; gap: 10px; }
+        .promo p { color: var(--muted); font-size: .9rem; }
+        .promo .go { margin-left: auto; background: linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:600; font-size:.85rem; padding:10px 18px; border-radius:10px; white-space:nowrap; }
+
+        .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 22px; }
+        .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+        .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+        .card-head h3 { font-size: .95rem; font-weight: 700; display: flex; align-items: center; gap: 9px; }
+        .card-head svg { width: 18px; height: 18px; color: #8aa0c8; }
+        .card-head a { color: var(--muted); }
+        .stat { display: flex; align-items: baseline; gap: 10px; }
+        .stat .num { font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1; }
+        .stat .lbl { color: var(--muted); font-size: .9rem; }
+        .pill { display:inline-block; margin-top:12px; font-size:.8rem; font-weight:600; padding:4px 11px; border-radius:999px; background:rgba(16,185,129,.16); color:#6ee7b7; border:1px solid rgba(16,185,129,.3); }
+        .mini-list { list-style:none; display:flex; flex-direction:column; gap:9px; margin-top:14px; }
+        .mini-list li { display:flex; justify-content:space-between; gap:10px; font-size:.86rem; color:#c4d4ef; border-bottom:1px solid rgba(255,255,255,.06); padding-bottom:8px; }
+        .mini-list li span.co { color: var(--muted); }
+
+        /* Task 4 — clickable, truncating "My Resumes" rows with a chevron */
+        .resume-rows { display: flex; flex-direction: column; gap: 4px; margin-top: 14px; }
+        .resume-rows .mini-row {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 6px; border-radius: 9px; color: #c4d4ef;
+            cursor: pointer; transition: background .15s;
+            border-bottom: 1px solid rgba(255,255,255,.06);
         }
-        .navbar #auth-nav-slot .login {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px 16px;
-            border-radius: 10px;
-            border: 1px solid rgba(59, 130, 246, 0.45);
-            background: linear-gradient(135deg, rgba(51,146,255,.2), rgba(76,29,149,.22));
-            color: #e7f0ff;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        .resume-rows .mini-row:active,
+        .resume-rows .mini-row:hover { background: rgba(99,132,255,.14); }
+        .resume-rows .mr-title { flex: 1 1 auto; max-width: calc(100% - 56px); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: .88rem; }
+        .resume-rows .mr-date { flex: 0 0 auto; width: 48px; text-align: right; white-space: nowrap; color: var(--muted); font-size: .8rem; }
+        .resume-rows .mr-chev { flex: 0 0 auto; color: #8aa0c8; font-size: 1.1rem; line-height: 1; }
+
+        /* Task 5 — full-width "New scan" button in the empty ATS card */
+        .card .cta.cta-block { display: block; width: 100%; text-align: center; padding: 12px; }
+        /* Task 7 — capitalise the user's display name */
+        .greet { text-transform: capitalize; }
+        .empty { color: var(--muted); font-size: .9rem; margin-top: 10px; }
+        .card .cta { display:inline-block; margin-top:16px; background:linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:600; font-size:.84rem; padding:9px 16px; border-radius:9px; }
+
+        /* New scan box */
+        .newscan { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 26px; }
+        .newscan h2 { font-size: 1.35rem; font-weight: 800; margin-bottom: 4px; }
+        .newscan .cap { color: var(--muted); font-size: .92rem; margin-bottom: 20px; }
+        .scan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .scan-box { background: var(--panel-2); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+        .scan-box .step { font-size: .8rem; font-weight: 700; color: #8aa0c8; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px; }
+        .scan-box textarea { width: 100%; min-height: 150px; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 10px; color: var(--ink); font-family: inherit; font-size: 13px; padding: 12px; resize: vertical; }
+        /* Native <option> popups render on a white OS background — force dark,
+           readable text so the sample-role list isn't faint/invisible. */
+        #jd-picker-panel .jd-opt { user-select: none; }
+        .scan-actions { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+        .scan-actions .go { background: linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:700; font-size:.92rem; padding:13px 26px; border-radius:11px; border:none; cursor:pointer; }
+        .scan-actions .ghost { color: var(--muted); font-size: .85rem; }
+        .scan-msg { font-size: .85rem; margin-left: auto; color: #fca5a5; }
+
+        /* New-scan resume upload zone */
+        .ns-upload {
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+            width: 100%; min-height: 150px; padding: 18px; cursor: pointer; text-align: center;
+            border: 1.5px dashed rgba(120,150,255,.45); border-radius: 12px;
+            background: rgba(255,255,255,.03); color: #9fb6d6; transition: border-color .15s, background .15s;
         }
-        .navbar #auth-nav-slot .login:hover {
-            transform: translateY(-1px);
-            border-color: rgba(96, 165, 250, 0.8);
-            box-shadow: 0 10px 24px rgba(30, 64, 175, 0.3);
+        .ns-upload:hover { border-color: #6b8cff; background: rgba(99,132,255,.08); }
+        .ns-upload svg { width: 30px; height: 30px; color: #6ee7b7; }
+        .ns-up-label { font-size: .9rem; font-weight: 600; color: #cfe0ff; }
+        .ns-up-file { font-size: .82rem; color: #8fa6cf; word-break: break-all; }
+        .ns-up-file:empty { display: none; }
+        .ns-upload.has-file { border-style: solid; border-color: rgba(110,231,183,.5); background: rgba(16,185,129,.07); }
+        .ns-upload.has-file .ns-up-label { color: #6ee7b7; }
+
+        /* ATS result card (rendered inline after a scan) */
+        .ns-result { margin-top: 22px; border-top: 1px solid var(--border); padding-top: 22px; }
+        .ns-result-top { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .ns-score-ring {
+            width: 96px; height: 96px; border-radius: 50%; flex-shrink: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; font-weight: 800;
         }
-     
-   
-    
-        .cv2-shell {
-            position: relative;
-            z-index: 1;
-        }
-        @keyframes cv2FloatA {
-            0% { transform: translate3d(0, 0, 0) scale(1); }
-            50% { transform: translate3d(70px, 35px, 0) scale(1.08); }
-            100% { transform: translate3d(30px, 75px, 0) scale(0.96); }
-        }
-        @keyframes cv2FloatB {
-            0% { transform: translate3d(0, 0, 0) scale(1); }
-            50% { transform: translate3d(-60px, -40px, 0) scale(1.06); }
-            100% { transform: translate3d(-25px, -80px, 0) scale(0.94); }
-        }
-        .cv2-shell {
-            max-width: 1450px;
-            margin: 0 auto;
-            padding: 0 1.45rem;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .cv2-hero {
-            text-align: left;
-            margin: 0 30px 1.25rem;
-            max-width: 1360px;
-        }
-        .cv2-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.42rem;
-            border: 1px solid rgba(59, 130, 246, 0.45);
-            border-radius: 999px;
-            padding: 0.38rem 0.82rem;
-            color: #60a5fa;
-            font-size: 0.82rem;
-            letter-spacing: 0.02em;
-            background: rgba(2, 12, 34, 0.75);
-            margin-bottom: 0.95rem;
-        }
-        .cv2-hero h1 {
-            margin: 0;
-            font-size: clamp(2.1rem, 4.2vw, 4rem);
-            color: #ecf4ff;
-            font-weight: 700;
-            line-height: 1.12;
-            max-width: 760px;
-            letter-spacing: -0.01em;
-            text-transform: none;
-        }
-        .cv2-hero .cv2-highlight {
-            color: #3392ff;
-        }
-        .cv2-hero p {
-            margin: 0.55rem auto 0;
-            max-width: 760px;
-            color: #6f99d2;
-            font-size: 1.08rem;
-            line-height: 1.45;
-            margin-left: 0;
-        }
-        .cv2-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-            margin-top: 1.1rem;
-            max-width: 100%;
-        }
-        .cv2-chip {
-            border: 1px solid rgba(30, 100, 220, 0.35);
-            background: rgba(3, 17, 43, 0.7);
-            border-radius: 10px;
-            padding: 0.55rem 0.9rem;
-            color: #7fb6ff;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-        }
-        .cv2-chip span {
-            color: white;
-        }
-        .cv2-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.95rem;
-            align-items: start;
-            width: 96%;
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
-        .cv2-card {
-            background: linear-gradient(165deg, rgba(3, 20, 50, 0.88), rgba(3, 18, 46, 0.82));
-            border: 1px solid rgba(20, 95, 220, 0.48);
-            border-radius: 14px;
-            box-shadow: 0 8px 18px rgba(2, 6, 23, 0.25);
-            backdrop-filter: blur(10px);
-            padding: 1.1rem;
-            width : 100%;
-        }
-        .cv2-form-head h2 {
-            margin: 0;
-            color:white;
-            font-size: 1.05rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            line-height: 1;
-        }
-        .cv2-form-head p {
-            margin: 0.3rem 0 0.7rem;
-            color: #cbdbee;
-            font-size: 0.98rem;
-        }
-        .cv2-label {
-            display: block;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 0.55rem;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.07em;
-        }
-        .cv2-file-box {
-            border: 1px dashed rgba(30, 100, 220, 0.45);
-            border-radius: 14px;
-            padding: 0.78rem;
-            margin-bottom: 0.65rem;
-            background: rgba(2, 12, 34, 0.6);
-        }
-        .cv2-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-        }
-        .cv2-input-grid {
-            display: grid;
-            grid-template-columns: 0.95fr 1.05fr;
-            gap: 0.65rem;
-            align-items: start;
-        }
-        .cv2-side-list {
-            display: grid;
-            gap: 0.55rem;
-        }
-        .cv2-side-item {
-            border: 1px solid rgba(30, 100, 220, 0.32);
-            border-radius: 14px;
-            padding: 0.85rem 0.9rem;
-            background: rgba(4, 20, 48, 0.58);
-        }
-        .cv2-side-item h3 {
-            margin: 0;
-            color: #1f67c6;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.07em;
-        }
-        .cv2-side-item p {
-            margin: 0.35rem 0 0;
-            color: #4d77aa;
-            font-size: 0.95rem;
-            line-height: 1.42;
-        }
-        .cv2-mini {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0.45rem;
-            margin-top: 0.62rem;
-        }
-        .cv2-pill {
-            text-align: center;
-            border-radius: 10px;
-            padding: 0.4rem 0.25rem;
-            background: rgba(2, 14, 38, 0.7);
-            border: 1px solid rgba(30, 100, 220, 0.35);
-        }
-        .cv2-pill strong {
-            display: block;
-            color: #74b5ff;
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-        .cv2-pill span {
-            color: #3f6ca0;
-            font-size: 1.55rem;
-            font-weight: 700;
-            text-transform: none;
-            letter-spacing: 0;
-            line-height: 1.1;
-            margin-top: 0.1rem;
-            display: block;
-        }
-        .cv2-pill br {
-            display: none;
-        }
-        .cv2-pill span.cv2-long {
-            font-size: 0.82rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            line-height: 1.2;
-        }
-        .cv2-actions .btn {
-            height: 60px;
-            font-size: 1.35rem;
-            box-shadow: none;
-            border-radius: 12px;
-        }
-        #ats-start {
-            scroll-margin-top: 130px;
-        }
-        .cv2-actions .btn.cv2-uiverse-btn {
-            outline: none;
-            cursor: pointer;
-            border: none;
-            padding: 0.9rem 2rem;
-            margin: 0;
-            font-family: inherit;
-            font-size: 17px;
-            position: relative;
-            display: inline-block;
-            letter-spacing: 0.05rem;
-            font-weight: 700;
-            border-radius: 500px;
-            overflow: hidden;
-            background: #66ff66;
-            color: ghostwhite;
-            min-height: 60px;
-            height: 60px;
-            transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease, transform 0.28s ease;
-        }
-        .cv2-actions .btn.cv2-uiverse-btn .btn-text,
-        .cv2-actions .btn.cv2-uiverse-btn .btn-loader {
-            position: relative;
-            z-index: 10;
-            transition: color 0.4s;
-        }
-        .cv2-actions .btn.cv2-uiverse-btn:hover .btn-text,
-        .cv2-actions .btn.cv2-uiverse-btn:hover .btn-loader {
-            color: #0b1020;
-        }
-        .cv2-actions .btn.cv2-uiverse-btn::before,
-        .cv2-actions .btn.cv2-uiverse-btn::after {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        .cv2-actions .btn.cv2-uiverse-btn::before {
-            content: "";
-            
-            width: 120%;
-            left: -10%;
-            transform: skew(30deg);
-            transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
-        }
-        .cv2-actions .btn.cv2-uiverse-btn:hover::before {
-            transform: translate3d(100%, 0, 0);
-        }
-        .cv2-actions .btn.btn-secondary.cv2-uiverse-btn:hover {
-            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-            border-color: rgba(191, 219, 254, 0.95);
-            color: #0b1020;
-        }
-        .cv2-actions .btn.btn-primary.cv2-uiverse-btn:hover {
-            background: linear-gradient(135deg, #a78bfa 0%, #7a09f4 100%);
-            border-color: rgba(165, 243, 252, 0.95);
-            color: #0b1020;
-        }
-        .cv2-actions .btn.cv2-uiverse-btn:hover::after {
-            background: linear-gradient(135deg, #a78bfa 0%, #7a09f4  100%) !important;
-        }
-        #job-description.form-textarea {
-            min-height: 206px;
-            background: rgba(3, 17, 41, 0.92);
-            color: #d8e8ff;
-            border: 1px solid rgba(30, 100, 220, 0.45);
-            border-radius: 10px;
-        }
-        #job-description.form-textarea::placeholder {
-            color: #6b94c8;
-        }
-        .jd-sample-panel {
-            margin-top: 1rem;
-            padding: 1rem 1rem 0.9rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.04);
-        }
-        .jd-sample-head {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.6rem;
-            margin-bottom: 0.85rem;
-        }
-        .jd-sample-head strong {
-            font-size: 0.96rem;
-            color: #eff6ff;
-        }
-        .jd-sample-head span {
-            color: #94a3b8;
-            font-size: 0.85rem;
-        }
-        .jd-sample-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
-        }
-        .jd-sample-chip {
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.04);
-            color: #e2e8f0;
-            padding: 0.65rem 0.95rem;
-            font-size: 0.84rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-        }
-        .jd-sample-chip:hover {
-            background: rgba(59, 130, 246, 0.16);
-            color: #f8fafc;
-            transform: translateY(-1px);
-        }
-        .jd-sample-chip.active {
-            background: rgba(59, 130, 246, 0.22);
-            border-color: rgba(59, 130, 246, 0.55);
-            color: #ffffff;
-        }
-        .file-label {
-            min-height: 206px;
-            border-radius: 10px;
-            background: rgba(3, 17, 41, 0.86);
-            border: 1px solid rgba(30, 100, 220, 0.45);
-            color: #77aee9;
-            box-shadow: none;
-        }
-        .file-icon { color: #3b82f6; font-size: 2.25rem; }
-        .file-text { color: #74b5ff; font-size: 1.75rem; }
-        .file-name { color: #3f6ca0; font-size: 0.95rem; }
-        .btn-secondary::after {
-            background: linear-gradient(135deg, #031939 0%, #062453 100%);
-        }
-        .btn-primary::after {
-            background: linear-gradient(135deg, #0a2f6d 0%, #0e3a82 100%);
-        }
-        .manual-cv-card .btn {
-            max-width: 100%;
-        }
-        #template-selection-section,
-        #ats-progress-section,
-        #results-section {
-            margin-top: 1rem !important;
-        }
-        @media (max-width: 980px) {
-            .cv2-shell {
-                max-width: 100%;
-                padding: 0 1rem;
+        .ns-score-ring .pct { font-size: 1.9rem; line-height: 1; }
+        .ns-score-ring .of { font-size: .7rem; font-weight: 600; opacity: .85; }
+        .ns-score-meta strong { display: block; font-size: 1.1rem; color: #fff; }
+        .ns-score-meta span { color: var(--muted); font-size: .9rem; }
+        .ns-skill-block { margin-top: 18px; }
+        .ns-skill-block h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: #8aa0c8; margin: 0 0 8px; }
+        .ns-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 4px; }
+        .ns-chip { font-size: .78rem; padding: 4px 10px; border-radius: 999px; }
+        .ns-chip.ok { background: rgba(16,185,129,.16); color: #6ee7b7; border: 1px solid rgba(16,185,129,.3); }
+        .ns-chip.miss { background: rgba(239,68,68,.14); color: #fca5a5; border: 1px solid rgba(239,68,68,.3); }
+        .ns-result-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+        .ns-result-actions a { padding: 11px 20px; border-radius: 10px; font-weight: 700; font-size: .88rem; }
+        .ns-result-actions .primary { background: linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; }
+        .ns-result-actions .secondary { background: rgba(255,255,255,.06); color:#cfe0ff; border:1px solid var(--border); }
+
+        /* Progress bar shown while the ATS score is being prepared */
+        .ns-progress { margin-top: 16px; display: none; }
+        .ns-progress.show { display: block; }
+        .ns-progress-track { height: 8px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+        .ns-progress-fill { height: 100%; width: 4%; border-radius: 999px; background: linear-gradient(90deg,#3392ff,#6d28d9); transition: width .4s ease; }
+        .ns-progress-label { margin-top: 8px; font-size: .82rem; color: #9fb6d6; }
+
+        @media (max-width: 980px) { .cards { grid-template-columns: 1fr; } .scan-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 860px) {
+            body { padding-top: 52px; }   /* match the 52px mobile top bar */
+            .app { grid-template-columns: 1fr; }
+            /* Sidebar becomes a slide-in drawer toggled by the burger. */
+            .side {
+                position: fixed; top: 52px; left: 0; z-index: 4000;
+                width: 250px; max-width: 82vw; height: calc(100vh - 52px);
+                flex-direction: column; flex-wrap: nowrap;
+                transform: translateX(-100%); transition: transform .2s ease;
+                box-shadow: 0 0 40px rgba(0,0,0,.5);
             }
-            .cv2-grid {
-                grid-template-columns: 1fr;
-                width: 100%;
+            body.dash-nav-open .side { transform: none; }
+            body.dash-nav-open::after {
+                content: ""; position: fixed; inset: 52px 0 0 0; background: rgba(0,0,0,.5); z-index: 3900;
             }
-            .cv2-hero h1 {
-                font-size: clamp(1.8rem, 8.4vw, 2.8rem);
+            .side-close {
+                display: inline-flex; align-items: center; justify-content: center;
+                align-self: flex-end; width: 44px; height: 44px; margin: -4px -2px 6px auto;
+                background: transparent; border: none; border-radius: 10px;
+                color: #cfe0ff; font-size: 26px; line-height: 1; cursor: pointer;
             }
-            .cv2-hero p {
-                font-size: 0.96rem;
-            }
-            .cv2-form-head h2,
-            .cv2-side-item h3 {
-                font-size: 1.2rem;
-            }
-            .cv2-form-head p,
-            .cv2-side-item p {
-                font-size: 0.95rem;
-            }
-            .cv2-label {
-                font-size: 0.95rem;
-            }
-            .cv2-pill strong {
-                font-size: 1rem;
-            }
-            .cv2-pill span {
-                font-size: 0.75rem;
-            }
-            .file-icon { font-size: 1.5rem; }
-            .file-text { font-size: 1rem; }
-            .file-name { font-size: 0.9rem; }
-            .cv2-chip {
-                font-size: 0.86rem;
-            }
+            .side-close:hover { background: rgba(255,255,255,.08); }
+            .main { padding: 22px 16px 50px; }
+            .greet { font-size: 1.5rem; }
         }
-        @media (max-width: 640px) {
-            .cv2-shell {
-                padding: 0 0.75rem;
-            }
-            .cv2-grid {
-                width: 100%;
-                margin: 0;
-            }
-            .cv2-hero {
-                max-width: 100%;
-            }
-            .cv2-input-grid {
-                grid-template-columns: 1fr;
-            }
-            .cv2-actions {
-                grid-template-columns: 1fr;
-            }
-            .cv2-mini {
-                grid-template-columns: 1fr;
-            }
-            .cv2-hero p {
-                font-size: 0.95rem;
-            }
-            .cv2-chip {
-                width: 100%;
-                justify-content: flex-start;
-            }
+        .side-close { display: none; }
+        @media (max-width: 560px) {
+            .promo { flex-direction: column; align-items: flex-start; }
+            .promo .go { margin-left: 0; }
+            .newscan { padding: 18px; }
+            .scan-actions { flex-wrap: wrap; }
+            .scan-msg { margin-left: 0; }
         }
     </style>
 </head>
 <body>
-<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
-    {% include "_nav.html" %}
-
-    <section class="solutions-section cv2-solutions">
-        <div class="cv2-shell">
-            <div class="cv2-hero">
-                <h1>Turn every application into <span class="cv2-highlight">a strong match.</span></h1>
-                <div class="cv2-chips">
-                    <div class="cv2-chip">1 min <span>Typical run</span></div>
-                    <div class="cv2-chip">ATS-ready <span>Role focused</span></div>
-                    <div class="cv2-chip">PDF output <span>Instant download</span></div>
-                    <div class="cv2-chip">Free <span>Always</span></div>
-                </div>
-            </div>
-
-            <div class="solutions-content">
-                <div class="cv2-grid">
-                    <div class="cv2-card">
-                        <div class="cv2-form-head">
-                            <h2>Start Optimization</h2>
-                            <p>Step 1: Add your resume and job description. Step 2: choose ATS score or optimized resume.</p>
-                        </div>
-                        <form id="resume-form" enctype="multipart/form-data">
-                            <div class="cv2-input-grid">
-                                <div class="form-group">
-                                    <label for="resume-file" class="cv2-label">Resume (PDF only)</label>
-                                    <div class="cv2-file-box">
-                                        <div class="file-upload-wrapper">
-                                            <input type="file" id="resume-file" name="file" accept=".pdf" class="file-input" required>
-                                            <label for="resume-file" class="file-label">
-                                                <span class="file-icon" aria-hidden="true">
-                                                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M12 15V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                                                        <path d="M8.8 11.2L12 8L15.2 11.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path d="M7 16.8C7 17.46 7.54 18 8.2 18H15.8C16.46 18 17 17.46 17 16.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                                                    </svg>
-                                                </span>
-                                                <span class="file-text">Choose PDF file</span>
-                                                <span class="file-name" id="file-name">No file chosen</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div id="stored-file-info" style="display:none; margin-top:6px; font-size:0.85rem; color:#c8d7fb;">
-                                        <span>Saved: <strong id="stored-file-name"></strong></span>
-                                        <button type="button" id="clear-stored-btn" style="margin-left:8px; background:none; border:none; color:#fca5a5; cursor:pointer; font-size:0.85rem; text-decoration:underline;">Change / Clear</button>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:0.55rem;">
-                                        <label for="job-description" class="cv2-label" style="margin-bottom:0;">Job Description</label>
-                                        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
-                                            <span style="color:#7b48f0;font-size:15px;font-weight:700;white-space:nowrap;letter-spacing:0.01em;">Use sample JD:</span>
-                                            <div id="jd-picker-wrapper" style="position:relative;min-width:210px;"></div>
-                                        </div>
-                                    </div>
-                                    <textarea
-                                        id="job-description"
-                                        name="job_description"
-                                        class="form-textarea"
-                                        rows="10"
-                                        placeholder="Paste full JD with skills, responsibilities, and requirements..."
-                                        required
-                                    ></textarea>
-                                </div>
-                            </div>
-
-                            <div id="ats-start" class="form-actions cv2-actions">
-                                <button type="button" id="analyze-btn" class="btn btn-secondary cv2-uiverse-btn">
-                                    <span class="btn-text">Get ATS Score</span>
-                                    <span class="btn-loader" style="display: none;">?</span>
-                                </button>
-
-                                <button type="button" id="optimize-btn" class="btn btn-primary cv2-uiverse-btn">
-                                    <span class="btn-text">Optimize Resume</span>
-                                    <span class="btn-loader" style="display: none;">?</span>
-                                </button>
-                            </div>
-                        </form>
+    {% set initial = (user_name or user_email or 'U')[0]|upper %}
+    <!-- Top app bar (matches the other pages) -->
+    <header class="tcv-top">
+        <button class="tcv-burger" id="dashBurger" aria-label="Toggle menu" title="Menu">&#9776;</button>
+        <a class="tcv-top-logo" href="/dashboard"><img src="/static/logo6.png" alt="theTailorCV"></a>
+        <div class="tcv-top-right">
+            <div class="tcv-profile">
+                <button class="tcv-avatar" aria-haspopup="true" aria-expanded="false">{{ initial }}</button>
+                <div class="tcv-profile-menu">
+                    <div class="tcv-profile-head">
+                        <span class="tcv-pf-av">{{ initial }}</span>
+                        <div class="tcv-pf-id"><strong>{{ user_name }}</strong><small>{{ user_email }}</small></div>
                     </div>
-
-                    <div class="cv2-side-list">
-                    </div>
-                </div>
-
-                <div id="template-selection-section" class="results-card" style="display: none; margin-top: 2rem;">
-                    <div class="results-header">
-                        <h2 class="results-title">Select a Resume Template</h2>
-                    </div>
-                    <div class="results-content">
-                        <p style="text-align: center; margin-bottom: 1.5rem; color: #64748b;">
-                            Click on a preview to select your preferred layout.
-                        </p>
-
-                        <div class="templates-grid" id="templates-grid"></div>
-
-                        <div style="text-align: center; margin-top: 30px;">
-                            <button id="confirm-optimize-btn" class="btn btn-primary" style="max-width: 300px;">
-                                Confirm & Generate PDF
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div id="ats-progress-section" class="results-card" style="display: none; margin-top: 2rem;">
-                    <div class="results-header">
-                        <h2 class="results-title">Analyzing ATS Score</h2>
-                    </div>
-                    <div id="ats-progress-content" class="results-content"></div>
-                </div>
-
-                <div id="results-section" style="display: none;">
-                    <div id="optimize-results" class="results-card" style="display: none;">
-                        <div class="results-header">
-                            <h2 class="results-title">Optimized Resume Ready</h2>
-                        </div>
-                        <div id="optimize-content" class="results-content">
-                        </div>
-                    </div>
+                    <a class="tcv-pf-link" href="/pricing">Get free scans</a>
+                    <a class="tcv-pf-link" href="/pricing">Account Settings</a>
+                    <a class="tcv-pf-link" href="/privacy">Privacy Policy</a>
+                    <a class="tcv-pf-link" href="/terms">Terms</a>
+                    <a class="tcv-pf-link" href="#" id="dashProfileLogout">Log out</a>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
-            {% include "_footer.html" %}
+    <div class="app">
+        <!-- Sidebar (monochrome icons) -->
+        <aside class="side">
+            <button class="side-close" id="dashSideClose" type="button" aria-label="Close menu" title="Close">&times;</button>
+            <nav class="side-nav">
+                <a class="side-link active" href="/dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/></svg> Home</a>
+                <a class="side-link" href="/modify-cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg> Resume Builder</a>
+                <a class="side-link" href="/optimize"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.9L18.7 9l-4.9 1.8L12 16l-1.8-5.2L5.3 9l4.9-1.1z"/><path d="M19 14l.7 1.9L21.5 17l-1.8.6L19 19l-.7-1.4L16.5 17l1.8-.6z"/></svg> AI Optimize</a>
+                <a class="side-link" href="/solutions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20V11"/><path d="M12 20V5"/><path d="M18 20v-6"/></svg> Get ATS Score</a>
+                <a class="side-link" href="/cover-letter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> Cover Letter</a>
+                <a class="side-link" href="/my-resumes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> My Resumes</a>
+                <a class="side-link" href="/templates"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Templates</a>
+                <a class="side-link" href="/interview-prep"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 4.7 1.4c0 1.7-2.2 2.1-2.2 3.4"/><path d="M12 17h.01"/></svg> Interview Prep</a>
+                <a class="side-link" href="/mock-interview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg> Mock Interview</a>
+            </nav>
+            <div class="side-foot">
+                <a class="side-link" href="#" id="dash-logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg> Logout</a>
+            </div>
+        </aside>
 
+        <!-- Main -->
+        <main class="main">
+            <div class="greet">Welcome, {{ user_name }}!</div>
+
+            <!-- Promo -->
+            <div class="promo">
+                <div>
+                    <h3><span class="tag">TIP</span> Tailor every application</h3>
+                    <p>Optimize your resume for each job description to boost your ATS score and get more callbacks.</p>
+                </div>
+                <a class="go" href="/optimize">Optimize a resume</a>
+            </div>
+
+            <!-- Cards -->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-head">
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 20V11"/><path d="M12 20V5"/><path d="M18 20v-6"/></svg> Latest Resume Score</h3>
+                        <a href="/my-resumes">→</a>
+                    </div>
+                    {% if latest_ats is not none %}
+                    <div class="stat"><span class="num">{{ latest_ats }}</span><span class="lbl">/ 100 ATS</span></div>
+                    <span class="pill">{{ resume_count }} resume{{ '' if resume_count == 1 else 's' }} saved</span>
+                    {% else %}
+                    <p class="empty">Run your resume against a job to get your ATS match score.</p>
+                    <a class="cta cta-block" href="/solutions">New scan</a>
+                    {% endif %}
+                </div>
+
+                <div class="card">
+                    <div class="card-head">
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> My Resumes</h3>
+                        <a href="/my-resumes">→</a>
+                    </div>
+                    <div class="stat"><span class="num">{{ resume_count }}</span><span class="lbl">saved</span></div>
+                    {% if recent_resumes %}
+                    <div class="resume-rows">
+                        {% for r in recent_resumes %}
+                        <a class="mini-row" href="/my-resumes">
+                            <span class="mr-title">{{ r.title or "Untitled" }}</span>
+                            <span class="mr-date">{{ r.created_at.strftime('%d %b') }}</span>
+                            <span class="mr-chev" aria-hidden="true">&rsaquo;</span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p class="empty">No saved resumes yet.</p>
+                    {% endif %}
+                </div>
+
+                <div class="card">
+                    <div class="card-head">
+                        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.9L18.7 9l-4.9 1.8L12 16l-1.8-5.2L5.3 9l4.9-1.1z"/></svg> Quick actions</h3>
+                    </div>
+                    <ul class="mini-list" style="margin-top:4px;">
+                        <li><a href="/cover-letter" style="color:#cfe0ff;">Write a cover letter</a><span class="co">→</span></li>
+                        <li><a href="/modify-cv?import=linkedin" style="color:#cfe0ff;">Build CV from LinkedIn</a><span class="co">→</span></li>
+                        <li><a href="/mock-interview" style="color:#cfe0ff;">Practice a mock interview</a><span class="co">→</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- New scan -->
+            <div class="newscan">
+                <h2>New scan</h2>
+                <p class="cap">Paste your resume and a job description — we'll score it and optimize it.</p>
+                <div class="scan-grid">
+                    <div class="scan-box">
+                        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:0.5rem;">
+                            <div class="step">Step 1 · Job description</div>
+                            <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+                                <span style="color:#7b48f0;font-size:13px;font-weight:700;white-space:nowrap;letter-spacing:0.01em;">Use sample JD:</span>
+                                <div id="jd-picker-wrapper" style="position:relative;min-width:210px;"></div>
+                            </div>
+                        </div>
+                        <textarea id="ns-jd" placeholder="Paste the job description here…"></textarea>
+                    </div>
+                    <div class="scan-box">
+                        <div class="step">Step 2 · Your resume (PDF)</div>
+                        <label class="ns-upload" for="ns-file" id="ns-dropzone">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M5 20h14"/></svg>
+                            <span class="ns-up-label">Tap to upload your resume PDF</span>
+                            <span class="ns-up-file" id="ns-file-name"></span>
+                        </label>
+                        <input type="file" id="ns-file" accept=".pdf" hidden>
+                    </div>
+                </div>
+                <div class="scan-actions">
+                    <button class="go" id="ns-go" type="button">Get ATS score</button>
+                    <span class="ghost">Scores your resume against the JD instantly</span>
+                    <span class="scan-msg" id="ns-msg"></span>
+                </div>
+                <div class="ns-progress" id="ns-progress">
+                    <div class="ns-progress-track"><div class="ns-progress-fill" id="ns-progress-fill"></div></div>
+                    <div class="ns-progress-label" id="ns-progress-label">Preparing ATS score...</div>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <script src="/static/auth_nav.js?v=2"></script>
-    <script src="/static/mobile_nav.js"></script>
-    <script src="/static/toast.js"></script>
-    <script src="/static/main_new.js?v=33"></script>
-<script>
-(function () {
-    const DEFAULT_JDS = {
+    <script>
+    (function () {
+        function doLogout(e) {
+            e.preventDefault();
+            fetch('/logout', { method: 'POST' }).then(function () {
+                try { if (window.TailorCVAuth) window.TailorCVAuth.clearUser(); } catch (e) {}
+                window.location.href = '/login';
+            }).catch(function () { window.location.href = '/login'; });
+        }
+        var btn = document.getElementById('dash-logout');
+        if (btn) btn.addEventListener('click', doLogout);
+        var pBtn = document.getElementById('dashProfileLogout');
+        if (pBtn) pBtn.addEventListener('click', doLogout);
+
+        var burger = document.getElementById('dashBurger');
+        var sideEl = document.querySelector('.side');
+        if (burger) burger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            document.body.classList.toggle('dash-nav-open');
+        });
+        var sideClose = document.getElementById('dashSideClose');
+        if (sideClose) sideClose.addEventListener('click', function () {
+            document.body.classList.remove('dash-nav-open');
+        });
+        // Mobile: tapping outside the open drawer closes it.
+        document.addEventListener('click', function (e) {
+            if (window.innerWidth > 860) return;
+            if (!document.body.classList.contains('dash-nav-open')) return;
+            if (sideEl && sideEl.contains(e.target)) return;
+            if (burger && burger.contains(e.target)) return;
+            document.body.classList.remove('dash-nav-open');
+        });
+
+        // Default JD presets (concise) — pick a role to fill the box.
+        var NS_JDS = {
         "backend": `Backend Software Engineer
 
 We are looking for a Backend Software Engineer to build and maintain scalable server-side systems.
@@ -1820,274 +1568,284 @@ Nice to have:
 - Background in a specific industry (technology, retail, manufacturing, financial services)`
     };
 
-    const ROLES = [
-        { group: "Software Engineering", color: "#60a5fa", items: [
-            { value: "backend",   label: "Backend Engineer" },
-            { value: "frontend",  label: "Frontend Engineer" },
-            { value: "fullstack", label: "Full Stack Engineer" },
-            { value: "android",   label: "Android Engineer" },
-            { value: "ios",       label: "iOS Engineer" },
-            { value: "qa",        label: "QA / Test Engineer" },
-            { value: "security",  label: "Security Engineer" },
-            { value: "sre",       label: "Site Reliability Engineer" },
-            { value: "devops",              label: "DevOps / Cloud Engineer" },
-            { value: "cloud-architect",     label: "Cloud Architect" },
-            { value: "technical-lead",      label: "Technical Lead / Staff Engineer" },
-            { value: "blockchain-engineer", label: "Blockchain / Web3 Engineer" },
-        ]},
-        { group: "Data & AI", color: "#a78bfa", items: [
-            { value: "data-scientist", label: "Data Scientist" },
-            { value: "data-analyst",   label: "Data Analyst" },
-            { value: "ml-engineer",    label: "ML Engineer" },
-            { value: "data-engineer",  label: "Data Engineer" },
-        ]},
-        { group: "Core Engineering", color: "#fb923c", items: [
-            { value: "mechanical", label: "Mechanical Engineer" },
-            { value: "electrical", label: "Electrical Engineer" },
-            { value: "chemical",   label: "Chemical Engineer" },
-            { value: "civil",      label: "Civil Engineer" },
-            { value: "embedded",   label: "Embedded Systems Engineer" },
-        ]},
-        { group: "Business & Finance", color: "#fbbf24", items: [
-            { value: "product-manager",   label: "Product Manager" },
-            { value: "business-analyst",  label: "Business Analyst" },
-            { value: "financial-analyst", label: "Financial Analyst" },
-            { value: "accountant",        label: "Accountant / CPA" },
-        ]},
-        { group: "Healthcare", color: "#f472b6", items: [
-            { value: "nurse-general",   label: "Registered Nurse" },
-            { value: "nurse-icu",       label: "ICU / Critical Care Nurse" },
-            { value: "nurse-pediatric", label: "Pediatric Nurse" },
-            { value: "doctor",          label: "Doctor / GP" },
-            { value: "pharmacist",      label: "Pharmacist" },
-        ]},
-        { group: "Education", color: "#34d399", items: [
-            { value: "teacher-school",      label: "School Teacher (K-12)" },
-            { value: "teacher-science",     label: "Science / Math Teacher" },
-            { value: "teacher-english",     label: "English Teacher" },
-            { value: "teacher-university",  label: "University Lecturer" },
-            { value: "teacher-special",     label: "Special Education Teacher" },
-        ]},
-        { group: "Design", color: "#f9a8d4", items: [
-            { value: "ux-designer",      label: "UX/UI Designer" },
-            { value: "product-designer", label: "Product Designer" },
-            { value: "graphic-designer", label: "Graphic Designer" },
-        ]},
-        { group: "Marketing & Growth", color: "#86efac", items: [
-            { value: "digital-marketing-manager", label: "Digital Marketing Manager" },
-            { value: "content-writer",            label: "Content Writer / Copywriter" },
-            { value: "seo-specialist",            label: "SEO Specialist" },
-            { value: "social-media-manager",      label: "Social Media Manager" },
-        ]},
-        { group: "Sales & CX", color: "#fda4af", items: [
-            { value: "sales-manager",            label: "Sales Manager" },
-            { value: "account-executive",        label: "Account Executive" },
-            { value: "customer-success-manager", label: "Customer Success Manager" },
-        ]},
-        { group: "HR & People", color: "#c4b5fd", items: [
-            { value: "hr-manager", label: "HR Manager" },
-            { value: "recruiter",  label: "Recruiter / Talent Acquisition" },
-        ]},
-        { group: "Operations & PM", color: "#67e8f9", items: [
-            { value: "operations-manager", label: "Operations Manager" },
-            { value: "project-manager",    label: "Project Manager" },
-        ]},
-    ];
+        const ROLES = [
+            { group: "Software Engineering", color: "#60a5fa", items: [
+                { value: "backend",   label: "Backend Engineer" },
+                { value: "frontend",  label: "Frontend Engineer" },
+                { value: "fullstack", label: "Full Stack Engineer" },
+                { value: "android",   label: "Android Engineer" },
+                { value: "ios",       label: "iOS Engineer" },
+                { value: "qa",        label: "QA / Test Engineer" },
+                { value: "security",  label: "Security Engineer" },
+                { value: "sre",       label: "Site Reliability Engineer" },
+                { value: "devops",              label: "DevOps / Cloud Engineer" },
+                { value: "cloud-architect",     label: "Cloud Architect" },
+                { value: "technical-lead",      label: "Technical Lead / Staff Engineer" },
+                { value: "blockchain-engineer", label: "Blockchain / Web3 Engineer" },
+            ]},
+            { group: "Data & AI", color: "#a78bfa", items: [
+                { value: "data-scientist", label: "Data Scientist" },
+                { value: "data-analyst",   label: "Data Analyst" },
+                { value: "ml-engineer",    label: "ML Engineer" },
+                { value: "data-engineer",  label: "Data Engineer" },
+            ]},
+            { group: "Core Engineering", color: "#fb923c", items: [
+                { value: "mechanical", label: "Mechanical Engineer" },
+                { value: "electrical", label: "Electrical Engineer" },
+                { value: "chemical",   label: "Chemical Engineer" },
+                { value: "civil",      label: "Civil Engineer" },
+                { value: "embedded",   label: "Embedded Systems Engineer" },
+            ]},
+            { group: "Business & Finance", color: "#fbbf24", items: [
+                { value: "product-manager",   label: "Product Manager" },
+                { value: "business-analyst",  label: "Business Analyst" },
+                { value: "financial-analyst", label: "Financial Analyst" },
+                { value: "accountant",        label: "Accountant / CPA" },
+            ]},
+            { group: "Healthcare", color: "#f472b6", items: [
+                { value: "nurse-general",   label: "Registered Nurse" },
+                { value: "nurse-icu",       label: "ICU / Critical Care Nurse" },
+                { value: "nurse-pediatric", label: "Pediatric Nurse" },
+                { value: "doctor",          label: "Doctor / GP" },
+                { value: "pharmacist",      label: "Pharmacist" },
+            ]},
+            { group: "Education", color: "#34d399", items: [
+                { value: "teacher-school",      label: "School Teacher (K-12)" },
+                { value: "teacher-science",     label: "Science / Math Teacher" },
+                { value: "teacher-english",     label: "English Teacher" },
+                { value: "teacher-university",  label: "University Lecturer" },
+                { value: "teacher-special",     label: "Special Education Teacher" },
+            ]},
+            { group: "Design", color: "#f9a8d4", items: [
+                { value: "ux-designer",      label: "UX/UI Designer" },
+                { value: "product-designer", label: "Product Designer" },
+                { value: "graphic-designer", label: "Graphic Designer" },
+            ]},
+            { group: "Marketing & Growth", color: "#86efac", items: [
+                { value: "digital-marketing-manager", label: "Digital Marketing Manager" },
+                { value: "content-writer",            label: "Content Writer / Copywriter" },
+                { value: "seo-specialist",            label: "SEO Specialist" },
+                { value: "social-media-manager",      label: "Social Media Manager" },
+            ]},
+            { group: "Sales & CX", color: "#fda4af", items: [
+                { value: "sales-manager",            label: "Sales Manager" },
+                { value: "account-executive",        label: "Account Executive" },
+                { value: "customer-success-manager", label: "Customer Success Manager" },
+            ]},
+            { group: "HR & People", color: "#c4b5fd", items: [
+                { value: "hr-manager", label: "HR Manager" },
+                { value: "recruiter",  label: "Recruiter / Talent Acquisition" },
+            ]},
+            { group: "Operations & PM", color: "#67e8f9", items: [
+                { value: "operations-manager", label: "Operations Manager" },
+                { value: "project-manager",    label: "Project Manager" },
+            ]},
+        ];
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const wrapper = document.getElementById("jd-picker-wrapper");
-        const textarea = document.getElementById("job-description");
-        if (!wrapper || !textarea) return;
+        document.addEventListener("DOMContentLoaded", function () {
+            const wrapper = document.getElementById("jd-picker-wrapper");
+            const textarea = document.getElementById("ns-jd");
+            if (!wrapper || !textarea) return;
 
-        let currentValue = "";
+            let currentValue = "";
 
-        // ── Build button ──────────────────────────────────────────────────────
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.id = "jd-picker-btn";
-        btn.innerHTML = `
-            <span id="jd-picker-label" style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; color:white">— pick a role —</span>
-            <svg id="jd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease;"><polyline points="6 9 12 15 18 9"/></svg>
-        `;
-        Object.assign(btn.style, {
-            display: "flex", alignItems: "center", gap: "10px", width: "100%",
-            background: "rgba(3,17,41,0.95)", border: "1.5px solid rgba(74,222,128,0.45)",
-            borderRadius: "10px", color: "#4ade80", fontSize: "13px", fontWeight: "600",
-            padding: "8px 13px", cursor: "pointer", transition: "border-color .2s,box-shadow .2s",
-            whiteSpace: "nowrap", minWidth: "210px",
-        });
-
-        // ── Build dropdown panel ──────────────────────────────────────────────
-        const panel = document.createElement("div");
-        panel.id = "jd-picker-panel";
-        Object.assign(panel.style, {
-            display: "none", position: "absolute", right: "0", top: "calc(100% + 6px)",
-            minWidth: "240px", maxHeight: "380px", overflowY: "auto",
-            background: "rgba(4,16,44,0.98)", border: "1px solid rgba(74,222,128,0.28)",
-            borderRadius: "14px", boxShadow: "0 24px 56px rgba(0,0,0,0.6)",
-            backdropFilter: "blur(24px)", zIndex: "300", padding: "6px 0",
-        });
-
-        // Custom scrollbar via injected style
-        const scrollStyle = document.createElement("style");
-        scrollStyle.textContent = `
-            #jd-picker-panel::-webkit-scrollbar{width:4px}
-            #jd-picker-panel::-webkit-scrollbar-track{background:transparent}
-            #jd-picker-panel::-webkit-scrollbar-thumb{background:rgba(74,222,128,0.3);border-radius:4px}
-            #jd-picker-panel .jd-opt:hover{background:rgba(74,222,128,0.1)!important;color:#4ade80!important}
-        `;
-        document.head.appendChild(scrollStyle);
-
-        ROLES.forEach(function (cat, ci) {
-            // Category divider (not first)
-            if (ci > 0) {
-                const div = document.createElement("div");
-                Object.assign(div.style, { height: "1px", background: "rgba(255,255,255,0.07)", margin: "5px 10px" });
-                panel.appendChild(div);
-            }
-            // Category header
-            const header = document.createElement("div");
-            header.textContent = cat.group.toUpperCase();
-            Object.assign(header.style, {
-                color: cat.color, fontSize: "10px", fontWeight: "800",
-                letterSpacing: "0.12em", padding: "9px 16px 4px", opacity: "0.9",
+            // Build button
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.id = "jd-picker-btn";
+            btn.innerHTML = `
+                <span id="jd-picker-label" style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; color:white">— pick a role —</span>
+                <svg id="jd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease;"><polyline points="6 9 12 15 18 9"/></svg>
+            `;
+            Object.assign(btn.style, {
+                display: "flex", alignItems: "center", gap: "10px", width: "100%",
+                background: "rgba(3,17,41,0.95)", border: "1.5px solid rgba(74,222,128,0.45)",
+                borderRadius: "10px", color: "#4ade80", fontSize: "13px", fontWeight: "600",
+                padding: "8px 13px", cursor: "pointer", transition: "border-color .2s,box-shadow .2s",
+                whiteSpace: "nowrap", minWidth: "210px",
             });
-            panel.appendChild(header);
 
-            // Items
-            cat.items.forEach(function (item) {
-                const opt = document.createElement("div");
-                opt.className = "jd-opt";
-                opt.dataset.value = item.value;
-                opt.dataset.catColor = cat.color;
-                opt.innerHTML = `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${cat.color};margin-right:9px;opacity:0.7;flex-shrink:0;vertical-align:middle;margin-top:-1px;"></span>${item.label}`;
-                Object.assign(opt.style, {
-                    padding: "9px 16px", color: "#c8d7fb", fontSize: "13.5px",
-                    cursor: "pointer", transition: "background .15s,color .15s",
-                    display: "flex", alignItems: "center",
+            // Build dropdown panel
+            const panel = document.createElement("div");
+            panel.id = "jd-picker-panel";
+            Object.assign(panel.style, {
+                display: "none", position: "absolute", right: "0", top: "calc(100% + 6px)",
+                minWidth: "240px", maxHeight: "380px", overflowY: "auto",
+                background: "rgba(4,16,44,0.98)", border: "1px solid rgba(74,222,128,0.28)",
+                borderRadius: "14px", boxShadow: "0 24px 56px rgba(0,0,0,0.6)",
+                backdropFilter: "blur(24px)", zIndex: "300", padding: "6px 0",
+            });
+
+            // Custom scrollbar via injected style
+            const scrollStyle = document.createElement("style");
+            scrollStyle.textContent = `
+                #jd-picker-panel::-webkit-scrollbar{width:4px}
+                #jd-picker-panel::-webkit-scrollbar-track{background:transparent}
+                #jd-picker-panel::-webkit-scrollbar-thumb{background:rgba(74,222,128,0.3);border-radius:4px}
+                #jd-picker-panel .jd-opt:hover{background:rgba(74,222,128,0.1)!important;color:#4ade80!important}
+            `;
+            document.head.appendChild(scrollStyle);
+
+            ROLES.forEach(function (cat, ci) {
+                // Category divider (not first)
+                if (ci > 0) {
+                    const div = document.createElement("div");
+                    Object.assign(div.style, { height: "1px", background: "rgba(255,255,255,0.07)", margin: "5px 10px" });
+                    panel.appendChild(div);
+                }
+                // Category header
+                const header = document.createElement("div");
+                header.textContent = cat.group.toUpperCase();
+                Object.assign(header.style, {
+                    color: cat.color, fontSize: "10px", fontWeight: "800",
+                    letterSpacing: "0.12em", padding: "9px 16px 4px", opacity: "0.9",
                 });
-                opt.addEventListener("click", function () {
-                    const jd = DEFAULT_JDS[item.value];
-                    if (!jd) return;
-                    // Deselect previous
-                    if (currentValue) {
-                        const prev = panel.querySelector(`.jd-opt[data-value="${currentValue}"]`);
-                        if (prev) { prev.style.background = ""; prev.style.color = "#c8d7fb"; prev.style.fontWeight = ""; }
-                    }
-                    currentValue = item.value;
-                    document.getElementById("jd-picker-label").textContent = item.label;
-                    opt.style.background = "rgba(74,222,128,0.12)";
-                    opt.style.color = cat.color;
-                    opt.style.fontWeight = "700";
-                    textarea.value = jd;
-                    textarea.dispatchEvent(new Event("input", { bubbles: true }));
-                    closePanel();
+                panel.appendChild(header);
+
+                // Items
+                cat.items.forEach(function (item) {
+                    const opt = document.createElement("div");
+                    opt.className = "jd-opt";
+                    opt.dataset.value = item.value;
+                    opt.dataset.catColor = cat.color;
+                    opt.innerHTML = `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${cat.color};margin-right:9px;opacity:0.7;flex-shrink:0;vertical-align:middle;margin-top:-1px;"></span>${item.label}`;
+                    Object.assign(opt.style, {
+                        padding: "9px 16px", color: "#c8d7fb", fontSize: "13.5px",
+                        cursor: "pointer", transition: "background .15s,color .15s",
+                        display: "flex", alignItems: "center",
+                    });
+                    opt.addEventListener("click", function () {
+                        const jd = NS_JDS[item.value];
+                        if (!jd) return;
+                        // Deselect previous
+                        if (currentValue) {
+                            const prev = panel.querySelector(`.jd-opt[data-value="${currentValue}"]`);
+                            if (prev) { prev.style.background = ""; prev.style.color = "#c8d7fb"; prev.style.fontWeight = ""; }
+                        }
+                        currentValue = item.value;
+                        document.getElementById("jd-picker-label").textContent = item.label;
+                        opt.style.background = "rgba(74,222,128,0.12)";
+                        opt.style.color = cat.color;
+                        opt.style.fontWeight = "700";
+                        textarea.value = jd;
+                        textarea.dispatchEvent(new Event("input", { bubbles: true }));
+                        closePanel();
+                    });
+                    panel.appendChild(opt);
                 });
-                panel.appendChild(opt);
+            });
+
+            wrapper.appendChild(btn);
+            wrapper.appendChild(panel);
+
+            // Open / close logic
+            function openPanel() {
+                panel.style.display = "block";
+                document.getElementById("jd-chevron").style.transform = "rotate(180deg)";
+                btn.style.borderColor = "rgba(74,222,128,0.85)";
+                btn.style.boxShadow = "0 0 0 3px rgba(74,222,128,0.12)";
+            }
+            function closePanel() {
+                panel.style.display = "none";
+                document.getElementById("jd-chevron").style.transform = "rotate(0deg)";
+                btn.style.borderColor = "rgba(74,222,128,0.45)";
+                btn.style.boxShadow = "";
+            }
+
+            btn.addEventListener("click", function (e) {
+                e.stopPropagation();
+                panel.style.display === "none" ? openPanel() : closePanel();
+            });
+            document.addEventListener("click", closePanel);
+            panel.addEventListener("click", function (e) { e.stopPropagation(); });
+
+            // Reset when user edits textarea manually
+            textarea.addEventListener("input", function () {
+                if (currentValue && textarea.value !== NS_JDS[currentValue]) {
+                    const prev = panel.querySelector(`.jd-opt[data-value="${currentValue}"]`);
+                    if (prev) { prev.style.background = ""; prev.style.color = "#c8d7fb"; prev.style.fontWeight = ""; }
+                    currentValue = "";
+                    document.getElementById("jd-picker-label").textContent = "— pick a role —";
+                }
             });
         });
 
-        wrapper.appendChild(btn);
-        wrapper.appendChild(panel);
-
-        // ── Open / close logic ────────────────────────────────────────────────
-        function openPanel() {
-            panel.style.display = "block";
-            document.getElementById("jd-chevron").style.transform = "rotate(180deg)";
-            btn.style.borderColor = "rgba(74,222,128,0.85)";
-            btn.style.boxShadow = "0 0 0 3px rgba(74,222,128,0.12)";
+        var nsProgress = document.getElementById('ns-progress');
+        var nsProgressFill = document.getElementById('ns-progress-fill');
+        var nsProgressLabel = document.getElementById('ns-progress-label');
+        var nsProgressTimer = null;
+        function startNSProgress() {
+            if (!nsProgress || !nsProgressFill || !nsProgressLabel) return;
+            nsProgress.classList.add('show');
+            nsProgressLabel.textContent = 'Preparing ATS score...';
+            nsProgressFill.style.width = '4%';
+            var pct = 4;
+            if (nsProgressTimer) clearInterval(nsProgressTimer);
+            nsProgressTimer = setInterval(function () {
+                pct = Math.min(94, pct + Math.ceil(Math.random() * 6));
+                nsProgressFill.style.width = pct + '%';
+            }, 450);
         }
-        function closePanel() {
-            panel.style.display = "none";
-            document.getElementById("jd-chevron").style.transform = "rotate(0deg)";
-            btn.style.borderColor = "rgba(74,222,128,0.45)";
-            btn.style.boxShadow = "";
-        }
-
-        btn.addEventListener("click", function (e) {
-            e.stopPropagation();
-            panel.style.display === "none" ? openPanel() : closePanel();
-        });
-        document.addEventListener("click", closePanel);
-        panel.addEventListener("click", function (e) { e.stopPropagation(); });
-
-        // Reset when user edits textarea manually
-        textarea.addEventListener("input", function () {
-            if (currentValue && textarea.value !== DEFAULT_JDS[currentValue]) {
-                const prev = panel.querySelector(`.jd-opt[data-value="${currentValue}"]`);
-                if (prev) { prev.style.background = ""; prev.style.color = "#c8d7fb"; prev.style.fontWeight = ""; }
-                currentValue = "";
-                document.getElementById("jd-picker-label").textContent = "— pick a role —";
+        function stopNSProgress() {
+            if (nsProgressTimer) clearInterval(nsProgressTimer);
+            if (nsProgress) {
+                nsProgress.classList.remove('show');
             }
-        });
-    });
-})();
-</script>
-<script>
-(function(){
-  const canvas = document.getElementById('wave-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H;
-  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-  resize();
-  window.addEventListener('resize', resize);
-
-  const waves = [
-    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
-    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
-    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
-    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
-    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
-    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
-  ];
-
-  function draw(){
-    ctx.clearRect(0, 0, W, H);
-    const t = Date.now();
-    waves.forEach(wv => {
-      ctx.beginPath();
-      for(let x = 0; x <= W; x += 2){
-        const y = H * wv.yf
-          + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
-          + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
-          + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
-        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-      const [r,g,b] = wv.color;
-      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
-      gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
-      gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
-      gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
-      ctx.fillStyle = gr;
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-</script>
-
-<script>
-/* Prefill the job description when arriving from the dashboard "New scan" box. */
-(function () {
-    try {
-        var jd = sessionStorage.getItem("tcv_prefill_jd");
-        if (!jd) return;
-        sessionStorage.removeItem("tcv_prefill_jd");
-        var ta = document.getElementById("job-description");
-        if (ta) {
-            ta.value = jd;
-            ta.dispatchEvent(new Event("input", { bubbles: true }));
-            try { saveJobDescription(jd); } catch (e) {}
+            if (nsProgressFill) {
+                nsProgressFill.style.width = '4%';
+            }
         }
-    } catch (e) {}
-})();
-</script>
+        function completeNSProgress() {
+            if (nsProgressTimer) clearInterval(nsProgressTimer);
+            if (nsProgressFill) nsProgressFill.style.width = '100%';
+            if (nsProgressLabel) nsProgressLabel.textContent = 'Score ready — redirecting…';
+        }
 
+        // Resume upload: reflect filename + selected state.
+        var nsFile = document.getElementById('ns-file');
+        var nsDrop = document.getElementById('ns-dropzone');
+        var nsFileName = document.getElementById('ns-file-name');
+        if (nsFile) nsFile.addEventListener('change', function () {
+            var f = nsFile.files && nsFile.files[0];
+            if (f) { nsFileName.textContent = f.name; nsDrop.classList.add('has-file'); }
+            else { nsFileName.textContent = ''; nsDrop.classList.remove('has-file'); }
+        });
+
+        // New scan: score the uploaded resume against the JD, then open the report.
+        var go = document.getElementById('ns-go');
+        if (go) go.addEventListener('click', function () {
+            var jd = (document.getElementById('ns-jd').value || '').trim();
+            var msg = document.getElementById('ns-msg');
+            var f = nsFile && nsFile.files && nsFile.files[0];
+            msg.style.color = '#fca5a5';
+            if (jd.length < 30) { msg.textContent = 'Paste the job description first.'; return; }
+            if (!f) { msg.textContent = 'Upload your resume PDF.'; return; }
+            try { sessionStorage.setItem('tcv_prefill_jd', jd); localStorage.setItem('tailorcv_jobDescription', jd); } catch (e) {}
+
+            var original = go.textContent;
+            go.disabled = true; go.textContent = 'Scoring…';
+            msg.style.color = '#9fb6d6'; msg.textContent = 'Analyzing your resume…';
+            startNSProgress();
+
+            var fd = new FormData();
+            fd.append('file', f);
+            fetch('/get-ats-score?jd_string=' + encodeURIComponent(jd), { method: 'POST', body: fd })
+                .then(function (r) {
+                    if (r.status === 401 || r.status === 403) { window.location.href = '/login?next=/dashboard'; throw new Error('login'); }
+                    if (!r.ok) { return r.json().then(function (p) { throw new Error((p && (p.detail || p.error)) || 'Could not score the resume.'); }); }
+                    return r.json();
+                })
+                .then(function (data) {
+                    // Hand the result to the solutions page for full ATS and optimization flow.
+                    try { sessionStorage.setItem('atsAnalysisPayload', JSON.stringify(data)); } catch (e) {}
+                    msg.style.color = '#9fb6d6'; msg.textContent = 'Opening solutions page…';
+                    completeNSProgress();
+                    setTimeout(function () { window.location.href = '/solutions'; }, 250);
+                })
+                .catch(function (err) { if (err.message !== 'login') { msg.style.color = '#fca5a5'; msg.textContent = err.message || 'Something went wrong. Try again.'; stopNSProgress(); } })
+                .finally(function () { if (!window.location.href.includes('/solutions')) { go.disabled = false; go.textContent = original; } });
+        });
+    })();
+    </script>
 </body>
 </html>
-
-
-
-
