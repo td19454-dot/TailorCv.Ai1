@@ -285,8 +285,33 @@
             }
 
             function redirectToLogin() {
+                try {
+                    if (selectedTemplateId && userIntent === "reformat") {
+                        sessionStorage.setItem("tcv_pending_reformat_template", String(selectedTemplateId));
+                    }
+                } catch (e) {}
                 const nextUrl = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
                 window.location.href = `/login?next=${nextUrl}`;
+            }
+
+            function resumePendingReformat() {
+                try {
+                    const saved = sessionStorage.getItem("tcv_pending_reformat_template");
+                    if (!saved) return;
+                    sessionStorage.removeItem("tcv_pending_reformat_template");
+                    const tid = Number(saved);
+                    if (!Number.isInteger(tid) || tid <= 0) return;
+
+                    selectedTemplateId = tid;
+                    userIntent = "reformat";
+                    document.querySelectorAll(".intent-card").forEach(function (el) {
+                        el.classList.toggle("is-selected", el.getAttribute("data-intent") === "reformat");
+                    });
+                    renderGrid();
+                    showUploadSection();
+                    setUploadStatus("You're back! Your template is selected — just re-choose your PDF to continue.", "is-success");
+                    updateStepState();
+                } catch (e) {}
             }
 
             function startProgress() {
@@ -533,6 +558,7 @@
                     hideActionChooser();
                     hideTemplateConfirmation();
                     updateStepState();
+                    resumePendingReformat();
                 } catch (error) {
                     console.error("Failed to load templates", error);
                     gridEl.innerHTML = "<p>Unable to load templates right now.</p>";
