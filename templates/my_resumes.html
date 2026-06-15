@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "_google_analytics.html" %}
@@ -27,8 +27,13 @@
         .my-resumes-head p { color: #9fb0cc; font-size: 1rem; margin: 0; }
         .resume-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
             gap: 18px;
+        }
+        @media (max-width: 560px) {
+            .my-resumes-page { padding: 30px 14px 60px; }
+            .my-resumes-head h1 { font-size: 1.5rem; }
+            .resume-grid { grid-template-columns: 1fr; }
         }
         .resume-card {
             background: linear-gradient(160deg, rgba(30,41,69,.65), rgba(17,24,42,.85));
@@ -117,29 +122,7 @@
     </style>
 </head>
 <body>
-    <header class="navbar">
-        <div class="left">
-            <div class="logo">
-                <a href="/"><img class="logo-text" src="/static/logo6.png" alt="tailorcv Home"></a>
-            </div>
-        </div>
-        <button type="button" class="mobile-menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav-shared">
-            <span></span><span></span><span></span>
-        </button>
-        <nav class="nav-links" id="primary-nav-shared">
-            <a href="/" class="nav-link">Home</a>
-            <a href="/solutions" class="nav-link">Get ATS Score</a>
-            <a href="/modify-cv" class="nav-link">Make CV</a>
-            <a href="/solutions" class="nav-link">Optimize CV with AI</a>
-            <a href="/my-resumes" class="nav-link active">My Resumes</a>
-            <a href="/blog" class="nav-link">Blog</a>
-            <a href="/pricing" class="nav-link">Pricing</a>
-            <a href="/templates" class="nav-link">Templates</a>
-        </nav>
-        <div class="nav-actions">
-            <div id="auth-nav-slot"></div>
-        </div>
-    </header>
+    {% include "_nav.html" %}
 
     <main class="my-resumes-page">
         <div class="my-resumes-head">
@@ -199,35 +182,7 @@
         {% endif %}
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section footer-brand">
-                    <h4 class="footer-title">TailorCV</h4>
-                    <p class="footer-text">AI-powered resume optimization for your career success. Land more interviews, faster.</p>
-                    <a href="/solutions" class="footer-cta">Fix my Resume</a>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-heading">Product</h4>
-                    <a href="/ats-analysis" class="footer-link">Free ATS Score Checker</a>
-                    <a href="/solutions" class="footer-link">AI Resume Optimizer</a>
-                    <a href="/modify-cv" class="footer-link">ATS-Friendly Resume Builder</a>
-                    <a href="/my-resumes" class="footer-link">My Resumes</a>
-                    <a href="/templates" class="footer-link">Resume Templates</a>
-                    <a href="/pricing" class="footer-link">Pricing</a>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-heading">Company</h4>
-                    <a href="/about" class="footer-link">About us</a>
-                    <a href="/contact" class="footer-link">Contact</a>
-                    <a href="/blog" class="footer-link">Blog</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 TailorCV.ai. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    {% include "_footer.html" %}
 
     <script src="/static/auth_nav.js?v=2" defer></script>
     <script src="/static/mobile_nav.js" defer></script>

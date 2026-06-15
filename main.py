@@ -49,7 +49,7 @@ from functions import (
 )
 
 from extraction import process_resume
-from models import PasswordResetToken, PersonalityCard, SavedResume, SignupVerificationCode, User, WelcomeEmailLog
+from models import JobApplication, PasswordResetToken, PersonalityCard, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
 from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
@@ -125,7 +125,7 @@ app.add_middleware(SessionMiddleware, secret_key=_SECRET_KEY)
 # ── CSRF protection (double-submit cookie) ────────────────────────────────────
 @app.middleware("http")
 async def csrf_middleware(request: Request, call_next):
-    EXEMPT_PATHS = {"/api/linkedin/oauth/callback"}
+    EXEMPT_PATHS = {"/api/linkedin/oauth/callback", "/api/extension/log-application"}
     SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
 
     if request.method not in SAFE_METHODS and request.url.path not in EXEMPT_PATHS:
@@ -1156,8 +1156,29 @@ def _restore_tokens(text: str) -> set:
     return set(re.findall(r"[a-z0-9]+", str(text or "").lower()))
 
 
+# Date fragments used to spot header/date rows that must never become bullets.
+# Month names are anchored (not "any word") so achievement lines like
+# "Best Project 2024" are never mistaken for a date. Covers "Jan 2026",
+# "2 January 2026", and numeric "12/2022" / "12/31/2022" formats.
+_RESTORE_MONTH = r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?"
+_RESTORE_DATE = (
+    r"(?:\d{1,2}/\d{1,2}/\d{2,4}"
+    r"|\d{1,2}/\d{4}"
+    r"|(?:\d{1,2}\s+)?" + _RESTORE_MONTH + r"\s*,?\s*\d{4})"
+)
+# Open-ended range words: "Present", "Current", "Currently", "Now", "Ongoing",
+# "Till Date", "To Date", etc. (a range like "12/2024 - Currently").
+_RESTORE_OPEN_END = r"(?:present|current(?:ly)?|ongoing|now|(?:to|till)\s*(?:date|now|present))"
+_RESTORE_DATE_RANGE = (
+    _RESTORE_DATE + r"\s*[-–—]\s*(?:" + _RESTORE_DATE + r"|" + _RESTORE_OPEN_END + r")"
+)
+
+
 def _restore_is_meta_line(line: str) -> bool:
-    """A line that is a date range, a link, or contact/metadata — never a bullet."""
+    """A line that is a date, a date range, a link, or an entry header — never a
+    bullet. Restoring these as bullets produces garbage like a stray
+    "2 January 2026" bullet, or bleeds an entry's "San Francisco, USA 12/2022 -
+    11/2024" header row into its bullets."""
     l = str(line or "").strip()
     if not l:
         return True
@@ -1167,9 +1188,24 @@ def _restore_is_meta_line(line: str) -> bool:
     if re.match(r"^(github|gitlab|kaggle|linkedin|leetcode|codeforces|codechef|"
                 r"demo|email|url|link|portfolio|website|tel|phone|live|mobile)\b[:\s]", low):
         return True
-    # Date-range-only line (e.g. "Oct 2025 - Nov 2025", "May 2025 – Present").
-    if re.match(r"^[A-Za-z]{0,9}\.?\s*\d{4}\s*[-–—]\s*([A-Za-z]{0,9}\.?\s*\d{4}|present)\s*$", l, re.I):
+    # A line that is ONLY a date or a date range (e.g. "May 2025 – Present",
+    # "2 January 2026", "01/2022 - 12/2022").
+    if re.fullmatch(_RESTORE_DATE_RANGE, l, re.I) or re.fullmatch(_RESTORE_DATE, l, re.I):
         return True
+    # Entry-header row that leaked: a short, title-case label (a role, or a
+    # location like "San Francisco, USA" / "Thailand") followed by a trailing
+    # date or date range, e.g. "Thailand 01/2022 - 12/2022", "Freelancer Dec
+    # 2025 - Present". Real bullets are full sentences; requiring the prefix to
+    # be title-case (no lowercase connector words) keeps ordinary bullets that
+    # merely end in a month-year safe.
+    date_tail = re.search(r"(?:" + _RESTORE_DATE_RANGE + r"|" + _RESTORE_DATE + r")\s*$", l, re.I)
+    if date_tail and date_tail.start() > 0:
+        prefix = l[: date_tail.start()].strip(" -–—|,·•/")
+        words = prefix.split()
+        if (1 <= len(words) <= 5
+                and not prefix.endswith((".", ":"))
+                and all((not w[0].isalpha()) or w[0].isupper() for w in words)):
+            return True
     return False
 
 
@@ -1233,6 +1269,27 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
     return result
 
 
+def _restore_is_header_echo(candidate: str, header_values: list) -> bool:
+    """True when a candidate line is really the entry's own header — its role,
+    company, or location — e.g. "Data Analyst Research Intern Kolkata". These
+    sit just under the entry title and must never be restored as a bullet.
+
+    Matches only when a header field's text is contained in the candidate AND the
+    candidate is about as short as that header (a real bullet that merely mentions
+    the title is a full sentence and stays much longer)."""
+    cand_norm = _normalize_key(candidate)
+    if not cand_norm:
+        return False
+    cand_words = len(candidate.split())
+    for hv in header_values:
+        hv_norm = _normalize_key(hv)
+        if len(hv_norm) < 5:
+            continue
+        if hv_norm in cand_norm and cand_words <= len(hv.split()) + 2:
+            return True
+    return False
+
+
 def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
     """Append any original bullet whose content the optimizer dropped, back onto
     the exact entry it came from. Safe against sub-section exchange and against
@@ -1256,6 +1313,16 @@ def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
         orig = _original_entry_candidates(section_lines, heading_section, identifiers)
         for e, ident in zip(entries, identifiers):
             cands = orig.get(ident)
+            if not cands:
+                continue
+            # Drop candidates that are really this entry's own header row (role,
+            # company, location) — e.g. "Data Analyst Research Intern Kolkata".
+            header_values = [
+                str(e.get(k, "")).strip()
+                for k in ("company", "title", "role", "organization", "name", "location", "place", "city")
+            ]
+            header_values = [h for h in header_values if h]
+            cands = [c for c in cands if not _restore_is_header_echo(c, header_values)]
             if not cands:
                 continue
             ai_bullets = [str(b).strip() for b in (e.get("bullets") or []) if str(b).strip()]
@@ -3967,6 +4034,288 @@ async def update_saved_resume(
     return RedirectResponse(url="/my-resumes", status_code=303)
 
 
+# ══════════════════════════════════════════════════════════════════════════════
+#  COVER LETTER GENERATOR
+# ══════════════════════════════════════════════════════════════════════════════
+
+@app.get("/cover-letter", response_class=HTMLResponse)
+async def cover_letter_page(request: Request):
+    """Standalone cover-letter generator (paste/upload resume + JD → AI letter)."""
+    return templates.TemplateResponse(
+        request,
+        "cover_letter.html",
+        {"request": request},
+    )
+
+
+COVER_LETTER_TONES = {
+    "professional": "professional and confident",
+    "warm": "warm and personable",
+    "concise": "concise and direct",
+}
+
+
+@app.post("/api/generate-cover-letter")
+async def generate_cover_letter(request: Request):
+    """Generate a tailored cover letter from a resume (PDF upload — preferred — or
+    pasted text) plus a job description.
+
+    Login-gated to match the signup-capture pattern used by the ATS score.
+    Reuses the existing AI helper (functions.get_resume_response), which enforces a
+    JSON response — so we ask for {"cover_letter": "..."} and parse it out."""
+    require_logged_in(request)
+
+    resume_text = ""
+    job_description = ""
+    tone_key = "professional"
+    file_path = None
+
+    try:
+        content_type = request.headers.get("content-type", "")
+        if "multipart/form-data" in content_type:
+            form = await request.form()
+            job_description = str(form.get("job_description") or "").strip()
+            tone_key = str(form.get("tone") or "professional").strip().lower()
+            resume_text = str(form.get("resume_text") or "").strip()
+            upload = form.get("resume_pdf")
+            # Prefer the uploaded PDF: extract its text server-side so the user only
+            # has to provide the PDF.
+            if not resume_text and upload is not None and getattr(upload, "filename", ""):
+                file_path = save_uploaded_pdf(upload)
+                with open(file_path, "wb") as buffer:
+                    buffer.write(await upload.read())
+                extracted = await asyncio.to_thread(extract_pdf_text, file_path)
+                resume_text = (extracted or "").strip()
+        else:
+            payload = await request.json()
+            resume_text = str(payload.get("resume_text") or "").strip()
+            job_description = str(payload.get("job_description") or "").strip()
+            tone_key = str(payload.get("tone") or "professional").strip().lower()
+    except HTTPException:
+        raise
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request.")
+    finally:
+        if file_path and os.path.exists(file_path):
+            os.remove(file_path)
+
+    tone = COVER_LETTER_TONES.get(tone_key, COVER_LETTER_TONES["professional"])
+
+    if len(resume_text) < 50:
+        raise HTTPException(
+            status_code=400,
+            detail="Couldn't read your resume. Upload a text-based PDF (not a scanned image), or paste your resume text.",
+        )
+    if len(job_description) < 30:
+        raise HTTPException(status_code=400, detail="Please provide the job description.")
+
+    # Bound input size to keep prompts within token limits.
+    resume_text = resume_text[:8000]
+    job_description = job_description[:6000]
+
+    prompt = (
+        "You are an expert career writer. Write a tailored cover letter for the candidate "
+        "below, matching the job description.\n\n"
+        f"Tone: {tone}.\n"
+        "Rules:\n"
+        "- 3 to 4 short paragraphs, under 300 words total.\n"
+        "- Open with genuine interest in the specific role; avoid clichés like "
+        "\"I am writing to apply\".\n"
+        "- Use concrete, relevant achievements and skills FROM THE RESUME that match the "
+        "job description. Never invent experience that is not in the resume.\n"
+        "- Close with a confident call to action. No markdown, no placeholder brackets, "
+        "no sign-off name line.\n\n"
+        "Return ONLY a JSON object of the form "
+        "{\"cover_letter\": \"<the full letter as plain text, with \\n between paragraphs>\"}.\n\n"
+        f"=== RESUME ===\n{resume_text}\n\n"
+        f"=== JOB DESCRIPTION ===\n{job_description}\n"
+    )
+
+    try:
+        raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+        parsed = parse_ai_json_response(raw)
+        letter = ((parsed.get("cover_letter") if isinstance(parsed, dict) else "") or "").strip()
+        if not letter:
+            raise ValueError("Empty cover letter returned")
+    except Exception:
+        logger.exception("Cover letter generation failed")
+        raise HTTPException(status_code=502, detail="Could not generate the cover letter. Please try again.")
+
+    return JSONResponse({"cover_letter": letter})
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  AUTO JOB APPLY — backend for the "TailorCV Auto Apply" Chrome extension
+# ══════════════════════════════════════════════════════════════════════════════
+
+@app.get("/auto-apply", response_class=HTMLResponse)
+async def auto_apply_page(request: Request):
+    """Landing + install page for auto-apply; lists the user's logged applications."""
+    user_id = request.session.get("user_id")
+    applications = []
+    if user_id:
+        db = get_db()
+        try:
+            applications = (
+                db.query(JobApplication)
+                .filter(JobApplication.user_id == user_id)
+                .order_by(JobApplication.created_at.desc())
+                .all()
+            )
+        finally:
+            db.close()
+    return templates.TemplateResponse(
+        request,
+        "auto_apply.html",
+        {"request": request, "applications": applications, "logged_in": bool(user_id)},
+    )
+
+
+@app.get("/api/extension/profile")
+async def extension_profile(request: Request):
+    """Profile the Chrome extension fetches to confirm the user is logged in and to
+    fill applications. Returns 401 when not logged in so the extension can prompt."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        latest = (
+            db.query(SavedResume)
+            .filter(SavedResume.user_id == user_id)
+            .order_by(SavedResume.created_at.desc())
+            .first()
+        )
+        profile = {
+            "name": user.name,
+            "email": user.email,
+            "has_resume": bool(latest),
+            "resume_title": latest.title if latest else None,
+        }
+    finally:
+        db.close()
+    return JSONResponse(profile)
+
+
+@app.post("/api/extension/log-application")
+async def extension_log_application(request: Request):
+    """Record a job the extension auto-applied to (CSRF-exempt; see EXEMPT_PATHS)."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+
+    company = (payload.get("company") or "Unknown Company").strip()[:200]
+    role = (payload.get("role") or "Unknown Role").strip()[:200]
+    url = (payload.get("url") or "").strip()[:500] or None
+
+    db = get_db()
+    try:
+        record = JobApplication(
+            user_id=user_id,
+            company=company,
+            role=role,
+            stage="applied",
+            job_url=url,
+        )
+        db.add(record)
+        db.commit()
+        db.refresh(record)
+        new_id = record.id
+    finally:
+        db.close()
+    return JSONResponse({"success": True, "id": new_id})
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  DASHBOARD — logged-in home base
+# ══════════════════════════════════════════════════════════════════════════════
+
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard_page(request: Request):
+    """Logged-in home base: a snapshot of the user's resumes, applications and tools."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return RedirectResponse(url="/login?next=/dashboard", status_code=302)
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            return RedirectResponse(url="/login?next=/dashboard", status_code=302)
+        resumes = (
+            db.query(SavedResume)
+            .filter(SavedResume.user_id == user_id)
+            .order_by(SavedResume.created_at.desc())
+            .all()
+        )
+        applications = (
+            db.query(JobApplication)
+            .filter(JobApplication.user_id == user_id)
+            .order_by(JobApplication.created_at.desc())
+            .all()
+        )
+        month = datetime.utcnow().strftime("%Y-%m")
+        usage = (
+            db.query(UsageRecord)
+            .filter(UsageRecord.user_id == user_id, UsageRecord.month == month)
+            .first()
+        )
+        # Most recent resume that actually has an ATS score.
+        latest_ats = next((r.ats_score for r in resumes if r.ats_score is not None), None)
+        ctx = {
+            "request": request,
+            "user_name": user.name,
+            "user_email": user.email,
+            "resume_count": len(resumes),
+            "recent_resumes": resumes[:5],
+            "latest_ats": latest_ats,
+            "application_count": len(applications),
+            "recent_applications": applications[:5],
+            "usage": usage,
+        }
+    finally:
+        db.close()
+    return templates.TemplateResponse(request, "dashboard.html", ctx)
+
+
+# Simple legal pages (linked from the profile menu).
+_LEGAL_PAGE = (
+    "<!doctype html><html><head><meta charset='utf-8'>"
+    "<meta name='viewport' content='width=device-width, initial-scale=1'>"
+    "<meta name='robots' content='noindex'><title>{title} | theTailorCV</title>"
+    "<style>body{{font-family:Inter,system-ui,sans-serif;background:#070f24;color:#dbe6ff;"
+    "margin:0;padding:60px 22px;}}.wrap{{max-width:760px;margin:0 auto;}}h1{{font-size:1.8rem;"
+    "margin-bottom:14px;}}p{{color:#9fb0cc;line-height:1.7;}}a{{color:#7db9ff;}}</style></head>"
+    "<body><div class='wrap'><a href='/dashboard'>&larr; Back</a><h1>{title}</h1>{body}</div></body></html>"
+)
+
+
+@app.get("/privacy", response_class=HTMLResponse, include_in_schema=False)
+async def privacy_page():
+    return HTMLResponse(_LEGAL_PAGE.format(
+        title="Privacy Policy",
+        body="<p>We respect your privacy. theTailorCV stores only the information needed to provide "
+             "resume optimization, ATS scoring, cover letters and job-application features. We do not "
+             "sell your data. Contact us to request deletion of your account and data.</p>",
+    ))
+
+
+@app.get("/terms", response_class=HTMLResponse, include_in_schema=False)
+async def terms_page():
+    return HTMLResponse(_LEGAL_PAGE.format(
+        title="Terms of Service",
+        body="<p>By using theTailorCV you agree to use the service lawfully and not to misuse the "
+             "tools or attempt to disrupt the platform. The service is provided as-is. We may update "
+             "these terms; continued use constitutes acceptance.</p>",
+    ))
+
+
 @app.get("/api/my-resumes/count", include_in_schema=False)
 async def my_resumes_count(request: Request):
     """How many resumes the current user has saved. Drives the one-time
@@ -4366,8 +4715,53 @@ async def blog_listing_page(
     )
 
 
+# Blog posts merged into stronger "pillar" posts to fix keyword cannibalization.
+# Each old slug 301-redirects to its pillar and is excluded from the sitemap, so
+# Google consolidates ranking signals instead of splitting them across near-duplicates.
+# The source .md files are kept on disk (harmless) but no longer served — fully
+# reversible: remove an entry here to bring a post back.
+BLOG_REDIRECTS = {
+    # "check my ATS score free" → one canonical checker page
+    "how-to-check-ats-score-free": "ats-score-checker-free",
+    "free-ats-resume-scan": "ats-score-checker-free",
+    "ats-resume-checker-how-it-works": "ats-score-checker-free",
+    "does-my-resume-pass-ats": "ats-score-checker-free",
+    # "what is a good ATS score" / "what is an ATS score"
+    "ats-score-vs-resume-score": "what-is-a-good-ats-score",
+    "what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it": "ats-score-guide",
+    # "ATS mistakes" (kept pillars: ats-keyword-mistakes + ats-resume-formatting-mistakes)
+    "ats-mistakes-tech-professionals": "ats-keyword-mistakes",
+    "ats-mistakes-experienced-professionals": "ats-keyword-mistakes",
+    "hidden-ats-mistakes-job-search": "ats-keyword-mistakes",
+    # "resume matching to job description" → matching pillar / tailoring pillar
+    "how-to-match-resume-keywords-to-job-description": "resume-matching-with-job-description-complete-guide",
+    "how-to-match-resume-to-job-description-fast": "how-to-tailor-resume-for-every-job",
+    "improve-resume-job-match-score": "resume-matching-with-job-description-complete-guide",
+    "resume-job-description-match-percentage": "resume-matching-with-job-description-complete-guide",
+    "resume-matching-checklist": "resume-matching-with-job-description-complete-guide",
+    "resume-matching-for-multiple-jobs": "resume-matching-with-job-description-complete-guide",
+    "why-resume-doesnt-match-job-description": "resume-matching-with-job-description-complete-guide",
+    "common-resume-job-description-mismatch-mistakes": "resume-matching-with-job-description-complete-guide",
+    "what-recruiters-look-for-resume-job-match": "resume-matching-with-job-description-complete-guide",
+    "how-ai-resume-matching-works": "resume-matching-with-job-description-complete-guide",
+    "resume-skills-match-job-description": "resume-matching-with-job-description-complete-guide",
+    "resume-summary-match-job-description": "resume-matching-with-job-description-complete-guide",
+    "how-to-match-resume-to-remote-job-description": "resume-matching-with-job-description-complete-guide",
+    "overqualified-resume-match-job-description": "resume-matching-with-job-description-complete-guide",
+    # persona "resume-matching-X" spin-offs (kept: software-engineer, data-analyst, no-experience)
+    "resume-matching-experienced-professionals": "resume-matching-with-job-description-complete-guide",
+    "resume-matching-for-career-changers": "resume-matching-with-job-description-complete-guide",
+    "resume-matching-marketing": "resume-matching-with-job-description-complete-guide",
+    "resume-matching-product-manager": "resume-matching-with-job-description-complete-guide",
+}
+
+
 @app.get("/blog/{slug}", response_class=HTMLResponse)
 async def blog_post_page(request: Request, slug: str):
+    # Consolidate merged duplicates: permanent-redirect old slugs to their pillar.
+    target = BLOG_REDIRECTS.get(slug)
+    if target:
+        return RedirectResponse(url=f"/blog/{target}", status_code=301)
     post = blog_service.get_post(slug)
     if post is None:
         raise HTTPException(status_code=404, detail="Blog post not found")
@@ -4413,7 +4807,11 @@ async def sitemap_xml():
         ("/blog", "daily", "0.7"),
     ]
     static_urls = [(path, today, changefreq, priority) for path, changefreq, priority in static_pages]
-    post_urls = [(f"/blog/{p.slug}", p.lastmod_iso, "monthly", "0.6") for p in blog_service.load_posts()]
+    post_urls = [
+        (f"/blog/{p.slug}", p.lastmod_iso, "monthly", "0.6")
+        for p in blog_service.load_posts()
+        if p.slug not in BLOG_REDIRECTS  # merged duplicates 301 elsewhere; keep them out of the index
+    ]
     all_urls = static_urls + post_urls
 
     entries = []
@@ -5245,6 +5643,12 @@ async def download_html_pdf(request: Request):
     if not html:
         raise HTTPException(status_code=400, detail="Missing HTML payload")
 
+    # Optional caller-supplied download name (e.g. cover letters reuse this endpoint).
+    dl_name = str(payload.get("filename", "") or "").strip() or "optimized_resume_edited.pdf"
+    if not dl_name.lower().endswith(".pdf"):
+        dl_name += ".pdf"
+    dl_name = os.path.basename(dl_name)
+
     pdf_path = os.path.join(resumes_dir, f"edited_resume_{uuid.uuid4()}.pdf")
     try:
         from weasyprint import HTML
@@ -5252,7 +5656,7 @@ async def download_html_pdf(request: Request):
         return FileResponse(
             pdf_path,
             media_type="application/pdf",
-            filename="optimized_resume_edited.pdf",
+            filename=dl_name,
             background=BackgroundTask(_cleanup_files, [pdf_path])
         )
     except Exception as exc:

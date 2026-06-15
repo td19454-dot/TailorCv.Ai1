@@ -1,30 +1,196 @@
-﻿.footer {
-    position: relative;
-    margin-top: 2.2rem;
-    padding: 18px 20px;
-    color: #e8ecff;
-    border: 1px solid rgba(190, 165, 255, 0.34);
-    border-radius: 18px 18px 0 0;
-    overflow: hidden;
-    background: linear-gradient(145deg, rgba(112, 84, 170, 0.22), rgba(69, 52, 125, 0.18));
-    backdrop-filter: blur(16px) saturate(130%);
-    -webkit-backdrop-filter: blur(16px) saturate(130%);
-    box-shadow: 0 18px 48px rgba(50, 24, 88, 0.32);
+﻿/* Mobile guard: never allow the whole page to scroll sideways. Individual wide
+   elements are handled per-page; this stops the worst symptom site-wide. */
+@media (max-width: 768px) {
+    html, body { overflow-x: hidden; max-width: 100%; }
 }
 
-.footer::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 12% -8%, rgba(194, 157, 255, 0.30), transparent 35%),
-        radial-gradient(circle at 92% 6%, rgba(154, 117, 255, 0.26), transparent 30%);
+/* ══════════════════════════════════════════════════════════════════════════
+   SITE FOOTER (shared partial templates/_footer.html)
+   Uses the sf-* namespace so it is styled ONLY here (loaded on every page) and
+   is immune to the conflicting .footer rules in style2.css / style3.css. This
+   is the single source of truth — every page renders an identical footer.
+   ══════════════════════════════════════════════════════════════════════════ */
+.site-footer {
+    margin-top: 3.5rem;
+    padding: 56px 24px 24px;
+    color: #b7c6e6;
+    background: #070f24;
+    border-top: 1px solid rgba(99, 130, 200, 0.18);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
+.site-footer .sf-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.site-footer .sf-grid {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr 1.2fr 1fr 1fr;
+    gap: 30px 28px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(99, 130, 200, 0.16);
+}
+.site-footer .sf-title {
+    margin: 0 0 12px;
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+.site-footer .sf-text {
+    margin: 0 0 18px;
+    max-width: 320px;
+    color: #8ba0c4;
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+.site-footer .sf-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 20px;
+    border-radius: 10px;
+    border: none;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.92rem;
+    background: linear-gradient(135deg, #3392ff, #6d28d9);
+    box-shadow: 0 8px 20px rgba(51, 146, 255, 0.28);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.site-footer .sf-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(51, 146, 255, 0.42);
+}
+.site-footer .sf-socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.site-footer .sf-social {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(99, 130, 200, 0.25);
+    background: rgba(255, 255, 255, 0.04);
+    color: #9fb0cc;
+    text-decoration: none;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+}
+.site-footer .sf-social svg { width: 18px; height: 18px; display: block; }
+.site-footer .sf-social:hover {
+    transform: translateY(-2px);
+    border-color: rgba(99, 132, 255, 0.7);
+    background: rgba(99, 132, 255, 0.14);
+    color: #ffffff;
+}
+.site-footer .sf-heading {
+    margin: 2px 0 14px;
+    color: #8aa0c8;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+.site-footer .sf-link {
+    display: block;
+    color: #b7c6e6;
+    text-decoration: none;
+    margin-bottom: 11px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.35;
+    transition: color .18s ease, transform .18s ease;
+}
+.site-footer .sf-link:hover { color: #ffffff; transform: translateX(3px); }
+.site-footer .sf-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 22px;
+}
+.site-footer .sf-bottom p { margin: 0; color: #6f87aa; font-size: 0.85rem; font-weight: 500; }
+.site-footer .sf-secure {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid rgba(122, 146, 255, 0.32);
+    background: rgba(34, 39, 102, 0.32);
+    color: #c3d2ff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 7px 16px;
+}
+@media (max-width: 1080px) {
+    .site-footer .sf-grid { grid-template-columns: repeat(3, 1fr); }
+    .site-footer .sf-brand { grid-column: 1 / -1; }
+    .site-footer .sf-text { max-width: 520px; }
+}
+@media (max-width: 640px) {
+    .site-footer { padding: 40px 18px 20px; }
+    .site-footer .sf-grid { grid-template-columns: repeat(2, 1fr); gap: 26px 18px; }
+    .site-footer .sf-bottom { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 400px) {
+    .site-footer .sf-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile accordion: each link column collapses; tap the heading to expand.
+   The brand column stays open. JS in _footer.html toggles .sf-open. */
+@media (max-width: 480px) {
+    .site-footer .sf-grid { grid-template-columns: 1fr; gap: 0; }
+    .site-footer .sf-brand { margin-bottom: 14px; }
+    .site-footer .sf-col:not(.sf-brand) {
+        border-top: 1px solid rgba(99, 130, 200, 0.16);
+    }
+    .site-footer .sf-col:not(.sf-brand) .sf-heading {
+        margin: 0;
+        padding: 15px 2px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 44px;
+    }
+    .site-footer .sf-col:not(.sf-brand) .sf-heading::after {
+        content: "+";
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: #8aa0c8;
+        line-height: 1;
+    }
+    .site-footer .sf-col.sf-open .sf-heading::after { content: "\2212"; }
+    .site-footer .sf-col:not(.sf-brand) .sf-link { display: none; }
+    .site-footer .sf-col.sf-open .sf-link { display: block; }
+    .site-footer .sf-col.sf-open { padding-bottom: 12px; }
+    .site-footer .sf-col:not(.sf-brand) .sf-link { min-height: 40px; }
+}
+
+/* Logged-in app shell hides the shared footer (same as the old .footer). */
+html.tcv-app .site-footer { display: none !important; }
+
+.footer {
+    position: relative;
+    margin-top: 3rem;
+    padding: 44px 24px 22px;
+    color: #c4d4ef;
+    border: none;
+    border-top: 1px solid rgba(99, 130, 200, 0.18);
+    background: #070f24;
+}
+
+.footer::before { content: none; }
 
 .footer .container {
     position: relative;
     z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
 }
 
 .footer-topbar {
@@ -39,7 +205,7 @@
 
 .footer-top-item {
     font-size: 0.95rem;
-    color: #32ef71;
+    color: #9fb0cc;
     font-weight: 600;
 }
 
@@ -49,9 +215,9 @@
     justify-content: center;
     padding: 0.4rem 0.95rem;
     border-radius: 999px;
-    border: 1px solid rgba(122, 146, 255, 0.35);
-    background: rgba(34, 39, 102, 0.35);
-    color: #a054f7;
+    border: 1px solid rgba(99, 130, 200, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+    color: #cfe0ff;
     font-size: 0.95rem;
     font-weight: 700;
 }
@@ -64,41 +230,41 @@
 }
 
 .footer-title {
-    margin: 0 0 0.5rem;
-    color: #a054f7;
-    font-size: 2rem;
+    margin: 0 0 0.6rem;
+    color: #ffffff;
+    font-size: 1.45rem;
     line-height: 1.1;
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: -0.01em;
 }
 
 .footer-text {
-    margin: 0 0 0.7rem;
-    color: #f4f5f6;
-    max-width: 380px;
-    font-size: 1.02rem;
-    line-height: 1.5;
+    margin: 0 0 1rem;
+    color: #9fb0cc;
+    max-width: 340px;
+    font-size: 0.92rem;
+    line-height: 1.6;
 }
 
 .footer-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.68rem 1.15rem;
-    border-radius: 12px;
-    border: 1px solid rgba(151, 168, 255, 0.45);
-    color: #edf2ff;
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    border: none;
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 1.05rem;
-    margin-bottom: 0.65rem;
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 0.9rem;
     transition: all 0.2s ease;
-    background: rgba(16, 20, 64, 0.5);
+    background: linear-gradient(135deg, #3392ff, #6d28d9);
 }
 
 .footer-cta:hover {
-    border-color: rgba(180, 196, 255, 0.85);
-    background: rgba(40, 52, 128, 0.52);
     transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(51, 146, 255, 0.32);
 }
 
 .footer-socials {
@@ -113,9 +279,9 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    border: 1px solid rgba(151, 168, 255, 0.38);
-    background: rgba(20, 25, 70, 0.42);
-    color: #d8e2ff;
+    border: 1px solid rgba(99, 130, 200, 0.25);
+    background: rgba(255, 255, 255, 0.04);
+    color: #9fb0cc;
     text-decoration: none;
     font-weight: 700;
     text-transform: lowercase;
@@ -128,38 +294,17 @@
     display: block;
 }
 
-.footer-social[aria-label="YouTube"] {
-    color: #ff0000;
-}
-
-.footer-social[aria-label="LinkedIn"] {
-    color: #0a66c2;
-}
-
-.footer-social[aria-label="X"] {
-    color: #000000;
-    background: #ffffff;
-}
-
-.footer-social[aria-label="Instagram"] {
-    background: linear-gradient(45deg, #f58529, #feda77, #dd2a7b, #8134af, #515bd4);
-    border-color: rgba(255, 255, 255, 0.45);
-}
-
-.footer-social[aria-label="Instagram"] svg {
-    color: #ffffff;
-}
-
 .footer-social:hover {
     transform: translateY(-2px);
-    border-color: rgba(205, 217, 255, 0.85);
+    border-color: rgba(99, 132, 255, 0.7);
+    background: rgba(99, 132, 255, 0.14);
     color: #ffffff;
 }
 
 .footer-heading {
-    margin: 0 0 0.55rem;
-    color: #9e68ee;
-    font-size: 1.2rem;
+    margin: 0 0 0.8rem;
+    color: #8aa0c8;
+    font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -167,11 +312,11 @@
 
 .footer-link {
     display: block;
-    color: #fafbfe;
+    color: #b7c6e6;
     text-decoration: none;
-    margin-bottom: 0.42rem;
-    font-size: 1.05rem;
-    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+    font-weight: 500;
     transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -191,9 +336,9 @@
 
 .footer-bottom p {
     margin: 0;
-    color: #bb63fa;
-    font-size: 0.98rem;
-    font-weight: 600;
+    color: #6f87aa;
+    font-size: 0.88rem;
+    font-weight: 500;
 }
 
 .footer-secure {
@@ -223,5 +368,410 @@
     .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
+    }
+}
+
+/* ── Nav "Tools" dropdown ─────────────────────────────────────────────
+   Keeps the top-level navbar to a few items and groups secondary tools
+   under a single hover/focus dropdown so the bar never looks crowded. */
+.nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+.nav-dropdown-toggle {
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.nav-links .nav-dropdown-toggle,
+.nav-links > .nav-dropdown > .nav-dropdown-toggle {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+.nav-links .nav-dropdown-toggle:hover,
+.nav-links > .nav-dropdown > .nav-dropdown-toggle:hover {
+    color: #f0fdf4 !important;
+}
+.nav-caret { font-size: 0.7em; transition: transform .2s ease; }
+.nav-dropdown:hover .nav-caret,
+.nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+.nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    min-width: 210px;
+    background: #0b1430;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s;
+    z-index: 1000;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-item {
+    padding: 10px 12px;
+    border-radius: 9px;
+    color: #cfe0ff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background .15s ease, color .15s ease;
+}
+.nav-dropdown-item:hover { background: rgba(99, 132, 255, 0.16); color: #fff; }
+
+/* Wide 2-column "Features" mega-menu (icon + title + description per item).
+   .navbar-scoped + double-class selectors so these win over style3.css's own
+   .nav-dropdown-menu rules (which otherwise force display:block / single column). */
+/* Unify primary nav link + Features toggle size (fixes Features-bigger mismatch)
+   and make the marketing/home nav text larger. */
+/* Desktop only — on mobile the drawer (style2/style3 @media max-width:768px)
+   sizes its own links (15px). Leaving this unscoped made the drawer links 19px
+   and broke the mobile layout. */
+@media (min-width: 769px) {
+    .navbar .nav-links > a.nav-link,
+    .navbar .nav-links > .nav-dropdown > .nav-dropdown-toggle {
+        font-size: 19px !important;
+        font-weight: 500 !important;
+        padding: 12px 16px !important;
+        letter-spacing: 0.2px !important;
+        line-height: 1 !important;
+        /* Anchors get text-transform:uppercase from style2/style3 but the dropdown
+           toggles are <button>s and miss it — uppercase them too so "Features" and
+           "Company" match the size/weight of the other links. */
+        text-transform: uppercase !important;
+    }
+}
+
+/* ── Unified nav LAYOUT (single source of truth) ───────────────────────────
+   Pages load different base stylesheets for the navbar — style2.css (solutions,
+   pricing, templates, my-resumes, cover-letter, ats, …), style3.css (home,
+   about, contact) or both, plus per-page inline <style> overrides. That made
+   the link spacing/distribution differ page to page. header-footer.css is the
+   ONE stylesheet loaded everywhere, so we pin the desktop nav layout here with
+   !important to match the solutions page on every page. Scoped to desktop so
+   the mobile drawer (max-width:768px in style2/style3) is left untouched. */
+@media (min-width: 769px) {
+    .navbar .nav-links {
+        display: flex !important;
+        min-width: 560px !important;
+        gap: 2px !important;
+        justify-content: space-evenly !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important;
+    }
+    /* style3 sets .nav-actions { min-width:300px; margins:20px } which shifts the
+       Login/Get Started cluster vs the solutions/style2 look — pin it to match. */
+    .navbar .nav-actions {
+        gap: 12px !important;
+        min-width: 0 !important;
+        margin: 0 24px 0 0 !important;
+    }
+}
+
+/* ── Unified nav actions (Login + Get Started) ─────────────────────────────
+   Loaded on EVERY page via header-footer.css so the right side of the navbar
+   looks identical site-wide (matches the blog), regardless of whether a page
+   also loads style2.css. Login = subtle translucent pill, Get Started = solid
+   primary CTA. */
+.navbar .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.navbar #auth-nav-slot .login {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(59, 130, 246, 0.45);
+    background: linear-gradient(135deg, rgba(51, 146, 255, 0.2), rgba(76, 29, 149, 0.22));
+    color: #e7f0ff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.navbar #auth-nav-slot .login:hover {
+    transform: translateY(-1px);
+    border-color: rgba(96, 165, 250, 0.8);
+    box-shadow: 0 10px 24px rgba(30, 64, 175, 0.3);
+}
+.navbar .nav-getstarted {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #3392ff, #6d28d9);
+    box-shadow: 0 6px 18px rgba(51, 146, 255, 0.28);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.navbar .nav-getstarted:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(51, 146, 255, 0.42);
+}
+@media (max-width: 768px) {
+    /* The top bar only has room for the logo, Login and the hamburger on a
+       phone — hide the extra Get Started pill so the bar isn't broken/overflowing.
+       (Navigation lives in the drawer; signup is still reachable via Login.) */
+    .navbar .nav-getstarted { display: none !important; }
+    .navbar #auth-nav-slot .login { padding: 8px 13px; font-size: 0.85rem; }
+}
+
+/* ── Plain dropdown (Company) — force a narrow vertical card ────────────────
+   style3.css styles .nav-dropdown-menu as a wide 860px 2-column mega panel and
+   forces `display:block` when open (specificity 0,2,0), which made the Company
+   menu lay its links out horizontally. These .navbar-scoped rules (0,3-4,0)
+   beat style3 but stay below the .nav-mega-menu rules (0,5,0), so the Features
+   mega menu is untouched. */
+.navbar .nav-dropdown .nav-dropdown-menu {
+    width: auto;
+    min-width: 210px;
+    grid-template-columns: none;
+}
+/* Tap-to-open (.open) works at every width. Hover/focus-open is desktop only —
+   on touch, :focus-within kept the menu stuck open and fought the tap toggle. */
+.navbar .nav-dropdown.open .nav-dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    visibility: visible;
+}
+@media (min-width: 769px) {
+    .navbar .nav-dropdown:hover .nav-dropdown-menu,
+    .navbar .nav-dropdown:focus-within .nav-dropdown-menu {
+        display: flex;
+        flex-direction: column;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.navbar .nav-dropdown .nav-dropdown-item {
+    display: block;
+    width: 100%;
+    text-transform: none;
+    font-size: 14px;
+    padding: 10px 12px;
+    letter-spacing: normal;
+}
+
+/* Company dropdown — same light card style as the Features mega menu, but a
+   compact single column (uses .nav-mega-item entries for the matching look). */
+.navbar .nav-dropdown .nav-dropdown-menu.nav-company-menu {
+    min-width: 320px;
+    padding: 14px;
+    gap: 6px;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 28px 70px rgba(15, 23, 42, 0.22);
+}
+
+/* ── Features mega menu — light, detailed (Careerflow-style) panel ──────────
+   A big white card: two columns of icon + title + badge + description tiles,
+   with an "All Features" CTA cell. Overrides the dark .nav-dropdown-menu base. */
+.navbar .nav-dropdown .nav-dropdown-menu.nav-mega-menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    gap: 6px 18px;
+    width: 780px;
+    max-width: calc(100vw - 32px);
+    padding: 20px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 28px 70px rgba(15, 23, 42, 0.22);
+}
+/* Keep it a grid in every "shown" state (overrides style3's display:block). */
+.navbar .nav-dropdown.open .nav-dropdown-menu.nav-mega-menu {
+    display: grid;
+    opacity: 1;
+    visibility: visible;
+}
+@media (min-width: 769px) {
+    .navbar .nav-dropdown:hover .nav-dropdown-menu.nav-mega-menu,
+    .navbar .nav-dropdown:focus-within .nav-dropdown-menu.nav-mega-menu {
+        display: grid;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.navbar .nav-mega-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 14px;
+    border-radius: 14px;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: normal;
+    background: #e9f1ff;
+    border: 1px solid rgba(37, 99, 235, 0.12);
+    transition: background .15s ease, border-color .15s ease;
+}
+.navbar .nav-mega-item:hover {
+    background: #d6e6ff;
+    border-color: rgba(37, 99, 235, 0.32);
+}
+.navbar .nav-mega-ic {
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+    background: #ffffff;
+    border: 1px solid rgba(37, 99, 235, 0.18);
+}
+.navbar .nav-mega-ic svg { width: 23px; height: 23px; }
+.navbar .nav-mega-tx { display: flex; flex-direction: column; line-height: 1.35; min-width: 0; }
+.navbar .nav-mega-tx strong {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 1rem;
+    color: #0f172a;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: normal;
+}
+.navbar .nav-mega-tx small { font-size: 0.82rem; color: #64748b; margin-top: 3px; font-weight: 400; text-transform: none; letter-spacing: normal; }
+
+/* Badges */
+.navbar .nav-mega-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    line-height: 1.5;
+    color: #ffffff;
+}
+.navbar .nav-mega-badge.is-trending { background: #16a34a; }
+.navbar .nav-mega-badge.is-new { background: #f97316; }
+.navbar .nav-mega-badge.is-free { background: #2563eb; }
+
+/* Bulletproof item colors — some pages (e.g. the Resume Builder, via
+   modify_cv.css) set .nav-links a { color:#fff }, which loads after this file
+   and washed out the icons (stroke=currentColor → white on white tiles) and the
+   text. Force the intended colors so the menu looks identical everywhere. */
+.navbar .nav-mega-item .nav-mega-ic { color: #2563eb !important; }
+.navbar .nav-mega-item .nav-mega-ic svg { stroke: #2563eb !important; }
+.navbar .nav-mega-item .nav-mega-tx strong { color: #0f172a !important; -webkit-text-fill-color: #0f172a !important; }
+.navbar .nav-mega-item .nav-mega-tx small { color: #64748b !important; -webkit-text-fill-color: #64748b !important; }
+.navbar .nav-mega-item .nav-mega-badge { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
+
+/* "All Features" CTA cell */
+.navbar .nav-mega-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: normal;
+    border-radius: 14px;
+    padding: 13px 14px;
+    background: #f4f7ff;
+    border: 1px solid rgba(37, 99, 235, 0.16);
+    color: #1e40af;
+    font-weight: 700;
+    font-size: 0.98rem;
+    transition: background .15s ease, border-color .15s ease;
+}
+.navbar .nav-mega-cta:hover { background: #e4edff; border-color: rgba(37, 99, 235, 0.34); }
+.navbar .nav-mega-cta svg { width: 18px; height: 18px; }
+
+/* ── Mobile drawer dropdowns (≤768px) ──────────────────────────────────────
+   Inside the hamburger drawer, Features (mega) and Company must NOT float as a
+   white popup. They collapse by default and expand INLINE when their toggle is
+   tapped (.open, set by mobile_nav.js). Labels are sentence-case, rows ≥44px. */
+@media (max-width: 768px) {
+    .navbar .nav-dropdown { display: block; width: 100%; }
+    .navbar .nav-caret { display: inline-block; }
+
+    /* All dropdown menus (incl. .nav-mega-menu): static, full-width, no card,
+       hidden until the dropdown is .open. */
+    .navbar .nav-dropdown .nav-dropdown-menu,
+    .navbar .nav-dropdown .nav-dropdown-menu.nav-mega-menu,
+    .navbar .nav-dropdown .nav-dropdown-menu.nav-company-menu {
+        position: static !important;
+        display: none;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        transform: none !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 2px 0 6px 14px !important;
+        gap: 0 !important;
+    }
+    .navbar .nav-dropdown.open .nav-dropdown-menu,
+    .navbar .nav-dropdown.open .nav-dropdown-menu.nav-mega-menu,
+    .navbar .nav-dropdown.open .nav-dropdown-menu.nav-company-menu {
+        display: flex !important;
+        flex-direction: column !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* Mega/Company items become plain inline rows (no light-blue card). */
+    .navbar .nav-mega-item {
+        background: transparent !important;
+        border: none !important;
+        padding: 11px 8px !important;
+        gap: 12px;
+        min-height: 44px;
+        align-items: center;
+    }
+    .navbar .nav-mega-item .nav-mega-ic {
+        flex: 0 0 30px; width: 30px; height: 30px; background: transparent !important; border: none !important;
+    }
+    .navbar .nav-mega-item .nav-mega-ic svg { stroke: #9ec5ff !important; }
+    .navbar .nav-mega-item .nav-mega-tx strong {
+        color: #eaf1ff !important; -webkit-text-fill-color: #eaf1ff !important;
+        font-size: 14px; font-weight: 600;
+    }
+    .navbar .nav-mega-item .nav-mega-tx small { display: none; }   /* hide descriptions in the drawer */
+    .navbar .nav-mega-badge { display: none !important; }
+
+    /* Sentence-case, 44px primary nav links + toggles. */
+    .navbar .nav-links > a.nav-link,
+    .navbar .nav-links > .nav-dropdown > .nav-dropdown-toggle {
+        text-transform: none !important;
+        letter-spacing: normal !important;
+        font-size: 15px !important;
+        min-height: 44px;
+        display: flex !important;
+        align-items: center;
     }
 }

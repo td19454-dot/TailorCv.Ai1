@@ -52,6 +52,10 @@
         </button>
         <div class="profile-dropdown" id="profileDropdown">
           <div class="profile-name">${safeName}</div>
+          <a class="profile-link tc-myresumes-link" href="/dashboard">
+            <span class="tc-pl-ic">📊</span>
+            <span class="tc-pl-tx"><strong>Dashboard</strong><small>Your job-hunt home base</small></span>
+          </a>
           <a class="profile-link tc-myresumes-link" href="/my-resumes">
             <span class="tc-pl-ic">📄</span>
             <span class="tc-pl-tx"><strong>My Resumes</strong><small>Saved resumes &amp; job tracker</small></span>
@@ -149,6 +153,22 @@
 
     const user = getStoredUser();
     slot.innerHTML = createAuthWidget(user);
+
+    // "Get Started" CTA shows only on the marketing pages (home, pricing, blog,
+    // contact, about) and only when logged out — elsewhere (or once signed in)
+    // it's hidden so the navbar isn't cluttered with a stray signup button.
+    const getStartedBtn = document.querySelector(".nav-getstarted");
+    if (getStartedBtn) {
+      const p = window.location.pathname;
+      const onAllowedPage =
+        p === "/" ||
+        p === "/pricing" ||
+        p === "/contact" ||
+        p === "/about" ||
+        p === "/blog" ||
+        p.indexOf("/blog/") === 0;
+      getStartedBtn.style.display = (!user && onAllowedPage) ? "" : "none";
+    }
 
     if (!user) return;
 
