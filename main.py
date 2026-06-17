@@ -54,7 +54,6 @@ from models import JobApplication, PasswordResetToken, PersonalityCard, SavedRes
 from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
-from routers.billing import router as billing_router
 from blog_system import BlogService, codehilite_css, xml_escape
 
 
@@ -127,11 +126,7 @@ app.add_middleware(SessionMiddleware, secret_key=_SECRET_KEY)
 # ── CSRF protection (double-submit cookie) ────────────────────────────────────
 @app.middleware("http")
 async def csrf_middleware(request: Request, call_next):
-    EXEMPT_PATHS = {
-        "/api/linkedin/oauth/callback",
-        "/api/extension/log-application",
-        "/api/billing/razorpay/webhook",
-    }
+    EXEMPT_PATHS = {"/api/linkedin/oauth/callback", "/api/extension/log-application"}
     SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
 
     if request.method not in SAFE_METHODS and request.url.path not in EXEMPT_PATHS:
@@ -218,7 +213,6 @@ templates = Jinja2Templates(directory=templates_dir)
 # _seo_head.html to emit the verification meta tag).
 templates.env.globals["google_site_verification"] = GOOGLE_SITE_VERIFICATION
 app.include_router(linkedin_router)
-app.include_router(billing_router)
 blog_service = BlogService(BLOG_CONTENT_DIR)
 
 
@@ -272,54 +266,11 @@ def _ensure_saved_resume_columns() -> None:
                 conn.execute(_text("ALTER TABLE saved_resumes ALTER COLUMN jd_snippet TYPE TEXT"))
 
 
-def _ensure_user_columns() -> None:
-    """Add subscription/billing columns to the existing users table if missing."""
-    from sqlalchemy import inspect as _inspect, text as _text
-
-    insp = _inspect(engine)
-    if not insp.has_table("users"):
-        return
-    cols = {c["name"] for c in insp.get_columns("users")}
-    is_pg = engine.dialect.name != "sqlite"
-    to_add = []
-    if "pro_until" not in cols:
-        to_add.append("ADD COLUMN pro_until TIMESTAMP" if is_pg else "ADD COLUMN pro_until TEXT")
-    if "plan_provider" not in cols:
-        to_add.append("ADD COLUMN plan_provider VARCHAR(20)" if is_pg else "ADD COLUMN plan_provider TEXT")
-    if "razorpay_subscription_id" not in cols:
-        to_add.append("ADD COLUMN razorpay_subscription_id VARCHAR(100)" if is_pg else "ADD COLUMN razorpay_subscription_id TEXT")
-    if to_add:
-        with engine.begin() as conn:
-            for clause in to_add:
-                conn.execute(_text(f"ALTER TABLE users {clause}"))
-
-
-def _ensure_usage_columns() -> None:
-    """Add cover_letters and linkedin_imports columns to usage_records if missing."""
-    from sqlalchemy import inspect as _inspect, text as _text
-
-    insp = _inspect(engine)
-    if not insp.has_table("usage_records"):
-        return
-    cols = {c["name"] for c in insp.get_columns("usage_records")}
-    to_add = []
-    if "cover_letters" not in cols:
-        to_add.append("ADD COLUMN cover_letters INTEGER DEFAULT 0")
-    if "linkedin_imports" not in cols:
-        to_add.append("ADD COLUMN linkedin_imports INTEGER DEFAULT 0")
-    if to_add:
-        with engine.begin() as conn:
-            for clause in to_add:
-                conn.execute(_text(f"ALTER TABLE usage_records {clause}"))
-
-
 def initialize_database() -> None:
     """Create tables if the configured database is reachable."""
     try:
         Base.metadata.create_all(bind=engine)
         _ensure_saved_resume_columns()
-        _ensure_user_columns()
-        _ensure_usage_columns()
         db_init_status["ok"] = True
         db_init_status["error"] = None
     except Exception as exc:
@@ -341,61 +292,6 @@ def require_logged_in(request: Request) -> None:
     user_id = request.session.get("user_id")
     if not user_id:
         raise HTTPException(status_code=401, detail="Not logged in")
-
-
-# ── Subscription / freemium gating ───────────────────────────────────────────
-
-def is_pro(user) -> bool:
-    """Return True iff the user currently has an active Pro subscription."""
-    return bool(user and user.pro_until and user.pro_until > datetime.utcnow())
-
-
-FREE_LIMITS: dict[str, int] = {
-    "ai_optimizations": 1,
-    "cover_letters": 1,
-    "linkedin_imports": 1,
-    "mock_interviews": 1,
-    "interview_questions": 1,
-    # ats_scans intentionally absent — stays unlimited-free
-}
-
-
-def get_or_create_usage(db: Session, user_id: int, month: str) -> UsageRecord:
-    rec = db.query(UsageRecord).filter_by(user_id=user_id, month=month).first()
-    if not rec:
-        rec = UsageRecord(user_id=user_id, month=month)
-        db.add(rec)
-        db.flush()
-    return rec
-
-
-def enforce_quota(db: Session, user, field: str) -> None:
-    """Raise HTTP 402 if the free user has exhausted their lifetime free use of *field*.
-
-    Pro users bypass this check entirely. For free users, sums usage across all
-    months (lifetime "1 free" rule). Also increments the current month's counter
-    for analytics when the action is allowed.
-    """
-    from sqlalchemy import func as _func
-
-    if is_pro(user):
-        return
-    limit = FREE_LIMITS.get(field, 0)
-    used = (
-        db.query(_func.coalesce(_func.sum(getattr(UsageRecord, field)), 0))
-        .filter(UsageRecord.user_id == user.id)
-        .scalar()
-        or 0
-    )
-    if used >= limit:
-        raise HTTPException(
-            status_code=402,
-            detail={"error": "upgrade_required", "feature": field},
-        )
-    month = datetime.utcnow().strftime("%Y-%m")
-    rec = get_or_create_usage(db, user.id, month)
-    setattr(rec, field, getattr(rec, field) + 1)
-    db.commit()
 
 
 # Keep at most this many saved resumes per user (newest kept) to bound storage.
@@ -3353,14 +3249,7 @@ async def mock_interview_page(request: Request):
 
 
 @app.post("/api/interview/start")
-async def api_interview_start(request: Request, payload: dict):
-    require_logged_in(request)
-    db = get_db()
-    try:
-        user = db.query(User).filter_by(id=request.session["user_id"]).first()
-        enforce_quota(db, user, "mock_interviews")
-    finally:
-        db.close()
+async def api_interview_start(payload: dict):
     try:
         resume_text = str(payload.get("resume_text", "")).strip()
         role = str(payload.get("role", "")).strip() or "Software Engineer"
@@ -3378,8 +3267,6 @@ async def api_interview_start(request: Request, payload: dict):
             job_desc=job_desc,
         )
         return JSONResponse({"success": True, "question": question})
-    except HTTPException:
-        raise
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
 
@@ -3486,13 +3373,6 @@ async def api_generate_interview_questions(
     jd_string: str = Form(""),
 ):
     """Generate interview questions from resume PDF + job description"""
-    require_logged_in(request)
-    db = get_db()
-    try:
-        user = db.query(User).filter_by(id=request.session["user_id"]).first()
-        enforce_quota(db, user, "interview_questions")
-    finally:
-        db.close()
     file_path = None
     try:
         file_path = os.path.join(uploads_dir, f"iq_{uuid.uuid4()}.pdf")
@@ -4239,12 +4119,6 @@ async def generate_cover_letter(request: Request):
     Reuses the existing AI helper (functions.get_resume_response), which enforces a
     JSON response — so we ask for {"cover_letter": "..."} and parse it out."""
     require_logged_in(request)
-    _cl_db = get_db()
-    try:
-        _cl_user = _cl_db.query(User).filter_by(id=request.session["user_id"]).first()
-        enforce_quota(_cl_db, _cl_user, "cover_letters")
-    finally:
-        _cl_db.close()
 
     resume_text = ""
     job_description = ""
@@ -5310,29 +5184,6 @@ async def logout(request: Request):
     return JSONResponse({"success": True})
 
 
-@app.get("/api/auth/me", include_in_schema=False)
-async def auth_me(request: Request):
-    """Returns current user's identity and Pro subscription status for the app shell."""
-    user_id = request.session.get("user_id")
-    if not user_id:
-        raise HTTPException(status_code=401, detail="Not logged in")
-    db = get_db()
-    try:
-        user = db.query(User).filter_by(id=user_id).first()
-        if not user:
-            raise HTTPException(status_code=401, detail="Not logged in")
-        return {
-            "user_id": user.id,
-            "name": user.name,
-            "email": user.email,
-            "is_pro": is_pro(user),
-            "pro_until": user.pro_until.isoformat() if user.pro_until else None,
-            "plan_provider": user.plan_provider,
-        }
-    finally:
-        db.close()
-
-
 @app.post("/api/login/verify")
 async def verify_login_code(request: Request):
     try:
@@ -5449,13 +5300,7 @@ async def upload_resume(
     user_id = request.session.get('user_id')
     if not user_id:
         return JSONResponse(status_code=401, content={"error": "Not logged in"})
-    _opt_db = get_db()
-    try:
-        _opt_user = _opt_db.query(User).filter_by(id=user_id).first()
-        enforce_quota(_opt_db, _opt_user, "ai_optimizations")
-    finally:
-        _opt_db.close()
-
+    
     file_path = None
     pdf_path = None
     response = None
