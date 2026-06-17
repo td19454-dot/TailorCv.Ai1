@@ -4339,36 +4339,341 @@ async def dashboard_page(request: Request):
     return templates.TemplateResponse(request, "dashboard.html", ctx)
 
 
-# Simple legal pages (linked from the profile menu).
+# ---------------------------------------------------------------------------
+# Legal pages (Terms, Privacy, Refund). Written to satisfy payment-processor
+# (Paddle) onboarding requirements: clear identity & contact, data handling,
+# Merchant-of-Record disclosure, billing terms and a concrete refund process.
+# ---------------------------------------------------------------------------
+LEGAL_CONTACT_EMAIL = "support@thetailorcv.com"
+LEGAL_SITE = "https://www.thetailorcv.com"
+LEGAL_LAST_UPDATED = "May 1, 2026"
+
 _LEGAL_PAGE = (
-    "<!doctype html><html><head><meta charset='utf-8'>"
+    "<!doctype html><html lang='en'><head><meta charset='utf-8'>"
     "<meta name='viewport' content='width=device-width, initial-scale=1'>"
-    "<meta name='robots' content='noindex'><title>{title} | theTailorCV</title>"
-    "<style>body{{font-family:Inter,system-ui,sans-serif;background:#070f24;color:#dbe6ff;"
-    "margin:0;padding:60px 22px;}}.wrap{{max-width:760px;margin:0 auto;}}h1{{font-size:1.8rem;"
-    "margin-bottom:14px;}}p{{color:#9fb0cc;line-height:1.7;}}a{{color:#7db9ff;}}</style></head>"
-    "<body><div class='wrap'><a href='/dashboard'>&larr; Back</a><h1>{title}</h1>{body}</div></body></html>"
+    "<meta name='robots' content='index,follow'><title>{title} | theTailorCV</title>"
+    "<meta name='description' content='{title} for theTailorCV — AI resume optimization and ATS scoring.'>"
+    "<style>"
+    ":root{{--bg:#070f24;--panel:#0d1730;--ink:#e8eefc;--muted:#9fb0cc;--accent:#7db9ff;--border:rgba(255,255,255,.08);}}"
+    "*{{box-sizing:border-box;}}"
+    "body{{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);margin:0;padding:0;line-height:1.7;}}"
+    ".legal-top{{max-width:820px;margin:0 auto;padding:28px 22px 0;}}"
+    ".legal-top a{{color:var(--accent);text-decoration:none;font-size:.95rem;}}"
+    ".wrap{{max-width:820px;margin:0 auto;padding:18px 22px 80px;}}"
+    "h1{{font-size:2rem;margin:18px 0 6px;letter-spacing:-.02em;}}"
+    ".updated{{color:var(--muted);font-size:.9rem;margin:0 0 28px;}}"
+    "h2{{font-size:1.2rem;margin:34px 0 10px;color:#fff;}}"
+    "h3{{font-size:1.02rem;margin:20px 0 6px;color:#cfe0ff;}}"
+    "p,li{{color:var(--muted);}}p{{margin:10px 0;}}"
+    "ul{{margin:10px 0;padding-left:22px;}}li{{margin:6px 0;}}"
+    "a{{color:var(--accent);}}strong{{color:var(--ink);}}"
+    ".legal-card{{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin:18px 0;}}"
+    ".legal-nav{{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 8px;border-top:1px solid var(--border);padding-top:22px;}}"
+    ".legal-nav a{{font-size:.9rem;color:var(--muted);}}.legal-nav a:hover{{color:var(--accent);}}"
+    "</style></head>"
+    "<body><div class='legal-top'><a href='/'>&larr; Back to theTailorCV</a></div>"
+    "<div class='wrap'><h1>{title}</h1><p class='updated'>Last updated: {updated}</p>{body}"
+    "<div class='legal-nav'><a href='/terms'>Terms of Service</a><a href='/privacy'>Privacy Policy</a>"
+    "<a href='/refund'>Refund Policy</a><a href='/contact'>Contact</a></div></div></body></html>"
+)
+
+
+def _render_legal(title, body):
+    return HTMLResponse(_LEGAL_PAGE.format(title=title, updated=LEGAL_LAST_UPDATED, body=body))
+
+
+_PRIVACY_BODY = (
+    "<div class='legal-card'><p>theTailorCV (\"theTailorCV\", \"we\", \"us\" or \"our\") operates the "
+    "website <strong>www.thetailorcv.com</strong> and the related AI resume tools (the \"Service\"). "
+    "This Privacy Policy explains what personal data we collect, why we collect it, how we use and "
+    "share it, and the rights you have over it. By using the Service you agree to the practices "
+    "described here.</p></div>"
+
+    "<h2>1. Who we are</h2>"
+    "<p>theTailorCV is an AI-powered resume optimization and ATS (Applicant Tracking System) scoring "
+    "platform. For any privacy question, or to exercise your rights, contact us at "
+    "<a href='mailto:" + LEGAL_CONTACT_EMAIL + "'>" + LEGAL_CONTACT_EMAIL + "</a>. We are the data "
+    "controller for the personal data described below.</p>"
+
+    "<h2>2. Information we collect</h2>"
+    "<h3>Information you provide</h3>"
+    "<ul>"
+    "<li><strong>Account data:</strong> your name, email address and a securely hashed password when "
+    "you register.</li>"
+    "<li><strong>Resume &amp; career content:</strong> resumes/CVs you upload or create, job "
+    "descriptions you paste, and content you generate (optimized resumes, cover letters, interview "
+    "answers). These may contain personal information such as work history, education and contact "
+    "details.</li>"
+    "<li><strong>Communications:</strong> messages you send us for support or feedback.</li>"
+    "</ul>"
+    "<h3>Information collected automatically</h3>"
+    "<ul>"
+    "<li><strong>Usage data:</strong> features used, scans run, pages viewed, and approximate counts "
+    "to enforce free-tier limits and improve the Service.</li>"
+    "<li><strong>Device &amp; log data:</strong> IP address, browser type, and timestamps.</li>"
+    "<li><strong>Cookies:</strong> essential cookies for login sessions and security (CSRF). See "
+    "section 7.</li>"
+    "</ul>"
+    "<h3>Payment information</h3>"
+    "<p>When you purchase a paid plan, payments are processed by our payment provider, <strong>Paddle"
+    "</strong> (Paddle.com Market Limited), who acts as the Merchant of Record. Paddle collects and "
+    "processes your billing details (such as card information and billing address) directly. <strong>"
+    "We do not store or have access to your full card details.</strong> We receive only limited "
+    "confirmation data (such as your plan, transaction status and an order identifier). Paddle's "
+    "handling of your data is governed by Paddle's own privacy policy.</p>"
+
+    "<h2>3. How we use your information</h2>"
+    "<ul>"
+    "<li>To provide and operate the Service — generating ATS scores, optimized resumes, cover letters "
+    "and interview prep.</li>"
+    "<li>To create and secure your account and authenticate logins.</li>"
+    "<li>To process subscriptions and one-time purchases (via Paddle) and apply your plan benefits.</li>"
+    "<li>To enforce free-tier usage limits and prevent abuse.</li>"
+    "<li>To respond to support requests and send essential service notices.</li>"
+    "<li>To improve, troubleshoot and secure the Service.</li>"
+    "<li>To comply with legal obligations.</li>"
+    "</ul>"
+    "<p>We rely on the following legal bases (where GDPR applies): performance of our contract with "
+    "you, your consent, our legitimate interests in operating and improving the Service, and legal "
+    "compliance.</p>"
+
+    "<h2>4. AI processing</h2>"
+    "<p>To generate results, the resume text and job descriptions you submit are processed by trusted "
+    "third-party AI model providers (such as OpenAI, Anthropic and/or Google) acting as our "
+    "processors. We send only the content needed to produce your result. We do not sell this content, "
+    "and we do not use it to train our own public models.</p>"
+
+    "<h2>5. How we share your information</h2>"
+    "<p>We do not sell your personal data. We share it only with:</p>"
+    "<ul>"
+    "<li><strong>Payment processing:</strong> Paddle, as Merchant of Record, to take payment and "
+    "handle billing, tax and fraud prevention.</li>"
+    "<li><strong>Service providers (processors):</strong> cloud hosting and database providers, and "
+    "the AI model providers described above, who process data on our behalf under contract.</li>"
+    "<li><strong>Legal &amp; safety:</strong> authorities when required by law, or to protect our "
+    "rights, users and the Service.</li>"
+    "<li><strong>Business transfers:</strong> in connection with a merger, acquisition or sale of "
+    "assets, subject to this policy.</li>"
+    "</ul>"
+
+    "<h2>6. Data retention</h2>"
+    "<p>We keep your account and content for as long as your account is active. You can delete your "
+    "saved resumes at any time, and you can ask us to delete your account and associated personal "
+    "data by emailing <a href='mailto:" + LEGAL_CONTACT_EMAIL + "'>" + LEGAL_CONTACT_EMAIL + "</a>. "
+    "We may retain limited records (such as transaction records) where required for legal, tax or "
+    "accounting purposes.</p>"
+
+    "<h2>7. Cookies</h2>"
+    "<p>We use strictly necessary cookies to keep you logged in and to protect against cross-site "
+    "request forgery. These are required for the Service to function. We do not use cookies to sell "
+    "your data.</p>"
+
+    "<h2>8. Your rights</h2>"
+    "<p>Depending on where you live (for example under the EU/UK GDPR or the California CCPA), you may "
+    "have the right to access, correct, delete or export your personal data, to object to or restrict "
+    "certain processing, and to withdraw consent. To exercise any of these rights, email "
+    "<a href='mailto:" + LEGAL_CONTACT_EMAIL + "'>" + LEGAL_CONTACT_EMAIL + "</a>. We will respond "
+    "within the timeframe required by applicable law. You also have the right to complain to your "
+    "local data protection authority.</p>"
+
+    "<h2>9. Security</h2>"
+    "<p>We protect your data with industry-standard measures, including encrypted transport (HTTPS), "
+    "hashed passwords and access controls. No method of transmission or storage is 100% secure, but "
+    "we work to safeguard your information and to notify you of material breaches where required.</p>"
+
+    "<h2>10. International transfers</h2>"
+    "<p>Your data may be processed in countries other than your own, including by our service "
+    "providers. Where required, we rely on appropriate safeguards (such as standard contractual "
+    "clauses) for these transfers.</p>"
+
+    "<h2>11. Children</h2>"
+    "<p>The Service is not directed to children under 16, and we do not knowingly collect their "
+    "personal data. If you believe a child has provided us data, contact us and we will delete it.</p>"
+
+    "<h2>12. Changes to this policy</h2>"
+    "<p>We may update this Privacy Policy from time to time. We will revise the \"Last updated\" date "
+    "above and, where changes are material, take reasonable steps to notify you. Continued use of the "
+    "Service after changes means you accept the updated policy.</p>"
+
+    "<h2>13. Contact us</h2>"
+    "<p>Questions about this policy or your data? Email "
+    "<a href='mailto:" + LEGAL_CONTACT_EMAIL + "'>" + LEGAL_CONTACT_EMAIL + "</a> or visit our "
+    "<a href='/contact'>contact page</a>.</p>"
+)
+
+
+_TERMS_BODY = (
+    "<div class='legal-card'><p>These Terms of Service (\"Terms\") govern your access to and use of "
+    "theTailorCV website at <strong>www.thetailorcv.com</strong> and its AI resume tools (the "
+    "\"Service\"), operated by theTailorCV (\"we\", \"us\" or \"our\"). By creating an account or "
+    "using the Service, you agree to these Terms. If you do not agree, do not use the Service.</p></div>"
+
+    "<h2>1. The Service</h2>"
+    "<p>theTailorCV provides AI-assisted resume optimization, ATS scoring, cover-letter generation, "
+    "LinkedIn import, interview preparation and related career tools. Features and limits may change "
+    "as we improve the Service.</p>"
+
+    "<h2>2. Eligibility &amp; accounts</h2>"
+    "<p>You must be at least 16 years old and able to form a binding contract to use the Service. You "
+    "are responsible for the accuracy of your account information, for keeping your password "
+    "confidential, and for all activity under your account. Notify us promptly of any unauthorized "
+    "use.</p>"
+
+    "<h2>3. Acceptable use</h2>"
+    "<p>You agree not to:</p>"
+    "<ul>"
+    "<li>Use the Service for any unlawful, fraudulent or harmful purpose;</li>"
+    "<li>Upload content you do not have the right to use, or content that is false, defamatory or "
+    "infringes others' rights;</li>"
+    "<li>Attempt to disrupt, overload, reverse-engineer, scrape or gain unauthorized access to the "
+    "Service or its systems;</li>"
+    "<li>Resell, sublicense or abuse the Service or circumvent usage limits or paywalls.</li>"
+    "</ul>"
+
+    "<h2>4. Plans, billing &amp; Merchant of Record</h2>"
+    "<p>The Service offers a free tier and paid plans (one-time passes and recurring monthly/yearly "
+    "subscriptions). Current prices and inclusions are shown on our <a href='/pricing'>pricing page</a>.</p>"
+    "<ul>"
+    "<li><strong>Merchant of Record:</strong> Payments are processed by <strong>Paddle</strong> "
+    "(Paddle.com Market Limited), which acts as the Merchant of Record for purchases on theTailorCV. "
+    "Paddle handles payment, invoicing and applicable taxes. Your purchase is also subject to Paddle's "
+    "buyer terms.</li>"
+    "<li><strong>Recurring subscriptions:</strong> Monthly and yearly plans renew automatically at the "
+    "end of each billing period at the then-current price until you cancel. You can cancel at any time; "
+    "access continues until the end of the paid period.</li>"
+    "<li><strong>One-time passes:</strong> A weekly pass grants access for its stated duration and does "
+    "not auto-renew.</li>"
+    "<li><strong>Refunds:</strong> Refunds are handled as described in our <a href='/refund'>Refund "
+    "Policy</a>.</li>"
+    "</ul>"
+
+    "<h2>5. Free tier &amp; usage limits</h2>"
+    "<p>We may offer certain features for free with usage limits (for example, a limited number of "
+    "free uses of paid tools). We may change these limits at any time. Attempting to bypass limits is "
+    "a breach of these Terms.</p>"
+
+    "<h2>6. Your content &amp; license</h2>"
+    "<p>You retain ownership of the resumes, job descriptions and other content you submit (\"Your "
+    "Content\"). You grant us a limited, non-exclusive license to process Your Content solely to "
+    "operate and provide the Service to you (including sending it to our AI processors to generate "
+    "your results). You are responsible for ensuring you have the rights to the content you submit.</p>"
+
+    "<h2>7. AI-generated output &amp; no guarantee</h2>"
+    "<p>The Service uses automated AI systems. Output (scores, optimized text, cover letters, "
+    "interview answers) is provided for your assistance and may contain errors or inaccuracies. "
+    "<strong>We do not guarantee any specific result</strong> — including ATS pass rates, interviews, "
+    "or employment. You are responsible for reviewing and editing any output before using it.</p>"
+
+    "<h2>8. Intellectual property</h2>"
+    "<p>The Service, including its software, design, branding and content (excluding Your Content), is "
+    "owned by theTailorCV and protected by intellectual-property laws. We grant you a limited, "
+    "revocable, non-transferable license to use the Service for its intended purpose. You may not copy "
+    "or exploit it beyond that license.</p>"
+
+    "<h2>9. Disclaimers</h2>"
+    "<p>The Service is provided on an \"as is\" and \"as available\" basis, without warranties of any "
+    "kind, express or implied, including merchantability, fitness for a particular purpose and "
+    "non-infringement. We do not warrant that the Service will be uninterrupted, secure or error-free.</p>"
+
+    "<h2>10. Limitation of liability</h2>"
+    "<p>To the maximum extent permitted by law, theTailorCV and its team will not be liable for any "
+    "indirect, incidental, special, consequential or punitive damages, or loss of profits, data or "
+    "opportunities, arising from your use of the Service. Our total liability for any claim will not "
+    "exceed the amount you paid us in the three (3) months before the claim arose.</p>"
+
+    "<h2>11. Termination</h2>"
+    "<p>You may stop using the Service and delete your account at any time. We may suspend or terminate "
+    "your access if you breach these Terms or use the Service in a way that risks harm to others or to "
+    "the Service. Provisions that by their nature should survive termination (e.g. IP, disclaimers, "
+    "liability) will survive.</p>"
+
+    "<h2>12. Governing law</h2>"
+    "<p>These Terms are governed by the laws of India, without regard to conflict-of-laws principles. "
+    "Disputes will be subject to the courts of competent jurisdiction in India, unless applicable "
+    "consumer-protection law in your country grants you other rights.</p>"
+
+    "<h2>13. Changes to these Terms</h2>"
+    "<p>We may update these Terms from time to time. We will update the \"Last updated\" date and, for "
+    "material changes, take reasonable steps to notify you. Continued use after changes take effect "
+    "means you accept the revised Terms.</p>"
+
+    "<h2>14. Contact</h2>"
+    "<p>Questions about these Terms? Email <a href='mailto:" + LEGAL_CONTACT_EMAIL + "'>"
+    + LEGAL_CONTACT_EMAIL + "</a> or use our <a href='/contact'>contact page</a>.</p>"
+)
+
+
+_REFUND_BODY = (
+    "<div class='legal-card'><p>This Refund Policy explains how refunds and cancellations work for "
+    "paid plans on theTailorCV (<strong>www.thetailorcv.com</strong>). Payments are processed by "
+    "<strong>Paddle</strong> (Paddle.com Market Limited), our Merchant of Record. We want you to be "
+    "satisfied — if something isn't right, contact us and we'll help.</p></div>"
+
+    "<h2>1. 7-day money-back guarantee</h2>"
+    "<p>If you are not satisfied with a paid subscription, you may request a full refund within "
+    "<strong>7 days</strong> of your initial purchase or of a renewal charge. To qualify, email us at "
+    "<a href='mailto:" + LEGAL_CONTACT_EMAIL + "'>" + LEGAL_CONTACT_EMAIL + "</a> from your account "
+    "email within that window. Refunds within this period are granted in good faith and at our "
+    "reasonable discretion, particularly where the Service has only been used minimally.</p>"
+
+    "<h2>2. How to request a refund</h2>"
+    "<ul>"
+    "<li>Email <a href='mailto:" + LEGAL_CONTACT_EMAIL + "'>" + LEGAL_CONTACT_EMAIL + "</a> with the "
+    "subject \"Refund request\".</li>"
+    "<li>Include the email address on your account and the approximate date of the charge (an order "
+    "or receipt ID from Paddle helps us locate it faster).</li>"
+    "<li>We aim to respond within <strong>2 business days</strong>.</li>"
+    "</ul>"
+
+    "<h2>3. How refunds are processed</h2>"
+    "<p>Approved refunds are issued by Paddle to your original payment method. Once approved, it "
+    "typically takes <strong>5–10 business days</strong> for the funds to appear, depending on your "
+    "bank or card provider. You will receive confirmation from Paddle.</p>"
+
+    "<h2>4. Cancellations</h2>"
+    "<p>You can cancel a recurring subscription at any time from your account or by contacting us. "
+    "When you cancel:</p>"
+    "<ul>"
+    "<li>Your subscription will not renew for the next billing period.</li>"
+    "<li>You keep access to paid features until the end of the period you have already paid for.</li>"
+    "<li>Cancelling stops future charges; by itself it does not refund the current period (see section "
+    "1 for the 7-day window).</li>"
+    "</ul>"
+
+    "<h2>5. Non-refundable items</h2>"
+    "<p>Except where required by law or covered by the 7-day guarantee above, the following are "
+    "generally non-refundable:</p>"
+    "<ul>"
+    "<li>One-time passes (e.g. the weekly pass) once they have been used or after their access period "
+    "has begun;</li>"
+    "<li>Subscription periods that have already substantially been used;</li>"
+    "<li>Renewal charges where the refund is requested more than 7 days after the charge.</li>"
+    "</ul>"
+
+    "<h2>6. Your statutory rights</h2>"
+    "<p>Nothing in this policy limits any non-waivable refund or cancellation rights you may have "
+    "under the consumer-protection laws of your country. Where such laws give you stronger rights, "
+    "those rights apply.</p>"
+
+    "<h2>7. Contact</h2>"
+    "<p>For any billing or refund question, email <a href='mailto:" + LEGAL_CONTACT_EMAIL + "'>"
+    + LEGAL_CONTACT_EMAIL + "</a>. We're happy to help.</p>"
 )
 
 
 @app.get("/privacy", response_class=HTMLResponse, include_in_schema=False)
 async def privacy_page():
-    return HTMLResponse(_LEGAL_PAGE.format(
-        title="Privacy Policy",
-        body="<p>We respect your privacy. theTailorCV stores only the information needed to provide "
-             "resume optimization, ATS scoring, cover letters and job-application features. We do not "
-             "sell your data. Contact us to request deletion of your account and data.</p>",
-    ))
+    return _render_legal("Privacy Policy", _PRIVACY_BODY)
 
 
 @app.get("/terms", response_class=HTMLResponse, include_in_schema=False)
 async def terms_page():
-    return HTMLResponse(_LEGAL_PAGE.format(
-        title="Terms of Service",
-        body="<p>By using theTailorCV you agree to use the service lawfully and not to misuse the "
-             "tools or attempt to disrupt the platform. The service is provided as-is. We may update "
-             "these terms; continued use constitutes acceptance.</p>",
-    ))
+    return _render_legal("Terms of Service", _TERMS_BODY)
+
+
+@app.get("/refund", response_class=HTMLResponse, include_in_schema=False)
+async def refund_page():
+    return _render_legal("Refund Policy", _REFUND_BODY)
 
 
 @app.get("/api/my-resumes/count", include_in_schema=False)
