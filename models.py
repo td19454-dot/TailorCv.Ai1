@@ -14,11 +14,6 @@ class User(Base):
     email = Column(String(255), unique=True, index=True, nullable=False)
     hashed_password = Column("password", String(255), nullable=False)
 
-    # Subscription / billing
-    pro_until = Column(DateTime, nullable=True)                        # Pro iff pro_until > utcnow()
-    plan_provider = Column(String(20), nullable=True)                  # "razorpay"
-    razorpay_subscription_id = Column(String(100), nullable=True)
-
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
     job_applications = relationship("JobApplication", back_populates="user", cascade="all, delete-orphan")
@@ -145,8 +140,6 @@ class UsageRecord(Base):
     ai_optimizations = Column(Integer, default=0, nullable=False)
     mock_interviews = Column(Integer, default=0, nullable=False)
     interview_questions = Column(Integer, default=0, nullable=False)
-    cover_letters = Column(Integer, default=0, nullable=False)
-    linkedin_imports = Column(Integer, default=0, nullable=False)
 
     __table_args__ = (UniqueConstraint("user_id", "month", name="uq_user_month"),)
 
