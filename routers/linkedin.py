@@ -3,6 +3,7 @@ import json
 import os
 import re
 import secrets
+from datetime import datetime
 from urllib.parse import urlencode
 
 import httpx
@@ -10,8 +11,50 @@ from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.responses import RedirectResponse
 from openai import AsyncOpenAI
 from pydantic import BaseModel
+from sqlalchemy import func
 
 router = APIRouter()
+
+
+def _enforce_linkedin_quota(request: Request):
+    """Login check + lifetime '1 free linkedin import' quota. Raises 401/402 as needed."""
+    from database import SessionLocal
+    from models import User, UsageRecord
+
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+
+    db = SessionLocal()
+    try:
+        user = db.query(User).filter_by(id=user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        # Pro check — bypass quota
+        if user.pro_until and user.pro_until > datetime.utcnow():
+            return
+        # Lifetime usage sum across all months
+        used = (
+            db.query(func.coalesce(func.sum(UsageRecord.linkedin_imports), 0))
+            .filter(UsageRecord.user_id == user.id)
+            .scalar() or 0
+        )
+        if used >= 1:
+            raise HTTPException(
+                status_code=402,
+                detail={"error": "upgrade_required", "feature": "linkedin_imports"},
+            )
+        # Increment current month's counter
+        month = datetime.utcnow().strftime("%Y-%m")
+        rec = db.query(UsageRecord).filter_by(user_id=user.id, month=month).first()
+        if not rec:
+            rec = UsageRecord(user_id=user.id, month=month)
+            db.add(rec)
+            db.flush()
+        rec.linkedin_imports = (rec.linkedin_imports or 0) + 1
+        db.commit()
+    finally:
+        db.close()
 
 
 class LinkedInParseRequest(BaseModel):
@@ -430,7 +473,8 @@ async def linkedin_oauth_profile(request: Request):
 
 
 @router.post("/api/linkedin-parse")
-async def parse_linkedin(body: LinkedInParseRequest):
+async def parse_linkedin(body: LinkedInParseRequest, request: Request):
+    _enforce_linkedin_quota(request)
     raw_text = (body.text or "").strip()
     api_key = os.getenv("OPENAI_API_KEY", "").strip()
     if not api_key:
@@ -558,7 +602,8 @@ async def _fetch_rapidapi_profile(linkedin_url: str, rapidapi_key: str, attempts
 
 
 @router.post("/api/linkedin-import")
-async def import_linkedin(body: LinkedInImportRequest):
+async def import_linkedin(body: LinkedInImportRequest, request: Request):
+    _enforce_linkedin_quota(request)
     linkedin_url = (body.url or "").strip()
     if "linkedin.com/in/" not in linkedin_url:
         raise HTTPException(status_code=400, detail="Please enter a valid LinkedIn profile URL.")
