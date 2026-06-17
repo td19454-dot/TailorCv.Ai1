@@ -4478,23 +4478,18 @@ _LEGAL_PAGE = (
 
 
 @app.get("/privacy", response_class=HTMLResponse, include_in_schema=False)
-async def privacy_page():
-    return HTMLResponse(_LEGAL_PAGE.format(
-        title="Privacy Policy",
-        body="<p>We respect your privacy. theTailorCV stores only the information needed to provide "
-             "resume optimization, ATS scoring, cover letters and job-application features. We do not "
-             "sell your data. Contact us to request deletion of your account and data.</p>",
-    ))
+async def privacy_page(request: Request):
+    return templates.TemplateResponse(request, "privacy.html", {"request": request})
 
 
 @app.get("/terms", response_class=HTMLResponse, include_in_schema=False)
-async def terms_page():
-    return HTMLResponse(_LEGAL_PAGE.format(
-        title="Terms of Service",
-        body="<p>By using theTailorCV you agree to use the service lawfully and not to misuse the "
-             "tools or attempt to disrupt the platform. The service is provided as-is. We may update "
-             "these terms; continued use constitutes acceptance.</p>",
-    ))
+async def terms_page(request: Request):
+    return templates.TemplateResponse(request, "terms.html", {"request": request})
+
+
+@app.get("/refund", response_class=HTMLResponse, include_in_schema=False)
+async def refund_page(request: Request):
+    return templates.TemplateResponse(request, "refund.html", {"request": request})
 
 
 @app.get("/api/my-resumes/count", include_in_schema=False)
