@@ -17,9 +17,91 @@
         });
       }
     }
-    return _origFetch(input, init);
+    return _origFetch(input, init).then(function (response) {
+      if (response.status === 402) {
+        response.clone().json().then(function (body) {
+          if (body && body.error === "upgrade_required") {
+            showUpgradeModal(body.feature);
+          }
+        }).catch(function () {});
+      }
+      return response;
+    });
   };
 })();
+
+// ── Upgrade paywall modal ──────────────────────────────────────────────────
+var _upgradeModalOpen = false;
+
+var FEATURE_LABELS = {
+  ai_optimizations:   "Resume Optimization",
+  cover_letters:      "Cover Letter",
+  linkedin_imports:   "LinkedIn Import",
+  mock_interviews:    "Mock Interview",
+  interview_questions:"Interview Questions",
+};
+
+function showUpgradeModal(feature) {
+  if (_upgradeModalOpen) return;
+  _upgradeModalOpen = true;
+  var label = FEATURE_LABELS[feature] || "this feature";
+
+  // Inject modal styles once
+  if (!document.getElementById("tc-upgrade-style")) {
+    var s = document.createElement("style");
+    s.id = "tc-upgrade-style";
+    s.textContent = [
+      "#tc-upgrade-overlay{position:fixed;inset:0;z-index:999998;background:rgba(2,8,28,.72);",
+      "backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;",
+      "animation:tcUpFadeIn .22s ease;}",
+      "#tc-upgrade-modal{background:linear-gradient(155deg,#0e1a3a,#091228);",
+      "border:1px solid rgba(56,189,248,.35);border-radius:20px;padding:2rem 2.2rem;",
+      "max-width:420px;width:90%;box-shadow:0 32px 64px rgba(0,6,22,.7),0 0 0 1px rgba(56,189,248,.15);",
+      "position:relative;animation:tcUpSlideUp .28s ease;}",
+      "#tc-upgrade-modal h2{font-size:1.35rem;font-weight:800;color:#f1f8ff;margin:0 0 .6rem;}",
+      "#tc-upgrade-modal p{font-size:.92rem;color:#94a3b8;margin:0 0 1.4rem;line-height:1.55;}",
+      "#tc-upgrade-modal strong{color:#7dd3fc;}",
+      ".tc-up-actions{display:flex;gap:.75rem;flex-wrap:wrap;}",
+      ".tc-up-btn{flex:1;min-width:120px;padding:.65rem 1rem;border-radius:10px;font-size:.9rem;",
+      "font-weight:700;cursor:pointer;border:none;text-align:center;text-decoration:none;",
+      "display:inline-flex;align-items:center;justify-content:center;}",
+      ".tc-up-primary{background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;",
+      "box-shadow:0 4px 14px rgba(37,99,235,.4);}",
+      ".tc-up-primary:hover{opacity:.9;}",
+      ".tc-up-secondary{background:transparent;color:#64748b;border:1px solid rgba(100,116,139,.3);}",
+      ".tc-up-secondary:hover{color:#94a3b8;border-color:rgba(100,116,139,.55);}",
+      ".tc-up-close{position:absolute;top:12px;right:14px;background:none;border:none;",
+      "color:#475569;font-size:20px;cursor:pointer;line-height:1;padding:2px 6px;}",
+      ".tc-up-close:hover{color:#94a3b8;}",
+      "@keyframes tcUpFadeIn{from{opacity:0}to{opacity:1}}",
+      "@keyframes tcUpSlideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}",
+    ].join("");
+    document.head.appendChild(s);
+  }
+
+  var overlay = document.createElement("div");
+  overlay.id = "tc-upgrade-overlay";
+  overlay.innerHTML =
+    '<div id="tc-upgrade-modal">' +
+      '<button class="tc-up-close" aria-label="Close">&times;</button>' +
+      '<h2>Upgrade to Pro</h2>' +
+      '<p>You\'ve used your <strong>1 free ' + label + '</strong>.<br>' +
+      'Upgrade for unlimited access to all Pro features.</p>' +
+      '<div class="tc-up-actions">' +
+        '<a class="tc-up-btn tc-up-primary" href="/pricing">See Plans &rarr;</a>' +
+        '<button class="tc-up-btn tc-up-secondary" id="tcUpDismiss">Maybe later</button>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  function closeModal() {
+    overlay.remove();
+    _upgradeModalOpen = false;
+  }
+  overlay.querySelector(".tc-up-close").addEventListener("click", closeModal);
+  overlay.querySelector("#tcUpDismiss").addEventListener("click", closeModal);
+  overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+}
 
 (function () {
   function getStoredUser() {
