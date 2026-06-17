@@ -68,11 +68,12 @@
             + '<a class="tcv-top-logo" href="/dashboard"><img src="/static/logo6.png" alt="theTailorCV"></a>'
             + '<div class="tcv-top-right">'
             + '<div class="tcv-profile">'
-            +   '<button class="tcv-avatar" id="tcvAvatarBtn" aria-haspopup="true" aria-expanded="false">' + initial + '</button>'
+            +   '<button class="tcv-avatar" aria-haspopup="true" aria-expanded="false">' + initial + '</button>'
             +   '<div class="tcv-profile-menu">'
             +     '<div class="tcv-profile-head"><span class="tcv-pf-av">' + initial + '</span>'
             +       '<div class="tcv-pf-id"><strong>' + esc(user.name || "User") + '</strong><small>' + esc(user.email || "") + '</small></div></div>'
-            +     '<div id="tcvProLinks"><a class="tcv-pf-link" href="/pricing">Upgrade to Pro</a></div>'
+            +     '<a class="tcv-pf-link" href="/pricing">Get free scans</a>'
+            +     '<a class="tcv-pf-link" href="/pricing">Account Settings</a>'
             +     '<a class="tcv-pf-link" href="/privacy">Privacy Policy</a>'
             +     '<a class="tcv-pf-link" href="/terms">Terms</a>'
             +     '<a class="tcv-pf-link" href="#" id="tcvProfileLogout">Log out</a>'
@@ -139,48 +140,6 @@
         if (pLogout) pLogout.addEventListener("click", doLogout);
     }
 
-    function applyProStatus(isPro) {
-        // Avatar badge
-        var btn = document.getElementById("tcvAvatarBtn");
-        if (btn && isPro && !btn.querySelector(".tcv-pro-badge")) {
-            var badge = document.createElement("span");
-            badge.className = "tcv-pro-badge";
-            badge.textContent = "Pro";
-            btn.appendChild(badge);
-        }
-        // Profile menu links
-        var linksDiv = document.getElementById("tcvProLinks");
-        if (!linksDiv) return;
-        if (isPro) {
-            linksDiv.innerHTML =
-                '<span class="tcv-pf-link" style="color:#7dd3fc;font-weight:700;cursor:default;">Pro ✓</span>'
-                + '<a class="tcv-pf-link" href="/pricing">Manage subscription</a>';
-        } else {
-            linksDiv.innerHTML = '<a class="tcv-pf-link" href="/pricing">Upgrade to Pro</a>';
-        }
-
-        // Inject badge style if needed
-        if (!document.getElementById("tcv-pro-badge-style")) {
-            var s = document.createElement("style");
-            s.id = "tcv-pro-badge-style";
-            s.textContent =
-                ".tcv-pro-badge{position:absolute;top:-5px;right:-7px;background:linear-gradient(135deg,#2563eb,#0ea5e9);" +
-                "color:#fff;font-size:.56rem;font-weight:800;letter-spacing:.04em;border-radius:999px;" +
-                "padding:1px 5px;line-height:1.5;pointer-events:none;}" +
-                "#tcvAvatarBtn{position:relative;}";
-            document.head.appendChild(s);
-        }
-    }
-
-    function fetchProStatus() {
-        fetch("/api/auth/me", { headers: { "X-Requested-With": "XMLHttpRequest" } })
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (d) {
-                if (d) applyProStatus(!!d.is_pro);
-            })
-            .catch(function () {});
-    }
-
-    if (document.body) { build(); fetchProStatus(); }
-    else document.addEventListener("DOMContentLoaded", function () { build(); fetchProStatus(); });
+    if (document.body) build();
+    else document.addEventListener("DOMContentLoaded", build);
 })();

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Simple, transparent pricing for theTailorCV. Free ATS scoring forever. Pro unlocks unlimited AI resume optimization, cover letters, mock interviews and more.">
+    <meta name="description" content="theTailorCV is completely free right now. Get ATS scoring, AI resume optimization, mock interviews, and more — no credit card needed.">
     <title>Pricing | theTailorCV</title>
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/header-footer.css">
@@ -12,162 +12,35 @@
     <link rel="stylesheet" href="/static/pricing.css">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <style>
-        .navbar .nav-links { min-width: 560px; gap: 2px; }
-        .navbar .nav-links .nav-link { font-size: 19px; padding: 18px 10px; letter-spacing: 0; }
+        .navbar .nav-links {
+            min-width: 560px;
+            gap: 2px;
+        }
+        .navbar .nav-links .nav-link {
+            font-size: 19px;
+            padding: 18px 10px;
+            letter-spacing: 0;
+        }
         .navbar #auth-nav-slot .login {
-            display: inline-flex; align-items: center; justify-content: center;
-            padding: 10px 16px; border-radius: 10px;
-            border: 1px solid rgba(59,130,246,.45);
-            background: linear-gradient(135deg,rgba(51,146,255,.2),rgba(76,29,149,.22));
-            color: #e7f0ff; font-weight: 700; font-size: .9rem; text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(59, 130, 246, 0.45);
+            background: linear-gradient(135deg, rgba(51,146,255,.2), rgba(76,29,149,.22));
+            color: #e7f0ff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
             transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
         }
         .navbar #auth-nav-slot .login:hover {
-            transform: translateY(-1px); border-color: rgba(96,165,250,.8);
-            box-shadow: 0 10px 24px rgba(30,64,175,.3);
+            transform: translateY(-1px);
+            border-color: rgba(96, 165, 250, 0.8);
+            box-shadow: 0 10px 24px rgba(30, 64, 175, 0.3);
         }
         html, body { overflow-x: hidden; }
-
-        /* ── Plan grid ─────────────────────────────── */
-        .plan-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
-            margin-bottom: 2rem;
-        }
-        @media (max-width: 1100px) { .plan-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px)  { .plan-grid { grid-template-columns: 1fr; } }
-
-        .plan-card {
-            position: relative;
-            background: linear-gradient(155deg, rgba(18,34,76,.92), rgba(14,22,60,.9));
-            border: 1px solid rgba(125,211,252,.22);
-            border-radius: 18px;
-            padding: 1.6rem 1.4rem;
-            display: flex;
-            flex-direction: column;
-            gap: .6rem;
-            transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
-            animation: pricingFadeUp .85s ease-out both;
-        }
-        .plan-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 22px 44px rgba(0,10,36,.38), 0 0 0 1px rgba(96,165,250,.28);
-            border-color: rgba(96,165,250,.4);
-        }
-        .plan-card.popular {
-            border-color: rgba(56,189,248,.5);
-            background: linear-gradient(155deg, rgba(11,42,95,.95), rgba(7,52,100,.92));
-            box-shadow: 0 0 0 1px rgba(56,189,248,.25), 0 18px 36px rgba(0,24,56,.34);
-        }
-        .plan-card.popular:hover {
-            box-shadow: 0 24px 48px rgba(0,20,50,.42), 0 0 0 1px rgba(56,189,248,.45);
-        }
-        .plan-badge {
-            display: inline-block;
-            font-size: .72rem;
-            font-weight: 700;
-            letter-spacing: .05em;
-            border-radius: 999px;
-            padding: 3px 11px;
-            margin-bottom: .3rem;
-            width: fit-content;
-        }
-        .badge-popular { background: rgba(56,189,248,.18); color: #7dd3fc; border: 1px solid rgba(56,189,248,.4); }
-        .badge-value   { background: rgba(99,102,241,.18); color: #a5b4fc; border: 1px solid rgba(99,102,241,.4); }
-        .badge-pass    { background: rgba(16,185,129,.14); color: #6ee7b7; border: 1px solid rgba(16,185,129,.35); }
-
-        .plan-name {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #f1f8ff;
-            margin: 0;
-        }
-        .plan-tagline {
-            font-size: .82rem;
-            color: #94a3b8;
-            margin: 0 0 .4rem;
-        }
-        .plan-price {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: #f8fbff;
-            line-height: 1;
-            margin: 0;
-        }
-        .plan-price sup { font-size: 1.1rem; font-weight: 700; vertical-align: super; }
-        .plan-price-period {
-            font-size: .82rem;
-            color: #94a3b8;
-            margin: .15rem 0 .8rem;
-        }
-        .plan-features {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: .4rem;
-            flex: 1;
-        }
-        .plan-features li {
-            font-size: .88rem;
-            color: #cbd5e1;
-            padding-left: 1.4rem;
-            position: relative;
-        }
-        .plan-features li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: .52em;
-            width: 7px;
-            height: 7px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #38bdf8, #22d3ee);
-        }
-        .plan-features li.muted { color: #64748b; }
-        .plan-features li.muted::before { background: #334155; }
-
-        .plan-btn {
-            display: block;
-            width: 100%;
-            margin-top: 1.1rem;
-            padding: .7rem 1rem;
-            border-radius: 10px;
-            border: none;
-            font-size: .92rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease;
-        }
-        .plan-btn-primary {
-            background: linear-gradient(135deg, #2563eb, #0ea5e9);
-            color: #fff;
-            box-shadow: 0 4px 14px rgba(37,99,235,.35);
-        }
-        .plan-btn-primary:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,.4); }
-        .plan-btn-ghost {
-            background: transparent;
-            color: #64748b;
-            border: 1px solid rgba(100,116,139,.3);
-        }
-        .plan-btn-ghost:hover { border-color: rgba(100,116,139,.6); color: #94a3b8; }
-
-        /* upgrade success banner */
-        .upgrade-banner {
-            display: none;
-            background: linear-gradient(90deg, rgba(16,185,129,.18), rgba(5,150,105,.12));
-            border: 1px solid rgba(16,185,129,.4);
-            border-radius: 12px;
-            padding: .9rem 1.2rem;
-            margin-bottom: 1.5rem;
-            color: #6ee7b7;
-            font-weight: 600;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -175,243 +48,129 @@
 
     <main class="solutions-section pricing-page">
         <div class="container">
+       
 
-            <!-- Header -->
-            <div class="solutions-header" style="text-align:center;margin-bottom:1.8rem;">
-                <h1 class="solutions-title">Simple, honest pricing</h1>
-                <p class="solutions-subtitle">ATS scoring is free forever. Upgrade for unlimited AI power.</p>
-            </div>
-
-            <!-- Upgrade success banner -->
-            <div class="upgrade-banner" id="upgradeBanner">
-                You're now Pro! Enjoy unlimited access to all features.
-            </div>
-
-            <!-- Plan grid -->
-            <div class="plan-grid">
-
-                <!-- Free -->
-                <div class="plan-card" style="animation-delay:.05s">
-                    <div>
-                        <p class="plan-name">Free</p>
-                        <p class="plan-tagline">Always free, no card needed</p>
-                    </div>
-                    <p class="plan-price"><sup>₹</sup>0</p>
-                    <p class="plan-price-period">forever</p>
-                    <ul class="plan-features">
-                        <li>ATS score — <strong>unlimited</strong></li>
-                        <li>1 free resume optimization</li>
-                        <li>1 free cover letter</li>
-                        <li>1 free mock interview</li>
-                        <li>1 free LinkedIn import</li>
-                        <li>All templates &amp; downloads</li>
-                    </ul>
-                    <a href="/ats-analysis" class="plan-btn plan-btn-ghost">Start free</a>
+           <section class="form-card pricing-plan-card">
+                <h2 class="form-title">Early Access Plan</h2>
+                <p class="solutions-title pricing-price-tag">$0</p>
+                <p class="solutions-subtitle pricing-price-subtitle">Free for a limited time</p>
+                <ul class="results-content pricing-clean-list">
+                    <li>Unlimited resumes</li>
+                    <li>Professional templates</li>
+                    <li>ATS-friendly format</li>
+                    <li>Instant download</li>
+                    <li>No watermark</li>
+                </ul>
+                <div class="form-actions pricing-hero-actions pricing-actions-tight">
+                    <a href="/" class="btn btn-primary pricing-btn-link">Start Building</a>
                 </div>
-
-                <!-- Weekly pass -->
-                <div class="plan-card" style="animation-delay:.12s">
-                    <div>
-                        <span class="plan-badge badge-pass">Just job-hunting?</span>
-                        <p class="plan-name">7-Day Pass</p>
-                        <p class="plan-tagline">One-time, no auto-renew</p>
-                    </div>
-                    <p class="plan-price"><sup>₹</sup>149</p>
-                    <p class="plan-price-period">one time · 7 days Pro</p>
-                    <ul class="plan-features">
-                        <li>Everything in Pro</li>
-                        <li>Unlimited optimize &amp; cover letters</li>
-                        <li>Unlimited mock interviews</li>
-                        <li>LinkedIn import unlimited</li>
-                        <li>7-day access</li>
-                        <li class="muted">No subscription</li>
-                    </ul>
-                    <button class="plan-btn plan-btn-primary" onclick="checkout('weekly')">Get 7-day pass</button>
-                </div>
-
-                <!-- Monthly — most popular -->
-                <div class="plan-card popular" style="animation-delay:.19s">
-                    <div>
-                        <span class="plan-badge badge-popular">Most Popular</span>
-                        <p class="plan-name">Monthly Pro</p>
-                        <p class="plan-tagline">Cancel any time</p>
-                    </div>
-                    <p class="plan-price"><sup>₹</sup>299</p>
-                    <p class="plan-price-period">per month</p>
-                    <ul class="plan-features">
-                        <li>Everything in Pro</li>
-                        <li>Unlimited optimize &amp; cover letters</li>
-                        <li>Unlimited mock interviews</li>
-                        <li>LinkedIn import unlimited</li>
-                        <li>Priority processing</li>
-                        <li>Cancel any time</li>
-                    </ul>
-                    <button class="plan-btn plan-btn-primary" onclick="checkout('monthly')">Get Monthly Pro</button>
-                </div>
-
-                <!-- Yearly — best value -->
-                <div class="plan-card" style="animation-delay:.26s">
-                    <div>
-                        <span class="plan-badge badge-value">Best Value</span>
-                        <p class="plan-name">Yearly Pro</p>
-                        <p class="plan-tagline">~44% off · 2 months free</p>
-                    </div>
-                    <p class="plan-price"><sup>₹</sup>1,999</p>
-                    <p class="plan-price-period">per year · ≈ ₹167/mo</p>
-                    <ul class="plan-features">
-                        <li>Everything in Pro</li>
-                        <li>Unlimited optimize &amp; cover letters</li>
-                        <li>Unlimited mock interviews</li>
-                        <li>LinkedIn import unlimited</li>
-                        <li>Priority processing</li>
-                        <li>Best price — 2 months free</li>
-                    </ul>
-                    <button class="plan-btn plan-btn-primary" onclick="checkout('yearly')">Get Yearly Pro</button>
-                </div>
-
-            </div><!-- /plan-grid -->
-
-            <!-- What's in Pro -->
-            <section class="form-card" style="margin-bottom:1.5rem;">
-                <h2 class="form-title">What's included in Pro</h2>
-                <div class="features-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:.8rem;">
-                    <div>
-                        <p class="results-title" style="font-size:1rem;font-weight:700;margin-bottom:.3rem;">Resume Optimizer</p>
-                        <p class="results-content" style="font-size:.88rem;">AI tailors your resume to any job description, beats ATS filters.</p>
-                    </div>
-                    <div>
-                        <p class="results-title" style="font-size:1rem;font-weight:700;margin-bottom:.3rem;">Cover Letter AI</p>
-                        <p class="results-content" style="font-size:.88rem;">Personalised cover letters matched to each role in seconds.</p>
-                    </div>
-                    <div>
-                        <p class="results-title" style="font-size:1rem;font-weight:700;margin-bottom:.3rem;">Mock Interviews</p>
-                        <p class="results-content" style="font-size:.88rem;">AI interviewer gives real-time feedback on your answers.</p>
-                    </div>
-                    <div>
-                        <p class="results-title" style="font-size:1rem;font-weight:700;margin-bottom:.3rem;">LinkedIn Import</p>
-                        <p class="results-content" style="font-size:.88rem;">Pull your profile into a polished resume in one click.</p>
-                    </div>
-                    <div>
-                        <p class="results-title" style="font-size:1rem;font-weight:700;margin-bottom:.3rem;">ATS Score — always free</p>
-                        <p class="results-content" style="font-size:.88rem;">See how your resume scores against any JD — no paywall, ever.</p>
-                    </div>
-                </div>
+                <p class="results-content pricing-note">Free during early access</p>
             </section>
 
-            <!-- FAQ -->
+            <section class="form-card pricing-compare-section">
+                <h2 class="form-title">TheTailorCV vs Other Builders</h2>
+                <div class="features-grid pricing-compare-grid">
+                    <article class="results-card pricing-compare-card pricing-compare-card-other">
+                        <div class="results-header pricing-compare-header">
+                            <h3 class="results-title pricing-compare-title">Other Resume Builders</h3>
+                        </div>
+                        <ul class="results-content pricing-bullet-list pricing-compare-list">
+                            <li>Pay to download</li>
+                            <li>Locked features</li>
+                            <li>Hidden fees</li>
+                        </ul>
+                    </article>
+                    <article class="results-card pricing-compare-card pricing-compare-card-us">
+                        <div class="results-header pricing-compare-header">
+                            <h3 class="results-title pricing-compare-title">TheTailorCV</h3>
+                        </div>
+                        <ul class="results-content pricing-bullet-list pricing-compare-list">
+                            <li>Everything unlocked</li>
+                            <li>Free during early access</li>
+                            <li>Instant access</li>
+                        </ul>
+                    </article>
+                </div>
+                <p class="manual-cv-description pricing-highlight-line pricing-compare-footnote">Others: pay to unlock &#x274C; &nbsp;|&nbsp; Us: already unlocked &#x2705;</p>
+            </section>
+
+            <section class="form-card">
+                <h2 class="form-title">We're currently in early access.</h2>
+                <p class="results-content">
+                   Our goal is to help as many job seekers as possible while we improve the product.
+Your feedback helps us build something truly valuable.
+                </p>
+                <p class="manual-cv-description pricing-highlight-line">Paid plans will be introduced later with more advanced features.</p>
+            </section>
+
+            <section class="form-card" style="border:1px solid rgba(99,102,241,0.35);background:rgba(99,102,241,0.06);">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                    <span style="background:rgba(99,102,241,0.2);color:#a5b4fc;border:1px solid rgba(99,102,241,0.4);border-radius:999px;padding:3px 12px;font-size:12px;font-weight:700;letter-spacing:.05em;">COMING SOON</span>
+                </div>
+                <h2 class="form-title" style="margin-bottom:8px;">$5 / month &mdash; Paid Plan</h2>
+                <p class="results-content">
+                    A paid plan at <strong>$5&nbsp;/&nbsp;month</strong> is planned for approximately 3&nbsp;months from now.
+                    It will include <strong>priority processing</strong> and <strong>higher usage limits</strong> for power users.
+                    Everything available today stays free during early access.
+                </p>
+                <p class="manual-cv-description pricing-highlight-line" style="margin-top:10px;">No action needed — we'll announce it when it's ready. No surprises.</p>
+            </section>
+
+            
+
+           
+
             <section class="form-card pricing-faq-card">
                 <h2 class="form-title">Frequently Asked Questions</h2>
                 <div class="faq-list">
                     <article class="faq-item">
-                        <h3 class="faq-question">Is the ATS score really free?</h3>
-                        <p class="faq-answer">Yes — forever. No paywall, no limit. It's our hook because we want everyone to benefit from it.</p>
+                        <h3 class="faq-question">Why is it free?</h3>
+                        <p class="faq-answer">We're in our early phase, so everything is free right now.</p>
                     </article>
                     <article class="faq-item">
-                        <h3 class="faq-question">What does the "1 free" limit mean?</h3>
-                        <p class="faq-answer">Each new account gets 1 free resume optimize, 1 cover letter, 1 mock interview, and 1 LinkedIn import. Upgrade to Pro for unlimited use.</p>
+                        <h3 class="faq-question">Will I be charged later?</h3>
+                        <p class="faq-answer">Not during early access.</p>
                     </article>
                     <article class="faq-item">
-                        <h3 class="faq-question">Does the 7-day pass auto-renew?</h3>
-                        <p class="faq-answer">No. It's a one-time purchase — pay once, get 7 days of Pro, done. No subscription, no charge after that.</p>
+                        <h3 class="faq-question">Is there a catch?</h3>
+                        <p class="faq-answer">No catch. Just early access.</p>
                     </article>
                     <article class="faq-item">
-                        <h3 class="faq-question">Can I cancel my monthly / yearly subscription?</h3>
-                        <p class="faq-answer">Yes, any time. Your Pro access continues until the end of the paid period and then reverts to free.</p>
+                        <h3 class="faq-question">Are all features included?</h3>
+                        <p class="faq-answer">Yes — everything is unlocked.</p>
                     </article>
                     <article class="faq-item">
-                        <h3 class="faq-question">Which payment methods are accepted?</h3>
-                        <p class="faq-answer">UPI, debit/credit cards (Visa, Mastercard, RuPay), net banking, and wallets — all via Razorpay.</p>
+                        <h3 class="faq-question">Will it always be free?</h3>
+                        <p class="faq-answer">We may introduce pricing later, but right now it's free.</p>
                     </article>
                     <article class="faq-item">
-                        <h3 class="faq-question">Can I still download my resume on the free plan?</h3>
-                        <p class="faq-answer">Yes. Your 1 free optimized resume is fully downloadable in PDF — no watermark, no restrictions.</p>
+                        <h3 class="faq-question">Do I need to enter payment details now?</h3>
+                        <p class="faq-answer">No. You can use the platform without entering any card details.</p>
                     </article>
                     <article class="faq-item">
-                        <h3 class="faq-question">Is my payment information secure?</h3>
-                        <p class="faq-answer">Payments are handled entirely by Razorpay — we never see or store your card details.</p>
+                        <h3 class="faq-question">Can I download my resume for free?</h3>
+                        <p class="faq-answer">Yes. Instant download is included in early access.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3 class="faq-question">Is there any watermark on downloaded resumes?</h3>
+                        <p class="faq-answer">No watermark. Your resume is clean and ready to apply.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3 class="faq-question">Can I create multiple resumes?</h3>
+                        <p class="faq-answer">Yes, you can build unlimited resumes during early access.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3 class="faq-question">How long will early access stay free?</h3>
+                        <p class="faq-answer">We'll announce any pricing updates in advance. Until then, enjoy full access for $0.</p>
                     </article>
                 </div>
             </section>
-
         </div>
     </main>
 
-    {% include "_footer.html" %}
+            {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=3"></script>
+    <script src="/static/auth_nav.js?v=2"></script>
     <script src="/static/mobile_nav.js"></script>
-    <script>
-    // Show upgrade success banner
-    if (new URLSearchParams(location.search).get('upgrade') === 'success') {
-        document.getElementById('upgradeBanner').style.display = 'block';
-    }
-
-    // ── Checkout (Razorpay only) ──────────────────────────────────────────────
-    async function checkout(plan) {
-        try {
-            const endpoint = plan === 'weekly'
-                ? '/api/billing/razorpay/order'
-                : '/api/billing/razorpay/subscription';
-            const res = await fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ plan }),
-            });
-            if (res.status === 401) { window.location.href = '/login?next=/pricing'; return; }
-            if (res.status === 503) { alert('Payments not configured yet. Check back soon.'); return; }
-            const data = await res.json();
-            loadRazorpay(plan, data);
-        } catch (e) {
-            console.error(e);
-            alert('Something went wrong. Please try again.');
-        }
-    }
-
-    function loadRazorpay(plan, data) {
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-        script.onload = () => openRazorpay(plan, data);
-        document.head.appendChild(script);
-    }
-
-    function openRazorpay(plan, data) {
-        const opts = {
-            key: data.key_id,
-            name: 'theTailorCV',
-            description: plan === 'weekly' ? '7-Day Pro Pass' : plan === 'monthly' ? 'Monthly Pro' : 'Yearly Pro',
-            image: '/static/favicon.png',
-            prefill: { name: data.name || '', email: data.email || '' },
-            theme: { color: '#2563eb' },
-            handler: async function(response) {
-                try {
-                    const vRes = await fetch('/api/billing/razorpay/verify', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            razorpay_payment_id: response.razorpay_payment_id,
-                            razorpay_order_id: response.razorpay_order_id || '',
-                            razorpay_subscription_id: response.razorpay_subscription_id || '',
-                            razorpay_signature: response.razorpay_signature,
-                            plan: plan,
-                        }),
-                    });
-                    if (vRes.ok) {
-                        window.location.href = '/dashboard?upgrade=success';
-                    } else {
-                        alert('Payment received but verification failed. Please contact support.');
-                    }
-                } catch { alert('Verification failed. Please contact support.'); }
-            },
-        };
-        if (plan === 'weekly') {
-            opts.order_id = data.order_id;
-            opts.amount   = data.amount;
-            opts.currency = 'INR';
-        } else {
-            opts.subscription_id = data.subscription_id;
-        }
-        new window.Razorpay(opts).open();
-    }
-    </script>
 </body>
 </html>
