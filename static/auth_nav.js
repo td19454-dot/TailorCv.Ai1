@@ -17,9 +17,120 @@
         });
       }
     }
-    return _origFetch(input, init);
+    return _origFetch(input, init).then(function (response) {
+      if (response.status === 402) {
+        // checkout-download is handled by the optimized editor with its own
+        // richer popup — skip the generic modal for that endpoint.
+        var url = typeof input === "string" ? input : (input && input.url) || "";
+        if (url.indexOf("checkout-download") !== -1) return response;
+        response.clone().json().then(function (body) {
+          if (body && body.error === "upgrade_required") {
+            showUpgradeModal(body.feature);
+          }
+        }).catch(function () {});
+      }
+      return response;
+    });
   };
 })();
+
+// ── Upgrade paywall modal ──────────────────────────────────────────────────
+var _upgradeModalOpen = false;
+
+var FEATURE_LABELS = {
+  ai_optimizations:   "Resume Optimization",
+  cover_letters:      "Cover Letter",
+  linkedin_imports:   "LinkedIn Import",
+  mock_interviews:    "Mock Interview",
+  interview_questions:"Interview Questions",
+};
+
+function showUpgradeModal(feature) {
+  if (_upgradeModalOpen) return;
+  _upgradeModalOpen = true;
+  var modalCopy = {
+    cover_letters: {
+      title: "Your cover letter is ready!",
+      freeUse: "1 free cover letter",
+      message: "Upgrade to Pro to create unlimited cover letters."
+    },
+    interview_questions: {
+      title: "Your interview questions are ready!",
+      freeUse: "1 free interview question set",
+      message: "Upgrade to Pro to generate unlimited interview questions."
+    },
+    mock_interviews: {
+      title: "Your mock interview is ready!",
+      freeUse: "1 free mock interview",
+      message: "Upgrade to Pro to practise with unlimited mock interviews."
+    }
+  };
+  var copy = modalCopy[feature] || {
+    title: "Upgrade to Pro",
+    freeUse: "1 free " + (FEATURE_LABELS[feature] || "use"),
+    message: "Upgrade for unlimited access to all Pro features."
+  };
+
+  // Inject modal styles once
+  if (!document.getElementById("tc-upgrade-style")) {
+    var s = document.createElement("style");
+    s.id = "tc-upgrade-style";
+    s.textContent = [
+      "#tc-upgrade-overlay{position:fixed;inset:0;z-index:999999;background:rgba(2,8,28,.78);",
+      "backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;animation:tcUpFadeIn .22s ease;}",
+      "#tc-upgrade-modal{position:relative;background:linear-gradient(155deg,#0c1730,#071020);",
+      "border:1px solid rgba(56,189,248,.35);border-radius:22px;padding:2.4rem 2.2rem;",
+      "max-width:440px;width:92%;text-align:center;box-shadow:0 40px 80px rgba(0,5,20,.75),",
+      "0 0 0 1px rgba(56,189,248,.12);animation:tcUpSlideUp .3s ease;}",
+      ".tc-up-close{position:absolute;top:12px;right:16px;background:none;border:none;color:#475569;",
+      "font-size:22px;cursor:pointer;line-height:1;padding:2px 6px;}",
+      ".tc-up-close:hover{color:#94a3b8;}",
+      ".tc-up-lock{font-size:3rem;margin-bottom:.6rem;line-height:1;}",
+      "#tc-upgrade-modal h2{font-size:1.45rem;font-weight:800;color:#f1f8ff;margin:0 0 .7rem;}",
+      ".tc-up-sub{font-size:.95rem;color:#94a3b8;line-height:1.6;margin:0 0 1.4rem;}",
+      ".tc-up-sub strong{color:#7dd3fc;}",
+      ".tc-up-perks{display:flex;flex-direction:column;gap:.45rem;margin:0 0 1.6rem;text-align:left;}",
+      ".tc-up-perk{font-size:.88rem;color:#cbd5e1;padding-left:1.4rem;position:relative;}",
+      ".tc-up-perk::before{content:'✓';position:absolute;left:0;color:#38bdf8;font-weight:700;}",
+      ".tc-up-primary{display:block;width:100%;padding:.8rem 1rem;border-radius:12px;",
+      "background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;font-size:1rem;font-weight:800;",
+      "text-decoration:none;cursor:pointer;border:none;box-shadow:0 6px 20px rgba(37,99,235,.45);",
+      "transition:opacity .2s,transform .2s;margin-bottom:.85rem;}",
+      ".tc-up-primary:hover{opacity:.9;transform:translateY(-2px);}",
+      ".tc-up-note{font-size:.78rem;color:#475569;margin:0;}",
+      "@keyframes tcUpFadeIn{from{opacity:0}to{opacity:1}}",
+      "@keyframes tcUpSlideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}",
+    ].join("");
+    document.head.appendChild(s);
+  }
+
+  var overlay = document.createElement("div");
+  overlay.id = "tc-upgrade-overlay";
+  overlay.innerHTML =
+    '<div id="tc-upgrade-modal">' +
+      '<button class="tc-up-close" aria-label="Close">&times;</button>' +
+      '<div class="tc-up-lock">🔒</div>' +
+      '<h2>' + copy.title + '</h2>' +
+      '<p class="tc-up-sub">You\'ve used your <strong>' + copy.freeUse + '</strong>.<br>' +
+      copy.message + '</p>' +
+      '<div class="tc-up-perks">' +
+        '<div class="tc-up-perk">Unlimited resume downloads</div>' +
+        '<div class="tc-up-perk">Unlimited AI optimizations</div>' +
+        '<div class="tc-up-perk">Unlimited cover letters</div>' +
+        '<div class="tc-up-perk">Mock interviews &amp; LinkedIn import</div>' +
+      '</div>' +
+      '<a class="tc-up-primary" href="/pricing">Upgrade to Pro — from ₹149</a>' +
+      '<p class="tc-up-note">Cancel anytime &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Secure payment</p>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  function closeModal() {
+    overlay.remove();
+    _upgradeModalOpen = false;
+  }
+  overlay.querySelector(".tc-up-close").addEventListener("click", closeModal);
+  overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+}
 
 (function () {
   function getStoredUser() {
@@ -34,36 +145,35 @@
     localStorage.removeItem("tailorcv_user");
   }
 
-  function createAuthWidget(user) {
+  function createAuthWidget(user, isPro) {
     if (!user) {
-      return `
-        <a class="login" href="/login">Login</a>
-      `;
+      return '<a class="login" href="/login">Login</a>';
     }
 
     const initial = (user.name || user.email || "U").trim().charAt(0).toUpperCase();
     const safeName = user.name || user.email || "User";
+    const safeEmail = user.email || "";
+    const proBadge = isPro ? '<span class="tc-nav-probadge">Pro</span>' : '';
+    const proSection = isPro
+      ? '<span class="tc-nav-link tc-nav-pro-label">Pro ✓</span>'
+        + '<a class="tc-nav-link tc-myresumes-link" href="/manage-subscription">Manage subscription</a>'
+      : '<a class="tc-nav-link tc-myresumes-link" href="/pricing">Upgrade to Pro</a>';
 
-    return `
-      <div class="profile-menu" id="profileMenu">
-        <button type="button" class="profile-trigger" id="profileTrigger" aria-haspopup="true" aria-expanded="false" title="${safeName}">
-          <span class="profile-avatar">${initial}</span>
-          <span class="profile-display-name">${safeName}</span>
-        </button>
-        <div class="profile-dropdown" id="profileDropdown">
-          <div class="profile-name">${safeName}</div>
-          <a class="profile-link tc-myresumes-link" href="/dashboard">
-            <span class="tc-pl-ic">📊</span>
-            <span class="tc-pl-tx"><strong>Dashboard</strong><small>Your job-hunt home base</small></span>
-          </a>
-          <a class="profile-link tc-myresumes-link" href="/my-resumes">
-            <span class="tc-pl-ic">📄</span>
-            <span class="tc-pl-tx"><strong>My Resumes</strong><small>Saved resumes &amp; job tracker</small></span>
-          </a>
-          <button type="button" class="profile-logout" id="logoutBtn">Logout</button>
+    return `<div class="tc-nav-profile" id="profileMenu">
+      <button type="button" class="tc-nav-trigger" id="profileTrigger" aria-haspopup="true" aria-expanded="false" title="${safeName}">
+        <span class="tc-nav-avatar">${initial}</span>${proBadge}
+      </button>
+      <div class="tc-nav-dropdown" id="profileDropdown">
+        <div class="tc-nav-head">
+          <span class="tc-nav-hd-av">${initial}</span>
+          <div class="tc-nav-hd-id"><strong>${safeName}</strong><small>${safeEmail}</small></div>
         </div>
+        ${proSection}
+        <a class="tc-nav-link tc-myresumes-link" href="/privacy">Privacy Policy</a>
+        <a class="tc-nav-link tc-myresumes-link" href="/terms">Terms</a>
+        <button type="button" class="tc-nav-logout" id="logoutBtn">Log out</button>
       </div>
-    `;
+    </div>`;
   }
 
   const HINT_SEEN_KEY = "tailorcv_seen_myresumes_hint";
@@ -77,15 +187,47 @@
     const s = document.createElement("style");
     s.id = "tc-auth-style";
     s.textContent = `
-      .profile-dropdown .tc-myresumes-link {
-        display: flex; align-items: center; gap: 10px; padding: 9px 10px; margin: 4px 0;
-        border-radius: 9px; text-decoration: none; color: inherit;
-        background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.28); }
-      .profile-dropdown .tc-myresumes-link:hover { background: rgba(59,130,246,.22); }
-      .profile-dropdown .tc-pl-ic { font-size: 18px; line-height: 1; }
-      .profile-dropdown .tc-pl-tx { display: flex; flex-direction: column; line-height: 1.25; }
-      .profile-dropdown .tc-pl-tx strong { font-size: .9rem; color: #eaf1ff; font-weight: 700; }
-      .profile-dropdown .tc-pl-tx small { font-size: .72rem; color: #9fb0cc; }
+      .tc-nav-profile { position: relative; }
+      .tc-nav-trigger {
+        position: relative; display: inline-flex; align-items: center; justify-content: center;
+        border: none; background: transparent; cursor: pointer; padding: 0; }
+      .tc-nav-avatar {
+        width: 38px; height: 38px; border-radius: 50%;
+        background: linear-gradient(135deg,#3392ff,#6d28d9); color: #fff;
+        font-size: 16px; font-weight: 700;
+        display: inline-flex; align-items: center; justify-content: center; }
+      .tc-nav-probadge {
+        position: absolute; top: -5px; right: -7px;
+        background: linear-gradient(135deg,#2563eb,#0ea5e9); color: #fff;
+        font-size: .56rem; font-weight: 800; letter-spacing: .04em;
+        border-radius: 999px; padding: 1px 5px; line-height: 1.5; pointer-events: none; }
+      .tc-nav-dropdown {
+        position: absolute; right: 0; top: calc(100% + 12px); min-width: 250px;
+        background: #0b1430; border: 1px solid rgba(99,130,200,.3); border-radius: 14px;
+        overflow: hidden; display: none; z-index: 99999;
+        box-shadow: 0 18px 48px rgba(0,0,0,.55); }
+      .tc-nav-profile.open .tc-nav-dropdown { display: block; }
+      .tc-nav-head {
+        display: flex; align-items: center; gap: 10px; padding: 12px 14px 10px;
+        border-bottom: 1px solid rgba(99,130,200,.2); }
+      .tc-nav-hd-av {
+        width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+        background: linear-gradient(135deg,#3392ff,#6d28d9); color: #fff;
+        font-weight: 700; font-size: 15px;
+        display: flex; align-items: center; justify-content: center; }
+      .tc-nav-hd-id { display: flex; flex-direction: column; line-height: 1.3; overflow: hidden; }
+      .tc-nav-hd-id strong { color: #eaf1ff; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .tc-nav-hd-id small { color: #7d93b8; font-size: .75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .tc-nav-link {
+        display: block; padding: 9px 14px; color: #c8d8f0; font-size: .88rem;
+        text-decoration: none; }
+      .tc-nav-link:hover { color: #eaf1ff; background: rgba(99,130,200,.08); }
+      .tc-nav-pro-label { color: #7dd3fc !important; font-weight: 700; cursor: default; }
+      .tc-nav-logout {
+        display: block; width: 100%; text-align: left; padding: 9px 14px;
+        background: none; border: none; border-top: 1px solid rgba(99,130,200,.15);
+        color: #c8d8f0; font-size: .88rem; cursor: pointer; }
+      .tc-nav-logout:hover { color: #eaf1ff; background: rgba(99,130,200,.08); }
       #tc-myresumes-hint {
         position: fixed; top: 80px; right: 18px; z-index: 99998; max-width: 274px;
         background: linear-gradient(160deg,#16203c,#0e1730); border: 1px solid rgba(59,130,246,.55);
@@ -147,46 +289,17 @@
     } catch (e) {}
   }
 
-  function initAuthNav() {
-    const slot = document.getElementById("auth-nav-slot");
-    if (!slot) return;
-
-    const user = getStoredUser();
-    slot.innerHTML = createAuthWidget(user);
-
-    // "Get Started" CTA shows only on the marketing pages (home, pricing, blog,
-    // contact, about) and only when logged out — elsewhere (or once signed in)
-    // it's hidden so the navbar isn't cluttered with a stray signup button.
-    const getStartedBtn = document.querySelector(".nav-getstarted");
-    if (getStartedBtn) {
-      const p = window.location.pathname;
-      const onAllowedPage =
-        p === "/" ||
-        p === "/pricing" ||
-        p === "/contact" ||
-        p === "/about" ||
-        p === "/blog" ||
-        p.indexOf("/blog/") === 0;
-      getStartedBtn.style.display = (!user && onAllowedPage) ? "" : "none";
-    }
-
-    if (!user) return;
-
-    injectAuthStyles();
-    showMyResumesHint();
-    const myResumesLink = document.querySelector(".tc-myresumes-link");
-    if (myResumesLink) myResumesLink.addEventListener("click", markHintSeen);
-
+  function wireDropdown() {
     const trigger = document.getElementById("profileTrigger");
     const menu = document.getElementById("profileMenu");
     const logoutBtn = document.getElementById("logoutBtn");
 
     if (trigger && menu) {
-      trigger.addEventListener("click", function () {
+      trigger.addEventListener("click", function (e) {
+        e.stopPropagation();
         const isOpen = menu.classList.toggle("open");
         trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
       });
-
       document.addEventListener("click", function (event) {
         if (!menu.contains(event.target)) {
           menu.classList.remove("open");
@@ -198,16 +311,58 @@
     if (logoutBtn) {
       logoutBtn.addEventListener("click", function () {
         fetch('/logout', {method: 'POST'})
-        .then(() => {
-          clearStoredUser();
-          window.location.href = "/login";
-        })
-        .catch(() => {
-          clearStoredUser();
-          window.location.href = "/login";
-        });
+        .then(() => { clearStoredUser(); window.location.href = "/login"; })
+        .catch(() => { clearStoredUser(); window.location.href = "/login"; });
       });
     }
+  }
+
+  function initAuthNav() {
+    const slot = document.getElementById("auth-nav-slot");
+    if (!slot) return;
+
+    const user = getStoredUser();
+
+    // Render immediately from cache (fast, no flash)
+    slot.innerHTML = createAuthWidget(user, user && user.is_pro);
+
+    // "Get Started" CTA shows only on marketing pages when logged out
+    const getStartedBtn = document.querySelector(".nav-getstarted");
+    if (getStartedBtn) {
+      const p = window.location.pathname;
+      const onAllowedPage =
+        p === "/" || p === "/pricing" || p === "/contact" ||
+        p === "/about" || p === "/blog" || p.indexOf("/blog/") === 0;
+      getStartedBtn.style.display = (!user && onAllowedPage) ? "" : "none";
+    }
+
+    if (!user) return;
+
+    injectAuthStyles();
+    showMyResumesHint();
+    const myResumesLink = document.querySelector(".tc-myresumes-link");
+    if (myResumesLink) myResumesLink.addEventListener("click", markHintSeen);
+    wireDropdown();
+
+    // Fetch live Pro status — re-render if it differs from cache
+    fetch("/api/auth/me", { headers: { "X-Requested-With": "XMLHttpRequest" } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data) return;
+        const cachedPro = !!(user && user.is_pro);
+        const livePro = !!data.is_pro;
+        // Always persist latest data including Pro status
+        const updated = Object.assign({}, user, { is_pro: livePro, pro_until: data.pro_until });
+        try { localStorage.setItem("tailorcv_user", JSON.stringify(updated)); } catch (e) {}
+        if (cachedPro !== livePro) {
+          slot.innerHTML = createAuthWidget(updated, livePro);
+          injectAuthStyles();
+          const link = document.querySelector(".tc-myresumes-link");
+          if (link) link.addEventListener("click", markHintSeen);
+          wireDropdown();
+        }
+      })
+      .catch(function () {});
   }
 
   window.TailorCVAuth = {

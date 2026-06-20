@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your TailorCV Pro subscription.">
+    <title>Manage Subscription | TailorCV</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { background: #020c1f; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+
+        .ms-hero {
+            padding: 100px 0 40px;
+            text-align: center;
+        }
+        .ms-hero h1 {
+            font-size: 2.2rem; font-weight: 800; margin-bottom: 10px;
+            background: linear-gradient(135deg,#fff 0%,#a78bfa 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .ms-hero p { color: #94a3b8; font-size: 1rem; }
+
+        .ms-wrap {
+            max-width: 720px; margin: 0 auto; padding: 0 20px 80px;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+
+        .ms-card {
+            background: rgba(15,23,42,.7); border: 1px solid rgba(100,116,139,.2);
+            border-radius: 18px; padding: 28px 32px;
+        }
+        .ms-card-title {
+            font-size: 1rem; font-weight: 700; color: #94a3b8;
+            text-transform: uppercase; letter-spacing: .08em; margin-bottom: 18px;
+        }
+
+        /* Card 1 — Plan Status */
+        .ms-plan-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .ms-plan-name { font-size: 1.5rem; font-weight: 800; color: #f1f8ff; }
+        .ms-badge-active {
+            display: inline-block; background: rgba(34,197,94,.15); color: #4ade80;
+            border: 1px solid rgba(34,197,94,.3); border-radius: 20px;
+            padding: 4px 14px; font-size: .78rem; font-weight: 700;
+        }
+        .ms-expiry { margin-top: 12px; color: #94a3b8; font-size: .93rem; }
+        .ms-expiry strong { color: #e2e8f0; }
+        .ms-renewal-note { margin-top: 8px; font-size: .82rem; color: #64748b; }
+
+        /* Card 2 — Features */
+        .ms-features { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+        .ms-features li { display: flex; align-items: center; gap: 10px; font-size: .93rem; color: #cbd5e1; }
+        .ms-feat-ic { color: #4ade80; font-size: 1rem; flex-shrink: 0; }
+        .ms-perday {
+            margin-top: 18px; padding: 12px 16px;
+            background: rgba(56,189,248,.07); border: 1px solid rgba(56,189,248,.18);
+            border-radius: 10px; font-size: .88rem; color: #7dd3fc; text-align: center;
+        }
+        .ms-perday strong { font-weight: 700; }
+
+        /* Card 3 — Cancel */
+        .ms-cancel-note { color: #94a3b8; font-size: .9rem; margin-bottom: 20px; line-height: 1.6; }
+        .ms-cancel-note strong { color: #e2e8f0; }
+        .ms-cancel-btn {
+            display: inline-block; padding: 10px 22px; border-radius: 10px; font-size: .9rem;
+            font-weight: 700; cursor: pointer; background: transparent;
+            border: 1.5px solid rgba(239,68,68,.45); color: #f87171;
+            transition: border-color .2s, background .2s;
+        }
+        .ms-cancel-btn:hover { border-color: #ef4444; background: rgba(239,68,68,.08); }
+        .ms-no-sub { color: #64748b; font-size: .9rem; }
+
+        /* Success state */
+        .ms-success { display: none; text-align: center; padding: 10px 0; }
+        .ms-success-ic { font-size: 2.8rem; margin-bottom: 12px; }
+        .ms-success h3 { font-size: 1.15rem; font-weight: 700; color: #4ade80; margin-bottom: 8px; }
+        .ms-success p { color: #94a3b8; font-size: .9rem; }
+        .ms-success a { color: #7dd3fc; font-weight: 600; text-decoration: underline; }
+
+        /* Retention modal */
+        #msRetentionOverlay {
+            display: none; position: fixed; inset: 0; z-index: 99999;
+            background: rgba(2,8,28,.78); backdrop-filter: blur(5px);
+            align-items: center; justify-content: center;
+        }
+        #msRetentionOverlay.open { display: flex; }
+        .ms-modal {
+            background: linear-gradient(155deg,#0e1a3a,#091228);
+            border: 1px solid rgba(56,189,248,.28); border-radius: 20px;
+            padding: 2rem 2.2rem; max-width: 440px; width: 92%;
+            box-shadow: 0 32px 64px rgba(0,6,22,.7);
+            position: relative; animation: msSlide .25s ease;
+        }
+        @keyframes msSlide { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+        .ms-modal-close {
+            position: absolute; top: 12px; right: 14px; background: none; border: none;
+            color: #475569; font-size: 20px; cursor: pointer; line-height: 1; padding: 2px 6px;
+        }
+        .ms-modal-close:hover { color: #94a3b8; }
+        .ms-modal h2 { font-size: 1.3rem; font-weight: 800; color: #f1f8ff; margin: 0 0 6px; }
+        .ms-modal .ms-modal-sub { color: #64748b; font-size: .85rem; margin: 0 0 18px; }
+        .ms-lose-list { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-direction: column; gap: 9px; }
+        .ms-lose-list li { display: flex; align-items: center; gap: 9px; font-size: .9rem; color: #cbd5e1; }
+        .ms-lose-ic { color: #f87171; flex-shrink: 0; }
+        .ms-modal-anchor {
+            background: rgba(56,189,248,.07); border: 1px solid rgba(56,189,248,.18);
+            border-radius: 10px; padding: 10px 14px; font-size: .85rem; color: #7dd3fc;
+            text-align: center; margin-bottom: 20px;
+        }
+        .ms-keep-btn {
+            display: block; width: 100%; padding: 12px; border-radius: 12px; border: none;
+            background: linear-gradient(135deg,#2563eb,#0ea5e9); color: #fff;
+            font-size: .95rem; font-weight: 700; cursor: pointer; margin-bottom: 12px;
+            box-shadow: 0 4px 14px rgba(37,99,235,.4);
+        }
+        .ms-keep-btn:hover { opacity: .92; }
+        .ms-confirm-cancel {
+            display: block; text-align: center; font-size: .8rem; color: #475569;
+            cursor: pointer; text-decoration: underline; background: none; border: none; width: 100%;
+        }
+        .ms-confirm-cancel:hover { color: #94a3b8; }
+        .ms-spinner { display: none; text-align: center; color: #64748b; font-size: .85rem; padding: 8px 0; }
+    </style>
+</head>
+<body>
+    {% include "_nav.html" %}
+
+    <div class="ms-hero">
+        <h1>Manage Subscription</h1>
+        <p>View your plan details and manage your billing.</p>
+    </div>
+
+    <div class="ms-wrap">
+
+        <!-- Card 1: Plan Status -->
+        <div class="ms-card">
+            <div class="ms-card-title">Your Plan</div>
+            <div class="ms-plan-row">
+                <span class="ms-plan-name">TailorCV Pro</span>
+                <span class="ms-badge-active">Active</span>
+            </div>
+            <div class="ms-expiry">
+                Pro access until: <strong>{{ pro_until.strftime('%B %d, %Y') if pro_until else '—' }}</strong>
+            </div>
+            {% if has_subscription %}
+            <div class="ms-renewal-note">Renews automatically &middot; cancel any time below</div>
+            {% else %}
+            <div class="ms-renewal-note">One-time pass &middot; no recurring charge</div>
+            {% endif %}
+        </div>
+
+        <!-- Card 2: What's included -->
+        <div class="ms-card">
+            <div class="ms-card-title">What you get with Pro</div>
+            <ul class="ms-features">
+                <li><span class="ms-feat-ic">✓</span> Unlimited AI Resume Optimization</li>
+                <li><span class="ms-feat-ic">✓</span> Unlimited Resume Downloads</li>
+                <li><span class="ms-feat-ic">✓</span> AI Cover Letter Generator</li>
+                <li><span class="ms-feat-ic">✓</span> LinkedIn Profile Import</li>
+                <li><span class="ms-feat-ic">✓</span> AI Mock Interviews</li>
+                <li><span class="ms-feat-ic">✓</span> Tailored Interview Questions</li>
+                <li><span class="ms-feat-ic">✓</span> Priority access to new features</li>
+            </ul>
+            <div class="ms-perday">
+                <strong>Less than a chai a day ☕</strong> &mdash; every tool you need to land your next job.
+            </div>
+        </div>
+
+        <!-- Card 3: Cancel -->
+        <div class="ms-card" id="cancelCard">
+            <div class="ms-card-title">Billing</div>
+
+            <!-- Success state (shown after cancel) -->
+            <div class="ms-success" id="cancelSuccess">
+                <div class="ms-success-ic">✅</div>
+                <h3>Subscription cancelled</h3>
+                <p>You keep Pro access until <strong id="accessUntilDate"></strong>.<br>
+                No further charges will be made.</p>
+                <p style="margin-top:14px;"><a href="/pricing">Upgrade again any time &rarr;</a></p>
+            </div>
+
+            <!-- Cancel zone (hidden after cancel) -->
+            <div id="cancelZone">
+                {% if has_subscription %}
+                <p class="ms-cancel-note">
+                    Cancelling stops future charges. You keep full Pro access until
+                    <strong>{{ pro_until.strftime('%B %d, %Y') if pro_until else 'your plan expires' }}</strong>.
+                </p>
+                <button class="ms-cancel-btn" id="openRetentionBtn" type="button">
+                    Cancel Subscription
+                </button>
+                {% else %}
+                <p class="ms-no-sub">
+                    This was a one-time purchase — there is no recurring subscription to cancel.
+                    Your Pro access expires on
+                    <strong>{{ pro_until.strftime('%B %d, %Y') if pro_until else '—' }}</strong>.
+                </p>
+                {% endif %}
+            </div>
+        </div>
+
+    </div><!-- /.ms-wrap -->
+
+    {% include "_footer.html" %}
+
+    <!-- Retention Modal -->
+    <div id="msRetentionOverlay">
+        <div class="ms-modal">
+            <button class="ms-modal-close" id="msModalClose" aria-label="Close">&times;</button>
+            <h2>Before you go&hellip;</h2>
+            <p class="ms-modal-sub">Here's what you'll lose when you cancel:</p>
+            <ul class="ms-lose-list">
+                <li><span class="ms-lose-ic">✕</span> Unlimited AI resume optimization</li>
+                <li><span class="ms-lose-ic">✕</span> Unlimited downloads &amp; cover letters</li>
+                <li><span class="ms-lose-ic">✕</span> Mock interviews &amp; interview prep</li>
+            </ul>
+            <div class="ms-modal-anchor">
+                You're paying just a few rupees a day &mdash; less than a chai ☕
+            </div>
+            <button class="ms-keep-btn" id="keepProBtn" type="button">
+                Keep My Pro Plan
+            </button>
+            <div class="ms-spinner" id="cancelSpinner">Cancelling&hellip;</div>
+            <button class="ms-confirm-cancel" id="confirmCancelBtn" type="button">
+                Cancel anyway &mdash; I'll lose Pro features on
+                {{ pro_until.strftime('%b %d') if pro_until else 'expiry' }}
+            </button>
+        </div>
+    </div>
+
+    <script src="/static/auth_nav.js?v=8"></script>
+    <script src="/static/mobile_nav.js"></script>
+    <script>
+    (function () {
+        var overlay = document.getElementById('msRetentionOverlay');
+        var openBtn = document.getElementById('openRetentionBtn');
+        var closeBtn = document.getElementById('msModalClose');
+        var keepBtn = document.getElementById('keepProBtn');
+        var confirmBtn = document.getElementById('confirmCancelBtn');
+        var spinner = document.getElementById('cancelSpinner');
+        var cancelZone = document.getElementById('cancelZone');
+        var successEl = document.getElementById('cancelSuccess');
+        var accessUntilDate = document.getElementById('accessUntilDate');
+
+        function openModal() { overlay.classList.add('open'); }
+        function closeModal() { overlay.classList.remove('open'); }
+
+        if (openBtn) openBtn.addEventListener('click', openModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (keepBtn) keepBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+
+        if (confirmBtn) {
+            confirmBtn.addEventListener('click', function () {
+                confirmBtn.style.display = 'none';
+                spinner.style.display = 'block';
+                keepBtn.disabled = true;
+
+                fetch('/api/billing/razorpay/cancel', { method: 'POST' })
+                    .then(function (r) { return r.json(); })
+                    .then(function (data) {
+                        closeModal();
+                        cancelZone.style.display = 'none';
+                        if (data.access_until) {
+                            var d = new Date(data.access_until);
+                            accessUntilDate.textContent = d.toLocaleDateString('en-IN', {
+                                year: 'numeric', month: 'long', day: 'numeric'
+                            });
+                        }
+                        successEl.style.display = 'block';
+                    })
+                    .catch(function () {
+                        closeModal();
+                        spinner.style.display = 'none';
+                        confirmBtn.style.display = 'block';
+                        keepBtn.disabled = false;
+                        alert('Something went wrong. Please try again or contact support.');
+                    });
+            });
+        }
+    }());
+    </script>
+</body>
+</html>
