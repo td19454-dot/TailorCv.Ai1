@@ -146,6 +146,8 @@ class Portfolio(Base):
     data_json = Column(Text, nullable=False)                               # full render dict, JSON-encoded
     published = Column(Boolean, default=True, nullable=False)
     view_count = Column(Integer, default=0, nullable=False)
+    netlify_site_id = Column(String(64), nullable=True)                    # Netlify site id once deployed
+    netlify_url = Column(String(255), nullable=True)                       # *.netlify.app live URL
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
