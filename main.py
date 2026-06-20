@@ -5171,6 +5171,7 @@ PORTFOLIO_THEMES = {
     "monolith": "Monolith - bold black and white",
     "particle": "Particle - neon skill cards",
     "snowcard": "Snowcard - light dotted tabs",
+    "github": "GitHub - profile, repos & contributions",
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
@@ -5801,6 +5802,7 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "monolith": "portfolio_monolith.html",
         "particle": "portfolio_particle.html",
         "snowcard": "portfolio_snowcard.html",
+        "github": "portfolio_github.html",
     }.get(theme, "portfolio_public.html")
     return templates.TemplateResponse(request, tpl, {
         "request": request,

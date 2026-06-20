@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ seo_og_description }}">
+    <title>{{ data.name }}{% if data.headline %} — {{ data.headline }}{% endif %} | Portfolio</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/portfolio_github.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+{% set fname = data.name.split(' ')[0] if data.name else 'You' %}
+{% set handle = (data.name or 'user')|lower|replace(' ', '-') %}
+{% macro soc(icon) -%}
+    {% if icon == 'linkedin' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg>
+    {% elif icon == 'github' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.38-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.71 1.03 1.62 1.03 2.74 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+    {% elif icon == 'leetcode' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.48 2.5a1.4 1.4 0 0 0-1 .43L5.4 9.9a3.8 3.8 0 0 0 0 5.36l4.07 4.07a3.8 3.8 0 0 0 5.36 0l1.9-1.9a1.4 1.4 0 1 0-1.98-1.98l-1.9 1.9a1 1 0 0 1-1.4 0L7.38 13.3a1 1 0 0 1 0-1.4l7.08-6.97a1.4 1.4 0 0 0-1-2.43zM14.6 9.3a1.4 1.4 0 0 0 0 2.8h5.4a1.4 1.4 0 0 0 0-2.8z"/></svg>
+    {% elif icon == 'twitter' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.84l-4.78-6.26L5.92 22H2.66l8.02-9.17L2 2h6.91l4.32 5.71L18.244 2z"/></svg>
+    {% elif icon == 'googlescholar' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 1 8l11 6 9-4.9V16h2V8L12 2zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8-7-3.8z"/></svg>
+    {% elif icon == 'kaggle' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.4 21.6h-2.9l-5-6.2-1.4 1.3v4.9H6.8V2.4h2.3v11.9l6-6.1h2.9l-5.6 5.5 6 7.9z"/></svg>
+    {% elif icon == 'mail' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+    {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>{% endif %}
+{%- endmacro %}
+{% macro gic(name) -%}
+    {% if name == 'pin' %}<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a5.53 5.53 0 0 0-5.5 5.5c0 2.9 4.6 9.2 5 9.7.27.36.73.36 1 0 .4-.5 5-6.8 5-9.7A5.53 5.53 0 0 0 8 0zm0 8a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+    {% elif name == 'link' %}<svg viewBox="0 0 16 16" fill="currentColor"><path d="M7.78 9.28a.75.75 0 0 1-1.06-1.06l3-3a2.5 2.5 0 0 1 3.54 3.54l-1.5 1.5a.75.75 0 1 1-1.06-1.06l1.5-1.5a1 1 0 1 0-1.42-1.42l-3 3zM8.22 6.72a.75.75 0 0 1 1.06 1.06l-3 3a2.5 2.5 0 0 1-3.54-3.54l1.5-1.5a.75.75 0 0 1 1.06 1.06l-1.5 1.5a1 1 0 1 0 1.42 1.42l3-3z"/></svg>
+    {% elif name == 'repo' %}<svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75H4.5a1 1 0 0 0 0 2h8.75a.75.75 0 0 1 0 1.5H4.5A2.5 2.5 0 0 1 2 15V2.5zm10.5-1H4.5a1 1 0 0 0-1 1v9.05c.3-.1.65-.1 1-.1h8V1.5z"/></svg>
+    {% elif name == 'star' %}<svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25l2.4 4.9 5.4.8-3.9 3.8.9 5.4L8 13.4l-4.8 2.5.9-5.4L.2 5.95l5.4-.8L8 .25z"/></svg>
+    {% elif name == 'book' %}<svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.5a2.25 2.25 0 0 1 2.25 2.25v9.5A.75.75 0 0 1 6.4 13a2.5 2.5 0 0 0-1.65-.6H1.5v-1.5h3.25c.6 0 1.16.15 1.65.42V3.25a.75.75 0 0 0-.75-.75H1.5V1.75H0zm8.6 11.25a.75.75 0 0 1-.85-.25V3.25A2.25 2.25 0 0 1 10 .999h4.5a.75.75 0 0 1 .75.75v9a.75.75 0 0 1-.75.75h-3.25a2.5 2.5 0 0 0-1.65.6z"/></svg>
+    {% elif name == 'people' %}<svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 5.5a3.5 3.5 0 1 1 5.9 2.54A5.01 5.01 0 0 1 11 12.5a.75.75 0 0 1-1.5 0 3.5 3.5 0 0 0-7 0 .75.75 0 0 1-1.5 0 5.01 5.01 0 0 1 3.1-4.46A3.49 3.49 0 0 1 2 5.5z"/></svg>
+    {% else %}<svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="7"/></svg>{% endif %}
+{%- endmacro %}
+
+<!-- top bar -->
+<header class="gh-top">
+    <div class="gh-top-in">
+        <span class="gh-mark" aria-label="GitHub"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></span>
+        <div class="gh-search">Search or jump to…</div>
+        <nav class="gh-top-nav">
+            <a href="#readme">Overview</a>
+            {% if data.projects %}<a href="#pinned">Repositories</a>{% endif %}
+            {% if data.skills %}<a href="#langs">Skills</a>{% endif %}
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<div class="gh-page">
+    <!-- profile sidebar -->
+    <aside class="gh-side">
+        <div class="gh-avatar">{% if data.photo %}<img src="{{ data.photo }}" alt="{{ data.name }}">{% else %}<span>{{ data.initials }}</span>{% endif %}</div>
+        <h1 class="gh-name">{{ data.name }}</h1>
+        <div class="gh-login">{{ handle }}</div>
+        {% if data.headline %}<div class="gh-headline">{{ data.headline }}</div>{% endif %}
+        <div class="gh-side-actions">
+            {% if data.email %}<a class="gh-btn gh-btn-primary" href="mailto:{{ data.email }}">Follow</a>{% endif %}
+            {% if has_cv %}<a class="gh-btn" href="/p/{{ slug }}/cv">Download CV</a>{% endif %}
+        </div>
+        {% if tagline %}<p class="gh-bio">{{ tagline }}</p>{% endif %}
+        {% if data.stats and (data.stats.projects or data.stats.experience) %}
+        <div class="gh-followers">{{ gic('people') }} <strong>{{ data.stats.projects or 0 }}</strong> repositories · <strong>{{ data.stats.skills or 0 }}</strong> skills</div>
+        {% endif %}
+        <ul class="gh-meta">
+            {% if data.location %}<li>{{ gic('pin') }} {{ data.location }}</li>{% endif %}
+            {% if data.email %}<li>{{ soc('mail') }} <a href="mailto:{{ data.email }}">{{ data.email }}</a></li>{% endif %}
+            {% for s in data.socials %}<li>{{ soc(s.icon) }} <a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }}</a></li>{% endfor %}
+        </ul>
+    </aside>
+
+    <!-- main column -->
+    <main class="gh-main">
+        <div class="gh-tabs">
+            <a class="gh-tab on">{{ gic('book') }} Overview</a>
+            {% if data.projects %}<a class="gh-tab" href="#pinned">{{ gic('repo') }} Repositories <span class="gh-count">{{ data.projects|length }}</span></a>{% endif %}
+            {% if data.certifications %}<a class="gh-tab" href="#certs">{{ gic('star') }} Achievements</a>{% endif %}
+        </div>
+
+        {% if about %}
+        <section class="gh-readme" id="readme">
+            <div class="gh-readme-head"><span class="gh-file">{{ gic('book') }} README.md</span><span class="gh-pub">Public</span></div>
+            <div class="gh-readme-body">
+                <h2>Hi 👋, I'm {{ fname }}</h2>
+                {% if data.headline %}<p class="gh-readme-sub">{{ data.headline }}</p>{% endif %}
+                {% for para in about.split('\n\n') %}{% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}{% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        {% if data.projects %}
+        <h3 class="gh-h3" id="pinned">Pinned</h3>
+        <div class="gh-pins">
+            {% for p in data.projects %}
+            <article class="gh-pin">
+                <div class="gh-pin-top">
+                    <span class="gh-repo-ic">{{ gic('repo') }}</span>
+                    <a class="gh-repo-name" href="{{ p.url or p.github or '#' }}"{% if p.url or p.github %} target="_blank" rel="noopener"{% endif %}>{{ p.name }}</a>
+                    <span class="gh-pub sm">Public</span>
+                </div>
+                {% if p.bullets %}<p class="gh-pin-desc">{{ p.bullets[0] }}</p>{% elif p.subtitle %}<p class="gh-pin-desc">{{ p.subtitle }}</p>{% endif %}
+                <div class="gh-pin-foot">
+                    {% if p.subtitle %}{% set lang = p.subtitle.split(',')[0].strip() %}<span class="gh-lang"><span class="gh-dot" style="--d:{{ ['#f1e05a','#3572A5','#e34c26','#563d7c','#2b7489','#b07219'][loop.index0 % 6] }}"></span>{{ lang }}</span>{% endif %}
+                    {% if p.github %}<a class="gh-pin-link" href="{{ p.github }}" target="_blank" rel="noopener">{{ soc('github') }} Code</a>{% endif %}
+                    {% if p.url %}<a class="gh-pin-link" href="{{ p.url }}" target="_blank" rel="noopener">{{ gic('link') }} Live</a>{% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <section class="gh-contrib">
+            <h3 class="gh-h3"><span id="gh-contrib-count">{{ (data.stats.projects or 1) * 87 }}</span> contributions in the last year</h3>
+            <div class="gh-graph-wrap"><div class="gh-graph" id="gh-graph" aria-hidden="true"></div></div>
+            <div class="gh-legend">Less <span class="gh-lc l0"></span><span class="gh-lc l1"></span><span class="gh-lc l2"></span><span class="gh-lc l3"></span><span class="gh-lc l4"></span> More</div>
+        </section>
+
+        {% if data.skills %}
+        <h3 class="gh-h3" id="langs">Languages &amp; tools</h3>
+        <div class="gh-langs">
+            {% for g in data.skills %}{% for item in g['items'] %}<span class="gh-lang-chip">{% if item|skillhasicon %}<img src="{{ item|skilliconurl }}" alt="" loading="lazy" onerror="this.remove()">{% endif %}{{ item }}</span>{% endfor %}{% endfor %}
+        </div>
+        {% endif %}
+
+        {% if data.experience %}
+        <h3 class="gh-h3">Experience</h3>
+        <div class="gh-timeline">
+            {% for e in data.experience %}
+            <div class="gh-tl">
+                <span class="gh-tl-node">{{ gic('repo') }}</span>
+                <div class="gh-tl-card">
+                    <h4>{{ e.title }}{% if e.company %} <span class="gh-at">@ {{ e.company }}</span>{% endif %}</h4>
+                    {% if e.dates or e.location %}<div class="gh-tl-meta">{{ e.dates }}{% if e.dates and e.location %} · {% endif %}{{ e.location }}</div>{% endif %}
+                    {% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if data.education %}
+        <h3 class="gh-h3">Education</h3>
+        <div class="gh-cards">
+            {% for ed in data.education %}
+            <div class="gh-card"><h4>{{ ed.school }}</h4>{% if ed.degree %}<div class="gh-card-sub">{{ ed.degree }}</div>{% endif %}<div class="gh-card-meta">{{ ed.year }}{% if ed.year and ed.score %} · {% endif %}{{ ed.score }}</div></div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if data.certifications %}
+        <h3 class="gh-h3" id="certs">Certifications</h3>
+        <div class="gh-cards">
+            {% for c in data.certifications %}
+            <div class="gh-card"><h4>{{ gic('star') }} {{ c.name }}</h4>{% if c.issuer or c.year %}<div class="gh-card-sub">{{ c.issuer }}{% if c.issuer and c.year %} · {% endif %}{{ c.year }}</div>{% endif %}{% if c.url %}<a class="gh-card-link" href="{{ c.url }}" target="_blank" rel="noopener">View certificate →</a>{% endif %}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if data.extracurriculars %}
+        <h3 class="gh-h3">Open source &amp; leadership</h3>
+        <div class="gh-cards">
+            {% for x in data.extracurriculars %}
+            <div class="gh-card"><h4>{{ x.role }}</h4>{% if x.organization %}<div class="gh-card-sub">{{ x.organization }}{% if x.dates %} · {{ x.dates }}{% endif %}</div>{% endif %}{% if x.bullets %}<p class="gh-card-desc">{{ x.bullets[0] }}</p>{% endif %}{% if x.url %}<a class="gh-card-link" href="{{ x.url }}" target="_blank" rel="noopener">View →</a>{% endif %}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if data.publications %}
+        <h3 class="gh-h3">Publications</h3>
+        <div class="gh-cards">
+            {% for pub in data.publications %}
+            <div class="gh-card"><h4>{{ gic('book') }} {{ pub.title }}</h4>{% if pub.publisher or pub.year %}<div class="gh-card-sub">{{ pub.publisher }}{% if pub.publisher and pub.year %} · {% endif %}{{ pub.year }}</div>{% endif %}{% if pub.url %}<a class="gh-card-link" href="{{ pub.url }}" target="_blank" rel="noopener">Read →</a>{% endif %}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if data.hobbies %}
+        <h3 class="gh-h3">Interests</h3>
+        <div class="gh-langs">{% for h in data.hobbies %}<span class="gh-lang-chip">{{ h }}</span>{% endfor %}</div>
+        {% endif %}
+
+        <section class="gh-contact" id="contact">
+            <h3 class="gh-h3">Get in touch</h3>
+            <div class="gh-contact-row">
+                {% if data.email %}<a class="gh-btn gh-btn-primary" href="mailto:{{ data.email }}">{{ soc('mail') }} Email me</a>{% endif %}
+                {% for s in data.socials %}<a class="gh-btn" href="{{ s.url }}" target="_blank" rel="noopener">{{ soc(s.icon) }} {{ s.label }}</a>{% endfor %}
+            </div>
+        </section>
+    </main>
+</div>
+
+<footer class="gh-footer">© {{ data.name }} · <a href="https://thetailorcv.com" target="_blank" rel="noopener">Built with theTailorCV</a></footer>
+
+<script>
+// Decorative contribution graph: 53 weeks x 7 days of shaded green cells.
+(function () {
+    var g = document.getElementById('gh-graph');
+    if (!g) return;
+    var weeks = 53, days = 7, cells = '';
+    for (var w = 0; w < weeks; w++) {
+        for (var d = 0; d < days; d++) {
+            // weighted-random intensity 0..4 (mostly low, occasional bright)
+            var r = Math.random();
+            var lvl = r > 0.86 ? 4 : r > 0.72 ? 3 : r > 0.52 ? 2 : r > 0.30 ? 1 : 0;
+            cells += '<i class="gh-cell l' + lvl + '"></i>';
+        }
+    }
+    g.innerHTML = cells;
+})();
+</script>
+</body>
+</html>
