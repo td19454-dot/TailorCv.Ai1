@@ -4453,6 +4453,7 @@ async def dashboard_page(request: Request):
             "request": request,
             "user_name": user.name,
             "user_email": user.email,
+            "is_pro_user": is_pro(user),
             "resume_count": len(resumes),
             "recent_resumes": resumes[:5],
             "latest_ats": latest_ats,

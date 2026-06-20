@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Dashboard | theTailorCV</title>
     <link rel="icon" type="image/png" href="/static/favicon.png">
-    <link rel="stylesheet" href="/static/app_shell.css">
+    <link rel="stylesheet" href="/static/app_shell.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -183,14 +183,21 @@
         <a class="tcv-top-logo" href="/dashboard"><img src="/static/logo6.png" alt="theTailorCV"></a>
         <div class="tcv-top-right">
             <div class="tcv-profile">
-                <button class="tcv-avatar" aria-haspopup="true" aria-expanded="false">{{ initial }}</button>
+                <button class="tcv-avatar" aria-haspopup="true" aria-expanded="false">
+                    {{ initial }}
+                    {% if is_pro_user %}<span class="tcv-pro-badge">Pro</span>{% endif %}
+                </button>
                 <div class="tcv-profile-menu">
                     <div class="tcv-profile-head">
                         <span class="tcv-pf-av">{{ initial }}</span>
                         <div class="tcv-pf-id"><strong>{{ user_name }}</strong><small>{{ user_email }}</small></div>
                     </div>
-                    <a class="tcv-pf-link" href="/pricing">Get free scans</a>
-                    <a class="tcv-pf-link" href="/pricing">Account Settings</a>
+                    {% if is_pro_user %}
+                    <span class="tcv-pf-link tcv-pro-label">Pro ✓</span>
+                    <a class="tcv-pf-link" href="/manage-subscription">Manage subscription</a>
+                    {% else %}
+                    <a class="tcv-pf-link" href="/pricing">Upgrade to Pro</a>
+                    {% endif %}
                     <a class="tcv-pf-link" href="/privacy">Privacy Policy</a>
                     <a class="tcv-pf-link" href="/terms">Terms</a>
                     <a class="tcv-pf-link" href="#" id="dashProfileLogout">Log out</a>
