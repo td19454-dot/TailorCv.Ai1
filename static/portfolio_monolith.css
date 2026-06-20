@@ -97,6 +97,9 @@ main { border-left: 10px solid var(--mo-ink); border-right: 10px solid var(--mo-
 
 .mo-strip { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; padding: 42px 20px; border-top: 2px solid var(--mo-ink); border-bottom: 2px solid var(--mo-ink); background: var(--mo-paper); }
 .mo-section { padding: clamp(60px,8vw,120px) min(7vw,130px); border-bottom: 4px solid var(--mo-ink); background: var(--mo-bg); }
+.mo-skills { display: flex; flex-wrap: wrap; gap: 14px; }
+.mo-skill { display: inline-flex; align-items: center; gap: 9px; padding: 11px 18px; border: 2px solid var(--mo-ink); background: var(--mo-paper); font-weight: 800; font-size: .98rem; }
+.mo-skill img { width: 20px; height: 20px; }
 .mo-head { display: flex; align-items: center; gap: 24px; margin-bottom: 36px; }
 .mo-head span, .mo-label { font-weight: 900; letter-spacing: .22em; text-transform: uppercase; color: var(--mo-muted); }
 .mo-head h2 { margin: 0; font-family: "Archivo Black"; text-transform: uppercase; font-size: clamp(2.3rem,5vw,5rem); line-height: .9; }
