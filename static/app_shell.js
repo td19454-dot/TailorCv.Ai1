@@ -6,7 +6,8 @@
     var APP_PREFIXES = [
         "/solutions", "/ats-analysis", "/optimize", "/modify-cv", "/cover-letter",
         "/auto-apply", "/my-resumes", "/interview-prep", "/mock-interview",
-        "/optimized-editor", "/templates"
+        "/optimized-editor", "/templates", "/portfolio", "/portfolio-builder",
+        "/my-portfolios"
     ];
 
     function getUser() {
@@ -41,6 +42,7 @@
         help: svg('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 4.7 1.4c0 1.7-2.2 2.1-2.2 3.4"/><path d="M12 17h.01"/>'),
         mic: svg('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>'),
         grid: svg('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>'),
+        portfolio: svg('<rect x="2.5" y="3" width="19" height="18" rx="3"/><circle cx="12" cy="9" r="2.6"/><path d="M7 18a5 5 0 0 1 10 0"/>'),
         out: svg('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/>')
     };
     var LINKS = [
@@ -50,6 +52,7 @@
         ["/solutions", IC.ats, "Get ATS Score"],
         ["/cover-letter", IC.mail, "Cover Letter"],
         ["/my-resumes", IC.folder, "My Resumes"],
+        ["/portfolio", IC.portfolio, "Portfolio Website"],
         ["/templates", IC.grid, "Templates"],
         ["/interview-prep", IC.help, "Interview Prep"],
         ["/mock-interview", IC.mic, "Mock Interview"]

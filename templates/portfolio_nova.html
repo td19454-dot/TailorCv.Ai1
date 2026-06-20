@@ -161,8 +161,9 @@
                 <div class="nv-stack-grid">
                     {% for item in g['items'] %}
                     {% set sl = item|deviconslug %}
-                    <div class="nv-stack-item">
-                        <span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{ sl }}/{{ sl }}-original.svg" alt="" loading="lazy" data-slug="{{ sl }}" onerror="nvIcon(this)"><span class="nv-glyph" aria-hidden="true">&lt;/&gt;</span></span>
+                    {% set use_icon = item|skillhasicon %}
+                    <div class="nv-stack-item{% if not use_icon %} noicon{% endif %}">
+                        <span class="ic">{% if use_icon %}<img src="{{ item|skilliconurl }}" alt="" loading="lazy" data-slug="{{ sl }}" onerror="nvIcon(this)">{% endif %}<span class="nv-glyph" aria-hidden="true">&lt;/&gt;</span></span>
                         <span class="nm">{{ item }}</span>
                     </div>
                     {% endfor %}

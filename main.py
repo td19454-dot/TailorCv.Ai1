@@ -261,6 +261,9 @@ _DEVICON_ALIASES = {
     "amazonwebservices": "amazonwebservices", "golang": "go", "vscode": "vscode",
     "github": "github", "tensorflow": "tensorflow", "pytorch": "pytorch",
     "scss": "sass", "sass": "sass", "k8s": "kubernetes",
+    "typescript": "typescript", "ts": "typescript", "dotnet": "dot-net", "netcore": "dot-net",
+    "net": "dot-net", "sql": "azuresqldatabase", "postman": "postman",
+    "jira": "jira", "bitbucket": "bitbucket", "astro": "astro",
 }
 
 
@@ -272,17 +275,39 @@ def _devicon_slug(name: str) -> str:
 
 
 # Skills whose only devicon is a plain/ugly letter mark — render the neutral
-# code-glyph fallback instead of the logo.
-_DEVICON_BLOCKLIST = {"c"}
+# code-glyph fallback instead of the logo. (Empty now that those have custom icons.)
+_DEVICON_BLOCKLIST = set()
+
+# Custom logos for skills devicon lacks (or whose devicon looks bad). Keys are
+# _devicon_slug() outputs; values are local SVGs under /static/skill-icons/.
+_SKILL_ICON_OVERRIDES = {
+    "excel": "/static/skill-icons/excel.svg",
+    "powerbi": "/static/skill-icons/powerbi.svg",
+    "seaborn": "/static/skill-icons/seaborn.svg",
+    "c": "/static/skill-icons/c.svg",
+    "dsa": "/static/skill-icons/dsa.svg",
+    "datastructuresandalgorithms": "/static/skill-icons/dsa.svg",
+}
 
 
 def _skill_has_icon(name: str) -> bool:
     """False for skills we deliberately render with the code-glyph fallback."""
-    return _devicon_slug(name) not in _DEVICON_BLOCKLIST
+    slug = _devicon_slug(name)
+    return slug in _SKILL_ICON_OVERRIDES or slug not in _DEVICON_BLOCKLIST
+
+
+def _skill_icon_url(name: str) -> str:
+    """Best icon URL for a skill: a custom local logo when we have one, else the
+    devicon CDN original (which the template's onerror handler falls back from)."""
+    slug = _devicon_slug(name)
+    if slug in _SKILL_ICON_OVERRIDES:
+        return _SKILL_ICON_OVERRIDES[slug]
+    return f"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{slug}/{slug}-original.svg"
 
 
 templates.env.filters["deviconslug"] = _devicon_slug
 templates.env.filters["skillhasicon"] = _skill_has_icon
+templates.env.filters["skilliconurl"] = _skill_icon_url
 # Make the GSC verification token available to every template (used by
 # _seo_head.html to emit the verification meta tag).
 templates.env.globals["google_site_verification"] = GOOGLE_SITE_VERIFICATION
@@ -4993,6 +5018,7 @@ PORTFOLIO_THEMES = {
     "console": "Console - web developer terminal",
     "monolith": "Monolith - bold black and white",
     "particle": "Particle - neon skill cards",
+    "snowcard": "Snowcard - light dotted tabs",
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
@@ -5069,7 +5095,7 @@ def _portfolio_share_url(portfolio) -> str:
     """The public URL: pretty subdomain once subdomains are live, else /p/<slug>."""
     if PORTFOLIO_SUBDOMAINS_ENABLED and getattr(portfolio, "handle", None):
         return f"https://{portfolio.handle}.{PORTFOLIO_DOMAIN}"
-    return f"{SITE_URL}/p/{portfolio.slug}"
+    return f"{SITE_URL}/{portfolio.slug}"
 
 
 def _portfolio_slugify(value: str) -> str:
@@ -5327,10 +5353,8 @@ def _build_portfolio_ai_prompt(data: dict) -> str:
         '{\n'
         '  "headline": "a 2-4 word professional role title for the hero (e.g. \\"Frontend Developer\\")",\n'
         '  "tagline": "one confident sentence (max 18 words) describing what they do and their value",\n'
-        '  "about": "a warm, engaging first-person About section of TWO paragraphs separated by a blank line (\\n\\n). '
-        'Aim for 130-170 words total. The first paragraph introduces who they are, their focus, and what drives them; '
-        'the second highlights their strengths, the kind of work they love, and what they bring to a team. '
-        'Expand naturally on the facts to fill the space even when the source summary is short, but never invent employers, titles, degrees, or metrics."\n'
+        '  "about": "a warm, first-person About of 2-3 short sentences (max 55 words), one concise paragraph. '
+        'Keep it tight and punchy — do NOT pad or repeat. Never invent employers, titles, degrees, or metrics."\n'
         '}'
     )
 
@@ -5358,14 +5382,34 @@ async def _enrich_portfolio_copy(data: dict) -> dict:
         return fallback
 
 
+def _reserved_root_slugs() -> set:
+    """First path segment of every real app route (e.g. 'api', 'login', 'p',
+    'dashboard') so a portfolio served at /<slug> can never shadow a real page."""
+    reserved = {"p", "static", "api"}
+    for r in app.routes:
+        seg = (getattr(r, "path", "") or "").strip("/").split("/")[0]
+        if seg and "{" not in seg:
+            reserved.add(seg.lower())
+    return reserved
+
+
 def _unique_portfolio_slug(db: Session, name: str) -> str:
-    """A human-friendly slug with a short random suffix to guarantee uniqueness."""
-    base = _portfolio_slugify(name)
-    for _ in range(6):
-        slug = f"{base}-{token_hex(3)}"
-        if not db.query(Portfolio.id).filter(Portfolio.slug == slug).first():
+    """A clean, human-friendly slug served at the root (e.g. "trisha-debnath").
+    Adds a short numeric suffix ("-2", "-3"…) only if the slug is taken or would
+    collide with a real app route."""
+    base = _portfolio_slugify(name) or "portfolio"
+    reserved = _reserved_root_slugs()
+
+    def free(s):
+        return s not in reserved and not db.query(Portfolio.id).filter(Portfolio.slug == s).first()
+
+    if free(base):
+        return base
+    for n in range(2, 100):
+        slug = f"{base}-{n}"
+        if free(slug):
             return slug
-    return f"{base}-{token_urlsafe(8)}"
+    return f"{base}-{token_hex(3)}"
 
 
 @app.post("/api/generate-portfolio", include_in_schema=False)
@@ -5459,7 +5503,7 @@ async def generate_portfolio(request: Request):
             "slug": portfolio.slug,
             "handle": portfolio.handle,
             "share_url": _portfolio_share_url(portfolio),
-            "view_url": f"/p/{portfolio.slug}",
+            "view_url": f"/{portfolio.slug}",
         })
     except Exception:
         logger.exception("Failed to persist portfolio")
@@ -5536,7 +5580,7 @@ async def build_portfolio(request: Request):
             "slug": portfolio.slug,
             "handle": portfolio.handle,
             "share_url": _portfolio_share_url(portfolio),
-            "view_url": f"/p/{portfolio.slug}",
+            "view_url": f"/{portfolio.slug}",
         })
     except Exception:
         logger.exception("Failed to build portfolio")
@@ -5604,6 +5648,7 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "console": "portfolio_console.html",
         "monolith": "portfolio_monolith.html",
         "particle": "portfolio_particle.html",
+        "snowcard": "portfolio_snowcard.html",
     }.get(theme, "portfolio_public.html")
     return templates.TemplateResponse(request, tpl, {
         "request": request,
@@ -7751,6 +7796,22 @@ async def download_optimized_resume(file_name: str | None = None):
 #         }
 #     except Exception as e:
 #         raise HTTPException(status_code=500, detail=f"Error listing files: {str(e)}")
+
+
+# ---------------------------------------------------------------------------
+# Clean root-level portfolio URLs (e.g. https://thetailorcv.com/trisha-debnath).
+# Registered LAST so every real page/route above wins; only genuinely unmatched
+# single-segment paths fall through here and are looked up as a portfolio (404
+# otherwise). The /p/<slug> routes above stay for backward-compatibility.
+# ---------------------------------------------------------------------------
+@app.get("/{slug}", response_class=HTMLResponse, include_in_schema=False)
+async def portfolio_public_root(request: Request, slug: str):
+    return await portfolio_public(request, slug)
+
+
+@app.get("/{slug}/cv", include_in_schema=False)
+async def portfolio_public_cv_root(request: Request, slug: str):
+    return await portfolio_public_cv(request, slug)
 
 
 if __name__ == "__main__":

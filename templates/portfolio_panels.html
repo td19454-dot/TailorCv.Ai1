@@ -104,7 +104,7 @@
                         <div class="pn-skill-pills">
                             {% for item in g['items'] %}
                             {% set sl = item|deviconslug %}
-                            <span class="pn-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{ sl }}/{{ sl }}-original.svg" alt="" loading="lazy" data-slug="{{ sl }}" onerror="pnIcon(this)">{{ item }}</span>
+                            <span class="pn-pill"><img src="{{ item|skilliconurl }}" alt="" loading="lazy" data-slug="{{ sl }}" onerror="pnIcon(this)">{{ item }}</span>
                             {% endfor %}
                         </div>
                     </div>
