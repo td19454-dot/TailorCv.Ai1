@@ -384,6 +384,13 @@ def enforce_quota(db: Session, user, field: str) -> None:
 
     if is_pro(user):
         return
+    # Beta rollout: when BILLING_BETA_USER_IDS is set, only those user IDs are gated.
+    # Remove the env var (or leave it empty) to gate everyone.
+    _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
+    if _beta_env:
+        _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()}
+        if user.id not in _beta_ids:
+            return
     # Serialize quota checks per user so two simultaneous requests cannot both
     # observe the same remaining free use and bypass the limit.
     db.query(User).filter(User.id == user.id).with_for_update().one()
@@ -5393,6 +5400,11 @@ async def checkout_download(request: Request):
             raise HTTPException(status_code=401, detail="Not logged in")
         if is_pro(user):
             return JSONResponse({"allowed": True, "is_pro": True})
+        _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
+        if _beta_env:
+            _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()}
+            if user.id not in _beta_ids:
+                return JSONResponse({"allowed": True, "is_pro": False})
         from sqlalchemy import func as _func
         used = (
             db.query(_func.coalesce(_func.sum(UsageRecord.ai_optimizations), 0))
