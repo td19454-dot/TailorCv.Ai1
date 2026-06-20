@@ -95,6 +95,7 @@ main { max-width: var(--cs-max); margin: 0 auto; padding: 0 20px 70px; }
     color: var(--cs-text);
     font-weight: 600;
 }
+.cs-skill-ic { width: 20px; height: 20px; margin-right: 8px; background: rgba(255,255,255,.92); border-radius: 5px; padding: 2px; box-sizing: border-box; }
 .cs-pills.compact { justify-content: flex-start; gap: 10px; }
 .cs-pills.compact span { min-height: 36px; padding: 0 14px; font-size: .86rem; }
 
