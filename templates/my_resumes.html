@@ -71,6 +71,13 @@
             background: transparent; color: #ff9a9a; border-color: rgba(239,68,68,.35);
         }
         .btn-del:hover { background: rgba(239,68,68,.12); }
+        .btn-portfolio {
+            flex: 1; text-align: center; font-size: .85rem; font-weight: 600; padding: 9px 12px;
+            border-radius: 9px; cursor: pointer; text-decoration: none;
+            background: rgba(139,92,246,.16); color: #c4b5fd; border: 1px solid rgba(139,92,246,.4);
+        }
+        .btn-portfolio:hover { background: rgba(139,92,246,.28); }
+        .btn-portfolio:disabled { opacity: .6; cursor: progress; }
         .resume-empty {
             text-align: center; padding: 64px 20px;
             border: 1px dashed rgba(99,130,200,.28); border-radius: 16px;
@@ -165,6 +172,7 @@
                 </form>
                 <div class="resume-card-actions">
                     <a class="btn-dl" href="/my-resumes/{{ r.id }}/download">Download PDF</a>
+                    <button type="button" class="btn-portfolio" data-resume-id="{{ r.id }}" onclick="makePortfolio(this)">🌐 Portfolio</button>
                     <form method="post" action="/my-resumes/{{ r.id }}/delete" style="flex:1;margin:0;"
                           onsubmit="return confirm('Delete this resume? This cannot be undone.');">
                         <button type="submit" class="btn-del" style="width:100%;">Delete</button>
@@ -184,6 +192,28 @@
 
     {% include "_footer.html" %}
 
+    <script>
+        async function makePortfolio(btn) {
+            const resumeId = btn.getAttribute('data-resume-id');
+            const original = btn.textContent;
+            btn.disabled = true; btn.textContent = 'Building…';
+            try {
+                const csrf = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || '';
+                const res = await fetch('/api/generate-portfolio', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf, 'X-Requested-With': 'XMLHttpRequest' },
+                    body: JSON.stringify({ resume_id: parseInt(resumeId, 10) }),
+                });
+                const data = await res.json();
+                if (!data.success) { alert(data.error || 'Could not create portfolio.'); btn.disabled = false; btn.textContent = original; return; }
+                window.open(data.view_url, '_blank', 'noopener');
+                window.location.href = '/my-portfolios';
+            } catch (e) {
+                alert('Network error. Please try again.');
+                btn.disabled = false; btn.textContent = original;
+            }
+        }
+    </script>
     <script src="/static/auth_nav.js?v=2" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
 </body>
