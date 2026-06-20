@@ -21,6 +21,7 @@ class User(Base):
     usage_records = relationship("UsageRecord", back_populates="user", cascade="all, delete-orphan")
     saved_resumes = relationship("SavedResume", back_populates="user", cascade="all, delete-orphan")
     personality_cards = relationship("PersonalityCard", back_populates="user", cascade="all, delete-orphan")
+    portfolios = relationship("Portfolio", back_populates="user", cascade="all, delete-orphan")
 
 
 class PasswordResetToken(Base):
@@ -115,6 +116,37 @@ class PersonalityCard(Base):
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     user = relationship("User", back_populates="personality_cards")
+    resume = relationship("SavedResume")
+
+
+class Portfolio(Base):
+    """A live, public portfolio website generated from a user's saved resume.
+
+    Mirrors PersonalityCard: a public, no-login page reachable by a stable
+    handle (here the human-friendly `slug`, e.g. "emilian-leaman-a1b2"). The
+    fully-rendered content is held as a JSON blob (`data_json`) so the public
+    page never needs the source resume to render and the user can regenerate or
+    re-theme without losing their link."""
+    __tablename__ = "portfolios"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    resume_id = Column(Integer, ForeignKey("saved_resumes.id", ondelete="SET NULL"), nullable=True, index=True)
+    slug = Column(String(160), unique=True, index=True, nullable=False)   # public path in /p/<slug>
+    handle = Column(String(63), unique=True, index=True, nullable=True)    # subdomain label: <handle>.thetailorcv.com
+    token = Column(String(32), unique=True, index=True, nullable=False)   # opaque id for owner actions
+    theme = Column(String(40), nullable=False, default="aurora")
+    accent = Column(String(20), nullable=True)                            # optional hero accent override
+    headline = Column(String(255), nullable=True)
+    tagline = Column(Text, nullable=True)                                  # AI hero one-liner
+    about = Column(Text, nullable=True)                                    # AI polished about paragraph
+    data_json = Column(Text, nullable=False)                               # full render dict, JSON-encoded
+    published = Column(Boolean, default=True, nullable=False)
+    view_count = Column(Integer, default=0, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+    user = relationship("User", back_populates="portfolios")
     resume = relationship("SavedResume")
 
 

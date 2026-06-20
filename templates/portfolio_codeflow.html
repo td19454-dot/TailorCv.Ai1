@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ seo_og_description }}">
+    <title>{{ data.name }}{% if data.headline %} — {{ data.headline }}{% endif %} | Portfolio</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/portfolio_codeflow.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+{% set fname = data.name.split(' ')[0] if data.name else 'Your' %}
+{% set roles = [] %}
+{% if data.headline %}{% for r in data.headline.replace('/', ',').replace('·', ',').split(',') %}{% if r.strip() %}{% set _ = roles.append(r.strip()) %}{% endif %}{% endfor %}{% endif %}
+{% macro soc(icon) -%}
+    {% if icon == 'linkedin' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg>
+    {% elif icon == 'github' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.38-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.71 1.03 1.62 1.03 2.74 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+    {% elif icon == 'leetcode' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.48 2.5a1.4 1.4 0 0 0-1 .43L5.4 9.9a3.8 3.8 0 0 0 0 5.36l4.07 4.07a3.8 3.8 0 0 0 5.36 0l1.9-1.9a1.4 1.4 0 1 0-1.98-1.98l-1.9 1.9a1 1 0 0 1-1.4 0L7.38 13.3a1 1 0 0 1 0-1.4l7.08-6.97a1.4 1.4 0 0 0-1-2.43zM14.6 9.3a1.4 1.4 0 0 0 0 2.8h5.4a1.4 1.4 0 0 0 0-2.8z"/></svg>
+    {% elif icon == 'twitter' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.84l-4.78-6.26L5.92 22H2.66l8.02-9.17L2 2h6.91l4.32 5.71L18.244 2z"/></svg>
+    {% elif icon == 'mail' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+    {% elif icon == 'pin' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+    {% elif icon == 'phone' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+    {% elif icon == 'cap' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>
+    {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>{% endif %}
+{%- endmacro %}
+{% macro brief() -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>{%- endmacro %}
+{% macro medal() -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5"/></svg>{%- endmacro %}
+{% macro skillgrid(items) -%}
+    <div class="cf-skill-grid">
+        {% for item in items %}
+        {% set slug = item|deviconslug %}
+        <div class="cf-skill">
+            <span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{ slug }}/{{ slug }}-original.svg" alt="" loading="lazy" data-slug="{{ slug }}" onerror="cfIcon(this)"><span class="cf-glyph" aria-hidden="true">&lt;/&gt;</span></span>
+            <span class="nm">{{ item }}</span>
+        </div>
+        {% endfor %}
+    </div>
+{%- endmacro %}
+
+    <!-- Scroll-progress code-tab bar -->
+    <div class="cf-prog">
+        <span class="pct" id="cf-pct">→ 0%</span>
+        <div class="cf-keys">
+            <div class="cf-keys-fill" id="cf-fill"></div>
+            <div class="cf-keys-text">
+                {% set keys = [] %}
+                {% set _ = keys.append(('intro','home')) %}
+                {% if about %}{% set _ = keys.append(('about me','about')) %}{% endif %}
+                {% if data.skills %}{% set _ = keys.append(('skills','skills')) %}{% endif %}
+                {% if data.projects %}{% set _ = keys.append(('projects','projects')) %}{% endif %}
+                {% if data.experience %}{% set _ = keys.append(('experience','experience')) %}{% endif %}
+                {% if data.extracurriculars %}{% set _ = keys.append(('achievements','achievements')) %}{% endif %}
+                {% if data.certifications %}{% set _ = keys.append(('certifications','certifications')) %}{% endif %}
+                {% set _ = keys.append(('contact','contact')) %}
+                {% for label, tgt in keys %}<span class="cf-key" data-sec="{{ tgt }}">{{ '{' }}{{ label }}{{ '}' }}</span>{% endfor %}<span class="cf-cursor">&nbsp;</span>
+            </div>
+        </div>
+        <span class="cf-remain" id="cf-remain">100% remaining</span>
+        <span class="chev">▾</span>
+    </div>
+
+    <div class="cf-wrap">
+        <nav class="cf-nav">
+            <a href="#home" class="cf-brand">{{ data.name }}</a>
+            <div class="cf-navlinks" id="cf-navlinks">
+                <a href="#home" data-sec="home">Home</a>
+                {% if about %}<a href="#about" data-sec="about">About</a>{% endif %}
+                {% if data.skills %}<a href="#skills" data-sec="skills">Skills</a>{% endif %}
+                {% if data.projects %}<a href="#projects" data-sec="projects">Projects</a>{% endif %}
+                {% if data.experience %}<a href="#experience" data-sec="experience">Experience</a>{% endif %}
+                <a href="#contact" data-sec="contact">Contact</a>
+            </div>
+            <button class="cf-burger" aria-label="Menu" onclick="document.getElementById('cf-navlinks').classList.toggle('show')"><span></span><span></span><span></span></button>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <header id="home"><div class="cf-wrap">
+        <div class="cf-hero">
+            <div>
+                <div class="cf-hey">Hey, I'm {{ fname }}</div>
+                <h1 class="cf-type"><span id="cf-typed"></span><span class="cur">|</span></h1>
+                {% if data.headline %}<div class="cf-headline">{{ data.headline }}</div>{% endif %}
+                {% if tagline %}<p class="cf-lead">{{ tagline }}</p>{% elif about %}<p class="cf-lead">{{ about.split('\n\n')[0] }}</p>{% endif %}
+                <div class="cf-actions">
+                    <a class="cf-btn cf-btn-blue" href="#contact">Get in Touch →</a>
+                    {% if has_cv %}<a class="cf-btn cf-btn-outline" href="/p/{{ slug }}/cv">⬇ Download Resume</a>{% endif %}
+                </div>
+                {% if data.socials %}
+                <div class="cf-hero-socials">
+                    {% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.label }}" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}
+                    {% if data.email %}<a href="mailto:{{ data.email }}" aria-label="Email">{{ soc('mail') }}</a>{% endif %}
+                </div>
+                {% endif %}
+            </div>
+            {% if data.photo %}<img class="cf-hero-photo" src="{{ data.photo }}" alt="{{ data.name }}">{% else %}<div class="cf-hero-photo ph">{{ data.initials }}</div>{% endif %}
+        </div>
+        <div class="cf-down"><a href="#about" aria-label="Scroll down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a></div>
+    </div></header>
+
+    <!-- About -->
+    {% if about %}
+    <section class="cf-section" id="about"><div class="cf-wrap">
+        <h2 class="cf-title">My Professional Side</h2>
+        <div class="cf-about">
+            <div class="cf-card">
+                {% for para in about.split('\n\n') %}{% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}{% endfor %}
+                {% if data.email %}<div class="cf-info"><span class="ic">{{ soc('mail') }}</span><div><div class="lbl">Email</div><div class="val">{{ data.email }}</div></div></div>{% endif %}
+                {% if data.location %}<div class="cf-info"><span class="ic">{{ soc('pin') }}</span><div><div class="lbl">Location</div><div class="val">{{ data.location }}</div></div></div>{% endif %}
+                {% if data.education %}<div class="cf-info"><span class="ic">{{ soc('cap') }}</span><div><div class="lbl">Education</div><div class="val">{{ data.education[0].degree or data.education[0].school }}</div></div></div>{% endif %}
+                {% set core = [] %}{% for g in data.skills %}{% for it in g['items'] %}{% if core|length < 9 %}{% set _ = core.append(it) %}{% endif %}{% endfor %}{% endfor %}
+                {% if core %}<div class="cf-core-title">Core Areas</div><div class="cf-tags">{% for c in core %}<span class="cf-tag">{{ c }}</span>{% endfor %}</div>{% endif %}
+            </div>
+            <div>
+                {% if data.education %}
+                <h3 class="cf-edu-h">Education</h3>
+                {% for ed in data.education %}
+                <div class="cf-edu">
+                    <h4>{{ ed.degree or ed.school }}</h4>
+                    {% if ed.degree and ed.school %}<div class="inst">{{ ed.school }}</div>{% endif %}
+                    <div class="row"><span>{{ ed.year }}</span><span>{{ ed.score }}</span></div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div></section>
+    {% endif %}
+
+    <!-- Skills (grouped stack cards) -->
+    {% if data.skills %}
+    <section class="cf-section" id="skills"><div class="cf-wrap">
+        <h2 class="cf-title">Skills</h2>
+        <div class="cf-stack">
+            {% for g in data.skills %}
+            <div class="cf-stack-card cf-reveal">
+                <div class="cf-stack-head">
+                    <span class="cf-stack-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-3 3 3 3M16 9l3 3-3 3"/></svg></span>
+                    <h3>{{ g['group'] or 'Skills' }}</h3>
+                </div>
+                <div class="cf-stack-grid">
+                    {% for item in g['items'] %}
+                    {% set slug = item|deviconslug %}
+                    <div class="cf-stack-item">
+                        <span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{ slug }}/{{ slug }}-original.svg" alt="" loading="lazy" data-slug="{{ slug }}" onerror="cfIcon(this)"><span class="cf-glyph" aria-hidden="true">&lt;/&gt;</span></span>
+                        <span class="nm">{{ item }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div></section>
+    {% endif %}
+
+    <!-- Projects -->
+    {% if data.projects %}
+    <section class="cf-section" id="projects"><div class="cf-wrap">
+        <h2 class="cf-title">Stuff I Built</h2>
+        {% for p in data.projects %}
+        <div class="cf-proj cf-reveal">
+            <div class="cf-proj-shot">{% if p.image %}<img src="{{ p.image }}" alt="{{ p.name }}" loading="lazy">{% else %}<span class="ph">{{ p.name[0]|upper if p.name else '★' }}</span>{% endif %}</div>
+            <div class="cf-proj-info">
+                <h3>{{ p.name }}{% if p.url or p.github %}<a class="cf-checkout" href="{{ p.url or p.github }}" target="_blank" rel="noopener">Check out ↗</a>{% endif %}</h3>
+                {% if p.subtitle %}<p>{{ p.subtitle }}</p>{% endif %}
+                {% if p.bullets %}<ul class="cf-plus">{% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                {% if p.subtitle %}<div class="cf-pill-tags">{% for t in p.subtitle.split(',') %}{% if t.strip() %}<span class="cf-pill">{{ t.strip() }}</span>{% endif %}{% endfor %}</div>{% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div></section>
+    {% endif %}
+
+    <!-- Experience -->
+    {% if data.experience %}
+    <section class="cf-section" id="experience"><div class="cf-wrap">
+        <h2 class="cf-title">Work Experience</h2>
+        <div class="cf-tl">
+            {% for e in data.experience %}
+            <div class="cf-tl-item cf-reveal">
+                <div class="cf-tl-node"></div>
+                <div class="cf-tl-card">
+                    <div class="cf-tl-head"><span class="cf-tl-ic">{{ brief() }}</span><div><h3>{{ e.title }}</h3><div class="org">{{ e.company }}{% if e.location %} · {{ e.location }}{% endif %}</div></div></div>
+                    {% if e.bullets %}<p>{{ e.bullets|join(' ') }}</p>{% endif %}
+                    {% if e.dates %}<span class="cf-yr">{{ e.dates }}</span>{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div></section>
+    {% endif %}
+
+    <!-- Achievements (extracurriculars / leadership) -->
+    {% if data.extracurriculars %}
+    <section class="cf-section" id="achievements"><div class="cf-wrap">
+        <h2 class="cf-title">Achievements</h2>
+        <div class="cf-tl gold">
+            {% for x in data.extracurriculars %}
+            <div class="cf-tl-item cf-reveal">
+                <div class="cf-tl-node"></div>
+                <div class="cf-tl-card">
+                    <div class="cf-tl-head"><span class="cf-tl-ic">{{ medal() }}</span><div><h3>{{ x.role }}</h3><div class="org">{{ x.organization }}</div></div></div>
+                    {% if x.bullets %}<p>{{ x.bullets|join(' ') }}</p>{% endif %}
+                    {% if x.dates %}<span class="cf-yr">{{ x.dates }}</span>{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div></section>
+    {% endif %}
+
+    <!-- Certifications -->
+    {% if data.certifications %}
+    <section class="cf-section" id="certifications"><div class="cf-wrap">
+        <h2 class="cf-title">Certifications</h2>
+        <div class="cf-cert-grid">
+            {% for c in data.certifications %}
+            <article class="cf-cert{% if c.image %} hasimg{% endif %} cf-reveal">
+                {% if c.image %}<div class="cimg"><img src="{{ c.image }}" alt="{{ c.name }}" loading="lazy"></div><div class="cbody"><h3>{{ c.name }}</h3>{% if c.issuer %}<div class="iss">{{ c.issuer }}</div>{% endif %}{% if c.url %}<a class="cl" href="{{ c.url }}" target="_blank" rel="noopener">View →</a>{% endif %}</div>
+                {% else %}<span class="cf-medal">{{ medal() }}</span><div><h3>{{ c.name }}</h3>{% if c.issuer %}<div class="iss">{{ c.issuer }}</div>{% endif %}{% if c.year %}<div class="iss">{{ c.year }}</div>{% endif %}{% if c.url %}<a class="cl" href="{{ c.url }}" target="_blank" rel="noopener">View →</a>{% endif %}</div>{% endif %}
+            </article>
+            {% endfor %}
+        </div>
+    </div></section>
+    {% endif %}
+
+    <!-- Publications -->
+    {% if data.publications %}
+    <section class="cf-section" id="publications"><div class="cf-wrap">
+        <h2 class="cf-title">Publications</h2>
+        <div class="cf-cert-grid">
+            {% for pub in data.publications %}
+            <article class="cf-cert cf-reveal"><span class="cf-medal">{{ medal() }}</span><div><h3>{{ pub.title }}</h3>{% if pub.publisher %}<div class="iss">{{ pub.publisher }}</div>{% endif %}{% if pub.year %}<div class="iss">{{ pub.year }}</div>{% endif %}{% if pub.url %}<a class="cl" href="{{ pub.url }}" target="_blank" rel="noopener">Read →</a>{% endif %}</div></article>
+            {% endfor %}
+        </div>
+    </div></section>
+    {% endif %}
+
+    <!-- Interests -->
+    {% if data.hobbies %}
+    <section class="cf-section" id="interests"><div class="cf-wrap">
+        <h2 class="cf-title">Interests</h2>
+        <div class="cf-chips">{% for h in data.hobbies %}<span class="cf-pill">{{ h }}</span>{% endfor %}</div>
+    </div></section>
+    {% endif %}
+
+    <!-- Contact -->
+    <section class="cf-section" id="contact"><div class="cf-wrap">
+        <h2 class="cf-title">Say Hi, Don't Be Shy</h2>
+        <p class="cf-sub">Let's discuss your next project or just say hello!</p>
+        <div class="cf-contact">
+            <div>
+                {% if data.email %}<div class="cf-cinfo-card"><span class="ic">{{ soc('mail') }}</span><div><div class="lbl">Email</div><div class="val">{{ data.email }}</div></div></div>{% endif %}
+                {% if data.phone %}<div class="cf-cinfo-card"><span class="ic">{{ soc('phone') }}</span><div><div class="lbl">Phone</div><div class="val">{{ data.phone }}</div></div></div>{% endif %}
+                {% if data.location %}<div class="cf-cinfo-card"><span class="ic">{{ soc('pin') }}</span><div><div class="lbl">Location</div><div class="val">{{ data.location }}</div></div></div>{% endif %}
+                {% if data.socials %}
+                <div class="cf-connect-h">Connect With Me</div>
+                <div class="cf-connect-socs">{% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.label }}" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}</div>
+                {% endif %}
+            </div>
+            <div class="cf-formcard">
+                <form onsubmit="return cfSend(event)">
+                    <div class="row">
+                        <div class="field"><label>Your Name</label><input class="cf-input" id="cf-n" placeholder="{{ fname }}" required></div>
+                        <div class="field"><label>Your Email</label><input class="cf-input" id="cf-e" type="email" placeholder="you@email.com" required></div>
+                    </div>
+                    <div class="field"><label>Subject</label><input class="cf-input" id="cf-s" placeholder="How can I help you?"></div>
+                    <div class="field"><label>Message</label><textarea class="cf-textarea" id="cf-m" placeholder="Your message here..." required></textarea></div>
+                    <button type="submit" class="cf-btn cf-btn-blue">✈ Send Message</button>
+                </form>
+            </div>
+        </div>
+        <div class="cf-footer">© {{ data.name }} · <a href="https://thetailorcv.com" target="_blank" rel="noopener">Built with theTailorCV</a></div>
+    </div></section>
+
+    <script>
+    (function () {
+        // typewriter
+        var roles = {{ (roles if roles else ['Developer'])|tojson }};
+        var el = document.getElementById('cf-typed');
+        if (el && roles.length) {
+            var ri = 0, ci = 0, del = false;
+            (function tick() {
+                var w = roles[ri % roles.length];
+                el.textContent = del ? w.slice(0, ci--) : w.slice(0, ci++);
+                if (!del && ci > w.length) { del = true; setTimeout(tick, 1400); return; }
+                if (del && ci < 0) { del = false; ci = 0; ri++; }
+                setTimeout(tick, del ? 45 : 95);
+            })();
+        }
+        // skill icon fallback: devicon original → plain → hide (name only)
+        window.cfIcon = function (img) {
+            var s = img.getAttribute('data-slug');
+            if (!img.dataset.tried) { img.dataset.tried = '1'; img.src = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/' + s + '/' + s + '-plain.svg'; }
+            else { var c = img.closest('.cf-stack-item, .cf-skill'); if (c) c.classList.add('noicon'); }
+        };
+        // skills tabs
+        var tabs = document.getElementById('cf-tabs');
+        if (tabs) tabs.addEventListener('click', function (e) {
+            var b = e.target.closest('.cf-tab'); if (!b) return;
+            var i = b.getAttribute('data-i');
+            document.querySelectorAll('.cf-tab').forEach(function (t) { t.classList.toggle('on', t === b); });
+            document.querySelectorAll('.cf-skillpanel').forEach(function (p) { p.classList.toggle('on', p.getAttribute('data-i') === i); });
+        });
+        // reveal
+        if ('IntersectionObserver' in window) {
+            var ro = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); ro.unobserve(en.target); } }); }, { threshold: .1 });
+            document.querySelectorAll('.cf-reveal').forEach(function (x) { ro.observe(x); });
+        } else { document.querySelectorAll('.cf-reveal').forEach(function (x) { x.classList.add('in'); }); }
+        // scroll progress bar + active highlight
+        var pct = document.getElementById('cf-pct'), fill = document.getElementById('cf-fill'), remain = document.getElementById('cf-remain');
+        var keys = Array.prototype.slice.call(document.querySelectorAll('.cf-key'));
+        var navas = Array.prototype.slice.call(document.querySelectorAll('.cf-navlinks a'));
+        function onScroll() {
+            var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+            var p = max > 0 ? Math.min(100, Math.round(h.scrollTop / max * 100)) : 0;
+            if (pct) pct.textContent = '→ ' + p + '%';
+            if (fill) fill.style.width = p + '%';
+            if (remain) remain.textContent = (p >= 100 ? 'complete' : (100 - p) + '% remaining');
+            // active section
+            var cur = null;
+            document.querySelectorAll('section[id], header[id]').forEach(function (s) {
+                var r = s.getBoundingClientRect();
+                if (r.top <= 120 && r.bottom > 120) cur = s.id;
+            });
+            keys.forEach(function (k) { k.classList.toggle('on', cur && k.getAttribute('data-sec') === cur); });
+            navas.forEach(function (a) { a.classList.toggle('on', cur && a.getAttribute('data-sec') === cur); });
+        }
+        window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+        navas.forEach(function (a) { a.addEventListener('click', function () { document.getElementById('cf-navlinks').classList.remove('show'); }); });
+    })();
+    function cfSend(e) {
+        e.preventDefault();
+        var to = {{ (data.email or '')|tojson }};
+        if (!to) { alert('No contact email is set on this portfolio.'); return false; }
+        var n = document.getElementById('cf-n').value, em = document.getElementById('cf-e').value;
+        var s = document.getElementById('cf-s').value || 'Portfolio inquiry', m = document.getElementById('cf-m').value;
+        window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(s) + '&body=' + encodeURIComponent(m + '\n\n— ' + n + ' (' + em + ')');
+        return false;
+    }
+    </script>
+</body>
+</html>

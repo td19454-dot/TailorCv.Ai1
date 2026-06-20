@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Turn your resume into a live portfolio website in one click with theTailorCV Portfolio Studio.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>My Portfolios | theTailorCV</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/style2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .pfh-page { max-width: 1080px; margin: 0 auto; padding: 48px 20px 80px; font-family: 'Inter', system-ui, sans-serif; }
+        .pfh-head { margin-bottom: 30px; }
+        .pfh-head h1 { font-size: 2rem; font-weight: 800; color: #eaf1ff; margin: 0 0 6px; }
+        .pfh-head p { color: #9fb0cc; font-size: 1rem; margin: 0; }
+        .pfh-section-title { color: #eaf1ff; font-size: 1.2rem; font-weight: 700; margin: 34px 0 14px; }
+
+        .pfh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 18px; }
+        .pfh-card {
+            background: linear-gradient(160deg, rgba(30,41,69,.65), rgba(17,24,42,.85));
+            border: 1px solid rgba(99,130,200,.22); border-radius: 14px; padding: 20px;
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .pfh-card-title { font-size: 1.05rem; font-weight: 700; color: #eaf1ff; }
+        .pfh-card-sub { font-size: .85rem; color: #9fb0cc; }
+        .pfh-theme-badge {
+            display: inline-block; font-size: .7rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+            background: rgba(139,92,246,.16); color: #c4b5fd; border: 1px solid rgba(139,92,246,.3);
+            text-transform: capitalize;
+        }
+        .pfh-link-row { display: flex; gap: 8px; align-items: center; }
+        .pfh-link {
+            flex: 1; font-size: .8rem; color: #9cc2ff; background: rgba(255,255,255,.04);
+            border: 1px solid rgba(99,130,200,.25); border-radius: 8px; padding: 8px 10px;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        .pfh-views { font-size: .78rem; color: #8da3c6; }
+        .pfh-actions { display: flex; gap: 8px; margin-top: auto; flex-wrap: wrap; }
+        .pfh-btn {
+            flex: 1; text-align: center; font-size: .82rem; font-weight: 600; padding: 9px 12px;
+            border-radius: 9px; cursor: pointer; border: 1px solid transparent; text-decoration: none; white-space: nowrap;
+        }
+        .pfh-btn-view { background: linear-gradient(135deg, #3392ff, #4c1d95); color: #fff; }
+        .pfh-btn-view:hover { filter: brightness(1.08); }
+        .pfh-btn-copy { background: rgba(59,130,246,.16); color: #9cc2ff; border-color: rgba(59,130,246,.3); }
+        .pfh-btn-del { background: transparent; color: #ff9a9a; border-color: rgba(239,68,68,.35); }
+        .pfh-btn-del:hover { background: rgba(239,68,68,.12); }
+
+        /* Create-from-resume rows */
+        .pfh-resume-row {
+            display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+            background: rgba(255,255,255,.03); border: 1px solid rgba(99,130,200,.18);
+            border-radius: 12px; padding: 14px 16px;
+        }
+        .pfh-resume-info { flex: 1; min-width: 180px; }
+        .pfh-resume-info .t { color: #eaf1ff; font-weight: 600; font-size: .95rem; }
+        .pfh-resume-info .s { color: #8da3c6; font-size: .8rem; }
+        .pfh-theme-select {
+            background: rgba(255,255,255,.04); border: 1px solid rgba(99,130,200,.3);
+            color: #eaf1ff; border-radius: 8px; padding: 9px 10px; font-size: .82rem; cursor: pointer;
+        }
+        .pfh-theme-select option { background: #16203c; color: #eaf1ff; }
+        .pfh-create-btn {
+            background: linear-gradient(135deg, #7c3aed, #4c1d95); color: #fff; border: none;
+            border-radius: 9px; padding: 10px 18px; font-size: .85rem; font-weight: 700; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .pfh-create-btn:hover { filter: brightness(1.1); }
+        .pfh-create-btn:disabled { opacity: .6; cursor: progress; }
+        .pfh-note { font-size: .78rem; color: #f0b46b; }
+
+        .pfh-empty {
+            text-align: center; padding: 48px 20px; border: 1px dashed rgba(99,130,200,.28);
+            border-radius: 16px; background: rgba(255,255,255,.02);
+        }
+        .pfh-empty p { color: #9fb0cc; margin: 0 0 18px; }
+        .pfh-empty a { display: inline-block; background: linear-gradient(135deg, #3392ff, #4c1d95); color: #fff; text-decoration: none; font-weight: 700; padding: 11px 24px; border-radius: 10px; }
+        .pfh-toast {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: #16203c; color: #eaf1ff; border: 1px solid rgba(99,130,200,.4);
+            border-radius: 10px; padding: 12px 18px; font-size: .9rem; z-index: 9999;
+            box-shadow: 0 10px 30px rgba(0,0,0,.4); opacity: 0; transition: opacity .2s; pointer-events: none;
+        }
+        .pfh-toast.show { opacity: 1; }
+        .spin { width: 15px; height: 15px; border: 2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation: pfhSpin .7s linear infinite; }
+        @keyframes pfhSpin { to { transform: rotate(360deg); } }
+        .navbar .nav-links { min-width: auto; flex-wrap: nowrap; gap: 2px; }
+        .navbar .nav-links a { font-size: 12px; padding: 22px 12px; letter-spacing: 0; white-space: nowrap; }
+        @media (max-width: 560px) { .pfh-page { padding: 30px 14px 60px; } .pfh-head h1 { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+    {% include "_nav.html" %}
+
+    <main class="pfh-page">
+        <div class="pfh-head">
+            <h1>Portfolio Studio</h1>
+            <p>Turn any saved resume into a live, shareable portfolio website — pick a theme and you'll get a public link in seconds.</p>
+        </div>
+
+        {% if portfolios %}
+        <h2 class="pfh-section-title">Your live portfolios</h2>
+        <section class="pfh-grid">
+            {% for p in portfolios %}
+            <article class="pfh-card">
+                <div>
+                    <div class="pfh-card-title">{{ p.name }}</div>
+                    {% if p.headline %}<div class="pfh-card-sub">{{ p.headline }}</div>{% endif %}
+                </div>
+                <div><span class="pfh-theme-badge">{{ p.theme }}</span> <span class="pfh-views">· {{ p.view_count }} views</span></div>
+                <div class="pfh-link-row">
+                    <span class="pfh-link" title="{{ p.share_url }}">{{ p.share_url }}</span>
+                    <button class="pfh-btn pfh-btn-copy" style="flex:0 0 auto;" onclick="pfhCopy('{{ p.share_url }}')">Copy</button>
+                </div>
+                <div class="pfh-actions">
+                    <a class="pfh-btn pfh-btn-view" href="/p/{{ p.slug }}" target="_blank" rel="noopener">View site</a>
+                    <form method="post" action="/my-portfolios/{{ p.id }}/delete" style="flex:1;margin:0;"
+                          onsubmit="return confirm('Delete this portfolio? The public link will stop working.');">
+                        <button type="submit" class="pfh-btn pfh-btn-del" style="width:100%;">Delete</button>
+                    </form>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        <h2 class="pfh-section-title">Create from a saved resume</h2>
+        {% if resumes %}
+        <section style="display:flex;flex-direction:column;gap:12px;">
+            {% for r in resumes %}
+            <div class="pfh-resume-row">
+                <div class="pfh-resume-info">
+                    <div class="t">{{ r.title }}</div>
+                    <div class="s">{{ r.candidate_name }}{% if r.has_portfolio %} · has a portfolio (creating again updates it){% endif %}</div>
+                </div>
+                {% if r.has_data %}
+                <button class="pfh-create-btn" data-resume-id="{{ r.id }}" onclick="pfhCreate(this)">
+                    {{ "Update portfolio" if r.has_portfolio else "Create portfolio" }}
+                </button>
+                {% else %}
+                <span class="pfh-note">Open this resume in the editor and save it first to unlock portfolio data.</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </section>
+        {% else %}
+        <div class="pfh-empty">
+            <p>You don't have any saved resumes yet. Optimize a resume first — then turn it into a portfolio here.</p>
+            <a href="/solutions">Optimize my resume</a>
+        </div>
+        {% endif %}
+    </main>
+
+    <div class="pfh-toast" id="pfh-toast"></div>
+
+    {% include "_footer.html" %}
+
+    <script>
+        function pfhToast(msg) {
+            const t = document.getElementById('pfh-toast');
+            t.textContent = msg; t.classList.add('show');
+            clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 2600);
+        }
+        function pfhCopy(url) {
+            navigator.clipboard.writeText(url).then(() => pfhToast('Link copied!'),
+                () => pfhToast('Copy failed — select and copy manually.'));
+        }
+        async function pfhCreate(btn) {
+            const resumeId = btn.getAttribute('data-resume-id');
+            const original = btn.innerHTML;
+            btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Building…';
+            try {
+                const csrf = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || '';
+                const res = await fetch('/api/generate-portfolio', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf, 'X-Requested-With': 'XMLHttpRequest' },
+                    body: JSON.stringify({ resume_id: parseInt(resumeId, 10) }),
+                });
+                const data = await res.json();
+                if (!data.success) { pfhToast(data.error || 'Could not create portfolio.'); btn.disabled = false; btn.innerHTML = original; return; }
+                pfhToast('Portfolio ready! Opening…');
+                window.open(data.view_url, '_blank', 'noopener');
+                setTimeout(() => window.location.reload(), 900);
+            } catch (e) {
+                pfhToast('Network error. Please try again.');
+                btn.disabled = false; btn.innerHTML = original;
+            }
+        }
+    </script>
+    <script src="/static/auth_nav.js?v=2" defer></script>
+    <script src="/static/mobile_nav.js" defer></script>
+</body>
+</html>

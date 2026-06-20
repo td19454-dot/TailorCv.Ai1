@@ -50,7 +50,7 @@ from functions import (
 )
 
 from extraction import process_resume
-from models import JobApplication, PasswordResetToken, PersonalityCard, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
+from models import JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
 from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
@@ -154,6 +154,44 @@ async def csrf_middleware(request: Request, call_next):
         )
     return response
 
+# ── Portfolio subdomain router ────────────────────────────────────────────────
+# Serves <handle>.thetailorcv.com → that user's portfolio at the root path. Only
+# intercepts the homepage of a real portfolio subdomain; every other host/path
+# (apex, www, static assets, /p/<slug>, /cv, app routes) passes straight through,
+# so this is safe to run on every request. Fully wrapped so it can never break
+# normal traffic.
+@app.middleware("http")
+async def portfolio_subdomain_router(request: Request, call_next):
+    try:
+        host = (request.headers.get("host") or "").split(":")[0].lower().strip(".")
+        suffix = "." + PORTFOLIO_DOMAIN
+        if host.endswith(suffix) and request.method in ("GET", "HEAD"):
+            handle = host[: -len(suffix)]
+            # single-label, non-reserved handle, and only the homepage
+            if (handle and "." not in handle and handle not in RESERVED_HANDLES
+                    and request.url.path in ("", "/")):
+                db = get_db()
+                try:
+                    portfolio = (
+                        db.query(Portfolio)
+                        .filter(Portfolio.handle == handle, Portfolio.published == True)  # noqa: E712
+                        .first()
+                    )
+                    if portfolio is not None:
+                        response = _render_portfolio_page(request, portfolio)
+                        try:
+                            db.commit()
+                        except Exception:
+                            db.rollback()
+                        return response
+                    return HTMLResponse("<h1>Portfolio not found</h1>", status_code=404)
+                finally:
+                    db.close()
+    except Exception:
+        logger.exception("portfolio_subdomain_router failed; passing through")
+    return await call_next(request)
+
+
 # Add global exception handler for logging
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
@@ -209,6 +247,42 @@ os.makedirs(BLOG_CONTENT_DIR, exist_ok=True)
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 app.mount("/public", StaticFiles(directory=public_dir), name="public")
 templates = Jinja2Templates(directory=templates_dir)
+
+# devicon's icon folder names don't always match a skill's plain slug (e.g.
+# "HTML" → "html5", "CSS" → "css3"). Map the common mismatches so portfolio
+# skill grids render the real logo; unknown skills fall back to name-only.
+_DEVICON_ALIASES = {
+    "html": "html5", "css": "css3", "node": "nodejs", "nodejs": "nodejs",
+    "express": "express", "expressjs": "express", "next": "nextjs", "nextjs": "nextjs",
+    "reactjs": "react", "reactnative": "react", "reactrouter": "reactrouter",
+    "vue": "vuejs", "vuejs": "vuejs", "tailwind": "tailwindcss", "tailwindcss": "tailwindcss",
+    "sklearn": "scikitlearn", "scikitlearn": "scikitlearn", "postgres": "postgresql",
+    "postgresql": "postgresql", "aws": "amazonwebservices", "amazonwebservicesaws": "amazonwebservices",
+    "amazonwebservices": "amazonwebservices", "golang": "go", "vscode": "vscode",
+    "github": "github", "tensorflow": "tensorflow", "pytorch": "pytorch",
+    "scss": "sass", "sass": "sass", "k8s": "kubernetes",
+}
+
+
+def _devicon_slug(name: str) -> str:
+    """Normalize a skill name into its best-guess devicon folder slug."""
+    s = str(name or "").lower().replace("+", "plus").replace("#", "sharp")
+    s = re.sub(r"[^a-z0-9]", "", s)
+    return _DEVICON_ALIASES.get(s, s)
+
+
+# Skills whose only devicon is a plain/ugly letter mark — render the neutral
+# code-glyph fallback instead of the logo.
+_DEVICON_BLOCKLIST = {"c"}
+
+
+def _skill_has_icon(name: str) -> bool:
+    """False for skills we deliberately render with the code-glyph fallback."""
+    return _devicon_slug(name) not in _DEVICON_BLOCKLIST
+
+
+templates.env.filters["deviconslug"] = _devicon_slug
+templates.env.filters["skillhasicon"] = _skill_has_icon
 # Make the GSC verification token available to every template (used by
 # _seo_head.html to emit the verification meta tag).
 templates.env.globals["google_site_verification"] = GOOGLE_SITE_VERIFICATION
@@ -266,11 +340,26 @@ def _ensure_saved_resume_columns() -> None:
                 conn.execute(_text("ALTER TABLE saved_resumes ALTER COLUMN jd_snippet TYPE TEXT"))
 
 
+def _ensure_portfolio_columns() -> None:
+    """Lightweight migration: add the `handle` column to an existing portfolios
+    table (added after the table first shipped). Safe to run every startup."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    insp = _inspect(engine)
+    if not insp.has_table("portfolios"):
+        return
+    cols = {c["name"] for c in insp.get_columns("portfolios")}
+    if "handle" not in cols:
+        with engine.begin() as conn:
+            conn.execute(_text("ALTER TABLE portfolios ADD COLUMN handle VARCHAR(63)"))
+
+
 def initialize_database() -> None:
     """Create tables if the configured database is reachable."""
     try:
         Base.metadata.create_all(bind=engine)
         _ensure_saved_resume_columns()
+        _ensure_portfolio_columns()
         db_init_status["ok"] = True
         db_init_status["error"] = None
     except Exception as exc:
@@ -4880,6 +4969,780 @@ async def personality_card_public(request: Request, token: str):
         "seo_og_image": f"{SITE_URL}/static/personality-card-og.png",
         "canonical_url": card_url,
     })
+
+
+# ---------------------------------------------------------------------------
+# Portfolio Studio — turn a saved resume into a live, shareable portfolio site.
+# Public pages live at /p/<slug> and need no login, mirroring PersonalityCard.
+# ---------------------------------------------------------------------------
+
+# Available portfolio themes (slug -> human label). One polished "Studio" theme
+# for now; the registry keeps the door open for more. Old rows storing a retired
+# theme value still render fine — the public CSS is single-theme.
+PORTFOLIO_THEMES = {
+    "editor": "Editor — VS Code style",
+    "nova": "Nova — teal, animated particles",
+    "codeflow": "Codeflow — blue, scroll progress",
+    "panels": "Panels — tabbed card, light",
+    "wave": "Wave — neon lines, animated",
+    "bold": "Bold — big type, dark",
+    "terminal": "Terminal — developer / mono",
+    "clean": "Clean — minimal light",
+    "editorial": "Editorial — serif & elegant",
+    "vibrant": "Vibrant — colorful designer",
+}
+DEFAULT_PORTFOLIO_THEME = "editor"
+
+# Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
+# the encoded size so a row can't bloat the DB; the client downscales first.
+_PORTFOLIO_PHOTO_RE = re.compile(r"^data:image/(png|jpe?g|webp);base64,[A-Za-z0-9+/=\s]+$", re.IGNORECASE)
+MAX_PORTFOLIO_PHOTO_CHARS = 1_500_000  # ~1.1 MB of image after base64 overhead
+
+
+def _valid_portfolio_photo(value) -> bool:
+    """True if value is a reasonably-sized base64 image data URL we can inline."""
+    if not isinstance(value, str):
+        return False
+    value = value.strip()
+    if not value or len(value) > MAX_PORTFOLIO_PHOTO_CHARS:
+        return False
+    return bool(_PORTFOLIO_PHOTO_RE.match(value))
+
+
+# Base domain that portfolio subdomains live under: <handle>.thetailorcv.com.
+# Derived from SITE_URL, overridable via env for staging.
+_pf_domain = (os.getenv("PORTFOLIO_DOMAIN", "").strip() or SITE_URL.split("://", 1)[-1].split("/")[0])
+if _pf_domain.startswith("www."):
+    _pf_domain = _pf_domain[4:]
+PORTFOLIO_DOMAIN = _pf_domain or "thetailorcv.com"
+
+# Flip to true ONLY after the wildcard DNS + TLS for *.PORTFOLIO_DOMAIN is live on
+# Render. Until then we keep advertising the always-working /p/<slug> links so we
+# never hand a user a dead subdomain. Handles are stored regardless, so enabling
+# this instantly upgrades every existing portfolio's public URL.
+PORTFOLIO_SUBDOMAINS_ENABLED = os.getenv("PORTFOLIO_SUBDOMAINS_ENABLED", "false").strip().lower() in ("1", "true", "yes", "on")
+
+# Subdomain labels we must never hand out as a portfolio handle (they collide
+# with app/infra hostnames or look like official pages).
+RESERVED_HANDLES = {
+    "www", "api", "app", "apps", "mail", "smtp", "imap", "pop", "ftp", "ns1", "ns2",
+    "mx", "blog", "admin", "dashboard", "static", "assets", "cdn", "img", "images",
+    "public", "login", "signup", "auth", "account", "accounts", "support", "help",
+    "docs", "status", "about", "contact", "pricing", "careers", "jobs", "portfolio",
+    "p", "my", "render", "root", "system", "internal", "test", "staging", "dev",
+    "beta", "secure", "billing", "store", "shop", "go", "link", "links",
+}
+
+
+def _portfolio_handleify(value: str) -> str:
+    """Normalize text into a DNS-safe handle: [a-z0-9-], 3-40 chars, no edge hyphens.
+    Returns '' if nothing usable remains."""
+    value = str(value or "").strip().lower()
+    value = re.sub(r"[^a-z0-9]+", "-", value).strip("-")
+    value = re.sub(r"-{2,}", "-", value)[:40].strip("-")
+    return value if len(value) >= 3 else ""
+
+
+def _unique_portfolio_handle(db: Session, name: str, desired: str = "") -> str:
+    """A free, valid handle. Honors a desired handle when possible, else derives
+    from the name; appends a numeric suffix (or random) to resolve collisions."""
+    base = _portfolio_handleify(desired) or _portfolio_handleify(name) or "me"
+    if base in RESERVED_HANDLES:
+        base = f"{base}-portfolio"[:40].strip("-")
+
+    def taken(h: str) -> bool:
+        return h in RESERVED_HANDLES or db.query(Portfolio.id).filter(Portfolio.handle == h).first() is not None
+
+    if not taken(base):
+        return base
+    for i in range(2, 60):
+        cand = f"{base}-{i}"[:40].strip("-")
+        if not taken(cand):
+            return cand
+    return f"{base}-{token_hex(2)}"[:40].strip("-")
+
+
+def _portfolio_share_url(portfolio) -> str:
+    """The public URL: pretty subdomain once subdomains are live, else /p/<slug>."""
+    if PORTFOLIO_SUBDOMAINS_ENABLED and getattr(portfolio, "handle", None):
+        return f"https://{portfolio.handle}.{PORTFOLIO_DOMAIN}"
+    return f"{SITE_URL}/p/{portfolio.slug}"
+
+
+def _portfolio_slugify(value: str) -> str:
+    """Lowercase, ASCII, hyphen-separated handle. Empty/odd input → 'portfolio'."""
+    value = str(value or "").strip().lower()
+    value = re.sub(r"[^a-z0-9]+", "-", value).strip("-")
+    return value[:60].strip("-") or "portfolio"
+
+
+def _portfolio_initials(name: str) -> str:
+    """Up to two initials for the monogram avatar (resumes carry no photo)."""
+    parts = [p for p in re.split(r"\s+", str(name or "").strip()) if p]
+    if not parts:
+        return "?"
+    if len(parts) == 1:
+        return parts[0][:2].upper()
+    return (parts[0][0] + parts[-1][0]).upper()
+
+
+def _portfolio_strip_bullets(details) -> list[str]:
+    """Turn the editor's newline/•-prefixed details blob (or a list) into clean lines."""
+    if isinstance(details, list):
+        lines = [str(x) for x in details]
+    else:
+        lines = str(details or "").split("\n")
+    out = []
+    for line in lines:
+        line = line.strip().lstrip("•").lstrip("-").lstrip("*").strip()
+        if line:
+            out.append(line)
+    return out
+
+
+def _portfolio_skill_groups(skills) -> list[dict]:
+    """Normalize the many skill shapes into [{group, items:[...]}].
+
+    Handles: list[str], list[{name|category}], and the candidate_data dict of
+    {category: [skills]}.
+    """
+    groups: list[dict] = []
+    if isinstance(skills, dict):
+        for cat, items in skills.items():
+            vals = [str(s).strip() for s in (items or []) if str(s).strip()]
+            if vals:
+                label = str(cat).replace("_", " ").title()
+                groups.append({"group": label, "items": vals})
+        return groups
+
+    flat: list[str] = []
+    if isinstance(skills, list):
+        for s in skills:
+            if isinstance(s, str) and s.strip():
+                flat.append(s.strip())
+            elif isinstance(s, dict):
+                name = s.get("name") or s.get("category") or s.get("skill")
+                if name:
+                    flat.append(str(name).strip())
+    if flat:
+        groups.append({"group": "", "items": flat})
+    return groups
+
+
+def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
+    """Map a saved resume's structured JSON into the portfolio render dict.
+
+    Tolerant of both the editor `cvData` shape (personalInfo / experience /
+    projects) and the optimizer/extraction shape (personal_info|name /
+    work_experience / responsibilities)."""
+    rd = resume_data or {}
+    pi = rd.get("personalInfo") or rd.get("personal_info") or {}
+    contact = rd.get("contact") or rd.get("contact_information") or {}
+
+    def first(*vals):
+        for v in vals:
+            if v:
+                return str(v).strip()
+        return ""
+
+    name = first(pi.get("name"), rd.get("name"), candidate_name)
+    headline = first(pi.get("headline"), pi.get("title"), rd.get("headline"),
+                     rd.get("title"), rd.get("current_title"))
+    summary = first(pi.get("summary"), rd.get("summary"), rd.get("about"), rd.get("objective"))
+    email = first(pi.get("email"), contact.get("email"))
+    phone = first(pi.get("phone"), contact.get("phone"))
+    location = first(pi.get("location"), contact.get("address"), contact.get("location"))
+
+    # Social links — try personalInfo first, then contact. Normalize each into an
+    # ABSOLUTE https URL: known services get cleaned by normalize_contact_link (which
+    # strips the scheme), then normalize_url re-adds https:// so the browser doesn't
+    # treat e.g. "linkedin.com/in/x" as a path relative to the portfolio page.
+    social_map = [
+        ("linkedin", "LinkedIn", "linkedin"), ("github", "GitHub", "github"),
+        ("leetcode", "LeetCode", "leetcode"), ("portfolio", "Website", ""),
+        ("kaggle", "Kaggle", ""), ("googleScholar", "Scholar", ""),
+        ("google_scholar", "Scholar", ""), ("twitter", "Twitter", ""),
+        ("website", "Website", ""),
+    ]
+    socials, seen = [], set()
+    for key, label, service in social_map:
+        raw = first(pi.get(key), contact.get(key))
+        if not raw or label in seen:
+            continue
+        cleaned = normalize_contact_link(raw, service) if service else raw
+        href = normalize_url(cleaned)
+        if href:
+            socials.append({"label": label, "icon": key.lower().replace("_", ""), "url": href})
+            seen.add(label)
+
+    # Experience
+    experience = []
+    for exp in (rd.get("experience") or rd.get("work_experience") or []):
+        if not isinstance(exp, dict):
+            continue
+        experience.append({
+            "title": first(exp.get("title"), exp.get("role"), exp.get("position")),
+            "company": first(exp.get("company"), exp.get("organization")),
+            "dates": first(exp.get("dates"), exp.get("date"), exp.get("years"), exp.get("duration")),
+            "location": first(exp.get("location")),
+            "bullets": _portfolio_strip_bullets(
+                exp.get("details") or exp.get("bullets") or exp.get("responsibilities") or []
+            ),
+        })
+
+    # Projects
+    projects = []
+    for proj in (rd.get("projects") or []):
+        if not isinstance(proj, dict):
+            continue
+        projects.append({
+            "name": first(proj.get("name"), proj.get("title")),
+            "subtitle": first(proj.get("subtitle"), proj.get("stack"), proj.get("technologies")),
+            "dates": first(proj.get("dates"), proj.get("date")),
+            "url": normalize_url(first(proj.get("url"), proj.get("website"), proj.get("project_link"))),
+            "github": normalize_url(normalize_contact_link(first(proj.get("github_link"), proj.get("github")), "github")),
+            "image": (proj.get("image") or "").strip() if _valid_portfolio_photo(proj.get("image")) else "",
+            "bullets": _portfolio_strip_bullets(
+                proj.get("details") or proj.get("bullets")
+                or proj.get("achievements") or proj.get("description") or []
+            ),
+        })
+
+    # Education
+    education = []
+    for edu in (rd.get("education") or []):
+        if not isinstance(edu, dict):
+            continue
+        education.append({
+            "school": first(edu.get("school"), edu.get("institution"), edu.get("university")),
+            "degree": first(edu.get("degree"), edu.get("course")),
+            "year": first(edu.get("year"), edu.get("years"), edu.get("dates")),
+            "score": first(edu.get("score"), edu.get("cgpa"), edu.get("gpa"), edu.get("percentage")),
+        })
+
+    # Extracurriculars / leadership / volunteering
+    extracurriculars = []
+    for item in (rd.get("extracurriculars") or rd.get("activities") or rd.get("volunteering") or []):
+        if not isinstance(item, dict):
+            continue
+        extracurriculars.append({
+            "role": first(item.get("role"), item.get("title"), item.get("position")),
+            "organization": first(item.get("organization"), item.get("org"), item.get("company")),
+            "dates": first(item.get("dates"), item.get("date"), item.get("years")),
+            "url": normalize_url(first(item.get("url"), item.get("link"))),
+            "bullets": _portfolio_strip_bullets(
+                item.get("details") or item.get("bullets") or item.get("description") or []
+            ),
+        })
+
+    # Publications
+    publications = []
+    for pub in (rd.get("publications") or []):
+        if not isinstance(pub, dict):
+            continue
+        publications.append({
+            "title": first(pub.get("title"), pub.get("name")),
+            "publisher": first(pub.get("publisher"), pub.get("venue"), pub.get("journal")),
+            "year": first(pub.get("year"), pub.get("date")),
+            "url": normalize_url(first(pub.get("url"), pub.get("link"), pub.get("doi"))),
+        })
+
+    # Certifications
+    certifications = []
+    for cert in (rd.get("certifications") or rd.get("certificates") or []):
+        if not isinstance(cert, dict):
+            continue
+        certifications.append({
+            "name": first(cert.get("name"), cert.get("title")),
+            "issuer": first(cert.get("issuer"), cert.get("organization"), cert.get("authority")),
+            "year": first(cert.get("year"), cert.get("date")),
+            "url": normalize_url(first(cert.get("url"), cert.get("link"))),
+            "image": (cert.get("image") or "").strip() if _valid_portfolio_photo(cert.get("image")) else "",
+        })
+
+    # Hobbies / interests (list of strings, a comma/newline string, or list of dicts)
+    hobbies = []
+    raw_hobbies = rd.get("hobbies") or rd.get("interests") or []
+    if isinstance(raw_hobbies, str):
+        raw_hobbies = re.split(r"[,\n]+", raw_hobbies)
+    for h in (raw_hobbies or []):
+        if isinstance(h, str) and h.strip():
+            hobbies.append(h.strip())
+        elif isinstance(h, dict):
+            nm = h.get("name") or h.get("hobby") or h.get("interest")
+            if nm:
+                hobbies.append(str(nm).strip())
+
+    skills = _portfolio_skill_groups(rd.get("skills"))
+    skills_count = sum(len(g["items"]) for g in skills)
+
+    return {
+        "name": name or "Your Name",
+        "headline": headline,
+        "initials": _portfolio_initials(name),
+        "summary": summary,
+        "email": email,
+        "phone": phone,
+        "location": location,
+        "socials": socials,
+        "skills": skills,
+        "experience": experience,
+        "projects": projects,
+        "education": education,
+        "extracurriculars": extracurriculars,
+        "publications": publications,
+        "certifications": certifications,
+        "hobbies": hobbies,
+        "stats": {
+            "experience": len(experience),
+            "projects": len(projects),
+            "skills": skills_count,
+        },
+    }
+
+
+def _build_portfolio_ai_prompt(data: dict) -> str:
+    """Prompt GPT for a punchy hero tagline + a polished first-person About."""
+    skills_flat = ", ".join(
+        s for g in data.get("skills", []) for s in g.get("items", [])
+    )[:600]
+    exp_lines = []
+    for e in data.get("experience", [])[:4]:
+        exp_lines.append(f"- {e.get('title')} at {e.get('company')}: " + " ".join(e.get("bullets", [])[:2]))
+    proj_lines = [f"- {p.get('name')}: {' '.join(p.get('bullets', [])[:1])}" for p in data.get("projects", [])[:4]]
+
+    return (
+        "You are a personal-branding copywriter building someone's portfolio website. "
+        "Using ONLY the facts below, write copy. Do not invent employers, titles, or metrics.\n\n"
+        f"Name: {data.get('name')}\n"
+        f"Headline/role: {data.get('headline') or 'unknown'}\n"
+        f"Existing summary: {data.get('summary') or 'none'}\n"
+        f"Skills: {skills_flat or 'none'}\n"
+        f"Experience:\n" + ("\n".join(exp_lines) or "none") + "\n"
+        f"Projects:\n" + ("\n".join(proj_lines) or "none") + "\n\n"
+        "Return STRICT JSON only, no markdown, with exactly these keys:\n"
+        '{\n'
+        '  "headline": "a 2-4 word professional role title for the hero (e.g. \\"Frontend Developer\\")",\n'
+        '  "tagline": "one confident sentence (max 18 words) describing what they do and their value",\n'
+        '  "about": "a warm, engaging first-person About section of TWO paragraphs separated by a blank line (\\n\\n). '
+        'Aim for 130-170 words total. The first paragraph introduces who they are, their focus, and what drives them; '
+        'the second highlights their strengths, the kind of work they love, and what they bring to a team. '
+        'Expand naturally on the facts to fill the space even when the source summary is short, but never invent employers, titles, degrees, or metrics."\n'
+        '}'
+    )
+
+
+async def _enrich_portfolio_copy(data: dict) -> dict:
+    """Best-effort AI tagline/about. Falls back to resume facts on any failure."""
+    fallback = {
+        "headline": data.get("headline") or "",
+        "tagline": (data.get("summary") or "").split(".")[0][:160],
+        "about": data.get("summary") or "",
+    }
+    try:
+        prompt = _build_portfolio_ai_prompt(data)
+        raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.6)
+        parsed = parse_ai_json_response(raw)
+        if not isinstance(parsed, dict):
+            return fallback
+        return {
+            "headline": str(parsed.get("headline") or fallback["headline"]).strip(),
+            "tagline": str(parsed.get("tagline") or fallback["tagline"]).strip(),
+            "about": str(parsed.get("about") or fallback["about"]).strip(),
+        }
+    except Exception:
+        logger.exception("Portfolio AI enrichment failed; using resume fallback")
+        return fallback
+
+
+def _unique_portfolio_slug(db: Session, name: str) -> str:
+    """A human-friendly slug with a short random suffix to guarantee uniqueness."""
+    base = _portfolio_slugify(name)
+    for _ in range(6):
+        slug = f"{base}-{token_hex(3)}"
+        if not db.query(Portfolio.id).filter(Portfolio.slug == slug).first():
+            return slug
+    return f"{base}-{token_urlsafe(8)}"
+
+
+@app.post("/api/generate-portfolio", include_in_schema=False)
+async def generate_portfolio(request: Request):
+    """Generate (or refresh) a public portfolio website for a saved resume."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return JSONResponse(status_code=401, content={"error": "Not logged in"})
+
+    try:
+        body = await request.json()
+    except Exception:
+        return JSONResponse(status_code=400, content={"error": "Invalid JSON body"})
+
+    resume_id = body.get("resume_id")
+    try:
+        resume_id = int(resume_id)
+    except (TypeError, ValueError):
+        return JSONResponse(status_code=400, content={"error": "resume_id must be an integer"})
+
+    theme = str(body.get("theme") or DEFAULT_PORTFOLIO_THEME).strip().lower()
+    if theme not in PORTFOLIO_THEMES:
+        theme = DEFAULT_PORTFOLIO_THEME
+
+    db = get_db()
+    try:
+        resume = (
+            db.query(SavedResume)
+            .filter(SavedResume.id == resume_id, SavedResume.user_id == user_id)
+            .first()
+        )
+        if not resume:
+            return JSONResponse(status_code=404, content={"error": "Resume not found"})
+
+        resume_data = {}
+        if resume.resume_json:
+            try:
+                resume_data = json.loads(resume.resume_json)
+            except (json.JSONDecodeError, TypeError):
+                resume_data = {}
+        if not resume_data:
+            return JSONResponse(status_code=422, content={
+                "error": "This resume has no structured data yet. Open it in the editor and save it first."
+            })
+        candidate_name = resume.candidate_name or ""
+        existing = db.query(Portfolio).filter(Portfolio.resume_id == resume_id).first()
+        has_cv = bool(resume.html_content)
+    finally:
+        db.close()
+
+    data = _build_portfolio_data(resume_data, candidate_name)
+    copy = await _enrich_portfolio_copy(data)
+    if copy.get("headline"):
+        data["headline"] = copy["headline"]
+    data["has_cv"] = has_cv
+
+    db = get_db()
+    try:
+        portfolio = db.query(Portfolio).filter(Portfolio.resume_id == resume_id).first()
+        if portfolio:
+            portfolio.headline = data.get("headline")
+            portfolio.tagline = copy.get("tagline")
+            portfolio.about = copy.get("about")
+            portfolio.theme = theme
+            portfolio.data_json = json.dumps(data, separators=(",", ":"))
+        else:
+            portfolio = Portfolio(
+                user_id=user_id,
+                resume_id=resume_id,
+                slug=_unique_portfolio_slug(db, data.get("name")),
+                handle=_unique_portfolio_handle(db, data.get("name")),
+                token=token_urlsafe(16),
+                theme=theme,
+                headline=data.get("headline"),
+                tagline=copy.get("tagline"),
+                about=copy.get("about"),
+                data_json=json.dumps(data, separators=(",", ":")),
+            )
+            db.add(portfolio)
+        try:
+            db.commit()
+            db.refresh(portfolio)
+        except IntegrityError:
+            db.rollback()
+            portfolio = db.query(Portfolio).filter(Portfolio.resume_id == resume_id).first()
+            if portfolio is None:
+                raise
+
+        return JSONResponse({
+            "success": True,
+            "slug": portfolio.slug,
+            "handle": portfolio.handle,
+            "share_url": _portfolio_share_url(portfolio),
+            "view_url": f"/p/{portfolio.slug}",
+        })
+    except Exception:
+        logger.exception("Failed to persist portfolio")
+        try:
+            db.rollback()
+        except Exception:
+            pass
+        return JSONResponse(status_code=500, content={"error": "Could not generate portfolio. Please try again."})
+    finally:
+        db.close()
+
+
+@app.post("/api/build-portfolio", include_in_schema=False)
+async def build_portfolio(request: Request):
+    """Create a portfolio directly from edited CV data + a chosen theme.
+
+    Powers the guided builder (/portfolio): the user picks a template, uploads a
+    resume (parsed by the existing extractor), edits the fields, then publishes.
+    Unlike /api/generate-portfolio this is not tied to a SavedResume row."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return JSONResponse(status_code=401, content={"error": "Please log in to publish your portfolio."})
+
+    try:
+        body = await request.json()
+    except Exception:
+        return JSONResponse(status_code=400, content={"error": "Invalid JSON body"})
+
+    cv = body.get("cvData") or body.get("cv_data") or {}
+    if not isinstance(cv, dict) or not cv:
+        return JSONResponse(status_code=400, content={"error": "No CV data provided."})
+
+    theme = str(body.get("theme") or DEFAULT_PORTFOLIO_THEME).strip().lower()
+    if theme not in PORTFOLIO_THEMES:
+        theme = DEFAULT_PORTFOLIO_THEME
+
+    pi = cv.get("personalInfo") or cv.get("personal_info") or {}
+    candidate_name = str(pi.get("name") or cv.get("name") or "").strip()
+
+    data = _build_portfolio_data(cv, candidate_name)
+    if data["name"] == "Your Name" and not (data["experience"] or data["projects"] or data["skills"]):
+        return JSONResponse(status_code=422, content={"error": "Please fill in at least your name and one section."})
+
+    copy = await _enrich_portfolio_copy(data)
+    if copy.get("headline"):
+        data["headline"] = copy["headline"]
+    data["has_cv"] = False  # builder portfolios are not backed by a stored resume PDF
+
+    photo = body.get("photo")
+    if _valid_portfolio_photo(photo):
+        data["photo"] = photo.strip()
+
+    desired_handle = str(body.get("handle") or "").strip()
+
+    db = get_db()
+    try:
+        portfolio = Portfolio(
+            user_id=user_id,
+            resume_id=None,
+            slug=_unique_portfolio_slug(db, data.get("name")),
+            handle=_unique_portfolio_handle(db, data.get("name"), desired=desired_handle),
+            token=token_urlsafe(16),
+            theme=theme,
+            headline=data.get("headline"),
+            tagline=copy.get("tagline"),
+            about=copy.get("about"),
+            data_json=json.dumps(data, separators=(",", ":")),
+        )
+        db.add(portfolio)
+        db.commit()
+        db.refresh(portfolio)
+        return JSONResponse({
+            "success": True,
+            "slug": portfolio.slug,
+            "handle": portfolio.handle,
+            "share_url": _portfolio_share_url(portfolio),
+            "view_url": f"/p/{portfolio.slug}",
+        })
+    except Exception:
+        logger.exception("Failed to build portfolio")
+        try:
+            db.rollback()
+        except Exception:
+            pass
+        return JSONResponse(status_code=500, content={"error": "Could not publish portfolio. Please try again."})
+    finally:
+        db.close()
+
+
+@app.get("/portfolio", response_class=HTMLResponse, include_in_schema=False)
+@app.get("/portfolio-builder", response_class=HTMLResponse, include_in_schema=False)
+async def portfolio_builder_page(request: Request):
+    """Guided portfolio builder: choose a template, upload a resume, edit, publish.
+
+    Public so it works as a marketing entry point from the Features menu; the
+    final 'Publish' step prompts for login (signup capture)."""
+    logged_in = bool(request.session.get("user_id"))
+    return templates.TemplateResponse(request, "portfolio_builder.html", {
+        "request": request,
+        "themes": PORTFOLIO_THEMES,
+        "logged_in": logged_in,
+        "portfolio_domain": PORTFOLIO_DOMAIN,
+        "subdomains_enabled": PORTFOLIO_SUBDOMAINS_ENABLED,
+    })
+
+
+def _render_portfolio_page(request: Request, portfolio: Portfolio):
+    """Shared renderer for a portfolio's public page (used by both the /p/<slug>
+    path route and the <handle>.domain subdomain router). Bumps the view count."""
+    try:
+        portfolio.view_count = (portfolio.view_count or 0) + 1
+    except Exception:
+        pass
+    data = json.loads(portfolio.data_json) if portfolio.data_json else {}
+    # Safety net for portfolios saved before link normalization: ensure every
+    # outbound URL is absolute so it can't resolve relative to this page.
+    for s in data.get("socials") or []:
+        if isinstance(s, dict) and s.get("url"):
+            s["url"] = normalize_url(s["url"]) or s["url"]
+    for p in data.get("projects") or []:
+        if isinstance(p, dict):
+            if p.get("url"):
+                p["url"] = normalize_url(p["url"]) or p["url"]
+            if p.get("github"):
+                p["github"] = normalize_url(p["github"]) or p["github"]
+    for item in (data.get("extracurriculars") or []) + (data.get("publications") or []) + (data.get("certifications") or []):
+        if isinstance(item, dict) and item.get("url"):
+            item["url"] = normalize_url(item["url"]) or item["url"]
+    tagline = portfolio.tagline or ""
+    about = portfolio.about or data.get("summary") or ""
+    has_cv = bool(data.get("has_cv"))
+    theme = portfolio.theme or DEFAULT_PORTFOLIO_THEME
+    page_url = _portfolio_share_url(portfolio)
+    name = data.get("name") or "Portfolio"
+    og_desc = (tagline or about or f"{name}'s portfolio")[:160]
+    tpl = {
+        "editor": "portfolio_editor.html",
+        "wave": "portfolio_wave.html",
+        "codeflow": "portfolio_codeflow.html",
+        "panels": "portfolio_panels.html",
+        "nova": "portfolio_nova.html",
+    }.get(theme, "portfolio_public.html")
+    return templates.TemplateResponse(request, tpl, {
+        "request": request,
+        "data": data,
+        "tagline": tagline,
+        "about": about,
+        "slug": portfolio.slug,
+        "has_cv": has_cv,
+        "theme": theme,
+        "page_url": page_url,
+        "seo_og_title": f"{name} | Portfolio",
+        "seo_og_description": og_desc,
+        "canonical_url": page_url,
+    })
+
+
+@app.get("/p/{slug}", response_class=HTMLResponse, include_in_schema=False)
+async def portfolio_public(request: Request, slug: str):
+    """Public, no-login portfolio website (path form, works on any host)."""
+    if not slug or len(slug) > 160:
+        raise HTTPException(status_code=404, detail="Portfolio not found")
+
+    db = get_db()
+    try:
+        portfolio = db.query(Portfolio).filter(Portfolio.slug == slug).first()
+        if not portfolio or not portfolio.published:
+            raise HTTPException(status_code=404, detail="Portfolio not found")
+        response = _render_portfolio_page(request, portfolio)
+        try:
+            db.commit()
+        except Exception:
+            db.rollback()
+        return response
+    finally:
+        db.close()
+
+
+@app.get("/p/{slug}/cv", include_in_schema=False)
+async def portfolio_public_cv(request: Request, slug: str):
+    """Public 'Download CV' — renders the linked resume's stored HTML to PDF."""
+    if not slug or len(slug) > 160:
+        raise HTTPException(status_code=404, detail="Not found")
+    db = get_db()
+    try:
+        portfolio = db.query(Portfolio).filter(Portfolio.slug == slug).first()
+        if not portfolio or not portfolio.published or not portfolio.resume_id:
+            raise HTTPException(status_code=404, detail="Not found")
+        resume = db.query(SavedResume).filter(SavedResume.id == portfolio.resume_id).first()
+        html_content = resume.html_content if resume else None
+        dl_name = _portfolio_slugify(resume.candidate_name if resume else "resume")
+    finally:
+        db.close()
+    if not html_content:
+        raise HTTPException(status_code=404, detail="No downloadable CV for this portfolio.")
+
+    pdf_path = os.path.join(resumes_dir, f"portfolio_cv_{uuid.uuid4()}.pdf")
+
+    def _render_pdf():
+        from weasyprint import HTML
+        HTML(string=html_content, base_url=BASE_DIR).write_pdf(pdf_path, optimize_size=("fonts",))
+
+    try:
+        await asyncio.to_thread(_render_pdf)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+
+    return FileResponse(
+        pdf_path, media_type="application/pdf", filename=f"{dl_name or 'resume'}.pdf",
+        background=BackgroundTask(_cleanup_files, [pdf_path]),
+    )
+
+
+@app.get("/my-portfolios", response_class=HTMLResponse)
+async def my_portfolios_page(request: Request):
+    """Dashboard of the logged-in user's generated portfolio sites."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return RedirectResponse(url="/login?next=/my-portfolios", status_code=302)
+    db = get_db()
+    try:
+        portfolios = (
+            db.query(Portfolio)
+            .filter(Portfolio.user_id == user_id)
+            .order_by(Portfolio.created_at.desc())
+            .all()
+        )
+        rows = [{
+            "id": p.id,
+            "slug": p.slug,
+            "handle": p.handle or "",
+            "theme": p.theme or DEFAULT_PORTFOLIO_THEME,
+            "name": (json.loads(p.data_json).get("name") if p.data_json else "") or "Portfolio",
+            "headline": p.headline or "",
+            "view_count": p.view_count or 0,
+            "created_at": p.created_at,
+            "share_url": _portfolio_share_url(p),
+        } for p in portfolios]
+        portfolio_resume_ids = {p.resume_id for p in portfolios if p.resume_id}
+
+        # Saved resumes the user can turn into a portfolio (must have structured data).
+        resumes = (
+            db.query(SavedResume)
+            .filter(SavedResume.user_id == user_id)
+            .order_by(SavedResume.created_at.desc())
+            .all()
+        )
+        resume_rows = [{
+            "id": r.id,
+            "title": r.title or "Untitled Resume",
+            "candidate_name": r.candidate_name or "",
+            "has_data": bool(r.resume_json),
+            "has_portfolio": r.id in portfolio_resume_ids,
+        } for r in resumes]
+    finally:
+        db.close()
+    return templates.TemplateResponse(
+        request, "my_portfolios.html",
+        {
+            "request": request,
+            "portfolios": rows,
+            "resumes": resume_rows,
+            "themes": PORTFOLIO_THEMES,
+        },
+    )
+
+
+@app.post("/my-portfolios/{portfolio_id}/delete", include_in_schema=False)
+async def delete_portfolio(request: Request, portfolio_id: int):
+    """Delete (unpublish) one of the user's portfolios."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        deleted = (
+            db.query(Portfolio)
+            .filter(Portfolio.id == portfolio_id, Portfolio.user_id == user_id)
+            .delete(synchronize_session=False)
+        )
+        db.commit()
+    finally:
+        db.close()
+    if not deleted:
+        raise HTTPException(status_code=404, detail="Portfolio not found")
+    return RedirectResponse(url="/my-portfolios", status_code=303)
 
 
 @app.post("/api/save-edited-resume", include_in_schema=False)
