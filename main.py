@@ -4990,6 +4990,9 @@ PORTFOLIO_THEMES = {
     "clean": "Clean — minimal light",
     "editorial": "Editorial — serif & elegant",
     "vibrant": "Vibrant — colorful designer",
+    "console": "Console - web developer terminal",
+    "monolith": "Monolith - bold black and white",
+    "particle": "Particle - neon skill cards",
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
@@ -5598,6 +5601,9 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "codeflow": "portfolio_codeflow.html",
         "panels": "portfolio_panels.html",
         "nova": "portfolio_nova.html",
+        "console": "portfolio_console.html",
+        "monolith": "portfolio_monolith.html",
+        "particle": "portfolio_particle.html",
     }.get(theme, "portfolio_public.html")
     return templates.TemplateResponse(request, tpl, {
         "request": request,
