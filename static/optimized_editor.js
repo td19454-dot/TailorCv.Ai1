@@ -564,6 +564,76 @@ body {
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
+       PRO UPGRADE POPUP (shown when free download quota exhausted)
+    ───────────────────────────────────────────────────────────────────────── */
+    function showProDownloadPopup() {
+        const existing = document.getElementById("tcv-pro-dl-overlay");
+        if (existing) existing.remove();
+
+        if (!document.getElementById("tcv-pro-dl-style")) {
+            const s = document.createElement("style");
+            s.id = "tcv-pro-dl-style";
+            s.textContent = [
+                "#tcv-pro-dl-overlay{position:fixed;inset:0;z-index:999999;",
+                "background:rgba(2,8,28,.78);backdrop-filter:blur(6px);",
+                "display:flex;align-items:center;justify-content:center;",
+                "animation:tcvProDlIn .22s ease;}",
+                "#tcv-pro-dl-modal{position:relative;background:linear-gradient(155deg,#0c1730,#071020);",
+                "border:1px solid rgba(56,189,248,.35);border-radius:22px;padding:2.4rem 2.2rem;",
+                "max-width:440px;width:92%;text-align:center;",
+                "box-shadow:0 40px 80px rgba(0,5,20,.75),0 0 0 1px rgba(56,189,248,.12);",
+                "animation:tcvProDlUp .3s ease;}",
+                "#tcv-pro-dl-close{position:absolute;top:12px;right:16px;background:none;border:none;",
+                "color:#475569;font-size:22px;cursor:pointer;line-height:1;padding:2px 6px;}",
+                "#tcv-pro-dl-close:hover{color:#94a3b8;}",
+                ".tcv-pro-dl-lock{font-size:3rem;margin-bottom:.6rem;line-height:1;}",
+                ".tcv-pro-dl-title{font-size:1.45rem;font-weight:800;color:#f1f8ff;margin:0 0 .7rem;}",
+                ".tcv-pro-dl-sub{font-size:.95rem;color:#94a3b8;line-height:1.6;margin:0 0 1.4rem;}",
+                ".tcv-pro-dl-sub strong{color:#7dd3fc;}",
+                ".tcv-pro-dl-perks{display:flex;flex-direction:column;gap:.45rem;",
+                "margin:0 0 1.6rem;text-align:left;}",
+                ".tcv-pro-dl-perk{font-size:.88rem;color:#cbd5e1;padding-left:1.4rem;position:relative;}",
+                ".tcv-pro-dl-perk::before{content:'✓';position:absolute;left:0;",
+                "color:#38bdf8;font-weight:700;}",
+                ".tcv-pro-dl-cta{display:block;width:100%;padding:.8rem 1rem;border-radius:12px;",
+                "background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;",
+                "font-size:1rem;font-weight:800;text-decoration:none;cursor:pointer;border:none;",
+                "box-shadow:0 6px 20px rgba(37,99,235,.45);",
+                "transition:opacity .2s,transform .2s;margin-bottom:.85rem;}",
+                ".tcv-pro-dl-cta:hover{opacity:.9;transform:translateY(-2px);}",
+                ".tcv-pro-dl-note{font-size:.78rem;color:#475569;margin:0;}",
+                "@keyframes tcvProDlIn{from{opacity:0}to{opacity:1}}",
+                "@keyframes tcvProDlUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}",
+            ].join("");
+            document.head.appendChild(s);
+        }
+
+        const overlay = document.createElement("div");
+        overlay.id = "tcv-pro-dl-overlay";
+        overlay.innerHTML =
+            '<div id="tcv-pro-dl-modal">' +
+                '<button id="tcv-pro-dl-close" aria-label="Close">&times;</button>' +
+                '<div class="tcv-pro-dl-lock">🔒</div>' +
+                '<h2 class="tcv-pro-dl-title">Your resume is ready!</h2>' +
+                '<p class="tcv-pro-dl-sub">You\'ve used your <strong>1 free download</strong>.<br>' +
+                'Upgrade to Pro to download unlimited resumes.</p>' +
+                '<div class="tcv-pro-dl-perks">' +
+                    '<div class="tcv-pro-dl-perk">Unlimited resume downloads</div>' +
+                    '<div class="tcv-pro-dl-perk">Unlimited AI optimizations</div>' +
+                    '<div class="tcv-pro-dl-perk">Unlimited cover letters</div>' +
+                    '<div class="tcv-pro-dl-perk">Mock interviews & LinkedIn import</div>' +
+                '</div>' +
+                '<a href="/pricing" class="tcv-pro-dl-cta">Upgrade to Pro — from ₹149</a>' +
+                '<p class="tcv-pro-dl-note">Cancel anytime &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Secure payment via Razorpay</p>' +
+            '</div>';
+        document.body.appendChild(overlay);
+
+        function closePopup() { overlay.remove(); }
+        overlay.querySelector("#tcv-pro-dl-close").addEventListener("click", closePopup);
+        overlay.addEventListener("click", function (e) { if (e.target === overlay) closePopup(); });
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
        PDF DOWNLOAD
     ───────────────────────────────────────────────────────────────────────── */
     async function downloadEditedPdf(isAuto = false) {
@@ -571,6 +641,36 @@ body {
 
         const html = buildExportHtml();
         if (!html) { setStatus("Could not read resume content."); return; }
+
+        // ── Atomic gate: check quota AND consume the slot before downloading ──
+        // A single POST ensures the counter is committed before we proceed.
+        // A separate fire-and-forget record call could fail silently, leaving
+        // the counter at 0 forever and allowing unlimited free downloads.
+        if (!isAuto) {
+            let gateOk = false;
+            try {
+                const gateRes = await fetch("/api/billing/checkout-download", { method: "POST" });
+                if (gateRes.status === 401) {
+                    window.location.href = "/login?next=" + encodeURIComponent(location.pathname);
+                    return;
+                }
+                if (gateRes.status === 402) {
+                    showProDownloadPopup();
+                    return;
+                }
+                if (gateRes.ok) {
+                    gateOk = true;
+                }
+            } catch (e) {
+                // Network error — fail closed: show popup rather than allow
+                showProDownloadPopup();
+                return;
+            }
+            if (!gateOk) {
+                showProDownloadPopup();
+                return;
+            }
+        }
 
         setStatus(isAuto ? "Auto-downloading optimised resume…" : "Generating PDF…");
         if (downloadBtn) downloadBtn.disabled = true;
@@ -590,9 +690,7 @@ body {
             a.href = url; a.download = "optimized_resume_edited.pdf";
             document.body.appendChild(a); a.click(); a.remove();
             URL.revokeObjectURL(url);
-            setStatus(isAuto
-                ? "Auto-download complete. Adjust font size then click Download Edited PDF."
-                : "PDF downloaded successfully.");
+            setStatus("PDF downloaded successfully.");
             if (!isAuto) {
                 let editorSource = "";
                 try { editorSource = sessionStorage.getItem("tailorcv_editor_source") || ""; } catch (e) {}
@@ -604,9 +702,7 @@ body {
                 }
             }
         } catch {
-            setStatus(isAuto
-                ? "Auto-download failed — use Download Edited PDF button."
-                : "Could not download PDF. Please try again.");
+            setStatus("Could not download PDF. Please try again.");
         } finally {
             if (downloadBtn) downloadBtn.disabled = false;
         }

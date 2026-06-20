@@ -1,6 +1,12 @@
-"""Billing router — Razorpay (INR).
+"""Billing router — Razorpay (INR + USD via Razorpay International).
 
-All routes return 503 if the required env vars are not set, so the file is
+Region detection uses the CF-IPCountry header injected by Cloudflare.
+Three pricing regions:
+  india  → INR via standard Razorpay plans
+  lic    → USD via Razorpay International (low-income countries)
+  global → USD via Razorpay International (rest of world)
+
+All routes return 503 if required env vars are not set, so the file is
 safe to deploy before payment keys are configured.
 
 The webhook endpoint is CSRF-exempt (added to EXEMPT_PATHS in main.py).
@@ -15,13 +21,14 @@ import uuid
 from datetime import datetime, timedelta
 
 from fastapi import APIRouter, HTTPException, Request
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
-# ── Plan config ───────────────────────────────────────────────────────────────
+# ── Plan durations (currency-agnostic) ───────────────────────────────────────
 
 PLAN_DURATIONS = {
     "weekly": 7,
@@ -29,15 +36,54 @@ PLAN_DURATIONS = {
     "yearly": 366,
 }
 
+# ── INR config (India) ────────────────────────────────────────────────────────
+
 RAZORPAY_PLANS = {
     "monthly": os.getenv("RAZORPAY_PLAN_MONTHLY"),
-    "yearly": os.getenv("RAZORPAY_PLAN_YEARLY"),
+    "yearly":  os.getenv("RAZORPAY_PLAN_YEARLY"),
 }
 
 WEEKLY_INR = 14900  # ₹149 in paise
 
+# ── USD config (Razorpay International) ──────────────────────────────────────
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+# Low-income countries: South Asia, SE Asia, Africa (World Bank lower-middle)
+LIC_COUNTRIES = {
+    "PK", "LK", "NP", "BD", "MM", "KH", "LA", "VN",
+    "NG", "ET", "KE", "GH", "TZ", "UG", "EG", "MA", "ID",
+}
+
+USD_WEEKLY = {"lic": 199, "global": 499}   # cents  ($1.99 / $4.99)
+
+USD_PLANS = {
+    "lic": {
+        "monthly": os.getenv("RAZORPAY_PLAN_MONTHLY_LIC"),
+        "yearly":  os.getenv("RAZORPAY_PLAN_YEARLY_LIC"),
+    },
+    "global": {
+        "monthly": os.getenv("RAZORPAY_PLAN_MONTHLY_GLOBAL"),
+        "yearly":  os.getenv("RAZORPAY_PLAN_YEARLY_GLOBAL"),
+    },
+}
+
+
+# ── Region detection ──────────────────────────────────────────────────────────
+
+def _get_region(request: Request) -> str:
+    """Derive pricing region from Cloudflare CF-IPCountry header.
+
+    Returns 'india', 'lic', or 'global'.
+    Falls back to 'global' when the header is absent (local dev, direct hits).
+    """
+    country = request.headers.get("CF-IPCountry", "").upper().strip()
+    if country == "IN":
+        return "india"
+    if country in LIC_COUNTRIES:
+        return "lic"
+    return "global"
+
+
+# ── Internal helpers ──────────────────────────────────────────────────────────
 
 def _require_razorpay():
     key_id = os.getenv("RAZORPAY_KEY_ID")
@@ -74,6 +120,16 @@ def _extend_pro(db: Session, user, days: int,
     db.commit()
 
 
+# ── Region endpoint ───────────────────────────────────────────────────────────
+
+@router.get("/api/billing/region")
+async def billing_region(request: Request):
+    """Return the visitor's pricing region for the frontend to render prices."""
+    country = request.headers.get("CF-IPCountry", "").upper().strip()
+    region = _get_region(request)
+    return JSONResponse({"region": region, "country": country or None})
+
+
 # ── Razorpay routes ───────────────────────────────────────────────────────────
 
 class RazorpaySubscriptionRequest(BaseModel):
@@ -97,14 +153,23 @@ async def razorpay_subscription(body: RazorpaySubscriptionRequest, request: Requ
     client = _require_razorpay()
     db, user = _get_db_and_user(request)
     try:
-        plan_id = RAZORPAY_PLANS.get(body.plan)
+        region = _get_region(request)
+        if region == "india":
+            plan_id = RAZORPAY_PLANS.get(body.plan)
+        else:
+            plan_id = USD_PLANS[region].get(body.plan)
+
         if not plan_id:
-            raise HTTPException(status_code=400, detail=f"Unknown plan: {body.plan}")
+            raise HTTPException(
+                status_code=503,
+                detail={"error": "payment_not_configured",
+                        "msg": f"No plan ID configured for {region}/{body.plan}"}
+            )
         subscription = client.subscription.create({
             "plan_id": plan_id,
             "customer_notify": 1,
             "total_count": 120,
-            "notes": {"user_id": str(user.id), "plan": body.plan},
+            "notes": {"user_id": str(user.id), "plan": body.plan, "region": region},
         })
         return {
             "subscription_id": subscription["id"],
@@ -123,17 +188,23 @@ async def razorpay_order(body: RazorpayOrderRequest, request: Request):
     client = _require_razorpay()
     db, user = _get_db_and_user(request)
     try:
+        region = _get_region(request)
+        if region == "india":
+            amount, currency = WEEKLY_INR, "INR"
+        else:
+            amount, currency = USD_WEEKLY[region], "USD"
+
         order = client.order.create({
-            "amount": WEEKLY_INR,
-            "currency": "INR",
+            "amount": amount,
+            "currency": currency,
             "receipt": str(uuid.uuid4())[:20],
-            "notes": {"user_id": str(user.id), "plan": "weekly"},
+            "notes": {"user_id": str(user.id), "plan": "weekly", "region": region},
         })
         return {
             "order_id": order["id"],
             "key_id": os.getenv("RAZORPAY_KEY_ID"),
-            "amount": WEEKLY_INR,
-            "currency": "INR",
+            "amount": amount,
+            "currency": currency,
             "name": user.name,
             "email": user.email,
         }
