@@ -3613,8 +3613,13 @@ async def api_generate_interview_questions(
     jd_string: str = Form(""),
 ):
     """Generate interview questions from resume PDF + job description"""
+    require_logged_in(request)
     file_path = None
     try:
+        jd_string = str(jd_string or "").strip()
+        if len(jd_string) < 30:
+            raise HTTPException(status_code=400, detail="Please provide the job description.")
+
         file_path = os.path.join(uploads_dir, f"iq_{uuid.uuid4()}.pdf")
         with open(file_path, "wb") as f:
             content = await file.read()
@@ -3622,8 +3627,21 @@ async def api_generate_interview_questions(
 
         async with request_semaphore:
             resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
+            if len((resume_string or "").strip()) < 50:
+                raise HTTPException(
+                    status_code=400,
+                    detail="Couldn't read your resume. Upload a text-based PDF, not a scanned image.",
+                )
+            db = get_db()
+            try:
+                user = db.query(User).filter_by(id=request.session["user_id"]).first()
+                enforce_quota(db, user, "interview_questions")
+            finally:
+                db.close()
             result = await generate_interview_questions(resume_string, jd_string)
             return JSONResponse({"success": True, "data": result})
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     finally:
@@ -4407,6 +4425,13 @@ async def generate_cover_letter(request: Request):
     # Bound input size to keep prompts within token limits.
     resume_text = resume_text[:8000]
     job_description = job_description[:6000]
+
+    db = get_db()
+    try:
+        user = db.query(User).filter_by(id=request.session["user_id"]).first()
+        enforce_quota(db, user, "cover_letters")
+    finally:
+        db.close()
 
     prompt = (
         "You are an expert career writer. Write a tailored cover letter for the candidate "
