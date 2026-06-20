@@ -96,6 +96,30 @@
         .prev-terminal .mini-avatar { border-radius:8px; background:rgba(61,220,132,.08); border:1px solid rgba(61,220,132,.5); color:#3ddc84; font-family:monospace; }
         .prev-terminal .mini-lines span:nth-child(1){width:120px;background:#3ddc84;}
         .prev-terminal .mini-lines span:nth-child(2){width:80px;background:rgba(139,152,169,.6);}
+        /* console - web developer terminal */
+        .prev-console { background:#0d111b; position:relative; overflow:hidden; }
+        .prev-console::before { content:"</> Web Developer"; position:absolute; top:10px; left:12px; color:#f8fafc; font-family:monospace; font-size:9px; }
+        .prev-console::after { content:""; position:absolute; left:12px; right:12px; bottom:16px; height:44px; border-radius:6px; background:#000; border-top:13px solid #2b2b2f; box-shadow:0 0 0 1px rgba(255,255,255,.08); }
+        .prev-console .mini-avatar { display:none; }
+        .prev-console .mini-lines { left:24px; bottom:28px; z-index:1; }
+        .prev-console .mini-lines span:nth-child(1){width:120px;background:#00ff75;}
+        .prev-console .mini-lines span:nth-child(2){width:85px;background:#3b9cff;}
+        /* monolith - black/white poster */
+        .prev-monolith { background:#f8f8f4; position:relative; overflow:hidden; }
+        .prev-monolith::before { content:"AKASH"; position:absolute; left:12px; top:8px; color:#020202; font-family:Arial Black,Impact,sans-serif; font-size:28px; font-style:italic; letter-spacing:-1px; }
+        .prev-monolith::after { content:""; position:absolute; right:18px; bottom:0; width:76px; height:112px; background:linear-gradient(135deg, transparent 0 28%, rgba(0,0,0,.08) 28% 60%, transparent 60%), #d7d7d7; border-radius:50% 50% 0 0; filter:grayscale(1) contrast(1.5); }
+        .prev-monolith .mini-avatar { display:none; }
+        .prev-monolith .mini-lines { left:14px; bottom:16px; z-index:1; }
+        .prev-monolith .mini-lines span:nth-child(1){width:86px;height:18px;background:#000;border-radius:0;}
+        .prev-monolith .mini-lines span:nth-child(2){width:120px;background:#111;border-radius:0;}
+        /* particle - neon skill cards */
+        .prev-particle { background:#111927; position:relative; overflow:hidden; }
+        .prev-particle::before { content:"Portfolio"; position:absolute; left:16px; top:10px; color:#4b83ff; font-weight:800; font-size:16px; }
+        .prev-particle::after { content:""; position:absolute; right:18px; top:46px; width:66px; height:66px; border-radius:50%; border:3px solid #4f46e5; background:radial-gradient(circle,#3b4252 0 42%,#151c2b 43%); box-shadow:0 0 22px rgba(79,70,229,.65); }
+        .prev-particle .mini-avatar { display:none; }
+        .prev-particle .mini-lines { left:18px; bottom:22px; }
+        .prev-particle .mini-lines span:nth-child(1){width:112px;height:18px;background:linear-gradient(90deg,#6d5cff,#22d3ee);border-radius:3px;}
+        .prev-particle .mini-lines span:nth-child(2){width:78px;background:#ff3d6e;}
         /* clean — light, violet */
         .prev-clean { background:#f4f4f0; }
         .prev-clean .mini-avatar { border-radius:18px; background:#fff; border:1px solid rgba(0,0,0,.1); color:#6d28d9; box-shadow:0 8px 18px -10px rgba(0,0,0,.4); }

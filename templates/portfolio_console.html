@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ seo_og_description }}">
+    <title>{{ data.name }}{% if data.headline %} - {{ data.headline }}{% endif %} | Portfolio</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/portfolio_console.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+{% set fname = data.name.split(' ')[0] if data.name else 'there' %}
+{% macro soc(icon) -%}
+    {% if icon == 'linkedin' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg>
+    {% elif icon == 'github' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.38-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.71 1.03 1.62 1.03 2.74 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+    {% elif icon == 'twitter' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.84l-4.78-6.26L5.92 22H2.66l8.02-9.17L2 2h6.91l4.32 5.71L18.244 2z"/></svg>
+    {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>{% endif %}
+{%- endmacro %}
+{% macro ext() -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>{%- endmacro %}
+{% macro win(title) -%}
+<div class="cs-win-head"><span class="cs-tab">[>] {{ title }}</span><span class="cs-plus">+</span><span class="cs-chevron">v</span><span class="cs-window-actions">- [] x</span></div>
+{%- endmacro %}
+
+<header class="cs-top">
+    <a class="cs-brand" href="#home"><span class="cs-logo">&lt;/&gt;</span><span>{{ data.headline or "Web Developer" }}</span></a>
+    <nav class="cs-nav">
+        {% if data.projects %}<a href="#projects">Projects</a>{% endif %}
+        {% if data.experience %}<a href="#experience">Experience</a>{% endif %}
+        {% if data.certifications %}<a href="#certifications">Certifications</a>{% endif %}
+        {% if data.extracurriculars %}<a href="#activities">Activities</a>{% endif %}
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="cs-socials">
+        {% for s in data.socials[:3] %}<a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.label }}" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}
+        {% if data.email %}<a href="mailto:{{ data.email }}" aria-label="Email">@</a>{% endif %}
+    </div>
+</header>
+
+<main>
+    <section class="cs-hero" id="home">
+        <h1>Hello, I'm {{ data.name }}<span class="cs-cursor">|</span></h1>
+        {% if tagline or about %}<p>{{ tagline or about }}</p>{% endif %}
+        {% if data.experience %}
+        <div class="cs-mini-term">
+            {% for e in data.experience[:2] %}
+            <div class="cs-mini-line"><span>C:\Users\{{ fname }}\Currently_at&gt;</span> {{ e.company or e.title }}</div>
+            <div class="cs-mini-meta">{{ e.title }}{% if e.dates %}: {{ e.dates }}{% endif %}</div>
+            <div class="cs-progress"><i style="width:{{ 78 if loop.first else 100 }}%;"></i></div>
+            <div class="cs-mini-note">{{ "Ongoing journey..." if loop.first else "Completed journey" }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+
+    {% if data.skills %}
+    <section class="cs-section cs-skills" id="skills">
+        <h2>What I do</h2>
+        <div class="cs-pills">
+            {% for g in data.skills %}{% for item in g['items'] %}<span>{{ item }}</span>{% endfor %}{% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.projects %}
+    <section class="cs-section" id="projects">
+        <h2>~/projects</h2>
+        <div class="cs-window">
+            {{ win("Windows PowerShell") }}
+            <div class="cs-terminal">
+                {% for p in data.projects %}
+                <article class="cs-command-card">
+                    <h3>{{ p.name }}</h3>
+                    {% if p.bullets %}<p>{{ p.bullets|join(' ') }}</p>{% endif %}
+                    {% if p.subtitle %}<p>Tech Stack: {{ p.subtitle }}</p>{% endif %}
+                    <div class="cs-links">
+                        {% if p.github %}<a href="{{ p.github }}" target="_blank" rel="noopener">GitHub Repo {{ ext() }}</a>{% endif %}
+                        {% if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener">Live Demo {{ ext() }}</a>{% endif %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.experience %}
+    <section class="cs-section" id="experience">
+        <h2>~/experience</h2>
+        <div class="cs-window">
+            {{ win("career.exe") }}
+            <div class="cs-terminal">
+                {% for e in data.experience %}
+                <article class="cs-command-card cs-exp">
+                    <h3>{{ e.title }}{% if e.company %} @ {{ e.company }}{% endif %}</h3>
+                    <p class="cs-muted">{{ e.dates }}{% if e.location %} | {{ e.location }}{% endif %}</p>
+                    {% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.certifications %}
+    <section class="cs-section" id="certifications">
+        <h2>~/certifications</h2>
+        <div class="cs-grid">
+            {% for c in data.certifications %}
+            <article class="cs-card">
+                {% if c.image %}<img src="{{ c.image }}" alt="{{ c.name }}" loading="lazy">{% endif %}
+                <h3>{{ c.name }}</h3>
+                {% if c.issuer or c.year %}<p>{{ c.issuer }}{% if c.issuer and c.year %} | {% endif %}{{ c.year }}</p>{% endif %}
+                {% if c.url %}<a href="{{ c.url }}" target="_blank" rel="noopener">View certificate {{ ext() }}</a>{% endif %}
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.extracurriculars %}
+    <section class="cs-section" id="activities">
+        <h2>~/extracurricular</h2>
+        <div class="cs-window">
+            {{ win("activities.log") }}
+            <div class="cs-terminal">
+                {% for x in data.extracurriculars %}
+                <article class="cs-command-card">
+                    <h3>{{ x.role }}{% if x.organization %} - {{ x.organization }}{% endif %}</h3>
+                    {% if x.dates %}<p class="cs-muted">{{ x.dates }}</p>{% endif %}
+                    {% if x.bullets %}<ul>{% for b in x.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                    {% if x.url %}<a href="{{ x.url }}" target="_blank" rel="noopener">Open link {{ ext() }}</a>{% endif %}
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.education or data.publications or data.hobbies %}
+    <section class="cs-section">
+        <h2>~/more</h2>
+        <div class="cs-grid">
+            {% for ed in data.education %}
+            <article class="cs-card"><h3>{{ ed.school }}</h3><p>{{ ed.degree }}</p><p>{{ ed.year }}{% if ed.score %} | {{ ed.score }}{% endif %}</p></article>
+            {% endfor %}
+            {% for pub in data.publications %}
+            <article class="cs-card"><h3>{{ pub.title }}</h3><p>{{ pub.publisher }}{% if pub.year %} | {{ pub.year }}{% endif %}</p>{% if pub.url %}<a href="{{ pub.url }}" target="_blank" rel="noopener">Read {{ ext() }}</a>{% endif %}</article>
+            {% endfor %}
+            {% if data.hobbies %}<article class="cs-card"><h3>Interests</h3><div class="cs-pills compact">{% for h in data.hobbies %}<span>{{ h }}</span>{% endfor %}</div></article>{% endif %}
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="cs-section cs-contact" id="contact">
+        <h2>~/connect</h2>
+        <p>Want to collaborate or build something together?</p>
+        <div class="cs-contact-row">
+            {% if data.email %}<a href="mailto:{{ data.email }}">Email me</a>{% endif %}
+            {% if has_cv %}<a href="/p/{{ slug }}/cv">Download CV</a>{% endif %}
+            {% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }}</a>{% endfor %}
+        </div>
+    </section>
+</main>
+
+<footer class="cs-footer">Built with theTailorCV</footer>
+</body>
+</html>

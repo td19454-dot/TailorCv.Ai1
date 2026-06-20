@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ seo_og_description }}">
+    <title>{{ data.name }}{% if data.headline %} - {{ data.headline }}{% endif %} | Portfolio</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/portfolio_particle.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+{% set known_icons = [
+    'html5','css3','javascript','typescript','react','redux','nextjs','nodejs','express','mongodb',
+    'python','java','csharp','cplusplus','go','php','laravel','vuejs','angular','svelte',
+    'tailwindcss','bootstrap','sass','postgresql','mysql','sqlite','redis','docker','kubernetes',
+    'git','github','linux','aws','amazonwebservices','azure','googlecloud','firebase','figma',
+    'tensorflow','pytorch','fastapi','django','flask','spring','nestjs','graphql','npm','vite'
+] %}
+{% set icon_ns = namespace(items=[], extra=[]) %}
+{% for group in data.skills %}
+    {% for item in group['items'] %}
+        {% set slug = item|deviconslug %}
+        {% if slug in known_icons %}
+            {% set _ = icon_ns.items.append({'name': item, 'slug': slug}) %}
+        {% else %}
+            {% set _ = icon_ns.extra.append(item) %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+{% macro soc(icon) -%}
+    {% if icon == 'linkedin' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg>
+    {% elif icon == 'github' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.38-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.71 1.03 1.62 1.03 2.74 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+    {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>{% endif %}
+{%- endmacro %}
+{% macro ext() -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8"/></svg>{%- endmacro %}
+
+<canvas id="pt-canvas" aria-hidden="true"></canvas>
+<header class="pt-nav">
+    <a href="#home" class="pt-brand">Portfolio</a>
+    <nav>
+        <a href="#home">Home</a>
+        {% if data.skills %}<a href="#skills">Skills</a>{% endif %}
+        {% if data.experience %}<a href="#experience">Experience</a>{% endif %}
+        {% if data.projects %}<a href="#projects">Projects</a>{% endif %}
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <section class="pt-hero" id="home">
+        <div class="pt-hero-card">
+            <h1>I am<br><span>{{ data.headline or data.name }}</span></h1>
+            {% if tagline or about %}<p>{{ tagline or about.split('\n\n')[0] }}</p>{% endif %}
+            <div class="pt-actions">
+                {% if data.projects %}<a class="hot" href="#projects">Projects</a>{% endif %}
+                {% if data.email %}<a class="cool" href="mailto:{{ data.email }}">Hire me</a>{% endif %}
+                {% if has_cv %}<a href="/p/{{ slug }}/cv">View resume</a>{% endif %}
+            </div>
+        </div>
+        <div class="pt-photo-wrap">
+            {% if data.photo %}<img src="{{ data.photo }}" alt="{{ data.name }}">{% else %}<span>{{ data.initials }}</span>{% endif %}
+        </div>
+    </section>
+
+    {% if data.skills %}
+    <section class="pt-section" id="skills">
+        <h2>Skills</h2>
+        {% if icon_ns.items %}
+        <div class="pt-skill-grid">
+            {% for item in icon_ns.items %}
+            <article class="pt-skill-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{ item.slug }}/{{ item.slug }}-original.svg" alt="" loading="lazy" data-slug="{{ item.slug }}" onerror="ptIcon(this)">
+                <h3>{{ item.name }}</h3>
+            </article>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if icon_ns.extra %}
+        <div class="pt-extra">
+            <div class="pt-extra-head"><h3>Additional Skills</h3><span></span></div>
+            <ul>{% for item in icon_ns.extra %}<li>{{ item }}</li>{% endfor %}</ul>
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+
+    {% if data.experience %}
+    <section class="pt-section" id="experience">
+        <h2>Experience</h2>
+        <div class="pt-exp-list">
+            {% for e in data.experience %}
+            <article class="pt-exp-card">
+                <h3>{{ e.company or e.title }}</h3>
+                <h4>{{ e.title }}</h4>
+                {% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                {% if e.dates %}<div class="pt-date">{{ e.dates }}</div>{% endif %}
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.projects %}
+    <section class="pt-section" id="projects">
+        <h2>Projects</h2>
+        <div class="pt-projects">
+            {% for p in data.projects %}
+            <article class="pt-project">
+                <div class="pt-project-shot">{% if p.image %}<img src="{{ p.image }}" alt="{{ p.name }}" loading="lazy">{% else %}<span>{{ p.name[0]|upper if p.name else 'P' }}</span>{% endif %}</div>
+                <div class="pt-project-info">
+                    <h3>{{ p.name }}{% if p.url or p.github %}<a href="{{ p.url or p.github }}" target="_blank" rel="noopener">Open {{ ext() }}</a>{% endif %}</h3>
+                    {% if p.subtitle %}<p class="stack">{{ p.subtitle }}</p>{% endif %}
+                    {% if p.bullets %}<ul>{% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="pt-section pt-contact" id="contact">
+        <h2>Contact Me</h2>
+        <form onsubmit="return ptSend(event)">
+            <label>Name<input id="pt-name" placeholder="Enter your name" required></label>
+            <label>Email<input id="pt-email" type="email" placeholder="Enter your email" required></label>
+            <label>Subject<input id="pt-subject" placeholder="Enter subject"></label>
+            <label>Message<textarea id="pt-message" placeholder="Your message here..." required></textarea></label>
+            <button type="submit">Send Message</button>
+        </form>
+        {% if data.socials %}<div class="pt-socials">{% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener">{{ soc(s.icon) }} {{ s.label }}</a>{% endfor %}</div>{% endif %}
+    </section>
+</main>
+
+<script>
+(function () {
+    var canvas = document.getElementById('pt-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d'), w, h, pts = [], reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function size() {
+        w = canvas.width = innerWidth; h = canvas.height = innerHeight;
+        pts = [];
+        for (var i = 0, n = Math.min(95, Math.round(w * h / 19000)); i < n; i++) pts.push({x: Math.random()*w, y: Math.random()*h, vx: (Math.random()-.5)*.35, vy: (Math.random()-.5)*.35});
+    }
+    function draw() {
+        ctx.clearRect(0,0,w,h);
+        for (var i=0;i<pts.length;i++) {
+            var p=pts[i]; if (!reduce) { p.x+=p.vx; p.y+=p.vy; }
+            if (p.x<0 || p.x>w) p.vx *= -1; if (p.y<0 || p.y>h) p.vy *= -1;
+            ctx.beginPath(); ctx.arc(p.x,p.y,2.2,0,6.28); ctx.fillStyle='rgba(107,99,255,.75)'; ctx.fill();
+            for (var j=i+1;j<pts.length;j++) { var q=pts[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.sqrt(dx*dx+dy*dy); if (d<145) { ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.strokeStyle='rgba(125,145,180,'+(0.18*(1-d/145))+')'; ctx.stroke(); } }
+        }
+        if (!reduce) requestAnimationFrame(draw);
+    }
+    size(); addEventListener('resize', size); draw();
+})();
+function ptSend(e) {
+    e.preventDefault();
+    var to = {{ (data.email or '')|tojson }};
+    if (!to) return false;
+    var n = document.getElementById('pt-name').value, em = document.getElementById('pt-email').value;
+    var s = document.getElementById('pt-subject').value || 'Portfolio inquiry';
+    var m = document.getElementById('pt-message').value;
+    location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(s) + '&body=' + encodeURIComponent(m + '\n\n- ' + n + ' (' + em + ')');
+    return false;
+}
+function ptIcon(img) {
+    var slug = img.getAttribute('data-slug');
+    if (!img.dataset.tried) {
+        img.dataset.tried = '1';
+        img.src = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/' + slug + '/' + slug + '-plain.svg';
+    } else {
+        var card = img.closest('.pt-skill-card');
+        if (card) card.style.display = 'none';
+    }
+}
+</script>
+</body>
+</html>
