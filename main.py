@@ -295,7 +295,7 @@ def _ensure_user_columns() -> None:
 
 
 def _ensure_usage_columns() -> None:
-    """Add cover_letters and linkedin_imports columns to usage_records if missing."""
+    """Add feature counters to an existing usage_records table if missing."""
     from sqlalchemy import inspect as _inspect, text as _text
 
     insp = _inspect(engine)
@@ -303,10 +303,14 @@ def _ensure_usage_columns() -> None:
         return
     cols = {c["name"] for c in insp.get_columns("usage_records")}
     to_add = []
+    if "mock_interviews" not in cols:
+        to_add.append("ADD COLUMN mock_interviews INTEGER NOT NULL DEFAULT 0")
+    if "interview_questions" not in cols:
+        to_add.append("ADD COLUMN interview_questions INTEGER NOT NULL DEFAULT 0")
     if "cover_letters" not in cols:
-        to_add.append("ADD COLUMN cover_letters INTEGER DEFAULT 0")
+        to_add.append("ADD COLUMN cover_letters INTEGER NOT NULL DEFAULT 0")
     if "linkedin_imports" not in cols:
-        to_add.append("ADD COLUMN linkedin_imports INTEGER DEFAULT 0")
+        to_add.append("ADD COLUMN linkedin_imports INTEGER NOT NULL DEFAULT 0")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -380,6 +384,9 @@ def enforce_quota(db: Session, user, field: str) -> None:
 
     if is_pro(user):
         return
+    # Serialize quota checks per user so two simultaneous requests cannot both
+    # observe the same remaining free use and bypass the limit.
+    db.query(User).filter(User.id == user.id).with_for_update().one()
     limit = FREE_LIMITS.get(field, 0)
     used = (
         db.query(_func.coalesce(_func.sum(getattr(UsageRecord, field)), 0))
@@ -394,7 +401,8 @@ def enforce_quota(db: Session, user, field: str) -> None:
         )
     month = datetime.utcnow().strftime("%Y-%m")
     rec = get_or_create_usage(db, user.id, month)
-    setattr(rec, field, getattr(rec, field) + 1)
+    current_value = int(getattr(rec, field) or 0)
+    setattr(rec, field, current_value + 1)
     db.commit()
 
 
@@ -3386,12 +3394,21 @@ async def api_interview_start(request: Request, payload: dict):
 
 @app.post("/api/interview/start-with-pdf")
 async def api_interview_start_with_pdf(
+    request: Request,
     file: UploadFile = File(...),
     role: str = Form("Software Engineer"),
     interview_type: str = Form("mixed"),
     num_questions: int = Form(8),
     job_desc: str = Form(...),
 ):
+    require_logged_in(request)
+    db = get_db()
+    try:
+        user = db.query(User).filter_by(id=request.session["user_id"]).first()
+        enforce_quota(db, user, "mock_interviews")
+    finally:
+        db.close()
+
     file_path = None
     try:
         if not str(job_desc or "").strip():
@@ -3416,6 +3433,8 @@ async def api_interview_start_with_pdf(
         except Exception:
             pass
         return JSONResponse({"success": True, "question": question, "resume_text": resume_text, "audio_b64": audio_b64})
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
     finally:

@@ -58,6 +58,11 @@ function showUpgradeModal(feature) {
       title: "Your interview questions are ready!",
       freeUse: "1 free interview question set",
       message: "Upgrade to Pro to generate unlimited interview questions."
+    },
+    mock_interviews: {
+      title: "Your mock interview is ready!",
+      freeUse: "1 free mock interview",
+      message: "Upgrade to Pro to practise with unlimited mock interviews."
     }
   };
   var copy = modalCopy[feature] || {
