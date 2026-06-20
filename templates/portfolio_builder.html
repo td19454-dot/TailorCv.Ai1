@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build a stunning portfolio website from your resume in minutes. Pick a template, upload your resume, edit the details, and publish a shareable link — free with theTailorCV.">
+    <title>Portfolio Website Builder | theTailorCV</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/style2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .pb { max-width: 980px; margin: 0 auto; padding: 40px 20px 90px; font-family: 'Inter', system-ui, sans-serif; color: #eaf1ff; }
+        .pb-head { text-align: center; margin-bottom: 26px; }
+        .pb-head h1 { font-size: 2rem; font-weight: 800; margin: 0 0 6px; }
+        .pb-head p { color: #9fb0cc; margin: 0; }
+
+        /* Stepper */
+        .pb-steps { display: flex; justify-content: center; gap: 8px; margin: 0 auto 30px; flex-wrap: wrap; }
+        .pb-step { display: flex; align-items: center; gap: 8px; color: #7f8db0; font-size: .85rem; font-weight: 600; }
+        .pb-step .n { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            border: 1.5px solid rgba(99,130,200,.4); font-size: .8rem; }
+        .pb-step.active { color: #c4b5fd; }
+        .pb-step.active .n { background: linear-gradient(135deg,#7c3aed,#4c1d95); border-color: transparent; color: #fff; }
+        .pb-step.done .n { background: rgba(34,197,94,.2); border-color: rgba(34,197,94,.5); color: #86efac; }
+        .pb-step .bar { width: 26px; height: 2px; background: rgba(99,130,200,.3); }
+
+        .pb-panel { display: none; }
+        .pb-panel.active { display: block; animation: pbFade .25s ease; }
+        @keyframes pbFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+        /* Template gallery */
+        .pb-templates { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px,100%),1fr)); gap: 18px; }
+        .pb-tpl {
+            border: 2px solid rgba(99,130,200,.22); border-radius: 16px; overflow: hidden; cursor: pointer;
+            background: rgba(255,255,255,.02); transition: transform .18s, border-color .18s, box-shadow .18s;
+        }
+        .pb-tpl:hover { transform: translateY(-4px); }
+        .pb-tpl.selected { border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139,92,246,.25); }
+        .pb-tpl-prev { height: 150px; position: relative; display: flex; align-items: center; justify-content: center; }
+        .pb-tpl-prev .mini-avatar { width: 64px; height: 64px; border-radius: 50%; display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff; }
+        .pb-tpl-prev .mini-lines { position:absolute; left:18px; bottom:18px; }
+        .pb-tpl-prev .mini-lines span { display:block; height:7px; border-radius:4px; margin-bottom:5px; }
+        /* editor — VS Code style */
+        .prev-editor { background:#0e0f1a; position:relative; }
+        .prev-editor::before { content:"● ● ●"; position:absolute; top:8px; left:12px; color:#ff5f57; font-size:8px; letter-spacing:3px; text-shadow:14px 0 #febc2e, 28px 0 #28c840; }
+        .prev-editor .mini-avatar { display:none; }
+        .prev-editor .mini-lines { left:14px; bottom:auto; top:34px; }
+        .prev-editor .mini-lines span:nth-child(1){width:60px;background:#4ade80;height:6px;}
+        .prev-editor .mini-lines span:nth-child(2){width:120px;background:linear-gradient(90deg,#fff 40%,#ff4fb0 40%);height:14px;border-radius:3px;}
+        .prev-editor .pb-tpl-prev::after { content:""; position:absolute; left:0; top:0; bottom:0; width:34px; background:#0a0b14; border-right:1px solid #23263a; }
+        /* panels — light, purple hero tabbed card */
+        .prev-panels { background:#f5f6fb; position:relative; overflow:hidden; }
+        .prev-panels::before { content:""; position:absolute; top:0; left:0; right:0; height:46px; background:linear-gradient(135deg,#2a1d5e,#6b4bb8); }
+        .prev-panels::after { content:""; position:absolute; left:18px; top:34px; width:46px; bottom:14px; background:#2f6bff; border-radius:8px; }
+        .prev-panels .mini-avatar { display:none; }
+        .prev-panels .mini-lines { left:74px; bottom:auto; top:58px; }
+        .prev-panels .mini-lines span:nth-child(1){width:110px;background:#1a1f2e;}
+        .prev-panels .mini-lines span:nth-child(2){width:70px;background:#8a93a6;}
+        /* nova — teal particles on navy */
+        .prev-nova { background:#0a1622; position:relative; overflow:hidden; }
+        .prev-nova::before { content:""; position:absolute; inset:0;
+            background-image:radial-gradient(2px 2px at 20% 30%, #2dd4bf 50%, transparent), radial-gradient(2px 2px at 70% 50%, #2dd4bf 50%, transparent), radial-gradient(2px 2px at 45% 75%, #38bdf8 50%, transparent), radial-gradient(2px 2px at 85% 25%, #2dd4bf 50%, transparent);
+            opacity:.7; }
+        .prev-nova .mini-avatar { width:40px;height:40px;border-radius:50%;background:transparent;border:2px solid #2dd4bf;color:#2dd4bf;box-shadow:0 0 14px -2px #2dd4bf;margin:0 auto; }
+        .prev-nova .mini-lines { left:50%;transform:translateX(-50%);bottom:auto;top:74px;text-align:center; }
+        .prev-nova .mini-lines span { margin:0 auto 5px; }
+        .prev-nova .mini-lines span:nth-child(1){width:120px;background:linear-gradient(90deg,#fff,#2dd4bf);}
+        .prev-nova .mini-lines span:nth-child(2){width:70px;background:rgba(147,167,181,.5);}
+        /* codeflow — blue, scroll progress */
+        .prev-codeflow { background:#0a0f1e; position:relative; }
+        .prev-codeflow::before { content:"→ 42%"; position:absolute; top:8px; left:12px; color:#34d399; font-family:monospace; font-size:8px; }
+        .prev-codeflow::after { content:""; position:absolute; top:20px; left:12px; right:12px; height:6px; border-radius:3px; background:linear-gradient(90deg,#3b82f6 42%, rgba(255,255,255,.08) 42%); }
+        .prev-codeflow .mini-avatar { display:none; }
+        .prev-codeflow .mini-lines { left:16px; bottom:auto; top:46px; }
+        .prev-codeflow .mini-lines span:nth-child(1){width:120px;background:linear-gradient(90deg,#3b82f6,#38bdf8);height:14px;border-radius:3px;}
+        .prev-codeflow .mini-lines span:nth-child(2){width:80px;background:rgba(159,176,207,.5);}
+        /* wave — emerald neon lines on black */
+        .prev-wave { background:#000; position:relative; overflow:hidden; }
+        .prev-wave::before { content:""; position:absolute; inset:0;
+            background:repeating-linear-gradient(115deg, transparent 0 7px, rgba(46,230,166,.5) 7px 8px);
+            -webkit-mask:radial-gradient(60% 80% at 70% 50%, #000, transparent 75%); mask:radial-gradient(60% 80% at 70% 50%, #000, transparent 75%); opacity:.7; }
+        .prev-wave .mini-avatar { display:none; }
+        .prev-wave .mini-lines { left:16px; bottom:auto; top:48px; }
+        .prev-wave .mini-lines span:nth-child(1){width:110px;background:transparent;height:16px;border:1.5px solid rgba(255,255,255,.55);border-radius:2px;}
+        .prev-wave .mini-lines span:nth-child(2){width:70px;background:#2ee6a6;box-shadow:0 0 10px #2ee6a6;}
+        /* bold — dark, lime */
+        .prev-bold { background:#0b0b0d; }
+        .prev-bold .mini-avatar { border-radius:12px; background:rgba(198,251,80,.14); border:1px solid rgba(198,251,80,.5); color:#c6fb50; }
+        .prev-bold .mini-lines span:nth-child(1){width:130px;background:#fafafa;}
+        .prev-bold .mini-lines span:nth-child(2){width:70px;background:#c6fb50;}
+        /* terminal — near-black, green mono */
+        .prev-terminal { background:#06080d; background-image:linear-gradient(rgba(61,220,132,.06) 1px,transparent 1px); background-size:100% 12px; }
+        .prev-terminal .mini-avatar { border-radius:8px; background:rgba(61,220,132,.08); border:1px solid rgba(61,220,132,.5); color:#3ddc84; font-family:monospace; }
+        .prev-terminal .mini-lines span:nth-child(1){width:120px;background:#3ddc84;}
+        .prev-terminal .mini-lines span:nth-child(2){width:80px;background:rgba(139,152,169,.6);}
+        /* clean — light, violet */
+        .prev-clean { background:#f4f4f0; }
+        .prev-clean .mini-avatar { border-radius:18px; background:#fff; border:1px solid rgba(0,0,0,.1); color:#6d28d9; box-shadow:0 8px 18px -10px rgba(0,0,0,.4); }
+        .prev-clean .mini-lines span:nth-child(1){width:120px;background:#18181b;}
+        .prev-clean .mini-lines span:nth-child(2){width:80px;background:#6d28d9;}
+        /* editorial — cream, serif */
+        .prev-editorial { background:#f7f2e9; }
+        .prev-editorial .mini-avatar { border-radius:50%; background:#fffdf8; border:1px solid rgba(31,26,20,.2); color:#a8421f; font-family:Georgia,serif; }
+        .prev-editorial .mini-lines span:nth-child(1){width:130px;background:#1f1a14;}
+        .prev-editorial .mini-lines span:nth-child(2){width:70px;background:#a8421f;}
+        /* vibrant — colorful gradient */
+        .prev-vibrant { background:radial-gradient(120% 90% at 85% -10%, #ffd9f0, #fef7ff 60%); }
+        .prev-vibrant .mini-avatar { border-radius:18px; background:#fff; border:2px solid #ec4899; color:#d6308b; }
+        .prev-vibrant .mini-lines span:nth-child(1){width:120px;background:linear-gradient(90deg,#ec4899,#8b5cf6);}
+        .prev-vibrant .mini-lines span:nth-child(2){width:80px;background:rgba(91,77,115,.5);}
+        .pb-tpl-foot { padding: 14px 16px; display:flex; align-items:center; justify-content:space-between; }
+        .pb-tpl-foot strong { font-size: .95rem; }
+        .pb-tpl-foot .tick { width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(99,130,200,.4); display:flex;align-items:center;justify-content:center; }
+        .pb-tpl.selected .tick { background:#8b5cf6;border-color:#8b5cf6; }
+        .pb-tpl.selected .tick::after { content:"✓"; color:#fff; font-size:.8rem; }
+
+        /* Upload */
+        .pb-drop {
+            border: 2px dashed rgba(99,130,200,.4); border-radius: 16px; padding: 44px 20px; text-align: center;
+            background: rgba(255,255,255,.02); cursor: pointer; transition: border-color .2s, background .2s;
+        }
+        .pb-drop:hover, .pb-drop.drag { border-color: #8b5cf6; background: rgba(139,92,246,.06); }
+        .pb-drop .ic { font-size: 2.4rem; }
+        .pb-drop h3 { margin: 10px 0 4px; }
+        .pb-drop p { color: #9fb0cc; margin: 0; font-size: .9rem; }
+        .pb-or { text-align:center; color:#7f8db0; margin: 16px 0; font-size:.85rem; }
+        .pb-paste { width: 100%; min-height: 120px; resize: vertical; }
+
+        /* Forms */
+        .pb-field { margin-bottom: 14px; }
+        .pb-field label { display:block; font-size:.82rem; color:#9fb0cc; margin-bottom:5px; font-weight:600; }
+        .pb-input, .pb-textarea, .pb-paste {
+            width:100%; background: rgba(255,255,255,.04); border:1px solid rgba(99,130,200,.3);
+            color:#eaf1ff; border-radius:9px; padding:10px 12px; font-size:.9rem; font-family:inherit;
+        }
+        .pb-input:focus, .pb-textarea:focus, .pb-paste:focus { outline:none; border-color:#8b5cf6; }
+        .pb-textarea { min-height: 70px; resize: vertical; }
+        .pb-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .pb-card { border:1px solid rgba(99,130,200,.2); border-radius:12px; padding:16px; margin-bottom:14px; background:rgba(255,255,255,.02); position:relative; }
+        .pb-card-rm { position:absolute; top:10px; right:10px; background:transparent; border:1px solid rgba(239,68,68,.35); color:#ff9a9a; border-radius:7px; padding:3px 9px; font-size:.78rem; cursor:pointer; }
+        .pb-add { background:rgba(59,130,246,.16); color:#9cc2ff; border:1px solid rgba(59,130,246,.35); border-radius:9px; padding:9px 16px; font-size:.85rem; font-weight:600; cursor:pointer; }
+        .pb-sec-title { font-size:1.05rem; font-weight:700; margin:24px 0 12px; color:#eaf1ff; }
+        /* Inline "upload existing CV" import bar on the details form */
+        .pb-import { border:1px solid rgba(16,185,129,.35); background:linear-gradient(135deg,rgba(16,185,129,.10),rgba(16,185,129,.03)); border-radius:14px; padding:16px 18px; margin-bottom:22px; }
+        .pb-import-row { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+        .pb-import-text strong { display:block; color:#eaf1ff; font-size:.98rem; }
+        .pb-import-text span { color:#9fb0cc; font-size:.84rem; }
+        .pb-import-btn { display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:10px; cursor:pointer; white-space:nowrap;
+            border:1px solid rgba(16,185,129,.55); background:linear-gradient(135deg,rgba(16,185,129,.18),rgba(16,185,129,.07)); color:#6ee7b7; font-size:.88rem; font-weight:700; transition:border-color .2s, box-shadow .2s; }
+        .pb-import-btn:hover { border-color:rgba(16,185,129,.9); box-shadow:0 4px 14px rgba(16,185,129,.22); }
+        .pb-import-btn.loading { opacity:.7; cursor:progress; }
+        .pb-import-paste { margin-top:12px; }
+        .pb-import-paste summary { cursor:pointer; color:#9cc2ff; font-size:.82rem; font-weight:600; }
+        .pb-import-paste .pb-paste { margin-top:10px; min-height:120px; }
+        .pb-photo-row { display:flex; align-items:center; gap:16px; margin-bottom:18px; }
+        .pb-photo-thumb { width:88px; height:88px; border-radius:16px; flex-shrink:0; object-fit:cover;
+            border:1px solid rgba(94,234,212,.4); background:linear-gradient(155deg,rgba(94,234,212,.12),rgba(17,34,64,.6));
+            display:flex; align-items:center; justify-content:center; color:#5eead4; font-weight:800; font-size:1.6rem; }
+        .pb-photo-actions { display:flex; flex-direction:column; gap:8px; }
+        .pb-photo-btn { background:rgba(94,234,212,.12); color:#5eead4; border:1px solid rgba(94,234,212,.4);
+            border-radius:9px; padding:9px 16px; font-size:.85rem; font-weight:600; cursor:pointer; }
+        .pb-photo-rm { background:transparent; color:#ff9a9a; border:1px solid rgba(239,68,68,.35);
+            border-radius:9px; padding:7px 14px; font-size:.8rem; cursor:pointer; }
+        .pb-photo-hint { font-size:.78rem; color:#7f8db0; }
+        /* per-row image upload box (projects, certifications) */
+        .pb-imgbox { display:flex; align-items:center; gap:12px; margin-top:6px; }
+        .pb-imgthumb { width:70px; height:52px; border-radius:9px; flex-shrink:0; object-fit:cover; overflow:hidden;
+            border:1px dashed rgba(99,130,200,.4); background:rgba(255,255,255,.03);
+            display:flex; align-items:center; justify-content:center; color:#7f8db0; font-size:1.3rem; }
+        .pb-imgthumb img { width:100%; height:100%; object-fit:cover; }
+        .pb-imgbtn { background:rgba(59,130,246,.14); color:#9cc2ff; border:1px solid rgba(59,130,246,.35);
+            border-radius:8px; padding:7px 13px; font-size:.8rem; font-weight:600; cursor:pointer; }
+        .pb-imgbtn:hover { background:rgba(59,130,246,.24); }
+        .pb-imgrm { background:transparent; color:#ff9a9a; border:1px solid rgba(239,68,68,.35);
+            border-radius:8px; padding:6px 11px; font-size:.78rem; cursor:pointer; }
+        .pb-addr { display:flex; align-items:stretch; }
+        .pb-addr input { border-top-right-radius:0; border-bottom-right-radius:0; text-align:right; }
+        .pb-addr-suffix { display:flex; align-items:center; padding:0 12px; font-size:.88rem; color:#9fb0cc;
+            background:rgba(94,234,212,.1); border:1px solid rgba(99,130,200,.3); border-left:none;
+            border-radius:0 9px 9px 0; white-space:nowrap; }
+
+        .pb-nav-row { display:flex; justify-content:space-between; gap:12px; margin-top:28px; }
+        .pb-btn { font-size:.92rem; font-weight:700; padding:12px 24px; border-radius:10px; cursor:pointer; border:1px solid transparent; }
+        .pb-btn-next { background:linear-gradient(135deg,#7c3aed,#4c1d95); color:#fff; }
+        .pb-btn-next:hover { filter:brightness(1.1); }
+        .pb-btn-next:disabled { opacity:.5; cursor:not-allowed; }
+        .pb-btn-back { background:transparent; color:#9fb0cc; border-color:rgba(99,130,200,.3); }
+        .pb-spinner { display:inline-block; width:15px;height:15px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:pbSpin .7s linear infinite;vertical-align:-2px;margin-right:6px; }
+        @keyframes pbSpin { to { transform: rotate(360deg); } }
+        .pb-msg { font-size:.85rem; margin-top:10px; min-height:18px; }
+        .pb-msg.err { color:#fca5a5; }
+        .pb-msg.ok { color:#86efac; }
+
+        /* Success */
+        .pb-success { text-align:center; padding: 30px 10px; }
+        .pb-success .big { font-size:2.6rem; }
+        .pb-link-box { display:flex; gap:8px; max-width:520px; margin:18px auto; }
+        .pb-link-box input { flex:1; }
+
+        .navbar .nav-links { min-width:auto; flex-wrap:nowrap; gap:2px; }
+        .navbar .nav-links a { font-size:12px; padding:22px 12px; white-space:nowrap; }
+        @media (max-width:560px){ .pb-grid2{grid-template-columns:1fr;} .pb-head h1{font-size:1.5rem;} }
+    </style>
+</head>
+<body>
+    {% include "_nav.html" %}
+
+    <main class="pb" data-logged-in="{{ 'yes' if logged_in else 'no' }}">
+        <div class="pb-head">
+            <h1>Build your portfolio website</h1>
+            <p>Pick a design, upload your resume, tweak the details, and publish a link you can share anywhere.</p>
+        </div>
+
+        <div class="pb-steps">
+            <div class="pb-step active" data-step="1"><span class="n">1</span> Template</div>
+            <span class="bar"></span>
+            <div class="pb-step" data-step="2"><span class="n">2</span> Your details</div>
+            <span class="bar"></span>
+            <div class="pb-step" data-step="3"><span class="n">3</span> Publish</div>
+        </div>
+
+        <!-- Step 1: template -->
+        <section class="pb-panel active" id="panel-1">
+            <div class="pb-templates">
+                {% for slug, label in themes.items() %}
+                <div class="pb-tpl" data-theme="{{ slug }}" onclick="pbSelectTheme(this)">
+                    <div class="pb-tpl-prev prev-{{ slug }}">
+                        <div class="mini-avatar">AB</div>
+                        <div class="mini-lines"><span></span><span></span></div>
+                    </div>
+                    <div class="pb-tpl-foot"><strong>{{ label }}</strong><span class="tick"></span></div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="pb-nav-row">
+                <span></span>
+                <button class="pb-btn pb-btn-next" id="btn-to-2" onclick="pbGo(2)">Continue →</button>
+            </div>
+        </section>
+
+        <!-- Step 2: your details (form + inline "upload existing CV") -->
+        <section class="pb-panel" id="panel-2">
+            <!-- Import bar: fills the form below in place; no separate step -->
+            <div class="pb-import">
+                <div class="pb-import-row">
+                    <div class="pb-import-text">
+                        <strong>Have a resume already?</strong>
+                        <span>Upload it and we'll fill everything below for you — then just tweak it.</span>
+                    </div>
+                    <label class="pb-import-btn" for="pb-file">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                        Upload existing CV (PDF)
+                    </label>
+                    <input type="file" id="pb-file" accept="application/pdf" style="display:none" onchange="pbParse()">
+                </div>
+                <details class="pb-import-paste">
+                    <summary>or paste resume text</summary>
+                    <textarea class="pb-paste" id="pb-paste" placeholder="Paste your resume here…"></textarea>
+                    <button class="pb-btn pb-btn-back" id="btn-parse" onclick="pbParse()" style="margin-top:10px;">Read pasted text</button>
+                </details>
+                <div class="pb-msg" id="pb-upload-msg"></div>
+            </div>
+
+            <div class="pb-photo-row">
+                <div class="pb-photo-thumb" id="pb-photo-thumb">＋</div>
+                <div class="pb-photo-actions">
+                    <button class="pb-photo-btn" onclick="document.getElementById('pb-photo-file').click()">Upload a photo</button>
+                    <button class="pb-photo-rm" id="pb-photo-rm" style="display:none;" onclick="pbRemovePhoto()">Remove</button>
+                    <span class="pb-photo-hint">Optional · square headshot looks best</span>
+                </div>
+                <input type="file" id="pb-photo-file" accept="image/png,image/jpeg,image/webp" style="display:none">
+            </div>
+            <div class="pb-grid2">
+                <div class="pb-field"><label>Full name *</label><input class="pb-input" id="f-name"></div>
+                <div class="pb-field"><label>Headline / role</label><input class="pb-input" id="f-headline" placeholder="e.g. Frontend Developer"></div>
+            </div>
+            <div class="pb-field"><label>About / summary</label><textarea class="pb-textarea" id="f-summary"></textarea></div>
+            <div class="pb-grid2">
+                <div class="pb-field"><label>Email</label><input class="pb-input" id="f-email"></div>
+                <div class="pb-field"><label>Phone</label><input class="pb-input" id="f-phone"></div>
+                <div class="pb-field"><label>Location</label><input class="pb-input" id="f-location"></div>
+                <div class="pb-field"><label>LinkedIn URL</label><input class="pb-input" id="f-linkedin"></div>
+                <div class="pb-field"><label>GitHub URL</label><input class="pb-input" id="f-github"></div>
+                <div class="pb-field"><label>LeetCode URL</label><input class="pb-input" id="f-leetcode"></div>
+                <div class="pb-field"><label>Google Scholar URL</label><input class="pb-input" id="f-scholar"></div>
+                <div class="pb-field"><label>Twitter / X URL</label><input class="pb-input" id="f-twitter"></div>
+                <div class="pb-field"><label>Website / other URL</label><input class="pb-input" id="f-portfolio"></div>
+            </div>
+
+            <div class="pb-field"><label>Skills (one per line, or comma-separated)</label><textarea class="pb-textarea" id="f-skills" placeholder="Python&#10;React&#10;SQL"></textarea></div>
+
+            <div class="pb-sec-title">Experience</div>
+            <div id="exp-list"></div>
+            <button class="pb-add" onclick="pbAddExp()">+ Add experience</button>
+
+            <div class="pb-sec-title">Projects</div>
+            <div id="proj-list"></div>
+            <button class="pb-add" onclick="pbAddProj()">+ Add project</button>
+
+            <div class="pb-sec-title">Education</div>
+            <div id="edu-list"></div>
+            <button class="pb-add" onclick="pbAddEdu()">+ Add education</button>
+
+            <div class="pb-sec-title">Leadership &amp; activities <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
+            <div id="extra-list"></div>
+            <button class="pb-add" onclick="pbAddExtra()">+ Add activity</button>
+
+            <div class="pb-sec-title">Publications <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
+            <div id="pub-list"></div>
+            <button class="pb-add" onclick="pbAddPub()">+ Add publication</button>
+
+            <div class="pb-sec-title">Certifications <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
+            <div id="cert-list"></div>
+            <button class="pb-add" onclick="pbAddCert()">+ Add certification</button>
+
+            <div class="pb-sec-title">Interests / hobbies <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
+            <div class="pb-field"><textarea class="pb-textarea" id="f-hobbies" placeholder="Photography, Chess, Open-source&#10;(one per line or comma-separated)"></textarea></div>
+
+            <div class="pb-nav-row">
+                <button class="pb-btn pb-btn-back" onclick="pbGo(1)">← Back</button>
+                <button class="pb-btn pb-btn-next" onclick="pbGo(3)">Preview &amp; publish →</button>
+            </div>
+        </section>
+
+        <!-- Step 3: publish -->
+        <section class="pb-panel" id="panel-3">
+            <div id="pb-publish-pre">
+                <p style="text-align:center;color:#9fb0cc;">You're all set! We'll generate your site with the <strong id="pb-theme-name">Bold</strong> theme and a polished AI-written intro.</p>
+                {% if subdomains_enabled %}
+                <div class="pb-field" style="max-width:460px;margin:18px auto 8px;">
+                    <label>Your web address</label>
+                    <div class="pb-addr"><input class="pb-input" id="f-handle" placeholder="yourname" autocomplete="off" spellcheck="false"><span class="pb-addr-suffix">.{{ portfolio_domain }}</span></div>
+                    <span class="pb-photo-hint">Letters, numbers and hyphens. We'll tidy it up and pick the closest free address.</span>
+                </div>
+                {% endif %}
+                <div class="pb-nav-row">
+                    <button class="pb-btn pb-btn-back" onclick="pbGo(2)">← Back</button>
+                    <button class="pb-btn pb-btn-next" id="btn-publish" onclick="pbPublish()">🚀 Publish my portfolio</button>
+                </div>
+                <div class="pb-msg" id="pb-publish-msg" style="text-align:center;"></div>
+            </div>
+            <div class="pb-success" id="pb-success" style="display:none;">
+                <div class="big">🎉</div>
+                <h2>Your portfolio is live!</h2>
+                <div class="pb-link-box">
+                    <input class="pb-input" id="pb-share-url" readonly>
+                    <button class="pb-btn pb-btn-next" onclick="pbCopyShare()">Copy</button>
+                </div>
+                <a class="pb-btn pb-btn-next" id="pb-view-link" href="#" target="_blank" rel="noopener" style="text-decoration:none;">View my site →</a>
+            </div>
+        </section>
+    </main>
+
+    {% include "_footer.html" %}
+
+    <script>
+    (function () {
+        const KEY = "tailorcv_portfolio_builder";
+        const loggedIn = document.querySelector(".pb").dataset.loggedIn === "yes";
+        const themeNames = {{ themes | tojson }};
+        let state = { theme: "editor", cv: null, step: 1, photo: null, handle: "" };
+        function deriveHandle(s) { return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-{2,}/g, "-").replace(/^-+|-+$/g, "").slice(0, 40); }
+
+        // ---- persistence (survives the login round-trip) ----
+        // Persist to localStorage so a returning user keeps their details (and they
+        // survive the login round-trip) instead of re-entering everything.
+        function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+        function load() { try { const s = localStorage.getItem(KEY); if (s) state = Object.assign(state, JSON.parse(s)); } catch (e) {} }
+
+        // ---- step navigation (1 Template · 2 Your details · 3 Publish) ----
+        window.pbGo = function (n) {
+            document.querySelectorAll(".pb-panel").forEach(p => p.classList.remove("active"));
+            document.getElementById("panel-" + n).classList.add("active");
+            document.querySelectorAll(".pb-step").forEach(s => {
+                const sn = parseInt(s.dataset.step, 10);
+                s.classList.toggle("active", sn === n);
+                s.classList.toggle("done", sn < n);
+            });
+            if (n === 2) populateForm();
+            if (n === 3) {
+                readForm();
+                document.getElementById("pb-theme-name").textContent = themeNames[state.theme] || "Bold";
+                const hf = document.getElementById("f-handle");
+                if (hf && !hf.value) hf.value = state.handle || deriveHandle($("f-name").value);
+            }
+            state.step = n; save();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+
+        // ---- step 1: theme ----
+        window.pbSelectTheme = function (el) {
+            document.querySelectorAll(".pb-tpl").forEach(t => t.classList.remove("selected"));
+            el.classList.add("selected");
+            state.theme = el.dataset.theme; save();
+        };
+
+        // ---- shared image downscaler → small base64 JPEG data URL ----
+        function pbResizeImage(file, max, cb) {
+            const reader = new FileReader();
+            reader.onload = function (ev) {
+                const img = new Image();
+                img.onload = function () {
+                    let w = img.width, h = img.height;
+                    if (w > h && w > max) { h = Math.round(h * max / w); w = max; }
+                    else if (h > max) { w = Math.round(w * max / h); h = max; }
+                    const cv = document.createElement("canvas"); cv.width = w; cv.height = h;
+                    cv.getContext("2d").drawImage(img, 0, 0, w, h);
+                    cb(cv.toDataURL("image/jpeg", 0.82));
+                };
+                img.src = ev.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // ---- profile photo ----
+        const photoInput = document.getElementById("pb-photo-file");
+        photoInput.addEventListener("change", function () {
+            if (!photoInput.files[0]) return;
+            pbResizeImage(photoInput.files[0], 512, function (url) { state.photo = url; save(); renderPhoto(); });
+        });
+        window.pbRemovePhoto = function () { state.photo = null; photoInput.value = ""; save(); renderPhoto(); };
+
+        // ---- per-row image box (projects, certifications): returns markup; a
+        // delegated handler resizes the chosen file into the hidden .j-image input ----
+        function imgBoxHtml(url) {
+            url = url || "";
+            return '<div class="pb-imgbox">' +
+                '<div class="pb-imgthumb">' + (url ? '<img src="' + url + '">' : '＋') + '</div>' +
+                '<input type="hidden" class="j-image" value="' + esc(url) + '">' +
+                '<input type="file" class="j-imgfile" accept="image/png,image/jpeg,image/webp" style="display:none">' +
+                '<button type="button" class="pb-imgbtn">Upload image</button>' +
+                '<button type="button" class="pb-imgrm" style="' + (url ? '' : 'display:none;') + '">Remove</button>' +
+                '</div>';
+        }
+        document.addEventListener("click", function (e) {
+            const box = e.target.closest(".pb-imgbox"); if (!box) return;
+            if (e.target.classList.contains("pb-imgbtn")) { box.querySelector(".j-imgfile").click(); }
+            else if (e.target.classList.contains("pb-imgrm")) {
+                box.querySelector(".j-image").value = ""; box.querySelector(".j-imgfile").value = "";
+                box.querySelector(".pb-imgthumb").textContent = "＋"; box.querySelector(".pb-imgrm").style.display = "none";
+            }
+        });
+        document.addEventListener("change", function (e) {
+            if (!e.target.classList.contains("j-imgfile")) return;
+            const box = e.target.closest(".pb-imgbox"); const file = e.target.files[0]; if (!file) return;
+            pbResizeImage(file, 900, function (url) {
+                box.querySelector(".j-image").value = url;
+                box.querySelector(".pb-imgthumb").innerHTML = '<img src="' + url + '">';
+                box.querySelector(".pb-imgrm").style.display = "";
+            });
+        });
+        function renderPhoto() {
+            const thumb = document.getElementById("pb-photo-thumb");
+            const rm = document.getElementById("pb-photo-rm");
+            if (!thumb) return;
+            if (state.photo) { thumb.innerHTML = '<img src="' + state.photo + '" style="width:100%;height:100%;object-fit:cover;border-radius:16px;">'; rm.style.display = ""; }
+            else { thumb.textContent = "＋"; rm.style.display = "none"; }
+        }
+
+        // ---- inline resume import (fills the form in place; no step change) ----
+        const fileInput = document.getElementById("pb-file");
+        function msg(id, text, cls) { const m = document.getElementById(id); m.textContent = text; m.className = "pb-msg " + (cls || ""); }
+
+        // Clear the repeatable lists so a fresh parse rebuilds them from new data.
+        function pbResetLists() {
+            ["exp-list", "proj-list", "edu-list", "extra-list", "pub-list", "cert-list"].forEach(function (id) {
+                const el = $(id); if (el) { el.innerHTML = ""; delete el.dataset.built; }
+            });
+        }
+
+        window.pbParse = async function () {
+            const importBtn = document.querySelector(".pb-import-btn");
+            const file = fileInput.files[0];
+            const paste = document.getElementById("pb-paste").value.trim();
+            if (!file && !paste) { msg("pb-upload-msg", "Choose a PDF or paste your resume text first.", "err"); return; }
+            if (importBtn) importBtn.classList.add("loading");
+            msg("pb-upload-msg", "Reading your resume — this can take a few seconds…", "");
+            try {
+                let res;
+                if (file) {
+                    const fd = new FormData(); fd.append("file", file);
+                    res = await fetch("/api/extract-cv-from-pdf", { method: "POST", body: fd });
+                } else {
+                    res = await fetch("/api/extract-cv-from-text", {
+                        method: "POST", headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ cvText: paste }),
+                    });
+                }
+                if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e.detail || "Could not read the resume."); }
+                const data = await res.json();
+                state.cv = (data && data.cvData) ? data.cvData : data;
+                save();
+                pbResetLists();        // rebuild form rows from the new data
+                populateForm();        // fill the fields IN PLACE — no navigation
+                msg("pb-upload-msg", "Done! Your details are filled in below — review and edit anything.", "ok");
+            } catch (e) {
+                msg("pb-upload-msg", e.message || "Something went wrong. Try pasting the text instead.", "err");
+            } finally {
+                if (importBtn) importBtn.classList.remove("loading");
+                fileInput.value = "";  // allow re-uploading the same file
+            }
+        };
+
+        // ---- details form ----
+        const $ = id => document.getElementById(id);
+        function val(o, k, d) { return (o && o[k] != null) ? o[k] : (d || ""); }
+
+        function populateForm() {
+            const cv = state.cv || {};
+            const pi = cv.personalInfo || cv.personal_info || {};
+            const c = cv.contact || cv.contact_information || {};
+            $("f-name").value = pi.name || cv.name || "";
+            $("f-headline").value = pi.headline || pi.title || "";
+            $("f-summary").value = pi.summary || cv.summary || "";
+            $("f-email").value = pi.email || c.email || "";
+            $("f-phone").value = pi.phone || c.phone || "";
+            $("f-location").value = pi.location || c.address || "";
+            $("f-linkedin").value = pi.linkedin || c.linkedin || "";
+            $("f-github").value = pi.github || c.github || "";
+            $("f-leetcode").value = pi.leetcode || c.leetcode || "";
+            $("f-scholar").value = pi.googleScholar || pi.google_scholar || c.google_scholar || "";
+            $("f-twitter").value = pi.twitter || c.twitter || "";
+            $("f-portfolio").value = pi.portfolio || pi.website || "";
+            $("f-hobbies").value = (function () {
+                const h = cv.hobbies || cv.interests || [];
+                if (Array.isArray(h)) return h.map(x => typeof x === "string" ? x : (x.name || x.hobby || "")).filter(Boolean).join("\n");
+                return h || "";
+            })();
+
+            // skills -> one per line
+            let skills = [];
+            const sk = cv.skills;
+            if (Array.isArray(sk)) skills = sk.map(s => typeof s === "string" ? s : (s.name || s.category || "")).filter(Boolean);
+            else if (sk && typeof sk === "object") Object.values(sk).forEach(arr => (arr || []).forEach(x => skills.push(x)));
+            $("f-skills").value = skills.join("\n");
+
+            // lists (only build once)
+            const exp = $("exp-list"); if (!exp.dataset.built) { (cv.experience || cv.work_experience || []).forEach(e => pbAddExp(e)); if (!exp.children.length) pbAddExp(); exp.dataset.built = "1"; }
+            const pr = $("proj-list"); if (!pr.dataset.built) { (cv.projects || []).forEach(p => pbAddProj(p)); if (!pr.children.length) pbAddProj(); pr.dataset.built = "1"; }
+            const ed = $("edu-list"); if (!ed.dataset.built) { (cv.education || []).forEach(e => pbAddEdu(e)); if (!ed.children.length) pbAddEdu(); ed.dataset.built = "1"; }
+            const xl = $("extra-list"); if (!xl.dataset.built) { (cv.extracurriculars || cv.activities || []).forEach(x => pbAddExtra(x)); xl.dataset.built = "1"; }
+            const pl = $("pub-list"); if (!pl.dataset.built) { (cv.publications || []).forEach(p => pbAddPub(p)); pl.dataset.built = "1"; }
+            const cl = $("cert-list"); if (!cl.dataset.built) { (cv.certifications || cv.certificates || []).forEach(c => pbAddCert(c)); cl.dataset.built = "1"; }
+            renderPhoto();
+        }
+
+        function detailsOf(o) {
+            const d = o && (o.details || o.bullets || o.responsibilities || o.achievements || o.description);
+            if (Array.isArray(d)) return d.join("\n");
+            return d || "";
+        }
+        function card(html) { const div = document.createElement("div"); div.className = "pb-card";
+            div.innerHTML = '<button class="pb-card-rm" onclick="this.parentNode.remove()">Remove</button>' + html; return div; }
+
+        window.pbAddExp = function (e) { e = e || {};
+            $("exp-list").appendChild(card(
+                '<div class="pb-grid2"><div class="pb-field"><label>Title</label><input class="pb-input j-title" value="' + esc(val(e,"title")) + '"></div>' +
+                '<div class="pb-field"><label>Company</label><input class="pb-input j-company" value="' + esc(val(e,"company")) + '"></div>' +
+                '<div class="pb-field"><label>Dates</label><input class="pb-input j-dates" value="' + esc(val(e,"dates")) + '"></div>' +
+                '<div class="pb-field"><label>Location</label><input class="pb-input j-location" value="' + esc(val(e,"location")) + '"></div></div>' +
+                '<div class="pb-field"><label>Highlights (one per line)</label><textarea class="pb-textarea j-details">' + esc(detailsOf(e)) + '</textarea></div>'));
+        };
+        window.pbAddProj = function (p) { p = p || {};
+            $("proj-list").appendChild(card(
+                '<div class="pb-grid2"><div class="pb-field"><label>Project name</label><input class="pb-input j-name" value="' + esc(val(p,"name")) + '"></div>' +
+                '<div class="pb-field"><label>Tech / subtitle</label><input class="pb-input j-subtitle" value="' + esc(val(p,"subtitle")) + '"></div>' +
+                '<div class="pb-field"><label>Live URL</label><input class="pb-input j-url" value="' + esc(val(p,"url")) + '"></div>' +
+                '<div class="pb-field"><label>GitHub URL</label><input class="pb-input j-github" value="' + esc(val(p,"github_link") || val(p,"github")) + '"></div></div>' +
+                '<div class="pb-field"><label>Highlights (one per line)</label><textarea class="pb-textarea j-details">' + esc(detailsOf(p)) + '</textarea></div>' +
+                '<div class="pb-field"><label>Project image (optional)</label>' + imgBoxHtml(val(p,"image")) + '</div>'));
+        };
+        window.pbAddEdu = function (e) { e = e || {};
+            $("edu-list").appendChild(card(
+                '<div class="pb-grid2"><div class="pb-field"><label>School</label><input class="pb-input j-school" value="' + esc(val(e,"school") || val(e,"institution")) + '"></div>' +
+                '<div class="pb-field"><label>Degree</label><input class="pb-input j-degree" value="' + esc(val(e,"degree")) + '"></div>' +
+                '<div class="pb-field"><label>Year</label><input class="pb-input j-year" value="' + esc(val(e,"year") || val(e,"years")) + '"></div>' +
+                '<div class="pb-field"><label>Score / GPA</label><input class="pb-input j-score" value="' + esc(val(e,"score")) + '"></div></div>'));
+        };
+        window.pbAddExtra = function (x) { x = x || {};
+            $("extra-list").appendChild(card(
+                '<div class="pb-grid2"><div class="pb-field"><label>Role</label><input class="pb-input j-role" value="' + esc(val(x,"role") || val(x,"title")) + '"></div>' +
+                '<div class="pb-field"><label>Organization</label><input class="pb-input j-organization" value="' + esc(val(x,"organization") || val(x,"org")) + '"></div>' +
+                '<div class="pb-field"><label>Dates</label><input class="pb-input j-dates" value="' + esc(val(x,"dates")) + '"></div>' +
+                '<div class="pb-field"><label>Link (optional)</label><input class="pb-input j-url" value="' + esc(val(x,"url")) + '"></div></div>' +
+                '<div class="pb-field"><label>Highlights (one per line)</label><textarea class="pb-textarea j-details">' + esc(detailsOf(x)) + '</textarea></div>'));
+        };
+        window.pbAddPub = function (p) { p = p || {};
+            $("pub-list").appendChild(card(
+                '<div class="pb-field"><label>Title</label><input class="pb-input j-title" value="' + esc(val(p,"title") || val(p,"name")) + '"></div>' +
+                '<div class="pb-grid2"><div class="pb-field"><label>Publisher / venue</label><input class="pb-input j-publisher" value="' + esc(val(p,"publisher") || val(p,"venue")) + '"></div>' +
+                '<div class="pb-field"><label>Year</label><input class="pb-input j-year" value="' + esc(val(p,"year")) + '"></div>' +
+                '<div class="pb-field"><label>Link / DOI (optional)</label><input class="pb-input j-url" value="' + esc(val(p,"url") || val(p,"doi")) + '"></div></div>'));
+        };
+        window.pbAddCert = function (c) { c = c || {};
+            $("cert-list").appendChild(card(
+                '<div class="pb-field"><label>Certification name</label><input class="pb-input j-name" value="' + esc(val(c,"name") || val(c,"title")) + '"></div>' +
+                '<div class="pb-grid2"><div class="pb-field"><label>Issuer</label><input class="pb-input j-issuer" value="' + esc(val(c,"issuer") || val(c,"organization")) + '"></div>' +
+                '<div class="pb-field"><label>Year</label><input class="pb-input j-year" value="' + esc(val(c,"year")) + '"></div>' +
+                '<div class="pb-field"><label>Link (optional)</label><input class="pb-input j-url" value="' + esc(val(c,"url")) + '"></div></div>' +
+                '<div class="pb-field"><label>Certificate image (optional)</label>' + imgBoxHtml(val(c,"image")) + '</div>'));
+        };
+        function esc(s) { return String(s == null ? "" : s).replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+
+        function gather(listId, fields) {
+            return Array.from(document.querySelectorAll("#" + listId + " .pb-card")).map(c => {
+                const o = {}; fields.forEach(f => { const el = c.querySelector(".j-" + f); o[f] = el ? el.value.trim() : ""; });
+                return o;
+            }).filter(o => Object.values(o).some(v => v));
+        }
+
+        function readForm() {
+            const skills = $("f-skills").value.split(/[\n,]+/).map(s => s.trim()).filter(Boolean).map(name => ({ name }));
+            const hobbies = $("f-hobbies").value.split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+            const cv = {
+                personalInfo: {
+                    name: $("f-name").value.trim(), headline: $("f-headline").value.trim(),
+                    summary: $("f-summary").value.trim(), email: $("f-email").value.trim(),
+                    phone: $("f-phone").value.trim(), location: $("f-location").value.trim(),
+                    linkedin: $("f-linkedin").value.trim(), github: $("f-github").value.trim(),
+                    leetcode: $("f-leetcode").value.trim(), googleScholar: $("f-scholar").value.trim(),
+                    twitter: $("f-twitter").value.trim(), portfolio: $("f-portfolio").value.trim(),
+                },
+                skills: skills,
+                hobbies: hobbies,
+                experience: gather("exp-list", ["title", "company", "dates", "location", "details"]),
+                projects: gather("proj-list", ["name", "subtitle", "url", "github", "details", "image"])
+                    .map(p => ({ name: p.name, subtitle: p.subtitle, url: p.url, github_link: p.github, details: p.details, image: p.image })),
+                education: gather("edu-list", ["school", "degree", "year", "score"]),
+                extracurriculars: gather("extra-list", ["role", "organization", "dates", "url", "details"]),
+                publications: gather("pub-list", ["title", "publisher", "year", "url"]),
+                certifications: gather("cert-list", ["name", "issuer", "year", "url", "image"]),
+            };
+            state.cv = cv; save();
+            return cv;
+        }
+
+        // ---- step 4: publish ----
+        window.pbPublish = async function () {
+            const cv = readForm();
+            if (!cv.personalInfo.name) { msg("pb-publish-msg", "Please add your name (step 3).", "err"); return; }
+            const handleEl = document.getElementById("f-handle");
+            state.handle = deriveHandle(handleEl ? handleEl.value : ""); save();
+            if (!loggedIn) {
+                save();
+                msg("pb-publish-msg", "Log in to publish — your work is saved and will be here when you return.", "");
+                setTimeout(() => { window.location.href = "/login?next=/portfolio"; }, 900);
+                return;
+            }
+            const btn = document.getElementById("btn-publish");
+            btn.disabled = true; btn.innerHTML = '<span class="pb-spinner"></span>Publishing…';
+            try {
+                const csrf = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || "";
+                const res = await fetch("/api/build-portfolio", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json", "X-CSRFToken": csrf, "X-Requested-With": "XMLHttpRequest" },
+                    body: JSON.stringify({ cvData: cv, theme: state.theme, photo: state.photo || "", handle: state.handle || "" }),
+                });
+                const data = await res.json();
+                if (!data.success) { msg("pb-publish-msg", data.error || "Could not publish.", "err"); btn.disabled = false; btn.innerHTML = "🚀 Publish my portfolio"; return; }
+                document.getElementById("pb-publish-pre").style.display = "none";
+                const succ = document.getElementById("pb-success"); succ.style.display = "block";
+                $("pb-share-url").value = data.share_url;
+                document.getElementById("pb-view-link").href = data.view_url;
+                try { sessionStorage.removeItem(KEY); } catch (e) {}
+            } catch (e) {
+                msg("pb-publish-msg", "Network error. Please try again.", "err");
+                btn.disabled = false; btn.innerHTML = "🚀 Publish my portfolio";
+            }
+        };
+        window.pbCopyShare = function () {
+            const i = $("pb-share-url"); i.select(); navigator.clipboard.writeText(i.value);
+        };
+
+        // ---- restore on load (after login round-trip) ----
+        load();
+        document.querySelectorAll(".pb-tpl").forEach(t => t.classList.toggle("selected", t.dataset.theme === state.theme));
+        if (!document.querySelector(".pb-tpl.selected")) {
+            const first = document.querySelector(".pb-tpl"); if (first) { first.classList.add("selected"); state.theme = first.dataset.theme; }
+        }
+        // Returning user (e.g. after the login round-trip): resume at the details
+        // form (step 2) so saved data + photo repopulate. Never jump straight to
+        // publish — that would read an un-populated form and wipe the restored CV.
+        if (state.cv) { pbGo(2); }
+    })();
+    </script>
+    <script src="/static/auth_nav.js?v=2" defer></script>
+    <script src="/static/mobile_nav.js" defer></script>
+</body>
+</html>
