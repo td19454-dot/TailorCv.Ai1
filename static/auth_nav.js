@@ -19,6 +19,10 @@
     }
     return _origFetch(input, init).then(function (response) {
       if (response.status === 402) {
+        // checkout-download is handled by the optimized editor with its own
+        // richer popup — skip the generic modal for that endpoint.
+        var url = typeof input === "string" ? input : (input && input.url) || "";
+        if (url.indexOf("checkout-download") !== -1) return response;
         response.clone().json().then(function (body) {
           if (body && body.error === "upgrade_required") {
             showUpgradeModal(body.feature);

@@ -5328,6 +5328,46 @@ async def auth_me(request: Request):
         db.close()
 
 
+@app.post("/api/billing/checkout-download", include_in_schema=False)
+async def checkout_download(request: Request):
+    """Atomically gate and record a resume download in one transaction.
+
+    Pro users: always allowed, counter untouched.
+    Free users with quota remaining: counter incremented HERE before 200 is returned,
+      so the frontend is guaranteed the slot is consumed before the download starts.
+    Free users with quota exhausted: 402 returned, frontend shows upgrade popup.
+    """
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter_by(id=user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if is_pro(user):
+            return JSONResponse({"allowed": True, "is_pro": True})
+        from sqlalchemy import func as _func
+        used = (
+            db.query(_func.coalesce(_func.sum(UsageRecord.ai_optimizations), 0))
+            .filter(UsageRecord.user_id == user.id)
+            .scalar() or 0
+        )
+        limit = FREE_LIMITS.get("ai_optimizations", 1)
+        if used >= limit:
+            return JSONResponse(
+                status_code=402,
+                content={"allowed": False, "error": "upgrade_required", "feature": "ai_optimizations"},
+            )
+        month = datetime.utcnow().strftime("%Y-%m")
+        rec = get_or_create_usage(db, user.id, month)
+        rec.ai_optimizations = (rec.ai_optimizations or 0) + 1
+        db.commit()
+        return JSONResponse({"allowed": True, "is_pro": False})
+    finally:
+        db.close()
+
+
 @app.post("/api/login/verify")
 async def verify_login_code(request: Request):
     try:
@@ -5444,12 +5484,6 @@ async def upload_resume(
     user_id = request.session.get('user_id')
     if not user_id:
         return JSONResponse(status_code=401, content={"error": "Not logged in"})
-    _opt_db = get_db()
-    try:
-        _opt_user = _opt_db.query(User).filter_by(id=user_id).first()
-        enforce_quota(_opt_db, _opt_user, "ai_optimizations")
-    finally:
-        _opt_db.close()
 
     file_path = None
     pdf_path = None

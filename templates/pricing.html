@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "_google_analytics.html" %}
@@ -31,12 +31,71 @@
         /* ── Plan grid ─────────────────────────────── */
         .plan-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.25rem;
             margin-bottom: 2rem;
+            max-width: 920px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        @media (max-width: 1100px) { .plan-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px)  { .plan-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 860px)  { .plan-grid { grid-template-columns: 1fr; max-width: 440px; } }
+
+        /* ── Billing toggle ─────────────────────── */
+        .billing-toggle {
+            display: flex;
+            background: rgba(15,23,42,.6);
+            border: 1px solid rgba(100,116,139,.25);
+            border-radius: 10px;
+            padding: 3px;
+            gap: 3px;
+            margin-bottom: .5rem;
+        }
+        .toggle-opt {
+            flex: 1;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            padding: .38rem .6rem;
+            font-size: .78rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: background .18s, color .18s;
+            white-space: nowrap;
+            text-align: center;
+        }
+        .toggle-opt.active {
+            background: linear-gradient(135deg, #2563eb, #0ea5e9);
+            color: #fff;
+        }
+        .toggle-save {
+            display: inline-block;
+            background: rgba(99,102,241,.22);
+            color: #a5b4fc;
+            border-radius: 999px;
+            font-size: .65rem;
+            font-weight: 700;
+            padding: 1px 6px;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+        .toggle-opt.active .toggle-save {
+            background: rgba(255,255,255,.2);
+            color: #e0e7ff;
+        }
+
+        /* ── Per-day callout ────────────────────── */
+        .plan-per-day {
+            font-size: .8rem;
+            color: #7dd3fc;
+            background: rgba(56,189,248,.08);
+            border: 1px solid rgba(56,189,248,.2);
+            border-radius: 8px;
+            padding: .35rem .75rem;
+            margin: .15rem 0 .2rem;
+            text-align: center;
+        }
+        .plan-per-day strong { color: #bae6fd; font-weight: 700; }
 
         .plan-card {
             position: relative;
@@ -209,64 +268,56 @@
                     <a href="/ats-analysis" class="plan-btn plan-btn-ghost">Start free</a>
                 </div>
 
-                <!-- Weekly pass -->
+                <!-- 7-Day Pass -->
                 <div class="plan-card" style="animation-delay:.12s">
                     <div>
                         <span class="plan-badge badge-pass">Just job-hunting?</span>
                         <p class="plan-name">7-Day Pass</p>
                         <p class="plan-tagline">One-time, no auto-renew</p>
                     </div>
-                    <p class="plan-price"><sup>₹</sup>149</p>
-                    <p class="plan-price-period">one time · 7 days Pro</p>
+                    <p class="plan-price" id="weeklyPriceEl"><sup id="weeklySup">₹</sup><span id="weeklyAmt">149</span></p>
+                    <p class="plan-price-period">one time · 7 days Pro access</p>
                     <ul class="plan-features">
                         <li>Everything in Pro</li>
                         <li>Unlimited optimize &amp; cover letters</li>
                         <li>Unlimited mock interviews</li>
                         <li>LinkedIn import unlimited</li>
-                        <li>7-day access</li>
+                        <li>7-day full access</li>
                         <li class="muted">No subscription</li>
                     </ul>
                     <button class="plan-btn plan-btn-primary" onclick="checkout('weekly')">Get 7-day pass</button>
                 </div>
 
-                <!-- Monthly — most popular -->
+                <!-- Pro — monthly / yearly toggle -->
                 <div class="plan-card popular" style="animation-delay:.19s">
                     <div>
                         <span class="plan-badge badge-popular">Most Popular</span>
-                        <p class="plan-name">Monthly Pro</p>
-                        <p class="plan-tagline">Cancel any time</p>
+                        <p class="plan-name">Pro</p>
                     </div>
-                    <p class="plan-price"><sup>₹</sup>299</p>
-                    <p class="plan-price-period">per month</p>
-                    <ul class="plan-features">
-                        <li>Everything in Pro</li>
-                        <li>Unlimited optimize &amp; cover letters</li>
-                        <li>Unlimited mock interviews</li>
-                        <li>LinkedIn import unlimited</li>
-                        <li>Priority processing</li>
-                        <li>Cancel any time</li>
-                    </ul>
-                    <button class="plan-btn plan-btn-primary" onclick="checkout('monthly')">Get Monthly Pro</button>
-                </div>
 
-                <!-- Yearly — best value -->
-                <div class="plan-card" style="animation-delay:.26s">
-                    <div>
-                        <span class="plan-badge badge-value">Best Value</span>
-                        <p class="plan-name">Yearly Pro</p>
-                        <p class="plan-tagline">~44% off · 2 months free</p>
+                    <!-- Toggle -->
+                    <div class="billing-toggle">
+                        <button class="toggle-opt active" id="toggleYearly" onclick="setBilling('yearly')">
+                            Yearly <span class="toggle-save">Save 44%</span>
+                        </button>
+                        <button class="toggle-opt" id="toggleMonthly" onclick="setBilling('monthly')">
+                            Monthly
+                        </button>
                     </div>
-                    <p class="plan-price"><sup>₹</sup>1,999</p>
-                    <p class="plan-price-period">per year · ≈ ₹167/mo</p>
+
+                    <p class="plan-price"><sup id="proPriceSup">₹</sup><span id="proPrice">167</span></p>
+                    <p class="plan-price-period" id="proPeriod">per month &nbsp;·&nbsp; ₹1,999 billed yearly</p>
+                    <p class="plan-per-day" id="proPerDay">That's just <strong>₹5.5 a day</strong> — less than a chai ☕</p>
+
                     <ul class="plan-features">
-                        <li>Everything in Pro</li>
-                        <li>Unlimited optimize &amp; cover letters</li>
+                        <li>Unlimited resume optimizations</li>
+                        <li>Unlimited cover letters</li>
                         <li>Unlimited mock interviews</li>
                         <li>LinkedIn import unlimited</li>
-                        <li>Priority processing</li>
-                        <li>Best price — 2 months free</li>
+                        <li>All templates &amp; downloads</li>
+                        <li>Priority AI processing</li>
                     </ul>
-                    <button class="plan-btn plan-btn-primary" onclick="checkout('yearly')">Get Yearly Pro</button>
+                    <button class="plan-btn plan-btn-primary" id="proBtn" onclick="checkoutPro()">Get Yearly Pro</button>
                 </div>
 
             </div><!-- /plan-grid -->
@@ -315,8 +366,8 @@
                         <p class="faq-answer">No. It's a one-time purchase — pay once, get 7 days of Pro, done. No subscription, no charge after that.</p>
                     </article>
                     <article class="faq-item">
-                        <h3 class="faq-question">Can I cancel my monthly / yearly subscription?</h3>
-                        <p class="faq-answer">Yes, any time. Your Pro access continues until the end of the paid period and then reverts to free.</p>
+                        <h3 class="faq-question">What's the difference between monthly and yearly billing?</h3>
+                        <p class="faq-answer">Same Pro features either way. Yearly billing saves you ~44% compared to monthly — you pay once a year at a lower effective monthly rate. You can cancel either plan any time; access continues until the end of the paid period.</p>
                     </article>
                     <article class="faq-item">
                         <h3 class="faq-question">Which payment methods are accepted?</h3>
@@ -346,7 +397,98 @@
         document.getElementById('upgradeBanner').style.display = 'block';
     }
 
-    // ── Checkout (Razorpay only) ──────────────────────────────────────────────
+    // ── Region pricing data ───────────────────────────────────────────────────
+    var PRICING = {
+        india: {
+            sym: '₹', weekly: '149',
+            yearlyPerMonth: '167', yearlyBilled: '₹1,999 billed yearly',
+            monthly: '299',
+            perDayYearly: '₹5.5 a day — less than a chai ☕',
+            perDayMonthly: '₹10 a day — less than a coffee ☕',
+            yearlyLabel: 'per month  ·  ₹1,999 billed yearly',
+            monthlyLabel: 'per month  ·  cancel any time',
+            savePct: '44%',
+        },
+        lic: {
+            sym: '$', weekly: '1.99',
+            yearlyPerMonth: '2.08', yearlyBilled: '$24.99 billed yearly',
+            monthly: '3.99',
+            perDayYearly: '$0.07 a day — less than a chai ☕',
+            perDayMonthly: '$0.13 a day — less than a coffee ☕',
+            yearlyLabel: 'per month  ·  $24.99 billed yearly',
+            monthlyLabel: 'per month  ·  cancel any time',
+            savePct: '44%',
+        },
+        global: {
+            sym: '$', weekly: '4.99',
+            yearlyPerMonth: '5', yearlyBilled: '$59.99 billed yearly',
+            monthly: '7.99',
+            perDayYearly: '$0.16 a day — less than a coffee ☕',
+            perDayMonthly: '$0.27 a day — less than a coffee ☕',
+            yearlyLabel: 'per month  ·  $59.99 billed yearly',
+            monthlyLabel: 'per month  ·  cancel any time',
+            savePct: '44%',
+        },
+    };
+
+    var _proPlan  = 'yearly';
+    var _region   = 'india';
+    var _pricing  = PRICING.india;
+
+    // ── Apply region to all price displays ───────────────────────────────────
+    function applyRegionPricing(region) {
+        _region  = region;
+        _pricing = PRICING[region] || PRICING.india;
+
+        // Weekly card
+        var weeklySup = document.getElementById('weeklySup');
+        var weeklyAmt = document.getElementById('weeklyAmt');
+        if (weeklySup) weeklySup.textContent = _pricing.sym;
+        if (weeklyAmt) weeklyAmt.textContent  = _pricing.weekly;
+
+        // Pro card (re-render current toggle state with new currency)
+        setBilling(_proPlan);
+    }
+
+    // ── Pro billing toggle ────────────────────────────────────────────────────
+    function setBilling(billing) {
+        _proPlan = billing;
+        var sup    = document.getElementById('proPriceSup');
+        var price  = document.getElementById('proPrice');
+        var period = document.getElementById('proPeriod');
+        var perDay = document.getElementById('proPerDay');
+        var btn    = document.getElementById('proBtn');
+        var tY     = document.getElementById('toggleYearly');
+        var tM     = document.getElementById('toggleMonthly');
+        var p      = _pricing;
+        if (billing === 'yearly') {
+            if (sup)    sup.textContent    = p.sym;
+            if (price)  price.textContent  = p.yearlyPerMonth;
+            if (period) period.textContent = p.yearlyLabel;
+            if (perDay) perDay.innerHTML   = "That's just <strong>" + p.perDayYearly + "</strong>";
+            if (btn)    btn.textContent    = 'Get Yearly Pro';
+            tY && tY.classList.add('active');
+            tM && tM.classList.remove('active');
+        } else {
+            if (sup)    sup.textContent    = p.sym;
+            if (price)  price.textContent  = p.monthly;
+            if (period) period.textContent = p.monthlyLabel;
+            if (perDay) perDay.innerHTML   = "That's just <strong>" + p.perDayMonthly + "</strong>";
+            if (btn)    btn.textContent    = 'Get Monthly Pro';
+            tM && tM.classList.add('active');
+            tY && tY.classList.remove('active');
+        }
+    }
+
+    function checkoutPro() { checkout(_proPlan); }
+
+    // ── Fetch region and apply pricing on load ────────────────────────────────
+    fetch('/api/billing/region')
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(d) { if (d && d.region) applyRegionPricing(d.region); })
+        .catch(function() { /* keep default india pricing */ });
+
+    // ── Checkout (Razorpay) ───────────────────────────────────────────────────
     async function checkout(plan) {
         try {
             const endpoint = plan === 'weekly'
@@ -375,10 +517,16 @@
     }
 
     function openRazorpay(plan, data) {
+        const currency = data.currency || 'INR';
+        const labels = {
+            weekly:  '7-Day Pro Pass',
+            monthly: 'Monthly Pro',
+            yearly:  'Yearly Pro',
+        };
         const opts = {
             key: data.key_id,
             name: 'theTailorCV',
-            description: plan === 'weekly' ? '7-Day Pro Pass' : plan === 'monthly' ? 'Monthly Pro' : 'Yearly Pro',
+            description: labels[plan] || 'Pro',
             image: '/static/favicon.png',
             prefill: { name: data.name || '', email: data.email || '' },
             theme: { color: '#2563eb' },
@@ -406,7 +554,7 @@
         if (plan === 'weekly') {
             opts.order_id = data.order_id;
             opts.amount   = data.amount;
-            opts.currency = 'INR';
+            opts.currency = currency;
         } else {
             opts.subscription_id = data.subscription_id;
         }
