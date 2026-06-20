@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Seaborn">
+  <circle cx="16" cy="16" r="14" fill="#ffffff" stroke="#5B7FA6" stroke-width="1.6"/>
+  <g fill="#42679B">
+    <rect x="8" y="17" width="2.4" height="6" rx="0.6"/>
+    <rect x="11.6" y="14" width="2.4" height="9" rx="0.6"/>
+    <rect x="15.2" y="12" width="2.4" height="11" rx="0.6"/>
+    <rect x="18.8" y="15" width="2.4" height="8" rx="0.6"/>
+    <rect x="22.4" y="18" width="2.4" height="5" rx="0.6"/>
+  </g>
+  <path d="M6 12 Q11 8 16 11 T26 10" fill="none" stroke="#7FB0D6" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

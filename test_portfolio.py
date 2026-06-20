@@ -156,12 +156,12 @@ def test_share_url():
     prev = main.PORTFOLIO_SUBDOMAINS_ENABLED
     try:
         main.PORTFOLIO_SUBDOMAINS_ENABLED = False
-        ok &= check("disabled -> /p/<slug>", main._portfolio_share_url(P()).endswith("/p/trisha-ab12"))
+        ok &= check("disabled -> /<slug>", main._portfolio_share_url(P()).endswith("/trisha-ab12") and "/p/" not in main._portfolio_share_url(P()))
         main.PORTFOLIO_SUBDOMAINS_ENABLED = True
         ok &= check("enabled -> subdomain", main._portfolio_share_url(P()) == "https://trisha." + main.PORTFOLIO_DOMAIN)
         class NoHandle:
             handle = None; slug = "x-1"
-        ok &= check("no handle -> /p/<slug> even when enabled", main._portfolio_share_url(NoHandle()).endswith("/p/x-1"))
+        ok &= check("no handle -> /<slug> even when enabled", main._portfolio_share_url(NoHandle()).endswith("/x-1") and "/p/" not in main._portfolio_share_url(NoHandle()))
     finally:
         main.PORTFOLIO_SUBDOMAINS_ENABLED = prev
     return ok
@@ -235,14 +235,16 @@ def test_devicon_slug():
     ok &= check("C# -> csharp", main._devicon_slug("C#") == "csharp")
     ok &= check("AWS alias", main._devicon_slug("Amazon Web Services (AWS)") == "amazonwebservices")
     ok &= check("scikit-learn -> scikitlearn", main._devicon_slug("scikit-learn") == "scikitlearn")
+    ok &= check(".NET Core alias", main._devicon_slug(".NET Core") == "dot-net")
+    ok &= check("SQL alias", main._devicon_slug("SQL") == "azuresqldatabase")
     ok &= check("unknown passthrough", main._devicon_slug("Excel") == "excel")
     return ok
 
 
 def test_themes_registry():
     ok = True
-    expected = {"editor", "nova", "codeflow", "panels", "wave", "bold", "terminal", "console", "monolith", "particle", "clean", "editorial", "vibrant"}
-    ok &= check("13 themes registered", set(main.PORTFOLIO_THEMES) == expected)
+    expected = {"editor", "nova", "codeflow", "panels", "wave", "bold", "terminal", "console", "monolith", "particle", "snowcard", "clean", "editorial", "vibrant"}
+    ok &= check("14 themes registered", set(main.PORTFOLIO_THEMES) == expected)
     ok &= check("default theme valid", main.DEFAULT_PORTFOLIO_THEME in main.PORTFOLIO_THEMES)
     return ok
 

@@ -34,7 +34,7 @@
         {% for item in items %}
         {% set slug = item|deviconslug %}
         <div class="cf-skill">
-            <span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{ slug }}/{{ slug }}-original.svg" alt="" loading="lazy" data-slug="{{ slug }}" onerror="cfIcon(this)"><span class="cf-glyph" aria-hidden="true">&lt;/&gt;</span></span>
+            <span class="ic"><img src="{{ item|skilliconurl }}" alt="" loading="lazy" data-slug="{{ slug }}" onerror="cfIcon(this)"><span class="cf-glyph" aria-hidden="true">&lt;/&gt;</span></span>
             <span class="nm">{{ item }}</span>
         </div>
         {% endfor %}
@@ -112,8 +112,6 @@
                 {% if data.email %}<div class="cf-info"><span class="ic">{{ soc('mail') }}</span><div><div class="lbl">Email</div><div class="val">{{ data.email }}</div></div></div>{% endif %}
                 {% if data.location %}<div class="cf-info"><span class="ic">{{ soc('pin') }}</span><div><div class="lbl">Location</div><div class="val">{{ data.location }}</div></div></div>{% endif %}
                 {% if data.education %}<div class="cf-info"><span class="ic">{{ soc('cap') }}</span><div><div class="lbl">Education</div><div class="val">{{ data.education[0].degree or data.education[0].school }}</div></div></div>{% endif %}
-                {% set core = [] %}{% for g in data.skills %}{% for it in g['items'] %}{% if core|length < 9 %}{% set _ = core.append(it) %}{% endif %}{% endfor %}{% endfor %}
-                {% if core %}<div class="cf-core-title">Core Areas</div><div class="cf-tags">{% for c in core %}<span class="cf-tag">{{ c }}</span>{% endfor %}</div>{% endif %}
             </div>
             <div>
                 {% if data.education %}
@@ -145,8 +143,9 @@
                 <div class="cf-stack-grid">
                     {% for item in g['items'] %}
                     {% set slug = item|deviconslug %}
-                    <div class="cf-stack-item">
-                        <span class="ic"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{ slug }}/{{ slug }}-original.svg" alt="" loading="lazy" data-slug="{{ slug }}" onerror="cfIcon(this)"><span class="cf-glyph" aria-hidden="true">&lt;/&gt;</span></span>
+                    {% set use_icon = item|skillhasicon %}
+                    <div class="cf-stack-item{% if not use_icon %} noicon{% endif %}">
+                        <span class="ic">{% if use_icon %}<img src="{{ item|skilliconurl }}" alt="" loading="lazy" data-slug="{{ slug }}" onerror="cfIcon(this)">{% endif %}<span class="cf-glyph" aria-hidden="true">&lt;/&gt;</span></span>
                         <span class="nm">{{ item }}</span>
                     </div>
                     {% endfor %}
