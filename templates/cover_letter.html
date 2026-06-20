@@ -228,7 +228,7 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=8"></script>
+    <script src="/static/auth_nav.js?v=9"></script>
     <script src="/static/mobile_nav.js"></script>
     <script>
     (function () {
@@ -1695,6 +1695,11 @@ Nice to have:
                 if (res.status === 401) {
                     setStatus('Please log in to generate a cover letter.', 'error');
                     setTimeout(function () { window.location.href = '/login?next=/cover-letter'; }, 1200);
+                    return;
+                }
+                if (res.status === 402) {
+                    showUpgradeModal('cover_letters');
+                    setStatus('');
                     return;
                 }
                 if (!res.ok) throw new Error(res.d.detail || 'Generation failed');

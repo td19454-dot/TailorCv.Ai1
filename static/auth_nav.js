@@ -48,37 +48,53 @@ var FEATURE_LABELS = {
 function showUpgradeModal(feature) {
   if (_upgradeModalOpen) return;
   _upgradeModalOpen = true;
-  var label = FEATURE_LABELS[feature] || "this feature";
+  var modalCopy = {
+    cover_letters: {
+      title: "Your cover letter is ready!",
+      freeUse: "1 free cover letter",
+      message: "Upgrade to Pro to create unlimited cover letters."
+    },
+    interview_questions: {
+      title: "Your interview questions are ready!",
+      freeUse: "1 free interview question set",
+      message: "Upgrade to Pro to generate unlimited interview questions."
+    }
+  };
+  var copy = modalCopy[feature] || {
+    title: "Upgrade to Pro",
+    freeUse: "1 free " + (FEATURE_LABELS[feature] || "use"),
+    message: "Upgrade for unlimited access to all Pro features."
+  };
 
   // Inject modal styles once
   if (!document.getElementById("tc-upgrade-style")) {
     var s = document.createElement("style");
     s.id = "tc-upgrade-style";
     s.textContent = [
-      "#tc-upgrade-overlay{position:fixed;inset:0;z-index:999998;background:rgba(2,8,28,.72);",
-      "backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;",
-      "animation:tcUpFadeIn .22s ease;}",
-      "#tc-upgrade-modal{background:linear-gradient(155deg,#0e1a3a,#091228);",
-      "border:1px solid rgba(56,189,248,.35);border-radius:20px;padding:2rem 2.2rem;",
-      "max-width:420px;width:90%;box-shadow:0 32px 64px rgba(0,6,22,.7),0 0 0 1px rgba(56,189,248,.15);",
-      "position:relative;animation:tcUpSlideUp .28s ease;}",
-      "#tc-upgrade-modal h2{font-size:1.35rem;font-weight:800;color:#f1f8ff;margin:0 0 .6rem;}",
-      "#tc-upgrade-modal p{font-size:.92rem;color:#94a3b8;margin:0 0 1.4rem;line-height:1.55;}",
-      "#tc-upgrade-modal strong{color:#7dd3fc;}",
-      ".tc-up-actions{display:flex;gap:.75rem;flex-wrap:wrap;}",
-      ".tc-up-btn{flex:1;min-width:120px;padding:.65rem 1rem;border-radius:10px;font-size:.9rem;",
-      "font-weight:700;cursor:pointer;border:none;text-align:center;text-decoration:none;",
-      "display:inline-flex;align-items:center;justify-content:center;}",
-      ".tc-up-primary{background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;",
-      "box-shadow:0 4px 14px rgba(37,99,235,.4);}",
-      ".tc-up-primary:hover{opacity:.9;}",
-      ".tc-up-secondary{background:transparent;color:#64748b;border:1px solid rgba(100,116,139,.3);}",
-      ".tc-up-secondary:hover{color:#94a3b8;border-color:rgba(100,116,139,.55);}",
-      ".tc-up-close{position:absolute;top:12px;right:14px;background:none;border:none;",
-      "color:#475569;font-size:20px;cursor:pointer;line-height:1;padding:2px 6px;}",
+      "#tc-upgrade-overlay{position:fixed;inset:0;z-index:999999;background:rgba(2,8,28,.78);",
+      "backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;animation:tcUpFadeIn .22s ease;}",
+      "#tc-upgrade-modal{position:relative;background:linear-gradient(155deg,#0c1730,#071020);",
+      "border:1px solid rgba(56,189,248,.35);border-radius:22px;padding:2.4rem 2.2rem;",
+      "max-width:440px;width:92%;text-align:center;box-shadow:0 40px 80px rgba(0,5,20,.75),",
+      "0 0 0 1px rgba(56,189,248,.12);animation:tcUpSlideUp .3s ease;}",
+      ".tc-up-close{position:absolute;top:12px;right:16px;background:none;border:none;color:#475569;",
+      "font-size:22px;cursor:pointer;line-height:1;padding:2px 6px;}",
       ".tc-up-close:hover{color:#94a3b8;}",
+      ".tc-up-lock{font-size:3rem;margin-bottom:.6rem;line-height:1;}",
+      "#tc-upgrade-modal h2{font-size:1.45rem;font-weight:800;color:#f1f8ff;margin:0 0 .7rem;}",
+      ".tc-up-sub{font-size:.95rem;color:#94a3b8;line-height:1.6;margin:0 0 1.4rem;}",
+      ".tc-up-sub strong{color:#7dd3fc;}",
+      ".tc-up-perks{display:flex;flex-direction:column;gap:.45rem;margin:0 0 1.6rem;text-align:left;}",
+      ".tc-up-perk{font-size:.88rem;color:#cbd5e1;padding-left:1.4rem;position:relative;}",
+      ".tc-up-perk::before{content:'✓';position:absolute;left:0;color:#38bdf8;font-weight:700;}",
+      ".tc-up-primary{display:block;width:100%;padding:.8rem 1rem;border-radius:12px;",
+      "background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;font-size:1rem;font-weight:800;",
+      "text-decoration:none;cursor:pointer;border:none;box-shadow:0 6px 20px rgba(37,99,235,.45);",
+      "transition:opacity .2s,transform .2s;margin-bottom:.85rem;}",
+      ".tc-up-primary:hover{opacity:.9;transform:translateY(-2px);}",
+      ".tc-up-note{font-size:.78rem;color:#475569;margin:0;}",
       "@keyframes tcUpFadeIn{from{opacity:0}to{opacity:1}}",
-      "@keyframes tcUpSlideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}",
+      "@keyframes tcUpSlideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}",
     ].join("");
     document.head.appendChild(s);
   }
@@ -88,13 +104,18 @@ function showUpgradeModal(feature) {
   overlay.innerHTML =
     '<div id="tc-upgrade-modal">' +
       '<button class="tc-up-close" aria-label="Close">&times;</button>' +
-      '<h2>Upgrade to Pro</h2>' +
-      '<p>You\'ve used your <strong>1 free ' + label + '</strong>.<br>' +
-      'Upgrade for unlimited access to all Pro features.</p>' +
-      '<div class="tc-up-actions">' +
-        '<a class="tc-up-btn tc-up-primary" href="/pricing">See Plans &rarr;</a>' +
-        '<button class="tc-up-btn tc-up-secondary" id="tcUpDismiss">Maybe later</button>' +
+      '<div class="tc-up-lock">🔒</div>' +
+      '<h2>' + copy.title + '</h2>' +
+      '<p class="tc-up-sub">You\'ve used your <strong>' + copy.freeUse + '</strong>.<br>' +
+      copy.message + '</p>' +
+      '<div class="tc-up-perks">' +
+        '<div class="tc-up-perk">Unlimited resume downloads</div>' +
+        '<div class="tc-up-perk">Unlimited AI optimizations</div>' +
+        '<div class="tc-up-perk">Unlimited cover letters</div>' +
+        '<div class="tc-up-perk">Mock interviews &amp; LinkedIn import</div>' +
       '</div>' +
+      '<a class="tc-up-primary" href="/pricing">Upgrade to Pro — from ₹149</a>' +
+      '<p class="tc-up-note">Cancel anytime &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Secure payment</p>' +
     '</div>';
   document.body.appendChild(overlay);
 
@@ -103,7 +124,6 @@ function showUpgradeModal(feature) {
     _upgradeModalOpen = false;
   }
   overlay.querySelector(".tc-up-close").addEventListener("click", closeModal);
-  overlay.querySelector("#tcUpDismiss").addEventListener("click", closeModal);
   overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
 }
 
