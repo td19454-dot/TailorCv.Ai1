@@ -42,9 +42,16 @@ html.tcv-app header.navbar + * { padding-top: 16px !important; margin-top: 0 !im
 /* Profile avatar + dropdown menu */
 .tcv-profile { position: relative; }
 .tcv-avatar {
+    position: relative;
     width: 36px; height: 36px; border-radius: 50%; border: none; cursor: pointer;
     background: linear-gradient(135deg, #3392ff, #6d28d9); color: #fff;
     font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center;
+}
+.tcv-pro-badge {
+    position: absolute; top: -5px; right: -7px;
+    background: linear-gradient(135deg, #2563eb, #0ea5e9); color: #fff;
+    font-size: .56rem; font-weight: 800; letter-spacing: .04em;
+    border-radius: 999px; padding: 1px 5px; line-height: 1.5; pointer-events: none;
 }
 .tcv-profile-menu {
     position: absolute; right: 0; top: calc(100% + 12px); min-width: 250px;
@@ -64,6 +71,8 @@ html.tcv-app header.navbar + * { padding-top: 16px !important; margin-top: 0 !im
 .tcv-pf-id small { font-size: .76rem; color: #9fb0cc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 184px; }
 .tcv-pf-link { display: block; padding: 10px 12px; border-radius: 8px; color: #cfe0ff; font-size: .88rem; text-decoration: none; }
 .tcv-pf-link:hover { background: rgba(99, 132, 255, .14); color: #fff; }
+.tcv-pro-label { color: #7dd3fc; font-weight: 700; cursor: default; }
+.tcv-pro-label:hover { background: transparent; color: #7dd3fc; }
 
 /* Slim icon rail (sits below the top bar) */
 .tcv-rail {
