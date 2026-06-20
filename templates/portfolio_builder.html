@@ -428,6 +428,10 @@
                     <button class="pb-btn pb-btn-next" onclick="pbCopyShare()">Copy</button>
                 </div>
                 <a class="pb-btn pb-btn-next" id="pb-view-link" href="#" target="_blank" rel="noopener" style="text-decoration:none;">View my site →</a>
+                <div id="pb-netlify" style="margin-top:22px;">
+                    <button class="pb-btn pb-btn-back" id="pb-netlify-btn" onclick="pbDeployNetlify()">🌐 Also publish a free copy to Netlify</button>
+                    <div class="pb-msg" id="pb-netlify-msg" style="text-align:center;"></div>
+                </div>
             </div>
         </section>
     </main>
@@ -745,6 +749,7 @@
                 const succ = document.getElementById("pb-success"); succ.style.display = "block";
                 $("pb-share-url").value = data.share_url;
                 document.getElementById("pb-view-link").href = data.view_url;
+                state.portfolioId = data.id;
                 try { sessionStorage.removeItem(KEY); } catch (e) {}
             } catch (e) {
                 msg("pb-publish-msg", "Network error. Please try again.", "err");
@@ -753,6 +758,28 @@
         };
         window.pbCopyShare = function () {
             const i = $("pb-share-url"); i.select(); navigator.clipboard.writeText(i.value);
+        };
+        window.pbDeployNetlify = async function () {
+            const btn = document.getElementById("pb-netlify-btn");
+            if (!state.portfolioId) { msg("pb-netlify-msg", "Publish first, then deploy to Netlify.", "err"); return; }
+            btn.disabled = true; btn.innerHTML = '<span class="pb-spinner"></span>Deploying to Netlify…';
+            try {
+                const csrf = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || "";
+                const res = await fetch("/api/portfolio/" + state.portfolioId + "/deploy-netlify", {
+                    method: "POST", headers: { "X-CSRFToken": csrf, "X-Requested-With": "XMLHttpRequest" },
+                });
+                const data = await res.json();
+                if (!res.ok || !data.success) {
+                    msg("pb-netlify-msg", data.error || "Could not deploy to Netlify.", "err");
+                    btn.disabled = false; btn.innerHTML = "🌐 Also publish a free copy to Netlify"; return;
+                }
+                document.getElementById("pb-netlify").innerHTML =
+                    '<div class="pb-msg ok">Live on Netlify 🎉</div>' +
+                    '<a class="pb-btn pb-btn-next" href="' + data.netlify_url + '" target="_blank" rel="noopener" style="text-decoration:none;">' + data.netlify_url + ' →</a>';
+            } catch (e) {
+                msg("pb-netlify-msg", "Network error. Please try again.", "err");
+                btn.disabled = false; btn.innerHTML = "🌐 Also publish a free copy to Netlify";
+            }
         };
 
         // ---- restore on load (after login round-trip) ----

@@ -46,6 +46,9 @@
         }
         .pfh-btn-view { background: linear-gradient(135deg, #3392ff, #4c1d95); color: #fff; }
         .pfh-btn-view:hover { filter: brightness(1.08); }
+        .pfh-btn-netlify { background: #0e3a3a; color: #5eead4; border: 1px solid rgba(94,234,212,.4); }
+        .pfh-btn-netlify:hover { background: #14504e; }
+        .pfh-btn-netlify:disabled { opacity: .6; cursor: progress; }
         .pfh-btn-copy { background: rgba(59,130,246,.16); color: #9cc2ff; border-color: rgba(59,130,246,.3); }
         .pfh-btn-del { background: transparent; color: #ff9a9a; border-color: rgba(239,68,68,.35); }
         .pfh-btn-del:hover { background: rgba(239,68,68,.12); }
@@ -116,8 +119,15 @@
                     <span class="pfh-link" title="{{ p.share_url }}">{{ p.share_url }}</span>
                     <button class="pfh-btn pfh-btn-copy" style="flex:0 0 auto;" onclick="pfhCopy('{{ p.share_url }}')">Copy</button>
                 </div>
+                {% if p.netlify_url %}
+                <div class="pfh-link-row" style="margin-top:6px;">
+                    <span class="pfh-link" title="{{ p.netlify_url }}">🌐 {{ p.netlify_url }}</span>
+                    <a class="pfh-btn pfh-btn-copy" style="flex:0 0 auto;" href="{{ p.netlify_url }}" target="_blank" rel="noopener">Open</a>
+                </div>
+                {% endif %}
                 <div class="pfh-actions">
                     <a class="pfh-btn pfh-btn-view" href="/p/{{ p.slug }}" target="_blank" rel="noopener">View site</a>
+                    <button type="button" class="pfh-btn pfh-btn-netlify" data-id="{{ p.id }}" onclick="pfhNetlify(this)">{{ 'Redeploy to Netlify' if p.netlify_url else 'Deploy to Netlify' }}</button>
                     <form method="post" action="/my-portfolios/{{ p.id }}/delete" style="flex:1;margin:0;"
                           onsubmit="return confirm('Delete this portfolio? The public link will stop working.');">
                         <button type="submit" class="pfh-btn pfh-btn-del" style="width:100%;">Delete</button>
@@ -168,6 +178,25 @@
         function pfhCopy(url) {
             navigator.clipboard.writeText(url).then(() => pfhToast('Link copied!'),
                 () => pfhToast('Copy failed — select and copy manually.'));
+        }
+        async function pfhNetlify(btn) {
+            const id = btn.getAttribute('data-id');
+            const original = btn.innerHTML;
+            btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Deploying…';
+            try {
+                const csrf = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || '';
+                const res = await fetch('/api/portfolio/' + id + '/deploy-netlify', {
+                    method: 'POST', headers: { 'X-CSRFToken': csrf, 'X-Requested-With': 'XMLHttpRequest' },
+                });
+                const data = await res.json();
+                if (!res.ok || !data.success) { pfhToast(data.error || 'Netlify deploy failed.'); btn.disabled = false; btn.innerHTML = original; return; }
+                pfhToast('Deployed to Netlify!');
+                window.open(data.netlify_url, '_blank', 'noopener');
+                setTimeout(() => window.location.reload(), 900);
+            } catch (e) {
+                pfhToast('Network error. Please try again.');
+                btn.disabled = false; btn.innerHTML = original;
+            }
         }
         async function pfhCreate(btn) {
             const resumeId = btn.getAttribute('data-resume-id');

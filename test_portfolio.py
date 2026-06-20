@@ -7,6 +7,7 @@ portfolio render dict. No external services and no API keys required.
 Run:  python test_portfolio.py
 """
 
+import json
 import sys
 import traceback
 
@@ -258,12 +259,38 @@ def test_empty_resume():
     return ok
 
 
+def test_static_bundle():
+    """The Netlify static bundle is self-contained: CSS inlined, no app-relative refs."""
+    ok = True
+
+    class P:
+        slug = "jane-doe"; theme = "github"; tagline = "Builder of things"
+        about = "I build ML pipelines.\n\nAnd web apps."
+        netlify_site_id = None; netlify_url = None
+        data_json = json.dumps({
+            "name": "Jane Doe", "initials": "JD", "headline": "ML Engineer", "email": "j@x.com",
+            "location": "NYC", "photo": None, "socials": [],
+            "skills": [{"group": "Core", "items": ["Python", "Excel"]}],
+            "experience": [], "education": [], "projects": [], "certifications": [],
+            "publications": [], "extracurriculars": [], "hobbies": [],
+            "stats": {"projects": 0, "skills": 2}, "has_cv": False,
+        })
+
+    html = main._build_static_portfolio_html(P())
+    ok &= check("contains name", "Jane Doe" in html)
+    ok &= check("theme CSS inlined", '<link rel="stylesheet" href="/static/portfolio' not in html and "<style>" in html)
+    ok &= check("no relative /static refs", 'href="/static/' not in html and 'src="/static/' not in html)
+    ok &= check("no relative /p/ refs", 'href="/p/' not in html)
+    return ok
+
+
 def main_run():
     tests = [
         test_slugify, test_initials, test_strip_bullets, test_skill_groups,
         test_build_editor_shape, test_build_candidate_shape, test_photo_validator,
         test_handle_helpers, test_share_url, test_social_links_absolute,
         test_new_sections, test_devicon_slug, test_themes_registry, test_empty_resume,
+        test_static_bundle,
     ]
     all_ok = True
     for t in tests:
