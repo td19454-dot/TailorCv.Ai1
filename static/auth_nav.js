@@ -131,7 +131,7 @@ function showUpgradeModal(feature) {
     const proBadge = isPro ? '<span class="tc-nav-probadge">Pro</span>' : '';
     const proSection = isPro
       ? '<span class="tc-nav-link tc-nav-pro-label">Pro ✓</span>'
-        + '<a class="tc-nav-link tc-myresumes-link" href="/pricing">Manage subscription</a>'
+        + '<a class="tc-nav-link tc-myresumes-link" href="/manage-subscription">Manage subscription</a>'
       : '<a class="tc-nav-link tc-myresumes-link" href="/pricing">Upgrade to Pro</a>';
 
     return `<div class="tc-nav-profile" id="profileMenu">
