@@ -154,7 +154,7 @@
         if (isPro) {
             linksDiv.innerHTML =
                 '<span class="tcv-pf-link" style="color:#7dd3fc;font-weight:700;cursor:default;">Pro ✓</span>'
-                + '<a class="tcv-pf-link" href="/pricing">Manage subscription</a>';
+                + '<a class="tcv-pf-link" href="/manage-subscription">Manage subscription</a>';
         } else {
             linksDiv.innerHTML = '<a class="tcv-pf-link" href="/pricing">Upgrade to Pro</a>';
         }
