@@ -120,7 +120,7 @@ function showUpgradeModal(feature) {
     localStorage.removeItem("tailorcv_user");
   }
 
-  function createAuthWidget(user) {
+  function createAuthWidget(user, isPro) {
     if (!user) {
       return `
         <a class="login" href="/login">Login</a>
@@ -129,15 +129,29 @@ function showUpgradeModal(feature) {
 
     const initial = (user.name || user.email || "U").trim().charAt(0).toUpperCase();
     const safeName = user.name || user.email || "User";
+    const proBadge = isPro
+      ? '<span class="tc-pro-badge">PRO</span>'
+      : '';
+    const manageLink = isPro
+      ? `<a class="profile-link tc-myresumes-link" href="/pricing">
+          <span class="tc-pl-ic">⭐</span>
+          <span class="tc-pl-tx"><strong>Pro Plan</strong><small>Manage your subscription</small></span>
+        </a>`
+      : `<a class="profile-link tc-myresumes-link tc-upgrade-link" href="/pricing">
+          <span class="tc-pl-ic">🚀</span>
+          <span class="tc-pl-tx"><strong>Upgrade to Pro</strong><small>Unlock unlimited access</small></span>
+        </a>`;
 
     return `
       <div class="profile-menu" id="profileMenu">
         <button type="button" class="profile-trigger" id="profileTrigger" aria-haspopup="true" aria-expanded="false" title="${safeName}">
           <span class="profile-avatar">${initial}</span>
           <span class="profile-display-name">${safeName}</span>
+          ${proBadge}
         </button>
         <div class="profile-dropdown" id="profileDropdown">
-          <div class="profile-name">${safeName}</div>
+          <div class="profile-name">${safeName}${isPro ? ' <span class="tc-pro-badge">PRO</span>' : ''}</div>
+          ${manageLink}
           <a class="profile-link tc-myresumes-link" href="/dashboard">
             <span class="tc-pl-ic">📊</span>
             <span class="tc-pl-tx"><strong>Dashboard</strong><small>Your job-hunt home base</small></span>
@@ -163,6 +177,15 @@ function showUpgradeModal(feature) {
     const s = document.createElement("style");
     s.id = "tc-auth-style";
     s.textContent = `
+      .tc-pro-badge {
+        display: inline-block; font-size: .62rem; font-weight: 800; letter-spacing: .05em;
+        background: linear-gradient(135deg,#2563eb,#0ea5e9); color: #fff;
+        padding: 2px 6px; border-radius: 5px; vertical-align: middle;
+        line-height: 1.5; margin-left: 5px; }
+      .tc-upgrade-link { border-color: rgba(234,179,8,.35) !important;
+        background: rgba(234,179,8,.08) !important; }
+      .tc-upgrade-link:hover { background: rgba(234,179,8,.16) !important; }
+      .tc-upgrade-link .tc-pl-tx strong { color: #fde68a !important; }
       .profile-dropdown .tc-myresumes-link {
         display: flex; align-items: center; gap: 10px; padding: 9px 10px; margin: 4px 0;
         border-radius: 9px; text-decoration: none; color: inherit;
@@ -233,36 +256,7 @@ function showUpgradeModal(feature) {
     } catch (e) {}
   }
 
-  function initAuthNav() {
-    const slot = document.getElementById("auth-nav-slot");
-    if (!slot) return;
-
-    const user = getStoredUser();
-    slot.innerHTML = createAuthWidget(user);
-
-    // "Get Started" CTA shows only on the marketing pages (home, pricing, blog,
-    // contact, about) and only when logged out — elsewhere (or once signed in)
-    // it's hidden so the navbar isn't cluttered with a stray signup button.
-    const getStartedBtn = document.querySelector(".nav-getstarted");
-    if (getStartedBtn) {
-      const p = window.location.pathname;
-      const onAllowedPage =
-        p === "/" ||
-        p === "/pricing" ||
-        p === "/contact" ||
-        p === "/about" ||
-        p === "/blog" ||
-        p.indexOf("/blog/") === 0;
-      getStartedBtn.style.display = (!user && onAllowedPage) ? "" : "none";
-    }
-
-    if (!user) return;
-
-    injectAuthStyles();
-    showMyResumesHint();
-    const myResumesLink = document.querySelector(".tc-myresumes-link");
-    if (myResumesLink) myResumesLink.addEventListener("click", markHintSeen);
-
+  function wireDropdown() {
     const trigger = document.getElementById("profileTrigger");
     const menu = document.getElementById("profileMenu");
     const logoutBtn = document.getElementById("logoutBtn");
@@ -272,7 +266,6 @@ function showUpgradeModal(feature) {
         const isOpen = menu.classList.toggle("open");
         trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
       });
-
       document.addEventListener("click", function (event) {
         if (!menu.contains(event.target)) {
           menu.classList.remove("open");
@@ -284,16 +277,58 @@ function showUpgradeModal(feature) {
     if (logoutBtn) {
       logoutBtn.addEventListener("click", function () {
         fetch('/logout', {method: 'POST'})
-        .then(() => {
-          clearStoredUser();
-          window.location.href = "/login";
-        })
-        .catch(() => {
-          clearStoredUser();
-          window.location.href = "/login";
-        });
+        .then(() => { clearStoredUser(); window.location.href = "/login"; })
+        .catch(() => { clearStoredUser(); window.location.href = "/login"; });
       });
     }
+  }
+
+  function initAuthNav() {
+    const slot = document.getElementById("auth-nav-slot");
+    if (!slot) return;
+
+    const user = getStoredUser();
+
+    // Render immediately from cache (fast, no flash)
+    slot.innerHTML = createAuthWidget(user, user && user.is_pro);
+
+    // "Get Started" CTA shows only on marketing pages when logged out
+    const getStartedBtn = document.querySelector(".nav-getstarted");
+    if (getStartedBtn) {
+      const p = window.location.pathname;
+      const onAllowedPage =
+        p === "/" || p === "/pricing" || p === "/contact" ||
+        p === "/about" || p === "/blog" || p.indexOf("/blog/") === 0;
+      getStartedBtn.style.display = (!user && onAllowedPage) ? "" : "none";
+    }
+
+    if (!user) return;
+
+    injectAuthStyles();
+    showMyResumesHint();
+    const myResumesLink = document.querySelector(".tc-myresumes-link");
+    if (myResumesLink) myResumesLink.addEventListener("click", markHintSeen);
+    wireDropdown();
+
+    // Fetch live Pro status — re-render if it differs from cache
+    fetch("/api/auth/me", { headers: { "X-Requested-With": "XMLHttpRequest" } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data) return;
+        const cachedPro = !!(user && user.is_pro);
+        const livePro = !!data.is_pro;
+        // Always persist latest data including Pro status
+        const updated = Object.assign({}, user, { is_pro: livePro, pro_until: data.pro_until });
+        try { localStorage.setItem("tailorcv_user", JSON.stringify(updated)); } catch (e) {}
+        if (cachedPro !== livePro) {
+          slot.innerHTML = createAuthWidget(updated, livePro);
+          injectAuthStyles();
+          const link = document.querySelector(".tc-myresumes-link");
+          if (link) link.addEventListener("click", markHintSeen);
+          wireDropdown();
+        }
+      })
+      .catch(function () {});
   }
 
   window.TailorCVAuth = {
