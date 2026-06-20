@@ -14,6 +14,53 @@ from pydantic import BaseModel
 router = APIRouter()
 
 
+def _enforce_linkedin_quota(request: Request):
+    """Login check + lifetime '1 free linkedin import' quota. Raises 401/402 as needed."""
+    from database import SessionLocal
+    from models import User, UsageRecord
+
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+
+    db = SessionLocal()
+    try:
+        user = db.query(User).filter_by(id=user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        # Pro check — bypass quota
+        if user.pro_until and user.pro_until > datetime.utcnow():
+            return
+        # Beta rollout: only gate users in BILLING_BETA_USER_IDS
+        _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
+        if _beta_env:
+            _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()}
+            if user.id not in _beta_ids:
+                return
+        # Lifetime usage sum across all months
+        used = (
+            db.query(func.coalesce(func.sum(UsageRecord.linkedin_imports), 0))
+            .filter(UsageRecord.user_id == user.id)
+            .scalar() or 0
+        )
+        if used >= 1:
+            raise HTTPException(
+                status_code=402,
+                detail={"error": "upgrade_required", "feature": "linkedin_imports"},
+            )
+        # Increment current month's counter
+        month = datetime.utcnow().strftime("%Y-%m")
+        rec = db.query(UsageRecord).filter_by(user_id=user.id, month=month).first()
+        if not rec:
+            rec = UsageRecord(user_id=user.id, month=month)
+            db.add(rec)
+            db.flush()
+        rec.linkedin_imports = (rec.linkedin_imports or 0) + 1
+        db.commit()
+    finally:
+        db.close()
+
+
 class LinkedInParseRequest(BaseModel):
     text: str = ""
 

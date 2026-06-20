@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Refund Policy for TailorCV — learn about our refund eligibility, process, and timelines.">
+    <title>Refund Policy | TailorCV</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .policy-hero {
+            padding: 100px 0 50px;
+            text-align: center;
+            color: white;
+        }
+        .policy-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .policy-hero .effective-date {
+            color: #9fb0cc;
+            font-size: 0.95rem;
+        }
+        .policy-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 22px 80px;
+        }
+        .policy-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(167,139,250,0.15);
+            border-radius: 16px;
+            padding: 48px 52px;
+            margin-bottom: 24px;
+        }
+        .policy-card h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #c4b5fd;
+            margin: 0 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .policy-card h2 .sec-num {
+            background: rgba(167,139,250,0.18);
+            color: #a78bfa;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            flex-shrink: 0;
+        }
+        .policy-card p {
+            color: #9fb0cc;
+            line-height: 1.8;
+            margin: 0 0 14px;
+            font-size: 0.97rem;
+        }
+        .policy-card p:last-child { margin-bottom: 0; }
+        .policy-card ul {
+            color: #9fb0cc;
+            line-height: 1.8;
+            margin: 8px 0 14px 20px;
+            font-size: 0.97rem;
+        }
+        .policy-card ul li { margin-bottom: 6px; }
+        .policy-card a { color: #7db9ff; text-decoration: none; }
+        .policy-card a:hover { text-decoration: underline; }
+        .highlight-box {
+            background: rgba(167,139,250,0.08);
+            border-left: 3px solid #a78bfa;
+            border-radius: 0 8px 8px 0;
+            padding: 14px 18px;
+            margin: 16px 0;
+        }
+        .highlight-box p { margin: 0; color: #c4b5fd; }
+        .refund-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin: 8px 0 14px 0;
+            padding: 0;
+        }
+        .refund-steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding: 14px 16px 14px 56px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            color: #9fb0cc;
+            font-size: 0.97rem;
+            line-height: 1.7;
+        }
+        .refund-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(167,139,250,0.25);
+            color: #a78bfa;
+            font-weight: 700;
+            font-size: 0.85rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (max-width: 600px) {
+            .policy-hero h1 { font-size: 2rem; }
+            .policy-card { padding: 28px 20px; }
+        }
+    </style>
+</head>
+<body>
+    {% include "_nav.html" %}
+
+    <div class="policy-hero">
+        <h1>Refund Policy</h1>
+        <p class="effective-date">Effective Date: May 1, 2026 &nbsp;|&nbsp; Last Updated: May 1, 2026</p>
+    </div>
+
+    <div class="policy-wrap">
+
+        <div class="policy-card">
+            <p>At TailorCV, we want you to be fully satisfied with your subscription. This Refund Policy explains when refunds are available, how to request them, and what to expect after a request is submitted. All purchases are processed through <strong>Paddle</strong>, our merchant of record and authorised payment processor.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><span class="sec-num">01</span> 7-Day Money-Back Guarantee</h2>
+            <div class="highlight-box">
+                <p>All new paid subscriptions are eligible for a full refund if requested within <strong>7 days of the initial purchase date</strong>, no questions asked.</p>
+            </div>
+            <p>This guarantee applies to your first subscription purchase on TailorCV. If you are unhappy with the service for any reason within the first 7 days, contact us and we will issue a full refund to your original payment method.</p>
+            <p>The 7-day guarantee does not apply to:</p>
+            <ul>
+                <li>Subscription renewals (see Section 02).</li>
+                <li>Accounts where we have found a violation of our Terms of Service.</li>
+                <li>Accounts that have already received a refund under this guarantee.</li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2><span class="sec-num">02</span> Subscription Renewals</h2>
+            <p>For recurring subscription renewals (monthly or annual), we generally do not offer refunds once a renewal charge has been processed, as access to the service continues for the full paid period.</p>
+            <p>However, if you believe a renewal was charged in error (e.g., you cancelled before the renewal date and were still charged), please contact us within <strong>14 days</strong> of the charge and we will investigate and resolve the matter promptly, which may include a refund.</p>
+            <p><strong style="color:#dbe6ff;">How to avoid unwanted renewals:</strong> You can cancel your subscription at any time from your account dashboard or by contacting us. Cancellations take effect at the end of the current billing period — you retain access until then.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><span class="sec-num">03</span> Annual Plans</h2>
+            <p>For annual subscriptions:</p>
+            <ul>
+                <li>A full refund is available within the first <strong>7 days</strong> of purchase under our money-back guarantee.</li>
+                <li>After 7 days and within the first <strong>30 days</strong>, you may be eligible for a pro-rated refund for unused months, assessed on a case-by-case basis.</li>
+                <li>After 30 days from purchase, annual plan refunds are issued at our discretion.</li>
+            </ul>
+            <p>To request a refund on an annual plan, please email us at <a href="mailto:td19454@gmail.com">td19454@gmail.com</a> with your account email and order details.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><span class="sec-num">04</span> Non-Refundable Items</h2>
+            <p>The following are not eligible for refunds:</p>
+            <ul>
+                <li>Any one-time add-on credits or features (if applicable) that have already been consumed or used.</li>
+                <li>Subscription periods where the account was suspended or terminated due to a Terms of Service violation.</li>
+                <li>Charges that are more than 60 days old (except where required by applicable consumer protection law).</li>
+                <li>Subscriptions purchased via third-party platforms or promotions, which are subject to that platform's refund policy.</li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2><span class="sec-num">05</span> How to Request a Refund</h2>
+            <p>To request a refund, please follow these steps:</p>
+            <ol class="refund-steps">
+                <li>Email us at <a href="mailto:td19454@gmail.com">td19454@gmail.com</a> with the subject line: <strong>"Refund Request — [Your Account Email]"</strong>.</li>
+                <li>Include your registered account email address, the date of purchase, and the reason for your refund request (optional but helpful).</li>
+                <li>We will review your request and respond within <strong>3 business days</strong>.</li>
+                <li>If approved, the refund will be initiated via Paddle back to your original payment method.</li>
+            </ol>
+            <p>You can also reach us via our <a href="/contact">Contact page</a> if you prefer.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><span class="sec-num">06</span> Refund Processing Timeline</h2>
+            <p>Once a refund is approved and initiated:</p>
+            <ul>
+                <li>Paddle will process the refund within <strong>5–10 business days</strong>.</li>
+                <li>The time for the refund to appear on your statement depends on your bank or card issuer and may take an additional 3–7 business days.</li>
+                <li>We will send you an email confirmation once the refund has been initiated.</li>
+            </ul>
+            <p>Refunds are always returned to the original payment method used at checkout. We cannot transfer refunds to a different card or payment method.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><span class="sec-num">07</span> Cancellations vs. Refunds</h2>
+            <p>Cancelling your subscription and requesting a refund are two separate actions:</p>
+            <ul>
+                <li><strong>Cancellation</strong> stops future billing. You keep access to paid features until the end of your current billing period. No refund is issued automatically on cancellation.</li>
+                <li><strong>Refund</strong> returns money already paid. If you also want to stop future charges, you must cancel your subscription separately.</li>
+            </ul>
+            <p>To cancel your subscription, go to your account dashboard or contact us at <a href="mailto:td19454@gmail.com">td19454@gmail.com</a>.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><span class="sec-num">08</span> Disputes &amp; Chargebacks</h2>
+            <p>We encourage you to contact us directly before initiating a chargeback with your bank or card issuer. We respond quickly to refund requests and prefer to resolve disputes amicably.</p>
+            <p>If a chargeback is initiated without first contacting us, we reserve the right to suspend access to your account pending resolution of the dispute, as required by our payment processor's policies.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><span class="sec-num">09</span> Consumer Rights</h2>
+            <p>Nothing in this Refund Policy limits or excludes any rights you may have under applicable consumer protection laws in your jurisdiction. If you are located in the European Union, United Kingdom, Australia, or another jurisdiction with mandatory consumer rights, those rights apply in addition to this policy.</p>
+            <p>EU consumers have the right to withdraw from a digital service contract within 14 days of purchase without giving a reason, unless the service has already been fully performed with your prior express consent and acknowledgement that you lose your right of withdrawal once performance has commenced.</p>
+        </div>
+
+        <div class="policy-card">
+            <h2><span class="sec-num">10</span> Contact Us</h2>
+            <p>For refund requests, billing questions, or subscription issues, please reach out:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:td19454@gmail.com">td19454@gmail.com</a></li>
+                <li><strong>Response time:</strong> Within 3 business days</li>
+                <li><strong>Website:</strong> <a href="/contact">thetailorcv.com/contact</a></li>
+            </ul>
+            <p>We are committed to making every interaction with TailorCV a positive one. If you are not satisfied, please tell us — we will do our best to make it right.</p>
+        </div>
+
+    </div>
+
+    {% include "_footer.html" %}
+</body>
+</html>
