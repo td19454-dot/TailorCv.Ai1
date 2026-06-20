@@ -227,6 +227,8 @@ resumes_dir = os.path.join(BASE_DIR, "resumes")
 GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "").strip()
 SHOW_OPTIMIZED_EDITOR = os.getenv("SHOW_OPTIMIZED_EDITOR", "false").strip().lower() == "true"
 SITE_URL = os.getenv("SITE_URL", "https://thetailorcv.com").rstrip("/")
+# Netlify Personal Access Token — enables the optional "Deploy to Netlify" button.
+NETLIFY_AUTH_TOKEN = os.getenv("NETLIFY_AUTH_TOKEN", "").strip()
 # Google Search Console verification.
 #   GOOGLE_SITE_VERIFICATION = the token from the "HTML tag" method (renders a
 #     <meta name="google-site-verification"> tag site-wide via _seo_head.html).
@@ -379,6 +381,12 @@ def _ensure_portfolio_columns() -> None:
     if "handle" not in cols:
         with engine.begin() as conn:
             conn.execute(_text("ALTER TABLE portfolios ADD COLUMN handle VARCHAR(63)"))
+    if "netlify_site_id" not in cols:
+        with engine.begin() as conn:
+            conn.execute(_text("ALTER TABLE portfolios ADD COLUMN netlify_site_id VARCHAR(64)"))
+    if "netlify_url" not in cols:
+        with engine.begin() as conn:
+            conn.execute(_text("ALTER TABLE portfolios ADD COLUMN netlify_url VARCHAR(255)"))
 
 
 def _ensure_user_columns() -> None:
@@ -5653,10 +5661,12 @@ async def generate_portfolio(request: Request):
 
         return JSONResponse({
             "success": True,
+            "id": portfolio.id,
             "slug": portfolio.slug,
             "handle": portfolio.handle,
             "share_url": _portfolio_share_url(portfolio),
             "view_url": f"/{portfolio.slug}",
+            "netlify_url": portfolio.netlify_url,
         })
     except Exception:
         logger.exception("Failed to persist portfolio")
@@ -5730,10 +5740,12 @@ async def build_portfolio(request: Request):
         db.refresh(portfolio)
         return JSONResponse({
             "success": True,
+            "id": portfolio.id,
             "slug": portfolio.slug,
             "handle": portfolio.handle,
             "share_url": _portfolio_share_url(portfolio),
             "view_url": f"/{portfolio.slug}",
+            "netlify_url": portfolio.netlify_url,
         })
     except Exception:
         logger.exception("Failed to build portfolio")
@@ -5819,6 +5831,128 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
     })
 
 
+def _build_static_portfolio_html(portfolio) -> str:
+    """Render a portfolio as a single self-contained HTML page for static hosting
+    (Netlify): inline the theme CSS and absolutize app-relative asset / CV links so
+    nothing depends on the app server."""
+    import re as _re
+
+    data = json.loads(portfolio.data_json) if portfolio.data_json else {}
+    for s in data.get("socials") or []:
+        if isinstance(s, dict) and s.get("url"):
+            s["url"] = normalize_url(s["url"]) or s["url"]
+    for p in data.get("projects") or []:
+        if isinstance(p, dict):
+            if p.get("url"):
+                p["url"] = normalize_url(p["url"]) or p["url"]
+            if p.get("github"):
+                p["github"] = normalize_url(p["github"]) or p["github"]
+    for item in (data.get("extracurriculars") or []) + (data.get("publications") or []) + (data.get("certifications") or []):
+        if isinstance(item, dict) and item.get("url"):
+            item["url"] = normalize_url(item["url"]) or item["url"]
+
+    tagline = portfolio.tagline or ""
+    about = portfolio.about or data.get("summary") or ""
+    has_cv = bool(data.get("has_cv"))
+    theme = portfolio.theme or DEFAULT_PORTFOLIO_THEME
+    name = data.get("name") or "Portfolio"
+    og_desc = (tagline or about or f"{name}'s portfolio")[:160]
+    tpl = {
+        "editor": "portfolio_editor.html", "wave": "portfolio_wave.html",
+        "codeflow": "portfolio_codeflow.html", "panels": "portfolio_panels.html",
+        "nova": "portfolio_nova.html", "console": "portfolio_console.html",
+        "monolith": "portfolio_monolith.html", "particle": "portfolio_particle.html",
+        "snowcard": "portfolio_snowcard.html", "github": "portfolio_github.html",
+    }.get(theme, "portfolio_public.html")
+
+    class _FakeURL:
+        def __init__(self, path): self.path = path
+
+    class _FakeReq:
+        def __init__(self, path): self.url = _FakeURL(path)
+
+    page_url = f"{SITE_URL}/{portfolio.slug}"
+    html = templates.get_template(tpl).render(
+        request=_FakeReq(f"/{portfolio.slug}"), data=data, tagline=tagline, about=about,
+        slug=portfolio.slug, has_cv=has_cv, theme=theme, page_url=page_url,
+        seo_og_title=f"{name} | Portfolio", seo_og_description=og_desc, canonical_url=page_url,
+    )
+
+    def _inline_css(m):
+        rel = m.group(1).split("?")[0].lstrip("/")
+        try:
+            with open(os.path.join(BASE_DIR, rel), "r", encoding="utf-8") as f:
+                return "<style>\n" + f.read() + "\n</style>"
+        except OSError:
+            return m.group(0)
+
+    html = _re.sub(r'<link rel="stylesheet" href="(/static/portfolio[^"]+)">', _inline_css, html)
+    html = html.replace('href="/static/', f'href="{SITE_URL}/static/')
+    html = html.replace('src="/static/', f'src="{SITE_URL}/static/')
+    html = html.replace('href="/p/', f'href="{SITE_URL}/p/')
+    return html
+
+
+async def _deploy_portfolio_to_netlify(portfolio):
+    """Create (or reuse) a Netlify site and deploy the static bundle as a zip.
+    Returns (site_id, live_url). Requires NETLIFY_AUTH_TOKEN."""
+    import io
+    import zipfile
+    import httpx
+
+    html = _build_static_portfolio_html(portfolio)
+    headers = {"Authorization": f"Bearer {NETLIFY_AUTH_TOKEN}"}
+    async with httpx.AsyncClient(timeout=60) as client:
+        site_id = portfolio.netlify_site_id
+        site_url = portfolio.netlify_url
+        if not site_id:
+            r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={})
+            r.raise_for_status()
+            site = r.json()
+            site_id = site["id"]
+            site_url = site.get("ssl_url") or site.get("url")
+        buf = io.BytesIO()
+        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+            z.writestr("index.html", html)
+        dr = await client.post(
+            f"https://api.netlify.com/api/v1/sites/{site_id}/deploys",
+            headers={**headers, "Content-Type": "application/zip"},
+            content=buf.getvalue(),
+        )
+        dr.raise_for_status()
+        deploy = dr.json()
+        site_url = site_url or deploy.get("ssl_url") or deploy.get("url")
+    return site_id, site_url
+
+
+@app.post("/api/portfolio/{portfolio_id}/deploy-netlify", include_in_schema=False)
+async def deploy_portfolio_netlify(portfolio_id: int, request: Request):
+    """Owner-only: publish a static copy of the portfolio to Netlify (opt-in)."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return JSONResponse(status_code=401, content={"error": "Not logged in"})
+    if not NETLIFY_AUTH_TOKEN:
+        return JSONResponse(status_code=503, content={"error": "Netlify deploy isn't enabled on this server yet."})
+    db = get_db()
+    try:
+        portfolio = db.query(Portfolio).filter(
+            Portfolio.id == portfolio_id, Portfolio.user_id == user_id
+        ).first()
+        if not portfolio:
+            return JSONResponse(status_code=404, content={"error": "Portfolio not found"})
+        try:
+            site_id, site_url = await _deploy_portfolio_to_netlify(portfolio)
+        except Exception:
+            logger.exception("Netlify deploy failed")
+            return JSONResponse(status_code=502, content={"error": "Netlify deploy failed. Please try again."})
+        portfolio.netlify_site_id = site_id
+        portfolio.netlify_url = site_url
+        db.commit()
+        return JSONResponse({"success": True, "netlify_url": site_url})
+    finally:
+        db.close()
+
+
 @app.get("/p/{slug}", response_class=HTMLResponse, include_in_schema=False)
 async def portfolio_public(request: Request, slug: str):
     """Public, no-login portfolio website (path form, works on any host)."""
@@ -5899,6 +6033,7 @@ async def my_portfolios_page(request: Request):
             "view_count": p.view_count or 0,
             "created_at": p.created_at,
             "share_url": _portfolio_share_url(p),
+            "netlify_url": p.netlify_url or "",
         } for p in portfolios]
         portfolio_resume_ids = {p.resume_id for p in portfolios if p.resume_id}
 
