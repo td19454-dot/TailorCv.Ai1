@@ -242,6 +242,26 @@ async def razorpay_verify(body: RazorpayVerifyRequest, request: Request):
         db.close()
 
 
+@router.post("/api/billing/razorpay/cancel")
+async def razorpay_cancel(request: Request):
+    """Cancel the user's active Razorpay subscription at end of current billing cycle."""
+    client = _require_razorpay()
+    db, user = _get_db_and_user(request)
+    try:
+        if not user.razorpay_subscription_id:
+            raise HTTPException(status_code=400, detail="No active subscription to cancel")
+        sub_id = user.razorpay_subscription_id
+        client.subscription.cancel(sub_id, {"cancel_at_cycle_end": True})
+        user.razorpay_subscription_id = None
+        db.commit()
+        return {
+            "success": True,
+            "access_until": user.pro_until.isoformat() if user.pro_until else None,
+        }
+    finally:
+        db.close()
+
+
 @router.post("/api/billing/razorpay/webhook")
 async def razorpay_webhook(request: Request):
     webhook_secret = os.getenv("RAZORPAY_WEBHOOK_SECRET")
@@ -282,6 +302,15 @@ async def razorpay_webhook(request: Request):
             if user:
                 days = PLAN_DURATIONS.get(plan, 31)
                 _extend_pro(db, user, days, razorpay_subscription_id=sub_id)
+
+        elif event_type == "subscription.cancelled":
+            sub_entity = event.get("payload", {}).get("subscription", {}).get("entity", {})
+            sub_id = sub_entity.get("id")
+            if sub_id:
+                user = db.query(User).filter_by(razorpay_subscription_id=sub_id).first()
+                if user:
+                    user.razorpay_subscription_id = None
+                    db.commit()
 
     except Exception as exc:
         logger.exception("Error processing Razorpay webhook: %s", exc)

@@ -4868,6 +4868,32 @@ async def pricing_page(request: Request):
     )
 
 
+@app.get("/manage-subscription", response_class=HTMLResponse)
+async def manage_subscription_page(request: Request):
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return RedirectResponse("/login?next=/manage-subscription", status_code=302)
+    db = get_db()
+    try:
+        user = db.query(User).filter_by(id=user_id).first()
+        if not user:
+            return RedirectResponse("/login", status_code=302)
+        if not is_pro(user):
+            return RedirectResponse("/pricing", status_code=302)
+        return templates.TemplateResponse(
+            request,
+            "manage_subscription.html",
+            {
+                "request": request,
+                "user": user,
+                "pro_until": user.pro_until,
+                "has_subscription": bool(user.razorpay_subscription_id),
+            },
+        )
+    finally:
+        db.close()
+
+
 @app.get("/blog", response_class=HTMLResponse)
 async def blog_listing_page(
     request: Request,
