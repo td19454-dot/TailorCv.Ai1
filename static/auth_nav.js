@@ -122,48 +122,33 @@ function showUpgradeModal(feature) {
 
   function createAuthWidget(user, isPro) {
     if (!user) {
-      return `
-        <a class="login" href="/login">Login</a>
-      `;
+      return '<a class="login" href="/login">Login</a>';
     }
 
     const initial = (user.name || user.email || "U").trim().charAt(0).toUpperCase();
     const safeName = user.name || user.email || "User";
-    const proBadge = isPro
-      ? '<span class="tc-pro-badge">PRO</span>'
-      : '';
-    const manageLink = isPro
-      ? `<a class="profile-link tc-myresumes-link" href="/pricing">
-          <span class="tc-pl-ic">⭐</span>
-          <span class="tc-pl-tx"><strong>Pro Plan</strong><small>Manage your subscription</small></span>
-        </a>`
-      : `<a class="profile-link tc-myresumes-link tc-upgrade-link" href="/pricing">
-          <span class="tc-pl-ic">🚀</span>
-          <span class="tc-pl-tx"><strong>Upgrade to Pro</strong><small>Unlock unlimited access</small></span>
-        </a>`;
+    const safeEmail = user.email || "";
+    const proBadge = isPro ? '<span class="tc-nav-probadge">Pro</span>' : '';
+    const proSection = isPro
+      ? '<span class="tc-nav-link tc-nav-pro-label">Pro ✓</span>'
+        + '<a class="tc-nav-link tc-myresumes-link" href="/pricing">Manage subscription</a>'
+      : '<a class="tc-nav-link tc-myresumes-link" href="/pricing">Upgrade to Pro</a>';
 
-    return `
-      <div class="profile-menu" id="profileMenu">
-        <button type="button" class="profile-trigger" id="profileTrigger" aria-haspopup="true" aria-expanded="false" title="${safeName}">
-          <span class="profile-avatar">${initial}</span>
-          <span class="profile-display-name">${safeName}</span>
-          ${proBadge}
-        </button>
-        <div class="profile-dropdown" id="profileDropdown">
-          <div class="profile-name">${safeName}${isPro ? ' <span class="tc-pro-badge">PRO</span>' : ''}</div>
-          ${manageLink}
-          <a class="profile-link tc-myresumes-link" href="/dashboard">
-            <span class="tc-pl-ic">📊</span>
-            <span class="tc-pl-tx"><strong>Dashboard</strong><small>Your job-hunt home base</small></span>
-          </a>
-          <a class="profile-link tc-myresumes-link" href="/my-resumes">
-            <span class="tc-pl-ic">📄</span>
-            <span class="tc-pl-tx"><strong>My Resumes</strong><small>Saved resumes &amp; job tracker</small></span>
-          </a>
-          <button type="button" class="profile-logout" id="logoutBtn">Logout</button>
+    return `<div class="tc-nav-profile" id="profileMenu">
+      <button type="button" class="tc-nav-trigger" id="profileTrigger" aria-haspopup="true" aria-expanded="false" title="${safeName}">
+        <span class="tc-nav-avatar">${initial}</span>${proBadge}
+      </button>
+      <div class="tc-nav-dropdown" id="profileDropdown">
+        <div class="tc-nav-head">
+          <span class="tc-nav-hd-av">${initial}</span>
+          <div class="tc-nav-hd-id"><strong>${safeName}</strong><small>${safeEmail}</small></div>
         </div>
+        ${proSection}
+        <a class="tc-nav-link tc-myresumes-link" href="/privacy">Privacy Policy</a>
+        <a class="tc-nav-link tc-myresumes-link" href="/terms">Terms</a>
+        <button type="button" class="tc-nav-logout" id="logoutBtn">Log out</button>
       </div>
-    `;
+    </div>`;
   }
 
   const HINT_SEEN_KEY = "tailorcv_seen_myresumes_hint";
@@ -177,24 +162,47 @@ function showUpgradeModal(feature) {
     const s = document.createElement("style");
     s.id = "tc-auth-style";
     s.textContent = `
-      .tc-pro-badge {
-        display: inline-block; font-size: .62rem; font-weight: 800; letter-spacing: .05em;
+      .tc-nav-profile { position: relative; }
+      .tc-nav-trigger {
+        position: relative; display: inline-flex; align-items: center; justify-content: center;
+        border: none; background: transparent; cursor: pointer; padding: 0; }
+      .tc-nav-avatar {
+        width: 38px; height: 38px; border-radius: 50%;
+        background: linear-gradient(135deg,#3392ff,#6d28d9); color: #fff;
+        font-size: 16px; font-weight: 700;
+        display: inline-flex; align-items: center; justify-content: center; }
+      .tc-nav-probadge {
+        position: absolute; top: -5px; right: -7px;
         background: linear-gradient(135deg,#2563eb,#0ea5e9); color: #fff;
-        padding: 2px 6px; border-radius: 5px; vertical-align: middle;
-        line-height: 1.5; margin-left: 5px; }
-      .tc-upgrade-link { border-color: rgba(234,179,8,.35) !important;
-        background: rgba(234,179,8,.08) !important; }
-      .tc-upgrade-link:hover { background: rgba(234,179,8,.16) !important; }
-      .tc-upgrade-link .tc-pl-tx strong { color: #fde68a !important; }
-      .profile-dropdown .tc-myresumes-link {
-        display: flex; align-items: center; gap: 10px; padding: 9px 10px; margin: 4px 0;
-        border-radius: 9px; text-decoration: none; color: inherit;
-        background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.28); }
-      .profile-dropdown .tc-myresumes-link:hover { background: rgba(59,130,246,.22); }
-      .profile-dropdown .tc-pl-ic { font-size: 18px; line-height: 1; }
-      .profile-dropdown .tc-pl-tx { display: flex; flex-direction: column; line-height: 1.25; }
-      .profile-dropdown .tc-pl-tx strong { font-size: .9rem; color: #eaf1ff; font-weight: 700; }
-      .profile-dropdown .tc-pl-tx small { font-size: .72rem; color: #9fb0cc; }
+        font-size: .56rem; font-weight: 800; letter-spacing: .04em;
+        border-radius: 999px; padding: 1px 5px; line-height: 1.5; pointer-events: none; }
+      .tc-nav-dropdown {
+        position: absolute; right: 0; top: calc(100% + 12px); min-width: 250px;
+        background: #0b1430; border: 1px solid rgba(99,130,200,.3); border-radius: 14px;
+        overflow: hidden; display: none; z-index: 99999;
+        box-shadow: 0 18px 48px rgba(0,0,0,.55); }
+      .tc-nav-profile.open .tc-nav-dropdown { display: block; }
+      .tc-nav-head {
+        display: flex; align-items: center; gap: 10px; padding: 12px 14px 10px;
+        border-bottom: 1px solid rgba(99,130,200,.2); }
+      .tc-nav-hd-av {
+        width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+        background: linear-gradient(135deg,#3392ff,#6d28d9); color: #fff;
+        font-weight: 700; font-size: 15px;
+        display: flex; align-items: center; justify-content: center; }
+      .tc-nav-hd-id { display: flex; flex-direction: column; line-height: 1.3; overflow: hidden; }
+      .tc-nav-hd-id strong { color: #eaf1ff; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .tc-nav-hd-id small { color: #7d93b8; font-size: .75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .tc-nav-link {
+        display: block; padding: 9px 14px; color: #c8d8f0; font-size: .88rem;
+        text-decoration: none; }
+      .tc-nav-link:hover { color: #eaf1ff; background: rgba(99,130,200,.08); }
+      .tc-nav-pro-label { color: #7dd3fc !important; font-weight: 700; cursor: default; }
+      .tc-nav-logout {
+        display: block; width: 100%; text-align: left; padding: 9px 14px;
+        background: none; border: none; border-top: 1px solid rgba(99,130,200,.15);
+        color: #c8d8f0; font-size: .88rem; cursor: pointer; }
+      .tc-nav-logout:hover { color: #eaf1ff; background: rgba(99,130,200,.08); }
       #tc-myresumes-hint {
         position: fixed; top: 80px; right: 18px; z-index: 99998; max-width: 274px;
         background: linear-gradient(160deg,#16203c,#0e1730); border: 1px solid rgba(59,130,246,.55);
@@ -262,7 +270,8 @@ function showUpgradeModal(feature) {
     const logoutBtn = document.getElementById("logoutBtn");
 
     if (trigger && menu) {
-      trigger.addEventListener("click", function () {
+      trigger.addEventListener("click", function (e) {
+        e.stopPropagation();
         const isOpen = menu.classList.toggle("open");
         trigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
       });
