@@ -379,12 +379,59 @@ def _ensure_portfolio_columns() -> None:
             conn.execute(_text("ALTER TABLE portfolios ADD COLUMN handle VARCHAR(63)"))
 
 
+def _ensure_user_columns() -> None:
+    """Add subscription/billing columns to the existing users table if missing."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    insp = _inspect(engine)
+    if not insp.has_table("users"):
+        return
+    cols = {c["name"] for c in insp.get_columns("users")}
+    is_pg = engine.dialect.name != "sqlite"
+    to_add = []
+    if "pro_until" not in cols:
+        to_add.append("ADD COLUMN pro_until TIMESTAMP" if is_pg else "ADD COLUMN pro_until TEXT")
+    if "plan_provider" not in cols:
+        to_add.append("ADD COLUMN plan_provider VARCHAR(20)" if is_pg else "ADD COLUMN plan_provider TEXT")
+    if "razorpay_subscription_id" not in cols:
+        to_add.append("ADD COLUMN razorpay_subscription_id VARCHAR(100)" if is_pg else "ADD COLUMN razorpay_subscription_id TEXT")
+    if to_add:
+        with engine.begin() as conn:
+            for clause in to_add:
+                conn.execute(_text(f"ALTER TABLE users {clause}"))
+
+
+def _ensure_usage_columns() -> None:
+    """Add feature counters to an existing usage_records table if missing."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    insp = _inspect(engine)
+    if not insp.has_table("usage_records"):
+        return
+    cols = {c["name"] for c in insp.get_columns("usage_records")}
+    to_add = []
+    if "mock_interviews" not in cols:
+        to_add.append("ADD COLUMN mock_interviews INTEGER NOT NULL DEFAULT 0")
+    if "interview_questions" not in cols:
+        to_add.append("ADD COLUMN interview_questions INTEGER NOT NULL DEFAULT 0")
+    if "cover_letters" not in cols:
+        to_add.append("ADD COLUMN cover_letters INTEGER NOT NULL DEFAULT 0")
+    if "linkedin_imports" not in cols:
+        to_add.append("ADD COLUMN linkedin_imports INTEGER NOT NULL DEFAULT 0")
+    if to_add:
+        with engine.begin() as conn:
+            for clause in to_add:
+                conn.execute(_text(f"ALTER TABLE usage_records {clause}"))
+
+
 def initialize_database() -> None:
     """Create tables if the configured database is reachable."""
     try:
         Base.metadata.create_all(bind=engine)
         _ensure_saved_resume_columns()
         _ensure_portfolio_columns()
+        _ensure_user_columns()
+        _ensure_usage_columns()
         db_init_status["ok"] = True
         db_init_status["error"] = None
     except Exception as exc:
@@ -406,6 +453,72 @@ def require_logged_in(request: Request) -> None:
     user_id = request.session.get("user_id")
     if not user_id:
         raise HTTPException(status_code=401, detail="Not logged in")
+
+
+# ── Subscription / freemium gating ───────────────────────────────────────────
+
+def is_pro(user) -> bool:
+    """Return True iff the user currently has an active Pro subscription."""
+    return bool(user and user.pro_until and user.pro_until > datetime.utcnow())
+
+
+FREE_LIMITS: dict[str, int] = {
+    "ai_optimizations": 1,
+    "cover_letters": 1,
+    "linkedin_imports": 1,
+    "mock_interviews": 1,
+    "interview_questions": 1,
+    # ats_scans intentionally absent — stays unlimited-free
+}
+
+
+def get_or_create_usage(db: Session, user_id: int, month: str) -> UsageRecord:
+    rec = db.query(UsageRecord).filter_by(user_id=user_id, month=month).first()
+    if not rec:
+        rec = UsageRecord(user_id=user_id, month=month)
+        db.add(rec)
+        db.flush()
+    return rec
+
+
+def enforce_quota(db: Session, user, field: str) -> None:
+    """Raise HTTP 402 if the free user has exhausted their lifetime free use of *field*.
+
+    Pro users bypass this check entirely. For free users, sums usage across all
+    months (lifetime "1 free" rule). Also increments the current month's counter
+    for analytics when the action is allowed.
+    """
+    from sqlalchemy import func as _func
+
+    if is_pro(user):
+        return
+    # Beta rollout: when BILLING_BETA_USER_IDS is set, only those user IDs are gated.
+    # Remove the env var (or leave it empty) to gate everyone.
+    _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
+    if _beta_env:
+        _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()}
+        if user.id not in _beta_ids:
+            return
+    # Serialize quota checks per user so two simultaneous requests cannot both
+    # observe the same remaining free use and bypass the limit.
+    db.query(User).filter(User.id == user.id).with_for_update().one()
+    limit = FREE_LIMITS.get(field, 0)
+    used = (
+        db.query(_func.coalesce(_func.sum(getattr(UsageRecord, field)), 0))
+        .filter(UsageRecord.user_id == user.id)
+        .scalar()
+        or 0
+    )
+    if used >= limit:
+        raise HTTPException(
+            status_code=402,
+            detail={"error": "upgrade_required", "feature": field},
+        )
+    month = datetime.utcnow().strftime("%Y-%m")
+    rec = get_or_create_usage(db, user.id, month)
+    current_value = int(getattr(rec, field) or 0)
+    setattr(rec, field, current_value + 1)
+    db.commit()
 
 
 # Keep at most this many saved resumes per user (newest kept) to bound storage.
@@ -3387,12 +3500,21 @@ async def api_interview_start(payload: dict):
 
 @app.post("/api/interview/start-with-pdf")
 async def api_interview_start_with_pdf(
+    request: Request,
     file: UploadFile = File(...),
     role: str = Form("Software Engineer"),
     interview_type: str = Form("mixed"),
     num_questions: int = Form(8),
     job_desc: str = Form(...),
 ):
+    require_logged_in(request)
+    db = get_db()
+    try:
+        user = db.query(User).filter_by(id=request.session["user_id"]).first()
+        enforce_quota(db, user, "mock_interviews")
+    finally:
+        db.close()
+
     file_path = None
     try:
         if not str(job_desc or "").strip():
@@ -3417,6 +3539,8 @@ async def api_interview_start_with_pdf(
         except Exception:
             pass
         return JSONResponse({"success": True, "question": question, "resume_text": resume_text, "audio_b64": audio_b64})
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
     finally:
@@ -4441,6 +4565,7 @@ async def dashboard_page(request: Request):
             "request": request,
             "user_name": user.name,
             "user_email": user.email,
+            "is_pro_user": is_pro(user),
             "resume_count": len(resumes),
             "recent_resumes": resumes[:5],
             "latest_ats": latest_ats,
@@ -4776,18 +4901,18 @@ _REFUND_BODY = (
 
 
 @app.get("/privacy", response_class=HTMLResponse, include_in_schema=False)
-async def privacy_page():
-    return _render_legal("Privacy Policy", _PRIVACY_BODY)
+async def privacy_page(request: Request):
+    return templates.TemplateResponse(request, "privacy.html", {"request": request})
 
 
 @app.get("/terms", response_class=HTMLResponse, include_in_schema=False)
-async def terms_page():
-    return _render_legal("Terms of Service", _TERMS_BODY)
+async def terms_page(request: Request):
+    return templates.TemplateResponse(request, "terms.html", {"request": request})
 
 
 @app.get("/refund", response_class=HTMLResponse, include_in_schema=False)
-async def refund_page():
-    return _render_legal("Refund Policy", _REFUND_BODY)
+async def refund_page(request: Request):
+    return templates.TemplateResponse(request, "refund.html", {"request": request})
 
 
 @app.get("/api/my-resumes/count", include_in_schema=False)
@@ -5966,6 +6091,32 @@ async def pricing_page(request: Request):
     )
 
 
+@app.get("/manage-subscription", response_class=HTMLResponse)
+async def manage_subscription_page(request: Request):
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return RedirectResponse("/login?next=/manage-subscription", status_code=302)
+    db = get_db()
+    try:
+        user = db.query(User).filter_by(id=user_id).first()
+        if not user:
+            return RedirectResponse("/login", status_code=302)
+        if not is_pro(user):
+            return RedirectResponse("/pricing", status_code=302)
+        return templates.TemplateResponse(
+            request,
+            "manage_subscription.html",
+            {
+                "request": request,
+                "user": user,
+                "pro_until": user.pro_until,
+                "has_subscription": bool(user.razorpay_subscription_id),
+            },
+        )
+    finally:
+        db.close()
+
+
 @app.get("/blog", response_class=HTMLResponse)
 async def blog_listing_page(
     request: Request,
@@ -6403,6 +6554,74 @@ async def logout(request: Request):
     return JSONResponse({"success": True})
 
 
+@app.get("/api/auth/me", include_in_schema=False)
+async def auth_me(request: Request):
+    """Returns current user's identity and Pro subscription status for the app shell."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter_by(id=user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        return {
+            "user_id": user.id,
+            "name": user.name,
+            "email": user.email,
+            "is_pro": is_pro(user),
+            "pro_until": user.pro_until.isoformat() if user.pro_until else None,
+            "plan_provider": user.plan_provider,
+        }
+    finally:
+        db.close()
+
+
+@app.post("/api/billing/checkout-download", include_in_schema=False)
+async def checkout_download(request: Request):
+    """Atomically gate and record a resume download in one transaction.
+
+    Pro users: always allowed, counter untouched.
+    Free users with quota remaining: counter incremented HERE before 200 is returned,
+      so the frontend is guaranteed the slot is consumed before the download starts.
+    Free users with quota exhausted: 402 returned, frontend shows upgrade popup.
+    """
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter_by(id=user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if is_pro(user):
+            return JSONResponse({"allowed": True, "is_pro": True})
+        _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
+        if _beta_env:
+            _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()}
+            if user.id not in _beta_ids:
+                return JSONResponse({"allowed": True, "is_pro": False})
+        from sqlalchemy import func as _func
+        used = (
+            db.query(_func.coalesce(_func.sum(UsageRecord.ai_optimizations), 0))
+            .filter(UsageRecord.user_id == user.id)
+            .scalar() or 0
+        )
+        limit = FREE_LIMITS.get("ai_optimizations", 1)
+        if used >= limit:
+            return JSONResponse(
+                status_code=402,
+                content={"allowed": False, "error": "upgrade_required", "feature": "ai_optimizations"},
+            )
+        month = datetime.utcnow().strftime("%Y-%m")
+        rec = get_or_create_usage(db, user.id, month)
+        rec.ai_optimizations = (rec.ai_optimizations or 0) + 1
+        db.commit()
+        return JSONResponse({"allowed": True, "is_pro": False})
+    finally:
+        db.close()
+
+
 @app.post("/api/login/verify")
 async def verify_login_code(request: Request):
     try:
@@ -6519,7 +6738,7 @@ async def upload_resume(
     user_id = request.session.get('user_id')
     if not user_id:
         return JSONResponse(status_code=401, content={"error": "Not logged in"})
-    
+
     file_path = None
     pdf_path = None
     response = None

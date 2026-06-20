@@ -984,11 +984,6 @@ async function handleResumeOptimization() {
                 sessionStorage.removeItem("tailorcv_current_resume_id");
             } catch (e) {}
             displayOptimizeResults(null, true);
-            try {
-                await downloadPdfFromEditorPayload();
-            } catch (error) {
-                console.warn('Auto-download failed after optimization:', error);
-            }
             return;
         }
 
@@ -996,7 +991,6 @@ async function handleResumeOptimization() {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         displayOptimizeResults(url, false);
-        triggerPdfDownload(url, 'optimized_resume.pdf');
 
     } catch (error) {
         clearTimeout(optSlowTimer);
