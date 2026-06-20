@@ -7,7 +7,7 @@
     <meta name="description" content="{{ seo_og_description }}">
     <title>{{ data.name }}{% if data.headline %} - {{ data.headline }}{% endif %} | Portfolio</title>
     {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/portfolio_console.css?v=4">
+    <link rel="stylesheet" href="/static/portfolio_console.css?v=5">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
 {%- endmacro %}
 
 <header class="cs-top">
-    <a class="cs-brand" href="#home"><span>{{ data.headline or "Web Developer" }}</span></a>
+    <a class="cs-brand" href="#home"><span class="cs-logo">&lt;/&gt;</span><span>{{ data.headline or "Web Developer" }}</span></a>
     <nav class="cs-nav">
         {% if data.skills %}<a href="#skills">Skills</a>{% endif %}
         {% if data.projects %}<a href="#projects">Projects</a>{% endif %}
