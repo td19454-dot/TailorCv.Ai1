@@ -7,7 +7,7 @@
     <meta name="description" content="{{ seo_og_description }}">
     <title>{{ data.name }}{% if data.headline %} - {{ data.headline }}{% endif %} | Portfolio</title>
     {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/portfolio_snowcard.css?v=1">
+    <link rel="stylesheet" href="/static/portfolio_snowcard.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -44,7 +44,15 @@
     {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>{% endif %}
 {%- endmacro %}
 
-<button class="sc-mode" aria-label="Theme toggle">☼</button>
+<button class="sc-mode" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+    <svg class="sc-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"></path>
+    </svg>
+    <svg class="sc-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.2 14.6A7.6 7.6 0 0 1 9.4 3.8 8.8 8.8 0 1 0 20.2 14.6Z"></path>
+    </svg>
+</button>
 <main class="sc-page">
     <div class="sc-date" id="sc-date">Portfolio</div>
     <section class="sc-hero" id="top">
@@ -68,6 +76,7 @@
         {% if data.certifications %}<a href="#certifications">Certifications</a>{% endif %}
         {% if data.extracurriculars %}<a href="#activities">Activities</a>{% endif %}
         {% if data.publications %}<a href="#publications">Publications</a>{% endif %}
+        {% if data.email or data.socials %}<a href="#contact">Contact</a>{% endif %}
     </nav>
 
     {% if about %}
@@ -84,6 +93,10 @@
 
     {% if data.experience %}
     <section class="sc-stack" id="experience">
+        <div class="sc-section-head">
+            <h2>Experience</h2>
+            <div class="sc-rule green"></div>
+        </div>
         {% for e in data.experience %}
         <article class="sc-exp">
             <div class="sc-exp-top">
@@ -98,29 +111,53 @@
 
     {% if data.skills %}
     <section class="sc-skills" id="skills">
-        {% if core %}
-        <h2>Core Technologies</h2>
-        <div class="sc-rule yellow"></div>
-        <div class="sc-chipgrid">{% for item in core %}<span>{{ icon(item) }} {{ item }}</span>{% endfor %}</div>
-        {% endif %}
-        {% if tools %}
-        <h2>Development Tools</h2>
-        <div class="sc-rule green"></div>
-        <div class="sc-chipgrid">{% for item in tools %}<span>{{ icon(item) }} {{ item }}</span>{% endfor %}</div>
-        {% endif %}
+        <div class="sc-section-head">
+            <h2>Skills</h2>
+            <div class="sc-rule yellow"></div>
+        </div>
+        <div class="sc-chipgrid sc-all-skills">
+            {% for g in data.skills %}
+                {% for item in g['items'] %}
+                <span>{{ icon(item) }} {{ item }}</span>
+                {% endfor %}
+            {% endfor %}
+        </div>
     </section>
     {% endif %}
 
     {% if data.projects %}
-    <section class="sc-projects" id="projects">
-        <h2>Projects</h2>
-        <div class="sc-project-grid">
+    <section class="sc-projects sc-project-showcase" id="projects">
+        <div class="sc-section-head">
+            <h2>Projects</h2>
+            <div class="sc-rule green"></div>
+        </div>
+        <div class="sc-showcase-list">
             {% for p in data.projects %}
-            <article class="sc-project">
-                <h3>{{ p.name }}</h3>
-                {% if p.subtitle %}<p class="sc-muted">{{ p.subtitle }}</p>{% endif %}
-                {% if p.bullets %}<p>{{ p.bullets|join(' ') }}</p>{% endif %}
-                <div>{% if p.github %}<a href="{{ p.github }}" target="_blank" rel="noopener">Code {{ ext() }}</a>{% endif %}{% if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener">Live {{ ext() }}</a>{% endif %}</div>
+            <article class="sc-showcase">
+                <div class="sc-showcase-shot">
+                    {% if p.image %}
+                    <img src="{{ p.image }}" alt="{{ p.name }}" loading="lazy">
+                    {% else %}
+                    <span>{{ p.name[0]|upper if p.name else '*' }}</span>
+                    {% endif %}
+                </div>
+                <div class="sc-showcase-info">
+                    <h3>
+                        {{ p.name }}
+                        {% if p.url or p.github %}<a href="{{ p.url or p.github }}" target="_blank" rel="noopener">Check out {{ ext() }}</a>{% endif %}
+                    </h3>
+                    {% if p.subtitle %}<p class="sc-muted">{{ p.subtitle }}</p>{% endif %}
+                    {% if p.bullets %}<ul>{% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                    {% if p.subtitle %}
+                    <div class="sc-project-tags">
+                        {% for t in p.subtitle.split(',') %}{% if t.strip() %}<span>{{ t.strip() }}</span>{% endif %}{% endfor %}
+                    </div>
+                    {% endif %}
+                    <div class="sc-project-links">
+                        {% if p.github %}<a href="{{ p.github }}" target="_blank" rel="noopener">Code {{ ext() }}</a>{% endif %}
+                        {% if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener">Live {{ ext() }}</a>{% endif %}
+                    </div>
+                </div>
             </article>
             {% endfor %}
         </div>
@@ -144,6 +181,10 @@
 
     {% if data.extracurriculars %}
     <section class="sc-stack" id="activities">
+        <div class="sc-section-head">
+            <h2>Extracurriculars</h2>
+            <div class="sc-rule yellow"></div>
+        </div>
         {% for x in data.extracurriculars %}
         <article class="sc-exp">
             <div class="sc-exp-top">
@@ -178,12 +219,65 @@
         <div class="sc-chipgrid">{% for h in data.hobbies %}<span>{{ h }}</span>{% endfor %}</div>
     </section>
     {% endif %}
+
+    {% if data.email or data.socials %}
+    <section class="sc-contact" id="contact">
+        <div class="sc-section-head">
+            <h2>Contact</h2>
+            <div class="sc-rule green"></div>
+        </div>
+        <p class="sc-contact-lead">Let's connect for roles, collaborations, or a quick conversation about building good work.</p>
+        <div class="sc-contact-grid">
+            {% if data.email %}
+            <article class="sc-contact-card">
+                <span class="sc-contact-icon">{{ social('mail') }}</span>
+                <h3>Email</h3>
+                <p>{{ data.email }}</p>
+                <a href="mailto:{{ data.email }}">Send Email</a>
+            </article>
+            {% endif %}
+            {% for s in data.socials %}
+            <article class="sc-contact-card">
+                <span class="sc-contact-icon">{{ social(s.icon) }}</span>
+                <h3>{{ s.label }}</h3>
+                <p>{% if s.icon == 'linkedin' %}Connect for opportunities{% elif s.icon == 'github' %}Explore my code{% else %}Find me here{% endif %}</p>
+                <a href="{{ s.url }}" target="_blank" rel="noopener">Visit {{ s.label }}</a>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
 </main>
 
 <script>
 (function () {
     var el = document.getElementById('sc-date');
     if (el) el.textContent = new Date().toLocaleString(undefined, { weekday:'short', year:'numeric', month:'short', day:'2-digit', hour:'2-digit', minute:'2-digit' });
+})();
+(function () {
+    var key = 'snowcard-theme';
+    var btn = document.querySelector('.sc-mode');
+    var root = document.body;
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var saved = localStorage.getItem(key);
+
+    function apply(mode) {
+        var isDark = mode === 'dark';
+        root.classList.toggle('sc-dark', isDark);
+        if (btn) {
+            btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+            btn.setAttribute('aria-label', isDark ? 'Switch to day mode' : 'Switch to dark mode');
+        }
+    }
+
+    apply(saved || (prefersDark ? 'dark' : 'light'));
+    if (btn) {
+        btn.addEventListener('click', function () {
+            var next = root.classList.contains('sc-dark') ? 'light' : 'dark';
+            localStorage.setItem(key, next);
+            apply(next);
+        });
+    }
 })();
 function scIcon(img) {
     var slug = img.getAttribute('data-slug');
