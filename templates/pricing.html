@@ -255,7 +255,7 @@
                         <p class="plan-name">Free</p>
                         <p class="plan-tagline">Always free, no card needed</p>
                     </div>
-                    <p class="plan-price"><sup>₹</sup>0</p>
+                    <p class="plan-price"><sup id="freePriceSup">₹</sup>0</p>
                     <p class="plan-price-period">forever</p>
                     <ul class="plan-features">
                         <li>ATS score — <strong>unlimited</strong></li>
@@ -439,6 +439,10 @@
     function applyRegionPricing(region) {
         _region  = region;
         _pricing = PRICING[region] || PRICING.india;
+
+        // Free card
+        var freeSup = document.getElementById('freePriceSup');
+        if (freeSup) freeSup.textContent = _pricing.sym;
 
         // Weekly card
         var weeklySup = document.getElementById('weeklySup');
