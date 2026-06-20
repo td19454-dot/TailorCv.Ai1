@@ -42,3 +42,6 @@ posthog
 
 # Error tracking
 sentry-sdk[fastapi]>=2.0.0
+
+# Payments
+razorpay>=1.4.0
