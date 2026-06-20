@@ -128,6 +128,15 @@
         .prev-snowcard .mini-lines { left:20px; bottom:64px; z-index:1; }
         .prev-snowcard .mini-lines span:nth-child(1){width:108px;height:14px;background:#000;border-radius:2px;}
         .prev-snowcard .mini-lines span:nth-child(2){width:78px;background:#222;border-radius:2px;}
+        /* github — dark profile + contribution graph */
+        .prev-github { background:#0d1117; position:relative; overflow:hidden; }
+        .prev-github::before { content:""; position:absolute; left:14px; top:18px; width:34px; height:34px; border-radius:50%; background:#21262d; border:1px solid #30363d; }
+        .prev-github::after { content:""; position:absolute; left:14px; right:14px; bottom:16px; height:24px;
+            background-image:radial-gradient(#39d353 42%,transparent 44%); background-size:9px 9px; opacity:.85; }
+        .prev-github .mini-avatar { display:none; }
+        .prev-github .mini-lines { left:56px; top:20px; bottom:auto; }
+        .prev-github .mini-lines span:nth-child(1){width:90px;background:#e6edf3;}
+        .prev-github .mini-lines span:nth-child(2){width:60px;background:#2f81f7;}
         /* clean — light, violet */
         .prev-clean { background:#f4f4f0; }
         .prev-clean .mini-avatar { border-radius:18px; background:#fff; border:1px solid rgba(0,0,0,.1); color:#6d28d9; box-shadow:0 8px 18px -10px rgba(0,0,0,.4); }

@@ -1,0 +1,167 @@
+/* ===========================================================================
+   Portfolio "GitHub" theme — a GitHub-profile recreation: dark UI, profile
+   sidebar, README card, pinned repo cards, contribution graph, language chips.
+   Original CSS recreation; data-driven.
+   =========================================================================== */
+:root {
+    --gh-bg: #0d1117;
+    --gh-surface: #161b22;
+    --gh-surface-2: #21262d;
+    --gh-border: #30363d;
+    --gh-ink: #e6edf3;
+    --gh-dim: #8b949e;
+    --gh-link: #2f81f7;
+    --gh-green: #2ea043;
+    --gh-green-btn: #238636;
+    --gh-radius: 12px;
+    --gh-max: 1180px;
+    --gh-font: 'Inter', -apple-system, system-ui, sans-serif;
+    --gh-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body { margin: 0; background: var(--gh-bg); color: var(--gh-ink); font-family: var(--gh-font); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+
+/* ---- top bar ---- */
+.gh-top { position: sticky; top: 0; z-index: 40; background: var(--gh-surface); border-bottom: 1px solid var(--gh-border); }
+.gh-top-in { max-width: var(--gh-max); margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 16px; }
+.gh-mark svg { width: 32px; height: 32px; color: var(--gh-ink); display: block; }
+.gh-search { flex: 0 1 320px; background: var(--gh-bg); border: 1px solid var(--gh-border); border-radius: 7px; color: var(--gh-dim); font-size: .82rem; padding: 6px 12px; }
+.gh-top-nav { margin-left: auto; display: flex; gap: 18px; }
+.gh-top-nav a { color: var(--gh-ink); font-size: .88rem; font-weight: 600; padding: 6px 0; border-bottom: 2px solid transparent; }
+.gh-top-nav a:hover { color: var(--gh-dim); }
+
+/* ---- page grid ---- */
+.gh-page { max-width: var(--gh-max); margin: 0 auto; padding: 26px 24px 60px; display: grid; grid-template-columns: 296px 1fr; gap: 32px; }
+
+/* ---- profile sidebar ---- */
+.gh-side { position: sticky; top: 86px; align-self: start; }
+.gh-avatar { width: 200px; max-width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 1px solid var(--gh-border); background: var(--gh-surface-2); margin-bottom: 16px; }
+.gh-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.gh-avatar span { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; font-weight: 800; color: var(--gh-dim); }
+.gh-name { font-size: 1.6rem; font-weight: 700; margin: 0; line-height: 1.2; }
+.gh-login { color: var(--gh-dim); font-size: 1.25rem; font-weight: 300; margin-bottom: 14px; }
+.gh-headline { color: var(--gh-ink); font-size: 1rem; margin-bottom: 14px; }
+.gh-side-actions { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.gh-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 8px 14px; border: 1px solid var(--gh-border); border-radius: 7px; background: var(--gh-surface-2); color: var(--gh-ink); font-size: .85rem; font-weight: 600; cursor: pointer; transition: background .15s, border-color .15s; }
+.gh-btn:hover { background: #30363d; border-color: #8b949e; }
+.gh-btn-primary { background: var(--gh-green-btn); border-color: rgba(240,246,252,.1); color: #fff; }
+.gh-btn-primary:hover { background: var(--gh-green); }
+.gh-btn svg { width: 16px; height: 16px; }
+.gh-bio { color: var(--gh-ink); font-size: .92rem; margin: 0 0 14px; }
+.gh-followers { color: var(--gh-dim); font-size: .85rem; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+.gh-followers svg { width: 16px; height: 16px; }
+.gh-followers strong { color: var(--gh-ink); }
+.gh-meta { list-style: none; margin: 0; padding: 16px 0 0; border-top: 1px solid var(--gh-border); display: flex; flex-direction: column; gap: 9px; }
+.gh-meta li { display: flex; align-items: center; gap: 9px; color: var(--gh-dim); font-size: .9rem; }
+.gh-meta li svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--gh-dim); }
+.gh-meta a { color: var(--gh-ink); }
+.gh-meta a:hover { color: var(--gh-link); }
+
+/* ---- main column ---- */
+.gh-tabs { display: flex; gap: 8px; border-bottom: 1px solid var(--gh-border); margin-bottom: 24px; overflow-x: auto; }
+.gh-tab { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; color: var(--gh-ink); font-size: .9rem; font-weight: 500; border-bottom: 2px solid transparent; white-space: nowrap; }
+.gh-tab svg { width: 16px; height: 16px; color: var(--gh-dim); }
+.gh-tab.on { font-weight: 600; border-bottom-color: #f78166; }
+.gh-count { background: var(--gh-surface-2); border-radius: 20px; padding: 1px 8px; font-size: .75rem; color: var(--gh-dim); }
+
+.gh-h3 { font-size: 1rem; font-weight: 600; color: var(--gh-ink); margin: 30px 0 14px; }
+
+/* README card */
+.gh-readme { border: 1px solid var(--gh-border); border-radius: var(--gh-radius); overflow: hidden; }
+.gh-readme-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--gh-surface); border-bottom: 1px solid var(--gh-border); }
+.gh-file { display: inline-flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--gh-ink); font-weight: 600; }
+.gh-file svg { width: 16px; height: 16px; color: var(--gh-dim); }
+.gh-pub { font-size: .72rem; color: var(--gh-dim); border: 1px solid var(--gh-border); border-radius: 20px; padding: 1px 8px; }
+.gh-pub.sm { font-size: .68rem; }
+.gh-readme-body { padding: 26px 28px; }
+.gh-readme-body h2 { margin: 0 0 6px; font-size: 1.5rem; }
+.gh-readme-sub { color: var(--gh-link); font-weight: 600; margin: 0 0 16px; }
+.gh-readme-body p { color: var(--gh-dim); margin: 0 0 12px; }
+
+/* pinned repo cards */
+.gh-pins { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(330px,100%),1fr)); gap: 16px; }
+.gh-pin { border: 1px solid var(--gh-border); border-radius: var(--gh-radius); padding: 16px; background: var(--gh-surface); display: flex; flex-direction: column; transition: border-color .15s; }
+.gh-pin:hover { border-color: #8b949e; }
+.gh-pin-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.gh-repo-ic svg { width: 16px; height: 16px; color: var(--gh-dim); display: block; }
+.gh-repo-name { color: var(--gh-link); font-weight: 600; font-size: .95rem; }
+.gh-repo-name:hover { text-decoration: underline; }
+.gh-pin-desc { color: var(--gh-dim); font-size: .85rem; margin: 0 0 16px; flex: 1; }
+.gh-pin-foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.gh-lang { display: inline-flex; align-items: center; gap: 6px; font-size: .8rem; color: var(--gh-dim); }
+.gh-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--d, #f1e05a); }
+.gh-pin-link { display: inline-flex; align-items: center; gap: 5px; font-size: .8rem; color: var(--gh-dim); }
+.gh-pin-link:hover { color: var(--gh-link); }
+.gh-pin-link svg { width: 14px; height: 14px; }
+
+/* contribution graph */
+.gh-contrib { border: 1px solid var(--gh-border); border-radius: var(--gh-radius); padding: 18px 20px; margin-top: 30px; }
+.gh-contrib .gh-h3 { margin: 0 0 14px; }
+.gh-graph-wrap { overflow-x: auto; padding-bottom: 6px; }
+.gh-graph { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 11px); grid-auto-columns: 11px; gap: 3px; min-width: max-content; }
+.gh-cell { width: 11px; height: 11px; border-radius: 2px; background: #161b22; outline: 1px solid rgba(255,255,255,.02); }
+.gh-cell.l1 { background: #0e4429; } .gh-cell.l2 { background: #006d32; }
+.gh-cell.l3 { background: #26a641; } .gh-cell.l4 { background: #39d353; }
+.gh-legend { display: flex; align-items: center; justify-content: flex-end; gap: 4px; margin-top: 10px; color: var(--gh-dim); font-size: .72rem; }
+.gh-lc { width: 11px; height: 11px; border-radius: 2px; }
+.gh-lc.l0 { background: #161b22; outline: 1px solid var(--gh-border); }
+.gh-lc.l1 { background: #0e4429; } .gh-lc.l2 { background: #006d32; }
+.gh-lc.l3 { background: #26a641; } .gh-lc.l4 { background: #39d353; }
+
+/* language / interest chips */
+.gh-langs { display: flex; flex-wrap: wrap; gap: 9px; }
+.gh-lang-chip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px; border: 1px solid var(--gh-border); border-radius: 20px; background: var(--gh-surface); font-size: .85rem; color: var(--gh-ink); }
+.gh-lang-chip img { width: 17px; height: 17px; }
+
+/* experience timeline */
+.gh-timeline { position: relative; padding-left: 8px; }
+.gh-tl { position: relative; display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding-bottom: 18px; }
+.gh-tl::before { content: ""; position: absolute; left: 16px; top: 30px; bottom: 0; width: 2px; background: var(--gh-border); }
+.gh-tl:last-child::before { display: none; }
+.gh-tl-node { width: 34px; height: 34px; border-radius: 50%; background: var(--gh-surface-2); border: 1px solid var(--gh-border); display: flex; align-items: center; justify-content: center; color: var(--gh-dim); z-index: 1; }
+.gh-tl-node svg { width: 16px; height: 16px; }
+.gh-tl-card { border: 1px solid var(--gh-border); border-radius: var(--gh-radius); padding: 16px 18px; background: var(--gh-surface); }
+.gh-tl-card h4 { margin: 0 0 4px; font-size: 1rem; }
+.gh-at { color: var(--gh-link); font-weight: 600; }
+.gh-tl-meta { color: var(--gh-dim); font-size: .82rem; margin-bottom: 10px; font-family: var(--gh-mono); }
+.gh-tl-card ul { margin: 0; padding-left: 18px; }
+.gh-tl-card li { color: var(--gh-dim); font-size: .9rem; margin-bottom: 5px; }
+
+/* generic cards (edu / certs / pubs / activity) */
+.gh-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px,100%),1fr)); gap: 14px; }
+.gh-card { border: 1px solid var(--gh-border); border-radius: var(--gh-radius); padding: 16px 18px; background: var(--gh-surface); }
+.gh-card h4 { margin: 0 0 6px; font-size: .98rem; display: flex; align-items: center; gap: 7px; }
+.gh-card h4 svg { width: 15px; height: 15px; color: var(--gh-dim); flex-shrink: 0; }
+.gh-card-sub { color: var(--gh-ink); font-size: .86rem; }
+.gh-card-meta { color: var(--gh-dim); font-size: .82rem; margin-top: 5px; font-family: var(--gh-mono); }
+.gh-card-desc { color: var(--gh-dim); font-size: .86rem; margin: 8px 0 0; }
+.gh-card-link { color: var(--gh-link); font-size: .84rem; font-weight: 600; display: inline-block; margin-top: 10px; }
+.gh-card-link:hover { text-decoration: underline; }
+
+/* contact */
+.gh-contact { margin-top: 30px; }
+.gh-contact-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.gh-contact-row .gh-btn { width: auto; }
+
+/* footer */
+.gh-footer { border-top: 1px solid var(--gh-border); padding: 28px 24px; text-align: center; color: var(--gh-dim); font-size: .82rem; }
+.gh-footer a { color: var(--gh-link); }
+
+/* responsive */
+@media (max-width: 900px) {
+    .gh-page { grid-template-columns: 1fr; gap: 24px; }
+    .gh-side { position: static; display: grid; grid-template-columns: 110px 1fr; gap: 6px 20px; align-items: start; }
+    .gh-avatar { width: 110px; grid-row: span 2; }
+    .gh-meta, .gh-side-actions, .gh-bio, .gh-followers { grid-column: 1 / -1; }
+    .gh-top-nav { display: none; }
+}
+@media (max-width: 520px) {
+    .gh-page { padding: 18px 14px 50px; }
+    .gh-side { grid-template-columns: 1fr; }
+    .gh-avatar { width: 150px; margin: 0 auto 12px; grid-row: auto; }
+    .gh-name, .gh-login { text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
