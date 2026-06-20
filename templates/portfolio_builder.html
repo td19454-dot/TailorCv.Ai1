@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/static/header-footer.css">
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         .pb { max-width: 980px; margin: 0 auto; padding: 40px 20px 90px; font-family: 'Inter', system-ui, sans-serif; color: #eaf1ff; }
         .pb-head { text-align: center; margin-bottom: 26px; }
@@ -120,6 +120,14 @@
         .prev-particle .mini-lines { left:18px; bottom:22px; }
         .prev-particle .mini-lines span:nth-child(1){width:112px;height:18px;background:linear-gradient(90deg,#6d5cff,#22d3ee);border-radius:3px;}
         .prev-particle .mini-lines span:nth-child(2){width:78px;background:#ff3d6e;}
+        /* snowcard - light dotted tabs */
+        .prev-snowcard { background:#fff; position:relative; overflow:hidden; }
+        .prev-snowcard::before { content:""; position:absolute; inset:0; background:radial-gradient(#b8b8b8 1px,transparent 1.4px); background-size:14px 14px; opacity:.65; }
+        .prev-snowcard::after { content:""; position:absolute; left:20px; right:20px; bottom:22px; height:28px; border:2px solid #000; border-radius:7px; background:#fff8bf; box-shadow:inset 42px 0 #ffd000; }
+        .prev-snowcard .mini-avatar { width:52px;height:52px;border:3px solid #000;background:#ddd;color:#111;position:absolute;top:24px;right:28px;z-index:1; }
+        .prev-snowcard .mini-lines { left:20px; bottom:64px; z-index:1; }
+        .prev-snowcard .mini-lines span:nth-child(1){width:108px;height:14px;background:#000;border-radius:2px;}
+        .prev-snowcard .mini-lines span:nth-child(2){width:78px;background:#222;border-radius:2px;}
         /* clean — light, violet */
         .prev-clean { background:#f4f4f0; }
         .prev-clean .mini-avatar { border-radius:18px; background:#fff; border:1px solid rgba(0,0,0,.1); color:#6d28d9; box-shadow:0 8px 18px -10px rgba(0,0,0,.4); }
@@ -227,6 +235,42 @@
         .navbar .nav-links { min-width:auto; flex-wrap:nowrap; gap:2px; }
         .navbar .nav-links a { font-size:12px; padding:22px 12px; white-space:nowrap; }
         @media (max-width:560px){ .pb-grid2{grid-template-columns:1fr;} .pb-head h1{font-size:1.5rem;} }
+
+        /* ============ modern finish ============ */
+        .pb { max-width: 1100px; }
+        .pb-head { margin-bottom: 34px; }
+        .pb-head h1 { font-size: clamp(2rem,4.2vw,2.7rem); font-weight:400; letter-spacing:-.02em;
+            background:linear-gradient(135deg,#e9d5ff,#a78bfa 45%,#818cf8);
+            -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+        .pb-head p { font-size:1.02rem; max-width:62ch; margin:8px auto 0; }
+        /* stepper as a pill */
+        .pb-steps { background:rgba(255,255,255,.03); border:1px solid rgba(99,130,200,.18);
+            border-radius:999px; padding:10px 20px; width:fit-content; max-width:100%; }
+        /* gallery cards */
+        .pb-templates { gap:20px; }
+        .pb-tpl { border-radius:18px; border-width:2px; box-shadow:0 12px 34px -22px rgba(0,0,0,.8);
+            background:rgba(255,255,255,.025); }
+        .pb-tpl:hover { transform:translateY(-5px); border-color:rgba(139,92,246,.55);
+            box-shadow:0 22px 48px -24px rgba(139,92,246,.55); }
+        .pb-tpl.selected { box-shadow:0 0 0 3px rgba(139,92,246,.3), 0 18px 40px -22px rgba(139,92,246,.6); }
+        .pb-tpl-prev { height:165px; }
+        .pb-use { position:absolute; left:0; right:0; bottom:0; z-index:4; padding:9px 12px; text-align:center;
+            font-size:.82rem; font-weight:700; color:#fff; background:linear-gradient(135deg,#7c3aed,#4c1d95);
+            transform:translateY(101%); transition:transform .22s ease; }
+        .pb-tpl:hover .pb-use { transform:translateY(0); }
+        .pb-tpl-foot { padding:14px 16px; background:rgba(255,255,255,.015); }
+        .pb-tpl-foot strong { font-weight:700; }
+        /* buttons */
+        .pb-btn { transition:transform .15s, filter .15s, box-shadow .15s; }
+        .pb-btn-next { box-shadow:0 12px 28px -12px rgba(124,58,237,.85); }
+        .pb-btn-next:hover { transform:translateY(-2px); }
+        .pb-btn-back:hover { border-color:rgba(139,92,246,.5); color:#c4b5fd; }
+        /* form sections */
+        .pb-sec-title { border-top:1px solid rgba(99,130,200,.14); padding-top:20px; margin-top:28px; }
+        .pb-card { border-radius:14px; }
+        .pb-input:focus, .pb-textarea:focus, .pb-paste:focus { box-shadow:0 0 0 3px rgba(139,92,246,.18); }
+        /* success */
+        .pb-success .big { filter:drop-shadow(0 6px 18px rgba(139,92,246,.5)); }
     </style>
 </head>
 <body>
@@ -250,10 +294,11 @@
         <section class="pb-panel active" id="panel-1">
             <div class="pb-templates">
                 {% for slug, label in themes.items() %}
-                <div class="pb-tpl" data-theme="{{ slug }}" onclick="pbSelectTheme(this)">
+                <div class="pb-tpl" data-theme="{{ slug }}" onclick="pbPickTheme(this)">
                     <div class="pb-tpl-prev prev-{{ slug }}">
                         <div class="mini-avatar">AB</div>
                         <div class="mini-lines"><span></span><span></span></div>
+                        <span class="pb-use">Use this template →</span>
                     </div>
                     <div class="pb-tpl-foot"><strong>{{ label }}</strong><span class="tick"></span></div>
                 </div>
@@ -420,6 +465,8 @@
             el.classList.add("selected");
             state.theme = el.dataset.theme; save();
         };
+        // Choosing a template selects it AND moves straight on to the details form.
+        window.pbPickTheme = function (el) { pbSelectTheme(el); pbGo(2); };
 
         // ---- shared image downscaler → small base64 JPEG data URL ----
         function pbResizeImage(file, max, cb) {
@@ -669,6 +716,7 @@
             state.handle = deriveHandle(handleEl ? handleEl.value : ""); save();
             if (!loggedIn) {
                 save();
+                try { sessionStorage.setItem("pb_resume", "1"); } catch (e) {}  // resume at the form after login
                 msg("pb-publish-msg", "Log in to publish — your work is saved and will be here when you return.", "");
                 setTimeout(() => { window.location.href = "/login?next=/portfolio"; }, 900);
                 return;
@@ -704,10 +752,13 @@
         if (!document.querySelector(".pb-tpl.selected")) {
             const first = document.querySelector(".pb-tpl"); if (first) { first.classList.add("selected"); state.theme = first.dataset.theme; }
         }
-        // Returning user (e.g. after the login round-trip): resume at the details
-        // form (step 2) so saved data + photo repopulate. Never jump straight to
-        // publish — that would read an un-populated form and wipe the restored CV.
-        if (state.cv) { pbGo(2); }
+        // Always start fresh at the template gallery (step 1) on a normal visit —
+        // EXCEPT right after the login round-trip, where we resume at the details
+        // form (step 2) so saved data + photo repopulate. The login redirect sets
+        // a one-shot "pb_resume" flag in sessionStorage to mark that round-trip.
+        var pbResume = false;
+        try { pbResume = !!sessionStorage.getItem("pb_resume"); sessionStorage.removeItem("pb_resume"); } catch (e) {}
+        if (state.cv && pbResume) { pbGo(2); }
     })();
     </script>
     <script src="/static/auth_nav.js?v=2" defer></script>

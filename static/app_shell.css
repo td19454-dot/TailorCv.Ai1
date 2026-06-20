@@ -6,7 +6,8 @@
    ─────────────────────────────────────────────────────────────────────────── */
 
 html.tcv-app .navbar { display: none !important; }
-html.tcv-app .footer { display: none !important; }
+html.tcv-app .footer,
+html.tcv-app .site-footer { display: none !important; }
 html.tcv-app body { overflow-x: hidden; }
 
 /* The marketing nav is position:fixed, so pages add `header.navbar + * {padding-top:100px}`
