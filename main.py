@@ -5894,33 +5894,62 @@ def _build_static_portfolio_html(portfolio) -> str:
 
 
 async def _deploy_portfolio_to_netlify(portfolio):
-    """Create (or reuse) a Netlify site and deploy the static bundle as a zip.
-    Returns (site_id, live_url). Requires NETLIFY_AUTH_TOKEN."""
-    import io
-    import zipfile
+    """Create (or reuse) a Netlify site and deploy the static bundle via the
+    digest-based file API so Netlify serves index.html as text/html (a zip-body
+    deploy can leave the file served as text/plain). Returns (site_id, live_url).
+    Requires NETLIFY_AUTH_TOKEN."""
+    import hashlib
     import httpx
 
     html = _build_static_portfolio_html(portfolio)
+    body = html.encode("utf-8")
+    digest = hashlib.sha1(body).hexdigest()
     headers = {"Authorization": f"Bearer {NETLIFY_AUTH_TOKEN}"}
     async with httpx.AsyncClient(timeout=60) as client:
         site_id = portfolio.netlify_site_id
         site_url = portfolio.netlify_url
         if not site_id:
-            r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={})
-            r.raise_for_status()
-            site = r.json()
+            # Name the site after the portfolio slug so the URL reads
+            # <name>.netlify.app instead of Netlify's random "joyful-pudding".
+            # Netlify site names are globally unique, so retry with a short
+            # random suffix if the preferred name is already taken (422).
+            import secrets
+            base = _portfolio_slugify(portfolio.slug)[:55].strip("-") or "portfolio"
+            site = None
+            for candidate in (base, f"{base}-{secrets.token_hex(2)}", f"{base}-{secrets.token_hex(3)}"):
+                r = await client.post(
+                    "https://api.netlify.com/api/v1/sites",
+                    headers=headers, json={"name": candidate},
+                )
+                if r.status_code in (200, 201):
+                    site = r.json()
+                    break
+                if r.status_code not in (422, 400):
+                    r.raise_for_status()
+            if site is None:
+                # Last resort: let Netlify assign a random name so deploy still works.
+                r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={})
+                r.raise_for_status()
+                site = r.json()
             site_id = site["id"]
             site_url = site.get("ssl_url") or site.get("url")
-        buf = io.BytesIO()
-        with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
-            z.writestr("index.html", html)
+        # 1) Create a deploy declaring the files we intend to ship (path -> sha1).
         dr = await client.post(
             f"https://api.netlify.com/api/v1/sites/{site_id}/deploys",
-            headers={**headers, "Content-Type": "application/zip"},
-            content=buf.getvalue(),
+            headers=headers,
+            json={"files": {"/index.html": digest}},
         )
         dr.raise_for_status()
         deploy = dr.json()
+        deploy_id = deploy["id"]
+        # 2) Upload the file body for any digest Netlify says it still needs.
+        if digest in (deploy.get("required") or []):
+            ur = await client.put(
+                f"https://api.netlify.com/api/v1/deploys/{deploy_id}/files/index.html",
+                headers={**headers, "Content-Type": "application/octet-stream"},
+                content=body,
+            )
+            ur.raise_for_status()
         site_url = site_url or deploy.get("ssl_url") or deploy.get("url")
     return site_id, site_url
 
