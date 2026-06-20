@@ -103,7 +103,23 @@ h1,h2,h3,h4 { color: var(--cf-ink); }
 .cf-edu .inst { color: var(--cf-cyan); font-weight: 500; }
 .cf-edu .row { display: flex; justify-content: space-between; gap: 12px; color: var(--cf-faint); font-size: .88rem; margin-top: 10px; }
 
-/* ---- Skills (tabs + cards) ---- */
+/* ---- Skills (Nova-style stack cards) ---- */
+.cf-stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 22px; }
+.cf-stack-card { border: 1px solid var(--cf-border); border-radius: 20px; padding: 28px; background: var(--cf-surface); }
+.cf-stack-head { text-align: center; margin-bottom: 22px; }
+.cf-stack-ic { width: 56px; height: 56px; border-radius: 14px; background: rgba(47,107,255,.12); color: var(--cf-cyan); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+.cf-stack-ic svg { width: 26px; height: 26px; }
+.cf-stack-head h3 { color: var(--cf-cyan); font-size: 1.15rem; margin: 0; }
+.cf-stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cf-stack-item { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px 12px; border: 1px solid var(--cf-border); border-radius: 12px; background: var(--cf-bg-2); transition: transform .18s, border-color .18s, box-shadow .18s; }
+.cf-stack-item:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.5); box-shadow: 0 12px 28px -18px var(--cf-cyan); }
+.cf-stack-item .ic { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; }
+.cf-stack-item .ic img { width: 32px; height: 32px; }
+.cf-stack-item.noicon .ic img { display: none; }
+.cf-stack-item.noicon .cf-glyph { display: block; }
+.cf-stack-item span.nm { color: var(--cf-ink); font-size: .9rem; text-align: center; }
+
+/* Legacy tabbed skills styles retained for older saved markup. */
 .cf-tabs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
 .cf-tab { display: inline-flex; align-items: center; gap: 9px; padding: 12px 20px; border-radius: 12px; border: 1px solid var(--cf-border); background: var(--cf-surface); color: var(--cf-dim); cursor: pointer; font-weight: 600; font-size: .92rem; transition: all .2s; }
 .cf-tab.on { background: var(--cf-blue); color: #fff; border-color: var(--cf-blue); }
