@@ -33,6 +33,12 @@ def _enforce_linkedin_quota(request: Request):
         # Pro check — bypass quota
         if user.pro_until and user.pro_until > datetime.utcnow():
             return
+        # Beta rollout: only gate users in BILLING_BETA_USER_IDS
+        _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
+        if _beta_env:
+            _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()}
+            if user.id not in _beta_ids:
+                return
         # Lifetime usage sum across all months
         used = (
             db.query(func.coalesce(func.sum(UsageRecord.linkedin_imports), 0))
