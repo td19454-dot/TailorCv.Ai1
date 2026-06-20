@@ -73,9 +73,12 @@ def _get_region(request: Request) -> str:
     """Derive pricing region from Cloudflare CF-IPCountry header.
 
     Returns 'india', 'lic', or 'global'.
-    Falls back to 'global' when the header is absent (local dev, direct hits).
+    Falls back to 'india' when the header is absent — Cloudflare always sets it
+    in production, so absence means local dev or a direct (non-proxied) hit.
     """
     country = request.headers.get("CF-IPCountry", "").upper().strip()
+    if not country:
+        return "india"
     if country == "IN":
         return "india"
     if country in LIC_COUNTRIES:
@@ -165,10 +168,11 @@ async def razorpay_subscription(body: RazorpaySubscriptionRequest, request: Requ
                 detail={"error": "payment_not_configured",
                         "msg": f"No plan ID configured for {region}/{body.plan}"}
             )
+        total_count = 10 if body.plan == "yearly" else 60
         subscription = client.subscription.create({
             "plan_id": plan_id,
             "customer_notify": 1,
-            "total_count": 120,
+            "total_count": total_count,
             "notes": {"user_id": str(user.id), "plan": body.plan, "region": region},
         })
         return {
