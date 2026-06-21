@@ -5231,6 +5231,7 @@ PORTFOLIO_THEME_MEDIA = {
     "particle": {"image": "/static/portfolio-previews/particle.png", "demo": "https://jonathan-allen.netlify.app/"},
     "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://lisa-martinez.netlify.app/"},
     "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://karen-taylor.netlify.app/"},
+    "parchment": {"image": "/static/portfolio-previews/parchment.png", "demo": "https://uttam-debnath.netlify.app/"},
 }
 
 # Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
