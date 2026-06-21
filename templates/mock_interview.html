@@ -38,7 +38,8 @@
     </style>
     <style>
         body { font-family: Inter, sans-serif; background:#07102b; color:#fff; margin:0; }
-        .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 16px 56px; display:none; }
+        .wrap { max-width: 1100px; margin: 0 auto; padding: 78px 16px 56px; display:none; }
+        .wrap > h1:first-child { margin-top: 6px; }
         .panel { background:#0f1e44; border:1px solid rgba(80,110,200,.22); border-radius:16px; padding:20px; margin-top:16px; }
         .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
         @media (max-width: 800px){ .grid { grid-template-columns:1fr; } }
@@ -133,9 +134,12 @@
     body > *:not(.navbar):not(.site-footer) b {
         font-weight: 500 !important;
     }
+    /* The shared navbar is position:fixed at 100px tall with a near-black
+       gradient — that's the big dark bar at the top. Shrink it on this page. */
+    header.navbar { height: 64px !important; }
 </style>
 
-<div id="zaraIntroPage" style="min-height:100vh;display:flex;align-items:flex-start;padding:80px 20px 40px;background:#07102b;">
+<div id="zaraIntroPage" style="min-height:auto;display:flex;align-items:flex-start;padding:78px 20px 40px;background:#07102b;">
   <div style="max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">
 
     <!-- LEFT: Testimonials + Scorecard -->
@@ -199,7 +203,7 @@
     </div>
 
     <!-- RIGHT: Zara -->
-    <div style="text-align:center;padding:20px 0;">
+    <div style="text-align:center;padding:0 0 20px;">
       <div id="zaraAvatar" style="width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#4a6aff,#7c3aed);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:36px;font-weight:700;color:#fff;box-shadow:0 0 30px rgba(108,99,255,0.4);animation:floatZara 3s ease-in-out infinite;">Z</div>
       <div id="zaraGreeting" style="color:rgba(255,255,255,0.7);font-size:15px;margin-bottom:12px;"></div>
       <h2 style="font-size:2.8rem;font-weight:800;margin:0 0 8px;color:#fff;">Hi, I'm Zara.</h2>
@@ -1564,5 +1568,6 @@ document.addEventListener('DOMContentLoaded',
 
 // ── End localStorage ──────────────────────
 </script>
+<script src="/static/resume_store.js?v=1"></script>
 </body>
 </html>
