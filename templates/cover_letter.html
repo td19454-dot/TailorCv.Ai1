@@ -128,6 +128,109 @@
                 overflow: hidden; font-size: 0.9rem; margin-bottom: 0;
             }
         }
+
+        /* ════════════════════════════════════════════════════════════════
+           CLEAN REDESIGN — simple, slim, spacious. Layered last so it wins;
+           every ID/class is preserved so the existing JS keeps working.
+           ════════════════════════════════════════════════════════════════ */
+        body { font-weight: 400; }
+
+        /* Layout — two equal columns, equal height */
+        .cl-wrap { max-width: 1320px; gap: 36px; padding: 0.25rem 1.5rem 4rem; align-items: stretch; grid-template-columns: 1fr 1fr; }
+        .cl-wrap > div { display: flex; flex-direction: column; }
+        .cl-wrap > div > .cl-card { flex: 1; }
+        @media (max-width: 1080px) { .cl-wrap { grid-template-columns: 1fr; } }
+
+        /* Hero — plain text header, no heavy box/blur/shadow */
+        .cl-page-header { max-width: 1120px; margin: 0 auto 0.4rem; padding: 2rem 1.25rem 0.6rem; text-align: center; }
+        .cl-page-header::before, .cl-page-header::after { content: none; }
+        .cl-page-header .cl-hero-card {
+            padding: 0; background: none; border: none;
+            box-shadow: none; backdrop-filter: none; border-radius: 0;
+        }
+        .cl-page-header .cl-title { font-size: clamp(2.1rem, 4vw, 3.1rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.55rem; }
+        .cl-page-header .cl-title-start { font-weight: 500; }
+        .cl-page-header .cl-title-highlight { font-weight: 500; }
+        .cl-page-header .cl-subtitle { font-size: 0.95rem; font-weight: 300; line-height: 1.6; color: #aab9da; max-width: 620px; margin-bottom: 1rem; }
+        .cl-page-header .cl-badges { gap: 0.5rem; }
+        .cl-page-header .cl-badge { padding: 0.35rem 0.78rem; font-size: 0.78rem; font-weight: 300; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: #9fb0d2; }
+        .cl-page-header .cl-badge span { width: 6px; height: 6px; box-shadow: none; }
+
+        /* Process steps — square cards: resume → JD → cover letter */
+        .cl-steps { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 1.6rem; }
+        .cl-step {
+            width: 156px; height: 156px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 9px; text-align: center; padding: 16px;
+            border-radius: 18px; background: rgba(12, 21, 43, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform .18s ease, border-color .18s ease;
+        }
+        .cl-step:hover { transform: translateY(-3px); border-color: rgba(91, 140, 255, 0.45); }
+        .cl-step-num {
+            width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: linear-gradient(135deg, #4f7fff, #8d5cf7);
+            color: #fff; font-weight: 500; font-size: 0.9rem;
+        }
+        .cl-step-title { font-weight: 500; font-size: 0.92rem; color: #eaf1ff; }
+        .cl-step-text { font-weight: 300; font-size: 0.78rem; color: #9fb0d2; line-height: 1.4; }
+        .cl-step-arrow { color: #5b6f9c; font-size: 1.3rem; font-weight: 300; }
+        @media (max-width: 560px) {
+            .cl-steps { flex-direction: column; gap: 12px; }
+            .cl-step { width: 220px; height: auto; min-height: 92px; flex-direction: row; gap: 12px; text-align: left; justify-content: flex-start; }
+            .cl-step-arrow { transform: rotate(90deg); }
+        }
+
+        /* Cards — one clean soft surface, roomy padding (taller box) */
+        .cl-card { padding: 32px 30px; border-radius: 18px; background: rgba(12, 21, 43, 0.7); border: 1px solid rgba(255,255,255,0.07); box-shadow: none; }
+        .cl-card .cl-element-row { margin-bottom: 26px; }
+        textarea#jd-text { min-height: 180px; }
+        .cl-card + .cl-card { margin-top: 20px; }
+        .cl-card.secondary { background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.06); }
+
+        /* Section eyebrow — quiet uppercase, no pill */
+        .cl-section-title { background: none; padding: 0; margin-bottom: 18px; color: #8198c2; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; }
+
+        /* Labels + helper text — slim */
+        .cl-label, .cl-jd-head .cl-label { font-weight: 500; font-size: 0.85rem; color: #dde6fa; letter-spacing: 0; text-transform: none; }
+        .cl-hint, .cl-note { font-weight: 300; font-size: 0.84rem; color: #93a8cd; }
+        .cl-jd-picker-row { font-weight: 500; font-size: 0.82rem; color: #a98cff; }
+        .cl-element-row { margin-bottom: 20px; }
+
+        /* Inputs — simple, soft */
+        textarea, select, input[type=file], input[type=text], input[type=email] {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px; font-size: 13px; padding: 11px 13px;
+        }
+        textarea#letter-output { border-radius: 12px; }
+        input[type=file]::-webkit-file-upload-button { font-weight: 500; }
+
+        /* Buttons — slim */
+        .cl-btn { font-weight: 500; font-size: 0.88rem; padding: 11px 16px; border-radius: 11px; }
+        .cl-btn-primary { background: linear-gradient(135deg, #4f7fff, #8d5cf7); }
+        .cl-btn-ghost { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+
+        /* Your-details row */
+        .cl-detail-grid { gap: 10px; margin-top: 16px; }
+        .cl-detail-grid input { border-radius: 10px; min-height: 44px; }
+
+        /* Templates — simple pills */
+        .cl-tpl-label { font-weight: 500; font-size: 0.85rem; color: #dde6fa; margin: 18px 0 10px; }
+        .cl-templates { gap: 10px; }
+        .cl-tpl { font-weight: 500; font-size: 0.85rem; border-radius: 10px; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
+        .cl-tpl.active { border-color: #5b8cff; background: rgba(91,140,255,0.16); }
+
+        /* Preview frame — clean */
+        .cl-preview-wrap { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 12px; }
+
+        /* Quick tips — minimal accent list (no boxes) */
+        .cl-tip-list { gap: 10px; }
+        .cl-tip-list li { font-weight: 300; font-size: 0.9rem; background: none; border: none; border-left: 2px solid rgba(91,140,255,0.45); border-radius: 0; padding: 2px 0 2px 14px; color: #aebdde; }
+        .cl-tip-list li strong { font-weight: 600; color: #eaf1ff; }
+
+        /* Upload zone — slim */
+        .cl-upload { border-radius: 10px; }
+        .cl-upload-label { font-weight: 500; }
     </style>
 </head>
 <body>
@@ -136,11 +239,24 @@
     <header class="cl-page-header">
         <div class="cl-hero-card">
             <div class="cl-title"><span class="cl-title-start">Your cover letter,</span> <span class="cl-title-highlight">tailored to the job</span></div>
-            <p class="cl-subtitle">Upload your resume PDF, add the job description, choose a tone, and generate. Preview the final layout in a real template and download the PDF when ready.</p>
-            <div class="cl-badges">
-                <span class="cl-badge"><span></span>AI-powered cover letters</span>
-                <span class="cl-badge"><span></span>Optimized for hiring managers</span>
-                <span class="cl-badge"><span></span>PDF-ready preview</span>
+            <div class="cl-steps">
+                <div class="cl-step">
+                    <span class="cl-step-num">1</span>
+                    <span class="cl-step-title">Upload resume</span>
+                    <span class="cl-step-text">Add your resume PDF</span>
+                </div>
+                <div class="cl-step-arrow" aria-hidden="true">→</div>
+                <div class="cl-step">
+                    <span class="cl-step-num">2</span>
+                    <span class="cl-step-title">Paste job description</span>
+                    <span class="cl-step-text">Tell us the role</span>
+                </div>
+                <div class="cl-step-arrow" aria-hidden="true">→</div>
+                <div class="cl-step">
+                    <span class="cl-step-num">3</span>
+                    <span class="cl-step-title">Get cover letter</span>
+                    <span class="cl-step-text">Tailored &amp; ready</span>
+                </div>
             </div>
         </div>
     </header>
@@ -182,28 +298,19 @@
                 <button id="generate-btn" class="cl-btn cl-btn-primary" type="button">Generate Cover Letter</button>
                 <div id="status" class="cl-status"></div>
             </div>
-
-            <div class="cl-card secondary">
-                <div class="cl-section-title">Quick tips</div>
-                <ul class="cl-tip-list">
-                    <li><strong>Upload a resume PDF</strong> for the fastest, most accurate results.</li>
-                    <li><strong>Paste a strong job description</strong> with skills and responsibilities.</li>
-                    <li><strong>Review and personalize</strong> the letter before downloading.</li>
-                </ul>
-            </div>
         </div>
 
         <div>
             <div class="cl-card">
                 <div class="cl-section-title">2. Preview your cover letter</div>
-                <label class="cl-label" for="letter-output">Your Cover Letter</label>
-                <div class="cl-hint">The generated letter appears below. Choose a template to preview the final layout and download when ready.</div>
                 <textarea id="letter-output" style="display:none;"></textarea>
 
-                <div class="cl-detail-grid">
-                    <input type="text" id="cl-name" placeholder="Your full name">
-                    <input type="text" id="cl-location" placeholder="City, State or Location">
-                    <input type="email" id="cl-email" placeholder="name@gmail.com">
+                <!-- Details are pulled from the resume and feed the preview; kept in
+                     the DOM (hidden) so the existing JS keeps working. -->
+                <div class="cl-detail-grid" style="display:none;">
+                    <input type="text" id="cl-name">
+                    <input type="text" id="cl-location">
+                    <input type="email" id="cl-email">
                 </div>
 
                 <div class="cl-tpl-label">Choose a template</div>
@@ -217,10 +324,9 @@
                     <iframe id="cl-preview" title="Cover letter preview"></iframe>
                 </div>
 
-                <div class="cl-actions">
+                <div class="cl-actions" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
                     <button id="copy-btn" class="cl-btn cl-btn-ghost" type="button">📋 Copy text</button>
-                    <button id="download-btn" class="cl-btn cl-btn-ghost" type="button">⬇ .txt</button>
-                    <button id="download-pdf-btn" class="cl-btn cl-btn-primary" type="button" style="width:auto;flex:1;">⬇ Download PDF</button>
+                    <button id="download-pdf-btn" class="cl-btn cl-btn-primary" type="button">⬇ Download PDF</button>
                 </div>
             </div>
         </div>
@@ -1704,8 +1810,16 @@ Nice to have:
                 }
                 if (!res.ok) throw new Error(res.d.detail || 'Generation failed');
                 output.value = res.d.cover_letter || '';
+                // Auto-fill the candidate's details from their resume so they
+                // don't have to type them (still editable if anything's off).
+                var nm = document.getElementById('cl-name');
+                var loc = document.getElementById('cl-location');
+                var em = document.getElementById('cl-email');
+                if (res.d.name && nm && !nm.value.trim()) nm.value = res.d.name;
+                if (res.d.location && loc && !loc.value.trim()) loc.value = res.d.location;
+                if (res.d.email && em && !em.value.trim()) em.value = res.d.email;
                 renderPreview();
-                setStatus('Done. Add your name, pick a template, then download.', 'ok');
+                setStatus('Done — details filled from your resume. Pick a template, then download.', 'ok');
             })
             .catch(function (e) { setStatus(e.message || 'Something went wrong.', 'error'); })
             .finally(function () { genBtn.disabled = false; genBtn.textContent = orig; });
@@ -1732,7 +1846,7 @@ Nice to have:
             }
         });
 
-        dlBtn.addEventListener('click', function () {
+        if (dlBtn) dlBtn.addEventListener('click', function () {
             if (!output.value.trim()) { setStatus('Nothing to download yet.', 'error'); return; }
             var blob = new Blob([plainTextLetter()], { type: 'text/plain;charset=utf-8' });
             var url = URL.createObjectURL(blob);
@@ -1890,5 +2004,6 @@ Nice to have:
         renderPreview();
     })();
     </script>
+    <script src="/static/resume_store.js?v=1"></script>
 </body>
 </html>

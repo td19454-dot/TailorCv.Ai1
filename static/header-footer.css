@@ -575,15 +575,34 @@ html.tcv-app .site-footer { display: none !important; }
     letter-spacing: normal;
 }
 
-/* Company dropdown — dark card to match the Features mega menu and site theme. */
+/* Company dropdown — dark card to match the Features mega menu and site theme.
+   Two-column grid: 2 items per row. */
 .navbar .nav-dropdown .nav-dropdown-menu.nav-company-menu {
-    min-width: 320px;
-    padding: 14px;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(230px, 1fr));
+    gap: 10px;
+    width: 520px;
+    max-width: calc(100vw - 32px);
+    min-width: 0;
+    padding: 16px;
     border-radius: 18px;
     background: linear-gradient(145deg, #0d0f2b 0%, #11164a 100%);
     border: 1px solid rgba(255, 255, 255, 0.09);
     box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+}
+/* Keep it a grid in every "shown" state (overrides style3's display:block). */
+.navbar .nav-dropdown.open .nav-dropdown-menu.nav-company-menu {
+    display: grid;
+    opacity: 1;
+    visibility: visible;
+}
+@media (min-width: 769px) {
+    .navbar .nav-dropdown:hover .nav-dropdown-menu.nav-company-menu,
+    .navbar .nav-dropdown:focus-within .nav-dropdown-menu.nav-company-menu {
+        display: grid;
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 /* ── Features mega menu — light, detailed (Careerflow-style) panel ──────────
