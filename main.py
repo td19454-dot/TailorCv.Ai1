@@ -421,6 +421,13 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN plan_provider VARCHAR(20)" if is_pg else "ADD COLUMN plan_provider TEXT")
     if "razorpay_subscription_id" not in cols:
         to_add.append("ADD COLUMN razorpay_subscription_id VARCHAR(100)" if is_pg else "ADD COLUMN razorpay_subscription_id TEXT")
+    # One shared Netlify "live site" per user (reused across portfolios to save credits).
+    if "netlify_site_id" not in cols:
+        to_add.append("ADD COLUMN netlify_site_id VARCHAR(64)" if is_pg else "ADD COLUMN netlify_site_id TEXT")
+    if "netlify_url" not in cols:
+        to_add.append("ADD COLUMN netlify_url VARCHAR(255)" if is_pg else "ADD COLUMN netlify_url TEXT")
+    if "netlify_portfolio_id" not in cols:
+        to_add.append("ADD COLUMN netlify_portfolio_id INTEGER")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -5987,10 +5994,10 @@ def _build_static_portfolio_html(portfolio) -> str:
     return html
 
 
-async def _deploy_portfolio_to_netlify(portfolio):
-    """Create (or reuse) a Netlify site and deploy the static bundle via the
-    digest-based file API so Netlify serves index.html as text/html (a zip-body
-    deploy can leave the file served as text/plain). Returns (site_id, live_url).
+async def _deploy_portfolio_to_netlify(user, portfolio):
+    """Deploy a portfolio to the USER's single shared Netlify site (reused across all
+    their portfolios/templates to save credits). Creates the site only if the user
+    has none yet; otherwise overwrites it. Returns (site_id, live_url).
     Requires NETLIFY_AUTH_TOKEN."""
     import hashlib
     import httpx
@@ -6001,52 +6008,105 @@ async def _deploy_portfolio_to_netlify(portfolio):
     digest = hashlib.sha1(body).hexdigest()
     headers = {"Authorization": f"Bearer {NETLIFY_AUTH_TOKEN}"}
 
+    async def _find_site_by_name(client, name):
+        """Return the account's site with exactly this name, or None."""
+        r = await client.get(
+            "https://api.netlify.com/api/v1/sites",
+            headers=headers, params={"name": name, "per_page": 100},
+        )
+        if r.status_code == 200:
+            for s in (r.json() or []):
+                if s.get("name") == name:
+                    return s
+        return None
+
     async def _create_site(client):
-        # Name the site after the portfolio slug so the URL reads <name>.netlify.app
-        # instead of Netlify's random "joyful-pudding". Names are globally unique, so
-        # retry with a short random suffix if the preferred name is taken (422/400).
-        base = _portfolio_slugify(portfolio.slug)[:55].strip("-") or "portfolio"
-        for candidate in (base, f"{base}-{secrets.token_hex(2)}", f"{base}-{secrets.token_hex(3)}"):
-            r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={"name": candidate})
-            if r.status_code in (200, 201):
-                return r.json()
-            if r.status_code not in (422, 400):
-                r.raise_for_status()
+        # ONE site per USER: name it after the user (stable across every portfolio /
+        # template) and make creation IDEMPOTENT — if a site with this name already
+        # exists in the account (e.g. the DB id wasn't saved last time), reuse it
+        # instead of spawning a duplicate. This guarantees a user can't accumulate
+        # multiple Netlify links.
+        base = _portfolio_slugify(user.name)[:55].strip("-") or "portfolio"
+        existing = await _find_site_by_name(client, base)
+        if existing:
+            return existing
+        r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={"name": base})
+        if r.status_code in (200, 201):
+            return r.json()
+        if r.status_code in (422, 400):
+            # Name taken: if it's ours reuse it, else fall back to a suffixed name.
+            existing = await _find_site_by_name(client, base)
+            if existing:
+                return existing
+            for candidate in (f"{base}-{secrets.token_hex(2)}", f"{base}-{secrets.token_hex(3)}"):
+                r2 = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={"name": candidate})
+                if r2.status_code in (200, 201):
+                    return r2.json()
+                if r2.status_code not in (422, 400):
+                    r2.raise_for_status()
+        else:
+            r.raise_for_status()
         # Last resort: let Netlify assign a random name so the deploy still works.
         r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={})
         r.raise_for_status()
         return r.json()
 
     async with httpx.AsyncClient(timeout=60) as client:
-        site_id = portfolio.netlify_site_id
-        site_url = portfolio.netlify_url
+        site_id = user.netlify_site_id
+        site_url = user.netlify_url
         if not site_id:
             site = await _create_site(client)
             site_id = site["id"]
             site_url = site.get("ssl_url") or site.get("url")
 
-        # 1) Create a deploy declaring the files we intend to ship (path -> sha1).
+        # Build a zip once for the fallback path: some tokens/accounts reject the
+        # JSON "digest" deploy with 403/422 but accept a direct zip upload.
+        import io
+        import zipfile
+        zbuf = io.BytesIO()
+        with zipfile.ZipFile(zbuf, "w", zipfile.ZIP_DEFLATED) as z:
+            z.writestr("index.html", html)
+        zip_bytes = zbuf.getvalue()
+
+        def _deploys_url(sid):
+            return f"https://api.netlify.com/api/v1/sites/{sid}/deploys"
+
+        async def _deploy_once(sid):
+            """Deploy to a site. Try the digest API first (clean content-type), then
+            fall back to a direct zip upload. Returns (deploy_json, used_digest), or
+            None if the site itself can't be used with this token (gone/forbidden)."""
+            r = await client.post(_deploys_url(sid), headers=headers, json={"files": {"/index.html": digest}})
+            if r.status_code in (200, 201):
+                return r.json(), True
+            if r.status_code in (400, 403, 422):
+                rz = await client.post(_deploys_url(sid), headers={**headers, "Content-Type": "application/zip"}, content=zip_bytes)
+                if rz.status_code in (200, 201):
+                    return rz.json(), False
+                if rz.status_code in (401, 403, 404):
+                    return None
+                rz.raise_for_status()
+            if r.status_code in (401, 404):
+                return None
+            r.raise_for_status()
+
         # A stored site can become unusable (deleted, or created under a different
-        # token/account) → Netlify returns 401/403/404. In that case, transparently
-        # create a fresh site and retry so re-deploys never get stuck on a dead id.
-        async def _make_deploy(sid):
-            return await client.post(
-                f"https://api.netlify.com/api/v1/sites/{sid}/deploys",
-                headers=headers, json={"files": {"/index.html": digest}},
-            )
-        dr = await _make_deploy(site_id)
-        if dr.status_code in (401, 403, 404):
+        # token/account). If so, transparently create a fresh site and retry once.
+        result = await _deploy_once(site_id)
+        if result is None:
             site = await _create_site(client)
             site_id = site["id"]
             site_url = site.get("ssl_url") or site.get("url")
-            dr = await _make_deploy(site_id)
-        dr.raise_for_status()
-        deploy = dr.json()
-        deploy_id = deploy["id"]
-        # 2) Upload the file body for any digest Netlify says it still needs.
-        if digest in (deploy.get("required") or []):
+            result = await _deploy_once(site_id)
+        if result is None:
+            raise RuntimeError(
+                "Netlify rejected the deploy even on a freshly created site — the "
+                "NETLIFY_AUTH_TOKEN likely lacks deploy permission or the account is restricted."
+            )
+        deploy, used_digest = result
+        # The digest deploy needs the file body uploaded for any missing sha1.
+        if used_digest and digest in (deploy.get("required") or []):
             ur = await client.put(
-                f"https://api.netlify.com/api/v1/deploys/{deploy_id}/files/index.html",
+                f"https://api.netlify.com/api/v1/deploys/{deploy['id']}/files/index.html",
                 headers={**headers, "Content-Type": "application/octet-stream"},
                 content=body,
             )
@@ -6070,13 +6130,22 @@ async def deploy_portfolio_netlify(portfolio_id: int, request: Request):
         ).first()
         if not portfolio:
             return JSONResponse(status_code=404, content={"error": "Portfolio not found"})
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            return JSONResponse(status_code=401, content={"error": "Not logged in"})
         try:
-            site_id, site_url = await _deploy_portfolio_to_netlify(portfolio)
+            # Deploy to the user's single shared site (one live link per user).
+            site_id, site_url = await _deploy_portfolio_to_netlify(user, portfolio)
         except Exception:
             logger.exception("Live-site publish failed for portfolio %s", portfolio_id)
             return JSONResponse(status_code=502, content={"error": "Could not publish your live site. Please try again."})
-        portfolio.netlify_site_id = site_id
-        portfolio.netlify_url = site_url
+        user.netlify_site_id = site_id
+        user.netlify_url = site_url
+        user.netlify_portfolio_id = portfolio.id
+        # Keep the live URL on the portfolio that's currently published, and clear it
+        # from any other portfolio so only one shows as "live".
+        for p in db.query(Portfolio).filter(Portfolio.user_id == user_id).all():
+            p.netlify_url = site_url if p.id == portfolio.id else None
         db.commit()
         return JSONResponse({"success": True, "netlify_url": site_url})
     finally:
