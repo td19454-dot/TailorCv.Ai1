@@ -220,7 +220,34 @@
     </section>
     {% endif %}
 
+    {% if data.github_username or data.opensource %}
+    <section class="sc-stack" id="opensource">
+        <div class="sc-section-head">
+            <h2>Open Source</h2>
+            <div class="sc-rule green"></div>
+        </div>
+        {% if data.github_username %}
+        <article class="sc-project" style="overflow-x:auto;margin-bottom:18px;">
+            <img src="https://ghchart.rshah.org/04d99d/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;">
+        </article>
+        {% endif %}
+        {% if data.opensource %}
+        <div class="sc-project-grid">
+            {% for o in data.opensource %}
+            <article class="sc-project">
+                <h3>{{ o.name }}</h3>
+                {% if o.bullets %}<p class="sc-muted">{{ o.bullets|join(' ') }}</p>{% endif %}
+                {% if o.url %}<div><a href="{{ o.url }}" target="_blank" rel="noopener">View {{ ext() }}</a></div>{% endif %}
+            </article>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+
     {% if data.email or data.socials %}
+    {% include "_portfolio_awards.html" %}
+
     <section class="sc-contact" id="contact">
         <div class="sc-section-head">
             <h2>Contact</h2>
@@ -298,7 +325,12 @@
             link.classList.toggle('active', active);
             if (active) {
                 link.setAttribute('aria-current', 'location');
-                link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                // Center the active tab WITHIN the horizontal nav only — never call
+                // scrollIntoView (it scrolls the window too and fights the user's
+                // own scroll, making the page feel unscrollable).
+                var navRect = nav.getBoundingClientRect();
+                var linkRect = link.getBoundingClientRect();
+                nav.scrollLeft += (linkRect.left + linkRect.width / 2) - (navRect.left + navRect.width / 2);
             } else {
                 link.removeAttribute('aria-current');
             }

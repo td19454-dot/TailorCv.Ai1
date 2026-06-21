@@ -17,6 +17,12 @@ class User(Base):
     plan_provider = Column(String(20), nullable=True)                  # "razorpay" | "polar"
     razorpay_subscription_id = Column(String(100), nullable=True)
     polar_subscription_id = Column(String(100), nullable=True)
+    # One Netlify "live site" per user — reused across all their portfolios so each
+    # user only ever consumes credits for a single site. netlify_portfolio_id tracks
+    # which portfolio is currently published there.
+    netlify_site_id = Column(String(64), nullable=True)
+    netlify_url = Column(String(255), nullable=True)
+    netlify_portfolio_id = Column(Integer, nullable=True)
 
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
