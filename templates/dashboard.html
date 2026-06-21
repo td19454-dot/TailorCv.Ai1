@@ -44,6 +44,19 @@
         .promo p { color: var(--muted); font-size: .9rem; }
         .promo .go { margin-left: auto; background: linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:600; font-size:.85rem; padding:10px 18px; border-radius:10px; white-space:nowrap; }
 
+        /* "NEW feature" announcement banner (dismissible) */
+        .feat-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(110deg, #e8f1ff, #e7f7ef); border: 1px solid rgba(99,130,200,.25); border-radius: 16px; padding: 18px 48px 18px 22px; margin-bottom: 22px; position: relative; }
+        .feat-banner.hide { display: none; }
+        .feat-banner .fb-badge { background: #f59e0b; color: #1a1206; font-size: 11px; font-weight: 800; padding: 4px 9px; border-radius: 6px; letter-spacing: .04em; flex-shrink: 0; }
+        .feat-banner .fb-body { min-width: 0; }
+        .feat-banner h3 { font-size: 1.15rem; font-weight: 800; color: #0d1b3d; margin-bottom: 3px; }
+        .feat-banner p { color: #3a4a66; font-size: .92rem; }
+        .feat-banner .fb-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; color: #2563eb; font-weight: 700; font-size: .92rem; }
+        .feat-banner .fb-cta svg { width: 16px; height: 16px; }
+        .feat-banner .fb-close { position: absolute; top: 12px; right: 14px; background: none; border: none; color: #5a6b88; font-size: 22px; line-height: 1; cursor: pointer; padding: 4px; border-radius: 8px; }
+        .feat-banner .fb-close:hover { background: rgba(13,27,61,.08); color: #0d1b3d; }
+        @media (max-width: 560px) { .feat-banner { flex-direction: column; align-items: flex-start; } }
+
         .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 22px; }
         .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
         .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
@@ -231,6 +244,20 @@
         <main class="main">
             <div class="greet">Welcome, {{ user_name }}!</div>
 
+            <!-- NEW feature announcement (dismissible) -->
+            <div class="feat-banner" id="featPortfolio">
+                <span class="fb-badge">NEW</span>
+                <div class="fb-body">
+                    <h3>Portfolio Builder</h3>
+                    <p>Turn your resume into a live, shareable portfolio website — pick a template, edit, and publish in minutes.</p>
+                    <a class="fb-cta" href="/portfolio">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.9L18.7 9l-4.9 1.8L12 16l-1.8-5.2L5.3 9l4.9-1.1z"/></svg>
+                        Try It Now
+                    </a>
+                </div>
+                <button class="fb-close" id="featPortfolioClose" type="button" aria-label="Dismiss">&times;</button>
+            </div>
+
             <!-- Promo -->
             <div class="promo">
                 <div>
@@ -342,6 +369,18 @@
         if (btn) btn.addEventListener('click', doLogout);
         var pBtn = document.getElementById('dashProfileLogout');
         if (pBtn) pBtn.addEventListener('click', doLogout);
+
+        // NEW-feature banner: dismiss with the × and remember it (per browser).
+        var feat = document.getElementById('featPortfolio');
+        var featKey = 'tcv_dismiss_feat_portfolio';
+        if (feat) {
+            try { if (localStorage.getItem(featKey)) feat.classList.add('hide'); } catch (e) {}
+            var featClose = document.getElementById('featPortfolioClose');
+            if (featClose) featClose.addEventListener('click', function () {
+                feat.classList.add('hide');
+                try { localStorage.setItem(featKey, '1'); } catch (e) {}
+            });
+        }
 
         var burger = document.getElementById('dashBurger');
         var sideEl = document.querySelector('.side');
