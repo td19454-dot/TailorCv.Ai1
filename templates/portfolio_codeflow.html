@@ -247,6 +247,9 @@
     </div></section>
     {% endif %}
 
+    {% include "_portfolio_opensource.html" %}
+    {% include "_portfolio_awards.html" %}
+
     <!-- Contact -->
     <section class="cf-section" id="contact"><div class="cf-wrap">
         <h2 class="cf-title">Say Hi, Don't Be Shy</h2>
@@ -273,7 +276,7 @@
                 </form>
             </div>
         </div>
-        <div class="cf-footer">© {{ data.name }} · <a href="https://thetailorcv.com" target="_blank" rel="noopener">Built with theTailorCV</a></div>
+        <div class="cf-footer">© {{ data.name }} · Built by {{ data.name }}</div>
     </div></section>
 
     <script>

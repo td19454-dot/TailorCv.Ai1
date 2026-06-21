@@ -164,4 +164,10 @@ img { max-width: 100%; }
     .gh-avatar { width: 150px; margin: 0 auto 12px; grid-row: auto; }
     .gh-name, .gh-login { text-align: center; }
 }
+.gh-os { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px,100%),1fr)); gap: 14px; margin-bottom: 28px; }
+.gh-os-card { border: 1px solid var(--gh-border, rgba(128,128,128,.3)); border-radius: 10px; padding: 14px 16px; }
+.gh-os-top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.gh-os-top a { font-size: .85rem; white-space: nowrap; }
+.gh-os-card ul { margin: 8px 0 0; padding-left: 18px; font-size: .9rem; line-height: 1.6; opacity: .9; }
+
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

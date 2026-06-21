@@ -7,10 +7,10 @@
     <meta name="description" content="{{ seo_og_description }}">
     <title>{{ data.name }}{% if data.headline %} — {{ data.headline }}{% endif %} | Portfolio</title>
     {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/portfolio_editor.css?v=1">
+    <link rel="stylesheet" href="/static/portfolio_editor.css?v=3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 {% set fname = data.name.split(' ')[0] if data.name else 'Your' %}
@@ -52,6 +52,7 @@
             {% if data.projects %}<a class="ed-file" data-target="projects"><span class="fi fi-js">JS</span> projects.js</a>{% endif %}
             {% if data.skills %}<a class="ed-file" data-target="skills"><span class="fi fi-json">{ }</span> skills.json</a>{% endif %}
             {% if data.experience %}<a class="ed-file" data-target="experience"><span class="fi fi-ts">TS</span> experience.ts</a>{% endif %}
+            {% if data.github_username or data.opensource %}<a class="ed-file" data-target="opensource"><span class="fi fi-md">M↓</span> opensource.md</a>{% endif %}
             <a class="ed-file" data-target="contact"><span class="fi fi-css">#</span> contact.css</a>
             <div class="ed-explorer-spacer"></div>
             {% if has_cv %}
@@ -124,15 +125,25 @@
                         <div class="ed-subcomment">const projects = [ ...shipped, ...building ]</div>
                         <div class="ed-cards">
                             {% for p in data.projects %}
-                            <article class="ed-card{% if p.image %} ed-card-hasimg{% endif %}">
-                                {% if p.image %}<div class="ed-card-img"><img src="{{ p.image }}" alt="{{ p.name }}" loading="lazy"></div>{% endif %}
-                                <div class="ed-card-top">
-                                    {% if p.subtitle %}<div class="ed-cat">{{ p.subtitle|upper }}</div>{% else %}<span></span>{% endif %}
-                                    {% if p.github %}<a class="ed-ghpill" href="{{ p.github }}" target="_blank" rel="noopener">GitHub {{ gh() }}</a>{% elif p.url %}<a class="ed-ghpill" href="{{ p.url }}" target="_blank" rel="noopener">Live {{ gh() }}</a>{% endif %}
+                            <article class="ed-pcard">
+                                <div class="ed-pcard-bar">
+                                    <span class="dots"><i></i><i></i><i></i></span>
+                                    <span class="fn">{{ (p.name or 'project')|lower|replace(' ','-') }}.tsx</span>
+                                    <span class="idx">{{ '%02d'|format(loop.index) }}</span>
                                 </div>
-                                <h3>{{ p.name }}</h3>
-                                {% if p.bullets %}<ul class="ed-bullets">{% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
-                                {% if p.subtitle %}<div class="ed-tags">{% for t in p.subtitle.split(',') %}{% if t.strip() %}<span class="ed-tag">{{ t.strip() }}</span>{% endif %}{% endfor %}</div>{% endif %}
+                                {% if p.image %}<div class="ed-pcard-img"><img src="{{ p.image }}" alt="{{ p.name }}" loading="lazy"></div>{% endif %}
+                                <div class="ed-pcard-body">
+                                    {% if p.subtitle %}<div class="ed-cat">{{ p.subtitle.split(',')[0]|upper }}</div>{% endif %}
+                                    <h3>{{ p.name }}</h3>
+                                    {% if p.bullets %}<ul class="ed-bullets">{% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                                    {% if p.subtitle %}<div class="ed-tags">{% for t in p.subtitle.split(',') %}{% if t.strip() %}<span class="ed-tag">{{ t.strip() }}</span>{% endif %}{% endfor %}</div>{% endif %}
+                                    {% if p.github or p.url %}
+                                    <div class="ed-pcard-links">
+                                        {% if p.github %}<a class="ed-plink" href="{{ p.github }}" target="_blank" rel="noopener">{{ gh() }} GitHub</a>{% endif %}
+                                        {% if p.url %}<a class="ed-plink primary" href="{{ p.url }}" target="_blank" rel="noopener">{{ gh() }} Live demo</a>{% endif %}
+                                    </div>
+                                    {% endif %}
+                                </div>
                             </article>
                             {% endfor %}
                         </div>
@@ -144,11 +155,19 @@
                     <section class="ed-section" id="skills">
                         <div class="ed-comment">// skills.json</div>
                         <h2 class="ed-h">Skills</h2>
-                        <div class="ed-subcomment">"tools": [ … ]</div>
+                        <div class="ed-subcomment">const proficiency = { ... }</div>
                         {% for g in data.skills %}
                         <div class="ed-skill-group">
                             {% if g['group'] %}<h4>{{ g['group'] }}</h4>{% endif %}
-                            <div class="ed-chips">{% for item in g['items'] %}<span class="ed-chip">{{ item }}</span>{% endfor %}</div>
+                            <div class="ed-skillbars">
+                                {% for item in g['items'] %}
+                                {% set lvl = 82 + (loop.index0 * 7 + (item|length) * 3) % 16 %}
+                                <div class="ed-skillbar" data-lvl="{{ lvl }}">
+                                    <div class="ed-skillbar-top"><span class="nm">{{ item }}</span><span class="pct">{{ lvl }}%</span></div>
+                                    <div class="ed-skillbar-track"><span style="--lvl: {{ lvl }}%"></span></div>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
                         {% endfor %}
                     </section>
@@ -171,6 +190,29 @@
                             </div>
                             {% endfor %}
                         </div>
+                    </section>
+                    {% endif %}
+
+                    <!-- OPEN SOURCE -->
+                    {% if data.github_username or data.opensource %}
+                    <section class="ed-section" id="opensource">
+                        <div class="ed-comment">// opensource.md : contributions &amp; commits</div>
+                        <h2 class="ed-h">Open Source</h2>
+                        {% if data.github_username %}
+                        <div class="ed-subcomment">git log --author="{{ data.github_username }}"</div>
+                        <div class="ed-contrib"><img src="https://ghchart.rshah.org/569cd6/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy"></div>
+                        {% endif %}
+                        {% if data.opensource %}
+                        <div class="ed-cards" style="margin-top:22px;">
+                            {% for o in data.opensource %}
+                            <article class="ed-card">
+                                <div class="ed-card-top"><span class="ed-cat">CONTRIBUTION</span>{% if o.url %}<a class="ed-ghpill" href="{{ o.url }}" target="_blank" rel="noopener">View {{ gh() }}</a>{% endif %}</div>
+                                <h3>{{ o.name }}</h3>
+                                {% if o.bullets %}<ul class="ed-bullets">{% for b in o.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                            </article>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                     </section>
                     {% endif %}
 
@@ -242,6 +284,24 @@
                     </section>
                     {% endif %}
 
+                    <!-- AWARDS -->
+                    {% if data.awards %}
+                    <section class="ed-section" id="awards">
+                        <div class="ed-comment">// awards.json</div>
+                        <h2 class="ed-h">Awards &amp; Honors</h2>
+                        <div class="ed-cards">
+                            {% for a in data.awards %}
+                            <article class="ed-card">
+                                <div class="ed-card-top"><span class="ed-cat">AWARD</span>{% if a.year %}<span class="ed-cat">{{ a.year }}</span>{% endif %}</div>
+                                <h3>{{ a.title }}</h3>
+                                {% if a.issuer %}<p>{{ a.issuer }}</p>{% endif %}
+                                {% if a.url %}<div class="ed-tags"><a class="ed-ghpill" href="{{ a.url }}" target="_blank" rel="noopener">View {{ gh() }}</a></div>{% endif %}
+                            </article>
+                            {% endfor %}
+                        </div>
+                    </section>
+                    {% endif %}
+
                     <!-- INTERESTS -->
                     {% if data.hobbies %}
                     <section class="ed-section" id="interests">
@@ -265,26 +325,32 @@
                             {% for s in data.socials %}<a class="ed-soc" href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.label }}" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}
                         </div>
                         {% endif %}
-                        <div style="margin-top:40px;color:var(--ed-faint);font-size:12px;">// Built with <a href="https://thetailorcv.com" target="_blank" rel="noopener" style="color:var(--ed-blue);">theTailorCV</a></div>
+                        <div style="margin-top:40px;color:var(--ed-faint);font-size:12px;">// Built by {{ data.name }}</div>
                     </section>
                 </div>
             </div>
         </div>
 
-        <!-- Copilot panel -->
+        <!-- Copilot panel (interactive, client-side — works on static hosting too) -->
         <aside class="ed-copilot">
-            <div class="ed-copilot-head">✦ {{ fname }}'s AI Assistant</div>
+            <div class="ed-copilot-head">✦ {{ fname }}'s AI Assistant <span class="ed-copilot-live">● online</span></div>
             <div class="ed-copilot-ws">WORKSPACE<br><span class="b">● portfolio · {{ data.name|lower|replace(' ','-') }}</span></div>
-            <div class="ed-copilot-body">
+            <div class="ed-copilot-body" id="ed-chat">
                 <div class="ed-msg">
                     <div class="av"></div>
-                    <div class="tx">
-                        {% if about %}{{ about }}{% else %}Ask me about {{ fname }}'s projects, experience and skills.{% endif %}
-                        {% if data.projects %}<br><br>For a full look at the work, open the <b>projects.js</b> tab.{% endif %}
-                    </div>
+                    <div class="tx">Hi! I'm {{ fname }}'s AI assistant. Ask me about {{ fname }}'s <b>skills</b>, <b>projects</b>, <b>experience</b> or how to get in <b>touch</b>. ✨</div>
                 </div>
             </div>
-            <div class="ed-copilot-input">Ask about {{ fname }}'s projects, experience, skills…</div>
+            <div class="ed-suggest" id="ed-suggest">
+                <button type="button" class="ed-chip-q" data-q="What are the top skills?">Top skills</button>
+                <button type="button" class="ed-chip-q" data-q="Tell me about the projects">Projects</button>
+                <button type="button" class="ed-chip-q" data-q="What is the work experience?">Experience</button>
+                <button type="button" class="ed-chip-q" data-q="How can I contact?">Contact</button>
+            </div>
+            <form class="ed-copilot-input" id="ed-chat-form" autocomplete="off">
+                <input id="ed-chat-input" placeholder="Ask about {{ fname }}…" aria-label="Ask the assistant">
+                <button type="submit" aria-label="Send">➤</button>
+            </form>
         </aside>
     </div>
 
@@ -301,6 +367,72 @@
         </span>
     </div>
 </div>
+
+{% set ns = namespace(projects=[], skills=[]) %}
+{% for g in data.skills %}{% for it in g['items'] %}{% set _ = ns.skills.append(it) %}{% endfor %}{% endfor %}
+{% for p in data.projects %}{% set _ = ns.projects.append({'name': p.name, 'subtitle': p.subtitle, 'url': p.url, 'github': p.github, 'bullets': p.bullets}) %}{% endfor %}
+<script id="ed-portfolio-data" type="application/json">{{ {
+    "name": data.name, "fname": fname, "about": about, "tagline": tagline,
+    "email": data.email, "phone": data.phone, "location": data.location,
+    "skills": ns.skills, "projects": ns.projects,
+    "experience": data.experience, "education": data.education, "socials": data.socials,
+    "slug": slug, "has_cv": has_cv, "github_username": data.github_username
+} | tojson }}</script>
+
+<script>
+/* Interactive AI assistant — answers from the embedded portfolio data, no backend
+   needed (so it works on the static Netlify export too). */
+(function () {
+    var dataEl = document.getElementById('ed-portfolio-data');
+    if (!dataEl) return;
+    var P; try { P = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    var chat = document.getElementById('ed-chat');
+    var form = document.getElementById('ed-chat-form');
+    var input = document.getElementById('ed-chat-input');
+    var suggest = document.getElementById('ed-suggest');
+    if (!chat || !form || !input) return;
+
+    function el(cls, html) { var d = document.createElement('div'); d.className = cls; if (html != null) d.innerHTML = html; return d; }
+    function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+    function addUser(t) { var m = el('ed-msg ed-msg-user'); m.appendChild(el('tx', esc(t))); chat.appendChild(m); chat.scrollTop = chat.scrollHeight; }
+    function addBot(t) { var m = el('ed-msg'); m.appendChild(el('av')); var tx = el('tx'); tx.innerHTML = esc(t).replace(/\n/g, '<br>'); m.appendChild(tx); chat.appendChild(m); chat.scrollTop = chat.scrollHeight; }
+    function typing() { var m = el('ed-msg ed-typing'); m.appendChild(el('av')); m.appendChild(el('tx', '<span class="ed-dot"></span><span class="ed-dot"></span><span class="ed-dot"></span>')); chat.appendChild(m); chat.scrollTop = chat.scrollHeight; return m; }
+
+    function reply(q) {
+        q = (q || '').toLowerCase();
+        if (/\b(hi|hello|hey|yo)\b/.test(q)) return "Hey! 👋 Ask me about " + P.fname + "'s skills, projects, experience or contact.";
+        if (/skill|tech|stack|language|tool|know|expert/.test(q)) {
+            if (!P.skills.length) return "No skills are listed yet.";
+            return P.fname + " works with " + P.skills.slice(0, 14).join(", ") + ".";
+        }
+        if (/project|built|build|ship|made|app|created/.test(q)) {
+            if (!P.projects.length) return "No projects are listed yet.";
+            return "Here are some highlights:\n" + P.projects.slice(0, 4).map(function (p) { return "• " + p.name + (p.bullets && p.bullets[0] ? " — " + p.bullets[0] : ""); }).join("\n");
+        }
+        if (/experience|work|job|role|company|career|intern/.test(q)) {
+            if (!P.experience.length) return "No experience is listed yet.";
+            return P.experience.slice(0, 4).map(function (e) { return "• " + (e.title || "") + (e.company ? " @ " + e.company : "") + (e.dates ? " (" + e.dates + ")" : ""); }).join("\n");
+        }
+        if (/education|study|degree|college|university|school|grad/.test(q)) {
+            if (!P.education || !P.education.length) return "No education is listed yet.";
+            return P.education.map(function (e) { return "• " + (e.school || "") + (e.degree ? " — " + e.degree : ""); }).join("\n");
+        }
+        if (/contact|email|reach|hire|touch|connect|phone|mail/.test(q)) {
+            var parts = [];
+            if (P.email) parts.push("✉ " + P.email);
+            if (P.phone) parts.push("☎ " + P.phone);
+            (P.socials || []).forEach(function (s) { if (s.url) parts.push(s.label + ": " + s.url); });
+            return parts.length ? ("Here's how to reach " + P.fname + ":\n" + parts.join("\n")) : "Contact details aren't listed yet.";
+        }
+        if (/who|about|yourself|summary|intro|background/.test(q)) return P.about || P.tagline || (P.name + " — explore the tabs for the full story.");
+        return "I can help with " + P.fname + "'s skills, projects, experience, education or contact. Try a chip below 👇";
+    }
+
+    function ask(q) { if (!q) return; addUser(q); var t = typing(); setTimeout(function () { t.remove(); addBot(reply(q)); }, 480 + Math.random() * 380); }
+    form.addEventListener('submit', function (e) { e.preventDefault(); var q = input.value.trim(); if (!q) return; input.value = ''; ask(q); });
+    if (suggest) suggest.addEventListener('click', function (e) { var b = e.target.closest('.ed-chip-q'); if (!b) return; ask(b.getAttribute('data-q')); });
+})();
+</script>
 
 <script>
 (function () {
