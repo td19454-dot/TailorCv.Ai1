@@ -1363,6 +1363,33 @@
                         </div>
                     </div>
                 </article>
+
+                <article class="feature-showcase-item reverse">
+                    <div class="feature-showcase-copy">
+                        <p class="feature-showcase-kicker">Portfolio Builder</p>
+                        <h3 class="feature-showcase-title">Turn your resume into a live portfolio website</h3>
+                        <p class="feature-showcase-text">
+                            Pick a template, edit your details, and publish a shareable portfolio site in minutes &mdash;
+                            no coding. Stand out with a personal link you can put on every application.
+                        </p>
+                        <a href="/portfolio" class="feature-showcase-btn">Build My Portfolio</a>
+                    </div>
+                    <div class="feature-showcase-visual tone-purple" aria-hidden="true">
+                        <div class="mock-card">
+                            <p class="mock-title">yourname.thetailorcv.com</p>
+                            <div class="mock-pill-row">
+                                <span class="mock-pill">About</span>
+                                <span class="mock-pill">Projects</span>
+                                <span class="mock-pill">Skills</span>
+                                <span class="mock-pill">Contact</span>
+                            </div>
+                            <div class="mock-line long"></div>
+                            <div class="mock-line long"></div>
+                            <div class="mock-line short"></div>
+                            <button type="button" class="mock-generate-btn">Publish Website</button>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -1458,6 +1485,115 @@
                 </article>
             </div>
             <p class="ats-tmpl-all"><a href="/templates">Browse all templates &rarr;</a></p>
+        </div>
+    </section>
+
+    <!-- Portfolio Website Templates Section -->
+    <style>
+        .pf-templates .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .pf-templates { padding: 6rem 0; position: relative; z-index: 1; }
+        .pf-tmpl-badge {
+            display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .05em;
+            padding: 4px 11px; border-radius: 999px; margin-bottom: 14px;
+            background: linear-gradient(135deg, #7c3aed, #4c1d95); color: #fff;
+        }
+        /* Cards mirror the portfolio builder gallery (.pb-tpl) for a consistent look */
+        .pf-tmpl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(360px,100%),1fr)); gap: 22px; margin-top: 2.6rem; }
+        .pf-tmpl-card {
+            display: block; border: 2px solid rgba(99,130,200,.22); border-radius: 16px; overflow: hidden;
+            background: rgba(255,255,255,.02); transition: transform .18s, border-color .18s, box-shadow .18s;
+        }
+        .pf-tmpl-card:hover { transform: translateY(-4px); border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139,92,246,.25); }
+        .pf-tmpl-prev {
+            display: block; aspect-ratio: 16 / 9; position: relative; overflow: hidden; background: #0b0d16;
+        }
+        .pf-tmpl-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: top center; display: block; z-index: 3; background: #0b0d16; }
+        .pf-tmpl-use {
+            position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; padding: 9px 12px; text-align: center;
+            font-size: .82rem; font-weight: 700; color: #fff; background: linear-gradient(135deg,#7c3aed,#4c1d95);
+        }
+        .pf-tmpl-foot { padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(255,255,255,.015); }
+        .pf-tmpl-foot strong { font-size: .95rem; font-weight: 700; color: #fff; }
+        .pf-tmpl-demo {
+            font-size: .9rem; font-weight: 700; white-space: nowrap; padding: 8px 16px; border-radius: 8px;
+            color: #fff; text-decoration: none; background: linear-gradient(135deg,#2dd4bf,#0ea5e9);
+            box-shadow: 0 2px 10px rgba(14,165,233,.35); transition: transform .12s ease, box-shadow .12s ease;
+        }
+        .pf-tmpl-demo:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(14,165,233,.5); }
+        .pf-tmpl-all { text-align: center; margin-top: 2.4rem; }
+        .pf-tmpl-all a { color: #c4b5fd; font-weight: 700; text-decoration: none; font-size: 1rem; }
+        .pf-tmpl-all a:hover { text-decoration: underline; }
+    </style>
+    <section class="pf-templates">
+        <div class="container">
+            <div class="section-header">
+                <span class="pf-tmpl-badge">NEW</span>
+                <h2 class="section-title">Portfolio Website Templates</h2>
+                <p class="section-subtitle">Turn your resume into a live, shareable portfolio website. Pick a design, edit, and publish in minutes &mdash; no coding.</p>
+            </div>
+            <div class="pf-tmpl-grid">
+                <article class="pf-tmpl-card">
+                    <a class="pf-tmpl-prev" href="/portfolio">
+                        <img class="pf-tmpl-img" src="/static/portfolio-previews/editor.png" alt="Editor portfolio website template" loading="lazy">
+                        <span class="pf-tmpl-use">Use this template →</span>
+                    </a>
+                    <div class="pf-tmpl-foot">
+                        <strong>Editor</strong>
+                        <a class="pf-tmpl-demo" href="https://karen-taylor-5.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
+                    </div>
+                </article>
+                <article class="pf-tmpl-card">
+                    <a class="pf-tmpl-prev" href="/portfolio">
+                        <img class="pf-tmpl-img" src="/static/portfolio-previews/wave.png" alt="Wave portfolio website template" loading="lazy">
+                        <span class="pf-tmpl-use">Use this template →</span>
+                    </a>
+                    <div class="pf-tmpl-foot">
+                        <strong>Wave</strong>
+                        <a class="pf-tmpl-demo" href="https://trisha-debnath-8.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
+                    </div>
+                </article>
+                <article class="pf-tmpl-card">
+                    <a class="pf-tmpl-prev" href="/portfolio">
+                        <img class="pf-tmpl-img" src="/static/portfolio-previews/codeflow.png" alt="Codeflow portfolio website template" loading="lazy">
+                        <span class="pf-tmpl-use">Use this template →</span>
+                    </a>
+                    <div class="pf-tmpl-foot">
+                        <strong>Codeflow</strong>
+                        <a class="pf-tmpl-demo" href="https://joseph-harris.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
+                    </div>
+                </article>
+                <article class="pf-tmpl-card">
+                    <a class="pf-tmpl-prev" href="/portfolio">
+                        <img class="pf-tmpl-img" src="/static/portfolio-previews/nova.png" alt="Nova portfolio website template" loading="lazy">
+                        <span class="pf-tmpl-use">Use this template →</span>
+                    </a>
+                    <div class="pf-tmpl-foot">
+                        <strong>Nova</strong>
+                        <a class="pf-tmpl-demo" href="https://william-davis-7ef8.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
+                    </div>
+                </article>
+                <article class="pf-tmpl-card">
+                    <a class="pf-tmpl-prev" href="/portfolio">
+                        <img class="pf-tmpl-img" src="/static/portfolio-previews/panels.png" alt="Panels portfolio website template" loading="lazy">
+                        <span class="pf-tmpl-use">Use this template →</span>
+                    </a>
+                    <div class="pf-tmpl-foot">
+                        <strong>Panels</strong>
+                        <a class="pf-tmpl-demo" href="https://mary-smith-2.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
+                    </div>
+                </article>
+                <article class="pf-tmpl-card">
+                    <a class="pf-tmpl-prev" href="/portfolio">
+                        <img class="pf-tmpl-img" src="/static/portfolio-previews/github.png" alt="GitHub portfolio website template" loading="lazy">
+                        <span class="pf-tmpl-use">Use this template →</span>
+                    </a>
+                    <div class="pf-tmpl-foot">
+                        <strong>GitHub</strong>
+                        <a class="pf-tmpl-demo" href="https://karen-taylor.netlify.app/" target="_blank" rel="noopener">View demo ↗</a>
+                    </div>
+                </article>
+            </div>
+            <p class="pf-tmpl-all"><a href="/portfolio">Browse all portfolio templates &rarr;</a></p>
         </div>
     </section>
 
