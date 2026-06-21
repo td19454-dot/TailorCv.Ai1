@@ -246,6 +246,11 @@
         var successEl = document.getElementById('cancelSuccess');
         var accessUntilDate = document.getElementById('accessUntilDate');
 
+        var planProvider = '{{ plan_provider }}';
+        var cancelUrl = planProvider === 'polar'
+            ? '/api/billing/polar/cancel'
+            : '/api/billing/razorpay/cancel';
+
         function openModal() { overlay.classList.add('open'); }
         function closeModal() { overlay.classList.remove('open'); }
 
@@ -260,7 +265,7 @@
                 spinner.style.display = 'block';
                 keepBtn.disabled = true;
 
-                fetch('/api/billing/razorpay/cancel', { method: 'POST' })
+                fetch(cancelUrl, { method: 'POST' })
                     .then(function (r) { return r.json(); })
                     .then(function (data) {
                         closeModal();

@@ -492,8 +492,17 @@
         .then(function(d) { if (d && d.region) applyRegionPricing(d.region); })
         .catch(function() { /* keep default india pricing */ });
 
-    // ── Checkout (Razorpay) ───────────────────────────────────────────────────
+    // ── Checkout ──────────────────────────────────────────────────────────────
     async function checkout(plan) {
+        if (_region === 'india') {
+            await checkoutRazorpay(plan);
+        } else {
+            await checkoutPolar(plan);
+        }
+    }
+
+    // Razorpay checkout — India (INR) only
+    async function checkoutRazorpay(plan) {
         try {
             const endpoint = plan === 'weekly'
                 ? '/api/billing/razorpay/order'
@@ -563,6 +572,28 @@
             opts.subscription_id = data.subscription_id;
         }
         new window.Razorpay(opts).open();
+    }
+
+    // Polar checkout — LIC + Global (USD)
+    async function checkoutPolar(plan) {
+        try {
+            const res = await fetch('/api/billing/polar/checkout', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ plan }),
+            });
+            if (res.status === 401) { window.location.href = '/login?next=/pricing'; return; }
+            if (res.status === 503) { alert('Payments not configured yet. Check back soon.'); return; }
+            const data = await res.json();
+            if (data.checkout_url) {
+                window.location.href = data.checkout_url;
+            } else {
+                alert('Could not start checkout. Please try again.');
+            }
+        } catch (e) {
+            console.error(e);
+            alert('Something went wrong. Please try again.');
+        }
     }
     </script>
 </body>
