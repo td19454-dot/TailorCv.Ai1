@@ -575,16 +575,15 @@ html.tcv-app .site-footer { display: none !important; }
     letter-spacing: normal;
 }
 
-/* Company dropdown — same light card style as the Features mega menu, but a
-   compact single column (uses .nav-mega-item entries for the matching look). */
+/* Company dropdown — dark card to match the Features mega menu and site theme. */
 .navbar .nav-dropdown .nav-dropdown-menu.nav-company-menu {
     min-width: 320px;
     padding: 14px;
     gap: 6px;
     border-radius: 18px;
-    background: #ffffff;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: 0 28px 70px rgba(15, 23, 42, 0.22);
+    background: linear-gradient(145deg, #0d0f2b 0%, #11164a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
 }
 
 /* ── Features mega menu — light, detailed (Careerflow-style) panel ──────────
@@ -598,9 +597,9 @@ html.tcv-app .site-footer { display: none !important; }
     max-width: calc(100vw - 32px);
     padding: 20px;
     border-radius: 20px;
-    background: #ffffff;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: 0 28px 70px rgba(15, 23, 42, 0.22);
+    background: linear-gradient(145deg, #0d0f2b 0%, #11164a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
 }
 /* Keep it a grid in every "shown" state (overrides style3's display:block). */
 .navbar .nav-dropdown.open .nav-dropdown-menu.nav-mega-menu {
@@ -625,13 +624,13 @@ html.tcv-app .site-footer { display: none !important; }
     text-decoration: none;
     text-transform: none;
     letter-spacing: normal;
-    background: #e9f1ff;
-    border: 1px solid rgba(37, 99, 235, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     transition: background .15s ease, border-color .15s ease;
 }
 .navbar .nav-mega-item:hover {
-    background: #d6e6ff;
-    border-color: rgba(37, 99, 235, 0.32);
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(99, 160, 255, 0.35);
 }
 .navbar .nav-mega-ic {
     flex: 0 0 46px;
@@ -641,9 +640,9 @@ html.tcv-app .site-footer { display: none !important; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #2563eb;
-    background: #ffffff;
-    border: 1px solid rgba(37, 99, 235, 0.18);
+    color: #60a5fa;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 .navbar .nav-mega-ic svg { width: 23px; height: 23px; }
 .navbar .nav-mega-tx { display: flex; flex-direction: column; line-height: 1.35; min-width: 0; }
@@ -653,12 +652,12 @@ html.tcv-app .site-footer { display: none !important; }
     flex-wrap: wrap;
     gap: 8px;
     font-size: 1rem;
-    color: #0f172a;
+    color: #e8eeff;
     font-weight: 700;
     text-transform: none;
     letter-spacing: normal;
 }
-.navbar .nav-mega-tx small { font-size: 0.82rem; color: #64748b; margin-top: 3px; font-weight: 400; text-transform: none; letter-spacing: normal; }
+.navbar .nav-mega-tx small { font-size: 0.82rem; color: #8ba3c9; margin-top: 3px; font-weight: 400; text-transform: none; letter-spacing: normal; }
 
 /* Badges */
 .navbar .nav-mega-badge {
@@ -681,10 +680,10 @@ html.tcv-app .site-footer { display: none !important; }
    modify_cv.css) set .nav-links a { color:#fff }, which loads after this file
    and washed out the icons (stroke=currentColor → white on white tiles) and the
    text. Force the intended colors so the menu looks identical everywhere. */
-.navbar .nav-mega-item .nav-mega-ic { color: #2563eb !important; }
-.navbar .nav-mega-item .nav-mega-ic svg { stroke: #2563eb !important; }
-.navbar .nav-mega-item .nav-mega-tx strong { color: #0f172a !important; -webkit-text-fill-color: #0f172a !important; }
-.navbar .nav-mega-item .nav-mega-tx small { color: #64748b !important; -webkit-text-fill-color: #64748b !important; }
+.navbar .nav-mega-item .nav-mega-ic { color: #60a5fa !important; }
+.navbar .nav-mega-item .nav-mega-ic svg { stroke: #60a5fa !important; }
+.navbar .nav-mega-item .nav-mega-tx strong { color: #e8eeff !important; -webkit-text-fill-color: #e8eeff !important; }
+.navbar .nav-mega-item .nav-mega-tx small { color: #8ba3c9 !important; -webkit-text-fill-color: #8ba3c9 !important; }
 .navbar .nav-mega-item .nav-mega-badge { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
 
 /* "All Features" CTA cell */
@@ -698,14 +697,14 @@ html.tcv-app .site-footer { display: none !important; }
     letter-spacing: normal;
     border-radius: 14px;
     padding: 13px 14px;
-    background: #f4f7ff;
-    border: 1px solid rgba(37, 99, 235, 0.16);
-    color: #1e40af;
+    background: rgba(99, 160, 255, 0.12);
+    border: 1px solid rgba(99, 160, 255, 0.25);
+    color: #93c5fd;
     font-weight: 700;
     font-size: 0.98rem;
     transition: background .15s ease, border-color .15s ease;
 }
-.navbar .nav-mega-cta:hover { background: #e4edff; border-color: rgba(37, 99, 235, 0.34); }
+.navbar .nav-mega-cta:hover { background: rgba(99, 160, 255, 0.2); border-color: rgba(99, 160, 255, 0.45); }
 .navbar .nav-mega-cta svg { width: 18px; height: 18px; }
 
 /* ── Mobile drawer dropdowns (≤768px) ──────────────────────────────────────
