@@ -127,7 +127,12 @@ app.add_middleware(SessionMiddleware, secret_key=_SECRET_KEY)
 # ── CSRF protection (double-submit cookie) ────────────────────────────────────
 @app.middleware("http")
 async def csrf_middleware(request: Request, call_next):
-    EXEMPT_PATHS = {"/api/linkedin/oauth/callback", "/api/extension/log-application"}
+    EXEMPT_PATHS = {
+        "/api/linkedin/oauth/callback",
+        "/api/extension/log-application",
+        "/api/billing/razorpay/webhook",
+        "/api/billing/polar/webhook",
+    }
     SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
 
     if request.method not in SAFE_METHODS and request.url.path not in EXEMPT_PATHS:
@@ -6481,7 +6486,8 @@ async def manage_subscription_page(request: Request):
                 "request": request,
                 "user": user,
                 "pro_until": user.pro_until,
-                "has_subscription": bool(user.razorpay_subscription_id),
+                "has_subscription": bool(user.razorpay_subscription_id or user.polar_subscription_id),
+                "plan_provider": user.plan_provider or "razorpay",
             },
         )
     finally:

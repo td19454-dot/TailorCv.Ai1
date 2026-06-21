@@ -14,8 +14,9 @@ class User(Base):
     email = Column(String(255), unique=True, index=True, nullable=False)
     hashed_password = Column("password", String(255), nullable=False)
     pro_until = Column(DateTime, nullable=True)                        # Pro iff pro_until > utcnow()
-    plan_provider = Column(String(20), nullable=True)                  # "razorpay"
+    plan_provider = Column(String(20), nullable=True)                  # "razorpay" | "polar"
     razorpay_subscription_id = Column(String(100), nullable=True)
+    polar_subscription_id = Column(String(100), nullable=True)
     # One Netlify "live site" per user — reused across all their portfolios so each
     # user only ever consumes credits for a single site. netlify_portfolio_id tracks
     # which portfolio is currently published there.
