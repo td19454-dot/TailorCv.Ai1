@@ -3920,15 +3920,14 @@ html, body { overflow-x: hidden !important; }
 }
 
 .sales-pop-map {
-    width: 64px;
-    height: 64px;
-    border-radius: 4px;
-    border: 1px solid #d6dce7;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
     background:
-        linear-gradient(90deg, rgba(231, 235, 244, 0.7) 0 1px, transparent 1px 100%),
-        linear-gradient(rgba(231, 235, 244, 0.7) 0 1px, transparent 1px 100%),
-        linear-gradient(145deg, #efefef, #dfdfdf);
-    background-size: 12px 12px, 12px 12px, 100% 100%;
+        url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='white'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3E%3Ccircle%20cx='12'%20cy='8'%20r='4'/%3E%3Cpath%20d='M4%2020c0-4%204-6%208-6s8%202%208%206'/%3E%3C/svg%3E") center / 28px 28px no-repeat,
+        linear-gradient(135deg, #4a6aff, #7c3aed);
+    box-shadow: 0 4px 14px rgba(74, 106, 255, 0.4);
 }
 
 .sales-pop-text {
@@ -3978,8 +3977,9 @@ html, body { overflow-x: hidden !important; }
     }
 
     .sales-pop-map {
-        width: 54px;
-        height: 54px;
+        width: 48px;
+        height: 48px;
+        background-size: 24px 24px, 100% 100%;
     }
 
     .sales-pop-text {

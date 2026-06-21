@@ -2565,9 +2565,13 @@
 
             function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
-            let timer = null;
+            // Calm cadence: each popup slides in, stays a few seconds, slides out,
+            // then a longer quiet gap before the next one (no constant flashing).
+            const DISPLAY_MS = 6000;   // time on screen
+            const GAP_MS = 16000;      // quiet pause after it hides
+            let hideTimer = null, nextTimer = null, stopped = false;
 
-            function showEntry() {
+            function setText() {
                 if (Math.random() < 0.25) {
                     // Occasional aggregate stat line
                     nameEl.textContent = "Today";
@@ -2579,21 +2583,26 @@
                     actionEl.textContent = pick(actions);
                 }
                 planEl.textContent = "TailorCV";
-                pop.classList.remove("visible");
-                requestAnimationFrame(() => pop.classList.add("visible"));
             }
 
-            function startLoop() {
-                showEntry();
-                timer = setInterval(showEntry, 7000);
+            function cycle() {
+                if (stopped) return;
+                setText();
+                pop.classList.add("visible");
+                hideTimer = setTimeout(() => {
+                    pop.classList.remove("visible");
+                    nextTimer = setTimeout(cycle, GAP_MS);
+                }, DISPLAY_MS);
             }
 
             closeBtn.addEventListener("click", () => {
+                stopped = true;
                 pop.classList.remove("visible");
-                if (timer) clearInterval(timer);
+                clearTimeout(hideTimer);
+                clearTimeout(nextTimer);
             });
 
-            setTimeout(startLoop, 6000);
+            setTimeout(cycle, 8000);
         })();
     </script>
 
