@@ -500,7 +500,7 @@
                 </div>
                 <a class="pb-btn pb-btn-next" id="pb-view-link" href="#" target="_blank" rel="noopener" style="text-decoration:none;">View my site →</a>
                 <div id="pb-netlify" style="margin-top:22px;">
-                    <button class="pb-btn pb-btn-back" id="pb-netlify-btn" onclick="pbDeployNetlify()">🌐 Also publish a free copy to Netlify</button>
+                    <button class="pb-btn pb-btn-back" id="pb-netlify-btn" onclick="pbDeployNetlify()">🌐 Also publish a free live copy</button>
                     <div class="pb-msg" id="pb-netlify-msg" style="text-align:center;"></div>
                 </div>
             </div>
@@ -863,8 +863,8 @@
         };
         window.pbDeployNetlify = async function () {
             const btn = document.getElementById("pb-netlify-btn");
-            if (!state.portfolioId) { msg("pb-netlify-msg", "Publish first, then deploy to Netlify.", "err"); return; }
-            btn.disabled = true; btn.innerHTML = '<span class="pb-spinner"></span>Deploying to Netlify…';
+            if (!state.portfolioId) { msg("pb-netlify-msg", "Publish first, then create your live site.", "err"); return; }
+            btn.disabled = true; btn.innerHTML = '<span class="pb-spinner"></span>Publishing your live site…';
             try {
                 const csrf = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || "";
                 const res = await fetch("/api/portfolio/" + state.portfolioId + "/deploy-netlify", {
@@ -872,15 +872,15 @@
                 });
                 const data = await res.json();
                 if (!res.ok || !data.success) {
-                    msg("pb-netlify-msg", data.error || "Could not deploy to Netlify.", "err");
-                    btn.disabled = false; btn.innerHTML = "🌐 Also publish a free copy to Netlify"; return;
+                    msg("pb-netlify-msg", data.error || "Could not publish. Please try again.", "err");
+                    btn.disabled = false; btn.innerHTML = "🌐 Also publish a free live copy"; return;
                 }
                 document.getElementById("pb-netlify").innerHTML =
-                    '<div class="pb-msg ok">Live on Netlify 🎉</div>' +
-                    '<a class="pb-btn pb-btn-next" href="' + data.netlify_url + '" target="_blank" rel="noopener" style="text-decoration:none;">' + data.netlify_url + ' →</a>';
+                    '<div class="pb-msg ok" style="display:block;margin:0 0 14px;">Your site is live 🎉</div>' +
+                    '<a class="pb-btn pb-btn-next" href="' + data.netlify_url + '" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block;">Open live site →</a>';
             } catch (e) {
                 msg("pb-netlify-msg", "Network error. Please try again.", "err");
-                btn.disabled = false; btn.innerHTML = "🌐 Also publish a free copy to Netlify";
+                btn.disabled = false; btn.innerHTML = "🌐 Also publish a free live copy";
             }
         };
 

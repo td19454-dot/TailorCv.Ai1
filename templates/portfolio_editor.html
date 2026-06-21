@@ -372,11 +372,11 @@
 {% for g in data.skills %}{% for it in g['items'] %}{% set _ = ns.skills.append(it) %}{% endfor %}{% endfor %}
 {% for p in data.projects %}{% set _ = ns.projects.append({'name': p.name, 'subtitle': p.subtitle, 'url': p.url, 'github': p.github, 'bullets': p.bullets}) %}{% endfor %}
 <script id="ed-portfolio-data" type="application/json">{{ {
-    "name": data.name, "fname": fname, "about": about, "tagline": tagline,
-    "email": data.email, "phone": data.phone, "location": data.location,
+    "name": data.name or "", "fname": fname, "about": about or "", "tagline": tagline or "",
+    "email": data.email or "", "phone": data.phone or "", "location": data.location or "",
     "skills": ns.skills, "projects": ns.projects,
-    "experience": data.experience, "education": data.education, "socials": data.socials,
-    "slug": slug, "has_cv": has_cv, "github_username": data.github_username
+    "experience": data.experience or [], "education": data.education or [], "socials": data.socials or [],
+    "slug": slug, "has_cv": has_cv, "github_username": data.github_username or ""
 } | tojson }}</script>
 
 <script>
