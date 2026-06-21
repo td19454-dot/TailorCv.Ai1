@@ -3418,6 +3418,10 @@ html, body { overflow-x: hidden !important; }
     background: linear-gradient(135deg, rgba(18, 92, 82, 0.68), rgba(10, 28, 44, 0.92));
 }
 
+.feature-showcase-visual.tone-purple {
+    background: linear-gradient(135deg, rgba(109, 40, 217, 0.68), rgba(28, 16, 64, 0.92));
+}
+
 .mock-card {
     border-radius: 16px;
     padding: 22px;
