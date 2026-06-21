@@ -186,6 +186,19 @@
             .scan-actions { flex-wrap: wrap; }
             .scan-msg { margin-left: 0; }
         }
+
+        /* ── Slim font weights across the dashboard (sidebar + main content) ──── */
+        .side, .side *,
+        .main, .main * {
+            font-weight: 400 !important;
+        }
+        .main h1, .main h2, .main h3, .main h4,
+        .main .greet, .main .stat .num,
+        .main button, .main .cta, .main .go,
+        .main strong, .main b,
+        .side .side-link {
+            font-weight: 500 !important;
+        }
     </style>
 </head>
 <body>
@@ -1895,5 +1908,6 @@ Nice to have:
         });
     })();
     </script>
+    <script src="/static/resume_store.js?v=1"></script>
 </body>
 </html>

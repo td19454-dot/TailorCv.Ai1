@@ -166,7 +166,7 @@
                     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
                     <span id="cv-upload-dropzone-label" style="color:#6ee7b7;font-size:14px;font-weight:600;">Click to choose a PDF</span>
                     <span style="color:#9bb0d8;font-size:12px;">or drag &amp; drop here &nbsp;·&nbsp; PDF only</span>
-                    <input id="cv-upload-file-input" type="file" accept=".pdf,application/pdf" style="display:none;">
+                    <input id="cv-upload-file-input" type="file" accept=".pdf,application/pdf" style="display:none;" data-restore-silent>
                 </label>
                 <div id="cv-upload-error" style="display:none;color:#fca5a5;font-size:13px;margin-top:10px;"></div>
                 <div id="cv-upload-loading" style="display:none;text-align:center;padding:1rem 0;color:#9bb0d8;">
@@ -273,5 +273,6 @@
   draw();
 })();
 </script>
+<script src="/static/resume_store.js?v=1"></script>
 </body>
 </html>

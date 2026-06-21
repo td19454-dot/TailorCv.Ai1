@@ -2091,105 +2091,104 @@ def process_resume(resume_name,jd_string):
     #     return f"Failed to export resume: {str(e)} 💔"
 
 async def generate_interview_questions(resume_string: str, jd_string: str) -> dict:
-    """Generate role-specific interview questions based on resume and job description."""
-    prompt = f"""You are an expert technical recruiter and interview coach.
-Analyze the resume and job description below, then generate targeted interview questions.
+    """Generate role-specific interview questions based on resume and job description.
+
+    The 4 categories are generated as 4 parallel LLM calls instead of one large
+    50-question call. Output tokens dominate latency, so splitting the work and
+    running it concurrently cuts wall-clock time to roughly the slowest single
+    category (~15 questions) rather than the sum of all 50.
+    """
+    # Trim inputs — the model only needs the substance, and shorter prompts are faster.
+    resume_string = (resume_string or "")[:6000]
+    jd_string = (jd_string or "")[:4000]
+
+    client = await _build_openai_client()
+
+    # (display name, icon, how many questions, whether to also infer job_title/company)
+    cat_specs = [
+        ("Technical Skills", "TS", 15, True),
+        ("Experience & Projects", "EP", 15, False),
+        ("Behavioural", "BH", 10, False),
+        ("Culture & Motivation", "CM", 10, False),
+    ]
+
+    def _build_prompt(name: str, count: int, want_meta: bool) -> str:
+        meta = (
+            '"job_title": "<inferred job title from JD>", '
+            '"company": "<company name if mentioned, else \'the company\'>", '
+            if want_meta else ""
+        )
+        return f"""You are an expert technical recruiter and interview coach.
+Based on the resume and job description, generate exactly {count} "{name}" interview questions.
+Output ONLY valid JSON, no markdown:
+
+{{ {meta}"questions": [
+  {{"q": "<question>", "tip": "<1-sentence answer tip>", "answer": "<model answer, 70-110 words, direct and role-specific with concrete context, tools, and outcome>"}}
+] }}
+
+Make questions specific to the candidate's actual resume and the role — not generic.
+Advanced difficulty: senior-level, scenario-based, tradeoff-oriented. Most questions should
+require decision-making under constraints (time, scale, reliability, security, unclear
+requirements, stakeholder pressure). Avoid textbook/definition questions.
+Each model answer is a direct sample answer only (no coaching advice).
 
 Resume:
 {resume_string}
 
 Job Description:
-{jd_string}
+{jd_string}"""
 
-Generate exactly 50 interview questions grouped into 4 categories.
-Output ONLY valid JSON. No markdown, no extra text.
-
-{{
-  "job_title": "<inferred job title from JD>",
-  "company": "<company name if mentioned, else 'the company'>",
-  "categories": [
-    {{
-      "name": "Technical Skills",
-      "icon": "TS",
-      "questions": [
-        {{"q": "<question>", "tip": "<1-sentence answer tip for the candidate>", "answer": "<medium-length model answer (70-110 words), direct and role-specific>"}}
-      ]
-    }},
-    {{
-      "name": "Experience & Projects",
-      "icon": "EP",
-      "questions": [
-        {{"q": "<question>", "tip": "<1-sentence answer tip>", "answer": "<medium-length model answer (70-110 words), direct and role-specific>"}}
-      ]
-    }},
-    {{
-      "name": "Behavioural",
-      "icon": "BH",
-      "questions": [
-        {{"q": "<question>", "tip": "<1-sentence answer tip>", "answer": "<medium-length model answer (70-110 words), direct and role-specific>"}}
-      ]
-    }},
-    {{
-      "name": "Culture & Motivation",
-      "icon": "CM",
-      "questions": [
-        {{"q": "<question>", "tip": "<1-sentence answer tip>", "answer": "<medium-length model answer (70-110 words), direct and role-specific>"}}
-      ]
-    }}
-  ]
-}}
-
-Distribute questions: 15 Technical, 15 Experience, 10 Behavioural, 10 Culture. Total = 50.
-Make questions specific to the candidate's actual resume and the role. Not generic.
-Set overall difficulty to advanced: prefer senior-level, scenario-based, tradeoff-oriented questions.
-At least 60% of questions should require decision-making under constraints (time, scale, reliability, security, unclear requirements, stakeholder pressure).
-Include probing follow-up style wording in questions where appropriate (e.g., "why this approach", "what failed", "what would you change now").
-Avoid simple textbook/definition questions unless directly tied to a real project in the resume or JD.
-For every model answer:
-- write 70-110 words
-- provide a direct sample answer only
-- include concrete project/work context, tools/skills used, and outcome
-- do not include coaching advice, response tips, or phrases like "How to shape your response"."""
-
-    client = await _build_openai_client()
-    try:
-        response = await client.chat.completions.create(
+    async def _gen_category(name: str, icon: str, count: int, want_meta: bool) -> dict:
+        # Bound output so each call stays fast (~160 tokens/question is plenty).
+        resp = await client.chat.completions.create(
             model="gpt-4o-mini",
-            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            messages=[{"role": "user", "content": _build_prompt(name, count, want_meta)}],
             temperature=0.4,
-            max_tokens=8000,
+            max_tokens=min(4000, count * 170 + 300),
         )
-        raw = (response.choices[0].message.content or "").strip()
-        raw = re.sub(r"^```json\s*", "", raw)
-        raw = re.sub(r"\s*```$", "", raw)
-        parsed = json.loads(raw)
+        data = json.loads((resp.choices[0].message.content or "").strip())
+        return {
+            "name": name,
+            "icon": icon,
+            "questions": data.get("questions") or [],
+            "_job_title": data.get("job_title") if want_meta else None,
+            "_company": data.get("company") if want_meta else None,
+        }
 
-        categories = parsed.get("categories") if isinstance(parsed, dict) else []
-        if isinstance(categories, list):
-            for cat in categories:
-                if not isinstance(cat, dict):
+    try:
+        results = await asyncio.gather(*[
+            _gen_category(name, icon, count, want_meta)
+            for (name, icon, count, want_meta) in cat_specs
+        ])
+
+        job_title, company = "", "the company"
+        categories = []
+        for cat in results:
+            if cat.get("_job_title"):
+                job_title = str(cat["_job_title"]).strip() or job_title
+            if cat.get("_company"):
+                company = str(cat["_company"]).strip() or company
+            questions = cat["questions"] if isinstance(cat["questions"], list) else []
+            for question in questions:
+                if not isinstance(question, dict):
                     continue
-                questions = cat.get("questions")
-                if not isinstance(questions, list):
-                    cat["questions"] = []
-                    continue
-                for question in questions:
-                    if not isinstance(question, dict):
-                        continue
-                    question["q"] = str(question.get("q", "")).strip()
-                    question["tip"] = str(question.get("tip", "")).strip()
-                    answer = str(question.get("answer", "")).strip()
-                    if len(answer) < 180:
-                        base = answer or (
-                            "In this case, I focused on solving the core requirement by breaking the problem into clear steps and prioritizing reliability first."
-                        )
-                        answer = (
-                            f"{base} I worked with the relevant tools for the role, handled trade-offs around performance and maintainability, "
-                            f"and coordinated implementation to keep delivery predictable. The result was a measurable improvement in quality and speed, "
-                            f"while keeping the solution easy for the team to maintain and extend."
-                        )
-                    question["answer"] = answer
-        return parsed
+                question["q"] = str(question.get("q", "")).strip()
+                question["tip"] = str(question.get("tip", "")).strip()
+                answer = str(question.get("answer", "")).strip()
+                if len(answer) < 180:
+                    base = answer or (
+                        "In this case, I focused on solving the core requirement by breaking the problem into clear steps and prioritizing reliability first."
+                    )
+                    answer = (
+                        f"{base} I worked with the relevant tools for the role, handled trade-offs around performance and maintainability, "
+                        f"and coordinated implementation to keep delivery predictable. The result was a measurable improvement in quality and speed, "
+                        f"while keeping the solution easy for the team to maintain and extend."
+                    )
+                question["answer"] = answer
+            categories.append({"name": cat["name"], "icon": cat["icon"], "questions": questions})
+
+        return {"job_title": job_title, "company": company, "categories": categories}
     except Exception as exc:
         raise RuntimeError(f"Interview question generation failed: {exc}") from exc
 
