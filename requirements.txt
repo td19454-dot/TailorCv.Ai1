@@ -45,3 +45,4 @@ sentry-sdk[fastapi]>=2.0.0
 
 # Payments
 razorpay>=1.4.0
+polar-sdk>=0.1.0
