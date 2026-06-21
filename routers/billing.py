@@ -468,7 +468,6 @@ async def polar_webhook(request: Request):
             metadata = sub.metadata or {}
             user_id = metadata.get("user_id")
             sub_id = str(sub.id)
-            status = str(sub.status)
 
             # Derive plan from metadata; fall back to recurring_interval
             plan = metadata.get("plan")
@@ -485,7 +484,8 @@ async def polar_webhook(request: Request):
             if not user and sub_id:
                 user = db.query(User).filter_by(polar_subscription_id=sub_id).first()
 
-            if user and status == "active":
+            # sub.status is a SubscriptionStatus enum — compare .value not str()
+            if user and sub.status.value == "active":
                 days = PLAN_DURATIONS.get(plan, 31)
                 _extend_pro(db, user, days, polar_subscription_id=sub_id, provider="polar")
 
