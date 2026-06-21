@@ -5509,15 +5509,20 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
         if entry["name"] or entry["url"] or entry["bullets"]:
             opensource.append(entry)
 
-    # GitHub username for the auto contribution graph. Prefer an explicit field,
-    # else parse it out of the GitHub profile URL the user already gave us.
-    github_username = first(pi.get("github_username"), rd.get("github_username"))
-    if not github_username:
-        gh_raw = first(pi.get("github"), contact.get("github"), rd.get("github"))
-        m = re.search(r"github\.com/([A-Za-z0-9](?:[A-Za-z0-9-]{0,38}))", gh_raw or "")
-        if m:
-            github_username = m.group(1)
-    github_username = re.sub(r"[^A-Za-z0-9-]", "", github_username or "")[:39]
+    # GitHub username for the auto contribution graph. The builder sends an explicit
+    # opt-in flag `github_graph`; when it's False the user chose "No", so never show a
+    # graph (don't even derive a username from their profile URL). When the flag is
+    # absent (e.g. the saved-resume path), fall back to the old auto-derive behavior.
+    if rd.get("github_graph") is False:
+        github_username = ""
+    else:
+        github_username = first(pi.get("github_username"), rd.get("github_username"))
+        if not github_username:
+            gh_raw = first(pi.get("github"), contact.get("github"), rd.get("github"))
+            m = re.search(r"github\.com/([A-Za-z0-9](?:[A-Za-z0-9-]{0,38}))", gh_raw or "")
+            if m:
+                github_username = m.group(1)
+        github_username = re.sub(r"[^A-Za-z0-9-]", "", github_username or "")[:39]
 
     # Certifications
     certifications = []

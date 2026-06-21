@@ -210,6 +210,30 @@
         </section>
         {% endif %}
 
+        {% if data.github_username or data.opensource %}
+        <section class="pf-section pf-reveal" id="opensource">
+            <div class="pf-section-head">{% set ns.n = ns.n + 1 %}<span class="pf-kicker">{{ '%02d.'|format(ns.n) }}</span><h2>Open source</h2><span class="pf-rule"></span></div>
+            {% if data.github_username %}
+            {% set gh_color = {'bold':'c6fb50','terminal':'3ddc84','clean':'6d28d9','editorial':'a8421f','vibrant':'d6308b'}.get(theme, '40c463') %}
+            <div class="pf-cards" style="margin-bottom:18px;">
+                <article class="pf-card" style="overflow-x:auto;">
+                    <img src="https://ghchart.rshah.org/{{ gh_color }}/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;">
+                </article>
+            </div>
+            {% endif %}
+            {% if data.opensource %}
+            <div class="pf-cards">
+                {% for o in data.opensource %}
+                <article class="pf-card">
+                    <div class="pf-card-top"><h3>{{ o.name }}</h3>{% if o.url %}<div class="pf-card-links"><a href="{{ o.url }}" target="_blank" rel="noopener" aria-label="View">{{ ext_link() }}</a></div>{% endif %}</div>
+                    {% if o.bullets %}<div class="pf-card-meta">{{ o.bullets|join(' ') }}</div>{% endif %}
+                </article>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </section>
+        {% endif %}
+
         <section class="pf-section pf-reveal pf-contact" id="contact">
             <div class="pf-section-head">{% set ns.n = ns.n + 1 %}<span class="pf-kicker">{{ '%02d.'|format(ns.n) }}</span><h2>Get in touch</h2><span class="pf-rule"></span></div>
             <p class="pf-contact-lead">Have a role or a project in mind? I'd love to hear from you.</p>
@@ -224,7 +248,6 @@
             {% endif %}
         </section>
 
-        {% include "_portfolio_opensource.html" %}
         {% include "_portfolio_awards.html" %}
 
         <footer class="pf-footer">
