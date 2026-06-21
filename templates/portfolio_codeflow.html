@@ -247,7 +247,25 @@
     </div></section>
     {% endif %}
 
-    {% include "_portfolio_opensource.html" %}
+    <!-- Open Source -->
+    {% if data.github_username or data.opensource %}
+    <section class="cf-section" id="opensource"><div class="cf-wrap">
+        <h2 class="cf-title">Open Source</h2>
+        {% if data.github_username %}
+        <div class="cf-card cf-reveal" style="overflow-x:auto;">
+            <img src="https://ghchart.rshah.org/3b82f6/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;">
+        </div>
+        {% endif %}
+        {% if data.opensource %}
+        <div class="cf-cert-grid">
+            {% for o in data.opensource %}
+            <article class="cf-cert cf-reveal"><span class="cf-medal">{{ medal() }}</span><div><h3>{{ o.name }}</h3>{% if o.bullets %}<div class="iss">{{ o.bullets|join(' ') }}</div>{% endif %}{% if o.url %}<a class="cl" href="{{ o.url }}" target="_blank" rel="noopener">View →</a>{% endif %}</div></article>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div></section>
+    {% endif %}
+
     {% include "_portfolio_awards.html" %}
 
     <!-- Contact -->
