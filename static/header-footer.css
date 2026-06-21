@@ -743,25 +743,39 @@ html.tcv-app .site-footer { display: none !important; }
         visibility: visible !important;
     }
 
-    /* Mega/Company items become plain inline rows (no light-blue card). */
+    /* Mega/Company items — subtle dark card rows in the mobile drawer */
     .navbar .nav-mega-item {
-        background: transparent !important;
-        border: none !important;
-        padding: 11px 8px !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.07) !important;
+        border-radius: 10px !important;
+        padding: 10px 12px !important;
         gap: 12px;
         min-height: 44px;
         align-items: center;
+        transition: background .15s ease !important;
+    }
+    .navbar .nav-mega-item:hover,
+    .navbar .nav-mega-item:active {
+        background: rgba(99, 160, 255, 0.12) !important;
+        border-color: rgba(99, 160, 255, 0.25) !important;
     }
     .navbar .nav-mega-item .nav-mega-ic {
-        flex: 0 0 30px; width: 30px; height: 30px; background: transparent !important; border: none !important;
+        flex: 0 0 32px; width: 32px; height: 32px;
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 8px !important;
     }
-    .navbar .nav-mega-item .nav-mega-ic svg { stroke: #9ec5ff !important; }
+    .navbar .nav-mega-item .nav-mega-ic svg { stroke: #7eb8ff !important; width: 17px; height: 17px; }
     .navbar .nav-mega-item .nav-mega-tx strong {
-        color: #eaf1ff !important; -webkit-text-fill-color: #eaf1ff !important;
-        font-size: 14px; font-weight: 600;
+        color: #dde8ff !important; -webkit-text-fill-color: #dde8ff !important;
+        font-size: 13.5px; font-weight: 600;
     }
-    .navbar .nav-mega-item .nav-mega-tx small { display: none; }   /* hide descriptions in the drawer */
-    .navbar .nav-mega-badge { display: none !important; }
+    .navbar .nav-mega-item .nav-mega-tx small { display: none; }
+    .navbar .nav-mega-badge {
+        display: inline-flex !important;
+        font-size: 0.6rem !important;
+        padding: 1px 6px !important;
+    }
 
     /* Sentence-case, 44px primary nav links + toggles. */
     .navbar .nav-links > a.nav-link,
@@ -769,8 +783,16 @@ html.tcv-app .site-footer { display: none !important; }
         text-transform: none !important;
         letter-spacing: normal !important;
         font-size: 15px !important;
+        font-weight: 500 !important;
         min-height: 44px;
         display: flex !important;
         align-items: center;
+        color: #cdd8f8 !important;
+        -webkit-text-fill-color: #cdd8f8 !important;
+    }
+    .navbar .nav-links > a.nav-link:hover,
+    .navbar .nav-links > .nav-dropdown > .nav-dropdown-toggle:hover {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
     }
 }
