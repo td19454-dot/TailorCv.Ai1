@@ -399,12 +399,18 @@ async def polar_checkout(body: PolarCheckoutRequest, request: Request):
 @router.post("/api/billing/polar/cancel")
 async def polar_cancel(request: Request):
     """Cancel the user's active Polar subscription (revokes at period end)."""
+    from polar_sdk.models import ResourceNotFound as PolarResourceNotFound
     polar = _require_polar()
     db, user = _get_db_and_user(request)
     try:
         if not user.polar_subscription_id:
             raise HTTPException(status_code=400, detail="No active Polar subscription to cancel")
-        polar.subscriptions.revoke(id=user.polar_subscription_id)
+        try:
+            polar.subscriptions.revoke(id=user.polar_subscription_id)
+        except PolarResourceNotFound:
+            # Subscription no longer exists on Polar (already cancelled or expired).
+            # Clear our stale reference so the user is unblocked.
+            logger.warning("Polar subscription %s not found during cancel — clearing stale ID", user.polar_subscription_id)
         user.polar_subscription_id = None
         db.commit()
         return {
