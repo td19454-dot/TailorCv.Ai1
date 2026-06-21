@@ -290,6 +290,22 @@ _SKILL_ICON_OVERRIDES = {
     "c": "/static/skill-icons/c.svg",
     "dsa": "/static/skill-icons/dsa.svg",
     "datastructuresandalgorithms": "/static/skill-icons/dsa.svg",
+    # Vector databases
+    "vectordatabase": "/static/skill-icons/vectordb.png",
+    "vectordatabases": "/static/skill-icons/vectordb.png",
+    "vectordb": "/static/skill-icons/vectordb.png",
+    # ETL / data pipelines
+    "etl": "/static/skill-icons/etl.png",
+    "etlpipelines": "/static/skill-icons/etl.png",
+    "etlpipeline": "/static/skill-icons/etl.png",
+    "datapipelines": "/static/skill-icons/etl.png",
+    "datapipeline": "/static/skill-icons/etl.png",
+    # CI/CD
+    "cicd": "/static/skill-icons/cicd.png",
+    # MLflow
+    "mlflow": "/static/skill-icons/mlflow.png",
+    # AWS (override devicon's mark with the supplied logo)
+    "amazonwebservices": "/static/skill-icons/aws.png",
 }
 
 
@@ -5183,6 +5199,21 @@ PORTFOLIO_THEMES = {
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
+# Optional per-theme marketing assets for the builder picker. Filled in over time;
+# a missing slug/key just falls back to the CSS mini-preview (image) / no link (demo).
+# Convention: image at static/portfolio-previews/<slug>.<ext>; demo is the Netlify URL.
+PORTFOLIO_THEME_MEDIA = {
+    # "editor": {"image": "/static/portfolio-previews/editor.png", "demo": "https://editor-demo.netlify.app"},
+    "nova": {"image": "/static/portfolio-previews/nova.png", "demo": "https://william-davis-7ef8.netlify.app/"},
+    "codeflow": {"image": "/static/portfolio-previews/codeflow.png", "demo": "https://joseph-harris.netlify.app/"},
+    "panels": {"image": "/static/portfolio-previews/panels.png", "demo": "https://mary-smith-2.netlify.app/"},
+    "wave": {"image": "/static/portfolio-previews/wave.png", "demo": "https://trisha-debnath-8.netlify.app/"},
+    "bold": {"image": "/static/portfolio-previews/bold.png", "demo": "https://shubham-sarkar-8.netlify.app/"},
+    "terminal": {"image": "/static/portfolio-previews/terminal.png", "demo": "https://nicholas-walker.netlify.app/"},
+    "clean": {"image": "/static/portfolio-previews/clean.png", "demo": "https://emma-martinez-ff85.netlify.app/"},
+    "editorial": {"image": "/static/portfolio-previews/editorial.png", "demo": "https://amelia-clark.netlify.app/"},
+}
+
 # Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
 # the encoded size so a row can't bloat the DB; the client downscales first.
 _PORTFOLIO_PHOTO_RE = re.compile(r"^data:image/(png|jpe?g|webp);base64,[A-Za-z0-9+/=\s]+$", re.IGNORECASE)
@@ -5769,6 +5800,7 @@ async def portfolio_builder_page(request: Request):
     return templates.TemplateResponse(request, "portfolio_builder.html", {
         "request": request,
         "themes": PORTFOLIO_THEMES,
+        "theme_media": PORTFOLIO_THEME_MEDIA,
         "logged_in": logged_in,
         "portfolio_domain": PORTFOLIO_DOMAIN,
         "subdomains_enabled": PORTFOLIO_SUBDOMAINS_ENABLED,
