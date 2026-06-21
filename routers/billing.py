@@ -1,15 +1,15 @@
-"""Billing router — Razorpay (INR + USD via Razorpay International).
+"""Billing router — Razorpay (India/INR) + Polar (LIC/Global USD).
 
 Region detection uses the CF-IPCountry header injected by Cloudflare.
 Three pricing regions:
-  india  → INR via standard Razorpay plans
-  lic    → USD via Razorpay International (low-income countries)
-  global → USD via Razorpay International (rest of world)
+  india  → INR via Razorpay (unchanged)
+  lic    → USD via Polar (low-income countries)
+  global → USD via Polar (rest of world)
 
 All routes return 503 if required env vars are not set, so the file is
 safe to deploy before payment keys are configured.
 
-The webhook endpoint is CSRF-exempt (added to EXEMPT_PATHS in main.py).
+Webhook endpoints are CSRF-exempt (added to EXEMPT_PATHS in main.py).
 """
 
 import hashlib
@@ -66,6 +66,21 @@ USD_PLANS = {
     },
 }
 
+# ── Polar config (LIC + Global USD) ──────────────────────────────────────────
+
+POLAR_PRICES = {
+    "lic": {
+        "weekly":  os.getenv("POLAR_PRICE_WEEKLY_LIC"),
+        "monthly": os.getenv("POLAR_PRICE_MONTHLY_LIC"),
+        "yearly":  os.getenv("POLAR_PRICE_YEARLY_LIC"),
+    },
+    "global": {
+        "weekly":  os.getenv("POLAR_PRICE_WEEKLY_GLOBAL"),
+        "monthly": os.getenv("POLAR_PRICE_MONTHLY_GLOBAL"),
+        "yearly":  os.getenv("POLAR_PRICE_YEARLY_GLOBAL"),
+    },
+}
+
 
 # ── Region detection ──────────────────────────────────────────────────────────
 
@@ -113,14 +128,26 @@ def _get_db_and_user(request: Request):
 
 
 def _extend_pro(db: Session, user, days: int,
-                razorpay_subscription_id: str = None) -> None:
+                razorpay_subscription_id: str = None,
+                polar_subscription_id: str = None,
+                provider: str = "razorpay") -> None:
     """Grant or extend Pro access by *days* from now (or from existing pro_until)."""
     base = max(user.pro_until or datetime.utcnow(), datetime.utcnow())
     user.pro_until = base + timedelta(days=days)
-    user.plan_provider = "razorpay"
-    if razorpay_subscription_id:
+    user.plan_provider = provider
+    if provider == "razorpay" and razorpay_subscription_id:
         user.razorpay_subscription_id = razorpay_subscription_id
+    elif provider == "polar" and polar_subscription_id:
+        user.polar_subscription_id = polar_subscription_id
     db.commit()
+
+
+def _require_polar():
+    access_token = os.getenv("POLAR_ACCESS_TOKEN")
+    if not access_token:
+        raise HTTPException(status_code=503, detail={"error": "payment_not_configured"})
+    from polar_sdk import Polar
+    return Polar(access_token=access_token)
 
 
 # ── Region endpoint ───────────────────────────────────────────────────────────
@@ -314,6 +341,145 @@ async def razorpay_webhook(request: Request):
 
     except Exception as exc:
         logger.exception("Error processing Razorpay webhook: %s", exc)
+    finally:
+        db.close()
+
+    return {"received": True}
+
+
+# ── Polar routes (LIC + Global USD) ──────────────────────────────────────────
+
+class PolarCheckoutRequest(BaseModel):
+    plan: str  # "weekly" | "monthly" | "yearly"
+
+
+@router.post("/api/billing/polar/checkout")
+async def polar_checkout(body: PolarCheckoutRequest, request: Request):
+    """Create a Polar hosted checkout session and return the redirect URL."""
+    if body.plan not in PLAN_DURATIONS:
+        raise HTTPException(status_code=400, detail="Invalid plan")
+
+    polar = _require_polar()
+    db, user = _get_db_and_user(request)
+    try:
+        region = _get_region(request)
+        if region == "india":
+            raise HTTPException(status_code=400, detail="India region uses Razorpay")
+
+        price_id = POLAR_PRICES.get(region, {}).get(body.plan)
+        if not price_id:
+            raise HTTPException(
+                status_code=503,
+                detail={"error": "payment_not_configured",
+                        "msg": f"No Polar price ID configured for {region}/{body.plan}"}
+            )
+
+        app_base = os.getenv("APP_BASE_URL", "").rstrip("/")
+        success_url = f"{app_base}/dashboard?upgrade=success"
+
+        from polar_sdk.models import CheckoutCreate
+        checkout = polar.checkouts.create(
+            request=CheckoutCreate(
+                products=[price_id],
+                customer_email=user.email,
+                customer_name=user.name,
+                metadata={
+                    "user_id": str(user.id),
+                    "plan": body.plan,
+                    "region": region,
+                },
+                success_url=success_url,
+            )
+        )
+        return {"checkout_url": checkout.url}
+    finally:
+        db.close()
+
+
+@router.post("/api/billing/polar/cancel")
+async def polar_cancel(request: Request):
+    """Cancel the user's active Polar subscription (revokes at period end)."""
+    polar = _require_polar()
+    db, user = _get_db_and_user(request)
+    try:
+        if not user.polar_subscription_id:
+            raise HTTPException(status_code=400, detail="No active Polar subscription to cancel")
+        polar.subscriptions.revoke(id=user.polar_subscription_id)
+        user.polar_subscription_id = None
+        db.commit()
+        return {
+            "success": True,
+            "access_until": user.pro_until.isoformat() if user.pro_until else None,
+        }
+    finally:
+        db.close()
+
+
+@router.post("/api/billing/polar/webhook")
+async def polar_webhook(request: Request):
+    """Process Polar webhook events to grant/revoke Pro access."""
+    webhook_secret = os.getenv("POLAR_WEBHOOK_SECRET")
+    if not webhook_secret:
+        raise HTTPException(status_code=503, detail={"error": "payment_not_configured"})
+
+    payload = await request.body()
+    headers = dict(request.headers)
+
+    try:
+        from polar_sdk.webhooks import validate_event
+        event = validate_event(payload, headers, webhook_secret)
+    except Exception:
+        logger.warning("Polar webhook signature verification failed")
+        raise HTTPException(status_code=400, detail="Invalid signature")
+
+    from database import SessionLocal
+    from models import User
+
+    db: Session = SessionLocal()
+    try:
+        event_type = event.type
+
+        if event_type == "order.paid":
+            # One-time purchase (weekly plan)
+            metadata = getattr(event.data, "metadata", {}) or {}
+            user_id = metadata.get("user_id")
+            plan = metadata.get("plan", "weekly")
+            subscription_id = str(getattr(event.data, "id", ""))
+
+            user = db.query(User).filter_by(id=int(user_id)).first() if user_id else None
+            if user:
+                days = PLAN_DURATIONS.get(plan, 7)
+                _extend_pro(db, user, days, polar_subscription_id=subscription_id, provider="polar")
+
+        elif event_type in ("subscription.created", "subscription.updated"):
+            sub = event.data
+            metadata = getattr(sub, "metadata", {}) or {}
+            user_id = metadata.get("user_id")
+            plan = metadata.get("plan", "monthly")
+            sub_id = str(getattr(sub, "id", ""))
+            status = str(getattr(sub, "status", ""))
+
+            user = None
+            if user_id:
+                user = db.query(User).filter_by(id=int(user_id)).first()
+            if not user and sub_id:
+                user = db.query(User).filter_by(polar_subscription_id=sub_id).first()
+
+            if user and status == "active":
+                days = PLAN_DURATIONS.get(plan, 31)
+                _extend_pro(db, user, days, polar_subscription_id=sub_id, provider="polar")
+
+        elif event_type == "subscription.revoked":
+            sub = event.data
+            sub_id = str(getattr(sub, "id", ""))
+            if sub_id:
+                user = db.query(User).filter_by(polar_subscription_id=sub_id).first()
+                if user:
+                    user.polar_subscription_id = None
+                    db.commit()
+
+    except Exception as exc:
+        logger.exception("Error processing Polar webhook: %s", exc)
     finally:
         db.close()
 
