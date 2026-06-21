@@ -434,34 +434,54 @@ async def polar_webhook(request: Request):
 
     from database import SessionLocal
     from models import User
+    from polar_sdk.models import (
+        WebhookOrderPaidPayload,
+        WebhookSubscriptionCreatedPayload,
+        WebhookSubscriptionUpdatedPayload,
+        WebhookSubscriptionActivePayload,
+        WebhookSubscriptionRevokedPayload,
+    )
 
     db: Session = SessionLocal()
     try:
-        event_type = event.type
-
-        if event_type == "order.paid":
+        if isinstance(event, WebhookOrderPaidPayload):
             # One-time purchase (weekly plan)
-            metadata = getattr(event.data, "metadata", {}) or {}
+            order = event.data
+            metadata = order.metadata or {}
             user_id = metadata.get("user_id")
             plan = metadata.get("plan", "weekly")
-            subscription_id = str(getattr(event.data, "id", ""))
-
-            user = db.query(User).filter_by(id=int(user_id)).first() if user_id else None
-            if user:
-                days = PLAN_DURATIONS.get(plan, 7)
-                _extend_pro(db, user, days, polar_subscription_id=subscription_id, provider="polar")
-
-        elif event_type in ("subscription.created", "subscription.updated"):
-            sub = event.data
-            metadata = getattr(sub, "metadata", {}) or {}
-            user_id = metadata.get("user_id")
-            plan = metadata.get("plan", "monthly")
-            sub_id = str(getattr(sub, "id", ""))
-            status = str(getattr(sub, "status", ""))
 
             user = None
             if user_id:
-                user = db.query(User).filter_by(id=int(user_id)).first()
+                try:
+                    user = db.query(User).filter_by(id=int(user_id)).first()
+                except (ValueError, TypeError):
+                    pass
+            if user:
+                days = PLAN_DURATIONS.get(plan, 7)
+                _extend_pro(db, user, days, polar_subscription_id=str(order.id), provider="polar")
+
+        elif isinstance(event, (WebhookSubscriptionCreatedPayload,
+                                WebhookSubscriptionUpdatedPayload,
+                                WebhookSubscriptionActivePayload)):
+            sub = event.data
+            metadata = sub.metadata or {}
+            user_id = metadata.get("user_id")
+            sub_id = str(sub.id)
+            status = str(sub.status)
+
+            # Derive plan from metadata; fall back to recurring_interval
+            plan = metadata.get("plan")
+            if not plan:
+                interval = str(getattr(sub, "recurring_interval", "month"))
+                plan = "yearly" if "year" in interval else "monthly"
+
+            user = None
+            if user_id:
+                try:
+                    user = db.query(User).filter_by(id=int(user_id)).first()
+                except (ValueError, TypeError):
+                    pass
             if not user and sub_id:
                 user = db.query(User).filter_by(polar_subscription_id=sub_id).first()
 
@@ -469,14 +489,13 @@ async def polar_webhook(request: Request):
                 days = PLAN_DURATIONS.get(plan, 31)
                 _extend_pro(db, user, days, polar_subscription_id=sub_id, provider="polar")
 
-        elif event_type == "subscription.revoked":
+        elif isinstance(event, WebhookSubscriptionRevokedPayload):
             sub = event.data
-            sub_id = str(getattr(sub, "id", ""))
-            if sub_id:
-                user = db.query(User).filter_by(polar_subscription_id=sub_id).first()
-                if user:
-                    user.polar_subscription_id = None
-                    db.commit()
+            sub_id = str(sub.id)
+            user = db.query(User).filter_by(polar_subscription_id=sub_id).first()
+            if user:
+                user.polar_subscription_id = None
+                db.commit()
 
     except Exception as exc:
         logger.exception("Error processing Polar webhook: %s", exc)
