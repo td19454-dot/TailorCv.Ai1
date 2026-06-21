@@ -116,6 +116,24 @@
     </div>
 </div>
 {% include "_nav.html" %}
+<style>
+    /* Slim typography — lighter weights across page content
+       (shared .navbar / .site-footer excluded so they match the rest of the site) */
+    body > *:not(.navbar):not(.site-footer),
+    body > *:not(.navbar):not(.site-footer) * {
+        font-weight: 400 !important;
+    }
+    body > *:not(.navbar):not(.site-footer) h1,
+    body > *:not(.navbar):not(.site-footer) h2,
+    body > *:not(.navbar):not(.site-footer) h3,
+    body > *:not(.navbar):not(.site-footer) h4,
+    body > *:not(.navbar):not(.site-footer) button,
+    body > *:not(.navbar):not(.site-footer) .btn,
+    body > *:not(.navbar):not(.site-footer) strong,
+    body > *:not(.navbar):not(.site-footer) b {
+        font-weight: 500 !important;
+    }
+</style>
 
 <div id="zaraIntroPage" style="min-height:100vh;display:flex;align-items:flex-start;padding:80px 20px 40px;background:#07102b;">
   <div style="max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;">

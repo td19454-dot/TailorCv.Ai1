@@ -591,11 +591,11 @@ html.tcv-app .site-footer { display: none !important; }
    with an "All Features" CTA cell. Overrides the dark .nav-dropdown-menu base. */
 .navbar .nav-dropdown .nav-dropdown-menu.nav-mega-menu {
     display: grid;
-    grid-template-columns: repeat(2, minmax(320px, 1fr));
-    gap: 6px 18px;
-    width: 780px;
+    grid-template-columns: repeat(2, minmax(370px, 1fr));
+    gap: 10px 22px;
+    width: 900px;
     max-width: calc(100vw - 32px);
-    padding: 20px;
+    padding: 22px;
     border-radius: 20px;
     background: linear-gradient(145deg, #0d0f2b 0%, #11164a 100%);
     border: 1px solid rgba(255, 255, 255, 0.09);
@@ -619,18 +619,18 @@ html.tcv-app .site-footer { display: none !important; }
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    padding: 13px 14px;
+    padding: 14px 16px;
     border-radius: 14px;
     text-decoration: none;
     text-transform: none;
     letter-spacing: normal;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     transition: background .15s ease, border-color .15s ease;
 }
 .navbar .nav-mega-item:hover {
-    background: rgba(255, 255, 255, 0.11);
-    border-color: rgba(99, 160, 255, 0.35);
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(99, 160, 255, 0.45);
 }
 .navbar .nav-mega-ic {
     flex: 0 0 46px;
@@ -657,7 +657,7 @@ html.tcv-app .site-footer { display: none !important; }
     text-transform: none;
     letter-spacing: normal;
 }
-.navbar .nav-mega-tx small { font-size: 0.82rem; color: #8ba3c9; margin-top: 3px; font-weight: 400; text-transform: none; letter-spacing: normal; }
+.navbar .nav-mega-tx small { font-size: 0.85rem; color: #c4d3ec; margin-top: 3px; font-weight: 400; text-transform: none; letter-spacing: normal; }
 
 /* Badges */
 .navbar .nav-mega-badge {
@@ -682,8 +682,8 @@ html.tcv-app .site-footer { display: none !important; }
    text. Force the intended colors so the menu looks identical everywhere. */
 .navbar .nav-mega-item .nav-mega-ic { color: #60a5fa !important; }
 .navbar .nav-mega-item .nav-mega-ic svg { stroke: #60a5fa !important; }
-.navbar .nav-mega-item .nav-mega-tx strong { color: #e8eeff !important; -webkit-text-fill-color: #e8eeff !important; }
-.navbar .nav-mega-item .nav-mega-tx small { color: #8ba3c9 !important; -webkit-text-fill-color: #8ba3c9 !important; }
+.navbar .nav-mega-item .nav-mega-tx strong { color: #f4f7ff !important; -webkit-text-fill-color: #f4f7ff !important; }
+.navbar .nav-mega-item .nav-mega-tx small { color: #c4d3ec !important; -webkit-text-fill-color: #c4d3ec !important; }
 .navbar .nav-mega-item .nav-mega-badge { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
 
 /* "All Features" CTA cell */

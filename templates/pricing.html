@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ── Typography: size / font / weight ───────────── */
         .pricing-page,
@@ -27,32 +27,88 @@
 
         /* Page header */
         .pricing-page .solutions-title {
-            font-weight: 800;
+            font-weight: 500;
             font-size: clamp(2.1rem, 4.6vw, 3.5rem);
             letter-spacing: -0.02em;
         }
         .pricing-page .solutions-subtitle {
-            font-weight: 500;
+            font-weight: 300;
             font-size: clamp(1rem, 1.8vw, 1.35rem);
             letter-spacing: 0.1px;
         }
 
         /* Plan cards */
-        .plan-name      { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.01em; }
-        .plan-tagline   { font-weight: 500; font-size: .85rem; }
-        .plan-price     { font-weight: 900; font-size: 2.6rem; letter-spacing: -0.02em; }
-        .plan-price sup { font-weight: 700; font-size: 1.15rem; }
-        .plan-price-period { font-weight: 500; font-size: .85rem; }
-        .plan-badge     { font-weight: 800; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
-        .plan-features li { font-weight: 500; font-size: .9rem; letter-spacing: .1px; }
-        .plan-features li strong { font-weight: 800; }
-        .plan-btn       { font-weight: 800; font-size: .95rem; letter-spacing: .2px; }
-        .toggle-opt     { font-weight: 700; font-size: .8rem; }
+        .plan-name      { font-weight: 500; font-size: 1.25rem; letter-spacing: -0.01em; }
+        .plan-tagline   { font-weight: 300; font-size: .85rem; }
+        .plan-price     { font-weight: 600; font-size: 2.6rem; letter-spacing: -0.02em; }
+        .plan-price sup { font-weight: 400; font-size: 1.15rem; }
+        .plan-price-period { font-weight: 300; font-size: .85rem; }
+        .plan-badge     { font-weight: 500; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
+        .plan-features li { font-weight: 300; font-size: .9rem; letter-spacing: .1px; }
+        .plan-features li strong { font-weight: 500; }
+        .plan-btn       { font-weight: 500; font-size: .95rem; letter-spacing: .2px; }
+        .toggle-opt     { font-weight: 400; font-size: .8rem; }
 
         /* "What's included" + FAQ */
-        .pricing-page .form-title { font-weight: 800; font-size: 1.45rem; letter-spacing: -0.01em; }
-        .pricing-page .faq-question { font-weight: 700; font-size: 1.12rem; }
-        .pricing-page .faq-answer { font-weight: 400; font-size: .98rem; line-height: 1.65; }
+        .pricing-page .form-title { font-weight: 500; font-size: 1.45rem; letter-spacing: -0.01em; }
+        .pricing-page .faq-question { font-weight: 400; font-size: 1.12rem; }
+        .pricing-page .faq-answer { font-weight: 300; font-size: .98rem; line-height: 1.65; }
+
+        /* ── "What's included in Pro" section ───────────── */
+        .pro-features-card { padding: 1.9rem 1.9rem 2rem; }
+        .pro-features-card .form-title { margin-bottom: .35rem; }
+        .pro-features-sub {
+            margin: 0 0 1.6rem;
+            font-weight: 300;
+            font-size: .98rem;
+            color: #94a3b8;
+        }
+        .pro-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem 1.8rem;
+        }
+        .pro-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: .9rem;
+        }
+        .pro-feature-ico {
+            flex: 0 0 auto;
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: #7dd3fc;
+            background: linear-gradient(155deg, rgba(56,189,248,.16), rgba(37,99,235,.12));
+            border: 1px solid rgba(56,189,248,.28);
+            transition: transform .25s ease, box-shadow .25s ease, color .25s ease;
+        }
+        .pro-feature-ico svg { width: 20px; height: 20px; }
+        .pro-feature:hover .pro-feature-ico {
+            transform: translateY(-2px);
+            color: #bae6fd;
+            box-shadow: 0 8px 20px rgba(37,99,235,.28);
+        }
+        .pro-feature-title {
+            margin: .1rem 0 .25rem;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #f1f8ff;
+            letter-spacing: -0.01em;
+        }
+        .pro-feature-text {
+            margin: 0;
+            font-weight: 300;
+            font-size: .9rem;
+            line-height: 1.55;
+            color: #b6c4dc;
+        }
+        @media (max-width: 560px) {
+            .pro-features-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+        }
 
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 19px; padding: 18px 10px; letter-spacing: 0; }
@@ -74,13 +130,15 @@
         .plan-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.75rem;
-            margin-bottom: 2rem;
-            max-width: 1120px;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            max-width: 1280px;
             margin-left: auto;
             margin-right: auto;
+            align-items: stretch;
+            padding: 1.2rem 0;
         }
-        @media (max-width: 960px)  { .plan-grid { grid-template-columns: 1fr; max-width: 500px; } }
+        @media (max-width: 960px)  { .plan-grid { grid-template-columns: 1fr; max-width: 520px; gap: 1.5rem; } }
 
         /* ── Billing toggle ─────────────────────── */
         .billing-toggle {
@@ -97,10 +155,10 @@
             background: none;
             border: none;
             border-radius: 8px;
-            padding: .38rem .6rem;
+            padding: .42rem .6rem;
             font-size: .78rem;
-            font-weight: 600;
-            color: #64748b;
+            font-weight: 400;
+            color: #94a3b8;
             cursor: pointer;
             transition: background .18s, color .18s;
             white-space: nowrap;
@@ -143,34 +201,58 @@
             position: relative;
             background: linear-gradient(155deg, rgba(18,34,76,.95), rgba(14,22,60,.92));
             border: 1px solid rgba(125,211,252,.2);
-            border-radius: 22px;
-            padding: 2rem 1.9rem;
+            border-radius: 24px;
+            padding: 2.6rem 2.2rem 2.3rem;
+            min-height: 560px;
             display: flex;
             flex-direction: column;
-            gap: .7rem;
-            transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
+            gap: .75rem;
+            transition: transform .32s cubic-bezier(.22,.61,.36,1), box-shadow .32s ease, border-color .32s ease;
             animation: pricingFadeUp .85s ease-out both;
         }
+        /* Soft top-edge highlight to make the surface feel crafted */
+        .plan-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 120px;
+            border-radius: 24px 24px 0 0;
+            background: linear-gradient(180deg, rgba(125,211,252,.10), transparent);
+            pointer-events: none;
+        }
         .plan-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 28px 52px rgba(0,10,36,.42), 0 0 0 1px rgba(96,165,250,.32);
-            border-color: rgba(96,165,250,.45);
+            transform: translateY(-8px);
+            box-shadow: 0 32px 60px rgba(0,10,36,.5), 0 0 0 1px rgba(96,165,250,.34);
+            border-color: rgba(96,165,250,.5);
         }
         .plan-card.popular {
-            border-color: rgba(56,189,248,.55);
-            background: linear-gradient(155deg, rgba(11,42,95,.97), rgba(7,52,110,.94));
-            box-shadow: 0 0 0 1px rgba(56,189,248,.28), 0 20px 40px rgba(0,24,56,.36);
+            border-color: rgba(56,189,248,.6);
+            background:
+                radial-gradient(120% 80% at 50% -10%, rgba(56,189,248,.18), transparent 60%),
+                linear-gradient(155deg, rgba(11,42,95,.97), rgba(7,52,110,.94));
+            box-shadow: 0 0 0 1px rgba(56,189,248,.3), 0 26px 52px rgba(0,24,56,.42);
+            transform: scale(1.045);
+        }
+        .plan-card.popular::before {
+            background: linear-gradient(180deg, rgba(56,189,248,.18), transparent);
         }
         .plan-card.popular:hover {
-            box-shadow: 0 28px 56px rgba(0,20,50,.46), 0 0 0 1px rgba(56,189,248,.5);
+            transform: translateY(-8px) scale(1.045);
+            box-shadow: 0 34px 64px rgba(0,20,50,.54), 0 0 0 1px rgba(56,189,248,.55);
+        }
+        @media (max-width: 960px) {
+            .plan-card { min-height: 0; padding: 2.2rem 1.8rem; }
+            .plan-card.popular,
+            .plan-card.popular:hover { transform: none; }
+            .plan-card.popular:hover { transform: translateY(-8px); }
         }
         .plan-badge {
             display: inline-block;
             font-size: .72rem;
-            font-weight: 700;
+            font-weight: 500;
             letter-spacing: .05em;
             border-radius: 999px;
-            padding: 3px 11px;
+            padding: 4px 12px;
             margin-bottom: .3rem;
             width: fit-content;
         }
@@ -179,24 +261,27 @@
         .badge-pass    { background: rgba(16,185,129,.14); color: #6ee7b7; border: 1px solid rgba(16,185,129,.35); }
 
         .plan-name {
-            font-size: 1.25rem;
-            font-weight: 800;
+            font-size: 1.3rem;
+            font-weight: 500;
             color: #f1f8ff;
             margin: 0;
+            letter-spacing: -0.01em;
         }
         .plan-tagline {
-            font-size: .84rem;
-            color: #94a3b8;
+            font-size: .86rem;
+            font-weight: 300;
+            color: #9fb1cc;
             margin: .1rem 0 .5rem;
         }
         .plan-price {
-            font-size: 2.8rem;
-            font-weight: 800;
+            font-size: 3rem;
+            font-weight: 600;
             color: #f8fbff;
             line-height: 1;
             margin: 0;
+            letter-spacing: -0.02em;
         }
-        .plan-price sup { font-size: 1.2rem; font-weight: 700; vertical-align: super; }
+        .plan-price sup { font-size: 1.25rem; font-weight: 400; vertical-align: super; color: #7dd3fc; }
         .plan-price-period {
             font-size: .84rem;
             color: #94a3b8;
@@ -212,59 +297,74 @@
             flex: 1;
         }
         .plan-features li {
-            font-size: .9rem;
-            color: #cbd5e1;
-            padding-left: 1.6rem;
+            font-size: .92rem;
+            color: #d4def0;
+            padding-left: 1.9rem;
             position: relative;
-            line-height: 1.45;
+            line-height: 1.5;
+            min-height: 1.25rem;
+            display: flex;
+            align-items: center;
         }
         .plan-features li::before {
             content: "✓";
             position: absolute;
             left: 0;
-            top: 0;
-            font-size: .82rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.25rem;
+            height: 1.25rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: .68rem;
             font-weight: 800;
+            color: #06283d;
             background: linear-gradient(135deg, #38bdf8, #22d3ee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            box-shadow: 0 2px 8px rgba(34,211,238,.3);
+            -webkit-text-fill-color: #06283d;
         }
-        .plan-features li.muted { color: #475569; }
+        .plan-features li.muted { color: #64748b; }
         .plan-features li.muted::before {
-            content: "✕";
-            background: none;
-            -webkit-text-fill-color: #475569;
-            color: #475569;
+            content: "–";
+            color: #94a3b8;
+            background: rgba(148,163,184,.18);
+            box-shadow: none;
+            -webkit-text-fill-color: #94a3b8;
+            font-weight: 700;
         }
+
+        /* Keep card content above the decorative top highlight */
+        .plan-card > * { position: relative; z-index: 1; }
 
         .plan-btn {
             display: block;
             width: 100%;
-            margin-top: 1.2rem;
-            padding: .82rem 1rem;
+            margin-top: 1.4rem;
+            padding: .9rem 1rem;
             border-radius: 12px;
             border: none;
             font-size: .95rem;
-            font-weight: 700;
+            font-weight: 500;
             cursor: pointer;
             text-align: center;
             text-decoration: none;
             letter-spacing: .2px;
-            transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease;
+            transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease, background .2s ease;
         }
         .plan-btn-primary {
             background: linear-gradient(135deg, #2563eb, #0ea5e9);
             color: #fff;
-            box-shadow: 0 4px 18px rgba(37,99,235,.38);
+            box-shadow: 0 6px 20px rgba(37,99,235,.4);
         }
-        .plan-btn-primary:hover { opacity: .92; transform: translateY(-2px); box-shadow: 0 10px 26px rgba(37,99,235,.45); }
+        .plan-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(37,99,235,.5); }
         .plan-btn-ghost {
-            background: rgba(255,255,255,.04);
-            color: #64748b;
-            border: 1px solid rgba(100,116,139,.28);
+            background: rgba(255,255,255,.05);
+            color: #cbd5e1;
+            border: 1px solid rgba(125,211,252,.3);
         }
-        .plan-btn-ghost:hover { border-color: rgba(100,116,139,.55); color: #94a3b8; background: rgba(255,255,255,.07); }
+        .plan-btn-ghost:hover { border-color: rgba(125,211,252,.55); color: #f1f8ff; background: rgba(56,189,248,.1); }
 
         /* ── Smoother look enhancements ───────────────── */
         html { scroll-behavior: smooth; }
@@ -449,29 +549,64 @@
             </div><!-- /plan-grid -->
 
             <!-- What's in Pro -->
-            <section class="form-card" style="margin-bottom:1.5rem;">
+            <section class="form-card pro-features-card" style="margin-bottom:1.5rem;">
                 <h2 class="form-title">What's included in Pro</h2>
-                <div class="features-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:.8rem;">
-                    <div>
-                        <p class="results-title" style="font-size:1rem;font-weight:700;margin-bottom:.3rem;">Resume Optimizer</p>
-                        <p class="results-content" style="font-size:.88rem;">AI tailors your resume to any job description, beats ATS filters.</p>
-                    </div>
-                    <div>
-                        <p class="results-title" style="font-size:1rem;font-weight:700;margin-bottom:.3rem;">Cover Letter AI</p>
-                        <p class="results-content" style="font-size:.88rem;">Personalised cover letters matched to each role in seconds.</p>
-                    </div>
-                    <div>
-                        <p class="results-title" style="font-size:1rem;font-weight:700;margin-bottom:.3rem;">Mock Interviews</p>
-                        <p class="results-content" style="font-size:.88rem;">AI interviewer gives real-time feedback on your answers.</p>
-                    </div>
-                    <div>
-                        <p class="results-title" style="font-size:1rem;font-weight:700;margin-bottom:.3rem;">LinkedIn Import</p>
-                        <p class="results-content" style="font-size:.88rem;">Pull your profile into a polished resume in one click.</p>
-                    </div>
-                    <div>
-                        <p class="results-title" style="font-size:1rem;font-weight:700;margin-bottom:.3rem;">ATS Score — always free</p>
-                        <p class="results-content" style="font-size:.88rem;">See how your resume scores against any JD — no paywall, ever.</p>
-                    </div>
+                <p class="pro-features-sub">Everything you need to go from applying to hired — in one workspace.</p>
+                <div class="pro-features-grid">
+                    <article class="pro-feature">
+                        <span class="pro-feature-ico" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+                        </span>
+                        <div>
+                            <h3 class="pro-feature-title">Resume Optimizer</h3>
+                            <p class="pro-feature-text">AI tailors your resume to any job description and beats ATS filters.</p>
+                        </div>
+                    </article>
+                    <article class="pro-feature">
+                        <span class="pro-feature-ico" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8"/><path d="M8 12h5"/></svg>
+                        </span>
+                        <div>
+                            <h3 class="pro-feature-title">Cover Letter AI</h3>
+                            <p class="pro-feature-text">Personalised cover letters matched to each role in seconds.</p>
+                        </div>
+                    </article>
+                    <article class="pro-feature">
+                        <span class="pro-feature-ico" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10a7 7 0 0 1-14 0"/><path d="M12 17v5"/></svg>
+                        </span>
+                        <div>
+                            <h3 class="pro-feature-title">Mock Interviews</h3>
+                            <p class="pro-feature-text">AI interviewer gives real-time feedback on your answers.</p>
+                        </div>
+                    </article>
+                    <article class="pro-feature">
+                        <span class="pro-feature-ico" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-10h4v2"/><circle cx="4" cy="4" r="2"/><path d="M2 9h4v11H2z"/></svg>
+                        </span>
+                        <div>
+                            <h3 class="pro-feature-title">LinkedIn Import</h3>
+                            <p class="pro-feature-text">Pull your profile into a polished resume in one click.</p>
+                        </div>
+                    </article>
+                    <article class="pro-feature">
+                        <span class="pro-feature-ico" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20z"/></svg>
+                        </span>
+                        <div>
+                            <h3 class="pro-feature-title">Portfolio Website</h3>
+                            <p class="pro-feature-text">Publish a live portfolio site on a custom domain — no coding.</p>
+                        </div>
+                    </article>
+                    <article class="pro-feature">
+                        <span class="pro-feature-ico" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-5"/></svg>
+                        </span>
+                        <div>
+                            <h3 class="pro-feature-title">ATS Score — always free</h3>
+                            <p class="pro-feature-text">See how your resume scores against any JD — no paywall, ever.</p>
+                        </div>
+                    </article>
                 </div>
             </section>
 
