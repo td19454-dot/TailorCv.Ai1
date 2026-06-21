@@ -160,6 +160,26 @@
     </section>
     {% endif %}
 
+    {% if data.github_username or data.opensource %}
+    <section class="cs-section" id="opensource">
+        <h2>~/open-source</h2>
+        {% if data.github_username %}
+        <div style="overflow-x:auto;margin-bottom:16px;"><img src="https://ghchart.rshah.org/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;"></div>
+        {% endif %}
+        {% if data.opensource %}
+        <div class="cs-grid">
+            {% for o in data.opensource %}
+            <article class="cs-card">
+                <h3>{{ o.name }}</h3>
+                {% if o.bullets %}<p>{{ o.bullets|join(' ') }}</p>{% endif %}
+                {% if o.url %}<a href="{{ o.url }}" target="_blank" rel="noopener">View {{ ext() }}</a>{% endif %}
+            </article>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+
     <section class="cs-section cs-contact" id="contact">
         <h2>~/connect</h2>
         <p>Want to collaborate or build something together?</p>
@@ -171,6 +191,8 @@
     </section>
 </main>
 
-<footer class="cs-footer">Built with theTailorCV</footer>
+{% include "_portfolio_awards.html" %}
+
+<footer class="cs-footer">Built by {{ data.name }}</footer>
 </body>
 </html>
