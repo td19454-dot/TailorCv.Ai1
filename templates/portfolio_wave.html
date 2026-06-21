@@ -248,10 +248,13 @@
         </div>
     </section>
 
+    {% include "_portfolio_opensource.html" %}
+    {% include "_portfolio_awards.html" %}
+
     <footer class="w-footer">
         <p>Let's connect and build something amazing!</p>
         {% if data.email %}<a class="mail" href="mailto:{{ data.email }}">{{ data.email }}</a>{% endif %}
-        <div class="built">© {{ data.name }} · <a href="https://thetailorcv.com" target="_blank" rel="noopener">Built with theTailorCV</a></div>
+        <div class="built">© {{ data.name }} · Built by {{ data.name }}</div>
     </footer>
 
     <script>

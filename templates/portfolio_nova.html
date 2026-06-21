@@ -188,6 +188,9 @@
         </div>
     </div></section>
 
+    {% include "_portfolio_opensource.html" %}
+    {% include "_portfolio_awards.html" %}
+
     <footer class="nv-footer">
         <div class="fav">{% if data.photo %}<img src="{{ data.photo }}" alt="{{ data.name }}">{% else %}<div class="ph">{{ data.initials }}</div>{% endif %}</div>
         <div class="fname">{{ data.name }}</div>
@@ -196,7 +199,7 @@
             {% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.label }}" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}
             {% if data.email %}<a href="mailto:{{ data.email }}" aria-label="Email">{{ soc('mail') }}</a>{% endif %}
         </div>
-        <div class="copy">© {{ data.name }} · <a href="https://thetailorcv.com" target="_blank" rel="noopener">Built with theTailorCV</a></div>
+        <div class="copy">© {{ data.name }} · Built by {{ data.name }}</div>
     </footer>
 
     <a href="#home" class="nv-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>

@@ -221,6 +221,9 @@
     {% endif %}
 
     {% if data.email or data.socials %}
+    {% include "_portfolio_opensource.html" %}
+    {% include "_portfolio_awards.html" %}
+
     <section class="sc-contact" id="contact">
         <div class="sc-section-head">
             <h2>Contact</h2>
@@ -298,7 +301,12 @@
             link.classList.toggle('active', active);
             if (active) {
                 link.setAttribute('aria-current', 'location');
-                link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                // Center the active tab WITHIN the horizontal nav only — never call
+                // scrollIntoView (it scrolls the window too and fights the user's
+                // own scroll, making the page feel unscrollable).
+                var navRect = nav.getBoundingClientRect();
+                var linkRect = link.getBoundingClientRect();
+                nav.scrollLeft += (linkRect.left + linkRect.width / 2) - (navRect.left + navRect.width / 2);
             } else {
                 link.removeAttribute('aria-current');
             }

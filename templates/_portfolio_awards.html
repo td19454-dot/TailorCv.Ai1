@@ -1,0 +1,20 @@
+{# Reusable Awards & honors section. Theme-neutral — inherits the page text color
+   and uses translucent grey borders so it blends on both light and dark themes.
+   The editor theme renders its own bespoke version and does not include this. #}
+{% if data.awards %}
+<section id="awards" style="max-width:1000px;margin:0 auto;padding:54px 20px;">
+    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin:0 0 24px;letter-spacing:-.01em;">Awards &amp; Honors</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px;">
+        {% for a in data.awards %}
+        <div style="border:1px solid rgba(128,128,128,.28);border-radius:14px;padding:18px;">
+            <div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline;">
+                <strong style="font-size:1.05rem;">{{ a.title }}</strong>
+                {% if a.year %}<span style="opacity:.6;font-size:.85rem;white-space:nowrap;">{{ a.year }}</span>{% endif %}
+            </div>
+            {% if a.issuer %}<div style="opacity:.75;margin-top:6px;font-size:.92rem;">{{ a.issuer }}</div>{% endif %}
+            {% if a.url %}<a href="{{ a.url }}" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font-size:.82rem;opacity:.85;">View ↗</a>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

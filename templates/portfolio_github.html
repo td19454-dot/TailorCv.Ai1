@@ -112,10 +112,26 @@
         {% endif %}
 
         <section class="gh-contrib">
-            <h3 class="gh-h3"><span id="gh-contrib-count">{{ (data.stats.projects or 1) * 87 }}</span> contributions in the last year</h3>
+            <h3 class="gh-h3">{% if data.github_username %}@{{ data.github_username }}'s contributions in the last year{% else %}<span id="gh-contrib-count">{{ (data.stats.projects or 1) * 87 }}</span> contributions in the last year{% endif %}</h3>
+            {% if data.github_username %}
+            <div class="gh-graph-wrap" style="overflow-x:auto;"><img src="https://ghchart.rshah.org/40c463/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;"></div>
+            {% else %}
             <div class="gh-graph-wrap"><div class="gh-graph" id="gh-graph" aria-hidden="true"></div></div>
             <div class="gh-legend">Less <span class="gh-lc l0"></span><span class="gh-lc l1"></span><span class="gh-lc l2"></span><span class="gh-lc l3"></span><span class="gh-lc l4"></span> More</div>
+            {% endif %}
         </section>
+
+        {% if data.opensource %}
+        <h3 class="gh-h3">Open source contributions</h3>
+        <div class="gh-os">
+            {% for o in data.opensource %}
+            <div class="gh-os-card">
+                <div class="gh-os-top"><strong>{{ o.name }}</strong>{% if o.url %}<a href="{{ o.url }}" target="_blank" rel="noopener">View ↗</a>{% endif %}</div>
+                {% if o.bullets %}<ul>{% for b in o.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
 
         {% if data.skills %}
         <h3 class="gh-h3" id="langs">Languages &amp; tools</h3>
@@ -191,7 +207,9 @@
     </main>
 </div>
 
-<footer class="gh-footer">© {{ data.name }} · <a href="https://thetailorcv.com" target="_blank" rel="noopener">Built with theTailorCV</a></footer>
+{% include "_portfolio_awards.html" %}
+
+<footer class="gh-footer">© {{ data.name }} · Built by {{ data.name }}</footer>
 
 <script>
 // Decorative contribution graph: 53 weeks x 7 days of shaded green cells.

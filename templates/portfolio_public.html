@@ -224,8 +224,11 @@
             {% endif %}
         </section>
 
+        {% include "_portfolio_opensource.html" %}
+        {% include "_portfolio_awards.html" %}
+
         <footer class="pf-footer">
-            <span>© {{ data.name }}</span><a href="https://thetailorcv.com" target="_blank" rel="noopener">Built with theTailorCV</a>
+            <span>© {{ data.name }}</span><span>Built by {{ data.name }}</span>
         </footer>
     </main>
 

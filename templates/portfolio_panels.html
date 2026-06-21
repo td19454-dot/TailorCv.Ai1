@@ -212,6 +212,9 @@
         </div>
     </div>
 
+    {% include "_portfolio_opensource.html" %}
+    {% include "_portfolio_awards.html" %}
+
     <footer class="pn-footer"><div class="pn-wrap">
         <div class="pn-footer-grid">
             <div>
@@ -228,7 +231,7 @@
                 <div class="sub">You'll hear back from me quickly!</div>
             </div>
         </div>
-        <div class="pn-copy">© {{ data.name }} · <a href="https://thetailorcv.com" target="_blank" rel="noopener" style="color:var(--pn-blue);">Built with theTailorCV</a></div>
+        <div class="pn-copy">© {{ data.name }} · Built by {{ data.name }}</div>
     </div></footer>
 
     <script>
