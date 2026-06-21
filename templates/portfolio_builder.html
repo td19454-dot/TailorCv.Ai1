@@ -121,6 +121,14 @@
         .prev-particle .mini-lines { left:18px; bottom:22px; }
         .prev-particle .mini-lines span:nth-child(1){width:112px;height:18px;background:linear-gradient(90deg,#6d5cff,#22d3ee);border-radius:3px;}
         .prev-particle .mini-lines span:nth-child(2){width:78px;background:#ff3d6e;}
+        /* parchment - ancient scroll letter */
+        .prev-parchment { background:radial-gradient(120% 120% at 50% 40%, #f3e6c4 0%, #e6d2a4 60%, #cdb175 100%); position:relative; overflow:hidden; }
+        .prev-parchment::before { content:""; position:absolute; left:0; right:0; top:14px; height:14px; border-radius:8px; background:linear-gradient(#6b4423,#3f2713); box-shadow:0 4px 8px rgba(0,0,0,.35); }
+        .prev-parchment::after { content:""; position:absolute; left:0; right:0; bottom:14px; height:14px; border-radius:8px; background:linear-gradient(#6b4423,#3f2713); box-shadow:0 -4px 8px rgba(0,0,0,.35); }
+        .prev-parchment .mini-avatar { display:none; }
+        .prev-parchment .mini-lines { left:50%; top:50%; transform:translate(-50%,-50%); text-align:center; }
+        .prev-parchment .mini-lines span:nth-child(1){width:120px;height:16px;background:#5a3a1c;border-radius:2px;margin:0 auto 8px;}
+        .prev-parchment .mini-lines span:nth-child(2){width:80px;background:#8a6a3c;border-radius:2px;margin:0 auto;}
         /* snowcard - light dotted tabs */
         .prev-snowcard { background:#fff; position:relative; overflow:hidden; }
         .prev-snowcard::before { content:""; position:absolute; inset:0; background:radial-gradient(#b8b8b8 1px,transparent 1.4px); background-size:14px 14px; opacity:.65; }

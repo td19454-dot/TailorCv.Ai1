@@ -5203,6 +5203,7 @@ PORTFOLIO_THEMES = {
     "particle": "Particle - neon skill cards",
     "snowcard": "Snowcard - light dotted tabs",
     "github": "GitHub - profile, repos & contributions",
+    "parchment": "Parchment — ancient scroll letter 📜",
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
@@ -5921,6 +5922,7 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "particle": "portfolio_particle.html",
         "snowcard": "portfolio_snowcard.html",
         "github": "portfolio_github.html",
+        "parchment": "portfolio_parchment.html",
     }.get(theme, "portfolio_public.html")
     return templates.TemplateResponse(request, tpl, {
         "request": request,
@@ -5969,6 +5971,7 @@ def _build_static_portfolio_html(portfolio) -> str:
         "nova": "portfolio_nova.html", "console": "portfolio_console.html",
         "monolith": "portfolio_monolith.html", "particle": "portfolio_particle.html",
         "snowcard": "portfolio_snowcard.html", "github": "portfolio_github.html",
+        "parchment": "portfolio_parchment.html",
     }.get(theme, "portfolio_public.html")
 
     class _FakeURL:

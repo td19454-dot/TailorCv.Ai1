@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="340" viewBox="0 0 150 340">
+  <!-- trailing stem -->
+  <g fill="none" stroke="#7d6a3a" stroke-width="2.4" stroke-linecap="round">
+    <path d="M70 4 C 104 44, 40 86, 74 128 C 106 168, 42 210, 76 252 C 104 288, 60 312, 72 336"/>
+    <path d="M74 60 C 100 56, 118 64, 128 84"/>
+    <path d="M72 150 C 46 146, 28 154, 18 174"/>
+    <path d="M76 240 C 102 236, 120 244, 130 264"/>
+  </g>
+  <!-- leaves -->
+  <g fill="#6f7d4e">
+    <ellipse cx="98" cy="36" rx="15" ry="6" transform="rotate(35 98 36)"/>
+    <ellipse cx="44" cy="100" rx="15" ry="6" transform="rotate(-35 44 100)"/>
+    <ellipse cx="104" cy="150" rx="15" ry="6" transform="rotate(30 104 150)"/>
+    <ellipse cx="42" cy="206" rx="15" ry="6" transform="rotate(-30 42 206)"/>
+    <ellipse cx="104" cy="262" rx="14" ry="5.6" transform="rotate(34 104 262)"/>
+    <ellipse cx="48" cy="300" rx="13" ry="5.4" transform="rotate(-32 48 300)"/>
+  </g>
+  <!-- lavender spikes -->
+  <g fill="#8a76a8">
+    <g transform="translate(128,84) rotate(28)"><ellipse cx="0" cy="0" rx="5" ry="4"/><ellipse cx="0" cy="-9" rx="5" ry="4"/><ellipse cx="0" cy="-18" rx="4.4" ry="3.5"/><ellipse cx="0" cy="-26" rx="3.6" ry="3"/></g>
+    <g transform="translate(18,174) rotate(-28)"><ellipse cx="0" cy="0" rx="5" ry="4"/><ellipse cx="0" cy="-9" rx="5" ry="4"/><ellipse cx="0" cy="-18" rx="4.4" ry="3.5"/><ellipse cx="0" cy="-26" rx="3.6" ry="3"/></g>
+    <g transform="translate(130,264) rotate(28)"><ellipse cx="0" cy="0" rx="4.6" ry="3.7"/><ellipse cx="0" cy="-8" rx="4.6" ry="3.7"/><ellipse cx="0" cy="-16" rx="4" ry="3.3"/></g>
+  </g>
+  <!-- flowers -->
+  <g>
+    <g transform="translate(74,60)"><g fill="#c8a6c6"><circle cx="0" cy="-9" r="6"/><circle cx="8.6" cy="-2.8" r="6"/><circle cx="5.3" cy="7.3" r="6"/><circle cx="-5.3" cy="7.3" r="6"/><circle cx="-8.6" cy="-2.8" r="6"/></g><circle r="4" fill="#caa84a"/></g>
+    <g transform="translate(72,150) scale(.9)"><g fill="#e7d39a"><circle cx="0" cy="-9" r="6"/><circle cx="8.6" cy="-2.8" r="6"/><circle cx="5.3" cy="7.3" r="6"/><circle cx="-5.3" cy="7.3" r="6"/><circle cx="-8.6" cy="-2.8" r="6"/></g><circle r="4" fill="#b98a32"/></g>
+    <g transform="translate(76,246) scale(.85)"><g fill="#c8a6c6"><circle cx="0" cy="-9" r="6"/><circle cx="8.6" cy="-2.8" r="6"/><circle cx="5.3" cy="7.3" r="6"/><circle cx="-5.3" cy="7.3" r="6"/><circle cx="-8.6" cy="-2.8" r="6"/></g><circle r="4" fill="#caa84a"/></g>
+  </g>
+</svg>

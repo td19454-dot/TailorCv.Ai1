@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ seo_og_description }}">
+    <title>{{ data.name }}{% if data.headline %} — {{ data.headline }}{% endif %} | Portfolio</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/portfolio_parchment.css?v=8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+{% set fname = data.name.split(' ')[0] if data.name else 'Friend' %}
+{% macro soc(icon) -%}
+    {% if icon == 'linkedin' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg>
+    {% elif icon == 'github' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.38-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.71 1.03 1.62 1.03 2.74 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+    {% elif icon == 'leetcode' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.48 2.5a1.4 1.4 0 0 0-1 .43L5.4 9.9a3.8 3.8 0 0 0 0 5.36l4.07 4.07a3.8 3.8 0 0 0 5.36 0l1.9-1.9a1.4 1.4 0 1 0-1.98-1.98l-1.9 1.9a1 1 0 0 1-1.4 0L7.38 13.3a1 1 0 0 1 0-1.4l7.08-6.97a1.4 1.4 0 0 0-1-2.43zM14.6 9.3a1.4 1.4 0 0 0 0 2.8h5.4a1.4 1.4 0 0 0 0-2.8z"/></svg>
+    {% elif icon == 'twitter' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.84l-4.78-6.26L5.92 22H2.66l8.02-9.17L2 2h6.91l4.32 5.71L18.244 2z"/></svg>
+    {% elif icon == 'mail' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+    {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>{% endif %}
+{%- endmacro %}
+{% macro ext() -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;"><path d="M7 17 17 7M9 7h8v8"/></svg>{%- endmacro %}
+{% macro divider() -%}<div class="pa-divider"><i></i><img class="pa-divfl" src="/static/parchment-flower.svg" alt="" aria-hidden="true"><span>❦</span><img class="pa-divfl flip" src="/static/parchment-flower.svg" alt="" aria-hidden="true"><i></i></div>{%- endmacro %}
+
+<div class="pa-desk" aria-hidden="true"></div>
+
+<!-- torn / deckled edge filter -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <filter id="pa-torn" x="-6%" y="-3%" width="112%" height="106%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.016 0.013" numOctaves="3" seed="8" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="17" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+</defs></svg>
+
+<!-- ONE continuous scroll: top rod → single parchment letter → bottom rod -->
+<div class="pa-scroll" id="top">
+    <div class="pa-rod pa-rod-top"><span class="knob l"></span><span class="knob r"></span></div>
+
+    <div class="pa-paper" id="pa-paper">
+        <img class="pa-corner tl" src="/static/parchment-corner.svg" alt="" aria-hidden="true">
+        <img class="pa-corner tr" src="/static/parchment-corner.svg" alt="" aria-hidden="true">
+        <img class="pa-corner bl" src="/static/parchment-corner.svg" alt="" aria-hidden="true">
+        <img class="pa-corner br" src="/static/parchment-corner.svg" alt="" aria-hidden="true">
+        <img class="pa-side left" src="/static/parchment-vine.svg" alt="" aria-hidden="true">
+        <img class="pa-side right" src="/static/parchment-vine.svg" alt="" aria-hidden="true">
+        <div class="pa-paper-in">
+
+            <!-- Hero -->
+            <div class="pa-hero">
+                <div class="pa-salut">~ Be it hereby known to all who read ~</div>
+                <div class="pa-portrait">{% if data.photo %}<img src="{{ data.photo }}" alt="{{ data.name }}">{% else %}<span>{{ data.initials }}</span>{% endif %}</div>
+                <h1 class="pa-name">{{ data.name }}</h1>
+                <div class="pa-flourish"><i></i><span>❦</span><i></i></div>
+                {% if data.headline %}<div class="pa-title">{{ data.headline }}</div>{% endif %}
+                {% if data.location %}<div class="pa-place">of {{ data.location }}</div>{% endif %}
+                {% if tagline %}<p class="pa-quote">“{{ tagline }}”</p>{% endif %}
+                <div class="pa-cta">
+                    {% if data.projects %}<a class="pa-btn" href="#projects">Read the chronicle</a>{% endif %}
+                    {% if has_cv %}<a class="pa-btn pa-btn-ghost" href="/p/{{ slug }}/cv">The full scroll ↓</a>{% endif %}
+                </div>
+                {% if data.socials %}
+                <div class="pa-socials">
+                    {% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.label }}" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}
+                    {% if data.email %}<a href="mailto:{{ data.email }}" aria-label="Email">{{ soc('mail') }}</a>{% endif %}
+                </div>
+                {% endif %}
+                <div class="pa-cue">❧ unroll the tale below ❧</div>
+            </div>
+
+            {% if about %}
+            {{ divider() }}
+            <section class="pa-blk" id="about">
+                <div class="pa-head"><span class="orn">❧</span><h2>The Tale of {{ fname }}</h2><span class="orn f">❧</span></div>
+                <p class="pa-dropcap pa-prose">{{ about }}</p>
+            </section>
+            {% endif %}
+
+            {% if data.skills %}
+            {{ divider() }}
+            <section class="pa-blk" id="skills">
+                <div class="pa-head"><span class="orn">❧</span><h2>Talents &amp; Crafts</h2><span class="orn f">❧</span></div>
+                {% for g in data.skills %}
+                <div class="pa-skillgroup">
+                    {% if g['group'] %}<h3 class="pa-sub">{{ g['group'] }}</h3>{% endif %}
+                    <div class="pa-tags">{% for item in g['items'] %}<span class="pa-tag">{{ item }}</span>{% endfor %}</div>
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if data.experience %}
+            {{ divider() }}
+            <section class="pa-blk" id="experience">
+                <div class="pa-head"><span class="orn">❧</span><h2>Deeds &amp; Service</h2><span class="orn f">❧</span></div>
+                {% for e in data.experience %}
+                <div class="pa-entry">
+                    <div class="pa-entry-top"><h3>{{ e.title }}{% if e.company %} <span>— {{ e.company }}</span>{% endif %}</h3>{% if e.dates %}<span class="pa-year">{{ e.dates }}</span>{% endif %}</div>
+                    {% if e.location %}<div class="pa-muted">{{ e.location }}</div>{% endif %}
+                    {% if e.bullets %}<ul class="pa-list">{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if data.projects %}
+            {{ divider() }}
+            <section class="pa-blk" id="projects">
+                <div class="pa-head"><span class="orn">❧</span><h2>Chronicle of Works</h2><span class="orn f">❧</span></div>
+                {% for p in data.projects %}
+                <article class="pa-work">
+                    {% if p.image %}<div class="pa-work-img"><img src="{{ p.image }}" alt="{{ p.name }}" loading="lazy"></div>{% endif %}
+                    <h3>{{ p.name }}</h3>
+                    {% if p.subtitle %}<div class="pa-muted">{{ p.subtitle }}</div>{% endif %}
+                    {% if p.bullets %}<ul class="pa-list">{% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                    {% if p.url or p.github %}
+                    <div class="pa-work-links">
+                        {% if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener">View work {{ ext() }}</a>{% endif %}
+                        {% if p.github %}<a href="{{ p.github }}" target="_blank" rel="noopener">The source {{ ext() }}</a>{% endif %}
+                    </div>
+                    {% endif %}
+                </article>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if data.github_username or data.opensource %}
+            {{ divider() }}
+            <section class="pa-blk" id="opensource">
+                <div class="pa-head"><span class="orn">❧</span><h2>Open Source</h2><span class="orn f">❧</span></div>
+                {% if data.github_username %}
+                <div class="pa-graph"><img src="https://ghchart.rshah.org/6b4423/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy"></div>
+                {% endif %}
+                {% for o in data.opensource %}
+                <div class="pa-entry">
+                    <div class="pa-entry-top"><h3>{{ o.name }}</h3>{% if o.url %}<a class="pa-ink" href="{{ o.url }}" target="_blank" rel="noopener">View {{ ext() }}</a>{% endif %}</div>
+                    {% if o.bullets %}<ul class="pa-list">{% for b in o.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if data.education %}
+            {{ divider() }}
+            <section class="pa-blk" id="education">
+                <div class="pa-head"><span class="orn">❧</span><h2>Learning &amp; Study</h2><span class="orn f">❧</span></div>
+                {% for ed in data.education %}
+                <div class="pa-entry">
+                    <div class="pa-entry-top"><h3>{{ ed.school }}</h3>{% if ed.year %}<span class="pa-year">{{ ed.year }}</span>{% endif %}</div>
+                    {% if ed.degree %}<div class="pa-muted">{{ ed.degree }}{% if ed.score %} · {{ ed.score }}{% endif %}</div>{% endif %}
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if data.awards %}
+            {{ divider() }}
+            <section class="pa-blk" id="awards">
+                <div class="pa-head"><span class="orn">❧</span><h2>Honours &amp; Awards</h2><span class="orn f">❧</span></div>
+                {% for a in data.awards %}
+                <div class="pa-entry">
+                    <div class="pa-entry-top"><h3>{{ a.title }}</h3>{% if a.year %}<span class="pa-year">{{ a.year }}</span>{% endif %}</div>
+                    {% if a.issuer %}<div class="pa-muted">{{ a.issuer }}</div>{% endif %}
+                    {% if a.url %}<a class="pa-ink" href="{{ a.url }}" target="_blank" rel="noopener">View {{ ext() }}</a>{% endif %}
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if data.certifications %}
+            {{ divider() }}
+            <section class="pa-blk" id="certifications">
+                <div class="pa-head"><span class="orn">❧</span><h2>Seals &amp; Certificates</h2><span class="orn f">❧</span></div>
+                {% for c in data.certifications %}
+                <div class="pa-entry">
+                    <div class="pa-entry-top"><h3>{{ c.name }}</h3>{% if c.year %}<span class="pa-year">{{ c.year }}</span>{% endif %}</div>
+                    {% if c.issuer %}<div class="pa-muted">{{ c.issuer }}</div>{% endif %}
+                    {% if c.url %}<a class="pa-ink" href="{{ c.url }}" target="_blank" rel="noopener">View {{ ext() }}</a>{% endif %}
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if data.publications %}
+            {{ divider() }}
+            <section class="pa-blk" id="publications">
+                <div class="pa-head"><span class="orn">❧</span><h2>Writings</h2><span class="orn f">❧</span></div>
+                {% for pub in data.publications %}
+                <div class="pa-entry">
+                    <h3>{{ pub.title }}</h3>
+                    {% if pub.publisher or pub.year %}<div class="pa-muted">{{ pub.publisher }}{% if pub.publisher and pub.year %} · {% endif %}{{ pub.year }}</div>{% endif %}
+                    {% if pub.url %}<a class="pa-ink" href="{{ pub.url }}" target="_blank" rel="noopener">Read {{ ext() }}</a>{% endif %}
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if data.extracurriculars %}
+            {{ divider() }}
+            <section class="pa-blk" id="activities">
+                <div class="pa-head"><span class="orn">❧</span><h2>Quests &amp; Leadership</h2><span class="orn f">❧</span></div>
+                {% for x in data.extracurriculars %}
+                <div class="pa-entry">
+                    <div class="pa-entry-top"><h3>{{ x.role }}{% if x.organization %} <span>— {{ x.organization }}</span>{% endif %}</h3>{% if x.dates %}<span class="pa-year">{{ x.dates }}</span>{% endif %}</div>
+                    {% if x.bullets %}<ul class="pa-list">{% for b in x.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {% if data.hobbies %}
+            {{ divider() }}
+            <section class="pa-blk" id="interests">
+                <div class="pa-head"><span class="orn">❧</span><h2>Pastimes</h2><span class="orn f">❧</span></div>
+                <div class="pa-tags">{% for h in data.hobbies %}<span class="pa-tag">{{ h }}</span>{% endfor %}</div>
+            </section>
+            {% endif %}
+
+            {{ divider() }}
+            <section class="pa-blk pa-closing" id="contact">
+                <div class="pa-head"><span class="orn">❧</span><h2>Send Word</h2><span class="orn f">❧</span></div>
+                <p class="pa-prose" style="text-align:center;">Should you wish to correspond, my door is ever open.</p>
+                <div class="pa-cta" style="justify-content:center;">
+                    {% if data.email %}<a class="pa-btn" href="mailto:{{ data.email }}">✉ {{ data.email }}</a>{% endif %}
+                    {% if data.phone %}<a class="pa-btn pa-btn-ghost" href="tel:{{ data.phone }}">{{ data.phone }}</a>{% endif %}
+                </div>
+                {% if data.socials %}
+                <div class="pa-socials" style="justify-content:center;">
+                    {% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.label }}" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}
+                </div>
+                {% endif %}
+                <div class="pa-sign">
+                    <div class="pa-sign-label">Yours faithfully,</div>
+                    <div class="pa-sign-name">{{ data.name }}</div>
+                    <div class="pa-seal">{{ data.initials }}</div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <div class="pa-rod pa-rod-bottom"><span class="knob l"></span><span class="knob r"></span></div>
+</div>
+
+<footer class="pa-footer">❦ Penned by the hand of {{ data.name }} ❦</footer>
+<a href="#top" class="pa-top" aria-label="Back to top">❦</a>
+
+<script>
+(function () {
+    /* Hide the scroll cue once the reader moves on. */
+    var cue = document.querySelector('.pa-cue');
+    if (cue) addEventListener('scroll', function () { cue.style.opacity = scrollY > 120 ? '0' : ''; }, { passive: true });
+})();
+</script>
+</body>
+</html>
