@@ -5203,7 +5203,7 @@ DEFAULT_PORTFOLIO_THEME = "editor"
 # a missing slug/key just falls back to the CSS mini-preview (image) / no link (demo).
 # Convention: image at static/portfolio-previews/<slug>.<ext>; demo is the Netlify URL.
 PORTFOLIO_THEME_MEDIA = {
-    # "editor": {"image": "/static/portfolio-previews/editor.png", "demo": "https://editor-demo.netlify.app"},
+    "editor": {"image": "/static/portfolio-previews/editor.png", "demo": "https://karen-taylor-5.netlify.app/"},
     "nova": {"image": "/static/portfolio-previews/nova.png", "demo": "https://william-davis-7ef8.netlify.app/"},
     "codeflow": {"image": "/static/portfolio-previews/codeflow.png", "demo": "https://joseph-harris.netlify.app/"},
     "panels": {"image": "/static/portfolio-previews/panels.png", "demo": "https://mary-smith-2.netlify.app/"},
@@ -5212,6 +5212,12 @@ PORTFOLIO_THEME_MEDIA = {
     "terminal": {"image": "/static/portfolio-previews/terminal.png", "demo": "https://nicholas-walker.netlify.app/"},
     "clean": {"image": "/static/portfolio-previews/clean.png", "demo": "https://emma-martinez-ff85.netlify.app/"},
     "editorial": {"image": "/static/portfolio-previews/editorial.png", "demo": "https://amelia-clark.netlify.app/"},
+    "vibrant": {"image": "/static/portfolio-previews/vibrant.png", "demo": "https://evelyn-harris.netlify.app/"},
+    "console": {"image": "/static/portfolio-previews/console.png", "demo": "https://ryan-lewis.netlify.app/"},
+    "monolith": {"image": "/static/portfolio-previews/monolith.png", "demo": "https://susan-garcia.netlify.app/"},
+    "particle": {"image": "/static/portfolio-previews/particle.png", "demo": "https://jonathan-allen.netlify.app/"},
+    "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://lisa-martinez.netlify.app/"},
+    "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://karen-taylor.netlify.app/"},
 }
 
 # Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
@@ -5383,6 +5389,7 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
         ("leetcode", "LeetCode", "leetcode"), ("portfolio", "Website", ""),
         ("kaggle", "Kaggle", ""), ("googleScholar", "Scholar", ""),
         ("google_scholar", "Scholar", ""), ("twitter", "Twitter", ""),
+        ("instagram", "Instagram", ""), ("facebook", "Facebook", ""),
         ("website", "Website", ""),
     ]
     socials, seen = [], set()
@@ -5395,6 +5402,18 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
         if href:
             socials.append({"label": label, "icon": key.lower().replace("_", ""), "url": href})
             seen.add(label)
+
+    # Custom "other" links from the builder (Medium, YouTube, Dribbble, Dev.to …).
+    # The icon slug falls back to a generic globe in each theme's social macro.
+    for ln in (rd.get("links") or rd.get("other_links") or []):
+        if not isinstance(ln, dict):
+            continue
+        label = first(ln.get("label"), ln.get("name"), ln.get("title"))
+        href = normalize_url(first(ln.get("url"), ln.get("link")))
+        if not href or not label or label in seen:
+            continue
+        socials.append({"label": label, "icon": re.sub(r"[^a-z0-9]", "", label.lower()), "url": href})
+        seen.add(label)
 
     # Experience
     experience = []
@@ -5468,6 +5487,31 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
             "url": normalize_url(first(pub.get("url"), pub.get("link"), pub.get("doi"))),
         })
 
+    # Open-source contributions (optional). Each entry: name/repo + link + bullets.
+    opensource = []
+    for it in (rd.get("opensource") or rd.get("open_source") or rd.get("contributions") or []):
+        if not isinstance(it, dict):
+            continue
+        entry = {
+            "name": first(it.get("name"), it.get("title"), it.get("repo"), it.get("project")),
+            "url": normalize_url(first(it.get("url"), it.get("link"), it.get("github"))),
+            "bullets": _portfolio_strip_bullets(
+                it.get("details") or it.get("bullets") or it.get("description") or []
+            ),
+        }
+        if entry["name"] or entry["url"] or entry["bullets"]:
+            opensource.append(entry)
+
+    # GitHub username for the auto contribution graph. Prefer an explicit field,
+    # else parse it out of the GitHub profile URL the user already gave us.
+    github_username = first(pi.get("github_username"), rd.get("github_username"))
+    if not github_username:
+        gh_raw = first(pi.get("github"), contact.get("github"), rd.get("github"))
+        m = re.search(r"github\.com/([A-Za-z0-9](?:[A-Za-z0-9-]{0,38}))", gh_raw or "")
+        if m:
+            github_username = m.group(1)
+    github_username = re.sub(r"[^A-Za-z0-9-]", "", github_username or "")[:39]
+
     # Certifications
     certifications = []
     for cert in (rd.get("certifications") or rd.get("certificates") or []):
@@ -5480,6 +5524,21 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
             "url": normalize_url(first(cert.get("url"), cert.get("link"))),
             "image": (cert.get("image") or "").strip() if _valid_portfolio_photo(cert.get("image")) else "",
         })
+
+    # Awards / honors (list of strings or dicts)
+    awards = []
+    for aw in (rd.get("awards") or rd.get("honors") or rd.get("achievements") or []):
+        if isinstance(aw, str) and aw.strip():
+            awards.append({"title": aw.strip(), "issuer": "", "year": "", "url": ""})
+        elif isinstance(aw, dict):
+            entry = {
+                "title": first(aw.get("title"), aw.get("name"), aw.get("award")),
+                "issuer": first(aw.get("issuer"), aw.get("organization"), aw.get("awarder")),
+                "year": first(aw.get("year"), aw.get("date")),
+                "url": normalize_url(first(aw.get("url"), aw.get("link"))),
+            }
+            if entry["title"]:
+                awards.append(entry)
 
     # Hobbies / interests (list of strings, a comma/newline string, or list of dicts)
     hobbies = []
@@ -5513,6 +5572,9 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
         "extracurriculars": extracurriculars,
         "publications": publications,
         "certifications": certifications,
+        "awards": awards,
+        "opensource": opensource,
+        "github_username": github_username,
         "hobbies": hobbies,
         "stats": {
             "experience": len(experience),
