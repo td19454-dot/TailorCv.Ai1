@@ -5994,45 +5994,52 @@ async def _deploy_portfolio_to_netlify(portfolio):
     Requires NETLIFY_AUTH_TOKEN."""
     import hashlib
     import httpx
+    import secrets
 
     html = _build_static_portfolio_html(portfolio)
     body = html.encode("utf-8")
     digest = hashlib.sha1(body).hexdigest()
     headers = {"Authorization": f"Bearer {NETLIFY_AUTH_TOKEN}"}
+
+    async def _create_site(client):
+        # Name the site after the portfolio slug so the URL reads <name>.netlify.app
+        # instead of Netlify's random "joyful-pudding". Names are globally unique, so
+        # retry with a short random suffix if the preferred name is taken (422/400).
+        base = _portfolio_slugify(portfolio.slug)[:55].strip("-") or "portfolio"
+        for candidate in (base, f"{base}-{secrets.token_hex(2)}", f"{base}-{secrets.token_hex(3)}"):
+            r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={"name": candidate})
+            if r.status_code in (200, 201):
+                return r.json()
+            if r.status_code not in (422, 400):
+                r.raise_for_status()
+        # Last resort: let Netlify assign a random name so the deploy still works.
+        r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={})
+        r.raise_for_status()
+        return r.json()
+
     async with httpx.AsyncClient(timeout=60) as client:
         site_id = portfolio.netlify_site_id
         site_url = portfolio.netlify_url
         if not site_id:
-            # Name the site after the portfolio slug so the URL reads
-            # <name>.netlify.app instead of Netlify's random "joyful-pudding".
-            # Netlify site names are globally unique, so retry with a short
-            # random suffix if the preferred name is already taken (422).
-            import secrets
-            base = _portfolio_slugify(portfolio.slug)[:55].strip("-") or "portfolio"
-            site = None
-            for candidate in (base, f"{base}-{secrets.token_hex(2)}", f"{base}-{secrets.token_hex(3)}"):
-                r = await client.post(
-                    "https://api.netlify.com/api/v1/sites",
-                    headers=headers, json={"name": candidate},
-                )
-                if r.status_code in (200, 201):
-                    site = r.json()
-                    break
-                if r.status_code not in (422, 400):
-                    r.raise_for_status()
-            if site is None:
-                # Last resort: let Netlify assign a random name so deploy still works.
-                r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={})
-                r.raise_for_status()
-                site = r.json()
+            site = await _create_site(client)
             site_id = site["id"]
             site_url = site.get("ssl_url") or site.get("url")
+
         # 1) Create a deploy declaring the files we intend to ship (path -> sha1).
-        dr = await client.post(
-            f"https://api.netlify.com/api/v1/sites/{site_id}/deploys",
-            headers=headers,
-            json={"files": {"/index.html": digest}},
-        )
+        # A stored site can become unusable (deleted, or created under a different
+        # token/account) → Netlify returns 401/403/404. In that case, transparently
+        # create a fresh site and retry so re-deploys never get stuck on a dead id.
+        async def _make_deploy(sid):
+            return await client.post(
+                f"https://api.netlify.com/api/v1/sites/{sid}/deploys",
+                headers=headers, json={"files": {"/index.html": digest}},
+            )
+        dr = await _make_deploy(site_id)
+        if dr.status_code in (401, 403, 404):
+            site = await _create_site(client)
+            site_id = site["id"]
+            site_url = site.get("ssl_url") or site.get("url")
+            dr = await _make_deploy(site_id)
         dr.raise_for_status()
         deploy = dr.json()
         deploy_id = deploy["id"]
@@ -6066,8 +6073,8 @@ async def deploy_portfolio_netlify(portfolio_id: int, request: Request):
         try:
             site_id, site_url = await _deploy_portfolio_to_netlify(portfolio)
         except Exception:
-            logger.exception("Netlify deploy failed")
-            return JSONResponse(status_code=502, content={"error": "Netlify deploy failed. Please try again."})
+            logger.exception("Live-site publish failed for portfolio %s", portfolio_id)
+            return JSONResponse(status_code=502, content={"error": "Could not publish your live site. Please try again."})
         portfolio.netlify_site_id = site_id
         portfolio.netlify_url = site_url
         db.commit()

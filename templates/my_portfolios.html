@@ -121,13 +121,13 @@
                 </div>
                 {% if p.netlify_url %}
                 <div class="pfh-link-row" style="margin-top:6px;">
-                    <span class="pfh-link" title="{{ p.netlify_url }}">🌐 {{ p.netlify_url }}</span>
+                    <span class="pfh-link" title="{{ p.netlify_url }}">🌐 {{ p.name }}</span>
                     <a class="pfh-btn pfh-btn-copy" style="flex:0 0 auto;" href="{{ p.netlify_url }}" target="_blank" rel="noopener">Open</a>
                 </div>
                 {% endif %}
                 <div class="pfh-actions">
                     <a class="pfh-btn pfh-btn-view" href="/p/{{ p.slug }}" target="_blank" rel="noopener">View site</a>
-                    <button type="button" class="pfh-btn pfh-btn-netlify" data-id="{{ p.id }}" onclick="pfhNetlify(this)">{{ 'Redeploy to Netlify' if p.netlify_url else 'Deploy to Netlify' }}</button>
+                    <button type="button" class="pfh-btn pfh-btn-netlify" data-id="{{ p.id }}" onclick="pfhNetlify(this)">{{ 'Update live site' if p.netlify_url else 'Publish live site' }}</button>
                     <form method="post" action="/my-portfolios/{{ p.id }}/delete" style="flex:1;margin:0;"
                           onsubmit="return confirm('Delete this portfolio? The public link will stop working.');">
                         <button type="submit" class="pfh-btn pfh-btn-del" style="width:100%;">Delete</button>
@@ -182,15 +182,15 @@
         async function pfhNetlify(btn) {
             const id = btn.getAttribute('data-id');
             const original = btn.innerHTML;
-            btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Deploying…';
+            btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Publishing…';
             try {
                 const csrf = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || '';
                 const res = await fetch('/api/portfolio/' + id + '/deploy-netlify', {
                     method: 'POST', headers: { 'X-CSRFToken': csrf, 'X-Requested-With': 'XMLHttpRequest' },
                 });
                 const data = await res.json();
-                if (!res.ok || !data.success) { pfhToast(data.error || 'Netlify deploy failed.'); btn.disabled = false; btn.innerHTML = original; return; }
-                pfhToast('Deployed to Netlify!');
+                if (!res.ok || !data.success) { pfhToast(data.error || 'Could not publish your live site.'); btn.disabled = false; btn.innerHTML = original; return; }
+                pfhToast('Your live site is ready!');
                 window.open(data.netlify_url, '_blank', 'noopener');
                 setTimeout(() => window.location.reload(), 900);
             } catch (e) {
