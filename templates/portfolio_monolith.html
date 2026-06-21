@@ -163,11 +163,31 @@
     </section>
     {% endif %}
 
-    {% include "_portfolio_opensource.html" %}
+    {% if data.github_username or data.opensource %}
+    <section class="mo-section" id="opensource">
+        <div class="mo-head"><span>05</span><h2>Open Source</h2></div>
+        {% if data.github_username %}
+        <div style="overflow-x:auto;margin-bottom:20px;"><img src="https://ghchart.rshah.org/222222/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;"></div>
+        {% endif %}
+        {% if data.opensource %}
+        <div class="mo-cardgrid">
+            {% for o in data.opensource %}
+            <article class="mo-card">
+                <div class="mo-card-type">Open source</div>
+                <h3>{{ o.name }}</h3>
+                {% if o.bullets %}<p>{{ o.bullets|join(' ') }}</p>{% endif %}
+                {% if o.url %}<a href="{{ o.url }}" target="_blank" rel="noopener">View {{ ext() }}</a>{% endif %}
+            </article>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+
     {% include "_portfolio_awards.html" %}
 
     <section class="mo-section mo-contact" id="contact">
-        <div class="mo-head"><span>05</span><h2>Contact</h2></div>
+        <div class="mo-head"><span>06</span><h2>Contact</h2></div>
         <p>Have a role, project, or collaboration in mind?</p>
         <div class="mo-contact-links">
             {% if data.email %}<a href="mailto:{{ data.email }}">Email</a>{% endif %}

@@ -218,6 +218,29 @@
     </section>
     {% endif %}
 
+    <!-- Open Source -->
+    {% if data.github_username or data.opensource %}
+    <section class="w-section" id="opensource">
+        <div class="w-wrap">
+            <div class="w-head"><h2>Open Source</h2></div>
+            {% if data.github_username %}
+            <article class="w-card w-reveal" style="overflow-x:auto;"><div class="cbody"><img src="https://ghchart.rshah.org/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;"></div></article>
+            {% endif %}
+            {% if data.opensource %}
+            <div class="w-cards">
+                {% for o in data.opensource %}
+                <article class="w-card w-reveal"><div class="cbody">
+                    <h3>{{ o.name }}</h3>
+                    {% if o.bullets %}<div class="iss">{{ o.bullets|join(' ') }}</div>{% endif %}
+                    {% if o.url %}<a class="cl" href="{{ o.url }}" target="_blank" rel="noopener">View →</a>{% endif %}
+                </div></article>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+
     <!-- Contact -->
     <section class="w-section" id="contact">
         <div class="w-wrap">
@@ -248,7 +271,6 @@
         </div>
     </section>
 
-    {% include "_portfolio_opensource.html" %}
     {% include "_portfolio_awards.html" %}
 
     <footer class="w-footer">

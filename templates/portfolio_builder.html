@@ -189,6 +189,10 @@
         .pb-card-rm { position:absolute; top:10px; right:10px; background:transparent; border:1px solid rgba(239,68,68,.35); color:#ff9a9a; border-radius:7px; padding:3px 9px; font-size:.78rem; cursor:pointer; }
         .pb-add { background:rgba(59,130,246,.16); color:#9cc2ff; border:1px solid rgba(59,130,246,.35); border-radius:9px; padding:9px 16px; font-size:.85rem; font-weight:600; cursor:pointer; }
         .pb-sec-title { font-size:1.05rem; font-weight:700; margin:24px 0 12px; color:#eaf1ff; scroll-margin-top:18px; }
+        .pb-yn { display:flex; align-items:center; gap:18px; margin:2px 0 14px; flex-wrap:wrap; }
+        .pb-yn-q { color:#cdd8ef; font-size:.95rem; margin-right:4px; }
+        .pb-yn label { display:inline-flex; align-items:center; gap:7px; cursor:pointer; color:#aeb9d4; font-size:.95rem; user-select:none; }
+        .pb-yn input { width:17px; height:17px; accent-color:#5b9dff; cursor:pointer; }
         /* details-form layout: sticky section sidebar + form column */
         .pb-formwrap { display:flex; gap:30px; align-items:flex-start; }
         .pb-formmain { flex:1; min-width:0; }
@@ -360,6 +364,7 @@
                 <a href="#sec-exp">Experience</a>
                 <a href="#sec-proj">Projects</a>
                 <a href="#sec-os">Open source</a>
+                <a href="#sec-gitgraph">Git graph</a>
                 <a href="#sec-edu">Education</a>
                 <a href="#sec-extra">Leadership</a>
                 <a href="#sec-pub">Publications</a>
@@ -435,13 +440,26 @@
             <div id="proj-list"></div>
             <button class="pb-add" onclick="pbAddProj()">+ Add project</button>
 
-            <div class="pb-sec-title" id="sec-os">Open source contributions <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
-            <div class="pb-field">
-                <label>GitHub username <span style="font-weight:400;color:#7f8db0;">— shows your contribution graph automatically</span></label>
-                <input class="pb-input" id="f-ghuser" placeholder="e.g. torvalds" autocomplete="off" spellcheck="false">
+            <div class="pb-sec-title" id="sec-os">Open source</div>
+            <div class="pb-yn">
+                <span class="pb-yn-q">Add open source contributions?</span>
+                <label><input type="radio" name="os-yn" value="yes" onchange="pbYN('os')"> Yes</label>
+                <label><input type="radio" name="os-yn" value="no" checked onchange="pbYN('os')"> No</label>
             </div>
-            <div id="os-list"></div>
-            <button class="pb-add" onclick="pbAddOS()">+ Add contribution</button>
+            <div id="os-wrap" style="display:none;">
+                <div id="os-list"></div>
+                <button class="pb-add" onclick="pbAddOS()">+ Add contribution</button>
+            </div>
+
+            <div class="pb-sec-title" id="sec-gitgraph">Git graph</div>
+            <div class="pb-yn">
+                <span class="pb-yn-q">Show your GitHub contribution graph?</span>
+                <label><input type="radio" name="gg-yn" value="yes" onchange="pbYN('gg')"> Yes</label>
+                <label><input type="radio" name="gg-yn" value="no" checked onchange="pbYN('gg')"> No</label>
+            </div>
+            <div id="gg-wrap" style="display:none;">
+                <div class="pb-field"><label>GitHub username</label><input class="pb-input" id="f-ghuser" placeholder="e.g. torvalds" autocomplete="off" spellcheck="false"></div>
+            </div>
 
             <div class="pb-sec-title" id="sec-edu">Education</div>
             <div id="edu-list"></div>
@@ -701,6 +719,10 @@
             const pr = $("proj-list"); if (!pr.dataset.built) { (cv.projects || []).forEach(p => pbAddProj(p)); if (!pr.children.length) pbAddProj(); pr.dataset.built = "1"; }
             $("f-ghuser").value = cv.github_username || pi.github_username || "";
             const ol = $("os-list"); if (!ol.dataset.built) { (cv.opensource || cv.open_source || []).forEach(o => pbAddOS(o)); ol.dataset.built = "1"; }
+            const osYes = !!(cv.opensource && cv.opensource.length);
+            const ggYes = !!(cv.github_username || pi.github_username);
+            document.querySelector('input[name="os-yn"][value="' + (osYes ? "yes" : "no") + '"]').checked = true; pbYN("os");
+            document.querySelector('input[name="gg-yn"][value="' + (ggYes ? "yes" : "no") + '"]').checked = true; pbYN("gg");
             const ed = $("edu-list"); if (!ed.dataset.built) { (cv.education || []).forEach(e => pbAddEdu(e)); if (!ed.children.length) pbAddEdu(); ed.dataset.built = "1"; }
             const xl = $("extra-list"); if (!xl.dataset.built) { (cv.extracurriculars || cv.activities || []).forEach(x => pbAddExtra(x)); xl.dataset.built = "1"; }
             const pl = $("pub-list"); if (!pl.dataset.built) { (cv.publications || []).forEach(p => pbAddPub(p)); pl.dataset.built = "1"; }
@@ -745,6 +767,11 @@
             $("link-list").appendChild(card(
                 '<div class="pb-grid2"><div class="pb-field"><label>Label</label><input class="pb-input j-label" value="' + esc(val(l,"label") || val(l,"name")) + '" placeholder="e.g. Medium"></div>' +
                 '<div class="pb-field"><label>URL</label><input class="pb-input j-url" value="' + esc(val(l,"url") || val(l,"link")) + '" placeholder="https://…"></div></div>'));
+        };
+        window.pbYN = function (which) {
+            const sel = document.querySelector('input[name="' + which + '-yn"]:checked');
+            const on = !!sel && sel.value === "yes";
+            $(which === "os" ? "os-wrap" : "gg-wrap").style.display = on ? "" : "none";
         };
         window.pbAddOS = function (o) { o = o || {};
             $("os-list").appendChild(card(
@@ -811,8 +838,9 @@
                 experience: gather("exp-list", ["title", "company", "dates", "location", "details"]),
                 projects: gather("proj-list", ["name", "subtitle", "url", "github", "details", "image"])
                     .map(p => ({ name: p.name, subtitle: p.subtitle, url: p.url, github_link: p.github, details: p.details, image: p.image })),
-                github_username: $("f-ghuser").value.trim(),
-                opensource: gather("os-list", ["name", "url", "details"]),
+                github_graph: (document.querySelector('input[name="gg-yn"]:checked') || {}).value === "yes",
+                github_username: ((document.querySelector('input[name="gg-yn"]:checked') || {}).value === "yes") ? $("f-ghuser").value.trim() : "",
+                opensource: ((document.querySelector('input[name="os-yn"]:checked') || {}).value === "yes") ? gather("os-list", ["name", "url", "details"]) : [],
                 education: gather("edu-list", ["school", "degree", "year", "score"]),
                 extracurriculars: gather("extra-list", ["role", "organization", "dates", "url", "details"]),
                 publications: gather("pub-list", ["title", "publisher", "year", "url"]),
