@@ -1791,45 +1791,144 @@
 
 
     <style>
-        /* New 3-tier pricing preview (mirrors the /pricing page) */
+        /* New 3-tier pricing preview (mirrors the beautiful /pricing page) */
         .pricing-preview-grid.cols-3 {
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            max-width: 1040px;
+            gap: 2rem;
+            max-width: 1280px;
             align-items: stretch;
+            padding: 1.2rem 0;
         }
         .pricing-preview-grid.cols-3 .pricing-preview-card {
+            position: relative;
             display: flex;
             flex-direction: column;
-            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+            min-height: 540px;
+            padding: 2.6rem 2.2rem 2.3rem;
+            border-radius: 24px;
+            border: 1px solid rgba(125, 211, 252, .2);
+            transition: transform .32s cubic-bezier(.22,.61,.36,1), box-shadow .32s ease, border-color .32s ease;
         }
+        /* Soft top-edge highlight to make the surface feel crafted */
+        .pricing-preview-grid.cols-3 .pricing-preview-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 120px;
+            border-radius: 24px 24px 0 0;
+            background: linear-gradient(180deg, rgba(125, 211, 252, .10), transparent);
+            pointer-events: none;
+        }
+        .pricing-preview-grid.cols-3 .pricing-preview-card > * { position: relative; z-index: 1; }
         .pricing-preview-grid.cols-3 .pricing-preview-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 22px 44px rgba(1, 10, 40, .46), 0 0 0 1px rgba(96, 165, 250, .3);
+            transform: translateY(-8px);
+            box-shadow: 0 32px 60px rgba(1, 10, 40, .55), 0 0 0 1px rgba(96, 165, 250, .34);
             border-color: rgba(96, 165, 250, .5);
         }
-        .pricing-preview-grid.cols-3 .pricing-preview-card .pricing-feature-list { flex: 1; }
-        .pricing-preview-card .pricing-plan-price { font-size: clamp(34px, 3vw, 46px); }
-        .pricing-preview-card .pricing-plan-price .pp-sym { font-size: 22px; color: #67b3ff; vertical-align: super; }
+
+        /* Featured (Pro) card — scaled up with a glow halo */
+        .pricing-preview-grid.cols-3 .pricing-preview-card.featured {
+            transform: scale(1.045);
+            border-color: rgba(56, 189, 248, .6);
+            background:
+                radial-gradient(120% 80% at 50% -10%, rgba(56, 189, 248, .2), transparent 60%),
+                linear-gradient(180deg, rgba(11, 33, 78, .95), rgba(7, 18, 52, .96));
+            box-shadow: 0 0 0 1px rgba(56, 189, 248, .3), 0 26px 52px rgba(0, 24, 56, .46);
+        }
+        .pricing-preview-grid.cols-3 .pricing-preview-card.featured::before {
+            background: linear-gradient(180deg, rgba(56, 189, 248, .2), transparent);
+        }
+        .pricing-preview-grid.cols-3 .pricing-preview-card.featured:hover {
+            transform: translateY(-8px) scale(1.045);
+            box-shadow: 0 34px 64px rgba(0, 20, 50, .58), 0 0 0 1px rgba(56, 189, 248, .55);
+        }
+
+        /* Typography — lighter, elegant */
+        .pricing-preview-grid.cols-3 .pricing-plan-name { font-weight: 500; font-size: 24px; letter-spacing: -0.01em; }
+        .pricing-preview-grid.cols-3 .pricing-plan-price {
+            font-weight: 600; font-size: clamp(40px, 3.4vw, 52px); letter-spacing: -0.02em;
+        }
+        .pricing-preview-grid.cols-3 .pricing-plan-price .pp-sym { font-size: 24px; font-weight: 400; color: #67b3ff; vertical-align: super; }
+        .pricing-preview-grid.cols-3 .pricing-plan-price span { font-weight: 400; }
+        .pricing-preview-grid.cols-3 .pricing-plan-note { font-weight: 300; color: #aebfdc; }
+
+        /* Feature list — circular gradient check badges */
+        .pricing-preview-grid.cols-3 .pricing-feature-list {
+            flex: 1;
+            list-style: none;
+            padding: 0;
+            margin: .4rem 0 .2rem;
+            display: flex;
+            flex-direction: column;
+            gap: .7rem;
+        }
+        .pricing-preview-grid.cols-3 .pricing-feature-list li {
+            position: relative;
+            margin: 0;
+            padding-left: 2rem;
+            font-weight: 300;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #d4def0;
+            display: flex;
+            align-items: center;
+            min-height: 1.3rem;
+        }
+        .pricing-preview-grid.cols-3 .pricing-feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.3rem;
+            height: 1.3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 700;
+            color: #06283d;
+            background: linear-gradient(135deg, #38bdf8, #22d3ee);
+            box-shadow: 0 2px 8px rgba(34, 211, 238, .3);
+        }
+
+        /* Buttons */
+        .pricing-preview-grid.cols-3 .pricing-plan-btn {
+            margin-top: 1.4rem;
+            font-weight: 500;
+            border-radius: 12px;
+            color: #cbd5e1;
+            border: 1px solid rgba(125, 211, 252, .3);
+            background: rgba(255, 255, 255, .05);
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+        }
+        .pricing-preview-grid.cols-3 .pricing-plan-btn:hover {
+            color: #f1f8ff; border-color: rgba(125, 211, 252, .55); background: rgba(56, 189, 248, .1);
+        }
         .pricing-plan-btn-primary {
-            color: #ffffff;
-            border: none;
-            background: linear-gradient(135deg, #2563eb, #0ea5e9);
-            box-shadow: 0 4px 14px rgba(37, 99, 235, .38);
-            transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+            color: #ffffff !important;
+            border: none !important;
+            background: linear-gradient(135deg, #2563eb, #0ea5e9) !important;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, .4);
         }
         .pricing-plan-btn-primary:hover {
-            transform: translateY(-2px); opacity: .94;
-            background: linear-gradient(135deg, #2563eb, #0ea5e9);
-            box-shadow: 0 10px 24px rgba(37, 99, 235, .5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, .5);
         }
         .pricing-badge.pricing-badge-pass {
             background: rgba(16, 185, 129, .16); border-color: rgba(16, 185, 129, .42); color: #6ee7b7;
         }
-        .pricing-preview-all { text-align: center; margin-top: 2.2rem; }
-        .pricing-preview-all a { color: #9ed6ff; font-weight: 700; text-decoration: none; font-size: 1rem; }
+        .pricing-preview-all { text-align: center; margin-top: 2.6rem; }
+        .pricing-preview-all a { color: #9ed6ff; font-weight: 500; text-decoration: none; font-size: 1rem; }
         .pricing-preview-all a:hover { text-decoration: underline; }
         @media (max-width: 980px) {
-            .pricing-preview-grid.cols-3 { grid-template-columns: 1fr; max-width: 440px; }
+            .pricing-preview-grid.cols-3 { grid-template-columns: 1fr; max-width: 460px; gap: 1.5rem; }
+            .pricing-preview-grid.cols-3 .pricing-preview-card { min-height: 0; padding: 2.2rem 1.8rem; }
+            .pricing-preview-grid.cols-3 .pricing-preview-card.featured,
+            .pricing-preview-grid.cols-3 .pricing-preview-card.featured:hover { transform: none; }
+            .pricing-preview-grid.cols-3 .pricing-preview-card:hover,
+            .pricing-preview-grid.cols-3 .pricing-preview-card.featured:hover { transform: translateY(-8px); }
         }
     </style>
     <section class="pricing-preview-section">
@@ -2008,9 +2107,9 @@
     <div class="sales-pop" id="salesPop" aria-live="polite" aria-atomic="true">
         <div class="sales-pop-map" aria-hidden="true"></div>
         <p class="sales-pop-text">
-            <span id="salesPopName">Someone</span> from
-            <span id="salesPopCountry">USA</span>
-            <span id="salesPopAction">just logged in and is optimizing their resume right now</span> on
+            <span id="salesPopName">Someone</span>
+            <span id="salesPopCountry">from India</span>
+            <span id="salesPopAction">is checking their ATS score now</span> on
             <strong id="salesPopPlan">TailorCV</strong>
         </p>
         <button type="button" class="sales-pop-close" id="salesPopClose"
@@ -2436,32 +2535,57 @@
             const planEl = document.getElementById("salesPopPlan");
             const closeBtn = document.getElementById("salesPopClose");
 
-            const entries = [
-                ["Someone", "USA", "just logged in and is optimizing their resume right now", "TailorCV"],
-                ["Someone", "Canada", "is practicing a mock interview right now", "TailorCV"],
-                ["Someone", "India", "is checking their ATS score now", "TailorCV"],
-                ["Someone", "United Kingdom", "is making their CV right now", "TailorCV"],
-                ["Today", "USA", "almost 100 users are active here", "TailorCV"],
-                ["Today", "Canada", "over 60 users are optimizing resumes now", "TailorCV"],
-                ["Today", "India", "more than 140 users checked ATS scores", "TailorCV"]
+            // Pools mixed at random so the popup never feels repetitive/scripted.
+            const names = ["Someone", "A job seeker", "A new user", "A student", "A professional"];
+            const countries = [
+                "India", "the USA", "Canada", "the UK", "Australia", "Germany",
+                "the UAE", "Singapore", "Ireland", "the Netherlands", "Nigeria",
+                "the Philippines", "Bangladesh", "South Africa", "France"
+            ];
+            const actions = [
+                "is checking their ATS score now",
+                "just optimized their resume",
+                "is tailoring their CV to a job description",
+                "is practicing a mock interview right now",
+                "just generated an AI cover letter",
+                "is building their portfolio website",
+                "just imported their CV from LinkedIn",
+                "is picking an ATS-friendly template",
+                "just downloaded their optimized resume",
+                "is prepping interview questions for a role"
+            ];
+            // Aggregate "Today" lines for variety (no country needed).
+            const todayLines = [
+                "almost 200 resumes were optimized today",
+                "over 140 users checked their ATS score today",
+                "more than 90 mock interviews ran today",
+                "60+ cover letters were generated today",
+                "dozens of portfolios went live today"
             ];
 
-            let idx = 0;
+            function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
             let timer = null;
 
-            function showEntry(i) {
-                const [name, country, action, brand] = entries[i % entries.length];
-                nameEl.textContent = name;
-                countryEl.textContent = country;
-                actionEl.textContent = action;
-                planEl.textContent = brand;
+            function showEntry() {
+                if (Math.random() < 0.25) {
+                    // Occasional aggregate stat line
+                    nameEl.textContent = "Today";
+                    countryEl.textContent = "";
+                    actionEl.textContent = pick(todayLines);
+                } else {
+                    nameEl.textContent = pick(names);
+                    countryEl.textContent = "from " + pick(countries);
+                    actionEl.textContent = pick(actions);
+                }
+                planEl.textContent = "TailorCV";
                 pop.classList.remove("visible");
                 requestAnimationFrame(() => pop.classList.add("visible"));
             }
 
             function startLoop() {
-                showEntry(idx++);
-                timer = setInterval(() => showEntry(idx++), 7000);
+                showEntry();
+                timer = setInterval(showEntry, 7000);
             }
 
             closeBtn.addEventListener("click", () => {
