@@ -706,7 +706,7 @@ def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
     resend.Emails.send({
         "from": from_addr,
         "to": [recipient_email],
-        "subject": "Welcome to TailorCV.ai",
+        "subject": "Welcome to TailorCV",
         "text": (
             f"Hi {recipient_name or 'there'},\n\n"
             "I am the Co-Founder of TailorCV, and I would love your feedback on our platform.\n\n"
@@ -5162,7 +5162,7 @@ async def personality_card_public(request: Request, token: str):
 
     card_url = f"{SITE_URL}/card/{token}"
     vitals = _personality_card_vitals(card.archetype)
-    og_title = f"{(candidate_name + ' is ') if candidate_name else ''}{card.archetype} | TailorCv.AI Career Card"
+    og_title = f"{(candidate_name + ' is ') if candidate_name else ''}{card.archetype} | TailorCV Career Card"
     og_desc = (
         f"Only {vitals['rarity_pct']}% of professionals earn this archetype. "
         f"Find out yours → thetailorcv.com"
@@ -6519,7 +6519,7 @@ async def blog_listing_page(
             "selected_category": category,
             "tags": filters["tags"],
             "categories": filters["categories"],
-            "meta_title": "Resume Optimization Blog | TailorCV.ai",
+            "meta_title": "Resume Optimization Blog | TailorCV",
             "meta_description": "Read ATS, resume, and job search strategies to improve interview outcomes.",
             "meta_keywords": "resume optimization blog, ats resume tips, job search guide",
             "canonical_url": canonical_url,
