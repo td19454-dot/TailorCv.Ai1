@@ -74,13 +74,13 @@
         .plan-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
+            gap: 1.75rem;
             margin-bottom: 2rem;
-            max-width: 920px;
+            max-width: 1120px;
             margin-left: auto;
             margin-right: auto;
         }
-        @media (max-width: 860px)  { .plan-grid { grid-template-columns: 1fr; max-width: 440px; } }
+        @media (max-width: 960px)  { .plan-grid { grid-template-columns: 1fr; max-width: 500px; } }
 
         /* ── Billing toggle ─────────────────────── */
         .billing-toggle {
@@ -141,28 +141,28 @@
 
         .plan-card {
             position: relative;
-            background: linear-gradient(155deg, rgba(18,34,76,.92), rgba(14,22,60,.9));
-            border: 1px solid rgba(125,211,252,.22);
-            border-radius: 18px;
-            padding: 1.6rem 1.4rem;
+            background: linear-gradient(155deg, rgba(18,34,76,.95), rgba(14,22,60,.92));
+            border: 1px solid rgba(125,211,252,.2);
+            border-radius: 22px;
+            padding: 2rem 1.9rem;
             display: flex;
             flex-direction: column;
-            gap: .6rem;
+            gap: .7rem;
             transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease;
             animation: pricingFadeUp .85s ease-out both;
         }
         .plan-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 22px 44px rgba(0,10,36,.38), 0 0 0 1px rgba(96,165,250,.28);
-            border-color: rgba(96,165,250,.4);
+            transform: translateY(-6px);
+            box-shadow: 0 28px 52px rgba(0,10,36,.42), 0 0 0 1px rgba(96,165,250,.32);
+            border-color: rgba(96,165,250,.45);
         }
         .plan-card.popular {
-            border-color: rgba(56,189,248,.5);
-            background: linear-gradient(155deg, rgba(11,42,95,.95), rgba(7,52,100,.92));
-            box-shadow: 0 0 0 1px rgba(56,189,248,.25), 0 18px 36px rgba(0,24,56,.34);
+            border-color: rgba(56,189,248,.55);
+            background: linear-gradient(155deg, rgba(11,42,95,.97), rgba(7,52,110,.94));
+            box-shadow: 0 0 0 1px rgba(56,189,248,.28), 0 20px 40px rgba(0,24,56,.36);
         }
         .plan-card.popular:hover {
-            box-shadow: 0 24px 48px rgba(0,20,50,.42), 0 0 0 1px rgba(56,189,248,.45);
+            box-shadow: 0 28px 56px rgba(0,20,50,.46), 0 0 0 1px rgba(56,189,248,.5);
         }
         .plan-badge {
             display: inline-block;
@@ -179,83 +179,92 @@
         .badge-pass    { background: rgba(16,185,129,.14); color: #6ee7b7; border: 1px solid rgba(16,185,129,.35); }
 
         .plan-name {
-            font-size: 1.15rem;
-            font-weight: 700;
+            font-size: 1.25rem;
+            font-weight: 800;
             color: #f1f8ff;
             margin: 0;
         }
         .plan-tagline {
-            font-size: .82rem;
+            font-size: .84rem;
             color: #94a3b8;
-            margin: 0 0 .4rem;
+            margin: .1rem 0 .5rem;
         }
         .plan-price {
-            font-size: 2.4rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: #f8fbff;
             line-height: 1;
             margin: 0;
         }
-        .plan-price sup { font-size: 1.1rem; font-weight: 700; vertical-align: super; }
+        .plan-price sup { font-size: 1.2rem; font-weight: 700; vertical-align: super; }
         .plan-price-period {
-            font-size: .82rem;
+            font-size: .84rem;
             color: #94a3b8;
-            margin: .15rem 0 .8rem;
+            margin: .15rem 0 .6rem;
         }
         .plan-features {
             list-style: none;
             padding: 0;
-            margin: 0 0 auto;
+            margin: .2rem 0 auto;
             display: flex;
             flex-direction: column;
-            gap: .4rem;
+            gap: .55rem;
             flex: 1;
         }
         .plan-features li {
-            font-size: .88rem;
+            font-size: .9rem;
             color: #cbd5e1;
-            padding-left: 1.4rem;
+            padding-left: 1.6rem;
             position: relative;
+            line-height: 1.45;
         }
         .plan-features li::before {
-            content: "";
+            content: "✓";
             position: absolute;
             left: 0;
-            top: .52em;
-            width: 7px;
-            height: 7px;
-            border-radius: 999px;
+            top: 0;
+            font-size: .82rem;
+            font-weight: 800;
             background: linear-gradient(135deg, #38bdf8, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .plan-features li.muted { color: #64748b; }
-        .plan-features li.muted::before { background: #334155; }
+        .plan-features li.muted { color: #475569; }
+        .plan-features li.muted::before {
+            content: "✕";
+            background: none;
+            -webkit-text-fill-color: #475569;
+            color: #475569;
+        }
 
         .plan-btn {
             display: block;
             width: 100%;
-            margin-top: 1.1rem;
-            padding: .7rem 1rem;
-            border-radius: 10px;
+            margin-top: 1.2rem;
+            padding: .82rem 1rem;
+            border-radius: 12px;
             border: none;
-            font-size: .92rem;
+            font-size: .95rem;
             font-weight: 700;
             cursor: pointer;
             text-align: center;
             text-decoration: none;
+            letter-spacing: .2px;
             transition: opacity .2s ease, transform .2s ease, box-shadow .2s ease;
         }
         .plan-btn-primary {
             background: linear-gradient(135deg, #2563eb, #0ea5e9);
             color: #fff;
-            box-shadow: 0 4px 14px rgba(37,99,235,.35);
+            box-shadow: 0 4px 18px rgba(37,99,235,.38);
         }
-        .plan-btn-primary:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,.4); }
+        .plan-btn-primary:hover { opacity: .92; transform: translateY(-2px); box-shadow: 0 10px 26px rgba(37,99,235,.45); }
         .plan-btn-ghost {
-            background: transparent;
+            background: rgba(255,255,255,.04);
             color: #64748b;
-            border: 1px solid rgba(100,116,139,.3);
+            border: 1px solid rgba(100,116,139,.28);
         }
-        .plan-btn-ghost:hover { border-color: rgba(100,116,139,.6); color: #94a3b8; }
+        .plan-btn-ghost:hover { border-color: rgba(100,116,139,.55); color: #94a3b8; background: rgba(255,255,255,.07); }
 
         /* ── Smoother look enhancements ───────────────── */
         html { scroll-behavior: smooth; }
@@ -397,6 +406,7 @@
                         <li>Unlimited optimize &amp; cover letters</li>
                         <li>Unlimited mock interviews</li>
                         <li>LinkedIn import unlimited</li>
+                        <li>Custom Netlify portfolio domain</li>
                         <li>7-day full access</li>
                         <li class="muted">No subscription</li>
                     </ul>
@@ -430,6 +440,7 @@
                         <li>Unlimited mock interviews</li>
                         <li>LinkedIn import unlimited</li>
                         <li>All templates &amp; downloads</li>
+                        <li>Custom Netlify portfolio domain</li>
                         <li>Priority AI processing</li>
                     </ul>
                     <button class="plan-btn plan-btn-primary" id="proBtn" onclick="checkoutPro()">Get Yearly Pro</button>
@@ -486,7 +497,7 @@
                     </article>
                     <article class="faq-item">
                         <h3 class="faq-question">Which payment methods are accepted?</h3>
-                        <p class="faq-answer">UPI, debit/credit cards (Visa, Mastercard, RuPay), net banking, and wallets — all via Razorpay.</p>
+                        <p class="faq-answer">UPI, debit/credit cards (Visa, Mastercard, RuPay), net banking, and wallets </p>
                     </article>
                     <article class="faq-item">
                         <h3 class="faq-question">Can I still download my resume on the free plan?</h3>
@@ -494,7 +505,7 @@
                     </article>
                     <article class="faq-item">
                         <h3 class="faq-question">Is my payment information secure?</h3>
-                        <p class="faq-answer">Payments are handled entirely by Razorpay — we never see or store your card details.</p>
+                        <p class="faq-answer">We never see or store your card details.</p>
                     </article>
                 </div>
             </section>
