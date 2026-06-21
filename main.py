@@ -295,6 +295,22 @@ _SKILL_ICON_OVERRIDES = {
     "c": "/static/skill-icons/c.svg",
     "dsa": "/static/skill-icons/dsa.svg",
     "datastructuresandalgorithms": "/static/skill-icons/dsa.svg",
+    # Vector databases
+    "vectordatabase": "/static/skill-icons/vectordb.png",
+    "vectordatabases": "/static/skill-icons/vectordb.png",
+    "vectordb": "/static/skill-icons/vectordb.png",
+    # ETL / data pipelines
+    "etl": "/static/skill-icons/etl.png",
+    "etlpipelines": "/static/skill-icons/etl.png",
+    "etlpipeline": "/static/skill-icons/etl.png",
+    "datapipelines": "/static/skill-icons/etl.png",
+    "datapipeline": "/static/skill-icons/etl.png",
+    # CI/CD
+    "cicd": "/static/skill-icons/cicd.png",
+    # MLflow
+    "mlflow": "/static/skill-icons/mlflow.png",
+    # AWS (override devicon's mark with the supplied logo)
+    "amazonwebservices": "/static/skill-icons/aws.png",
 }
 
 
@@ -410,6 +426,13 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN plan_provider VARCHAR(20)" if is_pg else "ADD COLUMN plan_provider TEXT")
     if "razorpay_subscription_id" not in cols:
         to_add.append("ADD COLUMN razorpay_subscription_id VARCHAR(100)" if is_pg else "ADD COLUMN razorpay_subscription_id TEXT")
+    # One shared Netlify "live site" per user (reused across portfolios to save credits).
+    if "netlify_site_id" not in cols:
+        to_add.append("ADD COLUMN netlify_site_id VARCHAR(64)" if is_pg else "ADD COLUMN netlify_site_id TEXT")
+    if "netlify_url" not in cols:
+        to_add.append("ADD COLUMN netlify_url VARCHAR(255)" if is_pg else "ADD COLUMN netlify_url TEXT")
+    if "netlify_portfolio_id" not in cols:
+        to_add.append("ADD COLUMN netlify_portfolio_id INTEGER")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -5188,6 +5211,27 @@ PORTFOLIO_THEMES = {
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
+# Optional per-theme marketing assets for the builder picker. Filled in over time;
+# a missing slug/key just falls back to the CSS mini-preview (image) / no link (demo).
+# Convention: image at static/portfolio-previews/<slug>.<ext>; demo is the Netlify URL.
+PORTFOLIO_THEME_MEDIA = {
+    "editor": {"image": "/static/portfolio-previews/editor.png", "demo": "https://karen-taylor-5.netlify.app/"},
+    "nova": {"image": "/static/portfolio-previews/nova.png", "demo": "https://william-davis-7ef8.netlify.app/"},
+    "codeflow": {"image": "/static/portfolio-previews/codeflow.png", "demo": "https://joseph-harris.netlify.app/"},
+    "panels": {"image": "/static/portfolio-previews/panels.png", "demo": "https://mary-smith-2.netlify.app/"},
+    "wave": {"image": "/static/portfolio-previews/wave.png", "demo": "https://trisha-debnath-8.netlify.app/"},
+    "bold": {"image": "/static/portfolio-previews/bold.png", "demo": "https://shubham-sarkar-8.netlify.app/"},
+    "terminal": {"image": "/static/portfolio-previews/terminal.png", "demo": "https://nicholas-walker.netlify.app/"},
+    "clean": {"image": "/static/portfolio-previews/clean.png", "demo": "https://emma-martinez-ff85.netlify.app/"},
+    "editorial": {"image": "/static/portfolio-previews/editorial.png", "demo": "https://amelia-clark.netlify.app/"},
+    "vibrant": {"image": "/static/portfolio-previews/vibrant.png", "demo": "https://evelyn-harris.netlify.app/"},
+    "console": {"image": "/static/portfolio-previews/console.png", "demo": "https://ryan-lewis.netlify.app/"},
+    "monolith": {"image": "/static/portfolio-previews/monolith.png", "demo": "https://susan-garcia.netlify.app/"},
+    "particle": {"image": "/static/portfolio-previews/particle.png", "demo": "https://jonathan-allen.netlify.app/"},
+    "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://lisa-martinez.netlify.app/"},
+    "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://karen-taylor.netlify.app/"},
+}
+
 # Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
 # the encoded size so a row can't bloat the DB; the client downscales first.
 _PORTFOLIO_PHOTO_RE = re.compile(r"^data:image/(png|jpe?g|webp);base64,[A-Za-z0-9+/=\s]+$", re.IGNORECASE)
@@ -5357,6 +5401,7 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
         ("leetcode", "LeetCode", "leetcode"), ("portfolio", "Website", ""),
         ("kaggle", "Kaggle", ""), ("googleScholar", "Scholar", ""),
         ("google_scholar", "Scholar", ""), ("twitter", "Twitter", ""),
+        ("instagram", "Instagram", ""), ("facebook", "Facebook", ""),
         ("website", "Website", ""),
     ]
     socials, seen = [], set()
@@ -5369,6 +5414,18 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
         if href:
             socials.append({"label": label, "icon": key.lower().replace("_", ""), "url": href})
             seen.add(label)
+
+    # Custom "other" links from the builder (Medium, YouTube, Dribbble, Dev.to …).
+    # The icon slug falls back to a generic globe in each theme's social macro.
+    for ln in (rd.get("links") or rd.get("other_links") or []):
+        if not isinstance(ln, dict):
+            continue
+        label = first(ln.get("label"), ln.get("name"), ln.get("title"))
+        href = normalize_url(first(ln.get("url"), ln.get("link")))
+        if not href or not label or label in seen:
+            continue
+        socials.append({"label": label, "icon": re.sub(r"[^a-z0-9]", "", label.lower()), "url": href})
+        seen.add(label)
 
     # Experience
     experience = []
@@ -5442,6 +5499,36 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
             "url": normalize_url(first(pub.get("url"), pub.get("link"), pub.get("doi"))),
         })
 
+    # Open-source contributions (optional). Each entry: name/repo + link + bullets.
+    opensource = []
+    for it in (rd.get("opensource") or rd.get("open_source") or rd.get("contributions") or []):
+        if not isinstance(it, dict):
+            continue
+        entry = {
+            "name": first(it.get("name"), it.get("title"), it.get("repo"), it.get("project")),
+            "url": normalize_url(first(it.get("url"), it.get("link"), it.get("github"))),
+            "bullets": _portfolio_strip_bullets(
+                it.get("details") or it.get("bullets") or it.get("description") or []
+            ),
+        }
+        if entry["name"] or entry["url"] or entry["bullets"]:
+            opensource.append(entry)
+
+    # GitHub username for the auto contribution graph. The builder sends an explicit
+    # opt-in flag `github_graph`; when it's False the user chose "No", so never show a
+    # graph (don't even derive a username from their profile URL). When the flag is
+    # absent (e.g. the saved-resume path), fall back to the old auto-derive behavior.
+    if rd.get("github_graph") is False:
+        github_username = ""
+    else:
+        github_username = first(pi.get("github_username"), rd.get("github_username"))
+        if not github_username:
+            gh_raw = first(pi.get("github"), contact.get("github"), rd.get("github"))
+            m = re.search(r"github\.com/([A-Za-z0-9](?:[A-Za-z0-9-]{0,38}))", gh_raw or "")
+            if m:
+                github_username = m.group(1)
+        github_username = re.sub(r"[^A-Za-z0-9-]", "", github_username or "")[:39]
+
     # Certifications
     certifications = []
     for cert in (rd.get("certifications") or rd.get("certificates") or []):
@@ -5454,6 +5541,21 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
             "url": normalize_url(first(cert.get("url"), cert.get("link"))),
             "image": (cert.get("image") or "").strip() if _valid_portfolio_photo(cert.get("image")) else "",
         })
+
+    # Awards / honors (list of strings or dicts)
+    awards = []
+    for aw in (rd.get("awards") or rd.get("honors") or rd.get("achievements") or []):
+        if isinstance(aw, str) and aw.strip():
+            awards.append({"title": aw.strip(), "issuer": "", "year": "", "url": ""})
+        elif isinstance(aw, dict):
+            entry = {
+                "title": first(aw.get("title"), aw.get("name"), aw.get("award")),
+                "issuer": first(aw.get("issuer"), aw.get("organization"), aw.get("awarder")),
+                "year": first(aw.get("year"), aw.get("date")),
+                "url": normalize_url(first(aw.get("url"), aw.get("link"))),
+            }
+            if entry["title"]:
+                awards.append(entry)
 
     # Hobbies / interests (list of strings, a comma/newline string, or list of dicts)
     hobbies = []
@@ -5487,6 +5589,9 @@ def _build_portfolio_data(resume_data: dict, candidate_name: str = "") -> dict:
         "extracurriculars": extracurriculars,
         "publications": publications,
         "certifications": certifications,
+        "awards": awards,
+        "opensource": opensource,
+        "github_username": github_username,
         "hobbies": hobbies,
         "stats": {
             "experience": len(experience),
@@ -5774,6 +5879,7 @@ async def portfolio_builder_page(request: Request):
     return templates.TemplateResponse(request, "portfolio_builder.html", {
         "request": request,
         "themes": PORTFOLIO_THEMES,
+        "theme_media": PORTFOLIO_THEME_MEDIA,
         "logged_in": logged_in,
         "portfolio_domain": PORTFOLIO_DOMAIN,
         "subdomains_enabled": PORTFOLIO_SUBDOMAINS_ENABLED,
@@ -5898,59 +6004,119 @@ def _build_static_portfolio_html(portfolio) -> str:
     return html
 
 
-async def _deploy_portfolio_to_netlify(portfolio):
-    """Create (or reuse) a Netlify site and deploy the static bundle via the
-    digest-based file API so Netlify serves index.html as text/html (a zip-body
-    deploy can leave the file served as text/plain). Returns (site_id, live_url).
+async def _deploy_portfolio_to_netlify(user, portfolio):
+    """Deploy a portfolio to the USER's single shared Netlify site (reused across all
+    their portfolios/templates to save credits). Creates the site only if the user
+    has none yet; otherwise overwrites it. Returns (site_id, live_url).
     Requires NETLIFY_AUTH_TOKEN."""
     import hashlib
     import httpx
+    import secrets
 
     html = _build_static_portfolio_html(portfolio)
     body = html.encode("utf-8")
     digest = hashlib.sha1(body).hexdigest()
     headers = {"Authorization": f"Bearer {NETLIFY_AUTH_TOKEN}"}
+
+    async def _find_site_by_name(client, name):
+        """Return the account's site with exactly this name, or None."""
+        r = await client.get(
+            "https://api.netlify.com/api/v1/sites",
+            headers=headers, params={"name": name, "per_page": 100},
+        )
+        if r.status_code == 200:
+            for s in (r.json() or []):
+                if s.get("name") == name:
+                    return s
+        return None
+
+    async def _create_site(client):
+        # ONE site per USER: name it after the user (stable across every portfolio /
+        # template) and make creation IDEMPOTENT — if a site with this name already
+        # exists in the account (e.g. the DB id wasn't saved last time), reuse it
+        # instead of spawning a duplicate. This guarantees a user can't accumulate
+        # multiple Netlify links.
+        base = _portfolio_slugify(user.name)[:55].strip("-") or "portfolio"
+        existing = await _find_site_by_name(client, base)
+        if existing:
+            return existing
+        r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={"name": base})
+        if r.status_code in (200, 201):
+            return r.json()
+        if r.status_code in (422, 400):
+            # Name taken: if it's ours reuse it, else fall back to a suffixed name.
+            existing = await _find_site_by_name(client, base)
+            if existing:
+                return existing
+            for candidate in (f"{base}-{secrets.token_hex(2)}", f"{base}-{secrets.token_hex(3)}"):
+                r2 = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={"name": candidate})
+                if r2.status_code in (200, 201):
+                    return r2.json()
+                if r2.status_code not in (422, 400):
+                    r2.raise_for_status()
+        else:
+            r.raise_for_status()
+        # Last resort: let Netlify assign a random name so the deploy still works.
+        r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={})
+        r.raise_for_status()
+        return r.json()
+
     async with httpx.AsyncClient(timeout=60) as client:
-        site_id = portfolio.netlify_site_id
-        site_url = portfolio.netlify_url
+        site_id = user.netlify_site_id
+        site_url = user.netlify_url
         if not site_id:
-            # Name the site after the portfolio slug so the URL reads
-            # <name>.netlify.app instead of Netlify's random "joyful-pudding".
-            # Netlify site names are globally unique, so retry with a short
-            # random suffix if the preferred name is already taken (422).
-            import secrets
-            base = _portfolio_slugify(portfolio.slug)[:55].strip("-") or "portfolio"
-            site = None
-            for candidate in (base, f"{base}-{secrets.token_hex(2)}", f"{base}-{secrets.token_hex(3)}"):
-                r = await client.post(
-                    "https://api.netlify.com/api/v1/sites",
-                    headers=headers, json={"name": candidate},
-                )
-                if r.status_code in (200, 201):
-                    site = r.json()
-                    break
-                if r.status_code not in (422, 400):
-                    r.raise_for_status()
-            if site is None:
-                # Last resort: let Netlify assign a random name so deploy still works.
-                r = await client.post("https://api.netlify.com/api/v1/sites", headers=headers, json={})
-                r.raise_for_status()
-                site = r.json()
+            site = await _create_site(client)
             site_id = site["id"]
             site_url = site.get("ssl_url") or site.get("url")
-        # 1) Create a deploy declaring the files we intend to ship (path -> sha1).
-        dr = await client.post(
-            f"https://api.netlify.com/api/v1/sites/{site_id}/deploys",
-            headers=headers,
-            json={"files": {"/index.html": digest}},
-        )
-        dr.raise_for_status()
-        deploy = dr.json()
-        deploy_id = deploy["id"]
-        # 2) Upload the file body for any digest Netlify says it still needs.
-        if digest in (deploy.get("required") or []):
+
+        # Build a zip once for the fallback path: some tokens/accounts reject the
+        # JSON "digest" deploy with 403/422 but accept a direct zip upload.
+        import io
+        import zipfile
+        zbuf = io.BytesIO()
+        with zipfile.ZipFile(zbuf, "w", zipfile.ZIP_DEFLATED) as z:
+            z.writestr("index.html", html)
+        zip_bytes = zbuf.getvalue()
+
+        def _deploys_url(sid):
+            return f"https://api.netlify.com/api/v1/sites/{sid}/deploys"
+
+        async def _deploy_once(sid):
+            """Deploy to a site. Try the digest API first (clean content-type), then
+            fall back to a direct zip upload. Returns (deploy_json, used_digest), or
+            None if the site itself can't be used with this token (gone/forbidden)."""
+            r = await client.post(_deploys_url(sid), headers=headers, json={"files": {"/index.html": digest}})
+            if r.status_code in (200, 201):
+                return r.json(), True
+            if r.status_code in (400, 403, 422):
+                rz = await client.post(_deploys_url(sid), headers={**headers, "Content-Type": "application/zip"}, content=zip_bytes)
+                if rz.status_code in (200, 201):
+                    return rz.json(), False
+                if rz.status_code in (401, 403, 404):
+                    return None
+                rz.raise_for_status()
+            if r.status_code in (401, 404):
+                return None
+            r.raise_for_status()
+
+        # A stored site can become unusable (deleted, or created under a different
+        # token/account). If so, transparently create a fresh site and retry once.
+        result = await _deploy_once(site_id)
+        if result is None:
+            site = await _create_site(client)
+            site_id = site["id"]
+            site_url = site.get("ssl_url") or site.get("url")
+            result = await _deploy_once(site_id)
+        if result is None:
+            raise RuntimeError(
+                "Netlify rejected the deploy even on a freshly created site — the "
+                "NETLIFY_AUTH_TOKEN likely lacks deploy permission or the account is restricted."
+            )
+        deploy, used_digest = result
+        # The digest deploy needs the file body uploaded for any missing sha1.
+        if used_digest and digest in (deploy.get("required") or []):
             ur = await client.put(
-                f"https://api.netlify.com/api/v1/deploys/{deploy_id}/files/index.html",
+                f"https://api.netlify.com/api/v1/deploys/{deploy['id']}/files/index.html",
                 headers={**headers, "Content-Type": "application/octet-stream"},
                 content=body,
             )
@@ -5974,13 +6140,22 @@ async def deploy_portfolio_netlify(portfolio_id: int, request: Request):
         ).first()
         if not portfolio:
             return JSONResponse(status_code=404, content={"error": "Portfolio not found"})
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            return JSONResponse(status_code=401, content={"error": "Not logged in"})
         try:
-            site_id, site_url = await _deploy_portfolio_to_netlify(portfolio)
+            # Deploy to the user's single shared site (one live link per user).
+            site_id, site_url = await _deploy_portfolio_to_netlify(user, portfolio)
         except Exception:
-            logger.exception("Netlify deploy failed")
-            return JSONResponse(status_code=502, content={"error": "Netlify deploy failed. Please try again."})
-        portfolio.netlify_site_id = site_id
-        portfolio.netlify_url = site_url
+            logger.exception("Live-site publish failed for portfolio %s", portfolio_id)
+            return JSONResponse(status_code=502, content={"error": "Could not publish your live site. Please try again."})
+        user.netlify_site_id = site_id
+        user.netlify_url = site_url
+        user.netlify_portfolio_id = portfolio.id
+        # Keep the live URL on the portfolio that's currently published, and clear it
+        # from any other portfolio so only one shows as "live".
+        for p in db.query(Portfolio).filter(Portfolio.user_id == user_id).all():
+            p.netlify_url = site_url if p.id == portfolio.id else None
         db.commit()
         return JSONResponse({"success": True, "netlify_url": site_url})
     finally:

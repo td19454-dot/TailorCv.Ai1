@@ -180,6 +180,32 @@
     </section>
     {% endif %}
 
+    {% if data.github_username or data.opensource %}
+    <section class="pt-section" id="opensource">
+        <h2>Open Source</h2>
+        {% if data.github_username %}
+        <div class="pt-exp-list" style="margin-bottom:22px;">
+            <article class="pt-exp-card" style="overflow-x:auto;">
+                <img src="https://ghchart.rshah.org/319cff/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;">
+            </article>
+        </div>
+        {% endif %}
+        {% if data.opensource %}
+        <div class="pt-exp-list">
+            {% for o in data.opensource %}
+            <article class="pt-exp-card">
+                <h3>{{ o.name }}</h3>
+                {% if o.bullets %}<ul>{% for b in o.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                {% if o.url %}<div class="pt-date"><a href="{{ o.url }}" target="_blank" rel="noopener">View {{ ext() }}</a></div>{% endif %}
+            </article>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+
+    {% include "_portfolio_awards.html" %}
+
     <section class="pt-section pt-contact" id="contact">
         <h2>Contact Me</h2>
         <form onsubmit="return ptSend(event)">

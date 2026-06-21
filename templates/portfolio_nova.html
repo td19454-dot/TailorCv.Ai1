@@ -174,6 +174,27 @@
     </div></section>
     {% endif %}
 
+    <!-- Open Source -->
+    {% if data.github_username or data.opensource %}
+    <section class="nv-section" id="opensource"><div class="nv-wrap">
+        <h2 class="nv-title">Open <span class="g">Source</span></h2><div class="nv-rule"></div>
+        {% if data.github_username %}
+        <div class="nv-card nv-reveal" style="overflow-x:auto;">
+            <img src="https://ghchart.rshah.org/2dd4bf/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;">
+        </div>
+        {% endif %}
+        {% for o in data.opensource %}
+        <div class="nv-card nv-reveal">
+            <div class="nv-card-top">
+                <div><h3 class="nv-card-role">{{ o.name }}</h3></div>
+                {% if o.url %}<div class="nv-card-meta"><a class="nv-checkout" href="{{ o.url }}" target="_blank" rel="noopener">View ↗</a></div>{% endif %}
+            </div>
+            {% if o.bullets %}<ul class="nv-plus">{% for b in o.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+        </div>
+        {% endfor %}
+    </div></section>
+    {% endif %}
+
     <!-- Contact -->
     <section class="nv-section" id="contact"><div class="nv-wrap">
         <h2 class="nv-title">Let's <span class="g">Connect</span></h2><div class="nv-rule"></div>
@@ -188,6 +209,8 @@
         </div>
     </div></section>
 
+    {% include "_portfolio_awards.html" %}
+
     <footer class="nv-footer">
         <div class="fav">{% if data.photo %}<img src="{{ data.photo }}" alt="{{ data.name }}">{% else %}<div class="ph">{{ data.initials }}</div>{% endif %}</div>
         <div class="fname">{{ data.name }}</div>
@@ -196,7 +219,7 @@
             {% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.label }}" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}
             {% if data.email %}<a href="mailto:{{ data.email }}" aria-label="Email">{{ soc('mail') }}</a>{% endif %}
         </div>
-        <div class="copy">© {{ data.name }} · <a href="https://thetailorcv.com" target="_blank" rel="noopener">Built with theTailorCV</a></div>
+        <div class="copy">© {{ data.name }} · Built by {{ data.name }}</div>
     </footer>
 
     <a href="#home" class="nv-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>

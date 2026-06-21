@@ -1,0 +1,28 @@
+{# Reusable Open Source section: GitHub contribution graph (auto from username) +
+   optional list of contributions. Theme-neutral — inherits the page text color and
+   uses translucent grey borders so it blends on both light and dark templates.
+   The editor theme renders its own bespoke version and does not include this. #}
+{% if data.github_username or data.opensource %}
+<section id="opensource" style="max-width:1000px;margin:0 auto;padding:54px 20px;">
+    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin:0 0 4px;letter-spacing:-.01em;">Open Source</h2>
+    <p style="opacity:.65;margin:0 0 24px;font-size:.95rem;">Contributions &amp; commits{% if data.github_username %} · @{{ data.github_username }}{% endif %}</p>
+    {% if data.github_username %}
+    <div style="border:1px solid rgba(128,128,128,.28);border-radius:14px;padding:18px;overflow-x:auto;">
+        <img src="https://ghchart.rshah.org/{{ data.github_username }}" alt="{{ data.name }}'s GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;">
+    </div>
+    {% endif %}
+    {% if data.opensource %}
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px;margin-top:22px;">
+        {% for o in data.opensource %}
+        <div style="border:1px solid rgba(128,128,128,.28);border-radius:14px;padding:18px;">
+            <div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline;">
+                <strong style="font-size:1.05rem;">{{ o.name }}</strong>
+                {% if o.url %}<a href="{{ o.url }}" target="_blank" rel="noopener" style="font-size:.8rem;opacity:.8;white-space:nowrap;">View ↗</a>{% endif %}
+            </div>
+            {% if o.bullets %}<ul style="margin:10px 0 0;padding-left:18px;opacity:.85;font-size:.9rem;line-height:1.6;">{% for b in o.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</section>
+{% endif %}

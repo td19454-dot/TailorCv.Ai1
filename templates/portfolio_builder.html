@@ -32,14 +32,15 @@
         @keyframes pbFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
         /* Template gallery */
-        .pb-templates { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px,100%),1fr)); gap: 18px; }
+        .pb-templates { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(360px,100%),1fr)); gap: 22px; }
         .pb-tpl {
             border: 2px solid rgba(99,130,200,.22); border-radius: 16px; overflow: hidden; cursor: pointer;
             background: rgba(255,255,255,.02); transition: transform .18s, border-color .18s, box-shadow .18s;
         }
         .pb-tpl:hover { transform: translateY(-4px); }
         .pb-tpl.selected { border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139,92,246,.25); }
-        .pb-tpl-prev { height: 150px; position: relative; display: flex; align-items: center; justify-content: center; }
+        .pb-tpl-prev { aspect-ratio: 16 / 9; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .pb-tpl-img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:top center; display:block; z-index:3; background:#0b0d16; }
         .pb-tpl-prev .mini-avatar { width: 64px; height: 64px; border-radius: 50%; display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff; }
         .pb-tpl-prev .mini-lines { position:absolute; left:18px; bottom:18px; }
         .pb-tpl-prev .mini-lines span { display:block; height:7px; border-radius:4px; margin-bottom:5px; }
@@ -154,6 +155,10 @@
         .prev-vibrant .mini-lines span:nth-child(2){width:80px;background:rgba(91,77,115,.5);}
         .pb-tpl-foot { padding: 14px 16px; display:flex; align-items:center; justify-content:space-between; }
         .pb-tpl-foot strong { font-size: .95rem; }
+        .pb-tpl-demo { font-size:.95rem; font-weight:700; margin-left:auto; margin-right:12px; white-space:nowrap;
+            padding:8px 16px; border-radius:8px; color:#fff; text-decoration:none;
+            background:linear-gradient(135deg,#2dd4bf,#0ea5e9); box-shadow:0 2px 10px rgba(14,165,233,.35); transition:transform .12s ease, box-shadow .12s ease; }
+        .pb-tpl-demo:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(14,165,233,.5); }
         .pb-tpl-foot .tick { width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(99,130,200,.4); display:flex;align-items:center;justify-content:center; }
         .pb-tpl.selected .tick { background:#8b5cf6;border-color:#8b5cf6; }
         .pb-tpl.selected .tick::after { content:"✓"; color:#fff; font-size:.8rem; }
@@ -183,7 +188,28 @@
         .pb-card { border:1px solid rgba(99,130,200,.2); border-radius:12px; padding:16px; margin-bottom:14px; background:rgba(255,255,255,.02); position:relative; }
         .pb-card-rm { position:absolute; top:10px; right:10px; background:transparent; border:1px solid rgba(239,68,68,.35); color:#ff9a9a; border-radius:7px; padding:3px 9px; font-size:.78rem; cursor:pointer; }
         .pb-add { background:rgba(59,130,246,.16); color:#9cc2ff; border:1px solid rgba(59,130,246,.35); border-radius:9px; padding:9px 16px; font-size:.85rem; font-weight:600; cursor:pointer; }
-        .pb-sec-title { font-size:1.05rem; font-weight:700; margin:24px 0 12px; color:#eaf1ff; }
+        .pb-sec-title { font-size:1.05rem; font-weight:700; margin:24px 0 12px; color:#eaf1ff; scroll-margin-top:18px; }
+        .pb-yn { display:flex; align-items:center; gap:18px; margin:2px 0 14px; flex-wrap:wrap; }
+        .pb-yn-q { color:#cdd8ef; font-size:.95rem; margin-right:4px; }
+        .pb-yn label { display:inline-flex; align-items:center; gap:7px; cursor:pointer; color:#aeb9d4; font-size:.95rem; user-select:none; }
+        .pb-yn input { width:17px; height:17px; accent-color:#5b9dff; cursor:pointer; }
+        /* details-form layout: sticky section sidebar + form column */
+        .pb-formwrap { display:flex; gap:30px; align-items:flex-start; }
+        .pb-formmain { flex:1; min-width:0; }
+        .pb-sidebar { position:sticky; top:20px; flex:0 0 188px; width:188px; padding:14px 10px; border-radius:16px;
+            background:linear-gradient(180deg, rgba(124,58,237,.07), rgba(91,157,255,.04)); border:1px solid rgba(99,130,200,.16);
+            box-shadow:0 18px 40px -28px rgba(0,0,0,.9); display:flex; flex-direction:column; gap:3px; }
+        .pb-sidebar-title { font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:#8b97b8; font-weight:700; padding:4px 12px 10px; }
+        .pb-sidebar a { position:relative; display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:10px;
+            color:#aeb9d4; font-size:.9rem; font-weight:600; text-decoration:none; cursor:pointer; transition:all .15s ease; }
+        .pb-sidebar a::before { content:""; width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.32; transition:all .15s ease; flex-shrink:0; }
+        .pb-sidebar a:hover { background:rgba(255,255,255,.06); color:#fff; transform:translateX(3px); }
+        .pb-sidebar a:hover::before { opacity:.7; }
+        .pb-sidebar a:focus, .pb-sidebar a:focus-visible { outline:none; }
+        .pb-sidebar a.active { background:linear-gradient(135deg, rgba(124,58,237,.30), rgba(91,157,255,.22)); color:#fff;
+            box-shadow:0 6px 16px -7px rgba(124,58,237,.7); }
+        .pb-sidebar a.active::before { background:#7dd3fc; opacity:1; box-shadow:0 0 8px #7dd3fc; }
+        @media (max-width:820px) { .pb-formwrap { display:block; } .pb-sidebar { display:none; } }
         /* Inline "upload existing CV" import bar on the details form */
         .pb-import { border:1px solid rgba(16,185,129,.35); background:linear-gradient(135deg,rgba(16,185,129,.10),rgba(16,185,129,.03)); border-radius:14px; padding:16px 18px; margin-bottom:22px; }
         .pb-import-row { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
@@ -262,11 +288,10 @@
         .pb-tpl:hover { transform:translateY(-5px); border-color:rgba(139,92,246,.55);
             box-shadow:0 22px 48px -24px rgba(139,92,246,.55); }
         .pb-tpl.selected { box-shadow:0 0 0 3px rgba(139,92,246,.3), 0 18px 40px -22px rgba(139,92,246,.6); }
-        .pb-tpl-prev { height:165px; }
+        .pb-tpl-prev { aspect-ratio: 16 / 9; }
         .pb-use { position:absolute; left:0; right:0; bottom:0; z-index:4; padding:9px 12px; text-align:center;
             font-size:.82rem; font-weight:700; color:#fff; background:linear-gradient(135deg,#7c3aed,#4c1d95);
-            transform:translateY(101%); transition:transform .22s ease; }
-        .pb-tpl:hover .pb-use { transform:translateY(0); }
+            transform:none; }
         .pb-tpl-foot { padding:14px 16px; background:rgba(255,255,255,.015); }
         .pb-tpl-foot strong { font-weight:700; }
         /* buttons */
@@ -303,13 +328,24 @@
         <section class="pb-panel active" id="panel-1">
             <div class="pb-templates">
                 {% for slug, label in themes.items() %}
+                {% set media = (theme_media or {}).get(slug) %}
                 <div class="pb-tpl" data-theme="{{ slug }}" onclick="pbPickTheme(this)">
                     <div class="pb-tpl-prev prev-{{ slug }}">
+                        {% if media and media.image %}
+                        <img class="pb-tpl-img" src="{{ media.image }}" alt="{{ label }} preview" loading="lazy">
+                        {% else %}
                         <div class="mini-avatar">AB</div>
                         <div class="mini-lines"><span></span><span></span></div>
+                        {% endif %}
                         <span class="pb-use">Use this template →</span>
                     </div>
-                    <div class="pb-tpl-foot"><strong>{{ label }}</strong><span class="tick"></span></div>
+                    <div class="pb-tpl-foot">
+                        <strong>{{ label }}</strong>
+                        {% if media and media.demo %}
+                        <a class="pb-tpl-demo" href="{{ media.demo }}" target="_blank" rel="noopener" onclick="event.stopPropagation()">View demo ↗</a>
+                        {% endif %}
+                        <span class="tick"></span>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
@@ -321,6 +357,23 @@
 
         <!-- Step 2: your details (form + inline "upload existing CV") -->
         <section class="pb-panel" id="panel-2">
+          <div class="pb-formwrap">
+            <aside class="pb-sidebar">
+                <div class="pb-sidebar-title">Sections</div>
+                <a href="#sec-basics">Basics</a>
+                <a href="#sec-exp">Experience</a>
+                <a href="#sec-proj">Projects</a>
+                <a href="#sec-os">Open source</a>
+                <a href="#sec-gitgraph">Git graph</a>
+                <a href="#sec-edu">Education</a>
+                <a href="#sec-extra">Leadership</a>
+                <a href="#sec-pub">Publications</a>
+                <a href="#sec-cert">Certifications</a>
+                <a href="#sec-awards">Awards</a>
+                <a href="#sec-int">Interests</a>
+            </aside>
+            <div class="pb-formmain">
+            <div id="sec-basics"></div>
             <!-- Import bar: fills the form below in place; no separate step -->
             <div class="pb-import">
                 <div class="pb-import-row">
@@ -365,42 +418,78 @@
                 <div class="pb-field"><label>LeetCode URL</label><input class="pb-input" id="f-leetcode"></div>
                 <div class="pb-field"><label>Google Scholar URL</label><input class="pb-input" id="f-scholar"></div>
                 <div class="pb-field"><label>Twitter / X URL</label><input class="pb-input" id="f-twitter"></div>
+                <div class="pb-field"><label>Kaggle URL</label><input class="pb-input" id="f-kaggle"></div>
+                <div class="pb-field"><label>Instagram URL</label><input class="pb-input" id="f-instagram"></div>
+                <div class="pb-field"><label>Facebook URL</label><input class="pb-input" id="f-facebook"></div>
                 <div class="pb-field"><label>Website / other URL</label><input class="pb-input" id="f-portfolio"></div>
             </div>
 
+            <div class="pb-field" style="margin-top:2px;">
+                <label>Other links <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(Medium, YouTube, Dribbble, Behance, Dev.to, Stack Overflow… add as many as you like)</span></label>
+            </div>
+            <div id="link-list"></div>
+            <button class="pb-add" onclick="pbAddLink()">+ Add another link</button>
+
             <div class="pb-field"><label>Skills (one per line, or comma-separated)</label><textarea class="pb-textarea" id="f-skills" placeholder="Python&#10;React&#10;SQL"></textarea></div>
 
-            <div class="pb-sec-title">Experience</div>
+            <div class="pb-sec-title" id="sec-exp">Experience</div>
             <div id="exp-list"></div>
             <button class="pb-add" onclick="pbAddExp()">+ Add experience</button>
 
-            <div class="pb-sec-title">Projects</div>
+            <div class="pb-sec-title" id="sec-proj">Projects</div>
             <div id="proj-list"></div>
             <button class="pb-add" onclick="pbAddProj()">+ Add project</button>
 
-            <div class="pb-sec-title">Education</div>
+            <div class="pb-sec-title" id="sec-os">Open source</div>
+            <div class="pb-yn">
+                <span class="pb-yn-q">Add open source contributions?</span>
+                <label><input type="radio" name="os-yn" value="yes" onchange="pbYN('os')"> Yes</label>
+                <label><input type="radio" name="os-yn" value="no" checked onchange="pbYN('os')"> No</label>
+            </div>
+            <div id="os-wrap" style="display:none;">
+                <div id="os-list"></div>
+                <button class="pb-add" onclick="pbAddOS()">+ Add contribution</button>
+            </div>
+
+            <div class="pb-sec-title" id="sec-gitgraph">Git graph</div>
+            <div class="pb-yn">
+                <span class="pb-yn-q">Show your GitHub contribution graph?</span>
+                <label><input type="radio" name="gg-yn" value="yes" onchange="pbYN('gg')"> Yes</label>
+                <label><input type="radio" name="gg-yn" value="no" checked onchange="pbYN('gg')"> No</label>
+            </div>
+            <div id="gg-wrap" style="display:none;">
+                <div class="pb-field"><label>GitHub username</label><input class="pb-input" id="f-ghuser" placeholder="e.g. torvalds" autocomplete="off" spellcheck="false"></div>
+            </div>
+
+            <div class="pb-sec-title" id="sec-edu">Education</div>
             <div id="edu-list"></div>
             <button class="pb-add" onclick="pbAddEdu()">+ Add education</button>
 
-            <div class="pb-sec-title">Leadership &amp; activities <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
+            <div class="pb-sec-title" id="sec-extra">Leadership &amp; activities <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
             <div id="extra-list"></div>
             <button class="pb-add" onclick="pbAddExtra()">+ Add activity</button>
 
-            <div class="pb-sec-title">Publications <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
+            <div class="pb-sec-title" id="sec-pub">Publications <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
             <div id="pub-list"></div>
             <button class="pb-add" onclick="pbAddPub()">+ Add publication</button>
 
-            <div class="pb-sec-title">Certifications <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
+            <div class="pb-sec-title" id="sec-cert">Certifications <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
             <div id="cert-list"></div>
             <button class="pb-add" onclick="pbAddCert()">+ Add certification</button>
 
-            <div class="pb-sec-title">Interests / hobbies <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
+            <div class="pb-sec-title" id="sec-awards">Awards &amp; honors <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
+            <div id="award-list"></div>
+            <button class="pb-add" onclick="pbAddAward()">+ Add award</button>
+
+            <div class="pb-sec-title" id="sec-int">Interests / hobbies <span style="font-weight:400;color:#7f8db0;font-size:.85rem;">(optional)</span></div>
             <div class="pb-field"><textarea class="pb-textarea" id="f-hobbies" placeholder="Photography, Chess, Open-source&#10;(one per line or comma-separated)"></textarea></div>
 
             <div class="pb-nav-row">
                 <button class="pb-btn pb-btn-back" onclick="pbGo(1)">← Back</button>
                 <button class="pb-btn pb-btn-next" onclick="pbGo(3)">Preview &amp; publish →</button>
             </div>
+            </div><!-- /.pb-formmain -->
+          </div><!-- /.pb-formwrap -->
         </section>
 
         <!-- Step 3: publish -->
@@ -429,7 +518,7 @@
                 </div>
                 <a class="pb-btn pb-btn-next" id="pb-view-link" href="#" target="_blank" rel="noopener" style="text-decoration:none;">View my site →</a>
                 <div id="pb-netlify" style="margin-top:22px;">
-                    <button class="pb-btn pb-btn-back" id="pb-netlify-btn" onclick="pbDeployNetlify()">🌐 Also publish a free copy to Netlify</button>
+                    <button class="pb-btn pb-btn-back" id="pb-netlify-btn" onclick="pbDeployNetlify()">🌐 Also publish a free live copy</button>
                     <div class="pb-msg" id="pb-netlify-msg" style="text-align:center;"></div>
                 </div>
             </div>
@@ -550,7 +639,7 @@
 
         // Clear the repeatable lists so a fresh parse rebuilds them from new data.
         function pbResetLists() {
-            ["exp-list", "proj-list", "edu-list", "extra-list", "pub-list", "cert-list"].forEach(function (id) {
+            ["exp-list", "proj-list", "os-list", "link-list", "edu-list", "extra-list", "pub-list", "cert-list", "award-list"].forEach(function (id) {
                 const el = $(id); if (el) { el.innerHTML = ""; delete el.dataset.built; }
             });
         }
@@ -607,7 +696,11 @@
             $("f-leetcode").value = pi.leetcode || c.leetcode || "";
             $("f-scholar").value = pi.googleScholar || pi.google_scholar || c.google_scholar || "";
             $("f-twitter").value = pi.twitter || c.twitter || "";
+            $("f-kaggle").value = pi.kaggle || c.kaggle || "";
+            $("f-instagram").value = pi.instagram || c.instagram || "";
+            $("f-facebook").value = pi.facebook || c.facebook || "";
             $("f-portfolio").value = pi.portfolio || pi.website || "";
+            const ll = $("link-list"); if (!ll.dataset.built) { (cv.links || cv.other_links || []).forEach(l => pbAddLink(l)); ll.dataset.built = "1"; }
             $("f-hobbies").value = (function () {
                 const h = cv.hobbies || cv.interests || [];
                 if (Array.isArray(h)) return h.map(x => typeof x === "string" ? x : (x.name || x.hobby || "")).filter(Boolean).join("\n");
@@ -624,10 +717,17 @@
             // lists (only build once)
             const exp = $("exp-list"); if (!exp.dataset.built) { (cv.experience || cv.work_experience || []).forEach(e => pbAddExp(e)); if (!exp.children.length) pbAddExp(); exp.dataset.built = "1"; }
             const pr = $("proj-list"); if (!pr.dataset.built) { (cv.projects || []).forEach(p => pbAddProj(p)); if (!pr.children.length) pbAddProj(); pr.dataset.built = "1"; }
+            $("f-ghuser").value = cv.github_username || pi.github_username || "";
+            const ol = $("os-list"); if (!ol.dataset.built) { (cv.opensource || cv.open_source || []).forEach(o => pbAddOS(o)); ol.dataset.built = "1"; }
+            const osYes = !!(cv.opensource && cv.opensource.length);
+            const ggYes = !!(cv.github_username || pi.github_username);
+            document.querySelector('input[name="os-yn"][value="' + (osYes ? "yes" : "no") + '"]').checked = true; pbYN("os");
+            document.querySelector('input[name="gg-yn"][value="' + (ggYes ? "yes" : "no") + '"]').checked = true; pbYN("gg");
             const ed = $("edu-list"); if (!ed.dataset.built) { (cv.education || []).forEach(e => pbAddEdu(e)); if (!ed.children.length) pbAddEdu(); ed.dataset.built = "1"; }
             const xl = $("extra-list"); if (!xl.dataset.built) { (cv.extracurriculars || cv.activities || []).forEach(x => pbAddExtra(x)); xl.dataset.built = "1"; }
             const pl = $("pub-list"); if (!pl.dataset.built) { (cv.publications || []).forEach(p => pbAddPub(p)); pl.dataset.built = "1"; }
             const cl = $("cert-list"); if (!cl.dataset.built) { (cv.certifications || cv.certificates || []).forEach(c => pbAddCert(c)); cl.dataset.built = "1"; }
+            const al = $("award-list"); if (!al.dataset.built) { (cv.awards || cv.honors || []).forEach(a => pbAddAward(a)); al.dataset.built = "1"; }
             renderPhoto();
         }
 
@@ -655,6 +755,29 @@
                 '<div class="pb-field"><label>GitHub URL</label><input class="pb-input j-github" value="' + esc(val(p,"github_link") || val(p,"github")) + '"></div></div>' +
                 '<div class="pb-field"><label>Highlights (one per line)</label><textarea class="pb-textarea j-details">' + esc(detailsOf(p)) + '</textarea></div>' +
                 '<div class="pb-field"><label>Project image (optional)</label>' + imgBoxHtml(val(p,"image")) + '</div>'));
+        };
+        window.pbAddAward = function (a) { a = a || {};
+            $("award-list").appendChild(card(
+                '<div class="pb-field"><label>Award / honor</label><input class="pb-input j-title" value="' + esc(val(a,"title") || val(a,"name")) + '"></div>' +
+                '<div class="pb-grid2"><div class="pb-field"><label>Issuer / organization</label><input class="pb-input j-issuer" value="' + esc(val(a,"issuer") || val(a,"organization")) + '"></div>' +
+                '<div class="pb-field"><label>Year</label><input class="pb-input j-year" value="' + esc(val(a,"year")) + '"></div>' +
+                '<div class="pb-field"><label>Link (optional)</label><input class="pb-input j-url" value="' + esc(val(a,"url")) + '"></div></div>'));
+        };
+        window.pbAddLink = function (l) { l = l || {};
+            $("link-list").appendChild(card(
+                '<div class="pb-grid2"><div class="pb-field"><label>Label</label><input class="pb-input j-label" value="' + esc(val(l,"label") || val(l,"name")) + '" placeholder="e.g. Medium"></div>' +
+                '<div class="pb-field"><label>URL</label><input class="pb-input j-url" value="' + esc(val(l,"url") || val(l,"link")) + '" placeholder="https://…"></div></div>'));
+        };
+        window.pbYN = function (which) {
+            const sel = document.querySelector('input[name="' + which + '-yn"]:checked');
+            const on = !!sel && sel.value === "yes";
+            $(which === "os" ? "os-wrap" : "gg-wrap").style.display = on ? "" : "none";
+        };
+        window.pbAddOS = function (o) { o = o || {};
+            $("os-list").appendChild(card(
+                '<div class="pb-grid2"><div class="pb-field"><label>Project / repo</label><input class="pb-input j-name" value="' + esc(val(o,"name") || val(o,"repo")) + '"></div>' +
+                '<div class="pb-field"><label>Link (PR or repo)</label><input class="pb-input j-url" value="' + esc(val(o,"url") || val(o,"link")) + '"></div></div>' +
+                '<div class="pb-field"><label>What you contributed (one per line)</label><textarea class="pb-textarea j-details">' + esc(detailsOf(o)) + '</textarea></div>'));
         };
         window.pbAddEdu = function (e) { e = e || {};
             $("edu-list").appendChild(card(
@@ -705,17 +828,24 @@
                     phone: $("f-phone").value.trim(), location: $("f-location").value.trim(),
                     linkedin: $("f-linkedin").value.trim(), github: $("f-github").value.trim(),
                     leetcode: $("f-leetcode").value.trim(), googleScholar: $("f-scholar").value.trim(),
-                    twitter: $("f-twitter").value.trim(), portfolio: $("f-portfolio").value.trim(),
+                    twitter: $("f-twitter").value.trim(), kaggle: $("f-kaggle").value.trim(),
+                    instagram: $("f-instagram").value.trim(), facebook: $("f-facebook").value.trim(),
+                    portfolio: $("f-portfolio").value.trim(),
                 },
+                links: gather("link-list", ["label", "url"]),
                 skills: skills,
                 hobbies: hobbies,
                 experience: gather("exp-list", ["title", "company", "dates", "location", "details"]),
                 projects: gather("proj-list", ["name", "subtitle", "url", "github", "details", "image"])
                     .map(p => ({ name: p.name, subtitle: p.subtitle, url: p.url, github_link: p.github, details: p.details, image: p.image })),
+                github_graph: (document.querySelector('input[name="gg-yn"]:checked') || {}).value === "yes",
+                github_username: ((document.querySelector('input[name="gg-yn"]:checked') || {}).value === "yes") ? $("f-ghuser").value.trim() : "",
+                opensource: ((document.querySelector('input[name="os-yn"]:checked') || {}).value === "yes") ? gather("os-list", ["name", "url", "details"]) : [],
                 education: gather("edu-list", ["school", "degree", "year", "score"]),
                 extracurriculars: gather("extra-list", ["role", "organization", "dates", "url", "details"]),
                 publications: gather("pub-list", ["title", "publisher", "year", "url"]),
                 certifications: gather("cert-list", ["name", "issuer", "year", "url", "image"]),
+                awards: gather("award-list", ["title", "issuer", "year", "url"]),
             };
             state.cv = cv; save();
             return cv;
@@ -761,8 +891,8 @@
         };
         window.pbDeployNetlify = async function () {
             const btn = document.getElementById("pb-netlify-btn");
-            if (!state.portfolioId) { msg("pb-netlify-msg", "Publish first, then deploy to Netlify.", "err"); return; }
-            btn.disabled = true; btn.innerHTML = '<span class="pb-spinner"></span>Deploying to Netlify…';
+            if (!state.portfolioId) { msg("pb-netlify-msg", "Publish first, then create your live site.", "err"); return; }
+            btn.disabled = true; btn.innerHTML = '<span class="pb-spinner"></span>Publishing your live site…';
             try {
                 const csrf = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || "";
                 const res = await fetch("/api/portfolio/" + state.portfolioId + "/deploy-netlify", {
@@ -770,15 +900,15 @@
                 });
                 const data = await res.json();
                 if (!res.ok || !data.success) {
-                    msg("pb-netlify-msg", data.error || "Could not deploy to Netlify.", "err");
-                    btn.disabled = false; btn.innerHTML = "🌐 Also publish a free copy to Netlify"; return;
+                    msg("pb-netlify-msg", data.error || "Could not publish. Please try again.", "err");
+                    btn.disabled = false; btn.innerHTML = "🌐 Also publish a free live copy"; return;
                 }
                 document.getElementById("pb-netlify").innerHTML =
-                    '<div class="pb-msg ok">Live on Netlify 🎉</div>' +
-                    '<a class="pb-btn pb-btn-next" href="' + data.netlify_url + '" target="_blank" rel="noopener" style="text-decoration:none;">' + data.netlify_url + ' →</a>';
+                    '<div class="pb-msg ok" style="display:block;margin:0 0 14px;">Your site is live 🎉</div>' +
+                    '<a class="pb-btn pb-btn-next" href="' + data.netlify_url + '" target="_blank" rel="noopener" style="text-decoration:none;display:inline-block;">Open live site →</a>';
             } catch (e) {
                 msg("pb-netlify-msg", "Network error. Please try again.", "err");
-                btn.disabled = false; btn.innerHTML = "🌐 Also publish a free copy to Netlify";
+                btn.disabled = false; btn.innerHTML = "🌐 Also publish a free live copy";
             }
         };
 
@@ -795,6 +925,31 @@
         var pbResume = false;
         try { pbResume = !!sessionStorage.getItem("pb_resume"); sessionStorage.removeItem("pb_resume"); } catch (e) {}
         if (state.cv && pbResume) { pbGo(2); }
+    })();
+    </script>
+    <script>
+    /* Details-form sidebar: smooth-scroll to sections + highlight the active one. */
+    (function () {
+        var links = Array.prototype.slice.call(document.querySelectorAll(".pb-sidebar a"));
+        if (!links.length) return;
+        var targets = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+        links.forEach(function (a) {
+            a.addEventListener("click", function (e) {
+                var t = document.querySelector(a.getAttribute("href"));
+                if (t) { e.preventDefault(); t.scrollIntoView({ behavior: "smooth", block: "start" }); }
+            });
+        });
+        if ("IntersectionObserver" in window) {
+            var obs = new IntersectionObserver(function (entries) {
+                entries.forEach(function (en) {
+                    if (!en.isIntersecting) return;
+                    var i = targets.indexOf(en.target); if (i < 0) return;
+                    links.forEach(function (l) { l.classList.remove("active"); });
+                    links[i].classList.add("active");
+                });
+            }, { rootMargin: "-20% 0px -70% 0px" });
+            targets.forEach(function (t) { if (t) obs.observe(t); });
+        }
     })();
     </script>
     <script src="/static/auth_nav.js?v=2" defer></script>
