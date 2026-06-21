@@ -39,7 +39,8 @@
         }
         .pb-tpl:hover { transform: translateY(-4px); }
         .pb-tpl.selected { border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139,92,246,.25); }
-        .pb-tpl-prev { height: 150px; position: relative; display: flex; align-items: center; justify-content: center; }
+        .pb-tpl-prev { height: 150px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .pb-tpl-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; z-index:3; }
         .pb-tpl-prev .mini-avatar { width: 64px; height: 64px; border-radius: 50%; display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff; }
         .pb-tpl-prev .mini-lines { position:absolute; left:18px; bottom:18px; }
         .pb-tpl-prev .mini-lines span { display:block; height:7px; border-radius:4px; margin-bottom:5px; }
@@ -154,6 +155,10 @@
         .prev-vibrant .mini-lines span:nth-child(2){width:80px;background:rgba(91,77,115,.5);}
         .pb-tpl-foot { padding: 14px 16px; display:flex; align-items:center; justify-content:space-between; }
         .pb-tpl-foot strong { font-size: .95rem; }
+        .pb-tpl-demo { font-size:.95rem; font-weight:700; margin-left:auto; margin-right:12px; white-space:nowrap;
+            padding:8px 16px; border-radius:8px; color:#fff; text-decoration:none;
+            background:linear-gradient(135deg,#2dd4bf,#0ea5e9); box-shadow:0 2px 10px rgba(14,165,233,.35); transition:transform .12s ease, box-shadow .12s ease; }
+        .pb-tpl-demo:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(14,165,233,.5); }
         .pb-tpl-foot .tick { width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(99,130,200,.4); display:flex;align-items:center;justify-content:center; }
         .pb-tpl.selected .tick { background:#8b5cf6;border-color:#8b5cf6; }
         .pb-tpl.selected .tick::after { content:"✓"; color:#fff; font-size:.8rem; }
@@ -303,13 +308,24 @@
         <section class="pb-panel active" id="panel-1">
             <div class="pb-templates">
                 {% for slug, label in themes.items() %}
+                {% set media = (theme_media or {}).get(slug) %}
                 <div class="pb-tpl" data-theme="{{ slug }}" onclick="pbPickTheme(this)">
                     <div class="pb-tpl-prev prev-{{ slug }}">
+                        {% if media and media.image %}
+                        <img class="pb-tpl-img" src="{{ media.image }}" alt="{{ label }} preview" loading="lazy">
+                        {% else %}
                         <div class="mini-avatar">AB</div>
                         <div class="mini-lines"><span></span><span></span></div>
+                        {% endif %}
                         <span class="pb-use">Use this template →</span>
                     </div>
-                    <div class="pb-tpl-foot"><strong>{{ label }}</strong><span class="tick"></span></div>
+                    <div class="pb-tpl-foot">
+                        <strong>{{ label }}</strong>
+                        {% if media and media.demo %}
+                        <a class="pb-tpl-demo" href="{{ media.demo }}" target="_blank" rel="noopener" onclick="event.stopPropagation()">View demo ↗</a>
+                        {% endif %}
+                        <span class="tick"></span>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
