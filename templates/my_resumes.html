@@ -164,7 +164,7 @@
                     <button type="submit" class="tracker-save">Update</button>
                 </form>
                 <div class="resume-card-actions">
-                    <a class="btn-dl" href="/my-resumes/{{ r.id }}/download">Download PDF</a>
+                    <button class="btn-dl" onclick="dlResume({{ r.id }}, this)">Download PDF</button>
                     <form method="post" action="/my-resumes/{{ r.id }}/delete" style="flex:1;margin:0;"
                           onsubmit="return confirm('Delete this resume? This cannot be undone.');">
                         <button type="submit" class="btn-del" style="width:100%;">Delete</button>
@@ -186,5 +186,30 @@
 
     <script src="/static/auth_nav.js?v=11" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
+    <script>
+    function dlResume(id, btn) {
+        var orig = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Checking…';
+        fetch('/api/billing/checkout-download', {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        }).then(function(res) {
+            if (res.ok) {
+                window.location = '/my-resumes/' + id + '/download';
+            } else if (res.status === 402) {
+                showUpgradeModal('ai_optimizations');
+                btn.disabled = false;
+                btn.textContent = orig;
+            } else {
+                btn.disabled = false;
+                btn.textContent = orig;
+            }
+        }).catch(function() {
+            btn.disabled = false;
+            btn.textContent = orig;
+        });
+    }
+    </script>
 </body>
 </html>
