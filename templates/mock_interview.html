@@ -134,9 +134,18 @@
     body > *:not(.navbar):not(.site-footer) b {
         font-weight: 500 !important;
     }
-    /* The shared navbar is position:fixed at 100px tall with a near-black
-       gradient — that's the big dark bar at the top. Shrink it on this page. */
-    header.navbar { height: 64px !important; }
+    /* Desktop: the shared navbar is position:fixed at 100px with a near-black
+       gradient (big dark bar). Shrink it here; content clears it via the 78px
+       top padding on #zaraIntroPage / .wrap. */
+    @media (min-width: 769px) {
+        header.navbar { height: 64px !important; }
+    }
+    /* Mobile (<=768px) the navbar is position:relative (in flow), so the 78px
+       top padding would create a huge empty gap — reset it. */
+    @media (max-width: 768px) {
+        #zaraIntroPage { padding-top: 14px !important; }
+        .wrap { padding-top: 14px !important; }
+    }
 </style>
 
 <div id="zaraIntroPage" style="min-height:auto;display:flex;align-items:flex-start;padding:78px 20px 40px;background:#07102b;">
