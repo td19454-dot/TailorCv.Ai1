@@ -7818,14 +7818,24 @@ def _template_parsed_to_editor_payload(parsed: dict) -> dict:
     contact = parsed.get("contact", {}) or {}
 
     # skills: list of strings or list of dicts like {"category": "values"}
-    skill_entries = []
+    raw_skill_strings = []
     for skill in parsed.get("skills", []) or []:
         if isinstance(skill, str) and skill.strip():
-            skill_entries.append({"name": skill.strip()})
+            raw_skill_strings.append(skill.strip())
         elif isinstance(skill, dict):
             name = skill.get("name") or skill.get("category")
-            if name:
-                skill_entries.append({"name": t(name)})
+            items = skill.get("skills") or skill.get("items") or skill.get("values")
+            if name and items and isinstance(items, list):
+                items_str = ", ".join(str(i).strip() for i in items if str(i).strip())
+                raw_skill_strings.append(f"{t(name)}: {items_str}" if items_str else t(name))
+            elif name:
+                raw_skill_strings.append(t(name))
+            else:
+                for key, value in skill.items():
+                    key_text = str(key).strip()
+                    value_text = str(value).strip()
+                    raw_skill_strings.append(f"{key_text}: {value_text}" if value_text else key_text)
+    skill_entries = [{"name": s} for s in group_skills(raw_skill_strings)]
 
     cv_data = {
         "personalInfo": {
@@ -8273,6 +8283,7 @@ def _build_custom_cv_context(cv_data: dict) -> dict:
             normalized_skills.append(f"{name}: {details}" if details else name)
         elif isinstance(skill, str) and skill.strip():
             normalized_skills.append(skill.strip())
+    normalized_skills = group_skills(normalized_skills)
 
     normalized_extracurriculars = []
     for item in extracurriculars_data:
