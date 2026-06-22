@@ -624,10 +624,22 @@ body {
                     '<div class="tcv-pro-dl-perk">Unlimited cover letters</div>' +
                     '<div class="tcv-pro-dl-perk">Mock interviews & LinkedIn import</div>' +
                 '</div>' +
-                '<a href="/pricing" class="tcv-pro-dl-cta">Upgrade to Pro — from ₹149</a>' +
-                '<p class="tcv-pro-dl-note">Cancel anytime &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Secure payment via Razorpay</p>' +
+                '<a href="/pricing" class="tcv-pro-dl-cta" id="tcv-pro-dl-cta">' +
+                    (typeof _getUpgradePriceLabel === 'function' ? _getUpgradePriceLabel(_upgradeRegionCache) : 'Upgrade to Pro — from ₹167/mo') +
+                '</a>' +
+                '<p class="tcv-pro-dl-note">Cancel anytime &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Secure payment </p>' +
             '</div>';
         document.body.appendChild(overlay);
+
+        // Update the button once the region fetch resolves (if not already cached).
+        if (typeof _upgradeRegionFetch !== 'undefined' && !_upgradeRegionCache && _upgradeRegionFetch) {
+            _upgradeRegionFetch.then(function(region) {
+                var cta = document.getElementById('tcv-pro-dl-cta');
+                if (cta && region && typeof _getUpgradePriceLabel === 'function') {
+                    cta.textContent = _getUpgradePriceLabel(region);
+                }
+            });
+        }
 
         function closePopup() { overlay.remove(); }
         overlay.querySelector("#tcv-pro-dl-close").addEventListener("click", closePopup);
