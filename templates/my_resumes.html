@@ -197,6 +197,7 @@
         }).then(function(res) {
             if (res.ok) {
                 window.location = '/my-resumes/' + id + '/download';
+                setTimeout(function() { btn.disabled = false; btn.textContent = orig; }, 3000);
             } else if (res.status === 402) {
                 showUpgradeModal('ai_optimizations');
                 btn.disabled = false;
