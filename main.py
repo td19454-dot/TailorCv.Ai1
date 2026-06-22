@@ -4343,6 +4343,25 @@ async def download_saved_resume(request: Request, resume_id: int):
         raise HTTPException(status_code=401, detail="Not logged in")
     db = get_db()
     try:
+        user = db.query(User).filter_by(id=user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if not is_pro(user):
+            _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
+            _in_beta_allowlist = False
+            if _beta_env:
+                _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()}
+                _in_beta_allowlist = user.id not in _beta_ids
+            if not _in_beta_allowlist:
+                from sqlalchemy import func as _func
+                used = (
+                    db.query(_func.coalesce(_func.sum(UsageRecord.ai_optimizations), 0))
+                    .filter(UsageRecord.user_id == user.id)
+                    .scalar() or 0
+                )
+                limit = FREE_LIMITS.get("ai_optimizations", 1)
+                if used > limit:
+                    return RedirectResponse("/pricing", status_code=303)
         record = (
             db.query(SavedResume)
             .filter(SavedResume.id == resume_id, SavedResume.user_id == user_id)
