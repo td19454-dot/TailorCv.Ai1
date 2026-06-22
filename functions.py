@@ -1963,8 +1963,10 @@ The JSON must strictly follow the schema provided below.
         )
     except Exception as exc:
         raise _normalize_openai_error(exc) from exc
-    
-    content = response.choices[0].message.content
+
+    if not response.choices:
+        raise RuntimeError("ATS scoring returned no choices from the model")
+    content = response.choices[0].message.content or ""
     try:
         parsed = json.loads(content)
     except Exception:
@@ -2139,15 +2141,26 @@ Job Description:
 {jd_string}"""
 
     async def _gen_category(name: str, icon: str, count: int, want_meta: bool) -> dict:
-        # Bound output so each call stays fast (~160 tokens/question is plenty).
-        resp = await client.chat.completions.create(
-            model="gpt-4o-mini",
-            response_format={"type": "json_object"},
-            messages=[{"role": "user", "content": _build_prompt(name, count, want_meta)}],
-            temperature=0.4,
-            max_tokens=min(4000, count * 170 + 300),
-        )
-        data = json.loads((resp.choices[0].message.content or "").strip())
+        # Each category is isolated: if one call fails (network, empty choices,
+        # malformed JSON), it returns an empty category instead of rejecting the
+        # whole asyncio.gather and failing the other 3 categories too.
+        empty = {"name": name, "icon": icon, "questions": [], "_job_title": None, "_company": None}
+        try:
+            # Bound output so each call stays fast (~160 tokens/question is plenty).
+            resp = await client.chat.completions.create(
+                model="gpt-4o-mini",
+                response_format={"type": "json_object"},
+                messages=[{"role": "user", "content": _build_prompt(name, count, want_meta)}],
+                temperature=0.4,
+                max_tokens=min(4000, count * 170 + 300),
+            )
+            if not resp.choices:
+                logger.warning("Interview category '%s' returned no choices", name)
+                return empty
+            data = json.loads((resp.choices[0].message.content or "").strip())
+        except Exception:
+            logger.exception("Interview category generation failed: %s", name)
+            return empty
         return {
             "name": name,
             "icon": icon,
@@ -2187,6 +2200,11 @@ Job Description:
                     )
                 question["answer"] = answer
             categories.append({"name": cat["name"], "icon": cat["icon"], "questions": questions})
+
+        # If every category failed, surface an error instead of an empty success
+        # so the endpoint can return a proper failure and the user can retry.
+        if not any(c["questions"] for c in categories):
+            raise RuntimeError("No interview questions were generated")
 
         return {"job_title": job_title, "company": company, "categories": categories}
     except Exception as exc:
