@@ -146,6 +146,23 @@
         .prev-github .mini-lines { left:56px; top:20px; bottom:auto; }
         .prev-github .mini-lines span:nth-child(1){width:90px;background:#e6edf3;}
         .prev-github .mini-lines span:nth-child(2){width:60px;background:#2f81f7;}
+        /* assistant — ChatGPT-style chat UI */
+        .prev-assistant { background:#212121; position:relative; overflow:hidden; }
+        .prev-assistant::before { content:""; position:absolute; left:0; top:0; bottom:0; width:38px; background:#171717; border-right:1px solid #2a2a2a; }
+        .prev-assistant::after { content:""; position:absolute; left:50px; right:40px; bottom:14px; height:22px; border-radius:11px; background:#2f2f2f; border:1px solid #3a3a3a; }
+        .prev-assistant .mini-avatar { width:22px;height:22px;border-radius:50%;background:#10a37f;color:#fff;position:absolute;left:52px;top:24px;font-size:11px; }
+        .prev-assistant .mini-lines { left:84px; top:24px; bottom:auto; z-index:1; }
+        .prev-assistant .mini-lines span:nth-child(1){width:120px;background:#ececec;height:9px;}
+        .prev-assistant .mini-lines span:nth-child(2){width:88px;background:#8e8ea0;}
+        /* cloud — friendly dev landing, sky + clouds */
+        .prev-cloud { background:linear-gradient(180deg,#bfe3ff,#eaf6ff 70%); position:relative; overflow:hidden; }
+        .prev-cloud::before { content:""; position:absolute; left:0; right:0; bottom:0; height:42px;
+            background:radial-gradient(circle 22px at 20% 100%, #fff 60%, transparent 62%), radial-gradient(circle 26px at 45% 100%, #fff 60%, transparent 62%), radial-gradient(circle 22px at 72% 100%, #fff 60%, transparent 62%), radial-gradient(circle 24px at 95% 100%, #fff 60%, transparent 62%), #eaf6ff; }
+        .prev-cloud::after { content:"Resume"; position:absolute; left:16px; bottom:48px; font-size:9px; font-weight:700; color:#fff; background:#3f6bf6; padding:5px 14px; border-radius:6px; }
+        .prev-cloud .mini-avatar { display:none; }
+        .prev-cloud .mini-lines { left:16px; top:24px; bottom:auto; z-index:1; }
+        .prev-cloud .mini-lines span:nth-child(1){width:120px;background:#0b1626;height:14px;border-radius:3px;}
+        .prev-cloud .mini-lines span:nth-child(2){width:88px;background:#3f6bf6;height:12px;border-radius:3px;}
         /* clean — light, violet */
         .prev-clean { background:#f4f4f0; }
         .prev-clean .mini-avatar { border-radius:18px; background:#fff; border:1px solid rgba(0,0,0,.1); color:#6d28d9; box-shadow:0 8px 18px -10px rgba(0,0,0,.4); }
@@ -340,7 +357,7 @@
                 <div class="pb-tpl" data-theme="{{ slug }}" onclick="pbPickTheme(this)">
                     <div class="pb-tpl-prev prev-{{ slug }}">
                         {% if media and media.image %}
-                        <img class="pb-tpl-img" src="{{ media.image }}" alt="{{ label }} preview" loading="lazy">
+                        <img class="pb-tpl-img" src="{{ media.image }}" alt="{{ label }} preview" loading="lazy" onerror="this.style.display='none'">
                         {% else %}
                         <div class="mini-avatar">AB</div>
                         <div class="mini-lines"><span></span><span></span></div>

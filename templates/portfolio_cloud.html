@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ seo_og_description }}">
+    <title>{{ data.name }}{% if data.headline %} - {{ data.headline }}{% endif %} | Portfolio</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/portfolio_cloud.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('cloud-theme');
+          if (t == null && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) t = 'dark';
+          if (t === 'dark') document.documentElement.classList.add('cloud-dark');
+        } catch (e) {}
+      })();
+    </script>
+</head>
+<body>
+{% set known_icons = [
+    'html5','css3','javascript','typescript','react','redux','nextjs','nodejs','express','mongodb',
+    'python','java','csharp','cplusplus','go','php','laravel','vuejs','angular','svelte',
+    'tailwindcss','bootstrap','sass','postgresql','mysql','sqlite','redis','docker','kubernetes',
+    'git','github','linux','aws','amazonwebservices','azure','googlecloud','firebase','figma',
+    'tensorflow','pytorch','fastapi','django','flask','spring','nestjs','graphql','npm','vite',
+    'excel','powerbi','seaborn','c','dsa','datastructuresandalgorithms'
+] %}
+{% set icon_ns = namespace(items=[], extra=[]) %}
+{% for group in data.skills %}{% for item in group['items'] %}{% set slug = item|deviconslug %}
+    {% if slug in known_icons %}{% set _ = icon_ns.items.append({'name': item, 'slug': slug}) %}
+    {% else %}{% set _ = icon_ns.extra.append(item) %}{% endif %}
+{% endfor %}{% endfor %}
+{% macro soc(icon) -%}
+    {% if icon == 'linkedin' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg>
+    {% elif icon == 'github' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.34 1.12 2.91.85.09-.66.35-1.12.63-1.38-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.74-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.71 1.03 1.62 1.03 2.74 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+    {% elif icon == 'instagram' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.55.21.95.47 1.36.88.41.41.67.81.88 1.36.17.4.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2a3.7 3.7 0 0 1-.88 1.36c-.41.41-.81.67-1.36.88-.4.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42a3.7 3.7 0 0 1-1.36-.88 3.7 3.7 0 0 1-.88-1.36c-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.21-.55.47-.95.88-1.36.41-.41.81-.67 1.36-.88.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 3.05A6.75 6.75 0 1 0 18.75 12 6.75 6.75 0 0 0 12 5.25zm0 11.13A4.38 4.38 0 1 1 16.38 12 4.38 4.38 0 0 1 12 16.38zm6.95-11.4a1.58 1.58 0 1 1-1.58-1.57 1.58 1.58 0 0 1 1.58 1.57z"/></svg>
+    {% elif icon == 'twitter' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.84l-4.78-6.26L5.92 22H2.66l8.02-9.17L2 2h6.91l4.32 5.71L18.244 2z"/></svg>
+    {% elif icon == 'stackoverflow' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.36 20.2v-5.38h1.79V22H3v-7.18h1.8v5.38h12.56zM6.77 14.32l.37-1.76 8.79 1.85-.37 1.76-8.79-1.85zm1.16-4.21.76-1.6 8.14 3.78-.76 1.62-8.14-3.8zm2.26-3.99 1.2-1.34 6.9 5.76-1.2 1.34-6.9-5.76zM14.64 2l5.5 7.4-1.45 1.07-5.5-7.4L14.64 2zM6.59 18.41v-1.8h8.95v1.8H6.59z"/></svg>
+    {% elif icon == 'leetcode' %}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.48 2.5a1.4 1.4 0 0 0-1 .43L5.4 9.9a3.8 3.8 0 0 0 0 5.36l4.07 4.07a3.8 3.8 0 0 0 5.36 0l1.9-1.9a1.4 1.4 0 1 0-1.98-1.98l-1.9 1.9a1 1 0 0 1-1.4 0L7.38 13.3a1 1 0 0 1 0-1.4l7.08-6.97a1.4 1.4 0 0 0-1-2.43zM14.6 9.3a1.4 1.4 0 0 0 0 2.8h5.4a1.4 1.4 0 0 0 0-2.8z"/></svg>
+    {% elif icon == 'mail' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+    {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>{% endif %}
+{%- endmacro %}
+{% macro ext() -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8"/></svg>{%- endmacro %}
+
+<!-- Cloud background -->
+<div class="cw-bg" aria-hidden="true">
+    <svg class="cw-bank" viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice">
+        <path class="cloud-back" d="M0,210 q90,-60 180,-20 q90,-50 180,-10 q90,-55 180,-12 q90,-48 180,-6 q90,-52 180,-10 q90,-46 180,-4 q90,-50 180,-8 q90,-44 180,-2 L1440,360 L0,360 Z"/>
+        <path class="cloud-mid" d="M0,270 q90,-52 180,-16 q95,-46 190,-8 q90,-50 180,-10 q95,-44 190,-6 q90,-48 180,-8 q95,-42 190,-4 q90,-46 180,-6 q70,-30 150,-2 L1440,360 L0,360 Z"/>
+        <path class="cloud-front" d="M0,316 q95,-44 190,-12 q95,-40 190,-6 q95,-44 190,-8 q95,-38 190,-4 q95,-42 190,-6 q95,-36 190,-2 q150,-26 300,4 L1440,360 L0,360 Z"/>
+    </svg>
+</div>
+
+<!-- Nav -->
+<header class="cw-nav" id="cwNav">
+    <a href="#home" class="cw-logo">&lt;{{ data.name }}/&gt;</a>
+    <nav class="cw-links" id="cwLinks">
+        <a href="#home" class="active">Home</a>
+        {% if about %}<a href="#about">About</a>{% endif %}
+        {% if data.skills %}<a href="#skills">Skills</a>{% endif %}
+        {% if data.experience %}<a href="#experience">Experience</a>{% endif %}
+        {% if data.projects %}<a href="#projects">Projects</a>{% endif %}
+        <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:4px">
+        <button class="cw-theme" id="cwTheme" onclick="cwToggleTheme()" aria-label="Toggle theme" title="Light / dark">
+            <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <svg class="ic-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="cw-burger" onclick="document.getElementById('cwNav').classList.toggle('open')" aria-label="Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+    </div>
+</header>
+
+<main class="cw-main">
+    <!-- Hero -->
+    <section class="cw-wrap cw-hero" id="home">
+        <div class="cw-hero-text">
+            <h1>Hi, I am {{ data.name }}<br><span class="role" id="cwRole">{{ data.headline or 'Developer' }}</span><span class="cw-cursor" id="cwCursor">&nbsp;</span></h1>
+            {% if tagline or about %}<p>{{ tagline or about.split('\n\n')[0] }}</p>{% endif %}
+            {% if data.socials or data.email %}
+            <div class="cw-socials">
+                {% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}
+                {% if data.email %}<a href="mailto:{{ data.email }}" aria-label="Email">{{ soc('mail') }}</a>{% endif %}
+            </div>
+            {% endif %}
+            {% if has_cv %}<a class="cw-cta" href="/p/{{ slug }}/cv" target="_blank" rel="noopener">Resume</a>
+            {% elif data.email %}<a class="cw-cta" href="mailto:{{ data.email }}">Get in touch</a>{% endif %}
+        </div>
+
+        <!-- Coding workspace illustration (no person) -->
+        <div class="cw-hero-art" aria-hidden="true">
+            <svg viewBox="0 0 600 430" fill="none">
+                <!-- floating doodles -->
+                <g class="cw-float f2"><circle cx="120" cy="70" r="6" fill="#ff7a90"/></g>
+                <g class="cw-float f3"><circle cx="548" cy="158" r="7" fill="#3f6bf6"/></g>
+                <path class="cw-float" d="M90 150 q10 -12 20 0 t20 0" stroke="#ff9f43" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path class="cw-float f2" d="M472 70 q10 -12 20 0 t20 0" stroke="#7c5cff" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <!-- floating code cards -->
+                <g class="cw-float"><rect class="cw-paper" x="298" y="20" width="88" height="44" rx="11"/><text x="342" y="49" text-anchor="middle" font-family="Poppins,sans-serif" font-size="18" font-weight="700" fill="#ff7a59">HTML</text></g>
+                <g class="cw-float f2"><rect class="cw-paper" x="454" y="80" width="78" height="44" rx="11"/><text x="493" y="109" text-anchor="middle" font-family="Poppins,sans-serif" font-size="18" font-weight="700" fill="#3f6bf6">C++</text></g>
+                <g class="cw-float f3"><rect class="cw-paper" x="208" y="96" width="70" height="42" rx="11"/><text x="243" y="124" text-anchor="middle" font-family="Poppins,sans-serif" font-size="18" font-weight="700" fill="#22b07d">&lt;/&gt;</text></g>
+
+                <!-- right monitor -->
+                <rect x="436" y="214" width="120" height="92" rx="9" fill="#2b3142"/>
+                <rect x="446" y="224" width="100" height="72" rx="5" fill="#161b29"/>
+                <rect x="456" y="238" width="34" height="6" rx="3" fill="#7aa2ff"/><rect x="496" y="238" width="40" height="6" rx="3" fill="#5cd6a8"/>
+                <rect x="456" y="254" width="60" height="6" rx="3" fill="#9aa6c0" opacity=".6"/><rect x="456" y="270" width="44" height="6" rx="3" fill="#f6c560"/>
+                <rect x="488" y="306" width="14" height="18" fill="#2b3142"/><rect x="468" y="322" width="54" height="8" rx="4" fill="#2b3142"/>
+
+                <!-- center monitor -->
+                <rect x="250" y="156" width="178" height="126" rx="11" fill="#2b3142"/>
+                <rect x="262" y="168" width="154" height="102" rx="6" fill="#161b29"/>
+                <rect x="276" y="186" width="44" height="7" rx="3" fill="#5cd6a8"/><rect x="326" y="186" width="64" height="7" rx="3" fill="#7aa2ff"/>
+                <rect x="288" y="204" width="86" height="7" rx="3" fill="#9aa6c0" opacity=".6"/>
+                <rect x="276" y="222" width="52" height="7" rx="3" fill="#f6c560"/><rect x="334" y="222" width="44" height="7" rx="3" fill="#ff6f91"/>
+                <rect x="288" y="240" width="74" height="7" rx="3" fill="#9aa6c0" opacity=".6"/>
+                <rect x="331" y="282" width="16" height="22" fill="#2b3142"/><rect x="306" y="304" width="66" height="9" rx="4" fill="#2b3142"/>
+
+                <!-- left laptop -->
+                <rect x="118" y="244" width="116" height="78" rx="8" fill="#2b3142"/>
+                <rect x="126" y="252" width="100" height="62" rx="4" fill="#161b29"/>
+                <text x="176" y="292" text-anchor="middle" font-family="Caveat,cursive" font-size="28" font-weight="700" fill="#a78bfa">CSS</text>
+                <path d="M104 322 H248 L258 338 H94 Z" fill="var(--cw-cloud-mid)"/>
+
+                <!-- desk -->
+                <rect x="58" y="356" width="484" height="12" rx="6" fill="var(--cw-cloud-back)"/>
+                <rect x="120" y="368" width="9" height="58" fill="var(--cw-cloud-back)"/>
+                <rect x="472" y="368" width="9" height="58" fill="var(--cw-cloud-back)"/>
+
+                <!-- mug -->
+                <path d="M360 334 h22 v12 a11 11 0 0 1 -22 0 Z" fill="#3f6bf6"/>
+                <ellipse cx="371" cy="334" rx="11" ry="3.4" fill="#a9c4ff"/>
+                <path d="M382 337 q10 3 0 11" stroke="#3f6bf6" stroke-width="3" fill="none"/>
+                <path d="M369 326 q-3 -6 2 -10" stroke="#cdd8ea" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".8"/>
+
+                <!-- plant -->
+                <path d="M84 356 l8 -2 h26 l8 2 -7 26 h-28 Z" fill="#c98a5e"/>
+                <path d="M98 356 q-9 -34 4 -52 q6 22 0 52" fill="#3fae74"/>
+                <path d="M107 356 q11 -28 26 -34 q-6 22 -17 34" fill="#52c285"/>
+            </svg>
+        </div>
+    </section>
+
+    {% if about and about.split('\n\n')|length > 0 %}
+    <section class="cw-section alt" id="about">
+        <div class="cw-wrap">
+            <h2 class="cw-h2">About Me</h2><div class="cw-bar"></div>
+            <div class="cw-about">{% for p in about.split('\n\n') %}<p>{{ p }}</p>{% endfor %}</div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.skills %}
+    <section class="cw-section" id="skills">
+        <div class="cw-wrap">
+            <h2 class="cw-h2">Skills</h2><div class="cw-bar"></div>
+            <div class="cw-skills">
+                {% for item in icon_ns.items %}<span class="cw-skill"><img src="{{ item.name|skilliconurl }}" alt="" loading="lazy" onerror="this.style.display='none'">{{ item.name }}</span>{% endfor %}
+                {% for item in icon_ns.extra %}<span class="cw-skill">{{ item }}</span>{% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.experience %}
+    <section class="cw-section alt" id="experience">
+        <div class="cw-wrap">
+            <h2 class="cw-h2">Experience</h2><div class="cw-bar"></div>
+            <div class="cw-grid two">
+                {% for e in data.experience %}
+                <article class="cw-card"><h3>{{ e.title }}</h3>{% if e.company %}<h4>{{ e.company }}</h4>{% endif %}
+                    {% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                    {% if e.dates %}<div class="cw-date">{{ e.dates }}</div>{% endif %}</article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.projects %}
+    <section class="cw-section" id="projects">
+        <div class="cw-wrap">
+            <h2 class="cw-h2">Featured Projects</h2><div class="cw-bar"></div>
+            <div class="cw-projects-zz">
+                {% for p in data.projects %}
+                <div class="cw-projx">
+                    <div class="cw-projx-shot">{% if p.image %}<img src="{{ p.image }}" alt="{{ p.name }}" loading="lazy">{% else %}<span class="ph">{{ p.name[0]|upper if p.name else '★' }}</span>{% endif %}</div>
+                    <div class="cw-projx-info">
+                        <h3>{{ p.name }}{% if p.url or p.github %}<a class="cw-checkout" href="{{ p.url or p.github }}" target="_blank" rel="noopener">Check out ↗</a>{% endif %}</h3>
+                        {% if p.subtitle %}<p>{{ p.subtitle }}</p>{% endif %}
+                        {% if p.bullets %}<ul class="cw-plus">{% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                        {% if p.subtitle %}<div class="cw-pill-tags">{% for t in p.subtitle.split(',') %}{% if t.strip() %}<span class="cw-ptag">{{ t.strip() }}</span>{% endif %}{% endfor %}</div>{% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.education %}
+    <section class="cw-section alt" id="education">
+        <div class="cw-wrap">
+            <h2 class="cw-h2">Education</h2><div class="cw-bar"></div>
+            <div class="cw-grid three">
+                {% for e in data.education %}
+                <article class="cw-card"><h3>{{ e.degree or e.school }}</h3>{% if e.degree and e.school %}<h4>{{ e.school }}</h4>{% endif %}
+                    <div class="cw-date">{{ e.year }}{% if e.year and e.score %} · {% endif %}{{ e.score }}</div></article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.extracurriculars %}
+    <section class="cw-section" id="activities">
+        <div class="cw-wrap">
+            <h2 class="cw-h2">Activities &amp; Leadership</h2><div class="cw-bar"></div>
+            <div class="cw-grid two">
+                {% for x in data.extracurriculars %}
+                <article class="cw-card"><h3>{{ x.role }}{% if x.organization %} @ {{ x.organization }}{% endif %}</h3>
+                    {% if x.bullets %}<ul>{% for b in x.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                    {% if x.dates %}<div class="cw-date">{{ x.dates }}</div>{% endif %}</article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.github_username or data.opensource %}
+    <section class="cw-section alt" id="opensource">
+        <div class="cw-wrap">
+            <h2 class="cw-h2">Open Source</h2><div class="cw-bar"></div>
+            {% if data.github_username %}
+            <article class="cw-card" style="overflow-x:auto;margin-bottom:18px;"><img src="https://ghchart.rshah.org/3f6bf6/{{ data.github_username }}" alt="{{ data.name }} GitHub contributions" loading="lazy" style="width:100%;min-width:620px;display:block;"></article>
+            {% endif %}
+            {% if data.opensource %}
+            <div class="cw-grid two">
+                {% for o in data.opensource %}
+                <article class="cw-card"><h3>{{ o.name }}</h3>{% if o.bullets %}<ul>{% for b in o.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+                    {% if o.url %}<div class="cw-date"><a href="{{ o.url }}" target="_blank" rel="noopener">View {{ ext() }}</a></div>{% endif %}</article>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if data.certifications %}
+    <section class="cw-section" id="certifications">
+        <div class="cw-wrap">
+            <h2 class="cw-h2">Certifications</h2><div class="cw-bar"></div>
+            <div class="cw-grid three">
+                {% for c in data.certifications %}
+                <article class="cw-card"><h3>{{ c.name }}</h3>{% if c.issuer or c.year %}<h4>{{ c.issuer }}{% if c.issuer and c.year %} • {% endif %}{{ c.year }}</h4>{% endif %}
+                    {% if c.url %}<div class="cw-date"><a href="{{ c.url }}" target="_blank" rel="noopener">View {{ ext() }}</a></div>{% endif %}</article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% include "_portfolio_awards.html" %}
+
+    <section class="cw-section alt cw-contact" id="contact">
+        <div class="cw-wrap">
+            <h2 class="cw-h2">Get In Touch</h2><div class="cw-bar"></div>
+            <p class="cw-about">Have a role or a project in mind? Let's build something together.</p>
+            {% if data.socials or data.email %}
+            <div class="cw-socials">
+                {% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}
+                {% if data.email %}<a href="mailto:{{ data.email }}" aria-label="Email">{{ soc('mail') }}</a>{% endif %}
+            </div>
+            {% endif %}
+            {% if data.email %}<a class="cw-cta" href="mailto:{{ data.email }}">Say hello ✉️</a>{% endif %}
+        </div>
+    </section>
+</main>
+
+<footer class="cw-foot">© <span id="cwYear"></span> {{ data.name }} · Built with theTailorCV</footer>
+
+<script>
+(function () {
+    // typewriter on the role
+    var el = document.getElementById('cwRole');
+    var cursor = document.getElementById('cwCursor');
+    var base = {{ (data.headline or "Developer")|tojson }};
+    var roles = base.split(/\s*[\/|,]\s*/).filter(Boolean);
+    if (!roles.length) roles = [base];
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && el) {
+        var ri = 0, ci = 0, deleting = false;
+        el.textContent = '';
+        (function tick() {
+            var word = roles[ri];
+            el.textContent = word.slice(0, ci);
+            if (!deleting) {
+                if (ci < word.length) { ci++; setTimeout(tick, 85); }
+                else if (roles.length > 1) { deleting = true; setTimeout(tick, 1400); }
+            } else {
+                if (ci > 0) { ci--; setTimeout(tick, 45); }
+                else { deleting = false; ri = (ri + 1) % roles.length; setTimeout(tick, 350); }
+            }
+        })();
+    }
+    // theme toggle
+    window.cwToggleTheme = function () {
+        var dark = document.documentElement.classList.toggle('cloud-dark');
+        try { localStorage.setItem('cloud-theme', dark ? 'dark' : 'light'); } catch (e) {}
+    };
+    // active nav link on scroll
+    var links = Array.prototype.slice.call(document.querySelectorAll('.cw-links a'));
+    var map = {}; links.forEach(function (a) { var id = a.getAttribute('href').slice(1); var s = document.getElementById(id); if (s) map[id] = a; });
+    var ids = Object.keys(map);
+    if ('IntersectionObserver' in window && ids.length) {
+        var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { links.forEach(function (l) { l.classList.remove('active'); }); map[e.target.id] && map[e.target.id].classList.add('active'); } });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        ids.forEach(function (id) { obs.observe(document.getElementById(id)); });
+    }
+    // close mobile menu on click
+    links.forEach(function (a) { a.addEventListener('click', function () { document.getElementById('cwNav').classList.remove('open'); }); });
+    var y = document.getElementById('cwYear'); if (y) y.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
