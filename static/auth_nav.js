@@ -37,6 +37,28 @@
 // ── Upgrade paywall modal ──────────────────────────────────────────────────
 var _upgradeModalOpen = false;
 
+// Region-aware pricing — mirrors /pricing and home pricing preview.
+var _upgradeRegionCache = null;
+var _upgradeRegionFetch = null;
+var _UPGRADE_PRICING = {
+  india:  { sym: '₹', pro: '167' },
+  lic:    { sym: '$',      pro: '2.08' },
+  global: { sym: '$',      pro: '5' }
+};
+
+function _prefetchUpgradeRegion() {
+  if (_upgradeRegionCache || _upgradeRegionFetch) return;
+  _upgradeRegionFetch = fetch('/api/billing/region', { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(d) { if (d && d.region) _upgradeRegionCache = d.region; return _upgradeRegionCache; })
+    .catch(function() { return null; });
+}
+
+function _getUpgradePriceLabel(region) {
+  var p = _UPGRADE_PRICING[region] || _UPGRADE_PRICING.india;
+  return 'Upgrade to Pro — from ' + p.sym + p.pro + '/mo';
+}
+
 var FEATURE_LABELS = {
   ai_optimizations:   "Resume Optimization",
   cover_letters:      "Cover Letter",
@@ -119,10 +141,18 @@ function showUpgradeModal(feature) {
         '<div class="tc-up-perk">Unlimited cover letters</div>' +
         '<div class="tc-up-perk">Mock interviews &amp; LinkedIn import</div>' +
       '</div>' +
-      '<a class="tc-up-primary" href="/pricing">Upgrade to Pro — from ₹149</a>' +
+      '<a class="tc-up-primary" id="tc-up-cta" href="/pricing">' + _getUpgradePriceLabel(_upgradeRegionCache) + '</a>' +
       '<p class="tc-up-note">Cancel anytime &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Secure payment</p>' +
     '</div>';
   document.body.appendChild(overlay);
+
+  // If region wasn't cached yet, update the button once the fetch resolves.
+  if (!_upgradeRegionCache && _upgradeRegionFetch) {
+    _upgradeRegionFetch.then(function(region) {
+      var cta = document.getElementById('tc-up-cta');
+      if (cta && region) cta.textContent = _getUpgradePriceLabel(region);
+    });
+  }
 
   function closeModal() {
     overlay.remove();
@@ -380,5 +410,8 @@ function showUpgradeModal(feature) {
     getUser: getStoredUser,
   };
 
-  document.addEventListener("DOMContentLoaded", initAuthNav);
+  document.addEventListener("DOMContentLoaded", function() {
+    _prefetchUpgradeRegion();
+    initAuthNav();
+  });
 })();
