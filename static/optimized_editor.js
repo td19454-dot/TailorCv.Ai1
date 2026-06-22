@@ -20,6 +20,7 @@
     const frame           = document.getElementById("resume-preview-frame");
     const statusEl        = document.getElementById("editor-status");
     const downloadBtn     = document.getElementById("download-edited-btn");
+    const saveBtn         = document.getElementById("save-resume-btn");
     const fontDecreaseBtn = document.getElementById("font-decrease-btn");
     const fontResetBtn    = document.getElementById("font-reset-btn");
     const fontIncreaseBtn = document.getElementById("font-increase-btn");
@@ -692,14 +693,13 @@ body {
             URL.revokeObjectURL(url);
             setStatus("PDF downloaded successfully.");
             if (!isAuto) {
-                let editorSource = "";
-                try { editorSource = sessionStorage.getItem("tailorcv_editor_source") || ""; } catch (e) {}
-                if (editorSource !== "reformat") {
-                    await saveEditedResumeSilently(html);
-                    setTimeout(showPersonalityCornerPopup, 1500);
-                } else {
-                    setTimeout(showPersonalityCornerPopup, 1500);
+                // Resume is NOT auto-saved to My Resumes anymore — the user must
+                // explicitly click "Save to My Resumes". After a download we just
+                // nudge them to save it.
+                if (saveBtn && !saveBtn.dataset.saved) {
+                    setStatus("Downloaded. Click “Save to My Resumes” to keep it.");
                 }
+                setTimeout(showPersonalityCornerPopup, 1500);
             }
         } catch {
             setStatus("Could not download PDF. Please try again.");
@@ -744,6 +744,60 @@ body {
                 showToast("PDF downloaded, but saving to My Resumes failed this time.", "error", "Save failed");
             }
             return false;
+        }
+    }
+
+    /* Explicit "Save to My Resumes" — only runs when the user clicks the button,
+       so nothing is stored unless they choose to save. */
+    async function saveToMyResumes() {
+        if (!frame || !frame.contentDocument) { setStatus("Preview not ready."); return; }
+        const html = buildExportHtml();
+        if (!html) { setStatus("Could not read resume content."); return; }
+
+        let jd = "";
+        try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
+        let savedId = null;
+        try { savedId = sessionStorage.getItem("tailorcv_current_resume_id"); } catch (e) {}
+        const payload = getPayload() || null;
+
+        const orig = saveBtn ? saveBtn.innerHTML : "";
+        if (saveBtn) { saveBtn.disabled = true; saveBtn.innerHTML = "Saving…"; }
+        setStatus("Saving to My Resumes…");
+        try {
+            const res = await fetch("/api/save-edited-resume", {
+                method:  "POST",
+                headers: { "Content-Type": "application/json" },
+                body:    JSON.stringify({
+                    html,
+                    template_id: templateId,
+                    jd,
+                    resume_id: savedId,
+                    resume_data: payload && payload.resume_data ? payload.resume_data : null,
+                    candidate_name: payload && payload.candidate_name ? payload.candidate_name : null
+                }),
+            });
+            if (res.status === 401) {
+                window.location.href = "/login?next=" + encodeURIComponent(location.pathname);
+                return;
+            }
+            if (!res.ok) throw new Error("Save failed");
+            try {
+                const data = await res.json();
+                if (data && data.id) sessionStorage.setItem("tailorcv_current_resume_id", String(data.id));
+            } catch (e) {}
+            if (saveBtn) {
+                saveBtn.dataset.saved = "1";
+                saveBtn.innerHTML = "✓ Saved to My Resumes";
+                saveBtn.disabled = false;
+            }
+            const hint = document.getElementById("save-resume-hint");
+            if (hint) hint.innerHTML = 'Saved — <a href="/my-resumes" style="color:#8b5cf6;text-decoration:underline;">View My Resumes →</a>';
+            setStatus("Saved to My Resumes.");
+            if (typeof showToast === "function") showToast("Resume saved to My Resumes.", "success", "Saved");
+        } catch (e) {
+            if (saveBtn) { saveBtn.disabled = false; saveBtn.innerHTML = orig; }
+            setStatus("Could not save. Please try again.");
+            if (typeof showToast === "function") showToast("Could not save to My Resumes. Please try again.", "error", "Save failed");
         }
     }
 
@@ -1189,6 +1243,7 @@ body {
         document.getElementById("spacing-reset-btn")?.addEventListener("click", resetLineSpacing);
 
         downloadBtn?.addEventListener("click", () => downloadEditedPdf(false));
+        saveBtn?.addEventListener("click", () => saveToMyResumes());
 
         document.getElementById("switch-template-btn")?.addEventListener("click", () => {
             buildTemplateSwitcher();
