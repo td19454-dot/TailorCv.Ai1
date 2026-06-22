@@ -413,37 +413,8 @@
                             throw new Error("Template applied, but editor payload is missing.");
                         }
                         sessionStorage.setItem(OPTIMIZED_EDITOR_PAYLOAD_KEY, JSON.stringify(payload));
-
-                        const pdfRes = await fetch("/api/download-html-pdf", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({
-                                html: payload.html,
-                                pdf_scale: 1
-                            })
-                        });
-                        if (!pdfRes.ok) {
-                            throw new Error("Could not generate PDF from editor payload.");
-                        }
-                        const pdfBlob = await pdfRes.blob();
-                        const pdfUrl = window.URL.createObjectURL(pdfBlob);
-                        const a = document.createElement("a");
-                        a.href = pdfUrl;
-                        a.download = "optimized_resume.pdf";
-                        document.body.appendChild(a);
-                        a.click();
-                        a.remove();
-                        setTimeout(() => window.URL.revokeObjectURL(pdfUrl), 8000);
                     } else {
-                        const blob = await response.blob();
-                        const downloadUrl = window.URL.createObjectURL(blob);
-                        const link = document.createElement("a");
-                        link.href = downloadUrl;
-                        link.download = "optimized_resume.pdf";
-                        document.body.appendChild(link);
-                        link.click();
-                        link.remove();
-                        setTimeout(() => window.URL.revokeObjectURL(downloadUrl), 8000);
+                        throw new Error("Unexpected response format. Please try again.");
                     }
                     finishProgress(true);
                     setUploadStatus("Resume generated. Opening editor...", "is-success");
