@@ -570,6 +570,17 @@ def enforce_quota(db: Session, user, field: str) -> None:
     db.commit()
 
 
+def refund_quota(db: Session, user_id: int, field: str) -> None:
+    """Decrement a quota counter by 1 — called when an LLM call fails after enforce_quota committed."""
+    month = datetime.utcnow().strftime("%Y-%m")
+    rec = db.query(UsageRecord).filter_by(user_id=user_id, month=month).first()
+    if rec:
+        current = int(getattr(rec, field) or 0)
+        if current > 0:
+            setattr(rec, field, current - 1)
+            db.commit()
+
+
 # Keep at most this many saved resumes per user (newest kept) to bound storage.
 MAX_SAVED_RESUMES_PER_USER = 25
 
@@ -3563,6 +3574,7 @@ async def api_interview_start_with_pdf(
     try:
         user = db.query(User).filter_by(id=request.session["user_id"]).first()
         enforce_quota(db, user, "mock_interviews")
+        uid = user.id
     finally:
         db.close()
 
@@ -3576,13 +3588,21 @@ async def api_interview_start_with_pdf(
             f.write(content)
 
         resume_text = await asyncio.to_thread(extract_pdf_text, file_path)
-        question = await generate_mock_interview_first_question(
-            resume_text=resume_text,
-            role=str(role or "Software Engineer").strip() or "Software Engineer",
-            interview_type=str(interview_type or "mixed").strip() or "mixed",
-            num_questions=int(num_questions or 8),
-            job_desc=str(job_desc or "").strip(),
-        )
+        try:
+            question = await generate_mock_interview_first_question(
+                resume_text=resume_text,
+                role=str(role or "Software Engineer").strip() or "Software Engineer",
+                interview_type=str(interview_type or "mixed").strip() or "mixed",
+                num_questions=int(num_questions or 8),
+                job_desc=str(job_desc or "").strip(),
+            )
+        except Exception as exc:
+            db2 = get_db()
+            try:
+                refund_quota(db2, uid, "mock_interviews")
+            finally:
+                db2.close()
+            raise HTTPException(status_code=502, detail="Could not start the mock interview. Please try again.")
         audio_b64 = None
         try:
             audio_bytes = await generate_tts_audio(question)
@@ -3689,9 +3709,18 @@ async def api_generate_interview_questions(
             try:
                 user = db.query(User).filter_by(id=request.session["user_id"]).first()
                 enforce_quota(db, user, "interview_questions")
+                uid = user.id
             finally:
                 db.close()
-            result = await generate_interview_questions(resume_string, jd_string)
+            try:
+                result = await generate_interview_questions(resume_string, jd_string)
+            except Exception:
+                db2 = get_db()
+                try:
+                    refund_quota(db2, uid, "interview_questions")
+                finally:
+                    db2.close()
+                raise HTTPException(status_code=502, detail="Could not generate interview questions. Please try again.")
             return JSONResponse({"success": True, "data": result})
     except HTTPException:
         raise
@@ -4486,6 +4515,7 @@ async def generate_cover_letter(request: Request):
     try:
         user = db.query(User).filter_by(id=request.session["user_id"]).first()
         enforce_quota(db, user, "cover_letters")
+        uid = user.id
     finally:
         db.close()
 
@@ -4522,6 +4552,11 @@ async def generate_cover_letter(request: Request):
             raise ValueError("Empty cover letter returned")
     except Exception:
         logger.exception("Cover letter generation failed")
+        db2 = get_db()
+        try:
+            refund_quota(db2, uid, "cover_letters")
+        finally:
+            db2.close()
         raise HTTPException(status_code=502, detail="Could not generate the cover letter. Please try again.")
 
     return JSONResponse({
@@ -7012,6 +7047,8 @@ async def checkout_download(request: Request):
             _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()}
             if user.id not in _beta_ids:
                 return JSONResponse({"allowed": True, "is_pro": False})
+        # Serialize quota checks per user — mirrors enforce_quota line 542.
+        db.query(User).filter(User.id == user.id).with_for_update().one()
         from sqlalchemy import func as _func
         used = (
             db.query(_func.coalesce(_func.sum(UsageRecord.ai_optimizations), 0))

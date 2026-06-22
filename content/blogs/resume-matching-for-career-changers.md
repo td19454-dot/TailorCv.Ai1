@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Career Change Resume, Resume Matching, Industry Change, Career Pivot Resume, ATS Career Change]
 category: Resume Writing
-image: public/blog-images/resume-matching-for-career-changers.png
+image: public/blog-images/industrychange_careers.png
 slug: resume-matching-for-career-changers
 keywords: resume matching for career changers, career change resume job description match, how to match resume when changing careers, career pivot resume 2026, industry change resume matching
 ---
@@ -254,14 +254,6 @@ With a confident narrative: "I built X in my previous field, which taught me Y. 
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Career Change to Tech Guide](https://thetailorcv.com/blog/career-change-to-tech-guide)
 - [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
-- [Resume Matching with No Experience — How to Match a Job Description When You're Starting Out (2026)](https://thetailorcv.com/blog/resume-matching-no-experience)
-- [How to Match Your Resume When You're Overqualified for the Job (2026 Guide)](https://thetailorcv.com/blog/overqualified-resume-match-job-description)
-- [How to Match Your Resume to a Remote Job Description in 2026](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description)
-- [How to Match Your Resume to a Data Analyst Job Description in 2026](https://thetailorcv.com/blog/resume-matching-data-analyst)
-- [Resume Matching for Experienced Professionals — How to Stay Relevant in 2026](https://thetailorcv.com/blog/resume-matching-experienced-professionals)
-- [How to Match Your Resume to a Marketing Job Description in 2026](https://thetailorcv.com/blog/resume-matching-marketing)
-- [How to Match Your Resume to a Product Manager Job Description in 2026](https://thetailorcv.com/blog/resume-matching-product-manager)
-- [How to Match Your Resume to a Software Engineering Job Description in 2026](https://thetailorcv.com/blog/resume-matching-software-engineer)
 
 ---
 
