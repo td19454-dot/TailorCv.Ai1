@@ -293,13 +293,28 @@ async def razorpay_cancel(request: Request):
 async def razorpay_webhook(request: Request):
     webhook_secret = os.getenv("RAZORPAY_WEBHOOK_SECRET")
     if not webhook_secret:
+        # Misconfiguration on our side — Razorpay treats the resulting non-2xx as a
+        # delivery failure and deactivates the webhook after 24h. Log loudly so it's
+        # obvious in the server logs that the env var is the culprit.
+        logger.error(
+            "Razorpay webhook received but RAZORPAY_WEBHOOK_SECRET is not set in this "
+            "environment — set it (matching the secret on the Razorpay dashboard webhook) "
+            "and re-enable the webhook."
+        )
         raise HTTPException(status_code=503, detail={"error": "payment_not_configured"})
 
     payload = await request.body()
     sig_header = request.headers.get("X-Razorpay-Signature", "")
     expected = hmac.new(webhook_secret.encode(), payload, hashlib.sha256).hexdigest()
     if not hmac.compare_digest(expected, sig_header):
-        logger.warning("Razorpay webhook signature mismatch")
+        # Almost always means the secret in this env != the secret on the dashboard
+        # webhook (or a proxy stripped the header). Log non-sensitive diagnostics:
+        # never the secret or the actual signature values.
+        logger.warning(
+            "Razorpay webhook signature mismatch (header_present=%s, header_len=%d, body_len=%d) "
+            "— check RAZORPAY_WEBHOOK_SECRET matches the dashboard webhook secret.",
+            bool(sig_header), len(sig_header), len(payload),
+        )
         raise HTTPException(status_code=400, detail="Invalid signature")
 
     try:

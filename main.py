@@ -5276,6 +5276,8 @@ PORTFOLIO_THEMES = {
     "snowcard": "Snowcard - light dotted tabs",
     "github": "GitHub - profile, repos & contributions",
     "parchment": "Parchment — ancient scroll letter 📜",
+    "assistant": "Assistant — ChatGPT-style AI chat 🤖",
+    "cloud": "Cloud — friendly dev landing, light/dark ☁️",
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
@@ -5299,6 +5301,8 @@ PORTFOLIO_THEME_MEDIA = {
     "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://lisa-martinez.netlify.app/"},
     "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://karen-taylor.netlify.app/"},
     "parchment": {"image": "/static/portfolio-previews/parchment.png", "demo": "https://uttam-debnath.netlify.app/"},
+    "assistant": {"image": "/static/portfolio-previews/assistant.png", "demo": "https://trisha-debnath.netlify.app/"},
+    "cloud": {"image": "/static/portfolio-previews/cloud.png", "demo": "https://uttam-debnath.netlify.app/"},
 }
 
 # Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
@@ -5996,6 +6000,8 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "snowcard": "portfolio_snowcard.html",
         "github": "portfolio_github.html",
         "parchment": "portfolio_parchment.html",
+        "assistant": "portfolio_assistant.html",
+        "cloud": "portfolio_cloud.html",
     }.get(theme, "portfolio_public.html")
     return templates.TemplateResponse(request, tpl, {
         "request": request,
@@ -6044,7 +6050,8 @@ def _build_static_portfolio_html(portfolio) -> str:
         "nova": "portfolio_nova.html", "console": "portfolio_console.html",
         "monolith": "portfolio_monolith.html", "particle": "portfolio_particle.html",
         "snowcard": "portfolio_snowcard.html", "github": "portfolio_github.html",
-        "parchment": "portfolio_parchment.html",
+        "parchment": "portfolio_parchment.html", "assistant": "portfolio_assistant.html",
+        "cloud": "portfolio_cloud.html",
     }.get(theme, "portfolio_public.html")
 
     class _FakeURL:
