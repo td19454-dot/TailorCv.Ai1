@@ -4481,8 +4481,13 @@ async def generate_cover_letter(request: Request):
         "job description. Never invent experience that is not in the resume.\n"
         "- Close with a confident call to action. No markdown, no placeholder brackets, "
         "no sign-off name line.\n\n"
+        "Also extract the candidate's contact details FROM THE RESUME (never invent them; "
+        "use an empty string if a field is not present).\n"
         "Return ONLY a JSON object of the form "
-        "{\"cover_letter\": \"<the full letter as plain text, with \\n between paragraphs>\"}.\n\n"
+        "{\"cover_letter\": \"<the full letter as plain text, with \\n between paragraphs>\", "
+        "\"name\": \"<candidate full name>\", "
+        "\"email\": \"<candidate email address>\", "
+        "\"location\": \"<candidate city, state/country>\"}.\n\n"
         f"=== RESUME ===\n{resume_text}\n\n"
         f"=== JOB DESCRIPTION ===\n{job_description}\n"
     )
@@ -4490,14 +4495,21 @@ async def generate_cover_letter(request: Request):
     try:
         raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
         parsed = parse_ai_json_response(raw)
-        letter = ((parsed.get("cover_letter") if isinstance(parsed, dict) else "") or "").strip()
+        if not isinstance(parsed, dict):
+            parsed = {}
+        letter = ((parsed.get("cover_letter")) or "").strip()
         if not letter:
             raise ValueError("Empty cover letter returned")
     except Exception:
         logger.exception("Cover letter generation failed")
         raise HTTPException(status_code=502, detail="Could not generate the cover letter. Please try again.")
 
-    return JSONResponse({"cover_letter": letter})
+    return JSONResponse({
+        "cover_letter": letter,
+        "name": (parsed.get("name") or "").strip(),
+        "email": (parsed.get("email") or "").strip(),
+        "location": (parsed.get("location") or "").strip(),
+    })
 
 
 # ══════════════════════════════════════════════════════════════════════════════
