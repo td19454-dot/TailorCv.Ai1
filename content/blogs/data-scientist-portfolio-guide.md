@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Data Science, Machine Learning, Projects]
 category: Portfolio
+image: public/blog-images/data-scientist-portfolio-guide.png
 slug: data-scientist-portfolio-guide
 keywords: data scientist portfolio, machine learning portfolio, ml projects, kaggle portfolio, ml portfolio examples
 ---

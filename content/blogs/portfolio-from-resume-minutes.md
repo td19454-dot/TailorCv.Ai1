@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Tools, Resume Tips, Job Search]
 category: Portfolio
+image: public/blog-images/portfolio-from-resume-minutes.png
 slug: portfolio-from-resume-minutes
 keywords: resume to portfolio, portfolio from resume, generate portfolio, portfolio in minutes, no code portfolio
 ---

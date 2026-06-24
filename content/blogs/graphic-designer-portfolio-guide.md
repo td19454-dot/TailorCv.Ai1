@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Graphic Design, Creative, Job Search]
 category: Portfolio
+image: public/blog-images/graphic-designer-portfolio-guide.png
 slug: graphic-designer-portfolio-guide
 keywords: graphic designer portfolio, design portfolio, branding portfolio, behance dribbble, design portfolio examples
 ---

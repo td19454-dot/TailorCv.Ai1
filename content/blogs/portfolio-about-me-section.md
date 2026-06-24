@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, About Me, Personal Branding, Writing]
 category: Portfolio
+image: public/blog-images/portfolio-about-me-section.png
 slug: portfolio-about-me-section
 keywords: portfolio about me, about me section, portfolio bio, how to write about me, about me examples
 ---
