@@ -6028,6 +6028,9 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "assistant": "portfolio_assistant.html",
         "cloud": "portfolio_cloud.html",
     }.get(theme, "portfolio_public.html")
+    # Free (non-Pro) portfolios carry a "Made with TailorCV" watermark; Pro owners
+    # get a clean, unbranded site. Upgrading to Pro drops it on the next page load.
+    show_watermark = not is_pro(getattr(portfolio, "user", None))
     return templates.TemplateResponse(request, tpl, {
         "request": request,
         "data": data,
@@ -6040,6 +6043,7 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "seo_og_title": f"{name} | Portfolio",
         "seo_og_description": og_desc,
         "canonical_url": page_url,
+        "show_watermark": show_watermark,
     })
 
 
@@ -6086,10 +6090,14 @@ def _build_static_portfolio_html(portfolio) -> str:
         def __init__(self, path): self.url = _FakeURL(path)
 
     page_url = f"{SITE_URL}/{portfolio.slug}"
+    # Netlify deploy is Pro-only, so this is False in practice — but compute it
+    # honestly so the static export matches the served page if that ever changes.
+    show_watermark = not is_pro(getattr(portfolio, "user", None))
     html = templates.get_template(tpl).render(
         request=_FakeReq(f"/{portfolio.slug}"), data=data, tagline=tagline, about=about,
         slug=portfolio.slug, has_cv=has_cv, theme=theme, page_url=page_url,
         seo_og_title=f"{name} | Portfolio", seo_og_description=og_desc, canonical_url=page_url,
+        show_watermark=show_watermark,
     )
 
     def _inline_css(m):
@@ -6246,6 +6254,17 @@ async def deploy_portfolio_netlify(portfolio_id: int, request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             return JSONResponse(status_code=401, content={"error": "Not logged in"})
+        # Custom Netlify live site is a Pro feature. Non-Pro users still have their
+        # free thetailorcv.com/<slug> site (created at publish time) — only the extra
+        # .netlify.app deployment is gated.
+        if not is_pro(user):
+            return JSONResponse(status_code=402, content={
+                "error": "Publishing a custom Netlify live site is a Pro feature. "
+                         "Your free site is already live at thetailorcv.com.",
+                "upgrade": True,
+                "upgrade_url": "/pricing",
+                "free_url": _portfolio_share_url(portfolio),
+            })
         try:
             # Deploy to the user's single shared site (one live link per user).
             site_id, site_url = await _deploy_portfolio_to_netlify(user, portfolio)
