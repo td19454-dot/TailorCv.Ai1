@@ -616,7 +616,7 @@ body {
                 '<button id="tcv-pro-dl-close" aria-label="Close">&times;</button>' +
                 '<div class="tcv-pro-dl-lock">🔒</div>' +
                 '<h2 class="tcv-pro-dl-title">Your resume is ready!</h2>' +
-                '<p class="tcv-pro-dl-sub">You\'ve used your <strong>1 free download</strong>.<br>' +
+                '<p class="tcv-pro-dl-sub">You\'ve used your <strong>3 free downloads</strong>.<br>' +
                 'Upgrade to Pro to download unlimited resumes.</p>' +
                 '<div class="tcv-pro-dl-perks">' +
                     '<div class="tcv-pro-dl-perk">Unlimited resume downloads</div>' +
@@ -1056,6 +1056,7 @@ body {
                 applyWordStylePreview();
                 captureBaseLineSpacing(frame.contentDocument);
                 buildAccentPanel();
+                applyFreeUserProtection(frame.contentDocument);
                 updateFontSizeBadge();
                 updatePageBadge();
                 setStatus("Template switched! Your content is preserved — adjust font if needed.");
@@ -1203,6 +1204,32 @@ body {
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
+       FREE-USER COPY PROTECTION
+    ───────────────────────────────────────────────────────────────────────── */
+    function applyFreeUserProtection(doc) {
+        if (window.IS_PRO === true) return;
+        if (!doc || !doc.body) return;
+
+        if (doc._tailorcvCopyProtected) return;
+        doc._tailorcvCopyProtected = true;
+
+        const SUFFIX =
+            "\n\n— Created with TailorCV.ai (tailorcv.ai)\n" +
+            "Download the properly formatted PDF at tailorcv.ai/pricing";
+
+        doc.addEventListener("copy", function (e) {
+            const text = (doc.getSelection() || {}).toString() || "";
+            if (text.length <= 150) return;
+            e.preventDefault();
+            try { e.clipboardData.setData("text/plain", text + SUFFIX); } catch (_) {}
+            if (typeof showToast === "function") {
+                showToast("Download the PDF for proper formatting.", "warn",
+                          "Upgrade to download");
+            }
+        }, true);
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
        INIT
     ───────────────────────────────────────────────────────────────────────── */
     function init() {
@@ -1230,6 +1257,7 @@ body {
             setStatus("Tip: Click inside the resume to edit text live.");
 
             buildAccentPanel();
+            applyFreeUserProtection(frame.contentDocument);
 
             if (AUTO_DOWNLOAD_ON_OPEN && !hasAutoDownloaded) {
                 hasAutoDownloaded = true;

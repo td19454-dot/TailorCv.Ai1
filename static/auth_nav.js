@@ -73,7 +73,7 @@ function showUpgradeModal(feature) {
   var modalCopy = {
     cover_letters: {
       title: "Your cover letter is ready!",
-      freeUse: "1 free cover letter",
+      freeUse: "3 free cover letters",
       message: "Upgrade to Pro to create unlimited cover letters."
     },
     interview_questions: {
