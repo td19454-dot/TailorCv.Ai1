@@ -284,7 +284,7 @@
     </section>
 </main>
 
-<footer class="cw-foot">© <span id="cwYear"></span> {{ data.name }} · Built with theTailorCV</footer>
+<footer class="cw-foot">© <span id="cwYear"></span> {{ data.name }}{% if show_watermark %} · Built with theTailorCV{% endif %}</footer>
 
 <script>
 (function () {
@@ -329,5 +329,6 @@
     var y = document.getElementById('cwYear'); if (y) y.textContent = new Date().getFullYear();
 })();
 </script>
+{% include "_portfolio_watermark.html" %}
 </body>
 </html>
