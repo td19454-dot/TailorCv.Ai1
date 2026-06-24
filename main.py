@@ -512,8 +512,8 @@ def is_pro(user) -> bool:
 
 
 FREE_LIMITS: dict[str, int] = {
-    "ai_optimizations": 1,
-    "cover_letters": 1,
+    "ai_optimizations": 3,
+    "cover_letters": 3,
     "linkedin_imports": 1,
     "mock_interviews": 1,
     "interview_questions": 1,
