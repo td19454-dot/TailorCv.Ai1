@@ -123,7 +123,8 @@
     <script src="/static/auth_nav.js?v=11"></script>
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/toast.js"></script>
-    <script src="/static/optimized_editor.js?v=83"></script>
+    <script>window.IS_PRO = {{ 'true' if is_pro else 'false' }};</script>
+    <script src="/static/optimized_editor.js?v=84"></script>
     <script>
         (function () {
             var btn = document.getElementById('mobile-controls-toggle');
