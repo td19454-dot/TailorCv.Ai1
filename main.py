@@ -512,8 +512,8 @@ def is_pro(user) -> bool:
 
 
 FREE_LIMITS: dict[str, int] = {
-    "ai_optimizations": 1,
-    "cover_letters": 1,
+    "ai_optimizations": 3,
+    "cover_letters": 3,
     "linkedin_imports": 1,
     "mock_interviews": 1,
     "interview_questions": 1,
@@ -4295,10 +4295,16 @@ async def ats_analysis_page(request: Request):
 async def optimized_editor_page(request: Request):
     """Live editor page for optimized resume preview."""
     require_logged_in(request)
+    db = get_db()
+    try:
+        user = db.query(User).filter_by(id=request.session["user_id"]).first()
+        user_is_pro = is_pro(user) if user else False
+    finally:
+        db.close()
     return templates.TemplateResponse(
         request,
         "optimized_editor.html",
-        {"request": request},
+        {"request": request, "is_pro": user_is_pro},
     )
 
 
