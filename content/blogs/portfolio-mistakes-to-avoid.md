@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Mistakes, Job Search, Career Advice]
 category: Portfolio
+image: public/blog-images/portfolio-mistakes-to-avoid.png
 slug: portfolio-mistakes-to-avoid
 keywords: portfolio mistakes, portfolio errors, why portfolio not working, fix portfolio, portfolio red flags
 ---

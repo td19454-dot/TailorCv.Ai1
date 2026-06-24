@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Checklist, Job Search, Career Advice]
 category: Portfolio
+image: public/blog-images/portfolio-checklist-before-applying.png
 slug: portfolio-checklist-before-applying
 keywords: portfolio checklist, portfolio before applying, portfolio review, is my portfolio ready, portfolio audit
 ---

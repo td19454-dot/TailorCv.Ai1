@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Full Stack, Developer Portfolio, Projects]
 category: Portfolio
+image: public/blog-images/full-stack-portfolio-guide.png
 slug: full-stack-portfolio-guide
 keywords: full stack portfolio, full stack developer projects, end to end project portfolio, mern portfolio
 ---

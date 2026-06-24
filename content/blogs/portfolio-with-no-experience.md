@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Freshers, No Experience, Job Search]
 category: Portfolio
+image: public/blog-images/portfolio-with-no-experience.png
 slug: portfolio-with-no-experience
 keywords: portfolio with no experience, portfolio for freshers, student portfolio, first portfolio, build portfolio from scratch
 ---
