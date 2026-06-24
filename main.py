@@ -4276,10 +4276,16 @@ async def ats_analysis_page(request: Request):
 async def optimized_editor_page(request: Request):
     """Live editor page for optimized resume preview."""
     require_logged_in(request)
+    db = get_db()
+    try:
+        user = db.query(User).filter_by(id=request.session["user_id"]).first()
+        user_is_pro = is_pro(user) if user else False
+    finally:
+        db.close()
     return templates.TemplateResponse(
         request,
         "optimized_editor.html",
-        {"request": request},
+        {"request": request, "is_pro": user_is_pro},
     )
 
 
