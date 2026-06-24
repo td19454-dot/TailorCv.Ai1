@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Developer Portfolio, Projects, Job Search]
 category: Portfolio
+image: public/blog-images/developer-portfolio-project-ideas.png
 slug: developer-portfolio-project-ideas
 keywords: developer portfolio projects, project ideas for portfolio, coding projects to get hired, github projects, best portfolio projects
 ---

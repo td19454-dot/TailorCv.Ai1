@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Writing, Copywriting, Freelance]
 category: Portfolio
+image: public/blog-images/content-writer-portfolio-guide.png
 slug: content-writer-portfolio-guide
 keywords: writing portfolio, copywriter portfolio, content writer portfolio, freelance writing samples, writing portfolio examples
 ---

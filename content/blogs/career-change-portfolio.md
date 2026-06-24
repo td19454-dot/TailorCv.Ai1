@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Career Change, Transferable Skills, Job Search]
 category: Portfolio
+image: public/blog-images/career-change-portfolio.png
 slug: career-change-portfolio
 keywords: career change portfolio, switching careers portfolio, transferable skills portfolio, pivot portfolio
 ---

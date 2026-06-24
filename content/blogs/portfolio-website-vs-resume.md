@@ -5,6 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Resume Tips, Job Search, Career Advice]
 category: Portfolio
+image: public/blog-images/portfolio-website-vs-resume.png
 slug: portfolio-website-vs-resume
 keywords: portfolio vs resume, do i need a portfolio, portfolio website, resume and portfolio, portfolio or resume
 ---
