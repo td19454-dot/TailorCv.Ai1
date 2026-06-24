@@ -616,7 +616,7 @@ body {
                 '<button id="tcv-pro-dl-close" aria-label="Close">&times;</button>' +
                 '<div class="tcv-pro-dl-lock">🔒</div>' +
                 '<h2 class="tcv-pro-dl-title">Your resume is ready!</h2>' +
-                '<p class="tcv-pro-dl-sub">You\'ve used your <strong>1 free download</strong>.<br>' +
+                '<p class="tcv-pro-dl-sub">You\'ve used your <strong>3 free downloads</strong>.<br>' +
                 'Upgrade to Pro to download unlimited resumes.</p>' +
                 '<div class="tcv-pro-dl-perks">' +
                     '<div class="tcv-pro-dl-perk">Unlimited resume downloads</div>' +
