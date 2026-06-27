@@ -5303,6 +5303,10 @@ PORTFOLIO_THEMES = {
     "parchment": "Parchment — ancient scroll letter 📜",
     "assistant": "Assistant — ChatGPT-style AI chat 🤖",
     "cloud": "Cloud — friendly dev landing, light/dark ☁️",
+    "neon": "Neon — cyberpunk glow, grid floor 🌃",
+    "brutalist": "Brutalist — bold blocks, hard shadows 🧱",
+    "hacker": "Hacker — green terminal, typed 💻",
+    "magazine": "Magazine — editorial serif print 📰",
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
@@ -5325,9 +5329,13 @@ PORTFOLIO_THEME_MEDIA = {
     "particle": {"image": "/static/portfolio-previews/particle.png", "demo": "https://jonathan-allen.netlify.app/"},
     "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://lisa-martinez.netlify.app/"},
     "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://karen-taylor.netlify.app/"},
-    "parchment": {"image": "/static/portfolio-previews/parchment.png", "demo": "https://pompa-sen.netlify.app/"},
+    "parchment": {"image": "/static/portfolio-previews/parchment.png"},
     "assistant": {"image": "/static/portfolio-previews/assistant.png", "demo": "https://trisha-debnath.netlify.app/"},
     "cloud": {"image": "/static/portfolio-previews/cloud.png", "demo": "https://uttam-debnath.netlify.app/"},
+    "neon": {"image": "/static/portfolio-previews/neon.png"},
+    "brutalist": {"image": "/static/portfolio-previews/brutalist.png"},
+    "hacker": {"image": "/static/portfolio-previews/hacker.png"},
+    "magazine": {"image": "/static/portfolio-previews/magazine.png"},
 }
 
 # Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
@@ -6027,6 +6035,10 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "parchment": "portfolio_parchment.html",
         "assistant": "portfolio_assistant.html",
         "cloud": "portfolio_cloud.html",
+        "neon": "portfolio_neon.html",
+        "brutalist": "portfolio_brutalist.html",
+        "hacker": "portfolio_hacker.html",
+        "magazine": "portfolio_magazine.html",
     }.get(theme, "portfolio_public.html")
     # Free (non-Pro) portfolios carry a "Made with TailorCV" watermark; Pro owners
     # get a clean, unbranded site. Upgrading to Pro drops it on the next page load.
@@ -6081,6 +6093,10 @@ def _build_static_portfolio_html(portfolio) -> str:
         "snowcard": "portfolio_snowcard.html", "github": "portfolio_github.html",
         "parchment": "portfolio_parchment.html", "assistant": "portfolio_assistant.html",
         "cloud": "portfolio_cloud.html",
+        "neon": "portfolio_neon.html",
+        "brutalist": "portfolio_brutalist.html",
+        "hacker": "portfolio_hacker.html",
+        "magazine": "portfolio_magazine.html",
     }.get(theme, "portfolio_public.html")
 
     class _FakeURL:

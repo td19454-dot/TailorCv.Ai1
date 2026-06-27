@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ seo_og_description }}">
+    <title>{{ data.name }}{% if data.headline %} - {{ data.headline }}{% endif %} | Portfolio</title>
+    {% include "_seo_head.html" %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+    :root{--bg:#f7f4ee;--ink:#16140f;--mut:#6b665b;--ac:#c8442b;--line:#16140f}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,.serif{font-family:Fraunces,Georgia,serif}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:18px 26px;border-bottom:2px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:20}
+    nav .brand{font-family:Fraunces;font-weight:900;font-size:22px;letter-spacing:-.01em}
+    nav .lk{display:flex;gap:24px}nav .lk a{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--mut);transition:.2s}nav .lk a:hover{color:var(--ac)}
+    @media(max-width:680px){nav .lk{display:none}}
+    .mast{padding:30px 0 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--mut)}
+    .hero{padding:46px 0;border-bottom:4px double var(--line)}
+    .hero .kicker{color:var(--ac);text-transform:uppercase;letter-spacing:.2em;font-size:13px;font-weight:600;margin-bottom:16px}
+    .hero h1{font-size:clamp(46px,10vw,108px);font-weight:900;line-height:.92;letter-spacing:-.02em}
+    .hero .lead{display:grid;grid-template-columns:1.5fr 1fr;gap:30px;margin-top:26px;align-items:end}
+    @media(max-width:760px){.hero .lead{grid-template-columns:1fr}}
+    .hero .role{font-family:Fraunces;font-size:24px;font-weight:600}
+    .hero .dek{color:var(--mut);font-size:17px;border-left:3px solid var(--ac);padding-left:16px}
+    .cta{display:flex;gap:14px;margin-top:24px;flex-wrap:wrap}
+    .btn{padding:12px 24px;font-weight:600;font-size:14px;border:2px solid var(--line);transition:.2s;display:inline-flex;gap:8px;align-items:center}
+    .btn.p{background:var(--ink);color:var(--bg)}.btn.p:hover{background:var(--ac);border-color:var(--ac)}
+    .btn.s:hover{background:var(--ink);color:var(--bg)}.btn svg{width:16px;height:16px}
+    section{padding:40px 0;border-bottom:1px solid var(--line)}
+    .lbl{font-family:Fraunces;font-weight:900;font-size:26px;margin-bottom:8px}
+    .lbl small{display:block;font-family:Inter;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--ac);font-weight:600}
+    .cols{columns:2;column-gap:34px}@media(max-width:680px){.cols{columns:1}}
+    .about .cols p{margin-bottom:14px}.about .cols p:first-letter{font-family:Fraunces;font-size:60px;font-weight:900;float:left;line-height:.7;margin:6px 10px 0 0;color:var(--ac)}
+    .grid{display:grid;gap:0}.g2 article{border-bottom:1px solid var(--line)}
+    .pj{display:grid;grid-template-columns:auto 1fr auto;gap:20px;padding:20px 0;align-items:baseline;transition:.2s}
+    .pj:hover{background:rgba(200,68,43,.05);padding-left:10px;padding-right:10px}
+    .pj .no{font-family:Fraunces;font-weight:900;font-size:34px;color:var(--ac);line-height:1}
+    .pj h3{font-family:Fraunces;font-size:22px}.pj .kick{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin:4px 0}.pj p{color:var(--mut);font-size:15px}
+    .pj .links{display:flex;gap:14px;white-space:nowrap}.pj .links a{font-size:13px;text-transform:uppercase;letter-spacing:.08em;border-bottom:2px solid var(--ac)}
+    @media(max-width:620px){.pj{grid-template-columns:1fr}}
+    .skl{display:flex;flex-wrap:wrap;gap:8px}
+    .skl span{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border:1px solid var(--line);font-size:14px}.skl span:hover{background:var(--ink);color:var(--bg)}.skl img{width:17px;height:17px}
+    .exp{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--line)}
+    @media(max-width:620px){.exp{grid-template-columns:1fr;gap:4px}}
+    .exp .d{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ac)}.exp h3{font-family:Fraunces;font-size:19px;margin-bottom:6px}.exp ul{margin:6px 0 0 16px;color:var(--mut);font-size:15px}
+    .reveal{opacity:0;transform:translateY(20px);transition:.6s}.reveal.in{opacity:1;transform:none}
+    footer{padding:50px 0 26px}
+    footer .s{display:flex;gap:14px;margin-top:14px}
+    footer .s a{width:46px;height:46px;border:2px solid var(--line);display:grid;place-items:center;transition:.2s}footer .s a:hover{background:var(--ac);border-color:var(--ac);color:#fff}footer .s svg{width:18px;height:18px}
+    </style>
+</head>
+<body>
+{% from "_portfolio_icons.html" import soc, ext %}
+<nav>
+    <a href="#top" class="brand">{{ data.name }}</a>
+    <div class="lk">
+        {% if data.projects %}<a href="#projects">Work</a>{% endif %}
+        {% if data.skills %}<a href="#skills">Skills</a>{% endif %}
+        {% if data.experience %}<a href="#exp">Career</a>{% endif %}
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+<main class="wrap" id="top">
+    <div class="mast"><span>The Portfolio</span><span>{% if data.location %}{{ data.location }}{% endif %}</span><span>Vol. 01</span></div>
+    <section class="hero">
+        <div class="kicker">{{ data.headline or 'Portfolio' }}</div>
+        <h1>{{ data.name }}</h1>
+        <div class="lead">
+            <div>
+                {% if tagline or about %}<div class="dek">{{ tagline or about.split('\n\n')[0] }}</div>{% endif %}
+                <div class="cta">
+                    {% if data.email %}<a class="btn p" href="mailto:{{ data.email }}">{{ soc('mail') }} Get in touch</a>{% endif %}
+                    {% if has_cv %}<a class="btn s" href="/p/{{ slug }}/cv">Download CV</a>{% endif %}
+                </div>
+            </div>
+            {% if data.headline %}<div class="role">{{ data.headline }}</div>{% endif %}
+        </div>
+    </section>
+    {% if about %}<section class="about reveal" id="about"><div class="lbl"><small>Feature</small>About</div><div class="cols">{% for para in about.split('\n\n') %}<p>{{ para }}</p>{% endfor %}</div></section>{% endif %}
+    {% if data.projects %}
+    <section class="reveal" id="projects"><div class="lbl"><small>Portfolio</small>Selected Work</div>
+        <div class="grid g2">{% for p in data.projects %}<article class="pj"><div class="no">{{ "%02d"|format(loop.index) }}</div><div><h3>{{ p.name }}</h3>{% if p.subtitle %}<div class="kick">{{ p.subtitle }}</div>{% endif %}{% if p.bullets %}<p>{{ p.bullets|join(' ') }}</p>{% endif %}</div><div class="links">{% if p.github %}<a href="{{ p.github }}" target="_blank" rel="noopener">Code</a>{% endif %}{% if p.url %}<a href="{{ p.url }}" target="_blank" rel="noopener">Live</a>{% endif %}</div></article>{% endfor %}</div>
+    </section>{% endif %}
+    {% if data.skills %}
+    <section class="reveal" id="skills"><div class="lbl"><small>Toolkit</small>Skills</div>
+        {% for g in data.skills %}<div style="margin-bottom:14px">{% if g.category %}<div style="font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin-bottom:9px">{{ g.category }}</div>{% endif %}
+        <div class="skl">{% for item in g['items'] %}<span>{% if item|skillhasicon %}<img src="{{ item|skilliconurl }}" alt="" loading="lazy" onerror="this.remove()">{% endif %}{{ item }}</span>{% endfor %}</div></div>{% endfor %}
+    </section>{% endif %}
+    {% if data.experience %}
+    <section class="reveal" id="exp"><div class="lbl"><small>Timeline</small>Career</div>
+        {% for e in data.experience %}<div class="exp"><div class="d">{{ e.dates }}</div><div><h3>{{ e.title }}{% if e.company %} · {{ e.company }}{% endif %}</h3>{% if e.bullets %}<ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}</div></div>{% endfor %}
+    </section>{% endif %}
+    {% if data.certifications or data.publications or data.extracurriculars %}
+    <section class="reveal"><div class="lbl"><small>Record</small>Credentials</div>
+        {% for c in data.certifications %}<div class="exp"><div class="d">Certificate</div><div><h3>{{ c.name }}</h3><p style="color:var(--mut)">{{ c.issuer }}{% if c.issuer and c.year %} · {% endif %}{{ c.year }}{% if c.url %} · <a href="{{ c.url }}" target="_blank" rel="noopener" style="border-bottom:2px solid var(--ac)">View</a>{% endif %}</p></div></div>{% endfor %}
+        {% for pub in data.publications %}<div class="exp"><div class="d">Publication</div><div><h3>{{ pub.title }}</h3><p style="color:var(--mut)">{{ pub.publisher }}{% if pub.publisher and pub.year %} · {% endif %}{{ pub.year }}{% if pub.url %} · <a href="{{ pub.url }}" target="_blank" rel="noopener" style="border-bottom:2px solid var(--ac)">Read</a>{% endif %}</p></div></div>{% endfor %}
+        {% for x in data.extracurriculars %}<div class="exp"><div class="d">Activity</div><div><h3>{{ x.role }}{% if x.organization %} · {{ x.organization }}{% endif %}</h3>{% if x.bullets %}<p style="color:var(--mut)">{{ x.bullets|join(' ') }}</p>{% endif %}</div></div>{% endfor %}
+    </section>{% endif %}
+    {% include "_portfolio_awards.html" %}
+    <footer id="contact"><div class="lbl"><small>Letters</small>Get in touch</div>
+        {% if data.email %}<a href="mailto:{{ data.email }}" class="serif" style="font-size:24px;border-bottom:2px solid var(--ac)">{{ data.email }}</a>{% endif %}
+        <div class="s">{% for s in data.socials %}<a href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.label }}">{{ soc(s.icon) }}</a>{% endfor %}</div>
+    </footer>
+</main>
+<script>
+(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});})();
+</script>
+{% include "_portfolio_watermark.html" %}
+</body>
+</html>
