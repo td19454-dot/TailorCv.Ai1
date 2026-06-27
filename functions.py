@@ -817,6 +817,9 @@ _HARD_SKILL_KEYWORDS: list[str] = [
     # Tools
     "Git", "GitHub", "GitLab", "Bitbucket", "Jira", "Confluence", "Linux", "Unix",
     "Postman", "Swagger", "OpenAPI",
+    # MLOps / Model Serving
+    "Kubeflow", "TorchServe", "TF Serving", "TensorFlow Serving",
+    "Dask", "MLOps", "Vertex AI", "SageMaker", "BentoML", "Ray", "Triton",
 ]
 
 
@@ -863,6 +866,89 @@ def _extract_hard_skills_from_jd(jd_string: str) -> list[str]:
                 _add(tok)
 
     return found
+
+
+_PHRASE_QUALIFIER_RE = re.compile(
+    r'^\s*(?:\d+\+?\s*years?\s+of\s+|'
+    r'experience\s+(?:in|with|deploying|building|using)\s+|'
+    r'knowledge\s+of\s+|'
+    r'familiarity\s+with\s+|'
+    r'expertise\s+in\s+|'
+    r'strong\s+(?:experience|background)\s+(?:in|with)\s+|'
+    r'proficien(?:cy|t)\s+(?:in|with)\s+)',
+    re.IGNORECASE,
+)
+_PHRASE_DELIMITERS_RE = re.compile(r'[,;/()\[\]]|\band\b|\bor\b|\bvia\b', re.IGNORECASE)
+
+
+def _sanitize_hard_skill_list(
+    skills: list[str],
+    resume_text: str,
+    jd_text: str,
+) -> tuple[list[str], list[str]]:
+    """Decompose LLM phrase entries into atomic keywords; route each to matched/missing."""
+    resume_lower = str(resume_text or "").lower()
+    kw_lower_map = {kw.lower(): kw for kw in _HARD_SKILL_KEYWORDS}
+
+    cleaned_missing: list[str] = []
+    newly_matched: list[str] = []
+    seen_missing: set[str] = set()
+    seen_matched: set[str] = set()
+
+    def _emit(token: str) -> None:
+        t = token.strip()
+        if not t or len(t) < 2:
+            return
+        t_lower = t.lower()
+        if t_lower in resume_lower:
+            if t_lower not in seen_matched:
+                seen_matched.add(t_lower)
+                newly_matched.append(kw_lower_map.get(t_lower, t))
+        else:
+            if t_lower not in seen_missing:
+                seen_missing.add(t_lower)
+                cleaned_missing.append(kw_lower_map.get(t_lower, t))
+
+    for entry in skills:
+        entry_str = str(entry or "").strip()
+        if not entry_str:
+            continue
+
+        is_phrase = (
+            len(entry_str) > 50
+            or bool(_PHRASE_QUALIFIER_RE.match(entry_str))
+            or entry_str.count(" ") >= 5
+        )
+
+        if not is_phrase:
+            _emit(entry_str)
+            continue
+
+        stripped = _PHRASE_QUALIFIER_RE.sub("", entry_str).strip()
+
+        # Extract tokens from parenthetical content first (highest signal)
+        paren_tokens: list[str] = []
+        for paren_match in re.finditer(r'\(([^)]+)\)', stripped):
+            for tok in _PHRASE_DELIMITERS_RE.split(paren_match.group(1)):
+                tok = tok.strip().strip("\"'")
+                if tok:
+                    paren_tokens.append(tok)
+
+        all_tokens = _PHRASE_DELIMITERS_RE.split(stripped)
+        accepted_any = False
+        for tok in paren_tokens + all_tokens:
+            tok = tok.strip().strip("\"'.,")
+            if not tok or len(tok) < 2:
+                continue
+            if tok.lower() in kw_lower_map:
+                _emit(kw_lower_map[tok.lower()])
+                accepted_any = True
+
+        # If no known keyword found, emit stripped phrase to avoid silent data loss
+        if not accepted_any:
+            _emit(stripped if len(stripped) <= 50 else entry_str)
+
+    return cleaned_missing, newly_matched
 
 
 def inject_jd_hard_skills(data: dict, jd_string: str) -> dict:
@@ -1401,11 +1487,22 @@ SKILLS MATCH RULES
 
 Hard Skills
 
-1. Extract technical skills explicitly required by the job description.
-2. Extract technical skills explicitly present in the resume.
-3. Match only exact skills or obvious equivalents.
+RULE 1 — ATOMICITY: Every hard skill entry must be a single technology name, tool, or framework of 1–4 words maximum. Never output a full requirement sentence as a skill.
 
-Examples:
+RULE 2 — PARENTHETICAL EXPLOSION: When the job description lists tools inside parentheses, e.g. "MLOps tools (Kubeflow, Airflow)", extract EACH tool as its own separate entry: "Kubeflow", "Airflow". Do not include the surrounding phrase.
+
+RULE 3 — STRIP QUALIFIERS: Remove experience-level wrappers before extracting. Phrases beginning with "X+ years of", "Experience in/with", "Knowledge of", "Familiarity with", "Strong background in" are NOT skills — extract only the technology name(s) embedded inside them.
+
+BAD (entire phrase as one skill — NEVER do this):
+  "3+ years of experience in ML engineering or software engineering with an ML focus"
+  "Experience deploying models via REST APIs or model serving frameworks (TorchServe, TF Serving)"
+  "Knowledge of MLOps tools (Kubeflow, Airflow)"
+
+GOOD (atomic skill names extracted from the same phrases):
+  "REST API", "TorchServe", "TF Serving"
+  "Kubeflow", "Airflow"
+
+EQUIVALENCE EXAMPLES (exact match or obvious synonym only):
 
 Python = Python
 PyTorch = PyTorch
@@ -1419,11 +1516,11 @@ Power BI = Tableau
 
 Matched Skills
 
-Skills present in both resume and job description.
+Skills present in both resume and job description (atomic names only).
 
 Missing Skills
 
-Skills required by the job description but not found in the resume.
+Skills required by the job description but not found in the resume (atomic names only, 1–4 words each).
 
 Never hallucinate skills.
 
@@ -1990,6 +2087,20 @@ The JSON must strictly follow the schema provided below.
     soft_missing = parsed.get("skills", {}) \
                         .get("soft_skills", {}) \
                         .get("missing", [])
+
+    # Sanitize hard_missing: decompose any LLM phrase entries into atomic keywords
+    # and re-route them correctly between matched/missing.
+    if hard_missing:
+        _sanitized_missing, _newly_matched = _sanitize_hard_skill_list(
+            hard_missing,
+            resume_text=resume_string,
+            jd_text=jd_string,
+        )
+        _hs = parsed.setdefault("skills", {}).setdefault("hard_skills", {})
+        _hs["missing"] = _sanitized_missing
+        _hs["matched"] = list(hard_matched) + _newly_matched
+        hard_missing = _sanitized_missing
+        hard_matched = _hs["matched"]
 
     matched_count = len(hard_matched) + len(soft_matched)
     missing_count = len(hard_missing) + len(soft_missing)
