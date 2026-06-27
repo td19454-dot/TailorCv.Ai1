@@ -627,7 +627,7 @@ body {
                 '<a href="/pricing" class="tcv-pro-dl-cta" id="tcv-pro-dl-cta">' +
                     (typeof _getUpgradePriceLabel === 'function' ? _getUpgradePriceLabel(_upgradeRegionCache) : 'Upgrade to Pro — from ₹167/mo') +
                 '</a>' +
-                '<p class="tcv-pro-dl-note">Cancel anytime &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; Secure payment </p>' +
+                '<p class="tcv-pro-dl-note">Cancel anytime &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; \</p>' +
             '</div>';
         document.body.appendChild(overlay);
 
