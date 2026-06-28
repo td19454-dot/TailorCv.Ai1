@@ -9,7 +9,8 @@ import re
 import json
 import asyncio
 import math
-from collections import Counter
+from collections import Counter, OrderedDict
+import hashlib
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 logger = logging.getLogger(__name__)
@@ -1403,11 +1404,631 @@ def _compute_resume_stats(resume_text: str) -> dict:
     }
 
 
+# Static system prompt — module-level so OpenAI can cache it across requests.
+# Resume and JD are passed in the user message only (see ats_scoring).
+_ATS_SYSTEM_PROMPT = """You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
+
+Your task is to analyze a resume against a job description and generate a structured ATS Match Report.
+
+The user message will contain the Resume and Job Description to analyze.
+
+OUTPUT ONLY VALID JSON.
+
+Do NOT output markdown.
+
+Do NOT output explanations outside JSON.
+
+Do NOT estimate or calculate ATS scores.
+
+Do NOT hallucinate information.
+
+Do NOT assume skills, experience, education, certifications, projects, achievements, links, or qualifications that are not explicitly present in the resume.
+
+==================================================
+OBJECTIVITY RULES (MANDATORY)
+=============================
+
+You are performing a rule-based ATS audit.
+
+Every pass/fail decision must be based only on observable evidence in the resume and job description.
+
+If evidence is unclear, choose FALSE.
+
+Never reward implied experience.
+
+Never reward inferred skills.
+
+Never reward potential.
+
+Never reward assumptions.
+
+Use only information explicitly written in the resume.
+
+The same resume and same job description should produce the same output every time.
+
+When uncertain, use the stricter interpretation.
+
+==================================================
+SKILLS MATCH RULES
+==================
+
+Hard Skills
+
+RULE 1 — ATOMICITY: Every hard skill entry must be a single technology name, tool, or framework of 1–4 words maximum. Never output a full requirement sentence as a skill.
+
+RULE 2 — PARENTHETICAL EXPLOSION: When the job description lists tools inside parentheses, e.g. "MLOps tools (Kubeflow, Airflow)", extract EACH tool as its own separate entry: "Kubeflow", "Airflow". Do not include the surrounding phrase.
+
+RULE 3 — STRIP QUALIFIERS: Remove experience-level wrappers before extracting. Phrases beginning with "X+ years of", "Experience in/with", "Knowledge of", "Familiarity with", "Strong background in" are NOT skills — extract only the technology name(s) embedded inside them.
+
+BAD (entire phrase as one skill — NEVER do this):
+  "3+ years of experience in ML engineering or software engineering with an ML focus"
+  "Experience deploying models via REST APIs or model serving frameworks (TorchServe, TF Serving)"
+  "Knowledge of MLOps tools (Kubeflow, Airflow)"
+
+GOOD (atomic skill names extracted from the same phrases):
+  "REST API", "TorchServe", "TF Serving"
+  "Kubeflow", "Airflow"
+
+EQUIVALENCE EXAMPLES (exact match or obvious synonym only):
+
+Python = Python
+PyTorch = PyTorch
+Docker = Docker
+
+Do NOT treat:
+
+AWS = Azure
+PyTorch = TensorFlow
+Power BI = Tableau
+
+Matched Skills
+
+Skills present in both resume and job description (atomic names only).
+
+Missing Skills
+
+Skills required by the job description but not found in the resume (atomic names only, 1–4 words each).
+
+Never hallucinate skills.
+
+Soft Skills
+
+Extract soft skills explicitly mentioned in the job description.
+
+Match only if clearly demonstrated in the resume through achievements, leadership, communication, collaboration, mentoring, stakeholder management, ownership, or similar evidence.
+
+==================================================
+CHRONOLOGY RULES
+================
+
+Pass if work experience entries appear in reverse chronological order.
+
+Most recent role first.
+
+Fail if:
+
+* dates are missing
+* ordering is inconsistent
+* chronology cannot be determined
+
+==================================================
+SPELLING RULES
+==============
+Find all spelling mistakes.
+Pass if no obvious spelling mistakes are found.
+Fail only when a word is genuinely misspelled. Give explanation for all misspelled words without missing any.
+Do not miss any misspelled words.
+Do not fail for style preferences.
+
+MANDATORY PDF EXTRACTION ARTIFACT RULE — NEVER VIOLATE:
+Resume text is extracted from PDF files. PDF extraction frequently merges multiple correctly-spelled words into one long token without spaces. This is a very common technical artifact — the original resume has correct spelling and proper spacing.
+
+ARTIFACT EXAMPLES — these are NOT spelling errors, ignore them completely:
+- "Formulatingtechnicaldesignsforindependentend-to-endproblems" → real text: "Formulating technical designs for independent end-to-end problems"
+- "drivingcross-teamcollaboration" → real text: "driving cross-team collaboration"
+- "upholdingsoftware" → real text: "upholding software"
+- "Firstrankandallrounderoftheyear" → real text: "First rank and all-rounder of the year"
+- "TackledotherchallengessuchasbuildingPrometheus" → real text: "Tackled other challenges such as building Prometheus"
+
+DETECTION RULES — apply every one of these:
+RULE: Any token containing 2 or more recognizable English words merged together (with or without a hyphen between some of them) is an extraction artifact. Do NOT flag it as a spelling error. Never mention it in feedback.
+RULE: Any token where recognizable words are merged around a hyphen (e.g., "drivingcross-teamcollaboration", "end-to-endproblems") is an extraction artifact. Ignore it entirely.
+RULE: When uncertain whether a long token (10+ characters) is an artifact or a genuine misspelling, treat it as an artifact and do NOT flag it.
+RULE: Capitalization differences (e.g., "Medals" vs "medals", "Java", "Team") are NOT spelling errors. Only flag tokens where the specific letters themselves are wrong (e.g., "acomplishment" → "accomplishment").
+
+==================================================
+GRAMMAR RULES
+=============
+
+Pass if no objective grammar mistakes significantly affecting readability are found.
+
+Minor stylistic preferences should not cause failure.
+
+Fail only for actual grammar errors.
+
+==================================================
+BUZZWORD RULES
+==============
+
+Flag only if unsupported buzzwords appear.
+
+Examples:
+
+Hardworking
+Team Player
+Go Getter
+Results Driven
+Dynamic Professional
+Fast Learner
+Self Starter
+Motivated Individual
+
+Pass if these phrases are absent or supported by measurable evidence.
+
+==================================================
+EDUCATION MATCH RULES
+=====================
+
+Pass if the resume satisfies educational requirements explicitly stated in the job description.
+
+Fail otherwise.
+
+Explain exactly which requirement is missing.
+
+==================================================
+EXPERIENCE MATCH RULES
+======================
+
+Pass if BOTH conditions are met:
+
+1. Required years of experience are satisfied.
+
+AND
+
+2. At least 50% of the primary responsibilities required by the job description are represented in the resume.
+
+Fail otherwise.
+
+The explanation must clearly identify:
+
+* missing years of experience
+* missing responsibilities
+* missing technologies
+* missing domain expertise
+
+==================================================
+COMPANY NAME RULES
+==================
+
+Pass if company names are provided for work experience.
+
+Fail otherwise.
+
+==================================================
+JOB TITLE RULES
+===============
+
+Pass if job titles are provided for work experience.
+
+Fail otherwise.
+
+==================================================
+ACTION VERB RULES
+=================
+
+Review all experience and project bullet points.
+
+Strong action verbs include:
+
+Developed
+Built
+Implemented
+Designed
+Engineered
+Created
+Led
+Optimized
+Automated
+Managed
+Analyzed
+Delivered
+Reduced
+Increased
+Generated
+Architected
+Deployed
+Migrated
+Produced
+Directed
+Established
+
+Weak verbs include:
+
+Worked on
+Helped
+Assisted
+Participated
+Responsible for
+Involved in
+Contributed to
+
+Pass if at least 70% of bullets begin with strong action verbs.
+
+Fail otherwise.
+
+==================================================
+QUANTIFIED IMPACT RULES
+=======================
+
+Count bullets containing measurable results.
+
+Examples:
+
+15%
+20%
+$50,000
+1000 users
+30% improvement
+2x increase
+50ms reduction
+95% accuracy
+
+Pass if at least 30% of experience/project bullets contain measurable metrics.
+
+Fail otherwise.
+
+==================================================
+FORMATTING RULES
+================
+
+Single Column
+
+Pass if the resume appears primarily single-column.
+
+Fail if multiple columns are clearly present.
+
+Photos or Graphics
+
+Fail if photographs, graphics, icons, watermarks, or visual elements likely to confuse ATS systems are present.
+
+Pass otherwise.
+
+Excessive Design
+
+Fail if excessive colors, tables, text boxes, decorative elements, or ATS-unfriendly layouts are present.
+
+Pass otherwise.
+
+==================================================
+EXPLANATION RULES
+=================
+
+Only provide explanations when a check fails.
+
+Every explanation must:
+
+1. Identify the exact issue.
+2. Identify where it occurs.
+3. Explain why it matters.
+4. Reference actual resume content whenever possible.
+
+Bad:
+
+"Action verbs missing."
+
+Good:
+
+"The bullet point 'Worked on customer churn prediction model' uses weak wording and does not demonstrate ownership or impact."
+
+Bad:
+
+"Project links missing."
+
+Good:
+
+"The project 'Housing Price Predictor' does not contain a GitHub repository URL or live demo link."
+
+==================================================
+ACTION RULES
+============
+
+Only provide actions when a check fails.
+
+Actions must be specific and directly actionable.
+
+Bad:
+
+"Add metrics."
+
+Good:
+
+"Rewrite 'Built recommendation engine' to include measurable outcomes such as user count, latency reduction, revenue impact, or accuracy improvement."
+
+Bad:
+
+"Add skills."
+
+Good:
+
+"Add Docker and AWS to the Skills section only if you genuinely possess those skills and can demonstrate them through experience or projects."
+
+==================================================
+TOP PRIORITY FIXES RULES
+========================
+
+Return exactly 3 fixes.
+
+Prioritize:
+
+1. Experience gaps
+2. Missing critical skills
+3. Missing ATS-critical sections
+4. Missing measurable achievements
+5. Formatting problems
+
+Do not include minor issues unless no major issues exist.
+
+==================================================
+OUTPUT RULES
+============
+
+Output ONLY valid JSON.
+
+No markdown.
+
+No extra text.
+
+No commentary.
+
+No explanations outside JSON.
+
+The JSON must strictly follow the schema provided below.
+
+### REQUIRED JOBSCAN-STYLE JSON FORMAT
+
+{
+  "spelling_and_grammar": {
+    "spelling": {
+      "passed":"<false|true>",
+      "explanation": "<Provide_exp with all the incorrect spellings. Do not miss any mispelled words>",
+      "action":"<Provide_act>"
+    },
+
+    "grammar": {
+      "passed": "<false|true>",
+      "explanation": "",
+      "action": ""
+    },
+
+    "buzzwords": {
+      "passed": "<false|true>",
+      "explanation": "",
+      "action": ""
+    }
+  },
+
+  "skills": {
+    "hard_skills": {
+      "matched": [],
+      "missing": []
+    },
+
+    "soft_skills": {
+      "matched": [],
+      "missing": []
+    }
+  },
+
+  "sections": {
+    "chronological_dates": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "formatting": {
+    "single_column": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "photos_or_graphics": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "excessive_design": {
+      "passed": "<false|true>",
+      "explanation":""
+    }
+  },
+
+  "education": {
+    "qualification_match": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "experience": {
+    "experience_match": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "company_names": {
+      "present": "<false|true>"
+    },
+
+    "job_titles": {
+      "present": "<false|true>"
+    },
+
+    "action_verbs": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "quantified_impact": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "projects": {
+    "action_verbs": {
+      "passed": "<false|true>",
+      "explanation": ""
+    },
+
+    "quantified_impact": {
+      "passed": "<false|true>",
+      "explanation": ""
+    }
+  },
+
+  "top_priority_fixes": [
+    {
+      "issue": "",
+      "action": ""
+    },
+    {
+      "issue": "",
+      "action": ""
+    },
+    {
+      "issue": "",
+      "action": ""
+    }
+  ]
+}"""
+
+
+def _deterministic_ats_precheck(resume_string: str) -> dict:
+    """Compute ATS fields that don't need LLM: contact info, section presence, pronouns, links."""
+    text = str(resume_string or "")
+    tl = text.lower()
+
+    email_present = bool(re.search(r'\b[\w.+-]+@[\w-]+\.[a-z]{2,}\b', tl))
+    phone_present = bool(re.search(r'(\+?\d[\d\s\-().]{6,}\d)', text))
+    linkedin_present = bool(re.search(r'linkedin\.com|/in/|\blinkedin\b', tl))
+
+    has_projects = bool(re.search(r'\bprojects?\b|\bportfolio\b', tl))
+    has_experience = bool(re.search(
+        r'\b(experience|work experience|employment|internship|professional experience)\b', tl))
+    has_skills = bool(re.search(r'\b(skills|technical skills)\b', tl))
+    has_education = bool(re.search(r'\b(education|academics?)\b', tl))
+
+    pronouns_found = bool(re.search(r'\b(i|me|my|mine|we|our|ours)\b', tl))
+    pronouns_passed = not pronouns_found
+
+    unnecessary_found = bool(re.search(
+        r'\b(hobbies|interests|references|personal information|irrelevant activities)\b', tl))
+    unnecessary_passed = not unnecessary_found
+
+    has_project_links = bool(re.search(
+        r'https?://\S+|github\.com|gitlab\.com|bitbucket\.org', tl))
+
+    return {
+        "contact_information": {
+            "email": {"present": str(email_present).lower()},
+            "phone": {"present": str(phone_present).lower()},
+            "linkedin": {"present": str(linkedin_present).lower()},
+        },
+        "sections": {
+            "projects": {"present": str(has_projects).lower()},
+            "experience": {"present": str(has_experience).lower()},
+            "skills": {"present": str(has_skills).lower()},
+            "education": {"present": str(has_education).lower()},
+        },
+        "spelling_and_grammar": {
+            "personal_pronouns": {
+                "passed": str(pronouns_passed).lower(),
+                "explanation": (
+                    "" if pronouns_passed
+                    else "Personal pronouns (I, me, my, we, our) detected in resume."
+                ),
+                "action": (
+                    "" if pronouns_passed
+                    else "Rewrite all bullet points and summary statements without first-person pronouns (e.g., 'Led a team of 5' instead of 'I led a team of 5')."
+                ),
+            }
+        },
+        "formatting": {
+            "unnecessary_sections": {
+                "passed": str(unnecessary_passed).lower(),
+                "explanation": (
+                    "" if unnecessary_passed
+                    else "Resume contains unnecessary sections (Hobbies, Interests, References, or Personal Information) that reduce ATS relevance density."
+                ),
+                "action": (
+                    "" if unnecessary_passed
+                    else "Remove Hobbies, Interests, References, and Personal Information sections. Use the space for additional skills, projects, or quantified achievements."
+                ),
+            }
+        },
+        "projects": {
+            "project_links": {
+                "passed": str(has_project_links).lower(),
+                "explanation": (
+                    "" if has_project_links
+                    else "No GitHub, GitLab, or project URL links detected in the resume."
+                ),
+                "action": (
+                    "" if has_project_links
+                    else "Add a GitHub repository URL or live demo link to each project on your resume."
+                ),
+            }
+        },
+    }
+
+
+_ATS_SCORE_CACHE: OrderedDict[str, str] = OrderedDict()
+_ATS_CACHE_MAX = 50
+
+
 async def ats_scoring(resume_string, jd_string):
     """Gives ats score for the resume highlignting strengths and weaknesses"""
-    
+    _cache_key = hashlib.md5(
+        (str(resume_string) + str(jd_string)).encode()
+    ).hexdigest()
+    if _cache_key in _ATS_SCORE_CACHE:
+        _ATS_SCORE_CACHE.move_to_end(_cache_key)
+        return _ATS_SCORE_CACHE[_cache_key]
 
-    base_prompt=f"""You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
+
+    # Change 3: run deterministic checks before LLM (no tokens consumed)
+    precheck = _deterministic_ats_precheck(resume_string)
+
+    # Change 1: static rules in system message; only resume+JD in user message
+    # so OpenAI caches the 300-line system prompt across requests.
+    user_message = f"Resume:\n{resume_string}\n\nJob Description:\n{jd_string}"
+
+    client = await _build_openai_client()
+    # Change 2: stream=True — collect chunks as they arrive instead of one big buffer
+    try:
+        stream = await client.chat.completions.create(
+            model="gpt-4o-mini",
+            response_format={"type": "json_object"},
+            messages=[
+                {"role": "system", "content": _ATS_SYSTEM_PROMPT},
+                {"role": "user", "content": user_message},
+            ],
+            temperature=0,
+            max_tokens=1500,
+            stream=True,
+        )
+        chunks: list[str] = []
+        async for chunk in stream:
+            delta = chunk.choices[0].delta.content if chunk.choices else None
+            if delta:
+                chunks.append(delta)
+        content = "".join(chunks)
+    except Exception as exc:
+        raise _normalize_openai_error(exc) from exc
+
+    if False:
+        base_prompt=f"""You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
 
 Your task is to analyze a resume against a job description and generate a structured ATS Match Report.
 
@@ -2043,27 +2664,6 @@ The JSON must strictly follow the schema provided below.
     }
   ]
 } '''
-    prompt = base_prompt + "\n" + json_schema
-    model="gpt-4o-mini"
-    temperature=0
-    client = await _build_openai_client()
-    #Make call
-    try:
-        response = await client.chat.completions.create(
-            model=model,
-            response_format={"type": "json_object"},
-            messages=[
-                {'role': 'system', "content": 'Applicant Tracking System (ATS) resume scanner similar to Jobscan'},
-                {'role': 'user', 'content': prompt}
-            ],
-            temperature=temperature
-        )
-    except Exception as exc:
-        raise _normalize_openai_error(exc) from exc
-
-    if not response.choices:
-        raise RuntimeError("ATS scoring returned no choices from the model")
-    content = response.choices[0].message.content or ""
     try:
         parsed = json.loads(content)
     except Exception:
@@ -2072,6 +2672,17 @@ The JSON must strictly follow the schema provided below.
 
     if not isinstance(parsed, dict):
         parsed = {}
+
+    # Change 3: merge deterministic pre-check results into the LLM response
+    def _deep_merge(base: dict, override: dict) -> None:
+        for k, v in override.items():
+            if isinstance(v, dict) and isinstance(base.get(k), dict):
+                _deep_merge(base[k], v)
+            else:
+                base[k] = v
+
+    _deep_merge(parsed, precheck)
+
     hard_matched = parsed.get("skills", {}) \
                      .get("hard_skills", {}) \
                      .get("matched", [])
@@ -2112,13 +2723,6 @@ The JSON must strictly follow the schema provided below.
         if total > 0 else 0
     )
     
-    # Deterministic LinkedIn fix: pdfplumber extracts hyperlinked LinkedIn URLs
-    # as just the word "LinkedIn" — override AI's answer if the word appears in text.
-    _raw_lower = str(resume_string or "").lower()
-    if re.search(r"linkedin\.com|/in/|\blinkedin\b", _raw_lower):
-        ci = parsed.setdefault("contact_information", {})
-        ci.setdefault("linkedin", {})["present"] = "true"
-
     deterministic_breakdown = compute_deterministic_ats_score_breakdown(
         parsed, resume_text=resume_string
     )
@@ -2144,7 +2748,11 @@ The JSON must strictly follow the schema provided below.
     parsed["bullet_points"] = resume_stats["bullet_points"]
     parsed["metrics_used"] = resume_stats["metrics_used"]
 
-    return json.dumps(parsed)
+    _result = json.dumps(parsed)
+    _ATS_SCORE_CACHE[_cache_key] = _result
+    if len(_ATS_SCORE_CACHE) > _ATS_CACHE_MAX:
+        _ATS_SCORE_CACHE.popitem(last=False)
+    return _result
 
 def process_resume(resume_name,jd_string):
     """
