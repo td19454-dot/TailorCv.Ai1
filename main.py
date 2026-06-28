@@ -26,6 +26,7 @@ from starlette.background import BackgroundTask
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from sqlalchemy.orm import Session
 from auth import hash_password, verify_password
+from seo_roles import ROLE_SEO
 from database import Base, SessionLocal, engine
 from functions import (
     ats_scoring,
@@ -4367,6 +4368,62 @@ async def careerflow_alternative_page(request: Request):
     return _render_comparison_page(request, "careerflow-alternative")
 
 
+# ── Programmatic resume-examples hub ─────────────────────────────────────────
+@app.get("/resume-examples", response_class=HTMLResponse)
+async def resume_examples_hub(request: Request):
+    """Index of role-based resume example pages (interlinks the whole hub)."""
+    breadcrumb = json.dumps({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": build_absolute_url("/")},
+            {"@type": "ListItem", "position": 2, "name": "Resume Examples", "item": build_absolute_url("/resume-examples")},
+        ],
+    })
+    return templates.TemplateResponse(request, "resume_examples_hub.html", {
+        "request": request,
+        "roles": ROLE_SEO,
+        "seo_og_title": "Free Resume Examples by Job Role (2026) | theTailorCV",
+        "seo_og_description": "Free resume examples by job role — the right ATS keywords, skills, and bullet points for your role, plus the mistakes to avoid.",
+        "canonical_url": build_absolute_url("/resume-examples"),
+        "page_schema_json": breadcrumb,
+    })
+
+
+@app.get("/resume-examples/{role}", response_class=HTMLResponse)
+async def resume_example_detail(request: Request, role: str):
+    r = ROLE_SEO.get(role)
+    if not r:
+        raise HTTPException(status_code=404, detail="Resume example not found")
+    article_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "headline": f"{r['role']} Resume Example & Guide",
+                "description": r["description"],
+                "author": {"@type": "Organization", "name": "theTailorCV"},
+                "publisher": {"@type": "Organization", "name": "theTailorCV"},
+                "mainEntityOfPage": build_absolute_url(f"/resume-examples/{role}"),
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Resume Examples", "item": build_absolute_url("/resume-examples")},
+                    {"@type": "ListItem", "position": 2, "name": f"{r['role']} Resume", "item": build_absolute_url(f"/resume-examples/{role}")},
+                ],
+            },
+        ],
+    })
+    return templates.TemplateResponse(request, "resume_example.html", {
+        "request": request,
+        "r": r,
+        "seo_og_title": r["title"],
+        "seo_og_description": r["description"],
+        "canonical_url": build_absolute_url(f"/resume-examples/{role}"),
+        "page_schema_json": article_schema,
+    })
+
+
 @app.get("/templates", response_class=HTMLResponse)
 async def templates_page(request: Request):
     """Templates gallery page."""
@@ -6851,6 +6908,7 @@ async def sitemap_xml():
         ("/portfolio", "weekly", "0.8"),
         ("/jobscan-alternative", "monthly", "0.7"),
         ("/careerflow-alternative", "monthly", "0.7"),
+        ("/resume-examples", "weekly", "0.8"),
         ("/mock-interview", "weekly", "0.8"),
         ("/interview-prep", "weekly", "0.7"),
         ("/modify-cv", "weekly", "0.7"),
@@ -6865,6 +6923,7 @@ async def sitemap_xml():
         for p in blog_service.load_posts()
         if p.slug not in BLOG_REDIRECTS  # merged duplicates 301 elsewhere; keep them out of the index
     ]
+    role_urls = [(f"/resume-examples/{slug}", today, "monthly", "0.6") for slug in ROLE_SEO]
     # Published portfolios become indexable URLs — but only quality ones (has real
     # projects/experience) so we never feed Google thin/boilerplate pages.
     portfolio_urls = []
@@ -6881,7 +6940,7 @@ async def sitemap_xml():
                 portfolio_urls.append((loc, lastmod, "monthly", "0.5"))
     finally:
         _pf_db.close()
-    all_urls = static_urls + post_urls
+    all_urls = static_urls + post_urls + role_urls
 
     entries = []
     for path, lastmod, changefreq, priority in all_urls:
