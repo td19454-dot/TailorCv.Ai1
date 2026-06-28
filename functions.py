@@ -9,7 +9,8 @@ import re
 import json
 import asyncio
 import math
-from collections import Counter
+from collections import Counter, OrderedDict
+import hashlib
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 logger = logging.getLogger(__name__)
@@ -1403,9 +1404,19 @@ def _compute_resume_stats(resume_text: str) -> dict:
     }
 
 
+_ATS_SCORE_CACHE: OrderedDict[str, str] = OrderedDict()
+_ATS_CACHE_MAX = 50
+
+
 async def ats_scoring(resume_string, jd_string):
     """Gives ats score for the resume highlignting strengths and weaknesses"""
-    
+    _cache_key = hashlib.md5(
+        (str(resume_string) + str(jd_string)).encode()
+    ).hexdigest()
+    if _cache_key in _ATS_SCORE_CACHE:
+        _ATS_SCORE_CACHE.move_to_end(_cache_key)
+        return _ATS_SCORE_CACHE[_cache_key]
+
 
     base_prompt=f"""You are a professional Applicant Tracking System (ATS) resume scanner similar to Jobscan.
 
@@ -2056,7 +2067,8 @@ The JSON must strictly follow the schema provided below.
                 {'role': 'system', "content": 'Applicant Tracking System (ATS) resume scanner similar to Jobscan'},
                 {'role': 'user', 'content': prompt}
             ],
-            temperature=temperature
+            temperature=temperature,
+            max_tokens=1500,
         )
     except Exception as exc:
         raise _normalize_openai_error(exc) from exc
@@ -2142,7 +2154,11 @@ The JSON must strictly follow the schema provided below.
     parsed["bullet_points"] = resume_stats["bullet_points"]
     parsed["metrics_used"] = resume_stats["metrics_used"]
 
-    return json.dumps(parsed)
+    _result = json.dumps(parsed)
+    _ATS_SCORE_CACHE[_cache_key] = _result
+    if len(_ATS_SCORE_CACHE) > _ATS_CACHE_MAX:
+        _ATS_SCORE_CACHE.popitem(last=False)
+    return _result
 
 def process_resume(resume_name,jd_string):
     """
