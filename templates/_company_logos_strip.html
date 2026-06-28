@@ -1,0 +1,134 @@
+<style>
+/* ── Company logo hired-at strip ── */
+.hired-strip {
+    margin-top: 1.6rem;
+    overflow: hidden;
+}
+.hired-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #7ba4d4;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    user-select: none;
+}
+.hired-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34,197,94,.55);
+    flex-shrink: 0;
+    animation: hired-pulse 2.2s ease-in-out infinite;
+}
+@keyframes hired-pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,.55); }
+    50%      { box-shadow: 0 0 0 5px rgba(34,197,94,0); }
+}
+.hired-track-wrap {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0,0,0,1) 9%,
+        rgba(0,0,0,1) 91%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0,0,0,1) 9%,
+        rgba(0,0,0,1) 91%,
+        transparent 100%
+    );
+}
+.hired-track {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+    animation: hired-marquee 36s linear infinite;
+    will-change: transform;
+}
+.hired-track-wrap:hover .hired-track {
+    animation-play-state: paused;
+}
+@keyframes hired-marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.hired-logo-card {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 116px;
+    height: 62px;
+    background: rgba(8, 20, 55, 0.80);
+    border: 1px solid rgba(59,130,246,0.14);
+    border-radius: 14px;
+    padding: 10px 16px;
+    box-sizing: border-box;
+    cursor: default;
+    transition: border-color 0.28s ease, background 0.28s ease, transform 0.22s ease,
+                box-shadow 0.28s ease;
+}
+.hired-logo-card:hover {
+    border-color: rgba(59,130,246,0.48);
+    background: rgba(18, 38, 90, 0.95);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(30,64,175,0.22);
+}
+.hired-logo-card img {
+    max-width: 82px;
+    max-height: 34px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) invert(1);
+    opacity: 0.52;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.hired-logo-card:hover img {
+    opacity: 1;
+}
+</style>
+
+<div class="hired-strip">
+    <p class="hired-label"><span class="hired-dot"></span>Our users got hired at</p>
+    <div class="hired-track-wrap">
+        <div class="hired-track">
+            <!-- set 1 -->
+            <div class="hired-logo-card"><img src="/static/company_logos/google.webp"       alt="Google"       loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/amazon.png"        alt="Amazon"       loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/microsoft.png"     alt="Microsoft"    loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/meta.jpg"          alt="Meta"         loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/netflix.png"       alt="Netflix"      loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/apple_logo_black.svg" alt="Apple"     loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/uber.png"          alt="Uber"         loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/databricks.png"    alt="Databricks"   loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/goldmansachs.png"  alt="Goldman Sachs" loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/oracle.png"        alt="Oracle"       loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/mckinsey.png"      alt="McKinsey"     loading="lazy" draggable="false"></div>
+            <!-- set 2 — exact duplicate for seamless infinite loop -->
+            <div class="hired-logo-card"><img src="/static/company_logos/google.webp"       alt="Google"       loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/amazon.png"        alt="Amazon"       loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/microsoft.png"     alt="Microsoft"    loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/meta.jpg"          alt="Meta"         loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/netflix.png"       alt="Netflix"      loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/apple_logo_black.svg" alt="Apple"     loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/uber.png"          alt="Uber"         loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/databricks.png"    alt="Databricks"   loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/goldmansachs.png"  alt="Goldman Sachs" loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/oracle.png"        alt="Oracle"       loading="lazy" draggable="false"></div>
+            <div class="hired-logo-card"><img src="/static/company_logos/mckinsey.png"      alt="McKinsey"     loading="lazy" draggable="false"></div>
+        </div>
+    </div>
+</div>
