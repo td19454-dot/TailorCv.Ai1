@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ seo_og_description }}">
+    <title>{{ data.name }}{% if data.headline %} - {{ data.headline }}{% endif %} | AI Portfolio</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/portfolio_assistant.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Apply saved theme before paint (no flash). Default: dark.
+      (function () {
+        try {
+          var t = localStorage.getItem('as-theme');
+          if (t == null && window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) t = 'light';
+          if (t === 'light') document.documentElement.classList.add('as-light');
+        } catch (e) {}
+      })();
+    </script>
+</head>
+<body>
+{% macro spark() -%}<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.4 3.7 2.3 5.6 6 6-3.7.4-5.6 2.3-6 6-.4-3.7-2.3-5.6-6-6 3.7-.4 5.6-2.3 6-6zM19 14c.2 1.8 1.1 2.7 3 3-1.9.3-2.8 1.2-3 3-.2-1.8-1.1-2.7-3-3 1.9-.3 2.8-1.2 3-3z"/></svg>{%- endmacro %}
+{% macro ext() -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8"/></svg>{%- endmacro %}
+
+<div class="as-app" id="asApp">
+    <div class="as-backdrop" onclick="asNav(false)"></div>
+
+    <!-- Sidebar -->
+    <aside class="as-side">
+        <button class="as-newchat" onclick="asReset()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            New chat
+        </button>
+        <div class="as-side-label">Ask about</div>
+        <div class="as-side-list">
+            <button class="as-side-item" data-q="Tell me about {{ data.name }}"><span class="ic">👋</span> About</button>
+            {% if data.experience %}<button class="as-side-item" data-q="What's their work experience?"><span class="ic">💼</span> Experience</button>{% endif %}
+            {% if data.projects %}<button class="as-side-item" data-q="Show me their projects"><span class="ic">🚀</span> Projects</button>{% endif %}
+            {% if data.skills %}<button class="as-side-item" data-q="What are their skills?"><span class="ic">🧠</span> Skills</button>{% endif %}
+            {% if data.education %}<button class="as-side-item" data-q="What's their education?"><span class="ic">🎓</span> Education</button>{% endif %}
+            {% if data.certifications %}<button class="as-side-item" data-q="What certifications do they have?"><span class="ic">📜</span> Certifications</button>{% endif %}
+            {% if data.extracurriculars %}<button class="as-side-item" data-q="What are their activities and leadership roles?"><span class="ic">🎯</span> Activities</button>{% endif %}
+            {% if data.github_username or data.opensource %}<button class="as-side-item" data-q="Show their open source contributions"><span class="ic">🐙</span> Open source</button>{% endif %}
+            <button class="as-side-item" data-q="How can I contact or hire them?"><span class="ic">📬</span> Contact</button>
+        </div>
+        <div class="as-side-foot">
+            <div class="av">{% if data.photo %}<img src="{{ data.photo }}" alt="{{ data.name }}" class="av">{% else %}{{ data.initials }}{% endif %}</div>
+            <div class="meta"><b>{{ data.name }}</b><span>{{ data.headline or 'Portfolio' }}</span></div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="as-main">
+        <div class="as-top">
+            <button class="as-burger" onclick="asNav(true)" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+            <span class="pill">{{ data.name }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+            <button class="as-theme-btn" id="asThemeBtn" onclick="asToggleTheme()" aria-label="Toggle light/dark" title="Toggle light / dark">
+                <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            </button>
+            <span class="badge">AI portfolio</span>
+        </div>
+
+        <div class="as-scroll" id="asScroll">
+            <div class="as-thread" id="asThread">
+                <!-- greeting (server-rendered for SEO / no-JS) -->
+                <div class="as-msg bot">
+                    <div class="av">{{ spark() }}</div>
+                    <div class="body">
+                        <p>Hi 👋 I'm <b>{{ data.name }}</b>'s AI assistant. Ask me anything about their {% if data.experience %}experience, {% endif %}{% if data.projects %}projects, {% endif %}{% if data.skills %}skills{% endif %} — or how to get in touch.</p>
+                        {% if tagline or about %}<p>{{ tagline or about.split('\n\n')[0] }}</p>{% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="as-suggest" id="asSuggest">
+                <button class="as-chip" data-q="Tell me about {{ data.name }}"><span class="t">Who is {{ data.name }}?</span><span class="d">Get a quick intro</span></button>
+                {% if data.projects %}<button class="as-chip" data-q="Show me their projects"><span class="t">Show their projects</span><span class="d">See what they've built</span></button>{% endif %}
+                {% if data.skills %}<button class="as-chip" data-q="What are their skills?"><span class="t">List their skills</span><span class="d">Tools & technologies</span></button>{% endif %}
+                <button class="as-chip" data-q="How can I contact or hire them?"><span class="t">How to hire them</span><span class="d">Contact details</span></button>
+            </div>
+        </div>
+
+        <div class="as-composer">
+            <div class="as-composer-inner">
+                <div class="as-inputbar">
+                    <textarea id="asInput" rows="1" placeholder="Message {{ data.name }}'s assistant…" autocomplete="off"></textarea>
+                    <button class="as-send" id="asSend" aria-label="Send" disabled>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                    </button>
+                </div>
+                <div class="as-disclaimer">{{ data.name }}'s AI portfolio · answers are generated from their resume.</div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Full content, hidden — for SEO crawlers and no-JS visitors -->
+<div class="as-sr">
+    <h1>{{ data.name }}{% if data.headline %} — {{ data.headline }}{% endif %}</h1>
+    {% if about %}{% for p in about.split('\n\n') %}<p>{{ p }}</p>{% endfor %}{% endif %}
+    {% if data.skills %}<h2>Skills</h2><ul>{% for g in data.skills %}{% for s in g['items'] %}<li>{{ s }}</li>{% endfor %}{% endfor %}</ul>{% endif %}
+    {% if data.experience %}<h2>Experience</h2>{% for e in data.experience %}<h3>{{ e.title }}{% if e.company %} — {{ e.company }}{% endif %} {{ e.dates }}</h3><ul>{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endfor %}{% endif %}
+    {% if data.projects %}<h2>Projects</h2>{% for p in data.projects %}<h3>{{ p.name }}</h3>{% if p.subtitle %}<p>{{ p.subtitle }}</p>{% endif %}<ul>{% for b in p.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endfor %}{% endif %}
+    {% if data.education %}<h2>Education</h2>{% for e in data.education %}<p>{{ e.degree }} — {{ e.school }} {{ e.year }}</p>{% endfor %}{% endif %}
+    {% if data.extracurriculars %}<h2>Activities &amp; Leadership</h2>{% for x in data.extracurriculars %}<h3>{{ x.role }}{% if x.organization %} @ {{ x.organization }}{% endif %} {{ x.dates }}</h3><ul>{% for b in x.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endfor %}{% endif %}
+    {% if data.github_username or data.opensource %}<h2>Open Source</h2>{% if data.github_username %}<p>GitHub: {{ data.github_username }}</p>{% endif %}{% for o in data.opensource %}<h3>{{ o.name }}</h3><ul>{% for b in o.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endfor %}{% endif %}
+    {% if data.email %}<p>Contact: {{ data.email }}</p>{% endif %}
+</div>
+
+<script>
+window.AS = {
+    name: {{ data.name|tojson }},
+    headline: {{ (data.headline or "")|tojson }},
+    about: {{ (about or tagline or "")|tojson }},
+    email: {{ (data.email or "")|tojson }},
+    hasCv: {{ (true if has_cv else false)|tojson }},
+    cvUrl: {{ ("/p/" ~ slug ~ "/cv")|tojson }},
+    skills: {{ (data.skills or [])|tojson }},
+    experience: {{ (data.experience or [])|tojson }},
+    projects: {{ (data.projects or [])|tojson }},
+    education: {{ (data.education or [])|tojson }},
+    certifications: {{ (data.certifications or [])|tojson }},
+    extracurriculars: {{ (data.extracurriculars or [])|tojson }},
+    opensource: {{ (data.opensource or [])|tojson }},
+    github: {{ (data.github_username or "")|tojson }},
+    socials: {{ (data.socials or [])|tojson }}
+};
+(function () {
+    var AS = window.AS;
+    var thread = document.getElementById('asThread');
+    var scroll = document.getElementById('asScroll');
+    var suggest = document.getElementById('asSuggest');
+    var input = document.getElementById('asInput');
+    var send = document.getElementById('asSend');
+    var app = document.getElementById('asApp');
+    var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    var flatSkills = function () { var a = []; (AS.skills || []).forEach(function (g) { (g.items || []).forEach(function (s) { a.push(s); }); }); return a; };
+    var SPARK = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.4 3.7 2.3 5.6 6 6-3.7.4-5.6 2.3-6 6-.4-3.7-2.3-5.6-6-6 3.7-.4 5.6-2.3 6-6zM19 14c.2 1.8 1.1 2.7 3 3-1.9.3-2.8 1.2-3 3-.2-1.8-1.1-2.7-3-3 1.9-.3 2.8-1.2 3-3z"/></svg>';
+    var EXT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+
+    function toScroll() { scroll.scrollTop = scroll.scrollHeight; }
+    function addUser(text) {
+        var d = document.createElement('div');
+        d.className = 'as-msg user';
+        d.innerHTML = '<div class="bubble">' + esc(text) + '</div>';
+        thread.appendChild(d); toScroll();
+    }
+    function addBot(html) {
+        var d = document.createElement('div');
+        d.className = 'as-msg bot';
+        d.innerHTML = '<div class="av">' + SPARK + '</div><div class="body"></div>';
+        thread.appendChild(d);
+        var body = d.querySelector('.body');
+        body.innerHTML = '<div class="as-typing"><span></span><span></span><span></span></div>';
+        toScroll();
+        setTimeout(function () { body.innerHTML = html; toScroll(); }, 480 + Math.random() * 360);
+    }
+
+    // ---- intent → answer (built from the resume data) ----
+    function answer(qRaw) {
+        var q = (qRaw || '').toLowerCase();
+        var has = function () { for (var i = 0; i < arguments.length; i++) if (q.indexOf(arguments[i]) > -1) return true; return false; };
+        var name = esc(AS.name);
+
+        if (has('contact', 'hire', 'email', 'reach', 'touch', 'connect', 'available', 'work with', 'recruit')) {
+            var out = '<p>Here\'s how to reach ' + name + ':</p><div class="card-links">';
+            if (AS.email) out += '<a href="mailto:' + esc(AS.email) + '">✉️ ' + esc(AS.email) + '</a>';
+            (AS.socials || []).forEach(function (s) { if (s.url) out += '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label || 'Link') + ' ' + EXT + '</a>'; });
+            if (AS.hasCv) out += '<a href="' + esc(AS.cvUrl) + '" target="_blank" rel="noopener">📄 View resume</a>';
+            out += '</div>';
+            if (!AS.email && !(AS.socials || []).length) out = '<p>' + name + ' hasn\'t listed public contact details here yet.</p>';
+            return out;
+        }
+        if (has('resume', 'cv', 'download')) {
+            return AS.hasCv ? '<p>You can view ' + name + '\'s full resume here:</p><div class="card-links"><a href="' + esc(AS.cvUrl) + '" target="_blank" rel="noopener">📄 View resume ' + EXT + '</a></div>'
+                            : '<p>' + name + ' hasn\'t attached a downloadable resume, but ask me anything and I\'ll answer from it.</p>';
+        }
+        if (has('skill', 'tech', 'stack', 'tool', 'language', 'framework', 'know')) {
+            var sk = flatSkills();
+            if (!sk.length) return '<p>No skills are listed yet.</p>';
+            var s = '<p>' + name + ' works with:</p><div class="tags">';
+            sk.forEach(function (x) { s += '<span class="tag">' + esc(x) + '</span>'; });
+            return s + '</div>';
+        }
+        if (has('extracurric', 'activit', 'leadership', 'volunteer', 'community', 'club', 'lead role')) {
+            if (!(AS.extracurriculars || []).length) return '<p>No activities or leadership roles are listed yet.</p>';
+            var a = '<p>Beyond work, ' + name + ' is involved in:</p><ul>';
+            AS.extracurriculars.forEach(function (x) {
+                a += '<li><b>' + esc(x.role || '') + '</b>' + (x.organization ? ' @ ' + esc(x.organization) : '') + (x.dates ? ' <span class="sub">· ' + esc(x.dates) + '</span>' : '');
+                if (x.bullets && x.bullets.length) { a += '<ul>'; x.bullets.slice(0, 3).forEach(function (b) { a += '<li>' + esc(b) + '</li>'; }); a += '</ul>'; }
+                a += '</li>';
+            });
+            return a + '</ul>';
+        }
+        if (has('open source', 'opensource', 'contribution', 'github', 'oss', 'repo')) {
+            var o = '';
+            if (AS.github) o += '<p>' + name + '\'s GitHub contributions:</p><div class="card-links" style="display:block"><img src="https://ghchart.rshah.org/10a37f/' + esc(AS.github) + '" alt="' + name + ' GitHub contributions" loading="lazy" style="width:100%;max-width:680px;border-radius:10px;border:1px solid var(--as-border)"></div>';
+            if ((AS.opensource || []).length) {
+                o += '<p>Open-source projects:</p><ul>';
+                AS.opensource.forEach(function (p) {
+                    o += '<li><b>' + esc(p.name || '') + '</b>';
+                    if (p.bullets && p.bullets.length) { o += '<ul>'; p.bullets.slice(0, 3).forEach(function (b) { o += '<li>' + esc(b) + '</li>'; }); o += '</ul>'; }
+                    if (p.url) o += '<div class="card-links"><a href="' + esc(p.url) + '" target="_blank" rel="noopener">View ' + EXT + '</a></div>';
+                    o += '</li>';
+                });
+                o += '</ul>';
+            }
+            if (AS.github && !(AS.opensource || []).length) o += '<div class="card-links"><a href="https://github.com/' + esc(AS.github) + '" target="_blank" rel="noopener">View GitHub profile ' + EXT + '</a></div>';
+            return o || '<p>No open-source info is listed yet.</p>';
+        }
+        if (has('experience', 'work', 'job', 'career', 'company', 'employ', 'worked')) {
+            if (!(AS.experience || []).length) return '<p>No work experience is listed yet.</p>';
+            var e = '<p>Here\'s ' + name + '\'s experience:</p><ul>';
+            AS.experience.forEach(function (x) {
+                e += '<li><b>' + esc(x.title || '') + '</b>' + (x.company ? ' — ' + esc(x.company) : '') + (x.dates ? ' <span class="sub">· ' + esc(x.dates) + '</span>' : '');
+                if (x.bullets && x.bullets.length) { e += '<ul>'; x.bullets.slice(0, 4).forEach(function (b) { e += '<li>' + esc(b) + '</li>'; }); e += '</ul>'; }
+                e += '</li>';
+            });
+            return e + '</ul>';
+        }
+        if (has('project', 'built', 'made', 'portfolio', 'app', 'product', 'shipped')) {
+            if (!(AS.projects || []).length) return '<p>No projects are listed yet.</p>';
+            var p = '<p>Some things ' + name + ' has built:</p><ul>';
+            AS.projects.forEach(function (x) {
+                p += '<li><b>' + esc(x.name || '') + '</b>' + (x.subtitle ? ' <span class="sub">· ' + esc(x.subtitle) + '</span>' : '');
+                if (x.bullets && x.bullets.length) { p += '<ul>'; x.bullets.slice(0, 3).forEach(function (b) { p += '<li>' + esc(b) + '</li>'; }); p += '</ul>'; }
+                if (x.url || x.github) p += '<div class="card-links"><a href="' + esc(x.url || x.github) + '" target="_blank" rel="noopener">Open ' + EXT + '</a></div>';
+                p += '</li>';
+            });
+            return p + '</ul>';
+        }
+        if (has('education', 'study', 'studied', 'degree', 'college', 'university', 'school', 'graduate')) {
+            if (!(AS.education || []).length) return '<p>No education details are listed yet.</p>';
+            var ed = '<ul>';
+            AS.education.forEach(function (x) { ed += '<li><b>' + esc(x.degree || x.school || '') + '</b>' + (x.school && x.degree ? ' — ' + esc(x.school) : '') + (x.year ? ' <span class="sub">· ' + esc(x.year) + '</span>' : '') + (x.score ? ' <span class="sub">· ' + esc(x.score) + '</span>' : '') + '</li>'; });
+            return ed + '</ul>';
+        }
+        if (has('certif', 'course', 'license')) {
+            if (!(AS.certifications || []).length) return '<p>No certifications are listed yet.</p>';
+            var c = '<ul>';
+            AS.certifications.forEach(function (x) { c += '<li><b>' + esc(x.name || '') + '</b>' + (x.issuer ? ' — ' + esc(x.issuer) : '') + (x.year ? ' <span class="sub">· ' + esc(x.year) + '</span>' : '') + '</li>'; });
+            return c + '</ul>';
+        }
+        if (has('about', 'who', 'yourself', 'intro', 'summary', 'tell me', 'describe', 'background', 'bio')) {
+            var ab = AS.about ? AS.about.split('\n\n').map(function (x) { return '<p>' + esc(x) + '</p>'; }).join('') : '<p>I\'m ' + name + '\'s assistant.</p>';
+            if (AS.headline) ab = '<p><b>' + name + '</b> — ' + esc(AS.headline) + '</p>' + ab;
+            return ab;
+        }
+        if (has('hi', 'hello', 'hey', 'yo ', 'sup')) {
+            return '<p>Hey! 👋 I\'m ' + name + '\'s AI assistant. Try asking about their experience, projects, skills, or how to get in touch.</p>';
+        }
+        // fallback
+        return '<p>Good question! I can answer that best in one of these areas about ' + name + ':</p>'
+            + '<div class="tags">'
+            + (AS.experience && AS.experience.length ? '<span class="tag">Experience</span>' : '')
+            + (AS.projects && AS.projects.length ? '<span class="tag">Projects</span>' : '')
+            + (flatSkills().length ? '<span class="tag">Skills</span>' : '')
+            + (AS.education && AS.education.length ? '<span class="tag">Education</span>' : '')
+            + (AS.extracurriculars && AS.extracurriculars.length ? '<span class="tag">Activities</span>' : '')
+            + (AS.github || (AS.opensource && AS.opensource.length) ? '<span class="tag">Open source</span>' : '')
+            + '<span class="tag">Contact</span></div>'
+            + '<p>What would you like to know?</p>';
+    }
+
+    function ask(q) {
+        if (!q || !q.trim()) return;
+        if (suggest) suggest.style.display = 'none';
+        addUser(q.trim());
+        addBot(answer(q));
+        asNav(false);
+    }
+
+    function submit() {
+        var v = input.value.trim();
+        if (!v) return;
+        input.value = ''; resize(); send.disabled = true;
+        ask(v);
+    }
+    function resize() { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 160) + 'px'; }
+
+    input.addEventListener('input', function () { resize(); send.disabled = !input.value.trim(); });
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } });
+    send.addEventListener('click', submit);
+    document.querySelectorAll('[data-q]').forEach(function (el) { el.addEventListener('click', function () { ask(el.getAttribute('data-q')); }); });
+
+    window.asReset = function () {
+        // keep only the first (greeting) message; restore suggestions
+        var msgs = thread.querySelectorAll('.as-msg');
+        for (var i = msgs.length - 1; i >= 1; i--) msgs[i].remove();
+        if (suggest) suggest.style.display = '';
+        asNav(false); toScroll();
+    };
+    window.asNav = function (open) { app.classList.toggle('nav-open', !!open); };
+    window.asToggleTheme = function () {
+        var light = document.documentElement.classList.toggle('as-light');
+        try { localStorage.setItem('as-theme', light ? 'light' : 'dark'); } catch (e) {}
+    };
+})();
+</script>
+{% include "_portfolio_watermark.html" %}
+</body>
+</html>

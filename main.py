@@ -23,6 +23,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.background import BackgroundTask
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from sqlalchemy.orm import Session
 from auth import hash_password, verify_password
 from database import Base, SessionLocal, engine
@@ -208,8 +209,18 @@ async def global_exception_handler(request: Request, exc: Exception):
         sentry_sdk.capture_exception(exc)
     accept = request.headers.get("accept", "")
     if "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest":
-        return templates.TemplateResponse("error.html", {"request": request, "status_code": 500, "message": "Something went wrong on our end. Please try again."}, status_code=500)
+        return templates.TemplateResponse(request, "error.html", {"status_code": 500, "message": "Something went wrong on our end. Please try again."}, status_code=500)
     return JSONResponse(status_code=500, content={"detail": "Internal server error. Please try again."})
+
+# Branded 404 (and other HTTP errors) for browser navigations; JSON for APIs.
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request: Request, exc: StarletteHTTPException):
+    accept = request.headers.get("accept", "")
+    wants_html = "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest"
+    if exc.status_code == 404 and wants_html:
+        return templates.TemplateResponse(request, "404.html", status_code=404)
+    # Preserve existing behaviour for API clients / XHR / other status codes.
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
 
 # Add CORS middleware to allow frontend requests
 app.add_middleware(
@@ -3218,7 +3229,8 @@ def parse_ai_json_response(response_string: str) -> dict:
             # repair to the last complete item so partial content still renders.
             parsed = _repair_truncated_json(response_string)
         if parsed is None:
-            raise HTTPException(status_code=500, detail=f"Failed to parse AI JSON response: {e}")
+            logger.error("AI JSON response could not be parsed or repaired")
+            raise HTTPException(status_code=500, detail="Could not process the AI response. Please try again.")
 
     if not isinstance(parsed, dict):
         raise HTTPException(status_code=500, detail="AI response JSON is not an object")
@@ -3544,7 +3556,8 @@ async def api_interview_start(payload: dict):
         )
         return JSONResponse({"success": True, "question": question})
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
 
 
 @app.post("/api/interview/start-with-pdf")
@@ -3600,7 +3613,8 @@ async def api_interview_start_with_pdf(
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -3629,7 +3643,8 @@ async def api_interview_next(payload: dict):
                 pass
         return JSONResponse({"success": True, **result, "audio_b64": audio_b64})
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
 
 
 @app.post("/api/interview/score")
@@ -3647,7 +3662,8 @@ async def api_interview_score(payload: dict):
         )
         return JSONResponse({"success": True, "scores": scores})
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
 
 
 @app.post("/api/tts")
@@ -3659,7 +3675,8 @@ async def api_tts(payload: dict):
         audio_bytes = await generate_tts_audio(text)
         return Response(content=audio_bytes, media_type="audio/mpeg")
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
 
 
 @app.post("/api/generate-interview-questions")
@@ -3708,7 +3725,8 @@ async def api_generate_interview_questions(
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("generate-interview-questions failed")
+        raise HTTPException(status_code=500, detail="Could not generate interview questions. Please try again.")
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -3735,7 +3753,8 @@ async def api_evaluate_interview_answer(payload: dict):
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
 
 
 @app.get("/health")
@@ -4371,7 +4390,8 @@ async def download_saved_resume(request: Request, resume_id: int):
     try:
         await asyncio.to_thread(_render_pdf)
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+        logger.exception("PDF render failed")
+        raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
 
     return FileResponse(
         pdf_path,
@@ -5281,6 +5301,12 @@ PORTFOLIO_THEMES = {
     "snowcard": "Snowcard - light dotted tabs",
     "github": "GitHub - profile, repos & contributions",
     "parchment": "Parchment — ancient scroll letter 📜",
+    "assistant": "Assistant — ChatGPT-style AI chat 🤖",
+    "cloud": "Cloud — friendly dev landing, light/dark ☁️",
+    "neon": "Neon — cyberpunk glow, grid floor 🌃",
+    "brutalist": "Brutalist — bold blocks, hard shadows 🧱",
+    "hacker": "Hacker — green terminal, typed 💻",
+    "magazine": "Magazine — editorial serif print 📰",
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
@@ -5303,7 +5329,13 @@ PORTFOLIO_THEME_MEDIA = {
     "particle": {"image": "/static/portfolio-previews/particle.png", "demo": "https://jonathan-allen.netlify.app/"},
     "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://lisa-martinez.netlify.app/"},
     "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://karen-taylor.netlify.app/"},
-    "parchment": {"image": "/static/portfolio-previews/parchment.png", "demo": "https://uttam-debnath.netlify.app/"},
+    "parchment": {"image": "/static/portfolio-previews/parchment.png"},
+    "assistant": {"image": "/static/portfolio-previews/assistant.png", "demo": "https://trisha-debnath.netlify.app/"},
+    "cloud": {"image": "/static/portfolio-previews/cloud.png", "demo": "https://uttam-debnath.netlify.app/"},
+    "neon": {"image": "/static/portfolio-previews/neon.png"},
+    "brutalist": {"image": "/static/portfolio-previews/brutalist.png"},
+    "hacker": {"image": "/static/portfolio-previews/hacker.png"},
+    "magazine": {"image": "/static/portfolio-previews/magazine.png"},
 }
 
 # Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
@@ -6001,7 +6033,16 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "snowcard": "portfolio_snowcard.html",
         "github": "portfolio_github.html",
         "parchment": "portfolio_parchment.html",
+        "assistant": "portfolio_assistant.html",
+        "cloud": "portfolio_cloud.html",
+        "neon": "portfolio_neon.html",
+        "brutalist": "portfolio_brutalist.html",
+        "hacker": "portfolio_hacker.html",
+        "magazine": "portfolio_magazine.html",
     }.get(theme, "portfolio_public.html")
+    # Free (non-Pro) portfolios carry a "Made with TailorCV" watermark; Pro owners
+    # get a clean, unbranded site. Upgrading to Pro drops it on the next page load.
+    show_watermark = not is_pro(getattr(portfolio, "user", None))
     return templates.TemplateResponse(request, tpl, {
         "request": request,
         "data": data,
@@ -6014,6 +6055,7 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "seo_og_title": f"{name} | Portfolio",
         "seo_og_description": og_desc,
         "canonical_url": page_url,
+        "show_watermark": show_watermark,
     })
 
 
@@ -6049,7 +6091,12 @@ def _build_static_portfolio_html(portfolio) -> str:
         "nova": "portfolio_nova.html", "console": "portfolio_console.html",
         "monolith": "portfolio_monolith.html", "particle": "portfolio_particle.html",
         "snowcard": "portfolio_snowcard.html", "github": "portfolio_github.html",
-        "parchment": "portfolio_parchment.html",
+        "parchment": "portfolio_parchment.html", "assistant": "portfolio_assistant.html",
+        "cloud": "portfolio_cloud.html",
+        "neon": "portfolio_neon.html",
+        "brutalist": "portfolio_brutalist.html",
+        "hacker": "portfolio_hacker.html",
+        "magazine": "portfolio_magazine.html",
     }.get(theme, "portfolio_public.html")
 
     class _FakeURL:
@@ -6059,10 +6106,14 @@ def _build_static_portfolio_html(portfolio) -> str:
         def __init__(self, path): self.url = _FakeURL(path)
 
     page_url = f"{SITE_URL}/{portfolio.slug}"
+    # Netlify deploy is Pro-only, so this is False in practice — but compute it
+    # honestly so the static export matches the served page if that ever changes.
+    show_watermark = not is_pro(getattr(portfolio, "user", None))
     html = templates.get_template(tpl).render(
         request=_FakeReq(f"/{portfolio.slug}"), data=data, tagline=tagline, about=about,
         slug=portfolio.slug, has_cv=has_cv, theme=theme, page_url=page_url,
         seo_og_title=f"{name} | Portfolio", seo_og_description=og_desc, canonical_url=page_url,
+        show_watermark=show_watermark,
     )
 
     def _inline_css(m):
@@ -6219,6 +6270,17 @@ async def deploy_portfolio_netlify(portfolio_id: int, request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             return JSONResponse(status_code=401, content={"error": "Not logged in"})
+        # Custom Netlify live site is a Pro feature. Non-Pro users still have their
+        # free thetailorcv.com/<slug> site (created at publish time) — only the extra
+        # .netlify.app deployment is gated.
+        if not is_pro(user):
+            return JSONResponse(status_code=402, content={
+                "error": "Publishing a custom Netlify live site is a Pro feature. "
+                         "Your free site is already live at thetailorcv.com.",
+                "upgrade": True,
+                "upgrade_url": "/pricing",
+                "free_url": _portfolio_share_url(portfolio),
+            })
         try:
             # Deploy to the user's single shared site (one live link per user).
             site_id, site_url = await _deploy_portfolio_to_netlify(user, portfolio)
@@ -6286,7 +6348,8 @@ async def portfolio_public_cv(request: Request, slug: str):
     try:
         await asyncio.to_thread(_render_pdf)
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+        logger.exception("PDF render failed")
+        raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
 
     return FileResponse(
         pdf_path, media_type="application/pdf", filename=f"{dl_name or 'resume'}.pdf",
@@ -7217,7 +7280,8 @@ async def upload_resume(
             try:
                 response_string = await get_resume_response(prompt)
             except Exception as e:
-                raise HTTPException(status_code=500, detail=f"AI generation error: {e}")
+                logger.exception("AI generation failed")
+                raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
 
             parsed = parse_ai_json_response(response_string)
 
@@ -7552,7 +7616,8 @@ async def upload_resume(
             try:
                 await asyncio.to_thread(_render_pdf)
             except Exception as e:
-                raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+                logger.exception("PDF render failed")
+                raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
 
             if not os.path.exists(pdf_path):
                 raise HTTPException(status_code=404, detail="PDF file not found after generation")
@@ -7575,7 +7640,8 @@ async def upload_resume(
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error uploading file: {str(e)}")
+        logger.exception("Uploaded file processing failed")
+        raise HTTPException(status_code=500, detail="Could not process the uploaded file. Please try again.")
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -7615,9 +7681,10 @@ async def download_html_pdf(request: Request):
             background=BackgroundTask(_cleanup_files, [pdf_path])
         )
     except Exception as exc:
+        logger.exception("PDF generation failed")
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
-        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
+        raise HTTPException(status_code=500, detail="Failed to generate the PDF. Please try again.")
 
 
 @app.post("/api/estimate-html-pages")
@@ -7643,7 +7710,8 @@ async def estimate_html_pages(request: Request):
         pages = await asyncio.to_thread(_count_pages)
         return {"success": True, "pages": pages}
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to estimate pages: {exc}")
+        logger.exception("Page estimate failed")
+        raise HTTPException(status_code=500, detail="Could not estimate pages. Please try again.")
 
 def _detect_two_column_layout(pdf_path: str) -> bool:
     """
@@ -7767,7 +7835,8 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error uploading file: {str(e)}")
+        logger.exception("Uploaded file processing failed")
+        raise HTTPException(status_code=500, detail="Could not process the uploaded file. Please try again.")
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -7956,7 +8025,8 @@ async def extract_cv_from_pdf(file: UploadFile = File(...)):
         try:
             response_string = await get_resume_response(prompt)
         except Exception as exc:
-            raise HTTPException(status_code=500, detail=f"AI generation error: {exc}")
+            logger.exception("AI generation failed")
+            raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
 
         parsed = parse_ai_json_response(response_string)
         parsed = restore_dropped_bullets(parsed, resume_text)
@@ -7964,7 +8034,8 @@ async def extract_cv_from_pdf(file: UploadFile = File(...)):
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to extract CV data: {exc}")
+        logger.exception("CV extraction failed")
+        raise HTTPException(status_code=500, detail="Could not read the CV. Please try again.")
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -7996,7 +8067,8 @@ async def extract_cv_from_text(request: Request):
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to extract CV data from text: {exc}")
+        logger.exception("CV text extraction failed")
+        raise HTTPException(status_code=500, detail="Could not read the CV text. Please try again.")
 
 
 @app.get("/api/resume-templates")
@@ -8056,9 +8128,10 @@ async def download_cv_pdf(request: Request):
             background=BackgroundTask(_cleanup_files, [pdf_path])
         )
     except Exception as exc:
+        logger.exception("PDF generation failed")
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
-        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
+        raise HTTPException(status_code=500, detail="Failed to generate the PDF. Please try again.")
 
 
 @app.post("/api/download-cv-pdf-browser")
@@ -8087,9 +8160,10 @@ async def download_cv_pdf_browser(
             background=BackgroundTask(_cleanup_files, [pdf_path])
         )
     except Exception as exc:
+        logger.exception("PDF generation failed")
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
-        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
+        raise HTTPException(status_code=500, detail="Failed to generate the PDF. Please try again.")
 from bs4 import BeautifulSoup
 
 @app.post("/api/rerender-template")
@@ -8131,7 +8205,8 @@ async def rerender_template(request: Request):
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to render template: {exc}")
+        logger.exception("Template render failed")
+        raise HTTPException(status_code=500, detail="Failed to render the template. Please try again.")
 
     return JSONResponse({"html": new_html, "template_id": template_id})
 
@@ -8145,7 +8220,8 @@ def _render_custom_cv_html(template_id: int, cv_data: dict) -> str:
         with open(template_path, "r", encoding="utf-8") as f:
             template_content = f.read()
     except OSError as exc:
-        raise HTTPException(status_code=500, detail=f"Unable to read template: {exc}")
+        logger.exception("Template file read failed")
+        raise HTTPException(status_code=500, detail="Unable to read the template. Please try again.")
 
     context = _build_custom_cv_context(cv_data)
 
@@ -8154,7 +8230,8 @@ def _render_custom_cv_html(template_id: int, cv_data: dict) -> str:
         jinja_template = Jinja2Template(template_content)
         html_output = jinja_template.render(**context)
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to render template: {exc}")
+        logger.exception("Template render failed")
+        raise HTTPException(status_code=500, detail="Failed to render the template. Please try again.")
 
     style_filename = ""
     if template_id == 6:
