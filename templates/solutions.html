@@ -69,6 +69,156 @@
             text-align: left;
             margin: 0 30px 1.25rem;
             max-width: 1360px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+        .cv2-hero-left { flex: 1; min-width: 0; }
+        .cv2-hero-right { flex-shrink: 0; }
+
+        /* ── Hired-at widget ── */
+        #hired-widget {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+        .hired-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hired-pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 0 rgba(34,197,94,0.65);
+            animation: hired-pulse 2s ease-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes hired-pulse {
+            0%   { box-shadow: 0 0 0 0   rgba(34,197,94,0.65); }
+            70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0);    }
+            100% { box-shadow: 0 0 0 0   rgba(34,197,94,0);    }
+        }
+        .hired-label-text {
+            color: rgba(255,255,255,0.52);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+        .hired-logos-row {
+            display: flex;
+            gap: 18px;
+            align-items: flex-end;
+        }
+        .hired-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .hired-logo-box {
+            width: 140px;
+            height: 140px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .hired-logo-box img {
+            width: 128px;
+            height: 128px;
+            object-fit: contain;
+            display: block;
+        }
+        .hired-company-name {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            font-weight: 500;
+            text-align: center;
+            max-width: 140px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            letter-spacing: 0.01em;
+        }
+        /* Dot track */
+        .hired-dots {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 240px;
+        }
+        .hired-dot-pip {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            transition: background 0.3s ease, width 0.3s ease, border-radius 0.3s ease;
+            flex-shrink: 0;
+        }
+        .hired-dot-pip.active {
+            background: #3b82f6;
+            width: 14px;
+            border-radius: 3px;
+            box-shadow: 0 0 6px rgba(59,130,246,0.55);
+        }
+        /* Pop-out */
+        @keyframes hired-pop-out {
+            0%   { transform: scale(1)    translateY(0);    opacity: 1; }
+            15%  { transform: scale(1.08) translateY(0);    opacity: 1; }
+            100% { transform: scale(0.2)  translateY(15px); opacity: 0; }
+        }
+        /* Pop-in */
+        @keyframes hired-pop-in {
+            0%   { transform: scale(0.3)  translateY(-6px); opacity: 0; }
+            100% { transform: scale(1)    translateY(0);    opacity: 1; }
+        }
+        .hired-card.is-out {
+            animation: hired-pop-out 320ms ease-in forwards;
+            pointer-events: none;
+        }
+        .hired-card.is-in {
+            animation: hired-pop-in 500ms cubic-bezier(0.34, 1.4, 0.64, 1) forwards;
+        }
+        /* Mobile */
+        @media (max-width: 768px) {
+            .cv2-hero {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.6rem;
+            }
+            .cv2-hero-right {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            #hired-widget {
+                align-items: center;
+                background: rgba(8,20,55,0.72);
+                border: 1px solid rgba(59,130,246,0.18);
+                border-radius: 16px;
+                padding: 1rem 1.4rem;
+            }
+            .hired-logo-box {
+                width: 110px;
+                height: 110px;
+                border-radius: 20px;
+            }
+            .hired-logo-box img {
+                width: 100px;
+                height: 100px;
+            }
+            .hired-company-name { max-width: 110px; font-size: 0.68rem; }
         }
         .cv2-kicker {
             display: inline-flex;
@@ -478,12 +628,24 @@
     <section class="solutions-section cv2-solutions">
         <div class="cv2-shell">
             <div class="cv2-hero">
-                <h1>Turn every application into <span class="cv2-highlight">a strong match.</span></h1>
-                <div class="cv2-chips">
-                    <div class="cv2-chip">1 min <span>Typical run</span></div>
-                    <div class="cv2-chip">ATS-ready <span>Role focused</span></div>
-                    <div class="cv2-chip">PDF output <span>Instant download</span></div>
-                    <div class="cv2-chip">Free <span>Always</span></div>
+                <div class="cv2-hero-left">
+                    <h1>Turn every application into <span class="cv2-highlight">a strong match.</span></h1>
+                    <div class="cv2-chips">
+                        <div class="cv2-chip">1 min <span>Typical run</span></div>
+                        <div class="cv2-chip">ATS-ready <span>Role focused</span></div>
+                        <div class="cv2-chip">PDF output <span>Instant download</span></div>
+                        <div class="cv2-chip">Free <span>Always</span></div>
+                    </div>
+                </div>
+                <div class="cv2-hero-right">
+                    <div id="hired-widget">
+                        <div class="hired-header">
+                            <span class="hired-pulse-dot"></span>
+                            <span class="hired-label-text">Our users got hired at</span>
+                        </div>
+                        <div class="hired-logos-row" id="hired-logos-row"></div>
+                        <div class="hired-dots" id="hired-dots-row"></div>
+                    </div>
                 </div>
             </div>
 
@@ -2086,6 +2248,126 @@ Nice to have:
 </script>
 
 <script src="/static/resume_store.js?v=1"></script>
+
+<script>
+/* ── Hired-at logo cycling widget ── */
+(function () {
+    // All logos interleaved: big-name and niche/consulting alternate
+    var COMPANIES = [
+        { name: 'Netflix',       img: '/static/company_logos/netflix.png'          },
+        { name: 'TCS',           img: '/static/company_logos/tcs.png'              },
+        { name: 'Google',        img: '/static/company_logos/google.webp'          },
+        { name: 'Rubrik',        img: '/static/company_logos/rubrik.png'           },
+        { name: 'Microsoft',     img: '/static/company_logos/microsoft.png'        },
+        { name: 'Goldman Sachs', img: '/static/company_logos/goldmansachs.png'     },
+        { name: 'Amazon',        img: '/static/company_logos/amazon.png'           },
+        { name: 'SAP',           img: '/static/company_logos/sap.png'              },
+        { name: 'Meta',          img: '/static/company_logos/meta.jpg'             },
+        { name: 'McKinsey',      img: '/static/company_logos/mckinsey.png'         },
+        { name: 'Databricks',    img: '/static/company_logos/databricks.png'       },
+        { name: 'Atlassian',     img: '/static/company_logos/atlssain.png'         },
+        { name: 'Oracle',        img: '/static/company_logos/oracle.png'           },
+        { name: 'Uber',          img: '/static/company_logos/uber.png'             },
+        { name: 'Apple',         img: '/static/company_logos/apple_logo_black.svg', filter: 'brightness(0) invert(1)' },
+    ];
+
+    // Fisher-Yates shuffle so the mix is different on every page load
+    function shuffle(arr) {
+        for (var i = arr.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+        }
+        return arr;
+    }
+    COMPANIES = shuffle(COMPANIES);
+
+    var SLOT_COUNT = 3;
+    var shownIdxs = [0, 1, 2];
+    var nextCompany = 3;
+    var swapSlot = 0;
+
+    function makeCard(compIdx, slotIdx) {
+        var co = COMPANIES[compIdx % COMPANIES.length];
+        var card = document.createElement('div');
+        card.className = 'hired-card';
+        card.dataset.slot = slotIdx;
+
+        var box = document.createElement('div');
+        box.className = 'hired-logo-box';
+
+        var img = document.createElement('img');
+        img.src = co.img;
+        img.alt = co.name;
+        img.loading = 'lazy';
+        if (co.filter) img.style.filter = co.filter;
+
+        var label = document.createElement('span');
+        label.className = 'hired-company-name';
+        label.textContent = co.name;
+
+        box.appendChild(img);
+        card.appendChild(box);
+        card.appendChild(label);
+        return card;
+    }
+
+    function buildDots(container) {
+        container.innerHTML = '';
+        COMPANIES.forEach(function (_, i) {
+            var d = document.createElement('div');
+            d.className = 'hired-dot-pip' + (shownIdxs.indexOf(i) !== -1 ? ' active' : '');
+            container.appendChild(d);
+        });
+    }
+
+    function updateDots(container) {
+        var pips = container.querySelectorAll('.hired-dot-pip');
+        pips.forEach(function (d, i) {
+            d.classList.toggle('active', shownIdxs.indexOf(i) !== -1);
+        });
+    }
+
+    function init() {
+        var row = document.getElementById('hired-logos-row');
+        var dotsRow = document.getElementById('hired-dots-row');
+        if (!row || !dotsRow) return;
+
+        shownIdxs.forEach(function (ci, si) {
+            row.appendChild(makeCard(ci, si));
+        });
+        buildDots(dotsRow);
+
+        setInterval(function () {
+            var slot = swapSlot;
+            swapSlot = (swapSlot + 1) % SLOT_COUNT;
+
+            var oldCard = row.querySelector('.hired-card[data-slot="' + slot + '"]');
+            if (!oldCard) return;
+
+            oldCard.classList.add('is-out');
+
+            setTimeout(function () {
+                var newIdx = nextCompany % COMPANIES.length;
+                nextCompany++;
+                shownIdxs[slot] = newIdx;
+
+                var newCard = makeCard(newIdx, slot);
+                newCard.classList.add('is-in');
+                row.replaceChild(newCard, oldCard);
+                updateDots(dotsRow);
+
+                setTimeout(function () { newCard.classList.remove('is-in'); }, 500);
+            }, 320);
+        }, 3000);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
 </body>
 </html>
 
