@@ -7776,6 +7776,11 @@ def _extract_linkedin_url_from_pdf(pdf_path: str) -> str:
     return ""
 
 
+def _extract_pdf_text_for_ats(path: str) -> str:
+    with pdfplumber.open(path) as pdf:
+        return "\n".join(page.extract_text() or "" for page in pdf.pages)
+
+
 @app.post("/get-ats-score")
 async def get_score(request: Request, jd_string: str, file: UploadFile = File(...)):
     """Upload a resume PDF file and JD"""
@@ -7788,10 +7793,10 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
             f.write(content)
 
         async with request_semaphore:
-            resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
-            # Append any LinkedIn URL found in PDF annotations (pdfplumber extracts
-            # hyperlinked text as just the anchor word, losing the actual URL).
-            linkedin_url, is_two_col = await asyncio.gather(
+            # Run all 3 PDF read operations in parallel — they all need only the
+            # saved file and are independent of each other.
+            resume_string, linkedin_url, is_two_col = await asyncio.gather(
+                asyncio.to_thread(_extract_pdf_text_for_ats, file_path),
                 asyncio.to_thread(_extract_linkedin_url_from_pdf, file_path),
                 asyncio.to_thread(_detect_two_column_layout, file_path),
             )
