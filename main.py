@@ -4266,6 +4266,107 @@ async def optimize_page(request: Request):
     )
 
 
+# ── Competitor "alternative" SEO landing pages ───────────────────────────────
+# Capture high-intent comparison search ("jobscan alternative", etc.). One shared
+# template (comparison_alternative.html) rendered from this data, per slug.
+_COMPARISON_PAGES = {
+    "jobscan-alternative": {
+        "competitor": "Jobscan",
+        "audience": "students, freshers & job seekers",
+        "title": "Best Jobscan Alternative (2026) — Free ATS Score & Resume Optimizer",
+        "description": "Looking for a Jobscan alternative? TheTailorCV gives you a free ATS score, AI resume tailoring, a built-in portfolio website builder, and affordable pricing.",
+        "hero": "Get an instant ATS score, tailor your resume to any job description with AI, and even publish a live portfolio website — at a fraction of Jobscan's price.",
+        "props": [
+            {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Check how your resume scores against any job description before you pay anything."},
+            {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Turn your resume into a live portfolio site — something Jobscan doesn't offer."},
+            {"icon": "price", "title": "Student friendly pricing", "link": "/pricing", "text": "Affordable plans built for freshers and students, not enterprise budgets."},
+            {"icon": "ai", "title": "AI tailoring and interviews", "link": "/solutions", "text": "Rewrite bullets, match keywords, and practice AI mock interviews in one place."},
+        ],
+        "rows": [
+            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited free scans"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "Add-on"},
+            {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "Premium / USD pricing"},
+        ],
+        "faq": [
+            {"q": "Is TheTailorCV a good Jobscan alternative?", "a": "Yes. TheTailorCV offers a free ATS score, AI resume tailoring to a job description, a cover letter generator, AI mock interviews, and a portfolio website builder — at a more affordable price point than Jobscan."},
+            {"q": "Is TheTailorCV free?", "a": "You can check your ATS score and build a portfolio for free. Pro unlocks unlimited optimizations, cover letters, mock interviews and a custom live site."},
+            {"q": "Does TheTailorCV check my resume against the ATS like Jobscan?", "a": "Yes — paste your resume and a job description and you get a match score plus the missing keywords and fixes to raise it."},
+            {"q": "Is TheTailorCV cheaper than Jobscan?", "a": "Yes. TheTailorCV is built to be affordable for students and freshers, with plans priced well below typical USD-based resume tools — and you can start for free."},
+            {"q": "Can TheTailorCV build a portfolio website?", "a": "Yes. TheTailorCV turns your resume into a live, shareable portfolio website in minutes — no coding — which Jobscan does not offer."},
+            {"q": "Does TheTailorCV write cover letters?", "a": "Yes. It generates personalized cover letters matched to each job description, so every application is tailored without starting from scratch."},
+            {"q": "Is TheTailorCV good for freshers and students?", "a": "Absolutely. It's designed for first-time job seekers — get an ATS score, tailor your resume, add projects, and build a portfolio even with little or no experience."},
+            {"q": "Can I practice interviews on TheTailorCV?", "a": "Yes. You get AI mock interviews with role-specific questions and instant feedback to help you prepare."},
+        ],
+    },
+    "careerflow-alternative": {
+        "competitor": "Careerflow",
+        "audience": "students, freshers & job seekers",
+        "title": "Best Careerflow Alternative (2026) — ATS Resume Optimizer & Portfolio Builder",
+        "description": "A Careerflow alternative focused on getting your resume past the ATS: free ATS score, AI resume tailoring, cover letters, mock interviews, and a portfolio website builder.",
+        "hero": "Go beyond LinkedIn tweaks. TheTailorCV scores your resume against the ATS, tailors it to each job with AI, and turns it into a live portfolio website.",
+        "props": [
+            {"icon": "target", "title": "ATS first", "link": "/solutions", "text": "Built around beating applicant tracking systems, not just polishing your LinkedIn."},
+            {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Publish a real portfolio site from your resume in minutes."},
+            {"icon": "ai", "title": "AI mock interviews", "link": "/mock-interview", "text": "Practice role-specific interviews with instant AI feedback."},
+            {"icon": "doc", "title": "Tailored resumes and cover letters", "link": "/cover-letter", "text": "Match every application to its job description automatically."},
+        ],
+        "rows": [
+            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "Varies"},
+            {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Focus", "us": "ATS + resume + portfolio", "them": "LinkedIn optimization"},
+        ],
+        "faq": [
+            {"q": "Is TheTailorCV a good Careerflow alternative?", "a": "Yes, especially if your priority is passing the ATS. TheTailorCV scores your resume against a job description, tailors it with AI, writes cover letters, runs mock interviews, and builds a portfolio website."},
+            {"q": "What does TheTailorCV do that Careerflow doesn't?", "a": "TheTailorCV includes a portfolio website builder that turns your resume into a shareable live site, plus a dedicated ATS match score for every job description."},
+            {"q": "Is there a free plan?", "a": "Yes — get a free ATS score and build a portfolio for free, then upgrade to Pro for unlimited use."},
+            {"q": "Does TheTailorCV have an ATS score checker?", "a": "Yes. Paste your resume and a job description and you get a match score with the missing keywords and concrete fixes — the core focus of TheTailorCV."},
+            {"q": "Can I build a portfolio website with TheTailorCV?", "a": "Yes. Turn your resume into a live, shareable portfolio site in minutes, with no coding required."},
+            {"q": "Is TheTailorCV good for freshers and students?", "a": "Yes — it's designed for first-time job seekers, with affordable pricing and tools to present projects and skills even without much experience."},
+            {"q": "How much does TheTailorCV cost?", "a": "You can start for free. Pro plans are affordable and unlock unlimited optimizations, cover letters, mock interviews and a custom live portfolio site."},
+            {"q": "Can I practice mock interviews on TheTailorCV?", "a": "Yes. Practice role-specific AI mock interviews and get instant feedback to improve before the real thing."},
+        ],
+    },
+}
+
+
+def _render_comparison_page(request: Request, slug: str) -> HTMLResponse:
+    cmp = _COMPARISON_PAGES.get(slug)
+    if not cmp:
+        raise HTTPException(status_code=404, detail="Page not found")
+    faq_schema = json.dumps({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": f["q"],
+             "acceptedAnswer": {"@type": "Answer", "text": f["a"]}}
+            for f in cmp["faq"]
+        ],
+    })
+    return templates.TemplateResponse(request, "comparison_alternative.html", {
+        "request": request,
+        "cmp": cmp,
+        "seo_og_title": cmp["title"],
+        "seo_og_description": cmp["description"],
+        "canonical_url": build_absolute_url(f"/{slug}"),
+        "faq_schema_json": faq_schema,
+    })
+
+
+@app.get("/jobscan-alternative", response_class=HTMLResponse)
+async def jobscan_alternative_page(request: Request):
+    return _render_comparison_page(request, "jobscan-alternative")
+
+
+@app.get("/careerflow-alternative", response_class=HTMLResponse)
+async def careerflow_alternative_page(request: Request):
+    return _render_comparison_page(request, "careerflow-alternative")
+
+
 @app.get("/templates", response_class=HTMLResponse)
 async def templates_page(request: Request):
     """Templates gallery page."""
@@ -6746,6 +6847,10 @@ async def sitemap_xml():
         ("/solutions", "weekly", "0.9"),
         ("/ats-analysis", "weekly", "0.9"),
         ("/templates", "weekly", "0.8"),
+        ("/cover-letter", "weekly", "0.8"),
+        ("/portfolio", "weekly", "0.8"),
+        ("/jobscan-alternative", "monthly", "0.7"),
+        ("/careerflow-alternative", "monthly", "0.7"),
         ("/mock-interview", "weekly", "0.8"),
         ("/interview-prep", "weekly", "0.7"),
         ("/modify-cv", "weekly", "0.7"),
@@ -6760,12 +6865,36 @@ async def sitemap_xml():
         for p in blog_service.load_posts()
         if p.slug not in BLOG_REDIRECTS  # merged duplicates 301 elsewhere; keep them out of the index
     ]
+    # Published portfolios become indexable URLs — but only quality ones (has real
+    # projects/experience) so we never feed Google thin/boilerplate pages.
+    portfolio_urls = []
+    _pf_db = get_db()
+    try:
+        for pf in _pf_db.query(Portfolio).filter(Portfolio.published == True).all():  # noqa: E712
+            try:
+                pdata = json.loads(pf.data_json) if pf.data_json else {}
+            except Exception:
+                continue
+            if pdata.get("projects") or pdata.get("experience"):
+                loc = _portfolio_share_url(pf)
+                lastmod = (pf.updated_at or pf.created_at or datetime.utcnow()).strftime("%Y-%m-%d")
+                portfolio_urls.append((loc, lastmod, "monthly", "0.5"))
+    finally:
+        _pf_db.close()
     all_urls = static_urls + post_urls
 
     entries = []
     for path, lastmod, changefreq, priority in all_urls:
         entries.append(
             f"<url><loc>{xml_escape(build_absolute_url(path))}</loc>"
+            f"<lastmod>{xml_escape(lastmod)}</lastmod>"
+            f"<changefreq>{changefreq}</changefreq>"
+            f"<priority>{priority}</priority></url>"
+        )
+    # Portfolio locs are already absolute (may be a subdomain), so emit them as-is.
+    for loc, lastmod, changefreq, priority in portfolio_urls:
+        entries.append(
+            f"<url><loc>{xml_escape(loc)}</loc>"
             f"<lastmod>{xml_escape(lastmod)}</lastmod>"
             f"<changefreq>{changefreq}</changefreq>"
             f"<priority>{priority}</priority></url>"
