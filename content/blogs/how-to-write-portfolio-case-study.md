@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Case Study, Writing, Job Search]
 category: Portfolio
-image: public/blog-images/how-to-write-portfolio-case-study.png
+image: public/blog-images/how-to-write-portfolio-case-study.webp
 slug: how-to-write-portfolio-case-study
 keywords: portfolio case study, case study template, how to write case study, project write up, case study examples
 ---

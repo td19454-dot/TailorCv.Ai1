@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Matching Fast, Quick Resume Tailoring, ATS Resume Fast, Job Description Match Tips, Resume Tips 2026]
 category: Resume Optimization
-image: public/blog-images/how-to-match-resume-to-job-description-fast.png
+image: public/blog-images/how-to-match-resume-to-job-description-fast.webp
 slug: how-to-match-resume-to-job-description-fast
 keywords: how to match resume to job description fast, quick resume tailoring, match resume to job description 10 minutes, fast ATS resume optimization, resume tailoring speed tips 2026
 ---

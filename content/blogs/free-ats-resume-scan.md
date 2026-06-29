@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
-image: public\blog-images\free-ats-resume-scan.png
+image: public/blog-images/free-ats-resume-scan.webp
 slug: free-ats-resume-scan
 keywords: free ats resume scan, scan resume for ats, ats resume test, free resume scanner
 ---

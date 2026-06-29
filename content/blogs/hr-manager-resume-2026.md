@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [HR Resume, HR Manager Resume, Human Resources Resume, Talent Acquisition Resume, SHRM Resume]
 category: Resume Examples
-image: public/blog-images/hr-manager-resume.png
+image: public/blog-images/hr-manager-resume.webp
 slug: hr-manager-resume-2026
 keywords: HR manager resume, human resources resume 2026, talent acquisition resume, HRBP resume, SHRM resume, HR generalist resume, recruiting resume
 ---

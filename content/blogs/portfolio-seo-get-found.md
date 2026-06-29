@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, SEO, Personal Branding, Job Search]
 category: Portfolio
-image: public/blog-images/portfolio-seo-get-found.png
+image: public/blog-images/portfolio-seo-get-found.webp
 slug: portfolio-seo-get-found
 keywords: portfolio seo, get portfolio found, rank portfolio google, personal website seo, portfolio on google
 ---

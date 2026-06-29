@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Photography, Creative, Freelance]
 category: Portfolio
-image: public/blog-images/photographer-portfolio-guide.png
+image: public/blog-images/photographer-portfolio-guide.webp
 slug: photographer-portfolio-guide
 keywords: photography portfolio, photographer website, photo portfolio, book photography clients, photography portfolio examples
 ---

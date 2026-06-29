@@ -5,7 +5,7 @@ date: 2026-05-28
 author: TailorCV Team
 tags: [Interview Preparation, Job Interview Tips, STAR Method, Mock Interview, Career Advice]
 category: Interview Preparation
-image: public/blog-images/interview.png
+image: public/blog-images/interview.webp
 slug: how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry
 keywords: how to prepare for job interview 2026, interview preparation guide, STAR method interview, mock interview practice, job interview tips
 ---

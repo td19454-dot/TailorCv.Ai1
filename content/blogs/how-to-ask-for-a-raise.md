@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Ask for a Raise, Salary Increase, Career Advice, Negotiation, Career Growth]
 category: Career Growth
-image: public/blog-images/how to ask for  a raise .png
+image: public/blog-images/how to ask for  a raise .webp
 slug: how-to-ask-for-a-raise
 keywords: how to ask for a raise, asking for a raise 2026, salary increase request, raise negotiation script, how to get a pay raise, request salary increase
 ---

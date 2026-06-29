@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Red Flags, Resume Mistakes, Resume Tips, Job Search, Career Advice]
 category: Resume Writing
-image: public/blog-images/resume-red-flags.png
+image: public/blog-images/resume-red-flags.webp
 slug: resume-red-flags
 keywords: resume red flags, resume rejection reasons, why resume gets rejected, resume mistakes recruiters hate, resume warning signs, resume disqualifiers, job application mistakes
 ---

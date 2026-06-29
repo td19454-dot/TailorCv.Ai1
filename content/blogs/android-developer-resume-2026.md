@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Android Resume, Android Developer, Kotlin Resume, Mobile Developer Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/android.png
+image: public/blog-images/android.webp
 slug: android-developer-resume-2026
 keywords: Android developer resume, Android resume 2026, Kotlin resume, mobile developer resume, Jetpack Compose resume, Android ATS keywords
 ---

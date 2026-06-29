@@ -5,7 +5,7 @@ date: 2026-05-27
 author: TailorCV Team
 tags: [how to add projects in resume for freshers,resume projects for freshers,fresher resume tips]
 category: Resume Writing
-image: public\blog-images\how-to-add-projects-in-resume-for-freshers.png
+image: public/blog-images/how-to-add-projects-in-resume-for-freshers.webp
 slug: how-to-add-projects-in-resume-for-freshers
 keywords: how to add projects in resume for freshers, projects in resume for freshers, fresher resume project section, resume project examples, ATS friendly fresher resume, academic projects in resume
 ---

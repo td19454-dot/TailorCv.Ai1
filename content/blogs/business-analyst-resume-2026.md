@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Business Analyst Resume, BA Resume, Requirements Analyst, ATS Resume, Career Tips]
 category: Resume Examples
-image: public/blog-images/buisnessanalyst.png
+image: public/blog-images/buisnessanalyst.webp
 slug: business-analyst-resume-2026
 keywords: business analyst resume, business analyst resume 2026, BA resume, requirements analyst resume, business analysis ATS keywords, CBAP resume
 ---

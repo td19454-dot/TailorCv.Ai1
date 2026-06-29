@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Internship Resume, Student Resume, College Resume, First Resume, Career Tips]
 category: Resume Writing
-image: public/blog-images/internship-resume.png
+image: public/blog-images/internship-resume.webp
 slug: internship-resume-guide
 keywords: internship resume, internship resume guide, student resume 2026, how to write internship resume, college student resume, first internship resume, no experience resume
 ---

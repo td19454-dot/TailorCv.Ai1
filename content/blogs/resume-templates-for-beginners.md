@@ -5,7 +5,7 @@ date: 2026-05-25
 author: TailorCV Team
 tags: [resume templates for beginners, no experience resume, ATS friendly resume templates, fresher resume templates, beginner resume guide]
 category: Resume Writing
-image: public/blog-images/resume-templates-for-beginners-no-experience.png
+image: public/blog-images/resume-templates-for-beginners-no-experience.webp
 slug: resume-templates-for-beginners-with-no-experience
 keywords: resume templates for beginners with no experience, beginner resume templates, ATS friendly resume templates, fresher resume examples, how to make a resume with no experience, first resume template, resume for students with no experience, entry level resume templates
 ---

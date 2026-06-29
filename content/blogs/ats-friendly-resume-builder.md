@@ -5,7 +5,7 @@ date: 2026-06-08
 author: TailorCV Team
 tags: [ATS Friendly Resume, Resume Builder, ATS Optimization, Resume Templates, Job Search]
 category: Resume Optimization
-image: public/blog-images/free-ats-resume-builder.png
+image: public/blog-images/free-ats-resume-builder.webp
 slug: ats-friendly-resume-builder
 keywords: ats friendly resume builder, free ats resume builder, ats resume builder, build ats friendly resume, ats friendly resume template
 ---

@@ -5,7 +5,7 @@ date: 2026-06-02
 author: TailorCV Team
 tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
-image: public\blog-images\ats-resume-checker-how-it-works.png
+image: public/blog-images/ats-resume-checker-how-it-works.webp
 slug: ats-resume-checker-how-it-works
 keywords: ats resume checker, how ats works, resume scanner, ats checker tool
 ---

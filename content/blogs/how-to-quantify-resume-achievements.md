@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Tips, Resume Achievements, Resume Bullet Points, Career Advice, ATS Resume]
 category: Resume Writing
-image: public/blog-images/how-to-quantify-resume-achievements.png
+image: public/blog-images/how-to-quantify-resume-achievements.webp
 slug: how-to-quantify-resume-achievements
 keywords: how to quantify resume achievements, resume metrics, resume numbers examples, resume bullet points with numbers, how to add metrics to resume, resume impact statements
 ---

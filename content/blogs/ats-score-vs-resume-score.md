@@ -5,7 +5,7 @@ date: 2026-05-31
 author: TailorCV Team
 tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
-image: public\blog-images\ats-score-vs-resume-score.png
+image: public/blog-images/ats-score-vs-resume-score.webp
 slug: ats-score-vs-resume-score
 keywords: ats score vs resume score, resume score meaning, ats score meaning, resume rating
 ---

@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Proofreading, Resume Checklist, Resume Tips, Resume Writing, Job Application]
 category: Resume Writing
-image: public/blog-images/resume-proofreading.png
+image: public/blog-images/resume-proofreading.webp
 slug: resume-proofreading-checklist
 keywords: resume proofreading checklist, resume checklist before applying, resume review checklist, things to check on resume, resume mistakes checklist, final resume review, resume quality check
 ---

@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Resume Tips, ATS, Job Search]
 category: Portfolio
-image: public/blog-images/add-portfolio-link-to-resume.png
+image: public/blog-images/add-portfolio-link-to-resume.webp
 slug: add-portfolio-link-to-resume
 keywords: portfolio link on resume, add portfolio to resume, resume links, github link resume, portfolio url resume
 ---

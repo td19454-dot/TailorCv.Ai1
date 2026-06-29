@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Recruiter Tips, Resume Scanning, Resume Writing, Job Search Strategy, Resume Basics]
 category: Resume Writing
-image: public/blog-images/recruiter-reads-resume.png
+image: public/blog-images/recruiter-reads-resume.webp
 slug: how-recruiters-read-resumes
 keywords: how recruiters read resumes, resume scanning, 10 second resume test, what recruiters look for on resume, recruiter resume review, resume scan tips, hiring manager resume review
 ---

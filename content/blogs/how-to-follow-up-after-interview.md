@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Interview Follow Up, Thank You Email, Job Interview Tips, Career Advice, Job Search]
 category: Interview Preparation
-image: public/blog-images/how to follow up after a job .png
+image: public/blog-images/how to follow up after a job .webp
 slug: how-to-follow-up-after-interview
 keywords: how to follow up after interview, thank you email after interview, interview follow up email, interview follow up timing, when to follow up after interview
 ---

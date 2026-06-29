@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Skills, In-Demand Skills 2026, Career Advice, ATS Resume, Job Market Trends]
 category: Resume Writing
-image: public/blog-images/skills-2026.png
+image: public/blog-images/skills-2026.webp
 slug: skills-to-add-to-resume-2026
 keywords: skills to add to resume 2026, in-demand skills 2026, top resume skills, technical skills for resume, AI skills for resume, job market skills 2026
 ---

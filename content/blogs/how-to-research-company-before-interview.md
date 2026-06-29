@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Interview Prep, Company Research, Job Interview, Career Advice, Interview Tips 2026]
 category: Interview Preparation
-image: public/blog-images/how-to-research-a-company.png
+image: public/blog-images/how-to-research-a-company.webp
 slug: how-to-research-company-before-interview
 keywords: how to research company before interview, company research interview 2026, interview preparation company research, what to know before job interview, company background check
 ---

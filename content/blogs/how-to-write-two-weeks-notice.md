@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Two Weeks Notice, Resignation Letter, Career Advice, Job Transition, Professional Etiquette]
 category: Career Advice
-image: public/blog-images/two-weeks-notice.png
+image: public/blog-images/two-weeks-notice.webp
 slug: how-to-write-two-weeks-notice
 keywords: how to write two weeks notice, two weeks notice letter, resignation letter template 2026, how to give notice, notice letter example, resignation notice
 ---

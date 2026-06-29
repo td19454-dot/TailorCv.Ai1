@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [System Design, System Design Interview, Technical Interview, Scalability, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/system-design.png
+image: public/blog-images/system-design.webp
 slug: system-design-interview-guide
 keywords: system design interview, system design interview 2026, system design framework, scalability interview, design URL shortener, system design questions, distributed systems interview
 ---

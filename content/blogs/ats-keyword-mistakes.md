@@ -5,7 +5,7 @@ date: 2026-06-03
 author: TailorCV Team
 tags: [ATS Keyword Mistakes, ATS Resume, Resume Keywords, ATS Optimization, Job Search Tips]
 category: ATS Optimization
-image: public/blog-images/ats-keyword-mistakes.png
+image: public/blog-images/ats-keyword-mistakes.webp
 slug: ats-keyword-mistakes
 keywords: ATS keyword mistakes, resume keyword errors, ATS keyword stuffing, keyword optimization resume, ATS resume mistakes 2026, fix resume keywords, resume keyword strategy
 ---

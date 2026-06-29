@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Contact, Conversion, Job Search]
 category: Portfolio
-image: public/blog-images/portfolio-contact-section.png
+image: public/blog-images/portfolio-contact-section.webp
 slug: portfolio-contact-section
 keywords: portfolio contact section, contact page, how to be contacted, portfolio cta, contact section best practices
 ---

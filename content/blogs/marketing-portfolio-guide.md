@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Marketing, Case Study, Job Search]
 category: Portfolio
-image: public/blog-images/marketing-portfolio-guide.png
+image: public/blog-images/marketing-portfolio-guide.webp
 slug: marketing-portfolio-guide
 keywords: marketing portfolio, digital marketing portfolio, campaign case study, marketing results portfolio
 ---

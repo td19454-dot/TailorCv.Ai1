@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Portfolio Guide, Professional Portfolio, Career Advice, Job Search, GitHub Portfolio]
 category: Career Advice
-image: public/blog-images/how to build a prrtfolio .png
+image: public/blog-images/how to build a prrtfolio .webp
 slug: how-to-build-professional-portfolio
 keywords: how to build professional portfolio, portfolio guide 2026, developer portfolio, UX designer portfolio, marketing portfolio, GitHub portfolio, portfolio website tips
 ---

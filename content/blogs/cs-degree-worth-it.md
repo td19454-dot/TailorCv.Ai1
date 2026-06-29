@@ -5,7 +5,7 @@ date: 2026-05-24
 author: TailorCV Team
 tags: [computer science oversaturation, software engineering careers, AI replacing developers, tech layoffs, CS degree bubble]
 category: Career Advice
-image: public\blog-images\cs-degree-bubble-2026.png
+image: public/blog-images/cs-degree-bubble-2026.webp
 slug: cs-degree-bubble-oversaturated-2026
 keywords: computer science oversaturated, is computer science worth it in 2026, AI replacing software engineers, entry level tech jobs, software engineering competition, tech layoffs 2026, CS degree bubble
 ---

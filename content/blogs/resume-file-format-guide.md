@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume File Format, PDF vs Word Resume, Resume Basics, Resume Tips, Job Application]
 category: Resume Writing
-image: public/blog-images/resume-file-format.png
+image: public/blog-images/resume-file-format.webp
 slug: resume-file-format-guide
 keywords: resume file format, PDF vs Word resume, should resume be PDF or Word, how to name resume file, resume file name, docx vs pdf resume, resume format 2026
 ---

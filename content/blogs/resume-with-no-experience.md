@@ -5,7 +5,7 @@ date: 2026-05-19
 author: TailorCV Team
 tags: [First Time Resume, Resume for Freshers With No Experience, College Student Resume, ATS Friendly Resume, Resume Writing Tips, Career Guide]
 category: Resume Writing
-image: public\blog-images\how_to_write_resume_no_experience.png
+image: public/blog-images/how_to_write_resume_no_experience.webp
 slug: first-time-resume-with-no-experience
 keywords: first time resume with no experience, resume for freshers with no experience, resume with no experience college student, ATS friendly resume for beginners, fresher resume guide, beginner resume template, college student resume examples
 ---

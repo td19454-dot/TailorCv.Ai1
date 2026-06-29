@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Personal Branding, Website, Career Advice]
 category: Portfolio
-image: public/blog-images/personal-website-vs-portfolio.png
+image: public/blog-images/personal-website-vs-portfolio.webp
 slug: personal-website-vs-portfolio
 keywords: personal website vs portfolio, do i need personal website, portfolio vs website, personal site, personal branding website
 ---

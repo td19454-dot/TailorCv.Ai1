@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Summary, Resume Tips, Resume Writing, Career Advice, ATS Resume]
 category: Resume Writing
-image: public/blog-images/resume-summary.png
+image: public/blog-images/resume-summary.webp
 slug: how-to-write-resume-summary
 keywords: how to write a resume summary, resume summary examples 2026, professional summary resume, resume summary formula, resume profile, summary statement resume
 ---

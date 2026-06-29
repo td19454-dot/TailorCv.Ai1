@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Volunteer Work Resume, Resume Sections, Resume Tips, Resume Writing, Career Advice]
 category: Resume Writing
-image: public/blog-images/volunteer-resume.png
+image: public/blog-images/volunteer-resume.webp
 slug: volunteer-work-on-resume
 keywords: volunteer work on resume, how to add volunteer experience, volunteer resume section, volunteer experience as work experience, resume with volunteer work, unpaid experience resume, volunteer skills resume
 ---

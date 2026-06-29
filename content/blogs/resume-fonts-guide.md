@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Fonts, Resume Formatting, Resume Design, Resume Basics, ATS Resume]
 category: Resume Writing
-image: public/blog-images/resume-fonts.png
+image: public/blog-images/resume-fonts.webp
 slug: resume-fonts-guide
 keywords: best resume fonts, resume font size, professional fonts for resume, resume fonts 2026, what font to use for resume, ATS-safe resume fonts, worst fonts for resume
 ---

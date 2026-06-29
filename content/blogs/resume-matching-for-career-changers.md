@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Career Change Resume, Resume Matching, Industry Change, Career Pivot Resume, ATS Career Change]
 category: Resume Writing
-image: public/blog-images/industrychange_careers.png
+image: public/blog-images/industrychange_careers.webp
 slug: resume-matching-for-career-changers
 keywords: resume matching for career changers, career change resume job description match, how to match resume when changing careers, career pivot resume 2026, industry change resume matching
 ---

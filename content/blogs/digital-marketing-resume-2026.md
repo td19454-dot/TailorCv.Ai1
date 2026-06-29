@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Digital Marketing Resume, SEO Resume, PPC Resume, Social Media Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/digital marketing.png
+image: public/blog-images/digital marketing.webp
 slug: digital-marketing-resume-2026
 keywords: digital marketing resume, digital marketing resume 2026, SEO resume, Google Ads resume, social media marketing resume, content marketing resume, digital marketing ATS keywords
 ---

@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, No Experience, Freshers, Projects]
 category: Portfolio
-image: public/blog-images/portfolio-no-projects.png
+image: public/blog-images/portfolio-no-projects.webp
 slug: portfolio-no-projects
 keywords: portfolio no projects, what to put in portfolio, portfolio without experience, build first project, empty portfolio
 ---

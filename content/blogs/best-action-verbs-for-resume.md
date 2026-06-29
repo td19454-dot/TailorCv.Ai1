@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Action Verbs, Resume Tips, Resume Writing, Career Advice, ATS Resume]
 category: Resume Writing
-image: public/blog-images/200bestactionverbs.png
+image: public/blog-images/200bestactionverbs.webp
 slug: best-action-verbs-for-resume
 keywords: best action verbs for resume, resume action verbs 2026, powerful resume words, strong resume verbs, action words for resume, resume bullet point verbs
 ---

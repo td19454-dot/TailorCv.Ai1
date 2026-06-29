@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Golang Developer Resume, Go Developer Resume, Backend Resume, ATS Resume, Microservices]
 category: Resume Examples
-image: public/blog-images/go.png
+image: public/blog-images/go.webp
 slug: golang-developer-resume-2026
 keywords: golang developer resume, go developer resume 2026, golang backend resume, go microservices resume, golang ATS keywords, senior go developer resume
 ---

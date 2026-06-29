@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Basics, What Is a Resume, Resume Writing, Job Search, Career Tips]
 category: Resume Writing
-image: public/blog-images/resume-basics.png
+image: public/blog-images/resume-basics.webp
 slug: what-is-a-resume
 keywords: what is a resume, what is a resume used for, why does a resume matter, resume definition, how resumes work, resume in job search, resume basics 2026
 ---

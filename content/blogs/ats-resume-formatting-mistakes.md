@@ -5,7 +5,7 @@ date: 2026-06-03
 author: TailorCV Team
 tags: [ATS Formatting Mistakes, ATS Resume, Resume Formatting, Applicant Tracking System, Resume Tips]
 category: ATS Optimization
-image: public/blog-images/ats-formatting-mistakes.png
+image: public/blog-images/ats-formatting-mistakes.webp
 slug: ats-resume-formatting-mistakes
 keywords: ATS resume formatting mistakes, ATS formatting errors, ATS friendly resume format, resume formatting mistakes, applicant tracking system mistakes, fix ATS resume 2026
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Physiotherapist Resume, Physical Therapist Resume, Healthcare Resume, PT Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/physiotherapist-resume.png
+image: public/blog-images/physiotherapist-resume.webp
 slug: physiotherapist-resume-2026
 keywords: physiotherapist resume, physical therapist resume 2026, PT resume, rehabilitation resume, sports physiotherapy resume, physiotherapy ATS keywords
 ---

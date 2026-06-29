@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Cold Email, Recruiter Outreach, Job Search, Career Advice, Networking]
 category: Career Advice
-image: public/blog-images/cold-email-recruiter.png
+image: public/blog-images/cold-email-recruiter.webp
 slug: how-to-write-cold-email-to-recruiter
 keywords: how to write cold email to recruiter, recruiter email template 2026, cold outreach job search, email recruiter for job, networking email, LinkedIn message recruiter
 ---
