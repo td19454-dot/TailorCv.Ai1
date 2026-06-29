@@ -118,13 +118,23 @@
 .site-footer .sf-secure {
     display: inline-flex;
     align-items: center;
+    gap: 7px;
     border-radius: 999px;
-    border: 1px solid rgba(122, 146, 255, 0.32);
-    background: rgba(34, 39, 102, 0.32);
-    color: #c3d2ff;
-    font-size: 0.82rem;
-    font-weight: 700;
-    padding: 7px 16px;
+    border: 1px solid rgba(122, 146, 255, 0.26);
+    background: linear-gradient(135deg, rgba(42, 48, 112, 0.45), rgba(22, 26, 64, 0.32));
+    color: #cdd8ff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    padding: 8px 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.site-footer .sf-secure svg {
+    width: 14px;
+    height: 14px;
+    color: #8fa8ff;
+    flex-shrink: 0;
 }
 @media (max-width: 1080px) {
     .site-footer .sf-grid { grid-template-columns: repeat(3, 1fr); }

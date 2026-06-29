@@ -932,6 +932,9 @@
                     </div>
                     <style>
                         /* Hero resume styled like Jake's Resume template — scoped to #heroResumeCard */
+                        /* Trim the gap below the fixed nav a little (spacer overrides the 100px rule). */
+                        .nav-clear-spacer{padding-top:90px !important;}
+                        .hero{margin-top:0 !important;}
                         /* Wider resume column */
                         .hero-split{grid-template-columns:minmax(300px,1fr) minmax(320px,560px)!important;}
                         .hero-visual{width:min(100%,560px)!important;}
@@ -942,6 +945,9 @@
                         #heroResumeCard .r-exp-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
                         #heroResumeCard .r-exp-title{font-size:11.5px;font-weight:700;color:#000;}
                         #heroResumeCard .r-exp-co{font-size:11px;font-style:italic;color:#000;white-space:nowrap;}
+                        #heroResumeCard .r-exp-sub{font-size:11px;font-style:italic;color:#000;}
+                        #heroResumeCard .r-exp-loc{font-size:10.5px;font-style:italic;color:#000;white-space:nowrap;}
+                        #heroResumeCard .r-exp-row{margin-bottom:1px;}
                         #heroResumeCard .r-line{font-size:11px;color:#000;}
                         #heroResumeCard .r-line.dim{font-style:italic;color:#000;}
                         #heroResumeCard .exp-bullet{font-size:11px;color:#000;padding-left:14px;line-height:1.38;margin-bottom:2px;}
@@ -952,6 +958,13 @@
                         #heroResumeCard .r-proj-tech{font-weight:400;font-style:italic;}
                         #heroResumeCard .r-section{margin-bottom:7px;}
                         #heroResumeCard .r-heading{margin-bottom:4px;}
+                        /* Livelier optimize animation */
+                        #heroResumeCard .exp-bullet .kw{display:inline-block;}
+                        #heroResumeCard .exp-bullet .kw.new-kw{animation:heroKwPop .5s cubic-bezier(.2,.8,.3,1.5);}
+                        @keyframes heroKwPop{0%{transform:scale(.78);opacity:.35}55%{transform:scale(1.16)}100%{transform:scale(1);opacity:1}}
+                        #heroResumeCard .skill{transition:opacity .3s ease,transform .3s ease,background .25s,color .25s;}
+                        #heroSkillsGrouped{transition:opacity .45s ease;}
+                        #heroAtsNum{transition:color .4s ease;}
                     </style>
                     <div class="resume-card" id="heroResumeCard">
                         <div class="scan-line" id="heroScanLine"></div>
@@ -961,7 +974,8 @@
 
                         <div class="r-section">
                             <div class="r-heading">EXPERIENCE</div>
-                            <div class="r-exp-row"><span class="r-exp-title">Senior Software Engineer, Google</span><span class="r-exp-co">2022 - Present</span></div>
+                            <div class="r-exp-row"><span class="r-exp-title">Senior Software Engineer</span><span class="r-exp-co">2022 – Present</span></div>
+                            <div class="r-exp-row"><span class="r-exp-sub">Google</span><span class="r-exp-loc">San Francisco, CA</span></div>
                             <div class="exp-bullet">Built <span class="kw" id="heroKw1">statistical models</span> for
                                 churn prediction, improving prediction accuracy by ~18–25% and enabling retention
                                 strategies that reduced customer churn by ~10–15%.</div>
@@ -974,8 +988,8 @@
 
                         <div class="r-section">
                             <div class="r-heading">EDUCATION</div>
-                            <div class="r-exp-row"><span class="r-exp-title">University of Michigan</span><span class="r-exp-co">2018 - 2022</span></div>
-                            <div class="r-line dim">B.S. in Computer Science</div>
+                            <div class="r-exp-row"><span class="r-exp-title">University of Michigan</span><span class="r-exp-co">2018 – 2022</span></div>
+                            <div class="r-exp-row"><span class="r-exp-sub">B.S. in Computer Science</span><span class="r-exp-loc">Ann Arbor, MI</span></div>
                         </div>
 
                         <div class="r-section">
@@ -1408,7 +1422,13 @@
                     </div>
                     <div class="feature-showcase-visual tone-purple" aria-hidden="true">
                         <div class="mock-card">
-                            <p class="mock-title">yourname.thetailorcv.com</p>
+                            <div class="mock-browser-bar">
+                                <span class="mock-browser-dots"><i></i><i></i><i></i></span>
+                                <span class="mock-browser-url">
+                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 11px"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+                                    yourname.netlify.app
+                                </span>
+                            </div>
                             <div class="mock-pill-row">
                                 <span class="mock-pill">About</span>
                                 <span class="mock-pill">Projects</span>
@@ -1706,14 +1726,6 @@
                 transition: transform 0.2s, box-shadow 0.2s;
                 position: relative;
                 overflow: hidden;
-            }
-            .founder-card::before {
-                content: "";
-                position: absolute;
-                top: 0; left: 0; right: 0;
-                height: 3px;
-                background: linear-gradient(90deg, #4F7FFF, #C9B8FF);
-                border-radius: 20px 20px 0 0;
             }
             .founder-card:hover {
                 transform: translateY(-4px);
@@ -2157,8 +2169,7 @@
     <section class="prefooter-cta-section">
         <div class="container">
             <div class="prefooter-cta-shell">
-                <p class="prefooter-kicker">Career Acceleration Starts Here</p>
-                <h2 class="prefooter-title">Take Control of Your Next Career Move</h2>
+                <h2 class="prefooter-title">Take Control of Your Next <span class="pf-accent">Career Move</span></h2>
                 <p class="prefooter-copy">
                     Join job seekers using TailorCV to improve ATS scores, tailor resumes, and practice interviews with
                     AI-powered feedback.
@@ -2359,14 +2370,13 @@
                 running = false;
             }
 
-            runAnimation();
-            autoLoop = setInterval(function () {
-                if (!running) runAnimation();
-            }, 9000);
-
-            window.addEventListener("beforeunload", function () {
-                if (autoLoop) clearInterval(autoLoop);
-            });
+            // Loop continuously with only a short pause, so it never sits static for long.
+            (async function loop() {
+                while (true) {
+                    await runAnimation();
+                    await sleep(1600);
+                }
+            })();
         })();
     </script>
 
