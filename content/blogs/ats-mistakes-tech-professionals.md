@@ -5,7 +5,7 @@ date: 2026-06-03
 author: TailorCV Team
 tags: [ATS Mistakes Tech, Software Engineer Resume, ATS Resume, Tech Resume Tips, Developer Resume 2026]
 category: ATS Optimization
-image: public/blog-images/ats-mistakes-tech-professionals.png
+image: public/blog-images/ats-mistakes-tech-professionals.webp
 slug: ats-mistakes-tech-professionals
 keywords: ATS mistakes software engineers, tech resume ATS mistakes, developer resume ATS errors, software engineer ATS resume 2026, data scientist resume ATS, tech professional resume tips
 ---

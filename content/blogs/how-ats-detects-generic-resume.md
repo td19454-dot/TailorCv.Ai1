@@ -5,7 +5,7 @@ date: 2026-06-11
 author: TailorCV Team
 tags: [ATS, generic resume, ATS score, resume, job search]
 category: ATS Optimization
-image: public/blog-images/how-ats-detects-generic-resume-2.png
+image: public/blog-images/how-ats-detects-generic-resume-2.webp
 slug: how-ats-detects-generic-resume
 keywords: how ats detects generic resume, ats generic resume, ats resume filtering, ats resume score low, ats reject resume reasons
 ---

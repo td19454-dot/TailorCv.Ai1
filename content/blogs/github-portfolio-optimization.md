@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, GitHub, Developer Portfolio, Job Search]
 category: Portfolio
-image: public/blog-images/github-portfolio-optimization.png
+image: public/blog-images/github-portfolio-optimization.webp
 slug: github-portfolio-optimization
 keywords: github portfolio, github profile optimization, pinned repos, profile readme, github for recruiters
 ---

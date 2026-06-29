@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Quit Job, Resignation, Career Advice, Job Transition, Professional Etiquette]
 category: Career Advice
-image: public/blog-images/how-to-quit-job.png
+image: public/blog-images/how-to-quit-job.webp
 slug: how-to-quit-your-job-professionally
 keywords: how to quit your job, resignation guide 2026, how to resign professionally, resignation letter, two weeks notice, how to tell your boss you are quitting, notice period
 ---

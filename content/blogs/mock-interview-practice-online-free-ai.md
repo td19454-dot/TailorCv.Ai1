@@ -5,7 +5,7 @@ date: 2026-05-26
 author: TailorCV Team
 tags: [mock interview practice online free AI,free AI mock interview,AI interview practice]
 category: Interview Preparation
-image: public\blog-images\mock-interview-practice-online-free-ai.png
+image: public/blog-images/mock-interview-practice-online-free-ai.webp
 slug: mock-interview-practice-online-free-ai
 keywords: mock interview practice online free AI, free AI mock interview, AI interview simulator, online interview preparation, behavioral interview practice, technical interview practice
 ---

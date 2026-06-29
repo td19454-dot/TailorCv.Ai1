@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Domain, Personal Branding, Tools]
 category: Portfolio
-image: public/blog-images/portfolio-domain-name-guide.png
+image: public/blog-images/portfolio-domain-name-guide.webp
 slug: portfolio-domain-name-guide
 keywords: portfolio domain name, personal website domain, choose domain name, custom domain portfolio, best domain for portfolio
 ---

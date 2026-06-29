@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [MBA Resume, Business School Resume, Leadership Resume, ATS Resume, Career Advice]
 category: Resume Examples
-image: public/blog-images/mba-resume.png
+image: public/blog-images/mba-resume.webp
 slug: mba-resume-2026
 keywords: MBA resume, MBA resume 2026, business school resume, MBA resume format, consulting MBA resume, MBA resume examples, post-MBA resume
 ---

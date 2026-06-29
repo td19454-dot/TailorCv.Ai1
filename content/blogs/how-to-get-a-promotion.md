@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Promotion, Career Growth, Career Advice, Workplace Success, Professional Development]
 category: Career Growth
-image: public/blog-images/how to get a promotion.png
+image: public/blog-images/how to get a promotion.webp
 slug: how-to-get-a-promotion
 keywords: how to get a promotion, get promoted 2026, career advancement, promotion at work, how to get promoted faster, career growth strategy
 ---

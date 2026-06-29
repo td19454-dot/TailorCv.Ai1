@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Marketing Resume, Resume Matching Marketing, Marketing Job Description, ATS Marketing Resume, Digital Marketing Resume 2026]
 category: Resume Writing
-image: public/blog-images/digital_marketing_resume_matching.png
+image: public/blog-images/digital_marketing_resume_matching.webp
 slug: resume-matching-marketing
 keywords: marketing resume match job description, how to match marketing resume to job description, digital marketing resume ATS 2026, marketing resume keywords, marketing job description resume tips
 ---

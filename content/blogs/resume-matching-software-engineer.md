@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Software Engineer Resume, Resume Matching Tech, Software Engineer Job Description, ATS Tech Resume, SWE Resume 2026]
 category: Resume Writing
-image: public/blog-images/resume_matching_software.png
+image: public/blog-images/resume_matching_software.webp
 slug: resume-matching-software-engineer
 keywords: software engineer resume match job description, how to match SWE resume to job description, software engineering resume ATS 2026, software developer resume job description match, tech resume matching guide
 ---

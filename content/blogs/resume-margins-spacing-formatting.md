@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Formatting, Resume Margins, Resume Layout, Resume Basics, ATS Resume]
 category: Resume Writing
-image: public/blog-images/resume-formatting.png
+image: public/blog-images/resume-formatting.webp
 slug: resume-margins-spacing-formatting
 keywords: resume margins, resume spacing, resume layout, resume formatting guide, resume line spacing, resume white space, how to format a resume 2026, resume page setup
 ---

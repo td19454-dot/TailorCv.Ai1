@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [LinkedIn Job Search, LinkedIn Tips, Job Search 2026, Career Advice, Networking]
 category: Career Advice
-image: public/blog-images/how-to-use-linkedin.png
+image: public/blog-images/how-to-use-linkedin.webp
 slug: how-to-use-linkedin-for-job-search
 keywords: how to use LinkedIn for job search, LinkedIn job search tips 2026, LinkedIn profile optimization, LinkedIn recruiter, LinkedIn job alerts, networking on LinkedIn
 ---

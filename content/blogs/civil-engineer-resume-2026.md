@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Civil Engineer Resume, Structural Engineer Resume, Infrastructure Resume, ATS Resume, Engineering]
 category: Resume Examples
-image: public/blog-images/civil.png
+image: public/blog-images/civil.webp
 slug: civil-engineer-resume-2026
 keywords: civil engineer resume, civil engineering resume 2026, structural engineer resume, infrastructure resume, AutoCAD resume, civil engineering ATS keywords
 ---

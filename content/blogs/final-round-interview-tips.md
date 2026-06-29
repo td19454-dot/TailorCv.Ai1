@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Final Round Interview, Interview Tips, Panel Interview, Job Interview, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/finalround.png
+image: public/blog-images/finalround.webp
 slug: final-round-interview-tips
 keywords: final round interview tips, final interview 2026, last round interview, panel interview tips, executive interview, how to pass final interview, closing the offer
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [AI Resume, Resume Writing, AI Tools, Resume Tips, ATS Resume]
 category: Resume Writing
-image: public/blog-images/ai-resume.png
+image: public/blog-images/ai-resume.webp
 slug: how-to-write-resume-with-ai
 keywords: how to write resume with AI, AI resume writing 2026, ChatGPT resume, AI resume builder, AI resume tips, using AI for resume, AI resume optimization
 ---

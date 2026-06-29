@@ -5,7 +5,7 @@ date: 2026-06-04
 author: TailorCV Team
 tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
-image: public\blog-images\what-is-a-good-ats-score.png
+image: public/blog-images/what-is-a-good-ats-score.webp
 slug: what-is-a-good-ats-score
 keywords: what is a good ats score, good ats score, ats score benchmark, ats resume score
 ---

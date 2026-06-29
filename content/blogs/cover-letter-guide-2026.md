@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Cover Letter, Cover Letter Guide, Job Application, Career Advice, Resume Tips]
 category: Career Advice
-image: public/blog-images/coverletter.png
+image: public/blog-images/coverletter.webp
 slug: cover-letter-guide-2026
 keywords: cover letter guide 2026, how to write a cover letter, cover letter example, cover letter template, job application cover letter, ATS cover letter
 ---

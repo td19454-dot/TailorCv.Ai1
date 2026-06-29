@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Backend, Developer Portfolio, System Design]
 category: Portfolio
-image: public/blog-images/backend-developer-portfolio.png
+image: public/blog-images/backend-developer-portfolio.webp
 slug: backend-developer-portfolio
 keywords: backend developer portfolio, api portfolio, backend projects, system design portfolio, backend engineer portfolio
 ---

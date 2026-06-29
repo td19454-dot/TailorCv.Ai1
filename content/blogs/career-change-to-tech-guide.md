@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Career Change, Career Change to Tech, Tech Career, Career Switch, Career Advice]
 category: Career Growth
-image: public/blog-images/How to Change Careers into Tech 2026.png
+image: public/blog-images/How to Change Careers into Tech 2026.webp
 slug: career-change-to-tech-guide
 keywords: career change to tech, switch to tech career 2026, transition to tech, career change software engineer, how to break into tech, non-tech to tech career
 ---

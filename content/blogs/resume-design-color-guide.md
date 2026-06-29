@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Design, Resume Color, Resume Formatting, Resume Basics, Professional Resume]
 category: Resume Writing
-image: public/blog-images/resume-design-color.png
+image: public/blog-images/resume-design-color.webp
 slug: resume-design-color-guide
 keywords: resume design 2026, resume color guide, should resume have color, professional resume colors, best resume design, resume aesthetics, colorful resume pros cons, resume visual design
 ---

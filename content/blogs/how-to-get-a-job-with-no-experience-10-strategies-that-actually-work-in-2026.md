@@ -5,7 +5,7 @@ date: 2026-05-28
 author: TailorCV Team
 tags: [No Experience Resume, Entry Level Jobs, Career Advice, Fresh Graduates, Career Change]
 category: Career Advice
-image: public/blog-images/jobwithnoexperience.png
+image: public/blog-images/jobwithnoexperience.webp
 slug: how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026
 keywords: how to get a job with no experience, entry level job tips 2026, no experience resume, fresh graduate career advice, career change no experience
 ---

@@ -3533,7 +3533,13 @@ async def mock_interview_page(request: Request):
     return templates.TemplateResponse(
         request,
         "mock_interview.html",
-        {"request": request, "is_logged_in": is_logged_in},
+        {
+            "request": request,
+            "is_logged_in": is_logged_in,
+            "canonical_url": build_absolute_url("/mock-interview"),
+            "software_schema_json": build_software_app_schema(),
+            "page_schema_json": build_page_breadcrumb("AI Mock Interview", "/mock-interview"),
+        },
     )
 
 
@@ -4122,6 +4128,17 @@ def build_software_app_schema() -> str:
     return json.dumps(schema, separators=(",", ":"))
 
 
+def build_page_breadcrumb(name: str, path: str) -> str:
+    """BreadcrumbList JSON-LD (Home > <name>) for a top-level page."""
+    return json.dumps({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": build_absolute_url("/")},
+            {"@type": "ListItem", "position": 2, "name": name, "item": build_absolute_url(path)},
+        ],
+    }, separators=(",", ":"))
+
+
 # Static FAQ used for FAQPage rich results on the homepage / ATS checker pages.
 # Targets high-intent queries (free ATS checker, ATS-friendly resume, etc.).
 HOMEPAGE_FAQS = [
@@ -4333,6 +4350,87 @@ _COMPARISON_PAGES = {
             {"q": "Can I practice mock interviews on TheTailorCV?", "a": "Yes. Practice role-specific AI mock interviews and get instant feedback to improve before the real thing."},
         ],
     },
+    "resume-worded-alternative": {
+        "competitor": "Resume Worded",
+        "audience": "students, freshers & job seekers",
+        "title": "Best Resume Worded Alternative (2026) — Free ATS Score, Resumes & Portfolio",
+        "description": "A Resume Worded alternative with a free ATS score, AI resume tailoring to any job description, cover letters, mock interviews, and a portfolio website builder.",
+        "hero": "Score and tailor your resume to each job, write cover letters, practice interviews, and publish a portfolio website — all in one place.",
+        "props": [
+            {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Check your resume against a real job description before you pay anything."},
+            {"icon": "doc", "title": "AI tailoring to a JD", "link": "/solutions", "text": "Rewrites bullets and adds missing keywords for the exact role you're applying to."},
+            {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Turn your resume into a live, shareable site — Resume Worded doesn't."},
+            {"icon": "ai", "title": "Mock interviews", "link": "/mock-interview", "text": "Practice role-specific AI interviews with instant feedback."},
+        ],
+        "rows": [
+            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited free credits"},
+            {"feature": "Tailor resume to a job description", "us": "<span class='yes'>✓</span> Yes", "them": "Line-by-line tips"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "USD pricing"},
+        ],
+        "faq": [
+            {"q": "Is TheTailorCV a good Resume Worded alternative?", "a": "Yes. TheTailorCV gives you a free ATS score, tailors your whole resume to a job description with AI, writes cover letters, runs mock interviews, and builds a portfolio site — broader than line-by-line scoring."},
+            {"q": "Does TheTailorCV score my resume like Resume Worded?", "a": "Yes — paste your resume and a job description and you get a match score plus the missing keywords and fixes to raise it."},
+            {"q": "Is it free?", "a": "You can check your ATS score and build a portfolio for free; Pro unlocks unlimited optimizations, cover letters and mock interviews."},
+            {"q": "What does TheTailorCV add over Resume Worded?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job — not just scoring suggestions."},
+        ],
+    },
+    "teal-alternative": {
+        "competitor": "Teal",
+        "audience": "students, freshers & job seekers",
+        "title": "Best Teal Alternative (2026) — ATS Resume Optimizer & Portfolio Builder",
+        "description": "A Teal alternative for getting past the ATS: free ATS score, AI resume tailoring to a job description, cover letters, mock interviews, and a live portfolio website.",
+        "hero": "Tailor your resume to each job, beat the ATS, practice interviews, and publish a portfolio site — affordable and built for first-time job seekers.",
+        "props": [
+            {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Instant match score against any job description, free."},
+            {"icon": "doc", "title": "AI resume tailoring", "link": "/solutions", "text": "Rewrites and aligns your resume to the role automatically."},
+            {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Publish a shareable portfolio site from your resume in minutes."},
+            {"icon": "ai", "title": "AI mock interviews", "link": "/mock-interview", "text": "Role-specific practice with instant feedback."},
+        ],
+        "rows": [
+            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "Keyword matching"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Job tracker", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "USD subscription"},
+        ],
+        "faq": [
+            {"q": "Is TheTailorCV a good Teal alternative?", "a": "Yes, especially for ATS-first job seekers. TheTailorCV scores and rewrites your resume for each job, writes cover letters, runs mock interviews, and builds a portfolio website."},
+            {"q": "What does TheTailorCV offer that Teal doesn't?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job description."},
+            {"q": "Is TheTailorCV cheaper than Teal?", "a": "Yes — it's priced affordably for students and freshers, and you can start for free."},
+            {"q": "Does it work for freshers?", "a": "Yes — it's built for first-time job seekers, helping you present projects and skills even with little experience."},
+        ],
+    },
+    "rezi-alternative": {
+        "competitor": "Rezi",
+        "audience": "students, freshers & job seekers",
+        "title": "Best Rezi Alternative (2026) — Free ATS Score, AI Resumes & Portfolio",
+        "description": "A Rezi alternative with a free ATS score, AI resume tailoring to a job description, cover letters, mock interviews, and a portfolio website builder.",
+        "hero": "Get an ATS score, tailor your resume to each job with AI, write cover letters, practice interviews, and publish a portfolio website.",
+        "props": [
+            {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "See your match score against any job description for free."},
+            {"icon": "doc", "title": "AI tailoring to a JD", "link": "/solutions", "text": "Aligns your resume to the exact role you're targeting."},
+            {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Turn your resume into a live portfolio site — Rezi doesn't."},
+            {"icon": "ai", "title": "AI mock interviews", "link": "/mock-interview", "text": "Practice and get instant feedback before the real thing."},
+        ],
+        "rows": [
+            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited free plan"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "USD pricing"},
+        ],
+        "faq": [
+            {"q": "Is TheTailorCV a good Rezi alternative?", "a": "Yes. TheTailorCV offers a free ATS score, AI resume tailoring to a job description, cover letters, AI mock interviews, and a portfolio website builder at an affordable price."},
+            {"q": "Does TheTailorCV build resumes like Rezi?", "a": "Yes — it tailors and rewrites your resume to each job and gives you an ATS match score with the missing keywords."},
+            {"q": "What's different from Rezi?", "a": "TheTailorCV adds a portfolio website builder and AI mock interviews, and is priced affordably for students and freshers."},
+            {"q": "Is there a free option?", "a": "Yes — get a free ATS score and build a portfolio for free, then upgrade to Pro for unlimited use."},
+        ],
+    },
 }
 
 
@@ -4368,6 +4466,21 @@ async def careerflow_alternative_page(request: Request):
     return _render_comparison_page(request, "careerflow-alternative")
 
 
+@app.get("/resume-worded-alternative", response_class=HTMLResponse)
+async def resume_worded_alternative_page(request: Request):
+    return _render_comparison_page(request, "resume-worded-alternative")
+
+
+@app.get("/teal-alternative", response_class=HTMLResponse)
+async def teal_alternative_page(request: Request):
+    return _render_comparison_page(request, "teal-alternative")
+
+
+@app.get("/rezi-alternative", response_class=HTMLResponse)
+async def rezi_alternative_page(request: Request):
+    return _render_comparison_page(request, "rezi-alternative")
+
+
 # ── Programmatic resume-examples hub ─────────────────────────────────────────
 @app.get("/resume-examples", response_class=HTMLResponse)
 async def resume_examples_hub(request: Request):
@@ -4394,12 +4507,25 @@ async def resume_example_detail(request: Request, role: str):
     r = ROLE_SEO.get(role)
     if not r:
         raise HTTPException(status_code=404, detail="Resume example not found")
+    # Per-role FAQs generated from the role's own data → unique per page (good for
+    # "People Also Ask" / featured snippets), and mirrored into FAQPage schema.
+    role_name = r["role"]
+    faqs = [
+        {"q": f"What skills should a {role_name} resume include?",
+         "a": f"Top skills to feature on a {role_name} resume include {', '.join(r['skills'][:8])}. List the ones you're strongest in and back them with results."},
+        {"q": f"What ATS keywords should a {role_name} resume have?",
+         "a": f"Recruiters and ATS scan for keywords like {', '.join(r['keywords'][:8])}. Match these to the exact wording in the job description."},
+        {"q": f"What is a common {role_name} resume mistake?",
+         "a": r["mistakes"][0]},
+        {"q": f"Is theTailorCV's ATS checker free for a {role_name} resume?",
+         "a": "Yes. Paste your resume and a job description to get a free ATS score with the missing keywords and fixes before you apply."},
+    ]
     article_schema = json.dumps({
         "@context": "https://schema.org",
         "@graph": [
             {
                 "@type": "Article",
-                "headline": f"{r['role']} Resume Example & Guide",
+                "headline": f"{role_name} Resume Example & Guide",
                 "description": r["description"],
                 "author": {"@type": "Organization", "name": "theTailorCV"},
                 "publisher": {"@type": "Organization", "name": "theTailorCV"},
@@ -4409,7 +4535,15 @@ async def resume_example_detail(request: Request, role: str):
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "Resume Examples", "item": build_absolute_url("/resume-examples")},
-                    {"@type": "ListItem", "position": 2, "name": f"{r['role']} Resume", "item": build_absolute_url(f"/resume-examples/{role}")},
+                    {"@type": "ListItem", "position": 2, "name": f"{role_name} Resume", "item": build_absolute_url(f"/resume-examples/{role}")},
+                ],
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": f["q"],
+                     "acceptedAnswer": {"@type": "Answer", "text": f["a"]}}
+                    for f in faqs
                 ],
             },
         ],
@@ -4417,6 +4551,7 @@ async def resume_example_detail(request: Request, role: str):
     return templates.TemplateResponse(request, "resume_example.html", {
         "request": request,
         "r": r,
+        "faqs": faqs,
         "seo_og_title": r["title"],
         "seo_og_description": r["description"],
         "canonical_url": build_absolute_url(f"/resume-examples/{role}"),
@@ -4430,7 +4565,12 @@ async def templates_page(request: Request):
     return templates.TemplateResponse(
         request,
         "templates.html",
-        {"request": request},
+        {
+            "request": request,
+            "canonical_url": build_absolute_url("/templates"),
+            "software_schema_json": build_software_app_schema(),
+            "page_schema_json": build_page_breadcrumb("Resume Templates", "/templates"),
+        },
     )
 
 
@@ -4625,7 +4765,12 @@ async def cover_letter_page(request: Request):
     return templates.TemplateResponse(
         request,
         "cover_letter.html",
-        {"request": request},
+        {
+            "request": request,
+            "canonical_url": build_absolute_url("/cover-letter"),
+            "software_schema_json": build_software_app_schema(),
+            "page_schema_json": build_page_breadcrumb("AI Cover Letter Generator", "/cover-letter"),
+        },
     )
 
 
@@ -6147,6 +6292,9 @@ async def portfolio_builder_page(request: Request):
         "logged_in": logged_in,
         "portfolio_domain": PORTFOLIO_DOMAIN,
         "subdomains_enabled": PORTFOLIO_SUBDOMAINS_ENABLED,
+        "canonical_url": build_absolute_url("/portfolio"),
+        "software_schema_json": build_software_app_schema(),
+        "page_schema_json": build_page_breadcrumb("Portfolio Website Builder", "/portfolio"),
     })
 
 
@@ -6862,6 +7010,14 @@ BLOG_REDIRECTS = {
 }
 
 
+# Reverse map: blog slug -> its matching /resume-examples/{role} page. Completes the
+# topic cluster (the role pages already link back to these blogs).
+_BLOG_TO_ROLE = {
+    r["blog"]: {"slug": role_slug, "role": r["role"]}
+    for role_slug, r in ROLE_SEO.items() if r.get("blog")
+}
+
+
 @app.get("/blog/{slug}", response_class=HTMLResponse)
 async def blog_post_page(request: Request, slug: str):
     # Consolidate merged duplicates: permanent-redirect old slugs to their pillar.
@@ -6891,6 +7047,7 @@ async def blog_post_page(request: Request, slug: str):
             "breadcrumb_schema_json": build_breadcrumb_schema(post, canonical_url),
             "faq_schema_json": build_faq_schema(post),
             "author_profile": AUTHOR_PROFILE,
+            "related_resume_example": _BLOG_TO_ROLE.get(post.slug),
         },
     )
 
@@ -6908,6 +7065,9 @@ async def sitemap_xml():
         ("/portfolio", "weekly", "0.8"),
         ("/jobscan-alternative", "monthly", "0.7"),
         ("/careerflow-alternative", "monthly", "0.7"),
+        ("/resume-worded-alternative", "monthly", "0.7"),
+        ("/teal-alternative", "monthly", "0.7"),
+        ("/rezi-alternative", "monthly", "0.7"),
         ("/resume-examples", "weekly", "0.8"),
         ("/mock-interview", "weekly", "0.8"),
         ("/interview-prep", "weekly", "0.7"),

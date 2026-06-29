@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Data Engineer Resume, Data Pipeline Resume, Spark Resume, dbt Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/dataengineer.png
+image: public/blog-images/dataengineer.webp
 slug: data-engineer-resume-2026
 keywords: data engineer resume, data engineering resume 2026, data pipeline resume, Apache Spark resume, dbt resume, Airflow resume, data warehouse resume, data engineer ATS keywords
 ---

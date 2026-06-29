@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Interview Mistakes, Interview Tips, Job Interview, Interview Preparation, Career Advice]
 category: Interview Preparation
-image: public/blog-images/20 Common Interview Mistakes to Avoid in 2026.png
+image: public/blog-images/20 Common Interview Mistakes to Avoid in 2026.webp
 slug: common-interview-mistakes-to-avoid
 keywords: common interview mistakes, interview mistakes to avoid 2026, job interview mistakes, what not to do in an interview, interview errors, interview tips
 ---

@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume No Experience, Entry Level Resume, Resume Matching, First Job Resume, ATS No Experience]
 category: Resume Writing
-image: public/blog-images/how_to_match_resume_no_experience.png
+image: public/blog-images/how_to_match_resume_no_experience.webp
 slug: resume-matching-no-experience
 keywords: resume matching no experience, how to match resume to job description no experience, entry level resume job description match, first job resume matching, ATS resume no work experience 2026
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Data Analyst, Data Scientist, Career Comparison, Data Career, Career Advice]
 category: Career Advice
-image: public/blog-images/data analyst vs data scientist.png
+image: public/blog-images/data analyst vs data scientist.webp
 slug: data-analyst-vs-data-scientist
 keywords: data analyst vs data scientist, data analyst or data scientist, data career 2026, difference between data analyst and data scientist, which data role, data career path
 ---

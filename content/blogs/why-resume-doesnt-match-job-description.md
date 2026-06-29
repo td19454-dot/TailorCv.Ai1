@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Not Matching, Resume Fix, ATS Resume Problems, Resume Job Description Gap, Resume Tips 2026]
 category: Resume Optimization
-image: public/blog-images/why-resume-doesnt-match-job-description.png
+image: public/blog-images/why-resume-doesnt-match-job-description.webp
 slug: why-resume-doesnt-match-job-description
 keywords: why resume doesn't match job description, resume not matching job description, resume job description gap, resume fix 2026, why is my resume not working, resume ATS mismatch
 ---

@@ -5,7 +5,7 @@ date: 2026-06-03
 author: TailorCV Team
 tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
-image: public\blog-images\why-is-my-ats-score-low.png
+image: public/blog-images/why-is-my-ats-score-low.webp
 slug: why-is-my-ats-score-low
 keywords: why is my ats score low, low ats score, improve ats score, ats resume problems
 ---

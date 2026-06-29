@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, UX Design, Case Study, Job Search]
 category: Portfolio
-image: public/blog-images/ux-designer-portfolio-guide.png
+image: public/blog-images/ux-designer-portfolio-guide.webp
 slug: ux-designer-portfolio-guide
 keywords: ux designer portfolio, ux case study, design portfolio, product design portfolio, ux portfolio examples
 ---
