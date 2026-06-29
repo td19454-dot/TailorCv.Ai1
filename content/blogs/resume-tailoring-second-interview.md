@@ -46,7 +46,7 @@ When you come out of a first interview, you have something much more valuable:
 This information is pure gold.
 Most candidates thank the interviewer, go home, and do nothing with it.
 
-The strategic candidate takes 30 minutes to analyze what they learned — and uses it to prepare for the next round.
+The strategic candidate takes 30 minutes to analyze what they learned — and uses it to prepare for the next round. This is the same principle behind reading [hidden keywords in job descriptions](https://thetailorcv.com/blog/hidden-keywords-in-job-description) — the interview reveals the hidden priorities the JD could not fully express.
 
 ---
 
@@ -83,8 +83,8 @@ If you know you are walking into a panel interview or executive interviews where
 This version:
 - Reflects everything you learned from the first round
 - Emphasizes the specific skills and experiences the first interviewer focused on
-- Has your strongest, most relevant bullets front and center
-- Is polished, clean, and error-free for a new set of eyes
+- Has your strongest, most relevant [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) front and center
+- Is polished, clean, and error-free for a new set of eyes — run a final [resume proofreading](https://thetailorcv.com/blog/resume-proofreading-checklist) pass before printing
 
 This is not a completely different resume.
 It is the same document with intentional refinements based on new information.
@@ -125,9 +125,11 @@ Your first interview revealed which 3 the team actually obsesses over.
 Now look at your resume and experience.
 Do your strongest examples align with the true priorities you identified?
 
-If the first interview revealed that the #1 concern is managing a transition from one platform to another — and you have done exactly that in a previous role — that bullet needs to be front and center for the second round.
+If the first interview revealed that the #1 concern is managing a transition from one platform to another — and you have done exactly that in a previous role — that experience needs to be front and center for the second round.
 
 If the first interview revealed that the team is struggling with a specific type of problem you have solved — your answers in the second round should lead with exactly that.
+
+This is also a good moment to check if there are any [ATS keyword gaps](https://thetailorcv.com/blog/ats-keyword-mistakes) in your original resume that the interview revealed you should have addressed.
 
 ### Step 4: Prepare Sharper Stories for Round Two
 
@@ -142,6 +144,7 @@ Your resume got you here.
 Your prepared stories close the deal.
 
 Read [how to prepare for a job interview in 2026](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) for a full preparation framework.
+For the behavioral component specifically, review [behavioral interview questions and answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) to make sure your STAR stories are properly structured.
 
 ---
 
@@ -168,6 +171,7 @@ The second version:
 - Makes the interviewer remember you for the right reason
 
 This is your resume, in prose form, delivered after round one.
+Read [how to follow up after an interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) for a complete guide on timing, format, and what to say.
 
 ---
 
@@ -189,6 +193,8 @@ What replaces it:
 - Team member meet-and-greets (focus on collaboration, communication style, cultural alignment)
 
 Tailor your preparation — not necessarily your resume — for each type of round.
+
+If a final round includes salary discussion, be ready with your research. Review [how to negotiate a salary offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) before reaching that stage.
 
 ---
 
@@ -215,7 +221,7 @@ If you want to revisit your resume between rounds — to confirm your keyword ma
 
 Paste the job description (or the updated priorities you identified from your first interview).
 Upload your existing resume.
-Get a keyword match report and see which areas you could strengthen.
+Get an [ATS match report](https://thetailorcv.com/blog/ats-score-guide) and see which areas you could strengthen.
 
 Even if you do not formally submit an updated resume, reviewing your match score post-interview can sharpen your verbal positioning — helping you lead your round-two answers with the most relevant material.
 

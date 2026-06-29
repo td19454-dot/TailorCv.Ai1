@@ -17,7 +17,7 @@ The credentials are non-negotiable.
 The terminology is highly specific.
 And the type of hospital, clinic, specialty, or system you are applying to changes everything about how your resume should be written.
 
-A generic resume — even a well-formatted one — can fail in healthcare for reasons that would not apply in any other field.
+A [generic resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) — even a well-formatted one — can fail in healthcare for reasons that would not apply in any other field.
 
 Missing a required certification.
 Using the wrong EMR system acronym.
@@ -36,7 +36,7 @@ In most industries, you prove your skills through accomplishments.
 In healthcare, you prove your qualifications through credentials — before accomplishments are even considered.
 
 Licenses, certifications, and registrations are required for most clinical roles.
-A resume that does not clearly display the right credentials is often disqualified before any human reviews it.
+A resume that does not clearly [display the right certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) is often disqualified before any human reviews it.
 
 ### 2. Terminology Is Highly Specific
 
@@ -45,6 +45,8 @@ The wrong terminology signals inexperience or poor fit — even if you have the 
 
 "Patient management" means something very different depending on whether you are a nurse, a hospital administrator, or a physical therapist.
 ATS systems and healthcare recruiters parse for specific terms: EMR platforms, specialty names, care settings, certification acronyms.
+
+Understanding [how ATS works](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) is especially critical in healthcare — large hospital systems use enterprise-grade platforms that filter heavily on terminology.
 
 ### 3. The Setting Matters as Much as the Role
 
@@ -87,7 +89,7 @@ This section eliminates the recruiter's first concern immediately.
 
 ### Clinical Resume Keywords by Specialty
 
-Your resume must use the specific terminology of your clinical specialty.
+Your [resume keywords](https://thetailorcv.com/blog/resume-keywords-guide) must use the specific terminology of your clinical specialty.
 
 **ICU / Critical Care:**
 vasopressor management, ventilator weaning, hemodynamic monitoring, arterial line management, Swan-Ganz catheter, CRRT, sedation management, rapid response, titration of drips
@@ -104,7 +106,7 @@ developmental assessment, family-centered care, pediatric dosing calculations, g
 **Surgical / Perioperative:**
 scrub tech, circulating, PACU, sterile field maintenance, surgical instrument knowledge, positioning, counts, anesthesia support
 
-Match the keywords from the job description exactly.
+Match the keywords from the job description exactly. Use the [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and the [hidden keywords technique](https://thetailorcv.com/blog/hidden-keywords-in-job-description) to find terminology embedded in the posting that isn't always obvious.
 If the unit uses "ARDS management" and you use "respiratory failure care" — update your language.
 
 ### EMR Systems
@@ -126,12 +128,14 @@ Clinical resumes are often listed as pure responsibility statements.
 
 This is a missed opportunity.
 
-Quantify where possible:
+[Quantify wherever possible](https://thetailorcv.com/blog/how-to-quantify-resume-achievements):
 - Patient-to-nurse ratios
 - Volume of patients (census numbers, admission rates)
 - Outcomes contributed to (reduced HAPU rates, improved sepsis bundle compliance, reduced CAUTI incidence)
 - Charge nurse responsibilities
 - Preceptorship metrics (number of new nurses trained, months of preceptorship)
+
+Read [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) for the formula — then adapt it to clinical language.
 
 **Stronger bullet:**
 "Served as primary nurse for 3–4 critically ill patients per shift in a 32-bed MICU; served as charge nurse 40% of shifts; precepted 8 new graduate nurses over 18 months, all of whom passed NCLEX on first attempt."
@@ -159,6 +163,8 @@ But the healthcare-specific layer matters.
 Use the terminology appropriate to the specific administrative role and setting.
 A revenue cycle manager needs different keywords than a Chief Nursing Officer.
 
+For administrative roles, the [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary) should lead with the specific outcomes and regulatory wins that matter most to healthcare organizations — not generic management language.
+
 ### Show Regulatory and Accreditation Awareness
 
 Healthcare administrators must demonstrate knowledge of the regulatory environment.
@@ -177,7 +183,7 @@ Allied health roles — physical therapy, occupational therapy, respiratory ther
 
 ### Universal Allied Health Resume Rules
 
-**Lead with licensure and certifications** — Same principle as clinical nursing roles.
+**Lead with licensure and certifications** — Same principle as clinical nursing roles. Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for format and placement.
 
 **Include specific patient populations** — Peds vs. geriatric vs. adult vs. neuro vs. orthopedic. The population matters for most allied health applications.
 
@@ -185,7 +191,7 @@ Allied health roles — physical therapy, occupational therapy, respiratory ther
 
 **Specify settings** — Acute care vs. outpatient vs. home health vs. SNF. Each requires different competencies and signals.
 
-**Match continuing education to the job description** — If the role values a specific specialty certification (e.g., CLT for lymphedema therapy, CES for exercise physiology), list it prominently if you have it.
+**Match continuing education to the job description** — If the role values a specific specialty certification, list it prominently if you have it.
 
 ---
 
@@ -200,10 +206,10 @@ These systems:
 - May require specific application fields (licensure number, shift availability, PRN interest)
 
 Your resume, when uploaded, will be parsed by these systems.
-Clean, simple formatting is essential.
+Avoid [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) — clean, simple formatting is essential.
 No tables, no columns, no graphics.
 
-Use [TailorCV's ATS optimizer](https://www.thetailorcv.com/solutions) to check your keyword match and formatting before uploading to a healthcare ATS.
+Use [TailorCV's ATS optimizer](https://www.thetailorcv.com/solutions) to check your [keyword match score](https://thetailorcv.com/blog/ats-score-guide) and formatting before uploading to a healthcare ATS.
 The tool flags both formatting issues that cause parsing failures and missing keywords from the job description.
 
 ---
@@ -277,7 +283,7 @@ Tailor your resume to the specific setting, population, and priorities of each r
 Lead with your credentials.
 Use the specialty language the unit uses.
 Quantify your clinical volume and outcomes.
-Check your ATS score before applying.
+Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) before applying.
 
 The right role is out there.
 Your resume should make it impossible to overlook you.

@@ -25,7 +25,7 @@ That is the problem.
 Executive resumes are not bigger versions of mid-level resumes.
 They are fundamentally different documents, built around different signals, reviewed by different people, and evaluated against completely different criteria.
 
-This guide walks you through every difference — and exactly how to tailor your resume for executive-level applications.
+This guide walks you through every difference — and exactly how to tailor your resume for executive-level applications. If you are 50+ and navigating this landscape, also read [resume tailoring for job seekers over 50](https://thetailorcv.com/blog/resume-tailoring-over-50) for additional considerations.
 
 ---
 
@@ -57,7 +57,7 @@ The resume needs to reflect that.
 
 At VP and above, your resume may be reviewed by:
 
-- **Executive search firms (headhunters)** — They are filtering for specific board-level signals, track records, and cultural fit for the client company. They are experienced resume readers who can immediately distinguish executive presence from manager-level presentation.
+- **Executive search firms (headhunters)** — They are filtering for specific board-level signals, track records, and cultural fit for the client company. They are experienced resume readers who can immediately distinguish executive presence from manager-level presentation. Understanding [how recruiters read resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes) applies here — but the stakes and the speed of judgment are different.
 - **Board members or board committees** — For C-suite roles, board members are often involved in final selection. They want strategic thinkers and proven P&L leaders.
 - **HR at large enterprises** — They still use structured criteria, but at senior levels, criteria are more qualitative.
 - **Peer interviewers** — Other VPs and C-suite members often participate in executive hiring.
@@ -73,8 +73,7 @@ All of them want evidence of business impact, leadership philosophy, and strateg
 
 At the mid-level, one page is ideal.
 At the executive level, two pages is standard.
-
-More than two pages signals that you cannot edit — a concerning trait for someone who will need to communicate strategy clearly.
+Check [ideal resume length guidance](https://thetailorcv.com/blog/ideal-resume-length-guide) — more than two pages signals that you cannot edit, a concerning trait for someone who will need to communicate strategy clearly.
 
 Prioritize ruthlessly.
 Everything that does not directly support your candidacy for this specific role does not belong on this resume.
@@ -85,6 +84,8 @@ Your executive resume should open with a powerful 3–5 sentence executive summa
 
 Not a list of adjectives.
 Not a generic paragraph about your "passion for leadership."
+
+Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) for the foundational framework — then elevate it to executive level.
 
 An executive summary that answers:
 - What is your leadership identity? (transformational, operational, revenue, turnaround, growth)
@@ -119,7 +120,7 @@ The executive version answers: What changed? By how much? In what timeframe?
 Lead with scale and result.
 End with context and method.
 
-Use metrics aggressively:
+[Quantify your achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) aggressively at this level:
 - Revenue impact (grew revenue by X, reduced churn by X%)
 - Team scale (led 120-person organization, built from 8 to 45 engineers)
 - Budget ownership (managed $18M annual technology budget)
@@ -142,7 +143,7 @@ If you have:
 ### 5. Strategic Initiatives, Not Operational Tasks
 
 Executives are hired to drive strategy.
-Your resume should show strategic decisions you made, not operational tasks you completed.
+Your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) should show strategic decisions you made, not operational tasks you completed.
 
 **Operational (wrong for executive):**
 "Managed vendor relationships for cloud infrastructure providers."
@@ -167,11 +168,11 @@ It contains:
 - What has not been working
 - What success looks like in 12–18 months
 
-Tailor your executive summary and top bullets directly to these priorities.
+Use the [hidden keywords technique](https://thetailorcv.com/blog/hidden-keywords-in-job-description) to decode the subtext of this document — often the real priorities are buried in how the brief is written, not just in what it lists explicitly.
 
 ### Mirror the Company's Growth Stage
 
-The executive competencies that matter at a $5M Series A company are different from those that matter at a $500M pre-IPO company.
+The executive competencies that matter at a $5M Series A company are different from those that matter at a $500M pre-IPO company. See [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise) for how this plays out across different company types.
 
 - **Early stage:** Speed, scrappiness, 0-to-1 building, tolerance for ambiguity
 - **Growth stage:** Scaling systems, building process while preserving culture, hiring and developing teams
@@ -185,7 +186,7 @@ At large enterprises, even executive applications go through some form of applic
 Executive search firms use their own database systems.
 
 Use [TailorCV's resume optimizer](https://www.thetailorcv.com/solutions) to check keyword match against the role description.
-The keywords at executive level are different — "P&L ownership," "organizational transformation," "board-level communication," "M&A integration" — but they still matter.
+The keywords at executive level are different — "P&L ownership," "organizational transformation," "board-level communication," "M&A integration" — but they still matter. Understanding [how ATS works](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) helps you format your executive resume to pass both systems and human review.
 
 ---
 
@@ -213,7 +214,7 @@ Put your highest-impact achievements at the top.
 
 **Using mid-level language**
 "Responsible for" is manager language.
-"Drove," "transformed," "built," "led," "owned" are executive language.
+[Action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume) like "Drove," "Transformed," "Built," "Led," "Owned" are executive language.
 
 **No executive summary**
 Starting an executive resume with work experience is a missed opportunity.
@@ -222,6 +223,9 @@ Your summary is where you set the frame before the reader even reaches your hist
 **Ignoring company culture fit signals**
 At the executive level, cultural fit is scrutinized as heavily as competency.
 Research the company's leadership culture and include one or two genuine alignment signals in your summary.
+
+**Neglecting your LinkedIn profile**
+After reviewing your resume, hiring committees and search firms always check your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide). Misalignment between the two can undermine a strong executive application.
 
 ---
 
@@ -237,7 +241,7 @@ Generally 15–20 years of relevant experience. Earlier roles can be summarized 
 
 ### Should I include compensation on an executive resume?
 
-No. Compensation is discussed during the interview process or in initial conversations with the search firm.
+No. Compensation is discussed during the interview process or in initial conversations with the search firm. Learn [how to negotiate a salary offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) when the time comes.
 
 ### What if I am moving from a functional executive role to a general management or CEO role?
 

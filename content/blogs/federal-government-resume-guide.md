@@ -23,7 +23,7 @@ They use a specific format that USAJOBS systems require.
 They ask for information you would never put on a private-sector resume.
 And they are reviewed by HR specialists, not just hiring managers — people who compare your application against specific qualification criteria line by line.
 
-This guide walks you through every difference, every requirement, and exactly how to write a federal resume that actually gets to the review stage.
+This guide walks you through every difference, every requirement, and exactly how to write a federal resume that actually gets to the review stage. If you are also applying internationally, the [international resume tailoring guide](https://thetailorcv.com/blog/international-resume-tailoring-guide) covers how resume expectations vary by country.
 
 ---
 
@@ -48,6 +48,7 @@ This guide walks you through every difference, every requirement, and exactly ho
 In the private sector, brevity is a virtue.
 Recruiters spend 6–7 seconds on a resume.
 One page says you respect their time.
+Check [ideal resume length guidance](https://thetailorcv.com/blog/ideal-resume-length-guide) for private-sector applications — the rules are the complete opposite here.
 
 In the federal hiring process, HR specialists are evaluating whether you meet specific qualification standards.
 They are not doing a quick scan.
@@ -56,7 +57,7 @@ They are reading for evidence.
 Your resume must provide enough detail for them to make that determination without guessing.
 
 A federal HR specialist cannot call you to clarify.
-They cannot check LinkedIn.
+They cannot check [your LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide).
 If your resume does not demonstrate that you meet the qualification — even if you clearly do — you can be disqualified on paper.
 
 Every role you list needs:
@@ -79,7 +80,7 @@ The Resume Builder ensures all required fields are filled.
 It formats your resume to meet federal standards automatically.
 HR specialists can review it in the system they use.
 
-Uploaded resumes (PDF or Word) are allowed for some agencies, but the Resume Builder is safer and more complete.
+Uploaded resumes (PDF or Word) are allowed for some agencies, but the Resume Builder is safer and more complete. If you do upload a document, review [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) to ensure your file parses correctly.
 
 Go to [USAJOBS.gov](https://www.usajobs.gov), create an account, and build your resume within the platform for each type of federal application.
 
@@ -105,6 +106,8 @@ A 3–5 sentence summary that captures your professional identity, years of expe
 Keep it factual.
 Federal reviewers value substance over polish.
 
+Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) for a strong foundation — then adapt it to the more detailed, evidence-based tone federal applications require.
+
 ### 3. Work Experience — The Core of a Federal Resume
 
 This section must be exhaustive.
@@ -122,6 +125,8 @@ Your duty descriptions should mirror the language in the job vacancy announcemen
 USAJOBS postings are detailed.
 Match your experience descriptions to the duties listed in the "What You'll Do" section.
 
+When writing your accomplishment bullets, follow the same principles as any strong resume: [quantify your achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) with specific numbers, outcomes, and timelines.
+
 ### 4. Education
 
 Include:
@@ -132,6 +137,8 @@ Include:
 - GPA (if above 3.0 or required)
 - Relevant coursework (if applying for entry-level professional positions)
 - Honors and awards
+
+Read [how to list education on a resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) for best practices — then adapt by including more detail than a private-sector resume would require.
 
 For positions requiring a specific degree or field, make sure your degree's official title clearly matches or is explained.
 
@@ -168,15 +175,17 @@ List:
 - Security clearance level and status (active clearances are highly valuable)
 - Licenses (professional, state, federal)
 
+Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for format and placement guidance.
+
 ### 7. Volunteer Work, Publications, Awards
 
 These sections matter more in federal applications than private-sector ones.
 
 Federal evaluators look at the whole person.
 Include:
-- Volunteer work with civic or government organizations
+- [Volunteer work](https://thetailorcv.com/blog/volunteer-work-on-resume) with civic or government organizations
 - Publications or technical papers
-- Awards and commendations (especially any government-specific awards)
+- [Awards and achievements](https://thetailorcv.com/blog/awards-achievements-on-resume) (especially any government-specific awards)
 - Professional memberships in relevant associations
 
 ---
@@ -185,7 +194,7 @@ Include:
 
 Every USAJOBS posting includes:
 
-**Duties section:** What you will actually do. Mirror this language in your resume.
+**Duties section:** What you will actually do. Mirror this language in your resume. Use the [hidden keywords technique](https://thetailorcv.com/blog/hidden-keywords-in-job-description) to find the real priorities buried in the posting language.
 
 **Qualifications section:** The exact requirements you must meet to be considered. HR specialists check your resume against these.
 
@@ -200,11 +209,11 @@ Tailor your resume to the duties and qualifications sections specifically.
 
 ## Tips for Getting Past the HR Specialist Review
 
-1. **Use exact phrases from the vacancy announcement.** If the posting says "program management," use that phrase — not "project oversight."
+1. **Use exact phrases from the vacancy announcement.** If the posting says "program management," use that phrase — not "project oversight." This is the core principle of [matching keywords to a job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 
 2. **Never assume experience is implied.** If you managed a budget, say the dollar amount. If you supervised staff, give the number. Federal HR cannot infer.
 
-3. **Repeat relevant keywords throughout your experience descriptions.** Natural repetition across multiple roles reinforces your qualifications.
+3. **Repeat relevant keywords throughout your experience descriptions.** Natural repetition across multiple roles reinforces your qualifications. Learn what [keyword density](https://thetailorcv.com/blog/resume-keyword-density-guide) is appropriate for federal applications.
 
 4. **Include all qualifying experience, even older roles.** Federal qualification standards often allow experience from any period — older experience still counts.
 

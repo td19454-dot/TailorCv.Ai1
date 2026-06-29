@@ -45,7 +45,7 @@ It does not.
 
 You still need a strong resume.
 You still need to tailor it for the role.
-You still need to pass the same process that external candidates go through.
+You still need to pass the same process that external candidates go through — including, at large companies, [ATS filtering](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it).
 
 But you have one advantage external candidates do not: insider knowledge of exactly what the hiring manager actually needs.
 
@@ -77,13 +77,13 @@ Write a full, tailored resume.
 Do not send your LinkedIn profile.
 Do not send your two-year-old resume with a few updates.
 
-Create a version specifically for this role, following the job description as closely as an external candidate would.
+Understand [how to update your resume](https://thetailorcv.com/blog/how-to-update-your-resume) properly before starting — create a version specifically for this role, following the job description as closely as an external candidate would.
 
 Why? Because the hiring committee may include people who have never worked with you.
 HR may require a formal application with resume attached.
 ATS systems at large companies often process internal applicants the same way as external ones.
 
-Use [TailorCV's optimizer](https://www.thetailorcv.com/solutions) to check your ATS match score for the internal job description.
+Use [TailorCV's optimizer](https://www.thetailorcv.com/solutions) to check your [ATS match score](https://thetailorcv.com/blog/ats-score-guide) for the internal job description.
 Yes — internal roles at large companies often go through ATS too.
 
 ### 2. Use Internal Language Strategically
@@ -106,6 +106,8 @@ This is context that makes you uniquely qualified.
 External candidates show results in abstract numbers.
 You can show results in context your interviewers will immediately recognize.
 
+[Quantifying your achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) with company-specific context is your biggest advantage over external candidates.
+
 **External candidate bullet:**
 "Improved customer engagement metrics by 35% through cross-functional campaign initiatives."
 
@@ -118,7 +120,7 @@ That context hits differently.
 
 ### 4. Address the "Why Are You Leaving Your Team" Question in Your Summary
 
-Your summary should briefly signal that this move is about growth, not escape.
+Your [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary) should briefly signal that this move is about growth, not escape.
 
 **Weak:** "Experienced marketing associate with strong analytical skills seeking new challenges."
 
@@ -132,23 +134,21 @@ The reader sees: this person is ready to grow, they want to stay in this company
 
 In fact, internal candidates who coast on relationships and submit weak applications often lose to strong external candidates — and then the professional awkwardness is real.
 
-Submit the best possible tailored application.
+[Check for resume red flags](https://thetailorcv.com/blog/resume-red-flags) before submitting, and make sure your application is as polished as any external candidate's.
 Let the relationship be a plus, not the plan.
 
 ---
 
 ## The Internal Application Resume Structure
 
-Your internal resume should follow the same structure as any strong resume:
+Your internal resume should follow the same [anatomy of a strong resume](https://thetailorcv.com/blog/anatomy-of-a-resume):
 
 1. **Professional summary** — tailored to this exact role, signals why you want this role at this company
-2. **Skills** — matched to the job description keywords
+2. **Skills** — [matched to the job description keywords](https://thetailorcv.com/blog/resume-skills-match-job-description)
 3. **Work experience** — company roles with quantified results; lead with most relevant bullets
 4. **Education & certifications** — same as any application
 
 One addition for internal resumes: if there are company-specific projects, initiatives, or milestones you led or contributed to, name them explicitly. External candidates cannot do this.
-
-Read [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) for the core tailoring framework.
 
 ---
 
@@ -175,7 +175,7 @@ The hiring team does not all know you.
 Even those who do want to see you take the role seriously.
 
 **Skipping the tailoring**
-Your resume should match the job description as closely as possible.
+Your resume should [match the job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) as closely as possible.
 Use the same keywords. Check your ATS score.
 
 **Being vague about why you want the role**
@@ -186,6 +186,9 @@ Be specific.
 **Ignoring the interview process**
 Internal candidates sometimes over-prepare for the political side and under-prepare for the actual interview.
 Practice your answers. Use [TailorCV's AI mock interview](https://www.thetailorcv.com/mock-interview) if you want to rehearse in a low-stakes environment.
+
+**Not writing a cover letter**
+A [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) is even more important for internal roles — it gives you space to explain your motivation and growth trajectory in a way the resume alone cannot.
 
 ---
 
@@ -204,7 +207,7 @@ The useful response:
 - Build a plan to address it
 - Apply again in 6–12 months with a stronger case
 
-Read [how to handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) for a full guide on processing and bouncing back.
+Read [how to handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) for a full guide on processing and bouncing back. Also consider whether [networking within your organization](https://thetailorcv.com/blog/networking-tips-for-job-search) could help you build visibility for future opportunities.
 
 ---
 
@@ -250,7 +253,7 @@ An internal job application is not a formality.
 It is a real competition where your insider knowledge is your edge — but only if you use it.
 
 Write a full, tailored resume.
-Match the job description language.
+[Match the job description language](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 Quantify your company-specific contributions.
 Handle the politics with professionalism.
 

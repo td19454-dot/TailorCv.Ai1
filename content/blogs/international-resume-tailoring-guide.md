@@ -36,7 +36,7 @@ The reality is that resume conventions — format, length, photo, personal detai
 
 Applying with a US-style resume to a German, UK, or Australian employer signals that you did not bother to understand the market you are entering.
 
-This guide gives you the country-specific knowledge you need.
+This guide gives you the country-specific knowledge you need. For federal government applications in the US specifically, see the [federal government resume guide](https://thetailorcv.com/blog/federal-government-resume-guide) — that is another major context where standard resume advice fails candidates.
 
 ---
 
@@ -58,19 +58,19 @@ It makes you look like you did not research the market.
 
 ## The United States
 
-**Length:** 1 page for most roles. 2 pages for senior professionals with 10+ years of experience.
+**Length:** 1 page for most roles. 2 pages for senior professionals with 10+ years of experience. See [ideal resume length guidance](https://thetailorcv.com/blog/ideal-resume-length-guide) for a full breakdown.
 
 **Photo:** Never. Including a photo is considered a red flag in the US and can expose employers to discrimination liability.
 
 **Personal details:** No date of birth, no marital status, no nationality, no national ID. Name, email, phone, city/state, and LinkedIn URL are standard.
 
-**Format:** Clean, ATS-optimized, single-column preferred. Skills section, professional summary, work experience (reverse chronological), education.
+**Format:** Clean, ATS-optimized, single-column preferred. Skills section, [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary), work experience (reverse chronological), education.
 
-**Objective vs. Summary:** Summary is now standard. Objective statements are considered outdated.
+**Objective vs. Summary:** Summary is now standard. Objective statements are considered outdated. Read [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary) for the differences.
 
-**Cover letter:** Optional for most applications but recommended for roles you strongly want.
+**Cover letter:** Optional for most applications but recommended for roles you strongly want. See the [cover letter guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026).
 
-**ATS:** 98% of Fortune 500 companies and most mid-size companies use ATS. Keyword optimization is critical.
+**ATS:** 98% of Fortune 500 companies and most mid-size companies [use ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). Keyword optimization is critical. Avoid [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) that cause parsing failures.
 
 Use [TailorCV's ATS optimizer](https://www.thetailorcv.com/solutions) before applying to any US role.
 
@@ -84,7 +84,7 @@ Use [TailorCV's ATS optimizer](https://www.thetailorcv.com/solutions) before app
 
 **Personal details:** Name, contact details, and LinkedIn are standard. Date of birth and nationality are not expected. Professional development and qualifications are important.
 
-**Format:** Similar to US in most respects. However, a "Personal Statement" (2–3 sentences at the top) is more common than in the US.
+**Format:** Similar to US in most respects. However, a "Personal Statement" (2–3 sentences at the top) is more common than in the US. This is essentially the UK equivalent of a [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary).
 
 **References:** "References available upon request" is standard — or sometimes two named references are included at the bottom for more traditional industries.
 
@@ -92,7 +92,7 @@ Use [TailorCV's ATS optimizer](https://www.thetailorcv.com/solutions) before app
 
 **Spelling:** British English is expected. "Organisation" not "organization." "Colour" not "color." ATS and human reviewers in the UK notice American spelling inconsistencies.
 
-**Salary:** Do not list salary history on your CV. If asked in an application form, give a range based on research.
+**Salary:** Do not list salary history on your CV. If asked in an application form, give a range based on research. Read [how to negotiate a salary offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) before entering any salary range.
 
 ---
 
@@ -110,7 +110,7 @@ Germany has some of the most specific resume conventions in the world.
 
 **The "Anschreiben" (Cover Letter):** In Germany, the cover letter (Anschreiben) is typically more formal and important than in many other markets. It should be addressed to a specific person and follow formal letter conventions.
 
-**Certifications and qualifications:** Germans are extremely credential-focused. Any relevant diploma, certificate, or professional qualification should be listed with the issuing institution.
+**Certifications and qualifications:** Germans are extremely credential-focused. Any relevant diploma, certificate, or professional qualification should be listed with the issuing institution. Review [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for the right format before adapting to German conventions.
 
 **Dates:** Day/Month/Year format is standard in Germany. (21.03.2022, not March 21, 2022 or 03/21/2022)
 
@@ -142,9 +142,9 @@ Germany has some of the most specific resume conventions in the world.
 
 **Language:** Canada is officially bilingual. In Quebec and some federal roles, bilingual French-English capability is a significant advantage. Check the posting language.
 
-**Format:** Extremely similar to US. ATS optimization is important. Many Canadian employers use the same ATS platforms as US companies.
+**Format:** Extremely similar to US. [ATS optimization](https://thetailorcv.com/blog/ats-score-guide) is important. Many Canadian employers use the same ATS platforms as US companies.
 
-**Key difference:** Volunteer work and community involvement carry more cultural weight in Canadian hiring than in US applications. If you have strong community involvement, include it.
+**Key difference:** Volunteer work and community involvement carry more cultural weight in Canadian hiring than in US applications. If you have strong community involvement, [include it on your resume](https://thetailorcv.com/blog/volunteer-work-on-resume).
 
 ---
 
@@ -188,7 +188,7 @@ Germany has some of the most specific resume conventions in the world.
 
 **Language:** English is standard for professional applications. Indian CVs are virtually always in English.
 
-**Format:** Career objective, education (often listed before work experience for recent graduates), work experience, skills, projects, certifications, personal details.
+**Format:** Career objective, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) (often listed before work experience for recent graduates), work experience, skills, projects, certifications, personal details.
 
 ---
 
@@ -209,9 +209,13 @@ Build a country-specific base version that follows the local conventions:
 - Adjust spelling and date formats
 - Structure sections in the expected order
 
+Track these versions using the [managing multiple resume versions](https://thetailorcv.com/blog/managing-multiple-resume-versions) system — the file naming and folder structure guidance there applies directly to international versions too.
+
 ### Step 3: Tailor for the Specific Role
 
 Once you have a country-appropriate base, tailor it for the specific job description exactly as you would for any application — keyword matching, summary alignment, skills emphasis.
+
+Use the [hidden keywords technique](https://thetailorcv.com/blog/hidden-keywords-in-job-description) to decode what the international employer is really looking for beyond the explicit requirements.
 
 Use [TailorCV's optimizer](https://www.thetailorcv.com/solutions) for the keyword matching step.
 The tool works regardless of country — paste the job description and upload your resume to see your keyword match and gap analysis.
