@@ -13,7 +13,7 @@ keywords: managing multiple resume versions, multiple tailored resumes, resume v
 You know you should tailor your resume for every job.
 
 You have read the guides.
-You understand why generic resumes fail.
+You understand why [generic resumes fail](https://thetailorcv.com/blog/tailored-vs-generic-resume).
 You believe in the process.
 
 But here is the problem nobody talks about:
@@ -54,6 +54,8 @@ A good resume management system means:
 - You can update one version without breaking others
 - You can reuse strong tailoring work instead of redoing it
 - You have a clean base to start from every time
+
+Use the [resume customization checklist](https://thetailorcv.com/blog/resume-customization-checklist) to confirm each version is properly tailored before you send it.
 
 ---
 
@@ -100,7 +102,7 @@ Rules:
 2. Include the target role, not the company you worked at
 3. Include the target company name (or "Generic" if it is a reusable version)
 4. Include the month/year so you know which is current
-5. Always save as PDF for sending, keep the editable version as .docx
+5. Always save as PDF for sending — read the [resume file format guide](https://thetailorcv.com/blog/resume-file-format-guide) to understand why PDF is the right choice; keep the editable version as .docx
 
 Never save over old versions.
 Create a new file with an updated date.
@@ -147,7 +149,7 @@ Minimum columns:
 
 Why the resume version column matters:
 If Stripe invites you for an interview, you need to know exactly which resume you sent.
-Your cover letter references it.
+Your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) references it.
 Your interview preparation depends on it.
 If a recruiter quotes something back at you, you need to know where it came from.
 
@@ -169,12 +171,13 @@ Create one polished, tailored resume per role category you are applying for.
 
 Spend real time on these.
 These are your 80% versions — strong enough to apply with minor tweaks.
+Use [TailorCV's ATS-friendly templates](https://www.thetailorcv.com/templates) as your starting point for each base version.
 
 **Version 2: The Company-Specific Version**
 For companies you really want, do a full tailoring from the role-type base.
-Match the specific JD language.
+[Match the specific JD language](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 Research the company and add one or two company-specific signals in your summary.
-Check your ATS score with [TailorCV](https://www.thetailorcv.com/solutions) before sending.
+Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) with [TailorCV](https://www.thetailorcv.com/solutions) before sending.
 
 **Version 3: The Reach Resume**
 For stretch roles — positions where you are slightly underqualified or making a career shift — you need a separately tailored version.
@@ -201,8 +204,6 @@ TailorCV does the heavy editing.
 
 [Start Tailoring Your Resumes Free](https://www.thetailorcv.com/solutions)
 
-You can also start from [professionally designed ATS-friendly templates](https://www.thetailorcv.com/templates) to build your base versions on a strong foundation.
-
 ---
 
 ## Version Control: When to Update vs. Create New
@@ -218,7 +219,7 @@ You can also start from [professionally designed ATS-friendly templates](https:/
 **When to retire old versions:**
 Review your folder every month.
 If a version is more than 3 months old and you are actively job searching, it is probably stale.
-Archive it (do not delete it) and create a fresh version from your master.
+Archive it (do not delete it) and create a fresh version from your master. The [how to update your resume guide](https://thetailorcv.com/blog/how-to-update-your-resume) covers what specifically needs to change when you refresh a version.
 
 ---
 
@@ -241,6 +242,9 @@ Start with the master every time.
 If you have six versions that differ by two sentences each, consolidate.
 Fewer, stronger base versions are more useful than dozens of marginally different ones.
 
+**Not proofreading each version before sending**
+Use the [resume proofreading checklist](https://thetailorcv.com/blog/resume-proofreading-checklist) to catch errors that creep in when you are customizing across multiple files.
+
 ---
 
 ## FAQ
@@ -259,7 +263,7 @@ Create separate versions for each role — even if the company is the same. Diff
 
 ### Should my resume versions have different ATS scores?
 
-Yes, and that is the point. Each version is tailored to a specific type of role or specific company — so the keyword match scores will differ. Use [TailorCV](https://www.thetailorcv.com/solutions) to check the ATS score for each version against its target job description.
+Yes, and that is the point. Each version is tailored to a specific type of role or specific company — so the keyword match scores will differ. Use [TailorCV](https://www.thetailorcv.com/solutions) to check the [ATS score](https://thetailorcv.com/blog/ats-score-guide) for each version against its target job description.
 
 ---
 

@@ -25,7 +25,7 @@ Age bias.
 
 It is illegal.
 It is pervasive.
-And it shows up in resume screening, ATS scoring, and recruiter assumptions before anyone has even read a single line about who you are.
+And it shows up in resume screening, [ATS scoring](https://thetailorcv.com/blog/ats-score-guide), and recruiter assumptions before anyone has even read a single line about who you are.
 
 This guide is for you.
 
@@ -54,7 +54,7 @@ The signals that trigger bias — often before anyone consciously decides anythi
 - Outdated technologies that are no longer in use
 - No digital, remote, or cloud-related experience visible
 - Email address on a provider that signals older habits (AOL, Hotmail)
-- An "Objective" statement instead of a professional summary
+- An "Objective" statement instead of a [professional summary](https://thetailorcv.com/blog/resume-objective-vs-summary)
 - Listing all jobs, including entry-level roles from 25 years ago
 
 **In ATS:**
@@ -72,6 +72,7 @@ But they all influence how your resume is perceived before your strengths are ev
 You do not need to show everything.
 
 Your resume is a marketing document, not a sworn affidavit.
+Read [ideal resume length guidance](https://thetailorcv.com/blog/ideal-resume-length-guide) — even for senior professionals, keeping your work history focused is better than showing everything.
 
 Limit your work history to the past 10–15 years.
 
@@ -89,8 +90,7 @@ This approach keeps your recent experience front and center while preserving the
 
 If you graduated before the year 2000, remove your graduation year entirely.
 
-List your degree and institution.
-Omit the year.
+Read [how to list education on a resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) — for experienced professionals, listing degree and institution without the year is standard and raises no flags.
 
 Nobody will question it.
 It is standard practice for experienced professionals.
@@ -106,12 +106,14 @@ If you work with cloud platforms (AWS, Azure, Google Cloud) — include them.
 If you use project management tools like Jira, Notion, Asana — list them.
 If you have delivered results in a remote or hybrid environment — say so.
 
+Review [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) to make sure your [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description) reflects current standards.
+
 If you have genuinely not used modern tools, now is a good time to:
 - Complete a short online certification (Google Analytics, AWS Cloud Practitioner, Scrum certification)
 - Learn and use the most common tools in your industry
 - List any recent learning explicitly: "Currently completing [Certification]"
 
-Read [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) for quick certifications that signal modernity without requiring months of study.
+Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for quick certifications that signal modernity without requiring months of study.
 
 ---
 
@@ -119,7 +121,7 @@ Read [best free online certificates for resume](https://thetailorcv.com/blog/bes
 
 The Objective Statement — "Seeking a challenging position where I can utilize my skills..." — is the most reliable signal of a resume from 2005.
 
-Replace it immediately with a powerful professional summary.
+Understanding the [difference between resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary) is critical here. Replace it immediately with a powerful professional summary.
 
 Your summary should:
 - Use present tense and modern language
@@ -141,7 +143,7 @@ Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-r
 
 ## Step 4: Lead With Impact, Not Tenure
 
-Every bullet point should lead with a result — not with how long you did something.
+Every [bullet point](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) should lead with a result — not with how long you did something.
 
 **Signals age (tenure-first):**
 "For 12 years, led the regional sales team across the Northeast and Great Lakes territories."
@@ -152,11 +154,14 @@ Every bullet point should lead with a result — not with how long you did somet
 The second version is more compelling to every reader of every age.
 It also does not invite mental math about when this happened.
 
+[Quantifying your achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) with specific numbers replaces the implicit message of "I've been around a long time" with "here is the value I created."
+
 ---
 
 ## Step 5: Modernize Your Formatting
 
 Old resume formats signal old-era job searching.
+Review [resume fonts and formatting](https://thetailorcv.com/blog/resume-fonts-guide) to make sure your document looks contemporary.
 
 **Replace:**
 - Two-column layouts that some ATS cannot parse
@@ -185,13 +190,13 @@ Your email address matters.
 An AOL or Hotmail address signals a digital era that ended two decades ago.
 Create a professional Gmail address if you have not already.
 
-Your LinkedIn profile should be:
+Your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) should be:
 - Complete with a current, professional photo
 - Updated with your recent roles and key accomplishments
 - Active — even occasional engagement shows you are current
 - Consistent with the resume you are sending
 
-Read [LinkedIn profile optimization guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) for a full checklist.
+The [LinkedIn and resume tailoring sync guide](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync) covers exactly how to keep both aligned during your job search.
 
 ---
 
@@ -223,13 +228,13 @@ If you have done these things (you probably have), use the modern language for t
 ## What To Never Do
 
 **Do not try to appear younger by omitting a role entirely if it is important**
-Leaving a 5-year gap in your career history is more alarming than showing a 20-year-old role.
+Leaving a 5-year gap in your career history is more alarming than showing a 20-year-old role. Read [how to explain resume gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps) if there are genuine gaps in your history.
 
 **Do not use a photo**
 In most countries, photos are not expected on resumes. Including one opens the door to explicit age discrimination.
 
 **Do not apologize for your experience**
-Phrases like "despite my extensive background" or "while I may have more experience than required" put you on the defensive before the interview starts.
+Phrases like "despite my extensive background" or "while I may have more experience than required" put you on the defensive before the interview starts. This is a classic [resume red flag](https://thetailorcv.com/blog/resume-red-flags).
 
 **Do not claim skills you do not have**
 The interview will reveal it quickly. Modernize authentically.
@@ -247,6 +252,8 @@ You have managed people through uncertainty and come out the other side with rea
 
 That experience is not a liability.
 For the right role and the right company, it is exactly what they need.
+
+Your [personal brand](https://thetailorcv.com/blog/personal-branding-for-professionals) as a seasoned professional is a genuine competitive advantage — when it is presented correctly.
 
 Your job is to find those companies — and present yourself so compellingly that the bias does not get a chance to take over.
 
@@ -299,7 +306,7 @@ Remove graduation dates.
 Replace your objective with a modern professional summary.
 Use today's terminology for the work you have been doing for decades.
 Update your format and digital presence.
-Check your ATS score and close the keyword gaps.
+Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) and close the keyword gaps.
 
 Your experience is not the problem.
 How it is presented might be.

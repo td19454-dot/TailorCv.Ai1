@@ -29,6 +29,7 @@ Not because your work is not good enough.
 Because your resume is not telling the right story for either audience.
 
 Contract hiring managers and permanent hiring managers are looking for completely different signals.
+This is the same core challenge as [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise) — the audience changes what you emphasize.
 This guide breaks down what each wants — and how to tailor your resume to win both.
 
 ---
@@ -76,13 +77,14 @@ Then list specific projects as bullets:
 - Led UX audit for e-commerce client — surfaced 12 conversion blockers, implemented fixes generating $190k in additional revenue
 
 Each bullet answers: what did you build, for whom, and what was the result?
+Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) to make your project outcomes as compelling as possible.
 
 ### 2. Match the Contract's Specific Skill Requirements
 
 Contract job descriptions are usually more specific than permanent ones.
 They need someone who can do X, Y, and Z — immediately, without training.
 
-Tailor your skills section to mirror the contract's exact requirements.
+Tailor your [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description) to mirror the contract's exact requirements.
 
 If the contract asks for:
 - React Native
@@ -93,7 +95,7 @@ If the contract asks for:
 Your resume's skills section should list exactly those, in that order if possible.
 
 Use [TailorCV's keyword analyzer](https://www.thetailorcv.com/solutions) to check your match against the contract job description.
-A high keyword match is even more important for contract roles — there is less patience for uncertainty.
+A high [ATS keyword match](https://thetailorcv.com/blog/ats-score-guide) is even more important for contract roles — there is less patience for uncertainty.
 
 ### 3. Show Speed to Value
 
@@ -114,7 +116,7 @@ If you have a history of 3–12 month contracts, a simple label helps:
 
 List clients below, with dates and key deliverables.
 This is standard and professional for contract professionals.
-It eliminates the "job hopping" misread.
+It eliminates the "job hopping" misread. For more on this, read [resume tailoring for job hopping](https://thetailorcv.com/blog/resume-tailoring-job-hopping) — the same grouping strategy applies.
 
 ---
 
@@ -134,6 +136,8 @@ Your job is to address these concerns before they become objections.
 There is a difference between "couldn't find a job and freelanced" and "ran a consulting business and chose clients strategically."
 
 Present the second reality if it is true.
+
+Your [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary) is where this framing lives.
 
 **Defensive framing:**
 > "Freelance work while seeking full-time opportunities."
@@ -160,7 +164,7 @@ Counter this by showing how each project built on the last.
 **Linear narrative:**
 "Began with brand design work, expanded into UX, and evolved toward full product design strategy — now seeking a Product Design Lead role to build within one product organization long-term."
 
-This shows intentional development, not random hopping.
+This shows intentional development, not random hopping. This is also similar to the strategy in the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) — showing a clear directional arc.
 
 ### 4. Be Prepared to Address the "Why Now?" Question in Your Summary
 
@@ -199,6 +203,8 @@ One entry.
 Multiple client bullets.
 The narrative is clear: this is a consulting practice, not a series of short-term jobs.
 
+For each bullet, follow the [resume bullet points formula](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) — action verb, deliverable, measurable outcome.
+
 ---
 
 ## The Rates and Availability Question (Contract Roles)
@@ -206,7 +212,7 @@ The narrative is clear: this is a consulting practice, not a series of short-ter
 For contract applications, be prepared — not necessarily on your resume, but in your initial outreach — to share:
 - Your hourly or daily rate (or range)
 - Your availability date
-- Whether you are open to on-site, hybrid, or remote arrangements
+- Whether you are open to on-site, hybrid, or remote arrangements — read [resume tailoring for remote vs hybrid vs on-site](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite) to tailor your language accordingly
 - Whether you require specific contract terms (project-based vs. hourly, payment schedule)
 
 You do not put rates on your resume.
@@ -218,11 +224,11 @@ But having these numbers ready speeds up the contract conversation significantly
 
 ### Should I have separate resumes for contract and permanent roles?
 
-Yes — the emphasis, language, and framing differ enough that separate versions are worth maintaining. Start from a shared master resume and branch from there.
+Yes — the emphasis, language, and framing differ enough that separate versions are worth maintaining. Start from a shared master resume and branch from there. See [managing multiple resume versions](https://thetailorcv.com/blog/managing-multiple-resume-versions) for the system.
 
 ### How do I explain gaps between contracts on a permanent employer's resume?
 
-Brief labels work: "Career exploration period" or "Professional development — completed [certification]." If you freelanced during the gap, list it even if the project was small.
+Brief labels work: "Career exploration period" or "Professional development — completed [certification]." If you freelanced during the gap, list it even if the project was small. For a full guide, read [how to explain resume gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps).
 
 ### Is freelance experience treated as "less" by permanent employers?
 
