@@ -45,7 +45,7 @@ The good news: you usually have more signal than you think.
 
 You have:
 - The company's existing job postings (even for different roles)
-- LinkedIn profiles of current employees in similar roles
+- [LinkedIn profiles](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) of current employees in similar roles
 - The company's website, product, and mission language
 - Industry knowledge about what this role typically involves
 - The person who referred you (a goldmine of insider context)
@@ -63,6 +63,8 @@ A referral means a real person at the company is endorsing you.
 That is a significant advantage.
 But it does not mean you can skip tailoring.
 
+The [hidden keywords technique](https://thetailorcv.com/blog/hidden-keywords-in-job-description) applies here too — even without a formal job description, the referral conversation reveals real signals about priorities.
+
 ### Step 1: Debrief Your Contact
 
 Your referral contact is your most valuable source.
@@ -78,7 +80,7 @@ This conversation gives you more useful information than most job descriptions.
 
 ### Step 2: Research the Specific Team
 
-Go to LinkedIn.
+[Use LinkedIn for your job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) strategically here.
 Look at people on that team.
 What do their profiles show?
 - What skills and tools appear frequently?
@@ -91,7 +93,7 @@ This is your keyword map.
 ### Step 3: Tailor Your Summary to the Company's Mission
 
 Even without a specific JD, you know what the company does.
-Your summary should show that you understand the company's mission and that your background is directly relevant to it.
+Your [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary) should show that you understand the company's mission and that your background is directly relevant to it.
 
 **Generic (no tailoring):**
 > "Product manager with 4 years of experience in tech."
@@ -122,6 +124,8 @@ Cold outreach means you are writing to someone who did not ask for your resume.
 This is harder.
 But it works — especially for senior roles and specialized positions.
 
+Before reaching out, think about your [personal brand](https://thetailorcv.com/blog/personal-branding-for-professionals) — the impression you want to create before the recipient even opens your resume.
+
 ### Research First, Write Second
 
 Before you send a single line, research the company and person deeply:
@@ -139,7 +143,7 @@ The needs are probably similar.
 Your cold outreach resume should not be a generic best-of resume.
 It should feel like it was written for this person.
 
-If you are reaching out to a CMO whose company is clearly struggling with content marketing (you can tell from their weak blog, low engagement, thin SEO footprint) — your resume should lead with your content and SEO achievements.
+If you are reaching out to a CMO whose company is clearly struggling with content marketing — your resume should lead with your content and SEO achievements.
 
 If you are reaching out to a VP Engineering whose LinkedIn shows they are scaling a team rapidly — your resume should lead with your experience building teams and technical infrastructure under growth pressure.
 
@@ -150,6 +154,8 @@ Because you did.
 
 With cold outreach, you do not have an application form.
 Your email is your first impression.
+
+Read [how to write a cold email to a recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) for a framework that actually gets responses.
 
 Keep it short.
 One paragraph: why you are reaching out, the specific value you bring, and what you want.
@@ -191,7 +197,7 @@ Old postings tell you:
 - What the actual title usually is
 - What they call their teams
 
-That is your keyword guide.
+That is your [keyword guide](https://thetailorcv.com/blog/resume-keywords-guide).
 
 ---
 
@@ -205,10 +211,10 @@ Your summary should reflect that you understand who they are — not just what t
 
 **2. Use industry-standard keywords for the role type**
 Every role has a canonical set of skills that any knowledgeable hiring manager would expect.
-Use those.
+Use those. The [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) guide is useful here.
 
 **3. Lead with results that are directly relevant to this company's stage**
-Early-stage company? Lead with speed and scrappiness.
+Early-stage company? Lead with speed and scrappiness. Reference [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise) for guidance.
 Late-stage enterprise? Lead with scale and process.
 
 **4. Research makes the difference**
@@ -223,7 +229,7 @@ Without a specific job description, you can still check your resume's strength.
 Use [TailorCV](https://www.thetailorcv.com/solutions) with a similar job description from another company in the same space.
 Use LinkedIn's job alerts for similar roles to find comparable postings.
 
-Get your ATS match score against the proxy posting.
+Get your [ATS match score](https://thetailorcv.com/blog/ats-score-guide) against the proxy posting.
 This tells you whether your keyword coverage is strong for this type of role.
 
 ---
@@ -236,7 +242,7 @@ Yes — especially referrals, where your chances are significantly higher than a
 
 ### How do I follow up after a referral application?
 
-Send a brief, professional thank-you to your contact after submitting. Give them visibility into what you sent. Read [how to follow up after an interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) for guidance.
+Send a brief, professional thank-you to your contact after submitting. Give them visibility into what you sent. Read [how to follow up after an interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) for guidance on the broader follow-up process.
 
 ### What if there is genuinely no information available about the company?
 

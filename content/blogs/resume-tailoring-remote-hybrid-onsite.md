@@ -22,7 +22,7 @@ Each requires a different set of signals on your resume.
 
 If you are applying to remote roles with the same resume you use for on-site applications — or vice versa — you are leaving interview opportunities on the table.
 
-This guide breaks down exactly what changes, and how to tailor your resume for each work model.
+This guide breaks down exactly what changes, and how to tailor your resume for each work model. For a broader look at how targeting the right type of employer changes your resume strategy, see also [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise).
 
 ---
 
@@ -69,13 +69,13 @@ Include signals like:
 **Self-direction and proactive delivery**
 Remote employers worry about candidates who need micromanagement to be productive.
 
-Every bullet that shows you initiated something — not just completed something — addresses this concern.
+Every [bullet point](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) that shows you initiated something — not just completed something — addresses this concern.
 
 "Identified a critical data quality issue in our pipeline and led a 3-week fix project end-to-end, without being asked" is more powerful for a remote role than "Fixed data quality issue as assigned."
 
 **Relevant tools for distributed work**
 Remote teams run on specific tools.
-List the ones you have actually used:
+List the ones you have actually used in your [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description):
 - Communication: Slack, Zoom, Teams
 - Project management: Jira, Asana, Linear, Notion, Trello
 - Documentation: Confluence, Notion, Google Docs
@@ -87,13 +87,13 @@ These are not impressive in isolation — but their presence on a resume confirm
 
 ### What to Include in Your Summary
 
-Your summary should acknowledge remote work experience directly.
+Your [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary) should acknowledge remote work experience directly.
 
 "Product manager with 3 years of fully remote experience leading cross-functional teams across the US and Europe. Strong in async communication, documentation-first processes, and distributed team coordination."
 
 For remote roles, that sentence is worth three years of office experience.
 
-Read [how to match your resume to a remote job description](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description) for a deeper guide.
+For more on tailoring for remote positions specifically, also check the [remote job search guide](https://thetailorcv.com/blog/remote-job-search-guide).
 
 ---
 
@@ -118,7 +118,7 @@ Mention activities that require or benefit from physical co-location:
 For roles where geography matters — sales territories, retail management, local operations — include explicit location signals.
 
 **Presence and communication style**
-If you are known for effective in-person presentations, client meetings, or executive briefings — these belong on an on-site resume more prominently than on a remote one.
+If you are known for effective in-person presentations, client meetings, or executive briefings — these belong on an on-site resume more prominently than on a remote one. [Soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) around communication and collaboration deserve more emphasis for on-site applications.
 
 ---
 
@@ -167,11 +167,11 @@ Job descriptions for remote, hybrid, and on-site roles contain specific keywords
 - In-office and remote
 - Collaborative environment
 
-Match the language the JD uses.
+Match the language the JD uses. This is the same principle as [matching resume keywords to the job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) — but applied to work model language, not just skills.
 If the posting says "remote-first," use "remote-first" in your resume.
 If it says "collaborative office culture," mirror that.
 
-Use [TailorCV's keyword matcher](https://www.thetailorcv.com/solutions) to check your resume against work-model-specific job descriptions.
+Use [TailorCV's keyword matcher](https://www.thetailorcv.com/solutions) to check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) against work-model-specific job descriptions.
 These keywords are often missed because people focus only on technical skill keywords — but work model language contributes to your overall match score.
 
 ---
@@ -208,6 +208,8 @@ For **hybrid roles:** List your city if you are within reasonable commuting dist
 If you are in a different city but willing to relocate, say so:
 "San Francisco, CA — Open to relocation to [City]" for on-site roles.
 "Austin, TX — US-based, available for in-person travel as needed" for hybrid or remote roles with occasional on-site requirements.
+
+Also make sure your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) reflects the same location and work model signals — recruiters check both.
 
 ---
 

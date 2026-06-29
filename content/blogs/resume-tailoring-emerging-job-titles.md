@@ -31,7 +31,7 @@ They pay well.
 
 And they are almost impossible to tailor a resume for using traditional advice — because the job descriptions are inconsistent, the required skills are debated, and the role itself is still being defined.
 
-This guide gives you the strategy for breaking into emerging roles before the market catches up to them.
+This guide gives you the strategy for breaking into emerging roles before the market catches up to them. For context on what makes these roles challenging to apply for, see also [how to tailor your resume when you're underqualified](https://thetailorcv.com/blog/resume-tailoring-underqualified) — the same principles of reframing transferable experience apply here.
 
 ---
 
@@ -82,9 +82,12 @@ For AI/prompt engineering roles in 2026, you will likely find:
 - Technical writing / documentation
 - Product thinking (for roles bridging AI and product)
 
+This cross-JD analysis is essentially the [job description keyword extraction](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) technique applied to 15 postings at once.
+
 ### Step 2: Find LinkedIn Profiles of People in These Roles
 
-Search LinkedIn for people with the emerging title you are targeting.
+[Use LinkedIn for your job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) as a research tool here.
+Search for people with the emerging title you are targeting.
 Look at their "About" sections, their listed skills, their previous experience.
 
 This tells you:
@@ -105,6 +108,7 @@ Before applying:
 - Look at job postings for adjacent roles (ML Engineer, Data Scientist) to understand the tech stack
 
 This research tells you which specific tools and frameworks this company actually uses — and those are the keywords your resume needs.
+The [hidden keywords guide](https://thetailorcv.com/blog/hidden-keywords-in-job-description) helps you decode the subtext of what each company's JD is actually asking for.
 
 ---
 
@@ -132,6 +136,8 @@ Show your understanding of user needs, AI product design, and cross-functional c
 Every background has a path to emerging AI roles.
 The tailoring challenge is drawing that path clearly.
 
+For a deeper framework on this kind of bridging, see the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+
 ### 2. Show Projects More Prominently Than Job History
 
 For emerging roles, personal and side projects often carry more weight than prior job titles.
@@ -143,11 +149,11 @@ If you have:
 - Contributed to an open-source AI library
 - Published a blog post or write-up about your LLM experiments
 
-— these belong in a prominent "Projects" or "Technical Work" section on your resume.
+— these belong in a prominent section on your resume.
 
-For emerging roles, what you have built matters more than where you worked.
+Read [how to list projects in a resume](https://thetailorcv.com/blog/projects-in-resume) for the best format and placement.
 
-Read [how to list projects in a resume](https://thetailorcv.com/blog/projects-in-resume) for the best format.
+For emerging roles, what you have built matters more than where you worked. Pair this with a strong [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) where you can showcase live work.
 
 ### 3. Match the Specific Company's Language
 
@@ -179,6 +185,8 @@ Include at least one bullet that describes a real AI project with a real outcome
 
 That is a real result with real numbers.
 That is what gets you the interview.
+
+Learn [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) for the structure that makes these results land.
 
 ---
 
@@ -222,6 +230,8 @@ When a field is new:
 - Early movers build credibility that later candidates cannot easily match
 
 If you are interested in an emerging field, start building your experience and applying now — not after the role has been standardized and competition intensifies.
+
+Consider using [AI to tailor your resume](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice) for these roles — keeping your authentic voice while optimizing for the emerging keyword landscape.
 
 ---
 
@@ -268,7 +278,7 @@ Reverse-engineer the role from 15 job descriptions.
 Study people who already have the title.
 Build and show relevant projects.
 Match the specific company's language.
-Check your keyword match before applying.
+Check your [keyword match](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) before applying.
 
 The field is early.
 Your window is now.
