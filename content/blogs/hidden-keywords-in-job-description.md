@@ -32,7 +32,7 @@ The type of person who will fit into the culture.
 
 All of that is encoded in the language — if you know how to read it.
 
-This guide teaches you how.
+This guide teaches you how. It goes deeper than the standard [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) — that covers finding the obvious terms. This guide covers finding the ones that are not obvious.
 
 ---
 
@@ -71,6 +71,8 @@ A posting that leads with "We are a fast-moving startup in the health space" is 
 Read the first paragraph of the job description like a headline.
 It tells you more than anything else.
 
+Understanding [how recruiters read resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes) also helps you understand the reverse — what they are looking for in those first few lines before deciding whether to read further.
+
 ### Signal 2: Repetition
 
 If a word or concept appears more than twice in a job description, it is not an accident.
@@ -93,7 +95,7 @@ Everything in "Preferred" is a differentiator.
 Candidates who check off preferred qualifications stand out from those who only check off required ones.
 
 Most candidates stop after confirming they meet the required section.
-The candidate who quietly covers 4 out of 6 preferred qualifications — and shows it on their resume — wins.
+The candidate who quietly covers 4 out of 6 preferred qualifications — and shows it on their [resume](https://thetailorcv.com/blog/improve-resume-job-match-score) — wins.
 
 ---
 
@@ -117,17 +119,17 @@ Job descriptions often reveal the team's current pain points — sometimes expli
 - Keywords: process-building, analytics frameworks, documentation, stakeholder alignment, governance
 
 Find the problem statement hidden in the "about this role" section.
-Then tailor your bullets to show you have solved that exact type of problem before.
+Then tailor your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) to show you have solved that exact type of problem before.
 
 ### Subtext Signal 2: The Culture Language
 
 How a company describes itself reveals what kind of person they will actually hire.
 
-**"Fast-paced and high-growth"** → They want scrappiness, speed, and comfort with ambiguity. Do not lead with bureaucratic processes.
+**"Fast-paced and high-growth"** → They want scrappiness, speed, and comfort with ambiguity. Do not lead with bureaucratic processes. See [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise) for how to adjust your language accordingly.
 
-**"Collaborative and inclusive environment"** → They value team players over individual heroes. Adjust your bullets to show teamwork alongside personal accomplishment.
+**"Collaborative and inclusive environment"** → They value team players over individual heroes. Adjust your bullets to show teamwork alongside personal accomplishment. [Soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) deserve more prominence here.
 
-**"Data-driven culture"** → Every claim needs a number. Adjust your bullets to be heavily metric-led.
+**"Data-driven culture"** → Every claim needs a number. Adjust your bullets to be heavily metric-led. Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) for the framework.
 
 **"Customer-obsessed"** → Add customer-facing impact to your bullets even if the role is internal.
 
@@ -173,7 +175,7 @@ After all three passes, write down:
 3. The one-sentence problem statement ("they need someone to...")
 4. The one-word culture signal ("fast-moving" / "collaborative" / "data-driven" / "customer-first")
 
-Now tailor your resume to address all four.
+Now tailor your resume to address all four. Use the [resume matching checklist](https://thetailorcv.com/blog/resume-matching-checklist) to confirm you have covered every layer before submitting.
 
 ---
 
@@ -210,7 +212,7 @@ This saves the time-consuming explicit keyword matching work.
 
 Then — using the subtext reading techniques in this guide — you add the Layer 3 tailoring: the problem-statement language, the culture signals, the priority emphasis.
 
-The combination of AI-powered keyword matching and human-level subtext reading is what produces a resume that passes ATS and resonates with the human on the other side.
+The combination of AI-powered keyword matching and human-level subtext reading is what produces a resume that passes [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and resonates with the human on the other side.
 
 ---
 
@@ -218,7 +220,7 @@ The combination of AI-powered keyword matching and human-level subtext reading i
 
 ### Do ATS systems pick up subtext and context?
 
-Modern ATS systems are increasingly semantic — they understand context, not just exact keyword matches. A bullet that describes the relevant work in the employer's own language scores better than a keyword forced into an unrelated sentence. Subtext reading helps you write naturally in the right language — which ATS rewards.
+Modern ATS systems are increasingly semantic — they understand context, not just exact keyword matches. A bullet that describes the relevant work in the employer's own language scores better than a keyword forced into an unrelated sentence. Subtext reading helps you write naturally in the right language — which ATS rewards. Check [ATS score guidance](https://thetailorcv.com/blog/ats-score-guide) to understand how semantic scoring works.
 
 ### How do I know if I am reading too much into a job description?
 

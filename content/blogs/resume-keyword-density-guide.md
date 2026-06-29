@@ -14,11 +14,11 @@ You have heard it a hundred times.
 
 Add keywords to your resume.
 Match the job description language.
-Include the skills ATS is looking for.
+Include the skills [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) is looking for.
 
 So you go through the job description, copy every skill and tool you can find, and paste them into your resume until it is covered with keywords.
 
-Then you check your ATS score.
+Then you check your [ATS score](https://thetailorcv.com/blog/ats-score-guide).
 It goes up.
 You feel good.
 
@@ -34,7 +34,7 @@ This is the keyword stuffing problem.
 Too few keywords and you fail ATS.
 Too many keywords and you fail humans.
 
-This guide gives you the exact middle ground.
+This guide gives you the exact middle ground. It builds on the [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide) with a focus specifically on density and placement — not just which keywords to use.
 
 ---
 
@@ -70,7 +70,7 @@ Stuffing keywords into a wall of repeated text often produces a *lower* score th
 
 ### Humans Can Tell
 
-A recruiter reads hundreds of resumes.
+[How recruiters read resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes) has not changed — they scan fast and trust their instincts. A recruiter reads hundreds of resumes.
 Keyword stuffing is obvious immediately.
 
 Signs that trigger suspicion:
@@ -130,6 +130,8 @@ These should appear:
 Your summary is the highest-visibility section.
 It should contain 2–3 of your most important keywords — naturally integrated into 3–5 readable sentences.
 
+Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) to make sure your summary is both keyword-rich and genuinely compelling.
+
 **Stuffed (wrong):**
 > "Data analyst with data analysis, SQL data analysis, Python data analysis, data visualization, data-driven insights, data reporting, and data modeling skills seeking data analyst roles."
 
@@ -142,7 +144,7 @@ No repetition. Full readability. Strong ATS performance.
 
 ### Skills Section
 
-The skills section is where targeted keyword lists live.
+The [skills section matched to the job description](https://thetailorcv.com/blog/resume-skills-match-job-description) is where targeted keyword lists live.
 This is the only section where a list format is appropriate.
 
 Rules for the skills section:
@@ -154,13 +156,13 @@ Rules for the skills section:
 The skills section should not be a dump of everything you have ever touched.
 It should be the most relevant 15 skills for this application.
 
-Read [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide) for a deeper look at which keywords to prioritize.
+Read the [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide) for a deeper look at which keywords to prioritize.
 
 ### Work Experience
 
 This is where keyword context is most important — and most often done wrong.
 
-A keyword in a bullet point should:
+A keyword in a [bullet point](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) should:
 - Appear in a sentence that describes a real action and outcome
 - Not be forced in where it does not naturally belong
 - Be the specific word or phrase the job description uses
@@ -173,12 +175,12 @@ A keyword in a bullet point should:
 
 One mention of Python. Full context. Measurable result. Perfect.
 
-Read [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) for the formula that works.
+Remember to also [quantify your achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) within those bullets — a keyword paired with a real number is far more persuasive than a keyword alone.
 
 ### Education and Certifications
 
 Keywords here are relevant but lower weighted.
-Include degree names, field of study, and certification names accurately.
+Include degree names, field of study, and [certification names](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) accurately.
 Do not add unnecessary keywords to this section.
 
 ---
@@ -187,7 +189,7 @@ Do not add unnecessary keywords to this section.
 
 The right keywords come from the job description — not from a generic list.
 
-**Step 1:** Read the job description and highlight every skill, tool, methodology, and qualification mentioned.
+**Step 1:** Read the job description and highlight every skill, tool, methodology, and qualification mentioned. Use the [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) for a systematic approach.
 
 **Step 2:** Identify which are in "Required" vs "Preferred."
 
@@ -208,11 +210,11 @@ Paste the job description and your resume — the tool identifies exactly which 
 
 3. **Keyword-only sentences** — Every keyword should appear in a sentence with a verb and a result.
 
-4. **Invisible text or white text on white background** — Some candidates used to add white-text keywords to fool old ATS. Modern systems detect this and it is a disqualifying red flag.
+4. **Invisible text or white text on white background** — Some candidates used to add white-text keywords to fool old ATS. Modern systems detect this and it is a disqualifying red flag — it shows up in [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) analysis every time.
 
 5. **Using synonyms excessively** — One mention of "SQL" and one of "Structured Query Language" in the same resume is fine. Using 10 synonyms to appear diverse is not.
 
-6. **Forcing rare keywords from the job description** — If you genuinely do not have the skill, do not include the keyword.
+6. **Forcing rare keywords from the job description** — If you genuinely do not have the skill, do not include the keyword. These [ATS keyword mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes) can damage your credibility when you reach the interview stage.
 
 ---
 
@@ -227,7 +229,7 @@ Use this before submitting any resume:
 - [ ] My skills section has 12–18 items, listed from most to least relevant
 - [ ] I have not used any keyword in a way that misrepresents my actual skill level
 
-Check your ATS match score after your audit using [TailorCV](https://www.thetailorcv.com/solutions).
+Check your [ATS match score](https://thetailorcv.com/blog/improve-resume-job-match-score) after your audit using [TailorCV](https://www.thetailorcv.com/solutions).
 Aim for 75%+ with natural language — not 90%+ achieved through stuffing.
 
 ---

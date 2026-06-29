@@ -22,7 +22,7 @@ Here is the honest answer:
 
 It depends entirely on how you present it.
 
-A recruiter who sees "4 jobs in 5 years" with no context reads it as a red flag.
+A recruiter who sees "4 jobs in 5 years" with no context reads it as a [resume red flag](https://thetailorcv.com/blog/resume-red-flags).
 
 A recruiter who sees the same history — presented with clear rationale, progression, and strong results — reads it as someone who has accumulated diverse experience rapidly.
 
@@ -39,7 +39,7 @@ First, let us calibrate what is actually a problem.
 
 **Rarely a problem:**
 - Roles under 3 years in the tech industry (this is the norm)
-- Contract roles or project-based work
+- Contract roles or project-based work (see [resume tailoring for freelance and contract roles](https://thetailorcv.com/blog/resume-tailoring-freelance-contract))
 - Any role that was a layoff (documented)
 - One short role in an otherwise stable career
 - Moves that show clear upward progression
@@ -145,13 +145,13 @@ If every role on your resume has a strong "here is what I accomplished" bullet a
 Real result.
 The duration becomes secondary to the impact.
 
-Read [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) for the formula.
+Read [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) for the formula. Also [quantify your achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) — a specific number beside a short tenure is far more reassuring than a vague responsibility.
 
 ---
 
 ## Strategy 4: Tell a Growth Narrative in Your Summary
 
-Your professional summary is the best place to set a frame before the reader reaches your experience section.
+Your [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary) is the best place to set a frame before the reader reaches your experience section.
 
 Use it to establish that your moves were intentional — about growth and learning — not random or reactive.
 
@@ -193,7 +193,9 @@ For your ATS optimization:
 - Do not repeat the same keywords across every role — vary them
 - Check your overall match score before applying
 
-Use [TailorCV's ATS optimizer](https://www.thetailorcv.com/solutions) to check your keyword match and identify what is missing — the tool handles complex multi-role histories and tells you exactly where to add keywords.
+Read the [resume keyword density guide](https://thetailorcv.com/blog/resume-keyword-density-guide) to understand how to spread keywords across a multi-entry resume without triggering stuffing penalties.
+
+Use [TailorCV's ATS optimizer](https://www.thetailorcv.com/solutions) to check your [keyword match](https://thetailorcv.com/blog/ats-score-guide) and identify what is missing — the tool handles complex multi-role histories and tells you exactly where to add keywords.
 
 ---
 
@@ -203,7 +205,7 @@ Job hopping tolerance varies by company culture:
 
 **Startups and tech companies:** Very tolerant of short tenures — they expect it. Focus on results and skills.
 
-**Enterprise companies:** More cautious. Add context for short roles, emphasize any longer tenures, show stability signals.
+**Enterprise companies:** More cautious. Add context for short roles, emphasize any longer tenures, show stability signals. Read [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise) for the right language adjustments.
 
 **Financial services and government:** Most conservative. Flag legitimate reasons (layoffs, contracts) clearly. Emphasize your longest and most stable roles.
 
@@ -223,7 +225,7 @@ Round to quarters or years if exact months are unimportant for the role — but 
 Using "confidential company" for every employer raises more questions than short tenures.
 
 **Do not apologize in your summary**
-Phrases like "despite frequent career changes" or "although I have held several positions" put you on the defensive before anyone asked.
+Phrases like "despite frequent career changes" or "although I have held several positions" put you on the defensive before anyone asked. This is one of the classic [resume red flags](https://thetailorcv.com/blog/resume-red-flags) that signals insecurity.
 
 **Do not over-explain**
 One brief context note per short role is enough. An exhaustive defense of every decision reads as insecure.
@@ -239,11 +241,11 @@ In finance or government: 2 jobs in 5 years can already prompt questions. Contex
 
 ### Should I address job hopping in my cover letter?
 
-Briefly — one sentence acknowledging your diverse experience and what you have gained from it, then pivot to why this specific role is right for the long term. Do not dwell.
+Briefly — one sentence acknowledging your diverse experience and what you have gained from it, then pivot to why this specific role is right for the long term. Do not dwell. Read [the cover letter guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026) for how to frame this.
 
 ### What if a hiring manager brings it up in the interview?
 
-Have a prepared, confident, non-defensive answer. "I've moved deliberately — each role gave me [specific skill/experience]. I'm now at a point where I want to go deep in one place, and this role is exactly that opportunity for me."
+Have a prepared, confident, non-defensive answer. "I've moved deliberately — each role gave me [specific skill/experience]. I'm now at a point where I want to go deep in one place, and this role is exactly that opportunity for me." Use [behavioral interview preparation](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) to practice answering this question under pressure.
 
 ### Does a long tenure at one company look better?
 
