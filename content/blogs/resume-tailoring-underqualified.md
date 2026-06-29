@@ -30,7 +30,7 @@ Studies consistently show that women apply only when they meet 100% of the crite
 Men apply when they meet around 60%.
 The result: the more hesitant candidates often miss roles they could have won.
 
-This guide shows you how to tailor your resume when you are underqualified — honestly, specifically, and in a way that gets real interviews.
+This guide shows you how to tailor your resume when you are underqualified — honestly, specifically, and in a way that gets real interviews. Understanding [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) often comes back to not applying at all, or applying with a [generic resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) when tailoring would have made the difference.
 
 ---
 
@@ -91,9 +91,11 @@ This map tells you:
 - Where you are close (frame as developing)
 - What to honestly omit (do not fabricate)
 
+Use the [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) to make sure you are not missing hidden requirements buried in the posting.
+
 ### Step 2: Lead With What You Have
 
-Your resume summary sets the tone.
+Your [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) sets the tone.
 If you lead with what you lack, you start at a disadvantage.
 
 Instead, lead with what you bring that is most relevant.
@@ -111,7 +113,7 @@ The one missing skill is acknowledged briefly — not apologized for.
 
 You may not have the exact experience — but you probably have adjacent experience.
 
-The ATS and the recruiter both respond to translation.
+The [ATS score](https://thetailorcv.com/blog/ats-score-guide) and the recruiter both respond to translation.
 
 If the job asks for "enterprise SaaS sales experience" and you have SMB sales:
 "Managed full-cycle sales for 80+ SMB accounts, building the foundational CRM systems and discovery frameworks that scale to enterprise relationships."
@@ -124,8 +126,8 @@ You are showing how your real experience connects to what they need.
 
 ### Step 4: Use Keywords Strategically
 
-The skills you do have should be front and center in your skills section.
-The ATS looks for keyword matches — if you are strong on 6 of 8 required skills, those 6 should appear clearly.
+The [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description) you do have should be front and center.
+The ATS looks for [keyword matches](https://thetailorcv.com/blog/resume-keywords-guide) — if you are strong on 6 of 8 required skills, those 6 should appear clearly.
 
 Do not bury your strengths under a long list.
 List the matching skills first.
@@ -178,7 +180,7 @@ Completely different impression.
 
 ## The Cover Letter Is Your Secret Weapon
 
-When you are underqualified, a strong cover letter can bridge the gap your resume cannot.
+When you are underqualified, a strong [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) can bridge the gap your resume cannot.
 
 Use it to:
 - Acknowledge the stretch directly (without apologizing)
@@ -186,7 +188,7 @@ Use it to:
 - Highlight two or three specific ways your background is uniquely relevant
 - Signal how quickly you have grown in the past
 
-Read [cover letter guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026) for a template that works.
+Also consider whether you might be applying for a role that overlaps with a [career change](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) scenario — in which case the same cross-industry reframing techniques apply.
 
 ---
 
@@ -198,7 +200,7 @@ The short-term gain of getting an interview leads to embarrassment or worse.
 
 **Copying the job description into your resume**
 ATS and recruiters recognize keyword stuffing.
-Natural use of relevant keywords works. Copy-paste does not.
+Natural use of relevant [resume keywords](https://thetailorcv.com/blog/resume-keywords-guide) works. Copy-paste does not.
 
 **Focusing only on what you are missing**
 Most candidates do this in their head and it shows in the resume.
@@ -206,7 +208,10 @@ Lead with strengths. Let your results speak louder than your gaps.
 
 **Not checking your ATS score**
 You may have more keywords matched than you think — or fewer.
-Know your score before you apply using [TailorCV](https://www.thetailorcv.com/solutions).
+Know your score before you apply using [TailorCV](https://www.thetailorcv.com/solutions). Understanding how to [improve your resume job match score](https://thetailorcv.com/blog/improve-resume-job-match-score) is especially important when you are already stretching to meet the requirements.
+
+**Skipping the interview preparation**
+If you do get an interview despite being underqualified, you need to [prepare more carefully than average](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Your first impressions have to compensate for what's missing on paper.
 
 ---
 
@@ -255,9 +260,9 @@ Then build the most honest, compelling case for why you are the best available p
 
 Lead with your strengths.
 Translate your experience.
-Use the job description language.
+Use the [job description language](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 Let your results speak.
-Check your ATS score.
+Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide).
 
 You do not have to meet every requirement.
 You have to be more compelling than everyone else who applied.
