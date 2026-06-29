@@ -32,6 +32,8 @@ And recruiters — who read hundreds of resumes — can feel it immediately.
 They cannot always say why.
 But they feel the hollowness.
 
+Understanding [how recruiters read resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes) makes clear why this matters: they are making fast judgments, and hollow language is a signal they have been trained to distrust.
+
 AI-assisted resumes that fail do not fail because of the AI.
 They fail because of how people use the AI.
 
@@ -46,16 +48,16 @@ Before we fix the problem, let us understand what the tool does well.
 AI excels at:
 
 **Keyword identification and gap analysis**
-AI can read a job description in seconds and identify which terms appear most frequently, which are in the "required" vs "preferred" sections, and which are missing from your resume. This is tedious manual work — AI does it instantly.
+AI can read a job description in seconds and identify which terms appear most frequently, which are in the "required" vs "preferred" sections, and which are missing from your resume. This is tedious manual work — AI does it instantly. This process is what the [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) teaches you to do manually.
 
 **Reformatting bullet points**
 AI can take a vague responsibility statement and turn it into a structured result-first bullet with proper verb and context — if given enough information about the actual outcome.
 
 **Matching terminology**
-If the job description uses "customer success" and your resume says "client satisfaction," AI will catch that and suggest the match.
+If the job description uses "customer success" and your resume says "client satisfaction," AI will catch that and suggest the match. This is the core of [how to match resume keywords to job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 
 **Checking ATS formatting**
-AI-based tools can flag formatting issues that would cause ATS parsing failures — columns, tables, unusual fonts, missing section headers.
+AI-based tools can flag [ATS formatting issues](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) that would cause parsing failures — columns, tables, unusual fonts, missing section headers.
 
 **Generating first drafts**
 AI can produce a first draft of a tailored summary or bullet point set much faster than manual writing. The first draft is not the final product.
@@ -113,10 +115,10 @@ Use AI to:
 - Check your current resume for those keywords
 - Flag gaps and suggest where to add them
 
-Then add the keywords yourself — in sentences you have written, in language that sounds like you.
+Then add the keywords yourself — in sentences you have written, in language that sounds like you. Understanding [resume keyword density](https://thetailorcv.com/blog/resume-keyword-density-guide) helps you place those keywords in the right sections and the right frequency.
 
 [TailorCV's keyword gap analysis](https://www.thetailorcv.com/solutions) does exactly this.
-It shows you which required keywords are missing and scores your match — so you can add them manually in your own voice, not have them auto-inserted into awkward sentences.
+It shows you which required keywords are missing and scores your [ATS match](https://thetailorcv.com/blog/ats-score-guide) — so you can add them manually in your own voice, not have them auto-inserted into awkward sentences.
 
 ### Step 3: Edit Every AI-Generated Line
 
@@ -133,7 +135,7 @@ Rewrite anything that could have been written by someone who has never met you.
 
 ### Step 4: Keep Your Voice in the Summary
 
-The professional summary is where voice matters most.
+The [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary) is where voice matters most.
 
 It is the first thing a human reads.
 It either sounds like a real person or it does not.
@@ -149,7 +151,7 @@ Then rewrite it in your own words, keeping the structure and keywords, but chang
 > "Data analyst who turns messy datasets into decisions people actually act on. At [Company], I built the dashboards that showed the product team their retention was dropping three months before it became a crisis — and that early warning shaped the feature roadmap that turned it around."
 
 Same keywords.
-Same ATS match.
+Same [ATS match](https://thetailorcv.com/blog/ats-score-guide).
 Completely different impact.
 
 ### Step 5: Use AI to Check, Not to Create
@@ -159,9 +161,9 @@ One of the most powerful AI uses is as a reviewer, not a writer.
 Write your resume yourself.
 Then use AI to check:
 - Does this match the job description keywords? (gap analysis)
-- Are there bullet points that could be stronger?
+- Are there [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) that could be stronger?
 - Is my summary relevant to this specific role?
-- Are there ATS formatting issues?
+- Are there [ATS formatting issues](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)?
 
 This approach keeps your voice while using AI's speed for the analytical review layer.
 
@@ -176,7 +178,7 @@ Avoid these signals:
 
 **"Passion for" and "commitment to":** These words appear in almost every AI resume summary. Cut them.
 
-**Vague result statements:** "Significantly improved performance" — improved what? By how much? In what timeframe? If there is no number, the result is hollow.
+**Vague result statements:** "Significantly improved performance" — improved what? By how much? In what timeframe? If there is no number, the result is hollow. [Quantifying achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) is what separates real results from AI filler.
 
 **Overly formal tone:** Real people do not describe their jobs the way a legal brief does. If it sounds stiff, it sounds AI-generated.
 
@@ -188,12 +190,12 @@ Avoid these signals:
 
 Here is the tension:
 
-ATS needs keywords, structured format, and matching terminology.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) needs keywords, structured format, and matching terminology.
 Humans need authenticity, specific results, and clear communication.
 
 The combination that wins both:
 
-- **Clear structure:** Section headers that ATS can read (Experience, Skills, Education)
+- **Clear structure:** Section headers that ATS can read (Experience, Skills, Education) — follow [resume formatting](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) best practices
 - **Keyword coverage:** Target keywords appearing naturally 3–4 times across the document
 - **Specific results:** Real numbers and outcomes in every work experience bullet
 - **Human language:** Sentences that a real person would write, not a content generator
@@ -217,6 +219,8 @@ If a bullet sounds like it was written about someone you have never met, rewrite
 Your resume should feel like you wrote it — because ultimately, you did.
 The AI just helped you tailor it faster.
 
+This is the same principle behind [using a mock interview](https://www.thetailorcv.com/mock-interview) — reading out loud catches what silent proofreading misses.
+
 ---
 
 ## FAQ
@@ -227,7 +231,7 @@ Experienced recruiters are developing a strong intuition for AI-generated langua
 
 ### Will AI-tailored resumes score better on ATS?
 
-Yes — when the tailoring is done correctly. Keyword matching improves significantly. But poor AI use (generic output, keyword stuffing) can actually hurt readability without improving ATS scores.
+Yes — when the tailoring is done correctly. Keyword matching improves significantly. But poor AI use (generic output, keyword stuffing as described in the [keyword density guide](https://thetailorcv.com/blog/resume-keyword-density-guide)) can actually hurt readability without improving ATS scores.
 
 ### Should I tell employers I used AI to tailor my resume?
 

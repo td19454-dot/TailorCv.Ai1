@@ -30,7 +30,7 @@ Your last role on LinkedIn has three bullet points that do not match anything on
 
 The recruiter closes the tab.
 
-The disconnect between a polished tailored resume and a generic LinkedIn profile is one of the most common — and most damaging — mistakes in modern job searching.
+The disconnect between a polished tailored resume and a generic LinkedIn profile is one of the most common — and most damaging — mistakes in modern job searching. Understanding [how recruiters read resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes) also means understanding that LinkedIn is always part of what they are reading.
 
 This guide shows you how to fix it.
 
@@ -51,7 +51,7 @@ Your LinkedIn profile is not separate from your job search.
 It is the extension of your resume that a recruiter browses when they want to know more.
 
 If your resume says one thing and LinkedIn says another — even if both are technically true — the inconsistency creates uncertainty.
-And uncertainty kills candidacies.
+And uncertainty kills candidacies. This is one of the most subtle [resume red flags](https://thetailorcv.com/blog/resume-red-flags) that candidates never catch because they only check one document at a time.
 
 ---
 
@@ -62,7 +62,7 @@ You do not need to copy your tailored resume onto LinkedIn word for word.
 In fact, you should not.
 
 Your tailored resume is a targeted, one-page (or two-page) document built for one specific role.
-Your LinkedIn profile is a broader, always-visible presence that supports your overall professional brand.
+Your LinkedIn profile is a broader, always-visible presence that supports your overall [personal brand](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
 The goal is alignment — not duplication.
 
@@ -97,13 +97,13 @@ If you are applying for Product Manager roles, your headline should say "Product
 "Growth Marketing Manager | B2B SaaS | Pipeline & Demand Gen"
 
 The "After" version uses specific language from the types of roles you are applying for.
-It would match keyword searches by recruiters for exactly that type of role.
+It would match [keyword searches](https://thetailorcv.com/blog/resume-keywords-guide) by recruiters for exactly that type of role.
 
 Update your headline to reflect the role you are targeting — not a vague summary of everything you have ever done.
 
 ### 2. Your LinkedIn Summary ("About" Section)
 
-Your LinkedIn summary does not need to be identical to your resume summary.
+Your LinkedIn summary does not need to be identical to your [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary).
 But it should reflect the same professional identity and direction.
 
 If your tailored resume says you are a "data analyst with deep experience in SaaS metrics and product analytics," your LinkedIn summary should not describe you as a "versatile data professional with a passion for all things data."
@@ -147,6 +147,8 @@ Especially the high-priority skills for the types of roles you are targeting.
 Add the skills you are actively promoting in your tailored resumes.
 Request endorsements from colleagues for the most important ones — endorsements add weight to the skill in LinkedIn's algorithm.
 
+For more on selecting the right skills, read the [skills section matching guide](https://thetailorcv.com/blog/resume-skills-match-job-description).
+
 ---
 
 ## How to Stay in Sync Without Updating LinkedIn for Every Application
@@ -166,6 +168,8 @@ If you then shift to applying for "Analytics Manager" roles — update your Link
 
 This creates consistent alignment across all your applications in that phase without requiring per-application updates.
 
+For managing the different resume versions alongside this, read [managing multiple resume versions](https://thetailorcv.com/blog/managing-multiple-resume-versions) — the same phase-based logic applies to both.
+
 ---
 
 ## Sections That Strengthen Your LinkedIn Beyond the Resume
@@ -182,7 +186,7 @@ Request recommendations from colleagues, managers, and clients who can speak spe
 **Featured Section**
 Pin your top work — a portfolio piece, a published article, a case study, a project.
 This is especially valuable for designers, writers, marketers, engineers, and anyone in a creative or technical field.
-Your resume can link to it; LinkedIn hosts it front and center.
+Your resume can link to it; LinkedIn hosts it front and center. Read [how to build a professional portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) if you need to create something worth featuring.
 
 **Creator Content**
 If you post or write about your industry on LinkedIn, your content activity signals engagement and expertise.
@@ -192,6 +196,7 @@ Even monthly sharing of relevant articles or brief commentary builds credibility
 **Projects and Publications**
 If you have published work, open-source contributions, or notable projects — LinkedIn lets you list these with links.
 For technical and creative roles, this section adds substantial credibility.
+Read [how to list projects in a resume](https://thetailorcv.com/blog/projects-in-resume) — the same principles of how to describe a project apply to LinkedIn.
 
 Read the [LinkedIn profile optimization guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) for a full breakdown of every LinkedIn section.
 
@@ -228,6 +233,8 @@ In this case:
 
 If the two role types are closely related (PM and Technical PM, for example), one LinkedIn profile can serve both.
 If they are very different (Marketing and Finance), you may need to pick a primary direction for your LinkedIn presence.
+
+For Easy Apply applications specifically, read [resume optimization for LinkedIn Easy Apply](https://thetailorcv.com/blog/resume-optimization-linkedin-easy-apply) — the stakes of alignment are highest there because LinkedIn shows your profile data alongside your resume automatically.
 
 ---
 
@@ -275,7 +282,7 @@ If the chapters contradict each other, the recruiter stops reading.
 Align your headline with your target role.
 Align your summary with your professional direction.
 Align your experience dates and titles with your resume.
-Align your skills with the keywords you are targeting.
+Align your skills with the [keywords](https://thetailorcv.com/blog/resume-keywords-guide) you are targeting.
 
 You do not need to update LinkedIn for every application.
 You need to update it once per job search phase — and then let it reinforce every application you send.
