@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Technical Interview, Coding Interview, DSA, System Design, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/technical-interview.png
+image: public/blog-images/technical-interview.webp
 slug: technical-interview-preparation-guide
 keywords: technical interview preparation, coding interview prep 2026, DSA interview, system design interview, technical interview roadmap, software engineer interview prep
 ---

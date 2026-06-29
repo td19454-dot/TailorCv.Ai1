@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Freelancing, Career Advice, Full-Time Employment, Work Life Balance, Career Growth]
 category: Career Advice
-image: public/blog-images/freelancingvsfulltime.png
+image: public/blog-images/freelancingvsfulltime.webp
 slug: freelancing-vs-full-time-employment
 keywords: freelancing vs full-time, freelancing vs employment 2026, should I freelance, pros and cons of freelancing, career advice 2026, self-employed vs employed
 ---

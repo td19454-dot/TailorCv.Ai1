@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Work-Life Balance, Burnout, Career Advice, Productivity, Well-being]
 category: Career Advice
-image: public/blog-images/work-life-balance.png
+image: public/blog-images/work-life-balance.webp
 slug: work-life-balance-tips
 keywords: work life balance tips, work life balance 2026, avoid burnout, work from home balance, healthy work habits, career well-being, sustainable career
 ---

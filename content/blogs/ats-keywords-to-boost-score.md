@@ -5,7 +5,7 @@ date: 2026-05-31
 author: TailorCV Team
 tags: [ATS, resume, keywords, ATS score]
 category: ATS Optimization
-image: public\blog-images\ats-keywords-to-boost-score.png
+image: public/blog-images/ats-keywords-to-boost-score.webp
 slug: ats-keywords-to-boost-score
 keywords: ats keywords, resume keywords for ats, how to add keywords resume, boost ats score keywords
 ---

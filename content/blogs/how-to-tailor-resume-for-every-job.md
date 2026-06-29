@@ -5,7 +5,7 @@ date: 2026-05-29
 author: TailorCV Team
 tags: [Resume Tailoring, ATS Optimization, Job Application, Resume Keywords, Career Tips]
 category: Resume Optimization
-image: public/blog-images/how-to-tailor-resume-for-every-job.png
+image: public/blog-images/how-to-tailor-resume-for-every-job.webp
 slug: how-to-tailor-resume-for-every-job
 keywords: how to tailor resume for job, tailor resume to job description, customize resume for job application, resume tailoring guide, ATS resume tips 2026
 ---

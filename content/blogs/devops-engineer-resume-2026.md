@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [DevOps Resume, Cloud Engineer Resume, ATS Resume, Kubernetes Resume, Infrastructure]
 category: Resume Examples
-image: public/blog-images/devops.png
+image: public/blog-images/devops.webp
 slug: devops-engineer-resume-2026
 keywords: DevOps engineer resume, DevOps resume 2026, cloud engineer resume, Kubernetes resume, CI/CD resume, infrastructure engineer resume, SRE resume
 ---

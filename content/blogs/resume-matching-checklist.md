@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Checklist, Resume Matching Checklist, Pre-Apply Resume Check, ATS Checklist, Job Application Checklist 2026]
 category: Resume Optimization
-image: public/blog-images/Resume_with_job_description_match_checklist.png
+image: public/blog-images/Resume_with_job_description_match_checklist.webp
 slug: resume-matching-checklist
 keywords: resume matching checklist, resume checklist before applying, pre-submit resume checklist 2026, job application resume checklist, ATS resume checklist, resume review before applying
 ---

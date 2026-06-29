@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Product Management, Case Study, Strategy]
 category: Portfolio
-image: public/blog-images/product-manager-portfolio-guide.png
+image: public/blog-images/product-manager-portfolio-guide.webp
 slug: product-manager-portfolio-guide
 keywords: product manager portfolio, pm portfolio, product case study, pm interview portfolio
 ---

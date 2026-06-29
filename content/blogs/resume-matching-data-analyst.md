@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Data Analyst Resume, Resume Matching Data, Job Description Data Analyst, ATS Data Resume, Data Analytics Resume 2026]
 category: Resume Writing
-image: public/blog-images/data_analyst_matching_resume.png
+image: public/blog-images/data_analyst_matching_resume.webp
 slug: resume-matching-data-analyst
 keywords: data analyst resume match job description, how to match data analyst resume to job description, data analyst ATS resume 2026, data analyst resume keywords, data analyst job description resume tips
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Scrum Master Resume, Agile Resume, CSM Resume, ATS Resume, Agile Coach]
 category: Resume Examples
-image: public/blog-images/scrum-master-resume.png
+image: public/blog-images/scrum-master-resume.webp
 slug: scrum-master-resume-2026
 keywords: scrum master resume, scrum master resume 2026, agile coach resume, CSM resume, SAFe resume, agile facilitation resume, scrum master ATS keywords
 ---

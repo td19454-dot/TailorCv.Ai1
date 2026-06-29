@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Tools, Website Builder, Job Search]
 category: Portfolio
-image: public/blog-images/portfolio-website-builders-2026.png
+image: public/blog-images/portfolio-website-builders-2026.webp
 slug: portfolio-website-builders-2026
 keywords: portfolio website builder, best portfolio builder, portfolio site tools, how to make portfolio website, portfolio platforms
 ---

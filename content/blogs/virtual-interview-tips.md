@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Virtual Interview, Video Interview Tips, Zoom Interview, Online Interview, Career Advice]
 category: Interview Preparation
-image: public/blog-images/virtual-interview.png
+image: public/blog-images/virtual-interview.webp
 slug: virtual-interview-tips
 keywords: virtual interview tips, video interview tips 2026, Zoom interview tips, online job interview tips, how to prepare for virtual interview, work from home interview
 ---

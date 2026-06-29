@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [ATS, resume, freshers, ATS score]
 category: ATS Optimization
-image: public\blog-images\ats-score-for-freshers.png
+image: public/blog-images/ats-score-for-freshers.webp
 slug: ats-score-for-freshers
 keywords: ats score for freshers, ats resume for freshers, fresher resume ats, entry level ats score
 ---

@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Product Manager Resume, PM Resume Matching, Product Manager Job Description, ATS PM Resume, Product Management Resume 2026]
 category: Resume Writing
-image: public/blog-images/product-manager-resume-matching.png
+image: public/blog-images/product-manager-resume-matching.webp
 slug: resume-matching-product-manager
 keywords: product manager resume match job description, how to match PM resume to job description, product manager ATS resume 2026, product manager resume keywords, PM resume job description matching
 ---

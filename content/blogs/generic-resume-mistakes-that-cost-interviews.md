@@ -5,7 +5,7 @@ date: 2026-06-11
 author: TailorCV Team
 tags: [resume mistakes, generic resume, resume tips, ATS, job search]
 category: Resume Writing
-image: public/blog-images/generic-resume-mistakes-that-cost-interviews.png
+image: public/blog-images/generic-resume-mistakes-that-cost-interviews.webp
 slug: generic-resume-mistakes-that-cost-interviews
 keywords: generic resume mistakes, resume mistakes costing interviews, resume errors, resume mistakes 2026, resume mistakes job search
 ---

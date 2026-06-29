@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Job Rejection, Career Advice, Job Search Tips, Resilience, Job Hunt 2026]
 category: Career Advice
-image: public/blog-images/how to handle rejection.png
+image: public/blog-images/how to handle rejection.webp
 slug: how-to-handle-job-rejection
 keywords: how to handle job rejection, job rejection email, job rejection tips, coping with rejection, bouncing back from rejection, career advice job rejection 2026
 ---

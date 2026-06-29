@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Data Analyst, Dashboards, Projects]
 category: Portfolio
-image: public/blog-images/data-analyst-portfolio-guide.png
+image: public/blog-images/data-analyst-portfolio-guide.webp
 slug: data-analyst-portfolio-guide
 keywords: data analyst portfolio, sql portfolio, tableau portfolio, power bi portfolio, data projects portfolio
 ---

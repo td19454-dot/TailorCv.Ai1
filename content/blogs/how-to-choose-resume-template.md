@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Template, Resume Basics, ATS Resume, Resume Formatting, Job Search]
 category: Resume Writing
-image: public/blog-images/choose-resume-template.png
+image: public/blog-images/choose-resume-template.webp
 slug: how-to-choose-resume-template
 keywords: how to choose resume template, best resume templates 2026, ATS-friendly resume template, resume template guide, which resume template, resume template selection, professional resume template
 ---

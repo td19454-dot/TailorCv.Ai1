@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [SRE Resume, Site Reliability Engineer, Reliability Resume, ATS Resume, DevOps Resume]
 category: Resume Examples
-image: public/blog-images/sre-resume.png
+image: public/blog-images/sre-resume.webp
 slug: site-reliability-engineer-resume-2026
 keywords: site reliability engineer resume, SRE resume 2026, SLO SLI resume, incident management resume, on-call engineer resume, SRE ATS keywords, reliability engineer resume
 ---

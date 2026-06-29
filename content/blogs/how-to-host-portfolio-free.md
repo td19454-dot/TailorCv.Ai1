@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Hosting, Tools, Developer Portfolio]
 category: Portfolio
-image: public/blog-images/how-to-host-portfolio-free.png
+image: public/blog-images/how-to-host-portfolio-free.webp
 slug: how-to-host-portfolio-free
 keywords: host portfolio free, free portfolio hosting, github pages, netlify, vercel free hosting, free website hosting
 ---

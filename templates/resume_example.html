@@ -38,6 +38,12 @@
     .re-band h2{font-size:clamp(26px,4vw,40px);font-weight:600;margin-bottom:14px}
     .re-band p{color:#c2cbe6;font-size:18px;margin:0 0 28px;max-width:620px;margin-inline:auto}
     .re-note{font-size:14px;color:#9aa3c4;margin-top:10px}.re-note a{color:#9ec1ff}
+    .re-faq details{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:4px 20px;margin-bottom:12px}
+    .re-faq summary{cursor:pointer;font-weight:600;font-size:16px;padding:16px 0;list-style:none}
+    .re-faq summary::-webkit-details-marker{display:none}
+    .re-faq summary::after{content:"+";float:right;color:#7dd3fc;font-weight:800}
+    .re-faq details[open] summary::after{content:"\2013"}
+    .re-faq p{color:#c2cbe6;font-size:15px;line-height:1.6;margin:0 0 16px}
     </style>
 </head>
 <body>
@@ -78,6 +84,17 @@
 
         {% if r.blog %}
         <p class="re-note">Want the full breakdown? Read the in-depth <a href="/blog/{{ r.blog }}">{{ r.role }} resume guide</a>.</p>
+        {% endif %}
+
+        {% if faqs %}
+        <section class="re-sec">
+            <h2>{{ r.role }} resume — frequently asked questions</h2>
+            <div class="re-faq">
+                {% for f in faqs %}
+                <details{% if loop.first %} open{% endif %}><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+                {% endfor %}
+            </div>
+        </section>
         {% endif %}
 
         <section class="re-band">

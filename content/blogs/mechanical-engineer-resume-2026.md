@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Mechanical Engineer Resume, CAD Resume, Engineering Resume, ATS Resume, Manufacturing Resume]
 category: Resume Examples
-image: public/blog-images/mechanical-engineer-resume.png
+image: public/blog-images/mechanical-engineer-resume.webp
 slug: mechanical-engineer-resume-2026
 keywords: mechanical engineer resume, mechanical engineering resume 2026, CAD resume, SolidWorks resume, manufacturing resume, mechanical engineer ATS keywords
 ---

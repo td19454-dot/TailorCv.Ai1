@@ -5,7 +5,7 @@ date: 2026-06-11
 author: TailorCV Team
 tags: [resume, recruiters, generic resume, job search, resume tailoring]
 category: Resume Writing
-image: public/blog-images/how-recruiters-spot-generic-resumes.png
+image: public/blog-images/how-recruiters-spot-generic-resumes.webp
 slug: how-recruiters-spot-generic-resumes
 keywords: how recruiters spot generic resumes, generic resume red flags, recruiter resume review, how recruiters read resumes, resume red flags recruiters
 ---

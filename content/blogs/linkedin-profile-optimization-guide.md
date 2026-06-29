@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [LinkedIn Profile, LinkedIn Optimization, Career Advice, Job Search, Recruiter Visibility]
 category: Career Advice
-image: public/blog-images/linkedin-profile.png
+image: public/blog-images/linkedin-profile.webp
 slug: linkedin-profile-optimization-guide
 keywords: LinkedIn profile optimization, LinkedIn profile tips 2026, how to optimize LinkedIn, LinkedIn recruiter visibility, LinkedIn profile guide, LinkedIn SEO tips
 ---

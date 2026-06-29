@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Accountant Resume, Accounting Resume, CPA Resume, Finance Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/accountant.png
+image: public/blog-images/accountant.webp
 slug: accountant-resume-2026
 keywords: accountant resume, accounting resume 2026, CPA resume, staff accountant resume, chartered accountant resume, accounting ATS keywords, bookkeeper resume
 ---

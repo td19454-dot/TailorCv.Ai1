@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Job Description Keywords, Keyword Extraction, Resume Keywords, ATS Optimization, Job Search 2026]
 category: Resume Optimization
-image: public/blog-images/job-description-keyword-extraction-guide.png
+image: public/blog-images/job-description-keyword-extraction-guide.webp
 slug: job-description-keyword-extraction-guide
 keywords: job description keyword extraction, how to extract keywords from job description, job description keywords for resume, find keywords in job description, resume keyword extraction 2026
 ---

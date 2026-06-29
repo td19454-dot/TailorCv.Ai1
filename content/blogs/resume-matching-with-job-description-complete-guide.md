@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Matching, Job Description, ATS, Resume Optimization, Job Search 2026]
 category: Resume Optimization
-image: public/blog-images/Resume_matching_with_job_description.png
+image: public/blog-images/Resume_matching_with_job_description.webp
 slug: resume-matching-with-job-description-complete-guide
 keywords: resume matching with job description, how to match resume to job description, resume job description match, resume matching guide 2026, job description resume alignment
 ---

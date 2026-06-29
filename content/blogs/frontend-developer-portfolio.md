@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Frontend, Developer Portfolio, Projects]
 category: Portfolio
-image: public/blog-images/frontend-developer-portfolio.png
+image: public/blog-images/frontend-developer-portfolio.webp
 slug: frontend-developer-portfolio
 keywords: frontend developer portfolio, react portfolio, frontend projects, ui developer portfolio, frontend portfolio examples
 ---

@@ -5,7 +5,7 @@ date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Students, Freshers, Internship]
 category: Portfolio
-image: public/blog-images/student-portfolio-guide.png
+image: public/blog-images/student-portfolio-guide.webp
 slug: student-portfolio-guide
 keywords: student portfolio, college portfolio, portfolio for internship, undergraduate portfolio, student portfolio examples
 ---

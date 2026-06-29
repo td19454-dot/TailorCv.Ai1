@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [AI Resume Matching, ATS AI, Resume AI, Job Application AI, Resume Optimization 2026]
 category: Resume Optimization
-image: public/blog-images/how-ai-resume-matching-works.png
+image: public/blog-images/how-ai-resume-matching-works.webp
 slug: how-ai-resume-matching-works
 keywords: how AI resume matching works, AI ATS resume, AI resume optimization, artificial intelligence resume matching, AI job description match, AI powered resume screening
 ---

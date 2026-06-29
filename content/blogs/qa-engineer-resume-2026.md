@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [QA Engineer Resume, Test Automation Resume, SDET Resume, ATS Resume, Quality Assurance]
 category: Resume Examples
-image: public/blog-images/qa-engineer-resume.png
+image: public/blog-images/qa-engineer-resume.webp
 slug: qa-engineer-resume-2026
 keywords: QA engineer resume, QA resume 2026, test automation resume, SDET resume, Selenium resume, Cypress resume, software testing resume, QA ATS keywords
 ---
