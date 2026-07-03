@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Keywords, Job Description Keywords, ATS Keywords, Resume Matching, Resume Tips 2026]
 category: Resume Optimization
-image: public/blog-images/how-to-match-resume-keywords-to-job-description.png
+image: public/blog-images/how-to-match-resume-keywords-to-job-description.webp
 slug: how-to-match-resume-keywords-to-job-description
 keywords: how to match resume keywords to job description, resume keyword matching, job description keywords resume, ATS keyword match, resume keywords 2026, keyword optimization resume
 ---

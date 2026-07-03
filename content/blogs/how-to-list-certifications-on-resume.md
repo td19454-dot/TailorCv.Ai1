@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Certifications, Resume Tips, Resume Writing, Career Advice, ATS Resume]
 category: Resume Writing
-image: public/blog-images/how-to-list-certifications.png
+image: public/blog-images/how-to-list-certifications.webp
 slug: how-to-list-certifications-on-resume
 keywords: how to list certifications on resume, certifications on resume 2026, where to put certifications resume, resume certification format, listing certifications resume
 ---

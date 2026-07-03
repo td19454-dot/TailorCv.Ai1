@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Remote Job Search, Work From Home, Remote Work Resume, Job Search Tips, Career Advice]
 category: Career Advice
-image: public/blog-images/remote-job-search.png
+image: public/blog-images/remote-job-search.webp
 slug: remote-job-search-guide
 keywords: remote job search, how to find remote jobs 2026, remote work resume, remote job boards, work from home jobs, remote jobs for freshers, remote software engineer jobs
 ---

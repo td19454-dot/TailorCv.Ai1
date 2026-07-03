@@ -5,7 +5,7 @@ date: 2026-05-28
 author: TailorCV Team
 tags: [Career Change Resume, Career Development, Transferable Skills, Resume Optimization, ATS Resume]
 category: Career Development
-image: public/blog-images/industrychange.png
+image: public/blog-images/industrychange.webp
 slug: career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026
 keywords: career change resume, switching industries resume 2026, transferable skills resume, functional resume, career change cover letter, ATS resume career change
 ---

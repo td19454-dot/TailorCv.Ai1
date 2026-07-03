@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Recruiter Resume Review, Resume Job Match Recruiter, What Recruiters Look For, Resume Tips 2026, Resume Human Review]
 category: Resume Optimization
-image: public/blog-images/Resume_with_job_description-matching.png
+image: public/blog-images/Resume_with_job_description-matching.webp
 slug: what-recruiters-look-for-resume-job-match
 keywords: what recruiters look for resume job match, recruiter resume review, how recruiters match resumes to jobs, recruiter perspective resume 2026, human resume review tips, pass recruiter screen resume
 ---

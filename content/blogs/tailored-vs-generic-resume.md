@@ -5,7 +5,7 @@ date: 2026-06-11
 author: TailorCV Team
 tags: [resume tailoring, generic resume, tailored resume, ATS, job search]
 category: Resume Writing
-image: public/blog-images/tailored-vs-generic-resume.png
+image: public/blog-images/tailored-vs-generic-resume.webp
 slug: tailored-vs-generic-resume
 keywords: tailored resume vs generic resume, difference between tailored and generic resume, tailored resume benefits, why tailor resume, generic vs customized resume
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Supply Chain Resume, Logistics Resume, Procurement Resume, Operations Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/supply-chain-resume.png
+image: public/blog-images/supply-chain-resume.webp
 slug: supply-chain-manager-resume-2026
 keywords: supply chain manager resume, supply chain resume 2026, logistics resume, procurement resume, supply chain ATS keywords, SCM resume, operations resume
 ---

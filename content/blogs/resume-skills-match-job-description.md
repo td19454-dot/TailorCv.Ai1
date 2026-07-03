@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Skills, Job Description Match, ATS Skills, Resume Optimization, Skills Section Resume]
 category: Resume Writing
-image: public/blog-images/skills-2026-matching.png
+image: public/blog-images/skills-2026-matching.webp
 slug: resume-skills-match-job-description
 keywords: match resume skills to job description, resume skills section job description, how to list skills on resume for ATS, skills section resume match, resume skills alignment 2026
 ---

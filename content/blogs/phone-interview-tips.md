@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Phone Interview, Phone Screen, Interview Tips, Job Interview, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/phone-interview.png
+image: public/blog-images/phone-interview.webp
 slug: phone-interview-tips
 keywords: phone interview tips, phone screen interview 2026, how to prepare for phone interview, recruiter phone screen, phone interview questions, telephone interview tips
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Keywords, ATS Keywords, Resume Optimization, Resume Tips, Job Search]
 category: Resume Writing
-image: public/blog-images/resume-keywords.png
+image: public/blog-images/resume-keywords.webp
 slug: resume-keywords-guide
 keywords: resume keywords, resume keywords 2026, ATS keywords, how to find resume keywords, keyword optimization resume, job description keywords
 ---

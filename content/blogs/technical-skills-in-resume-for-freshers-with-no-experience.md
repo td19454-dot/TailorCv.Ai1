@@ -5,7 +5,7 @@
  author: TailorCV Team 
  tags: [ATS Resume Optimization, Resume Keywords, Job Applications, ATS Friendly Resume, Career Tips] 
  category: Resume Writing 
- image: public\blog-images\technical-skills-freshers.png 
+image: public/blog-images/technical-skills-freshers.webp
  slug: technical-skills-in-resume-for-freshers-with-no-experience-guide 
  keywords: Technical skills in resume for freshers with no experience, Technical skills examples for freshers, Technical skills examples for resume, technical skills in resume for students, key skills for cv, ATS score improvement 
 ---

@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Experienced Professional Resume, Resume Matching Senior, Senior Resume Job Description, ATS Experienced Professional, Resume Tips 7+ Years Experience 2026]
 category: Resume Writing
-image: public/blog-images/Resume_with_job_description_experienced.png
+image: public/blog-images/Resume_with_job_description_experienced.webp
 slug: resume-matching-experienced-professionals
 keywords: resume matching experienced professionals, senior resume job description match, experienced professional ATS resume 2026, 10 years experience resume matching, senior job seeker resume tips
 ---

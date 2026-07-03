@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Soft Skills, Resume Skills, Resume Tips, Career Advice, ATS Resume]
 category: Resume Writing
-image: public/blog-images/soft-skills.png
+image: public/blog-images/soft-skills.webp
 slug: soft-skills-for-resume
 keywords: soft skills for resume, soft skills 2026, how to show soft skills on resume, communication skills resume, leadership skills resume, resume soft skills examples
 ---

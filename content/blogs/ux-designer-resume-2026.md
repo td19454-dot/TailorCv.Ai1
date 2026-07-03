@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [UX Designer Resume, UX Resume, Product Design Resume, Figma Resume, Design Portfolio]
 category: Resume Examples
-image: public/blog-images/ux-designer-resume.png
+image: public/blog-images/ux-designer-resume.webp
 slug: ux-designer-resume-2026
 keywords: UX designer resume, UX resume 2026, product designer resume, Figma resume, UX ATS keywords, UI UX resume, design portfolio resume
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Marketing Resume, Marketing Manager Resume, Digital Marketing Resume, ATS Resume, Career Tips]
 category: Resume Examples
-image: public/blog-images/marketing-manager-resume.png
+image: public/blog-images/marketing-manager-resume.webp
 slug: marketing-manager-resume-2026
 keywords: marketing manager resume, marketing resume 2026, digital marketing resume, marketing ATS keywords, CMO resume, campaign manager resume, growth marketing resume
 ---

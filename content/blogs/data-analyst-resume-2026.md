@@ -5,7 +5,7 @@ date: 2026-05-31
 author: TailorCV Team
 tags: [Data Analyst Resume, Data Analytics, ATS Resume, SQL, Career Tips]
 category: Resume Examples
-image: public\blog-images\dataanalyst.png
+image: public/blog-images/dataanalyst.webp
 slug: data-analyst-resume-2026
 keywords: data analyst resume 2026, data analyst resume, entry level data analyst resume, SQL resume, Power BI resume, Tableau resume, data analyst ATS keywords
 ---

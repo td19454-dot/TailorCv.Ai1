@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Data Scientist Resume, Machine Learning Resume, ATS Resume, Data Science, Python Resume]
 category: Resume Examples
-image: public/blog-images/data scientist.png
+image: public/blog-images/data scientist.webp
 slug: data-scientist-resume-2026
 keywords: data scientist resume, data scientist resume 2026, machine learning resume, data science ATS keywords, entry level data scientist resume, Python resume, ML resume
 ---

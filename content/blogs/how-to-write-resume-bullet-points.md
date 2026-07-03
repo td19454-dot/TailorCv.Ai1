@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Bullet Points, Resume Writing, Resume Tips, Resume Achievements, Job Search]
 category: Resume Writing
-image: public/blog-images/resume-bullets.png
+image: public/blog-images/resume-bullets.webp
 slug: how-to-write-resume-bullet-points
 keywords: how to write resume bullet points, resume bullet point examples, strong resume bullets, resume achievement bullets, resume work experience bullets, resume bullet formula, resume impact statements
 ---

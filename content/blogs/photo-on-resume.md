@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Photo, Resume Basics, Resume Tips, International Resume, Job Search]
 category: Resume Writing
-image: public/blog-images/photo-on-resume.png
+image: public/blog-images/photo-on-resume.webp
 slug: photo-on-resume
 keywords: should you put a photo on resume, resume with photo, resume photo 2026, photo on CV, resume headshot, professional photo on resume, is a photo required on resume
 ---

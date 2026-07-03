@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ seo_og_description }}">
+    <title>{{ seo_og_title }}</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+    *{box-sizing:border-box}
+    body{min-height:100vh;background:radial-gradient(circle at 18% 12%,rgba(74,106,255,.26),transparent 32%),radial-gradient(circle at 86% 18%,rgba(20,184,166,.18),transparent 30%),linear-gradient(135deg,#050816 0%,#071530 48%,#120d25 100%);color:#edf2ff;font-family:Inter,sans-serif;overflow-x:hidden}
+    .re-wrap{width:min(960px,calc(100% - 32px));margin:0 auto;padding:24px 0 40px;position:relative;z-index:1}
+    .re-bc{font-size:13px;color:#8b97bd;margin-bottom:18px}.re-bc a{color:#9ec1ff;text-decoration:none}
+    .re-hero{padding:14px 0 36px}
+    .re-hero h1{font-size:clamp(28px,5vw,46px);font-weight:600;line-height:1.18;margin:0 0 16px;letter-spacing:-.01em}
+    .re-hero h1 .hl{background:linear-gradient(90deg,#4a6aff,#14b8a6);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .re-hero p{font-size:18px;color:#c2cbe6;max-width:720px;line-height:1.6;margin:0 0 26px}
+    .re-cta{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+    .re-btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 30px;border-radius:14px;border:1px solid transparent;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s,border-color .2s}
+    .re-btn.p{background:linear-gradient(135deg,#5b78ff,#16c5b0);color:#fff;box-shadow:0 8px 24px rgba(74,106,255,.28)}.re-btn.p:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(74,106,255,.45)}
+    .re-btn.s{border-color:rgba(255,255,255,.22);color:#edf2ff;background:rgba(255,255,255,.05)}.re-btn.s:hover{transform:translateY(-3px);border-color:rgba(125,211,252,.7)}
+    .re-sec{margin:54px 0}
+    .re-sec h2{font-size:clamp(22px,3.4vw,30px);font-weight:600;margin:0 0 22px;letter-spacing:-.01em}
+    .re-chips{display:flex;flex-wrap:wrap;gap:10px}
+    .re-chips span{display:inline-block;padding:9px 16px;border:1px solid rgba(125,211,252,.22);border-radius:999px;background:rgba(74,106,255,.1);font-size:14px;color:#dbe6ff}
+    .re-kw span{background:rgba(20,184,166,.1);border-color:rgba(20,184,166,.28);color:#cdeee7}
+    .re-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+    .re-list li{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:3px solid #4a6aff;border-radius:12px;padding:16px 20px;font-size:15.5px;line-height:1.6;color:#dbe2f4}
+    .re-list.re-miss li{border-left-color:#f59e0b}
+    .re-band{text-align:center;padding:56px 24px 30px;margin:60px 0 10px}
+    .re-band h2{font-size:clamp(26px,4vw,40px);font-weight:600;margin-bottom:14px}
+    .re-band p{color:#c2cbe6;font-size:18px;margin:0 0 28px;max-width:620px;margin-inline:auto}
+    .re-note{font-size:14px;color:#9aa3c4;margin-top:10px}.re-note a{color:#9ec1ff}
+    .re-faq details{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:4px 20px;margin-bottom:12px}
+    .re-faq summary{cursor:pointer;font-weight:600;font-size:16px;padding:16px 0;list-style:none}
+    .re-faq summary::-webkit-details-marker{display:none}
+    .re-faq summary::after{content:"+";float:right;color:#7dd3fc;font-weight:800}
+    .re-faq details[open] summary::after{content:"\2013"}
+    .re-faq p{color:#c2cbe6;font-size:15px;line-height:1.6;margin:0 0 16px}
+    </style>
+</head>
+<body>
+    <div class="wave-bg" aria-hidden="true"><canvas id="wave-canvas"></canvas></div>
+    {% include "_nav.html" %}
+
+    <main class="re-wrap">
+        <div class="re-bc"><a href="/resume-examples">Resume Examples</a> &nbsp;/&nbsp; {{ r.role }}</div>
+
+        <section class="re-hero">
+            <h1><span class="hl">{{ r.role }}</span> Resume Example &amp; Guide</h1>
+            <p>{{ r.intro }}</p>
+            <div class="re-cta">
+                <a class="re-btn p" href="/solutions">Check your resume's ATS score</a>
+                <a class="re-btn s" href="/templates">Browse resume templates</a>
+            </div>
+        </section>
+
+        <section class="re-sec">
+            <h2>Key skills for a {{ r.role }} resume</h2>
+            <div class="re-chips">{% for s in r.skills %}<span>{{ s }}</span>{% endfor %}</div>
+        </section>
+
+        <section class="re-sec">
+            <h2>ATS keywords recruiters scan for</h2>
+            <div class="re-chips re-kw">{% for k in r.keywords %}<span>{{ k }}</span>{% endfor %}</div>
+        </section>
+
+        <section class="re-sec">
+            <h2>Example resume bullet points</h2>
+            <ul class="re-list">{% for b in r.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
+        </section>
+
+        <section class="re-sec">
+            <h2>Common {{ r.role }} resume mistakes</h2>
+            <ul class="re-list re-miss">{% for m in r.mistakes %}<li>{{ m }}</li>{% endfor %}</ul>
+        </section>
+
+        {% if r.blog %}
+        <p class="re-note">Want the full breakdown? Read the in-depth <a href="/blog/{{ r.blog }}">{{ r.role }} resume guide</a>.</p>
+        {% endif %}
+
+        {% if faqs %}
+        <section class="re-sec">
+            <h2>{{ r.role }} resume — frequently asked questions</h2>
+            <div class="re-faq">
+                {% for f in faqs %}
+                <details{% if loop.first %} open{% endif %}><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="re-band">
+            <h2>Build your {{ r.role }} resume the smart way</h2>
+            <p>Paste your resume and a job description to see your ATS score and the exact keywords to add — free.</p>
+            <a class="re-btn p" href="/solutions">Get your free ATS score</a>
+        </section>
+    </main>
+
+    {% include "_footer.html" %}
+    <script>
+    (function () {
+        var canvas = document.getElementById('wave-canvas');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d'), W, H;
+        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+        resize(); window.addEventListener('resize', resize);
+        var waves = [
+            { amp: 100, freq: 0.0016, speed: 0.00035, color: [59, 130, 246], yf: 0.38, alpha: 0.14 },
+            { amp: 80, freq: 0.0022, speed: 0.00028, color: [79, 70, 229], yf: 0.50, alpha: 0.11 },
+            { amp: 90, freq: 0.0014, speed: 0.00042, color: [99, 102, 241], yf: 0.60, alpha: 0.10 },
+            { amp: 60, freq: 0.0026, speed: 0.00050, color: [37, 99, 235], yf: 0.44, alpha: 0.09 },
+            { amp: 65, freq: 0.0012, speed: 0.00022, color: [124, 58, 237], yf: 0.70, alpha: 0.09 },
+            { amp: 40, freq: 0.0030, speed: 0.00055, color: [6, 182, 212], yf: 0.54, alpha: 0.07 },
+        ];
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+            var t = Date.now();
+            waves.forEach(function (wv) {
+                ctx.beginPath();
+                for (var x = 0; x <= W; x += 2) {
+                    var y = H * wv.yf + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
+                        + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
+                        + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+                    x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+                }
+                ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+                var r = wv.color[0], g = wv.color[1], b = wv.color[2];
+                var gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+                gr.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + wv.alpha + ')');
+                gr.addColorStop(0.5, 'rgba(' + r + ',' + g + ',' + b + ',' + (wv.alpha * 0.4) + ')');
+                gr.addColorStop(1, 'rgba(' + r + ',' + g + ',' + b + ',0)');
+                ctx.fillStyle = gr; ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+    </script>
+</body>
+</html>

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Tips, Resume Mistakes, What Not to Put on Resume, Career Advice, ATS Resume]
 category: Resume Writing
-image: public/blog-images/what-not-on-resume.png
+image: public/blog-images/what-not-on-resume.webp
 slug: what-not-to-put-on-resume
 keywords: what not to put on resume, things to remove from resume, resume mistakes 2026, bad resume advice, resume red flags, resume tips 2026
 ---

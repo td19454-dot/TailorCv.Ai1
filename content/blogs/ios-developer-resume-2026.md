@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [iOS Resume, iOS Developer, Swift Resume, SwiftUI Resume, Mobile Developer Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/ios-developer-resume.png
+image: public/blog-images/ios-developer-resume.webp
 slug: ios-developer-resume-2026
 keywords: iOS developer resume, iOS resume 2026, Swift resume, SwiftUI resume, Xcode resume, App Store resume, mobile developer resume, iOS ATS keywords
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Networking, Job Search, Career Advice, Professional Networking, Job Hunt 2026]
 category: Career Advice
-image: public/blog-images/networking-tips.png
+image: public/blog-images/networking-tips.webp
 slug: networking-tips-for-job-search
 keywords: networking tips, networking for job search 2026, how to network, networking for introverts, professional networking, job search networking, networking strategies
 ---

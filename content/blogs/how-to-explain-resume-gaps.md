@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Gaps, Employment Gap, Career Advice, Job Search Tips, Resume Tips]
 category: Resume Writing
-image: public/blog-images/how to explain resume gaps.png
+image: public/blog-images/how to explain resume gaps.webp
 slug: how-to-explain-resume-gaps
 keywords: how to explain resume gaps, employment gap on resume, resume gap explanation, career break resume, layoff resume gap, how to address gap in employment history
 ---

@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Awards, Resume Achievements, Resume Sections, Resume Writing, Career Tips]
 category: Resume Writing
-image: public/blog-images/awards-resume.png
+image: public/blog-images/awards-resume.webp
 slug: awards-achievements-on-resume
 keywords: awards on resume, achievements on resume, how to list awards resume, resume achievements section, professional awards resume, academic awards resume, accomplishments on resume
 ---

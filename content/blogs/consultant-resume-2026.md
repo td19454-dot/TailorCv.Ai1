@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Consultant Resume, Management Consultant Resume, Strategy Resume, ATS Resume, Consulting]
 category: Resume Examples
-image: public/blog-images/consutant resume.png
+image: public/blog-images/consutant resume.webp
 slug: consultant-resume-2026
 keywords: consultant resume, consultant resume 2026, management consultant resume, strategy consultant resume, business consultant resume, consulting ATS keywords, McKinsey resume
 ---

@@ -5,7 +5,7 @@ date: 2026-05-31
 author: TailorCV Team
 tags: [Resume Summary, Resume Writing, Freshers, No Experience, Resume Tips 2026]
 category: Resume Writing
-image: public/blog-images/resume-summary-no-experience.png
+image: public/blog-images/resume-summary-no-experience.webp
 slug: resume-summary-with-no-experience
 keywords: resume summary with no experience, resume summary for freshers, resume objective vs summary, how to write resume summary, resume summary examples 2026
 ---

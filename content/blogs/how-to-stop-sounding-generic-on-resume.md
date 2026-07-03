@@ -5,7 +5,7 @@ date: 2026-06-11
 author: TailorCV Team
 tags: [resume writing, generic resume, resume tips, resume language, job search]
 category: Resume Writing
-image: public/blog-images/how-to-stop-sounding-generic-on-resume.png
+image: public/blog-images/how-to-stop-sounding-generic-on-resume.webp
 slug: how-to-stop-sounding-generic-on-resume
 keywords: how to stop sounding generic on resume, resume vague language, specific resume language, resume rewrite, resume language tips
 ---

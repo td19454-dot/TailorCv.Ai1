@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Project Manager Resume, PMP Resume, Agile Resume, ATS Resume, Project Management]
 category: Resume Examples
-image: public/blog-images/project-manager-resume.png
+image: public/blog-images/project-manager-resume.webp
 slug: project-manager-resume-2026
 keywords: project manager resume, project manager resume 2026, PMP resume, agile project manager resume, scrum resume, project management ATS keywords, IT project manager resume
 ---

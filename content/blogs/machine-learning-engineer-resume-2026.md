@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [ML Engineer Resume, Machine Learning Resume, MLOps Resume, ATS Resume, Python]
 category: Resume Examples
-image: public/blog-images/ml-engineer-resume.png
+image: public/blog-images/ml-engineer-resume.webp
 slug: machine-learning-engineer-resume-2026
 keywords: machine learning engineer resume, ML engineer resume 2026, MLOps resume, deep learning resume, machine learning ATS keywords, Python ML resume
 ---

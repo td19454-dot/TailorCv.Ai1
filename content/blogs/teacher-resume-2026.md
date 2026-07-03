@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Teacher Resume, Education Resume, Classroom Resume, Teaching Resume 2026, Career Advice]
 category: Resume Examples
-image: public/blog-images/teacher-resume.png
+image: public/blog-images/teacher-resume.webp
 slug: teacher-resume-2026
 keywords: teacher resume, teacher resume 2026, educator resume, classroom teacher resume, K-12 resume, teaching ATS keywords, new teacher resume, experienced teacher resume
 ---
