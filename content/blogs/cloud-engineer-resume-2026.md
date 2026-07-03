@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Cloud Engineer Resume, AWS Resume, GCP Resume, Azure Resume, Infrastructure Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/cloud.png
+image: public/blog-images/cloud.webp
 slug: cloud-engineer-resume-2026
 keywords: cloud engineer resume, cloud engineer resume 2026, AWS resume, GCP resume, Azure resume, cloud infrastructure resume, cloud architect resume, cloud ATS keywords
 ---

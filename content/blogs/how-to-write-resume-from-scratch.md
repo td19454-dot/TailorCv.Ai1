@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Write Resume, Resume from Scratch, Resume Basics, Resume Writing, First Resume]
 category: Resume Writing
-image: public/blog-images/write-resume-scratch.png
+image: public/blog-images/write-resume-scratch.webp
 slug: how-to-write-resume-from-scratch
 keywords: how to write a resume from scratch, write a resume step by step, resume writing guide 2026, build resume from scratch, how to start a resume, first resume guide, resume writing for beginners
 ---

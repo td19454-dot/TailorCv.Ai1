@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Nursing Resume, RN Resume, Healthcare Resume, Nurse Resume 2026, Clinical Resume]
 category: Resume Examples
-image: public/blog-images/nursing-resume.png
+image: public/blog-images/nursing-resume.webp
 slug: nursing-resume-2026
 keywords: nursing resume, nursing resume 2026, RN resume, registered nurse resume, new grad nurse resume, healthcare resume, nursing ATS keywords, ICU nurse resume
 ---

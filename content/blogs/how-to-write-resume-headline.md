@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Headline, Resume Tips, Resume Writing, Career Advice, ATS Resume]
 category: Resume Writing
-image: public/blog-images/resume-headline.png
+image: public/blog-images/resume-headline.webp
 slug: how-to-write-resume-headline
 keywords: how to write a resume headline, resume headline examples 2026, resume title, professional headline resume, resume headline for freshers, best resume headlines
 ---

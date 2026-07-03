@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Objective, Resume Summary, Resume Basics, Resume Writing, Career Tips]
 category: Resume Writing
-image: public/blog-images/objective-vs-summary.png
+image: public/blog-images/objective-vs-summary.webp
 slug: resume-objective-vs-summary
 keywords: resume objective vs summary, career objective vs professional summary, should I use resume objective or summary, resume objective statement, professional summary for resume, resume opening statement 2026
 ---

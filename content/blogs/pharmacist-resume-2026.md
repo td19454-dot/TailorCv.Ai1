@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Pharmacist Resume, Pharmacy Resume, Healthcare Resume, Clinical Pharmacist Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/pharmacist-resume.png
+image: public/blog-images/pharmacist-resume.webp
 slug: pharmacist-resume-2026
 keywords: pharmacist resume, pharmacist resume 2026, clinical pharmacist resume, retail pharmacist resume, hospital pharmacist resume, pharmacy ATS keywords, PharmD resume
 ---

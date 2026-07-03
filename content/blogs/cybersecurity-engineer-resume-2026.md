@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Cybersecurity Resume, Security Engineer Resume, Penetration Testing Resume, SOC Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/cybersecurity.png
+image: public/blog-images/cybersecurity.webp
 slug: cybersecurity-engineer-resume-2026
 keywords: cybersecurity engineer resume, security engineer resume 2026, penetration testing resume, SOC analyst resume, CISSP resume, cybersecurity ATS keywords
 ---

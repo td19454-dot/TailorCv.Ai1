@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Coding Interview, DSA, LeetCode, Algorithm Interview, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/coding.png
+image: public/blog-images/coding.webp
 slug: coding-interview-preparation-guide
 keywords: coding interview preparation, DSA interview prep 2026, leetcode patterns, coding interview questions, algorithm interview, data structures interview, blind 75
 ---

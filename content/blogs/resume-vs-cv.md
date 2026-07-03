@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume vs CV, Resume Basics, CV Writing, Job Search, Career Tips]
 category: Resume Writing
-image: public/blog-images/resume-vs-cv.png
+image: public/blog-images/resume-vs-cv.webp
 slug: resume-vs-cv
 keywords: resume vs cv, difference between resume and cv, when to use a cv, cv vs resume, curriculum vitae vs resume, resume or cv for job application, academic cv vs resume
 ---

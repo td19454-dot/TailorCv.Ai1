@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Backend Resume, API Resume, Node.js Resume, Python Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/backend.png
+image: public/blog-images/backend.webp
 slug: backend-developer-resume-2026
 keywords: backend developer resume, backend resume 2026, API developer resume, Node.js resume, Python backend resume, Java backend resume, ATS backend keywords
 ---

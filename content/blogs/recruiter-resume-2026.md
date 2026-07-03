@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Recruiter Resume, Talent Acquisition Resume, HR Resume, Tech Recruiter Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/recruiter-resume.png
+image: public/blog-images/recruiter-resume.webp
 slug: recruiter-resume-2026
 keywords: recruiter resume, recruiter resume 2026, talent acquisition resume, technical recruiter resume, sourcing resume, recruiting ATS keywords, agency recruiter resume
 ---

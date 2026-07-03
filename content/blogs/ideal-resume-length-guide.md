@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Length, Resume Tips, Resume Writing, One Page Resume, Career Advice]
 category: Resume Writing
-image: public/blog-images/resume-length.png
+image: public/blog-images/resume-length.webp
 slug: ideal-resume-length-guide
 keywords: ideal resume length, how long should a resume be, one page or two page resume, resume length 2026, resume page count, resume length by experience
 ---

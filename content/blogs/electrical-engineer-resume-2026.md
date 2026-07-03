@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Electrical Engineer Resume, Electronics Resume, PCB Resume, Embedded Resume, Engineering Resume]
 category: Resume Examples
-image: public/blog-images/electrical.png
+image: public/blog-images/electrical.webp
 slug: electrical-engineer-resume-2026
 keywords: electrical engineer resume, electrical engineering resume 2026, PCB design resume, embedded systems resume, power electronics resume, electrical engineering ATS keywords
 ---

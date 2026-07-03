@@ -5,7 +5,7 @@ date: 2026-06-02
 author: TailorCV Team
 tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
-image: public\blog-images\does-my-resume-pass-ats.png
+image: public/blog-images/does-my-resume-pass-ats.webp
 slug: does-my-resume-pass-ats
 keywords: does my resume pass ats, ats resume checklist, will my resume pass ats, ats test resume
 ---

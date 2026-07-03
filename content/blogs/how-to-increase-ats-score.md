@@ -5,7 +5,7 @@ date: 2026-06-03
 author: TailorCV Team
 tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
-image: public\blog-images\how-to-increase-ats-score.png
+image: public/blog-images/how-to-increase-ats-score.webp
 slug: how-to-increase-ats-score
 keywords: how to increase ats score, improve ats score, boost ats resume score, raise ats score
 ---

@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Multiple Jobs, Resume Tailoring Multiple, Resume Versions, Job Search Strategy, Resume Matching 2026]
 category: Resume Optimization
-image: public/blog-images/how-to-tailor-resume-for-every-job-match.png
+image: public/blog-images/how-to-tailor-resume-for-every-job-match.webp
 slug: resume-matching-for-multiple-jobs
 keywords: tailor resume for multiple jobs, resume matching multiple job descriptions, how to use one resume for multiple jobs, resume versions job search, modular resume strategy 2026
 ---

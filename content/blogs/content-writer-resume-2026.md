@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Content Writer Resume, Copywriter Resume, SEO Writer Resume, ATS Resume, Writing Career]
 category: Resume Examples
-image: public/blog-images/conyent writter.png
+image: public/blog-images/conyent writter.webp
 slug: content-writer-resume-2026
 keywords: content writer resume, content writer resume 2026, copywriter resume, SEO writer resume, content marketing resume, writing ATS keywords, freelance writer resume
 ---

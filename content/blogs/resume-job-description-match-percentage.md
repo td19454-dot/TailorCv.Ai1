@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Match Percentage, ATS Score, Job Description Match, Resume Optimization, ATS 2026]
 category: Resume Optimization
-image: public/blog-images/resume-job-description-match-percentage.png
+image: public/blog-images/resume-job-description-match-percentage.webp
 slug: resume-job-description-match-percentage
 keywords: resume to job description match percentage, resume match score, ATS match percentage, how to improve resume match score, job description match rate, resume matching percentage
 ---

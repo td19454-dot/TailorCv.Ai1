@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Update Resume, Resume Maintenance, Resume Tips, Career Management, Job Search]
 category: Resume Writing
-image: public/blog-images/update-resume.png
+image: public/blog-images/update-resume.webp
 slug: how-to-update-your-resume
 keywords: how to update resume, when to update resume, resume update guide 2026, keeping resume current, resume maintenance, master resume, refresh resume, update resume career change
 ---

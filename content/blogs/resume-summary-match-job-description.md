@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Summary, Job Description Match, Professional Summary, Resume Writing 2026, ATS Resume]
 category: Resume Writing
-image: public/blog-images/_Resume_with_job_description_summary.png
+image: public/blog-images/_Resume_with_job_description_summary.webp
 slug: resume-summary-match-job-description
 keywords: match resume summary to job description, resume professional summary job description, how to write resume summary for specific job, resume summary tailored to job, professional summary 2026
 ---

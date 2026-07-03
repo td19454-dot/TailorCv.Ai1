@@ -5,7 +5,7 @@ date: 2026-06-11
 author: TailorCV Team
 tags: [resume tailoring, resume tips, job search, ATS, resume customization]
 category: Resume Writing
-image: public/blog-images/how-much-to-change-resume-for-every-job.png
+image: public/blog-images/how-much-to-change-resume-for-every-job.webp
 slug: how-much-to-change-resume-for-every-job
 keywords: how much to change resume for every job, should you tailor resume for every job, how different should each resume be, resume customization per job, how to customize resume per application
 ---

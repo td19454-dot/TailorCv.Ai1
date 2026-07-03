@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Sales Resume, Sales Executive Resume, ATS Resume, Business Development Resume, Revenue Resume]
 category: Resume Examples
-image: public/blog-images/sales-executive-resume.png
+image: public/blog-images/sales-executive-resume.webp
 slug: sales-executive-resume-2026
 keywords: sales executive resume, sales resume 2026, account executive resume, business development resume, sales ATS keywords, quota attainment resume, SDR resume, BDR resume
 ---

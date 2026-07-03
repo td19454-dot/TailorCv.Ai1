@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Customer Service Resume, Support Resume, CSAT Resume, CRM Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/customerservice.png
+image: public/blog-images/customerservice.webp
 slug: customer-service-resume-2026
 keywords: customer service resume, customer service resume 2026, customer support resume, CSAT resume, call center resume, CRM resume, customer service ATS keywords
 ---

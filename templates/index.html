@@ -459,13 +459,10 @@
     <!-- Navigation -->
     {% include "_nav.html" %}
 
-    <!-- Trust Banner -->
-    <div class="trust-banner">
-        <span class="pulse-ring" aria-hidden="true"></span>
-        <div class="pulse-text">
-            Trusted by <span class="trust-num">10,000+</span> job seekers worldwide
-        </div>
-    </div>
+    <!-- Spacer: receives `header.navbar + *{padding-top:100px}` to clear the fixed nav
+         (previously the trust-banner did this; it was removed). -->
+    <div class="nav-clear-spacer" aria-hidden="true"></div>
+
 
     <style>
         #primary-nav-index .mobile-feature-link {
@@ -937,12 +934,12 @@
                         <div class="scan-line" id="heroScanLine"></div>
 
                         <div class="r-name">Alex Mitchell</div>
-                        <div class="r-title">Senior Software Engineer - San Francisco, CA</div>
+                        <div class="r-title">San Francisco, CA &nbsp;|&nbsp; alex.mitchell@email.com &nbsp;|&nbsp; linkedin.com/in/alexm &nbsp;|&nbsp; github.com/alexm</div>
 
                         <div class="r-section">
                             <div class="r-heading">EXPERIENCE</div>
-                            <div class="r-exp-title">Senior Software Engineer - Google</div>
-                            <div class="r-exp-co">2022 - Present</div>
+                            <div class="r-exp-row"><span class="r-exp-title">Senior Software Engineer</span><span class="r-exp-co">2022 – Present</span></div>
+                            <div class="r-exp-row"><span class="r-exp-sub">Google</span><span class="r-exp-loc">San Francisco, CA</span></div>
                             <div class="exp-bullet">Built <span class="kw" id="heroKw1">statistical models</span> for
                                 churn prediction, improving prediction accuracy by ~18–25% and enabling retention
                                 strategies that reduced customer churn by ~10–15%.</div>
@@ -955,13 +952,26 @@
 
                         <div class="r-section">
                             <div class="r-heading">EDUCATION</div>
-                            <div class="r-line">University of Michigan</div>
-                            <div class="r-line dim">2018 - 2022</div>
+                            <div class="r-exp-row"><span class="r-exp-title">University of Michigan</span><span class="r-exp-co">2018 – 2022</span></div>
+                            <div class="r-exp-row"><span class="r-exp-sub">B.S. in Computer Science</span><span class="r-exp-loc">Ann Arbor, MI</span></div>
                         </div>
 
                         <div class="r-section">
-                            <div class="r-heading">SKILLS</div>
+                            <div class="r-heading">PROJECTS</div>
+                            <div class="r-exp-row"><span class="r-exp-title">ResumeRank <span class="r-proj-tech">| Python, FastAPI, React, PostgreSQL, Docker</span></span><span class="r-exp-co">2023</span></div>
+                            <div class="exp-bullet">Built <span class="kw" id="heroPkw1">a resume checker</span> that parses a resume and job description and returns a match score with the missing keywords.</div>
+                            <div class="exp-bullet">Designed the scoring engine and <span class="kw" id="heroPkw2">backend service</span>, deploying it on AWS with Docker for one-click scaling.</div>
+                        </div>
+
+                        <div class="r-section">
+                            <div class="r-heading">TECHNICAL SKILLS</div>
                             <div class="skills-wrap" id="heroSkillsWrap"></div>
+                            <div id="heroSkillsGrouped" style="display:none">
+                                <div class="r-skills-cat"><b>Languages:</b> Python, Java, C++, SQL, JavaScript, HTML/CSS</div>
+                                <div class="r-skills-cat"><b>Frameworks:</b> React, Node.js, Flask, FastAPI, Express</div>
+                                <div class="r-skills-cat"><b>Developer Tools:</b> Git, Docker, AWS, VS Code, Postman</div>
+                                <div class="r-skills-cat"><b>Libraries:</b> pandas, NumPy, scikit-learn, TensorFlow</div>
+                            </div>
                         </div>
 
                         <div class="ats-bar-wrap">
@@ -1376,7 +1386,13 @@
                     </div>
                     <div class="feature-showcase-visual tone-purple" aria-hidden="true">
                         <div class="mock-card">
-                            <p class="mock-title">yourname.thetailorcv.com</p>
+                            <div class="mock-browser-bar">
+                                <span class="mock-browser-dots"><i></i><i></i><i></i></span>
+                                <span class="mock-browser-url">
+                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 11px"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+                                    yourname.netlify.app
+                                </span>
+                            </div>
                             <div class="mock-pill-row">
                                 <span class="mock-pill">About</span>
                                 <span class="mock-pill">Projects</span>
@@ -1674,14 +1690,6 @@
                 transition: transform 0.2s, box-shadow 0.2s;
                 position: relative;
                 overflow: hidden;
-            }
-            .founder-card::before {
-                content: "";
-                position: absolute;
-                top: 0; left: 0; right: 0;
-                height: 3px;
-                background: linear-gradient(90deg, #4F7FFF, #C9B8FF);
-                border-radius: 20px 20px 0 0;
             }
             .founder-card:hover {
                 transform: translateY(-4px);
@@ -2125,8 +2133,7 @@
     <section class="prefooter-cta-section">
         <div class="container">
             <div class="prefooter-cta-shell">
-                <p class="prefooter-kicker">Career Acceleration Starts Here</p>
-                <h2 class="prefooter-title">Take Control of Your Next Career Move</h2>
+                <h2 class="prefooter-title">Take Control of Your Next <span class="pf-accent">Career Move</span></h2>
                 <p class="prefooter-copy">
                     Join job seekers using TailorCV to improve ATS scores, tailor resumes, and practice interviews with
                     AI-powered feedback.
@@ -2151,6 +2158,10 @@
                 { id: "heroKw1", from: "statistical models", to: "deep learning models" },
                 { id: "heroKw2", from: "batch pipelines", to: "MLOps pipelines" },
                 { id: "heroKw3", from: "deep learning frameworks", to: "Keras and TensorFlow" }
+            ];
+            const projSwaps = [
+                { id: "heroPkw1", from: "a resume checker", to: "an ATS resume scanner" },
+                { id: "heroPkw2", from: "backend service", to: "REST API" }
             ];
             const baseSkills = [
                 { id: "heroSkPython", label: "Python" },
@@ -2206,7 +2217,7 @@
             }
 
             function resetState() {
-                expSwaps.forEach(function (swap) {
+                expSwaps.concat(projSwaps).forEach(function (swap) {
                     const el = document.getElementById(swap.id);
                     if (!el) return;
                     el.className = "kw";
@@ -2214,6 +2225,11 @@
                 });
 
                 renderSkills(baseSkills);
+                // Before optimizing: flat skills (no sub-groups) visible; grouped hidden.
+                var _grp = document.getElementById("heroSkillsGrouped");
+                var _flat = document.getElementById("heroSkillsWrap");
+                if (_grp) { _grp.style.display = "none"; _grp.style.opacity = "0"; }
+                if (_flat) { _flat.style.display = "flex"; _flat.style.opacity = "1"; }
 
                 document.getElementById("heroAtsNum").textContent = "48";
                 document.getElementById("heroAtsNum").style.color = "#2d2f67";
@@ -2257,6 +2273,17 @@
                     await sleep(280);
                 }
 
+                status.textContent = "Optimizing project highlights...";
+                for (const swap of projSwaps) {
+                    const el = document.getElementById(swap.id);
+                    if (!el) continue;
+                    el.classList.add("old-kw");
+                    await sleep(320);
+                    el.textContent = swap.to;
+                    el.className = "kw new-kw";
+                    await sleep(280);
+                }
+
                 status.textContent = "Refreshing skills for the target job...";
                 for (const id of toRemove) {
                     const el = document.getElementById(id);
@@ -2277,6 +2304,23 @@
                     await sleep(210);
                 }
 
+                // After optimizing: organize the flat skills into sub-groups (Jake's style).
+                status.textContent = "Organizing skills into categories...";
+                await sleep(420);
+                const flatSk = document.getElementById("heroSkillsWrap");
+                const grpSk = document.getElementById("heroSkillsGrouped");
+                if (flatSk && grpSk) {
+                    flatSk.style.transition = "opacity .3s ease";
+                    flatSk.style.opacity = "0";
+                    await sleep(320);
+                    flatSk.style.display = "none";
+                    grpSk.style.display = "block";
+                    grpSk.style.transition = "opacity .45s ease";
+                    await sleep(20);
+                    grpSk.style.opacity = "1";
+                    await sleep(300);
+                }
+
                 status.textContent = "Calculating ATS score...";
                 document.getElementById("heroBarKw").style.width = "88%";
                 document.getElementById("heroBarFmt").style.width = "96%";
@@ -2290,14 +2334,13 @@
                 running = false;
             }
 
-            runAnimation();
-            autoLoop = setInterval(function () {
-                if (!running) runAnimation();
-            }, 9000);
-
-            window.addEventListener("beforeunload", function () {
-                if (autoLoop) clearInterval(autoLoop);
-            });
+            // Loop continuously with only a short pause, so it never sits static for long.
+            (async function loop() {
+                while (true) {
+                    await runAnimation();
+                    await sleep(1600);
+                }
+            })();
         })();
     </script>
 

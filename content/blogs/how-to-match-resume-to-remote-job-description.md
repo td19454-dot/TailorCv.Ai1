@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Remote Job Resume, Remote Work Resume, Remote Job Description Match, ATS Remote, Work From Home Resume 2026]
 category: Resume Writing
-image: public/blog-images/how-to-match-resume-to-remote-job-description.png
+image: public/blog-images/how-to-match-resume-to-remote-job-description.webp
 slug: how-to-match-resume-to-remote-job-description
 keywords: how to match resume to remote job description, remote job resume matching, remote work resume keywords, remote job ATS resume, work from home resume 2026, remote job description resume tips
 ---
