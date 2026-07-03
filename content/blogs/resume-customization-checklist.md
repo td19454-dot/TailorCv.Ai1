@@ -5,7 +5,7 @@ date: 2026-06-11
 author: TailorCV Team
 tags: [resume checklist, resume tailoring, resume customization, ATS, job search]
 category: Resume Writing
-image: public/blog-images/resume-customization-checklist.png
+image: public/blog-images/resume-customization-checklist.webp
 slug: resume-customization-checklist
 keywords: resume customization checklist, resume tailoring checklist, resume check before applying, resume application checklist 2026, job application checklist resume
 ---

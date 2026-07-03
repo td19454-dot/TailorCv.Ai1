@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Sections, Resume Structure, Resume Writing, Resume Basics, ATS Resume]
 category: Resume Writing
-image: public/blog-images/resume-anatomy.png
+image: public/blog-images/resume-anatomy.webp
 slug: anatomy-of-a-resume
 keywords: resume sections, anatomy of a resume, resume structure 2026, what sections to include in resume, resume layout guide, resume parts explained, how to structure a resume
 ---

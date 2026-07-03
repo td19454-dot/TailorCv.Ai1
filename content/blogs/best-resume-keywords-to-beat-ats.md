@@ -5,7 +5,7 @@ date: 2026-06-11
 author: TailorCV Team
 tags: [ATS keywords, resume keywords, ATS score, resume, job search]
 category: ATS Optimization
-image: public/blog-images/best-resume-keywords-to-beat-ats.png
+image: public/blog-images/best-resume-keywords-to-beat-ats.webp
 slug: best-resume-keywords-to-beat-ats
 keywords: best resume keywords to beat ats, ats resume keywords 2026, resume keywords by industry, keywords to boost ats score, resume keywords list
 ---

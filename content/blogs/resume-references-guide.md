@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume References, Resume Basics, Resume Tips, Job Search, Professional References]
 category: Resume Writing
-image: public/blog-images/resume-references.png
+image: public/blog-images/resume-references.webp
 slug: resume-references-guide
 keywords: resume references, should I put references on resume, references available upon request, how to list references on resume, professional references, reference letter vs reference list, resume reference section 2026
 ---

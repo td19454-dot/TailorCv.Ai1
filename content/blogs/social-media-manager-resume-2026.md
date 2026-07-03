@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Social Media Manager Resume, Social Media Resume, Marketing Resume, ATS Resume, Content Resume]
 category: Resume Examples
-image: public/blog-images/social-media-resume.png
+image: public/blog-images/social-media-resume.webp
 slug: social-media-manager-resume-2026
 keywords: social media manager resume, social media resume 2026, social media marketing resume, content creator resume, social media ATS keywords, community manager resume
 ---

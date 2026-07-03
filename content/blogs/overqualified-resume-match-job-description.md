@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Overqualified Resume, Resume Matching Overqualified, Resume Tips Overqualified, Job Application Overqualified, Career Downshift Resume]
 category: Resume Writing
-image: public/blog-images/overqualified-resume-match-job-description.png
+image: public/blog-images/overqualified-resume-match-job-description.webp
 slug: overqualified-resume-match-job-description
 keywords: overqualified resume match job description, how to match resume when overqualified, resume for overqualified candidate, downleveling resume 2026, overqualified job application tips
 ---

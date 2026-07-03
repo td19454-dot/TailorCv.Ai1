@@ -23,8 +23,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.background import BackgroundTask
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from sqlalchemy.orm import Session
 from auth import hash_password, verify_password
+from seo_roles import ROLE_SEO
 from database import Base, SessionLocal, engine
 from functions import (
     ats_scoring,
@@ -208,8 +210,18 @@ async def global_exception_handler(request: Request, exc: Exception):
         sentry_sdk.capture_exception(exc)
     accept = request.headers.get("accept", "")
     if "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest":
-        return templates.TemplateResponse("error.html", {"request": request, "status_code": 500, "message": "Something went wrong on our end. Please try again."}, status_code=500)
+        return templates.TemplateResponse(request, "error.html", {"status_code": 500, "message": "Something went wrong on our end. Please try again."}, status_code=500)
     return JSONResponse(status_code=500, content={"detail": "Internal server error. Please try again."})
+
+# Branded 404 (and other HTTP errors) for browser navigations; JSON for APIs.
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request: Request, exc: StarletteHTTPException):
+    accept = request.headers.get("accept", "")
+    wants_html = "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest"
+    if exc.status_code == 404 and wants_html:
+        return templates.TemplateResponse(request, "404.html", status_code=404)
+    # Preserve existing behaviour for API clients / XHR / other status codes.
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
 
 # Add CORS middleware to allow frontend requests
 app.add_middleware(
@@ -3218,7 +3230,8 @@ def parse_ai_json_response(response_string: str) -> dict:
             # repair to the last complete item so partial content still renders.
             parsed = _repair_truncated_json(response_string)
         if parsed is None:
-            raise HTTPException(status_code=500, detail=f"Failed to parse AI JSON response: {e}")
+            logger.error("AI JSON response could not be parsed or repaired")
+            raise HTTPException(status_code=500, detail="Could not process the AI response. Please try again.")
 
     if not isinstance(parsed, dict):
         raise HTTPException(status_code=500, detail="AI response JSON is not an object")
@@ -3520,7 +3533,13 @@ async def mock_interview_page(request: Request):
     return templates.TemplateResponse(
         request,
         "mock_interview.html",
-        {"request": request, "is_logged_in": is_logged_in},
+        {
+            "request": request,
+            "is_logged_in": is_logged_in,
+            "canonical_url": build_absolute_url("/mock-interview"),
+            "software_schema_json": build_software_app_schema(),
+            "page_schema_json": build_page_breadcrumb("AI Mock Interview", "/mock-interview"),
+        },
     )
 
 
@@ -3544,7 +3563,8 @@ async def api_interview_start(payload: dict):
         )
         return JSONResponse({"success": True, "question": question})
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
 
 
 @app.post("/api/interview/start-with-pdf")
@@ -3600,7 +3620,8 @@ async def api_interview_start_with_pdf(
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -3629,7 +3650,8 @@ async def api_interview_next(payload: dict):
                 pass
         return JSONResponse({"success": True, **result, "audio_b64": audio_b64})
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
 
 
 @app.post("/api/interview/score")
@@ -3647,7 +3669,8 @@ async def api_interview_score(payload: dict):
         )
         return JSONResponse({"success": True, "scores": scores})
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
 
 
 @app.post("/api/tts")
@@ -3659,7 +3682,8 @@ async def api_tts(payload: dict):
         audio_bytes = await generate_tts_audio(text)
         return Response(content=audio_bytes, media_type="audio/mpeg")
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
 
 
 @app.post("/api/generate-interview-questions")
@@ -3708,7 +3732,8 @@ async def api_generate_interview_questions(
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.exception("generate-interview-questions failed")
+        raise HTTPException(status_code=500, detail="Could not generate interview questions. Please try again.")
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -3735,7 +3760,8 @@ async def api_evaluate_interview_answer(payload: dict):
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        logger.exception("Unhandled error in request")
+        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
 
 
 @app.get("/health")
@@ -4102,6 +4128,17 @@ def build_software_app_schema() -> str:
     return json.dumps(schema, separators=(",", ":"))
 
 
+def build_page_breadcrumb(name: str, path: str) -> str:
+    """BreadcrumbList JSON-LD (Home > <name>) for a top-level page."""
+    return json.dumps({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": build_absolute_url("/")},
+            {"@type": "ListItem", "position": 2, "name": name, "item": build_absolute_url(path)},
+        ],
+    }, separators=(",", ":"))
+
+
 # Static FAQ used for FAQPage rich results on the homepage / ATS checker pages.
 # Targets high-intent queries (free ATS checker, ATS-friendly resume, etc.).
 HOMEPAGE_FAQS = [
@@ -4247,13 +4284,293 @@ async def optimize_page(request: Request):
     )
 
 
+# ── Competitor "alternative" SEO landing pages ───────────────────────────────
+# Capture high-intent comparison search ("jobscan alternative", etc.). One shared
+# template (comparison_alternative.html) rendered from this data, per slug.
+_COMPARISON_PAGES = {
+    "jobscan-alternative": {
+        "competitor": "Jobscan",
+        "audience": "students, freshers & job seekers",
+        "title": "Best Jobscan Alternative (2026) — Free ATS Score & Resume Optimizer",
+        "description": "Looking for a Jobscan alternative? TheTailorCV gives you a free ATS score, AI resume tailoring, a built-in portfolio website builder, and affordable pricing.",
+        "hero": "Get an instant ATS score, tailor your resume to any job description with AI, and even publish a live portfolio website — at a fraction of Jobscan's price.",
+        "props": [
+            {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Check how your resume scores against any job description before you pay anything."},
+            {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Turn your resume into a live portfolio site — something Jobscan doesn't offer."},
+            {"icon": "price", "title": "Student friendly pricing", "link": "/pricing", "text": "Affordable plans built for freshers and students, not enterprise budgets."},
+            {"icon": "ai", "title": "AI tailoring and interviews", "link": "/solutions", "text": "Rewrite bullets, match keywords, and practice AI mock interviews in one place."},
+        ],
+        "rows": [
+            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited free scans"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "Add-on"},
+            {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "Premium / USD pricing"},
+        ],
+        "faq": [
+            {"q": "Is TheTailorCV a good Jobscan alternative?", "a": "Yes. TheTailorCV offers a free ATS score, AI resume tailoring to a job description, a cover letter generator, AI mock interviews, and a portfolio website builder — at a more affordable price point than Jobscan."},
+            {"q": "Is TheTailorCV free?", "a": "You can check your ATS score and build a portfolio for free. Pro unlocks unlimited optimizations, cover letters, mock interviews and a custom live site."},
+            {"q": "Does TheTailorCV check my resume against the ATS like Jobscan?", "a": "Yes — paste your resume and a job description and you get a match score plus the missing keywords and fixes to raise it."},
+            {"q": "Is TheTailorCV cheaper than Jobscan?", "a": "Yes. TheTailorCV is built to be affordable for students and freshers, with plans priced well below typical USD-based resume tools — and you can start for free."},
+            {"q": "Can TheTailorCV build a portfolio website?", "a": "Yes. TheTailorCV turns your resume into a live, shareable portfolio website in minutes — no coding — which Jobscan does not offer."},
+            {"q": "Does TheTailorCV write cover letters?", "a": "Yes. It generates personalized cover letters matched to each job description, so every application is tailored without starting from scratch."},
+            {"q": "Is TheTailorCV good for freshers and students?", "a": "Absolutely. It's designed for first-time job seekers — get an ATS score, tailor your resume, add projects, and build a portfolio even with little or no experience."},
+            {"q": "Can I practice interviews on TheTailorCV?", "a": "Yes. You get AI mock interviews with role-specific questions and instant feedback to help you prepare."},
+        ],
+    },
+    "careerflow-alternative": {
+        "competitor": "Careerflow",
+        "audience": "students, freshers & job seekers",
+        "title": "Best Careerflow Alternative (2026) — ATS Resume Optimizer & Portfolio Builder",
+        "description": "A Careerflow alternative focused on getting your resume past the ATS: free ATS score, AI resume tailoring, cover letters, mock interviews, and a portfolio website builder.",
+        "hero": "Go beyond LinkedIn tweaks. TheTailorCV scores your resume against the ATS, tailors it to each job with AI, and turns it into a live portfolio website.",
+        "props": [
+            {"icon": "target", "title": "ATS first", "link": "/solutions", "text": "Built around beating applicant tracking systems, not just polishing your LinkedIn."},
+            {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Publish a real portfolio site from your resume in minutes."},
+            {"icon": "ai", "title": "AI mock interviews", "link": "/mock-interview", "text": "Practice role-specific interviews with instant AI feedback."},
+            {"icon": "doc", "title": "Tailored resumes and cover letters", "link": "/cover-letter", "text": "Match every application to its job description automatically."},
+        ],
+        "rows": [
+            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "Varies"},
+            {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Focus", "us": "ATS + resume + portfolio", "them": "LinkedIn optimization"},
+        ],
+        "faq": [
+            {"q": "Is TheTailorCV a good Careerflow alternative?", "a": "Yes, especially if your priority is passing the ATS. TheTailorCV scores your resume against a job description, tailors it with AI, writes cover letters, runs mock interviews, and builds a portfolio website."},
+            {"q": "What does TheTailorCV do that Careerflow doesn't?", "a": "TheTailorCV includes a portfolio website builder that turns your resume into a shareable live site, plus a dedicated ATS match score for every job description."},
+            {"q": "Is there a free plan?", "a": "Yes — get a free ATS score and build a portfolio for free, then upgrade to Pro for unlimited use."},
+            {"q": "Does TheTailorCV have an ATS score checker?", "a": "Yes. Paste your resume and a job description and you get a match score with the missing keywords and concrete fixes — the core focus of TheTailorCV."},
+            {"q": "Can I build a portfolio website with TheTailorCV?", "a": "Yes. Turn your resume into a live, shareable portfolio site in minutes, with no coding required."},
+            {"q": "Is TheTailorCV good for freshers and students?", "a": "Yes — it's designed for first-time job seekers, with affordable pricing and tools to present projects and skills even without much experience."},
+            {"q": "How much does TheTailorCV cost?", "a": "You can start for free. Pro plans are affordable and unlock unlimited optimizations, cover letters, mock interviews and a custom live portfolio site."},
+            {"q": "Can I practice mock interviews on TheTailorCV?", "a": "Yes. Practice role-specific AI mock interviews and get instant feedback to improve before the real thing."},
+        ],
+    },
+    "resume-worded-alternative": {
+        "competitor": "Resume Worded",
+        "audience": "students, freshers & job seekers",
+        "title": "Best Resume Worded Alternative (2026) — Free ATS Score, Resumes & Portfolio",
+        "description": "A Resume Worded alternative with a free ATS score, AI resume tailoring to any job description, cover letters, mock interviews, and a portfolio website builder.",
+        "hero": "Score and tailor your resume to each job, write cover letters, practice interviews, and publish a portfolio website — all in one place.",
+        "props": [
+            {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Check your resume against a real job description before you pay anything."},
+            {"icon": "doc", "title": "AI tailoring to a JD", "link": "/solutions", "text": "Rewrites bullets and adds missing keywords for the exact role you're applying to."},
+            {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Turn your resume into a live, shareable site — Resume Worded doesn't."},
+            {"icon": "ai", "title": "Mock interviews", "link": "/mock-interview", "text": "Practice role-specific AI interviews with instant feedback."},
+        ],
+        "rows": [
+            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited free credits"},
+            {"feature": "Tailor resume to a job description", "us": "<span class='yes'>✓</span> Yes", "them": "Line-by-line tips"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "USD pricing"},
+        ],
+        "faq": [
+            {"q": "Is TheTailorCV a good Resume Worded alternative?", "a": "Yes. TheTailorCV gives you a free ATS score, tailors your whole resume to a job description with AI, writes cover letters, runs mock interviews, and builds a portfolio site — broader than line-by-line scoring."},
+            {"q": "Does TheTailorCV score my resume like Resume Worded?", "a": "Yes — paste your resume and a job description and you get a match score plus the missing keywords and fixes to raise it."},
+            {"q": "Is it free?", "a": "You can check your ATS score and build a portfolio for free; Pro unlocks unlimited optimizations, cover letters and mock interviews."},
+            {"q": "What does TheTailorCV add over Resume Worded?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job — not just scoring suggestions."},
+        ],
+    },
+    "teal-alternative": {
+        "competitor": "Teal",
+        "audience": "students, freshers & job seekers",
+        "title": "Best Teal Alternative (2026) — ATS Resume Optimizer & Portfolio Builder",
+        "description": "A Teal alternative for getting past the ATS: free ATS score, AI resume tailoring to a job description, cover letters, mock interviews, and a live portfolio website.",
+        "hero": "Tailor your resume to each job, beat the ATS, practice interviews, and publish a portfolio site — affordable and built for first-time job seekers.",
+        "props": [
+            {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Instant match score against any job description, free."},
+            {"icon": "doc", "title": "AI resume tailoring", "link": "/solutions", "text": "Rewrites and aligns your resume to the role automatically."},
+            {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Publish a shareable portfolio site from your resume in minutes."},
+            {"icon": "ai", "title": "AI mock interviews", "link": "/mock-interview", "text": "Role-specific practice with instant feedback."},
+        ],
+        "rows": [
+            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "Keyword matching"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Job tracker", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "USD subscription"},
+        ],
+        "faq": [
+            {"q": "Is TheTailorCV a good Teal alternative?", "a": "Yes, especially for ATS-first job seekers. TheTailorCV scores and rewrites your resume for each job, writes cover letters, runs mock interviews, and builds a portfolio website."},
+            {"q": "What does TheTailorCV offer that Teal doesn't?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job description."},
+            {"q": "Is TheTailorCV cheaper than Teal?", "a": "Yes — it's priced affordably for students and freshers, and you can start for free."},
+            {"q": "Does it work for freshers?", "a": "Yes — it's built for first-time job seekers, helping you present projects and skills even with little experience."},
+        ],
+    },
+    "rezi-alternative": {
+        "competitor": "Rezi",
+        "audience": "students, freshers & job seekers",
+        "title": "Best Rezi Alternative (2026) — Free ATS Score, AI Resumes & Portfolio",
+        "description": "A Rezi alternative with a free ATS score, AI resume tailoring to a job description, cover letters, mock interviews, and a portfolio website builder.",
+        "hero": "Get an ATS score, tailor your resume to each job with AI, write cover letters, practice interviews, and publish a portfolio website.",
+        "props": [
+            {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "See your match score against any job description for free."},
+            {"icon": "doc", "title": "AI tailoring to a JD", "link": "/solutions", "text": "Aligns your resume to the exact role you're targeting."},
+            {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Turn your resume into a live portfolio site — Rezi doesn't."},
+            {"icon": "ai", "title": "AI mock interviews", "link": "/mock-interview", "text": "Practice and get instant feedback before the real thing."},
+        ],
+        "rows": [
+            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited free plan"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "USD pricing"},
+        ],
+        "faq": [
+            {"q": "Is TheTailorCV a good Rezi alternative?", "a": "Yes. TheTailorCV offers a free ATS score, AI resume tailoring to a job description, cover letters, AI mock interviews, and a portfolio website builder at an affordable price."},
+            {"q": "Does TheTailorCV build resumes like Rezi?", "a": "Yes — it tailors and rewrites your resume to each job and gives you an ATS match score with the missing keywords."},
+            {"q": "What's different from Rezi?", "a": "TheTailorCV adds a portfolio website builder and AI mock interviews, and is priced affordably for students and freshers."},
+            {"q": "Is there a free option?", "a": "Yes — get a free ATS score and build a portfolio for free, then upgrade to Pro for unlimited use."},
+        ],
+    },
+}
+
+
+def _render_comparison_page(request: Request, slug: str) -> HTMLResponse:
+    cmp = _COMPARISON_PAGES.get(slug)
+    if not cmp:
+        raise HTTPException(status_code=404, detail="Page not found")
+    faq_schema = json.dumps({
+        "@context": "https://schema.org", "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": f["q"],
+             "acceptedAnswer": {"@type": "Answer", "text": f["a"]}}
+            for f in cmp["faq"]
+        ],
+    })
+    return templates.TemplateResponse(request, "comparison_alternative.html", {
+        "request": request,
+        "cmp": cmp,
+        "seo_og_title": cmp["title"],
+        "seo_og_description": cmp["description"],
+        "canonical_url": build_absolute_url(f"/{slug}"),
+        "faq_schema_json": faq_schema,
+    })
+
+
+@app.get("/jobscan-alternative", response_class=HTMLResponse)
+async def jobscan_alternative_page(request: Request):
+    return _render_comparison_page(request, "jobscan-alternative")
+
+
+@app.get("/careerflow-alternative", response_class=HTMLResponse)
+async def careerflow_alternative_page(request: Request):
+    return _render_comparison_page(request, "careerflow-alternative")
+
+
+@app.get("/resume-worded-alternative", response_class=HTMLResponse)
+async def resume_worded_alternative_page(request: Request):
+    return _render_comparison_page(request, "resume-worded-alternative")
+
+
+@app.get("/teal-alternative", response_class=HTMLResponse)
+async def teal_alternative_page(request: Request):
+    return _render_comparison_page(request, "teal-alternative")
+
+
+@app.get("/rezi-alternative", response_class=HTMLResponse)
+async def rezi_alternative_page(request: Request):
+    return _render_comparison_page(request, "rezi-alternative")
+
+
+# ── Programmatic resume-examples hub ─────────────────────────────────────────
+@app.get("/resume-examples", response_class=HTMLResponse)
+async def resume_examples_hub(request: Request):
+    """Index of role-based resume example pages (interlinks the whole hub)."""
+    breadcrumb = json.dumps({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": build_absolute_url("/")},
+            {"@type": "ListItem", "position": 2, "name": "Resume Examples", "item": build_absolute_url("/resume-examples")},
+        ],
+    })
+    return templates.TemplateResponse(request, "resume_examples_hub.html", {
+        "request": request,
+        "roles": ROLE_SEO,
+        "seo_og_title": "Free Resume Examples by Job Role (2026) | theTailorCV",
+        "seo_og_description": "Free resume examples by job role — the right ATS keywords, skills, and bullet points for your role, plus the mistakes to avoid.",
+        "canonical_url": build_absolute_url("/resume-examples"),
+        "page_schema_json": breadcrumb,
+    })
+
+
+@app.get("/resume-examples/{role}", response_class=HTMLResponse)
+async def resume_example_detail(request: Request, role: str):
+    r = ROLE_SEO.get(role)
+    if not r:
+        raise HTTPException(status_code=404, detail="Resume example not found")
+    # Per-role FAQs generated from the role's own data → unique per page (good for
+    # "People Also Ask" / featured snippets), and mirrored into FAQPage schema.
+    role_name = r["role"]
+    faqs = [
+        {"q": f"What skills should a {role_name} resume include?",
+         "a": f"Top skills to feature on a {role_name} resume include {', '.join(r['skills'][:8])}. List the ones you're strongest in and back them with results."},
+        {"q": f"What ATS keywords should a {role_name} resume have?",
+         "a": f"Recruiters and ATS scan for keywords like {', '.join(r['keywords'][:8])}. Match these to the exact wording in the job description."},
+        {"q": f"What is a common {role_name} resume mistake?",
+         "a": r["mistakes"][0]},
+        {"q": f"Is theTailorCV's ATS checker free for a {role_name} resume?",
+         "a": "Yes. Paste your resume and a job description to get a free ATS score with the missing keywords and fixes before you apply."},
+    ]
+    article_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "headline": f"{role_name} Resume Example & Guide",
+                "description": r["description"],
+                "author": {"@type": "Organization", "name": "theTailorCV"},
+                "publisher": {"@type": "Organization", "name": "theTailorCV"},
+                "mainEntityOfPage": build_absolute_url(f"/resume-examples/{role}"),
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Resume Examples", "item": build_absolute_url("/resume-examples")},
+                    {"@type": "ListItem", "position": 2, "name": f"{role_name} Resume", "item": build_absolute_url(f"/resume-examples/{role}")},
+                ],
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": f["q"],
+                     "acceptedAnswer": {"@type": "Answer", "text": f["a"]}}
+                    for f in faqs
+                ],
+            },
+        ],
+    })
+    return templates.TemplateResponse(request, "resume_example.html", {
+        "request": request,
+        "r": r,
+        "faqs": faqs,
+        "seo_og_title": r["title"],
+        "seo_og_description": r["description"],
+        "canonical_url": build_absolute_url(f"/resume-examples/{role}"),
+        "page_schema_json": article_schema,
+    })
+
+
 @app.get("/templates", response_class=HTMLResponse)
 async def templates_page(request: Request):
     """Templates gallery page."""
     return templates.TemplateResponse(
         request,
         "templates.html",
-        {"request": request},
+        {
+            "request": request,
+            "canonical_url": build_absolute_url("/templates"),
+            "software_schema_json": build_software_app_schema(),
+            "page_schema_json": build_page_breadcrumb("Resume Templates", "/templates"),
+        },
     )
 
 
@@ -4371,7 +4688,8 @@ async def download_saved_resume(request: Request, resume_id: int):
     try:
         await asyncio.to_thread(_render_pdf)
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+        logger.exception("PDF render failed")
+        raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
 
     return FileResponse(
         pdf_path,
@@ -4447,7 +4765,12 @@ async def cover_letter_page(request: Request):
     return templates.TemplateResponse(
         request,
         "cover_letter.html",
-        {"request": request},
+        {
+            "request": request,
+            "canonical_url": build_absolute_url("/cover-letter"),
+            "software_schema_json": build_software_app_schema(),
+            "page_schema_json": build_page_breadcrumb("AI Cover Letter Generator", "/cover-letter"),
+        },
     )
 
 
@@ -5281,6 +5604,12 @@ PORTFOLIO_THEMES = {
     "snowcard": "Snowcard - light dotted tabs",
     "github": "GitHub - profile, repos & contributions",
     "parchment": "Parchment — ancient scroll letter 📜",
+    "assistant": "Assistant — ChatGPT-style AI chat 🤖",
+    "cloud": "Cloud — friendly dev landing, light/dark ☁️",
+    "neon": "Neon — cyberpunk glow, grid floor 🌃",
+    "brutalist": "Brutalist — bold blocks, hard shadows 🧱",
+    "hacker": "Hacker — green terminal, typed 💻",
+    "magazine": "Magazine — editorial serif print 📰",
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
@@ -5303,7 +5632,13 @@ PORTFOLIO_THEME_MEDIA = {
     "particle": {"image": "/static/portfolio-previews/particle.png", "demo": "https://jonathan-allen.netlify.app/"},
     "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://lisa-martinez.netlify.app/"},
     "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://karen-taylor.netlify.app/"},
-    "parchment": {"image": "/static/portfolio-previews/parchment.png", "demo": "https://uttam-debnath.netlify.app/"},
+    "parchment": {"image": "/static/portfolio-previews/parchment.png"},
+    "assistant": {"image": "/static/portfolio-previews/assistant.png", "demo": "https://trisha-debnath.netlify.app/"},
+    "cloud": {"image": "/static/portfolio-previews/cloud.png", "demo": "https://uttam-debnath.netlify.app/"},
+    "neon": {"image": "/static/portfolio-previews/neon.png"},
+    "brutalist": {"image": "/static/portfolio-previews/brutalist.png"},
+    "hacker": {"image": "/static/portfolio-previews/hacker.png"},
+    "magazine": {"image": "/static/portfolio-previews/magazine.png"},
 }
 
 # Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
@@ -5957,6 +6292,9 @@ async def portfolio_builder_page(request: Request):
         "logged_in": logged_in,
         "portfolio_domain": PORTFOLIO_DOMAIN,
         "subdomains_enabled": PORTFOLIO_SUBDOMAINS_ENABLED,
+        "canonical_url": build_absolute_url("/portfolio"),
+        "software_schema_json": build_software_app_schema(),
+        "page_schema_json": build_page_breadcrumb("Portfolio Website Builder", "/portfolio"),
     })
 
 
@@ -6001,7 +6339,16 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "snowcard": "portfolio_snowcard.html",
         "github": "portfolio_github.html",
         "parchment": "portfolio_parchment.html",
+        "assistant": "portfolio_assistant.html",
+        "cloud": "portfolio_cloud.html",
+        "neon": "portfolio_neon.html",
+        "brutalist": "portfolio_brutalist.html",
+        "hacker": "portfolio_hacker.html",
+        "magazine": "portfolio_magazine.html",
     }.get(theme, "portfolio_public.html")
+    # Free (non-Pro) portfolios carry a "Made with TailorCV" watermark; Pro owners
+    # get a clean, unbranded site. Upgrading to Pro drops it on the next page load.
+    show_watermark = not is_pro(getattr(portfolio, "user", None))
     return templates.TemplateResponse(request, tpl, {
         "request": request,
         "data": data,
@@ -6014,6 +6361,7 @@ def _render_portfolio_page(request: Request, portfolio: Portfolio):
         "seo_og_title": f"{name} | Portfolio",
         "seo_og_description": og_desc,
         "canonical_url": page_url,
+        "show_watermark": show_watermark,
     })
 
 
@@ -6049,7 +6397,12 @@ def _build_static_portfolio_html(portfolio) -> str:
         "nova": "portfolio_nova.html", "console": "portfolio_console.html",
         "monolith": "portfolio_monolith.html", "particle": "portfolio_particle.html",
         "snowcard": "portfolio_snowcard.html", "github": "portfolio_github.html",
-        "parchment": "portfolio_parchment.html",
+        "parchment": "portfolio_parchment.html", "assistant": "portfolio_assistant.html",
+        "cloud": "portfolio_cloud.html",
+        "neon": "portfolio_neon.html",
+        "brutalist": "portfolio_brutalist.html",
+        "hacker": "portfolio_hacker.html",
+        "magazine": "portfolio_magazine.html",
     }.get(theme, "portfolio_public.html")
 
     class _FakeURL:
@@ -6059,10 +6412,14 @@ def _build_static_portfolio_html(portfolio) -> str:
         def __init__(self, path): self.url = _FakeURL(path)
 
     page_url = f"{SITE_URL}/{portfolio.slug}"
+    # Netlify deploy is Pro-only, so this is False in practice — but compute it
+    # honestly so the static export matches the served page if that ever changes.
+    show_watermark = not is_pro(getattr(portfolio, "user", None))
     html = templates.get_template(tpl).render(
         request=_FakeReq(f"/{portfolio.slug}"), data=data, tagline=tagline, about=about,
         slug=portfolio.slug, has_cv=has_cv, theme=theme, page_url=page_url,
         seo_og_title=f"{name} | Portfolio", seo_og_description=og_desc, canonical_url=page_url,
+        show_watermark=show_watermark,
     )
 
     def _inline_css(m):
@@ -6219,6 +6576,17 @@ async def deploy_portfolio_netlify(portfolio_id: int, request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             return JSONResponse(status_code=401, content={"error": "Not logged in"})
+        # Custom Netlify live site is a Pro feature. Non-Pro users still have their
+        # free thetailorcv.com/<slug> site (created at publish time) — only the extra
+        # .netlify.app deployment is gated.
+        if not is_pro(user):
+            return JSONResponse(status_code=402, content={
+                "error": "Publishing a custom Netlify live site is a Pro feature. "
+                         "Your free site is already live at thetailorcv.com.",
+                "upgrade": True,
+                "upgrade_url": "/pricing",
+                "free_url": _portfolio_share_url(portfolio),
+            })
         try:
             # Deploy to the user's single shared site (one live link per user).
             site_id, site_url = await _deploy_portfolio_to_netlify(user, portfolio)
@@ -6286,7 +6654,8 @@ async def portfolio_public_cv(request: Request, slug: str):
     try:
         await asyncio.to_thread(_render_pdf)
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+        logger.exception("PDF render failed")
+        raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
 
     return FileResponse(
         pdf_path, media_type="application/pdf", filename=f"{dl_name or 'resume'}.pdf",
@@ -6641,6 +7010,14 @@ BLOG_REDIRECTS = {
 }
 
 
+# Reverse map: blog slug -> its matching /resume-examples/{role} page. Completes the
+# topic cluster (the role pages already link back to these blogs).
+_BLOG_TO_ROLE = {
+    r["blog"]: {"slug": role_slug, "role": r["role"]}
+    for role_slug, r in ROLE_SEO.items() if r.get("blog")
+}
+
+
 @app.get("/blog/{slug}", response_class=HTMLResponse)
 async def blog_post_page(request: Request, slug: str):
     # Consolidate merged duplicates: permanent-redirect old slugs to their pillar.
@@ -6670,6 +7047,7 @@ async def blog_post_page(request: Request, slug: str):
             "breadcrumb_schema_json": build_breadcrumb_schema(post, canonical_url),
             "faq_schema_json": build_faq_schema(post),
             "author_profile": AUTHOR_PROFILE,
+            "related_resume_example": _BLOG_TO_ROLE.get(post.slug),
         },
     )
 
@@ -6683,6 +7061,14 @@ async def sitemap_xml():
         ("/solutions", "weekly", "0.9"),
         ("/ats-analysis", "weekly", "0.9"),
         ("/templates", "weekly", "0.8"),
+        ("/cover-letter", "weekly", "0.8"),
+        ("/portfolio", "weekly", "0.8"),
+        ("/jobscan-alternative", "monthly", "0.7"),
+        ("/careerflow-alternative", "monthly", "0.7"),
+        ("/resume-worded-alternative", "monthly", "0.7"),
+        ("/teal-alternative", "monthly", "0.7"),
+        ("/rezi-alternative", "monthly", "0.7"),
+        ("/resume-examples", "weekly", "0.8"),
         ("/mock-interview", "weekly", "0.8"),
         ("/interview-prep", "weekly", "0.7"),
         ("/modify-cv", "weekly", "0.7"),
@@ -6697,12 +7083,37 @@ async def sitemap_xml():
         for p in blog_service.load_posts()
         if p.slug not in BLOG_REDIRECTS  # merged duplicates 301 elsewhere; keep them out of the index
     ]
-    all_urls = static_urls + post_urls
+    role_urls = [(f"/resume-examples/{slug}", today, "monthly", "0.6") for slug in ROLE_SEO]
+    # Published portfolios become indexable URLs — but only quality ones (has real
+    # projects/experience) so we never feed Google thin/boilerplate pages.
+    portfolio_urls = []
+    _pf_db = get_db()
+    try:
+        for pf in _pf_db.query(Portfolio).filter(Portfolio.published == True).all():  # noqa: E712
+            try:
+                pdata = json.loads(pf.data_json) if pf.data_json else {}
+            except Exception:
+                continue
+            if pdata.get("projects") or pdata.get("experience"):
+                loc = _portfolio_share_url(pf)
+                lastmod = (pf.updated_at or pf.created_at or datetime.utcnow()).strftime("%Y-%m-%d")
+                portfolio_urls.append((loc, lastmod, "monthly", "0.5"))
+    finally:
+        _pf_db.close()
+    all_urls = static_urls + post_urls + role_urls
 
     entries = []
     for path, lastmod, changefreq, priority in all_urls:
         entries.append(
             f"<url><loc>{xml_escape(build_absolute_url(path))}</loc>"
+            f"<lastmod>{xml_escape(lastmod)}</lastmod>"
+            f"<changefreq>{changefreq}</changefreq>"
+            f"<priority>{priority}</priority></url>"
+        )
+    # Portfolio locs are already absolute (may be a subdomain), so emit them as-is.
+    for loc, lastmod, changefreq, priority in portfolio_urls:
+        entries.append(
+            f"<url><loc>{xml_escape(loc)}</loc>"
             f"<lastmod>{xml_escape(lastmod)}</lastmod>"
             f"<changefreq>{changefreq}</changefreq>"
             f"<priority>{priority}</priority></url>"
@@ -7217,7 +7628,8 @@ async def upload_resume(
             try:
                 response_string = await get_resume_response(prompt)
             except Exception as e:
-                raise HTTPException(status_code=500, detail=f"AI generation error: {e}")
+                logger.exception("AI generation failed")
+                raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
 
             parsed = parse_ai_json_response(response_string)
 
@@ -7552,7 +7964,8 @@ async def upload_resume(
             try:
                 await asyncio.to_thread(_render_pdf)
             except Exception as e:
-                raise HTTPException(status_code=500, detail=f"Failed to render PDF: {e}")
+                logger.exception("PDF render failed")
+                raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
 
             if not os.path.exists(pdf_path):
                 raise HTTPException(status_code=404, detail="PDF file not found after generation")
@@ -7575,7 +7988,8 @@ async def upload_resume(
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error uploading file: {str(e)}")
+        logger.exception("Uploaded file processing failed")
+        raise HTTPException(status_code=500, detail="Could not process the uploaded file. Please try again.")
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -7615,9 +8029,10 @@ async def download_html_pdf(request: Request):
             background=BackgroundTask(_cleanup_files, [pdf_path])
         )
     except Exception as exc:
+        logger.exception("PDF generation failed")
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
-        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
+        raise HTTPException(status_code=500, detail="Failed to generate the PDF. Please try again.")
 
 
 @app.post("/api/estimate-html-pages")
@@ -7643,7 +8058,8 @@ async def estimate_html_pages(request: Request):
         pages = await asyncio.to_thread(_count_pages)
         return {"success": True, "pages": pages}
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to estimate pages: {exc}")
+        logger.exception("Page estimate failed")
+        raise HTTPException(status_code=500, detail="Could not estimate pages. Please try again.")
 
 def _detect_two_column_layout(pdf_path: str) -> bool:
     """
@@ -7767,7 +8183,8 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error uploading file: {str(e)}")
+        logger.exception("Uploaded file processing failed")
+        raise HTTPException(status_code=500, detail="Could not process the uploaded file. Please try again.")
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -7956,7 +8373,8 @@ async def extract_cv_from_pdf(file: UploadFile = File(...)):
         try:
             response_string = await get_resume_response(prompt)
         except Exception as exc:
-            raise HTTPException(status_code=500, detail=f"AI generation error: {exc}")
+            logger.exception("AI generation failed")
+            raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
 
         parsed = parse_ai_json_response(response_string)
         parsed = restore_dropped_bullets(parsed, resume_text)
@@ -7964,7 +8382,8 @@ async def extract_cv_from_pdf(file: UploadFile = File(...)):
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to extract CV data: {exc}")
+        logger.exception("CV extraction failed")
+        raise HTTPException(status_code=500, detail="Could not read the CV. Please try again.")
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -7996,7 +8415,8 @@ async def extract_cv_from_text(request: Request):
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to extract CV data from text: {exc}")
+        logger.exception("CV text extraction failed")
+        raise HTTPException(status_code=500, detail="Could not read the CV text. Please try again.")
 
 
 @app.get("/api/resume-templates")
@@ -8056,9 +8476,10 @@ async def download_cv_pdf(request: Request):
             background=BackgroundTask(_cleanup_files, [pdf_path])
         )
     except Exception as exc:
+        logger.exception("PDF generation failed")
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
-        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
+        raise HTTPException(status_code=500, detail="Failed to generate the PDF. Please try again.")
 
 
 @app.post("/api/download-cv-pdf-browser")
@@ -8087,9 +8508,10 @@ async def download_cv_pdf_browser(
             background=BackgroundTask(_cleanup_files, [pdf_path])
         )
     except Exception as exc:
+        logger.exception("PDF generation failed")
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
-        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {exc}")
+        raise HTTPException(status_code=500, detail="Failed to generate the PDF. Please try again.")
 from bs4 import BeautifulSoup
 
 @app.post("/api/rerender-template")
@@ -8131,7 +8553,8 @@ async def rerender_template(request: Request):
     except HTTPException:
         raise
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to render template: {exc}")
+        logger.exception("Template render failed")
+        raise HTTPException(status_code=500, detail="Failed to render the template. Please try again.")
 
     return JSONResponse({"html": new_html, "template_id": template_id})
 
@@ -8145,7 +8568,8 @@ def _render_custom_cv_html(template_id: int, cv_data: dict) -> str:
         with open(template_path, "r", encoding="utf-8") as f:
             template_content = f.read()
     except OSError as exc:
-        raise HTTPException(status_code=500, detail=f"Unable to read template: {exc}")
+        logger.exception("Template file read failed")
+        raise HTTPException(status_code=500, detail="Unable to read the template. Please try again.")
 
     context = _build_custom_cv_context(cv_data)
 
@@ -8154,7 +8578,8 @@ def _render_custom_cv_html(template_id: int, cv_data: dict) -> str:
         jinja_template = Jinja2Template(template_content)
         html_output = jinja_template.render(**context)
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Failed to render template: {exc}")
+        logger.exception("Template render failed")
+        raise HTTPException(status_code=500, detail="Failed to render the template. Please try again.")
 
     style_filename = ""
     if template_id == 6:

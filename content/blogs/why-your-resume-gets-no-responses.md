@@ -5,7 +5,7 @@ date: 2026-06-11
 author: TailorCV Team
 tags: [resume, job search, ATS, resume tips, no response to resume]
 category: Resume Writing
-image: public/blog-images/why-your-resume-gets-no-responses.png
+image: public/blog-images/why-your-resume-gets-no-responses.webp
 slug: why-your-resume-gets-no-responses
 keywords: why resume gets no responses, no response after applying jobs, qualified but no interviews, resume not getting callbacks, resume ignored job applications
 ---

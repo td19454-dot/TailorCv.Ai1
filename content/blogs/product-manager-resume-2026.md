@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Product Manager Resume, PM Resume, ATS Resume, Product Management, Career Tips]
 category: Resume Examples
-image: public/blog-images/product-manager-resume.png
+image: public/blog-images/product-manager-resume.webp
 slug: product-manager-resume-2026
 keywords: product manager resume, product manager resume 2026, PM resume, entry level product manager resume, ATS product manager resume, product management resume keywords
 ---

@@ -5,7 +5,7 @@ date: 2026-05-20
 author: TailorCV Team
 tags: [resume mistakes for freshers,common resume mistakes]
 category: Resume Writing
-image: public\blog-images\common-resume-mistakes.png
+image: public/blog-images/common-resume-mistakes.webp
 slug: resume-mistakes-every-fresher-makes
 keywords: resume mistakes to avoid, Common resume mistakes , Common resume mistakes for freshers
 ---

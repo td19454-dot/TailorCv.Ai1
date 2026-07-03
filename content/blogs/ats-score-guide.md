@@ -5,7 +5,7 @@ date: 2026-05-10
 author: TailorCV Team
 tags: [ATS, resume, job search]
 category: ATS Optimization
-image: public\blog-images\resume_review.png
+image: public/blog-images/resume_review.webp
 slug: ats-score-guide
 keywords: ats score, resume optimization, resume keywords
 ---

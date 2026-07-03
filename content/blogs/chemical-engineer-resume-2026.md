@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Chemical Engineer Resume, Process Engineer Resume, Engineering Resume, ATS Resume, Manufacturing]
 category: Resume Examples
-image: public/blog-images/chemical.png
+image: public/blog-images/chemical.webp
 slug: chemical-engineer-resume-2026
 keywords: chemical engineer resume, chemical engineering resume 2026, process engineer resume, chemical engineering ATS keywords, Aspen Plus resume, HAZOP resume, refinery resume
 ---

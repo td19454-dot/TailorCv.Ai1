@@ -5,7 +5,7 @@ date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Contact Section, Resume Basics, Resume Writing, Resume Formatting, Job Search]
 category: Resume Writing
-image: public/blog-images/resume-contact.png
+image: public/blog-images/resume-contact.webp
 slug: resume-contact-section
 keywords: resume contact section, what to include in resume contact, resume header, resume email phone LinkedIn, resume personal information, resume contact info 2026
 ---

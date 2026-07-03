@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Java Developer Resume, Spring Boot Resume, Backend Resume, ATS Resume, Java]
 category: Resume Examples
-image: public/blog-images/java-developer-resume.png
+image: public/blog-images/java-developer-resume.webp
 slug: java-developer-resume-2026
 keywords: java developer resume, java developer resume 2026, spring boot resume, java backend resume, microservices resume, java ATS keywords, senior java developer resume
 ---

@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Embedded Systems Resume, Firmware Resume, Embedded Engineer Resume, ATS Resume, IoT Resume]
 category: Resume Examples
-image: public/blog-images/embaded.png
+image: public/blog-images/embaded.webp
 slug: embedded-systems-engineer-resume-2026
 keywords: embedded systems engineer resume, embedded resume 2026, firmware engineer resume, embedded C resume, RTOS resume, IoT resume, embedded ATS keywords
 ---

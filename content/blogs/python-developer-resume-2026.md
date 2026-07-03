@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Python Developer Resume, Django Resume, FastAPI Resume, Backend Resume, ATS Resume]
 category: Resume Examples
-image: public/blog-images/python-developer-resume.png
+image: public/blog-images/python-developer-resume.webp
 slug: python-developer-resume-2026
 keywords: python developer resume, python developer resume 2026, django resume, fastapi resume, python backend resume, python ATS keywords, senior python developer resume
 ---

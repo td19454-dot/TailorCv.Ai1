@@ -5,7 +5,7 @@ date: 2026-05-28
 author: TailorCV Team
 tags: [ATS Score, Resume Optimization, ATS Resume, Job Search, Resume Keywords]
 category: ATS Optimization
-image: public/blog-images/ats.png
+image: public/blog-images/ats.webp
 slug: what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it
 keywords: what is ATS score, ATS resume checker, improve ATS score, applicant tracking system, resume screening software, ATS optimization 2026
 ---

@@ -5,7 +5,7 @@ date: 2026-06-11
 author: TailorCV Team
 tags: [resume tailoring, resume tips, ATS, job search, resume checklist]
 category: Resume Writing
-image: public/blog-images/how-to-tailor-resume-in-5-minutes.png
+image: public/blog-images/how-to-tailor-resume-in-5-minutes.webp
 slug: how-to-tailor-resume-in-5-minutes
 keywords: how to tailor a resume in 5 minutes, quick resume tailoring, resume customization checklist, tailor resume fast, resume tailoring tips
 ---

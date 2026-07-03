@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Financial Analyst Resume, Finance Resume, Excel Resume, ATS Resume, Career Tips]
 category: Resume Examples
-image: public/blog-images/financial.png
+image: public/blog-images/financial.webp
 slug: financial-analyst-resume-2026
 keywords: financial analyst resume, financial analyst resume 2026, finance resume, Excel financial modeling resume, CFA resume, investment analyst resume, FP&A resume
 ---

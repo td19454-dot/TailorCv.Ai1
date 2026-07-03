@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Match Score, ATS Score Improvement, Resume Optimization, Improve Resume 2026, Job Description Match]
 category: Resume Optimization
-image: public/blog-images/improve-resume-job-match-score.png
+image: public/blog-images/improve-resume-job-match-score.webp
 slug: improve-resume-job-match-score
 keywords: how to improve resume job match score, improve ATS score, raise resume match percentage, increase resume keyword match, better ATS score 2026, resume score improvement tips
 ---

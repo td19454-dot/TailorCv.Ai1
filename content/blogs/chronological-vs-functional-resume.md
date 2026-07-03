@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Format, Chronological Resume, Functional Resume, Resume Tips, ATS Resume]
 category: Resume Writing
-image: public/blog-images/chronicalvsfunctional.png
+image: public/blog-images/chronicalvsfunctional.webp
 slug: chronological-vs-functional-resume
 keywords: chronological vs functional resume, resume format 2026, best resume format, functional resume, combination resume, reverse chronological resume, which resume format
 ---

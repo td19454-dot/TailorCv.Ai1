@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Operations Manager Resume, Operations Resume, Process Improvement Resume, ATS Resume, Supply Chain Resume]
 category: Resume Examples
-image: public/blog-images/operations-manager-resume.png
+image: public/blog-images/operations-manager-resume.webp
 slug: operations-manager-resume-2026
 keywords: operations manager resume, operations resume 2026, process improvement resume, supply chain resume, operations ATS keywords, COO resume, plant manager resume
 ---

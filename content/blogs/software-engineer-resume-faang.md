@@ -5,7 +5,7 @@ date: 2026-05-31
 author: TailorCV Team
 tags: [Software Engineer Resume, FAANG Resume, ATS Resume, Tech Jobs, Resume Keywords]
 category: Resume Examples
-image: public\blog-images\software.png
+image: public/blog-images/software.webp
 slug: software-engineer-resume-faang
 keywords: software engineer resume, FAANG resume, FAANG software engineer resume, software developer resume, ATS software engineer resume, Google resume, Amazon resume, Meta resume
 ---

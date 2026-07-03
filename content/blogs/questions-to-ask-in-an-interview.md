@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Interview Questions, Questions to Ask Interviewer, Job Interview, Interview Tips, Career Advice]
 category: Interview Preparation
-image: public/blog-images/questions-to-ask.png
+image: public/blog-images/questions-to-ask.webp
 slug: questions-to-ask-in-an-interview
 keywords: questions to ask in an interview, questions to ask interviewer 2026, smart interview questions, what to ask in a job interview, questions for hiring manager
 ---

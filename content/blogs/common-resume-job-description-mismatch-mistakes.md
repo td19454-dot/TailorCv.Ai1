@@ -5,7 +5,7 @@ date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Mistakes, Job Description Mismatch, ATS Mistakes, Resume Optimization, Resume Tips 2026]
 category: Resume Optimization
-image: public\blog-images\common-resume-job-description-mismatch-mistakes.png
+image: public/blog-images/common-resume-job-description-mismatch-mistakes.webp
 slug: common-resume-job-description-mismatch-mistakes
 keywords: resume job description mismatch mistakes, resume mistakes ATS, common resume mistakes 2026, why resume doesn't match job description, resume mismatch fix
 ---

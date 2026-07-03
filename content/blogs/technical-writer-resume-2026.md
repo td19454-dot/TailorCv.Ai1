@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Technical Writer Resume, Documentation Resume, Content Resume, ATS Resume, Technical Writing]
 category: Resume Examples
-image: public/blog-images/technical-writer-resume.png
+image: public/blog-images/technical-writer-resume.webp
 slug: technical-writer-resume-2026
 keywords: technical writer resume, technical writer resume 2026, documentation resume, API documentation resume, technical writing ATS keywords, developer documentation resume
 ---

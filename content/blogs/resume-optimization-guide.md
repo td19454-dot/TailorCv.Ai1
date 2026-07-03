@@ -5,7 +5,7 @@ date: 2026-05-17
 author: TailorCV Team
 tags: [ATS Resume Optimization, Resume Keywords, Job Applications, ATS Friendly Resume, Career Tips]
 category: Resume Optimization
-image: public\blog-images\Resume_with_job_description.png
+image: public/blog-images/Resume_with_job_description.webp
 slug: resume-optimization-guide
 keywords: tailor resume to job description, ATS resume optimization, ATS friendly resume, optimize resume for ATS, resume keyword optimization, ATS score improvement, resume matching job description
 ---

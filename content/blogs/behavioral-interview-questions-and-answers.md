@@ -5,7 +5,7 @@ date: 2026-06-01
 author: TailorCV Team
 tags: [Behavioral Interview, Interview Questions, STAR Method, Job Interview, Career Advice]
 category: Interview Preparation
-image: public/blog-images/behaviourialinterview.png
+image: public/blog-images/behaviourialinterview.webp
 slug: behavioral-interview-questions-and-answers
 keywords: behavioral interview questions, behavioral interview answers 2026, STAR method, tell me about yourself, interview questions and answers, how to answer behavioral questions
 ---
