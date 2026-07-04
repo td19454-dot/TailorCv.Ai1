@@ -796,11 +796,13 @@ _HARD_SKILL_KEYWORDS: list[str] = [
     "Hugging Face", "LangChain", "LangGraph", "OpenAI", "LLM", "RAG",
     "Computer Vision", "NLP", "NLTK", "spaCy", "OpenCV", "Transformers",
     "Machine Learning", "Deep Learning", "Reinforcement Learning",
+    "Natural Language Processing", "Prompt Engineering", "LLM Fine Tuning",
     "MLflow", "Weights & Biases",
     # Databases
     "SQL", "MySQL", "PostgreSQL", "SQLite", "Oracle", "MongoDB", "Redis",
     "Elasticsearch", "Cassandra", "DynamoDB", "Firebase", "Supabase",
-    "Snowflake", "BigQuery", "Redshift", "Databricks",
+    "Snowflake", "BigQuery", "Redshift", "Databricks", "NoSQL",
+    "Vector Databases",
     # Cloud
     "AWS", "GCP", "Azure", "Google Cloud", "Amazon Web Services",
     "EC2", "S3", "Lambda", "EKS", "ECS", "GKE", "AKS",
@@ -810,7 +812,8 @@ _HARD_SKILL_KEYWORDS: list[str] = [
     "Prometheus", "Grafana", "Datadog", "New Relic", "Splunk",
     # Data Engineering
     "Apache Spark", "Spark", "Hadoop", "Airflow", "dbt", "Kafka",
-    "RabbitMQ", "Flink", "Hive", "Trino",
+    "RabbitMQ", "Flink", "Hive", "Trino", "ETL Pipelines",
+    "Data Structures and Algorithms",
     # Analytics / BI
     "Tableau", "Power BI", "Looker", "Matplotlib", "Seaborn", "Plotly",
     # Vector DBs
@@ -822,6 +825,120 @@ _HARD_SKILL_KEYWORDS: list[str] = [
     "Kubeflow", "TorchServe", "TF Serving", "TensorFlow Serving",
     "Dask", "MLOps", "Vertex AI", "SageMaker", "BentoML", "Ray", "Triton",
 ]
+_HARD_SKILL_KEYWORDS_LOWER = frozenset(
+    keyword.lower() for keyword in _HARD_SKILL_KEYWORDS
+)
+
+
+_PHRASE_QUALIFIER_RE = re.compile(
+    r'^\s*(?:\d+\+?\s*years?\s+of\s+|'
+    r'experience\s+(?:in|with|deploying|building|using)\s+|'
+    r'knowledge\s+of\s+|'
+    r'familiarity\s+with\s+|'
+    r'expertise\s+in\s+|'
+    r'strong\s+(?:experience|background)\s+(?:in|with)\s+|'
+    r'proficien(?:cy|t)\s+(?:in|with)\s+)',
+    re.IGNORECASE,
+)
+_PHRASE_DELIMITERS_RE = re.compile(r'[,;/()\[\]]|\band\b|\bor\b|\bvia\b', re.IGNORECASE)
+_TRAILING_SKILL_QUALIFIER_RE = re.compile(
+    r'\s+(?:required|preferred|desired|is a plus|are a plus)$', re.IGNORECASE
+)
+_LEADING_SKILL_MODIFIER_RE = re.compile(
+    r'^\s*(?:modern|common|popular|major|leading)\s+', re.IGNORECASE
+)
+
+_GENERIC_SKILL_PHRASES: set[str] = {
+    "backend development", "back-end development", "frontend development",
+    "front-end development", "software development", "software engineering",
+    "ml engineering", "machine learning engineering", "ml focus",
+    "machine learning focus", "cloud platform", "cloud platforms",
+    "mlops tool", "mlops tools", "message queue", "message queues",
+    "relational database", "relational databases", "state management",
+    "build tool", "build tools", "system design principle",
+    "system design principles", "data science", "related field",
+    "related fields", "a related field", "large dataset", "large datasets",
+    "working with large datasets", "material design guideline",
+    "material design guidelines", "cd for mobile", "ci/cd for mobile",
+    "related role", "related roles", "a related role", "data warehouse",
+    "data warehouses", "data warehousing", "r for data analysis",
+}
+_GENERIC_SKILL_ENDING_RE = re.compile(
+    r'\b(?:development|engineering|focus|tools?|platforms?|frameworks?|libraries?|'
+    r'technologies?|guidelines?|principles?|practices?|methodologies?)$',
+    re.IGNORECASE,
+)
+_GENERIC_SKILL_PROSE_RE = re.compile(
+    r'^(?:ability\s+to|working\s+with|hands-on\s+experience|understanding\s+of)\b|'
+    r'^(?:an?\s+)?related\s+(?:fields?|roles?|disciplines?|areas?)$|'
+    r'\b(?:for\s+(?:mobile|data\s+analysis)|related\s+fields?)$',
+    re.IGNORECASE,
+)
+
+
+def _strip_skill_qualifiers(value: str) -> str:
+    """Remove requirement prose around a possible atomic skill."""
+    cleaned = str(value or "").strip().strip("\"'.,:;-")
+    previous = None
+    while cleaned and cleaned != previous:
+        previous = cleaned
+        cleaned = _PHRASE_QUALIFIER_RE.sub("", cleaned).strip()
+    cleaned = _LEADING_SKILL_MODIFIER_RE.sub("", cleaned)
+    cleaned = _TRAILING_SKILL_QUALIFIER_RE.sub("", cleaned)
+    return cleaned.strip().strip("\"'.,:;-")
+
+
+def _is_atomic_hard_skill(value: str) -> bool:
+    """Return whether a value is a concrete, resume-safe hard skill."""
+    skill = _strip_skill_qualifiers(value)
+    if not skill or len(skill) > 50:
+        return False
+
+    normalized = re.sub(r"\s+", " ", skill).lower()
+    if normalized in _HARD_SKILL_KEYWORDS_LOWER:
+        return True
+    if any(
+        normalized == generic or normalized.startswith(f"{generic} ")
+        for generic in _GENERIC_SKILL_PHRASES
+    ):
+        return False
+    if len(re.findall(r"[A-Za-z0-9+#.]+", skill)) > 4:
+        return False
+    if re.search(r"\bwith\s+(?:an?\s+)?(?:ml|machine learning)\s+focus\b", normalized):
+        return False
+    if _GENERIC_SKILL_PROSE_RE.search(normalized):
+        return False
+    if _GENERIC_SKILL_ENDING_RE.search(normalized):
+        return False
+    return True
+
+
+def _explode_skill_phrase(value: str) -> list[str]:
+    """Explode parentheticals and list conjunctions into atomic skill candidates."""
+    phrase = _strip_skill_qualifiers(value)
+    if not phrase:
+        return []
+
+    parenthetical: list[str] = []
+    for match in re.finditer(r'\(([^)]+)\)', phrase):
+        parenthetical.extend(_PHRASE_DELIMITERS_RE.split(match.group(1)))
+
+    without_parenthetical = re.sub(r'\([^)]*\)', ',', phrase)
+    candidates = parenthetical + _PHRASE_DELIMITERS_RE.split(without_parenthetical)
+    return [
+        skill
+        for candidate in candidates
+        if (skill := _strip_skill_qualifiers(candidate)) and _is_atomic_hard_skill(skill)
+    ]
+
+
+def _contains_skill(text: str, skill: str) -> bool:
+    """Match a skill without treating short names such as R or Go as substrings."""
+    return bool(re.search(
+        rf'(?<![A-Za-z0-9]){re.escape(skill)}(?![A-Za-z0-9])',
+        text,
+        re.IGNORECASE,
+    ))
 
 
 def _extract_hard_skills_from_jd(jd_string: str) -> list[str]:
@@ -832,14 +949,14 @@ def _extract_hard_skills_from_jd(jd_string: str) -> list[str]:
     seen_lower: set[str] = set()
 
     def _add(skill: str) -> None:
-        s = skill.strip()
+        s = _strip_skill_qualifiers(skill)
         key = s.lower()
-        if s and key not in seen_lower and 1 < len(s) <= 50:
+        if _is_atomic_hard_skill(s) and key not in seen_lower:
             seen_lower.add(key)
             found.append(s)
 
     for kw in _HARD_SKILL_KEYWORDS:
-        if kw.lower() in jd_lower:
+        if _contains_skill(jd_lower, kw):
             _add(kw)
 
     skill_list_pattern = re.compile(
@@ -857,29 +974,12 @@ def _extract_hard_skills_from_jd(jd_string: str) -> list[str]:
     )
     for m in skill_list_pattern.finditer(jd):
         segment = m.group(1)
-        # Split on parentheses/brackets too, so a categorized list like
-        # "modern JavaScript (ES6+, ESNext), state management (Redux, Zustand)"
-        # never yields fragments carrying an unbalanced "(" — which previously
-        # produced broken skill entries like "state management (Redux".
-        for tok in re.split(r'[,;/()\[\]]|\band\b|\bor\b', segment):
-            tok = tok.strip().strip('•-*()[]').strip()
-            if tok and len(tok) >= 2 and not tok.lower().startswith(('the ', 'a ', 'an ')):
-                _add(tok)
+        # Explode categorized lists and parentheticals before validating each
+        # candidate so category labels never become resume skills.
+        for token in _explode_skill_phrase(segment):
+            _add(token)
 
     return found
-
-
-_PHRASE_QUALIFIER_RE = re.compile(
-    r'^\s*(?:\d+\+?\s*years?\s+of\s+|'
-    r'experience\s+(?:in|with|deploying|building|using)\s+|'
-    r'knowledge\s+of\s+|'
-    r'familiarity\s+with\s+|'
-    r'expertise\s+in\s+|'
-    r'strong\s+(?:experience|background)\s+(?:in|with)\s+|'
-    r'proficien(?:cy|t)\s+(?:in|with)\s+)',
-    re.IGNORECASE,
-)
-_PHRASE_DELIMITERS_RE = re.compile(r'[,;/()\[\]]|\band\b|\bor\b|\bvia\b', re.IGNORECASE)
 
 
 def _sanitize_hard_skill_list(
@@ -897,8 +997,8 @@ def _sanitize_hard_skill_list(
     seen_matched: set[str] = set()
 
     def _emit(token: str) -> None:
-        t = token.strip()
-        if not t or len(t) < 2:
+        t = _strip_skill_qualifiers(token)
+        if not _is_atomic_hard_skill(t):
             return
         t_lower = t.lower()
         if t_lower in resume_lower:
@@ -964,15 +1064,23 @@ def inject_jd_hard_skills(data: dict, jd_string: str) -> dict:
     if not isinstance(skills, list):
         return data
 
-    existing_text = " ".join(str(s) for s in skills).lower()
+    cleaned_skills: list[str] = []
+    seen_lower: set[str] = set()
+    for raw_skill in skills:
+        skill = _clean_inline_text(raw_skill)
+        key = skill.lower()
+        if not _is_atomic_hard_skill(skill) or key in seen_lower:
+            continue
+        seen_lower.add(key)
+        cleaned_skills.append(skill)
 
-    skills_to_add = []
     for skill in _extract_hard_skills_from_jd(jd_string):
-        if skill.lower().strip() not in existing_text:
-            skills_to_add.append(skill)
+        key = skill.lower()
+        if key not in seen_lower:
+            seen_lower.add(key)
+            cleaned_skills.append(skill)
 
-    if skills_to_add:
-        data["skills"] = skills + skills_to_add
+    data["skills"] = cleaned_skills
 
     return data
 
@@ -1040,7 +1148,7 @@ def sanitize_resume_data(data: dict) -> dict:
         seen: set[str] = set()
         for raw in skills:
             s = _clean_inline_text(raw)
-            if not s or len(s) > 80:
+            if not _is_atomic_hard_skill(s):
                 continue
             key = s.lower()
             if key in seen:
