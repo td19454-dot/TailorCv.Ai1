@@ -2,6 +2,7 @@
   "use strict";
 
   const STORAGE_KEY = "atsAnalysisPayload";
+  const STORAGE_LOCAL_KEY = "tailorcv_ats_payload_guest";
 
   /* ─────────────────────────────────────────────────────────────────────────────
      ATS_RULES — master schema: title, category, why-it-matters, success copy.
@@ -186,7 +187,13 @@
   /* ─── Utilities ──────────────────────────────────────────────────────────── */
   function load() {
     try {
-      const raw = sessionStorage.getItem(STORAGE_KEY);
+      let raw = sessionStorage.getItem(STORAGE_KEY);
+      if (!raw) {
+        raw = localStorage.getItem(STORAGE_LOCAL_KEY);
+        if (raw) {
+          try { sessionStorage.setItem(STORAGE_KEY, raw); } catch {}
+        }
+      }
       return raw ? JSON.parse(raw) : null;
     } catch { return null; }
   }
@@ -629,6 +636,27 @@
     });
   }
 
+  /* ─── Guest signup banner ────────────────────────────────────────────────── */
+  function renderGuestBanner(d) {
+    const loggedIn = typeof isUserLoggedIn === "function" && isUserLoggedIn();
+    const isGuest = !!(d && d.guest_scan) || !loggedIn;
+    if (!isGuest || loggedIn) return;
+
+    const overview = document.getElementById("tab-overview");
+    if (!overview || document.getElementById("guest-signup-banner")) return;
+
+    const nextUrl = encodeURIComponent("/ats-analysis");
+    const banner = el("div", "guest-signup-banner");
+    banner.id = "guest-signup-banner";
+    banner.innerHTML = `
+      <p>Your score is ready. Create a free account to save this report, scan again, and optimize your resume.</p>
+      <div class="guest-signup-actions">
+        <a href="/signup?next=${nextUrl}" class="guest-btn-primary">Sign up free</a>
+        <a href="/login?next=${nextUrl}" class="guest-btn-secondary">Log in</a>
+      </div>`;
+    overview.insertBefore(banner, overview.firstChild);
+  }
+
   /* ─── Actions ────────────────────────────────────────────────────────────── */
   function wireActions() {
     const back = document.getElementById("back-to-resume-btn");
@@ -675,6 +703,7 @@
 
     renderMeta(d);
     renderJobRole(d);
+    renderGuestBanner(d);
     renderScore(score);
     renderMiniStats(counts);
     renderOverviewChecks(d);
