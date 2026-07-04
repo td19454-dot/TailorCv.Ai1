@@ -208,16 +208,6 @@
             animation: floatOrb6 10s ease-in-out infinite;
         }
 
-        .bg-star {
-            position: fixed;
-            width: 2px;
-            height: 2px;
-            background: #fff;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
         /* Make sure all content sits above the orbs */
         header,
         main,
@@ -448,7 +438,6 @@
 <body>
     <div class="bg-orb orb-blue"></div>
     <div class="bg-orb orb-violet"></div>
-    <div id="bg-stars" aria-hidden="true"></div>
     <div class="wave-bg" aria-hidden="true">
         <canvas id="wave-canvas"></canvas>
     </div>
@@ -2403,17 +2392,6 @@
             current = (current + 1) % dots.length;
             dots[current].classList.add('active');
         }, 3000);
-
-        const starsContainer = document.getElementById('bg-stars');
-        for (let i = 0; i < 60; i++) {
-            const s = document.createElement('div');
-            s.className = 'bg-star';
-            s.style.left = Math.random() * 100 + '%';
-            s.style.top = Math.random() * 100 + '%';
-            s.style.opacity = Math.random() * 0.4 + 0.1;
-            s.style.animation = `twinkle ${(2 + Math.random() * 4).toFixed(1)}s ease-in-out ${(Math.random() * 4).toFixed(1)}s infinite`;
-            starsContainer.appendChild(s);
-        }
 
         /* ── Mobile swipe carousel (real swipe + dots + "1 of N" counter) ── */
         (function () {
