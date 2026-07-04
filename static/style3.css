@@ -4592,10 +4592,10 @@ html, body { overflow-x: hidden !important; }
 
 @media (max-width: 768px) {
     .nav-clear-spacer {
-        padding-top: 12px !important;
+        padding-top: 88px !important;
     }
 
     .hero {
-        padding-top: 14px !important;
+        padding-top: 12px !important;
     }
 }
