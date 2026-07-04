@@ -678,6 +678,7 @@
     renderScore(score);
     renderMiniStats(counts);
     renderOverviewChecks(d);
+    renderPortfolioSection(d);
     renderContact(d);
     renderSkills(d);
     renderSectionsAudit(d);
@@ -687,11 +688,65 @@
     renderProjectsAudit(d);
     renderPriorityFixes(d);
     updateSidebarBadges(d);
+    showBandPopup(score);
 
     // Expose score globally as fallback for the share modal listener
     window._atsFinalScore = score;
     // Fire event so the share modal can react to the final score
     document.dispatchEvent(new CustomEvent("atsScoreReady", { detail: { score } }));
+  }
+
+  // Portfolio card: nudge to the builder when no portfolio link was found (−4), or
+  // a positive note when one was detected.
+  function renderPortfolioSection(d) {
+    const box = document.getElementById("portfolio-section");
+    if (!box) return;
+    if (d && d.has_portfolio) {
+      box.innerHTML =
+        '<div class="card-title">Portfolio</div>' +
+        '<div style="display:flex;gap:12px;align-items:flex-start;">' +
+          '<span style="font-size:22px;line-height:1;">🌐</span>' +
+          '<div><strong style="color:#34d399;">Portfolio link detected</strong>' +
+          '<p style="font-size:13.5px;color:var(--muted);margin:6px 0 0;line-height:1.55;">Nice — recruiters can see your live work. Keep the link near the top of your resume.</p></div>' +
+        '</div>';
+      box.style.borderColor = "rgba(52,211,153,.3)";
+    } else {
+      box.innerHTML =
+        '<div class="card-title">Portfolio <span style="color:#f87171;font-weight:700;">&minus;4</span></div>' +
+        '<div style="display:flex;gap:12px;align-items:flex-start;">' +
+          '<span style="font-size:22px;line-height:1;">🚀</span>' +
+          '<div><strong style="color:#eaf2ff;">Don\'t worry — you\'re almost there!</strong>' +
+          '<p style="font-size:13.5px;color:var(--muted);margin:6px 0 12px;line-height:1.55;">No portfolio link was found on your resume. Go to the <strong>Portfolio Website Builder</strong>, upload your resume, and publish a live portfolio in one minute — then add the link to your resume to recover these points.</p>' +
+          '<a href="/portfolio" style="display:inline-block;padding:9px 16px;border-radius:10px;font-weight:700;font-size:13.5px;text-decoration:none;color:#fff;background:linear-gradient(135deg,#7c3aed,#2563eb);">Build my portfolio &rarr;</a>' +
+          '</div>' +
+        '</div>';
+      box.style.borderColor = "rgba(124,58,237,.35)";
+    }
+    box.style.display = "";
+  }
+
+  // Score-band nudge: tailor (50–60) or apply + cover letter (>75).
+  function showBandPopup(score) {
+    const pop = document.getElementById("ats-band-popup");
+    if (!pop) return;
+    let cfg = null;
+    if (score >= 50 && score <= 60) {
+      cfg = { icon: "✏️", text: "It's high time to tailor your resume — optimize it for this exact job to lift your score.", cta: "Tailor my resume", href: "/solutions" };
+    } else if (score > 75) {
+      cfg = { icon: "🎯", text: "It's high time to apply for this role! Don't just send a resume — add a matching cover letter to stand out.", cta: "Write my cover letter", href: "/cover-letter" };
+    }
+    if (!cfg) return;
+    document.getElementById("ats-band-popup-icon").textContent = cfg.icon;
+    document.getElementById("ats-band-popup-text").textContent = cfg.text;
+    const ctaEl = document.getElementById("ats-band-popup-cta");
+    ctaEl.textContent = cfg.cta;
+    ctaEl.href = cfg.href;
+    pop.style.display = "block";
+    requestAnimationFrame(function () { pop.style.opacity = "1"; pop.style.transform = "none"; });
+    function hide() { pop.style.opacity = "0"; pop.style.transform = "translateY(16px)"; setTimeout(function () { pop.style.display = "none"; }, 300); }
+    const closeBtn = document.getElementById("ats-band-popup-close");
+    if (closeBtn) closeBtn.onclick = hide;
+    setTimeout(hide, 9000);
   }
 
   if (document.readyState === "loading") {
