@@ -13,11 +13,13 @@ Exit code is non-zero if any test fails (CI-friendly).
 
 import sys
 import traceback
+from datetime import date
 
 from functions import (
     _balance_parentheses,
     _clean_inline_text,
     _extract_hard_skills_from_jd,
+    _repair_false_future_chronology,
     inject_jd_hard_skills,
     sanitize_resume_data,
 )
@@ -172,6 +174,36 @@ def test_sanitize_removes_short_requirement_prose():
     assert sanitize_resume_data(data)["skills"] == [
         "Kotlin", "Material Design", "RAG", "XGBoost", "PostgreSQL",
     ]
+
+
+def test_chronology_repairs_past_date_marked_as_future():
+    data = {
+        "sections": {
+            "chronological_dates": {
+                "passed": "false",
+                "explanation": (
+                    "Alignerr has a start date of Jan 2026, which is in the future."
+                ),
+            }
+        }
+    }
+    _repair_false_future_chronology(data, date(2026, 7, 4))
+    chronology = data["sections"]["chronological_dates"]
+    assert chronology["passed"] == "true"
+    assert "not in the future" in chronology["explanation"]
+
+
+def test_chronology_preserves_actual_future_date_failure():
+    data = {
+        "sections": {
+            "chronological_dates": {
+                "passed": "false",
+                "explanation": "Alignerr starts in Jan 2027, which is in the future.",
+            }
+        }
+    }
+    _repair_false_future_chronology(data, date(2026, 7, 4))
+    assert data["sections"]["chronological_dates"]["passed"] == "false"
 
 
 # --------------------------------------------------------------------------- #
