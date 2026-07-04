@@ -8170,6 +8170,37 @@ def _extract_pdf_text_for_ats(path: str) -> str:
         return "\n".join(page.extract_text() or "" for page in pdf.pages)
 
 
+_PORTFOLIO_HOST_RE = re.compile(
+    r"\b[\w.-]+\.(?:netlify\.app|vercel\.app|github\.io|web\.app|pages\.dev|"
+    r"notion\.site|carrd\.co|behance\.net|dribbble\.com|framer\.(?:app|website|wiki)|"
+    r"webflow\.io|wixsite\.com|myportfolio\.com|journoportfolio\.com|super\.site)\b",
+    re.IGNORECASE,
+)
+_PORTFOLIO_LABEL_RE = re.compile(r"portfolio\s*[:\-–—]?\s*(?:https?://|www\.)", re.IGNORECASE)
+
+
+def _has_portfolio_link(text: str) -> bool:
+    """True if the resume text contains a portfolio / personal-site link."""
+    t = str(text or "")
+    if _PORTFOLIO_HOST_RE.search(t):
+        return True
+    if _PORTFOLIO_LABEL_RE.search(t):
+        return True
+    # "portfolio" mentioned alongside any URL.
+    if re.search(r"\bportfolio\b", t, re.IGNORECASE) and re.search(r"https?://|www\.", t):
+        return True
+    return False
+
+
+def _ats_match_level(score) -> str:
+    """The 5-band match level used across the ATS result."""
+    try:
+        s = float(score or 0)
+    except (TypeError, ValueError):
+        s = 0.0
+    return "Poor" if s < 40 else "Fair" if s < 60 else "Good" if s < 75 else "Strong" if s < 90 else "Excellent"
+
+
 @app.post("/get-ats-score")
 async def get_score(request: Request, jd_string: str, file: UploadFile = File(...)):
     """Upload a resume PDF file and JD"""
