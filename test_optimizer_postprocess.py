@@ -13,11 +13,13 @@ Exit code is non-zero if any test fails (CI-friendly).
 
 import sys
 import traceback
+from datetime import date
 
 from functions import (
     _balance_parentheses,
     _clean_inline_text,
     _extract_hard_skills_from_jd,
+    _repair_false_future_chronology,
     inject_jd_hard_skills,
     sanitize_resume_data,
 )
@@ -30,6 +32,14 @@ CATEGORIZED_JD = (
     "(Redux, Zustand, Pinia), build tools (Webpack, Vite), SSR/SSG frameworks "
     "(Next.js). Experience with React and FastAPI required."
 )
+
+ATOMIC_SKILLS_JD = """
+Knowledge of MLOps tools (Kubeflow, Airflow).
+Experience with cloud platforms such as AWS, GCP, and Azure.
+Experience in backend development and software engineering with an ML focus.
+Required skills: Prompt Engineering, LLM Fine Tuning, Vector Databases, NoSQL,
+ETL Pipelines, Data Structures and Algorithms, Kafka, RabbitMQ.
+"""
 
 
 def _has_unbalanced_parens(s: str) -> bool:
@@ -87,6 +97,36 @@ def test_jd_extraction_finds_real_techs():
         assert tech in out, f"expected to extract '{tech}', got {sorted(out)}"
 
 
+def test_jd_extraction_explodes_mlops_parenthetical():
+    out = {skill.lower() for skill in _extract_hard_skills_from_jd(ATOMIC_SKILLS_JD)}
+    assert "kubeflow" in out
+    assert "airflow" in out
+    assert "mlops tools" not in out
+
+
+def test_jd_extraction_keeps_concrete_cloud_platforms_only():
+    out = {skill.lower() for skill in _extract_hard_skills_from_jd(ATOMIC_SKILLS_JD)}
+    assert {"aws", "gcp", "azure"}.issubset(out)
+    assert "cloud platforms" not in out
+
+
+def test_jd_extraction_removes_generic_engineering_phrases():
+    out = {skill.lower() for skill in _extract_hard_skills_from_jd(ATOMIC_SKILLS_JD)}
+    assert "backend development" not in out
+    assert "software engineering" not in out
+    assert "software engineering with an ml focus" not in out
+    assert "ml focus" not in out
+
+
+def test_jd_extraction_keeps_extended_atomic_vocabulary():
+    out = {skill.lower() for skill in _extract_hard_skills_from_jd(ATOMIC_SKILLS_JD)}
+    expected = {
+        "prompt engineering", "llm fine tuning", "vector databases", "nosql",
+        "etl pipelines", "data structures and algorithms", "kafka", "rabbitmq",
+    }
+    assert expected.issubset(out), f"missing {sorted(expected - out)} from {sorted(out)}"
+
+
 # --------------------------------------------------------------------------- #
 # Sanitizer: skills
 # --------------------------------------------------------------------------- #
@@ -109,6 +149,61 @@ def test_sanitize_strips_bullets_and_empties():
 def test_sanitize_preserves_order():
     data = {"skills": ["Go", "Rust", "Python"]}
     assert sanitize_resume_data(data)["skills"] == ["Go", "Rust", "Python"]
+
+
+def test_sanitize_removes_generic_skills_but_preserves_atomic_skills():
+    data = {
+        "skills": [
+            "backend development", "Python", "cloud platforms", "AWS",
+            "software engineering with an ML focus", "Kubeflow", "MLOps tools",
+            "backend development with Python",
+        ]
+    }
+    assert sanitize_resume_data(data)["skills"] == ["Python", "AWS", "Kubeflow"]
+
+
+def test_sanitize_removes_short_requirement_prose():
+    data = {
+        "skills": [
+            "Kotlin", "Material Design", "Material Design guidelines",
+            "CD for mobile", "RAG", "data science", "a related field",
+            "XGBoost", "working with large datasets", "PostgreSQL",
+            "a related role", "R for data analysis", "data warehouses",
+        ]
+    }
+    assert sanitize_resume_data(data)["skills"] == [
+        "Kotlin", "Material Design", "RAG", "XGBoost", "PostgreSQL",
+    ]
+
+
+def test_chronology_repairs_past_date_marked_as_future():
+    data = {
+        "sections": {
+            "chronological_dates": {
+                "passed": "false",
+                "explanation": (
+                    "Alignerr has a start date of Jan 2026, which is in the future."
+                ),
+            }
+        }
+    }
+    _repair_false_future_chronology(data, date(2026, 7, 4))
+    chronology = data["sections"]["chronological_dates"]
+    assert chronology["passed"] == "true"
+    assert "not in the future" in chronology["explanation"]
+
+
+def test_chronology_preserves_actual_future_date_failure():
+    data = {
+        "sections": {
+            "chronological_dates": {
+                "passed": "false",
+                "explanation": "Alignerr starts in Jan 2027, which is in the future.",
+            }
+        }
+    }
+    _repair_false_future_chronology(data, date(2026, 7, 4))
+    assert data["sections"]["chronological_dates"]["passed"] == "false"
 
 
 # --------------------------------------------------------------------------- #
@@ -162,6 +257,26 @@ def test_inject_then_sanitize_end_to_end():
     # No exact duplicates (case-insensitive).
     lowered = [s.lower() for s in skills]
     assert len(lowered) == len(set(lowered)), f"duplicates present: {skills}"
+
+
+def test_atomic_skills_injection_end_to_end():
+    data = {
+        "skills": [
+            "Python", "backend development", "AWS", "cloud platforms",
+            "software engineering with an ML focus",
+        ]
+    }
+    out = sanitize_resume_data(inject_jd_hard_skills(data, ATOMIC_SKILLS_JD))["skills"]
+    lowered = [skill.lower() for skill in out]
+
+    for skill in ("python", "aws", "gcp", "azure", "kubeflow", "airflow"):
+        assert skill in lowered, f"missing '{skill}' in {out}"
+    for phrase in (
+        "backend development", "cloud platforms", "mlops tools",
+        "software engineering with an ml focus", "ml focus",
+    ):
+        assert phrase not in lowered, f"generic phrase leaked: '{phrase}' in {out}"
+    assert len(lowered) == len(set(lowered)), f"duplicates present: {out}"
 
 
 def main() -> int:
