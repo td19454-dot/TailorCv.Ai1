@@ -78,6 +78,16 @@ function clearStoredInputs() {
 // we finish the analysis automatically instead of making them re-click
 // "Get ATS Score". Self-contained: remove this block + its 3 call sites to revert.
 const PENDING_ATS_KEY = 'tailorcv_pending_ats';
+const ATS_PAYLOAD_KEY = 'atsAnalysisPayload';
+const ATS_PAYLOAD_LOCAL_KEY = 'tailorcv_ats_payload_guest';
+
+function capturePostHog(event, props) {
+    try {
+        if (typeof posthog !== 'undefined' && typeof posthog.capture === 'function') {
+            posthog.capture(event, props || {});
+        }
+    } catch (e) {}
+}
 
 function markPendingATS() {
     try { sessionStorage.setItem(PENDING_ATS_KEY, '1'); } catch (e) {}
@@ -87,11 +97,20 @@ function maybeResumePendingATS() {
     if (sessionStorage.getItem(PENDING_ATS_KEY) !== '1') return;
     sessionStorage.removeItem(PENDING_ATS_KEY); // consume once, never loop
     if (!isUserLoggedIn()) return;
-    const jdInput = document.getElementById('job-description');
-    const analyzeBtn = document.getElementById('analyze-btn');
-    if (!analyzeBtn || !getResumeFileForUpload() || !(jdInput && jdInput.value.trim())) return;
-    // Defer so the restored inputs + progress UI are fully in place.
-    setTimeout(() => handleATSAnalysis(), 150);
+    // Only auto-resume when the server session is still valid (not just localStorage).
+    fetch('/api/auth/me', { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+            if (!data) {
+                try { if (window.TailorCVAuth) window.TailorCVAuth.clearUser(); } catch (e) {}
+                return;
+            }
+            const jdInput = document.getElementById('job-description');
+            const analyzeBtn = document.getElementById('analyze-btn');
+            if (!analyzeBtn || !getResumeFileForUpload() || !(jdInput && jdInput.value.trim())) return;
+            setTimeout(() => handleATSAnalysis(), 150);
+        })
+        .catch(function () {});
 }
 
 function dataUrlToFile(dataUrl, filename, mimeType) {
@@ -361,20 +380,12 @@ async function handleATSAnalysis() {
     const optimizeBtn = document.getElementById('optimize-btn');
     const resumeFile = getResumeFileForUpload();
 
-    if (!isUserLoggedIn()) {
-        // Preserve intent: if they already gave us resume + JD, resume the
-        // analysis automatically after they log in.
-        if (resumeFile && jdInput && jdInput.value.trim()) {
-            markPendingATS();
-        }
-        redirectToLogin();
-        return;
-    }
-
     if (!resumeFile || !jdInput.value.trim()) {
         showToast('Please upload a resume and paste a job description first.', 'warn');
         return;
     }
+
+    capturePostHog('ats_scan_started', { logged_in: isUserLoggedIn() });
 
     analyzeBtn.disabled = true;
     optimizeBtn.disabled = true;
@@ -422,7 +433,17 @@ async function handleATSAnalysis() {
 
         const data = await response.json();
         // Store raw API response so ats_analysis.js can render the full audit schema.
-        sessionStorage.setItem('atsAnalysisPayload', JSON.stringify(data));
+        const payloadJson = JSON.stringify(data);
+        sessionStorage.setItem(ATS_PAYLOAD_KEY, payloadJson);
+        if (data.guest_scan || !isUserLoggedIn()) {
+            try { localStorage.setItem(ATS_PAYLOAD_LOCAL_KEY, payloadJson); } catch (e) {}
+        }
+
+        capturePostHog('ats_scan_completed', {
+            logged_in: isUserLoggedIn(),
+            guest_scan: !!data.guest_scan,
+            match_rate: data.match_rate,
+        });
 
         // Keep progress visible for a short minimum duration for clear UX feedback.
         const elapsed = Date.now() - progressStartTime;
@@ -444,7 +465,17 @@ async function handleATSAnalysis() {
             atsProgressSection.style.display = 'none';
         }
         const message = (error.message || '').toLowerCase();
-        if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
+        if (error.status === 429 || message.includes('free account')) {
+            capturePostHog('guest_ats_quota_exceeded', { logged_in: isUserLoggedIn() });
+            showToast(
+                'You\'ve used your free scan — create a free account to scan again.',
+                'warn',
+                'Free scan used'
+            );
+            setTimeout(() => {
+                window.location.href = '/signup?next=' + encodeURIComponent('/solutions');
+            }, 2200);
+        } else if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
             markPendingATS();
             redirectToLogin();
         } else {
