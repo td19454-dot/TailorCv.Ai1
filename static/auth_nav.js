@@ -366,7 +366,12 @@ function showUpgradeModal(feature) {
       getStartedBtn.style.display = (!user && onAllowedPage) ? "" : "none";
     }
 
-    if (!user) return;
+    if (!user) {
+      // Sync session cookie with localStorage — clear stale cache after logout/expiry.
+      fetch("/api/auth/me", { headers: { "X-Requested-With": "XMLHttpRequest" } })
+        .catch(function () {});
+      return;
+    }
 
     injectAuthStyles();
     showMyResumesHint();
@@ -378,7 +383,12 @@ function showUpgradeModal(feature) {
     fetch("/api/auth/me", { headers: { "X-Requested-With": "XMLHttpRequest" } })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {
-        if (!data) return;
+        if (!data) {
+          clearStoredUser();
+          slot.innerHTML = createAuthWidget(null, false);
+          try { sessionStorage.removeItem("tailorcv_pending_ats"); } catch (e) {}
+          return;
+        }
         const cachedPro = !!(user && user.is_pro);
         const livePro = !!data.is_pro;
         // Always persist latest data including Pro status
