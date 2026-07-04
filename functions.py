@@ -9,6 +9,7 @@ import re
 import json
 import asyncio
 import math
+from datetime import date
 from collections import Counter, OrderedDict
 import hashlib
 from tenacity import retry, stop_after_attempt, wait_exponential
@@ -1613,6 +1614,10 @@ Pass if work experience entries appear in reverse chronological order.
 
 Most recent role first.
 
+Use the Current Date supplied in the user message for every future-date check.
+Never use a training cutoff or an assumed year. A date in or before the current
+month is not in the future.
+
 Fail if:
 
 * dates are missing
@@ -2091,14 +2096,73 @@ def _deterministic_ats_precheck(resume_string: str) -> dict:
     }
 
 
+_MONTH_NUMBERS = {
+    "jan": 1, "january": 1, "feb": 2, "february": 2,
+    "mar": 3, "march": 3, "apr": 4, "april": 4,
+    "may": 5, "jun": 6, "june": 6, "jul": 7, "july": 7,
+    "aug": 8, "august": 8, "sep": 9, "sept": 9, "september": 9,
+    "oct": 10, "october": 10, "nov": 11, "november": 11,
+    "dec": 12, "december": 12,
+}
+_MONTH_YEAR_RE = re.compile(
+    r'\b(' + '|'.join(_MONTH_NUMBERS) + r')\s+(20\d{2})\b',
+    re.IGNORECASE,
+)
+
+
+def _repair_false_future_chronology(parsed: dict, current_date: date | None = None) -> None:
+    """Correct an LLM chronology failure when every cited future date is already past."""
+    if not isinstance(parsed, dict):
+        return
+
+    chronology = parsed.get("sections", {}).get("chronological_dates", {})
+    if not isinstance(chronology, dict) or bool_score(chronology.get("passed")):
+        return
+
+    explanation = str(chronology.get("explanation") or "")
+    explanation_lower = explanation.lower()
+    if "future" not in explanation_lower:
+        return
+
+    cited_dates = [
+        (int(year), _MONTH_NUMBERS[month.lower()])
+        for month, year in _MONTH_YEAR_RE.findall(explanation)
+    ]
+    if not cited_dates:
+        return
+
+    today = current_date or date.today()
+    current_month = (today.year, today.month)
+    if any(cited_date > current_month for cited_date in cited_dates):
+        return
+
+    independent_issues = (
+        "out of order", "not in reverse chronological order", "missing date",
+        "dates are missing", "cannot be determined", "unable to determine",
+        "overlapping dates",
+    )
+    if any(issue in explanation_lower for issue in independent_issues):
+        return
+
+    chronology["passed"] = "true"
+    chronology["explanation"] = (
+        f"The cited experience dates are not in the future as of "
+        f"{today.strftime('%B %Y')}."
+    )
+
+
 _ATS_SCORE_CACHE: OrderedDict[str, str] = OrderedDict()
 _ATS_CACHE_MAX = 50
 
 
 async def ats_scoring(resume_string, jd_string):
     """Gives ats score for the resume highlignting strengths and weaknesses"""
+    current_date = date.today()
     _cache_key = hashlib.md5(
-        (str(resume_string) + str(jd_string)).encode()
+        (
+            "ats-chronology-v2|" + current_date.isoformat() + "|" +
+            str(resume_string) + str(jd_string)
+        ).encode()
     ).hexdigest()
     if _cache_key in _ATS_SCORE_CACHE:
         _ATS_SCORE_CACHE.move_to_end(_cache_key)
@@ -2110,7 +2174,10 @@ async def ats_scoring(resume_string, jd_string):
 
     # Change 1: static rules in system message; only resume+JD in user message
     # so OpenAI caches the 300-line system prompt across requests.
-    user_message = f"Resume:\n{resume_string}\n\nJob Description:\n{jd_string}"
+    user_message = (
+        f"Current Date: {current_date.strftime('%B %d, %Y')}\n\n"
+        f"Resume:\n{resume_string}\n\nJob Description:\n{jd_string}"
+    )
 
     client = await _build_openai_client()
     # Change 2: stream=True — collect chunks as they arrive instead of one big buffer
@@ -2790,6 +2857,7 @@ The JSON must strictly follow the schema provided below.
                 base[k] = v
 
     _deep_merge(parsed, precheck)
+    _repair_false_future_chronology(parsed, current_date)
 
     hard_matched = parsed.get("skills", {}) \
                      .get("hard_skills", {}) \
