@@ -173,6 +173,15 @@ class WelcomeEmailLog(Base):
     user = relationship("User", back_populates="welcome_emails")
 
 
+class GuestAtsScan(Base):
+    """Rate-limits anonymous ATS scans to one per IP per 24 hours."""
+    __tablename__ = "guest_ats_scans"
+
+    id = Column(Integer, primary_key=True, index=True)
+    ip_hash = Column(String(64), nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+
+
 class UsageRecord(Base):
     """Tracks monthly feature usage per user for enforcing free-tier limits."""
     __tablename__ = "usage_records"

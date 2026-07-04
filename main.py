@@ -52,7 +52,7 @@ from functions import (
 )
 
 from extraction import process_resume
-from models import JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
+from models import GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
 from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
@@ -503,6 +503,47 @@ def require_logged_in(request: Request) -> None:
     user_id = request.session.get("user_id")
     if not user_id:
         raise HTTPException(status_code=401, detail="Not logged in")
+
+
+_GUEST_ATS_MSG = "Create a free account to run another ATS scan"
+
+
+def _client_ip(request: Request) -> str:
+    forwarded = request.headers.get("X-Forwarded-For")
+    if forwarded:
+        return forwarded.split(",")[0].strip()
+    if request.client:
+        return request.client.host or "unknown"
+    return "unknown"
+
+
+def _guest_ats_ip_hash(ip: str) -> str:
+    daily_salt = datetime.utcnow().strftime("%Y-%m-%d")
+    return hashlib.sha256(f"{daily_salt}|{ip}".encode()).hexdigest()
+
+
+def enforce_guest_ats_allowed(request: Request, db: Session) -> bool:
+    """If anonymous, verify guest quota. Returns True when this is a guest scan."""
+    if request.session.get("user_id"):
+        return False
+    if request.session.get("guest_ats_used"):
+        raise HTTPException(status_code=429, detail=_GUEST_ATS_MSG)
+    ip_hash = _guest_ats_ip_hash(_client_ip(request))
+    cutoff = datetime.utcnow() - timedelta(hours=24)
+    recent = (
+        db.query(GuestAtsScan)
+        .filter(GuestAtsScan.ip_hash == ip_hash, GuestAtsScan.created_at >= cutoff)
+        .first()
+    )
+    if recent:
+        raise HTTPException(status_code=429, detail=_GUEST_ATS_MSG)
+    return True
+
+
+def mark_guest_ats_used(request: Request, db: Session) -> None:
+    request.session["guest_ats_used"] = True
+    db.add(GuestAtsScan(ip_hash=_guest_ats_ip_hash(_client_ip(request))))
+    db.commit()
 
 
 # ── Subscription / freemium gating ───────────────────────────────────────────
@@ -8163,7 +8204,14 @@ def _ats_match_level(score) -> str:
 @app.post("/get-ats-score")
 async def get_score(request: Request, jd_string: str, file: UploadFile = File(...)):
     """Upload a resume PDF file and JD"""
-    require_logged_in(request)
+    db = get_db()
+    is_guest = False
+    try:
+        is_guest = enforce_guest_ats_allowed(request, db)
+    except HTTPException:
+        db.close()
+        raise
+
     file_path = None
     try:
         file_path = save_uploaded_pdf(file)
@@ -8210,18 +8258,9 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
                     "Excellent"
                 )
 
-        # Portfolio nudge: a resume with no portfolio/personal-site link loses 4 points
-        # (shown transparently in the results), pushing users to the Portfolio Builder.
-        has_portfolio = _has_portfolio_link(resume_string)
-        result["has_portfolio"] = has_portfolio
-        if not has_portfolio:
-            try:
-                base = float(result.get("match_rate", 0) or 0)
-            except (TypeError, ValueError):
-                base = 0.0
-            result["match_rate"] = max(0, round(base - 4))
-            result["portfolio_penalty"] = 4
-            result["match_level"] = _ats_match_level(result["match_rate"])
+        if is_guest:
+            mark_guest_ats_used(request, db)
+            result["guest_scan"] = True
 
         return result
     except HTTPException:
@@ -8230,6 +8269,7 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
         logger.exception("Uploaded file processing failed")
         raise HTTPException(status_code=500, detail="Could not process the uploaded file. Please try again.")
     finally:
+        db.close()
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
 

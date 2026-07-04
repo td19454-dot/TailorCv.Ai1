@@ -99,6 +99,50 @@
             0%, 100% { box-shadow: 0 0 18px rgba(139,92,246,0.6), 0 6px 28px rgba(109,40,217,0.4); }
             50%       { box-shadow: 0 0 34px rgba(167,139,250,0.9), 0 8px 38px rgba(139,92,246,0.6); }
         }
+        .guest-signup-banner {
+            background: linear-gradient(135deg, rgba(79,127,255,0.18), rgba(124,58,237,0.14));
+            border: 1px solid rgba(139,92,246,0.45);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+        .guest-signup-banner p {
+            margin: 0;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            flex: 1 1 260px;
+        }
+        .guest-signup-banner .guest-signup-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .guest-signup-banner .guest-btn-primary,
+        .guest-signup-banner .guest-btn-secondary {
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 10px 18px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .guest-signup-banner .guest-btn-primary {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            color: #fff;
+            border: 1px solid rgba(167,139,250,0.6);
+        }
+        .guest-signup-banner .guest-btn-secondary {
+            background: rgba(255,255,255,0.06);
+            color: #cbd5e1;
+            border: 1px solid rgba(148,163,184,0.35);
+        }
         #open-share-modal-btn {
             all: unset;
             box-sizing: border-box;
@@ -435,9 +479,9 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=11"></script>
+    <script src="/static/auth_nav.js?v=12"></script>
     <script src="/static/mobile_nav.js"></script>
-    <script src="/static/main_new.js"></script>
+    <script src="/static/main_new.js?v=34"></script>
     <script src="/static/ats_analysis.js"></script>
     <script>
     (function () {
