@@ -1,5 +1,5 @@
----
-title: Competency-Based Interview Questions — Complete Guide with Examples (2026)
+﻿---
+title: Competency-Based Interview Questions - Complete Guide with Examples (2026)
 description: Prepare for competency-based interviews with the top competencies employers test, answer frameworks, and AI mock interview practice for structured assessment interviews.
 date: 2026-07-06
 author: TailorCV Team
@@ -10,7 +10,7 @@ slug: competency-based-interview-questions-guide
 keywords: competency based interview questions, competency interview preparation, competency framework interview 2026, skills based interview questions
 ---
 
-Competency-based interviews — also called skills-based or structured interviews — assess whether you demonstrate specific competencies required for the role. Instead of casual conversation, interviewers score your answers against predefined criteria: leadership, communication, problem-solving, adaptability, and more.
+Competency-based interviews - also called skills-based or structured interviews - assess whether you demonstrate specific competencies required for the role. Instead of casual conversation, interviewers score your answers against predefined criteria: leadership, communication, problem-solving, adaptability, and more.
 
 Used by Fortune 500 companies, government agencies, and structured hiring programs, competency interviews require **prepared, evidence-based answers**. This guide covers how to prepare in 2026.
 
@@ -22,11 +22,11 @@ Practice competency answers with [AI mock interviews](https://thetailorcv.com/mo
 
 Interviewers ask questions mapped to specific competencies from the job description:
 
-- "Tell me about a time you demonstrated leadership" → **Leadership competency**
-- "Describe a situation where you had to adapt quickly" → **Adaptability competency**
-- "Give an example of resolving a customer complaint" → **Customer focus competency**
+- "Tell me about a time you demonstrated leadership" -> **Leadership competency**
+- "Describe a situation where you had to adapt quickly" -> **Adaptability competency**
+- "Give an example of resolving a customer complaint" -> **Customer focus competency**
 
-Your answers are scored against a rubric. Multiple interviewers may compare notes — consistency matters, especially in [panel interviews](https://thetailorcv.com/blog/panel-interview-tips-strategies).
+Your answers are scored against a rubric. Multiple interviewers may compare notes - consistency matters, especially in [panel interviews](https://thetailorcv.com/blog/panel-interview-tips-strategies).
 
 ---
 
@@ -95,7 +95,7 @@ Highlight verbs and requirements: "lead," "communicate," "analyze," "deliver und
 
 ### Step 2: Build a competency story bank
 
-Prepare 10–12 STAR stories covering the top competencies. Map each story to 2–3 competencies so you can reuse them flexibly.
+Prepare 10-12 STAR stories covering the top competencies. Map each story to 2-3 competencies so you can reuse them flexibly.
 
 ### Step 3: Practice aloud
 
@@ -130,7 +130,7 @@ In [panel](https://thetailorcv.com/blog/panel-interview-tips-strategies) and [HR
 - Stories where your role is unclear
 - No measurable results
 
-Avoid all of these — see [common interview mistakes](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
+Avoid all of these - see [common interview mistakes](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
 
 Manage pressure with [interview anxiety tips](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips).
 
@@ -144,12 +144,19 @@ Very similar. Behavioral interviews ask "tell me about a time." Competency inter
 
 ### How many stories should I prepare?
 
-10–12 versatile STAR stories covering 8–10 competencies. More for senior roles.
+10-12 versatile STAR stories covering 8-10 competencies. More for senior roles.
 
 ### Can AI mock interviews generate competency questions?
 
-Yes — [TailorCV's AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) asks role-relevant questions based on your resume and target position.
+Yes - [TailorCV's AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) asks role-relevant questions based on your resume and target position.
 
 ---
 
 [Practice competency-based answers with TailorCV's free AI mock interview](https://thetailorcv.com/mock-interview).
+
+## Make This Practical
+
+Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).
+
+Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
+

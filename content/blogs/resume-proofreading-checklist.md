@@ -1,6 +1,6 @@
----
-title: Resume Proofreading Checklist — 25 Things to Check Before You Apply
-description: The complete resume proofreading checklist for 2026. 25 specific things to verify — spelling, formatting, ATS compatibility, content quality, links, and more — before submitting any job application.
+﻿---
+title: Resume Proofreading Checklist - 25 Things to Check Before You Apply
+description: The complete resume proofreading checklist for 2026. 25 specific things to verify - spelling, formatting, ATS compatibility, content quality, links, and more - before submitting any job application.
 date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Proofreading, Resume Checklist, Resume Tips, Resume Writing, Job Application]
@@ -18,7 +18,7 @@ After completing this checklist, run your resume through the [TailorCV ATS check
 
 ## How to Use This Checklist
 
-Go through each item methodically before every application. For tailored applications (which should be every application), run the checklist on each version. The 10–15 minutes this takes has a direct, measurable impact on your callback rate.
+Go through each item methodically before every application. For tailored applications (which should be every application), run the checklist on each version. The 10-15 minutes this takes has a direct, measurable impact on your callback rate.
 
 ---
 
@@ -30,8 +30,8 @@ Weak openers: "Responsible for," "Helped," "Assisted," "Was part of." Replace wi
 **2. At least 60% of bullets contain quantified results**  
 Numbers, percentages, dollar amounts, time saved, users impacted. If bullets are missing numbers, add estimates. Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
-**3. No duty lists — all bullets describe achievements or impact**  
-"Managed social media" → "Grew Instagram engagement by 87% in 6 months through a daily content strategy and influencer partnerships." Read [how to write resume bullet points that get results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+**3. No duty lists - all bullets describe achievements or impact**  
+"Managed social media" -> "Grew Instagram engagement by 87% in 6 months through a daily content strategy and influencer partnerships." Read [how to write resume bullet points that get results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
 
 **4. Summary is tailored to this specific role**  
 Your summary should mention the role title, a key skill from the job description, and your strongest relevant accomplishment. Generic summaries score lower on ATS and impress fewer recruiters. Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary).
@@ -40,10 +40,10 @@ Your summary should mention the role title, a key skill from the job description
 Are the skills listed in the job description present in your skills section? Use the exact terminology from the posting. Read [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide).
 
 **6. No irrelevant content (old roles, outdated skills, hobbies)**  
-Remove roles older than 10–15 years unless exceptional. Remove skills you no longer use or that the target role doesn't need. Read [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume).
+Remove roles older than 10-15 years unless exceptional. Remove skills you no longer use or that the target role doesn't need. Read [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume).
 
 **7. No "References available upon request"**  
-Remove this line — it is assumed and wastes space. Read the [resume references guide](https://thetailorcv.com/blog/resume-references-guide).
+Remove this line - it is assumed and wastes space. Read the [resume references guide](https://thetailorcv.com/blog/resume-references-guide).
 
 **8. No first person (I, me, my)**  
 Resume bullets are written in implied-subject format. "Managed a team" not "I managed a team."
@@ -53,15 +53,15 @@ Resume bullets are written in implied-subject format. "Managed a team" not "I ma
 ## Section 2: Formatting and Visual Consistency (7 Checks)
 
 **9. Date formats are consistent throughout**  
-All dates use the same format: "Jan 2021 – Mar 2024" or "January 2021 – March 2024" or "01/2021 – 03/2024." Never mix formats in the same document.
+All dates use the same format: "Jan 2021 - Mar 2024" or "January 2021 - March 2024" or "01/2021 - 03/2024." Never mix formats in the same document.
 
 **10. Bullet style is consistent throughout**  
-All bullets use the same symbol: all • or all – or all ▪. Never mix bullet styles.
+All bullets use the same symbol: all - or all - or all ▪. Never mix bullet styles.
 
 **11. Font is consistent throughout**  
-One font family only. Name size 18–24pt, section headers 12–14pt, body 10–11pt. Read [best resume fonts for 2026](https://thetailorcv.com/blog/resume-fonts-guide).
+One font family only. Name size 18-24pt, section headers 12-14pt, body 10-11pt. Read [best resume fonts for 2026](https://thetailorcv.com/blog/resume-fonts-guide).
 
-**12. Margins are 0.5–1 inch on all sides**  
+**12. Margins are 0.5-1 inch on all sides**  
 Nothing below 0.5 inch. Read [resume margins, spacing and layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting).
 
 **13. Single-column layout**  
@@ -97,7 +97,7 @@ Click every link on your resume. Broken links are as bad as missing ones.
 Run spell check. Then read the resume backward (word by word) to catch errors spell check misses. Then read it out loud.
 
 **21. No grammar errors**  
-Past tense for previous roles, present tense for current role. No incomplete sentences in bullets (they are fragments — this is correct). No subject-verb disagreements.
+Past tense for previous roles, present tense for current role. No incomplete sentences in bullets (they are fragments - this is correct). No subject-verb disagreements.
 
 **22. Company and organization names are spelled correctly**  
 Search each company name to verify spelling. "Amazon" not "Amazin," "McKinsey" not "Mackinsey."
@@ -125,7 +125,7 @@ After completing the checklist, read your entire resume out loud. You will catch
 - Repeated phrases across bullets
 - Inconsistencies in tone
 
-This takes 3–5 minutes and consistently catches things written review misses.
+This takes 3-5 minutes and consistently catches things written review misses.
 
 ---
 
@@ -134,7 +134,7 @@ This takes 3–5 minutes and consistently catches things written review misses.
 Set a 10-second timer and look at your resume:
 - Can you immediately see your name?
 - Can you identify your most recent role and company?
-- Can you spot 1–2 impressive achievements?
+- Can you spot 1-2 impressive achievements?
 - Does the layout feel clean and readable?
 
 If the answer to any of these is no, adjust before submitting. Read [how recruiters read resumes in under 10 seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes).
@@ -145,15 +145,15 @@ If the answer to any of these is no, adjust before submitting. Read [how recruit
 
 Before submitting any application:
 
-**Content:** Action verbs ✓ | Numbers/results ✓ | Achievements not duties ✓ | Tailored summary ✓ | Matched keywords ✓ | No irrelevant content ✓ | No references line ✓ | No "I" ✓
+**Content:** Action verbs  | Numbers/results  | Achievements not duties  | Tailored summary  | Matched keywords  | No irrelevant content  | No references line  | No "I" 
 
-**Formatting:** Consistent dates ✓ | Consistent bullets ✓ | One font ✓ | Correct margins ✓ | Single column ✓ | Consistent bold/italics ✓ | Correct length ✓
+**Formatting:** Consistent dates  | Consistent bullets  | One font  | Correct margins  | Single column  | Consistent bold/italics  | Correct length 
 
-**Contact:** Professional email ✓ | Correct phone ✓ | Working LinkedIn ✓ | Working links ✓
+**Contact:** Professional email  | Correct phone  | Working LinkedIn  | Working links 
 
-**Spelling/Grammar:** No typos ✓ | No grammar errors ✓ | Company names correct ✓
+**Spelling/Grammar:** No typos  | No grammar errors  | Company names correct 
 
-**ATS:** Saved as PDF ✓ | No graphics/tables for content ✓ | ATS score checked ✓
+**ATS:** Saved as PDF  | No graphics/tables for content  | ATS score checked 
 
 ---
 
@@ -170,8 +170,14 @@ Before submitting any application:
 
 ---
 
-## Conclusion
+## Make This Practical
 
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
 A complete pre-submission review catches the mistakes that silently kill applications: typos, inconsistencies, broken links, weak bullets, and ATS failures. Most of these take under a minute to fix once spotted. The cost of not checking is an interview you deserved but never received.
 
 Run through all 25 checks, then test your ATS score with the [TailorCV checker](https://www.thetailorcv.com/solutions). Once your resume starts generating interviews, use the [mock interview tool](https://thetailorcv.com/interview-prep) to make sure you close them.
+

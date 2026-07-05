@@ -1,6 +1,6 @@
----
+﻿---
 title: GitHub Portfolio Optimization: Make Recruiters Take You Seriously
-description: Turn your GitHub into a portfolio recruiters trust — profile README, pinned repos, clean commits, and the exact signals they check.
+description: Turn your GitHub into a portfolio recruiters trust - profile README, pinned repos, clean commits, and the exact signals they check.
 date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, GitHub, Developer Portfolio, Job Search]
@@ -10,19 +10,19 @@ slug: github-portfolio-optimization
 keywords: github portfolio, github profile optimization, pinned repos, profile readme, github for recruiters
 ---
 
-For developers, GitHub is a portfolio recruiters already know how to read — which means a few hours of cleanup pays off more than almost anything else you can do. Most candidates leave it a mess; optimize yours and you instantly look more senior. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
+For developers, GitHub is a portfolio recruiters already know how to read - which means a few hours of cleanup pays off more than almost anything else you can do. Most candidates leave it a mess; optimize yours and you instantly look more senior. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
 
 ## Build a Profile README
 Create a repository named exactly your username and add a README. It renders at the top of your profile.
 
 - A one-line bio and your specialty
 - Your tech stack (badges are fine, kept tasteful)
-- 3–4 featured projects with links
+- 3-4 featured projects with links
 - Links to your **live portfolio** and **resume**
 - How to contact you
 
 ## Pin Your 6 Best Repositories
-Curate ruthlessly — pinned repos are your highlight reel. Each one needs:
+Curate ruthlessly - pinned repos are your highlight reel. Each one needs:
 
 - A clear, descriptive name
 - A one-line description and relevant topics/tags
@@ -46,13 +46,13 @@ GitHub shows the code; a portfolio site frames the story. Generate one from your
 
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, your LinkedIn, and your portfolio should tell the **same** story — same name, same headline, same top projects — just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
 
 ## Pro Tips
 - Archive or hide abandoned junk repos so your good work stands out.
 - Add topics to repos so they are searchable.
-- Star and follow projects you admire — it signals technical taste.
+- Star and follow projects you admire - it signals technical taste.
 
 
 ## Frequently Asked Questions
@@ -71,7 +71,7 @@ Rebuild a sanitized public version, write a case study ([How to Write a Portfoli
 
 ## Build Your Portfolio Now
 
-You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) — choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
+You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
 
 ## Related Guides
 
@@ -87,3 +87,10 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
 - [Software Engineer Resume FAANG](https://thetailorcv.com/blog/software-engineer-resume-faang)
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+
+## Make This Practical
+
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+
+Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
+

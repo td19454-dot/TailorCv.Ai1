@@ -1,5 +1,5 @@
----
-title: How to Quantify Resume Achievements — With 50 Examples
+﻿---
+title: How to Quantify Resume Achievements - With 50 Examples
 description: Learn how to add numbers and metrics to your resume achievements. Includes 50 examples across software engineering, data, marketing, sales, and operations roles.
 date: 2026-06-01
 author: TailorCV Team
@@ -16,7 +16,7 @@ The single biggest difference between a forgettable resume and one that earns in
 
 Numbers make your resume scannable, credible, and memorable. They transform vague claims into proof.
 
-This guide shows you exactly how to quantify your achievements — even when you think you have no numbers — across every major role type.
+This guide shows you exactly how to quantify your achievements - even when you think you have no numbers - across every major role type.
 
 Before adding your quantified bullets, make sure your resume format passes ATS. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to compare it against the job description and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for keyword matching. If you are still setting up your resume, the [ATS-friendly templates](https://www.thetailorcv.com/templates) provide the right structure.
 
@@ -24,7 +24,7 @@ Before adding your quantified bullets, make sure your resume format passes ATS. 
 
 ## Why Numbers Matter on a Resume
 
-Recruiters spend an average of 6–10 seconds scanning a resume. Numbers are visually distinctive — they stop the eye. "Reduced deployment time" slides past. "Reduced deployment time from 45 minutes to 8 minutes" sticks.
+Recruiters spend an average of 6-10 seconds scanning a resume. Numbers are visually distinctive - they stop the eye. "Reduced deployment time" slides past. "Reduced deployment time from 45 minutes to 8 minutes" sticks.
 
 Numbers also answer the implicit question every recruiter has: "How good are they, really?" Claims without evidence are noise. Numbers are evidence.
 
@@ -139,7 +139,7 @@ An honest approximation is better than no number.
 
 ### UX Designer
 
-- Redesigned checkout flow, reducing abandonment from 71% to 53% — an increase of $48K monthly revenue.
+- Redesigned checkout flow, reducing abandonment from 71% to 53% - an increase of $48K monthly revenue.
 - Led 30 user interviews across 3 research sprints that reshaped the Q2 roadmap and cancelled 2 low-value features.
 - Built a 90-component Figma design system adopted by 4 product teams, reducing design-to-engineering handoff time by 55%.
 - Improved task success rate from 52% to 84% through navigation restructuring validated by tree testing with 200 participants.
@@ -217,14 +217,20 @@ After:
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
 - [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
-- [Chronological vs Functional Resume in 2026 — Which Format to Use](https://thetailorcv.com/blog/chronological-vs-functional-resume)
-- [Cover Letter Guide 2026 — How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [MBA Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
+- [Chronological vs Functional Resume in 2026 - Which Format to Use](https://thetailorcv.com/blog/chronological-vs-functional-resume)
+- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
-- [How to Answer "Tell Me About Yourself" in 2026 — With Examples](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+- [How to Answer "Tell Me About Yourself" in 2026 - With Examples](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+
+## Make This Practical
+
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
-
-Quantifying your resume achievements is not about exaggerating — it is about being specific. Every vague claim has a number behind it. Your job is to find it, estimate it honestly, and use it.
+Quantifying your resume achievements is not about exaggerating - it is about being specific. Every vague claim has a number behind it. Your job is to find it, estimate it honestly, and use it.
 
 Once your bullets are strong, run your full resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to make sure your keywords also match the job description. Use the [resume templates](https://www.thetailorcv.com/templates) to ensure your format is clean. If you are still building your resume from scratch, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full structure.
+
