@@ -1,5 +1,5 @@
----
-title: First 90 Days at a New Job in 2026 — How to Succeed and Stand Out
+﻿---
+title: First 90 Days at a New Job in 2026 - How to Succeed and Stand Out
 description: Learn how to succeed in your first 90 days at a new job in 2026. Covers onboarding, building relationships, early wins, and setting yourself up for long-term success.
 date: 2026-06-01
 author: TailorCV Team
@@ -12,20 +12,20 @@ keywords: first 90 days at new job, new job tips 2026, how to succeed at a new j
 
 The first 90 days at a new job set the trajectory for your entire tenure. This is when colleagues form lasting impressions, when you build the relationships and credibility you will rely on for years, and when you demonstrate whether the hiring decision was right. Succeeding early creates momentum; struggling early creates a hole that is hard to climb out of.
 
-This guide gives you a practical framework for your first 90 days — how to learn, build relationships, deliver early wins, and set yourself up for long-term success.
+This guide gives you a practical framework for your first 90 days - how to learn, build relationships, deliver early wins, and set yourself up for long-term success.
 
-You earned this role with a strong application — keep your resume updated with your new accomplishments using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). For ongoing growth, read the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
+You earned this role with a strong application - keep your resume updated with your new accomplishments using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). For ongoing growth, read the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
 
 ---
 
 ## The 30-60-90 Day Framework
 
-### Days 1–30: Learn and Absorb
+### Days 1-30: Learn and Absorb
 
 Your primary job in the first month is to learn, not to prove yourself prematurely.
 
 - Understand the company, team, product, and processes
-- Learn who's who — the org chart, key stakeholders, decision-makers
+- Learn who's who - the org chart, key stakeholders, decision-makers
 - Understand how success is measured in your role
 - Listen more than you talk
 - Ask thoughtful questions
@@ -34,7 +34,7 @@ Your primary job in the first month is to learn, not to prove yourself premature
 
 Resist the urge to immediately change things. You do not yet understand why things are the way they are.
 
-### Days 31–60: Contribute and Build
+### Days 31-60: Contribute and Build
 
 In the second month, start contributing meaningfully while continuing to learn.
 
@@ -45,7 +45,7 @@ In the second month, start contributing meaningfully while continuing to learn.
 - Seek feedback proactively
 - Establish your working rhythm and reputation for reliability
 
-### Days 61–90: Own and Accelerate
+### Days 61-90: Own and Accelerate
 
 By the third month, you should be operating with increasing independence.
 
@@ -160,15 +160,21 @@ Document your wins from day one. When promotion or raise time comes, you will ne
 - [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 - [How to Write a Two Weeks Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [Freelancing vs Full-Time Employment in 2026 — Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [Freelancing vs Full-Time Employment in 2026 - Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
 - [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
-- [How to Write a Resume Headline in 2026 — With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How to Write a Resume Summary in 2026 — With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [200 Best Action Verbs for Resume in 2026 — By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [How to Write a Resume Headline in 2026 - With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary in 2026 - With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [200 Best Action Verbs for Resume in 2026 - By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [20 Common Interview Mistakes to Avoid in 2026](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 
-## Conclusion
+## Make This Practical
 
+Turn the career advice into a stronger application system. Start by checking your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), align it with the role using [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job), and keep your profile consistent with [LinkedIn Resume Tailoring Sync](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync).
+
+When you are ready to apply, build the supporting pieces around the resume. Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) for targeted outreach, practice with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and review [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) if applications are not converting.
+
+## Conclusion
 Your first 90 days at a new job are foundational. Learn deeply in the first month, contribute meaningfully in the second, and own your work by the third. Build relationships intentionally, deliver early wins, manage up effectively, and document your accomplishments from the start.
 
 Keep your resume updated with your new role and achievements using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and plan your growth with the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
+

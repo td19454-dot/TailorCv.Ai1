@@ -1,5 +1,5 @@
----
-title: How to List Certifications on a Resume in 2026 — With Examples
+﻿---
+title: How to List Certifications on a Resume in 2026 - With Examples
 description: Learn how to list certifications on your resume in 2026. Covers where to place them, formatting, which ones to include, and examples by industry.
 date: 2026-06-01
 author: TailorCV Team
@@ -10,11 +10,11 @@ slug: how-to-list-certifications-on-resume
 keywords: how to list certifications on resume, certifications on resume 2026, where to put certifications resume, resume certification format, listing certifications resume
 ---
 
-Certifications can strengthen your resume significantly — especially for technical, healthcare, finance, and project management roles where credentials are screening criteria. But many candidates list them incorrectly, bury them, or include irrelevant ones. This guide shows you exactly how to list certifications for maximum impact.
+Certifications can strengthen your resume significantly - especially for technical, healthcare, finance, and project management roles where credentials are screening criteria. But many candidates list them incorrectly, bury them, or include irrelevant ones. This guide shows you exactly how to list certifications for maximum impact.
 
 ![How to List Certifications](public/blog-images/how-to-list-certifications.png)
 
-Before finalizing, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) — many job descriptions list required certifications as keywords, and the ATS scans for them. Use an [ATS-friendly template](https://www.thetailorcv.com/templates).
+Before finalizing, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) - many job descriptions list required certifications as keywords, and the ATS scans for them. Use an [ATS-friendly template](https://www.thetailorcv.com/templates).
 
 ---
 
@@ -41,7 +41,7 @@ This works best when you have 2+ relevant certifications.
 
 ### Option 2: Near the Top (When Certifications Are Critical)
 
-If a certification is the key qualifier for the role (e.g., a nursing license, PMP for a PM role, CPA for accounting), place it prominently — in your header area, summary, or a certifications section right after your summary.
+If a certification is the key qualifier for the role (e.g., a nursing license, PMP for a PM role, CPA for accounting), place it prominently - in your header area, summary, or a certifications section right after your summary.
 
 ### Option 3: In Your Education Section
 
@@ -63,7 +63,7 @@ Standard format:
 Certification Name | Issuing Organization | Year (and expiration if applicable)
 
 Examples:
-- AWS Certified Solutions Architect – Associate | Amazon Web Services | 2025
+- AWS Certified Solutions Architect - Associate | Amazon Web Services | 2025
 - Project Management Professional (PMP) | PMI | 2024
 - Google Data Analytics Professional Certificate | Coursera | 2026
 - Certified Public Accountant (CPA) | State Board of Accountancy | 2023
@@ -76,7 +76,7 @@ For certifications that expire (BLS, ACLS, some IT certs), include the validity:
 ### Include In-Progress Certifications
 
 If you are studying for a certification, you can list it as in progress:
-- AWS Certified Solutions Architect – Professional | In progress, expected 2026
+- AWS Certified Solutions Architect - Professional | In progress, expected 2026
 - CFA Level 2 Candidate | June 2026
 
 ---
@@ -138,7 +138,7 @@ Quality over quantity. Three relevant certifications beat fifteen random ones.
 ### Example for a Cloud Engineer
 
 CERTIFICATIONS
-- AWS Certified Solutions Architect – Professional | AWS | 2025
+- AWS Certified Solutions Architect - Professional | AWS | 2025
 - HashiCorp Certified: Terraform Associate | HashiCorp | 2025
 - Certified Kubernetes Administrator (CKA) | CNCF | 2024
 
@@ -196,14 +196,20 @@ Use the official certification name, especially since ATS may scan for it. "AWS 
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How to Write a Resume with AI in 2026 — Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
-- [MBA Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
-- [Cover Letter Guide 2026 — How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
+- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
 - [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
 
-## Conclusion
+## Make This Practical
 
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
 List certifications in a clear, consistently formatted section, place critical credentials prominently, and include only relevant certifications. Use the exact official names so ATS systems can match them to job requirements.
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your certifications match the job description's requirements. Read [how to list education on resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete resume guidance.
+

@@ -1,5 +1,5 @@
----
-title: How to Quit Your Job Professionally in 2026 — Complete Guide
+﻿---
+title: How to Quit Your Job Professionally in 2026 - Complete Guide
 description: Learn how to quit your job professionally in 2026. Covers resignation timing, how to tell your boss, writing a resignation letter, notice periods, and handling counteroffers.
 date: 2026-06-01
 author: TailorCV Team
@@ -10,7 +10,7 @@ slug: how-to-quit-your-job-professionally
 keywords: how to quit your job, resignation guide 2026, how to resign professionally, resignation letter, two weeks notice, how to tell your boss you are quitting, notice period
 ---
 
-How you leave a job matters almost as much as how you perform in it. The world is smaller than it seems — former managers become references, ex-colleagues become future hiring managers, and industries have long memories. Quitting professionally protects your reputation and your network. Quitting badly can follow you for years.
+How you leave a job matters almost as much as how you perform in it. The world is smaller than it seems - former managers become references, ex-colleagues become future hiring managers, and industries have long memories. Quitting professionally protects your reputation and your network. Quitting badly can follow you for years.
 
 ![How to Quit Your Job](public/blog-images/how-to-quit-job.png)
 
@@ -33,7 +33,7 @@ If you are quitting without a job lined up, make sure you have:
 
 ## Step 1: Tell Your Manager First (In Person or Video)
 
-Your direct manager should hear it from you first — before colleagues, before HR, before it leaks. Schedule a private meeting (in person or a video call for remote roles).
+Your direct manager should hear it from you first - before colleagues, before HR, before it leaks. Schedule a private meeting (in person or a video call for remote roles).
 
 Do not:
 - Announce your resignation to colleagues before telling your manager
@@ -93,7 +93,7 @@ Keep it positive and free of complaints. This document may end up in your file a
 
 Your notice period is your last impression. Make it a good one.
 
-- Continue working diligently — do not check out mentally
+- Continue working diligently - do not check out mentally
 - Document your work and processes for your successor
 - Offer to train your replacement or hand over to colleagues
 - Complete or responsibly transition your projects
@@ -101,7 +101,7 @@ Your notice period is your last impression. Make it a good one.
 
 Standard notice periods:
 - Most professional roles: 2 weeks to 1 month
-- Senior roles: 1–3 months
+- Senior roles: 1-3 months
 - Some countries/contracts: specific legal notice periods (check your contract)
 
 Honor your contractual notice period unless there are exceptional circumstances.
@@ -110,7 +110,7 @@ Honor your contractual notice period unless there are exceptional circumstances.
 
 ## Step 5: Handle Counteroffers Carefully
 
-When you resign, your employer may make a counteroffer — more money, a promotion, or new responsibilities to keep you.
+When you resign, your employer may make a counteroffer - more money, a promotion, or new responsibilities to keep you.
 
 Before accepting a counteroffer, consider:
 - Why did it take resigning to get this offer? (If they valued you, why not before?)
@@ -118,7 +118,7 @@ Before accepting a counteroffer, consider:
 - Studies suggest a majority of people who accept counteroffers leave within 12 months anyway
 - Your loyalty may now be questioned by your employer
 
-Counteroffers are often about the cost and disruption of replacing you, not a genuine change in how you are valued. Accept one only if it genuinely addresses your reasons for leaving — and that is rare.
+Counteroffers are often about the cost and disruption of replacing you, not a genuine change in how you are valued. Accept one only if it genuinely addresses your reasons for leaving - and that is rare.
 
 ---
 
@@ -174,15 +174,21 @@ Counteroffers rarely fix the underlying reasons for leaving. Think carefully.
 - [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
-- [Behavioral Interview Questions and Answers — Complete 2026 Guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
-- [Career Change to Tech in 2026 — Complete Guide for Switchers](https://thetailorcv.com/blog/career-change-to-tech-guide)
-- [Data Analyst vs Data Scientist in 2026 — Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
-- [Freelancing vs Full-Time Employment in 2026 — Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
-- [Ideal Resume Length in 2026 — One Page or Two? Complete Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [Personal Branding for Professionals in 2026 — Complete Guide](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- [Behavioral Interview Questions and Answers - Complete 2026 Guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
+- [Career Change to Tech in 2026 - Complete Guide for Switchers](https://thetailorcv.com/blog/career-change-to-tech-guide)
+- [Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [Freelancing vs Full-Time Employment in 2026 - Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [Ideal Resume Length in 2026 - One Page or Two? Complete Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [Personal Branding for Professionals in 2026 - Complete Guide](https://thetailorcv.com/blog/personal-branding-for-professionals)
+
+## Make This Practical
+
+Turn the career advice into a stronger application system. Start by checking your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), align it with the role using [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job), and keep your profile consistent with [LinkedIn Resume Tailoring Sync](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync).
+
+When you are ready to apply, build the supporting pieces around the resume. Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) for targeted outreach, practice with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and review [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) if applications are not converting.
 
 ## Conclusion
-
 Quitting professionally protects your reputation, references, and network. Secure your next step first, tell your manager directly, write a gracious resignation letter, serve your notice well, and leave on good terms. The way you exit is remembered long after you are gone.
 
 If your departure is part of a job search, make sure your next move is strong: optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), negotiate your new offer with the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer), and prepare for your fresh start.
+

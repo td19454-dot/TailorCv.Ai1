@@ -336,6 +336,9 @@
                         <div id="overview-checks" class="overview-checks-list"></div>
                     </div>
 
+                    <!-- Portfolio (filled by ats_analysis.js) -->
+                    <div class="card" id="portfolio-section" style="display:none;"></div>
+
                     <!-- Skills match overview -->
                     <div class="card">
                         <div class="card-title">Skills Match</div>
@@ -456,6 +459,23 @@
 
         </div><!-- /.analysis-layout -->
     </main>
+
+    <!-- Score-band nudge popup (filled + shown by ats_analysis.js) -->
+    <div id="ats-band-popup" role="alert" aria-live="polite"
+         style="display:none;position:fixed;right:22px;bottom:22px;z-index:9999;max-width:340px;
+                background:linear-gradient(155deg,#0c1730,#0a1124);border:1px solid rgba(56,189,248,.35);
+                border-radius:16px;padding:18px 20px;box-shadow:0 24px 60px rgba(0,5,20,.6);
+                color:#eef4ff;font-family:Inter,system-ui,sans-serif;transform:translateY(16px);opacity:0;
+                transition:opacity .3s ease,transform .3s ease;">
+        <button id="ats-band-popup-close" aria-label="Close"
+                style="position:absolute;top:8px;right:12px;background:none;border:none;color:#64748b;
+                       font-size:20px;line-height:1;cursor:pointer;">&times;</button>
+        <div id="ats-band-popup-icon" style="font-size:24px;margin-bottom:6px;"></div>
+        <div id="ats-band-popup-text" style="font-size:14.5px;line-height:1.5;margin-bottom:14px;"></div>
+        <a id="ats-band-popup-cta" href="#"
+           style="display:inline-block;padding:10px 18px;border-radius:10px;font-weight:700;font-size:14px;
+                  text-decoration:none;color:#fff;background:linear-gradient(135deg,#2563eb,#0ea5e9);"></a>
+    </div>
 
     {% include "_footer.html" %}
 

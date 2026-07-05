@@ -1,6 +1,6 @@
----
+﻿---
 title: Marketing Portfolio Guide: Show Results, Not Just Deliverables
-description: Build a marketing portfolio that proves ROI — campaign case studies, the metrics that matter, and how to present work that is under NDA.
+description: Build a marketing portfolio that proves ROI - campaign case studies, the metrics that matter, and how to present work that is under NDA.
 date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, Marketing, Case Study, Job Search]
@@ -10,7 +10,7 @@ slug: marketing-portfolio-guide
 keywords: marketing portfolio, digital marketing portfolio, campaign case study, marketing results portfolio
 ---
 
-Marketing portfolios live and die on numbers. Anyone can show a pretty ad; you show what it **did** — the traffic, the leads, the revenue. The fastest way to stand out is to be relentlessly outcome-focused. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide).
+Marketing portfolios live and die on numbers. Anyone can show a pretty ad; you show what it **did** - the traffic, the leads, the revenue. The fastest way to stand out is to be relentlessly outcome-focused. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide).
 
 ## Lead With Results
 For each campaign, present: the goal, the audience, the strategy and channels, the creative, and the **results** (traffic, leads, ROAS, revenue). A traffic graph beats a paragraph of adjectives.
@@ -38,14 +38,14 @@ A personal site is most professional ([Best Portfolio Website Builders 2026](htt
 
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, your LinkedIn, and your portfolio should tell the **same** story — same name, same headline, same top projects — just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
 
 ## Common Mistakes
 - Deliverables with no metrics
 - One giant unfocused page
 - No clear specialty (SEO? paid? lifecycle?)
-- Dead links — use the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- Dead links - use the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 
 ## Pro Tips
 - Quantify everything ([How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)).
@@ -69,7 +69,7 @@ Use the [Digital Marketing Resume guide](https://thetailorcv.com/blog/digital-ma
 
 ## Build Your Portfolio Now
 
-You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) — choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
+You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
 
 ## Related Guides
 
@@ -85,3 +85,10 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 - [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
 - [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026)
+
+## Make This Practical
+
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+
+Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
+

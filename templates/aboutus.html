@@ -11,190 +11,293 @@
     <link rel="stylesheet" href="/static/style3.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .about-hero {
-            padding: 100px 0 60px;
-            text-align: center;
-            color: white;
-        }
-        .about-content {
-            background-color: linear-gradient(rgb(3, 14, 117), rgb(85, 2, 112));;
-            border-radius: 20px;
-            padding: 60px;
-            margin-bottom: 50px;
+        * { box-sizing: border-box; }
 
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 18% 12%, rgba(74, 106, 255, 0.22), transparent 32%),
+                radial-gradient(circle at 86% 18%, rgba(124, 58, 237, 0.16), transparent 30%),
+                linear-gradient(135deg, #050816 0%, #071530 48%, #120d25 100%);
+            color: #edf2ff;
+            font-family: Inter, sans-serif;
+            overflow-x: hidden;
         }
+
+        header, main, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-page {
+            width: min(1080px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 110px 0 72px;
+        }
+
+        .about-hero {
+            text-align: center;
+            margin-bottom: 48px;
+            width: calc(100vw - 40px);
+            margin-left: calc(50% - 50vw + 20px);
+            margin-right: calc(50% - 50vw + 20px);
+        }
+
+        .about-eyebrow {
+            margin: 0 0 14px;
+            color: #7dd3fc;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .about-title {
+            margin: 0 auto;
+            width: 100%;
+            font-family: Gelasio, Georgia, serif;
+            font-size: clamp(3.7rem, 5.65vw, 5.9rem);
+            font-weight: 600;
+            line-height: 1.04;
+            color: #ffffff;
+            letter-spacing: 0;
+        }
+
+        .about-title-line {
+            display: block;
+            white-space: nowrap;
+        }
+
+        .about-subtitle {
+            max-width: 640px;
+            margin: 18px auto 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #9fb0d0;
+        }
+
+        .about-content {
+            background: rgba(15, 30, 68, 0.72);
+            border: 1px solid rgba(80, 110, 200, 0.22);
+            border-radius: 24px;
+            padding: clamp(28px, 5vw, 56px);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+        }
+
+        .story-block + .story-block {
+            margin-top: 44px;
+            padding-top: 44px;
+            border-top: 1px solid rgba(80, 110, 200, 0.18);
+        }
+
         .section-title {
-            color: #bfc6d4;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
+            margin: 0 0 20px;
+            font-family: Gelasio, Georgia, serif;
+            font-size: clamp(1.6rem, 3vw, 2rem);
+            font-weight: 600;
+            color: #ffffff;
             position: relative;
             display: inline-block;
         }
+
         .section-title::after {
             content: '';
             position: absolute;
             bottom: -8px;
             left: 0;
-            width: 60px;
-            height: 4px;
-            background: #bfc0ed;
+            width: 56px;
+            height: 3px;
+            background: linear-gradient(90deg, #4a6aff, #7c3aed);
             border-radius: 2px;
         }
-        .story-text {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #d88dca;
-            margin-bottom: 40px;
-        }
-        .our-story { margin-top: 50px; }
+
+        .story-text,
         .our-story p {
-            font-size: 16px;
-            line-height: 1.9;
-            color: #e0bcdb;
-            margin-bottom: 18px;
+            font-size: 1rem;
+            line-height: 1.85;
+            color: #b8c5de;
+            margin: 0 0 18px;
         }
+
         .our-story p:last-child { margin-bottom: 0; }
-        .our-story .story-lead { font-weight: 600; color: #f0d6ec; }
-        /* Founders Section */
-        .founders-section {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid #edf2f7;
+
+        .story-lead {
+            font-weight: 600;
+            color: #e2e8f5 !important;
+            font-size: 1.05rem !important;
         }
+
+        .founders-section {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
         .founders-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 28px;
         }
+
         .founder-card {
             text-align: center;
-            padding: 30px;
-     
-            border-radius: 15px;
-            transition: transform 0.3s ease;
+            padding: 32px 24px;
+            background: rgba(7, 16, 43, 0.55);
+            border: 1px solid rgba(80, 110, 200, 0.18);
+            border-radius: 18px;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
         }
+
         .founder-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-6px);
+            border-color: rgba(74, 106, 255, 0.45);
+            box-shadow: 0 16px 40px rgba(26, 46, 120, 0.28);
         }
+
         .founder-avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            margin: 0 auto 20px;
+            margin: 0 auto 18px;
             object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 3px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
             display: block;
         }
+
         .founder-name {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: 700;
-            color: #ccd0d7;
-            margin-bottom: 5px;
+            color: #ffffff;
+            margin: 0 0 6px;
         }
+
         .founder-role {
-            color: #d28cee;
+            color: #7dd3fc;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            font-size: 0.78rem;
+            margin: 0;
         }
-        .getstarted {
-    border-radius: 25px;
-    width: 250px;        /* increased width */
-    height: 45px;        /* increased height */
-    font-size: 30px;     /* bigger text */
-    background-color: rgb(202, 240, 248);
-    cursor: pointer;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-}
+        .about-cta {
+            margin-top: 48px;
+            text-align: center;
+        }
 
+        .about-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 28px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #4a6aff, #7c3aed);
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0 10px 30px rgba(74, 106, 255, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
 
+        .about-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(74, 106, 255, 0.45);
+            color: #ffffff;
+        }
 
-/* Fix hover (IMPORTANT: no space before :hover) */
-.getstarted:hover {
-    background-color: rgb(233, 238, 239);
-     width: 290px;        /* increased width */
-    height: 60px;
-    font-size: 34px;
-    
-}
+        @media (max-width: 768px) {
+            .about-page {
+                padding-top: 96px;
+            }
 
-.getstarted:hover a {
-    color: rgb(0, 5, 20);
-    
-}
+            .about-title {
+                font-size: clamp(2.6rem, 10vw, 3.8rem);
+                line-height: 1.06;
+            }
 
-@media (max-width: 768px) {
-    .navbar .nav-actions {
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        margin: 0;
-        padding: 0;
-        gap: 0;
-        min-width: 0;
-    }
+            .about-title-line {
+                white-space: normal;
+            }
 
-    .navbar #auth-nav-slot {
-        display: flex;
-        align-items: center;
-        width: auto;
-    }
+            .navbar .nav-actions {
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
+                padding: 0;
+                gap: 0;
+                min-width: 0;
+            }
 
-    .navbar .nav-actions .getstarted {
-        display: none !important;
-    }
+            .navbar #auth-nav-slot {
+                display: flex;
+                align-items: center;
+                width: auto;
+            }
 
-    .navbar .profile-trigger {
-        padding: 0;
-    }
+            .navbar .nav-actions .getstarted {
+                display: none !important;
+            }
 
-    .navbar .profile-display-name {
-        display: none;
-    }
-}
+            .navbar .profile-trigger {
+                padding: 0;
+            }
+
+            .navbar .profile-display-name {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="wave-bg" aria-hidden="true">
+        <canvas id="wave-canvas"></canvas>
+    </div>
+
     {% include "_nav.html" %}
 
-    <main class="container">
+    <div class="nav-clear-spacer" aria-hidden="true"></div>
+
+    <main class="about-page">
         <section class="about-hero">
-            <h1 class="hero-title">Bridging the Gap Between Talent and Opportunity</h1>
-            <p class="hero-subtitle">Intelligence-driven resume optimization for the modern professional.</p>
+            <h1 class="about-title">
+                <span class="about-title-line">Bridging the Gap Between Talent</span>
+                <span class="about-title-line">and Opportunity</span>
+            </h1>
+            <p class="about-subtitle">Intelligence-driven resume optimization for the modern professional.</p>
         </section>
 
         <section class="about-content">
-            <div class="story-container">
+            <div class="story-block">
                 <h2 class="section-title">Our Vision</h2>
                 <p class="story-text">
                     In an era where technology dictates the recruitment landscape, TailorCV.ai was born out of a necessity to empower candidates. We recognized that brilliant professionals were being overlooked by automated systems simply because of formatting and keyword mismatches. Our mission is to ensure that your expertise is never lost in translation.
                 </p>
             </div>
 
-            <div class="our-story">
+            <div class="story-block our-story">
                 <h2 class="section-title">Our Story</h2>
                 <p class="story-lead">
                     We didn't come from computer science. We met as Chemical Engineering students in the same department — two people who were never &ldquo;supposed&rdquo; to build software.
                 </p>
                 <p>
-                    What brought us together was a conversation. Shubham refused to settle for an ordinary job and an ordinary life ; he wanted to build something that mattered. Trisha, originating from one of the most crime ridden neighbourhoods fighting her way to one of the country's best colleges was charting her own path toward the SSC CGL exam. He was drawn to the way she saw life; she was drawn to his determination to do something big. 
+                    What brought us together was a conversation. Shubham refused to settle for an ordinary job and an ordinary life; he wanted to build something that mattered. Trisha, originating from one of the most crime ridden neighbourhoods fighting her way to one of the country's best colleges was charting her own path toward the SSC CGL exam. He was drawn to the way she saw life; she was drawn to his determination to do something big.
                 </p>
                 <p>
-                    Then came the hardest chapter of our lives. Shubham faced acute financial and personal problems still he learnt coding at hospital wards and at public buses. Trisha believed in him through all bad times. Trisha also made a life changing decision:to make his dream hers and believe in him even when he had nothing. she didn't know how to code.
+                    Then came the hardest chapter of our lives. Shubham faced acute financial and personal problems still he learnt coding at hospital wards and at public buses. Trisha believed in him through all bad times. Trisha also made a life changing decision: to make his dream hers and believe in him even when he had nothing. she didn't know how to code.
                 </p>
                 <p>
-                    So she started from zero. Three months of data analytics — SQL and Power BI — then Python, then data structures and algorithms. Shubham had sketched the first version of the product.  
-                    Trisha built it and transformed it from a project to a production software. 
+                    So she started from zero. Three months of data analytics — SQL and Power BI — then Python, then data structures and algorithms. Shubham had sketched the first version of the product.
+                    Trisha built it and transformed it from a project to a production software.
                 </p>
                 <p>
                     With financial and personal problems but unwilling to give up on the dream we now shared, we kept going. Trisha learned frontend, then FastAPI. Night after night — while still clearing our Chemical Engineering semesters — we rebuilt, tested, and refined until TailorCV finally worked.
@@ -204,7 +307,7 @@
                 </p>
             </div>
 
-            <div class="founders-section">
+            <div class="story-block founders-section">
                 <h2 class="section-title">Leadership Team</h2>
                 <div class="founders-grid">
                     <div class="founder-card">
@@ -214,21 +317,62 @@
                     </div>
                     <div class="founder-card">
                         <img src="/static/user_imges/Shubham.jpg" alt="Shubham Sarkar" class="founder-avatar" loading="lazy" decoding="async">
-                        <div class="founder-name">Shubham Sarkar</div>
+                        <h3 class="founder-name">Shubham Sarkar</h3>
                         <p class="founder-role">Co-Founder & Head of Technology</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <div class="about-cta">
+            <a href="/solutions" class="about-cta-btn">Try TailorCV Free</a>
+        </div>
     </main>
 
-            {% include "_footer.html" %}
+    {% include "_footer.html" %}
     <script src="/static/auth_nav.js?v=11"></script>
     <script src="/static/mobile_nav.js"></script>
+    <script>
+        (function () {
+            const canvas = document.getElementById('wave-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let W, H;
+            function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const waves = [
+                { amp: 90, freq: 0.0016, speed: 0.00035, color: [59, 130, 246], yf: 0.38, alpha: 0.12 },
+                { amp: 70, freq: 0.0022, speed: 0.00028, color: [79, 70, 229], yf: 0.52, alpha: 0.09 },
+                { amp: 60, freq: 0.0014, speed: 0.00042, color: [99, 102, 241], yf: 0.64, alpha: 0.08 },
+            ];
+
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+                const t = Date.now();
+                waves.forEach(function (wv) {
+                    ctx.beginPath();
+                    for (let x = 0; x <= W; x += 2) {
+                        const y = H * wv.yf
+                            + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
+                            + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45;
+                        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+                    }
+                    ctx.lineTo(W, H);
+                    ctx.lineTo(0, H);
+                    ctx.closePath();
+                    const [r, g, b] = wv.color;
+                    const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+                    gr.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + wv.alpha + ')');
+                    gr.addColorStop(1, 'rgba(' + r + ',' + g + ',' + b + ',0)');
+                    ctx.fillStyle = gr;
+                    ctx.fill();
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+    </script>
 </body>
 </html>
-
-
-
-
-

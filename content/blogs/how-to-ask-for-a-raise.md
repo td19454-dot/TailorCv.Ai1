@@ -1,5 +1,5 @@
----
-title: How to Ask for a Raise in 2026 — Scripts, Timing, and Strategy
+﻿---
+title: How to Ask for a Raise in 2026 - Scripts, Timing, and Strategy
 description: Learn how to ask for a raise in 2026 with proven scripts, the right timing, how to build your case with evidence, and how to handle every employer response.
 date: 2026-06-01
 author: TailorCV Team
@@ -10,9 +10,9 @@ slug: how-to-ask-for-a-raise
 keywords: how to ask for a raise, asking for a raise 2026, salary increase request, raise negotiation script, how to get a pay raise, request salary increase
 ---
 
-Asking for a raise is one of the most uncomfortable but financially important conversations in your career. A successful raise conversation can increase your income by 5–20% — and since future raises and offers are often percentages of your current salary, the impact compounds for years.
+Asking for a raise is one of the most uncomfortable but financially important conversations in your career. A successful raise conversation can increase your income by 5-20% - and since future raises and offers are often percentages of your current salary, the impact compounds for years.
 
-The key is to approach it as a business case, not a personal plea. You are not asking for a favor — you are presenting evidence that your value to the company has grown and that your compensation should reflect it.
+The key is to approach it as a business case, not a personal plea. You are not asking for a favor - you are presenting evidence that your value to the company has grown and that your compensation should reflect it.
 
 This guide covers when to ask, how to build your case, the exact scripts to use, and how to handle every response.
 
@@ -94,7 +94,7 @@ This signals seriousness and gives your manager time to prepare (and possibly st
 
 ### State Your Ask
 
-"Based on my contributions and market research for this role — which shows a range of [X to Y] — I'd like to discuss adjusting my salary to [specific number]. Is that something we can work toward?"
+"Based on my contributions and market research for this role - which shows a range of [X to Y] - I'd like to discuss adjusting my salary to [specific number]. Is that something we can work toward?"
 
 ### Then Stop Talking
 
@@ -114,9 +114,9 @@ If they agree or counter close to your number, accept graciously: "That works fo
 
 ### "There's no budget right now"
 
-"I understand budgets are tight. Can we set a specific timeline to revisit this — perhaps in 3 months? And in the meantime, are there non-salary adjustments we could discuss, such as additional PTO, a title change, professional development budget, or remote flexibility?"
+"I understand budgets are tight. Can we set a specific timeline to revisit this - perhaps in 3 months? And in the meantime, are there non-salary adjustments we could discuss, such as additional PTO, a title change, professional development budget, or remote flexibility?"
 
-Also ask: "What specifically would I need to demonstrate to justify this raise when budget allows?" — this turns a no into a roadmap.
+Also ask: "What specifically would I need to demonstrate to justify this raise when budget allows?" - this turns a no into a roadmap.
 
 ### "You're already paid fairly"
 
@@ -126,11 +126,11 @@ Also ask: "What specifically would I need to demonstrate to justify this raise w
 
 ## What NOT to Do
 
-- Don't make it about personal financial needs (rent, bills, family) — make it about value
+- Don't make it about personal financial needs (rent, bills, family) - make it about value
 - Don't compare yourself to specific colleagues' salaries
 - Don't threaten to quit unless you genuinely have an offer and are prepared to leave
 - Don't get emotional or defensive
-- Don't accept a vague "we'll see" — get a specific timeline
+- Don't accept a vague "we'll see" - get a specific timeline
 - Don't apologize for asking
 
 ---
@@ -142,7 +142,7 @@ A no is not the end. Your options:
 1. **Get a roadmap**: Ask exactly what you need to achieve for a yes, and a timeline.
 2. **Negotiate non-salary benefits**: PTO, flexibility, development budget, title.
 3. **Set a follow-up date**: Lock in a specific revisit date (e.g., 3 months).
-4. **Evaluate the market**: If you are genuinely underpaid and the company won't adjust, it may be time to explore other offers. The strongest raise leverage is often a competing offer — read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer).
+4. **Evaluate the market**: If you are genuinely underpaid and the company won't adjust, it may be time to explore other offers. The strongest raise leverage is often a competing offer - read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer).
 
 ---
 
@@ -168,14 +168,20 @@ Caution: only use this if you are genuinely prepared to leave. Bluffing can back
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [Best Questions to Ask in a Job Interview in 2026 — 40 Smart Questions](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
+- [Best Questions to Ask in a Job Interview in 2026 - 40 Smart Questions](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
 - [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
-- [Behavioral Interview Questions and Answers — Complete 2026 Guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
-- [200 Best Action Verbs for Resume in 2026 — By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [Behavioral Interview Questions and Answers - Complete 2026 Guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
+- [200 Best Action Verbs for Resume in 2026 - By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [20 Common Interview Mistakes to Avoid in 2026](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 
-## Conclusion
+## Make This Practical
 
+Turn the career advice into a stronger application system. Start by checking your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), align it with the role using [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job), and keep your profile consistent with [LinkedIn Resume Tailoring Sync](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync).
+
+When you are ready to apply, build the supporting pieces around the resume. Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) for targeted outreach, practice with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and review [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) if applications are not converting.
+
+## Conclusion
 Asking for a raise is a business negotiation, not a personal favor. Build your case with quantified accomplishments and market data, schedule a proper conversation, state a specific number, and handle the response professionally. Even a no can become a roadmap to a yes.
 
 To strengthen your position long-term, keep your skills current with the [skills to add to your resume guide](https://thetailorcv.com/blog/skills-to-add-to-resume-2026), keep your resume sharp with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and read the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
+
