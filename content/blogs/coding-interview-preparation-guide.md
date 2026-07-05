@@ -1,5 +1,5 @@
----
-title: Coding Interview Preparation Guide 2026 — Patterns and Practice Plan
+﻿---
+title: Coding Interview Preparation Guide 2026 - Patterns and Practice Plan
 description: Prepare for coding interviews in 2026 with the essential DSA patterns, a problem-solving framework, and a structured practice plan to crack technical interviews.
 date: 2026-06-01
 author: TailorCV Team
@@ -62,12 +62,12 @@ Track connected components efficiently. Used for graph connectivity and cycle de
 
 When you receive a problem, follow this:
 
-**U — Understand**: Restate the problem. Ask about edge cases, input size, and constraints.
-**M — Match**: Which pattern does this resemble? (sliding window? DFS? DP?)
-**P — Plan**: Outline your approach in plain English before coding.
-**I — Implement**: Write clean code while explaining as you go.
-**R — Review**: Trace through your code with an example. Check edge cases.
-**E — Evaluate**: State the time and space complexity. Discuss optimizations.
+**U - Understand**: Restate the problem. Ask about edge cases, input size, and constraints.
+**M - Match**: Which pattern does this resemble? (sliding window? DFS? DP?)
+**P - Plan**: Outline your approach in plain English before coding.
+**I - Implement**: Write clean code while explaining as you go.
+**R - Review**: Trace through your code with an example. Check edge cases.
+**E - Evaluate**: State the time and space complexity. Discuss optimizations.
 
 ---
 
@@ -79,7 +79,7 @@ Solving 500 problems mindlessly is less effective than solving 150 problems whil
 
 ### The Right Practice Loop
 
-1. Attempt the problem for 20–30 minutes
+1. Attempt the problem for 20-30 minutes
 2. If stuck, look at hints (not the full solution)
 3. If still stuck after 40 minutes, study the solution
 4. Understand the pattern, not just the specific solution
@@ -87,16 +87,16 @@ Solving 500 problems mindlessly is less effective than solving 150 problems whil
 
 ### Talk Out Loud
 
-In real interviews, you must think aloud. Practice this from day one — explain your reasoning as you solve, even when practicing alone. Use the [mock interview tool](https://thetailorcv.com/mock-interview) to practice verbal problem-solving.
+In real interviews, you must think aloud. Practice this from day one - explain your reasoning as you solve, even when practicing alone. Use the [mock interview tool](https://thetailorcv.com/mock-interview) to practice verbal problem-solving.
 
 ---
 
 ## Recommended Problem Lists
 
-- **Blind 75** — The classic starting list (75 essential problems)
-- **NeetCode 150** — Expanded, well-organized by pattern
-- **Grind 75** — Customizable by time available
-- **LeetCode company tags** — Practice problems asked at your target companies
+- **Blind 75** - The classic starting list (75 essential problems)
+- **NeetCode 150** - Expanded, well-organized by pattern
+- **Grind 75** - Customizable by time available
+- **LeetCode company tags** - Practice problems asked at your target companies
 
 ---
 
@@ -119,12 +119,12 @@ Total: ~130 problems across all patterns.
 
 You must be able to state Big O for every solution:
 
-- O(1) — constant
-- O(log n) — logarithmic (binary search)
-- O(n) — linear (single loop)
-- O(n log n) — sorting
-- O(n²) — nested loops
-- O(2^n) — exponential (some recursion/backtracking)
+- O(1) - constant
+- O(log n) - logarithmic (binary search)
+- O(n) - linear (single loop)
+- O(n log n) - sorting
+- O(n²) - nested loops
+- O(2^n) - exponential (some recursion/backtracking)
 
 Always know the complexity of your solution and whether it can be improved.
 
@@ -132,7 +132,7 @@ Always know the complexity of your solution and whether it can be improved.
 
 ## Interview Day Coding Tips
 
-- Clarify before coding — never assume
+- Clarify before coding - never assume
 - Start with brute force, then optimize
 - Write clean, readable code with good variable names
 - Talk through every decision
@@ -175,11 +175,17 @@ Memorized solutions break when the problem varies slightly. Understand the under
 - [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
 - [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
 - [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
-- [How to Prepare for Campus Placement in 2026 — Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [How to Prepare for Campus Placement in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
 
-## Conclusion
+## Make This Practical
 
+Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).
+
+Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
+
+## Conclusion
 Coding interview success comes from pattern recognition, a structured problem-solving framework, and consistent practice with verbal reasoning. Learn the 12 core patterns, practice 130+ problems with the UMPIRE framework, and always think aloud.
 
 Combine this with the [technical interview guide](https://thetailorcv.com/blog/technical-interview-preparation-guide) and [system design guide](https://thetailorcv.com/blog/system-design-interview-guide). Optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and practice with the [free AI mock interview tool](https://thetailorcv.com/mock-interview).
+

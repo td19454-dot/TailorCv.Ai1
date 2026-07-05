@@ -1,6 +1,6 @@
----
+﻿---
 title: Should You Put a Photo on Your Resume? (The 2026 Answer by Country)
-description: The definitive answer on whether to include a photo on your resume in 2026. Covers US, UK, Europe, India, and other regions — plus the risks of photos in countries where they are not expected.
+description: The definitive answer on whether to include a photo on your resume in 2026. Covers US, UK, Europe, India, and other regions - plus the risks of photos in countries where they are not expected.
 date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Photo, Resume Basics, Resume Tips, International Resume, Job Search]
@@ -10,7 +10,7 @@ slug: photo-on-resume
 keywords: should you put a photo on resume, resume with photo, resume photo 2026, photo on CV, resume headshot, professional photo on resume, is a photo required on resume
 ---
 
-The photo question divides job seekers more than almost any other resume decision. In some countries, sending a resume without a photo is unusual. In others, including a photo can get your application immediately discarded — or worse, expose you to discrimination claims. The answer depends entirely on where you are applying.
+The photo question divides job seekers more than almost any other resume decision. In some countries, sending a resume without a photo is unusual. In others, including a photo can get your application immediately discarded - or worse, expose you to discrimination claims. The answer depends entirely on where you are applying.
 
 This guide gives you a clear answer by country and situation, plus the risks and rules you need to know.
 
@@ -22,10 +22,10 @@ For overall resume structure, read [the anatomy of a perfect resume](https://the
 
 | Country/Region | Photo on Resume? |
 |---|---|
-| United States | No — generally not expected, can invite bias |
-| Canada | No — same as US |
-| United Kingdom | No — not standard, may invite discrimination concerns |
-| Australia | No — not standard |
+| United States | No - generally not expected, can invite bias |
+| Canada | No - same as US |
+| United Kingdom | No - not standard, may invite discrimination concerns |
+| Australia | No - not standard |
 | Germany | Traditionally yes (though changing) |
 | France | Traditionally yes (optional now) |
 | Spain, Portugal, Italy | Often expected |
@@ -42,10 +42,10 @@ For overall resume structure, read [the anatomy of a perfect resume](https://the
 ### Anti-Discrimination Laws
 In the United States, the Civil Rights Act, Age Discrimination in Employment Act, and other laws prohibit hiring decisions based on race, gender, age, appearance, disability, or national origin.
 
-Many US employers train their HR teams and recruiters not to use photos in screening — specifically to avoid liability. A photo can put the recruiter in an awkward position and may lead to your resume being set aside to avoid any appearance of bias-based decision-making.
+Many US employers train their HR teams and recruiters not to use photos in screening - specifically to avoid liability. A photo can put the recruiter in an awkward position and may lead to your resume being set aside to avoid any appearance of bias-based decision-making.
 
 ### ATS Can't Read Images
-ATS systems parse text. A photo embedded in a resume is simply an image — ATS ignores it. But more importantly, resumes using graphics and images sometimes have their text parsing disrupted, causing the ATS to miss your keywords and experience.
+ATS systems parse text. A photo embedded in a resume is simply an image - ATS ignores it. But more importantly, resumes using graphics and images sometimes have their text parsing disrupted, causing the ATS to miss your keywords and experience.
 
 Run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to verify your document is being read correctly.
 
@@ -77,15 +77,15 @@ If you are in a country or industry where a photo is expected:
 - Use a professional headshot (head and upper shoulders, not a casual selfie)
 - Wear professional clothing appropriate to the industry
 - Use a neutral, clean background
-- Smile naturally — approachable but professional
-- Use a recent photo (within 1–2 years)
+- Smile naturally - approachable but professional
+- Use a recent photo (within 1-2 years)
 - Use a square or portrait format, small enough not to dominate the page
 
 **Don't:**
 - Use a casual holiday or party photo
 - Include a photo with other people in the background
 - Use a blurry or low-resolution image
-- Use a photo older than 3–4 years
+- Use a photo older than 3-4 years
 
 **Technical:**
 - Embed the photo as a small element in the top corner (top right is common in Europe)
@@ -95,7 +95,7 @@ If you are in a country or industry where a photo is expected:
 
 ## What About LinkedIn Photos?
 
-LinkedIn is different from your resume. A professional photo on LinkedIn is strongly recommended everywhere — including the US. Your LinkedIn profile is a public, social professional presence, and a photo dramatically increases profile views and recruiter engagement.
+LinkedIn is different from your resume. A professional photo on LinkedIn is strongly recommended everywhere - including the US. Your LinkedIn profile is a public, social professional presence, and a photo dramatically increases profile views and recruiter engagement.
 
 Make sure your LinkedIn photo is professional and consistent with how you present yourself. Read [LinkedIn profile optimization guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) for complete advice.
 
@@ -103,16 +103,16 @@ Make sure your LinkedIn photo is professional and consistent with how you presen
 
 ## What If an Employer Asks for a Photo?
 
-If a job posting explicitly asks for a photo and you are applying to a country where it is the norm, include it. If you are in a country where photos are not expected and an employer requests one, use your judgment — this may be a small or international company operating under different cultural norms.
+If a job posting explicitly asks for a photo and you are applying to a country where it is the norm, include it. If you are in a country where photos are not expected and an employer requests one, use your judgment - this may be a small or international company operating under different cultural norms.
 
-In the US or UK, if a job posting requests a photo, it may signal the company has not updated their practices — or it may be an international employer. You can include one if specifically requested without significant risk.
+In the US or UK, if a job posting requests a photo, it may signal the company has not updated their practices - or it may be an international employer. You can include one if specifically requested without significant risk.
 
 ---
 
 ## The Bottom Line
 
 - **US, Canada, UK, Australia**: No photo on your resume. A clean, professional, text-only document is correct. Your photo goes on LinkedIn.
-- **Germany, France, Spain, South Korea, Japan**: A professional photo is often expected or at least accepted — follow local conventions.
+- **Germany, France, Spain, South Korea, Japan**: A professional photo is often expected or at least accepted - follow local conventions.
 - **India, most tech/startup environments globally**: Photo not required; text resume is standard.
 
 Whatever you decide, make sure your resume content is strong. Read [how to write a resume from scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch) for a step-by-step content guide, and check your document with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
@@ -131,8 +131,14 @@ Whatever you decide, make sure your resume content is strong. Read [how to write
 
 ---
 
-## Conclusion
+## Make This Practical
 
-In the US, Canada, UK, and Australia: do not include a photo on your resume. In Germany, South Korea, Japan, France, and several other countries: a professional photo is often expected. Follow the convention for the country and industry you are targeting — never assume your home country's norms apply universally.
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
+In the US, Canada, UK, and Australia: do not include a photo on your resume. In Germany, South Korea, Japan, France, and several other countries: a professional photo is often expected. Follow the convention for the country and industry you are targeting - never assume your home country's norms apply universally.
 
 Focus your energy on building a strong, ATS-optimized resume. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and run your document through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to make sure your content reaches every recruiter who looks at it.
+

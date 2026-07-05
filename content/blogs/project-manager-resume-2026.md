@@ -1,5 +1,5 @@
----
-title: Project Manager Resume 2026 — Complete Guide with Examples
+﻿---
+title: Project Manager Resume 2026 - Complete Guide with Examples
 description: Write a project manager resume in 2026 with the right ATS keywords, delivery metrics, methodology skills, and bullet points that prove on-time, on-budget impact.
 date: 2026-06-01
 author: TailorCV Team
@@ -10,11 +10,11 @@ slug: project-manager-resume-2026
 keywords: project manager resume, project manager resume 2026, PMP resume, agile project manager resume, scrum resume, project management ATS keywords, IT project manager resume
 ---
 
-A project manager resume in 2026 must prove that you deliver projects on time, on budget, and on scope while managing stakeholders and risks. Project management is fundamentally measurable — every project has a timeline, a budget, and a defined set of deliverables. Your resume should make those numbers visible.
+A project manager resume in 2026 must prove that you deliver projects on time, on budget, and on scope while managing stakeholders and risks. Project management is fundamentally measurable - every project has a timeline, a budget, and a defined set of deliverables. Your resume should make those numbers visible.
 
 Whether you are an IT project manager, construction PM, agile delivery lead, or PMO professional, recruiters look for evidence of successful delivery, not just a list of methodologies you know.
 
-Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). Note: a project manager is different from a [product manager](https://thetailorcv.com/blog/product-manager-resume-2026) — make sure you are targeting the right role.
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). Note: a project manager is different from a [product manager](https://thetailorcv.com/blog/product-manager-resume-2026) - make sure you are targeting the right role.
 
 ---
 
@@ -100,16 +100,16 @@ Delivered / Led / Managed / Reduced + [project or program] + [budget, team, or s
 ### Strong Bullet Points
 
 - Delivered a $4.2M ERP implementation across 6 business units 3 weeks ahead of schedule and 8% under budget, coordinating 24 team members and 3 external vendors.
-- Led 12 agile software delivery projects over 2 years with a 92% on-time release rate, managing sprint planning, backlog grooming, and stakeholder demos for teams of 6–10 engineers.
+- Led 12 agile software delivery projects over 2 years with a 92% on-time release rate, managing sprint planning, backlog grooming, and stakeholder demos for teams of 6-10 engineers.
 - Reduced project budget overruns from an average of 18% to 4% by introducing earned value management tracking and bi-weekly cost review checkpoints.
 - Managed a digital transformation program of 5 concurrent projects worth $9M, maintaining a consolidated RAID log and presenting monthly steering committee updates to C-suite stakeholders.
-- Recovered a critically delayed product launch project by re-scoping deliverables, re-sequencing the critical path, and adding targeted resources — delivering the MVP only 1 week past the original deadline despite a 6-week initial slip.
+- Recovered a critically delayed product launch project by re-scoping deliverables, re-sequencing the critical path, and adding targeted resources - delivering the MVP only 1 week past the original deadline despite a 6-week initial slip.
 
 ---
 
 ## Project Manager Resume Example
 
-Senior Project Manager — IT Delivery
+Senior Project Manager - IT Delivery
 Enterprise Software Company | Feb 2021 - Present
 
 - Managed a portfolio of 8 concurrent software delivery projects worth a combined $11M across banking and insurance clients.
@@ -122,15 +122,15 @@ Enterprise Software Company | Feb 2021 - Present
 
 ## Certifications for Project Manager Resume
 
-- PMP (Project Management Professional) — PMI (gold standard)
+- PMP (Project Management Professional) - PMI (gold standard)
 - PRINCE2 Foundation / Practitioner
 - Certified ScrumMaster (CSM)
 - PMI Agile Certified Practitioner (PMI-ACP)
 - SAFe Agilist
-- CAPM (Certified Associate in Project Management) — for entry-level
+- CAPM (Certified Associate in Project Management) - for entry-level
 
 List format:
-PMP — Project Management Institute | 2024
+PMP - Project Management Institute | 2024
 
 ---
 
@@ -168,11 +168,17 @@ Senior PM roles require budget and risk ownership. Show budget sizes you managed
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
-- [How to List Education on a Resume in 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [HR Manager Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/hr-manager-resume-2026)
+- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [HR Manager Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/hr-manager-resume-2026)
+
+## Make This Practical
+
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+
+A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 
 ## Conclusion
-
 A strong project manager resume in 2026 shows delivery track record: on-time completion rates, budget management, team coordination, and risk mitigation. Every bullet should quantify the project scope and the delivery outcome.
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for your interviews with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+

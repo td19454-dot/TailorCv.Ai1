@@ -1,5 +1,5 @@
----
-title: How to Tailor Your Resume When You're Underqualified — And Still Get Interviews (2026)
+﻿---
+title: How to Tailor Your Resume When You're Underqualified - And Still Get Interviews (2026)
 description: Missing some job requirements shouldn't stop you from applying. Learn how to tailor your resume when you're underqualified to close the gap, reframe your experience, and get interviews anyway.
 date: 2026-06-29
 author: TailorCV Team
@@ -30,7 +30,7 @@ Studies consistently show that women apply only when they meet 100% of the crite
 Men apply when they meet around 60%.
 The result: the more hesitant candidates often miss roles they could have won.
 
-This guide shows you how to tailor your resume when you are underqualified — honestly, specifically, and in a way that gets real interviews. Understanding [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) often comes back to not applying at all, or applying with a [generic resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) when tailoring would have made the difference.
+This guide shows you how to tailor your resume when you are underqualified - honestly, specifically, and in a way that gets real interviews. Understanding [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) often comes back to not applying at all, or applying with a [generic resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) when tailoring would have made the difference.
 
 ---
 
@@ -50,7 +50,7 @@ If you can demonstrate:
 - Motivation and genuine fit
 - Evidence of growth in previous roles
 
-— you are competitive. Even if you do not check every box.
+- you are competitive. Even if you do not check every box.
 
 > The question is not whether you qualify perfectly. The question is whether you are the most compelling candidate who applied.
 
@@ -58,7 +58,7 @@ If you can demonstrate:
 
 ## When to Apply Anyway
 
-Apply when you meet **at least 60–70% of the required qualifications** and:
+Apply when you meet **at least 60-70% of the required qualifications** and:
 
 - The missing skills are learnable quickly (not advanced certifications requiring years of study)
 - You have strong transferable experience from adjacent areas
@@ -80,11 +80,11 @@ Create a simple side-by-side comparison.
 
 | Job Requirement | Your Status |
 |----------------|-------------|
-| 5 years experience in digital marketing | 2.5 years — frame as intensive + measurable impact |
-| Proficiency in Google Analytics 4 | Intermediate — address directly in skills |
-| Experience with paid social campaigns | Strong — lead with this |
-| HubSpot CRM experience | No — omit from skills, learn before interview |
-| Cross-functional campaign management | Yes — multiple examples |
+| 5 years experience in digital marketing | 2.5 years - frame as intensive + measurable impact |
+| Proficiency in Google Analytics 4 | Intermediate - address directly in skills |
+| Experience with paid social campaigns | Strong - lead with this |
+| HubSpot CRM experience | No - omit from skills, learn before interview |
+| Cross-functional campaign management | Yes - multiple examples |
 
 This map tells you:
 - Where you are strong (lead with these)
@@ -107,11 +107,11 @@ Instead, lead with what you bring that is most relevant.
 > "Digital marketer who has driven 3x organic growth and led multi-channel campaigns producing $400k in pipeline. Strong in content strategy, SEO, and campaign analytics. Currently deepening expertise in paid social and CRM automation."
 
 The second version leads with real results.
-The one missing skill is acknowledged briefly — not apologized for.
+The one missing skill is acknowledged briefly - not apologized for.
 
 ### Step 3: Translate Transferable Experience
 
-You may not have the exact experience — but you probably have adjacent experience.
+You may not have the exact experience - but you probably have adjacent experience.
 
 The [ATS score](https://thetailorcv.com/blog/ats-score-guide) and the recruiter both respond to translation.
 
@@ -119,7 +119,7 @@ If the job asks for "enterprise SaaS sales experience" and you have SMB sales:
 "Managed full-cycle sales for 80+ SMB accounts, building the foundational CRM systems and discovery frameworks that scale to enterprise relationships."
 
 If the job asks for "machine learning" and you have data analysis:
-"Built predictive models using scikit-learn for customer churn analysis — foundational ML work applied to production business outcomes."
+"Built predictive models using scikit-learn for customer churn analysis - foundational ML work applied to production business outcomes."
 
 You are not lying.
 You are showing how your real experience connects to what they need.
@@ -127,22 +127,22 @@ You are showing how your real experience connects to what they need.
 ### Step 4: Use Keywords Strategically
 
 The [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description) you do have should be front and center.
-The ATS looks for [keyword matches](https://thetailorcv.com/blog/resume-keywords-guide) — if you are strong on 6 of 8 required skills, those 6 should appear clearly.
+The ATS looks for [keyword matches](https://thetailorcv.com/blog/resume-keywords-guide) - if you are strong on 6 of 8 required skills, those 6 should appear clearly.
 
 Do not bury your strengths under a long list.
 List the matching skills first.
 
-Use [TailorCV's keyword gap analyzer](https://www.thetailorcv.com/solutions) to see exactly which required keywords you are hitting and which are missing — so you can make intentional choices about what to include.
+Use [TailorCV's keyword gap analyzer](https://www.thetailorcv.com/solutions) to see exactly which required keywords you are hitting and which are missing - so you can make intentional choices about what to include.
 
 ### Step 5: Address the Gap Without Drawing Attention to It
 
 If you are missing a skill or two, you have three options:
 
-**Option A: Omit silently** — do not list it in skills, do not mention it. If asked, discuss it in the interview.
+**Option A: Omit silently** - do not list it in skills, do not mention it. If asked, discuss it in the interview.
 
-**Option B: Frame as in-progress** — "Actively learning [skill] — completed [X course/project]." This shows initiative.
+**Option B: Frame as in-progress** - "Actively learning [skill] - completed [X course/project]." This shows initiative.
 
-**Option C: Reframe as related** — If you have the adjacent skill, include that instead and be ready to connect the dots in the interview.
+**Option C: Reframe as related** - If you have the adjacent skill, include that instead and be ready to connect the dots in the interview.
 
 Never put a skill on your resume you cannot discuss confidently in an interview.
 That creates problems you cannot recover from.
@@ -188,7 +188,7 @@ Use it to:
 - Highlight two or three specific ways your background is uniquely relevant
 - Signal how quickly you have grown in the past
 
-Also consider whether you might be applying for a role that overlaps with a [career change](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) scenario — in which case the same cross-industry reframing techniques apply.
+Also consider whether you might be applying for a role that overlaps with a [career change](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) scenario - in which case the same cross-industry reframing techniques apply.
 
 ---
 
@@ -207,7 +207,7 @@ Most candidates do this in their head and it shows in the resume.
 Lead with strengths. Let your results speak louder than your gaps.
 
 **Not checking your ATS score**
-You may have more keywords matched than you think — or fewer.
+You may have more keywords matched than you think - or fewer.
 Know your score before you apply using [TailorCV](https://www.thetailorcv.com/solutions). Understanding how to [improve your resume job match score](https://thetailorcv.com/blog/improve-resume-job-match-score) is especially important when you are already stretching to meet the requirements.
 
 **Skipping the interview preparation**
@@ -215,15 +215,20 @@ If you do get an interview despite being underqualified, you need to [prepare mo
 
 ---
 
-## FAQ
+## Make This Practical
 
+Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).
+
+Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
+
+## FAQ
 ### Is it worth applying if I am missing 30% of the requirements?
 
 Yes, if the missing skills are learnable and the matching skills are strong. A 70% match with strong results often beats a 100% match with weak results.
 
 ### What if they ask about my missing skills in the interview?
 
-Be honest and forward-looking. "I don't have direct experience with [X], but I've been working on [related thing] and learn tools quickly — for example, I picked up [Y] in [timeframe]." Then move on.
+Be honest and forward-looking. "I don't have direct experience with [X], but I've been working on [related thing] and learn tools quickly - for example, I picked up [Y] in [timeframe]." Then move on.
 
 ### Should I include learning-in-progress skills on my resume?
 
@@ -256,7 +261,7 @@ Stop reading "Required Qualifications" like a checklist that locks you out.
 
 Read them like a description of the ideal candidate.
 
-Then build the most honest, compelling case for why you are the best available person for this role — even if you are not the theoretical perfect one.
+Then build the most honest, compelling case for why you are the best available person for this role - even if you are not the theoretical perfect one.
 
 Lead with your strengths.
 Translate your experience.
@@ -267,4 +272,5 @@ Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide).
 You do not have to meet every requirement.
 You have to be more compelling than everyone else who applied.
 
-[Tailor My Resume for This Role — Free](https://www.thetailorcv.com/solutions)
+[Tailor My Resume for This Role - Free](https://www.thetailorcv.com/solutions)
+
