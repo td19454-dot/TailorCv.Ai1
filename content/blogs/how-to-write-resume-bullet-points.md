@@ -1,4 +1,4 @@
----
+﻿---
 title: How to Write Resume Bullet Points That Get Noticed (With Examples)
 description: Master the formula for resume bullet points that impress recruiters and pass ATS. Includes real before-and-after examples, the best structures, and common bullet point mistakes to avoid.
 date: 2026-06-06
@@ -20,14 +20,14 @@ Before polishing your bullets, make sure your overall resume scores well with th
 
 ## Why Bullet Points Matter So Much
 
-Bullet points are the primary content recruiters read in the work experience section — the section that carries the most weight in the hiring decision. They are also what ATS systems scan for keyword matches.
+Bullet points are the primary content recruiters read in the work experience section - the section that carries the most weight in the hiring decision. They are also what ATS systems scan for keyword matches.
 
 A strong bullet does three things:
 1. Shows what you did (action)
 2. Shows how you did it (method or skill)
 3. Shows the impact (result, often quantified)
 
-A weak bullet only does one of these — usually the first, without any depth.
+A weak bullet only does one of these - usually the first, without any depth.
 
 ---
 
@@ -124,19 +124,19 @@ The most common objection: "I don't have exact numbers." Here's how to still add
 - **Use before/after**: "Cut manual data entry from 8 hours to 30 minutes per week"
 - **Use comparison**: "Outperformed team average by 20%"
 
-You rarely need exact numbers — reasonable estimates and relative comparisons communicate impact effectively. Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) for more techniques.
+You rarely need exact numbers - reasonable estimates and relative comparisons communicate impact effectively. Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) for more techniques.
 
 ---
 
 ## Bullet Point Rules
 
-- **3–6 bullets per role** — For current or most recent roles, 4–6; for older roles, 2–3
-- **1–2 lines per bullet** — Three-line bullets are too long; cut them
-- **Lead with the verb** — No "I" or "My" — implied subject is always you
-- **Tailor to the job** — Prioritize bullets that match the target role's keywords. Read [how to tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
+- **3-6 bullets per role** - For current or most recent roles, 4-6; for older roles, 2-3
+- **1-2 lines per bullet** - Three-line bullets are too long; cut them
+- **Lead with the verb** - No "I" or "My" - implied subject is always you
+- **Tailor to the job** - Prioritize bullets that match the target role's keywords. Read [how to tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - **Use present tense for current role, past tense for previous roles**
-- **Avoid buzzwords** — "Synergized cross-functional stakeholders" means nothing
-- **No periods or ending punctuation** — Bullets are fragments, not sentences
+- **Avoid buzzwords** - "Synergized cross-functional stakeholders" means nothing
+- **No periods or ending punctuation** - Bullets are fragments, not sentences
 
 ---
 
@@ -146,13 +146,13 @@ You rarely need exact numbers — reasonable estimates and relative comparisons 
 Duties tell recruiters what your job was. Achievements tell them how well you did it. Replace "Responsible for X" with "Achieved X by doing Y."
 
 ### Mistake 2: Starting with weak verbs
-"Helped," "assisted," "supported," "participated in" — all signal low ownership and low impact.
+"Helped," "assisted," "supported," "participated in" - all signal low ownership and low impact.
 
 ### Mistake 3: No numbers or impact
 "Improved website performance" is forgettable. "Improved website load time from 4.2s to 0.9s, reducing bounce rate by 28%" is memorable.
 
 ### Mistake 4: Too many bullets
-Eight bullets per role dilute the strongest ones. Keep 3–6 and make each count.
+Eight bullets per role dilute the strongest ones. Keep 3-6 and make each count.
 
 ### Mistake 5: Generic, non-tailored bullets
 The same 5 bullets for every application is a guaranteed low match rate. Tailor at least 3 bullets per role to the specific job description.
@@ -178,8 +178,14 @@ ATS systems scan your bullet points for keyword matches. Tailor your verb choice
 
 ---
 
-## Conclusion
+## Make This Practical
 
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
 Great resume bullet points follow a consistent formula: strong action verb + what you did + quantified impact. They replace duty lists with achievement stories. They start with power verbs, end with numbers, and are tailored to each role you apply for.
 
 Use the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to verify your bullets contain the right keywords for each job, build on an [ATS-friendly template](https://www.thetailorcv.com/templates), and practice explaining your achievements in [mock interview prep](https://thetailorcv.com/interview-prep) before your call.
+

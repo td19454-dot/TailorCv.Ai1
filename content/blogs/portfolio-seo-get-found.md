@@ -1,6 +1,6 @@
----
+﻿---
 title: Portfolio SEO: How to Get Your Portfolio Found on Google
-description: Make your portfolio discoverable — on-page SEO, titles, metadata, content, and technical hygiene that help recruiters and clients find you.
+description: Make your portfolio discoverable - on-page SEO, titles, metadata, content, and technical hygiene that help recruiters and clients find you.
 date: 2026-06-24
 author: TailorCV Team
 tags: [Portfolio Guide, SEO, Personal Branding, Job Search]
@@ -10,10 +10,10 @@ slug: portfolio-seo-get-found
 keywords: portfolio seo, get portfolio found, rank portfolio google, personal website seo, portfolio on google
 ---
 
-A portfolio nobody can find still helps inside applications — but with a little SEO, it can also bring opportunities *to* you. Recruiters and clients Google names and skills; a findable portfolio means inbound interest, not just outbound effort. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
+A portfolio nobody can find still helps inside applications - but with a little SEO, it can also bring opportunities *to* you. Recruiters and clients Google names and skills; a findable portfolio means inbound interest, not just outbound effort. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
 ## On-Page Basics
-- A clear **title tag**: "Your Name — Frontend Developer"
+- A clear **title tag**: "Your Name - Frontend Developer"
 - A **meta description** that states your specialty
 - One **H1**, descriptive headings, and **alt text** on images
 - **Fast load** and a mobile-friendly layout ([How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free))
@@ -24,7 +24,7 @@ A portfolio nobody can find still helps inside applications — but with a littl
 - Link to your LinkedIn, GitHub, and live projects
 
 ## Create a Little Content
-A few short case studies or posts give Google something to index and recruiters something to read. Each project page can target a niche keyword — borrow the [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) structure. Content is the single biggest lever most portfolios ignore.
+A few short case studies or posts give Google something to index and recruiters something to read. Each project page can target a niche keyword - borrow the [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) structure. Content is the single biggest lever most portfolios ignore.
 
 ## Technical Hygiene
 - Submit a **sitemap** to Google Search Console
@@ -34,14 +34,14 @@ A few short case studies or posts give Google something to index and recruiters 
 
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, your LinkedIn, and your portfolio should tell the **same** story — same name, same headline, same top projects — just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
 
 ## Common Mistakes
 - A site with almost no text for Google to read
 - Generic title tags ("Home")
 - Slow, image-heavy pages
-- Blocking indexing by accident — see the broader [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- Blocking indexing by accident - see the broader [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 
 ## Pro Tips
 - Put your role in the first six words of your homepage copy.
@@ -65,7 +65,7 @@ A clear title/description, real text content, fast mobile performance, HTTPS, an
 
 ## Build Your Portfolio Now
 
-You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) — choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
+You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
 
 ## Related Guides
 
@@ -81,3 +81,10 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
 - [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 - [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+
+## Make This Practical
+
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+
+Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
+
