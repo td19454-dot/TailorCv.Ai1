@@ -1,6 +1,6 @@
-﻿/* Logged-in app shell: a top bar + persistent sidebar on tool pages (Jobscan-style).
-   Loaded everywhere via _nav.html but only activates for a logged-in user on a
-   known tool page — marketing pages and logged-out visitors stay untouched. */
+﻿/* App shell: top bar + icon rail on tool pages (Jobscan-style).
+   Shown for logged-in and guest users on known tool pages so navigation stays
+   consistent. Guests get Log in / Get Started instead of the profile menu. */
 (function () {
     // /dashboard already has its own sidebar, so it's intentionally excluded.
     var APP_PREFIXES = [
@@ -19,12 +19,16 @@
         var p = path();
         return APP_PREFIXES.some(function (pre) { return p === pre || p.indexOf(pre + "/") === 0; });
     }
+    function nextUrl() {
+        return encodeURIComponent(location.pathname + location.search + location.hash);
+    }
 
     var user = getUser();
-    if (!user || !isAppPage()) return;
+    if (!isAppPage()) return;
 
     // Flag <html> early so the CSS hides the marketing navbar with minimal flash.
     document.documentElement.classList.add("tcv-app");
+    if (!user) document.documentElement.classList.add("tcv-app-guest");
 
     // Monochrome SVG icons (stroke=currentColor) so the whole rail is one color.
     function svg(inner) {
@@ -60,16 +64,15 @@
 
     function build() {
         var here = path();
-        var initial = ((user.name || user.email || "U").trim().charAt(0) || "U").toUpperCase();
+        var initial = user ? ((user.name || user.email || "U").trim().charAt(0) || "U").toUpperCase() : "";
 
         // Top bar
         var top = document.createElement("header");
         top.className = "tcv-top";
         function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
-        top.innerHTML =
-            '<button class="tcv-burger" id="tcvBurger" aria-label="Toggle menu" title="Collapse menu">☰</button>'
-            + '<a class="tcv-top-logo" href="/dashboard"><img src="/static/logo6.png" alt="theTailorCV"></a>'
-            + '<div class="tcv-top-right">'
+
+        var topRight = user
+            ? '<div class="tcv-top-right">'
             + '<div class="tcv-profile">'
             +   '<button class="tcv-avatar" id="tcvAvatarBtn" aria-haspopup="true" aria-expanded="false">' + initial + '</button>'
             +   '<div class="tcv-profile-menu">'
@@ -83,7 +86,16 @@
             +     '<a class="tcv-pf-link" href="#" id="tcvProfileLogout">Log out</a>'
             +   '</div>'
             + '</div>'
+            + '</div>'
+            : '<div class="tcv-top-right tcv-top-guest">'
+            + '<a class="tcv-guest-login" href="/login?next=' + nextUrl() + '">Log in</a>'
+            + '<a class="tcv-guest-signup" href="/signup?next=' + nextUrl() + '">Get Started</a>'
             + '</div>';
+
+        top.innerHTML =
+            '<button class="tcv-burger" id="tcvBurger" aria-label="Toggle menu" title="Collapse menu">☰</button>'
+            + '<a class="tcv-top-logo" href="' + (user ? "/dashboard" : "/") + '"><img src="/static/logo6.png" alt="theTailorCV"></a>'
+            + topRight;
 
         // Slim icon rail with hover tooltips
         var items = LINKS.map(function (l) {
@@ -95,11 +107,16 @@
         var rail = document.createElement("aside");
         rail.className = "tcv-rail";
         rail.id = "tcvRail";
+        var railFoot = user
+            ? '<div class="tcv-rail-foot"><a class="tcv-rail-link" href="#" id="tcvLogout" aria-label="Logout">'
+                + '<span class="tcv-rail-ic">' + IC.out + '</span><span class="tcv-rail-tip">Logout</span></a></div>'
+            : '<div class="tcv-rail-foot"><a class="tcv-rail-link" href="/login?next=' + nextUrl() + '" aria-label="Log in">'
+                + '<span class="tcv-rail-ic">' + IC.out + '</span><span class="tcv-rail-tip">Log in</span></a></div>';
+
         rail.innerHTML =
             '<button class="tcv-rail-close" id="tcvRailClose" aria-label="Close menu" title="Close">&times;</button>'
             + '<nav class="tcv-rail-nav">' + items + '</nav>'
-            + '<div class="tcv-rail-foot"><a class="tcv-rail-link" href="#" id="tcvLogout" aria-label="Logout">'
-            + '<span class="tcv-rail-ic">' + IC.out + '</span><span class="tcv-rail-tip">Logout</span></a></div>';
+            + railFoot;
 
         var backdrop = document.createElement("div");
         backdrop.className = "tcv-side-backdrop";
@@ -131,17 +148,19 @@
             backdrop.classList.remove("open");
         });
 
-        function doLogout(e) {
-            e.preventDefault();
-            fetch("/logout", { method: "POST" }).then(function () {
-                try { if (window.TailorCVAuth) window.TailorCVAuth.clearUser(); } catch (e) {}
-                window.location.href = "/login";
-            }).catch(function () { window.location.href = "/login"; });
+        if (user) {
+            function doLogout(e) {
+                e.preventDefault();
+                fetch("/logout", { method: "POST" }).then(function () {
+                    try { if (window.TailorCVAuth) window.TailorCVAuth.clearUser(); } catch (e) {}
+                    window.location.href = "/login";
+                }).catch(function () { window.location.href = "/login"; });
+            }
+            var logout = document.getElementById("tcvLogout");
+            if (logout) logout.addEventListener("click", doLogout);
+            var pLogout = document.getElementById("tcvProfileLogout");
+            if (pLogout) pLogout.addEventListener("click", doLogout);
         }
-        var logout = document.getElementById("tcvLogout");
-        if (logout) logout.addEventListener("click", doLogout);
-        var pLogout = document.getElementById("tcvProfileLogout");
-        if (pLogout) pLogout.addEventListener("click", doLogout);
     }
 
     function applyProStatus(isPro) {
@@ -186,6 +205,6 @@
             .catch(function () {});
     }
 
-    if (document.body) { build(); fetchProStatus(); }
-    else document.addEventListener("DOMContentLoaded", function () { build(); fetchProStatus(); });
+    if (document.body) { build(); if (user) fetchProStatus(); }
+    else document.addEventListener("DOMContentLoaded", function () { build(); if (user) fetchProStatus(); });
 })();
