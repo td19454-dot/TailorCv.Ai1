@@ -1,8 +1,8 @@
 /* ───────────────────────────────────────────────────────────────────────────
-   Logged-in APP SHELL — top bar (76px) + slim icon rail (64px), Jobscan-style.
-   app_shell.js adds `tcv-app` to <html> for a logged-in user on a tool page and
-   injects the top bar + icon rail. Marketing navbar/footer are hidden and content
-   is shifted. Marketing pages / logged-out visitors never get the class.
+   APP SHELL — top bar (76px) + slim icon rail (64px), Jobscan-style.
+   app_shell.js adds `tcv-app` on tool pages for logged-in and guest users.
+   Marketing navbar/footer are hidden and content is shifted. Guests see Log in /
+   Get Started in the top bar instead of the profile avatar.
    ─────────────────────────────────────────────────────────────────────────── */
 
 html.tcv-app .navbar { display: none !important; }
@@ -39,6 +39,27 @@ html.tcv-app header.navbar + * { padding-top: 16px !important; margin-top: 0 !im
 .tcv-top-logo { display: inline-flex; align-items: center; text-decoration: none; height: 76px; overflow: hidden; }
 .tcv-top-logo img { height: 350px; width: 400px; display: block; object-fit: contain; }
 .tcv-top-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+
+/* Guest auth actions — mirror logged-in top bar placement */
+.tcv-top-guest { gap: 10px; }
+.tcv-guest-login {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 8px 14px; border-radius: 10px;
+    border: 1px solid rgba(99, 130, 200, 0.35);
+    background: rgba(255, 255, 255, 0.04);
+    color: #dbe6ff; font-size: 0.88rem; font-weight: 700;
+    text-decoration: none; transition: background .15s, border-color .15s;
+}
+.tcv-guest-login:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(147, 197, 253, 0.5); color: #fff; }
+.tcv-guest-signup {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 8px 16px; border-radius: 10px;
+    background: linear-gradient(135deg, #3392ff, #6d28d9);
+    color: #fff; font-size: 0.88rem; font-weight: 700;
+    text-decoration: none; box-shadow: 0 4px 14px rgba(51, 146, 255, 0.35);
+    transition: opacity .15s, transform .15s;
+}
+.tcv-guest-signup:hover { opacity: 0.92; transform: translateY(-1px); color: #fff; }
 
 /* Profile avatar + dropdown menu */
 .tcv-profile { position: relative; }
