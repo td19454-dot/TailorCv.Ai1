@@ -1,5 +1,5 @@
----
-title: Resume Contact Section — What to Include and What to Leave Out (2026)
+﻿---
+title: Resume Contact Section - What to Include and What to Leave Out (2026)
 description: A complete guide to the resume contact section. Learn exactly what information to include, what to exclude, how to format your contact details, and common mistakes to avoid.
 date: 2026-06-06
 author: TailorCV Team
@@ -19,7 +19,7 @@ For complete resume structure, read [the anatomy of a perfect resume](https://th
 ## What to Include in Your Resume Contact Section
 
 ### 1. Full Name
-Your name should be the largest text on the page — 18–24pt, bold. This is the anchor of your resume. Use the same version of your name everywhere: resume, LinkedIn, portfolio, job application form.
+Your name should be the largest text on the page - 18-24pt, bold. This is the anchor of your resume. Use the same version of your name everywhere: resume, LinkedIn, portfolio, job application form.
 
 Do not use nicknames unless they are the name you exclusively use professionally.
 
@@ -29,7 +29,7 @@ Your email is the most-used contact method in hiring. Rules:
 - Avoid unprofessional addresses: **partytime99@**, **coolkid2003@**, **gamerguy@**
 - Avoid old institutional addresses you no longer monitor (university address after graduation)
 - Gmail, Outlook, and ProtonMail are all professional choices
-- Avoid Yahoo or Hotmail — they signal you haven't updated your setup in years
+- Avoid Yahoo or Hotmail - they signal you haven't updated your setup in years
 
 ### 3. Phone Number
 - Include a direct mobile number
@@ -49,9 +49,9 @@ If you are relocating or open to remote roles, add "Open to remote" or "Relocati
 ### 5. LinkedIn Profile URL
 LinkedIn is expected by most professional recruiters. Include it if your profile is up to date and polished.
 
-**Format:** Customize your LinkedIn URL to remove the random numbers (linkedin.com/in/yourname). Do this in LinkedIn settings → Edit public profile → Custom URL.
+**Format:** Customize your LinkedIn URL to remove the random numbers (linkedin.com/in/yourname). Do this in LinkedIn settings -> Edit public profile -> Custom URL.
 
-Ensure your LinkedIn profile is consistent with your resume — different job dates or missing positions create red flags. Read [how to use LinkedIn for job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and [LinkedIn profile optimization guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide).
+Ensure your LinkedIn profile is consistent with your resume - different job dates or missing positions create red flags. Read [how to use LinkedIn for job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and [LinkedIn profile optimization guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide).
 
 ### 6. GitHub (For Technical Roles)
 For software engineers, data scientists, DevOps, and other technical roles, a GitHub link is expected and valuable. Only include it if:
@@ -85,13 +85,13 @@ Not required and invites potential bias. Leave out unless legally required for t
 ### Photo
 In the **US, Canada, and UK**, do not include a photo. It invites conscious or unconscious bias and is not expected. This is covered in detail in [should you put a photo on your resume](https://thetailorcv.com/blog/photo-on-resume).
 
-Some European and Asian countries do expect a photo — follow the convention for the country and role you are applying to.
+Some European and Asian countries do expect a photo - follow the convention for the country and role you are applying to.
 
 ### Social Media (Unless Relevant)
 Do not include personal Instagram, Twitter/X, Facebook, or TikTok unless your social media is your professional portfolio (e.g., you are a social media manager showcasing your own work).
 
 ### Unprofessional or Outdated Emails
-As mentioned above — if your email address includes a birth year, a nickname, or anything unprofessional, create a new one.
+As mentioned above - if your email address includes a birth year, a nickname, or anything unprofessional, create a new one.
 
 ---
 
@@ -111,10 +111,10 @@ john.smith@gmail.com | +1 (555) 123-4567 | Austin, TX | linkedin.com/in/johnsmit
 Or stacked in two lines for a cleaner look at smaller sizes.
 
 ### Separator Characters
-Use | (pipe) or • (bullet) to separate contact items on the same line.
+Use | (pipe) or - (bullet) to separate contact items on the same line.
 
 ### Font Size
-Contact info is typically slightly smaller than your name: 10–11pt for contact details, 18–24pt for your name.
+Contact info is typically slightly smaller than your name: 10-11pt for contact details, 18-24pt for your name.
 
 ---
 
@@ -160,8 +160,14 @@ Images are invisible to ATS. Text only.
 
 ---
 
-## Conclusion
+## Make This Practical
 
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
 Your resume contact section should include your full name, professional email, phone number, city/state, LinkedIn URL, and (for relevant roles) GitHub or portfolio URL. Leave out your full address, date of birth, photo (in most countries), and personal social media.
 
-Format it cleanly in the main document body — never in a Word header or inside a graphic. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) to get this right automatically, and verify the contact info parses correctly with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+Format it cleanly in the main document body - never in a Word header or inside a graphic. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) to get this right automatically, and verify the contact info parses correctly with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+

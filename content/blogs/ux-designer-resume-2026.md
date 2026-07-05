@@ -1,5 +1,5 @@
----
-title: UX Designer Resume 2026 — Complete Guide with Examples and Portfolio Tips
+﻿---
+title: UX Designer Resume 2026 - Complete Guide with Examples and Portfolio Tips
 description: Write a UX designer resume in 2026 with the right ATS keywords, portfolio structure, design process skills, and bullet points that prove user impact.
 date: 2026-06-01
 author: TailorCV Team
@@ -10,9 +10,9 @@ slug: ux-designer-resume-2026
 keywords: UX designer resume, UX resume 2026, product designer resume, Figma resume, UX ATS keywords, UI UX resume, design portfolio resume
 ---
 
-A UX designer resume in 2026 must balance design craft with business impact. Companies do not hire designers to make things beautiful — they hire designers to make things easy, useful, and effective for real users. Your resume needs to prove that your design decisions improved measurable outcomes: task completion rates, conversion rates, user satisfaction scores, or support ticket volumes.
+A UX designer resume in 2026 must balance design craft with business impact. Companies do not hire designers to make things beautiful - they hire designers to make things easy, useful, and effective for real users. Your resume needs to prove that your design decisions improved measurable outcomes: task completion rates, conversion rates, user satisfaction scores, or support ticket volumes.
 
-The UX job market is more competitive than it has ever been. Design tools have become easier to learn, which means more people claim UX skills. What separates strong candidates is evidence — a clear design process, research discipline, cross-functional collaboration, and quantified impact.
+The UX job market is more competitive than it has ever been. Design tools have become easier to learn, which means more people claim UX skills. What separates strong candidates is evidence - a clear design process, research discipline, cross-functional collaboration, and quantified impact.
 
 Before applying, use the [ATS score checker](https://www.thetailorcv.com/solutions) to compare your resume against the job description. Use [clean resume templates](https://www.thetailorcv.com/templates) and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) to ensure your resume passes parsing before a human reads it.
 
@@ -28,7 +28,7 @@ Before applying, use the [ATS score checker](https://www.thetailorcv.com/solutio
 6. Education
 7. Certifications
 
-One page is preferred. Two pages are acceptable for senior designers with leadership, design systems, or research ops experience. The portfolio link is not optional — it is your primary evidence.
+One page is preferred. Two pages are acceptable for senior designers with leadership, design systems, or research ops experience. The portfolio link is not optional - it is your primary evidence.
 
 ---
 
@@ -102,7 +102,7 @@ Designed / Led / Conducted + [design artifact or research] + [context] + [user o
 ### Strong Bullet Points
 
 - Led end-to-end redesign of a 12-step enterprise onboarding flow, reducing new user time-to-first-value from 11 days to 3 days and increasing 14-day activation from 41% to 67%.
-- Conducted 24 usability tests on a mobile checkout flow and identified 6 critical friction points — implementing fixes reduced checkout abandonment from 71% to 53%.
+- Conducted 24 usability tests on a mobile checkout flow and identified 6 critical friction points - implementing fixes reduced checkout abandonment from 71% to 53%.
 - Designed a component library of 80+ reusable Figma components with design tokens synced to the engineering design system, reducing design-to-development handoff time by 55%.
 - Ran a tree testing study with 200 participants to diagnose navigation failures in a SaaS app, leading to a restructured IA that improved task success rate from 52% to 84%.
 - Collaborated with 4 engineering teams on a mobile app redesign using FigJam workshops, delivering prototypes 3 weeks earlier than the previous release cycle.
@@ -126,12 +126,12 @@ HealthTech Platform | Jan 2023 - Present
 
 Each portfolio case study should cover:
 
-1. Problem statement — what user problem were you solving?
-2. Research — how did you understand users and the problem?
-3. Insights — what did you learn?
-4. Design process — sketches, wireframes, iterations
-5. Final design — prototype or live screenshots
-6. Outcome — what improved?
+1. Problem statement - what user problem were you solving?
+2. Research - how did you understand users and the problem?
+3. Insights - what did you learn?
+4. Design process - sketches, wireframes, iterations
+5. Final design - prototype or live screenshots
+6. Outcome - what improved?
 
 Strong case study outcomes to mention:
 - Task completion rate increase
@@ -178,10 +178,16 @@ In product design roles, thinking process and business impact matter as much as 
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 - [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
-- [Marketing Manager Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/marketing-manager-resume-2026)
+- [Marketing Manager Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/marketing-manager-resume-2026)
+
+## Make This Practical
+
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+
+Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 
 ## Conclusion
-
 A strong UX designer resume in 2026 connects your design process to measurable user and business outcomes. Show your research methods, your design system contributions, and the metrics that changed because of your work.
 
 Test your resume against the job description with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Once your resume is ready, prepare for portfolio walkthroughs and case study interviews using the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+

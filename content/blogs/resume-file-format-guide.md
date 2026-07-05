@@ -1,5 +1,5 @@
----
-title: Resume File Format Guide — PDF vs Word and How to Name Your Resume
+﻿---
+title: Resume File Format Guide - PDF vs Word and How to Name Your Resume
 description: Should you submit your resume as a PDF or Word document? Learn when to use each format, why it matters for ATS, and the best file naming conventions for professional job applications.
 date: 2026-06-06
 author: TailorCV Team
@@ -10,7 +10,7 @@ slug: resume-file-format-guide
 keywords: resume file format, PDF vs Word resume, should resume be PDF or Word, how to name resume file, resume file name, docx vs pdf resume, resume format 2026
 ---
 
-You have written a great resume. Now — should you save it as a PDF or a Word document? And what should you name the file? These seem like trivial questions, but the wrong choice can cause formatting to break, ATS systems to parse incorrectly, or your file to get lost in a recruiter's inbox.
+You have written a great resume. Now - should you save it as a PDF or a Word document? And what should you name the file? These seem like trivial questions, but the wrong choice can cause formatting to break, ATS systems to parse incorrectly, or your file to get lost in a recruiter's inbox.
 
 This guide gives you clear rules for file format and naming so your resume reaches every reviewer the way you intended it to look.
 
@@ -29,7 +29,7 @@ Submit your resume as a PDF unless the job posting specifically requests a Word 
 ## Why PDF is the Standard Choice
 
 ### Formatting Is Preserved
-A PDF looks identical on every device, operating system, and screen. The recruiter sees exactly what you designed — fonts, spacing, line breaks, and layout stay intact.
+A PDF looks identical on every device, operating system, and screen. The recruiter sees exactly what you designed - fonts, spacing, line breaks, and layout stay intact.
 
 A Word document renders differently on different computers. Your carefully formatted resume can look completely different on the recruiter's machine if they have a different version of Word, different fonts installed, or different default settings.
 
@@ -44,13 +44,13 @@ PDF has been the professional resume submission standard for over a decade. Subm
 ## When Word (.docx) Is the Right Choice
 
 ### The Job Posting Explicitly Requests Word
-Some employers, HR systems, or staffing agencies explicitly ask for a .docx file. Follow instructions — if they say .docx, send .docx.
+Some employers, HR systems, or staffing agencies explicitly ask for a .docx file. Follow instructions - if they say .docx, send .docx.
 
 ### Recruiting Agencies and Staffing Firms
 Recruiting agencies sometimes add their own branding or notes to your resume before forwarding it to clients. They need an editable file. If a recruiter asks for a Word version, provide it.
 
 ### Some Older ATS Systems
-A small number of older ATS systems parse Word documents better than PDFs. This was more relevant in the early 2010s. Most modern ATS handles PDF well — but if you know the company uses a specific older system, a .docx may occasionally be the safer choice.
+A small number of older ATS systems parse Word documents better than PDFs. This was more relevant in the early 2010s. Most modern ATS handles PDF well - but if you know the company uses a specific older system, a .docx may occasionally be the safer choice.
 
 ### Internal Applications
 When applying internally within your company (through internal portals or emailing HR directly), either format is typically fine.
@@ -117,7 +117,7 @@ This is useful if you are tailoring resumes per role and want to keep track of v
 
 | Bad File Name | Problem |
 |---|---|
-| `Resume.pdf` | Untraceable — whose resume? |
+| `Resume.pdf` | Untraceable - whose resume? |
 | `resume_final_v3.pdf` | Unprofessional, suggests chaos |
 | `MY RESUME (1).pdf` | Generic and unprofessional |
 | `Document1.pdf` | Signals you didn't rename it |
@@ -128,9 +128,9 @@ This is useful if you are tailoring resumes per role and want to keep track of v
 
 ## Version Control: Managing Multiple Resume Versions
 
-If you tailor your resume for different roles (which you should — read [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)), maintain a clear naming system:
+If you tailor your resume for different roles (which you should - read [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)), maintain a clear naming system:
 
-**Master resume**: `John-Smith-Resume-Master.pdf` — full version, never submitted directly
+**Master resume**: `John-Smith-Resume-Master.pdf` - full version, never submitted directly
 
 **Tailored versions**:
 - `John-Smith-Software-Engineer-Resume.pdf`
@@ -143,18 +143,18 @@ This prevents accidentally submitting the wrong version and keeps your job searc
 ## Exporting PDF From Different Tools
 
 ### Microsoft Word
-File → Save As → choose "PDF" from the format dropdown
+File -> Save As -> choose "PDF" from the format dropdown
 
-Or: File → Export → Create PDF/XPS
+Or: File -> Export -> Create PDF/XPS
 
 ### Google Docs
-File → Download → PDF Document (.pdf)
+File -> Download -> PDF Document (.pdf)
 
 ### Apple Pages
-File → Export To → PDF
+File -> Export To -> PDF
 
-### Canva (Design tool — use with caution for ATS)
-File → Download → PDF Standard
+### Canva (Design tool - use with caution for ATS)
+File -> Download -> PDF Standard
 
 Note: Design-heavy tools like Canva may produce PDFs with text embedded as graphics in some elements, causing ATS parsing issues. Always verify with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) after exporting from design tools.
 
@@ -183,8 +183,14 @@ Note: Design-heavy tools like Canva may produce PDFs with text embedded as graph
 
 ---
 
-## Conclusion
+## Make This Practical
 
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
 Submit your resume as PDF unless the employer asks for Word. Name your file clearly: FirstName-LastName-Resume.pdf. Avoid generic names that get lost in a recruiter's downloads folder.
 
-Before submitting any version, use an [ATS-friendly template](https://www.thetailorcv.com/templates) as your base and run the PDF through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to confirm it parses cleanly. Small technical details like file format and naming signal professionalism — and cost you nothing to get right.
+Before submitting any version, use an [ATS-friendly template](https://www.thetailorcv.com/templates) as your base and run the PDF through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to confirm it parses cleanly. Small technical details like file format and naming signal professionalism - and cost you nothing to get right.
+
