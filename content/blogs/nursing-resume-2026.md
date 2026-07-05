@@ -1,5 +1,5 @@
----
-title: Nursing Resume 2026 — Complete Guide with Examples for RN and New Grad Nurses
+﻿---
+title: Nursing Resume 2026 - Complete Guide with Examples for RN and New Grad Nurses
 description: Write a nursing resume in 2026 with the right ATS keywords, clinical skills, certifications, and bullet points that get interviews at hospitals and clinics.
 date: 2026-06-01
 author: TailorCV Team
@@ -10,7 +10,7 @@ slug: nursing-resume-2026
 keywords: nursing resume, nursing resume 2026, RN resume, registered nurse resume, new grad nurse resume, healthcare resume, nursing ATS keywords, ICU nurse resume
 ---
 
-A nursing resume in 2026 needs to show your clinical competencies, patient care outcomes, specialization, and certifications clearly and quickly. Nurse managers reviewing applications spend very little time on each resume — yours needs to communicate your unit experience, skills, and licensure within the first scan.
+A nursing resume in 2026 needs to show your clinical competencies, patient care outcomes, specialization, and certifications clearly and quickly. Nurse managers reviewing applications spend very little time on each resume - yours needs to communicate your unit experience, skills, and licensure within the first scan.
 
 The nursing job market remains one of the strongest in healthcare worldwide, but competition for desirable positions in top hospitals, ICUs, and specialized units is real. A well-structured, keyword-rich nursing resume can significantly increase your chances of getting an interview.
 
@@ -63,12 +63,12 @@ New Graduate Registered Nurse (BSN) with clinical rotations in medical-surgical,
 
 ## Nursing Certifications and Licensure Section
 
-List these prominently — not buried at the bottom.
+List these prominently - not buried at the bottom.
 
-Registered Nurse (RN) — Maharashtra Nursing Council | Valid through Dec 2026
-Basic Life Support (BLS) — American Heart Association | Valid through 2027
-Advanced Cardiac Life Support (ACLS) — AHA | Valid through 2027
-Critical Care Registered Nurse (CCRN) — AACN | Valid through 2028
+Registered Nurse (RN) - Maharashtra Nursing Council | Valid through Dec 2026
+Basic Life Support (BLS) - American Heart Association | Valid through 2027
+Advanced Cardiac Life Support (ACLS) - AHA | Valid through 2027
+Critical Care Registered Nurse (CCRN) - AACN | Valid through 2028
 
 ---
 
@@ -128,7 +128,7 @@ Provided / Managed / Assessed / Administered + [clinical action] + [patient popu
 
 ### Strong Bullet Points
 
-- Managed care for 4–6 critically ill patients per shift in a 24-bed medical ICU, including ventilated patients, sepsis protocols, and post-cardiac arrest care.
+- Managed care for 4-6 critically ill patients per shift in a 24-bed medical ICU, including ventilated patients, sepsis protocols, and post-cardiac arrest care.
 - Maintained a medication error-free record over 4 years across high-alert medications including heparin infusions, vasopressors, and sedation protocols.
 - Identified early signs of septic shock in 3 patients during routine assessment and escalated to rapid response team, contributing to timely intervention and ICU admission.
 - Preceptored 8 new graduate nurses over 18 months, guiding them through ICU orientation including ventilator management, hemodynamic monitoring, and critical documentation.
@@ -138,13 +138,13 @@ Provided / Managed / Assessed / Administered + [clinical action] + [patient popu
 
 ## Nursing Resume Example
 
-Staff Nurse — Medical ICU
+Staff Nurse - Medical ICU
 City General Hospital | Jan 2022 - Present
 
-- Provided direct nursing care for 4–6 adult ICU patients per shift, including mechanical ventilation, CRRT, and multi-vasopressor management.
+- Provided direct nursing care for 4-6 adult ICU patients per shift, including mechanical ventilation, CRRT, and multi-vasopressor management.
 - Administered IV medications including vasopressors, sedatives, analgesics, and antiarrhythmics with zero medication errors over 3 years.
 - Responded to 12+ rapid response calls per month as primary ICU nurse, stabilizing hemodynamically unstable patients before physician arrival.
-- Served as charge nurse 2–3 shifts per week, coordinating staffing, bed management, and patient flow across a 20-bed unit.
+- Served as charge nurse 2-3 shifts per week, coordinating staffing, bed management, and patient flow across a 20-bed unit.
 - Led monthly unit education sessions on sepsis bundle compliance, contributing to a 28% improvement in bundle adherence over 6 months.
 
 ---
@@ -162,7 +162,7 @@ New graduate nurses should highlight:
 
 Example new graduate bullet:
 
-During 200-hour medical-surgical clinical rotation at Apollo Hospital, assessed and cared for 3–4 patients per shift including post-operative care, wound management, and IV therapy under preceptor supervision.
+During 200-hour medical-surgical clinical rotation at Apollo Hospital, assessed and cared for 3-4 patients per shift including post-operative care, wound management, and IV therapy under preceptor supervision.
 
 ---
 
@@ -170,7 +170,7 @@ During 200-hour medical-surgical clinical rotation at Apollo Hospital, assessed 
 
 ### Mistake 1: Not listing certifications prominently
 
-BLS, ACLS, CCRN, PALS — these are screening criteria for many positions. Put them near the top, not buried in the last section.
+BLS, ACLS, CCRN, PALS - these are screening criteria for many positions. Put them near the top, not buried in the last section.
 
 ### Mistake 2: Generic duties description
 
@@ -178,7 +178,7 @@ BLS, ACLS, CCRN, PALS — these are screening criteria for many positions. Put t
 
 ### Mistake 3: No patient outcomes or quality data
 
-If you have data — CLABSI rates, patient satisfaction scores, medication error records, fall prevention results — use them. Healthcare employers love data.
+If you have data - CLABSI rates, patient satisfaction scores, medication error records, fall prevention results - use them. Healthcare employers love data.
 
 ### Mistake 4: Forgetting EMR systems
 
@@ -210,11 +210,17 @@ This guide draws on nursing career context from the [Bureau of Labor Statistics 
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 - [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
-- [Customer Service Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/customer-service-resume-2026)
-- [Cybersecurity Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
+- [Customer Service Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/customer-service-resume-2026)
+- [Cybersecurity Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
+
+## Make This Practical
+
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+
+A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 
 ## Conclusion
-
 A strong nursing resume in 2026 is clinically specific, certification-forward, and outcome-focused. Show your unit experience, patient population, key procedures, and any quality improvement contributions.
 
 Before applying, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to check how well your clinical keywords match the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) to ensure your format does not lose content during parsing. For interview preparation, read the [interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) for healthcare-specific tips.
+

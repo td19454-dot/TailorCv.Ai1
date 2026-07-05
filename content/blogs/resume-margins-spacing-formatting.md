@@ -1,5 +1,5 @@
----
-title: Resume Margins, Spacing and Layout — The Complete Format Guide for 2026
+﻿---
+title: Resume Margins, Spacing and Layout - The Complete Format Guide for 2026
 description: The definitive guide to resume margins, line spacing, white space, and page layout. Learn the exact measurements for a professional, ATS-compatible resume that is easy to read.
 date: 2026-06-06
 author: TailorCV Team
@@ -10,7 +10,7 @@ slug: resume-margins-spacing-formatting
 keywords: resume margins, resume spacing, resume layout, resume formatting guide, resume line spacing, resume white space, how to format a resume 2026, resume page setup
 ---
 
-Resume formatting is not glamorous — but it is the difference between a resume that gets read and one that gets skipped. Correct margins, spacing, and layout create a document that looks professional, scans easily for recruiters, and parses correctly for ATS systems.
+Resume formatting is not glamorous - but it is the difference between a resume that gets read and one that gets skipped. Correct margins, spacing, and layout create a document that looks professional, scans easily for recruiters, and parses correctly for ATS systems.
 
 This guide covers the exact measurements and formatting rules for a polished, readable resume in 2026.
 
@@ -21,8 +21,8 @@ Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) tha
 ## Resume Margins: The Exact Numbers
 
 ### Standard Margins (Recommended)
-- **Top and bottom:** 0.75–1 inch
-- **Left and right:** 0.75–1 inch
+- **Top and bottom:** 0.75-1 inch
+- **Left and right:** 0.75-1 inch
 
 This creates a balanced, professional-looking document with adequate breathing room.
 
@@ -31,27 +31,27 @@ This creates a balanced, professional-looking document with adequate breathing r
 
 Do not go below 0.5 inch on any side. Margins smaller than this make the resume look cramped, reduce readability, and can clip text during printing or PDF conversion.
 
-### When to Use Tighter Margins (0.5–0.75 inch)
-Only if you genuinely have more high-value content than fits at 1 inch margins. Do not tighten margins to avoid trimming mediocre content — cut the content instead. Read [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) for what to remove.
+### When to Use Tighter Margins (0.5-0.75 inch)
+Only if you genuinely have more high-value content than fits at 1 inch margins. Do not tighten margins to avoid trimming mediocre content - cut the content instead. Read [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) for what to remove.
 
 ### When to Use Wider Margins (1 inch)
-When you have less content — for instance, a fresher or early-career candidate. Wider margins keep the resume from looking sparse while maintaining a professional appearance.
+When you have less content - for instance, a fresher or early-career candidate. Wider margins keep the resume from looking sparse while maintaining a professional appearance.
 
 ---
 
 ## Line Spacing: Readability Rules
 
 ### Between Lines in Paragraphs and Bullets
-- **Recommended:** 1.0–1.15
+- **Recommended:** 1.0-1.15
 - **Acceptable:** Up to 1.2
 
 Single spacing (1.0) is the standard for bullet points and text lines. Line spacing above 1.2 wastes space and can push content to a second page unnecessarily.
 
 ### Between Sections
-Add 6–12pt of space between sections (before each section header). This creates clear visual breaks without the cost of a full blank line.
+Add 6-12pt of space between sections (before each section header). This creates clear visual breaks without the cost of a full blank line.
 
 ### After Section Headers
-Add 2–4pt of space after a section header before the first item under it. This creates hierarchy between the header and content.
+Add 2-4pt of space after a section header before the first item under it. This creates hierarchy between the header and content.
 
 ---
 
@@ -65,7 +65,7 @@ White space is the empty space on your resume. Used correctly, it:
 
 **White space rules:**
 - Never fill every inch of white space just to look "full"
-- Let bullet points breathe — do not stack 8+ bullets without visual breaks
+- Let bullet points breathe - do not stack 8+ bullets without visual breaks
 - Use consistent spacing between every section
 - Maintain equal margins on all sides
 
@@ -79,7 +79,7 @@ A clean, well-spaced one-page resume is vastly preferable to a cramped two-page 
 
 A single-column layout is:
 - **ATS-compatible**: ATS reads left to right, top to bottom. Single column parses reliably.
-- **Recruiter-preferred**: The natural [scan pattern recruiters use](https://thetailorcv.com/blog/how-recruiters-read-resumes) is a top-to-bottom F-shape — single column supports this perfectly.
+- **Recruiter-preferred**: The natural [scan pattern recruiters use](https://thetailorcv.com/blog/how-recruiters-read-resumes) is a top-to-bottom F-shape - single column supports this perfectly.
 - **Printer-friendly**: No alignment issues across pages
 
 ### Two Column: Avoid for Most Uses
@@ -99,11 +99,11 @@ This is one of the most common ATS resume formatting mistakes. Read [10 ATS resu
 
 Create visual hierarchy through consistent spacing:
 
-1. **Resume name** — Largest text on the page (18–24pt), followed by contact info
-2. **Section headers** — Bold, consistent size (12–14pt or same as body, bold), with clear space above and below
-3. **Role headers** (Company | Title | Dates) — Bold for title, consistent formatting
-4. **Bullet points** — Consistent indent, consistent style, 1.0 line spacing
-5. **Sub-bullets** (if needed) — Use sparingly, further indented
+1. **Resume name** - Largest text on the page (18-24pt), followed by contact info
+2. **Section headers** - Bold, consistent size (12-14pt or same as body, bold), with clear space above and below
+3. **Role headers** (Company | Title | Dates) - Bold for title, consistent formatting
+4. **Bullet points** - Consistent indent, consistent style, 1.0 line spacing
+5. **Sub-bullets** (if needed) - Use sparingly, further indented
 
 Never mix indentation styles or spacing patterns within the same section.
 
@@ -114,12 +114,12 @@ Never mix indentation styles or spacing patterns within the same section.
 The biggest formatting mistake is inconsistency. Small inconsistencies signal carelessness to recruiters and can confuse ATS parsing.
 
 **Dates:** Use the same format throughout.
-- Correct: "Jan 2021 – Mar 2023" or "January 2021 – March 2023" or "01/2021 – 03/2023"
+- Correct: "Jan 2021 - Mar 2023" or "January 2021 - March 2023" or "01/2021 - 03/2023"
 - Wrong: mixing formats in the same document
 
-**Bullets:** Use the same bullet style throughout (•, –, or plain dash). Do not mix bullets and circles.
+**Bullets:** Use the same bullet style throughout (-, -, or plain dash). Do not mix bullets and circles.
 
-**Bold and italics:** Use consistently — e.g., company name always bold, role always italic, or always the reverse. Pick one system and stick to it.
+**Bold and italics:** Use consistently - e.g., company name always bold, role always italic, or always the reverse. Pick one system and stick to it.
 
 **Alignment:** Left-align all text. Dates can be right-aligned if your template uses that style, but it must be consistent for every role.
 
@@ -129,9 +129,9 @@ The biggest formatting mistake is inconsistency. Small inconsistencies signal ca
 
 Before submitting your resume, verify:
 
-- [ ] Margins are 0.5–1 inch on all sides
-- [ ] Body font is 10–11pt (never below 10pt)
-- [ ] Line spacing is 1.0–1.15
+- [ ] Margins are 0.5-1 inch on all sides
+- [ ] Body font is 10-11pt (never below 10pt)
+- [ ] Line spacing is 1.0-1.15
 - [ ] Single-column layout
 - [ ] Consistent date formatting throughout
 - [ ] Consistent bullet style throughout
@@ -155,7 +155,7 @@ Resumes with less than 0.5 inch margins look unprofessional and are harder to re
 Graphics and tables are invisible to ATS. They confuse parsing and look unnecessary. Use plain text and spacing instead.
 
 ### Mistake 4: Inconsistent formatting
-Different date formats, mixed bullet types, varying spacing — all signal a lack of attention to detail.
+Different date formats, mixed bullet types, varying spacing - all signal a lack of attention to detail.
 
 ### Mistake 5: Two-column layout
 The ATS and recruiter scan pattern issues with two-column layouts make them a risky choice in most applications.
@@ -176,8 +176,14 @@ The ATS and recruiter scan pattern issues with two-column layouts make them a ri
 
 ---
 
-## Conclusion
+## Make This Practical
 
-Standard resume formatting in 2026: 0.75–1 inch margins, 1.0–1.15 line spacing, single-column layout, 10–11pt body font. Consistency across every element — dates, bullets, bold usage — signals professionalism and ensures ATS can parse your document correctly.
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
+Standard resume formatting in 2026: 0.75-1 inch margins, 1.0-1.15 line spacing, single-column layout, 10-11pt body font. Consistency across every element - dates, bullets, bold usage - signals professionalism and ensures ATS can parse your document correctly.
 
 The fastest path to perfect formatting is starting from an [ATS-friendly template](https://www.thetailorcv.com/templates) that has all these settings correct by default. Then verify with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) before every application.
+

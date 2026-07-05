@@ -1,6 +1,6 @@
----
+﻿---
 title: How to List Awards and Achievements on a Resume (With Examples)
-description: Learn where to put awards on a resume, how to frame them effectively, and when a dedicated achievements section helps vs hurts your application — with examples across industries.
+description: Learn where to put awards on a resume, how to frame them effectively, and when a dedicated achievements section helps vs hurts your application - with examples across industries.
 date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Awards, Resume Achievements, Resume Sections, Resume Writing, Career Tips]
@@ -10,7 +10,7 @@ slug: awards-achievements-on-resume
 keywords: awards on resume, achievements on resume, how to list awards resume, resume achievements section, professional awards resume, academic awards resume, accomplishments on resume
 ---
 
-Awards and achievements can significantly strengthen a resume — but only when they are positioned correctly, framed in a way employers care about, and relevant to the role. Knowing where to put them, how to write them, and when a dedicated section helps versus hurts is the difference between impressive and cluttered.
+Awards and achievements can significantly strengthen a resume - but only when they are positioned correctly, framed in a way employers care about, and relevant to the role. Knowing where to put them, how to write them, and when a dedicated section helps versus hurts is the difference between impressive and cluttered.
 
 Before adding achievements, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to check your overall score, and start from an [ATS-friendly template](https://www.thetailorcv.com/templates).
 
@@ -38,12 +38,12 @@ If the award is tied to a specific role or educational institution, integrate it
 **In Work Experience:**
 > "Awarded Employee of the Quarter (Q3 2024) for leading a product launch that acquired 15,000 new users within 30 days"
 
-> "Recognized as Top Sales Performer (2023) — ranked #1 in North America region, closing $3.2M in new contracts"
+> "Recognized as Top Sales Performer (2023) - ranked #1 in North America region, closing $3.2M in new contracts"
 
 **In Education:**
-> "Dean's List — 4 consecutive semesters (GPA: 3.87/4.0)"
+> "Dean's List - 4 consecutive semesters (GPA: 3.87/4.0)"
 
-> "Winner, National Coding Competition 2023 — 1st place out of 850 teams"
+> "Winner, National Coding Competition 2023 - 1st place out of 850 teams"
 
 ### Option 2: A Dedicated Achievements/Awards Section
 
@@ -55,7 +55,7 @@ Create a separate "Awards & Achievements" or "Honors" section when:
 **Example section:**
 
 **Awards & Achievements**
-- Forbes 30 Under 30 — Technology, 2025
+- Forbes 30 Under 30 - Technology, 2025
 - Winner, Y Combinator Startup Hackathon 2024 (out of 400+ teams)
 - ACM Programming Contest Regional Champion, 2022
 - President's Award for Excellence, TechCorp Inc. (2023, 2024)
@@ -104,11 +104,11 @@ An award listed without context is weaker than it could be. Add context that sho
 
 **Weak:** "Received Employee of the Month award"
 
-**Strong:** "Employee of the Month, March 2024 — recognized for leading a 3-week incident response that recovered $2.1M in revenue following a critical database outage"
+**Strong:** "Employee of the Month, March 2024 - recognized for leading a 3-week incident response that recovered $2.1M in revenue following a critical database outage"
 
 **Weak:** "Won hackathon"
 
-**Strong:** "1st place, TechFest 2024 National Hackathon — built an AI-powered accessibility tool in 24 hours, selected best project by a panel of senior engineers from Google, Meta, and Microsoft (out of 320 teams)"
+**Strong:** "1st place, TechFest 2024 National Hackathon - built an AI-powered accessibility tool in 24 hours, selected best project by a panel of senior engineers from Google, Meta, and Microsoft (out of 320 teams)"
 
 ---
 
@@ -124,7 +124,7 @@ Academic awards carry significant weight. List them prominently:
 
 Read [resume with no experience guide](https://thetailorcv.com/blog/resume-with-no-experience) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) for fresher-specific advice.
 
-### Mid-Career Professionals (3–8 Years)
+### Mid-Career Professionals (3-8 Years)
 Transition away from academic awards toward professional ones. Remove high school and minor college awards. Keep any continuing education, industry certification honors, or competition wins.
 
 ### Senior Professionals (8+ Years)
@@ -189,8 +189,14 @@ Test your resume's full ATS score with the [TailorCV checker](https://www.thetai
 
 ---
 
-## Conclusion
+## Make This Practical
 
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
 Awards and achievements belong on a resume when they are relevant, contextual, and framed around impact. Integrate them into work experience and education sections when they are role-specific, or create a dedicated section when you have 3 or more notable recognitions.
 
 Every achievement becomes stronger with context: what it was for, how selective it was, and what you did to earn it. Build your full resume on an [ATS-friendly template](https://www.thetailorcv.com/templates), run it through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions), and use the [mock interview tool](https://thetailorcv.com/interview-prep) to practice explaining your achievements in conversation.
+

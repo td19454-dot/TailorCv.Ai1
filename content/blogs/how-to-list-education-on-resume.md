@@ -1,5 +1,5 @@
----
-title: How to List Education on a Resume in 2026 — Complete Guide with Examples
+﻿---
+title: How to List Education on a Resume in 2026 - Complete Guide with Examples
 description: Learn how to list education on your resume in 2026. Covers formatting, GPA, coursework, placement, and examples for students, graduates, and experienced professionals.
 date: 2026-06-01
 author: TailorCV Team
@@ -10,7 +10,7 @@ slug: how-to-list-education-on-resume
 keywords: how to list education on resume, education on resume 2026, resume education section, where to put education resume, GPA on resume, resume education format
 ---
 
-The education section seems simple, but candidates make surprisingly common mistakes — including the wrong details, placing it incorrectly, or including (or omitting) GPA at the wrong times. How you list education matters more for some candidates (students, freshers) than others (experienced professionals), but everyone should get it right.
+The education section seems simple, but candidates make surprisingly common mistakes - including the wrong details, placing it incorrectly, or including (or omitting) GPA at the wrong times. How you list education matters more for some candidates (students, freshers) than others (experienced professionals), but everyone should get it right.
 
 This guide covers exactly how to list education on your resume for every situation.
 
@@ -25,7 +25,7 @@ Core elements:
 - Institution name
 - Location (city, or city and country)
 - Graduation year (or expected graduation)
-- GPA / CGPA (if strong — see below)
+- GPA / CGPA (if strong - see below)
 - Relevant coursework (for students and freshers)
 - Honors, awards, or distinctions (if applicable)
 
@@ -70,7 +70,7 @@ Once you have several years of relevant work experience, your experience matters
 - You have several years of work experience (experience speaks louder)
 - The role does not care about academic performance
 
-A low GPA listed prominently can hurt you. If your GPA is not strong, simply omit it — listing it is not required.
+A low GPA listed prominently can hurt you. If your GPA is not strong, simply omit it - listing it is not required.
 
 ### Major GPA Option
 
@@ -78,7 +78,7 @@ If your overall GPA is mediocre but your major GPA is strong, you can list the m
 
 ---
 
-## Relevant Coursework — When to Include
+## Relevant Coursework - When to Include
 
 Include relevant coursework if:
 - You are a student or recent graduate
@@ -88,7 +88,7 @@ Include relevant coursework if:
 Example for an entry-level data role:
 "Relevant Coursework: Statistics, Machine Learning, Database Systems, Data Mining, Linear Algebra"
 
-Remove coursework once you have relevant work experience — your job experience replaces the need to list courses.
+Remove coursework once you have relevant work experience - your job experience replaces the need to list courses.
 
 ---
 
@@ -136,7 +136,7 @@ List in reverse chronological order (most recent first). Include both, but keep 
 ### Incomplete Degree
 
 If you started but did not finish a degree, you can list it honestly:
-"Completed 3 years of Bachelor of Science in Physics | University of XYZ | 2019–2022"
+"Completed 3 years of Bachelor of Science in Physics | University of XYZ | 2019-2022"
 Or list relevant coursework completed.
 
 ### Online Degrees and Bootcamps
@@ -196,14 +196,20 @@ Keep degree, institution, and date formatting consistent throughout.
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How to Write a Resume with AI in 2026 — Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
-- [MBA Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
-- [Cover Letter Guide 2026 — How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
+- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
 - [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
 
-## Conclusion
+## Make This Practical
 
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
 List your education clearly: degree, institution, year, and GPA only if strong. Students and freshers should place education near the top with relevant coursework; experienced professionals should keep it concise at the bottom. Remove high school once you have a degree, and omit a weak GPA.
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read [how to list certifications on resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete guidance.
+

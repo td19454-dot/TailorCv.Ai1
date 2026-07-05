@@ -1,4 +1,4 @@
----
+﻿---
 title: Resume Mistakes Every Fresher Makes (And How to Fix Them in 2026)
 description: Discover the biggest resume mistakes every fresher makes and learn how to create an ATS-friendly resume that gets more interviews in 2026.
 date: 2026-05-20
@@ -18,13 +18,13 @@ Landing your first job is exciting, but it can also feel frustrating when you ke
 
 Most freshers assume the problem is lack of experience. In reality, the issue is often the resume itself.
 
-Today’s hiring process is completely different from what it was a few years ago. Recruiters now rely heavily on ATS systems, AI hiring tools, and automated resume screening software to filter candidates before a human even sees the application.
+Today's hiring process is completely different from what it was a few years ago. Recruiters now rely heavily on ATS systems, AI hiring tools, and automated resume screening software to filter candidates before a human even sees the application.
 
 That means even talented candidates get rejected because of simple resume mistakes.
 
-If you’ve been wondering why your applications are not getting responses, this guide will help you understand the biggest resume mistakes every fresher makes and how to fix them effectively.
+If you've been wondering why your applications are not getting responses, this guide will help you understand the biggest resume mistakes every fresher makes and how to fix them effectively.
 
-You’ll also learn:
+You'll also learn:
 - How ATS systems work in 2026
 - What recruiters actually look for
 - How to improve resume visibility
@@ -83,11 +83,11 @@ Sending the same generic resume everywhere dramatically reduces your chances of 
 
 ### Bad Example
 
-“Hardworking graduate seeking opportunities to grow.”
+"Hardworking graduate seeking opportunities to grow."
 
 ### Better Example
 
-“Computer Science graduate skilled in Java, SQL, and REST APIs seeking an entry-level backend developer role.”
+"Computer Science graduate skilled in Java, SQL, and REST APIs seeking an entry-level backend developer role."
 
 The second example:
 - Includes relevant keywords
@@ -136,11 +136,11 @@ Recruiters dislike generic statements because they provide no value.
 
 ### Weak Resume Summary
 
-“Looking for a challenging opportunity to improve my skills.”
+"Looking for a challenging opportunity to improve my skills."
 
 ### Better Resume Summary
 
-“B.Tech Computer Science fresher with hands-on experience in Python, React, and SQL through academic projects and internships.”
+"B.Tech Computer Science fresher with hands-on experience in Python, React, and SQL through academic projects and internships."
 
 This version:
 - Includes technical keywords
@@ -154,7 +154,7 @@ Freshers often include unnecessary personal details.
 
 ### Information You Should Avoid
 
-- Father’s name
+- Father's name
 - Religion
 - Marital status
 - Blood group
@@ -214,7 +214,7 @@ Recruiters want proof.
 
 ### Better Example
 
-“Led a 4-member team project to build an attendance management system using Python and MySQL.”
+"Led a 4-member team project to build an attendance management system using Python and MySQL."
 
 This demonstrates:
 - Leadership
@@ -234,11 +234,11 @@ Unfortunately, many candidates describe projects poorly.
 
 ### Weak Project Description
 
-“Created a website using HTML and CSS.”
+"Created a website using HTML and CSS."
 
 ### Better Project Description
 
-“Developed a responsive e-commerce website using HTML, CSS, JavaScript, and Bootstrap with mobile optimization and user authentication features.”
+"Developed a responsive e-commerce website using HTML, CSS, JavaScript, and Bootstrap with mobile optimization and user authentication features."
 
 The second version sounds:
 - More professional
@@ -269,7 +269,7 @@ These words mean very little without proof.
 
 ### Better Example
 
-“Improved website performance by 30% during final-year optimization project.”
+"Improved website performance by 30% during final-year optimization project."
 
 Numbers make your resume more convincing.
 
@@ -400,9 +400,9 @@ With:
 ### Add Numbers Wherever Possible
 
 Examples:
-- “Improved page speed by 25%”
-- “Analyzed 5,000+ rows of data”
-- “Reduced loading time by 30%”
+- "Improved page speed by 25%"
+- "Analyzed 5,000+ rows of data"
+- "Reduced loading time by 30%"
 
 Metrics improve credibility significantly.
 
@@ -485,7 +485,7 @@ Generic resumes perform poorly in modern hiring systems.
 
 ## Should Freshers Use AI Resume Builders?
 
-Yes — when used properly.
+Yes - when used properly.
 
 AI resume tools can help:
 - Improve ATS compatibility
@@ -562,8 +562,13 @@ Yes. ATS systems can automatically rank resumes lower if they:
 - [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 
-## Conclusion
+## Make This Practical
 
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
 The job market in 2026 is more competitive than ever.
 
 But most freshers still make simple resume mistakes that reduce their chances of getting interviews.
@@ -587,4 +592,5 @@ If you want to improve your resume faster, optimize ATS scores, tailor resumes f
 
 Your resume is often your first impression.
 
-Make sure it works for you — not against you.
+Make sure it works for you - not against you.
+

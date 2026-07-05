@@ -1,6 +1,6 @@
----
-title: The Anatomy of a Perfect Resume — Every Section Explained (2026)
-description: A complete breakdown of every resume section — what to include, where to put it, and how to write each part to maximize your chances of passing ATS and impressing recruiters.
+﻿---
+title: The Anatomy of a Perfect Resume - Every Section Explained (2026)
+description: A complete breakdown of every resume section - what to include, where to put it, and how to write each part to maximize your chances of passing ATS and impressing recruiters.
 date: 2026-06-06
 author: TailorCV Team
 tags: [Resume Sections, Resume Structure, Resume Writing, Resume Basics, ATS Resume]
@@ -10,7 +10,7 @@ slug: anatomy-of-a-resume
 keywords: resume sections, anatomy of a resume, resume structure 2026, what sections to include in resume, resume layout guide, resume parts explained, how to structure a resume
 ---
 
-A resume is more than a list of jobs. It is a structured document with specific sections, each serving a distinct purpose in convincing a hiring manager to call you. Understanding what every section does — and how to write each one — is the foundation of a great resume.
+A resume is more than a list of jobs. It is a structured document with specific sections, each serving a distinct purpose in convincing a hiring manager to call you. Understanding what every section does - and how to write each one - is the foundation of a great resume.
 
 This guide walks through every resume section: mandatory ones you must include, optional ones that can strengthen your application, and sections you should remove entirely.
 
@@ -38,7 +38,7 @@ The order matters. Hiring managers and ATS systems expect the most important and
 Your name and contact details sit at the top of your resume. This section seems obvious, but it is frequently done wrong.
 
 **Include:**
-- Full name (larger font — 16–20pt)
+- Full name (larger font - 16-20pt)
 - Professional email address
 - Phone number
 - City and state/country (not full address)
@@ -50,7 +50,7 @@ Your name and contact details sit at the top of your resume. This section seems 
 - Full street address (security and space waste)
 - Date of birth
 - Marital status or gender
-- A photo (in the US, Canada, UK — it invites bias)
+- A photo (in the US, Canada, UK - it invites bias)
 - Unprofessional email addresses
 
 Read the full [resume contact section guide](https://thetailorcv.com/blog/resume-contact-section) for detailed dos and don'ts.
@@ -59,7 +59,7 @@ Read the full [resume contact section guide](https://thetailorcv.com/blog/resume
 
 ## Section 2: Professional Summary
 
-The summary is 2–4 lines at the top of your resume that frame your professional identity and highlight your most relevant value. It is the first thing recruiters read and the piece that tells them whether to continue.
+The summary is 2-4 lines at the top of your resume that frame your professional identity and highlight your most relevant value. It is the first thing recruiters read and the piece that tells them whether to continue.
 
 A good summary answers: Who are you? What do you do? What is your biggest strength or accomplishment?
 
@@ -82,7 +82,7 @@ The skills section is one of the most ATS-critical parts of your resume. ATS sys
 **How to structure it:**
 - Group skills by category (Languages, Tools, Platforms, Soft Skills)
 - Use the exact terminology from the job description
-- Keep it concise — 15–25 skills is typical
+- Keep it concise - 15-25 skills is typical
 
 **Example:**
 > **Languages:** Python, Java, SQL  
@@ -98,8 +98,8 @@ Read [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-
 The work experience section is the heart of your resume. This is where you demonstrate what you have actually done and what impact it had.
 
 **Structure each role as:**
-- Job title | Company | Location | Dates (month/year – month/year)
-- 3–6 bullet points per role
+- Job title | Company | Location | Dates (month/year - month/year)
+- 3-6 bullet points per role
 - Each bullet: action verb + what you did + quantified result
 
 **Example bullet:**
@@ -107,7 +107,7 @@ The work experience section is the heart of your resume. This is where you demon
 
 Key rules:
 - Start every bullet with a strong [action verb](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- Quantify wherever possible — read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- Quantify wherever possible - read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - List roles in reverse chronological order (most recent first)
 - Include dates consistently
 
@@ -129,7 +129,7 @@ The education section lists your academic degrees. For recent graduates and fres
 
 **Exclude:**
 - High school (once you have a degree)
-- GPA older than 3–4 years
+- GPA older than 3-4 years
 - Irrelevant or failed coursework
 
 Read [how to list education on a resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) for full formatting guidance.
@@ -166,7 +166,7 @@ Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-t
 
 ## Section 8: Awards and Achievements (Optional)
 
-If you have notable awards — academic, professional, or competitive — a dedicated section or inclusion within experience can strengthen your case. Read [how to list awards and achievements on a resume](https://thetailorcv.com/blog/awards-achievements-on-resume) for placement advice.
+If you have notable awards - academic, professional, or competitive - a dedicated section or inclusion within experience can strengthen your case. Read [how to list awards and achievements on a resume](https://thetailorcv.com/blog/awards-achievements-on-resume) for placement advice.
 
 ---
 
@@ -178,11 +178,11 @@ Volunteer experience demonstrates character and fills gaps. It is especially val
 
 ## Sections to Remove
 
-- **"References available upon request"** — Assumed, wastes space
-- **Hobbies and interests** — Unless directly relevant to the role
-- **Objective statement** — Replaced by the summary in most cases
-- **Full address** — City + state is sufficient
-- **Photo** — In the US, Canada, and UK, photos invite bias and are not expected
+- **"References available upon request"** - Assumed, wastes space
+- **Hobbies and interests** - Unless directly relevant to the role
+- **Objective statement** - Replaced by the summary in most cases
+- **Full address** - City + state is sufficient
+- **Photo** - In the US, Canada, and UK, photos invite bias and are not expected
 
 ---
 
@@ -190,10 +190,10 @@ Volunteer experience demonstrates character and fills gaps. It is especially val
 
 | Career Stage | Recommended Order |
 |---|---|
-| Fresh graduate / no experience | Contact → Summary → Education → Projects → Skills → (any experience) |
-| Early career (1–5 years) | Contact → Summary → Skills → Experience → Education → Projects |
-| Mid to senior (5+ years) | Contact → Summary → Skills → Experience → Education → Certifications |
-| Career changer | Contact → Summary → Skills → (relevant) Experience → Education → Projects |
+| Fresh graduate / no experience | Contact -> Summary -> Education -> Projects -> Skills -> (any experience) |
+| Early career (1-5 years) | Contact -> Summary -> Skills -> Experience -> Education -> Projects |
+| Mid to senior (5+ years) | Contact -> Summary -> Skills -> Experience -> Education -> Certifications |
+| Career changer | Contact -> Summary -> Skills -> (relevant) Experience -> Education -> Projects |
 
 ---
 
@@ -222,8 +222,14 @@ Read [10 ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume
 
 ---
 
-## Conclusion
+## Make This Practical
 
+Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+
+## Conclusion
 A perfect resume has every section working together: contact info that is easy to find, a summary that hooks, skills that match the job, experience that shows impact, and education that confirms your credentials. Every optional section adds evidence. Every unnecessary section removes it.
 
 Start from an [ATS-friendly template](https://www.thetailorcv.com/templates), build each section using the linked guides above, and run the finished resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions). Once your resume lands interviews, use the [mock interview tool](https://thetailorcv.com/interview-prep) to close them.
+
