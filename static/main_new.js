@@ -149,6 +149,30 @@ function hideStoredFileUI() {
     if (info) info.style.display = 'none';
 }
 
+function resetATSProgressUI() {
+    const atsProgressSection = document.getElementById('ats-progress-section');
+    const atsContent = document.getElementById('ats-progress-content');
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const optimizeBtn = document.getElementById('optimize-btn');
+
+    if (!atsProgressSection) return;
+    if (atsProgressSection) atsProgressSection.style.display = 'none';
+    if (atsContent) atsContent.innerHTML = '';
+    if (analyzeBtn) {
+        analyzeBtn.disabled = false;
+        analyzeBtn.classList.remove('loading', 'animate-shimmer');
+        const btnText = analyzeBtn.querySelector('.btn-text');
+        const loader = analyzeBtn.querySelector('.btn-loader');
+        if (btnText) btnText.textContent = 'Get ATS Score';
+        if (loader) loader.style.display = 'none';
+    }
+    if (optimizeBtn) {
+        optimizeBtn.disabled = false;
+        const btnText = optimizeBtn.querySelector('.btn-text');
+        if (btnText) btnText.textContent = 'Optimize Resume';
+    }
+}
+
 function restoreSavedInputs() {
     const jdInput = document.getElementById('job-description');
     if (jdInput) {
@@ -203,6 +227,7 @@ function applyTemplateFromNavigation() {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    resetATSProgressUI();
 // File upload handler
     const fileInput = document.getElementById('resume-file');
     const fileName = document.getElementById('file-name');
@@ -319,6 +344,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+window.addEventListener('pageshow', resetATSProgressUI);
 
 // Generate template selection grid
 function generateTemplateGrid() {
