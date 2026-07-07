@@ -18,12 +18,12 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ## Best Embedded Systems Engineer Resume Format
 
-1. Header with GitHub link
+1. Header with [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) link
 2. Summary
 3. Technical skills
 4. Work experience
-5. Projects
-6. Education
+5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One page for engineers with under 8 years of experience.
 
@@ -41,7 +41,7 @@ Embedded Systems Engineer with 5 years of experience developing firmware for IoT
 
 ### Example for Entry-Level Embedded Engineer
 
-Embedded Systems Engineer with strong embedded C and microcontroller skills. Built 4 projects including an STM32-based sensor node and an ESP32 IoT device. Familiar with FreeRTOS, I2C/SPI/UART, and bare-metal programming. Seeking a junior embedded firmware role.
+Embedded Systems Engineer with strong embedded C and microcontroller skills. Built 4 [projects](https://thetailorcv.com/blog/projects-in-resume) including an STM32-based sensor node and an ESP32 IoT device. Familiar with FreeRTOS, I2C/SPI/UART, and bare-metal programming. Seeking a junior embedded firmware role.
 
 ---
 

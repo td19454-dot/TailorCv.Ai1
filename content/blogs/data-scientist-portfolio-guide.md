@@ -56,7 +56,7 @@ Avoid the broader traps in [Portfolio Mistakes to Avoid](https://thetailorcv.com
 
 ### Do I need Kaggle medals?
 
-No. A few well-explained, reproducible projects - ideally one deployed - beat medals with no narrative.
+No. A few well-explained, reproducible [projects](https://thetailorcv.com/blog/projects-in-resume) - ideally one deployed - beat medals with no narrative.
 
 ### How important is deployment?
 

@@ -44,13 +44,13 @@ A well-explained gap with a strong current profile beats a candidate who job-hop
 
 ### Health-Related Gap
 
-"I took time to address a personal health matter, which is now fully resolved. I'm grateful for the recovery time and I'm energized to return to work - I've already been [studying, building projects, networking] to stay sharp."
+"I took time to address a personal health matter, which is now fully resolved. I'm grateful for the recovery time and I'm energized to return to work - I've already been [studying, building projects, [networking](https://thetailorcv.com/blog/networking-tips-for-job-search)] to stay sharp."
 
 You do not owe medical details - brief and honest is enough.
 
 ### Travel / Sabbatical
 
-"I took intentional time to [travel / recharge / pursue personal project]. It gave me perspective and I used part of that time to [learn skill, volunteer, build portfolio]. I'm ready to commit fully to my next role."
+"I took intentional time to [travel / recharge / pursue personal project]. It gave me perspective and I used part of that time to [learn skill, volunteer, build [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)]. I'm ready to commit fully to my next role."
 
 ### Difficulty Finding Work
 

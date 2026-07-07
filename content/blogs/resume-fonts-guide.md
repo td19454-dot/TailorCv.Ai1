@@ -10,7 +10,7 @@ slug: resume-fonts-guide
 keywords: best resume fonts, resume font size, professional fonts for resume, resume fonts 2026, what font to use for resume, ATS-safe resume fonts, worst fonts for resume
 ---
 
-Your choice of font affects how professional your resume looks, how easy it is to read, and - critically - whether an Applicant Tracking System (ATS) can parse it correctly. Most candidates spend hours on resume content and seconds on typography. This guide fixes that.
+Your choice of font affects how professional your resume looks, how easy it is to read, and - critically - whether an Applicant Tracking System ([ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)) can parse it correctly. Most candidates spend hours on resume content and seconds on typography. This guide fixes that.
 
 After choosing your font, start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that already uses optimal typography, and run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm it parses cleanly.
 
@@ -25,7 +25,7 @@ A recruiter spending [under 10 seconds on your resume](https://thetailorcv.com/b
 Some fonts signal "modern professional." Others signal "default Word document." A few signal "I don't care about details." The font you choose communicates something about your judgment.
 
 ### ATS Compatibility
-Some decorative, script, or unusual fonts do not render correctly in ATS software. Characters may be misread or lost entirely, corrupting your resume's data in the ATS database. Stick to standard, widely supported fonts.
+Some decorative, script, or unusual fonts do not render correctly in [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software. Characters may be misread or lost entirely, corrupting your resume's data in the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) database. Stick to standard, widely supported fonts.
 
 ---
 
@@ -36,7 +36,7 @@ Some decorative, script, or unusual fonts do not render correctly in ATS softwar
 **Calibri**
 - Clean, modern, professional
 - Microsoft's default since 2007 - universally supported
-- Excellent ATS compatibility
+- Excellent [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
 - Slightly informal but works for almost all industries
 - Body text: 10-11pt
 
@@ -44,7 +44,7 @@ Some decorative, script, or unusual fonts do not render correctly in ATS softwar
 - Elegant, classic, excellent readability
 - Great for business, finance, law, consulting
 - Slightly smaller at same point size - use 11-12pt for body
-- Strong ATS compatibility
+- Strong [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
 
 **Georgia**
 - Serif font with excellent digital readability
@@ -54,7 +54,7 @@ Some decorative, script, or unusual fonts do not render correctly in ATS softwar
 
 **Arial**
 - Clean, sans-serif, highly legible
-- Universally supported, excellent ATS compatibility
+- Universally supported, excellent [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
 - Works for tech, healthcare, corporate roles
 - Body text: 10-11pt
 
@@ -79,7 +79,7 @@ Some decorative, script, or unusual fonts do not render correctly in ATS softwar
 ### Acceptable But Not Ideal
 
 **Times New Roman**
-- Still readable and ATS-safe
+- Still readable and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-safe
 - Often associated with academic papers rather than modern resumes
 - Use Garamond or Georgia instead for a more contemporary feel
 
@@ -95,13 +95,13 @@ Some decorative, script, or unusual fonts do not render correctly in ATS softwar
 - Never use on a resume. Full stop.
 
 **Papyrus, Curlz, Bradley Hand**
-- Decorative fonts that are nearly impossible to read professionally and fail ATS
+- Decorative fonts that are nearly impossible to read professionally and fail [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 
 **Impact**
 - Designed for headlines and memes, not professional documents
 
 **Script and cursive fonts**
-- Beautiful visually, but ATS cannot reliably parse many script fonts
+- Beautiful visually, but [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) cannot reliably parse many script fonts
 - Recruiters cannot read cursive quickly
 
 **Very thin or very heavy weight fonts**
@@ -157,11 +157,11 @@ The most important thing is consistency and readability, not the serif vs sans-s
 
 ## ATS Font Safety: What to Know
 
-ATS systems convert your PDF to text. Some fonts introduce special characters or unusual encodings that cause words to be misread. Stick to widely used, standard fonts to avoid this.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems convert your PDF to text. Some fonts introduce special characters or unusual encodings that cause words to be misread. Stick to widely used, standard fonts to avoid this.
 
-**ATS-safe fonts:** Calibri, Arial, Garamond, Georgia, Cambria, Helvetica, Times New Roman, Verdana
+**[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-safe fonts:** Calibri, Arial, Garamond, Georgia, Cambria, Helvetica, Times New Roman, Verdana
 
-**Risky for ATS:** Script fonts, decorative fonts, any non-standard font you downloaded from a font website
+**Risky for [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it):** Script fonts, decorative fonts, any non-standard font you downloaded from a font website
 
 After formatting your resume, run it through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to verify no parsing errors occurred from your font choices. Also read [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) to catch other common issues.
 

@@ -16,7 +16,7 @@ Wondering whether your resume will make it past the software and reach a real pe
 
 ## Quick Answer
 
-Your resume is likely to pass ATS if it is a clean, single-column, text-based document that uses standard headings and includes the keywords from the job description. The checklist below makes that concrete.
+Your resume is likely to pass [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) if it is a clean, single-column, text-based document that uses standard headings and includes the keywords from the job description. The checklist below makes that concrete.
 
 ---
 
@@ -34,11 +34,11 @@ Start clean with an [ATS-friendly template](https://www.thetailorcv.com/template
  Pass: A PDF or DOCX with selectable text.
  Fail: An image, scan, or screenshot of a resume.
 
-Quick test: try to highlight and copy text from your PDF. If you can't, the ATS can't read it.
+Quick test: try to highlight and copy text from your PDF. If you can't, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) can't read it.
 
 ### 3. Standard Section Headings
 
- Pass: Summary, Skills, Experience, Education, Certifications.
+ Pass: Summary, Skills, Experience, Education, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
  Fail: Creative labels like "My Journey" or "What I Bring."
 
 ### 4. Keywords From the Job Description
@@ -88,7 +88,7 @@ See [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-qu
 ### 12. Tailored to This Specific Job
 
  Pass: Re-written for the exact role.
- Fail: One generic resume sent everywhere.
+ Fail: One [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) sent everywhere.
 
 Learn how in [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job).
 
@@ -110,7 +110,7 @@ The most reliable way to confirm is to run the [ATS score checker](/solutions), 
 
 - **Formatting fails (1, 6, 7):** Switch to a single-column [ATS template](https://www.thetailorcv.com/templates).
 - **Keyword fails (4, 9, 11):** Mirror the job description. See [ATS keywords to boost your score](https://thetailorcv.com/blog/ats-keywords-to-boost-score).
-- **Content fails (10, 12):** Quantify results and tailor to the role.
+- **Content fails (10, 12):** [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) results and tailor to the role.
 
 For a full repair guide, read [how to increase your ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score).
 
@@ -153,7 +153,7 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
 ## Conclusion
-If your resume checks all 12 boxes, it is very likely to pass ATS screening. If not, you now know exactly what to fix. Confirm your result with a quick, free scan before you apply.
+If your resume checks all 12 boxes, it is very likely to pass [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) screening. If not, you now know exactly what to fix. Confirm your result with a quick, free scan before you apply.
 
 [Check if your resume passes ATS](/solutions)
 

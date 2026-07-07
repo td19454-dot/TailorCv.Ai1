@@ -10,7 +10,7 @@ slug: how-to-negotiate-salary-offer
 keywords: how to negotiate salary, salary negotiation tactics, salary negotiation 2026, negotiate job offer, salary negotiation script, how to ask for more money
 ---
 
-Most people accept the first salary offer they receive. Most of those people leave money on the table. Studies consistently show that salary negotiation works - employers expect candidates to negotiate, and the vast majority of initial offers have room.
+Most people accept the first salary offer they receive. Most of those people leave money on the table. Studies consistently show that [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-guide) works - employers expect candidates to negotiate, and the vast majority of initial offers have room.
 
 ![How to Negotiate a Salary](public/blog-images/how-to-negotiate-a-salary.png)
 
@@ -36,7 +36,7 @@ For all other roles - corporate, startup, tech, finance, healthcare, consulting 
 
 ## When to Negotiate
 
-The right time to negotiate is after you have a written or verbal offer. Not during the first interview. Not when asked "what are your salary expectations" early in the process.
+The right time to negotiate is after you have a written or verbal offer. Not during the first [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Not when asked "what are your salary expectations" early in the process.
 
 If asked early about salary expectations, defer:
 
@@ -55,8 +55,8 @@ Never negotiate blind. Research first.
 Sources to use:
 
 - **Glassdoor** - Company and role-specific salary reports
-- **Levels.fyi** - Essential for tech roles (software engineer, PM, data scientist)
-- **LinkedIn Salary** - Broad market data by title and location
+- **Levels.fyi** - Essential for tech roles (software engineer, PM, [data scientist](https://thetailorcv.com/blog/data-scientist-resume-2026))
+- **[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Salary** - Broad market data by title and location
 - **PayScale** - Skill and experience adjusted estimates
 - **Blind (Teamblind)** - Candid peer salary sharing in tech
 - **Industry surveys** - Many professional associations publish annual salary benchmarks
@@ -111,7 +111,7 @@ Take the time. Do not accept or decline on the spot if you feel uncertain. Evalu
 
 ### Scenario 4: They ask you to justify your number
 
-"I'm basing this on market data from Glassdoor, Levels.fyi, and LinkedIn Salary for [title] roles at [company size] in [city]. Combined with my [X years of experience and specific skills], I believe the [number] range reflects my market value accurately."
+"I'm basing this on market data from Glassdoor, Levels.fyi, and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Salary for [title] roles at [company size] in [city]. Combined with my [X years of experience and specific skills], I believe the [number] range reflects my market value accurately."
 
 ---
 
@@ -121,11 +121,11 @@ Many candidates only negotiate base salary. The full compensation package includ
 
 - **Signing bonus** - Often has more flexibility than base salary. Companies can call it "non-recurring" which is easier to approve.
 - **Equity / Stock Options / RSUs** - For tech and startup roles, the equity cliff and vesting schedule matter enormously.
-- **Start date** - More time to mentally transition, finish freelance projects, or take a break.
+- **Start date** - More time to mentally transition, finish freelance [projects](https://thetailorcv.com/blog/projects-in-resume), or take a break.
 - **Remote work flexibility** - Fewer commute days = thousands of dollars in time and transport saved.
 - **Title** - Sometimes easier to move than salary, and impacts future offers.
 - **Annual review timing** - Ask if you can have a performance and salary review at 6 months rather than 12.
-- **Professional development budget** - Conferences, certifications, courses.
+- **Professional development budget** - Conferences, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), courses.
 - **PTO / vacation days** - Especially valuable if the standard offer is low.
 
 ---
@@ -162,7 +162,7 @@ Many entry-level candidates feel they have no leverage. You have more than you t
 - You have skills the employer needs right now
 - You have done research and know your market value
 
-For entry-level tech roles, negotiating base salary up by 5-10% is very common and rarely costs you the offer. The worst they can say is no. In a decade of hiring, the rate of offers being rescinded due to polite salary negotiation is essentially zero.
+For entry-level tech roles, negotiating base salary up by 5-10% is very common and rarely costs you the offer. The worst they can say is no. In a decade of hiring, the rate of offers being rescinded due to polite [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-guide) is essentially zero.
 
 ---
 
@@ -192,7 +192,7 @@ Turn the career advice into a stronger application system. Start by checking you
 When you are ready to apply, build the supporting pieces around the resume. Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) for targeted outreach, practice with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and review [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) if applications are not converting.
 
 ## Conclusion
-Salary negotiation is a professional skill, not an aggressive act. The employer made an offer because they want you. Your job is to make sure the offer reflects your market value.
+[salary negotiation](https://thetailorcv.com/blog/salary-negotiation-guide) is a professional skill, not an aggressive act. The employer made an offer because they want you. Your job is to make sure the offer reflects your market value.
 
 Research your number, express enthusiasm, state your ask clearly, then stop talking. Most negotiations are over in two emails.
 

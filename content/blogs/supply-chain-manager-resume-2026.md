@@ -22,7 +22,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary with a key metric
 3. Core competencies
 4. Work experience
-5. Education and certifications
+5. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 One to two pages.
 
@@ -101,7 +101,7 @@ Reduced / Improved / Managed / Negotiated + [supply chain process] + [scope or v
 Supply Chain Manager
 FMCG Company | Apr 2021 - Present
 
-- Manage end-to-end supply chain for a $200M product portfolio, overseeing procurement, planning, logistics, and a 25-person team.
+- Manage end-to-end supply chain for a $200M product [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), overseeing procurement, planning, logistics, and a 25-person team.
 - Reduced total supply chain cost by 15% ($6M annually) through freight optimization, supplier consolidation, and warehouse layout redesign.
 - Improved on-time-in-full (OTIF) delivery from 79% to 94% by implementing a demand-driven planning system and supplier scorecards.
 - Led supplier risk diversification after a major disruption, qualifying 8 alternate suppliers and reducing single-source dependency from 40% to 12%.
@@ -127,7 +127,7 @@ Supply chain is measurable. Show cost savings, OTD/OTIF, inventory turns, lead t
 
 ### Mistake 2: Listing functions without outcomes
 
-"Managed procurement and logistics" is a job description. Show what you improved and saved.
+"Managed procurement and logistics" is a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Show what you improved and saved.
 
 ### Mistake 3: No systems listed
 

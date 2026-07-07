@@ -40,7 +40,7 @@ If the award is tied to a specific role or educational institution, integrate it
 
 > "Recognized as Top Sales Performer (2023) - ranked #1 in North America region, closing $3.2M in new contracts"
 
-**In Education:**
+**In [education](https://thetailorcv.com/blog/how-to-list-education-on-resume):**
 > "Dean's List - 4 consecutive semesters (GPA: 3.87/4.0)"
 
 > "Winner, National Coding Competition 2023 - 1st place out of 850 teams"
@@ -64,7 +64,7 @@ Create a separate "Awards & Achievements" or "Honors" section when:
 
 If your most impressive award is a headline-worthy credential (Forbes 30 Under 30, Rhodes Scholar, national competition winner), mention it in your professional summary as a differentiator:
 
-> "Software engineer and Forbes 30 Under 30 honoree with 6 years of experience building high-scale systems..."
+> "[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) and Forbes 30 Under 30 honoree with 6 years of experience building high-scale systems..."
 
 ---
 
@@ -125,7 +125,7 @@ Academic awards carry significant weight. List them prominently:
 Read [resume with no experience guide](https://thetailorcv.com/blog/resume-with-no-experience) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) for fresher-specific advice.
 
 ### Mid-Career Professionals (3-8 Years)
-Transition away from academic awards toward professional ones. Remove high school and minor college awards. Keep any continuing education, industry certification honors, or competition wins.
+Transition away from academic awards toward professional ones. Remove high school and minor college awards. Keep any continuing [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), industry certification honors, or competition wins.
 
 ### Senior Professionals (8+ Years)
 Academic awards are largely irrelevant unless exceptionally prestigious (Rhodes Scholar, Fulbright, top national scholarship). Professional awards, speaking engagements, industry recognitions, and board service are more relevant at this stage.
@@ -137,7 +137,7 @@ Academic awards are largely irrelevant unless exceptionally prestigious (Rhodes 
 ### Tech/Engineering
 - Hackathon wins, open source contributions, patents
 - Conference speaker invitations
-- "GitHub Stars" or "Most Forked Repository" signals for developers
+- "[GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Stars" or "Most Forked Repository" signals for developers
 
 ### Sales/Business Development
 - President's Club, Top 10% Quota Attainer, Regional Sales Champion
@@ -167,7 +167,7 @@ Academic awards are largely irrelevant unless exceptionally prestigious (Rhodes 
 
 ## ATS and Awards
 
-ATS systems do not specifically look for an "Awards" section but will scan your achievement text for keywords. Ensure:
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems do not specifically look for an "Awards" section but will scan your achievement text for keywords. Ensure:
 - Award names use recognizable terms ("Dean's List," "hackathon," "scholarship")
 - Associated accomplishments include industry-relevant keywords
 - The section has a clear standard heading: "Awards," "Achievements," or "Honors"
@@ -196,7 +196,7 @@ Use this guide as part of a complete job-search workflow. Check your resume with
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
-Awards and achievements belong on a resume when they are relevant, contextual, and framed around impact. Integrate them into work experience and education sections when they are role-specific, or create a dedicated section when you have 3 or more notable recognitions.
+Awards and achievements belong on a resume when they are relevant, contextual, and framed around impact. Integrate them into work experience and [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) sections when they are role-specific, or create a dedicated section when you have 3 or more notable recognitions.
 
 Every achievement becomes stronger with context: what it was for, how selective it was, and what you did to earn it. Build your full resume on an [ATS-friendly template](https://www.thetailorcv.com/templates), run it through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions), and use the [mock interview tool](https://thetailorcv.com/interview-prep) to practice explaining your achievements in conversation.
 

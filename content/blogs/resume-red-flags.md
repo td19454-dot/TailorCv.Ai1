@@ -20,7 +20,7 @@ Before submitting, check your resume with the [TailorCV ATS checker](https://www
 
 ## Red Flag 1: Unexplained Employment Gaps
 
-A gap in your employment history without context raises the question every recruiter thinks but rarely asks: *why?* Unexplained gaps suggest unemployment by choice, termination, or other circumstances a recruiter has to speculate about.
+A gap in your employment history without context raises the question every [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) thinks but rarely asks: *why?* Unexplained gaps suggest unemployment by choice, termination, or other circumstances a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) has to speculate about.
 
 **Fix:** Address gaps directly with a brief, neutral explanation. Caregiving, education, health, travel, personal development - all are acceptable reasons. Read [how to explain resume gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps) for scripts and strategies.
 
@@ -36,7 +36,7 @@ Multiple short tenures (under 12-18 months per role) - especially a string of th
 
 ## Red Flag 3: Generic, Untailored Content
 
-A summary that says "results-driven professional seeking challenging opportunities" tells a recruiter your resume was not written for their role. Generic language immediately signals a mass-application approach - which signals low genuine interest.
+A summary that says "results-driven professional seeking challenging opportunities" tells a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) your resume was not written for their role. Generic language immediately signals a mass-application approach - which signals low genuine interest.
 
 **Fix:** Tailor your summary and top bullets to each role. This takes 15-20 minutes per application and dramatically increases callback rates. Read [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) and use the [TailorCV optimizer](https://www.thetailorcv.com/solutions) to match keywords.
 
@@ -76,7 +76,7 @@ A 3-page resume from a 2-year professional signals poor editing judgment. The co
 
 ## Red Flag 8: A Two-Column Layout
 
-Two-column resumes look visually appealing but cause ATS parsing failures. Content in the second column is frequently scrambled or lost entirely. When a recruiter's ATS shows a mangled resume, your application often ends there.
+Two-column resumes look visually appealing but cause [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsing failures. Content in the second column is frequently scrambled or lost entirely. When a recruiter's [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) shows a mangled resume, your application often ends there.
 
 **Fix:** Use a single-column layout. Read [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and verify with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
 
@@ -84,7 +84,7 @@ Two-column resumes look visually appealing but cause ATS parsing failures. Conte
 
 ## Red Flag 9: Missing Contact Information or Broken Links
 
-If your phone number is missing, your email is wrong, or your LinkedIn link is broken, a recruiter who wants to contact you cannot. This ends your application immediately.
+If your phone number is missing, your email is wrong, or your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) link is broken, a recruiter who wants to contact you cannot. This ends your application immediately.
 
 **Fix:** Double-check every piece of contact information before submitting. Click your LinkedIn and portfolio links to confirm they work. Read the [resume contact section guide](https://thetailorcv.com/blog/resume-contact-section).
 
@@ -100,15 +100,15 @@ If your phone number is missing, your email is wrong, or your LinkedIn link is b
 
 ## Red Flag 11: Outdated or Irrelevant Content
 
-Your part-time job from college, a skill from 15 years ago, an expired certification, or five bullet points about a role from 2008 - these fill space with content that actively dilutes your relevance.
+Your part-time job from college, a skill from 15 years ago, an expired certification, or five [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) about a role from 2008 - these fill space with content that actively dilutes your relevance.
 
-**Fix:** Remove roles older than 10-15 years unless they are exceptional. Update or remove expired certifications. Ruthlessly edit for relevance to the target role.
+**Fix:** Remove roles older than 10-15 years unless they are exceptional. Update or remove expired [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume). Ruthlessly edit for relevance to the target role.
 
 ---
 
 ## Red Flag 12: Functional Resume (In Most Cases)
 
-Recruiters recognize the functional format as a red flag. It is commonly used to hide employment gaps, disguise job-hopping, or obscure lack of relevant experience. ATS systems also struggle with it.
+Recruiters recognize the functional format as a red flag. It is commonly used to hide employment gaps, disguise job-hopping, or obscure lack of relevant experience. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems also struggle with it.
 
 **Fix:** Use reverse chronological or combination format. Address any issues directly and honestly. Read [chronological vs functional resume](https://thetailorcv.com/blog/chronological-vs-functional-resume).
 
@@ -116,7 +116,7 @@ Recruiters recognize the functional format as a red flag. It is commonly used to
 
 ## Red Flag 13: Low ATS Score
 
-This is the red flag you cannot see - your resume is being filtered out before a human ever reads it. If you are getting zero callbacks despite applying broadly, your ATS score is likely the problem.
+This is the red flag you cannot see - your resume is being filtered out before a human ever reads it. If you are getting zero callbacks despite applying broadly, your [ATS score](https://thetailorcv.com/blog/ats-score-guide) is likely the problem.
 
 **Fix:** Run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to see your score, identify missing keywords, and get specific improvement suggestions. Read [why is my ATS score low](https://thetailorcv.com/blog/why-is-my-ats-score-low).
 
@@ -132,7 +132,7 @@ This is the red flag you cannot see - your resume is being filtered out before a
 
 ## Red Flag 15: Using a Personal or Inappropriate Email Address
 
-A resume from `partyguy88@hotmail.com` or `xX_gamemaster_Xx@gmail.com` signals immediately that this candidate is not thinking professionally about the job search.
+A resume from `partyguy88@hotmail.com` or `xX_gamemaster_Xx@gmail.com` signals immediately that this candidate is not thinking professionally about the [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 
 **Fix:** Create a professional email: firstname.lastname@gmail.com or similar. Read the [resume contact section guide](https://thetailorcv.com/blog/resume-contact-section) for full contact formatting rules.
 
@@ -140,7 +140,7 @@ A resume from `partyguy88@hotmail.com` or `xX_gamemaster_Xx@gmail.com` signals i
 
 ## How to Audit Your Resume for Red Flags
 
-1. Read your resume from a recruiter's perspective - what questions does it raise?
+1. Read your resume from a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes)'s perspective - what questions does it raise?
 2. Check for typos, inconsistencies, and formatting issues
 3. Replace all duty-based bullets with achievement bullets
 4. Tailor the summary and top bullets to the specific role
@@ -172,7 +172,7 @@ Use this advice as interview practice, not just reading material. Start a role-s
 Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
 
 ## Conclusion
-The most common resume red flags are fixable: unexplained gaps, job-hopping without context, generic language, typos, duty-based bullets, poor formatting, and low ATS scores. Removing these red flags and replacing them with evidence of your value is the fastest path to a higher interview rate.
+The most common resume red flags are fixable: unexplained gaps, job-hopping without context, generic language, typos, duty-based bullets, poor formatting, and low [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scores. Removing these red flags and replacing them with evidence of your value is the fastest path to a higher interview rate.
 
 Run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to identify technical red flags, use an [ATS-friendly template](https://www.thetailorcv.com/templates) for formatting, and practice your answers with the [mock interview tool](https://thetailorcv.com/interview-prep) once your resume starts generating calls.
 

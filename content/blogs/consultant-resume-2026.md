@@ -24,10 +24,10 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Core competencies
 4. Work experience (engagement-focused)
-5. Education (prominent for consulting)
-6. Certifications
+5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) (prominent for consulting)
+6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
-One to two pages. For management consulting, education and academic achievement are weighted heavily.
+One to two pages. For management consulting, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) and academic achievement are weighted heavily.
 
 ---
 
@@ -43,7 +43,7 @@ Management Consultant with 5 years of experience advising Fortune 500 clients on
 
 ### Example for IT / Tech Consultant
 
-Technology Consultant with 4 years of experience leading digital transformation and systems implementation projects for enterprise clients. Delivered 8 ERP and cloud migration engagements on time and within budget. Skilled in requirements analysis, solution design, and change management.
+Technology Consultant with 4 years of experience leading digital transformation and systems implementation [projects](https://thetailorcv.com/blog/projects-in-resume) for enterprise clients. Delivered 8 ERP and cloud migration engagements on time and within budget. Skilled in requirements analysis, solution design, and change management.
 
 ---
 
@@ -114,7 +114,7 @@ Management Consulting Firm | Mar 2022 - Present
 
 ## Education on a Consulting Resume
 
-For management consulting (especially top firms), education is weighted heavily:
+For management consulting (especially top firms), [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) is weighted heavily:
 - List your degree, institution, and GPA (if strong)
 - Include academic honors, scholarships, and relevant achievements
 - MBA from a target school is a significant credential

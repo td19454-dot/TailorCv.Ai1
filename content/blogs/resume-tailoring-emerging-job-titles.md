@@ -17,8 +17,8 @@ Today, it is a category on major job boards - and it pays six figures.
 
 The same is true for:
 - AI Engineer
-- Machine Learning Engineer (with LLM focus)
-- GenAI Product Manager
+- [machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026) Engineer (with LLM focus)
+- GenAI [product manager](https://thetailorcv.com/blog/product-manager-resume-2026)
 - AI Safety Researcher
 - Climate Tech Analyst
 - Digital Health Strategist
@@ -39,7 +39,7 @@ This guide gives you the strategy for breaking into emerging roles before the ma
 
 When a role is brand new, several problems arise simultaneously:
 
-**No standard job description:** Two companies might post "AI Engineer" roles with completely different expectations. One wants a backend engineer who can integrate LLMs into products. Another wants a researcher who can fine-tune foundational models.
+**No standard [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide):** Two companies might post "AI Engineer" roles with completely different expectations. One wants a backend engineer who can integrate LLMs into products. Another wants a researcher who can fine-tune foundational models.
 
 **No canonical skill set:** There is no agreed-upon list of what an "AI Engineer" must know. Each company's JD reflects their current technical stack and priorities.
 
@@ -57,7 +57,7 @@ When a role is not standardized, you have to build your own picture of what it r
 
 ### Step 1: Read 10-15 Job Descriptions for This Role
 
-Go to LinkedIn, Indeed, and company career pages.
+Go to [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), Indeed, and company career pages.
 Search for every variant of the role title.
 
 For "Prompt Engineer," search:
@@ -68,7 +68,7 @@ For "Prompt Engineer," search:
 - Conversational AI Engineer
 - AI Application Engineer
 
-Read every job description you can find.
+Read every [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) you can find.
 
 Identify the skills, tools, and responsibilities that appear across most of them - these are the emerging standards.
 
@@ -104,8 +104,8 @@ For emerging roles, company-specific context matters more than standard role exp
 Before applying:
 - Check the company's engineering blog (most tech companies have one)
 - Look at recent tech talks or conference presentations by the team
-- Check GitHub for open-source contributions or tools the team has built
-- Look at job postings for adjacent roles (ML Engineer, Data Scientist) to understand the tech stack
+- Check [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) for open-source contributions or tools the team has built
+- Look at job postings for adjacent roles (ML Engineer, [data scientist](https://thetailorcv.com/blog/data-scientist-resume-2026)) to understand the tech stack
 
 This research tells you which specific tools and frameworks this company actually uses - and those are the keywords your resume needs.
 The [hidden keywords guide](https://thetailorcv.com/blog/hidden-keywords-in-job-description) helps you decode the subtext of what each company's JD is actually asking for.
@@ -121,16 +121,16 @@ Nobody does.
 
 Your job is to show how your existing background makes you uniquely suited for this emerging role.
 
-**If you are a software engineer:**
-Show Python proficiency, API integration experience, and any LLM or ML project work - even hobby projects.
+**If you are a [software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang):**
+Show Python proficiency, API integration experience, and any LLM or ML project work - even hobby [projects](https://thetailorcv.com/blog/projects-in-resume).
 
-**If you are a data scientist:**
+**If you are a [data scientist](https://thetailorcv.com/blog/data-scientist-resume-2026):**
 Show NLP work, text processing, and any generative AI experimentation.
 
 **If you are a content writer or technical writer:**
 Show your understanding of language quality, tone calibration, and iterative refinement - the core of prompt engineering.
 
-**If you are a product manager:**
+**If you are a [product manager](https://thetailorcv.com/blog/product-manager-resume-2026):**
 Show your understanding of user needs, AI product design, and cross-functional coordination with engineering.
 
 Every background has a path to emerging AI roles.
@@ -140,7 +140,7 @@ For a deeper framework on this kind of bridging, see the [career change resume g
 
 ### 2. Show Projects More Prominently Than Job History
 
-For emerging roles, personal and side projects often carry more weight than prior job titles.
+For emerging roles, personal and side [projects](https://thetailorcv.com/blog/projects-in-resume) often carry more weight than prior job titles.
 
 If you have:
 - Built a RAG pipeline as a side project
@@ -184,7 +184,7 @@ Include at least one bullet that describes a real AI project with a real outcome
 **Strong:** "Designed and tested 40+ prompt variants for a customer support LLM at [Company], improving resolution accuracy from 61% to 84% and reducing human escalation rate by 35%."
 
 That is a real result with real numbers.
-That is what gets you the interview.
+That is what gets you the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 Learn [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) for the structure that makes these results land.
 
@@ -193,9 +193,9 @@ Learn [how to write resume bullet points](https://thetailorcv.com/blog/how-to-wr
 ## Emerging Roles Cheat Sheet: What Each One Actually Wants
 
 ### AI Engineer (2026)
-Core skills: Python, LangChain or LlamaIndex, OpenAI/Anthropic API, vector databases, API integration, system design  
+Core skills: Python, LangChain or LlamaIndex, OpenAI/Anthropic API, vector databases, API integration, [system design](https://thetailorcv.com/blog/system-design-interview-guide)  
 Background: Software engineering + AI curiosity  
-Key resume signals: Live AI projects, API integrations, production deployments
+Key resume signals: Live AI [projects](https://thetailorcv.com/blog/projects-in-resume), API integrations, production deployments
 
 ### Prompt Engineer
 Core skills: Prompt design, evaluation frameworks, LLM behavior understanding, Python (often), technical writing  
@@ -215,7 +215,7 @@ Key resume signals: Revenue impact, sales cycle reduction, CRM implementation
 ### Climate Tech Analyst
 Core skills: ESG frameworks, carbon accounting, sustainability metrics, data analysis, policy understanding  
 Background: Finance, engineering, or environmental science  
-Key resume signals: ESG reporting, sustainability initiative outcomes, industry certifications (SASB, GRI)
+Key resume signals: ESG reporting, sustainability initiative outcomes, industry [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (SASB, GRI)
 
 ---
 
@@ -244,7 +244,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Do I need a certification for emerging AI roles?
 
-Formal certifications are less important than demonstrated project work in AI. A completed Coursera ML course plus a live project on GitHub beats a certification with no applied work.
+Formal certifications are less important than demonstrated project work in AI. A completed Coursera ML course plus a live project on [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) beats a certification with no applied work.
 
 ### What if I apply and get rejected for lacking "required" experience?
 
@@ -252,7 +252,7 @@ Expected for emerging roles. Apply to multiple companies. The requirements are i
 
 ### Should I include my AI projects even if they are personal/side projects?
 
-Absolutely. For emerging roles, personal projects are primary evidence. They show initiative, curiosity, and actual ability - three things that matter more than years of experience in a field that barely existed.
+Absolutely. For emerging roles, personal [projects](https://thetailorcv.com/blog/projects-in-resume) are primary evidence. They show initiative, curiosity, and actual ability - three things that matter more than years of experience in a field that barely existed.
 
 ---
 
@@ -281,7 +281,7 @@ They are the ones who research what each company actually needs, show specific w
 
 Reverse-engineer the role from 15 job descriptions.
 Study people who already have the title.
-Build and show relevant projects.
+Build and show relevant [projects](https://thetailorcv.com/blog/projects-in-resume).
 Match the specific company's language.
 Check your [keyword match](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) before applying.
 

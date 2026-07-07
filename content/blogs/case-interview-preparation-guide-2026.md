@@ -20,7 +20,7 @@ Practice structured communication with [AI mock interviews](https://thetailorcv.
 
 ## What Is a Case Interview?
 
-A case interview presents a business scenario:
+A case [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) presents a business scenario:
 
 - "Our client's profits dropped 20% - why?"
 - "Should Company X enter the Indian market?"

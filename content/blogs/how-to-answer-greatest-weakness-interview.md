@@ -10,7 +10,7 @@ slug: how-to-answer-greatest-weakness-interview
 keywords: greatest weakness interview answer, what is your weakness interview, how to answer weakness question 2026, interview weakness examples
 ---
 
-"What is your greatest weakness?" is the interview question everyone dreads - because a wrong answer can undo twenty minutes of strong performance. Too honest and you disqualify yourself. Too fake ("I'm a perfectionist") and the interviewer rolls their eyes.
+"What is your greatest weakness?" is the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) question everyone dreads - because a wrong answer can undo twenty minutes of strong performance. Too honest and you disqualify yourself. Too fake ("I'm a perfectionist") and the interviewer rolls their eyes.
 
 The key is a **real weakness** paired with **genuine improvement efforts**. This guide shows you how in 2026.
 
@@ -60,8 +60,8 @@ Structure with [STAR method](https://thetailorcv.com/blog/star-method-interview-
 
 Do not name a weakness that is **core to the job**:
 
-- Software engineer: "I'm bad at coding under pressure"
-- Data analyst: "I'm not detail-oriented"
+- [software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang): "I'm bad at coding under pressure"
+- [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026): "I'm not detail-oriented"
 - Manager: "I avoid difficult conversations"
 - Customer-facing role: "I'm not good with people"
 
@@ -85,9 +85,9 @@ See more pitfalls in [common interview mistakes](https://thetailorcv.com/blog/co
 
 ## Weakness Questions for Freshers
 
-Freshers can discuss:
+[freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) can discuss:
 
-- Limited professional experience (offset with projects and internships)
+- Limited professional experience (offset with [projects](https://thetailorcv.com/blog/projects-in-resume) and internships)
 - Over-researching before acting (show you are learning to decide faster)
 - Difficulty with [technical communication](https://thetailorcv.com/blog/technical-interview-preparation-guide)
 

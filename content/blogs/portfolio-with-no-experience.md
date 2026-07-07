@@ -10,7 +10,7 @@ slug: portfolio-with-no-experience
 keywords: portfolio with no experience, portfolio for freshers, student portfolio, first portfolio, build portfolio from scratch
 ---
 
-A portfolio is the single best way to escape the "no experience" trap, because it replaces a job history you do not have yet with **proof of what you can do right now**. You do not need an employer to give you projects - you can create them this weekend. Here is the exact playbook.
+A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is the single best way to escape the "no experience" trap, because it replaces a job history you do not have yet with **proof of what you can do right now**. You do not need an employer to give you projects - you can create them this weekend. Here is the exact playbook.
 
 For the role-specific version of all this, also read [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026).
 
@@ -32,7 +32,7 @@ Designers, writers, and marketers can complete realistic industry briefs and pre
 - Marketers: plan a full campaign with goals, channels, and projected metrics
 
 ## Step 3: Do Strategic Free or Low-Cost Work
-One or two free projects for a nonprofit or a small local business gives you **real outcomes and testimonials**. Cap the scope so it does not become unpaid labor, and always get permission to show the work.
+One or two free [projects](https://thetailorcv.com/blog/projects-in-resume) for a nonprofit or a small local business gives you **real outcomes and testimonials**. Cap the scope so it does not become unpaid labor, and always get permission to show the work.
 
 ## Step 4: Contribute and Collaborate
 - Fix a small open-source bug (a merged PR is gold) - see [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
@@ -40,7 +40,7 @@ One or two free projects for a nonprofit or a small local business gives you **r
 - Pair with a friend so you each get a collaborative project
 
 ## Step 5: Turn Learning Into Artifacts
-Course capstones, Kaggle notebooks, certifications you applied, and "what I learned building X" write-ups all demonstrate trajectory. Employers hire for slope, not just position.
+Course capstones, Kaggle notebooks, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) you applied, and "what I learned building X" write-ups all demonstrate trajectory. Employers hire for slope, not just position.
 
 ## Step 6: Package It Like a Pro
 Even three small, well-documented pieces - each with **problem, process, and outcome** - make a real portfolio. Write a focused [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section), add a clear [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section), and publish.

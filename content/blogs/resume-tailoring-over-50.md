@@ -31,7 +31,7 @@ This guide is for you.
 
 Not to pretend the bias does not exist.
 Not to tell you to lie about your experience.
-But to give you a real, practical strategy to tailor your resume so that your decades of experience register as *compelling* rather than *concerning*.
+But to give you a real, practical strategy to [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) so that your decades of experience register as *compelling* rather than *concerning*.
 
 ---
 
@@ -43,7 +43,7 @@ Instead, it disguises itself as:
 - "Not a culture fit"
 - "Looking for someone with a fresher perspective"
 - "Overqualified for this position"
-- ATS score mismatches on modern tool keywords
+- [ATS score](https://thetailorcv.com/blog/ats-score-guide) mismatches on modern tool keywords
 - Resume formatting that signals an older era of job searching
 
 The signals that trigger bias - often before anyone consciously decides anything:
@@ -57,10 +57,10 @@ The signals that trigger bias - often before anyone consciously decides anything
 - An "Objective" statement instead of a [professional summary](https://thetailorcv.com/blog/resume-objective-vs-summary)
 - Listing all jobs, including entry-level roles from 25 years ago
 
-**In ATS:**
+**In [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it):**
 - Low keyword match on modern tools (Slack, Notion, cloud platforms, Agile)
 - Missing terms that have emerged as standard in the last 5-8 years
-- Outdated certifications with no newer ones
+- Outdated [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) with no newer ones
 
 None of these are fair indicators of your ability to do the job.
 But they all influence how your resume is perceived before your strengths are evaluated.
@@ -126,7 +126,7 @@ Understanding the [difference between resume objective vs summary](https://theta
 Your summary should:
 - Use present tense and modern language
 - Lead with your most relevant and recent accomplishments
-- Include 2-3 keywords from the target job description
+- Include 2-3 keywords from the target [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - Not reference years of experience in a way that mathematically reveals your age
 
 **Before (ages you immediately):**
@@ -164,7 +164,7 @@ Old resume formats signal old-era job searching.
 Review [resume fonts and formatting](https://thetailorcv.com/blog/resume-fonts-guide) to make sure your document looks contemporary.
 
 **Replace:**
-- Two-column layouts that some ATS cannot parse
+- Two-column layouts that some [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) cannot parse
 - Serif fonts like Times New Roman or Courier
 - Fully justified text alignment
 - Horizontal lines as section dividers
@@ -172,14 +172,14 @@ Review [resume fonts and formatting](https://thetailorcv.com/blog/resume-fonts-g
 - Bold use of your full address
 
 **Use:**
-- Clean, single-column ATS-friendly format
+- Clean, single-column [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) format
 - Modern sans-serif fonts (Calibri, Arial, Aptos)
 - Left-aligned text
-- Standard section headers (Experience, Skills, Education)
-- City, state, and LinkedIn URL - no full street address required
+- Standard section headers (Experience, Skills, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume))
+- City, state, and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) URL - no full street address required
 
 Use one of [TailorCV's ATS-friendly templates](https://www.thetailorcv.com/templates) as your base.
-They are designed for modern ATS systems and look contemporary without being flashy.
+They are designed for modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems and look contemporary without being flashy.
 
 ---
 
@@ -237,7 +237,7 @@ In most countries, photos are not expected on resumes. Including one opens the d
 Phrases like "despite my extensive background" or "while I may have more experience than required" put you on the defensive before the interview starts. This is a classic [resume red flag](https://thetailorcv.com/blog/resume-red-flags).
 
 **Do not claim skills you do not have**
-The interview will reveal it quickly. Modernize authentically.
+The [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) will reveal it quickly. Modernize authentically.
 
 ---
 
@@ -304,7 +304,7 @@ You do not need to unless it comes up. If it does, pivot to your value: "I bring
 Age bias is real.
 Pretending it does not exist helps no one.
 
-But a well-tailored resume removes most of the signals that trigger it - before any human decision is made.
+But a well-[tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) removes most of the signals that trigger it - before any human decision is made.
 
 Limit your history to the past 15 years.
 Remove graduation dates.

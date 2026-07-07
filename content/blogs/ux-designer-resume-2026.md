@@ -10,7 +10,7 @@ slug: ux-designer-resume-2026
 keywords: UX designer resume, UX resume 2026, product designer resume, Figma resume, UX ATS keywords, UI UX resume, design portfolio resume
 ---
 
-A UX designer resume in 2026 must balance design craft with business impact. Companies do not hire designers to make things beautiful - they hire designers to make things easy, useful, and effective for real users. Your resume needs to prove that your design decisions improved measurable outcomes: task completion rates, conversion rates, user satisfaction scores, or support ticket volumes.
+A [UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026) resume in 2026 must balance design craft with business impact. Companies do not hire designers to make things beautiful - they hire designers to make things easy, useful, and effective for real users. Your resume needs to prove that your design decisions improved measurable outcomes: task completion rates, conversion rates, user satisfaction scores, or support ticket volumes.
 
 The UX job market is more competitive than it has ever been. Design tools have become easier to learn, which means more people claim UX skills. What separates strong candidates is evidence - a clear design process, research discipline, cross-functional collaboration, and quantified impact.
 
@@ -20,15 +20,15 @@ Before applying, use the [ATS score checker](https://www.thetailorcv.com/solutio
 
 ## Best UX Designer Resume Format
 
-1. Header with portfolio link
+1. Header with [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) link
 2. Summary
 3. Skills
 4. Work experience
-5. Projects or case studies (if freelance or entry-level)
-6. Education
-7. Certifications
+5. [projects](https://thetailorcv.com/blog/projects-in-resume) or case studies (if freelance or entry-level)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
-One page is preferred. Two pages are acceptable for senior designers with leadership, design systems, or research ops experience. The portfolio link is not optional - it is your primary evidence.
+One page is preferred. Two pages are acceptable for senior designers with leadership, design systems, or research ops experience. The [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) link is not optional - it is your primary evidence.
 
 ---
 
@@ -36,15 +36,15 @@ One page is preferred. Two pages are acceptable for senior designers with leader
 
 Formula:
 
-UX Designer with X years of experience in [product type or industry]. Led design for [product or feature] from [research to delivery]. Improved [conversion, task completion, NPS, support tickets, or satisfaction] by [metric].
+[UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026) with X years of experience in [product type or industry]. Led design for [product or feature] from [research to delivery]. Improved [conversion, task completion, NPS, support tickets, or satisfaction] by [metric].
 
 ### Example for Experienced UX Designer
 
-UX Designer with 5 years of experience designing B2B SaaS dashboards, mobile applications, and consumer e-commerce flows. Led end-to-end design for a checkout redesign that increased conversion by 23% and a dashboard revamp that reduced user errors by 41%. Strong in user research, prototyping in Figma, usability testing, and cross-functional collaboration with engineering and product teams.
+[UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026) with 5 years of experience designing B2B SaaS dashboards, mobile applications, and consumer e-commerce flows. Led end-to-end design for a checkout redesign that increased conversion by 23% and a dashboard revamp that reduced user errors by 41%. Strong in user research, prototyping in Figma, usability testing, and cross-functional collaboration with engineering and product teams.
 
 ### Example for Entry-Level UX Designer
 
-UX Designer with foundations in user research, wireframing, prototyping, and usability testing. Completed 4 end-to-end case studies covering mobile apps, e-commerce flows, and SaaS onboarding. Proficient in Figma, Maze, and UserTesting. Seeking a junior UX or product design role.
+[UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026) with foundations in user research, wireframing, prototyping, and usability testing. Completed 4 end-to-end case studies covering mobile apps, e-commerce flows, and SaaS onboarding. Proficient in Figma, Maze, and UserTesting. Seeking a junior UX or product design role.
 
 ---
 
@@ -111,7 +111,7 @@ Designed / Led / Conducted + [design artifact or research] + [context] + [user o
 
 ## UX Designer Resume Example
 
-Senior UX Designer
+Senior [UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026)
 HealthTech Platform | Jan 2023 - Present
 
 - Owned the patient portal design for a telehealth platform used by 180K patients and 3K clinicians across 5 specialties.
@@ -124,7 +124,7 @@ HealthTech Platform | Jan 2023 - Present
 
 ## UX Case Study Format for Portfolio
 
-Each portfolio case study should cover:
+Each [portfolio case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) should cover:
 
 1. Problem statement - what user problem were you solving?
 2. Research - how did you understand users and the problem?
@@ -148,7 +148,7 @@ Strong case study outcomes to mention:
 
 ### Mistake 1: No portfolio link
 
-A UX resume without a portfolio link will almost never advance. If your portfolio is not ready, fix that before applying.
+A UX resume without a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) link will almost never advance. If your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is not ready, fix that before applying.
 
 ### Mistake 2: Describing deliverables, not outcomes
 
@@ -160,7 +160,7 @@ Companies want designers who understand users, not just tools. Show user intervi
 
 ### Mistake 4: Too much visual design focus
 
-In product design roles, thinking process and business impact matter as much as visual execution. Balance both on your resume and in your portfolio.
+In product design roles, thinking process and business impact matter as much as visual execution. Balance both on your resume and in your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 ---
 
@@ -187,7 +187,7 @@ If this topic connects to your work samples, turn the advice into a live proof p
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 
 ## Conclusion
-A strong UX designer resume in 2026 connects your design process to measurable user and business outcomes. Show your research methods, your design system contributions, and the metrics that changed because of your work.
+A strong [UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026) resume in 2026 connects your design process to measurable user and business outcomes. Show your research methods, your design system contributions, and the metrics that changed because of your work.
 
 Test your resume against the job description with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Once your resume is ready, prepare for portfolio walkthroughs and case study interviews using the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 

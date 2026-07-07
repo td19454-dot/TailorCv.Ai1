@@ -53,7 +53,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ### Is free hosting reliable for a portfolio?
 
-Yes. GitHub Pages, Netlify, Vercel, and Cloudflare are production-grade and used by professionals daily.
+Yes. [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Pages, Netlify, Vercel, and Cloudflare are production-grade and used by professionals daily.
 
 ### Do I need to know how to code to host one?
 

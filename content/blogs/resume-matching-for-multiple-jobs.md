@@ -15,7 +15,7 @@ You also should not rewrite your resume from scratch for every application.
 
 There is a smarter approach.
 
-This guide shows you how to build a modular resume system that lets you match any similar job description quickly - without spending hours customizing each application.
+This guide shows you how to build a modular resume system that lets you match any similar [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) quickly - without spending hours customizing each application.
 
 Use [TailorCV's AI optimizer](https://www.thetailorcv.com/solutions) to handle JD-specific tailoring in minutes. Start with [clean, modular resume templates](https://www.thetailorcv.com/templates) built for easy customization.
 
@@ -29,12 +29,12 @@ You need one strong base resume and a system for adapting it efficiently.
 **The Base Resume:**
 - Your full, honest work history
 - Your complete skills list
-- Your strongest bullet points
-- Clean ATS-compatible formatting
+- Your strongest [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
+- Clean [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible formatting
 
 **The Variant Resume:**
 - Summary rewritten for the target role
-- Skills section reordered and trimmed to match the JD
+- [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) reordered and trimmed to match the JD
 - Top 2-3 bullets rewritten with JD language
 - Irrelevant content removed
 
@@ -51,9 +51,9 @@ And it produces a more targeted result than sending the base.
 Create a master document that contains:
 - All your work experience (every role, every bullet)
 - Your complete skills list (every tool, language, methodology you know)
-- All certifications and credentials
-- Education history
-- Optional sections: projects, publications, volunteer work
+- All [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and credentials
+- [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) history
+- Optional sections: [projects](https://thetailorcv.com/blog/projects-in-resume), publications, volunteer work
 
 This document is not submitted anywhere.
 It is your source of truth.
@@ -65,12 +65,12 @@ Identify clusters of jobs you are targeting.
 Most job seekers have 2-3 clusters:
 
 **Example clusters:**
-- Cluster A: Data Analyst roles at tech/SaaS companies
+- Cluster A: [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) roles at tech/SaaS companies
 - Cluster B: Business Intelligence roles at enterprise companies
 - Cluster C: Analytics Engineer roles (more technical)
 
 Each cluster shares most requirements.
-You need one tailored resume variant per cluster - not one per application.
+You need one [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) variant per cluster - not one per application.
 
 ### Step 3: Create a Template Variant for Each Cluster
 
@@ -143,7 +143,7 @@ When you create variants, name them clearly:
 `[Your Name] Resume - [Role Cluster] - [Month Year]`
 
 **Examples:**
-- `Sarah Chen Resume - Data Analyst SaaS - Jun 2026`
+- `Sarah Chen Resume - [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) SaaS - Jun 2026`
 - `Sarah Chen Resume - Analytics Engineer - Jun 2026`
 - `Sarah Chen Resume - Business Intelligence Enterprise - Jun 2026`
 
@@ -151,7 +151,7 @@ Keep the master document named:
 `Sarah Chen Resume - MASTER - Do Not Submit`
 
 Update the master whenever your experience or skills change.
-Rebuild variants every 2-3 months or when you start a new job search push.
+Rebuild variants every 2-3 months or when you start a new [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) push.
 
 ---
 
@@ -191,7 +191,7 @@ For high-volume job searching (10+ applications per week), this is the only sust
 
 ### Using the Same Variant for Very Different Roles
 
-If your Cluster A variant is for data analyst roles and you use it for a product manager application, you will have poor keyword coverage.
+If your Cluster A variant is for [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) roles and you use it for a product manager application, you will have poor keyword coverage.
 Build separate variants for genuinely different roles.
 
 ### Never Updating Variants
@@ -226,7 +226,7 @@ Yes. Every resume should be honest. Multiple versions simply emphasize different
 
 ### How do I track which version I sent where?
 
-Use a job search tracker. Include columns for: company, role, date applied, resume version used. A simple spreadsheet works.
+Use a [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) tracker. Include columns for: company, role, date applied, resume version used. A simple spreadsheet works.
 
 ### Should I update my LinkedIn to match each version?
 

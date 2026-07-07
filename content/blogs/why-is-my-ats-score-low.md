@@ -10,7 +10,7 @@ slug: why-is-my-ats-score-low
 keywords: why is my ats score low, low ats score, improve ats score, ats resume problems
 ---
 
-You checked your resume and the ATS score came back low. The good news: a low score is almost always caused by a short list of fixable problems - not by your qualifications. This guide walks through the **12 most common reasons your ATS score is low** and how to fix each one.
+You checked your resume and the [ATS score](https://thetailorcv.com/blog/ats-score-guide) came back low. The good news: a low score is almost always caused by a short list of fixable problems - not by your qualifications. This guide walks through the **12 most common reasons your [ATS score](https://thetailorcv.com/blog/ats-score-guide) is low** and how to fix each one.
 
 Re-check your progress anytime with the [free ATS score checker](/solutions).
 
@@ -18,7 +18,7 @@ Re-check your progress anytime with the [free ATS score checker](/solutions).
 
 ## 1. Your Resume Is Missing Keywords
 
-This is the number one cause of a low score. ATS software matches your resume against the keywords in the job description. If you do not use those exact terms, you lose points.
+This is the number one cause of a low score. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software matches your resume against the keywords in the job description. If you do not use those exact terms, you lose points.
 
 **Fix:** Read the job posting and add the relevant skills, tools, and phrases naturally throughout your resume. See the [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide).
 
@@ -26,7 +26,7 @@ This is the number one cause of a low score. ATS software matches your resume ag
 
 ## 2. You Used a Complex Template
 
-Tables, columns, text boxes, sidebars, and graphics often break ATS parsing. The software cannot read the content, so it scores you low.
+Tables, columns, text boxes, sidebars, and graphics often break [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsing. The software cannot read the content, so it scores you low.
 
 **Fix:** Switch to a clean, single-column [ATS-friendly template](https://www.thetailorcv.com/templates).
 
@@ -34,7 +34,7 @@ Tables, columns, text boxes, sidebars, and graphics often break ATS parsing. The
 
 ## 3. Your Resume Is an Image-Based PDF
 
-If you exported your resume as an image or scanned it, the ATS sees a picture with no readable text.
+If you exported your resume as an image or scanned it, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) sees a picture with no readable text.
 
 **Fix:** Always export as a text-based PDF or DOCX from your editor.
 
@@ -52,13 +52,13 @@ Sending the same resume to every job means it is not tailored to any of them, so
 
 Creative headings like "Where I've Made an Impact" confuse the parser, which is looking for standard sections.
 
-**Fix:** Use standard headings: **Summary, Skills, Experience, Education, Certifications.**
+**Fix:** Use standard headings: **Summary, Skills, Experience, Education, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).**
 
 ---
 
 ## 6. Critical Info Is in the Header or Footer
 
-Many ATS systems ignore content placed in the document header or footer, so your contact details or title may be lost.
+Many [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems ignore content placed in the document header or footer, so your contact details or title may be lost.
 
 **Fix:** Put all important information in the main body of the document.
 
@@ -66,7 +66,7 @@ Many ATS systems ignore content placed in the document header or footer, so your
 
 ## 7. Your Job Titles Don't Match
 
-If your title is very different from the target role, the ATS may rank you lower on title relevance.
+If your title is very different from the target role, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) may rank you lower on title relevance.
 
 **Fix:** Where accurate, align your titles with industry-standard language (for example, "Software Developer" instead of an internal label).
 
@@ -74,7 +74,7 @@ If your title is very different from the target role, the ATS may rank you lower
 
 ## 8. No Measurable Achievements
 
-Bullet points without numbers read as weak and generic.
+[bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) without numbers read as weak and generic.
 
 **Fix:** Add metrics - percentages, dollars, time saved, scale. See [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
@@ -82,7 +82,7 @@ Bullet points without numbers read as weak and generic.
 
 ## 9. Missing a Dedicated Skills Section
 
-Without a clear skills section, the ATS struggles to confirm you have the required competencies.
+Without a clear skills section, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) struggles to confirm you have the required competencies.
 
 **Fix:** Add a skills section listing technical skills, tools, and [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) that appear in the posting.
 
@@ -133,7 +133,7 @@ Anything below 60 is at high risk of being filtered out. Aim for 80+. See [what 
 
 ### Can a qualified candidate still get a low score?
 
-Yes. Qualified people get low scores all the time because of formatting and missing keywords - not lack of ability. That is exactly why optimizing matters.
+Yes. Qualified people get low scores all the time because of formatting and [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description) - not lack of ability. That is exactly why optimizing matters.
 
 ### How quickly can I raise my score?
 
@@ -166,7 +166,7 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
 ## Conclusion
-A low ATS score is rarely about your qualifications - it is about how your resume is written and formatted. Work through the 12 fixes above, re-scan, and watch your score climb into the competitive range.
+A low [ATS score](https://thetailorcv.com/blog/ats-score-guide) is rarely about your qualifications - it is about how your resume is written and formatted. Work through the 12 fixes above, re-scan, and watch your score climb into the competitive range.
 
 [Check your ATS score for free](/solutions)
 

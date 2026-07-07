@@ -12,7 +12,7 @@ keywords: electrical engineer resume, electrical engineering resume 2026, PCB de
 
 An electrical engineer resume in 2026 needs to show both technical depth and practical system delivery. Whether you are designing PCBs, working on power systems, developing embedded firmware, or commissioning industrial control systems, your resume must prove that your electrical designs reached production, performed to spec, and solved real engineering problems.
 
-Electrical engineering roles span consumer electronics, automotive, industrial automation, energy, medical devices, and telecommunications. Each domain has specific vocabulary - tailor your resume to your target sector.
+Electrical engineering roles span consumer electronics, automotive, industrial automation, energy, medical devices, and telecommunications. Each domain has specific vocabulary - [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) to your target sector.
 
 Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). If you are targeting embedded-specific roles, read the [embedded systems engineer resume guide](https://thetailorcv.com/blog/embedded-systems-engineer-resume-2026). For broader engineering comparison, the [mechanical engineer resume guide](https://thetailorcv.com/blog/mechanical-engineer-resume-2026) provides useful structural reference.
 
@@ -24,9 +24,9 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. Projects
-6. Education
-7. Certifications or publications
+5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) or publications
 
 One to two pages depending on project depth and experience level.
 
@@ -162,7 +162,7 @@ Hardware engineers who understand DFM, first-article inspection, and production 
 
 ### Mistake 4: Not naming communication protocols
 
-I2C, SPI, CAN, UART - many job descriptions search for specific protocols. List the ones you have used in real projects.
+I2C, SPI, CAN, UART - many job descriptions search for specific protocols. List the ones you have used in real [projects](https://thetailorcv.com/blog/projects-in-resume).
 
 ---
 

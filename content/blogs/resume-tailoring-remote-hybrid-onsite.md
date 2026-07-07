@@ -20,7 +20,7 @@ Today's job market has three distinct work models.
 Each attracts a different type of candidate.
 Each requires a different set of signals on your resume.
 
-If you are applying to remote roles with the same resume you use for on-site applications - or vice versa - you are leaving interview opportunities on the table.
+If you are applying to remote roles with the same resume you use for on-site applications - or vice versa - you are leaving [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) opportunities on the table.
 
 This guide breaks down exactly what changes, and how to tailor your resume for each work model. For a broader look at how targeting the right type of employer changes your resume strategy, see also [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise).
 
@@ -80,7 +80,7 @@ List the ones you have actually used in your [skills section](https://thetailorc
 - Project management: Jira, Asana, Linear, Notion, Trello
 - Documentation: Confluence, Notion, Google Docs
 - Design collaboration: Figma
-- Version control and async code review: GitHub, GitLab
+- Version control and async code review: [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), GitLab
 - Time zone management: World Time Buddy, Calendly
 
 These are not impressive in isolation - but their presence on a resume confirms remote work fluency.
@@ -89,7 +89,7 @@ These are not impressive in isolation - but their presence on a resume confirms 
 
 Your [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary) should acknowledge remote work experience directly.
 
-"Product manager with 3 years of fully remote experience leading cross-functional teams across the US and Europe. Strong in async communication, documentation-first processes, and distributed team coordination."
+"[product manager](https://thetailorcv.com/blog/product-manager-resume-2026) with 3 years of fully remote experience leading cross-functional teams across the US and Europe. Strong in async communication, documentation-first processes, and distributed team coordination."
 
 For remote roles, that sentence is worth three years of office experience.
 
@@ -226,15 +226,15 @@ Not explicitly - it can limit you unnecessarily. Instead, signal your experience
 
 ### Does a fully remote work history hurt me for on-site applications?
 
-It may raise questions about your comfort with in-person culture. Counter it by emphasizing in-person skills in your bullet points - mentoring, presenting, client relationships - even if they happened as part of your remote role's occasional in-person touchpoints.
+It may raise questions about your comfort with in-person culture. Counter it by emphasizing in-person skills in your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) - mentoring, presenting, client relationships - even if they happened as part of your remote role's occasional in-person touchpoints.
 
 ### Do remote-specific tools on my resume help with ATS?
 
-Yes. For remote job descriptions that list tools like Slack, Notion, or Figma as requirements, having them in your skills section improves your keyword match.
+Yes. For [remote job](https://thetailorcv.com/blog/remote-job-search-guide) descriptions that list tools like Slack, Notion, or Figma as requirements, having them in your skills section improves your keyword match.
 
 ### Is "remote-first" a keyword worth including in my resume?
 
-Only if you genuinely have experience in a remote-first environment and if the job description uses that language. Natural inclusion is valuable. Forced inclusion is not.
+Only if you genuinely have experience in a remote-first environment and if the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) uses that language. Natural inclusion is valuable. Forced inclusion is not.
 
 ---
 

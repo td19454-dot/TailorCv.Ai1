@@ -10,9 +10,9 @@ slug: group-interview-tips-strategies
 keywords: group interview tips, group interview strategies, how to stand out group interview, group job interview 2026
 ---
 
-A **group interview** puts you in the same room (or video call) with other candidates - and asks you to discuss, debate, solve problems, or present together while interviewers watch how you interact. It is not about destroying the competition. It is about demonstrating collaboration, leadership, and communication under social pressure.
+A **group [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)** puts you in the same room (or video call) with other candidates - and asks you to discuss, debate, solve problems, or present together while interviewers watch how you interact. It is not about destroying the competition. It is about demonstrating collaboration, leadership, and communication under social pressure.
 
-This guide covers group interview strategies for 2026.
+This guide covers group [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) strategies for 2026.
 
 Practice your individual answers first with [AI mock interviews](https://thetailorcv.com/mock-interview), then apply these group dynamics tips. Also read [panel interview tips](https://thetailorcv.com/blog/panel-interview-tips-strategies) (multiple interviewers, one candidate - the opposite format), [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
@@ -79,7 +79,7 @@ You may be called on individually for [tell me about yourself](https://thetailor
 
 - **Group discussion** - topic provided, open debate
 - **Case study exercise** - solve a problem as a team - see [case interview guide](https://thetailorcv.com/blog/case-interview-preparation-guide-2026)
-- **Role play** - sales pitch, customer service scenario
+- **Role play** - sales pitch, [customer service](https://thetailorcv.com/blog/customer-service-resume-2026) scenario
 - **Presentation** - individual or team presentation
 - **Q&A session** - individual questions in front of the group
 

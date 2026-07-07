@@ -10,9 +10,9 @@ slug: how-to-list-education-on-resume
 keywords: how to list education on resume, education on resume 2026, resume education section, where to put education resume, GPA on resume, resume education format
 ---
 
-The education section seems simple, but candidates make surprisingly common mistakes - including the wrong details, placing it incorrectly, or including (or omitting) GPA at the wrong times. How you list education matters more for some candidates (students, freshers) than others (experienced professionals), but everyone should get it right.
+The education section seems simple, but candidates make surprisingly common mistakes - including the wrong details, placing it incorrectly, or including (or omitting) GPA at the wrong times. How you list education matters more for some candidates (students, [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers)) than others (experienced professionals), but everyone should get it right.
 
-This guide covers exactly how to list education on your resume for every situation.
+This guide covers exactly how to list [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) on your resume for every situation.
 
 Before finalizing, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) and use an [ATS-friendly template](https://www.thetailorcv.com/templates).
 
@@ -26,7 +26,7 @@ Core elements:
 - Location (city, or city and country)
 - Graduation year (or expected graduation)
 - GPA / CGPA (if strong - see below)
-- Relevant coursework (for students and freshers)
+- Relevant coursework (for students and [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers))
 - Honors, awards, or distinctions (if applicable)
 
 ---
@@ -50,11 +50,11 @@ CGPA: 8.7/10 | Relevant Coursework: Data Structures, Algorithms, DBMS, Operating
 
 ### Students and Recent Graduates: Near the Top
 
-If you are a student or recent graduate with limited work experience, place education near the top (after your summary), since it is one of your strongest qualifications.
+If you are a student or recent graduate with limited work experience, place [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) near the top (after your summary), since it is one of your strongest qualifications.
 
 ### Experienced Professionals: Near the Bottom
 
-Once you have several years of relevant work experience, your experience matters more than your education. Move the education section below your work experience.
+Once you have several years of relevant work experience, your experience matters more than your [education](https://thetailorcv.com/blog/how-to-list-education-on-resume). Move the [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) section below your work experience.
 
 ---
 
@@ -86,7 +86,7 @@ Include relevant coursework if:
 - You need to demonstrate knowledge in areas where you lack work experience
 
 Example for an entry-level data role:
-"Relevant Coursework: Statistics, Machine Learning, Database Systems, Data Mining, Linear Algebra"
+"Relevant Coursework: Statistics, [machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026), Database Systems, Data Mining, Linear Algebra"
 
 Remove coursework once you have relevant work experience - your job experience replaces the need to list courses.
 
@@ -110,13 +110,13 @@ CGPA: 8.4/10 | Relevant Coursework: Software Engineering, Cloud Computing, Netwo
 
 ### Experienced Professional (Education at Bottom, Concise)
 
-EDUCATION
+[education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 Bachelor of Engineering in Mechanical Engineering
 Pune University | 2018
 
 ### Master's Degree
 
-EDUCATION
+[education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 Master of Business Administration (MBA), Finance
 Indian Institute of Management, Bangalore | 2024
 
@@ -141,7 +141,7 @@ Or list relevant coursework completed.
 
 ### Online Degrees and Bootcamps
 
-List legitimate online degrees and bootcamps like any other education:
+List legitimate online degrees and bootcamps like any other [education](https://thetailorcv.com/blog/how-to-list-education-on-resume):
 "Full Stack Web Development Bootcamp | [Bootcamp Name] | 2025"
 
 ### Currently Pursuing Further Education
@@ -166,7 +166,7 @@ If your GPA is below 3.5/8.0, omit it. You are not required to include it.
 
 ### Mistake 2: Keeping education at the top with years of experience
 
-Experienced professionals should lead with work experience, not education.
+Experienced professionals should lead with work experience, not [education](https://thetailorcv.com/blog/how-to-list-education-on-resume).
 
 ### Mistake 3: Including high school with a college degree
 
@@ -209,7 +209,7 @@ Use this guide as part of a complete job-search workflow. Check your resume with
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
-List your education clearly: degree, institution, year, and GPA only if strong. Students and freshers should place education near the top with relevant coursework; experienced professionals should keep it concise at the bottom. Remove high school once you have a degree, and omit a weak GPA.
+List your education clearly: degree, institution, year, and GPA only if strong. Students and [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) should place education near the top with relevant coursework; experienced professionals should keep it concise at the bottom. Remove high school once you have a degree, and omit a weak GPA.
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read [how to list certifications on resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete guidance.
 

@@ -16,8 +16,8 @@ A portfolio only helps if recruiters can find and click it - and surprisingly ma
 In the **header/contact line**, alongside your email and LinkedIn. Keep it near the top so it survives the seven-second skim. See [Resume Contact Section](https://thetailorcv.com/blog/resume-contact-section).
 
 ## Format It for ATS and Humans
-- Use a **clean, readable URL**: yourname.com or github.com/you
-- **Hyperlink the text and also show the URL** - some ATS strip hyperlinks, so the visible text must still be usable
+- Use a **clean, readable URL**: yourname.com or [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization).com/you
+- **Hyperlink the text and also show the URL** - some [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) strip hyperlinks, so the visible text must still be usable
 - Avoid long tracking URLs and link shorteners (they look spammy and can break)
 - Make sure it is **https** and live
 
@@ -37,7 +37,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ## Pro Tips
 - Test the link from a phone and an incognito window before applying.
-- Put the most impressive destination first (site or GitHub, depending on role).
+- Put the most impressive destination first (site or [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), depending on role).
 - Audit the link every cycle with the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
 
 
@@ -49,11 +49,11 @@ Most parse the visible URL text fine; some strip the clickable hyperlink. Always
 
 ### Should I link GitHub or my website?
 
-Both if relevant. For developers, GitHub plus a site is ideal. For designers, the site (or Behance) comes first.
+Both if relevant. For developers, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) plus a site is ideal. For designers, the site (or Behance) comes first.
 
 ### Where exactly on the resume?
 
-The header contact line. Keep it with email and LinkedIn so it is seen immediately.
+The header contact line. Keep it with email and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) so it is seen immediately.
 
 ## Build Your Portfolio Now
 

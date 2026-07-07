@@ -20,7 +20,7 @@ Practice competency answers with [AI mock interviews](https://thetailorcv.com/mo
 
 ## What Is a Competency-Based Interview?
 
-Interviewers ask questions mapped to specific competencies from the job description:
+Interviewers ask questions mapped to specific competencies from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide):
 
 - "Tell me about a time you demonstrated leadership" -> **Leadership competency**
 - "Describe a situation where you had to adapt quickly" -> **Adaptability competency**
@@ -128,7 +128,7 @@ In [panel](https://thetailorcv.com/blog/panel-interview-tips-strategies) and [HR
 - Hypothetical answers when they asked for real experience
 - Not using STAR structure
 - Stories where your role is unclear
-- No measurable results
+- No [measurable results](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 
 Avoid all of these - see [common interview mistakes](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
 

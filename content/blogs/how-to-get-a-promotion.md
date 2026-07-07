@@ -36,7 +36,7 @@ Most companies have a leveling framework or competency matrix. If yours does:
 If your company has no formal framework:
 - Ask your manager directly: "What would I need to demonstrate to be promoted to [next level]?"
 - Observe what people at the next level do differently
-- Look at the job description for the next-level role
+- Look at the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) for the next-level role
 
 ---
 
@@ -44,7 +44,7 @@ If your company has no formal framework:
 
 Promotions require evidence. Take on work that demonstrates next-level impact:
 
-- Volunteer for high-visibility, high-impact projects
+- Volunteer for high-visibility, high-impact [projects](https://thetailorcv.com/blog/projects-in-resume)
 - Solve problems that matter to the business, not just your immediate team
 - Take ownership of outcomes, not just tasks
 - Mentor others (a key signal of seniority)
@@ -64,7 +64,7 @@ Doing great work that nobody sees does not get you promoted. You need decision-m
 - Write clear updates that show impact, not just activity
 - Share wins appropriately (without arrogance) in team channels
 - Contribute in cross-functional settings where senior people are present
-- Take on projects that interface with leadership
+- Take on [projects](https://thetailorcv.com/blog/projects-in-resume) that interface with leadership
 
 Visibility is not bragging - it is making your real contributions known so they can be evaluated fairly.
 
@@ -160,7 +160,7 @@ If you cannot list your specific quantified achievements, you cannot make a stro
 - [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
 - [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [Work-Life Balance Tips for Professionals](https://thetailorcv.com/blog/work-life-balance-tips)
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
@@ -181,4 +181,5 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 Getting promoted requires operating at the next level, delivering visible business impact, building sponsorship, and proactively making your case. Promotions formalize the value you already demonstrate - your job is to demonstrate it clearly and make it visible.
 
 Document your accomplishments continuously and keep your resume current with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). When the time comes, use the [how to ask for a raise guide](https://thetailorcv.com/blog/how-to-ask-for-a-raise) for the compensation conversation, and keep building in-demand skills with the [skills guide](https://thetailorcv.com/blog/skills-to-add-to-resume-2026).
+
 

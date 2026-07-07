@@ -23,7 +23,7 @@ Before worrying about length, make sure your content is right. Run your resume t
 - **0-10 years of experience**: One page
 - **10+ years of experience**: One to two pages
 - **Senior leadership, academia, or specialized fields**: Two pages (sometimes more for CVs)
-- **Students, freshers, internships**: One page, always
+- **Students, [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), internships**: One page, always
 
 When in doubt, shorter is better. A tight one-page resume almost always beats a padded two-page resume.
 
@@ -53,7 +53,7 @@ A two-page resume is appropriate if you have:
 - Multiple roles with substantial, distinct accomplishments
 - Senior or leadership positions with broad scope
 - Technical roles requiring detailed project or publication lists
-- Significant certifications, patents, or publications
+- Significant [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), patents, or publications
 
 If you use two pages, make sure the second page is full (at least half to two-thirds) and contains valuable content - not padding. A 1.2-page resume looks unfinished; either tighten to one page or expand meaningfully to fill most of two.
 
@@ -68,7 +68,7 @@ One page for most. Two pages acceptable for senior/staff/principal engineers wit
 One page for under 10 years. Two pages for senior managers and executives.
 
 ### Healthcare (Nurses, Doctors, Pharmacists)
-One to two pages. Clinical roles often need space for licensure, certifications, and clinical experience.
+One to two pages. Clinical roles often need space for licensure, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), and clinical experience.
 
 ### Academia and Research
 A full CV (curriculum vitae) can be many pages, including publications, grants, teaching, and presentations. This is different from a resume.
@@ -77,7 +77,7 @@ A full CV (curriculum vitae) can be many pages, including publications, grants, 
 Federal resumes (e.g., USAJobs in the US) are often deliberately longer (3-5 pages) due to specific format requirements. Follow the posting's instructions.
 
 ### Creative (Design, Writing)
-One page resume + a separate portfolio. The portfolio carries the depth; the resume stays tight.
+One page resume + a separate [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio). The [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) carries the depth; the resume stays tight.
 
 ---
 
@@ -87,7 +87,7 @@ If your resume is spilling past your target length:
 
 1. **Remove old experience** - Roles older than 10-15 years, or irrelevant early-career jobs.
 2. **Cut the objective and references line** - "References available on request" and generic objectives waste space.
-3. **Trim bullet points** - Keep 3-5 strong bullets per role, not 8 weak ones. Lead with your best.
+3. **Trim [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)** - Keep 3-5 strong bullets per role, not 8 weak ones. Lead with your best.
 4. **Remove generic skills** - "Microsoft Office," "communication," "team player."
 5. **Tighten language** - "Responsible for managing a team of 5" becomes "Managed a team of 5."
 6. **Reduce white space and margins** - Within reason; keep it readable (0.5-0.75 inch margins).
@@ -100,16 +100,16 @@ Read [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-
 
 ## How to Expand a Resume That's Too Short
 
-If your resume is too sparse (common for freshers):
+If your resume is too sparse (common for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers)):
 
-1. **Add a projects section** - For students and career changers, projects are essential and fill space with real value.
+1. **Add a [projects](https://thetailorcv.com/blog/projects-in-resume) section** - For students and career changers, [projects](https://thetailorcv.com/blog/projects-in-resume) are essential and fill space with real value.
 2. **Expand on achievements** - Add quantified results to thin bullets.
-3. **Add relevant coursework** - For freshers, list relevant courses under education.
-4. **Add certifications** - Free certifications (Google, AWS, Meta) add credibility and content.
+3. **Add relevant coursework** - For [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), list relevant courses under education.
+4. **Add [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)** - Free [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (Google, AWS, Meta) add credibility and content.
 5. **Include volunteer or extracurricular leadership** - Especially relevant for entry-level.
-6. **Add a skills section** - Organized by category.
+6. **Add a [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)** - Organized by category.
 
-Do not pad with fluff. An honest, focused half-page is better than a page filled with meaningless filler. Read the [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) and [first resume with no experience guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience) for fresher-specific advice.
+Do not pad with fluff. An honest, focused half-page is better than a page filled with meaningless filler. Read the [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) and [first resume with no experience guide](https://thetailorcv.com/blog/resume-with-no-experience) for fresher-specific advice.
 
 ---
 
@@ -155,10 +155,10 @@ Relevance beats completeness. Your resume is a marketing document, not a complet
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/resume-with-no-experience)
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
 - [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
@@ -174,4 +174,5 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 Resume length in 2026: one page for under 10 years of experience, one to two pages for senior professionals. Prioritize relevance and impact over completeness. A tight, focused resume always beats a padded one.
 
 Once your length is right, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to ensure your content matches the job. Use [ATS-friendly templates](https://www.thetailorcv.com/templates) and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide).
+
 

@@ -24,8 +24,8 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Core HR competencies
 4. Work experience
-5. Education
-6. Certifications
+5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 One to two pages depending on experience and scope of HR programs managed.
 
@@ -49,7 +49,7 @@ HR professional with an MBA (HR specialization) and 2 years of recruiting and HR
 
 ## HR Manager Core Competencies
 
-Talent Acquisition: Job posting, sourcing, screening, structured interviewing, offer management, ATS management (Greenhouse, Lever, Workday)
+Talent Acquisition: Job posting, sourcing, screening, structured interviewing, offer management, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) management (Greenhouse, Lever, Workday)
 HR Operations: HRMS, onboarding, offboarding, HRIS data management, payroll coordination, policy administration
 Employee Relations: Conflict resolution, grievance handling, disciplinary procedures, exit interviews, culture surveys
 Learning and Development: Training programs, onboarding design, leadership development, skills gap analysis, LMS management
@@ -66,7 +66,7 @@ Compliance: Labor law compliance, POSH Act, employment contracts, background ver
 - Onboarding
 - Employee relations
 - HRIS / HRMS
-- ATS (Greenhouse / Workday / Lever)
+- [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) (Greenhouse / Workday / Lever)
 - Performance management
 - HR policies
 - Compensation and benefits
@@ -132,7 +132,7 @@ HR manages the most important asset - people. Yet many HR resumes have no number
 
 ### Mistake 3: Missing HR technology
 
-In 2026, HR professionals must be fluent in HRMS tools. List your specific ATS, HRIS, and people analytics platforms.
+In 2026, HR professionals must be fluent in HRMS tools. List your specific [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it), HRIS, and people analytics platforms.
 
 ### Mistake 4: No business alignment
 

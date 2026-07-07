@@ -29,15 +29,15 @@ TheLadders' eye-tracking study - one of the most widely cited in recruiting - fo
 2. Current job title and company
 3. Previous job title and company
 4. Start and end dates
-5. Education
+5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
-That's it. In the first scan, the recruiter is answering one question: *"Does this person have the right background for this role?"*
+That's it. In the first scan, the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) is answering one question: *"Does this person have the right background for this role?"*
 
 ---
 
 ## The 10-Second Test - What Passes
 
-A resume passes the 10-second test if the recruiter can immediately see:
+A resume passes the 10-second test if the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) can immediately see:
 
 - **Who you are** - your name and current title
 - **Where you have worked** - company names that register
@@ -71,7 +71,7 @@ Recruiters scan the left side before reading across. This means:
 
 - **Job titles should be left-aligned** and easy to find
 - **Company names** should be prominent
-- **Section headers** should be clear (Experience, Education, Skills - not creative alternatives)
+- **Section headers** should be clear (Experience, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), Skills - not creative alternatives)
 
 ### Dates: The Timeline Check
 
@@ -85,11 +85,11 @@ On the first pass, the right side of a single-column resume is rarely read. This
 
 ## What Earns a Longer Read
 
-A resume that passes the 10-second test earns 30-60 seconds of real reading. At this stage, the recruiter is looking at:
+A resume that passes the 10-second test earns 30-60 seconds of real reading. At this stage, the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) is looking at:
 
 - **Bullet point quality** - Are achievements quantified? Are they relevant?
 - **Company/role relevance** - Does the experience match the job?
-- **Skills match** - Do the skills listed align with the job description?
+- **Skills match** - Do the skills listed align with the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)?
 - **Career trajectory** - Is there logical progression?
 
 This is where your bullet points and keywords carry the weight. Read [how to write resume bullet points that get results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) and [best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume) to make these count.
@@ -98,7 +98,7 @@ This is where your bullet points and keywords carry the weight. Read [how to wri
 
 ## The ATS Layer Before the Human
 
-Before a human recruiter ever sees your resume, an ATS system filters it. ATS does not scan like a human - it parses for keywords, dates, and section structure. A resume that looks beautiful can fail ATS and never reach a human at all.
+Before a human recruiter ever sees your resume, an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) system filters it. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) does not scan like a human - it parses for keywords, dates, and section structure. A resume that looks beautiful can fail [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and never reach a human at all.
 
 This means your resume needs to win two reviews: the ATS scan and the human scan. Read [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) for the formatting rules that satisfy both. Then check your ATS score with the [TailorCV checker](https://www.thetailorcv.com/solutions).
 
@@ -135,8 +135,8 @@ A single typo can end a review. Inconsistent date formats, varying font sizes, a
 2. **Use left-aligned job titles** - They catch the eye on the scan line
 3. **Bold company names** - Make them easy to spot
 4. **Keep bullets short** - 1-2 lines each, starting with an action verb
-5. **Use standard section headers** - Experience, Education, Skills
-6. **Single-column layout only** - Two-column breaks the scan and ATS
+5. **Use standard section headers** - Experience, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), Skills
+6. **Single-column layout only** - Two-column breaks the scan and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 7. **White space matters** - A dense, cramped resume is harder to scan than one with breathing room
 
 ---

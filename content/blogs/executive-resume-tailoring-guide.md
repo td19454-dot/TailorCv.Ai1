@@ -161,7 +161,7 @@ The second version shows strategic thinking, negotiation at scale, and measurabl
 
 Executive roles are often accompanied by a position brief or specification document (prepared by the search firm).
 
-This document is more valuable than a standard job description.
+This document is more valuable than a standard [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 It contains:
 - The specific business challenges the role must address
 - The current state of the function being hired for
@@ -200,8 +200,8 @@ The keywords at executive level are different - "P&L ownership," "organizational
 - References to references ("available upon request" - no executive resume includes this)
 
 **Reduce:**
-- Education detail for established executives (institution + degree is usually sufficient)
-- Older certifications that are outdated or no longer material
+- [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) detail for established executives (institution + degree is usually sufficient)
+- Older [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that are outdated or no longer material
 
 ---
 
@@ -224,7 +224,7 @@ Your summary is where you set the frame before the reader even reaches your hist
 At the executive level, cultural fit is scrutinized as heavily as competency.
 Research the company's leadership culture and include one or two genuine alignment signals in your summary.
 
-**Neglecting your LinkedIn profile**
+**Neglecting your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)**
 After reviewing your resume, hiring committees and search firms always check your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide). Misalignment between the two can undermine a strong executive application.
 
 ---
@@ -238,7 +238,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Does an executive resume go through ATS?
 
-Sometimes, depending on the hiring process. Large enterprises use ATS even for senior roles. Executive search firms use their own databases. In both cases, keyword relevance and clear formatting matter.
+Sometimes, depending on the hiring process. Large enterprises use [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) even for senior roles. Executive search firms use their own databases. In both cases, keyword relevance and clear formatting matter.
 
 ### How far back should an executive resume go?
 

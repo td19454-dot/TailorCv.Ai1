@@ -14,7 +14,7 @@ You passed the [behavioral questions](https://thetailorcv.com/blog/behavioral-in
 
 Most candidates accept the first number. Most employers expect you to negotiate. The gap between those two facts is where thousands of dollars per year are left on the table.
 
-This guide covers salary negotiation after interviews in 2026 - when to negotiate, what to say, and how to practice.
+This guide covers [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-guide) after interviews in 2026 - when to negotiate, what to say, and how to practice.
 
 Win the interview first: use the [complete interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [AI mock interview tool](https://thetailorcv.com/mock-interview), and [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to get more callbacks.
 

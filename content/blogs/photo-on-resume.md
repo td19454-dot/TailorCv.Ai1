@@ -42,10 +42,10 @@ For overall resume structure, read [the anatomy of a perfect resume](https://the
 ### Anti-Discrimination Laws
 In the United States, the Civil Rights Act, Age Discrimination in Employment Act, and other laws prohibit hiring decisions based on race, gender, age, appearance, disability, or national origin.
 
-Many US employers train their HR teams and recruiters not to use photos in screening - specifically to avoid liability. A photo can put the recruiter in an awkward position and may lead to your resume being set aside to avoid any appearance of bias-based decision-making.
+Many US employers train their HR teams and recruiters not to use photos in screening - specifically to avoid liability. A photo can put the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) in an awkward position and may lead to your resume being set aside to avoid any appearance of bias-based decision-making.
 
 ### ATS Can't Read Images
-ATS systems parse text. A photo embedded in a resume is simply an image - ATS ignores it. But more importantly, resumes using graphics and images sometimes have their text parsing disrupted, causing the ATS to miss your keywords and experience.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems parse text. A photo embedded in a resume is simply an image - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) ignores it. But more importantly, resumes using graphics and images sometimes have their text parsing disrupted, causing the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) to miss your keywords and experience.
 
 Run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to verify your document is being read correctly.
 
@@ -95,7 +95,7 @@ If you are in a country or industry where a photo is expected:
 
 ## What About LinkedIn Photos?
 
-LinkedIn is different from your resume. A professional photo on LinkedIn is strongly recommended everywhere - including the US. Your LinkedIn profile is a public, social professional presence, and a photo dramatically increases profile views and recruiter engagement.
+LinkedIn is different from your resume. A professional photo on LinkedIn is strongly recommended everywhere - including the US. Your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) is a public, social professional presence, and a photo dramatically increases profile views and recruiter engagement.
 
 Make sure your LinkedIn photo is professional and consistent with how you present yourself. Read [LinkedIn profile optimization guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) for complete advice.
 
@@ -111,7 +111,7 @@ In the US or UK, if a job posting requests a photo, it may signal the company ha
 
 ## The Bottom Line
 
-- **US, Canada, UK, Australia**: No photo on your resume. A clean, professional, text-only document is correct. Your photo goes on LinkedIn.
+- **US, Canada, UK, Australia**: No photo on your resume. A clean, professional, text-only document is correct. Your photo goes on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 - **Germany, France, Spain, South Korea, Japan**: A professional photo is often expected or at least accepted - follow local conventions.
 - **India, most tech/startup environments globally**: Photo not required; text resume is standard.
 

@@ -25,7 +25,7 @@ You can have a brilliant portfolio and still lose opportunities if the contact p
 - Inactive or unprofessional social links
 
 ## Placement Matters
-Put a contact CTA in the nav, repeat it right after your projects (when interest peaks), and dedicate a clean contact section at the bottom. Never make a hiring manager hunt.
+Put a contact CTA in the nav, repeat it right after your [projects](https://thetailorcv.com/blog/projects-in-resume) (when interest peaks), and dedicate a clean contact section at the bottom. Never make a hiring manager hunt.
 
 ## Make It Trustworthy
 A real photo or logo, a response-time note ("I reply within 24 hours"), and correct, tested links all reduce friction and increase replies.
@@ -55,11 +55,11 @@ Offer both. Some people prefer a quick form; others want to email directly. Keep
 
 ### Should I show my phone number?
 
-Optional. Email and LinkedIn are usually enough; add a number only if you are comfortable and it fits your field.
+Optional. Email and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) are usually enough; add a number only if you are comfortable and it fits your field.
 
 ### Where should the contact CTA go?
 
-In the nav, after your projects, and in a dedicated footer section - repetition converts.
+In the nav, after your [projects](https://thetailorcv.com/blog/projects-in-resume), and in a dedicated footer section - repetition converts.
 
 ## Build Your Portfolio Now
 

@@ -67,7 +67,7 @@ Practice these with [STAR method structure](https://thetailorcv.com/blog/star-me
 
 ## Resume Strategies for Job Hoppers
 
-Before the interview, optimize your resume:
+Before the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), optimize your resume:
 
 - Group short contract roles under one heading
 - Lead with impact bullets, not dates

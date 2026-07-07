@@ -18,12 +18,12 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ## Best Scrum Master Resume Format
 
-1. Header with certifications (CSM, PSM, SAFe)
+1. Header with [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (CSM, PSM, SAFe)
 2. Summary
 3. Agile skills and competencies
 4. Work experience
-5. Certifications
-6. Education
+5. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One to two pages.
 
@@ -49,7 +49,7 @@ Scrum Master with 2 years of experience supporting agile software teams. Facilit
 
 Agile Frameworks: Scrum, Kanban, SAFe, LeSS, hybrid agile
 Ceremonies: Sprint planning, daily stand-ups, sprint reviews, retrospectives, backlog refinement
-Tools: Jira, Confluence, Azure DevOps, Trello, Miro, Mural
+Tools: Jira, Confluence, Azure [DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026), Trello, Miro, Mural
 Metrics: Velocity, burndown/burnup charts, cycle time, lead time, sprint predictability, cumulative flow
 Coaching: Servant leadership, team facilitation, conflict resolution, stakeholder management
 Practices: Story estimation (planning poker), definition of done, impediment removal, continuous improvement
@@ -136,7 +136,7 @@ Scrum is measurable. Show velocity trends, predictability rates, cycle time, or 
 
 ### Mistake 3: Confusing scrum master with project manager
 
-A scrum master is a servant-leader and facilitator, not a command-and-control project manager. Use agile servant-leadership language.
+A scrum master is a servant-leader and facilitator, not a command-and-control [project manager](https://thetailorcv.com/blog/project-manager-resume-2026). Use agile servant-leadership language.
 
 ### Mistake 4: No certification
 

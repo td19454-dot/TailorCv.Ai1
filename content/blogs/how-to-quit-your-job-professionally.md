@@ -96,7 +96,7 @@ Your notice period is your last impression. Make it a good one.
 - Continue working diligently - do not check out mentally
 - Document your work and processes for your successor
 - Offer to train your replacement or hand over to colleagues
-- Complete or responsibly transition your projects
+- Complete or responsibly transition your [projects](https://thetailorcv.com/blog/projects-in-resume)
 - Be gracious and helpful
 
 Standard notice periods:
@@ -127,9 +127,9 @@ Counteroffers are often about the cost and disruption of replacing you, not a ge
 In your final days:
 - Say genuine goodbyes to colleagues
 - Thank people who helped you
-- Connect with valuable contacts on LinkedIn before you lose access
+- Connect with valuable contacts on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) before you lose access
 - Return company property
-- Complete the exit interview professionally (be constructive, not bitter)
+- Complete the exit [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) professionally (be constructive, not bitter)
 - Leave your contact information for those who want to stay in touch
 
 Your network is one of your most valuable career assets. Leave it stronger than you found it.
@@ -152,7 +152,7 @@ Leaving without proper notice (when contractually required) is unprofessional an
 
 ### Mistake 4: Oversharing in the exit interview
 
-Be constructive and professional. The exit interview is not the place to settle scores.
+Be constructive and professional. The exit [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is not the place to settle scores.
 
 ### Mistake 5: Accepting a counteroffer reflexively
 

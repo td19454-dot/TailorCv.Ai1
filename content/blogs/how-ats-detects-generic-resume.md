@@ -10,7 +10,7 @@ slug: how-ats-detects-generic-resume
 keywords: how ats detects generic resume, ats generic resume, ats resume filtering, ats resume score low, ats reject resume reasons
 ---
 
-Most job seekers think ATS systems are simple keyword matchers. The reality is more sophisticated - and more unforgiving for generic resumes. Modern ATS platforms score your resume on multiple signals simultaneously, and a resume that hasn't been tailored to the specific role will fail on several of them at once. Here is exactly how it happens.
+Most job seekers think [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems are simple keyword matchers. The reality is more sophisticated - and more unforgiving for generic resumes. Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms score your resume on multiple signals simultaneously, and a resume that hasn't been tailored to the specific role will fail on several of them at once. Here is exactly how it happens.
 
 See how your resume scores right now with the [free ATS checker](/solutions).
 
@@ -18,7 +18,7 @@ See how your resume scores right now with the [free ATS checker](/solutions).
 
 ## What ATS Actually Does When It Receives Your Resume
 
-When you submit an application, the ATS does not just store your resume - it parses it, scores it, and ranks it against every other candidate before a recruiter opens a single file. That ranking determines who gets a call.
+When you submit an application, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) does not just store your resume - it parses it, scores it, and ranks it against every other candidate before a recruiter opens a single file. That ranking determines who gets a call.
 
 The scoring process involves:
 
@@ -26,21 +26,21 @@ The scoring process involves:
 2. **Keyword matching** - comparing your terms against required and preferred skills
 3. **Section weighting** - evaluating how prominent key information is
 4. **Job title alignment** - checking whether your current/recent title maps to the role
-5. **Contextual scoring** - some modern ATS platforms use AI to assess whether skills appear in meaningful context
+5. **Contextual scoring** - some modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms use AI to assess whether skills appear in meaningful context
 
-A generic resume fails at steps 2, 3, and 4 simultaneously.
+A [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) fails at steps 2, 3, and 4 simultaneously.
 
 ---
 
 ## Signal 1 - Keyword Match Score Is Low
 
-Every job posting is tied to a keyword profile inside the ATS. That profile is built from:
+Every job posting is tied to a keyword profile inside the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). That profile is built from:
 
 - The required and preferred skills in the posting
 - Skills common to the role category
 - Tools and technologies specified by the hiring team
 
-Your resume is scored on how many of those keywords it contains. A generic resume - one written for a category of job, not a specific posting - will match some keywords by accident but miss many by design.
+Your resume is scored on how many of those keywords it contains. A [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) - one written for a category of job, not a specific posting - will match some keywords by accident but miss many by design.
 
 **Example:**
 
@@ -54,7 +54,7 @@ For a complete guide to matching keywords, see [how to match resume keywords to 
 
 ## Signal 2 - Job Title Mismatch
 
-ATS systems place significant weight on job title alignment - both your most recent title and the title you are applying for. A generic resume often uses vague or internally-specific titles that don't map cleanly.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems place significant weight on job title alignment - both your most recent title and the title you are applying for. A generic resume often uses vague or internally-specific titles that don't map cleanly.
 
 | What You Have | What the ATS Wants | Impact |
 |---|---|---|
@@ -69,14 +69,14 @@ The fix is simple: mirror the job title in your resume headline and summary. See
 
 ## Signal 3 - Section Structure Problems
 
-Generic resumes often have non-standard section names that confuse the ATS parser. When the parser can't identify a section, it may skip it entirely - meaning your experience or skills section gets zero scoring weight.
+Generic resumes often have non-standard section names that confuse the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parser. When the parser can't identify a section, it may skip it entirely - meaning your experience or skills section gets zero scoring weight.
 
-**Section names that confuse ATS parsers:**
+**Section names that confuse [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsers:**
 
 - "What I Bring" instead of "Professional Summary"
 - "Where I've Been" instead of "Work Experience"
 - "Things I Know" instead of "Skills"
-- "My Journey" instead of "Education"
+- "My Journey" instead of "[education](https://thetailorcv.com/blog/how-to-list-education-on-resume)"
 
 Standard section headers score higher because they map cleanly to what the ATS expects. If you are using a creative template, this is one of the most common ways a strong resume gets destroyed in ATS. See [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) for the full list.
 
@@ -84,9 +84,9 @@ Standard section headers score higher because they map cleanly to what the ATS e
 
 ## Signal 4 - Low Skills Section Relevance
 
-ATS systems compare your skills section against the required and preferred skills in the posting. A generic skills section - "Communication, Teamwork, Microsoft Office, Problem Solving" - will score near zero for most technical or professional roles because none of those terms appear in the job's skills profile.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems compare your skills section against the required and preferred skills in the posting. A generic skills section - "Communication, Teamwork, Microsoft Office, Problem Solving" - will score near zero for most technical or professional roles because none of those terms appear in the job's skills profile.
 
-What scores well is a skills section populated with the specific tools, technologies, certifications, and methodologies the posting names.
+What scores well is a skills section populated with the specific tools, technologies, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), and methodologies the posting names.
 
 See [ATS keywords to boost your score](https://thetailorcv.com/blog/ats-keywords-to-boost-score) for the complete breakdown of keyword types and where to place them.
 
@@ -94,9 +94,9 @@ See [ATS keywords to boost your score](https://thetailorcv.com/blog/ats-keywords
 
 ## Signal 5 - Sparse or Vague Experience Descriptions
 
-Modern ATS platforms - especially those using AI scoring - don't just check for the presence of a keyword. They check whether it appears in a meaningful context. "Managed projects" scores lower than "Managed cross-functional teams of 8-12 people to deliver software projects on schedule and within budget."
+Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms - especially those using AI scoring - don't just check for the presence of a keyword. They check whether it appears in a meaningful context. "Managed projects" scores lower than "Managed cross-functional teams of 8-12 people to deliver software projects on schedule and within budget."
 
-Generic resumes tend to have thin, task-based bullets that don't provide enough context for the ATS to identify strong relevance. Tailored resumes embed keywords inside accomplishments.
+Generic resumes tend to have thin, task-based bullets that don't provide enough context for the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) to identify strong relevance. Tailored resumes embed keywords inside accomplishments.
 
 Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) to turn generic task descriptions into high-scoring achievement bullets.
 
@@ -104,7 +104,7 @@ Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-q
 
 ## Signal 6 - Low Match Rate Triggers Auto-Rejection in Many Systems
 
-Many ATS platforms are configured with a minimum score threshold. Any resume below that threshold - typically 60-70% - is auto-rejected before a recruiter ever views it. A generic resume for a competitive role will often fall below this threshold without the candidate ever knowing.
+Many [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms are configured with a minimum score threshold. Any resume below that threshold - typically 60-70% - is auto-rejected before a recruiter ever views it. A generic resume for a competitive role will often fall below this threshold without the candidate ever knowing.
 
 That is why candidates are frequently told "we'll keep your resume on file" without any actual review happening.
 
@@ -118,7 +118,7 @@ The answer is not tricks - it is alignment. Make your resume a close match to th
 
 **The fastest way to do this:**
 
-1. Identify the top 10 keywords from the job description
+1. Identify the top 10 keywords from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 2. Confirm every one you genuinely possess appears in your resume
 3. Mirror the job title in your headline and summary
 4. Use standard section headers
@@ -136,7 +136,7 @@ Yes. It scores on keyword match, job title alignment, and skills relevance - all
 
 ### Do all companies use ATS?
 
-Over 90% of large companies and a growing number of mid-sized companies use ATS. Even when a human reviews your resume, the ATS score influences where it appears in their queue.
+Over 90% of large companies and a growing number of mid-sized companies use ATS. Even when a human reviews your resume, the [ATS score](https://thetailorcv.com/blog/ats-score-guide) influences where it appears in their queue.
 
 ### How do I know my ATS score?
 
@@ -172,7 +172,7 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
 ## Conclusion
-ATS doesn't hate you - it just doesn't recognize you when your resume wasn't written for the role you're applying to. Every signal it uses to detect a generic resume is fixable in minutes: mirror the job title, match the keywords, use standard section headers, and verify with a tool. Do that consistently and you will see your interview rate climb.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) doesn't hate you - it just doesn't recognize you when your resume wasn't written for the role you're applying to. Every signal it uses to detect a generic resume is fixable in minutes: mirror the job title, match the keywords, use standard section headers, and verify with a tool. Do that consistently and you will see your interview rate climb.
 
 [Check your ATS score for free](/solutions)
 

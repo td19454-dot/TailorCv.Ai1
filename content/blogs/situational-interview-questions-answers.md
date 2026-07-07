@@ -10,7 +10,7 @@ slug: situational-interview-questions-answers
 keywords: situational interview questions, situational interview answers, what would you do if interview, hypothetical interview questions 2026
 ---
 
-Behavioral questions ask about the past: "Tell me about a time when..." **Situational interview questions** ask about the future: "What would you do if..." They test your judgment, values, and problem-solving approach when you cannot rely on a rehearsed story.
+Behavioral questions ask about the past: "Tell me about a time when..." **Situational [interview questions](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)** ask about the future: "What would you do if..." They test your judgment, values, and problem-solving approach when you cannot rely on a rehearsed story.
 
 This guide covers how to answer situational questions in 2026 - with frameworks, examples, and [AI mock interview practice](https://thetailorcv.com/mock-interview).
 
@@ -68,7 +68,7 @@ Practice all of these with [AI mock interviews](https://thetailorcv.com/blog/how
 
 - Customer is angry and demanding a refund you cannot authorize
 - You discover a colleague violating company policy
-- You are asked to do something outside your job description
+- You are asked to do something outside your [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - You realize you are underqualified for an assigned task
 - Two team members are in conflict affecting project delivery
 - You receive an offer from another company during an active project

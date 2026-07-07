@@ -64,16 +64,16 @@ In 2026, knowing how to open Word and Excel is assumed for every white-collar ro
 
 ### 9. Skills you cannot discuss in an interview
 
-If you list "Machine Learning," "Kubernetes," or "SAP" because you watched a YouTube video once, remove it. Interviewers will ask about anything on your resume. Getting caught exaggerating is a red flag that can end an interview immediately.
+If you list "Machine Learning," "Kubernetes," or "SAP" because you watched a YouTube video once, remove it. Interviewers will ask about anything on your resume. Getting caught exaggerating is a red flag that can end an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) immediately.
 
 ### 10. Generic personality traits
 
-"Team player," "hard worker," "fast learner," "detail-oriented," "passionate" - these are claims without evidence. Everyone says this. Show teamwork through a collaboration example. Show fast learning through a specific case. Show passion through projects. Remove the traits and replace with proof.
+"Team player," "hard worker," "fast learner," "detail-oriented," "passionate" - these are claims without evidence. Everyone says this. Show teamwork through a collaboration example. Show fast learning through a specific case. Show passion through [projects](https://thetailorcv.com/blog/projects-in-resume). Remove the traits and replace with proof.
 
 ### 11. Hobbies and interests (most of the time)
 
 Reading, traveling, cooking, music - these are universal and say nothing. Remove them unless:
-- The hobby is directly relevant to the role (e.g., coding side projects for a tech role)
+- The hobby is directly relevant to the role (e.g., coding side [projects](https://thetailorcv.com/blog/projects-in-resume) for a tech role)
 - The hobby shows unusual achievement (e.g., national-level athlete)
 - The company culture explicitly values personality fit and you have strong unique interests
 
@@ -87,7 +87,7 @@ Once you have a bachelor's degree, your high school entry should be removed. Exc
 
 ### 14. Old or irrelevant work experience
 
-A 10-year-experienced software engineer does not need to list their call center job from 2011. Include only the last 10 years of relevant experience. For more recent candidates, remove roles shorter than 3 months that contributed nothing relevant.
+A 10-year-experienced [software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) does not need to list their call center job from 2011. Include only the last 10 years of relevant experience. For more recent candidates, remove roles shorter than 3 months that contributed nothing relevant.
 
 ### 15. Experience from 15+ years ago (unless directly relevant)
 
@@ -99,11 +99,11 @@ Older experience dates you, takes space, and is rarely relevant. A senior engine
 
 ### 16. Tables and text boxes
 
-Many ATS systems cannot read text inside tables or text boxes. The content disappears - only the empty box is parsed. Use simple paragraph and list formatting instead.
+Many [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems cannot read text inside tables or text boxes. The content disappears - only the empty box is parsed. Use simple paragraph and list formatting instead.
 
 ### 17. Headers and footers in Word
 
-Text placed in the header or footer section of a Word document is often not extracted by ATS parsers. Put your name and contact information in the main body.
+Text placed in the header or footer section of a Word document is often not extracted by [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsers. Put your name and contact information in the main body.
 
 ### 18. Columns (two-column layouts)
 
@@ -111,7 +111,7 @@ Some ATS systems read columns left-to-right row-by-row rather than top-to-bottom
 
 ### 19. Graphics, icons, and charts
 
-Skill bar charts (the horizontal bars showing "JavaScript: 80%") cannot be read by ATS. Icons next to contact information are often not parseable. Remove all graphics and represent everything in clean text.
+Skill bar charts (the horizontal bars showing "JavaScript: 80%") cannot be read by [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). Icons next to contact information are often not parseable. Remove all graphics and represent everything in clean text.
 
 ### 20. Decorative fonts or very small text
 
@@ -175,10 +175,10 @@ Before sending your next application:
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/resume-with-no-experience)
 - [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [Why Your Resume Never Gets a Response - 12 Hidden ATS Mistakes Killing Your Job Search in 2026](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 
 ## Make This Practical
@@ -191,4 +191,5 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 What you remove from your resume is as important as what you add. A clean, focused resume that removes noise lets your strongest achievements stand out.
 
 Once you have removed the wrong things, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your keywords match the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and then strengthen your bullets with the [action verbs guide](https://thetailorcv.com/blog/best-action-verbs-for-resume) and [achievement quantification guide](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+
 

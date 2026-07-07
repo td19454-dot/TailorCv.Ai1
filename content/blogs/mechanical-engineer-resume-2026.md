@@ -24,9 +24,9 @@ Before applying, compare your resume to the job description with the [ATS score 
 2. Summary
 3. Technical skills
 4. Work experience
-5. Projects
-6. Education
-7. Certifications
+5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 One to two pages depending on project history and experience level.
 
@@ -94,7 +94,7 @@ Designed / Analyzed / Reduced / Improved + [component or system] + [manufacturin
 ### Weak Bullet Points
 
 - Designed parts using SolidWorks
-- Worked on product development projects
+- Worked on product development [projects](https://thetailorcv.com/blog/projects-in-resume)
 - Performed FEA analysis
 - Worked with manufacturing teams
 
@@ -116,7 +116,7 @@ Automotive Tier 1 Supplier | Jul 2022 - Present
 - Owned design and development of 8 powertrain bracket and mount components from concept through production release across 2 global vehicle programs.
 - Designed components in CATIA V5 with GD&T callouts, tolerance stacks, and DFM alignment, achieving first-article approval on 7 of 8 parts without major revision.
 - Performed ANSYS FEA to validate fatigue life under 10-year duty cycle - redesigned critical bracket cross-section, reducing stress concentration factor by 34% and passing validation without additional physical testing.
-- Reduced average part weight by 14% across portfolio through topology optimization and material grade upgrades.
+- Reduced average part weight by 14% across [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) through topology optimization and material grade upgrades.
 - Managed BOM and engineering documentation in Teamcenter PLM, supporting 3 product launches simultaneously.
 
 ---
@@ -126,7 +126,7 @@ Automotive Tier 1 Supplier | Jul 2022 - Present
 Strong project examples:
 
 - Design and FEA of a structural component (bracket, frame, fixture)
-- Thermal system design (heat exchanger, HVAC component)
+- Thermal [system design](https://thetailorcv.com/blog/system-design-interview-guide) (heat exchanger, HVAC component)
 - Fluid mechanics project (pump, pipe system, valve)
 - Mechanism design (linkage, gear train, cam-follower)
 - Energy system (solar collector, wind turbine blade)

@@ -16,11 +16,11 @@ Before you send another application, run a **free ATS resume scan**. In about 60
 
 ## What Is an ATS Resume Scan?
 
-An ATS resume scan analyzes your resume the way an Applicant Tracking System does. It checks how well your resume matches a job description and flags anything that could get you filtered out.
+An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) resume scan analyzes your resume the way an Applicant Tracking System does. It checks how well your resume matches a job description and flags anything that could get you filtered out.
 
 A good scan returns:
 
-- An overall ATS score
+- An overall [ATS score](https://thetailorcv.com/blog/ats-score-guide)
 - Keywords you matched and keywords you missed
 - Formatting and parseability warnings
 - Specific, actionable fixes
@@ -29,24 +29,24 @@ A good scan returns:
 
 ## Why Scan Your Resume Before Applying?
 
-Most companies use ATS software to handle application volume. If your resume is hard to parse or missing key terms, it can be ranked low automatically - regardless of your qualifications.
+Most companies use [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software to handle application volume. If your resume is hard to parse or missing key terms, it can be ranked low automatically - regardless of your qualifications.
 
 Scanning first lets you:
 
 - Catch silent formatting problems
 - Add the exact keywords recruiters configured
-- Replace weak phrasing with measurable results
+- Replace weak phrasing with [measurable results](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - Apply with a score you can trust
 
 ---
 
 ## How to Run a Free ATS Resume Scan (60 Seconds)
 
-1. **Copy the job description** for the role you want.
+1. **Copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)** for the role you want.
 2. **Open the** [ATS resume scanner](/solutions).
 3. **Upload your resume** (PDF or DOCX).
-4. **Paste the job description** so the scan is role-specific.
-5. **Read your report** - score, missing keywords, formatting issues.
+4. **Paste the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)** so the scan is role-specific.
+5. **Read your report** - score, [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description), formatting issues.
 6. **Fix and re-scan** until you reach 80+.
 
 That is the whole loop. Each re-scan takes seconds, so you can iterate fast.
@@ -79,7 +79,7 @@ If your score came back low, the step-by-step fix is in [why is my ATS score so 
 
 ## Scan Once Per Job
 
-Because ATS scores are calculated against a specific job description, scan your resume separately for each role. A version that scores 88 for one posting may score 60 for another with different requirements.
+Because [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scores are calculated against a specific job description, scan your resume separately for each role. A version that scores 88 for one posting may score 60 for another with different requirements.
 
 ---
 
@@ -91,11 +91,11 @@ Yes. You can scan your resume with the [free checker](/solutions) and get a comp
 
 ### How long does the scan take?
 
-About a minute - upload, paste the job description, and read your instant report.
+About a minute - upload, paste the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), and read your instant report.
 
 ### Is my resume data safe?
 
-Use the scan to analyze your resume against a job description and get recommendations; only upload documents to tools you trust.
+Use the scan to analyze your resume against a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and get recommendations; only upload documents to tools you trust.
 
 ### How many times can I scan?
 
@@ -124,7 +124,7 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
 ## Conclusion
-A free ATS resume scan is the smartest 60 seconds you can spend before applying. It shows you precisely why your resume is or isn't getting through - and how to fix it. Scan, optimize, and apply with confidence.
+A free [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) resume scan is the smartest 60 seconds you can spend before applying. It shows you precisely why your resume is or isn't getting through - and how to fix it. Scan, optimize, and apply with confidence.
 
 [Run your free ATS resume scan](/solutions)
 

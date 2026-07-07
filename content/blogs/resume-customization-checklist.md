@@ -26,10 +26,10 @@ Have the job posting open beside your resume. You will use it for comparison on 
 
 ### 1. Does your headline match the exact job title?
 
-Your headline should be the job title from the posting - not a variation, not a category. Recruiters and ATS both read this first.
+Your headline should be the job title from the posting - not a variation, not a category. Recruiters and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) both read this first.
 
-- Posting: "UX Designer" -> Headline: "UX Designer" 
-- Posting: "UX Designer" -> Headline: "Creative Professional" ✗
+- Posting: "[UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026)" -> Headline: "[UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026)" 
+- Posting: "[UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026)" -> Headline: "Creative Professional" ✗
 
 Read [how to write a resume headline](https://thetailorcv.com/blog/how-to-write-resume-headline).
 
@@ -43,7 +43,7 @@ Read your summary and the posting side by side. Your summary should contain the 
 
 ### 3. Does your summary say what you *deliver*, not just what you've *done*?
 
-"Experienced analyst with 6 years of experience" is what you are. "Data analyst who has driven 3x faster reporting cycles through SQL automation and Tableau dashboards" is what you deliver.
+"Experienced analyst with 6 years of experience" is what you are. "[data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) who has driven 3x faster reporting cycles through SQL automation and Tableau dashboards" is what you deliver.
 
 See [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary).
 
@@ -59,19 +59,19 @@ Highlight every skill under the "Requirements" section of the posting. Confirm e
 
 ### 5. Are any "Preferred" skills from the posting visible?
 
-Even preferred (non-mandatory) skills contribute to your ATS keyword score. Surface any you have.
+Even preferred (non-mandatory) skills contribute to your [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keyword score. Surface any you have.
 
 ---
 
 ### 6. Are you using acronyms AND full terms for key skills?
 
-Write "Search Engine Optimization (SEO)" so you match both the acronym and full-form versions the ATS might look for. Same for "Agile (Scrum)," "CRM (Salesforce)," etc.
+Write "Search Engine Optimization (SEO)" so you match both the acronym and full-form versions the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) might look for. Same for "Agile (Scrum)," "CRM (Salesforce)," etc.
 
 ---
 
 ### 7. Is your skills section ordered by relevance to this role?
 
-Move the most job-relevant skills to the top of the section. ATS weights position of terms and recruiters scan the top of lists.
+Move the most job-relevant skills to the top of the section. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) weights position of terms and recruiters scan the top of lists.
 
 For a comprehensive list of high-value keywords by industry, see [best resume keywords to beat ATS systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).
 
@@ -95,7 +95,7 @@ Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-q
 
 ### 10. Are the posting's key keywords embedded in at least 2-3 experience bullets?
 
-Keywords in the experience section score higher than keywords in the skills section alone because they appear in a meaningful context. Find 2-3 bullets where you can naturally work in a required term.
+Keywords in the experience section score higher than keywords in the [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) alone because they appear in a meaningful context. Find 2-3 bullets where you can naturally work in a required term.
 
 ---
 
@@ -115,13 +115,13 @@ No text boxes, tables, headers in graphics, columns, or unusual fonts. See [ATS 
 
 ### 13. Are your section headers standard?
 
-Use: Summary, Experience, Skills, Education, Certifications. Non-standard headers ("Where I've Been," "My Arsenal") confuse ATS parsers and get skipped.
+Use: Summary, Experience, Skills, Education, Certifications. Non-standard headers ("Where I've Been," "My Arsenal") confuse [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsers and get skipped.
 
 ---
 
 ### 14. Is your contact information in the main body (not a header graphic)?
 
-ATS parsers often miss content in page headers and footers. Your name, email, phone, and LinkedIn should be in the regular document flow.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsers often miss content in page headers and footers. Your name, email, phone, and LinkedIn should be in the regular document flow.
 
 ---
 
@@ -153,11 +153,11 @@ For how to calibrate your tailoring effort, read [how much you should change you
 
 ### Do I need to run this checklist every time?
 
-At minimum, complete items 1-7 for every application. Those cover the areas that drive 80% of ATS score differences.
+At minimum, complete items 1-7 for every application. Those cover the areas that drive 80% of [ATS score](https://thetailorcv.com/blog/ats-score-guide) differences.
 
 ### What if I run out of time?
 
-Items 1 (headline), 4 (required skills), and 15 (ATS check) are the three highest-impact checks. If you only have 3 minutes, do those.
+Items 1 (headline), 4 (required skills), and 15 ([ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) check) are the three highest-impact checks. If you only have 3 minutes, do those.
 
 ### Should I save different versions of my resume?
 

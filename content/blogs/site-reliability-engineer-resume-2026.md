@@ -12,7 +12,7 @@ keywords: site reliability engineer resume, SRE resume 2026, SLO SLI resume, inc
 
 A site reliability engineer resume in 2026 must show that you can keep systems running reliably at scale - reducing toil, defining SLOs, leading incident response, and building the automation and observability that prevents future outages. SRE is a discipline, not just a job title - your resume must show discipline: measured reliability improvements, systematic incident reduction, and engineering solutions to operational problems.
 
-SRE roles sit between software engineering and operations. Your resume should look like a software engineer's resume with operational reliability expertise added - not a system administrator's resume with a title change.
+SRE roles sit between software engineering and operations. Your resume should look like a [software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang)'s resume with operational reliability expertise added - not a system administrator's resume with a title change.
 
 Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). For related roles, read the [DevOps engineer resume guide](https://thetailorcv.com/blog/devops-engineer-resume-2026) and [cloud engineer resume guide](https://thetailorcv.com/blog/cloud-engineer-resume-2026). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
 
@@ -24,8 +24,8 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. Projects
-6. Education
+5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One to two pages. SRE roles are senior-leaning - two pages are acceptable for candidates with significant reliability improvement history.
 
@@ -50,7 +50,7 @@ Observability: Prometheus, Grafana, Datadog, ELK Stack, Jaeger, Splunk, OpenTele
 Incident Management: On-call process design, runbooks, blameless postmortems, incident command, SLA management
 SLO/SLI/Error Budget: Defining and tracking SLOs, error budget burn alerts, service level agreements
 Cloud and Infrastructure: AWS/GCP/Azure, Kubernetes, Docker, Terraform, Helm, ArgoCD
-CI/CD: GitHub Actions, Jenkins, ArgoCD, Spinnaker
+CI/CD: [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions, Jenkins, ArgoCD, Spinnaker
 Performance Engineering: Load testing (k6, Locust), capacity planning, performance profiling
 Chaos Engineering: Chaos Monkey, Gremlin, LitmusChaos, failover testing
 

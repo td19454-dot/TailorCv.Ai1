@@ -23,18 +23,18 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 Most MBA programs require a specific one-page format. Common structure:
 
 1. Header
-2. Education (MBA first, prominent - this is key during/post-MBA)
+2. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) (MBA first, prominent - this is key during/post-MBA)
 3. Professional experience
 4. Leadership and activities
 5. Additional information (skills, languages, interests)
 
-One page is the strict standard for MBA recruiting. Many schools provide a required resume template - follow it.
+One page is the strict standard for MBA recruiting. Many schools provide a required [resume template](https://thetailorcv.com/blog/how-to-choose-resume-template) - follow it.
 
 ---
 
 ## Education Section (Prominent for MBA)
 
-During and immediately after your MBA, education goes near the top.
+During and immediately after your MBA, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) goes near the top.
 
 Master of Business Administration (MBA), [Concentration]
 [Business School Name] | Expected 2027
@@ -86,7 +86,7 @@ MBA recruiters value leadership beyond work. Include:
 - Significant extracurricular achievements
 
 Example:
-- Vice President, Consulting Club | [Business School] - Organized 8 firm networking events for 200+ students
+- Vice President, Consulting Club | [Business School] - Organized 8 firm [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) events for 200+ students
 - Finalist, [University] National Case Competition (top 5 of 120 teams)
 
 ---
@@ -145,7 +145,7 @@ MBA programs and recruiters prize leadership. Show team leadership, initiative, 
 
 ### Mistake 5: Ignoring the school's format
 
-Many schools require a specific resume format. Follow it exactly.
+Many schools require a specific [resume format](https://thetailorcv.com/blog/resume-file-format-guide). Follow it exactly.
 
 ---
 
@@ -176,7 +176,7 @@ Once you draft this resume, test it against a real job post with the [free ATS s
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 
 ## Conclusion
-A strong MBA resume in 2026 shows leadership, quantified business impact, and career progression on a single, well-structured page. Frame your pre-MBA experience around results and leadership, highlight your education prominently, and tailor to your target industry.
+A strong MBA resume in 2026 shows leadership, quantified business impact, and career progression on a single, well-structured page. Frame your pre-MBA experience around results and leadership, highlight your [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) prominently, and tailor to your target industry.
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read the role-specific guides for [consulting](https://thetailorcv.com/blog/consultant-resume-2026), [product](https://thetailorcv.com/blog/product-manager-resume-2026), and [finance](https://thetailorcv.com/blog/financial-analyst-resume-2026). Prepare for interviews with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers).
 

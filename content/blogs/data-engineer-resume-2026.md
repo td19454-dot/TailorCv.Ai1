@@ -24,9 +24,9 @@ Before applying, test your resume against the job description using the [ATS sco
 2. Summary
 3. Technical skills
 4. Work experience
-5. Projects
-6. Education
-7. Certifications
+5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 One to two pages depending on pipeline complexity and warehouse architecture experience.
 
@@ -44,7 +44,7 @@ Data Engineer with 5 years of experience designing ELT pipelines and cloud data 
 
 ### Example for Entry-Level Data Engineer
 
-Data Engineer with strong Python, SQL, and data pipeline skills. Built ELT pipelines using Python, Airflow, and PostgreSQL for 3 personal and academic projects. Experienced with dbt, Snowflake, and PySpark basics. Completed Google Cloud Professional Data Engineer certification. Seeking a junior data engineering role with a team focused on scalable analytics infrastructure.
+Data Engineer with strong Python, SQL, and data pipeline skills. Built ELT pipelines using Python, Airflow, and PostgreSQL for 3 personal and academic [projects](https://thetailorcv.com/blog/projects-in-resume). Experienced with dbt, Snowflake, and PySpark basics. Completed Google Cloud Professional Data Engineer certification. Seeking a junior data engineering role with a team focused on scalable analytics infrastructure.
 
 ---
 
@@ -58,7 +58,7 @@ Data Warehousing: Snowflake, BigQuery, Redshift, Databricks, Hive
 Storage and Formats: AWS S3, GCS, Delta Lake, Apache Iceberg, Parquet, Avro, ORC
 Cloud: AWS (Glue, EMR, Athena, RDS, Lambda), GCP (Dataflow, BigQuery, Pub/Sub), Azure (ADF, Synapse)
 Data Quality: Great Expectations, dbt tests, Monte Carlo, Soda Core
-Version Control and CI/CD: Git, dbt Cloud, GitHub Actions, Docker
+Version Control and CI/CD: Git, dbt Cloud, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions, Docker
 
 ---
 
@@ -119,7 +119,7 @@ E-commerce Analytics Company | Feb 2022 - Present
 - Led migration from Redshift to Snowflake with zero analytics downtime, reducing monthly warehouse costs by $22K and enabling 4x faster analytical query execution.
 - Built 200+ dbt models covering product, revenue, customer, and marketing domains - adopted as the analytics team's single source of truth within 3 months of launch.
 - Designed an Apache Kafka-based real-time data pipeline ingesting 50M+ events per day, enabling near-real-time product and fraud analytics previously on 12-hour lag.
-- Established CI/CD for dbt with GitHub Actions - automated testing (500+ tests) on every PR, reducing data model regression incidents from 6 per quarter to 1.
+- Established CI/CD for dbt with [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions - automated testing (500+ tests) on every PR, reducing data model regression incidents from 6 per quarter to 1.
 
 ---
 
@@ -148,7 +148,7 @@ E-commerce Analytics Pipeline | Python, Airflow, dbt, BigQuery, Looker Studio
 
 ### Mistake 1: ETL tools only, no modern stack
 
-In 2026, dbt, Airflow, and Snowflake/BigQuery are the modern standard. If your resume only shows legacy ETL tools (Informatica, Talend, SSIS), add modern stack projects before applying.
+In 2026, dbt, Airflow, and Snowflake/BigQuery are the modern standard. If your resume only shows legacy ETL tools (Informatica, Talend, SSIS), add modern stack [projects](https://thetailorcv.com/blog/projects-in-resume) before applying.
 
 ### Mistake 2: No data volume or scale
 

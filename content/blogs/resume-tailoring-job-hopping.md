@@ -24,7 +24,7 @@ It depends entirely on how you present it.
 
 A recruiter who sees "4 jobs in 5 years" with no context reads it as a [resume red flag](https://thetailorcv.com/blog/resume-red-flags).
 
-A recruiter who sees the same history - presented with clear rationale, progression, and strong results - reads it as someone who has accumulated diverse experience rapidly.
+A [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) who sees the same history - presented with clear rationale, progression, and strong results - reads it as someone who has accumulated diverse experience rapidly.
 
 Same history.
 Completely different impression.
@@ -64,10 +64,10 @@ Even in the worst case, there is almost always a presentable version of the stor
 Hiring managers who worry about job hoppers are actually worried about:
 
 1. **Wasted investment** - "Will we train and onboard this person only to have them leave in 6 months?"
-2. **Reliability** - "Can we count on this person to see through hard projects?"
+2. **Reliability** - "Can we count on this person to see through hard [projects](https://thetailorcv.com/blog/projects-in-resume)?"
 3. **Fit issues** - "Is there a pattern of not meshing with teams or managers?"
 
-Your resume and interview strategy need to address all three concerns - explicitly or implicitly.
+Your resume and [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) strategy need to address all three concerns - explicitly or implicitly.
 
 ---
 
@@ -83,7 +83,7 @@ Examples:
 - "June 2021 - February 2022 *(acquired by [Company], role eliminated post-acquisition)*"
 
 This eliminates the guesswork.
-The recruiter does not have to assume the worst.
+The [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) does not have to assume the worst.
 You have pre-answered the question.
 
 Valid one-line context reasons that work:
@@ -134,11 +134,11 @@ The most powerful antidote to a job hopping concern is undeniable results.
 If every role on your resume has a strong "here is what I accomplished" bullet at the top, the reader is focused on what you did - not how long you stayed.
 
 **Weak (draws attention to short tenure):**
-> "Software Engineer at [Company], January - October 2022.
-> Contributed to backend development projects."
+> "[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) at [Company], January - October 2022.
+> Contributed to backend development [projects](https://thetailorcv.com/blog/projects-in-resume)."
 
 **Strong (leads with impact):**
-> "Software Engineer at [Company], January - October 2022 *(contract)*
+> "[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) at [Company], January - October 2022 *(contract)*
 > Rebuilt the core data ingestion pipeline, reducing processing time from 4 hours to 22 minutes and unblocking a customer integration that had been delayed for 3 months."
 
 10 months.
@@ -183,12 +183,12 @@ Important: do not leave unaccountable gaps. If you omit a 3-month role and it cr
 
 ## Strategy 6: ATS-Optimize Despite the Complex History
 
-Multi-role resumes can have ATS problems.
+Multi-role resumes can have [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) problems.
 
 Each company entry competes for keyword space.
 A resume with 6 companies in the same space often has keyword repetition across sections, which can actually lower semantic match scores.
 
-For your ATS optimization:
+For your [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) optimization:
 - Put the most relevant keywords in your summary and most recent role's bullets (highest weight)
 - Do not repeat the same keywords across every role - vary them
 - Check your overall match score before applying

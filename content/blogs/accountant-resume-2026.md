@@ -24,8 +24,8 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical and accounting skills
 4. Work experience
-5. Education
-6. Certifications and licenses
+5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and licenses
 
 One page for staff and senior accountants. Two pages for controllers or accountants with extensive experience.
 
@@ -142,7 +142,7 @@ Accounting is measurable. Show close cycle time, transaction volume, accuracy ra
 
 ### Mistake 2: Listing duties, not achievements
 
-"Prepared journal entries and reconciled accounts" is a job description. Show the scope and the improvement you delivered.
+"Prepared journal entries and reconciled accounts" is a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Show the scope and the improvement you delivered.
 
 ### Mistake 3: No software specified
 
