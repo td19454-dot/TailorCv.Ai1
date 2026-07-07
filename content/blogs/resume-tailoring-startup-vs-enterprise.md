@@ -23,7 +23,7 @@ Startup recruiters and enterprise hiring managers are looking for completely dif
 The [tailored vs generic resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) debate is never more relevant than here - the same resume cannot speak to both audiences.
 Not well.
 
-This guide breaks down exactly how to tailor your resume - language, format, emphasis - for each type of company.
+This guide breaks down exactly how to [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) - language, format, emphasis - for each type of company.
 
 ---
 
@@ -36,7 +36,7 @@ Enterprises are operating something.
 They need people who can work within structure, follow process, and scale what already exists.
 
 These are different jobs.
-Even if the title says "Product Manager" at both companies, what they actually need from you is different.
+Even if the title says "[product manager](https://thetailorcv.com/blog/product-manager-resume-2026)" at both companies, what they actually need from you is different.
 
 Your resume has to reflect that. Understanding [how recruiters read resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes) at each type of company is the first step to getting this right.
 
@@ -83,7 +83,7 @@ Use these naturally where they reflect real experience. Review [action verbs for
 
 ### 3. Show Breadth, Not Depth
 
-At a startup, a data analyst who also set up the reporting system, trained the team, and presented to investors is more valuable than someone who only runs queries.
+At a startup, a [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) who also set up the reporting system, trained the team, and presented to investors is more valuable than someone who only runs queries.
 
 Show the full scope of what you did - even if it was outside your job title. Make sure your [skills section matches](https://thetailorcv.com/blog/resume-skills-match-job-description) the breadth the startup is looking for.
 
@@ -128,14 +128,14 @@ Enterprise companies use sophisticated [Applicant Tracking Systems](https://thet
 Your resume will be parsed and scored before any human sees it.
 
 [Match the exact keywords from the job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-Use formal section headers (Experience, Skills, Education - not "My Background" or "What I've Built").
+Use formal section headers (Experience, Skills, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) - not "My Background" or "What I've Built").
 
 Use [TailorCV's ATS optimizer](https://www.thetailorcv.com/solutions) to check your score before applying to any enterprise role.
 It identifies the exact keywords you are missing and tells you where to add them.
 
 ### 3. Use the Right Certifications and Credentials
 
-Enterprise job descriptions often list specific certifications.
+Enterprise job descriptions often list specific [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
 PMP for project management.
 CPA or CFA for finance.
 AWS Certified or Azure for cloud roles.
@@ -154,7 +154,7 @@ Enterprise hiring managers are impressed by numbers - but enterprise-scale numbe
 
 ### 5. Use Structured Formatting
 
-Enterprise ATS systems prefer clean, simple formatting.
+Enterprise [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems prefer clean, simple formatting.
 No columns.
 No tables in the body.
 No graphics or logos.
@@ -168,11 +168,11 @@ Review [resume fonts and formatting](https://thetailorcv.com/blog/resume-fonts-g
 
 You should not rewrite your resume from scratch every time.
 
-Instead, build a master resume with everything - all roles, all bullets, all skills, all certifications.
+Instead, build a master resume with everything - all roles, all bullets, all skills, all [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
 
 Then create two tailored versions:
 - **Startup version** - tighter, impact-first, broader skills, scrappier tone
-- **Enterprise version** - structured, process-focused, ATS-optimized, credential-forward
+- **Enterprise version** - structured, process-focused, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-optimized, credential-forward
 
 For each new application, you adjust from the relevant base version.
 
@@ -211,18 +211,18 @@ The summary is the first thing read.
 It needs to resonate with the specific audience immediately.
 
 **Ignoring [ATS keyword mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes)**
-Even startup applications increasingly use lightweight ATS. Always check your keyword match before applying.
+Even startup applications increasingly use lightweight [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). Always check your keyword match before applying.
 
 ---
 
 ## How TailorCV Speeds This Up
 
-Switching between startup and enterprise applications is the most time-consuming part of a job search.
+Switching between startup and enterprise applications is the most time-consuming part of a [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 
-TailorCV's resume optimizer reads the job description and tells you exactly which keywords and signals are missing from your resume for that specific role.
+TailorCV's resume optimizer reads the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and tells you exactly which keywords and signals are missing from your resume for that specific role.
 
 Paste the startup JD - get a startup-optimized version.
-Paste the enterprise JD - get an ATS-matched, credentialed-forward version.
+Paste the enterprise JD - get an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-matched, credentialed-forward version.
 
 The same resume, intelligently adapted. If you are also managing a [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide), consider keeping it aligned with whichever job type you are prioritizing in your current search.
 

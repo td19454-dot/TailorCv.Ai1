@@ -24,7 +24,7 @@ If you already have a resume, the quickest path by far is the [TailorCV portfoli
 ## For Designers & Creatives
 - **Framer** - beautiful, animation-friendly, fast
 - **Webflow** - powerful and flexible (steeper learning curve)
-- **Adobe Portfolio** - free with Creative Cloud
+- **Adobe [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)** - free with Creative Cloud
 - **Behance / Dribbble** - for reach (see [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide) and [UX Designer Portfolio Guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide))
 
 ## No-Code, Any Field
@@ -43,7 +43,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 ## Pro Tips
 - Add a custom domain - it instantly looks more professional ([Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide)).
 - Keep it fast: compress images and avoid heavy frameworks for simple sites.
-- Reuse your resume content so the portfolio matches it exactly.
+- Reuse your resume content so the [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) matches it exactly.
 
 
 ## Frequently Asked Questions

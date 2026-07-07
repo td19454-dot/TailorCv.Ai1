@@ -24,8 +24,8 @@ Before applying, compare your resume to the job description with the [ATS score 
 2. Summary
 3. Technical skills
 4. Work experience
-5. Education
-6. Certifications
+5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 One page for analysts with under 6 years of experience. Two pages for senior FP&A professionals or analysts with significant deal or modeling history.
 

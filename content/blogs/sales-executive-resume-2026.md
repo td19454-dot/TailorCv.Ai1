@@ -24,8 +24,8 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary with quota attainment
 3. Core sales skills
 4. Work experience
-5. Education
-6. Certifications (if applicable)
+5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (if applicable)
 
 One page for SDRs and junior AEs. One to two pages for senior AEs, enterprise sales, or sales directors with large territory or team leadership history.
 
@@ -43,7 +43,7 @@ Account Executive with 4 years of B2B SaaS sales experience. Consistently exceed
 
 ### Example for SDR / BDR
 
-Sales Development Representative with 2 years of SaaS outbound experience. Generated $4.2M in qualified pipeline across 280 meetings booked in FY2025, 134% of annual target. Strong in multi-channel outreach (email, LinkedIn, cold call), Salesloft, Apollo, and SalesNavigator prospecting.
+Sales Development Representative with 2 years of SaaS outbound experience. Generated $4.2M in qualified pipeline across 280 meetings booked in FY2025, 134% of annual target. Strong in multi-channel outreach (email, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), cold call), Salesloft, Apollo, and SalesNavigator prospecting.
 
 ---
 
@@ -51,7 +51,7 @@ Sales Development Representative with 2 years of SaaS outbound experience. Gener
 
 Sales Methodologies: MEDDIC / MEDDICC, Challenger Sale, SPIN Selling, Sandler, value-based selling
 CRM: Salesforce, HubSpot, Zoho CRM, Pipedrive, Outreach, Salesloft
-Prospecting: LinkedIn SalesNavigator, Apollo, ZoomInfo, cold calling, email sequences, social selling
+Prospecting: [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) SalesNavigator, Apollo, ZoomInfo, cold calling, email sequences, social selling
 Business Acumen: ROI conversations, C-suite engagement, multi-stakeholder deals, procurement navigation
 Sales Process: Discovery, demo, proposal, negotiation, contract close, expansion and upsell
 Pipeline Management: Forecasting, opportunity health scoring, deal review, win/loss analysis
@@ -93,7 +93,7 @@ Closed / Generated / Exceeded / Grew + [deal type or pipeline] + [territory, seg
 ### Weak Bullet Points
 
 - Responsible for closing new business
-- Managed a portfolio of accounts
+- Managed a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) of accounts
 - Met and exceeded sales targets
 - Used Salesforce to manage pipeline
 
@@ -132,7 +132,7 @@ If a sales resume does not say what % of quota you achieved, recruiters assume y
 
 ### Mistake 3: Too much process
 
-"Managed CRM, conducted discovery calls, delivered demos, and prepared proposals" - this is a job description. Show what those activities produced in revenue.
+"Managed CRM, conducted discovery calls, delivered demos, and prepared proposals" - this is a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Show what those activities produced in revenue.
 
 ### Mistake 4: No deal size context
 

@@ -18,11 +18,11 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ## Best Social Media Manager Resume Format
 
-1. Header with portfolio / handles links
+1. Header with [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) / handles links
 2. Summary with a key growth metric
 3. Skills by platform and function
 4. Work experience
-5. Education and certifications
+5. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 One to two pages.
 
@@ -40,15 +40,15 @@ Social Media Manager with 4 years of experience managing organic and paid social
 
 ### Example for Entry-Level Social Media Manager
 
-Social Media Coordinator with 2 years of experience managing Instagram, TikTok, and LinkedIn for small businesses. Created content calendars, grew accounts organically, and increased average engagement by 60%. Proficient in Canva, CapCut, Later, and Meta Business Suite. Seeking a social media manager role.
+Social Media Coordinator with 2 years of experience managing Instagram, TikTok, and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for small businesses. Created content calendars, grew accounts organically, and increased average engagement by 60%. Proficient in Canva, CapCut, Later, and Meta Business Suite. Seeking a social media manager role.
 
 ---
 
 ## Social Media Manager Skills
 
-Platforms: Instagram, TikTok, LinkedIn, X (Twitter), YouTube, Facebook, Pinterest, Threads
+Platforms: Instagram, TikTok, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), X (Twitter), YouTube, Facebook, Pinterest, Threads
 Content Creation: Short-form video, Reels, carousels, stories, copywriting, Canva, CapCut, Adobe Express
-Paid Social: Meta Ads, TikTok Ads, LinkedIn Ads, campaign management, audience targeting
+Paid Social: Meta Ads, TikTok Ads, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Ads, campaign management, audience targeting
 Scheduling and Management: Later, Hootsuite, Buffer, Sprout Social, Meta Business Suite
 Analytics: Native platform analytics, Google Analytics, social listening, UTM tracking
 Strategy: Content strategy, content calendar, community management, influencer collaboration, trend monitoring
@@ -61,7 +61,7 @@ Community: Engagement, DM management, comment moderation, brand voice, crisis ma
 - Social media management
 - Content strategy
 - Community management
-- Instagram / TikTok / LinkedIn
+- Instagram / TikTok / [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - Engagement rate
 - Follower growth
 - Paid social / Meta Ads
@@ -118,7 +118,7 @@ Follower growth, engagement rate, reach, and revenue are your core credentials. 
 
 ### Mistake 2: Listing platforms without results
 
-"Managed Instagram, TikTok, and LinkedIn" is incomplete. Show what you grew and achieved on each.
+"Managed Instagram, TikTok, and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)" is incomplete. Show what you grew and achieved on each.
 
 ### Mistake 3: No revenue or conversion link
 
@@ -126,7 +126,7 @@ The strongest social resumes connect social activity to business outcomes - lead
 
 ### Mistake 4: No portfolio
 
-Link to accounts you have grown or a portfolio of your content and campaign results.
+Link to accounts you have grown or a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) of your content and campaign results.
 
 ---
 

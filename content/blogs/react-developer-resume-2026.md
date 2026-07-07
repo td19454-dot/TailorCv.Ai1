@@ -18,14 +18,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ## Best React Developer Resume Format
 
-1. Header with portfolio and GitHub links
+1. Header with [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and GitHub links
 2. Summary
 3. Technical skills
 4. Work experience
-5. Projects
-6. Education
+5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
-One page for engineers with under 8 years of experience. A portfolio link is essential.
+One page for engineers with under 8 years of experience. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) link is essential.
 
 ---
 

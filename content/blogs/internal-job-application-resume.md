@@ -73,24 +73,24 @@ The honest answer: it depends on your relationship.
 
 ### 1. Treat It Like an External Application
 
-Write a full, tailored resume.
-Do not send your LinkedIn profile.
+Write a full, [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume).
+Do not send your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide).
 Do not send your two-year-old resume with a few updates.
 
 Understand [how to update your resume](https://thetailorcv.com/blog/how-to-update-your-resume) properly before starting - create a version specifically for this role, following the job description as closely as an external candidate would.
 
 Why? Because the hiring committee may include people who have never worked with you.
 HR may require a formal application with resume attached.
-ATS systems at large companies often process internal applicants the same way as external ones.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems at large companies often process internal applicants the same way as external ones.
 
 Use [TailorCV's optimizer](https://www.thetailorcv.com/solutions) to check your [ATS match score](https://thetailorcv.com/blog/ats-score-guide) for the internal job description.
-Yes - internal roles at large companies often go through ATS too.
+Yes - internal roles at large companies often go through [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) too.
 
 ### 2. Use Internal Language Strategically
 
 You have an advantage here.
 You know the actual language the team uses.
-You know what projects they call priorities.
+You know what [projects](https://thetailorcv.com/blog/projects-in-resume) they call priorities.
 You know which metrics the hiring manager tracks every week.
 
 Use that insider knowledge in your resume language.
@@ -146,9 +146,9 @@ Your internal resume should follow the same [anatomy of a strong resume](https:/
 1. **Professional summary** - tailored to this exact role, signals why you want this role at this company
 2. **Skills** - [matched to the job description keywords](https://thetailorcv.com/blog/resume-skills-match-job-description)
 3. **Work experience** - company roles with quantified results; lead with most relevant bullets
-4. **Education & certifications** - same as any application
+4. **Education & [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)** - same as any application
 
-One addition for internal resumes: if there are company-specific projects, initiatives, or milestones you led or contributed to, name them explicitly. External candidates cannot do this.
+One addition for internal resumes: if there are company-specific [projects](https://thetailorcv.com/blog/projects-in-resume), initiatives, or milestones you led or contributed to, name them explicitly. External candidates cannot do this.
 
 ---
 
@@ -176,18 +176,18 @@ Even those who do want to see you take the role seriously.
 
 **Skipping the tailoring**
 Your resume should [match the job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) as closely as possible.
-Use the same keywords. Check your ATS score.
+Use the same keywords. Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide).
 
 **Being vague about why you want the role**
 "I want to grow" is not enough.
 What specifically about this role, this team, this moment in the company's journey excites you?
 Be specific.
 
-**Ignoring the interview process**
-Internal candidates sometimes over-prepare for the political side and under-prepare for the actual interview.
+**Ignoring the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) process**
+Internal candidates sometimes over-prepare for the political side and under-prepare for the actual [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 Practice your answers. Use [TailorCV's AI mock interview](https://www.thetailorcv.com/mock-interview) if you want to rehearse in a low-stakes environment.
 
-**Not writing a cover letter**
+**Not writing a [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026)**
 A [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) is even more important for internal roles - it gives you space to explain your motivation and growth trajectory in a way the resume alone cannot.
 
 ---
@@ -220,7 +220,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Do I need a cover letter for an internal application?
 
-Yes. A short, honest cover letter that explains your motivation and what you bring to the role is almost always worth writing. It signals seriousness.
+Yes. A short, honest [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) that explains your motivation and what you bring to the role is almost always worth writing. It signals seriousness.
 
 ### Will applying internally hurt my current standing?
 
@@ -228,11 +228,11 @@ Only if you handle it poorly. Most managers respect employees who communicate am
 
 ### Should I update my LinkedIn before applying internally?
 
-Not necessarily. Focus on your resume and the formal application. Updating LinkedIn mid-process can create unnecessary noise internally.
+Not necessarily. Focus on your resume and the formal application. Updating [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) mid-process can create unnecessary noise internally.
 
 ### What if I am competing against an external candidate?
 
-You have insider knowledge of the company, culture, and needs. That is a real advantage - if your resume and interview reflect it. Do not assume it is enough on its own.
+You have insider knowledge of the company, culture, and needs. That is a real advantage - if your resume and [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) reflect it. Do not assume it is enough on its own.
 
 ---
 
@@ -257,9 +257,9 @@ An internal job application is not a formality.
 
 It is a real competition where your insider knowledge is your edge - but only if you use it.
 
-Write a full, tailored resume.
+Write a full, [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume).
 [Match the job description language](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-Quantify your company-specific contributions.
+[quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) your company-specific contributions.
 Handle the politics with professionalism.
 
 You already know the company.

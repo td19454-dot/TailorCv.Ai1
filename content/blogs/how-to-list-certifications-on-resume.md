@@ -10,7 +10,7 @@ slug: how-to-list-certifications-on-resume
 keywords: how to list certifications on resume, certifications on resume 2026, where to put certifications resume, resume certification format, listing certifications resume
 ---
 
-Certifications can strengthen your resume significantly - especially for technical, healthcare, finance, and project management roles where credentials are screening criteria. But many candidates list them incorrectly, bury them, or include irrelevant ones. This guide shows you exactly how to list certifications for maximum impact.
+[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) can strengthen your resume significantly - especially for technical, healthcare, finance, and project management roles where credentials are screening criteria. But many candidates list them incorrectly, bury them, or include irrelevant ones. This guide shows you exactly how to list [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for maximum impact.
 
 ![How to List Certifications](public/blog-images/how-to-list-certifications.png)
 
@@ -20,9 +20,9 @@ Before finalizing, run your resume through the [ATS score checker](https://www.t
 
 ## Why Certifications Matter
 
-Certifications:
+[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume):
 - Prove specific skills and knowledge
-- Serve as ATS keywords (many jobs require specific certs)
+- Serve as [ATS keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score) (many jobs require specific certs)
 - Differentiate you from candidates without them
 - Are sometimes legal requirements (nursing, accounting, etc.)
 - Show initiative and commitment to professional growth
@@ -35,17 +35,17 @@ For some roles (PMP for project management, CPA for accounting, AWS for cloud, R
 
 ### Option 1: Dedicated Certifications Section (Most Common)
 
-Create a clearly labeled "Certifications" section, usually after your work experience and education.
+Create a clearly labeled "[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)" section, usually after your work experience and education.
 
-This works best when you have 2+ relevant certifications.
+This works best when you have 2+ relevant [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
 
 ### Option 2: Near the Top (When Certifications Are Critical)
 
-If a certification is the key qualifier for the role (e.g., a nursing license, PMP for a PM role, CPA for accounting), place it prominently - in your header area, summary, or a certifications section right after your summary.
+If a certification is the key qualifier for the role (e.g., a nursing license, PMP for a PM role, CPA for accounting), place it prominently - in your header area, summary, or a [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) section right after your summary.
 
 ### Option 3: In Your Education Section
 
-If you have just one certification, you can include it within or right after your education section.
+If you have just one certification, you can include it within or right after your [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) section.
 
 ### Option 4: After Your Name (For Critical Credentials)
 
@@ -70,7 +70,7 @@ Examples:
 
 ### Include Expiration Dates When Relevant
 
-For certifications that expire (BLS, ACLS, some IT certs), include the validity:
+For [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that expire (BLS, ACLS, some IT certs), include the validity:
 - Basic Life Support (BLS) | American Heart Association | Valid through 2027
 
 ### Include In-Progress Certifications
@@ -85,26 +85,26 @@ If you are studying for a certification, you can list it as in progress:
 
 ### Include
 
-- Certifications directly relevant to the target role
+- [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) directly relevant to the target role
 - Industry-standard credentials (PMP, CPA, AWS, CISSP, RN license)
-- Certifications mentioned in the job description
-- Recent, reputable certifications
+- Certifications mentioned in the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- Recent, reputable [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 ### Leave Off
 
-- Irrelevant certifications (a sommelier certification on a software engineer resume)
-- Very outdated or obsolete certifications
+- Irrelevant [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (a sommelier certification on a software engineer resume)
+- Very outdated or obsolete [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Trivial or low-credibility "certificates" that add no value
-- Too many minor certifications that dilute the important ones
+- Too many minor [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that dilute the important ones
 
-Quality over quantity. Three relevant certifications beat fifteen random ones.
+Quality over quantity. Three relevant [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) beat fifteen random ones.
 
 ---
 
 ## Certifications by Industry
 
 ### Tech / Software / Cloud
-- AWS / GCP / Azure certifications
+- AWS / GCP / Azure [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Certified Kubernetes Administrator (CKA)
 - CompTIA (Security+, Network+)
 - Cisco (CCNA)
@@ -123,7 +123,7 @@ Quality over quantity. Three relevant certifications beat fifteen random ones.
 - CPA, CA, ACCA, CFA, CMA, FRM
 
 ### Healthcare
-- RN/PharmD licenses, BLS, ACLS, PALS, CCRN, board certifications
+- RN/PharmD licenses, BLS, ACLS, PALS, CCRN, board [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 ### Marketing
 - Google Ads, Google Analytics, HubSpot, Meta Blueprint
@@ -137,14 +137,14 @@ Quality over quantity. Three relevant certifications beat fifteen random ones.
 
 ### Example for a Cloud Engineer
 
-CERTIFICATIONS
+[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - AWS Certified Solutions Architect - Professional | AWS | 2025
 - HashiCorp Certified: Terraform Associate | HashiCorp | 2025
 - Certified Kubernetes Administrator (CKA) | CNCF | 2024
 
 ### Example for a Nurse
 
-LICENSURE & CERTIFICATIONS
+LICENSURE & [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Registered Nurse (RN) | State Board of Nursing | Active, valid through 2027
 - Basic Life Support (BLS) | AHA | Valid through 2026
 - Advanced Cardiac Life Support (ACLS) | AHA | Valid through 2026
@@ -152,7 +152,7 @@ LICENSURE & CERTIFICATIONS
 
 ### Example for a Project Manager
 
-CERTIFICATIONS
+[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Project Management Professional (PMP) | PMI | 2024
 - Certified ScrumMaster (CSM) | Scrum Alliance | 2023
 
@@ -170,7 +170,7 @@ An expired certification listed as current is misleading. Note the status or ren
 
 ### Mistake 3: Including irrelevant certifications
 
-Random certifications dilute your relevant ones and waste space.
+Random [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) dilute your relevant ones and waste space.
 
 ### Mistake 4: Inconsistent formatting
 
@@ -178,7 +178,7 @@ Keep your certification formatting consistent: Name | Issuer | Year.
 
 ### Mistake 5: Not using the exact certification name
 
-Use the official certification name, especially since ATS may scan for it. "AWS Certified Solutions Architect" not "AWS cloud cert."
+Use the official certification name, especially since [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) may scan for it. "AWS Certified Solutions Architect" not "AWS cloud cert."
 
 ---
 
@@ -209,7 +209,7 @@ Use this guide as part of a complete job-search workflow. Check your resume with
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
-List certifications in a clear, consistently formatted section, place critical credentials prominently, and include only relevant certifications. Use the exact official names so ATS systems can match them to job requirements.
+List certifications in a clear, consistently formatted section, place critical credentials prominently, and include only relevant certifications. Use the exact official names so [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems can match them to job requirements.
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your certifications match the job description's requirements. Read [how to list education on resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete resume guidance.
 

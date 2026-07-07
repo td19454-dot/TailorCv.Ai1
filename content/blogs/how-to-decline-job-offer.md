@@ -25,7 +25,7 @@ Decline as soon as you have made your decision. Do not leave the company waiting
 
 ### Method
 - **Email** is standard and acceptable for declining an offer.
-- A **phone call** to the recruiter or hiring manager before (or instead of) the email is a thoughtful touch, especially if you built a strong rapport or for senior roles.
+- A **phone call** to the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) or hiring manager before (or instead of) the email is a thoughtful touch, especially if you built a strong rapport or for senior roles.
 - For roles where you developed a close relationship, a call first followed by a confirming email is ideal.
 
 ---
@@ -123,7 +123,7 @@ The professional world is small. The company you decline today could be:
 - Connected to people in your network
 - A place you want to apply to again later
 
-Always decline graciously. Connect with the recruiter or hiring manager on LinkedIn. Express genuine appreciation. Leave them with a positive final impression.
+Always decline graciously. Connect with the recruiter or hiring manager on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). Express genuine appreciation. Leave them with a positive final impression.
 
 ---
 
@@ -142,7 +142,7 @@ Always decline graciously. Connect with the recruiter or hiring manager on Linke
 
 - The company may ask for feedback - share it constructively if you wish
 - They may make a counteroffer - consider it if it addresses your reasons
-- Connect on LinkedIn to maintain the relationship
+- Connect on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) to maintain the relationship
 - Move forward professionally
 
 ---
@@ -161,7 +161,7 @@ Always decline graciously. Connect with the recruiter or hiring manager on Linke
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
 - [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
 - [Freelancing vs Full-Time Employment in 2026 - Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
 - [How to Get a Job With No Experience - 10 Strategies That Actually Work in 2026](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
@@ -178,4 +178,5 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 Declining a job offer professionally is about gratitude, clarity, and grace. Thank them genuinely, decline clearly, keep your reason positive and brief, and leave the relationship open. The company may be part of your future, so protect the connection.
 
 If you are choosing between offers, use the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) to evaluate them well. Keep your resume ready for future opportunities with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and maintain your network with the [networking tips guide](https://thetailorcv.com/blog/networking-tips-for-job-search).
+
 

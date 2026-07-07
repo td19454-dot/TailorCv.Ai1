@@ -13,7 +13,7 @@ keywords: resume to portfolio, portfolio from resume, generate portfolio, portfo
 The number one reason people do not have a portfolio is time. Building a site from scratch feels like a weekend project you keep postponing. Here is how to skip all of that and publish a real portfolio **today**, using something you already have: your resume. Pair this with the [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026) and [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 ## Start From What You Already Have
-Your resume already contains everything a portfolio needs - your projects, experience, skills, education, and contact info. Instead of starting from a blank page, reuse it.
+Your resume already contains everything a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) needs - your projects, experience, skills, education, and contact info. Instead of starting from a blank page, reuse it.
 
 ## The 5-Minute Path
 1. Open the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
@@ -22,7 +22,7 @@ Your resume already contains everything a portfolio needs - your projects, exper
 4. Tweak the wording and add project links/screenshots.
 5. Publish and copy your live link.
 
-That is a real, shareable portfolio in the time it takes to make coffee.
+That is a real, shareable [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) in the time it takes to make coffee.
 
 ## Then Polish (Another 20 Minutes)
 - Add demo links and screenshots to your projects ([How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study))
@@ -56,7 +56,7 @@ None. The builder generates and hosts the site from your resume; you just edit t
 
 ### How long does it really take?
 
-About five minutes to publish, another 20 to polish projects, About Me, and contact.
+About five minutes to publish, another 20 to polish [projects](https://thetailorcv.com/blog/projects-in-resume), About Me, and contact.
 
 ### Will it look generic?
 

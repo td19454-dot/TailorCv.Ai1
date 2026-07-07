@@ -10,7 +10,7 @@ slug: star-method-interview-answers-guide
 keywords: STAR method interview, STAR method examples, behavioral interview STAR, how to use STAR method, STAR interview answers 2026
 ---
 
-Behavioral interview questions - "Tell me about a time when..." - appear in nearly every hiring process. The difference between a forgettable answer and a compelling one is almost always structure. That structure is **STAR**: Situation, Task, Action, Result.
+[behavioral interview](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) questions - "Tell me about a time when..." - appear in nearly every hiring process. The difference between a forgettable answer and a compelling one is almost always structure. That structure is **STAR**: Situation, Task, Action, Result.
 
 This guide explains how to use STAR in 2026, with examples for common questions and a practice plan using [AI mock interviews](https://thetailorcv.com/mock-interview).
 
@@ -23,7 +23,7 @@ Before your next interview, review the [behavioral interview questions guide](ht
 **S - Situation:** Set the scene. Where were you? What was the context?
 **T - Task:** What was your specific responsibility or challenge?
 **A - Action:** What did **you** do? Use "I" not "we."
-**R - Result:** What happened? Quantify when possible.
+**R - Result:** What happened? [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) when possible.
 
 STAR keeps answers focused, usually under two minutes, and easy for interviewers to evaluate. It is essential for [HR round questions](https://thetailorcv.com/blog/hr-round-interview-questions-answers), [manager rounds](https://thetailorcv.com/blog/manager-interview-round-questions-guide), and [competency-based interviews](https://thetailorcv.com/blog/competency-based-interview-questions-guide).
 

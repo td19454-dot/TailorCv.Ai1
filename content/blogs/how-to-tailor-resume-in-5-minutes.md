@@ -18,7 +18,7 @@ Run your tailored resume through the [free ATS checker](/solutions) to confirm y
 
 ## Why 5 Minutes Is Enough
 
-Your resume's core - experience, education, achievements - stays the same. What the ATS and recruiter care about is whether the *top layer* mirrors the specific job. That top layer is your headline, summary, skills section, and the first bullet of each role. Changing those four areas is 90% of the impact.
+Your resume's core - experience, education, achievements - stays the same. What the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and recruiter care about is whether the *top layer* mirrors the specific job. That top layer is your headline, summary, skills section, and the first bullet of each role. Changing those four areas is 90% of the impact.
 
 For why this matters at the ATS level, see [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
 
@@ -42,7 +42,7 @@ This 60-second read gives you the raw material for every other change.
 
 ### Minute 2 - Update Your Resume Headline
 
-Your headline is the first thing a recruiter and ATS process. It should mirror the exact job title from the posting.
+Your headline is the first thing a recruiter and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) process. It should mirror the exact job title from the posting.
 
 | Posting Title | Generic Headline | Tailored Headline |
 |---|---|---|
@@ -100,8 +100,8 @@ Once you've made these changes, paste both your updated resume and the job descr
 
 - Your keyword match score
 - Which required terms are still missing
-- Formatting issues that might block ATS parsing
-- Your overall ATS score vs. the benchmark for that role type
+- Formatting issues that might block [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsing
+- Your overall [ATS score](https://thetailorcv.com/blog/ats-score-guide) vs. the benchmark for that role type
 
 This takes another 60 seconds and removes guesswork. See [how to check your ATS score for free](https://thetailorcv.com/blog/how-to-check-ats-score-free).
 
@@ -112,8 +112,8 @@ This takes another 60 seconds and removes guesswork. See [how to check your ATS 
 You do not need to rewrite:
 
 - Your work experience bullets (unless you want to reorder them)
-- Your education section
-- Your certifications
+- Your [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) section
+- Your [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Your formatting and layout
 
 Changing those takes hours and adds almost no value. The four areas above are where 90% of the signal comes from.
@@ -166,7 +166,7 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
 ## Conclusion
-Tailoring your resume is not about rewriting it from scratch - it is about a fast, systematic top-layer update that tells both the ATS and the recruiter you are the right fit for *this specific role*. Run the checklist, verify with a tool, and move on. Consistency beats perfection.
+Tailoring your resume is not about rewriting it from scratch - it is about a fast, systematic top-layer update that tells both the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and the recruiter you are the right fit for *this specific role*. Run the checklist, verify with a tool, and move on. Consistency beats perfection.
 
 [Tailor and check your resume for free](/solutions)
 

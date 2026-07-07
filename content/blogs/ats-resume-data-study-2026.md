@@ -18,13 +18,13 @@ Here is what the data shows - and exactly how to fix each one.
 
 ## The headline numbers
 
-- **[XX]%** of resumes scored **below 60** on their first scan against a target job description.
-- After tailoring with theTailorCV, the average ATS score rose from **[XX]** to **[XX]**.
+- **[XX]%** of resumes scored **below 60** on their first scan against a target [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
+- After tailoring with theTailorCV, the average [ATS score](https://thetailorcv.com/blog/ats-score-guide) rose from **[XX]** to **[XX]**.
 - The single biggest score driver was **keyword match** - responsible for an estimated **[XX]%** of the gap.
 
 ## 1. Missing keywords (the #1 score killer)
 
-The most common reason a resume scores low is simple: it does not contain the words the job description uses. ATS keyword matching is literal - "JS" is not "JavaScript," and "managed a team" is not "team leadership."
+The most common reason a resume scores low is simple: it does not contain the words the job description uses. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keyword matching is literal - "JS" is not "JavaScript," and "managed a team" is not "team leadership."
 
 In our data, **[XX]%** of low-scoring resumes were missing **5 or more** of the job's core keywords.
 
@@ -32,7 +32,7 @@ In our data, **[XX]%** of low-scoring resumes were missing **5 or more** of the 
 
 ## 2. Formatting the ATS can't parse
 
-Tables, multi-column layouts, text inside images, headers/footers, and unusual fonts cause parsers to drop or scramble content. A beautiful resume that the ATS reads as gibberish scores poorly.
+Tables, multi-column layouts, text inside images, headers/footers, and unusual fonts cause parsers to drop or scramble content. A beautiful resume that the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) reads as gibberish scores poorly.
 
 About **[XX]%** of resumes lost points to formatting alone.
 
@@ -40,13 +40,13 @@ About **[XX]%** of resumes lost points to formatting alone.
 
 ## 3. Generic, untailored resumes
 
-One resume sent to every job underperforms. Relevance - how closely your experience maps to *this* role - is a scored signal, and a generic resume is generic to the ATS too.
+One resume sent to every job underperforms. Relevance - how closely your experience maps to *this* role - is a scored signal, and a generic resume is generic to the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) too.
 
 **The fix:** tailor the top third of your resume (summary, skills, most-recent role) to each application. The [AI resume optimizer](https://thetailorcv.com/solutions) does this in minutes.
 
 ## 4. No measurable impact
 
-ATS scoring rewards relevant content, and recruiters reward proof. Bullets like "responsible for sales" carry far less weight than "grew sales 28% in two quarters."
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scoring rewards relevant content, and recruiters reward proof. Bullets like "responsible for sales" carry far less weight than "grew sales 28% in two quarters."
 
 **The fix:** quantify outcomes. See role-specific example bullet points in our [resume examples library](https://thetailorcv.com/resume-examples).
 
@@ -54,8 +54,8 @@ ATS scoring rewards relevant content, and recruiters reward proof. Bullets like 
 
 Ranked by average score impact in our data:
 
-1. **Adding missing keywords** - the largest single lever
-2. **Fixing formatting** so the ATS parses cleanly
+1. **Adding [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description)** - the largest single lever
+2. **Fixing formatting** so the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parses cleanly
 3. **Tailoring** the summary and skills to the role
 4. **Quantifying** achievements with numbers
 
@@ -63,11 +63,11 @@ Ranked by average score impact in our data:
 
 ### What is a good ATS score?
 
-Aim for **80+** against the specific job you're applying to. Below 60 usually means missing keywords or parsing issues.
+Aim for **80+** against the specific job you're applying to. Below 60 usually means [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description) or parsing issues.
 
 ### Does the ATS really reject resumes automatically?
 
-Most ATS platforms rank and filter rather than hard-reject, but low-ranked resumes rarely get seen. A higher match score gets you in front of a recruiter.
+Most [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms rank and filter rather than hard-reject, but low-ranked resumes rarely get seen. A higher match score gets you in front of a recruiter.
 
 ### How do I check my ATS score for free?
 

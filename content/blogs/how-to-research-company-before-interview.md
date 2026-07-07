@@ -10,7 +10,7 @@ slug: how-to-research-company-before-interview
 keywords: how to research company before interview, company research interview 2026, interview preparation company research, what to know before job interview, company background check
 ---
 
-Company research before an interview is one of the most impactful things you can do - and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, recent product launches, competitive position, engineering culture, and specific team challenges is research.
+Company research before an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most impactful things you can do - and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, recent product launches, competitive position, engineering culture, and specific team challenges is research.
 
 ![How to Research a Company](public/blog-images/how-to-research-a-company.png)
 
@@ -24,7 +24,7 @@ Prepare your research in parallel with your interview answers. Read the [behavio
 
 Company research does three things:
 
-1. **Helps you answer "Why this company?"** - the most important interview question for most hiring managers
+1. **Helps you answer "Why this company?"** - the most important [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) question for most hiring managers
 2. **Helps you ask intelligent questions** - which signals preparation, curiosity, and cultural fit
 3. **Helps you tailor your answers** - so you connect your experience to their specific context
 
@@ -48,7 +48,7 @@ Start with the basics, but go deeper than most candidates:
 - Public or private? If public, check the most recent earnings call transcript on Seeking Alpha or the IR website.
 - If private: funding stage (Seed, Series A-D, pre-IPO), recent funding round, total funding, notable investors
 - Revenue range (if public or reported): growth rate signals health
-- Headcount: check LinkedIn for headcount trend - growing or contracting?
+- Headcount: check [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for headcount trend - growing or contracting?
 
 **Products:**
 - Use the product if it is a consumer or SaaS product - even a 30-minute trial session gives you real observations
@@ -58,7 +58,7 @@ Start with the basics, but go deeper than most candidates:
 **Sources:**
 - Company website, About page, Blog, Press section
 - Crunchbase - funding, investors, acquisitions
-- LinkedIn Company page - headcount, employee count over time
+- [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Company page - headcount, employee count over time
 - Y Combinator profile (if applicable)
 - TechCrunch / The Information for funded tech companies
 
@@ -78,9 +78,9 @@ Understanding the company in its market context impresses interviewers significa
 - What macro trends are driving demand for this company's product?
 
 **Recent news:**
-- Set a Google alert for the company name before your interview
+- Set a Google alert for the company name before your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - Check TechCrunch, Business Insider, Financial Times for coverage
-- Check LinkedIn for company posts and what their executives have been saying
+- Check [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for company posts and what their executives have been saying
 
 ---
 
@@ -89,13 +89,13 @@ Understanding the company in its market context impresses interviewers significa
 Research the specific team, not just the company.
 
 **The hiring manager:**
-- Find them on LinkedIn - what is their background?
+- Find them on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) - what is their background?
 - Have they published any articles, given talks, or written company blog posts?
 - Understanding their career trajectory tells you what they value
 
 **The team:**
-- What is the team size? (Often mentioned in the job posting or discoverable on LinkedIn)
-- What technologies does the team use? (Engineering blog, job postings, GitHub)
+- What is the team size? (Often mentioned in the job posting or discoverable on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search))
+- What technologies does the team use? (Engineering blog, job postings, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization))
 - What are current team members' backgrounds? (signals what the team prioritizes)
 
 **The engineering / team culture:**
@@ -108,7 +108,7 @@ Research the specific team, not just the company.
 
 ### Layer 4 - The Role (10 minutes)
 
-Re-read the job description carefully, multiple times.
+Re-read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) carefully, multiple times.
 
 Extract:
 - What specific problems does this role solve?
@@ -130,7 +130,7 @@ Examples of research-based questions:
 
 "I read your engineering blog post about [topic] - how has that approach evolved since then?"
 
-"I noticed on LinkedIn that the team has grown by about 40% in the last year. What does that growth look like on the [specific team]?"
+"I noticed on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) that the team has grown by about 40% in the last year. What does that growth look like on the [specific team]?"
 
 "Glassdoor reviews from a year ago mentioned some challenges with [process / tool / culture]. Is that something that's been addressed?"
 
@@ -180,7 +180,7 @@ Connect your past examples to their specific context. "At [Company], I solved a 
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
 - [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
 - [Technical Interview Preparation Guide](https://thetailorcv.com/blog/technical-interview-preparation-guide)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 - [200 Best Action Verbs for Resume in 2026 - By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
@@ -194,9 +194,10 @@ Use this advice as interview practice, not just reading material. Start a role-s
 Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
 
 ## Conclusion
-Company research is not a performance - it is genuine preparation that makes every interview answer more specific, more credible, and more compelling. Candidates who have done real research stand out visibly from those who have not.
+Company research is not a performance - it is genuine preparation that makes every [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) answer more specific, more credible, and more compelling. Candidates who have done real research stand out visibly from those who have not.
 
-Spend 60-90 minutes per company on research before a final round interview. For first screens, 30 minutes is sufficient.
+Spend 60-90 minutes per company on research before a final round [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). For first screens, 30 minutes is sufficient.
 
 Pair your research with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), the [how to answer tell me about yourself guide](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and the [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Practice with the [mock interview tool](https://thetailorcv.com/mock-interview) for delivery confidence.
+
 

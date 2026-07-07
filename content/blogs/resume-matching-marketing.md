@@ -18,9 +18,9 @@ Every acronym is a keyword.
 Every platform name is a filter.
 Every channel is a signal.
 
-If your resume does not use the exact language from the marketing JD, you are invisible to ATS systems.
+If your resume does not use the exact language from the marketing JD, you are invisible to [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems.
 
-This guide gives you the exact system to match your marketing resume to any job description - whether you are a generalist or a specialist.
+This guide gives you the exact system to match your marketing resume to any [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) - whether you are a generalist or a specialist.
 
 Analyze your marketing resume match score instantly at [TailorCV](https://www.thetailorcv.com/solutions). Start with a [clean, ATS-ready marketing resume template](https://www.thetailorcv.com/templates).
 
@@ -55,7 +55,7 @@ The gap between generic marketing language and JD-specific marketing language is
 - HubSpot, Marketo, Pardot, Salesforce Marketing Cloud
 - Google Analytics 4, Google Tag Manager, Google Search Console
 - Semrush, Ahrefs, Moz
-- Meta Ads Manager, Google Ads Manager, LinkedIn Campaign Manager
+- Meta Ads Manager, Google Ads Manager, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Campaign Manager
 - Hootsuite, Buffer, Sprout Social
 - Canva, Adobe Creative Suite
 
@@ -105,13 +105,13 @@ Rewrite 2-3 bullets to include those metrics from your actual experience.
 > "SEO Manager with 5 years of technical and content SEO experience for B2B SaaS companies. Expert in on-page optimization, technical audits (Core Web Vitals, site structure), keyword research (Ahrefs, Semrush), and content-led link building. Grew organic traffic by 180% and improved domain authority by 22 points over 2 years."
 
 **For a Demand Generation role:**
-> "Demand Generation Manager with 4 years driving pipeline through paid and organic channels for B2B SaaS companies. Experienced in HubSpot, Google Ads, LinkedIn Ads, and ABM programs. Generated 40% of company ARR pipeline through multi-touch demand programs at an average CAC 25% below target."
+> "Demand Generation Manager with 4 years driving pipeline through paid and organic channels for B2B SaaS companies. Experienced in HubSpot, Google Ads, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Ads, and ABM programs. Generated 40% of company ARR pipeline through multi-touch demand programs at an average CAC 25% below target."
 
 Read [how to match your resume summary to a job description](https://thetailorcv.com/blog/resume-summary-match-job-description).
 
 ### Step 5: Update Skills Section with Exact JD Tools
 
-Your skills section should list every tool and channel from the JD that you have used.
+Your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) should list every tool and channel from the JD that you have used.
 
 **Before:**
 ```
@@ -198,7 +198,7 @@ Mention your adjacent platform experience and note willingness to learn: "Google
 
 ## Conclusion
 
-Marketing resumes fail ATS more than most because the gap between generic marketing language and JD-specific marketing language is enormous.
+Marketing resumes fail [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) more than most because the gap between generic marketing language and JD-specific marketing language is enormous.
 
 The fix: extract every channel, platform, and metric keyword from the JD.
 Use them exactly.

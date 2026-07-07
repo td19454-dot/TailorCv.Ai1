@@ -38,7 +38,7 @@ Resist the urge to immediately change things. You do not yet understand why thin
 
 In the second month, start contributing meaningfully while continuing to learn.
 
-- Take ownership of initial projects or tasks
+- Take ownership of initial [projects](https://thetailorcv.com/blog/projects-in-resume) or tasks
 - Deliver your first small wins
 - Deepen relationships across the team and adjacent teams
 - Start offering ideas (carefully, with humility)
@@ -49,7 +49,7 @@ In the second month, start contributing meaningfully while continuing to learn.
 
 By the third month, you should be operating with increasing independence.
 
-- Own projects end-to-end
+- Own [projects](https://thetailorcv.com/blog/projects-in-resume) end-to-end
 - Deliver visible, valuable work
 - Build a reputation for your specific strengths
 - Establish yourself as a reliable, collaborative team member
@@ -152,7 +152,7 @@ Document your wins from day one. When promotion or raise time comes, you will ne
 - [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
 - [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
 - [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
@@ -177,4 +177,5 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 Your first 90 days at a new job are foundational. Learn deeply in the first month, contribute meaningfully in the second, and own your work by the third. Build relationships intentionally, deliver early wins, manage up effectively, and document your accomplishments from the start.
 
 Keep your resume updated with your new role and achievements using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and plan your growth with the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
+
 

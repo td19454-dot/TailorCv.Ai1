@@ -10,19 +10,19 @@ slug: tailor-resume-without-job-description
 keywords: tailor resume without job description, resume for referral application, cold outreach resume tips, how to apply without job description, resume blind application 2026
 ---
 
-Every resume guide tells you to read the job description carefully.
+Every resume guide tells you to read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) carefully.
 
 Extract the keywords.
 Mirror the language.
 Match the skills.
 
-Great advice - when there is a job description.
+Great advice - when there is a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 But what do you do when there is not one?
 
 When your college friend texts you: "Hey, my company is probably hiring a PM - want me to drop your resume to the hiring manager?"
 
-When a recruiter reaches out on LinkedIn about a role that "isn't posted yet."
+When a recruiter reaches out on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) about a role that "isn't posted yet."
 
 When you are doing cold outreach to a company you want to work for, even though they have nothing open.
 
@@ -36,7 +36,7 @@ This guide does not.
 
 ## Why No Job Description Makes Tailoring Harder (But Not Impossible)
 
-A job description is a targeting system.
+A [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is a targeting system.
 It tells you exactly what the employer needs, in their own words.
 
 Without one, you are working from signals - indirect information about what the company and role actually require.
@@ -96,10 +96,10 @@ Even without a specific JD, you know what the company does.
 Your [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary) should show that you understand the company's mission and that your background is directly relevant to it.
 
 **Generic (no tailoring):**
-> "Product manager with 4 years of experience in tech."
+> "[product manager](https://thetailorcv.com/blog/product-manager-resume-2026) with 4 years of experience in tech."
 
 **Tailored for referral to a growth-stage fintech:**
-> "Product manager with 4 years building consumer-facing financial products, with a strong focus on onboarding optimization and payment flow design. Experienced in the 0-to-1 and scaling phases of fintech products serving underbanked users."
+> "[product manager](https://thetailorcv.com/blog/product-manager-resume-2026) with 4 years building consumer-facing financial products, with a strong focus on onboarding optimization and payment flow design. Experienced in the 0-to-1 and scaling phases of fintech products serving underbanked users."
 
 If the company is building financial infrastructure - use fintech language.
 If the company is a B2B SaaS - use SaaS language.
@@ -111,7 +111,7 @@ Use industry knowledge to infer the required skills.
 
 For a PM at a SaaS company: Jira, roadmapping, agile, A/B testing, cross-functional collaboration, product analytics.
 
-For a software engineer at an AI startup: Python, ML frameworks, distributed systems, system design, cloud infrastructure.
+For a software engineer at an AI startup: Python, ML frameworks, distributed systems, [system design](https://thetailorcv.com/blog/system-design-interview-guide), cloud infrastructure.
 
 Use [TailorCV's optimizer](https://www.thetailorcv.com/solutions) with a generic job description for the role type at that company size as your proxy. This gives you a keyword match baseline to work from.
 
@@ -132,9 +132,9 @@ Before you send a single line, research the company and person deeply:
 - What has the company published recently? (blog posts, press releases, product launches)
 - What is the person's role and focus area?
 - What problems are they probably trying to solve?
-- Has the company been hiring for similar roles recently? (Search for expired job postings on LinkedIn, Indeed, Glassdoor)
+- Has the company been hiring for similar roles recently? (Search for expired job postings on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), Indeed, Glassdoor)
 
-Expired job postings are one of the best substitutes for a live job description.
+Expired job postings are one of the best substitutes for a live [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 They tell you exactly what the company looked for six or twelve months ago.
 The needs are probably similar.
 
@@ -145,7 +145,7 @@ It should feel like it was written for this person.
 
 If you are reaching out to a CMO whose company is clearly struggling with content marketing - your resume should lead with your content and SEO achievements.
 
-If you are reaching out to a VP Engineering whose LinkedIn shows they are scaling a team rapidly - your resume should lead with your experience building teams and technical infrastructure under growth pressure.
+If you are reaching out to a VP Engineering whose [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) shows they are scaling a team rapidly - your resume should lead with your experience building teams and technical infrastructure under growth pressure.
 
 Make them feel like you did the homework.
 Because you did.
@@ -180,7 +180,7 @@ Read the company's:
 - Blog (what they write about reveals what they think matters)
 - Team page (what backgrounds and titles current employees have)
 
-This is your substitute job description.
+This is your substitute [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 Write your resume to match the language the company uses to describe itself and its work.
 
@@ -189,8 +189,8 @@ Use them.
 
 ### Search LinkedIn for Similar Roles at This Company
 
-Even if this posting is vague, there may be previous postings for this type of role at this company on LinkedIn.
-Search "[Company name] [role type]" with LinkedIn's job search, set the time filter to past year.
+Even if this posting is vague, there may be previous postings for this type of role at this company on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
+Search "[Company name] [role type]" with [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)'s job search, set the time filter to past year.
 
 Old postings tell you:
 - What skills they typically require
@@ -224,10 +224,10 @@ The candidate who did 20 minutes of research before tailoring always beats the o
 
 ## How to Check Your Tailoring Without a JD
 
-Without a specific job description, you can still check your resume's strength.
+Without a specific [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), you can still check your resume's strength.
 
 Use [TailorCV](https://www.thetailorcv.com/solutions) with a similar job description from another company in the same space.
-Use LinkedIn's job alerts for similar roles to find comparable postings.
+Use [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)'s job alerts for similar roles to find comparable postings.
 
 Get your [ATS match score](https://thetailorcv.com/blog/ats-score-guide) against the proxy posting.
 This tells you whether your keyword coverage is strong for this type of role.
@@ -251,7 +251,7 @@ Send a brief, professional thank-you to your contact after submitting. Give them
 
 ### What if there is genuinely no information available about the company?
 
-That is a signal. A company with no public presence, no LinkedIn profiles, and no published information is risky to apply to anyway. At minimum, research the founders and any news coverage before crafting your resume.
+That is a signal. A company with no public presence, no [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) profiles, and no published information is risky to apply to anyway. At minimum, research the founders and any news coverage before crafting your resume.
 
 ### Can I use one resume for multiple cold outreach emails?
 
@@ -276,7 +276,7 @@ Only if the recipients are at very similar companies. For each distinct company 
 
 ## Conclusion
 
-Most resume guides assume a job description exists.
+Most resume guides assume a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) exists.
 
 Most of the best job opportunities do not come with one.
 
@@ -290,7 +290,7 @@ Do the research.
 Speak the company's language.
 Lead with the results that matter to this company at this moment.
 
-That is how you tailor without a job description.
+That is how you tailor without a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 [Tailor My Resume for Any Role - Free](https://www.thetailorcv.com/solutions)
 

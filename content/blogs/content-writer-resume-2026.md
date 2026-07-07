@@ -18,12 +18,12 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ## Best Content Writer Resume Format
 
-1. Header with portfolio link (essential)
+1. Header with [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) link (essential)
 2. Summary
 3. Skills
 4. Work experience
 5. Writing samples / published work highlights
-6. Education
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One page for most writers.
 
@@ -125,7 +125,7 @@ Writing exists to achieve outcomes. Show traffic growth, rankings, engagement, o
 
 ### Mistake 2: No portfolio link
 
-A content writer without writing samples cannot be evaluated. Always link your portfolio or published work.
+A content writer without writing samples cannot be evaluated. Always link your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) or published work.
 
 ### Mistake 3: Ignoring SEO
 

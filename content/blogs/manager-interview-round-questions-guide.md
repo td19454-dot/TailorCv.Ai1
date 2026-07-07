@@ -136,7 +136,7 @@ Often yes - prepare with the [dedicated guide](https://thetailorcv.com/blog/how-
 
 ### How do I prepare for a manager I haven't met?
 
-Research their LinkedIn, team blog posts, and conference talks. Prepare questions about their leadership style.
+Research their [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), team blog posts, and conference talks. Prepare questions about their leadership style.
 
 ---
 

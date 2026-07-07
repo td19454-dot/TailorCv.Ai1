@@ -10,7 +10,7 @@ slug: resume-proofreading-checklist
 keywords: resume proofreading checklist, resume checklist before applying, resume review checklist, things to check on resume, resume mistakes checklist, final resume review, resume quality check
 ---
 
-Most resume mistakes are caught only after you have already submitted. A single typo, a broken link, an inconsistent date, or a missed keyword can cost you an interview at a role you were qualified for. This checklist gives you 25 specific things to verify before submitting your resume to any job application.
+Most resume mistakes are caught only after you have already submitted. A single typo, a broken link, an inconsistent date, or a missed keyword can cost you an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) at a role you were qualified for. This checklist gives you 25 specific things to verify before submitting your resume to any job application.
 
 After completing this checklist, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) for a full scoring and keyword analysis. Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) to reduce formatting issues from the start.
 
@@ -36,7 +36,7 @@ Numbers, percentages, dollar amounts, time saved, users impacted. If bullets are
 **4. Summary is tailored to this specific role**  
 Your summary should mention the role title, a key skill from the job description, and your strongest relevant accomplishment. Generic summaries score lower on ATS and impress fewer recruiters. Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary).
 
-**5. Skills section matches job description keywords**  
+**5. Skills section matches [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) keywords**  
 Are the skills listed in the job description present in your skills section? Use the exact terminology from the posting. Read [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide).
 
 **6. No irrelevant content (old roles, outdated skills, hobbies)**  
@@ -83,10 +83,10 @@ firstname.lastname@gmail.com format. Not a birth year, nickname, or unprofession
 **17. Phone number is correct and active**  
 Double-check the digits. Confirm your voicemail is set up.
 
-**18. LinkedIn URL is included and working**  
-Click the link. Confirm it opens your profile. Ensure your LinkedIn matches your resume (consistent dates and titles).
+**18. [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) URL is included and working**  
+Click the link. Confirm it opens your profile. Ensure your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) matches your resume (consistent dates and titles).
 
-**19. All portfolio/GitHub/website links are active**  
+**19. All [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)/GitHub/website links are active**  
 Click every link on your resume. Broken links are as bad as missing ones.
 
 ---
@@ -110,9 +110,9 @@ Search each company name to verify spelling. "Amazon" not "Amazin," "McKinsey" n
 File name format: FirstName-LastName-Resume.pdf. Read the [resume file format guide](https://thetailorcv.com/blog/resume-file-format-guide).
 
 **24. No graphics, tables, or text boxes used for key content**  
-Text boxes and tables are often invisible to ATS. All content should be in the main body as standard text.
+Text boxes and tables are often invisible to [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). All content should be in the main body as standard text.
 
-**25. ATS score has been checked against this job description**  
+**25. [ATS score](https://thetailorcv.com/blog/ats-score-guide) has been checked against this job description**  
 Run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) with the specific job description. Check your keyword match score, missing skills, and any formatting flags. Aim for the highest possible score before applying.
 
 ---
@@ -145,15 +145,15 @@ If the answer to any of these is no, adjust before submitting. Read [how recruit
 
 Before submitting any application:
 
-**Content:** Action verbs  | Numbers/results  | Achievements not duties  | Tailored summary  | Matched keywords  | No irrelevant content  | No references line  | No "I" 
+**Content:** [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume)  | Numbers/results  | Achievements not duties  | Tailored summary  | Matched keywords  | No irrelevant content  | No references line  | No "I" 
 
 **Formatting:** Consistent dates  | Consistent bullets  | One font  | Correct margins  | Single column  | Consistent bold/italics  | Correct length 
 
-**Contact:** Professional email  | Correct phone  | Working LinkedIn  | Working links 
+**Contact:** Professional email  | Correct phone  | Working [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)  | Working links 
 
 **Spelling/Grammar:** No typos  | No grammar errors  | Company names correct 
 
-**ATS:** Saved as PDF  | No graphics/tables for content  | ATS score checked 
+**ATS:** Saved as PDF  | No graphics/tables for content  | [ATS score](https://thetailorcv.com/blog/ats-score-guide) checked 
 
 ---
 
@@ -177,7 +177,7 @@ Use this guide as part of a complete job-search workflow. Check your resume with
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
-A complete pre-submission review catches the mistakes that silently kill applications: typos, inconsistencies, broken links, weak bullets, and ATS failures. Most of these take under a minute to fix once spotted. The cost of not checking is an interview you deserved but never received.
+A complete pre-submission review catches the mistakes that silently kill applications: typos, inconsistencies, broken links, weak bullets, and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) failures. Most of these take under a minute to fix once spotted. The cost of not checking is an interview you deserved but never received.
 
 Run through all 25 checks, then test your ATS score with the [TailorCV checker](https://www.thetailorcv.com/solutions). Once your resume starts generating interviews, use the [mock interview tool](https://thetailorcv.com/interview-prep) to make sure you close them.
 

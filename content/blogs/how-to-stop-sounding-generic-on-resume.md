@@ -20,9 +20,9 @@ See how your resume reads to ATS systems with the [free scanner](/solutions).
 
 Generic language fails on two levels:
 
-1. **ATS level** - vague phrases score poorly because they don't match the specific keywords employers configure. "Results-oriented professional" scores nothing. "Reduced customer acquisition cost by 28% through Google Ads optimization" scores for multiple terms simultaneously.
+1. **[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) level** - vague phrases score poorly because they don't match the specific keywords employers configure. "Results-oriented professional" scores nothing. "Reduced customer acquisition cost by 28% through Google Ads optimization" scores for multiple terms simultaneously.
 
-2. **Recruiter level** - recruiters have read every generic phrase thousands of times. The moment they see one, their reading speed doubles because they stop expecting new information. They're scanning past you.
+2. **[recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) level** - recruiters have read every generic phrase thousands of times. The moment they see one, their reading speed doubles because they stop expecting new information. They're scanning past you.
 
 Both problems are fixable with the same solution: replace categories with specifics.
 
@@ -44,7 +44,7 @@ The second version names the result, the scale, the timeline, and the method. It
 
 ### 2. "Responsible for managing a team"
 
-This describes the job description of every manager in existence.
+This describes the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) of every manager in existence.
 
 **Generic:** "Responsible for managing a team of engineers."
 
@@ -104,9 +104,9 @@ The specific version names the tools, the scale, and the outcome. It is immediat
 
 ### 7. "Passionate about [industry/skill]"
 
-Passion claims are unprovable and unscored by ATS. Every candidate is "passionate."
+Passion claims are unprovable and unscored by [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). Every candidate is "passionate."
 
-**Generic:** "Passionate about cybersecurity and committed to protecting organizational assets."
+**Generic:** "Passionate about [cybersecurity](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026) and committed to protecting organizational assets."
 
 **Specific:** "Identified and remediated 3 critical vulnerabilities in production infrastructure before external audit; authored security runbooks now used by the entire 12-person team."
 
@@ -122,7 +122,7 @@ These phrases signal uncertainty and lack of confidence. Recruiters read them as
 
 **Specific:** "Deployed and maintained production infrastructure on AWS EC2, RDS, and S3; managed costs and uptime for a service handling 50K daily active users."
 
-If you have real experience, own it. If you are genuinely a beginner, list it in a skills section with a context bullet rather than using "familiar with."
+If you have real experience, own it. If you are genuinely a beginner, list it in a [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) with a context bullet rather than using "familiar with."
 
 ---
 
@@ -140,9 +140,9 @@ The goal is a resume where every line is uniquely *yours* - because it contains 
 
 ## How Generic Language Affects Your ATS Score
 
-Generic phrases like "results-oriented," "team player," and "strong communicator" are not in most ATS keyword profiles. They score zero. Specific terms - "Tableau," "churn reduction," "A/B testing," "Sprint planning" - are in keyword profiles and score your resume upward.
+Generic phrases like "results-oriented," "team player," and "strong communicator" are not in most [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keyword profiles. They score zero. Specific terms - "Tableau," "churn reduction," "A/B testing," "Sprint planning" - are in keyword profiles and score your resume upward.
 
-Replacing generic language with specific language therefore improves both ATS performance and recruiter engagement simultaneously.
+Replacing generic language with specific language therefore improves both [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) performance and recruiter engagement simultaneously.
 
 For keyword strategy, read [best resume keywords to beat ATS systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) and [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
 
@@ -155,7 +155,7 @@ Check your resume's keyword match with the [free TailorCV ATS checker](/solution
 1. Read every bullet on your resume
 2. Circle any phrase that appears on generic lists (see above)
 3. For each circled phrase: add a specific tool, a number, a team size, a time frame, or an outcome
-4. Retest with the ATS checker to confirm the rewrites hit keyword targets
+4. Retest with the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) checker to confirm the rewrites hit keyword targets
 
 The entire audit takes 20-30 minutes for a standard resume.
 
@@ -201,7 +201,7 @@ Use this guide as part of a complete job-search workflow. Check your resume with
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
-Generic language is a habit, not a reflection of your capabilities. Every vague phrase on your resume is an opportunity to add a number, a tool, a team size, or an outcome that makes your experience impossible to confuse with anyone else's. Start with the eight rewrites above, apply the specificity test to every remaining bullet, and verify with an ATS check. The result is a resume that actually sounds like you - and gets you called.
+Generic language is a habit, not a reflection of your capabilities. Every vague phrase on your resume is an opportunity to add a number, a tool, a team size, or an outcome that makes your experience impossible to confuse with anyone else's. Start with the eight rewrites above, apply the specificity test to every remaining bullet, and verify with an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) check. The result is a resume that actually sounds like you - and gets you called.
 
 [Check your resume - free](/solutions)
 

@@ -10,7 +10,7 @@ slug: backend-developer-portfolio
 keywords: backend developer portfolio, api portfolio, backend projects, system design portfolio, backend engineer portfolio
 ---
 
-Backend work is invisible by nature - there is no UI to admire. So your portfolio has a harder job: it must make architecture, reliability, and production thinking *visible* to someone skimming for 30 seconds. Done well, a backend portfolio signals seniority faster than years on a resume.
+Backend work is invisible by nature - there is no UI to admire. So your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) has a harder job: it must make architecture, reliability, and production thinking *visible* to someone skimming for 30 seconds. Done well, a backend [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) signals seniority faster than years on a resume.
 
 Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas), and [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide).
 
@@ -20,7 +20,7 @@ Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/b
 - A clear explanation of your **data models** and the trade-offs you chose
 
 ## Prove Production Readiness
-This is what separates hobby projects from hireable ones:
+This is what separates hobby [projects](https://thetailorcv.com/blog/projects-in-resume) from hireable ones:
 
 - Unit and integration **tests** plus CI
 - **Auth**, input validation, rate limiting, and error handling

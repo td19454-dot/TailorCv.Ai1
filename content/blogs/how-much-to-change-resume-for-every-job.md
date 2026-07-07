@@ -18,7 +18,7 @@ Check what your resume is missing for any specific job with the [free ATS checke
 
 ## The Core Principle: Your Resume Is a Product, Not a Document
 
-A generic resume is built around what you have done. A tailored resume is built around what *this employer needs*. The core content - your work history, education, certifications - stays the same. What changes is how you present and prioritize it.
+A generic resume is built around what you have done. A [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) is built around what *this employer needs*. The core content - your work history, education, certifications - stays the same. What changes is how you present and prioritize it.
 
 Think of it as product packaging: same product, different positioning for each buyer.
 
@@ -30,9 +30,9 @@ These four areas are non-negotiable. Changing them takes less than 5 minutes and
 
 ### 1. Your Resume Headline
 
-Mirror the exact job title from the posting. This affects both ATS scoring and how recruiters read your resume in the first 6 seconds.
+Mirror the exact job title from the posting. This affects both [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scoring and how recruiters read your resume in the first 6 seconds.
 
-- Applying for "Senior Product Manager" -> your headline should say "Senior Product Manager"
+- Applying for "Senior [product manager](https://thetailorcv.com/blog/product-manager-resume-2026)" -> your headline should say "Senior [product manager](https://thetailorcv.com/blog/product-manager-resume-2026)"
 - Not "Product Leader" or "Strategy and Product Professional"
 
 See [how to write a resume headline](https://thetailorcv.com/blog/how-to-write-resume-headline).
@@ -80,18 +80,18 @@ For the 5-minute checklist, see [how to tailor a resume in 5 minutes](https://th
 
 These sections have very low return on tailoring time:
 
-- **Education** - never changes (unless you need to reorder graduate vs. undergrad)
-- **Certifications** - fixed credentials
+- **[education](https://thetailorcv.com/blog/how-to-list-education-on-resume)** - never changes (unless you need to reorder graduate vs. undergrad)
+- **[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)** - fixed credentials
 - **The body of your work experience** - your achievements happened and don't change
-- **Formatting and layout** - find a good ATS-friendly format and keep it consistent
+- **Formatting and layout** - find a good [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) format and keep it consistent
 
-Rewriting your entire experience section for every job is a trap. It adds hours of effort for minimal additional ATS or recruiter signal.
+Rewriting your entire experience section for every job is a trap. It adds hours of effort for minimal additional [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) or recruiter signal.
 
 ---
 
 ## The "Same Industry, Different Company" Rule
 
-When roles are in the same industry and similar in level, very little needs to change. A data analyst applying to three different analytics roles needs to change:
+When roles are in the same industry and similar in level, very little needs to change. A [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) applying to three different analytics roles needs to change:
 - Headline: match each exact title
 - Summary: swap in company-relevant language (startup vs. enterprise, B2B vs. B2C)
 - Skills: surface whatever tools each posting emphasizes
@@ -106,7 +106,7 @@ When you are switching industries or significantly changing roles, more needs to
 
 - Your summary needs to reframe your experience in the target industry's language
 - You may need to reorder bullets to lead with transferable skills
-- Some bullet points may need light editing to use the destination industry's terminology
+- Some [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) may need light editing to use the destination industry's terminology
 
 Read [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) for a complete framework.
 
@@ -114,7 +114,7 @@ Read [career change resume guide](https://thetailorcv.com/blog/career-change-res
 
 ## How ATS Determines Whether You Changed Enough
 
-ATS doesn't care whether you changed 5% or 50% of your resume - it only cares whether the result matches the job posting. You could make one sentence change that adds three critical keywords and jump 20 points. You could rewrite 80% of your resume and still miss the key terms.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) doesn't care whether you changed 5% or 50% of your resume - it only cares whether the result matches the job posting. You could make one sentence change that adds three critical keywords and jump 20 points. You could rewrite 80% of your resume and still miss the key terms.
 
 That is why the right approach is:
 
@@ -134,7 +134,7 @@ If you're applying to 10-20 roles per week, a full rewrite for each is impossibl
 
 1. **Build 2-3 "master" versions** of your resume - one for each role type you're targeting
 2. **Run the 5-minute checklist** on each application from the appropriate master version
-3. **Verify with the ATS checker** for any role you're excited about
+3. **Verify with the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) checker** for any role you're excited about
 4. **Do a deeper 20-minute pass** for your top 3-5 priority applications per week
 
 This keeps volume high while ensuring your best opportunities get proper attention.
@@ -145,11 +145,11 @@ This keeps volume high while ensuring your best opportunities get proper attenti
 
 ### Is it worth tailoring if you're applying to hundreds of jobs?
 
-For volume applications: yes, but keep it to the 5-minute checklist. Even basic tailoring significantly outperforms a generic resume.
+For volume applications: yes, but keep it to the 5-minute checklist. Even basic tailoring significantly outperforms a [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
 
 ### Can ATS tell if I changed my resume?
 
-ATS doesn't compare versions - it compares your current resume to the job's requirements. Whether you changed 5% or 100% is irrelevant; only the match quality matters.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) doesn't compare versions - it compares your current resume to the job's requirements. Whether you changed 5% or 100% is irrelevant; only the match quality matters.
 
 ### How do I know if I've changed enough?
 
@@ -185,7 +185,7 @@ Use this guide as part of a complete job-search workflow. Check your resume with
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
-How much should you change your resume for every job? Always change the headline, summary, and skills section - that takes 5 minutes and handles most of the ATS gap. For roles you really want, spend 20-30 minutes doing a deeper pass. For volume applications, use a master version with the 5-minute checklist. Verify with a tool, and you will consistently submit resumes that score well instead of hoping.
+How much should you change your resume for every job? Always change the headline, summary, and skills section - that takes 5 minutes and handles most of the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) gap. For roles you really want, spend 20-30 minutes doing a deeper pass. For volume applications, use a master version with the 5-minute checklist. Verify with a tool, and you will consistently submit resumes that score well instead of hoping.
 
 [Check your resume match score - free](/solutions)
 

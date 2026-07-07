@@ -10,7 +10,7 @@ slug: resume-review-checklist-before-applying
 keywords: resume review checklist, resume checklist before applying, resume proofreading checklist, ATS resume review
 ---
 
-A resume review checklist helps you catch mistakes before you apply. Many candidates submit resumes with missing keywords, weak bullets, broken links, or formatting problems that could have been fixed in five minutes.
+A resume review checklist helps you catch mistakes before you apply. Many candidates submit resumes with [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description), weak bullets, broken links, or formatting problems that could have been fixed in five minutes.
 
 Use this checklist with the [ATS score checker](https://www.thetailorcv.com/solutions) and the [resume proofreading checklist](https://thetailorcv.com/blog/resume-proofreading-checklist).
 
@@ -20,15 +20,15 @@ Make sure your:
 
 - Email is professional
 - Phone number is correct
-- LinkedIn link works
-- Portfolio or GitHub link works
+- [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) link works
+- [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) or GitHub link works
 - City/country is appropriate for the role
 
 Broken contact information can cost interviews.
 
 ## 2. Match the Job Description
 
-Compare your resume with the role. Check whether your resume includes the main skills, tools, and responsibilities from the job description.
+Compare your resume with the role. Check whether your resume includes the main skills, tools, and responsibilities from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 Do not add false skills. Add truthful experience using the employer's language.
 

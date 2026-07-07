@@ -19,7 +19,7 @@ Show only your strongest 8-12 pieces. Lead and close with your best - visitors r
 For your key pieces, add a sentence or two: the client or brief, the goal, and your specific role. Context turns decoration into demonstrated design thinking - borrow the [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) structure for your biggest projects.
 
 ## Present With Mockups
-Show work in realistic mockups - packaging, signage, app, web - so clients can picture the result. Keep a consistent grid, spacing, and type treatment across the whole portfolio.
+Show work in realistic mockups - packaging, signage, app, web - so clients can picture the result. Keep a consistent grid, spacing, and type treatment across the whole [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 ## Platforms
 - **Behance** and **Dribbble** for reach and discovery

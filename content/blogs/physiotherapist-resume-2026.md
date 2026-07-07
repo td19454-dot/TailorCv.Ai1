@@ -20,10 +20,10 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 1. Header with licensure
 2. Summary
-3. Licensure and certifications
+3. Licensure and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 4. Clinical skills and specialties
 5. Work experience
-6. Education
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One to two pages.
 
@@ -52,7 +52,7 @@ Treatment: Manual therapy, mobilization, soft tissue techniques, exercise prescr
 Specialties: Orthopedic, neurological (stroke, SCI, Parkinson's), sports, pediatric, geriatric, cardiopulmonary, post-surgical
 Modalities: Ultrasound, TENS, IFT, hot/cold therapy, traction, hydrotherapy
 Documentation: SOAP notes, treatment plans, progress reports, EMR systems
-Patient Care: Patient education, home exercise programs, fall prevention, ergonomic advice
+Patient Care: Patient [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), home exercise programs, fall prevention, ergonomic advice
 
 ---
 
@@ -68,7 +68,7 @@ Patient Care: Patient education, home exercise programs, fall prevention, ergono
 - Orthopedic / neurological / sports physiotherapy
 - Range of motion (ROM)
 - Electrotherapy
-- Patient education
+- Patient [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - Home exercise program (HEP)
 - Outcome measures
 - SOAP notes

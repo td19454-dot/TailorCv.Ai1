@@ -168,7 +168,7 @@ Not building on others or ignoring the discussion flow signals weak teamwork.
 - [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
 - [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [Phone Interview Tips 2026 - How to Ace the Phone Screen](https://thetailorcv.com/blog/phone-interview-tips)
 - [How to Explain Resume Gaps in 2026 - Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [How to Get a Job With No Experience - 10 Strategies That Actually Work in 2026](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
@@ -181,8 +181,25 @@ Use this advice as interview practice, not just reading material. Start a role-s
 
 Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
 
+---
+
+## Related Guides to Strengthen This Topic
+
+Use these internal guides to connect this topic with interviews, communication, and placement preparation:
+
+- [How to Prepare for a Job Interview in 2026](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
+- [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
+- [STAR Method Interview Guide](https://thetailorcv.com/blog/star-method-interview-guide)
+- [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
+- [Interview Body Language and Communication Tips](https://thetailorcv.com/blog/interview-body-language-communication-tips)
+- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [Questions to Ask in an Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
+- [Mock Interview Practice Online Free AI](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai)
+
 ## Conclusion
 To stand out in a group discussion, contribute substantial and well-structured points, listen actively and build on others, handle conflict gracefully, and demonstrate leadership through inclusivity and structure - not domination. Quality contributions beat quantity every time.
 
 A GD is one step in the hiring process. Make sure your resume gets you there with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and prepare for the interview rounds with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+
+
 

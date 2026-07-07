@@ -10,9 +10,9 @@ slug: cloud-engineer-resume-2026
 keywords: cloud engineer resume, cloud engineer resume 2026, AWS resume, GCP resume, Azure resume, cloud infrastructure resume, cloud architect resume, cloud ATS keywords
 ---
 
-A cloud engineer resume in 2026 needs to prove that you can design, build, and manage cloud infrastructure that is reliable, secure, cost-efficient, and automated. The distinction between cloud engineering and DevOps is blurring, but cloud roles tend to emphasize architecture, managed services, cost governance, and multi-cloud strategy more than CI/CD pipeline tooling.
+A cloud engineer resume in 2026 needs to prove that you can design, build, and manage cloud infrastructure that is reliable, secure, cost-efficient, and automated. The distinction between cloud engineering and [DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026) is blurring, but cloud roles tend to emphasize architecture, managed services, cost governance, and multi-cloud strategy more than CI/CD pipeline tooling.
 
-Whether you are targeting AWS, GCP, Azure, or multi-cloud roles, your resume must show certifications, real infrastructure built, and measurable improvements in cost, availability, or security posture.
+Whether you are targeting AWS, GCP, Azure, or multi-cloud roles, your resume must show [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), real infrastructure built, and measurable improvements in cost, availability, or security posture.
 
 Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). If your role is more pipeline and automation focused, also read the [DevOps engineer resume guide](https://thetailorcv.com/blog/devops-engineer-resume-2026). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
 
@@ -24,11 +24,11 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary with certification highlight
 3. Technical skills by cloud and category
 4. Work experience
-5. Projects
-6. Certifications
-7. Education
+5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+7. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
-One to two pages. Certifications are important signals in cloud roles and should be clearly visible.
+One to two pages. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) are important signals in cloud roles and should be clearly visible.
 
 ---
 
@@ -44,7 +44,7 @@ Cloud Engineer with 6 years of experience architecting multi-region AWS infrastr
 
 ### Example for Entry-Level Cloud Engineer
 
-Cloud Engineer with hands-on experience in AWS, Terraform, and Docker. Built 3 cloud infrastructure projects including a multi-environment VPC setup, serverless API with Lambda, and containerized workload on ECS. AWS Cloud Practitioner and Solutions Architect - Associate certified. Seeking a junior cloud or infrastructure engineering role.
+Cloud Engineer with hands-on experience in AWS, Terraform, and Docker. Built 3 cloud infrastructure [projects](https://thetailorcv.com/blog/projects-in-resume) including a multi-environment VPC setup, serverless API with Lambda, and containerized workload on ECS. AWS Cloud Practitioner and Solutions Architect - Associate certified. Seeking a junior cloud or infrastructure engineering role.
 
 ---
 
@@ -128,7 +128,7 @@ Highly valued in cloud engineering:
 - AWS Certified Solutions Architect - Associate (most common starting point)
 - AWS Certified Solutions Architect - Professional
 - AWS Certified SysOps Administrator
-- AWS Certified DevOps Engineer
+- AWS Certified [DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026) Engineer
 - Google Cloud Professional Cloud Architect
 - Google Cloud Professional Data Engineer
 - Microsoft Azure Administrator (AZ-104)

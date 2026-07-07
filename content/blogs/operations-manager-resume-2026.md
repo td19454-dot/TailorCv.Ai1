@@ -24,8 +24,8 @@ Before applying, compare your resume to the job description with the [ATS score 
 2. Summary
 3. Core operations competencies
 4. Work experience
-5. Education
-6. Certifications
+5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 One to two pages. Senior operations managers with multi-site, P&L ownership, or transformation program experience may use two pages.
 
@@ -43,7 +43,7 @@ Operations Manager with 8 years of experience in manufacturing and FMCG logistic
 
 ### Example for Entry-Level Operations Professional
 
-Operations Analyst with 3 years of experience in warehouse logistics and process improvement. Led 2 process redesign projects that reduced order processing time by 35% and improved on-time delivery from 82% to 94%. Proficient in MS Project, SAP, Excel, and lean waste analysis. Seeking an operations coordinator or manager role.
+Operations Analyst with 3 years of experience in warehouse logistics and process improvement. Led 2 process redesign [projects](https://thetailorcv.com/blog/projects-in-resume) that reduced order processing time by 35% and improved on-time delivery from 82% to 94%. Proficient in MS Project, SAP, Excel, and lean waste analysis. Seeking an operations coordinator or manager role.
 
 ---
 
@@ -114,7 +114,7 @@ FMCG Manufacturing Facility | Jul 2020 - Present
 
 - Managed end-to-end production operations for a 240-employee, 6-line bottling facility producing 180M units annually across 3 product categories.
 - Improved OEE from 64% to 81% in 18 months through TPM implementation, planned maintenance scheduling, and real-time line performance monitoring.
-- Reduced manufacturing cost per unit by 14% through packaging material optimization, yield improvement, and energy efficiency projects with combined savings of $3.1M annually.
+- Reduced manufacturing cost per unit by 14% through packaging material optimization, yield improvement, and energy efficiency [projects](https://thetailorcv.com/blog/projects-in-resume) with combined savings of $3.1M annually.
 - Led a cross-functional team to achieve ISO 9001:2015 certification for the first time in the facility's history - passing the audit with zero major non-conformances.
 - Reduced employee injury rate from 6.2 to 1.4 per 200,000 hours worked through a structured safety leadership program, near-miss reporting culture, and hazard elimination campaigns.
 
@@ -170,7 +170,7 @@ Once you draft this resume, test it against a real job post with the [free ATS s
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 
 ## Conclusion
-A strong operations manager resume in 2026 shows process ownership, measurable efficiency improvements, cost outcomes, and team leadership. Every bullet should quantify what changed - not just what you managed.
+A strong operations manager resume in 2026 shows process ownership, measurable efficiency improvements, cost outcomes, and team leadership. Every bullet should [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) what changed - not just what you managed.
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for your behavioral and case interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers).
 

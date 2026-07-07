@@ -23,7 +23,7 @@ You apply to a role in the UK.
 Still nothing.
 
 You apply in Australia.
-A recruiter replies: "Can you send a CV instead?"
+A [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) replies: "Can you send a CV instead?"
 
 You send your resume.
 They do not reply.
@@ -32,7 +32,7 @@ International job searching is one area where resume advice almost universally f
 Every guide assumes you are applying in one country.
 Most assume that country is the United States.
 
-The reality is that resume conventions - format, length, photo, personal details, cover letter expectations - differ significantly between countries.
+The reality is that resume conventions - format, length, photo, personal details, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) expectations - differ significantly between countries.
 
 Applying with a US-style resume to a German, UK, or Australian employer signals that you did not bother to understand the market you are entering.
 
@@ -62,7 +62,7 @@ It makes you look like you did not research the market.
 
 **Photo:** Never. Including a photo is considered a red flag in the US and can expose employers to discrimination liability.
 
-**Personal details:** No date of birth, no marital status, no nationality, no national ID. Name, email, phone, city/state, and LinkedIn URL are standard.
+**Personal details:** No date of birth, no marital status, no nationality, no national ID. Name, email, phone, city/state, and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) URL are standard.
 
 **Format:** Clean, ATS-optimized, single-column preferred. Skills section, [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary), work experience (reverse chronological), education.
 
@@ -82,15 +82,15 @@ Use [TailorCV's ATS optimizer](https://www.thetailorcv.com/solutions) before app
 
 **Photo:** Generally not included. UK employers are trained to evaluate on merit, and photos can introduce unconscious bias concerns (similar to US).
 
-**Personal details:** Name, contact details, and LinkedIn are standard. Date of birth and nationality are not expected. Professional development and qualifications are important.
+**Personal details:** Name, contact details, and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) are standard. Date of birth and nationality are not expected. Professional development and qualifications are important.
 
 **Format:** Similar to US in most respects. However, a "Personal Statement" (2-3 sentences at the top) is more common than in the US. This is essentially the UK equivalent of a [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary).
 
 **References:** "References available upon request" is standard - or sometimes two named references are included at the bottom for more traditional industries.
 
-**Cover letter:** More expected than in the US. Many UK employers treat the cover letter as a significant part of the application.
+**[cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026):** More expected than in the US. Many UK employers treat the [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) as a significant part of the application.
 
-**Spelling:** British English is expected. "Organisation" not "organization." "Colour" not "color." ATS and human reviewers in the UK notice American spelling inconsistencies.
+**Spelling:** British English is expected. "Organisation" not "organization." "Colour" not "color." [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and human reviewers in the UK notice American spelling inconsistencies.
 
 **Salary:** Do not list salary history on your CV. If asked in an application form, give a range based on research. Read [how to negotiate a salary offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) before entering any salary range.
 
@@ -106,9 +106,9 @@ Germany has some of the most specific resume conventions in the world.
 
 **Personal details:** Name, date of birth, place of birth, nationality, marital status, and address are all conventionally included. Note: some progressive German companies are moving away from this as part of diversity initiatives - but it remains the majority norm.
 
-**Document structure:** German CVs typically include: photo + personal details, professional summary, work experience, education, further qualifications, language skills, IT skills, interests/hobbies, references.
+**Document structure:** German CVs typically include: photo + personal details, professional summary, work experience, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), further qualifications, language skills, IT skills, interests/hobbies, references.
 
-**The "Anschreiben" (Cover Letter):** In Germany, the cover letter (Anschreiben) is typically more formal and important than in many other markets. It should be addressed to a specific person and follow formal letter conventions.
+**The "Anschreiben" ([cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026)):** In Germany, the [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) (Anschreiben) is typically more formal and important than in many other markets. It should be addressed to a specific person and follow formal letter conventions.
 
 **Certifications and qualifications:** Germans are extremely credential-focused. Any relevant diploma, certificate, or professional qualification should be listed with the issuing institution. Review [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for the right format before adapting to German conventions.
 
@@ -128,9 +128,9 @@ Germany has some of the most specific resume conventions in the world.
 
 **Language:** French CVs for French companies should be in French. For multinational companies, English is accepted - but demonstrate French language proficiency if you have it.
 
-**Structure:** Photo (top right), personal details, professional profile, work experience, education, skills and languages. Very clean and structured.
+**Structure:** Photo (top right), personal details, professional profile, work experience, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), skills and languages. Very clean and structured.
 
-**Cover letter ("Lettre de Motivation"):** Expected for most applications and taken seriously. Should be formal, demonstrating both professional fit and enthusiasm.
+**[cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) ("Lettre de Motivation"):** Expected for most applications and taken seriously. Should be formal, demonstrating both professional fit and enthusiasm.
 
 ---
 
@@ -158,7 +158,7 @@ Germany has some of the most specific resume conventions in the world.
 
 **References:** Australia has a stronger reference culture than the US or UK. 2-3 references with contact information are often included at the end of the CV - or "references available upon request" with actual referees ready immediately.
 
-**Cover letter:** Expected and taken seriously. Personalized, specific, and professional.
+**[cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026):** Expected and taken seriously. Personalized, specific, and professional.
 
 **Key difference:** Australian job applications often include a "selection criteria" response - a separate document addressing specific stated criteria for the role. This is especially common for government and healthcare roles. Failure to include it can result in automatic disqualification.
 
@@ -213,12 +213,12 @@ Track these versions using the [managing multiple resume versions](https://theta
 
 ### Step 3: Tailor for the Specific Role
 
-Once you have a country-appropriate base, tailor it for the specific job description exactly as you would for any application - keyword matching, summary alignment, skills emphasis.
+Once you have a country-appropriate base, tailor it for the specific [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) exactly as you would for any application - keyword matching, summary alignment, skills emphasis.
 
 Use the [hidden keywords technique](https://thetailorcv.com/blog/hidden-keywords-in-job-description) to decode what the international employer is really looking for beyond the explicit requirements.
 
 Use [TailorCV's optimizer](https://www.thetailorcv.com/solutions) for the keyword matching step.
-The tool works regardless of country - paste the job description and upload your resume to see your keyword match and gap analysis.
+The tool works regardless of country - paste the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and upload your resume to see your keyword match and gap analysis.
 
 ### Step 4: Consider Language Requirements
 

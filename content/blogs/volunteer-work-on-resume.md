@@ -10,7 +10,7 @@ slug: volunteer-work-on-resume
 keywords: volunteer work on resume, how to add volunteer experience, volunteer resume section, volunteer experience as work experience, resume with volunteer work, unpaid experience resume, volunteer skills resume
 ---
 
-Volunteer experience is one of the most underused assets on a resume. Many candidates either omit it entirely or bury it at the bottom of the page where no one sees it. Done right, volunteer work demonstrates skills, fills gaps, shows character, and - for freshers and career changers - can directly substitute for paid experience.
+Volunteer experience is one of the most underused assets on a resume. Many candidates either omit it entirely or bury it at the bottom of the page where no one sees it. Done right, volunteer work demonstrates skills, fills gaps, shows character, and - for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) and career changers - can directly substitute for paid experience.
 
 This guide tells you exactly when to include volunteer work, where to put it, and how to write it so it adds real value.
 
@@ -71,7 +71,7 @@ If your volunteer work involved professional-level responsibilities and is direc
 
 ### Option 2: A Dedicated Volunteer Experience Section
 
-If you have paid work experience that carries the main section and also have notable volunteer work, add a separate "Volunteer Experience" section after your main Experience and Education sections.
+If you have paid work experience that carries the main section and also have notable volunteer work, add a separate "Volunteer Experience" section after your main Experience and [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) sections.
 
 **When to use this approach:**
 - You have solid paid work experience but meaningful volunteer history
@@ -132,7 +132,7 @@ Read [how to write resume bullet points that get results](https://thetailorcv.co
 ### Teaching and Mentoring
 - Tutoring programs
 - Coding bootcamps for underprivileged youth
-- Literacy and adult education programs
+- Literacy and adult [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) programs
 
 ### Healthcare and Social Work
 - Hospital volunteering
@@ -150,14 +150,14 @@ Read [how to write resume bullet points that get results](https://thetailorcv.co
 
 - One-off participation (helped at a single event)
 - Volunteer work that is 10+ years old and no longer relevant
-- Work you cannot quantify or describe meaningfully
+- Work you cannot [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) or describe meaningfully
 - Religious or political volunteering when applying to neutral corporate employers (can invite bias)
 
 ---
 
 ## ATS Considerations for Volunteer Work
 
-ATS systems read volunteer work sections the same as any other text. Use standard section names ("Volunteer Experience," "Community Involvement," "Leadership") and write achievement bullets with relevant keywords.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems read volunteer work sections the same as any other text. Use standard section names ("Volunteer Experience," "Community Involvement," "Leadership") and write achievement bullets with relevant keywords.
 
 Include technical skills used in volunteer work in your skills section - ATS will match them to the job description. Test the full resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
 

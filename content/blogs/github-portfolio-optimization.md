@@ -17,8 +17,8 @@ Create a repository named exactly your username and add a README. It renders at 
 
 - A one-line bio and your specialty
 - Your tech stack (badges are fine, kept tasteful)
-- 3-4 featured projects with links
-- Links to your **live portfolio** and **resume**
+- 3-4 featured [projects](https://thetailorcv.com/blog/projects-in-resume) with links
+- Links to your **live [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)** and **resume**
 - How to contact you
 
 ## Pin Your 6 Best Repositories
@@ -52,14 +52,14 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 ## Pro Tips
 - Archive or hide abandoned junk repos so your good work stands out.
 - Add topics to repos so they are searchable.
-- Star and follow projects you admire - it signals technical taste.
+- Star and follow [projects](https://thetailorcv.com/blog/projects-in-resume) you admire - it signals technical taste.
 
 
 ## Frequently Asked Questions
 
 ### Is GitHub enough on its own?
 
-It is strong, but pairing it with a portfolio site that frames your story converts better. Recruiters often check both.
+It is strong, but pairing it with a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site that frames your story converts better. Recruiters often check both.
 
 ### How important is the contribution graph?
 

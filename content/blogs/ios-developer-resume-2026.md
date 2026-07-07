@@ -18,12 +18,12 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ## Best iOS Developer Resume Format
 
-1. Header with GitHub and App Store links
+1. Header with [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) and App Store links
 2. Summary
 3. Technical skills
 4. Work experience
-5. Projects (with App Store links)
-6. Education
+5. [projects](https://thetailorcv.com/blog/projects-in-resume) (with App Store links)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One page for engineers with under 8 years of experience.
 
@@ -41,7 +41,7 @@ iOS Developer with 5 years of experience building consumer and enterprise apps i
 
 ### Example for Entry-Level iOS Developer
 
-iOS Developer with strong Swift and SwiftUI skills. Built 3 personal iOS apps published to the App Store with a combined 500+ downloads. Experienced with MVVM architecture, URLSession, Core Data, and SwiftUI navigation. Familiar with TestFlight, Instruments, and GitHub Actions for iOS CI.
+iOS Developer with strong Swift and SwiftUI skills. Built 3 personal iOS apps published to the App Store with a combined 500+ downloads. Experienced with MVVM architecture, URLSession, Core Data, and SwiftUI navigation. Familiar with TestFlight, Instruments, and [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions for iOS CI.
 
 ---
 
@@ -51,9 +51,9 @@ Languages: Swift, Objective-C (reading and legacy maintenance)
 UI Frameworks: SwiftUI, UIKit, AppKit (macOS)
 Architecture: MVVM, VIPER, Clean Architecture, TCA (The Composable Architecture)
 Apple Frameworks: Combine, async/await, Core Data, CloudKit, CoreLocation, MapKit, AVFoundation, HealthKit, ARKit, StoreKit, Push Notifications (APNs)
-Networking: URLSession, Alamofire, REST APIs, GraphQL, WebSockets
+[networking](https://thetailorcv.com/blog/networking-tips-for-job-search): URLSession, Alamofire, REST APIs, GraphQL, WebSockets
 Testing: XCTest, XCUITest, Quick/Nimble, SnapshotTesting
-CI/CD: Fastlane, Xcode Cloud, GitHub Actions, TestFlight, Firebase App Distribution
+CI/CD: Fastlane, Xcode Cloud, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions, TestFlight, Firebase App Distribution
 Tools: Xcode, Instruments (profiling), Charles Proxy, Git, Figma, Crashlytics
 
 ---
@@ -114,7 +114,7 @@ Consumer App Company | Feb 2022 - Present
 - Migrated core app screens from UIKit to SwiftUI with new MVVM architecture, reducing view controller file count from 180 to 60 and feature development time by 35%.
 - Built an offline-first data sync layer using Core Data and CloudKit, enabling full app functionality in offline mode and syncing correctly on reconnection across 8 data entity types.
 - Achieved crash-free rate of 99.8% (up from 97.9%) by systematic crash prioritization, memory profiling, and threading issue resolution using Instruments.
-- Established iOS CI/CD with Fastlane and GitHub Actions - automated build, test, and TestFlight distribution on every PR, reducing manual release effort from 4 hours to 20 minutes.
+- Established iOS CI/CD with Fastlane and [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions - automated build, test, and TestFlight distribution on every PR, reducing manual release effort from 4 hours to 20 minutes.
 
 ---
 
@@ -150,7 +150,7 @@ If you have apps on the App Store, include download counts, ratings, or crash ra
 
 ### Mistake 2: UIKit only
 
-In 2026, SwiftUI is increasingly expected alongside UIKit. If you only show UIKit, add SwiftUI projects before applying to modern iOS roles.
+In 2026, SwiftUI is increasingly expected alongside UIKit. If you only show UIKit, add SwiftUI [projects](https://thetailorcv.com/blog/projects-in-resume) before applying to modern iOS roles.
 
 ### Mistake 3: No architecture pattern
 

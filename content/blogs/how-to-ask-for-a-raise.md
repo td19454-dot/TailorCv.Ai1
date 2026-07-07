@@ -47,18 +47,18 @@ A raise request is a business case. Gather:
 ### Your Accomplishments
 
 Document specific achievements since your last raise:
-- Projects delivered and their business impact
+- [projects](https://thetailorcv.com/blog/projects-in-resume) delivered and their business impact
 - Revenue generated or costs saved
-- Process improvements with measurable results
+- Process improvements with [measurable results](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - Additional responsibilities you have taken on
 - Skills you have developed
 
-Quantify everything. "I led the migration project that reduced infrastructure costs by $40K annually" is far stronger than "I worked hard this year."
+[quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) everything. "I led the migration project that reduced infrastructure costs by $40K annually" is far stronger than "I worked hard this year."
 
 ### Market Data
 
 Research what your role pays in your market:
-- Levels.fyi (tech), Glassdoor, LinkedIn Salary, PayScale
+- Levels.fyi (tech), Glassdoor, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Salary, PayScale
 - Filter by your title, location, experience, and company size
 - If you are below market, this is powerful evidence
 
@@ -110,7 +110,7 @@ If they agree or counter close to your number, accept graciously: "That works fo
 
 ### "I need to check / get approval"
 
-"I understand. When can we reconnect on this? I'd appreciate a follow-up by [specific date]."
+"I understand. When can we reconnect on this? I'd appreciate a [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) by [specific date]."
 
 ### "There's no budget right now"
 
@@ -141,7 +141,7 @@ A no is not the end. Your options:
 
 1. **Get a roadmap**: Ask exactly what you need to achieve for a yes, and a timeline.
 2. **Negotiate non-salary benefits**: PTO, flexibility, development budget, title.
-3. **Set a follow-up date**: Lock in a specific revisit date (e.g., 3 months).
+3. **Set a [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) date**: Lock in a specific revisit date (e.g., 3 months).
 4. **Evaluate the market**: If you are genuinely underpaid and the company won't adjust, it may be time to explore other offers. The strongest raise leverage is often a competing offer - read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer).
 
 ---
@@ -162,7 +162,7 @@ Caution: only use this if you are genuinely prepared to leave. Bluffing can back
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
 - [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
 - [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
 - [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
@@ -184,4 +184,5 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 Asking for a raise is a business negotiation, not a personal favor. Build your case with quantified accomplishments and market data, schedule a proper conversation, state a specific number, and handle the response professionally. Even a no can become a roadmap to a yes.
 
 To strengthen your position long-term, keep your skills current with the [skills to add to your resume guide](https://thetailorcv.com/blog/skills-to-add-to-resume-2026), keep your resume sharp with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and read the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
+
 

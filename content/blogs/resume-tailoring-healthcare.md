@@ -24,7 +24,7 @@ Using the wrong EMR system acronym.
 Listing a specialty that does not align with the unit's focus.
 Omitting a licensure verification number.
 
-This guide covers healthcare resume tailoring across three distinct tracks: clinical roles, healthcare administration, and allied health professions.
+This guide covers healthcare [resume tailoring](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) across three distinct tracks: clinical roles, healthcare administration, and allied health professions.
 
 ---
 
@@ -35,7 +35,7 @@ This guide covers healthcare resume tailoring across three distinct tracks: clin
 In most industries, you prove your skills through accomplishments.
 In healthcare, you prove your qualifications through credentials - before accomplishments are even considered.
 
-Licenses, certifications, and registrations are required for most clinical roles.
+Licenses, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), and registrations are required for most clinical roles.
 A resume that does not clearly [display the right certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) is often disqualified before any human reviews it.
 
 ### 2. Terminology Is Highly Specific
@@ -44,7 +44,7 @@ Healthcare has a language of its own.
 The wrong terminology signals inexperience or poor fit - even if you have the right skills.
 
 "Patient management" means something very different depending on whether you are a nurse, a hospital administrator, or a physical therapist.
-ATS systems and healthcare recruiters parse for specific terms: EMR platforms, specialty names, care settings, certification acronyms.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems and healthcare recruiters parse for specific terms: EMR platforms, specialty names, care settings, certification acronyms.
 
 Understanding [how ATS works](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) is especially critical in healthcare - large hospital systems use enterprise-grade platforms that filter heavily on terminology.
 
@@ -62,17 +62,17 @@ Your resume must signal familiarity with the specific setting, patient populatio
 
 ### Required Sections for Clinical Resumes
 
-**Licensure and Certifications - Make This Your Second Section**
+**Licensure and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) - Make This Your Second Section**
 
-Put your licenses and certifications immediately after your contact information - before work experience.
+Put your licenses and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) immediately after your contact information - before work experience.
 
-Why: A recruiter hiring an RN for a critical care unit will check your nursing license and BLS/ACLS certifications before reading anything else. If these are buried at the bottom, you have already created friction.
+Why: A [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) hiring an RN for a critical care unit will check your nursing license and BLS/ACLS certifications before reading anything else. If these are buried at the bottom, you have already created friction.
 
 Include:
 - State license(s) and number(s)
 - License expiration date
-- Active certifications with renewal dates (BLS, ACLS, PALS, NRP, TNCC, etc.)
-- Specialty certifications (CCRN, CEN, OCN, etc.)
+- Active [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) with renewal dates (BLS, ACLS, PALS, NRP, TNCC, etc.)
+- Specialty [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (CCRN, CEN, OCN, etc.)
 - DEA registration (for prescribers)
 - Board certification (for MDs, DOs, NPs, PAs)
 
@@ -85,7 +85,7 @@ CCRN - AACN, exp. June 2026
 BLS - American Heart Association, exp. March 2027
 ```
 
-This section eliminates the recruiter's first concern immediately.
+This section eliminates the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes)'s first concern immediately.
 
 ### Clinical Resume Keywords by Specialty
 
@@ -170,7 +170,7 @@ For administrative roles, the [professional summary](https://thetailorcv.com/blo
 Healthcare administrators must demonstrate knowledge of the regulatory environment.
 
 If you led a Joint Commission survey preparation, say so.
-If you improved HCAHPS scores, quantify it.
+If you improved HCAHPS scores, [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) it.
 If you managed a CMS compliance audit, include it.
 
 These are the accomplishments that signal "this person knows healthcare operations" - not just generic management.
@@ -191,13 +191,13 @@ Allied health roles - physical therapy, occupational therapy, respiratory therap
 
 **Specify settings** - Acute care vs. outpatient vs. home health vs. SNF. Each requires different competencies and signals.
 
-**Match continuing education to the job description** - If the role values a specific specialty certification, list it prominently if you have it.
+**Match continuing education to the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)** - If the role values a specific specialty certification, list it prominently if you have it.
 
 ---
 
 ## ATS in Healthcare: What You Need to Know
 
-Healthcare systems - especially large hospital networks and health systems - use enterprise ATS platforms (Taleo, Workday, Oracle HCM).
+Healthcare systems - especially large hospital networks and health systems - use enterprise [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms (Taleo, Workday, Oracle HCM).
 
 These systems:
 - Filter by licensure status before anything else in some cases
@@ -210,7 +210,7 @@ Avoid [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatti
 No tables, no columns, no graphics.
 
 Use [TailorCV's ATS optimizer](https://www.thetailorcv.com/solutions) to check your [keyword match score](https://thetailorcv.com/blog/ats-score-guide) and formatting before uploading to a healthcare ATS.
-The tool flags both formatting issues that cause parsing failures and missing keywords from the job description.
+The tool flags both formatting issues that cause parsing failures and [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description) from the job description.
 
 ---
 
@@ -228,7 +228,7 @@ The "After" version:
 - Lists specific clinical competencies
 - Shows outcome data against a benchmark
 
-This is what a healthcare recruiter and an ATS both want.
+This is what a healthcare recruiter and an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) both want.
 
 ---
 
@@ -241,7 +241,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Should I include my NCLEX result on my nursing resume?
 
-No - only your current active license and certifications are relevant. License status is verifiable; exam results are not listed on resumes.
+No - only your current active license and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) are relevant. License status is verifiable; exam results are not listed on resumes.
 
 ### How do I handle multiple state licenses?
 
@@ -253,7 +253,7 @@ No - "references available upon request" is sufficient on the resume itself. Pro
 
 ### How specific should my unit experience be?
 
-Very specific. "Medical-surgical nursing" is vague. "32-bed cardiac step-down unit serving post-CABG, TAVR, and EP procedure patients" tells a recruiter exactly what you have done and whether it matches their needs.
+Very specific. "Medical-surgical nursing" is vague. "32-bed cardiac step-down unit serving post-CABG, TAVR, and EP procedure patients" tells a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) exactly what you have done and whether it matches their needs.
 
 ---
 
@@ -284,10 +284,10 @@ The specialty language.
 
 Generic resumes do not just underperform in healthcare - they actively signal that the candidate did not take the time to understand the role or the environment.
 
-Tailor your resume to the specific setting, population, and priorities of each role.
+[tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) to the specific setting, population, and priorities of each role.
 Lead with your credentials.
 Use the specialty language the unit uses.
-Quantify your clinical volume and outcomes.
+[quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) your clinical volume and outcomes.
 Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) before applying.
 
 The right role is out there.

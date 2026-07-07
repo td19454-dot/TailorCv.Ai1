@@ -10,7 +10,7 @@ slug: portfolio-website-for-job-applications
 keywords: portfolio website for job applications, job seeker portfolio, resume portfolio website, personal portfolio for jobs
 ---
 
-A portfolio website gives recruiters proof beyond your resume. It can show projects, case studies, writing samples, GitHub links, design work, dashboards, certifications, and contact details in one place.
+A [portfolio website](https://thetailorcv.com/blog/portfolio-website-for-job-applications) gives recruiters proof beyond your resume. It can show projects, case studies, writing samples, GitHub links, design work, dashboards, certifications, and contact details in one place.
 
 If you want to build one fast, try the [portfolio website builder](https://www.thetailorcv.com/portfolio) and read [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
@@ -27,21 +27,21 @@ Portfolios are useful for:
 - Students
 - Career changers
 
-Even if your role is not creative, a portfolio can show evidence of your work.
+Even if your role is not creative, a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) can show evidence of your work.
 
 ## What to Include
 
-A strong portfolio includes:
+A strong [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) includes:
 
 - Clear headline
 - Short about section
-- 3-5 best projects
+- 3-5 best [projects](https://thetailorcv.com/blog/projects-in-resume)
 - Resume download or link
-- LinkedIn and GitHub links
+- [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and GitHub links
 - Contact section
 - Case studies with results
 
-Do not include every project. Include the projects that support your target role.
+Do not include every project. Include the [projects](https://thetailorcv.com/blog/projects-in-resume) that support your target role.
 
 ## Project Case Study Format
 
@@ -60,13 +60,13 @@ This makes the project easy to understand quickly.
 
 Place it in the contact section:
 
-> linkedin.com/in/name | github.com/name | yourname.com
+> [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).com/in/name | github.com/name | yourname.com
 
 Use a clean URL. Avoid long tracking links.
 
 ## Portfolio SEO Basics
 
-Your portfolio can also rank for your name. Use:
+Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) can also rank for your name. Use:
 
 - Your full name in the title
 - Your role in the headline
@@ -87,11 +87,11 @@ Your portfolio works best when it supports the resume, not when it replaces it. 
 ## FAQ
 ### Can a portfolio help ATS?
 
-ATS may not evaluate the portfolio deeply, but recruiters often click links after your resume passes screening.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) may not evaluate the portfolio deeply, but recruiters often click links after your resume passes screening.
 
 ### Should students build a portfolio?
 
-Yes. Students can show projects, coursework, internships, hackathons, and certifications.
+Yes. Students can show [projects](https://thetailorcv.com/blog/projects-in-resume), coursework, internships, hackathons, and certifications.
 
 ### Is a PDF portfolio enough?
 
