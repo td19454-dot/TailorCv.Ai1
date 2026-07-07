@@ -878,6 +878,32 @@ _GENERIC_SKILL_PROSE_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Soft-skill / role-description words that never belong in a HARD skill entry.
+# Unlike _GENERIC_SKILL_ENDING_RE (which only catches phrases ending in specific
+# words like "development"/"tools"), this catches short 2-3 word junk such as
+# "cross-functional collaboration" or "senior IC role" that don't end in any of
+# those endings but are still not a real technology name.
+_GENERIC_SKILL_WORDS: set[str] = {
+    "collaboration", "collaborative", "communication", "leadership", "teamwork",
+    "presentation", "presentations", "documentation", "measurement", "measurements",
+    "commercial", "marketing", "stakeholder", "stakeholders", "cross-functional",
+    "crossfunctional", "cross", "functional", "ownership", "mentoring", "mentorship",
+    "problem-solving", "adaptability", "creativity", "innovation", "strategy",
+    "strategic", "planning", "reporting", "performance", "applications", "application",
+    "mindset", "attitude", "interpersonal", "organizational", "multitasking",
+    "proactive", "role", "roles", "senior", "junior", "ic", "startup", "startups",
+    "growth", "years", "year", "experience", "requirement", "requirements",
+    "responsibility", "responsibilities", "environment", "environments",
+    "team", "teams",
+}
+# Function/filler words: a phrase containing one of these is a sentence fragment,
+# never a skill name (real skill names like "Vector Databases" never contain them).
+_GENERIC_SKILL_STOPWORDS: set[str] = {
+    "a", "an", "the", "one", "two", "more", "less", "some", "any", "several",
+    "of", "or", "and", "with", "for", "in", "at", "is", "are", "to", "as",
+    "such", "etc", "including", "like", "via",
+}
+
 
 def _strip_skill_qualifiers(value: str) -> str:
     """Remove requirement prose around a possible atomic skill."""
@@ -904,6 +930,9 @@ def _is_atomic_hard_skill(value: str) -> bool:
         normalized == generic or normalized.startswith(f"{generic} ")
         for generic in _GENERIC_SKILL_PHRASES
     ):
+        return False
+    words = re.findall(r"[a-zA-Z][a-zA-Z0-9+#.\-]*", normalized)
+    if any(w in _GENERIC_SKILL_WORDS or w in _GENERIC_SKILL_STOPWORDS for w in words):
         return False
     if len(re.findall(r"[A-Za-z0-9+#.]+", skill)) > 4:
         return False
@@ -2877,6 +2906,22 @@ The JSON must strictly follow the schema provided below.
                         .get("soft_skills", {}) \
                         .get("missing", [])
 
+    # Sanitize hard_matched: the LLM's own "matched" list can contain the same
+    # generic phrases/role fragments as "missing" (e.g. "senior IC role"), so it
+    # must be decomposed/validated the same way instead of being trusted as-is.
+    sanitized_matched: list[str] = []
+    seen_matched_lower: set[str] = set()
+    if hard_matched:
+        _matched_leftover, _matched_confirmed = _sanitize_hard_skill_list(
+            hard_matched, resume_text=resume_string, jd_text=jd_string,
+        )
+        for token in _matched_confirmed + _matched_leftover:
+            key = token.lower()
+            if key not in seen_matched_lower:
+                seen_matched_lower.add(key)
+                sanitized_matched.append(token)
+    hard_matched = sanitized_matched
+
     # Sanitize hard_missing: decompose any LLM phrase entries into atomic keywords
     # and re-route them correctly between matched/missing.
     if hard_missing:
@@ -2885,11 +2930,16 @@ The JSON must strictly follow the schema provided below.
             resume_text=resume_string,
             jd_text=jd_string,
         )
-        _hs = parsed.setdefault("skills", {}).setdefault("hard_skills", {})
-        _hs["missing"] = _sanitized_missing
-        _hs["matched"] = list(hard_matched) + _newly_matched
+        for token in _newly_matched:
+            key = token.lower()
+            if key not in seen_matched_lower:
+                seen_matched_lower.add(key)
+                hard_matched.append(token)
         hard_missing = _sanitized_missing
-        hard_matched = _hs["matched"]
+
+    _hs = parsed.setdefault("skills", {}).setdefault("hard_skills", {})
+    _hs["matched"] = hard_matched
+    _hs["missing"] = hard_missing
 
     matched_count = len(hard_matched) + len(soft_matched)
     missing_count = len(hard_missing) + len(soft_missing)
