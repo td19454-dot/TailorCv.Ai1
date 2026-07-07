@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Freelance Resume, Contract Resume, Resume Tailoring, Gig Economy Resume, Job Search 2026]
 category: Resume Writing
-image: public/blog-images/resume-tailoring-freelance-contract.png
+image: public/blog-images/resume-tailoring-freelance-contract.webp
 slug: resume-tailoring-freelance-contract
 keywords: freelance resume tailoring, contract job resume, how to list freelance work on resume, contract vs permanent resume, gig worker resume 2026
 ---

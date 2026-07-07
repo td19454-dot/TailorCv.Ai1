@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Cybersecurity Portfolio, Cybersecurity Resume, Projects, Tech Portfolio, Job Search]
 category: Portfolio
-image: public/blog-images/cybersecurity-portfolio-projects.jpeg
+image: public/blog-images/cybersecurity-portfolio-projects.webp
 slug: cybersecurity-portfolio-projects
 keywords: cybersecurity portfolio projects, cybersecurity projects for resume, security analyst portfolio, cyber security portfolio ideas
 ---

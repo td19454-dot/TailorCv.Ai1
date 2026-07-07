@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Cover Letter, ATS, Job Application, Resume Keywords, Career Tips]
 category: Cover Letters
-image: public/blog-images/ats-friendly-cover-letter-format.jpeg
+image: public/blog-images/ats-friendly-cover-letter-format.webp
 slug: ats-friendly-cover-letter-format
 keywords: ATS friendly cover letter, cover letter format, AI cover letter, cover letter keywords, job application letter
 ---

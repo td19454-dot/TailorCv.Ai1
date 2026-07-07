@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Job Search, Application Tracker, Resume Versions, Follow Up, Career Tips]
 category: Job Search
-image: public/blog-images/job-application-tracker-template.jpeg
+image: public/blog-images/job-application-tracker-template.webp
 slug: job-application-tracker-template
 keywords: job application tracker template, application tracker, job search spreadsheet, resume tracking, follow up tracker
 ---

@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [Interview Practice, Mock Interview, Interview Preparation, Practice at Home, AI Mock Interview]
 category: Interview Preparation
-image: public/blog-images/how-to-practice-interviews-at-home.png
+image: public/blog-images/how-to-practice-interviews-at-home.webp
 slug: how-to-practice-interviews-at-home
 keywords: how to practice interviews at home, interview practice at home, mock interview practice free, interview preparation at home 2026
 ---

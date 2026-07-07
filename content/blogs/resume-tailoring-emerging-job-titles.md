@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [AI Engineer Resume, Prompt Engineer Resume, Emerging Job Titles, Resume Tailoring, New Tech Jobs 2026]
 category: Resume Optimization
-image: public/blog-images/resume-tailoring-emerging-job-titles.png
+image: public/blog-images/resume-tailoring-emerging-job-titles.webp
 slug: resume-tailoring-emerging-job-titles
 keywords: AI engineer resume, prompt engineer resume 2026, emerging job titles resume, new tech jobs resume tailoring, how to apply for AI jobs, GenAI resume tips
 ---

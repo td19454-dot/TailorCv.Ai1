@@ -5,7 +5,7 @@ date: 2026-07-02
 author: TailorCV Team
 tags: [Interview Questions, Why Should We Hire You, Job Interview, Interview Answers, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/how-to-answer-why-should-we-hire-you.png
+image: public/blog-images/how-to-answer-why-should-we-hire-you.webp
 slug: how-to-answer-why-should-we-hire-you
 keywords: why should we hire you answer, why should we hire you interview, best answer why hire you, job interview selling yourself 2026
 ---

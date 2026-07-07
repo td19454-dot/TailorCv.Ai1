@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Cover Letter, Job Application, Resume Tips, Career Tips, ATS]
 category: Cover Letters
-image: public/blog-images/cover-letter-mistakes-2026.jpeg
+image: public/blog-images/cover-letter-mistakes-2026.webp
 slug: cover-letter-mistakes-2026
 keywords: cover letter mistakes, cover letter mistakes 2026, job application mistakes, cover letter tips
 ---

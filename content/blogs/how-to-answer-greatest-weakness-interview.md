@@ -5,7 +5,7 @@ date: 2026-07-04
 author: TailorCV Team
 tags: [Interview Questions, Greatest Weakness, Interview Answers, Behavioral Interview, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/how-to-answer-greatest-weakness-interview.png
+image: public/blog-images/how-to-answer-greatest-weakness-interview.webp
 slug: how-to-answer-greatest-weakness-interview
 keywords: greatest weakness interview answer, what is your weakness interview, how to answer weakness question 2026, interview weakness examples
 ---

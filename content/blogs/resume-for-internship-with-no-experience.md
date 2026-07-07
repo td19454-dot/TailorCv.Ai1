@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Internship Resume, Student Resume, No Experience Resume, Fresher Resume, Resume Tips]
 category: Resume Writing
-image: public/blog-images/resume-for-internship-with-no-experience.jpeg
+image: public/blog-images/resume-for-internship-with-no-experience.webp
 slug: resume-for-internship-with-no-experience
 keywords: resume for internship with no experience, internship resume student, student resume no experience, fresher internship resume
 ---

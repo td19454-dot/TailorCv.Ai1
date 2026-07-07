@@ -5,7 +5,7 @@ date: 2026-07-02
 author: TailorCV Team
 tags: [Salary Negotiation, Job Offer, Interview Tips, Compensation, Career Advice]
 category: Interview Preparation
-image: public/blog-images/salary-negotiation-interview-guide-2026.png
+image: public/blog-images/salary-negotiation-interview-guide-2026.webp
 slug: salary-negotiation-interview-guide-2026
 keywords: salary negotiation after interview, how to negotiate salary 2026, job offer negotiation, salary negotiation tips interview
 ---

@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Video Resume, Job Search, Personal Branding, Interview Prep, Resume Tips]
 category: Job Search
-image: public/blog-images/video-resume-guide-2026.jpeg
+image: public/blog-images/video-resume-guide-2026.webp
 slug: video-resume-guide-2026
 keywords: video resume guide, video resume 2026, video resume script, should I make a video resume
 ---

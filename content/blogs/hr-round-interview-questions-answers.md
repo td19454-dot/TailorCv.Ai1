@@ -5,7 +5,7 @@ date: 2026-07-04
 author: TailorCV Team
 tags: [HR Interview, HR Round, Interview Questions, Interview Preparation, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/hr-round-interview-questions-answers.png
+image: public/blog-images/hr-round-interview-questions-answers.webp
 slug: hr-round-interview-questions-answers
 keywords: HR round interview questions, HR interview questions and answers, HR round preparation 2026, human resources interview tips
 ---

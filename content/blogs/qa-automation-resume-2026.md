@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [QA Resume, Automation Testing, Selenium, Playwright, Tech Resume]
 category: Resume Examples
-image: public/blog-images/qa-automation-resume-2026.jpeg
+image: public/blog-images/qa-automation-resume-2026.webp
 slug: qa-automation-resume-2026
 keywords: QA automation resume, automation tester resume 2026, Selenium resume, Playwright resume, QA engineer resume
 ---

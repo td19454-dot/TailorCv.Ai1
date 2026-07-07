@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [Software Engineer Interview, Coding Interview, System Design Interview, Technical Interview, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/software-engineer-interview-preparation.png
+image: public/blog-images/software-engineer-interview-preparation.webp
 slug: software-engineer-interview-preparation
 keywords: software engineer interview preparation, SDE interview prep, coding interview prep, software engineer interview questions, technical interview prep 2026
 ---

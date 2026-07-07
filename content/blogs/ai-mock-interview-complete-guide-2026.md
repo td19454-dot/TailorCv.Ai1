@@ -5,7 +5,7 @@ date: 2026-07-01
 author: TailorCV Team
 tags: [AI Mock Interview, Mock Interview, Interview Preparation, Interview Practice, Job Interview 2026]
 category: Interview Preparation
-image: public/blog-images/ai-mock-interview-complete-guide-2026.png
+image: public/blog-images/ai-mock-interview-complete-guide-2026.webp
 slug: ai-mock-interview-complete-guide-2026
 keywords: AI mock interview, AI mock interview practice, mock interview online free, AI interview simulator 2026, practice job interview with AI
 ---

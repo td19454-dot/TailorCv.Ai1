@@ -5,7 +5,7 @@ date: 2026-07-03
 author: TailorCV Team
 tags: [Body Language, Interview Communication, Virtual Interview, Interview Tips, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/interview-body-language-communication-tips.png
+image: public/blog-images/interview-body-language-communication-tips.webp
 slug: interview-body-language-communication-tips
 keywords: interview body language, body language job interview, interview communication tips, video interview body language 2026
 ---

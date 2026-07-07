@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [LinkedIn, Job Search, Personal Branding, Resume Keywords, Career Tips]
 category: LinkedIn
-image: public/blog-images/linkedin-headline-examples-job-seekers.jpeg
+image: public/blog-images/linkedin-headline-examples-job-seekers.webp
 slug: linkedin-headline-examples-job-seekers
 keywords: LinkedIn headline examples, LinkedIn headline for job seekers, best LinkedIn headline 2026, LinkedIn profile optimization
 ---

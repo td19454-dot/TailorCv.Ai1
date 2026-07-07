@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [resume matcher, job description, ATS]
 category: Job Description Matching
-image: public/blog-images/resume-matcher-tool-job-description.png
+image: public/blog-images/resume-matcher-tool-job-description.webp
 slug: resume-matcher-tool-job-description
 keywords: resume matcher tool, match resume to job description, job description resume matcher, resume keyword matcher
 ---

@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Data Analyst Portfolio, Data Analyst Resume, Portfolio, SQL, Power BI]
 category: Portfolio
-image: public/blog-images/data-analyst-case-study-portfolio.jpeg
+image: public/blog-images/data-analyst-case-study-portfolio.webp
 slug: data-analyst-case-study-portfolio
 keywords: data analyst case study portfolio, data analyst portfolio project, analytics case study, data analyst project structure
 ---

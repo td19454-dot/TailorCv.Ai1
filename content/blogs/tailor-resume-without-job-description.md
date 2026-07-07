@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Resume Tailoring, Referral Job Application, Cold Outreach Resume, Job Search 2026, Resume Without Job Description]
 category: Resume Optimization
-image: public/blog-images/tailor-resume-without-job-description.png
+image: public/blog-images/tailor-resume-without-job-description.webp
 slug: tailor-resume-without-job-description
 keywords: tailor resume without job description, resume for referral application, cold outreach resume tips, how to apply without job description, resume blind application 2026
 ---

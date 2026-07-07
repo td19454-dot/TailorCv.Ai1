@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Prompt Engineering, AI Resume, LLM, Resume Examples, ATS Resume]
 category: Resume Examples
-image: public/blog-images/prompt-engineer-resume-2026.jpeg
+image: public/blog-images/prompt-engineer-resume-2026.webp
 slug: prompt-engineer-resume-2026
 keywords: prompt engineer resume, prompt engineering resume 2026, LLM resume, AI workflow resume, generative AI resume
 ---

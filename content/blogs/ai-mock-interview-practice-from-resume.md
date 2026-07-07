@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [mock interview, AI interview, interview prep]
 category: Interview Preparation
-image: public/blog-images/ai-mock-interview-practice-from-resume.png
+image: public/blog-images/ai-mock-interview-practice-from-resume.webp
 slug: ai-mock-interview-practice-from-resume
 keywords: AI mock interview from resume, mock interview practice online, resume based interview questions, AI interview practice
 ---

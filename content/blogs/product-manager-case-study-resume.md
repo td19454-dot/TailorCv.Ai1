@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Product Manager Resume, Product Portfolio, Case Study, Resume Examples, Product Management]
 category: Portfolio
-image: public/blog-images/product-manager-case-study-resume.jpeg
+image: public/blog-images/product-manager-case-study-resume.webp
 slug: product-manager-case-study-resume
 keywords: product manager case study resume, product manager portfolio case study, PM resume examples, product management case study
 ---

@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Executive Resume, C-Suite Resume, Senior Leader Resume, Resume Tailoring, Leadership Job Search 2026]
 category: Resume Writing
-image: public/blog-images/executive-resume-tailoring-guide.png
+image: public/blog-images/executive-resume-tailoring-guide.webp
 slug: executive-resume-tailoring-guide
 keywords: executive resume tailoring, C-suite resume guide, senior leader resume 2026, VP director resume tips, how to write executive resume, board-ready resume
 ---

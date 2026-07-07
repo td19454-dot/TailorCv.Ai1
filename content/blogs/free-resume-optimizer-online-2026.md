@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [resume optimizer, ATS, AI resume]
 category: Resume Optimization
-image: public/blog-images/free-resume-optimizer-online-2026.png
+image: public/blog-images/free-resume-optimizer-online-2026.webp
 slug: free-resume-optimizer-online-2026
 keywords: free resume optimizer online, ai resume optimizer, resume optimization tool, optimize resume for job description
 ---

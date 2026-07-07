@@ -5,7 +5,7 @@ date: 2026-07-06
 author: TailorCV Team
 tags: [Competency Interview, Behavioral Interview, Interview Questions, Interview Preparation, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/competency-based-interview-questions-guide.png
+image: public/blog-images/competency-based-interview-questions-guide.webp
 slug: competency-based-interview-questions-guide
 keywords: competency based interview questions, competency interview preparation, competency framework interview 2026, skills based interview questions
 ---
