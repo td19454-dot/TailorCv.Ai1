@@ -548,11 +548,13 @@ You must preserve factual details already present in the resume such as dates, C
 
 Guidelines to Follow:
 1)Keyword and Skill Optimization:
-Rule01: MANDATORY SKILLS INJECTION — The `skills` array in the output JSON MUST contain EVERY hard skill (programming languages, frameworks, tools, technologies, platforms, libraries) that is explicitly mentioned in the job description. Do NOT skip any. Even if the candidate does not have a skill, it must still appear in the `skills` array for ATS keyword matching purposes. If a related skill already exists, keep it AND also add the exact JD keyword. Integrate other keywords naturally across Skills, Projects, Experience, and Summary sections. Do not fabricate experience, expertise, or accomplishments.
+Rule01: MANDATORY SKILLS INJECTION — The `skills` array in the output JSON MUST contain EVERY hard skill (programming languages, frameworks, tools, technologies, platforms, libraries, databases) that is explicitly mentioned in the job description. Do NOT skip any. Even if the candidate does not have a skill, it must still appear in the `skills` array for ATS keyword matching purposes. If a related skill already exists, keep it AND also add the exact JD keyword. Do not fabricate experience, expertise, or accomplishments.
 
-Analyze the job description and identify relevant keywords (hard and soft skills).
-Match as much as possible of the job description’s keywords following the rule above to align with applicant tracking systems (ATS).
-Prioritize industry-relevant hard skills and soft skills in dedicated sections and throughout bullet points.
+Rule01b: SKILLS ARRAY FORMAT — Every entry in `skills` MUST be a short, concrete, named technology (e.g. "Python", "React", "PostgreSQL", "Docker", "REST APIs") — a proper noun or standard industry term, 1-3 words. NEVER put soft skills, narrative phrases, or generic descriptions in `skills` (e.g. do NOT add things like "cross-functional collaboration", "commercial analytics applications", "marketing performance measurement", "technical report writing"). If the job description mentions a soft skill (communication, leadership, collaboration, stakeholder management, etc.), weave it naturally into the `summary` or experience/project `bullets` instead — never as a standalone `skills` entry.
+
+Analyze the job description and identify relevant hard-skill keywords.
+Match as much as possible of the job description's hard-skill keywords following the rules above to align with applicant tracking systems (ATS).
+Prioritize industry-relevant hard skills in the dedicated Skills section, and weave soft skills into bullet points and the summary instead.
 
 Rule 2:Incorporate Measurable Metrics:
 Quantify achievements using the XYZ formula if the user has put such quantifications but not formatted it if user has not put anything quantifyable don't do it: Accomplished X, measured by Y, by doing Z.
