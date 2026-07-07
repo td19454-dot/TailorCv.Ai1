@@ -24,7 +24,7 @@ Weak:
 
 Strong:
 
-> Planned and published 45 monthly social media posts across Instagram and LinkedIn, increasing average engagement by 32% in one quarter.
+> Planned and published 45 monthly social media posts across Instagram and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), increasing average engagement by 32% in one quarter.
 
 The second version gives scope and result.
 
@@ -70,7 +70,7 @@ AI can make bullets sound polished, but you must verify every number and claim. 
 
 ## ATS Benefits
 
-Strong bullets help ATS because they naturally include role keywords. For example, a data analyst bullet may include SQL, dashboard, KPI, stakeholder, and reporting without stuffing.
+Strong bullets help [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) because they naturally include role keywords. For example, a data analyst bullet may include SQL, dashboard, KPI, stakeholder, and reporting without stuffing.
 
 Once the bullet structure is strong, improve the language. Replace weak verbs with sharper options from [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume), then use [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) to add numbers without inventing results.
 

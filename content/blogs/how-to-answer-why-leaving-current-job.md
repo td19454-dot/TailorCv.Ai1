@@ -10,7 +10,7 @@ slug: how-to-answer-why-leaving-current-job
 keywords: why are you leaving your current job, why leaving current job interview answer, reason for leaving job interview 2026, why do you want to leave your job
 ---
 
-"Why are you leaving your current job?" - or "Why did you leave your last job?" - is one of the most sensitive interview questions. Answer poorly and you look like a complainer, a flight risk, or someone with hidden performance issues. Answer well and you look like a motivated professional making a thoughtful career move.
+"Why are you leaving your current job?" - or "Why did you leave your last job?" - is one of the most sensitive [interview questions](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Answer poorly and you look like a complainer, a flight risk, or someone with hidden performance issues. Answer well and you look like a motivated professional making a thoughtful career move.
 
 This guide provides positive, honest scripts for 2026 - and ways to practice with [AI mock interviews](https://thetailorcv.com/mock-interview).
 

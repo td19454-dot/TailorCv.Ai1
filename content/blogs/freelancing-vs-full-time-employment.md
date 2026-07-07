@@ -29,7 +29,7 @@ The honest answer: freelancing has higher income ceilings but higher income vari
 - Annual reviews with increments (typically 5-15%)
 - Predictable income - you know exactly what you earn each month
 
-A mid-level software engineer at a product company earns $60-120K USD depending on location. A senior engineer earns $100-180K+. The ceiling is clear and usually tied to promotions that require time.
+A mid-level [software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) at a product company earns $60-120K USD depending on location. A senior engineer earns $100-180K+. The ceiling is clear and usually tied to promotions that require time.
 
 ### Freelance Income Structure
 
@@ -38,7 +38,7 @@ A mid-level software engineer at a product company earns $60-120K USD depending 
 - Income can be $0 in a slow month or $30K+ in a busy one
 - Top freelancers in tech earn $150K-300K+ annually, but most earn significantly less
 
-**The catch:** Freelancers must set aside 25-35% of income for taxes (in most countries), pay for their own health insurance and software tools, and factor in unpaid time (client hunting, admin, gaps between projects). A freelancer charging $100/hour is not earning $100/hour net.
+**The catch:** Freelancers must set aside 25-35% of income for taxes (in most countries), pay for their own health insurance and software tools, and factor in unpaid time (client hunting, admin, gaps between [projects](https://thetailorcv.com/blog/projects-in-resume)). A freelancer charging $100/hour is not earning $100/hour net.
 
 **Rule of thumb:** A successful freelancer should charge 1.5-2x their equivalent full-time hourly rate to break even on benefits and downtime. A developer earning $90K FTE ($45/hr) should charge $80-100/hr as a freelancer to be economically equivalent.
 
@@ -72,7 +72,7 @@ A mid-level software engineer at a product company earns $60-120K USD depending 
 
 - Clear mentorship structure (if at a good company)
 - Company-funded training and conference budgets
-- Complex, large-scale projects often only accessible at established companies
+- Complex, large-scale [projects](https://thetailorcv.com/blog/projects-in-resume) often only accessible at established companies
 - Promotion path with objective milestones
 - Exposure to cross-functional teams, enterprise processes, and advanced problems
 
@@ -137,7 +137,7 @@ Freelancing without a financial runway is extremely stressful. You need money to
 Successful freelancers usually have relationships before going freelance. Starting freelance with zero contacts is the hardest path.
 
 **3. Are you comfortable with selling yourself?**
-Freelancing requires constantly pitching, networking, and closing new work. If this is deeply uncomfortable, freelancing will be miserable.
+Freelancing requires constantly pitching, [networking](https://thetailorcv.com/blog/networking-tips-for-job-search), and closing new work. If this is deeply uncomfortable, freelancing will be miserable.
 
 **4. Do you want deep technical expertise or broad client experience?**
 If you want to be the world's best at a specific technical skill, full-time at a leading company is often better. If you want variety and business skills, freelance.

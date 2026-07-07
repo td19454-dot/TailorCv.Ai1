@@ -33,7 +33,7 @@ Promotion = new job title. Update immediately. Add a promotion line or a new rol
 Add it to your certifications or education section as soon as it is complete. Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
 
 **5. Learning a new significant skill**  
-If you have become proficient in a new tool, language, or methodology that is in demand, add it to your skills section.
+If you have become proficient in a new tool, language, or methodology that is in demand, add it to your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026).
 
 **6. Receiving an award or significant recognition**  
 Add it to your achievements section or relevant experience section immediately. Read [how to list awards and achievements on a resume](https://thetailorcv.com/blog/awards-achievements-on-resume).
@@ -43,9 +43,9 @@ A career change requires more than an update - it may require a full reframe of 
 
 ### As a Regular Habit
 
-**Quarterly review**: A brief 15-minute quarterly review keeps your resume current. Add new achievements, remove outdated content, and refresh your skills section. Set a calendar reminder.
+**Quarterly review**: A brief 15-minute quarterly review keeps your resume current. Add new achievements, remove outdated content, and refresh your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026). Set a calendar reminder.
 
-**Annual deep review**: Once a year, do a full pass - rewrite weak bullets, remove old roles, update your summary to reflect current seniority, and check that your ATS score against target roles is strong.
+**Annual deep review**: Once a year, do a full pass - rewrite weak bullets, remove old roles, update your summary to reflect current seniority, and check that your [ATS score](https://thetailorcv.com/blog/ats-score-guide) against target roles is strong.
 
 ---
 
@@ -55,10 +55,10 @@ A career change requires more than an update - it may require a full reframe of 
 
 **Priority updates:**
 - Add each new internship, part-time role, or project immediately
-- Keep the projects section current - your most recent work is your most impressive
-- Add new certifications and courses as they are completed
+- Keep the [projects](https://thetailorcv.com/blog/projects-in-resume) section current - your most recent work is your most impressive
+- Add new [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and courses as they are completed
 - Update GPA mention once 2 years past graduation (consider removing)
-- Upgrade bullet points as you accumulate results
+- Upgrade [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) as you accumulate results
 
 **What to remove:**
 - High school activities (once you have 1+ years of college or work experience)
@@ -74,7 +74,7 @@ Read [resume with no experience guide](https://thetailorcv.com/blog/resume-with-
 - Update your professional summary to reflect current seniority and direction
 - Add leadership experience as it develops
 - Compress early roles - older jobs need fewer bullets
-- Refresh your skills section to remove outdated tools
+- Refresh your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) to remove outdated tools
 
 **What to remove:**
 - Academic awards older than 5 years (keep only the most impressive)
@@ -119,12 +119,12 @@ When applying to a specific role, create a tailored version from the master, cut
 
 ### Update (15-60 minutes)
 - Adding a new role, certification, or achievement
-- Refreshing skills section
+- Refreshing [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - Updating summary for a specific application
 - Fixing inconsistencies or errors
 
 ### Rewrite (2-4 hours)
-- Career change requiring new framing
+- [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) requiring new framing
 - Major promotion to a new level
 - Re-entering the job market after 2+ years
 - Current resume is generating zero callbacks
@@ -139,7 +139,7 @@ Signs your resume is out of date or underperforming:
 
 - Your most recent role is not on it
 - You have no quantified achievements
-- Your ATS score is below 60 for roles you are qualified for
+- Your [ATS score](https://thetailorcv.com/blog/ats-score-guide) is below 60 for roles you are qualified for
 - You have not updated it in 12+ months
 - You are getting zero callbacks despite applying broadly
 - Your summary describes you as you were 3 years ago, not today

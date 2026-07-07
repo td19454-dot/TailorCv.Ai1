@@ -18,14 +18,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ## Best Technical Writer Resume Format
 
-1. Header with portfolio / documentation samples link
+1. Header with [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) / documentation samples link
 2. Summary
 3. Skills
 4. Work experience
-5. Writing samples / projects
-6. Education
+5. Writing samples / [projects](https://thetailorcv.com/blog/projects-in-resume)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
-One to two pages. A documentation portfolio is essential.
+One to two pages. A documentation [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is essential.
 
 ---
 
@@ -114,7 +114,7 @@ Developer Tools Company | Apr 2022 - Present
 
 ### Mistake 1: No portfolio or samples
 
-Technical writers must show their writing. Link to published documentation, samples, or a portfolio.
+Technical writers must show their writing. Link to published documentation, samples, or a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 ### Mistake 2: No outcomes
 

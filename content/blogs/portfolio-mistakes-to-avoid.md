@@ -27,7 +27,7 @@ A weak portfolio can sink a strong candidate. The good news: almost every portfo
 ## Strategy Mistakes
 9. **No clear contact path.** *Fix:* make hiring you effortless ([Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)).
 10. **No call to action.** *Fix:* tell visitors what to do next (view work, hire you, see resume).
-11. **Out of date.** *Fix:* refresh projects and links before each application; keep resume and portfolio in sync.
+11. **Out of date.** *Fix:* refresh projects and links before each application; keep resume and [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) in sync.
 
 ## Keep Your Resume and Portfolio in Sync
 
@@ -35,7 +35,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 
 ## Pro Tips
-- Ask a friend to use your portfolio on their phone and watch where they get stuck.
+- Ask a friend to use your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) on their phone and watch where they get stuck.
 - Lead with your single strongest project above the fold.
 - Rebuild fast and clean with the [portfolio builder](https://thetailorcv.com/portfolio) if yours is a mess.
 
@@ -48,7 +48,7 @@ Usually a mix of weak project choice, no outcomes, or a resume that never gets y
 
 ### How often should I update my portfolio?
 
-Before every job search push, and whenever you finish a notable project. Audit links every time.
+Before every [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) push, and whenever you finish a notable project. Audit links every time.
 
 ### Is one strong project enough?
 

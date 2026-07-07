@@ -18,12 +18,12 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ## Best Flutter Developer Resume Format
 
-1. Header with GitHub and store links
+1. Header with [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) and store links
 2. Summary
 3. Technical skills
 4. Work experience
-5. Projects (with store links)
-6. Education
+5. [projects](https://thetailorcv.com/blog/projects-in-resume) (with store links)
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One page for engineers with under 8 years of experience.
 
@@ -54,7 +54,7 @@ Native: Platform channels, native plugins (iOS Swift / Android Kotlin), method c
 UI/UX: Material Design, Cupertino, custom animations, responsive and adaptive design
 Storage: SQLite, Hive, shared_preferences, secure storage
 Testing: Unit tests, widget tests, integration tests, Mockito
-CI/CD: Codemagic, GitHub Actions, Fastlane, Firebase App Distribution
+CI/CD: Codemagic, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions, Fastlane, Firebase App Distribution
 Tools: Android Studio, VS Code, Git, Flutter DevTools, Firebase Crashlytics
 
 ---

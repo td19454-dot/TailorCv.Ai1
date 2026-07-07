@@ -103,7 +103,7 @@ For [phone HR screens](https://thetailorcv.com/blog/phone-interview-tips), have 
 
 ## HR Questions for Freshers
 
-Freshers face additional HR questions about lack of experience:
+[freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) face additional HR questions about lack of experience:
 
 - "Why should we hire a fresher over experienced candidates?"
 - "Tell me about your final year project"

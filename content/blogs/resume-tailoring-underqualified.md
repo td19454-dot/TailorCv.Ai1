@@ -10,7 +10,7 @@ slug: resume-tailoring-underqualified
 keywords: resume tailoring underqualified, how to apply when underqualified, resume when missing qualifications, underqualified job application tips, how to get job without meeting all requirements 2026
 ---
 
-You see the job description.
+You see the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 It asks for 5 years of experience.
 You have 2.5.
@@ -36,7 +36,7 @@ This guide shows you how to tailor your resume when you are underqualified - hon
 
 ## The Truth About "Required" Qualifications
 
-"Required" in a job description rarely means "required to be considered."
+"Required" in a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) rarely means "required to be considered."
 
 It means "required to do the job at full competency, ideally from day one."
 
@@ -60,7 +60,7 @@ If you can demonstrate:
 
 Apply when you meet **at least 60-70% of the required qualifications** and:
 
-- The missing skills are learnable quickly (not advanced certifications requiring years of study)
+- The missing skills are learnable quickly (not advanced [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) requiring years of study)
 - You have strong transferable experience from adjacent areas
 - The "required" items include things like "5+ years experience" for a role that clearly does not need a decade of work
 - The role is one level above your current position (a stretch, not a leap of faith)
@@ -118,7 +118,7 @@ The [ATS score](https://thetailorcv.com/blog/ats-score-guide) and the recruiter 
 If the job asks for "enterprise SaaS sales experience" and you have SMB sales:
 "Managed full-cycle sales for 80+ SMB accounts, building the foundational CRM systems and discovery frameworks that scale to enterprise relationships."
 
-If the job asks for "machine learning" and you have data analysis:
+If the job asks for "[machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)" and you have data analysis:
 "Built predictive models using scikit-learn for customer churn analysis - foundational ML work applied to production business outcomes."
 
 You are not lying.
@@ -138,20 +138,20 @@ Use [TailorCV's keyword gap analyzer](https://www.thetailorcv.com/solutions) to 
 
 If you are missing a skill or two, you have three options:
 
-**Option A: Omit silently** - do not list it in skills, do not mention it. If asked, discuss it in the interview.
+**Option A: Omit silently** - do not list it in skills, do not mention it. If asked, discuss it in the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 **Option B: Frame as in-progress** - "Actively learning [skill] - completed [X course/project]." This shows initiative.
 
-**Option C: Reframe as related** - If you have the adjacent skill, include that instead and be ready to connect the dots in the interview.
+**Option C: Reframe as related** - If you have the adjacent skill, include that instead and be ready to connect the dots in the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
-Never put a skill on your resume you cannot discuss confidently in an interview.
+Never put a skill on your resume you cannot discuss confidently in an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 That creates problems you cannot recover from.
 
 ### Step 6: Let Your Bullet Points Do the Heavy Lifting
 
 Strong quantified results make gaps feel smaller.
 
-A recruiter who sees "Increased email open rates by 78% through A/B testing and segmentation strategy" is less focused on the missing 6 months of experience.
+A [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) who sees "Increased email open rates by 78% through A/B testing and segmentation strategy" is less focused on the missing 6 months of experience.
 
 Lead every bullet with a result.
 Make the results specific, measurable, and relevant to what the new role cares about.
@@ -163,15 +163,15 @@ Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-q
 
 ## Before and After: Underqualified Candidate
 
-**Job requires:** Senior Data Analyst, 5+ years, advanced SQL, Tableau, Python, stakeholder management
+**Job requires:** Senior [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026), 5+ years, advanced SQL, Tableau, Python, stakeholder management
 
 **Candidate has:** 2.5 years as analyst, strong SQL and Excel, basic Python, no Tableau, 1 stakeholder presentation experience
 
-**Before Resume Summary:**
-> "Data analyst with 2.5 years of experience. Skilled in SQL and Excel. Learning Python and Tableau."
+**Before [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary):**
+> "[data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) with 2.5 years of experience. Skilled in SQL and Excel. Learning Python and Tableau."
 
-**After Resume Summary:**
-> "Data Analyst with 2.5 years of progressive experience building SQL-based reporting systems that directly informed executive decisions at a 200-person SaaS company. Strong in data modeling, Excel-based dashboards, and stakeholder communication. Actively developing Python automation and Tableau visualization skills with 3 live projects in progress."
+**After [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary):**
+> "Data Analyst with 2.5 years of progressive experience building SQL-based reporting systems that directly informed executive decisions at a 200-person SaaS company. Strong in data modeling, Excel-based dashboards, and stakeholder communication. Actively developing Python automation and Tableau visualization skills with 3 live [projects](https://thetailorcv.com/blog/projects-in-resume) in progress."
 
 Same person.
 Completely different impression.
@@ -196,21 +196,21 @@ Also consider whether you might be applying for a role that overlaps with a [car
 
 **Lying about experience or skills**
 Interviewers will find out. Always.
-The short-term gain of getting an interview leads to embarrassment or worse.
+The short-term gain of getting an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) leads to embarrassment or worse.
 
-**Copying the job description into your resume**
-ATS and recruiters recognize keyword stuffing.
+**Copying the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) into your resume**
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and recruiters recognize keyword stuffing.
 Natural use of relevant [resume keywords](https://thetailorcv.com/blog/resume-keywords-guide) works. Copy-paste does not.
 
 **Focusing only on what you are missing**
 Most candidates do this in their head and it shows in the resume.
 Lead with strengths. Let your results speak louder than your gaps.
 
-**Not checking your ATS score**
+**Not checking your [ATS score](https://thetailorcv.com/blog/ats-score-guide)**
 You may have more keywords matched than you think - or fewer.
 Know your score before you apply using [TailorCV](https://www.thetailorcv.com/solutions). Understanding how to [improve your resume job match score](https://thetailorcv.com/blog/improve-resume-job-match-score) is especially important when you are already stretching to meet the requirements.
 
-**Skipping the interview preparation**
+**Skipping the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) preparation**
 If you do get an interview despite being underqualified, you need to [prepare more carefully than average](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Your first impressions have to compensate for what's missing on paper.
 
 ---

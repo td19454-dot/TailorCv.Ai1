@@ -10,7 +10,7 @@ slug: remote-job-interview-preparation-2026
 keywords: remote job interview preparation, remote interview tips 2026, video interview preparation, work from home interview tips
 ---
 
-Remote work is standard in 2026 - and so are **remote job interviews**. Whether it is a Zoom call with a hiring manager, an async video recording, or a phone screen, interviewing from home introduces unique challenges: tech failures, distracting environments, and the difficulty of building rapport through a screen.
+Remote work is standard in 2026 - and so are **[remote job](https://thetailorcv.com/blog/remote-job-search-guide) interviews**. Whether it is a Zoom call with a hiring manager, an async video recording, or a phone screen, interviewing from home introduces unique challenges: tech failures, distracting environments, and the difficulty of building rapport through a screen.
 
 This guide covers remote job interview preparation for 2026 - setup, delivery, and practice with [AI mock interviews](https://thetailorcv.com/mock-interview).
 

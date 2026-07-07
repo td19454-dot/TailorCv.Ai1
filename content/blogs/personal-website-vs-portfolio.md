@@ -13,14 +13,14 @@ keywords: personal website vs portfolio, do i need personal website, portfolio v
 People use "personal website" and "portfolio" interchangeably, but they serve slightly different goals - and knowing the difference helps you build the right thing instead of over- or under-investing. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume).
 
 ## What a Portfolio Is
-A focused showcase of your **work** - projects, case studies, and outcomes - built to win jobs or clients. The work is the star; everything else is supporting cast.
+A focused showcase of your **work** - [projects](https://thetailorcv.com/blog/projects-in-resume), case studies, and outcomes - built to win jobs or clients. The work is the star; everything else is supporting cast.
 
 ## What a Personal Website Is
-A broader **home base**: who you are, your work, maybe a blog, your resume, contact, and your overall brand. A personal website can *contain* a portfolio plus more (writing, speaking, a newsletter).
+A broader **home base**: who you are, your work, maybe a blog, your resume, contact, and your overall brand. A personal website can *contain* a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) plus more (writing, speaking, a newsletter).
 
 ## Which Do You Need?
-- **Early career / actively job hunting:** a portfolio is enough.
-- **Building a long-term brand / freelancing / creating content:** a personal website that includes your portfolio.
+- **Early career / actively job hunting:** a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is enough.
+- **Building a long-term brand / freelancing / creating content:** a personal website that includes your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 There is no wrong answer - only the right one for your stage.
 
@@ -44,7 +44,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ## Common Mistakes
 - Building an elaborate personal website before you have any work to show
-- A portfolio with no personality or contact path
+- A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with no personality or contact path
 - Splitting into multiple sites no one can find - see [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 
 
@@ -52,15 +52,15 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ### Do I need both a website and a portfolio?
 
-No - one site that includes a portfolio section covers most people. Separate them only if you blog or build a broader brand.
+No - one site that includes a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) section covers most people. Separate them only if you blog or build a broader brand.
 
 ### Which should a job seeker prioritize?
 
-The portfolio. Proof of work wins interviews; the broader brand can come later.
+The [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio). Proof of work wins interviews; the broader brand can come later.
 
 ### Can I start small and grow it?
 
-Yes. Start with a portfolio + About + contact, then add a blog and brand pages over time.
+Yes. Start with a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) + About + contact, then add a blog and brand pages over time.
 
 ## Build Your Portfolio Now
 

@@ -12,7 +12,7 @@ keywords: how to write a resume from scratch, write a resume step by step, resum
 
 Writing a resume from scratch feels overwhelming until you break it into a clear sequence of steps. This guide walks you through the entire process - from deciding what to include, to writing each section, to testing the final document before you submit.
 
-Follow these steps whether you are writing your first resume, rebuilding after years out of the job market, or starting fresh for a career change.
+Follow these steps whether you are writing your first resume, rebuilding after years out of the job market, or starting fresh for a [career change](https://thetailorcv.com/blog/career-change-to-tech-guide).
 
 For shortcuts, start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that gives you the correct structure automatically. Test your finished resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) before applying.
 
@@ -23,13 +23,13 @@ For shortcuts, start from an [ATS-friendly template](https://www.thetailorcv.com
 Resist the urge to open a blank document and start typing. Before writing a single word, gather:
 
 - **All job history**: Company names, job titles, start/end dates (month and year), location
-- **Education**: Institution, degree, field, graduation year, GPA (if strong)
-- **Projects**: Names, technologies used, outcomes, links (GitHub, demos)
-- **Certifications**: Name, issuer, date
+- **[education](https://thetailorcv.com/blog/how-to-list-education-on-resume)**: Institution, degree, field, graduation year, GPA (if strong)
+- **Projects**: Names, technologies used, outcomes, links ([GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), demos)
+- **[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)**: Name, issuer, date
 - **Skills**: All tools, languages, platforms, methodologies you use
 - **Achievements**: Numbers - revenue generated, time saved, users impacted, growth percentages
 - **Awards/honors**: Academic and professional
-- **Target job description**: The specific role you are building this resume for
+- **Target [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)**: The specific role you are building this resume for
 
 This preparation phase prevents you from writing generic content that applies to nothing. With your raw materials assembled, writing becomes a curation and framing exercise.
 
@@ -40,7 +40,7 @@ This preparation phase prevents you from writing generic content that applies to
 Before writing content, decide on your structure:
 
 - **Reverse chronological** - most recent job first. Right for most people.
-- **Combination** - skills section prominent, followed by chronological experience. Right for career changers.
+- **Combination** - [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) prominent, followed by chronological experience. Right for career changers.
 
 Read [chronological vs functional resume](https://thetailorcv.com/blog/chronological-vs-functional-resume) for the full comparison. Then open an [ATS-friendly template](https://www.thetailorcv.com/templates) that uses your chosen format.
 
@@ -53,8 +53,8 @@ Add at the top:
 - Professional email
 - Phone number
 - City, State
-- LinkedIn URL (customized)
-- GitHub or portfolio (if relevant)
+- [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) URL (customized)
+- GitHub or [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) (if relevant)
 
 Keep it clean. No full address, no photo (in the US/UK), no date of birth. Read the [resume contact section guide](https://thetailorcv.com/blog/resume-contact-section) for exact formatting rules.
 
@@ -75,12 +75,12 @@ If you have no experience, read [resume summary with no experience](https://thet
 
 ## Step 4: Build Your Skills Section
 
-Scan the job description for the skills it requires. List the ones you have, organized by category:
+Scan the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) for the skills it requires. List the ones you have, organized by category:
 
 - **Languages/Frameworks**: Python, React, SQL, Java
 - **Tools/Platforms**: Docker, AWS, Figma, Salesforce
 - **Methodologies**: Agile, Scrum, SDLC, Six Sigma
-- **Soft Skills** (optional): Leadership, Cross-functional collaboration
+- **[soft skills](https://thetailorcv.com/blog/soft-skills-for-resume)** (optional): Leadership, Cross-functional collaboration
 
 Use the exact wording from the job description wherever possible - this helps ATS keyword matching. Read [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) for categorized lists.
 
@@ -99,7 +99,7 @@ For each role:
 Rules:
 - Use past tense for previous roles, present tense for current role
 - Start every bullet with a different, strong action verb
-- Quantify wherever possible
+- [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) wherever possible
 
 Read [how to write resume bullet points that get results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points), [best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume), and [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
@@ -133,10 +133,10 @@ Based on your background, add:
 
 ## Step 8: Tailor for the Specific Role
 
-Before finalizing, compare your resume against the job description:
+Before finalizing, compare your resume against the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide):
 
-1. Are the exact skills mentioned in the job description present in your skills section?
-2. Do your bullets use the same terminology as the job description?
+1. Are the exact skills mentioned in the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) present in your skills section?
+2. Do your bullets use the same terminology as the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)?
 3. Does your summary directly address the role's primary requirement?
 4. Have you removed experience that is irrelevant to this role?
 
@@ -174,9 +174,9 @@ Use the full [resume proofreading checklist](https://thetailorcv.com/blog/resume
 ## Step 11: Test Your ATS Score
 
 Before submitting, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions). This tells you:
-- Your ATS match score for the role
+- Your [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) match score for the role
 - Which keywords are missing
-- Formatting issues that could cause ATS parsing errors
+- Formatting issues that could cause [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsing errors
 - Specific sections that need improvement
 
 Aim for a strong match score before submitting. Read [how to increase your ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score) for targeted improvement strategies.
@@ -214,7 +214,7 @@ Use this guide as part of a complete job-search workflow. Check your resume with
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
-Writing a great resume from scratch takes 2-4 hours done properly: gathering materials, writing each section, tailoring for the role, formatting, proofreading, and testing for ATS. The result is a document that passes filters, earns attention, and gets you calls.
+Writing a great resume from scratch takes 2-4 hours done properly: gathering materials, writing each section, tailoring for the role, formatting, proofreading, and testing for [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). The result is a document that passes filters, earns attention, and gets you calls.
 
 Speed up the process by starting from an [ATS-friendly template](https://www.thetailorcv.com/templates). Test with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions). And once you get the interview, prepare with the [mock interview tool](https://thetailorcv.com/interview-prep).
 

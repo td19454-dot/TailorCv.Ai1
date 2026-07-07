@@ -12,13 +12,13 @@ keywords: resume matching experienced professionals, senior resume job descripti
 
 The job market in 2026 has a quiet bias against experience.
 
-ATS systems filter resumes using current keyword standards.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems filter resumes using current keyword standards.
 Modern job descriptions use new terminology.
 The tools you used five years ago have been replaced by newer ones.
 
-If your resume uses 2019 language, it will fail 2026 ATS filters - even if you are the most qualified person in the applicant pool.
+If your resume uses 2019 language, it will fail 2026 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) filters - even if you are the most qualified person in the applicant pool.
 
-This guide helps experienced professionals (7+ years) match their resumes to modern job descriptions and avoid the most common ways seniority works against ATS performance.
+This guide helps experienced professionals (7+ years) match their resumes to modern job descriptions and avoid the most common ways seniority works against [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) performance.
 
 Check your senior resume match score with [TailorCV](https://www.thetailorcv.com/solutions). Refresh your format with [modern, ATS-optimized templates](https://www.thetailorcv.com/templates).
 
@@ -30,7 +30,7 @@ Check your senior resume match score with [TailorCV](https://www.thetailorcv.com
 
 You used "big data" when the JD says "distributed data systems."
 You wrote "cloud computing" instead of "AWS, GCP, Azure."
-You listed "machine learning" without specifying the framework.
+You listed "[machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)" without specifying the framework.
 
 Language evolves.
 Your resume has not kept up.
@@ -40,7 +40,7 @@ Your resume has not kept up.
 Your resume has 20 years of experience.
 You list everything.
 The most relevant content is buried under older, irrelevant content.
-ATS relevance ratios drop.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) relevance ratios drop.
 Recruiters have to dig.
 
 ### Problem 3: Missing New Tools
@@ -63,7 +63,7 @@ Read [how to match your resume when overqualified](https://thetailorcv.com/blog/
 
 ### Step 1: Cut to the Last 10-12 Years
 
-Most ATS systems and recruiters only care about the last 10-12 years.
+Most [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems and recruiters only care about the last 10-12 years.
 Earlier roles can be compressed or removed entirely.
 
 **Instead of:**
@@ -93,7 +93,7 @@ This cuts word count, reduces irrelevance, and focuses on your most current (and
 ### Step 2: Update Your Technology Stack
 
 Modern JDs have modern tools.
-Audit your skills section against the JD.
+Audit your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) against the JD.
 
 **Outdated -> Modern equivalents to update:**
 
@@ -124,7 +124,7 @@ Read [how to match your resume summary to a job description](https://thetailorcv
 
 ### Step 4: Rewrite Bullets with Modern Keyword Language
 
-Go through your bullet points from the last 5 years.
+Go through your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) from the last 5 years.
 Replace outdated terminology with the JD's language.
 
 **Outdated bullet:**
@@ -138,7 +138,7 @@ The language is current.
 
 ### Step 5: Focus Your Skills Section on Modern, JD-Matched Tools
 
-Your skills section should reflect tools you can use today - not every tool from your entire career.
+Your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) should reflect tools you can use today - not every tool from your entire career.
 
 For each technology you have not used in 3+ years: either remove it or list it clearly as "background knowledge."
 
@@ -160,7 +160,7 @@ Update and recheck.
 If you are applying for a role below your current seniority:
 - Remove or compress your most senior titles from the summary
 - Focus bullets on execution, not leadership scope
-- Address the career move briefly in your cover letter or summary
+- Address the career move briefly in your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) or summary
 
 Read [how to match your resume when overqualified](https://thetailorcv.com/blog/overqualified-resume-match-job-description) for the full strategy.
 
@@ -183,7 +183,7 @@ Show progression. List each role title change as a separate entry. Show scope gr
 
 ### How do I handle skills I have not used in years?
 
-Remove them from your skills section. If they are relevant to the JD and you can refresh them quickly, add a note: "Python (returning to practice)" or simply list them and be ready to discuss recency.
+Remove them from your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026). If they are relevant to the JD and you can refresh them quickly, add a note: "Python (returning to practice)" or simply list them and be ready to discuss recency.
 
 ### Does resume length matter more for senior candidates?
 
@@ -214,13 +214,13 @@ Yes. Two pages maximum for most roles. More than two pages signals inability to 
 ## Conclusion
 
 Experience is an asset.
-But a resume written to showcase the past will not match a job description written for the future.
+But a resume written to showcase the past will not match a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) written for the future.
 
 Update your language.
 Compress your older history.
 Lead with relevance, not tenure.
 Prioritize modern tools and JD-specific keywords.
-Check your ATS score before applying.
+Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) before applying.
 
 Use [TailorCV](https://www.thetailorcv.com/solutions) to identify exactly where your 2026 resume is using outdated language - and update it with one click.
 

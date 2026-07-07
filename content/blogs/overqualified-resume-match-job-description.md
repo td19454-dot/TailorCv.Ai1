@@ -20,14 +20,14 @@ They worry you will be bored.
 They worry you will demand a salary they cannot afford.
 They worry you will try to change everything.
 
-These concerns often surface during ATS screening too.
+These concerns often surface during [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) screening too.
 Too senior a title.
 Too many years of experience.
 A mismatch with the target seniority level.
 
 Your resume may not even reach a human if it is screened for overqualification.
 
-This guide shows you how to match your resume to a lower-level job description - honestly, without hiding your background, and without triggering automatic rejection.
+This guide shows you how to match your resume to a lower-level [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) - honestly, without hiding your background, and without triggering automatic rejection.
 
 Use [TailorCV's resume optimizer](https://www.thetailorcv.com/solutions) to check your ATS score and identify any seniority signals that may be working against you. Use [clean, professional templates](https://www.thetailorcv.com/templates) as your foundation.
 
@@ -35,7 +35,7 @@ Use [TailorCV's resume optimizer](https://www.thetailorcv.com/solutions) to chec
 
 ## Why Overqualified Resumes Often Fail ATS
 
-ATS systems do not directly flag "overqualified."
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems do not directly flag "overqualified."
 But they do compare your experience signals to the job's requirements.
 
 Mismatches that can hurt your score:
@@ -47,7 +47,7 @@ Mismatches that can hurt your score:
 These signals may not explicitly filter you out.
 But they can result in a lower match score relative to better-fitting candidates.
 
-The recruiter who does see your resume may also hesitate.
+The [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) who does see your resume may also hesitate.
 
 ---
 
@@ -57,7 +57,7 @@ Understanding your own motivation helps you frame your application correctly.
 
 **Reason 1: Strategic downshift**
 You are intentionally stepping back.
-Career change, work-life balance, relocation, family reasons, pivoting to a new industry.
+[career change](https://thetailorcv.com/blog/career-change-to-tech-guide), work-life balance, relocation, family reasons, pivoting to a new industry.
 This is legitimate and honest.
 
 **Reason 2: Difficult market**
@@ -87,7 +87,7 @@ Do not highlight seniority - highlight relevance and fit.
 > "VP-level product leader with 15 years of experience scaling enterprise SaaS products from $0 to $50M ARR."
 
 **After (Recalibrated for Mid-Level PM Role):**
-> "Product Manager with deep experience in cross-functional agile delivery, roadmap prioritization, and user research. Bringing focus and clarity to product development for growth-stage teams with a track record of shipping features that directly improve user retention."
+> "[product manager](https://thetailorcv.com/blog/product-manager-resume-2026) with deep experience in cross-functional agile delivery, roadmap prioritization, and user research. Bringing focus and clarity to product development for growth-stage teams with a track record of shipping features that directly improve user retention."
 
 The experience is still real.
 The framing focuses on what the role actually needs.
@@ -100,9 +100,9 @@ Especially older senior roles that are far above the target level.
 **Options:**
 - Remove roles older than 10-12 years
 - De-emphasize scope/scale in roles that signal overqualification
-- Focus bullet points on the activities that match the JD - not on leadership scope or P&L ownership
+- Focus [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) on the activities that match the JD - not on leadership scope or P&L ownership
 
-If the JD is for a "Mid-Level Data Analyst" role, your bullets about "managing a 12-person data team" may actually hurt you.
+If the JD is for a "Mid-Level [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026)" role, your bullets about "managing a 12-person data team" may actually hurt you.
 Emphasize the analytical work, not the management scope.
 
 ### Step 3: Right-Size Your Keywords
@@ -115,7 +115,7 @@ Use the JD's language.
 Match the seniority level of the language, not just the skills.
 
 **Before:**
-"Drove enterprise-wide BI transformation strategy across 14 business units and $1.2B revenue portfolio."
+"Drove enterprise-wide BI transformation strategy across 14 business units and $1.2B revenue [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)."
 
 **After:**
 "Designed and maintained data dashboards for cross-functional business stakeholders to support operational decision-making."
@@ -139,7 +139,7 @@ These phrases pre-empt the overqualification concern without making it the cente
 ### Step 5: Match the ATS Score for the Target Level
 
 Extract keywords from the JD.
-Update your skills section to match.
+Update your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) to match.
 Check your score using [TailorCV's ATS checker](https://www.thetailorcv.com/solutions).
 
 You are not trying to appear less experienced.
@@ -153,8 +153,8 @@ Sometimes the gap is too wide.
 A former C-suite executive applying for an entry-level role will face legitimate scrutiny.
 
 In these cases:
-- Your cover letter is critical (explain the career shift clearly and persuasively)
-- Your interview preparation matters (have a clear, confident answer for "why this role?")
+- Your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) is critical (explain the career shift clearly and persuasively)
+- Your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) preparation matters (have a clear, confident answer for "why this role?")
 - Consider whether the role is actually the right move (are you genuinely interested or desperate?)
 
 Read [cover letter guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026) for a framework to address this in your letter.
@@ -169,7 +169,7 @@ Salary expectation is a concern for overqualified candidates.
 Your resume does not include salary.
 But if the application asks for it, be realistic.
 
-If you are genuinely willing to take the role at the posted salary, be prepared to say so clearly in a cover letter or screening call.
+If you are genuinely willing to take the role at the posted salary, be prepared to say so clearly in a [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) or screening call.
 Ambiguity about salary signals potential future problems.
 
 ---
@@ -191,11 +191,11 @@ No. Never lie on your resume. Adjust emphasis and framing - not facts.
 
 ### Does ATS automatically reject overqualified applicants?
 
-ATS does not have an "overqualified" filter. But seniority signals (titles, years of experience, scope language) can create match score misalignment with lower-level JDs.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) does not have an "overqualified" filter. But seniority signals (titles, years of experience, scope language) can create match score misalignment with lower-level JDs.
 
 ### What is the most important thing to change?
 
-Your professional summary. It sets the tone for the entire application and can immediately reassure or concern a recruiter.
+Your professional summary. It sets the tone for the entire application and can immediately reassure or concern a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes).
 
 ### Should I apply to both senior and junior roles simultaneously?
 
@@ -235,11 +235,11 @@ Your resume's job is to:
 1. Match the JD's language at the right seniority level
 2. Lead with what they need, not with your most impressive title
 3. Signal genuine interest through focused framing
-4. Let your cover letter and interview answer close the deal
+4. Let your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) and interview answer close the deal
 
 Adjust your summary.
-Recalibrate your bullet points.
-Check your ATS score.
+Recalibrate your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide).
 Then apply with confidence.
 
 [Check My Overqualified Resume Match - Free](https://www.thetailorcv.com/solutions)

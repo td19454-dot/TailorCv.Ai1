@@ -10,7 +10,7 @@ slug: tailored-vs-generic-resume
 keywords: tailored resume vs generic resume, difference between tailored and generic resume, tailored resume benefits, why tailor resume, generic vs customized resume
 ---
 
-You can have two resumes that describe exactly the same person with exactly the same experience - and one will get a 45% ATS score while the other gets 82%. One will get skimmed in 6 seconds and passed over; the other will get a recruiter picking up the phone. That is the difference between a generic resume and a tailored one. Here is a side-by-side breakdown of every dimension that separates them.
+You can have two resumes that describe exactly the same person with exactly the same experience - and one will get a 45% [ATS score](https://thetailorcv.com/blog/ats-score-guide) while the other gets 82%. One will get skimmed in 6 seconds and passed over; the other will get a recruiter picking up the phone. That is the difference between a generic resume and a tailored one. Here is a side-by-side breakdown of every dimension that separates them.
 
 See the gap between your current resume and what the role needs with the [free ATS checker](/solutions).
 
@@ -18,9 +18,9 @@ See the gap between your current resume and what the role needs with the [free A
 
 ## The Fundamental Difference
 
-A **generic resume** is written to describe your career. It works for any job in your field.
+A **[generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)** is written to describe your career. It works for any job in your field.
 
-A **tailored resume** is written for a specific job. It answers one question: "Why is this person the best fit for *this exact role*?"
+A **[tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)** is written for a specific job. It answers one question: "Why is this person the best fit for *this exact role*?"
 
 The same experience, framed generically, sounds like everyone else. Framed with specificity and alignment to the posting, it stands out immediately.
 
@@ -60,7 +60,7 @@ The generic version could be anyone. The tailored version could only be a person
 |---|---|
 | Microsoft Office, Communication, Teamwork, Leadership, Problem Solving | HubSpot, Google Ads, SEO, Content Strategy, Salesforce, A/B Testing, Google Analytics, Cross-functional Collaboration |
 
-The generic list scores near zero in ATS keyword matching. The tailored list scores every required term in the posting.
+The generic list scores near zero in [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keyword matching. The tailored list scores every required term in the posting.
 
 For keywords by industry, see [best resume keywords to beat ATS systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).
 
@@ -69,12 +69,12 @@ For keywords by industry, see [best resume keywords to beat ATS systems](https:/
 ### Experience Bullets
 
 **Generic:**
-> "Managed digital marketing campaigns and worked with the team to improve performance."
+> "Managed [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) campaigns and worked with the team to improve performance."
 
 **Tailored (for a demand gen role):**
 > "Managed $350K annual paid acquisition budget across Google Ads and Meta; improved MQL-to-SQL conversion by 31% through campaign restructuring and landing page A/B testing."
 
-The tailored version contains six ATS keywords, two specific metrics, and names the exact channels the posting prioritized.
+The tailored version contains six [ATS keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score), two specific metrics, and names the exact channels the posting prioritized.
 
 Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
@@ -109,13 +109,13 @@ Read [how to tailor a resume in 5 minutes](https://thetailorcv.com/blog/how-to-t
 
 ## The Recruiter Experience: Generic vs Tailored
 
-**Reading a generic resume:**
+**Reading a [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume):**
 > "Another marketing resume. Nothing specifically relevant to our growth role. Vague. Move on."
 
-**Reading a tailored resume:**
+**Reading a [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume):**
 > "This person has B2B SaaS demand gen experience, used HubSpot and Google Ads, and has the MQL-to-SQL conversion metric we care about. This one goes in the yes pile."
 
-Recruiters are not looking for reasons to hire you - they are looking for reasons to filter you out quickly so they can focus on the few they will call. A tailored resume removes every reason to filter.
+Recruiters are not looking for reasons to hire you - they are looking for reasons to filter you out quickly so they can focus on the few they will call. A [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) removes every reason to filter.
 
 See [how recruiters spot generic resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes).
 
@@ -129,7 +129,7 @@ The core changes - headline, summary, skills - take 5 minutes. A full tailoring 
 
 ### Is it worth tailoring for every application?
 
-Yes, at minimum the 5-minute version. The ATS score difference between a generic resume and even lightly tailored one is typically 15-25 percentage points.
+Yes, at minimum the 5-minute version. The [ATS score](https://thetailorcv.com/blog/ats-score-guide) difference between a generic resume and even lightly tailored one is typically 15-25 percentage points.
 
 ### Can I have a "base" resume I tailor from?
 
@@ -165,7 +165,7 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
 ## Conclusion
-The difference between a tailored resume and a generic one is not experience or qualifications - it is communication. A tailored resume speaks the employer's language, answers the ATS's keyword profile, and tells the recruiter in 6 seconds that this person is relevant. A generic resume makes everyone work harder to see the fit. Given that tailoring the critical sections takes 5 minutes, there is no reason to send the generic version.
+The difference between a tailored resume and a generic one is not experience or qualifications - it is communication. A tailored resume speaks the employer's language, answers the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)'s keyword profile, and tells the recruiter in 6 seconds that this person is relevant. A generic resume makes everyone work harder to see the fit. Given that tailoring the critical sections takes 5 minutes, there is no reason to send the generic version.
 
 [Compare your resume to the job description - free](/solutions)
 

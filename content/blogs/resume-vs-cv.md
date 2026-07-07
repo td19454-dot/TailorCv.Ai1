@@ -111,8 +111,8 @@ If you are transitioning from academia to industry (or vice versa), understandin
 ### Industry Resume
 - Length: 1-2 pages maximum
 - Focus: Skills, impact, achievements, business value
-- Audience: Recruiters, hiring managers, ATS systems
-- Goal: Win a job interview at a specific company
+- Audience: Recruiters, hiring managers, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems
+- Goal: Win a job [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) at a specific company
 
 Academics applying to industry roles must compress their CV into a resume - translating research accomplishments into business impact language. Read the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) for transition strategies.
 
@@ -134,7 +134,7 @@ When in doubt, check what is standard in the industry and location. A two-page t
 
 ## ATS Compatibility: Resume vs CV
 
-ATS systems (used by most companies for initial screening) are optimized for resumes, not CVs. A lengthy CV submitted to a corporate job application will likely parse poorly - the sections, the length, and the academic structure are not what ATS expects.
+[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems (used by most companies for initial screening) are optimized for resumes, not CVs. A lengthy CV submitted to a corporate job application will likely parse poorly - the sections, the length, and the academic structure are not what [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) expects.
 
 If you are applying to industry roles:
 - Use a resume, not a CV
@@ -153,7 +153,7 @@ If you have an academic CV and need to create an industry resume:
 2. **Cut ruthlessly** - Remove publications, presentations, grants, and academic-only sections
 3. **Reframe language** - Translate "conducted research on X" into "analyzed X to improve Y by Z%"
 4. **Lead with impact** - Use a strong [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) that speaks to business value
-5. **Add a skills section** - Technical and transferable skills prominently displayed
+5. **Add a [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)** - Technical and transferable skills prominently displayed
 6. **Quantify** - Add numbers and results wherever possible. Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 7. **Keep to 2 pages** - See the [ideal resume length guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
 8. **Check ATS compatibility** - Run the final version through the [ATS score checker](https://www.thetailorcv.com/solutions)

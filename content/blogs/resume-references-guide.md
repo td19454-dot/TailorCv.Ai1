@@ -24,7 +24,7 @@ In 2026, references do not belong on your resume for these reasons:
 
 2. **It is assumed.** Every employer knows you have references. Stating "references available" communicates nothing - it is like writing "Can attend interviews if asked."
 
-3. **References are a later-stage activity.** Employers ask for references after they have decided you are a serious candidate, usually between final-round interview and offer. Adding them to your resume puts the cart before the horse.
+3. **References are a later-stage activity.** Employers ask for references after they have decided you are a serious candidate, usually between final-round [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and offer. Adding them to your resume puts the cart before the horse.
 
 4. **Privacy concerns.** Listing reference contact information on a resume that may be uploaded to multiple job boards exposes your references to unsolicited contact.
 
@@ -35,7 +35,7 @@ In 2026, references do not belong on your resume for these reasons:
 There are a few exceptions:
 
 ### When the Job Posting Explicitly Requests References
-Some job postings (often in government, education, nonprofit, or certain European markets) explicitly ask for references with the application. Follow the posting's instructions - if they ask for references on the resume, include them.
+Some job postings (often in government, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), nonprofit, or certain European markets) explicitly ask for references with the application. Follow the posting's instructions - if they ask for references on the resume, include them.
 
 ### Academic CVs
 An academic CV (different from a resume - see [resume vs CV](https://thetailorcv.com/blog/resume-vs-cv)) typically includes professional references as a standard section. For faculty, postdoc, or research applications, references are expected.
@@ -120,8 +120,8 @@ Always ask permission before listing anyone as a reference. A reference who is s
 
 A strong reference can:
 - Speak specifically to your work (not vague praise)
-- Recall concrete projects, achievements, or examples
-- Confirm your technical and soft skills with direct evidence
+- Recall concrete [projects](https://thetailorcv.com/blog/projects-in-resume), achievements, or examples
+- Confirm your technical and [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) with direct evidence
 - Say with confidence that they would hire you again
 
 A weak reference gives generic answers: "She was great. Very hard-working. I'd recommend her." Without specifics, this does little to move your candidacy forward.
@@ -147,11 +147,11 @@ Replace that space with a strong bullet point, certification, or achievement. Re
 ## Reference Checks in the Hiring Process
 
 Reference checks typically happen:
-1. **After the final interview** - When the employer is deciding between top candidates
+1. **After the final [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)** - When the employer is deciding between top candidates
 2. **Before an official offer is extended** - As part of background verification
-3. **Occasionally before a final interview** - For senior or sensitive roles
+3. **Occasionally before a final [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)** - For senior or sensitive roles
 
-Reference checks are a formality in some industries and a critical decision factor in others. In government, healthcare, finance, and education, a weak reference can reverse a hiring decision.
+Reference checks are a formality in some industries and a critical decision factor in others. In government, healthcare, finance, and [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), a weak reference can reverse a hiring decision.
 
 ---
 

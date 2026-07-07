@@ -13,7 +13,7 @@ keywords: freelance resume tailoring, contract job resume, how to list freelance
 You have been freelancing for three years.
 
 You have worked with eight different clients.
-You have delivered real results on projects worth hundreds of thousands of dollars.
+You have delivered real results on [projects](https://thetailorcv.com/blog/projects-in-resume) worth hundreds of thousands of dollars.
 You have managed your own schedule, your own business development, and your own finances.
 
 And now you are applying to two different types of jobs:
@@ -30,7 +30,7 @@ Because your resume is not telling the right story for either audience.
 
 Contract hiring managers and permanent hiring managers are looking for completely different signals.
 This is the same core challenge as [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise) - the audience changes what you emphasize.
-This guide breaks down what each wants - and how to tailor your resume to win both.
+This guide breaks down what each wants - and how to [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) to win both.
 
 ---
 
@@ -62,16 +62,16 @@ For permanent roles, it can raise questions - unless you present it correctly.
 Contract hiring is project-based.
 The hiring manager wants to know: can this person deliver what we need in the time we have?
 
-Structure your freelance experience around projects, not employers.
+Structure your freelance experience around [projects](https://thetailorcv.com/blog/projects-in-resume), not employers.
 
 **Weak (employer-focused):**
 > "Self-employed freelance designer, 2022-present."
 
 **Strong (project-focused):**
-> "Freelance UX Designer - Independent Consultant, 2022-present
-> Led UX research and design for 8 client projects across fintech, healthtech, and e-commerce, delivering mobile app redesigns, onboarding flow improvements, and design systems."
+> "Freelance [UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026) - Independent Consultant, 2022-present
+> Led UX research and design for 8 client [projects](https://thetailorcv.com/blog/projects-in-resume) across fintech, healthtech, and e-commerce, delivering mobile app redesigns, onboarding flow improvements, and design systems."
 
-Then list specific projects as bullets:
+Then list specific [projects](https://thetailorcv.com/blog/projects-in-resume) as bullets:
 - Redesigned onboarding flow for fintech app (15k users) - reduced drop-off from 68% to 31% in 6 weeks
 - Built design system from scratch for Series A healthcare platform - cut design-to-dev handoff time by 40%
 - Led UX audit for e-commerce client - surfaced 12 conversion blockers, implemented fixes generating $190k in additional revenue
@@ -92,7 +92,7 @@ If the contract asks for:
 - User testing
 - Stakeholder presentations
 
-Your resume's skills section should list exactly those, in that order if possible.
+Your resume's [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) should list exactly those, in that order if possible.
 
 Use [TailorCV's keyword analyzer](https://www.thetailorcv.com/solutions) to check your match against the contract job description.
 A high [ATS keyword match](https://thetailorcv.com/blog/ats-score-guide) is even more important for contract roles - there is less patience for uncertainty.
@@ -112,7 +112,7 @@ These signals directly address the contract employer's biggest risk: paying for 
 
 If you have a history of 3-12 month contracts, a simple label helps:
 
-**Software Engineer - Contract Roles, 2021-Present**
+**[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) - Contract Roles, 2021-Present**
 
 List clients below, with dates and key deliverables.
 This is standard and professional for contract professionals.
@@ -158,7 +158,7 @@ Counter this with evidence:
 
 ### 3. Show Your Growth Trajectory
 
-Freelancers who jump between projects can appear to lack a growth narrative.
+Freelancers who jump between [projects](https://thetailorcv.com/blog/projects-in-resume) can appear to lack a growth narrative.
 Counter this by showing how each project built on the last.
 
 **Linear narrative:**

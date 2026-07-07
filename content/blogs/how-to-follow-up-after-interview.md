@@ -10,9 +10,9 @@ slug: how-to-follow-up-after-interview
 keywords: how to follow up after interview, thank you email after interview, interview follow up email, interview follow up timing, when to follow up after interview
 ---
 
-Following up after a job interview is one of the most underused tools in the job search process. A well-timed, well-written thank-you email can reinforce your candidacy, address something you said poorly, and demonstrate professionalism. Not sending one is a missed opportunity. Sending a bad one can hurt you.
+Following up after a job [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most underused tools in the job search process. A well-timed, well-written thank-you email can reinforce your candidacy, address something you said poorly, and demonstrate professionalism. Not sending one is a missed opportunity. Sending a bad one can hurt you.
 
-This guide covers when to follow up, what to say, how to handle silence, and the thank-you email templates you can adapt for any role.
+This guide covers when to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview), what to say, how to handle silence, and the thank-you email templates you can adapt for any role.
 
 Before your interview, make sure your resume is strong - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it. Then prepare your answers with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
@@ -33,7 +33,7 @@ Research suggests that candidates who send a thoughtful thank-you note are viewe
 
 ## When to Send a Thank-You Email
 
-Send within 24 hours of your interview. Same day is ideal if you can write a thoughtful note, not a rushed one.
+Send within 24 hours of your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Same day is ideal if you can write a thoughtful note, not a rushed one.
 
 If you interviewed with multiple people - send individual notes to each. Not the same generic note - personalized to each conversation.
 
@@ -57,7 +57,7 @@ That's it. Do not ask about the timeline in the first thank-you email. Do not re
 
 ### Template 1 - General Technical Role
 
-Subject: Thank You - [Role] Interview, [Your Name]
+Subject: Thank You - [Role] [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [Your Name]
 
 Hi [Name],
 
@@ -92,7 +92,7 @@ Warm regards,
 Send a separate, personalized note to each interviewer. Reference something specific from each conversation.
 
 To the technical interviewer:
-"Thank you for the interesting discussion about [system design problem or technical challenge]. The trade-offs you mentioned around [X] gave me a lot to think about. I look forward to hopefully working through similar problems with the team."
+"Thank you for the interesting discussion about [[system design](https://thetailorcv.com/blog/system-design-interview-guide) problem or technical challenge]. The trade-offs you mentioned around [X] gave me a lot to think about. I look forward to hopefully working through similar problems with the team."
 
 To the hiring manager:
 "Thank you for sharing your vision for the team's direction over the next year. The approach to [specific initiative] is exactly the kind of challenge I find most energizing. I'm excited about the opportunity."
@@ -113,9 +113,9 @@ Do not be defensive or over-explain. One short paragraph is enough.
 
 They said they would respond in one week. It has been 10 days. What do you do?
 
-One follow-up is appropriate. Send it 2-3 business days after the stated timeline.
+One [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) is appropriate. Send it 2-3 business days after the stated timeline.
 
-"Hi [Name], I wanted to follow up on our conversation from [date]. I'm still very interested in the [Role] and would welcome any update on the timeline. I'm happy to provide any additional information if helpful. Thank you for your time."
+"Hi [Name], I wanted to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) on our conversation from [date]. I'm still very interested in the [Role] and would welcome any update on the timeline. I'm happy to provide any additional information if helpful. Thank you for your time."
 
 If you still hear nothing after 5 more business days, one more brief note is acceptable:
 
@@ -127,7 +127,7 @@ After two follow-ups with no response, move on. Continue applying elsewhere. Do 
 
 ## What Not to Do
 
-- Do not send a follow-up the same day, immediately after the interview - it can seem impulsive
+- Do not send a follow-up the same day, immediately after the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) - it can seem impulsive
 - Do not ask for feedback before you have received an offer decision
 - Do not demand a timeline or express frustration at the delay
 - Do not use the thank-you email to renegotiate anything
@@ -158,7 +158,7 @@ This leaves a positive final impression. Companies sometimes come back to runner
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
 - [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [LinkedIn Profile Optimization Guide 2026 - Get Found by Recruiters](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [Networking Tips for Job Search in 2026 - Even If You Hate Networking](https://thetailorcv.com/blog/networking-tips-for-job-search)
@@ -173,7 +173,8 @@ Use this advice as interview practice, not just reading material. Start a role-s
 Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
 
 ## Conclusion
-A thank-you email after an interview takes 10 minutes and is one of the highest-leverage low-effort actions in a job search. Send one within 24 hours, make it specific and genuine, and keep it short.
+A thank-you email after an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) takes 10 minutes and is one of the highest-leverage low-effort actions in a job search. Send one within 24 hours, make it specific and genuine, and keep it short.
 
 For the interview itself, prepare with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and the [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). For getting to the interview in the first place, use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize your resume, and use [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+
 

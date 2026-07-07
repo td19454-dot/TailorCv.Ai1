@@ -170,7 +170,7 @@ KSA responses should:
 Federal agencies - especially defense, health, and regulatory agencies - value formal credentials.
 
 List:
-- Professional certifications (PMP, CPA, security clearances, etc.)
+- Professional [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (PMP, CPA, security clearances, etc.)
 - Relevant training courses (federal training like OPM courses counts)
 - Security clearance level and status (active clearances are highly valuable)
 - Licenses (professional, state, federal)
@@ -203,7 +203,7 @@ Every USAJOBS posting includes:
 **Required Documents:** What to submit beyond the resume (transcripts, DD-214 for veterans, etc.)
 
 Read every section.
-Tailor your resume to the duties and qualifications sections specifically.
+[tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) to the duties and qualifications sections specifically.
 
 ---
 

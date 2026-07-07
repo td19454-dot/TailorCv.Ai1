@@ -10,7 +10,7 @@ slug: pharmacist-resume-2026
 keywords: pharmacist resume, pharmacist resume 2026, clinical pharmacist resume, retail pharmacist resume, hospital pharmacist resume, pharmacy ATS keywords, PharmD resume
 ---
 
-A pharmacist resume in 2026 must show clinical competence, licensure, medication safety record, and the specific pharmacy setting you specialize in - retail, hospital, clinical, or industry. Pharmacy hiring is credential-driven, so your license and certifications must be immediately visible, and your clinical responsibilities must be specific.
+A pharmacist resume in 2026 must show clinical competence, licensure, medication safety record, and the specific pharmacy setting you specialize in - retail, hospital, clinical, or industry. Pharmacy hiring is credential-driven, so your license and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) must be immediately visible, and your clinical responsibilities must be specific.
 
 Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For other healthcare roles, read the [nursing resume guide](https://thetailorcv.com/blog/nursing-resume-2026).
 
@@ -20,10 +20,10 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 1. Header with licensure
 2. Summary
-3. Licensure and certifications
+3. Licensure and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 4. Clinical and technical skills
 5. Work experience
-6. Education
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One to two pages.
 

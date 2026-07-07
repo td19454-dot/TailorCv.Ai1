@@ -19,7 +19,7 @@ The About Me section is where a visitor decides whether to trust you - and most 
 - **A human touch** - one genuine detail that makes you memorable
 
 ## Examples
-- *Developer:* "I'm a frontend developer who turns complex dashboards into fast, accessible UIs. I cut a fintech app's load time by 40% and genuinely enjoy a tricky animation. Currently open to React roles."
+- *Developer:* "I'm a [frontend developer](https://thetailorcv.com/blog/frontend-developer-resume-2026) who turns complex dashboards into fast, accessible UIs. I cut a fintech app's load time by 40% and genuinely enjoy a tricky animation. Currently open to React roles."
 - *Designer:* "I'm a product designer focused on fintech onboarding. My last redesign lifted activation 18%. I care about the boring screens everyone ignores."
 - *Writer:* "I write SEO content that ranks and converts - one client guide hit page one in three months. B2B SaaS is my home turf."
 

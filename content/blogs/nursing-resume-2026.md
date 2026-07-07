@@ -10,9 +10,9 @@ slug: nursing-resume-2026
 keywords: nursing resume, nursing resume 2026, RN resume, registered nurse resume, new grad nurse resume, healthcare resume, nursing ATS keywords, ICU nurse resume
 ---
 
-A nursing resume in 2026 needs to show your clinical competencies, patient care outcomes, specialization, and certifications clearly and quickly. Nurse managers reviewing applications spend very little time on each resume - yours needs to communicate your unit experience, skills, and licensure within the first scan.
+A nursing resume in 2026 needs to show your clinical competencies, patient care outcomes, specialization, and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) clearly and quickly. Nurse managers reviewing applications spend very little time on each resume - yours needs to communicate your unit experience, skills, and licensure within the first scan.
 
-The nursing job market remains one of the strongest in healthcare worldwide, but competition for desirable positions in top hospitals, ICUs, and specialized units is real. A well-structured, keyword-rich nursing resume can significantly increase your chances of getting an interview.
+The nursing job market remains one of the strongest in healthcare worldwide, but competition for desirable positions in top hospitals, ICUs, and specialized units is real. A well-structured, keyword-rich nursing resume can significantly increase your chances of getting an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 Before submitting, test your resume against the job description using the [ATS score checker](https://www.thetailorcv.com/solutions). Hospital HR systems use ATS software that filters resumes before a human nurse manager sees them. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) to ensure your format is parseable.
 
@@ -22,10 +22,10 @@ Before submitting, test your resume against the job description using the [ATS s
 
 1. Header with licensure information
 2. Summary or professional profile
-3. Certifications and licensure
+3. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and licensure
 4. Clinical skills
 5. Work experience
-6. Education
+6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. Additional training or awards
 
 One to two pages depending on experience. New graduates may keep it to one page. Experienced nurses with multiple specializations and leadership roles may use two pages.
@@ -38,7 +38,7 @@ Include your nursing credentials after your name:
 
 Priya Sharma, RN, BSN
 Mumbai, India | priya@email.com | +91 XXXXX XXXXX
-linkedin.com/in/priyasharma
+[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).com/in/priyasharma
 License: Maharashtra Nursing Council Registration No. XXXXXX
 
 Including your license number or registration status immediately signals to the hiring manager that you are cleared to practice.
@@ -57,7 +57,7 @@ Registered Nurse (BSN) with 5 years of ICU nursing experience in a 450-bed terti
 
 ### Example for New Graduate Nurse
 
-New Graduate Registered Nurse (BSN) with clinical rotations in medical-surgical, ICU, pediatrics, and obstetrics. BLS and ACLS certified. Completed 900+ clinical hours at Apollo Hospital with hands-on experience in IV insertion, catheter care, wound assessment, and patient education. Seeking a medical-surgical or step-down unit position.
+New Graduate Registered Nurse (BSN) with clinical rotations in medical-surgical, ICU, pediatrics, and obstetrics. BLS and ACLS certified. Completed 900+ clinical hours at Apollo Hospital with hands-on experience in IV insertion, catheter care, wound assessment, and patient [education](https://thetailorcv.com/blog/how-to-list-education-on-resume). Seeking a medical-surgical or step-down unit position.
 
 ---
 
@@ -100,7 +100,7 @@ Tailor this list to the unit and role you are applying for.
 - Care planning
 - Charge nurse
 - Infection control
-- Patient education
+- Patient [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - Critical thinking
 - Clinical documentation
 - Wound care
@@ -145,7 +145,7 @@ City General Hospital | Jan 2022 - Present
 - Administered IV medications including vasopressors, sedatives, analgesics, and antiarrhythmics with zero medication errors over 3 years.
 - Responded to 12+ rapid response calls per month as primary ICU nurse, stabilizing hemodynamically unstable patients before physician arrival.
 - Served as charge nurse 2-3 shifts per week, coordinating staffing, bed management, and patient flow across a 20-bed unit.
-- Led monthly unit education sessions on sepsis bundle compliance, contributing to a 28% improvement in bundle adherence over 6 months.
+- Led monthly unit [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) sessions on sepsis bundle compliance, contributing to a 28% improvement in bundle adherence over 6 months.
 
 ---
 
@@ -156,7 +156,7 @@ New graduate nurses should highlight:
 - Clinical rotation hours and units
 - Specific skills learned during rotations
 - Simulation lab training
-- Any certifications earned during nursing school
+- Any [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) earned during nursing school
 - Capstone or project work
 - GPA if strong (3.5 or above)
 

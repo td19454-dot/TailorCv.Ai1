@@ -88,3 +88,18 @@ If this topic connects to your work samples, turn the advice into a live proof p
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 
+
+---
+
+## Related Guides to Strengthen This Topic
+
+Use these internal guides to connect this topic with the rest of your job-search workflow:
+
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

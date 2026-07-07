@@ -10,12 +10,12 @@ slug: frontend-developer-portfolio
 keywords: frontend developer portfolio, react portfolio, frontend projects, ui developer portfolio, frontend portfolio examples
 ---
 
-For frontend roles, your portfolio *is* the interview. Before anyone reads a line of your code, they judge the site itself - its speed, polish, responsiveness, and taste. A sloppy portfolio site from a frontend developer is a contradiction the recruiter will not forgive.
+For frontend roles, your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) *is* the interview. Before anyone reads a line of your code, they judge the site itself - its speed, polish, responsiveness, and taste. A sloppy [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site from a frontend developer is a contradiction the recruiter will not forgive.
 
 This guide covers what to build, what to show, and the details that separate "junior" from "hire this person." Pair it with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas).
 
 ## Your Site Is Your First Project
-Treat your own portfolio as your flagship demo.
+Treat your own [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) as your flagship demo.
 
 - **Performance:** aim for Lighthouse 90+ across the board; no layout shift
 - **Responsive:** flawless from 320px to ultrawide
@@ -43,7 +43,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 
 ## Common Mistakes
-- A slow or janky portfolio site (instant credibility killer)
+- A slow or janky [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site (instant credibility killer)
 - Only screenshots, no live demos
 - No mobile testing
 - Dead links - audit with the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
@@ -60,7 +60,7 @@ See the full list in [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/
 
 ### Do frontend developers need a custom-coded portfolio?
 
-It helps, but a fast, polished site from a builder plus strong GitHub repos is plenty to get interviews. Recruiters care about the result and your project code, not whether the marketing site was hand-rolled.
+It helps, but a fast, polished site from a builder plus strong [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) repos is plenty to get interviews. Recruiters care about the result and your project code, not whether the marketing site was hand-rolled.
 
 ### How many projects should I show?
 
