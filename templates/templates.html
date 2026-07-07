@@ -51,46 +51,16 @@
     <main class="templates-page">
         <section class="templates-header">
             <h1 class="templates-title">ATS-Friendly <span class="templates-title-accent">Resume Templates</span></h1>
-            <div class="templates-stepper" aria-label="Template flow progress">
-                <span class="step-item step-1 is-active"><em>1</em> Pick your goal</span>
-                <span class="step-arrow" aria-hidden="true">&rarr;</span>
-                <span class="step-item step-2"><em>2</em> Choose a template</span>
-                <span class="step-arrow" aria-hidden="true">&rarr;</span>
-                <span class="step-item step-3"><em>3</em> Done</span>
-            </div>
-        </section>
-        <section class="intent-inline-wrap" aria-labelledby="intent-heading">
-            <h2 id="intent-heading" class="intent-heading-inline" hidden>Goal</h2>
-            <div class="intent-cards">
-                <button class="intent-card" data-intent="reformat" type="button">
-                    <span class="intent-icon" aria-hidden="true">&#128196;</span>
-                    <span class="intent-title">Reformat my existing resume</span>
-                    <span class="intent-copy">I have a resume &mdash; apply a new template to it</span>
-                    <span class="intent-proof">&#9989; ATS-friendly output in 30 seconds</span>
-                </button>
-                <button class="intent-card" data-intent="build" type="button">
-                    <span class="intent-icon" aria-hidden="true">&#127381;</span>
-                    <span class="intent-title">Build a resume from scratch</span>
-                    <span class="intent-copy">I don't have a resume &mdash; create one with a template</span>
-                    <span class="intent-proof">&#9989; Guided editor &middot; No writing experience needed</span>
-                </button>
-                <button class="intent-card" data-intent="optimize" type="button">
-                    <span class="intent-icon" aria-hidden="true">&#10024;</span>
-                    <span class="intent-title">Optimize my resume for a job</span>
-                    <span class="intent-copy">I have a resume + a job description &mdash; tailor and reformat it</span>
-                    <span class="intent-proof">&#9989; 3x more interview callbacks on average</span>
-                </button>
-            </div>
         </section>
 
         <section id="templates-grid" class="templates-grid" aria-live="polite"></section>
         <p id="templates-grid-status" class="templates-grid-status" aria-live="polite"></p>
         <section id="template-action-chooser" class="template-action-chooser" hidden>
-            <h3>What do you want to do with this template?</h3>
+            <h3>What do you want to do with your resume?</h3>
             <div class="template-action-chooser-buttons">
-                <button id="choose-build-btn" type="button" class="templates-btn templates-btn-secondary">Create CV</button>
-                <button id="choose-optimize-btn" type="button" class="templates-btn templates-btn-primary">Optimize CV with JD</button>
-                <button id="choose-reformat-btn" type="button" class="templates-btn templates-btn-secondary">Change Format</button>
+                <button id="choose-reformat-btn" type="button" class="templates-btn templates-btn-secondary">Change Template</button>
+                <button id="choose-build-btn" type="button" class="templates-btn templates-btn-secondary">Modify CV</button>
+                <button id="choose-optimize-btn" type="button" class="templates-btn templates-btn-primary">Optimize Resume</button>
             </div>
         </section>
         <section id="template-confirm-card" class="template-confirm-card" hidden>
@@ -242,18 +212,13 @@
                 document.querySelectorAll("[data-template-id]").forEach((card) => {
                     card.addEventListener("click", () => {
                         selectedTemplateId = Number(card.getAttribute("data-template-id"));
+                        userIntent = null;
                         renderGrid();
-                        if (!userIntent) {
-                            hideUploadSection();
-                            hideTemplateConfirmation();
-                            showActionChooser();
-                            setGridStatus("Template selected. Choose an action below.", "is-success");
-                            return;
-                        }
-                        hideActionChooser();
-                        setGridStatus("");
+                        hideUploadSection();
+                        hideTemplateConfirmation();
+                        showActionChooser();
+                        setGridStatus("Template selected. Choose an action below.", "is-success");
                         setUploadStatus("");
-                        showTemplateConfirmation();
                     });
                 });
                 updateStepState();
@@ -576,33 +541,19 @@
                 if (!selectedTemplateId) return;
                 closeOverlayWithIntent("build");
                 hideActionChooser();
-                showTemplateConfirmation();
+                handleTemplateSelection();
             });
             chooseOptimizeBtn?.addEventListener("click", () => {
                 if (!selectedTemplateId) return;
                 closeOverlayWithIntent("optimize");
                 hideActionChooser();
-                showTemplateConfirmation();
+                handleTemplateSelection();
             });
             chooseReformatBtn?.addEventListener("click", () => {
                 if (!selectedTemplateId) return;
                 closeOverlayWithIntent("reformat");
                 hideActionChooser();
-                showTemplateConfirmation();
-            });
-            document.querySelectorAll(".intent-card").forEach((card) => {
-                card.addEventListener("click", () => {
-                    const nextIntent = card.getAttribute("data-intent");
-                    if (userIntent !== nextIntent) {
-                        selectedTemplateId = null;
-                        hideUploadSection();
-                        hideActionChooser();
-                        hideTemplateConfirmation();
-                        renderGrid();
-                    }
-                    closeOverlayWithIntent(nextIntent);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                });
+                handleTemplateSelection();
             });
 
             initialize();
