@@ -1765,9 +1765,9 @@ Responsible for
 Involved in
 Contributed to
 
-Pass if at least 70% of bullets begin with strong action verbs.
+Pass if at least 4 of bullets begin with strong action verbs.
 
-Fail otherwise.
+Fail otherwise and give proper explanation.
 
 ==================================================
 QUANTIFIED IMPACT RULES
@@ -1786,9 +1786,9 @@ $50,000
 50ms reduction
 95% accuracy
 
-Pass if at least 30% of experience/project bullets contain measurable metrics.
+Pass if at least 2 of experience/project bullets contain measurable metrics.
 
-Fail otherwise.
+Fail otherwise and give proper explanation .
 
 ==================================================
 FORMATTING RULES
