@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Mock Interview, Interview Prep, Feedback, Career Tips, Behavioral Interview]
 category: Interview Prep
-image: public/blog-images/mock-interview-feedback-checklist.jpeg
+image: public/blog-images/mock-interview-feedback-checklist.webp
 slug: mock-interview-feedback-checklist
 keywords: mock interview feedback checklist, interview practice checklist, mock interview tips, interview feedback template
 ---

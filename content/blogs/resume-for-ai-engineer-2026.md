@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [AI Engineer Resume, Machine Learning Resume, LLM, MLOps, Tech Resume]
 category: Resume Examples
-image: public/blog-images/resume-for-ai-engineer-2026.jpeg
+image: public/blog-images/resume-for-ai-engineer-2026.webp
 slug: resume-for-ai-engineer-2026
 keywords: AI engineer resume, artificial intelligence engineer resume 2026, LLM resume, MLOps resume, machine learning engineer resume
 ---

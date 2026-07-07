@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Portfolio, Personal Branding, Job Search, Resume Tips, Career Tips]
 category: Portfolio
-image: public/blog-images/portfolio-homepage-copy-examples.jpeg
+image: public/blog-images/portfolio-homepage-copy-examples.webp
 slug: portfolio-homepage-copy-examples
 keywords: portfolio homepage copy examples, portfolio headline examples, personal portfolio copy, job seeker portfolio examples
 ---

@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [Machine Learning Interview, ML Interview Questions, Data Science Interview, Technical Interview, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/machine-learning-interview-questions.png
+image: public/blog-images/machine-learning-interview-questions.webp
 slug: machine-learning-interview-questions
 keywords: machine learning interview questions, ML interview questions and answers, machine learning engineer interview, data science interview questions, ML interview prep 2026
 ---

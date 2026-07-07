@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [LinkedIn Profile, Resume Tailoring, LinkedIn Optimization, Job Search 2026, Personal Branding]
 category: Resume Optimization
-image: public/blog-images/linkedin-resume-tailoring-sync.png
+image: public/blog-images/linkedin-resume-tailoring-sync.webp
 slug: linkedin-resume-tailoring-sync
 keywords: LinkedIn resume sync, LinkedIn profile tailoring, align LinkedIn with resume, LinkedIn job search 2026, resume and LinkedIn consistency
 ---

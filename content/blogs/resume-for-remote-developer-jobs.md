@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Developer Resume, Remote Jobs, Software Engineer Resume, ATS Resume, Tech Resume]
 category: Resume Examples
-image: public/blog-images/resume-for-remote-developer-jobs.jpeg
+image: public/blog-images/resume-for-remote-developer-jobs.webp
 slug: resume-for-remote-developer-jobs
 keywords: remote developer resume, resume for remote software jobs, remote software engineer resume, remote developer ATS keywords
 ---

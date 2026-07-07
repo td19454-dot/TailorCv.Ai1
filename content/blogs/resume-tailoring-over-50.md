@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Resume Over 50, Age Bias Resume, Mature Job Seeker, Career After 50, Resume Tailoring 2026]
 category: Resume Writing
-image: public/blog-images/resume-tailoring-over-50.png
+image: public/blog-images/resume-tailoring-over-50.webp
 slug: resume-tailoring-over-50
 keywords: resume tailoring over 50, resume for 50+ job seekers, age bias resume tips, how to hide age on resume, mature job seeker resume 2026, career after 50 resume
 ---

@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [AI Resume, Resume Tailoring, AI Writing, ATS Optimization, Resume Tips 2026]
 category: Resume Optimization
-image: public/blog-images/ai-resume-tailoring-human-voice.png
+image: public/blog-images/ai-resume-tailoring-human-voice.webp
 slug: ai-resume-tailoring-human-voice
 keywords: AI resume tailoring, AI resume writing tips, how to use AI for resume without sounding generic, human voice resume AI, AI resume tool 2026
 ---

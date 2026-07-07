@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Internal Job Application, Resume Tailoring, Career Growth, Promotion, Internal Transfer]
 category: Resume Optimization
-image: public/blog-images/internal-job-application-resume.png
+image: public/blog-images/internal-job-application-resume.webp
 slug: internal-job-application-resume
 keywords: internal job application resume, resume for internal transfer, how to apply for internal position, tailoring resume for internal role, internal promotion resume 2026
 ---

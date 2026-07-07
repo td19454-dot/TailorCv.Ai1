@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Job Description, Resume Matching, ATS Resume, Job Search, Resume Keywords]
 category: ATS
-image: public/blog-images/job-description-analysis-checklist.jpeg
+image: public/blog-images/job-description-analysis-checklist.webp
 slug: job-description-analysis-checklist
 keywords: job description analysis checklist, analyze job description, resume matching checklist, job description keywords
 ---

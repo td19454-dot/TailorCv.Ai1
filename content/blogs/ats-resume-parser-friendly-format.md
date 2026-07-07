@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [ATS format, resume format, resume parsing]
 category: ATS Optimization
-image: public/blog-images/ats-resume-parser-friendly-format.png
+image: public/blog-images/ats-resume-parser-friendly-format.webp
 slug: ats-resume-parser-friendly-format
 keywords: ATS parser friendly resume, ATS resume format, resume parser friendly format, ATS readable resume
 ---

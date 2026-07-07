@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [CV maker, resume builder, ATS templates]
 category: Resume Templates
-image: public/blog-images/online-cv-maker-vs-resume-builder.png
+image: public/blog-images/online-cv-maker-vs-resume-builder.webp
 slug: online-cv-maker-vs-resume-builder
 keywords: online CV maker, resume builder, CV maker vs resume builder, ATS resume builder
 ---

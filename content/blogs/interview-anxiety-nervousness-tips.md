@@ -5,7 +5,7 @@ date: 2026-07-03
 author: TailorCV Team
 tags: [Interview Anxiety, Interview Nerves, Interview Preparation, Mock Interview, Career Advice]
 category: Interview Preparation
-image: public/blog-images/interview-anxiety-nervousness-tips.png
+image: public/blog-images/interview-anxiety-nervousness-tips.webp
 slug: interview-anxiety-nervousness-tips
 keywords: interview anxiety, interview nerves, how to calm interview nerves, overcome interview anxiety 2026, nervous before job interview
 ---

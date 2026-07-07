@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Interview Prep, STAR Method, Behavioral Interview, Career Tips, Mock Interview]
 category: Interview Prep
-image: public/blog-images/interview-story-bank-star-method.jpeg
+image: public/blog-images/interview-story-bank-star-method.webp
 slug: interview-story-bank-star-method
 keywords: interview story bank, STAR method examples, behavioral interview stories, interview preparation template
 ---

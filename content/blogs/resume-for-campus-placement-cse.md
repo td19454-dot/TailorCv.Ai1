@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Campus Placement, CSE Resume, Fresher Resume, Student Resume, ATS Resume]
 category: Resume Writing
-image: public/blog-images/resume-for-campus-placement-cse.jpeg
+image: public/blog-images/resume-for-campus-placement-cse.webp
 slug: resume-for-campus-placement-cse
 keywords: resume for campus placement CSE, CSE fresher resume, campus placement resume, computer science student resume
 ---

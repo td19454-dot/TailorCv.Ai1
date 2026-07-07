@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [Group Interview, Interview Tips, Interview Preparation, Multiple Candidates, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/group-interview-tips-strategies.png
+image: public/blog-images/group-interview-tips-strategies.webp
 slug: group-interview-tips-strategies
 keywords: group interview tips, group interview strategies, how to stand out group interview, group job interview 2026
 ---

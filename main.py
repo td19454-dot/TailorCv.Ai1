@@ -6335,7 +6335,7 @@ async def portfolio_builder_page(request: Request):
         "subdomains_enabled": PORTFOLIO_SUBDOMAINS_ENABLED,
         "canonical_url": build_absolute_url("/portfolio"),
         "software_schema_json": build_software_app_schema(),
-        "page_schema_json": build_page_breadcrumb("Portfolio Website Builder", "/portfolio"),
+        "page_schema_json": build_page_breadcrumb("Resume to Portfolio Website Builder", "/portfolio"),
     })
 
 

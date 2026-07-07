@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Remote Work Resume, Hybrid Resume, Resume Tailoring, Work From Home Resume, Job Search 2026]
 category: Resume Optimization
-image: public/blog-images/resume-tailoring-remote-hybrid-onsite.png
+image: public/blog-images/resume-tailoring-remote-hybrid-onsite.webp
 slug: resume-tailoring-remote-hybrid-onsite
 keywords: remote work resume tips, hybrid job resume, how to tailor resume for remote job, work from home resume 2026, on-site job resume tailoring, remote vs hybrid resume differences
 ---

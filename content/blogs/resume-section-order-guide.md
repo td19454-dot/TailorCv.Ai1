@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Resume Format, Resume Writing, ATS Resume, Resume Tips, Career Tips]
 category: Resume Writing
-image: public/blog-images/resume-section-order-guide.jpeg
+image: public/blog-images/resume-section-order-guide.webp
 slug: resume-section-order-guide
 keywords: resume section order, best resume order, resume format 2026, what sections go first on resume
 ---

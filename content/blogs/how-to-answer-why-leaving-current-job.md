@@ -5,7 +5,7 @@ date: 2026-07-06
 author: TailorCV Team
 tags: [Interview Questions, Leaving Job, Interview Answers, Career Advice, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/how-to-answer-why-leaving-current-job.png
+image: public/blog-images/how-to-answer-why-leaving-current-job.webp
 slug: how-to-answer-why-leaving-current-job
 keywords: why are you leaving your current job, why leaving current job interview answer, reason for leaving job interview 2026, why do you want to leave your job
 ---

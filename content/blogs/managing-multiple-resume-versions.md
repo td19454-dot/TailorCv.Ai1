@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Resume Organization, Multiple Resume Versions, Resume Tailoring, Job Search Strategy, Resume Management]
 category: Resume Optimization
-image: public/blog-images/managing-multiple-resume-versions.png
+image: public/blog-images/managing-multiple-resume-versions.webp
 slug: managing-multiple-resume-versions
 keywords: managing multiple resume versions, multiple tailored resumes, resume version control, how to organize resumes for job search, master resume strategy 2026
 ---

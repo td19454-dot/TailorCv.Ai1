@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [STAR Method, Behavioral Interview, Interview Preparation, Interview Answers, Job Search]
 category: Interview Preparation
-image: public/blog-images/star-method-interview-guide.png
+image: public/blog-images/star-method-interview-guide.webp
 slug: star-method-interview-guide
 keywords: STAR method interview, STAR method examples, how to answer behavioral interview questions, STAR interview technique, STAR method for interviews
 ---

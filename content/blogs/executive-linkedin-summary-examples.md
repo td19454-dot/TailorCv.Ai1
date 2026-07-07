@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [LinkedIn, Executive Resume, Leadership, Personal Branding, Job Search]
 category: LinkedIn
-image: public/blog-images/executive-linkedin-summary-examples.jpeg
+image: public/blog-images/executive-linkedin-summary-examples.webp
 slug: executive-linkedin-summary-examples
 keywords: executive LinkedIn summary examples, senior leader LinkedIn about section, executive profile summary, LinkedIn for executives
 ---

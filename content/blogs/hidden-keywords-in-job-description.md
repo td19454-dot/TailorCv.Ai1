@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Resume Keywords, Job Description Analysis, ATS Optimization, Resume Tailoring, Job Search 2026]
 category: ATS Optimization
-image: public/blog-images/hidden-keywords-in-job-description.png
+image: public/blog-images/hidden-keywords-in-job-description.webp
 slug: hidden-keywords-in-job-description
 keywords: hidden keywords job description, job description analysis resume, how to read job description for resume, decode job description 2026, resume tailoring job description clues
 ---

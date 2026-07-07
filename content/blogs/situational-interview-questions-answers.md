@@ -5,7 +5,7 @@ date: 2026-07-04
 author: TailorCV Team
 tags: [Situational Interview, Interview Questions, Interview Answers, Interview Preparation, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/situational-interview-questions-answers.png
+image: public/blog-images/situational-interview-questions-answers.webp
 slug: situational-interview-questions-answers
 keywords: situational interview questions, situational interview answers, what would you do if interview, hypothetical interview questions 2026
 ---

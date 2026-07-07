@@ -5,7 +5,7 @@ date: 2026-07-06
 author: TailorCV Team
 tags: [Remote Interview, Video Interview, Work From Home, Interview Preparation, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/remote-job-interview-preparation-2026.png
+image: public/blog-images/remote-job-interview-preparation-2026.webp
 slug: remote-job-interview-preparation-2026
 keywords: remote job interview preparation, remote interview tips 2026, video interview preparation, work from home interview tips
 ---
