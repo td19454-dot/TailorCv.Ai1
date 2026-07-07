@@ -2905,6 +2905,21 @@ def group_skills(skills: list[str]) -> list[str]:
         "strategic", "planning", "reporting", "performance", "applications", "application",
         "mindset", "attitude", "interpersonal", "organizational", "multitasking",
         "proactive", "ebooks", "ebook",
+        # Job-requirement / role-description fragments (e.g. "senior IC role",
+        # "high-growth startup") that the AI sometimes extracts as if they were
+        # skill keywords.
+        "role", "roles", "senior", "junior", "ic", "startup", "startups",
+        "growth", "years", "year", "experience", "requirement", "requirements",
+        "responsibility", "responsibilities", "environment", "environments",
+        "team", "teams",
+    }
+    # Function/filler words: a phrase containing one of these is a sentence
+    # fragment, never a skill name (real skill names like "Vector Databases" or
+    # "REST APIs" never contain them).
+    generic_stopwords = {
+        "a", "an", "the", "one", "two", "more", "less", "some", "any", "several",
+        "of", "or", "and", "with", "for", "in", "at", "is", "are", "to", "as",
+        "such", "etc", "including", "like", "via",
     }
 
     def add_unique(bucket: list[str], value: str):
@@ -2913,11 +2928,11 @@ def group_skills(skills: list[str]) -> list[str]:
 
     def is_generic_phrase(item: str) -> bool:
         words = re.findall(r"[a-zA-Z][a-zA-Z0-9\-\+#\.]*", item.lower())
-        if len(words) <= 1:
-            return False
+        if not words:
+            return True
         if len(words) > 4:
             return True
-        return any(w in generic_phrase_words for w in words)
+        return any(w in generic_phrase_words or w in generic_stopwords for w in words)
 
     def split_skill_items(text: str) -> list[str]:
         parts = [part.strip() for part in re.split(r"[,;]", text) if part.strip()]
