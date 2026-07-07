@@ -5,7 +5,7 @@ date: 2026-07-01
 author: TailorCV Team
 tags: [STAR Method, Behavioral Interview, Interview Answers, Interview Preparation, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/star-method-interview-answers-guide.png
+image: public/blog-images/star-method-interview-answers-guide.webp
 slug: star-method-interview-answers-guide
 keywords: STAR method interview, STAR method examples, behavioral interview STAR, how to use STAR method, STAR interview answers 2026
 ---

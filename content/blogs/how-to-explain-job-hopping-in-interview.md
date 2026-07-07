@@ -5,7 +5,7 @@ date: 2026-07-06
 author: TailorCV Team
 tags: [Job Hopping, Interview Questions, Career Advice, Interview Preparation, Resume Tips]
 category: Interview Preparation
-image: public/blog-images/how-to-explain-job-hopping-in-interview.png
+image: public/blog-images/how-to-explain-job-hopping-in-interview.webp
 slug: how-to-explain-job-hopping-in-interview
 keywords: explain job hopping interview, job hopping interview answer, frequent job changes interview, short tenure interview 2026
 ---

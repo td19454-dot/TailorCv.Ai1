@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [resume bullets, resume writing, AI resume]
 category: Resume Writing
-image: public/blog-images/resume-bullet-point-generator-guide.png
+image: public/blog-images/resume-bullet-point-generator-guide.webp
 slug: resume-bullet-point-generator-guide
 keywords: resume bullet point generator, resume bullet examples, ai resume bullet generator, achievement bullets resume
 ---

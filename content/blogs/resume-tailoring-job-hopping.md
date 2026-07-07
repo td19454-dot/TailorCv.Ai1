@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Job Hopping Resume, Multiple Jobs Resume, Resume Tailoring, Career Gaps, Job Search 2026]
 category: Resume Writing
-image: public/blog-images/resume-tailoring-job-hopping.png
+image: public/blog-images/resume-tailoring-job-hopping.webp
 slug: resume-tailoring-job-hopping
 keywords: job hopping resume, how to handle multiple jobs on resume, frequent job changes resume, short tenure resume tips, job hopper resume strategy 2026
 ---

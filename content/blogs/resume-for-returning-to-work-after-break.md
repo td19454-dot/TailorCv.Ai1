@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Career Break, Resume Writing, Return to Work, Job Search, Resume Tips]
 category: Resume Writing
-image: public/blog-images/resume-for-returning-to-work-after-break.jpeg
+image: public/blog-images/resume-for-returning-to-work-after-break.webp
 slug: resume-for-returning-to-work-after-break
 keywords: resume after career break, returning to work resume, career gap resume, resume for comeback after break
 ---

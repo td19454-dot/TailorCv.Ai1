@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [LinkedIn Easy Apply, Resume Optimization, LinkedIn Job Search, ATS Optimization, Job Search 2026]
 category: Resume Optimization
-image: public/blog-images/resume-optimization-linkedin-easy-apply.png
+image: public/blog-images/resume-optimization-linkedin-easy-apply.webp
 slug: resume-optimization-linkedin-easy-apply
 keywords: LinkedIn Easy Apply resume, optimize resume for LinkedIn jobs, Easy Apply tips 2026, LinkedIn job application resume, how to stand out on LinkedIn Easy Apply
 ---

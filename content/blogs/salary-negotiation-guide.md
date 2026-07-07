@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [Salary Negotiation, Salary Negotiation Guide, Job Offer Negotiation, Career Advice, Job Search]
 category: Career Advice
-image: public/blog-images/salary-negotiation-guide.png
+image: public/blog-images/salary-negotiation-guide.webp
 slug: salary-negotiation-guide
 keywords: salary negotiation guide, how to negotiate salary, salary negotiation tips, negotiating a job offer, salary negotiation script
 ---

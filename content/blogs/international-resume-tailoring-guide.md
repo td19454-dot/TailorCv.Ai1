@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [International Resume, Global Job Search, Resume Format by Country, Expat Resume, Resume Tailoring 2026]
 category: Resume Writing
-image: public/blog-images/international-resume-tailoring-guide.png
+image: public/blog-images/international-resume-tailoring-guide.webp
 slug: international-resume-tailoring-guide
 keywords: international resume tailoring, resume format by country, global resume guide 2026, UK resume vs US resume, European CV format, how to apply for international jobs resume
 ---

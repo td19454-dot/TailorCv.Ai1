@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [Case Interview, Consulting Interview, Interview Preparation, Problem Solving, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/case-interview-preparation-guide-2026.png
+image: public/blog-images/case-interview-preparation-guide-2026.webp
 slug: case-interview-preparation-guide-2026
 keywords: case interview preparation, case interview guide 2026, consulting interview case study, how to prepare for case interviews
 ---

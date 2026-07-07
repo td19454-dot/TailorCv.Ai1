@@ -5,7 +5,7 @@ date: 2026-07-03
 author: TailorCV Team
 tags: [Panel Interview, Interview Tips, Interview Preparation, Multiple Interviewers, Job Interview]
 category: Interview Preparation
-image: public/blog-images/panel-interview-tips-strategies.png
+image: public/blog-images/panel-interview-tips-strategies.webp
 slug: panel-interview-tips-strategies
 keywords: panel interview tips, panel interview strategies, how to prepare for panel interview, multiple interviewers job interview 2026
 ---

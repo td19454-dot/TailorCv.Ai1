@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Federal Resume, Government Resume, USAJOBS, Resume Format, Resume Writing 2026]
 category: Resume Writing
-image: public/blog-images/federal-government-resume-guide.png
+image: public/blog-images/federal-government-resume-guide.webp
 slug: federal-government-resume-guide
 keywords: federal resume guide, government resume 2026, USAJOBS resume tips, how to write federal resume, KSA resume statements, government job application resume
 ---

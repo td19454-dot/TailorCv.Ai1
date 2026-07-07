@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [UX Portfolio, UI UX Design, Case Study, Designer Resume, Portfolio]
 category: Portfolio
-image: public/blog-images/ui-ux-case-study-portfolio.jpeg
+image: public/blog-images/ui-ux-case-study-portfolio.webp
 slug: ui-ux-case-study-portfolio
 keywords: UI UX case study portfolio, UX portfolio case study, UI UX designer portfolio, UX case study structure
 ---

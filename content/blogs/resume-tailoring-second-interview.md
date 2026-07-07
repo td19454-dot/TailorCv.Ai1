@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Second Interview Resume, Interview Preparation, Resume Tailoring, Job Search Tips 2026, Final Round Interview]
 category: Resume Optimization
-image: public/blog-images/resume-tailoring-second-interview.png
+image: public/blog-images/resume-tailoring-second-interview.webp
 slug: resume-tailoring-second-interview
 keywords: second interview resume update, tailor resume for final round, interview follow up resume, second round interview preparation, how to prepare resume for second interview 2026
 ---

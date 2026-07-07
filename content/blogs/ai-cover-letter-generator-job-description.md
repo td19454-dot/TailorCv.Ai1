@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [cover letter, AI, job application]
 category: Cover Letters
-image: public/blog-images/ai-cover-letter-generator-job-description.png
+image: public/blog-images/ai-cover-letter-generator-job-description.webp
 slug: ai-cover-letter-generator-job-description
 keywords: ai cover letter generator, cover letter generator job description, generate cover letter from resume, tailored cover letter
 ---

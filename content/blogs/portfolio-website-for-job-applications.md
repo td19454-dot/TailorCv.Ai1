@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [portfolio, job search, personal website]
 category: Portfolio
-image: public/blog-images/portfolio-website-for-job-applications.png
+image: public/blog-images/portfolio-website-for-job-applications.webp
 slug: portfolio-website-for-job-applications
 keywords: portfolio website for job applications, job seeker portfolio, resume portfolio website, personal portfolio for jobs
 ---

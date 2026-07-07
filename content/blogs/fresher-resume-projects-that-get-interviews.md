@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Fresher Resume, Projects, Resume Tips, Campus Placement, ATS Resume]
 category: Resume Writing
-image: public/blog-images/fresher-resume-projects-that-get-interviews.jpeg
+image: public/blog-images/fresher-resume-projects-that-get-interviews.webp
 slug: fresher-resume-projects-that-get-interviews
 keywords: fresher resume projects, projects for resume freshers, resume projects for students, fresher resume examples
 ---

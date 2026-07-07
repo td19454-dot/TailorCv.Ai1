@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [LinkedIn, Referral, Networking, Job Search, Career Tips]
 category: Job Search
-image: public/blog-images/referral-message-template-linkedin.jpeg
+image: public/blog-images/referral-message-template-linkedin.webp
 slug: referral-message-template-linkedin
 keywords: LinkedIn referral message template, how to ask for referral, referral request message, job referral LinkedIn
 ---

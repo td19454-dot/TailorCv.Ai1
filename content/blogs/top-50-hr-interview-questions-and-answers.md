@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [HR Interview Questions, Interview Preparation, Behavioral Interview, Job Search, Interview Answers]
 category: Interview Preparation
-image: public/blog-images/top-50-hr-interview-questions-and-answers.png
+image: public/blog-images/top-50-hr-interview-questions-and-answers.webp
 slug: top-50-hr-interview-questions-and-answers
 keywords: HR interview questions and answers, top 50 HR interview questions, common HR interview questions, HR interview questions for freshers, HR interview questions with answers
 ---

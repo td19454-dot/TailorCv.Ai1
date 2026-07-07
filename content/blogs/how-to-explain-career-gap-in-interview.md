@@ -5,7 +5,7 @@ date: 2026-07-02
 author: TailorCV Team
 tags: [Career Gap, Interview Questions, Employment Gap, Interview Preparation, Resume Gap]
 category: Interview Preparation
-image: public/blog-images/how-to-explain-career-gap-in-interview.png
+image: public/blog-images/how-to-explain-career-gap-in-interview.webp
 slug: how-to-explain-career-gap-in-interview
 keywords: explain career gap interview, employment gap interview answer, gap in resume interview, career break job interview 2026
 ---

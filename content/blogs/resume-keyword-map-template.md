@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Resume Keywords, ATS Resume, Job Description, Resume Matching, Resume Tips]
 category: ATS
-image: public/blog-images/resume-keyword-map-template.jpeg
+image: public/blog-images/resume-keyword-map-template.webp
 slug: resume-keyword-map-template
 keywords: resume keyword map template, resume keywords, ATS keyword mapping, match resume to job description, job description keywords
 ---

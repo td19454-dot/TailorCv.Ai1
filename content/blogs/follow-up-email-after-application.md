@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Follow Up Email, Job Search, Recruiter Email, Career Tips, Applications]
 category: Job Search
-image: public/blog-images/follow-up-email-after-application.jpeg
+image: public/blog-images/follow-up-email-after-application.webp
 slug: follow-up-email-after-application
 keywords: follow up email after application, job application follow up email, recruiter follow up template, no response after applying
 ---

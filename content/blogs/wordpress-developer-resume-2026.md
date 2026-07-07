@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [WordPress Developer, Web Developer Resume, PHP, Portfolio, Resume Examples]
 category: Resume Examples
-image: public/blog-images/wordpress-developer-resume-2026.jpeg
+image: public/blog-images/wordpress-developer-resume-2026.webp
 slug: wordpress-developer-resume-2026
 keywords: WordPress developer resume, WordPress resume 2026, PHP developer resume, WooCommerce resume, web developer resume
 ---

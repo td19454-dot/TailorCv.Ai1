@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Healthcare Resume, Clinical Resume, Allied Health Resume, Resume Tailoring, Medical Resume 2026]
 category: Resume Writing
-image: public/blog-images/resume-tailoring-healthcare.png
+image: public/blog-images/resume-tailoring-healthcare.webp
 slug: resume-tailoring-healthcare
 keywords: healthcare resume tailoring, clinical resume tips 2026, allied health resume, medical resume keywords, healthcare job application resume, nursing resume tailoring
 ---

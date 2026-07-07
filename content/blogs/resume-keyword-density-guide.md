@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Resume Keywords, ATS Optimization, Keyword Density, Resume Tailoring, Job Search 2026]
 category: ATS Optimization
-image: public/blog-images/resume-keyword-density-guide.png
+image: public/blog-images/resume-keyword-density-guide.webp
 slug: resume-keyword-density-guide
 keywords: resume keyword density, keyword stuffing resume, how many keywords on resume, ATS keyword optimization 2026, resume keyword balance, too many keywords on resume
 ---

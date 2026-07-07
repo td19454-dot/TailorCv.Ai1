@@ -5,7 +5,7 @@ date: 2026-07-04
 author: TailorCV Team
 tags: [Manager Interview, Hiring Manager, Interview Questions, Interview Preparation, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/manager-interview-round-questions-guide.png
+image: public/blog-images/manager-interview-round-questions-guide.webp
 slug: manager-interview-round-questions-guide
 keywords: manager round interview questions, hiring manager interview, manager interview preparation 2026, what hiring managers ask
 ---

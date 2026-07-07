@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Resume Tailoring, Startup Resume, Enterprise Resume, Job Search 2026, Resume Optimization]
 category: Resume Optimization
-image: public/blog-images/resume-tailoring-startup-vs-enterprise.png
+image: public/blog-images/resume-tailoring-startup-vs-enterprise.webp
 slug: resume-tailoring-startup-vs-enterprise
 keywords: startup resume tailoring, enterprise resume tips, how to tailor resume for startup, resume for corporate job, startup vs enterprise job application 2026
 ---

@@ -5,7 +5,7 @@ date: 2026-06-29
 author: TailorCV Team
 tags: [Resume Tailoring, Underqualified Job Application, Resume Tips, ATS Optimization, Job Search 2026]
 category: Resume Optimization
-image: public/blog-images/resume-tailoring-underqualified.png
+image: public/blog-images/resume-tailoring-underqualified.webp
 slug: resume-tailoring-underqualified
 keywords: resume tailoring underqualified, how to apply when underqualified, resume when missing qualifications, underqualified job application tips, how to get job without meeting all requirements 2026
 ---

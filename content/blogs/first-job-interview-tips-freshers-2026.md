@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [Fresher Interview, First Job, Campus Placement, Interview Tips, Mock Interview]
 category: Interview Preparation
-image: public/blog-images/first-job-interview-tips-freshers-2026.png
+image: public/blog-images/first-job-interview-tips-freshers-2026.webp
 slug: first-job-interview-tips-freshers-2026
 keywords: first job interview tips, fresher interview tips 2026, first interview advice, campus interview preparation, graduate job interview
 ---

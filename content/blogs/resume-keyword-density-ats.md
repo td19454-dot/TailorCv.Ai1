@@ -5,7 +5,7 @@ date: 2026-07-05
 author: TailorCV Team
 tags: [resume keywords, ATS, keyword density]
 category: ATS Optimization
-image: public/blog-images/resume-keyword-density-ats.png
+image: public/blog-images/resume-keyword-density-ats.webp
 slug: resume-keyword-density-ats
 keywords: resume keyword density, ATS keywords, resume keyword stuffing, job description keywords resume
 ---

@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [AI Job Search, Resume AI, Job Search, ATS Resume, Interview Prep]
 category: Job Search
-image: public/blog-images/ai-job-search-agent-2026.jpeg
+image: public/blog-images/ai-job-search-agent-2026.webp
 slug: ai-job-search-agent-2026
 keywords: AI job search agent, AI job search 2026, AI resume assistant, AI job application tool, job search automation
 ---
