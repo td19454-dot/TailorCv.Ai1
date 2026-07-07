@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Salary Negotiation, Interview Prep, Job Offer, Career Tips, HR Interview]
 category: Interview Prep
-image: public/blog-images/salary-expectation-answer-guide.webp
+image: public/blog-images/salary-expectation-answer-guide.jpeg
 slug: salary-expectation-answer-guide
 keywords: salary expectation answer, how to answer salary expectations, expected salary interview answer, salary negotiation
 ---
@@ -169,5 +169,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your salary expectation answer, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 

@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Portfolio, Personal Branding, Job Search, Resume Tips, Career Tips]
 category: Portfolio
-image: public/blog-images/portfolio-homepage-copy-examples.webp
+image: public/blog-images/portfolio-homepage-copy-examples.jpeg
 slug: portfolio-homepage-copy-examples
 keywords: portfolio homepage copy examples, portfolio headline examples, personal portfolio copy, job seeker portfolio examples
 ---
@@ -171,5 +171,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your portfolio homepage copy, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 

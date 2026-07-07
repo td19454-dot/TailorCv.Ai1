@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [LinkedIn, Referral, Networking, Job Search, Career Tips]
 category: Job Search
-image: public/blog-images/referral-message-template-linkedin.webp
+image: public/blog-images/referral-message-template-linkedin.jpeg
 slug: referral-message-template-linkedin
 keywords: LinkedIn referral message template, how to ask for referral, referral request message, job referral LinkedIn
 ---
@@ -173,5 +173,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your LinkedIn referral request, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 

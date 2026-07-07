@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Career Break, Resume Writing, Return to Work, Job Search, Resume Tips]
 category: Resume Writing
-image: public/blog-images/resume-for-returning-to-work-after-break.webp
+image: public/blog-images/resume-for-returning-to-work-after-break.jpeg
 slug: resume-for-returning-to-work-after-break
 keywords: resume after career break, returning to work resume, career gap resume, resume for comeback after break
 ---
@@ -168,5 +168,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your return-to-work resume strategy, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 

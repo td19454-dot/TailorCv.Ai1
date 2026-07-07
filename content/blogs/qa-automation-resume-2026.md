@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [QA Resume, Automation Testing, Selenium, Playwright, Tech Resume]
 category: Resume Examples
-image: public/blog-images/qa-automation-resume-2026.webp
+image: public/blog-images/qa-automation-resume-2026.jpeg
 slug: qa-automation-resume-2026
 keywords: QA automation resume, automation tester resume 2026, Selenium resume, Playwright resume, QA engineer resume
 ---
@@ -164,5 +164,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your QA automation resume proof, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 

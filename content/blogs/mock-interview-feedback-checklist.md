@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Mock Interview, Interview Prep, Feedback, Career Tips, Behavioral Interview]
 category: Interview Prep
-image: public/blog-images/mock-interview-feedback-checklist.webp
+image: public/blog-images/mock-interview-feedback-checklist.jpeg
 slug: mock-interview-feedback-checklist
 keywords: mock interview feedback checklist, interview practice checklist, mock interview tips, interview feedback template
 ---
@@ -172,5 +172,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your mock interview improvement loop, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 

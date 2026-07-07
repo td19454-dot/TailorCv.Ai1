@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Follow Up Email, Job Search, Recruiter Email, Career Tips, Applications]
 category: Job Search
-image: public/blog-images/follow-up-email-after-application.webp
+image: public/blog-images/follow-up-email-after-application.jpeg
 slug: follow-up-email-after-application
 keywords: follow up email after application, job application follow up email, recruiter follow up template, no response after applying
 ---
@@ -170,5 +170,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your application follow-up message, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 
