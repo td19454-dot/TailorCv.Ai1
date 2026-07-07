@@ -2896,9 +2896,28 @@ def group_skills(skills: list[str]) -> list[str]:
         "pytest", "jest", "selenium", "cuda", "jupyter"
     }
 
+    generic_phrase_words = {
+        "collaboration", "collaborative", "communication", "leadership", "teamwork",
+        "presentation", "presentations", "documentation", "measurement", "measurements",
+        "commercial", "marketing", "stakeholder", "stakeholders", "cross-functional",
+        "crossfunctional", "cross", "functional", "ownership", "mentoring", "mentorship",
+        "problem-solving", "adaptability", "creativity", "innovation", "strategy",
+        "strategic", "planning", "reporting", "performance", "applications", "application",
+        "mindset", "attitude", "interpersonal", "organizational", "multitasking",
+        "proactive", "ebooks", "ebook",
+    }
+
     def add_unique(bucket: list[str], value: str):
         if value and value not in bucket:
             bucket.append(value)
+
+    def is_generic_phrase(item: str) -> bool:
+        words = re.findall(r"[a-zA-Z][a-zA-Z0-9\-\+#\.]*", item.lower())
+        if len(words) <= 1:
+            return False
+        if len(words) > 4:
+            return True
+        return any(w in generic_phrase_words for w in words)
 
     def split_skill_items(text: str) -> list[str]:
         parts = [part.strip() for part in re.split(r"[,;]", text) if part.strip()]
@@ -2942,31 +2961,39 @@ def group_skills(skills: list[str]) -> list[str]:
             if label_lower in {"developer tools", "tools", "tooling", "tools & platforms",
                                 "tools and platforms", "platforms", "devops"}:
                 for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    add_unique(grouped["Tools & Platforms"], item)
+                    if not is_generic_phrase(item):
+                        add_unique(grouped["Tools & Platforms"], item)
                 continue
             if label_lower in {"technologies/frameworks", "technologies", "frameworks",
                                 "frameworks & libraries", "frameworks/libraries", "libraries",
                                 "technologies & frameworks"}:
                 for item in [p.strip() for p in value.split(",") if p.strip()]:
                     cat = classify_item(item)
+                    if cat == "uncategorized" and is_generic_phrase(item):
+                        continue
                     target = cat if cat not in ("uncategorized", "human_language") else "Frameworks/Libraries"
                     add_unique(grouped[target], item)
                 continue
             if label_lower in {"ai", "ml", "ai/ml", "machine learning", "artificial intelligence",
                                 "data science", "ai/ml & data science", "ai & ml"}:
                 for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    add_unique(grouped["AI/ML"], item)
+                    if not is_generic_phrase(item):
+                        add_unique(grouped["AI/ML"], item)
                 continue
             if label_lower in {"databases", "database", "db", "data stores", "data storage",
                                 "databases & storage"}:
                 for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    add_unique(grouped["Databases"], item)
+                    if not is_generic_phrase(item):
+                        add_unique(grouped["Databases"], item)
                 continue
             # Unknown label: classify each value item individually
             for item in [p.strip() for p in re.split(r"[,;]", value) if p.strip()]:
                 cat = classify_item(item)
-                if cat in ("uncategorized", "human_language"):
-                    uncategorized.append(item)
+                if cat == "human_language":
+                    continue
+                if cat == "uncategorized":
+                    if not is_generic_phrase(item):
+                        uncategorized.append(item)
                 else:
                     add_unique(grouped[cat], item)
             continue
@@ -2978,7 +3005,8 @@ def group_skills(skills: list[str]) -> list[str]:
             if cat == "human_language":
                 continue
             if cat == "uncategorized":
-                add_unique(grouped["Frameworks/Libraries"], item)
+                if not is_generic_phrase(item):
+                    add_unique(grouped["Frameworks/Libraries"], item)
             else:
                 add_unique(grouped[cat], item)
 
