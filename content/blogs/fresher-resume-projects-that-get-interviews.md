@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Fresher Resume, Projects, Resume Tips, Campus Placement, ATS Resume]
 category: Resume Writing
-image: public/blog-images/fresher-resume-projects-that-get-interviews.webp
+image: public/blog-images/fresher-resume-projects-that-get-interviews.jpeg
 slug: fresher-resume-projects-that-get-interviews
 keywords: fresher resume projects, projects for resume freshers, resume projects for students, fresher resume examples
 ---
@@ -170,5 +170,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your fresher project resume strategy, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 

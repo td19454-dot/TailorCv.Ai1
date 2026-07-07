@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Job Search, Application Tracker, Resume Versions, Follow Up, Career Tips]
 category: Job Search
-image: public/blog-images/job-application-tracker-template.webp
+image: public/blog-images/job-application-tracker-template.jpeg
 slug: job-application-tracker-template
 keywords: job application tracker template, application tracker, job search spreadsheet, resume tracking, follow up tracker
 ---
@@ -182,5 +182,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your job application tracking system, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 

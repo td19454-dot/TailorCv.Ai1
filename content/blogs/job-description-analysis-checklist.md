@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Job Description, Resume Matching, ATS Resume, Job Search, Resume Keywords]
 category: ATS
-image: public/blog-images/job-description-analysis-checklist.webp
+image: public/blog-images/job-description-analysis-checklist.jpeg
 slug: job-description-analysis-checklist
 keywords: job description analysis checklist, analyze job description, resume matching checklist, job description keywords
 ---
@@ -177,5 +177,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) analysis, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, cover letter, and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 

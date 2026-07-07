@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Internship Resume, Student Resume, No Experience Resume, Fresher Resume, Resume Tips]
 category: Resume Writing
-image: public/blog-images/resume-for-internship-with-no-experience.webp
+image: public/blog-images/resume-for-internship-with-no-experience.jpeg
 slug: resume-for-internship-with-no-experience
 keywords: resume for internship with no experience, internship resume student, student resume no experience, fresher internship resume
 ---
@@ -170,5 +170,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your internship resume with no experience, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 

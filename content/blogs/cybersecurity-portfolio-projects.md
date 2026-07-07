@@ -5,7 +5,7 @@ date: 2026-07-07
 author: TailorCV Team
 tags: [Cybersecurity Portfolio, Cybersecurity Resume, Projects, Tech Portfolio, Job Search]
 category: Portfolio
-image: public/blog-images/cybersecurity-portfolio-projects.webp
+image: public/blog-images/cybersecurity-portfolio-projects.jpeg
 slug: cybersecurity-portfolio-projects
 keywords: cybersecurity portfolio projects, cybersecurity projects for resume, security analyst portfolio, cyber security portfolio ideas
 ---
@@ -169,5 +169,6 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 ## Final Takeaway
 
 The best applications are specific, consistent, and easy to verify. Use this guide to improve your cybersecurity project portfolio, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+
 
 
