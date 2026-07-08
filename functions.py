@@ -548,11 +548,13 @@ You must preserve factual details already present in the resume such as dates, C
 
 Guidelines to Follow:
 1)Keyword and Skill Optimization:
-Rule01: MANDATORY SKILLS INJECTION — The `skills` array in the output JSON MUST contain EVERY hard skill (programming languages, frameworks, tools, technologies, platforms, libraries) that is explicitly mentioned in the job description. Do NOT skip any. Even if the candidate does not have a skill, it must still appear in the `skills` array for ATS keyword matching purposes. If a related skill already exists, keep it AND also add the exact JD keyword. Integrate other keywords naturally across Skills, Projects, Experience, and Summary sections. Do not fabricate experience, expertise, or accomplishments.
+Rule01: MANDATORY SKILLS INJECTION — The `skills` array in the output JSON MUST contain EVERY hard skill (programming languages, frameworks, tools, technologies, platforms, libraries, databases) that is explicitly mentioned in the job description. Do NOT skip any. Even if the candidate does not have a skill, it must still appear in the `skills` array for ATS keyword matching purposes. If a related skill already exists, keep it AND also add the exact JD keyword. Do not fabricate experience, expertise, or accomplishments.
 
-Analyze the job description and identify relevant keywords (hard and soft skills).
-Match as much as possible of the job description’s keywords following the rule above to align with applicant tracking systems (ATS).
-Prioritize industry-relevant hard skills and soft skills in dedicated sections and throughout bullet points.
+Rule01b: SKILLS ARRAY FORMAT — Every entry in `skills` MUST be a short, concrete, named technology (e.g. "Python", "React", "PostgreSQL", "Docker", "REST APIs") — a proper noun or standard industry term, 1-3 words. NEVER put soft skills, narrative phrases, or generic descriptions in `skills` (e.g. do NOT add things like "cross-functional collaboration", "commercial analytics applications", "marketing performance measurement", "technical report writing"). NEVER extract sentence fragments about the ROLE or COMPANY as skills — e.g. do NOT add "senior IC role", "high-growth startup", "one or more languages", "5+ years experience". If the job description says something like "proficiency in one or more of Python, Java, or C++ for a senior IC role at a high-growth startup", extract ONLY the actual technology names ("Python", "Java", "C++") and discard the surrounding sentence entirely. If the job description mentions a soft skill (communication, leadership, collaboration, stakeholder management, etc.), weave it naturally into the `summary` or experience/project `bullets` instead — never as a standalone `skills` entry.
+
+Analyze the job description and identify relevant hard-skill keywords.
+Match as much as possible of the job description's hard-skill keywords following the rules above to align with applicant tracking systems (ATS).
+Prioritize industry-relevant hard skills in the dedicated Skills section, and weave soft skills into bullet points and the summary instead.
 
 Rule 2:Incorporate Measurable Metrics:
 Quantify achievements using the XYZ formula if the user has put such quantifications but not formatted it if user has not put anything quantifyable don't do it: Accomplished X, measured by Y, by doing Z.
@@ -876,6 +878,32 @@ _GENERIC_SKILL_PROSE_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Soft-skill / role-description words that never belong in a HARD skill entry.
+# Unlike _GENERIC_SKILL_ENDING_RE (which only catches phrases ending in specific
+# words like "development"/"tools"), this catches short 2-3 word junk such as
+# "cross-functional collaboration" or "senior IC role" that don't end in any of
+# those endings but are still not a real technology name.
+_GENERIC_SKILL_WORDS: set[str] = {
+    "collaboration", "collaborative", "communication", "leadership", "teamwork",
+    "presentation", "presentations", "documentation", "measurement", "measurements",
+    "commercial", "marketing", "stakeholder", "stakeholders", "cross-functional",
+    "crossfunctional", "cross", "functional", "ownership", "mentoring", "mentorship",
+    "problem-solving", "adaptability", "creativity", "innovation", "strategy",
+    "strategic", "planning", "reporting", "performance", "applications", "application",
+    "mindset", "attitude", "interpersonal", "organizational", "multitasking",
+    "proactive", "role", "roles", "senior", "junior", "ic", "startup", "startups",
+    "growth", "years", "year", "experience", "requirement", "requirements",
+    "responsibility", "responsibilities", "environment", "environments",
+    "team", "teams",
+}
+# Function/filler words: a phrase containing one of these is a sentence fragment,
+# never a skill name (real skill names like "Vector Databases" never contain them).
+_GENERIC_SKILL_STOPWORDS: set[str] = {
+    "a", "an", "the", "one", "two", "more", "less", "some", "any", "several",
+    "of", "or", "and", "with", "for", "in", "at", "is", "are", "to", "as",
+    "such", "etc", "including", "like", "via",
+}
+
 
 def _strip_skill_qualifiers(value: str) -> str:
     """Remove requirement prose around a possible atomic skill."""
@@ -902,6 +930,9 @@ def _is_atomic_hard_skill(value: str) -> bool:
         normalized == generic or normalized.startswith(f"{generic} ")
         for generic in _GENERIC_SKILL_PHRASES
     ):
+        return False
+    words = re.findall(r"[a-zA-Z][a-zA-Z0-9+#.\-]*", normalized)
+    if any(w in _GENERIC_SKILL_WORDS or w in _GENERIC_SKILL_STOPWORDS for w in words):
         return False
     if len(re.findall(r"[A-Za-z0-9+#.]+", skill)) > 4:
         return False
@@ -2875,6 +2906,22 @@ The JSON must strictly follow the schema provided below.
                         .get("soft_skills", {}) \
                         .get("missing", [])
 
+    # Sanitize hard_matched: the LLM's own "matched" list can contain the same
+    # generic phrases/role fragments as "missing" (e.g. "senior IC role"), so it
+    # must be decomposed/validated the same way instead of being trusted as-is.
+    sanitized_matched: list[str] = []
+    seen_matched_lower: set[str] = set()
+    if hard_matched:
+        _matched_leftover, _matched_confirmed = _sanitize_hard_skill_list(
+            hard_matched, resume_text=resume_string, jd_text=jd_string,
+        )
+        for token in _matched_confirmed + _matched_leftover:
+            key = token.lower()
+            if key not in seen_matched_lower:
+                seen_matched_lower.add(key)
+                sanitized_matched.append(token)
+    hard_matched = sanitized_matched
+
     # Sanitize hard_missing: decompose any LLM phrase entries into atomic keywords
     # and re-route them correctly between matched/missing.
     if hard_missing:
@@ -2883,11 +2930,16 @@ The JSON must strictly follow the schema provided below.
             resume_text=resume_string,
             jd_text=jd_string,
         )
-        _hs = parsed.setdefault("skills", {}).setdefault("hard_skills", {})
-        _hs["missing"] = _sanitized_missing
-        _hs["matched"] = list(hard_matched) + _newly_matched
+        for token in _newly_matched:
+            key = token.lower()
+            if key not in seen_matched_lower:
+                seen_matched_lower.add(key)
+                hard_matched.append(token)
         hard_missing = _sanitized_missing
-        hard_matched = _hs["matched"]
+
+    _hs = parsed.setdefault("skills", {}).setdefault("hard_skills", {})
+    _hs["matched"] = hard_matched
+    _hs["missing"] = hard_missing
 
     matched_count = len(hard_matched) + len(soft_matched)
     missing_count = len(hard_missing) + len(soft_missing)
