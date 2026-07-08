@@ -802,8 +802,8 @@ html.tcv-app .site-footer { display: none !important; }
     .navbar .nav-mega-item .nav-mega-tx small { display: none; }
     .navbar .nav-mega-badge {
         display: inline-flex !important;
-        font-size: 0.6rem !important;
-        padding: 1px 6px !important;
+        font-size: 0.72rem !important;
+        padding: 2px 7px !important;
     }
 
     /* Sentence-case, 44px primary nav links + toggles. */
