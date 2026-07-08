@@ -3195,7 +3195,7 @@ html, body { overflow-x: hidden !important; }
         position: fixed;
         left: 12px;
         right: 12px;
-        bottom: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom));
         z-index: 1200;
         display: flex;
         align-items: center;
@@ -3211,7 +3211,7 @@ html, body { overflow-x: hidden !important; }
     }
 
     .footer {
-        padding-bottom: 92px !important;
+        padding-bottom: calc(92px + env(safe-area-inset-bottom)) !important;
     }
 }
 

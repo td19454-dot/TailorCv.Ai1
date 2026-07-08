@@ -1732,7 +1732,7 @@
             .founder-linkedin:hover { opacity: 0.85; }
             .feedback-float-btn {
                 position: fixed;
-                bottom: 80px;
+                bottom: calc(80px + env(safe-area-inset-bottom));
                 right: 24px;
                 background: linear-gradient(135deg, #4F7FFF, #C9B8FF);
                 color: white;
@@ -2500,9 +2500,11 @@
             .t-mobile-track > .t-card { flex: 0 0 86%; scroll-snap-align: center; margin: 0; }
             .t-mobile-bar { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 12px; }
             .t-mobile-counter { color: #9fb6d6; font-size: .85rem; font-weight: 600; }
-            .t-mobile-dots { display: flex; gap: 7px; }
-            .t-mobile-dot { width: 8px; height: 8px; border-radius: 50%; border: none; padding: 0; cursor: pointer; background: rgba(159,182,214,.35); transition: width .2s, background .2s; }
-            .t-mobile-dot.active { background: #3392ff; width: 22px; border-radius: 5px; }
+            .t-mobile-dots { display: flex; gap: 0; }
+            /* 32px tap target (a11y) with a small visible dot centered via ::before */
+            .t-mobile-dot { width: 32px; height: 32px; border: none; padding: 0; cursor: pointer; background: transparent; position: relative; border-radius: 50%; }
+            .t-mobile-dot::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 8px; height: 8px; border-radius: 50%; background: rgba(159,182,214,.35); transition: width .2s, background .2s; }
+            .t-mobile-dot.active::before { background: #3392ff; width: 22px; border-radius: 5px; }
         }
     </style>
     <script>
