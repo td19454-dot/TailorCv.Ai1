@@ -499,7 +499,7 @@ html.tcv-app .site-footer { display: none !important; }
    this wins regardless of whether style2/style3 loads after this file. ─────── */
 @media (min-width: 769px) and (max-width: 1024px) {
     header.navbar .logo .logo-text {
-        height: 50px !important;
+        height: 84px !important;
         width: auto !important;
         margin: 0 !important;
         animation: none !important;
@@ -516,6 +516,16 @@ html.tcv-app .site-footer { display: none !important; }
         letter-spacing: 0 !important;
     }
     header.navbar .nav-actions { margin: 0 10px 0 0 !important; gap: 8px !important; }
+}
+
+/* ── Desktop (>=1025px): the base rule forces the logo image to a distorted
+   300x300 square, which renders the "tailorcv.com" wordmark small. Give it a
+   larger height with width:auto so the wordmark is prominent and undistorted. */
+@media (min-width: 1025px) {
+    header.navbar .logo .logo-text {
+        height: 92px !important;
+        width: auto !important;
+    }
 }
 
 

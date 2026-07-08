@@ -1717,3 +1717,61 @@ header.navbar {
         line-height: 1;
     }
 }
+
+/* Tablet with the app-shell rail still visible (861–1280px): keep the sidebar
+   as a visible column (its slide-in drawer toggle would sit behind the
+   app-shell rail and be un-clickable), but the Live Preview must NOT float —
+   at these widths the fixed ~480px panel overlaps and clips the form. Convert
+   it to the same FAB-triggered fullscreen overlay used on phones so the form
+   gets the full width. z-index is raised above the app-shell rail (4000) and
+   top bar (4200) so the overlay/FAB are not hidden behind them. */
+@media (min-width: 861px) and (max-width: 1280px) {
+    .preview-panel-col { display: none !important; }
+    .preview-panel {
+        display: none !important;
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 4300 !important;
+        background: rgba(2, 6, 23, 0.96) !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 !important;
+        overflow-y: auto !important;
+        max-height: none !important;
+    }
+    .preview-panel.preview-open { display: flex !important; }
+    .mobile-preview-fab {
+        display: flex !important;
+        align-items: center;
+        gap: 8px;
+        position: fixed;
+        bottom: 20px;
+        right: 16px;
+        z-index: 4250;
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 6px 24px rgba(59, 130, 246, 0.5);
+    }
+    .mobile-preview-close {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: rgba(255, 255, 255, 0.1);
+        color: #cfe4ff;
+        font-size: 20px;
+        cursor: pointer;
+        flex-shrink: 0;
+        line-height: 1;
+    }
+}
