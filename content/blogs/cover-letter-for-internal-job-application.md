@@ -1,0 +1,99 @@
+---
+title: Cover Letter for an Internal Job Application - Template and Tips
+description: Write a cover letter for an internal job application that leverages your track record without sounding entitled to the role. Includes a full template.
+date: 2026-07-08
+author: TailorCV Team
+tags: [Internal Job Application, Internal Cover Letter, Internal Promotion, Career Advice, Cover Letter Template]
+category: Cover Letters
+image: public/blog-images/cover-letter-for-internal-job-application.png
+slug: cover-letter-for-internal-job-application
+keywords: cover letter for internal job application, internal promotion cover letter, applying for internal position letter, internal transfer cover letter
+---
+
+Applying for a role inside your own company feels like it shouldn't need a cover letter - everyone already knows you. But that familiarity can work against you if you don't put your case in writing: hiring panels often include people from other teams who don't know your track record, and a lazy or missing letter can read as a lack of seriousness about the move.
+
+Before writing, pair this with the [internal job application resume](https://thetailorcv.com/blog/internal-job-application-resume) guide, and check your fit against the posted role using the [free ATS score checker](https://www.thetailorcv.com/solutions) - internal postings get scored the same way external ones do.
+
+---
+
+## What Makes an Internal Cover Letter Different
+
+- You can reference **specific, verifiable results** from your current role - use real numbers, not vague claims. See [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+- You should explain **why now** and **why this move**, since colleagues will wonder about your motivation.
+- You need to address **the relationship shift** if you're applying to manage former peers or move across departments.
+- You should **avoid assuming the job is yours** - overconfidence reads poorly to a hiring panel, even one that already knows you.
+
+---
+
+## The Structure
+
+### 1. State the role and your current position clearly
+
+Even if everyone technically knows you, be explicit for anyone unfamiliar reviewing the file.
+
+### 2. Connect your track record to the new role's requirements
+
+Mirror the actual [job posting's language](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and match it to specific wins from your current role - projects shipped, metrics improved, initiatives led.
+
+### 3. Explain your motivation honestly
+
+Growth, new challenge, better fit for your skills - be specific rather than generic. Avoid anything that sounds like you're just trying to escape your current team or manager.
+
+### 4. Acknowledge the transition thoughtfully
+
+If you'd be moving to a new manager or team, a short line about wanting to contribute to their goals shows you've thought it through.
+
+---
+
+## Full Template
+
+Dear [Hiring Manager's Name],
+
+I'm writing to apply for the [Role] position on the [Team] team. I've been with [Company] for [X years/months] as a [Current Title], where I [one strong, specific, quantified achievement].
+
+Over that time, I've developed [2-3 skills relevant to the new role] - most recently through [specific project or initiative]. This work has made me increasingly interested in [target role's core focus], and I believe my track record inside the company gives me a head start on contributing quickly.
+
+I'd welcome the opportunity to bring that experience to your team and to keep growing within [Company]. I'm happy to share more detail on any of the projects mentioned, or answer questions from [current manager's name] about my performance and readiness for this move.
+
+Thank you for considering my application.
+
+Sincerely,
+[Your Name]
+
+---
+
+## Handling the Awkward Parts
+
+- **Applying above former peers?** Focus the letter on capability, not authority - let your results speak.
+- **Leaving a manager who may be unhappy?** Talk to them before applying if possible; a surprised manager can complicate the process. See [how to quit your job professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally) for tone guidance that applies just as well to internal moves.
+- **Worried about being "just the internal candidate"?** Treat this like any other competitive application - practice your pitch with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) exactly as you would for an external role.
+
+---
+
+## Frequently Asked Questions
+
+### Do I really need a cover letter if everyone already knows me?
+
+Yes, especially if the hiring panel includes people outside your immediate team. A letter puts your case in writing and shows you're taking the process seriously - see [cover letter mistakes to avoid](https://thetailorcv.com/blog/cover-letter-mistakes-2026).
+
+### Should I tell my current manager before applying?
+
+In most cases, yes - it prevents an awkward surprise and often earns you an internal advocate. Check your company's specific internal mobility policy first.
+
+### How is an internal cover letter different from a promotion request?
+
+A promotion typically happens within your existing role and team; an internal application is for a different open role, sometimes competitive with external candidates. If you're seeking a promotion instead, see [how to get a promotion](https://thetailorcv.com/blog/how-to-get-a-promotion) and [how to ask for a raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise).
+
+### What if I don't get the internal role?
+
+Ask for specific feedback and keep building toward the skills gap - see [how to handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) for a constructive next-step framework.
+
+---
+
+## Make This Practical
+
+Treat an internal move with the same rigor as an external one. Check your resume's match to the posted role with the [free ATS score checker](https://www.thetailorcv.com/solutions), tighten your letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), and rehearse your pitch with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) before the panel interview.
+
+## Conclusion
+
+Internal doesn't mean informal. Put your track record in writing, explain your motivation honestly, and prepare exactly as you would for an outside opportunity.
