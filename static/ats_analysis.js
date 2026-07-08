@@ -754,15 +754,15 @@
     box.style.display = "";
   }
 
-  // Score-band nudge: tailor (50–60) or apply + cover letter (>75).
+  // Score-band nudge: above 70 → apply + cover letter; 0–70 → tailor resume first.
   function showBandPopup(score) {
     const pop = document.getElementById("ats-band-popup");
     if (!pop) return;
     let cfg = null;
-    if (score >= 50 && score <= 60) {
+    if (score > 70) {
+      cfg = { icon: "🎯", text: "Strong score — it's high time to apply for this role! Don't just send a resume, add a matching cover letter to stand out.", cta: "Write my cover letter", href: "/cover-letter" };
+    } else {
       cfg = { icon: "✏️", text: "It's high time to tailor your resume — optimize it for this exact job to lift your score.", cta: "Tailor my resume", href: "/solutions" };
-    } else if (score > 75) {
-      cfg = { icon: "🎯", text: "It's high time to apply for this role! Don't just send a resume — add a matching cover letter to stand out.", cta: "Write my cover letter", href: "/cover-letter" };
     }
     if (!cfg) return;
     document.getElementById("ats-band-popup-icon").textContent = cfg.icon;
