@@ -839,6 +839,27 @@
                             }
                         }
 
+                        /* Tablet (769–1024px): the 2-column hero doesn't fit — the
+                           resume-preview card on the right gets clipped. Collapse to a
+                           single centered column so nothing is cut off. */
+                        @media (min-width: 769px) and (max-width: 1024px) {
+                            .hero-split {
+                                grid-template-columns: 1fr !important;
+                                gap: 32px !important;
+                            }
+                            .hero-visual {
+                                width: 100% !important;
+                                max-width: 640px !important;
+                                min-width: 0 !important;
+                                margin: 0 auto !important;
+                                overflow: hidden !important;
+                            }
+                            .resume-card {
+                                width: 100% !important;
+                                transform: none !important;
+                            }
+                        }
+
                         @media (max-width: 768px) {
                             .hero-copy>* {
                                 opacity: 1 !important;

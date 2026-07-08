@@ -213,6 +213,19 @@
             color: #ffffff;
         }
 
+        /* Tablet (769–1024px): the base title floors at 3.7rem with white-space:
+           nowrap, so "Bridging the Gap Between Talent" clips off the right edge.
+           Shrink it a touch and let it wrap. */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .about-title {
+                font-size: clamp(2.8rem, 6vw, 4rem);
+                line-height: 1.08;
+            }
+            .about-title-line {
+                white-space: normal;
+            }
+        }
+
         @media (max-width: 768px) {
             .about-page {
                 padding-top: 96px;
