@@ -491,6 +491,34 @@ html.tcv-app .site-footer { display: none !important; }
     }
 }
 
+/* ── Tablet (769–1024px): the marketing nav can't fit logo + 6 links + Login +
+   Get Started (the logo image alone renders ~360px wide and the links are
+   pinned to min-width:560px), so the last links clip and Login slides off the
+   right edge. Shrink the logo to a normal nav height and tighten the links so
+   everything fits on one row. High-specificity `header.navbar` selectors so
+   this wins regardless of whether style2/style3 loads after this file. ─────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+    header.navbar .logo .logo-text {
+        height: 50px !important;
+        width: auto !important;
+        margin: 0 !important;
+        animation: none !important;
+    }
+    header.navbar .logo { margin: 0 0 0 8px !important; }
+    header.navbar .nav-links {
+        min-width: 0 !important;
+        gap: 0 !important;
+    }
+    header.navbar .nav-links > a.nav-link,
+    header.navbar .nav-links > .nav-dropdown > .nav-dropdown-toggle {
+        font-size: 13px !important;
+        padding: 8px 8px !important;
+        letter-spacing: 0 !important;
+    }
+    header.navbar .nav-actions { margin: 0 10px 0 0 !important; gap: 8px !important; }
+}
+
+
 /* ── Unified nav actions (Login + Get Started) ─────────────────────────────
    Loaded on EVERY page via header-footer.css so the right side of the navbar
    looks identical site-wide (matches the blog), regardless of whether a page
