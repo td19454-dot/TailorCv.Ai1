@@ -706,6 +706,15 @@ body {
 
   .cta-row { flex-direction: column; }
   .cta-row > * { width: 100%; justify-content: center; }
+
+  /* Score-band nudge: on mobile, sit as a bar ABOVE the fixed bottom nav
+     (inline styles put it at bottom:22px, which overlaps the nav). */
+  #ats-band-popup {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: calc(var(--navbar-h, 70px) + 14px + env(safe-area-inset-bottom, 0px)) !important;
+    max-width: none !important;
+  }
 }
 
 @media (max-width: 480px) {
