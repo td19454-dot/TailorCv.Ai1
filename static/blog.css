@@ -122,8 +122,9 @@ a:hover { text-decoration: underline; }
 
 .blog-cover {
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 3/2;
   object-fit: cover;
+  background: #0a1024;
   display: block;
 }
 
