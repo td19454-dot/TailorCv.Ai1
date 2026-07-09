@@ -7,6 +7,7 @@ tags: [Resume Matching, ATS Score, Data Study, Job Search 2026, Callback Rate]
 category: Resume Optimization
 slug: resume-match-score-callback-rate-data-study
 keywords: resume match score callback rate, ats score data study, how high should ats score be, resume match percentage interviews
+image: public/blog-images/resume-match-score-callback-rate-data-study.png
 ---
 
 Every job seeker asks a version of the same question after checking their [ATS score](https://thetailorcv.com/blog/ats-score-guide): "Is this number actually good enough?" A 65% match feels uncertain. An 80% feels safer. But what does the data actually say about the relationship between a resume-to-job-description match score and the odds of getting a callback?

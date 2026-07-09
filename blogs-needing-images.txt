@@ -1,0 +1,120 @@
+# Blogs needing a cover image (29 total)
+# Generate each image and save it at the path shown (any of .webp/.png/.jpg works).
+# The image: frontmatter is already set - the cover appears automatically once the file exists (on next deploy/restart).
+
+[greenhouse-ats-resume-tips]
+  title: Greenhouse ATS Resume Tips - How to Match Your Resume to the Job Description
+  save image as: public/blog-images/greenhouse-ats-resume-tips.webp
+
+[how-many-jobs-should-you-apply-to-per-day]
+  title: How Many Jobs Should You Apply to Per Day? The Real Numbers Behind a Successful Search
+  save image as: public/blog-images/how-many-jobs-should-you-apply-to-per-day.webp
+
+[how-to-explain-getting-fired-in-an-interview]
+  title: How to Explain Getting Fired in an Interview (Without Losing the Offer)
+  save image as: public/blog-images/how-to-explain-getting-fired-in-an-interview.webp
+
+[how-to-spot-a-job-scam]
+  title: How to Spot a Job Scam - Red Flags in Fake Job Postings and Recruiter Messages
+  save image as: public/blog-images/how-to-spot-a-job-scam.webp
+
+[icims-taleo-resume-formatting-guide]
+  title: iCIMS and Taleo Resume Formatting Guide - Matching for Legacy ATS Platforms
+  save image as: public/blog-images/icims-taleo-resume-formatting-guide.webp
+
+[lever-ats-resume-guide]
+  title: Lever ATS Resume Guide - Matching Your Resume for Lever-Powered Applications
+  save image as: public/blog-images/lever-ats-resume-guide.webp
+
+[matching-portfolio-to-job-description]
+  title: How to Match Your Portfolio to the Job Description (Not Just Your Resume)
+  save image as: public/blog-images/matching-portfolio-to-job-description.webp
+
+[matching-resume-ai-generated-job-descriptions]
+  title: How to Match Your Resume to an AI-Generated Job Description
+  save image as: public/blog-images/matching-resume-ai-generated-job-descriptions.webp
+
+[matching-resume-required-vs-preferred-qualifications]
+  title: Required vs Preferred Qualifications - How to Prioritize What You Match
+  save image as: public/blog-images/matching-resume-required-vs-preferred-qualifications.webp
+
+[matching-resume-security-clearance-jobs]
+  title: Resume Matching for Security-Clearance and Government-Contractor Job Descriptions
+  save image as: public/blog-images/matching-resume-security-clearance-jobs.webp
+
+[matching-resume-to-certifications-in-job-description]
+  title: Matching Your Resume to Certification Requirements You Don't Have Yet
+  save image as: public/blog-images/matching-resume-to-certifications-in-job-description.webp
+
+[matching-resume-to-soft-skills-in-job-description]
+  title: Matching Your Resume to the Soft Skills Buried in a Job Description
+  save image as: public/blog-images/matching-resume-to-soft-skills-in-job-description.webp
+
+[matching-video-resume-to-job-description]
+  title: How to Match Your 30-Second Video Pitch to the Job Description
+  save image as: public/blog-images/matching-video-resume-to-job-description.webp
+
+[negotiating-multiple-job-offers]
+  title: Negotiating Multiple Job Offers - Scripts and Email Templates to Maximize Your Offer
+  save image as: public/blog-images/negotiating-multiple-job-offers.webp
+
+[portfolio-examples-that-landed-interviews]
+  title: 15 Real Portfolio Examples That Landed Interviews (Design, Dev, Data, Marketing)
+  save image as: public/blog-images/portfolio-examples-that-landed-interviews.webp
+
+[recession-proof-jobs-2026]
+  title: Recession-Proof Jobs in 2026 - Careers That Keep Hiring Even During Layoffs
+  save image as: public/blog-images/recession-proof-jobs-2026.webp
+
+[recruiter-ghosting-after-interview]
+  title: Recruiter Ghosting You After an Interview? What It Means and What to Do Next
+  save image as: public/blog-images/recruiter-ghosting-after-interview.webp
+
+[resume-match-score-callback-rate-data-study]
+  title: Resume-JD Match Score vs Callback Rate - What the Data Shows
+  save image as: public/blog-images/resume-match-score-callback-rate-data-study.webp
+
+[resume-matching-hospitality-hotel]
+  title: Matching Your Resume to a Hospitality and Hotel Job Description
+  save image as: public/blog-images/resume-matching-hospitality-hotel.webp
+
+[resume-matching-insurance-jobs]
+  title: Matching Your Resume to an Insurance Industry Job Description
+  save image as: public/blog-images/resume-matching-insurance-jobs.webp
+
+[resume-matching-legal-jobs]
+  title: Matching Your Resume to a Legal Job Description (Paralegal to Associate)
+  save image as: public/blog-images/resume-matching-legal-jobs.webp
+
+[resume-matching-nonprofit-ngo]
+  title: Matching Your Resume to a Non-Profit or NGO Job Description
+  save image as: public/blog-images/resume-matching-nonprofit-ngo.webp
+
+[resume-matching-real-estate]
+  title: Matching Your Resume to a Real Estate Job Description
+  save image as: public/blog-images/resume-matching-real-estate.webp
+
+[resume-matching-recruiter-vs-direct-application]
+  title: Do You Still Need to Match Your Resume When Applying Through a Recruiter?
+  save image as: public/blog-images/resume-matching-recruiter-vs-direct-application.webp
+
+[resume-matching-referral-applications]
+  title: Should You Still Tailor Your Resume for a Referral? What the Data Says
+  save image as: public/blog-images/resume-matching-referral-applications.webp
+
+[resume-matching-skills-based-hiring]
+  title: Skills-Based Hiring - How to Match Your Resume When Job Descriptions List Skills, Not Titles
+  save image as: public/blog-images/resume-matching-skills-based-hiring.webp
+
+[survived-a-layoff-30-day-plan-to-rebuild-your-resume]
+  title: Survived a Layoff? A 30-Day Plan to Rebuild Your Resume and Restart Your Search
+  save image as: public/blog-images/survived-a-layoff-30-day-plan-to-rebuild-your-resume.webp
+
+[tailorcv-vs-rezi-vs-teal-vs-jobscan]
+  title: TailorCV vs Rezi vs Teal vs Jobscan - Best AI Resume Builder in 2026
+  save image as: public/blog-images/tailorcv-vs-rezi-vs-teal-vs-jobscan.webp
+
+[workday-resume-matching-guide]
+  title: Workday Resume Matching Guide - How to Beat Its Parsing Quirks in 2026
+  save image as: public/blog-images/workday-resume-matching-guide.webp
+

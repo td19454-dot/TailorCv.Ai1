@@ -7,6 +7,7 @@ tags: [Layoff, Career Advice, Job Search Plan, Getting Laid Off, Job Search Stra
 category: Career Advice
 slug: survived-a-layoff-30-day-plan-to-rebuild-your-resume
 keywords: laid off what to do next, layoff 30 day plan, resume after layoff, job search after being laid off
+image: public/blog-images/survived-a-layoff-30-day-plan-to-rebuild-your-resume.png
 ---
 
 A layoff is disorienting - one day you have a routine and a role, the next you're staring at a blank calendar. The candidates who bounce back fastest aren't the ones who panic-apply to fifty jobs on day one; they're the ones who follow a structured plan that rebuilds momentum in stages. Here's a realistic 30-day framework.

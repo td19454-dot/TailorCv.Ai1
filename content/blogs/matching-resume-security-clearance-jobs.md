@@ -7,6 +7,7 @@ tags: [Security Clearance, Government Contractor, Resume Matching, Job Descripti
 category: Industry Resume Matching
 slug: matching-resume-security-clearance-jobs
 keywords: security clearance resume, government contractor resume keywords, clearance job description matching, defense contractor resume, secret clearance resume
+image: public/blog-images/matching-resume-security-clearance-jobs.png
 ---
 
 Security-clearance and government-contractor [job descriptions](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) operate under rules most other industries do not deal with. Clearance level is frequently a hard, non-negotiable filter, applied before a resume is even fully read, and the language used to describe programs, systems, and compliance frameworks is dense with acronyms that either match precisely or do not match at all.
