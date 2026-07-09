@@ -878,6 +878,15 @@ _GENERIC_SKILL_PROSE_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Generic connectivity/networking task phrases (e.g. "Wifi", "internet connectivity",
+# "network setup") describe a task or amenity, not a named technology/tool, so they
+# must never be surfaced as a matched/missing hard skill.
+_GENERIC_CONNECTIVITY_RE = re.compile(
+    r'^(?:wi-?fi|internet|network)(?:\s+(?:connectivity|connection|access|setup|'
+    r'configuration|troubleshooting))?$',
+    re.IGNORECASE,
+)
+
 # Soft-skill / role-description words that never belong in a HARD skill entry.
 # Unlike _GENERIC_SKILL_ENDING_RE (which only catches phrases ending in specific
 # words like "development"/"tools"), this catches short 2-3 word junk such as
@@ -941,6 +950,8 @@ def _is_atomic_hard_skill(value: str) -> bool:
     if _GENERIC_SKILL_PROSE_RE.search(normalized):
         return False
     if _GENERIC_SKILL_ENDING_RE.search(normalized):
+        return False
+    if _GENERIC_CONNECTIVITY_RE.match(normalized):
         return False
     return True
 
