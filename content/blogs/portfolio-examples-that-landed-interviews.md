@@ -5,7 +5,6 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Portfolio Examples, Portfolio Website, Developer Portfolio, Design Portfolio, Job Search]
 category: Portfolio
-image: public/blog-images/portfolio-examples-that-landed-interviews.png
 slug: portfolio-examples-that-landed-interviews
 keywords: portfolio examples that get interviews, developer portfolio examples, design portfolio examples, data analyst portfolio examples
 ---
