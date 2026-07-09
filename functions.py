@@ -550,7 +550,7 @@ Guidelines to Follow:
 1)Keyword and Skill Optimization:
 Rule01: MANDATORY SKILLS INJECTION — The `skills` array in the output JSON MUST contain EVERY hard skill (programming languages, frameworks, tools, technologies, platforms, libraries, databases) that is explicitly mentioned in the job description. Do NOT skip any. Even if the candidate does not have a skill, it must still appear in the `skills` array for ATS keyword matching purposes. If a related skill already exists, keep it AND also add the exact JD keyword. Do not fabricate experience, expertise, or accomplishments.
 
-Rule01b: SKILLS ARRAY FORMAT — Every entry in `skills` MUST be a short, concrete, named technology (e.g. "Python", "React", "PostgreSQL", "Docker", "REST APIs") — a proper noun or standard industry term, 1-3 words. NEVER put soft skills, narrative phrases, or generic descriptions in `skills` (e.g. do NOT add things like "cross-functional collaboration", "commercial analytics applications", "marketing performance measurement", "technical report writing"). NEVER extract sentence fragments about the ROLE or COMPANY as skills — e.g. do NOT add "senior IC role", "high-growth startup", "one or more languages", "5+ years experience". If the job description says something like "proficiency in one or more of Python, Java, or C++ for a senior IC role at a high-growth startup", extract ONLY the actual technology names ("Python", "Java", "C++") and discard the surrounding sentence entirely. If the job description mentions a soft skill (communication, leadership, collaboration, stakeholder management, etc.), weave it naturally into the `summary` or experience/project `bullets` instead — never as a standalone `skills` entry.
+Rule01b: SKILLS ARRAY FORMAT — Every entry in `skills` MUST be a short, concrete, named technology (e.g. "Python", "React", "PostgreSQL", "Docker", "REST APIs") — a proper noun or standard industry term, 1-3 words. NEVER put soft skills, narrative phrases, or generic descriptions in `skills` (e.g. do NOT add things like "cross-functional collaboration", "commercial analytics applications", "marketing performance measurement", "technical report writing"). NEVER extract sentence fragments about the ROLE or COMPANY as skills — e.g. do NOT add "senior IC role", "high-growth startup", "one or more languages", "5+ years experience". If the job description says something like "proficiency in one or more of Python, Java, or C++ for a senior IC role at a high-growth startup", extract ONLY the actual technology names ("Python", "Java", "C++") and discard the surrounding sentence entirely. NEVER extract fragments of a RESPONSIBILITY or ACTIVITY sentence as if they were named technologies — many JD lines describe what the candidate will DO, not a tool they must know, and these must be skipped entirely unless a genuine named technology can be pulled out of them. For example: "designing and implementing scalable API architectures" → skip entirely, do NOT add "designing", "implementing", or "scalable API architectures" as skills (only add "API"/"REST APIs" if that technology is separately and explicitly named elsewhere in the JD, never derived from this sentence). "establishing and maintaining technical standards for multi-agent orchestration" → skip entirely, do NOT add "establishing", "maintaining technical standards", or "multi-agent orchestration". "experience with the Microsoft Copilot ecosystem, including Power Platform integration and Microsoft Graph API" → extract ONLY the real product names ("Microsoft Copilot", "Power Platform", "Microsoft Graph API"); discard "ecosystem" and "integration" as connective words, not skills. Rule of thumb: if a phrase is a verb-led description of an activity ("designing...", "implementing...", "establishing...", "maintaining...", "building...", "developing...", "driving...", "leading...") or a vague noun phrase about scope/process rather than a specific tool ("architecture", "ecosystem", "orchestration", "roadmap", "workload", "standard", "strategy", "pattern" used generically), it is NOT an atomic skill — extract only the concrete proper-noun technology named inside it, if any, never the sentence fragment itself. If the job description mentions a soft skill (communication, leadership, collaboration, stakeholder management, etc.), weave it naturally into the `summary` or experience/project `bullets` instead — never as a standalone `skills` entry.
 
 Analyze the job description and identify relevant hard-skill keywords.
 Match as much as possible of the job description's hard-skill keywords following the rules above to align with applicant tracking systems (ATS).
@@ -827,6 +827,16 @@ _HARD_SKILL_KEYWORDS: list[str] = [
     # MLOps / Model Serving
     "Kubeflow", "TorchServe", "TF Serving", "TensorFlow Serving",
     "Dask", "MLOps", "Vertex AI", "SageMaker", "BentoML", "Ray", "Triton",
+    # Architecture / design compounds that would otherwise be caught by the
+    # generic "architecture/pattern/integration" ending checks below — these
+    # are legitimate standalone skill entries, unlike vague variants such as
+    # "ML architecture" or "microservices patterns".
+    "Design Patterns", "Solution Architecture", "System Architecture",
+    "Enterprise Architecture", "Microservices Architecture",
+    "Continuous Integration",
+    # Named products that would otherwise be caught by the generic "platform"
+    # ending check.
+    "Power Platform", "Microsoft Copilot",
 ]
 _HARD_SKILL_KEYWORDS_LOWER = frozenset(
     keyword.lower() for keyword in _HARD_SKILL_KEYWORDS
@@ -868,7 +878,9 @@ _GENERIC_SKILL_PHRASES: set[str] = {
 }
 _GENERIC_SKILL_ENDING_RE = re.compile(
     r'\b(?:development|engineering|focus|tools?|platforms?|frameworks?|libraries?|'
-    r'technologies?|guidelines?|principles?|practices?|methodologies?)$',
+    r'technologies?|guidelines?|principles?|practices?|methodologies?|'
+    r'ecosystems?|orchestration|roadmaps?|workloads?|standards?|'
+    r'strateg(?:y|ies)|deployments?|architectures?|patterns?|integrations?)$',
     re.IGNORECASE,
 )
 _GENERIC_SKILL_PROSE_RE = re.compile(
@@ -884,6 +896,18 @@ _GENERIC_SKILL_PROSE_RE = re.compile(
 _GENERIC_CONNECTIVITY_RE = re.compile(
     r'^(?:wi-?fi|internet|network)(?:\s+(?:connectivity|connection|access|setup|'
     r'configuration|troubleshooting))?$',
+    re.IGNORECASE,
+)
+
+# Gerund-verb-led phrases ("designing X", "implementing Y", "establishing Z")
+# describe an activity lifted from a JD responsibility sentence, never a named
+# technology. No real skill/tool name in this app's data starts with a bare
+# activity verb, so this is safe to reject outright.
+_GENERIC_GERUND_LEAD_RE = re.compile(
+    r'^(?:designing|implementing|developing|building|establishing|maintaining|'
+    r'managing|leading|driving|creating|ensuring|supporting|overseeing|'
+    r'coordinating|facilitating|architecting|deploying|integrating|'
+    r'configuring|administering|optimizing|automating|analyzing|monitoring)\b',
     re.IGNORECASE,
 )
 
@@ -903,7 +927,7 @@ _GENERIC_SKILL_WORDS: set[str] = {
     "proactive", "role", "roles", "senior", "junior", "ic", "startup", "startups",
     "growth", "years", "year", "experience", "requirement", "requirements",
     "responsibility", "responsibilities", "environment", "environments",
-    "team", "teams",
+    "team", "teams", "ebooks", "ebook",
 }
 # Function/filler words: a phrase containing one of these is a sentence fragment,
 # never a skill name (real skill names like "Vector Databases" never contain them).
@@ -952,6 +976,8 @@ def _is_atomic_hard_skill(value: str) -> bool:
     if _GENERIC_SKILL_ENDING_RE.search(normalized):
         return False
     if _GENERIC_CONNECTIVITY_RE.match(normalized):
+        return False
+    if _GENERIC_GERUND_LEAD_RE.match(normalized):
         return False
     return True
 

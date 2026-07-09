@@ -37,6 +37,7 @@ from functions import (
     inject_links,
     inject_jd_hard_skills,
     sanitize_resume_data,
+    _is_atomic_hard_skill,
     map_demo_links,
     extract_project_links,
     extract_publication_links,
@@ -2815,8 +2816,8 @@ def group_skills(skills: list[str]) -> list[str]:
         "Frameworks/Libraries": [],
         "Databases": [],
         "Tools & Platforms": [],
+        "Other Technical Skills": [],
     }
-    uncategorized = []
 
     human_language_terms = {
         "english", "french", "german", "spanish", "hindi", "marathi", "tamil",
@@ -2896,43 +2897,15 @@ def group_skills(skills: list[str]) -> list[str]:
         "pytest", "jest", "selenium", "cuda", "jupyter"
     }
 
-    generic_phrase_words = {
-        "collaboration", "collaborative", "communication", "leadership", "teamwork",
-        "presentation", "presentations", "documentation", "measurement", "measurements",
-        "commercial", "marketing", "stakeholder", "stakeholders", "cross-functional",
-        "crossfunctional", "cross", "functional", "ownership", "mentoring", "mentorship",
-        "problem-solving", "adaptability", "creativity", "innovation", "strategy",
-        "strategic", "planning", "reporting", "performance", "applications", "application",
-        "mindset", "attitude", "interpersonal", "organizational", "multitasking",
-        "proactive", "ebooks", "ebook",
-        # Job-requirement / role-description fragments (e.g. "senior IC role",
-        # "high-growth startup") that the AI sometimes extracts as if they were
-        # skill keywords.
-        "role", "roles", "senior", "junior", "ic", "startup", "startups",
-        "growth", "years", "year", "experience", "requirement", "requirements",
-        "responsibility", "responsibilities", "environment", "environments",
-        "team", "teams",
-    }
-    # Function/filler words: a phrase containing one of these is a sentence
-    # fragment, never a skill name (real skill names like "Vector Databases" or
-    # "REST APIs" never contain them).
-    generic_stopwords = {
-        "a", "an", "the", "one", "two", "more", "less", "some", "any", "several",
-        "of", "or", "and", "with", "for", "in", "at", "is", "are", "to", "as",
-        "such", "etc", "including", "like", "via",
-    }
-
     def add_unique(bucket: list[str], value: str):
         if value and value not in bucket:
             bucket.append(value)
 
+    # Delegates to functions.py's canonical, actively-maintained atomicity
+    # filter instead of a separate/duplicated blocklist, so a fix there (e.g.
+    # rejecting JD responsibility-sentence fragments) applies here too.
     def is_generic_phrase(item: str) -> bool:
-        words = re.findall(r"[a-zA-Z][a-zA-Z0-9\-\+#\.]*", item.lower())
-        if not words:
-            return True
-        if len(words) > 4:
-            return True
-        return any(w in generic_phrase_words or w in generic_stopwords for w in words)
+        return not _is_atomic_hard_skill(item)
 
     def split_skill_items(text: str) -> list[str]:
         parts = [part.strip() for part in re.split(r"[,;]", text) if part.strip()]
@@ -3008,7 +2981,7 @@ def group_skills(skills: list[str]) -> list[str]:
                     continue
                 if cat == "uncategorized":
                     if not is_generic_phrase(item):
-                        uncategorized.append(item)
+                        add_unique(grouped["Other Technical Skills"], item)
                 else:
                     add_unique(grouped[cat], item)
             continue
@@ -3021,15 +2994,15 @@ def group_skills(skills: list[str]) -> list[str]:
                 continue
             if cat == "uncategorized":
                 if not is_generic_phrase(item):
-                    add_unique(grouped["Frameworks/Libraries"], item)
+                    add_unique(grouped["Other Technical Skills"], item)
             else:
                 add_unique(grouped[cat], item)
 
     result = []
-    for label in ("Languages", "AI/ML", "Frameworks/Libraries", "Databases", "Tools & Platforms"):
+    for label in ("Languages", "AI/ML", "Frameworks/Libraries", "Databases", "Tools & Platforms",
+                  "Other Technical Skills"):
         if grouped[label]:
             result.append(f"{label}: {', '.join(grouped[label])}")
-    result.extend(uncategorized)
     return result
 
 
