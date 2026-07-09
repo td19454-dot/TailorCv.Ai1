@@ -5,7 +5,6 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Layoff, Career Advice, Job Search Plan, Getting Laid Off, Job Search Strategy]
 category: Career Advice
-image: public/blog-images/survived-a-layoff-30-day-plan-to-rebuild-your-resume.png
 slug: survived-a-layoff-30-day-plan-to-rebuild-your-resume
 keywords: laid off what to do next, layoff 30 day plan, resume after layoff, job search after being laid off
 ---

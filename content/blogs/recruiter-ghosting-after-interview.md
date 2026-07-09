@@ -5,7 +5,6 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Recruiter Ghosting, Job Search, Follow Up Email, Interview Follow Up, Job Search Frustration]
 category: Job Search
-image: public/blog-images/recruiter-ghosting-after-interview.png
 slug: recruiter-ghosting-after-interview
 keywords: recruiter ghosting after interview, no response after interview, recruiter not responding, why did recruiter stop responding
 ---

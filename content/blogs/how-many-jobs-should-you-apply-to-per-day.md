@@ -5,7 +5,6 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Job Search Strategy, Job Applications, Job Search Tips, Career Advice, Job Hunting]
 category: Job Search
-image: public/blog-images/how-many-jobs-should-you-apply-to-per-day.png
 slug: how-many-jobs-should-you-apply-to-per-day
 keywords: how many jobs should i apply to per day, how many jobs to apply for per week, job application numbers, job search strategy 2026
 ---
