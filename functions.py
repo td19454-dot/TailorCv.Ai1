@@ -837,6 +837,9 @@ _HARD_SKILL_KEYWORDS: list[str] = [
     # Named products that would otherwise be caught by the generic "platform"
     # ending check.
     "Power Platform", "Microsoft Copilot",
+    # Legitimate compounds that would otherwise be caught by the generic
+    # "source(s)"/"task(s)" scope-noun words added below.
+    "Open Source", "Source Control", "Version Control", "Task Queue",
 ]
 _HARD_SKILL_KEYWORDS_LOWER = frozenset(
     keyword.lower() for keyword in _HARD_SKILL_KEYWORDS
@@ -899,15 +902,27 @@ _GENERIC_CONNECTIVITY_RE = re.compile(
     re.IGNORECASE,
 )
 
-# Gerund-verb-led phrases ("designing X", "implementing Y", "establishing Z")
-# describe an activity lifted from a JD responsibility sentence, never a named
-# technology. No real skill/tool name in this app's data starts with a bare
-# activity verb, so this is safe to reject outright.
-_GENERIC_GERUND_LEAD_RE = re.compile(
-    r'^(?:designing|implementing|developing|building|establishing|maintaining|'
-    r'managing|leading|driving|creating|ensuring|supporting|overseeing|'
-    r'coordinating|facilitating|architecting|deploying|integrating|'
-    r'configuring|administering|optimizing|automating|analyzing|monitoring)\b',
+# Verb-led phrases ("designing X", "plan, execute Y", "own Z") describe an
+# activity lifted from a JD responsibility sentence, never a named technology.
+# No real skill/tool name in this app's data starts with a bare activity verb
+# (base or -ing form), so rejecting any candidate that opens with one of these
+# stems is safe. Stems are matched with an optional inflection suffix so both
+# "plan"/"planning" and "create"/"creating"/"created" are caught from one entry.
+_ACTIVITY_VERB_STEMS = (
+    "design", "implement", "develop", "build", "establish", "maintain",
+    "manage", "lead", "driv", "creat", "ensur", "support", "overse",
+    "coordinat", "facilitat", "architect", "deploy", "integrat", "configur",
+    "administer", "optimiz", "automat", "analyz", "monitor", "plan",
+    "execut", "own", "guid", "review", "assess", "evaluat", "prioritiz",
+    "schedul", "track", "communicat", "present", "document", "test",
+    "validat", "verify", "troubleshoot", "debug", "resolv", "handl",
+    "process", "perform", "conduct", "deliver", "ship", "launch",
+    "migrat", "refactor", "streamlin", "standardiz", "defin", "identify",
+    "gather", "collect", "collaborat", "partner", "liais", "translat",
+    "convert",
+)
+_GENERIC_ACTIVITY_VERB_LEAD_RE = re.compile(
+    r'^(?:' + '|'.join(_ACTIVITY_VERB_STEMS) + r')(?:e|ing|ed|es|s)?\b',
     re.IGNORECASE,
 )
 
@@ -928,6 +943,15 @@ _GENERIC_SKILL_WORDS: set[str] = {
     "growth", "years", "year", "experience", "requirement", "requirements",
     "responsibility", "responsibilities", "environment", "environments",
     "team", "teams", "ebooks", "ebook",
+    # Generic process/scope nouns from JD responsibility sentences (e.g. "data
+    # sources", "multi-step tasks", "business goals") — never a technology name
+    # on their own. Legitimate compounds using these words are whitelisted
+    # explicitly in _HARD_SKILL_KEYWORDS (e.g. "Open Source", "Task Queue") and
+    # are protected by the exact-match short-circuit before this check runs.
+    "task", "tasks", "source", "sources", "step", "steps", "goal", "goals",
+    "objective", "objectives", "outcome", "outcomes", "deliverable",
+    "deliverables", "activity", "activities", "initiative", "initiatives",
+    "workflow", "workflows",
 }
 # Function/filler words: a phrase containing one of these is a sentence fragment,
 # never a skill name (real skill names like "Vector Databases" never contain them).
@@ -977,7 +1001,7 @@ def _is_atomic_hard_skill(value: str) -> bool:
         return False
     if _GENERIC_CONNECTIVITY_RE.match(normalized):
         return False
-    if _GENERIC_GERUND_LEAD_RE.match(normalized):
+    if _GENERIC_ACTIVITY_VERB_LEAD_RE.match(normalized):
         return False
     return True
 
