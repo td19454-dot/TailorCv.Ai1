@@ -269,13 +269,31 @@ class BlogService:
         if not value:
             return ""
         cleaned = value.replace("\\", "/").strip()
-        if cleaned.startswith(("http://", "https://", "/")):
+        # External URLs pass through (can't verify existence on disk).
+        if cleaned.startswith(("http://", "https://")):
             return cleaned
-        if cleaned.startswith("public/"):
-            return "/" + cleaned
-        if cleaned.startswith("static/"):
-            return "/" + cleaned
-        return "/public/" + cleaned
+        # Normalise to a leading-slash web path.
+        if cleaned.startswith("/"):
+            web = cleaned
+        elif cleaned.startswith(("public/", "static/")):
+            web = "/" + cleaned
+        else:
+            web = "/public/" + cleaned
+        # Only surface the image if the file actually exists, so a post can
+        # declare its expected cover path before the image is generated without
+        # rendering a broken <img>. Also accept the same basename with any common
+        # extension, so declaring ".webp" still works if a ".png"/".jpg" is
+        # dropped in later (or vice-versa).
+        root = os.path.dirname(os.path.abspath(__file__))
+        disk = os.path.join(root, web.lstrip("/"))
+        if os.path.isfile(disk):
+            return web
+        disk_base, _ = os.path.splitext(disk)
+        web_base, _ = os.path.splitext(web)
+        for ext in (".webp", ".png", ".jpg", ".jpeg", ".avif"):
+            if os.path.isfile(disk_base + ext):
+                return web_base + ext
+        return ""
 
 
 @lru_cache(maxsize=1)

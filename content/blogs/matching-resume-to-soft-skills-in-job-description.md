@@ -7,6 +7,7 @@ tags: [Soft Skills, Resume Matching, Job Description, Resume Writing]
 category: Job Description Analysis
 slug: matching-resume-to-soft-skills-in-job-description
 keywords: soft skills job description resume, how to match soft skills to job description, hidden soft skills job posting, resume soft skills keywords
+image: public/blog-images/matching-resume-to-soft-skills-in-job-description.png
 ---
 
 Most candidates hunt job descriptions for hard skills, tools, certifications, years of experience, and ignore the soft skills entirely, or worse, copy generic words like "team player" and "hard worker" straight onto their resume without any real matching effort. Both approaches miss something important: soft skills are rarely listed as a bullet point. They are buried in the responsibilities section, the culture blurb, and the way the role is described.

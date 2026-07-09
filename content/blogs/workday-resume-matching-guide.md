@@ -7,6 +7,7 @@ tags: [Workday, ATS, Resume Matching, Job Description, ATS Optimization]
 category: ATS Optimization
 slug: workday-resume-matching-guide
 keywords: workday resume, workday ats, workday resume format, match resume to workday application, workday screener questions
+image: public/blog-images/workday-resume-matching-guide.png
 ---
 
 Workday is the [ATS](https://thetailorcv.com/blog/ats-score-guide) behind more Fortune 500 job applications than almost any other platform. If you have applied to a large company recently, you have probably typed your work history into a Workday form and wondered whether it even read your resume.

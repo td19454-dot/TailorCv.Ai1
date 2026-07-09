@@ -7,6 +7,7 @@ tags: [Recession Proof Jobs, Job Security, Career Advice, In-Demand Careers 2026
 category: Career Advice
 slug: recession-proof-jobs-2026
 keywords: recession proof jobs 2026, recession proof careers, jobs that are safe during a recession, job security 2026
+image: public/blog-images/recession-proof-jobs-2026.png
 ---
 
 No job is truly "recession-proof," but some fields are consistently more resistant to mass layoffs than others - because the demand for them doesn't disappear when budgets tighten. Healthcare, essential infrastructure, and cost-saving roles tend to hold steady while discretionary spending categories get cut first.

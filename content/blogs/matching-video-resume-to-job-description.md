@@ -7,6 +7,7 @@ tags: [Video Resume, Resume Matching, Job Description, Job Search 2026]
 category: Job Search Strategy
 slug: matching-video-resume-to-job-description
 keywords: video resume job description matching, tailor video pitch job application, video resume script keywords, 30 second video pitch job
+image: public/blog-images/matching-video-resume-to-job-description.png
 ---
 
 More applications, especially for retail, hospitality, customer-facing, and some tech and creative roles, now include an optional or required 30-to-60 second video pitch. And most candidates treat it the same generic way they treat an untailored resume: one script, recorded once, sent to every application.

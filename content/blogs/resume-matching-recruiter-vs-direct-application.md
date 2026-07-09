@@ -7,6 +7,7 @@ tags: [Recruiters, Resume Matching, Job Description, Job Search Strategy]
 category: Job Search Strategy
 slug: resume-matching-recruiter-vs-direct-application
 keywords: resume matching through recruiter, should I tailor resume for recruiter, recruiter submission resume job description, staffing agency resume matching
+image: public/blog-images/resume-matching-recruiter-vs-direct-application.png
 ---
 
 A recruiter reaches out about a role, or you connect with a staffing agency, and suddenly the resume matching calculus feels different. Since a human recruiter, not just an [ATS](https://thetailorcv.com/blog/ats-score-guide), is reviewing your resume and vouching for you internally, does [matching your resume to the job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) still matter as much?

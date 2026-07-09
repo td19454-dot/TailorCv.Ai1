@@ -7,6 +7,7 @@ tags: [Explaining Termination, Interview Questions, Job Interview Tips, Career A
 category: Interview Preparation
 slug: how-to-explain-getting-fired-in-an-interview
 keywords: how to explain getting fired in an interview, explaining termination in interview, fired from job interview question, how to talk about being fired
+image: public/blog-images/how-to-explain-getting-fired-in-an-interview.png
 ---
 
 Getting fired feels like the end of your story with a company - in an interview, it's just one question you need a clear, honest answer for. Interviewers aren't looking for a perfect employment history; they're evaluating whether you can talk about a setback with accountability and self-awareness. Panic or over-explaining hurts you far more than the firing itself.

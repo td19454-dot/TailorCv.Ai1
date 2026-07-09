@@ -7,6 +7,7 @@ tags: [Referrals, Resume Matching, Job Description, Job Search Strategy]
 category: Job Search Strategy
 slug: resume-matching-referral-applications
 keywords: should I tailor resume for referral, referral resume job description, does referral skip ats, referral application resume matching
+image: public/blog-images/resume-matching-referral-applications.png
 ---
 
 Getting a referral is one of the most effective ways to boost your odds of landing an interview. Referred candidates are significantly more likely to get hired than candidates who apply cold. That statistic leads many job seekers to a reasonable-sounding but incorrect conclusion: if I have a referral, I don't need to bother [matching my resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) to the job description.
