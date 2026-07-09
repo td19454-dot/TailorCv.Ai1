@@ -7,6 +7,7 @@ tags: [Hospitality Resume, Hotel Resume, Resume Matching, Job Description, Custo
 category: Industry Resume Matching
 slug: resume-matching-hospitality-hotel
 keywords: hospitality resume matching, hotel job description resume, front desk resume keywords, guest services resume, hotel management resume
+image: public/blog-images/resume-matching-hospitality-hotel.png
 ---
 
 Hospitality and hotel job descriptions blend two very different priorities: measurable service standards (guest satisfaction scores, occupancy targets, upsell revenue) and softer interpersonal qualities (hospitality, composure under pressure, cultural awareness). A resume that leans too far into either direction, all metrics or all personality, misses the [match](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) that hiring managers in this industry are looking for.

@@ -7,6 +7,7 @@ tags: [Recruiter Ghosting, Job Search, Follow Up Email, Interview Follow Up, Job
 category: Job Search
 slug: recruiter-ghosting-after-interview
 keywords: recruiter ghosting after interview, no response after interview, recruiter not responding, why did recruiter stop responding
+image: public/blog-images/recruiter-ghosting-after-interview.png
 ---
 
 You had a great interview, felt genuine momentum, and then - silence. Recruiter ghosting is frustrating but common in 2026's hiring environment, and it's rarely personal. Understanding why it happens changes how you follow up, and how much energy you should keep investing in that one opportunity.

@@ -7,6 +7,7 @@ tags: [Portfolio, Resume Matching, Job Description, Portfolio Website]
 category: Portfolio Optimization
 slug: matching-portfolio-to-job-description
 keywords: match portfolio to job description, tailor portfolio for job application, portfolio projects job description, which projects to include in portfolio
+image: public/blog-images/matching-portfolio-to-job-description.png
 ---
 
 Most job seekers tailor their resume for every application and never think twice about their portfolio. It sits static, the same set of projects, the same order, the same descriptions, no matter which job they are applying to. That is a missed opportunity, because a portfolio that is [matched to the job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) can reinforce your fit far more convincingly than a resume bullet ever could.

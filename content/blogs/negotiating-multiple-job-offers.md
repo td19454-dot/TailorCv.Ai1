@@ -7,6 +7,7 @@ tags: [Multiple Job Offers, Salary Negotiation, Job Offer, Career Advice, Negoti
 category: Career Advice
 slug: negotiating-multiple-job-offers
 keywords: negotiating multiple job offers, competing job offers negotiation, how to leverage multiple offers, multiple offer email template
+image: public/blog-images/negotiating-multiple-job-offers.png
 ---
 
 Having multiple job offers at once is the strongest negotiating position you'll ever be in - but it's also easy to mishandle. Done well, mentioning a competing offer is a normal, expected part of the process. Done poorly, it can come across as manipulative or make a company walk away entirely. Here's how to navigate it cleanly.

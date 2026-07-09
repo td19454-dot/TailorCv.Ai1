@@ -7,6 +7,7 @@ tags: [Job Description, Resume Matching, Qualifications, ATS, Job Search Strateg
 category: Job Description Analysis
 slug: matching-resume-required-vs-preferred-qualifications
 keywords: required vs preferred qualifications, job description must-have vs nice-to-have, how to prioritize resume keywords, qualifications job posting
+image: public/blog-images/matching-resume-required-vs-preferred-qualifications.png
 ---
 
 Every [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is a ranked list, even when it does not look like one. Some qualifications are non-negotiable filters. Others are wish-list items a hiring manager would love but will not reject a strong candidate over. Treating every line of a job posting with equal weight is one of the most common [resume matching mistakes](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) job seekers make.

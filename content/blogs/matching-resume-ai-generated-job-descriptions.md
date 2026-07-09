@@ -7,6 +7,7 @@ tags: [AI Job Descriptions, Resume Matching, Job Description, Job Search 2026]
 category: Job Description Analysis
 slug: matching-resume-ai-generated-job-descriptions
 keywords: ai generated job description, how to spot ai job posting, matching resume to ai job description, generic job description 2026
+image: public/blog-images/matching-resume-ai-generated-job-descriptions.png
 ---
 
 More job postings in 2026 are drafted, expanded, or entirely written by AI. Hiring teams use AI to turn a rough bullet list into a polished, keyword-rich [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in seconds, and while that produces more consistent postings, it also produces a specific pattern: longer, more generic, and sometimes internally inconsistent job descriptions that are harder to match accurately.
