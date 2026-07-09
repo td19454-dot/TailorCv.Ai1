@@ -54,6 +54,17 @@ class BlogService:
             path = os.path.join(self.content_dir, file_name)
             stat = os.stat(path)
             parts.append(f"{file_name}:{stat.st_mtime_ns}:{stat.st_size}")
+        # Also watch the blog-images folder: a post caches its computed .image
+        # (which depends on whether the file exists), so dropping/removing a
+        # cover must invalidate the cache too — otherwise a newly added image
+        # won't appear until the server restarts.
+        img_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public", "blog-images")
+        if os.path.isdir(img_dir):
+            try:
+                for fn in os.listdir(img_dir):
+                    parts.append(f"img:{fn}")
+            except OSError:
+                pass
         return tuple(sorted(parts))
 
     def load_posts(self) -> list[BlogPost]:
