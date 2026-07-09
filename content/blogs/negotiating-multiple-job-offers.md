@@ -5,7 +5,6 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Multiple Job Offers, Salary Negotiation, Job Offer, Career Advice, Negotiation Scripts]
 category: Career Advice
-image: public/blog-images/negotiating-multiple-job-offers.png
 slug: negotiating-multiple-job-offers
 keywords: negotiating multiple job offers, competing job offers negotiation, how to leverage multiple offers, multiple offer email template
 ---

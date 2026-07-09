@@ -5,7 +5,6 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Explaining Termination, Interview Questions, Job Interview Tips, Career Advice, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/how-to-explain-getting-fired-in-an-interview.png
 slug: how-to-explain-getting-fired-in-an-interview
 keywords: how to explain getting fired in an interview, explaining termination in interview, fired from job interview question, how to talk about being fired
 ---

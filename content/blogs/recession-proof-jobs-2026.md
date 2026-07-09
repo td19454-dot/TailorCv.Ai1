@@ -5,7 +5,6 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Recession Proof Jobs, Job Security, Career Advice, In-Demand Careers 2026, Job Search]
 category: Career Advice
-image: public/blog-images/recession-proof-jobs-2026.png
 slug: recession-proof-jobs-2026
 keywords: recession proof jobs 2026, recession proof careers, jobs that are safe during a recession, job security 2026
 ---

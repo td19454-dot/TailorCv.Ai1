@@ -5,7 +5,6 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Job Scam, Fake Job Postings, Job Search Safety, Recruiter Scam, Job Search Tips]
 category: Job Search
-image: public/blog-images/how-to-spot-a-job-scam.png
 slug: how-to-spot-a-job-scam
 keywords: how to spot a job scam, fake job posting red flags, recruiter scam warning signs, is this job offer real
 ---

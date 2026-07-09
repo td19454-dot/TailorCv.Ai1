@@ -491,20 +491,43 @@ html.tcv-app .site-footer { display: none !important; }
     }
 }
 
-/* ── Tablet (769–1024px): the marketing nav can't fit logo + 6 links + Login +
-   Get Started (the logo image alone renders ~360px wide and the links are
-   pinned to min-width:560px), so the last links clip and Login slides off the
-   right edge. Shrink the logo to a normal nav height and tighten the links so
-   everything fits on one row. High-specificity `header.navbar` selectors so
-   this wins regardless of whether style2/style3 loads after this file. ─────── */
+/* ── Logo: purple mark (logo-mark.webp) + "thetailorcv" as real text, not the
+   old wordmark image. Base styling loads on every page; the breakpoint blocks
+   below only tune sizes. High-specificity header.navbar selectors so this wins
+   over the leftover .logo/.logo-text rules in style2/style3. ──────────────── */
+header.navbar .logo { margin: 0 0 0 6px !important; }
+header.navbar .logo .logo-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    text-decoration: none !important;
+}
+header.navbar .logo .logo-mark {
+    height: 40px !important;
+    width: auto !important;
+    margin: 0 !important;
+    animation: none !important;
+    display: block !important;
+}
+header.navbar .logo .logo-word {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 1.6rem !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    background: linear-gradient(90deg, #8b3dff 0%, #3392ff 55%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #3392ff; /* fallback for browsers without background-clip:text */
+}
+
+/* Tablet (769–1024px): tighten the links so mark + wordmark + 6 links + Login +
+   Get Started all fit on one row. */
 @media (min-width: 769px) and (max-width: 1024px) {
-    header.navbar .logo .logo-text {
-        height: 84px !important;
-        width: auto !important;
-        margin: 0 !important;
-        animation: none !important;
-    }
-    header.navbar .logo { margin: 0 0 0 8px !important; }
+    header.navbar .logo .logo-mark { height: 34px !important; }
+    header.navbar .logo .logo-word { font-size: 1.35rem !important; }
     header.navbar .nav-links {
         min-width: 0 !important;
         gap: 0 !important;
@@ -518,14 +541,16 @@ html.tcv-app .site-footer { display: none !important; }
     header.navbar .nav-actions { margin: 0 10px 0 0 !important; gap: 8px !important; }
 }
 
-/* ── Desktop (>=1025px): the base rule forces the logo image to a distorted
-   300x300 square, which renders the "tailorcv.com" wordmark small. Give it a
-   larger height with width:auto so the wordmark is prominent and undistorted. */
+/* Desktop (>=1025px) */
 @media (min-width: 1025px) {
-    header.navbar .logo .logo-text {
-        height: 92px !important;
-        width: auto !important;
-    }
+    header.navbar .logo .logo-mark { height: 42px !important; }
+    header.navbar .logo .logo-word { font-size: 1.7rem !important; }
+}
+
+/* Mobile (<=768px) */
+@media (max-width: 768px) {
+    header.navbar .logo .logo-mark { height: 32px !important; }
+    header.navbar .logo .logo-word { font-size: 1.3rem !important; }
 }
 
 
