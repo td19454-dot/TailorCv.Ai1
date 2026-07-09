@@ -94,7 +94,7 @@
 
         top.innerHTML =
             '<button class="tcv-burger" id="tcvBurger" aria-label="Toggle menu" title="Collapse menu">☰</button>'
-            + '<a class="tcv-top-logo" href="' + (user ? "/dashboard" : "/") + '"><img src="/static/logo6.webp" alt="theTailorCV"></a>'
+            + '<a class="tcv-top-logo" href="' + (user ? "/dashboard" : "/") + '"><img class="tcv-top-mark" src="/static/logo-mark.webp" alt=""><span class="tcv-top-word">thetailorcv</span></a>'
             + topRight;
 
         // Slim icon rail with hover tooltips
