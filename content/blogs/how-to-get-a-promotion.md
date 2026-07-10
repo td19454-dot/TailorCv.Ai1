@@ -182,4 +182,19 @@ Getting promoted requires operating at the next level, delivering visible busine
 
 Document your accomplishments continuously and keep your resume current with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). When the time comes, use the [how to ask for a raise guide](https://thetailorcv.com/blog/how-to-ask-for-a-raise) for the compensation conversation, and keep building in-demand skills with the [skills guide](https://thetailorcv.com/blog/skills-to-add-to-resume-2026).
 
+## Frequently Asked Questions
 
+### What are the key steps to demonstrate readiness for a promotion in 2026?  
+To demonstrate readiness for a promotion, focus on operating at the next level before the formal title change. This involves understanding the requirements for the next level by studying your company's leveling framework and identifying gaps in your performance. Create a plan to close these gaps, and consistently deliver results that align with the expectations of the role you aspire to. For more on how to position yourself effectively, check out our guide on [personal branding for professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
+
+### How can I build visibility within my company to support my promotion efforts?  
+Building visibility involves actively engaging with decision-makers and showcasing your contributions. Attend company meetings, share your successes, and seek opportunities to collaborate on high-impact projects. Networking within your organization can also help you gain support from sponsors who can advocate for your promotion. For tips on making a strong impression in your first few months, refer to our post on [first 90 days at a new job](https://thetailorcv.com/blog/first-90-days-at-new-job).
+
+### What role does sponsorship play in getting a promotion?  
+Sponsorship is crucial as it involves having an advocate within your organization who can vouch for your capabilities and potential. A sponsor can help you navigate company politics and provide insights on what it takes to advance. To secure a sponsor, focus on building relationships with higher-level colleagues and demonstrating your value consistently. For a deeper understanding of how to effectively approach this, consider reading our guide on [how to ask for a raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise).
+
+### How should I approach making the case for my promotion?  
+When making the case for your promotion, prepare a clear and concise presentation of your achievements, contributions, and how they align with the company's goals. Use data and specific examples to support your claims, and be ready to discuss how you can add even more value in the new role. Documentation of your accomplishments will strengthen your case, so keep your resume updated using our [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+### What should I do if I don’t have a formal promotion framework at my company?  
+If your company lacks a formal promotion framework, take the initiative to ask your manager directly what you need to demonstrate for a promotion. Pay attention to the behaviors and skills of those who are already in the role you aspire to, and actively seek feedback on your performance. Additionally, exploring the specific job description for the next level can provide clarity on expectations. For guidance on internal applications, check our post on [how to tailor your resume for an internal job application](https://thetailorcv.com/blog/internal-job-application-resume).

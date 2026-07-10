@@ -192,3 +192,19 @@ Quitting professionally protects your reputation, references, and network. Secur
 
 If your departure is part of a job search, make sure your next move is strong: optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), negotiate your new offer with the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer), and prepare for your fresh start.
 
+## Frequently Asked Questions
+
+### What should I do before quitting my job?
+Before you quit your job, it's essential to secure your next step. Ensure you have a signed offer letter if you're moving to a new job, as verbal offers can fall through. If you're resigning without a new position, make sure you have a clear plan for what's next and ideally a financial runway of 6+ months of expenses. For more details, check out our guide on [how to write a two weeks notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice).
+
+### How do I inform my manager about my resignation?
+You should inform your manager about your resignation in a private meeting, either in-person or via video call for remote roles. It's crucial that your manager hears the news from you first, rather than through colleagues or HR. Keeping the conversation brief and positive is key; you don’t need to provide extensive explanations. 
+
+### What should I include in my resignation letter?
+Your resignation letter should be concise and to the point. Include the date of your last working day, express gratitude for the opportunities you've had, and keep it professional. For guidance on crafting your letter, refer to our article on [how to write a two weeks notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice).
+
+### How should I handle a counteroffer from my employer?
+If you receive a counteroffer, take time to evaluate it against your reasons for leaving. Consider whether the counteroffer addresses your concerns and if it aligns with your career goals. It's important to remain professional and express gratitude, regardless of your decision. For tips on declining offers, you can read our post on [how to decline a job offer](https://thetailorcv.com/blog/how-to-decline-job-offer).
+
+### What if I don’t have another job lined up?
+If you don’t have another job lined up, it’s crucial to have a clear plan for your next steps. Ensure you have financial stability, ideally a runway of 6+ months, and consider how you will maintain health insurance coverage. It's also a good time to enhance your job search tools, such as optimizing your resume with our [free ATS score checker](https://www.thetailorcv.com/solutions).

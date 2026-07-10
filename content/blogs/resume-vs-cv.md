@@ -186,3 +186,19 @@ The resume vs CV distinction comes down to length, purpose, and geography. In th
 
 When applying to industry roles, always use a resume, start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and verify your document with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions). For academic CV guidance, follow the conventions of your field and institution.
 
+## Frequently Asked Questions
+
+### What is the main difference between a resume and a CV?
+The primary difference lies in their purpose and length. A resume is a concise document, typically one to two pages, tailored for a specific job application, focusing on relevant skills and achievements. In contrast, a CV (curriculum vitae) is a comprehensive record of your entire academic and professional history, ranging from 2 to 20+ pages, and includes everything from publications to research. For a deeper understanding, check out [what is a resume and why it matters](https://thetailorcv.com/blog/what-is-a-resume).
+
+### When should I use a resume instead of a CV?
+You should use a resume when applying for jobs in industries like tech, finance, or marketing, particularly in the US, Canada, and Australia. Resumes are ideal for corporate and private-sector roles where a targeted approach is necessary. On the other hand, a CV is more appropriate for academic positions or roles in the UK and Europe, where a comprehensive overview of your career is expected.
+
+### How often should I update my resume or CV?
+Your resume should be tailored and updated for each job application to ensure it aligns with the specific role you are targeting. In contrast, a CV should be updated regularly as your career progresses, adding new experiences, publications, and achievements. To help manage your applications effectively, consider using a [job application tracker template](https://thetailorcv.com/blog/job-application-tracker-template).
+
+### Can I use the same document for different job applications?
+Using the same document for different job applications is generally not advisable. A resume should be tailored for each position, emphasizing the relevant skills and experiences that match the job description. A CV, while comprehensive, should still be reviewed and potentially adjusted to highlight the most pertinent information for the specific academic or professional opportunity you are pursuing.
+
+### What tools can help me create an effective resume or CV?
+Utilizing templates can significantly enhance the effectiveness of your resume or CV. You can start from an [ATS-compatible template](https://www.thetailorcv.com/templates) to ensure your document passes through applicant tracking systems. Additionally, tools like the [free ATS score checker](https://www.thetailorcv.com/solutions) can help you optimize your document for better visibility to potential employers.

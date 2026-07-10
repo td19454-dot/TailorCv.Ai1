@@ -194,3 +194,19 @@ Submit your resume as PDF unless the employer asks for Word. Name your file clea
 
 Before submitting any version, use an [ATS-friendly template](https://www.thetailorcv.com/templates) as your base and run the PDF through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to confirm it parses cleanly. Small technical details like file format and naming signal professionalism - and cost you nothing to get right.
 
+## Frequently Asked Questions
+
+### Should I always submit my resume as a PDF?
+Yes, you should generally submit your resume as a PDF unless the job posting specifically requests a Word document. PDFs preserve your formatting across all devices, ensuring that recruiters see your resume exactly as you designed it. For tips on crafting a standout application, check out our [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026).
+
+### What are the risks of using a Word document for my resume?
+Using a Word document can lead to formatting issues, as it may look different on various computers depending on the software version and fonts installed. This can result in a poorly presented resume that doesn't reflect your professionalism. To enhance your resume's presentation, consider using our [resume templates](https://www.thetailorcv.com/templates).
+
+### How should I name my resume file?
+When naming your resume file, use a professional format that includes your name and the word "resume." For example, "John_Doe_Resume.pdf" is clear and easy to identify. Following best practices for file naming can help your application stand out; learn more in our [resume proofreading checklist](https://thetailorcv.com/blog/resume-proofreading-checklist).
+
+### Can the ATS read my resume if I submit it as a PDF?
+Most modern Applicant Tracking Systems (ATS) can read PDF files without issue, especially if they are properly formatted. However, if a job posting specifies a Word document, it's best to comply to ensure your resume is parsed correctly. To check your resume's compatibility with ATS, use our [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+### What other elements should I consider when creating my resume?
+In addition to choosing the right file format, pay attention to the content and layout of your resume. Use appropriate fonts, maintain a clean structure, and ensure there are no spelling or grammatical errors. For further guidance on content, refer to our article on [cover letter mistakes to avoid in 2026](https://thetailorcv.com/blog/cover-letter-mistakes-2026).

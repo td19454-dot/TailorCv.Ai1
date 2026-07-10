@@ -201,5 +201,19 @@ To stand out in a group discussion, contribute substantial and well-structured p
 
 A GD is one step in the hiring process. Make sure your resume gets you there with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and prepare for the interview rounds with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
 
+### What are the key skills evaluated during a group discussion (GD)?
+Evaluators in a group discussion primarily assess communication skills, leadership qualities, teamwork, and logical reasoning. They look for candidates who can articulate their thoughts clearly while also listening and engaging with others. To prepare effectively for GDs, consider reviewing our guide on [how to prepare for campus placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement).
 
+### How can I make a strong opening statement in a GD?
+A strong opening statement can set the tone for the entire discussion. You should present a clear, relevant point that showcases your knowledge of the topic. Avoid generic statements; instead, aim to provide a unique perspective or insight. For more tips on presenting yourself well, check out our article on [how to answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself).
+
+### What types of topics are commonly used in GDs?
+Group discussion topics can be categorized into factual, abstract, case-based, and opinion-based themes. Each type requires a different approach, from discussing current affairs to analyzing hypothetical scenarios. Familiarizing yourself with these categories can improve your confidence; you might find our post on [group interview tips and strategies](https://thetailorcv.com/blog/group-interview-tips-strategies) helpful.
+
+### How should I handle aggressive participants in a GD?
+When faced with aggressive participants, it's important to remain calm and composed. Focus on listening and responding thoughtfully rather than reacting emotionally. Demonstrating grace under pressure can highlight your leadership skills and conflict resolution abilities. For more strategies on managing stress in interviews, visit our guide on [overcoming interview anxiety](https://thetailorcv.com/blog/how-to-overcome-interview-anxiety-nervousness-tips).
+
+### What should I do if I feel nervous during a GD?
+Feeling nervous is common, especially during high-stakes discussions like GDs. To manage your nerves, practice deep breathing techniques and remind yourself of your preparation. Engaging with others in the discussion can also distract you from anxiety. For additional tips on managing nerves, check our article on [common interview mistakes to avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).

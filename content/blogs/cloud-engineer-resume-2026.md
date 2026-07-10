@@ -190,3 +190,19 @@ A strong cloud engineer resume in 2026 shows cloud architecture ownership, infra
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for cloud architecture and technical interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What are the key components of a Cloud Engineer resume in 2026?  
+A Cloud Engineer resume in 2026 should include several essential components: a professional header, a summary highlighting your experience and certifications, a section detailing your technical skills categorized by cloud platforms, and a comprehensive work experience section. Additionally, showcasing relevant projects, certifications, and education is crucial. For more details on structuring your resume, check out our guide on [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist).
+
+### How can I make my Cloud Engineer resume ATS-friendly?  
+To ensure your Cloud Engineer resume is ATS-friendly, use clear headers, standard fonts, and avoid complex formatting. Incorporate relevant ATS keywords related to cloud engineering, such as specific technologies and skills, to help your resume get past automated screening. You can also run your resume through our [Free ATS score checker](https://www.thetailorcv.com/solutions) to identify areas for improvement.
+
+### What certifications should I include on my Cloud Engineer resume?  
+Including certifications specific to cloud platforms is vital for demonstrating your qualifications. For example, certifications from AWS, GCP, or Azure can significantly enhance your resume's credibility. Make sure these certifications are clearly visible in your resume, as they signal your expertise in cloud roles. For more on listing certifications, visit our guide on [how to list certifications on resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
+
+### How do I quantify my achievements in a Cloud Engineer resume?  
+Quantifying your achievements can greatly strengthen your Cloud Engineer resume. Use specific metrics to illustrate your impact, such as the percentage reduction in costs, the number of incidents resolved, or improvements in infrastructure reliability. This approach not only provides concrete evidence of your skills but also aligns with what employers are looking for. For examples of impactful projects, refer to our post on [Fresher Resume Projects That Get Interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
+
+### Should I focus more on technical skills or soft skills in my Cloud Engineer resume?  
+While technical skills are crucial for a Cloud Engineer position, soft skills should not be overlooked. Employers value candidates who can communicate effectively, work collaboratively, and adapt to changing environments. Therefore, it's essential to balance both types of skills on your resume. For insights on presenting soft skills and technical expertise, consider reading our [DevOps Engineer Resume 2026](https://thetailorcv.com/blog/devops-engineer-resume-2026) guide.

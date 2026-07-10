@@ -164,3 +164,19 @@ A strong pharmacist resume in 2026 shows licensure, clinical competence, pharmac
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What should I include in my pharmacist resume header?  
+Your pharmacist resume header should prominently display your name, contact information, and most importantly, your licensure details. Clearly stating your licensure as a pharmacist (e.g., "Licensed Pharmacist (PharmD)") at the top ensures that hiring managers can quickly verify your credentials. This is crucial in the pharmacy field, where credential verification is a key aspect of the hiring process.
+
+### How do I tailor my pharmacist resume for ATS?  
+To optimize your pharmacist resume for Applicant Tracking Systems (ATS), include relevant keywords from the job description, particularly those pertaining to clinical skills and pharmacy operations. You can use the [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate your resume's compatibility with ATS software, ensuring that your qualifications are highlighted effectively.
+
+### What are the key sections to include in a pharmacist resume?  
+A well-structured pharmacist resume should include the following key sections: a header with your licensure, a summary of your experience, a list of certifications, clinical and technical skills, work experience, and education. Each section should be tailored to showcase your specific skills and accomplishments in the pharmacy field, directly aligning with the job you are applying for.
+
+### How can I demonstrate my clinical skills on my pharmacist resume?  
+To effectively demonstrate your clinical skills on your pharmacist resume, use specific examples in your work experience section that highlight your contributions to patient safety and pharmacy operations. For instance, mention any medication therapy management programs you led or your success in maintaining high dispensing accuracy. Including metrics can provide tangible evidence of your impact in a clinical setting.
+
+### Are there examples of pharmacist resumes I can refer to?  
+Yes, this blog post provides examples of both experienced and entry-level pharmacist resumes. These examples illustrate how to format your resume, highlight your clinical competencies, and include relevant skills and achievements. For further insights, you may also want to explore the [physiotherapist resume guide](https://thetailorcv.com/blog/physiotherapist-resume-2026) for additional formatting and content ideas.

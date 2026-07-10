@@ -234,4 +234,19 @@ Quantifying your resume achievements is not about exaggerating - it is about bei
 
 Once your bullets are strong, run your full resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to make sure your keywords also match the job description. Use the [resume templates](https://www.thetailorcv.com/templates) to ensure your format is clean. If you are still building your resume from scratch, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full structure.
 
+## Frequently Asked Questions
 
+### Why is quantifying achievements important on a resume?  
+Quantifying achievements on a resume is crucial because it provides concrete evidence of your capabilities and successes. Recruiters often scan resumes quickly, and numbers stand out, making your claims more memorable and impactful. For tips on crafting effective statements, check out our guide on [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+
+### What types of numbers should I include in my resume?  
+You should consider including various types of numbers such as scale numbers (e.g., team size, user base), percentage improvements (e.g., sales growth), and timeframes (e.g., project completion). This diversity in metrics can help showcase your achievements more comprehensively. For a deeper dive into action words that enhance your resume, visit our post on [200 best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume).
+
+### How can I find metrics to quantify my achievements?  
+If you feel you lack quantifiable achievements, start by reviewing your past roles and responsibilities. Consider aspects like project timelines, budget management, and team sizes. You can also think about the results of your work in terms of efficiency or revenue. For more guidance, explore our article on [how to list education on a resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) for inspiration on structuring your accomplishments.
+
+### Can quantifying achievements help with ATS optimization?  
+Yes, quantifying your achievements can enhance your resume's ATS (Applicant Tracking System) optimization. Including specific numbers and metrics can help your resume align with job descriptions that use similar language. To ensure your resume format is ATS-friendly, use our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate and improve your document.
+
+### What are some examples of quantified achievements for different roles?  
+In our blog post, we provide 50 examples of quantified achievements tailored for various roles, including software engineering, marketing, and sales. These examples illustrate how to effectively incorporate metrics into your resume to increase its impact. For additional strategies on summarizing your skills, check out our guide on [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-a-resume-summary).

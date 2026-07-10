@@ -192,3 +192,19 @@ Do not include references on your resume - remove "references available upon req
 
 Focus your resume space on your achievements and skills. Use an [ATS-friendly template](https://www.thetailorcv.com/templates), optimize your content with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions), and prepare for the interview itself with the [mock interview tool](https://thetailorcv.com/interview-prep).
 
+## Frequently Asked Questions
+
+### Should I include references on my resume in 2026?  
+No, you should not include references on your resume in 2026. This practice is outdated and takes up valuable space that could be better used to showcase your skills or achievements. Employers already assume you have references and typically request them later in the hiring process, after you've made it through initial rounds of interviews.
+
+### What should I do if a job posting asks for references?  
+If a job posting explicitly requests references, you can include a separate document with your references instead of listing them on your resume. Make sure this document is professional and includes the necessary contact information and context for each reference. For tips on formatting your resume, check out our guide on the [resume section order](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### How can I prepare my references for a job application?  
+Preparing your references involves informing them about the positions you are applying for and providing them with context about your skills and experiences. This way, they can tailor their recommendations to align with the job requirements. To ensure your resume is polished, consider using our [resume templates](https://www.thetailorcv.com/templates) for a professional look.
+
+### What are some common mistakes to avoid regarding resume references?  
+Common mistakes include listing references directly on your resume, using outdated phrases like "references available upon request," and not notifying your references beforehand. Instead, focus on crafting an exceptional resume that highlights your qualifications. You can also use our [free ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume meets modern standards.
+
+### When is it appropriate to use a video resume?  
+A video resume can be appropriate in creative fields or when specifically requested by the employer. It allows you to showcase your personality and communication skills in a unique way. For more details on when and how to use a video resume, read our [video resume guide](https://thetailorcv.com/blog/video-resume-guide-2026).

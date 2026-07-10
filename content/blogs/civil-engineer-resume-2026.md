@@ -171,3 +171,19 @@ A strong civil engineer resume in 2026 shows real project delivery, technical de
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for your interviews using the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What are the essential sections to include in a civil engineer resume for 2026?  
+A civil engineer resume in 2026 should include a header with your PE or Charter status if applicable, a professional summary, technical skills, work experience with project highlights, notable projects, education, and certifications or professional memberships. Organizing your resume into these sections ensures that hiring managers can quickly assess your qualifications and experience in the field.
+
+### How can I optimize my civil engineer resume for Applicant Tracking Systems (ATS)?  
+To optimize your civil engineer resume for ATS, incorporate relevant keywords from the job description, such as specific skills and project types. You can also use an [ATS score checker](https://www.thetailorcv.com/solutions) to analyze your resume against the job requirements, ensuring that it meets the criteria needed to pass the initial screening.
+
+### What is a good summary example for an experienced civil engineer?  
+A strong summary for an experienced civil engineer might read: "Civil Engineer with 7 years of experience in structural design and project management for residential, commercial, and infrastructure projects. Delivered complex projects on time and within budget, proficient in tools like AutoCAD and Revit." This format highlights your experience and skills succinctly while demonstrating your impact on projects.
+
+### How should I showcase my project experience on my civil engineer resume?  
+When showcasing project experience, focus on completed projects rather than just listing responsibilities. Include specific details such as project type, budget, and your role to illustrate your impact. For tips on selecting the right projects to feature, you can refer to our guide on [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
+
+### Are there any recommended resume templates for civil engineers?  
+Yes, using [ATS-friendly resume templates](https://www.thetailorcv.com/templates) can significantly improve your chances of passing through automated screenings. These templates are designed to highlight your skills and experience effectively while remaining compatible with the software used by many employers today.

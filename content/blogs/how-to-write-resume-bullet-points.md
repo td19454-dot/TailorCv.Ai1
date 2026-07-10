@@ -189,3 +189,19 @@ Great [resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bu
 
 Use the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to verify your bullets contain the right keywords for each job, build on an [ATS-friendly template](https://www.thetailorcv.com/templates), and practice explaining your achievements in [mock interview prep](https://thetailorcv.com/interview-prep) before your call.
 
+## Frequently Asked Questions
+
+### Why should I focus on bullet points in my resume?
+Bullet points are crucial because they are the primary content recruiters read in the work experience section, which significantly influences hiring decisions. Well-crafted bullet points not only highlight your achievements but also help your resume get past ATS filters. For more tips on structuring your resume, check out our guide on the [resume section order](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### What is the best formula for writing strong resume bullet points?
+The best formulas for writing impactful bullet points include Action + Result and Action + Method + Result. These structures ensure you showcase your achievements by detailing what you did, how you did it, and the results you achieved. For a deeper understanding of quantifying your achievements, refer to our article on [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+
+### How can I make my bullet points stand out to recruiters?
+To make your bullet points stand out, use strong action verbs, quantify your results, and focus on the impact of your work. This approach not only captures attention but also demonstrates your value to potential employers. If you're looking for examples of impactful resumes, our post on [resume trends for 2026](https://thetailorcv.com/blog/resume-trends-2026) might provide some inspiration.
+
+### What are common mistakes to avoid when writing resume bullet points?
+Common mistakes include using passive language, focusing on job duties instead of achievements, and failing to quantify results. These pitfalls can make your bullet points forgettable and less impactful. To learn more about effective resume writing, consider looking into our guide on [how to write a resume from scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch).
+
+### How can I ensure my resume is ATS-friendly?
+To ensure your resume is ATS-friendly, use a clear structure, relevant keywords, and an ATS-friendly template. You can also check your resume's compatibility with ATS using our [free ATS score checker](https://www.thetailorcv.com/solutions). This will help you identify areas for improvement and increase your chances of getting noticed by recruiters.

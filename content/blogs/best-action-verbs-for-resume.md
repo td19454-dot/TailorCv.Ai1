@@ -185,4 +185,19 @@ Strong [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 
 After updating your verb choices, run your complete resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to check keyword alignment with the job description. If you need help formatting your achievements, read the [guide to quantifying resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements). For resume structure, use [ATS-friendly templates](https://www.thetailorcv.com/templates).
 
+## Frequently Asked Questions
 
+### Why should I use action verbs in my resume?
+Using action verbs is essential because they make your contributions clear, specific, and impactful. Instead of vague phrases like "responsible for," strong verbs such as "designed" or "implemented" demonstrate ownership and drive home the significance of your achievements. For a deeper understanding of how to structure your resume effectively, check out our guide on [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-a-resume-summary).
+
+### How do I choose the right action verb for my resume?
+Selecting the right action verb depends on the specific role and achievements you want to highlight. Our list categorizes verbs by function and role type, allowing you to pick the most accurate and impressive word for your experiences. To enhance your resume further, consider how to [list certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that complement your skills.
+
+### Can using action verbs improve my ATS score?
+Yes, using action verbs can positively impact your ATS score. ATS systems often look for specific keywords and active language, so incorporating strong action verbs in your experience section can enhance your resume's visibility. To ensure your resume meets ATS standards, use our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate keyword matching.
+
+### Are there specific action verbs for different industries?
+Absolutely! The action verbs in our guide are organized by category and role type, making it easier to find the most relevant verbs for your industry. This tailored approach helps your resume resonate better with recruiters in your field. Additionally, you might want to explore how to [add volunteer work](https://thetailorcv.com/blog/volunteer-work-on-resume) to showcase diverse experiences that align with your career goals.
+
+### How can I make my resume more impactful beyond action verbs?
+While action verbs are crucial, you can further enhance your resume by quantifying your achievements and using a clean, ATS-friendly format. Incorporating numbers and metrics can provide context and scale to your contributions. For tips on structuring your resume, refer to our [resume section order guide](https://thetailorcv.com/blog/resume-section-order-guide) for optimal layout strategies.

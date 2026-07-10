@@ -182,4 +182,19 @@ The phone [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-inte
 
 Prepare your answers with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [tell me about yourself guide](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself). Make sure your resume is strong with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and prepare for video rounds with the [virtual interview tips](https://thetailorcv.com/blog/virtual-interview-tips).
 
+## Frequently Asked Questions
 
+### What should I research before my phone interview?
+Before your phone interview, it's crucial to research the company thoroughly. Familiarize yourself with its mission, values, and recent news, as this will help you answer questions more effectively and demonstrate your genuine interest. Refer to our [company research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview) for tips on what to look for and how to leverage this information during your conversation.
+
+### How can I prepare for common phone interview questions?
+To prepare for common phone interview questions, you should practice your responses using the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and the "Tell Me About Yourself" framework. These resources will help you structure your answers and present your experiences clearly and confidently, which is vital for making a strong impression in the initial screening.
+
+### What are some mistakes to avoid during a phone interview?
+Many candidates make common mistakes during phone interviews that can jeopardize their chances of advancing. Some pitfalls include being unprepared, speaking too casually, or not being able to articulate their qualifications. To learn about other prevalent mistakes, check out our article on [20 Common Interview Mistakes to Avoid in 2026](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
+
+### How can I ensure good communication during the call?
+Effective communication during a phone interview is essential. Ensure you speak clearly, listen actively, and avoid interrupting the interviewer. Additionally, pay attention to your tone and pace, as these non-verbal cues can influence how your message is received. For more insights, explore our tips on [interview body language and communication](https://thetailorcv.com/blog/interview-body-language-communication-tips).
+
+### What should I do if I'm asked about salary expectations?
+When asked about salary expectations during a phone interview, it's important to be prepared with a researched range based on industry standards and your experience level. This shows that you are informed and serious about the position. If you're unsure how to approach this topic, consider reviewing our [Final Round Interview Tips 2026](https://thetailorcv.com/blog/final-round-interview-tips) for guidance on discussing compensation effectively.

@@ -229,4 +229,19 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 
 Make sure your resume matches your strong LinkedIn profile. Run it through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it for each job. For interview preparation after you land the callback, use the [interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and the [mock interview tool](https://thetailorcv.com/mock-interview).
 
+## Frequently Asked Questions
 
+### How can I optimize my LinkedIn profile to attract recruiters in 2026?  
+To attract recruiters on LinkedIn, focus on optimizing your headline, summary, and skills sections. Use a strong headline that includes your role type and key skills, and ensure your profile photo is professional. For a comprehensive guide on profile optimization, check out [how to optimize your resume for LinkedIn Easy Apply jobs in 2026](https://thetailorcv.com/blog/resume-optimization-linkedin-easy-apply).
+
+### What are the best strategies for networking on LinkedIn?  
+Networking on LinkedIn involves intentional connection-building and engaging with your network. Start by reaching out to industry professionals with personalized connection requests and follow up with meaningful messages. For detailed strategies, visit our post on [networking tips for job search in 2026](https://thetailorcv.com/blog/networking-tips-for-job-search).
+
+### How can I effectively use LinkedIn job alerts?  
+Setting up job alerts on LinkedIn allows you to receive notifications about new job postings that match your criteria. Make sure to refine your search by using specific keywords, locations, and job types. For more tips on maximizing your job search, check out our guide on [how to get your first tech job in 2026](https://thetailorcv.com/blog/how-to-get-first-tech-job).
+
+### What is the best way to send a cold message to a recruiter?  
+When sending a cold message to a recruiter, keep your message concise and professional. Introduce yourself, mention your interest in a specific role, and briefly highlight your relevant skills. For templates and tips, refer to our post on [how to write a cold email to a recruiter in 2026](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter).
+
+### How important is it to have a strong resume in addition to my LinkedIn profile?  
+Having a strong resume is crucial as it complements your LinkedIn profile, ensuring consistency in your professional narrative. Make sure your resume is optimized and tailored to job descriptions, as this will enhance your chances of being noticed by recruiters. Use our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate your resume's effectiveness.

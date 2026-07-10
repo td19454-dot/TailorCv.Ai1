@@ -187,3 +187,19 @@ Volunteer work belongs on your resume whenever it demonstrates relevant skills, 
 
 For freshers and career changers, it may be the most important section on the document. Build your resume on an [ATS-friendly template](https://www.thetailorcv.com/templates), run it through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions), and prepare to discuss your volunteer experience in interviews using the [mock interview tool](https://thetailorcv.com/interview-prep).
 
+## Frequently Asked Questions
+
+### Why should I include volunteer work on my resume?  
+Including volunteer work on your resume can significantly enhance your profile, especially if you have limited paid experience. It demonstrates valuable skills such as leadership and project management, fills employment gaps, and showcases your character and values. For instance, a student who volunteered as a web developer for a nonprofit has relevant experience that can be highlighted in their resume.
+
+### How do I format the volunteer experience section on my resume?  
+When formatting the volunteer experience section, treat it similarly to your work experience section. Include the organization name, your role, the dates of your involvement, and a brief description of your responsibilities and achievements. Using strong action verbs can help convey your contributions effectively; for more guidance, check out our list of [best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume).
+
+### Can volunteer work substitute for paid work experience on my resume?  
+Yes, volunteer work can serve as a substitute for paid experience, especially for fresh graduates or career changers. Highlighting relevant volunteer roles can demonstrate your skills and commitment to prospective employers. You can also refer to our article on [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) for tips on presenting your volunteer experience effectively.
+
+### What types of volunteer experiences should I include?  
+Include volunteer experiences that are relevant to the job you are applying for, particularly those that demonstrate transferable skills. For example, if you're applying for a project management position, include your role in organizing a community event. Ensure that the experiences you list are impactful and align with the skills outlined in the job description.
+
+### How can I make my volunteer experience stand out on my resume?  
+To make your volunteer experience stand out, quantify your achievements where possible and use specific examples of your contributions. Instead of simply stating your role, describe the impact you had, such as “increased community engagement by 30% through a targeted outreach campaign.” For more tips on resume formatting, consider reviewing our [ideal resume length guide](https://thetailorcv.com/blog/ideal-resume-length-guide).

@@ -175,4 +175,19 @@ Making your resume [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resu
 
 Test every application with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the complete strategy. For what to remove from your resume, see [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume).
 
+## Frequently Asked Questions
 
+### What are the common formatting mistakes to avoid for ATS compatibility?
+Many applicants unknowingly make formatting mistakes that can lead to their resumes being rejected by an ATS. Common issues include using non-standard fonts, excessive graphics, and complex layouts. To ensure your resume is ATS-friendly, refer to our guide on [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
+
+### How can I effectively use keywords in my resume?
+Using the right keywords is crucial for getting your resume noticed by an ATS. Start by analyzing the job description and identify key terms related to skills and experiences required for the position. You can create a tailored resume with the help of our [Resume Keyword Map Template - Match Your Resume to Any Job Description](https://thetailorcv.com/blog/resume-keyword-map-template).
+
+### What should the order of sections be in an ATS-friendly resume?
+The order of sections in your resume can impact how the ATS reads your information. Typically, you should start with your contact information, followed by a summary, skills, work experience, and education. For detailed guidance, check out our [Resume Section Order Guide - What Comes First on a Modern Resume](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### Which file types are best for submitting my resume to an ATS?
+When submitting your resume, it's essential to use the right file type to ensure compatibility with ATS software. The most commonly accepted formats are .docx and PDF, but it's best to check the job posting for specific requirements. For more tips on formatting, see our guide on how to [Choose the Right Resume Template for Your Job Search in 2026](https://thetailorcv.com/blog/how-to-choose-resume-template).
+
+### How can I quickly assess if my resume is ATS-friendly?
+To quickly determine if your resume meets ATS standards, you can use our [Free ATS score checker](https://www.thetailorcv.com/solutions). This tool allows you to compare your resume against a specific job description, helping you identify areas for improvement and ensuring your application stands out.

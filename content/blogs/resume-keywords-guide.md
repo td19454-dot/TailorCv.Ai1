@@ -179,4 +179,19 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 
 Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to identify missing keywords for every job. Read the [ATS-friendly resume guide](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) for formatting and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the complete picture.
 
+## Frequently Asked Questions
 
+### Why are resume keywords important for ATS?
+Resume keywords are crucial because they help your application get noticed by Applicant Tracking Systems (ATS). These systems parse your resume and compare it against job descriptions to rank candidates. If your resume lacks the right keywords, even a highly qualified candidate can be overlooked. To understand more about how ATS scores work, check out [what an ATS score is](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it).
+
+### How can I find the right keywords for my resume?
+To find the right keywords for your resume, analyze the job descriptions of positions you're interested in. Look for frequently mentioned skills, qualifications, and industry-specific terms. You can also use the [Free ATS score checker](https://www.thetailorcv.com/solutions) to identify keyword gaps in your resume compared to specific job postings.
+
+### What types of keywords should I include in my resume?
+You should include both hard skills and soft skills as keywords in your resume. Hard skills are specific, teachable abilities like software languages (e.g., Python, SQL), while soft skills include traits like communication and teamwork. For a comprehensive understanding of how to analyze job descriptions for keywords, refer to our [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist).
+
+### How often should I update the keywords in my resume?
+You should update the keywords in your resume for each job application you submit. Tailoring your resume to include the specific terms and phrases from the job description can significantly enhance your chances of passing ATS filters. To ensure your resume is optimized for each application, consider using our [resume templates](https://www.thetailorcv.com/templates).
+
+### Can using the wrong keywords hurt my job application?
+Yes, using the wrong keywords can negatively impact your job application. If your resume contains terminology that doesn't align with the job description, you risk being filtered out by ATS, even if you're qualified. To avoid this, make sure to [analyze your resume](https://thetailorcv.com/blog/ats-resume-data-study-2026) against the job description to ensure a good match.

@@ -177,4 +177,19 @@ A thank-you email after an [interview](https://thetailorcv.com/blog/how-to-prepa
 
 For the interview itself, prepare with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and the [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). For getting to the interview in the first place, use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize your resume, and use [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
 
+## Frequently Asked Questions
 
+### Why is it important to send a thank-you email after an interview?  
+Sending a thank-you email is crucial because it reinforces your interest in the position and demonstrates professionalism. It provides an opportunity to clarify any points from the interview or highlight aspects of your candidacy that you may not have fully addressed. Research shows that candidates who send thoughtful notes are often viewed more favorably by hiring managers, making it a simple yet effective way to improve your chances.
+
+### When should I send my thank-you email after an interview?  
+You should aim to send your thank-you email within 24 hours of your interview, with the same day being ideal if you can craft a thoughtful message. This timing keeps you fresh in the interviewer's mind and shows your enthusiasm for the role. If you met with multiple interviewers, remember to send individual notes to each person to personalize your follow-up.
+
+### What should I include in my thank-you email?  
+In your thank-you email, express gratitude for the opportunity, mention specific topics discussed during the interview, and reiterate your interest in the position. You can also clarify any points you felt needed more emphasis or highlight your relevant experiences. This will help you stand out and show that you are engaged in the hiring process.
+
+### How do I follow up if I haven't heard back after an interview?  
+If you haven't received a response after a week or two, it's appropriate to send a polite follow-up email asking for an update on your application status. This demonstrates your continued interest in the position and keeps the lines of communication open. If you're feeling particularly anxious about the silence, consider reading about [recruiter ghosting](https://thetailorcv.com/blog/recruiter-ghosting-after-interview) to understand what it might mean and how to handle it.
+
+### Can a poorly written follow-up email hurt my chances?  
+Yes, a poorly written follow-up email can negatively impact your chances of getting the job. It may give the impression that you lack attention to detail or professionalism. To avoid this, take the time to draft a thoughtful message and consider using resources like the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) to help you structure your email effectively.

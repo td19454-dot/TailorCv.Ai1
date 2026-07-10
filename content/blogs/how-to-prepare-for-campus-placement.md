@@ -212,4 +212,19 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 
 Build your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide). Master coding with the [coding interview guide](https://thetailorcv.com/blog/coding-interview-preparation-guide), GD with the [group discussion guide](https://thetailorcv.com/blog/group-discussion-tips), and interviews with the [mock interview tool](https://thetailorcv.com/mock-interview).
 
+## Frequently Asked Questions
 
+### What should I include in my resume for campus placement in 2026?  
+Your resume should clearly highlight your skills, education, and relevant projects. For freshers, it's essential to include a strong summary and emphasize projects that demonstrate your abilities. Check out our guide on [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for ideas on impactful projects to feature.
+
+### How can I prepare for the group discussion round during campus placements?  
+Preparing for the group discussion (GD) round involves understanding the current topics and practicing your communication skills. Familiarize yourself with common GD formats and practice articulating your thoughts clearly. For detailed strategies, read our post on [Group Discussion Tips 2026](https://thetailorcv.com/blog/group-discussion-tips) to stand out in this crucial stage.
+
+### What types of questions can I expect in a technical interview?  
+In a technical interview, you can expect questions that assess your understanding of core concepts, problem-solving abilities, and your projects. Be prepared to discuss technical details of your projects and demonstrate your coding skills. Our [Competency-Based Interview Questions](https://thetailorcv.com/blog/competency-based-interview-questions-guide) guide can help you prepare effectively for these types of interviews.
+
+### How do I handle behavioral questions during HR interviews?  
+Behavioral questions in HR interviews often explore how you've handled past situations. Use the STAR method (Situation, Task, Action, Result) to structure your responses. If you've had unique experiences, like job changes, consider reading our guides on [how to explain job hopping](https://thetailorcv.com/blog/how-to-explain-job-hopping-in-interview) or [getting fired](https://thetailorcv.com/blog/how-to-explain-getting-fired-in-an-interview) to prepare for these discussions.
+
+### What tools can help me improve my resume before campus placements?  
+Utilizing tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) can help ensure your resume meets industry standards and is optimized for applicant tracking systems. Additionally, consider using our [resume templates](https://www.thetailorcv.com/templates) to create a professional-looking document that highlights your qualifications effectively.

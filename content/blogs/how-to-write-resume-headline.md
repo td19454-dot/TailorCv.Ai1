@@ -200,4 +200,19 @@ A strong [resume headline](https://thetailorcv.com/blog/how-to-write-resume-head
 
 Write your summary next with the [resume summary guide](https://thetailorcv.com/blog/how-to-write-resume-summary), and verify your headline keywords match the job with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). For complete guidance, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide).
 
+## Frequently Asked Questions
 
+### What should I include in my resume headline?
+Your resume headline should include your professional identity, seniority, role or title, and key skills that are relevant to the job you're applying for. For example, you might use a formula like "[Seniority] [Role/Title] | [Key Skill 1] · [Key Skill 2] · [Key Skill 3]". This structure helps to immediately convey your qualifications to the recruiter and can be enhanced by including action verbs from our guide on [best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume).
+
+### How long should my resume headline be?
+Your resume headline should be concise, ideally just one line long. It should effectively summarize your professional identity without overwhelming the reader. Remember, the headline is meant to grab attention quickly, so aim for clarity and impact, keeping in mind that it should complement your [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary).
+
+### Can I change my resume headline for different applications?
+Absolutely! Tailoring your resume headline for each application is a smart strategy. By adjusting the headline to reflect the specific role and key skills sought by the employer, you can improve your chances of grabbing the recruiter's attention. This approach is part of creating a targeted resume that aligns with job descriptions, which can also help with your [ATS score](https://www.thetailorcv.com/solutions).
+
+### Should I include certifications in my resume headline?
+While it's not common to include certifications directly in the headline, you can highlight them in your resume summary or dedicated certification section. If a certification is particularly relevant to the job, consider mentioning it briefly in your headline or ensure it appears prominently in your resume. For guidance on how to list certifications, check out our article on [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
+
+### What are some examples of strong resume headlines?
+Strong resume headlines are specific and tailored to the job you’re applying for. For instance, "Senior Data Analyst | SQL · Python · Data Visualization" or "Creative Marketing Manager with 8+ Years in Digital Strategy". These examples effectively convey the candidate's identity and key skills. For more inspiration, explore our collection of [30 examples](https://thetailorcv.com/blog/how-to-write-resume-headline) provided in the post.

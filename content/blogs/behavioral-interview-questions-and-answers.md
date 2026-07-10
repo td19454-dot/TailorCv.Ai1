@@ -217,3 +217,19 @@ Before the interview, make sure the resume that earned the call is still aligned
 
 Use the [free AI mock interview tool](https://thetailorcv.com/mock-interview) on TailorCV to practice answering these questions out loud with feedback. Read the full [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) for technical interview, case interview, and salary negotiation preparation. And make sure your resume is strong before the interview even starts - use the [ATS score checker](https://www.thetailorcv.com/solutions) to optimize it.
 
+## Frequently Asked Questions
+
+### What is the STAR method and how can it help in behavioral interviews?
+The STAR method stands for Situation, Task, Action, and Result. It provides a structured way to respond to behavioral interview questions by allowing you to outline a specific situation you faced, the task you needed to accomplish, the actions you took, and the results of those actions. Using the [STAR method](https://thetailorcv.com/blog/interview-story-bank-star-method) can help you deliver clear and concise answers that highlight your skills and experiences effectively.
+
+### How do I prepare for common behavioral interview questions?
+To prepare for common behavioral interview questions, start by identifying key experiences from your past that demonstrate your skills and competencies. Utilize the [Interview Story Bank](https://thetailorcv.com/blog/interview-story-bank-star-method) to organize your thoughts and practice your responses using the STAR method. Additionally, reviewing example questions and answers can help you frame your own stories to ensure they align with the job requirements.
+
+### What should I do if I have a gap in my employment history?
+If you have a gap in your employment history, be prepared to address it during your interview. Focus on discussing what you did during that time, such as acquiring new skills, volunteering, or taking courses. Being honest and framing your gap positively can help reassure employers, and you can find useful tips in our guide on [how to explain getting fired in an interview](https://thetailorcv.com/blog/how-to-explain-getting-fired-in-interview).
+
+### How can I effectively answer the question, "Why are you leaving your current job?"
+When answering why you are leaving your current job, it's important to be honest yet tactful. Focus on your desire for new challenges, career growth, or a better fit for your skills and values. Practicing your response can help you articulate it confidently, and you can explore effective scripts in our post on [how to answer "Why Are You Leaving Your Current Job?"](https://thetailorcv.com/blog/how-to-answer-why-leaving-current-job).
+
+### What are some good questions to ask at the end of a behavioral interview?
+At the end of a behavioral interview, asking insightful questions can help you learn more about the company and demonstrate your interest. Consider asking about team dynamics, company culture, or specific goals for the role. For more ideas, check out our guide on the [best questions to ask in a job interview in 2026](https://thetailorcv.com/blog/questions-to-ask-in-an-interview) to ensure you leave a positive impression.

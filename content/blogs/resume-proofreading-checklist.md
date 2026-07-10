@@ -181,3 +181,19 @@ A complete pre-submission review catches the mistakes that silently kill applica
 
 Run through all 25 checks, then test your ATS score with the [TailorCV checker](https://www.thetailorcv.com/solutions). Once your resume starts generating interviews, use the [mock interview tool](https://thetailorcv.com/interview-prep) to make sure you close them.
 
+## Frequently Asked Questions
+
+### How do I ensure my resume is ATS compatible?
+To enhance your resume's ATS compatibility, start by using an [ATS-friendly template](https://www.thetailorcv.com/templates) that minimizes formatting issues. Additionally, ensure that your resume includes relevant keywords from the job description, which can significantly improve your chances of passing the ATS screening. After drafting your resume, run it through the [free ATS score checker](https://www.thetailorcv.com/solutions) for a detailed analysis.
+
+### What are common resume mistakes I should look for when proofreading?
+Common mistakes include typos, inconsistent formatting, and vague language. It's crucial to check every bullet point for clarity and impact, ensuring they describe achievements rather than just duties. For more insight, refer to our guide on [15 resume red flags that get you rejected before an interview](https://thetailorcv.com/blog/resume-red-flags) to avoid pitfalls that could harm your application.
+
+### How important is quantifying my achievements in a resume?
+Quantifying your achievements is vital as it provides concrete evidence of your impact. Aim for at least 60% of your bullet points to include specific metrics, such as percentages or dollar amounts. For tips on how to effectively present these achievements, check out our article on [how to write resume bullet points that get noticed](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+
+### Should I tailor my resume for each job application?
+Yes, tailoring your resume for each job application is essential for demonstrating that you are a strong fit for the position. This means adjusting your bullet points and skills to align with the job description. Using our checklist will help you verify that each tailored version meets the necessary standards before submission.
+
+### What should I include in my resume to avoid common pitfalls?
+To avoid common pitfalls, ensure that your resume is well-structured with a clear section order. Start with your most relevant experience and highlight your achievements with strong action verbs. For guidance on section order and best practices, refer to our [resume section order guide](https://thetailorcv.com/blog/resume-section-order-guide) to create a modern and effective resume layout.
