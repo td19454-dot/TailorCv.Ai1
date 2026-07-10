@@ -259,5 +259,19 @@ You do not need a perfect background to get started. You need a clear target, co
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
 
+## Frequently Asked Questions
 
+### How can I highlight my transferable skills when applying for jobs with no experience?  
+To effectively showcase your transferable skills, tailor your resume and cover letter to emphasize relevant abilities gained from previous experiences, such as volunteering or academic projects. Use specific examples that demonstrate your problem-solving, communication, and teamwork skills. For more guidance on how to structure your application, check out our [cover letter for a career change](https://thetailorcv.com/blog/cover-letter-for-career-change) for tips on presenting your skills convincingly.
 
+### What types of projects should I include on my resume if I have no formal work experience?  
+Including academic projects, personal projects, or volunteer work can significantly bolster your resume. Focus on projects that align with the job you're applying for and highlight your role, the skills you utilized, and the outcomes achieved. For more insights on selecting and presenting these experiences, refer to our guide on [projects in your resume](https://thetailorcv.com/blog/projects-in-resume).
+
+### Is networking really important if I have no job experience?  
+Yes, networking is crucial, especially for those without formal job experience. Building connections can lead to opportunities that aren’t advertised publicly and can help you gain insights into the industry. Attend networking events, engage in industry-specific forums, and connect with professionals on platforms like LinkedIn to expand your network. For strategies on transitioning into new fields, check out our [Career Change to Tech in 2026](https://thetailorcv.com/blog/career-change-to-tech-guide).
+
+### What should I do if I’m applying for jobs in a different field?  
+When applying for jobs in a different field, it's essential to tailor your resume and cover letter to highlight relevant skills and experiences that can transfer to the new role. Focus on how your background can add value to the potential employer. For specific examples and templates, see our [cover letter for an internal job application](https://thetailorcv.com/blog/cover-letter-for-internal-job-application).
+
+### How many jobs should I apply to if I have no experience?  
+While the quality of applications is more important than quantity, a good rule of thumb is to apply to at least 5-10 jobs per week. This number allows you to cast a wide net while still tailoring your applications effectively. For more detailed insights on job application strategies, visit our post on [how many jobs should you apply to per day](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day).

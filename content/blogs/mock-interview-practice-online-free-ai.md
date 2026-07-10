@@ -609,4 +609,19 @@ Students should:
 
 ---
 
+## Frequently Asked Questions
 
+### How does the AI mock interview tool work?
+The AI mock interview tool analyzes your resume and tailors interview questions to your specific projects and experiences. As you respond, the AI evaluates your answers and provides instant feedback, helping you identify areas for improvement. This personalized approach enhances your preparation by simulating a real interview environment, making it easier to practice for various roles.
+
+### Can I practice for different types of interviews using this tool?
+Yes, the AI mock interview tool can help you prepare for various types of interviews, including behavioral and technical interviews. Whether you're preparing for a software engineering role or a behavioral HR round, the tool adapts to your needs, allowing you to practice effectively. For tips on handling specific scenarios, check out our guide on [situational interview questions and answers](https://thetailorcv.com/blog/situational-interview-questions-answers).
+
+### Is the AI mock interview practice really free?
+Absolutely! The AI mock interview practice is free to use, allowing you to practice as much as you need without any financial commitment. This accessibility makes it an excellent resource for students, freshers, and anyone preparing to re-enter the job market. For additional resources, consider using our [resume templates](https://www.thetailorcv.com/templates) to enhance your application materials.
+
+### What kind of feedback will I receive from the AI?
+The AI provides detailed feedback on your responses, focusing on clarity, relevance, and overall delivery. This feedback is crucial for improving your communication skills and reducing interview anxiety. If you're looking for more ways to manage nerves during interviews, take a look at our article on [how to overcome interview anxiety and nerves](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips).
+
+### How can I combine AI mock interviews with other preparation strategies?
+To maximize your interview preparation, consider combining AI mock interviews with additional resources like our [interview preparation tool](https://thetailorcv.com/interview-prep) and the [job interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). This comprehensive approach ensures you cover all aspects of your interview readiness, from practicing responses to optimizing your resume.

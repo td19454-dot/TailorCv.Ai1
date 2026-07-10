@@ -192,4 +192,19 @@ What you remove from your resume is as important as what you add. A clean, focus
 
 Once you have removed the wrong things, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your keywords match the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and then strengthen your bullets with the [action verbs guide](https://thetailorcv.com/blog/best-action-verbs-for-resume) and [achievement quantification guide](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
+## Frequently Asked Questions
 
+### What are some common resume red flags to avoid in 2026?  
+In 2026, certain resume elements can raise red flags for employers, such as including outdated skills or irrelevant work experiences. To ensure your resume stands out positively, familiarize yourself with the [15 resume red flags that get you rejected before an interview](https://thetailorcv.com/blog/resume-red-flags) and eliminate any elements that may harm your chances.
+
+### Should I include my photo on my resume?  
+Generally, it's best to avoid including a photo on your resume unless specifically requested, as it can lead to unconscious bias and potential discrimination claims. In most Western countries, omitting your photo helps keep the focus on your qualifications and skills. Instead, concentrate on crafting a strong resume using [ATS-friendly templates](https://www.thetailorcv.com/templates).
+
+### What personal information should I exclude from my resume?  
+You should avoid including personal information such as your date of birth, marital status, and full home address. This information is often irrelevant to your job qualifications and can even lead to privacy concerns. Instead, provide only necessary details like your city and country, and focus on showcasing your skills and achievements.
+
+### How can I effectively quantify my resume achievements?  
+Quantifying your achievements is key to demonstrating your impact in previous roles. Use specific numbers, percentages, or outcomes to illustrate your contributions. For guidance on how to do this effectively, check out our post on [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) for practical examples and tips.
+
+### What should I focus on adding to my resume instead?  
+While knowing what to remove is crucial, it's equally important to know what to add. Focus on including relevant skills, accomplishments, and action verbs that resonate with the job description. For a comprehensive list of impactful terms, refer to our guide on the [200 best action verbs for resume in 2026](https://thetailorcv.com/blog/best-action-verbs-for-resume).

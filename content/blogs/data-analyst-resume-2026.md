@@ -399,6 +399,19 @@ Before applying, run your resume through the [TailorCV ATS score checker](https:
 
 Once your resume is ready, prepare your project explanations using the [job interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) so you can clearly explain dashboards, SQL queries, metrics, and business recommendations.
 
+## Frequently Asked Questions
 
+### What should I include in my data analyst resume summary for 2026?  
+Your resume summary should highlight your key skills and experiences relevant to data analysis, emphasizing your ability to derive insights from data and support business decisions. Focus on showcasing your proficiency in tools like SQL, Power BI, and Tableau, as well as any notable projects. For more tips on structuring your summary, check out our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide).
 
+### How can I make my data analyst resume ATS-friendly?  
+To ensure your resume is ATS-friendly, use a simple layout with clear headings and relevant keywords related to data analysis. Incorporate terms like "data cleaning," "dashboard creation," and "data visualization" to improve your chances of passing through ATS filters. You can also use our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate your resume's compatibility.
 
+### What are the best projects to include in a data analyst resume?  
+When listing projects on your resume, focus on those that demonstrate your ability to solve real-world problems using data. Highlight projects where you cleaned data, performed analyses, and presented findings that influenced business decisions. For a deeper understanding of how to structure these projects, refer to our guide on [Data Analyst Case Study Portfolio](https://thetailorcv.com/blog/data-analyst-case-study-portfolio).
+
+### How does a data analyst resume differ from a business analyst resume?  
+A data analyst resume typically emphasizes technical skills in data manipulation and visualization tools, while a business analyst resume focuses more on understanding business needs and requirements. If you're considering a transition between these roles, you might find our [Business Analyst Resume 2026](https://thetailorcv.com/blog/business-analyst-resume-2026) guide helpful for comparing the two.
+
+### What format should I use for my data analyst resume in 2026?  
+For 2026, it's recommended to use a clean, one-page format if you are an entry-level candidate or have less than seven years of experience. The best structure includes a header, resume summary, skills, work experience, projects, education, and certifications. This layout not only improves readability but also helps highlight your qualifications effectively.

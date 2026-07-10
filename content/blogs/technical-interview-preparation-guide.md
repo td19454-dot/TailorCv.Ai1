@@ -184,4 +184,19 @@ Before the interview, make sure the resume that earned the call is still aligned
 
 Start with a resume that gets you interviews - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then work through the [coding interview guide](https://thetailorcv.com/blog/coding-interview-preparation-guide), [system design guide](https://thetailorcv.com/blog/system-design-interview-guide), and [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers). Practice delivery with the [mock interview tool](https://thetailorcv.com/mock-interview).
 
+## Frequently Asked Questions
 
+### What are the key components of a technical interview in 2026?  
+The technical interview process typically consists of four main components: the Coding/DSA Round, System Design Round, Project/Technical Deep-Dive, and Behavioral Round. Each component assesses different skills, from problem-solving in data structures and algorithms to evaluating your ability to communicate and fit within a team. For more detailed insights, check out our [Software Engineer Interview Preparation](https://thetailorcv.com/blog/software-engineer-interview-preparation) guide. 
+
+### How many coding problems should I solve to prepare effectively?  
+To prepare effectively for technical interviews, aim to solve a minimum of 75 problems from the "Blind 75" list for basic competency. For solid preparation, tackle around 150 problems across various patterns, and for those targeting top companies like FAANG, solving between 250 to 350 problems is recommended. For a structured approach to problem-solving, refer to the [Coding Interview Preparation Guide 2026](https://thetailorcv.com/blog/coding-interview-preparation-guide).
+
+### What topics should I prioritize for the Coding/DSA Round?  
+When preparing for the Coding/DSA Round, prioritize mastering arrays and strings, hash maps and sets, and the two pointers and sliding window techniques. Following these, delve into more complex structures like trees, graphs, and dynamic programming. A comprehensive list of topics can help streamline your study process, which is discussed in the [Coding Interview Preparation Guide 2026](https://thetailorcv.com/blog/coding-interview-preparation-guide).
+
+### How can I prepare for the System Design Round?  
+Preparing for the System Design Round involves understanding how to design scalable systems and discussing trade-offs in your design choices. It’s crucial to practice with real-world scenarios and frameworks. For structured guidance and examples, explore our [System Design Interview Guide 2026](https://thetailorcv.com/blog/system-design-interview-guide).
+
+### What resources can I use to optimize my resume for technical interviews?  
+To optimize your resume and increase your chances of landing technical interviews, use the [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure it passes automated screening. Additionally, consider utilizing our resume templates to create a professional and impactful resume that highlights your technical skills effectively.
