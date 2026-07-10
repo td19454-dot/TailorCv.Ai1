@@ -94,13 +94,35 @@
         {% endfor %}
     </section>
 
+    {# Numbered pagination so search engines can reach every page (not just via a
+       39-deep Prev/Next chain). Shows first, a window around the current page, and
+       last — so page 1 and the final page are always one hop away. #}
     <nav class="pagination" aria-label="Blog pagination">
+        {% set qs = "&q=" ~ q ~ "&tag=" ~ selected_tag ~ "&category=" ~ selected_category %}
         {% if page > 1 %}
-        <a href="/blog?page={{ page - 1 }}&q={{ q }}&tag={{ selected_tag }}&category={{ selected_category }}">Previous</a>
+        <a href="/blog?page={{ page - 1 }}{{ qs }}" rel="prev">Previous</a>
         {% endif %}
-        <span>Page {{ page }} of {{ total_pages }}</span>
+
+        {% if page > 3 %}
+        <a href="/blog?page=1{{ qs }}">1</a>
+        {% if page > 4 %}<span class="pg-dots">…</span>{% endif %}
+        {% endif %}
+
+        {% for p in range([1, page - 2] | max, [total_pages, page + 2] | min + 1) %}
+            {% if p == page %}
+            <span class="pg-current" aria-current="page">{{ p }}</span>
+            {% else %}
+            <a href="/blog?page={{ p }}{{ qs }}">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page < total_pages - 2 %}
+        {% if page < total_pages - 3 %}<span class="pg-dots">…</span>{% endif %}
+        <a href="/blog?page={{ total_pages }}{{ qs }}">{{ total_pages }}</a>
+        {% endif %}
+
         {% if page < total_pages %}
-        <a href="/blog?page={{ page + 1 }}&q={{ q }}&tag={{ selected_tag }}&category={{ selected_category }}">Next</a>
+        <a href="/blog?page={{ page + 1 }}{{ qs }}" rel="next">Next</a>
         {% endif %}
     </nav>
 </main>
