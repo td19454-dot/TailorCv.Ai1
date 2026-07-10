@@ -59,6 +59,11 @@ function _getUpgradePriceLabel(region) {
   return 'Upgrade to Pro — from ' + p.sym + p.pro + '/mo';
 }
 
+function _getUpgradePriceOnly(region) {
+  var p = _UPGRADE_PRICING[region] || _UPGRADE_PRICING.india;
+  return p.sym + p.pro + '/month';
+}
+
 var FEATURE_LABELS = {
   ai_optimizations:   "Resume Optimization",
   cover_letters:      "Cover Letter",
