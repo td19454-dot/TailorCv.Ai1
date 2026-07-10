@@ -109,11 +109,11 @@ For [remote interviews](https://thetailorcv.com/blog/remote-job-interview-prepar
 
 ### Should I mention I was fired?
 
-If asked directly, be honest but brief. Focus on what you learned and why you are a strong candidate now. Do not volunteer unless asked.
+If asked directly, be honest but brief. Focus on what you learned and why you are a strong candidate now. Do not volunteer unless asked. For more on this topic, check out our guide on [how to explain getting fired in an interview](https://thetailorcv.com/blog/how-to-explain-getting-fired-in-an-interview).
 
 ### What if I hate my current boss?
 
-Never say that. Use growth, alignment, or opportunity framing instead.
+Never say that. Use growth, alignment, or opportunity framing instead. You might also find it helpful to explore [competency-based interview questions](https://thetailorcv.com/blog/competency-based-interview-questions-guide) to better articulate your experiences.
 
 ### Can AI mock interviews help with this question?
 
@@ -122,7 +122,6 @@ Yes - it is one of the most important questions to practice aloud. [Start with T
 ---
 
 [Practice your "why leaving" answer with TailorCV's free AI mock interview](https://thetailorcv.com/mock-interview).
-
 ## Make This Practical
 
 Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).

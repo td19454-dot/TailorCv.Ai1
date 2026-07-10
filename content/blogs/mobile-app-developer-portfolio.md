@@ -49,14 +49,13 @@ Your resume, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization
 ## Frequently Asked Questions
 
 ### My best work is a private company app I cannot show publicly - what do I do?
-Describe the problem, your role, and the architecture without sharing proprietary code, and build one public side project to demonstrate hands-on skill. See [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
+Describe the problem, your role, and the architecture without sharing proprietary code, and build one public side project to demonstrate hands-on skill. See [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects) and consider using our [portfolio builder](https://www.thetailorcv.com/portfolio) for guidance.
 
 ### Should I show native or cross-platform work?
-Show whatever matches your target roles. If you know both, lead with your strongest platform and mention the other as a secondary skill.
+Show whatever matches your target roles. If you know both, lead with your strongest platform and mention the other as a secondary skill. For tips on showcasing your work, check out the [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ### How do I align my resume?
-Keep platform names, architecture patterns, and app names consistent across resume and portfolio.
-
+Keep platform names, architecture patterns, and app names consistent across resume and portfolio. You can also use our [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume aligns well with industry standards.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then embed your app store links and demo videos and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

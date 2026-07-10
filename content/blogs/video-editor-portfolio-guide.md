@@ -57,8 +57,7 @@ Your resume and portfolio should tell the same story - same specialty (narrative
 Yes, especially early career, but label it clearly as a personal or spec project so viewers understand the context. See [Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience).
 
 ### How do I align my resume?
-Keep your genre specialty and software list identical across resume and portfolio.
-
+Keep your genre specialty and software list identical across [resume](https://www.thetailorcv.com/templates) and [portfolio](https://www.thetailorcv.com/portfolio).
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then embed your reel and organize samples by genre and publish a link for clients and hiring managers. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

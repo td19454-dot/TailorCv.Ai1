@@ -199,7 +199,7 @@ Not necessarily - many, like cybersecurity and financial analysis, pay competiti
 
 ### What's the difference between sector resilience and skill resilience?
 
-Sector resilience comes from being in an industry that doesn't cut headcount fast, like healthcare or government. Skill resilience comes from having abilities - like financial analysis, compliance, or data skills - that transfer across many industries. The strongest position combines both rather than relying on either alone.
+Sector resilience comes from being in an industry that doesn't cut headcount fast, like healthcare or government. Skill resilience comes from having abilities - like [financial analysis](https://thetailorcv.com/blog/how-to-build-professional-portfolio) , compliance, or data skills - that transfer across many industries. The strongest position combines both rather than relying on either alone.
 
 ### Is it worth taking a pay cut to move into a more stable field?
 
@@ -211,10 +211,7 @@ Entry-level hiring is usually the first thing frozen, even in resilient industri
 
 ### How often should I update my resume if I'm not job hunting?
 
-Every few months, or immediately after any measurable win - a completed project, a cost saving, a process improvement. Waiting until you need it means reconstructing accomplishments from memory under time pressure, which produces a weaker resume than updating it as things happen.
-
----
-
+Every few months, or immediately after any measurable win - a completed project, a cost saving, a process improvement. Waiting until you need it means reconstructing accomplishments from memory under time pressure, which produces a weaker resume than updating it as things happen. Consider using our [free ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume stays competitive.
 ## Next Step
 
 Start by seeing exactly where your resume stands today with the [free ATS score checker](https://www.thetailorcv.com/solutions).

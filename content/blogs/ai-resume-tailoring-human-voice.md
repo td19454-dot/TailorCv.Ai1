@@ -236,7 +236,7 @@ Experienced recruiters are developing a strong intuition for AI-generated langua
 
 ### Will AI-tailored resumes score better on ATS?
 
-Yes - when the tailoring is done correctly. Keyword matching improves significantly. But poor AI use (generic output, keyword stuffing as described in the [keyword density guide](https://thetailorcv.com/blog/resume-keyword-density-guide)) can actually hurt readability without improving ATS scores.
+Yes - when the tailoring is done correctly. Keyword matching improves significantly. But poor AI use (generic output, keyword stuffing as described in the [keyword density guide](https://thetailorcv.com/blog/resume-keyword-density-guide)) can actually hurt readability without improving [ATS scores](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job).
 
 ### Should I tell employers I used AI to tailor my resume?
 
@@ -244,10 +244,7 @@ No - there is no expectation or requirement to disclose this. AI is a tool, like
 
 ### Which AI tool is best for resume tailoring?
 
-The best tool is one that shows you keyword gaps and gives you control over the final content - rather than one that auto-generates everything. [TailorCV](https://www.thetailorcv.com/solutions) works on this principle: it analyzes the match, surfaces gaps, and gives you a tailored version that you review and edit before sending.
-
----
-
+The best tool is one that shows you keyword gaps and gives you control over the final content - rather than one that auto-generates everything. [TailorCV](https://www.thetailorcv.com/solutions) works on this principle: it analyzes the match, surfaces gaps, and gives you a tailored version that you review and edit before sending. For more insights on how to effectively tailor your resume, check out our post on [hidden keywords in job description](https://thetailorcv.com/blog/hidden-keywords-in-job-description).
 ## Related Guides
 
 - [How to Write a Resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai)

@@ -165,11 +165,11 @@ Once the resume itself is solid, strengthen the rest of the application. Draft a
 
 ### Is a CV maker good enough for ATS-screened applications?
 
-Only if the template it produces is genuinely [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) friendly. Avoid heavily graphic templates, multi-column layouts, and text-in-images for any application going through an online portal, and check the export with an ATS score checker before relying on it.
+Only if the template it produces is genuinely [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) friendly. Avoid heavily graphic templates, multi-column layouts, and text-in-images for any application going through an online portal, and check the export with an [ATS score checker](https://www.thetailorcv.com/solutions) before relying on it.
 
 ### Can I use the same resume for every job?
 
-You can, but it usually performs worse than a tailored version, especially for roles with different keyword sets. Small, targeted adjustments per job description tend to outperform one static file across an entire job search.
+You can, but it usually performs worse than a tailored version, especially for roles with different [keyword sets](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats). Small, targeted adjustments per job description tend to outperform one static file across an entire job search.
 
 ### Should I create multiple resume versions?
 
@@ -189,12 +189,11 @@ It can. Even when a recruiter opens the file directly, most companies still rout
 
 ### How do I know if my current resume is the reason I am not getting callbacks?
 
-Run it through an ATS score checker against a real job description you applied to and look for parsing errors or missing keywords, rather than assuming the content itself is weak. The [Does My Resume Pass ATS](https://thetailorcv.com/blog/does-my-resume-pass-ats) guide walks through this check step by step.
+Run it through an [ATS score checker](https://www.thetailorcv.com/solutions) against a real job description you applied to and look for parsing errors or missing keywords, rather than assuming the content itself is weak. The [Does My Resume Pass ATS](https://thetailorcv.com/blog/does-my-resume-pass-ats) guide walks through this check step by step.
 
 ### Is it worth paying for a resume builder instead of using a free CV maker?
 
 It depends on how many applications you are sending and how competitive the roles are. If you are applying broadly to ATS-heavy roles or need to tailor frequently, the time saved and improved match quality usually justify it; for a single simple document, a free tool may be all you need.
-
 ## Next Step
 
 Compare your current resume against a real job description and see exactly what is missing before you apply again, using the [free ATS score checker](https://www.thetailorcv.com/solutions).

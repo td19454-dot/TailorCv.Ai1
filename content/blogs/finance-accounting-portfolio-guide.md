@@ -57,8 +57,7 @@ Only if it contains real, identifiable company data. Rebuild the model structure
 Coursework projects, a mock audit, or a personal budgeting/investment model demonstrate the same analytical skills. See [Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience).
 
 ### How do I align my resume?
-Keep your specialty area and tool list identical across resume and portfolio - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
-
+Keep your specialty area and tool list identical across resume and portfolio - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements). For additional guidance, you might also find the [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide) helpful. Additionally, consider using our [portfolio builder](https://www.thetailorcv.com/portfolio) to create a cohesive presentation of your work.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then add your models and dashboards and publish a link (public or private) for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

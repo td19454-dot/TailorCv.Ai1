@@ -62,7 +62,7 @@ Be factual and brief: "My role was eliminated as part of a company-wide restruct
 
 ### How long should I take off before applying again?
 
-There's no universal answer - a few days to a week is common, but don't let avoidance stretch into months without at least resume prep. Balance rest with steady, structured progress.
+There's no universal answer - a few days to a week is common, but don't let avoidance stretch into months without at least [resume prep](https://www.thetailorcv.com/templates). Balance rest with steady, structured progress.
 
 ### Will a layoff hurt my chances with future employers?
 
@@ -74,10 +74,7 @@ Not automatically - evaluate it the same way you would any offer. See [how to ne
 
 ### What if my whole industry is doing layoffs right now?
 
-Consider whether a related, more stable field might be worth exploring - see [recession-proof jobs in 2026](https://thetailorcv.com/blog/recession-proof-jobs-2026) for options that tend to hold up better during downturns.
-
----
-
+Consider whether a related, more stable field might be worth exploring - see [recession-proof jobs in 2026](https://thetailorcv.com/blog/recession-proof-jobs-2026) for options that tend to hold up better during downturns. You might also want to explore [AI-proof jobs](https://thetailorcv.com/blog/ai-proof-jobs-2026) that are less likely to be affected by industry fluctuations.
 ## Make This Practical
 
 Turn this plan into daily action instead of a vague intention. Start with the [free ATS score checker](https://www.thetailorcv.com/solutions) to see exactly where your resume stands, rebuild your story with [how to explain resume gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps), and get interview-ready with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview).

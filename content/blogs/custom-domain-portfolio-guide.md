@@ -47,14 +47,13 @@ The [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) supports
 ## Frequently Asked Questions
 
 ### Do I need a custom domain, or is a subdomain good enough?
-A subdomain works fine when you are starting out. A custom domain is worth the small annual cost once you are actively applying or want a more permanent, professional link for your resume and business cards.
+A subdomain works fine when you are starting out. A custom domain is worth the small annual cost once you are actively applying or want a more permanent, professional link for your [resume](https://www.thetailorcv.com/templates) and business cards.
 
 ### How much does this cost overall?
 Typically $10-15/year for the domain itself. Hosting and SSL through the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio)'s Netlify deploy option are free.
 
 ### What happens to my portfolio content if I switch domains later?
-Nothing - your content lives in your TailorCV portfolio; the domain is just the address pointing to it, so you can repoint or change domains without rebuilding your site.
-
+Nothing - your content lives in your [TailorCV portfolio](https://www.thetailorcv.com/portfolio); the domain is just the address pointing to it, so you can repoint or change domains without rebuilding your site. For more guidance on creating a portfolio, check out our [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) post.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend wrestling with DNS settings from scratch. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then use the one-click Netlify deploy to connect your own custom domain. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

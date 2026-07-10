@@ -130,7 +130,6 @@ They prepare your individual answers and communication confidence - [AI mock int
 ---
 
 [Sharpen your interview answers with TailorCV's AI mock interview](https://thetailorcv.com/mock-interview) before your group interview.
-
 ## Make This Practical
 
 Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).

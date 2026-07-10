@@ -55,8 +55,7 @@ Not always - a well-documented repo with architecture diagrams and a recorded wa
 Rebuild a simplified, sanitized version of a system you worked on as a personal project, or document a side-project pipeline end-to-end. See [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
 
 ### How do I align my resume?
-Keep your tech stack and scale claims (traffic, uptime, team size) identical across resume and portfolio.
-
+Keep your tech stack and scale claims (traffic, uptime, team size) identical across [resume](https://thetailorcv.com/blog/devops-engineer-resume-2026) and [portfolio](https://www.thetailorcv.com/portfolio). You can also explore [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) for additional insights.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then link out to your GitHub repos and infrastructure write-ups and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

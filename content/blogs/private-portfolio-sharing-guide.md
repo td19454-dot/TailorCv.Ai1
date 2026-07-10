@@ -56,8 +56,7 @@ It is not indexed or publicly discoverable, but anyone who receives the direct l
 Often yes - see [Nurse and Healthcare Professional Portfolio Guide](https://thetailorcv.com/blog/healthcare-nurse-portfolio-guide) and [Finance and Accounting Portfolio Guide](https://thetailorcv.com/blog/finance-accounting-portfolio-guide) for field-specific guidance on what is safe to share even privately.
 
 ### When should I switch from private to public?
-Once you are openly and actively job searching and no longer worried about a current employer finding it, switching to public unlocks organic search traffic and broader recruiter discovery.
-
+Once you are openly and actively job searching and no longer worried about a current employer finding it, switching to public unlocks organic search traffic and broader [recruiter discovery](https://thetailorcv.com/blog/resume-portfolio-mock-interview-system).
 ## Build Your Portfolio Now
 
 You do not need to code a site or manage separate hosting for a private page. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then decide whether to publish publicly or share an unlisted link directly with recruiters. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

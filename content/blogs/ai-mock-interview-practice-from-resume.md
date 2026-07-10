@@ -198,8 +198,7 @@ It's excellent practice, but pair it with speaking answers out loud and, ideally
 
 ### Should I practice before every interview, even similar roles?
 
-Yes. Even 20 minutes of role-specific practice tied to the actual job description can sharpen which details you lead with, since the same resume bullet deserves a different emphasis depending on who's asking.
-
+Yes. Even 20 minutes of role-specific practice tied to the actual job description can sharpen which details you lead with, since the same resume bullet deserves a different emphasis depending on who's asking. For more tips, check out our [First Job Interview Tips for Freshers](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026) and [How to Practice Job Interviews at Home](https://thetailorcv.com/blog/how-to-practice-interviews-at-home).
 ## Next Step
 
 Upload your resume to the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) and start answering questions generated from your real experience, not a generic question list.
