@@ -453,9 +453,9 @@ html.tcv-app .site-footer { display: none !important; }
 @media (min-width: 769px) {
     .navbar .nav-links > a.nav-link,
     .navbar .nav-links > .nav-dropdown > .nav-dropdown-toggle {
-        font-size: 19px !important;
+        font-size: 16.5px !important;
         font-weight: 500 !important;
-        padding: 12px 16px !important;
+        padding: 10px 13px !important;
         letter-spacing: 0.2px !important;
         line-height: 1 !important;
         /* Anchors get text-transform:uppercase from style2/style3 but the dropdown
@@ -547,6 +547,26 @@ header.navbar .logo .logo-word {
 @media (max-width: 768px) {
     header.navbar .logo .logo-mark { height: 32px !important; }
     header.navbar .logo .logo-word { font-size: 1.3rem !important; }
+}
+
+/* ── Nav polish (desktop): shorter bar, a little breathing room to the left of
+   the logo. Applies from 769px up so mobile keeps its own header height. ──── */
+@media (min-width: 769px) {
+    header.navbar { height: 72px !important; }
+    header.navbar + * { padding-top: 72px !important; }
+    header.navbar .logo { margin: 0 0 0 24px !important; }
+}
+
+/* Center the nav links in the bar (desktop only — at ≥1025px there's room to
+   absolutely-center them without colliding with the logo or the Login/Get
+   Started cluster). */
+@media (min-width: 1025px) {
+    header.navbar .nav-links {
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        min-width: 0 !important;
+    }
 }
 
 

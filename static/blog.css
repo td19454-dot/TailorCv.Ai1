@@ -20,7 +20,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.65;
-  padding-top: 100px;
+  padding-top: 72px; /* match the fixed navbar height (was 100px → left a gap) */
 }
 
 /* Shared stylesheet also adds navbar offset; reset it here to avoid double top gap */
