@@ -797,7 +797,7 @@ async function animateToOptimizeStep(stepData) {
         const startPercent = parseInt(document.getElementById('optimize-percentage')?.textContent || '0');
         const targetPercent = stepData.percent;
         
-const duration = 12000;
+const duration = 6000;
         const startTime = performance.now();
         
         function animate(time) {
@@ -825,7 +825,7 @@ function startOptimizeProgress() {
             for (let i = 0; i < optimizeStepsData.length; i++) {
                 await animateToOptimizeStep(optimizeStepsData[i]);
                 if (i < optimizeStepsData.length - 1) {
-                    await new Promise(resolve => setTimeout(resolve, 800));
+                    await new Promise(resolve => setTimeout(resolve, 400));
                 }
             }
         },
