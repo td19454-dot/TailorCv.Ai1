@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Sales, Business Development, Job Search]
 category: Portfolio
-image: public/blog-images/sales-professional-portfolio-guide.webp
+image: public/blog-images/sales-professional-portfolio-guide.png
 slug: sales-professional-portfolio-guide
 keywords: sales portfolio, sales rep portfolio website, business development portfolio, sales case study, quota attainment portfolio
 ---
