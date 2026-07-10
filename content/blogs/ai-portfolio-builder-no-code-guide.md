@@ -50,14 +50,13 @@ Free portfolios built this way include a small "Made with TailorCV" watermark; u
 ## Frequently Asked Questions
 
 ### Do I need any design or coding experience to use this?
-No. Choosing a theme, uploading a resume, and editing text in a browser is the entire process - no HTML, CSS, or design tool knowledge required.
+No. Choosing a theme, uploading a [resume](https://www.thetailorcv.com/templates), and editing text in a browser is the entire process - no HTML, CSS, or design tool knowledge required.
 
 ### Will my portfolio look generic since AI generated it?
-The AI populates content and structure, but the theme, your specific project details, and your own edits make each portfolio distinct - especially once you expand your strongest projects into full case studies.
+The AI populates content and structure, but the theme, your specific project details, and your own edits make each portfolio distinct - especially once you expand your strongest projects into full [case studies](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ### Can I switch themes after publishing without starting over?
-Yes - your content stays intact when you change themes, so you can experiment without losing your work.
-
+Yes - your content stays intact when you change themes, so you can experiment without losing your work. You can also use the [portfolio builder](https://www.thetailorcv.com/portfolio) to easily manage your projects.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI auto-fill your experience, then personalize and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

@@ -63,11 +63,10 @@ Most strong portfolios are actually a hybrid: a single homepage with your intro,
 Neither is universally preferred - what matters is that the structure matches how much content you have and that navigation is fast and obvious either way.
 
 ### Can I switch from one-page to multi-page later?
-Yes. Start simple and expand into dedicated case study pages for your strongest projects as your body of work grows.
+Yes. Start simple and expand into dedicated case study pages for your strongest projects as your body of work grows. You can use a [portfolio builder](https://www.thetailorcv.com/portfolio) to help create these pages.
 
 ### Does structure affect SEO?
-Multi-page sites can rank for more individual search terms (one project page per keyword), while one-page sites concentrate everything under a single URL - see [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) for more.
-
+Multi-page sites can rank for more individual search terms (one project page per keyword), while one-page sites concentrate everything under a single URL - see [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) for more. Additionally, consider how to [put your portfolio on a custom domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide) to enhance your SEO efforts.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then decide between a one-page overview or multi-page case studies and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

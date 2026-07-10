@@ -64,7 +64,7 @@ No - ATS systems score based on keyword relevance and formatting, not the origin
 
 ### Will an AI-generated resume hurt my interview chances?
 
-Only if it makes claims you can't back up in person, or if the phrasing is so generic it fails to differentiate you. Specificity, not authorship, is what recruiters actually evaluate.
+Only if it makes claims you can't back up in person, or if the phrasing is so generic it fails to differentiate you. Specificity, not authorship, is what recruiters actually evaluate. For tips on how to enhance your resume's impact, check out our [resume trends 2026](https://thetailorcv.com/blog/resume-trends-2026).
 
 ### Should I disclose that I used AI to write my resume?
 
@@ -72,10 +72,7 @@ No - there's no expectation to disclose the tools used to draft any application 
 
 ### What's the safest way to use AI for my resume?
 
-Use a resume-specific tool that scores against real job descriptions and keeps your actual experience central, like the [free ATS score checker](https://www.thetailorcv.com/solutions), rather than relying solely on generic AI chat output.
-
----
-
+Use a resume-specific tool that scores against real job descriptions and keeps your actual experience central, like the [free ATS score checker](https://www.thetailorcv.com/solutions), rather than relying solely on generic AI chat output. For more guidance on structuring your resume, refer to our [resume section order guide](https://thetailorcv.com/blog/resume-section-order-guide).
 ## Make This Practical
 
 Use AI to speed up your draft, then verify it's specific and accurate. Check your resume's real ATS match with the [free ATS score checker](https://www.thetailorcv.com/solutions), tighten generic phrasing with [how to stop sounding generic on a resume](https://thetailorcv.com/blog/how-to-stop-sounding-generic-on-resume), and rehearse explaining every claim with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview).

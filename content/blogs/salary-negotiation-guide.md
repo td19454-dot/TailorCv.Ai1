@@ -134,18 +134,15 @@ There's no universal percentage — it depends on your research into the specifi
 
 ### What if the employer says the salary is fixed with no flexibility?
 
-Ask about flexibility in other areas — signing bonus, additional PTO, remote flexibility, or an earlier compensation review — since total package value often has room even when base salary genuinely doesn't.
+Ask about flexibility in other areas — signing bonus, additional PTO, remote flexibility, or an earlier compensation review — since total package value often has room even when base salary genuinely doesn't. Consider looking into [negotiating multiple job offers](https://thetailorcv.com/blog/negotiating-multiple-job-offers) for strategies that can help you maximize your overall compensation.
 
 ### Should I negotiate for a raise the same way I negotiate a job offer?
 
-The principles are similar — research, specific numbers, and quantified achievements — but a raise conversation depends more heavily on documented recent contributions than market benchmarking alone.
+The principles are similar — research, specific numbers, and quantified achievements — but a raise conversation depends more heavily on documented recent contributions than market benchmarking alone. For more insights, check out our [salary negotiation after a job interview](https://thetailorcv.com/blog/salary-negotiation-interview-guide-2026) guide.
 
 ### How do I know if I should just accept the offer instead of negotiating?
 
-If the total package already meets your researched target and there's little room in the specific number, accepting is reasonable — negotiation is about securing fair value, not extracting the maximum possible in every situation.
-
----
-
+If the total package already meets your researched target and there's little room in the specific number, accepting is reasonable — negotiation is about securing fair value, not extracting the maximum possible in every situation. If you're unsure, consider using our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate your overall application strategy.
 ## Related Guides
 
 - [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)

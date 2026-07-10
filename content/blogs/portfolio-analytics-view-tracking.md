@@ -47,8 +47,7 @@ No - view counting is passive and visible only to you on your dashboard; visitor
 That usually means the portfolio content itself needs work, not the traffic. Revisit [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid) and [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) to strengthen what visitors see once they arrive.
 
 ### Should I share the same link with every recruiter?
-You can, but a private, unlisted link per opportunity (see [Private Portfolio Sharing Guide](https://thetailorcv.com/blog/private-portfolio-sharing-guide)) gives you cleaner, per-application view data if you want to track engagement precisely.
-
+You can, but a private, unlisted link per opportunity (see [Private Portfolio Sharing Guide](https://thetailorcv.com/blog/private-portfolio-sharing-guide)) gives you cleaner, per-application view data if you want to track engagement precisely. Additionally, consider using [resume templates](https://www.thetailorcv.com/templates) to enhance your application materials.
 ## Build Your Portfolio Now
 
 You do not need to code a site or bolt on a separate analytics tool. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then track views right from your **My Portfolios** dashboard as you apply. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

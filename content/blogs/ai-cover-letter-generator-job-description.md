@@ -164,8 +164,7 @@ Yes, and it matters even more there, since an internal reader already knows your
 
 ### Does this work for remote job postings too?
 
-Yes, though remote postings often emphasize different things, like communication style and time zone overlap, that are worth mirroring specifically. [Cover Letter for Remote Jobs](https://thetailorcv.com/blog/cover-letter-for-remote-jobs) covers what to pull out of a remote-specific posting.
-
+Yes, though remote postings often emphasize different things, like communication style and time zone overlap, that are worth mirroring specifically. [Cover Letter for Remote Jobs](https://thetailorcv.com/blog/cover-letter-for-remote-jobs) covers what to pull out of a remote-specific posting. Additionally, consider checking our [ATS-Friendly Cover Letter Format](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) to ensure your letter meets the necessary standards.
 ## Next Step
 
 Paste your resume and a real job description into the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) and compare the first draft against the generic-opening example in this post, then edit until it sounds like you.

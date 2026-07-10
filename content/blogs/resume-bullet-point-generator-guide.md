@@ -197,7 +197,7 @@ Yes, as long as they are truthful, based on real input you provided, and edited 
 
 ### How many bullets should each job have?
 
-Most roles need 3-6 bullets. Use more for recent, relevant roles and fewer for older or less relevant ones - a generator can help you cut a long list down to the strongest entries.
+Most roles need 3-6 bullets. Use more for recent, relevant roles and fewer for older or less relevant ones - a [generator](https://thetailorcv.com/blog/free-resume-optimizer-online-2026) can help you cut a long list down to the strongest entries.
 
 ### Should every bullet have a number?
 
@@ -221,8 +221,7 @@ You can start from the same bullet, but tailor the emphasis and keywords for eac
 
 ### What is the biggest mistake people make with bullet generators?
 
-Giving the tool a bare job title instead of real details. The generator cannot know your actual impact - it can only work with what you tell it, so vague input always produces vague output.
-
+Giving the tool a bare job title instead of real details. The generator cannot know your actual impact - it can only work with what you tell it, so vague input always produces vague output. Consider using a [resume customization checklist](https://thetailorcv.com/blog/resume-customization-checklist) to ensure you're providing the right details.
 ## Next Step
 
 Draft your bullets, then run your full resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) to confirm the language, keywords, and formatting all work together before you apply.

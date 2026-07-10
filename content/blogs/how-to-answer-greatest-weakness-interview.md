@@ -115,7 +115,7 @@ Yes - frame it as past weakness with current improvement: "I used to struggle wi
 
 ### How long should the answer be?
 
-60-90 seconds. Brief weakness, more time on improvement actions.
+60-90 seconds. Brief weakness, more time on [improvement actions](https://thetailorcv.com/blog/star-method-interview-answers-guide).
 
 ### Does AI mock interview help with this question?
 
@@ -124,7 +124,6 @@ Absolutely - [TailorCV mock interview](https://thetailorcv.com/blog/ai-mock-inte
 ---
 
 [Practice your weakness answer with free AI mock interviews](https://thetailorcv.com/mock-interview).
-
 ## Make This Practical
 
 Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).

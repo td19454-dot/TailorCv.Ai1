@@ -49,14 +49,13 @@ Your resume and portfolio should tell the same story - same service specialty, s
 ## Frequently Asked Questions
 
 ### I am new to freelancing and have no client testimonials yet - what do I show?
-Document a process you set up for yourself or a friend/family member's small business, and clearly label it as a personal project while you build your first paid testimonials. See [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
+Document a process you set up for yourself or a friend/family member's small business, and clearly label it as a personal project while you build your first paid testimonials. See [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects). You might also find it helpful to explore [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) for additional guidance.
 
 ### Should I list my rates publicly?
-Optional, but a rough range helps filter unqualified inquiries and saves you time on calls with clients outside your budget.
+Optional, but a rough range helps filter unqualified inquiries and saves you time on calls with clients outside your budget. Consider reviewing the [HR and Recruiter Portfolio Guide](https://thetailorcv.com/blog/hr-recruiter-portfolio-guide) for insights on pricing strategies.
 
 ### How do I align my resume?
-Keep your service specialty and tools list identical across resume and portfolio.
-
+Keep your service specialty and tools list identical across resume and portfolio. Utilizing a [Free ATS score checker](https://www.thetailorcv.com/solutions) can help ensure that your resume aligns well with industry standards.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then add your service packages and testimonials and publish a link to share directly with prospective clients. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

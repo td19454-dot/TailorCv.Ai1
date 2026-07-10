@@ -234,8 +234,7 @@ Mostly no, as long as the font is a standard, widely available one and properly 
 
 ### How is a parsing problem different from a low keyword match?
 
-Parsing is about whether the software can correctly extract and structure your text at all. Keyword matching is about whether the content itself is relevant to the job once it has been extracted correctly. You can have perfectly parseable formatting and still score poorly if your resume lacks the right keywords, or you can have strong keyword coverage that never gets read properly because of a broken layout. Fix parsing first, since it is a prerequisite for the rest of your content being seen, then work on relevance using the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide).
-
+Parsing is about whether the software can correctly extract and structure your text at all. Keyword matching is about whether the content itself is relevant to the job once it has been extracted correctly. You can have perfectly parseable formatting and still score poorly if your resume lacks the right [keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score), or you can have strong keyword coverage that never gets read properly because of a broken layout. Fix parsing first, since it is a prerequisite for the rest of your content being seen, then work on relevance using the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide).
 ## Next Step
 
 Upload your resume to the [ATS score checker](https://www.thetailorcv.com/solutions) and check whether formatting issues are hurting your score before you send out another application.

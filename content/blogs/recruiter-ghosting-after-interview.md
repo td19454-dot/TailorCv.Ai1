@@ -158,11 +158,11 @@ Silence from one recruiter should never be the reason your whole search loses mo
 
 ### Is it rude to follow up more than once?
 
-No - one polite follow-up is standard and expected, and a brief second one after a longer gap is generally acceptable too. Beyond two follow-ups, additional messages rarely change the outcome and can start to read as pressure rather than genuine interest.
+No - one polite [follow-up](https://thetailorcv.com/blog/follow-up-email-after-application) is standard and expected, and a brief second one after a longer gap is generally acceptable too. Beyond two follow-ups, additional messages rarely change the outcome and can start to read as pressure rather than genuine interest.
 
 ### Does ghosting mean I definitely didn't get the job?
 
-Not necessarily. Silence usually means the process is delayed, stuck in an approval chain, or the recruiter simply hasn't been given a final answer to pass along yet. Treat it as "unresolved" rather than assuming rejection until you've given it a fair amount of time and at least one follow-up.
+Not necessarily. Silence usually means the process is delayed, stuck in an approval chain, or the recruiter simply hasn't been given a final answer to pass along yet. Treat it as "unresolved" rather than assuming rejection until you've given it a fair amount of time and at least one [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview).
 
 ### Should I contact the hiring manager directly if the recruiter goes silent?
 
@@ -187,9 +187,6 @@ Treat every application as one entry in a larger pipeline rather than a single m
 ### At what point should I stop reapplying to a company that ghosted me before?
 
 There's no fixed rule, but if a company ghosted you after a strong interview once, it's reasonable to wait at least a full hiring cycle (often six months to a year) before trying again, and to go in with tempered expectations about their process. A pattern across multiple attempts is a stronger signal than a single instance and may be worth deprioritizing that employer going forward.
-
----
-
 ## Next Step
 
 Don't let one recruiter's silence determine the pace of your whole search - run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) so you're ready to move fast the moment your next opportunity responds.

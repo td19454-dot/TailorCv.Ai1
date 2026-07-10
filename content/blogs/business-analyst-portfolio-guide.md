@@ -55,8 +55,7 @@ Only fully sanitized versions with company names, system names, and confidential
 Document a process improvement from your current role using BA methodology (stakeholder mapping, current/future state), even if "business analyst" was not your title. See [Career Change Portfolio](https://thetailorcv.com/blog/career-change-portfolio).
 
 ### How do I align my resume?
-Keep your methodology and industry focus consistent across resume and portfolio - see [Business Analyst Resume 2026](https://thetailorcv.com/blog/business-analyst-resume-2026).
-
+Keep your methodology and industry focus consistent across resume and portfolio - see [Business Analyst Resume 2026](https://thetailorcv.com/blog/business-analyst-resume-2026). You can also explore how to build a portfolio with AI in our guide on [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide). Additionally, consider using our [portfolio builder](https://www.thetailorcv.com/portfolio) to create a cohesive presentation of your work.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then add your process maps and case studies and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.
