@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Finance, Accounting, Job Search]
 category: Portfolio
-image: public/blog-images/finance-accounting-portfolio-guide.webp
+image: public/blog-images/finance-accounting-portfolio-guide.png
 slug: finance-accounting-portfolio-guide
 keywords: finance portfolio, accounting portfolio website, financial analyst portfolio, fp&a portfolio, accounting case study
 ---
