@@ -92,15 +92,50 @@ class BlogService:
                 return post
         return None
 
-    def related_posts(self, post: BlogPost, limit: int = 3) -> list[BlogPost]:
-        def score(candidate: BlogPost) -> int:
-            shared_tags = len(set(post.tags) & set(candidate.tags))
-            same_category = 1 if post.category and post.category == candidate.category else 0
-            return shared_tags * 3 + same_category
-
+    def related_posts(self, post: BlogPost, limit: int = 6) -> list[BlogPost]:
+        """Pick related posts for internal linking. Layered so every post links to
+        several others AND niche posts still get surfaced (fewer orphan pages):
+          1) strongest tag overlap (relevance),
+          2) same-category posts, rotated by this post's slug so the inbound links
+             spread across the whole category instead of always hitting the same
+             few popular posts,
+          3) most-recent posts as a final fill so the list is never short.
+        """
         others = [p for p in self.load_posts() if p.slug != post.slug]
-        others.sort(key=lambda p: (score(p), p.date_iso), reverse=True)
-        return others[:limit]
+        post_tags = set(post.tags)
+
+        def tag_overlap(c: BlogPost) -> int:
+            return len(post_tags & set(c.tags))
+
+        tagged = sorted(
+            (p for p in others if tag_overlap(p) > 0),
+            key=lambda p: (tag_overlap(p), p.date_iso),
+            reverse=True,
+        )
+        same_cat = [
+            p for p in others
+            if post.category and p.category == post.category
+        ]
+        if same_cat:
+            seed = sum(ord(ch) for ch in post.slug) % len(same_cat)
+            same_cat = same_cat[seed:] + same_cat[:seed]  # rotate to spread links
+        recent = sorted(others, key=lambda p: p.date_iso, reverse=True)
+        if recent:
+            # Rotate the fallback too (different offset) so the "filler" links also
+            # spread across older posts instead of always hitting the newest ones.
+            seed_r = (sum(ord(ch) for ch in post.slug) * 7 + 3) % len(recent)
+            recent = recent[seed_r:] + recent[:seed_r]
+
+        picked: list[BlogPost] = []
+        seen: set[str] = {post.slug}
+        for pool in (tagged, same_cat, recent):
+            for p in pool:
+                if p.slug not in seen:
+                    picked.append(p)
+                    seen.add(p.slug)
+                    if len(picked) >= limit:
+                        return picked
+        return picked[:limit]
 
     def list_filters(self) -> dict[str, list[str]]:
         posts = self.load_posts()
