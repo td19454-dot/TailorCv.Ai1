@@ -78,10 +78,7 @@ No - most interviewers understand that being let go happens for many reasons, in
 
 ### How do I answer if I was fired more than once?
 
-Focus on the most recent, most relevant instance, and be ready to show a clear pattern of growth across roles. Practice this scenario specifically with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) so your tone stays steady under follow-up questions.
-
----
-
+Focus on the most recent, most relevant instance, and be ready to show a clear pattern of growth across roles. Practice this scenario specifically with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) so your tone stays steady under follow-up questions. For additional insights, consider reviewing [how to explain job hopping in a job interview](https://thetailorcv.com/blog/how-to-explain-job-hopping-in-interview) and [how to answer "why are you leaving your current job?"](https://thetailorcv.com/blog/how-to-answer-why-leaving-current-job).
 ## Make This Practical
 
 Don't wait for the real interview to find the right words. Rehearse this exact question with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), align your resume story with [how to explain resume gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps), and confirm your resume is still a strong match for the role with the [free ATS score checker](https://www.thetailorcv.com/solutions).

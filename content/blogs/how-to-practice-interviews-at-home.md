@@ -112,7 +112,7 @@ Manage pre-interview stress with [interview anxiety tips](https://thetailorcv.co
 
 For a standard interview process, 5-10 hours total spread over a week is effective. More for [technical roles](https://thetailorcv.com/blog/technical-interview-preparation-guide).
 
-### Is AI mock interview enough without human practice?
+### Is [AI mock interview](https://thetailorcv.com/mock-interview) enough without human practice?
 
 AI mock interviews cover 80% of preparation needs. Add one peer session for best results.
 
@@ -123,7 +123,6 @@ AI mock interviews + video self-recording is a complete solo system. [Start free
 ---
 
 [Start practicing at home with TailorCV's free AI mock interview](https://thetailorcv.com/mock-interview).
-
 ## Make This Practical
 
 Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).

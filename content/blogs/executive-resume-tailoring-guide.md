@@ -250,10 +250,7 @@ No. Compensation is discussed during the interview process or in initial convers
 
 ### What if I am moving from a functional executive role to a general management or CEO role?
 
-This is one of the most common executive transitions. Your tailoring challenge is to show that your functional expertise translates to organizational leadership. Emphasize cross-functional initiatives, P&L ownership, and board-level exposure.
-
----
-
+This is one of the most common executive transitions. Your tailoring challenge is to show that your functional expertise translates to organizational leadership. Emphasize [cross-functional initiatives](https://thetailorcv.com/blog/hidden-keywords-in-job-description), P&L ownership, and board-level exposure.
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

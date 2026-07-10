@@ -162,10 +162,7 @@ Five to six flexible stories usually cover most behavioral questions, if each on
 
 ### How can I practice STAR answers realistically?
 
-Speaking the answer out loud, under time pressure, to questions generated from your own resume is far more effective than reading a list silently — which is exactly what a [free AI mock interview](https://thetailorcv.com/mock-interview) is designed for.
-
----
-
+Speaking the answer out loud, under time pressure, to questions generated from your own resume is far more effective than reading a list silently — which is exactly what a [free AI mock interview](https://thetailorcv.com/mock-interview) is designed for. For more guidance, check out our [STAR Method for Interview Answers - Complete Guide with Examples (2026)](https://thetailorcv.com/blog/star-method-interview-answers-guide).
 ## Related Guides
 
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)

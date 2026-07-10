@@ -95,10 +95,7 @@ Not necessarily - factor in growth trajectory, team fit, and stability alongside
 
 ### What if both companies won't budge on offers?
 
-That's fine - use your own priorities to decide, and decline the other gracefully with the [how to decline a job offer](https://thetailorcv.com/blog/how-to-decline-job-offer) templates so the door stays open for the future.
-
----
-
+That's fine - use your own priorities to decide, and decline the other gracefully with the [how to decline a job offer](https://thetailorcv.com/blog/how-to-decline-job-offer) templates so the door stays open for the future. For more insights on maximizing your offer, check out our [salary negotiation guide](https://thetailorcv.com/blog/salary-negotiation-guide) and learn how to [negotiate a salary offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) effectively.
 ## Make This Practical
 
 Enter every negotiation with a clear picture of your value. Confirm your resume and story are airtight with the [free ATS score checker](https://www.thetailorcv.com/solutions), review the full [salary negotiation guide](https://thetailorcv.com/blog/salary-negotiation-guide) before the call, and practice the actual conversation with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) so you sound confident, not rehearsed.

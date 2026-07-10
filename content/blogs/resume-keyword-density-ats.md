@@ -187,8 +187,7 @@ Not if each mention adds new information. A skill named once in the skills list,
 
 ### Can I check my keyword balance without guessing?
 
-Yes. Run your resume against the actual job posting using a [free ATS score checker](https://www.thetailorcv.com/solutions), which will surface both missing keywords and sections where density looks unnatural, so you are not relying on a manual word count.
-
+Yes. Run your resume against the actual job posting using a [free ATS score checker](https://www.thetailorcv.com/solutions), which will surface both missing keywords and sections where density looks unnatural, so you are not relying on a manual word count. For further optimization, consider using the [Resume Matcher Tool for Job Descriptions](https://thetailorcv.com/blog/resume-matcher-tool-job-description) to ensure your resume aligns with the job requirements.
 ## Next Step
 
 Run your resume against a real job posting with the [free ATS score checker](https://www.thetailorcv.com/solutions) to see exactly which keywords are missing, which are overused, and where to fix both before you apply.

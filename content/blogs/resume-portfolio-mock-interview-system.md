@@ -45,14 +45,13 @@ Building interview answers before your resume and portfolio are settled means yo
 ## Frequently Asked Questions
 
 ### Do I need all three tools, or can I get by with just a resume?
-A resume alone gets you through initial screens for many roles, but a matching portfolio and rehearsed interview answers consistently shorten time-to-offer once you reach the interview stage, especially for competitive roles.
+A resume alone gets you through initial screens for many roles, but a matching [portfolio](https://thetailorcv.com/portfolio) and rehearsed interview answers consistently shorten time-to-offer once you reach the interview stage, especially for competitive roles.
 
 ### How often should I update this whole system?
-Any time you complete a new project or achievement significant enough for your resume, update the portfolio and refresh your interview talking points in the same sitting - do not let them drift apart.
+Any time you complete a new project or achievement significant enough for your resume, update the [portfolio](https://thetailorcv.com/portfolio) and refresh your interview talking points in the same sitting - do not let them drift apart.
 
 ### Where do I start if I have none of these built yet?
-Start with the resume and the [ATS score checker](https://www.thetailorcv.com/solutions), then build your portfolio from it with the [portfolio builder](https://thetailorcv.com/portfolio), then move into [mock interview](https://www.thetailorcv.com/mock-interview) practice using your portfolio's strongest stories.
-
+Start with the resume and the [ATS score checker](https://www.thetailorcv.com/solutions), then build your [portfolio](https://thetailorcv.com/portfolio) from it with the portfolio builder, then move into [mock interview](https://www.thetailorcv.com/mock-interview) practice using your portfolio's strongest stories.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then rehearse the same stories with [mock interview practice](https://www.thetailorcv.com/mock-interview) and a role-specific [interview question generator](https://thetailorcv.com/interview-prep). Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so every stage of your job search tells one consistent story.

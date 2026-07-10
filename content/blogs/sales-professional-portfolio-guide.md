@@ -52,14 +52,13 @@ Your resume, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job
 ## Frequently Asked Questions
 
 ### Is a portfolio unusual for sales roles?
-Yes, which is exactly why it stands out. Sales leaders rarely see one, so a clear, numbers-backed portfolio signals initiative before the first interview.
+Yes, which is exactly why it stands out. Sales leaders rarely see one, so a clear, numbers-backed [portfolio](https://www.thetailorcv.com/portfolio) signals initiative before the first interview.
 
 ### What if my results are all under NDA?
 Describe outcomes without naming the client or exact figures where required - percentage growth, relative deal size, and cycle time are usually safe to share.
 
 ### How do I align my resume?
-Use consistent quota and revenue framing across both - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) for the exact phrasing patterns recruiters respond to.
-
+Use consistent quota and revenue framing across both - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) for the exact phrasing patterns recruiters respond to. Additionally, consider using [resume templates](https://www.thetailorcv.com/templates) to maintain a professional look.
 ## Build Your Portfolio Now
 
 You do not need to code a site or wrestle with a website builder for a weekend. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then add your deal case studies and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

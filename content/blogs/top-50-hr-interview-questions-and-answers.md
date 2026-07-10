@@ -266,10 +266,7 @@ The most effective method is speaking answers out loud to questions generated fr
 
 ### Do HR interview questions differ by industry or seniority?
 
-The core categories stay the same, but the depth changes. Senior and executive candidates get more strategic and leadership-focused variations — see the [executive resume tailoring guide](https://thetailorcv.com/blog/executive-resume-tailoring-guide) for how expectations shift at that level.
-
----
-
+The core categories stay the same, but the depth changes. Senior and executive candidates get more strategic and leadership-focused variations — see the [executive resume tailoring guide](https://thetailorcv.com/blog/executive-resume-tailoring-guide) for how expectations shift at that level. For more insights on behavioral questions, check out the [STAR Method Interview Guide](https://thetailorcv.com/blog/star-method-interview-guide) and learn how to effectively use the [STAR Method for Interview Answers](https://thetailorcv.com/blog/star-method-interview-answers-guide).
 ## Related Guides
 
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)

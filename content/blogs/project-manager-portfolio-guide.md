@@ -55,8 +55,7 @@ Only with company names and identifiable figures removed or replaced with ranges
 Yes, if you can show clear scope, a real constraint, and a delivered outcome. Scale matters less than demonstrated judgment. See [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
 
 ### How do I align my resume?
-Keep your methodology and certification list identical across resume and portfolio - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
-
+Keep your methodology and certification list identical across resume and portfolio - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) and consider using our [resume templates](https://www.thetailorcv.com/templates) for consistency.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then add your project case studies and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

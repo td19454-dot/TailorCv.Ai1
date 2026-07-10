@@ -153,10 +153,7 @@ Yes — matching your resume's language and highlighted projects to the specific
 
 ### What's the best way to practice for the behavioral and resume rounds specifically?
 
-Speaking your answers out loud to questions generated from your actual resume, with feedback on clarity and structure, is far more effective than reading a question list silently — which is what a [free AI mock interview](https://thetailorcv.com/mock-interview) is built for.
-
----
-
+Speaking your answers out loud to questions generated from your actual resume, with feedback on clarity and structure, is far more effective than reading a question list silently — which is what a [free AI mock interview](https://thetailorcv.com/mock-interview) is built for. Additionally, utilizing the [STAR method for interview answers](https://thetailorcv.com/blog/star-method-interview-answers-guide) can enhance your response quality.
 ## Related Guides
 
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)

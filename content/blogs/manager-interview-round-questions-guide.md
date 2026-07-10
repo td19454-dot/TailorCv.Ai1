@@ -136,12 +136,11 @@ Often yes - prepare with the [dedicated guide](https://thetailorcv.com/blog/how-
 
 ### How do I prepare for a manager I haven't met?
 
-Research their [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), team blog posts, and conference talks. Prepare questions about their leadership style.
+Research their [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), team blog posts, and conference talks. Prepare questions about their [leadership style](https://thetailorcv.com/blog/competency-based-interview-questions-guide).
 
 ---
 
 [Practice manager round answers with TailorCV's AI mock interview](https://thetailorcv.com/mock-interview).
-
 ## Make This Practical
 
 Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).

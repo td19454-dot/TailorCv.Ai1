@@ -57,8 +57,7 @@ Only with names, faces, and identifying details removed, and only where your sch
 Your student-teaching unit plans, observation feedback, and a philosophy statement are enough to start. See [Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience).
 
 ### How do I align my resume?
-Match your grade level, subject, and certification language exactly between resume and portfolio - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) for how to phrase outcomes.
-
+Match your grade level, subject, and certification language exactly between resume and portfolio - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) for how to phrase outcomes. You can also explore [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) for additional tips on creating an effective portfolio.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then add your lesson plans and philosophy statement and publish a link for job applications and district portals. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

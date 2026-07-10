@@ -75,7 +75,7 @@ Sincerely,
 
 ### Do I need remote work experience to apply for a remote job?
 
-No - freelance work, self-directed projects, or even coursework completed independently can demonstrate the same qualities. Frame it honestly using [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) if you're early career.
+No - freelance work, self-directed projects, or even coursework completed independently can demonstrate the same qualities. Frame it honestly using [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) if you're early career. You can also refer to our [remote job search guide](https://thetailorcv.com/blog/remote-job-search-guide) for more insights.
 
 ### Should I mention my home office setup?
 
@@ -83,14 +83,11 @@ One sentence is enough - it reassures the hiring manager without over-explaining
 
 ### How do I prepare for a remote job interview specifically?
 
-Practice with the [remote job interview preparation guide](https://thetailorcv.com/blog/remote-job-interview-preparation-2026) and run a mock session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), which can simulate video-call-style questions.
+Practice with the [remote job interview preparation guide](https://thetailorcv.com/blog/remote-job-interview-preparation-2026) and run a mock session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), which can simulate video-call-style questions. Additionally, consider reviewing common [cover letter mistakes](https://thetailorcv.com/blog/cover-letter-mistakes-2026) to ensure your application stands out.
 
 ### What if there's a big time zone gap?
 
 Address it directly and propose a solution - partial overlap hours, flexible start times, or async-first workflows. Hiding it usually costs more trust than naming it upfront.
-
----
-
 ## Make This Practical
 
 Build your full remote application as one package: confirm your resume matches the role with the [free ATS score checker](https://www.thetailorcv.com/solutions), draft this letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), and rehearse remote-specific interview questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview).
