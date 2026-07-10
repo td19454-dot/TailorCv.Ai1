@@ -719,6 +719,10 @@ def _resend_from() -> str:
     return os.getenv("EMAIL_FROM", "").strip()
 
 
+def _resend_welcome_from() -> str:
+    return os.getenv("EMAIL_FROM_WELCOME", "").strip() or _resend_from()
+
+
 def send_password_reset_email(recipient_email: str, reset_code: str) -> bool:
     api_key = os.getenv("RESEND_API_KEY", "").strip()
     from_addr = _resend_from()
@@ -763,7 +767,7 @@ def send_signup_code_email(recipient_email: str, signup_code: str) -> bool:
 
 def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
     api_key = os.getenv("RESEND_API_KEY", "").strip()
-    from_addr = _resend_from()
+    from_addr = _resend_welcome_from()
     if not (api_key and from_addr):
         return False
 
@@ -774,15 +778,30 @@ def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
         "subject": "Welcome to TailorCV",
         "text": (
             f"Hi {recipient_name or 'there'},\n\n"
-            "I am the Co-Founder of TailorCV, and I would love your feedback on our platform.\n\n"
-            "Here are the tools you can explore:\n"
-            "- https://thetailorcv.com/solutions: Optimizing resume for job description, Checking ATS score\n"
-            "- https://thetailorcv.com/templates : ATS friendly resume templates\n"
-            "- https://thetailorcv.com/modify-cv: Build resume from scratch\n"
-            "- https://thetailorcv.com/interview-prep: Generate interview questions\n"
-            "- https://thetailorcv.com/mock-interview: Mock interview practice\n\n"
-            "Please reply to this email and share your feedback. It will really help us improve TailorCV.\n\n"
-            "Thanks,\n"
+            "I'm Shubham, Co-Founder of TailorCV.\n\n"
+            "Behind every resume is someone hoping for an opportunity—a student looking for their first break, "
+            "someone trying to switch careers, or someone simply looking for a better future.\n\n"
+            "As a student myself, I know how overwhelming that journey can feel. That's why I started building TailorCV.\n\n"
+            "I'd genuinely love to know whether we're creating something that truly helps job seekers.\n\n"
+            "If you have few minutes sometime this week, I'd really appreciate your honest feedback.\n\n"
+            "I'd especially love to know:\n"
+            "⏳ Does TailorCV actually save you time and effort?\n"
+            "\U0001F4BC Would you use it in your job application workflow?\n"
+            "\U0001F914 Was anything confusing or frustrating?\n"
+            "\U0001F4B3 Would you consider paying for something like this?\n\n"
+            "\U0001F449 Explore the platform here:\n"
+            "https://thetailorcv.com/dashboard\n\n"
+            "While you're there, feel free to explore our other tools too:\n"
+            "\U0001F4DD AI Resume Builder\n"
+            "\U0001F4CA ATS Resume Analysis\n"
+            "\U0001F310 Portfolio Builder\n"
+            "\U0001F3A4 Mock Interviews\n"
+            "❓ Interview Question Generator\n\n"
+            "Every feature is being built with one goal in mind: making the job application process less stressful and more effective.\n\n"
+            "\U0001F4E9 Just reply to this email with your thoughts. I personally read every reply, and every piece of feedback helps shape what we build next.\n\n"
+            "Thank you for your time and support! \U0001F64F\n\n"
+            "Best,\n"
+            "Shubham\n"
             "Co-Founder, TailorCV"
         ),
     })
