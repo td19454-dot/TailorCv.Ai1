@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Social Media, Marketing, Job Search]
 category: Portfolio
-image: public/blog-images/social-media-manager-portfolio.webp
+image: public/blog-images/social-media-manager-portfolio.png
 slug: social-media-manager-portfolio
 keywords: social media manager portfolio, social media portfolio website, content strategy portfolio, social media case study, community management portfolio
 ---
