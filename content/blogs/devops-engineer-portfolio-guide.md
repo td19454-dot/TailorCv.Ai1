@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, DevOps, SRE, Infrastructure, Job Search]
 category: Portfolio
-image: public/blog-images/devops-engineer-portfolio-guide.webp
+image: public/blog-images/devops-engineer-portfolio-guide.png
 slug: devops-engineer-portfolio-guide
 keywords: devops portfolio, sre portfolio, infrastructure as code portfolio, devops engineer portfolio website, kubernetes portfolio
 ---
