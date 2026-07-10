@@ -249,5 +249,19 @@ In 2026, the strongest applicants are not always the people with the fanciest re
 - [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
 - [How to Check Your ATS Score for Free (2026 Guide)](https://thetailorcv.com/blog/how-to-check-ats-score-free)
 
+## Frequently Asked Questions
 
+### What is an ATS score and how is it calculated?
+An ATS score is a numerical representation of how well your resume aligns with a specific job description. The score is calculated based on various factors, including keyword matches, formatting, and overall relevance to the job description. To improve your score, consider using tools like the [free ATS score checker](https://www.thetailorcv.com/solutions) to assess your resume and make necessary adjustments.
 
+### How can I improve my ATS score?
+To enhance your ATS score, focus on incorporating relevant keywords from the job description into your resume. A great resource is the [Resume Keywords Guide 2026](https://thetailorcv.com/blog/resume-keywords-guide), which helps you identify and effectively use the right keywords to ensure your application gets noticed by both ATS and hiring managers.
+
+### What should I avoid to prevent a low ATS score?
+To avoid a low ATS score, steer clear of using complex formatting, graphics, or unusual fonts that can confuse the software. Additionally, refrain from including irrelevant information that doesn't pertain to the job description, as this can dilute the focus of your resume. For a comprehensive list of what not to include, check out our guide on [what not to put on a resume in 2026](https://thetailorcv.com/blog/what-not-to-put-on-resume).
+
+### How do I know if my resume is ATS-friendly?
+You can determine if your resume is ATS-friendly by running it through an [ATS score checker](https://www.thetailorcv.com/solutions) to see how well it performs against the job requirements. Additionally, ensure your resume follows standard formatting practices and includes relevant keywords from the job description to improve your chances of passing the initial screening.
+
+### Why am I not getting interviews despite having the right qualifications?
+Even with the right qualifications, if your resume is not optimized for ATS, it may not reach human recruiters. Many qualified candidates are overlooked due to poor resume formatting or a lack of relevant keywords. To understand more about this issue, read our blog post on [why am I not getting interviews for jobs I'm qualified for?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews).

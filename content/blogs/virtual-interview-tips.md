@@ -208,4 +208,19 @@ Virtual interviews are a skill. Candidates who nail the technical setup, maintai
 
 Start with a strong resume - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it. Then prepare your answers with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and practice delivery using the [free AI mock interview tool](https://thetailorcv.com/mock-interview). Read the complete [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) for all interview stages.
 
+## Frequently Asked Questions
 
+### What are the key technical aspects to check before a virtual interview?  
+Before your virtual interview, ensure your camera is positioned at eye level or slightly above for a professional appearance. Test your microphone and speakers to avoid audio issues during the interview, and check your internet connection for stability. For additional preparation, consider using the [free AI mock interview](https://www.thetailorcv.com/mock-interview) tool to practice your delivery.
+
+### How can I improve my body language during a video interview?  
+Maintaining good body language is crucial in virtual interviews. Sit up straight, make eye contact with the camera, and use hand gestures naturally to emphasize your points. Being aware of your body language can enhance your communication, making you appear more confident and engaged during the interview.
+
+### What should I do if I experience technical difficulties during the interview?  
+If you encounter technical issues, remain calm and communicate the problem to your interviewer. It's acceptable to ask for a moment to troubleshoot or switch to a backup platform if necessary. Preparing in advance by testing your equipment can help minimize these disruptions during your interview.
+
+### How can I stand out in a virtual interview?  
+To stand out, focus on your presentation quality and be well-prepared with your answers. Use a clean, well-lit background and dress professionally, just as you would for an in-person interview. Additionally, practicing with tools like the [free AI mock interview](https://www.thetailorcv.com/mock-interview) can help you refine your delivery and boost your confidence.
+
+### What should I include in my resume before applying for virtual jobs?  
+Your resume should highlight relevant skills and experiences that align with the job description, ensuring it's optimized for ATS compatibility. Use the [free ATS score checker](https://www.thetailorcv.com/solutions) to assess your resume's effectiveness, and consider utilizing an [ATS-friendly template](https://www.thetailorcv.com/templates) to enhance its presentation.

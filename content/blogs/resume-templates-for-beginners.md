@@ -444,4 +444,19 @@ If you want ready-made [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-
 - [Interview Preparation Tool](https://thetailorcv.com/interview-prep)
 - [Mock Interview Practice](https://thetailorcv.com/mock-interview)
 
+## Frequently Asked Questions
 
+### What should I include in a resume if I have no experience?
+When creating a resume without prior experience, focus on your skills, education, and any relevant projects or volunteer work. Highlight transferable skills that relate to the job, and consider using a [resume template for beginners](https://www.thetailorcv.com/templates) to ensure a professional appearance. This approach helps recruiters see your potential rather than just your lack of experience.
+
+### How can I make my resume stand out as a beginner?
+To make your resume stand out, use a clean and professional layout that is also ATS-friendly. Incorporate strong action verbs and quantify your achievements where possible. For tips on how recruiters read resumes, check out our guide on [how recruiters read resumes in under 10 seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes).
+
+### Are there specific resume templates for students or freshers?
+Yes, there are several resume templates specifically designed for students and freshers. These templates typically emphasize education, skills, and any internships or volunteer experiences. You can explore our collection of [resume templates](https://www.thetailorcv.com/templates) to find one that suits your needs and helps you present your qualifications effectively.
+
+### How do I write effective bullet points for my resume?
+Effective bullet points should be concise and start with strong action verbs. Focus on what you accomplished or learned in each role, even if it's from volunteer work or school projects. For more detailed guidance, refer to our post on [how to write resume bullet points that get noticed](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+
+### Should I include a photo on my resume as a beginner?
+Whether to include a photo on your resume depends on the industry and location. In some countries, it's standard, while in others, it may be discouraged. To get the latest insights on this topic, read our article on [should you put a photo on your resume?](https://thetailorcv.com/blog/photo-on-resume).

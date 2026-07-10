@@ -191,3 +191,19 @@ A strong [UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026) res
 
 Test your resume against the job description with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Once your resume is ready, prepare for portfolio walkthroughs and case study interviews using the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What should I include in my UX designer resume summary for 2026?  
+Your UX designer resume summary should concisely highlight your years of experience, key skills, and the impact of your past work. For example, you might say, "UX designer with 5 years of experience in creating user-centered designs that improved task completion rates by 30%." This summary sets the tone for your resume and aligns with the need to demonstrate measurable outcomes.
+
+### How can I optimize my UX designer resume for ATS?  
+To optimize your resume for ATS, include relevant keywords from the job description and ensure a clean format. You can use the [free ATS score checker](https://www.thetailorcv.com/solutions) to assess how well your resume matches the job requirements. This tool helps you identify areas for improvement, ensuring your resume passes initial screenings before it reaches hiring managers.
+
+### What is the best way to showcase my design portfolio in my resume?  
+Your design portfolio should be prominently linked in your resume header. It serves as your primary evidence of skills and past work. Make sure your portfolio includes a variety of projects that demonstrate your design process and user impact, as discussed in our guide on [how to build a professional portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
+
+### What are the key skills to highlight in a UX designer resume?  
+Key skills to include in your resume are user research, wireframing, prototyping, and usability testing. Additionally, mention any specific tools you are proficient in, such as Figma. Tailor these skills to match the job description, emphasizing those that demonstrate your ability to impact user experience positively.
+
+### How can I demonstrate my impact as a UX designer on my resume?  
+To demonstrate your impact, use quantifiable metrics in your bullet points under work experience. For instance, you could state, "Redesigned the onboarding process, resulting in a 25% increase in user satisfaction scores." This type of evidence showcases your ability to deliver real results, which is crucial in a competitive job market for UX designers.

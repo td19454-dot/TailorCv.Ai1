@@ -367,6 +367,19 @@ If you want faster feedback, upload your resume to the [TailorCV ATS score check
 
 After your resume is ready, use the [job interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and [free AI mock interview practice guide](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) to prepare for coding, behavioral, and project discussion rounds.
 
+## Frequently Asked Questions
 
+### What are the key elements of a FAANG software engineer resume?  
+A successful FAANG software engineer resume should highlight strong computer science fundamentals, experience with production software, and clear ownership of projects. Additionally, it should demonstrate measurable impact at scale. To ensure your resume aligns with job expectations, use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) to tailor your content effectively.
 
+### How can I optimize my resume for ATS?  
+To optimize your resume for ATS, include relevant keywords from the job description and ensure the format is clean and easy to read. Using an [ATS-friendly resume template](https://www.thetailorcv.com/templates) can help. Additionally, you can utilize the [Free ATS score checker](https://www.thetailorcv.com/solutions) to assess how well your resume matches the required criteria before submitting your application.
 
+### What are common ATS keyword mistakes to avoid?  
+Common ATS keyword mistakes include using non-standard job titles, failing to include relevant skills, and overloading the resume with buzzwords without context. To avoid these pitfalls, refer to our guide on [ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)](https://thetailorcv.com/blog/ats-keyword-mistakes) to learn how to incorporate keywords effectively.
+
+### How can I showcase my projects effectively on my resume?  
+When showcasing projects, focus on your role, the technologies used, and the impact of the project. Use quantifiable metrics to demonstrate success, such as performance improvements or user growth. For a structured approach, consider using the [Resume Keyword Map Template](https://thetailorcv.com/blog/resume-keyword-map-template) to align your projects with the job description.
+
+### What should I include in a one-page software engineer resume?  
+A one-page software engineer resume should include your contact information, a summary statement, technical skills, relevant experience, and educational background. Be concise and prioritize the most relevant information to the job. For guidance on creating an effective resume, refer to the [Resume for Remote Developer Jobs - What Hiring Teams Want to See](https://thetailorcv.com/blog/resume-for-remote-developer-jobs) for insights into what hiring managers value.

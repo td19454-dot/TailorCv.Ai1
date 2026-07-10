@@ -159,3 +159,19 @@ A strong social media manager resume in 2026 shows audience growth, engagement i
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What are the key metrics to include in a Social Media Manager resume?
+Including measurable metrics is crucial for a Social Media Manager resume. Focus on key performance indicators such as follower growth, engagement rates, reach, and conversions. For instance, you might mention how you increased a brand's Instagram following or drove attributed revenue through social campaigns, which tells potential employers about your impact. For more insights on how to showcase your skills, check out the [Digital Marketing Resume 2026](https://thetailorcv.com/blog/digital-marketing-resume-2026).
+
+### How should I format my Social Media Manager resume in 2026?
+Your Social Media Manager resume should be concise, ideally one to two pages, and follow a clear structure. Start with a header that includes your portfolio or social media handles, followed by a summary highlighting a key growth metric. Then, list your skills by platform, followed by work experience and education. Utilizing [ATS-friendly resume templates](https://www.thetailorcv.com/templates) can also enhance your chances of passing automated resume screenings.
+
+### What should I include in the summary section of my resume?
+The summary section should succinctly encapsulate your experience and impact. Use the formula: "Social Media Manager with X years of experience growing [platforms] for [brand type]. Grew [followers, engagement, or reach] and drove [leads, sales, or conversions]." This format immediately communicates your achievements and expertise, which is crucial for making a strong first impression.
+
+### How can I ensure my resume is ATS-friendly?
+To ensure your resume is ATS-friendly, incorporate relevant keywords from the job description and use standard formatting. Avoid graphics and complex layouts that ATS software may not read correctly. You can check your resume's compatibility with an ATS by using the [free ATS score checker](https://www.thetailorcv.com/solutions) provided by TailorCV to help optimize it before applying.
+
+### What additional resources can help me improve my resume?
+For a more comprehensive understanding of how to create an impactful resume, consider reading related guides like the [Marketing Manager Resume 2026](https://thetailorcv.com/blog/marketing-manager-resume-2026) or the [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist). These resources offer valuable tips and examples that can enhance the effectiveness of your resume.

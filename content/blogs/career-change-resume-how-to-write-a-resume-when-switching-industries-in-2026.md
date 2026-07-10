@@ -311,5 +311,19 @@ Your career path does not have to be perfectly linear to be valuable. It just ha
 - [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
 - [How to Match Your Resume Skills Section to Any Job Description in 2026](https://thetailorcv.com/blog/resume-skills-match-job-description)
 
+## Frequently Asked Questions
 
+### What are transferable skills, and how do I identify them for my career change resume?  
+Transferable skills are abilities that can be applied across different jobs and industries. To identify them, reflect on your past roles and consider skills like communication, problem-solving, and project management. For more guidance on how to effectively showcase these skills, check out our [career change to tech guide](https://thetailorcv.com/blog/career-change-to-tech-guide).
 
+### How can I ensure my resume is optimized for ATS when changing industries?  
+To optimize your resume for Applicant Tracking Systems (ATS), use relevant keywords from the job description and maintain a clear, structured format. Consider utilizing our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate your resume's compatibility with ATS requirements before submitting your application.
+
+### What should I include in my cover letter when switching careers?  
+Your cover letter should explain your motivation for changing careers, highlight your transferable skills, and provide examples that demonstrate your qualifications for the new role. For effective templates and examples, refer to our [cover letter for a career change guide](https://thetailorcv.com/blog/cover-letter-for-career-change).
+
+### How can I showcase projects on my resume when I have limited experience in the new field?  
+Even if you have limited direct experience, you can include relevant projects that demonstrate your skills and knowledge applicable to the new industry. If you're unsure what to include, our article on [fresher resume projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) offers great ideas for showcasing your capabilities.
+
+### What are some common mistakes to avoid when writing a career change resume?  
+Common mistakes include using a generic resume format, failing to tailor your skills to the new role, and neglecting to highlight achievements relevant to the target industry. Ensure your resume answers key questions about your transition and consider our [resume templates](https://www.thetailorcv.com/templates) for a more effective presentation.
