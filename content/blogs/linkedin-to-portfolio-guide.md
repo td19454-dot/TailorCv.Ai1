@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, LinkedIn, Personal Branding, Job Search]
 category: Portfolio
-image: public/blog-images/linkedin-to-portfolio-guide.webp
+image: public/blog-images/linkedin-to-portfolio-guide.png
 slug: linkedin-to-portfolio-guide
 keywords: linkedin to portfolio, turn linkedin into website, linkedin portfolio converter, personal website from linkedin, linkedin profile portfolio
 ---
