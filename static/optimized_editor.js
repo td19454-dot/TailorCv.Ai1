@@ -576,67 +576,174 @@ body {
             s.id = "tcv-pro-dl-style";
             s.textContent = [
                 "#tcv-pro-dl-overlay{position:fixed;inset:0;z-index:999999;",
-                "background:rgba(2,8,28,.78);backdrop-filter:blur(6px);",
-                "display:flex;align-items:center;justify-content:center;",
+                "background:rgba(2,8,28,.82);backdrop-filter:blur(6px);",
+                "display:flex;align-items:center;justify-content:center;padding:20px;",
                 "animation:tcvProDlIn .22s ease;}",
+
+                "#tcv-pro-dl-overlay,#tcv-pro-dl-overlay *{box-sizing:border-box;}",
                 "#tcv-pro-dl-modal{position:relative;background:linear-gradient(155deg,#0c1730,#071020);",
-                "border:1px solid rgba(56,189,248,.35);border-radius:22px;padding:2.4rem 2.2rem;",
-                "max-width:440px;width:92%;text-align:center;",
-                "box-shadow:0 40px 80px rgba(0,5,20,.75),0 0 0 1px rgba(56,189,248,.12);",
+                "border:1px solid rgba(56,189,248,.35);border-radius:20px;padding:1.4rem 1.4rem 1.2rem;",
+                "max-width:460px;width:100%;text-align:center;",
+                "max-height:90vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;",
+                "box-shadow:0 40px 90px rgba(0,5,20,.8),0 0 0 1px rgba(56,189,248,.12);",
                 "animation:tcvProDlUp .3s ease;}",
-                "#tcv-pro-dl-close{position:absolute;top:12px;right:16px;background:none;border:none;",
-                "color:#475569;font-size:22px;cursor:pointer;line-height:1;padding:2px 6px;}",
-                "#tcv-pro-dl-close:hover{color:#94a3b8;}",
-                ".tcv-pro-dl-lock{font-size:3rem;margin-bottom:.6rem;line-height:1;}",
-                ".tcv-pro-dl-title{font-size:1.45rem;font-weight:800;color:#f1f8ff;margin:0 0 .7rem;}",
-                ".tcv-pro-dl-sub{font-size:.95rem;color:#94a3b8;line-height:1.6;margin:0 0 1.4rem;}",
-                ".tcv-pro-dl-sub strong{color:#7dd3fc;}",
-                ".tcv-pro-dl-perks{display:flex;flex-direction:column;gap:.45rem;",
-                "margin:0 0 1.6rem;text-align:left;}",
-                ".tcv-pro-dl-perk{font-size:.88rem;color:#cbd5e1;padding-left:1.4rem;position:relative;}",
-                ".tcv-pro-dl-perk::before{content:'✓';position:absolute;left:0;",
-                "color:#38bdf8;font-weight:700;}",
-                ".tcv-pro-dl-cta{display:block;width:100%;padding:.8rem 1rem;border-radius:12px;",
-                "background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;",
-                "font-size:1rem;font-weight:800;text-decoration:none;cursor:pointer;border:none;",
-                "box-shadow:0 6px 20px rgba(37,99,235,.45);",
-                "transition:opacity .2s,transform .2s;margin-bottom:.85rem;}",
-                ".tcv-pro-dl-cta:hover{opacity:.9;transform:translateY(-2px);}",
-                ".tcv-pro-dl-note{font-size:.78rem;color:#475569;margin:0;}",
+                "#tcv-pro-dl-modal::-webkit-scrollbar{width:8px;}",
+                "#tcv-pro-dl-modal::-webkit-scrollbar-thumb{background:rgba(148,163,184,.25);border-radius:8px;}",
+
+                "#tcv-pro-dl-close{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.06);",
+                "border:none;color:#94a3b8;font-size:17px;cursor:pointer;line-height:1;",
+                "width:26px;height:26px;border-radius:50%;z-index:2;}",
+                "#tcv-pro-dl-close:hover{color:#f1f8ff;background:rgba(255,255,255,.12);}",
+
+                /* Hero */
+                ".tcv-pro-dl-lock-wrap{width:50px;height:50px;margin:.1rem auto .5rem;border-radius:50%;",
+                "display:flex;align-items:center;justify-content:center;",
+                "background:radial-gradient(circle,rgba(56,189,248,.18),transparent 70%);",
+                "border:1px solid rgba(56,189,248,.35);}",
+                ".tcv-pro-dl-lock{font-size:1.4rem;line-height:1;}",
+                ".tcv-pro-dl-title{font-size:1.15rem;font-weight:800;color:#f1f8ff;margin:0 0 .35rem;}",
+                ".tcv-pro-dl-sub{font-size:.8rem;color:#94a3b8;line-height:1.45;margin:0 0 .8rem;}",
+                ".tcv-pro-dl-sub strong{color:#7dd3fc;font-weight:700;}",
+
+                /* Stats row */
+                ".tcv-pro-dl-stats{display:flex;gap:.5rem;align-items:flex-start;justify-content:space-between;",
+                "background:rgba(255,255,255,.03);border:1px solid rgba(148,163,184,.14);",
+                "border-radius:12px;padding:.6rem .55rem;margin:0 0 .8rem;text-align:left;}",
+                ".tcv-pro-dl-stat{flex:1;min-width:0;}",
+                ".tcv-pro-dl-stat b{display:block;font-size:.85rem;font-weight:800;color:#f1f8ff;}",
+                ".tcv-pro-dl-stat span{display:block;font-size:.62rem;color:#8291ab;line-height:1.25;margin-top:1px;}",
+                ".tcv-pro-dl-stat .tcv-stars{color:#fbbf24;font-size:.68rem;letter-spacing:1px;}",
+                ".tcv-pro-dl-logos{font-size:.62rem;font-weight:700;color:#cbd5e1;margin-top:1px;}",
+
+                /* Perks header + grid */
+                ".tcv-pro-dl-perks-h{font-size:.85rem;font-weight:800;color:#a5b4fc;margin:0 0 .5rem;text-align:left;}",
+                ".tcv-pro-dl-perks{display:grid;grid-template-columns:1fr 1fr;gap:.45rem;",
+                "margin:0 0 .8rem;text-align:left;}",
+                ".tcv-pro-dl-perk{display:flex;gap:.4rem;align-items:center;}",
+                ".tcv-pro-dl-perk-icon{flex:none;width:24px;height:24px;border-radius:7px;",
+                "background:rgba(56,189,248,.12);display:flex;align-items:center;justify-content:center;",
+                "font-size:.78rem;}",
+                ".tcv-pro-dl-perk b{display:block;font-size:.72rem;color:#eaf1ff;font-weight:700;}",
+
+                /* Testimonial */
+                ".tcv-pro-dl-testi{background:rgba(255,255,255,.03);border:1px solid rgba(148,163,184,.14);",
+                "border-radius:12px;padding:.6rem .75rem;margin:0 0 .7rem;text-align:left;position:relative;}",
+                ".tcv-pro-dl-testi-mark{position:absolute;top:.3rem;left:.55rem;font-size:1.3rem;",
+                "color:rgba(125,211,252,.35);font-weight:800;line-height:1;font-family:Georgia,serif;}",
+                ".tcv-pro-dl-testi p{margin:0 0 .4rem;padding-left:1.05rem;font-size:.72rem;color:#dbe7ff;line-height:1.4;}",
+                ".tcv-pro-dl-testi p strong{color:#7dd3fc;}",
+                ".tcv-pro-dl-testi-foot{display:flex;align-items:center;justify-content:space-between;",
+                "padding-left:1.05rem;}",
+                ".tcv-pro-dl-testi-foot strong{font-size:.7rem;color:#f1f8ff;}",
+                ".tcv-pro-dl-verified{display:inline-block;font-size:.54rem;font-weight:700;color:#a5b4fc;",
+                "background:rgba(129,140,248,.15);border-radius:999px;padding:1px 6px;margin-left:4px;",
+                "vertical-align:middle;}",
+                ".tcv-pro-dl-testi-role{display:block;font-size:.6rem;color:#8291ab;margin-top:1px;}",
+                ".tcv-pro-dl-testi-foot .tcv-stars{color:#fbbf24;font-size:.7rem;letter-spacing:1px;",
+                "white-space:nowrap;}",
+
+                /* CTA */
+                ".tcv-pro-dl-cta-wrap{position:relative;margin:0 0 .6rem;}",
+                ".tcv-pro-dl-ribbon{position:absolute;top:-8px;left:12px;z-index:2;",
+                "background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;font-size:.58rem;",
+                "font-weight:800;padding:3px 8px;border-radius:999px;",
+                "box-shadow:0 4px 14px rgba(22,163,74,.5);transform:rotate(-3deg);}",
+                ".tcv-pro-dl-cta{display:flex;flex-direction:column;align-items:center;justify-content:center;",
+                "gap:1px;width:100%;padding:.65rem .9rem .6rem;border-radius:11px;",
+                "background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;",
+                "text-decoration:none;cursor:pointer;border:none;",
+                "box-shadow:0 10px 30px rgba(37,99,235,.5);",
+                "transition:opacity .2s,transform .2s;}",
+                ".tcv-pro-dl-cta:hover{opacity:.92;transform:translateY(-2px);}",
+                ".tcv-pro-dl-cta-main{font-size:.86rem;font-weight:800;}",
+                ".tcv-pro-dl-cta-sub{font-size:.66rem;font-weight:600;color:rgba(255,255,255,.85);}",
+
+                /* Bottom badges + note */
+                ".tcv-pro-dl-badges{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;",
+                "font-size:.62rem;color:#8291ab;margin:0 0 .5rem;}",
+                ".tcv-pro-dl-badges span{display:inline-flex;align-items:center;gap:3px;}",
+                ".tcv-pro-dl-note{display:flex;gap:.35rem;align-items:flex-start;justify-content:center;",
+                "font-size:.62rem;color:#64748b;line-height:1.35;margin:0;text-align:left;}",
+
                 "@keyframes tcvProDlIn{from{opacity:0}to{opacity:1}}",
                 "@keyframes tcvProDlUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}",
+
+                "@media(max-width:420px){#tcv-pro-dl-modal{padding:1.1rem .9rem 1rem;border-radius:18px;}",
+                ".tcv-pro-dl-perks{grid-template-columns:1fr;}",
+                ".tcv-pro-dl-stats{flex-wrap:wrap;}",
+                ".tcv-pro-dl-title{font-size:1.05rem;}}",
             ].join("");
             document.head.appendChild(s);
         }
+
+        const priceOnly = typeof _getUpgradePriceOnly === 'function'
+            ? _getUpgradePriceOnly(_upgradeRegionCache) : '₹167/month';
 
         const overlay = document.createElement("div");
         overlay.id = "tcv-pro-dl-overlay";
         overlay.innerHTML =
             '<div id="tcv-pro-dl-modal">' +
                 '<button id="tcv-pro-dl-close" aria-label="Close">&times;</button>' +
-                '<div class="tcv-pro-dl-lock">🔒</div>' +
+
+                '<div class="tcv-pro-dl-lock-wrap"><div class="tcv-pro-dl-lock">🔒</div></div>' +
                 '<h2 class="tcv-pro-dl-title">Your resume is ready!</h2>' +
-                '<p class="tcv-pro-dl-sub">You\'ve used your <strong>3 free downloads</strong>.<br>' +
-                'Upgrade to Pro to download unlimited resumes.</p>' +
-                '<div class="tcv-pro-dl-perks">' +
-                    '<div class="tcv-pro-dl-perk">Unlimited resume downloads</div>' +
-                    '<div class="tcv-pro-dl-perk">Unlimited AI optimizations</div>' +
-                    '<div class="tcv-pro-dl-perk">Unlimited cover letters</div>' +
-                    '<div class="tcv-pro-dl-perk">Mock interviews & LinkedIn import</div>' +
+                '<p class="tcv-pro-dl-sub">You\'ve already downloaded <strong>3 resumes</strong>. Keep tailoring ' +
+                'every application to maximize your <strong>interview chances</strong>.</p>' +
+
+                '<div class="tcv-pro-dl-stats">' +
+                    '<div class="tcv-pro-dl-stat"><b>10,000+</b><span>resumes optimized by job seekers</span></div>' +
+                    '<div class="tcv-pro-dl-stat"><b>4.8/5</b><span class="tcv-stars">★★★★★</span><span>Rated by 500+ users</span></div>' +
+                    '<div class="tcv-pro-dl-stat"><span>Loved by job seekers at top companies</span>' +
+                        '<div class="tcv-pro-dl-logos">Google · Amazon · Deloitte</div></div>' +
                 '</div>' +
-                '<a href="/pricing" class="tcv-pro-dl-cta" id="tcv-pro-dl-cta">' +
-                    (typeof _getUpgradePriceLabel === 'function' ? _getUpgradePriceLabel(_upgradeRegionCache) : 'Upgrade to Pro — from ₹167/mo') +
-                '</a>' +
-                '<p class="tcv-pro-dl-note">Cancel anytime &nbsp;·&nbsp; Instant access &nbsp;·&nbsp; \</p>' +
+
+                '<h3 class="tcv-pro-dl-perks-h">Go Pro and get unlimited access to:</h3>' +
+                '<div class="tcv-pro-dl-perks">' +
+                    '<div class="tcv-pro-dl-perk"><div class="tcv-pro-dl-perk-icon">📥</div>' +
+                        '<div><b>Unlimited resume downloads</b></div></div>' +
+                    '<div class="tcv-pro-dl-perk"><div class="tcv-pro-dl-perk-icon">🌐</div>' +
+                        '<div><b>Portfolio website</b></div></div>' +
+                    '<div class="tcv-pro-dl-perk"><div class="tcv-pro-dl-perk-icon">✨</div>' +
+                        '<div><b>Unlimited AI optimizations</b></div></div>' +
+                    '<div class="tcv-pro-dl-perk"><div class="tcv-pro-dl-perk-icon">🎥</div>' +
+                        '<div><b>Mock interviews</b></div></div>' +
+                    '<div class="tcv-pro-dl-perk"><div class="tcv-pro-dl-perk-icon">📄</div>' +
+                        '<div><b>Unlimited cover letters</b></div></div>' +
+                    '<div class="tcv-pro-dl-perk"><div class="tcv-pro-dl-perk-icon">📊</div>' +
+                        '<div><b>ATS score tracker</b></div></div>' +
+                '</div>' +
+
+                '<div class="tcv-pro-dl-testi">' +
+                    '<span class="tcv-pro-dl-testi-mark">&ldquo;</span>' +
+                    '<p>TailorCV helped me optimize my resume and land <strong>3 interview calls</strong> in just 2 weeks!</p>' +
+                    '<div class="tcv-pro-dl-testi-foot">' +
+                        '<div><strong>Sarah W.</strong><span class="tcv-pro-dl-verified">Verified User</span>' +
+                            '<span class="tcv-pro-dl-testi-role">Marketing Coordinator</span></div>' +
+                        '<div class="tcv-stars">★★★★★</div>' +
+                    '</div>' +
+                '</div>' +
+
+                '<div class="tcv-pro-dl-cta-wrap">' +
+                    '<span class="tcv-pro-dl-ribbon">Most Affordable</span>' +
+                    '<a href="/pricing" class="tcv-pro-dl-cta" id="tcv-pro-dl-cta">' +
+                        '<span class="tcv-pro-dl-cta-main">Unlock Unlimited Resume Optimizations</span>' +
+                        '<span class="tcv-pro-dl-cta-sub" id="tcv-pro-dl-cta-price">' + priceOnly + ' · Cancel anytime</span>' +
+                    '</a>' +
+                '</div>' +
+
+                '<div class="tcv-pro-dl-badges">' +
+                    '<span>⚡ Instant access</span><span>🛡️ Secure payment</span><span>↺ Cancel anytime</span>' +
+                '</div>' +
+                '<p class="tcv-pro-dl-note">🔒 Join thousands of job seekers who are one step ahead. Upgrade now and take charge of your career.</p>' +
             '</div>';
         document.body.appendChild(overlay);
 
-        // Update the button once the region fetch resolves (if not already cached).
+        // Update the price once the region fetch resolves (if not already cached).
         if (typeof _upgradeRegionFetch !== 'undefined' && !_upgradeRegionCache && _upgradeRegionFetch) {
             _upgradeRegionFetch.then(function(region) {
-                var cta = document.getElementById('tcv-pro-dl-cta');
-                if (cta && region && typeof _getUpgradePriceLabel === 'function') {
-                    cta.textContent = _getUpgradePriceLabel(region);
+                var priceEl = document.getElementById('tcv-pro-dl-cta-price');
+                if (priceEl && region && typeof _getUpgradePriceOnly === 'function') {
+                    priceEl.textContent = _getUpgradePriceOnly(region) + ' · Cancel anytime';
                 }
             });
         }
