@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Portfolio Design, Portfolio Themes, Job Search]
 category: Portfolio
-image: public/blog-images/portfolio-website-themes-2026.webp
+image: public/blog-images/portfolio-website-themes-2026.png
 slug: portfolio-website-themes-2026
 keywords: portfolio website themes, portfolio design 2026, developer portfolio theme, minimal portfolio design, portfolio templates
 ---

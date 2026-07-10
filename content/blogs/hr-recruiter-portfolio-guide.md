@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Human Resources, Recruiting, Job Search]
 category: Portfolio
-image: public/blog-images/hr-recruiter-portfolio-guide.webp
+image: public/blog-images/hr-recruiter-portfolio-guide.png
 slug: hr-recruiter-portfolio-guide
 keywords: hr portfolio, recruiter portfolio, human resources portfolio website, talent acquisition portfolio, hr case study
 ---

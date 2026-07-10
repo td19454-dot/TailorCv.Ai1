@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Job Search Strategy, Interview Prep, Resume]
 category: Portfolio
-image: public/blog-images/resume-portfolio-mock-interview-system.webp
+image: public/blog-images/resume-portfolio-mock-interview-system.png
 slug: resume-portfolio-mock-interview-system
 keywords: job search system, resume portfolio interview prep, job application workflow, resume and portfolio strategy, job search tools
 ---

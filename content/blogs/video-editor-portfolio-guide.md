@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Video Editing, Videography, Creative, Job Search]
 category: Portfolio
-image: public/blog-images/video-editor-portfolio-guide.webp
+image: public/blog-images/video-editor-portfolio-guide.png
 slug: video-editor-portfolio-guide
 keywords: video editor portfolio, videographer portfolio website, video editing reel, demo reel guide, video portfolio examples
 ---
