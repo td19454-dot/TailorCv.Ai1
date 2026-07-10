@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Portfolio Analytics, Job Search Strategy]
 category: Portfolio
-image: public/blog-images/portfolio-analytics-view-tracking.webp
+image: public/blog-images/portfolio-analytics-view-tracking.png
 slug: portfolio-analytics-view-tracking
 keywords: portfolio analytics, portfolio view tracking, portfolio website traffic, resume click tracking, job search analytics
 ---

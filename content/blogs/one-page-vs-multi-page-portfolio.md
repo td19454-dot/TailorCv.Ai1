@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Portfolio Structure, Web Design, Job Search]
 category: Portfolio
-image: public/blog-images/one-page-vs-multi-page-portfolio.webp
+image: public/blog-images/one-page-vs-multi-page-portfolio.png
 slug: one-page-vs-multi-page-portfolio
 keywords: one page portfolio, multi page portfolio, portfolio website structure, single page portfolio design, portfolio layout
 ---
