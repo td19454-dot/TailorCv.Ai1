@@ -260,4 +260,19 @@ A strong [internship resume](https://thetailorcv.com/blog/internship-resume-guid
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to match your skills to the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and read the full [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for structuring your bullets effectively. For interview prep, try the [free AI mock interview tool](https://thetailorcv.com/mock-interview).
 
+## Frequently Asked Questions
 
+### What should I include in my internship resume if I have no experience?  
+If you have no professional experience, focus on showcasing your education, relevant skills, and any projects or coursework that demonstrate your capabilities. Highlight your academic achievements and any extracurricular activities that illustrate your initiative and learning ability. For more guidance, check out our [resume for internship with no experience](https://thetailorcv.com/blog/resume-for-internship-with-no-experience) guide.
+
+### How can I make my internship resume stand out in 2026?  
+To make your resume stand out, tailor it to the specific internship by emphasizing relevant skills, projects, and academic achievements. Use action verbs in your bullet points and quantify your accomplishments where possible. Consider using our [ATS-friendly resume templates](https://www.thetailorcv.com/templates) to ensure your resume is easily readable by applicant tracking systems.
+
+### What format should I use for my internship resume?  
+A simple, single-column format is best for internship resumes. Avoid graphics and infographics as they can confuse applicant tracking systems. The recommended structure includes sections like Header, Objective, Education, Skills, Projects, and Work Experience. For a detailed breakdown, refer to our [first resume for Gen Z](https://thetailorcv.com/blog/first-resume-for-gen-z-2026) guide.
+
+### How important is it to include a cover letter with my internship application?  
+Including a cover letter is very important as it provides an opportunity to explain your motivations and how your skills align with the internship. A well-crafted cover letter can set you apart from other candidates. For tips on structure and common mistakes, check our [ATS-friendly cover letter format](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) and [cover letter mistakes to avoid](https://thetailorcv.com/blog/cover-letter-mistakes-2026).
+
+### What should I do after submitting my internship application?  
+After submitting your application, it's advisable to follow up with a professional email to express your continued interest. This demonstrates initiative and can keep your application top of mind for hiring managers. For templates and tips on writing a follow-up email, see our guide on [follow-up email after job application](https://thetailorcv.com/blog/follow-up-email-after-application).

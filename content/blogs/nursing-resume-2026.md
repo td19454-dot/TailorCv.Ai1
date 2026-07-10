@@ -224,3 +224,19 @@ A strong nursing resume in 2026 is clinically specific, certification-forward, a
 
 Before applying, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to check how well your clinical keywords match the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) to ensure your format does not lose content during parsing. For interview preparation, read the [interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) for healthcare-specific tips.
 
+## Frequently Asked Questions
+
+### What should I include in my nursing resume header?
+Your nursing resume header should prominently display your name followed by your nursing credentials, such as RN or BSN. Additionally, include your contact information, such as your email and phone number, along with a link to your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) profile. It's also essential to mention your licensure information, such as the issuing body, to establish your qualifications upfront.
+
+### How can I make my nursing resume ATS-friendly?
+To ensure your nursing resume is ATS-friendly, use a clean format without complicated graphics or unusual fonts. Incorporate relevant [ATS keywords](https://thetailorcv.com/blog/resume-tailoring-healthcare) from the job description, and utilize an ATS-friendly resume template. Before submitting, test your resume using the [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate its compatibility with applicant tracking systems.
+
+### What is the ideal length for a nursing resume in 2026?
+A nursing resume should typically be one to two pages long, depending on your experience. New graduates are advised to keep their resumes to one page, while experienced nurses with extensive backgrounds and multiple specializations may require two pages to adequately showcase their qualifications and skills. 
+
+### How do I highlight my clinical skills effectively?
+To effectively highlight your clinical skills, create a dedicated section in your resume where you list both hard and soft skills relevant to nursing. Use bullet points for clarity and ensure that these skills align with the requirements mentioned in the job description. For more tips on structuring your resume, check out our guide on [resume tailoring for healthcare jobs](https://thetailorcv.com/blog/resume-tailoring-healthcare).
+
+### What are some common certifications to include on my nursing resume?
+Common certifications to include on your nursing resume are Basic Life Support (BLS), Advanced Cardiac Life Support (ACLS), and any specialized certifications relevant to your area of practice, such as Pediatric Advanced Life Support (PALS) for pediatric nurses. Clearly listing these credentials can demonstrate your commitment to professional development and enhance your appeal to potential employers. For more details on how to list certifications, refer to our post on [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).

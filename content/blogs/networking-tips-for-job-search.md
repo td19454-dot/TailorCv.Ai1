@@ -179,4 +179,19 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 
 Support your networking with a strong resume (use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions)) and an optimized [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide). Combine networking with the [cold email guide](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) for a complete outreach strategy.
 
+## Frequently Asked Questions
 
+### Why is networking more effective than just applying for jobs online?  
+Networking is more effective than applying online because it allows you to bypass initial filtering processes, gain credibility through referrals, and access job opportunities that may not be publicly posted. When someone refers you to a position, your chances of landing an interview significantly increase. This is why understanding the power of [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) is crucial for any job seeker.
+
+### How can introverts network effectively during their job search?  
+Introverts can network effectively by focusing on building genuine relationships rather than forcing themselves into large networking events. They can start by reaching out to individuals for one-on-one conversations, utilizing platforms like LinkedIn to connect, and even crafting a well-thought-out [cold email](https://thetailorcv.com/blog/how-to-write-cold-email-to-a-recruiter) to engage recruiters or professionals in their field. Personalizing messages can make a significant impact and reduce discomfort.
+
+### What are some practical tips for building genuine connections in networking?  
+To build genuine connections, focus on being helpful and showing interest in others' work. Attend industry-specific events, engage in meaningful conversations, and follow up with personalized messages. Using templates like the [LinkedIn referral message](https://thetailorcv.com/blog/referral-message-template-linkedin) can also help you reach out without feeling awkward, increasing your chances of forming lasting professional relationships.
+
+### How can I ensure my resume supports my networking efforts?  
+Your resume should complement your networking strategy by being strong and tailored to the roles you're pursuing. Use tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) to optimize your resume for applicant tracking systems and ensure it makes a strong impression when shared with your network. A well-crafted resume can enhance the credibility you gain from your networking efforts.
+
+### How can networking lead to job offers?  
+Networking can lead to job offers by creating opportunities for referrals, which significantly boost your chances of being noticed by employers. When you build relationships and stay in touch with your network, you may learn about job openings early and receive endorsements from your connections. This proactive approach to networking can make all the difference in turning conversations into actual job offers.

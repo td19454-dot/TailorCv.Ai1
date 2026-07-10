@@ -182,4 +182,19 @@ A well-written cold email or [LinkedIn](https://thetailorcv.com/blog/how-to-use-
 
 Make sure your resume is ready before sending outreach. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it, read the [cover letter guide](https://thetailorcv.com/blog/cover-letter-guide-2026), and check [LinkedIn job search tips](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for the full outreach strategy. For interview preparation, use the [interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
 
+### Does cold emailing recruiters actually lead to job opportunities?  
+Yes, cold emailing recruiters can lead to job opportunities when done effectively. A concise, personalized message that highlights your relevance for a specific role can make a strong impression. It's essential to avoid generic messages and instead focus on what makes you a fit for the company. For more insights on how to network effectively, check out our [Networking Tips for Job Search in 2026](https://thetailorcv.com/blog/networking-tips-for-job-search).
+
+### What should I include in my cold email to a recruiter?  
+Your cold email should include a brief introduction of who you are, a specific reference to the role or company, and a clear reason for reaching out. Aim for under 100 words to keep it concise and engaging. Additionally, ensure your resume is polished before sending the email. You can optimize it using our [Free ATS score checker](https://www.thetailorcv.com/solutions).
+
+### How can I find recruiters to email?  
+Recruiters can often be found on platforms like LinkedIn, where you can message them directly. Look for recruiters associated with the companies you are interested in and send them a personalized connection request or InMail. If you're unsure how to approach them, consider using our [LinkedIn Referral Message Template](https://thetailorcv.com/blog/referral-message-template-linkedin).
+
+### What are some common mistakes to avoid when writing cold emails?  
+Common mistakes include sending long, generic emails or appearing desperate in your tone. Recruiters appreciate brevity and clarity, so avoid lengthy requests for job referrals. Instead, focus on a single, easy ask that shows your value. For a deeper dive into what not to do, check out our article on [11 Portfolio Mistakes That Cost You Interviews](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid).
+
+### How can I follow up after sending a cold email?  
+If you haven't received a response within a week or two, it's acceptable to send a polite follow-up email. Keep it brief, reiterate your interest, and ask if they had a chance to review your previous message. This shows persistence without being overbearing. For additional strategies on following up effectively, refer to our [Salary Negotiation Guide](https://thetailorcv.com/blog/salary-negotiation-guide).

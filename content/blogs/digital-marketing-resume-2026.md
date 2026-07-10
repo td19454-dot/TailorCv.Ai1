@@ -185,3 +185,19 @@ A strong [digital marketing](https://thetailorcv.com/blog/digital-marketing-resu
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for your interview with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers).
 
+## Frequently Asked Questions
+
+### What should I include in my digital marketing resume summary?
+Your digital marketing resume summary should highlight your key achievements and skills succinctly. Use the formula: "Digital Marketer with X years of experience in [channels]. Managed [budgets or campaign scope] and grew [traffic, leads, ROAS, followers, or conversion rate] by [metric]." This format allows you to showcase your impact effectively. For more examples, check out our [Marketing Manager Resume 2026](https://thetailorcv.com/blog/marketing-manager-resume-2026).
+
+### How can I ensure my resume passes ATS screening?
+To improve your chances of passing ATS screenings, use relevant keywords from the job description in your resume. You can also utilize the [free ATS score checker](https://www.thetailorcv.com/solutions) to analyze your resume against the job requirements. This tool helps you identify areas to enhance before submitting your application.
+
+### What specific metrics should I include to demonstrate my digital marketing success?
+Employers look for measurable results that showcase your impact. Include metrics such as organic traffic growth, conversion rates, or return on ad spend (ROAS). For instance, stating "grew organic monthly sessions from 12K to 68K" effectively communicates your success. For more insights on quantifying achievements, refer to our guide on [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+
+### What format should I follow for my digital marketing resume?
+A well-organized resume format is crucial for clarity. Start with a header that includes links to your [portfolio](https://www.thetailorcv.com/portfolio) or campaign case studies, followed by a summary, skills section, work experience, projects, and education. Keep it concise—one to two pages depending on your experience level.
+
+### How can I highlight my social media skills on my resume?
+To effectively showcase your social media skills, include specific platforms you’ve managed and the results achieved, such as audience growth or engagement rates. Use quantifiable metrics to illustrate your success. For a deeper dive into crafting a compelling resume, check out our [Social Media Manager Resume 2026](https://thetailorcv.com/blog/social-media-manager-resume-2026).

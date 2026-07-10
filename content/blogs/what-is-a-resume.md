@@ -167,3 +167,19 @@ A resume is a targeted marketing document with one purpose: earn you an intervie
 
 Start with an [ATS-friendly template](https://www.thetailorcv.com/templates), build your content using the guides above, and run everything through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) before you apply. When your resume lands you interviews, use the [mock interview tool](https://thetailorcv.com/interview-prep) to make sure you are ready.
 
+## Frequently Asked Questions
+
+### What are the key components of a resume?
+A resume typically includes several key components: contact information, a professional summary or objective, work experience, education, and skills. Each section should be tailored to highlight your most relevant qualifications for the specific job you’re applying for. For guidance on what to include in your [resume contact section](https://thetailorcv.com/blog/resume-contact-section), check out our detailed post.
+
+### How does a resume differ from a CV?
+While both a resume and a CV serve the purpose of showcasing your qualifications, they differ in length and detail. A resume is typically one to two pages and is tailored for a specific job, while a CV is more comprehensive and can be multiple pages long, detailing your entire academic and professional history. For a deeper understanding of these differences, see our article on [resume vs CV](https://thetailorcv.com/blog/resume-vs-cv).
+
+### What is the purpose of a resume in the hiring process?
+The primary purpose of a resume is to secure an interview by convincing hiring managers of your suitability for a role. It acts as a marketing tool that summarizes your qualifications and achievements. To improve your chances, consider using our [free ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume meets modern hiring standards.
+
+### Should I use a resume objective or a summary?
+Choosing between a resume objective and a summary depends on your career stage and focus. A resume objective is more suitable for entry-level candidates or those changing careers, while a summary is better for experienced professionals who want to highlight their skills and accomplishments. For more insights, read our article on [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary).
+
+### What common mistakes should I avoid on my resume?
+There are several common mistakes to avoid, such as including irrelevant information, using outdated formats, or failing to tailor your resume to the job description. Additionally, be cautious about including too much personal information or overly generic phrases. For a comprehensive list of what not to put on your resume, check out our guide on [what not to put on a resume in 2026](https://thetailorcv.com/blog/what-not-to-put-on-resume).

@@ -189,4 +189,19 @@ Coding [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-intervi
 
 Combine this with the [technical interview guide](https://thetailorcv.com/blog/technical-interview-preparation-guide) and [system design guide](https://thetailorcv.com/blog/system-design-interview-guide). Optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and practice with the [free AI mock interview tool](https://thetailorcv.com/mock-interview).
 
+## Frequently Asked Questions
 
+### What are the essential data structures and algorithms (DSA) patterns I should learn for coding interviews in 2026?  
+The essential DSA patterns include Two Pointers, Sliding Window, Fast and Slow Pointers, Hash Map/Hash Set, Binary Search, BFS, and DFS. Mastering these patterns will help you recognize and solve a wide variety of coding problems more efficiently. For a comprehensive overview, check out our [Technical Interview Preparation Guide 2026](https://thetailorcv.com/blog/technical-interview-preparation-guide).
+
+### How can I effectively practice coding problems to prepare for interviews?  
+To effectively practice coding problems, follow a structured practice plan that incorporates the essential DSA patterns discussed in this guide. Utilize platforms like LeetCode to find problems categorized by these patterns, and aim to solve a mix of easy, medium, and hard questions. You can also explore our [Software Engineer Interview Preparation Guide](https://thetailorcv.com/blog/software-engineer-interview-preparation) for additional insights.
+
+### What is the role of problem-solving frameworks in coding interviews?  
+A problem-solving framework helps you systematically approach coding questions, breaking them down into manageable components. This structured approach not only improves your speed but also enhances your accuracy during interviews. For more strategies on tackling technical interviews, refer to our [Technical Interview Preparation Guide](https://thetailorcv.com/blog/technical-interview-preparation-guide).
+
+### How can I optimize my resume before a coding interview?  
+Optimizing your resume is crucial for making a strong first impression. Use tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume is tailored for Applicant Tracking Systems, highlighting your relevant skills and experiences clearly. A well-crafted resume can significantly increase your chances of getting noticed by recruiters.
+
+### What common mistakes should I avoid during coding interviews?  
+Some common mistakes to avoid include not communicating your thought process clearly, neglecting edge cases, and failing to ask clarifying questions. Being aware of these pitfalls can help you present yourself as a more competent candidate. For a deeper understanding of interview etiquette, check out our article on [20 Common Interview Mistakes to Avoid in 2026](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).

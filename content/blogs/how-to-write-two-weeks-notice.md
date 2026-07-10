@@ -201,3 +201,19 @@ A professional two weeks notice is short, positive, and clear: state your resign
 
 For the full resignation process, read the [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally). If you are moving to a new role, ensure your resume is strong with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and your offer is solid with the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer).
 
+## Frequently Asked Questions
+
+### What is the purpose of a two weeks notice letter?  
+A two weeks notice letter serves as a formal notification to your employer that you are resigning from your position. It outlines your intent to leave, specifies your last working day, and offers a professional way to maintain relationships and protect your reputation. For more insights on resigning gracefully, check out our [complete guide on how to quit your job professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally).
+
+### How should I format my two weeks notice letter?  
+Your two weeks notice letter should be concise and professional. It should include the date, a clear statement of resignation, your last working day, a brief expression of gratitude, and an offer to assist with the transition. For templates and examples, refer to our post on writing a two weeks notice in 2026.
+
+### Is it necessary to give a two weeks notice?  
+While it's not legally required, providing a two weeks notice is considered a professional courtesy in most industries. It allows your employer to plan for your departure and helps maintain a positive relationship, which could be beneficial for future references. For tips on how to handle your resignation conversation, see our guide on [how to quit your job professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally).
+
+### What should I say in my two weeks notice letter?  
+In your two weeks notice letter, you should clearly state your resignation, mention your last working day, express gratitude for the opportunities you had, and offer assistance during the transition period. Keeping the tone positive is crucial, and you can find more detailed guidance on what to include in our [two weeks notice guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally).
+
+### Can I resign without giving two weeks notice?  
+Yes, you can resign without giving two weeks notice, but it may not be advisable. Leaving abruptly can harm your professional reputation and relationships with colleagues. If you're considering this option, it's best to weigh the potential consequences and consult our resources on professional etiquette when resigning.

@@ -196,3 +196,19 @@ A strong chemical engineer resume in 2026 shows process design capability, simul
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and then prepare for technical and behavioral interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What are the key components of a chemical engineer resume in 2026?  
+A chemical engineer resume in 2026 should include a clear header with your PE status if applicable, a concise summary, technical skills, and detailed work experience with project highlights. Additionally, it should feature relevant projects, education, certifications, and professional memberships. For a comprehensive format, explore the [Mechanical Engineer Resume 2026](https://thetailorcv.com/blog/mechanical-engineer-resume-2026) for comparison.
+
+### How can I optimize my chemical engineer resume for ATS?  
+To optimize your resume for ATS, use industry-specific keywords relevant to chemical engineering, such as "process design," "HAZOP," and "Aspen Plus." Running your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) will help identify areas for improvement, ensuring it meets ATS requirements and increases your chances of being noticed by employers.
+
+### What should I include in the summary section of my resume?  
+Your summary should succinctly present your experience, focusing on your specific expertise and achievements. For example, you can structure it as: "Chemical Engineer with X years of experience in [process design / operations] within [industry]. Proficient in [specific tools], delivered [specific improvements]." This formula helps convey your value effectively to potential employers.
+
+### How can recent graduates highlight their projects on a resume?  
+Recent graduates can showcase their academic projects or internships in a dedicated section to demonstrate their practical experience. Highlight specific roles, technologies used, and outcomes achieved. For tips on impactful projects, check out our guide on [Fresher Resume Projects That Get Interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
+
+### What are the best practices for listing certifications on a chemical engineer resume?  
+When listing certifications, ensure they are relevant to the chemical engineering field, such as HAZOP certification or other industry-specific credentials. Include the name of the certification, issuing organization, and date obtained. For guidance on structuring this section, refer to our article on [how to list certifications on resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).

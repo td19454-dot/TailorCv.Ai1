@@ -200,4 +200,19 @@ Spend 60-90 minutes per company on research before a final round [interview](htt
 
 Pair your research with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), the [how to answer tell me about yourself guide](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and the [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Practice with the [mock interview tool](https://thetailorcv.com/mock-interview) for delivery confidence.
 
+## Frequently Asked Questions
 
+### Why is company research important before an interview?  
+Company research is crucial because it allows you to provide informed answers to common interview questions like "Why this company?" and "What do you know about us?" When you demonstrate a deep understanding of the company's recent developments, culture, and challenges, you significantly increase your chances of making a memorable impression. This preparation also helps you tailor your responses effectively, making your experience more relevant to the role.
+
+### What specific information should I look for when researching a company?  
+When researching a company, focus on aspects such as their revenue, recent product launches, competitive positioning, and workplace culture. Understanding specific team challenges can also help you connect your experience to the company's needs and demonstrate your genuine interest. For a comprehensive approach, consider using the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) to align your research with your interview answers.
+
+### How can I use my research to prepare for interview questions?  
+Utilize your research to answer questions like "Why do you want to work here?" by referencing specific projects or initiatives that excite you. For example, saying, "I'm impressed by your recent launch of X" shows you've done your homework and allows you to connect your skills to the company's objectives. This strategy not only demonstrates your enthusiasm but also aligns your answers with the company's current context.
+
+### What are some common mistakes to avoid during company research?  
+One common mistake is relying solely on the company's "About Us" page for information. This surface-level research can leave you unprepared for deeper questions. Instead, seek out recent news articles, industry reports, and employee reviews to gain a well-rounded understanding of the company. For more insights on interview preparation, check out the [20 Common Interview Mistakes to Avoid in 2026](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
+
+### How can I effectively communicate my research during the interview?  
+To effectively communicate your research, weave specific details into your answers during the interview. For instance, you can say, "I noticed your team recently faced challenges with Y, and I believe my experience with Z could be beneficial." This not only highlights your knowledge but also shows how your skills align with their needs. Additionally, prepare insightful questions based on your research; refer to the [Best Questions to Ask in a Job Interview in 2026](https://thetailorcv.com/blog/questions-to-ask-in-an-interview) for ideas.

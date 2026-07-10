@@ -156,3 +156,19 @@ A strong [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) r
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for interviews with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What are the key components of a recruiter resume in 2026?  
+A recruiter resume in 2026 should include a clear header, a compelling summary that highlights key hiring metrics, a list of relevant recruiting skills, detailed work experience, and educational background along with any applicable [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume). Focusing on measurable outcomes like time-to-fill and quality-of-hire will enhance your resume's impact.
+
+### How can I optimize my recruiter resume for ATS?  
+To optimize your recruiter resume for ATS, use relevant keywords from the job description and incorporate them into your experiences and skills sections. You can also run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) to identify areas for improvement. Using [ATS-friendly resume templates](https://www.thetailorcv.com/templates) can also help ensure that your resume is formatted correctly for automated systems.
+
+### What metrics should I include in my recruiter resume?  
+Including metrics like time-to-fill, offer acceptance rate, and quality-of-hire is crucial for demonstrating your effectiveness as a recruiter. For instance, stating that you filled 120+ roles annually with an average time-to-fill of 32 days adds credibility to your experience. These metrics provide tangible evidence of your impact in previous roles and will attract the attention of hiring managers.
+
+### How can I tailor my recruiter resume for different industries?  
+To tailor your recruiter resume for different industries, research the specific skills and keywords that are relevant to those industries. For example, if you're applying for tech roles, emphasize your experience with sourcing technical talent and familiarity with tools like LinkedIn Recruiter. You might also find it useful to read the [HR Manager Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/hr-manager-resume-2026) for additional insights on adjusting your resume for broader HR roles.
+
+### What should I do if I have limited experience as a recruiter?  
+If you have limited experience, focus on highlighting your transferable skills and any relevant projects. You can include internships, volunteer work, or coursework that demonstrates your recruiting abilities. Consider showcasing any [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) to illustrate your proactive approach in gaining relevant experience.

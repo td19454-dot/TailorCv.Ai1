@@ -198,4 +198,19 @@ For most candidates in 2026, the reverse chronological format is the best choice
 
 Verify your chosen format parses correctly with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete guidance.
 
+## Frequently Asked Questions
 
+### What is the difference between a chronological and functional resume?
+A chronological resume lists your work experience in reverse order, highlighting your most recent roles first. This format is preferred by many employers and is better recognized by ATS systems. In contrast, a functional resume focuses on skills and achievements rather than work history, making it ideal for those with gaps in employment or changing careers. For more insights on structuring your resume, check out our [Resume Section Order Guide - What Comes First on a Modern Resume](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### When should I use a functional resume instead of a chronological one?
+Consider using a functional resume if you are transitioning careers, have significant gaps in your work history, or want to emphasize specific skills over job titles. This format allows you to showcase your abilities and achievements more prominently. However, be cautious as some employers may prefer the clarity of a chronological format. To effectively match your skills with job descriptions, refer to our [Resume Keyword Map Template - Match Your Resume to Any Job Description](https://thetailorcv.com/blog/resume-keyword-map-template).
+
+### Are combination resumes effective for ATS compatibility?
+Yes, combination resumes can be effective for ATS compatibility if structured correctly. This format leads with a strong skills section followed by a chronological work history, allowing you to highlight both your capabilities and relevant experience. To ensure your resume meets ATS standards, consider using our [Free ATS score checker](https://www.thetailorcv.com/solutions) before submitting your application.
+
+### What are common mistakes to avoid when formatting my resume for ATS?
+Common mistakes include using unconventional fonts, excessive graphics, or incorrect section headings that ATS may not recognize. It's crucial to keep your formatting simple and straightforward to increase your chances of passing the ATS screening. For a detailed list of pitfalls to avoid, read our article on [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
+
+### How can I enhance my resume to stand out in 2026?
+To make your resume stand out, focus on using action verbs and quantifiable achievements that demonstrate your impact in previous roles. Tailoring your resume for each job application is essential, so consider using our resource on [200 Best Action Verbs for Resume in 2026 - By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume) to make your accomplishments pop.

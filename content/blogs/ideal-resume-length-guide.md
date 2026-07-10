@@ -175,4 +175,19 @@ Resume length in 2026: one page for under 10 years of experience, one to two pag
 
 Once your length is right, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to ensure your content matches the job. Use [ATS-friendly templates](https://www.thetailorcv.com/templates) and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide).
 
+## Frequently Asked Questions
 
+### How do I determine the ideal resume length for my experience level?
+The ideal resume length varies based on your experience level. For those with **0-10 years of experience**, a one-page resume is typically best, as it allows you to highlight your most relevant skills quickly. If you have **10+ years of experience**, you can extend to one or two pages to include more detailed accomplishments. For specialized roles or senior leadership positions, a two-page resume is often acceptable.
+
+### What should I include on a one-page resume?
+On a one-page resume, prioritize your most relevant experiences, skills, and achievements. Focus on strong content that showcases your qualifications for the specific role you are applying for. If you have relevant volunteer work, consider including it as it can enhance your application. For guidance on this, check out our article on [how to add volunteer work to your resume](https://thetailorcv.com/blog/volunteer-work-on-resume).
+
+### Can I use a two-page resume if I have less than 10 years of experience?
+Generally, it's recommended to stick to a one-page resume if you have less than 10 years of experience. However, if you have extensive relevant accomplishments or specialized skills, you might consider a two-page format. Just ensure that every piece of information adds value and aligns with the job you’re targeting, as a tight one-page resume is often more effective.
+
+### How can I cut down a resume that is too long?
+To cut down a long resume, start by removing any outdated or irrelevant information, such as early job experiences that don’t relate to your current career goals. Focus on your most significant achievements and use concise language. For tips on what to avoid, read our post on [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume).
+
+### What are the best action verbs to use in my resume?
+Using strong action verbs can significantly enhance your resume's impact. Choose verbs that convey your achievements and skills effectively. For a comprehensive list tailored to different roles and categories, check out our guide on [200 best action verbs for resume in 2026](https://thetailorcv.com/blog/best-action-verbs-for-resume).

@@ -213,3 +213,19 @@ List your education clearly: degree, institution, year, and GPA only if strong. 
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read [how to list certifications on resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete guidance.
 
+## Frequently Asked Questions
+
+### How should I format my education section on a resume in 2026?  
+The standard format for listing your education is to include your degree type, major, institution name, and graduation year. You can also add your GPA if it is strong and any relevant coursework or honors. For example: "Bachelor of Technology in Computer Science, VIT University, Vellore | 2026, CGPA: 8.7/10 | Relevant Coursework: Data Structures, Algorithms." For more formatting tips, check out our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### When should I include my GPA on my resume?  
+You should include your GPA on your resume if it is strong, typically above a 3.0 on a 4.0 scale. This is especially relevant for students and recent graduates who may not have extensive work experience. If your GPA is not strong, it’s better to omit it and focus on other strengths, such as relevant coursework or skills. For additional insights, refer to our guide on [How to List Certifications on a Resume in 2026](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
+
+### Where should I place my education section on my resume?  
+For students and recent graduates, the education section should be placed near the top of your resume, right after your summary, as it is one of your strongest qualifications. In contrast, experienced professionals should place it towards the bottom, allowing their work experience to take precedence. For more on section order, see our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### What should I do if I have multiple degrees?  
+If you have multiple degrees, list them in reverse chronological order, starting with the most recent. Include the degree type, major, institution name, and graduation year for each. This format helps employers quickly identify your highest level of education and relevant qualifications. For more tips on highlighting your achievements, check out our post on [200 Best Action Verbs for Resume in 2026](https://thetailorcv.com/blog/best-action-verbs-for-resume).
+
+### Is it necessary to include relevant coursework on my resume?  
+Including relevant coursework is especially important for students and recent graduates who may have limited work experience. It showcases your knowledge and skills related to the job you are applying for. However, experienced professionals should focus on their work experience instead. For guidance on crafting a compelling resume summary, visit our article on [How to Write a Resume Summary in 2026](https://thetailorcv.com/blog/how-to-write-resume-summary).

@@ -174,3 +174,19 @@ A strong game developer resume in 2026 shows engine proficiency, shipped titles,
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), build a strong [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and prepare for technical interviews with the [technical interview guide](https://thetailorcv.com/blog/technical-interview-preparation-guide).
 
+## Frequently Asked Questions
+
+### What should be included in a game developer resume for 2026?  
+A game developer resume in 2026 should include a header with links to your portfolio, a summary of your experience, technical skills, work experience with shipped titles, relevant projects with playable links, and your education. Make sure to highlight your proficiency in engines like Unity or Unreal and to demonstrate your impact through specific examples of gameplay or technical systems you developed.
+
+### How can I make my game developer resume ATS-friendly?  
+To ensure your resume is ATS-friendly, use relevant keywords and phrases from the job description, and choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates). Additionally, you can run your resume through a [free ATS score checker](https://www.thetailorcv.com/solutions) to identify any issues that may prevent it from passing through applicant tracking systems.
+
+### What are some effective bullet points to include in my game developer resume?  
+Effective bullet points should quantify your achievements and specify your contributions to projects. For example, you could mention how you "reduced frame time by 30% on mid-tier mobile devices through profiling and optimization." Highlighting your role in shipped titles and the impact of your work will strengthen your resume significantly.
+
+### How important is a portfolio for a game developer?  
+A portfolio is essential for a game developer, as it showcases your playable projects and shipped games that complement your resume. Including links to your portfolio in your resume allows potential employers to see your skills in action. You can learn more about building a professional [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) that stands out to employers.
+
+### What should I do if I'm an entry-level game developer?  
+If you're an entry-level game developer, focus on highlighting your relevant coursework, personal projects, and any internships or freelance work. Include projects that demonstrate your skills and creativity, and consider using the [Fresher Resume Projects That Get Interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) guide to identify impactful projects to feature on your resume.

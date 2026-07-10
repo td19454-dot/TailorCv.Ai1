@@ -199,3 +199,19 @@ Job rejection is a process, not a verdict. Every successful candidate has a reje
 
 Make your resume as strong as possible before each application cycle - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide). Prepare for interviews using the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and the [mock interview tool](https://thetailorcv.com/mock-interview).
 
+## Frequently Asked Questions
+
+### How should I respond to a job rejection email?
+You should respond to a job rejection email professionally and graciously. A simple thank-you note expressing appreciation for the opportunity can leave a positive impression. You might also ask for feedback on your application or interview performance, which can help you improve for future applications. For more tips on how to bounce back, check out our guide on [how to explain resume gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps).
+
+### What can I learn from a job rejection?
+Job rejection can provide valuable insights into your application process. It may highlight areas where your resume or skills could be improved, such as keyword matching with the job description. Using our [free ATS score checker](https://www.thetailorcv.com/solutions) can help you identify and address these gaps to enhance future applications.
+
+### How can I stay motivated after multiple job rejections?
+Staying motivated after facing multiple job rejections can be challenging, but it’s essential to maintain a positive mindset. Focus on the lessons learned from each experience, and set small, achievable goals to keep your momentum going. For practical strategies on managing your job search, consider our post on [how many jobs should you apply to per day](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day).
+
+### Is it normal to feel discouraged after being rejected?
+Yes, it’s completely normal to feel discouraged after receiving a job rejection. Many candidates experience similar feelings, but it’s important to remember that rejection is a part of the job search process. Emphasizing resilience and actively seeking feedback can help you recover faster and continue pursuing your goals.
+
+### How can I improve my resume for future applications?
+Improving your resume is crucial for increasing your chances of landing interviews. Tailor your resume to each job description by incorporating relevant keywords and experiences. Utilizing our [resume templates](https://www.thetailorcv.com/templates) and the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) can also streamline your application process and help you stand out to employers.

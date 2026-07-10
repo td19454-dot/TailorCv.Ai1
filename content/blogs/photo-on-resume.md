@@ -142,3 +142,19 @@ In the US, Canada, UK, and Australia: do not include a photo on your resume. In 
 
 Focus your energy on building a strong, ATS-optimized resume. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and run your document through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to make sure your content reaches every recruiter who looks at it.
 
+## Frequently Asked Questions
+
+### Should I include a photo on my resume if I'm applying in Germany?  
+In Germany, including a photo on your resume has traditionally been expected, although this trend is gradually changing. Many applicants still choose to include a professional headshot, as it can help personalize their application. However, it's essential to ensure that your resume adheres to the latest [ATS-friendly template](https://www.thetailorcv.com/templates) guidelines, especially if you're applying to international companies.
+
+### What are the risks of including a photo on my resume in the UK?  
+In the UK, including a photo on your resume is not standard practice and can raise concerns about discrimination. Employers are encouraged to focus on qualifications and experience rather than appearance, and a photo could inadvertently lead to bias. To ensure your resume is compliant, you can check its effectiveness with the [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+### Is it acceptable to add a photo to my resume when applying for jobs in India?  
+In India, including a photo is generally not required for most tech or corporate roles. However, some industries might still expect it, so it's best to research specific company norms. If you're looking for more tips on how to present your qualifications effectively, consider reading our guide on creating a [resume for returning to work after a career break](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break).
+
+### What should I consider when applying for jobs in Japan regarding resume photos?  
+In Japan, including a photo on your resume is typically expected and can be an integral part of the application process. It's essential to use a professional photograph that aligns with local expectations. For more insights on how to enhance your job application, check out our [video resume guide for 2026](https://thetailorcv.com/blog/video-resume-guide-2026).
+
+### Can a photo on my resume affect my ATS score?  
+Yes, including a photo on your resume can negatively impact your ATS score, as many Applicant Tracking Systems are not designed to process images. It's advisable to focus on text-based content that highlights your skills and experience instead. For a deeper understanding of what can harm your ATS score, refer to our article on [what actually kills your ATS score](https://thetailorcv.com/blog/ats-resume-data-study-2026).

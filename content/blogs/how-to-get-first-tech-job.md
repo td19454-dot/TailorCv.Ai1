@@ -224,4 +224,19 @@ Getting your first tech job in 2026 is a marathon, not a sprint - but it is comp
 
 Start with your resume: use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [technical skills guide for freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience). Then build your projects, practice your interviews with the [mock interview tool](https://thetailorcv.com/mock-interview), and apply consistently.
 
+## Frequently Asked Questions
 
+### What technical niche should I focus on for my first tech job?  
+Choosing a clear technical niche is crucial for freshers. Instead of trying to be a "full stack" developer, focus on one area where you can build expertise. Options include **Backend engineering** (Python, Node.js), **Frontend engineering** (React, TypeScript), or **Data science/ML** (Python, SQL). Specializing will help you stand out and demonstrate real ability through projects and a [portfolio](https://www.thetailorcv.com/portfolio).
+
+### How can I make my resume stand out to employers?  
+To create a standout resume, ensure it is ATS-friendly by using a suitable [template](https://www.thetailorcv.com/templates) and optimizing your skills section. Additionally, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) to see how it performs and make necessary adjustments. Highlight relevant projects and skills that align with the job description to capture the attention of hiring managers.
+
+### What should I include in my portfolio when applying for tech jobs?  
+Your portfolio should showcase your best projects, demonstrating your skills and problem-solving abilities. Include a variety of works that reflect your chosen niche, such as coding projects for backend or frontend development, or data analysis reports for data science roles. For tips on building an effective portfolio, check out our guide on [how to host your portfolio website for free](https://www.thetailorcv.com/blog/how-to-host-portfolio-free).
+
+### How can I prepare for my first tech job interview?  
+Preparation for your first tech interview involves practicing common technical questions and behavioral scenarios. Utilize resources like the [AI mock interview](https://www.thetailorcv.com/mock-interview) tool to simulate real interview conditions. Additionally, research the company and prepare questions to ask your interviewer to demonstrate your enthusiasm and fit for the role.
+
+### How can I leverage LinkedIn for my job search in tech?  
+LinkedIn is a powerful tool for job seekers in tech. Optimize your profile by highlighting your skills, projects, and any relevant certifications. Engage with content in your field and connect with industry professionals to expand your network. For a step-by-step approach, refer to our guide on [how to use LinkedIn for job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).

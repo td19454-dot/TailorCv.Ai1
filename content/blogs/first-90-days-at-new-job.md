@@ -178,4 +178,19 @@ Your first 90 days at a new job are foundational. Learn deeply in the first mont
 
 Keep your resume updated with your new role and achievements using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and plan your growth with the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
 
+## Frequently Asked Questions
 
+### What should I focus on during the first 30 days of my new job?  
+In the first 30 days, your primary focus should be on learning and absorbing information about your new workplace. This includes understanding the company culture, the team dynamics, and the specific processes that govern your role. Take this time to listen more than you speak, ask thoughtful questions, and identify potential quick wins for later. Remember, you can keep your resume updated with your accomplishments using the [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+### How can I build relationships with my colleagues in the first 90 days?  
+Building relationships is crucial in your first 90 days. Start by introducing yourself to team members and key stakeholders, and engage in informal conversations to understand their roles and perspectives. As you progress to the second month, deepen these relationships by collaborating on projects and seeking feedback. This approach will help you establish a strong foundation for future teamwork and align with your colleagues’ goals, ultimately enhancing your [personal branding](https://thetailorcv.com/blog/personal-branding-for-professionals).
+
+### What are some examples of early wins I can aim for in my new role?  
+Early wins can include successfully completing small projects, contributing to team meetings, or improving a process that enhances efficiency. These accomplishments should align with your team's goals and demonstrate your value. By delivering these wins in your first 60 days, you will build credibility and establish a reputation for reliability. For more insights on advancing your career, check out our guide on [how to get a promotion](https://thetailorcv.com/blog/how-to-get-a-promotion).
+
+### How should I handle feedback during my first 90 days?  
+Feedback is essential for your growth in a new role. During the second month, proactively seek feedback from your manager and colleagues to understand how you can improve and align with team expectations. Approach feedback with humility and openness, as it will help you refine your contributions and enhance your working relationships. Remember, establishing a strong feedback loop now can set you up for success in your future career endeavors.
+
+### What should I do if I feel overwhelmed in my new job?  
+Feeling overwhelmed is common in the early stages of a new job. If this happens, take a step back and reassess your priorities. Focus on your learning objectives and break tasks into manageable steps. It's also helpful to communicate with your supervisor about your workload and seek guidance on how to prioritize effectively. As you find your rhythm, consider utilizing tools that can facilitate your transition, such as our [AI mock interview](https://www.thetailorcv.com/mock-interview) to practice handling challenging situations.

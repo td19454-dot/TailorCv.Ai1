@@ -209,3 +209,19 @@ Fix the layout first (single-column, no tables, no text boxes), then fix your se
 
 Once your formatting is clean, focus on [ATS keyword optimization](https://thetailorcv.com/blog/resume-keywords-guide) and [tailoring your resume for each job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job). Formatting is the foundation - everything else builds on top of it.
 
+## Frequently Asked Questions
+
+### What is an ATS and how does it affect my resume?
+An ATS, or Applicant Tracking System, is software used by employers to filter job applications. It scans resumes for keywords and specific formatting before a human recruiter ever sees them. If your resume's formatting is not ATS-friendly, it could lead to important information being misread or lost entirely, resulting in a low [ATS score](https://thetailorcv.com/blog/ats-score-guide).
+
+### What are the most common ATS formatting mistakes?
+Common ATS formatting mistakes include using two-column layouts, graphics, and unusual fonts. These elements can confuse the ATS, causing it to misinterpret your resume. To avoid these pitfalls, consider using an [ATS resume parser friendly format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) that adheres to standard design principles.
+
+### How can I check if my resume is ATS-friendly?
+You can check if your resume is ATS-friendly by using a [free ATS score checker](https://www.thetailorcv.com/solutions). This tool evaluates your resume's formatting and keyword usage, helping you identify areas for improvement before you submit your application.
+
+### What should I look for in an ATS-friendly resume template?
+When choosing an ATS-friendly resume template, look for a simple layout with clear headings and standard fonts. Avoid templates with complex designs or graphics that may confuse the ATS. For guidance on selecting the right template, refer to our [how to choose resume template](https://thetailorcv.com/blog/how-to-choose-resume-template) guide.
+
+### How do I optimize my resume for ATS keywords?
+To optimize your resume for ATS keywords, analyze the job description and identify relevant terms and phrases. Use these keywords naturally throughout your resume to improve your chances of passing the ATS screening. For a practical approach, download our [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template) to help align your resume with job requirements.

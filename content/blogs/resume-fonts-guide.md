@@ -204,3 +204,19 @@ The best fonts for resumes in 2026 are Calibri, Garamond, Georgia, Arial, and Ca
 
 Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that uses optimal typography out of the box, and verify your resume parses correctly with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
 
+## Frequently Asked Questions
+
+### What are the best resume fonts for 2026?
+The best resume fonts for 2026 include **Calibri**, **Arial**, and **Times New Roman**. These fonts are clean, professional, and widely supported by Applicant Tracking Systems (ATS). Choosing a [professional font for your resume](https://thetailorcv.com/blog/resume-design-color-guide) not only enhances readability but also reflects your attention to detail.
+
+### How do I ensure my resume is ATS-compatible?
+To ensure your resume is ATS-compatible, use standard fonts like **Calibri** or **Arial** and avoid decorative or script fonts. Additionally, you should start from an [ATS-friendly template](https://www.thetailorcv.com/templates) and run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) to confirm it parses correctly.
+
+### What font size should I use for my resume?
+A font size between **10 and 12 points** is recommended for the body text of your resume, ensuring readability without sacrificing space. For headings, you can use slightly larger sizes, such as **14 to 16 points**, to help them stand out. To learn more about optimal formatting, check out our guide on [resume margins, spacing, and layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting).
+
+### Are there fonts I should avoid for my resume?
+Yes, you should avoid fonts like **Comic Sans**, **Papyrus**, or any overly decorative fonts, as they can appear unprofessional and may not be read correctly by ATS software. Stick to clean, modern fonts that convey professionalism. For a deeper understanding of what makes a good resume font, refer to our post on [resume design and color](https://thetailorcv.com/blog/resume-design-color-guide).
+
+### How can font choice impact my resume's readability?
+Font choice significantly impacts readability, especially since recruiters spend only a few seconds on initial scans. Fonts that are too ornate or difficult to read can hinder the absorption of key information. For tips on enhancing your resume’s overall structure, explore our guide on [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume).

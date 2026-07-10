@@ -176,3 +176,19 @@ The most common resume red flags are fixable: unexplained gaps, job-hopping with
 
 Run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to identify technical red flags, use an [ATS-friendly template](https://www.thetailorcv.com/templates) for formatting, and practice your answers with the [mock interview tool](https://thetailorcv.com/interview-prep) once your resume starts generating calls.
 
+## Frequently Asked Questions
+
+### What are some common resume red flags that recruiters look for?  
+Common resume red flags include unexplained employment gaps, frequent job changes, and generic content. Recruiters are trained to identify these issues quickly, which can lead to immediate rejections. To ensure your resume stands out, consider using a [resume review checklist](https://thetailorcv.com/blog/resume-review-checklist-before-applying) to identify and address potential problems.
+
+### How can I explain employment gaps on my resume?  
+To effectively explain employment gaps, provide a brief and neutral context for the time away from work. Acceptable reasons include caregiving, education, or personal development. For more strategies on addressing these gaps, check out our guide on [how to explain resume gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps).
+
+### What should I avoid putting on my resume?  
+Avoid including irrelevant information, overly generic phrases, or anything that can raise skepticism about your qualifications. For a comprehensive list of items to omit, refer to our article on [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume).
+
+### How can I tailor my resume to specific job applications?  
+Tailoring your resume involves customizing your summary, skills, and experience to align with the job description. Use keywords from the job posting and highlight relevant achievements. For additional tips on crafting a compelling resume, consider using our [resume templates](https://www.thetailorcv.com/templates) designed for optimal impact.
+
+### Is it worth creating a portfolio website in addition to my resume?  
+Yes, a portfolio website can complement your resume by showcasing your work, skills, and achievements in a more dynamic format. It allows potential employers to see your projects firsthand. To learn more about the benefits, read our post on [portfolio website vs resume](https://thetailorcv.com/blog/portfolio-website-vs-resume).

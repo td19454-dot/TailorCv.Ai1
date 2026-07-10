@@ -188,4 +188,19 @@ Your [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) 
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify keyword alignment. Strengthen your bullets with the [quantify achievements guide](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) and [action verbs guide](https://thetailorcv.com/blog/best-action-verbs-for-resume).
 
+## Frequently Asked Questions
 
+### What should I include in my resume summary?
+Your resume summary should include a brief overview of your professional identity, key skills, and notable achievements. Focus on what you can offer to potential employers rather than what you want. For more tips on crafting impactful statements, check out our guide on [how to write a resume headline](https://thetailorcv.com/blog/how-to-write-resume-headline).
+
+### How long should a resume summary be?
+A resume summary typically ranges from 2 to 4 lines, succinctly capturing your professional essence. This length allows you to communicate your value clearly without overwhelming the recruiter. If you're unsure about the structure, consider using our [resume section order guide](https://thetailorcv.com/blog/resume-section-order-guide) for best practices.
+
+### What is the difference between a resume summary and a resume objective?
+A resume summary focuses on what you can offer to an employer, highlighting your skills and experiences, while a resume objective expresses what you want from the job. In today's job market, especially in 2026, summaries are preferred for most candidates. For more details on when to use each, refer to our post on [resume summary vs objective](https://thetailorcv.com/blog/resume-summary-vs-objective).
+
+### How can I make my resume summary stand out?
+To make your resume summary stand out, use strong action verbs and quantify your achievements where possible. Tailor your summary to the specific job you’re applying for, incorporating relevant keywords from the job description. For a list of impactful verbs, check out our article on the [200 best action verbs for resume in 2026](https://thetailorcv.com/blog/best-action-verbs-for-resume).
+
+### Should I use keywords in my resume summary?
+Yes, using relevant keywords in your resume summary is crucial for passing Applicant Tracking Systems (ATS) and grabbing the attention of recruiters. Tailor your summary to align with the job description, and consider running your resume through our [free ATS score checker](https://www.thetailorcv.com/solutions) to optimize your chances of being noticed.

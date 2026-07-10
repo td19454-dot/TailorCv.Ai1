@@ -262,4 +262,19 @@ A strong [portfolio](https://thetailorcv.com/blog/how-to-build-professional-port
 
 Build it, link it on your resume, and keep it updated. Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), use an [ATS-friendly template](https://www.thetailorcv.com/templates), and then use your portfolio link to reinforce your candidacy at every stage of the hiring process.
 
+## Frequently Asked Questions
 
+### Why is a portfolio important in 2026?
+A portfolio is crucial in 2026 because it serves as tangible proof of your skills and accomplishments. As recruiters increasingly rely on online searches and AI tools to vet candidates, having a well-structured portfolio can set you apart from others who may only have a resume. For more insights, check out our [Portfolio Checklist](https://thetailorcv.com/blog/portfolio-checklist-before-applying) to ensure yours is comprehensive.
+
+### What should I include in my software developer portfolio?
+Your software developer portfolio should showcase 3-5 complete, deployed projects that highlight your coding skills and problem-solving abilities. Include a variety of projects to demonstrate your versatility, and make sure to explain your role and the technologies used. For tips on common pitfalls, refer to our article on [11 Portfolio Mistakes That Cost You Interviews](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid).
+
+### How do I choose between a portfolio website and a resume?
+In 2026, both a portfolio website and a resume serve different but complementary purposes. While your resume provides a concise overview of your skills and experiences, your portfolio allows for a deeper dive into your work, showcasing your projects and methodologies. To understand the nuances better, read our post on [Portfolio Website vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume).
+
+### Can I build my portfolio without coding skills?
+Yes, you can build a professional portfolio without coding skills using various user-friendly platforms that offer portfolio website builders. These tools often come with customizable templates that allow you to present your work effectively. For a step-by-step guide, check out our article on [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide).
+
+### How can I ensure my portfolio is ATS-friendly?
+To make your portfolio ATS-friendly, focus on using clear headings, relevant keywords, and a straightforward layout that allows for easy navigation. Additionally, make sure your portfolio aligns with your resume in terms of content and messaging. You can also use our [Free ATS score checker](https://www.thetailorcv.com/solutions) to optimize both your resume and portfolio for applicant tracking systems.

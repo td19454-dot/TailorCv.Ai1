@@ -190,3 +190,19 @@ The best time to update your resume is immediately after something noteworthy ha
 
 Keep your resume on an [ATS-friendly template](https://www.thetailorcv.com/templates), check your score against target roles with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) at least once a year, and stay interview-ready with the [mock interview tool](https://thetailorcv.com/interview-prep).
 
+## Frequently Asked Questions
+
+### When should I update my resume after starting a new job?  
+It's best to update your resume immediately after starting a new job. This ensures you capture the details while they're still fresh in your mind, including your position title, company, and start date. Keeping your resume current helps you maintain a comprehensive record of your career progression, which is particularly useful for future applications. For tips on using a [master resume](https://thetailorcv.com/blog/portfolio-homepage-copy-examples) effectively, check out our related resources.
+
+### What types of achievements should I include on my resume?  
+Include significant achievements such as leading a successful project, receiving an award, or completing a major milestone. It's essential to add these accomplishments right after they occur to ensure you remember the specifics, including metrics and outcomes. This will enhance your resume's impact and help you stand out to potential employers. For more details on what to include, see our guide on [resume updates](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break).
+
+### How do I maintain a master resume?  
+To maintain a master resume, regularly update it with new experiences, skills, and accomplishments. This document should be comprehensive and include all your roles, projects, and education. When applying for jobs, you can easily tailor this master version to specific positions, ensuring you highlight the most relevant information. For additional strategies on optimizing your resume, visit our [ATS score checker](https://www.thetailorcv.com/solutions).
+
+### What should I do if I receive a promotion?  
+When you receive a promotion, update your resume immediately to reflect your new job title and responsibilities. This not only showcases your career advancement but also helps you remember the context of your achievements associated with the promotion. If you're unsure how to present this change, refer to our detailed post on [resume maintenance](https://thetailorcv.com/blog/video-resume-guide-2026).
+
+### How can I verify my resume is ATS-friendly?  
+To ensure your resume is ATS-friendly, run it through an [ATS score checker](https://www.thetailorcv.com/solutions) after updating. This tool will help you identify areas for improvement, ensuring your resume meets the necessary criteria to pass through applicant tracking systems. Additionally, consider using our [resume templates](https://www.thetailorcv.com/templates) designed specifically for ATS compatibility.

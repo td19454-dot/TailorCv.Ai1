@@ -235,4 +235,19 @@ A fully optimized [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profi
 
 Spend 2-3 hours optimizing your profile fully, then maintain it with weekly activity. Pair it with a strong resume optimized using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and use the [LinkedIn job search guide](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for active job search strategy.
 
+## Frequently Asked Questions
 
+### How can I make my LinkedIn profile stand out to recruiters in 2026?
+To make your LinkedIn profile stand out, focus on optimizing every section, including your headline, summary, and skills. Use specific keywords relevant to your industry and role to improve your visibility in search results. For a comprehensive approach, check our guide on [how to sync your LinkedIn profile with your tailored resume](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync) to ensure consistency across platforms.
+
+### What type of profile photo should I use on LinkedIn?
+Your LinkedIn profile photo should be clear, professional, and approachable. Aim for a high-resolution close-up of your face and shoulders with a clean background. Profiles with photos receive significantly more views, so investing in a good image can enhance your chances of being noticed by recruiters.
+
+### Why is the LinkedIn background banner important?
+The LinkedIn background banner is a valuable opportunity to express your professional identity and personal brand. Use this space to highlight your skills or career focus, such as "Data Analyst | SQL | Machine Learning." This visual element can help differentiate you from other candidates and make a lasting impression.
+
+### How can I ensure my LinkedIn profile complements my resume?
+To ensure your LinkedIn profile complements your resume, both should reflect the same skills, experiences, and achievements. Use our [free ATS score checker](https://www.thetailorcv.com/solutions) to analyze your resume's effectiveness and make necessary adjustments to your LinkedIn profile accordingly. Consistency is key for a strong personal brand.
+
+### What are some common mistakes to avoid when optimizing my LinkedIn profile?
+Common mistakes include using a generic headline, leaving sections incomplete, and failing to include relevant skills. Profiles that lack detail and specificity are less likely to catch recruiters' attention. Avoid these pitfalls to enhance your profile's effectiveness and consider reviewing our article on [11 portfolio mistakes that cost you interviews](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid) for additional insights.

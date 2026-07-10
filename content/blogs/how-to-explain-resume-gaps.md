@@ -200,3 +200,19 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 
 Make sure the non-gap parts of your resume are strong. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize your keywords, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide). Then prepare your gap explanation for interviews using the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers).
 
+## Frequently Asked Questions
+
+### How should I address a gap in my resume during an interview?
+When discussing a gap in your resume during an interview, focus on being honest and concise. Briefly explain the reason for the gap, such as caregiving or upskilling, and emphasize what you learned or how you stayed engaged during that time. This proactive approach shows your potential employer that you are forward-looking and resilient. For more tips on handling interview questions, check out our guide on [how to explain job hopping](https://thetailorcv.com/blog/how-to-explain-job-hopping-in-interview).
+
+### Is it necessary to mention short gaps (under 3 months) on my resume?
+In most cases, short gaps of under three months go unnoticed and do not require explanation on your resume. However, if you feel it might raise questions, a brief mention in your cover letter can be helpful. Focus on your skills and experiences, ensuring that your resume remains strong. For more insights on resume concerns, visit our post on [resume red flags](https://thetailorcv.com/blog/15-resume-red-flags).
+
+### What if my employment gap was due to a layoff?
+If your gap was due to a layoff, it's essential to address it clearly and honestly. Mention the layoff in your resume or cover letter, and highlight any relevant activities you engaged in during that period, such as upskilling or freelance work. This demonstrates that you remained proactive, which is crucial for potential employers. You can also explore our [how to get a job with no experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026) strategies for further guidance.
+
+### Should I list my gap on LinkedIn?
+Yes, if your gap is significant (over 6 months), it’s advisable to address it on your LinkedIn profile. You can add a brief description of what you did during that time, such as volunteering or taking courses. This transparency can help mitigate concerns and show potential employers that you were active during your employment break. For more tips on enhancing your online presence, consider creating a [portfolio website](https://www.thetailorcv.com/portfolio).
+
+### How can I strengthen my resume if I have a gap?
+To strengthen your resume despite a gap, ensure that the rest of your experience is well-framed and showcases your skills. Utilize tools like the [free ATS score checker](https://www.thetailorcv.com/solutions) to optimize your resume for keywords and ensure it meets industry standards. A strong resume can help diminish the impact of any gaps you may have.

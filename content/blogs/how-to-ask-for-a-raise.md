@@ -185,4 +185,19 @@ Asking for a raise is a business negotiation, not a personal favor. Build your c
 
 To strengthen your position long-term, keep your skills current with the [skills to add to your resume guide](https://thetailorcv.com/blog/skills-to-add-to-resume-2026), keep your resume sharp with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and read the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
 
+## Frequently Asked Questions
 
+### When is the best time to ask for a raise?
+The best timing to ask for a raise typically includes moments like after successfully delivering a major project or during your performance review cycle. It's crucial to prepare in advance and not wait for the meeting to make your case. Additionally, asking when the company is performing well financially can increase your chances of a positive response.
+
+### How should I build my case for a raise?
+To build your case for a raise, document specific accomplishments since your last salary review. Highlight projects you've delivered, revenue generated, and any process improvements with measurable results. This evidence will support your argument and demonstrate that your value has increased, making it a solid business case rather than a personal plea.
+
+### What should I avoid when asking for a raise?
+Avoid asking for a raise during layoffs, budget freezes, or immediately after a company loss. These situations can significantly diminish your chances of a favorable response. Instead, approach the conversation with preparation and professionalism, steering clear of casual requests or ultimatums without genuine alternatives.
+
+### How can I ensure I am not underpaid?
+To ensure you are not underpaid, regularly research your market value and compare your salary with industry standards. Keeping your resume updated and using tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) can help you assess your professional standing and advocate for a raise based on data.
+
+### What if my request for a raise is denied?
+If your request for a raise is denied, it's essential to remain professional and seek constructive feedback. Inquire about the reasons behind the decision and ask what steps you can take to position yourself for a future raise. This proactive approach demonstrates your commitment to personal growth and can pave the way for future opportunities, such as a promotion. For more on this, check out our guide on [How to Get a Promotion in 2026](https://thetailorcv.com/blog/how-to-get-a-promotion).

@@ -156,4 +156,19 @@ Most [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview
 
 Prepare comprehensively with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), and [questions to ask guide](https://thetailorcv.com/blog/questions-to-ask-in-an-interview). Practice with the [mock interview tool](https://thetailorcv.com/mock-interview), and make sure your resume is strong with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
+## Frequently Asked Questions
 
+### What are the top preparation mistakes to avoid before an interview?
+One of the most critical preparation mistakes is not researching the company. Candidates should familiarize themselves with the company's products, culture, and recent news to demonstrate genuine interest. Utilizing the [company research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview) can help candidates prepare effectively.
+
+### How can I prepare for common interview questions?
+To avoid stumbling during the interview, it's essential to prepare for common questions such as "Tell me about yourself" and "Why this company." Resources like the [tell me about yourself guide](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself) provide structured approaches to formulate thoughtful responses, ensuring candidates articulate their experiences clearly.
+
+### What should I do if I'm asked about a gap in my employment?
+When discussing gaps in employment, it's important to be honest and frame your response positively. Candidates can refer to guides like [how to explain getting fired in an interview](https://thetailorcv.com/blog/how-to-explain-getting-fired-in-an-interview) to prepare for these conversations and convey their resilience and growth during that period.
+
+### Why is it important to ask questions during an interview?
+Asking insightful questions during an interview demonstrates your interest in the role and helps you determine if the company is a good fit for you. Candidates can explore the [best questions to ask in a job interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview) to prepare thoughtful inquiries that engage the interviewer and show your enthusiasm.
+
+### How can I practice for interviews effectively?
+Practicing for interviews can significantly boost your confidence and performance. Using tools like the [AI mock interview](https://www.thetailorcv.com/mock-interview) can simulate real interview scenarios, allowing candidates to refine their answers and receive feedback on their delivery, which is crucial to avoid common mistakes.

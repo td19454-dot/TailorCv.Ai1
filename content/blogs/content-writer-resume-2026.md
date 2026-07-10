@@ -167,3 +167,19 @@ A strong content writer resume in 2026 shows writing range, SEO competence, and 
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), build a strong [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and prepare for interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What are the key components of a content writer resume in 2026?  
+A content writer resume in 2026 should include a header with a link to your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), a summary that highlights your skills and experience, a list of relevant skills, work experience, and notable writing samples. It's essential to keep it concise, ideally one page, to improve its readability and impact.
+
+### How can I optimize my content writer resume for ATS?  
+To ensure your resume is ATS-friendly, use relevant keywords from the job description and structure your document appropriately. Running your resume through a [free ATS score checker](https://www.thetailorcv.com/solutions) can help identify areas for improvement. Focus on using standard headings and bullet points to enhance clarity and organization.
+
+### What should I include in my portfolio as a content writer?  
+Your portfolio should showcase your best writing samples, including blog posts, articles, and any other content types you’ve produced. Highlight pieces that demonstrate your ability to drive traffic and engagement, as these metrics are highly valued by employers. For guidance on building a strong portfolio, refer to our [portfolio website builder](https://www.thetailorcv.com/portfolio).
+
+### How can I demonstrate the impact of my writing on my resume?  
+Use quantifiable metrics to showcase your writing's effectiveness, such as traffic increases or engagement rates. For instance, instead of simply stating you wrote articles, specify how many you authored and the results they achieved, like “grew organic traffic from 12K to 58K monthly sessions.” This approach aligns with the focus on results-driven content highlighted in our guide.
+
+### What writing skills should I emphasize in my resume for 2026?  
+In your resume, emphasize skills that are in high demand, such as SEO, copywriting, and research. Additionally, mention your proficiency with AI tools, as employers are increasingly looking for writers who can leverage technology effectively. For insights on using AI without losing your voice, check out our article on the [AI Job Search Agent 2026](https://thetailorcv.com/blog/ai-job-search-agent-2026).
