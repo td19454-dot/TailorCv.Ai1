@@ -200,3 +200,19 @@ Awards and achievements belong on a resume when they are relevant, contextual, a
 
 Every achievement becomes stronger with context: what it was for, how selective it was, and what you did to earn it. Build your full resume on an [ATS-friendly template](https://www.thetailorcv.com/templates), run it through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions), and use the [mock interview tool](https://thetailorcv.com/interview-prep) to practice explaining your achievements in conversation.
 
+## Frequently Asked Questions
+
+### Why should I include awards on my resume?  
+Including awards on your resume can significantly enhance your credibility and differentiate you from other candidates. Awards serve as independent validation of your performance, showcasing that you have been recognized by third parties for your achievements. This can make you more memorable in a competitive job market, especially when paired with a [well-structured resume](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### How do I decide where to place my awards on my resume?  
+You have a couple of options for placing awards on your resume. The recommended choice is to integrate them into the relevant sections, such as Work Experience or Education, to provide context. For example, listing an award directly under a job title or degree can illustrate how your achievements relate to your professional journey. For more insights on resume structure, check out [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume).
+
+### Can I create a separate section for my awards and achievements?  
+Yes, you can create a dedicated section for awards and achievements if you have multiple accolades that are relevant to the job you're applying for. However, ensure that this section does not clutter your resume or distract from more critical information. Use this section strategically to highlight notable accomplishments that align with the role. For tips on crafting effective bullet points, refer to our guide on [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+
+### What types of awards should I include on my resume?  
+Focus on awards that are relevant to the job you are applying for, such as professional accolades, industry recognitions, or academic honors. It's best to include awards that demonstrate your skills, leadership, and contributions, making sure they align with the qualifications sought by employers. For a comprehensive understanding of resume components, explore [What Is a Resume and Why Does It Matter?](https://thetailorcv.com/blog/what-is-a-resume).
+
+### How can I ensure my resume is ATS-friendly when listing awards?  
+To make your resume ATS-friendly while listing awards, use clear and concise language, and avoid overly complex formatting. Place awards in relevant sections, and make sure to use standard headings. Before submitting your resume, run it through the [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure it meets the necessary criteria for applicant tracking systems.

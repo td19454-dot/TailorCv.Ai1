@@ -198,3 +198,19 @@ Research your number, express enthusiasm, state your ask clearly, then stop talk
 
 Once your compensation is sorted, make sure you continue to build your value through strong resume documentation. Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) before your next application cycle. For interview preparation, use the [interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and practice behavioral questions with the [free AI mock interview tool](https://thetailorcv.com/mock-interview).
 
+## Frequently Asked Questions
+
+### Should I negotiate my salary if I receive a low offer?  
+Yes, you should almost always negotiate your salary, especially if the offer is below your expectations. Employers often expect candidates to negotiate, and there is usually room for improvement in the initial offer. To prepare effectively, consider researching your market value and leveraging resources like our [Salary Negotiation Guide](https://thetailorcv.com/blog/salary-negotiation-guide) for strategies that work in 2026.
+
+### What are some effective tactics for salary negotiation?  
+Effective tactics include doing thorough market research to understand industry standards, practicing your negotiation script, and being ready to articulate your value. It’s also important to remain flexible and open to discussion. For more detailed strategies, check out our guide on [Negotiating Multiple Job Offers](https://thetailorcv.com/blog/negotiating-multiple-job-offers) to maximize your salary negotiation outcomes.
+
+### When is the right time to negotiate my salary?  
+The best time to negotiate your salary is after you have received a formal job offer, whether written or verbal. Avoid discussing salary during the initial interview or when asked about salary expectations early in the process. For tips on how to navigate these conversations, refer to our [Salary Negotiation After a Job Interview](https://thetailorcv.com/blog/salary-negotiation-interview-guide-2026).
+
+### How do I respond if an employer says the salary is non-negotiable?  
+If an employer claims the salary is non-negotiable, consider asking for other benefits or compensation options, such as bonuses, flexible working conditions, or professional development opportunities. It’s essential to express your interest in the position while remaining firm about your worth. For guidance on discussing salary expectations without underselling yourself, see our [How to Answer Salary Expectations](https://thetailorcv.com/blog/salary-expectation-answer-guide).
+
+### What should I do if I have multiple job offers?  
+If you find yourself with multiple job offers, it’s an excellent opportunity to negotiate for a better salary or benefits package. Communicate openly with each employer about your situation, but be respectful and professional. To craft effective communication, explore our resources on [Negotiating Multiple Job Offers](https://thetailorcv.com/blog/negotiating-multiple-job-offers) for scripts and email templates that can help you maximize your offers.

@@ -218,3 +218,19 @@ Writing a great resume from scratch takes 2-4 hours done properly: gathering mat
 
 Speed up the process by starting from an [ATS-friendly template](https://www.thetailorcv.com/templates). Test with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions). And once you get the interview, prepare with the [mock interview tool](https://thetailorcv.com/interview-prep).
 
+## Frequently Asked Questions
+
+### How do I start writing my resume from scratch?  
+To begin writing your resume, first gather all relevant information, including your job history, education, skills, and achievements. This preparation phase is crucial as it helps you avoid generic content. Once you have everything organized, you can create a structured document that reflects your unique qualifications. For a detailed breakdown of what to include, check out [The Anatomy of a Perfect Resume - Every Section Explained (2026)](https://thetailorcv.com/blog/anatomy-of-a-resume).
+
+### What should I include in the contact section of my resume?  
+Your resume contact section should include your full name, phone number, email address, and LinkedIn profile (if applicable). It's important to ensure that your contact information is up-to-date and clearly presented. For more tips on what to include and what to leave out, visit our guide on the [Resume Contact Section - What to Include and What to Leave Out (2026)](https://thetailorcv.com/blog/resume-contact-section).
+
+### How can I make my resume stand out to recruiters?  
+To make your resume stand out, focus on tailoring it to the specific job you are applying for. Highlight key achievements using quantifiable metrics and include relevant keywords from the job description. Additionally, consider using an [ATS-friendly template](https://www.thetailorcv.com/templates) to ensure your resume is easily readable by applicant tracking systems. Learn more about how recruiters read resumes in our article on [How Recruiters Read Resumes in Under 10 Seconds (And How to Win That Scan)](https://thetailorcv.com/blog/how-recruiters-read-resumes).
+
+### Should I use a resume objective or a summary?  
+Whether to use a resume objective or a summary depends on your experience level and career goals. A resume objective is ideal for entry-level candidates, while a summary works better for those with extensive experience. For guidance on making the right choice, refer to our post on [Resume Objective vs Summary - Which One Should You Use in 2026?](https://thetailorcv.com/blog/resume-objective-vs-summary).
+
+### How can I test my resume before submitting it?  
+Before submitting your resume, it's essential to test it for ATS compatibility. You can use the [Free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate how well your resume will perform in applicant tracking systems. This step ensures that your resume is optimized and increases your chances of getting noticed by recruiters.

@@ -181,4 +181,19 @@ Before the interview, make sure the resume that earned the call is still aligned
 
 For all other interview questions, read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and the full [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Before your interview, ensure your resume is strong - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it.
 
+## Frequently Asked Questions
 
+### How long should my answer to "Tell me about yourself" be?  
+Your answer should ideally take between 90 seconds to 2.5 minutes. This timeframe allows you to communicate your key experiences and skills effectively without overwhelming the interviewer. Keeping it concise ensures you maintain their attention and sets a positive tone for the rest of the interview. For more on what to avoid during interviews, check out our guide on [common interview mistakes](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
+
+### What should I include in my answer?  
+Your response should follow the "Present, Past, Future" formula: start with what you currently do, then summarize relevant past experiences, and finally, touch on your future aspirations related to the role. This structure helps you create a coherent narrative that highlights your qualifications and intentions, making it easier for interviewers to understand your fit for the position.
+
+### How can I practice my answer effectively?  
+To practice your answer, consider using the [AI mock interview](https://www.thetailorcv.com/mock-interview) tool available on TailorCV. This tool allows you to simulate real interview scenarios and receive feedback, helping you refine your delivery and content. Practicing in a realistic setting can significantly boost your confidence and improve your performance during the actual interview.
+
+### Should I tailor my answer for different roles?  
+Absolutely! Tailoring your answer for different roles is crucial, as it allows you to emphasize the experiences and skills most relevant to each position. By customizing your narrative, you demonstrate that you've thought carefully about the opportunity and understand what the employer is looking for. For further insights on role-specific preparation, explore our [final round interview tips](https://thetailorcv.com/blog/final-round-interview-tips).
+
+### What mistakes should I avoid when answering this question?  
+Common mistakes include rambling, providing irrelevant details, or sounding rehearsed. It's essential to stay focused on your professional background and how it relates to the role you're applying for. To ensure you avoid pitfalls, review our article on [common interview mistakes](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) for more detailed guidance.

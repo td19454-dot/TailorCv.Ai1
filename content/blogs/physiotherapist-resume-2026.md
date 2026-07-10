@@ -158,3 +158,19 @@ A strong physiotherapist resume in 2026 shows clinical specialization, assessmen
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What should I include in my physiotherapist resume summary?
+Your physiotherapist resume summary should highlight your licensure, years of experience, clinical skills, and specific patient outcomes you've achieved. For example, you might say, "Licensed Physiotherapist with 6 years of experience in orthopedic and sports rehabilitation." This concise overview sets the tone for your resume and showcases your qualifications right away.
+
+### How can I optimize my resume for ATS?
+To optimize your resume for Applicant Tracking Systems (ATS), incorporate relevant keywords related to your skills and specialties. Use the job description as a guide to identify these keywords. Additionally, running your resume through a [free ATS score checker](https://www.thetailorcv.com/solutions) can help you ensure that it meets ATS standards and increases your chances of getting noticed by employers.
+
+### What are some effective bullet points to demonstrate patient outcomes?
+Effective bullet points should focus on measurable results and specific patient populations. For instance, you could write, "Achieved 90% of patients reaching their rehabilitation goals within 12 weeks through tailored exercise programs." Highlighting specific outcomes not only demonstrates your impact but also showcases your clinical assessment skills.
+
+### How long should my physiotherapist resume be?
+Your physiotherapist resume should ideally be one to two pages long, depending on your experience. A concise format allows you to present your qualifications clearly while keeping the reader's attention. Make sure to include essential sections such as your summary, licensure, clinical skills, and work experience to create a comprehensive yet succinct document.
+
+### What format should I use for my physiotherapist resume?
+The recommended format for a physiotherapist resume includes a header with your licensure, a summary section, and lists for licensure and certifications, clinical skills, work experience, and education. This structured approach helps employers quickly identify your qualifications and ensures that your resume is reader-friendly. Consider using [ATS-friendly resume templates](https://www.thetailorcv.com/templates) to enhance your presentation.

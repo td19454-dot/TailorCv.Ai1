@@ -92,16 +92,21 @@ class BlogService:
                 return post
         return None
 
-    def related_posts(self, post: BlogPost, limit: int = 6) -> list[BlogPost]:
+    def related_posts(self, post: BlogPost, limit: int = 8) -> list[BlogPost]:
         """Pick related posts for internal linking. Layered so every post links to
-        several others AND niche posts still get surfaced (fewer orphan pages):
+        several others AND every post RECEIVES links (no orphan pages):
           1) strongest tag overlap (relevance),
-          2) same-category posts, rotated by this post's slug so the inbound links
-             spread across the whole category instead of always hitting the same
-             few popular posts,
-          3) most-recent posts as a final fill so the list is never short.
+          2) same-category posts, rotated by slug so inbound links spread across
+             the whole category instead of hitting the same few popular posts,
+          3) most-recent posts (rotated) as filler,
+          4) a global "ring": each post always links to its two successors in a
+             stable slug-sorted order, which guarantees every post is linked from
+             its two ring-predecessors — so nothing is ever orphaned.
         """
-        others = [p for p in self.load_posts() if p.slug != post.slug]
+        all_posts = self.load_posts()
+        others = [p for p in all_posts if p.slug != post.slug]
+        if not others:
+            return []
         post_tags = set(post.tags)
 
         def tag_overlap(c: BlogPost) -> int:
@@ -112,29 +117,46 @@ class BlogService:
             key=lambda p: (tag_overlap(p), p.date_iso),
             reverse=True,
         )
-        same_cat = [
-            p for p in others
-            if post.category and p.category == post.category
-        ]
+        same_cat = [p for p in others if post.category and p.category == post.category]
         if same_cat:
             seed = sum(ord(ch) for ch in post.slug) % len(same_cat)
             same_cat = same_cat[seed:] + same_cat[:seed]  # rotate to spread links
         recent = sorted(others, key=lambda p: p.date_iso, reverse=True)
         if recent:
-            # Rotate the fallback too (different offset) so the "filler" links also
-            # spread across older posts instead of always hitting the newest ones.
             seed_r = (sum(ord(ch) for ch in post.slug) * 7 + 3) % len(recent)
             recent = recent[seed_r:] + recent[:seed_r]
 
+        # Coverage guarantee: successors in a stable global ring.
+        ring_order = sorted(all_posts, key=lambda p: p.slug)
+        idx = next((i for i, p in enumerate(ring_order) if p.slug == post.slug), -1)
+        n = len(ring_order)
+        ring = [ring_order[(idx + k) % n] for k in (1, 2)] if idx >= 0 and n > 1 else []
+
         picked: list[BlogPost] = []
         seen: set[str] = {post.slug}
+
+        def add(p: BlogPost) -> None:
+            if p.slug not in seen:
+                picked.append(p)
+                seen.add(p.slug)
+
+        # Fill most slots with relevance, but reserve room for the ring neighbours.
+        reserve = len(ring)
         for pool in (tagged, same_cat, recent):
             for p in pool:
-                if p.slug not in seen:
-                    picked.append(p)
-                    seen.add(p.slug)
-                    if len(picked) >= limit:
-                        return picked
+                if len(picked) >= limit - reserve:
+                    break
+                add(p)
+        # Guaranteed ring neighbours (this is what removes orphans).
+        for p in ring:
+            if len(picked) >= limit:
+                break
+            add(p)
+        # Top up if any ring neighbour was already present.
+        for p in recent:
+            if len(picked) >= limit:
+                break
+            add(p)
         return picked[:limit]
 
     def list_filters(self) -> dict[str, list[str]]:

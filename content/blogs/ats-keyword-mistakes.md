@@ -221,3 +221,19 @@ Keyword mistakes are silent killers in the [ATS](https://thetailorcv.com/blog/wh
 
 Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to catch keyword gaps for every job you apply to. Read the [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide) for a complete keyword strategy. Fix your formatting first with the [ATS formatting mistakes guide](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), then optimize your keywords - and your ATS score will reflect both improvements.
 
+## Frequently Asked Questions
+
+### What are common ATS keyword mistakes job seekers make in 2026?  
+Common ATS keyword mistakes include keyword stuffing, using synonyms incorrectly, and failing to tailor your resume to the specific job description. These errors can lead to your application being ignored by the ATS, which ranks resumes based on keyword relevance. To avoid these pitfalls, consider using our [Resume Keyword Map Template](https://thetailorcv.com/blog/resume-keyword-map-template) to align your resume with the job requirements.
+
+### How can I improve my ATS score with keywords?  
+To improve your ATS score, focus on matching your resume keywords with those found in the job description. Use tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) to identify gaps in your keyword usage. Additionally, analyzing the job description for hidden keywords can help you enhance your resume's relevance and visibility.
+
+### What is keyword stuffing and why is it a problem?  
+Keyword stuffing refers to the excessive use of keywords in your resume to manipulate ATS rankings. This practice can make your resume appear unnatural and may lead to penalties from the ATS, causing your application to be ranked lower. Instead, aim for a balanced approach by using keywords naturally throughout your resume, as discussed in our [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide).
+
+### How do I find the right keywords for my resume?  
+To find the right keywords, start by analyzing the job description for essential skills and qualifications. Look for repeated terms and phrases that highlight what the employer is looking for. For a detailed approach, check out our [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) to ensure you capture all relevant keywords.
+
+### What should I do if my resume isn't getting interviews?  
+If your resume isn't yielding interviews, it may be due to keyword mismatches or formatting issues. Review your resume against the job description and utilize tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) to identify areas for improvement. Tailoring your application according to our [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist) can significantly enhance your chances of landing interviews.

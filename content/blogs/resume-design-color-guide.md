@@ -170,3 +170,19 @@ Resume design in 2026: subtle is professional, excessive is a distraction. A sin
 
 Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that gets the design right, and verify your choices with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) before submitting.
 
+## Frequently Asked Questions
+
+### Should I use color on my resume in 2026?  
+Using color on your resume can be effective, but it largely depends on your industry and the specific role you're applying for. Creative fields may appreciate a splash of color, while more traditional industries typically favor a more conservative approach. Always ensure that your design choices enhance your resume's readability and **[ATS compatibility](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)**.
+
+### What colors are considered professional for resumes?  
+Professional colors for resumes typically include muted tones like navy, dark green, or burgundy, which convey a sense of professionalism without being overwhelming. Bright colors can be used sparingly for headings or highlights, but it's crucial to maintain a balance to ensure your resume remains **[ATS-friendly](https://www.thetailorcv.com/blog/how-to-choose-resume-template)** and easy to read.
+
+### How can I ensure my resume design is ATS-compatible?  
+To ensure that your resume design is ATS-compatible, focus on a clean layout with clear headings, standard fonts, and appropriate spacing. Avoid using images or unconventional formatting that might confuse the ATS. You can use the **[Free ATS score checker](https://www.thetailorcv.com/solutions)** to test your design and verify that it meets the necessary criteria for parsing.
+
+### What are the best practices for resume layout in 2026?  
+Best practices for resume layout in 2026 include using clear sections, sufficient white space, and a logical flow of information. A well-structured resume is easier for recruiters to scan quickly, which is crucial since they often spend only seconds reviewing each application. Refer to our guide on **[resume margins, spacing, and layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting)** for detailed formatting tips.
+
+### How do I choose the right resume template for my job search?  
+Choosing the right resume template involves considering both your industry and the specific job you are targeting. Look for templates that highlight your skills and achievements while remaining visually appealing yet professional. Our post on **[how to choose the right resume template](https://thetailorcv.com/blog/how-to-choose-resume-template)** provides insights into selecting a design that aligns with your career goals.

@@ -165,3 +165,19 @@ For almost every candidate in 2026, the professional summary replaces the resume
 
 Use an objective only if you genuinely have nothing to summarize yet. In every other case, write a tight, tailored, accomplishment-forward 2-4 sentence summary. Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary), test the result with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions), and start from an [ATS-friendly template](https://www.thetailorcv.com/templates).
 
+## Frequently Asked Questions
+
+### What is the main difference between a resume objective and a professional summary?  
+The key difference lies in focus: a resume objective states what you want from a job, while a professional summary emphasizes what you can offer to an employer. A professional summary highlights your relevant experience, skills, and accomplishments, making it more appealing to recruiters. For more details on crafting these sections, check out our guide on [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume).
+
+### When should I use a resume objective instead of a summary?  
+Resume objectives may still be relevant for specific situations, such as when transitioning careers or applying for internships where your experience is limited. In these instances, an objective can clarify your intentions and goals. For a comprehensive overview of resume construction, refer to our post on [how to write a resume from scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch).
+
+### How long should a professional summary be?  
+A professional summary should typically be 2-4 sentences long, allowing you to concisely showcase your key strengths and achievements. This length provides enough space to capture the attention of hiring managers while remaining brief. For more tips on writing effective resume sections, visit our [resume section order guide](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### Can a professional summary help improve my ATS score?  
+Yes, a well-crafted professional summary can enhance your ATS score by incorporating relevant keywords from the job description. This helps your resume stand out in applicant tracking systems, increasing the likelihood of being noticed by recruiters. To learn more about optimizing your resume for ATS, check our guide on [how to improve your ATS score in 2026](https://thetailorcv.com/blog/resume-optimization-guide).
+
+### Should I include both a resume objective and a professional summary?  
+Generally, it is not advisable to include both in your resume since they serve different purposes and may create redundancy. Instead, choose the option that best highlights your qualifications and aligns with your career goals. For further insights on resume effectiveness, explore our article on [how recruiters read resumes in under 10 seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes).

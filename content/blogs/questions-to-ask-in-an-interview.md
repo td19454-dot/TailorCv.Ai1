@@ -166,3 +166,19 @@ The questions you ask in an [interview](https://thetailorcv.com/blog/how-to-prep
 
 Combine great questions with strong answers using the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [tell me about yourself guide](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself). Research the company with the [company research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview), and optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
+## Frequently Asked Questions
+
+### Why is it important to ask questions during a job interview?  
+Asking questions during a job interview is crucial because it demonstrates your genuine interest and preparation for the role. Thoughtful questions not only allow you to assess whether the position aligns with your career goals, but they also leave a strong final impression on the hiring manager. Moreover, the right questions can help reveal potential red flags before you accept an offer, ensuring that you make an informed decision about your future.
+
+### What types of questions should I avoid asking in an interview?  
+You should steer clear of questions that may come off as self-serving or uninformed, such as those about salary and benefits too early in the conversation. Additionally, avoid asking questions that can easily be answered by researching the company, like basic facts about its products or services. Instead, focus on deeper inquiries that show your engagement and interest in the role and the company culture. For more on common pitfalls, check out our guide on [common interview mistakes to avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
+
+### How can I prepare questions to ask during my interview?  
+To prepare effective questions, consider researching the company and the specific role you are applying for. Think about what aspects of the job or company culture are most important to you, and formulate questions that will help you gain clarity. It's also helpful to review your previous experiences and how they relate to the position, allowing you to create questions that connect your background to the role. For additional insights, refer to our article on [how to answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself).
+
+### How many questions should I prepare for an interview?  
+It's advisable to prepare 6-8 questions for an interview, as you may only have the opportunity to ask 3-4 depending on the time available. Having a variety of questions will allow you to adapt based on the flow of the conversation and the responses you receive. This preparation not only shows your interest but also helps you gauge the fit of the role for your career aspirations. For more on effective interview strategies, check our [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers).
+
+### What are some examples of smart questions to ask the hiring manager?  
+Smart questions to ask include inquiries about the company's growth plans, team dynamics, and expectations for success in the role. For example, you might ask, "What does success look like in this role in the first 6 months?" This type of question not only shows your interest in contributing to the company's goals but also helps you understand what will be expected of you. For more examples, refer to our full list of [smart questions](https://thetailorcv.com/blog/questions-to-ask-in-an-interview).

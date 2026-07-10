@@ -235,4 +235,19 @@ Run every resume through the [TailorCV ATS score checker](https://www.thetailorc
 
 These fixes improve your response rate even when your resume content is already strong - because they ensure the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) is reading what you actually wrote.
 
+## Frequently Asked Questions
 
+### What are some common hidden ATS mistakes in resumes?
+Hidden ATS mistakes often include issues that aren’t visible during a standard review of your resume. These can range from improper section ordering to contact parsing errors. For a detailed overview of these mistakes, check our guide on [hidden ATS mistakes](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search).
+
+### How can I ensure my resume is ATS-friendly?
+To make your resume ATS-friendly, start by using standard fonts and a single-column layout. Additionally, ensure that your resume includes relevant keywords from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) to improve its chances of passing through the ATS. Consider using the [free ATS score checker](https://www.thetailorcv.com/solutions) to audit your document for potential issues.
+
+### Why is my resume being silently rejected by ATS?
+Silent rejections occur when your resume fails to meet specific ATS criteria without providing feedback. This can happen due to hidden formatting issues or keyword mismatches. To address this, you can use the [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template) to align your resume with the job requirements effectively.
+
+### How can I improve my resume if I’m returning to work after a career break?
+If you’re returning to work after a career break, focus on showcasing relevant skills and experiences that align with the job you’re applying for. Highlight any freelance, volunteer, or project work during your break. For more tips, check out our guide on [resume for returning to work after a career break](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break).
+
+### What tools can help me optimize my resume for ATS?
+There are several tools available to help optimize your resume for ATS. The [free ATS score checker](https://www.thetailorcv.com/solutions) allows you to assess your resume’s compatibility with ATS systems. Additionally, using our [resume templates](https://www.thetailorcv.com/templates) can ensure you maintain a clean and professional layout that ATS can easily parse.

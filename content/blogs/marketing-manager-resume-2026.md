@@ -172,4 +172,19 @@ A strong marketing manager resume in 2026 shows measurable campaign performance,
 
 Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to compare your resume against the job description. Then prepare for your interview with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
 
+### What are the key components of a Marketing Manager resume in 2026?  
+A Marketing Manager resume in 2026 should include a well-structured format with sections like a strong header, a compelling summary, core marketing skills, work experience, projects or campaigns, education, and certifications. For detailed guidance on the order of these sections, refer to our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### How can I demonstrate my impact as a Marketing Manager on my resume?  
+To effectively demonstrate your impact, focus on quantifiable achievements rather than just listing tasks. Use metrics such as revenue growth, leads generated, or audience engagement to illustrate your contributions. For example, instead of saying "managed social media," specify "grew organic followers from 4K to 28K, generating 3 enterprise leads per month." This approach aligns with our [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
+
+### What resume template should I use for my Marketing Manager application?  
+Choosing an ATS-friendly resume template is crucial for ensuring your application gets through automated screening processes. You can find a variety of [resume templates](https://www.thetailorcv.com/templates) designed to highlight your marketing skills and achievements effectively.
+
+### How can I optimize my resume for ATS when applying for a Marketing Manager position?  
+To optimize your resume for ATS, incorporate relevant keywords from the job description and ensure that your formatting is compatible with ATS software. Consider using the [free ATS score checker](https://www.thetailorcv.com/solutions) to assess your resume's effectiveness before submitting it.
+
+### Should I include my marketing certifications on my resume, and how?  
+Yes, including marketing certifications can enhance your resume by showcasing your expertise and commitment to professional development. List them in a dedicated section towards the end of your resume, ensuring they are relevant to the marketing manager role you are applying for.

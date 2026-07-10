@@ -171,3 +171,19 @@ Your resume contact section should include your full name, professional email, p
 
 Format it cleanly in the main document body - never in a Word header or inside a graphic. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) to get this right automatically, and verify the contact info parses correctly with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
 
+## Frequently Asked Questions
+
+### What should my resume contact section include?
+Your resume contact section should include your full name, a professional email address, and a direct phone number. Make sure your name is prominent, ideally in a larger font size. For your email, choose something like **firstname.lastname@gmail.com** to maintain professionalism, and ensure your phone number is accurate and includes the country code if you're applying internationally.
+
+### How can I make my email address more professional?
+To create a more professional email address, use a combination of your first and last name, such as **firstname.lastname@gmail.com** or **firstlast@gmail.com**. Avoid playful or outdated email addresses like **partytime99@** or old university emails that you no longer check. This small change can significantly impact how hiring managers perceive you, as discussed in our guide on [what is a resume](https://thetailorcv.com/blog/what-is-a-resume).
+
+### Is it necessary to include a LinkedIn profile in my contact section?
+While not mandatory, including a LinkedIn profile can enhance your resume by providing hiring managers with additional insights into your professional background. Ensure your LinkedIn profile is up-to-date and matches the information on your resume. For tips on how to effectively use LinkedIn for job searching, check out our post on [how to use LinkedIn for job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
+
+### What are some common mistakes to avoid in the contact section?
+Common mistakes include using unprofessional email addresses, omitting your phone number, or including outdated contact information. Additionally, avoid overloading the section with excessive personal details, such as your home address. For a comprehensive review of resume structure and to avoid these pitfalls, refer to [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume).
+
+### How can I ensure my resume passes ATS screening?
+To ensure your resume passes ATS screening, use a clear format and include standard headings like "Contact Information." Avoid using images or uncommon fonts that may confuse the system. Starting from an [ATS-friendly template](https://www.thetailorcv.com/templates) can help you format your contact section correctly and improve your chances of making it through the initial screening.

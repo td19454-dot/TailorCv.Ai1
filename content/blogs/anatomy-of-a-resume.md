@@ -233,3 +233,19 @@ A perfect resume has every section working together: contact info that is easy t
 
 Start from an [ATS-friendly template](https://www.thetailorcv.com/templates), build each section using the linked guides above, and run the finished resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions). Once your resume lands interviews, use the [mock interview tool](https://thetailorcv.com/interview-prep) to close them.
 
+## Frequently Asked Questions
+
+### What are the mandatory sections to include in a resume?  
+The mandatory sections that every resume should include are Contact Information, Professional Summary, Skills, Work Experience, and Education. Each of these sections serves a crucial purpose in conveying your qualifications and suitability for the position. For a deeper understanding of how to structure these sections, refer to our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### How can I make my resume ATS-friendly?  
+To ensure your resume is ATS-friendly, start by using an [ATS-friendly template](https://www.thetailorcv.com/templates) that aligns with modern standards. Additionally, focus on using relevant keywords from the job description throughout your resume, especially in the Professional Summary and Skills sections. You can test your finished product with the [free ATS score checker](https://www.thetailorcv.com/solutions) to see how well it performs.
+
+### What should I include in my Professional Summary?  
+Your Professional Summary should offer a brief overview of your career, highlighting your most relevant skills and experiences. Aim for 2-4 sentences that summarize your qualifications in relation to the job you’re applying for. For tips on crafting an impactful summary, check out our guide on [How to Write a Resume from Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch).
+
+### How do I list awards and achievements on my resume?  
+When listing awards and achievements, create a separate section or incorporate them into your Work Experience or Education sections. Be sure to include the award name, the issuing organization, and the date received. For specific examples and formatting tips, refer to our post on [How to List Awards and Achievements on a Resume](https://thetailorcv.com/blog/awards-achievements-on-resume).
+
+### What common mistakes should I avoid in the Contact Information section?  
+In the Contact Information section, avoid including your full street address for privacy reasons; instead, simply list your city and state or country. Additionally, ensure that your email address is professional and free of any quirky usernames. For a detailed breakdown of what to include and exclude, check our guide on the [Resume Contact Section](https://thetailorcv.com/blog/resume-contact-section).

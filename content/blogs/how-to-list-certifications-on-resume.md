@@ -213,3 +213,19 @@ List certifications in a clear, consistently formatted section, place critical c
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your certifications match the job description's requirements. Read [how to list education on resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete resume guidance.
 
+## Frequently Asked Questions
+
+### How should I format certifications on my resume?
+When listing certifications, be consistent in your formatting. Include the certification name, issuing organization, and date obtained. For example, you might format it as "Certified Project Management Professional (PMP), Project Management Institute, 2023." For more tips on formatting your resume sections, check out our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### Where is the best place to list certifications on my resume?
+The most common approach is to create a dedicated "Certifications" section after your work experience and education. However, if a certification is critical for the role, consider placing it near the top of your resume. This helps ensure that it catches the hiring manager's eye immediately. For further guidance on organizing your resume, refer to our [How to List Education on a Resume in 2026](https://thetailorcv.com/blog/how-to-list-education-on-resume).
+
+### What types of certifications should I include on my resume?
+Include certifications that are relevant to the job you are applying for, particularly those that are required or preferred by the employer. Focus on industry-recognized certifications that demonstrate your skills and knowledge. For more ideas on how to enhance your resume content, explore our post on [200 Best Action Verbs for Resume in 2026](https://thetailorcv.com/blog/best-action-verbs-for-resume).
+
+### How can I ensure my resume is ATS-friendly when listing certifications?
+To make your resume ATS-friendly, use keywords from the job description that include specific certifications. Additionally, ensure that your formatting is simple and clear, avoiding images or complex layouts. You can check your resume's compatibility with an ATS using our [Free ATS score checker](https://www.thetailorcv.com/solutions).
+
+### Should I include expired certifications on my resume?
+It's generally best to exclude expired certifications unless they are still relevant to the position you're applying for or demonstrate a long-term commitment to your field. If you choose to include them, clearly indicate their expiration date. For tips on crafting impactful content, see our guide on [How to Write a Resume Summary in 2026](https://thetailorcv.com/blog/how-to-write-resume-summary).

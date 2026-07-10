@@ -187,3 +187,19 @@ Standard resume formatting in 2026: 0.75-1 inch margins, 1.0-1.15 line spacing, 
 
 The fastest path to perfect formatting is starting from an [ATS-friendly template](https://www.thetailorcv.com/templates) that has all these settings correct by default. Then verify with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) before every application.
 
+## Frequently Asked Questions
+
+### What are the recommended margins for a resume in 2026?  
+The recommended margins for a professional resume in 2026 are between 0.75 to 1 inch on the top, bottom, left, and right sides. This range provides a balanced look while ensuring adequate white space, which enhances readability. If you need to tighten margins due to content constraints, ensure that you do not go below 0.5 inches, as smaller margins can make your resume appear cramped. For tips on selecting the right [resume template](https://thetailorcv.com/blog/how-to-choose-resume-template) that accommodates these margins, check our guide.
+
+### How should I format line spacing in my resume?  
+For optimal readability, it is recommended to use line spacing between 1.0 and 1.15 for paragraphs and bullet points in your resume. This spacing helps to clearly separate different sections and makes it easier for recruiters to scan your document. If you are unsure about how to structure your entire resume, refer to our detailed guide on [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume).
+
+### What is the importance of white space in a resume layout?  
+White space is crucial in a resume layout as it enhances readability and allows the content to breathe. Proper use of white space can guide the reader's eye and make your resume appear more organized and professional. To learn more about how to effectively use design elements like white space, refer to our [resume design and color guide](https://thetailorcv.com/blog/resume-design-color-guide).
+
+### Can I use tighter margins to fit more information on my resume?  
+While it might be tempting to use tighter margins to include more content, it's essential to maintain a minimum margin of 0.5 inches. If you have high-value content that exceeds the space available, consider editing out less relevant information instead of cramming everything in. For insights on what to keep or remove, read our article on [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume).
+
+### How can I check if my resume is ATS-friendly?  
+To ensure your resume is ATS-compatible, you can use the free ATS score checker available on our website. This tool evaluates your document's formatting and content to help you identify any issues that could prevent it from being parsed correctly by applicant tracking systems. For more details on common mistakes that could lead to rejection, check out our list of [10 ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).

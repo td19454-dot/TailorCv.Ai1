@@ -182,3 +182,24 @@ Recruiters read resumes in under 10 seconds on the first pass, scanning the top,
 
 Use an [ATS-friendly template](https://www.thetailorcv.com/templates) as your foundation, verify with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions), and once your resume starts landing you interviews, prepare with the [mock interview tool](https://thetailorcv.com/interview-prep).
 
+## Frequently Asked Questions
+
+### How can I optimize my resume to pass the 10-second scan?
+
+To optimize your resume for the 10-second scan, focus on placing key information where recruiters look first, such as your name, current job title, and previous job titles. Use clear headings and bullet points to enhance readability. Additionally, ensure your resume is ATS-friendly by using a [free ATS score checker](https://www.thetailorcv.com/solutions) before finalizing your layout.
+
+### What should I include in the contact section of my resume?
+
+In your resume contact section, include your full name, phone number, email address, and LinkedIn profile link if applicable. Avoid unnecessary details like your full address or personal information that can lead to bias. For more guidance on formatting this section, check out our article on the [resume contact section](https://thetailorcv.com/blog/resume-contact-section).
+
+### Why is the F-pattern important for resume writing?
+
+The F-pattern is crucial because it reflects how recruiters visually scan resumes, starting from the top and moving down the left side. By structuring your resume to align with this pattern, you increase the chances that essential details will catch the recruiter's eye. Learn more about effective resume layouts in our post on [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume).
+
+### How do I make my resume stand out from generic ones?
+
+To make your resume stand out, customize it for each job application by using specific keywords from the job description and highlighting relevant experiences. Avoid generic phrases and ensure each section reflects your unique qualifications. For tips on avoiding generic resumes, read our article on [how recruiters spot generic resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes).
+
+### What role does education play in the 10-second scan?
+
+Education is one of the key components recruiters look for during the initial scan, usually appearing after job titles and companies. Clearly list your degrees, institutions, and graduation dates in a concise format to ensure it is easily visible. For more details on how to present your education effectively, visit our guide on [how to list education on resume](https://thetailorcv.com/blog/how-to-list-education-on-resume).

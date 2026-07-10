@@ -171,3 +171,19 @@ A strong scrum master resume in 2026 shows agile facilitation, team coaching, an
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for interviews with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What are the key components of a Scrum Master resume in 2026?  
+A Scrum Master resume in 2026 should include a header with relevant certifications, a strong summary, skills and competencies related to agile methodologies, detailed work experience, and educational background. It's essential to focus on measurable team improvements rather than just listing responsibilities. For more detailed guidance, check out the [Project Manager Resume 2026](https://thetailorcv.com/blog/project-manager-resume-2026).
+
+### How can I improve my Scrum Master resume for ATS?  
+To enhance your Scrum Master resume for Applicant Tracking Systems (ATS), incorporate relevant keywords related to agile methodologies and facilitation skills. Use ATS-friendly resume templates to ensure proper formatting and clarity. You can evaluate your resume's compatibility with ATS using the [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+### What should I include in the summary section of my Scrum Master resume?  
+The summary section of your Scrum Master resume should succinctly convey your years of experience, specific agile frameworks you've worked with, and notable achievements, such as improvements in team velocity or delivery metrics. This is your opportunity to capture attention, so make it impactful. For more examples, refer to the insights in this guide.
+
+### How do I demonstrate my impact as a Scrum Master on my resume?  
+To showcase your impact as a Scrum Master, focus on quantifiable achievements such as improved team velocity, reduced cycle times, or enhanced sprint predictability. Use specific figures and metrics to illustrate these improvements clearly. For additional strategies on presenting your impact, consider reviewing [fresher resume projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) that effectively highlight skills and results.
+
+### What additional certifications should I consider for my Scrum Master resume?  
+Beyond the Certified Scrum Master (CSM) certification, consider obtaining additional credentials like the Professional Scrum Master (PSM) or Scaled Agile Framework (SAFe) certifications to enhance your resume. These certifications demonstrate a commitment to continuous improvement and expertise in agile methodologies, making you a more attractive candidate. For more on certifications, you can explore [how to list certifications on your resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).

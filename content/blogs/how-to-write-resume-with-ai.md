@@ -175,4 +175,19 @@ AI is a powerful resume assistant in 2026 - excellent for refining bullets, fixi
 
 Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm your AI-assisted resume matches the job description, use [ATS-friendly templates](https://www.thetailorcv.com/templates), and strengthen your bullets with the [quantify achievements guide](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) and [action verbs guide](https://thetailorcv.com/blog/best-action-verbs-for-resume).
 
+## Frequently Asked Questions
 
+### How can AI help improve my resume bullet points?  
+AI is excellent at enhancing the clarity and impact of your resume bullet points. By providing specific details about your achievements, like "I worked on the API and made it faster," AI can refine it to something more compelling, such as "Optimized the payments API by adding Redis caching and database indexing, reducing response time by 60%." This transformation showcases your accomplishments effectively and makes your resume stand out. 
+
+### What should I avoid when using AI for my resume?  
+One major pitfall when using AI is allowing it to invent achievements or metrics that aren't accurate. AI cannot fabricate your actual results, so it's crucial to provide real data and accomplishments. Focus on using AI for enhancing clarity and grammar, rather than relying on it to generate content that lacks authenticity. For more tips on structuring your resume, check out our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide).
+
+### How do I ensure my AI-assisted resume is ATS-friendly?  
+To ensure your AI-assisted resume is optimized for Applicant Tracking Systems (ATS), it's important to check that it aligns with the job description. Use the [Free ATS score checker](https://www.thetailorcv.com/solutions) to verify compatibility. Additionally, starting from [ATS-friendly templates](https://www.thetailorcv.com/templates) can give you a solid foundation that ATS systems can easily read.
+
+### Can AI help me write a resume summary?  
+Yes, AI can draft a resume summary based on your experience and qualifications. By providing your career details, AI can generate a concise summary that captures your professional essence, which you can then refine to ensure it accurately reflects your skills and achievements. For more guidance on creating an effective summary, see our post on [How to Write a Resume Summary in 2026](https://thetailorcv.com/blog/how-to-write-resume-summary).
+
+### What role do action verbs play in AI resume writing?  
+Action verbs are crucial in making your resume dynamic and engaging. When using AI to write your resume, incorporating strong action verbs can enhance the descriptions of your experiences, making them more impactful. For a comprehensive list of the best action verbs tailored for 2026, explore our guide on the [200 Best Action Verbs for Resume in 2026](https://thetailorcv.com/blog/best-action-verbs-for-resume).
