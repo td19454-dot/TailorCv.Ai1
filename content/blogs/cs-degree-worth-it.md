@@ -500,5 +500,19 @@ Computer Science is not dying.
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
 - [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 
+## Frequently Asked Questions
 
+### Why does it feel like there are too many computer science graduates in 2026?  
+The rapid expansion of computer science programs and bootcamps has led to a significant increase in graduates, creating a saturated job market. Many new graduates are finding it challenging to secure entry-level positions due to the competition. To improve your chances, consider enhancing your resume with [resume projects](https://thetailorcv.com/blog/projects-in-resume) that showcase your skills and practical experience.
 
+### How can I stand out in a competitive software engineering job market?  
+To distinguish yourself in a crowded field, focus on building a strong portfolio that highlights your technical skills and real-world projects. Utilize resources like our [portfolio website builder](https://www.thetailorcv.com/portfolio) to create an impressive online presence that potential employers can easily review.
+
+### Are there still job opportunities for strong developers despite the oversaturation?  
+Yes, even in an oversaturated market, skilled developers with in-demand skills continue to find ample opportunities. Companies are still looking for candidates who can demonstrate their expertise and adaptability. By sharpening your skills and leveraging platforms like our [AI mock interview](https://www.thetailorcv.com/mock-interview) tool, you can better prepare for interviews and stand out to employers.
+
+### What should I do if I graduated with a CS degree but have no experience?  
+If you’re struggling to find a job due to a lack of experience, consider using strategies outlined in our guide on [how to get a job with no experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026). This can include internships, volunteer work, or freelance projects that can help you build a resume and gain practical experience.
+
+### How is AI affecting job prospects for computer science graduates?  
+AI is transforming the tech landscape, leading to concerns about job displacement in some areas of software engineering. However, there are still many [AI-proof jobs](https://thetailorcv.com/blog/ai-proof-jobs-2026) that require human creativity and problem-solving skills. Emphasizing unique competencies that AI cannot replicate will be crucial for future job security in tech.

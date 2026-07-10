@@ -160,3 +160,19 @@ A strong technical writer resume in 2026 shows writing skill, technical fluency,
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), build a documentation [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and prepare for interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+## Frequently Asked Questions
+
+### What should be included in a technical writer resume for 2026?  
+A technical writer resume in 2026 should include a header with a link to your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), a concise summary, relevant skills, work experience, writing samples or projects, and education. It's important to clearly demonstrate your documentation skills, technical fluency, and the impact of your work on usability and developer experience.
+
+### How can I improve my technical writer resume's ATS score?  
+To enhance your resume's ATS score, focus on incorporating relevant keywords from the job description and use an [ATS-friendly resume template](https://www.thetailorcv.com/templates). Running your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) can help identify areas for improvement and ensure that your document is optimized for applicant tracking systems.
+
+### What are some examples of documentation types to mention in my resume?  
+When crafting your technical writer resume, you should mention various documentation types such as API documentation, user guides, and developer tutorials. Highlighting your experience with specific tools and methodologies, like docs-as-code or Markdown, can also showcase your technical proficiency and adaptability in the field.
+
+### How do I write a strong summary for my technical writer resume?  
+A strong summary should succinctly highlight your years of experience, the types of documents you create, and your target audience. For example, you could say: "Technical Writer with 5 years of experience creating API documentation and developer guides for SaaS companies." This format allows you to convey your expertise and the impact of your work effectively.
+
+### Where can I find additional resources for building my resume?  
+For more guidance on resume building, you can refer to the [job description analysis checklist](https://thetailorcv.com/blog/job-description-analysis-checklist) to tailor your resume to specific roles. Additionally, exploring related guides like the [Social Media Manager Resume 2026](https://thetailorcv.com/blog/social-media-manager-resume-2026) can provide further insights into effective resume strategies across different fields.

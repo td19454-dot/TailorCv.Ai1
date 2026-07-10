@@ -663,4 +663,19 @@ If you want to increase your chances faster:
 
 Start improving one step at a time - because small changes in positioning often create massive changes in opportunities.
 
+## Frequently Asked Questions
 
+### Why am I not getting interview calls despite being qualified for the job?  
+Many qualified candidates find themselves in this frustrating situation due to the overwhelming number of applications companies receive. Recruiters often spend only seconds scanning resumes, and many applications are filtered out by [ATS systems](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) before they even reach a human. To improve your chances, ensure your resume is optimized for ATS and tailored to each job description.
+
+### How can I improve my ATS score?  
+A low ATS score can significantly hinder your chances of landing an interview. To improve it, start by using our [free ATS score checker](https://www.thetailorcv.com/solutions) to identify areas for improvement. Focus on incorporating relevant keywords from the job description and formatting your resume in a way that is ATS-friendly.
+
+### What should I include in my LinkedIn profile to attract recruiters?  
+A strong LinkedIn profile can make a significant difference in your job search. Ensure your profile is complete and includes a professional photo, a compelling headline, and a well-crafted summary. You can also [turn your LinkedIn profile into a portfolio website](https://thetailorcv.com/blog/linkedin-to-portfolio-guide) to showcase your work and projects, making it easier for recruiters to see your qualifications.
+
+### How can I tailor my resume to match the job description?  
+Tailoring your resume is crucial for standing out in a competitive job market. Start by carefully analyzing the job description for keywords and required skills, then incorporate those into your resume. For specific strategies, check out our guide on [why your resume doesn't match the job description](https://thetailorcv.com/blog/why-resume-doesnt-match-job-description) and how to fix it effectively.
+
+### What are some common mistakes to avoid in my job applications?  
+Common mistakes include using a generic resume for multiple applications, failing to proofread, and not following application instructions. Additionally, neglecting to optimize your resume for ATS can lead to rejection. To enhance your application strategy, consider using our [AI cover letter generator](https://www.thetailorcv.com/cover-letter) to create personalized cover letters that complement your tailored resume.

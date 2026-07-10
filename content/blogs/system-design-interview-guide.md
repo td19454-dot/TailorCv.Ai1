@@ -208,4 +208,19 @@ Before the interview, make sure the resume that earned the call is still aligned
 
 Combine this with the [technical interview preparation guide](https://thetailorcv.com/blog/technical-interview-preparation-guide) and [coding interview guide](https://thetailorcv.com/blog/coding-interview-preparation-guide). Optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and practice with the [mock interview tool](https://thetailorcv.com/mock-interview).
 
+## Frequently Asked Questions
 
+### What are the key components of a system design interview?
+The key components of a system design interview include understanding functional and non-functional requirements, estimating scale, defining APIs, and considering trade-offs in architectural decisions. By following a structured approach, you can effectively showcase your ability to design scalable systems, which is a crucial skill for mid-level and senior engineering roles. For more comprehensive insights, check out our [Technical Interview Preparation Guide 2026 - Complete Roadmap](https://thetailorcv.com/blog/technical-interview-preparation-guide).
+
+### How do I clarify requirements during a system design interview?
+To clarify requirements, start by asking targeted questions about both functional and non-functional aspects of the system. This includes understanding the features needed, the expected user load, and any latency or availability requirements. Clarifying these details ensures that your design aligns with what the interviewer expects, which is critical for a successful outcome. For more tips on interview preparation, view our [Software Engineer Interview Preparation – The Complete 2026 Guide](https://thetailorcv.com/blog/software-engineer-interview-preparation).
+
+### What is the importance of estimating scale in system design?
+Estimating scale is essential as it helps you determine the system's capacity and performance needs. By performing back-of-envelope calculations, you can showcase your understanding of requests per second, storage requirements, and bandwidth considerations, which are crucial for designing systems that can handle real-world traffic. This analysis demonstrates your ability to think critically about scalability, a key aspect of system design interviews.
+
+### Can you provide examples of common system design questions?
+Common system design questions include designing a URL shortener, a chat application, or a file storage system. These scenarios allow you to demonstrate your architectural knowledge and problem-solving skills. Practicing these types of questions will prepare you for the variety of topics you may encounter in interviews. For more practice, consider using our [AI mock interview](https://www.thetailorcv.com/mock-interview) tool.
+
+### How can I improve my system design interview skills?
+Improving your system design interview skills involves studying architectural patterns, practicing with common design questions, and seeking feedback on your design approach. Engaging with resources such as the [System Design Interview Guide](https://thetailorcv.com/blog/system-design-interview-guide) and participating in mock interviews can significantly enhance your readiness. Additionally, utilizing tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) can help you refine your overall interview preparation strategy.

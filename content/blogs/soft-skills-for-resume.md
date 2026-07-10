@@ -189,4 +189,19 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify keyword matching, read the [action verbs guide](https://thetailorcv.com/blog/best-action-verbs-for-resume) and [quantify achievements guide](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) to make your evidence-based bullets stronger, and check [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) for what to remove.
 
+## Frequently Asked Questions
 
+### Why is it important to demonstrate soft skills rather than just listing them on my resume?  
+Demonstrating soft skills through evidence is crucial because it provides context and credibility to your claims. Recruiters often see generic phrases like "excellent communicator" with no supporting details, which fail to differentiate you from other candidates. By showing your soft skills through specific examples of your accomplishments, you can effectively highlight your unique contributions and value. For more tips on showcasing achievements, check out our guide on [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+
+### What are some examples of how to prove communication skills on my resume?  
+Instead of stating "excellent communication skills," you could provide a specific example such as, "Presented quarterly results to a team of 30, resulting in a 15% increase in project funding." This approach not only illustrates your communication ability but also ties it to a measurable outcome, making your claim more credible. For more action-oriented phrases, refer to our article on [200 best action verbs for resume in 2026](https://thetailorcv.com/blog/best-action-verbs-for-resume).
+
+### How can I effectively show leadership skills on my resume?  
+To showcase leadership skills, describe a situation where you led a project or team, detailing the challenges you faced and the positive impact of your leadership. For example, "Led a team of five in a successful product launch that increased sales by 20% within the first quarter." This method provides concrete evidence of your leadership capabilities, making your resume stand out. If you need additional examples or guidance, consider checking our post on [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary).
+
+### What soft skills are most valued by employers in 2026?  
+In 2026, employers highly value skills such as adaptability, problem-solving, and emotional intelligence. Demonstrating these skills through your accomplishments can set you apart from other candidates. For instance, showcasing how you adapted to a significant change in your workplace can illustrate your resilience and flexibility. To learn more about how to present these skills, refer to our guide on [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
+
+### How do I ensure my resume aligns with ATS requirements while showcasing soft skills?  
+To align your resume with ATS requirements, make sure to include relevant keywords that match the job description while integrating your soft skills. Use specific phrases and metrics to demonstrate your abilities, as generic lists can lead to your resume being overlooked. Utilize our [free ATS score checker](https://www.thetailorcv.com/solutions) to optimize your resume further and ensure it meets the necessary criteria.

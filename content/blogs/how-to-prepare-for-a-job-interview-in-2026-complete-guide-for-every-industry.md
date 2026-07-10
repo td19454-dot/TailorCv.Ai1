@@ -301,5 +301,19 @@ Use tools like [TailorCV.ai](https://www.thetailorcv.com/solutions) to understan
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [How to Prepare for Campus Placement in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 
+## Frequently Asked Questions
 
+### How can I effectively use the STAR method for my interview answers in 2026?  
+The STAR method—Situation, Task, Action, Result—is a powerful framework for structuring your interview responses. To prepare, consider creating an [Interview Story Bank](https://thetailorcv.com/blog/interview-story-bank-star-method) where you can document various experiences that fit this model. This will help you clearly articulate how your past experiences relate to the job you're applying for, showcasing your competencies effectively.
 
+### What should I do if I feel anxious about my upcoming interview?  
+Feeling anxious before an interview is common, but there are strategies to manage it. Practice using the [AI mock interview](https://www.thetailorcv.com/mock-interview) tool to simulate the interview environment, which can help reduce nerves. Additionally, consider reviewing our tips on [overcoming interview anxiety](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips) to build your confidence leading up to the big day.
+
+### How do I prepare for different interview formats, like panel or technical interviews?  
+Understanding the format of your interview is crucial for preparation. For panel interviews, practice addressing multiple interviewers and engaging with each of them. If you're facing a technical interview, ensure you review relevant technical concepts and practice problem-solving. Resources like our comprehensive guide on [competency-based interview questions](https://thetailorcv.com/blog/competency-based-interview-questions-guide) can provide insight into what to expect.
+
+### What are some smart questions to ask during my interview?  
+Asking thoughtful questions demonstrates your interest in the role and company. Consider inquiring about the team dynamics, the company culture, or growth opportunities within the organization. This not only shows your enthusiasm but also helps you assess if the company is the right fit for you. For more ideas, check out our guide on [how to prepare for campus placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement).
+
+### How should I follow up after my interview?  
+Following up after an interview is an essential step that can set you apart from other candidates. Send a professional thank-you email within 24 hours, reiterating your interest in the position and highlighting a key point from the discussion. For more detailed strategies, refer to our post on how to [follow up after an interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) effectively.
