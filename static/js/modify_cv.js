@@ -247,7 +247,7 @@
             "projects",
             "Projects",
             [
-                { key: "name", label: "Project Name", placeholder: "TailorCV.ai" },
+                { key: "name", label: "Project Name", placeholder: "TailorCV" },
                 { key: "subtitle", label: "Subtitle", placeholder: "React, FastAPI" },
                 { key: "dates", label: "Dates", placeholder: "Jan 2025 - Mar 2025" },
                 { key: "url", label: "Live URL", placeholder: "https://..." },
