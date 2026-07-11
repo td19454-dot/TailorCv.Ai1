@@ -102,10 +102,7 @@ Not necessarily less reliable, just often less precise. The role and core respon
 
 ### How do I check my resume's match against a long, padded job description?
 
-Use the [TailorCV ATS score checker](/solutions) to get a match score based on the posting's genuine requirements, not just raw keyword count.
-
----
-
+Use the [TailorCV ATS score checker](/solutions) to get a match score based on the posting's genuine requirements, not just raw keyword count. For more insights on aligning your resume with job postings, check out our [Resume Matching with Job Description - Complete Guide for 2026](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) and [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist).
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

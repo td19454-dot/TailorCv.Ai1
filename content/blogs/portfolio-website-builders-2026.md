@@ -50,16 +50,15 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ### What is the easiest way to make a portfolio?
 
-Generate it from your resume with the [portfolio builder](https://thetailorcv.com/portfolio) - no setup, live in minutes.
+Generate it from your resume with the [portfolio builder](https://thetailorcv.com/portfolio) - no setup, live in minutes. You can also check out how to [Turn Your Resume Into a Portfolio Website in Minutes (No Code)](https://thetailorcv.com/blog/portfolio-from-resume-minutes) for a quick guide.
 
 ### Are free builders good enough?
 
-Yes. A free host plus a $10 domain is plenty to look professional. See [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free).
+Yes. A free host plus a $10 domain is plenty to look professional. See [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free) for more details. If you're interested in showcasing your work, consider exploring [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications).
 
 ### Custom-coded or builder?
 
-Unless you are a frontend dev showing off, a builder is faster and the result is what matters.
-
+Unless you are a frontend dev showing off, a builder is faster and the result is what matters. For more insights on building your portfolio, check out [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide).
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

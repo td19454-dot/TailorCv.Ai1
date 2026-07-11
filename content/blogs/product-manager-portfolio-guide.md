@@ -58,16 +58,15 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ### Do PMs really need a portfolio?
 
-Most do not have one, which is the point. Two strong case studies can be the difference in a competitive PM search.
+Most do not have one, which is the point. Two strong [case studies](https://thetailorcv.com/blog/product-manager-case-study-resume) can be the difference in a competitive PM search.
 
 ### What if my work is confidential?
 
-Describe outcomes with rounded numbers and no sensitive specifics, or use a concept case study.
+Describe outcomes with rounded numbers and no sensitive specifics, or use a [concept case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).
 
 ### How do I align my resume?
 
 Use the [Product Manager Resume guide](https://thetailorcv.com/blog/product-manager-resume-2026) and [Resume Matching for Product Managers](https://thetailorcv.com/blog/resume-matching-product-manager).
-
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

@@ -236,22 +236,19 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Should I use a CV or a resume for international applications?
 
-In most countries outside the US and Canada, "CV" is the standard term - even when the document looks similar to what Americans call a resume. Use the term the posting uses.
+In most countries outside the US and Canada, "CV" is the standard term - even when the document looks similar to what Americans call a [resume](https://thetailorcv.com/blog/resume-vs-cv). Use the term the posting uses.
 
 ### If I am applying remotely (from the US to a UK company), which format do I use?
 
-Use the UK format. The company's location determines the convention, not yours.
+Use the UK format. The company's location determines the convention, not yours. 
 
 ### Can I use the same resume for European Union countries?
 
-The EU has a standard template called the Europass CV, which is recognized across EU member states. Using it signals awareness of European conventions. However, it is not required - and country-specific CVs may still be preferred in Germany or France.
+The EU has a standard template called the Europass CV, which is recognized across EU member states. Using it signals awareness of European conventions. However, it is not required - and country-specific CVs may still be preferred in [Germany](https://thetailorcv.com/blog/photo-on-resume) or France.
 
 ### How do I handle the photo requirement for Germany if I am uncomfortable including one?
 
-This is a personal decision. Omitting a photo may reduce your chances slightly with traditional German employers. International companies with offices in Germany are generally more flexible.
-
----
-
+This is a personal decision. Omitting a photo may reduce your chances slightly with traditional German employers. International companies with offices in Germany are generally more flexible. Consider reviewing our guide on [resume references](https://thetailorcv.com/blog/resume-references-guide) if you need additional tips.
 ## Related Guides
 
 - [Resume vs CV](https://thetailorcv.com/blog/resume-vs-cv)

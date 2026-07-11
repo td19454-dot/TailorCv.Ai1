@@ -108,7 +108,7 @@ Manually reformatting a resume for every Workday req is slow. TailorCV's [resume
 
 ### Does Workday penalize creative resume designs?
 
-Workday does not "penalize" design directly, but heavily designed resumes with columns, graphics, or text boxes often parse incorrectly, which indirectly hurts your match score and the accuracy of your application.
+Workday does not "penalize" design directly, but heavily designed resumes with columns, graphics, or text boxes often parse incorrectly, which indirectly hurts your [match score](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) and the accuracy of your application.
 
 ### Why did Workday put my information in the wrong fields?
 
@@ -116,7 +116,7 @@ This almost always comes down to formatting. Non-standard section headers, table
 
 ### Should I still tailor my resume if Workday has supplemental questions?
 
-Yes. Supplemental questions and your resume are scored separately. A strong resume gets you past the initial filter; strong answers to screener questions keep you there.
+Yes. Supplemental questions and your resume are scored separately. A strong resume gets you past the initial filter; strong answers to screener questions keep you there. You can learn more about [how to prioritize what you match](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications) to enhance your application.
 
 ### Can I use the same resume for multiple Workday applications at one company?
 
@@ -124,10 +124,7 @@ Only if the roles are nearly identical. Otherwise, follow [how to tailor your re
 
 ### What file format does Workday prefer?
 
-A text-based PDF or .docx file works best. Avoid scanned images or resumes exported from design tools that flatten text into images.
-
----
-
+A text-based PDF or .docx file works best. Avoid scanned images or resumes exported from design tools that flatten text into images. For more tips, check out our [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template).
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

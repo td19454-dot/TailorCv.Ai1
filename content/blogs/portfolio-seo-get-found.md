@@ -57,12 +57,11 @@ For your own name, often quickly. For competitive keywords, weeks to months with
 
 ### Do I need a blog on my portfolio?
 
-Not required, but even a few project write-ups dramatically improve discoverability and credibility.
+Not required, but even a few [project write-ups](https://thetailorcv.com/blog/portfolio-website-for-job-applications) dramatically improve discoverability and credibility.
 
 ### What matters most for portfolio SEO?
 
-A clear title/description, real text content, fast mobile performance, HTTPS, and a custom domain.
-
+A clear [title/description](https://thetailorcv.com/blog/custom-domain-portfolio-guide), real text content, fast mobile performance, HTTPS, and a [custom domain](https://thetailorcv.com/blog/linkedin-to-portfolio-guide).
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

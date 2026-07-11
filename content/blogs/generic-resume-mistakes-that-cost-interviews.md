@@ -134,10 +134,7 @@ At the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-d
 
 ### How long does fixing a generic resume take?
 
-The 5-minute checklist fixes 80% of the issue for most applications. A 30-minute deep pass is warranted for your top priority roles.
-
----
-
+The [5-minute checklist](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) fixes 80% of the issue for most applications. A 30-minute deep pass is warranted for your top priority roles.
 ## Related Guides
 
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)

@@ -61,12 +61,11 @@ Describe outcomes with rounded numbers and no client names, or recreate a concep
 
 ### How many campaigns should I show?
 
-Three to five strong case studies, ideally focused on one specialty.
+Three to five strong [case studies](https://thetailorcv.com/blog/how-to-write-portfolio-case-study), ideally focused on one specialty.
 
 ### How do I align my resume?
 
 Use the [Digital Marketing Resume guide](https://thetailorcv.com/blog/digital-marketing-resume-2026) and the [Marketing Manager Resume guide](https://thetailorcv.com/blog/marketing-manager-resume-2026).
-
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

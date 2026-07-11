@@ -244,18 +244,15 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Do I need a certification for emerging AI roles?
 
-Formal certifications are less important than demonstrated project work in AI. A completed Coursera ML course plus a live project on [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) beats a certification with no applied work.
+Formal certifications are less important than demonstrated project work in AI. A completed Coursera ML course plus a live [project](https://thetailorcv.com/blog/projects-in-resume) on [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) beats a certification with no applied work.
 
 ### What if I apply and get rejected for lacking "required" experience?
 
-Expected for emerging roles. Apply to multiple companies. The requirements are inconsistent - you may be underqualified for one company's definition and overqualified for another's. Volume + tailoring wins.
+Expected for emerging roles. Apply to multiple companies. The requirements are inconsistent - you may be underqualified for one company's definition and overqualified for another's. Volume + [tailoring](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice) wins.
 
 ### Should I include my AI projects even if they are personal/side projects?
 
-Absolutely. For emerging roles, personal [projects](https://thetailorcv.com/blog/projects-in-resume) are primary evidence. They show initiative, curiosity, and actual ability - three things that matter more than years of experience in a field that barely existed.
-
----
-
+Absolutely. For emerging roles, personal projects are primary evidence. They show initiative, curiosity, and actual ability - three things that matter more than years of experience in a field that barely existed. Consider using [resume templates](https://www.thetailorcv.com/templates) to effectively showcase these projects.
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

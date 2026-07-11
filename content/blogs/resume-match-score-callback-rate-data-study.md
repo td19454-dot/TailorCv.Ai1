@@ -104,7 +104,7 @@ No. A very high score can sometimes indicate keyword stuffing rather than genuin
 
 ### Is it worth spending more time optimizing once I'm above 80%?
 
-Diminishing returns typically set in above this range. Your time is often better spent quantifying achievements and preparing for interviews rather than chasing marginal score gains.
+Diminishing returns typically set in above this range. Your time is often better spent quantifying achievements and preparing for [interviews](https://www.thetailorcv.com/mock-interview) rather than chasing marginal score gains.
 
 ### Why did my resume get a low callback rate even with a high match score?
 
@@ -112,10 +112,7 @@ Formatting issues, unquantified bullets, or market factors unrelated to the resu
 
 ### How do I check my own resume's match score?
 
-Use the [TailorCV ATS score checker](/solutions) for a free, unlimited match score against any job description, with a detailed breakdown of what is missing.
-
----
-
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) for a free, unlimited match score against any job description, with a detailed breakdown of what is missing. You can also explore [resume matching](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) techniques to improve your application.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

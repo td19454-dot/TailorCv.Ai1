@@ -235,9 +235,6 @@ Yes. For [remote job](https://thetailorcv.com/blog/remote-job-search-guide) desc
 ### Is "remote-first" a keyword worth including in my resume?
 
 Only if you genuinely have experience in a remote-first environment and if the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) uses that language. Natural inclusion is valuable. Forced inclusion is not.
-
----
-
 ## Related Guides
 
 - [How to Match Your Resume to a Remote Job Description](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description)

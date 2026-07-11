@@ -172,8 +172,7 @@ Use the [Graphic Designer Resume 2026 guide](https://thetailorcv.com/blog/graphi
 
 ### My portfolio site looks fine on desktop but feels slow on my phone - does that matter?
 
-Yes, significantly. A large share of first visits happen on mobile, and slow load times or broken layouts cost you the visit before a reviewer sees a single project. Compress images, simplify any heavy animation, and test on an actual phone before sharing the link.
-
+Yes, significantly. A large share of first visits happen on mobile, and slow load times or broken layouts cost you the visit before a reviewer sees a single project. Compress images, simplify any heavy animation, and test on an actual phone before sharing the link. Consider using a [portfolio builder](https://www.thetailorcv.com/portfolio) to streamline the process.
 ## Next Step
 
 Turn your strongest projects into a fast, clean, mobile-ready portfolio site in minutes with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio).

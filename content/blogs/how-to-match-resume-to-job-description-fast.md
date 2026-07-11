@@ -234,10 +234,7 @@ Yes. Summary first (highest [ATS](https://thetailorcv.com/blog/what-is-an-ats-sc
 
 ### What if the JD is very long?
 
-Scan for the first half only. Required skills in long JDs are almost always concentrated in the first 60% of the posting. Focus on what is listed under "Required" or "Must Have."
-
----
-
+Scan for the first half only. Required skills in long JDs are almost always concentrated in the first 60% of the posting. Focus on what is listed under "Required" or "Must Have." For more insights, check out our post on [common resume and job description mismatch mistakes](https://thetailorcv.com/blog/common-resume-job-description-mismatch-mistakes). Additionally, you can learn how to [match resume keywords to job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) for better alignment.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

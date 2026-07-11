@@ -278,7 +278,7 @@ Most improvements can be made in 20-30 minutes. Using [TailorCV](https://www.the
 
 ### How much can I realistically improve my score?
 
-Typically 10-20 percentage points with targeted changes. Starting from 60% to 78% is common and achievable in one editing session.
+Typically 10-20 percentage points with targeted changes. Starting from 60% to [78%](https://thetailorcv.com/blog/resume-job-description-match-percentage) is common and achievable in one editing session.
 
 ### Should I apply if my score is below 75%?
 
@@ -286,14 +286,11 @@ If you are close (70-74%), consider applying with a strong [cover letter](https:
 
 ### Is 75% the magic number?
 
-It is a guideline, not a rule. For very competitive roles, aim for 80%+. For less competitive roles or niche positions, 65-70% may be sufficient.
+It is a guideline, not a rule. For very competitive roles, aim for 80%+. For less competitive roles or niche positions, [65-70%](https://thetailorcv.com/blog/common-resume-job-description-mismatch-mistakes) may be sufficient.
 
 ### Can I get to 100%?
 
 Technically yes, but not recommended. Matching 100% of keywords perfectly often looks forced. Aim for 80-90% - thorough and natural.
-
----
-
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

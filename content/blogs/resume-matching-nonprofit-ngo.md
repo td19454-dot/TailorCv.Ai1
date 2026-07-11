@@ -108,7 +108,7 @@ Paste any non-profit or NGO job posting into [TailorCV's resume optimizer](/solu
 
 ### Do non-profits use ATS software to screen resumes?
 
-Larger non-profits and international NGOs increasingly do, especially for program management and development roles that receive high application volumes. Smaller organizations may still review manually, but matching your resume's language still helps either way.
+Larger non-profits and international NGOs increasingly do, especially for program management and development roles that receive high application volumes. Smaller organizations may still review manually, but [matching your resume's language](https://thetailorcv.com/blog/job-description-analysis-checklist) still helps either way.
 
 ### How do I translate private-sector achievements into non-profit language?
 
@@ -116,7 +116,7 @@ Focus on the underlying skill or outcome and reframe it in the sector's terms. "
 
 ### Should I mention my passion for the cause on my resume?
 
-A brief, specific note in your summary can help, but it should be backed by real experience or involvement. Passion alone without relevant skills or history will not pass a keyword-based screen.
+A brief, specific note in your summary can help, but it should be backed by real experience or involvement. Passion alone without relevant skills or history will not pass a [keyword-based screen](https://thetailorcv.com/blog/resume-keyword-map-template).
 
 ### What if the posting requires experience with a specific funder or program type I don't have?
 
@@ -124,10 +124,7 @@ Highlight the closest adjacent experience and be honest about the gap. Read [mat
 
 ### How do I check my non-profit resume's match score before applying?
 
-Use the [TailorCV ATS score checker](/solutions) to compare your resume against any non-profit or NGO job posting and see your match percentage instantly.
-
----
-
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to compare your resume against any non-profit or NGO job posting and see your match percentage instantly.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

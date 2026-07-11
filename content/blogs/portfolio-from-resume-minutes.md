@@ -52,7 +52,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ### Do I need any coding to do this?
 
-None. The builder generates and hosts the site from your resume; you just edit text and links.
+None. The [builder](https://www.thetailorcv.com/portfolio) generates and hosts the site from your resume; you just edit text and links.
 
 ### How long does it really take?
 
@@ -60,8 +60,7 @@ About five minutes to publish, another 20 to polish [projects](https://thetailor
 
 ### Will it look generic?
 
-Pick a template that fits your field and add real screenshots and a personal About Me - it will look like you, not a template.
-
+Pick a [template](https://www.thetailorcv.com/templates) that fits your field and add real screenshots and a personal About Me - it will look like you, not a template.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

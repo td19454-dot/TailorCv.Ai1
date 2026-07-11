@@ -55,7 +55,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ### What is the ideal full stack portfolio?
 
-One deeply-built, deployed flagship app plus two focused pieces showing frontend and backend strength - all with live demos and short write-ups.
+One deeply-built, deployed flagship app plus two focused pieces showing [frontend](https://thetailorcv.com/blog/frontend-developer-portfolio) and [backend](https://thetailorcv.com/blog/backend-developer-portfolio) strength - all with live demos and short write-ups.
 
 ### MERN, Next.js, or something else?
 
@@ -64,7 +64,6 @@ Use whatever you can ship and explain well. Recruiters care that it works and th
 ### How do I match my resume?
 
 Use the [Full Stack Developer Resume guide](https://thetailorcv.com/blog/full-stack-developer-resume-2026) and keep the same flagship featured in both.
-
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

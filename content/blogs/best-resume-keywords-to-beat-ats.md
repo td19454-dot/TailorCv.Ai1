@@ -171,14 +171,11 @@ Occasionally, but far less than hard skills and tools. Prioritize technical term
 
 ### What if I don't have all the required keywords?
 
-Only add what you genuinely have. If you're missing critical skills, that is a gap to address - not to paper over. Use the [ATS checker](/solutions) to see your score gap clearly.
+Only add what you genuinely have. If you're missing critical skills, that is a gap to address - not to paper over. Use the [ATS checker](https://www.thetailorcv.com/blog/ats-resume-checker-how-it-works) to see your score gap clearly.
 
 ### How do I know if my keywords are working?
 
-Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) with a tool. A score above 75% means your keyword match is strong.
-
----
-
+Check your [ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score) with a tool. A score above 75% means your keyword match is strong.
 ## Related Guides
 
 - [ATS Keywords - How to Find and Add Them to Boost Your Score](https://thetailorcv.com/blog/ats-keywords-to-boost-score)

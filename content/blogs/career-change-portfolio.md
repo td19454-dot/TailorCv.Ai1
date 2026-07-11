@@ -49,16 +49,15 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ### Can a portfolio really overcome no experience in the new field?
 
-Often yes - concrete [projects](https://thetailorcv.com/blog/projects-in-resume) in the target field are exactly the proof employers need to take a chance on a switcher.
+Often yes - concrete [projects](https://thetailorcv.com/blog/projects-in-resume) in the target field are exactly the proof employers need to take a chance on a switcher. Consider using an [AI portfolio builder](https://www.thetailorcv.com/portfolio) to showcase your work effectively.
 
 ### How many new-field projects do I need?
 
-Two to three solid, documented ones to start. Add more as you go.
+Two to three solid, documented ones to start. Add more as you go. This is similar to the approach in our [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ### How do I frame my old career?
 
-As transferable strength. State the bridge explicitly in your About Me and case studies.
-
+As transferable strength. State the bridge explicitly in your About Me and case studies. You might also find it helpful to reference our [Cover Letter for a Career Change](https://thetailorcv.com/blog/cover-letter-for-career-change) for additional insights on framing your experience.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

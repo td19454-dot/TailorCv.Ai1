@@ -224,22 +224,19 @@ Before the interview, make sure the resume that earned the call is still aligned
 ## FAQ
 ### Is it worth applying if I am missing 30% of the requirements?
 
-Yes, if the missing skills are learnable and the matching skills are strong. A 70% match with strong results often beats a 100% match with weak results.
+Yes, if the missing skills are learnable and the matching skills are strong. A 70% match with strong results often beats a 100% match with weak results. For more on identifying key skills, check out our guide on [hidden keywords in job descriptions](https://thetailorcv.com/blog/hidden-keywords-in-job-description).
 
 ### What if they ask about my missing skills in the interview?
 
-Be honest and forward-looking. "I don't have direct experience with [X], but I've been working on [related thing] and learn tools quickly - for example, I picked up [Y] in [timeframe]." Then move on.
+Be honest and forward-looking. "I don't have direct experience with [X], but I've been working on [related thing] and learn tools quickly - for example, I picked up [Y] in [timeframe]." Then move on. If you're interested in how to present your skills effectively, consider reading about [resume keyword density](https://thetailorcv.com/blog/resume-keyword-density-guide).
 
 ### Should I include learning-in-progress skills on my resume?
 
-Yes, with a clear label. "Currently completing Google Analytics 4 certification" is honest and shows initiative.
+Yes, with a clear label. "Currently completing Google Analytics 4 certification" is honest and shows initiative. This approach aligns with current [resume trends](https://thetailorcv.com/blog/resume-trends-2026) that emphasize transparency and growth.
 
 ### Does applying when underqualified hurt my chances for other roles at that company?
 
-No. Each application is independent.
-
----
-
+No. Each application is independent. If you want to ensure your resume aligns well with your LinkedIn profile, check out our guide on [syncing your LinkedIn profile with your tailored resume](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync).
 ## Related Guides
 
 - [Resume Matching with No Experience](https://thetailorcv.com/blog/resume-matching-no-experience)
