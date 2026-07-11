@@ -90,6 +90,11 @@ function showUpgradeModal(feature) {
       title: "Your mock interview is ready!",
       freeUse: "1 free mock interview",
       message: "Upgrade to Pro to practise with unlimited mock interviews."
+    },
+    ai_optimizations: {
+      title: "Upgrade to Pro",
+      freeUse: "3 free resume optimizations",
+      message: "Upgrade for unlimited resume downloads and AI optimizations."
     }
   };
   var copy = modalCopy[feature] || {
@@ -166,6 +171,14 @@ function showUpgradeModal(feature) {
   overlay.querySelector(".tc-up-close").addEventListener("click", closeModal);
   overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
 }
+
+// Pages that redirect here after a server-side quota block (no fetch/JSON
+// available at redirect time) pass ?upgrade=<feature> so we still show the
+// paywall modal instead of silently landing on /pricing.
+(function () {
+  var feature = new URLSearchParams(window.location.search).get("upgrade");
+  if (feature) showUpgradeModal(feature);
+})();
 
 (function () {
   function getStoredUser() {
