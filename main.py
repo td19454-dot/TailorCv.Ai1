@@ -4803,8 +4803,8 @@ async def download_saved_resume(request: Request, resume_id: int):
                     .scalar() or 0
                 )
                 limit = FREE_LIMITS.get("ai_optimizations", 1)
-                if used > limit:
-                    return RedirectResponse("/pricing", status_code=303)
+                if used >= limit:
+                    return RedirectResponse("/pricing?upgrade=ai_optimizations", status_code=303)
         record = (
             db.query(SavedResume)
             .filter(SavedResume.id == resume_id, SavedResume.user_id == user_id)
