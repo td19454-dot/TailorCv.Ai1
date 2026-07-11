@@ -129,7 +129,7 @@ Yes, particularly larger defense contractors, which often receive high applicati
 
 ### How do I check my resume's match score for a cleared role?
 
-Use the [TailorCV ATS score checker](/solutions) to compare your resume against any cleared or contractor job posting and see your match percentage instantly. For a more detailed approach, consider using a [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template) to ensure your resume aligns with the job description.
+Use the [TailorCV ATS score checker](/solutions) to compare your resume against any cleared or contractor job posting and see your match percentage instantly. For a more detailed approach, consider using a [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template) to ensure your resume aligns with the job description. Additionally, you may want to explore [matching your resume to certification requirements](https://thetailorcv.com/blog/matching-resume-to-certifications-in-job-description) if applicable.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

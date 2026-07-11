@@ -213,14 +213,11 @@ Increasingly yes, especially for senior roles. Even "basic SQL" should be on you
 
 ### Should I include product certifications?
 
-Yes, if relevant. PSPO, PMP, Pragmatic Marketing, Reforge programs - these add credibility and keyword credit.
+Yes, if relevant. PSPO, PMP, Pragmatic Marketing, Reforge programs - these add credibility and [keyword credit](https://thetailorcv.com/blog/product-manager-resume-2026).
 
 ### How long should a PM resume be?
 
-One page for 0-5 years. Two pages for 5+ years or if you have significant, varied product experience to showcase.
-
----
-
+One page for 0-5 years. Two pages for 5+ years or if you have significant, varied [product experience](https://thetailorcv.com/blog/product-manager-case-study-resume) to showcase.
 ## Related Guides
 
 - [Product Manager Resume 2026](https://thetailorcv.com/blog/product-manager-resume-2026)

@@ -57,7 +57,7 @@ Only with permission and never with names attached. Anonymize company names, agg
 A well-documented process improvement from an internship, a mock sourcing project for a role you find interesting, or a rubric/template you built. See [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience).
 
 ### How do I align my resume?
-Use consistent metric framing across both - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements). Additionally, consider using our [portfolio builder](https://www.thetailorcv.com/portfolio) to create a cohesive presentation of your work.
+Use consistent metric framing across both - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements). Additionally, consider using our [portfolio builder](https://www.thetailorcv.com/portfolio) to create a cohesive presentation of your work. You might also find it useful to explore [How to Build a Portfolio With AI](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) for innovative ideas.
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then layer in your program case studies and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

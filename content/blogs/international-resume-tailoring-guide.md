@@ -248,7 +248,7 @@ The EU has a standard template called the Europass CV, which is recognized acros
 
 ### How do I handle the photo requirement for Germany if I am uncomfortable including one?
 
-This is a personal decision. Omitting a photo may reduce your chances slightly with traditional German employers. International companies with offices in Germany are generally more flexible. Consider reviewing our guide on [resume references](https://thetailorcv.com/blog/resume-references-guide) if you need additional tips.
+This is a personal decision. Omitting a photo may reduce your chances slightly with traditional German employers. International companies with offices in Germany are generally more flexible. Consider reviewing our guide on [resume references](https://thetailorcv.com/blog/resume-references-guide) if you need additional tips. You might also find it helpful to explore [resume tailoring for job seekers over 50](https://thetailorcv.com/blog/resume-tailoring-over-50) for insights on adapting your application materials.
 ## Related Guides
 
 - [Resume vs CV](https://thetailorcv.com/blog/resume-vs-cv)

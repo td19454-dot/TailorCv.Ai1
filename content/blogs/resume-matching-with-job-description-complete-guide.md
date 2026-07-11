@@ -355,7 +355,7 @@ You should aim to cover 75-80% of the required keywords and all core qualificati
 
 ### Does every word in the job description matter?
 
-No. Focus on the required skills, tools, job title, and key responsibilities. Required is always more important than preferred.
+No. Focus on the required [skills](https://thetailorcv.com/blog/resume-matching-skills-based-hiring), tools, job title, and key responsibilities. Required is always more important than preferred.
 
 ### Can I use one resume for similar jobs?
 
@@ -367,15 +367,12 @@ Be honest. Include the skills you have and use related terms where appropriate. 
 
 ### How long does resume matching take?
 
-Manually: 20-40 minutes per application.
+Manually: 20-40 minutes per application.  
 With TailorCV: 3-5 minutes.
 
 ### Does matching guarantee an interview?
 
-No. But it significantly increases your chances of passing the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) filter and getting reviewed by a human.
-
----
-
+No. But it significantly increases your chances of passing the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) filter and getting reviewed by a human. You can also enhance your application by checking out our guide on [matching your resume to an AI-generated job description](https://thetailorcv.com/blog/matching-resume-ai-generated-job-descriptions).
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job Application](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

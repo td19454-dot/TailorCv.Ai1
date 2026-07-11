@@ -52,10 +52,10 @@ Do not delete or neglect LinkedIn once your portfolio is live - they serve diffe
 The core facts (titles, dates, company names) should match exactly. The tone and depth can differ - LinkedIn stays professional and concise, your [portfolio](https://www.thetailorcv.com/portfolio) can go deeper into process and personality.
 
 ### Do I still need LinkedIn if I have a strong portfolio?
-Yes. LinkedIn remains where most recruiters search and message first. Your [portfolio](https://www.thetailorcv.com/portfolio) is the destination, not the discovery channel.
+Yes. LinkedIn remains where most recruiters search and message first. Your [portfolio](https://www.thetailorcv.com/portfolio) is the destination, not the discovery channel. For tips on enhancing your LinkedIn presence, check out our [LinkedIn Headline Examples for Job Seekers in 2026](https://thetailorcv.com/blog/linkedin-headline-examples-job-seekers).
 
 ### How long does this conversion take?
-With a resume already prepared, generating the shell takes minutes with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio); expanding it into full case studies is the part worth spending real time on.
+With a resume already prepared, generating the shell takes minutes with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio); expanding it into full case studies is the part worth spending real time on. For more insights on showcasing your work, refer to our [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume (and by extension, your LinkedIn content) into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then expand your strongest roles into case studies and publish a link back into your LinkedIn profile. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your resume, LinkedIn, and portfolio all tell one consistent story.

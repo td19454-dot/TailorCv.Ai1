@@ -280,7 +280,7 @@ It is standard practice for experienced professionals. It will not raise flags. 
 
 ### How do I address age directly if asked?
 
-You do not need to unless it comes up. If it does, pivot to your value: "I bring [X years of specific experience] in exactly this type of role - that's something I'd offer from day one." Confidence beats defensiveness every time. Consider tailoring your resume to match the job description, as discussed in "[Resume Matching for Experienced Professionals](https://thetailorcv.com/blog/resume-matching-experienced-professionals)."
+You do not need to unless it comes up. If it does, pivot to your value: "I bring [X years of specific experience] in exactly this type of role - that's something I'd offer from day one." Confidence beats defensiveness every time. Consider [tailoring your resume](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite) to match the job description, as discussed in "[Resume Matching for Experienced Professionals](https://thetailorcv.com/blog/resume-matching-experienced-professionals)."
 ## Related Guides
 
 - [Resume Matching for Experienced Professionals](https://thetailorcv.com/blog/resume-matching-experienced-professionals)

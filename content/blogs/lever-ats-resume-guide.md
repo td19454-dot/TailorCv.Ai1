@@ -107,7 +107,7 @@ Lever is popular with growth-stage and mid-size companies, though usage varies. 
 
 ### How do I check my match score before applying through Lever?
 
-Use the [TailorCV ATS score checker](/solutions) to compare your resume against the [job posting](https://thetailorcv.com/blog/job-description-analysis-checklist) instantly and see exactly which keywords are missing.
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to compare your resume against the [job posting](https://thetailorcv.com/blog/job-description-analysis-checklist) instantly and see exactly which keywords are missing. You can also refer to our [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template) for additional guidance on matching your resume effectively.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

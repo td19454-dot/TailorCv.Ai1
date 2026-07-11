@@ -55,7 +55,7 @@ Yes, with growth data you can access (analytics screenshots taken while employed
 Yes, if you can show a clear strategy and measurable growth. Document it the same way you would a client account. See [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
 
 ### How do I align my resume?
-Keep platform names and growth metrics consistent across resume and portfolio - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements). For more guidance, check out our [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
+Keep platform names and growth metrics consistent across resume and portfolio - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements). For more guidance, check out our [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide) and learn how to build a portfolio with [AI](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide).
 ## Build Your Portfolio Now
 
 You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then add your campaign case studies and growth metrics and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.

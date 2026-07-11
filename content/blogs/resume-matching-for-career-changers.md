@@ -240,14 +240,11 @@ Briefly, in the summary. Do not explain it in detail on the resume - that is for
 
 ### Is it worth applying for a job if I lack 30-40% of the requirements?
 
-Often yes. Required skills lists are aspirational. If you match the core technical requirements and bring strong transferable experience, many employers will still consider you.
+Often yes. Required skills lists are aspirational. If you match the core technical requirements and bring strong [transferable experience](https://thetailorcv.com/blog/resume-matching-for-multiple-jobs), many employers will still consider you.
 
 ### How do I explain a career change in an interview?
 
-With a confident narrative: "I built X in my previous field, which taught me Y. That experience maps directly to what you need here because Z." Practice this with [AI mock interview](https://www.thetailorcv.com/mock-interview).
-
----
-
+With a confident narrative: "I built X in my previous field, which taught me Y. That experience maps directly to what you need here because Z." Practice this with [AI mock interview](https://www.thetailorcv.com/mock-interview) and consider using a [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template) to align your skills effectively.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

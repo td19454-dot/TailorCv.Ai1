@@ -273,10 +273,7 @@ Slightly. Steps 5-6 ([bullet points](https://thetailorcv.com/blog/how-to-write-r
 
 ### What if the job description is very short or vague?
 
-Extract what you can. If the JD is vague, research the company and role to supplement. Check similar JDs from other companies for typical requirements.
-
----
-
+Extract what you can. If the JD is vague, research the company and role to supplement. Check similar JDs from other companies for typical requirements. You may also want to look at [how to tailor your resume](https://thetailorcv.com/blog/resume-tailoring-emerging-job-titles) for different job titles.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

@@ -253,7 +253,7 @@ Have a prepared, confident, non-defensive answer. "I've moved deliberately - eac
 
 ### Does a long tenure at one company look better?
 
-For stable, traditional industries - yes. For fast-moving tech environments - not necessarily. A 7-year tenure in a company that did not grow or change may read as comfortable stagnation. Consider [resume tailoring for contract and freelance roles vs. permanent jobs](https://thetailorcv.com/blog/resume-tailoring-freelance-contract) for insights on how to present your experience effectively.
+For stable, traditional industries - yes. For fast-moving tech environments - not necessarily. A 7-year tenure in a company that did not grow or change may read as comfortable stagnation. Consider [resume tailoring for contract and freelance roles vs. permanent jobs](https://thetailorcv.com/blog/resume-tailoring-freelance-contract) for insights on how to present your experience effectively. Additionally, understanding how to [read between the lines of a job description](https://thetailorcv.com/blog/hidden-keywords-in-job-description) can help you align your experience with what employers are seeking.
 ## Related Guides
 
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)

@@ -61,7 +61,7 @@ Whichever your target jobs list most. Showing one well is enough; mention the ot
 
 ### How do I align my resume?
 
-Use the [Data Analyst Resume guide](https://thetailorcv.com/blog/data-analyst-resume-2026) and read [Data Analyst vs Data Scientist](https://thetailorcv.com/blog/data-analyst-vs-data-scientist) to position yourself.
+Use the [Data Analyst Resume guide](https://thetailorcv.com/blog/data-analyst-resume-2026) and read [Data Analyst vs Data Scientist](https://thetailorcv.com/blog/data-analyst-vs-data-scientist) to position yourself. You can also explore [What to Put in Your Portfolio When You Have No Projects](https://thetailorcv.com/blog/portfolio-no-projects) for additional insights.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

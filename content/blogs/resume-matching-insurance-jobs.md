@@ -123,7 +123,7 @@ Not effectively. The two roles require different skills, systems, and metrics. M
 
 ### How do I check my insurance resume's match score before applying?
 
-Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to compare your resume against any insurance job posting and see your match percentage instantly. You can also create a [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template) to help ensure your resume aligns with the job description.
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to compare your resume against any insurance job posting and see your match percentage instantly. You can also create a [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template) to help ensure your resume aligns with the job description. Additionally, consider reviewing the [job description analysis checklist](https://thetailorcv.com/blog/job-description-analysis-checklist) for further insights.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

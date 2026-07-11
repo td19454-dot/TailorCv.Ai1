@@ -221,7 +221,7 @@ You can start from the same bullet, but tailor the emphasis and keywords for eac
 
 ### What is the biggest mistake people make with bullet generators?
 
-Giving the tool a bare job title instead of real details. The generator cannot know your actual impact - it can only work with what you tell it, so vague input always produces vague output. Consider using a [resume customization checklist](https://thetailorcv.com/blog/resume-customization-checklist) to ensure you're providing the right details.
+Giving the tool a bare job title instead of real details. The generator cannot know your actual impact - it can only work with what you tell it, so vague input always produces vague output. Consider using a [resume customization checklist](https://thetailorcv.com/blog/resume-customization-checklist) to ensure you're providing the right details. Additionally, you might want to check out our [Resume Design and Color Guide for 2026](https://thetailorcv.com/blog/resume-design-color-guide) for tips on how to make your resume visually appealing.
 ## Next Step
 
 Draft your bullets, then run your full resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) to confirm the language, keywords, and formatting all work together before you apply.

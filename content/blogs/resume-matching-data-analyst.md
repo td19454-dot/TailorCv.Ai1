@@ -191,10 +191,7 @@ List tools you can actually work with productively. A long list of barely-used t
 
 ### How do I show statistical skills without a research background?
 
-Through A/B testing, regression modeling, or cohort analysis examples in your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points). The method name matters; the academic setting does not.
-
----
-
+Through A/B testing, regression modeling, or cohort analysis examples in your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points). The method name matters; the academic setting does not. Consider including a [data analyst case study portfolio](https://thetailorcv.com/blog/data-analyst-case-study-portfolio) to showcase your skills effectively.
 ## Related Guides
 
 - [Data Analyst Resume 2026](https://thetailorcv.com/blog/data-analyst-resume-2026)

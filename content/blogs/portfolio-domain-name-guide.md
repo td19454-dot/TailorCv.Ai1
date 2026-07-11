@@ -60,7 +60,7 @@ Add your field (.dev), use [firstlast.com](https://thetailorcv.com/blog/personal
 
 ### How much should a domain cost?
 
-Around $10-15/year. Avoid registrars with huge renewal jumps; [Cloudflare](https://www.thetailorcv.com/solutions) and Porkbun are fair.
+Around $10-15/year. Avoid registrars with huge renewal jumps; [Cloudflare](https://www.thetailorcv.com/solutions) and Porkbun are fair. For more tips on creating a portfolio, check out [How to Turn Your LinkedIn Profile Into a Portfolio Website](https://thetailorcv.com/blog/linkedin-to-portfolio-guide) or learn about [Portfolio SEO](https://thetailorcv.com/blog/portfolio-seo-get-found) to enhance your online presence.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
