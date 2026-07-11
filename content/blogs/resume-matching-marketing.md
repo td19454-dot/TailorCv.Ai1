@@ -162,7 +162,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### How important are platform certifications for marketing roles?
 
-Very important for specialist roles (Google Ads certified, HubSpot certified, Meta Blueprint). List every relevant certification you hold.
+Very important for specialist roles (Google Ads certified, HubSpot certified, Meta Blueprint). List every relevant [certification](https://thetailorcv.com/blog/marketing-manager-resume-2026) you hold.
 
 ### Do I need to include all metrics as acronyms?
 
@@ -170,10 +170,7 @@ Use the form the JD uses. If the JD writes "CAC" - use "CAC." If it writes "Cust
 
 ### What if I have channel experience but not the exact platform they list?
 
-Mention your adjacent platform experience and note willingness to learn: "Google Ads (experienced) | Bing Ads (familiar)" shows honesty while signaling relevance.
-
----
-
+Mention your adjacent platform experience and note willingness to learn: "Google Ads (experienced) | Bing Ads (familiar)" shows honesty while signaling [relevance](https://thetailorcv.com/blog/social-media-manager-resume-2026).
 ## Related Guides
 
 - [Digital Marketing Resume 2026](https://thetailorcv.com/blog/digital-marketing-resume-2026)

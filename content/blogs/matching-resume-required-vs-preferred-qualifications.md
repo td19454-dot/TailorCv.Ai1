@@ -122,7 +122,7 @@ No. Never claim qualifications you do not have. Focus on genuinely representing 
 
 ### How do I check whether my resume properly prioritizes required qualifications?
 
-Use the [TailorCV ATS score checker](/solutions) to see a breakdown of how well your resume covers the posting's required versus preferred qualifications.
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to see a breakdown of how well your resume covers the posting's required versus preferred qualifications. You can also refer to our [Resume Matching with Job Description - Complete Guide for 2026](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) for more insights on aligning your resume with job postings.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

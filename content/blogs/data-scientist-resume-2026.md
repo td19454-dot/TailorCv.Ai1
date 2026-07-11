@@ -217,7 +217,7 @@ Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv
 ## Frequently Asked Questions
 
 ### What should I include in my data scientist resume summary for 2026?  
-Your resume summary should highlight your years of experience in the data science field, the specific machine learning domains you've worked in, and key achievements. For example, you might write, “Data scientist with 5 years of experience in predictive analytics. Built and deployed multiple machine learning models using Python that increased revenue by 20%.” This is a great way to showcase both your technical skills and your impact on business outcomes.
+Your resume summary should highlight your years of experience in the data science field, the specific [machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026) domains you've worked in, and key achievements. For example, you might write, “Data scientist with 5 years of experience in predictive analytics. Built and deployed multiple machine learning models using Python that increased revenue by 20%.” This is a great way to showcase both your technical skills and your impact on business outcomes.
 
 ### How do I make my resume ATS-friendly for a data scientist position?  
 To ensure your resume is ATS-friendly, use a simple layout without complex graphics or columns that can confuse parsing software. Incorporate relevant keywords from the job description, focusing on skills like Python, machine learning, and data analysis. You can use the [free ATS score checker](https://www.thetailorcv.com/solutions) to test your resume against specific job descriptions to improve your chances of getting noticed.

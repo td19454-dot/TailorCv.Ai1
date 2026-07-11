@@ -273,7 +273,7 @@ Aim for 20-40 keywords from a typical JD. Then prioritize the top 10-15 as must-
 
 ### What if the JD is vague or poorly written?
 
-Use the job title and company industry to supplement. Search for similar roles at competitors to see standard keyword expectations.
+Use the job title and company industry to supplement. Search for similar roles at competitors to see standard [keyword expectations](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 
 ### Should I extract keywords from the "About the Company" section?
 
@@ -285,10 +285,7 @@ Less than hard skills. But modern [ATS](https://thetailorcv.com/blog/what-is-an-
 
 ### Is automated keyword extraction accurate?
 
-Yes, especially for technical roles. AI-based tools like TailorCV identify keywords with high accuracy and context. But always review the output manually.
-
----
-
+Yes, especially for technical roles. AI-based tools like TailorCV identify keywords with high accuracy and context. But always review the output manually. For more insights, check out our guide on [resume keyword density](https://thetailorcv.com/blog/resume-keyword-density-guide).
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

@@ -257,7 +257,7 @@ GS stands for General Schedule - the federal pay scale. GS-5 through GS-15 cover
 
 ### Do I need a security clearance?
 
-Many positions do not require one at the application stage. The agency will initiate clearance procedures after a job offer. However, having an active clearance is a competitive advantage for defense and intelligence positions. If you're looking to enhance your resume further, consider using our [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure it meets the necessary standards.
+Many positions do not require one at the application stage. The agency will initiate clearance procedures after a job offer. However, having an active clearance is a competitive advantage for defense and intelligence positions. If you're looking to enhance your resume further, consider using our [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure it meets the necessary standards. Additionally, you might want to explore our [Chronological vs Functional Resume in 2026 - Which Format to Use](https://thetailorcv.com/blog/chronological-vs-functional-resume) for more insights on resume formats.
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

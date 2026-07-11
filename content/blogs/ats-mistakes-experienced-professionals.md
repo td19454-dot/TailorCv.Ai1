@@ -219,10 +219,7 @@ Keep the last 10-15 years in detail. Summarize earlier experience in one line or
 
 ### Is it worth tailoring a resume when you have 15 years of experience?
 
-Yes - more than ever. The more experience you have, the more content you have to select from. Tailoring means choosing and presenting the most relevant subset of your experience for each specific role.
-
----
-
+Yes - more than ever. The more experience you have, the more content you have to select from. Tailoring means choosing and presenting the most relevant subset of your experience for each specific role. Consider using [resume templates](https://www.thetailorcv.com/templates) to help you effectively showcase your qualifications.
 ## Related Guides
 
 - [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)

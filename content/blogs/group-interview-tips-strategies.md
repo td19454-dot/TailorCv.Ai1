@@ -123,7 +123,7 @@ Stand out through quality contributions and collaboration, not by putting others
 
 Stay calm and professional. Facilitate rather than compete. [Interview anxiety guide](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips) helps here.
 
-### Can AI mock interviews help with group interviews?
+### Can [AI mock interviews](https://www.thetailorcv.com/mock-interview) help with group interviews?
 
 They prepare your individual answers and communication confidence - [AI mock interview guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Practice group dynamics with real people.
 

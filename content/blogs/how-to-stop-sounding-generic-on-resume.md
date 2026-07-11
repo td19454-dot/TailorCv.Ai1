@@ -173,7 +173,7 @@ In practice, almost never too specific. The only risk is naming confidential dat
 
 ### Can this work for early-career resumes with little experience?
 
-Absolutely. Specificity at any level beats vagueness. "Helped with marketing" vs. "Managed the brand's Instagram account, grew following 400% in 3 months through daily Stories content" - both describe a student, but one is specific. For more tips, see [How to Tailor Your Resume for Every Job - ATS Friendly Guide 2026](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job).
+Absolutely. Specificity at any level beats vagueness. "Helped with marketing" vs. "Managed the brand's Instagram account, grew following 400% in 3 months through daily Stories content" - both describe a student, but one is specific. For more tips, see [How to Tailor Your Resume for Every Job - ATS Friendly Guide 2026](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) and learn about [generic resume mistakes](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews) to avoid.
 ## Related Guides
 
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)

@@ -89,22 +89,19 @@ For a full walkthrough, read [how to increase your ATS score](https://thetailorc
 
 ### Is 70 a good ATS score?
 
-70 is decent but not ideal. It usually means a few keywords or formatting issues are holding you back. With small tweaks you can reach 80+.
+70 is decent but not ideal. It usually means a few keywords or formatting issues are holding you back. With small tweaks you can reach 80+. For more insights, check out [How to Increase Your ATS Score From 50 to 90 (2026)](https://thetailorcv.com/blog/how-to-increase-ats-score).
 
 ### Do I need a 100 ATS score?
 
-No. A perfect score is not necessary. Anything 80 and above is competitive. Chasing 100 often leads to unnatural keyword stuffing, which can hurt you with human reviewers.
+No. A perfect score is not necessary. Anything 80 and above is competitive. Chasing 100 often leads to unnatural keyword stuffing, which can hurt you with human reviewers. To understand more about ATS scores, read [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it).
 
 ### Why did my ATS score drop for a different job?
 
-Because the score is calculated against that job's specific requirements. A different role means different keywords and a different match. Re-tailor for each application.
+Because the score is calculated against that job's specific requirements. A different role means different keywords and a different match. Re-tailor for each application. For tips on tailoring your resume, see [How ATS Detects a Generic Resume - And Why It Filters You Out](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
 
 ### What is a good ATS score for freshers?
 
 The same target - 80+. Freshers can reach it by emphasizing projects, internships, and skills. See [ATS score for freshers](https://thetailorcv.com/blog/ats-score-for-freshers).
-
----
-
 ## Related Guides
 
 - [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free)

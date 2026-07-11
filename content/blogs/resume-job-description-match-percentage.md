@@ -276,7 +276,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 
 ### Do all ATS systems use the same scoring method?
 
-No. Taleo, Greenhouse, Workday, Lever, and Ashby all have different algorithms. But keyword and skills matching is fundamental to all of them.
+No. Taleo, Greenhouse, Workday, Lever, and Ashby all have different algorithms. But [keyword and skills matching](https://thetailorcv.com/blog/resume-skills-match-job-description) is fundamental to all of them.
 
 ### Can I check my match score for free?
 
@@ -288,10 +288,7 @@ Every time you apply to a new job. Each [job description](https://thetailorcv.co
 
 ### What is the fastest way to improve my match score?
 
-Add [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description) to your skills section and rewrite your professional summary to include JD language. These two changes often raise the score by 10-15 points in minutes.
-
----
-
+Add [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description) to your skills section and rewrite your professional summary to include JD language. These two changes often raise the score by 10-15 points in minutes. For more strategies, check out [How to Improve Your Resume-to-Job Match Score](https://thetailorcv.com/blog/improve-resume-job-match-score).
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

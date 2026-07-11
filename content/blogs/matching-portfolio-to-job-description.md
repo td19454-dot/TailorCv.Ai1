@@ -116,11 +116,11 @@ You do not need to delete them permanently, but de-prioritize or hide them for t
 
 ### Does a matched portfolio really make a difference alongside a matched resume?
 
-Yes, especially for design, engineering, product, and marketing roles where the portfolio provides direct evidence a resume bullet cannot fully convey.
+Yes, especially for design, engineering, product, and marketing roles where the portfolio provides direct evidence a [resume bullet](https://thetailorcv.com/blog/resume-keyword-map-template) cannot fully convey.
 
 ### How do I quickly build or update a portfolio for a specific job application?
 
-Use [TailorCV's Portfolio Builder](/portfolio) to create or update a live portfolio site in minutes, without any coding required.
+Use [TailorCV's Portfolio Builder](https://www.thetailorcv.com/portfolio) to create or update a live portfolio site in minutes, without any coding required.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

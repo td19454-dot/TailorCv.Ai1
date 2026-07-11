@@ -148,7 +148,7 @@ Hold a pen (not clicking it) or rest hands on the table. Practice reduces uncons
 
 ### Can AI mock interviews help with body language?
 
-AI mock interviews primarily help with [answer content](https://www.thetailorcv.com/mock-interview) and speaking practice. Combine with video self-recording for full body language review.
+AI mock interviews primarily help with [answer content](https://www.thetailorcv.com/mock-interview) and speaking practice. Combine with [video self-recording](https://www.thetailorcv.com/mock-interview) for full body language review.
 
 ---
 
