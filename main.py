@@ -2835,6 +2835,7 @@ def group_skills(skills: list[str]) -> list[str]:
         "Frameworks/Libraries": [],
         "Databases": [],
         "Tools & Platforms": [],
+        "Cloud & DevOps": [],
         "Networking & Protocols": [],
         "Security & SIEM": [],
         "Other Technical Skills": [],
@@ -2867,7 +2868,7 @@ def group_skills(skills: list[str]) -> list[str]:
         "data mining", "anomaly detection", "recommendation systems",
         "time series analysis", "time series forecasting",
         "embeddings", "semantic search", "knowledge graphs",
-        "multimodal", "vision language models", "vlm"
+        "multimodal", "vision language models", "vlm" 
     }
     framework_terms = {
         "numpy", "pandas", "scikit-learn", "sklearn", "scipy",
@@ -2900,22 +2901,26 @@ def group_skills(skills: list[str]) -> list[str]:
     }
     tool_terms = {
         "git", "github", "gitlab", "bitbucket",
-        "docker", "kubernetes", "k8s", "helm",
-        "aws", "amazon web services", "azure", "gcp",
-        "google cloud", "google cloud platform",
-        "linux", "ubuntu", "centos",
         "vscode", "visual studio code", "visual studio",
         "postman", "insomnia", "swagger",
-        "jenkins", "github actions", "gitlab ci", "circleci",
-        "ci/cd", "ci", "cd", "devops",
         "mlflow", "dvc", "wandb", "weights & biases",
-        "power bi", "powerbi", "tableau", "grafana",
+        "power bi", "powerbi", "tableau",
         "excel", "jira", "confluence",
-        "terraform", "ansible", "nginx", "apache",
-        "vercel", "netlify", "heroku",
-        "cloud platforms", "serverless",
         "kubeflow", "airflow", "prefect", "dagster", "kafka",
         "pytest", "jest", "selenium", "cuda", "jupyter"
+    }
+    cloud_devops_terms = {
+        "aws", "amazon web services", "azure", "gcp",
+        "google cloud", "google cloud platform", "cloud platforms", "serverless",
+        "docker", "kubernetes", "k8s", "helm",
+        "jenkins", "github actions", "gitlab ci", "circleci",
+        "ci/cd", "ci", "cd", "devops", "continuous integration",
+        "continuous deployment", "continuous delivery",
+        "terraform", "ansible", "puppet", "chef", "pulumi",
+        "nginx", "apache", "vercel", "netlify", "heroku",
+        "linux", "ubuntu", "centos", "grafana", "prometheus",
+        "cloudformation", "cloud infrastructure", "infrastructure as code",
+        "digitalocean", "openshift", "rancher"
     }
     network_protocol_terms = {
         "tcp/ip", "tcp", "udp", "ip", "dns", "http", "https", "ftp", "sftp",
@@ -2971,6 +2976,8 @@ def group_skills(skills: list[str]) -> list[str]:
             return "Databases"
         if item_norm in tool_terms:
             return "Tools & Platforms"
+        if item_norm in cloud_devops_terms:
+            return "Cloud & DevOps"
         if item_norm in network_protocol_terms:
             return "Networking & Protocols"
         if item_norm in security_siem_terms:
@@ -2996,10 +3003,23 @@ def group_skills(skills: list[str]) -> list[str]:
                         add_unique(grouped["Languages"], item)
                 continue
             if label_lower in {"developer tools", "tools", "tooling", "tools & platforms",
-                                "tools and platforms", "platforms", "devops"}:
+                                "tools and platforms", "platforms"}:
                 for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    if not is_generic_phrase(item):
-                        add_unique(grouped["Tools & Platforms"], item)
+                    cat = classify_item(item)
+                    if cat == "uncategorized" and is_generic_phrase(item):
+                        continue
+                    target = cat if cat not in ("uncategorized", "human_language") else "Tools & Platforms"
+                    add_unique(grouped[target], item)
+                continue
+            if label_lower in {"cloud", "devops", "cloud & devops", "cloud and devops",
+                                "cloud/devops", "cloud platforms", "ci/cd", "cloud & infrastructure",
+                                "cloud infrastructure"}:
+                for item in [p.strip() for p in value.split(",") if p.strip()]:
+                    cat = classify_item(item)
+                    if cat == "uncategorized" and is_generic_phrase(item):
+                        continue
+                    target = cat if cat not in ("uncategorized", "human_language") else "Cloud & DevOps"
+                    add_unique(grouped[target], item)
                 continue
             if label_lower in {"technologies/frameworks", "technologies", "frameworks",
                                 "frameworks & libraries", "frameworks/libraries", "libraries",
@@ -3061,7 +3081,8 @@ def group_skills(skills: list[str]) -> list[str]:
 
     result = []
     for label in ("Languages", "AI/ML", "Frameworks/Libraries", "Databases", "Tools & Platforms",
-                  "Networking & Protocols", "Security & SIEM", "Other Technical Skills"):
+                  "Cloud & DevOps", "Networking & Protocols", "Security & SIEM",
+                  "Other Technical Skills"):
         if grouped[label]:
             result.append(f"{label}: {', '.join(grouped[label])}")
     return result
