@@ -1088,19 +1088,39 @@ header.navbar {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1200px) {
+/* Narrow desktop (1025–1380px): the sidebar and preview panel stay as a real
+   reserved 3-column grid instead of an unreserved 2-column grid with the
+   panel floating on top of the form. Both the grid track and the floating
+   panel's own width read the same custom property, so they always shrink in
+   lockstep and the panel can never overlap (or intercept clicks on) the
+   form beneath it. Below 1025px the layout switches to the tablet FAB
+   overlay pattern instead — see the (min-width:861px)/(max-width:1024px)
+   block further down. */
+@media (min-width: 1025px) and (max-width: 1380px) {
+    :root {
+        --tcv-panel-w: clamp(300px, 34vw, 480px);
+    }
+
     .modify-cv-layout {
-        grid-template-columns: 220px 1fr;
+        grid-template-columns: 200px minmax(0, 1fr) var(--tcv-panel-w);
+    }
+
+    .modify-cv-sidebar-col {
+        width: 200px;
+    }
+
+    .modify-cv-sidebar {
+        width: 200px;
     }
 
     .preview-panel-col {
-        display: none;
+        display: block;
+        width: var(--tcv-panel-w);
     }
 
     .preview-panel {
-        position: fixed;
-        right: 0.5rem;
-        width: min(480px, calc(100vw - 240px));
+        width: var(--tcv-panel-w) !important;
+        right: max(0.5rem, calc((100vw - 1800px) / 2));
     }
 }
 
@@ -1321,19 +1341,6 @@ header.navbar {
     flex-wrap: wrap;
 }
 
-@media (max-width: 1380px) {
-    .modify-cv-layout {
-        grid-template-columns: 200px minmax(0, 1fr);
-    }
-    .preview-panel-col {
-        display: none;
-    }
-    .preview-panel {
-        position: fixed;
-        right: 0.5rem;
-        width: min(480px, calc(100vw - 220px));
-    }
-}
 
 .cv-import-card {
     margin-bottom: 1rem;
@@ -1730,14 +1737,23 @@ header.navbar {
     }
 }
 
-/* Tablet with the app-shell rail still visible (861–1280px): keep the sidebar
+/* Tablet with the app-shell rail still visible (861–1024px): keep the sidebar
    as a visible column (its slide-in drawer toggle would sit behind the
    app-shell rail and be un-clickable), but the Live Preview must NOT float —
    at these widths the fixed ~480px panel overlaps and clips the form. Convert
    it to the same FAB-triggered fullscreen overlay used on phones so the form
    gets the full width. z-index is raised above the app-shell rail (4000) and
-   top bar (4200) so the overlay/FAB are not hidden behind them. */
-@media (min-width: 861px) and (max-width: 1280px) {
+   top bar (4200) so the overlay/FAB are not hidden behind them.
+   Capped at 1024px (standard tablet-landscape width) rather than 1280px so
+   smaller laptop screens (e.g. 1280×800 MacBook Air, 1366px laptops) keep
+   the full desktop layout instead of being dropped into tablet view. */
+@media (min-width: 861px) and (max-width: 1024px) {
+    /* Drop the 480px preview-panel grid track entirely (not just hide the
+       spacer) — otherwise the base 3-column template still reserves that
+       space for nothing and starves the main content column. */
+    .modify-cv-layout {
+        grid-template-columns: 220px minmax(0, 1fr);
+    }
     .preview-panel-col { display: none !important; }
     .preview-panel {
         display: none !important;
