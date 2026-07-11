@@ -1342,8 +1342,8 @@ body {
         doc._tailorcvCopyProtected = true;
 
         const SUFFIX =
-            "\n\n— Created with TailorCV.ai (tailorcv.ai)\n" +
-            "Download the properly formatted PDF at tailorcv.ai/pricing";
+            "\n\n— Created with TailorCV (www.thetailorcv.com)\n" +
+            "Download the properly formatted PDF at www.thetailorcv.com/pricing";
 
         doc.addEventListener("copy", function (e) {
             const text = (doc.getSelection() || {}).toString() || "";

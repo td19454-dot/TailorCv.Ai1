@@ -204,7 +204,7 @@ def extract_project_link_map(text: str) -> dict[str, list[tuple[str, str]]]:
 
     def clean_project_name(line: str) -> str:
         # Keep left side before stack separator if present.
-        # Examples: "TailorCV.ai | HTML, CSS" -> TailorCV.ai
+        # Examples: "TailorCV | HTML, CSS" -> TailorCV
         base = line.replace("↗", " ").strip()
         if "|" in base:
             base = base.split("|", 1)[0].strip()

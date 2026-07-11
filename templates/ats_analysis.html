@@ -722,7 +722,7 @@
     var _modalOpen = false;
 
     function buildShareText(score) {
-        return "🏆 Just scored " + score + "% on my ATS Resume Check — beating 75%+ of applicants!\n\nUsed TailorCV.ai to optimize my resume for any job description.\n\nTry it free 👉 https://thetailorcv.ai\n\n#JobSearch #Resume #ATS #CareerTips #TailorCV";
+        return "🏆 Just scored " + score + "% on my ATS Resume Check — beating 75%+ of applicants!\n\nUsed TailorCV to optimize my resume for any job description.\n\nTry it free 👉 https://www.thetailorcv.com\n\n#JobSearch #Resume #ATS #CareerTips #TailorCV";
     }
 
     function closeModal() {
@@ -769,7 +769,7 @@
         // Twitter / X
         var twBtn = document.getElementById("share-twitter-btn");
         if (twBtn) twBtn.onclick = function () {
-            var tweet = encodeURIComponent("🏆 Scored " + score + "% on my ATS Resume Check — top 25%!\n\nOptimized with TailorCV.ai — try it free 👉 https://thetailorcv.ai\n\n#Resume #ATS #JobSearch #CareerTips");
+            var tweet = encodeURIComponent("🏆 Scored " + score + "% on my ATS Resume Check — top 25%!\n\nOptimized with TailorCV — try it free 👉 https://www.thetailorcv.com\n\n#Resume #ATS #JobSearch #CareerTips");
             window.open("https://twitter.com/intent/tweet?text=" + tweet, "_blank", "noopener,width=600,height=500");
         };
 
