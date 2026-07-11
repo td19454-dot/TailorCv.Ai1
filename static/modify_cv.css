@@ -1657,7 +1657,9 @@ header.navbar {
         line-height: 1;
     }
 
-    /* Preview FAB pinned bottom-right */
+    /* Preview FAB pinned bottom-right — z-index raised above the app-shell
+       top bar (4200, see app_shell.css .tcv-top) and icon rail (4000) so
+       tool pages using the app shell don't bury the FAB or the overlay. */
     .mobile-preview-fab {
         display: flex !important;
         align-items: center;
@@ -1665,7 +1667,7 @@ header.navbar {
         position: fixed;
         bottom: 20px;
         right: 16px;
-        z-index: 1050;
+        z-index: 4250;
         padding: 12px 20px;
         border-radius: 999px;
         border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1682,12 +1684,15 @@ header.navbar {
         display: none !important;
     }
 
-    /* Preview panel: hidden on mobile by default, fullscreen overlay when opened */
+    /* Preview panel: hidden on mobile by default, fullscreen overlay when opened.
+       z-index raised above the app-shell top bar (4200) and icon rail (4000) —
+       otherwise the app shell paints over the top of this overlay, burying the
+       "Live Preview" header and its close button behind the top bar. */
     .preview-panel {
         display: none !important;
         position: fixed !important;
         inset: 0 !important;
-        z-index: 1200 !important;
+        z-index: 4300 !important;
         background: rgba(2, 6, 23, 0.96) !important;
         flex-direction: column !important;
         width: 100% !important;
@@ -1700,21 +1705,28 @@ header.navbar {
         display: flex !important;
     }
 
-    /* Preview X close button */
+    /* Preview X close button — pinned to the viewport (not the scrollable
+       header) so it can never be scrolled out of view once the tall resume
+       preview pushes the header content up. */
     .mobile-preview-close {
         display: flex !important;
         align-items: center;
         justify-content: center;
-        width: 34px;
-        height: 34px;
+        position: fixed !important;
+        top: max(12px, env(safe-area-inset-top, 0px));
+        right: 12px;
+        width: 38px;
+        height: 38px;
         border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        background: rgba(255, 255, 255, 0.1);
-        color: #cfe4ff;
-        font-size: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        background: rgba(15, 23, 42, 0.92);
+        color: #f5f9ff;
+        font-size: 22px;
         cursor: pointer;
         flex-shrink: 0;
         line-height: 1;
+        z-index: 4310 !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
     }
 }
 
@@ -1763,15 +1775,20 @@ header.navbar {
         display: flex !important;
         align-items: center;
         justify-content: center;
-        width: 34px;
-        height: 34px;
+        position: fixed !important;
+        top: max(12px, env(safe-area-inset-top, 0px));
+        right: 12px;
+        width: 38px;
+        height: 38px;
         border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        background: rgba(255, 255, 255, 0.1);
-        color: #cfe4ff;
-        font-size: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        background: rgba(15, 23, 42, 0.92);
+        color: #f5f9ff;
+        font-size: 22px;
         cursor: pointer;
         flex-shrink: 0;
         line-height: 1;
+        z-index: 4310 !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
     }
 }
