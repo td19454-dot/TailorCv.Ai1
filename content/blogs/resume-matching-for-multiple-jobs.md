@@ -226,7 +226,7 @@ Yes. Every resume should be honest. Multiple versions simply emphasize different
 
 ### How do I track which version I sent where?
 
-Use a [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) tracker. Include columns for: company, role, date applied, resume version used. A simple spreadsheet works.
+Use a [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) tracker. Include columns for: company, role, date applied, resume version used. A simple [spreadsheet](https://thetailorcv.com/blog/job-application-tracker-template) works.
 
 ### Should I update my LinkedIn to match each version?
 
@@ -234,14 +234,11 @@ No. Your LinkedIn should represent your full, general experience. Resume version
 
 ### How do I decide which cluster a job belongs to?
 
-Ask: "Which of my variant resumes has the most keyword overlap with this JD?" That is the right variant to start from.
+Ask: "Which of my variant resumes has the most keyword overlap with this JD?" That is the right variant to start from. Consider using [portfolio analytics](https://thetailorcv.com/blog/portfolio-analytics-view-tracking) to gauge recruiter interest in your applications.
 
 ### Does the 5-8 minute tailoring process really work?
 
-Yes - when you have a strong, keyword-rich cluster variant as a starting point. The first build of each variant takes 20-30 minutes. After that, each application within the cluster takes 5-8 minutes.
-
----
-
+Yes - when you have a strong, keyword-rich cluster variant as a starting point. The first build of each variant takes 20-30 minutes. After that, each application within the cluster takes 5-8 minutes. For more tips on managing your job search, check out our guide on [building one job search system](https://thetailorcv.com/blog/resume-portfolio-mock-interview-system).
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

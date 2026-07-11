@@ -175,7 +175,7 @@ Only add what you genuinely have. If you're missing critical skills, that is a g
 
 ### How do I know if my keywords are working?
 
-Check your [ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score) with a tool. A score above 75% means your keyword match is strong.
+Check your [ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score) with a tool. A score above 75% means your keyword match is strong. For more insights, consider reading about [how to check your ATS score for free](https://thetailorcv.com/blog/how-to-check-ats-score-free).
 ## Related Guides
 
 - [ATS Keywords - How to Find and Add Them to Boost Your Score](https://thetailorcv.com/blog/ats-keywords-to-boost-score)

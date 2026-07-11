@@ -110,7 +110,7 @@ This depends on the company's process. Ask your referrer directly, since some co
 
 ### How do I check if my resume is well-matched even with a referral?
 
-Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm your resume aligns with the job description's core requirements before your referrer submits it.
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm your resume aligns with the [job description's core requirements](https://thetailorcv.com/blog/job-description-analysis-checklist) before your referrer submits it.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

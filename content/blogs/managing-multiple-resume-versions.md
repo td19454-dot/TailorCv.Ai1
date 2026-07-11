@@ -268,7 +268,7 @@ Create separate versions for each role - even if the company is the same. Differ
 
 ### Should my resume versions have different ATS scores?
 
-Yes, and that is the point. Each version is tailored to a specific type of role or specific company - so the keyword match scores will differ. Use [TailorCV](https://www.thetailorcv.com/solutions) to check the [ATS score](https://thetailorcv.com/blog/ats-score-guide) for each version against its target job description. Additionally, consider using [AI to tailor your resume](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice) to ensure it resonates well with hiring managers.
+Yes, and that is the point. Each version is tailored to a specific type of role or specific company - so the keyword match scores will differ. Use [TailorCV](https://www.thetailorcv.com/solutions) to check the [ATS score](https://thetailorcv.com/blog/ats-score-guide) for each version against its target job description. Additionally, consider using [AI to tailor your resume](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice) to ensure it resonates well with hiring managers. For more insights on managing your job search, check out [Build One Job Search System](https://thetailorcv.com/blog/resume-portfolio-mock-interview-system).
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

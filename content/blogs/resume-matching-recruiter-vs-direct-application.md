@@ -118,7 +118,7 @@ Often not required, since many recruiters submit candidates with their own summa
 
 ### How do I check my resume's match score before sending it to a recruiter?
 
-Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm your resume is well-matched to the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) before you hand it off.
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm your resume is well-matched to the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) before you hand it off. You can also utilize a [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template) to ensure your resume aligns with the necessary keywords.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

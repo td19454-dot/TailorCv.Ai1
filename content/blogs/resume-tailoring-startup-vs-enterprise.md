@@ -251,7 +251,7 @@ Look at company size, funding stage (Crunchbase), and how the JD is written. "Mo
 
 ### Can I mention startup experience on an enterprise resume?
 
-Yes - frame it around scale, results, and transferable process skills. Enterprise employers like that startup candidates are resourceful. Consider syncing your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync) with your tailored resume for better visibility.
+Yes - frame it around scale, results, and transferable process skills. Enterprise employers like that startup candidates are resourceful. Consider syncing your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync) with your tailored resume for better visibility. You might also explore our [resume templates](https://www.thetailorcv.com/templates) to enhance your presentation.
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

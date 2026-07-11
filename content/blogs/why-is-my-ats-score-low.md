@@ -133,14 +133,11 @@ Anything below 60 is at high risk of being filtered out. Aim for 80+. See [what 
 
 ### Can a qualified candidate still get a low score?
 
-Yes. Qualified people get low scores all the time because of formatting and [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description) - not lack of ability. That is exactly why optimizing matters.
+Yes. Qualified people get low scores all the time because of formatting and [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description) - not lack of ability. That is exactly why [optimizing matters](https://thetailorcv.com/blog/how-to-increase-ats-score).
 
 ### How quickly can I raise my score?
 
-Often within an hour. Fixing formatting and adding the right keywords usually produces the biggest jump.
-
----
-
+Often within an hour. Fixing formatting and adding the right keywords usually produces the biggest jump. You can check your score using our [free ATS score checker](https://www.thetailorcv.com/solutions).
 ## Related Guides
 
 - [How to Increase Your ATS Score](https://thetailorcv.com/blog/how-to-increase-ats-score)

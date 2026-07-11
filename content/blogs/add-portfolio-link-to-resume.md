@@ -53,7 +53,7 @@ Both if relevant. For developers, [GitHub](https://thetailorcv.com/blog/github-p
 
 ### Where exactly on the resume?
 
-The header contact line. Keep it with email and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) so it is seen immediately.
+The header contact line. Keep it with email and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) so it is seen immediately. You can also consider using a [portfolio builder](https://www.thetailorcv.com/portfolio) to create a professional online presence.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

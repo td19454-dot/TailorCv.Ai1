@@ -112,7 +112,7 @@ Yes - it shows thoughtful analysis. "Before I answer, could I clarify whether th
 
 ### What if I have never faced anything similar?
 
-Use PAR to walk through your logical approach. Interviewers care about reasoning, not just experience.
+Use PAR to walk through your logical approach. Interviewers care about reasoning, not just experience. For more on this, check out our [Competency-Based Interview Questions](https://thetailorcv.com/blog/competency-based-interview-questions-guide).
 
 ### How do situational questions relate to AI mock interviews?
 

@@ -187,10 +187,7 @@ Remove them from your [skills section](https://thetailorcv.com/blog/skills-to-ad
 
 ### Does resume length matter more for senior candidates?
 
-Yes. Two pages maximum for most roles. More than two pages signals inability to prioritize - which is ironic for a senior professional.
-
----
-
+Yes. Two pages maximum for most roles. More than two pages signals inability to prioritize - which is ironic for a senior professional. For more insights, check out our guide on [how to explain resume gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps) and learn how to [quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) effectively.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

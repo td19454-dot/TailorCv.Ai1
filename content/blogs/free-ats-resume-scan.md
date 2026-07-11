@@ -87,7 +87,7 @@ Because [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-
 
 ### Is the ATS resume scan really free?
 
-Yes. You can scan your resume with the [free checker](/solutions) and get a complete report at no cost.
+Yes. You can scan your resume with the [free checker](https://www.thetailorcv.com/solutions) and get a complete report at no cost.
 
 ### How long does the scan take?
 
@@ -99,10 +99,7 @@ Use the scan to analyze your resume against a [job description](https://thetailo
 
 ### How many times can I scan?
 
-As many as you need. Re-scan after each edit until your score is strong.
-
----
-
+As many as you need. Re-scan after each edit until your [score](https://thetailorcv.com/blog/what-is-a-good-ats-score) is strong.
 ## Related Guides
 
 - [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free)

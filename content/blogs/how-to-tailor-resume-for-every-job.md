@@ -363,55 +363,52 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### How long does it take to tailor a resume?
 
-It should take 15-30 minutes per application.
-The first time is slower.
+It should take 15-30 minutes per application.  
+The first time is slower.  
 Once you know the steps, it becomes faster.
 
 ### Should I tailor my resume for every job?
 
-Yes.
-Every job is different.
+Yes.  
+Every job is different.  
 A resume that is not tailored is a missed opportunity.
 
 ### Will tailoring improve my ATS score?
 
-Yes.
-Tailoring increases keyword match and relevance.
+Yes.  
+Tailoring increases keyword match and relevance.  
 That means a better [ATS score](https://thetailorcv.com/blog/ats-score-guide).
 
 ### Can I use the same resume for similar jobs?
 
-Yes, with a close match.
-If two jobs ask for the same skills, one tailored version may work for both.
+Yes, with a close match.  
+If two jobs ask for the same skills, one tailored version may work for both.  
 But always review the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) before you apply.
 
 ### What if I don't have all the required skills?
 
-Focus on the skills you do have.
-Use related experience and keywords.
+Focus on the skills you do have.  
+Use related experience and keywords.  
 Be honest, but show how your strengths match the role.
 
 ### How often should I update my resume?
 
-Update it each time you apply.
-At minimum, refresh your summary and key bullets for each new job.
+Update it each time you apply.  
+At minimum, refresh your summary and key bullets for each new job.  
 One strong tailored version beats a [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) every time.
 
 ### Does resume tailoring mean changing the whole resume?
 
-No.
-It means changing the most relevant sections.
-Your base resume stays the same.
+No.  
+It means changing the most relevant sections.  
+Your base resume stays the same.  
 You update the summary, skills, and top bullets.
 
 ### Can I tailor my resume without tools?
 
-Yes.
-You can do it manually.
-But tools save time and improve keyword coverage.
-
----
-
+Yes.  
+You can do it manually.  
+But [tools](https://www.thetailorcv.com/templates) save time and improve keyword coverage.
 ## Related Guides
 
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)

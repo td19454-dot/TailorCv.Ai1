@@ -195,14 +195,11 @@ No. Never lie on your resume. Adjust emphasis and framing - not facts.
 
 ### What is the most important thing to change?
 
-Your professional summary. It sets the tone for the entire application and can immediately reassure or concern a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes).
+Your [professional summary](https://thetailorcv.com/blog/how-to-update-your-resume). It sets the tone for the entire application and can immediately reassure or concern a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes).
 
 ### Should I apply to both senior and junior roles simultaneously?
 
 Yes, if both are genuine interests. But use separate resume versions - do not submit the same version to both.
-
----
-
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

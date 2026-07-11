@@ -252,10 +252,7 @@ List it with context: "Python (personal [projects](https://thetailorcv.com/blog/
 
 ### How important is Agile/Scrum as a keyword for SWE roles?
 
-Very. Most tech companies use Agile methodologies. If you have worked in sprints, explicitly mention Agile and Scrum. It is a commonly filtered keyword.
-
----
-
+Very. Most tech companies use Agile methodologies. If you have worked in sprints, explicitly mention Agile and Scrum. It is a commonly filtered keyword. For more on this, check out our [Resume Matching with Job Description - Complete Guide for 2026](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide).
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

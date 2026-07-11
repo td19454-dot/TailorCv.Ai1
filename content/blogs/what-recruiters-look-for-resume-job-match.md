@@ -226,10 +226,7 @@ Ask yourself: can someone who has never met me understand my value proposition i
 
 ### Should I customize my resume for recruiter review vs. ATS?
 
-Your summary and top bullets need to work for both simultaneously. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) checks keywords in those sections. Recruiters read those sections first. Optimize them to achieve both.
-
----
-
+Your summary and top bullets need to work for both simultaneously. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) checks keywords in those sections. Recruiters read those sections first. Optimize them to achieve both. For more on this, check out our guide on [how to match resume keywords to job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) and learn about [common resume and job description mismatch mistakes](https://thetailorcv.com/blog/common-resume-job-description-mismatch-mistakes).
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

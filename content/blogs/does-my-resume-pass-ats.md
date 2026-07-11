@@ -120,7 +120,7 @@ For a full repair guide, read [how to increase your ATS score](https://thetailor
 
 ### How do I know for sure if my resume passes ATS?
 
-Run it through the [free ATS score checker](/solutions) against the job description. A score of 80+ means you are in good shape.
+Run it through the [free ATS score checker](https://www.thetailorcv.com/solutions) against the job description. A score of 80+ means you are in good shape.
 
 ### Do PDFs pass ATS?
 
@@ -128,10 +128,7 @@ Text-based PDFs usually pass. Image-based PDFs do not, because there is no reada
 
 ### Does a two-column resume pass ATS?
 
-It is risky. Many parsers misread columns, so a single-column layout is safer. See [why is my ATS score so low](https://thetailorcv.com/blog/why-is-my-ats-score-low).
-
----
-
+It is risky. Many parsers misread columns, so a single-column layout is safer. See [why is my ATS score so low](https://thetailorcv.com/blog/why-is-my-ats-score-low). For more insights, check out [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) to understand what might be affecting your score.
 ## Related Guides
 
 - [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free)

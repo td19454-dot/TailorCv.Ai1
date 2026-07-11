@@ -242,7 +242,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Should I have a different summary for every job application?
 
-Yes. Your base summary can stay similar, but the title, keywords, and context should be adapted to each JD. It takes 5-10 minutes to tailor and is worth the investment.
+Yes. Your base summary can stay similar, but the title, keywords, and context should be adapted to each [JD](https://thetailorcv.com/blog/job-description-analysis-checklist). It takes 5-10 minutes to tailor and is worth the investment.
 
 ### How do I write a summary if I am changing careers?
 
@@ -250,7 +250,7 @@ Start with your transferable skills and use the target role's language. Bridge y
 
 ### What if I am entry-level and have no results to show?
 
-Use a project, certification, or relevant coursework instead of a work result. Focus on skills and domain knowledge.
+Use a [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), certification, or relevant coursework instead of a work result. Focus on skills and domain knowledge.
 
 ### Can AI write my summary?
 
@@ -259,9 +259,6 @@ Yes - and it does a good job when given the right inputs. [TailorCV](https://www
 ### Should I use "I" in my summary?
 
 No. Omit pronouns entirely. "Led a team of 6 engineers" not "I led a team of 6 engineers."
-
----
-
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

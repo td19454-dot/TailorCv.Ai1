@@ -111,7 +111,7 @@ There is no fixed number. Include every must-have keyword you genuinely have, us
 
 ### Where do I find ATS keywords?
 
-In the job description itself. For speed, the [ATS score checker](/solutions) extracts the missing ones for you.
+In the job description itself. For speed, the [ATS score checker](https://www.thetailorcv.com/solutions) extracts the missing ones for you.
 
 ### Is keyword stuffing bad?
 
@@ -119,10 +119,7 @@ Yes. It can be flagged by modern AI-based [ATS](https://thetailorcv.com/blog/wha
 
 ### Do keywords alone guarantee a high score?
 
-They are the biggest factor, but formatting, achievements, and job-title fit also matter. See [how to increase your ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score).
-
----
-
+They are the biggest factor, but formatting, achievements, and job-title fit also matter. See [how to increase your ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score) and learn about [ATS mistakes experienced professionals make](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals).
 ## Related Guides
 
 - [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free)

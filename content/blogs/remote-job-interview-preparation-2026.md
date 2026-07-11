@@ -131,7 +131,7 @@ Rejoin immediately. Message the interviewer via email or chat. Briefly apologize
 
 ### Can I practice remote interviews with AI?
 
-Yes - [AI mock interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) help you practice answers; combine with [video self-recording](https://thetailorcv.com/blog/how-to-practice-interviews-at-home) for full remote prep.
+Yes - [AI mock interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) help you practice answers; combine with [video self-recording](https://thetailorcv.com/blog/how-to-practice-interviews-at-home) for full remote prep. You can also explore [competency-based interview questions](https://thetailorcv.com/blog/competency-based-interview-questions-guide) to enhance your preparation.
 
 ---
 
