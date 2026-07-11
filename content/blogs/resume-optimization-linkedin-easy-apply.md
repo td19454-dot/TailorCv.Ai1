@@ -250,7 +250,7 @@ Yes - but the return depends entirely on how you use it. Tailored, well-matched 
 
 ### Does LinkedIn show recruiters my full profile or just my resume?
 
-Both. Recruiters see a summary view with your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) data AND can open your attached resume. Both need to be strong and consistent.
+Both. Recruiters see a summary view with your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) data AND can open your attached [resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide). Both need to be strong and consistent.
 
 ### Should I always use Easy Apply or apply directly on company websites?
 
@@ -258,10 +258,7 @@ For companies you strongly want, apply directly on their website AND through [Li
 
 ### How many Easy Apply applications should I send per day?
 
-Quality over quantity. 3-5 well-tailored applications are worth more than 30 generic ones. If you must apply at volume, ensure your base resume is at least role-type optimized.
-
----
-
+Quality over quantity. 3-5 well-tailored applications are worth more than 30 generic ones. If you must apply at volume, ensure your base resume is at least [role-type optimized](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise).
 ## Related Guides
 
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)

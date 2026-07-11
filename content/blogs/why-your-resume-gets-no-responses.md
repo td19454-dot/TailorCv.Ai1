@@ -125,14 +125,11 @@ For most roles, if you haven't heard within 2-3 weeks, it's safe to follow up on
 
 ### Does quantity of applications help?
 
-Volume only helps if each application is at least minimally tailored. 50 generic applications typically produce fewer responses than 15 targeted ones.
+Volume only helps if each application is at least minimally tailored. 50 [generic applications](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews) typically produce fewer responses than 15 targeted ones.
 
 ### Is my experience the problem?
 
-Possibly, but less often than candidates assume. More often the problem is communication, not experience. [TailorCV's scanner](/solutions) will show you whether the gap is in keywords, formatting, or genuine qualification mismatches.
-
----
-
+Possibly, but less often than candidates assume. More often the problem is communication, not experience. [TailorCV's scanner](https://www.thetailorcv.com/solutions) will show you whether the gap is in keywords, formatting, or genuine qualification mismatches. Consider checking [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) for more insights.
 ## Related Guides
 
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)

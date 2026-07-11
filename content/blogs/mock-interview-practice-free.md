@@ -92,7 +92,7 @@ AI practice asks questions based on your actual resume, has you answer out loud,
 
 ### What should I prepare before a mock interview?
 
-Finalize your resume, pick a target role, and have two or three strong stories from your experience ready to adapt. Your resume drives the questions, so make it strong first.
+Finalize your [resume](https://www.thetailorcv.com/templates), pick a target role, and have two or three strong stories from your experience ready to adapt. Your resume drives the questions, so make it strong first.
 
 ### How often should I practice mock interviews?
 
@@ -100,5 +100,4 @@ Short, daily sessions of 15-20 minutes are more effective than occasional long o
 
 ### Can AI mock interviews help with both behavioral and technical rounds?
 
-Yes. Good AI [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) tools cover behavioral, HR, and technical questions, so you can prepare for every stage of the process.
-
+Yes. Good AI [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) tools cover behavioral, HR, and technical questions, so you can prepare for every stage of the process. For behavioral questions, consider using the [STAR Method](https://thetailorcv.com/blog/star-method-interview-guide).

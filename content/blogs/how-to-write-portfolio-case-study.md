@@ -55,12 +55,11 @@ Long enough to show your thinking, short enough to skim: a headline outcome, a 3
 
 ### What if I cannot share metrics?
 
-Use rounded numbers, proxies (usage, performance), or describe the impact qualitatively with permission.
+Use rounded numbers, proxies (usage, performance), or describe the impact qualitatively with permission. For more tips on showcasing your work, check out our [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
 
 ### How many case studies do I need?
 
-Two to four strong ones. Lead with your best and tie each to a real outcome.
-
+Two to four strong ones. Lead with your best and tie each to a real outcome. Consider looking at our [UX Designer Portfolio Guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide) for examples.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

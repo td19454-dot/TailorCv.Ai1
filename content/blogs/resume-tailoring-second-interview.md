@@ -252,10 +252,7 @@ Treat it like a first [interview](https://thetailorcv.com/blog/how-to-prepare-fo
 
 ### Is there anything I should NOT say in a second interview?
 
-Avoid referencing things the first interviewer told you in confidence or that seemed sensitive. Also avoid signaling desperation or assuming the offer is coming.
-
----
-
+Avoid referencing things the first interviewer told you in confidence or that seemed sensitive. Also avoid signaling desperation or assuming the [offer](https://thetailorcv.com/blog/final-round-interview-tips) is coming.
 ## Related Guides
 
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)

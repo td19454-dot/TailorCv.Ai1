@@ -98,7 +98,7 @@ TailorCV's [resume optimizer](/solutions) identifies the specific skills a job d
 
 ### What is skills-based hiring?
 
-Skills-based hiring evaluates candidates primarily on demonstrated competencies rather than job titles, degrees, or years of experience in a specific role, often incorporating skills assessments into the hiring process.
+Skills-based hiring evaluates candidates primarily on demonstrated competencies rather than job titles, degrees, or years of experience in a specific role, often incorporating [skills assessments](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) into the hiring process.
 
 ### Does skills-based hiring mean job titles don't matter at all?
 
@@ -106,7 +106,7 @@ Job titles still provide useful context, but they carry less weight than in trad
 
 ### Should I still include my job titles if a posting is skills-based?
 
-Yes, job titles still provide context for your experience. Just make sure the skills themselves are clearly evidenced, not implied solely through your title.
+Yes, job titles still provide context for your experience. Just make sure the [skills themselves](https://thetailorcv.com/blog/resume-keyword-map-template) are clearly evidenced, not implied solely through your title.
 
 ### Can personal projects really substitute for formal work experience in skills-based hiring?
 
@@ -114,10 +114,7 @@ Often yes, especially for technical and creative roles where the work itself dem
 
 ### How do I check whether my resume matches a skills-based job description well?
 
-Use the [TailorCV ATS score checker](/solutions) to see how well your resume demonstrates the specific skills and competencies the posting lists.
-
----
-
+Use the [TailorCV ATS score checker](/solutions) to see how well your resume demonstrates the specific skills and competencies the posting lists. You can also refer to [how to match your resume](https://thetailorcv.com/blog/matching-resume-ai-generated-job-descriptions) for further guidance.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

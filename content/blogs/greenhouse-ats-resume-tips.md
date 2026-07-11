@@ -91,7 +91,7 @@ Startups move fast, and so should your application. Paste the Greenhouse job pos
 
 ### Do startups using Greenhouse really filter resumes by keywords?
 
-Yes. Many recruiting teams configure Greenhouse to flag or sort candidates using specific must-have keywords from the job posting, especially at high application volumes.
+Yes. Many recruiting teams configure Greenhouse to flag or sort candidates using specific must-have keywords from the [job posting](https://thetailorcv.com/blog/job-description-analysis-checklist), especially at high application volumes.
 
 ### Should I use a creative resume design for a startup application?
 
@@ -107,10 +107,7 @@ Greenhouse is typically used by startups and tech companies and relies heavily o
 
 ### How do I know if my resume is a strong match before applying?
 
-Use the [TailorCV ATS score checker](/solutions) to compare your resume against the job posting and see your match percentage instantly.
-
----
-
+Use the [TailorCV ATS score checker](/solutions) to compare your resume against the [job posting](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) and see your match percentage instantly.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

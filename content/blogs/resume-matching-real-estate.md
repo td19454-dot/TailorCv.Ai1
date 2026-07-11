@@ -105,11 +105,11 @@ Paste any real estate job posting into [TailorCV's resume optimizer](/solutions)
 
 ### Do real estate companies use ATS to screen resumes?
 
-Larger brokerages, property management firms, and commercial real estate companies increasingly do, especially for property management and corporate roles. Independent agent hiring is often more relationship-based, but matching your resume's language still helps.
+Larger brokerages, property management firms, and commercial real estate companies increasingly do, especially for property management and corporate roles. Independent agent hiring is often more relationship-based, but [matching your resume's language](https://thetailorcv.com/blog/job-description-analysis-checklist) still helps.
 
 ### How important is naming specific software like Yardi or AppFolio?
 
-Very important for property management roles. If a posting requires experience with a specific platform and your resume only says "property management software," you risk a keyword mismatch.
+Very important for property management roles. If a posting requires experience with a specific platform and your resume only says "property management software," you risk a [keyword mismatch](https://thetailorcv.com/blog/resume-keyword-map-template).
 
 ### Should I include my sales volume even if it varied year to year?
 
@@ -117,14 +117,11 @@ Yes, include your most recent or strongest year, and specify the time period. Re
 
 ### Can I use one resume for both residential and commercial real estate roles?
 
-Not effectively. The keywords, metrics, and priorities differ significantly between the two. Maintain separate versions and tailor each to the specific posting.
+Not effectively. The keywords, metrics, and priorities differ significantly between the two. Maintain separate versions and [tailor each](https://thetailorcv.com/blog/matching-portfolio-to-job-description) to the specific posting.
 
 ### How do I check my real estate resume's match score before applying?
 
 Use the [TailorCV ATS score checker](/solutions) to compare your resume against any real estate job posting and see your match percentage instantly.
-
----
-
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

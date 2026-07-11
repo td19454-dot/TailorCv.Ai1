@@ -134,14 +134,11 @@ Yes, at minimum run the 5-minute checklist. For roles you care most about, spend
 
 ### How do I know which keywords to add?
 
-Highlight the most repeated terms in the job description, especially under "Requirements." Use the [free ATS checker](/solutions) to surface missing keywords automatically.
+Highlight the most repeated terms in the job description, especially under "Requirements." Use the [free ATS checker](https://www.thetailorcv.com/solutions) to surface missing keywords automatically.
 
 ### Will this actually improve my ATS score?
 
-Yes. Matching your headline, summary, and skills to the job description are the fastest ways to raise your keyword match score. See [how to increase your ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score) for all the levers.
-
----
-
+Yes. Matching your headline, summary, and skills to the job description are the fastest ways to raise your keyword match score. See [how to increase your ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score) for all the levers. Additionally, you can refer to our [resume customization checklist](https://thetailorcv.com/blog/resume-customization-checklist) for more tips on optimizing your resume.
 ## Related Guides
 
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)

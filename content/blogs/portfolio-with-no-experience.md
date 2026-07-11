@@ -66,12 +66,11 @@ Yes - thousands do every year. Real, deployed, documented projects routinely bea
 
 ### How many projects do I need with no experience?
 
-Three solid ones is enough to start applying. Add more as you build. Curate hard - see [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid).
+Three solid ones is enough to start applying. Add more as you build. Curate hard - see [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid) and consider what to put in your portfolio when you have no projects: [What to Put in Your Portfolio When You Have No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
 
 ### I am a student - anything different?
 
-Reframe coursework as projects and update each semester. See the dedicated [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide).
-
+Reframe coursework as projects and update each semester. See the dedicated [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide) and explore how to build a portfolio with AI - no coding required: [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide).
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

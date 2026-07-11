@@ -95,22 +95,19 @@ No. Certification claims are frequently verified, and misrepresenting your crede
 
 ### Is it worth applying if I'm missing a "required" certification?
 
-Often yes, if the certification is not tied to a legal or safety requirement and you have strong equivalent experience. Missing a certification listed as required but functionally treated as preferred is common, and many hiring managers will still consider strong candidates.
+Often yes, if the certification is not tied to a legal or safety requirement and you have strong equivalent experience. Missing a certification listed as required but functionally treated as preferred is common, and many hiring managers will still consider strong candidates. For more insights, check out our [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist).
 
 ### How do I list a certification I'm currently studying for?
 
-State it clearly as "in progress" with an expected completion or exam date, so it reads as a credible, active pursuit rather than an unfinished claim.
+State it clearly as "in progress" with an expected completion or exam date, so it reads as a credible, active pursuit rather than an unfinished claim. You can also use our [Resume Keyword Map Template - Match Your Resume to Any Job Description](https://thetailorcv.com/blog/resume-keyword-map-template) to enhance your resume.
 
 ### Does a missing certification always hurt my ATS score significantly?
 
-It depends on how the employer configured their screening. A single missing certification among many strong matches usually has a smaller impact than several missing core requirements. Check your resume's overall match score for context.
+It depends on how the employer configured their screening. A single missing certification among many strong matches usually has a smaller impact than several missing core requirements. Check your resume's overall match score for context using our [Free ATS score checker](https://www.thetailorcv.com/solutions).
 
 ### How do I know which certifications are worth pursuing?
 
-Track which certifications repeatedly appear across job descriptions in your target roles, and prioritize the ones that show up most often or are explicitly required rather than preferred.
-
----
-
+Track which certifications repeatedly appear across job descriptions in your target roles, and prioritize the ones that show up most often or are explicitly required rather than preferred. For additional guidance, consider reading about [How to Match Your Resume to an AI-Generated Job Description](https://thetailorcv.com/blog/matching-resume-ai-generated-job-descriptions).
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

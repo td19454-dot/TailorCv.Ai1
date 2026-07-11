@@ -243,18 +243,15 @@ Not entirely different. A shared base with two tailored versions (startup and en
 
 ### Do startups use ATS?
 
-Some do, especially Series B and later. But earlier-stage startups often rely on direct review. Still optimize for readability and relevance.
+Some do, especially Series B and later. But earlier-stage startups often rely on direct review. Still optimize for readability and relevance. Check out our [resume keyword density](https://thetailorcv.com/blog/resume-keyword-density-guide) for more tips on optimization.
 
 ### What if the job description doesn't say startup or enterprise?
 
-Look at company size, funding stage (Crunchbase), and how the JD is written. "Move fast and break things" vs "work within established frameworks" tells you which mode to apply in.
+Look at company size, funding stage (Crunchbase), and how the JD is written. "Move fast and break things" vs "work within established frameworks" tells you which mode to apply in. You can also learn how to [read between the lines](https://thetailorcv.com/blog/hidden-keywords-in-job-description) of a job description to find hidden keywords.
 
 ### Can I mention startup experience on an enterprise resume?
 
-Yes - frame it around scale, results, and transferable process skills. Enterprise employers like that startup candidates are resourceful.
-
----
-
+Yes - frame it around scale, results, and transferable process skills. Enterprise employers like that startup candidates are resourceful. Consider syncing your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync) with your tailored resume for better visibility.
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

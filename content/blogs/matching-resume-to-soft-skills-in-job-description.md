@@ -111,7 +111,7 @@ Modern [ATS](https://thetailorcv.com/blog/ats-score-guide) systems increasingly 
 
 ### Should I have a dedicated soft skills section on my resume?
 
-A short one can work, but it should be for scannability, not evidence. The real proof of your soft skills should live in your experience bullets, backed by specific results.
+A short one can work, but it should be for scannability, not evidence. The real proof of your soft skills should live in your [experience bullets](https://thetailorcv.com/blog/job-description-analysis-checklist), backed by specific results.
 
 ### How many soft skills should I try to match per application?
 
@@ -123,10 +123,7 @@ Leave it out for this application rather than forcing an unsupported claim. A re
 
 ### How do I check if my resume reflects the soft skills a job description implies?
 
-Use the [TailorCV ATS score checker](/solutions) to analyze the full job description and see how well your resume's language aligns with both its explicit and implied requirements.
-
----
-
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to analyze the full job description and see how well your resume's language aligns with both its explicit and implied requirements. You can also create a [resume keyword map](https://thetailorcv.com/blog/resume-keyword-map-template) to ensure you're matching the right terms.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

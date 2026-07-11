@@ -67,8 +67,7 @@ It is a signal of activity, not a scoreboard. Consistent, meaningful commits mat
 
 ### What if my best work is in private repos?
 
-Rebuild a sanitized public version, write a case study ([How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)), or describe it with permission. Private repos recruiters cannot open add little.
-
+Rebuild a sanitized public version, write a case study ([How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)), or describe it with permission. Private repos recruiters cannot open add little. Consider showcasing your skills with [15 Developer Portfolio Project Ideas That Get You Hired in 2026](https://thetailorcv.com/blog/developer-portfolio-project-ideas) or using our [portfolio builder](https://www.thetailorcv.com/portfolio) to create an impressive presentation of your work.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

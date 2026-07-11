@@ -94,11 +94,11 @@ Paste the job description into [TailorCV's resume optimizer](/solutions) to quic
 
 ### Does a referral guarantee my resume skips ATS screening?
 
-No. Many companies still route referred resumes through the same ATS, sometimes with a flag or note, but not necessarily a full bypass. Treat your resume as if it will be screened either way.
+No. Many companies still route referred resumes through the same [ATS](https://www.thetailorcv.com/solutions), sometimes with a flag or note, but not necessarily a full bypass. Treat your resume as if it will be screened either way.
 
 ### How much should I tailor my resume if I already have a referral?
 
-A baseline level, confirm your summary, top skills, and key bullets reflect the role's core requirements, even if you do not do a full keyword-optimization pass.
+A baseline level, confirm your summary, top skills, and key bullets reflect the role's core requirements, even if you do not do a full [keyword-optimization pass](https://thetailorcv.com/blog/resume-keyword-map-template).
 
 ### Can a referral offset a weak resume entirely?
 
@@ -110,10 +110,7 @@ This depends on the company's process. Ask your referrer directly, since some co
 
 ### How do I check if my resume is well-matched even with a referral?
 
-Use the [TailorCV ATS score checker](/solutions) to confirm your resume aligns with the job description's core requirements before your referrer submits it.
-
----
-
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm your resume aligns with the job description's core requirements before your referrer submits it.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

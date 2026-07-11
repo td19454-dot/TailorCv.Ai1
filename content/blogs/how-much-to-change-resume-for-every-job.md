@@ -145,7 +145,7 @@ This keeps volume high while ensuring your best opportunities get proper attenti
 
 ### Is it worth tailoring if you're applying to hundreds of jobs?
 
-For volume applications: yes, but keep it to the 5-minute checklist. Even basic tailoring significantly outperforms a [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
+For volume applications: yes, but keep it to the [5-minute checklist](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes). Even basic tailoring significantly outperforms a [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
 
 ### Can ATS tell if I changed my resume?
 
@@ -153,14 +153,11 @@ For volume applications: yes, but keep it to the 5-minute checklist. Even basic 
 
 ### How do I know if I've changed enough?
 
-Run it through the [free ATS checker](/solutions) before submitting. A score above 75% means you've hit the key signals.
+Run it through the [free ATS checker](https://www.thetailorcv.com/solutions) before submitting. A score above 75% means you've hit the key signals.
 
 ### Does tailoring my resume hurt my consistency across applications?
 
-No, as long as your core content stays accurate. The changes are positioning and language, not fabrication. Every version of your resume describes the same real experience.
-
----
-
+No, as long as your core content stays accurate. The changes are positioning and language, not fabrication. Every version of your resume describes the same real experience. For more tips on this, check out our [resume customization checklist](https://thetailorcv.com/blog/resume-customization-checklist).
 ## Related Guides
 
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)

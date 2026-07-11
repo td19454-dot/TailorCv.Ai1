@@ -272,7 +272,7 @@ If you graduated before 2000, remove the year. Degree and institution are suffic
 
 ### How far back should my work history go?
 
-10-15 years is the standard. Anything earlier can be summarized briefly in an "Earlier Career" section without dates.
+10-15 years is the standard. Anything earlier can be summarized briefly in an "[Earlier Career](https://thetailorcv.com/blog/resume-matching-experienced-professionals)" section without dates.
 
 ### Will hiding dates raise red flags?
 
@@ -280,10 +280,7 @@ It is standard practice for experienced professionals. It will not raise flags. 
 
 ### How do I address age directly if asked?
 
-You do not need to unless it comes up. If it does, pivot to your value: "I bring [X years of specific experience] in exactly this type of role - that's something I'd offer from day one." Confidence beats defensiveness every time.
-
----
-
+You do not need to unless it comes up. If it does, pivot to your value: "I bring [X years of specific experience] in exactly this type of role - that's something I'd offer from day one." Confidence beats defensiveness every time. Consider tailoring your resume to match the job description, as discussed in "[Resume Matching for Experienced Professionals](https://thetailorcv.com/blog/resume-matching-experienced-professionals)."
 ## Related Guides
 
 - [Resume Matching for Experienced Professionals](https://thetailorcv.com/blog/resume-matching-experienced-professionals)
