@@ -1874,6 +1874,20 @@ Nice to have:
 
         // New scan: score the uploaded resume against the JD, then open the report.
         var go = document.getElementById('ns-go');
+        var nsGoOriginalText = go ? go.textContent : 'Get ATS score';
+
+        // If the user navigates back (e.g. from /ats-analysis), the browser may restore
+        // this page from bfcache with the button/message stuck in their "in progress" state.
+        window.addEventListener('pageshow', function (event) {
+            var nav = window.performance && performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+            var isBackForward = event.persisted || (nav && nav.type === 'back_forward');
+            if (!isBackForward) return;
+            if (go) { go.disabled = false; go.textContent = nsGoOriginalText; }
+            var msgEl = document.getElementById('ns-msg');
+            if (msgEl) { msgEl.textContent = ''; }
+            stopNSProgress();
+        });
+
         if (go) go.addEventListener('click', function () {
             var jd = (document.getElementById('ns-jd').value || '').trim();
             var msg = document.getElementById('ns-msg');
@@ -1897,14 +1911,14 @@ Nice to have:
                     return r.json();
                 })
                 .then(function (data) {
-                    // Hand the result to the solutions page for full ATS and optimization flow.
+                    // Hand the result to the ATS analysis results page for rendering.
                     try { sessionStorage.setItem('atsAnalysisPayload', JSON.stringify(data)); } catch (e) {}
-                    msg.style.color = '#9fb6d6'; msg.textContent = 'Opening solutions page…';
+                    msg.style.color = '#9fb6d6'; msg.textContent = 'Opening results…';
                     completeNSProgress();
-                    setTimeout(function () { window.location.href = '/solutions'; }, 250);
+                    setTimeout(function () { window.location.href = '/ats-analysis'; }, 250);
                 })
                 .catch(function (err) { if (err.message !== 'login') { msg.style.color = '#fca5a5'; msg.textContent = err.message || 'Something went wrong. Try again.'; stopNSProgress(); } })
-                .finally(function () { if (!window.location.href.includes('/solutions')) { go.disabled = false; go.textContent = original; } });
+                .finally(function () { if (!window.location.href.includes('/ats-analysis')) { go.disabled = false; go.textContent = original; } });
         });
     })();
     </script>
