@@ -58,6 +58,7 @@ from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
 from routers.billing import router as billing_router
+from routers.feedback import router as feedback_router
 from blog_system import BlogService, codehilite_css, xml_escape
 
 
@@ -350,6 +351,7 @@ templates.env.filters["skilliconurl"] = _skill_icon_url
 templates.env.globals["google_site_verification"] = GOOGLE_SITE_VERIFICATION
 app.include_router(linkedin_router)
 app.include_router(billing_router)
+app.include_router(feedback_router)
 blog_service = BlogService(BLOG_CONTENT_DIR)
 
 

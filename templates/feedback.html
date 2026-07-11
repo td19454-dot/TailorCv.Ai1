@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "_google_analytics.html" %}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Help shape TailorCV — a 60-second survey about your resume experience.">
+  <title>Feedback – TailorCV</title>
+  {% include "_seo_head.html" %}
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --accent: #3392ff;
+      --accent-dark: #1f7ae0;
+      --accent-soft: rgba(51,146,255,0.08);
+      --accent-ring: rgba(51,146,255,0.35);
+      --bg: #f6f9ff;
+      --card-bg: #ffffff;
+      --ink: #0f1729;
+      --muted: #64748b;
+      --border: rgba(15,23,41,0.09);
+      --shadow-sm: 0 2px 8px rgba(15,23,41,0.05);
+      --shadow-lg: 0 24px 60px rgba(15,23,41,0.10);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+    }
+
+    html, body {
+      min-height: 100%;
+      font-family: 'DM Sans', sans-serif;
+      background:
+        radial-gradient(1200px 600px at 15% -10%, rgba(51,146,255,0.10), transparent 60%),
+        radial-gradient(900px 500px at 110% 10%, rgba(109,40,217,0.06), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+    }
+
+    body {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 48px 20px 80px;
+    }
+
+    .fb-page {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    .fb-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .fb-logo img { height: 26px; width: auto; }
+    .fb-logo span {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .fb-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 48px 48px 40px;
+      animation: fbCardIn 0.5s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    @keyframes fbCardIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .fb-header { text-align: center; margin-bottom: 36px; }
+    .fb-header h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: 30px;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+    .fb-header p {
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .fb-header p.fb-time-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 5px 12px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    /* Question blocks */
+    .fb-block {
+      padding: 26px 0;
+      border-top: 1px solid var(--border);
+      opacity: 0;
+      animation: fbBlockIn 0.5s cubic-bezier(.16,1,.3,1) both;
+    }
+    .fb-block:first-of-type { border-top: none; padding-top: 0; }
+    .fb-block:nth-of-type(1) { animation-delay: 0.04s; }
+    .fb-block:nth-of-type(2) { animation-delay: 0.08s; }
+    .fb-block:nth-of-type(3) { animation-delay: 0.12s; }
+    .fb-block:nth-of-type(4) { animation-delay: 0.16s; }
+    .fb-block:nth-of-type(5) { animation-delay: 0.20s; }
+    .fb-block:nth-of-type(6) { animation-delay: 0.24s; }
+    @keyframes fbBlockIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .fb-block h2 {
+      font-size: 16.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+      line-height: 1.45;
+    }
+    .fb-block .fb-qnum {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 9px;
+      vertical-align: middle;
+      transform: translateY(-1px);
+    }
+    .fb-block .fb-optional-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      background: rgba(15,23,41,0.05);
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .fb-field-error {
+      margin-top: 10px;
+      font-size: 12.5px;
+      color: #dc2626;
+      display: none;
+    }
+    .fb-field-error.show { display: block; animation: fbShake 0.3s; }
+    @keyframes fbShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+    .fb-block.invalid .fb-radio-card,
+    .fb-block.invalid .fb-scale-btn {
+      border-color: rgba(220,38,38,0.4);
+    }
+
+    /* Radio cards */
+    .fb-radio-group { display: flex; flex-direction: column; gap: 10px; }
+    .fb-radio-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
+      background: #fff;
+    }
+    .fb-radio-card:hover {
+      border-color: rgba(51,146,255,0.4);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+    .fb-radio-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .fb-radio-dot {
+      flex: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(15,23,41,0.22);
+      position: relative;
+      transition: border-color 0.15s;
+    }
+    .fb-radio-dot::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      background: var(--accent);
+      transform: scale(0);
+      transition: transform 0.15s;
+    }
+    .fb-radio-card input[type="radio"]:checked ~ .fb-radio-dot {
+      border-color: var(--accent);
+    }
+    .fb-radio-card input[type="radio"]:checked ~ .fb-radio-dot::after {
+      transform: scale(1);
+    }
+    .fb-radio-card.checked {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .fb-radio-label { font-size: 14.5px; font-weight: 500; color: var(--ink); }
+
+    /* Scale grid (1-5 ratings and 1-10 NPS share this) */
+    .fb-scale-grid {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .fb-scale-btn {
+      width: 100%;
+      min-width: 0;
+      height: 44px;
+      padding: 0;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border);
+      background: #fff;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .fb-scale-btn:hover {
+      border-color: rgba(51,146,255,0.4);
+      transform: translateY(-1px);
+    }
+    .fb-scale-btn.selected {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      box-shadow: 0 6px 16px var(--accent-ring);
+    }
+    .fb-scale-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Textareas */
+    .fb-textarea {
+      width: 100%;
+      min-height: 120px;
+      resize: vertical;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14.5px;
+      color: var(--ink);
+      line-height: 1.5;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .fb-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-ring);
+    }
+    .fb-textarea::placeholder { color: rgba(15,23,41,0.32); }
+
+    /* Submit */
+    .fb-submit-row {
+      margin-top: 8px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    .fb-btn-primary {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14.5px;
+      font-weight: 500;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s, opacity 0.15s;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      padding: 14px 32px;
+      min-width: 180px;
+      position: relative;
+    }
+    .fb-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px var(--accent-ring); }
+    .fb-btn-primary:active { transform: translateY(0) scale(0.98); box-shadow: none; }
+    .fb-btn-primary:disabled { opacity: 0.7; cursor: wait; transform: none; }
+
+    .fb-btn-primary.loading .fb-btn-label { visibility: hidden; }
+    .fb-btn-primary.loading::after {
+      content: "";
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 18px; height: 18px;
+      margin: -9px 0 0 -9px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: fbSpin 0.7s linear infinite;
+    }
+    @keyframes fbSpin { to { transform: rotate(360deg); } }
+
+    .fb-form-error {
+      font-size: 13px;
+      color: #dc2626;
+      text-align: right;
+      display: none;
+    }
+    .fb-form-error.show { display: block; }
+
+    /* Success screen */
+    .fb-success { text-align: center; padding: 12px 0 4px; }
+    .fb-success-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 22px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fbPop 0.5s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes fbPop {
+      from { opacity: 0; transform: scale(0.6); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .fb-success-icon svg { width: 30px; height: 30px; }
+    .fb-success p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      max-width: 420px;
+      margin: 0 auto 28px;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 28px 14px 60px; }
+      .fb-card { padding: 30px 22px 26px; border-radius: var(--radius-md); }
+      .fb-header h1 { font-size: 24px; }
+      .fb-header p { font-size: 13.5px; }
+      .fb-scale-grid { gap: 4px; }
+      .fb-scale-btn { height: 38px; font-size: 12px; }
+      .fb-submit-row { align-items: stretch; }
+      .fb-btn-primary { width: 100%; }
+      .fb-form-error { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="fb-page">
+    <div class="fb-logo">
+      <img src="/static/logo-mark.webp" alt="" />
+      <span>thetailorcv</span>
+    </div>
+
+    <div class="fb-card">
+      <div class="fb-header">
+        <h1>Help Shape TailorCV</h1>
+        <p>We've helped thousands of job seekers improve their resumes, but we're still learning what people truly need.</p>
+        <p>Your feedback directly influences what we build next.</p>
+        <p class="fb-time-note">This survey takes less than 60 seconds.</p>
+      </div>
+
+      <form id="fbForm" novalidate>
+        <div class="fb-block" data-field-block="time_saved_rating">
+          <h2><span class="fb-qnum">1</span>We know job search is painful — did TailorCV save you time and effort and give you better results?</h2>
+          <div class="fb-scale-grid" data-field="time_saved_rating" style="grid-template-columns: repeat(5, 1fr);">
+            {% for i in range(1,6) %}
+            <button type="button" class="fb-scale-btn" data-value="{{ i }}">{{ i }}</button>
+            {% endfor %}
+          </div>
+          <div class="fb-scale-labels"><span>1 — Absolutely bad</span><span>5 — Amazing</span></div>
+          <p class="fb-field-error" data-error-for="time_saved_rating">Please choose a rating.</p>
+        </div>
+
+        <div class="fb-block" data-field-block="workflow_likelihood_rating">
+          <h2><span class="fb-qnum">2</span>How likely are you to use TailorCV in your job application workflow?</h2>
+          <div class="fb-scale-grid" data-field="workflow_likelihood_rating" style="grid-template-columns: repeat(5, 1fr);">
+            {% for i in range(1,6) %}
+            <button type="button" class="fb-scale-btn" data-value="{{ i }}">{{ i }}</button>
+            {% endfor %}
+          </div>
+          <div class="fb-scale-labels"><span>1 — Not likely</span><span>5 — Very likely</span></div>
+          <p class="fb-field-error" data-error-for="workflow_likelihood_rating">Please choose a rating.</p>
+        </div>
+
+        <div class="fb-block" data-field-block="would_pay">
+          <h2><span class="fb-qnum">3</span>Would you consider paying for TailorCV?</h2>
+          <div class="fb-radio-group" data-field="would_pay">
+            {% for opt in ["Yes", "No — too expensive", "No — I use ChatGPT instead", "No — it doesn't help me", "No — I didn't trust the results", "No — I only needed it once", "Other"] %}
+            <label class="fb-radio-card">
+              <input type="radio" name="would_pay" value="{{ opt }}" />
+              <span class="fb-radio-dot"></span>
+              <span class="fb-radio-label">{{ opt }}</span>
+            </label>
+            {% endfor %}
+          </div>
+          <p class="fb-field-error" data-error-for="would_pay">Please select an option.</p>
+        </div>
+
+        <div class="fb-block" data-field-block="shutdown_impact_rating">
+          <h2><span class="fb-qnum">4</span>Would it hurt if we shut down TailorCV? We're bootstrapped and we're considering it</h2>
+          <div class="fb-scale-grid" data-field="shutdown_impact_rating" style="grid-template-columns: repeat(5, 1fr);">
+            {% for i in range(1,6) %}
+            <button type="button" class="fb-scale-btn" data-value="{{ i }}">{{ i }}</button>
+            {% endfor %}
+          </div>
+          <div class="fb-scale-labels"><span>1 — Wouldn't matter</span><span>5 — Yes, a lot</span></div>
+          <p class="fb-field-error" data-error-for="shutdown_impact_rating">Please choose a rating.</p>
+        </div>
+
+        <div class="fb-block" data-field-block="nps_score">
+          <h2><span class="fb-qnum">5</span>How likely are you to recommend TailorCV to a friend?</h2>
+          <div class="fb-scale-grid" data-field="nps_score" style="grid-template-columns: repeat(10, 1fr);">
+            {% for i in range(1,11) %}
+            <button type="button" class="fb-scale-btn" data-value="{{ i }}">{{ i }}</button>
+            {% endfor %}
+          </div>
+          <div class="fb-scale-labels"><span>Not likely</span><span>Very likely</span></div>
+          <p class="fb-field-error" data-error-for="nps_score">Please choose a score from 1 to 10.</p>
+        </div>
+
+        <div class="fb-block">
+          <h2><span class="fb-qnum">6</span>Is there anything you didn't like, or that we could improve to make your experience better? <span class="fb-optional-tag">Optional</span></h2>
+          <textarea class="fb-textarea" id="fbMore" maxlength="2000" placeholder="Please tell us — anything at all helps."></textarea>
+        </div>
+
+        <div class="fb-submit-row">
+          <button type="button" class="fb-btn-primary" id="fbSubmitBtn"><span class="fb-btn-label">Submit Feedback</span></button>
+          <p class="fb-form-error" id="fbFormError"></p>
+        </div>
+      </form>
+
+      <div class="fb-success" id="fbSuccess" hidden>
+        <div class="fb-success-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 13l4 4L19 7" stroke="#3392ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p>Thank you! Your feedback has been received and will directly influence what we build next.</p>
+        <a href="/" class="fb-btn-primary" style="text-decoration:none;"><span class="fb-btn-label">Back to TailorCV</span></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/toast.js"></script>
+  <script>
+    window.TAILORCV_PREFILL_WOULD_PAY = {{ prefill_would_pay|tojson }};
+    window.TAILORCV_CAMPAIGN_REASON = {{ campaign_reason|tojson }};
+
+    (function () {
+      var DRAFT_KEY = 'tailorcv_feedback_draft_v2';
+      var REQUIRED_FIELDS = ['time_saved_rating', 'workflow_likelihood_rating', 'would_pay', 'shutdown_impact_rating', 'nps_score'];
+
+      var state = {
+        time_saved_rating: null,
+        workflow_likelihood_rating: null,
+        would_pay: '',
+        shutdown_impact_rating: null,
+        nps_score: null,
+        additional_feedback: ''
+      };
+      var sessionId = null;
+      var isSubmitting = false;
+      var saveTimer = null;
+      var serverSaveTimer = null;
+
+      function apiErrorDetail(data) {
+        var d = data && data.detail;
+        if (typeof d === 'string') return d;
+        if (Array.isArray(d) && d.length) {
+          return d.map(function (e) { return (e && e.msg) ? e.msg : ''; }).filter(Boolean).join(' ') || 'Request failed';
+        }
+        return 'Request failed';
+      }
+
+      function makeSessionId() {
+        if (window.crypto && window.crypto.randomUUID) return window.crypto.randomUUID();
+        return 'fb-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+      }
+
+      function saveDraft() {
+        try {
+          localStorage.setItem(DRAFT_KEY, JSON.stringify(Object.assign({}, state, { sessionId: sessionId, savedAt: Date.now() })));
+        } catch (e) { /* private browsing / quota — ignore */ }
+      }
+
+      function restoreDraft() {
+        var draft = null;
+        try {
+          var raw = localStorage.getItem(DRAFT_KEY);
+          if (raw) draft = JSON.parse(raw);
+        } catch (e) { draft = null; }
+
+        var prefillWouldPay = window.TAILORCV_PREFILL_WOULD_PAY || '';
+
+        if (draft && typeof draft === 'object') {
+          state.time_saved_rating = (typeof draft.time_saved_rating === 'number') ? draft.time_saved_rating : null;
+          state.workflow_likelihood_rating = (typeof draft.workflow_likelihood_rating === 'number') ? draft.workflow_likelihood_rating : null;
+          state.would_pay = draft.would_pay || '';
+          state.shutdown_impact_rating = (typeof draft.shutdown_impact_rating === 'number') ? draft.shutdown_impact_rating : null;
+          state.nps_score = (typeof draft.nps_score === 'number') ? draft.nps_score : null;
+          state.additional_feedback = draft.additional_feedback || '';
+          sessionId = draft.sessionId || makeSessionId();
+
+          // Query param only pre-selects on a fresh visit — never clobber an
+          // answer the user already picked when resuming a saved draft.
+          if (!state.would_pay && prefillWouldPay) {
+            state.would_pay = prefillWouldPay;
+          }
+        } else {
+          sessionId = makeSessionId();
+          if (prefillWouldPay) state.would_pay = prefillWouldPay;
+        }
+      }
+
+      function postToServer(finalize) {
+        return fetch('/api/feedback', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': readCsrfToken(),
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify({
+            session_id: sessionId,
+            time_saved_rating: state.time_saved_rating,
+            workflow_likelihood_rating: state.workflow_likelihood_rating,
+            would_pay: state.would_pay || null,
+            shutdown_impact_rating: state.shutdown_impact_rating,
+            nps_score: state.nps_score,
+            additional_feedback: state.additional_feedback,
+            campaign_reason: window.TAILORCV_CAMPAIGN_REASON || '',
+            finalize: !!finalize
+          })
+        });
+      }
+
+      // Silent, best-effort partial save — fired on every answer so an
+      // abandoned survey still leaves a real (if incomplete) row behind.
+      function scheduleServerSave() {
+        clearTimeout(serverSaveTimer);
+        serverSaveTimer = setTimeout(function () {
+          postToServer(false).catch(function (err) {
+            console.warn('feedback partial save failed', err);
+          });
+        }, 400);
+      }
+
+      function hydrateInputs() {
+        var group = document.querySelector('.fb-radio-group[data-field="would_pay"]');
+        if (group) {
+          group.querySelectorAll('input[type="radio"]').forEach(function (input) {
+            var card = input.closest('.fb-radio-card');
+            var checked = input.value === state.would_pay;
+            input.checked = checked;
+            card.classList.toggle('checked', checked);
+          });
+        }
+        document.querySelectorAll('.fb-scale-grid[data-field]').forEach(function (grid) {
+          var field = grid.dataset.field;
+          grid.querySelectorAll('.fb-scale-btn').forEach(function (btn) {
+            btn.classList.toggle('selected', Number(btn.dataset.value) === state[field]);
+          });
+        });
+        document.getElementById('fbMore').value = state.additional_feedback;
+      }
+
+      function clearFieldError(field) {
+        var block = document.querySelector('.fb-block[data-field-block="' + field + '"]');
+        if (!block) return;
+        block.classList.remove('invalid');
+        var err = block.querySelector('.fb-field-error');
+        if (err) err.classList.remove('show');
+      }
+
+      function showFieldError(field) {
+        var block = document.querySelector('.fb-block[data-field-block="' + field + '"]');
+        if (!block) return;
+        block.classList.add('invalid');
+        var err = block.querySelector('.fb-field-error');
+        if (err) {
+          err.classList.remove('show');
+          void err.offsetWidth;
+          err.classList.add('show');
+        }
+      }
+
+      function debounceSave() {
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(saveDraft, 300);
+      }
+
+      function wireInputs() {
+        var wouldPayGroup = document.querySelector('.fb-radio-group[data-field="would_pay"]');
+        wouldPayGroup.addEventListener('change', function (e) {
+          if (e.target && e.target.type === 'radio') {
+            state.would_pay = e.target.value;
+            wouldPayGroup.querySelectorAll('.fb-radio-card').forEach(function (card) {
+              card.classList.toggle('checked', card.querySelector('input').checked);
+            });
+            clearFieldError('would_pay');
+            saveDraft();
+            scheduleServerSave();
+          }
+        });
+
+        document.querySelectorAll('.fb-scale-grid[data-field]').forEach(function (grid) {
+          var field = grid.dataset.field;
+          grid.addEventListener('click', function (e) {
+            var btn = e.target.closest('.fb-scale-btn');
+            if (!btn) return;
+            state[field] = Number(btn.dataset.value);
+            grid.querySelectorAll('.fb-scale-btn').forEach(function (b) {
+              b.classList.toggle('selected', b === btn);
+            });
+            clearFieldError(field);
+            saveDraft();
+            scheduleServerSave();
+          });
+        });
+
+        document.getElementById('fbMore').addEventListener('input', function (e) {
+          state.additional_feedback = e.target.value;
+          debounceSave();
+          scheduleServerSave();
+        });
+
+        document.getElementById('fbSubmitBtn').addEventListener('click', submitFeedback);
+      }
+
+      function readCsrfToken() {
+        var match = document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/);
+        return match ? decodeURIComponent(match[1]) : '';
+      }
+
+      function validateAll() {
+        var firstInvalid = null;
+        REQUIRED_FIELDS.forEach(function (field) {
+          var missing = (field === 'would_pay') ? !state.would_pay : (state[field] === null);
+          if (missing) {
+            showFieldError(field);
+            firstInvalid = firstInvalid || field;
+          } else {
+            clearFieldError(field);
+          }
+        });
+        return firstInvalid;
+      }
+
+      async function submitFeedback() {
+        if (isSubmitting) return;
+
+        var invalidField = validateAll();
+        if (invalidField) {
+          var block = document.querySelector('.fb-block[data-field-block="' + invalidField + '"]');
+          if (block) block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        isSubmitting = true;
+        clearTimeout(serverSaveTimer);
+        var btn = document.getElementById('fbSubmitBtn');
+        var formError = document.getElementById('fbFormError');
+        formError.classList.remove('show');
+        btn.disabled = true;
+        btn.classList.add('loading');
+
+        try {
+          var res = await postToServer(true);
+          var raw = await res.text();
+          var data = {};
+          try { data = raw ? JSON.parse(raw) : {}; } catch (e) { data = { detail: raw || 'Unexpected server response' }; }
+          if (!res.ok) throw new Error(apiErrorDetail(data) || 'Could not submit feedback.');
+
+          try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+          document.getElementById('fbForm').hidden = true;
+          document.getElementById('fbSuccess').hidden = false;
+        } catch (err) {
+          var message = err.message || 'Something went wrong. Please try again.';
+          if (window.showToast) {
+            window.showToast(message, 'error', 'Submission failed');
+          } else {
+            formError.textContent = message;
+            formError.classList.add('show');
+          }
+        } finally {
+          isSubmitting = false;
+          btn.disabled = false;
+          btn.classList.remove('loading');
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        restoreDraft();
+        hydrateInputs();
+        wireInputs();
+      });
+    })();
+  </script>
+</body>
+</html>

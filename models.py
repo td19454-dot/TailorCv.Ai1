@@ -182,6 +182,38 @@ class GuestAtsScan(Base):
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
 
 
+class FeedbackSubmission(Base):
+    """Survey submitted from email campaign links (/feedback?reason=...).
+
+    Upserted by session_id on every answer click so partial/abandoned
+    responses are still captured, not just fully-finished ones.
+    """
+    __tablename__ = "feedback_submissions"
+
+    id = Column(Integer, primary_key=True, index=True)
+    session_id = Column(String(64), nullable=False, unique=True, index=True)
+
+    # Nullable because a partial (in-progress) response won't have all of
+    # these yet — only guaranteed non-null once completed_at is set.
+    time_saved_rating = Column(Integer, nullable=True)                # Q1, 1-5
+    workflow_likelihood_rating = Column(Integer, nullable=True)       # Q2, 1-5
+    would_pay = Column(String(60), nullable=True, index=True)         # Q3, e.g. "No — too expensive"
+    shutdown_impact_rating = Column(Integer, nullable=True)           # Q4, 1-5
+    nps_score = Column(Integer, nullable=True, index=True)            # Q5, 1-10
+    additional_feedback = Column(Text, nullable=True)                 # Q6, optional
+
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True)
+    email = Column(String(255), nullable=True, index=True)
+    campaign_reason = Column(String(30), nullable=True)              # raw ?reason= key from the email link
+    referrer = Column(String(500), nullable=True)                    # HTTP Referer header
+    user_agent = Column(String(500), nullable=True)
+    ip_address = Column(String(64), nullable=True)
+
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    completed_at = Column(DateTime, nullable=True, index=True)        # set once all required questions are answered
+
+
 class UsageRecord(Base):
     """Tracks monthly feature usage per user for enforcing free-tier limits."""
     __tablename__ = "usage_records"
