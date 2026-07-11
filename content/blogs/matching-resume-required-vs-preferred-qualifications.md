@@ -110,11 +110,11 @@ Look for definitive language ("must have," "required," specific years of experie
 
 ### Should I apply if I'm missing one required qualification?
 
-Often yes, especially if your other qualifications are strong and you can address the gap honestly in your cover letter or application. Missing several required qualifications is a different story.
+Often yes, especially if your other qualifications are strong and you can address the gap honestly in your [cover letter](https://www.thetailorcv.com/cover-letter) or application. Missing several required qualifications is a different story.
 
 ### Do preferred qualifications ever matter as much as required ones?
 
-Occasionally, when a role has few applicants or when a preferred qualification is genuinely rare and valuable. But by default, required qualifications carry more weight in both ATS scoring and human review.
+Occasionally, when a role has few applicants or when a preferred qualification is genuinely rare and valuable. But by default, required qualifications carry more weight in both [ATS scoring](https://www.thetailorcv.com/blog/greenhouse-ats-resume-tips) and human review.
 
 ### Should my resume list preferred qualifications I don't actually have?
 
@@ -123,9 +123,6 @@ No. Never claim qualifications you do not have. Focus on genuinely representing 
 ### How do I check whether my resume properly prioritizes required qualifications?
 
 Use the [TailorCV ATS score checker](/solutions) to see a breakdown of how well your resume covers the posting's required versus preferred qualifications.
-
----
-
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

@@ -138,10 +138,7 @@ Most of the time, only the top third needs to change - the headline, summary, an
 
 ### What is the fastest way to tailor a resume?
 
-Use a tool that compares your resume to the job description and highlights the gaps. [TailorCV's free scanner](/solutions) does this in under 60 seconds.
-
----
-
+Use a tool that compares your resume to the job description and highlights the gaps. [TailorCV's free scanner](https://www.thetailorcv.com/solutions) does this in under 60 seconds.
 ## Related Guides
 
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)

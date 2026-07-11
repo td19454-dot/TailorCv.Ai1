@@ -220,7 +220,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Do I need a cover letter for an internal application?
 
-Yes. A short, honest [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) that explains your motivation and what you bring to the role is almost always worth writing. It signals seriousness.
+Yes. A short, honest [cover letter](https://thetailorcv.com/blog/cover-letter-for-internal-job-application) that explains your motivation and what you bring to the role is almost always worth writing. It signals seriousness.
 
 ### Will applying internally hurt my current standing?
 
@@ -228,14 +228,11 @@ Only if you handle it poorly. Most managers respect employees who communicate am
 
 ### Should I update my LinkedIn before applying internally?
 
-Not necessarily. Focus on your resume and the formal application. Updating [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) mid-process can create unnecessary noise internally.
+Not necessarily. Focus on your resume and the formal application. Updating [LinkedIn](https://thetailorcv.com/blog/how-to-sync-your-linkedin-profile-with-your-tailored-resume) mid-process can create unnecessary noise internally.
 
 ### What if I am competing against an external candidate?
 
-You have insider knowledge of the company, culture, and needs. That is a real advantage - if your resume and [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) reflect it. Do not assume it is enough on its own.
-
----
-
+You have insider knowledge of the company, culture, and needs. That is a real advantage - if your resume and [interview](https://thetailorcv.com/blog/how-to-use-ai-to-tailor-your-resume-without-sounding-like-a-robot-2026-guide) reflect it. Do not assume it is enough on its own.
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

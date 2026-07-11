@@ -169,14 +169,11 @@ Most work has something measurable - team size, time saved, budget managed, volu
 
 ### How specific is too specific?
 
-In practice, almost never too specific. The only risk is naming confidential data (client names under NDA, proprietary figures). For everything else, specificity only helps.
+In practice, almost never too specific. The only risk is naming confidential data (client names under NDA, proprietary figures). For everything else, specificity only helps. Check out [How Recruiters Spot Generic Resumes - And Reject Them in 6 Seconds](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes) for more insights on the importance of specificity.
 
 ### Can this work for early-career resumes with little experience?
 
-Absolutely. Specificity at any level beats vagueness. "Helped with marketing" vs. "Managed the brand's Instagram account, grew following 400% in 3 months through daily Stories content" - both describe a student, but one is specific.
-
----
-
+Absolutely. Specificity at any level beats vagueness. "Helped with marketing" vs. "Managed the brand's Instagram account, grew following 400% in 3 months through daily Stories content" - both describe a student, but one is specific. For more tips, see [How to Tailor Your Resume for Every Job - ATS Friendly Guide 2026](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job).
 ## Related Guides
 
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)

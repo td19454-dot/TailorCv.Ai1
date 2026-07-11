@@ -241,8 +241,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### How many jobs in X years is too many?
 
-In tech: 3 jobs in 5 years is normal. 4-5 raises questions. 6+ requires strong framing.
-In finance or government: 2 jobs in 5 years can already prompt questions. Context matters.
+In tech: 3 jobs in 5 years is normal. 4-5 raises questions. 6+ requires strong framing. In finance or government: 2 jobs in 5 years can already prompt questions. Context matters.
 
 ### Should I address job hopping in my cover letter?
 
@@ -254,10 +253,7 @@ Have a prepared, confident, non-defensive answer. "I've moved deliberately - eac
 
 ### Does a long tenure at one company look better?
 
-For stable, traditional industries - yes. For fast-moving tech environments - not necessarily. A 7-year tenure in a company that did not grow or change may read as comfortable stagnation.
-
----
-
+For stable, traditional industries - yes. For fast-moving tech environments - not necessarily. A 7-year tenure in a company that did not grow or change may read as comfortable stagnation. Consider [resume tailoring for contract and freelance roles vs. permanent jobs](https://thetailorcv.com/blog/resume-tailoring-freelance-contract) for insights on how to present your experience effectively.
 ## Related Guides
 
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)

@@ -237,14 +237,11 @@ Brief labels work: "Career exploration period" or "Professional development - co
 
 ### Is freelance experience treated as "less" by permanent employers?
 
-By some, yes - especially at traditional companies. The solution is strong framing, specific results, and a clear narrative about why you are seeking permanent work now.
+By some, yes - especially at traditional companies. The solution is strong framing, specific results, and a clear narrative about why you are seeking permanent work now. For tips on this, check out [how to read between the lines of a job description to find hidden keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description).
 
 ### Can I list clients by name on my resume?
 
-Only if they are publicly referenceable. Some contracts require confidentiality. When in doubt, use "[Fintech startup, 50 employees]" instead of the client name.
-
----
-
+Only if they are publicly referenceable. Some contracts require confidentiality. When in doubt, use "[Fintech startup, 50 employees]" instead of the client name. If you want to showcase your work, consider building a [portfolio](https://www.thetailorcv.com/portfolio) to highlight your projects.
 ## Related Guides
 
 - [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)

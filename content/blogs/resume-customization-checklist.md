@@ -161,10 +161,7 @@ Items 1 (headline), 4 (required skills), and 15 ([ATS](https://thetailorcv.com/b
 
 ### Should I save different versions of my resume?
 
-Yes. Build a "master" version tailored for each role type you target. Apply the checklist on top of the relevant master version for each application. See [resume matching for multiple jobs](https://thetailorcv.com/blog/resume-matching-for-multiple-jobs).
-
----
-
+Yes. Build a "master" version tailored for each role type you target. Apply the checklist on top of the relevant master version for each application. See [resume matching for multiple jobs](https://thetailorcv.com/blog/resume-matching-for-multiple-jobs) and consider how much you should [change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job).
 ## Related Guides
 
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)

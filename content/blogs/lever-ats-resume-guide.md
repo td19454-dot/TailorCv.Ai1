@@ -99,7 +99,7 @@ They should tell a consistent story, even if the wording differs slightly. Large
 
 ### Can recruiters search Lever by keyword?
 
-Yes, recruiters commonly filter and search candidate profiles by keyword and tag, which is another reason to mirror the job description's exact terminology in your resume.
+Yes, recruiters commonly filter and search candidate profiles by keyword and tag, which is another reason to mirror the [job description's exact terminology](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) in your resume.
 
 ### Is Lever used mostly by startups?
 
@@ -107,10 +107,7 @@ Lever is popular with growth-stage and mid-size companies, though usage varies. 
 
 ### How do I check my match score before applying through Lever?
 
-Use the [TailorCV ATS score checker](/solutions) to compare your resume against the job posting instantly and see exactly which keywords are missing.
-
----
-
+Use the [TailorCV ATS score checker](/solutions) to compare your resume against the [job posting](https://thetailorcv.com/blog/job-description-analysis-checklist) instantly and see exactly which keywords are missing.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

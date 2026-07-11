@@ -53,12 +53,11 @@ First or second year. Add a project each semester and you will graduate far ahea
 
 ### What if I only have coursework?
 
-Reframe it: add a problem statement, your role, and an outcome, then publish it. See [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
+Reframe it: add a problem statement, your role, and an outcome, then publish it. See [What to Put in Your Portfolio When You Have No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
 
 ### Does a portfolio help for internships?
 
-Yes - for internships it can matter more than a thin resume, because it shows initiative.
-
+Yes - for internships it can matter more than a thin resume, because it shows initiative. Consider using our [portfolio builder](https://www.thetailorcv.com/portfolio) to create a standout presentation of your work.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

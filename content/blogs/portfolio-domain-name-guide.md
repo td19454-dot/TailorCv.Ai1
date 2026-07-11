@@ -56,12 +56,11 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ### My name is taken - what now?
 
-Add your field (.dev), use firstlast.com, or a small prefix like get-/hey-. Keep it short and spellable.
+Add your field (.dev), use [firstlast.com](https://thetailorcv.com/blog/personal-website-vs-portfolio), or a small prefix like get-/hey-. Keep it short and spellable.
 
 ### How much should a domain cost?
 
-Around $10-15/year. Avoid registrars with huge renewal jumps; Cloudflare and Porkbun are fair.
-
+Around $10-15/year. Avoid registrars with huge renewal jumps; [Cloudflare](https://www.thetailorcv.com/solutions) and Porkbun are fair.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

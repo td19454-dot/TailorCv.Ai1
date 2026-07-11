@@ -102,7 +102,7 @@ Paste the job description your recruiter shares into [TailorCV's resume optimize
 
 ### Does a recruiter submission skip the employer's ATS?
 
-Usually not. Most recruiters still submit your resume through the employer's applicant tracking system, so it is parsed and scored the same way a direct application would be.
+Usually not. Most recruiters still submit your resume through the employer's [applicant tracking system](https://www.thetailorcv.com/solutions), so it is parsed and scored the same way a direct application would be.
 
 ### If a recruiter already believes I'm a good fit, does resume matching still matter?
 
@@ -118,10 +118,7 @@ Often not required, since many recruiters submit candidates with their own summa
 
 ### How do I check my resume's match score before sending it to a recruiter?
 
-Use the [TailorCV ATS score checker](/solutions) to confirm your resume is well-matched to the job description before you hand it off.
-
----
-
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm your resume is well-matched to the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) before you hand it off.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

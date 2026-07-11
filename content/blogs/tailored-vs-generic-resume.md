@@ -137,10 +137,7 @@ Yes - in fact that is the recommended approach. Build 2-3 strong base versions f
 
 ### How do I know if my resume is tailored enough?
 
-Run it through [TailorCV's free ATS checker](/solutions). A score above 75% means you have hit the key signals.
-
----
-
+Run it through [TailorCV's free ATS checker](https://www.thetailorcv.com/solutions). A score above 75% means you have hit the key signals. For more insights, check out [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) to ensure your resume stands out.
 ## Related Guides
 
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)

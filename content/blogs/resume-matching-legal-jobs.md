@@ -101,7 +101,7 @@ Paste any paralegal or associate attorney job posting into [TailorCV's resume op
 
 ### Do law firms use ATS software to screen resumes?
 
-Many do, especially larger firms and those hiring for high-volume paralegal or entry-level roles. Smaller firms and boutiques may review resumes manually, but matching your resume to the posting's language still improves your chances either way.
+Many do, especially larger firms and those hiring for high-volume paralegal or entry-level roles. Smaller firms and boutiques may review resumes manually, but [matching your resume](https://thetailorcv.com/blog/job-description-analysis-checklist) to the posting's language still improves your chances either way.
 
 ### Should I list every legal software tool I have ever used?
 
@@ -117,10 +117,7 @@ Not effectively. Practice areas require different language, tools, and emphasis.
 
 ### How do I check my legal resume's match score before applying?
 
-Use the [TailorCV ATS score checker](/solutions) to compare your resume against any legal job posting and see your match percentage instantly.
-
----
-
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to compare your resume against any legal job posting and see your match percentage instantly. You can also create a [resume keyword map template](https://thetailorcv.com/blog/resume-keyword-map-template) to help you identify the most relevant terms to include.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

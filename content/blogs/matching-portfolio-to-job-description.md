@@ -104,7 +104,7 @@ A well-matched portfolio only helps if the hiring manager finds it. Read [how to
 
 ### Do I need a different portfolio for every job application?
 
-Not entirely different, but you should adjust project order, featured work, and descriptions for each serious application, the same way you would tailor a resume.
+Not entirely different, but you should adjust project order, featured work, and descriptions for each serious application, the same way you would tailor a [resume](https://thetailorcv.com/blog/resume-keyword-map-template).
 
 ### How many projects should I feature for a specific application?
 
@@ -112,7 +112,7 @@ Three to five well-matched projects usually outperform a longer, unfiltered list
 
 ### Should I remove projects that don't relate to a specific job?
 
-You do not need to delete them permanently, but de-prioritize or hide them for that specific application context if your portfolio platform allows it.
+You do not need to delete them permanently, but de-prioritize or hide them for that specific application context if your [portfolio platform](https://www.thetailorcv.com/portfolio) allows it.
 
 ### Does a matched portfolio really make a difference alongside a matched resume?
 
@@ -121,9 +121,6 @@ Yes, especially for design, engineering, product, and marketing roles where the 
 ### How do I quickly build or update a portfolio for a specific job application?
 
 Use [TailorCV's Portfolio Builder](/portfolio) to create or update a live portfolio site in minutes, without any coding required.
-
----
-
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

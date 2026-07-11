@@ -44,7 +44,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ### Why is my portfolio not getting responses?
 
-Usually a mix of weak project choice, no outcomes, or a resume that never gets you shortlisted. Fix the resume with the [ATS checker](https://www.thetailorcv.com/solutions) and tighten the portfolio with this list.
+Usually a mix of weak project choice, no outcomes, or a resume that never gets you shortlisted. Fix the resume with the [ATS checker](https://www.thetailorcv.com/solutions) and tighten the portfolio with this [list](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
 
 ### How often should I update my portfolio?
 
@@ -52,8 +52,7 @@ Before every [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-r
 
 ### Is one strong project enough?
 
-It can carry a junior candidate, but aim for three. Depth plus a little breadth converts best.
-
+It can carry a junior candidate, but aim for three. Depth plus a little breadth converts best. Consider how to [build a professional portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) for more insights.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

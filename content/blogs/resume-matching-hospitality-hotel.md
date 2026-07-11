@@ -116,10 +116,7 @@ Focus on transferable skills like customer service, conflict resolution, and mul
 
 ### How do I check my hospitality resume's match score before applying?
 
-Use the [TailorCV ATS score checker](/solutions) to compare your resume against any hospitality job posting and see your match percentage instantly.
-
----
-
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to compare your resume against any hospitality job posting and see your match percentage instantly. You can also utilize the [Resume Keyword Map Template](https://thetailorcv.com/blog/resume-keyword-map-template) for effective keyword matching.
 ## Related Guides
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)

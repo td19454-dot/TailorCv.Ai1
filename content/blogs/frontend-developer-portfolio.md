@@ -64,12 +64,11 @@ It helps, but a fast, polished site from a builder plus strong [GitHub](https://
 
 ### How many projects should I show?
 
-Three to five, each deployed with a live demo. Lead with your most polished, real-data app.
+Three to five, each deployed with a live demo. Lead with your most polished, real-data app. Check out our [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas) for inspiration.
 
 ### How do I align my resume?
 
-Mirror your portfolio in the [Frontend Developer Resume guide](https://thetailorcv.com/blog/frontend-developer-resume-2026) and run it through the [ATS checker](https://www.thetailorcv.com/solutions).
-
+Mirror your portfolio in the [Frontend Developer Resume guide](https://thetailorcv.com/blog/frontend-developer-resume-2026) and run it through the [ATS checker](https://www.thetailorcv.com/solutions). Consider also reviewing the [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide) for additional insights.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

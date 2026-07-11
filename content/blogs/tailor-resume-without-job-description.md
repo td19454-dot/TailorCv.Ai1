@@ -251,14 +251,11 @@ Send a brief, professional thank-you to your contact after submitting. Give them
 
 ### What if there is genuinely no information available about the company?
 
-That is a signal. A company with no public presence, no [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) profiles, and no published information is risky to apply to anyway. At minimum, research the founders and any news coverage before crafting your resume.
+That is a signal. A company with no public presence, no [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) profiles, and no published information is risky to apply to anyway. At minimum, research the founders and any news coverage before crafting your [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume).
 
 ### Can I use one resume for multiple cold outreach emails?
 
-Only if the recipients are at very similar companies. For each distinct company type or stage, tailor separately.
-
----
-
+Only if the recipients are at very similar companies. For each distinct company type or stage, [tailor separately](https://thetailorcv.com/blog/resume-tailoring-freelance-contract).
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

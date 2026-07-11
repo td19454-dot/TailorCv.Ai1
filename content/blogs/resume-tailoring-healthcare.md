@@ -253,10 +253,7 @@ No - "references available upon request" is sufficient on the resume itself. Pro
 
 ### How specific should my unit experience be?
 
-Very specific. "Medical-surgical nursing" is vague. "32-bed cardiac step-down unit serving post-CABG, TAVR, and EP procedure patients" tells a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) exactly what you have done and whether it matches their needs.
-
----
-
+Very specific. "Medical-surgical nursing" is vague. "32-bed cardiac step-down unit serving post-CABG, TAVR, and EP procedure patients" tells a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) exactly what you have done and whether it matches their needs. For more guidance on crafting your resume, check out our [Nursing Resume 2026](https://thetailorcv.com/blog/nursing-resume-2026) guide. Additionally, understanding how to [read between the lines of a job description](https://thetailorcv.com/blog/hidden-keywords-in-job-description) can help you tailor your resume effectively.
 ## Related Guides
 
 - [Nursing Resume 2026](https://thetailorcv.com/blog/nursing-resume-2026)

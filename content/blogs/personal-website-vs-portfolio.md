@@ -60,8 +60,7 @@ The [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio
 
 ### Can I start small and grow it?
 
-Yes. Start with a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) + About + contact, then add a blog and brand pages over time.
-
+Yes. Start with a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) + [About Me section](https://thetailorcv.com/blog/portfolio-about-me-section) + contact, then add a blog and brand pages over time.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

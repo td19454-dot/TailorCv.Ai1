@@ -59,12 +59,11 @@ Yes, if you are transparent and show real process and decisions. They demonstrat
 
 ### How fast can I build a starter portfolio?
 
-A focused weekend or two: one small real project plus two concept pieces, then publish.
+A focused weekend or two: one small real project plus two [concept pieces](https://thetailorcv.com/blog/portfolio-with-no-experience), then publish.
 
 ### I am a student - anything specific?
 
 Reframe coursework as projects and keep it updated. See the [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide).
-
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

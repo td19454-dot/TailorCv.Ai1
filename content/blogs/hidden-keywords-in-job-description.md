@@ -233,14 +233,11 @@ If your interpretation requires significant inference and the [job description](
 
 ### Should I use the exact phrases from the company's culture section?
 
-Use the concepts, adapted naturally. If the company says "customer-obsessed," you do not have to use that exact phrase - but your resume should show customer outcomes and customer focus clearly.
+Use the concepts, adapted naturally. If the company says "customer-obsessed," you do not have to use that exact phrase - but your resume should show [customer outcomes](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) and customer focus clearly.
 
 ### How long should this three-pass reading take?
 
-For a priority application: 30 minutes. For a volume application where you are using a base resume: 10 minutes is enough for a quick pass 1. Invest time proportional to how much you want the role.
-
----
-
+For a priority application: 30 minutes. For a volume application where you are using a base resume: 10 minutes is enough for a quick pass 1. Invest time proportional to how much you want the role. Consider using [resume templates](https://www.thetailorcv.com/templates) to streamline your process.
 ## Related Guides
 
 - [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)

@@ -140,14 +140,11 @@ Over 90% of large companies and a growing number of mid-sized companies use ATS.
 
 ### How do I know my ATS score?
 
-Use the [free ATS checker at TailorCV](/solutions). Upload your resume and paste the job description to see your score in about 60 seconds.
+Use the [free ATS checker at TailorCV](https://www.thetailorcv.com/solutions). Upload your resume and paste the job description to see your score in about 60 seconds.
 
 ### What is a good ATS score?
 
-Aim for 75% or above. Scores above 80% consistently land in recruiter review queues. See the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide) for benchmarks by role type.
-
----
-
+Aim for 75% or above. Scores above 80% consistently land in recruiter review queues. See the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide) for benchmarks by role type. For tips on improving your score, check out [How to Increase Your ATS Score From 50 to 90 (2026)](https://thetailorcv.com/blog/how-to-increase-ats-score).
 ## Related Guides
 
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)
