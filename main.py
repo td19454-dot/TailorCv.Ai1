@@ -2835,6 +2835,8 @@ def group_skills(skills: list[str]) -> list[str]:
         "Frameworks/Libraries": [],
         "Databases": [],
         "Tools & Platforms": [],
+        "Networking & Protocols": [],
+        "Security & SIEM": [],
         "Other Technical Skills": [],
     }
 
@@ -2915,6 +2917,30 @@ def group_skills(skills: list[str]) -> list[str]:
         "kubeflow", "airflow", "prefect", "dagster", "kafka",
         "pytest", "jest", "selenium", "cuda", "jupyter"
     }
+    network_protocol_terms = {
+        "tcp/ip", "tcp", "udp", "ip", "dns", "http", "https", "ftp", "sftp",
+        "ssh", "smtp", "dhcp", "arp", "vpn", "tls", "ssl", "ospf", "bgp",
+        "snmp", "ipv4", "ipv6", "subnetting", "routing", "switching",
+        "firewalls", "firewall", "load balancing", "network protocols",
+        "osi model", "packet analysis", "wireshark", "tcpdump", "vlan",
+        "nat", "proxy", "network segmentation"
+    }
+    security_siem_terms = {
+        "splunk", "splunk enterprise", "sysmon", "siem", "threat hunting",
+        "incident investigation", "incident response", "ioc analysis",
+        "security event analysis", "log ingestion", "spl",
+        "search processing language", "event correlation",
+        "security operations", "soc", "security operations (soc)",
+        "log analysis", "windows event logs", "windows event viewer",
+        "windows endpoint monitoring", "endpoint monitoring",
+        "authentication monitoring", "powershell monitoring",
+        "qradar", "ibm qradar", "arcsight", "microsoft sentinel", "sentinel",
+        "crowdstrike", "nessus", "metasploit", "burp suite", "nmap", "snort",
+        "suricata", "ids", "ips", "edr", "xdr", "mitre att&ck", "mitre attack",
+        "vulnerability assessment", "penetration testing", "malware analysis",
+        "digital forensics", "dfir", "security information and event management",
+        "threat intelligence", "vulnerability management"
+    }
 
     def add_unique(bucket: list[str], value: str):
         if value and value not in bucket:
@@ -2945,6 +2971,10 @@ def group_skills(skills: list[str]) -> list[str]:
             return "Databases"
         if item_norm in tool_terms:
             return "Tools & Platforms"
+        if item_norm in network_protocol_terms:
+            return "Networking & Protocols"
+        if item_norm in security_siem_terms:
+            return "Security & SIEM"
         if item_norm in ai_ml_terms:
             return "AI/ML"
         if item_norm in framework_terms:
@@ -2993,6 +3023,18 @@ def group_skills(skills: list[str]) -> list[str]:
                     if not is_generic_phrase(item):
                         add_unique(grouped["Databases"], item)
                 continue
+            if label_lower in {"networking", "network", "protocols", "networking & protocols",
+                                "networking and protocols", "network protocols"}:
+                for item in [p.strip() for p in value.split(",") if p.strip()]:
+                    if not is_generic_phrase(item):
+                        add_unique(grouped["Networking & Protocols"], item)
+                continue
+            if label_lower in {"security", "siem", "security & siem", "security and siem",
+                                "cybersecurity", "security operations"}:
+                for item in [p.strip() for p in value.split(",") if p.strip()]:
+                    if not is_generic_phrase(item):
+                        add_unique(grouped["Security & SIEM"], item)
+                continue
             # Unknown label: classify each value item individually
             for item in [p.strip() for p in re.split(r"[,;]", value) if p.strip()]:
                 cat = classify_item(item)
@@ -3019,7 +3061,7 @@ def group_skills(skills: list[str]) -> list[str]:
 
     result = []
     for label in ("Languages", "AI/ML", "Frameworks/Libraries", "Databases", "Tools & Platforms",
-                  "Other Technical Skills"):
+                  "Networking & Protocols", "Security & SIEM", "Other Technical Skills"):
         if grouped[label]:
             result.append(f"{label}: {', '.join(grouped[label])}")
     return result
