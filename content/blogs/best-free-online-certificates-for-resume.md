@@ -35,7 +35,7 @@ That means relevant [certifications](https://thetailorcv.com/blog/how-to-list-ce
 - Match more keywords
 - Improve [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scores
 - Demonstrate initiative
-- Show practical skills
+- Show [practical skills](https://thetailorcv.com/blog/soft-skills-for-resume)
 - Fill experience gaps
 
 If you're a fresher or career switcher, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) can be especially valuable because they prove you're actively learning.
@@ -149,7 +149,7 @@ Topics include:
 
 CS50 is one of the most respected free online courses worldwide.
 
-Even completing part of the program signals strong commitment and problem-solving ability.
+Even completing part of the program signals [strong commitment](https://thetailorcv.com/blog/technical-interview-preparation-guide) and problem-solving ability.
 
 Recruiters often recognize the Harvard name immediately.
 
@@ -162,7 +162,7 @@ Recruiters often recognize the Harvard name immediately.
 - Digital marketers
 - Website managers
 
-This certification proves you understand website traffic analysis and digital performance tracking.
+This certification proves you understand website traffic analysis and [digital performance tracking](https://thetailorcv.com/blog/technical-interview-preparation-guide).
 
 It's especially useful for:
 - Marketing internships

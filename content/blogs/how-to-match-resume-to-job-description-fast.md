@@ -48,7 +48,7 @@ Then apply.
 
 Do not read the whole JD.
 Scan for:
-- The job title
+- The [job title](https://thetailorcv.com/blog/what-recruiters-look-for-resume-job-match)
 - The top 3 required skills
 - Tools mentioned in the first half of the JD
 - Any keyword that repeats twice or more
@@ -115,7 +115,7 @@ That is significant match improvement.
 
 ## The ATS Quick-Check (1 Minute After)
 
-After your 10-minute edit, do a quick keyword scan.
+After your [10-minute edit](https://thetailorcv.com/blog/resume-match-score-callback-rate-data-study), do a quick keyword scan.
 
 Ask:
 - Is the job title in my summary? /✗
@@ -133,10 +133,10 @@ It takes 60 seconds and gives you an exact percentage.
 
 The 10-minute system works best when your [base resume](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise) is already clean and well-structured.
 
-A good base resume:
+A good [base resume](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise):
 - Has a clear, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible single-column format
 - Has a modular structure (summary -> skills -> experience -> [education](https://thetailorcv.com/blog/how-to-list-education-on-resume))
-- Has strong, results-focused bullets that only need keyword tweaks
+- Has [strong, results-focused bullets](https://thetailorcv.com/blog/resume-tailoring-underqualified) that only need keyword tweaks
 - Uses standard section headers
 
 Build this once.

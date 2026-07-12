@@ -92,7 +92,7 @@ Early wins build credibility and momentum. Look for:
 - A task you can complete excellently and visibly
 - A way to make your manager's or team's job easier
 
-Early wins do not need to be massive. A reliable, well-executed small contribution in your first month signals that the hiring decision was right.
+Early wins do not need to be massive. A reliable, well-executed small contribution in [your first month](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026) signals that the hiring decision was right.
 
 ---
 

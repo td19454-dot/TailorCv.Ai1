@@ -18,7 +18,7 @@ Numbers make your resume scannable, credible, and memorable. They transform vagu
 
 This guide shows you exactly how to [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) your achievements - even when you think you have no numbers - across every major role type.
 
-Before adding your quantified bullets, make sure your [resume format](https://thetailorcv.com/blog/resume-section-order-guide) passes ATS. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to compare it against the [job description](https://thetailorcv.com/blog/resume-keyword-map-template) and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for keyword matching. If you are still setting up your resume, the [ATS-friendly templates](https://www.thetailorcv.com/templates) provide the right structure.
+Before adding your [quantified bullets](https://thetailorcv.com/blog/how-to-write-resume-bullet-points), make sure your [resume format](https://thetailorcv.com/blog/resume-section-order-guide) passes ATS. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to compare it against the [job description](https://thetailorcv.com/blog/resume-keyword-map-template) and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for keyword matching. If you are still setting up your resume, the [ATS-friendly templates](https://www.thetailorcv.com/templates) provide the right structure.
 
 ---
 
@@ -232,7 +232,7 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 ## Conclusion
 Quantifying your resume achievements is not about exaggerating - it is about being specific. Every vague claim has a number behind it. Your job is to find it, estimate it honestly, and use it.
 
-Once your bullets are strong, run your full resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to make sure your keywords also match the job description. Use the [resume templates](https://www.thetailorcv.com/templates) to ensure your format is clean. If you are still building your resume from scratch, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full structure.
+Once your bullets are strong, run your full resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to make sure your keywords also match the [job description](https://thetailorcv.com/blog/resume-keyword-map-template). Use the [resume templates](https://www.thetailorcv.com/templates) to ensure your format is clean. If you are still building your resume from scratch, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full structure.
 
 
 ## Weak vs Strong Resume Achievements
@@ -259,7 +259,7 @@ You should consider including various types of numbers such as scale numbers (e.
 If you feel you lack quantifiable achievements, start by reviewing your past roles and responsibilities. Consider aspects like project timelines, budget management, and team sizes. You can also think about the results of your work in terms of efficiency or revenue. For more guidance, explore our article on [how to list education on a resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) for inspiration on structuring your accomplishments.
 
 ### Can quantifying achievements help with ATS optimization?  
-Yes, quantifying your achievements can enhance your resume's ATS (Applicant Tracking System) optimization. Including specific numbers and metrics can help your resume align with job descriptions that use similar language. To ensure your resume format is ATS-friendly, use our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate and improve your document.
+Yes, quantifying your achievements can enhance your resume's ATS (Applicant Tracking System) optimization. Including specific numbers and metrics can help your resume align with job descriptions that use similar language. To ensure your [resume format](https://thetailorcv.com/blog/resume-section-order-guide) is ATS-friendly, use our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate and improve your document.
 
 ### What are some examples of quantified achievements for different roles?  
 In our blog post, we provide 50 examples of quantified achievements tailored for various roles, including software engineering, marketing, and sales. These examples illustrate how to effectively incorporate metrics into your resume to increase its impact. For additional strategies on summarizing your skills, check out our guide on [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-a-resume-summary).

@@ -204,7 +204,7 @@ A GD is one step in the hiring process. Make sure your resume gets you there wit
 ## Frequently Asked Questions
 
 ### What are the key skills evaluated during a group discussion (GD)?
-Evaluators in a group discussion primarily assess communication skills, leadership qualities, teamwork, and logical reasoning. They look for candidates who can articulate their thoughts clearly while also listening and engaging with others. To prepare effectively for GDs, consider reviewing our guide on [how to prepare for campus placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement).
+Evaluators in a group discussion primarily assess [communication skills](https://thetailorcv.com/blog/group-interview-tips-strategies), leadership qualities, teamwork, and logical reasoning. They look for candidates who can articulate their thoughts clearly while also listening and engaging with others. To prepare effectively for GDs, consider reviewing our guide on [how to prepare for campus placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement).
 
 ### How can I make a strong opening statement in a GD?
 A strong opening statement can set the tone for the entire discussion. You should present a clear, relevant point that showcases your knowledge of the topic. Avoid generic statements; instead, aim to provide a unique perspective or insight. For more tips on presenting yourself well, check out our article on [how to answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself).

@@ -57,15 +57,15 @@ If there is no link, recruiters may assume it is incomplete.
 
 ## Conclusion
 
-Freshers get interviews when projects look real, finished, and relevant to the job. Add your best 2-3 projects, then check your resume against the [target role](https://thetailorcv.com/blog/resume-section-order-guide) using the [ATS score checker](/solutions).
+Freshers get interviews when projects look real, finished, and relevant to the job. Add your best 2-3 projects, then check your [resume](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) against the [target role](https://thetailorcv.com/blog/resume-section-order-guide) using the [ATS score checker](/solutions).
 
 ---
 
 ## How to Turn This Into a Stronger Application
 
-Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your fresher project resume strategy because small wording choices can change how recruiters and ATS systems understand your fit.
+Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the [target role](https://thetailorcv.com/blog/resume-section-order-guide), update one part of the application, test the result, then repeat. That is especially important for your [fresher project resume strategy](https://thetailorcv.com/blog/resume-for-internship-with-no-experience) because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your [resume](https://thetailorcv.com/blog/resume-for-campus-placement-cse), LinkedIn profile, portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 
@@ -163,7 +163,7 @@ Use adjacent proof. Projects, coursework, freelance work, volunteer experience, 
 
 ### How do I know if the final version is strong enough?
 
-Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
+Paste your resume and the [job description](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search) into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
 
 ---
 

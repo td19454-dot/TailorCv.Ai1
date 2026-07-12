@@ -12,7 +12,7 @@ keywords: coding interview preparation, DSA interview prep 2026, leetcode patter
 
 Coding interviews test your problem-solving ability under time pressure using data structures and algorithms. The good news: the vast majority of coding [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) problems fall into a limited set of recognizable patterns. Once you learn the patterns, most problems become variations you can solve systematically.
 
-This guide gives you the essential patterns, a problem-solving framework, and a structured practice plan.
+This guide gives you the essential patterns, a [problem-solving framework](https://thetailorcv.com/blog/software-engineer-interview-preparation), and a [structured practice plan](https://thetailorcv.com/blog/how-to-practice-interviews-at-home).
 
 This is part of the broader [technical interview preparation guide](https://thetailorcv.com/blog/technical-interview-preparation-guide). For senior roles, also study the [system design interview guide](https://thetailorcv.com/blog/system-design-interview-guide). Before interviews, optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 

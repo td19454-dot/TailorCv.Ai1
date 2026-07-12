@@ -14,7 +14,7 @@ You read the [job description](https://thetailorcv.com/blog/job-description-keyw
 
 You see: "Python, SQL, [machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026), cross-functional collaboration, communication skills."
 
-You add them to your resume.
+You add them to your [resume](https://thetailorcv.com/blog/resume-tailoring-underqualified).
 You apply.
 You do not hear back.
 
@@ -151,7 +151,7 @@ The missing items tell you what to de-emphasize as much as the present items tel
 
 ## Practical Technique: The Three-Pass Read
 
-Before you tailor your resume, read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) three times.
+Before you tailor your [resume](https://thetailorcv.com/blog/resume-keyword-density-guide), read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) three times.
 
 **Pass 1 - What (10 minutes)**
 Read it straight through for overall comprehension.
@@ -175,7 +175,7 @@ After all three passes, write down:
 3. The one-sentence problem statement ("they need someone to...")
 4. The one-word culture signal ("fast-moving" / "collaborative" / "data-driven" / "customer-first")
 
-Now tailor your resume to address all four. Use the [resume matching checklist](https://thetailorcv.com/blog/resume-matching-checklist) to confirm you have covered every layer before submitting.
+Now tailor your [resume](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise) to address all four. Use the [resume matching checklist](https://thetailorcv.com/blog/resume-matching-checklist) to confirm you have covered every layer before submitting.
 
 ---
 

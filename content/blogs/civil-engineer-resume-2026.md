@@ -10,7 +10,7 @@ slug: civil-engineer-resume-2026
 keywords: civil engineer resume, civil engineering resume 2026, structural engineer resume, infrastructure resume, AutoCAD resume, civil engineering ATS keywords
 ---
 
-A civil engineer resume in 2026 must demonstrate project delivery, technical design skills, and the ability to manage contractors, clients, and regulatory requirements on real infrastructure [projects](https://thetailorcv.com/blog/projects-in-resume). Whether you are working in structural design, transportation, water resources, geotechnical engineering, or construction management, your resume should show completed [projects](https://thetailorcv.com/blog/projects-in-resume), not just responsibilities.
+A civil engineer resume in 2026 must demonstrate [project delivery](https://thetailorcv.com/blog/job-description-analysis-checklist), technical design skills, and the ability to manage contractors, clients, and regulatory requirements on real infrastructure [projects](https://thetailorcv.com/blog/projects-in-resume). Whether you are working in structural design, transportation, water resources, geotechnical engineering, or construction management, your resume should show completed [projects](https://thetailorcv.com/blog/projects-in-resume), not just responsibilities.
 
 Before applying, compare your resume to the job description with the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For comparison with other engineering disciplines, read the [mechanical engineer resume guide](https://thetailorcv.com/blog/mechanical-engineer-resume-2026) and [electrical engineer resume guide](https://thetailorcv.com/blog/electrical-engineer-resume-2026).
 
@@ -21,7 +21,7 @@ Before applying, compare your resume to the job description with the [ATS score 
 1. Header with PE/Charter status if applicable
 2. Summary
 3. Technical skills
-4. Work experience with project highlights
+4. Work experience with [project highlights](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 5. Notable [projects](https://thetailorcv.com/blog/projects-in-resume)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and professional memberships

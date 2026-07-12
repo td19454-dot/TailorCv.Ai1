@@ -197,7 +197,7 @@ Focus on relevant coursework, internships, and skills. For more guidance, refer 
 
 ### How can I improve my ATS score?
 
-To improve your ATS score, ensure your resume includes relevant keywords from the job description, uses a standard format, and highlights your most relevant experiences. For detailed strategies, check our [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide).
+To improve your [ATS score](https://thetailorcv.com/blog/ats-score-guide), ensure your resume includes relevant keywords from the job description, uses a standard format, and highlights your most relevant experiences. For detailed strategies, check our [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide).
 
 ### Should I use a template for my resume?
 

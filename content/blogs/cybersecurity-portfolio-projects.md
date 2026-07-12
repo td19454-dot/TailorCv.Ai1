@@ -18,7 +18,7 @@ A cybersecurity [portfolio](https://thetailorcv.com/blog/how-to-build-profession
 
 ### 1. Home Lab Incident Report
 
-Set up a small lab, simulate suspicious activity, collect logs, and write an incident report. Include timeline, evidence, impact, and recommendations.
+Set up a [small lab](https://www.thetailorcv.com/portfolio), simulate suspicious activity, collect logs, and write an incident report. Include timeline, evidence, impact, and recommendations.
 
 ### 2. SIEM Dashboard [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
 

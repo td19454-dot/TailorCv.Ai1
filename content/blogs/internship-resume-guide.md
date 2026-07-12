@@ -258,7 +258,7 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 ## Conclusion
 A strong [internship resume](https://thetailorcv.com/blog/internship-resume-guide) in 2026 shows academic foundation, relevant skills, real projects, and any achievement that proves initiative and ability. The absence of work experience is normal and expected - what matters is what you have done with your time as a student.
 
-Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to match your skills to the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and read the full [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for structuring your bullets effectively. For interview prep, try the [free AI mock interview tool](https://thetailorcv.com/mock-interview).
+Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to match your skills to the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and read the full [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for structuring your bullets effectively. For [interview](https://thetailorcv.com/blog/interview-story-bank-star-method) prep, try the [free AI mock interview tool](https://thetailorcv.com/mock-interview).
 
 
 ## Strong vs. Weak Internship Resume Examples

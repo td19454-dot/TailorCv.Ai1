@@ -121,7 +121,7 @@ If you still hear nothing after 5 more business days, one more brief note is acc
 
 "Hi [Name], I hope you're well. I'm following up once more regarding the [Role] position. I remain very interested and would love to discuss any next steps. If the timing has shifted, I understand - please do keep me in mind."
 
-After two follow-ups with no response, move on. Continue applying elsewhere. Do not send a third message - it crosses from professional follow-through to pressure.
+After two [follow-up](https://thetailorcv.com/blog/recruiter-ghosting-after-interview)s with no response, move on. Continue applying elsewhere. Do not send a third message - it crosses from professional follow-through to pressure.
 
 ---
 

@@ -36,7 +36,7 @@ One to two pages depending on experience and project [portfolio](https://thetail
 
 Formula:
 
-[business analyst](https://thetailorcv.com/blog/business-analyst-resume-2026) with X years of experience in [domain or industry]. Skilled in [requirements elicitation, process modeling, data analysis, Agile]. Delivered [project or process outcome] that improved [cost, efficiency, revenue, or compliance].
+[business analyst](https://thetailorcv.com/blog/business-analyst-resume-2026) with X years of experience in [domain or industry]. Skilled in [requirements elicitation, process modeling, [data analysis](https://thetailorcv.com/blog/data-analyst-resume-2026), Agile]. Delivered [project or process outcome] that improved [cost, efficiency, revenue, or compliance].
 
 ### Example for Experienced BA
 

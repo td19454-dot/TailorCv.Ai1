@@ -20,7 +20,7 @@ Run your tailored resume through the [free ATS checker](/solutions) to confirm y
 
 Your resume's core - experience, education, achievements - stays the same. What the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and recruiter care about is whether the *top layer* mirrors the specific job. That top layer is your headline, summary, skills section, and the first bullet of each role. Changing those four areas is 90% of the impact.
 
-For why this matters at the ATS level, see [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
+For why this matters at the [ATS](https://thetailorcv.com/blog/what-is-a-good-ats-score) level, see [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
 
 ---
 

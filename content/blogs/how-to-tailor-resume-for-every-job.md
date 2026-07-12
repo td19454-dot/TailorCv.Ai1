@@ -54,7 +54,7 @@ It is a smarter version of the same resume that matches a role.
 
 ### Tailored vs Generic
 
-| Resume Type | What it does | ATS friendly? | Recruiter response |
+| Resume Type | What it does | [ATS](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) friendly? | Recruiter response |
 |-------------|--------------|---------------|--------------------|
 | Generic resume | Uses broad wording, one size fits all | Low | "Not a close fit" |
 | Tailored resume | Mirrors role language and priorities | High | "Looks designed for this role" |
@@ -273,7 +273,7 @@ If the score is low:
 
 If you want a quick check, use [Check Your ATS Score](/solutions).
 
-A tailored resume plus a high [ATS score](https://thetailorcv.com/blog/ats-score-guide) is a winning combination.
+A [tailored resume](https://thetailorcv.com/blog/resume-trends-2026) plus a high [ATS score](https://thetailorcv.com/blog/ats-score-guide) is a winning combination.
 
 ---
 

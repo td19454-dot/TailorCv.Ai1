@@ -14,7 +14,7 @@ A **group [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-inte
 
 This guide covers group [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) strategies for 2026.
 
-Practice your individual answers first with [AI mock interviews](https://thetailorcv.com/mock-interview), then apply these group dynamics tips. Also read [panel interview tips](https://thetailorcv.com/blog/panel-interview-tips-strategies) (multiple interviewers, one candidate - the opposite format), [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+Practice your [individual answers](https://thetailorcv.com/blog/how-to-practice-interviews-at-home) first with [AI mock interviews](https://thetailorcv.com/mock-interview), then apply these [group dynamics tips](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Also read [panel interview tips](https://thetailorcv.com/blog/panel-interview-tips-strategies) (multiple interviewers, one candidate - the opposite format), [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ---
 
@@ -121,7 +121,7 @@ One of the best ways to prepare for a group interview is to simulate the experie
    
 2. **Gather Participants**: Invite 3-5 friends, classmates, or colleagues who can act as interviewers and candidates. Ensure they understand the job role and can provide constructive feedback.
 
-3. **Create a Question Set**: Develop a list of common group interview questions or scenarios. These can include:
+3. **Create a Question Set**: Develop a list of [common group interview questions](https://thetailorcv.com/blog/situational-interview-questions-answers) or scenarios. These can include:
    - How would you handle a disagreement among team members?
    - Describe a time you worked successfully in a team.
    - What strategies would you use to meet tight deadlines?
@@ -137,7 +137,7 @@ Practicing in a simulated environment can significantly boost your confidence an
 Navigating a group interview can be tricky. Here’s a concise list of do's and don'ts to help you shine:
 
 ### Do's:
-- **Engage with Everyone**: Make eye contact with all interviewers and acknowledge your fellow candidates. It shows you’re a team player.
+- **Engage with Everyone**: Make eye contact with all interviewers and acknowledge your fellow candidates. It shows you’re a [team player](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026).
 - **Listen Actively**: Pay attention to others' responses. This will help you build on their ideas and demonstrate your collaborative skills.
 - **Be Concise**: Keep your answers clear and to the point. Avoid rambling to maintain the interest of the interviewers.
 - **Ask Questions**: Show your interest by asking insightful questions related to the role or company. This can set you apart from other candidates.

@@ -62,7 +62,7 @@ Practice this structure in [AI mock interview sessions](https://thetailorcv.com/
 
 - **Take Online Courses**: Enhance your skills with relevant online courses and list them on your resume. Websites like Coursera or Udemy offer a plethora of options.
 - **Build Portfolio Projects**: Create and showcase portfolio projects that reflect your skills. For guidance, see [how to build a professional portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
-- **Freelance or Volunteer**: Engage in freelance work or volunteer opportunities to keep your skills sharp and gain new experiences. Refer to [volunteer work on resume](https://thetailorcv.com/blog/volunteer-work-on-resume) for tips.
+- **Freelance or Volunteer**: Engage in [freelance work](https://www.thetailorcv.com/portfolio) or volunteer opportunities to keep your skills sharp and gain new experiences. Refer to [volunteer work on resume](https://thetailorcv.com/blog/volunteer-work-on-resume) for tips.
 - **Stay Interview-Ready**: Regularly practice your interview skills with [mock interview practice](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai).
 - **Optimize Your Resume**: Ensure your resume remains ATS-friendly. Check out our [ATS-friendly resume guide](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) for tips.
 

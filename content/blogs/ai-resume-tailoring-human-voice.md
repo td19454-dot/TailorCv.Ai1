@@ -10,7 +10,7 @@ slug: ai-resume-tailoring-human-voice
 keywords: AI resume tailoring, AI resume writing tips, how to use AI for resume without sounding generic, human voice resume AI, AI resume tool 2026
 ---
 
-You paste your resume into an AI tool.
+You paste your [resume](https://thetailorcv.com/blog/resume-trends-2026) into an AI tool.
 You add the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 You click generate.
 
