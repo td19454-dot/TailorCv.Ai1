@@ -95,7 +95,7 @@ When navigating the challenges of missing certifications, it's easy to make mist
 
 2. **Overstating Your Experience**: While it's tempting to embellish skills or experiences related to the certification, honesty is key. Misrepresentation can lead to disqualification if discovered.
 
-3. **Neglecting to Highlight Relevant Skills**: Failing to emphasize transferable skills or experiences that align with the certification can be detrimental. Make sure you connect your past roles to the skills required by the certification.
+3. **Neglecting to Highlight Relevant Skills**: Failing to emphasize transferable skills or experiences that align with the certification can be detrimental. Make sure you connect your past roles to the [skills required by the certification](https://thetailorcv.com/blog/matching-resume-to-soft-skills-in-job-description).
 
 4. **Using Generic Language**: Avoid vague language that doesn't directly address the certification. Instead, tailor your wording to reflect how your current qualifications relate to the certification requirements.
 

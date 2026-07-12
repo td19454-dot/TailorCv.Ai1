@@ -1,13 +1,13 @@
 ﻿---
-title: How to Sync Your LinkedIn Profile With Your Tailored Resume (2026 Guide)
-description: Sending a tailored resume but keeping a generic LinkedIn profile is a contradiction that costs interviews. Learn how to keep your LinkedIn aligned with your resume tailoring - without updating your profile for every single application.
+title: How to Sync Your [LinkedIn](https://thetailorcv.com/blog/linkedin-headline-examples-job-seekers) Profile With Your Tailored Resume (2026 Guide)
+description: Sending a [tailored resume](https://thetailorcv.com/blog/tailor-resume-without-job-description) but keeping a generic [LinkedIn profile](https://thetailorcv.com/blog/linkedin-to-portfolio-guide) is a contradiction that costs interviews. Learn how to keep your [LinkedIn](https://thetailorcv.com/blog/video-resume-guide-2026) aligned with your [resume tailoring](https://thetailorcv.com/blog/resume-tailoring-freelance-contract) - without updating your profile for every single application.
 date: 2026-06-29
 author: TailorCV Team
-tags: [LinkedIn Profile, Resume Tailoring, LinkedIn Optimization, Job Search 2026, Personal Branding]
+tags: [LinkedIn Profile, Resume Tailoring, [LinkedIn](https://thetailorcv.com/blog/resume-keyword-density-guide) Optimization, Job Search 2026, Personal Branding]
 category: Resume Optimization
-image: public/blog-images/linkedin-resume-tailoring-sync.webp
+image: public/blog-images/linkedin-[resume](https://thetailorcv.com/blog/hidden-keywords-in-job-description)-tailoring-sync.webp
 slug: linkedin-resume-tailoring-sync
-keywords: LinkedIn resume sync, LinkedIn profile tailoring, align LinkedIn with resume, LinkedIn job search 2026, resume and LinkedIn consistency
+keywords: [LinkedIn](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise) resume sync, [LinkedIn profile](https://thetailorcv.com/blog/executive-linkedin-summary-examples) tailoring, align LinkedIn with resume, LinkedIn job search 2026, resume and LinkedIn consistency
 ---
 
 You spent two hours [tailoring your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) for a senior marketing role.
@@ -30,7 +30,7 @@ Your last role on LinkedIn has three bullet points that do not match anything on
 
 The [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) closes the tab.
 
-The disconnect between a polished tailored resume and a generic LinkedIn profile is one of the most common - and most damaging - mistakes in modern job searching. Understanding [how recruiters read resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes) also means understanding that LinkedIn is always part of what they are reading.
+The disconnect between a polished [tailored resume](https://thetailorcv.com/blog/resume-tailoring-underqualified) and a generic LinkedIn profile is one of the most common - and most damaging - mistakes in modern job searching. Understanding [how recruiters read resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes) also means understanding that LinkedIn is always part of what they are reading.
 
 This guide shows you how to fix it.
 

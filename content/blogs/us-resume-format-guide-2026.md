@@ -18,7 +18,7 @@ In the U.S., resumes typically follow a specific format and structure. Here are 
 
 - **Length**: Early-career professionals should aim for a one-page resume. More experienced candidates can extend to two pages if necessary.
 - **Personal Information**: Do not include a photo, age, or marital status. Just your name, phone number, email address, and LinkedIn profile link are usually sufficient.
-- **Format**: Use a clean, professional layout with clear headings and bullet points for easy readability.
+- **Format**: Use a clean, [professional layout](https://www.thetailorcv.com/templates) with clear headings and bullet points for easy readability.
 - **Action Verbs**: Start each bullet point with a strong action verb to convey your achievements and responsibilities effectively.
 - **Quantification**: Whenever possible, quantify your accomplishments to provide context and scale (e.g., “Increased sales by 20% in Q2”).
 
@@ -101,7 +101,7 @@ Many employers use ATS to filter resumes before they reach human eyes. To optimi
 
 ## Tailoring Your Resume for Specific Jobs
 
-A one-size-fits-all approach will not work in the competitive U.S. job market. Tailor your resume for each application by:
+A [one-size-fits-all approach](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes) will not work in the competitive U.S. job market. Tailor your resume for each application by:
 
 - Analyzing the job description for keywords and required skills.
 - Adjusting your summary and experience sections to align with the job’s expectations.
@@ -125,7 +125,7 @@ Avoiding common pitfalls can significantly enhance your resume's effectiveness. 
 
 3. **Overloading on Text**: A resume should be concise. Aim for a one-page document (or two pages if you have extensive experience). Use clear, impactful language and avoid long paragraphs. 
 
-4. **Neglecting Proofreading**: Spelling and grammatical errors can create a negative impression. Always proofread your resume multiple times and consider asking a friend or using tools available at [TailorCV](https://www.thetailorcv.com/solutions).
+4. **Neglecting Proofreading**: Spelling and grammatical errors can create a negative impression. Always [proofread your resume](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) multiple times and consider asking a friend or using tools available at [TailorCV](https://www.thetailorcv.com/solutions).
 
 5. **Omitting Important Information**: Ensure that all relevant experience, skills, and achievements are included. Don’t forget to mention certifications, volunteer work, or side projects that demonstrate relevant skills.
 

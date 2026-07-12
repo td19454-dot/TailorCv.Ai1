@@ -62,7 +62,7 @@ At the same time, technology careers gained massive cultural visibility.
 
 Platforms like YouTube, TikTok, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and X (formerly Twitter) amplified stories of:
 - six-figure graduate salaries
-- remote work flexibility
+- [remote work flexibility](https://thetailorcv.com/blog/remote-job-search-guide)
 - startup acquisitions
 - rapid career progression
 - "day in the life" content from FAANG engineers
@@ -77,7 +77,7 @@ Naturally, millions of people responded to that message.
 
 ## Why So Many People Entered Tech
 
-There is nothing inherently wrong with pursuing financial stability.
+There is nothing inherently wrong with pursuing [financial stability](https://thetailorcv.com/blog/how-to-negotiate-salary-offer).
 
 The issue emerged when an enormous number of people pursued the exact same career path at the exact same time.
 
@@ -340,7 +340,7 @@ Technology itself continues accelerating across industries such as:
 - automation
 - developer tooling
 
-Demand for strong engineers will continue.
+Demand for [strong engineers](https://thetailorcv.com/blog/ai-proof-jobs-2026) will continue.
 
 However, the profession is becoming:
 - more competitive
@@ -506,7 +506,7 @@ Computer Science is not dying.
 The rapid expansion of computer science programs and bootcamps has led to a significant increase in graduates, creating a saturated job market. Many new graduates are finding it challenging to secure entry-level positions due to the competition. To improve your chances, consider enhancing your resume with [resume projects](https://thetailorcv.com/blog/projects-in-resume) that showcase your skills and practical experience.
 
 ### How can I stand out in a competitive software engineering job market?  
-To distinguish yourself in a crowded field, focus on building a strong portfolio that highlights your technical skills and real-world projects. Utilize resources like our [portfolio website builder](https://www.thetailorcv.com/portfolio) to create an impressive online presence that potential employers can easily review.
+To distinguish yourself in a crowded field, focus on building a strong portfolio that highlights your [technical skills](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and real-world projects. Utilize resources like our [portfolio website builder](https://www.thetailorcv.com/portfolio) to create an impressive online presence that potential employers can easily review.
 
 ### Are there still job opportunities for strong developers despite the oversaturation?  
 Yes, even in an oversaturated market, skilled developers with in-demand skills continue to find ample opportunities. Companies are still looking for candidates who can demonstrate their expertise and adaptability. By sharpening your skills and leveraging platforms like our [AI mock interview](https://www.thetailorcv.com/mock-interview) tool, you can better prepare for interviews and stand out to employers.

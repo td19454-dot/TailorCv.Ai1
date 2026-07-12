@@ -7,7 +7,7 @@ tags: [iOS Resume, iOS Developer, Swift Resume, SwiftUI Resume, Mobile Developer
 category: Resume Examples
 image: public/blog-images/ios-developer-resume.webp
 slug: ios-developer-resume-2026
-keywords: iOS developer resume, iOS resume 2026, Swift resume, SwiftUI resume, Xcode resume, App Store resume, mobile developer resume, iOS ATS keywords
+keywords: iOS developer resume, iOS resume 2026, Swift resume, SwiftUI resume, [Xcode](https://thetailorcv.com/blog/java-developer-resume-2026) resume, App Store resume, mobile developer resume, iOS ATS keywords
 ---
 
 An iOS developer resume in 2026 needs to show Swift proficiency, modern Apple platform patterns, App Store shipping experience, and the ability to build apps that users actually love. SwiftUI is increasingly the expected standard alongside UIKit, and employers in 2026 want engineers who can navigate both.
@@ -41,7 +41,7 @@ iOS Developer with 5 years of experience building consumer and enterprise apps i
 
 ### Example for Entry-Level iOS Developer
 
-iOS Developer with strong Swift and SwiftUI skills. Built 3 personal iOS apps published to the App Store with a combined 500+ downloads. Experienced with MVVM architecture, URLSession, Core Data, and SwiftUI navigation. Familiar with TestFlight, Instruments, and [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions for iOS CI.
+iOS Developer with strong Swift and SwiftUI skills. Built 3 personal iOS apps published to the App Store with a combined 500+ downloads. Experienced with MVVM architecture, URLSession, Core Data, and SwiftUI navigation. Familiar with [TestFlight](https://thetailorcv.com/blog/fresher-resumehttpsthetailorcvcomblogbest-action-verbs-for-resume-projects-that-get-interviews), Instruments, and [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions for iOS CI.
 
 ---
 

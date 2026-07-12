@@ -38,7 +38,7 @@ Make the bridge explicit in your [Portfolio About Me Section](https://thetailorc
 
 ### Crafting Your Narrative
 
-- **Highlight Relevant Experience**: Detail specific projects or roles from your old career that are relevant to your new field.
+- **Highlight Relevant Experience**: Detail specific projects or roles from your [old career](https://thetailorcv.com/blog/online-cv-maker-vs-resume-builder) that are relevant to your new field.
 - **Use Relatable Language**: Avoid jargon from your previous industry that may not translate well. Instead, use language familiar to your target field.
 
 ## Tell the Pivot Story
@@ -64,12 +64,12 @@ Use results from your old career *and* your new projects. Numbers travel across 
 
 ## Publish and Align
 
-Generate your career-change portfolio from your resume with the [portfolio builder](https://thetailorcv.com/portfolio), then mirror it in a [career-change resume](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) and the [Career Change to Tech guide](https://thetailorcv.com/blog/career-change-to-tech-guide).
+Generate your [career-change portfolio](https://thetailorcv.com/blog/portfolio-website-for-job-applications) from your resume with the [portfolio builder](https://thetailorcv.com/portfolio), then mirror it in a [career-change resume](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) and the [Career Change to Tech guide](https://thetailorcv.com/blog/career-change-to-tech-guide).
 
 ### Key Alignment Tips
 
 - **Consistent Branding**: Use the same colors, fonts, and imagery across your resume, portfolio, and LinkedIn profile for a cohesive look.
-- **Unified Messaging**: Ensure that your career goals and skills are presented consistently across all platforms to avoid confusion.
+- **Unified Messaging**: Ensure that your [career goals and skills](https://thetailorcv.com/blog/resume-review-checklist-before-applying) are presented consistently across all platforms to avoid confusion.
 
 ## Keep Your Resume and Portfolio in Sync
 

@@ -111,7 +111,7 @@ TailorCV's [resume optimizer](/solutions) rewrites your resume using exact keywo
 
 3. **Using Uncommon Acronyms**: Always spell out acronyms at least once. For instance, instead of just writing "PMP," write "Project Management Professional (PMP)" to ensure clarity.
 
-4. **Neglecting the Cover Letter**: Don’t overlook the importance of an ATS-friendly cover letter. Follow the [ATS-Friendly Cover Letter Format - Simple Structure That Recruiters Can Read](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) to ensure your cover letter is also optimized.
+4. **Neglecting the Cover Letter**: Don’t overlook the importance of an ATS-friendly [cover letter](https://www.thetailorcv.com/cover-letter). Follow the [ATS-Friendly Cover Letter Format - Simple Structure That Recruiters Can Read](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) to ensure your cover letter is also optimized.
 
 5. **Listing Responsibilities Instead of Achievements**: Focus on quantifiable achievements rather than just listing job duties. Use metrics and specific examples to demonstrate your impact.
 
@@ -121,7 +121,7 @@ TailorCV's [resume optimizer](/solutions) rewrites your resume using exact keywo
 
 ## Mini Checklist for ATS Optimization
 
-- [ ] Select an ATS-friendly resume template.
+- [ ] Select an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 - [ ] Use standard headings and fonts.
 - [ ] Incorporate keywords from the job description.
 - [ ] Use bullet points for clarity.

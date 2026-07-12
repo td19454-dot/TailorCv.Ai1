@@ -1,13 +1,13 @@
 ﻿---
 title: How to Manage Multiple Tailored Resume Versions Without Losing Your Mind (2026)
-description: Applying to multiple jobs means multiple resume versions. Learn how to manage tailored resumes efficiently - naming systems, master resume strategy, and tools that keep you organized and consistent.
+description: Applying to multiple jobs means multiple [resume versions](https://thetailorcv.com/blog/resume-tailoring-freelance-contract). Learn how to manage [tailored resumes](https://thetailorcv.com/blog/ai-resumehttpsthetailorcvcomblogresume-optimization-linkedin-easy-apply-tailoring-human-voice) efficiently - naming systems, [master resume](https://thetailorcv.com/blog/executive-resume-tailoring-guide) strategy, and tools that keep you organized and consistent.
 date: 2026-06-29
 author: TailorCV Team
 tags: [Resume Organization, Multiple Resume Versions, Resume Tailoring, Job Search Strategy, Resume Management]
 category: Resume Optimization
 image: public/blog-images/managing-multiple-resume-versions.webp
 slug: managing-multiple-resume-versions
-keywords: managing multiple resume versions, multiple tailored resumes, resume version control, how to organize resumes for job search, master resume strategy 2026
+keywords: managing multiple resume versions, multiple [tailored resume](https://thetailorcv.com/blog/internal-job-application-resume)s, resume version control, how to organize resumes for [job search](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day), master resume strategy 2026
 ---
 
 You know you should [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) for every job.
@@ -218,7 +218,7 @@ TailorCV does the heavy editing.
 
 **When to retire old versions:**
 Review your folder every month.
-If a version is more than 3 months old and you are actively job searching, it is probably stale.
+If a version is more than 3 months old and you are actively [job search](https://thetailorcv.com/blog/survived-a-layoff-30-day-plan-to-rebuild-your-resume)ing, it is probably stale.
 Archive it (do not delete it) and create a fresh version from your master. The [how to update your resume guide](https://thetailorcv.com/blog/how-to-update-your-resume) covers what specifically needs to change when you refresh a version.
 
 ---

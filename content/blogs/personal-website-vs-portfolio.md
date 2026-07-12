@@ -14,7 +14,7 @@ A focused showcase of your **work** - [projects](https://thetailorcv.com/blog/pr
 ### Key Elements of a Strong Portfolio
 - **Diverse Projects**: Include a variety of work that demonstrates your skills and versatility.
 - **Case Studies**: Provide detailed insights into your thought process, challenges faced, and solutions implemented.
-- **Visual Appeal**: Use high-quality images and an organized layout to make your portfolio visually engaging.
+- **Visual Appeal**: Use high-quality images and an organized layout to make [your portfolio](https://www.thetailorcv.com/portfolio) visually engaging.
 - **Testimonials**: Incorporate feedback from clients or colleagues to add credibility.
 - **Call to Action**: Make it easy for potential employers or clients to contact you.
 
@@ -53,7 +53,7 @@ That covers 95% of needs. Add a blog later if you want discoverability ([Portfol
 Generate this combined site from your resume with the [portfolio builder](https://thetailorcv.com/portfolio), pick a [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide), and host it free ([How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)). Grow it into a brand over time - see [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
 ## Keep Your Resume and Portfolio in Sync
-Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, [your LinkedIn](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync), and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
 ## Common Mistakes
 - **Building an Elaborate Personal Website Before You Have Any Work to Show**: Focus first on your portfolio; your website can evolve as you gain more experience.

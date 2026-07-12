@@ -1,6 +1,6 @@
 ﻿---
 title: Financial Analyst Resume 2026 - Complete Guide with Examples
-description: Write a financial analyst resume in 2026 with the right ATS keywords, Excel and financial modeling skills, and bullet points that show business finance impact.
+description: Write a [financial analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) resume in 2026 with the right ATS keywords, Excel and financial modeling skills, and bullet points that show business finance impact.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Financial Analyst Resume, Finance Resume, Excel Resume, ATS Resume, Career Tips]

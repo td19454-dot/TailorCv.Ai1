@@ -1,16 +1,16 @@
 ﻿---
 title: Job Application Tracker Template - What to Track After Every Application
-description: Use this job application tracker template to manage resume versions, follow-ups, interview stages, and outcomes without losing momentum.
+description: Use this job application tracker template to manage [resume](https://thetailorcv.com/blog/resume-vs-cv) versions, follow-ups, interview stages, and outcomes without losing momentum.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Job Search, Application Tracker, Resume Versions, Follow Up, Career Tips]
 category: Job Search
 image: public/blog-images/job-application-tracker-template.webp
 slug: job-application-tracker-template
-keywords: job application tracker template, application tracker, job search spreadsheet, resume tracking, follow up tracker
+keywords: job application tracker template, application tracker, job search spreadsheet, [resume](https://www.thetailorcv.com/templates) tracking, follow up tracker
 ---
 
-A job application tracker helps you stop guessing. When you track where you applied, which resume version you used, and what happened next, your [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) becomes easier to improve.
+A job application tracker helps you stop guessing. When you track where you applied, which [resume](https://www.thetailorcv.com/templates) version you used, and what happened next, your [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) becomes easier to improve.
 
 ---
 
@@ -24,7 +24,7 @@ Use these fields:
 - Date applied
 - Resume version
 - [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) version
-- ATS score before applying
+- [ATS score](https://www.thetailorcv.com/solutions) before applying
 - [referral](https://thetailorcv.com/blog/networking-tips-for-job-search) contact
 - Follow-up date
 - Current status
@@ -77,7 +77,7 @@ A tracker turns your job search into a feedback loop. Pair it with the [ATS scor
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your job application tracking system because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, [LinkedIn](https://thetailorcv.com/blog/linkedin-to-portfolio-guide) profile, [portfolio](https://www.thetailorcv.com/portfolio), [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 
@@ -175,7 +175,7 @@ Use adjacent proof. Projects, coursework, freelance work, volunteer experience, 
 
 ### How do I know if the final version is strong enough?
 
-Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
+Paste your resume and the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
 
 ---
 

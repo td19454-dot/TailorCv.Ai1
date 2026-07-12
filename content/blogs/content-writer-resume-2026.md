@@ -1,6 +1,6 @@
 ﻿---
 title: Content Writer Resume 2026 - Complete Guide with Examples
-description: Write a content writer resume in 2026 with the right ATS keywords, SEO and writing skills, portfolio tips, and bullet points that prove traffic and engagement impact.
+description: Write a [content writer resume](https://thetailorcv.com/blog/ai-job-search-agent-2026) in 2026 with the right ATS keywords, SEO and writing skills, portfolio tips, and bullet points that prove traffic and engagement impact.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Content Writer Resume, Copywriter Resume, SEO Writer Resume, ATS Resume, Writing Career]

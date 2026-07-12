@@ -1,6 +1,6 @@
 ﻿---
 title: How to Overcome Interview Anxiety and Nerves - Proven Tips for 2026
-description: Stop interview anxiety from ruining your job search. Learn breathing techniques, preparation strategies, and how AI mock interviews build confidence before the real thing.
+description: Stop interview anxiety from ruining your job search. Learn breathing techniques, preparation strategies, and how [AI mock interview](https://www.thetailorcv.com/mock-interview)s build confidence before the real thing.
 date: 2026-07-03
 author: TailorCV Team
 tags: [Interview Anxiety, Interview Nerves, Interview Preparation, Mock Interview, Career Advice]

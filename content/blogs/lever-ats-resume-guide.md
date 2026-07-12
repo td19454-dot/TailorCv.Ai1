@@ -16,7 +16,7 @@ Lever leans heavily on its CRM features, meaning recruiters often manage candida
 
 This guide explains how Lever parses resumes and how to [match yours to the job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) before you submit.
 
-Use the [TailorCV ATS score checker](/solutions) to see your match score against any Lever job posting before you apply.
+Use the [TailorCV ATS score checker](/solutions) to see your [match score](https://www.thetailorcv.com/solutions) against any Lever job posting before you apply.
 
 ---
 
@@ -58,7 +58,7 @@ Because Lever keeps your profile in its system, a weak or outdated resume can hu
 
 ### Ignoring LinkedIn Consistency
 
-Lever often pulls or cross-references LinkedIn data. If your resume and LinkedIn profile tell noticeably different stories, it creates confusion for recruiters reviewing your profile. Review [LinkedIn profile optimization](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) alongside your resume updates.
+Lever often pulls or cross-references LinkedIn data. If your resume and [LinkedIn profile](https://thetailorcv.com/blog/linkedin-for-canada-job-search) tell noticeably different stories, it creates confusion for recruiters reviewing your profile. Review [LinkedIn profile optimization](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) alongside your resume updates.
 
 ### Underestimating Recruiter Search and Filtering
 

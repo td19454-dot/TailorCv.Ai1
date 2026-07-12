@@ -73,7 +73,7 @@ Building your portfolio with AI doesn't have to be a daunting task. Follow this 
    Before launching, preview your portfolio on different devices to ensure it’s mobile-friendly and functional. Check all links and features to confirm they work as intended.
 
 8. **Launch and Promote**  
-   Once satisfied, publish your portfolio. Share it on your social media platforms and consider linking it to your LinkedIn profile using our guide on [How to Turn Your LinkedIn Profile Into a Portfolio Website](https://thetailorcv.com/blog/linkedin-to-portfolio-guide).
+   Once satisfied, publish your portfolio. Share it on your social media platforms and consider linking it to [your LinkedIn profile](https://thetailorcv.com/blog/linkedin-to-portfolio-guide) using our guide on [How to Turn Your LinkedIn Profile Into a Portfolio Website](https://thetailorcv.com/blog/linkedin-to-portfolio-guide).
 
 ## Common Mistakes to Avoid When Building an AI Portfolio
 

@@ -1,6 +1,6 @@
 ﻿---
 title: How to Explain Resume Gaps in 2026 - Honest Strategies That Work
-description: Learn how to explain employment gaps on your resume and in interviews in 2026. Includes examples for illness, caregiving, travel, layoff, and career change breaks.
+description: Learn how to explain employment gaps on your [resume](https://thetailorcv.com/blog/resume-red-flags) and in interviews in 2026. Includes examples for illness, caregiving, travel, layoff, and career change breaks.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Gaps, Employment Gap, Career Advice, Job Search Tips, Resume Tips]

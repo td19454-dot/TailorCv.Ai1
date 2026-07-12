@@ -206,7 +206,7 @@ To build skills for a tech career, consider enrolling in online courses or bootc
 When writing your resume for a tech career switch, focus on highlighting transferable skills and relevant experience. Tailor your resume to showcase projects or tasks that demonstrate your ability to adapt to a tech environment. To help you craft the perfect resume, utilize our [free ATS score checker](https://www.thetailorcv.com/solutions) to ensure it meets industry standards.
 
 ### What should I include in my cover letter for a tech job?  
-In your cover letter, emphasize your passion for technology and how your previous experience contributes to your new career path. Use specific examples to illustrate your skills and adaptability. For a comprehensive template and examples, refer to our post on [cover letter for a career change](https://thetailorcv.com/blog/cover-letter-for-career-change).
+In your [cover letter](https://thetailorcv.com/blog/cover-letter-for-career-change), emphasize your passion for technology and how your previous experience contributes to your new career path. Use specific examples to illustrate your skills and adaptability. For a comprehensive template and examples, refer to our post on [cover letter for a career change](https://thetailorcv.com/blog/cover-letter-for-career-change).
 
 ### How can I prepare for interviews in the tech industry?  
 Preparing for tech interviews involves understanding the specific skills required for the role and practicing common interview questions. Consider using tools like an [AI mock interview](https://www.thetailorcv.com/mock-interview) to simulate the interview experience and receive feedback. This preparation can significantly enhance your confidence and performance during actual interviews.

@@ -1,6 +1,6 @@
 ﻿---
 title: How to Practice Job Interviews at Home - Free Methods That Actually Work (2026)
-description: Learn the best ways to practice interviews at home - AI mock interviews, self-recording, peer practice, and structured prep routines that build real confidence.
+description: Learn the best ways to practice interviews at home - AI [mock interview](https://thetailorcv.com/blog/mock-interview-feedback-checklist)s, self-recording, peer practice, and structured prep routines that build real confidence.
 date: 2026-07-05
 author: TailorCV Team
 tags: [Interview Practice, Mock Interview, Interview Preparation, Practice at Home, AI Mock Interview]
@@ -84,7 +84,7 @@ Peer practice adds human [follow-up](https://thetailorcv.com/blog/how-to-follow-
 | Day | Activity |
 |-----|----------|
 | Day 1 | Optimize resume - [ATS checker](https://www.thetailorcv.com/solutions). Research company - [research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview) |
-| Day 2 | Write STAR stories - [STAR guide](https://thetailorcv.com/blog/star-method-interview-answers-guide) |
+| Day 2 | Write [STAR stories](https://thetailorcv.com/blog/interview-story-bank-star-method) - [STAR guide](https://thetailorcv.com/blog/star-method-interview-answers-guide) |
 | Day 3 | AI mock interview #1 - [start here](https://thetailorcv.com/mock-interview) |
 | Day 4 | Practice tough questions - [career gap](https://thetailorcv.com/blog/how-to-explain-career-gap-in-interview), [job hopping](https://thetailorcv.com/blog/how-to-explain-job-hopping-in-interview) |
 | Day 5 | AI mock interview #2 + video self-review |

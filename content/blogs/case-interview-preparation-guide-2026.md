@@ -8,7 +8,7 @@ image: public/blog-images/case-interview-preparation-guide-2026.webp
 
 ## Case Interview Preparation Guide - How to Ace Consulting and Analytical Interviews (2026)
 
-Case interviews - where you solve a business problem live with an interviewer - are standard at consulting firms, increasingly common at tech companies for product and strategy roles, and used anywhere employers want to test **structured thinking under pressure**.
+Case interviews - where you solve a business problem live with an interviewer - are standard at consulting firms, increasingly common at tech companies for product and strategy roles, and used anywhere employers want to test **[structured thinking under pressure](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)**.
 
 Unlike [behavioral interviews](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), case interviews evaluate how you think, not what you have done. This guide covers case interview preparation for 2026.
 
@@ -199,13 +199,13 @@ Propose actionable solutions based on your analysis:
 ### Don'ts:
 - **Rush Your Answers:** Take your time to think through the problem before responding.
 - **Ignore the Structure:** Always maintain a clear structure in your approach to ensure clarity.
-- **Overlook Basic Math:** Brush up on your mental math skills, as accurate calculations are crucial.
+- **Overlook Basic Math:** Brush up on your [mental math skills](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), as accurate calculations are crucial.
 
 ## Mini Checklist for Case Interview Preparation
 
 - [ ] Familiarize yourself with common case interview frameworks (e.g., SWOT, 4Ps).
 - [ ] Practice at least 5 different case types (market entry, profitability, etc.).
-- [ ] Conduct mock interviews with peers or mentors for real-time feedback.
+- [ ] Conduct mock interviews with peers or mentors for [real-time feedback](https://thetailorcv.com/blog/how-to-follow-up-after-interview).
 - [ ] Review fundamental business concepts (revenue models, cost structures).
 - [ ] Prepare a list of questions to ask the interviewer for clarification.
 - [ ] Reflect on past interview experiences and identify areas for improvement.

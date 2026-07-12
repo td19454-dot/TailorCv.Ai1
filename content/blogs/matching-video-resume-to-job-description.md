@@ -36,7 +36,7 @@ Before writing your video pitch script, identify:
 
 - The one or two most important skills or qualities the posting emphasizes
 - The specific outcome or responsibility the role centers on
-- Any language about the company's mission, product, or customer that you can authentically reference
+- Any language about the [company's mission, product, or customer](https://thetailorcv.com/blog/matching-portfolio-to-job-description) that you can authentically reference
 
 This mirrors the same process used in the [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), just applied to spoken content instead of written bullets.
 
@@ -102,7 +102,7 @@ Creating a compelling 30-second video pitch involves more than just reciting you
 
 3. **Draft Your Script**: Following the structure outlined previously, draft a script that includes:
    - A brief introduction (name and current role)
-   - A strong opening statement that ties your experience to the job
+   - A [strong opening statement](https://thetailorcv.com/blog/resume-keyword-map-template) that ties your experience to the job
    - A highlight of one or two key achievements that demonstrate your fit
    - A closing statement that expresses enthusiasm for the role
 

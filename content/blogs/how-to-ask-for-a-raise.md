@@ -16,7 +16,7 @@ The key is to approach it as a business case, not a personal plea. You are not a
 
 This guide covers when to ask, how to build your case, the exact scripts to use, and how to handle every response.
 
-This is related to the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) for new offers and the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion). To understand your market value, keep your resume updated and run it through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) periodically.
+This is related to the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) for new offers and the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion). To understand your [market value](https://thetailorcv.com/blog/how-to-check-ats-score-free), keep your resume updated and run it through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) periodically.
 
 ---
 
@@ -94,7 +94,7 @@ This signals seriousness and gives your manager time to prepare (and possibly st
 
 ### State Your Ask
 
-"Based on my contributions and market research for this role - which shows a range of [X to Y] - I'd like to discuss adjusting my salary to [specific number]. Is that something we can work toward?"
+"Based on my contributions and [market research](https://thetailorcv.com/blog/salary-negotiation-guide) for this role - which shows a range of [X to Y] - I'd like to discuss adjusting my salary to [specific number]. Is that something we can work toward?"
 
 ### Then Stop Talking
 
@@ -114,7 +114,7 @@ If they agree or counter close to your number, accept graciously: "That works fo
 
 ### "There's no budget right now"
 
-"I understand budgets are tight. Can we set a specific timeline to revisit this - perhaps in 3 months? And in the meantime, are there non-salary adjustments we could discuss, such as additional PTO, a title change, professional development budget, or remote flexibility?"
+"I understand budgets are tight. Can we set a specific timeline to revisit this - perhaps in 3 months? And in the meantime, are there non-salary adjustments we could discuss, such as additional PTO, a title change, [professional development](https://thetailorcv.com/blog/how-to-build-professional-portfolio) budget, or remote flexibility?"
 
 Also ask: "What specifically would I need to demonstrate to justify this raise when budget allows?" - this turns a no into a roadmap.
 
@@ -148,7 +148,7 @@ A no is not the end. Your options:
 
 ## The Competing Offer Lever
 
-The most powerful raise lever is a genuine competing offer. If you have explored the market and received a higher offer, your current employer often matches or exceeds it to retain you.
+The most powerful raise lever is a [genuine competing offer](https://thetailorcv.com/blog/negotiating-multiple-job-offers). If you have explored the market and received a higher offer, your current employer often matches or exceeds it to retain you.
 
 Caution: only use this if you are genuinely prepared to leave. Bluffing can backfire, and some companies will let you walk. To be ready, keep your resume updated with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and your [LinkedIn profile optimized](https://thetailorcv.com/blog/linkedin-profile-optimization-guide).
 
@@ -181,7 +181,7 @@ Turn the career advice into a stronger application system. Start by checking you
 When you are ready to apply, build the supporting pieces around the resume. Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) for targeted outreach, practice with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and review [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) if applications are not converting.
 
 ## Conclusion
-Asking for a raise is a business negotiation, not a personal favor. Build your case with quantified accomplishments and market data, schedule a proper conversation, state a specific number, and handle the response professionally. Even a no can become a roadmap to a yes.
+Asking for a raise is a business negotiation, not a personal favor. Build your case with quantified accomplishments and market data, schedule a proper conversation, state a [specific number](https://thetailorcv.com/blog/salary-negotiation-guide), and handle the response professionally. Even a no can become a roadmap to a yes.
 
 To strengthen your position long-term, keep your skills current with the [skills to add to your resume guide](https://thetailorcv.com/blog/skills-to-add-to-resume-2026), keep your resume sharp with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and read the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
 
@@ -191,7 +191,7 @@ To strengthen your position long-term, keep your skills current with the [skills
 The best timing to ask for a raise typically includes moments like after successfully delivering a major project or during your performance review cycle. It's crucial to prepare in advance and not wait for the meeting to make your case. Additionally, asking when the company is performing well financially can increase your chances of a positive response.
 
 ### How should I build my case for a raise?
-To build your case for a raise, document specific accomplishments since your last salary review. Highlight projects you've delivered, revenue generated, and any process improvements with measurable results. This evidence will support your argument and demonstrate that your value has increased, making it a solid business case rather than a personal plea.
+To build your case for a raise, document [specific accomplishments](https://thetailorcv.com/blog/how-to-build-professional-portfolio) since your last salary review. Highlight projects you've delivered, revenue generated, and any process improvements with measurable results. This evidence will support your argument and demonstrate that your value has increased, making it a solid business case rather than a personal plea.
 
 ### What should I avoid when asking for a raise?
 Avoid asking for a raise during layoffs, budget freezes, or immediately after a company loss. These situations can significantly diminish your chances of a favorable response. Instead, approach the conversation with preparation and professionalism, steering clear of casual requests or ultimatums without genuine alternatives.

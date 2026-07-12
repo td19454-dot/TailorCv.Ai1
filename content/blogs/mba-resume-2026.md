@@ -1,6 +1,6 @@
 ﻿---
 title: MBA Resume 2026 - Complete Guide with Examples
-description: Write a standout MBA resume in 2026 for consulting, finance, product, or tech roles. Includes format, leadership framing, metrics, and recruiter expectations.
+description: Write a standout MBA resume in 2026 for consulting, finance, product, or tech roles. Includes format, [leadership](https://thetailorcv.com/blog/soft-skills-for-resume) framing, metrics, and recruiter expectations.
 date: 2026-06-01
 author: TailorCV Team
 tags: [MBA Resume, Business School Resume, Leadership Resume, ATS Resume, Career Advice]
@@ -10,7 +10,7 @@ slug: mba-resume-2026
 keywords: MBA resume, MBA resume 2026, business school resume, MBA resume format, consulting MBA resume, MBA resume examples, post-MBA resume
 ---
 
-An MBA resume in 2026 must demonstrate leadership, business impact, and the ability to drive results - whether you are applying to consulting, investment banking, product management, corporate strategy, or tech. MBA recruiting is competitive and structured, and your resume is judged on quantified impact, leadership, and clear communication.
+An MBA resume in 2026 must demonstrate leadership, [business impact](https://thetailorcv.com/blog/why-am-i-not-getting-interviews), and the ability to drive results - whether you are applying to consulting, investment banking, product management, corporate strategy, or tech. MBA recruiting is competitive and structured, and your resume is judged on quantified impact, leadership, and clear communication.
 
 This guide covers how to write an MBA resume that stands out in competitive recruiting.
 

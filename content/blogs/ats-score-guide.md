@@ -22,7 +22,7 @@ In this complete [ATS score](https://thetailorcv.com/blog/ats-score-guide) Guide
 
 - What [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scores really mean
 - How [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems calculate resume scores
-- The biggest resume mistakes to avoid
+- The [biggest resume mistakes](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews) to avoid
 - Proven [ATS score](https://thetailorcv.com/blog/ats-score-guide) improvement tips
 - How to optimize your resume faster using modern AI tools
 
@@ -32,7 +32,7 @@ You'll also discover how tools like the [ATS score checker](https://www.thetailo
 
 ## What Is an ATS Score?
 
-An [ATS score](https://thetailorcv.com/blog/ats-score-guide) is a compatibility rating that shows how well your resume matches a specific job description.
+An [ATS score](https://thetailorcv.com/blog/ats-score-guide) is a compatibility rating that shows how well your resume matches a specific [job description](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).
 
 Applicant Tracking Systems scan resumes and analyze several factors, including:
 
@@ -450,7 +450,7 @@ Aim for at least 80 whenever possible.
 
 The easiest way to evaluate your resume is using an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) checker tool.
 
-The [ATS score checker](https://www.thetailorcv.com/solutions) available at The Tailor CV helps job seekers understand how recruiters and ATS systems see their resumes.
+The [ATS score checker](https://www.thetailorcv.com/solutions) available at The Tailor CV helps job seekers understand how recruiters and [ATS systems](https://thetailorcv.com/blog/how-ats-detects-generic-resume) see their resumes.
 
 Benefits include:
 

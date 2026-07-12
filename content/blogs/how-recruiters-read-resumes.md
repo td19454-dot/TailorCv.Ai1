@@ -190,7 +190,7 @@ To optimize your resume for the 10-second scan, focus on placing key information
 
 ### What should I include in the contact section of my resume?
 
-In your resume contact section, include your full name, phone number, email address, and LinkedIn profile link if applicable. Avoid unnecessary details like your full address or personal information that can lead to bias. For more guidance on formatting this section, check out our article on the [resume contact section](https://thetailorcv.com/blog/resume-contact-section).
+In your [resume contact section](https://thetailorcv.com/blog/resume-contact-section), include your full name, phone number, email address, and LinkedIn profile link if applicable. Avoid unnecessary details like your full address or personal information that can lead to bias. For more guidance on formatting this section, check out our article on the [resume contact section](https://thetailorcv.com/blog/resume-contact-section).
 
 ### Why is the F-pattern important for resume writing?
 

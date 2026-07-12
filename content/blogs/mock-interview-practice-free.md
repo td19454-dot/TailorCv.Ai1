@@ -1,6 +1,6 @@
 ﻿---
 title: Free Mock Interview Practice Online - AI Powered in 2026
-description: Free mock interview practice that goes beyond generic questions. Practice with AI that reads your resume and asks about YOUR projects, with instant feedback.
+description: Free mock interview practice that goes beyond generic questions. Practice with AI that reads your [resume](https://www.thetailorcv.com/templates) and asks about YOUR projects, with instant feedback.
 date: 2026-06-08
 author: TailorCV Team
 tags: [Mock Interview Practice, Interview Preparation, AI Interview, Free Mock Interview, Job Search]
@@ -25,7 +25,7 @@ Generic prep fails for a few clear reasons:
 - **It gives no feedback.** Reading questions silently never reveals that you ramble, speak too fast, or miss the point.
 - **It ignores your weak spots.** Without analysis, you keep practicing what you are already good at.
 
-The fix is practice that is personal, spoken out loud, and followed by honest feedback - which is exactly what AI mock interviews provide.
+The fix is practice that is personal, spoken out loud, and followed by honest feedback - which is exactly what [AI mock interview](https://www.thetailorcv.com/mock-interview)s provide.
 
 ## What Is Resume-Based Mock Interview Practice?
 

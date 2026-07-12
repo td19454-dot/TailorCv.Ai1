@@ -1,9 +1,9 @@
 ﻿---
-title: How to Increase Your ATS Score From 50 to 90 (2026)
-description: A step-by-step playbook to raise your resume's ATS score from failing to competitive - covering keywords, formatting, achievements, and re-scanning.
+title: How to Increase Your [ATS](https://thetailorcv.com/blog/ats-score-vs-resume-score) Score From 50 to 90 (2026)
+description: A step-by-step playbook to raise your resume's [ATS](https://thetailorcv.com/blog/does-my-resume-pass-ats) score from failing to competitive - covering [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats), formatting, achievements, and re-scanning.
 date: 2026-06-03
 author: TailorCV Team
-tags: [ATS, resume, job search, ATS score]
+tags: [ATS, resume, job search, [ATS](https://thetailorcv.com/blog/how-ats-detects-generic-resume) score]
 category: ATS Optimization
 image: public/blog-images/how-to-increase-ats-score.webp
 slug: how-to-increase-ats-score
@@ -18,7 +18,7 @@ Keep the [free ATS score checker](/solutions) open so you can re-scan after each
 
 ## First, Get Your Baseline
 
-Before you change anything, scan your current resume against the exact job description using the [ATS score checker](/solutions). Note:
+Before you change anything, scan your current resume against the exact [job description](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job) using the [ATS score checker](/solutions). Note:
 
 - Your overall score
 - [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description)
@@ -100,7 +100,7 @@ Run the [ATS score checker](/solutions) again. Compare to your baseline, apply a
 | Edit | Typical Impact |
 |---|---|
 | Fix formatting / template | +10 to +20 |
-| Add missing keywords | +10 to +25 |
+| Add [missing keywords](https://thetailorcv.com/blog/why-is-my-ats-score-low) | +10 to +25 |
 | Strengthen skills section | +5 to +10 |
 | Quantify achievements | +5 to +10 |
 
@@ -126,7 +126,7 @@ When attempting to improve your ATS score, it's easy to make mistakes that can h
    
 2. **Overstuffing Keywords**: While matching job description keywords is crucial, overloading your resume with them can appear unnatural. Use keywords in context, ensuring they fit seamlessly into your narrative.
 
-3. **Neglecting Soft Skills**: Many candidates focus solely on hard skills, but ATS systems also evaluate soft skills like communication and teamwork. Incorporate these into your experience descriptions.
+3. **Neglecting Soft Skills**: Many candidates focus solely on hard skills, but ATS systems also evaluate [soft skills](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) like communication and teamwork. Incorporate these into your experience descriptions.
 
 4. **Using Uncommon Acronyms**: While acronyms may be familiar in your industry, they might not be recognized by ATS. Always spell out acronyms on first use, followed by the abbreviation in parentheses.
 
