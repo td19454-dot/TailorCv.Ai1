@@ -1,3 +1,10 @@
+---
+title: Portfolio About Me Section
+date: 2026-07-12
+author: TailorCV Team
+slug: portfolio-about-me-section
+image: public/blog-images/portfolio-about-me-section.webp
+---
 
 The About Me section is where a visitor decides whether to trust you - and most people get it wrong by writing either a life story or a wall of empty adjectives. A great About Me is specific, human, and short. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 

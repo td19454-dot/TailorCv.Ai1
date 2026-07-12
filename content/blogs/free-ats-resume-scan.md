@@ -1,3 +1,10 @@
+---
+title: Free ATS Resume Scan
+date: 2026-07-12
+author: TailorCV Team
+slug: free-ats-resume-scan
+image: public/blog-images/free-ats-resume-scan.webp
+---
 
 Before you send another application, run a **free ATS resume scan**. In about 60 seconds you will see how the software that screens resumes rates yours - and exactly what to fix. Start your scan with the [free ATS resume checker](/solutions).
 

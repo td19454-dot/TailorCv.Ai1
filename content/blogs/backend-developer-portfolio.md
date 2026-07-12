@@ -1,3 +1,10 @@
+---
+title: Backend Developer Portfolio
+date: 2026-07-12
+author: TailorCV Team
+slug: backend-developer-portfolio
+image: public/blog-images/backend-developer-portfolio.webp
+---
 
 ## Backend Developer Portfolio Guide (2026): Make the Invisible Visible
 

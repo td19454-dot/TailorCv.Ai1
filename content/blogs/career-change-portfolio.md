@@ -1,3 +1,10 @@
+---
+title: Career Change Portfolio
+date: 2026-07-12
+author: TailorCV Team
+slug: career-change-portfolio
+image: public/blog-images/career-change-portfolio.webp
+---
 
 ## Career Change Portfolio: Prove Skills From a New Field
 

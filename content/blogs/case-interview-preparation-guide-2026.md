@@ -1,3 +1,10 @@
+---
+title: Case Interview Preparation Guide 2026
+date: 2026-07-12
+author: TailorCV Team
+slug: case-interview-preparation-guide-2026
+image: public/blog-images/case-interview-preparation-guide-2026.webp
+---
 
 ## Case Interview Preparation Guide - How to Ace Consulting and Analytical Interviews (2026)
 

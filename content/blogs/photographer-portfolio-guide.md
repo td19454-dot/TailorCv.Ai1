@@ -1,3 +1,10 @@
+---
+title: Photographer Portfolio Guide
+date: 2026-07-12
+author: TailorCV Team
+slug: photographer-portfolio-guide
+image: public/blog-images/photographer-portfolio-guide.webp
+---
 
 A photography portfolio sells two things at once: a feeling and a standard. Tight curation, smart sequencing, and fast galleries are what turn browsers into bookings. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide).
 

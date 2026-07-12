@@ -1,3 +1,10 @@
+---
+title: Interview Body Language Communication Tips
+date: 2026-07-12
+author: TailorCV Team
+slug: interview-body-language-communication-tips
+image: public/blog-images/interview-body-language-communication-tips.webp
+---
 
 ## Interview Body Language and Communication Tips - What Interviewers Notice in 2026
 
