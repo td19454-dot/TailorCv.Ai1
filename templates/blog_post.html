@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css?v=5">
+    <link rel="stylesheet" href="/static/blog.css?v=6">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -83,11 +83,10 @@
                         <span class="hero-date">{{ post.read_time }} min read</span>
                     </div>
                     <h1 class="post-hero-title">{{ post.title }}</h1>
-                    <p class="lead">{{ post.description }}</p>
                     <div class="author-chip">
                         <span class="author-badge">
                             {% if author_profile and author_profile.image %}<img class="author-photo" src="{{ author_profile.image }}" alt="{{ author_profile.name }}" loading="lazy" onerror="this.remove()">{% endif %}
-                            {{ author_profile.initials if author_profile else 'TC' }}
+                            {{ (author_profile.initials if author_profile and author_profile.initials else 'TC') }}
                         </span>
                         <span class="author-info">
                             <span class="author-label">Author</span>
