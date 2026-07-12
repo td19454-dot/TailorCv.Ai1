@@ -200,6 +200,21 @@ Spend 60-90 minutes per company on research before a final round [interview](htt
 
 Pair your research with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), the [how to answer tell me about yourself guide](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and the [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Practice with the [mock interview tool](https://thetailorcv.com/mock-interview) for delivery confidence.
 
+
+## Comparison of Superficial vs. In-Depth Company Research
+
+Understanding the difference between superficial research and in-depth research can significantly affect your interview performance. Here’s a comparison to illustrate the key aspects:
+
+| Aspect                     | Superficial Research                             | In-Depth Research                                   |
+|---------------------------|-------------------------------------------------|----------------------------------------------------|
+| Company Overview           | Reads the "About Us" page                       | Analyzes the company's mission, vision, and values |
+| Recent Developments        | Mentions a recent press release                  | Discusses the implications of recent product launches and innovations |
+| Financial Health           | Looks at basic revenue figures                   | Reviews financial reports, growth trends, and market position |
+| Industry Position          | Knows the company name and what it does         | Identifies key competitors and analyzes market share and positioning |
+| Company Culture            | General statement about culture                  | Provides specific examples of company values in action and employee testimonials |
+| Team Dynamics              | Assumes a collaborative work environment        | Investigates team structure, roles, and current challenges faced by the team |
+| Relevant Questions         | Asks generic questions about the role           | Asks tailored questions that reflect understanding of the company's current projects and challenges |
+
 ## Frequently Asked Questions
 
 ### Why is company research important before an interview?  

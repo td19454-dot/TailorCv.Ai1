@@ -301,6 +301,19 @@ Use tools like [TailorCV.ai](https://www.thetailorcv.com/solutions) to understan
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [How to Prepare for Campus Placement in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 
+
+## Comparison of Strong vs. Weak Interview Preparation Strategies
+
+A well-structured approach to interview preparation can significantly impact your performance. 
+
+| Preparation Strategy       | Strong Example                                 | Weak Example                                   |
+|----------------------------|------------------------------------------------|------------------------------------------------|
+| Researching the Company    | Thoroughly understanding the company's values, recent news, and culture. | Skimming the company website and social media. |
+| Tailoring Your Answers     | Relating your skills and experiences directly to the job description. | Giving generic answers that don’t connect to the role. |
+| Practicing Interview Skills | Conducting mock interviews with a friend or using an AI tool. | Practicing alone without feedback or structure. |
+| Asking Questions            | Preparing insightful questions that demonstrate your interest in the role and company. | Asking basic questions that could be answered by a simple search. |
+| Following Up               | Sending a personalized thank-you email that references specific interview points. | Sending a generic thank-you note or no follow-up at all. |
+
 ## Frequently Asked Questions
 
 ### How can I effectively use the STAR method for my interview answers in 2026?  

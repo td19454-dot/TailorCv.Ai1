@@ -224,6 +224,21 @@ Getting your first tech job in 2026 is a marathon, not a sprint - but it is comp
 
 Start with your resume: use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [technical skills guide for freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience). Then build your projects, practice your interviews with the [mock interview tool](https://thetailorcv.com/mock-interview), and apply consistently.
 
+
+## Comparison of Strong vs. Weak Technical Profiles for Freshers
+
+When applying for your first tech job, showcasing a focused and relevant technical profile can make a significant difference in your chances of landing an interview.
+
+| Criteria                   | Strong Profile                                   | Weak Profile                                   |
+|----------------------------|--------------------------------------------------|------------------------------------------------|
+| Technical Skills           | Proficient in one primary language (e.g., Python) and relevant frameworks (e.g., Django) | Familiar with multiple languages but lacks depth in any |
+| Projects                    | Completed 2-3 personal projects demonstrating practical application of skills | Minimal or no projects to showcase practical experience |
+| Portfolio                   | Well-organized online portfolio with live project links and case studies | Basic portfolio with few or no project examples |
+| Resume Tailoring            | Customized resume for each job application highlighting relevant skills and projects | Generic resume sent to multiple employers without specific tailoring |
+| Networking                  | Active participation in tech meetups and online communities, showcasing initiative | Limited or no networking efforts, relying solely on job boards |
+| Interview Preparation       | Conducted mock interviews and researched common industry questions | Unprepared for interviews, lacking knowledge of the company and role |
+| Soft Skills                 | Strong communication and teamwork skills demonstrated through group projects | Little emphasis on soft skills, focusing solely on technical abilities |
+
 ## Frequently Asked Questions
 
 ### What technical niche should I focus on for my first tech job?  

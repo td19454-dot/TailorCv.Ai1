@@ -404,6 +404,19 @@ You may also find these helpful:
 
 ---
 
+
+## Example Comparison of Project Descriptions in Resumes
+
+When detailing projects on your resume, the way you present them can significantly impact how recruiters perceive your skills.
+
+| Weak Project Description                          | Strong Project Description                                      |
+|--------------------------------------------------|----------------------------------------------------------------|
+| Developed a website for a school project.       | Created a responsive website for a local nonprofit, increasing their online donations by 30% through improved user experience and SEO optimization. |
+| Participated in a hackathon.                     | Led a team of 4 in a 24-hour hackathon to develop an app that connects volunteers with community service opportunities, resulting in a prototype that was awarded "Best Innovation." |
+| Completed a data analysis project.               | Conducted a comprehensive data analysis project using Python and SQL to identify trends in sales data, which helped the client increase revenue by 15% over three months. |
+| Built a mobile app.                              | Designed and launched a mobile app for tracking personal fitness goals, achieving over 500 downloads in the first month and receiving positive user feedback for its intuitive interface. |
+| Worked on a group project for class.             | Collaborated with a team of 5 on a semester-long project to develop a marketing strategy for a startup, resulting in a detailed report that was presented to the company's founders. |
+
 ## FAQs
 
 ### 1. Can freshers add academic projects to resumes?

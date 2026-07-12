@@ -175,6 +175,20 @@ Making your resume [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resu
 
 Test every application with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the complete strategy. For what to remove from your resume, see [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume).
 
+
+## Comparison of ATS-Friendly vs. ATS-Unfriendly Resume Elements
+
+Understanding the differences in resume elements can help you create a document that passes ATS checks effectively.
+
+| Element                | ATS-Friendly Example                       | ATS-Unfriendly Example                   |
+|-----------------------|-------------------------------------------|-----------------------------------------|
+| Formatting            | Simple, clean layout with standard fonts  | Complex designs with images and graphics |
+| Headings              | Clear section headings (e.g., "Experience") | Unlabeled sections or creative headings  |
+| Keywords              | Uses specific keywords from the job description | Generic terms not aligned with the job   |
+| Bullet Points         | Standard bullet points (•)                | Decorative symbols or images as bullets  |
+| File Type             | Submitted as a .docx or .pdf              | Submitted as .jpg or .png                |
+| Contact Information    | Clearly listed at the top                  | Hidden in a header or footer              |
+
 ## Frequently Asked Questions
 
 ### What are the common formatting mistakes to avoid for ATS compatibility?
