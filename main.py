@@ -4181,10 +4181,10 @@ AUTHOR_PROFILE = {
 BLOG_AUTHORS = [
     {
         "type": "Person",
-        "name": "Trisha Debanth",
+        "name": "Trisha Debnath",
         "initials": "TD",
         "title": "Co-founder, theTailorCV",
-        "image": "/static/authors/trisha-debanth.jpg",
+        "image": "/static/user_imges/Trisha.png",
         "bio": (
             "Trisha is a co-founder of theTailorCV. She writes about resumes, ATS "
             "optimization, and modern job search, turning what actually works for "
@@ -4198,7 +4198,7 @@ BLOG_AUTHORS = [
         "name": "Shubham Sarkar",
         "initials": "SS",
         "title": "Co-founder, theTailorCV",
-        "image": "/static/authors/shubham-sarkar.jpg",
+        "image": "/static/user_imges/Shubham.jpg",
         "bio": (
             "Shubham is a co-founder of theTailorCV. He focuses on ATS scoring, "
             "resume-to-job matching, and the product behind the guides, so the advice "
