@@ -78,10 +78,36 @@
     syncTocPin();
   };
 
+  const initTocSpy = () => {
+    const links = Array.from(
+      document.querySelectorAll('.post-layout .toc a[href^="#"]')
+    );
+    if (!links.length) return;
+    const map = links
+      .map((a) => {
+        let id = "";
+        try { id = decodeURIComponent(a.getAttribute("href").slice(1)); } catch (_) {}
+        return { a, el: id ? document.getElementById(id) : null };
+      })
+      .filter((x) => x.el);
+    if (!map.length) return;
+
+    const onScroll = () => {
+      let current = map[0].a;
+      for (const { a, el } of map) {
+        if (el.getBoundingClientRect().top <= 140) current = a;
+      }
+      links.forEach((a) => a.classList.toggle("active", a === current));
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  };
+
   const init = () => {
     buildToc();
     setTimeout(buildToc, 180);
     initTocPinning();
+    setTimeout(initTocSpy, 220);
 
   const progress = document.getElementById('readingProgress');
   if (progress) {
