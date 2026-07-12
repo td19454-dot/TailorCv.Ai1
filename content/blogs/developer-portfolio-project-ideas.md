@@ -6,7 +6,7 @@ slug: developer-portfolio-project-ideas
 image: public/blog-images/developer-portfolio-project-ideas.webp
 ---
 
-Recruiters have seen a thousand to-do apps. What they have *not* seen is your version of a project that solves a real problem, ships to production, and is documented like you actually care. The difference between a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) that gets ignored and one that gets interviews is almost never the language - it is the **project choice and the polish**.
+Recruiters have seen a thousand to-do apps. What they have *not* seen is [your version of a project](https://thetailorcv.com/blog/content-writer-portfolio-guide) that solves a real problem, ships to production, and is documented like you actually care. The difference between a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) that gets ignored and one that gets interviews is almost never the language - it is the **project choice and the polish**.
 
 Below are 15 project ideas grouped by level, plus exactly what turns each one into a hireable portfolio piece. For how to present them, pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Projects on a Resume](https://thetailorcv.com/blog/projects-in-resume).
 
@@ -31,7 +31,7 @@ Below are 15 project ideas grouped by level, plus exactly what turns each one in
 - **Example**: Create a script that organizes files in a directory based on file type.
 
 ### 4. CRUD App with Authentication
-- **Overview**: Build a simple application that allows users to create, read, update, and delete items, with user authentication.
+- **Overview**: Build a simple application that allows users to create, read, update, and delete items, with [user authentication](https://thetailorcv.com/blog/devops-engineer-portfolio-guide).
 - **Skills Demonstrated**: Familiarity with databases, CRUD operations, and authentication flows.
 - **Common Mistakes**: Inadequate security measures or poor user interface design. Always validate user input and ensure a smooth user experience.
 - **Example**: A note-taking app where users can store their notes securely.
@@ -97,7 +97,7 @@ Below are 15 project ideas grouped by level, plus exactly what turns each one in
 - **Example**: A CSS utility library that simplifies styling for web applications.
 
 ### 14. A Clone with a Twist
-- **Overview**: Rebuild a popular app but add a unique feature that improves the user experience.
+- **Overview**: Rebuild a popular app but add [a unique feature](https://thetailorcv.com/blog/graphic-designer-portfolio-guide) that improves the user experience.
 - **Skills Demonstrated**: Creativity and understanding of user needs.
 - **Common Mistakes**: Focusing too much on cloning instead of innovating. Clearly define what makes your version better.
 - **Example**: A social media app that adds a unique feature for enhanced user interactions.

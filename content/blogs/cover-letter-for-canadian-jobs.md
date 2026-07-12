@@ -90,7 +90,7 @@ End with a professional closing such as "Sincerely" or "Best regards," followed 
 - **Tailor Each Letter**: Customize your cover letter for each job application. Use keywords from the job description to increase your chances of passing Applicant Tracking Systems (ATS).
 - **Keep It Concise**: Aim for one page, ideally around 300-400 words.
 - **Use Professional Language**: Maintain a formal tone while allowing your personality to shine through.
-- **Proofread**: Always check for grammatical errors and typos. A polished cover letter reflects attention to detail.
+- **Proofread**: Always [check for grammatical errors and typos](https://www.thetailorcv.com/solutions). A polished cover letter reflects attention to detail.
 
 ## Leveraging Technology for Your Cover Letter
 

@@ -1,13 +1,13 @@
 ﻿---
 title: Mock Interview Feedback Checklist - What to Improve After Practice
-description: Use this mock interview feedback checklist to review clarity, structure, confidence, examples, technical depth, and follow-up answers.
+description: Use this [mock interview](https://thetailorcv.com/blog/mock-interview-practice-free) feedback checklist to review clarity, structure, confidence, examples, technical depth, and follow-up answers.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Mock Interview, Interview Prep, Feedback, Career Tips, Behavioral Interview]
 category: Interview Prep
 image: public/blog-images/mock-interview-feedback-checklist.webp
 slug: mock-interview-feedback-checklist
-keywords: mock interview feedback checklist, interview practice checklist, mock interview tips, interview feedback template
+keywords: [mock interview](https://thetailorcv.com/blog/mock-interview-practice-free) feedback checklist, interview practice checklist, mock interview tips, interview feedback template
 ---
 
 Mock interviews only help if you review them properly. The goal is not to sound perfect. The goal is to find where your answers become vague, too long, too short, or disconnected from the job.
@@ -20,13 +20,13 @@ After each [mock interview](https://thetailorcv.com/blog/mock-interview-practice
 
 - Did I answer the question directly?
 - Did I use a clear structure?
-- Did I give a real example?
+- Did I give a [real example](https://thetailorcv.com/blog/interview-story-bank-star-method)?
 - Did I include a result?
 - Did I speak too fast?
 - Did I ramble?
 - Did I explain technical work clearly?
 - Did I connect my answer to the role?
-- Did I ask thoughtful questions?
+- Did I ask [thoughtful questions](https://thetailorcv.com/blog/how-to-answer-greatest-weakness-interview)?
 - Did I sound confident without exaggerating?
 
 ---
@@ -59,7 +59,7 @@ If technical answers are confusing, explain the problem before the tool.
 
 ## Conclusion
 
-Mock interview practice should create better answers every round. Upload your resume into the [AI mock interview tool](/mock-interview) and use this checklist after each session.
+Mock interview practice should create better answers every round. Upload your [resume](https://www.thetailorcv.com/solutions) into the [AI mock interview tool](/mock-interview) and use this checklist after each session.
 
 ---
 
@@ -67,7 +67,7 @@ Mock interview practice should create better answers every round. Upload your re
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) improvement loop because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your [resume](https://www.thetailorcv.com/templates), LinkedIn profile, portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 
@@ -83,7 +83,7 @@ Before you send the application, review this checklist:
 4. Can a recruiter understand your fit in less than 10 seconds?
 5. Does the content avoid generic phrases like "hardworking," "responsible for," or "passionate professional"?
 6. Are your links, portfolio, GitHub, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), or contact details easy to find?
-7. Does the application use the same positioning across resume, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and profile?
+7. Does the application use the same positioning across [resume](https://www.thetailorcv.com/templates), [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and profile?
 8. Have you removed anything that distracts from the target role?
 
 If the answer is no for any item, fix that before applying. Most candidates do not need a complete rewrite. They need sharper alignment.
@@ -165,7 +165,7 @@ Use adjacent proof. Projects, coursework, freelance work, volunteer experience, 
 
 ### How do I know if the final version is strong enough?
 
-Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
+Paste your resume and the [job description](https://thetailorcv.com/blog/job-application-tracker-template) into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
 
 ---
 

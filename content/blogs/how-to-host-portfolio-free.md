@@ -18,7 +18,7 @@ You can host a fast, professional portfolio for exactly $0 in 2026. The only thi
 - **Cons**: Limited to static sites; dynamic content requires additional setup.
 - **Setup Steps**:
   1. Create a GitHub account.
-  2. Start a new repository and upload your portfolio files.
+  2. Start a new repository and upload [your portfolio](https://thetailorcv.com/blog/portfolio-website-for-job-applications) files.
   3. Go to the repository settings and enable GitHub Pages.
   4. Your site will be live at `username.github.io/repository-name`.
 
@@ -55,7 +55,7 @@ For more on optimizing your GitHub profile, check out our guide on [GitHub Portf
   4. Your site is now up and running globally.
 
 ## Publish Straight From Your Resume
-The simplest route skips build steps entirely: the [portfolio builder](https://thetailorcv.com/portfolio) publishes a live link for you. This is a great option if you want your portfolio online immediately. For a detailed walkthrough, see [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes).
+The simplest route skips build steps entirely: the [portfolio builder](https://thetailorcv.com/portfolio) publishes a live link for you. This is a great option if you want [your portfolio](https://thetailorcv.com/blog/portfolio-website-for-job-applications) online immediately. For a detailed walkthrough, see [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes).
 
 ## Add a Custom Domain
 A custom domain looks far more professional than a free subdomain. Here’s how to get started:

@@ -69,9 +69,9 @@ Build your story bank before interviews, then practice aloud. Use the [AI mock i
 
 ## How to Turn This Into a Stronger Application
 
-Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your STAR interview story bank because small wording choices can change how recruiters and ATS systems understand your fit.
+Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your [STAR interview story bank](https://thetailorcv.com/blog/star-method-interview-answers-guide) because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your [resume](https://www.thetailorcv.com/templates), LinkedIn profile, portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 
@@ -87,7 +87,7 @@ Before you send the application, review this checklist:
 4. Can a recruiter understand your fit in less than 10 seconds?
 5. Does the content avoid generic phrases like "hardworking," "responsible for," or "passionate professional"?
 6. Are your links, portfolio, GitHub, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), or contact details easy to find?
-7. Does the application use the same positioning across resume, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and profile?
+7. Does the application use the same positioning across [resume](https://www.thetailorcv.com/templates), [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and profile?
 8. Have you removed anything that distracts from the target role?
 
 If the answer is no for any item, fix that before applying. Most candidates do not need a complete rewrite. They need sharper alignment.

@@ -542,7 +542,7 @@ If you want to prepare better for interviews after improving your resume, these 
 
 [Mock Interview Practice](https://thetailorcv.com/mock-interview)
 
-You can also practice free AI-powered mock interviews here:
+You can also practice free AI-powered [mock interview](https://www.thetailorcv.com/mock-interview)s here:
 [Free AI Mock Interview Practice Guide](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai)
 
 By choosing the right [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) strategically, you'll stand out far more effectively than candidates who simply collect random online courses.

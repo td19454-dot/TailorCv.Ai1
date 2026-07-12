@@ -1,6 +1,6 @@
 ﻿---
 title: Executive LinkedIn Summary Examples for Senior Leaders
-description: Write an executive LinkedIn summary that communicates leadership scope, business outcomes, board-level language, and strategic credibility.
+description: Write an [executive LinkedIn summary](https://thetailorcv.com/blog/executive-resume-tailoring-guide) that communicates [leadership scope](https://thetailorcv.com/blog/executive-resume-tailoring-guide), business outcomes, board-level language, and strategic credibility.
 date: 2026-07-07
 author: TailorCV Team
 tags: [LinkedIn, Executive Resume, Leadership, Personal Branding, Job Search]
@@ -61,7 +61,7 @@ These phrases only work when attached to specific outcomes.
 
 ## Conclusion
 
-Your executive LinkedIn summary should support your resume and make your leadership story clear. Align both documents before applying for senior roles, and use the [ATS score checker](/solutions) to confirm keyword fit.
+Your executive LinkedIn summary should support your [resume](https://www.thetailorcv.com/templates) and make your leadership story clear. Align both documents before applying for senior roles, and use the [ATS score checker](/solutions) to confirm keyword fit.
 
 ---
 
@@ -69,7 +69,7 @@ Your executive LinkedIn summary should support your resume and make your leaders
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your executive [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) positioning because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your [resume](https://www.thetailorcv.com/templates), LinkedIn profile, portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 

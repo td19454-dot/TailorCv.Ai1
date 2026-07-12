@@ -94,7 +94,7 @@ That sounds like real work because it is real work.
 
 ## 5. Get Certifications That Match the Role
 
-[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) can help, especially for entry-level jobs where you need to show commitment. They are not magic, but they can fill gaps and give you keywords for your resume.
+[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) can help, especially for [entry-level](https://thetailorcv.com/blog/how-to-get-first-tech-job) jobs where you need to show commitment. They are not magic, but they can fill gaps and give you keywords for your resume.
 
 ### Choose Recognized, Relevant Certifications
 
@@ -276,7 +276,7 @@ Understanding the difference between formal and relevant experience can help you
 ## Frequently Asked Questions
 
 ### How can I highlight my transferable skills when applying for jobs with no experience?  
-To effectively showcase your transferable skills, tailor your resume and cover letter to emphasize relevant abilities gained from previous experiences, such as volunteering or academic projects. Use specific examples that demonstrate your problem-solving, communication, and teamwork skills. For more guidance on how to structure your application, check out our [cover letter for a career change](https://thetailorcv.com/blog/cover-letter-for-career-change) for tips on presenting your skills convincingly.
+To effectively showcase your transferable skills, tailor your resume and [cover letter](https://www.thetailorcv.com/cover-letter) to emphasize relevant abilities gained from previous experiences, such as volunteering or academic projects. Use specific examples that demonstrate your problem-solving, communication, and teamwork skills. For more guidance on how to structure your application, check out our [cover letter for a career change](https://thetailorcv.com/blog/cover-letter-for-career-change) for tips on presenting your skills convincingly.
 
 ### What types of projects should I include on my resume if I have no formal work experience?  
 Including academic projects, personal projects, or volunteer work can significantly bolster your resume. Focus on projects that align with the job you're applying for and highlight your role, the skills you utilized, and the outcomes achieved. For more insights on selecting and presenting these experiences, refer to our guide on [projects in your resume](https://thetailorcv.com/blog/projects-in-resume).

@@ -198,7 +198,7 @@ Add them explicitly.
 
 ### Mistake 2: No Evidence of Autonomous Work
 
-Remote employers worry about self-management.
+Remote employers worry about [self-management](https://thetailorcv.com/blog/resume-objective-vs-summary).
 Show, through your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points), that you deliver independently.
 Include examples of setting your own priorities, managing your own time, and delivering without micromanagement.
 
@@ -215,7 +215,7 @@ Some are fully async.
 Some have core hours.
 Some require occasional travel.
 
-Read the "About" section and look up the company's remote culture.
+Read the "About" section and look up the company's [remote culture](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite).
 [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) language to what they value.
 
 ---

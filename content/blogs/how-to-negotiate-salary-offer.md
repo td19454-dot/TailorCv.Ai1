@@ -36,7 +36,7 @@ For all other roles - corporate, startup, tech, finance, healthcare, consulting 
 
 ## When to Negotiate
 
-The right time to negotiate is after you have a written or verbal offer. Not during the first [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Not when asked "what are your salary expectations" early in the process.
+The right time to negotiate is after you have a written or verbal offer. Not during the first [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Not when asked "what are your [salary expectations](https://thetailorcv.com/blog/salary-expectation-answer-guide)" early in the process.
 
 If asked early about salary expectations, defer:
 
@@ -99,7 +99,7 @@ Done. Do not push again unless you have a specific reason to - you have already 
 
 ### Scenario 2: They say they cannot move on base salary
 
-"I understand. Is there flexibility in other parts of the package - signing bonus, equity, additional PTO, remote work flexibility, or professional development budget?"
+"I understand. Is there flexibility in other parts of the package - signing bonus, equity, additional PTO, remote work flexibility, or [professional development budget](https://thetailorcv.com/blog/how-to-decline-job-offer)?"
 
 Benefits and bonuses often have more flexibility than base salary because they are classified differently in budget planning.
 

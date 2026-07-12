@@ -38,7 +38,7 @@ Feed it the full posting instead, and the generator can do three things a title 
 2. **Prioritize correctly.** If the first two bullet points are about stakeholder communication and the last three are about a specific software tool, the letter should lead with communication, not the tool.
 3. **Surface unstated context.** A posting that mentions "rapid growth" or "newly formed team" tells you this role rewards initiative over process-following. A generator that sees this can adjust tone accordingly, and so can you when you edit the draft.
 
-This is also why a cover letter generator works best as a companion to resume tailoring, not a separate exercise. If you have already gone through [how to match your resume to a job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description), you already have the vocabulary and priorities extracted. Reuse that work here instead of starting over.
+This is also why a cover letter generator works best as a companion to [resume tailoring](https://thetailorcv.com/blog/resume-review-checklist-before-applying), not a separate exercise. If you have already gone through [how to match your resume to a job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description), you already have the vocabulary and priorities extracted. Reuse that work here instead of starting over.
 
 ## Worked Example: Job Posting to Opening Paragraph
 

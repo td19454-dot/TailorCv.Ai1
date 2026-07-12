@@ -124,7 +124,7 @@ Show whatever matches your target roles. If you know both, lead with your strong
 Keep platform names, architecture patterns, and app names consistent across resume and portfolio. You can also use our [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume aligns well with industry standards.
 ## Build Your Portfolio Now
 
-You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then embed your app store links and demo videos and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.
+You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then embed your app store links and demo videos and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell [one consistent story](https://thetailorcv.com/blog/one-page-vs-multi-page-portfolio).
 
 ## Related Guides
 

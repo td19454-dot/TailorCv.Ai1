@@ -1,9 +1,9 @@
 ﻿---
-title: ATS Resume Checker - How It Works and How to Pass (2026)
-description: Understand exactly how an ATS resume checker works, what it analyzes in your resume, and how to use one to pass automated screening and land more interviews.
+title: [ATS](https://thetailorcv.com/blog/ats-score-vs-resume-score) Resume Checker - How It Works and How to Pass (2026)
+description: Understand exactly how an [ATS resume checker](https://www.thetailorcv.com/solutions) works, what it analyzes in your resume, and how to use one to pass automated screening and land more interviews.
 date: 2026-06-02
 author: TailorCV Team
-tags: [ATS, resume, job search, ATS score]
+tags: [ATS, resume, job search, [ATS score](https://thetailorcv.com/blog/why-is-my-ats-score-low)]
 category: ATS Optimization
 image: public/blog-images/ats-resume-checker-how-it-works.webp
 slug: ats-resume-checker-how-it-works
@@ -107,7 +107,7 @@ A checker helps you pass the software, but your resume still needs to impress a 
 
 When using an ATS resume checker, it's crucial to be aware of common pitfalls that can lead to a lower score or even disqualification from consideration. Here are some mistakes to avoid:
 
-1. **Ignoring Keywords**: Failing to tailor your resume to the specific job description can result in a generic resume that the ATS filters out. [How ATS Detects a Generic Resume - And Why It Filters You Out](https://thetailorcv.com/blog/how-ats-detects-generic-resume) provides insights into how to include relevant keywords effectively.
+1. **Ignoring Keywords**: Failing to tailor your resume to the specific job description can result in a [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) that the ATS filters out. [How ATS Detects a Generic Resume - And Why It Filters You Out](https://thetailorcv.com/blog/how-ats-detects-generic-resume) provides insights into how to include relevant keywords effectively.
 
 2. **Overcomplicating Formatting**: Using complex layouts, graphics, or unusual fonts can confuse the ATS. Stick to simple formatting with clear headings and bullet points. For a deep dive into this topic, check out [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
 

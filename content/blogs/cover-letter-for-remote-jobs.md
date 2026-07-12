@@ -72,7 +72,7 @@ When applying for remote jobs, it's crucial to highlight your skills that are pa
 
 ### Use Concrete Examples
 
-When drafting your cover letter, use specific examples that demonstrate your remote work capabilities. For instance:
+When drafting your cover letter, use [specific examples](https://thetailorcv.com/blog/cover-letter-guide-2026) that demonstrate your remote work capabilities. For instance:
 
 - **Project Management:** "I successfully led a team project that resulted in a 30% increase in productivity by implementing clear communication guidelines and utilizing project management tools like Trello and Asana."
 - **Collaboration:** "Collaborating with a diverse team in different time zones, I facilitated a weekly sync-up that ensured everyone was aligned and informed, resulting in a 15% reduction in project delays."
@@ -144,7 +144,7 @@ Crafting a compelling cover letter for remote jobs requires a focused approach t
 
 ### Do I need remote work experience to apply for a remote job?
 
-No - freelance work, self-directed projects, or even coursework completed independently can demonstrate the same qualities. Frame it honestly using [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) if you're early career. You can also refer to our [remote job search guide](https://thetailorcv.com/blog/remote-job-search-guide) for more insights.
+No - [freelance work](https://thetailorcv.com/blog/cover-letter-no-work-experience), self-directed projects, or even coursework completed independently can demonstrate the same qualities. Frame it honestly using [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) if you're early career. You can also refer to our [remote job search guide](https://thetailorcv.com/blog/remote-job-search-guide) for more insights.
 
 ### Should I mention my home office setup?
 

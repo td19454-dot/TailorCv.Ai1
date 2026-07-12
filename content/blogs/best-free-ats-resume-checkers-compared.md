@@ -21,12 +21,12 @@ Skip the guesswork and run your own resume through the [TailorCV free ATS score 
 
 Before comparing tools, know what "useful" actually looks like. A free ATS check should tell you, at minimum:
 
-- Your overall [ATS match score](https://thetailorcv.com/blog/what-is-a-good-ats-score) against the specific job description.
+- Your overall [ATS match score](https://thetailorcv.com/blog/what-is-a-good-ats-score) against the specific [job description](https://thetailorcv.com/blog/resume-job-description-match-percentage).
 - Exactly which [keywords are missing](https://thetailorcv.com/blog/hidden-keywords-in-job-description), not just a vague percentage.
 - Whether your [formatting is parser-friendly](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
 - A clear next step, not just a score with no explanation.
 
-If a "free" tool won't show you the missing keywords without paying, it isn't really free - it's a paywall with a teaser.
+If a "free" tool won't show you the [missing keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) without paying, it isn't really free - it's a paywall with a teaser.
 
 ---
 
@@ -74,7 +74,7 @@ When evaluating different ATS checkers, consider the following key features that
 
 ### Common Mistakes to Avoid
 
-Even with the best ATS checkers, job seekers still make mistakes that can hinder their chances:
+Even with the [best ATS checkers](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it), job seekers still make mistakes that can hinder their chances:
 
 - **Ignoring Formatting Guidelines**: Many candidates overlook the importance of formatting. Ensure your resume is simple and clear, avoiding complex layouts.
 - **Keyword Stuffing**: While keywords are crucial, overloading your resume with them can hurt readability and may raise red flags for recruiters.
@@ -156,4 +156,4 @@ Run your resume against the job you actually want with the [free ATS score check
 
 ## Conclusion
 
-Free ATS checkers are a starting point, not a finish line. Get your real score, fix the real gaps, and move on to tailoring and interview prep - all in one place with [TailorCV](https://www.thetailorcv.com/solutions).
+Free ATS checkers are a starting point, not a finish line. Get your [real score](https://thetailorcv.com/blog/ats-resume-data-study-2026), fix the real gaps, and move on to tailoring and interview prep - all in one place with [TailorCV](https://www.thetailorcv.com/solutions).

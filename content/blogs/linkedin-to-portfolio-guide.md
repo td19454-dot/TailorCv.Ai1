@@ -19,7 +19,7 @@ Your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - **Recommendations** - pull 2-3 of your strongest LinkedIn recommendations into a testimonials section
 
 ## What a Portfolio Adds That LinkedIn Cannot
-- **Case studies** - full project write-ups with process, decisions, and outcomes, not just a bullet
+- **Case studies** - full [project write-ups](https://thetailorcv.com/blog/project-manager-portfolio-guide) with process, decisions, and outcomes, not just a bullet
 - **Visual work** - screenshots, demos, videos, and design files that LinkedIn cannot showcase well
 - **A consistent design that is yours** - not constrained to LinkedIn's fixed template
 - **Direct contact and calls to action** - a contact form or scheduling link tailored to your job search
@@ -48,14 +48,14 @@ Do not delete or neglect LinkedIn once your portfolio is live - they serve diffe
 
 ## Step-by-Step Guide to Creating a Compelling Portfolio from Your LinkedIn Profile
 
-Transforming your LinkedIn profile into a portfolio can be straightforward if you follow a structured approach. Here's a step-by-step guide to help you effectively showcase your skills and accomplishments:
+Transforming [your LinkedIn profile](https://thetailorcv.com/blog/linkedin-headline-examples-job-seekers) into a portfolio can be straightforward if you follow a structured approach. Here's a step-by-step guide to help you effectively showcase your skills and accomplishments:
 
 1. **Identify Key Highlights**: Start by reviewing your LinkedIn profile. Identify the top three to five accomplishments or projects that best showcase your skills. Use metrics and specific examples to demonstrate impact.
 
-2. **Choose the Right Platform**: Decide where you want to build your portfolio. Options include website builders like Wix, Squarespace, or a custom domain that you can learn about [here](https://thetailorcv.com/blog/custom-domain-portfolio-guide).
+2. **Choose the Right Platform**: Decide where you want to build your portfolio. Options include website builders like Wix, Squarespace, or a [custom domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide) that you can learn about [here](https://thetailorcv.com/blog/custom-domain-portfolio-guide).
 
 3. **Create Sections**: Organize your portfolio into clear sections. Common sections include:
-   - About Me: A brief introduction that summarizes your professional journey.
+   - About Me: A brief introduction that summarizes [your professional journey](https://thetailorcv.com/blog/executive-linkedin-summary-examples).
    - Projects: Detailed descriptions of your key projects, including objectives, your role, tools used, and outcomes.
    - Testimonials: Include quotes or recommendations from colleagues or clients.
    - Skills: Highlight specific skills relevant to your industry.
@@ -75,7 +75,7 @@ Transforming your LinkedIn profile into a portfolio can be straightforward if yo
 
 Creating a portfolio can be an exciting process, but there are pitfalls to watch out for. Here are some common mistakes to avoid:
 
-- **Neglecting Mobile Optimization**: Ensure your portfolio is mobile-friendly. Many recruiters review portfolios on their smartphones, and a poorly designed mobile site can deter potential opportunities.
+- **Neglecting Mobile Optimization**: Ensure your portfolio is [mobile-friendly](https://thetailorcv.com/blog/mobile-app-developer-portfolio). Many recruiters review portfolios on their smartphones, and a poorly designed mobile site can deter potential opportunities.
 
 - **Overloading with Information**: Avoid cluttering your portfolio with excessive text or too many projects. Keep it concise and focused on your best work.
 
@@ -92,7 +92,7 @@ Creating a portfolio involves more than just showcasing your work; it’s about 
 ### Do's:
 - **Do use a professional tone**: Maintain a professional yet approachable tone throughout your portfolio.
 - **Do showcase diversity in projects**: Highlight a range of projects that demonstrate your versatility.
-- **Do include links to live projects**: If applicable, link to live versions of your work to provide context.
+- **Do include links to live projects**: If applicable, link to [live versions of your work](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) to provide context.
 - **Do integrate your LinkedIn summary**: Consider using insights from your [Executive LinkedIn Summary Examples for Senior Leaders](https://thetailorcv.com/blog/executive-linkedin-summary-examples) to craft your "About Me" section.
 
 ### Don'ts:

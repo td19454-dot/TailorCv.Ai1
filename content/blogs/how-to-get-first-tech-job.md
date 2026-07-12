@@ -139,7 +139,7 @@ Do not mass-apply to 200 companies with the same resume. Apply to 5-10 per week 
 Fully tailor your resume. Write a [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026). Research the company. Try to find someone in your network who works there.
 
 **Tier 2 - Strong fit companies** (3-5 per week)
-Tailor resume to the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). No cover letter required unless asked.
+Tailor resume to the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). No [cover letter](https://www.thetailorcv.com/cover-letter) required unless asked.
 
 **Tier 3 - Practice companies** (2-3 per week)
 Apply with your best general resume. Use these to practice interviews early.

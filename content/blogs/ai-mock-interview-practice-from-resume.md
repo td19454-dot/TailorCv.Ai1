@@ -12,11 +12,11 @@ keywords: AI mock interview from resume, mock interview practice online, resume 
 
 AI [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) practice from your resume is more useful than generic interview questions because it asks about your actual projects, skills, and experience. That makes the practice closer to a real interview, and it surfaces the exact spots where your own story falls apart under questioning. A generic question bank cannot do that, because it has never seen your [resume](https://thetailorcv.com/blog/projects-in-resume).
 
-Try the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) and read the [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) for the full practice workflow. This post focuses specifically on how resume-driven question generation works and how to use it well.
+Try the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) and read the [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) for the full practice workflow. This post focuses specifically on how [resume-driven question generation](https://thetailorcv.com/blog/technical-interview-preparation-guide) works and how to use it well.
 
 ## How Resume-Derived Interview Questions Actually Work
 
-Generic interview prep tools pull from a fixed list: "Tell me about a time you failed," "What's your biggest weakness," and so on. Resume-based mock interview tools work differently. They read your actual bullets, job titles, tools, and metrics, then generate questions that only make sense because of what you wrote.
+Generic interview prep tools pull from a fixed list: "Tell me about a time you failed," "What's your biggest weakness," and so on. Resume-based [mock interview](https://thetailorcv.com/blog/mock-interview-practice-free) tools work differently. They read your actual bullets, job titles, tools, and metrics, then generate questions that only make sense because of what you wrote.
 
 The process usually looks like this:
 

@@ -16,7 +16,7 @@ This is not a controlled lab experiment - it's an observational look at what ten
 
 ## How we looked at this
 
-When someone runs a resume through the ATS score checker, the tool compares it against a specific job description and returns a match score along with the gaps driving that score down: missing keywords, parsing problems, weak relevance, and thin evidence of impact. Looking across a large number of these comparisons - rather than any single resume - makes it possible to see which categories of problems show up again and again, and roughly how much each one tends to matter relative to the others.
+When someone runs a resume through the [ATS score checker](https://www.thetailorcv.com/solutions), the tool compares it against a specific job description and returns a match score along with the gaps driving that score down: missing keywords, parsing problems, weak relevance, and thin evidence of impact. Looking across a large number of these comparisons - rather than any single resume - makes it possible to see which categories of problems show up again and again, and roughly how much each one tends to matter relative to the others.
 
 That is the scope of what follows: a pattern read across many resume-to-job-description comparisons, not a peer-reviewed study and not a promise about your specific outcome. We are intentionally not attaching invented percentages or sample sizes to these observations - the point of this piece is to explain the *why* behind the pattern and the *what to do about it*, not to dress up a blog post with numbers that would not hold up to scrutiny.
 

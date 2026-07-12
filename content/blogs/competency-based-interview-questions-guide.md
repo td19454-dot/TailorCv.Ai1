@@ -10,7 +10,7 @@ image: public/blog-images/competency-based-interview-questions-guide.webp
 
 Competency-based interviews - also called skills-based or structured interviews - assess whether you demonstrate specific competencies required for the role. Instead of casual conversation, interviewers score your answers against predefined criteria: leadership, communication, problem-solving, adaptability, and more.
 
-Used by Fortune 500 companies, government agencies, and structured hiring programs, competency interviews require **prepared, evidence-based answers**. This guide covers how to prepare in 2026.
+Used by Fortune 500 companies, government agencies, and structured hiring programs, competency interviews require **[prepared, evidence-based answers](https://www.thetailorcv.com/cover-letter)**. This guide covers how to prepare in 2026.
 
 Practice competency answers with [AI mock interviews](https://thetailorcv.com/mock-interview). Also read [behavioral interview questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), [STAR method guide](https://thetailorcv.com/blog/star-method-interview-answers-guide), [situational questions](https://thetailorcv.com/blog/situational-interview-questions-answers), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
@@ -143,7 +143,7 @@ Research how interviewers score responses. Many organizations use a scale (e.g.,
 | Senior / Executive | Strategic thinking, influence, change management |
 | [Career Changers](https://thetailorcv.com/blog/career-change-to-tech-guide) | Transferable skills, adaptability, motivation |
 
-Understanding the competencies relevant to your career stage can help you focus your preparation effectively. 
+Understanding the competencies relevant to your [career stage](https://thetailorcv.com/blog/recession-proof-jobs-2026) can help you focus your preparation effectively. 
 
 ### Additional Resources
 

@@ -1,6 +1,6 @@
 ﻿---
 title: Group Interview Tips and Strategies - How to Stand Out Among Other Candidates (2026)
-description: Learn how to succeed in group interviews where multiple candidates are assessed together. Tips for collaboration, leadership, and communication plus AI mock interview practice.
+description: Learn how to succeed in group interviews where multiple candidates are assessed together. Tips for collaboration, leadership, and communication plus AI [mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) practice.
 date: 2026-07-05
 author: TailorCV Team
 tags: [Group Interview, Interview Tips, Interview Preparation, Multiple Candidates, Mock Interview]

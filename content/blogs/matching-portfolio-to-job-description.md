@@ -58,7 +58,7 @@ If you maintain multiple versions of your portfolio for different types of roles
 
 ## Step 4: Rewrite Project Descriptions to Mirror the Job's Language
 
-Your project descriptions should not just describe what you built. They should use the same terminology the job description uses, wherever it is accurate.
+Your project descriptions should not just describe what you built. They should use the same terminology the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) uses, wherever it is accurate.
 
 **Weak:** "Built a web app that helps users track their spending."
 
@@ -86,7 +86,7 @@ Not every project deserves the same prominence. Feature what is relevant; archiv
 
 ### Ignoring the Job Description's Specific Language
 
-If the job description repeatedly emphasizes "scalability" or "cross-functional collaboration," and your project descriptions never mention either, you are leaving an easy match on the table.
+If the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) repeatedly emphasizes "scalability" or "cross-functional collaboration," and your project descriptions never mention either, you are leaving an easy match on the table.
 
 ### Forgetting to Link the Portfolio From Your Resume
 

@@ -14,7 +14,7 @@ A fully optimized [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profi
 
 This guide covers every section of your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) and how to optimize each one for recruiter visibility, keyword matching, and professional credibility.
 
-This works alongside a strong resume. For resume optimization, use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). For active job searching on LinkedIn, read the [LinkedIn job search guide](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). For cold outreach strategy, see the [cold email recruiter guide](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter).
+This works alongside a [strong resume](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync). For resume optimization, use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). For [active job searching](https://thetailorcv.com/blog/networking-tips-for-job-search) on LinkedIn, read the [LinkedIn job search guide](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). For cold outreach strategy, see the [cold email recruiter guide](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter).
 
 ---
 
@@ -88,7 +88,7 @@ Structure:
 "Most recently, I led the backend redesign of a payment reconciliation service at FinTech Corp - reducing nightly batch processing time from 4 hours to 28 minutes, handling 1.8M daily transactions."
 
 **Paragraph 3 - What you are looking for:**
-"I'm currently exploring senior backend and platform engineering roles at product companies or scale-ups working on interesting technical challenges."
+"I'm currently exploring senior backend and platform engineering roles at product companies or scale-ups working on interesting [technical challenges](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)."
 
 **CTA:**
 "Feel free to reach out: [email] or connect here."
@@ -142,7 +142,7 @@ A strong recommendation is specific: names a project, describes your contributio
 
 ## Open to Work Setting
 
-If you are actively job searching:
+If you are actively [job searching](https://thetailorcv.com/blog/how-to-decline-job-offer):
 
 1. Click the "Open to" button on your profile
 2. Select "Finding a new job"
@@ -168,7 +168,7 @@ Choose **"Recruiters only"** to keep it invisible to your current employer. Choo
 
 To rank for "Senior Backend Engineer" searches:
 - Include "backend engineer" or "[backend developer](https://thetailorcv.com/blog/backend-developer-resume-2026)" in your headline and summary
-- List your specific technologies (Python, Node.js, PostgreSQL) in skills
+- List your [specific technologies](https://thetailorcv.com/blog/business-analyst-portfolio-guide) (Python, Node.js, PostgreSQL) in skills
 - Use the job title "Backend Engineer" (not a creative internal title) in your experience
 
 ---
@@ -192,7 +192,7 @@ Even 30 minutes per week of [LinkedIn](https://thetailorcv.com/blog/how-to-use-l
 - Professional photo
 - Background banner
 - Optimized headline with skills
-- About section with specific achievement + CTA
+- About section with [specific achievement](https://thetailorcv.com/blog/portfolio-checklist-before-applying) + CTA
 - All experience entries with [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) and metrics
 - 50 skills added
 - 5+ endorsements on top skills
@@ -231,7 +231,7 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
 ## Conclusion
-A fully optimized [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) attracts inbound recruiter messages, increases your network-based referrals, and positions you as a credible professional in your field. A weak profile with a default headline and no skills is almost invisible in recruiter search.
+A fully optimized [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) attracts [inbound recruiter messages](https://thetailorcv.com/blog/how-to-follow-up-after-interview), increases your network-based referrals, and positions you as a credible professional in your field. A weak profile with a default headline and no skills is almost invisible in recruiter search.
 
 Spend 2-3 hours optimizing your profile fully, then maintain it with weekly activity. Pair it with a strong resume optimized using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and use the [LinkedIn job search guide](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for active job search strategy.
 
@@ -262,4 +262,4 @@ The LinkedIn background banner is a valuable opportunity to express your profess
 To ensure your LinkedIn profile complements your resume, both should reflect the same skills, experiences, and achievements. Use our [free ATS score checker](https://www.thetailorcv.com/solutions) to analyze your resume's effectiveness and make necessary adjustments to your LinkedIn profile accordingly. Consistency is key for a strong personal brand.
 
 ### What are some common mistakes to avoid when optimizing my LinkedIn profile?
-Common mistakes include using a generic headline, leaving sections incomplete, and failing to include relevant skills. Profiles that lack detail and specificity are less likely to catch recruiters' attention. Avoid these pitfalls to enhance your profile's effectiveness and consider reviewing our article on [11 portfolio mistakes that cost you interviews](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid) for additional insights. Additionally, explore our [portfolio checklist](https://thetailorcv.com/blog/portfolio-checklist-before-applying) to ensure you have all necessary elements in place.
+Common mistakes include using a generic headline, leaving sections incomplete, and failing to include [relevant skills](https://thetailorcv.com/blog/resume-red-flags). Profiles that lack detail and specificity are less likely to catch recruiters' attention. Avoid these pitfalls to enhance your profile's effectiveness and consider reviewing our article on [11 portfolio mistakes that cost you interviews](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid) for additional insights. Additionally, explore our [portfolio checklist](https://thetailorcv.com/blog/portfolio-checklist-before-applying) to ensure you have all necessary elements in place.
