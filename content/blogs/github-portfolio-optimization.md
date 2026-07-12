@@ -1,3 +1,10 @@
+---
+title: Github Portfolio Optimization
+date: 2026-07-12
+author: TailorCV Team
+slug: github-portfolio-optimization
+image: public/blog-images/github-portfolio-optimization.webp
+---
 
 ## GitHub Portfolio Optimization: Make Recruiters Take You Seriously
 

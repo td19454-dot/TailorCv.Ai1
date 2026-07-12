@@ -1,3 +1,10 @@
+---
+title: Portfolio Domain Name Guide
+date: 2026-07-12
+author: TailorCV Team
+slug: portfolio-domain-name-guide
+image: public/blog-images/portfolio-domain-name-guide.webp
+---
 
 Your domain is your personal brand's address - the thing you say out loud in interviews and print on your resume. A clean one is worth the ~$10/year many times over. Pair this with [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 

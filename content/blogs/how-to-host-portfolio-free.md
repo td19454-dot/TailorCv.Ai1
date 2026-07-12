@@ -1,3 +1,10 @@
+---
+title: How to Host Portfolio Free
+date: 2026-07-12
+author: TailorCV Team
+slug: how-to-host-portfolio-free
+image: public/blog-images/how-to-host-portfolio-free.webp
+---
 
 ## How to Host Your Portfolio Website for Free (2026 Guide)
 

@@ -1,3 +1,10 @@
+---
+title: Competency Based Interview Questions Guide
+date: 2026-07-12
+author: TailorCV Team
+slug: competency-based-interview-questions-guide
+image: public/blog-images/competency-based-interview-questions-guide.webp
+---
 
 ## Competency-Based Interview Questions - Complete Guide with Examples (2026)
 

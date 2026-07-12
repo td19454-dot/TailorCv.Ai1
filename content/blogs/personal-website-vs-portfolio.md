@@ -1,3 +1,10 @@
+---
+title: Personal Website vs Portfolio
+date: 2026-07-12
+author: TailorCV Team
+slug: personal-website-vs-portfolio
+image: public/blog-images/personal-website-vs-portfolio.webp
+---
 
 People use "personal website" and "portfolio" interchangeably, but they serve slightly different goals - and knowing the difference helps you build the right thing instead of over- or under-investing. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume).
 

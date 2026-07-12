@@ -1,3 +1,10 @@
+---
+title: Portfolio SEO Get Found
+date: 2026-07-12
+author: TailorCV Team
+slug: portfolio-seo-get-found
+image: public/blog-images/portfolio-seo-get-found.webp
+---
 
 ## Portfolio SEO: How to Get Your Portfolio Found on Google
 

@@ -1,3 +1,10 @@
+---
+title: Add Portfolio Link to Resume
+date: 2026-07-12
+author: TailorCV Team
+slug: add-portfolio-link-to-resume
+image: public/blog-images/add-portfolio-link-to-resume.png
+---
 
 A portfolio only helps if recruiters can find and click it - and surprisingly many candidates either hide the link, format it badly, or let it 404. Here is how to add it so it works for both humans and Applicant Tracking Systems. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Make a Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 

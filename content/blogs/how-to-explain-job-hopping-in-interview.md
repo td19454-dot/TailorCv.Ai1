@@ -1,3 +1,10 @@
+---
+title: How to Explain Job Hopping in Interview
+date: 2026-07-12
+author: TailorCV Team
+slug: how-to-explain-job-hopping-in-interview
+image: public/blog-images/how-to-explain-job-hopping-in-interview.png
+---
 
 Changing jobs every 12-18 months used to be a career killer. In 2026, the landscape is more nuanced - layoffs, startup instability, contract work, and rapid skill growth all contribute to shorter tenures. But interviewers still ask: **"Why have you changed jobs so frequently?"**
 

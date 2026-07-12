@@ -1,3 +1,10 @@
+---
+title: Remote Job Interview Preparation 2026
+date: 2026-07-12
+author: TailorCV Team
+slug: remote-job-interview-preparation-2026
+image: public/blog-images/remote-job-interview-preparation-2026.webp
+---
 
 ## Remote Job Interview Preparation - Video Interview Tips for 2026
 

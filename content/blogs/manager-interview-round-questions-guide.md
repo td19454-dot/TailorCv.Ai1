@@ -1,3 +1,10 @@
+---
+title: Manager Interview Round Questions Guide
+date: 2026-07-12
+author: TailorCV Team
+slug: manager-interview-round-questions-guide
+image: public/blog-images/manager-interview-round-questions-guide.webp
+---
 
 ## Manager Round Interview Questions - What Hiring Managers Ask in 2026
 
