@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css?v=9">
+    <link rel="stylesheet" href="/static/blog.css?v=10">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -104,9 +104,16 @@
         </header>
 
         <div class="post-layout">
-            <aside class="toc">
-                <h2>Table of contents</h2>
-                {{ post.toc_html | safe }}
+            <aside class="toc-col">
+                <div class="toc">
+                    <h2>Table of contents</h2>
+                    {{ post.toc_html | safe }}
+                </div>
+                <div class="toc-cta">
+                    <p class="toc-cta-title">Boost your resume in minutes</p>
+                    <p class="toc-cta-text">Scan your resume against any job with the free ATS score checker.</p>
+                    <a class="toc-cta-btn" href="{{ hero_cta.url }}">{{ hero_cta.label }}</a>
+                </div>
             </aside>
 
             <section class="post-content">{{ post.content_html | safe }}</section>
