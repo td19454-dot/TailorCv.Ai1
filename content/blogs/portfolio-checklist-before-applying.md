@@ -51,7 +51,72 @@ Fix any gaps fast by rebuilding with the [portfolio builder](https://thetailorcv
 
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
+## Common Mistakes to Avoid in Your Portfolio
 
+Creating a standout portfolio is a crucial step in your job application process, but there are several pitfalls that can undermine your efforts. Here are some common mistakes to avoid:
+
+1. **Neglecting Your Audience**: Tailor your portfolio to the specific industry or role you’re applying for. For example, a graphic designer should emphasize visual projects while a business analyst might focus on case studies and data analysis. 
+
+2. **Overloading with Content**: It's tempting to showcase every project you've ever worked on, but less is often more. Choose a few of your best works that highlight your skills and relevance to the job you're targeting.
+
+3. **Ignoring Mobile Optimization**: A significant number of employers review portfolios on mobile devices. Ensure your portfolio is responsive and looks good on all screen sizes.
+
+4. **Lack of Updates**: If your portfolio hasn’t been updated in over a year, it can make you seem out of touch. Regularly refresh your content to showcase your latest and most relevant work.
+
+5. **Poor Navigation**: If potential employers can’t easily find what they’re looking for, they may lose interest quickly. Ensure your portfolio has a clear, intuitive layout.
+
+## Step-by-Step Guide to Curate Your Portfolio
+
+Follow these steps to create a polished and professional portfolio:
+
+1. **Define Your Purpose**: Determine what you want to achieve with your portfolio. Are you looking for a job, freelance work, or simply showcasing your skills?
+
+2. **Select Your Best Work**: Choose 5-10 pieces that represent your skills and experience. For each project, consider including:
+   - A brief description of the project
+   - Your specific role and contributions
+   - The tools and methodologies used
+   - Any measurable outcomes or results
+
+3. **Organize Logically**: Group your projects by type or relevance. For instance, a developer might categorize projects by languages or frameworks used.
+
+4. **Write Engaging Descriptions**: Use clear and concise language. Highlight not just what you did, but how you approached challenges and what you learned.
+
+5. **Incorporate Visuals**: Especially for creative roles, high-quality images, videos, or interactive elements can make your portfolio more engaging.
+
+6. **Seek Feedback**: Before finalizing, share your portfolio with trusted peers or mentors for constructive criticism. 
+
+7. **Finalize and Launch**: Once you've made adjustments based on feedback, publish your portfolio on a custom domain to enhance professionalism. For guidance, check out our [How to Put Your Portfolio on a Custom Domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide).
+
+## Do's and Don'ts for an Effective Portfolio
+
+Here’s a quick reference guide to ensure your portfolio stands out:
+
+### Do's
+- **Do Use High-Quality Images**: Ensure any visuals are clear and professionally presented.
+- **Do Include a Personal Touch**: Add an "About Me" section to give context to your work and personality.
+- **Do Utilize Testimonials**: Include quotes from clients or colleagues to build credibility.
+- **Do Keep It Current**: Regularly update your portfolio with new projects and skills.
+
+### Don'ts
+- **Don't Use Generic Templates**: Personalize your portfolio to reflect your style and professional identity.
+- **Don't Include Irrelevant Information**: Keep your content focused on your skills and accomplishments related to the job.
+- **Don't Forget to Proofread**: Spelling and grammatical errors can undermine your professionalism.
+- **Don't Overcomplicate Navigation**: Ensure viewers can easily navigate through your portfolio without confusion.
+
+## Mini Checklist for Your Portfolio
+
+Before you hit “publish,” use this mini checklist to ensure everything is in order:
+
+- [ ] Is the purpose of the portfolio clear?
+- [ ] Have I selected my best work?
+- [ ] Are project descriptions concise and informative?
+- [ ] Is the design clean and professional?
+- [ ] Are all links functioning correctly?
+- [ ] Is the portfolio mobile-friendly?
+- [ ] Have I included a call to action?
+- [ ] Is my contact information easy to find? 
+
+By following these guidelines and utilizing the resources available, like our [How to Build a Professional Portfolio in 2026](https://thetailorcv.com/blog/how-to-build-professional-portfolio), you can create a compelling portfolio that effectively showcases your skills and helps you stand out in the job market.
 
 ## Frequently Asked Questions
 

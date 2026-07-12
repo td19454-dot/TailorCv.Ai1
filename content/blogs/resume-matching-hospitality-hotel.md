@@ -96,6 +96,67 @@ Paste any front desk, guest services, or hotel management job posting into [Tail
 
 ---
 
+## Step-by-Step Guide to Tailoring Your Resume for Hospitality Roles
+
+1. **Analyze the Job Description**: Start by breaking down the job description into key components. Identify the required skills, qualifications, and experiences. Use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) to ensure you cover all aspects.
+
+2. **Create a Keyword Map**: Once you've extracted the critical elements, develop a keyword map using the [Resume Keyword Map Template - Match Your Resume to Any Job Description](https://thetailorcv.com/blog/resume-keyword-map-template). This will help you visualize how your existing experience aligns with the job requirements.
+
+3. **Highlight Relevant Experience**: Tailor your work history by emphasizing roles and responsibilities that directly relate to the job description. For example, if the job emphasizes customer service, detail your experience handling guest inquiries and resolving complaints.
+
+4. **Adjust Your Summary Statement**: Craft a compelling summary statement that reflects your career goals and aligns with the hospitality role. Use keywords from the job description to ensure your summary resonates with hiring managers.
+
+5. **Showcase Soft Skills**: Hospitality roles often require strong interpersonal skills. Be sure to highlight relevant soft skills, such as communication, teamwork, and problem-solving, using examples from your past experiences.
+
+6. **Include Certifications and Training**: If applicable, mention any hospitality certifications or training programs that enhance your candidacy. This could include food safety certifications, first aid training, or hospitality management courses.
+
+7. **Proofread and Format**: Finally, ensure that your resume is free from errors and formatted for easy readability. Use clear headings, bullet points, and consistent font styles to enhance visual appeal.
+
+## Common Mistakes to Avoid When Tailoring Your Resume
+
+1. **Using a Generic Resume**: One of the biggest mistakes is submitting a one-size-fits-all resume. Tailor your resume for each application by focusing on the specific job description.
+
+2. **Ignoring Keywords**: Failing to incorporate relevant keywords can lead your resume to be overlooked by Applicant Tracking Systems (ATS). Always align your resume with the job description keywords.
+
+3. **Overloading with Irrelevant Experience**: Including too much unrelated experience can dilute your resume's impact. Focus on relevant roles and achievements that demonstrate your suitability for the hospitality position.
+
+4. **Neglecting Quantifiable Achievements**: When detailing your experience, avoid vague statements. Instead, use quantifiable achievements, such as "Increased guest satisfaction scores by 20% over six months."
+
+5. **Skipping the Cover Letter**: Even if not required, a well-crafted cover letter can complement your resume. Use it to provide additional context about your experience and express your enthusiasm for the role. Consider using [TailorCV’s cover letter solutions](https://www.thetailorcv.com/cover-letter) for guidance.
+
+## Mini Checklist for Hospitality Job Applications
+
+- [ ] **Job Description Analysis**: Have you analyzed the job description thoroughly?
+- [ ] **Keyword Integration**: Did you incorporate relevant keywords from the job description?
+- [ ] **Tailored Summary**: Is your summary statement customized for the specific role?
+- [ ] **Relevant Experience**: Have you highlighted only the most relevant work experiences?
+- [ ] **Soft Skills**: Are your soft skills clearly demonstrated with examples?
+- [ ] **Certifications**: Have you included any relevant certifications or training?
+- [ ] **Proofreading**: Is your resume free of grammatical errors and typos?
+- [ ] **Cover Letter**: Did you prepare a tailored cover letter to accompany your resume?
+
+## Short Scenarios to Illustrate Resume Matching
+
+1. **Scenario 1**: You’re applying for a Front Desk Manager role that emphasizes customer service and team leadership. Your resume should focus on your previous experience managing a front desk team, highlighting how you implemented new customer service protocols. Mention specific metrics, such as improved check-in times or guest satisfaction scores.
+
+2. **Scenario 2**: You see a job listing for a Hotel Sales Coordinator. Your resume should reflect your experience in sales, mentioning successful campaigns or partnerships you’ve developed in previous roles. Include any relevant metrics, such as increased revenue or market share.
+
+3. **Scenario 3**: A hotel is seeking a Housekeeping Supervisor with a focus on training staff. In this case, your resume should detail your experience in training and mentoring housekeeping staff, showcasing any improvements in efficiency or cleanliness ratings during your tenure.
+
+## Do's and Don'ts of Resume Matching in Hospitality
+
+### Do's:
+- **Do personalize your resume for each job application**.
+- **Do use action verbs** to describe your accomplishments.
+- **Do quantify your achievements** to demonstrate impact.
+- **Do research the hotel or hospitality brand** to align your resume with their values and mission.
+
+### Don'ts:
+- **Don't copy-paste job descriptions** into your resume; personalize your wording.
+- **Don't use jargon or overly complex language**; keep it simple and professional.
+- **Don't forget to update your contact information** and ensure all links (e.g., LinkedIn) are active.
+- **Don't overlook the importance of visual appeal**; a cluttered resume can detract from your message.
+
 ## Frequently Asked Questions
 
 ### Do hotels really use ATS to screen entry-level resumes?

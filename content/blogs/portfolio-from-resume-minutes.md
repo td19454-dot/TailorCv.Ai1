@@ -47,6 +47,83 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Broken project links - audit with the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 - See [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 
+## Step-by-Step Guide to Showcasing Projects
+
+Creating a portfolio website is not just about displaying your resume; it’s also about showcasing the projects that highlight your skills. Here’s a quick guide to effectively presenting your work:
+
+1. **Select Your Best Projects**: Choose 3-5 projects that best represent your skills and achievements. Focus on quality over quantity.
+
+2. **Create Case Studies**: For each project, write a brief case study that includes:
+   - **Project Overview**: A short description of what the project is about.
+   - **Your Role**: Clearly define your contributions.
+   - **Outcome**: Include measurable results, such as percentage increases in efficiency or revenue.
+
+3. **Include Visuals**: Use images, graphs, or videos to illustrate your work. Visuals can make your portfolio more engaging and help potential employers understand your projects better.
+
+4. **Use Clear Headings and Subheadings**: Make it easy for visitors to navigate through your projects. Use headings like "Overview," "My Role," and "Results."
+
+5. **Add a Call to Action**: Encourage viewers to reach out for more information or to discuss potential opportunities.
+
+By following these steps, you can create compelling project showcases that will resonate with potential employers.
+
+## Portfolio Design Do's and Don'ts
+
+When designing your portfolio website, aesthetics play a significant role in how your work is perceived. Here are some do's and don’ts to keep in mind:
+
+### Do's
+- **Keep It Simple**: A clean, straightforward design helps visitors focus on your content.
+- **Use Consistent Branding**: Align your portfolio's colors, fonts, and styles with your personal brand.
+- **Make Navigation Easy**: Ensure that visitors can easily find what they're looking for with a clear menu structure.
+- **Optimize for Mobile**: Many users will visit your site on mobile devices; ensure it's responsive and looks good on all screens.
+
+### Don'ts
+- **Avoid Clutter**: Too much information can overwhelm visitors. Stick to essential content.
+- **Don’t Use Distracting Animations**: While animations can add flair, too many can distract from your work.
+- **Avoid Generic Templates**: Stand out by customizing templates rather than using the default designs provided by portfolio builders.
+
+By following these guidelines, you will create a visually appealing and user-friendly portfolio that showcases your talents effectively.
+
+## Common Scenarios: When to Use Your Portfolio vs. Resume
+
+Understanding when to present your portfolio versus your resume can be crucial during the job search. Here are a few scenarios to help you decide:
+
+- **Scenario 1: Networking Event**  
+  **Use Your Portfolio**: At networking events, a portfolio allows you to visually demonstrate your work and engage in deeper conversations about your projects.
+
+- **Scenario 2: Job Application**  
+  **Use Your Resume**: When applying for a job, your resume should be the primary document, as it's more concise and tailored to the specific role.
+
+- **Scenario 3: Interview**  
+  **Use Both**: In interviews, bring both your resume and portfolio. The resume provides a quick overview, while the portfolio allows you to delve into specific projects.
+
+- **Scenario 4: Informational Interview**  
+  **Use Your Portfolio**: During an informational interview, your portfolio can help you showcase your skills and projects, making it easier for the person you're meeting to understand your capabilities.
+
+By knowing when to use each document, you can maximize your chances of making a positive impression.
+
+## Mini Checklist for Your Portfolio Launch
+
+Before you launch your portfolio website, use this checklist to ensure everything is in order:
+
+- [ ] **Review Content**: Double-check all text for spelling and grammatical errors.
+- [ ] **Test Links**: Ensure all links to projects and social media work correctly.
+- [ ] **Mobile Optimization**: Test the site on various devices to ensure it displays correctly.
+- [ ] **SEO Basics**: Implement basic SEO practices, such as meta descriptions and alt tags for images.
+- [ ] **Analytics Setup**: Integrate analytics tools to track visitor behavior and engagement.
+- [ ] **Feedback**: Share your portfolio with a few trusted peers for feedback before launching.
+
+By following this checklist, you can confidently launch a polished portfolio that showcases your work effectively.
+
+## Portfolio Maintenance Tips
+
+Once your portfolio is live, it’s essential to keep it updated. Here are some maintenance tips to ensure it remains relevant:
+
+- **Regular Updates**: Schedule monthly reviews to add new projects and remove outdated ones.
+- **Content Refresh**: Update your case studies with new outcomes and metrics as you achieve them.
+- **Engage with Visitors**: If your portfolio allows comments or messages, respond promptly to inquiries and feedback.
+- **Stay Current**: Reflect any changes in your career, such as new skills or certifications, on your website.
+
+By maintaining your portfolio, you ensure it accurately reflects your current skills and experiences, helping you stay competitive in the job market.
 
 ## Frequently Asked Questions
 

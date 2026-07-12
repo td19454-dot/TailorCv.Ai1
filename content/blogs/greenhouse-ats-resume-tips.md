@@ -87,6 +87,82 @@ Startups move fast, and so should your application. Paste the Greenhouse job pos
 
 ---
 
+## Scenario-Based Resume Matching
+
+Understanding how to tailor your resume for a Greenhouse ATS can be greatly enhanced by considering various scenarios. Here are three hypothetical job postings and how to adapt your resume accordingly:
+
+### Scenario 1: Marketing Coordinator
+
+**Job Description Highlights:**
+- Required: Experience with social media management, SEO, and content creation.
+- Preferred: Familiarity with Google Analytics and PPC campaigns.
+
+**Resume Adaptation:**
+- **Highlight Relevant Experience:** In your professional experience section, include bullet points that showcase your social media campaigns and SEO projects. Use specific metrics (e.g., “Increased organic traffic by 30% through targeted SEO strategies”).
+- **Education and Certifications:** If you have taken courses or received certifications in Google Analytics, list these in your education section.
+- **Keywords:** Use terms like "social media management" and "SEO" prominently in your summary and skills sections to align with the job description.
+
+### Scenario 2: Software Engineer
+
+**Job Description Highlights:**
+- Required: Proficiency in Java and Python, experience with Agile methodologies.
+- Preferred: Knowledge of cloud computing platforms.
+
+**Resume Adaptation:**
+- **Technical Skills Section:** Ensure Java and Python are listed at the top of your technical skills. If you have experience with cloud platforms, mention specific technologies like AWS or Azure.
+- **Project Descriptions:** In your project descriptions, elaborate on your role in Agile teams. Use phrases such as "Participated in sprint planning and daily stand-ups" to reflect your familiarity with Agile methodology.
+- **Certifications:** If you have relevant certifications in cloud computing, include them in a dedicated section to draw attention.
+
+### Scenario 3: Customer Support Specialist
+
+**Job Description Highlights:**
+- Required: Strong communication skills, experience with CRM software.
+- Preferred: Bilingual and previous experience in a remote work setting.
+
+**Resume Adaptation:**
+- **Soft Skills Emphasis:** In your summary, mention your strong communication skills explicitly. For example, “Bilingual professional with exceptional communication abilities.”
+- **CRM Experience:** Clearly state your experience with CRM tools like Salesforce or Zendesk in your work history.
+- **Remote Work Experience:** If applicable, highlight past roles that were remote. Use phrasing like "Successfully managed customer inquiries while working remotely" to showcase your adaptability.
+
+## Common Mistakes to Avoid When Matching Your Resume
+
+1. **Ignoring Required Qualifications:** Always prioritize meeting the required qualifications over preferred ones. Ensure your resume clearly reflects your qualifications for the essential skills listed in the job description.
+  
+2. **Overloading Your Resume with Keywords:** While keywords are crucial, avoid stuffing your resume with them. Ensure that your usage of keywords sounds natural and relevant to your actual experience.
+
+3. **Neglecting the Job Description Structure:** If the job description has sections, mimic that structure in your resume. For example, if they highlight required skills, create a similar section in your resume to match.
+
+4. **Using Generic Language:** Avoid vague phrases like “responsible for” or “involved in.” Instead, use action verbs and specific achievements to demonstrate your impact clearly.
+
+5. **Failing to Update Your Resume:** If you’re applying to a variety of jobs, don’t use the same resume for every application. Tailor each resume to reflect the specifics of the job description.
+
+## Step-by-Step Guide to Creating a Keyword Map
+
+Creating a keyword map can significantly improve your chances of passing through the Greenhouse ATS. Here’s how to do it:
+
+1. **Collect Job Descriptions:** Gather several job postings for the role you’re interested in. Look for patterns in the language used.
+
+2. **Identify Keywords:** Highlight important keywords, phrases, and job titles from these postings. Focus on both required and preferred qualifications.
+
+3. **Categorize Keywords:** Organize keywords into categories such as technical skills, soft skills, and industry-specific terms. This can help you visualize what to prioritize.
+
+4. **Match Your Experience:** For each keyword, write down a corresponding experience or achievement from your career that demonstrates your proficiency in that area.
+
+5. **Create a Final Document:** Compile your keyword map into a document that you can reference while tailoring your resume for different applications. This will streamline the process and ensure you don’t miss key terms.
+
+## Mini Checklist for Resume Optimization
+
+Before submitting your resume through Greenhouse, use this checklist to ensure you’ve covered all bases:
+
+- [ ] **Job Description Analysis:** Have you analyzed the job description for required and preferred qualifications? [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist)
+- [ ] **Keyword Inclusion:** Are the relevant keywords from the job description included in your resume?
+- [ ] **Tailored Summary:** Does your summary reflect the most critical skills and experiences relevant to the position?
+- [ ] **Quantifiable Achievements:** Have you included metrics or specific achievements to back up your claims?
+- [ ] **Formatting Compliance:** Is your resume formatted according to Greenhouse’s best practices?
+- [ ] **Proofreading:** Have you proofread your resume for spelling and grammar errors?
+
+By following these practical tips and guidelines, you’ll enhance your resume’s compatibility with the Greenhouse ATS, ultimately increasing your chances of landing an interview. For additional support, consider using [TailorCV’s ATS checker](https://www.thetailorcv.com/solutions) and templates to streamline your application process.
+
 ## Frequently Asked Questions
 
 ### Do startups using Greenhouse really filter resumes by keywords?
