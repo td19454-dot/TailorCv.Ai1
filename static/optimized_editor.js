@@ -584,6 +584,12 @@ body {
                 "display:flex;align-items:center;justify-content:center;padding:20px;",
                 "animation:tcvProDlIn .22s ease;}",
 
+                /* Mounted inside the resume iframe: the iframe box can be much taller than",
+                   the visible viewport (auto-sized to the full multi-page resume), so",
+                   vertical centering can push the card far below the fold. Pin it near",
+                   the top of the iframe instead so it's visible immediately. */
+                "#tcv-pro-dl-overlay.tcv-pro-dl-top{align-items:flex-start;padding-top:36px;}",
+
                 "#tcv-pro-dl-overlay,#tcv-pro-dl-overlay *{box-sizing:border-box;}",
                 "#tcv-pro-dl-modal{position:relative;background:linear-gradient(155deg,#0c1730,#071020);",
                 "border:1px solid rgba(56,189,248,.35);border-radius:20px;padding:1.1rem 1.4rem 1.2rem;",
@@ -716,6 +722,7 @@ body {
 
         const overlay = targetDoc.createElement("div");
         overlay.id = "tcv-pro-dl-overlay";
+        if (!closable) overlay.className = "tcv-pro-dl-top";
         overlay.innerHTML =
             '<div id="tcv-pro-dl-modal">' +
                 (closable ? '<button id="tcv-pro-dl-close" aria-label="Close">&times;</button>' : '') +
