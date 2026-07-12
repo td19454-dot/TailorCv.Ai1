@@ -1,4 +1,4 @@
-﻿---
+---
 title: Electrical Engineer Resume 2026 - Complete Guide with Examples
 description: Write an electrical engineer resume in 2026 with the right ATS keywords, PCB design skills, embedded experience, and bullet points that show system-level impact.
 date: 2026-06-01

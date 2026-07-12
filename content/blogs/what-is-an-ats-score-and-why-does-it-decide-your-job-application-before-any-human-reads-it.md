@@ -1,4 +1,4 @@
-﻿---
+---
 title: What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It
 description: Understand what an ATS score means, how resume screening works, what lowers your score, and how to improve every job application before recruiters read it.
 date: 2026-05-28

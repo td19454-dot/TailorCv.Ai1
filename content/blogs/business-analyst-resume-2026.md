@@ -1,6 +1,6 @@
-﻿---
+---
 title: Business Analyst Resume 2026 - Complete Guide with Examples
-description: Write a business analyst resume in 2026 with the right ATS keywords, requirements documentation skills, and bullet points that show [business process](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) impact.
+description: Write a business analyst resume in 2026 with the right ATS keywords, requirements documentation skills, and bullet points that show business process impact.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Business Analyst Resume, BA Resume, Requirements Analyst, ATS Resume, Career Tips]

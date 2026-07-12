@@ -1,6 +1,6 @@
-﻿---
+---
 title: How to Prepare for Campus Placement in 2026 - Complete Guide
-description: A complete guide to preparing for campus placements in 2026. Covers resume, aptitude tests, coding rounds, group discussion, technical and [HR interviews](https://thetailorcv.com/blog/hr-round-interview-questions-answers).
+description: A complete guide to preparing for campus placements in 2026. Covers resume, aptitude tests, coding rounds, group discussion, technical and HR interviews.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Campus Placement, Placement Preparation, Student Career, Fresher Jobs, Interview Preparation]

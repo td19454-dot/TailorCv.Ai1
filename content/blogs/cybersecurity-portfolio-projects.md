@@ -1,4 +1,4 @@
-﻿---
+---
 title: Cybersecurity Portfolio Projects That Help You Get Interviews
 description: Build cybersecurity portfolio projects that prove security analysis, incident response, cloud security, scripting, and documentation skills.
 date: 2026-07-07
@@ -7,7 +7,7 @@ tags: [Cybersecurity Portfolio, Cybersecurity Resume, Projects, Tech Portfolio, 
 category: Portfolio
 image: public/blog-images/cybersecurity-portfolio-projects.webp
 slug: cybersecurity-portfolio-projects
-keywords: cybersecurity portfolio projects, cybersecurity projects for [resume](https://www.thetailorcv.com/templates), security analyst portfolio, cyber security portfolio ideas
+keywords: cybersecurity portfolio projects, cybersecurity projects for resume, security analyst portfolio, cyber security portfolio ideas
 ---
 
 A cybersecurity [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) helps hiring teams see how you think. Certifications matter, but projects prove that you can investigate, document, automate, and communicate [security work](https://www.thetailorcv.com/portfolio).

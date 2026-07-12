@@ -1,4 +1,4 @@
-﻿---
+---
 title: Scrum Master Resume 2026 - Complete Guide with Examples
 description: Write a scrum master resume in 2026 with the right ATS keywords, agile facilitation skills, and bullet points that prove team velocity and delivery improvement.
 date: 2026-06-01

@@ -1,5 +1,5 @@
-﻿---
-title: [HR Manager Resume](https://thetailorcv.com/blog/hr-recruiter-portfolio-guide) 2026 - Complete Guide with Examples
+---
+title: HR Manager Resume 2026 - Complete Guide with Examples
 description: Write an HR manager resume in 2026 with the right ATS keywords, talent acquisition skills, employee relations experience, and bullet points that show people impact.
 date: 2026-06-01
 author: TailorCV Team

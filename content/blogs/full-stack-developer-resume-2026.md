@@ -1,4 +1,4 @@
-﻿---
+---
 title: Full Stack Developer Resume 2026 - Complete Guide with Examples
 description: Write a full stack developer resume in 2026 with the right ATS keywords, React and Node skills, project examples, and bullet points that show end-to-end ownership.
 date: 2026-06-01

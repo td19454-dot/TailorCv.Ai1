@@ -1,4 +1,4 @@
-﻿---
+---
 title: Frontend Developer Portfolio Guide (2026): Make the Site Itself the Proof
 description: What to include in a frontend developer portfolio - projects, performance, accessibility, and the craft details that prove you can build polished UIs.
 date: 2026-06-24

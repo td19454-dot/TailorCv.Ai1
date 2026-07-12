@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume References - To Include or Not? Complete Guide for 2026
 description: Should you include references on your resume? Where do references go, when are they needed, and what information to provide - the complete 2026 guide to handling resume references professionally.
 date: 2026-06-06

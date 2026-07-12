@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Get a Promotion in 2026 - A Practical Career Growth Guide
 description: Learn how to get promoted in 2026. Covers how to demonstrate readiness, build visibility, get sponsorship, and make the case for advancement at your company.
 date: 2026-06-01

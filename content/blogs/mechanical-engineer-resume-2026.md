@@ -1,4 +1,4 @@
-﻿---
+---
 title: Mechanical Engineer Resume 2026 - Complete Guide with Examples
 description: Write a mechanical engineer resume in 2026 with the right ATS keywords, CAD skills, project examples, and bullet points that prove engineering impact.
 date: 2026-06-01

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Best Free ATS Friendly Resume Builder in 2026
 description: Discover what makes a resume ATS friendly, the mistakes that get you rejected, and how to build one fast with the best free ATS friendly resume builder.
 date: 2026-06-08

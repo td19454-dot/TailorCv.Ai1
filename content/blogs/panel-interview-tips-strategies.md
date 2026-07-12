@@ -1,6 +1,6 @@
-﻿---
+---
 title: Panel Interview Tips and Strategies - How to Impress Multiple Interviewers (2026)
-description: Master panel interviews with proven strategies for addressing multiple interviewers, managing eye contact, and delivering [structured answers](https://thetailorcv.com/blog/star-method-interview-guide). Practice with [AI mock interviews](https://thetailorcv.com/blog/how-to-practice-interviews-at-home).
+description: Master panel interviews with proven strategies for addressing multiple interviewers, managing eye contact, and delivering structured answers. Practice with AI mock interviews.
 date: 2026-07-03
 author: TailorCV Team
 tags: [Panel Interview, Interview Tips, Interview Preparation, Multiple Interviewers, Job Interview]

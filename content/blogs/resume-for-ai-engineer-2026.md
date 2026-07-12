@@ -1,4 +1,4 @@
-﻿---
+---
 title: AI Engineer Resume 2026 - Skills, Keywords, Projects, and Examples
 description: Write an AI engineer resume for 2026 with the right machine learning, LLM, MLOps, Python, cloud, and project keywords.
 date: 2026-07-07

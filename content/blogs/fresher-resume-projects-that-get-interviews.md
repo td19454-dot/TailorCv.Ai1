@@ -1,13 +1,13 @@
-﻿---
+---
 title: Fresher Resume Projects That Get Interviews
-description: Learn which [fresher resume projects](https://thetailorcv.com/blog/resume-for-internship-with-no-experience) attract recruiters, how to describe them, and how to make projects stronger without work experience.
+description: Learn which fresher resume projects attract recruiters, how to describe them, and how to make projects stronger without work experience.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Fresher Resume, Projects, Resume Tips, Campus Placement, ATS Resume]
 category: Resume Writing
-image: public/blog-images/fresher-[resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)-projects-that-get-interviews.webp
-slug: fresher-[resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)-projects-that-get-interviews
-keywords: fresher resume projects, [projects for resume freshers](https://thetailorcv.com/blog/resume-keyword-map-template), resume projects for students, fresher resume examples
+image: public/blog-images/fresher-resume-projects-that-get-interviews.webp
+slug: fresher-resume-projects-that-get-interviews
+keywords: fresher resume projects, projects for resume freshers, resume projects for students, fresher resume examples
 ---
 
 For [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), projects are often the strongest proof of skill. Recruiters do not expect years of experience, but they do expect evidence that you can learn, build, solve problems, and explain your work clearly.

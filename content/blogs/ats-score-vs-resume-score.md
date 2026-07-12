@@ -1,9 +1,9 @@
-﻿---
+---
 title: ATS Score vs Resume Score - What's the Difference? (2026)
-description: [ATS score](https://thetailorcv.com/blog/why-is-my-ats-score-low) and resume score sound similar but measure different things. Learn what each one means, how they overlap, and which to focus on before you apply.
+description: ATS score and resume score sound similar but measure different things. Learn what each one means, how they overlap, and which to focus on before you apply.
 date: 2026-05-31
 author: TailorCV Team
-tags: [ATS, resume, job search, [ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score)]
+tags: ATS, resume, job search, [ATS score]
 category: ATS Optimization
 image: public/blog-images/ats-score-vs-resume-score.webp
 slug: ats-score-vs-resume-score

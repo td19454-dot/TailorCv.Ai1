@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Keyword Map Template - Match Your Resume to Any Job Description
 description: Use this resume keyword map template to find required skills, missing terms, and high-priority language before you apply.
 date: 2026-07-07

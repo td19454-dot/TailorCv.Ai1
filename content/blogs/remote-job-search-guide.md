@@ -1,4 +1,4 @@
-﻿---
+---
 title: Remote Job Search Guide 2026 - How to Find and Land Remote Jobs
 description: Learn how to find and land remote jobs in 2026. Covers the best job boards, resume optimization for remote roles, interview preparation, and salary negotiation.
 date: 2026-06-01

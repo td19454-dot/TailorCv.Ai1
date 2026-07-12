@@ -1,4 +1,4 @@
-﻿---
+---
 title: 10 Generic Resume Mistakes That Are Costing You Interviews in 2026
 description: These are the most common generic resume mistakes that quietly filter you out before a recruiter reads your name. Learn each mistake and the specific fix.
 date: 2026-06-11

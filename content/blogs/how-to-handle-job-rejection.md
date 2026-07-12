@@ -1,6 +1,6 @@
-﻿---
+---
 title: How to Handle Job Rejection in 2026 - Practical Guide for Job Seekers
-description: Learn how to handle [job rejection](https://thetailorcv.com/blog/how-to-explain-getting-fired-in-an-interview) professionally in 2026. Includes how to respond to rejection emails, what to learn from them, and how to bounce back faster.
+description: Learn how to handle job rejection professionally in 2026. Includes how to respond to rejection emails, what to learn from them, and how to bounce back faster.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Job Rejection, Career Advice, Job Search Tips, Resilience, Job Hunt 2026]

@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write a Portfolio Case Study (Template + Examples)
 description: A repeatable case study template for any field - context, problem, process, solution, outcome - that turns projects into interview magnets.
 date: 2026-06-24

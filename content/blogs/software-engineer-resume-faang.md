@@ -1,4 +1,4 @@
-﻿---
+---
 title: Software Engineer Resume for FAANG in 2026
 description: Learn how to write a FAANG-ready software engineer resume with ATS keywords, strong engineering bullet points, project examples, and a clean one-page structure.
 date: 2026-05-31

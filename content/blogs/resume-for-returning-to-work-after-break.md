@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume for Returning to Work After a Career Break
 description: Write a confident resume after a career break with the right summary, skills, projects, dates, and interview positioning.
 date: 2026-07-07

@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Research a Company Before Your Job Interview in 2026
 description: Learn exactly how to research a company before a job interview in 2026. Includes what to look for, sources to use, and how to use your research to answer questions.
 date: 2026-06-01

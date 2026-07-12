@@ -1,4 +1,4 @@
-﻿---
+---
 title: Technical Interview Preparation Guide 2026 - Complete Roadmap
 description: Prepare for technical interviews in 2026 with this complete roadmap covering DSA, system design, coding practice, project discussion, and behavioral rounds.
 date: 2026-06-01

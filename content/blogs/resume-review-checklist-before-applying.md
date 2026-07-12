@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Review Checklist Before Applying
 description: Use this resume review checklist before applying to catch ATS issues, weak bullets, missing keywords, formatting mistakes, and contact errors.
 date: 2026-07-05

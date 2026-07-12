@@ -1,13 +1,13 @@
-﻿---
+---
 title: Why Your Resume Never Gets a Response - 12 Hidden ATS Mistakes Killing Your Job Search in 2026
-description: Discover the 12 less-obvious ATS mistakes that prevent your [resume](https://thetailorcv.com/blog/how-to-update-your-resume) from reaching recruiters - including file issues, contact parsing errors, and section ordering problems most guides miss.
+description: Discover the 12 less-obvious ATS mistakes that prevent your resume from reaching recruiters - including file issues, contact parsing errors, and section ordering problems most guides miss.
 date: 2026-06-03
 author: TailorCV Team
 tags: [Hidden ATS Mistakes, ATS Resume, Resume Tips, Job Search, Resume Optimization 2026]
 category: ATS Optimization
 image: public/blog-images/hidden-ats-mistakes.webp
 slug: hidden-ats-mistakes-job-search
-keywords: hidden ATS mistakes, ATS [resume](https://thetailorcv.com/blog/how-to-choose-resume-template) problems, why [resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) not getting responses, ATS rejection reasons, ATS mistakes 2026, why is my [resume](https://thetailorcv.com/blog/portfolio-from-resume-minutes) not working, silent [resume](https://thetailorcv.com/blog/fresher-resumehttpsthetailorcvcomblogbest-action-verbs-for-resume-projects-that-get-interviews) rejection
+keywords: hidden ATS mistakes, ATS resume problems, why resume not getting responses, ATS rejection reasons, ATS mistakes 2026, why is my resume not working, silent resume rejection
 ---
 
 You have fixed the obvious things. Single-column layout. Standard fonts. Keywords from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Your [resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) looks clean and professional. But you are still not getting responses.

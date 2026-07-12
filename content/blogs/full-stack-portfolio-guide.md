@@ -1,4 +1,4 @@
-﻿---
+---
 title: Full Stack Developer Portfolio Guide (2026): Prove Range and Depth
 description: Build a full stack portfolio that proves end-to-end skill - frontend polish, backend depth, and deployed apps that actually work.
 date: 2026-06-24

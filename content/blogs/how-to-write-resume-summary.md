@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write a Resume Summary in 2026 - With 20 Examples
 description: Learn how to write a powerful resume summary in 2026 that hooks recruiters in seconds. Includes the formula and 20 examples across tech, business, and healthcare roles.
 date: 2026-06-01

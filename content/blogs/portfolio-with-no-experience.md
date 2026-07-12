@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Build a Portfolio With No Experience (2026 Guide)
 description: No job, no clients, no problem. Build a credible portfolio from scratch with self-initiated projects, freelance work, contributions, and learning artifacts.
 date: 2026-06-24

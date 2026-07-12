@@ -1,6 +1,6 @@
-﻿---
+---
 title: How to Use LinkedIn for Job Search in 2026 - Complete Guide
-description: Learn how to use LinkedIn to find jobs in 2026. Covers profile optimization, job alerts, networking, [cold outreach](https://thetailorcv.com/blog/referral-message-template-linkedin), and recruiter visibility strategies.
+description: Learn how to use LinkedIn to find jobs in 2026. Covers profile optimization, job alerts, networking, cold outreach, and recruiter visibility strategies.
 date: 2026-06-01
 author: TailorCV Team
 tags: [LinkedIn Job Search, LinkedIn Tips, Job Search 2026, Career Advice, Networking]

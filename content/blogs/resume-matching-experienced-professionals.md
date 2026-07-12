@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Matching for Experienced Professionals - How to Stay Relevant in 2026
 description: Learn how experienced professionals (7+ years) can match their resume to modern job descriptions in 2026. Overcome ATS bias, keyword gaps, and over-experience signals to get back in interview rooms.
 date: 2026-06-05

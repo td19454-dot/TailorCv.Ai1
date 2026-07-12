@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Update Your Resume - When to Do It and What to Change (2026 Guide)
 description: Learn when to update your resume, what changes to make at each career stage, how to maintain a master resume, and how to keep your application always interview-ready.
 date: 2026-06-06

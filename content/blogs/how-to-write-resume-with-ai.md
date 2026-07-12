@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write a Resume with AI in 2026 - Smart Use Without the Risks
 description: Learn how to use AI to write a better resume in 2026 - what AI does well, what to avoid, how to keep it authentic, and how to combine AI with ATS optimization.
 date: 2026-06-01

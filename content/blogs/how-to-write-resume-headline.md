@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write a Resume Headline in 2026 - With 30 Examples
 description: Learn how to write a powerful resume headline in 2026 that grabs recruiter attention instantly. Includes 30 examples across tech, business, healthcare, and more.
 date: 2026-06-01

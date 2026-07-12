@@ -1,13 +1,13 @@
-﻿---
-title: [ATS](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals) Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)
-description: Learn the most damaging [ATS keyword mistakes](https://thetailorcv.com/blog/ats-keywords-to-boost-score) job seekers make in 2026 - from [keyword stuffing](https://thetailorcv.com/blog/resume-keyword-density-guide) to synonym errors - and how to fix each one to improve your [ATS](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) score and get more interviews.
+---
+title: ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)
+description: Learn the most damaging ATS keyword mistakes job seekers make in 2026 - from keyword stuffing to synonym errors - and how to fix each one to improve your ATS score and get more interviews.
 date: 2026-06-03
 author: TailorCV Team
 tags: [ATS Keyword Mistakes, ATS Resume, Resume Keywords, ATS Optimization, Job Search Tips]
 category: ATS Optimization
 image: public/blog-images/ats-keyword-mistakes.webp
 slug: ats-keyword-mistakes
-[keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score): ATS keyword mistakes, [resume](https://www.thetailorcv.com/templates) keyword errors, ATS keyword stuffing, keyword optimization [resume](https://www.thetailorcv.com/cover-letter), ATS resume mistakes 2026, fix resume keywords, resume keyword strategy
+keywords: ATS keyword mistakes, resume keyword errors, ATS keyword stuffing, keyword optimization resume, ATS resume mistakes 2026, fix resume keywords, resume keyword strategy
 ---
 
 Formatting gets your resume parsed. Keywords get you ranked. Most candidates fix neither - and wonder why they hear nothing back.

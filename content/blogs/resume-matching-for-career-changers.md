@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Matching for Career Changers - How to Bridge the Gap in 2026
 description: Learn how to match your resume to a new industry job description when changing careers. Includes translation strategies, examples, and how to close the experience gap without lying.
 date: 2026-06-05

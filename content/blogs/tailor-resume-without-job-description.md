@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Tailor Your Resume When There's No Job Description (2026 Guide)
 description: Applying through a referral, cold outreach, or a vague job posting? Learn how to tailor your resume without a full job description - using company signals, role patterns, and insider research.
 date: 2026-06-29

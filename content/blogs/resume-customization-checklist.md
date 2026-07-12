@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Customization Checklist - 15 Things to Check Before Every Application
 description: A step-by-step resume customization checklist you can run in under 10 minutes before every job application to maximize your ATS score and recruiter impact.
 date: 2026-06-11

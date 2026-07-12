@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Match Your Resume Skills Section to Any Job Description in 2026
 description: Learn how to align your resume skills section with any job description to maximize ATS match scores and impress recruiters. Includes templates, examples, and a step-by-step process.
 date: 2026-06-05

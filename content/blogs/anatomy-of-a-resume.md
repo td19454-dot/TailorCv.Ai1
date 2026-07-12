@@ -1,4 +1,4 @@
-﻿---
+---
 title: The Anatomy of a Perfect Resume - Every Section Explained (2026)
 description: A complete breakdown of every resume section - what to include, where to put it, and how to write each part to maximize your chances of passing ATS and impressing recruiters.
 date: 2026-06-06

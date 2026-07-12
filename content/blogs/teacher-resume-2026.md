@@ -1,4 +1,4 @@
-﻿---
+---
 title: Teacher Resume 2026 - Complete Guide with Examples for All Levels
 description: Write a teacher resume in 2026 with the right ATS keywords, lesson planning skills, classroom management experience, and bullet points that get interviews.
 date: 2026-06-01

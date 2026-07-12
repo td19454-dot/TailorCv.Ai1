@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Stop Sounding Generic on Your Resume - Practical Rewrites
 description: If your resume could belong to anyone, it is generic. Learn how to replace vague, overused language with specific, high-impact writing that makes recruiters stop and read.
 date: 2026-06-11

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Why Your Resume Gets No Responses (Even When You're Qualified)
 description: Applying to dozens of jobs and hearing nothing back? Here are the real reasons qualified candidates get ignored - and exactly how to fix each one.
 date: 2026-06-11

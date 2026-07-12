@@ -1,4 +1,4 @@
-﻿---
+---
 title: Should You Put a Photo on Your Resume? (The 2026 Answer by Country)
 description: The definitive answer on whether to include a photo on your resume in 2026. Covers US, UK, Europe, India, and other regions - plus the risks of photos in countries where they are not expected.
 date: 2026-06-06

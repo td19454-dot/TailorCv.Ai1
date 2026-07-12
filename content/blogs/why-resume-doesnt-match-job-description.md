@@ -1,4 +1,4 @@
-﻿---
+---
 title: Why Your Resume Doesn't Match the Job Description (And How to Fix It Fast in 2026)
 description: Understand the real reasons your resume doesn't match job descriptions - and get exact, fast fixes for each one. Stop getting filtered out and start getting callbacks.
 date: 2026-06-05

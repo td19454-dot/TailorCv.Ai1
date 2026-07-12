@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Matching Checklist - 15 Steps to Check Before Submitting Any Job Application (2026)
 description: Use this complete resume matching checklist before submitting any job application. 15 steps to verify your resume matches the job description, passes ATS, and impresses recruiters.
 date: 2026-06-05

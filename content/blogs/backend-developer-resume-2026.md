@@ -1,4 +1,4 @@
-﻿---
+---
 title: Backend Developer Resume 2026 - Complete Guide with Examples
 description: Write a backend developer resume in 2026 with the right ATS keywords, API design skills, database experience, and bullet points that prove system-level impact.
 date: 2026-06-01

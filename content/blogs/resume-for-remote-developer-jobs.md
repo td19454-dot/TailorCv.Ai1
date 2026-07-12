@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume for Remote Developer Jobs - What Hiring Teams Want to See
 description: Build a remote developer resume that proves async communication, ownership, documentation, collaboration, and technical delivery.
 date: 2026-07-07

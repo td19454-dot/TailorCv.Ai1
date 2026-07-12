@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Optimize Your Resume for LinkedIn Easy Apply Jobs in 2026
 description: LinkedIn Easy Apply is fast - but most people use it wrong. Learn how to optimize your resume for Easy Apply applications, what LinkedIn actually shows recruiters, and how to stand out in a high-volume funnel.
 date: 2026-06-29

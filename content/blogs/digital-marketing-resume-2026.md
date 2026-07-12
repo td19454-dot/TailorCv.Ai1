@@ -1,4 +1,4 @@
-﻿---
+---
 title: Digital Marketing Resume 2026 - Complete Guide with Examples
 description: Write a digital marketing resume in 2026 with the right ATS keywords, SEO and paid ads skills, and bullet points that prove campaign ROI and audience growth.
 date: 2026-06-01

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Content Writer & Copywriter Portfolio Guide (2026)
 description: Build a writing portfolio that gets clients and jobs - sample selection, structure, results, and the best platforms for writers and copywriters.
 date: 2026-06-24
@@ -7,7 +7,7 @@ tags: [Portfolio Guide, Writing, Copywriting, Freelance]
 category: Portfolio
 image: public/blog-images/content-writer-portfolio-guide.webp
 slug: content-writer-portfolio-guide
-keywords: writing portfolio, copywriter portfolio, content writer portfolio, [freelance writing samples](https://thetailorcv.com/blog/business-analyst-portfolio-guide), writing portfolio examples
+keywords: writing portfolio, copywriter portfolio, content writer portfolio, freelance writing samples, writing portfolio examples
 ---
 
 A writing portfolio is proof that you can write for **a purpose** - to rank, to convert, to explain, to sell. The trick is curation: show samples that match the work you actually want, and back them with results wherever you can. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).

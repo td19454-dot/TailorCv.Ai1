@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Improve Your ATS Score in 2026
 description: Learn how to optimize your resume for ATS systems, improve keyword matching, and increase interview calls with proven resume optimization strategies.
 date: 2026-05-17

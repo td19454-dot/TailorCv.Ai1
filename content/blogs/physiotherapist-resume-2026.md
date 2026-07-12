@@ -1,4 +1,4 @@
-﻿---
+---
 title: Physiotherapist Resume 2026 - Complete Guide with Examples
 description: Write a physiotherapist resume in 2026 with the right ATS keywords, clinical assessment skills, treatment specialties, and bullet points that prove patient outcomes.
 date: 2026-06-01

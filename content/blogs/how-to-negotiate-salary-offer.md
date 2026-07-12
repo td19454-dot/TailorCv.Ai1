@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Negotiate a Salary Offer in 2026 - Tactics That Actually Work
 description: Learn how to negotiate your salary offer in 2026 with scripts, tactics, research methods, and real examples for tech, business, and healthcare roles.
 date: 2026-06-01

@@ -1,4 +1,4 @@
-﻿---
+---
 title: 200 Best Action Verbs for Resume in 2026 - By Role and Category
 description: Use these 200 powerful resume action verbs to start your bullet points. Organized by role type and category to make your resume stand out to recruiters and ATS.
 date: 2026-06-01

@@ -1,13 +1,13 @@
-﻿---
+---
 title: How to Use AI to Tailor Your Resume Without Sounding Like a Robot (2026 Guide)
-description: AI can tailor your [resume](https://thetailorcv.com/blog/resume-trends-2026) faster than any human. But it can also make it sound generic and hollow. Learn how to use AI [resume](https://thetailorcv.com/blog/first-resume-for-gen-z-2026) tools effectively while keeping your authentic voice and winning personality.
+description: AI can tailor your resume faster than any human. But it can also make it sound generic and hollow. Learn how to use AI resume tools effectively while keeping your authentic voice and winning personality.
 date: 2026-06-29
 author: TailorCV Team
 tags: [AI Resume, Resume Tailoring, AI Writing, ATS Optimization, Resume Tips 2026]
 category: Resume Optimization
-image: public/blog-images/ai-[resume](https://thetailorcv.com/blog/executive-resume-tailoring-guide)-tailoring-human-voice.webp
-slug: ai-[resume](https://thetailorcv.com/blog/resume-optimization-linkedin-easy-apply)-tailoring-human-voice
-keywords: AI [resume tailoring](https://thetailorcv.com/blog/resume-tailoring-underqualified), AI [resume](https://thetailorcv.com/blog/android-developer-resume-2026) writing tips, how to use AI for resume without sounding generic, human voice resume AI, AI resume tool 2026
+image: public/blog-images/ai-resume-tailoring-human-voice.webp
+slug: ai-resume-tailoring-human-voice
+keywords: AI resume tailoring, AI resume writing tips, how to use AI for resume without sounding generic, human voice resume AI, AI resume tool 2026
 ---
 
 You paste your resume into an AI tool.

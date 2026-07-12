@@ -1,4 +1,4 @@
-﻿---
+---
 title: iOS Developer Resume 2026 - Complete Guide with Examples
 description: Write an iOS developer resume in 2026 with the right ATS keywords, Swift and SwiftUI skills, App Store experience, and bullet points that prove app quality.
 date: 2026-06-01
@@ -7,7 +7,7 @@ tags: [iOS Resume, iOS Developer, Swift Resume, SwiftUI Resume, Mobile Developer
 category: Resume Examples
 image: public/blog-images/ios-developer-resume.webp
 slug: ios-developer-resume-2026
-keywords: iOS developer resume, iOS resume 2026, Swift resume, SwiftUI resume, [Xcode](https://thetailorcv.com/blog/java-developer-resume-2026) resume, App Store resume, mobile developer resume, iOS ATS keywords
+keywords: iOS developer resume, iOS resume 2026, Swift resume, SwiftUI resume, Xcode resume, App Store resume, mobile developer resume, iOS ATS keywords
 ---
 
 An iOS developer resume in 2026 needs to show Swift proficiency, modern Apple platform patterns, App Store shipping experience, and the ability to build apps that users actually love. SwiftUI is increasingly the expected standard alongside UIKit, and employers in 2026 want engineers who can navigate both.

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Product Manager Resume 2026 - Complete Guide with Examples
 description: Learn how to write a strong product manager resume in 2026 with ATS keywords, bullet point examples, skills, and a ready-to-use PM resume template.
 date: 2026-06-01

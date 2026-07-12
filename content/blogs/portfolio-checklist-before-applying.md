@@ -1,4 +1,4 @@
-﻿---
+---
 title: Portfolio Checklist: 20 Things to Check Before You Apply
 description: A pre-application portfolio checklist - content, links, performance, SEO, and consistency - so your portfolio is interview-ready every time.
 date: 2026-06-24

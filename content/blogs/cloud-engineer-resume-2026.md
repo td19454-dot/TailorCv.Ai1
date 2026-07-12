@@ -1,13 +1,13 @@
-﻿---
+---
 title: Cloud Engineer Resume 2026 - Complete Guide with Examples
-description: Write a [cloud engineer resume](https://thetailorcv.com/blog/job-description-analysis-checklist) in 2026 with the right ATS keywords, AWS/GCP/Azure skills, and bullet points that prove [infrastructure cost](https://thetailorcv.com/blog/resume-keyword-map-template), reliability, and automation impact.
+description: Write a cloud engineer resume in 2026 with the right ATS keywords, AWS/GCP/Azure skills, and bullet points that prove infrastructure cost, reliability, and automation impact.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Cloud Engineer Resume, AWS Resume, GCP Resume, Azure Resume, Infrastructure Resume, ATS Resume]
 category: Resume Examples
 image: public/blog-images/cloud.webp
 slug: cloud-engineer-resume-2026
-keywords: cloud engineer resume, cloud engineer resume 2026, AWS resume, GCP resume, Azure resume, [cloud infrastructure](https://thetailorcv.com/blog/how-to-choose-resume-template) resume, cloud architect resume, cloud ATS keywords
+keywords: cloud engineer resume, cloud engineer resume 2026, AWS resume, GCP resume, Azure resume, cloud infrastructure resume, cloud architect resume, cloud ATS keywords
 ---
 
 A cloud engineer resume in 2026 needs to prove that you can design, build, and manage cloud infrastructure that is reliable, secure, cost-efficient, and automated. The distinction between cloud engineering and [DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026) is blurring, but [cloud roles](https://thetailorcv.com/blog/resume-for-remote-developer-jobs) tend to emphasize architecture, managed services, cost governance, and multi-cloud strategy more than CI/CD pipeline tooling.

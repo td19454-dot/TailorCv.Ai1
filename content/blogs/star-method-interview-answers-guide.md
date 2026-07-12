@@ -1,4 +1,4 @@
-﻿---
+---
 title: STAR Method for Interview Answers - Complete Guide with Examples (2026)
 description: Master the STAR method for behavioral interview answers. Learn Situation, Task, Action, Result with real examples and practice tips using AI mock interviews.
 date: 2026-07-01

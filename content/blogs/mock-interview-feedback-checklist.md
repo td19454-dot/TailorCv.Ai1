@@ -1,13 +1,13 @@
-﻿---
+---
 title: Mock Interview Feedback Checklist - What to Improve After Practice
-description: Use this [mock interview](https://thetailorcv.com/blog/mock-interview-practice-free) feedback checklist to review clarity, structure, confidence, examples, technical depth, and follow-up answers.
+description: Use this mock interview feedback checklist to review clarity, structure, confidence, examples, technical depth, and follow-up answers.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Mock Interview, Interview Prep, Feedback, Career Tips, Behavioral Interview]
 category: Interview Prep
 image: public/blog-images/mock-interview-feedback-checklist.webp
 slug: mock-interview-feedback-checklist
-keywords: [mock interview](https://thetailorcv.com/blog/mock-interview-practice-free) feedback checklist, interview practice checklist, mock interview tips, interview feedback template
+keywords: mock interview feedback checklist, interview practice checklist, mock interview tips, interview feedback template
 ---
 
 Mock interviews only help if you review them properly. The goal is not to sound perfect. The goal is to find where your answers become vague, too long, too short, or disconnected from the job.

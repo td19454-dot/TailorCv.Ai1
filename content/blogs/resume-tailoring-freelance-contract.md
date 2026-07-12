@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Tailoring for Contract and Freelance Roles vs. Permanent Jobs (2026 Guide)
 description: Freelance and contract resume tailoring is completely different from permanent job applications. Learn how to present project-based work, multiple clients, and gaps to win contract and full-time roles alike.
 date: 2026-06-29

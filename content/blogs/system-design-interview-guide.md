@@ -1,4 +1,4 @@
-﻿---
+---
 title: System Design Interview Guide 2026 - Framework and Examples
 description: Master the system design interview in 2026 with a step-by-step framework, core concepts, and walkthroughs of common questions like URL shortener and chat systems.
 date: 2026-06-01

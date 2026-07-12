@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Keyword Density - How Much Is Too Much, and How to Get It Right (2026)
 description: Learn how keyword density works in resumes, what the right balance looks like, why keyword stuffing backfires, and how to optimize your resume keywords for both ATS and human readers.
 date: 2026-06-29

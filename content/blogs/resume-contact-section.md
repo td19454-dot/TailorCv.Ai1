@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Contact Section - What to Include and What to Leave Out (2026)
 description: A complete guide to the resume contact section. Learn exactly what information to include, what to exclude, how to format your contact details, and common mistakes to avoid.
 date: 2026-06-06

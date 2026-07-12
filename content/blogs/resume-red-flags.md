@@ -1,4 +1,4 @@
-﻿---
+---
 title: 15 Resume Red Flags That Get You Rejected Before an Interview
 description: Discover the 15 most common resume red flags that cause instant rejections - from formatting issues and unexplained gaps to weak language and credibility killers that trigger recruiter skepticism.
 date: 2026-06-06

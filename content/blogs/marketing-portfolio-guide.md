@@ -1,4 +1,4 @@
-﻿---
+---
 title: Marketing Portfolio Guide: Show Results, Not Just Deliverables
 description: Build a marketing portfolio that proves ROI - campaign case studies, the metrics that matter, and how to present work that is under NDA.
 date: 2026-06-24

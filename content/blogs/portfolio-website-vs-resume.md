@@ -1,4 +1,4 @@
-﻿---
+---
 title: Portfolio Website vs Resume: Do You Need Both in 2026?
 description: Resume vs portfolio website - what each one does, why employers want both in 2026, and exactly how to use them together to get more interviews.
 date: 2026-06-24

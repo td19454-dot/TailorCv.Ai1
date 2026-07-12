@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write a Two Weeks Notice in 2026 - Templates and Examples
 description: Learn how to write a professional two weeks notice letter in 2026. Includes templates, examples, what to include, and how to resign gracefully while protecting your reputation.
 date: 2026-06-01

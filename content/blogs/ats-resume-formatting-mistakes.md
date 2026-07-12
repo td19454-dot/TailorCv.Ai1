@@ -1,4 +1,4 @@
-﻿---
+---
 title: 10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume
 description: Discover the 10 most common ATS resume formatting mistakes that cause automatic rejection - and learn exactly how to fix each one to get more interviews in 2026.
 date: 2026-06-03

@@ -1,6 +1,6 @@
-﻿---
+---
 title: Consultant Resume 2026 - Complete Guide with Examples
-description: Write a consultant resume in 2026 with the right ATS keywords, [client impact](https://thetailorcv.com/blog/job-description-analysis-checklist) metrics, and bullet points that prove business value, problem-solving, and delivery.
+description: Write a consultant resume in 2026 with the right ATS keywords, client impact metrics, and bullet points that prove business value, problem-solving, and delivery.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Consultant Resume, Management Consultant Resume, Strategy Resume, ATS Resume, Consulting]

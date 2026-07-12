@@ -1,4 +1,4 @@
-﻿---
+---
 title: Personal Branding for Professionals in 2026 - Complete Guide
 description: Build a strong personal brand in 2026 to advance your career. Covers LinkedIn presence, content creation, networking, and positioning yourself as an expert in your field.
 date: 2026-06-01

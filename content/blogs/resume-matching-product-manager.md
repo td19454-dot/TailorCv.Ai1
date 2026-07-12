@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Match Your Resume to a Product Manager Job Description in 2026
 description: Learn how to match your product manager resume to any job description in 2026. Includes PM-specific keyword strategies, ATS tips, before/after examples, and the exact signals that get PM interviews.
 date: 2026-06-05

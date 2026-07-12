@@ -1,6 +1,6 @@
-﻿---
+---
 title: Free Mock Interview Practice Online - AI Powered in 2026
-description: Free mock interview practice that goes beyond generic questions. Practice with AI that reads your [resume](https://www.thetailorcv.com/templates) and asks about YOUR projects, with instant feedback.
+description: Free mock interview practice that goes beyond generic questions. Practice with AI that reads your resume and asks about YOUR projects, with instant feedback.
 date: 2026-06-08
 author: TailorCV Team
 tags: [Mock Interview Practice, Interview Preparation, AI Interview, Free Mock Interview, Job Search]

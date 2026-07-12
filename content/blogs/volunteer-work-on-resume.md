@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Add Volunteer Work to Your Resume (With Examples for Every Situation)
 description: Learn when and how to include volunteer experience on your resume - where to put it, how to frame it as professional experience, and when it can substitute for paid work history.
 date: 2026-06-06

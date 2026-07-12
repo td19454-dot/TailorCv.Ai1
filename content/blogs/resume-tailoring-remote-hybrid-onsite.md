@@ -1,4 +1,4 @@
-﻿---
+---
 title: Remote vs. Hybrid vs. On-Site - How to Tailor Your Resume for Each Work Model (2026)
 description: Your work model preference changes what recruiters look for - and what your resume should show. Learn how to tailor your resume differently for remote, hybrid, and on-site job applications in 2026.
 date: 2026-06-29

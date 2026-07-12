@@ -1,13 +1,13 @@
-﻿---
+---
 title: Career Change from Non-Tech to Data Analyst - Resume and Portfolio Plan
-description: Move from a non-tech background to [data analyst](https://thetailorcv.com/blog/career-change-portfolio) roles with a focused [resume](https://thetailorcv.com/blog/what-is-a-resume), [project portfolio](https://thetailorcv.com/blog/career-change-portfolio), skills roadmap, and interview story.
+description: Move from a non-tech background to data analyst roles with a focused resume, project portfolio, skills roadmap, and interview story.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Career Change, Data Analyst, Resume Writing, Portfolio, Job Search]
 category: Career Change
 image: public/blog-images/career-change-from-non-tech-to-data-analyst.webp
 slug: career-change-from-non-tech-to-data-analyst
-keywords: [career change](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) to data analyst, non tech to data analyst, data analyst resume career change, data analyst portfolio beginner
+keywords: career change to data analyst, non tech to data analyst, data analyst resume career change, data analyst portfolio beginner
 ---
 
 You can move from a non-tech role to [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) work if your resume connects your past domain experience to data skills. The mistake is presenting yourself as a total beginner when you may already have reporting, Excel, operations, finance, marketing, or customer analysis experience.

@@ -1,9 +1,9 @@
-﻿---
+---
 title: How Recruiters Spot Generic Resumes - And Reject Them in 6 Seconds
 description: Recruiters spend an average of 6 seconds on a resume. Learn the exact signals that flag a resume as generic and what to do instead to get shortlisted.
 date: 2026-06-11
 author: TailorCV Team
-tags: [resume, recruiters, [generic resume](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews), job search, resume tailoring]
+tags: resume, recruiters, [generic resume, job search, resume tailoring]
 category: Resume Writing
 image: public/blog-images/how-recruiters-spot-generic-resumes.webp
 slug: how-recruiters-spot-generic-resumes

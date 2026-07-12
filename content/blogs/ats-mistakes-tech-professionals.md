@@ -1,6 +1,6 @@
-﻿---
+---
 title: ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)
-description: The specific [ATS resume](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) mistakes that software engineers, data scientists, and tech professionals make - and how to fix them to get more technical interviews in 2026.
+description: The specific ATS resume mistakes that software engineers, data scientists, and tech professionals make - and how to fix them to get more technical interviews in 2026.
 date: 2026-06-03
 author: TailorCV Team
 tags: [ATS Mistakes Tech, Software Engineer Resume, ATS Resume, Tech Resume Tips, Developer Resume 2026]

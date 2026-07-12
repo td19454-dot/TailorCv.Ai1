@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Matching with No Experience - How to Match a Job Description When You're Starting Out (2026)
 description: Learn how to match your resume to a job description when you have no work experience. Proven strategies for entry-level candidates to boost ATS scores and get interviews in 2026.
 date: 2026-06-05

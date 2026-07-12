@@ -1,4 +1,4 @@
-﻿---
+---
 title: Project Manager Resume 2026 - Complete Guide with Examples
 description: Write a project manager resume in 2026 with the right ATS keywords, delivery metrics, methodology skills, and bullet points that prove on-time, on-budget impact.
 date: 2026-06-01

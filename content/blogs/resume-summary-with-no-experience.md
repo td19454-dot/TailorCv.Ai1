@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write a Resume Summary With No Experience (10 Real Examples for 2026)
 description: Don't know what to write in your resume summary with no experience? Here are 10 real examples for freshers across different roles plus a proven formula to write your own.
 date: 2026-05-31

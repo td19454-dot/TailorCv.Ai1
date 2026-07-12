@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Ask for a Raise in 2026 - Scripts, Timing, and Strategy
 description: Learn how to ask for a raise in 2026 with proven scripts, the right timing, how to build your case with evidence, and how to handle every employer response.
 date: 2026-06-01
