@@ -359,12 +359,21 @@ h1.post-hero-title {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
   margin: 0;
+}
+
+/* Author name links to LinkedIn */
+a.author {
+  text-decoration: none;
+  transition: color .15s ease;
+}
+a.author:hover {
+  color: #c3a6ff;
+  text-decoration: underline;
 }
 
 .blog-post h2,
