@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css?v=3">
+    <link rel="stylesheet" href="/static/blog.css?v=4">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -62,25 +62,36 @@
 <main class="blog-post-wrap">
     <article class="blog-post">
         <header class="post-header">
+            <nav class="post-breadcrumb" aria-label="Breadcrumb">
+                <a href="/">Home</a><span class="crumb-sep">/</span>
+                <a href="/blog">Blog</a><span class="crumb-sep">/</span>
+                {% if post.category %}<span class="crumb-cat">{{ post.category }}</span><span class="crumb-sep">/</span>{% endif %}
+                <span class="crumb-current">{{ post.title }}</span>
+            </nav>
             <div class="post-hero">
-                {% if post.image %}
-                <img class="post-cover" src="{{ post.image }}" alt="{{ post.title }}" loading="eager" decoding="async" fetchpriority="high">
-                {% endif %}
-                <div class="post-hero-overlay"></div>
                 <div class="post-hero-content">
+                    <div class="post-hero-tags">
+                        {% if post.category %}<span class="cat-chip">{{ post.category }}</span>{% endif %}
+                        <span class="hero-date">{{ post.date_display }}</span>
+                        <span class="hero-dot">·</span>
+                        <span class="hero-date">{{ post.read_time }} min read</span>
+                    </div>
                     <h1 class="post-hero-title">{{ post.title }}</h1>
                     <p class="lead">{{ post.description }}</p>
-                    <div class="post-hero-meta-row">
-                        <div class="author-chip">
-                            <span class="author-badge">TC</span>
-                            <span class="author"> {{ author_profile.name if author_profile else post.author }}</span>
-                        </div>
-                        <div class="meta-pills">
-                            <span class="meta-pill">{{ post.date_display }}</span>
-                            <span class="meta-pill">{{ post.read_time }} min read</span>
-                        </div>
+                    <div class="author-chip">
+                        <span class="author-badge">TC</span>
+                        <span class="author-info">
+                            <span class="author-label">Author</span>
+                            <span class="author">{{ author_profile.name if author_profile else post.author }}</span>
+                        </span>
                     </div>
+                    <a href="{{ hero_cta.url }}" class="hero-cta-btn">{{ hero_cta.label }}</a>
                 </div>
+                {% if post.image %}
+                <div class="post-hero-media">
+                    <img class="post-cover" src="{{ post.image }}" alt="{{ post.title }}" loading="eager" decoding="async" fetchpriority="high">
+                </div>
+                {% endif %}
             </div>
         </header>
 
