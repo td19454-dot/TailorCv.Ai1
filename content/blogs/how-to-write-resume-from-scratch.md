@@ -40,7 +40,7 @@ This preparation phase prevents you from writing generic content that applies to
 Before writing content, decide on your structure:
 
 - **Reverse chronological** - most recent job first. Right for most people.
-- **Combination** - [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) prominent, followed by chronological experience. Right for career changers.
+- **Combination** - [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) prominent, followed by chronological experience. Right for [career change](https://thetailorcv.com/blog/career-change-from-non-tech-to-data-analyst)rs.
 
 Read [chronological vs functional resume](https://thetailorcv.com/blog/chronological-vs-functional-resume) for the full comparison. Then open an [ATS-friendly template](https://www.thetailorcv.com/templates) that uses your chosen format.
 

@@ -1,13 +1,13 @@
 ﻿---
 title: How to Quantify Resume Achievements - With 50 Examples
-description: Learn how to add numbers and metrics to your resume achievements. Includes 50 examples across software engineering, data, marketing, sales, and operations roles.
+description: Learn how to add numbers and metrics to your [resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) achievements. Includes 50 examples across software engineering, data, marketing, sales, and operations roles.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Resume Tips, Resume Achievements, Resume Bullet Points, Career Advice, ATS Resume]
 category: Resume Writing
-image: public/blog-images/how-to-quantify-resume-achievements.webp
+image: public/blog-images/how-to-[quantify](https://thetailorcv.com/blog/how-to-write-resume-summary)-resume-achievements.webp
 slug: how-to-quantify-resume-achievements
-keywords: how to quantify resume achievements, resume metrics, resume numbers examples, resume bullet points with numbers, how to add metrics to resume, resume impact statements
+keywords: how to quantify resume achievements, resume metrics, resume numbers examples, [resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) with numbers, how to add metrics to resume, resume impact statements
 ---
 
 The single biggest difference between a forgettable resume and one that earns interviews is quantification. Recruiters read hundreds of resumes that all say "improved performance," "led a team," and "managed [projects](https://thetailorcv.com/blog/projects-in-resume)." The candidates who advance are the ones who say "improved page load time from 4.8s to 1.1s," "led a team of 7 engineers," and "delivered a project 3 weeks ahead of schedule."
@@ -18,7 +18,7 @@ Numbers make your resume scannable, credible, and memorable. They transform vagu
 
 This guide shows you exactly how to [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) your achievements - even when you think you have no numbers - across every major role type.
 
-Before adding your quantified bullets, make sure your resume format passes ATS. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to compare it against the job description and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for keyword matching. If you are still setting up your resume, the [ATS-friendly templates](https://www.thetailorcv.com/templates) provide the right structure.
+Before adding your quantified bullets, make sure your [resume format](https://thetailorcv.com/blog/resume-section-order-guide) passes ATS. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to compare it against the [job description](https://thetailorcv.com/blog/resume-keyword-map-template) and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for keyword matching. If you are still setting up your resume, the [ATS-friendly templates](https://www.thetailorcv.com/templates) provide the right structure.
 
 ---
 
@@ -150,7 +150,7 @@ An honest approximation is better than no number.
 - Grew organic search traffic from 12K to 48K monthly sessions through a content SEO strategy across 40 published articles.
 - Reduced cost per lead from $84 to $31 by restructuring Google Ads campaigns and improving landing page conversion.
 - Managed a $450K annual digital marketing budget across Google, Meta, and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) with 4.2x blended ROAS.
-- Built email automation sequences that increased trial-to-paid conversion from 18% to 27% for 3K+ monthly trial signups.
+- Built [email automation sequences](https://thetailorcv.com/blog/volunteer-work-on-resume) that increased trial-to-paid conversion from 18% to 27% for 3K+ monthly trial signups.
 - Launched a referral program that generated 1,200 new customers in 90 days at $8 CAC versus $62 average CAC.
 
 ### Sales
@@ -165,7 +165,7 @@ An honest approximation is better than no number.
 
 - Maintained 96% CSAT score across 1,200+ monthly support tickets over 18 months.
 - Reduced average first response time from 9 hours to 2.4 hours by building a ticket triage process and macro library.
-- Created a self-service knowledge base of 80+ articles that deflected 28% of incoming support volume.
+- Created a [self-service knowledge base](https://thetailorcv.com/blog/portfolio-website-vs-resume) of 80+ articles that deflected 28% of incoming support volume.
 - Resolved 94% of tickets at first contact, above team average of 78%.
 - Onboarded and trained 5 new support agents, reducing their ramp time from 6 weeks to 3 weeks.
 

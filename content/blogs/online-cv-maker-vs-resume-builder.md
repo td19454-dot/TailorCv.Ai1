@@ -12,7 +12,7 @@ keywords: online CV maker, resume builder, CV maker vs resume builder, ATS resum
 
 An online CV maker and a resume builder sound like the same product, but they are often built for different jobs. Some tools exist to make a document look good in a template gallery. Others exist to get your document past [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software and in front of a recruiter. If you pick the wrong category of tool for what you actually need, you can end up with a nice-looking file that never gets read.
 
-This guide breaks down what each type of tool is actually optimized for, when a simple CV maker is genuinely enough, and when you need something closer to a job-description-matching resume builder like the [ATS checker](https://www.thetailorcv.com/solutions) and [resume templates](https://www.thetailorcv.com/templates) on TailorCV.
+This guide breaks down what each type of tool is actually optimized for, when a simple CV maker is genuinely enough, and when you need something closer to a [job-description-matching resume builder](https://thetailorcv.com/blog/job-description-analysis-checklist) like the [ATS checker](https://www.thetailorcv.com/solutions) and [resume templates](https://www.thetailorcv.com/templates) on TailorCV.
 
 ## Why the Terminology Is Confusing in the First Place
 

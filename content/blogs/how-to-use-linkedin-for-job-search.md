@@ -1,6 +1,6 @@
 ﻿---
 title: How to Use LinkedIn for Job Search in 2026 - Complete Guide
-description: Learn how to use LinkedIn to find jobs in 2026. Covers profile optimization, job alerts, networking, cold outreach, and recruiter visibility strategies.
+description: Learn how to use LinkedIn to find jobs in 2026. Covers profile optimization, job alerts, networking, [cold outreach](https://thetailorcv.com/blog/referral-message-template-linkedin), and recruiter visibility strategies.
 date: 2026-06-01
 author: TailorCV Team
 tags: [LinkedIn Job Search, LinkedIn Tips, Job Search 2026, Career Advice, Networking]
@@ -10,13 +10,13 @@ slug: how-to-use-linkedin-for-job-search
 keywords: how to use LinkedIn for job search, LinkedIn job search tips 2026, LinkedIn profile optimization, LinkedIn recruiter, LinkedIn job alerts, networking on LinkedIn
 ---
 
-LinkedIn is the most important professional platform for job seekers in 2026. Over 90% of recruiters use LinkedIn to find and evaluate candidates. Having a weak [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) while applying for jobs is like submitting a great resume but leaving your contact information blank.
+LinkedIn is the most important professional platform for job seekers in 2026. Over 90% of recruiters use LinkedIn to find and evaluate candidates. Having a weak [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) while applying for jobs is like submitting a great [resume](https://thetailorcv.com/blog/resume-optimization-linkedin-easy-apply) but leaving your contact information blank.
 
 ![How to Use LinkedIn](public/blog-images/how-to-use-linkedin.png)
 
 This guide covers every major lever: optimizing your profile for recruiter search, using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Jobs effectively, networking with intention, sending cold messages that get replies, and using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) signals to get found without actively applying.
 
-Before using LinkedIn, make sure your resume is equally strong - upload it to the [ATS score checker](https://www.thetailorcv.com/solutions), optimize it with the job description, and use an [ATS-friendly template](https://www.thetailorcv.com/templates). Your LinkedIn profile and resume should tell the same story.
+Before using LinkedIn, make sure your resume is equally strong - upload it to the [ATS score checker](https://www.thetailorcv.com/solutions), optimize it with the [job description](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day), and use an [ATS-friendly template](https://www.thetailorcv.com/templates). Your LinkedIn profile and resume should tell the same story.
 
 ---
 

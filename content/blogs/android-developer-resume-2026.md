@@ -44,7 +44,7 @@ Android Developer with 4 years of experience building consumer and enterprise ap
 
 ### Example for Entry-Level Android Developer
 
-Android Developer with strong Kotlin skills and hands-on experience building Android apps using Jetpack Compose, ViewModel, LiveData, Room, and Retrofit. Shipped 2 personal projects to the Play Store and contributed to an open-source Android library with 300+ [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) stars.
+Android Developer with strong Kotlin skills and hands-on experience building Android apps using Jetpack Compose, ViewModel, LiveData, Room, and Retrofit. Shipped 2 personal [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) to the Play Store and contributed to an open-source Android library with 300+ [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) stars.
 
 ---
 

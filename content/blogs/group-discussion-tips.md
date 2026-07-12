@@ -1,6 +1,6 @@
 ﻿---
 title: Group Discussion Tips 2026 - How to Stand Out in a GD Round
-description: Master group discussion (GD) rounds in 2026 with proven strategies to lead, contribute meaningfully, handle aggressive participants, and get selected.
+description: Master [group discussion](https://thetailorcv.com/blog/group-interview-tips-strategies) (GD) rounds in 2026 with proven strategies to lead, contribute meaningfully, handle aggressive participants, and get selected.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Group Discussion, GD Tips, Interview Preparation, Campus Placement, Career Advice]

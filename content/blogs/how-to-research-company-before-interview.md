@@ -16,7 +16,7 @@ Company research before an [interview](https://thetailorcv.com/blog/how-to-prepa
 
 Interviewers ask "What do you know about us?" and "Why do you want to work here?" - and the answers that get job offers are specific, demonstrating genuine understanding of the company's situation. This guide tells you exactly what to research, where to find it, and how to use it.
 
-Prepare your research in parallel with your interview answers. Read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and practice with the [free AI mock interview tool](https://thetailorcv.com/mock-interview). Make sure your resume is optimized with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) before the interview even starts.
+Prepare your research in parallel with your interview answers. Read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and practice with the [free AI mock interview tool](https://thetailorcv.com/mock-interview). Make sure your [resume](https://www.thetailorcv.com/templates) is optimized with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) before the interview even starts.
 
 ---
 

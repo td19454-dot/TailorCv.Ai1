@@ -395,7 +395,7 @@ A complete application needs more than one document. Pair the resume with a targ
 ## Conclusion
 A strong [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) resume in 2026 should be clear, practical, and business-focused. Show SQL, dashboards, data cleaning, analysis, and stakeholder impact. Most importantly, prove that your analysis helped someone make a better decision.
 
-Before applying, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), compare it with the exact job description, and rewrite vague bullets into measurable data impact.
+Before applying, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), compare it with the exact [job description](https://thetailorcv.com/blog/job-description-analysis-checklist), and rewrite vague bullets into measurable data impact.
 
 Once your resume is ready, prepare your project explanations using the [job interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) so you can clearly explain dashboards, SQL queries, metrics, and business recommendations.
 

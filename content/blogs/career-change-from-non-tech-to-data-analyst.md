@@ -1,13 +1,13 @@
 ﻿---
 title: Career Change from Non-Tech to Data Analyst - Resume and Portfolio Plan
-description: Move from a non-tech background to data analyst roles with a focused resume, project portfolio, skills roadmap, and interview story.
+description: Move from a non-tech background to [data analyst](https://thetailorcv.com/blog/career-change-portfolio) roles with a focused [resume](https://thetailorcv.com/blog/what-is-a-resume), [project portfolio](https://thetailorcv.com/blog/career-change-portfolio), skills roadmap, and interview story.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Career Change, Data Analyst, Resume Writing, Portfolio, Job Search]
 category: Career Change
 image: public/blog-images/career-change-from-non-tech-to-data-analyst.webp
 slug: career-change-from-non-tech-to-data-analyst
-keywords: career change to data analyst, non tech to data analyst, data analyst resume career change, data analyst portfolio beginner
+keywords: [career change](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) to data analyst, non tech to data analyst, data analyst resume career change, data analyst portfolio beginner
 ---
 
 You can move from a non-tech role to [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) work if your resume connects your past domain experience to data skills. The mistake is presenting yourself as a total beginner when you may already have reporting, Excel, operations, finance, marketing, or customer analysis experience.
@@ -39,7 +39,7 @@ Aspiring [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) |
 
 Your summary should connect old and new:
 
-Operations professional transitioning into data analytics, with experience tracking KPIs, building Excel reports, and identifying process gaps. Skilled in SQL, Power BI, and dashboard storytelling through recent [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) projects.
+Operations professional transitioning into data analytics, with experience tracking KPIs, building Excel reports, and identifying process gaps. Skilled in SQL, Power BI, and dashboard storytelling through recent [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) [projects](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ---
 
@@ -64,9 +64,9 @@ A non-tech to data analyst resume works when it shows transferable domain knowle
 
 ## How to Turn This Into a Stronger Application
 
-Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your non-tech to [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) transition because small wording choices can change how recruiters and ATS systems understand your fit.
+Treat this guide as a working document, not just something to read once. The best [job seekers](https://thetailorcv.com/blog/portfolio-homepage-copy-examples) use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your non-tech to [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) transition because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, [LinkedIn profile](https://thetailorcv.com/blog/linkedin-to-portfolio-guide), portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 
@@ -144,7 +144,7 @@ If you want to keep improving this topic, these closely related guides are worth
 - [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
 
-Use these links as a practical cluster: first fix the resume and ATS alignment, then improve the supporting proof such as portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or interview examples. That gives search engines clearer topical connections and gives readers a useful next step instead of a dead end.
+Use these links as a practical cluster: first fix the resume and [ATS alignment](https://www.thetailorcv.com/solutions), then improve the supporting proof such as portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or interview examples. That gives search engines clearer topical connections and gives readers a useful next step instead of a dead end.
 
 ---
 

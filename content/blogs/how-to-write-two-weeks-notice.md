@@ -14,7 +14,7 @@ A two weeks notice is the standard professional courtesy when leaving a job - a 
 
 This guide gives you templates, examples, and the rules for writing a professional two weeks notice.
 
-This complements the broader [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally). If your resignation is part of a job move, make sure your next step is secure first - optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
+This complements the broader [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally). If your resignation is part of a job move, make sure your next step is secure first - optimize your [resume](https://www.thetailorcv.com/templates) with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
 ---
 

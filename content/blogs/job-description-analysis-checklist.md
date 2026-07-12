@@ -1,13 +1,13 @@
 ﻿---
 title: Job Description Analysis Checklist Before You Apply
-description: Use this checklist to analyze a job description for must-have skills, hidden keywords, seniority level, red flags, and resume tailoring signals.
+description: Use this checklist to analyze a job description for must-have skills, hidden keywords, seniority level, red flags, and [resume](https://thetailorcv.com/blog/resume-matching-skills-based-hiring) tailoring signals.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Job Description, Resume Matching, ATS Resume, Job Search, Resume Keywords]
 category: ATS
 image: public/blog-images/job-description-analysis-checklist.webp
 slug: job-description-analysis-checklist
-keywords: job description analysis checklist, analyze job description, resume matching checklist, job description keywords
+keywords: job description analysis checklist, analyze job description, [resume](https://thetailorcv.com/blog/resume-matching-referral-applications) matching checklist, job description keywords
 ---
 
 Before applying, analyze the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) like a recruiter and an ATS would. The posting tells you what to emphasize, what to remove, and whether the role is actually a good fit.
@@ -45,7 +45,7 @@ Look for phrases like:
 - High volume
 - Regulated environment
 
-These signal the kind of examples your resume should include.
+These signal the kind of examples your [resume](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications) should include.
 
 ---
 
@@ -72,7 +72,7 @@ Job description analysis makes tailoring faster and more accurate. Paste the pos
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) analysis because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 

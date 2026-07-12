@@ -23,9 +23,9 @@ Treat your own [portfolio](https://thetailorcv.com/blog/how-to-build-professiona
 - **Polished:** consistent spacing, smooth interactions, a thoughtful dark/light theme
 
 ## Projects to Include
-- A **real app** with state management and live API data
+- A **[real app](https://thetailorcv.com/blog/portfolio-no-projects)** with state management and live API data
 - A **component library** or design-system demo
-- A **performance or accessibility case study** with before/after metrics ([How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study))
+- A **[performance or accessibility case study](https://thetailorcv.com/blog/portfolio-analytics-view-tracking)** with before/after metrics ([How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study))
 - One **creative, animated** piece that shows range and personality
 
 ## Show the Craft, Not Just the Output
@@ -39,7 +39,7 @@ React, Next.js, TypeScript, Tailwind, testing libraries, and a build/deploy pipe
 
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, your LinkedIn, and [your portfolio](https://thetailorcv.com/blog/custom-domain-portfolio-guide) should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
 
 ## Common Mistakes
@@ -51,7 +51,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 See the full list in [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid).
 
 ## Pro Tips
-- Add a tiny, delightful interaction somewhere - it signals craft.
+- Add a [tiny, delightful interaction](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) somewhere - it signals craft.
 - Keep copy short; let the work speak.
 - Build the site fast with the [portfolio builder](https://thetailorcv.com/portfolio) so you spend your time on projects, not boilerplate.
 
@@ -63,7 +63,7 @@ Creating a standout frontend developer portfolio involves more than just showcas
 
 2. **Select a Hosting Provider**: Choose a reliable hosting service that fits your budget and technical needs. Look for options that offer easy deployment for frontend frameworks like React or Vue.js.
 
-3. **Design Your Layout**: Sketch a wireframe for your portfolio. Decide on the sections you want to include, such as an about me, projects, skills, and contact information. Use design tools like Figma or Adobe XD to visualize your layout.
+3. **Design Your Layout**: Sketch a wireframe for your portfolio. Decide on the sections you want to include, such as an about me, projects, skills, and [contact information](https://thetailorcv.com/blog/hr-recruiter-portfolio-guide). Use design tools like Figma or Adobe XD to visualize your layout.
 
 4. **Build the Site**: Start coding your portfolio. Use your preferred frontend technologies (HTML, CSS, JavaScript) and frameworks. Ensure your site is responsive and works well on various devices.
 
@@ -95,7 +95,7 @@ When building your frontend developer portfolio, be wary of these common pitfall
 - **Do Use High-Quality Images**: Use professional images for project screenshots to create a polished look.
 - **Do Include Context**: For each project, provide context about your role, the technologies used, and the challenges overcome.
 - **Do Keep It Simple**: Aim for a clean, intuitive layout that guides visitors through your work.
-- **Do Add a Call to Action**: Encourage potential employers or clients to contact you with a clear call to action.
+- **Do Add a Call to Action**: Encourage potential employers or clients to contact you with a [clear call to action](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ### Don'ts
 - **Don’t Use Stock Photos**: Authenticity is key. Use your own images or visuals that reflect your personality and work.

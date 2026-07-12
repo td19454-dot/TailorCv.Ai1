@@ -1,16 +1,16 @@
 ﻿---
 title: Why Your Resume Never Gets a Response - 12 Hidden ATS Mistakes Killing Your Job Search in 2026
-description: Discover the 12 less-obvious ATS mistakes that prevent your resume from reaching recruiters - including file issues, contact parsing errors, and section ordering problems most guides miss.
+description: Discover the 12 less-obvious ATS mistakes that prevent your [resume](https://thetailorcv.com/blog/how-to-update-your-resume) from reaching recruiters - including file issues, contact parsing errors, and section ordering problems most guides miss.
 date: 2026-06-03
 author: TailorCV Team
 tags: [Hidden ATS Mistakes, ATS Resume, Resume Tips, Job Search, Resume Optimization 2026]
 category: ATS Optimization
 image: public/blog-images/hidden-ats-mistakes.webp
 slug: hidden-ats-mistakes-job-search
-keywords: hidden ATS mistakes, ATS resume problems, why resume not getting responses, ATS rejection reasons, ATS mistakes 2026, why is my resume not working, silent resume rejection
+keywords: hidden ATS mistakes, ATS [resume](https://thetailorcv.com/blog/how-to-choose-resume-template) problems, why [resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) not getting responses, ATS rejection reasons, ATS mistakes 2026, why is my [resume](https://thetailorcv.com/blog/portfolio-from-resume-minutes) not working, silent [resume](https://thetailorcv.com/blog/fresher-resumehttpsthetailorcvcomblogbest-action-verbs-for-resume-projects-that-get-interviews) rejection
 ---
 
-You have fixed the obvious things. Single-column layout. Standard fonts. Keywords from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Your resume looks clean and professional. But you are still not getting responses.
+You have fixed the obvious things. Single-column layout. Standard fonts. Keywords from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Your [resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) looks clean and professional. But you are still not getting responses.
 
 The problem is probably one of the less-obvious [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) mistakes - the ones nobody talks about because they are not obvious from reading the resume on screen.
 
@@ -35,7 +35,7 @@ These are the mistakes most [ATS](https://thetailorcv.com/blog/what-is-an-ats-sc
 
 ## Hidden Mistake 1: Hyperlinked Text Without Visible URLs
 
-Many candidates add clickable hyperlinks to their LinkedIn URL, portfolio, or GitHub profile - formatted as "LinkedIn" or "Portfolio" with the actual URL hidden behind the display text. The problem: many [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems strip hyperlinks and show only the display text.
+Many candidates add clickable hyperlinks to their [LinkedIn](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break) URL, portfolio, or GitHub profile - formatted as "LinkedIn" or "Portfolio" with the actual URL hidden behind the display text. The problem: many [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems strip hyperlinks and show only the display text.
 
 **What happens:** The recruiter sees "LinkedIn" but no URL value. Some [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems discard hyperlinked text entirely and the link disappears from your parsed profile.
 
@@ -67,7 +67,7 @@ Many resume templates use a stylized name-and-title header where the job title a
 
 ## Hidden Mistake 4: Using Special Characters as Bullet Points
 
-Many templates use decorative bullet points - arrows (->), check marks (), diamonds (◆), or custom symbols. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsers handle these inconsistently. Some render them correctly; others turn them into question marks, empty boxes, or garbled characters that break the surrounding text.
+Many templates use decorative [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) - arrows (->), check marks (), diamonds (◆), or custom symbols. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsers handle these inconsistently. Some render them correctly; others turn them into question marks, empty boxes, or garbled characters that break the surrounding text.
 
 **What happens:** Your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) get corrupted. "-> Managed a team of 12 engineers" becomes "? Managed a team of 12 engineers" or loses its structure entirely.
 

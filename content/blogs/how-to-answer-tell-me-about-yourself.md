@@ -72,7 +72,7 @@ I'm at a stage now where I want to work on systems that go beyond model building
 
 Before product management, I was actually in engineering - I was a software developer for 3 years - which gives me a different perspective when I'm working with technical teams. I'm comfortable going deep into system architecture conversations.
 
-I'm looking to move to a company with a more complex product surface and a strong data culture. What attracted me to [Company] specifically was [product reason] - I've been a user for 2 years and I have real opinions about what I'd love to work on."
+I'm looking to move to a company with a more complex product surface and a [strong data culture](https://thetailorcv.com/blog/how-to-research-company-before-interview). What attracted me to [Company] specifically was [product reason] - I've been a user for 2 years and I have real opinions about what I'd love to work on."
 
 ---
 
@@ -177,7 +177,7 @@ Use this advice as interview practice, not just reading material. Start a role-s
 Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
 
 ## Conclusion
-"Tell me about yourself" is a gift - it is the one question where you have complete control of the narrative. Use the Present-Past-Future formula, keep it under 2.5 minutes, and end with a specific reason you want this role at this company.
+"Tell me about yourself" is a gift - it is the one question where you have complete control of the narrative. Use the Present-Past-Future formula, keep it under 2.5 minutes, and end with a [specific reason you want this role](https://thetailorcv.com/blog/how-to-answer-why-should-we-hire-you) at this company.
 
 For all other interview questions, read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and the full [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Before your interview, ensure your resume is strong - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it.
 

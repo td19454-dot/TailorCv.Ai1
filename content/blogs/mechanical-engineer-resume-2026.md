@@ -104,7 +104,7 @@ Designed / Analyzed / Reduced / Improved + [component or system] + [manufacturin
 - Performed ANSYS static structural FEA on a powertrain mount bracket, optimizing topology to reduce weight by 18% while maintaining safety factor above 2.4 under worst-case loading.
 - Led DFM review for a 14-part plastic housing, identifying 6 tooling design risks early and reducing first-article rejection rate from 28% to 4%.
 - Qualified 3 new injection molding suppliers through dimensional inspection, material certification review, and 50K-cycle endurance testing, reducing tooling costs by 22%.
-- Managed engineering change orders for 40+ components across 3 vehicle programs, maintaining ECO cycle time under 5 working days.
+- Managed [engineering change orders](https://thetailorcv.com/blog/job-description-analysis-checklist) for 40+ components across 3 vehicle programs, maintaining ECO cycle time under 5 working days.
 
 ---
 

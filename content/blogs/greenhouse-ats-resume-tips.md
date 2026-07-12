@@ -28,7 +28,7 @@ Greenhouse extracts your work history, education, and skills into structured can
 
 ### Keyword and Requirement Matching
 
-Once parsed, your resume is compared against the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)'s listed requirements. Greenhouse is commonly configured by recruiting teams to flag or auto-sort candidates based on specific must-have keywords, so missing an exact required term can push you out of the initial review queue.
+Once parsed, your resume is compared against the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)'s listed requirements. Greenhouse is commonly configured by recruiting teams to flag or auto-sort candidates based on specific must-have [keywords](https://thetailorcv.com/blog/resume-matching-skills-based-hiring), so missing an exact required term can push you out of the initial review queue.
 
 ### Recruiter Scorecards
 
@@ -42,7 +42,7 @@ Unlike some platforms, Greenhouse gives recruiters and hiring managers structure
 |------|-----------------|
 | Keep formatting simple and single-column | Reduces parsing errors in the extraction engine |
 | Use standard, recognizable section headers | Helps both the parser and the recruiter scan quickly |
-| Lead bullets with strong action verbs and results | Startups often skim fast; the first few words matter most |
+| Lead bullets with [strong action verbs](https://thetailorcv.com/blog/resume-keyword-map-template) and results | Startups often skim fast; the first few words matter most |
 | Mirror the exact tool and skill names from the posting | Greenhouse-configured filters often search for exact strings |
 | Keep the resume to 1-2 pages | Startup hiring teams review high volumes quickly |
 
@@ -62,7 +62,7 @@ Startups hire for specific, immediate needs. A [generic resume](https://thetailo
 
 ### Skipping the Cover Letter Field
 
-Greenhouse applications often include an optional cover letter or "why this role" field. Leaving it blank is a missed opportunity to reinforce your match. Use the [AI cover letter generator](/cover-letter) to produce a tailored answer quickly.
+[Greenhouse applications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications) often include an optional [cover letter](https://www.thetailorcv.com/cover-letter) or "why this role" field. Leaving it blank is a missed opportunity to reinforce your match. Use the [AI cover letter generator](/cover-letter) to produce a tailored answer quickly.
 
 ### Not Matching Culture and Values Language
 
@@ -76,7 +76,7 @@ Startup job descriptions frequently include values-driven language ("scrappy," "
 2. Extract required vs. nice-to-have keywords using the [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 3. Rewrite your top bullets and skills section to mirror those exact terms, following the [resume matching guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide).
 4. Simplify formatting to a clean, single-column layout.
-5. Fill in any optional fields, including cover letter prompts, with tailored content.
+5. Fill in any optional fields, including [cover letter](https://www.thetailorcv.com/cover-letter) prompts, with tailored content.
 6. Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) before submitting.
 
 ---

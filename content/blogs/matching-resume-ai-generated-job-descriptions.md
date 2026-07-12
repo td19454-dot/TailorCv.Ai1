@@ -14,7 +14,7 @@ More job postings in 2026 are drafted, expanded, or entirely written by AI. Hiri
 
 Understanding this pattern changes how you should read and [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) to these postings.
 
-Paste any job description into the [TailorCV resume optimizer](/solutions) to get a match score and a clear list of what actually matters, regardless of how the posting was written.
+Paste any job description into the [TailorCV resume optimizer](/solutions) to get a [match score](https://www.thetailorcv.com/solutions) and a clear list of what actually matters, regardless of how the posting was written.
 
 ---
 
@@ -94,7 +94,7 @@ To effectively tailor your resume for AI-generated job descriptions, follow this
 
 4. **Highlight Relevant Experience**: Under your work experience section, emphasize roles and accomplishments that directly relate to the job description. Use bullet points to clearly outline your contributions and use metrics where possible to quantify your impact.
 
-5. **Showcase Skills Clearly**: Ensure that your skills section mirrors the skills listed in the job description. If the job emphasizes specific technical skills or soft skills, make sure these are prominently featured.
+5. **Showcase Skills Clearly**: Ensure that your skills section mirrors the skills listed in the job description. If the job emphasizes [specific technical skills](https://thetailorcv.com/blog/matching-resume-to-certifications-in-job-description) or soft skills, make sure these are prominently featured.
 
 6. **Review and Edit**: Before submitting your tailored resume, review it for clarity and conciseness. Ensure there are no typos or grammatical errors, as these can detract from your professionalism.
 

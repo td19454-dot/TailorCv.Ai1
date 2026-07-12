@@ -14,7 +14,7 @@ Every [job description](https://thetailorcv.com/blog/job-description-keyword-ext
 
 Knowing the difference between required and preferred qualifications changes how you should [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), what you should prioritize, and whether a job is even worth applying to in the first place.
 
-Paste any job description into the [TailorCV resume optimizer](/solutions) to see exactly how your resume stacks up against the posting's true priorities.
+Paste any [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) into the [TailorCV resume optimizer](/solutions) to see exactly how your resume stacks up against the posting's true priorities.
 
 ---
 
@@ -139,7 +139,7 @@ Tailoring your resume can significantly improve your chances of landing an inter
 4. **Use Action-Oriented Language:**
    - Start each bullet point in your experience section with action verbs (e.g., "Developed," "Led," "Executed") to convey your contributions effectively.
 
-5. **Tailor for ATS:**
+5. **Tailor for [ATS](https://thetailorcv.com/blog/greenhouse-ats-resume-tips):**
    - Use tools like [ATS checker](https://www.thetailorcv.com/solutions) to analyze how well your resume matches the job description. Make adjustments based on the feedback.
 
 ## Common Mistakes to Avoid

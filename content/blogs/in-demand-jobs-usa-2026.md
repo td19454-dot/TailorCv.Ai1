@@ -92,7 +92,7 @@ Once your resume has attracted attention, the next step is to prepare for interv
 
 ## Building Your Online Presence
 
-Establishing a strong online profile can also help you land a job. Use platforms like LinkedIn to showcase your skills and experience. For tips on optimizing your LinkedIn profile, check out our guide on [LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
+Establishing a strong online profile can also help you land a job. Use platforms like LinkedIn to showcase your skills and experience. For tips on optimizing your [LinkedIn profile](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), check out our guide on [LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
 ## Common Mistakes When Applying for In-Demand Jobs
 

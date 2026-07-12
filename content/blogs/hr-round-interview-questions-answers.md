@@ -1,6 +1,6 @@
 ﻿---
 title: HR Round Interview Questions and Answers - Complete Guide for 2026
-description: Prepare for HR round interviews with the most common questions, sample answers, and AI mock interview practice. Covers salary, culture fit, and background questions.
+description: Prepare for HR round interviews with the most common questions, sample answers, and [AI mock interview practice](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Covers salary, culture fit, and background questions.
 date: 2026-07-04
 author: TailorCV Team
 tags: [HR Interview, HR Round, Interview Questions, Interview Preparation, Mock Interview]

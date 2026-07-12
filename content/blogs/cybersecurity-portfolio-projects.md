@@ -7,10 +7,10 @@ tags: [Cybersecurity Portfolio, Cybersecurity Resume, Projects, Tech Portfolio, 
 category: Portfolio
 image: public/blog-images/cybersecurity-portfolio-projects.webp
 slug: cybersecurity-portfolio-projects
-keywords: cybersecurity portfolio projects, cybersecurity projects for resume, security analyst portfolio, cyber security portfolio ideas
+keywords: cybersecurity portfolio projects, cybersecurity projects for [resume](https://www.thetailorcv.com/templates), security analyst portfolio, cyber security portfolio ideas
 ---
 
-A cybersecurity [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) helps hiring teams see how you think. Certifications matter, but projects prove that you can investigate, document, automate, and communicate security work.
+A cybersecurity [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) helps hiring teams see how you think. Certifications matter, but projects prove that you can investigate, document, automate, and communicate [security work](https://www.thetailorcv.com/portfolio).
 
 ---
 
@@ -64,7 +64,7 @@ Your cybersecurity portfolio should prove investigation and communication, not j
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your cybersecurity project [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 

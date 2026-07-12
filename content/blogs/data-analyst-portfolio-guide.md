@@ -88,7 +88,7 @@ While building your portfolio, be mindful of these common mistakes that can unde
 
 Use this checklist to ensure your portfolio is comprehensive and effective:
 
-- [ ] **Diverse Projects**: Include a variety of projects that showcase different skills (e.g., data cleaning, visualization, statistical analysis).
+- [ ] **Diverse Projects**: Include a variety of projects that showcase different skills (e.g., [data cleaning](https://thetailorcv.com/blog/portfolio-no-projects), visualization, statistical analysis).
 
 - [ ] **Clear Objectives**: Each project should have a well-defined question or goal.
 
