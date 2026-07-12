@@ -273,7 +273,7 @@ h1.post-hero-title {
   line-height: 1.12;
   letter-spacing: -0.02em;
   color: #ffffff !important;
-  margin: 0 0 18px;
+  margin: 0 0 30px;
   max-width: 20ch;
 }
 
@@ -286,10 +286,10 @@ h1.post-hero-title {
 }
 
 .author-chip {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 28px;
+  margin: 0 0 30px;
 }
 .author-badge {
   position: relative;
