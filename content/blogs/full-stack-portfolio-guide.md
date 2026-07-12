@@ -48,7 +48,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 ## Pro Tips
 - Add a "Try it" demo account so reviewers do not have to sign up.
 - Show the architecture of your flagship in one diagram.
-- Generate the portfolio site itself from your resume with the [portfolio builder](https://thetailorcv.com/portfolio).
+- Generate the [portfolio site](https://www.thetailorcv.com/portfolio) itself from your resume with the [portfolio builder](https://thetailorcv.com/portfolio).
 
 ## Showcase Your Technical Skills with Interactive Demos
 
@@ -75,7 +75,7 @@ To ensure your projects are comprehensive and impactful, create a mini checklist
 - **Short Description**: (What does the project do? What problems does it solve?)
 - **Key Features**: (List 3-5 standout features)
 - **Lessons Learned**: (What did you learn during development?)
-- **User Feedback**: (Include any testimonials or user feedback if available)
+- **User Feedback**: (Include any testimonials or [user feedback](https://thetailorcv.com/blog/data-scientist-portfolio-guide) if available)
 
 This checklist can help you stay organized and ensure that each project in your portfolio tells a complete story.
 
@@ -84,9 +84,9 @@ This checklist can help you stay organized and ensure that each project in your 
 Creating a portfolio can be daunting, but adhering to these do's and don'ts can streamline your process and enhance the quality of your presentation.
 
 ### Do's
-- **Do Include Real-World Applications**: Projects that solve real problems are more impressive than hypothetical ones.
+- **Do Include Real-World Applications**: Projects that solve [real problems](https://thetailorcv.com/blog/business-analyst-portfolio-guide) are more impressive than hypothetical ones.
 - **Do Use Clear Navigation**: Ensure that your portfolio is easy to navigate. Use clear labels and a logical structure.
-- **Do Keep Your Code Clean**: Use comments and maintain a clean code structure in your GitHub repositories. This demonstrates professionalism.
+- **Do Keep Your Code Clean**: Use comments and maintain a [clean code structure](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews) in your GitHub repositories. This demonstrates professionalism.
 - **Do Update Regularly**: Keep your portfolio fresh by adding new projects and removing outdated ones. This shows your growth and adaptability.
 
 ### Don'ts
@@ -107,7 +107,7 @@ Imagine you developed a side project, a weather application, while learning a ne
 
 4. **Write a Blog Post**: Consider writing a blog post about your experience building the app. Discuss challenges faced and how you overcame them. This can be linked in your portfolio.
 
-5. **Add It to Your Portfolio**: Finally, showcase the app in your portfolio with its own dedicated section, complete with a live demo, code repository link, and a brief description of its features and your learning process.
+5. **Add It to Your Portfolio**: Finally, showcase the app in your portfolio with its own dedicated section, complete with a [live demo](https://thetailorcv.com/blog/portfolio-no-projects), code repository link, and a brief description of its features and your learning process.
 
 By following these steps, you can effectively turn any side project into a compelling portfolio piece that showcases your growth as a full stack developer.
 

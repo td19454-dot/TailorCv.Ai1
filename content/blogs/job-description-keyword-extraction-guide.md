@@ -18,9 +18,9 @@ The skills they list are the skills they screen for.
 The tools they mention are the tools you need to name.
 The phrases they repeat are the things they care about most.
 
-The problem: most candidates read job descriptions casually and miss the signals buried in them.
+The problem: most candidates read [job description](https://thetailorcv.com/blog/job-description-analysis-checklist)s casually and miss the signals buried in them.
 
-This guide teaches you how to extract every useful keyword from any [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) - and then use those keywords to build a resume that gets noticed.
+This guide teaches you how to extract every useful keyword from any [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) - and then use those keywords to build a [resume](https://thetailorcv.com/blog/resume-keyword-density-guide) that gets noticed.
 
 Use [TailorCV's automated keyword extractor](https://www.thetailorcv.com/solutions) to do this instantly for any job. Pair it with [ATS-friendly resume templates](https://www.thetailorcv.com/templates) to ensure your format lets keywords be read correctly.
 
@@ -28,9 +28,9 @@ Use [TailorCV's automated keyword extractor](https://www.thetailorcv.com/solutio
 
 ## Why Keyword Extraction Is a Job Search Superpower
 
-Before a recruiter reads your resume, an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) reads it.
+Before a recruiter reads your [resume](https://thetailorcv.com/blog/resume-keyword-map-template), an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) reads it.
 
-The [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compares your resume to the job description using keyword matching algorithms.
+The [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compares your resume to the [job description](https://thetailorcv.com/blog/hidden-keywords-in-job-description) using keyword matching algorithms.
 If your keywords do not match, your resume scores low.
 If your score is low, you never reach a human reviewer.
 

@@ -61,7 +61,7 @@ Keep bullets shorter than on a resume (2-3 sentences per bullet is fine on [Link
 
 ### 5. Skills Section
 
-Add 50 skills (the maximum). Focus on skills that appear in job descriptions you are targeting. [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) sorts profiles by skill endorsements - the more endorsements, the higher you appear in recruiter search.
+Add 50 skills (the maximum). Focus on skills that appear in [job description](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day)s you are targeting. [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) sorts profiles by skill endorsements - the more endorsements, the higher you appear in recruiter search.
 
 Ask 3-5 former colleagues to endorse your top skills. Return the favor.
 

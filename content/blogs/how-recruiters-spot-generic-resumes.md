@@ -130,7 +130,7 @@ Yes, immediately. Recruiters who review hundreds of resumes develop a near-autom
 
 ### Can ATS software also detect a generic resume?
 
-Yes. ATS systems score resumes based on keyword match, job title fit, and skill alignment. A generic resume that wasn't tailored to the posting will score low and may never reach a human recruiter. See [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
+Yes. ATS systems score resumes based on keyword match, job title fit, and skill alignment. A [generic resume](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews) that wasn't tailored to the posting will score low and may never reach a human recruiter. See [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
 
 ### How different should each version of my resume be?
 

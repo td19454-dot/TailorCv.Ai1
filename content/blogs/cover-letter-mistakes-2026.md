@@ -10,13 +10,13 @@ slug: cover-letter-mistakes-2026
 keywords: cover letter mistakes, cover letter mistakes 2026, job application mistakes, cover letter tips
 ---
 
-A bad [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) does not usually fail because of grammar. It fails because it is generic, too long, or disconnected from the job. In 2026, recruiters expect cover letters to be short, relevant, and easy to scan.
+A bad [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) does not usually fail because of grammar. It fails because it is generic, too long, or disconnected from the job. In 2026, recruiters expect [cover letter](https://thetailorcv.com/blog/ats-friendly-cover-letter-format)s to be short, relevant, and easy to scan.
 
 ---
 
 ## Mistake 1: Repeating Your Resume
 
-The [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) should explain why your experience matters for this role. Do not rewrite every job from your resume.
+The [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) should explain why your experience matters for this role. Do not rewrite every job from your [resume](https://thetailorcv.com/blog/resume-trends-2026).
 
 ---
 

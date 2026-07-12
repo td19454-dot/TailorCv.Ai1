@@ -40,11 +40,11 @@ Data Engineer with X years of experience building [pipeline type or warehouse ar
 
 ### Example for Experienced Data Engineer
 
-Data Engineer with 5 years of experience designing ELT pipelines and cloud [data warehouse architecture](https://thetailorcv.com/blog/resume-section-order-guide) for SaaS and retail analytics teams. Built and maintained 50+ dbt models, Airflow DAGs, and Spark batch jobs on Snowflake and BigQuery. Reduced [data freshness](https://thetailorcv.com/blog/resume-fonts-guide) latency from 24 hours to 1 hour, enabling real-time reporting for 4 business teams. Strong in [data modeling](https://thetailorcv.com/blog/anatomy-of-a-resume), data quality, and modern data stack (dbt, Airflow, Spark, dbt Cloud).
+Data Engineer with 5 years of experience designing ELT pipelines and cloud [data warehouse architecture](https://thetailorcv.com/blog/resume-section-order-guide) for SaaS and retail analytics teams. Built and maintained 50+ dbt models, Airflow DAGs, and Spark batch jobs on Snowflake and BigQuery. Reduced [data freshness](https://thetailorcv.com/blog/resume-fonts-guide) latency from 24 hours to 1 hour, enabling real-time reporting for 4 business teams. Strong in [data modeling](https://thetailorcv.com/blog/anatomy-of-a-resume), [data quality](https://thetailorcv.com/blog/data-scientist-portfolio-guide), and [modern data stack](https://thetailorcv.com/blog/how-to-choose-resume-template) (dbt, Airflow, Spark, dbt Cloud).
 
 ### Example for Entry-Level Data Engineer
 
-Data Engineer with strong Python, SQL, and data pipeline skills. Built ELT pipelines using Python, Airflow, and PostgreSQL for 3 personal and academic [projects](https://thetailorcv.com/blog/projects-in-resume). Experienced with dbt, Snowflake, and PySpark basics. Completed Google Cloud Professional Data Engineer certification. Seeking a junior data engineering role with a team focused on scalable analytics infrastructure.
+Data Engineer with strong Python, SQL, and [data pipeline](https://thetailorcv.com/blog/job-description-analysis-checklist) skills. Built ELT pipelines using Python, Airflow, and PostgreSQL for 3 personal and academic [projects](https://thetailorcv.com/blog/projects-in-resume). Experienced with dbt, Snowflake, and PySpark basics. Completed Google Cloud Professional Data Engineer certification. Seeking a junior data engineering role with a team focused on scalable analytics infrastructure.
 
 ---
 
@@ -102,7 +102,7 @@ Built / Designed / Reduced / Migrated + [pipeline or data system] + [data volume
 
 ### Strong Bullet Points
 
-- Built an ELT pipeline using PySpark and Airflow processing 800GB of daily transaction data from 3 source systems into Snowflake, reducing data freshness from 24 hours to 90 minutes.
+- Built an ELT pipeline using PySpark and Airflow processing 800GB of daily transaction data from 3 source systems into Snowflake, reducing [data freshness](https://thetailorcv.com/blog/resume-fonts-guide) from 24 hours to 90 minutes.
 - Designed and maintained 120+ dbt models with full lineage documentation, tests, and incremental processing, enabling 8 analytics teams to consume trusted, self-documenting data models.
 - Built a Kafka streaming pipeline processing 1.2M events per hour for real-time inventory updates, replacing a batch process that caused 4-hour stockout blind spots in production.
 - Migrated 40TB of historical data from on-premise Oracle to Snowflake on AWS, reducing monthly query infrastructure costs by $18K and improving average query response time by 6x.
@@ -193,7 +193,7 @@ This guide uses hiring context from TailorCV analysis of 400+ data engineering j
 
 Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
 
-A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
+A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or case studies.
 
 ## Conclusion
 A strong data engineer resume in 2026 shows reliable pipeline ownership, modern data stack proficiency, [data quality practices](https://thetailorcv.com/blog/resume-margins-spacing-formatting), and measurable infrastructure improvements. Do not just list tools - show the data volume, latency improvements, and analytics impact your work enabled.

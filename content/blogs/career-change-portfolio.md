@@ -54,7 +54,7 @@ A short, confident narrative - why you switched, what you have built, where you 
 
 ## Quantify Both Worlds
 
-Use results from your old career *and* your new projects. Numbers travel across industries - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+Use results from your [old career](https://thetailorcv.com/blog/online-cv-maker-vs-resume-builder) *and* your new projects. Numbers travel across industries - see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
 ### Examples of Quantifying Achievements
 
@@ -80,7 +80,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) still anchored in the old field.
 - No new-field [projects](https://thetailorcv.com/blog/projects-in-resume), only courses.
 - Apologizing for the switch instead of owning it.
-- Inconsistent messaging across your resume, LinkedIn, and portfolio.
+- In[consistent messaging](https://thetailorcv.com/blog/resume-review-checklist-before-applying) across your resume, LinkedIn, and portfolio.
 
 ### Checklist for Your Career Change Portfolio
 

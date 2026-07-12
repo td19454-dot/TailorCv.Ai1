@@ -43,7 +43,7 @@ If you apply to a remote role with a standard resume, you may match the role req
 **Additional remote JD requirements:**
 - Async communication skills
 - Self-management and autonomy
-- Proficiency with remote tools (Slack, Zoom, Notion, Jira, etc.)
+- Proficiency with [remote tools](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite) (Slack, Zoom, Notion, Jira, etc.)
 - Cross-timezone collaboration
 - Written communication clarity
 - Remote work history (a plus but not always required)
@@ -242,7 +242,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Do I need remote experience to get a remote job?
 
-No, but it helps. If you have worked remotely, highlight it. If you have not, emphasize your self-management, written communication, and async tools experience.
+No, but it helps. If you have worked remotely, highlight it. If you have not, emphasize your [self-management](https://thetailorcv.com/blog/resume-objective-vs-summary), written communication, and async tools experience.
 
 ### Should I specifically say "remote" in my resume?
 

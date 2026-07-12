@@ -53,7 +53,7 @@ Take a single line from a marketing resume:
 
 > "Grew organic traffic 3x in six months by rebuilding the content strategy and fixing technical SEO issues."
 
-A resume-driven mock interview tool can reasonably generate several distinct questions from this one bullet:
+A resume-driven [mock interview](https://thetailorcv.com/blog/mock-interview-practice-free) tool can reasonably generate several distinct questions from this one bullet:
 
 1. **The mechanism question**: "What specifically did you change in the content strategy, and which change had the biggest effect?"
 2. **The measurement question**: "How did you measure the 3x growth? What tool, what baseline period, and did anything else change at the same time that could explain part of the increase?"

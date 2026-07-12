@@ -10,9 +10,9 @@ slug: how-to-match-resume-keywords-to-job-description
 keywords: how to match resume keywords to job description, resume keyword matching, job description keywords resume, ATS keyword match, resume keywords 2026, keyword optimization resume
 ---
 
-Keywords are the bridge between your resume and a job offer.
+Keywords are the bridge between your [resume](https://thetailorcv.com/blog/how-to-match-resume-to-job-description-fast) and a job offer.
 
-When your resume uses the same words as the job description, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems rank it higher.
+When your resume uses the same words as the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist), [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems rank it higher.
 When it does not, it gets filtered out before a human ever sees it.
 
 The problem: most candidates guess at keywords.

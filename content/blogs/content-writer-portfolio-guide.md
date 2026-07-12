@@ -96,7 +96,7 @@ Before launching or updating your portfolio, run through this mini-checklist to 
 
 When creating your portfolio, be aware of these common pitfalls that can undermine its effectiveness:
 
-- **Overloading with Samples**: Avoid including too many samples. Select your best work that aligns with your target audience, as quality trumps quantity.
+- **Overloading with Samples**: Avoid including too many samples. Select your [best work](https://thetailorcv.com/blog/one-page-vs-multi-page-portfolio) that aligns with your target audience, as quality trumps quantity.
 
 - **Neglecting SEO**: If your portfolio is online, ensure it’s optimized for search engines. Use relevant keywords in your project descriptions and titles to increase visibility.
 

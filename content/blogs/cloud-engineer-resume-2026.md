@@ -12,7 +12,7 @@ keywords: cloud engineer resume, cloud engineer resume 2026, AWS resume, GCP res
 
 A cloud engineer resume in 2026 needs to prove that you can design, build, and manage cloud infrastructure that is reliable, secure, cost-efficient, and automated. The distinction between cloud engineering and [DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026) is blurring, but [cloud roles](https://thetailorcv.com/blog/resume-for-remote-developer-jobs) tend to emphasize architecture, managed services, cost governance, and multi-cloud strategy more than CI/CD pipeline tooling.
 
-Whether you are targeting AWS, GCP, Azure, or multi-cloud roles, your resume must show [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), real infrastructure built, and measurable improvements in cost, availability, or security posture.
+Whether you are targeting AWS, GCP, Azure, or multi-[cloud roles](https://thetailorcv.com/blog/resume-for-remote-developer-jobs), your resume must show [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), real infrastructure built, and measurable improvements in cost, availability, or security posture.
 
 Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). If your role is more pipeline and automation focused, also read the [DevOps engineer resume guide](https://thetailorcv.com/blog/devops-engineer-resume-2026). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
 
@@ -96,7 +96,7 @@ Designed / Reduced / Migrated / Built + [cloud service or architecture component
 - Managed AWS infrastructure
 - Used Terraform for infrastructure as code
 - Set up monitoring and alerting
-- Worked on cloud cost optimization
+- Worked on [cloud cost optimization](https://thetailorcv.com/blog/resume-keyword-map-template)
 
 ### Strong Bullet Points
 
@@ -126,7 +126,7 @@ B2B SaaS Company | Nov 2021 - Present
 Highly valued in cloud engineering:
 
 - [AWS Certified Solutions Architect](https://thetailorcv.com/blog/how-to-choose-resume-template) - Associate (most common starting point)
-- AWS Certified Solutions Architect - Professional
+- [AWS Certified Solutions Architect](https://thetailorcv.com/blog/how-to-choose-resume-template) - Professional
 - AWS Certified SysOps Administrator
 - AWS Certified [DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026) Engineer
 - Google Cloud Professional Cloud Architect
@@ -205,4 +205,4 @@ Including certifications specific to cloud platforms is vital for demonstrating 
 Quantifying your achievements can greatly strengthen your Cloud Engineer resume. Use specific metrics to illustrate your impact, such as the percentage reduction in costs, the number of incidents resolved, or improvements in infrastructure reliability. This approach not only provides concrete evidence of your skills but also aligns with what employers are looking for. For examples of impactful projects, refer to our post on [Fresher Resume Projects That Get Interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 
 ### Should I focus more on technical skills or soft skills in my Cloud Engineer resume?  
-While technical skills are crucial for a Cloud Engineer position, soft skills should not be overlooked. Employers value candidates who can communicate effectively, work collaboratively, and adapt to changing environments. Therefore, it's essential to balance both types of skills on your resume. For insights on presenting soft skills and technical expertise, consider reading our [DevOps Engineer Resume 2026](https://thetailorcv.com/blog/devops-engineer-resume-2026) guide.
+While [technical skills](https://thetailorcv.com/blog/resume-section-order-guide) are crucial for a Cloud Engineer position, soft skills should not be overlooked. Employers value candidates who can communicate effectively, work collaboratively, and adapt to changing environments. Therefore, it's essential to balance both types of skills on your resume. For insights on presenting soft skills and technical expertise, consider reading our [DevOps Engineer Resume 2026](https://thetailorcv.com/blog/devops-engineer-resume-2026) guide.

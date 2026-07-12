@@ -111,7 +111,7 @@ When it comes to crafting an [ATS-friendly resume](https://thetailorcv.com/blog/
 
 3. **Ignoring Job Descriptions**: Failing to tailor your resume to the specific job description can be detrimental. Analyze the job listing and incorporate relevant keywords and phrases found within it. For more on this, check out [ATS Keywords - How to Find and Add Them to Boost Your Score](https://thetailorcv.com/blog/ats-keywords-to-boost-score).
 
-4. **Using Uncommon Job Titles**: If your previous job title was unique to your company, consider using a more widely recognized title that reflects your role accurately. This can help ensure ATS systems recognize your experience.
+4. **Using Uncommon Job Titles**: If your previous job title was unique to your company, consider using a more widely recognized title that reflects your role accurately. This can help ensure [ATS systems](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search) recognize your experience.
 
 5. **Neglecting the File Format**: Submitting your resume in an unsupported format can lead to rejection. Stick to standard formats like .docx or .pdf, but always check the job posting for specific requirements. For more on formatting, refer to [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
 
@@ -158,7 +158,7 @@ Understanding how ATS works can be more effective when you visualize real-life s
 
 Your cover letter is just as important as your resume when it comes to ATS. Here are best practices to optimize your cover letter for ATS:
 
-1. **Include Keywords**: Just like your resume, use relevant keywords from the job description. This not only enhances your ATS score but also shows your alignment with the role.
+1. **Include Keywords**: Just like your resume, use relevant keywords from the job description. This not only enhances your [ATS score](https://thetailorcv.com/blog/why-is-my-ats-score-low) but also shows your alignment with the role.
 
 2. **Maintain a Standard Format**: Use a traditional format with clear headings, such as “Introduction,” “Body,” and “Conclusion.” Avoid fancy designs that can confuse ATS.
 
@@ -191,7 +191,7 @@ You can also [check your resume's ATS score for free](https://www.thetailorcv.co
 An [ATS-friendly resume](https://thetailorcv.com/blog/how-to-increase-ats-score) is formatted and structured to be easily read by Applicant Tracking Systems. It avoids complex formatting, uses standard fonts, and includes relevant keywords from the job description. For more tips, check our [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly).
 
 ### 2. How can I improve my ATS score?
-To improve your ATS score, tailor your resume for each job application by incorporating relevant keywords, using standard formatting, and including a skills section. For detailed guidance, refer to our [what is a good ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score).
+To improve your [ATS score](https://thetailorcv.com/blog/ats-score-vs-resume-score), tailor your resume for each job application by incorporating relevant keywords, using standard formatting, and including a skills section. For detailed guidance, refer to our [what is a good ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score).
 
 ### 3. Are Canadian resumes different from those in other countries?
 Yes, Canadian resumes have specific norms, such as not including personal information like photos or marital status, and typically being two pages long. For more insights, read our [Canadian resume format guide](https://thetailorcv.com/blog/canadian-resume-format-guide-2026).

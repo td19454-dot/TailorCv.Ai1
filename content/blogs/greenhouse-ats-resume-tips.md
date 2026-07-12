@@ -126,7 +126,7 @@ Understanding how to tailor your resume for a Greenhouse ATS can be greatly enha
 
 ## Common Mistakes to Avoid When Matching Your Resume
 
-1. **Ignoring Required Qualifications:** Always prioritize meeting the required qualifications over preferred ones. Ensure your resume clearly reflects your qualifications for the essential skills listed in the job description.
+1. **Ignoring Required Qualifications:** Always prioritize meeting the [required qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications) over preferred ones. Ensure your resume clearly reflects your qualifications for the essential skills listed in the job description.
   
 2. **Overloading Your Resume with Keywords:** While keywords are crucial, avoid stuffing your resume with them. Ensure that your usage of keywords sounds natural and relevant to your actual experience.
 
@@ -138,7 +138,7 @@ Understanding how to tailor your resume for a Greenhouse ATS can be greatly enha
 
 ## Step-by-Step Guide to Creating a Keyword Map
 
-Creating a keyword map can significantly improve your chances of passing through the Greenhouse ATS. Here’s how to do it:
+Creating a [keyword map](https://thetailorcv.com/blog/resume-keyword-map-template) can significantly improve your chances of passing through the Greenhouse ATS. Here’s how to do it:
 
 1. **Collect Job Descriptions:** Gather several job postings for the role you’re interested in. Look for patterns in the language used.
 

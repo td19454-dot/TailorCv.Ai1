@@ -10,7 +10,7 @@ slug: financial-analyst-resume-2026
 keywords: financial analyst resume, financial analyst resume 2026, finance resume, Excel financial modeling resume, CFA resume, investment analyst resume, FP&A resume
 ---
 
-A financial analyst resume in 2026 must demonstrate that you can build models, analyze performance, support business decisions, and communicate financial insight to non-finance stakeholders. Excel mastery is assumed - what differentiates you is the quality of your analysis and the business decisions it supported.
+A [financial analyst resume](https://thetailorcv.com/blog/data-analyst-resume-2026) in 2026 must demonstrate that you can build models, analyze performance, support business decisions, and communicate financial insight to non-finance stakeholders. Excel mastery is assumed - what differentiates you is the quality of your analysis and the business decisions it supported.
 
 Financial analyst roles span corporate FP&A, investment research, credit analysis, equity research, and commercial finance. Each has slightly different expectations, but all require quantitative precision, business judgment, and clear financial communication.
 

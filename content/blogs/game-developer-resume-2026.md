@@ -91,7 +91,7 @@ Built / Implemented / Optimized + [gameplay or technical system] + [engine/tech]
 
 ### Strong Bullet Points
 
-- Built the core combat system for a mobile action RPG in Unity and C#, including combo chains, hit detection, and enemy AI behavior trees - title reached 1.2M downloads.
+- Built the core combat system for a mobile action RPG in Unity and C#, including combo chains, hit detection, and enemy [AI behavior](https://thetailorcv.com/blog/ai-job-search-agent-2026) trees - title reached 1.2M downloads.
 - Reduced frame time from 22ms to 15ms on mid-tier Android devices through draw call batching, object pooling, and LOD optimization, achieving stable 60fps.
 - Implemented multiplayer netcode using Mirror for a 4-player co-op game, handling client prediction and server reconciliation for smooth gameplay at 100ms latency.
 - Built a custom Unity editor tool for level designers that reduced level creation time by 40% by automating tile placement and validation.

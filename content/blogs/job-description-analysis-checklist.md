@@ -56,7 +56,7 @@ Apply if:
 - You match most must-haves
 - Missing skills are learnable
 - Your experience level is close
-- You can tailor your resume honestly
+- You can tailor your [resume](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications) honestly
 
 Do not waste time applying if the gap is too large and the role is not strategic.
 
@@ -176,7 +176,7 @@ Paste your resume and the job description into the [TailorCV ATS score checker](
 
 ## Final Takeaway
 
-The best applications are specific, consistent, and easy to verify. Use this guide to improve your [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) analysis, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, cover letter, and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
+The best applications are specific, consistent, and easy to verify. Use this guide to improve your [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) analysis, then connect it with the rest of your job-search materials. When your resume, portfolio, LinkedIn, [cover letter](https://www.thetailorcv.com/cover-letter), and interview examples all tell the same focused story, recruiters can understand your value faster and with more confidence.
 
 
 

@@ -88,7 +88,7 @@ Include [relevant coursework](https://thetailorcv.com/blog/volunteer-work-on-res
 Example for an entry-level data role:
 "Relevant Coursework: Statistics, [machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026), Database Systems, Data Mining, Linear Algebra"
 
-Remove coursework once you have relevant work experience - your job experience replaces the need to list courses.
+Remove coursework once you have [relevant work experience](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break) - your job experience replaces the need to list courses.
 
 ---
 
@@ -216,10 +216,10 @@ Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv
 ## Frequently Asked Questions
 
 ### How should I format my education section on a resume in 2026?  
-The standard format for listing your education is to include your degree type, major, institution name, and graduation year. You can also add your GPA if it is strong and any relevant coursework or honors. For example: "Bachelor of Technology in Computer Science, VIT University, Vellore | 2026, CGPA: 8.7/10 | Relevant Coursework: Data Structures, Algorithms." For more formatting tips, check out our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide).
+The standard format for listing your education is to include your degree type, major, institution name, and graduation year. You can also add your GPA if it is strong and any [relevant coursework](https://thetailorcv.com/blog/volunteer-work-on-resume) or honors. For example: "Bachelor of Technology in Computer Science, VIT University, Vellore | 2026, CGPA: 8.7/10 | Relevant Coursework: Data Structures, Algorithms." For more formatting tips, check out our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide).
 
 ### When should I include my GPA on my resume?  
-You should include your GPA on your resume if it is strong, typically above a 3.0 on a 4.0 scale. This is especially relevant for students and recent graduates who may not have extensive work experience. If your GPA is not strong, it’s better to omit it and focus on other strengths, such as relevant coursework or skills. For additional insights, refer to our guide on [How to List Certifications on a Resume in 2026](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
+You should include your GPA on your resume if it is strong, typically above a 3.0 on a 4.0 scale. This is especially relevant for students and recent graduates who may not have extensive work experience. If your GPA is not strong, it’s better to omit it and focus on other strengths, such as [relevant coursework](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) or skills. For additional insights, refer to our guide on [How to List Certifications on a Resume in 2026](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
 
 ### Where should I place my education section on my resume?  
 For students and recent graduates, the education section should be placed near the top of your resume, right after your summary, as it is one of your strongest qualifications. In contrast, experienced professionals should place it towards the bottom, allowing their work experience to take precedence. For more on section order, see our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide).

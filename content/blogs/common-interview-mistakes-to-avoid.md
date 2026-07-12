@@ -58,7 +58,7 @@ For behavioral questions, unstructured stories confuse interviewers. Use Situati
 
 ### 9. Badmouthing Previous Employers
 
-Speaking negatively about past employers, managers, or colleagues is a major red flag. Stay positive even about negative experiences.
+Speaking negatively about past employers, managers, or colleagues is a major red flag. [Stay positive](https://thetailorcv.com/blog/how-to-explain-getting-fired-in-an-interview) even about negative experiences.
 
 ### 10. Lying or Exaggerating
 

@@ -81,7 +81,7 @@ Before you send the application, review this checklist:
 4. Can a recruiter understand your fit in less than 10 seconds?
 5. Does the content avoid generic phrases like "hardworking," "responsible for," or "passionate professional"?
 6. Are your links, portfolio, GitHub, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), or contact details easy to find?
-7. Does the application use the same positioning across resume, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and profile?
+7. Does the application use the same positioning across [resume](https://thetailorcv.com/blog/what-is-a-resume), [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and profile?
 8. Have you removed anything that distracts from the target role?
 
 If the answer is no for any item, fix that before applying. Most candidates do not need a complete rewrite. They need sharper alignment.
@@ -116,7 +116,7 @@ Use these related TailorCV guides to strengthen the rest of your application:
 - [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
 - [Free ATS Resume Scan](https://thetailorcv.com/blog/free-ats-resume-scan)
 
-These internal guides are useful because one document rarely wins a job alone. A strong resume needs matching keywords, a clean format, a convincing [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), a credible LinkedIn profile, and interview answers that support the same story. If one part says you are targeting data analytics and another part looks like a generic admin resume, the recruiter gets mixed signals.
+These internal guides are useful because one document rarely wins a job alone. A strong [resume](https://thetailorcv.com/blog/resume-vs-cv) needs matching keywords, a clean format, a convincing [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), a credible [LinkedIn](https://thetailorcv.com/blog/linkedin-headline-examples-job-seekers) profile, and interview answers that support the same story. If one part says you are targeting data analytics and another part looks like a generic admin resume, the recruiter gets mixed signals.
 
 ---
 

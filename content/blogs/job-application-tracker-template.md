@@ -31,7 +31,7 @@ Use these fields:
 - Interview notes
 - Outcome
 
-The most important column is resume version. If you do not track it, you cannot learn which positioning works.
+The most important column is [resume](https://thetailorcv.com/blog/resume-vs-cv) version. If you do not track it, you cannot learn which positioning works.
 
 ---
 
@@ -128,7 +128,7 @@ Use these related TailorCV guides to strengthen the rest of your application:
 - [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
 - [Free ATS Resume Scan](https://thetailorcv.com/blog/free-ats-resume-scan)
 
-These internal guides are useful because one document rarely wins a job alone. A strong resume needs matching keywords, a clean format, a convincing [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), a credible LinkedIn profile, and interview answers that support the same story. If one part says you are targeting data analytics and another part looks like a generic admin resume, the recruiter gets mixed signals.
+These internal guides are useful because one document rarely wins a job alone. A strong resume needs matching keywords, a clean format, a convincing [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), a credible [LinkedIn](https://thetailorcv.com/blog/linkedin-to-portfolio-guide) profile, and interview answers that support the same story. If one part says you are targeting data analytics and another part looks like a generic admin resume, the recruiter gets mixed signals.
 
 ---
 

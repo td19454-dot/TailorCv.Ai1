@@ -121,7 +121,7 @@ If you are a fresh graduate with limited experience, move Education above Work E
 
 Based on your background, add:
 
-**Projects** - Essential for freshers, career changers, and engineers. Show what you built, what you used, and what it achieved. Read [how to add projects to your resume](https://thetailorcv.com/blog/projects-in-resume).
+**Projects** - Essential for freshers, [career change](https://thetailorcv.com/blog/career-change-from-non-tech-to-data-analyst)rs, and engineers. Show what you built, what you used, and what it achieved. Read [how to add projects to your resume](https://thetailorcv.com/blog/projects-in-resume).
 
 **Certifications** - List name, issuer, and date. Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
 

@@ -99,7 +99,7 @@ To illustrate how effective an ATS checker can be, consider the following before
 - **Action Taken**: Simplified language, included specific languages such as "Python" and "JavaScript."
 - **Final ATS Score**: 90%
 
-These examples highlight the potential for improvement when using a free ATS checker effectively.
+These examples highlight the potential for improvement when using a [free ATS checker](https://thetailorcv.com/blog/ats-score-checker-free) effectively.
 
 ---
 

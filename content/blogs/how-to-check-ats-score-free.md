@@ -20,7 +20,7 @@ If you want the full background first, start with the [ATS Score Guide for 2026]
 
 ## What Is an ATS Score?
 
-An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) (Applicant Tracking System) score is a number, usually out of 100, that estimates how well your resume matches a specific job description. The higher the score, the more likely your resume is to be shortlisted by both the software and the recruiter.
+An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) (Applicant Tracking System) score is a number, usually out of 100, that estimates how well your resume matches a specific [job description](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes). The higher the score, the more likely your resume is to be shortlisted by both the software and the recruiter.
 
 The score is based on factors like:
 

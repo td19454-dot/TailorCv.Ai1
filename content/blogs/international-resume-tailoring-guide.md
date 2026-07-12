@@ -14,7 +14,7 @@ You are a strong candidate.
 
 Your experience is real.
 Your results are impressive.
-Your resume - built to US standards - is clean, one page, keyword-optimized.
+Your [resume](https://thetailorcv.com/blog/what-is-a-resume) - built to US standards - is clean, one page, keyword-optimized.
 
 You apply to a role in Germany.
 You hear nothing.
@@ -32,7 +32,7 @@ International job searching is one area where resume advice almost universally f
 Every guide assumes you are applying in one country.
 Most assume that country is the United States.
 
-The reality is that resume conventions - format, length, photo, personal details, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) expectations - differ significantly between countries.
+The reality is that resume conventions - format, length, photo, [personal details](https://thetailorcv.com/blog/resume-references-guide), [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) expectations - differ significantly between countries.
 
 Applying with a US-style resume to a German, UK, or Australian employer signals that you did not bother to understand the market you are entering.
 
@@ -144,7 +144,7 @@ Germany has some of the most specific resume conventions in the world.
 
 **Format:** Extremely similar to US. [ATS optimization](https://thetailorcv.com/blog/ats-score-guide) is important. Many Canadian employers use the same ATS platforms as US companies.
 
-**Key difference:** Volunteer work and community involvement carry more cultural weight in Canadian hiring than in US applications. If you have strong community involvement, [include it on your resume](https://thetailorcv.com/blog/volunteer-work-on-resume).
+**Key difference:** Volunteer work and [community involvement](https://thetailorcv.com/blog/volunteer-work-on-resume) carry more cultural weight in Canadian hiring than in US applications. If you have strong community involvement, [include it on your resume](https://thetailorcv.com/blog/volunteer-work-on-resume).
 
 ---
 
@@ -160,7 +160,7 @@ Germany has some of the most specific resume conventions in the world.
 
 **[cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026):** Expected and taken seriously. Personalized, specific, and professional.
 
-**Key difference:** Australian job applications often include a "selection criteria" response - a separate document addressing specific stated criteria for the role. This is especially common for government and healthcare roles. Failure to include it can result in automatic disqualification.
+**Key difference:** Australian job applications often include a "[selection criteria](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description)" response - a separate document addressing specific stated criteria for the role. This is especially common for government and healthcare roles. Failure to include it can result in automatic disqualification.
 
 ---
 

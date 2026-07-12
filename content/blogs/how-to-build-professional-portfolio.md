@@ -43,7 +43,7 @@ Even if your industry has not traditionally required a [portfolio](https://theta
 
 ### Project Quality vs Quantity
 
-Three polished [projects](https://thetailorcv.com/blog/projects-in-resume) beat ten half-finished ones. A strong project has:
+Three polished [projects](https://thetailorcv.com/blog/projects-in-resume) beat ten half-finished ones. A [strong project](https://thetailorcv.com/blog/business-analyst-portfolio-guide) has:
 
 - A real use case (not a tutorial clone)
 - A working demo or deployment
@@ -286,7 +286,7 @@ A portfolio is crucial in 2026 because it serves as tangible proof of your skill
 Your software developer portfolio should showcase 3-5 complete, deployed projects that highlight your coding skills and problem-solving abilities. Include a variety of projects to demonstrate your versatility, and make sure to explain your role and the technologies used. For tips on common pitfalls, refer to our article on [11 Portfolio Mistakes That Cost You Interviews](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid).
 
 ### How do I choose between a portfolio website and a resume?
-In 2026, both a portfolio website and a resume serve different but complementary purposes. While your resume provides a concise overview of your skills and experiences, your portfolio allows for a deeper dive into your work, showcasing your projects and methodologies. To understand the nuances better, read our post on [Portfolio Website vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume).
+In 2026, both a [portfolio website](https://thetailorcv.com/blog/portfolio-website-vs-resume) and a resume serve different but complementary purposes. While your resume provides a concise overview of your skills and experiences, your portfolio allows for a deeper dive into your work, showcasing your projects and methodologies. To understand the nuances better, read our post on [Portfolio Website vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume).
 
 ### Can I build my portfolio without coding skills?
 Yes, you can build a professional portfolio without coding skills using various user-friendly platforms that offer portfolio website builders. These tools often come with customizable templates that allow you to present your work effectively. For a step-by-step guide, check out our article on [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide).
