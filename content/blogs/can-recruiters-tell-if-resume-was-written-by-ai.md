@@ -99,6 +99,62 @@ AI should be viewed as a valuable tool that can enhance your resume writing proc
 
 By incorporating AI thoughtfully into your resume writing process, you can create a document that not only passes ATS scrutiny but also resonates with human recruiters. This approach empowers you to showcase your unique professional narrative effectively.
 
+## How to Identify AI-Generated Content in Your Resume
+
+Before you submit your resume, it's essential to assess whether any sections may appear AI-generated. Here’s a step-by-step guide to help you identify potential red flags:
+
+1. **Analyze Sentence Structure**: AI often generates sentences that are overly complex or too uniform in structure. Read your resume aloud. If the sentences sound robotic or lack natural variation, consider rephrasing them.
+
+2. **Check for Clichés**: AI tools tend to rely on common phrases and buzzwords. Look for clichés like "hardworking," "team player," or "go-getter." Replace them with specific examples that demonstrate your unique contributions.
+
+3. **Evaluate Tone and Voice**: Ensure that your resume reflects your personality and professional voice. If the language feels too formal or impersonal, it might indicate AI influence. Personalize it by adding anecdotes or specific achievements.
+
+4. **Review Keywords**: While keyword optimization is crucial for ATS, overloading your resume with too many industry terms can signal AI usage. Use keywords naturally and only where they genuinely apply.
+
+5. **Seek Feedback**: Share your resume with trusted friends or mentors. They can provide insights on whether it feels authentic or if any sections come off as generic.
+
+## Common Mistakes When Using AI for Resume Writing
+
+Even though AI can assist in crafting a resume, several pitfalls can undermine its effectiveness. Here are common mistakes to avoid:
+
+- **Over-Reliance on Templates**: Many AI tools offer templates that may look similar to others in the market. Customize the template to reflect your personal branding and experiences.
+
+- **Neglecting Contextual Relevance**: AI might generate content based on general knowledge rather than specific job requirements. Make sure to tailor your resume for each application, highlighting relevant skills and experiences.
+
+- **Ignoring Quantifiable Achievements**: AI may create vague statements rather than concrete accomplishments. Always include specific metrics or results (e.g., "increased sales by 20%") to validate your claims.
+
+- **Failing to Update Regularly**: If you use AI-generated content, ensure you regularly update your resume. Outdated information can lead to discrepancies during interviews.
+
+## Do's and Don'ts for Crafting an AI-Assisted Resume
+
+### Do's
+- **Do Use AI as a Starting Point**: Leverage AI to generate ideas, outlines, or drafts, but make sure to infuse your personality and unique experiences into the final product.
+
+- **Do Focus on Specificity**: Ensure that any AI-generated content is paired with specific examples from your career that illustrate your skills and achievements.
+
+- **Do Test Your Resume with ATS Tools**: Use tools like [ATS checker](https://www.thetailorcv.com/solutions) to ensure your resume is optimized for applicant tracking systems.
+
+### Don'ts
+- **Don’t Skip the Proofreading Stage**: Always review your resume for grammatical errors and awkward phrasing that AI might introduce. 
+
+- **Don’t Use Jargon Excessively**: While industry-specific terms can enhance your resume, don’t overdo it. Keep it accessible to both ATS and human readers.
+
+- **Don’t Use AI to Avoid Writing**: Relying solely on AI can lead to a lack of personal touch. Your resume should reflect your journey and aspirations.
+
+## Mini Checklist for a Human-Approved Resume
+
+Before sending out your resume, use this checklist to ensure it meets human and ATS standards:
+
+- [ ] Is the content personalized and reflective of my voice?
+- [ ] Are there specific metrics supporting my achievements?
+- [ ] Have I avoided clichés and jargon?
+- [ ] Does the format adhere to modern standards? (Refer to our [Resume Section Order Guide](https://thetailorcv.com/blog/resume-section-order-guide))
+- [ ] Have I tailored this version for the specific job application?
+- [ ] Is the language clear, concise, and free of grammatical errors?
+- [ ] Have I tested my resume with an [ATS checker](https://www.thetailorcv.com/solutions)?
+
+By following these guidelines and utilizing AI thoughtfully, you can create a resume that stands out to both recruiters and applicant tracking systems.
+
 ## Frequently Asked Questions
 
 ### Do ATS systems reject resumes for being AI-written?

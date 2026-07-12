@@ -136,6 +136,50 @@ For more detailed strategies, check out our [Salary Negotiation Guide — How to
 
 The right approach can lead to a fulfilling career and a mutually beneficial relationship with your new employer.
 
+## Building Your Negotiation Strategy: A Step-by-Step Approach
+
+1. **Research and Prepare**  
+   Before you engage in negotiations, gather data on industry standards for salaries and benefits. Use resources like [Salary Negotiation Guide — How to Negotiate Pay With Confidence (2026)](https://thetailorcv.com/blog/salary-negotiation-guide) to understand what others in similar roles are earning. This data will empower you to make informed decisions and set realistic expectations.
+
+2. **Identify Your Leverage Points**  
+   Think about the unique skills and experiences you bring to the table. Are there certifications, special projects, or leadership experiences that make you stand out? List these out and be prepared to discuss how they contribute to the value you provide. This will help you articulate why you deserve a better offer.
+
+3. **Practice Your Pitch**  
+   Role-play negotiation scenarios with a friend or mentor. This practice can help you articulate your points clearly and confidently. Consider scenarios where the employer might push back and prepare counterarguments. The more comfortable you are with your talking points, the more effective your negotiation will be.
+
+## Common Mistakes to Avoid During Negotiation
+
+- **Focusing Solely on Salary**  
+  Many candidates make the mistake of concentrating only on the salary figure. Remember to consider other elements like benefits, work-life balance, and career advancement opportunities. For tips on how to express your salary expectations, see [How to Answer Salary Expectations Without Underselling Yourself](https://thetailorcv.com/blog/salary-expectation-answer-guide).
+
+- **Being Unprepared for Counteroffers**  
+  When negotiating, expect the employer to counter your request. If you haven’t prepared for this, you may accept an offer that falls short of your needs. Always have a minimum acceptable offer in mind.
+
+- **Ignoring Company Culture**  
+  Sometimes candidates get so caught up in the numbers they forget to consider if the company culture aligns with their values. A higher salary in a toxic environment may not be worth it. Reflect on your priorities and what you truly want from a workplace.
+
+## Mini Checklist for Successful Negotiation
+
+- [ ] Gather industry salary data.
+- [ ] List your unique selling points.
+- [ ] Prepare responses for common objections.
+- [ ] Identify your non-negotiables (salary, benefits, flexibility).
+- [ ] Role-play negotiation scenarios.
+- [ ] Prepare a gracious decline script for any offers you choose to reject. For help with this, check out [How to Decline a Job Offer Professionally in 2026 - With Templates](https://thetailorcv.com/blog/how-to-decline-job-offer).
+
+## Short Scenarios to Consider
+
+1. **Scenario 1: The Higher Offer**  
+   You receive two offers: Offer A at $70,000 with limited benefits and Offer B at $65,000 with excellent health insurance and a generous retirement plan. You prefer Offer B for its long-term benefits. In this case, prepare to negotiate with Offer A using the benefits of Offer B to make your case for a higher salary or better benefits.
+
+2. **Scenario 2: The Timing Dilemma**  
+   You have a verbal offer but are waiting for another company’s decision. You want to let the first company know that you’re considering multiple offers without jeopardizing your standing. In this case, use the [Email Script: Asking for More Time to Decide](#) to extend your decision deadline while you await a response.
+
+3. **Scenario 3: A Counteroffer from Your Current Job**  
+   If you’re currently employed and receive an offer from another company, your employer may present a counteroffer. Carefully evaluate whether the counteroffer meets your goals or if it’s simply a temporary solution to keep you. 
+
+By applying these strategies and avoiding common pitfalls, you can navigate the complexities of multiple job offers and secure the best possible outcome for your career.
+
 ## Frequently Asked Questions
 
 ### Is it okay to tell a company I have another offer?
