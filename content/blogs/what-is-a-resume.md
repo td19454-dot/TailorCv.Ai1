@@ -167,6 +167,21 @@ A resume is a targeted marketing document with one purpose: earn you an intervie
 
 Start with an [ATS-friendly template](https://www.thetailorcv.com/templates), build your content using the guides above, and run everything through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) before you apply. When your resume lands you interviews, use the [mock interview tool](https://thetailorcv.com/interview-prep) to make sure you are ready.
 
+
+## Weak vs. Strong Resumes: A Comparison
+
+Understanding the difference between a weak and a strong resume can help you tailor your document for maximum impact.
+
+| Feature                | Weak Resume                                          | Strong Resume                                      |
+|-----------------------|-----------------------------------------------------|---------------------------------------------------|
+| Focus                  | Generic job descriptions                             | Tailored achievements relevant to the job         |
+| Length                 | Over two pages with excessive detail                 | Concise, one page with essential information      |
+| Formatting             | Unorganized layout, inconsistent fonts               | Clean, professional design with clear sections    |
+| Keywords               | Lacks industry-specific terminology                  | Includes relevant keywords for ATS optimization   |
+| Action Verbs           | Uses passive language (e.g., "Responsible for...") | Strong action verbs (e.g., "Led," "Developed")    |
+| Results                | Lists duties without quantifiable outcomes           | Highlights measurable achievements and impact     |
+| Personalization        | One-size-fits-all approach                           | Customized for specific job applications          |
+
 ## Frequently Asked Questions
 
 ### What are the key components of a resume?

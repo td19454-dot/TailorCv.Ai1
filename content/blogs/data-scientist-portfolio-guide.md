@@ -148,6 +148,20 @@ A few next actions, in order:
 4. Before you start applying, run through the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying) and see [Portfolio Examples That Landed Interviews](https://thetailorcv.com/blog/portfolio-examples-that-landed-interviews) for concrete formats that have worked.
 5. Practice explaining your flagship project's modeling decisions out loud - the [AI mock interview](https://www.thetailorcv.com/mock-interview) tool is a low-pressure way to rehearse the "why did you choose this model" question before it comes up live.
 
+
+## Key Differences in Data Scientist and Data Analyst Portfolios
+
+Understanding the distinctions between a data scientist and a data analyst portfolio can help you tailor your work to better showcase your skills and impact.
+
+| Aspect                       | Data Scientist Portfolio                               | Data Analyst Portfolio                           |
+|------------------------------|-------------------------------------------------------|-------------------------------------------------|
+| Project Focus                | End-to-end modeling and deployment                    | Data visualization and reporting                 |
+| Problem Framing              | Ambiguous problems leading to predictive models       | Clear questions with straightforward answers    |
+| Model Complexity              | Includes experimentation with multiple models        | Focuses on descriptive statistics and visualizations |
+| Documentation                 | Detailed explanations of model choices and trade-offs | Clear reports summarizing findings               |
+| Technical Skills              | Proficiency in ML frameworks and deployment tools     | Strong SQL and visualization tool skills        |
+| Impact Highlight              | Demonstrates business value through model predictions | Emphasizes insights and decisions based on data |
+
 ## FAQ
 
 ### Do I need Kaggle medals?

@@ -140,6 +140,21 @@ If this topic connects to your work samples, turn the advice into a live proof p
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and pair your specialty positioning with the [Graphic Designer Resume 2026](https://thetailorcv.com/blog/graphic-designer-resume-2026) guide and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals) so your name, role, and strongest projects tell one consistent story everywhere a recruiter looks.
 
+
+## Weak vs. Strong Portfolio Presentation
+
+The way you present your work can significantly impact how it's perceived. Here's a comparison of weak and strong portfolio presentation techniques to guide your curation.
+
+| Aspect                     | Weak Presentation                                   | Strong Presentation                                  |
+|---------------------------|----------------------------------------------------|-----------------------------------------------------|
+| Project Selection          | Includes outdated or irrelevant projects            | Showcases recent, relevant work aligned with goals  |
+| Visual Consistency         | Inconsistent typography and color schemes          | Cohesive design elements that reflect personal style |
+| Project Descriptions       | Vague or overly technical descriptions             | Clear, engaging narratives that explain design choices|
+| User Experience            | Cluttered layout with poor navigation               | Clean, intuitive layout that enhances usability      |
+| Image Quality              | Low-resolution or poorly cropped images             | High-quality, well-composed images                   |
+| Personal Branding          | Generic branding with no personal touch             | Unique branding that reflects designer's personality  |
+| Call to Action             | No clear next steps for the viewer                 | Strong calls to action encouraging engagement         |
+
 ## FAQ
 
 ### How many pieces should a graphic design portfolio have?

@@ -1,14 +1,3 @@
-﻿---
-title: How to Choose a Domain Name for Your Portfolio (2026)
-description: Pick a portfolio domain that looks professional and is easy to share - naming rules, TLD choices, where to buy, and what to avoid.
-date: 2026-06-24
-author: TailorCV Team
-tags: [Portfolio Guide, Domain, Personal Branding, Tools]
-category: Portfolio
-image: public/blog-images/portfolio-domain-name-guide.webp
-slug: portfolio-domain-name-guide
-keywords: portfolio domain name, personal website domain, choose domain name, custom domain portfolio, best domain for portfolio
----
 
 Your domain is your personal brand's address - the thing you say out loud in interviews and print on your resume. A clean one is worth the ~$10/year many times over. Pair this with [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
@@ -19,27 +8,49 @@ Your domain is your personal brand's address - the thing you say out loud in int
 - firstnamelastname.com
 - yournamehq.com, getyourname.com, or hey-yourname.com
 
+### Creative Alternatives
+If your name is common or already taken, consider these creative alternatives:
+- **Add a Middle Initial**: yournamej.com
+- **Include Your Profession**: yournamewriter.com or yournamephotography.com
+- **Use Action Words**: createwithyourname.com or designbyyourname.com
+
 ## Naming Rules
 - Short and easy to **say aloud** without spelling it
 - No hyphens or numbers if you can avoid them
 - Avoid words that are easy to mishear or misspell
 - Make sure it reads cleanly in a resume header ([How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume))
 
+### Quick Checklist for Naming
+1. Is it easy to spell?
+2. Is it memorable?
+3. Does it reflect your brand?
+4. Is it available on social media platforms?
+
 ## TLD Tips
 - **.com** still reads as the most credible default
 - **.dev / .design / .io** are well-respected in their fields
 - Avoid obscure, spammy-looking TLDs
+- Consider local TLDs if your work is region-specific, such as .uk, .ca, or .au
 
 ## Where to Buy
-Namecheap, Cloudflare Registrar, or Porkbun offer fair pricing with no nasty renewal spikes. Turn on **WHOIS privacy** (usually free) to keep your details private.
+Namecheap, Cloudflare Registrar, or Porkbun offer fair pricing with no nasty renewal spikes. Turn on **WHOIS privacy** (usually free) to keep your details private. 
+
+### Step-by-Step: Buying Your Domain
+1. **Search for Availability**: Use the registrar’s search tool.
+2. **Select Your TLD**: Choose the most appropriate one for your brand.
+3. **Add WHOIS Privacy**: Ensure your personal information remains confidential.
+4. **Complete the Purchase**: Follow the prompts to finalize your acquisition.
 
 ## After You Buy
 Point it at your free host or your [portfolio builder](https://thetailorcv.com/portfolio) site ([How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)), enable HTTPS, then add it to your resume and LinkedIn. Help people find it with [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found).
 
+### Setting Up Your Domain
+- **Pointing Your Domain**: Follow your hosting provider's instructions to connect your domain.
+- **Setting Up HTTPS**: Use services like Let's Encrypt for free SSL certificates.
+- **Testing**: Ensure everything works by typing your domain into a browser.
+
 ## Keep Your Resume and Portfolio in Sync
-
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
-
 
 ## Common Mistakes
 - A domain so clever no one can spell it
@@ -47,6 +58,37 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Forgetting to renew (set auto-renew)
 - A flashy TLD that undercuts credibility
 
+### Additional Common Pitfalls
+- **Not Researching Competitors**: Check similar professionals’ domains for inspiration.
+- **Ignoring Social Media Availability**: Ensure your domain name is consistent across platforms.
+- **Overcomplicating Your Name**: Keep it simple and straightforward.
+
+## Examples of Effective Domain Names
+Here are some examples of effective domain names that illustrate the points made above:
+- **SarahSmith.com**: Simple, professional, and memorable.
+- **JohnDoeDesigns.com**: Clearly indicates what John does while keeping his name.
+- **EmilyWrites.com**: Uses an action word to signify her profession.
+
+## SEO Considerations for Your Domain
+Choosing the right domain name can also impact your SEO. Here are some tips to optimize your domain for search engines:
+- **Use Keywords**: If relevant, include a keyword that describes your services (e.g., yournamephotography.com).
+- **Keep It Short**: Shorter domains are easier to remember and share.
+- **Avoid Numbers and Hyphens**: These can confuse users and affect SEO negatively.
+
+## How to Promote Your Domain
+Once you’ve secured your domain, it’s crucial to promote it effectively. Here are some strategies:
+- **Link from Your Social Media Profiles**: Ensure your portfolio link is in your bios.
+- **Networking Events**: Share your domain verbally when meeting new contacts.
+- **Email Signature**: Include your domain in your email signature for professional correspondence.
+
+## Measuring Success
+To understand how well your domain is performing:
+- **Use Google Analytics**: Track visitor numbers and behavior on your site.
+- **Check Domain Authority**: Use tools like Moz or Ahrefs to see how your domain ranks.
+- **Monitor Backlinks**: Keep an eye on who is linking to your portfolio.
+
+## Conclusion
+Choosing a domain for your portfolio is a critical step in establishing your professional presence online. By following the guidelines and tips outlined in this article, you can select a domain that not only reflects your personal brand but also enhances your visibility and credibility in your field. For more insights on building a successful portfolio, check out [How to Write the About Me Section of Your Portfolio (With Examples)](https://thetailorcv.com/blog/portfolio-about-me-section) and [Turn Your Resume Into a Portfolio Website in Minutes (No Code)](https://thetailorcv.com/blog/portfolio-from-resume-minutes). Your domain is more than just a URL; it’s the cornerstone of your professional identity.
 
 ## Frequently Asked Questions
 
