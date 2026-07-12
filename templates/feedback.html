@@ -461,6 +461,12 @@
           <textarea class="fb-textarea" id="fbMore" maxlength="2000" placeholder="Please tell us — anything at all helps."></textarea>
         </div>
 
+        <div class="fb-block" data-field-block="email">
+          <h2><span class="fb-qnum">7</span>Want us to follow up? Leave your email <span class="fb-optional-tag">Optional</span></h2>
+          <input type="email" class="fb-textarea" id="fbEmail" maxlength="255" style="min-height:unset; height:48px;" placeholder="you@example.com" />
+          <p class="fb-field-error" data-error-for="email">Please enter a valid email address.</p>
+        </div>
+
         <div class="fb-submit-row">
           <button type="button" class="fb-btn-primary" id="fbSubmitBtn"><span class="fb-btn-label">Submit Feedback</span></button>
           <p class="fb-form-error" id="fbFormError"></p>
@@ -494,7 +500,8 @@
         would_pay: '',
         shutdown_impact_rating: null,
         nps_score: null,
-        additional_feedback: ''
+        additional_feedback: '',
+        email: ''
       };
       var sessionId = null;
       var isSubmitting = false;
@@ -537,6 +544,7 @@
           state.shutdown_impact_rating = (typeof draft.shutdown_impact_rating === 'number') ? draft.shutdown_impact_rating : null;
           state.nps_score = (typeof draft.nps_score === 'number') ? draft.nps_score : null;
           state.additional_feedback = draft.additional_feedback || '';
+          state.email = draft.email || '';
           sessionId = draft.sessionId || makeSessionId();
 
           // Query param only pre-selects on a fresh visit — never clobber an
@@ -566,6 +574,7 @@
             shutdown_impact_rating: state.shutdown_impact_rating,
             nps_score: state.nps_score,
             additional_feedback: state.additional_feedback,
+            email: state.email || null,
             campaign_reason: window.TAILORCV_CAMPAIGN_REASON || '',
             finalize: !!finalize
           })
@@ -600,6 +609,7 @@
           });
         });
         document.getElementById('fbMore').value = state.additional_feedback;
+        document.getElementById('fbEmail').value = state.email;
       }
 
       function clearFieldError(field) {
@@ -662,6 +672,13 @@
           scheduleServerSave();
         });
 
+        document.getElementById('fbEmail').addEventListener('input', function (e) {
+          state.email = e.target.value;
+          clearFieldError('email');
+          debounceSave();
+          scheduleServerSave();
+        });
+
         document.getElementById('fbSubmitBtn').addEventListener('click', submitFeedback);
       }
 
@@ -669,6 +686,8 @@
         var match = document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/);
         return match ? decodeURIComponent(match[1]) : '';
       }
+
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       function validateAll() {
         var firstInvalid = null;
@@ -681,6 +700,14 @@
             clearFieldError(field);
           }
         });
+
+        if (state.email && !EMAIL_RE.test(state.email)) {
+          showFieldError('email');
+          firstInvalid = firstInvalid || 'email';
+        } else {
+          clearFieldError('email');
+        }
+
         return firstInvalid;
       }
 

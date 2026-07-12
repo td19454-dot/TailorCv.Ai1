@@ -65,6 +65,7 @@ class FeedbackSaveRequest(BaseModel):
     shutdown_impact_rating: Optional[int] = Field(default=None, ge=1, le=5)
     nps_score: Optional[int] = Field(default=None, ge=1, le=10)
     additional_feedback: Optional[str] = Field(default=None, max_length=2000)
+    email: Optional[str] = Field(default=None, max_length=255)
     campaign_reason: str = Field(default="", max_length=30)
     finalize: bool = False
 
@@ -94,6 +95,7 @@ async def save_feedback(body: FeedbackSaveRequest, request: Request):
         raise HTTPException(status_code=400, detail="Missing session id.")
 
     user_id = request.session.get("user_id")
+    submitted_email = (body.email or "").strip().lower() or None
     db = SessionLocal()
     try:
         email = None
@@ -103,6 +105,9 @@ async def save_feedback(body: FeedbackSaveRequest, request: Request):
                 email = user.email
             else:
                 user_id = None
+        # Logged-out visitors have no account email — fall back to what they typed in.
+        if email is None:
+            email = submitted_email
 
         row = db.query(FeedbackSubmission).filter_by(session_id=session_id).first()
         if row is None:
@@ -117,10 +122,13 @@ async def save_feedback(body: FeedbackSaveRequest, request: Request):
                 created_at=datetime.utcnow(),
             )
             db.add(row)
-        elif user_id and row.user_id != user_id:
-            # Attribution can improve mid-survey (e.g. they log in partway through).
-            row.user_id = user_id
-            row.email = email
+        else:
+            if user_id and row.user_id != user_id:
+                # Attribution can improve mid-survey (e.g. they log in partway through).
+                row.user_id = user_id
+                row.email = email
+            elif not user_id and submitted_email:
+                row.email = submitted_email
 
         if body.time_saved_rating is not None:
             row.time_saved_rating = body.time_saved_rating
