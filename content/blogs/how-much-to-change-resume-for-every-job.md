@@ -1,4 +1,4 @@
-﻿---
+---
 title: How Much Should You Change Your Resume for Every Job? (The Honest Answer)
 description: Should you rewrite your resume for every application? The answer depends on the role and your timeline. Here's exactly how much to change - and where the effort actually pays off.
 date: 2026-06-11

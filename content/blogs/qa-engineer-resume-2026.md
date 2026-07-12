@@ -1,4 +1,4 @@
-﻿---
+---
 title: QA Engineer Resume 2026 - Complete Guide with Examples
 description: Write a QA engineer resume in 2026 with the right ATS keywords, automation skills, and bullet points that prove test coverage, defect reduction, and quality impact.
 date: 2026-06-01

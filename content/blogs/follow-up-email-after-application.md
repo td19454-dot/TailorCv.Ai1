@@ -1,4 +1,4 @@
-﻿---
+---
 title: Follow-Up Email After Job Application - Templates That Sound Professional
 description: Use these follow-up email templates after applying for a job, contacting a recruiter, or receiving no response.
 date: 2026-07-07
@@ -7,7 +7,7 @@ tags: [Follow Up Email, Job Search, Recruiter Email, Career Tips, Applications]
 category: Job Search
 image: public/blog-images/follow-up-email-after-application.webp
 slug: follow-up-email-after-application
-keywords: follow up email after application, [job application](https://thetailorcv.com/blog/job-application-tracker-template) follow up email, recruiter follow up template, no response after applying
+keywords: follow up email after application, job application follow up email, recruiter follow up template, no response after applying
 ---
 
 A [follow-up email](https://thetailorcv.com/blog/how-to-follow-up-after-interview) can help when it is short, polite, and specific. It should remind the recruiter of the role, restate your fit, and make it easy to reply.

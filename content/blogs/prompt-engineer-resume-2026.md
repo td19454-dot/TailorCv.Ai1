@@ -1,4 +1,4 @@
-﻿---
+---
 title: Prompt Engineer Resume 2026 - How to Prove Real AI Workflow Skill
 description: Create a prompt engineer resume that shows LLM evaluation, workflow design, automation, documentation, and measurable business outcomes.
 date: 2026-07-07

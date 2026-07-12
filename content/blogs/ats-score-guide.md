@@ -1,4 +1,4 @@
-﻿---
+---
 title: ATS Score Guide for 2026
 description: 15 Powerful Tips to Improve Your ATS Score and Get More Interviews
 date: 2026-05-10

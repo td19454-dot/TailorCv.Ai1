@@ -1,4 +1,4 @@
-﻿---
+---
 title: UX Designer Resume 2026 - Complete Guide with Examples and Portfolio Tips
 description: Write a UX designer resume in 2026 with the right ATS keywords, portfolio structure, design process skills, and bullet points that prove user impact.
 date: 2026-06-01

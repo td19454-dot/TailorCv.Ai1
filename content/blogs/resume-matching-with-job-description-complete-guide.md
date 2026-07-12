@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Matching with Job Description - Complete Guide for 2026
 description: Learn exactly how resume matching with job description works in 2026. Covers ATS keyword matching, scoring, and how to close the gap between your resume and any job posting.
 date: 2026-06-05

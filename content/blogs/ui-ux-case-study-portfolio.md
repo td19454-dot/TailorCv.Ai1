@@ -1,4 +1,4 @@
-﻿---
+---
 title: UI UX Case Study Portfolio - Structure Recruiters Actually Read
 description: Create a UI UX case study portfolio that shows user problem, research, design decisions, prototypes, metrics, and reflection.
 date: 2026-07-07

@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write a Cold Email to a Recruiter in 2026 - With Templates
 description: Learn how to write cold emails to recruiters in 2026 that get replies. Includes 5 email templates, subject line tips, and follow-up strategies.
 date: 2026-06-01

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Startup vs Enterprise Resume - How to Tailor Your Resume for Each (2026 Guide)
 description: Learn how to tailor your resume differently for startup jobs and enterprise companies. What recruiters at each type look for, and how to change your language, format, and keywords to win both.
 date: 2026-06-29

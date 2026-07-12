@@ -1,6 +1,6 @@
-﻿---
+---
 title: MBA Resume 2026 - Complete Guide with Examples
-description: Write a standout MBA resume in 2026 for consulting, finance, product, or tech roles. Includes format, [leadership](https://thetailorcv.com/blog/soft-skills-for-resume) framing, metrics, and recruiter expectations.
+description: Write a standout MBA resume in 2026 for consulting, finance, product, or tech roles. Includes format, leadership framing, metrics, and recruiter expectations.
 date: 2026-06-01
 author: TailorCV Team
 tags: [MBA Resume, Business School Resume, Leadership Resume, ATS Resume, Career Advice]

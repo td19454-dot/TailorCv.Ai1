@@ -1,4 +1,4 @@
-﻿---
+---
 title: Work-Life Balance Tips for Professionals in 2026 - Practical Guide
 description: Practical work-life balance tips for 2026, including boundary-setting, avoiding burnout, managing remote work, and building a sustainable career without sacrificing well-being.
 date: 2026-06-01

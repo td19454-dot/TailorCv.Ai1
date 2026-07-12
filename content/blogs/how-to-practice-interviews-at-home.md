@@ -1,6 +1,6 @@
-﻿---
+---
 title: How to Practice Job Interviews at Home - Free Methods That Actually Work (2026)
-description: Learn the best ways to practice interviews at home - AI [mock interview](https://thetailorcv.com/blog/mock-interview-feedback-checklist)s, self-recording, peer practice, and structured prep routines that build real confidence.
+description: Learn the best ways to practice interviews at home - AI mock interviews, self-recording, peer practice, and structured prep routines that build real confidence.
 date: 2026-07-05
 author: TailorCV Team
 tags: [Interview Practice, Mock Interview, Interview Preparation, Practice at Home, AI Mock Interview]

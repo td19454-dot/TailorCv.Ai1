@@ -1,4 +1,4 @@
-﻿---
+---
 title: Software Engineer Interview Preparation — The Complete 2026 Guide
 description: A complete guide to preparing for software engineer interviews — coding rounds, system design, behavioral questions, and resume alignment — with a realistic prep timeline.
 date: 2026-07-05

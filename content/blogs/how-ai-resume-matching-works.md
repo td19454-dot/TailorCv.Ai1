@@ -1,13 +1,13 @@
-﻿---
+---
 title: How AI Resume Matching Works - And How to Use It to Your Advantage in 2026
-description: Learn how AI-powered [resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) matching works in ATS systems and how to use AI tools to match your [resume](https://thetailorcv.com/blog/resume-tailoring-underqualified) to any job description faster and more accurately than manual methods.
+description: Learn how AI-powered resume matching works in ATS systems and how to use AI tools to match your resume to any job description faster and more accurately than manual methods.
 date: 2026-06-05
 author: TailorCV Team
 tags: [AI Resume Matching, ATS AI, Resume AI, Job Application AI, Resume Optimization 2026]
 category: Resume Optimization
-image: public/blog-images/how-ai-[resume](https://thetailorcv.com/blog/resume-tailoring-second-interview)-matching-works.webp
-slug: how-ai-[resume](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise)-matching-works
-keywords: how AI [resume](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite) matching works, AI ATS [resume](https://thetailorcv.com/blog/tailor-resume-without-job-description), AI [resume](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day) optimization, artificial intelligence resume matching, AI job description match, AI powered resume screening
+image: public/blog-images/how-ai-resume-matching-works.webp
+slug: how-ai-resume-matching-works
+keywords: how AI resume matching works, AI ATS resume, AI resume optimization, artificial intelligence resume matching, AI job description match, AI powered resume screening
 ---
 
 AI has changed how resumes are screened.

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Phone Interview Tips 2026 - How to Ace the Phone Screen
 description: Master the phone interview in 2026 with preparation tips, what to expect, how to answer common screening questions, and how to advance to the next round.
 date: 2026-06-01

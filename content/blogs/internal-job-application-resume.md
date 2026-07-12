@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Tailor Your Resume for an Internal Job Application (2026 Guide)
 description: Applying for a job at your current company requires a very different resume strategy. Learn how to tailor your resume for internal roles without creating awkward politics or getting overlooked.
 date: 2026-06-29

@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write Resume Bullet Points That Get Noticed (With Examples)
 description: Master the formula for resume bullet points that impress recruiters and pass ATS. Includes real before-and-after examples, the best structures, and common bullet point mistakes to avoid.
 date: 2026-06-06

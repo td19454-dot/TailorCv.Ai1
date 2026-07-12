@@ -1,4 +1,4 @@
-﻿---
+---
 title: Nursing Resume 2026 - Complete Guide with Examples for RN and New Grad Nurses
 description: Write a nursing resume in 2026 with the right ATS keywords, clinical skills, certifications, and bullet points that get interviews at hospitals and clinics.
 date: 2026-06-01

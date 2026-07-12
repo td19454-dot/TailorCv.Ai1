@@ -1,4 +1,4 @@
-﻿---
+---
 title: Situational Interview Questions and Answers - How to Handle "What Would You Do If..." (2026)
 description: Master situational interview questions with answer frameworks, 15 common scenarios, and AI mock interview practice for hypothetical workplace situations.
 date: 2026-07-04

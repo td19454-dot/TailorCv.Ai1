@@ -1,4 +1,4 @@
-﻿---
+---
 title: What Is a Good ATS Score? Benchmarks and Targets for 2026
 description: A good ATS score is usually 80 or above. Learn what each score range means, how scores are calculated, and how to reach a competitive number before you apply.
 date: 2026-06-04

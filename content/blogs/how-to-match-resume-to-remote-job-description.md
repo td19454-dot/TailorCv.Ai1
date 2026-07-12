@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Match Your Resume to a Remote Job Description in 2026
 description: Learn what remote employers look for in a resume and how to match your resume to remote job descriptions. Includes remote-specific keywords, ATS tips, and examples.
 date: 2026-06-05

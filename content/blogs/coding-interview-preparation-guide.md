@@ -1,13 +1,13 @@
-﻿---
+---
 title: Coding Interview Preparation Guide 2026 - Patterns and Practice Plan
-description: Prepare for coding interviews in 2026 with the essential DSA patterns, a [problem-solving framework](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and a structured practice plan to crack technical interviews.
+description: Prepare for coding interviews in 2026 with the essential DSA patterns, a problem-solving framework, and a structured practice plan to crack technical interviews.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Coding Interview, DSA, LeetCode, Algorithm Interview, Interview Preparation]
 category: Interview Preparation
 image: public/blog-images/coding.webp
 slug: coding-interview-preparation-guide
-keywords: coding [interview preparation](https://thetailorcv.com/blog/software-engineer-interview-preparation), DSA interview prep 2026, leetcode patterns, coding interview questions, algorithm interview, data structures interview, blind 75
+keywords: coding interview preparation, DSA interview prep 2026, leetcode patterns, coding interview questions, algorithm interview, data structures interview, blind 75
 ---
 
 Coding interviews test your problem-solving ability under time pressure using data structures and algorithms. The good news: the vast majority of coding [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) problems fall into a limited set of recognizable patterns. Once you learn the patterns, most problems become variations you can solve systematically.

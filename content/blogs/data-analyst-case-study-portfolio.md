@@ -1,13 +1,13 @@
-﻿---
+---
 title: Data Analyst Case Study Portfolio - What to Include and How to Structure It
-description: Create a [data analyst portfolio](https://thetailorcv.com/blog/data-analyst-portfolio-guide) case study with the right business question, dataset, cleaning steps, analysis, dashboard, and recommendations.
+description: Create a data analyst portfolio case study with the right business question, dataset, cleaning steps, analysis, dashboard, and recommendations.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Data Analyst Portfolio, Data Analyst Resume, Portfolio, SQL, Power BI]
 category: Portfolio
 image: public/blog-images/data-analyst-case-study-portfolio.webp
 slug: data-analyst-case-study-portfolio
-keywords: [data analyst case study](https://thetailorcv.com/blog/data-analyst-portfolio-guide) portfolio, [data analyst](https://thetailorcv.com/blog/resume-matching-data-analyst) portfolio project, analytics case study, data analyst project structure
+keywords: data analyst case study portfolio, data analyst portfolio project, analytics case study, data analyst project structure
 ---
 
 A data analyst [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) case study should show how you turn messy information into a decision. It is not enough to upload a dashboard screenshot. Hiring teams want to see the question, the method, and the recommendation.

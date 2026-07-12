@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Get a Job With No Experience - 10 Strategies That Actually Work in 2026
 description: Get a job with no experience in 2026 using transferable skills, projects, volunteering, certifications, networking, resume tips, and interview prep now.
 date: 2026-05-28

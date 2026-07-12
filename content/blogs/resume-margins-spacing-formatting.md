@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Margins, Spacing and Layout - The Complete Format Guide for 2026
 description: The definitive guide to resume margins, line spacing, white space, and page layout. Learn the exact measurements for a professional, ATS-compatible resume that is easy to read.
 date: 2026-06-06

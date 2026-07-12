@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Handle Job Hopping on Your Resume - Tailoring Strategies That Actually Work (2026)
 description: Multiple short stints don't have to hurt your job search. Learn how to tailor your resume when you have changed jobs frequently - reframe your narrative, structure your experience, and still win interviews.
 date: 2026-06-29

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Virtual Interview Tips 2026 - Complete Guide for Video Job Interviews
 description: Prepare for virtual job interviews in 2026 with setup tips, technical checks, body language advice, and strategies to stand out on Zoom, Teams, and Google Meet.
 date: 2026-06-01

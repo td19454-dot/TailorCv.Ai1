@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Match Your Resume to a Marketing Job Description in 2026
 description: Learn how to match your marketing resume to any job description in 2026. Covers digital marketing keywords, channel-specific ATS matching, tools, and before/after examples for marketing roles.
 date: 2026-06-05

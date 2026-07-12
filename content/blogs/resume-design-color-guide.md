@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Design and Color Guide for 2026 - What's Professional and What Isn't
 description: Should you use color on your resume? Which colors are professional? This guide covers resume design rules for 2026 - what works, what to avoid, and how to balance visual appeal with ATS compatibility.
 date: 2026-06-06

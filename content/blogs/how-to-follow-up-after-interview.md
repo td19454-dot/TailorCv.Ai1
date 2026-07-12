@@ -1,6 +1,6 @@
-﻿---
+---
 title: How to Follow Up After a Job Interview in 2026 - What to Send and When
-description: Learn how to [follow up](https://thetailorcv.com/blog/recruiter-ghosting-after-interview) after a job interview in 2026. Includes thank you email templates, follow-up timing, what to say, and how to handle silence.
+description: Learn how to follow up after a job interview in 2026. Includes thank you email templates, follow-up timing, what to say, and how to handle silence.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Interview Follow Up, Thank You Email, Job Interview Tips, Career Advice, Job Search]

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Data Scientist Resume 2026 - Complete Guide with Examples
 description: Write a data scientist resume in 2026 that passes ATS, shows ML skills, quantifies model impact, and earns interviews at top tech and analytics companies.
 date: 2026-06-01

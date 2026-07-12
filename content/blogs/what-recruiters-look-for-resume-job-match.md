@@ -1,4 +1,4 @@
-﻿---
+---
 title: What Recruiters Actually Look for When Matching Your Resume to a Job Description in 2026
 description: Understand what recruiters really look at when comparing your resume to a job description. Learn the signals they use, how they differ from ATS, and how to optimize for human review after passing ATS.
 date: 2026-06-05

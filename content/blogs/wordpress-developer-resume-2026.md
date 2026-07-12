@@ -1,4 +1,4 @@
-﻿---
+---
 title: WordPress Developer Resume 2026 - Skills, Keywords, and Portfolio Tips
 description: Build a WordPress developer resume with themes, plugins, PHP, performance, SEO, WooCommerce, security, and client project proof.
 date: 2026-07-07

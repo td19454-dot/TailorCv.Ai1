@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume File Format Guide - PDF vs Word and How to Name Your Resume
 description: Should you submit your resume as a PDF or Word document? Learn when to use each format, why it matters for ATS, and the best file naming conventions for professional job applications.
 date: 2026-06-06

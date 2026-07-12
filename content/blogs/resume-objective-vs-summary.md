@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Objective vs Summary - Which One Should You Use in 2026?
 description: The objective statement is mostly dead. The professional summary has replaced it for most candidates. Learn the difference, when each still applies, and how to write the one that fits your situation.
 date: 2026-06-06

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Data Analyst Resume 2026
 description: A complete 2026 guide to writing a data analyst resume with ATS keywords, skills, project examples, bullet points, and a ready-to-use resume structure.
 date: 2026-05-31

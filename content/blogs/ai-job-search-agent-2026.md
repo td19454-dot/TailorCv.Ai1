@@ -1,13 +1,13 @@
-﻿---
+---
 title: AI Job Search Agent 2026 - How to Use AI Without Losing Your Voice
-description: Learn how to use an AI job search agent for [resume](https://www.thetailorcv.com/templates)s, [cover letter](https://www.thetailorcv.com/cover-letter)s, applications, and interview prep while keeping your story specific and human.
+description: Learn how to use an AI job search agent for resumes, cover letters, applications, and interview prep while keeping your story specific and human.
 date: 2026-07-07
 author: TailorCV Team
 tags: [AI Job Search, Resume AI, Job Search, ATS Resume, Interview Prep]
 category: Job Search
 image: public/blog-images/ai-job-search-agent-2026.webp
 slug: ai-job-search-agent-2026
-keywords: AI job search agent, AI job search 2026, AI [resume](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search) assistant, AI job application tool, job search automation
+keywords: AI job search agent, AI job search 2026, AI resume assistant, AI job application tool, job search automation
 ---
 
 An AI job search agent can speed up the boring parts of applying for jobs: comparing your [resume](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) to a [job description](https://thetailorcv.com/blog/job-description-analysis-checklist), finding [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description), drafting a cover letter, and preparing [interview questions](https://thetailorcv.com/blog/ai-mock-interview-practice-from-resume). The risk is that your application starts sounding like every other AI-generated application.

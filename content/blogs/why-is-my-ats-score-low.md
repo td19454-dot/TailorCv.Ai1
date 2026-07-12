@@ -1,4 +1,4 @@
-﻿---
+---
 title: Why Is My ATS Score So Low? 12 Reasons and Fixes (2026)
 description: A low ATS score usually comes down to a handful of fixable issues. Here are the 12 most common reasons your resume scores low and exactly how to fix each one.
 date: 2026-06-03

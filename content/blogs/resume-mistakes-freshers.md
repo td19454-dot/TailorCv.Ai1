@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Mistakes Every Fresher Makes (And How to Fix Them in 2026)
 description: Discover the biggest resume mistakes every fresher makes and learn how to create an ATS-friendly resume that gets more interviews in 2026.
 date: 2026-05-20

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Final Round Interview Tips 2026 - How to Close the Offer
 description: Master the final round interview in 2026 with strategies for panel interviews, executive conversations, culture fit, and turning the last round into a job offer.
 date: 2026-06-01

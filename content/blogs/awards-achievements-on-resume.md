@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to List Awards and Achievements on a Resume (With Examples)
 description: Learn where to put awards on a resume, how to frame them effectively, and when a dedicated achievements section helps vs hurts your application - with examples across industries.
 date: 2026-06-06

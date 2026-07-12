@@ -1,4 +1,4 @@
-﻿---
+---
 title: Customer Service Resume 2026 - Complete Guide with Examples
 description: Write a customer service resume in 2026 with the right ATS keywords, CSAT skills, CRM experience, and bullet points that prove customer satisfaction impact.
 date: 2026-06-01

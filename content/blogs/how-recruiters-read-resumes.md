@@ -1,4 +1,4 @@
-﻿---
+---
 title: How Recruiters Read Resumes in Under 10 Seconds (And How to Win That Scan)
 description: Eye-tracking research reveals where recruiters look first on a resume. Learn exactly what gets attention, what gets ignored, and how to optimize your resume to survive the 10-second scan.
 date: 2026-06-06

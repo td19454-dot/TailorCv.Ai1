@@ -1,13 +1,13 @@
-﻿---
+---
 title: Cover Letter Mistakes to Avoid in 2026
-description: Avoid common [cover letter](https://thetailorcv.com/blog/cover-letter-no-work-experience) mistakes that make applications generic, too long, unconvincing, or disconnected from the [job description](https://thetailorcv.com/blog/job-application-tracker-template).
+description: Avoid common cover letter mistakes that make applications generic, too long, unconvincing, or disconnected from the job description.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Cover Letter, Job Application, Resume Tips, Career Tips, ATS]
 category: Cover Letters
 image: public/blog-images/cover-letter-mistakes-2026.webp
 slug: cover-letter-mistakes-2026
-keywords: cover letter mistakes, cover letter mistakes 2026, [job application](https://thetailorcv.com/blog/job-application-tracker-template) mistakes, cover letter tips
+keywords: cover letter mistakes, cover letter mistakes 2026, job application mistakes, cover letter tips
 ---
 
 A bad [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) does not usually fail because of grammar. It fails because it is generic, too long, or disconnected from the job. In 2026, recruiters expect cover letters to be short, relevant, and easy to scan.

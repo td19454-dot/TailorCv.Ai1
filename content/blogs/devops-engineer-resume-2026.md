@@ -1,6 +1,6 @@
-﻿---
+---
 title: DevOps Engineer Resume 2026 - Complete Guide with Examples
-description: Write a DevOps engineer resume in 2026 with the right ATS keywords, [cloud skills](https://thetailorcv.com/blog/cloud-engineer-resume-2026), CI/CD experience, and bullet points that show [infrastructure impact](https://thetailorcv.com/blog/devops-engineer-portfolio-guide).
+description: Write a DevOps engineer resume in 2026 with the right ATS keywords, cloud skills, CI/CD experience, and bullet points that show infrastructure impact.
 date: 2026-06-01
 author: TailorCV Team
 tags: [DevOps Resume, Cloud Engineer Resume, ATS Resume, Kubernetes Resume, Infrastructure]

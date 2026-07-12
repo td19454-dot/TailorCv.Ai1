@@ -1,4 +1,4 @@
-﻿---
+---
 title: Flutter Developer Resume 2026 - Complete Guide with Examples
 description: Write a Flutter developer resume in 2026 with the right ATS keywords, Dart and state management skills, and bullet points that prove cross-platform app impact.
 date: 2026-06-01

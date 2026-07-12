@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Build a Professional Portfolio in 2026 - Guide for All Industries
 description: Learn how to build a professional portfolio in 2026 that gets you hired. Covers tech, design, marketing, writing, and engineering portfolios with examples and platforms.
 date: 2026-06-01
@@ -7,7 +7,7 @@ tags: [Portfolio Guide, Professional Portfolio, Career Advice, Job Search, GitHu
 category: Career Advice
 image: public/blog-images/how to build a prrtfolio .webp
 slug: how-to-build-professional-portfolio
-keywords: how to build professional portfolio, portfolio guide 2026, developer portfolio, UX designer portfolio, marketing portfolio, GitHub portfolio, [portfolio website](https://thetailorcv.com/blog/portfolio-website-vs-resume) tips
+keywords: how to build professional portfolio, portfolio guide 2026, developer portfolio, UX designer portfolio, marketing portfolio, GitHub portfolio, portfolio website tips
 ---
 
 A professional [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is the evidence layer on top of your resume. Your resume claims skills - your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) proves them. For designers, developers, writers, and marketers, a strong [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is often the deciding factor between two equally qualified candidates. For engineers and analysts, it is increasingly expected even in corporate roles.

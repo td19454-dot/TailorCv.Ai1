@@ -1,6 +1,6 @@
-﻿---
+---
 title: Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?
-description: Compare [data analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide) vs [data scientist](https://thetailorcv.com/blog/data-scientist-portfolio-guide) roles in 2026 - skills, salary, day-to-day work, career path, and how to decide which data career to pursue.
+description: Compare data analyst vs data scientist roles in 2026 - skills, salary, day-to-day work, career path, and how to decide which data career to pursue.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Data Analyst, Data Scientist, Career Comparison, Data Career, Career Advice]

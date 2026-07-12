@@ -1,4 +1,4 @@
-﻿---
+---
 title: Top Skills to Add to Your Resume in 2026 - By Industry and Role
 description: Discover the most in-demand skills to add to your resume in 2026. Organized by tech, data, business, engineering, marketing, healthcare, and education roles.
 date: 2026-06-01

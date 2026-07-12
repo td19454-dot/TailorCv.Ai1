@@ -1,4 +1,4 @@
-﻿---
+---
 title: Ideal Resume Length in 2026 - One Page or Two? Complete Guide
 description: How long should your resume be in 2026? Learn whether to use one page or two, by experience level and industry, plus how to cut or expand your resume effectively.
 date: 2026-06-01

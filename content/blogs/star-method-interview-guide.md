@@ -1,4 +1,4 @@
-﻿---
+---
 title: STAR Method Interview Guide — How to Answer Behavioral Questions (2026)
 description: A complete guide to the STAR method for interviews — what it is, how to structure Situation, Task, Action, and Result, with example answers and the mistakes that make STAR answers fall flat.
 date: 2026-07-05

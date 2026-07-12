@@ -1,4 +1,4 @@
-﻿---
+---
 title: Frontend Developer Resume 2026 - Complete Guide with Examples
 description: Write a frontend developer resume in 2026 with the right ATS keywords, React skills, performance metrics, and bullet point examples that get interviews.
 date: 2026-06-01

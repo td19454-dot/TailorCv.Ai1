@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Keywords Guide 2026 - How to Find and Use the Right Keywords
 description: Learn how to find and use resume keywords in 2026 to pass ATS and match job descriptions. Includes how to extract keywords and where to place them naturally.
 date: 2026-06-01

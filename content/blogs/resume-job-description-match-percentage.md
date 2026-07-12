@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume to Job Description Match Percentage - What Score Do You Need in 2026?
 description: What resume-to-job-description match percentage do you actually need? Learn what ATS match scores mean, what scores get interviews, and how to raise your score fast.
 date: 2026-06-05

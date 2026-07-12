@@ -1,4 +1,4 @@
-﻿---
+---
 title: What Is a Resume and Why Does It Matter? (2026 Guide)
 description: Learn what a resume is, why it matters, and how it works in the modern hiring process - including ATS filtering, recruiter reviews, and what makes a resume truly effective.
 date: 2026-06-06

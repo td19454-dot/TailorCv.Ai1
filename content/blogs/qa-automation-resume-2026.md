@@ -1,4 +1,4 @@
-﻿---
+---
 title: QA Automation Engineer Resume 2026 - Skills, Keywords, and Examples
 description: Write a QA automation resume with Selenium, Playwright, API testing, CI/CD, test strategy, defect tracking, and measurable quality impact.
 date: 2026-07-07

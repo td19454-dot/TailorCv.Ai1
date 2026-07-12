@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Tailor Your Resume When You're Underqualified - And Still Get Interviews (2026)
 description: Missing some job requirements shouldn't stop you from applying. Learn how to tailor your resume when you're underqualified to close the gap, reframe your experience, and get interviews anyway.
 date: 2026-06-29

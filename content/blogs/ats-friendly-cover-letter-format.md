@@ -1,6 +1,6 @@
-﻿---
+---
 title: ATS-Friendly Cover Letter Format - Simple Structure That Recruiters Can Read
-description: Write an ATS-friendly [cover letter](https://thetailorcv.com/blog/cover-letter-mistakes-2026) with the right structure, keywords, proof, and formatting for modern online applications.
+description: Write an ATS-friendly cover letter with the right structure, keywords, proof, and formatting for modern online applications.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Cover Letter, ATS, Job Application, Resume Keywords, Career Tips]

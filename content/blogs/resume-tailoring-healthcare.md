@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Tailoring for Healthcare Jobs - Clinical, Administrative, and Allied Health (2026 Guide)
 description: Healthcare resumes follow different rules. Learn how to tailor your resume for clinical, administrative, and allied health roles - with the right keywords, certifications, and structure that healthcare employers expect.
 date: 2026-06-29

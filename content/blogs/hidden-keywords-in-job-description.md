@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Read Between the Lines of a Job Description to Find Hidden Keywords (2026 Guide)
 description: The most important keywords in a job description are not always the obvious ones. Learn how to decode what employers actually want - beyond the bullet points - and tailor your resume to the real priorities.
 date: 2026-06-29

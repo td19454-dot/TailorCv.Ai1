@@ -1,4 +1,4 @@
-﻿---
+---
 title: Operations Manager Resume 2026 - Complete Guide with Examples
 description: Write an operations manager resume in 2026 with the right ATS keywords, process improvement skills, and bullet points that prove efficiency and cost impact.
 date: 2026-06-01

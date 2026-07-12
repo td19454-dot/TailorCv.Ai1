@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Tailoring for Job Seekers Over 50 - How to Overcome Age Bias and Win Interviews in 2026
 description: Age bias in hiring is real. Learn how to tailor your resume as a 50+ job seeker - what to remove, how to modernize your language, and how to position decades of experience as an asset, not a liability.
 date: 2026-06-29

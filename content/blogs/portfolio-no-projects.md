@@ -1,4 +1,4 @@
-﻿---
+---
 title: What to Put in Your Portfolio When You Have No Projects
 description: No projects yet? Build a credible portfolio with practice work, contributions, and learning artifacts - a step-by-step weekend plan.
 date: 2026-06-24

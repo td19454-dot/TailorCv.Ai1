@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume for Internship With No Experience - Student Guide
 description: Write an internship resume with no experience using projects, coursework, skills, certifications, volunteering, and leadership examples.
 date: 2026-07-07

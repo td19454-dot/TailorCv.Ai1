@@ -1,13 +1,13 @@
-﻿---
+---
 title: Job Application Tracker Template - What to Track After Every Application
-description: Use this job application tracker template to manage [resume](https://thetailorcv.com/blog/resume-vs-cv) versions, follow-ups, interview stages, and outcomes without losing momentum.
+description: Use this job application tracker template to manage resume versions, follow-ups, interview stages, and outcomes without losing momentum.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Job Search, Application Tracker, Resume Versions, Follow Up, Career Tips]
 category: Job Search
 image: public/blog-images/job-application-tracker-template.webp
 slug: job-application-tracker-template
-keywords: job application tracker template, application tracker, job search spreadsheet, [resume](https://www.thetailorcv.com/templates) tracking, follow up tracker
+keywords: job application tracker template, application tracker, job search spreadsheet, resume tracking, follow up tracker
 ---
 
 A job application tracker helps you stop guessing. When you track where you applied, which [resume](https://www.thetailorcv.com/templates) version you used, and what happened next, your [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) becomes easier to improve.

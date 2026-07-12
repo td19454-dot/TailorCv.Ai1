@@ -1,4 +1,4 @@
-﻿---
+---
 title: Technical Writer Resume 2026 - Complete Guide with Examples
 description: Write a technical writer resume in 2026 with the right ATS keywords, documentation skills, tools, and bullet points that prove clarity and developer experience impact.
 date: 2026-06-01

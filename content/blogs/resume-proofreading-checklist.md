@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Proofreading Checklist - 25 Things to Check Before You Apply
 description: The complete resume proofreading checklist for 2026. 25 specific things to verify - spelling, formatting, ATS compatibility, content quality, links, and more - before submitting any job application.
 date: 2026-06-06

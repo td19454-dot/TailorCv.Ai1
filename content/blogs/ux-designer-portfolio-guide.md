@@ -1,4 +1,4 @@
-﻿---
+---
 title: UX Designer Portfolio Guide: Case Studies That Get Interviews
 description: Build a UX portfolio that wins interviews - case study structure, the metrics to include, platforms, and the mistakes that get designers rejected.
 date: 2026-06-24

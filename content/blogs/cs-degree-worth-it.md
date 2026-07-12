@@ -1,4 +1,4 @@
-﻿---
+---
 title: The CS Degree Bubble Is Real - Why Computer Science Feels Oversaturated in 2026
 description: Explore why computer science feels oversaturated in 2026, how AI and tech layoffs are reshaping software engineering careers, and why strong developers still have massive opportunities.
 date: 2026-05-24

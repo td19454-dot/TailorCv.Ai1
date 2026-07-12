@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Improve Your Resume-to-Job Match Score - 10 Proven Strategies for 2026
 description: Learn exactly how to improve your resume-to-job-description match score in 2026. 10 proven strategies that raise your ATS score, increase keyword coverage, and get more interviews.
 date: 2026-06-05
