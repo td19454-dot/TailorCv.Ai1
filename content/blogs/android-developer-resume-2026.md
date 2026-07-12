@@ -200,7 +200,7 @@ Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv
 ## Frequently Asked Questions
 
 ### What are the key components of an Android developer resume in 2026?
-An effective Android developer resume in 2026 should include a header with links to your [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) and Play Store profiles, a professional summary, technical skills, work experience, notable projects, education, and certifications. It's essential to demonstrate your expertise in modern technologies like Kotlin and Jetpack Compose while showcasing your app's impact through quantifiable metrics.
+An effective Android developer resume in 2026 should include a header with links to your [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) and Play Store profiles, a professional summary, [technical skills](https://thetailorcv.com/blog/how-to-choose-resume-template), work experience, notable projects, education, and certifications. It's essential to demonstrate your expertise in modern technologies like Kotlin and Jetpack Compose while showcasing your app's impact through quantifiable metrics.
 
 ### How can I optimize my Android developer resume for ATS?
 To optimize your resume for Applicant Tracking Systems (ATS), incorporate relevant keywords from the job description into your resume. Utilize [ATS-friendly resume templates](https://www.thetailorcv.com/templates) and run your document through the [free ATS score checker](https://www.thetailorcv.com/solutions) to identify areas for improvement. This ensures that your resume is more likely to pass initial screenings by recruiters.

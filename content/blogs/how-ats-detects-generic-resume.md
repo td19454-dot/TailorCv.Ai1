@@ -10,7 +10,7 @@ slug: how-ats-detects-generic-resume
 keywords: how ats detects generic resume, ats generic resume, ats resume filtering, ats resume score low, ats reject resume reasons
 ---
 
-Most job seekers think [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems are simple keyword matchers. The reality is more sophisticated - and more unforgiving for generic resumes. Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms score your resume on multiple signals simultaneously, and a resume that hasn't been tailored to the specific role will fail on several of them at once. Here is exactly how it happens.
+Most job seekers think [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems are simple keyword matchers. The reality is more sophisticated - and more unforgiving for [generic resume](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews)s. Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms score your resume on multiple signals simultaneously, and a resume that hasn't been tailored to the specific role will fail on several of them at once. Here is exactly how it happens.
 
 See how your resume scores right now with the [free ATS checker](/solutions).
 
@@ -56,7 +56,7 @@ For a complete guide to matching keywords, see [how to match resume keywords to 
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems place significant weight on job title alignment - both your most recent title and the title you are applying for. A generic resume often uses vague or internally-specific titles that don't map cleanly.
 
-| What You Have | What the ATS Wants | Impact |
+| What You Have | What the [ATS](https://thetailorcv.com/blog/ats-score-vs-resume-score) Wants | Impact |
 |---|---|---|
 | "Marketing Associate" | "Digital Marketing Specialist" | Moderate mismatch - partial credit |
 | "Technology Consultant" | "Cloud Solutions Architect" | High mismatch - low score |

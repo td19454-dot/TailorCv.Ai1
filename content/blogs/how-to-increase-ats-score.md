@@ -35,7 +35,7 @@ If the parser cannot read your resume, nothing else matters. Replace complex lay
 
 - Use a **single-column** layout
 - Remove tables, text boxes, columns, icons, and images
-- Use **standard headings**: Summary, Skills, Experience, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- Use **[standard headings](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)**: Summary, Skills, Experience, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - Keep all key info in the body, not headers/footers
 - Export as a **text-based PDF or DOCX**
 
@@ -124,7 +124,7 @@ When attempting to improve your ATS score, it's easy to make mistakes that can h
 
 1. **Ignoring ATS Compatibility**: Using unconventional fonts or graphics can confuse ATS software. Stick to standard fonts like Arial or Times New Roman and avoid images.
    
-2. **Overstuffing Keywords**: While matching job description keywords is crucial, overloading your resume with them can appear unnatural. Use keywords in context, ensuring they fit seamlessly into your narrative.
+2. **Overstuffing Keywords**: While matching [job description](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job) keywords is crucial, overloading your resume with them can appear unnatural. Use keywords in context, ensuring they fit seamlessly into your narrative.
 
 3. **Neglecting Soft Skills**: Many candidates focus solely on hard skills, but ATS systems also evaluate [soft skills](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) like communication and teamwork. Incorporate these into your experience descriptions.
 
@@ -162,7 +162,7 @@ Before submitting your resume, use this mini checklist to ensure it meets ATS re
 
 - [ ] **Is the format ATS-friendly?** (No graphics, tables, or unusual fonts)
 - [ ] **Does it contain relevant keywords?** (Match them with the job description)
-- [ ] **Are soft skills included?** (Incorporate them naturally within your experience)
+- [ ] **Are [soft skills](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) included?** (Incorporate them naturally within your experience)
 - [ ] **Is the language clear and concise?** (Avoid jargon and complex phrases)
 - [ ] **Did you customize it for this job application?** (Tailor your resume for each position)
 - [ ] **Have you used standard headings?** (Work Experience, Education, Skills)

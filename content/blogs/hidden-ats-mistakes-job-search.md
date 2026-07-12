@@ -12,11 +12,11 @@ keywords: hidden ATS mistakes, ATS resume problems, why resume not getting respo
 
 You have fixed the obvious things. Single-column layout. Standard fonts. Keywords from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Your [resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) looks clean and professional. But you are still not getting responses.
 
-The problem is probably one of the less-obvious [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) mistakes - the ones nobody talks about because they are not obvious from reading the resume on screen.
+The problem is probably one of the less-obvious [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) mistakes - the ones nobody talks about because they are not obvious from reading the [resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) on screen.
 
-This guide covers 12 hidden [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) mistakes that prevent qualified candidates from reaching recruiter inboxes. Check each one against your current resume.
+This guide covers 12 hidden [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) mistakes that prevent qualified candidates from reaching recruiter inboxes. Check each one against your current [resume](https://thetailorcv.com/blog/how-to-update-your-resume).
 
-Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to audit your full resume at once. Read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide) to understand how ATS systems score candidates. For the visible formatting mistakes, see the [ATS formatting mistakes guide](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
+Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to audit your full [resume](https://thetailorcv.com/blog/how-to-choose-resume-template) at once. Read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide) to understand how [ATS](https://thetailorcv.com/blog/ats-resume-data-study-2026) systems score candidates. For the visible formatting mistakes, see the [ATS formatting mistakes guide](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
 
 ---
 
@@ -167,7 +167,7 @@ See [best action verbs for resume](https://thetailorcv.com/blog/best-action-verb
 
 ## Hidden Mistake 11: Resume Is Too Long, Diluting Keyword Density
 
-A 4-page resume sounds thorough. In [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) terms, more words means lower keyword density. The more total words on your resume, the lower the percentage of those words that are relevant keywords - which reduces your relevance score.
+A 4-page resume sounds thorough. In [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) terms, more words means lower [keyword density](https://thetailorcv.com/blog/resume-keyword-map-template). The more total words on your resume, the lower the percentage of those words that are relevant keywords - which reduces your relevance score.
 
 **What happens:** A 2-page tailored resume with 15 occurrences of relevant keywords scores higher than a 4-page resume with the same 15 keywords buried in 2,000 more words. [keyword density](https://thetailorcv.com/blog/resume-keyword-density-guide) matters alongside raw keyword count.
 

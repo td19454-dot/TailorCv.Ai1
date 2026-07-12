@@ -10,7 +10,7 @@ slug: career-change-from-non-tech-to-data-analyst
 keywords: career change to data analyst, non tech to data analyst, data analyst resume career change, data analyst portfolio beginner
 ---
 
-You can move from a non-tech role to [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) work if your resume connects your past domain experience to data skills. The mistake is presenting yourself as a total beginner when you may already have reporting, Excel, operations, finance, marketing, or customer analysis experience.
+You can move from a non-tech role to [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) work if your [resume](https://thetailorcv.com/blog/what-is-a-resume) connects your past domain experience to data skills. The mistake is presenting yourself as a total beginner when you may already have reporting, Excel, operations, finance, marketing, or customer analysis experience.
 
 ---
 
@@ -58,7 +58,7 @@ Each project should end with a recommendation.
 
 ## Conclusion
 
-A non-tech to data analyst resume works when it shows transferable domain knowledge plus current analytics proof. Run it through the [ATS score checker](/solutions) against entry-level data analyst roles and fix the missing keywords.
+A non-tech to data analyst [resume](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break) works when it shows transferable domain knowledge plus current analytics proof. Run it through the [ATS score checker](/solutions) against entry-level data analyst roles and fix the missing keywords.
 
 ---
 
@@ -66,7 +66,7 @@ A non-tech to data analyst resume works when it shows transferable domain knowle
 
 Treat this guide as a working document, not just something to read once. The best [job seekers](https://thetailorcv.com/blog/portfolio-homepage-copy-examples) use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your non-tech to [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) transition because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, [LinkedIn profile](https://thetailorcv.com/blog/linkedin-to-portfolio-guide), portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your [resume](https://thetailorcv.com/blog/how-to-write-resume-bullet-points), [LinkedIn profile](https://thetailorcv.com/blog/linkedin-to-portfolio-guide), [portfolio](https://www.thetailorcv.com/portfolio), [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 
@@ -117,7 +117,7 @@ Use these related TailorCV guides to strengthen the rest of your application:
 - [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
 - [Free ATS Resume Scan](https://thetailorcv.com/blog/free-ats-resume-scan)
 
-These internal guides are useful because one document rarely wins a job alone. A strong resume needs matching keywords, a clean format, a convincing [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), a credible LinkedIn profile, and interview answers that support the same story. If one part says you are targeting data analytics and another part looks like a generic admin resume, the recruiter gets mixed signals.
+These internal guides are useful because one document rarely wins a job alone. A strong resume needs matching keywords, a clean format, a convincing [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), a credible [LinkedIn profile](https://thetailorcv.com/blog/linkedin-to-portfolio-guide), and interview answers that support the same story. If one part says you are targeting data analytics and another part looks like a generic admin resume, the recruiter gets mixed signals.
 
 ---
 

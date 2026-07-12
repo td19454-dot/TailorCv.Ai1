@@ -100,7 +100,7 @@ Below are 15 project ideas grouped by level, plus exactly what turns each one in
 - **Overview**: Rebuild a popular app but add [a unique feature](https://thetailorcv.com/blog/graphic-designer-portfolio-guide) that improves the user experience.
 - **Skills Demonstrated**: Creativity and understanding of user needs.
 - **Common Mistakes**: Focusing too much on cloning instead of innovating. Clearly define what makes your version better.
-- **Example**: A social media app that adds a unique feature for enhanced user interactions.
+- **Example**: A social media app that adds [a unique feature](https://thetailorcv.com/blog/graphic-designer-portfolio-guide) for enhanced user interactions.
 
 ### 15. A Full-Stack Flagship
 - **Overview**: Develop a comprehensive full-stack application that showcases your skills in both front-end and back-end development.

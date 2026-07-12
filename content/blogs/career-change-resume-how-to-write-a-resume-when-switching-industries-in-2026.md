@@ -158,7 +158,7 @@ Project scheduling, stakeholder communication, task tracking, risk documentation
 
 ### Avoid Generic Skill Lists
 
-Do not rely only on [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) like teamwork, creativity, and hard work. Include concrete skills, tools, and methods from the job description.
+Do not rely only on [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) like teamwork, creativity, and hard work. Include concrete skills, tools, and methods from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
 
 ## Rewrite Experience Bullets for Relevance
 
@@ -222,7 +222,7 @@ If you want a cleaner layout, browse [ATS-friendly resume templates](https://www
 
 ### Use Keywords Honestly
 
-If you have used a skill in a different context, include it. If you have only studied a tool, be clear. For example, write "SQL coursework and [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) projects" instead of implying years of professional SQL experience.
+If you have used a skill in a different context, include it. If you have only studied a tool, be clear. For example, write "SQL coursework and [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)" instead of implying years of professional SQL experience.
 
 ### Add a Relevant Projects Section
 
@@ -335,7 +335,7 @@ Transferable skills are abilities that can be applied across different jobs and 
 To optimize your resume for Applicant Tracking Systems (ATS), use relevant keywords from the job description and maintain a clear, structured format. Consider utilizing our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate your resume's compatibility with ATS requirements before submitting your application.
 
 ### What should I include in my cover letter when switching careers?  
-Your cover letter should explain your motivation for changing careers, highlight your transferable skills, and provide examples that demonstrate your qualifications for the new role. For effective templates and examples, refer to our [cover letter for a career change guide](https://thetailorcv.com/blog/cover-letter-for-career-change).
+Your [cover letter](https://thetailorcv.com/blog/cover-letter-for-career-change) should explain your motivation for changing careers, highlight your transferable skills, and provide examples that demonstrate your qualifications for the new role. For effective templates and examples, refer to our [cover letter for a career change guide](https://thetailorcv.com/blog/cover-letter-for-career-change).
 
 ### How can I showcase projects on my resume when I have limited experience in the new field?  
 Even if you have limited direct experience, you can include relevant projects that demonstrate your skills and knowledge applicable to the new industry. If you're unsure what to include, our article on [fresher resume projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) offers great ideas for showcasing your capabilities.

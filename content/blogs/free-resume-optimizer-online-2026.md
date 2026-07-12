@@ -29,10 +29,10 @@ The difference matters because the first two outputs are relative to a job, and 
 
 ## Free vs. Lead-Gen: How to Tell a Real Tool From a Gimmick
 
-Plenty of sites that call themselves a "free resume optimizer" are really lead-generation funnels. They collect your email and resume, show you an intentionally alarming score, and then gate the actual explanation behind a paid plan. Before you trust the output, run it through a short filter:
+Plenty of sites that call themselves a "[free resume optimizer](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews)" are really lead-generation funnels. They collect your email and resume, show you an intentionally alarming score, and then gate the actual explanation behind a paid plan. Before you trust the output, run it through a short filter:
 
 - **Does it name specific gaps, or just give you a number?** A score with no explanation is not feedback. If the tool says "72/100" and nothing else, it has not told you what to fix.
-- **Are the suggestions tied to the job description you pasted, or generic?** If you could paste a completely different job posting and get the same advice back, the tool is not actually reading the posting.
+- **Are the suggestions tied to the [job description](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job) you pasted, or generic?** If you could paste a completely different job posting and get the same advice back, the tool is not actually reading the posting.
 - **Can you see the recommendations without paying?** It is reasonable for a free tier to limit how many times you can rescan per day. It is a red flag if the score is free but every actionable suggestion is blurred out or locked.
 - **What happens to your [resume data](https://thetailorcv.com/blog/how-ats-detects-generic-resume) after you upload it?** Look for a privacy statement about whether your resume is stored, used to train models, or shared with third parties. If you cannot find one in under a minute, treat that as a signal.
 - **Does the tool ask for a job description at all?** Optimization without a job description is really just formatting review. That is still useful, but it is a different task, and a tool that skips this step cannot claim to measure job match.

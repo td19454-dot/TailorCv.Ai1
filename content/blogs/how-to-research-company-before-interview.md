@@ -10,7 +10,7 @@ slug: how-to-research-company-before-interview
 keywords: how to research company before interview, company research interview 2026, interview preparation company research, what to know before job interview, company background check
 ---
 
-Company research before an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most impactful things you can do - and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, recent product launches, competitive position, engineering culture, and specific team challenges is research.
+Company research before an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most impactful things you can do - and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, [recent product launches](https://thetailorcv.com/blog/negotiating-multiple-job-offers), competitive position, [engineering culture](https://thetailorcv.com/blog/ai-proof-jobs-2026), and [specific team challenges](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day) is research.
 
 ![How to Research a Company](public/blog-images/how-to-research-a-company.png)
 
@@ -94,13 +94,13 @@ Research the specific team, not just the company.
 - Understanding their career trajectory tells you what they value
 
 **The team:**
-- What is the team size? (Often mentioned in the job posting or discoverable on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search))
+- What is the [team size](https://thetailorcv.com/blog/recession-proof-jobs-2026)? (Often mentioned in the job posting or discoverable on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search))
 - What technologies does the team use? (Engineering blog, job postings, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization))
 - What are current team members' backgrounds? (signals what the team prioritizes)
 
 **The engineering / team culture:**
 - Engineering blog (if they have one)
-- Glassdoor reviews - look for patterns, not individual complaints
+- [Glassdoor reviews](https://thetailorcv.com/blog/how-to-spot-a-job-scam) - look for patterns, not individual complaints
 - Blind (Teamblind) for tech company candid reviews
 - Levels.fyi for tech compensation context
 
@@ -191,7 +191,7 @@ Connect your past examples to their specific context. "At [Company], I solved a 
 
 Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).
 
-Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
+Before the interview, make sure the [resume](https://www.thetailorcv.com/templates) that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
 
 ## Conclusion
 Company research is not a performance - it is genuine preparation that makes every [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) answer more specific, more credible, and more compelling. Candidates who have done real research stand out visibly from those who have not.

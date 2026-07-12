@@ -115,7 +115,7 @@ For more guidance, check out our [remote job search guide](https://thetailorcv.c
 
 ## Staying Informed About Job Trends
 
-As you search for jobs, stay informed about in-demand jobs in Canada for 2026. This knowledge can help you target your applications effectively. For more information, view our guide on [in-demand jobs in Canada for 2026](https://thetailorcv.com/blog/in-demand-jobs-canada-2026).
+As you search for jobs, stay informed about in-demand jobs in Canada for 2026. This knowledge can help you target your applications effectively. For more information, view [our guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada) on [in-demand jobs in Canada for 2026](https://thetailorcv.com/blog/in-demand-jobs-canada-2026).
 
 ### Key In-Demand Sectors for 2026
 

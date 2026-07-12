@@ -253,7 +253,7 @@ Far less attention was given to:
 - failed interviews
 - layoffs
 - burnout
-- prolonged job searches
+- prolonged [job search](https://thetailorcv.com/blog/networking-tips-for-job-search)es
 - average career outcomes
 
 As a result, many students entered the industry expecting exceptional outcomes to be standard outcomes.

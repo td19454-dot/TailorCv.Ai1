@@ -16,7 +16,7 @@ What separates candidates who recover fast and land offers from those who get st
 
 This guide covers how to respond to rejection professionally, how to extract useful signal from it, and how to rebuild momentum after a difficult stretch.
 
-Before the next application, make sure your resume is as strong as possible. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize keyword matching, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide).
+Before the next application, make sure your [resume](https://thetailorcv.com/blog/survived-a-layoff-30-day-plan-to-rebuild-your-resume) is as strong as possible. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize keyword matching, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide).
 
 ---
 
@@ -27,7 +27,7 @@ Before the next application, make sure your resume is as strong as possible. Use
 You applied, never heard back, or received an automated "We've decided to move forward with other candidates" email.
 
 What it likely means:
-- [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keyword mismatch - your resume did not match the job description well enough
+- [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keyword mismatch - your [resume](https://thetailorcv.com/blog/highest-paying-jobs-without-a-degree-2026) did not match the job description well enough
 - Too many applicants - companies receive hundreds of applications for single roles
 - Experience gap - you were under or over-qualified
 - Role was filled internally or cancelled

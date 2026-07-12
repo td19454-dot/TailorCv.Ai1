@@ -27,8 +27,8 @@ keywords: custom domain portfolio, portfolio website domain, how to buy a domain
 ## Connecting a Custom Domain to Your Portfolio
 The [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) supports one-click deployment to Netlify, which makes custom domain setup straightforward:
 
-1. **Publish your portfolio** through the builder to get your live, shareable link
-2. **Deploy to Netlify** using the one-click option in your portfolio settings
+1. **Publish [your portfolio](https://thetailorcv.com/blog/business-analyst-portfolio-guide)** through the builder to get your live, shareable link
+2. **Deploy to Netlify** using the one-click option in [your portfolio](https://thetailorcv.com/blog/video-editor-portfolio-guide) settings
 3. **Add your custom domain** in the Netlify domain settings and follow the DNS instructions (usually a CNAME or A record at your registrar)
 4. **Wait for DNS propagation** - typically minutes to a few hours, occasionally up to 24-48 hours
 5. **Confirm HTTPS is active** - Netlify provisions a free SSL certificate automatically once DNS resolves correctly
@@ -67,7 +67,7 @@ The [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) supports
 
 - **Choosing a Complicated Domain Name**: Avoid names that are difficult to spell or remember. Simplicity is key to ensuring visitors can easily find your portfolio.
 
-- **Neglecting Mobile Optimization**: Ensure your portfolio is mobile-friendly. Use responsive design templates that look great on all devices, as many users will access your site via smartphones.
+- **Neglecting Mobile Optimization**: Ensure your portfolio is [mobile-friendly](https://thetailorcv.com/blog/portfolio-website-themes-2026). Use responsive design templates that look great on all devices, as many users will access your site via smartphones.
 
 - **Ignoring Content Updates**: Regularly update your portfolio with new projects or achievements. An outdated portfolio can give potential employers the wrong impression of your skills.
 

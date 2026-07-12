@@ -18,7 +18,7 @@ Scammers succeed by exploiting two things every job seeker feels: urgency and ho
 
 ## The Biggest Red Flags
 
-- **They ask you to pay for anything** - equipment, training, background checks, or "processing fees." Legitimate employers never ask candidates to pay upfront.
+- **They ask you to pay for anything** - equipment, training, [background check](https://thetailorcv.com/blog/how-to-explain-resume-gaps)s, or "processing fees." Legitimate employers never ask candidates to pay upfront.
 - **The interview happens entirely over chat**, with no video call and a rushed, overly enthusiastic tone
 - **An offer arrives unusually fast**, often within hours of a first "interview," with no real vetting
 - **They ask for sensitive information early** - bank details, Social Security number, or a copy of your ID before any formal offer

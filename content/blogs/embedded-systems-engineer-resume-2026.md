@@ -52,7 +52,7 @@ Microcontrollers: ARM Cortex-M (STM32), ESP32, PIC, AVR, MSP430, Nordic nRF
 RTOS: FreeRTOS, Zephyr, ThreadX, bare-metal programming
 Communication: I2C, SPI, UART, CAN, USB, Ethernet, Modbus, BLE, Wi-Fi, LoRa, Zigbee
 Tools: GCC, GDB, JTAG/SWD debuggers, oscilloscopes, logic analyzers, IAR, Keil, PlatformIO
-Concepts: Interrupt handling, DMA, low-power design, memory management, device drivers, bootloaders, firmware OTA
+Concepts: Interrupt handling, DMA, [low-power design](https://thetailorcv.com/blog/resume-fonts-guide), memory management, device drivers, bootloaders, firmware OTA
 Hardware: Schematic reading, board bring-up, [hardware debugging](https://thetailorcv.com/blog/entry-level-jobs-usa-new-grad), datasheet interpretation
 Build/Version: CMake, Make, Git, CI for embedded, unit testing (Unity, CppUTest)
 
@@ -144,7 +144,7 @@ Embedded engineering is about constraints. Show power consumption, memory footpr
 
 ### Mistake 3: No debugging tools
 
-JTAG, oscilloscopes, logic analyzers - show your hardware debugging experience.
+JTAG, oscilloscopes, logic analyzers - show your [hardware debugging](https://thetailorcv.com/blog/entry-level-jobs-usa-new-grad) experience.
 
 ### Mistake 4: Pure software framing
 

@@ -93,7 +93,7 @@ Run the [ATS score checker](/solutions), apply the suggestions, and re-scan unti
 
 ## Common Mistakes That Lower ATS Scores
 
-Freshers often make several mistakes that can hinder their ATS scores. Here are some common pitfalls to avoid:
+Freshers often make several mistakes that can hinder their [ATS score](https://thetailorcv.com/blog/ats-score-vs-resume-score)s. Here are some common pitfalls to avoid:
 
 - **Using a color-heavy two-column template:** Stick to a simple layout that ATS can read.
 - **Listing only responsibilities, no results:** Quantify your achievements to stand out.

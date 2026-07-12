@@ -44,7 +44,7 @@ Your resume, your LinkedIn, and [your portfolio](https://thetailorcv.com/blog/cu
 
 ## Common Mistakes
 - A slow or janky [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site (instant credibility killer)
-- Only screenshots, no live demos
+- Only screenshots, no [live demo](https://thetailorcv.com/blog/portfolio-no-projects)s
 - No mobile testing
 - Dead links - audit with the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 
@@ -59,7 +59,7 @@ See the full list in [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/
 
 Creating a standout frontend developer portfolio involves more than just showcasing your projects. Follow this step-by-step guide to ensure your portfolio is comprehensive and effective.
 
-1. **Choose a Domain Name**: Select a domain name that reflects your personal brand. Ideally, it should be your name or something closely related to your work. Check availability and purchase it from a reputable registrar.
+1. **Choose a [Domain Name](https://thetailorcv.com/blog/custom-domain-portfolio-guide)**: Select a domain name that reflects your personal brand. Ideally, it should be your name or something closely related to your work. Check availability and purchase it from a reputable registrar.
 
 2. **Select a Hosting Provider**: Choose a reliable hosting service that fits your budget and technical needs. Look for options that offer easy deployment for frontend frameworks like React or Vue.js.
 
@@ -135,7 +135,7 @@ Three to five, each deployed with a live demo. Lead with your most polished, rea
 Mirror your portfolio in the [Frontend Developer Resume guide](https://thetailorcv.com/blog/frontend-developer-resume-2026) and run it through the [ATS checker](https://www.thetailorcv.com/solutions). Consider also reviewing the [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide) for additional insights.
 ## Build Your Portfolio Now
 
-You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
+You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a [live, shareable portfolio website](https://www.thetailorcv.com/portfolio) in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
 
 ## Related Guides
 

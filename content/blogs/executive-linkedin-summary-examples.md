@@ -18,7 +18,7 @@ An executive [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job
 
 Use:
 
-Leadership identity + business scope + transformation themes + measurable outcomes + board or stakeholder credibility
+Leadership identity + business scope + transformation themes + [measurable outcomes](https://thetailorcv.com/blog/executive-resume-tailoring-guide) + board or stakeholder credibility
 
 ---
 
@@ -55,21 +55,21 @@ Avoid buzzwords without proof:
 - Results-oriented executive
 - Strategic thinker
 
-These phrases only work when attached to specific outcomes.
+These phrases only work when attached to [specific outcomes](https://thetailorcv.com/blog/why-am-i-not-getting-interviews).
 
 ---
 
 ## Conclusion
 
-Your executive LinkedIn summary should support your [resume](https://www.thetailorcv.com/templates) and make your leadership story clear. Align both documents before applying for senior roles, and use the [ATS score checker](/solutions) to confirm keyword fit.
+Your executive LinkedIn summary should support your [resume](https://www.thetailorcv.com/templates) and make your [leadership story](https://thetailorcv.com/blog/personal-branding-for-professionals) clear. Align both documents before applying for senior roles, and use the [ATS score checker](/solutions) to confirm keyword fit.
 
 ---
 
 ## How to Turn This Into a Stronger Application
 
-Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your executive [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) positioning because small wording choices can change how recruiters and ATS systems understand your fit.
+Treat this guide as a working document, not just something to read once. The best [job seekers](https://thetailorcv.com/blog/linkedin-headline-examples-job-seekers) use a simple loop: compare the [target role](https://thetailorcv.com/blog/executive-resume-tailoring-guide), update one part of the application, test the result, then repeat. That is especially important for your executive [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) positioning because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your [resume](https://www.thetailorcv.com/templates), LinkedIn profile, portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your [resume](https://www.thetailorcv.com/templates), [LinkedIn profile](https://thetailorcv.com/blog/linkedin-to-portfolio-guide), portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 

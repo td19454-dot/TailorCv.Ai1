@@ -10,7 +10,7 @@ slug: ats-score-checker-free
 keywords: ats score checker free, free ats score checker, check ats score, ats resume checker, resume ats score, what is a good ats score
 ---
 
-If you have been applying to jobs and hearing nothing back, the problem may not be your experience - it may be that a machine rejected your resume before a human ever saw it. That machine is called an Applicant Tracking System (ATS), and the fastest way to find out how your resume performs is to run it through a **free [ATS score checker](https://www.thetailorcv.com/solutions)**.
+If you have been applying to jobs and hearing nothing back, the problem may not be your experience - it may be that a machine rejected your [resume](https://www.thetailorcv.com/templates) before a human ever saw it. That machine is called an Applicant Tracking System (ATS), and the fastest way to find out how your resume performs is to run it through a **free [ATS score checker](https://www.thetailorcv.com/solutions)**.
 
 In this guide you will learn what an [ATS score](https://thetailorcv.com/blog/ats-score-guide) is, why it decides your job application, how to check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) for free in about 30 seconds, what a good score looks like, and exactly how to improve it.
 

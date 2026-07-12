@@ -140,7 +140,7 @@ Always decline graciously. Connect with the recruiter or hiring manager on [Link
 
 ## After Declining
 
-- The company may ask for feedback - share it constructively if you wish
+- The company may ask for feedback - share it [constructively if you wish](https://thetailorcv.com/blog/how-to-explain-career-gap-in-interview)
 - They may make a counteroffer - consider it if it addresses your reasons
 - Connect on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) to maintain the relationship
 - Move forward professionally
@@ -182,13 +182,13 @@ If you are choosing between offers, use the [salary negotiation guide](https://t
 ## Frequently Asked Questions
 
 ### When should I decline a job offer?  
-You should decline a job offer as soon as you've made your decision to ensure prompt communication. Leaving the company waiting can hinder their recruitment process, as they may be holding the role for you or considering other candidates. For more insights on managing multiple offers, check out our guide on [Negotiating Multiple Job Offers](https://thetailorcv.com/blog/negotiating-multiple-job-offers).
+You should decline a job offer as soon as you've made your decision to ensure [prompt communication](https://thetailorcv.com/blog/negotiating-multiple-job-offers). Leaving the company waiting can hinder their recruitment process, as they may be holding the role for you or considering other candidates. For more insights on managing multiple offers, check out our guide on [Negotiating Multiple Job Offers](https://thetailorcv.com/blog/negotiating-multiple-job-offers).
 
 ### What is the best way to decline a job offer?  
 The best way to decline a job offer is through an email, as it provides a written record of your communication. If you developed a strong rapport with the recruiter or hiring manager, a phone call followed by a confirming email can add a personal touch. For tips on maintaining professionalism, refer to our [Salary Negotiation Guide](https://thetailorcv.com/blog/salary-negotiation-guide).
 
 ### Should I provide a reason for declining the offer?  
-While it's not mandatory to provide a reason for declining a job offer, including a brief and gracious explanation can help keep the conversation positive. If you're comfortable sharing, you might mention that you've accepted another offer or that the role wasn't the right fit for you. For guidance on communicating your decisions gracefully, explore our post on [How to Explain a Career Gap in a Job Interview](https://thetailorcv.com/blog/how-to-explain-career-gap-in-interview).
+While it's not mandatory to provide a reason for declining a job offer, including a brief and gracious explanation can help keep the conversation positive. If you're comfortable sharing, you might mention that you've [accepted another offer](https://thetailorcv.com/blog/how-to-quit-your-job-professionally) or that the role wasn't the right fit for you. For guidance on communicating your decisions gracefully, explore our post on [How to Explain a Career Gap in a Job Interview](https://thetailorcv.com/blog/how-to-explain-career-gap-in-interview).
 
 ### How can I keep the relationship open after declining an offer?  
 To keep the relationship open, express genuine appreciation for the opportunity and convey your desire to stay in touch. You might mention that you hope to connect again in the future, as this can lead to potential opportunities down the line. For tips on maintaining professional relationships, consider reviewing our article on [Recession-Proof Jobs in 2026](https://thetailorcv.com/blog/recession-proof-jobs-2026).

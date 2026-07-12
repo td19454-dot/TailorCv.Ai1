@@ -30,7 +30,7 @@ No design software, no code editor, and no separate hosting account to configure
 
 ## What You Should Still Do Yourself
 - **Add real project depth** - expand your one or two strongest projects into full case studies using [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study); AI can draft a summary, but the specific decisions and outcomes are yours to add
-- **Proofread the AI-generated text** - skim for anything generic or slightly off before publishing
+- **Proofread the [AI-generated text](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice)** - skim for anything generic or slightly off before publishing
 - **Personalize your About section** - see [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section) for how to make it sound like you, not a template
 
 ## Free vs Pro
@@ -112,7 +112,7 @@ Use this checklist to ensure your portfolio is comprehensive and impactful:
 
 Understanding how to leverage AI for portfolio building can vary by industry. Here are a few scenarios that illustrate its application:
 
-- **For Graphic Designers**: Use AI tools like Canva to create stunning visuals for your projects. AI can suggest color palettes and layouts based on current design trends, helping you stand out.
+- **For Graphic Designers**: Use [AI tools](https://thetailorcv.com/blog/ai-proof-jobs-2026) like Canva to create stunning visuals for your projects. AI can suggest color palettes and layouts based on current design trends, helping you stand out.
 
 - **For Finance Professionals**: AI can help analyze past projects, generating insights into your financial modeling or analysis work. Use these insights to create compelling case studies that showcase your expertise, as detailed in our [Finance and Accounting Portfolio Guide](https://thetailorcv.com/blog/finance-accounting-portfolio-guide).
 

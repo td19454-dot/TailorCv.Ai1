@@ -108,7 +108,7 @@ Navigating the job market as a new graduate can be daunting. Here are some commo
 
 1. **Generic Applications**: Sending the same resume and cover letter to every job is a surefire way to get overlooked. Tailor your application for each position, highlighting relevant experiences and skills.
 
-2. **Neglecting Your Online Presence**: Many recruiters will check your social media profiles. Ensure your LinkedIn is updated and professional, and consider removing or making private any content that may be deemed unprofessional.
+2. **Neglecting Your Online Presence**: Many recruiters will check your social media profiles. Ensure your [LinkedIn is updated and professional](https://thetailorcv.com/blog/referral-message-template-linkedin), and consider removing or making private any content that may be deemed unprofessional.
 
 3. **Ignoring the Job Description**: Many candidates fail to connect their skills with the requirements listed in the job description. Use keywords from the job listing in your resume and cover letter to demonstrate that you are a good match.
 

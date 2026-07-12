@@ -10,7 +10,7 @@ slug: data-analyst-portfolio-guide
 keywords: data analyst portfolio, sql portfolio, tableau portfolio, power bi portfolio, data projects portfolio
 ---
 
-A data analyst portfolio proves one thing above all: you can turn raw data into a decision. Hiring managers do not want another rainbow dashboard - they want the **insight** and the **business action** it supports. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide).
+A data analyst portfolio proves one thing above all: you can turn raw data into a decision. Hiring managers do not want another rainbow dashboard - they want the **insight** and the **[business action](https://thetailorcv.com/blog/business-analyst-portfolio-guide)** it supports. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide).
 
 ## Projects to Include
 - A polished **dashboard** (Tableau Public or Power BI Web) on a real dataset
@@ -46,7 +46,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 ## Pro Tips
 - Quantify the impact of your recommendation ([How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)).
 - Include one project with messy, real-world data you had to clean.
-- Generate your portfolio site from your resume with the [portfolio builder](https://thetailorcv.com/portfolio).
+- Generate your [portfolio site](https://thetailorcv.com/blog/custom-domain-portfolio-guide) from your resume with the [portfolio builder](https://thetailorcv.com/portfolio).
 
 ## Step-by-Step Guide to Creating a Data Analysis Project
 

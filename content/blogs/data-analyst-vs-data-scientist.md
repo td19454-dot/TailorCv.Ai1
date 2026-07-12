@@ -10,7 +10,7 @@ slug: data-analyst-vs-data-scientist
 keywords: data analyst vs data scientist, data analyst or data scientist, data career 2026, difference between data analyst and data scientist, which data role, data career path
 ---
 
-"Should I become a [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) or a data scientist?" is one of the most common questions for people entering the data field. The roles overlap but differ significantly in skills, day-to-day work, salary, and career trajectory. Choosing the right one depends on your interests, math comfort, and career goals.
+"Should I become a [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) or a [data scientist](https://thetailorcv.com/blog/data-scientist-portfolio-guide)?" is one of the most common questions for people entering the data field. The roles overlap but differ significantly in skills, day-to-day work, salary, and career trajectory. Choosing the right one depends on your interests, math comfort, and career goals.
 
 This guide compares the two roles honestly across every dimension that matters.
 
@@ -90,7 +90,7 @@ The [data scientist](https://thetailorcv.com/blog/data-scientist-resume-2026) ro
 
 ## Salary Comparison
 
-Generally, data scientists earn more than data analysts due to the higher skill barrier and specialization. However, ranges overlap significantly, and senior analysts can out-earn junior scientists.
+Generally, data scientists earn more than [data analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide)s due to the higher skill barrier and specialization. However, ranges overlap significantly, and senior analysts can out-earn junior scientists.
 
 - [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026): solid mid-range salary, growing with experience and specialization
 - [data scientist](https://thetailorcv.com/blog/data-scientist-resume-2026): higher ceiling, especially with ML engineering or specialized domains

@@ -154,7 +154,7 @@ It is worth being upfront about what this kind of pattern-reading can and cannot
 
 - **This is observational, not experimental.** We are describing patterns across resumes people chose to run through a scoring tool, not a randomized study where identical resumes were varied one factor at a time and outcomes were tracked.
 - **Outcomes are not fully tracked.** A score checker measures match quality against a job description; it does not know whether a given resume ultimately led to an interview or an offer. The link between "higher score" and "better outcome" is a reasonable inference, not a directly measured one here.
-- **The people who use an ATS score checker are self-selected.** They are, by definition, more engaged with optimizing their job search than the average applicant, which can shape which problems show up most often in the pattern.
+- **The people who use an [ATS score checker](https://thetailorcv.com/blog/ats-score-checker-free) are self-selected.** They are, by definition, more engaged with optimizing their job search than the average applicant, which can shape which problems show up most often in the pattern.
 - **Industry and seniority vary.** What counts as a "generic" versus "tailored" resume, and how much formatting matters, can shift by field - a designer's portfolio-adjacent resume is a different case than an accountant's.
 - **Job market conditions shift.** Hiring volume, the aggressiveness of ATS filtering, and even which platforms employers use all change over time and by season, which can shift how much weight any single factor carries.
 

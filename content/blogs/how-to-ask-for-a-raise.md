@@ -16,7 +16,7 @@ The key is to approach it as a business case, not a personal plea. You are not a
 
 This guide covers when to ask, how to build your case, the exact scripts to use, and how to handle every response.
 
-This is related to the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) for new offers and the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion). To understand your [market value](https://thetailorcv.com/blog/how-to-check-ats-score-free), keep your resume updated and run it through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) periodically.
+This is related to the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) for new offers and the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion). To understand your [market value](https://thetailorcv.com/blog/how-to-check-ats-score-free), keep your [resume updated](https://www.thetailorcv.com/templates) and run it through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) periodically.
 
 ---
 
@@ -197,7 +197,7 @@ To build your case for a raise, document [specific accomplishments](https://thet
 Avoid asking for a raise during layoffs, budget freezes, or immediately after a company loss. These situations can significantly diminish your chances of a favorable response. Instead, approach the conversation with preparation and professionalism, steering clear of casual requests or ultimatums without genuine alternatives.
 
 ### How can I ensure I am not underpaid?
-To ensure you are not underpaid, regularly research your market value and compare your salary with industry standards. Keeping your [resume updated](https://www.thetailorcv.com/templates) and using tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) can help you assess your professional standing and advocate for a raise based on data.
+To ensure you are not underpaid, regularly research your [market value](https://thetailorcv.com/blog/how-to-check-ats-score-free) and compare your salary with industry standards. Keeping your [resume updated](https://www.thetailorcv.com/templates) and using tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) can help you assess your professional standing and advocate for a raise based on data.
 
 ### What if my request for a raise is denied?
 If your request for a raise is denied, it's essential to remain professional and seek constructive feedback. Inquire about the reasons behind the decision and ask what steps you can take to position yourself for a future raise. This proactive approach demonstrates your commitment to personal growth and can pave the way for future opportunities, such as a promotion. For more on this, check out our guide on [How to Get a Promotion in 2026](https://thetailorcv.com/blog/how-to-get-a-promotion).
