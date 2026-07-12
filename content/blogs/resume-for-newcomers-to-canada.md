@@ -164,6 +164,21 @@ Navigating the job market can be challenging, especially for newcomers. Here are
 
 By following these guidelines and utilizing the resources provided, you can create a compelling resume tailored for the Canadian job market. Remember, persistence is key, and with the right preparation, you can land that first Canadian job.
 
+## Related Guides
+
+Keep building your Canadian job search with these related TailorCV guides:
+
+- [How ATS Works in Canada: Beating Applicant Tracking Systems for Canadian Jobs](https://thetailorcv.com/blog/ats-in-canada-guide)
+- [Canadian Resume Format Guide (2026): How to Write a Resume for Canada](https://thetailorcv.com/blog/canadian-resume-format-guide-2026)
+- [How to Write a Cover Letter for Canadian Jobs (With Structure)](https://thetailorcv.com/blog/cover-letter-for-canadian-jobs)
+- [How to Get a Job in Canada in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada)
+- [Recruiter Ghosting You After an Interview? What It Means and What to Do Next](https://thetailorcv.com/blog/recruiter-ghosting-after-interview)
+- [AI Job Search Agent 2026 - How to Use AI Without Losing Your Voice](https://thetailorcv.com/blog/ai-job-search-agent-2026)
+- [Follow-Up Email After Job Application - Templates That Sound Professional](https://thetailorcv.com/blog/follow-up-email-after-application)
+- [Job Application Tracker Template - What to Track After Every Application](https://thetailorcv.com/blog/job-application-tracker-template)
+
+You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
+
 ## Frequently Asked Questions
 
 ### 1. What is the best resume format for Canadian jobs?

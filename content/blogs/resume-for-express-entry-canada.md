@@ -162,6 +162,21 @@ Use this checklist to ensure your resume is ready for submission:
 
 By actively avoiding these common mistakes, following a structured approach to tailoring your resume, and utilizing the provided checklist, you can create a compelling resume that stands out to Canadian employers. For further guidance, check out our article on [Resume for Newcomers to Canada: Land Your First Canadian Job](https://thetailorcv.com/blog/resume-for-newcomers-to-canada).
 
+## Related Guides
+
+Keep building your Canadian job search with these related TailorCV guides:
+
+- [How ATS Works in Canada: Beating Applicant Tracking Systems for Canadian Jobs](https://thetailorcv.com/blog/ats-in-canada-guide)
+- [Canadian Resume Format Guide (2026): How to Write a Resume for Canada](https://thetailorcv.com/blog/canadian-resume-format-guide-2026)
+- [How to Write a Cover Letter for Canadian Jobs (With Structure)](https://thetailorcv.com/blog/cover-letter-for-canadian-jobs)
+- [How to Get a Job in Canada in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada)
+- [Entry-Level Jobs in the USA: A New-Grad Resume and Job Search Guide](https://thetailorcv.com/blog/entry-level-jobs-usa-new-grad)
+- [How to Get a Job in the USA in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa)
+- [How to Find Remote Jobs in the USA (2026 Guide)](https://thetailorcv.com/blog/remote-jobs-in-usa-guide)
+- [Resume for H-1B Visa Sponsorship Jobs: How to Stand Out](https://thetailorcv.com/blog/resume-for-h1b-visa-sponsorship)
+
+You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
+
 ## Frequently Asked Questions
 
 ### 1. What is the best format for a Canadian resume?

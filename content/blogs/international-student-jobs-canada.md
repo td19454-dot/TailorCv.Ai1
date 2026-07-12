@@ -133,6 +133,21 @@ Once you’ve submitted applications, consider sending follow-up emails. A well-
 
 By employing these strategies and resources, international students can navigate the Canadian job market more effectively, increasing their chances of securing fulfilling employment. Remember, persistence is key, and each application brings you one step closer to your career goals.
 
+## Related Guides
+
+Keep building your Canadian job search with these related TailorCV guides:
+
+- [How ATS Works in Canada: Beating Applicant Tracking Systems for Canadian Jobs](https://thetailorcv.com/blog/ats-in-canada-guide)
+- [Canadian Resume Format Guide (2026): How to Write a Resume for Canada](https://thetailorcv.com/blog/canadian-resume-format-guide-2026)
+- [How to Write a Cover Letter for Canadian Jobs (With Structure)](https://thetailorcv.com/blog/cover-letter-for-canadian-jobs)
+- [How to Get a Job in Canada in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada)
+- [Follow-Up Email After Job Application - Templates That Sound Professional](https://thetailorcv.com/blog/follow-up-email-after-application)
+- [Job Application Tracker Template - What to Track After Every Application](https://thetailorcv.com/blog/job-application-tracker-template)
+- [LinkedIn Referral Message Template - Ask Without Sounding Awkward](https://thetailorcv.com/blog/referral-message-template-linkedin)
+- [Video Resume Guide 2026 - When to Use One and What to Say](https://thetailorcv.com/blog/video-resume-guide-2026)
+
+You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
+
 ## Frequently Asked Questions
 
 ### 1. What type of resume format should I use for Canadian jobs?

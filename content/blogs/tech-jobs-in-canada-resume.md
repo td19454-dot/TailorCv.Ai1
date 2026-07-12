@@ -145,6 +145,21 @@ Use this quick checklist to ensure your tech resume is polished and ready for su
 
 Following this checklist can help ensure your resume stands out in the competitive tech job market in Canada.
 
+## Related Guides
+
+Keep building your Canadian job search with these related TailorCV guides:
+
+- [How ATS Works in Canada: Beating Applicant Tracking Systems for Canadian Jobs](https://thetailorcv.com/blog/ats-in-canada-guide)
+- [Canadian Resume Format Guide (2026): How to Write a Resume for Canada](https://thetailorcv.com/blog/canadian-resume-format-guide-2026)
+- [How to Write a Cover Letter for Canadian Jobs (With Structure)](https://thetailorcv.com/blog/cover-letter-for-canadian-jobs)
+- [How to Get a Job in Canada in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada)
+- [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
+- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
+- [Resume Mistakes Every Fresher Makes (And How to Fix Them in 2026)](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
+
+You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
+
 ## Frequently Asked Questions
 
 ### 1. What is the ideal length for a resume in Canada?
