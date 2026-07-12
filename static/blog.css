@@ -425,43 +425,53 @@ body.blog-detail-page { overflow-x: clip !important; }
 
 .post-layout {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
+  grid-template-columns: 310px minmax(0, 1fr);
   gap: 0;
   align-items: start;
   background: #05080d;
   margin-top: clamp(28px, 4vw, 56px);
 }
 
+/* Fixed-height flex column: the TOC list scrolls, the CTA card stays pinned. */
 .post-layout .toc-col {
   position: -webkit-sticky;
   position: sticky;
   top: 88px;
   align-self: start;
-  width: 260px;
+  width: 310px;
   max-height: calc(100vh - 108px);
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   border-right: 1px solid #171c27;
+}
+
+.post-layout .toc-col .toc {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #2b3342 transparent;
 }
 
-.post-layout .toc-col::-webkit-scrollbar {
+.post-layout .toc-col .toc::-webkit-scrollbar {
   width: 8px;
 }
 
-.post-layout .toc-col::-webkit-scrollbar-track {
+.post-layout .toc-col .toc::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 999px;
 }
 
-.post-layout .toc-col::-webkit-scrollbar-thumb {
+.post-layout .toc-col .toc::-webkit-scrollbar-thumb {
   background: #2b3342;
   border-radius: 999px;
 }
 
-/* Sidebar CTA card below the TOC (blue + sky-blue) */
+/* Sidebar CTA card below the TOC (blue + sky-blue) - pinned, never scrolls */
 .toc-cta {
-  margin: 6px 24px 24px;
+  flex: 0 0 auto;
+  margin: 12px 22px 22px;
   padding: 20px 18px;
   border-radius: 16px;
   background: linear-gradient(160deg, #e0f2fe 0%, #bae6fd 100%);
@@ -712,11 +722,16 @@ header.navbar {
   .post-layout { grid-template-columns: 1fr; }
   .post-layout .toc-col {
     position: static;
+    display: block;
     max-height: none;
     overflow: visible;
     width: auto;
     border-right: 0;
     border-bottom: 1px solid #171c27;
+  }
+  .post-layout .toc-col .toc {
+    overflow: visible;
+    max-height: none;
   }
   .post-content {
     padding: 24px 16px;
