@@ -1,4 +1,4 @@
-﻿---
+---
 title: 15 Best Free Online Certificates That Actually Look Good on a Resume in 2026
 description: Discover the best free online certificates that actually look good on a resume in 2026. Learn which certifications recruiters value most, how they improve ATS scores, and how to showcase them effectively on your resume.
 date: 2026-05-28

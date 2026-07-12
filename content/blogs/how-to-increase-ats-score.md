@@ -1,9 +1,9 @@
-﻿---
-title: How to Increase Your [ATS](https://thetailorcv.com/blog/ats-score-vs-resume-score) Score From 50 to 90 (2026)
-description: A step-by-step playbook to raise your resume's [ATS](https://thetailorcv.com/blog/does-my-resume-pass-ats) score from failing to competitive - covering [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats), formatting, achievements, and re-scanning.
+---
+title: How to Increase Your ATS Score From 50 to 90 (2026)
+description: A step-by-step playbook to raise your resume's ATS score from failing to competitive - covering keywords, formatting, achievements, and re-scanning.
 date: 2026-06-03
 author: TailorCV Team
-tags: [ATS, resume, job search, [ATS](https://thetailorcv.com/blog/how-ats-detects-generic-resume) score]
+tags: ATS, resume, job search, [ATS score]
 category: ATS Optimization
 image: public/blog-images/how-to-increase-ats-score.webp
 slug: how-to-increase-ats-score

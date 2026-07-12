@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to List Education on a Resume in 2026 - Complete Guide with Examples
 description: Learn how to list education on your resume in 2026. Covers formatting, GPA, coursework, placement, and examples for students, graduates, and experienced professionals.
 date: 2026-06-01

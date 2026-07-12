@@ -1,4 +1,4 @@
-﻿---
+---
 title: 10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews
 description: Discover the best resume templates for beginners with no experience to create an ATS-friendly resume that helps freshers land interviews faster. Learn formatting tips, mistakes to avoid, and free template ideas.
 date: 2026-05-25

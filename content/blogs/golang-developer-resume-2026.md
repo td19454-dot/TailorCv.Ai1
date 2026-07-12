@@ -1,4 +1,4 @@
-﻿---
+---
 title: Go (Golang) Developer Resume 2026 - Complete Guide with Examples
 description: Write a Go developer resume in 2026 with the right ATS keywords, concurrency and microservices skills, and bullet points that prove backend performance and scale.
 date: 2026-06-01

@@ -1,4 +1,4 @@
-﻿---
+---
 title: AI Mock Interview - Complete Guide to Practicing and Winning in 2026
 description: Learn how AI mock interviews work, why they improve your job search, and how to use them to practice behavioral, technical, and HR questions before the real thing.
 date: 2026-07-01

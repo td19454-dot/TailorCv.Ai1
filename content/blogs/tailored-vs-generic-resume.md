@@ -1,4 +1,4 @@
-﻿---
+---
 title: Tailored Resume vs Generic Resume - What's the Real Difference in 2026?
 description: A tailored resume and a generic resume can describe the same person with the same experience. The difference is everything when it comes to ATS scores and recruiter interest. Here's exactly what separates them.
 date: 2026-06-11

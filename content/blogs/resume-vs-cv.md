@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume vs CV - What's the Difference and Which One Do You Need?
 description: Understand the key differences between a resume and a CV, when to use each, and how geography, industry, and job type affect which document to submit.
 date: 2026-06-06

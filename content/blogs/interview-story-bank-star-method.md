@@ -1,4 +1,4 @@
-﻿---
+---
 title: Interview Story Bank - Use the STAR Method Before Every Interview
 description: Build an interview story bank with STAR examples for leadership, conflict, failure, teamwork, ownership, and problem solving.
 date: 2026-07-07

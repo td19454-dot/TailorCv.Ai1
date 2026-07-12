@@ -1,4 +1,4 @@
-﻿---
+---
 title: Portfolio Homepage Copy Examples for Job Seekers
 description: Write better portfolio homepage copy with examples for developers, designers, data analysts, marketers, and product managers.
 date: 2026-07-07

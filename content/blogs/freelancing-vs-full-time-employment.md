@@ -1,4 +1,4 @@
-﻿---
+---
 title: Freelancing vs Full-Time Employment in 2026 - Honest Comparison
 description: Compare freelancing vs full-time employment in 2026. Covers income, stability, taxes, career growth, benefits, and how to decide which path is right for you.
 date: 2026-06-01

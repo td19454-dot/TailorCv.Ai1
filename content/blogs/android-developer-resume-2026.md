@@ -1,4 +1,4 @@
-﻿---
+---
 title: Android Developer Resume 2026 - Complete Guide with Examples
 description: Write an Android developer resume in 2026 with the right ATS keywords, Kotlin skills, Jetpack Compose experience, and bullet points that prove app impact.
 date: 2026-06-01

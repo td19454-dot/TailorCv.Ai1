@@ -1,4 +1,4 @@
-﻿---
+---
 title: 12 Common Resume and Job Description Mismatch Mistakes (And How to Fix Each One)
 description: Discover the 12 most common resume-to-job-description mismatch mistakes that hurt your ATS score and cost you interviews - and get the exact fix for each one.
 date: 2026-06-05

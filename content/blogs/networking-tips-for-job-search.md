@@ -1,6 +1,6 @@
-﻿---
+---
 title: Networking Tips for Job Search in 2026 - Even If You Hate Networking
-description: Learn practical networking tips for your [job search](https://thetailorcv.com/blog/how-to-handle-job-rejection) in 2026, including strategies for introverts, how to build genuine connections, and how to turn networking into job offers.
+description: Learn practical networking tips for your job search in 2026, including strategies for introverts, how to build genuine connections, and how to turn networking into job offers.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Networking, Job Search, Career Advice, Professional Networking, Job Hunt 2026]

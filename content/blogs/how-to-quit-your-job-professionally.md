@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Quit Your Job Professionally in 2026 - Complete Guide
 description: Learn how to quit your job professionally in 2026. Covers resignation timing, how to tell your boss, writing a resignation letter, notice periods, and handling counteroffers.
 date: 2026-06-01

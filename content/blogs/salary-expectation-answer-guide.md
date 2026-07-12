@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Answer Salary Expectations Without Underselling Yourself
 description: Learn how to answer salary expectation questions with research, ranges, timing, confidence, and negotiation-friendly wording.
 date: 2026-07-07

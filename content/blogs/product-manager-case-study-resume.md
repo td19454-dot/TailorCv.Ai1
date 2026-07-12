@@ -1,4 +1,4 @@
-﻿---
+---
 title: Product Manager Case Study Resume - How to Show Product Thinking
 description: Learn how to add product case studies to your resume and portfolio with metrics, user problems, prioritization, launches, and outcomes.
 date: 2026-07-07

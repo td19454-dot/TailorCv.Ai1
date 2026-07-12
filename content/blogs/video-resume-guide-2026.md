@@ -1,4 +1,4 @@
-﻿---
+---
 title: Video Resume Guide 2026 - When to Use One and What to Say
 description: Learn when a video resume helps, when it hurts, and how to script a short professional video for modern job applications.
 date: 2026-07-07

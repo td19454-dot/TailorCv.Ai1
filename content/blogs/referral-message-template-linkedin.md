@@ -1,4 +1,4 @@
-﻿---
+---
 title: LinkedIn Referral Message Template - Ask Without Sounding Awkward
 description: Use these LinkedIn referral message templates to contact employees, alumni, and weak connections professionally.
 date: 2026-07-07

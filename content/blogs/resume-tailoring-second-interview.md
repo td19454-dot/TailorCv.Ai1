@@ -1,4 +1,4 @@
-﻿---
+---
 title: Should You Update Your Resume for a Second or Third Interview? (2026 Guide)
 description: Most candidates never think about their resume after the first interview. Learn when and how to update your resume between interview rounds - and how to use your new insider knowledge to strengthen your application.
 date: 2026-06-29

@@ -1,6 +1,6 @@
-﻿---
+---
 title: Internship Resume Guide 2026 - How to Write a Resume for Your First Internship
-description: Write a strong internship resume in 2026 even with [no experience](https://thetailorcv.com/blog/resume-for-internship-with-no-experience). Includes format, skills, project examples, and bullet point tips for college students and freshers.
+description: Write a strong internship resume in 2026 even with no experience. Includes format, skills, project examples, and bullet point tips for college students and freshers.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Internship Resume, Student Resume, College Resume, First Resume, Career Tips]

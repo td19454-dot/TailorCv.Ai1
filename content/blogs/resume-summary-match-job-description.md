@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Match Your Resume Summary to a Job Description in 2026
 description: Learn how to write a resume summary that matches any job description. Step-by-step guide with templates, examples, and the exact formula to hook recruiters in 3 lines.
 date: 2026-06-05

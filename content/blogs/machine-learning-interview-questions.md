@@ -1,4 +1,4 @@
-﻿---
+---
 title: Machine Learning Interview Questions and Answers (2026 Guide)
 description: The most commonly asked machine learning interview questions, organized by category — ML fundamentals, statistics, model evaluation, deep learning, MLOps, and behavioral — with answer frameworks and a realistic prep plan.
 date: 2026-07-05

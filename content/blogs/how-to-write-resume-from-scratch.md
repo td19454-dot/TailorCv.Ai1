@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write a Resume from Scratch - Step-by-Step Guide for 2026
 description: A complete step-by-step guide to writing your first resume or rebuilding one from scratch in 2026. From gathering information to final ATS testing - every step covered.
 date: 2026-06-06

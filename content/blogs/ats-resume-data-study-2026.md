@@ -1,4 +1,4 @@
-﻿---
+---
 title: "What Actually Kills Your ATS Score: A Data-Backed Breakdown (2026)"
 description: A data-backed look at what really lowers resume ATS scores in 2026 - missing keywords, formatting, and tailoring - plus the fixes that move the number most.
 date: 2026-06-29

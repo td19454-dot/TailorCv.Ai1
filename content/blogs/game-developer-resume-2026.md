@@ -1,13 +1,13 @@
-﻿---
+---
 title: Game Developer Resume 2026 - Complete Guide with Examples
-description: Write a [game developer](https://thetailorcv.com/blog/resume-for-remote-developer-jobs) resume in 2026 with the right ATS keywords, Unity/Unreal skills, [shipped titles](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), and bullet points that prove gameplay and performance impact.
+description: Write a game developer resume in 2026 with the right ATS keywords, Unity/Unreal skills, shipped titles, and bullet points that prove gameplay and performance impact.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Game Developer Resume, Unity Resume, Unreal Resume, Game Programmer Resume, ATS Resume]
 category: Resume Examples
 image: public/blog-images/game.webp
 slug: game-developer-resume-2026
-keywords: [game developer resume](https://thetailorcv.com/blog/resume-section-order-guide), game developer resume 2026, unity developer resume, unreal engine resume, game programmer resume, gameplay engineer resume, game dev ATS keywords
+keywords: game developer resume, game developer resume 2026, unity developer resume, unreal engine resume, game programmer resume, gameplay engineer resume, game dev ATS keywords
 ---
 
 A game developer resume in 2026 must show engine proficiency, [shipped titles](https://thetailorcv.com/blog/job-description-analysis-checklist), and the specific gameplay or technical systems you built. Game development is [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)-driven - your playable projects and shipped games matter enormously alongside your resume. Whether you focus on gameplay, engine, graphics, tools, or multiplayer, your resume should show what you built and how it performed.

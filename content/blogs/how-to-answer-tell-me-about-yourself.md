@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Answer "Tell Me About Yourself" in 2026 - With Examples
 description: Learn how to answer "Tell me about yourself" in a job interview in 2026. Includes the best formula, example answers for 8 different roles, and mistakes to avoid.
 date: 2026-06-01

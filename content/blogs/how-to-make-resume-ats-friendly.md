@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Make Your Resume ATS-Friendly in 2026 - Complete Guide
 description: Learn how to make your resume ATS-friendly in 2026. Covers formatting, keywords, file types, and the exact rules that get your resume past applicant tracking systems.
 date: 2026-06-01

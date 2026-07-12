@@ -1,4 +1,4 @@
-﻿---
+---
 title: Free ATS Score Checker - Check Your Resume Score 2026
 description: Use a free ATS score checker to test your resume, see exactly what passes and fails, and fix it fast. Check your ATS score in 30 seconds with TailorCV.
 date: 2026-06-08

@@ -1,13 +1,13 @@
-﻿---
+---
 title: Data Engineer Resume 2026 - Complete Guide with Examples
-description: Write a [data engineer](https://thetailorcv.com/blog/ai-job-search-agent-2026) resume in 2026 with the right ATS keywords, pipeline and warehouse skills, and bullet points that show [data infrastructure](https://thetailorcv.com/blog/resume-for-remote-developer-jobs) impact.
+description: Write a data engineer resume in 2026 with the right ATS keywords, pipeline and warehouse skills, and bullet points that show data infrastructure impact.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Data Engineer Resume, Data Pipeline Resume, Spark Resume, dbt Resume, ATS Resume]
 category: Resume Examples
 image: public/blog-images/dataengineer.webp
 slug: data-engineer-resume-2026
-keywords: data engineer resume, data engineering resume 2026, [data pipeline](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) resume, Apache Spark resume, dbt resume, Airflow resume, [data warehouse](https://thetailorcv.com/blog/job-description-analysis-checklist) resume, data engineer ATS keywords
+keywords: data engineer resume, data engineering resume 2026, data pipeline resume, Apache Spark resume, dbt resume, Airflow resume, data warehouse resume, data engineer ATS keywords
 ---
 
 A data engineer resume in 2026 must prove that you can build reliable, scalable data infrastructure - not just write Python scripts or SQL queries. Companies want engineers who can design ELT pipelines, manage data warehouses, ensure [data quality](https://thetailorcv.com/blog/ats-keyword-mistakes), and help analytics and ML teams consume clean, timely, and trusted data.

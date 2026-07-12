@@ -1,4 +1,4 @@
-﻿---
+---
 title: Executive Resume Tailoring - How C-Suite and Senior Leader Applications Are Different (2026)
 description: Senior and C-suite resume tailoring is nothing like a standard job application. Learn the executive resume framework - what boards and hiring committees look for, and how to position yourself for leadership roles.
 date: 2026-06-29

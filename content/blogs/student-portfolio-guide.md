@@ -1,4 +1,4 @@
-﻿---
+---
 title: Student Portfolio Guide: Stand Out Before You Graduate
 description: A portfolio playbook for students - coursework, projects, internships, and the links that win internships and first jobs.
 date: 2026-06-24

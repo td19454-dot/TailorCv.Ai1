@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Answer "Why Are You Leaving Your Current Job?" - Best Scripts for 2026
 description: Learn how to answer why you are leaving your current job without badmouthing your employer. Positive scripts for growth, layoffs, culture, and AI mock interview practice.
 date: 2026-07-06

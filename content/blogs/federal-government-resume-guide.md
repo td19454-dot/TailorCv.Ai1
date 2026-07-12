@@ -1,13 +1,13 @@
-﻿---
+---
 title: How to Write a Federal Government Resume in 2026 - Format, KSAs, and What Makes It Different
-description: Federal resumes are nothing like private-sector resumes. Learn the format, length, KSA statements, [USAJOBS requirements](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes), and how to tailor a government resume that actually gets reviewed.
+description: Federal resumes are nothing like private-sector resumes. Learn the format, length, KSA statements, USAJOBS requirements, and how to tailor a government resume that actually gets reviewed.
 date: 2026-06-29
 author: TailorCV Team
 tags: [Federal Resume, Government Resume, USAJOBS, Resume Format, Resume Writing 2026]
 category: Resume Writing
 image: public/blog-images/federal-government-resume-guide.webp
 slug: federal-government-resume-guide
-keywords: [federal resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) guide, government resume 2026, USAJOBS resume tips, how to write federal resume, KSA resume statements, government job application resume
+keywords: federal resume guide, government resume 2026, USAJOBS resume tips, how to write federal resume, KSA resume statements, government job application resume
 ---
 
 You are about to make one of the most common mistakes in government job applications.

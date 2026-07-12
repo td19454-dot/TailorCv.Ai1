@@ -1,4 +1,4 @@
-﻿---
+---
 title: Best Questions to Ask in a Job Interview in 2026 - 40 Smart Questions
 description: Discover the best questions to ask your interviewer in 2026. 40 smart questions organized by topic that show interest, assess fit, and impress hiring managers.
 date: 2026-06-01

@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Get Your First Tech Job in 2026 - Complete Guide for Freshers
 description: A complete guide to landing your first software engineering, data science, or tech job in 2026 - from resume to portfolio to interview prep to offer.
 date: 2026-06-01

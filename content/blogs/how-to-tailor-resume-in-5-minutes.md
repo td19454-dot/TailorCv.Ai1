@@ -1,6 +1,6 @@
-﻿---
+---
 title: How to Tailor a Resume in 5 Minutes - A Step-by-Step Checklist
-description: You don't need to rewrite your resume for every job. This 5-minute checklist covers the exact changes that move the needle on [ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score)s and recruiter interest.
+description: You don't need to rewrite your resume for every job. This 5-minute checklist covers the exact changes that move the needle on ATS scores and recruiter interest.
 date: 2026-06-11
 author: TailorCV Team
 tags: [resume tailoring, resume tips, ATS, job search, resume checklist]

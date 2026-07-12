@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters
 description: Learn how to add projects in resume for freshers with practical examples, formatting tips, ATS optimization strategies, and expert advice to make your resume stand out to recruiters.
 date: 2026-05-27

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Salary Negotiation Guide — How to Negotiate Pay With Confidence (2026)
 description: A complete salary negotiation guide covering research, timing, scripts, and common mistakes — for job offers, raises, and everything in between.
 date: 2026-07-05

@@ -1,4 +1,4 @@
-﻿---
+---
 title: ATS Resume Parser Friendly Format
 description: Learn how to create an ATS parser friendly resume format that keeps sections, skills, dates, and contact details readable in applicant tracking systems.
 date: 2026-07-05

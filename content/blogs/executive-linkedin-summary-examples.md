@@ -1,6 +1,6 @@
-﻿---
+---
 title: Executive LinkedIn Summary Examples for Senior Leaders
-description: Write an [executive LinkedIn summary](https://thetailorcv.com/blog/executive-resume-tailoring-guide) that communicates [leadership scope](https://thetailorcv.com/blog/executive-resume-tailoring-guide), business outcomes, board-level language, and strategic credibility.
+description: Write an executive LinkedIn summary that communicates leadership scope, business outcomes, board-level language, and strategic credibility.
 date: 2026-07-07
 author: TailorCV Team
 tags: [LinkedIn, Executive Resume, Leadership, Personal Branding, Job Search]

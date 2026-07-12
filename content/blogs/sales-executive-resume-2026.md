@@ -1,4 +1,4 @@
-﻿---
+---
 title: Sales Executive Resume 2026 - Complete Guide with Examples
 description: Write a sales executive resume in 2026 with the right ATS keywords, quota attainment metrics, CRM skills, and bullet points that prove revenue impact.
 date: 2026-06-01

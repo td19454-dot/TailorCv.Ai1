@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to List Certifications on a Resume in 2026 - With Examples
 description: Learn how to list certifications on your resume in 2026. Covers where to place them, formatting, which ones to include, and examples by industry.
 date: 2026-06-01

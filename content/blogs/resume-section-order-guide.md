@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Section Order Guide - What Comes First on a Modern Resume
 description: Learn the best resume section order for freshers, experienced professionals, career changers, executives, and technical roles.
 date: 2026-07-07

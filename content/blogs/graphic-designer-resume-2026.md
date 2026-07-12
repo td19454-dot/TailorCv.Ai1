@@ -1,13 +1,13 @@
-﻿---
+---
 title: Graphic Designer Resume 2026 - Complete Guide with Examples
-description: Write a graphic designer [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) in 2026 with the right [ATS](https://thetailorcv.com/blog/ats-keyword-mistakes) keywords, Adobe Creative Suite skills, [portfolio](https://www.thetailorcv.com/portfolio) tips, and bullet points that show design impact.
+description: Write a graphic designer resume in 2026 with the right ATS keywords, Adobe Creative Suite skills, portfolio tips, and bullet points that show design impact.
 date: 2026-06-01
 author: TailorCV Team
 tags: [Graphic Designer Resume, Design Resume, Adobe Resume, ATS Resume, Creative Resume]
 category: Resume Examples
 image: public/blog-images/graphic.webp
-slug: graphic-designer-[resume](https://thetailorcv.com/blog/resume-section-order-guide)-2026
-keywords: graphic designer [resume](https://thetailorcv.com/blog/how-to-choose-resume-template), graphic design [resume](https://thetailorcv.com/blog/resume-fonts-guide) 2026, Adobe Creative Suite [resume](https://thetailorcv.com/blog/resume-margins-spacing-formatting), brand designer resume, graphic design ATS keywords, visual designer resume
+slug: graphic-designer-resume-2026
+keywords: graphic designer resume, graphic design resume 2026, Adobe Creative Suite resume, brand designer resume, graphic design ATS keywords, visual designer resume
 ---
 
 A graphic designer resume in 2026 needs to balance creative identity with [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-readability - a challenge most designers fail at by making their resume so visually complex that parsing software cannot read it. Your resume must look professional and clean while also getting through automated screening systems.

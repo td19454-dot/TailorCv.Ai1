@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Tailor One Resume for Multiple Similar Job Descriptions (2026 Guide)
 description: Learn how to manage resume matching when applying to multiple similar jobs. Smart system for building a modular resume that can be tailored quickly across similar roles without starting from scratch.
 date: 2026-06-05

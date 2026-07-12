@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Match Your Resume to a Software Engineering Job Description in 2026
 description: Learn how to match your software engineer resume to any job description in 2026. Covers technical keyword matching, ATS optimization, GitHub, stack alignment, and before/after examples.
 date: 2026-06-05

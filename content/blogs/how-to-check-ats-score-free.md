@@ -1,9 +1,9 @@
-﻿---
+---
 title: How to Check Your ATS Score for Free (2026 Guide)
-description: Learn how to check your resume's [ATS score](https://thetailorcv.com/blog/ats-score-vs-resume-score) for free in under a minute, understand what the number means, and fix the issues that keep you out of interviews.
+description: Learn how to check your resume's ATS score for free in under a minute, understand what the number means, and fix the issues that keep you out of interviews.
 date: 2026-06-04
 author: TailorCV Team
-tags: [ATS, resume, job search, [ATS score](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)]
+tags: ATS, resume, job search, [ATS score]
 category: ATS Optimization
 image: public/blog-images/how-to-check-ats-score-free.webp
 slug: how-to-check-ats-score-free

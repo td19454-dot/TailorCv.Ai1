@@ -1,9 +1,9 @@
-﻿---
-title: [ATS](https://thetailorcv.com/blog/ats-score-vs-resume-score) Resume Checker - How It Works and How to Pass (2026)
-description: Understand exactly how an [ATS resume checker](https://www.thetailorcv.com/solutions) works, what it analyzes in your resume, and how to use one to pass automated screening and land more interviews.
+---
+title: ATS Resume Checker - How It Works and How to Pass (2026)
+description: Understand exactly how an ATS resume checker works, what it analyzes in your resume, and how to use one to pass automated screening and land more interviews.
 date: 2026-06-02
 author: TailorCV Team
-tags: [ATS, resume, job search, [ATS score](https://thetailorcv.com/blog/why-is-my-ats-score-low)]
+tags: ATS, resume, job search, [ATS score]
 category: ATS Optimization
 image: public/blog-images/ats-resume-checker-how-it-works.webp
 slug: ats-resume-checker-how-it-works

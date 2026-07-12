@@ -1,4 +1,4 @@
-﻿---
+---
 title: LinkedIn Profile Optimization Guide 2026 - Get Found by Recruiters
 description: Optimize your LinkedIn profile in 2026 to get found by recruiters, increase profile views, and attract inbound job opportunities without actively applying.
 date: 2026-06-01

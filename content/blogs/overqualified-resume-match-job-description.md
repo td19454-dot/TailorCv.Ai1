@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Match Your Resume When You're Overqualified for the Job (2026 Guide)
 description: Learn how to match your resume to a job description when you're overqualified. Strategies to reassure employers, avoid automatic rejection, and land interviews for roles below your experience level.
 date: 2026-06-05

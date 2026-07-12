@@ -1,4 +1,4 @@
-﻿---
+---
 title: Top 50 HR Interview Questions and Answers (2026 Guide)
 description: The complete list of the top 50 HR interview questions and answers, with frameworks for behavioral, situational, and closing-round questions — plus how to tailor every answer to the specific job.
 date: 2026-07-05

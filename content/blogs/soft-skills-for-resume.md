@@ -1,4 +1,4 @@
-﻿---
+---
 title: Soft Skills for Resume in 2026 - How to Show Them (Not Just List Them)
 description: Learn which soft skills matter on a resume in 2026 and how to prove them with evidence instead of just listing them. Includes examples for every major skill.
 date: 2026-06-01

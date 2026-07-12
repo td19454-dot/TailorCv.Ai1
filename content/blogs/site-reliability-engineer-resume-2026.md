@@ -1,4 +1,4 @@
-﻿---
+---
 title: Site Reliability Engineer (SRE) Resume 2026 - Complete Guide
 description: Write a site reliability engineer resume in 2026 with the right ATS keywords, SLO/SLI/SLA skills, incident management experience, and reliability impact bullets.
 date: 2026-06-01

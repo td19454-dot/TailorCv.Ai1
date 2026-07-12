@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Decline a Job Offer Professionally in 2026 - With Templates
 description: Learn how to decline a job offer professionally in 2026 without burning bridges. Includes email templates, timing, and how to keep the relationship positive.
 date: 2026-06-01

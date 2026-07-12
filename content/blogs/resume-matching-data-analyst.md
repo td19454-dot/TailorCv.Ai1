@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Match Your Resume to a Data Analyst Job Description in 2026
 description: Learn how to match your data analyst resume to any job description in 2026. Covers SQL, Python, Tableau, BI tools, ATS keyword matching, and before/after examples.
 date: 2026-06-05

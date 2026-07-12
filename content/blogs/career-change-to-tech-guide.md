@@ -1,4 +1,4 @@
-﻿---
+---
 title: Career Change to Tech in 2026 - Complete Guide for Switchers
 description: A complete guide to changing careers into tech in 2026. Covers which roles to target, how to build skills, how to write a switcher resume, and how to land your first tech job.
 date: 2026-06-01

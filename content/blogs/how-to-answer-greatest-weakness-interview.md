@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Answer "What Is Your Greatest Weakness?" - Best Answers for 2026
 description: Learn how to answer the greatest weakness interview question honestly without hurting your chances. Includes formulas, examples, and AI mock interview practice.
 date: 2026-07-04

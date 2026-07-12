@@ -1,4 +1,4 @@
-﻿---
+---
 title: Career Change Resume - How to Write a Resume When Switching Industries in 2026
 description: Write a career change resume in 2026 with transferable skills, ATS keywords, smart formatting, cover letter tips, projects, and real examples for new roles.
 date: 2026-05-28

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Java Developer Resume 2026 - Complete Guide with Examples
 description: Write a Java developer resume in 2026 with the right ATS keywords, Spring Boot skills, microservices experience, and bullet points that prove backend impact.
 date: 2026-06-01

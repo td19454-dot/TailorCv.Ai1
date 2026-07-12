@@ -1,4 +1,4 @@
-﻿---
+---
  title: 35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)
  description: Discover the best technical skills in resume for freshers with no experience in 2026. Learn ATS-friendly resume skills, role-based examples, software engineer resume skills, systems engineer skills, AI resume optimization tips, and more.
  date: 2026-05-19 

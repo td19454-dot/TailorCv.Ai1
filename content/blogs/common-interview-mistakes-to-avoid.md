@@ -1,4 +1,4 @@
-﻿---
+---
 title: 20 Common Interview Mistakes to Avoid in 2026
 description: Avoid the 20 most common job interview mistakes in 2026. Learn what trips up candidates in preparation, delivery, and follow-up - and how to fix each one.
 date: 2026-06-01

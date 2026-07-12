@@ -1,4 +1,4 @@
-﻿---
+---
 title: Data Analyst Portfolio Guide: Projects That Prove Insight
 description: Build a data analyst portfolio with dashboards, SQL, and analysis projects that show business impact - plus where to host them free.
 date: 2026-06-24

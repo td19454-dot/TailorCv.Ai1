@@ -1,13 +1,13 @@
-﻿---
+---
 title: How to Match Resume Keywords to Job Description - 2026 Guide
-description: Learn how to match resume keywords to a [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) in 2026. Step-by-step process to find, map, and add the exact keywords that beat [ATS](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) and impress recruiters.
+description: Learn how to match resume keywords to a job description in 2026. Step-by-step process to find, map, and add the exact keywords that beat ATS and impress recruiters.
 date: 2026-06-05
 author: TailorCV Team
 tags: [Resume Keywords, Job Description Keywords, ATS Keywords, Resume Matching, Resume Tips 2026]
 category: Resume Optimization
 image: public/blog-images/how-to-match-resume-keywords-to-job-description.webp
 slug: how-to-match-resume-keywords-to-job-description
-keywords: how to match resume keywords to [job description](https://thetailorcv.com/blog/resume-match-score-callback-rate-data-study), resume keyword matching, job description keywords resume, ATS keyword match, resume keywords 2026, keyword optimization resume
+keywords: how to match resume keywords to job description, resume keyword matching, job description keywords resume, ATS keyword match, resume keywords 2026, keyword optimization resume
 ---
 
 Keywords are the bridge between your resume and a job offer.

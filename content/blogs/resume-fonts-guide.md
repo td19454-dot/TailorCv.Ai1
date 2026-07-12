@@ -1,4 +1,4 @@
-﻿---
+---
 title: Best Resume Fonts for 2026 - What to Use and What to Avoid
 description: The complete guide to resume fonts in 2026. Discover the best professional fonts for resumes, ideal font sizes, and which fonts to avoid for both ATS compatibility and readability.
 date: 2026-06-06

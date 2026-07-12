@@ -1,13 +1,13 @@
-﻿---
+---
 title: Job Description Analysis Checklist Before You Apply
-description: Use this checklist to analyze a job description for must-have skills, hidden keywords, seniority level, red flags, and [resume](https://thetailorcv.com/blog/resume-matching-skills-based-hiring) tailoring signals.
+description: Use this checklist to analyze a job description for must-have skills, hidden keywords, seniority level, red flags, and resume tailoring signals.
 date: 2026-07-07
 author: TailorCV Team
 tags: [Job Description, Resume Matching, ATS Resume, Job Search, Resume Keywords]
 category: ATS
 image: public/blog-images/job-description-analysis-checklist.webp
 slug: job-description-analysis-checklist
-keywords: job description analysis checklist, analyze job description, [resume](https://thetailorcv.com/blog/resume-matching-referral-applications) matching checklist, job description keywords
+keywords: job description analysis checklist, analyze job description, resume matching checklist, job description keywords
 ---
 
 Before applying, analyze the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) like a recruiter and an ATS would. The posting tells you what to emphasize, what to remove, and whether the role is actually a good fit.

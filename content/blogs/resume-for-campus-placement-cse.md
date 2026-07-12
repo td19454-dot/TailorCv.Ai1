@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume for Campus Placement CSE Students - Complete Structure
 description: Build a CSE campus placement resume with projects, DSA, coding profiles, internships, skills, achievements, and ATS-friendly formatting.
 date: 2026-07-07

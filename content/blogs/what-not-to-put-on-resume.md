@@ -1,4 +1,4 @@
-﻿---
+---
 title: What Not to Put on a Resume in 2026 - 25 Things to Remove Immediately
 description: Learn what to remove from your resume in 2026. 25 specific things that hurt your chances - from outdated info to ATS killers to red flags that cost you interviews.
 date: 2026-06-01

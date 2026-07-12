@@ -1,4 +1,4 @@
-﻿---
+---
 title: International Resume Tailoring - How Resume Rules Differ by Country (2026 Guide)
 description: What works on a US resume can disqualify you in Germany. Learn how resume conventions differ by country - format, length, photo, personal details, and language - and how to tailor yours for international jobs.
 date: 2026-06-29

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Supply Chain Manager Resume 2026 - Complete Guide with Examples
 description: Write a supply chain manager resume in 2026 with the right ATS keywords, logistics and procurement skills, and bullet points that prove cost and efficiency impact.
 date: 2026-06-01

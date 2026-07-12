@@ -1,4 +1,4 @@
-﻿---
+---
 title: Pharmacist Resume 2026 - Complete Guide with Examples
 description: Write a pharmacist resume in 2026 with the right ATS keywords, clinical skills, licensure, and bullet points that prove patient safety and pharmacy operations impact.
 date: 2026-06-01

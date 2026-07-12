@@ -1,4 +1,4 @@
-﻿---
+---
 title: Chemical Engineer Resume 2026 - Complete Guide with Examples
 description: Write a chemical engineer resume in 2026 with the right ATS keywords, process design skills, safety experience, and bullet points that prove engineering impact.
 date: 2026-06-01

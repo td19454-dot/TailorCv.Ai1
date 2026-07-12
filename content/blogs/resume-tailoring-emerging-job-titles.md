@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Tailor Your Resume for Emerging Job Titles - AI Engineer, Prompt Engineer, and More (2026)
 description: Emerging roles like AI Engineer, Prompt Engineer, and Climate Tech Analyst have no standard job description. Learn how to tailor your resume for roles that are still being defined - and win them.
 date: 2026-06-29
