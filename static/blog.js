@@ -92,12 +92,25 @@
       .filter((x) => x.el);
     if (!map.length) return;
 
+    const scroller = links[0].closest(".toc");
+    let lastActive = null;
+    const keepVisible = (a) => {
+      if (!scroller || a === lastActive) return;
+      lastActive = a;
+      const c = a.getBoundingClientRect();
+      const s = scroller.getBoundingClientRect();
+      // Only nudge the sidebar's own scroll, never the page.
+      if (c.top < s.top) scroller.scrollTop -= s.top - c.top + 12;
+      else if (c.bottom > s.bottom) scroller.scrollTop += c.bottom - s.bottom + 12;
+    };
+
     const onScroll = () => {
       let current = map[0].a;
       for (const { a, el } of map) {
         if (el.getBoundingClientRect().top <= 140) current = a;
       }
       links.forEach((a) => a.classList.toggle("active", a === current));
+      keepVisible(current);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
