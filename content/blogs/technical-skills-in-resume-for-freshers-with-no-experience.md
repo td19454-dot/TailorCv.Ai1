@@ -864,6 +864,21 @@ If you want smarter [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-res
 
 ---
 
+
+## Comparison of Generic vs Tailored Technical Skills in Resumes
+
+Choosing the right technical skills to showcase on your resume can make a significant difference in capturing a recruiter's attention. 
+
+| Generic Skills                   | Tailored Skills                          |
+|----------------------------------|-----------------------------------------|
+| Microsoft Office Suite           | Advanced Excel (PivotTables, VLOOKUP)  |
+| Basic Programming                | Python for Data Analysis (Pandas, NumPy)|
+| Social Media Management          | SEO and Content Strategy for LinkedIn   |
+| General IT Support               | Troubleshooting Network Issues (CCNA)   |
+| Familiarity with HTML/CSS        | Responsive Web Design (Bootstrap, Flexbox)|
+| Basic Data Entry                 | Data Visualization (Tableau, Power BI)  |
+| General Marketing Knowledge       | Digital Marketing Analytics (Google Analytics, SEMrush)|
+
 ## FAQs
 
 ### What technical skills should a fresher put on a resume?

@@ -240,6 +240,19 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
+
+## Keyword Density Comparison: Weak vs. Strong Integration
+
+Understanding the difference between keyword stuffing and effective keyword integration can help you craft a resume that appeals to both ATS and human readers.
+
+| **Aspect**                  | **Weak Integration**                             | **Strong Integration**                             |
+|-----------------------------|-------------------------------------------------|---------------------------------------------------|
+| **Example Sentence**        | "I am proficient in Python, Python is my favorite language, and I use Python for data analysis." | "I am proficient in Python, which I use for data analysis and automation tasks." |
+| **Keyword Frequency**       | "Project Management" appears 5 times.          | "Project Management" appears 2 times.             |
+| **Readability**             | Awkward and robotic due to repetition.          | Smooth and natural flow of ideas.                  |
+| **Contextual Relevance**    | Keywords used in unrelated contexts.            | Keywords integrated into relevant experiences.      |
+| **Overall Impression**      | Feels like a bot-generated resume.              | Engaging and human-like, showcasing true skills.   |
+
 ## FAQ
 ### Will a higher keyword count always improve my ATS score?
 

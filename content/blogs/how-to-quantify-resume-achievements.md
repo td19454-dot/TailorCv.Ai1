@@ -234,6 +234,19 @@ Quantifying your resume achievements is not about exaggerating - it is about bei
 
 Once your bullets are strong, run your full resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to make sure your keywords also match the job description. Use the [resume templates](https://www.thetailorcv.com/templates) to ensure your format is clean. If you are still building your resume from scratch, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full structure.
 
+
+## Weak vs Strong Resume Achievements
+
+Transforming vague achievements into quantified statements can significantly enhance the impact of your resume. 
+
+| Weak Achievement                     | Strong Achievement                             |
+|--------------------------------------|------------------------------------------------|
+| Improved sales                       | Increased sales by 25% in Q2 2023            |
+| Managed a team                       | Led a team of 10 marketing professionals      |
+| Developed a new software feature     | Developed a new software feature that reduced user onboarding time by 30% |
+| Increased customer satisfaction       | Improved customer satisfaction scores from 75% to 90% over 6 months |
+| Organized company events              | Organized 5 successful company-wide events attracting over 300 participants each |
+
 ## Frequently Asked Questions
 
 ### Why is quantifying achievements important on a resume?  

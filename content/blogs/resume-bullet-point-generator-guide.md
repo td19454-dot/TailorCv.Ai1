@@ -189,6 +189,18 @@ Use a bullet generator as one stage in a full resume workflow, not the whole pro
 
 Once your resume is in good shape, extend the same "specific over generic" principle to the rest of your application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), rehearse explaining your bullet-point achievements out loud with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and if you want a deeper backup for your strongest projects, build a [portfolio](https://www.thetailorcv.com/portfolio) that shows the work behind the bullet.
 
+
+## Example Comparison of Generic vs. Tailored Resume Bullet Points
+
+A clear distinction between generic and tailored bullet points can greatly enhance the effectiveness of your resume.
+
+| Generic Bullet Point                     | Tailored Bullet Point                                 |
+|------------------------------------------|------------------------------------------------------|
+| Managed a team of sales associates.      | Led a team of 10 sales associates to achieve a 25% increase in quarterly sales through targeted training and motivation. |
+| Responsible for customer service.        | Enhanced customer satisfaction scores by 30% by implementing a new feedback system and training staff on effective communication. |
+| Assisted in project management tasks.    | Coordinated cross-functional teams to deliver a $500,000 project two weeks ahead of schedule, improving client satisfaction and retention. |
+| Conducted market research.               | Conducted in-depth market research that identified three new target demographics, resulting in a 15% increase in market share over six months. |
+
 ## FAQ
 
 ### Can I use AI-generated bullets on my resume?

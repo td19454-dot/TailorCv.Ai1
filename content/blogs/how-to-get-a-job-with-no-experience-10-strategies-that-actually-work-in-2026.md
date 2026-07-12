@@ -259,6 +259,20 @@ You do not need a perfect background to get started. You need a clear target, co
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
 
+
+## Comparison of Formal Experience vs. Relevant Experience
+
+Understanding the difference between formal and relevant experience can help you present yourself more effectively to potential employers.
+
+| Aspect                | Formal Experience                  | Relevant Experience                  |
+|-----------------------|------------------------------------|-------------------------------------|
+| Definition            | Paid work in the specific role     | Any experience that applies to the role |
+| Examples              | Internship at a marketing firm     | Managing a social media account for a club |
+| Value to Employers     | Directly applicable skills         | Transferable skills and adaptability |
+| Perception            | Seen as more credible               | Demonstrates initiative and resourcefulness |
+| Focus on Resume       | Job titles and company names       | Skills, projects, and achievements   |
+| Networking Approach    | Connections within the industry    | Leveraging personal networks and community involvement |
+
 ## Frequently Asked Questions
 
 ### How can I highlight my transferable skills when applying for jobs with no experience?  

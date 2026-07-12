@@ -243,6 +243,20 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
+
+## Resume Optimization for LinkedIn Easy Apply: Generic vs. Tailored
+
+To increase your chances of getting noticed by recruiters, it's crucial to understand the difference between a generic resume and a tailored one.
+
+| Aspect                | Generic Resume                           | Tailored Resume                           |
+|-----------------------|-----------------------------------------|------------------------------------------|
+| **Objective Statement** | Vague and broad ("Seeking a challenging position") | Specific to the job ("Seeking a marketing role to leverage my 5 years of digital advertising experience") |
+| **Skills Section**    | Lists skills without context (e.g., "Microsoft Office, Communication") | Highlights relevant skills aligned with the job description (e.g., "Adobe Creative Suite, Social Media Strategy") |
+| **Work Experience**   | Describes duties in general terms (e.g., "Managed a team") | Quantifies achievements and relates them to the position (e.g., "Led a team of 10 to increase sales by 30% in one year") |
+| **Keywords**          | Lacks industry-specific terminology    | Includes keywords from the job description (e.g., "SEO, PPC, Content Marketing") |
+| **Formatting**        | Basic layout, no clear hierarchy       | Professional format with clear sections and bullet points for easy scanning |
+| **Customization**     | One-size-fits-all approach             | Customized for each application, addressing specific requirements and responsibilities |
+
 ## FAQ
 ### Does LinkedIn Easy Apply actually work?
 

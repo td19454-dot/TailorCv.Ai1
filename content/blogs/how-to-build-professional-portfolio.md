@@ -262,6 +262,21 @@ A strong [portfolio](https://thetailorcv.com/blog/how-to-build-professional-port
 
 Build it, link it on your resume, and keep it updated. Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), use an [ATS-friendly template](https://www.thetailorcv.com/templates), and then use your portfolio link to reinforce your candidacy at every stage of the hiring process.
 
+
+## Comparison of Strong vs. Weak Portfolio Elements
+
+A well-constructed portfolio can significantly enhance your professional presence, while a poorly designed one can undermine your efforts.
+
+| Portfolio Element          | Strong Example                                             | Weak Example                                             |
+|----------------------------|-----------------------------------------------------------|---------------------------------------------------------|
+| Project Selection           | 3 diverse projects showcasing different skills            | 1 project that is outdated and irrelevant                |
+| Presentation                | Visually appealing layout with consistent branding         | Cluttered design with inconsistent fonts and colors      |
+| Project Descriptions        | Clear, concise write-ups explaining the problem solved    | Vague descriptions with no context                       |
+| Code Quality                | Well-documented code with comments and best practices     | Unorganized code with little to no documentation         |
+| Live Demonstrations         | Active links to live demos for each project               | No demos available or broken links                       |
+| Tech Stack                  | Clearly listed technologies used for each project         | No mention of technologies or outdated tech references    |
+| User Feedback               | Testimonials or reviews from users or clients             | No feedback or user engagement mentioned                  |
+
 ## Frequently Asked Questions
 
 ### Why is a portfolio important in 2026?

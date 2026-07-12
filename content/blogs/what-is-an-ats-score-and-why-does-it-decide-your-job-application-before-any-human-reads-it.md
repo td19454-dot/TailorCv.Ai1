@@ -249,6 +249,20 @@ In 2026, the strongest applicants are not always the people with the fanciest re
 - [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
 - [How to Check Your ATS Score for Free (2026 Guide)](https://thetailorcv.com/blog/how-to-check-ats-score-free)
 
+
+## Comparison of Weak vs. Strong ATS-Friendly Resumes
+
+Understanding the differences between weak and strong resumes can help you improve your ATS score and increase your chances of getting noticed.
+
+| Feature                   | Weak ATS-Friendly Resume                          | Strong ATS-Friendly Resume                          |
+|---------------------------|--------------------------------------------------|----------------------------------------------------|
+| Keywords                  | Generic terms like "team player"                 | Specific keywords from the job description          |
+| Formatting                | Complex layouts with images and graphics          | Simple, clean format with standard fonts            |
+| Job Titles                | Vague titles like "Manager"                       | Exact job titles that match the listing             |
+| Experience Descriptions    | General responsibilities listed                   | Quantifiable achievements and relevant skills highlighted |
+| Skills Section            | List of unrelated skills                          | Tailored skills that align with job requirements    |
+| File Type                 | PDF format that may not be ATS-compatible        | Word document or plain text that is ATS-friendly    |
+
 ## Frequently Asked Questions
 
 ### What is an ATS score and how is it calculated?

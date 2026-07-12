@@ -200,6 +200,19 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 
 Make sure the non-gap parts of your resume are strong. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize your keywords, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide). Then prepare your gap explanation for interviews using the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers).
 
+
+## Effective vs. Ineffective Ways to Address Resume Gaps
+
+How you choose to explain your resume gap can significantly impact how potential employers perceive your candidacy.
+
+| Approach                | Effective Example                                     | Ineffective Example                         |
+|------------------------|------------------------------------------------------|--------------------------------------------|
+| Honesty                | "Took a year off for family caregiving."            | "I was between jobs."                       |
+| Proactivity            | "During my gap, I completed an online certification in digital marketing." | "I didn't do anything during that time."   |
+| Brevity                | "I relocated for personal reasons, which I believe will enhance my work-life balance." | "I had to move, and it was complicated."   |
+| Focus on Growth        | "I volunteered at a local non-profit, gaining valuable skills in project management." | "I was just volunteering."                  |
+| Forward-Looking Mindset| "This experience has given me a new perspective that I can bring to my next role." | "I hope to find a job soon."               |
+
 ## Frequently Asked Questions
 
 ### How should I address a gap in my resume during an interview?

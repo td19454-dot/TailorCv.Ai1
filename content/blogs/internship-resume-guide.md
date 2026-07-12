@@ -260,6 +260,21 @@ A strong [internship resume](https://thetailorcv.com/blog/internship-resume-guid
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to match your skills to the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and read the full [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for structuring your bullets effectively. For interview prep, try the [free AI mock interview tool](https://thetailorcv.com/mock-interview).
 
+
+## Strong vs. Weak Internship Resume Examples
+
+When crafting your internship resume, it's essential to understand the difference between strong and weak examples to effectively showcase your potential.
+
+| Aspect                | Strong Example                                         | Weak Example                          |
+|----------------------|-------------------------------------------------------|--------------------------------------|
+| Objective Statement   | "Motivated marketing student eager to apply digital marketing skills in a real-world setting, aiming to enhance brand engagement." | "I want a job."                      |
+| Education             | "Bachelor of Science in Computer Science, University of XYZ, 2026 (GPA: 3.8)" | "Studying at XYZ University."        |
+| Skills                | "Proficient in Python, Java, and HTML; strong communication and teamwork skills." | "Good at computers."                 |
+| Projects              | "Developed a mobile app for campus events, resulting in a 30% increase in student participation." | "Worked on some school projects."   |
+| Experience            | "Interned at ABC Corp, assisting in data analysis and report generation." | "No work experience."                |
+| Achievements          | "Dean's List for three consecutive years; Winner of the XYZ Hackathon." | "I got good grades."                |
+| Certifications        | "Certified in Google Analytics and Digital Marketing." | "Took a course online."              |
+
 ## Frequently Asked Questions
 
 ### What should I include in my internship resume if I have no experience?  

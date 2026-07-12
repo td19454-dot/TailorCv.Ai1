@@ -181,6 +181,20 @@ Before the interview, make sure the resume that earned the call is still aligned
 
 For all other interview questions, read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and the full [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Before your interview, ensure your resume is strong - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it.
 
+
+## Comparing Weak vs. Strong Responses to "Tell Me About Yourself"
+
+A well-structured response can make a significant difference in how you are perceived during an interview. Below are examples of weak and strong answers using the Present, Past, Future formula.
+
+| Aspect               | Weak Response                                        | Strong Response                                         |
+|----------------------|-----------------------------------------------------|--------------------------------------------------------|
+| Clarity              | "I've done a lot of things in my career."         | "I currently manage a team of five in digital marketing." |
+| Relevance            | "I graduated from college and started working."    | "I graduated with a degree in Marketing and have 5 years of experience in the tech industry." |
+| Self-awareness        | "I guess I'm pretty good at some things."          | "I excel in data analysis and strategic planning, which have driven my team's success." |
+| Thoughtfulness       | "I just want a job."                               | "I'm excited about this role because it aligns with my passion for innovative marketing solutions." |
+| Engagement           | "I like to read and travel."                        | "In my free time, I enjoy reading about emerging technologies, which inspires my work." |
+| Length               | Over 3 minutes, too long.                          | 2 minutes, concise and focused.                        |
+
 ## Frequently Asked Questions
 
 ### How long should my answer to "Tell me about yourself" be?  

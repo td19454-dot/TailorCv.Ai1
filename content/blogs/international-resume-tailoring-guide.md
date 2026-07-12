@@ -233,6 +233,20 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
+
+## Key Resume Differences by Country
+
+Understanding the key differences in resume conventions can help you tailor your application effectively for different job markets.
+
+| Feature                  | United States                          | Germany                                | Australia                             |
+|-------------------------|---------------------------------------|----------------------------------------|---------------------------------------|
+| Length                  | 1 page (2 pages for senior roles)    | 1-2 pages, typically longer            | 2-3 pages, more detail encouraged     |
+| Photo                   | Never included                        | Required, professional presentation    | Optional, but can enhance appeal      |
+| Personal Details        | Minimal (no age, marital status)     | Full address, date of birth, marital status | Full address, but no date of birth   |
+| Language                | English (American)                    | German (or English for international roles) | English (Australian)                  |
+| Work Experience Format  | Bullet points, concise descriptions    | Detailed descriptions with responsibilities | Bullet points, but can include personal achievements |
+| References              | Generally not included, "Available upon request" | Often included directly in the resume   | Typically provided separately          |
+
 ## FAQ
 ### Should I use a CV or a resume for international applications?
 
