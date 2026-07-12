@@ -4191,6 +4191,7 @@ BLOG_AUTHORS = [
             "job seekers into practical, step-by-step guides."
         ),
         "url": "https://thetailorcv.com/about",
+        "linkedin": "https://www.linkedin.com/company/thetailorcv/",
         "sameAs": ["https://www.linkedin.com/company/thetailorcv/"],
     },
     {
@@ -4205,6 +4206,7 @@ BLOG_AUTHORS = [
             "here reflects how hiring systems really read a resume."
         ),
         "url": "https://thetailorcv.com/about",
+        "linkedin": "https://www.linkedin.com/company/thetailorcv/",
         "sameAs": ["https://www.linkedin.com/company/thetailorcv/"],
     },
 ]
@@ -7240,10 +7242,10 @@ def blog_cta(post) -> dict:
         return {"label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
     if "template" in hay:
         return {"label": "Browse Resume Templates", "url": "/templates"}
-    if "linkedin" in hay:
+    if "ats" in hay:
         return {"label": "Check My ATS Score", "url": "/solutions"}
-    # Default: ATS / resume / job-search / career content -> core ATS tool.
-    return {"label": "Check My ATS Score", "url": "/solutions"}
+    # Career guides, resume-writing, job-search, LinkedIn -> tailoring tool.
+    return {"label": "Tailor Your Resume", "url": "/solutions"}
 
 
 @app.get("/blog/{slug}", response_class=HTMLResponse)
