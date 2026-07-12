@@ -87,6 +87,68 @@ Paste the Lever job posting into [TailorCV's resume optimizer](/solutions) to in
 
 ---
 
+## Step-by-Step Guide to Tailoring Your Resume for Lever
+
+1. **Analyze the Job Description**: Start by thoroughly reading the job description. Highlight key terms and phrases, especially those related to skills, qualifications, and responsibilities. Use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) to ensure you capture all essential elements.
+
+2. **Create a Keyword Map**: Develop a keyword map using the highlighted terms from the job description. This will serve as a reference for your resume. For guidance, check out our [Resume Keyword Map Template - Match Your Resume to Any Job Description](https://thetailorcv.com/blog/resume-keyword-map-template).
+
+3. **Match Your Experience**: Align your professional experience with the keywords identified. Use concrete examples that demonstrate your expertise in the required areas. Focus on quantifiable achievements and relevant projects, ensuring that you use the same terminology as the job posting.
+
+4. **Tailor Your Summary Statement**: Craft a compelling summary statement that includes the most relevant keywords. This statement should succinctly encapsulate your qualifications and align with the position’s priorities. 
+
+5. **Review and Adjust Formatting**: Ensure your resume adheres to the formatting rules for Lever applications, such as avoiding complex layouts and graphics. Simple, clean formatting improves parsing accuracy.
+
+6. **Proofread and Optimize**: Before submitting, proofread your resume for spelling and grammatical errors. Use an ATS checker to ensure your resume is optimized for Lever’s system.
+
+## Common Mistakes to Avoid When Applying to Lever
+
+- **Neglecting Keywords**: Failing to include specific keywords from the job description can result in your resume being overlooked. Make sure to integrate both required and preferred qualifications from the posting. Learn how to [Prioritize What You Match](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications).
+
+- **Using an Irrelevant Format**: Overly creative formats can confuse ATS systems. Stick to standard fonts and a straightforward layout.
+
+- **Ignoring the Job Title**: Ensure your resume reflects the job title you are applying for. If you have held similar roles, consider including them in your experience section to reinforce relevance.
+
+- **Submitting a Generic Resume**: A one-size-fits-all resume can dilute your chances. Customize each application to reflect the specific requirements and culture of the company.
+
+- **Omitting Relevant Experience**: Even if certain jobs seem unrelated, include transferable skills and experiences that align with the job description.
+
+## Scenarios: Resume Adjustments Based on Job Types
+
+- **Scenario 1: Applying for a Technical Role**  
+If you’re applying for a software engineer position, emphasize your technical skills and projects. Include programming languages, frameworks, and methodologies mentioned in the job description.
+
+- **Scenario 2: Transitioning to a New Field**  
+If you’re moving from marketing to project management, focus on transferable skills such as leadership, communication, and organization. Highlight any relevant certifications or coursework.
+
+- **Scenario 3: Entry-Level Position**  
+For an entry-level role, emphasize your education, internships, and volunteer work. Use keywords that relate to the skills required, even if your experience is limited.
+
+## Do’s and Don’ts for Lever Resume Applications
+
+### Do’s:
+- **Do Use Action Verbs**: Start each bullet point with strong action verbs to convey your achievements effectively.
+- **Do Tailor Each Application**: Customize your resume for every application to maximize relevance.
+- **Do Include Metrics**: Quantify your achievements (e.g., increased sales by 20%) to demonstrate impact.
+- **Do Keep It Concise**: Aim for a one-page resume if you have less than 10 years of experience.
+
+### Don’ts:
+- **Don’t Use Jargon**: Avoid industry jargon that might not be familiar to all recruiters.
+- **Don’t Include Irrelevant Information**: Stick to experiences and skills that are pertinent to the job.
+- **Don’t Forget to Update Your LinkedIn**: Ensure your LinkedIn profile matches your resume; discrepancies can raise red flags for recruiters. For tips, read our [LinkedIn for a Canadian Job Search: Get Found by Canadian Recruiters](https://thetailorcv.com/blog/linkedin-for-canada-job-search).
+
+## Mini Checklist for Your Lever Resume Submission
+
+- [ ] Have you tailored your resume for the specific job posting?
+- [ ] Did you use keywords from the job description?
+- [ ] Is your formatting ATS-friendly?
+- [ ] Have you quantified your accomplishments?
+- [ ] Did you proofread for errors?
+- [ ] Is your LinkedIn profile updated and consistent with your resume?
+- [ ] Have you included a strong summary statement?
+
+By following this guide and utilizing the provided resources, you can enhance your chances of making a strong impression on Lever-powered applications.
+
 ## Frequently Asked Questions
 
 ### Does Lever keep my resume after I apply?

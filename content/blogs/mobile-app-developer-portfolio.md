@@ -46,6 +46,72 @@ Your resume, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization
 - Include one app that handles a hard technical problem (offline sync, background processing, complex animations)
 - Generate your portfolio shell from your resume with the [portfolio builder](https://thetailorcv.com/portfolio) and embed your demo videos and store links
 
+## Crafting Compelling Case Studies
+
+One of the best ways to showcase your skills as a mobile app developer is through detailed case studies. These narratives provide insights into your problem-solving abilities and the impact of your work. Here's how to create compelling case studies for your portfolio:
+
+1. **Select Projects Wisely**: Choose projects that highlight a range of skills. Focus on those that had significant challenges or required innovative solutions. If you have multiple projects, consider selecting a mix of personal, freelance, and professional work.
+
+2. **Structure Your Case Study**:
+   - **Project Overview**: Briefly describe the project, including its purpose and target audience.
+   - **Your Role**: Clearly outline your responsibilities and contributions.
+   - **Challenges Faced**: Discuss any obstacles you encountered and how you addressed them.
+   - **Solutions Implemented**: Highlight the technologies, frameworks, and methodologies you used.
+   - **Results and Metrics**: Provide quantifiable outcomes (e.g., user engagement, downloads, or revenue) to demonstrate the success of your project.
+
+3. **Visuals and Demonstrations**: Include screenshots, videos, or links to the app (if available) to provide visual context. This not only makes your case study more engaging but also helps potential employers visualize your work.
+
+4. **Reflect on Learning**: Conclude with a brief reflection on what you learned from the project and how it has influenced your development process.
+
+## Step-by-Step Guide to Creating a Portfolio Website
+
+Building a portfolio website can seem daunting, but breaking it down into manageable steps can simplify the process. Follow this guide to get your portfolio online:
+
+1. **Choose Your Platform**: Decide whether you want to use a website builder (like Wix or Squarespace) or a content management system (like WordPress). For a custom approach, consider using GitHub Pages or a static site generator like Jekyll.
+
+2. **Select a Domain Name**: A custom domain name (like yourname.com) enhances your professionalism. Refer to our guide on [How to Put Your Portfolio on a Custom Domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide) for tips on registering and setting up your domain.
+
+3. **Design Your Site**:
+   - **Homepage**: Create a welcoming homepage that introduces you and your work.
+   - **Portfolio Section**: Dedicate a section to showcase your projects. Each project should have its own page or modal with details and visuals.
+   - **About Me**: Write a brief bio that highlights your skills, experience, and interests.
+   - **Contact Information**: Make it easy for potential employers to reach you. Include a contact form or your email address.
+
+4. **Optimize for SEO**: Use relevant keywords in your text, image alt tags, and meta descriptions to improve your visibility in search engines.
+
+5. **Test and Launch**: Before launching, test your website on different devices and browsers to ensure compatibility. Once you're satisfied, go live!
+
+## Do's and Don'ts of Portfolio Development
+
+Creating a portfolio involves several best practices and common pitfalls. Here’s a concise list of do's and don'ts to guide you:
+
+### Do's:
+- **Do Update Regularly**: Keep your portfolio current by adding new projects and removing outdated ones.
+- **Do Personalize Your Brand**: Infuse your personality into your portfolio. Use a consistent color scheme and typography that reflects your style.
+- **Do Include Testimonials**: If possible, add testimonials from clients or colleagues to build credibility.
+- **Do Make It Mobile-Friendly**: Ensure your portfolio is responsive and looks good on mobile devices, considering your audience's browsing habits.
+
+### Don'ts:
+- **Don’t Overload with Information**: Keep your content concise and relevant. Avoid lengthy paragraphs that may overwhelm visitors.
+- **Don’t Use Generic Templates**: While templates can be helpful, customizing them adds uniqueness to your portfolio.
+- **Don’t Neglect Accessibility**: Ensure your site is accessible to all users, including those with disabilities. Use proper contrast, alt text for images, and clear navigation.
+- **Don’t Ignore Analytics**: Implement tools like Google Analytics to track visitor behavior and improve your site based on real data.
+
+## Mini Checklist for Portfolio Readiness
+
+Before launching your portfolio, use this checklist to ensure everything is in order:
+
+- [ ] **Portfolio Content**: All projects are included with detailed descriptions.
+- [ ] **Visuals**: High-quality images and videos are present for each project.
+- [ ] **SEO Elements**: Meta tags, keywords, and alt text are implemented.
+- [ ] **Mobile Compatibility**: The site is responsive and functional on mobile devices.
+- [ ] **Contact Information**: Clear and accessible contact details are available.
+- [ ] **Proofread**: All text is free of spelling and grammar errors.
+- [ ] **Live Links**: All external and internal links are functional.
+- [ ] **Feedback**: Gather feedback from peers or mentors before finalizing.
+
+By following these steps and tips, you can create a standout mobile app developer portfolio that effectively showcases your skills and attracts potential employers. For further resources, consider exploring our [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide) or [DevOps Engineer Portfolio Guide](https://thetailorcv.com/blog/devops-engineer-portfolio-guide) for additional insights.
+
 ## Frequently Asked Questions
 
 ### My best work is a private company app I cannot show publicly - what do I do?

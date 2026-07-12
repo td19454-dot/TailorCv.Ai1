@@ -134,6 +134,74 @@ Effective salary negotiation is an essential skill that can significantly impact
 
 Utilize tools and resources from TailorCV, such as the [mock interview](https://www.thetailorcv.com/mock-interview) tool and the [ATS checker](https://www.thetailorcv.com/solutions), to ensure you are well-prepared for your next steps in the job market.
 
+## Step-by-Step Salary Negotiation Checklist
+
+1. **Know Your Worth**: Start with thorough market research. Use websites like Glassdoor, PayScale, and LinkedIn Salary Insights to gather data on your role and industry. 
+
+2. **Define Your Salary Range**: Based on your research, establish a realistic salary range. Aim for a range where the lower end is still above your minimum acceptable salary.
+
+3. **Prepare Your Value Proposition**: List your skills, achievements, and any metrics that demonstrate your impact in previous roles. This will help you articulate your value clearly during the negotiation.
+
+4. **Practice Your Pitch**: Role-play your negotiation with a friend or mentor. Use scripts from our [Salary Negotiation Scripts That Work](#) section to guide your practice.
+
+5. **Plan for Counteroffers**: Think about potential counteroffers the employer might present and decide in advance how you will respond.
+
+6. **Stay Professional and Positive**: Approach the negotiation with a collaborative mindset. Keep the tone positive and professional, focusing on mutual benefits.
+
+7. **Follow Up**: After the discussion, send a thank-you email summarizing key points discussed, including your enthusiasm for the role.
+
+## Common Salary Negotiation Mistakes to Avoid
+
+- **Focusing Solely on Salary**: Remember to consider the entire compensation package, including benefits, bonuses, and work-life balance. 
+
+- **Not Doing Enough Research**: Failing to research industry standards can leave you underprepared. Use resources like the [Remote Job Search Guide 2026](https://thetailorcv.com/blog/remote-job-search-guide) for insights on remote roles.
+
+- **Accepting the First Offer**: Employers often expect negotiation. Accepting the first offer can suggest a lack of confidence or knowledge about your worth.
+
+- **Neglecting to Practice**: Going into negotiations without practicing can lead to nervousness. Mock interviews available at [Mock Interview](https://www.thetailorcv.com/mock-interview) can help you prepare.
+
+- **Being Unprofessional**: Avoid using ultimatums or aggressive tactics. Maintain a respectful tone throughout the process.
+
+## Scenarios to Consider During Negotiation
+
+### Scenario 1: The Initial Offer is Below Expectations
+- **Response**: “Thank you for the offer. Based on my research and the value I bring, I was expecting a salary closer to [your desired range]. Can we discuss this?”
+
+### Scenario 2: The Employer Can't Meet Your Salary Request
+- **Response**: “I understand budget constraints. Are there other benefits or perks we can explore, such as flexible work hours or additional vacation days?”
+
+### Scenario 3: You’re Offered a Position with a Less Desirable Location
+- **Response**: “I’m excited about the opportunity, but I’m concerned about the relocation expenses. Is there a budget for relocation assistance?”
+
+## Do's and Don'ts of Salary Negotiation
+
+### Do's:
+- **Do Prepare Thoroughly**: Equip yourself with data and examples of your past successes.
+- **Do Keep Emotions in Check**: Approach the negotiation as a business discussion, not a personal one.
+- **Do Be Open to Compromise**: Flexibility can lead to creative solutions that satisfy both parties.
+
+### Don'ts:
+- **Don't Discuss Personal Financial Needs**: Focus on your value and market data, not personal circumstances.
+- **Don't Rush the Process**: Take your time to consider the offer and discuss it thoughtfully.
+- **Don't Burn Bridges**: Even if negotiations don’t go as planned, remain professional. You may cross paths with the employer again.
+
+## Worked Example: Calculating Your Salary Range
+
+1. **Identify the Average Salary**: Research indicates that the average salary for your role is $70,000.
+2. **Assess Your Experience**: If you have five years of experience versus the average of three, you may add 10-20% to the average salary.
+3. **Account for Skills**: If you possess in-demand skills relevant to the job, factor in an additional 5-10%.
+4. **Final Range Calculation**:
+   - Base Salary: $70,000
+   - Experience Adjustment: +$10,500 (15%)
+   - Skills Adjustment: +$3,500 (5%)
+   - Final Range: $84,000 to $90,000
+
+This calculated approach not only prepares you for negotiation but also provides a solid foundation for your value proposition during discussions.
+
+## Conclusion: Mastering Salary Negotiation for Success
+
+By following these detailed strategies and utilizing the resources available to you, such as our [Resume Keywords Guide 2026](https://thetailorcv.com/blog/resume-keywords-guide) and [Sales Portfolio Guide](https://thetailorcv.com/blog/sales-professional-portfolio-guide), you can enhance your confidence and effectiveness in salary negotiations. Remember, preparation and professionalism are key to achieving the compensation you deserve.
+
 ## Frequently Asked Questions
 
 ### Should freshers negotiate salary?

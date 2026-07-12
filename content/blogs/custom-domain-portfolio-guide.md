@@ -44,6 +44,69 @@ The [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) supports
 - If your exact name is taken, try a middle initial, a hyphen, or adding your profession (`janedoedesign.com`) rather than an unrelated domain
 - Keep the free `thetailorcv.com` portfolio link as a backup while your custom domain's DNS is propagating, so you are never without a working link
 
+## Step-by-Step Guide to Setting Up Your Custom Domain
+
+1. **Select Your Domain Name**: Choose a domain name that reflects your personal brand or the nature of your work. Use a name generator if you’re stuck. Aim for a name that is short, memorable, and easy to spell.
+
+2. **Register Your Domain**: Use a reputable registrar like GoDaddy or Namecheap. Follow their prompts to complete the registration process. Make sure to purchase domain privacy protection if you want to keep your personal information private.
+
+3. **Choose a Hosting Provider**: If your portfolio platform doesn’t include hosting, select a hosting service like Bluehost or SiteGround. Ensure they offer easy integration with your portfolio platform.
+
+4. **Link Your Domain to Your Hosting Provider**: 
+   - Log into your domain registrar’s account.
+   - Find the DNS settings and replace the nameservers with those provided by your hosting provider.
+   - Save changes, which may take up to 48 hours to propagate.
+
+5. **Set Up Your Portfolio Platform**: If you're using a platform like WordPress, Wix, or Squarespace, go to the settings and find the option to connect your custom domain. Follow their instructions, which usually involve entering your domain name and verifying ownership.
+
+6. **Test Your Domain**: Once everything is set up, go to your custom domain in a web browser to confirm it displays your portfolio correctly. 
+
+7. **Optimize for SEO**: Utilize SEO best practices by adding relevant keywords to your portfolio content, optimizing images with alt tags, and ensuring your site loads quickly.
+
+## Common Pitfalls to Avoid
+
+- **Choosing a Complicated Domain Name**: Avoid names that are difficult to spell or remember. Simplicity is key to ensuring visitors can easily find your portfolio.
+
+- **Neglecting Mobile Optimization**: Ensure your portfolio is mobile-friendly. Use responsive design templates that look great on all devices, as many users will access your site via smartphones.
+
+- **Ignoring Content Updates**: Regularly update your portfolio with new projects or achievements. An outdated portfolio can give potential employers the wrong impression of your skills.
+
+- **Overlooking Security**: Implement an SSL certificate for your custom domain to ensure that the data exchanged between your visitors and your site is secure. This is especially important if you collect any personal information.
+
+## Mini Checklist for Your Custom Domain Portfolio
+
+- [ ] Choose a memorable and relevant domain name.
+- [ ] Register your domain with a reliable registrar.
+- [ ] Select an appropriate hosting provider.
+- [ ] Connect your domain to your hosting service.
+- [ ] Set up your portfolio platform and link your domain.
+- [ ] Test your site on multiple devices and browsers.
+- [ ] Optimize your portfolio for SEO.
+- [ ] Regularly update your portfolio with new content.
+- [ ] Secure your domain with an SSL certificate.
+
+## Scenarios to Consider
+
+- **Scenario 1**: You’re a business analyst creating a portfolio. You choose a domain like "YourNameAnalytics.com". After registering, you connect it with a WordPress site. You include case studies and data visualization projects to showcase your skills. 
+
+- **Scenario 2**: As a DevOps engineer, you set up a portfolio to demonstrate your infrastructure projects. You opt for a domain that includes your name and "DevOps", such as "JohnDoeDevOps.com". You ensure your portfolio is mobile-optimized and includes links to GitHub repositories.
+
+- **Scenario 3**: You’re a finance professional looking to showcase your skills. You select a domain that reflects your expertise, like "JaneDoeFinance.com". You include sections on financial analysis and accounting projects, ensuring to optimize for search engines.
+
+## Do's and Don'ts for a Successful Portfolio Domain
+
+### Do's:
+- **Do** research your domain name thoroughly to avoid trademark issues.
+- **Do** consider using a blog to regularly share insights related to your field.
+- **Do** leverage social media to promote your portfolio once it's live.
+  
+### Don'ts:
+- **Don't** use free domain extensions (like .wordpress.com or .wixsite.com) as it looks unprofessional.
+- **Don't** ignore the importance of site speed; optimize images and streamline content.
+- **Don't** forget to create a backup of your portfolio site to prevent data loss.
+
+By following this comprehensive guide, you can ensure that your portfolio on a custom domain stands out and effectively showcases your skills and work. For more insights on building a portfolio, check out our guide on [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) or explore specific fields like our [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide) or [HR and Recruiter Portfolio Guide](https://thetailorcv.com/blog/hr-recruiter-portfolio-guide).
+
 ## Frequently Asked Questions
 
 ### Do I need a custom domain, or is a subdomain good enough?

@@ -118,6 +118,58 @@ Three steps, one session, into the competitive range.
 
 ---
 
+## Common Mistakes to Avoid When Optimizing Your ATS Score
+
+When attempting to improve your ATS score, it's easy to make mistakes that can hinder rather than help your efforts. Here are some common pitfalls to avoid:
+
+1. **Ignoring ATS Compatibility**: Using unconventional fonts or graphics can confuse ATS software. Stick to standard fonts like Arial or Times New Roman and avoid images.
+   
+2. **Overstuffing Keywords**: While matching job description keywords is crucial, overloading your resume with them can appear unnatural. Use keywords in context, ensuring they fit seamlessly into your narrative.
+
+3. **Neglecting Soft Skills**: Many candidates focus solely on hard skills, but ATS systems also evaluate soft skills like communication and teamwork. Incorporate these into your experience descriptions.
+
+4. **Using Uncommon Acronyms**: While acronyms may be familiar in your industry, they might not be recognized by ATS. Always spell out acronyms on first use, followed by the abbreviation in parentheses.
+
+5. **Failing to Customize for Each Application**: Sending out a generic resume can significantly decrease your ATS score. Tailor your resume for each job application by aligning your experience with the specific requirements of the role.
+
+## Do's and Don'ts for ATS Optimization
+
+**Do's:**
+
+- **Do Use Standard Headings**: Use conventional headings like "Work Experience," "Education," and "Skills" to make it easier for ATS to categorize your information.
+- **Do Use Bullet Points**: Bullet points enhance readability and help ATS extract relevant information easily.
+- **Do Include Relevant Certifications**: Highlight certifications that are relevant to the job. [How to List Certifications on a Resume in 2026 - With Examples](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) provides guidelines on how to do this effectively.
+
+**Don'ts:**
+
+- **Don't Use Tables**: ATS may struggle to read tables. Instead, format your information using simple text and bullet points.
+- **Don't Include Irrelevant Information**: Only include experiences and skills that directly relate to the job. Extraneous details can dilute the effectiveness of your resume.
+- **Don't Use Complex Language**: Keep your language clear and straightforward. ATS thrives on simplicity, so avoid jargon that may not be recognized.
+
+## Short Scenarios for Practical Understanding
+
+1. **Scenario: A Marketing Manager Application**
+   - You apply for a Marketing Manager role. The job description emphasizes "digital marketing" and "SEO." Your resume should prominently feature experiences related to these areas, using those exact phrases in your bullet points. For example:
+     - "Led SEO campaigns that increased website traffic by 30% over six months."
+   
+2. **Scenario: A Software Developer Position**
+   - The job description lists "Java," "Agile," and "team collaboration." Ensure your resume includes these keywords in both your skills section and your job descriptions:
+     - "Contributed to Agile development teams to deliver software solutions using Java, enhancing team collaboration and project outcomes."
+
+## Mini Checklist for ATS Optimization
+
+Before submitting your resume, use this mini checklist to ensure it meets ATS requirements:
+
+- [ ] **Is the format ATS-friendly?** (No graphics, tables, or unusual fonts)
+- [ ] **Does it contain relevant keywords?** (Match them with the job description)
+- [ ] **Are soft skills included?** (Incorporate them naturally within your experience)
+- [ ] **Is the language clear and concise?** (Avoid jargon and complex phrases)
+- [ ] **Did you customize it for this job application?** (Tailor your resume for each position)
+- [ ] **Have you used standard headings?** (Work Experience, Education, Skills)
+- [ ] **Is your contact information easy to find?** (At the top of the resume)
+  
+For further assistance, check out our [ATS Resume Checker - How It Works and How to Pass (2026)](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) to test your resume's compatibility before submission.
+
 ## Frequently Asked Questions
 
 ### How long does it take to improve an ATS score?
