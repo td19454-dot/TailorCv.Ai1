@@ -116,11 +116,40 @@
     onScroll();
   };
 
+  const initHeadingAnchors = () => {
+    document
+      .querySelectorAll(".post-content h2[id], .post-content h3[id]")
+      .forEach((h) => {
+        if (h.querySelector(".anchor-link")) return;
+        const a = document.createElement("a");
+        a.className = "anchor-link";
+        a.href = "#" + h.id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.textContent = "#";
+        h.prepend(a);
+      });
+  };
+
+  const initBackToTop = () => {
+    const btn = document.getElementById("backToTop");
+    if (!btn) return;
+    window.addEventListener(
+      "scroll",
+      () => btn.classList.toggle("show", window.scrollY > 600),
+      { passive: true }
+    );
+    btn.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    );
+  };
+
   const init = () => {
     buildToc();
     setTimeout(buildToc, 180);
     initTocPinning();
     setTimeout(initTocSpy, 220);
+    initHeadingAnchors();
+    initBackToTop();
 
   const progress = document.getElementById('readingProgress');
   if (progress) {
