@@ -1,3 +1,10 @@
+---
+title: Developer Portfolio Project Ideas
+date: 2026-07-12
+author: TailorCV Team
+slug: developer-portfolio-project-ideas
+image: public/blog-images/developer-portfolio-project-ideas.webp
+---
 
 Recruiters have seen a thousand to-do apps. What they have *not* seen is your version of a project that solves a real problem, ships to production, and is documented like you actually care. The difference between a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) that gets ignored and one that gets interviews is almost never the language - it is the **project choice and the polish**.
 

@@ -1,3 +1,10 @@
+---
+title: How to Explain Career Gap in Interview
+date: 2026-07-12
+author: TailorCV Team
+slug: how-to-explain-career-gap-in-interview
+image: public/blog-images/how-to-explain-career-gap-in-interview.webp
+---
 
 ## How to Explain a Career Gap in a Job Interview - Honest Answers That Work (2026)
 

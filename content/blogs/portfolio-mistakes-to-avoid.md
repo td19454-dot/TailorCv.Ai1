@@ -1,3 +1,10 @@
+---
+title: Portfolio Mistakes to Avoid
+date: 2026-07-12
+author: TailorCV Team
+slug: portfolio-mistakes-to-avoid
+image: public/blog-images/portfolio-mistakes-to-avoid.webp
+---
 
 A weak portfolio can sink a strong candidate. The good news: almost every portfolio mistake is fast to fix once you know to look for it. Here are the 11 that cost the most interviews, with the fix for each. Pair this with the [Portfolio Checklist: 20 Things to Check Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying) and the full [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 

@@ -1,3 +1,10 @@
+---
+title: Salary Negotiation Interview Guide 2026
+date: 2026-07-12
+author: TailorCV Team
+slug: salary-negotiation-interview-guide-2026
+image: public/blog-images/salary-negotiation-interview-guide-2026.webp
+---
 
 You passed the [behavioral questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), nailed the [technical round](https://thetailorcv.com/blog/technical-interview-preparation-guide), and survived the [final round interview](https://thetailorcv.com/blog/final-round-interview-tips). Then the offer arrives - and it is lower than you hoped.
 

@@ -1,3 +1,10 @@
+---
+title: Portfolio Contact Section
+date: 2026-07-12
+author: TailorCV Team
+slug: portfolio-contact-section
+image: public/blog-images/portfolio-contact-section.webp
+---
 
 You can have a brilliant portfolio and still lose opportunities if the contact path is buried or broken. The contact section is where interest becomes action - treat it like a conversion point, not an afterthought. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section).
 
