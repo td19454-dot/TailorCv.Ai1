@@ -7187,6 +7187,24 @@ _BLOG_TO_ROLE = {
 }
 
 
+def blog_cta(post) -> dict:
+    """Pick a topic-aware hero CTA (label + destination) from the post's
+    category/slug/title so each blog points to the most relevant tool."""
+    hay = f"{post.category} {post.slug} {post.title} {' '.join(post.tags)}".lower()
+    if "cover letter" in hay or "cover-letter" in hay:
+        return {"label": "Generate a Cover Letter", "url": "/cover-letter"}
+    if "portfolio" in hay:
+        return {"label": "Build Your Portfolio", "url": "/portfolio"}
+    if "interview" in hay or "mock" in hay:
+        return {"label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
+    if "template" in hay:
+        return {"label": "Browse Resume Templates", "url": "/templates"}
+    if "linkedin" in hay:
+        return {"label": "Check My ATS Score", "url": "/solutions"}
+    # Default: ATS / resume / job-search / career content -> core ATS tool.
+    return {"label": "Check My ATS Score", "url": "/solutions"}
+
+
 @app.get("/blog/{slug}", response_class=HTMLResponse)
 async def blog_post_page(request: Request, slug: str):
     # Consolidate merged duplicates: permanent-redirect old slugs to their pillar.
@@ -7217,6 +7235,7 @@ async def blog_post_page(request: Request, slug: str):
             "faq_schema_json": build_faq_schema(post),
             "author_profile": AUTHOR_PROFILE,
             "related_resume_example": _BLOG_TO_ROLE.get(post.slug),
+            "hero_cta": blog_cta(post),
         },
     )
 
