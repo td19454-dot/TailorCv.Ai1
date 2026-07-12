@@ -233,6 +233,7 @@ class BlogService:
         if not description:
             plain = re.sub(r"<[^>]+>", "", content_html)
             description = (plain[:157] + "...") if len(plain) > 160 else plain
+        description = self._strip_markdown(description)
 
         return BlogPost(
             source_path=file_path,
@@ -331,6 +332,17 @@ class BlogService:
             except ValueError:
                 continue
         return None
+
+    @staticmethod
+    def _strip_markdown(text: str) -> str:
+        """Turn inline markdown into clean plain text for excerpts/meta:
+        [anchor](url) -> anchor, and drop emphasis/heading/code markers."""
+        if not text:
+            return ""
+        text = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", text)  # links -> anchor text
+        text = re.sub(r"[*_`>#]", "", text)                    # emphasis / heading marks
+        text = re.sub(r"\s+", " ", text).strip()
+        return text
 
     @staticmethod
     def _normalize_image_path(value: str) -> str:
