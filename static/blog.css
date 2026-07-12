@@ -201,8 +201,16 @@ a:hover { text-decoration: underline; }
   align-items: center;
   gap: 8px;
   font-size: 0.9rem;
+  line-height: 1;
   color: #7b8496;
   margin-bottom: clamp(18px, 3vw, 34px);
+}
+/* every crumb aligns on the same center line (icon, text, separators) */
+.post-breadcrumb > a,
+.post-breadcrumb > span {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 .post-breadcrumb a {
   color: #9aa3b6;
@@ -210,9 +218,13 @@ a:hover { text-decoration: underline; }
   transition: color .15s ease;
 }
 .post-breadcrumb a:hover { color: #b79bff; }
+.crumb-home { color: #9aa3b6; }
+.crumb-home:hover { color: #b79bff; }
+.home-ico { display: block; }
 .post-breadcrumb .crumb-sep { color: #3a4356; }
 .post-breadcrumb .crumb-cat { color: #9aa3b6; }
 .post-breadcrumb .crumb-current {
+  display: inline-block;
   color: #d7deec;
   font-weight: 600;
   max-width: 46ch;
@@ -280,6 +292,8 @@ h1.post-hero-title {
   margin-bottom: 28px;
 }
 .author-badge {
+  position: relative;
+  overflow: hidden;
   width: 46px;
   height: 46px;
   border-radius: 999px;
@@ -292,6 +306,17 @@ h1.post-hero-title {
   font-weight: 700;
   flex: none;
 }
+/* Author photo fills the round badge; if it fails to load it self-removes
+   (see onerror) and the initials underneath show instead. */
+.author-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.author-box-badge { position: relative; overflow: hidden; }
 .author-info { display: flex; flex-direction: column; line-height: 1.3; }
 .author-label { color: #7b8496; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
 .blog-post .author { color: #e6ebf4; font-weight: 600; margin: 0; }
@@ -382,6 +407,11 @@ h1.post-hero-title {
   color: #e8edf7;
 }
 
+/* Ancestors must not create a scroll/clip context, or sticky TOC breaks. */
+.blog-post-wrap,
+.blog-post,
+.post-layout { overflow: visible; }
+
 .post-layout {
   display: grid;
   grid-template-columns: 260px minmax(0, 1fr);
@@ -391,10 +421,12 @@ h1.post-hero-title {
 }
 
 .post-layout .toc {
+  position: -webkit-sticky;
   position: sticky;
-  top: 96px;
+  top: 88px;
+  align-self: start;
   width: 260px;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 108px);
   overflow-y: auto;
   border-right: 1px solid #171c27;
   scrollbar-width: thin;

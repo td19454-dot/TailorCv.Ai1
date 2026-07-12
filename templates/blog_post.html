@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css?v=4">
+    <link rel="stylesheet" href="/static/blog.css?v=5">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -63,9 +63,15 @@
     <article class="blog-post">
         <header class="post-header">
             <nav class="post-breadcrumb" aria-label="Breadcrumb">
-                <a href="/">Home</a><span class="crumb-sep">/</span>
-                <a href="/blog">Blog</a><span class="crumb-sep">/</span>
-                {% if post.category %}<span class="crumb-cat">{{ post.category }}</span><span class="crumb-sep">/</span>{% endif %}
+                <a href="/" class="crumb-home" aria-label="Home" title="Home">
+                    <svg class="home-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M12 3.172 2.5 11.05l1.06 1.28L5 11.14V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-8.86l1.44 1.19 1.06-1.28L12 3.172z"/>
+                    </svg>
+                </a>
+                <span class="crumb-sep">/</span>
+                <a href="/blog">Blog</a>
+                {% if post.category %}<span class="crumb-sep">/</span><span class="crumb-cat">{{ post.category }}</span>{% endif %}
+                <span class="crumb-sep">/</span>
                 <span class="crumb-current">{{ post.title }}</span>
             </nav>
             <div class="post-hero">
@@ -79,7 +85,10 @@
                     <h1 class="post-hero-title">{{ post.title }}</h1>
                     <p class="lead">{{ post.description }}</p>
                     <div class="author-chip">
-                        <span class="author-badge">TC</span>
+                        <span class="author-badge">
+                            {% if author_profile and author_profile.image %}<img class="author-photo" src="{{ author_profile.image }}" alt="{{ author_profile.name }}" loading="lazy" onerror="this.remove()">{% endif %}
+                            {{ author_profile.initials if author_profile else 'TC' }}
+                        </span>
                         <span class="author-info">
                             <span class="author-label">Author</span>
                             <span class="author">{{ author_profile.name if author_profile else post.author }}</span>
@@ -125,7 +134,10 @@
 
         {% if author_profile %}
         <section class="author-box">
-            <span class="author-box-badge">TC</span>
+            <span class="author-box-badge">
+                {% if author_profile.image %}<img class="author-photo" src="{{ author_profile.image }}" alt="{{ author_profile.name }}" loading="lazy" onerror="this.remove()">{% endif %}
+                {{ author_profile.initials if author_profile.initials else 'TC' }}
+            </span>
             <div class="author-box-body">
                 <p class="author-box-name">{{ author_profile.name }}<span class="author-box-title"> · {{ author_profile.title }}</span></p>
                 <p class="author-box-bio">{{ author_profile.bio }}</p>
