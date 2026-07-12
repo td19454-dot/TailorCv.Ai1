@@ -3241,7 +3241,8 @@ html, body { overflow-x: hidden !important; }
 
 .hero-cta .hero-cta-meta {
     max-width: 100%;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: flex-start;
 }
 
 @media (max-width: 768px) {
@@ -4598,5 +4599,29 @@ html, body { overflow-x: hidden !important; }
 
     .hero {
         padding-top: 12px !important;
+    }
+}
+
+/* Extra breathing room between hero elements on mobile */
+@media (max-width: 768px) {
+    .hero-title {
+        margin-bottom: 20px !important;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 32px !important;
+    }
+
+    .hero-cta {
+        margin-bottom: 28px !important;
+    }
+
+    .hero-cta .hero-cta-meta {
+        margin: 20px 0 8px !important;
+    }
+
+    .social-proof-hero {
+        margin-top: 28px !important;
+        margin-bottom: 28px !important;
     }
 }
