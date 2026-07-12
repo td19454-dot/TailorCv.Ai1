@@ -385,32 +385,30 @@ h1.post-hero-title {
   margin: 0;
 }
 
+/* Clean "In this guide"-style list: no numbers, bold heading, roomy links. */
 .toc h2 {
-  margin-bottom: 18px;
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #586175;
-  font-weight: 500;
-}
-.toc ul { margin: 0; padding-left: 0; list-style: none; counter-reset: toc; }
-.toc li { margin: 12px 0; counter-increment: toc; }
-.toc a {
-  color: #8f98aa;
-  font-size: 1.06rem;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-.toc a::before {
-  content: counter(toc, decimal-leading-zero);
-  color: #6405fc;
+  margin: 0 0 18px;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #eef1f7;
   font-weight: 700;
-  min-width: 26px;
 }
-.toc a:hover {
-  color: #e8edf7;
+.toc ul { margin: 0; padding-left: 0; list-style: none; }
+.toc li { margin: 0; }
+.toc a {
+  display: block;
+  color: #99a2b5;
+  font-size: 1rem;
+  line-height: 1.45;
+  text-decoration: none;
+  padding: 9px 0;
+  transition: color .15s ease;
+}
+.toc a:hover { color: #c3a6ff; }
+.toc a.active {
+  color: #8b45ff;
+  font-weight: 600;
 }
 
 /* position: sticky breaks if ANY ancestor has overflow != visible. The site

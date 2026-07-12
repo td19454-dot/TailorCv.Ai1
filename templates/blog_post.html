@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css?v=8">
+    <link rel="stylesheet" href="/static/blog.css?v=9">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -119,18 +119,6 @@
         </aside>
         {% endif %}
 
-        <section class="cta">
-            <h2>Want a stronger resume to land your next role?</h2>
-            <p>Use TailorCV to optimize for ATS and recruiter keywords in minutes.</p>
-            <a href="/solutions" class="cta-btn">Optimize My Resume</a>
-        </section>
-
-        <section class="share-row">
-            <button id="copyLinkBtn" type="button">Copy link</button>
-            <a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url={{ canonical_url }}">Share on LinkedIn</a>
-            <a target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url={{ canonical_url }}&text={{ post.title }}">Share on X</a>
-        </section>
-
     </article>
 
     <section class="related">
@@ -149,7 +137,7 @@
     </section>
 </main>
         {% include "_footer.html" %}
-<script src="/static/blog.js" defer></script>
+<script src="/static/blog.js?v=2" defer></script>
 <script src="/static/auth_nav.js?v=13"></script>
 <script src="/static/mobile_nav.js"></script>
 </body>
