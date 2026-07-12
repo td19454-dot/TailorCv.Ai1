@@ -4176,17 +4176,58 @@ AUTHOR_PROFILE = {
     ],
 }
 
+# Real bylines shown on blog posts. Drop the photos at the `image` paths below
+# (JPG/PNG) and they render automatically; until then initials show instead.
+BLOG_AUTHORS = [
+    {
+        "type": "Person",
+        "name": "Trisha Debanth",
+        "initials": "TD",
+        "title": "Co-founder, theTailorCV",
+        "image": "/static/authors/trisha-debanth.jpg",
+        "bio": (
+            "Trisha is a co-founder of theTailorCV. She writes about resumes, ATS "
+            "optimization, and modern job search, turning what actually works for "
+            "job seekers into practical, step-by-step guides."
+        ),
+        "url": "https://thetailorcv.com/about",
+        "sameAs": ["https://www.linkedin.com/company/thetailorcv/"],
+    },
+    {
+        "type": "Person",
+        "name": "Shubham Sarkar",
+        "initials": "SS",
+        "title": "Co-founder, theTailorCV",
+        "image": "/static/authors/shubham-sarkar.jpg",
+        "bio": (
+            "Shubham is a co-founder of theTailorCV. He focuses on ATS scoring, "
+            "resume-to-job matching, and the product behind the guides, so the advice "
+            "here reflects how hiring systems really read a resume."
+        ),
+        "url": "https://thetailorcv.com/about",
+        "sameAs": ["https://www.linkedin.com/company/thetailorcv/"],
+    },
+]
 
-def build_blogposting_schema(post, canonical_url: str) -> str:
+
+def pick_author(post) -> dict:
+    """Stable per-post byline so each article keeps the same author across
+    reloads while both founders appear across the blog."""
+    idx = sum(ord(c) for c in post.slug) % len(BLOG_AUTHORS)
+    return BLOG_AUTHORS[idx]
+
+
+def build_blogposting_schema(post, canonical_url: str, author_profile: dict | None = None) -> str:
+    ap = author_profile or AUTHOR_PROFILE
     image_url = post.image if str(post.image).startswith("http") else build_absolute_url(post.image or "/static/logo.png")
     author = {
-        "@type": AUTHOR_PROFILE["type"],
-        "name": AUTHOR_PROFILE["name"],
-        "url": AUTHOR_PROFILE["url"],
-        "sameAs": AUTHOR_PROFILE["sameAs"],
+        "@type": ap["type"],
+        "name": ap["name"],
+        "url": ap["url"],
+        "sameAs": ap["sameAs"],
     }
-    if AUTHOR_PROFILE["type"] == "Person":
-        author["jobTitle"] = AUTHOR_PROFILE["title"]
+    if ap["type"] == "Person":
+        author["jobTitle"] = ap["title"]
     schema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
@@ -7217,6 +7258,7 @@ async def blog_post_page(request: Request, slug: str):
     related_posts = blog_service.related_posts(post, limit=8)
     canonical_url = build_absolute_url(f"/blog/{post.slug}")
     og_image = post.image if str(post.image).startswith("http") else build_absolute_url(post.image or "/static/logo.png")
+    author_profile = pick_author(post)
     return templates.TemplateResponse(
         request,
         "blog_post.html",
@@ -7230,10 +7272,10 @@ async def blog_post_page(request: Request, slug: str):
             "meta_keywords": post.keywords or ", ".join(post.tags),
             "og_image": og_image,
             "codehilite_css": codehilite_css(),
-            "blog_schema_json": build_blogposting_schema(post, canonical_url),
+            "blog_schema_json": build_blogposting_schema(post, canonical_url, author_profile),
             "breadcrumb_schema_json": build_breadcrumb_schema(post, canonical_url),
             "faq_schema_json": build_faq_schema(post),
-            "author_profile": AUTHOR_PROFILE,
+            "author_profile": author_profile,
             "related_resume_example": _BLOG_TO_ROLE.get(post.slug),
             "hero_cta": blog_cta(post),
         },
