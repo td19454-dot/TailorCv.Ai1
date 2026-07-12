@@ -7242,9 +7242,9 @@ def blog_cta(post) -> dict:
         return {"label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
     if "template" in hay:
         return {"label": "Browse Resume Templates", "url": "/templates"}
-    if "ats" in hay:
+    if "ats score" in hay or "ats-score" in hay:
         return {"label": "Check My ATS Score", "url": "/solutions"}
-    # Career guides, resume-writing, job-search, LinkedIn -> tailoring tool.
+    # Everything else (incl. general ATS, resume, career, job-search) -> tailoring tool.
     return {"label": "Tailor Your Resume", "url": "/solutions"}
 
 
