@@ -209,7 +209,19 @@ class BlogService:
             return None
         frontmatter, body = self._split_frontmatter(raw)
 
-        title = str(frontmatter.get("title") or self._title_from_file(file_path)).strip()
+        # A leading "# H1" / "## H2" at the very top of the body is usually the
+        # article's real (fuller) title, duplicated from the hero heading. When it
+        # matches or extends the frontmatter title, adopt it as the title and strip
+        # it from the content so the heading isn't shown twice. A leading heading
+        # that is unrelated to the title (a genuine section) is left untouched.
+        fm_title = str(frontmatter.get("title") or "").strip()
+        lead = re.match(r"\s*#{1,2}(?!#)[ \t]+(.+?)[ \t]*(?:\n|$)", body)
+        if lead:
+            heading = lead.group(1).strip()
+            if not fm_title or heading == fm_title or (heading.startswith(fm_title) and len(heading) > len(fm_title)):
+                fm_title = heading
+                body = body[lead.end():].lstrip("\n")
+        title = (fm_title or self._title_from_file(file_path)).strip()
         description = str(frontmatter.get("description") or "").strip()
         slug = self._slugify(str(frontmatter.get("slug") or os.path.splitext(os.path.basename(file_path))[0]))
         author = str(frontmatter.get("author") or self.default_author).strip()

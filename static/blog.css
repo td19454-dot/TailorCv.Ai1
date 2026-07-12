@@ -203,7 +203,11 @@ a:hover { text-decoration: underline; }
   font-size: 0.9rem;
   line-height: 1;
   color: #7b8496;
-  margin-bottom: clamp(18px, 3vw, 34px);
+  /* Align breadcrumb to the same column + left edge as the hero */
+  max-width: 1240px;
+  margin: 0 auto clamp(18px, 3vw, 34px);
+  padding: 0 clamp(20px, 5vw, 64px);
+  box-sizing: border-box;
 }
 /* every crumb aligns on the same center line (icon, text, separators) */
 .post-breadcrumb > a,
@@ -235,11 +239,13 @@ a:hover { text-decoration: underline; }
 
 .post-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   gap: clamp(24px, 4vw, 56px);
   align-items: center;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+  box-sizing: border-box;
 }
 
 .post-hero-content { min-width: 0; }
@@ -407,6 +413,13 @@ h1.post-hero-title {
   color: #e8edf7;
 }
 
+/* position: sticky breaks if ANY ancestor has overflow != visible. The site
+   sets `html, body { overflow-x: hidden }`, which silently disables the sticky
+   TOC. `overflow-x: clip` stops horizontal scroll WITHOUT creating a scroll
+   container, so sticky works again. Scoped to the blog page via body class. */
+html:has(body.blog-detail-page) { overflow-x: clip !important; }
+body.blog-detail-page { overflow-x: clip !important; }
+
 /* Ancestors must not create a scroll/clip context, or sticky TOC breaks. */
 .blog-post-wrap,
 .blog-post,
@@ -418,6 +431,7 @@ h1.post-hero-title {
   gap: 0;
   align-items: start;
   background: #05080d;
+  margin-top: clamp(28px, 4vw, 56px);
 }
 
 .post-layout .toc {
