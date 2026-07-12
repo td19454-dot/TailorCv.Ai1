@@ -159,6 +159,21 @@ Writing a compelling cover letter for Canadian jobs is not just about summarizin
 
 For more guidance, consider exploring our resources on [Cover Letter for a Career Change - Template and Examples That Get Interviews](https://thetailorcv.com/blog/cover-letter-for-career-change) and [Cover Letter for Remote Jobs - What Hiring Managers Actually Want to See](https://thetailorcv.com/blog/cover-letter-for-remote-jobs).
 
+## Related Guides
+
+Keep building your Canadian job search with these related TailorCV guides:
+
+- [How ATS Works in Canada: Beating Applicant Tracking Systems for Canadian Jobs](https://thetailorcv.com/blog/ats-in-canada-guide)
+- [Canadian Resume Format Guide (2026): How to Write a Resume for Canada](https://thetailorcv.com/blog/canadian-resume-format-guide-2026)
+- [How to Get a Job in Canada in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada)
+- [In-Demand Jobs in Canada for 2026 (and How to Match Your Resume)](https://thetailorcv.com/blog/in-demand-jobs-canada-2026)
+- [AI Cover Letter Generator for Job Descriptions](https://thetailorcv.com/blog/ai-cover-letter-generator-job-description)
+- [How to Write a Cover Letter for US Jobs (With Structure and Examples)](https://thetailorcv.com/blog/cover-letter-for-us-jobs)
+- [Cover Letter for a Career Change - Template and Examples That Get Interviews](https://thetailorcv.com/blog/cover-letter-for-career-change)
+- [Cover Letter for an Internal Job Application - Template and Tips](https://thetailorcv.com/blog/cover-letter-for-internal-job-application)
+
+You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
+
 ## Frequently Asked Questions
 
 ### 1. Do I need a cover letter for every job application in Canada?
