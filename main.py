@@ -615,6 +615,31 @@ def enforce_quota(db: Session, user, field: str) -> None:
     db.commit()
 
 
+def quota_exhausted(db: Session, user, field: str) -> bool:
+    """Read-only check: has the free user used up their lifetime free use of *field*?
+
+    Mirrors the gating logic in enforce_quota() (same beta rollout rule and the
+    same lifetime-sum query) but performs no locking, no increment, and never raises.
+    """
+    from sqlalchemy import func as _func
+
+    if is_pro(user):
+        return False
+    _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
+    if _beta_env:
+        _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()}
+        if user.id not in _beta_ids:
+            return False
+    limit = FREE_LIMITS.get(field, 0)
+    used = (
+        db.query(_func.coalesce(_func.sum(getattr(UsageRecord, field)), 0))
+        .filter(UsageRecord.user_id == user.id)
+        .scalar()
+        or 0
+    )
+    return used >= limit
+
+
 def refund_quota(db: Session, user_id: int, field: str) -> None:
     """Decrement a quota counter by 1 — called when an LLM call fails after enforce_quota committed."""
     month = datetime.utcnow().strftime("%Y-%m")
@@ -4738,12 +4763,15 @@ async def optimized_editor_page(request: Request):
     try:
         user = db.query(User).filter_by(id=request.session["user_id"]).first()
         user_is_pro = is_pro(user) if user else False
+        quota_exhausted_flag = (
+            (not user_is_pro) and bool(user) and quota_exhausted(db, user, "ai_optimizations")
+        )
     finally:
         db.close()
     return templates.TemplateResponse(
         request,
         "optimized_editor.html",
-        {"request": request, "is_pro": user_is_pro},
+        {"request": request, "is_pro": user_is_pro, "quota_exhausted_flag": quota_exhausted_flag},
     )
 
 
