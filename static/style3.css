@@ -4283,12 +4283,12 @@ html, body { overflow-x: hidden !important; }
 }
 
 .gradient-text {
-    display: block !important;
-    margin: 0 0 22px 10px !important;
-    font-family: Inter, Arial, sans-serif !important;
-    font-size: clamp(34px, 3vw, 46px) !important;
-    font-weight: 400 !important;
-    line-height: 1.08 !important;
+    display: inline !important;
+    margin: 0 !important;
+    font-family: "Gelasio", Georgia, serif !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
     letter-spacing: 0 !important;
     background: linear-gradient(90deg, #ad42ff 0%, #5d78ff 52%, #0edbea 100%) !important;
     -webkit-background-clip: text !important;
@@ -4565,7 +4565,7 @@ html, body { overflow-x: hidden !important; }
     }
 
     .gradient-text {
-        font-size: clamp(22px, 6vw, 31px) !important;
+        font-size: inherit !important;
     }
 
     .hero-subtitle {
@@ -4574,10 +4574,11 @@ html, body { overflow-x: hidden !important; }
     }
 
     .hero-cta .btn-primary.btn-large {
-        min-height: 58px !important;
+        min-height: 60px !important;
         min-width: 0 !important;
-        width: 100% !important;
-        font-size: 18px !important;
+        width: 92% !important;
+        max-width: 380px !important;
+        font-size: 19px !important;
     }
 }
 
