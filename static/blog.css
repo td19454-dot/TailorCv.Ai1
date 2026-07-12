@@ -432,7 +432,7 @@ body.blog-detail-page { overflow-x: clip !important; }
   margin-top: clamp(28px, 4vw, 56px);
 }
 
-.post-layout .toc {
+.post-layout .toc-col {
   position: -webkit-sticky;
   position: sticky;
   top: 88px;
@@ -445,18 +445,59 @@ body.blog-detail-page { overflow-x: clip !important; }
   scrollbar-color: #2b3342 transparent;
 }
 
-.post-layout .toc::-webkit-scrollbar {
+.post-layout .toc-col::-webkit-scrollbar {
   width: 8px;
 }
 
-.post-layout .toc::-webkit-scrollbar-track {
+.post-layout .toc-col::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 999px;
 }
 
-.post-layout .toc::-webkit-scrollbar-thumb {
+.post-layout .toc-col::-webkit-scrollbar-thumb {
   background: #2b3342;
   border-radius: 999px;
+}
+
+/* Sidebar CTA card below the TOC (blue + sky-blue) */
+.toc-cta {
+  margin: 6px 24px 24px;
+  padding: 20px 18px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #e0f2fe 0%, #bae6fd 100%);
+  border: 1px solid #7dd3fc;
+  text-align: center;
+}
+.toc-cta-title {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #0c1b33;
+}
+.toc-cta-text {
+  margin: 0 0 16px;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #334155;
+}
+.toc-cta-btn {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.98rem;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.toc-cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(56, 189, 248, 0.5);
 }
 
 .post-content {
@@ -669,12 +710,13 @@ header.navbar {
 @media (max-width: 900px) {
   .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .post-layout { grid-template-columns: 1fr; }
-  .post-layout .toc {
+  .post-layout .toc-col {
     position: static;
     max-height: none;
+    overflow: visible;
+    width: auto;
     border-right: 0;
     border-bottom: 1px solid #171c27;
-    padding: 18px 16px;
   }
   .post-content {
     padding: 24px 16px;
