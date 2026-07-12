@@ -170,6 +170,21 @@ When crafting your resume, keep these do's and don'ts in mind:
 
 By following these guidelines, you can significantly improve your chances of passing through ATS filters and landing job interviews. Remember, a well-optimized resume is your first step towards a successful job search.
 
+## Related Guides
+
+Keep building your US job search with these related TailorCV guides:
+
+- [US Resume Format Guide (2026): How to Write a Resume for American Jobs](https://thetailorcv.com/blog/us-resume-format-guide-2026)
+- [How to Get a Job in the USA in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa)
+- [Resume for H-1B Visa Sponsorship Jobs: How to Stand Out](https://thetailorcv.com/blog/resume-for-h1b-visa-sponsorship)
+- [How to Write a Cover Letter for US Jobs (With Structure and Examples)](https://thetailorcv.com/blog/cover-letter-for-us-jobs)
+- [ATS Resume Checker - How It Works and How to Pass (2026)](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)
+- [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
+- [How to Make Your Resume ATS-Friendly in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [ATS Keywords - How to Find and Add Them to Boost Your Score (2026)](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
+
+You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
+
 ## Frequently Asked Questions
 
 ### How do I know if my resume is ATS-friendly?
