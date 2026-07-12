@@ -567,12 +567,16 @@ body {
     /* ─────────────────────────────────────────────────────────────────────────
        PRO UPGRADE POPUP (shown when free download quota exhausted)
     ───────────────────────────────────────────────────────────────────────── */
-    function showProDownloadPopup() {
-        const existing = document.getElementById("tcv-pro-dl-overlay");
+    function showProDownloadPopup(opts) {
+        opts = opts || {};
+        const targetDoc = opts.doc || document;
+        const closable  = opts.closable !== false;
+
+        const existing = targetDoc.getElementById("tcv-pro-dl-overlay");
         if (existing) existing.remove();
 
-        if (!document.getElementById("tcv-pro-dl-style")) {
-            const s = document.createElement("style");
+        if (!targetDoc.getElementById("tcv-pro-dl-style")) {
+            const s = targetDoc.createElement("style");
             s.id = "tcv-pro-dl-style";
             s.textContent = [
                 "#tcv-pro-dl-overlay{position:fixed;inset:0;z-index:999999;",
@@ -704,17 +708,17 @@ body {
                 ".tcv-pro-dl-badges{font-size:.75rem;gap:.9rem;margin:0 0 .65rem;}",
                 "}",
             ].join("");
-            document.head.appendChild(s);
+            targetDoc.head.appendChild(s);
         }
 
         const priceOnly = typeof _getUpgradePriceOnly === 'function'
             ? _getUpgradePriceOnly(_upgradeRegionCache) : '₹167/month';
 
-        const overlay = document.createElement("div");
+        const overlay = targetDoc.createElement("div");
         overlay.id = "tcv-pro-dl-overlay";
         overlay.innerHTML =
             '<div id="tcv-pro-dl-modal">' +
-                '<button id="tcv-pro-dl-close" aria-label="Close">&times;</button>' +
+                (closable ? '<button id="tcv-pro-dl-close" aria-label="Close">&times;</button>' : '') +
 
                 '<div class="tcv-pro-dl-lock-wrap"><div class="tcv-pro-dl-lock">🔒</div></div>' +
                 '<h2 class="tcv-pro-dl-title">Your resume is ready!</h2>' +
@@ -747,7 +751,7 @@ body {
 
                 '<div class="tcv-pro-dl-cta-wrap">' +
                     '<span class="tcv-pro-dl-ribbon">Most Affordable</span>' +
-                    '<a href="/pricing" class="tcv-pro-dl-cta" id="tcv-pro-dl-cta">' +
+                    '<a href="/pricing" target="_top" class="tcv-pro-dl-cta" id="tcv-pro-dl-cta">' +
                         '<span class="tcv-pro-dl-cta-main">Unlock Unlimited Access</span>' +
                         '<span class="tcv-pro-dl-cta-sub" id="tcv-pro-dl-cta-price">' + priceOnly + ' · Cancel anytime</span>' +
                     '</a>' +
@@ -757,21 +761,33 @@ body {
                     '<span>⚡ Instant access</span><span>🛡️ Secure payment</span><span>↺ Cancel anytime</span>' +
                 '</div>' +
             '</div>';
-        document.body.appendChild(overlay);
+
+        // Mounting on documentElement (rather than <body>) keeps the overlay safe from
+        // a contentEditable resume body's own edit/delete behaviour when doc is an iframe.
+        targetDoc.documentElement.appendChild(overlay);
 
         // Update the price once the region fetch resolves (if not already cached).
         if (typeof _upgradeRegionFetch !== 'undefined' && !_upgradeRegionCache && _upgradeRegionFetch) {
             _upgradeRegionFetch.then(function(region) {
-                var priceEl = document.getElementById('tcv-pro-dl-cta-price');
+                var priceEl = targetDoc.getElementById('tcv-pro-dl-cta-price');
                 if (priceEl && region && typeof _getUpgradePriceOnly === 'function') {
                     priceEl.textContent = _getUpgradePriceOnly(region) + ' · Cancel anytime';
                 }
             });
         }
 
-        function closePopup() { overlay.remove(); }
-        overlay.querySelector("#tcv-pro-dl-close").addEventListener("click", closePopup);
-        overlay.addEventListener("click", function (e) { if (e.target === overlay) closePopup(); });
+        if (closable) {
+            function closePopup() { overlay.remove(); }
+            overlay.querySelector("#tcv-pro-dl-close").addEventListener("click", closePopup);
+            overlay.addEventListener("click", function (e) { if (e.target === overlay) closePopup(); });
+        } else {
+            // Non-closable (paywall) mode: guard against removal via editing/devtools.
+            new MutationObserver(function () {
+                if (!targetDoc.documentElement.contains(overlay)) {
+                    targetDoc.documentElement.appendChild(overlay);
+                }
+            }).observe(targetDoc.documentElement, { childList: true });
+        }
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -1342,19 +1358,64 @@ body {
         doc._tailorcvCopyProtected = true;
 
         const SUFFIX =
-            "\n\n— Created with TailorCV (www.thetailorcv.com)\n" +
+            "— Created with TailorCV (www.thetailorcv.com)\n" +
             "Download the properly formatted PDF at www.thetailorcv.com/pricing";
+        const SMALL_COPY_CHARS  = 60;   // still allow e.g. copying a phone number/email
+        const SESSION_COPY_CAP  = 250;  // total chars a free user may extract before being cut off
 
-        doc.addEventListener("copy", function (e) {
-            const text = (doc.getSelection() || {}).toString() || "";
-            if (text.length <= 150) return;
-            e.preventDefault();
-            try { e.clipboardData.setData("text/plain", text + SUFFIX); } catch (_) {}
+        let copiedSoFar = 0;
+
+        function warn() {
             if (typeof showToast === "function") {
                 showToast("Download the PDF for proper formatting.", "warn",
                           "Upgrade to download");
             }
+        }
+
+        function guard(e) {
+            const text = (doc.getSelection() || {}).toString() || "";
+            if (!text) return;
+
+            if (text.length <= SMALL_COPY_CHARS && copiedSoFar < SESSION_COPY_CAP) {
+                copiedSoFar += text.length;
+                return;
+            }
+
+            e.preventDefault();
+            try { e.clipboardData.setData("text/plain", SUFFIX); } catch (_) {}
+            copiedSoFar += text.length;
+            warn();
+        }
+
+        doc.addEventListener("copy", guard, true);
+        doc.addEventListener("cut", guard, true);
+
+        doc.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+            warn();
         }, true);
+
+        doc.addEventListener("dragstart", function (e) {
+            e.preventDefault();
+        }, true);
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       QUOTA-EXHAUSTED PAYWALL LOCK — shown once a free user's lifetime
+       optimizations are used up. Reuses showProDownloadPopup() (the same modal
+       shown after free downloads run out), mounted on the resume iframe itself
+       (not the close-able page-wide overlay) so it blurs the resume behind it
+       and can't be dismissed.
+    ───────────────────────────────────────────────────────────────────────── */
+    function applyQuotaExhaustedLock(doc) {
+        if (window.IS_PRO === true) return;
+        if (window.QUOTA_EXHAUSTED !== true) return;
+        if (!doc || !doc.documentElement) return;
+
+        if (doc._tailorcvQuotaLocked) return;
+        doc._tailorcvQuotaLocked = true;
+
+        showProDownloadPopup({ doc: doc, closable: false });
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -1386,6 +1447,7 @@ body {
 
             buildAccentPanel();
             applyFreeUserProtection(frame.contentDocument);
+            applyQuotaExhaustedLock(frame.contentDocument);
 
             if (AUTO_DOWNLOAD_ON_OPEN && !hasAutoDownloaded) {
                 hasAutoDownloaded = true;

@@ -124,7 +124,8 @@
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/toast.js"></script>
     <script>window.IS_PRO = {{ 'true' if is_pro else 'false' }};</script>
-    <script src="/static/optimized_editor.js?v=93"></script>
+    <script>window.QUOTA_EXHAUSTED = {{ 'true' if quota_exhausted_flag else 'false' }};</script>
+    <script src="/static/optimized_editor.js?v=98"></script>
     <script>
         (function () {
             var btn = document.getElementById('mobile-controls-toggle');
