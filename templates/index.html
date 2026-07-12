@@ -623,8 +623,7 @@
                     <div class="hero-cta">
                         <a href="/solutions" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
                             ><span class="cta-label-full">Optimize My Resume — Free</span><span class="cta-label-short">Optimize for Free</span></a>
-                        <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span>
-                            Takes 2 minutes &bull; No credit card needed &bull; Free to start</p>
+                        <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span><span class="hero-cta-meta-text">Takes 2 minutes &bull; No credit card needed &bull; Free to start</span></p>
                     </div>
                     <div class="hero-quickstart" aria-label="Quick start steps">
                         <p class="hero-quickstart-title">Start in 3 quick steps</p>
@@ -715,13 +714,19 @@
                     <style>
                         .hero-cta-meta {
                             display: flex;
-                            align-items: center;
+                            align-items: flex-start;
                             gap: 10px;
                             margin: 10px 0 4px;
                             font-size: 16px;
                             font-weight: 600;
                             color: #d8e6ff;
                             line-height: 1.2;
+                        }
+
+                        .hero-cta-meta-text {
+                            flex: 1 1 auto;
+                            min-width: 0;
+                            padding-top: 3px;
                         }
 
                         .hero-cta-meta-icon {
@@ -823,7 +828,6 @@
                         @media (max-width: 768px) {
                             .hero-cta-meta {
                                 font-size: 14px;
-                                flex-wrap: wrap;
                             }
 
                             .hero-testimonials {
