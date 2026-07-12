@@ -130,6 +130,21 @@ If you are an international candidate or seeking visa sponsorship, it's crucial 
 **Example:**
 "I am currently on an H-1B visa and am eligible to continue working in the U.S. I am committed to contributing my skills to [Company Name] and am excited about the potential for growth within your organization."
 
+## Related Guides
+
+Keep building your US job search with these related TailorCV guides:
+
+- [US Resume Format Guide (2026): How to Write a Resume for American Jobs](https://thetailorcv.com/blog/us-resume-format-guide-2026)
+- [How to Get a Job in the USA in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa)
+- [Resume for H-1B Visa Sponsorship Jobs: How to Stand Out](https://thetailorcv.com/blog/resume-for-h1b-visa-sponsorship)
+- [How ATS Works in the USA: Beating Applicant Tracking Systems for US Jobs](https://thetailorcv.com/blog/ats-in-usa-guide)
+- [How to Write a Cover Letter for Canadian Jobs (With Structure)](https://thetailorcv.com/blog/cover-letter-for-canadian-jobs)
+- [Cover Letter for a Career Change - Template and Examples That Get Interviews](https://thetailorcv.com/blog/cover-letter-for-career-change)
+- [Cover Letter for an Internal Job Application - Template and Tips](https://thetailorcv.com/blog/cover-letter-for-internal-job-application)
+- [Cover Letter for Remote Jobs - What Hiring Managers Actually Want to See](https://thetailorcv.com/blog/cover-letter-for-remote-jobs)
+
+You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
+
 ## Frequently Asked Questions
 
 ### How do I tailor my cover letter for each job application?

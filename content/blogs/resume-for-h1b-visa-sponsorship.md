@@ -108,6 +108,21 @@ While it’s generally not advisable to mention visa status on your resume, be p
 
 The tailored version highlights specific skills, achievements, and the candidate's intent, making it more appealing to employers.
 
+## Related Guides
+
+Keep building your US job search with these related TailorCV guides:
+
+- [US Resume Format Guide (2026): How to Write a Resume for American Jobs](https://thetailorcv.com/blog/us-resume-format-guide-2026)
+- [How to Get a Job in the USA in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa)
+- [How ATS Works in the USA: Beating Applicant Tracking Systems for US Jobs](https://thetailorcv.com/blog/ats-in-usa-guide)
+- [How to Write a Cover Letter for US Jobs (With Structure and Examples)](https://thetailorcv.com/blog/cover-letter-for-us-jobs)
+- [Resume for International Candidates Seeking US Jobs](https://thetailorcv.com/blog/resume-for-international-candidates-usa)
+- [How to Find Remote Jobs in the USA (2026 Guide)](https://thetailorcv.com/blog/remote-jobs-in-usa-guide)
+- [How to Get a Job in Canada in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada)
+- [How International Students Can Get Jobs in Canada (2026 Guide)](https://thetailorcv.com/blog/international-student-jobs-canada)
+
+You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
+
 ## Frequently Asked Questions
 
 ### How do I write a resume for H-1B visa sponsorship jobs?

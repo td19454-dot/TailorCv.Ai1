@@ -176,6 +176,21 @@ Imagine you’re a software developer looking for a job in the US. Here’s how 
 
 By following this structured approach and avoiding common pitfalls, you can enhance your LinkedIn presence and significantly boost your chances of being found by American recruiters. For further insights, check out our [LinkedIn Profile Optimization Guide 2026](https://thetailorcv.com/linkedin-profile-optimization-guide).
 
+## Related Guides
+
+Keep building your US job search with these related TailorCV guides:
+
+- [US Resume Format Guide (2026): How to Write a Resume for American Jobs](https://thetailorcv.com/blog/us-resume-format-guide-2026)
+- [How to Get a Job in the USA in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa)
+- [Resume for H-1B Visa Sponsorship Jobs: How to Stand Out](https://thetailorcv.com/blog/resume-for-h1b-visa-sponsorship)
+- [How ATS Works in the USA: Beating Applicant Tracking Systems for US Jobs](https://thetailorcv.com/blog/ats-in-usa-guide)
+- [LinkedIn for a Canadian Job Search: Get Found by Canadian Recruiters](https://thetailorcv.com/blog/linkedin-for-canada-job-search)
+- [LinkedIn Headline Examples for Job Seekers in 2026](https://thetailorcv.com/blog/linkedin-headline-examples-job-seekers)
+- [Executive LinkedIn Summary Examples for Senior Leaders](https://thetailorcv.com/blog/executive-linkedin-summary-examples)
+- [React Developer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/react-developer-resume-2026)
+
+You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
+
 ## Frequently Asked Questions
 
 ### How do I optimize my LinkedIn profile for ATS?
