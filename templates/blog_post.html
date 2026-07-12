@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css?v=11">
+    <link rel="stylesheet" href="/static/blog.css?v=12">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -90,7 +90,11 @@
                         </span>
                         <span class="author-info">
                             <span class="author-label">Author</span>
+                            {% if author_profile and author_profile.linkedin %}
+                            <a class="author" href="{{ author_profile.linkedin }}" target="_blank" rel="noopener">{{ author_profile.name }}</a>
+                            {% else %}
                             <span class="author">{{ author_profile.name if author_profile else post.author }}</span>
+                            {% endif %}
                         </span>
                     </div>
                     <a href="{{ hero_cta.url }}" class="hero-cta-btn">{{ hero_cta.label }}</a>
