@@ -125,16 +125,58 @@
 .solx-h2, .solx-band h2, .solx-marquee .cap { font-weight: 400; }
 .solx-card h3 { font-weight: 600; }
 
+/* ---- Free guest ATS scan (one score, no signup) ---- */
+.solx-ats { display:grid; grid-template-columns:1.05fr .95fr; gap:24px; margin-top:40px; align-items:stretch; }
+.solx-ats-panel { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:26px; }
+.solx-ats-panel h3 { margin:0 0 4px; font-size:1.12rem; font-weight:600; color:#e8edf6; }
+.solx-ats-panel .hint { color:#8a93a6; font-size:.88rem; margin:0 0 16px; }
+.solx-ats-drop { display:block; cursor:pointer; border:1.5px dashed rgba(96,165,250,.45); background:rgba(59,130,246,.07); border-radius:14px; padding:24px; text-align:center; transition:border-color .2s ease, background .2s ease; }
+.solx-ats-drop:hover, .solx-ats-drop.over { border-color:rgba(96,165,250,.95); background:rgba(59,130,246,.14); }
+.solx-ats-drop b { display:block; color:#e8edf6; font-weight:600; margin-bottom:4px; }
+.solx-ats-drop small { color:#8a93a6; }
+.solx-ats-drop input { display:none; }
+.solx-ats-file { margin-top:10px; font-size:.9rem; color:#4ade80; font-weight:600; }
+.solx-ats textarea { width:100%; margin-top:16px; min-height:150px; resize:vertical; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:12px; color:#e8edf6; padding:13px; font-size:.95rem; font-family:inherit; line-height:1.55; }
+.solx-ats textarea::placeholder { color:#7f8ba1; }
+.solx-ats textarea:focus { outline:none; border-color:rgba(96,165,250,.75); }
+.solx-ats .solx-btn { width:100%; margin-top:16px; }
+.solx-ats-err { margin-top:12px; color:#fca5a5; font-size:.9rem; }
+.solx-ats-badges { display:flex; flex-wrap:wrap; gap:9px; margin-top:16px; }
+.solx-ats-badges span { font-size:.82rem; color:#cbd4e6; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:999px; padding:6px 12px; }
+.solx-ats-out { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.solx-ats-ring { position:relative; width:168px; height:168px; }
+.solx-ats-ring svg { width:100%; height:100%; display:block; }
+.solx-ats-ring .bar { transition:stroke-dashoffset 1.1s cubic-bezier(.2,.8,.2,1); }
+.solx-ats-num { position:absolute; inset:0; display:grid; place-items:center; font-size:2.6rem; font-weight:600; color:#f4f7ff; font-variant-numeric:tabular-nums; }
+.solx-ats-level { margin-top:16px; font-size:1.3rem; font-weight:600; color:#e8edf6; }
+.solx-ats-note { color:#c2ccde; font-size:.95rem; margin-top:8px; max-width:36ch; line-height:1.55; }
+.solx-ats-miss { margin-top:16px; }
+.solx-ats-miss .t { font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; color:#8a93a6; font-weight:600; margin-bottom:8px; }
+.solx-ats-miss span { display:inline-block; font-size:.82rem; font-weight:600; color:#fca5a5; background:rgba(239,68,68,.12); border:1px solid rgba(239,68,68,.3); border-radius:8px; padding:4px 10px; margin:0 5px 6px 0; }
+.solx-ats-idle { color:#8a93a6; font-size:.95rem; max-width:32ch; line-height:1.6; }
+.solx-ats-spin { width:36px; height:36px; border-radius:50%; border:3px solid rgba(255,255,255,.14); border-top-color:#60a5fa; animation:solx-spin 1s linear infinite; }
+@keyframes solx-spin { to { transform:rotate(360deg); } }
+@media (prefers-reduced-motion: reduce){ .solx-ats-spin { animation-duration:2.4s; } .solx-ats-ring .bar { transition:none; } }
+@media(max-width:900px){ .solx-ats { grid-template-columns:1fr; } }
+
 /* ---- Showcase carousel (resume templates / portfolio designs) ---- */
 .solx-carousel { position:relative; margin-top:42px; }
 .solx-car-track { display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding:4px 2px 6px; scrollbar-width:none; -ms-overflow-style:none; }
 .solx-car-track::-webkit-scrollbar { display:none; }
 .solx-car-item { flex:0 0 calc((100% - 44px) / 3); scroll-snap-align:start; }
-.solx-car-shot { background:#fff; border:1px solid rgba(255,255,255,.14); border-radius:14px; overflow:hidden; box-shadow:0 26px 60px rgba(2,6,23,.5); aspect-ratio:3 / 4; transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+/* A4 page ratio so resume previews fit whole, with no cropping */
+.solx-car-shot { display:block; position:relative; background:#fff; border:1px solid rgba(255,255,255,.14); border-radius:14px; overflow:hidden; box-shadow:0 26px 60px rgba(2,6,23,.5); aspect-ratio:1 / 1.414; transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
 .solx-car-item:hover .solx-car-shot { transform:translateY(-4px); border-color:rgba(96,165,250,.55); box-shadow:0 32px 70px rgba(37,99,235,.4); }
 .solx-car-shot img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
 .solx-car-name { text-align:center; margin-top:14px; color:#e8edf6; font-size:1.02rem; font-weight:600; }
-.solx-carousel.wide .solx-car-shot { aspect-ratio:16 / 10; }
+/* Bigger cards (resume templates) */
+.solx-carousel.big .solx-car-item { flex-basis:calc((100% - 44px) / 2.5); }
+/* Website screenshots: real previews are ~2.09:1 */
+.solx-carousel.wide .solx-car-shot { aspect-ratio:2 / 1; }
+/* Live-demo affordance on the portfolio designs */
+.solx-car-demo { position:absolute; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; gap:6px; padding:14px 12px 12px; font-size:.88rem; font-weight:600; color:#fff; background:linear-gradient(to top, rgba(8,13,32,.96), rgba(8,13,32,.72) 55%, rgba(8,13,32,0)); transition:color .2s ease; }
+.solx-car-item:hover .solx-car-demo { color:#8ec5ff; }
+.solx-car-shot:focus-visible { outline:2px solid #60a5fa; outline-offset:3px; }
 .solx-car-btn { position:absolute; top:38%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; display:grid; place-items:center; cursor:pointer; border:1px solid rgba(96,165,250,.35); background:rgba(10,20,48,.9); color:#cfe0ff; z-index:3; transition:background .2s ease, border-color .2s ease, opacity .2s ease; }
 .solx-car-btn:hover { background:rgba(37,99,235,.6); border-color:rgba(96,165,250,.85); }
 .solx-car-btn:focus-visible { outline:2px solid #60a5fa; outline-offset:2px; }

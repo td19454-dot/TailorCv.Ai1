@@ -338,7 +338,7 @@
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
-    <link rel="stylesheet" href="/static/feature_landing.css?v=23">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=26">
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -382,14 +382,22 @@
             <div class="solx-wrap">
                 <div class="solx-kicker">Design gallery</div>
                 <h2 class="solx-h2">Find the perfect portfolio design <span class="g">for your career goals</span></h2>
-                <p class="solx-lead">Every design is responsive, built straight from your resume, and live on a single shareable link. Pick a look and publish it in one click.</p>
+                <p class="solx-lead">Every design is responsive and built straight from your resume. Click any design to open its live demo. Publish free on <b>yourname.thetailorcv.com</b>, or go Pro for your own <b>yourname.netlify.app</b> live site.</p>
                 <div class="solx-carousel wide">
                     <button type="button" class="solx-car-btn solx-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
                     <div class="solx-car-track">
                         {% for _k, _label in themes.items() %}{% set _m = theme_media.get(_k) %}{% if _m and _m.image %}
                         <div class="solx-car-item">
-                            <div class="solx-car-shot"><img src="{{ _m.image }}" alt="{{ _label }} portfolio design preview" loading="lazy" decoding="async"></div>
-                            <div class="solx-car-name">{{ _label.replace('—', '-').split('-')[0].strip() }}</div>
+                            {% set _nm = _label.replace('—', '-').split('-')[0].strip() %}
+                            {% if _m.demo %}
+                            <a class="solx-car-shot" href="{{ _m.demo }}" target="_blank" rel="noopener" aria-label="Open the {{ _nm }} portfolio demo in a new tab">
+                                <img src="{{ _m.image }}" alt="{{ _nm }} portfolio design preview" loading="lazy" decoding="async">
+                                <span class="solx-car-demo">View live demo &#8599;</span>
+                            </a>
+                            {% else %}
+                            <div class="solx-car-shot"><img src="{{ _m.image }}" alt="{{ _nm }} portfolio design preview" loading="lazy" decoding="async"></div>
+                            {% endif %}
+                            <div class="solx-car-name">{{ _nm }}</div>
                         </div>
                         {% endif %}{% endfor %}
                     </div>
@@ -533,7 +541,7 @@
                         <div class="pname">Free</div>
                         <div class="pamt"><sup>&#8377;</sup>0</div>
                         <div class="pper">free forever &bull; no card needed</div>
-                        <ul><li>ATS score &amp; keyword match</li><li>Tailor your resume to a job</li><li>Save your resumes &amp; scores</li></ul>
+                        <ul><li>Portfolio on <b>yourname.thetailorcv.com</b></li><li>ATS score &amp; keyword match</li><li>Tailor your resume to a job</li></ul>
                         <a href="/signup?next=/portfolio" class="solx-btn ghost">Start Free</a>
                     </div>
                     <div class="solx-price">
@@ -548,7 +556,7 @@
                         <div class="pname">Pro</div>
                         <div class="pamt"><sup>&#8377;</sup>167<span style="font-size:1rem;color:#9fb2d6">/mo</span></div>
                         <div class="pper">billed &#8377;1,999 yearly &bull; &asymp; &#8377;5.5/day</div>
-                        <ul><li>Unlimited tailoring &amp; ATS scores</li><li>AI cover letters</li><li>Portfolio website</li><li>Mock interviews</li></ul>
+                        <ul><li>Live site on <b>yourname.netlify.app</b></li><li>Unlimited tailoring &amp; ATS scores</li><li>AI cover letters</li><li>Mock interviews</li></ul>
                         <a href="/signup?next=/portfolio" class="solx-btn">Go Pro</a>
                     </div>
                 </div>
