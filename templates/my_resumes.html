@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
@@ -122,7 +122,193 @@
     </style>
 </head>
 <body>
+{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
     {% include "_nav.html" %}
+
+    {% if not is_logged_in %}
+    <link rel="stylesheet" href="/static/feature_landing.css?v=22">
+    <div class="solx">
+        <div class="solx-wrap">
+            <div class="solx-hero">
+                <div>
+                    <span class="solx-eyebrow">My Resumes</span>
+                    <h1>Every resume you tailor, <span class="g">saved in one place.</span></h1>
+                    <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
+                        <span>Every tailored resume and ATS score, saved automatically</span>
+                        <span>Re-download any version as a clean PDF, anytime</span>
+                        <span>Know which resume you sent to which job</span>
+                    </div>
+                    <a href="/signup?next=/my-resumes" class="solx-btn">Save My Resumes, Free</a>
+                    <p class="micro">Free account &bull; No credit card &bull; <b>Free to start</b></p>
+                </div>
+                <div class="rez">
+                    <div class="rez-tag">&#128193; My Resumes</div>
+                    <div class="rez-h">Senior Data Scientist, Google</div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                        <div class="rez-line m" style="margin:0"></div><span class="rez-badge">91% ATS</span>
+                    </div>
+                    <div class="rez-h">Product Manager, Atlassian</div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                        <div class="rez-line m" style="margin:0"></div><span class="rez-badge">87% ATS</span>
+                    </div>
+                    <div class="rez-h">Data Analyst, PayPal</div>
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <div class="rez-line m" style="margin:0"></div><span class="rez-badge">84% ATS</span>
+                    </div>
+                    <div class="rez-insights">
+                        <div class="t">&#10024; Saved version</div>
+                        <div class="rez-line l"></div><div class="rez-line m"></div>
+                        <div class="rez-btn">&#11015; Download PDF</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-marquee">
+            <div class="solx-wrap"><p class="cap">Our users have been <span class="g">hired at</span></p></div>
+            <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
+        </div>
+        <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">Never lose a resume, <span class="g">or an ATS score</span></h2>
+                <p class="solx-lead">Applying to a lot of jobs means a lot of versions. TailorCV keeps every one of them, with its score and the job it was written for, so you always know what you sent.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">Saved automatically</div><div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#10003; Every version kept</div>
+                        </div>
+                        <h3>Saved the moment you tailor</h3>
+                        <p>Every resume you optimize is stored automatically with its ATS score, so nothing is lost when you close the tab.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">Google, Senior DS</div><div class="rez-line l"></div>
+                            <div style="margin-top:8px"><span class="rez-pill g">91% ATS</span><span class="rez-pill b">Tailored</span></div>
+                            <div class="rez-line m" style="margin-top:8px"></div>
+                        </div>
+                        <h3>Know what you sent, and where</h3>
+                        <p>Each resume is labelled with the role it was tailored for, so you walk into an interview knowing exactly which version they read.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-tag">&#11015; Download</div>
+                            <div class="rez-h" style="margin-top:10px">Any version, anytime</div><div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-btn" style="margin-top:10px">&#11015; Download PDF</div>
+                        </div>
+                        <h3>Re-download in one click</h3>
+                        <p>Need that resume again for a similar role? Pull up any saved version and export a clean, ATS-ready PDF instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">How it works</div>
+                <h2 class="solx-h2">A simple 4-step process to a <span class="g">tidy resume library</span></h2>
+                <div style="margin-top:26px">
+                    <div class="solx-step">
+                        <div><div class="n">Step 1</div><h3>Tailor a resume to a <span class="g">job</span></h3><p>Paste a job description and let TailorCV optimize your resume for that exact role.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128188; Job description</div><div class="rez-h">Senior Data Scientist</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div><div class="rez-line s"></div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 2</div><h3>It saves <span class="g">automatically</span></h3><p>The moment it is optimized, the resume is stored with its ATS score and the role it was written for.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#10024; Saved</div><div class="rez-ring" style="--p:91"><b>91</b></div><div class="rez-h">ATS score saved</div><div class="rez-line l"></div><div class="rez-badge" style="margin-top:10px">&#10003; Added to My Resumes</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 3</div><h3>Browse your <span class="g">whole library</span></h3><p>See every version side by side, each labelled with its role and score, so nothing gets mixed up.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128193; My Resumes</div><div class="rez-h">Google, Senior DS</div><div class="rez-line m"></div><div class="rez-h">Atlassian, PM</div><div class="rez-line m"></div><div class="rez-h">PayPal, Analyst</div><div class="rez-line m"></div><span class="rez-pill g">91%</span><span class="rez-pill b">87%</span><span class="rez-pill y">84%</span></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 4</div><h3>Re-download <span class="g">any version</span></h3><p>Grab a clean PDF of any saved resume in one click, whenever the next similar role comes up.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128196; Saved resume</div><div class="rez-name" style="font-size:16px;text-align:left">Alex Mitchell</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-btn" style="margin-top:12px">&#11015; Download PDF</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Loved by job seekers</div>
+                <h2 class="solx-h2">Organized, not <span class="g">overwhelmed</span></h2>
+                <div class="solx-quotes">
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I had eleven versions of my resume across my desktop and email. Now they all live in one place with their scores."</p><div class="who"><img src="/static/user_imges/12.jpg" alt=""><span><b>Sarah J.</b> <span>Atlassian</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Before an interview I can pull up the exact resume I sent them. That alone has saved me from some awkward moments."</p><div class="who"><img src="/static/user_imges/26.jpg" alt=""><span><b>Priya S.</b> <span>Google</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"A similar role opened up and I just re-downloaded the version I already tailored. Applied in under two minutes."</p><div class="who"><img src="/static/user_imges/85.jpg" alt=""><span><b>Michael R.</b> <span>Amazon</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Seeing all my ATS scores together showed me which versions were actually strong. I stopped reusing the weak ones."</p><div class="who"><img src="/static/user_imges/79.jpg" alt=""><span><b>Emily G.</b> <span>PwC</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"No more digging through downloads folders named resume_final_v3. Everything is labelled by the job."</p><div class="who"><img src="/static/user_imges/13.jpg" alt=""><span><b>Vicki B.</b> <span>PayPal</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"When you apply to fifty jobs, keeping track is half the battle. This solved that for me completely."</p><div class="who"><img src="/static/user_imges/22.jpg" alt=""><span><b>James W.</b> <span>Apple</span></span></div></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "_feature_more.html" %}
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Pricing</div>
+                <h2 class="solx-h2">Simple pricing, <span class="g">powerful features</span></h2>
+                <p class="solx-lead">Start free, upgrade only when you want unlimited access.</p>
+                <div class="solx-prices">
+                    <div class="solx-price">
+                        <div class="pname">Free</div>
+                        <div class="pamt"><sup>&#8377;</sup>0</div>
+                        <div class="pper">free forever &bull; no card needed</div>
+                        <ul><li>ATS score &amp; keyword match</li><li>Tailor your resume to a job</li><li>Save your resumes &amp; scores</li></ul>
+                        <a href="/signup?next=/my-resumes" class="solx-btn ghost">Start Free</a>
+                    </div>
+                    <div class="solx-price">
+                        <div class="pname">7-Day Pass</div>
+                        <div class="pamt"><sup>&#8377;</sup>149</div>
+                        <div class="pper">one-time &bull; full access for 7 days</div>
+                        <ul><li>Everything in Pro</li><li>Unlimited tailoring for a week</li><li>Great for an urgent job hunt</li></ul>
+                        <a href="/signup?next=/my-resumes" class="solx-btn ghost">Get 7-Day Pass</a>
+                    </div>
+                    <div class="solx-price pop">
+                        <div class="tag">Most Popular</div>
+                        <div class="pname">Pro</div>
+                        <div class="pamt"><sup>&#8377;</sup>167<span style="font-size:1rem;color:#9fb2d6">/mo</span></div>
+                        <div class="pper">billed &#8377;1,999 yearly &bull; &asymp; &#8377;5.5/day</div>
+                        <ul><li>Unlimited tailoring &amp; ATS scores</li><li>AI cover letters</li><li>Portfolio website</li><li>Mock interviews</li></ul>
+                        <a href="/signup?next=/my-resumes" class="solx-btn">Go Pro</a>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:20px"><a href="/pricing" style="color:#60a5fa;text-decoration:none;font-weight:600">See full pricing &amp; yearly discount &rarr;</a></div>
+            </div>
+        </div>
+
+        <div class="solx-band">
+            <div class="solx-band-inner">
+                <div class="solx-band-kicker">Lost track of your versions?</div>
+                <h2>Keep every resume <span class="ga">in one place</span>.</h2>
+                <p>Every resume you tailor is saved with its ATS score and the job it was written for, ready to re-download whenever you need it.</p>
+                <a href="/signup?next=/my-resumes" class="solx-btn">Save My Resumes, Free</a>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">FAQ</div>
+                <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
+                <div class="solx-faq" style="margin-top:32px">
+                    <details open><summary>What is My Resumes?</summary><p>It is your personal resume library. Every resume you tailor with TailorCV is saved there automatically, along with its ATS score and the job it was written for.</p></details>
+                    <details><summary>Do my resumes save automatically?</summary><p>Yes. As soon as a resume is optimized it is stored in your library, so you never lose a version when you close the tab.</p></details>
+                    <details><summary>Can I re-download an old resume?</summary><p>Yes, any saved version exports as a clean, ATS-ready PDF in one click, which is handy when a similar role comes up.</p></details>
+                    <details><summary>Can I see the ATS score of each version?</summary><p>Yes, every saved resume shows its score, so you can tell at a glance which versions are strongest.</p></details>
+                    <details><summary>Is it free?</summary><p>Yes. A free account saves your resumes and scores. Upgrade only when you want unlimited tailoring.</p></details>
+                </div>
+                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/my-resumes" class="solx-btn">Save My Resumes, Free</a></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if is_logged_in %}
+
 
     <main class="my-resumes-page">
         <div class="my-resumes-head">
@@ -182,10 +368,13 @@
         {% endif %}
     </main>
 
+    {% endif %}
+
     {% include "_footer.html" %}
 
     <script src="/static/auth_nav.js?v=13" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
+    {% if is_logged_in %}
     <script>
     function dlResume(id, btn) {
         var orig = btn.textContent;
@@ -212,5 +401,46 @@
         });
     }
     </script>
+    {% endif %}
+{% if not is_logged_in %}
+<script>
+(function(){
+  const canvas = document.getElementById('wave-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const waves = [
+    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
+    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
+    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
+    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
+    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
+    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
+  ];
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now();
+    waves.forEach(function(wv){
+      ctx.beginPath();
+      for(let x = 0; x <= W; x += 2){
+        const y = H * wv.yf + Math.sin(x * wv.freq + t * wv.speed) * wv.amp + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45 + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const r = wv.color[0], g = wv.color[1], b = wv.color[2];
+      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+      gr.addColorStop(0, 'rgba('+r+','+g+','+b+','+wv.alpha+')');
+      gr.addColorStop(0.5, 'rgba('+r+','+g+','+b+','+(wv.alpha*0.4)+')');
+      gr.addColorStop(1, 'rgba('+r+','+g+','+b+',0)');
+      ctx.fillStyle = gr; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+{% endif %}
 </body>
 </html>
