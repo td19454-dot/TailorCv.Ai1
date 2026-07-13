@@ -12,6 +12,14 @@ image: public/blog-images/resume-for-express-entry-canada.png
 
 When applying for Express Entry and Permanent Residency (PR) in Canada, your resume is not just a summary of your work history; it’s a critical tool that can influence your immigration journey and job search. In a competitive job market, especially for newcomers and international students, understanding the nuances of Canadian resume standards is essential. In this article, we will provide specific, practical advice tailored to help you craft a resume that meets Canadian expectations and maximizes your chances of securing a job.
 
+## Key Takeaways
+
+- Canadian resumes should exclude personal details like photos, age, or marital status to prevent bias.
+- Resumes can be two pages long, especially for candidates with significant experience, and should use Canadian English spelling.
+- Tailor your resume to each job by analyzing descriptions, using relevant keywords, and highlighting pertinent experiences.
+- Structure your resume with clear sections including a header, summary statement, work experience, education, skills, and certifications.
+- Ensure your resume is ATS-friendly by using standard headings, avoiding graphics, and saving in readable formats like .docx or .pdf.
+
 ## Understand Canadian Resume Norms
 
 Before diving into writing your resume, familiarize yourself with the specific norms and expectations in Canada. Here are key elements to keep in mind:

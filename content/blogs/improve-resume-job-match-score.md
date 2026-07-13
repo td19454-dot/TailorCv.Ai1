@@ -32,6 +32,14 @@ Check your current score and see your exact keyword gaps with [TailorCV's ATS ch
 
 ---
 
+## Key Takeaways
+
+- Your ATS match score is measurable and can be improved by targeting specific keyword gaps.
+- Start by assessing your current resume against the job description to identify missing keywords and sections needing work.
+- Rewrite your professional summary and skills section using exact keywords from the job description for immediate score improvement.
+- Replace any language mismatches with the exact terms used in the job description to enhance keyword alignment.
+- Embed keywords contextually in your top bullet points to leverage modern ATS systems' understanding of natural language.
+
 ## First: Know Your Baseline Score
 
 Before improving, measure.

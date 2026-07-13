@@ -16,6 +16,14 @@ Scan your own resume for generic signals instantly with the [free ATS and resume
 
 ---
 
+## Key Takeaways
+
+- Recruiters spend only 6-10 seconds initially scanning resumes, focusing on pattern-matching rather than reading in detail.
+- Use a tailored professional summary instead of an outdated objective statement to reflect the job's language and context.
+- Highlight achievements with specific metrics rather than listing generic responsibilities to stand out to recruiters.
+- Mirror the job description's language and include relevant skills to avoid being flagged as generic by ATS systems.
+- Avoid using the same resume for multiple applications, as it signals low interest and effort to recruiters.
+
 ## The 6-Second Rule Is Real
 
 Eye-tracking research consistently shows recruiters spend 6-10 seconds on an initial resume pass. In that window, they are not reading - they are pattern-matching. Generic resumes fail the pattern match immediately.

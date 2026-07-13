@@ -14,6 +14,14 @@ keywords: salary expectation answer, how to answer salary expectations, expected
 
 ---
 
+## Key Takeaways
+
+- Provide a research-based salary range that reflects your flexibility and interest in the role.
+- If asked about salary too early, request more information about the role's responsibilities before giving a number.
+- Always present a salary range where the lower end is still acceptable and avoid underselling yourself.
+- Common mistakes include saying "anything is fine," using current salary as a reference, and not researching before naming a figure.
+- Optimize your application materials to align closely with the specific job description, using relevant keywords and measurable results.
+
 ## Best Answer Formula
 
 Use:

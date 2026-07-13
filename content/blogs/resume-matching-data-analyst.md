@@ -27,6 +27,14 @@ Check your data analyst resume match score with [TailorCV's ATS checker](https:/
 
 ---
 
+## Key Takeaways
+
+- Tailor your resume to match the specific analytical context of the company, beyond just listing tools like SQL and Python.
+- Generic resumes fail because they lack context and do not reflect the specific analytics domain relevant to the job.
+- Use two layers of keyword matching: technical keywords for ATS and domain-specific keywords for human recruiters.
+- Categorize the job description to identify key business questions, stakeholders, required tools, and metrics to guide your keyword selection.
+- Audit your resume against the extracted keywords and rewrite your summary to align with the specific analytics domain and results achieved.
+
 ## Why Data Analyst Resume Matching Is Nuanced
 
 Generic [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) resumes fail because:

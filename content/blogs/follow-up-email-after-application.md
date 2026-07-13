@@ -14,6 +14,14 @@ A [follow-up email](https://thetailorcv.com/blog/how-to-follow-up-after-intervie
 
 ---
 
+## Key Takeaways
+
+- Follow up on job applications 5-7 business days after applying if the role is still open and relevant.
+- Use a concise email template that includes the job title, relevant skills, and a proof point to demonstrate fit.
+- A good follow-up email should be respectful, easy to read, and encourage a response from the recruiter.
+- Ensure your application materials align with the specific job description, using relevant keywords and measurable results.
+- Review your application for clarity and focus, avoiding generic phrases and distractions from the target role.
+
 ## When to Follow Up
 
 Follow up 5-7 business days after applying if:

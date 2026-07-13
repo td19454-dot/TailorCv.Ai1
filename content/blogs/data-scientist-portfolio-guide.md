@@ -12,6 +12,14 @@ keywords: data scientist portfolio, machine learning portfolio, ml projects, kag
 
 A data science portfolio should prove you can frame a problem, model it responsibly, and explain the impact - not just chase a leaderboard score. Most rejected portfolios are a wall of Kaggle notebooks with a final accuracy number and nothing else; the ones that get callbacks show a small number of projects done end to end, with the reasoning made visible. Pair this guide with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) for the fundamentals, and read the [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide) if you are not sure which track fits your background.
 
+## Key Takeaways
+
+- A strong data science portfolio should demonstrate problem framing, responsible modeling, and impact explanation, rather than just leaderboard scores.
+- Focus on 2-4 substantial projects instead of numerous Kaggle notebooks, emphasizing depth over volume.
+- Include at least one end-to-end project showcasing the entire modeling process, along with one or two technique-demonstration projects.
+- Ensure projects highlight your decision-making process, including what didn't work and why, rather than just presenting final metrics.
+- Dashboards can support your portfolio but should not dominate, as they may lead hiring managers to view you as an analyst rather than a data scientist.
+
 ## Data Scientist vs. Data Analyst Portfolios: What Actually Changes
 
 If you have read the analyst-focused portfolio advice, some of it will feel familiar - clean repos, clear write-ups, a hosted site. The difference is what the work has to demonstrate.

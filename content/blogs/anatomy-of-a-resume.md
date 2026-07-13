@@ -18,6 +18,14 @@ Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) so 
 
 ---
 
+## Key Takeaways
+
+- A resume should have a structured format with essential sections like Contact Information, Professional Summary, Skills, Work Experience, and Education.
+- The Contact Information section must include your name, professional email, phone number, and relevant online profiles while excluding personal details like full address and photo.
+- A strong Professional Summary is crucial; it should succinctly convey who you are, what you do, and your key strengths or accomplishments.
+- The Skills section is vital for ATS optimization; list relevant skills using the exact terminology from the job description and categorize them effectively.
+- Work Experience should detail your roles and achievements, emphasizing quantifiable results to showcase your impact in previous positions.
+
 ## Standard Resume Structure
 
 A well-structured resume follows this order:

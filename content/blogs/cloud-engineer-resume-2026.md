@@ -18,6 +18,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ---
 
+## Key Takeaways
+
+- A cloud engineer resume in 2026 should demonstrate expertise in designing, building, and managing reliable and secure cloud infrastructure, with a focus on architecture and cost governance.
+- Include certifications prominently, as they are crucial indicators of competency in cloud roles, along with measurable achievements in cost, availability, or security.
+- The recommended resume format includes a header, summary, technical skills, work experience, projects, certifications, and education, ideally kept to one or two pages.
+- Use specific ATS keywords related to cloud services, infrastructure as code, and security to enhance visibility in applicant tracking systems.
+- Bullet points should clearly articulate achievements using a formula that highlights the action taken, the cloud service involved, and the measurable result achieved.
+
 ## Best Cloud Engineer Resume Format
 
 1. Header

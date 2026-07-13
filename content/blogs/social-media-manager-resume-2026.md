@@ -16,6 +16,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ---
 
+## Key Takeaways
+
+- A social media manager resume in 2026 should focus on measurable results like follower growth, engagement rates, and revenue attribution.
+- Use an ATS-friendly format that includes a header with portfolio links, a summary with key metrics, skills, work experience, and education.
+- Strong resume summaries should highlight specific achievements, such as follower increases and revenue generated through social media campaigns.
+- Include relevant skills across platforms, content creation, paid social, analytics, and community management to enhance your resume.
+- Use action-oriented bullet points to describe past experiences, emphasizing growth and engagement metrics achieved through specific strategies.
+
 ## Best Social Media Manager Resume Format
 
 1. Header with [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) / handles links

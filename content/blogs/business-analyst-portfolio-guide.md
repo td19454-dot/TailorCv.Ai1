@@ -12,6 +12,14 @@ keywords: business analyst portfolio, ba portfolio website, requirements documen
 
 A business analyst's value is in translation - turning a vague business problem into requirements a technical team can build. That is hard to show in resume bullets but easy to show in a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with real artifacts. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide).
 
+## Key Takeaways
+
+- Include artifacts like requirements documents, process maps, case studies, and wireframes in your business analyst portfolio to showcase your skills.
+- Frame the narrative behind each artifact by detailing the business problem, your process, and the outcomes achieved.
+- Host your portfolio on a personal site or a private link, ensuring it aligns with your resume in terms of industry focus and methodology.
+- Avoid common mistakes such as sharing confidential documents, lacking narrative context, or omitting examples of stakeholder conflict resolution.
+- Create compelling case studies by selecting impactful projects, clearly defining problems, outlining your approach, and detailing the solutions implemented.
+
 ## What to Include
 - **A requirements document** - a BRD, user stories, or functional spec (sanitized) showing how you captured and structured stakeholder needs
 - **Process maps** - a before/after workflow diagram (BPMN, swimlane, or simple flowchart) for a process you improved

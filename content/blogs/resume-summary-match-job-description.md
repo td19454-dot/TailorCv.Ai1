@@ -30,6 +30,14 @@ Use [TailorCV's AI resume writer](https://www.thetailorcv.com/solutions) to gene
 
 ---
 
+## Key Takeaways
+
+- Your resume summary is crucial as it is the first section read by recruiters and scanned by ATS systems.
+- A generic summary fails to impress; it should be tailored to match the specific job description.
+- A strong matched summary should include the target role title, years of experience, top 2-3 job description keywords, and one strong result or context.
+- Start your summary with the exact job title and extract relevant keywords from the job description for better ATS alignment.
+- Avoid buzzwords and vague statements; focus on specificity and measurable results to capture attention.
+
 ## Why Your Summary Must Match the Job Description
 
 ### The ATS Reason

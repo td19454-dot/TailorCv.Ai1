@@ -18,6 +18,14 @@ The fastest starting point: [TailorCV's free AI mock interview](https://thetailo
 
 ---
 
+## Key Takeaways
+
+- Practicing job interviews at home involves speaking answers aloud, handling unexpected questions, and developing muscle memory for calmness during interviews.
+- AI mock interviews offer realistic practice with instant feedback and are available 24/7, making them ideal for solo preparation.
+- Self-recording answers on video helps evaluate body language and vocal delivery, essential for improving interview performance.
+- Mirror practice can enhance delivery of key responses in just 5 minutes a day over a week.
+- Engaging a friend or mentor for mock interviews provides valuable human feedback and follow-up questions that AI may not cover.
+
 ## Why Home Practice Matters
 
 Candidates who only read guides fail in interviews because:

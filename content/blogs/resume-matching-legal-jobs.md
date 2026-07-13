@@ -20,6 +20,14 @@ Paste any legal job posting into the [TailorCV resume optimizer](/solutions) to 
 
 ---
 
+## Key Takeaways
+
+- Legal job descriptions require precise language matching, as terminology and software requirements vary significantly across practice areas.
+- Use specific keywords related to practice areas, legal software, core skills, credentials, and soft skills to enhance resume relevance.
+- For paralegal roles, mirror the exact practice area and software tools listed in the job posting, and quantify your relevant experience.
+- Associate attorney resumes should emphasize practice area focus, bar admission status, and specific terminology used by the firm.
+- Avoid generic resumes by ensuring alignment with the specific language and requirements of the job description to improve chances of passing ATS filters.
+
 ## Why Legal Resumes Need Precise Matching
 
 Legal job descriptions are written by people trained to be exact with language, and they expect the same from candidates. Two specific challenges make legal resume matching harder than most industries:

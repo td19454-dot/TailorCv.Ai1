@@ -14,6 +14,13 @@ A resume matcher tool takes your resume and a specific job posting and tells you
 
 This post is about the tool itself: what it measures, how to work with its output, and how to avoid the two most common mistakes people make with it - treating a high score as a guarantee, and stuffing in keywords they cannot back up in an interview.
 
+## Key Takeaways
+
+- A resume matcher tool evaluates how well your resume aligns with a job description by comparing hard skills, responsibilities, seniority signals, language, and qualifications.
+- The match score reflects the overlap of required terms, semantic closeness in phrasing, experience-level alignment, and the depth of keyword presence in your resume.
+- High match scores do not guarantee job suitability; they serve as a signal to refine your resume rather than a definitive measure of employability.
+- A thorough reading of the job description is crucial for effective use of the matcher, focusing on required versus preferred qualifications and repeated terms.
+
 ## What a Resume Matcher Tool Actually Compares
 
 At a basic level, a resume matcher takes two documents - your resume and a job description - and evaluates how well one maps onto the other. It is not just a word-count exercise. A useful matcher looks at several layers at once:

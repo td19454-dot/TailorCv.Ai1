@@ -35,6 +35,13 @@ This guide gives you the strategy for breaking into emerging roles before the ma
 
 ---
 
+## Key Takeaways
+
+- Emerging job titles like "AI Engineer" and "Prompt Engineer" lack standardized job descriptions and skill sets, making resume tailoring challenging.
+- To tailor your resume effectively, analyze 10-15 job descriptions to identify common skills and responsibilities across postings.
+- Research LinkedIn profiles of individuals in your target roles to understand their backgrounds, emphasized skills, and daily work descriptions.
+- Investigate the specific AI stack used by companies before applying, as context is crucial for emerging roles.
+
 ## The Challenge With Emerging Roles
 
 When a role is brand new, several problems arise simultaneously:

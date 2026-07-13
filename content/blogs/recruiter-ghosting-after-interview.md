@@ -14,6 +14,13 @@ You had a great interview, felt genuine momentum, and then - silence. No email, 
 
 ---
 
+## Key Takeaways
+
+- Recruiter ghosting often stems from internal processes and circumstances unrelated to your interview performance, such as budget cuts or internal candidates being preferred.
+- It's normal to wait 3-5 business days after an interview before interpreting silence, as various internal discussions take time.
+- If given a specific timeline for feedback, wait until one business day after that date to follow up, as delays are common.
+- After two polite follow-ups with no response over 2-3 weeks, it's reasonable to consider the process closed, even without formal rejection.
+
 ## Why Recruiters Go Silent (It's Rarely About You)
 
 It helps to understand the mechanism behind ghosting, because most of it happens for reasons that have nothing to do with your interview performance. Recruiters are not usually choosing to be cruel - they're operating inside systems that make silence the path of least resistance.

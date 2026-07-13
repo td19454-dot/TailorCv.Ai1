@@ -22,6 +22,14 @@ Before negotiating, your resume needs to demonstrate the value you are asking fo
 
 ---
 
+## Key Takeaways
+
+- Most candidates accept the first salary offer, often leaving significant money on the table; negotiation can yield a 10-20% increase.
+- Always negotiate unless in fixed pay roles, hourly positions with collective agreements, or if you're already at the top of your market range.
+- The best time to negotiate is after receiving a written or verbal offer, not during initial interviews.
+- Research your market value using multiple sources to establish a target salary range and understand your negotiation leverage.
+- Use a structured negotiation script: express enthusiasm, clearly state your desired salary, and then remain silent to create pressure on the employer.
+
 ## Should You Always Negotiate?
 
 Almost always, yes. Here are the exceptions where you might not:

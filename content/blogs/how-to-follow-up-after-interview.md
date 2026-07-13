@@ -18,6 +18,14 @@ Before your interview, make sure your [resume](https://www.thetailorcv.com/templ
 
 ---
 
+## Key Takeaways
+
+- Following up after a job interview demonstrates professionalism and enthusiasm, reinforcing your candidacy.
+- Send a thank-you email within 24 hours of the interview, personalizing it for each interviewer if applicable.
+- Keep the thank-you email concise, under 150 words, including a genuine thank-you, a specific discussion point, and a brief restatement of interest.
+- Avoid asking about the hiring timeline or seeking feedback in your initial thank-you email.
+- A thoughtful thank-you note can positively influence hiring managers' perceptions of candidates.
+
 ## Why Follow Up After an Interview?
 
 Following up:

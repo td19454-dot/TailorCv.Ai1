@@ -16,6 +16,13 @@ After choosing your font, start from an [ATS-friendly template](https://www.thet
 
 ---
 
+## Key Takeaways
+
+- Font choice significantly impacts readability, professionalism, and ATS compatibility of your resume.
+- Recommended fonts for 2026 include Calibri, Garamond, Georgia, Arial, Cambria, Lato, and Helvetica for their clarity and ATS support.
+- Avoid using fonts like Comic Sans, Papyrus, and script styles, as they hinder readability and ATS parsing.
+- Times New Roman and Verdana are acceptable but not ideal; consider more modern alternatives for a contemporary feel.
+
 ## Why Font Choice Matters
 
 ### Readability

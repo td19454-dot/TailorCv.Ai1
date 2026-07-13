@@ -16,6 +16,14 @@ Check what your resume is missing for any specific job with the [free ATS checke
 
 ---
 
+## Key Takeaways
+
+- Tailor your resume for each job application, focusing on how to present and prioritize your core content rather than rewriting it entirely.
+- Always change your resume headline to match the job title in the posting, as this significantly impacts ATS scoring and recruiter impressions.
+- Update your professional summary to reflect the specific role, including the job title, prioritized skills, and key outcomes relevant to the employer.
+- Adjust your skills section by reordering and swapping terms to align with the specific tools and skills mentioned in the job posting.
+- Focus your effort based on the job's priority: spend 5 minutes for low-priority applications and up to 60 minutes for high-priority or dream roles.
+
 ## The Core Principle: Your Resume Is a Product, Not a Document
 
 A generic resume is built around what you have done. A [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) is built around what *this employer needs*. The core content - your work history, education, certifications - stays the same. What changes is how you present and prioritize it.

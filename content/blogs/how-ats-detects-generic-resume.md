@@ -16,6 +16,13 @@ See how your resume scores right now with the [free ATS checker](/solutions).
 
 ---
 
+## Key Takeaways
+
+- ATS systems evaluate resumes through parsing, keyword matching, section weighting, job title alignment, and contextual scoring.
+- Generic resumes often fail to match critical keywords specific to job postings, resulting in low keyword match scores.
+- Job title alignment is crucial; using vague or internal titles can lead to significant mismatches and low ATS scores.
+- Non-standard section names in generic resumes can confuse ATS parsers, negatively impacting the overall score.
+
 ## What ATS Actually Does When It Receives Your Resume
 
 When you submit an application, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) does not just store your resume - it parses it, scores it, and ranks it against every other candidate before a recruiter opens a single file. That ranking determines who gets a call.

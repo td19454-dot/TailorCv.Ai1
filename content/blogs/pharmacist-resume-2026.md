@@ -16,6 +16,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ---
 
+## Key Takeaways
+
+- A pharmacist resume in 2026 should highlight clinical competence, licensure, and medication safety records relevant to the specific pharmacy setting.
+- Use an ATS-friendly format that includes a header with licensure, a summary, skills, work experience, and education within one to two pages.
+- Strong bullet points should quantify achievements and demonstrate clinical or operational impact, using action verbs and specific outcomes.
+- Incorporate relevant ATS keywords such as "medication therapy management," "patient counseling," and "controlled substances" to enhance visibility to employers.
+- Tailor your resume summary to reflect your experience level, emphasizing key skills and certifications that align with the desired pharmacy role.
+
 ## Best Pharmacist Resume Format
 
 1. Header with licensure

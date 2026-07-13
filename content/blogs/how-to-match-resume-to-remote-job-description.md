@@ -25,6 +25,13 @@ Analyze your remote job resume match with [TailorCV's ATS score checker](https:/
 
 ---
 
+## Key Takeaways
+
+- Remote job applications face global competition, requiring resumes to stand out beyond local candidates.
+- Remote job descriptions include standard role requirements plus additional remote-specific competencies that candidates often overlook.
+- Essential remote-specific keywords to include in resumes are related to communication, tools, work style, and output delivery.
+- Candidates should explicitly list remote collaboration tools in their skills section and highlight any remote work history in their experience.
+
 ## Why Remote Job Descriptions Are Different
 
 [remote job](https://thetailorcv.com/blog/remote-job-search-guide) descriptions include all the standard role requirements.

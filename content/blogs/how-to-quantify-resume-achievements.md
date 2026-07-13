@@ -22,6 +22,14 @@ Before adding your [quantified bullets](https://thetailorcv.com/blog/how-to-writ
 
 ---
 
+## Key Takeaways
+
+- Quantifying achievements on a resume makes it more memorable and credible, helping candidates stand out to recruiters.
+- Use five types of numbers: scale, impact, speed, efficiency, and volume to showcase your contributions effectively.
+- Recruiters typically spend only 6-10 seconds scanning resumes, so numbers help grab their attention and provide evidence of your capabilities.
+- If you think you have no metrics, consider various aspects of your work, such as user base, project timelines, or team size to find quantifiable data.
+- Honest approximations can be used when exact numbers are unavailable, as they still provide valuable context to your achievements.
+
 ## Why Numbers Matter on a Resume
 
 Recruiters spend an average of 6-10 seconds scanning a resume. Numbers are visually distinctive - they stop the eye. "Reduced deployment time" slides past. "Reduced deployment time from 45 minutes to 8 minutes" sticks.

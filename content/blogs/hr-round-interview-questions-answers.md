@@ -18,6 +18,14 @@ Review the [complete interview preparation guide](https://thetailorcv.com/blog/h
 
 ---
 
+## Key Takeaways
+
+- HR interviews assess communication clarity, culture fit, motivation, salary alignment, and professionalism.
+- Key questions include "Tell me about yourself," "Why do you want to work here?" and "What are your salary expectations?"
+- Candidates should prepare STAR stories and know their resume thoroughly for effective responses.
+- Researching the company and preparing a salary range are crucial for success in the HR round.
+- Always prepare questions to ask the interviewer to demonstrate interest and engagement.
+
 ## What HR Interviewers Evaluate
 
 - **Communication clarity** - can you explain your background concisely?

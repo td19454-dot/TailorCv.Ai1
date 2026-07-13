@@ -18,6 +18,14 @@ If you are deciding between offers, read the [salary negotiation guide](https://
 
 ---
 
+## Key Takeaways
+
+- Decline a job offer promptly to show professionalism and respect for the company's time.
+- Use email as the standard method for declining, but consider a phone call for strong relationships or senior roles.
+- A professional decline should include gratitude, a clear statement of decline, a brief positive reason, and an invitation to keep the relationship open.
+- Sharing a reason for declining is optional; if chosen, keep it positive and avoid criticizing the company or offer.
+- Maintaining good relations can lead to future opportunities with the company or within your network.
+
 ## When and How to Decline
 
 ### Timing

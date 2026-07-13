@@ -20,6 +20,14 @@ Run your resume against the job posting first with the [TailorCV ATS score check
 
 ---
 
+## Key Takeaways
+
+- Greenhouse ATS relies on structured scorecards and keyword matching to rank resumes, making it crucial to align your resume with the job description.
+- Use simple formatting and standard section headers to improve parsing accuracy and make your qualifications easily scannable.
+- Tailor your resume summary for each application to reflect specific job requirements and company values, avoiding generic statements.
+- Always include a cover letter or "why this role" response to enhance your application and reinforce your fit for the position.
+- Ensure your resume is concise, ideally 1-2 pages, to accommodate the fast-paced review processes of startup hiring teams.
+
 ## How Greenhouse Parses and Ranks Resumes
 
 ### Structured Data Extraction

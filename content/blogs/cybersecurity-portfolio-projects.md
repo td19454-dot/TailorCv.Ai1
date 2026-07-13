@@ -14,6 +14,14 @@ A cybersecurity [portfolio](https://thetailorcv.com/blog/how-to-build-profession
 
 ---
 
+## Key Takeaways
+
+- A strong cybersecurity portfolio showcases your ability to investigate, document, automate, and communicate security work beyond just certifications.
+- Recommended projects include a home lab incident report, a SIEM dashboard case study, a vulnerability assessment, a cloud security checklist, and a Python security script.
+- Each project should include the problem, tools used, steps taken, findings, screenshots, recommendations, and lessons learned to demonstrate thorough documentation.
+- Tailor your application materials to specific job descriptions, ensuring key skills and outcomes align with the role you are applying for.
+- Use a practical checklist to refine your application, focusing on clarity, keyword inclusion, measurable results, and overall alignment with the target role.
+
 ## Best Cybersecurity [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) Projects
 
 ### 1. Home Lab Incident Report

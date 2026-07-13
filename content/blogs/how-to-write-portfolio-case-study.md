@@ -12,6 +12,14 @@ keywords: portfolio case study, case study template, how to write case study, pr
 
 A case study turns a project into a story a hiring manager can follow and remember. It is the single highest-leverage thing you can add to a portfolio, because it converts "here is a thing I made" into "here is how I think and what I achieve." This template works for developers, designers, marketers, PMs, and analysts alike. Pair it with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
+## Key Takeaways
+
+- A case study transforms a project into a narrative that showcases your thinking and achievements, making it a valuable addition to your portfolio.
+- Follow a universal template: Context, Problem, Process, Solution, and Outcome, to structure your case study effectively.
+- Lead with quantifiable outcomes at the top to capture attention and demonstrate impact immediately.
+- Use visuals and keep case studies concise; 2-4 strong examples are more effective than many weaker ones.
+- Ensure consistency across your resume, LinkedIn, and portfolio to present a unified professional story.
+
 ## The Universal Template
 1. **Context** - what it was, your role, the timeline, the constraints.
 2. **Problem** - the real challenge, framed sharply (not "build an app" but "users dropped off at checkout").

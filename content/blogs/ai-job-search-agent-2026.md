@@ -16,6 +16,14 @@ Use AI as a strategy assistant, not as a replacement for your judgment.
 
 ---
 
+## Key Takeaways
+
+- Use an AI job search agent as a strategy assistant to enhance your application without losing your personal voice.
+- Focus on resume-job matching by checking your resume against the job description and improving weak sections with targeted keywords.
+- Verify all details in your application, including numbers, skills, and tone, to ensure authenticity and specificity.
+- Follow a simple workflow: target a job, compare your resume, add keywords, rewrite weak bullets, generate a cover letter, and practice interview questions.
+- The goal of using AI is to streamline the application process while maintaining a personalized and impactful presentation.
+
 ## What an AI [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) Agent Should Do
 
 A useful AI [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) workflow should help you:

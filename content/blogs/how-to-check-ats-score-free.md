@@ -18,6 +18,13 @@ If you want the full background first, start with the [ATS Score Guide for 2026]
 
 ---
 
+## Key Takeaways
+
+- An ATS score is a numerical representation of how well your resume matches a specific job description, with higher scores increasing your chances of being shortlisted.
+- Checking your ATS score before applying helps identify formatting issues, missing keywords, and weak phrasing, allowing for improvements before submission.
+- To check your ATS score for free, upload your resume and the job description to an ATS score checker, which provides a score and actionable feedback.
+- A good ATS score is typically 80 or above, indicating a strong match, while scores below 60 pose a high risk of being filtered out.
+
 ## What Is an ATS Score?
 
 An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) (Applicant Tracking System) score is a number, usually out of 100, that estimates how well your resume matches a specific [job description](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes). The higher the score, the more likely your resume is to be shortlisted by both the software and the recruiter.

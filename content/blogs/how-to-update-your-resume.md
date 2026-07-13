@@ -16,6 +16,13 @@ When your resume is updated, run it through the [TailorCV ATS checker](https://w
 
 ---
 
+## Key Takeaways
+
+- Update your resume immediately after significant events such as starting a new job, completing a major project, or receiving a promotion.
+- Conduct a quarterly review to add new achievements and refresh your skills section, and perform an annual deep review to rewrite weak bullet points and update your summary.
+- Early career professionals should prioritize adding internships and projects immediately, while mid-career professionals should focus on quantifying achievements and compressing older roles.
+- Remove outdated content, such as high school activities and generic skills, to keep your resume relevant and impactful.
+
 ## When to Update Your Resume
 
 ### Immediately After These Events

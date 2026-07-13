@@ -20,6 +20,14 @@ Paste any insurance job posting into the [TailorCV resume optimizer](/solutions)
 
 ---
 
+## Key Takeaways
+
+- Insurance job descriptions require precise matching of licenses, lines of business, and systems to avoid being filtered out by ATS software.
+- Key resume elements include specific licensing requirements, domain knowledge for different lines of business, and familiarity with designated software tools.
+- For underwriting roles, highlight relevant licenses, exact lines of business, and quantify achievements like book size or loss ratios.
+- Claims adjuster resumes should specify claims management systems used, track metrics like claim volume, and mirror licensing requirements.
+- Sales resumes must emphasize production numbers, match product lines, and clearly state licensing status to align with job postings.
+
 ## Why Insurance Resumes Need Precise Matching
 
 Three factors make insurance resume matching especially detail-sensitive:

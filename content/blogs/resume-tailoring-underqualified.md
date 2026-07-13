@@ -34,6 +34,14 @@ This guide shows you how to tailor your resume when you are underqualified - hon
 
 ---
 
+## Key Takeaways
+
+- Job descriptions are often wishlists, and most candidates do not need to meet every requirement to be considered.
+- Apply for roles when you meet at least 60-70% of qualifications, especially if missing skills are learnable and you have strong transferable experience.
+- Create a side-by-side comparison of job requirements and your qualifications to identify strengths, areas for growth, and skills to omit.
+- Lead your resume with your strengths and relevant achievements rather than focusing on what you lack. 
+- Highlight your ability to learn and grow, as hiring managers often seek candidates who can develop into the role.
+
 ## The Truth About "Required" Qualifications
 
 "Required" in a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) rarely means "required to be considered."

@@ -14,6 +14,14 @@ An [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) [cov
 
 ---
 
+## Key Takeaways
+
+- An ATS-friendly cover letter should be clear, searchable, and targeted, avoiding fancy formatting.
+- Structure your cover letter with a greeting, target role, relevant experience, matched skills, and a short closing.
+- Use specific keywords from the job description naturally within the context of your experience.
+- Avoid generic openings, large graphics, and lengthy personal stories; the cover letter should complement your resume.
+- Regularly update and optimize your application materials based on specific job postings to demonstrate relevant skills and experiences.
+
 ## Best [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) Cover Letter Structure
 
 Use this format:

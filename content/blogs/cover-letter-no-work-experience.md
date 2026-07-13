@@ -9,9 +9,18 @@ image: public/blog-images/cover-letter-no-work-experience.png
 slug: cover-letter-no-work-experience
 keywords: cover letter no work experience, cover letter for students, first job cover letter, entry level cover letter examples
 ---
+
 Having no formal work experience does not mean you have nothing to say in a cover letter. Every student and first-job seeker has coursework, projects, internships, clubs, or volunteer work that demonstrates the same qualities employers are actually screening for: reliability, initiative, and the ability to learn quickly.
 
 Before writing the letter, make sure your [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) is already telling a strong story, then draft your first version fast with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter).
+
+## Key Takeaways
+
+- Highlight relevant experiences such as class projects, internships, part-time jobs, and volunteer work to demonstrate your skills and reliability.
+- Start your cover letter with a specific connection to the role or company, avoiding generic openings.
+- Use measurable outcomes from your experiences to showcase your capabilities and align them with the job description.
+- Close with enthusiasm, clearly stating your availability and eagerness to contribute to the team.
+- Avoid common mistakes like apologizing for lack of experience, using generic phrases, and neglecting company research.
 
 ## What to Use Instead of "Work Experience"
 

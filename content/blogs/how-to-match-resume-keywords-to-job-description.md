@@ -24,6 +24,14 @@ Use the [TailorCV keyword analyzer](https://www.thetailorcv.com/solutions) to in
 
 ---
 
+## Key Takeaways
+
+- Keywords are crucial for getting your resume past ATS filters and into the hands of hiring managers.
+- Candidates often use generic terms instead of specific keywords, which can lead to missed opportunities.
+- Focus on matching hard skills and tools, as these are weighted more heavily in ATS scoring.
+- Follow a step-by-step process to identify and separate required and preferred keywords from job descriptions.
+- Regularly audit your resume to ensure it includes the necessary keywords for each job application.
+
 ## Why Keyword Matching Is the #1 ATS Factor
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems work by comparing your resume to the job description.

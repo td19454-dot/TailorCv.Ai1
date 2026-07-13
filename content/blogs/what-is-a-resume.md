@@ -16,6 +16,14 @@ Once you understand what a resume is supposed to do, use the [TailorCV ATS score
 
 ---
 
+## Key Takeaways
+
+- A resume is a targeted marketing document that summarizes your relevant work experience, skills, and accomplishments to secure an interview.
+- Its primary purpose is to convince hiring managers to invite you for an interview, not to get you the job itself.
+- Resumes first pass through Applicant Tracking Systems (ATS), which filter them based on keywords and formatting, making ATS optimization essential.
+- After ATS, recruiters and HR professionals quickly scan resumes for role match and standout accomplishments, often in under 10 seconds.
+- Only resumes that pass through ATS and receive positive reviews from recruiters and hiring managers lead to interview invitations.
+
 ## What Is a Resume?
 
 A resume is a one-to-two page professional document that summarizes your work experience, skills, education, and accomplishments in a format designed to convince a specific employer to [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) you.

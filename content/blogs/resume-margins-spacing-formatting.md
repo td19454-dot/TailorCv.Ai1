@@ -18,6 +18,13 @@ Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) tha
 
 ---
 
+## Key Takeaways
+
+- Use standard margins of 0.75-1 inch for a professional appearance; avoid going below 0.5 inch to maintain readability.
+- Line spacing should be set between 1.0-1.15 for paragraphs and bullets, with 6-12pt space between sections for clarity.
+- Utilize white space effectively to enhance document scan-ability and prevent a cluttered look.
+- A single-column layout is recommended for ATS compatibility and recruiter preference, while two-column formats should generally be avoided.
+
 ## Resume Margins: The Exact Numbers
 
 ### Standard Margins (Recommended)

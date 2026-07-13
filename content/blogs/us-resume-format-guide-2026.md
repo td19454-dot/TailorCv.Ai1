@@ -12,6 +12,14 @@ image: public/blog-images/us-resume-format-guide-2026.png
 
 Writing a resume for the American job market can be a daunting task, especially for new graduates, international candidates, and those seeking visa sponsorships. The U.S. has specific resume norms that differ significantly from practices in other countries. Understanding these norms is crucial for crafting a compelling resume that stands out to hiring managers and passes through Applicant Tracking Systems (ATS). This guide will walk you through the essential components of a U.S. resume, providing practical tips and examples to help you create a document that effectively showcases your skills and experiences.
 
+## Key Takeaways
+
+- Resumes for early-career professionals should be one page, while experienced candidates may extend to two pages.
+- Include only essential personal information: name, phone number, email, and LinkedIn profile; avoid photos and personal details like age.
+- Start bullet points with strong action verbs and quantify achievements to provide context and scale.
+- Organize your resume with clear sections: Contact Information, Summary/Objective, Education, Work Experience, Skills, and optional Additional Sections.
+- Optimize your resume for Applicant Tracking Systems by using standard headings, avoiding graphics, and incorporating relevant keywords from the job description.
+
 ## Understanding U.S. Resume Norms
 
 In the U.S., resumes typically follow a specific format and structure. Here are some key points to keep in mind:

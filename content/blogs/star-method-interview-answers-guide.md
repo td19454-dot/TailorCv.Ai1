@@ -18,6 +18,14 @@ Before your next interview, review the [behavioral interview questions guide](ht
 
 ---
 
+## Key Takeaways
+
+- The STAR method stands for Situation, Task, Action, and Result, providing a structured approach to answering behavioral interview questions.
+- Using STAR helps keep answers focused and concise, typically under two minutes, making it easier for interviewers to evaluate responses.
+- In 2026, interviewers assess specific competencies like leadership and problem-solving, which STAR effectively highlights through clear context and measurable results.
+- Prepare a bank of 8-10 STAR stories covering various themes such as leadership and conflict resolution to enhance interview readiness.
+- Practice storytelling with AI mock interviews to refine and polish your responses for different question types.
+
 ## What Is the STAR Method?
 
 **S - Situation:** Set the scene. Where were you? What was the context?

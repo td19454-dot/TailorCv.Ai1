@@ -16,6 +16,14 @@ Keep the [free ATS score checker](/solutions) open so you can re-scan after each
 
 ---
 
+## Key Takeaways
+
+- Start by scanning your resume with an ATS score checker to establish a baseline score and identify areas for improvement.
+- Fix formatting issues first by using a single-column layout and standard headings to enhance readability for ATS systems.
+- Match keywords from the job description to your resume, incorporating them naturally in your summary, skills section, and experience bullet points.
+- Quantify your achievements to demonstrate impact, using specific metrics to strengthen your resume's effectiveness.
+- Regularly re-scan your resume after each edit to track improvements and aim for an ATS score of 80 or higher.
+
 ## First, Get Your Baseline
 
 Before you change anything, scan your current resume against the exact [job description](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job) using the [ATS score checker](/solutions). Note:

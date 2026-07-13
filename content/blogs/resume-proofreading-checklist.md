@@ -16,6 +16,14 @@ After completing this checklist, run your resume through the [TailorCV ATS check
 
 ---
 
+## Key Takeaways
+
+- Use strong action verbs at the start of each bullet point and quantify achievements to enhance impact.
+- Tailor your resume summary and skills section to match the specific job description for better ATS compatibility.
+- Ensure consistency in date formats, bullet styles, and font throughout the resume to maintain a professional appearance.
+- Avoid including irrelevant content, such as outdated roles or the phrase "References available upon request."
+- Stick to a single-column layout and keep the resume length appropriate based on your experience level.
+
 ## How to Use This Checklist
 
 Go through each item methodically before every application. For tailored applications (which should be every application), run the checklist on each version. The 10-15 minutes this takes has a direct, measurable impact on your callback rate.

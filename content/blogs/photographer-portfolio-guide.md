@@ -8,6 +8,14 @@ image: public/blog-images/photographer-portfolio-guide.webp
 
 A photography portfolio sells two things at once: a feeling and a standard. Tight curation, smart sequencing, and fast galleries are what turn browsers into bookings. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide).
 
+## Key Takeaways
+
+- Curate your portfolio by focusing on a specific niche and include 20-40 strong images organized into clear galleries.
+- Sequence your images to create a captivating flow, starting and ending with your best work while balancing different styles.
+- Ensure your portfolio is technically optimized with fast-loading images, a clean layout, and mobile-first design.
+- Choose a suitable platform for hosting your portfolio, considering user-friendliness and customization options.
+- Keep your resume and portfolio aligned in terms of branding and messaging to avoid confusion for potential clients or employers.
+
 ## Curate by Intent
 Show only the niche you want to be booked for. A wedding client should not have to scroll past product shots. Aim for 20-40 strong images, organized into clear galleries (e.g., Weddings, Portraits, Editorial). 
 

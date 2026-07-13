@@ -21,6 +21,14 @@ Use [TailorCV's AI optimizer](https://www.thetailorcv.com/solutions) to handle J
 
 ---
 
+## Key Takeaways
+
+- Use a modular resume system to efficiently tailor one strong base resume for multiple similar job descriptions.
+- Create a master resume containing your full work history, skills, certifications, and education, which serves as your source of truth.
+- Group similar target roles into clusters and build a tailored resume variant for each cluster based on representative job descriptions.
+- For each application, make minor adjustments to the cluster variant by adding specific keywords and rewriting sections to match the job description.
+- Maintain 1-3 resume variants depending on the number of related role types you are targeting.
+
 ## The Core Idea: One Base, Many Variants
 
 You do not need a different resume for every job.

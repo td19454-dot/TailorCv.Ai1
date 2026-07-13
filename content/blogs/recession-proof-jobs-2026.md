@@ -16,6 +16,14 @@ If you're evaluating a move into a more stable field, start by checking how your
 
 ---
 
+## Key Takeaways
+
+- No job is completely "recession-proof," but certain fields like healthcare and essential infrastructure are more resistant to layoffs due to consistent demand.
+- Jobs with non-discretionary demand, regulatory requirements, counter-cyclical demand, and maintenance spending are generally more resilient during economic downturns.
+- Healthcare roles, particularly nursing and pharmacy, remain in demand regardless of economic conditions, with most spending backed by insurance or government funding.
+- Skilled trades benefit from both non-discretionary demand and the trend of repairing rather than replacing, keeping them busy during recessions.
+- Evaluating roles based on their alignment with these resilience patterns can help identify more stable career options.
+
 ## What Actually Makes a Job Recession-Resistant
 
 "Recession-resistant" isn't a fixed list of job titles - it's a pattern. Once you understand the pattern, you can evaluate any role or industry yourself instead of relying on someone else's list. Four forces tend to drive resilience:

@@ -16,6 +16,14 @@ You can get both perspectives by scanning your resume with the [free ATS score c
 
 ---
 
+## Key Takeaways
+
+- An ATS score measures how well a resume matches a specific job description and its compatibility with Applicant Tracking Software.
+- A resume score evaluates the overall quality of a resume, focusing on structure, clarity, and readability, without being tied to a specific job.
+- Both scores share best practices like clean formatting and quantified achievements, but only the ATS score captures keyword matching for a job.
+- Prioritize the ATS score for each job application after establishing a strong foundation with a high-quality resume.
+- Common mistakes include using generic templates and ignoring job-specific keywords, which can negatively impact both scores.
+
 ## Quick Definitions
 
 | Term | What It Measures |

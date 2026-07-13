@@ -14,6 +14,13 @@ If you have been applying to jobs and hearing nothing back, the problem may not 
 
 In this guide you will learn what an [ATS score](https://thetailorcv.com/blog/ats-score-guide) is, why it decides your job application, how to check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) for free in about 30 seconds, what a good score looks like, and exactly how to improve it.
 
+## Key Takeaways
+
+- An ATS score checker evaluates your resume's compatibility with Applicant Tracking Systems, scoring it out of 100 based on structure, formatting, and keyword matching.
+- A low ATS score may indicate issues with contact information readability, missing keywords, problematic layout, or unclear section labeling.
+- To check your ATS score for free, paste your resume and target job description into an ATS score checker, which will provide a detailed breakdown of your resume's performance.
+- A good ATS score ranges from 80-100, indicating a well-matched and parseable resume, while scores below 60 suggest significant revisions are needed.
+
 ## What Is an ATS Score Checker?
 
 An [ATS score checker](https://www.thetailorcv.com/solutions) is a tool that scans your resume the same way a real applicant tracking system does, then gives you a score out of 100 based on how well your resume is structured, formatted, and matched to a job description.

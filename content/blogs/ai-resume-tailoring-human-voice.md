@@ -41,6 +41,14 @@ This guide shows you how to use AI to [tailor your resume](https://thetailorcv.c
 
 ---
 
+## Key Takeaways
+
+- AI can effectively identify keywords and perform gap analysis by comparing your resume with job descriptions.
+- It excels at reformatting vague statements into structured, results-oriented bullet points when given specific information.
+- AI can match terminology between your resume and job descriptions to enhance relevance.
+- To avoid hollow language in AI-generated resumes, provide specific metrics, accomplishments, and personal insights.
+- The key to successful AI-assisted resume tailoring is feeding it real, detailed inputs rather than relying on generic prompts.
+
 ## What AI Is Actually Good at in Resume Tailoring
 
 Before we fix the problem, let us understand what the tool does well.

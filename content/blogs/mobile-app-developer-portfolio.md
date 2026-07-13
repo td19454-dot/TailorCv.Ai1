@@ -12,6 +12,14 @@ keywords: mobile developer portfolio, ios developer portfolio, android developer
 
 Mobile development is one of the few disciplines where you can point a recruiter directly to a live app on the App Store or Google Play - use that. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) ties your published apps, code, and store metrics together in one place. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
 
+## Key Takeaways
+
+- Include 2-4 published apps in your portfolio with links, screenshots, and descriptions of your role.
+- Highlight store performance metrics like downloads and ratings, if permissible, to showcase your app's success.
+- Provide code samples on GitHub that demonstrate your architectural choices and testing practices.
+- Create a demo video or GIF for each app to facilitate easy evaluation without requiring installation.
+- Ensure your resume, GitHub, and portfolio align in terms of platforms, architecture patterns, and featured apps for a cohesive narrative.
+
 ## What to Include
 - **2-4 published apps** - App Store/Google Play links, screenshots, and a short description of your role on each
 - **Store performance** - downloads, ratings, or retention if you are allowed to share them

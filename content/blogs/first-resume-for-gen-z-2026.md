@@ -16,6 +16,14 @@ Before you finalize it, run it through the [free ATS score checker](https://www.
 
 ---
 
+## Key Takeaways
+
+- Hiring managers prioritize clear communication, initiative, and the ability to learn over extensive work history on a first resume.
+- A one-page resume is preferred; focus on clarity and avoid padding with unnecessary information.
+- Include relevant projects, coursework, and experiences that demonstrate skills, regardless of whether they were paid positions.
+- Use a concise skills section listing only tools and platforms you are genuinely comfortable with, and provide a specific summary instead of a vague objective.
+- Structure your experience descriptions with action verbs, measurable results, and specific details to effectively showcase your capabilities.
+
 ## What Actually Matters on a First Resume
 
 - **Clarity over length** - one clean page beats two padded ones every time. See [ideal resume length guide](https://thetailorcv.com/blog/ideal-resume-length-guide).

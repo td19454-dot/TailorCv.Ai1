@@ -18,6 +18,14 @@ Before reaching out, make sure your resume is ready. Use the [TailorCV ATS score
 
 ---
 
+## Key Takeaways
+
+- Cold emailing recruiters can significantly increase your chances of getting noticed, especially when personalized and concise.
+- Effective cold emails should be under 100 words, include a specific role reference, and have a clear, confident tone.
+- Recruiter emails should have five key elements: a relevant subject line, a personal opener, a brief introduction, a reason for reaching out, and a clear ask.
+- Utilize platforms like LinkedIn, company career pages, and email finder tools to locate recruiter contact information.
+- The article provides five templates for cold emails tailored to different scenarios, emphasizing personalization and relevance.
+
 ## Does Cold Emailing Recruiters Actually Work?
 
 Yes - but only when done correctly.

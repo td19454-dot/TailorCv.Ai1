@@ -27,6 +27,14 @@ This guide walks you through every difference, every requirement, and exactly ho
 
 ---
 
+## Key Takeaways
+
+- Federal resumes are typically 3-5 pages long and must follow a specific format required by USAJOBS, unlike private-sector resumes which are usually 1-2 pages.
+- Essential details such as exact employment dates, hours worked per week, salary or grade level, and supervisor contact information must be included in federal resumes.
+- KSA (Knowledge, Skills, and Abilities) statements are required for many federal positions, emphasizing the need for detailed descriptions of duties and accomplishments.
+- It is recommended to use the USAJOBS Resume Builder to ensure compliance with federal requirements and to avoid disqualification due to missing information.
+- Federal resumes are reviewed by HR specialists who evaluate qualifications line by line, making it crucial to provide comprehensive evidence of meeting job criteria.
+
 ## Federal Resume vs. Private-Sector Resume: The Core Differences
 
 | Element | Private-Sector Resume | Federal Resume |

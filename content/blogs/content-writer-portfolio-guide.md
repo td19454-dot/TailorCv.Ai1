@@ -12,6 +12,14 @@ keywords: writing portfolio, copywriter portfolio, content writer portfolio, fre
 
 A writing portfolio is proof that you can write for **a purpose** - to rank, to convert, to explain, to sell. The trick is curation: show samples that match the work you actually want, and back them with results wherever you can. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
 
+## Key Takeaways
+
+- Curate 10-15 relevant writing samples that align with the types of projects you want to attract, ensuring they demonstrate your skills across various formats.
+- Attach measurable results to your work samples to highlight your effectiveness, such as rankings, open rates, or conversion increases.
+- Organize your portfolio for quick navigation by grouping samples by format or industry and providing context for each piece.
+- Maintain consistency across your resume, LinkedIn, and portfolio to present a cohesive professional narrative and avoid confusing potential employers.
+- Include detailed case studies in your portfolio that outline the challenges faced, your approach, and the results achieved to enhance credibility.
+
 ## Choose the Right Samples
 Show 10-15 pieces across the formats you want to be hired for, and cut everything off-target:
 

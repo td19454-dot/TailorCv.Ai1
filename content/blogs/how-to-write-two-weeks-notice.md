@@ -18,6 +18,14 @@ This complements the broader [how to quit your job professionally guide](https:/
 
 ---
 
+## Key Takeaways
+
+- A two weeks notice is a formal resignation letter given at least two weeks before your last working day to maintain professionalism.
+- It is best practice to inform your manager in person before submitting the written notice to formalize the conversation.
+- A professional two weeks notice should include the date, a clear resignation statement, last working day, gratitude, and an offer to assist with the transition.
+- Avoid including complaints, detailed reasons for leaving, or any negativity in your notice to protect your professional reputation.
+- Use one of the provided templates to ensure your letter is concise, positive, and professional.
+
 ## What Is a Two Weeks Notice?
 
 A two weeks notice is:

@@ -33,6 +33,14 @@ Use [TailorCV's resume optimizer](https://www.thetailorcv.com/solutions) to chec
 
 ---
 
+## Key Takeaways
+
+- Employers often perceive overqualified candidates as likely to leave the job quickly, leading to concerns about hiring them.
+- ATS systems may not explicitly filter out overqualified candidates but will lower match scores based on title, experience, skills, and salary expectations.
+- Candidates should clarify their motivation for applying to lower-level roles, whether it's a strategic downshift or a response to a difficult job market.
+- To match a resume to a lower-level job description, focus on relevant skills in the summary and avoid highlighting seniority.
+- Trim the experience section by removing older roles and emphasizing activities that align with the job description rather than leadership scope.
+
 ## Why Overqualified Resumes Often Fail ATS
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems do not directly flag "overqualified."

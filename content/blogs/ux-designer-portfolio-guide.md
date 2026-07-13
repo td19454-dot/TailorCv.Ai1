@@ -12,6 +12,14 @@ keywords: ux designer portfolio, ux case study, design portfolio, product design
 
 A UX portfolio is judged on **thinking**, not just visuals. Pretty screens get scrolled past; case studies that show how you framed a problem and drove an outcome get interviews. Hiring managers are evaluating your judgment, and the only way to show judgment is to narrate your decisions. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the full template in [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).
 
+## Key Takeaways
+
+- A UX portfolio should focus on case studies that demonstrate problem framing and decision-making rather than just visual appeal.
+- Each case study should follow a structured arc: Context, Problem, Research, Process, Solution, and Outcome, showcasing the decision-making process.
+- Include real metrics to illustrate the impact of your work, such as task completion rates and usability test scores.
+- Curate your portfolio to feature three to five strong case studies, prioritizing quality over quantity and ensuring they reflect your design process.
+- Ensure your resume, LinkedIn, and portfolio are aligned in messaging to avoid confusion for recruiters.
+
 ## The Case Study Structure That Works
 Every case study should follow this arc:
 

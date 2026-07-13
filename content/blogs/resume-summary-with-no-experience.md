@@ -22,6 +22,14 @@ For the rest of your resume, use the [first-time resume guide](https://thetailor
 
 ---
 
+## Key Takeaways
+
+- A resume summary is a brief introduction that highlights your skills, training, and goals, crucial for capturing a recruiter's attention.
+- Freshers often skip the summary, which can lead recruiters to perceive them as unmotivated or generic, negatively impacting their chances.
+- A strong resume summary follows a proven formula: include your degree, relevant skills, a specific achievement, and the target role you seek.
+- Even without formal work experience, internships, projects, or certifications can be leveraged to demonstrate relevant skills and experiences in your summary.
+- Crafting a compelling summary is essential for improving your ATS score and increasing your chances of landing an interview.
+
 ## What Is a Resume Summary?
 
 > A [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) is a short, powerful introduction at the top of your resume that tells recruiters who you are and why you deserve an interview.

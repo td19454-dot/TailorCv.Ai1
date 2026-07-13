@@ -18,6 +18,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ---
 
+## Key Takeaways
+
+- A Site Reliability Engineer (SRE) resume should highlight skills in maintaining system reliability, reducing toil, and leading incident responses.
+- The resume format should resemble that of a software engineer, emphasizing operational reliability expertise rather than administrative tasks.
+- Include a summary that quantifies experience with specific metrics related to availability, incident response, and reliability improvements.
+- Use technical skills relevant to SRE roles, such as programming, observability tools, incident management, and cloud infrastructure.
+- Incorporate strong action-oriented bullet points that demonstrate measurable impacts on reliability and operational efficiency.
+
 ## Best SRE Resume Format
 
 1. Header

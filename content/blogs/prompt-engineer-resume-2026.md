@@ -14,6 +14,14 @@ Prompt engineering roles are changing fast. A strong prompt engineer resume shou
 
 ---
 
+## Key Takeaways
+
+- A strong prompt engineer resume should demonstrate skills in designing AI workflows, evaluating outputs, and ensuring safe usage of LLMs, rather than just listing prompt writing abilities.
+- Key skills to include are prompt design, LLM evaluation, AI workflow automation, and quality assurance, among others.
+- Measurable achievements, such as improving output rates or reducing manual tasks, should be highlighted in bullet points to showcase effectiveness.
+- Tailor your application materials to specific job descriptions, ensuring relevant keywords and examples align with the role's requirements.
+- Use a practical checklist to review your application for clarity, keyword inclusion, measurable results, and overall alignment with the target position.
+
 ## Best Skills for a Prompt Engineer Resume
 
 Include skills such as:

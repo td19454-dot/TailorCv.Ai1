@@ -16,6 +16,14 @@ Pair this with [AI mock interview practice](https://thetailorcv.com/mock-intervi
 
 ---
 
+## Key Takeaways
+
+- Body language accounts for 50-60% of communication impact in interviews, making it crucial for success.
+- Maintain an upright posture and lean slightly forward to show engagement during in-person interviews.
+- Make eye contact 60-70% of the time while speaking, and distribute your gaze among all interviewers in panel settings.
+- Use natural hand gestures to emphasize points, avoiding crossed arms and excessive fidgeting.
+- For video interviews, position the camera at eye level and look at the lens to create the illusion of eye contact.
+
 ## Why Body Language Matters in Interviews
 
 Research consistently shows that communication impact comes from:

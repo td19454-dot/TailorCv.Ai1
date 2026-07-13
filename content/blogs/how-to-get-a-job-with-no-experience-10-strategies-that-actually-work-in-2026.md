@@ -24,6 +24,13 @@ In 2026, employers still hire beginners. They just need clearer proof that you c
 
 If you are building your first resume from scratch, this related guide on [writing a resume with no experience](https://thetailorcv.com/blog/resume-with-no-experience) is a useful companion.
 
+## Key Takeaways
+
+- Replace the phrase "no experience" with "relevant experience" to boost confidence and highlight transferable skills.
+- Relevant experience can include university projects, volunteer work, internships, and personal projects that demonstrate your capabilities.
+- Identify and match your transferable skills to the job description, focusing on those most valued by employers.
+- Building projects relevant to your desired role can effectively showcase your abilities and problem-solving skills.
+
 ## 1. Stop Saying You Have No Experience
 
 The phrase "[no experience](https://thetailorcv.com/blog/resume-with-no-experience)" can accidentally shrink your confidence. Instead, separate formal experience from relevant experience.

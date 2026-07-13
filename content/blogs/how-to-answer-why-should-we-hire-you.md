@@ -18,6 +18,14 @@ Prepare alongside the [tell me about yourself guide](https://thetailorcv.com/blo
 
 ---
 
+## Key Takeaways
+
+- Answering "Why should we hire you?" requires connecting your unique value to the specific role and company.
+- Use the Match-Proof-Fit formula: match core skills, provide proof of results, and express fit with the company's mission.
+- Structure your response to be concise, ideally within 60-90 seconds.
+- Avoid generic answers, repeating your resume, and lack of company-specific details in your response.
+- Practice your answer using the STAR method and mock interviews to build confidence.
+
 ## What Interviewers Really Want to Hear
 
 When they ask "Why should we hire you?", interviewers are evaluating:

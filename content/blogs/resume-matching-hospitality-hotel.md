@@ -20,6 +20,14 @@ Paste any hospitality job posting into the [TailorCV resume optimizer](/solution
 
 ---
 
+## Key Takeaways
+
+- A successful hospitality resume must balance measurable service standards and interpersonal qualities to meet hiring manager expectations.
+- Key pillars in hospitality job descriptions include guest-facing skills, operational metrics, and physical/scheduling requirements.
+- Use specific keywords related to property management systems and guest experience metrics to enhance your resume's match score.
+- Tailor your resume to reflect exact language from job postings, especially regarding shift availability and required skills.
+- Avoid generic terms like "customer service" and ensure to mention specific experience with property management systems to prevent being filtered out.
+
 ## What Hospitality Job Descriptions Actually Prioritize
 
 Most hospitality postings are structured around three pillars:

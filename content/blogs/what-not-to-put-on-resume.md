@@ -18,6 +18,14 @@ Start with the right foundation. Use the [ATS score checker](https://www.thetail
 
 ---
 
+## Key Takeaways
+
+- Remove personal information such as photos, date of birth, marital status, and full home addresses to avoid bias and protect privacy.
+- Avoid generic objective statements; instead, provide a specific summary that highlights your skills and goals.
+- Do not list basic skills like Microsoft Office; focus on advanced competencies relevant to the job.
+- Eliminate vague personality traits and instead demonstrate your abilities through specific examples or achievements.
+- Only include hobbies if they are directly relevant to the role or showcase unique accomplishments.
+
 ## Personal Information to Remove
 
 ### 1. Photo (unless specifically required)

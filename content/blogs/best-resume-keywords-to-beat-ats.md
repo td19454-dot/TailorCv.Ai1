@@ -16,6 +16,14 @@ Find your missing [keywords](https://thetailorcv.com/blog/how-to-check-ats-score
 
 ---
 
+## Key Takeaways
+
+- Keywords and skills matching account for 30-40% of ATS scoring, making them crucial for resume success.
+- Include a variety of keyword types such as hard skills, tools, certifications, job titles, methodologies, and domain terms.
+- For technology roles, essential keywords include programming languages, cloud platforms, and Agile methodologies.
+- In data and analytics, focus on analytics tools, programming languages, and data concepts.
+- Marketing resumes should highlight channels, tools, metrics, and relevant skills to improve ATS performance.
+
 ## Why Keywords Are the Biggest ATS Factor
 
 Keyword and skills matching accounts for **30-40% of most [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scoring formulas** - the largest single factor. That means the difference between a 55% score and an 80% score often comes down to whether specific terms from the job description appear in your [resume](https://www.thetailorcv.com/templates).

@@ -9,11 +9,20 @@ slug: negotiating-multiple-job-offers
 keywords: negotiating multiple job offers, competing job offers negotiation, how to leverage multiple offers, multiple offer email template
 image: public/blog-images/negotiating-multiple-job-offers.png
 ---
+
 Having multiple job offers at once is the strongest negotiating position you'll ever be in - but it's also easy to mishandle. Done well, mentioning a competing offer is a normal, expected part of the process. Done poorly, it can come across as manipulative or make a company walk away entirely. Here's how to navigate it cleanly.
 
 Before any negotiation conversation, make sure you're comparing offers on equal footing - re-check both roles against your resume and priorities with the [free ATS score checker](https://www.thetailorcv.com/solutions) and your own notes from each interview.
 
 ---
+
+## Key Takeaways
+
+- Always obtain written offers before negotiating to ensure clarity and leverage during discussions.
+- Compare job offers on multiple factors beyond salary, including company culture, career development, and work-life balance.
+- Determine your priorities privately to avoid over-leveraging a role you may not truly want.
+- Negotiate transparently by honestly communicating about competing offers while expressing genuine interest in the preferred role.
+- Use provided email scripts to request extensions, leverage competing offers, and decline offers gracefully.
 
 ## Step 1: Get Every Offer in Writing First
 

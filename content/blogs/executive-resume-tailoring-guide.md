@@ -29,6 +29,13 @@ This guide walks you through every difference - and exactly how to tailor your r
 
 ---
 
+## Key Takeaways
+
+- Executive resumes focus on business impact and transformation rather than just tasks and outputs, highlighting strategic leadership and P&L ownership.
+- Resumes for VP and C-suite roles are typically reviewed by executive search firms, board members, and peer interviewers who seek evidence of leadership philosophy and strategic thinking.
+- The ideal length for an executive resume is two pages, emphasizing the importance of concise and relevant content tailored to the specific role.
+- An executive summary should clearly define leadership identity, scale of operation, signature achievements, and the type of organization that benefits from the candidate's experience.
+
 ## How Executive Hiring Is Different
 
 At the mid-level, you are evaluated on what you did.

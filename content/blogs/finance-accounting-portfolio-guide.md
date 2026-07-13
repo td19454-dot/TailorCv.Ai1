@@ -12,6 +12,14 @@ keywords: finance portfolio, accounting portfolio website, financial analyst por
 
 Finance and accounting roles are conservative about confidentiality, which is exactly why most candidates skip a portfolio - and exactly why a well-built one stands out. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) built around sanitized models and process work shows analytical rigor no resume bullet can capture. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
+## Key Takeaways
+
+- A well-constructed finance and accounting portfolio can highlight analytical skills that a resume cannot convey, especially when built around sanitized models and process work.
+- Include financial models, process improvement case studies, dashboards, certifications, and tools in your portfolio to showcase your expertise.
+- Frame each project by stating the business question, your method, and the recommendation/outcome to provide context for your models.
+- Avoid common mistakes such as sharing unredacted data, lacking a business question, or presenting overly complex spreadsheets without summaries.
+- Craft a compelling narrative by starting with a personal statement, using case studies to present achievements, and highlighting learning experiences to demonstrate growth.
+
 ## What to Include
 - **Financial models** - a DCF, three-statement model, or budget forecast built on public or dummy data
 - **Process improvement case studies** - a close-cycle reduction, a reconciliation automation, an audit finding you resolved

@@ -14,6 +14,14 @@ You can move from a non-tech role to [data analyst](https://thetailorcv.com/blog
 
 ---
 
+## Key Takeaways
+
+- Transitioning to a data analyst role is possible by highlighting transferable skills from previous non-tech experience, such as reporting and customer analysis.
+- Essential skills to develop include Excel, SQL, Power BI or Tableau, basic statistics, and data cleaning, focusing on one skill at a time.
+- Craft a resume headline and summary that connect past operations experience with new data analytics skills to demonstrate relevance.
+- Build 2-3 portfolio projects that showcase practical data analysis skills, concluding each with actionable recommendations.
+- Optimize your application materials for specific job descriptions, ensuring they reflect relevant keywords and demonstrate a clear fit for the role.
+
 ## Skills to Build
 
 Focus on:

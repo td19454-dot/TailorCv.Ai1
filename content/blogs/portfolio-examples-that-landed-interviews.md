@@ -16,6 +16,14 @@ You can build a version of every example below in minutes by turning your existi
 
 ---
 
+## Key Takeaways
+
+- Effective portfolios across design, development, data, and marketing should focus on a few key projects with clear context and measurable results.
+- Developer portfolios should begin with the problem solved, include architecture diagrams for backend work, and link to well-documented GitHub profiles.
+- Data portfolios should showcase the transformation of messy datasets into clean outputs and highlight business impacts of technical work.
+- UX design portfolios must document the entire design process, while graphic design portfolios should curate a selection of diverse works.
+- Marketing portfolios should emphasize campaign metrics and provide context for writing samples to better connect with potential employers.
+
 ## Development Portfolios
 
 ### 1. The problem-first project page

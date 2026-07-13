@@ -16,6 +16,14 @@ Start with the [HR round guide](https://thetailorcv.com/blog/hr-round-interview-
 
 ---
 
+## Key Takeaways
+
+- Manager round interviews assess skills, work ethic, team fit, growth potential, and interpersonal compatibility.
+- Use the STAR method to structure responses for behavioral questions, focusing on specific contributions and achievements.
+- Prepare for problem-solving questions by clearly defining issues, gathering data, evaluating options, and reviewing outcomes.
+- Emphasize teamwork and conflict resolution by taking responsibility and acknowledging different perspectives.
+- Tailor your preparation to specific roles, focusing on relevant skills and experiences for engineers, data roles, and management positions.
+
 ## What Hiring Managers Evaluate
 
 - **Can you do the job?** - skills, experience, judgment

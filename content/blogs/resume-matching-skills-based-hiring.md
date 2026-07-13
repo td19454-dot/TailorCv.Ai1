@@ -18,6 +18,14 @@ Paste any skills-based job description into the [TailorCV resume optimizer](/sol
 
 ---
 
+## Key Takeaways
+
+- Skills-based hiring focuses on competencies rather than job titles or degrees, allowing for a broader evaluation of candidates.
+- Job descriptions in this model prioritize specific skills and may omit degree requirements, making them more inclusive for non-traditional candidates.
+- To match your resume to skills-based postings, extract specific skills, provide concrete evidence of those skills, and structure your resume to highlight them prominently.
+- Include relevant projects and non-traditional experiences that showcase your abilities, rather than relying solely on formal job history.
+- Use tools to assess how well your resume aligns with the skills listed in job descriptions, ensuring a strong match.
+
 ## How Skills-Based Job Descriptions Are Structured Differently
 
 Traditional job descriptions often lead with a target job title and years-of-experience requirement, then list skills as supporting detail. Skills-based postings flip this:

@@ -14,6 +14,14 @@ If you have no formal work experience, your [internship resume](https://thetailo
 
 ---
 
+## Key Takeaways
+
+- Focus your internship resume on projects, coursework, skills, and your ability to learn quickly, rather than formal work experience.
+- Include key sections such as a career objective, education, skills, projects, certifications, leadership or volunteering, and achievements.
+- Avoid generic statements, irrelevant coursework, unexplainable skills, and lengthy resumes; keep it to one page.
+- Tailor your application by aligning it with specific job descriptions, ensuring relevant keywords and examples are included.
+- Use a practical checklist to review your resume before applying, ensuring clarity, relevance, and easy navigation for recruiters.
+
 ## Best [internship resume](https://thetailorcv.com/blog/internship-resume-guide) Sections
 
 Use:

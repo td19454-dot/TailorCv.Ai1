@@ -16,6 +16,14 @@ Also read [resume tailoring for job hoppers](https://thetailorcv.com/blog/resume
 
 ---
 
+## Key Takeaways
+
+- Job hopping can be perceived negatively by interviewers, so it's crucial to address concerns about retention, performance, and commitment directly.
+- Legitimate reasons for short tenures include layoffs, startup failures, relocation, and seeking better opportunities; frame these reasons positively in interviews.
+- Prepare specific scripts for explaining job changes, emphasizing stability and long-term commitment to the new role.
+- Optimize your resume by grouping short roles, highlighting achievements, and tailoring it for each application to mitigate concerns about job hopping.
+- Avoid negative statements about past employers or expressing a lack of commitment, as these can raise red flags for potential employers.
+
 ## When Job Hopping Is a Concern
 
 Interviewers worry about:

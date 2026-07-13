@@ -20,6 +20,13 @@ Before anything else, run your resume through the [ATS score checker](https://ww
 
 ---
 
+## Key Takeaways
+
+- Choose a clear technical niche to specialize in, such as backend engineering, data science, or cybersecurity, rather than trying to be a generalist.
+- Build strong, complete projects that solve real problems and showcase your skills, with at least two well-documented projects preferred over many incomplete ones.
+- Ensure your resume is ATS-friendly by using relevant keywords and structuring it to highlight your technical skills and project experiences effectively.
+- Focus on creating a specific summary in your resume that outlines your track, top skills, and key project highlights to capture employer attention.
+
 ## Step 1: Choose a Clear Technical Niche
 
 The biggest mistake [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) make is trying to be "full stack" before they are strong at anything. Pick one area:
