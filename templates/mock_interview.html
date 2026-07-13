@@ -120,7 +120,7 @@
 {% include "_nav.html" %}
 
     {% if not is_logged_in %}
-    <link rel="stylesheet" href="/static/feature_landing.css?v=33">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=34">
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -239,33 +239,71 @@
                 <div class="solx-kicker">Pricing</div>
                 <h2 class="solx-h2">Simple pricing, <span class="g">powerful features</span></h2>
                 <p class="solx-lead">Start free, upgrade only when you want unlimited access.</p>
-                <div class="solx-prices">
-                    <div class="solx-price">
-                        <div class="pname">Free</div>
-                        <div class="pamt"><sup>&#8377;</sup>0</div>
-                        <div class="pper">free forever &bull; no card needed</div>
-                        <ul><li>ATS score &amp; keyword match</li><li>Tailor your resume to a job</li><li>Save your resumes &amp; scores</li></ul>
-                        <a href="/signup?next=/mock-interview" class="solx-btn ghost">Start Free</a>
-                    </div>
-                    <div class="solx-price">
-                        <div class="pname">7-Day Pass</div>
-                        <div class="pamt"><sup>&#8377;</sup>149</div>
-                        <div class="pper">one-time &bull; full access for 7 days</div>
-                        <ul><li>Everything in Pro</li><li>Unlimited tailoring for a week</li><li>Great for an urgent job hunt</li></ul>
-                        <a href="/signup?next=/mock-interview" class="solx-btn ghost">Get 7-Day Pass</a>
-                    </div>
-                    <div class="solx-price pop">
-                        <div class="tag">Most Popular</div>
-                        <div class="pname">Pro</div>
-                        <div class="pamt"><sup>&#8377;</sup>167<span style="font-size:1rem;color:#9fb2d6">/mo</span></div>
-                        <div class="pper">billed &#8377;1,999 yearly &bull; &asymp; &#8377;5.5/day</div>
-                        <ul><li>Unlimited tailoring &amp; ATS scores</li><li>AI cover letters</li><li>Portfolio website</li><li>Mock interviews</li></ul>
-                        <a href="/signup?next=/mock-interview" class="solx-btn">Go Pro</a>
-                    </div>
+                <div class="pricing-preview-grid cols-3">
+                    <article class="pricing-preview-card basic">
+                        <p class="pricing-plan-name">Free</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
+                        <p class="pricing-plan-note">Always free, no card needed.</p>
+                        <ul class="pricing-feature-list">
+                            <li>ATS score, unlimited</li>
+                            <li>1 free resume optimization</li>
+                            <li>1 free cover letter + mock interview</li>
+                            <li>All templates &amp; downloads</li>
+                        </ul>
+                        <a href="/signup?next=/mock-interview" class="pricing-plan-btn">Start free</a>
+                    </article>
+
+                    <article class="pricing-preview-card">
+                        <p class="pricing-badge pricing-badge-pass">One-time</p>
+                        <p class="pricing-plan-name">7-Day Pass</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppPassSym">&#8377;</span><span id="ppPassAmt">149</span></p>
+                        <p class="pricing-plan-note">7 days of full Pro access, no auto-renew.</p>
+                        <ul class="pricing-feature-list">
+                            <li>Everything in Pro</li>
+                            <li>Unlimited optimize &amp; cover letters</li>
+                            <li>Unlimited mock interviews</li>
+                            <li>No subscription</li>
+                        </ul>
+                        <a href="/pricing" class="pricing-plan-btn">Get 7-day pass</a>
+                    </article>
+
+                    <article class="pricing-preview-card featured">
+                        <p class="pricing-badge">Most Popular</p>
+                        <p class="pricing-plan-name">Pro</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppProSym">&#8377;</span><span id="ppProAmt">167</span><span>/mo</span></p>
+                        <p class="pricing-plan-note" id="ppProNote">Billed yearly, save 44%, cancel any time.</p>
+                        <ul class="pricing-feature-list">
+                            <li>Unlimited resume optimizations</li>
+                            <li>Unlimited cover letters &amp; mock interviews</li>
+                            <li>LinkedIn import unlimited</li>
+                            <li>Priority AI processing</li>
+                        </ul>
+                        <a href="/pricing" class="pricing-plan-btn pricing-plan-btn-primary">Get Pro</a>
+                    </article>
                 </div>
-                <div style="text-align:center;margin-top:20px"><a href="/pricing" style="color:#60a5fa;text-decoration:none;font-weight:600">See full pricing &amp; yearly discount &rarr;</a></div>
+                <p class="pricing-preview-all"><a href="/pricing">See full pricing &amp; FAQ</a></p>
             </div>
         </div>
+        <script>
+        // Region-aware prices, mirrors the homepage preview and /pricing.
+        (function () {
+            var PP = {
+                india:  { sym: '\u20b9', pass: '149',  pro: '167',  note: 'Billed yearly, save 44%, cancel any time.' },
+                lic:    { sym: '$',       pass: '1.99', pro: '2.08', note: 'Billed yearly, save 44%, cancel any time.' },
+                global: { sym: '$',       pass: '4.99', pro: '5',    note: 'Billed yearly, save 44%, cancel any time.' }
+            };
+            function set(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+            function apply(region) {
+                var p = PP[region] || PP.india;
+                set('ppFreeSym', p.sym); set('ppPassSym', p.sym); set('ppProSym', p.sym);
+                set('ppPassAmt', p.pass); set('ppProAmt', p.pro); set('ppProNote', p.note);
+            }
+            fetch('/api/billing/region')
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (d) { if (d && d.region) apply(d.region); })
+                .catch(function () { /* keep default india pricing */ });
+        })();
+        </script>
 
         <div class="solx-band">
             <div class="solx-band-inner">
