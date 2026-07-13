@@ -84,7 +84,7 @@
 .solx-stat b { display:block; font-size:2rem; font-weight:700; color:#4f9bff; }
 .solx-stat span { color:#a3adc2; font-size:.92rem; }
 
-.solx-quotes { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.solx-quotes { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:44px; }
 .solx-quote { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:22px; }
 .solx-quote .stars { color:#fbbf24; letter-spacing:2px; }
 .solx-quote p { color:#e2e8f4; line-height:1.6; margin:10px 0 14px; font-size:.98rem; }
