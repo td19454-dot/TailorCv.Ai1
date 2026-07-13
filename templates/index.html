@@ -605,6 +605,45 @@
                 box-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
             }
         }
+
+        /* Hero feature list: green ticks, pure white, two per line */
+        .hero-features {
+            list-style: none;
+            margin: 26px 0 32px;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, max-content);
+            gap: 16px 34px;
+            justify-content: start;
+        }
+        .hero-features li {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+        .hero-features .feat-tick {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            font-size: 13px;
+            font-weight: 800;
+            flex: none;
+        }
+        @media (max-width: 640px) {
+            .hero-features {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
     </style>
 
 
@@ -615,11 +654,14 @@
             <div class="hero-content hero-split">
                 <div class="hero-copy">
                     <h1 class="hero-title">
-                        We get you hired. <span class="gradient-text">Fast</span>
+                        Your <span class="gradient-text">dream job</span> starts here
                     </h1>
-                    <p class="hero-subtitle">
-                        Accurate Resume Optimizations. Free Portfolio Website. ATS score check. Mock Interviews and more.
-                    </p>
+                    <ul class="hero-features">
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Accurate Resume Optimizations</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Free Portfolio Website</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> ATS Score Check</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Mock Interviews &amp; More</li>
+                    </ul>
                     <div class="hero-cta">
                         <a href="/solutions" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
                             ><span class="cta-label-full">Optimize My Resume — Free</span><span class="cta-label-short">Optimize for Free</span></a>
