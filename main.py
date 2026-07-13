@@ -4484,6 +4484,9 @@ async def optimize_page(request: Request):
         "solutions.html",
         {
             "request": request,
+            # Without this the template sees is_logged_in as undefined (falsy) and
+            # serves the logged-out landing to signed-in users.
+            "is_logged_in": bool(request.session.get("user_id")),
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
             # Alias of /solutions — canonical points to the primary URL to avoid
             # duplicate-content indexing.

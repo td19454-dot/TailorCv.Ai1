@@ -1,0 +1,64 @@
+/* Pricing preview */
+.pricing-preview-section { padding: 5.5rem 0 4.5rem; }
+.pricing-preview-grid { display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 980px;
+    margin: 0 auto; }
+.pricing-preview-card { position: relative;
+    border-radius: 18px;
+    border: 1px solid rgba(133, 170, 255, 0.26);
+    background: linear-gradient(180deg, rgba(11, 21, 56, 0.88), rgba(8, 12, 36, 0.94));
+    padding: 26px 22px 22px;
+    box-shadow: 0 16px 36px rgba(1, 8, 40, 0.34); }
+.pricing-preview-card.featured { transform: translateY(-6px);
+    border-color: rgba(96, 165, 250, 0.65); }
+.pricing-badge { display: inline-flex;
+    margin: 0 0 10px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(96, 165, 250, 0.2);
+    border: 1px solid rgba(120, 197, 255, 0.48);
+    color: #9ed6ff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase; }
+.pricing-plan-name { margin: 0 0 8px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #f2f7ff; }
+.pricing-plan-price { margin: 0 0 10px;
+    font-size: clamp(40px, 3.8vw, 58px);
+    font-weight: 800;
+    line-height: 1;
+    color: #67b3ff; }
+.pricing-plan-price span { font-size: 24px;
+    font-weight: 600;
+    color: #dce8ff; }
+.pricing-plan-note { margin: 0 0 18px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #afc2e3;
+    min-height: 0; }
+.pricing-feature-list { margin: 0 0 18px;
+    padding-left: 18px;
+    color: #d3e2ff;
+    line-height: 1.7;
+    font-size: 15px; }
+.pricing-feature-list li { margin-bottom: 6px; }
+.pricing-plan-btn { display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 800;
+    color: #eaf4ff;
+    border: 1px solid rgba(136, 192, 255, 0.56);
+    background: rgba(13, 44, 99, 0.58); }
+.pricing-plan-btn:hover { background: rgba(28, 70, 143, 0.7); }
+.pricing-preview-grid { grid-template-columns: 1fr; }
+.pricing-preview-card.featured { transform: none; }
