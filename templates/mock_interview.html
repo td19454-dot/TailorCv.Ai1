@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
@@ -117,6 +117,147 @@
     </div>
 </div>
 {% include "_nav.html" %}
+
+    {% if not is_logged_in %}
+    <link rel="stylesheet" href="/static/feature_landing.css?v=17">
+    <div class="solx">
+        <div class="solx-wrap">
+            <div class="solx-hero">
+                <div>
+                    <span class="solx-eyebrow">AI Mock Interviews</span>
+                    <h1>Practice interviews with an <span class="g">AI coach that never judges.</span></h1>
+                    <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
+                        <span>Real, role-specific questions for your target job</span>
+                        <span>Answer out loud &mdash; get instant, honest feedback</span>
+                        <span>Walk into the real interview calm and prepared</span>
+                    </div>
+                    <a href="/signup?next=/mock-interview" class="solx-btn">Start a Mock Interview &mdash; Free</a>
+                    <p class="micro">Takes ~5 minutes &bull; No credit card &bull; <b>Free to start</b></p>
+                </div>
+                <div class="rez">
+                    <div class="rez-tag">&#127908; Mock Interview &bull; Live</div>
+                    <div class="rez-h">Question 3 of 8</div>
+                    <div class="rez-line l"></div><div class="rez-line m"></div>
+                    <div class="rez-badge" style="margin-top:8px">&#127908; Recording your answer&hellip;</div>
+                    <div class="rez-insights">
+                        <div class="t">&#10024; AI Feedback</div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span class="rez-h" style="margin:0">Answer score</span><span class="rez-badge">8.4 / 10</span></div>
+                        <div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                        <div class="rez-btn">Next Question</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-marquee">
+            <div class="solx-wrap"><p class="cap">Our users have interviewed at</p></div>
+            <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
+        </div>
+        <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">Rehearse the real thing &mdash; <span class="g">before it counts</span></h2>
+                <p class="solx-lead">TailorCV runs a realistic interview for your exact role, listens to your answers, and tells you exactly how to improve &mdash; as many times as you need.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">Interview for</div><div class="rez-line l"></div>
+                            <div style="margin-top:8px"><span class="rez-pill g">Product Manager</span><span class="rez-pill y">Behavioral</span><span class="rez-pill b">System Design</span></div>
+                            <div class="rez-line m" style="margin-top:8px"></div>
+                        </div>
+                        <h3>Questions tailored to the role</h3>
+                        <p>Pick a job or paste a description and the AI asks the exact questions that role gets &mdash; behavioral, technical, and role-specific.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-badge">&#10024; Instant feedback</div>
+                            <div class="rez-h" style="margin-top:12px">What went well</div><div class="rez-line l" style="background:#bbf7d0"></div>
+                            <div class="rez-h" style="margin-top:8px">Fix this next time</div><div class="rez-line m" style="background:#fecaca"></div>
+                        </div>
+                        <h3>Honest feedback on every answer</h3>
+                        <p>Get a score plus specific notes on structure, clarity, and content &mdash; so you know exactly what to say better next time.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-ring"><b>8.4</b></div><div class="rez-h">Average answer score</div><div class="rez-line l"></div>
+                            <div class="rez-h" style="margin-top:10px">Attempts today</div><div class="rez-line m"></div><div class="rez-line s"></div>
+                        </div>
+                        <h3>Practice until you're confident</h3>
+                        <p>Run the interview as many times as you want. Watch your scores climb and walk in calm, prepared, and ready.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">How it works</div>
+                <h2 class="solx-h2">A simple 4-step process to a <span class="g">confident interview</span></h2>
+                <div style="margin-top:26px">
+                    <div class="solx-step">
+                        <div><div class="n">Step 1</div><h3>Pick the <span class="g">role you're interviewing for</span></h3><p>Choose a job title or paste the job description so the questions match the exact role and seniority.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128188; Target role</div><div class="rez-h">Senior Product Manager</div><div class="rez-line l"></div><div class="rez-line m"></div><span class="rez-pill g">Behavioral</span><span class="rez-pill b">System Design</span><span class="rez-pill y">Metrics</span></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 2</div><h3>AI asks <span class="g">real questions</span></h3><p>A private AI interviewer asks the questions this role actually gets, one at a time, just like a live panel.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#127908; Question 3 of 8</div><div class="rez-h">"Tell me about a time you shipped under a tight deadline."</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:8px">&#9203; 2:00 to answer</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 3</div><h3>Answer <span class="g">out loud</span></h3><p>Speak your answer naturally. The AI listens the way a real interviewer would &mdash; no scripts, no pressure.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#127908; Recording&hellip;</div><div class="rez-h">Your answer</div><div class="rez-line l"></div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:10px">&#10003; Transcribed live</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 4</div><h3>Get <span class="g">scored feedback</span></h3><p>See a score with specific, judgment-free notes on what worked and what to sharpen &mdash; then try again.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-ring" style="--p:84"><b>8.4</b></div><div class="rez-tag">&#10024; Feedback</div><div class="rez-h">Strengths</div><div class="rez-line l" style="background:#bbf7d0"></div><div class="rez-h">Improve</div><div class="rez-line m" style="background:#fecaca"></div><div class="rez-btn" style="margin-top:12px">Try Again</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Loved by job seekers</div>
+                <h2 class="solx-h2">From nervous to <span class="g">offer letter</span></h2>
+                <div class="solx-quotes">
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I did five mock rounds the night before my Amazon loop. The real questions felt familiar and I finally stayed calm."</p><div class="who"><img src="/static/user_imges/85.jpg" alt=""><span><b>Michael R.</b> <span>Amazon</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"The feedback was brutally honest in the best way. It caught that I was rambling and my answers got tighter fast."</p><div class="who"><img src="/static/user_imges/26.jpg" alt=""><span><b>Priya S.</b> <span>Google</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Practicing out loud made all the difference. By interview day the questions felt like ones I'd already answered."</p><div class="who"><img src="/static/user_imges/79.jpg" alt=""><span><b>Emily G.</b> <span>PwC</span></span></div></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "_feature_more.html" %}
+
+        <div class="solx-band">
+            <div class="solx-band-inner">
+                <div class="solx-band-kicker">Nervous about interviews?</div>
+                <h2>Rehearse before it <span class="ga">actually counts</span>.</h2>
+                <p>Run a realistic, role-specific interview as many times as you need &mdash; and get honest feedback that turns nerves into offers.</p>
+                <a href="/signup?next=/mock-interview" class="solx-btn">Start a Mock Interview &mdash; Free</a>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">FAQ</div>
+                <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
+                <div class="solx-faq" style="margin-top:32px">
+                    <details open><summary>What does the AI mock interview actually do?</summary><p>It runs a realistic interview for your target role, asks real questions one at a time, listens to your spoken answers, and gives you a score with specific feedback on how to improve.</p></details>
+                    <details><summary>Are the questions specific to my job?</summary><p>Yes. Pick a role or paste the job description and the questions match that exact role and seniority &mdash; behavioral, technical, and role-specific.</p></details>
+                    <details><summary>How is my answer scored?</summary><p>You get a score plus judgment-free notes on structure, clarity, and content, so you know exactly what to say better next time.</p></details>
+                    <details><summary>Can I practice more than once?</summary><p>Yes &mdash; run the interview as many times as you like and watch your scores improve with each attempt.</p></details>
+                    <details><summary>Is it really free to start?</summary><p>Yes. You can run a mock interview for free. A quick free account saves your sessions and feedback so you can track progress.</p></details>
+                </div>
+                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/mock-interview" class="solx-btn">Start a Mock Interview &mdash; Free</a></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if is_logged_in %}
+
 <style>
     /* Slim typography — lighter weights across page content
        (shared .navbar / .site-footer excluded so they match the rest of the site) */
@@ -411,9 +552,12 @@
     </section>
 </main>
 
-        {% include "_footer.html" %}
+        {% endif %}
+
+    {% include "_footer.html" %}
 <script src="/static/auth_nav.js?v=13"></script>
 <script src="/static/mobile_nav.js"></script>
+{% if is_logged_in %}
 <script>
 const STATE = { userName:'', role:'', type:'mixed', numQuestions:10, resumeText:'', jobDesc:'', questionIndex:0, currentQuestion:'', conversation_history:[], qa_log:[], currentTranscript:'', liveInterim:'', fillerCount:0, totalWords:0, speechRec:null, isRecording:false, timerSec:60, timerId:null, camStream:null, isCameraOn:false, screenStream:null, isScreenSharing:false, isRejected:false, isInterviewEnded:false, faceDetector:null, camMonTimer:null, camSamples:0, camGoodSamples:0, ttsAudio:null, ttsCtx:null, ttsSrc:null };
 const FILLERS = ['um','uh','like','you know','basically','literally','actually','sort of','kind of','i mean'];
@@ -1578,5 +1722,6 @@ document.addEventListener('DOMContentLoaded',
 // ── End localStorage ──────────────────────
 </script>
 <script src="/static/resume_store.js?v=1"></script>
+{% endif %}
 </body>
 </html>
