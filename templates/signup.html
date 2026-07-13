@@ -703,7 +703,12 @@
         statusMessage.textContent = 'Account created successfully. Redirecting to login...';
         statusMessage.className = 'status success';
         statusMessage.style.display = 'block';
-        setTimeout(() => { window.location.href = '/login'; }, 1400);
+        // Carry ?next through login so the user lands back on the page they
+        // signed up from, instead of a generic dashboard.
+        setTimeout(() => {
+          const next = getSignupNext();
+          window.location.href = next ? ('/login?next=' + encodeURIComponent(next)) : '/login';
+        }, 1400);
       } catch (error) {
         statusMessage.textContent = error.message;
         statusMessage.className = 'status error';
@@ -770,7 +775,7 @@
 
         statusMessage.textContent = `Welcome, ${data.user.name}! Redirecting...`;
         statusMessage.className = 'status success';
-        setTimeout(() => { window.location.href = '/solutions'; }, 700);
+        setTimeout(() => { window.location.href = getSignupNext() || '/solutions'; }, 700);
       } catch (error) {
         statusMessage.textContent = error.message;
         statusMessage.className = 'status error';
