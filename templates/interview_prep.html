@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generate tailored interview questions for any job role with theTailorCV's AI interview prep tool. Practice smarter and land your next role.">
-    <title>AI Interview Question Generator — Interview Prep | theTailorCV</title>
+    <title>AI Interview Question Generator, Interview Prep | theTailorCV</title>
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/style3.css">
     <link rel="stylesheet" href="/static/header-footer.css">
@@ -479,11 +479,194 @@
     </style>
 </head>
 <body>
+{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
 
     <!-- NAV -->
     {% include "_nav.html" %}
+
+    {% if not is_logged_in %}
+    <link rel="stylesheet" href="/static/feature_landing.css?v=18">
+    <div class="solx">
+        <div class="solx-wrap">
+            <div class="solx-hero">
+                <div>
+                    <span class="solx-eyebrow">Interview Question Generator</span>
+                    <h1>Know the questions <span class="g">before you walk in.</span></h1>
+                    <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
+                        <span>Paste a job or role, get the exact questions it asks</span>
+                        <span>Behavioral, technical, and role-specific</span>
+                        <span>See strong sample answers and what to hit</span>
+                    </div>
+                    <a href="/signup?next=/interview-prep" class="solx-btn">Generate Interview Questions, Free</a>
+                    <p class="micro">Takes ~1 minute &bull; No credit card &bull; <b>Free to start</b></p>
+                </div>
+                <div class="rez">
+                    <div class="rez-tag">&#10067; Likely Interview Questions</div>
+                    <div class="rez-h">Senior Product Manager</div>
+                    <div class="rez-line l"></div>
+                    <div style="margin:6px 0"><span class="rez-pill g">Behavioral</span></div>
+                    <div class="rez-line m"></div><div class="rez-line l"></div>
+                    <div style="margin:6px 0"><span class="rez-pill b">System Design</span></div>
+                    <div class="rez-line m"></div>
+                    <div style="margin:6px 0"><span class="rez-pill y">Metrics &amp; Impact</span></div>
+                    <div class="rez-line l"></div><div class="rez-line s"></div>
+                    <div class="rez-insights">
+                        <div class="t">&#10024; Suggested answer</div>
+                        <div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                        <div class="rez-btn">Generate Questions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-marquee">
+            <div class="solx-wrap"><p class="cap">Our users have <span class="g">interviewed at</span></p></div>
+            <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
+        </div>
+        <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">Walk in knowing <span class="g">exactly what to expect</span></h2>
+                <p class="solx-lead">TailorCV reads the role and generates the questions you're most likely to get, plus strong sample answers, so nothing in the room catches you off guard.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">For the role</div><div class="rez-line l"></div>
+                            <div style="margin-top:8px"><span class="rez-pill g">Behavioral</span><span class="rez-pill b">Technical</span><span class="rez-pill y">Role-specific</span></div>
+                            <div class="rez-line m" style="margin-top:8px"></div>
+                        </div>
+                        <h3>Questions tailored to the job</h3>
+                        <p>Paste a role or job description and get the exact questions that role is asked, behavioral, technical, and role-specific, not generic lists.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-badge">&#10024; Sample answer</div>
+                            <div class="rez-h" style="margin-top:12px">How to answer</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#9733; What they look for</div>
+                        </div>
+                        <h3>Model answers, not just questions</h3>
+                        <p>Each question comes with a strong sample answer and the key points interviewers want, so you know how to frame your own response.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">Your prep list</div><div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#10003; Saved &amp; ready</div>
+                            <div class="rez-line s" style="margin-top:8px"></div>
+                        </div>
+                        <h3>Prep smarter, not harder</h3>
+                        <p>Get a focused list to rehearse instead of guessing, so you spend your time on the questions that actually come up.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">How it works</div>
+                <h2 class="solx-h2">A simple 4-step process to be <span class="g">interview-ready</span></h2>
+                <div style="margin-top:26px">
+                    <div class="solx-step">
+                        <div><div class="n">Step 1</div><h3>Add the <span class="g">role or job description</span></h3><p>Paste the job you're interviewing for, or pick a role, so the questions match it exactly.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128188; Target role</div><div class="rez-h">Senior Product Manager</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div><div class="rez-line s"></div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 2</div><h3>AI <span class="g">generates the questions</span></h3><p>Get the questions this role is most likely to ask, grouped into behavioral, technical, and role-specific.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#10067; Likely questions</div><div class="rez-h">"Tell me about a product you shipped."</div><div class="rez-line l"></div><div class="rez-h">"How do you prioritize a roadmap?"</div><div class="rez-line m"></div><span class="rez-pill g">Behavioral</span><span class="rez-pill b">Strategy</span></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 3</div><h3>See <span class="g">sample answers &amp; tips</span></h3><p>Each question comes with a strong example answer and the exact points interviewers are listening for.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#10024; Suggested answer</div><div class="rez-h">Structure</div><div class="rez-line l" style="background:#bbf7d0"></div><div class="rez-line m" style="background:#bbf7d0"></div><div class="rez-badge" style="margin-top:10px">&#10003; What they look for</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 4</div><h3>Rehearse and <span class="g">walk in ready</span></h3><p>Practice with your focused list so every likely question feels familiar on the day.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#9989; Prep list</div><div class="rez-h">Ready to rehearse</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-btn" style="margin-top:12px">Start Practicing</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Loved by job seekers</div>
+                <h2 class="solx-h2">Prepared, not <span class="g">panicked</span></h2>
+                <div class="solx-quotes">
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"It generated the exact questions I got asked at my Google onsite. I'd already rehearsed answers to almost every one."</p><div class="who"><img src="/static/user_imges/26.jpg" alt=""><span><b>Priya S.</b> <span>Google</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"The sample answers showed me how to structure my responses. I stopped rambling and started sounding senior."</p><div class="who"><img src="/static/user_imges/85.jpg" alt=""><span><b>Michael R.</b> <span>Amazon</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Instead of googling random question lists, I got a focused set for my exact role. It saved me hours of prep."</p><div class="who"><img src="/static/user_imges/79.jpg" alt=""><span><b>Emily G.</b> <span>PwC</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I walked in already knowing the first three questions. That confidence completely changed how the rest of the interview went."</p><div class="who"><img src="/static/user_imges/12.jpg" alt=""><span><b>Sarah J.</b> <span>Atlassian</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"The technical questions it generated were spot on for my stack. I prepped exactly the right things instead of everything."</p><div class="who"><img src="/static/user_imges/13.jpg" alt=""><span><b>Vicki B.</b> <span>PayPal</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Pairing this with the mock interview was a cheat code. Generate the questions, then rehearse them out loud until they felt easy."</p><div class="who"><img src="/static/user_imges/22.jpg" alt=""><span><b>James W.</b> <span>Apple</span></span></div></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "_feature_more.html" %}
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Pricing</div>
+                <h2 class="solx-h2">Simple pricing, <span class="g">powerful features</span></h2>
+                <p class="solx-lead">Start free, upgrade only when you want unlimited access.</p>
+                <div class="solx-prices">
+                    <div class="solx-price">
+                        <div class="pname">Free</div>
+                        <div class="pamt"><sup>&#8377;</sup>0</div>
+                        <div class="pper">free forever &bull; no card needed</div>
+                        <ul><li>ATS score &amp; keyword match</li><li>Tailor your resume to a job</li><li>Save your resumes &amp; scores</li></ul>
+                        <a href="/signup?next=/interview-prep" class="solx-btn ghost">Start Free</a>
+                    </div>
+                    <div class="solx-price">
+                        <div class="pname">7-Day Pass</div>
+                        <div class="pamt"><sup>&#8377;</sup>149</div>
+                        <div class="pper">one-time &bull; full access for 7 days</div>
+                        <ul><li>Everything in Pro</li><li>Unlimited tailoring for a week</li><li>Great for an urgent job hunt</li></ul>
+                        <a href="/signup?next=/interview-prep" class="solx-btn ghost">Get 7-Day Pass</a>
+                    </div>
+                    <div class="solx-price pop">
+                        <div class="tag">Most Popular</div>
+                        <div class="pname">Pro</div>
+                        <div class="pamt"><sup>&#8377;</sup>167<span style="font-size:1rem;color:#9fb2d6">/mo</span></div>
+                        <div class="pper">billed &#8377;1,999 yearly &bull; &asymp; &#8377;5.5/day</div>
+                        <ul><li>Unlimited tailoring &amp; ATS scores</li><li>AI cover letters</li><li>Portfolio website</li><li>Mock interviews</li></ul>
+                        <a href="/signup?next=/interview-prep" class="solx-btn">Go Pro</a>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:20px"><a href="/pricing" style="color:#60a5fa;text-decoration:none;font-weight:600">See full pricing &amp; yearly discount &rarr;</a></div>
+            </div>
+        </div>
+
+        <div class="solx-band">
+            <div class="solx-band-inner">
+                <div class="solx-band-kicker">Walking in blind?</div>
+                <h2>Prep the questions <span class="ga">before interview day</span>.</h2>
+                <p>Generate the questions your exact role is likely to ask, with sample answers, and rehearse until every one feels familiar.</p>
+                <a href="/signup?next=/interview-prep" class="solx-btn">Generate Interview Questions, Free</a>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">FAQ</div>
+                <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
+                <div class="solx-faq" style="margin-top:32px">
+                    <details open><summary>What does the interview question generator do?</summary><p>You add a role or job description and it generates the questions that role is most likely to ask, behavioral, technical, and role-specific, along with strong sample answers.</p></details>
+                    <details><summary>Are the questions specific to my job?</summary><p>Yes. Paste the job description and the questions and answers are tailored to that exact role and seniority, not generic lists.</p></details>
+                    <details><summary>Do I get help answering them?</summary><p>Yes, each question comes with a sample answer and the key points interviewers look for, so you know how to frame your own response.</p></details>
+                    <details><summary>How is this different from mock interviews?</summary><p>This gives you a focused list of likely questions and answers to study. Mock Interviews let you practice answering them out loud with instant feedback, use both together.</p></details>
+                    <details><summary>Is it really free to start?</summary><p>Yes. You can generate questions for free. A quick free account saves your prep lists so you can rehearse anytime.</p></details>
+                </div>
+                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/interview-prep" class="solx-btn">Generate Interview Questions, Free</a></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if is_logged_in %}
+
     <style>
-        /* Slim typography — lighter weights across page content
+        /* Slim typography, lighter weights across page content
            (shared .navbar / .site-footer excluded so they match the rest of the site) */
         body > *:not(.navbar):not(.site-footer),
         body > *:not(.navbar):not(.site-footer) * {
@@ -506,11 +689,11 @@
         <h1>Know What They'll <span>Ask You</span> Before You Walk In</h1>
         <div style="display:flex;align-items:center;gap:14px;margin-top:20px;flex-wrap:wrap;justify-content:center;">
             <span style="display:inline-flex;align-items:center;background:linear-gradient(135deg,#3392ff,#4a6aff);border:none;border-radius:12px;padding:12px 22px;font-size:14px;color:#fff;font-weight:600 !important;box-shadow:0 6px 18px rgba(51,146,255,0.35);">
-                Step 1 — Generate your questions here
+                Step 1, Generate your questions here
             </span>
             <span style="color:#5a7aa0;font-size:16px;">→</span>
             <a href="/mock-interview" style="display:inline-flex;align-items:center;background:linear-gradient(135deg,#7c3aed,#9b6cff);border:none;border-radius:12px;padding:12px 22px;font-size:14px;color:#fff;font-weight:600 !important;text-decoration:none;box-shadow:0 6px 18px rgba(124,58,237,0.35);transition:transform .18s ease,box-shadow .18s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 26px rgba(124,58,237,0.5)';" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 18px rgba(124,58,237,0.35)';">
-                Step 2 — Practice live with Zara →
+                Step 2, Practice live with Zara →
             </a>
         </div>
     </div>
@@ -576,11 +759,14 @@
     <div class="iq-toast" id="toast"></div>
 
     <!-- FOOTER -->
-            {% include "_footer.html" %}
+            {% endif %}
+
+    {% include "_footer.html" %}
 
     <script src="/static/auth_nav.js?v=13"></script>
     <script src="/static/mobile_nav.js"></script>
 
+    {% if is_logged_in %}
     <script>
     (function () {
         const fileInput   = document.getElementById('resume-file');
@@ -934,5 +1120,46 @@
     })();
     </script>
     <script src="/static/resume_store.js?v=1"></script>
+    {% endif %}
+{% if not is_logged_in %}
+<script>
+(function(){
+  const canvas = document.getElementById('wave-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const waves = [
+    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
+    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
+    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
+    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
+    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
+    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
+  ];
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now();
+    waves.forEach(function(wv){
+      ctx.beginPath();
+      for(let x = 0; x <= W; x += 2){
+        const y = H * wv.yf + Math.sin(x * wv.freq + t * wv.speed) * wv.amp + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45 + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const r = wv.color[0], g = wv.color[1], b = wv.color[2];
+      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+      gr.addColorStop(0, 'rgba('+r+','+g+','+b+','+wv.alpha+')');
+      gr.addColorStop(0.5, 'rgba('+r+','+g+','+b+','+(wv.alpha*0.4)+')');
+      gr.addColorStop(1, 'rgba('+r+','+g+','+b+',0)');
+      ctx.fillStyle = gr; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+{% endif %}
 </body>
 </html>

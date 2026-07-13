@@ -3689,7 +3689,7 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
 @app.get("/interview-prep", response_class=HTMLResponse)
 async def interview_prep_page(request: Request):
     """Interview Question Generator page"""
-    return templates.TemplateResponse(request, "interview_prep.html", {"request": request})
+    return templates.TemplateResponse(request, "interview_prep.html", {"request": request, "is_logged_in": bool(request.session.get("user_id"))})
 
 
 @app.get("/mock-interview", response_class=HTMLResponse)

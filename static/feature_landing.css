@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 /* ============================================================
    Shared styles for the logged-out feature landing pages.
    Matches the homepage: blue-led accents on the site's animated
@@ -14,7 +15,7 @@
 
 .solx-eyebrow { display: block; font-size: 14px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #60a5fa; margin: 0 0 16px; }
 .solx-kicker { text-align:center; font-size:14px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#60a5fa; }
-.solx-h2 { text-align:center; text-wrap:balance; font-size: clamp(2.1rem,3.8vw,3.3rem); font-weight: 500; letter-spacing:-.02em; line-height:1.14; margin:10px 0 14px; color:#f2f6ff; }
+.solx-h2 { text-align:center; text-wrap:balance; font-family:'DM Serif Display', serif; font-size: clamp(36px,5vw,56px); font-weight: 400; letter-spacing:-.02em; line-height:1.14; margin:10px 0 14px; color:#f2f6ff; }
 .solx-h2 .g, .solx-hero h1 .g { color: #4f9bff; }
 .solx-lead { text-align:center; color:#cbd4e6; max-width:60ch; margin:0 auto 44px; font-size:1.06rem; line-height:1.6; }
 .solx-sec { padding: clamp(46px,5.5vw,84px) 0; background: transparent; }
@@ -72,7 +73,7 @@
 .solx-band { position:relative; text-align:center; padding: clamp(30px,4vw,56px) 22px; }
 .solx-band-inner { position:relative; max-width:1000px; margin:0 auto; padding: clamp(20px,4vw,44px) clamp(16px,5vw,60px); background:none; border:none; box-shadow:none; }
 .solx-band-kicker { position:relative; margin:0 0 14px; color:#90c4ff; letter-spacing:.09em; font-size:13px; font-weight:600; text-transform:uppercase; }
-.solx-band h2 { position:relative; font-size:clamp(1.9rem,4vw,3.1rem); font-weight:450; line-height:1.12; letter-spacing:-.02em; margin:0 auto 16px; color:#f4f7ff; white-space:nowrap; }
+.solx-band h2 { position:relative; font-family:'DM Serif Display', serif; font-size:clamp(36px,5vw,56px); font-weight:400; line-height:1.12; letter-spacing:-.02em; margin:0 auto 16px; color:#f4f7ff; white-space:nowrap; }
 .solx-band h2 .ga { background:linear-gradient(90deg,#5b8cff,#8a8cff); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .solx-band p { position:relative; color:#cfd9ee; font-size:1.1rem; line-height:1.5; margin:0 auto 30px; max-width:52ch; }
 .solx-band .solx-btn { position:relative; }
@@ -96,8 +97,8 @@
 .solx-faq details { border:1px solid rgba(255,255,255,.09); border-radius:12px; padding:18px 22px; margin-bottom:12px; background:rgba(255,255,255,.03); }
 .solx-faq summary { cursor:pointer; font-weight:600; font-size:1.04rem; list-style:none; display:flex; justify-content:space-between; gap:14px; color:#e8edf6; }
 .solx-faq summary::-webkit-details-marker { display:none; }
-.solx-faq summary::after { content:'+'; color:#60a5fa; font-weight:700; }
-.solx-faq details[open] summary::after { content:'\2013'; }
+.solx-faq summary::after { content:''; flex:none; width:9px; height:9px; margin-top:4px; border-right:2px solid #60a5fa; border-bottom:2px solid #60a5fa; transform:rotate(45deg); transition:transform .2s ease; }
+.solx-faq details[open] summary::after { transform:rotate(-135deg); }
 .solx-faq p { color:#c2ccde; line-height:1.6; margin:12px 0 0; }
 
 @media (max-width: 900px) {
@@ -109,8 +110,8 @@
 }
 
 /* ---- lighter headings (match homepage weight) ---- */
-.solx-hero h1, .solx-h2, .solx-step h3 { font-weight: 500; }
-.solx-band h2 { font-weight: 450; }
+.solx-hero h1, .solx-step h3 { font-weight: 500; }
+.solx-h2, .solx-band h2, .solx-marquee .cap { font-weight: 400; }
 .solx-card h3 { font-weight: 600; }
 
 /* ---- company logo row (monochrome white on dark) ---- */
@@ -132,27 +133,30 @@
 @media (max-width:900px){ .solx-prices { grid-template-columns:1fr; } }
 
 /* ---- Company logo belt (marquee), same as the homepage ---- */
-.solx-marquee { width:100%; position:relative; z-index:1; padding: 30px 0 10px; }
-.solx-marquee .cap { text-align:center; color:#c2ccde; font-size:1rem; font-weight:500; letter-spacing:.02em; margin-bottom:20px; }
+.solx-marquee { width:100%; position:relative; z-index:1; padding: 72px 0; }
+.solx-marquee .cap { text-align:center; font-family:'DM Serif Display', serif; font-size:clamp(36px,5vw,56px); font-weight:400; color:#f4f7ff; letter-spacing:-0.02em; line-height:1.1; margin-bottom:48px; }
+.solx-marquee .cap .g { color:#4f9bff; }
 .marquee-wrapper { position:relative; overflow:hidden; width:100%; }
-.marquee-wrapper::before, .marquee-wrapper::after { content:''; position:absolute; top:0; bottom:0; width:90px; z-index:2; pointer-events:none; }
-.marquee-wrapper::before { left:0; background:linear-gradient(to right, #0a0012 20%, transparent 100%); }
-.marquee-wrapper::after { right:0; background:linear-gradient(to left, #0a0012 20%, transparent 100%); }
-.marquee-container { width:100%; overflow:hidden; padding:10px 2px; background:#fefefe; border-radius:12px; }
+.marquee-wrapper::before, .marquee-wrapper::after { content:''; position:absolute; top:0; bottom:0; width:120px; z-index:2; pointer-events:none; }
+.marquee-wrapper::before { left:0; background:linear-gradient(to right, #0a0012 30%, transparent 100%); }
+.marquee-wrapper::after { right:0; background:linear-gradient(to left, #0a0012 30%, transparent 100%); }
+.marquee-container { width:100%; overflow:hidden; padding:10px 2px; background-color:#fefefe; }
 .marquee-track { display:flex; align-items:center; width:max-content; gap:0; animation:marquee-scroll 23s linear infinite; will-change:transform; }
 .marquee-track:hover { animation-play-state:paused; }
-.logo-item { display:flex; align-items:center; justify-content:center; height:74px; padding:0 46px; flex-shrink:0; border-right:1px solid rgba(0,0,0,.06); }
+.logo-item { display:flex; align-items:center; justify-content:center; height:78px; padding:0 46px; flex-shrink:0; border-right:1px solid rgba(0,0,0,.06); cursor:pointer; transition:opacity .3s ease, transform .3s ease; }
 .logo-item:last-child { border-right:none; }
-.logo-item img { height:40px; width:auto; object-fit:contain; max-width:180px; }
+.logo-item:hover { opacity:.8; transform:scale(1.04); }
+.logo-item img { height:42px; width:auto; object-fit:contain; max-width:170px; }
 @keyframes marquee-scroll { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
-@media (max-width:768px){ .logo-item { padding:0 30px; height:60px; } .logo-item img { height:32px; } }
+@media (max-width:768px){ .marquee-wrapper::before, .marquee-wrapper::after { width:60px; } .logo-item { padding:0 30px; height:62px; } .logo-item img { height:34px; } .marquee-track { animation:marquee-scroll 20s linear infinite; } }
+@media (max-width:480px){ .marquee-wrapper::before, .marquee-wrapper::after { width:40px; } .logo-item { padding:0 22px; height:58px; } .logo-item img { height:30px; } .marquee-track { animation:marquee-scroll 18s linear infinite; } }
 
 /* ---- "More than a resume optimizer" cross-sell ---- */
 .solx-more-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
 .solx-more-card { display:block; text-decoration:none; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:22px; transition:border-color .2s ease, transform .2s ease; }
 .solx-more-card:hover { border-color:rgba(59,130,246,.45); transform:translateY(-2px); }
-.solx-more-card .ico { width:52px; height:52px; border-radius:14px; display:grid; place-items:center; background:rgba(59,130,246,.14); color:#60a5fa; margin-bottom:14px; }
-.solx-more-card .ico svg { width:28px; height:28px; }
+.solx-more-card .ico { width:64px; height:64px; border-radius:16px; display:grid; place-items:center; background:rgba(59,130,246,.14); color:#60a5fa; margin-bottom:16px; }
+.solx-more-card .ico svg { width:36px; height:36px; }
 .solx-more-card h3 { color:#e8edf6; font-size:1.12rem; font-weight:600; margin:0 0 6px; }
 .solx-more-card p { color:#c2ccde; font-size:.94rem; line-height:1.55; margin:0 0 12px; }
 .solx-more-card .go { color:#60a5fa; font-size:.9rem; font-weight:600; }

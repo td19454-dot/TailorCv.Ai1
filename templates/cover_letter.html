@@ -4,7 +4,7 @@
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Generate a tailored, ATS-friendly cover letter in seconds. Upload your resume PDF and the job description — theTailorCV's AI writes a cover letter matched to the role.">
+    <meta name="description" content="Generate a tailored, ATS-friendly cover letter in seconds. Upload your resume PDF and the job description, theTailorCV's AI writes a cover letter matched to the role.">
     <title>AI Cover Letter Generator | theTailorCV</title>
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/header-footer.css">
@@ -96,7 +96,7 @@
         .cl-file-or { font-size: 0.95rem; color: #9fb6d6; text-align: center; margin: 12px 0 0; }
         .cl-footer-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: 12px; color: #a5c7ff; }
 
-        /* Custom upload zone (replaces the native file input — taps open the
+        /* Custom upload zone (replaces the native file input, taps open the
            picker on iOS Safari & Android Chrome via the <label for>). */
         .cl-upload {
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
@@ -114,11 +114,11 @@
         .cl-upload.has-file .cl-upload-label,
         .cl-upload.has-file .cl-upload-icon { color: #6ee7b7; }
 
-        /* Task 2 — sentence-case form labels (were uppercase) */
+        /* Task 2, sentence-case form labels (were uppercase) */
         .cl-section-title { text-transform: none; font-weight: 500; font-size: 12px; letter-spacing: 0.03em; }
         .cl-jd-head .cl-label { text-transform: none; font-weight: 500; font-size: 12px; letter-spacing: 0.03em; }
 
-        /* Task 3 — collapse the hero card on phones so the form sits above the fold */
+        /* Task 3, collapse the hero card on phones so the form sits above the fold */
         @media (max-width: 480px) {
             .cl-page-header .cl-hero-card { padding: 1.1rem 1.1rem 1rem; border-radius: 18px; }
             .cl-page-header .cl-badges { display: none; }
@@ -130,18 +130,18 @@
         }
 
         /* ════════════════════════════════════════════════════════════════
-           CLEAN REDESIGN — simple, slim, spacious. Layered last so it wins;
+           CLEAN REDESIGN, simple, slim, spacious. Layered last so it wins;
            every ID/class is preserved so the existing JS keeps working.
            ════════════════════════════════════════════════════════════════ */
         body { font-weight: 400; }
 
-        /* Layout — two equal columns, equal height */
+        /* Layout, two equal columns, equal height */
         .cl-wrap { max-width: 1320px; gap: 36px; padding: 0.25rem 1.5rem 4rem; align-items: stretch; grid-template-columns: 1fr 1fr; }
         .cl-wrap > div { display: flex; flex-direction: column; }
         .cl-wrap > div > .cl-card { flex: 1; }
         @media (max-width: 1080px) { .cl-wrap { grid-template-columns: 1fr; } }
 
-        /* Hero — plain text header, no heavy box/blur/shadow */
+        /* Hero, plain text header, no heavy box/blur/shadow */
         .cl-page-header { max-width: 1120px; margin: 0 auto 0.4rem; padding: 2rem 1.25rem 0.6rem; text-align: center; }
         .cl-page-header::before, .cl-page-header::after { content: none; }
         .cl-page-header .cl-hero-card {
@@ -156,7 +156,7 @@
         .cl-page-header .cl-badge { padding: 0.35rem 0.78rem; font-size: 0.78rem; font-weight: 300; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: #9fb0d2; }
         .cl-page-header .cl-badge span { width: 6px; height: 6px; box-shadow: none; }
 
-        /* Process steps — square cards: resume → JD → cover letter */
+        /* Process steps, square cards: resume → JD → cover letter */
         .cl-steps { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 1.6rem; }
         .cl-step {
             width: 156px; height: 156px;
@@ -181,23 +181,23 @@
             .cl-step-arrow { transform: rotate(90deg); }
         }
 
-        /* Cards — one clean soft surface, roomy padding (taller box) */
+        /* Cards, one clean soft surface, roomy padding (taller box) */
         .cl-card { padding: 32px 30px; border-radius: 18px; background: rgba(12, 21, 43, 0.7); border: 1px solid rgba(255,255,255,0.07); box-shadow: none; }
         .cl-card .cl-element-row { margin-bottom: 26px; }
         textarea#jd-text { min-height: 180px; }
         .cl-card + .cl-card { margin-top: 20px; }
         .cl-card.secondary { background: rgba(255,255,255,0.02); border-color: rgba(255,255,255,0.06); }
 
-        /* Section eyebrow — quiet uppercase, no pill */
+        /* Section eyebrow, quiet uppercase, no pill */
         .cl-section-title { background: none; padding: 0; margin-bottom: 18px; color: #8198c2; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; }
 
-        /* Labels + helper text — slim */
+        /* Labels + helper text, slim */
         .cl-label, .cl-jd-head .cl-label { font-weight: 500; font-size: 0.85rem; color: #dde6fa; letter-spacing: 0; text-transform: none; }
         .cl-hint, .cl-note { font-weight: 300; font-size: 0.84rem; color: #93a8cd; }
         .cl-jd-picker-row { font-weight: 500; font-size: 0.82rem; color: #a98cff; }
         .cl-element-row { margin-bottom: 20px; }
 
-        /* Inputs — simple, soft */
+        /* Inputs, simple, soft */
         textarea, select, input[type=file], input[type=text], input[type=email] {
             background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
             border-radius: 10px; font-size: 13px; padding: 11px 13px;
@@ -205,7 +205,7 @@
         textarea#letter-output { border-radius: 12px; }
         input[type=file]::-webkit-file-upload-button { font-weight: 500; }
 
-        /* Buttons — slim */
+        /* Buttons, slim */
         .cl-btn { font-weight: 500; font-size: 0.88rem; padding: 11px 16px; border-radius: 11px; }
         .cl-btn-primary { background: linear-gradient(135deg, #4f7fff, #8d5cf7); }
         .cl-btn-ghost { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
@@ -214,43 +214,44 @@
         .cl-detail-grid { gap: 10px; margin-top: 16px; }
         .cl-detail-grid input { border-radius: 10px; min-height: 44px; }
 
-        /* Templates — simple pills */
+        /* Templates, simple pills */
         .cl-tpl-label { font-weight: 500; font-size: 0.85rem; color: #dde6fa; margin: 18px 0 10px; }
         .cl-templates { gap: 10px; }
         .cl-tpl { font-weight: 500; font-size: 0.85rem; border-radius: 10px; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
         .cl-tpl.active { border-color: #5b8cff; background: rgba(91,140,255,0.16); }
 
-        /* Preview frame — clean */
+        /* Preview frame, clean */
         .cl-preview-wrap { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 12px; }
 
-        /* Quick tips — minimal accent list (no boxes) */
+        /* Quick tips, minimal accent list (no boxes) */
         .cl-tip-list { gap: 10px; }
         .cl-tip-list li { font-weight: 300; font-size: 0.9rem; background: none; border: none; border-left: 2px solid rgba(91,140,255,0.45); border-radius: 0; padding: 2px 0 2px 14px; color: #aebdde; }
         .cl-tip-list li strong { font-weight: 600; color: #eaf1ff; }
 
-        /* Upload zone — slim */
+        /* Upload zone, slim */
         .cl-upload { border-radius: 10px; }
         .cl-upload-label { font-weight: 500; }
     </style>
 </head>
 <body>
+{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
-    <link rel="stylesheet" href="/static/feature_landing.css?v=14">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=18">
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
                 <div>
                     <span class="solx-eyebrow">AI Cover Letter Builder</span>
                     <h1>Job-winning cover letters <span class="g">in seconds</span> with AI</h1>
-                    <p class="sub">Create tailored, ATS-friendly cover letters that get you noticed and help you land more interviews &mdash; matched to the exact job.</p>
-                    <a href="/signup?next=/cover-letter" class="solx-btn">Generate My Cover Letter &mdash; Free</a>
-                    <p class="micro">Under a minute &bull; No credit card &bull; <b>Free to start</b></p>
-                    <div class="solx-logos">
-                        <span>Our users have landed jobs at top companies</span>
-                        <div class="solx-logos-row"><b>Google</b><b>Amazon</b><b>Meta</b><b>Apple</b><b>Microsoft</b></div>
+                    <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
+                        <span>Paste the job, AI writes a tailored letter</span>
+                        <span>Written from your real experience, in your voice</span>
+                        <span>ATS-friendly and ready in under a minute</span>
                     </div>
+                    <a href="/signup?next=/cover-letter" class="solx-btn">Generate My Cover Letter, Free</a>
+                    <p class="micro">Under a minute &bull; No credit card &bull; <b>Free to start</b></p>
                 </div>
                 <div class="rez">
                     <div class="rez-tag">&#128196; Sr. Data Scientist Cover Letter</div>
@@ -272,11 +273,17 @@
             </div>
         </div>
 
+        <div class="solx-marquee">
+            <div class="solx-wrap"><p class="cap">Our users have <span class="g">landed jobs at</span></p></div>
+            <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
+        </div>
+        <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
         <div class="solx-sec">
             <div class="solx-wrap">
                 <div class="solx-kicker">Why job seekers love it</div>
                 <h2 class="solx-h2">A cover letter that actually <span class="g">sounds like you</span></h2>
-                <p class="solx-lead">No more staring at a blank page. TailorCV writes a polished, role-specific letter from your real experience &mdash; then lets you tweak every line.</p>
+                <p class="solx-lead">No more staring at a blank page. TailorCV writes a polished, role-specific letter from your real experience, then lets you tweak every line.</p>
                 <div class="solx-grid3">
                     <div class="solx-card">
                         <div class="mini">
@@ -323,7 +330,7 @@
                         <div class="solx-step-viz"><div class="rez"><div class="rez-h">Job Description</div><div class="rez-line l"></div><div class="rez-line m"></div><span class="rez-pill g">Python</span><span class="rez-pill y">SQL</span><span class="rez-pill b">Leadership</span></div></div>
                     </div>
                     <div class="solx-step">
-                        <div><div class="n">Step 3</div><h3>AI writes it <span class="g">in your voice</span></h3><p>Get a tailored, ATS-friendly letter in seconds &mdash; specific and human, never generic.</p></div>
+                        <div><div class="n">Step 3</div><h3>AI writes it <span class="g">in your voice</span></h3><p>Get a tailored, ATS-friendly letter in seconds, specific and human, never generic.</p></div>
                         <div class="solx-step-viz"><div class="rez"><div class="rez-h" style="text-transform:none;color:#0f172a">Dear Hiring Manager,</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div><div class="rez-sign">John Smith</div></div></div>
                     </div>
                     <div class="solx-step">
@@ -334,10 +341,63 @@
             </div>
         </div>
 
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Loved by job seekers</div>
+                <h2 class="solx-h2">From blank page to <span class="g">interview</span></h2>
+                <div class="solx-quotes">
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I used to spend an hour per cover letter. Now I paste the job and get a tailored letter in under a minute, and they actually sound like me."</p><div class="who"><img src="/static/user_imges/12.jpg" alt=""><span><b>Sarah J.</b> <span>Atlassian</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"It pulls the exact keywords from the job description into the letter. My response rate noticeably went up after I started using it."</p><div class="who"><img src="/static/user_imges/26.jpg" alt=""><span><b>Priya S.</b> <span>Google</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"No more blank-page dread. The draft is always a strong starting point, and editing a few lines is so much faster than writing from scratch."</p><div class="who"><img src="/static/user_imges/85.jpg" alt=""><span><b>Michael R.</b> <span>Amazon</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I tweaked two lines and sent it. The letter already sounded like me and hit exactly what the job asked for."</p><div class="who"><img src="/static/user_imges/22.jpg" alt=""><span><b>James W.</b> <span>Apple</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Every application used to stall at the cover letter. Now it is the fastest part of applying."</p><div class="who"><img src="/static/user_imges/13.jpg" alt=""><span><b>Vicki B.</b> <span>PayPal</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"It picked up the tone of the company and matched it. Recruiters actually commented on my letter."</p><div class="who"><img src="/static/user_imges/79.jpg" alt=""><span><b>Emily G.</b> <span>PwC</span></span></div></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "_feature_more.html" %}
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Pricing</div>
+                <h2 class="solx-h2">Simple pricing, <span class="g">powerful features</span></h2>
+                <p class="solx-lead">Start free, upgrade only when you want unlimited access.</p>
+                <div class="solx-prices">
+                    <div class="solx-price">
+                        <div class="pname">Free</div>
+                        <div class="pamt"><sup>&#8377;</sup>0</div>
+                        <div class="pper">free forever &bull; no card needed</div>
+                        <ul><li>ATS score &amp; keyword match</li><li>Tailor your resume to a job</li><li>Save your resumes &amp; scores</li></ul>
+                        <a href="/signup?next=/cover-letter" class="solx-btn ghost">Start Free</a>
+                    </div>
+                    <div class="solx-price">
+                        <div class="pname">7-Day Pass</div>
+                        <div class="pamt"><sup>&#8377;</sup>149</div>
+                        <div class="pper">one-time &bull; full access for 7 days</div>
+                        <ul><li>Everything in Pro</li><li>Unlimited tailoring for a week</li><li>Great for an urgent job hunt</li></ul>
+                        <a href="/signup?next=/cover-letter" class="solx-btn ghost">Get 7-Day Pass</a>
+                    </div>
+                    <div class="solx-price pop">
+                        <div class="tag">Most Popular</div>
+                        <div class="pname">Pro</div>
+                        <div class="pamt"><sup>&#8377;</sup>167<span style="font-size:1rem;color:#9fb2d6">/mo</span></div>
+                        <div class="pper">billed &#8377;1,999 yearly &bull; &asymp; &#8377;5.5/day</div>
+                        <ul><li>Unlimited tailoring &amp; ATS scores</li><li>AI cover letters</li><li>Portfolio website</li><li>Mock interviews</li></ul>
+                        <a href="/signup?next=/cover-letter" class="solx-btn">Go Pro</a>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:20px"><a href="/pricing" style="color:#60a5fa;text-decoration:none;font-weight:600">See full pricing &amp; yearly discount &rarr;</a></div>
+            </div>
+        </div>
+
         <div class="solx-band">
-            <h2>Still writing every cover letter from scratch?</h2>
-            <p>Generate a tailored, ATS-ready cover letter for each job in under a minute.</p>
-            <a href="/signup?next=/cover-letter" class="solx-btn">Generate My Cover Letter &mdash; Free</a>
+            <div class="solx-band-inner">
+                <div class="solx-band-kicker">Still starting from scratch?</div>
+                <h2>Write your next cover letter <span class="ga">in one minute</span>.</h2>
+                <p>Generate a tailored, ATS-ready cover letter for every job, written from your real experience, in your own voice.</p>
+                <a href="/signup?next=/cover-letter" class="solx-btn">Generate My Cover Letter, Free</a>
+            </div>
         </div>
 
         <div class="solx-sec">
@@ -345,13 +405,13 @@
                 <div class="solx-kicker">FAQ</div>
                 <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
                 <div class="solx-faq" style="margin-top:32px">
-                    <details open><summary>What is an AI cover letter generator, and how does it work?</summary><p>You add your resume and the job description, and the AI writes a tailored cover letter that highlights your relevant experience using the language of that specific role &mdash; ready to review and download.</p></details>
+                    <details open><summary>What is an AI cover letter generator, and how does it work?</summary><p>You add your resume and the job description, and the AI writes a tailored cover letter that highlights your relevant experience using the language of that specific role, ready to review and download.</p></details>
                     <details><summary>Can I customize the tone and length?</summary><p>Yes. Pick the tone that fits the company, edit any line, and adjust the length before you export.</p></details>
-                    <details><summary>Does it include job-specific keywords?</summary><p>Yes &mdash; it pulls the key skills and terms from the job description so your letter reads as a strong match.</p></details>
+                    <details><summary>Does it include job-specific keywords?</summary><p>Yes, it pulls the key skills and terms from the job description so your letter reads as a strong match.</p></details>
                     <details><summary>Are there templates for different industries?</summary><p>Yes, recruiter-approved templates designed for a range of industries and roles.</p></details>
                     <details><summary>Is it free to start?</summary><p>Yes. Create your first cover letter free; a quick account saves your letters so you can reuse and tweak them for similar jobs.</p></details>
                 </div>
-                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/cover-letter" class="solx-btn">Generate My Cover Letter &mdash; Free</a></div>
+                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/cover-letter" class="solx-btn">Generate My Cover Letter, Free</a></div>
             </div>
         </div>
     </div>
@@ -596,7 +656,7 @@ Nice to have:
 
         "ml-engineer": `Machine Learning Engineer
 
-We are seeking an ML Engineer to bridge research and production — building reliable, scalable ML systems.
+We are seeking an ML Engineer to bridge research and production, building reliable, scalable ML systems.
 
 Responsibilities:
 - Design, train, and deploy machine learning models into production
@@ -626,7 +686,7 @@ Responsibilities:
 - Design and manage cloud infrastructure on AWS / GCP using Terraform or CDK
 - Build and maintain CI/CD pipelines (GitHub Actions, Jenkins, GitLab CI)
 - Manage Kubernetes clusters and containerised workloads
-- Implement observability stack — logging, metrics, and alerting (Datadog, Prometheus, Grafana)
+- Implement observability stack, logging, metrics, and alerting (Datadog, Prometheus, Grafana)
 - Automate security hardening, patching, and compliance checks
 - Collaborate with engineering teams to improve deployment velocity and reliability
 
@@ -748,7 +808,7 @@ Responsibilities:
 - Perform API testing with Postman and write automated API tests
 - Identify, document, and track bugs through to resolution
 - Collaborate with developers and product managers during sprint planning
-- Drive quality metrics — test coverage, defect escape rate, and automation rate
+- Drive quality metrics, test coverage, defect escape rate, and automation rate
 
 Requirements:
 - 2+ years of QA or test engineering experience
@@ -1010,7 +1070,7 @@ Nice to have:
 We are seeking a motivated Science or Mathematics Teacher to deliver challenging and engaging STEM lessons.
 
 Responsibilities:
-- Teach Science (Physics, Chemistry, Biology) or Mathematics to students in grades 6–12
+- Teach Science (Physics, Chemistry, Biology) or Mathematics to students in grades 6,12
 - Develop lesson plans, lab activities, and assessments aligned to curriculum standards
 - Conduct safe and effective laboratory sessions, demonstrating experimental procedures
 - Use data-driven instruction to identify learning gaps and adjust teaching strategies
@@ -1123,7 +1183,7 @@ Requirements:
 - 3+ years of product management experience in a software or technology company
 - Strong ability to translate customer problems into clear product requirements
 - Experience working in agile/scrum environments with cross-functional teams
-- Data-driven mindset — comfortable with SQL, analytics tools (Mixpanel, Amplitude, Looker)
+- Data-driven mindset, comfortable with SQL, analytics tools (Mixpanel, Amplitude, Looker)
 - Excellent written and verbal communication skills; ability to influence without authority
 - Experience conducting user research and synthesising insights into actionable decisions
 
@@ -1945,7 +2005,7 @@ Nice to have:
                 if (res.d.location && loc && !loc.value.trim()) loc.value = res.d.location;
                 if (res.d.email && em && !em.value.trim()) em.value = res.d.email;
                 renderPreview();
-                setStatus('Done — details filled from your resume. Pick a template, then download.', 'ok');
+                setStatus('Done, details filled from your resume. Pick a template, then download.', 'ok');
             })
             .catch(function (e) { setStatus(e.message || 'Something went wrong.', 'error'); })
             .finally(function () { genBtn.disabled = false; genBtn.textContent = orig; });
@@ -2131,5 +2191,45 @@ Nice to have:
     })();
     </script>
     <script src="/static/resume_store.js?v=1"></script>
+{% if not is_logged_in %}
+<script>
+(function(){
+  const canvas = document.getElementById('wave-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const waves = [
+    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
+    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
+    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
+    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
+    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
+    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
+  ];
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now();
+    waves.forEach(function(wv){
+      ctx.beginPath();
+      for(let x = 0; x <= W; x += 2){
+        const y = H * wv.yf + Math.sin(x * wv.freq + t * wv.speed) * wv.amp + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45 + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const r = wv.color[0], g = wv.color[1], b = wv.color[2];
+      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+      gr.addColorStop(0, 'rgba('+r+','+g+','+b+','+wv.alpha+')');
+      gr.addColorStop(0.5, 'rgba('+r+','+g+','+b+','+(wv.alpha*0.4)+')');
+      gr.addColorStop(1, 'rgba('+r+','+g+','+b+',0)');
+      ctx.fillStyle = gr; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+{% endif %}
 </body>
 </html>
