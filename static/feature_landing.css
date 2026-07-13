@@ -167,17 +167,17 @@
 .solx-car-track { display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding:4px 2px 6px; scrollbar-width:none; -ms-overflow-style:none; }
 .solx-car-track::-webkit-scrollbar { display:none; }
 .solx-car-item { flex:0 0 calc((100% - 44px) / 3); scroll-snap-align:start; }
-/* A4 page ratio: the resume previews are 0.707, so this frame fits them edge to
-   edge with no bottom crop and no white side margin. */
-.solx-car-shot { display:block; position:relative; background:#fff; border:1px solid rgba(255,255,255,.14); border-radius:14px; overflow:hidden; box-shadow:0 26px 60px rgba(2,6,23,.5); aspect-ratio:1 / 1.414; transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
-.solx-car-item:hover .solx-car-shot { transform:translateY(-4px); border-color:rgba(96,165,250,.55); box-shadow:0 32px 70px rgba(37,99,235,.4); }
-.solx-car-shot img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+/* Same treatment as the logged-in template gallery: contain + padding on a deep
+   blue ground, so the whole resume is visible and never cropped. */
+.solx-car-shot { display:block; position:relative; background:linear-gradient(145deg,#0a1a4a 0%,#12245e 100%); border:1px solid rgba(96,165,250,.3); border-radius:14px; overflow:hidden; box-shadow:0 10px 24px rgba(5,20,80,.28); aspect-ratio:3 / 4; transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+.solx-car-item:hover .solx-car-shot { transform:translateY(-4px); border-color:rgba(56,189,248,.8); box-shadow:0 20px 50px rgba(5,25,100,.3); }
+.solx-car-shot img { width:100%; height:100%; object-fit:contain; padding:10px; display:block; }
 .solx-car-name { text-align:center; margin-top:14px; color:#e8edf6; font-size:1.02rem; font-weight:600; }
 /* Narrower cards than a 2-up, so the preview is not too wide */
 .solx-carousel.big .solx-car-item { flex-basis:calc((100% - 44px) / 2.5); }
-/* Website screenshots (real assets are ~2.09:1); a taller frame buys height,
-   trimming only side margin rather than the page content. */
-.solx-carousel.wide .solx-car-shot { aspect-ratio:1.75 / 1; }
+/* Website screenshots (real assets are ~2.09:1) fill their frame instead. */
+.solx-carousel.wide .solx-car-shot { aspect-ratio:1.75 / 1; background:#fff; }
+.solx-carousel.wide .solx-car-shot img { object-fit:cover; object-position:top center; padding:0; }
 /* Live-demo affordance on the portfolio designs */
 .solx-car-demo { position:absolute; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; gap:6px; padding:14px 12px 12px; font-size:.88rem; font-weight:600; color:#fff; background:linear-gradient(to top, rgba(8,13,32,.96), rgba(8,13,32,.72) 55%, rgba(8,13,32,0)); transition:color .2s ease; }
 .solx-car-item:hover .solx-car-demo { color:#8ec5ff; }
