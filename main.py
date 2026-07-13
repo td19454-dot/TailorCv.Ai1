@@ -4826,7 +4826,7 @@ async def modify_cv_page(request: Request):
     return templates.TemplateResponse(
         request,
         "modify_cv.html",
-        {"request": request},
+        {"request": request, "is_logged_in": bool(request.session.get("user_id"))},
     )
 
 
