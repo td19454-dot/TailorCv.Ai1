@@ -50,7 +50,7 @@
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
-    <link rel="stylesheet" href="/static/feature_landing.css?v=30">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=31">
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -378,6 +378,7 @@
 
 
 
+    {% if is_logged_in %}
     <main class="templates-page">
         <section class="templates-header">
             <h1 class="templates-title">ATS-Friendly <span class="templates-title-accent">Resume Templates</span></h1>
@@ -421,11 +422,13 @@
             <p id="templates-upload-status" class="templates-upload-status" aria-live="polite"></p>
         </section>
     </main>
+    {% endif %}
 
     {% include "_footer.html" %}
 
     <script src="/static/auth_nav.js?v=13"></script>
     <script src="/static/mobile_nav.js"></script>
+    {% if is_logged_in %}
     <script>
         (function () {
             const OPTIMIZED_EDITOR_PAYLOAD_KEY = "tailorcv_optimized_editor_payload";
@@ -890,6 +893,7 @@
         })();
     </script>
     <script src="/static/resume_store.js?v=1"></script>
+    {% endif %}
 {% if not is_logged_in %}
 <script>
 (function(){
