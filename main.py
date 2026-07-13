@@ -4832,10 +4832,17 @@ async def modify_cv_page(request: Request):
 
 @app.get("/my-resumes", response_class=HTMLResponse)
 async def my_resumes_page(request: Request):
-    """Dashboard of the logged-in user's saved (optimized) resumes."""
+    """Dashboard of the logged-in user's saved (optimized) resumes.
+
+    Logged-out visitors get the marketing landing instead of a login redirect,
+    so the page works as a public entry point (signup capture)."""
     user_id = request.session.get("user_id")
     if not user_id:
-        return RedirectResponse(url="/login?next=/my-resumes", status_code=302)
+        return templates.TemplateResponse(
+            request,
+            "my_resumes.html",
+            {"request": request, "resumes": [], "is_logged_in": False},
+        )
     db = get_db()
     try:
         resumes = (
@@ -4849,7 +4856,7 @@ async def my_resumes_page(request: Request):
     return templates.TemplateResponse(
         request,
         "my_resumes.html",
-        {"request": request, "resumes": resumes},
+        {"request": request, "resumes": resumes, "is_logged_in": True},
     )
 
 
