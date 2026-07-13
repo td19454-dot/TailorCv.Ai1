@@ -164,8 +164,7 @@
 .solx-car-track { display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; padding:4px 2px 6px; scrollbar-width:none; -ms-overflow-style:none; }
 .solx-car-track::-webkit-scrollbar { display:none; }
 .solx-car-item { flex:0 0 calc((100% - 44px) / 3); scroll-snap-align:start; }
-/* A4 page ratio so resume previews fit whole, with no cropping */
-.solx-car-shot { display:block; position:relative; background:#fff; border:1px solid rgba(255,255,255,.14); border-radius:14px; overflow:hidden; box-shadow:0 26px 60px rgba(2,6,23,.5); aspect-ratio:1 / 1.414; transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.solx-car-shot { display:block; position:relative; background:#fff; border:1px solid rgba(255,255,255,.14); border-radius:14px; overflow:hidden; box-shadow:0 26px 60px rgba(2,6,23,.5); aspect-ratio:3 / 4; transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
 .solx-car-item:hover .solx-car-shot { transform:translateY(-4px); border-color:rgba(96,165,250,.55); box-shadow:0 32px 70px rgba(37,99,235,.4); }
 .solx-car-shot img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
 .solx-car-name { text-align:center; margin-top:14px; color:#e8edf6; font-size:1.02rem; font-weight:600; }
