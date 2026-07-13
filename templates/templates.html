@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
@@ -48,6 +48,156 @@
 <body>
     {% include "_nav.html" %}
 
+    {% if not is_logged_in %}
+    <link rel="stylesheet" href="/static/feature_landing.css?v=17">
+    <div class="solx">
+        <div class="solx-wrap">
+            <div class="solx-hero">
+                <div>
+                    <span class="solx-eyebrow">Resume Templates</span>
+                    <h1>Recruiter-approved templates <span class="g">that pass the ATS.</span></h1>
+                    <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
+                        <span>ATS-safe, single-column layouts that parse cleanly</span>
+                        <span>Designed for every industry and experience level</span>
+                        <span>Fully editable &mdash; download as a polished PDF</span>
+                    </div>
+                    <a href="/signup?next=/templates" class="solx-btn">Browse Templates &mdash; Free</a>
+                    <p class="micro">Instant preview &bull; No credit card &bull; <b>Free to start</b></p>
+                </div>
+                <div class="rez">
+                    <div class="rez-tag">&#128196; ATS-Safe Template</div>
+                    <div class="rez-name">Alex Mitchell</div>
+                    <div class="rez-role">Marketing Manager</div>
+                    <div class="rez-h">Summary</div>
+                    <div class="rez-line l"></div><div class="rez-line m"></div>
+                    <div class="rez-h">Experience</div>
+                    <div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                    <div class="rez-h">Skills</div>
+                    <div class="rez-line m"></div>
+                    <div class="rez-insights">
+                        <div class="t">&#10024; Template picker</div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+                            <div class="rez-line l" style="height:34px;border-radius:6px"></div>
+                            <div class="rez-line l" style="height:34px;border-radius:6px;background:#dbe4ff"></div>
+                            <div class="rez-line l" style="height:34px;border-radius:6px"></div>
+                        </div>
+                        <div class="rez-btn">Use This Template</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-marquee">
+            <div class="solx-wrap"><p class="cap">Trusted by job seekers hired at</p></div>
+            <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
+        </div>
+        <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">Templates that look great &mdash; <span class="g">and actually parse</span></h2>
+                <p class="solx-lead">A beautiful resume is useless if the ATS can't read it. Every TailorCV template is designed to look sharp to recruiters and parse cleanly through the software.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-badge">&#10003; ATS Friendly</div>
+                            <div class="rez-h" style="margin-top:12px">Experience</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#9733; Parses cleanly</div>
+                        </div>
+                        <h3>ATS-safe by design</h3>
+                        <p>Single-column, no tables or graphics that break parsers &mdash; so your resume reaches a human instead of getting filtered out.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div style="margin-top:4px"><span class="rez-pill g">Tech</span><span class="rez-pill y">Finance</span><span class="rez-pill b">Design</span></div>
+                            <div style="margin-top:6px"><span class="rez-pill b">Student</span><span class="rez-pill g">Executive</span></div>
+                            <div class="rez-line m" style="margin-top:10px"></div>
+                        </div>
+                        <h3>For every industry &amp; level</h3>
+                        <p>From first internship to senior leadership, pick a template built for your field and career stage &mdash; not a one-size-fits-all form.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-tag">&#9999;&#65039; Fully editable</div>
+                            <div class="rez-h" style="margin-top:10px">Your content</div><div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-btn" style="margin-top:10px">&#11015; Download PDF</div>
+                        </div>
+                        <h3>Editable &amp; ready to download</h3>
+                        <p>Edit every line in the builder, then export a clean, recruiter-ready PDF you can submit in one click.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">How it works</div>
+                <h2 class="solx-h2">A simple 4-step process to a <span class="g">standout resume</span></h2>
+                <div style="margin-top:26px">
+                    <div class="solx-step">
+                        <div><div class="n">Step 1</div><h3>Pick a <span class="g">template</span></h3><p>Browse ATS-safe templates for your industry and experience level, and preview each one live.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#127912; Choose template</div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:6px"><div class="rez-line l" style="height:44px;border-radius:6px"></div><div class="rez-line l" style="height:44px;border-radius:6px;background:#dbe4ff"></div><div class="rez-line l" style="height:44px;border-radius:6px"></div></div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 2</div><h3>Add your <span class="g">content</span></h3><p>Type it in or import an existing resume and your details flow straight into the template.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128228; Import resume</div><div class="rez-h">Alex Mitchell</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:8px">&#10003; Auto-filled</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 3</div><h3>Customize the <span class="g">details</span></h3><p>Adjust sections, fonts, and spacing to fit your story &mdash; while the layout stays ATS-safe.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#9999;&#65039; Customize</div><div class="rez-h">Experience</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-h">Skills</div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:8px">&#10003; Still ATS-safe</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 4</div><h3>Download your <span class="g">PDF</span></h3><p>Export a clean, recruiter-ready PDF you can send to any application in one click.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128196; Ready resume</div><div class="rez-name" style="font-size:16px;text-align:left">Alex Mitchell</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-btn" style="margin-top:12px">&#11015; Download PDF</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Loved by job seekers</div>
+                <h2 class="solx-h2">A resume that finally <span class="g">gets read</span></h2>
+                <div class="solx-quotes">
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"My old template was quietly breaking in the ATS. I switched, kept the same content, and my callbacks doubled."</p><div class="who"><img src="/static/user_imges/12.jpg" alt=""><span><b>Sarah J.</b> <span>Atlassian</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Clean, professional, and it actually looked like me. I had a polished PDF ready in under ten minutes."</p><div class="who"><img src="/static/user_imges/79.jpg" alt=""><span><b>Emily G.</b> <span>PwC</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Finally a template built for my industry, not a generic form. Recruiters told me my resume stood out."</p><div class="who"><img src="/static/user_imges/85.jpg" alt=""><span><b>Michael R.</b> <span>Amazon</span></span></div></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "_feature_more.html" %}
+
+        <div class="solx-band">
+            <div class="solx-band-inner">
+                <div class="solx-band-kicker">First impressions count</div>
+                <h2>A clean template that <span class="ga">gets you read</span>.</h2>
+                <p>Start from a recruiter-approved, ATS-safe design, add your details, and download a resume that reaches a human instead of a filter.</p>
+                <a href="/signup?next=/templates" class="solx-btn">Browse Templates &mdash; Free</a>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">FAQ</div>
+                <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
+                <div class="solx-faq" style="margin-top:32px">
+                    <details open><summary>Are these resume templates really ATS-friendly?</summary><p>Yes. Every template uses a clean, single-column layout with no tables or graphics that break parsers, so your resume is read correctly by the software and by recruiters.</p></details>
+                    <details><summary>Can I edit the templates?</summary><p>Yes &mdash; every section, font, and spacing is editable in the builder, and the layout stays ATS-safe while you customize.</p></details>
+                    <details><summary>Do you have templates for my industry?</summary><p>Yes. There are templates for a range of industries and experience levels, from students and first jobs to senior and executive roles.</p></details>
+                    <details><summary>Can I import my existing resume?</summary><p>Yes. Import your current resume and your details flow straight into the template you choose &mdash; no retyping.</p></details>
+                    <details><summary>Is it free to start?</summary><p>Yes. Browse and preview templates for free. A quick free account saves your resume and lets you download the PDF.</p></details>
+                </div>
+                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/templates" class="solx-btn">Browse Templates &mdash; Free</a></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if is_logged_in %}
+
+
     <main class="templates-page">
         <section class="templates-header">
             <h1 class="templates-title">ATS-Friendly <span class="templates-title-accent">Resume Templates</span></h1>
@@ -92,10 +242,13 @@
         </section>
     </main>
 
-            {% include "_footer.html" %}
+            {% endif %}
+
+    {% include "_footer.html" %}
 
     <script src="/static/auth_nav.js?v=13"></script>
     <script src="/static/mobile_nav.js"></script>
+    {% if is_logged_in %}
     <script>
         (function () {
             const OPTIMIZED_EDITOR_PAYLOAD_KEY = "tailorcv_optimized_editor_payload";
@@ -560,6 +713,7 @@
         })();
     </script>
     <script src="/static/resume_store.js?v=1"></script>
+    {% endif %}
 </body>
 </html>
 

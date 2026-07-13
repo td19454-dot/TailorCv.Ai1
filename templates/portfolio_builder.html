@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
@@ -336,6 +336,156 @@
 <body>
     {% include "_nav.html" %}
 
+    {% if not is_logged_in %}
+    <link rel="stylesheet" href="/static/feature_landing.css?v=17">
+    <div class="solx">
+        <div class="solx-wrap">
+            <div class="solx-hero">
+                <div>
+                    <span class="solx-eyebrow">Resume &rarr; Portfolio</span>
+                    <h1>Turn your resume into a <span class="g">portfolio website in one click.</span></h1>
+                    <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
+                        <span>Upload your resume &mdash; we build the whole site</span>
+                        <span>Pick a design, publish, and share one link</span>
+                        <span>No coding and no design skills needed</span>
+                    </div>
+                    <a href="/signup?next=/portfolio" class="solx-btn">Build My Portfolio &mdash; Free</a>
+                    <p class="micro">Takes ~2 minutes &bull; No credit card &bull; <b>Free to build</b></p>
+                </div>
+                <div class="rez">
+                    <div class="rez-tag">&#127760; yoursite.thetailorcv.com</div>
+                    <div class="rez-name">Alex Mitchell</div>
+                    <div class="rez-role">Senior Product Designer</div>
+                    <div class="rez-h">Selected Work</div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0">
+                        <div class="rez-line l" style="height:34px;border-radius:8px"></div>
+                        <div class="rez-line l" style="height:34px;border-radius:8px"></div>
+                    </div>
+                    <div class="rez-h">About</div><div class="rez-line l"></div><div class="rez-line m"></div>
+                    <div class="rez-insights">
+                        <div class="t">&#10024; Live &amp; shareable</div>
+                        <div class="rez-line l"></div><div class="rez-line m"></div>
+                        <div class="rez-btn">Publish Website</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-marquee">
+            <div class="solx-wrap"><p class="cap">Our users have been hired at</p></div>
+            <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
+        </div>
+        <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">More than a PDF &mdash; <span class="g">a site recruiters remember</span></h2>
+                <p class="solx-lead">TailorCV reads your resume and builds a clean, professional portfolio site for you &mdash; your work, experience, and skills on one shareable link.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">From your resume</div><div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#10003; Auto-filled</div>
+                            <div class="rez-line m" style="margin-top:8px"></div>
+                        </div>
+                        <h3>Built from your resume</h3>
+                        <p>Upload your resume once and we turn your experience, projects, and skills into a full website &mdash; no blank pages to fill in.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                                <div class="rez-line l" style="height:30px;border-radius:8px"></div>
+                                <div class="rez-line l" style="height:30px;border-radius:8px;background:#dbe4ff"></div>
+                                <div class="rez-line l" style="height:30px;border-radius:8px;background:#dbe4ff"></div>
+                                <div class="rez-line l" style="height:30px;border-radius:8px"></div>
+                            </div>
+                            <div class="rez-badge" style="margin-top:10px">&#9733; Designer templates</div>
+                        </div>
+                        <h3>Designs that look hand-built</h3>
+                        <p>Choose from polished, modern templates made for job seekers &mdash; each one responsive and ready on desktop and mobile.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-tag">&#127760; one link</div>
+                            <div class="rez-h" style="margin-top:10px">Share anywhere</div><div class="rez-line l"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#10003; LinkedIn &bull; Resume &bull; Email</div>
+                        </div>
+                        <h3>Share one simple link</h3>
+                        <p>Publish and get a single link to drop in your resume, LinkedIn, or an email &mdash; so recruiters see your work, not just a file.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">How it works</div>
+                <h2 class="solx-h2">A simple 4-step process to a <span class="g">live portfolio site</span></h2>
+                <div style="margin-top:26px">
+                    <div class="solx-step">
+                        <div><div class="n">Step 1</div><h3>Upload your <span class="g">resume</span></h3><p>Drop in your existing resume and we read your experience, projects, and skills automatically.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128228; Upload resume</div><div class="rez-h">Alex_Mitchell_CV.pdf</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:8px">&#10003; Parsed in seconds</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 2</div><h3>Pick a <span class="g">design</span></h3><p>Choose from clean, modern templates. Preview them live and switch any time &mdash; no design skills needed.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#127912; Choose template</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px"><div class="rez-line l" style="height:40px;border-radius:8px"></div><div class="rez-line l" style="height:40px;border-radius:8px;background:#dbe4ff"></div><div class="rez-line l" style="height:40px;border-radius:8px;background:#dbe4ff"></div><div class="rez-line l" style="height:40px;border-radius:8px"></div></div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 3</div><h3>Edit <span class="g">anything you like</span></h3><p>Tweak your bio, reorder sections, add projects or links &mdash; everything is editable in a simple visual editor.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#9999;&#65039; Edit content</div><div class="rez-h">About</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-h">Projects</div><div class="rez-line l"></div><div class="rez-badge" style="margin-top:8px">&#10003; Live preview</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 4</div><h3>Publish &amp; <span class="g">share your link</span></h3><p>Hit publish and get a live URL to share in your resume, LinkedIn, and applications in one click.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#127760; Live site</div><div class="rez-name" style="font-size:16px;text-align:left">Alex Mitchell</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-btn" style="margin-top:12px">&#128279; Copy link</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Loved by job seekers</div>
+                <h2 class="solx-h2">From a file to a <span class="g">real presence</span></h2>
+                <div class="solx-quotes">
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I had a live portfolio in two minutes from my resume. Recruiters actually clicked the link and mentioned my projects."</p><div class="who"><img src="/static/user_imges/13.jpg" alt=""><span><b>Vicki B.</b> <span>PayPal</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"No coding, no Squarespace fees. It looked like something a designer built for me and I just shared one link."</p><div class="who"><img src="/static/user_imges/26.jpg" alt=""><span><b>Priya S.</b> <span>Google</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Adding my portfolio link to applications made me stand out. I got replies from roles that had ghosted me before."</p><div class="who"><img src="/static/user_imges/22.jpg" alt=""><span><b>James W.</b> <span>Apple</span></span></div></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "_feature_more.html" %}
+
+        <div class="solx-band">
+            <div class="solx-band-inner">
+                <div class="solx-band-kicker">Recruiters google you</div>
+                <h2>Give them a <span class="ga">portfolio, not a PDF</span>.</h2>
+                <p>Turn your resume into a clean, shareable website in minutes &mdash; and give recruiters something they'll actually remember.</p>
+                <a href="/signup?next=/portfolio" class="solx-btn">Build My Portfolio &mdash; Free</a>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">FAQ</div>
+                <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
+                <div class="solx-faq" style="margin-top:32px">
+                    <details open><summary>How does the resume-to-portfolio builder work?</summary><p>You upload your resume, we read your experience and projects, and you get a full portfolio website you can style, edit, and publish &mdash; all without writing code.</p></details>
+                    <details><summary>Do I need any design or coding skills?</summary><p>No. Pick a template, tweak content in a visual editor, and publish. Everything is drag-simple and mobile-ready out of the box.</p></details>
+                    <details><summary>Can I use my own content and projects?</summary><p>Yes. Edit your bio, reorder sections, and add projects, links, and images &mdash; the resume is just a starting point.</p></details>
+                    <details><summary>How do I share my portfolio?</summary><p>Publish and you get a single live link to add to your resume, LinkedIn, and job applications.</p></details>
+                    <details><summary>Is it free to build?</summary><p>Yes &mdash; you can build and preview your portfolio for free. A quick free account saves it and lets you publish your live link.</p></details>
+                </div>
+                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/portfolio" class="solx-btn">Build My Portfolio &mdash; Free</a></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if is_logged_in %}
+
+
     <main class="pb" data-logged-in="{{ 'yes' if logged_in else 'no' }}">
         <div class="pb-head">
             <h1>Turn your resume into a portfolio website</h1>
@@ -551,8 +701,11 @@
         </section>
     </main>
 
+    {% endif %}
+
     {% include "_footer.html" %}
 
+    {% if is_logged_in %}
     <script>
     (function () {
         const KEY = "tailorcv_portfolio_builder";
@@ -1048,6 +1201,7 @@
             overlay.addEventListener('click', function (e) { if (e.target === overlay) closePopup(); });
         }
     </script>
+    {% endif %}
     <script src="/static/auth_nav.js?v=13" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script src="/static/resume_store.js?v=1"></script>
