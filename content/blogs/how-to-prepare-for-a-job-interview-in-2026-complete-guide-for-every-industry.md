@@ -22,6 +22,14 @@ You need to understand the company, know the role, [prepare strong stories](http
 
 This guide works across industries because every employer is looking for the same basic signals: competence, communication, reliability, problem-solving, motivation, and fit.
 
+## Key Takeaways
+
+- Review your resume and ensure your application story is consistent before the interview.
+- Understand the job description thoroughly, as it serves as your interview study guide to anticipate questions.
+- Research the company to provide a personalized answer to "Why do you want to work here?" that connects your skills to their needs.
+- Prepare clear stories about your achievements and experiences related to the role, as anything on your resume can become a question.
+- Practice your responses out loud and prepare thoughtful questions to demonstrate your interest and engagement.
+
 ## Start With the Job Description
 
 The [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is your interview study guide. It tells you what the employer cares about most.

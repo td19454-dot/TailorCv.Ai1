@@ -14,6 +14,14 @@ Wondering whether your resume will make it past the software and reach a real pe
 
 ---
 
+## Key Takeaways
+
+- Use a single-column layout and avoid tables or graphics to ensure ATS readability.
+- Include standard section headings and keywords from the job description to improve your chances of passing ATS.
+- Ensure contact information is in the body of the resume, not in headers or footers.
+- Quantify achievements and provide both acronyms and full terms for clarity.
+- Tailor your resume for each specific job application to enhance its effectiveness.
+
 ## Quick Answer
 
 Your resume is likely to pass [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) if it is a clean, single-column, text-based document that uses standard headings and includes the keywords from the job description. The checklist below makes that concrete.

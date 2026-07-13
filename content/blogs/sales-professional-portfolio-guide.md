@@ -12,6 +12,14 @@ keywords: sales portfolio, sales rep portfolio website, business development por
 
 A resume tells a recruiter you hit 130% of quota. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) shows *how* - the territory you inherited, the deals you built, and the numbers behind them. Sales is one of the few fields where a portfolio is still rare, which makes having one a real edge over other candidates. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
+## Key Takeaways
+
+- A sales portfolio complements your resume by showcasing how you achieved quota, including territory details and deal specifics.
+- Include quota attainment history, deal case studies, pipeline evidence, testimonials, and tools used in your portfolio.
+- Frame each deal as a story, detailing the context, obstacles, your approach, and the results to demonstrate judgment and impact.
+- Host your portfolio on a personal site, LinkedIn, or as a PDF, ensuring it aligns with your resume for consistency.
+- Avoid common mistakes like lacking context in quota numbers, not providing deal narratives, and sharing confidential information.
+
 ## What to Include
 - **Quota attainment history** - a simple chart or table by quarter or year
 - **2-4 deal case studies** - the account, the problem, your approach, the outcome

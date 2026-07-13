@@ -16,6 +16,13 @@ This guide covers the full picture: how to research a fair number, when and how 
 
 ---
 
+## Key Takeaways
+
+- Many candidates miss out on better salaries due to discomfort with negotiation rather than asking for too much.
+- Researching salary benchmarks, total compensation packages, and personal leverage is crucial for confident negotiation.
+- Timing is important; negotiate after receiving a written offer, during annual reviews, or after promotions for the best results.
+- When making your ask, express enthusiasm for the role and provide a specific, research-backed number to facilitate the conversation.
+
 ## Why So Many People Don't Negotiate
 
 The most common reasons candidates skip negotiation are rarely about the number itself — they're about discomfort with the conversation. A few patterns show up repeatedly:

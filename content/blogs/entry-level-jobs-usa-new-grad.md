@@ -12,6 +12,14 @@ image: public/blog-images/entry-level-jobs-usa-new-grad.png
 
 Navigating the job market as a new graduate in the USA can feel overwhelming. With thousands of applicants vying for the same entry-level positions, understanding how to craft a compelling resume and effectively search for jobs is crucial. This guide will walk you through the essentials of creating a standout resume, optimizing it for Applicant Tracking Systems (ATS), and leveraging your job search strategies to land your first job after graduation.
 
+## Key Takeaways
+
+- Tailor your resume to one page, focusing on relevant experiences and using strong action verbs to highlight contributions.
+- Include key components such as contact information, an objective statement, education, experience, skills, and a note about references.
+- Optimize your resume for Applicant Tracking Systems by incorporating keywords from job descriptions and using simple formatting.
+- Leverage your network by connecting with alumni, joining professional associations, and attending career fairs to enhance your job search.
+- Utilize both general and niche online job boards to find entry-level positions in your desired field.
+
 ## Understanding the US Job Market
 
 The US job market is diverse, with opportunities spanning various industries, from technology and healthcare to finance and education. As a new graduate, it’s important to familiarize yourself with the expectations and norms of US employers:

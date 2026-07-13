@@ -16,6 +16,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ---
 
+## Key Takeaways
+
+- A physiotherapist resume in 2026 should highlight clinical assessment skills, treatment specialization, and measurable patient outcomes.
+- The recommended resume format includes a header with licensure, a summary, clinical skills, work experience, and education, ideally spanning one to two pages.
+- Strong bullet points should follow a specific formula to showcase interventions and their impact on patient recovery.
+- Essential ATS keywords for a physiotherapist resume include terms related to rehabilitation, assessment, treatment modalities, and patient education.
+- Examples of effective resume summaries are provided for both experienced and entry-level physiotherapists, emphasizing relevant skills and achievements.
+
 ## Best Physiotherapist Resume Format
 
 1. Header with licensure

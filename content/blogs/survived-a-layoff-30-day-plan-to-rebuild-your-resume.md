@@ -16,6 +16,14 @@ Start with a quick win: check your current resume against a role you actually wa
 
 ---
 
+## Key Takeaways
+
+- Take time to reset and assess your situation before applying for jobs to avoid panic-driven decisions.
+- Consolidate all resume versions into one accurate document and update it with recent roles and dates.
+- Tailor your resume for each job application and utilize tools to check its effectiveness against target roles.
+- Network with former colleagues and apply to a limited number of tailored roles daily to maintain focus and quality.
+- Prepare to discuss your layoff confidently and practice interview skills to rebuild your confidence before real interviews.
+
 ## Week 1: Reset and Assess
 
 - Take at least a few days before applying anywhere - decisions made in the first 48 hours after a layoff are rarely your best ones

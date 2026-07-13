@@ -33,6 +33,14 @@ This guide shows you how to get to the second impression.
 
 ---
 
+## Key Takeaways
+
+- Job hopping can be perceived negatively by recruiters unless presented with context and rationale.
+- Short roles in the tech industry are often acceptable, especially if they involve contract work or layoffs.
+- Address hiring managers' concerns about investment, reliability, and fit by providing clear explanations for short tenures.
+- Add context to problematic short roles in your resume to eliminate assumptions about your job changes.
+- Group related short roles under a single header to present a cohesive narrative and highlight your accomplishments.
+
 ## When Does "Job Hopping" Actually Hurt You?
 
 First, let us calibrate what is actually a problem.

@@ -18,6 +18,14 @@ For overall resume structure, read [the anatomy of a perfect resume](https://the
 
 ---
 
+## Key Takeaways
+
+- Including a photo on your resume is generally not expected in the US, Canada, UK, and Australia, and may lead to bias or discrimination concerns.
+- In countries like Germany, France, Spain, and Japan, including a photo is often expected as part of the standard application process.
+- Anti-discrimination laws in the US and UK discourage the use of photos to avoid bias in hiring decisions.
+- Applicant Tracking Systems (ATS) cannot read images, so including a photo can disrupt text parsing and negatively affect your resume's visibility.
+- When a photo is required, use a professional headshot with appropriate attire, a neutral background, and ensure it is recent and of high quality.
+
 ## The Short Answer
 
 | Country/Region | Photo on Resume? |

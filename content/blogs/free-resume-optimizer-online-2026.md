@@ -14,6 +14,14 @@ A [free resume optimizer](https://thetailorcv.com/blog/generic-resume-mistakes-t
 
 If you want the fastest path, start with the [free ATS score checker](https://www.thetailorcv.com/solutions), then read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full workflow. This post focuses specifically on how to use an optimizer tool well, not on general resume-writing advice you can find elsewhere on this blog.
 
+## Key Takeaways
+
+- A resume optimizer compares your resume to a specific job description, identifying keyword gaps and match strength, unlike generic resume checkers that provide vague feedback.
+- It provides four types of output: keyword gaps, match strength, formatting risks, and bullet-level suggestions for improvement.
+- Be cautious of tools that only provide a score without specific feedback or those that give generic advice regardless of the job description.
+- Ensure the tool allows you to see actionable recommendations without payment and has a clear privacy policy regarding your resume data.
+- A true optimizer requires a job description to assess your resume effectively; without it, the tool is limited to formatting reviews.
+
 ## What a Resume Optimizer Actually Does
 
 A resume optimizer is not the same thing as a generic resume checker. A generic checker usually gives you a single quality score and a handful of stock tips like "use more action verbs" or "keep it to one page." That feedback is not wrong, but it is not specific to any job, and it will not tell you why you are not getting callbacks for a particular role.

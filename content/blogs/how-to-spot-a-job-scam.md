@@ -16,6 +16,14 @@ Scammers succeed by exploiting two things every job seeker feels: urgency and ho
 
 ---
 
+## Key Takeaways
+
+- Be cautious of any job offer that requires upfront payment for equipment, training, or background checks, as legitimate employers do not ask for this.
+- Red flags include overly enthusiastic communication, rapid job offers without proper vetting, and requests for sensitive information early in the process.
+- Common scam formats include check-cashing scams, task scams that bait with small payments, and data-harvesting schemes that collect personal information without a real job.
+- Verify job opportunities by checking the company's official careers page, searching for the recruiter's name, and inspecting email domains for authenticity.
+- Trust your instincts; if something feels off about the pacing or communication style, it may be a scam.
+
 ## The Biggest Red Flags
 
 - **They ask you to pay for anything** - equipment, training, [background check](https://thetailorcv.com/blog/how-to-explain-resume-gaps)s, or "processing fees." Legitimate employers never ask candidates to pay upfront.

@@ -20,6 +20,14 @@ Prepare these alongside your interview answers using the [behavioral interview g
 
 ---
 
+## Key Takeaways
+
+- Asking thoughtful questions in an interview demonstrates genuine interest and preparation, while saying "no questions" may signal disengagement.
+- The questions you ask help assess if the role, team, and company are a good fit for you.
+- Prepare 6-8 questions to ask, as you may only get to pose a few during the interview.
+- Focus on questions about the role, team dynamics, growth opportunities, management style, and company culture.
+- Use one or two questions that show deep research about the company to leave a strong impression.
+
 ## Why the Questions You Ask Matter
 
 Your questions:

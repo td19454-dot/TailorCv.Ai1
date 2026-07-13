@@ -12,6 +12,14 @@ keywords: social media manager portfolio, social media portfolio website, conten
 
 Anyone can screenshot a few posts and call it a portfolio. What actually gets social media managers hired is proof of growth - follower gains, engagement rate changes, and campaigns tied to real business outcomes. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
 
+## Key Takeaways
+
+- Include growth metrics, campaign case studies, content samples, and crisis management examples in your social media manager portfolio.
+- Frame your strategy by detailing campaign goals, your approach, and measurable results to demonstrate your impact.
+- Host your portfolio on a personal site, linking to live accounts you managed and ensuring it aligns with your resume.
+- Avoid vanity metrics without context and include diverse content formats to match target role requirements.
+- Highlight a turnaround case study and showcase your content calendar to illustrate strategic planning skills.
+
 ## What to Include
 - **Growth metrics** - follower growth, engagement rate, reach, and how they changed under your management
 - **2-4 campaign case studies** - a launch, a viral moment you engineered, a community-building initiative

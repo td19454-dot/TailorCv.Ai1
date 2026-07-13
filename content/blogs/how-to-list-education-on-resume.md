@@ -18,6 +18,14 @@ Before finalizing, run your resume through the [ATS score checker](https://www.t
 
 ---
 
+## Key Takeaways
+
+- Include core elements in the education section: degree type, institution name, location, graduation year, GPA, relevant coursework, and honors if applicable.
+- Place the education section near the top for students and recent graduates, and lower for experienced professionals where work experience is prioritized.
+- Include GPA if it is strong (3.5+ or 8.0+) and you are a recent graduate; otherwise, omit it to avoid negative impressions.
+- List relevant coursework only if you are a student or recent graduate and it directly relates to the job; remove it once you have relevant work experience.
+- Use a clear format for the education section, emphasizing degree, institution, and graduation year for clarity and professionalism.
+
 ## What to Include in the Education Section
 
 Core elements:

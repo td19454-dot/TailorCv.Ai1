@@ -18,6 +18,13 @@ Before finalizing, run your [resume](https://thetailorcv.com/blog/how-to-write-r
 
 ---
 
+## Key Takeaways
+
+- Certifications enhance resumes, especially in technical, healthcare, finance, and project management fields.
+- Place certifications in a dedicated section, near the top, or in the education section based on their relevance to the job.
+- Use a standard format that includes the certification name, issuing organization, and year, with expiration dates when applicable.
+- Include only relevant, industry-standard certifications and those mentioned in job descriptions, while omitting outdated or irrelevant ones.
+
 ## Why Certifications Matter
 
 [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume):

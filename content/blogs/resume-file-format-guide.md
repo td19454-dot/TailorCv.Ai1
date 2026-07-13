@@ -18,6 +18,14 @@ For the content of your resume, read [the anatomy of a perfect resume](https://t
 
 ---
 
+## Key Takeaways
+
+- Save your resume as a PDF unless the job posting specifically requests a Word document (.docx).
+- PDFs preserve formatting across devices, ensuring your resume appears as intended.
+- Word documents may be necessary if explicitly requested by employers or for certain older ATS systems.
+- Avoid using formats like .pages, .rtf, Google Docs links, .txt, or image files, as they can cause compatibility issues.
+- Most modern ATS systems handle both PDF and Word formats well, but be cautious of specific requirements.
+
 ## PDF vs Word: The Short Answer
 
 **Default choice: PDF**

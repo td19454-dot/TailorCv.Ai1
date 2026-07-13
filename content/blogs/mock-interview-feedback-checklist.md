@@ -14,6 +14,14 @@ Mock interviews only help if you review them properly. The goal is not to sound 
 
 ---
 
+## Key Takeaways
+
+- Review mock interviews by assessing clarity, structure, relevance, and confidence in your answers.
+- Score each answer on a scale of 1-5, focusing on clarity, relevance, specificity, confidence, and evidence; revise anything below a score of 3.
+- Use the STAR method to structure answers, add quantitative results for vague responses, and practice variations to avoid sounding memorized.
+- Optimize your application materials by aligning them with specific job descriptions, ensuring relevant keywords and measurable results are included.
+- Before submitting applications, ensure all content is clear, relevant, and free from generic phrases, while maintaining consistent positioning across your resume, cover letter, and profiles.
+
 ## Feedback Checklist
 
 After each [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai), review:

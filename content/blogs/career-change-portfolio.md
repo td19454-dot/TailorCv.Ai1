@@ -10,6 +10,14 @@ image: public/blog-images/career-change-portfolio.webp
 
 When you switch fields, your resume works against you - it is full of the *old* career. A portfolio flips the script: it proves you can already do the *new* work, which is the only thing a skeptical hiring manager actually cares about. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the [Career Change Resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
+## Key Takeaways
+
+- A career change portfolio demonstrates your ability to perform in a new field, countering the limitations of a resume focused on your previous career.
+- Build 2-3 projects relevant to your target field to provide evidence of your skills and versatility.
+- Clearly connect your past experience to your new career by showcasing how your old skills can be an asset in the new context.
+- Craft a compelling narrative that explains your career pivot, including your motivation, completed projects, and future aspirations.
+- Quantify achievements from both your previous and new projects to highlight your impact and capabilities across industries.
+
 ## Lead With New-Field Projects
 
 Build 2-3 projects in your **target** field, even self-initiated ones. These are the evidence that overrides "but you have not done this professionally." For ideas, see [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas) and [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects).

@@ -12,6 +12,14 @@ image: public/blog-images/ats-in-canada-guide.png
 
 Navigating the Canadian job market can be challenging, especially for newcomers and international students. One of the key hurdles many job seekers face is the Applicant Tracking System (ATS), a software that many employers use to filter resumes before they even reach human eyes. Understanding how ATS works in Canada is crucial for crafting a resume that not only gets noticed but also passes through this digital gatekeeper. In this article, we will explore practical steps you can take to optimize your resume for ATS, ensuring you stand out in the competitive Canadian job landscape.
 
+## Key Takeaways
+
+- Applicant Tracking Systems (ATS) automate resume sorting and rely on keyword matching to identify suitable candidates.
+- Canadian resumes should avoid personal information, adhere to a two-page limit, and follow specific formatting norms.
+- Customizing your resume for each job application by using relevant keywords and matching job titles is crucial for ATS success.
+- Including a dedicated skills section with both hard and soft skills can enhance your ATS score.
+- Standard formatting with clear headings and bullet points improves readability and helps ATS accurately parse your resume.
+
 ## What is ATS and Why Does It Matter?
 
 Applicant Tracking Systems are designed to streamline the hiring process by automating the collection and sorting of resumes. They parse information from your resume and match it against job descriptions to determine which candidates best fit the role. Given that many Canadian employers, especially larger companies, utilize ATS, understanding how to optimize your resume for these systems is essential. 

@@ -18,6 +18,13 @@ Before optimizing your soft skills presentation, make sure your hard skills and 
 
 ---
 
+## Key Takeaways
+
+- Simply listing soft skills on a resume is ineffective; employers seek evidence of these skills through accomplishments.
+- Demonstrate soft skills by providing specific examples of past experiences rather than generic statements.
+- Key soft skills to highlight include communication, leadership, teamwork, problem-solving, adaptability, time management, conflict resolution, and attention to detail.
+- Place evidence of soft skills primarily in experience bullets and reference them in the summary only if supported by context.
+
 ## Why Listing Soft Skills Doesn't Work
 
 Consider a [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) that says:

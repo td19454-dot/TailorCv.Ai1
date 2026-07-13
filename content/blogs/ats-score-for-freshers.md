@@ -14,6 +14,13 @@ Check where you stand now with the [free ATS score checker](/solutions).
 
 ---
 
+## Key Takeaways
+
+- Freshers can achieve an ATS score of 80+ by focusing on relevant keywords and clean formatting, despite lacking work experience.
+- Highlight projects, internships, skills, certifications, and education to improve ATS scores and demonstrate applicable abilities.
+- Use an ATS-friendly template, mirror job descriptions, and include measurable outcomes in project descriptions to enhance resume effectiveness.
+- Avoid common mistakes like using complex templates and failing to quantify achievements, as these can negatively impact ATS scores.
+
 ## Why ATS Matters Even More for Freshers
 
 Entry-level roles attract huge numbers of applicants, so employers rely heavily on [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) filtering. For freshers, that means your resume has to be keyword-relevant and clean - because you cannot lean on years of experience to carry it.

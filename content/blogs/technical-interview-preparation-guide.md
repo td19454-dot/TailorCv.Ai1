@@ -18,6 +18,14 @@ Before interviews begin, your resume must get you into the room. Use the [Tailor
 
 ---
 
+## Key Takeaways
+
+- Technical interviews consist of coding rounds, system design, project deep-dives, and behavioral rounds, each requiring distinct preparation strategies.
+- For coding interviews, prioritize mastering data structures and algorithms, with a minimum of 75 problems recommended for basic prep and up to 350 for strong FAANG preparation.
+- System design interviews focus on scalability, API design, and core concepts like load balancing and caching, with common questions involving designing services like URL shorteners and chat systems.
+- Be prepared to discuss your past projects in detail, including the problem solved, architecture choices, and challenges faced, with a concise overview for each project on your resume.
+- Behavioral rounds assess communication and cultural fit, making it essential to practice articulating your experiences and teamwork skills effectively.
+
 ## The 4 Components of a Technical Interview
 
 1. **Coding / DSA Round** - Data structures and algorithms problem-solving

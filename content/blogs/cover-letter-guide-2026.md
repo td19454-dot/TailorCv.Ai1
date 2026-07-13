@@ -18,6 +18,14 @@ Before sending any application, make sure your [resume](https://thetailorcv.com/
 
 ---
 
+## Key Takeaways
+
+- A cover letter in 2026 is still relevant, but a poorly written one can harm your application more than not submitting one at all.
+- Strong cover letters should be specific, concise, and connect your experiences to the company's needs, rather than repeating your resume.
+- The ideal cover letter length is 250-350 words, structured with a hook, relevant achievements, reasons for interest in the company, and a call to action.
+- Avoid generic openings; instead, lead with a specific achievement or connection to the company's work to capture attention.
+- While large companies may skip cover letters, hiring managers at smaller firms often read them carefully, making a strong cover letter potentially decisive.
+
 ## Do Companies Still Read Cover Letters?
 
 Research varies, but the general rule is:

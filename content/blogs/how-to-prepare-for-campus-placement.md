@@ -18,6 +18,14 @@ Start with a [strong resume](https://thetailorcv.com/blog/resume-for-campus-plac
 
 ---
 
+## Key Takeaways
+
+- Campus placements involve multiple stages including resume screening, aptitude tests, coding rounds, group discussions, technical interviews, and HR interviews.
+- A strong resume should highlight a clear summary, relevant projects, organized technical skills, education, and certifications.
+- Aptitude tests assess quantitative, logical reasoning, and verbal ability; practice with timed mock tests is essential.
+- For coding rounds, focus on mastering data structures and algorithms, and solve a significant number of problems on coding platforms.
+- Stay informed on current affairs for group discussions and practice structuring arguments effectively without dominating the conversation.
+
 ## The Campus Placement Process
 
 Typical stages:

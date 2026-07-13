@@ -16,6 +16,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ---
 
+## Key Takeaways
+
+- A technical writer resume in 2026 should demonstrate clarity in complex information and highlight technical writing skills and tools used.
+- The recommended resume format includes a header with a portfolio link, a summary, skills, work experience, writing samples, and education, ideally spanning one to two pages.
+- Effective resume summaries should showcase years of experience, types of documentation created, and quantifiable outcomes related to usability or support.
+- Key skills for technical writers include familiarity with various documentation types, tools like Markdown and Git, basic coding knowledge, and collaboration with cross-functional teams.
+- Strong resume bullet points should focus on specific achievements and outcomes related to documentation, illustrating the impact on usability or support metrics.
+
 ## Best Technical Writer Resume Format
 
 1. Header with [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) / documentation samples link

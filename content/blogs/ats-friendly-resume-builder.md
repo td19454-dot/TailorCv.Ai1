@@ -14,6 +14,14 @@ A beautiful resume is worthless if a machine cannot read it. Before a recruiter 
 
 This guide explains what actually makes a resume [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) friendly, the common mistakes that get resumes filtered out, how to build one step by step, and which free tools do the job well in 2026.
 
+## Key Takeaways
+
+- An ATS friendly resume features a single-column layout, standard section headings, and plain text contact details for optimal parsing.
+- Common mistakes include using two-column designs, including graphics, and placing contact info in headers or footers, which can lead to rejection by ATS.
+- To build an ATS friendly resume, start with a safe structure, use clear sections, and mirror the job description's language.
+- Strong bullet points should begin with action verbs and include quantifiable results to enhance impact and relevance.
+- Tailoring your resume for each specific role is crucial, as generic resumes tend to score poorly in ATS evaluations.
+
 ## What Makes a Resume ATS Friendly?
 
 An **[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) friendly resume** is one that software can read cleanly and match accurately to a job description. The content matters, but so does the structure. A resume is [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) friendly when it has:

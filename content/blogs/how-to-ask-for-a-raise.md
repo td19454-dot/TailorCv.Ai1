@@ -20,6 +20,14 @@ This is related to the [salary negotiation guide](https://thetailorcv.com/blog/h
 
 ---
 
+## Key Takeaways
+
+- Approach the raise conversation as a business case by presenting evidence of your value rather than making a personal plea.
+- The best times to ask for a raise include after significant accomplishments, during performance reviews, or when the company is financially healthy.
+- Gather evidence of your achievements, market data on salary benchmarks, and demonstrate your growth in value since your last raise.
+- Schedule a meeting with your manager to discuss your contributions and compensation, signaling seriousness and allowing them to prepare.
+- Use a structured script during the conversation, clearly stating your accomplishments and desired salary, then pause to let your manager respond.
+
 ## When to Ask for a Raise
 
 ### Best Timing

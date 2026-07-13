@@ -18,6 +18,13 @@ For each role, we have detailed resume guides: the [data analyst resume guide](h
 
 ---
 
+## Key Takeaways
+
+- Data analysts focus on understanding past data and answering business questions using SQL, dashboards, and reporting, while data scientists predict future outcomes using machine learning and statistical modeling.
+- The day-to-day work of data analysts includes creating reports and dashboards, whereas data scientists build and deploy predictive models and work with complex datasets.
+- Data analyst roles are more accessible, often requiring only a bachelor's degree or certifications, while data scientist positions typically demand advanced degrees and a strong math background.
+- Data scientists generally earn higher salaries than data analysts due to their specialized skills, though salary ranges can overlap significantly based on experience and location.
+
 ## The Core Difference
 
 **[data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026)**: Focuses on understanding what happened and why, using existing data. Answers business questions through SQL, dashboards, and reporting. Descriptive and diagnostic analytics.

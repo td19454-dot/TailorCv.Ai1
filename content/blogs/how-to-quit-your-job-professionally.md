@@ -20,6 +20,14 @@ Before you quit, make sure your next step is secure. If you are [job searching](
 
 ---
 
+## Key Takeaways
+
+- Secure your next step before resigning; always have a signed offer letter if moving to a new job.
+- Inform your manager first about your resignation in a private meeting, avoiding casual announcements or text messages.
+- Keep the resignation conversation brief and positive, clearly stating your last day and expressing appreciation for your time at the company.
+- Write a formal resignation letter that is concise, professional, and free of complaints to document your departure.
+- Maintain professionalism during your notice period by continuing to work diligently and assisting with the transition.
+
 ## Before You Quit: Get Your Next Step Secured
 
 The golden rule: do not resign until you have a signed offer letter in hand (if you are moving to a [new job](https://thetailorcv.com/blog/negotiating-multiple-job-offers)). Verbal offers fall through. Get it in writing before you give notice.

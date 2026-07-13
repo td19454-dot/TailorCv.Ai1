@@ -18,6 +18,14 @@ The fastest way to check whether your resume is ATS-ready is to run it through t
 
 ---
 
+## Key Takeaways
+
+- Use a single-column layout to avoid parsing errors caused by two-column formats.
+- Avoid tables, text boxes, and graphics, as they can lead to content being missed by the ATS.
+- Include important information like your name and contact details in the main body, not in headers or footers.
+- Stick to standard section headings and fonts to ensure the ATS can accurately read your resume.
+- Save your resume in a compatible file type, such as PDF, to maintain formatting integrity.
+
 ## How an ATS Reads Your Resume
 
 When you submit your resume, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it):

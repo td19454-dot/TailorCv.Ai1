@@ -20,6 +20,14 @@ Paste any non-profit job posting into the [TailorCV resume optimizer](/solutions
 
 ---
 
+## Key Takeaways
+
+- Non-profit job descriptions prioritize mission alignment, impact metrics, and funding relationships over corporate operational skills.
+- Resumes should be tailored to meet the requirements of both ATS software and mission-focused hiring committees.
+- Key terms to include in non-profit resumes are related to program management, fundraising, compliance, and relevant soft skills.
+- Private-sector candidates must translate corporate language into non-profit terminology, emphasizing funding growth and donor relationships.
+- Common mistakes include focusing solely on corporate metrics like revenue, which may not resonate with non-profit hiring practices.
+
 ## What Makes Non-Profit Job Descriptions Different
 
 Non-profit postings typically weigh three things beyond standard skills:

@@ -16,6 +16,13 @@ The [STAR method](https://thetailorcv.com/blog/star-method-interview-guide) exis
 
 ---
 
+## Key Takeaways
+
+- The STAR method (Situation, Task, Action, Result) provides a structured approach to answering behavioral interview questions effectively.
+- A common mistake in STAR answers is spending too much time on the Situation and not enough on the Result, which should include measurable outcomes.
+- Candidates often fail by using generic stories that lack specificity; answers should be based on real projects and metrics from their resumes.
+- A balanced STAR response should take 60–90 seconds, with approximately 15% on Situation, 15% on Task, 40% on Action, and 30% on Result.
+
 ## What Is the STAR Method?
 
 STAR stands for **Situation, Task, Action, Result** — four parts that, together, turn a vague memory into a complete, convincing answer.

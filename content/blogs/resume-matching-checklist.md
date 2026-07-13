@@ -25,6 +25,14 @@ Use [TailorCV's ATS score checker](https://www.thetailorcv.com/solutions) to run
 
 ---
 
+## Key Takeaways
+
+- Include the target job title in your professional summary to align with ATS and recruiter expectations.
+- Ensure the top 3 required skills from the job description are present in your summary for maximum visibility.
+- List 90-100% of required technical skills in your skills section using the exact language from the job description.
+- Use action verbs, context, and measurable results in your bullet points to enhance clarity and impact.
+- Keep your resume in a single-column format with standard section headers to ensure ATS compatibility.
+
 ## The 15-Step Resume Matching Checklist
 
 ### 1. Job Title Is in Your Professional Summary

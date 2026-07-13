@@ -18,6 +18,14 @@ Practice your [individual answers](https://thetailorcv.com/blog/how-to-practice-
 
 ---
 
+## Key Takeaways
+
+- Group interviews assess collaboration, leadership, communication, listening, problem-solving, and stress response among candidates.
+- Engage with other candidates before the interview starts to demonstrate strong body language and friendliness.
+- Contribute to discussions early but avoid dominating; aim for 20-30% of the airtime.
+- Show leadership by inviting quieter candidates to share their thoughts and build on others' ideas.
+- Maintain professionalism during disagreements and take notes to show engagement and reference others' contributions.
+
 ## Group Interview vs. Panel Interview
 
 | Format | Who is in the room |

@@ -18,6 +18,14 @@ Before applying your improved bullet points, make sure your resume passes ATS. U
 
 ---
 
+## Key Takeaways
+
+- Strong action verbs enhance resume bullet points by making contributions clear, specific, and impactful, moving away from vague phrases like "responsible for."
+- The article provides a list of 200 categorized action verbs organized by function and role type to help job seekers select the most relevant verbs for their achievements.
+- Using strong action verbs can improve ATS scores, as these systems often favor resumes with a higher density of active language.
+- The guide emphasizes the importance of specificity and ownership in resume writing, showcasing how action verbs can convey significant achievements effectively.
+- Categories of action verbs include Building and Engineering, Analysis and Data, Leading and Managing, Improving and Optimizing, Creating and Designing, Communicating and Presenting, Organizing and Planning, and Achieving and Delivering.
+
 ## Why Action Verbs Matter
 
 Consider these two bullets:

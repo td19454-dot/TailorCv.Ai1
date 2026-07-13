@@ -27,6 +27,14 @@ This guide breaks down exactly how to [tailor your resume](https://thetailorcv.c
 
 ---
 
+## Key Takeaways
+
+- Tailor your resume for startups and enterprises as they seek different qualities: startups value scrappiness and speed, while enterprises prioritize process and consistency.
+- For startup resumes, lead with impact and specific achievements rather than job titles, showcasing ownership and results.
+- Use language that resonates with startups, such as "built from scratch" and "cross-functional," to reflect the fast-paced environment.
+- Highlight a broad skill set and diverse experiences, demonstrating versatility rather than deep specialization for startup roles.
+- Keep startup resumes to one page, as hiring managers typically make quick decisions based on concise information.
+
 ## Why Startup and Enterprise Resumes Are Fundamentally Different
 
 Startups are building something.

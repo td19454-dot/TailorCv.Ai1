@@ -20,6 +20,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ---
 
+## Key Takeaways
+
+- An internship resume should highlight education, skills, projects, and relevant activities to showcase potential despite limited experience.
+- Use a simple, single-column format and keep the resume to one page, including essential sections like header, objective, education, skills, and projects.
+- Include a concise 2-3 sentence objective that outlines your degree, relevant skills, and the type of internship you are seeking.
+- List education first if you have no work experience, and include CGPA, relevant coursework, and honors if applicable.
+- Utilize ATS-friendly resume templates and check your resume's ATS score before applying, as many companies use ATS systems for intern applications.
+
 ## Internship Resume Format
 
 Use a simple, single-column format. No graphics, no columns, no infographics.

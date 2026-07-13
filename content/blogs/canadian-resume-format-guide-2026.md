@@ -9,7 +9,15 @@ slug: canadian-resume-format-guide-2026
 keywords: canadian resume format, resume for canada, how to write a canadian resume, canada resume 2026
 image: public/blog-images/canadian-resume-format-guide-2026.png
 ---
+
 Navigating the Canadian job market can be daunting, especially for newcomers and international students. A well-crafted resume is crucial to making a strong first impression on potential employers. In Canada, the resume format has its unique norms and expectations, which differ from other countries. This guide will walk you through everything you need to know about writing a resume for Canada in 2026, ensuring that you stand out in a competitive job landscape.
+
+## Key Takeaways
+
+- Canadian resumes should not include personal photos, age, or marital status to prevent bias and discrimination.
+- A typical resume structure includes contact information, a summary or objective statement, work experience, education, skills, and potentially additional sections like certifications.
+- Tailor your resume for each job application by matching keywords from the job description and highlighting relevant experience with quantifiable achievements.
+- Use standard formatting and fonts to ensure your resume is ATS-friendly and can easily pass through Applicant Tracking Systems.
 
 ## Understanding Canadian Resume Norms
 

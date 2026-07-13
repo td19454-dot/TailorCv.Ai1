@@ -16,6 +16,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ---
 
+## Key Takeaways
+
+- A Scrum Master resume in 2026 should emphasize measurable team improvements rather than just listing facilitated ceremonies.
+- The recommended resume format includes a header with certifications, a summary, agile skills, work experience, and education, ideally kept to one or two pages.
+- Strong resume bullet points should highlight specific achievements in agile processes, using metrics like velocity and predictability.
+- Key ATS keywords for a Scrum Master resume include terms related to agile methodologies, tools, and coaching practices.
+- Examples of effective summaries and bullet points can guide both experienced and entry-level Scrum Masters in showcasing their impact on team performance.
+
 ## Best Scrum Master Resume Format
 
 1. Header with [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (CSM, PSM, SAFe)

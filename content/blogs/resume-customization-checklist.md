@@ -16,6 +16,14 @@ After the checklist, verify your score automatically with the [free ATS checker]
 
 ---
 
+## Key Takeaways
+
+- Always ensure your resume headline matches the exact job title from the job posting to catch the recruiter's attention.
+- Incorporate keywords from the job description into your summary and emphasize what you deliver rather than just listing your past roles.
+- Include all required and preferred skills from the job posting in your skills section, using both acronyms and full terms for key skills.
+- Prioritize the most relevant experience and ensure your bullet points highlight results rather than just tasks, embedding key keywords from the posting.
+- Regularly check your resume against the job description to ensure alignment and increase your chances of passing ATS screenings.
+
 ## Before You Start: Pull Up the Job Description
 
 Have the job posting open beside your resume. You will use it for comparison on almost every item below.

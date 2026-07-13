@@ -14,6 +14,14 @@ For [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), projects 
 
 ---
 
+## Key Takeaways
+
+- Freshers should showcase specific projects on their resumes to demonstrate skills, such as web apps, data dashboards, and machine learning models.
+- Use the project bullet formula: Built + tool/technology + feature/problem + measurable result to clearly communicate your contributions.
+- Include essential details for each project, such as project name, tools used, your role, challenges solved, and a link to the project or GitHub.
+- Tailor your resume for specific job descriptions by incorporating relevant keywords and ensuring your examples align with the role's requirements.
+- Before submitting your application, check for clarity, keyword inclusion, measurable results, and consistency across your resume, cover letter, and online profiles.
+
 ## Best [projects](https://thetailorcv.com/blog/projects-in-resume) for Fresher Resumes
 
 Choose [projects](https://thetailorcv.com/blog/projects-in-resume) that are specific:

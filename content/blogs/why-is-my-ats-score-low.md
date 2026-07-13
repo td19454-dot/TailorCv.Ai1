@@ -16,6 +16,13 @@ Re-check your progress anytime with the [free ATS score checker](/solutions).
 
 ---
 
+## Key Takeaways
+
+- A low ATS score is often due to missing keywords from the job description, which can be fixed by incorporating relevant terms throughout your resume.
+- Using complex templates or image-based PDFs can hinder ATS parsing; opt for a clean, single-column, text-based format instead.
+- Tailor each resume to specific job postings and use standard section headings to improve ATS readability.
+- Include measurable achievements and a dedicated skills section to enhance your resume's effectiveness in ATS evaluations.
+
 ## 1. Your Resume Is Missing Keywords
 
 This is the number one cause of a low score. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software matches your resume against the keywords in the job description. If you do not use those exact terms, you lose points.

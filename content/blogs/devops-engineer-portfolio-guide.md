@@ -12,6 +12,14 @@ keywords: devops portfolio, sre portfolio, infrastructure as code portfolio, dev
 
 DevOps and SRE work is often invisible until something breaks - which makes it hard to show on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you demonstrate the pipelines, infrastructure, and incident response that keep systems reliable. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
 
+## Key Takeaways
+
+- Include Infrastructure-as-code repos, CI/CD pipeline projects, observability setups, incident write-ups, and relevant certifications in your DevOps portfolio.
+- Frame your contributions by detailing the starting state, what you built, and measurable outcomes to demonstrate your impact.
+- Host your portfolio on GitHub and a personal site, ensuring it narrates your projects and links to relevant repositories.
+- Keep your resume and portfolio aligned in terms of technology stack and project scale to present a cohesive narrative.
+- Avoid common mistakes such as listing tools without context, sharing sensitive information, and providing dead links or expired environments.
+
 ## What to Include
 - **Infrastructure-as-code repos** - Terraform, Pulumi, or CloudFormation modules with clear READMEs
 - **CI/CD pipeline projects** - a working pipeline (GitHub Actions, GitLab CI, Jenkins) with build, test, and deploy stages documented

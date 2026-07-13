@@ -20,6 +20,14 @@ Prepare your research in parallel with your interview answers. Read the [behavio
 
 ---
 
+## Key Takeaways
+
+- Conduct thorough company research beyond the "About Us" page, focusing on revenue, product launches, and team challenges.
+- Prepare specific answers to "Why this company?" and tailor your responses to connect your experience with the company's context.
+- Use a structured framework for research, starting with the company's basics, products, and financial health.
+- Understand the competitive landscape and industry trends to impress interviewers with your market knowledge.
+- Utilize various sources such as company websites, LinkedIn, and news outlets to gather comprehensive insights before the interview.
+
 ## Why Company Research Matters More Than You Think
 
 Company research does three things:

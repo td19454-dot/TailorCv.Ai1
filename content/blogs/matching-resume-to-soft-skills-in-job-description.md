@@ -18,6 +18,14 @@ Paste any job description into the [TailorCV resume optimizer](/solutions) to se
 
 ---
 
+## Key Takeaways
+
+- Soft skills are often implied in job descriptions rather than explicitly listed, requiring candidates to read between the lines to identify them.
+- Responsibilities and culture sections of job postings contain clues about necessary soft skills, such as collaboration and adaptability.
+- Resumes should provide concrete examples of soft skills in action, rather than simply listing unsupported adjectives.
+- Candidates should extract implied soft skills from job descriptions and match them with real experiences to enhance their resumes.
+- Using the specific language from the job posting to describe your experiences can strengthen the alignment between your resume and the role.
+
 ## Where Soft Skills Actually Hide in a Job Description
 
 ### In the Responsibilities Section

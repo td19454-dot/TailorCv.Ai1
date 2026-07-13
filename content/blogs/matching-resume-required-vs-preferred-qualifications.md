@@ -18,6 +18,14 @@ Paste any [job description](https://thetailorcv.com/blog/job-description-analysi
 
 ---
 
+## Key Takeaways
+
+- Job descriptions often rank qualifications, distinguishing between required non-negotiable filters and preferred wish-list items.
+- Required qualifications are typically listed first, use definitive language, and are tied to legal or safety needs, while preferred qualifications use softer language and are secondary.
+- ATS systems prioritize required qualifications heavily; missing them can lead to disqualification, while missing preferred qualifications rarely does.
+- Applicants should consider applying if they lack one or two required skills but are strong in other areas, while missing most required qualifications suggests seeking other opportunities.
+- To effectively tailor a resume, create separate lists for required and preferred qualifications from the job posting and audit your resume accordingly.
+
 ## How to Spot Required vs Preferred Qualifications
 
 Most job postings signal the difference through structure and language, even without explicit labels.

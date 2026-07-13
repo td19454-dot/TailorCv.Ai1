@@ -16,6 +16,14 @@ For complete resume structure, read [the anatomy of a perfect resume](https://th
 
 ---
 
+## Key Takeaways
+
+- Include your full name prominently, using the same version across all professional platforms.
+- Use a professional email address and avoid outdated or unprofessional options.
+- List only your city and state/province for location, omitting your full address for privacy reasons.
+- Provide a LinkedIn profile link if it is up to date, and ensure consistency with your resume.
+- Include GitHub or portfolio links only if they are active and representative of your work, while avoiding outdated personal websites.
+
 ## What to Include in Your Resume Contact Section
 
 ### 1. Full Name

@@ -18,6 +18,14 @@ Before submitting your application, compare your resume against the job descript
 
 ---
 
+## Key Takeaways
+
+- Tailor your business analyst resume to match the specific type of BA role you are targeting, whether technical or process-focused.
+- Highlight your ability to elicit and document requirements, analyze data or processes, and deliver solutions that improve business outcomes.
+- Use ATS-friendly resume formats and keywords to enhance your chances of passing through automated screening systems.
+- Structure your resume with key sections including a summary, core competencies, work experience, projects, education, and certifications.
+- Craft strong bullet points that clearly demonstrate your contributions and the impact of your work on efficiency, cost, or compliance outcomes.
+
 ## Best Business Analyst Resume Format
 
 1. Header

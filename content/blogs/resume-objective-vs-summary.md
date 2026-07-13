@@ -16,6 +16,14 @@ After choosing your approach, build your resume on an [ATS-friendly template](ht
 
 ---
 
+## Key Takeaways
+
+- The resume objective has largely fallen out of favor, as it focuses on what the candidate wants rather than what they can offer to employers.
+- A professional summary is preferred, highlighting relevant experience, key strengths, and accomplishments in a way that answers the employer's needs.
+- Use a summary if you have any relevant experience, including internships or projects; it is more effective for most candidates.
+- An objective may be appropriate for first-time job seekers with no relevant experience, during major career changes, or in specific traditional industries.
+- A well-crafted professional summary should include your title, years of experience, core strengths, and a specific, quantified accomplishment.
+
 ## What Is a Resume Objective?
 
 A resume objective is a 1-2 sentence statement at the top of your resume that describes what you want from your career or [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).

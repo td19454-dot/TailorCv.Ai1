@@ -18,6 +18,14 @@ Also study [behavioral interview questions](https://thetailorcv.com/blog/behavio
 
 ---
 
+## Key Takeaways
+
+- Situational interview questions assess judgment and problem-solving skills by asking hypothetical scenarios, unlike behavioral questions that focus on past experiences.
+- Use the PAR framework (Problem, Approach, Result) to structure answers to situational questions effectively.
+- Common situational questions include handling disagreements with a manager, missing deadlines, and addressing underperforming team members.
+- Prepare for situational questions by practicing responses to various scenarios relevant to your role and industry.
+- Different interview types (HR, manager, panel) may focus on specific aspects like policy, team dynamics, or project delivery in situational questions.
+
 ## Situational vs. Behavioral Questions
 
 | Type | Format | Tests |

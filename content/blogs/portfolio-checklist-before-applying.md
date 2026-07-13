@@ -12,6 +12,14 @@ keywords: portfolio checklist, portfolio before applying, portfolio review, is m
 
 Before you send a single application, run your portfolio through this checklist. Five minutes here prevents the silent rejections that come from a dead link, a slow page, or a missing contact path. Pair this with [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid) and [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
+## Key Takeaways
+
+- Include 3-5 strong projects in your portfolio, ensuring each has a clear problem, process, and outcome.
+- Verify that all links work, the site loads quickly, and it is mobile-friendly with HTTPS enabled.
+- Provide an obvious contact path and ensure your LinkedIn and GitHub links are correct.
+- Maintain consistency across your resume, LinkedIn, and portfolio by using the same name, headline, and key projects.
+- Regularly update your portfolio to reflect your latest work and seek feedback to catch any errors.
+
 ## Content
 - [ ] 3-5 strong projects; weak ones removed ([15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas))
 - [ ] Each project has problem, process, and outcome ([How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study))

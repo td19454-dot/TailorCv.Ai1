@@ -34,6 +34,14 @@ This guide does not.
 
 ---
 
+## Key Takeaways
+
+- Tailoring your resume without a job description requires gathering indirect signals about the role and company needs.
+- Utilize referrals to gain insights about the team’s current projects, hiring manager's priorities, and specific resume preferences.
+- Research current employees in similar roles to identify common skills, backgrounds, and industry-specific language to incorporate into your resume.
+- Align your professional summary with the company's mission, using relevant terminology to demonstrate your understanding of their goals.
+- Match your skills to industry standards by inferring required competencies based on the role and sector you are targeting.
+
 ## Why No Job Description Makes Tailoring Harder (But Not Impossible)
 
 A [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is a targeting system.

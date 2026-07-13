@@ -18,6 +18,14 @@ This pairs with the [how to ask for a raise guide](https://thetailorcv.com/blog/
 
 ---
 
+## Key Takeaways
+
+- To get promoted, demonstrate that you are already operating at the next level before the promotion is granted.
+- Understand the requirements for the next level by studying your company's framework or asking your manager directly.
+- Deliver results that showcase next-level impact by taking on high-visibility projects and mentoring others.
+- Build visibility by sharing your contributions in team settings and engaging in cross-functional projects with leadership.
+- Secure a sponsor who can advocate for you and have a clear conversation with your manager about your promotion ambitions and roadmap.
+
 ## The Core Principle: Operate at the Next Level First
 
 The biggest misconception about promotions is that you get promoted and then start doing the higher-level work. In reality, you demonstrate that you can do the higher-level work, and then you get promoted to match.

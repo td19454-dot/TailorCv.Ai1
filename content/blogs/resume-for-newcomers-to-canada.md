@@ -9,7 +9,15 @@ slug: resume-for-newcomers-to-canada
 keywords: resume for newcomers to canada, immigrant resume canada, first canadian job resume
 image: public/blog-images/resume-for-newcomers-to-canada.png
 ---
+
 Landing your first job in Canada can be a daunting task, especially for newcomers and international students unfamiliar with local hiring practices. A well-crafted resume is your key to making a strong first impression. In Canada, resumes have specific norms and expectations that differ from those in other countries. This article will guide you through the essentials of creating a standout resume that aligns with Canadian standards, enhances your chances of passing Applicant Tracking Systems (ATS), and ultimately helps you secure that all-important first job.
+
+## Key Takeaways
+
+- Canadian resumes typically accept a two-page format, focusing on skills and qualifications rather than personal details.
+- Include clear contact information, a tailored professional summary, and list work experience in reverse chronological order with quantifiable achievements.
+- Highlight both hard and soft skills relevant to the job, adapting this section to match the job description for better ATS compatibility.
+- Avoid vague descriptions and excessive details in the work experience section; instead, focus on specific accomplishments and relevant experiences.
 
 ## Understanding Canadian Resume Norms
 

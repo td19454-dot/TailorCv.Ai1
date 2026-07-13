@@ -12,6 +12,14 @@ keywords: data analyst portfolio, sql portfolio, tableau portfolio, power bi por
 
 A data analyst portfolio proves one thing above all: you can turn raw data into a decision. Hiring managers do not want another rainbow dashboard - they want the **insight** and the **[business action](https://thetailorcv.com/blog/business-analyst-portfolio-guide)** it supports. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide).
 
+## Key Takeaways
+
+- Include projects in your portfolio that demonstrate actionable insights, such as polished dashboards, SQL case studies, end-to-end analyses, and A/B tests.
+- Clearly frame each project around a business question, outlining the data source, method, findings, and the decision it supports.
+- Host your portfolio on platforms like GitHub, Tableau Public, and Kaggle, ensuring it is visually appealing and easy to skim for recruiters.
+- Maintain consistency across your resume, LinkedIn, and portfolio to present a cohesive professional narrative.
+- Avoid common mistakes such as using toy datasets, failing to demonstrate SQL skills, and including dead links in your portfolio.
+
 ## Projects to Include
 - A polished **dashboard** (Tableau Public or Power BI Web) on a real dataset
 - A **SQL case study** with non-trivial joins, window functions, and CTEs

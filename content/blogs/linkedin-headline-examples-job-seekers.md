@@ -14,6 +14,14 @@ Your [LinkedIn headline](https://thetailorcv.com/blog/linkedin-profile-optimizat
 
 ---
 
+## Key Takeaways
+
+- A strong LinkedIn headline should include your target role, core skills, and proof or industry context.
+- Avoid vague phrases like "open to work" or "hardworking professional" that lack searchable context for recruiters.
+- Tailor your LinkedIn headline to match your resume and optimize it based on specific job descriptions.
+- Use measurable results or concrete examples in your headline to demonstrate your fit for the role.
+- Ensure consistency across your LinkedIn profile, resume, and other application materials to enhance your appeal to recruiters.
+
 ## [LinkedIn headline](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) Formula
 
 Use:

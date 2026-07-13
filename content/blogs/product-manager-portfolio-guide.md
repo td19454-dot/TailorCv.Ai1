@@ -10,6 +10,14 @@ image: public/blog-images/product-manager-portfolio-guide.png
 
 PM portfolios are still rare - which is exactly why one sets you apart. While other candidates send a resume and hope, you hand the hiring manager evidence of product thinking and shipped impact. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the template in [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).
 
+## Key Takeaways
+
+- A strong PM portfolio should include 2-3 diverse case studies that demonstrate product thinking and measurable impact.
+- Each case study must cover the problem, options considered, what was shipped, and the measurable outcome to showcase prioritization and judgment.
+- Incorporate user feedback and visual storytelling to enhance engagement and clarity in your case studies.
+- Include essential artifacts like a PRD, roadmap, user stories, and experiment plans to illustrate your product management skills.
+- Ensure your portfolio is skimmable by using headings, bullet points, and highlighting key metrics for quick comprehension.
+
 ## Build 2-3 Product Case Studies
 
 Each case study should cover:

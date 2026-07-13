@@ -16,6 +16,14 @@ Win the interview first: use the [complete interview preparation guide](https://
 
 ---
 
+## Key Takeaways
+
+- Most candidates accept initial salary offers, but most employers expect negotiation, leaving potential earnings on the table.
+- Discuss salary during early HR screens only if necessary, but focus on demonstrating your value first.
+- The best time to negotiate is after receiving a written offer, as you have maximum leverage at this point.
+- Research your market value using salary data, peer conversations, and total compensation factors before negotiating.
+- Prepare negotiation scripts for various scenarios and practice them to increase confidence during discussions.
+
 ## When to Discuss Salary
 
 ### During the Interview Process

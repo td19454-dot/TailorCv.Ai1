@@ -18,6 +18,14 @@ For shortcuts, start from an [ATS-friendly template](https://www.thetailorcv.com
 
 ---
 
+## Key Takeaways
+
+- Gather all relevant information, including job history, education, projects, certifications, skills, achievements, and the target job description before starting your resume.
+- Choose the right format for your resume, such as reverse chronological or combination, based on your experience and career goals.
+- Include a clear contact section at the top of your resume with your name, professional email, phone number, and relevant links, avoiding unnecessary personal details.
+- Write a concise professional summary that highlights your experience, strengths, and how you can contribute to the prospective employer.
+- Build a skills section by matching your skills to those listed in the job description, using exact wording to enhance ATS compatibility.
+
 ## Before You Write: Gather Everything
 
 Resist the urge to open a blank document and start typing. Before writing a single word, gather:

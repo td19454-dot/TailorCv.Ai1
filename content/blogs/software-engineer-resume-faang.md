@@ -21,6 +21,14 @@ Before applying, compare your resume against the job description with the [ATS s
 
 ---
 
+## Key Takeaways
+
+- A FAANG software engineer resume should demonstrate the ability to build reliable systems and solve complex technical problems, not just list programming languages.
+- The resume must cater to both ATS software for keyword matching and recruiters looking for evidence of engineering judgment.
+- Key elements that FAANG recruiters prioritize include strong computer science fundamentals, production software experience, clear ownership of projects, and measurable impact.
+- The recommended resume structure includes a header, summary, technical skills, work experience, projects, education, and certifications, ideally kept to one page for less experienced candidates.
+- A specific resume summary should highlight years of experience, types of systems built, core technologies used, and the impact achieved, avoiding vague statements.
+
 ## What FAANG Recruiters Look For in a Software Engineer Resume
 
 Big-tech software engineering roles usually care about four things:

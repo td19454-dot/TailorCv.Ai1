@@ -12,6 +12,14 @@ keywords: portfolio no projects, what to put in portfolio, portfolio without exp
 
 An empty portfolio feels like a chicken-and-egg trap - you need work to get hired, but you need to be hired to get work. It is not. You can create credible material in a weekend or two. Here is exactly what to put in your portfolio when you are starting from zero. Pair this with [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience) and [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026).
 
+## Key Takeaways
+
+- Build small, real projects that solve actual problems to establish credibility in your portfolio.
+- Recreate realistic briefs for design, writing, or marketing to showcase your skills and thought process.
+- Contribute to open-source projects, collaborate with others, or help nonprofits to gain practical experience.
+- Document your learning process and create case studies from hypothetical scenarios to demonstrate problem-solving skills.
+- Ensure your resume and portfolio tell a consistent story to avoid confusion for recruiters.
+
 ## Build Something Small and Real
 Solve a problem you or someone near you actually has. The realness is the credibility.
 

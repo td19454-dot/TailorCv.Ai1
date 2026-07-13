@@ -14,6 +14,13 @@ A resume review checklist helps you catch mistakes before you apply, not after a
 
 Use this checklist alongside the [ATS score checker](https://www.thetailorcv.com/solutions) and the [resume proofreading checklist](https://thetailorcv.com/blog/resume-proofreading-checklist) so you catch both human-readable mistakes and machine-readable ones before you hit submit.
 
+## Key Takeaways
+
+- Utilize a resume review checklist to catch mistakes before submitting your application, improving your chances of getting noticed by recruiters.
+- Differentiate between a quick 5-minute check for high-volume applications and a deep review for roles you genuinely want, allocating appropriate time for each.
+- Conduct a keyword pass against the job description first during a deep review, ensuring your resume aligns with the specific role.
+- Ensure all contact information is professional and accurate, and that your resume is tailored to reflect the job title and relevant skills for each application.
+
 ## Quick Check vs. Deep Review: Two Different Workflows
 
 Not every application deserves the same amount of review time. A role you are lukewarm on and a role you actually want need different levels of scrutiny, and treating them the same wastes time either way.

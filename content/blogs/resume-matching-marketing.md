@@ -26,6 +26,14 @@ Analyze your marketing resume match score instantly at [TailorCV](https://www.th
 
 ---
 
+## Key Takeaways
+
+- Marketing job descriptions are keyword-dense, requiring precise language to pass ATS filters.
+- Candidates often write generic resumes, failing to match specific terms used in job descriptions.
+- Identify the marketing function of the role to prioritize relevant channel and platform keywords.
+- Extract and incorporate key metrics from the job description into your experience bullet points.
+- Tailor your resume summary to reflect the specific marketing discipline and highlight relevant achievements.
+
 ## Why Marketing Resumes Fail ATS More Than Most
 
 Marketing job descriptions are highly specific - but candidates write generic resumes.

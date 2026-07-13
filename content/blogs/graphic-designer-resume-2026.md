@@ -18,6 +18,14 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 ---
 
+## Key Takeaways
+
+- A graphic designer resume in 2026 must balance creative identity with ATS readability to ensure it passes automated screening systems.
+- The best resume format includes a header with a portfolio link, a summary, categorized skills, work experience, projects, education, and certifications.
+- Use a clean and minimal visual design for resumes, especially for designers with under 7 years of experience, avoiding overly complex layouts.
+- Strong resume bullet points should clearly describe design outputs, the context of the work, and measurable outcomes, enhancing the impact of the experience listed.
+- Incorporate relevant ATS keywords related to design tools, brand identity, and digital design to improve the chances of passing automated screenings.
+
 ## Best Graphic Designer Resume Format
 
 1. Header with [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) link (critical)

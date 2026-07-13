@@ -40,6 +40,13 @@ This guide gives you the country-specific knowledge you need. For federal govern
 
 ---
 
+## Key Takeaways
+
+- Resume conventions vary significantly by country, affecting format, length, and personal details included.
+- In the US, resumes should be one page, without photos or personal information like date of birth or nationality.
+- The UK typically uses a two-page CV format, includes a personal statement, and also avoids photos to minimize bias.
+- Understanding and adhering to country-specific resume norms is crucial for job applicants to demonstrate market knowledge and professionalism.
+
 ## Why Country-Specific Resume Conventions Exist
 
 Resume norms are shaped by legal environments, cultural expectations, and historical hiring practices.

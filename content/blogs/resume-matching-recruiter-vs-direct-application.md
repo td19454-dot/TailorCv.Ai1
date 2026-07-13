@@ -18,6 +18,14 @@ Whether you are working with a recruiter or applying directly, check your match 
 
 ---
 
+## Key Takeaways
+
+- Your resume still goes through an ATS when submitted by a recruiter, making keyword matching important.
+- A recruiter evaluates your fit before submission, so your resume must impress them first.
+- Tailoring your resume shows effort and strengthens the recruiter's internal advocacy for you.
+- Provide the full job description to extract relevant keywords and tailor your resume effectively.
+- Use conversations with the recruiter to explain nuances that a resume cannot capture.
+
 ## What Actually Changes When a Recruiter Is Involved
 
 ### The Resume Still Goes Through the Same ATS

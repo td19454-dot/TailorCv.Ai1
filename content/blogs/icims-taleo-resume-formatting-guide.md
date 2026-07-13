@@ -20,6 +20,14 @@ Check your resume's compatibility and match score instantly with the [TailorCV A
 
 ---
 
+## Key Takeaways
+
+- iCIMS and Taleo are legacy ATS platforms that are less forgiving of formatting mistakes, leading to higher chances of parsing failures.
+- Use a single-column layout, standard fonts, and avoid graphics to ensure better compatibility with these systems.
+- Exact keyword matching is crucial; synonyms may not be recognized, so mirror the job description's phrasing.
+- Large applicant volumes mean even minor keyword gaps can result in low scores, so carefully review and optimize your resume.
+- Be prepared to manually enter or confirm work history and education after uploading your resume, as errors can impact your application.
+
 ## Why Legacy ATS Platforms Are Stricter
 
 iCIMS and Taleo were both built before modern natural-language parsing became standard. That means:

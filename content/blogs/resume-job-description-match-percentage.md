@@ -25,6 +25,13 @@ Check your current match score for free using the [TailorCV ATS checker](https:/
 
 ---
 
+## Key Takeaways
+
+- A resume's match percentage indicates how closely it aligns with a job description, influencing whether a recruiter reviews it.
+- Aim for a match score of **75% or higher**; for competitive roles, target **80%+**.
+- Key factors affecting match percentage include keyword coverage, skills alignment, job title relevance, experience context, and formatting quality.
+- Keyword coverage accounts for **30-40%** of the match score, making it crucial to include relevant terms from the job description.
+
 ## What Is a Resume-to-Job-Description Match Percentage?
 
 A match percentage is a numerical score that indicates how closely your resume aligns with a specific [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).

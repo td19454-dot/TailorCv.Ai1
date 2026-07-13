@@ -12,6 +12,14 @@ keywords: virtual assistant portfolio, freelancer portfolio website, va portfoli
 
 As a virtual assistant or freelance support professional, you are usually selling trust as much as skill - clients are handing over calendars, inboxes, and sometimes finances to someone they have never met in person. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with clear service packages and real testimonials closes that trust gap faster than a resume ever could. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Social Media Manager Portfolio](https://thetailorcv.com/blog/social-media-manager-portfolio).
 
+## Key Takeaways
+
+- A strong portfolio for virtual assistants and freelancers should include clear service packages, client results, and testimonials to build trust with potential clients.
+- Highlight measurable outcomes for each service provided, such as improved response times or hours saved, to demonstrate effectiveness.
+- Host your portfolio on a personal website while maintaining consistency across freelance platform profiles and LinkedIn to attract direct clients.
+- Avoid common mistakes like vague service descriptions, lack of testimonials, and outdated information to enhance credibility.
+- Specializing in a niche can help command higher rates, so clearly define your services and gather client testimonials promptly after project completion.
+
 ## What to Include
 - **Clear service packages** - calendar/inbox management, bookkeeping, customer support, project coordination, listed with what is included
 - **Client results** - hours saved per week, response time improvements, project turnaround times

@@ -9,6 +9,7 @@ image: public/blog-images/cover-letter-for-internal-job-application.png
 slug: cover-letter-for-internal-job-application
 keywords: cover letter for internal job application, internal promotion cover letter, applying for internal position letter, internal transfer cover letter
 ---
+
 ## Cover Letter for an Internal Job Application - Template and Tips
 
 Applying for a role inside your own company feels like it shouldn't need a cover letter - everyone already knows you. But that familiarity can work against you if you don't put your case in writing: hiring panels often include people from other teams who don't know your track record, and a lazy or missing letter can read as a lack of seriousness about the move.
@@ -16,6 +17,14 @@ Applying for a role inside your own company feels like it shouldn't need a cover
 Before writing, pair this with the [internal job application resume](https://thetailorcv.com/blog/internal-job-application-resume) guide, and check your fit against the posted role using the [free ATS score checker](https://www.thetailorcv.com/solutions) - internal postings get scored the same way external ones do.
 
 ---
+
+## Key Takeaways
+
+- An internal cover letter is essential as hiring panels may include members unfamiliar with your track record.
+- Highlight specific achievements from your current role and explain your motivation for applying to the new position.
+- Acknowledge the potential relationship shift if managing former peers and avoid assuming the job is yours.
+- Structure your letter clearly by stating the role, connecting your experience to the new role's requirements, and addressing the transition thoughtfully.
+- Be authentic and emphasize your understanding of the company culture to differentiate yourself from external candidates.
 
 ## What Makes an Internal Cover Letter Different
 

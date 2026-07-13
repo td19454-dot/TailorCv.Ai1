@@ -27,6 +27,13 @@ This guide covers all of it - the resume strategy, the politics, and how to tail
 
 ---
 
+## Key Takeaways
+
+- Internal job applications require a tailored resume, just like external ones, to effectively convey your qualifications and fit for the role.
+- Consider your relationship with your manager before applying; transparency can build trust, but it may be wise to wait if your manager is unsupportive.
+- Use insider knowledge of the company’s language and priorities to enhance your resume and demonstrate your qualifications.
+- Quantify your contributions to the company to showcase your impact and relevance to the new role.
+
 ## Why Internal Applications Are Different
 
 When you apply externally, you are a blank slate.

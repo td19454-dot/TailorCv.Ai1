@@ -16,6 +16,14 @@ Want your number first? Run your resume through the [free ATS score checker](/so
 
 ---
 
+## Key Takeaways
+
+- A good ATS score is 80 or higher, indicating strong alignment with the job description and a high likelihood of passing automated filtering.
+- Scores are categorized as follows: 90-100 (Excellent), 80-89 (Strong), 70-79 (Good), 60-69 (Moderate), and below 60 (At risk).
+- ATS scores are relative to specific job descriptions, so always tailor your resume for each application and re-check your score.
+- To improve your ATS score, mirror the job description, use ATS-friendly formatting, quantify achievements, and maintain a strong skills section.
+- Common mistakes that lower ATS scores include using non-standard formatting, overlooking keywords, including irrelevant information, and ignoring job titles.
+
 ## The Short Answer
 
 **A good [ATS score](https://thetailorcv.com/blog/ats-score-guide) is 80 or higher.** At that level, your resume strongly matches the job description and is very likely to pass automated filtering and reach a recruiter.

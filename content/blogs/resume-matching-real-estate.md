@@ -20,6 +20,14 @@ Paste any real estate job posting into the [TailorCV resume optimizer](/solution
 
 ---
 
+## Key Takeaways
+
+- Different real estate roles require distinct resume strategies, with specific emphasis on skills and metrics relevant to each category.
+- Larger firms often use ATS software to screen resumes, making keyword alignment crucial for job applications.
+- Tailor your resume to match the job description by focusing on relevant production numbers, software proficiency, and market segment language.
+- Common mistakes include using a generic resume for different roles and failing to clearly state required licenses or credentials.
+- Utilize specific keywords related to licensing, software, and skills to enhance your resume's match score for the desired position.
+
 ## The Three Types of Real Estate Job Descriptions
 
 1. **Sales and leasing agent roles** — weigh production numbers, licensing, and client relationship skills heavily

@@ -18,6 +18,14 @@ Before the phone screen, make sure your resume got you here for the right reason
 
 ---
 
+## Key Takeaways
+
+- The phone interview serves as a preliminary filter to verify qualifications, assess interest, and discuss logistics before advancing to deeper interview rounds.
+- Prepare by researching the company, reviewing the job description, and formulating answers to common questions, especially "Tell me about yourself."
+- Set up a quiet environment, ensure a stable phone connection, and have all relevant materials readily available during the call.
+- Speak clearly and with energy, maintain good posture, and keep answers concise to fit the short time frame of the phone screen.
+- When discussing salary, either defer the question for more information or provide a researched range while remaining flexible.
+
 ## What Is the Purpose of a Phone Interview?
 
 The phone screen typically aims to:

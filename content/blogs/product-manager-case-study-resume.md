@@ -14,6 +14,14 @@ Product manager resumes are strongest when they show product judgment. A [case s
 
 ---
 
+## Key Takeaways
+
+- A strong product manager resume should demonstrate product judgment through a well-structured case study.
+- Include key elements in your case study, such as user problems, business goals, research, decision-making, and measurable outcomes.
+- Use specific metrics and results in your resume to showcase your impact, rather than vague descriptions of responsibilities.
+- Tailor your application materials to match the specific job description, emphasizing relevant skills and experiences.
+- Review your application against a checklist to ensure clarity, keyword alignment, and focus on measurable achievements.
+
 ## What a PM [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) Should Show
 
 Include:

@@ -18,6 +18,14 @@ Before applying, compare your resume to the job description with the [ATS score 
 
 ---
 
+## Key Takeaways
+
+- A digital marketing resume must demonstrate channel ownership and measurable results, such as traffic growth and conversion rates.
+- The resume format should include a header with portfolio links, a summary with key results, skills by channel, work experience, and education.
+- Use strong, quantifiable bullet points that highlight specific achievements rather than vague responsibilities.
+- Incorporate relevant ATS keywords related to digital marketing to improve visibility in applicant tracking systems.
+- Tailor the resume to match the job description and utilize ATS-friendly templates for better chances of success.
+
 ## Best Digital Marketing Resume Format
 
 1. Header with [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) or campaign case study links

@@ -16,6 +16,14 @@ Once your references are sorted, focus on making your resume content exceptional
 
 ---
 
+## Key Takeaways
+
+- In 2026, do not include references on your resume as they take up space and are assumed by employers.
+- Only include references on your resume if explicitly requested in the job posting, for academic CVs, or for internships at small organizations.
+- When preparing a reference list, create a separate document with details such as name, title, relationship, email, and phone number.
+- Aim for 3 references for standard roles and 4-5 for senior positions, and have them ready before applying.
+- Choose credible references like former managers or peers, and avoid family or friends unless exceptional. Always ask for permission before listing someone as a reference.
+
 ## The Short Answer: Do Not Put References on Your Resume
 
 In 2026, references do not belong on your resume for these reasons:

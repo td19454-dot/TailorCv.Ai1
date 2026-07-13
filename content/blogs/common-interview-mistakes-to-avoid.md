@@ -18,6 +18,14 @@ Avoid these mistakes by preparing thoroughly with the [interview preparation gui
 
 ---
 
+## Key Takeaways
+
+- Research the company thoroughly to demonstrate interest and knowledge during the interview.
+- Prepare for common interview questions and know your resume inside and out to maintain credibility.
+- Use the STAR method for structured responses to behavioral questions and avoid vague answers.
+- Maintain positive body language and listen carefully to the interviewer's questions to foster a good rapport.
+- Arrive early for in-person interviews and ensure a professional setup for virtual interviews to make a strong first impression.
+
 ## Preparation Mistakes
 
 ### 1. Not Researching the Company
