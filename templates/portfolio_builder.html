@@ -338,7 +338,7 @@
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
-    <link rel="stylesheet" href="/static/feature_landing.css?v=26">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=27">
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -382,8 +382,8 @@
             <div class="solx-wrap">
                 <div class="solx-kicker">Design gallery</div>
                 <h2 class="solx-h2">Find the perfect portfolio design <span class="g">for your career goals</span></h2>
-                <p class="solx-lead">Every design is responsive and built straight from your resume. Click any design to open its live demo. Publish free on <b>yourname.thetailorcv.com</b>, or go Pro for your own <b>yourname.netlify.app</b> live site.</p>
-                <div class="solx-carousel wide">
+                <p class="solx-lead">Click any design to see it live. Publish free on <b>yourname.thetailorcv.com</b>, or go Pro for <b>yourname.netlify.app</b>.</p>
+                <div class="solx-carousel wide big">
                     <button type="button" class="solx-car-btn solx-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
                     <div class="solx-car-track">
                         {% for _k, _label in themes.items() %}{% set _m = theme_media.get(_k) %}{% if _m and _m.image %}
