@@ -18,6 +18,14 @@ Use [TailorCV's resume optimizer](/solutions) to identify the job description's 
 
 ---
 
+## Key Takeaways
+
+- Tailor your 30-second video pitch to match the specific job description, just like you would with your resume, to enhance your chances of success.
+- Focus on key skills and responsibilities highlighted in the job posting to create a relevant and impactful script.
+- Structure your pitch with a clear opening, a core match of experiences or skills, and a closing that expresses genuine interest in the role and company.
+- Match your delivery style to the tone of the job description to demonstrate cultural fit and engagement.
+- Avoid common mistakes such as reusing the same script for all applications, neglecting to address fit, over-preparing, and overlooking video/audio quality.
+
 ## Why Video Pitches Need the Same Matching Treatment as Resumes
 
 A video pitch is not just a personality preview. Hiring teams that request one are typically using it to assess:

@@ -31,6 +31,13 @@ This guide covers when to update your resume between rounds, what to change, and
 
 ---
 
+## Key Takeaways
+
+- Updating your resume between interview rounds is often unnecessary unless specifically requested or if significant changes occur in the role.
+- Utilize insights gained from the first interview to tailor your preparation and responses for the next round.
+- Focus on enhancing your interview answers, thank-you notes, and verbal presentation based on what you learned about the hiring manager's priorities.
+- In cases of panel interviews or senior-level roles, consider creating a refined version of your resume that highlights relevant skills and experiences discussed in the first round.
+
 ## First: Understand What Changes After Round One
 
 When you go into a first interview, you have a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and your research.

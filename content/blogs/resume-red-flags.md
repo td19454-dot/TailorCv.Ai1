@@ -18,6 +18,14 @@ Before submitting, check your resume with the [TailorCV ATS checker](https://www
 
 ---
 
+## Key Takeaways
+
+- Unexplained employment gaps can raise concerns; provide brief explanations for any gaps in your history.
+- Job hopping without context may indicate commitment issues; clarify short tenures with justifications or use a skills-focused resume format.
+- Generic content signals low interest; tailor your resume for each application to improve callback rates.
+- Typos and inconsistent formatting suggest carelessness; proofread thoroughly and maintain consistency throughout your resume.
+- Focus on achievements rather than duties; use the action + method + result formula to highlight your contributions effectively.
+
 ## Red Flag 1: Unexplained Employment Gaps
 
 A gap in your employment history without context raises the question every [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) thinks but rarely asks: *why?* Unexplained gaps suggest unemployment by choice, termination, or other circumstances a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) has to speculate about.

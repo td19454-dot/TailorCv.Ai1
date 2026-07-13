@@ -20,6 +20,14 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to a
 
 ---
 
+## Key Takeaways
+
+- Hidden ATS mistakes can prevent qualified candidates from being seen by recruiters, even if the resume looks professional on screen.
+- Hyperlinked text without visible URLs can lead to the loss of important links when parsed by ATS systems.
+- Resumes created in design tools may result in image-based PDFs that ATS cannot read, rendering the application invisible.
+- Building resumes in text-based editors like Word or Google Docs ensures that the text is readable by ATS.
+- Regularly audit your resume using ATS score checkers to identify and correct hidden mistakes.
+
 ## What Makes an ATS Mistake "Hidden"?
 
 Common [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) mistakes - two-column layout, tables, graphics - are well-documented. The hidden ones are problems that:

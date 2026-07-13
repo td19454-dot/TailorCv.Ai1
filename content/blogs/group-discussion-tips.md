@@ -18,6 +18,14 @@ A GD is one stage of a larger process. Make sure your resume gets you there with
 
 ---
 
+## Key Takeaways
+
+- Evaluators in group discussions assess communication, leadership, teamwork, and logical reasoning, valuing quality contributions over quantity.
+- Strong openings should define the topic, outline key dimensions, and present an initial perspective to establish leadership.
+- Use structured thinking and data to enhance contributions, while actively listening and building on others' points to demonstrate collaboration.
+- Handle difficult situations by asserting your point politely, bringing order to chaos, and respectfully disagreeing with reasoning.
+- Conclude discussions with a concise summary that reflects the group's consensus and acknowledges differing viewpoints to showcase leadership.
+
 ## What Evaluators Look For in a GD
 
 GD evaluators assess:

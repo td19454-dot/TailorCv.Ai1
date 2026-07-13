@@ -18,6 +18,14 @@ Whichever format you choose, run your resume through the [ATS score checker](htt
 
 ---
 
+## Key Takeaways
+
+- The three main resume formats are reverse chronological, functional, and combination, each affecting how recruiters and ATS systems read your experience.
+- The reverse chronological format is the most common and recommended, showcasing recent experience and career progression effectively.
+- The functional format can obscure work history and may raise suspicion among recruiters, making it less ideal for most candidates.
+- The combination format is beneficial for career changers, allowing for a focus on skills while still providing chronological work history.
+- Always run your resume through an ATS score checker to ensure it parses correctly, regardless of the format you choose.
+
 ## The Three Resume Formats
 
 ### 1. Reverse Chronological (Most Common, Recommended)

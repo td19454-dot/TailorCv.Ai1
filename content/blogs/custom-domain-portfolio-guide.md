@@ -12,6 +12,14 @@ keywords: custom domain portfolio, portfolio website domain, how to buy a domain
 
 `yourname.com` reads very differently on a resume than a long, generic subdomain. A custom domain is one of the cheapest, highest-leverage upgrades you can make to a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and it takes under an hour to set up. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide).
 
+## Key Takeaways
+
+- A custom domain enhances credibility, memorability, and longevity for your portfolio.
+- Choose a domain that is your name, short, easy to spell, and preferably a `.com`.
+- Use reputable registrars for domain purchase and expect to pay around $10-15/year.
+- Follow a straightforward process to connect your custom domain to your portfolio, including DNS settings and SSL confirmation.
+- Avoid common mistakes like not linking your domain or forgetting to update your resume and online profiles.
+
 ## Why It Matters
 - **Credibility** - a custom domain reads as more established than a free subdomain
 - **Memorability** - `yourname.com` is easier for a recruiter to type from memory or a printed resume than a long generated URL

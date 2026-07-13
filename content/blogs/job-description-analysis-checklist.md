@@ -14,6 +14,14 @@ Before applying, analyze the [job description](https://thetailorcv.com/blog/job-
 
 ---
 
+## Key Takeaways
+
+- Analyze job descriptions for key elements like must-have skills, experience, and industry keywords to tailor your application effectively.
+- Look for hidden signals in the description that indicate the type of examples to include in your resume.
+- Apply for roles where you meet most must-haves and can realistically learn any missing skills.
+- Before submitting your application, ensure it aligns closely with the job description and avoids generic phrases.
+- Use a practical checklist to refine your application, focusing on clarity, relevant keywords, and measurable achievements.
+
 ## Checklist
 
 Review:

@@ -18,6 +18,13 @@ Practice before the real thing with [TailorCV's AI mock interview](https://theta
 
 ---
 
+## Key Takeaways
+
+- Companies hiring freshers expect little to no professional experience; they focus on your ability to learn and communicate effectively.
+- Preparation is crucial; your resume should clearly highlight projects, internships, and relevant skills to support your interview responses.
+- Understand the typical interview process, which includes a screening call, aptitude test, HR round, and technical round, to better prepare for each stage.
+- Practice with mock interviews to build confidence and improve your communication skills before the actual interview.
+
 ## Before the Interview: Resume and Application
 
 Your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) actually starts with your resume, because every question in the room will trace back to it. If the interviewer asks about a line on your resume and you cannot explain it clearly, that is a bigger problem than any "trick question" they might ask. For freshers:

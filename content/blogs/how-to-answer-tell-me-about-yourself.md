@@ -20,6 +20,13 @@ Before your interview, make sure your resume is ready. Use the [TailorCV ATS sco
 
 ---
 
+## Key Takeaways
+
+- "Tell me about yourself" is a common interview question that requires a concise, controlled narrative rather than a lengthy life story.
+- The ideal response should take 90 seconds to 2.5 minutes and should demonstrate clear communication, relevant experience, self-awareness, and chemistry with the interviewer.
+- Use the Present, Past, Future formula to structure your answer: describe your current role, relevant past experiences, and your future aspirations related to the position.
+- Tailor your response to the specific role you are applying for, highlighting relevant accomplishments and interests that align with the company's goals.
+
 ## What Interviewers Are Actually Evaluating
 
 When an interviewer asks "tell me about yourself," they are not asking for your autobiography. They are asking:

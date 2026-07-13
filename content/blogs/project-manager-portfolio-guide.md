@@ -12,6 +12,14 @@ keywords: project manager portfolio, pm portfolio website, project management ca
 
 Project management is judged on delivery - on time, on budget, on scope, with a team that did not burn out along the way. A resume line like "managed cross-functional projects" says nothing about how well you actually did that. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with real project case studies does. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
+## Key Takeaways
+
+- Include 2-4 project case studies detailing scope, timeline, budget, team size, and deliverables in your portfolio.
+- Highlight how you managed obstacles in each project case study, showcasing your problem-solving skills and outcomes.
+- Use a personal site or private link to host your portfolio, ensuring it aligns with your resume's content and metrics.
+- Avoid common mistakes such as omitting challenges faced, sharing confidential information, or failing to connect your portfolio to your certifications.
+- Tailor your portfolio for your target audience and document each project with clear overviews, your role, challenges, and quantifiable results.
+
 ## What to Include
 - **2-4 project case studies** - scope, timeline, budget, team size, and what you delivered
 - **A sample project plan or Gantt chart** - shows how you structure and sequence work

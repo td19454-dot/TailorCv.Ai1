@@ -18,6 +18,14 @@ Start with an [ATS-friendly template](https://www.thetailorcv.com/templates) tha
 
 ---
 
+## Key Takeaways
+
+- The effectiveness of resume design and color largely depends on the industry; simpler, ATS-compatible designs generally perform better.
+- Prioritize substance over style; a well-written, keyword-optimized resume is more valuable than a visually appealing one that fails ATS.
+- Use minimal and strategic color to enhance visual hierarchy, but avoid bright or multiple colors that can distract from content.
+- Creative industries can afford more design latitude, but resumes must remain legible and professional while being ATS-compatible.
+- Conservative industries prefer clean, black-and-white resumes, as excessive design may signal a lack of cultural awareness.
+
 ## The Core Rule: Substance Over Style
 
 A beautifully designed resume that fails [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) is worthless. A plain but well-written, keyword-optimized resume that passes [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and earns a 30-second read from a recruiter will always outperform it.

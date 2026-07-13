@@ -18,6 +18,13 @@ The fastest way to catch your keyword gaps is to run your resume against a speci
 
 ---
 
+## Key Takeaways
+
+- Keyword mistakes can make your resume invisible to ATS, impacting your chances of getting interviews.
+- Exact keyword matching is crucial; using synonyms can lead to missed opportunities as ATS may not recognize context.
+- Include both acronyms and full forms of terms to ensure your resume is found in various search configurations.
+- Use the TailorCV ATS score checker to identify keyword gaps and improve your resume's relevance to job descriptions.
+
 ## How Keywords Affect Your ATS Score
 
 When you submit a resume, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it):

@@ -14,6 +14,14 @@ For frontend roles, your [portfolio](https://thetailorcv.com/blog/how-to-build-p
 
 This guide covers what to build, what to show, and the details that separate "junior" from "hire this person." Pair it with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas).
 
+## Key Takeaways
+
+- Your portfolio is a crucial demonstration of your skills as a frontend developer; it should be fast, polished, and responsive.
+- Include a real app with state management, a component library, a performance or accessibility case study, and a creative animated piece in your portfolio.
+- Document your work thoroughly, showcasing responsiveness, accessibility efforts, and clean code on GitHub while explaining challenges faced in each project.
+- Ensure your resume, LinkedIn, and portfolio are consistent in messaging to avoid confusing recruiters.
+- Avoid common mistakes like slow performance, lack of live demos, and dead links to maintain credibility.
+
 ## Your Site Is Your First Project
 Treat your own [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) as your flagship demo.
 

@@ -16,6 +16,14 @@ Practice competency answers with [AI mock interviews](https://thetailorcv.com/mo
 
 ---
 
+## Key Takeaways
+
+- Competency-based interviews assess specific skills like leadership, communication, and problem-solving through structured questions and scoring systems.
+- These interviews promote objectivity by asking all candidates the same questions, reducing biases in the hiring process.
+- Past behavior is a strong predictor of future performance, making competency-based evaluations effective for employers.
+- Candidates should prepare evidence-based answers using the STAR method to demonstrate their competencies effectively.
+- Key competencies include leadership, adaptability, teamwork, customer focus, integrity, and results orientation, each with specific example questions to practice.
+
 ## What Is a Competency-Based Interview?
 
 Interviewers ask questions mapped to specific competencies from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide):

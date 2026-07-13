@@ -8,6 +8,14 @@ image: public/blog-images/personal-website-vs-portfolio.webp
 
 People use "personal website" and "portfolio" interchangeably, but they serve slightly different goals - and knowing the difference helps you build the right thing instead of over- or under-investing. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume).
 
+## Key Takeaways
+
+- A portfolio is a focused showcase of your work aimed at winning jobs or clients, while a personal website serves as a broader home base for your professional identity.
+- Key elements of a strong portfolio include diverse projects, case studies, visual appeal, testimonials, and a clear call to action.
+- A personal website should feature an "About Me" section, a blog for thought leadership, a downloadable resume, and easy contact information.
+- Early career individuals should prioritize a portfolio, while those building a long-term brand or freelancing should consider a personal website that includes their portfolio.
+- The ideal solution for most is a combined site with a strong landing page, portfolio section, and contact information, optimized for SEO.
+
 ## What a Portfolio Is
 A focused showcase of your **work** - [projects](https://thetailorcv.com/blog/projects-in-resume), case studies, and outcomes - built to win jobs or clients. The work is the star; everything else is supporting cast.
 

@@ -12,6 +12,14 @@ keywords: private portfolio link, unlisted portfolio, share portfolio with recru
 
 Not every [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) should be fully public. If you are job searching while employed, working with confidential client data, or simply not ready for your current employer to find your portfolio through a Google search, a private or unlisted link solves the problem without giving up the format. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found).
 
+## Key Takeaways
+
+- Use an unlisted link for your portfolio to maintain privacy while job searching or handling sensitive work.
+- Public portfolios are best for active job seekers, while unlisted and private options offer more discretion.
+- Share your portfolio link only through private channels to avoid unwanted visibility by current employers or the public.
+- Avoid sharing confidential client data even in private portfolios, as privacy settings do not override confidentiality agreements.
+- Transition your portfolio to public once you are ready to actively seek new job opportunities to maximize visibility.
+
 ## When a Private Portfolio Makes Sense
 - **You are job searching while still employed** and do not want your current employer stumbling onto it
 - **Your work references confidential or sensitive material** - finance, healthcare, legal, or client-specific case studies

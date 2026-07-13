@@ -12,6 +12,14 @@ image: public/blog-images/resume-for-international-candidates-usa.png
 
 When you're an international candidate seeking employment in the United States, crafting a resume that meets U.S. norms is crucial. The U.S. job market is competitive, and employers often rely on Applicant Tracking Systems (ATS) to screen resumes before they even reach human eyes. Understanding the nuances of U.S. resume expectations, coupled with strategic job search techniques, will significantly enhance your chances of landing interviews and job offers. This guide will provide you with the essential steps to create a compelling resume tailored for U.S. employers, whether you're a new graduate, an experienced professional, or seeking visa sponsorship.
 
+## Key Takeaways
+
+- U.S. resumes should exclude personal information like photos, age, and nationality to prevent bias.
+- Early-career candidates should aim for a one-page resume, while experienced candidates may extend to two pages.
+- Use strong action verbs and quantify achievements to demonstrate impact in your work experience.
+- Tailor your resume with relevant keywords to pass Applicant Tracking Systems (ATS) and use simple formatting.
+- Clearly state your work authorization status if seeking visa sponsorship to inform potential employers.
+
 ## Understand U.S. Resume Norms
 
 Before you begin crafting your resume, familiarize yourself with the typical structure and content expected by U.S. employers. Here are some key points to consider:

@@ -10,7 +10,6 @@ slug: why-am-i-not-getting-interviews
 keywords: not getting interviews, why no interview calls, resume rejected, ATS resume, qualified but no interviews
 ---
 
-
 If you've ever stared at your inbox wondering:
 
 *"How am I not getting interviews when I literally match the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)?"*
@@ -42,6 +41,13 @@ That means many talented people get rejected for reasons that have nothing to do
 In this article, we'll break down the *real reasons* why qualified candidates are not getting interviews - and more importantly, how to fix it.
 
 ---
+
+## Key Takeaways
+
+- Many qualified candidates struggle to get interviews due to the high volume of applications and aggressive filtering by recruiters.
+- Applicant Tracking Systems (ATS) often reject resumes based on keywords, formatting, and structure before they reach human recruiters.
+- Common ATS mistakes include using complex designs, tables, and graphics that can hinder resume parsing.
+- To improve chances of getting noticed, candidates should optimize their resumes for ATS compatibility and use clean, ATS-friendly templates.
 
 ## The Job Market Has Changed More Than Most People Realize
 

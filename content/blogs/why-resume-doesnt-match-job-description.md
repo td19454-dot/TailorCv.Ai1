@@ -26,6 +26,13 @@ Check your current resume match score for free with [TailorCV](https://www.theta
 
 ---
 
+## Key Takeaways
+
+- A significant number of resumes are rejected by ATS due to mismatched language with the job description, not because candidates are unqualified.
+- Use the exact terminology from the job description in your resume to improve keyword matching and ATS scores.
+- Sending a generic resume for multiple applications results in lower scores; tailor your resume for each job by adjusting the summary and top bullet points.
+- Ensure your resume format is ATS-friendly by using a single-column, plain-text layout and avoiding tables, graphics, and complex formatting.
+
 ## The Uncomfortable Truth About Resume Matching
 
 75% of resumes are rejected by [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) before a human reads them.

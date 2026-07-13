@@ -16,6 +16,14 @@ Before applying, compare your resume to the job description with the [ATS score 
 
 ---
 
+## Key Takeaways
+
+- A civil engineer resume in 2026 should highlight completed projects and technical design skills, along with project delivery and management abilities.
+- The recommended resume format includes a header, summary, technical skills, work experience, notable projects, education, and certifications, ideally kept to one or two pages.
+- Use strong bullet points to describe achievements, focusing on specific projects, values, timelines, and outcomes rather than vague responsibilities.
+- Incorporate relevant ATS keywords related to civil engineering to enhance the resume's visibility during job applications.
+- Tailor the resume to match the job description using an ATS score checker and utilize ATS-friendly templates for optimal results.
+
 ## Best Civil Engineer Resume Format
 
 1. Header with PE/Charter status if applicable

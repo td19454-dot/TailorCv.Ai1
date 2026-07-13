@@ -28,6 +28,13 @@ Where is the proof?
 
 If you are still shaping the overall resume, the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) can help you understand what to improve first.
 
+## Key Takeaways
+
+- A career change resume must translate past experiences into language relevant to the new industry, highlighting transferable skills and achievements.
+- Clearly define a specific target role to avoid creating a vague resume; this allows for tailored language and focus on relevant skills.
+- Transferable skills such as communication, leadership, and problem-solving are crucial in demonstrating how past experiences can add value in a new field.
+- The resume should quickly answer three key questions: why the new field, what skills transfer, and where is the proof of those skills.
+
 ## What Makes a Career Change Resume Different?
 
 A traditional resume usually highlights a clear progression within one field. A [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) resume needs to build a bridge between your past and your target role.

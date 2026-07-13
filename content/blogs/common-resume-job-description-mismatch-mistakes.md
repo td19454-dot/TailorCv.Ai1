@@ -24,6 +24,14 @@ Check your resume right now using [TailorCV's ATS score checker](https://www.the
 
 ---
 
+## Key Takeaways
+
+- Most resume rejections stem from mismatches between the resume and job description rather than a lack of qualifications.
+- Use the exact language from the job description in your resume to improve keyword match scores with ATS systems.
+- Tailor your resume for each job application instead of sending a generic version to enhance your fit for specific roles.
+- Update your professional summary for every application, incorporating the target job title and relevant keywords.
+- Ensure your skills are prominently displayed in a dedicated section, using the exact tools and keywords from the job description.
+
 ## Mistake 1: Using Different Language Than the Job Description
 
 **The Problem:**

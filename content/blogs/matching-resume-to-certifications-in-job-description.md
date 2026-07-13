@@ -18,6 +18,14 @@ Check how a missing certification affects your overall match score with the [Tai
 
 ---
 
+## Key Takeaways
+
+- Assess the importance of a missing certification by determining if it is required, preferred, or legally mandatory before applying.
+- Clearly state any certifications you are actively pursuing on your resume, including specific details like exam dates.
+- Highlight equivalent experience if you lack a formal certification, and consider addressing the gap in your cover letter.
+- Avoid applying for roles that require a legal or safety certification you do not possess and cannot obtain before the start date.
+- If a certification frequently appears in job postings, prioritize obtaining it through expedited or online courses.
+
 ## First, Figure Out How "Required" the Certification Really Is
 
 Not all certification requirements carry the same weight. Ask three questions:

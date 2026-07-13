@@ -16,6 +16,14 @@ See your keyword gaps instantly with the [free ATS score checker](/solutions).
 
 ---
 
+## Key Takeaways
+
+- Keywords significantly impact your ATS score, accounting for 30-40% of the total score.
+- Identify relevant keywords by closely reading job descriptions and prioritizing repeated terms.
+- Use a tool to check your resume against the job description for missing keywords.
+- Integrate keywords naturally into your resume, focusing on context and quantifiable achievements.
+- Avoid common pitfalls like keyword stuffing and using inconsistent terminology to enhance readability and ATS compatibility.
+
 ## Why Keywords Drive Your ATS Score
 
 When an employer sets up a role, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) is configured to look for specific skills, tools, and qualifications. Your resume is scored on how many of those it contains - and in what context. Keyword and skills match typically accounts for **30-40%** of the total score, the largest single factor.

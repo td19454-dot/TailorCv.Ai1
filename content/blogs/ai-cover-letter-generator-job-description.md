@@ -14,6 +14,14 @@ An AI cover letter generator can turn your resume and a [job description](https:
 
 Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) after optimizing your resume with the [ATS score checker](https://www.thetailorcv.com/solutions) so the letter and the resume are pulling from the same tailored story.
 
+## Key Takeaways
+
+- An AI cover letter generator produces better results when provided with a full job description rather than just a job title.
+- Job descriptions contain specific skills, priorities, and company culture insights that help tailor the cover letter effectively.
+- Using the exact language from the job description in your cover letter signals alignment with the employer's expectations.
+- The generator can prioritize content and adjust tone based on the details provided in the job posting.
+- A cover letter generator works best when used in conjunction with a tailored resume, ensuring consistency in messaging and vocabulary.
+
 ## Why the Job Description Changes Everything
 
 A job title tells an AI generator almost nothing. "Marketing Manager" could mean brand strategy at a 500-person company or solo-founder growth hacking at a 5-person startup. The generator has no choice but to fall back on generic phrasing, because it does not know what this employer actually wants.

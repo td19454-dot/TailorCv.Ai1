@@ -20,6 +20,14 @@ Use the [TailorCV ATS score checker](/solutions) to see your [match score](https
 
 ---
 
+## Key Takeaways
+
+- Lever parses resumes into structured candidate profiles, making clean formatting essential to avoid parsing errors throughout the hiring pipeline.
+- To enhance visibility, resumes should match the job description's keywords and required skills, improving searchability for recruiters.
+- Maintaining a current and tailored resume is crucial, as Lever keeps profiles in its system for future roles, not just the one applied for.
+- Consistency between your resume and LinkedIn profile is important, as discrepancies can confuse recruiters during the review process.
+- Avoid using the same generic resume for multiple applications at Lever-powered companies to demonstrate focus and relevance for each role.
+
 ## How Lever Parses and Organizes Resumes
 
 ### Parsing Into Candidate Profiles

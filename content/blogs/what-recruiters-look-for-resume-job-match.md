@@ -28,6 +28,14 @@ Build a recruiter-ready resume with [TailorCV's optimizer](https://www.thetailor
 
 ---
 
+## Key Takeaways
+
+- Recruiters scan resumes in 6-7 seconds, focusing on key elements like name, title, company, experience duration, and top accomplishments.
+- Ensure your current title closely matches the target title to avoid red flags during the comparison with the job description.
+- Highlight industry relevance and use specific terminology to demonstrate familiarity with the sector you're applying to.
+- Clearly showcase must-have skills early in your resume and quantify achievements to differentiate between responsibilities and results.
+- Display a progressive career trajectory to indicate growth and suitability for the role.
+
 ## The 6-Second Recruiter Scan: What They See First
 
 Eye-tracking studies on [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) resume reviews show a consistent scan pattern:

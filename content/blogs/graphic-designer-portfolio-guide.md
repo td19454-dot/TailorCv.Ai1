@@ -12,6 +12,13 @@ keywords: graphic designer portfolio, design portfolio, branding portfolio, beha
 
 A graphic design portfolio is judged in seconds, and the verdict is brutal: one weak piece can sink the whole set. Unlike a developer's GitHub or a writer's clip file, your portfolio is not just a container for your work - the layout, type choices, and pacing of the site itself are a design sample too. Get the curation and presentation guidance from [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and see how a related discipline handles narrative in the [UX Designer Portfolio Guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide), then apply the design-specific advice below.
 
+## Key Takeaways
+
+- A graphic design portfolio is judged on both the quality of work and the presentation, making the design of the portfolio itself a critical component.
+- Showcase 6-10 projects for generalists or early-career designers, focusing on quality over quantity; mix client work with personal projects to demonstrate range.
+- The order of projects matters; lead with your strongest piece and close with your second strongest to leave a lasting impression.
+- If lacking client work, create spec work with real briefs, redesign existing brands, or develop personal projects with self-imposed constraints to demonstrate your design skills.
+
 ## What Makes a Design Portfolio Different
 
 A backend developer's portfolio gets judged on whether the code works. A UX designer's portfolio gets judged mostly on reasoning - can they walk you through a decision. A graphic design portfolio gets judged on both the work *and* the container it lives in, at the same time, in the first few seconds.

@@ -8,6 +8,14 @@ image: public/blog-images/portfolio-domain-name-guide.webp
 
 Your domain is your personal brand's address - the thing you say out loud in interviews and print on your resume. A clean one is worth the ~$10/year many times over. Pair this with [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
+## Key Takeaways
+
+- Choose a domain name that reflects your personal brand, ideally using your name with a .com extension for credibility.
+- If your name is taken, consider alternatives like adding a middle initial, including your profession, or using action words.
+- Ensure your domain is easy to spell, memorable, and consistent across social media platforms to avoid confusion.
+- Use reputable registrars for purchasing your domain, and enable WHOIS privacy to protect your personal information.
+- Keep your resume and portfolio aligned in branding and messaging to present a cohesive professional identity.
+
 ## Best Choice: Your Name
 **yourname.com** is ideal - memorable, professional, and timeless. If it is taken, try in roughly this order:
 

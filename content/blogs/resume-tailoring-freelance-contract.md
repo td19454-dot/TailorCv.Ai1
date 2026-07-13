@@ -34,6 +34,13 @@ This guide breaks down what each wants - and how to [tailor your resume](https:/
 
 ---
 
+## Key Takeaways
+
+- Contract hiring managers prioritize proven delivery in short timeframes, while permanent hiring managers focus on long-term commitment and cultural fit.
+- Tailor your resume for contract roles by emphasizing project outcomes rather than duration of employment.
+- Match your skills section to the specific requirements listed in the contract job description for better alignment.
+- Highlight your ability to onboard quickly and deliver results promptly to appeal to contract employers.
+
 ## The Core Difference: Contract vs. Permanent Hiring Logic
 
 **Contract hiring managers** want to see:

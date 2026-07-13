@@ -18,6 +18,14 @@ Build or update your portfolio in minutes with [TailorCV's Portfolio Builder](/p
 
 ---
 
+## Key Takeaways
+
+- Tailor your portfolio for each job application by showcasing the most relevant projects instead of maintaining a static collection.
+- Analyze the job description to identify key skills, work types, and desired outcomes to guide your project selection.
+- Feature 3-5 projects that closely align with the job requirements, prioritizing relevance over impressiveness.
+- Reorder your portfolio to present the most pertinent projects first and rewrite descriptions using the job's language for better alignment.
+- Consider adding a detailed case study for your strongest match to provide deeper insights into your relevant work.
+
 ## Why a Static Portfolio Undersells You
 
 A portfolio with ten projects in chronological order forces a hiring manager to do the matching work themselves, hunting for the two or three projects most relevant to the role they are hiring for. Most will not bother. A portfolio that leads with the most relevant work for each specific application removes that friction entirely.

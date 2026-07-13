@@ -14,6 +14,14 @@ Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfoli
 
 ---
 
+## Key Takeaways
+
+- Your portfolio homepage should clearly state your name, target role, core value, and provide a proof link to your work.
+- Avoid vague phrases and long introductions; instead, focus on a clear message that highlights your specific skills and experiences.
+- Tailor your portfolio content to match the specific job description, emphasizing relevant keywords and measurable results.
+- Ensure that your contact information and links to your portfolio or profiles are easily accessible for recruiters.
+- Use a practical checklist to align your application materials with the target role, ensuring clarity and focus in your messaging.
+
 ## Homepage Formula
 
 Use:

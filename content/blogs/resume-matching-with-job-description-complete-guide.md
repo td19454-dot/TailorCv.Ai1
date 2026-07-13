@@ -27,6 +27,14 @@ Use the [TailorCV resume optimizer](https://www.thetailorcv.com/solutions) to ma
 
 ---
 
+## Key Takeaways
+
+- Your resume is evaluated first by an ATS for keyword matches, then by a recruiter in just 6-7 seconds.
+- Resume matching involves using the employer's keywords, highlighting relevant skills, and structuring your resume to fit the job description.
+- Tailoring your resume can significantly increase your chances of getting callbacks, as generic resumes are often filtered out by ATS.
+- In 2026, only 20% of candidates tailor their resumes, giving those who do a competitive advantage in the job market.
+- Proper resume formatting is crucial, as complex layouts can lead to parsing errors and loss of important information.
+
 ## What Is Resume Matching with Job Description?
 
 Resume matching is the process of aligning your resume content to the requirements of a specific [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).

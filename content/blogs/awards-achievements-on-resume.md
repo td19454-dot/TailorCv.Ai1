@@ -16,6 +16,13 @@ Before adding achievements, run your resume through the [TailorCV ATS checker](h
 
 ---
 
+## Key Takeaways
+
+- Awards and achievements enhance a resume by providing independent validation of performance and making candidates more memorable.
+- Place awards within the relevant Work Experience or Education sections, or create a dedicated "Awards & Achievements" section if you have multiple notable recognitions.
+- Include high-value awards such as prestigious recognitions, competition wins, and significant academic honors, while using discretion for lower-value awards.
+- Frame awards with context to highlight their significance, including what the award was for, its selectivity, and your contributions to earning it.
+
 ## Why Awards Matter on a Resume
 
 Awards and achievements serve a purpose that job duties alone cannot: they provide independent validation of your performance. When a third party (your company, a university, an industry association, a competition) recognizes you above your peers, it signals something that a self-reported bullet point cannot.

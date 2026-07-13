@@ -18,6 +18,13 @@ Paste any cleared or contractor job posting into the [TailorCV resume optimizer]
 
 ---
 
+## Key Takeaways
+
+- Security clearance status is a critical, non-negotiable filter for government contractor job applications, often determining eligibility before resume review.
+- Clearly state your clearance status at the top of your resume to ensure visibility for recruiters and screening software.
+- Use specific keywords related to clearance levels, compliance frameworks, and relevant systems to align your resume with job descriptions.
+- Tailor your experience to reflect specific compliance frameworks and contract types mentioned in the job posting to enhance your match.
+
 ## Why Clearance Status Dominates the Matching Process
 
 Unlike most job requirements, a security clearance cannot be earned quickly, transferred casually, or substituted with equivalent experience. This changes the matching calculus entirely:

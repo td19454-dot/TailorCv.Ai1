@@ -12,6 +12,14 @@ keywords: marketing portfolio, digital marketing portfolio, campaign case study,
 
 Marketing portfolios live and die on numbers. Anyone can show a pretty ad; you show what it **did** - the traffic, the leads, the revenue. The fastest way to stand out is to be relentlessly outcome-focused. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide).
 
+## Key Takeaways
+
+- Focus on showcasing measurable results in your marketing portfolio, such as traffic, leads, and revenue, rather than just deliverables.
+- Create detailed case studies for each campaign, including objectives, strategies, creative elements, and outcomes with real metrics.
+- Handle NDA work by describing the impact without naming clients, using rounded numbers to maintain clarity.
+- Ensure your resume, LinkedIn, and portfolio tell a consistent story to avoid confusing recruiters.
+- Avoid common mistakes like lacking metrics, having an unfocused layout, and including dead links in your portfolio.
+
 ## Lead With Results
 For each campaign, present: the goal, the audience, the strategy and channels, the creative, and the **results** (traffic, leads, ROAS, revenue). A traffic graph beats a paragraph of adjectives.
 

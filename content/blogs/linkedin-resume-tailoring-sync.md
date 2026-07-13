@@ -36,6 +36,14 @@ This guide shows you how to fix it.
 
 ---
 
+## Key Takeaways
+
+- A disconnect between your tailored resume and LinkedIn profile can damage your job candidacy.
+- Recruiters often check LinkedIn to verify resume accuracy and gain a fuller picture of candidates.
+- Aim for alignment between your resume and LinkedIn profile, not duplication; both should tell a consistent story.
+- Key elements like your LinkedIn headline should reflect the specific roles you are pursuing.
+- Your LinkedIn profile can include broader content, such as recommendations and projects, but must align with your resume's core message.
+
 ## Why LinkedIn Matters Even When You Send a Resume
 
 When you apply to a role, the recruiter almost always looks at your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide).

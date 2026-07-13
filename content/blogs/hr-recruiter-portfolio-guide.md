@@ -12,6 +12,14 @@ keywords: hr portfolio, recruiter portfolio, human resources portfolio website, 
 
 HR and recruiting work is judgment-heavy and mostly invisible on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you show the process behind a hiring metric - how you cut time-to-fill, redesigned onboarding, or built a sourcing pipeline from scratch. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
+## Key Takeaways
+
+- A portfolio allows HR and recruiters to showcase the impact of their work through metrics and case studies, making their contributions visible.
+- Include hiring metrics, program case studies, sourcing strategies, sample artifacts, and relevant certifications in your portfolio.
+- Frame your work by presenting the initial problem, the changes made, and the resulting improvements to demonstrate effectiveness.
+- Host your portfolio on a personal site, LinkedIn, or as a shareable PDF, ensuring it aligns with your resume and LinkedIn profile.
+- Avoid common mistakes such as listing tasks instead of outcomes and failing to provide before-and-after metrics to illustrate improvements.
+
 ## What to Include
 - **Hiring metrics** - time-to-fill, offer-acceptance rate, quality-of-hire, cost-per-hire, before and after a change you made
 - **Program case studies** - onboarding redesign, DEI initiative, employer branding campaign, performance review overhaul

@@ -14,6 +14,14 @@ A bad [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) does 
 
 ---
 
+## Key Takeaways
+
+- Avoid repeating your resume; instead, explain why your experience is relevant to the specific role.
+- Incorporate job-specific keywords naturally to align your cover letter with the job description.
+- Keep personal stories brief and focused on how they connect to the job fit.
+- Use concrete examples and measurable results to demonstrate your skills and achievements.
+- Ensure your cover letter is short, targeted, and easy for recruiters to scan quickly.
+
 ## Mistake 1: Repeating Your Resume
 
 The [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) should explain why your experience matters for this role. Do not rewrite every job from your [resume](https://thetailorcv.com/blog/resume-trends-2026).

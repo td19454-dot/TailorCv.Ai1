@@ -18,6 +18,14 @@ Before optimizing your layout, make sure your content passes ATS first with the 
 
 ---
 
+## Key Takeaways
+
+- Recruiters spend an average of 6-7 seconds on an initial resume scan, focusing on specific patterns of information.
+- The top third of the resume is crucial; include your name, current job title, and a concise professional summary prominently.
+- Use a single-column layout to ensure all key information is easily visible, as the right side of the resume is often ignored.
+- Ensure job titles and company names are clear and left-aligned, with consistent date formatting to avoid confusion about employment history.
+- A resume that passes the initial scan can earn a longer review, where bullet point quality and relevance to the job description become critical.
+
 ## What Eye-Tracking Research Shows
 
 TheLadders' eye-tracking study - one of the most widely cited in recruiting - found that recruiters spend an average of 6-7 seconds on an initial resume review. Their gaze follows a predictable pattern:

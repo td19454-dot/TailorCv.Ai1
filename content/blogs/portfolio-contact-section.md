@@ -8,6 +8,14 @@ image: public/blog-images/portfolio-contact-section.webp
 
 You can have a brilliant portfolio and still lose opportunities if the contact path is buried or broken. The contact section is where interest becomes action - treat it like a conversion point, not an afterthought. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section).
 
+## Key Takeaways
+
+- Treat the contact section as a conversion point by including a clear primary call-to-action (CTA) and a clickable email or contact form.
+- Streamline the contact section by removing unnecessary fields, distractions, and ensuring all links are active and professional.
+- Position the contact CTA prominently in the navigation and repeat it after project showcases to capture interest at its peak.
+- Build trust by using a professional design, including a real photo or logo, and stating response time expectations.
+- Keep your resume, LinkedIn, and portfolio consistent to avoid confusion for recruiters and ensure all content is regularly updated.
+
 ## What to Include
 - A clear primary CTA ("Hire me," "Let's talk," "Work with me")
 - A **clickable email** and/or a short contact form

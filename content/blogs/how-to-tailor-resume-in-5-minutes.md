@@ -16,6 +16,14 @@ Run your tailored resume through the [free ATS checker](/solutions) to confirm y
 
 ---
 
+## Key Takeaways
+
+- Tailoring your resume instead of sending a generic one significantly increases your chances of landing interviews.
+- Focus on updating your resume's headline, summary, skills section, and the first bullet of your most recent role based on the job description.
+- Highlight key terms from the job posting, including job title, required skills, and desired outcomes, to guide your changes.
+- Ensure your professional summary reflects the job's language and includes relevant skills and outcomes you can deliver.
+- Adjust your skills section to match the exact terminology used in the job posting and prioritize must-have skills.
+
 ## Why 5 Minutes Is Enough
 
 Your resume's core - experience, education, achievements - stays the same. What the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and recruiter care about is whether the *top layer* mirrors the specific job. That top layer is your headline, summary, skills section, and the first bullet of each role. Changing those four areas is 90% of the impact.

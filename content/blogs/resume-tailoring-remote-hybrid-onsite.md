@@ -26,6 +26,13 @@ This guide breaks down exactly what changes, and how to tailor your resume for e
 
 ---
 
+## Key Takeaways
+
+- Tailor your resume for each work model—remote, hybrid, or on-site—since each attracts different candidates and requires distinct signals.
+- For remote roles, emphasize demonstrated remote work experience, async communication skills, and self-direction in your accomplishments.
+- Include relevant tools for distributed work, such as Slack, Jira, and Google Docs, to showcase your fluency in remote collaboration.
+- Your professional summary should explicitly mention remote work experience and highlight skills in async communication and team coordination.
+
 ## Why Work Model Changes What Recruiters Look For
 
 When a company hires for a remote role, they are making a specific bet:

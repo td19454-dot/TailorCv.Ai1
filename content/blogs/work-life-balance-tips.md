@@ -18,6 +18,14 @@ A sustainable career also means making smart career moves. When you are ready fo
 
 ---
 
+## Key Takeaways
+
+- Establish clear work hours and communicate them to prevent work from encroaching on personal time.
+- Create physical and mental separation from work by having a dedicated workspace and developing rituals to signal the start and end of work.
+- Manage your energy by identifying peak productivity hours and taking meaningful breaks to enhance focus and creativity.
+- Recognize the warning signs of burnout and take proactive steps, such as discussing workload with your manager and considering a job change if necessary.
+- Prioritize daily habits like sufficient sleep, regular exercise, and time off screens to support overall well-being and sustainable performance.
+
 ## Why Work-Life Balance Matters
 
 Poor work-life balance leads to:

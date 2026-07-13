@@ -14,6 +14,14 @@ A resume for [remote developer](https://thetailorcv.com/blog/how-to-match-resume
 
 ---
 
+## Key Takeaways
+
+- Remote developer resumes should highlight not only technical skills but also effective communication and collaboration across time zones.
+- Include relevant keywords like "remote collaboration," "async communication," and "CI/CD" that reflect real experience.
+- Use strong bullet points to demonstrate measurable achievements, such as improved processes or reduced support inquiries.
+- Link to proof of independent work, such as GitHub projects and technical case studies, to enhance credibility.
+- Tailor your resume for each specific job description, ensuring alignment with the required skills and outcomes.
+
 ## Remote Developer [resume keywords](https://thetailorcv.com/blog/resume-keywords-guide)
 
 Include relevant terms such as:

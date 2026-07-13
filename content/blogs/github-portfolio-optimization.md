@@ -10,6 +10,14 @@ image: public/blog-images/github-portfolio-optimization.webp
 
 For developers, GitHub is a portfolio recruiters already know how to read - which means a few hours of cleanup pays off more than almost anything else you can do. Most candidates leave it a mess; optimize yours and you instantly look more senior. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
 
+## Key Takeaways
+
+- Optimize your GitHub profile by creating a README in a repository named after your username, including a bio, tech stack, featured projects, and contact information.
+- Pin only your six best repositories, ensuring each has a descriptive name, a clear README, and relevant visuals to showcase your work effectively.
+- Maintain readable repositories with clear setup instructions, meaningful commit messages, and a logical commit history to enhance their professionalism.
+- Active GitHub profiles with consistent contributions and at least one open-source contribution significantly increase your appeal to recruiters.
+- Ensure your resume, LinkedIn, and portfolio tell a cohesive story, avoiding discrepancies that could confuse recruiters.
+
 ## Build a Profile README
 Create a repository named exactly your username and add a README. It renders at the top of your profile. 
 

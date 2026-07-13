@@ -18,6 +18,14 @@ This is part of the broader [technical interview preparation guide](https://thet
 
 ---
 
+## Key Takeaways
+
+- Coding interviews often revolve around a limited set of recognizable patterns, which can simplify problem-solving.
+- Essential data structure and algorithm patterns include Two Pointers, Sliding Window, BFS, DFS, and Dynamic Programming, among others.
+- Use the UMPIRE framework (Understand, Match, Plan, Implement, Review, Evaluate) to tackle coding problems systematically.
+- Focus on quality practice by deeply understanding a smaller number of problems rather than mindlessly solving many.
+- Follow a structured 8-week practice plan to cover various topics and enhance problem-solving skills effectively.
+
 ## The Essential DSA Patterns
 
 ### 1. Two Pointers

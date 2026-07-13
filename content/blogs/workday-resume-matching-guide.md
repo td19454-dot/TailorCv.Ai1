@@ -20,6 +20,14 @@ Check your resume against any job description in seconds with the [TailorCV ATS 
 
 ---
 
+## Key Takeaways
+
+- Workday's parsing differs from generic ATS platforms, affecting how resumes are scored and matched to job descriptions.
+- The auto-fill extraction process can lead to matching failures if resumes use complex formatting like multi-columns or tables.
+- Workday scores resumes based on exact keyword matches, making it crucial to align your skills with the job description.
+- Always check and correct auto-filled fields before submitting your application, as errors can lead to disqualification.
+- Use a single-column layout, standard section headers, and save as .docx or text-based PDFs to improve parsing accuracy.
+
 ## What Makes Workday Different From Other ATS Platforms
 
 Workday is not just a resume parser. It is a full applicant management system used by large enterprises, so it layers extra steps on top of standard [ATS](https://thetailorcv.com/blog/ats-score-guide) scoring:

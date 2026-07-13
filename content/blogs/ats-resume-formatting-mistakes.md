@@ -18,6 +18,14 @@ Before you apply to your next role, check your resume against the [TailorCV ATS 
 
 ---
 
+## Key Takeaways
+
+- ATS systems can misread resumes due to poor formatting, causing qualified candidates to be overlooked.
+- Using a two-column layout can jumble contact information and job titles, making it unreadable for ATS.
+- Content placed in text boxes is often skipped entirely by ATS, leading to missing skills and details.
+- Tables can confuse ATS parsing, resulting in disorganized and incorrect data extraction.
+- To improve ATS compatibility, use a single-column layout and standard text formatting without text boxes or tables.
+
 ## Why Resume Formatting Breaks ATS Systems
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software reads your resume the same way a program reads a data file - it looks for recognizable patterns and structure. When your formatting deviates from what the parser expects, several things happen:

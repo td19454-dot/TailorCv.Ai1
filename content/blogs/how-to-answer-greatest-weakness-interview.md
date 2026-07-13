@@ -18,6 +18,14 @@ Practice your answer with [AI mock interviews](https://thetailorcv.com/mock-inte
 
 ---
 
+## Key Takeaways
+
+- Answering "What is your greatest weakness?" requires a real weakness paired with genuine improvement efforts to demonstrate self-awareness and a growth mindset.
+- Use the formula: name a real weakness, explain the context, show specific actions taken to improve, and share evidence of progress.
+- Avoid mentioning weaknesses that are core to the job, as they can disqualify you from consideration.
+- Bad answers include clichés, lack of self-awareness, and weaknesses unrelated to improvement efforts, which can raise red flags for employers.
+- Freshers can discuss weaknesses related to limited experience or decision-making skills, highlighting their learning process.
+
 ## What Interviewers Are Testing
 
 - **Self-awareness** - do you know your development areas?

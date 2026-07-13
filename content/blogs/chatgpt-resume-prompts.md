@@ -9,11 +9,20 @@ image: public/blog-images/chatgpt-resume-prompts.png
 slug: chatgpt-resume-prompts
 keywords: chatgpt resume prompts, ai prompts for resume writing, chatgpt resume examples, best ai prompts for job search
 ---
+
 ChatGPT can genuinely improve a resume - if you know what to ask for. Vague prompts like "make my resume better" produce vague, generic output. Specific prompts targeting one section at a time produce something you can actually use. Here are 15 prompts that work, organized by what they fix.
 
 The catch: generic AI chat doesn't know your ATS score against a specific job, and it can't verify your resume is accurate. For that, pair these prompts with the [free ATS score checker](https://www.thetailorcv.com/solutions), which is purpose-built to score your resume against a real job description.
 
 ---
+
+## Key Takeaways
+
+- Specific prompts for ChatGPT yield more useful resume improvements than vague requests.
+- Use targeted prompts to enhance resume summaries, headlines, and bullet points for clarity and impact.
+- Incorporate measurable outcomes in bullet points to demonstrate achievements effectively.
+- Utilize prompts to identify essential skills and keywords from job descriptions for better alignment with job requirements.
+- Pair AI-generated suggestions with ATS score checkers to ensure resumes meet applicant tracking system standards.
 
 ## Summary and Headline Prompts
 

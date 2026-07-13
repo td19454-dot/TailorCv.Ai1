@@ -14,6 +14,14 @@ Most resumes never reach a human. They are scored, ranked, and filtered by an Ap
 
 This is not a controlled lab experiment - it's an observational look at what tends to separate a low-scoring resume from a strong one. Here is what the pattern shows, why it happens, and exactly how to fix each issue on your own resume.
 
+## Key Takeaways
+
+- Most resumes are filtered by an Applicant Tracking System (ATS) before reaching a human, making small, fixable issues critical for success.
+- Low ATS scores typically result from multiple minor problems rather than a single major flaw.
+- The most common issues affecting scores include missing keywords, unparseable formatting, generic resumes, and lack of measurable impact.
+- Keyword matching is the primary factor in ATS scoring; resumes must align closely with the specific language used in job descriptions.
+- Tailoring your resume to each job description is more important than overall presentation or design.
+
 ## How we looked at this
 
 When someone runs a resume through the [ATS score checker](https://www.thetailorcv.com/solutions), the tool compares it against a specific job description and returns a match score along with the gaps driving that score down: missing keywords, parsing problems, weak relevance, and thin evidence of impact. Looking across a large number of these comparisons - rather than any single resume - makes it possible to see which categories of problems show up again and again, and roughly how much each one tends to matter relative to the others.

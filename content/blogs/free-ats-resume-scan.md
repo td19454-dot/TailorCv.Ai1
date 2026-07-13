@@ -10,6 +10,14 @@ Before you send another application, run a **free ATS resume scan**. In about 60
 
 ---
 
+## Key Takeaways
+
+- Running a free ATS resume scan helps you understand how well your resume matches a job description and identifies areas for improvement.
+- The scan provides an ATS score, highlights matched and missing keywords, and flags formatting issues.
+- Incorporating relevant keywords from the job description is crucial for passing ATS filters and increasing your chances of being seen by hiring managers.
+- Iteratively refining your resume based on scan results can help achieve a score of 80 or higher, indicating a strong match for the role.
+- Common issues revealed by the scan include missing keywords, unreadable formatting, and weak bullet points, all of which can be addressed to enhance resume effectiveness.
+
 ## What Is an ATS Resume Scan?
 
 An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) resume scan analyzes your resume the way an Applicant Tracking System does. It checks how well your resume matches a job description and flags anything that could get you filtered out.

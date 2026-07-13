@@ -16,6 +16,14 @@ See the gap between your current resume and what the role needs with the [free A
 
 ---
 
+## Key Takeaways
+
+- A generic resume describes your career broadly, while a tailored resume focuses on why you are the best fit for a specific job.
+- Tailored resumes enhance visibility by using specific job titles and relevant skills in the headline, making them stand out.
+- Professional summaries and experience bullets should be customized to highlight relevant achievements and metrics that align with the job posting.
+- Tailoring increases ATS scores significantly, with fully tailored resumes scoring between 80-90%, compared to 40-60% for generic versions.
+- Tailoring does not involve misrepresenting your experience; it means presenting your qualifications in a way that aligns with the job requirements.
+
 ## The Fundamental Difference
 
 A **[generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)** is written to describe your career. It works for any job in your field.

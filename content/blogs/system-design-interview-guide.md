@@ -18,6 +18,14 @@ This pairs with the broader [technical interview preparation guide](https://thet
 
 ---
 
+## Key Takeaways
+
+- System design interviews assess your ability to architect scalable and reliable systems, focusing on reasoning and trade-off analysis rather than a single correct answer.
+- Follow a structured framework: clarify requirements, estimate scale, define the API, create a high-level design, deep dive into components, and address bottlenecks and trade-offs.
+- Understand core concepts such as scalability (vertical vs. horizontal), load balancing, caching strategies, and database types (SQL vs. NoSQL).
+- Familiarize yourself with the CAP theorem, which states that in a distributed system, you can only achieve two of consistency, availability, and partition tolerance.
+- Practice designing systems with real-world examples, such as a URL shortener, to solidify your understanding of requirements, scaling, and caching strategies.
+
 ## The System Design Framework (Use This Every Time)
 
 ### Step 1: Clarify Requirements (5 minutes)

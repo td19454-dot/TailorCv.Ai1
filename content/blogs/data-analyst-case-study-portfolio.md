@@ -14,6 +14,13 @@ A data analyst [portfolio](https://thetailorcv.com/blog/how-to-build-professiona
 
 ---
 
+## Key Takeaways
+
+- A data analyst case study should clearly outline the business question, dataset source, cleaning steps, analysis approach, insights, recommendations, and limitations.
+- Recruiters look for clear problem framing, clean visuals, correct metrics, and evidence of technical skills like SQL or Python in portfolios.
+- Optimize your application materials by aligning them with specific job descriptions, ensuring relevant keywords and examples are included.
+- Before applying, review your application to ensure it matches the target role, includes measurable results, and is easy for recruiters to scan quickly.
+
 ## Best [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) Structure
 
 Use this order:

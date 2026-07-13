@@ -18,6 +18,14 @@ Prepare alongside [why should we hire you](https://thetailorcv.com/blog/how-to-a
 
 ---
 
+## Key Takeaways
+
+- Frame your answer to "Why are you leaving your current job?" as moving toward new opportunities rather than away from problems.
+- Always maintain a positive tone, avoid badmouthing past employers, and keep your response brief (30-60 seconds).
+- Use specific scripts tailored to your situation, such as seeking growth, better alignment with career goals, or addressing layoffs.
+- Be honest about your reasons for leaving, as dishonesty can be uncovered during reference checks.
+- Pivot your answer to express excitement about the new role and how it aligns with your career aspirations.
+
 ## What Interviewers Are Really Asking
 
 - Are you running **from** something or **toward** something?

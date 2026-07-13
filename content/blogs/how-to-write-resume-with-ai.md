@@ -18,6 +18,14 @@ The most effective workflow combines AI writing assistance with dedicated ATS op
 
 ---
 
+## Key Takeaways
+
+- AI can enhance resume writing by improving bullet point clarity, fixing grammar, and tailoring language to job descriptions.
+- Always provide real achievements and metrics, as AI cannot invent your accomplishments without risking inaccuracies.
+- Edit AI-generated text to ensure it reflects your authentic voice and avoids generic phrases.
+- Use a dedicated ATS optimization tool to verify your resume matches job descriptions effectively.
+- Start with drafting your real content, then use AI to refine it, ensuring it aligns with the job requirements.
+
 ## What AI Does Well for Resumes
 
 ### 1. Improving Bullet Point Clarity

@@ -18,6 +18,14 @@ Paste any job description into the [TailorCV resume optimizer](/solutions) to ge
 
 ---
 
+## Key Takeaways
+
+- AI-generated job descriptions often have a uniform structure, long qualification lists mixing important and generic requirements, and repetitive phrasing.
+- It is crucial to identify concrete, specific requirements, like numbers or tools, while deprioritizing generic buzzword phrases that carry little value.
+- Cross-referencing with other job postings from the same company can help distinguish boilerplate language from role-specific priorities.
+- When qualifications are unclear, focus on matching your resume to the job title and core responsibilities for better alignment.
+- Tailor your resume to reflect genuine requirements rather than trying to mirror every buzzword for effective job application results.
+
 ## How to Spot an AI-Generated or AI-Expanded Job Description
 
 - **Unusually uniform structure** across every posting from the same company, with near-identical phrasing patterns repeated section to section

@@ -20,6 +20,14 @@ Before your virtual interview, make sure your resume is strong. Use the [TailorC
 
 ---
 
+## Key Takeaways
+
+- Virtual interviews are now standard, making video setup and presentation crucial for success.
+- Ensure your camera is at eye level and clean for optimal video quality.
+- Use good lighting, preferably natural light in front, to avoid shadows and silhouettes.
+- A wired audio device enhances sound quality; minimize background noise for a clearer interview.
+- Test the interview platform beforehand to avoid technical issues during the call.
+
 ## Technical Setup Checklist
 
 ### Camera

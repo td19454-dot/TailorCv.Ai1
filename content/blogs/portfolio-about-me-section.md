@@ -8,6 +8,14 @@ image: public/blog-images/portfolio-about-me-section.webp
 
 The About Me section is where a visitor decides whether to trust you - and most people get it wrong by writing either a life story or a wall of empty adjectives. A great About Me is specific, human, and short. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
+## Key Takeaways
+
+- The About Me section should be specific, human, and concise, avoiding lengthy narratives and empty adjectives.
+- Use a formula that includes who you are, proof of your skills, what you are looking for, and a personal touch.
+- Start with a strong opening line that clearly summarizes your professional identity and avoid jargon.
+- Provide evidence of your skills through notable achievements or metrics that demonstrate your value.
+- Tailor your tone and content to resonate with your target audience, and keep your resume and portfolio aligned in messaging.
+
 ## The Formula
 - **Who you are + what you do** (one sharp line)
 - **Proof** - a result, a specialty, or a signature strength

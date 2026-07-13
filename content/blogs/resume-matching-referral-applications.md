@@ -18,6 +18,13 @@ Whether you have a referral or not, check your resume's match score with the [Ta
 
 ---
 
+## Key Takeaways
+
+- Referrals improve your chances of getting an interview, but a tailored resume is still essential for making a strong impression.
+- Referred resumes often go through the ATS, so it's important to ensure your resume matches the job description.
+- A well-matched resume enhances your referrer's credibility and reflects positively on them.
+- Tailoring your resume should include updating the summary, aligning skills with job requirements, and maintaining ATS-friendly formatting.
+
 ## What a Referral Actually Changes
 
 A referral typically affects your application in a few specific ways:

@@ -18,6 +18,14 @@ Check your own resume's match score against any job description with the [Tailor
 
 ---
 
+## Key Takeaways
+
+- A resume's match score indicates how well its keywords align with a job description but does not reflect overall qualifications or external factors.
+- Callback likelihood increases significantly for scores below 50%, moderately for scores between 65% and 80%, and flattens above 85%.
+- Candidates with scores below 65% should focus on closing keyword gaps to improve their chances of passing initial filters.
+- For scores between 65% and 80%, both keyword optimization and the quality of presentation are crucial for standing out to recruiters.
+- Above an 80% score, candidates should prioritize quantifying achievements and refining formatting over chasing marginal score increases.
+
 ## Why Match Score Alone Doesn't Tell the Whole Story
 
 Before diving into the data, it is worth being precise about what a match score actually measures: how well your resume's keywords, skills, and language align with a specific [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). It does not measure your qualifications directly, your interview performance, or factors outside your resume entirely (referrals, timing, market competition).

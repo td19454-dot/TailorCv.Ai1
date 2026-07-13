@@ -18,6 +18,13 @@ Before polishing your bullets, make sure your overall resume scores well with th
 
 ---
 
+## Key Takeaways
+
+- Resume bullet points should focus on accomplishments rather than just job duties to stand out to recruiters.
+- A strong bullet point includes an action, method or skill, and the impact or result, ideally quantified.
+- Use specific formulas for crafting bullet points: Action + Result, Action + Method + Result, or Action + Scale + Result for senior roles.
+- Transform weak bullet points into strong ones by adding measurable outcomes and specific actions taken.
+
 ## Why Bullet Points Matter So Much
 
 Bullet points are the primary content recruiters read in the work experience section - the section that carries the most weight in the hiring decision. They are also what [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems scan for keyword matches.

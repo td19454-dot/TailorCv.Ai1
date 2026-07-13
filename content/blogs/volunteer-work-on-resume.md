@@ -18,6 +18,14 @@ Start building your resume on an [ATS-friendly template](https://www.thetailorcv
 
 ---
 
+## Key Takeaways
+
+- Volunteer experience can showcase transferable skills, fill employment gaps, and reflect strong character traits to employers.
+- Fresh graduates and career changers can leverage volunteer work to gain relevant experience and credentials in their target fields.
+- Experienced professionals can enhance their resumes by including leadership roles in volunteer positions, demonstrating community involvement.
+- Volunteer work should be integrated with paid experience if it involves significant responsibilities and is relevant to the desired role.
+- Alternatively, a separate "Volunteer Experience" section can be created if there is substantial volunteer history alongside solid paid work experience.
+
 ## Why Volunteer Experience Matters to Employers
 
 Employers care about volunteer experience for three reasons:

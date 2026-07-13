@@ -18,6 +18,14 @@ You earned this role with a strong application - keep your resume updated with y
 
 ---
 
+## Key Takeaways
+
+- Focus on learning and absorbing information in the first 30 days rather than trying to prove yourself.
+- In the second month, start contributing by taking ownership of small projects and deepening relationships with colleagues.
+- By the third month, aim to deliver visible work and establish yourself as a reliable team member while setting goals for the next 90 days.
+- Build strong relationships intentionally by scheduling one-on-one meetings and offering help to colleagues.
+- Avoid common mistakes such as trying to implement changes too quickly, not asking questions, and isolating yourself from the team.
+
 ## The 30-60-90 Day Framework
 
 ### Days 1-30: Learn and Absorb

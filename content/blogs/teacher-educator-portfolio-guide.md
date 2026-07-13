@@ -12,6 +12,14 @@ keywords: teacher portfolio, educator portfolio website, teaching portfolio exam
 
 Hiring committees for teaching roles often review dozens of nearly identical resumes. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is where you show your actual classroom practice - lesson design, student growth, and your teaching philosophy - in a way a resume bullet never can. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide).
 
+## Key Takeaways
+
+- A teaching portfolio should include a philosophy statement, lesson plans, evidence of student outcomes, classroom management strategies, and professional development certifications.
+- Focus on demonstrating student growth through specific examples, detailing the starting point, interventions, and outcomes for each artifact.
+- Host your portfolio on a personal website, LinkedIn, or as a printable PDF to ensure accessibility for hiring committees.
+- Keep your resume and portfolio aligned in content and messaging to present a cohesive narrative of your teaching experience.
+- Avoid common mistakes such as sharing identifiable student information, lacking a clear philosophy statement, and including outdated materials.
+
 ## What to Include
 - **A teaching philosophy statement** - one page on how you approach learning, differentiation, and classroom culture
 - **2-3 lesson or unit plans** - with objectives, materials, and how you adapted for different learners
