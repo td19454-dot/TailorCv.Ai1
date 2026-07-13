@@ -1,7 +1,18 @@
 <div class="solx-sec">
     <div class="solx-wrap">
         <div class="solx-kicker">The full toolkit</div>
-        <h2 class="solx-h2">More than a <span class="g">resume optimizer</span></h2>
+        {% set _things = {
+            '/solutions': 'resume optimizer',
+            '/modify-cv': 'resume builder',
+            '/cover-letter': 'cover letter generator',
+            '/portfolio': 'portfolio builder',
+            '/mock-interview': 'mock interview coach',
+            '/templates': 'resume template library',
+            '/interview-prep': 'interview question generator'
+        } %}
+        {% set _thing = _things.get(request.url.path, 'resume optimizer') %}
+        {% set _art = 'an' if _thing[0] in 'aeiou' else 'a' %}
+        <h2 class="solx-h2">More than {{ _art }} <span class="g">{{ _thing }}</span></h2>
         <p class="solx-lead">TailorCV isn't just one tool, it handles your whole job search, from a tailored resume to a live portfolio and interview practice, all in one place.</p>
         <div class="solx-more-grid">
             {% if request.url.path != '/solutions' %}<a class="solx-more-card" href="/solutions"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span><h3>ATS Resume Optimizer</h3><p>Paste any job description and TailorCV rewrites your resume to match it, keyword by keyword, section by section, then scores it against the ATS so you know it will actually get read.</p><ul class="mchecks"><li>Keyword &amp; ATS match score</li><li>Bullets rewritten in your voice</li></ul><span class="go">Explore &rarr;</span></a>{% endif %}
