@@ -627,7 +627,7 @@
 
     {% if not is_logged_in %}
     <!-- ================= Logged-out marketing landing (Careerflow-style) ================= -->
-    <link rel="stylesheet" href="/static/feature_landing.css?v=23">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=26">
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -667,6 +667,151 @@
             <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
         </div>
         <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec" id="free-ats">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Free ATS check</div>
+                <h2 class="solx-h2">Get your ATS score now, <span class="g">zero signup</span></h2>
+                <p class="solx-lead">Upload your resume, paste the job description, and get a real ATS score in about 30 seconds. No account, no card, nothing to cancel. Make a free account afterwards and your ATS score stays free.</p>
+
+                <div class="solx-ats">
+                    <div class="solx-ats-panel">
+                        <h3>Run your free scan</h3>
+                        <p class="hint">Your resume is scored against the job, then deleted. We do not post it anywhere.</p>
+
+                        <label class="solx-ats-drop" id="atsDrop">
+                            <input type="file" id="atsFile" accept="application/pdf,.pdf">
+                            <b>Upload your resume</b>
+                            <small>PDF, click to choose or drop it here</small>
+                            <div class="solx-ats-file" id="atsFileName" hidden></div>
+                        </label>
+
+                        <textarea id="atsJd" placeholder="Paste the job description here, the full posting works best."></textarea>
+
+                        <button type="button" class="solx-btn" id="atsGo">Get My Free ATS Score</button>
+                        <div class="solx-ats-err" id="atsErr" hidden></div>
+
+                        <div class="solx-ats-badges">
+                            <span>&#10003; No signup</span>
+                            <span>&#10003; No credit card</span>
+                            <span>&#10003; Result in ~30 seconds</span>
+                        </div>
+                    </div>
+
+                    <div class="solx-ats-panel solx-ats-out" id="atsOut">
+                        <div class="solx-ats-idle" id="atsIdle">
+                            Your score, your match level, and the exact keywords you are missing will show up here.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        (function(){
+            var fileEl = document.getElementById('atsFile');
+            var dropEl = document.getElementById('atsDrop');
+            var nameEl = document.getElementById('atsFileName');
+            var jdEl   = document.getElementById('atsJd');
+            var goEl   = document.getElementById('atsGo');
+            var errEl  = document.getElementById('atsErr');
+            var outEl  = document.getElementById('atsOut');
+            if (!fileEl || !goEl || !outEl) return;
+
+            function showErr(msg){ errEl.textContent = msg; errEl.hidden = false; }
+            function clearErr(){ errEl.hidden = true; errEl.textContent = ''; }
+            function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+            fileEl.addEventListener('change', function(){
+                var f = fileEl.files && fileEl.files[0];
+                if (f) { nameEl.textContent = '\u2713 ' + f.name; nameEl.hidden = false; clearErr(); }
+            });
+            ['dragenter','dragover'].forEach(function(ev){
+                dropEl.addEventListener(ev, function(e){ e.preventDefault(); dropEl.classList.add('over'); });
+            });
+            ['dragleave','drop'].forEach(function(ev){
+                dropEl.addEventListener(ev, function(e){ e.preventDefault(); dropEl.classList.remove('over'); });
+            });
+            dropEl.addEventListener('drop', function(e){
+                var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+                if (f) { fileEl.files = e.dataTransfer.files; nameEl.textContent = '\u2713 ' + f.name; nameEl.hidden = false; clearErr(); }
+            });
+
+            function ring(score){
+                var C = 2 * Math.PI * 52;
+                var off = C * (1 - Math.max(0, Math.min(100, score)) / 100);
+                return '<div class="solx-ats-ring">'
+                    + '<svg viewBox="0 0 120 120" aria-hidden="true">'
+                    +   '<circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="10"></circle>'
+                    +   '<circle class="bar" cx="60" cy="60" r="52" fill="none" stroke="#4f9bff" stroke-width="10" stroke-linecap="round"'
+                    +     ' stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + C.toFixed(1) + '" transform="rotate(-90 60 60)"></circle>'
+                    + '</svg>'
+                    + '<div class="solx-ats-num">' + Math.round(score) + '%</div>'
+                    + '</div>';
+            }
+
+            function render(data){
+                var score = Number(data.match_rate) || 0;
+                var level = data.match_level || 'Not rated';
+                var missing = [];
+                try {
+                    if (data.hard_skills && data.hard_skills.missing) missing = missing.concat(data.hard_skills.missing);
+                    if (data.keywords && data.keywords.missing) missing = missing.concat(data.keywords.missing);
+                } catch (e) {}
+                missing = missing.filter(Boolean).slice(0, 6);
+
+                var html = ring(score)
+                    + '<div class="solx-ats-level">' + esc(level) + ' match</div>'
+                    + '<p class="solx-ats-note">This is your real ATS score for that job. That was your free scan.</p>';
+                if (missing.length){
+                    html += '<div class="solx-ats-miss"><div class="t">Keywords you are missing</div>'
+                        + missing.map(function(k){ return '<span>' + esc(k) + '</span>'; }).join('')
+                        + '</div>';
+                }
+                html += '<a href="/signup?next=/solutions" class="solx-btn" style="width:auto;margin-top:22px">Fix These, Free Account</a>';
+                outEl.innerHTML = html;
+                // let the browser paint the full ring before animating it down
+                requestAnimationFrame(function(){
+                    var bar = outEl.querySelector('.bar');
+                    if (!bar) return;
+                    var C = 2 * Math.PI * 52;
+                    bar.style.strokeDashoffset = String(C * (1 - Math.max(0, Math.min(100, score)) / 100));
+                });
+            }
+
+            goEl.addEventListener('click', function(){
+                clearErr();
+                var f  = fileEl.files && fileEl.files[0];
+                var jd = (jdEl.value || '').trim();
+                if (!f)  { showErr('Add your resume as a PDF first.'); return; }
+                if (jd.length < 40) { showErr('Paste the job description so we can score against it.'); return; }
+
+                goEl.disabled = true;
+                goEl.textContent = 'Scoring your resume\u2026';
+                outEl.innerHTML = '<div class="solx-ats-spin"></div><p class="solx-ats-note">Reading your resume and matching it to the job\u2026</p>';
+
+                var fd = new FormData();
+                fd.append('file', f);
+
+                fetch('/get-ats-score?jd_string=' + encodeURIComponent(jd), { method: 'POST', body: fd })
+                    .then(function(res){
+                        return res.json().catch(function(){ return {}; }).then(function(body){
+                            if (!res.ok) throw new Error(body.detail || body.error || 'That scan did not go through. Please try again.');
+                            return body;
+                        });
+                    })
+                    .then(render)
+                    .catch(function(e){
+                        outEl.innerHTML = '<div class="solx-ats-idle">' + esc(e.message) + '</div>'
+                            + '<a href="/signup?next=/solutions" class="solx-btn" style="width:auto;margin-top:20px">Create My Free Account</a>';
+                    })
+                    .finally(function(){
+                        goEl.disabled = false;
+                        goEl.textContent = 'Get My Free ATS Score';
+                    });
+            });
+        })();
+        </script>
+
 
         <div class="solx-sec">
             <div class="solx-wrap">
