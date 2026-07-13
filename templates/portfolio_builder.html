@@ -338,7 +338,7 @@
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
-    <link rel="stylesheet" href="/static/feature_landing.css?v=22">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=23">
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -377,6 +377,68 @@
             <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
         </div>
         <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Design gallery</div>
+                <h2 class="solx-h2">Find the perfect portfolio design <span class="g">for your career goals</span></h2>
+                <p class="solx-lead">Every design is responsive, built straight from your resume, and live on a single shareable link. Pick a look and publish it in one click.</p>
+                <div class="solx-carousel wide">
+                    <button type="button" class="solx-car-btn solx-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+                    <div class="solx-car-track">
+                        {% for _k, _label in themes.items() %}{% set _m = theme_media.get(_k) %}{% if _m and _m.image %}
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="{{ _m.image }}" alt="{{ _label }} portfolio design preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">{{ _label.replace('—', '-').split('-')[0].strip() }}</div>
+                        </div>
+                        {% endif %}{% endfor %}
+                    </div>
+                    <button type="button" class="solx-car-btn solx-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+                    <div class="solx-car-dots"></div>
+                </div>
+                <div style="text-align:center;margin-top:34px"><a href="/signup?next=/portfolio" class="solx-btn">Build My Portfolio, Free</a></div>
+            </div>
+        </div>
+
+        <script>
+        (function(){
+          function init(car){
+            var track = car.querySelector('.solx-car-track');
+            var prev  = car.querySelector('.solx-car-prev');
+            var next  = car.querySelector('.solx-car-next');
+            var dots  = car.querySelector('.solx-car-dots');
+            if(!track) return;
+            function pageW(){ return track.clientWidth || 1; }
+            function pageCount(){ return Math.max(1, Math.round(track.scrollWidth / pageW())); }
+            function current(){ return Math.round(track.scrollLeft / pageW()); }
+            function sync(){
+              var c = current();
+              if (dots) Array.prototype.forEach.call(dots.children, function(d,i){ d.classList.toggle('on', i === c); });
+              if (prev) prev.disabled = track.scrollLeft <= 4;
+              if (next) next.disabled = track.scrollLeft + pageW() >= track.scrollWidth - 4;
+            }
+            function buildDots(){
+              if (!dots) return;
+              dots.innerHTML = '';
+              var n = pageCount();
+              for (var i = 0; i < n; i++){
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.className = 'solx-car-dot';
+                b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                (function(idx){ b.addEventListener('click', function(){ track.scrollTo({ left: idx * pageW(), behavior: 'smooth' }); }); })(i);
+                dots.appendChild(b);
+              }
+            }
+            if (prev) prev.addEventListener('click', function(){ track.scrollBy({ left: -pageW(), behavior: 'smooth' }); });
+            if (next) next.addEventListener('click', function(){ track.scrollBy({ left:  pageW(), behavior: 'smooth' }); });
+            track.addEventListener('scroll', function(){ window.requestAnimationFrame(sync); });
+            window.addEventListener('resize', function(){ buildDots(); sync(); });
+            buildDots(); sync();
+          }
+          document.querySelectorAll('.solx-carousel').forEach(init);
+        })();
+        </script>
 
         <div class="solx-sec">
             <div class="solx-wrap">
