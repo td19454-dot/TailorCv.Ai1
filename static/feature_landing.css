@@ -82,13 +82,16 @@
 .solx-step-viz .rez-line { height:8px; }
 
 .solx-band { position:relative; text-align:center; padding: clamp(30px,4vw,56px) 22px; }
-.solx-band-inner { position:relative; max-width:1000px; margin:0 auto; padding: clamp(20px,4vw,44px) clamp(16px,5vw,60px); background:none; border:none; box-shadow:none; }
+/* Wide enough for the longest band heading to sit on one centred line */
+.solx-band-inner { position:relative; max-width:1440px; margin:0 auto; padding: clamp(20px,4vw,44px) clamp(16px,5vw,60px); background:none; border:none; box-shadow:none; }
 .solx-band-kicker { position:relative; margin:0 0 14px; color:#90c4ff; letter-spacing:.09em; font-size:13px; font-weight:600; text-transform:uppercase; }
-.solx-band h2 { position:relative; font-family:'DM Serif Display', serif; font-size:clamp(36px,5vw,56px); font-weight:400; line-height:1.12; letter-spacing:-.02em; margin:0 auto 16px; color:#f4f7ff; white-space:nowrap; }
+/* One centred line. The size tracks the viewport (3.6vw) so even the longest
+   heading fits without nowrap pushing it off-centre; it wraps on small screens. */
+.solx-band h2 { position:relative; font-family:'DM Serif Display', serif; font-size:clamp(26px,3.6vw,56px); font-weight:400; line-height:1.15; letter-spacing:-.02em; margin:0 auto 16px; color:#f4f7ff; white-space:nowrap; }
+@media (max-width:760px){ .solx-band h2 { white-space:normal; text-wrap:balance; font-size:clamp(26px,6vw,36px); } }
 .solx-band h2 .ga { background:linear-gradient(90deg,#5b8cff,#8a8cff); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .solx-band p { position:relative; color:#cfd9ee; font-size:1.1rem; line-height:1.5; margin:0 auto 30px; max-width:52ch; }
 .solx-band .solx-btn { position:relative; }
-@media(max-width:680px){ .solx-band h2 { white-space:normal; text-wrap:balance; } }
 
 .solx-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
 .solx-stat { text-align:center; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:24px 16px; }
