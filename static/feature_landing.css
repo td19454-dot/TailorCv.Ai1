@@ -9,7 +9,7 @@
 .solx * { box-sizing: border-box; }
 .solx-wrap { max-width: 1180px; margin: 0 auto; padding: 0 22px; }
 
-.solx-btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 30px; border-radius: 12px; font-weight: 600; font-size: 1.02rem; text-decoration: none; border: 0; cursor: pointer; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; box-shadow: 0 12px 30px rgba(37, 99, 235, .3); transition: transform .18s ease, box-shadow .18s ease; }
+.solx-btn { display: inline-flex; align-items: center; justify-content: center; padding: 15px 46px; border-radius: 12px; font-weight: 600; font-size: 1.02rem; text-decoration: none; border: 0; cursor: pointer; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; box-shadow: 0 12px 30px rgba(37, 99, 235, .3); transition: transform .18s ease, box-shadow .18s ease; }
 .solx-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 38px rgba(37, 99, 235, .45); }
 .solx-btn.ghost { background: transparent; color: #cdd8ee; border: 1px solid rgba(255,255,255,.16); box-shadow: none; }
 
