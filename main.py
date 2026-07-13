@@ -4466,6 +4466,7 @@ async def solutions_page(request: Request):
         "solutions.html",
         {
             "request": request,
+            "is_logged_in": bool(request.session.get("user_id")),
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
             "canonical_url": build_absolute_url("/solutions"),
             "software_schema_json": build_software_app_schema(),
@@ -4776,6 +4777,7 @@ async def templates_page(request: Request):
         "templates.html",
         {
             "request": request,
+            "is_logged_in": bool(request.session.get("user_id")),
             "canonical_url": build_absolute_url("/templates"),
             "software_schema_json": build_software_app_schema(),
             "page_schema_json": build_page_breadcrumb("Resume Templates", "/templates"),
@@ -4979,6 +4981,7 @@ async def cover_letter_page(request: Request):
         "cover_letter.html",
         {
             "request": request,
+            "is_logged_in": bool(request.session.get("user_id")),
             "canonical_url": build_absolute_url("/cover-letter"),
             "software_schema_json": build_software_app_schema(),
             "page_schema_json": build_page_breadcrumb("AI Cover Letter Generator", "/cover-letter"),
@@ -6502,6 +6505,7 @@ async def portfolio_builder_page(request: Request):
         "themes": PORTFOLIO_THEMES,
         "theme_media": PORTFOLIO_THEME_MEDIA,
         "logged_in": logged_in,
+        "is_logged_in": logged_in,
         "portfolio_domain": PORTFOLIO_DOMAIN,
         "subdomains_enabled": PORTFOLIO_SUBDOMAINS_ENABLED,
         "canonical_url": build_absolute_url("/portfolio"),

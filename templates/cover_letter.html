@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
@@ -236,6 +236,131 @@
 <body>
     {% include "_nav.html" %}
 
+    {% if not is_logged_in %}
+    <link rel="stylesheet" href="/static/feature_landing.css?v=14">
+    <div class="solx">
+        <div class="solx-wrap">
+            <div class="solx-hero">
+                <div>
+                    <span class="solx-eyebrow">AI Cover Letter Builder</span>
+                    <h1>Job-winning cover letters <span class="g">in seconds</span> with AI</h1>
+                    <p class="sub">Create tailored, ATS-friendly cover letters that get you noticed and help you land more interviews &mdash; matched to the exact job.</p>
+                    <a href="/signup?next=/cover-letter" class="solx-btn">Generate My Cover Letter &mdash; Free</a>
+                    <p class="micro">Under a minute &bull; No credit card &bull; <b>Free to start</b></p>
+                    <div class="solx-logos">
+                        <span>Our users have landed jobs at top companies</span>
+                        <div class="solx-logos-row"><b>Google</b><b>Amazon</b><b>Meta</b><b>Apple</b><b>Microsoft</b></div>
+                    </div>
+                </div>
+                <div class="rez">
+                    <div class="rez-tag">&#128196; Sr. Data Scientist Cover Letter</div>
+                    <div class="rez-h" style="text-transform:none;font-size:13px;color:#0f172a">Dear Hiring Manager,</div>
+                    <div class="rez-line l"></div>
+                    <div style="margin:6px 0"><span class="rez-pill g">Statistical Analysis</span></div>
+                    <div class="rez-line m"></div><div class="rez-line l"></div>
+                    <div style="margin:6px 0"><span class="rez-pill y">20% increase in revenue</span></div>
+                    <div class="rez-line m"></div>
+                    <div style="margin:6px 0"><span class="rez-pill b">Improved by 30%</span></div>
+                    <div class="rez-line l"></div><div class="rez-line s"></div>
+                    <div class="rez-sign">John Smith</div>
+                    <div class="rez-insights">
+                        <div class="t">&#10024; AI Writing</div>
+                        <div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                        <div class="rez-btn">Generate Cover Letter</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">A cover letter that actually <span class="g">sounds like you</span></h2>
+                <p class="solx-lead">No more staring at a blank page. TailorCV writes a polished, role-specific letter from your real experience &mdash; then lets you tweak every line.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h" style="text-transform:none;color:#0f172a">Dear Hiring Manager,</div>
+                            <div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div><div class="rez-line s"></div>
+                            <div class="rez-btn" style="margin-top:10px">Generate Cover Letter</div>
+                        </div>
+                        <h3>Save time &amp; effort</h3>
+                        <p>No more manual writing. Generate a polished cover letter in under a minute.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h" style="text-transform:none;color:#0f172a">Tailored letter</div>
+                            <span class="rez-pill g">Statistical Analysis</span><span class="rez-pill y">Deep Learning</span><span class="rez-pill b">Data Visualization</span>
+                            <div class="rez-line m" style="margin-top:8px"></div><div class="rez-line l"></div>
+                        </div>
+                        <h3>Tailored to every job</h3>
+                        <p>Add the job description and our AI customizes your letter to match the role perfectly.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h" style="text-transform:none;color:#0f172a">Classic template</div>
+                            <div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#10003; Recruiter-approved</div>
+                        </div>
+                        <h3>Professional templates that work</h3>
+                        <p>Choose from recruiter-approved templates designed for your industry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">How it works</div>
+                <h2 class="solx-h2">Four simple steps to your <span class="g">perfect cover letter</span></h2>
+                <div style="margin-top:26px">
+                    <div class="solx-step">
+                        <div><div class="n">Step 1</div><h3>Add your <span class="g">resume</span></h3><p>Upload your resume or connect your details so the AI knows your real experience.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128228; Select Resume</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 2</div><h3>Paste the <span class="g">job description</span></h3><p>Drop in the role you're applying for so the letter is written for that exact job.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-h">Job Description</div><div class="rez-line l"></div><div class="rez-line m"></div><span class="rez-pill g">Python</span><span class="rez-pill y">SQL</span><span class="rez-pill b">Leadership</span></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 3</div><h3>AI writes it <span class="g">in your voice</span></h3><p>Get a tailored, ATS-friendly letter in seconds &mdash; specific and human, never generic.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-h" style="text-transform:none;color:#0f172a">Dear Hiring Manager,</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div><div class="rez-sign">John Smith</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 4</div><h3>Review &amp; <span class="g">download</span></h3><p>Edit anything you like, then export a clean PDF ready to send with your application.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-btn" style="margin-top:12px">Download PDF</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-band">
+            <h2>Still writing every cover letter from scratch?</h2>
+            <p>Generate a tailored, ATS-ready cover letter for each job in under a minute.</p>
+            <a href="/signup?next=/cover-letter" class="solx-btn">Generate My Cover Letter &mdash; Free</a>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">FAQ</div>
+                <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
+                <div class="solx-faq" style="margin-top:32px">
+                    <details open><summary>What is an AI cover letter generator, and how does it work?</summary><p>You add your resume and the job description, and the AI writes a tailored cover letter that highlights your relevant experience using the language of that specific role &mdash; ready to review and download.</p></details>
+                    <details><summary>Can I customize the tone and length?</summary><p>Yes. Pick the tone that fits the company, edit any line, and adjust the length before you export.</p></details>
+                    <details><summary>Does it include job-specific keywords?</summary><p>Yes &mdash; it pulls the key skills and terms from the job description so your letter reads as a strong match.</p></details>
+                    <details><summary>Are there templates for different industries?</summary><p>Yes, recruiter-approved templates designed for a range of industries and roles.</p></details>
+                    <details><summary>Is it free to start?</summary><p>Yes. Create your first cover letter free; a quick account saves your letters so you can reuse and tweak them for similar jobs.</p></details>
+                </div>
+                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/cover-letter" class="solx-btn">Generate My Cover Letter &mdash; Free</a></div>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+    {% if is_logged_in %}
+
+
     <header class="cl-page-header">
         <div class="cl-hero-card">
             <div class="cl-title"><span class="cl-title-start">Your cover letter,</span> <span class="cl-title-highlight">tailored to the job</span></div>
@@ -331,6 +456,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     {% include "_footer.html" %}
 
