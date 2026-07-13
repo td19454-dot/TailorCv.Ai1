@@ -168,10 +168,11 @@
 .solx-car-item:hover .solx-car-shot { transform:translateY(-4px); border-color:rgba(96,165,250,.55); box-shadow:0 32px 70px rgba(37,99,235,.4); }
 .solx-car-shot img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
 .solx-car-name { text-align:center; margin-top:14px; color:#e8edf6; font-size:1.02rem; font-weight:600; }
-/* Bigger cards (resume templates) */
-.solx-carousel.big .solx-car-item { flex-basis:calc((100% - 44px) / 2.5); }
-/* Website screenshots: real previews are ~2.09:1 */
-.solx-carousel.wide .solx-car-shot { aspect-ratio:2 / 1; }
+/* Bigger cards: 2 per view, so the preview gets noticeably more height */
+.solx-carousel.big .solx-car-item { flex-basis:calc((100% - 22px) / 2); }
+/* Website screenshots (real assets are ~2.09:1); a slightly taller frame buys
+   height while only trimming side margin, never the page content. */
+.solx-carousel.wide .solx-car-shot { aspect-ratio:1.85 / 1; }
 /* Live-demo affordance on the portfolio designs */
 .solx-car-demo { position:absolute; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; gap:6px; padding:14px 12px 12px; font-size:.88rem; font-weight:600; color:#fff; background:linear-gradient(to top, rgba(8,13,32,.96), rgba(8,13,32,.72) 55%, rgba(8,13,32,0)); transition:color .2s ease; }
 .solx-car-item:hover .solx-car-demo { color:#8ec5ff; }
