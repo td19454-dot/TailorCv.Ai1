@@ -30,6 +30,7 @@
   let sessionReady = false;
   let quotaExceeded = false;
   let lastBeforeScore = null;   // survives the re-render runTailor does while busy
+  let lastAfterScore = null;    // set once tailored, so the re-render keeps showing the gain
   let manualJd = '';   // set when the user pastes or selects the JD themselves
 
   // ── Utilities ────────────────────────────────────────
@@ -356,7 +357,10 @@
     sb.id = 'tailorcv-sidebar';
     sb.innerHTML = `
       <div class="tcv-header">
-        <span class="tcv-logo">TailorCV</span>
+        <span class="tcv-brand">
+          <img class="tcv-logo-icon" src="${chrome.runtime.getURL('icons/icon48.png')}" alt="">
+          <span class="tcv-logo">TailorCV</span>
+        </span>
         <button class="tcv-toggle" title="Minimize">✕</button>
       </div>
       <div id="tcvBody"></div>
@@ -552,8 +556,17 @@
   function renderReady(job) {
     const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
     body.innerHTML = `
-      <div class="tcv-job-info">Tailoring for: <b>${esc(job.role || 'this job')}</b>${job.company ? ' at ' + esc(job.company) : ''}</div>
-      <div class="tcv-match-row">Skill match: <span class="tcv-match-value" id="tcvMatchBefore">…</span></div>
+      <div class="tcv-job-info">Tailoring for<b>${esc(job.role || 'this job')}</b>${job.company ? esc(job.company) : ''}</div>
+
+      <div class="tcv-match" id="tcvMatch">
+        <div class="tcv-match-head">
+          <span class="tcv-match-label">Skill match</span>
+          <span class="tcv-match-value" id="tcvMatchBefore">…</span>
+        </div>
+        <div class="tcv-match-bar"><span class="tcv-match-fill" id="tcvMatchFill"></span></div>
+        <div id="tcvMatchDeltaSlot"></div>
+      </div>
+
       <div class="tcv-source">${SOURCE_LABEL[job.source] || ''} · <a href="#" id="tcvEditJd">not right?</a></div>
       <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
         ${tcvBusy ? 'Working on another job…' : '✦ Tailor & Download Resume'}
@@ -598,8 +611,36 @@
       }
       job.beforeScore = score;
       lastBeforeScore = score;
-      matchEl.textContent = score + '%';
+      if (lastAfterScore !== null) paintMatchAfter(score, lastAfterScore);
+      else paintMatch(score);
     });
+  }
+
+  // The bar and its colour carry the verdict, so the number does not have to: a bare
+  // "38%" leaves the user guessing whether that is bad.
+  function paintMatch(score) {
+    const wrap = body.querySelector('#tcvMatch');
+    const valueEl = body.querySelector('#tcvMatchBefore');
+    const fillEl = body.querySelector('#tcvMatchFill');
+    if (!wrap || !valueEl || !fillEl) return;
+
+    valueEl.textContent = score + '%';
+    wrap.classList.remove('tcv-low', 'tcv-mid', 'tcv-high');
+    wrap.classList.add(score < 40 ? 'tcv-low' : score < 70 ? 'tcv-mid' : 'tcv-high');
+    // Next frame, so the width transition actually animates from 0 instead of
+    // being painted at its final value on first render.
+    requestAnimationFrame(() => { fillEl.style.width = Math.max(2, Math.min(100, score)) + '%'; });
+  }
+
+  // After a tailor: move the bar to the new score and show what the rewrite bought.
+  function paintMatchAfter(before, after) {
+    if (typeof after !== 'number') return;
+    paintMatch(after);
+    const slot = body.querySelector('#tcvMatchDeltaSlot');
+    if (!slot) return;
+    slot.innerHTML = typeof before === 'number'
+      ? `<span class="tcv-match-delta">↑ ${before}% → ${after}% after tailoring</span>`
+      : `<span class="tcv-match-delta">↑ ${after}% after tailoring</span>`;
   }
 
   async function runCoverLetter(job, label) {
@@ -662,6 +703,7 @@
       // what the rewrite actually bought: "64% → 89%".
       const before = typeof job.beforeScore === 'number' ? job.beforeScore : lastBeforeScore;
       const after = res.data && typeof res.data.afterScore === 'number' ? res.data.afterScore : null;
+      if (after !== null) lastAfterScore = after;
       const matchText = after === null ? ''
         : (typeof before === 'number' ? ` — Match: ${before}% → ${after}%` : ` — Match: ${after}%`);
       globalStatus.className = 'tcv-status-text tcv-ok';
@@ -746,7 +788,9 @@
   new MutationObserver(() => {
     if (location.href === lastUrl) return;
     lastUrl = location.href;
-    manualJd = '';   // a new posting: never carry the last one's text over
+    manualJd = '';        // a new posting: never carry the last one's text over
+    lastBeforeScore = null;
+    lastAfterScore = null; // nor its match score, or the next job shows the last one's gain
     setTimeout(() => {
       if (!document.getElementById('tailorcv-sidebar')) {
         if (looksLikeJobPage()) createPanel();
