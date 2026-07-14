@@ -1202,6 +1202,27 @@ def inject_jd_hard_skills(data: dict, jd_string: str) -> dict:
     return data
 
 
+def compute_skill_match_score(resume_text: str, jd_string: str) -> dict:
+    """Deterministic, LLM-free skill-match score: what fraction of the JD's
+    identifiable hard skills already appear in the resume. Reuses the same
+    keyword extraction/matching primitives the tailoring pipeline already
+    relies on (see inject_jd_hard_skills above), so this is fast — regex-only,
+    no network/LLM call — and reproducible: identical inputs always produce
+    identical output."""
+    jd_skills = _extract_hard_skills_from_jd(jd_string)
+    text = str(resume_text or "")
+
+    matched: list[str] = []
+    missing: list[str] = []
+    for skill in jd_skills:
+        (matched if _contains_skill(text, skill) else missing).append(skill)
+
+    total = len(jd_skills)
+    score = round(len(matched) / total * 100) if total else None
+
+    return {"score": score, "matched": matched, "missing": missing, "total_skills": total}
+
+
 # Bullet / list-marker characters that sometimes leak into AI output values.
 _BULLET_CHARS = "•‣▪◦●·*–—-"
 

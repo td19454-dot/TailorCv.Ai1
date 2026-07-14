@@ -68,6 +68,19 @@
   margin-bottom: 16px !important;
 }
 
+.tcv-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.tcv-logo-icon {
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 6px !important;
+  display: block !important;
+}
+
 .tcv-logo {
   font-size: 18px !important;
   font-weight: 700 !important;
@@ -315,12 +328,24 @@
 }
 
 .tcv-job-info {
+  font-size: 19px !important;
+  color: #94a3b8 !important;
+  margin-bottom: 14px !important;
+  line-height: 1.4 !important;
+}
+.tcv-job-info b {
+  color: #eaf1ff !important;
+}
+
+.tcv-match-row {
   font-size: 13px !important;
   color: #94a3b8 !important;
   margin-bottom: 14px !important;
-  line-height: 1.5 !important;
 }
-.tcv-job-info b { color: #eaf1ff !important; }
+.tcv-match-value {
+  font-weight: 700 !important;
+  color: #c9b8ff !important;
+}
 
 .tcv-upgrade-box {
   text-align: center !important;
