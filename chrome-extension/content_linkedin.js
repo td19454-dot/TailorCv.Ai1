@@ -10,7 +10,7 @@
   const BASE_URL = 'http://127.0.0.1:8005';
   let tcvBusy = false;
   let currentJob = null;
-  let sb, body, launcher;
+  let sb, body, launcher, globalStatus;
   // Cached once login + base-resume checks succeed, so switching between job
   // postings only re-extracts the JD instead of re-hitting the server for
   // things that don't change mid-session.
@@ -79,9 +79,13 @@
         <button class="tcv-toggle" title="Minimize">✕</button>
       </div>
       <div id="tcvBody"></div>
+      <div class="tcv-status-text" id="tcvGlobalStatus"></div>
     `;
     document.body.appendChild(sb);
     body = sb.querySelector('#tcvBody');
+    // Lives outside #tcvBody so it survives per-job re-renders — an in-flight
+    // tailor request stays visible even after switching to a different job.
+    globalStatus = sb.querySelector('#tcvGlobalStatus');
 
     sb.querySelector('.tcv-toggle').addEventListener('click', () => {
       sb.classList.add('tcv-collapsed');
@@ -152,35 +156,45 @@
 
   function renderReady(job) {
     currentJob = job;
+    const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
     body.innerHTML = `
       <div class="tcv-job-info">Tailoring for: <b>${job.role || 'this job'}</b>${job.company ? ' at ' + job.company : ''}</div>
-      <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">✦ Tailor &amp; Download Resume</button>
-      <div class="tcv-status-text" id="tcvStatus"></div>
+      <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
+        ${tcvBusy ? 'Tailoring another job…' : '✦ Tailor & Download Resume'}
+      </button>
     `;
-    body.querySelector('#tcvTailorBtn').addEventListener('click', runTailor);
+    const btn = body.querySelector('#tcvTailorBtn');
+    if (tcvBusy) {
+      btn.disabled = true;
+    } else {
+      btn.addEventListener('click', () => runTailor(job, label));
+    }
   }
 
-  async function runTailor() {
-    if (tcvBusy || !currentJob) return;
-    const btn = body.querySelector('#tcvTailorBtn');
-    const statusEl = body.querySelector('#tcvStatus');
+  async function runTailor(job, label) {
+    if (tcvBusy || !job) return;
+    const jobUrl = window.location.href; // snapshot now — navigation shouldn't retag this request
     tcvBusy = true;
-    btn.disabled = true;
-    statusEl.textContent = 'Tailoring… this can take up to a minute.';
+    renderJobFromPage(); // re-render current button as disabled/"busy"
+    globalStatus.className = 'tcv-status-text';
+    globalStatus.textContent = `Tailoring "${label}"… this can take up to a minute.`;
 
     const res = await sendMessage({
       type: 'TAILOR_AND_DOWNLOAD',
       payload: {
-        jd_string: currentJob.jd_string,
-        role: currentJob.role,
-        company: currentJob.company,
-        url: window.location.href,
+        jd_string: job.jd_string,
+        role: job.role,
+        company: job.company,
+        url: jobUrl,
       },
     });
 
     tcvBusy = false;
-    btn.disabled = false;
-    statusEl.textContent = res.error ? res.error : '✓ Downloaded tailored resume';
+    globalStatus.className = res.error ? 'tcv-status-text tcv-error' : 'tcv-status-text tcv-ok';
+    globalStatus.textContent = res.error ? `✗ ${label}: ${res.error}` : `✓ Downloaded resume for "${label}"`;
+
+    // Refresh whichever job is on screen now that we're free to tailor again.
+    if (sessionReady) renderJobFromPage();
   }
 
   // ── State machine ────────────────────────────────────

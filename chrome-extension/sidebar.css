@@ -152,6 +152,8 @@
   margin: 4px 0 8px !important;
   min-height: 16px !important;
 }
+.tcv-status-text.tcv-ok    { color: #86efac !important; }
+.tcv-status-text.tcv-error { color: #fca5a5 !important; }
 
 .tcv-log {
   max-height: 190px !important;
