@@ -133,6 +133,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             saveAs: false,
           });
           sendResponse({ data: { success: true } });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
       } else if (msg.type === 'GET_SKILL_MATCH') {
         try {
           const res = await fetch(`${BASE_URL}/api/extension/skill-match`, {
