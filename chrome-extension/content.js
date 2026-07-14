@@ -727,8 +727,13 @@
 
   const JOB_URL_HINT = /(job|career|opening|position|vacanc|posting|gig|apply)/i;
 
+  // The URL must actually look like a posting. Matching merely because we have an
+  // adapter for the host was wrong: it popped the panel open on naukri.com's logged-in
+  // homepage, on Indeed's search page, on every page of a board the user was browsing.
+  // The hostname counts too, so jobs.lever.co/<company>/<uuid> — whose path says nothing
+  // — is still recognised.
   function looksLikeJobPage() {
-    return JOB_URL_HINT.test(location.pathname + location.search) || !!adapterForHost();
+    return JOB_URL_HINT.test(location.hostname + location.pathname + location.search);
   }
 
   const openedFromToolbar = window.__tailorcvFromToolbar === true;
