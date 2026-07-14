@@ -556,6 +556,30 @@ Analyze the job description and identify relevant hard-skill keywords.
 Match as much as possible of the job description's hard-skill keywords following the rules above to align with applicant tracking systems (ATS).
 Prioritize industry-relevant hard skills in the dedicated Skills section, and weave soft skills into bullet points and the summary instead.
 
+### Rule 1c: JD SKILLS MUST APPEAR IN THE BULLETS, NOT ONLY IN THE SKILLS LIST (MANDATORY)
+A skills list proves nothing on its own. A recruiter believes a skill when they can see WHERE it was used, and an ATS that scores context ranks a skill named inside an achievement above the same word sitting in a comma-separated list. So:
+
+Step A — read the job description twice and write down two lists (internally, do not output them):
+   - HARD skills: named technologies, languages, frameworks, tools, platforms, databases, methods.
+   - SOFT skills / ways of working: e.g. communication, collaboration, ownership, mentoring, stakeholder management, cross-functional work, leadership, problem solving, adaptability, attention to detail, working under ambiguity.
+
+Step B — HARD skills, in the bullets:
+   - For every JD hard skill the candidate has ANY factual basis for in the original resume, make sure at least one experience or project bullet names that technology explicitly and shows what was built or achieved with it.
+   - Prefer putting it in the entry where it was genuinely used. Do not move a technology onto an unrelated project just to place the keyword.
+   - If the candidate has NO factual basis for a JD hard skill, it stays in the `skills` array only (per Rule01). NEVER write a bullet claiming they used a technology they never touched.
+
+Step C — SOFT skills, in the bullets:
+   - Soft skills must NEVER appear in the `skills` array. They belong in `bullets` and `summary`.
+   - Demonstrate each JD soft skill through work ALREADY described in the resume, by re-framing the SAME facts. Show it, do not assert it: write what the collaboration or ownership actually consisted of.
+     GOOD (re-frames an existing bullet): "Partnered with 2 backend engineers to redesign the checkout API, cutting handoff bugs in half."
+     BAD  (empty assertion): "Excellent communication and teamwork skills."
+     BAD  (invented event): a bullet describing a team, mentee, client or presentation that appears nowhere in the original resume.
+   - Spread the soft-skill signals across DIFFERENT entries and prioritise the projects and experience most relevant to this job (the projects section especially — that is where a hiring manager checks whether the person can actually work with others, not just code).
+   - At most ONE soft-skill signal per bullet, and keep bullets to a single idea. Do not stuff several JD phrases into one sentence — a bullet crammed with keywords reads as fake to a human and adds nothing for an ATS.
+   - If the resume gives NO factual basis for a JD soft skill (no team, no stakeholders, no mentoring anywhere), do NOT manufacture one. Reflect it in the `summary` as an approach instead, or leave it out. An invented collaboration is a lie that gets caught in the interview.
+
+The hard rule underneath all of Step B and C: rewriting means expressing the SAME facts in the job description's vocabulary. You may re-word, re-frame, re-order and sharpen. You may NOT add work, people, tools, scale or outcomes that are not in the original resume.
+
 Rule 2:Incorporate Measurable Metrics:
 Quantify achievements using the XYZ formula if the user has put such quantifications but not formatted it if user has not put anything quantifyable don't do it: Accomplished X, measured by Y, by doing Z.
 
