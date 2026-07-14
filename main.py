@@ -3710,13 +3710,37 @@ CHROME_STORE_URL = os.getenv("CHROME_STORE_URL", "").strip()
 
 @app.get("/extension", response_class=HTMLResponse)
 async def extension_page(request: Request):
-    """Marketing landing for the LinkedIn Chrome extension."""
+    """Logged out: marketing landing. Logged in: the extension setup page, where the
+    user installs it and sets the base resume + template the extension tailors from."""
+    user_id = request.session.get("user_id")
+
+    base_resume = {
+        "has_base_resume": False,
+        "filename": None,
+        "template_id": None,
+        "style_id": None,
+    }
+    if user_id:
+        db = get_db()
+        try:
+            user = db.query(User).filter(User.id == user_id).first()
+            has_base = bool(user and user.base_resume_path and os.path.exists(user.base_resume_path))
+            base_resume = {
+                "has_base_resume": has_base,
+                "filename": user.base_resume_filename if has_base else None,
+                "template_id": user.base_template_id if has_base else None,
+                "style_id": user.base_style_id if has_base else None,
+            }
+        finally:
+            db.close()
+
     return templates.TemplateResponse(
         request,
         "extension.html",
         {
             "request": request,
-            "is_logged_in": bool(request.session.get("user_id")),
+            "is_logged_in": bool(user_id),
+            "base_resume": base_resume,
             "chrome_store_url": CHROME_STORE_URL,
             "canonical_url": build_absolute_url("/extension"),
             "software_schema_json": build_software_app_schema(),

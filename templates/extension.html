@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-guest-landing="1">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
@@ -14,6 +14,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         html, body { overflow-x: hidden; }
+
+        /* ---- Logged-in setup page ---- */
+        .ext-setup { padding: 40px 22px 80px; }
+        .ext-head { text-align: center; margin-bottom: 34px; }
+        .ext-head h1 { font-family: 'DM Serif Display', serif; font-size: clamp(34px, 4.4vw, 52px); font-weight: 400; color: #f4f7ff; margin: 6px 0 10px; letter-spacing: -.02em; }
+        .ext-head p { color: #c2ccde; font-size: 1.05rem; margin: 0; }
+
+        .ext-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 26px; margin-bottom: 20px; }
+        .ext-card-head, .ext-tpl-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+        .ext-tpl-head { margin-top: 26px; }
+        .ext-num { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: .95rem; color: #fff; background: linear-gradient(135deg,#3b82f6,#1d4ed8); box-shadow: 0 6px 16px rgba(37,99,235,.35); }
+        .ext-num.small { width: 30px; height: 30px; font-size: .85rem; }
+        .ext-card h2, .ext-tpl-head h2 { margin: 4px 0 4px; font-size: 1.18rem; font-weight: 600; color: #e8edf6; }
+        .ext-card-head p, .ext-tpl-head p { margin: 0; color: #c2ccde; font-size: .96rem; line-height: 1.55; }
+        .ext-install-btn { display: inline-flex; align-items: center; gap: 9px; }
+
+        .ext-status { border-radius: 12px; padding: 12px 15px; font-size: .93rem; font-weight: 600; color: #4ade80; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); margin-bottom: 16px; }
+        .ext-status.unset { color: #fca5a5; background: rgba(239,68,68,.1); border-color: rgba(239,68,68,.28); }
+
+        .ext-drop { position: relative; display: block; cursor: pointer; border: 1.5px dashed rgba(96,165,250,.45); background: rgba(59,130,246,.07); border-radius: 14px; padding: 24px; text-align: center; transition: border-color .2s ease, background .2s ease; }
+        .ext-drop:hover, .ext-drop.over { border-color: rgba(96,165,250,.95); background: rgba(59,130,246,.14); }
+        .ext-drop input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 2; }
+        .ext-drop b, .ext-drop small, .ext-drop .ext-file { position: relative; z-index: 1; pointer-events: none; }
+        .ext-drop b { display: block; color: #e8edf6; font-weight: 600; margin-bottom: 4px; }
+        .ext-drop small { color: #8a93a6; }
+        .ext-file { margin-top: 10px; font-size: .9rem; color: #4ade80; font-weight: 600; }
+
+        .ext-nores { margin: 14px 0 0; font-size: .93rem; color: #c2ccde; text-align: center; }
+        .ext-nores a { color: #60a5fa; font-weight: 600; text-decoration: none; }
+        .ext-nores a:hover { text-decoration: underline; }
+
+        .ext-tpl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+        .ext-tpl { padding: 0; background: none; border: 0; cursor: pointer; text-align: center; font: inherit; }
+        .ext-tpl-shot { display: block; aspect-ratio: 3 / 4; border-radius: 12px; overflow: hidden; background: linear-gradient(145deg,#0a1a4a,#12245e); border: 2px solid rgba(96,165,250,.25); transition: border-color .2s ease, transform .2s ease; }
+        .ext-tpl-shot img { width: 100%; height: 100%; object-fit: contain; padding: 8px; display: block; }
+        .ext-tpl:hover .ext-tpl-shot { transform: translateY(-3px); border-color: rgba(96,165,250,.7); }
+        .ext-tpl.on .ext-tpl-shot { border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96,165,250,.35); }
+        .ext-tpl-name { display: block; margin-top: 8px; font-size: .84rem; color: #cbd4e6; }
+        .ext-tpl.on .ext-tpl-name { color: #fff; font-weight: 600; }
+
+        .ext-save { width: 100%; margin-top: 22px; }
+        .ext-msg { margin-top: 12px; font-size: .93rem; text-align: center; }
+        .ext-msg.ok { color: #4ade80; }
+        .ext-msg.error { color: #fca5a5; }
+        .ext-links { display: flex; gap: 12px; flex-wrap: wrap; }
+        @media (max-width: 620px) { .ext-links .solx-btn { width: 100%; } }
         body { background: linear-gradient(135deg,#0a0012,#0d0033,#0a0a2e,#150025,#0a0012); }
     </style>
 </head>
@@ -22,6 +68,8 @@
     {% include "_nav.html" %}
 
     <link rel="stylesheet" href="/static/feature_landing.css?v=109">
+
+    {% if not is_logged_in %}
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -235,6 +283,196 @@
             </div>
         </div>
     </div>
+
+    {% endif %}
+
+    {% if is_logged_in %}
+    {% set br = base_resume | default({}, true) %}
+    <div class="solx">
+        <div class="solx-wrap ext-setup">
+            <div class="ext-head">
+                <span class="solx-eyebrow">Chrome Extension</span>
+                <h1>Set up your extension</h1>
+                <p>Two things and you are done: install it, then tell it which resume to tailor from.</p>
+            </div>
+
+            <!-- 1. Install -->
+            <section class="ext-card">
+                <div class="ext-card-head">
+                    <span class="ext-num">1</span>
+                    <div>
+                        <h2>Add the extension to Chrome</h2>
+                        <p>It runs only on LinkedIn job pages, and nowhere else you browse.</p>
+                    </div>
+                </div>
+                <a href="{{ chrome_store_url or '/extension' }}" class="solx-btn ext-install-btn"{% if chrome_store_url %} target="_blank" rel="noopener"{% endif %}>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 8.6h8.4M9.1 13.7l-4.2 7.2M14.9 13.7l-4.2 7.2"/></svg>
+                    Add to Chrome, Free
+                </a>
+            </section>
+
+            <!-- 2. Base resume -->
+            <section class="ext-card">
+                <div class="ext-card-head">
+                    <span class="ext-num">2</span>
+                    <div>
+                        <h2>Upload your base resume</h2>
+                        <p>This is the resume the extension rewrites for every job you open. Upload it once.</p>
+                    </div>
+                </div>
+
+                <div class="ext-status {% if not br.get('has_base_resume') %}unset{% endif %}" id="baseResumeStatus">
+                    {% if br.get('has_base_resume') %}
+                        &#10003; Using &ldquo;{{ br.get('filename') }}&rdquo; &middot; Template {{ br.get('template_id') }}
+                    {% else %}
+                        No base resume yet. The extension cannot tailor anything until you upload one.
+                    {% endif %}
+                </div>
+
+                <form id="baseResumeForm">
+                    <label class="ext-drop" id="extDrop">
+                        <input type="file" name="file" id="extFile" accept="application/pdf" required>
+                        <b>Upload your resume</b>
+                        <small>PDF, click to choose or drop it here</small>
+                        <div class="ext-file" id="extFileName" hidden></div>
+                    </label>
+
+                    <p class="ext-nores">
+                        Don&rsquo;t have a resume yet?
+                        <a href="/modify-cv">Build one free in the Resume Builder &rarr;</a>
+                    </p>
+
+                    <!-- 3. Template, chosen visually from the real previews -->
+                    <div class="ext-tpl-head">
+                        <span class="ext-num small">3</span>
+                        <div>
+                            <h2>Pick the template it downloads in</h2>
+                            <p>Your tailored resume comes out in this design every time.</p>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="template_id" id="extTemplateId" value="{{ br.get('template_id') or 1 }}">
+                    <input type="hidden" name="style_id" id="extStyleId" value="{{ br.get('style_id') or 1 }}">
+                    <div class="ext-tpl-grid" id="extTemplateGrid"></div>
+
+                    <button type="submit" class="solx-btn ext-save">Save Extension Settings</button>
+                    <div class="ext-msg" id="baseResumeMsg"></div>
+                </form>
+            </section>
+
+            <!-- 4. Ready -->
+            <section class="ext-card">
+                <div class="ext-card-head">
+                    <span class="ext-num">4</span>
+                    <div>
+                        <h2>Open any LinkedIn job</h2>
+                        <p>The TailorCV panel appears on the posting. One click tailors your resume to that job and downloads the PDF, and the application is logged to your account.</p>
+                    </div>
+                </div>
+                <div class="ext-links">
+                    <a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener" class="solx-btn">Go to LinkedIn Jobs</a>
+                    <a href="/my-resumes" class="solx-btn ghost">View my applications</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        var NAMES = {
+            1:"ATS Friendly Classic",2:"Modern Minimal",3:"Professional Clean",4:"Executive Edge",
+            5:"Corporate Blue",6:"Compact One-Page",7:"Fresh Graduate",8:"Skill Spotlight",
+            9:"Chronological Pro",10:"Creative Balanced",11:"Elegant Serif",12:"Impact Resume",
+            13:"Tech Specialist",14:"Data Analyst Pro",15:"Product Manager Fit",16:"Marketing Highlight",
+            17:"Modern ATS Plus",18:"Premium Executive",19:"LaTeX Academic",20:"ATS Friendly",
+            21:"Modern Tech",22:"Academic Serif"
+        };
+
+        var grid     = document.getElementById('extTemplateGrid');
+        var tplInput = document.getElementById('extTemplateId');
+        var fileEl   = document.getElementById('extFile');
+        var dropEl   = document.getElementById('extDrop');
+        var nameEl   = document.getElementById('extFileName');
+        var form     = document.getElementById('baseResumeForm');
+        var msg      = document.getElementById('baseResumeMsg');
+        var statusEl = document.getElementById('baseResumeStatus');
+        if (!form) return;
+
+        /* Show the real template previews, same assets the templates gallery uses,
+           so the user sees what their resume will actually look like. */
+        function select(id) {
+            tplInput.value = id;
+            grid.querySelectorAll('.ext-tpl').forEach(function (c) {
+                c.classList.toggle('on', String(c.dataset.id) === String(id));
+            });
+        }
+
+        fetch('/api/resume-templates')
+            .then(function (r) { return r.ok ? r.json() : { templates: [] }; })
+            .then(function (data) {
+                (data.templates || []).forEach(function (t) {
+                    var card = document.createElement('button');
+                    card.type = 'button';
+                    card.className = 'ext-tpl';
+                    card.dataset.id = t.id;
+                    card.innerHTML =
+                        '<span class="ext-tpl-shot"><img src="/static/pic' + t.id + '.webp?v=9" alt="" loading="lazy" decoding="async"></span>' +
+                        '<span class="ext-tpl-name">' + (NAMES[t.id] || t.name) + '</span>';
+                    card.addEventListener('click', function () { select(t.id); });
+                    grid.appendChild(card);
+                });
+                select(tplInput.value || 1);
+            })
+            .catch(function () {});
+
+        fileEl.addEventListener('change', function () {
+            var f = fileEl.files && fileEl.files[0];
+            if (f) { nameEl.textContent = '\u2713 ' + f.name; nameEl.hidden = false; }
+        });
+        ['dragenter','dragover'].forEach(function (ev) {
+            dropEl.addEventListener(ev, function (e) { e.preventDefault(); dropEl.classList.add('over'); });
+        });
+        ['dragleave','drop'].forEach(function (ev) {
+            dropEl.addEventListener(ev, function (e) { e.preventDefault(); dropEl.classList.remove('over'); });
+        });
+        dropEl.addEventListener('drop', function (e) {
+            var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+            if (f) { fileEl.files = e.dataTransfer.files; nameEl.textContent = '\u2713 ' + f.name; nameEl.hidden = false; }
+        });
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var btn = form.querySelector('.ext-save');
+            var orig = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Saving\u2026';
+            msg.textContent = '';
+            msg.className = 'ext-msg';
+
+            fetch('/api/extension/base-resume', { method: 'POST', body: new FormData(form) })
+                .then(function (res) {
+                    if (!res.ok) throw new Error('Upload failed');
+                    return res.json();
+                })
+                .then(function () {
+                    var f = fileEl.files[0];
+                    msg.textContent = 'Saved. The extension will tailor this resume from now on.';
+                    msg.className = 'ext-msg ok';
+                    statusEl.textContent = '\u2713 Using \u201c' + (f ? f.name : 'your resume') + '\u201d \u00b7 Template ' + tplInput.value;
+                    statusEl.className = 'ext-status';
+                })
+                .catch(function () {
+                    msg.textContent = 'Could not save your base resume. Please try again.';
+                    msg.className = 'ext-msg error';
+                })
+                .finally(function () {
+                    btn.disabled = false;
+                    btn.textContent = orig;
+                });
+        });
+    })();
+    </script>
+    {% endif %}
 
     {% include "_footer.html" %}
 
