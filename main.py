@@ -1,4 +1,4 @@
-import asyncio
+﻿import asyncio
 import base64
 import hashlib
 import json
@@ -134,6 +134,7 @@ async def csrf_middleware(request: Request, call_next):
     EXEMPT_PATHS = {
         "/api/linkedin/oauth/callback",
         "/api/extension/log-application",
+        "/api/extension/tailor-resume",
         "/api/billing/razorpay/webhook",
         "/api/billing/polar/webhook",
     }
@@ -448,6 +449,16 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN netlify_url VARCHAR(255)" if is_pg else "ADD COLUMN netlify_url TEXT")
     if "netlify_portfolio_id" not in cols:
         to_add.append("ADD COLUMN netlify_portfolio_id INTEGER")
+    if "base_resume_path" not in cols:
+        to_add.append("ADD COLUMN base_resume_path VARCHAR(500)" if is_pg else "ADD COLUMN base_resume_path TEXT")
+    if "base_resume_filename" not in cols:
+        to_add.append("ADD COLUMN base_resume_filename VARCHAR(255)" if is_pg else "ADD COLUMN base_resume_filename TEXT")
+    if "base_template_id" not in cols:
+        to_add.append("ADD COLUMN base_template_id INTEGER")
+    if "base_style_id" not in cols:
+        to_add.append("ADD COLUMN base_style_id INTEGER")
+    if "base_resume_uploaded_at" not in cols:
+        to_add.append("ADD COLUMN base_resume_uploaded_at TIMESTAMP" if is_pg else "ADD COLUMN base_resume_uploaded_at TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -4799,12 +4810,20 @@ async def my_resumes_page(request: Request):
             .order_by(SavedResume.created_at.desc())
             .all()
         )
+        user = db.query(User).filter(User.id == user_id).first()
+        has_base_resume = bool(user and user.base_resume_path and os.path.exists(user.base_resume_path))
+        base_resume = {
+            "has_base_resume": has_base_resume,
+            "filename": user.base_resume_filename if has_base_resume else None,
+            "template_id": user.base_template_id if has_base_resume else None,
+            "style_id": user.base_style_id if has_base_resume else None,
+        }
     finally:
         db.close()
     return templates.TemplateResponse(
         request,
         "my_resumes.html",
-        {"request": request, "resumes": resumes},
+        {"request": request, "resumes": resumes, "base_resume": base_resume},
     )
 
 
@@ -5151,6 +5170,174 @@ async def extension_log_application(request: Request):
     finally:
         db.close()
     return JSONResponse({"success": True, "id": new_id})
+
+
+@app.post("/api/extension/base-resume")
+async def set_extension_base_resume(
+    request: Request,
+    file: UploadFile = File(...),
+    template_id: int = Form(1),
+    style_id: int = Form(1),
+):
+    """Save the resume PDF + template/style the Chrome extension will tailor
+    against on job pages. Called from the web app (My Resumes), so it keeps
+    normal CSRF protection — not in EXEMPT_PATHS."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+
+    new_path = save_uploaded_pdf(file)
+    with open(new_path, "wb") as f:
+        content = await file.read()
+        f.write(content)
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        old_path = user.base_resume_path
+        user.base_resume_path = new_path
+        user.base_resume_filename = (file.filename or "resume.pdf")[:255]
+        user.base_template_id = template_id
+        user.base_style_id = style_id
+        user.base_resume_uploaded_at = datetime.utcnow()
+        db.commit()
+        if old_path and old_path != new_path and os.path.exists(old_path):
+            os.remove(old_path)
+    finally:
+        db.close()
+    return JSONResponse({"success": True})
+
+
+@app.get("/api/extension/base-resume")
+async def get_extension_base_resume(request: Request):
+    """Status the extension popup and the web settings widget both read to
+    know whether a base resume is configured yet."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        has_base_resume = bool(user.base_resume_path and os.path.exists(user.base_resume_path))
+        return JSONResponse({
+            "has_base_resume": has_base_resume,
+            "filename": user.base_resume_filename if has_base_resume else None,
+            "template_id": user.base_template_id if has_base_resume else None,
+            "style_id": user.base_style_id if has_base_resume else None,
+            "uploaded_at": user.base_resume_uploaded_at.isoformat() if (has_base_resume and user.base_resume_uploaded_at) else None,
+        })
+    finally:
+        db.close()
+
+
+@app.post("/api/extension/tailor-resume")
+async def extension_tailor_resume(request: Request):
+    """Tailor the user's stored base resume against a JD scraped by the Chrome
+    extension and return the rendered PDF (CSRF-exempt; see EXEMPT_PATHS — this
+    is invoked from background.js, not a page that carries a CSRF token)."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+
+    jd_string = str(payload.get("jd_string") or "").strip()
+    if not jd_string:
+        raise HTTPException(status_code=400, detail="Missing job description")
+    company = (payload.get("company") or "").strip()[:200] or None
+    role = (payload.get("role") or "").strip()[:200] or None
+    job_url = (payload.get("url") or "").strip()[:500] or None
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+            raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/my-resumes first.")
+
+        # Atomically gate + consume the same ai_optimizations quota the website
+        # enforces via /api/billing/checkout-download before /get-optimised-resume.
+        if not is_pro(user):
+            _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
+            _beta_ids = {int(x) for x in _beta_env.split(",") if x.strip().isdigit()} if _beta_env else set()
+            if not _beta_env or user.id in _beta_ids:
+                db.query(User).filter(User.id == user.id).with_for_update().one()
+                from sqlalchemy import func as _func
+                used = (
+                    db.query(_func.coalesce(_func.sum(UsageRecord.ai_optimizations), 0))
+                    .filter(UsageRecord.user_id == user.id)
+                    .scalar() or 0
+                )
+                if used >= FREE_LIMITS.get("ai_optimizations", 1):
+                    return JSONResponse(
+                        status_code=402,
+                        content={"allowed": False, "error": "upgrade_required", "feature": "ai_optimizations"},
+                    )
+                month = datetime.utcnow().strftime("%Y-%m")
+                rec = get_or_create_usage(db, user.id, month)
+                rec.ai_optimizations = (rec.ai_optimizations or 0) + 1
+                db.commit()
+
+        template_id = user.base_template_id or 1
+        style_id = user.base_style_id or 1
+        base_resume_path = user.base_resume_path
+    finally:
+        db.close()
+
+    pdf_path = None
+    try:
+        async with request_semaphore:
+            parsed = await _optimize_resume_core(base_resume_path, jd_string)
+            html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
+            try:
+                pdf_path = await asyncio.to_thread(_render_resume_pdf_sync, html_content, use_default_template)
+            except Exception:
+                logger.exception("PDF render failed")
+                raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
+
+            if not os.path.exists(pdf_path):
+                raise HTTPException(status_code=404, detail="PDF file not found after generation")
+
+            db = get_db()
+            try:
+                db.add(SavedResume(
+                    user_id=user_id,
+                    title=role or "Tailored Resume",
+                    candidate_name=str((parsed or {}).get("name") or "").strip()[:255] or None,
+                    jd_snippet=jd_string,
+                    template_id=template_id,
+                    style_id=style_id,
+                    company=company,
+                    status="saved",
+                    resume_json=json.dumps(parsed) if isinstance(parsed, dict) else None,
+                    html_content=html_content,
+                ))
+                db.commit()
+            finally:
+                db.close()
+
+            return FileResponse(
+                pdf_path,
+                media_type="application/pdf",
+                filename="tailored_resume.pdf",
+                background=BackgroundTask(_cleanup_files, [pdf_path]),
+            )
+    except HTTPException:
+        if pdf_path and os.path.exists(pdf_path):
+            os.remove(pdf_path)
+        raise
+    except Exception:
+        logger.exception("Extension tailor-resume failed")
+        if pdf_path and os.path.exists(pdf_path):
+            os.remove(pdf_path)
+        raise HTTPException(status_code=500, detail="Could not tailor the resume. Please try again.")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -7751,6 +7938,351 @@ async def reset_password(request: Request):
         db.close()
 
 
+async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
+    """Runs the AI tailoring pass plus PDF-annotation link-recovery on an uploaded
+    resume PDF, returning the optimized resume dict. Shared by /get-optimised-resume
+    and the extension's /api/extension/tailor-resume, which differ only in where the
+    source PDF comes from (fresh upload vs. a user's stored base resume)."""
+    resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
+    normalized_resume_string = normalize_links(resume_string)
+
+    # OPTIMIZATION: Run all link extractions in parallel instead of sequentially
+    link_tasks = [
+        asyncio.to_thread(extract_project_links, normalized_resume_string),
+        asyncio.to_thread(extract_publication_links, normalized_resume_string),
+        asyncio.to_thread(map_project_demo_links, normalized_resume_string),
+        asyncio.to_thread(extract_project_link_map, normalized_resume_string),
+    ]
+    extracted_links, extracted_pub_links, mapped_links, project_link_map = await asyncio.gather(*link_tasks)
+
+    prompt = create_prompt(resume_string, jd_string)
+    try:
+        response_string = await get_resume_response(prompt)
+    except Exception as e:
+        logger.exception("AI generation failed")
+        raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
+
+    parsed = parse_ai_json_response(response_string)
+
+    # Recover any bullet point the optimizer silently dropped/merged on a
+    # long resume, restoring it onto the exact entry it came from.
+    parsed = restore_dropped_bullets(parsed, resume_string)
+
+    # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
+    # The AI response already contains the optimized data - no need to re-extract original data
+
+    # Extract project links from PDF for better accuracy (only if needed)
+    project_names = [p.get("name") for p in (parsed.get("projects") or []) if isinstance(p, dict)]
+    if project_names:
+        pdf_project_link_map = await asyncio.to_thread(
+            extract_project_links_from_pdf,
+            file_path,
+            project_names,
+        )
+        # Merge annotation-based map (most reliable) with the text-based map so
+        # projects missed by one source can still be covered by the other.
+        effective_map = {}
+        for src in (pdf_project_link_map or {}), (project_link_map or {}):
+            if not isinstance(src, dict):
+                continue
+            for key, pairs in src.items():
+                bucket = effective_map.setdefault(key, [])
+                for pair in pairs:
+                    if pair not in bucket:
+                        bucket.append(pair)
+    else:
+        effective_map = project_link_map
+
+    # Recover publication links from PDF annotations (publications often use
+    # clickable anchor text, so plain text extraction misses the real URLs).
+    if parsed.get("publications"):
+        try:
+            annot_pub_links = await asyncio.to_thread(
+                extract_section_annotation_links, file_path, "publications"
+            )
+        except Exception:
+            annot_pub_links = []
+        if annot_pub_links:
+            merged_pub = list(annot_pub_links)
+            for u in (extracted_pub_links or []):
+                if u not in merged_pub:
+                    merged_pub.append(u)
+            extracted_pub_links = merged_pub
+
+    parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
+    parsed = inject_jd_hard_skills(parsed, jd_string)
+
+    # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
+    # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
+    # the true URL lives in the annotation, so the AI loses or mangles them.
+    # We override the AI value only when it is missing OR not a real URL.
+    try:
+        pdf_contact_links = await asyncio.to_thread(extract_contact_links_from_pdf, file_path)
+        if pdf_contact_links:
+            contact = parsed.get("contact")
+            if not isinstance(contact, dict):
+                contact = {}
+                parsed["contact"] = contact
+
+            def _is_real_url(v: str) -> bool:
+                v = str(v or "").strip()
+                if not v:
+                    return False
+                # A usable contact value must contain a domain dot or an explicit path.
+                return ("." in v) or v.lower().startswith(("http://", "https://"))
+
+            # For exact-domain social services the annotation is the ground truth
+            # (the AI sometimes drops the URL or hallucinates a different one), so
+            # always prefer it. Portfolio is heuristic, so only fill when missing.
+            authoritative = {
+                "linkedin", "github", "leetcode", "kaggle",
+                "codeforces", "codechef", "google_scholar", "twitter",
+            }
+            for service, real_url in pdf_contact_links.items():
+                current = str(contact.get(service, "") or "").strip()
+                if service in authoritative or not _is_real_url(current):
+                    contact[service] = real_url
+    except Exception:
+        pass
+
+    # Recover links inside Education, Experience and Certifications sections
+    # from PDF annotations (course/credential verification URLs, company
+    # sites, etc.). These are anchor-text-only in many resumes, so the AI
+    # loses them. Assigned in document order, never reusing a placed URL.
+    try:
+        section_used = _collect_used_urls(parsed)
+
+        def _real(v: str) -> bool:
+            v = str(v or "").strip().lower()
+            return v.startswith(("http://", "https://")) or ("." in v and " " not in v)
+
+        async def _match_entry_links(section_key, id_fields, field, use_above):
+            """Assign each entry's link using two position-correct matchers:
+            (1) text under the link rectangle (column-aware) and, optionally,
+            (2) the nearest entry-title above the link. Both bind a link to the
+            entry it physically belongs to — recovering links without ever moving
+            a link to a different sub-section. Global `section_used` prevents reuse."""
+            items = [i for i in (parsed.get(section_key) or []) if isinstance(i, dict)]
+            if not items:
+                return
+            names = []
+            for it in items:
+                for f in id_fields:
+                    v = str(it.get(f, "")).strip()
+                    if v:
+                        names.append(v)
+            if not names:
+                return
+            # (1) precise: text physically under the link rectangle
+            m1 = await asyncio.to_thread(
+                extract_named_item_links_from_pdf, file_path, names, section_key
+            ) or {}
+            norm1 = {_normalize_key(k): v for k, v in m1.items()}
+            # (2) recovery: nearest entry-title above the link (single-column safe)
+            norm2 = {}
+            if use_above:
+                m2 = await asyncio.to_thread(
+                    extract_project_links_from_pdf, file_path, names, section_key
+                ) or {}
+                for k, pairs in m2.items():
+                    bucket = norm2.setdefault(_normalize_key(k), [])
+                    for _lab, uri in pairs:
+                        bucket.append(uri)
+            for it in items:
+                cur = str(it.get(field, "") or "").strip()
+                if _real(cur):
+                    section_used.add(cur.lower())
+                    continue
+                keys = [_normalize_key(it.get(f, "")) for f in id_fields if str(it.get(f, "")).strip()]
+                chosen = None
+                for k in keys:
+                    u = norm1.get(k)
+                    if u and u.lower() not in section_used:
+                        chosen = u
+                        break
+                if not chosen:
+                    for k in keys:
+                        for u in norm2.get(k, []):
+                            if u and u.lower() not in section_used:
+                                chosen = u
+                                break
+                        if chosen:
+                            break
+                if chosen:
+                    it[field] = chosen
+                    section_used.add(chosen.lower())
+
+        # Certifications use text-under-rect only (2-column safe). Experience and
+        # education also use nearest-title-above to recover icon-style links.
+        await _match_entry_links("certifications", ("name",), "url", use_above=False)
+        await _match_entry_links("experience", ("company", "title"), "url", use_above=True)
+        await _match_entry_links("education", ("school", "degree"), "links", use_above=True)
+
+        # Unambiguous-only position fallback for experience/education: fill a
+        # leftover section link ONLY when there is exactly one empty entry and
+        # exactly one unused link. Guarantees a link never lands on the wrong
+        # sub-section (these sections are often only partially linked).
+        for section_key, field in (
+            ("education", "links"),
+            ("experience", "url"),
+        ):
+            items = [i for i in (parsed.get(section_key) or []) if isinstance(i, dict)]
+            if not items:
+                continue
+            empties = [i for i in items if not _real(str(i.get(field, "") or ""))]
+            if len(empties) != 1:
+                continue
+            section_urls = await asyncio.to_thread(
+                extract_section_annotation_links, file_path, section_key
+            )
+            avail = [u for u in (section_urls or []) if u and u.lower() not in section_used]
+            if len(avail) == 1:
+                empties[0][field] = avail[0]
+                section_used.add(avail[0].lower())
+
+        # Certifications: a flat list that is typically FULLY linked (each cert
+        # name is the clickable link). Section links now arrive in true reading
+        # order (row band, then column) — the same order the AI reads the PDF —
+        # so assign any remaining links to remaining certs 1:1 in order. This
+        # recovers every cert link even in dense 2-column layouts (e.g. ~20 certs)
+        # where per-name matching misses some, without sub-section exchange.
+        cert_dbg = {"names": [], "section_links": [], "assigned": []}
+        try:
+            cert_items = [i for i in (parsed.get("certifications") or []) if isinstance(i, dict)]
+            cert_dbg["names"] = [str(i.get("name", "")).strip() for i in cert_items]
+            if cert_items:
+                cert_urls = await asyncio.to_thread(
+                    extract_section_annotation_links, file_path, "certifications"
+                ) or []
+                cert_dbg["section_links"] = list(cert_urls)
+                avail = [u for u in cert_urls if u and u.lower() not in section_used]
+                empties = [i for i in cert_items if not _real(str(i.get("url", "") or ""))]
+                for it, uri in zip(empties, avail):
+                    it["url"] = uri
+                    section_used.add(uri.lower())
+                    cert_dbg["assigned"].append((str(it.get("name", "")).strip(), uri))
+        except Exception:
+            pass
+        # Persisted diagnostics (file is uploaded resume's sibling, survives cleanup).
+        try:
+            import json as _json
+            dbg_path = os.path.join(BASE_DIR, "cert_debug.txt")
+            with open(dbg_path, "w", encoding="utf-8") as _df:
+                _df.write("=== CERT NAMES (from AI) ===\n")
+                for n in cert_dbg["names"]:
+                    _df.write(f"  - {n}\n")
+                _df.write(f"\n=== CERT SECTION LINKS (reading order) [{len(cert_dbg['section_links'])}] ===\n")
+                for u in cert_dbg["section_links"]:
+                    _df.write(f"  - {u}\n")
+                _df.write(f"\n=== FINAL cert.url PER ENTRY ===\n")
+                for it in (parsed.get("certifications") or []):
+                    if isinstance(it, dict):
+                        _df.write(f"  - {str(it.get('name','')).strip()}  ->  {it.get('url','')}\n")
+                _df.write(f"\n=== READING-ORDER FILL ASSIGNED [{len(cert_dbg['assigned'])}] ===\n")
+                for n, u in cert_dbg["assigned"]:
+                    _df.write(f"  - {n}  ->  {u}\n")
+        except Exception:
+            pass
+    except Exception:
+        pass
+
+    # Final safety net: clean the optimized data (balance parens, dedupe
+    # skills, strip stray bullets) so malformed AI/post-processing output
+    # never reaches the rendered resume. Must run after all injection.
+    parsed = sanitize_resume_data(parsed)
+    return parsed
+
+
+def _render_resume_html(parsed: dict, jd_string: str, template_id: int, style_id: int) -> tuple[str, bool]:
+    """Renders an optimized resume dict into HTML using the chosen template/style.
+    Returns (html_content, use_default_template). Shared by /get-optimised-resume
+    and /api/extension/tailor-resume."""
+    use_default_template = template_id == 0
+    template_content = None
+
+    # OPTIMIZATION: Use cached templates to avoid repeated file I/O
+    if not use_default_template:
+        template_filename = f"template{template_id}.html"
+        if template_filename in _template_cache:
+            template_content = _template_cache[template_filename]
+        else:
+            template_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "html", template_filename)
+            try:
+                with open(template_path, 'r', encoding='utf-8') as f:
+                    template_content = f.read()
+                    _template_cache[template_filename] = template_content  # Cache it
+            except FileNotFoundError:
+                try:
+                    template = templates.env.get_template('resume_template.html')
+                    use_default_template = True
+                except Exception:
+                    raise HTTPException(status_code=500, detail=f"Template {template_filename} not found")
+    else:
+        template = templates.env.get_template('resume_template.html')
+
+    if template_id == 6:
+        style_filename = "style3.css"
+    elif template_id < 7:
+        style_filename = f"style{style_id}.css"
+    else:
+        style_filename = ""
+
+    css_content = ""
+    # OPTIMIZATION: Use cached CSS to avoid repeated file I/O
+    if style_filename:
+        if style_filename in _css_cache:
+            css_content = _css_cache[style_filename]
+        else:
+            style_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "css", style_filename)
+            try:
+                with open(style_path, 'r', encoding='utf-8') as f:
+                    css_content = f.read()
+                    _css_cache[style_filename] = css_content  # Cache it
+            except FileNotFoundError:
+                default_style_path = os.path.join(BASE_DIR, 'resumes', 'style.css')
+                try:
+                    with open(default_style_path, 'r', encoding='utf-8') as f:
+                        css_content = f.read()
+                        _css_cache[style_filename] = css_content
+                except FileNotFoundError:
+                    pass
+
+    context = build_resume_context(parsed, jd_string)
+    if not use_default_template and template_content:
+        from jinja2 import Template as Jinja2Template
+        jinja_template = Jinja2Template(template_content)
+        html_content = jinja_template.render(**context)
+        html_content = html_content.replace('href="STYLESHEET_PLACEHOLDER"', '')
+        if css_content:
+            html_content = html_content.replace('</head>', f'<style>{css_content}</style></head>')
+    else:
+        template = templates.env.get_template('resume_template.html')
+        html_content = template.render(**context)
+
+    return html_content, use_default_template
+
+
+def _render_resume_pdf_sync(html_content: str, use_default_template: bool) -> str:
+    """Renders resume HTML to a PDF file on disk and returns its path. Shared by
+    /get-optimised-resume and /api/extension/tailor-resume."""
+    from weasyprint import HTML
+    pdf_path = os.path.join(resumes_dir, f"optimized_resume_{uuid.uuid4()}.pdf")
+    # OPTIMIZATION: Use faster WeasyPrint rendering options
+    if not use_default_template:
+        HTML(string=html_content, base_url=BASE_DIR).write_pdf(
+            pdf_path,
+            optimize_size=('fonts',)  # Skip font subsetting for speed
+        )
+    else:
+        css_path = os.path.join(resumes_dir, 'style.css')
+        HTML(string=html_content, base_url=BASE_DIR).write_pdf(
+            pdf_path,
+            stylesheets=[css_path],
+            optimize_size=('fonts',)
+        )
+    return pdf_path
+
+
 @app.post("/get-optimised-resume")
 async def upload_resume(
     request: Request,
@@ -7781,315 +8313,8 @@ async def upload_resume(
             f.write(content)
 
         async with request_semaphore:
-            resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
-            normalized_resume_string = normalize_links(resume_string)
-
-            # OPTIMIZATION: Run all link extractions in parallel instead of sequentially
-            link_tasks = [
-                asyncio.to_thread(extract_project_links, normalized_resume_string),
-                asyncio.to_thread(extract_publication_links, normalized_resume_string),
-                asyncio.to_thread(map_project_demo_links, normalized_resume_string),
-                asyncio.to_thread(extract_project_link_map, normalized_resume_string),
-            ]
-            extracted_links, extracted_pub_links, mapped_links, project_link_map = await asyncio.gather(*link_tasks)
-
-            prompt = create_prompt(resume_string, jd_string)
-            try:
-                response_string = await get_resume_response(prompt)
-            except Exception as e:
-                logger.exception("AI generation failed")
-                raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
-
-            parsed = parse_ai_json_response(response_string)
-
-            # Recover any bullet point the optimizer silently dropped/merged on a
-            # long resume, restoring it onto the exact entry it came from.
-            parsed = restore_dropped_bullets(parsed, resume_string)
-
-            # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
-            # The AI response already contains the optimized data - no need to re-extract original data
-
-            # Extract project links from PDF for better accuracy (only if needed)
-            project_names = [p.get("name") for p in (parsed.get("projects") or []) if isinstance(p, dict)]
-            if project_names:
-                pdf_project_link_map = await asyncio.to_thread(
-                    extract_project_links_from_pdf,
-                    file_path,
-                    project_names,
-                )
-                # Merge annotation-based map (most reliable) with the text-based map so
-                # projects missed by one source can still be covered by the other.
-                effective_map = {}
-                for src in (pdf_project_link_map or {}), (project_link_map or {}):
-                    if not isinstance(src, dict):
-                        continue
-                    for key, pairs in src.items():
-                        bucket = effective_map.setdefault(key, [])
-                        for pair in pairs:
-                            if pair not in bucket:
-                                bucket.append(pair)
-            else:
-                effective_map = project_link_map
-
-            # Recover publication links from PDF annotations (publications often use
-            # clickable anchor text, so plain text extraction misses the real URLs).
-            if parsed.get("publications"):
-                try:
-                    annot_pub_links = await asyncio.to_thread(
-                        extract_section_annotation_links, file_path, "publications"
-                    )
-                except Exception:
-                    annot_pub_links = []
-                if annot_pub_links:
-                    merged_pub = list(annot_pub_links)
-                    for u in (extracted_pub_links or []):
-                        if u not in merged_pub:
-                            merged_pub.append(u)
-                    extracted_pub_links = merged_pub
-
-            parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
-            parsed = inject_jd_hard_skills(parsed, jd_string)
-
-            # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
-            # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
-            # the true URL lives in the annotation, so the AI loses or mangles them.
-            # We override the AI value only when it is missing OR not a real URL.
-            try:
-                pdf_contact_links = await asyncio.to_thread(extract_contact_links_from_pdf, file_path)
-                if pdf_contact_links:
-                    contact = parsed.get("contact")
-                    if not isinstance(contact, dict):
-                        contact = {}
-                        parsed["contact"] = contact
-
-                    def _is_real_url(v: str) -> bool:
-                        v = str(v or "").strip()
-                        if not v:
-                            return False
-                        # A usable contact value must contain a domain dot or an explicit path.
-                        return ("." in v) or v.lower().startswith(("http://", "https://"))
-
-                    # For exact-domain social services the annotation is the ground truth
-                    # (the AI sometimes drops the URL or hallucinates a different one), so
-                    # always prefer it. Portfolio is heuristic, so only fill when missing.
-                    authoritative = {
-                        "linkedin", "github", "leetcode", "kaggle",
-                        "codeforces", "codechef", "google_scholar", "twitter",
-                    }
-                    for service, real_url in pdf_contact_links.items():
-                        current = str(contact.get(service, "") or "").strip()
-                        if service in authoritative or not _is_real_url(current):
-                            contact[service] = real_url
-            except Exception:
-                pass
-
-            # Recover links inside Education, Experience and Certifications sections
-            # from PDF annotations (course/credential verification URLs, company
-            # sites, etc.). These are anchor-text-only in many resumes, so the AI
-            # loses them. Assigned in document order, never reusing a placed URL.
-            try:
-                section_used = _collect_used_urls(parsed)
-
-                def _real(v: str) -> bool:
-                    v = str(v or "").strip().lower()
-                    return v.startswith(("http://", "https://")) or ("." in v and " " not in v)
-
-                async def _match_entry_links(section_key, id_fields, field, use_above):
-                    """Assign each entry's link using two position-correct matchers:
-                    (1) text under the link rectangle (column-aware) and, optionally,
-                    (2) the nearest entry-title above the link. Both bind a link to the
-                    entry it physically belongs to — recovering links without ever moving
-                    a link to a different sub-section. Global `section_used` prevents reuse."""
-                    items = [i for i in (parsed.get(section_key) or []) if isinstance(i, dict)]
-                    if not items:
-                        return
-                    names = []
-                    for it in items:
-                        for f in id_fields:
-                            v = str(it.get(f, "")).strip()
-                            if v:
-                                names.append(v)
-                    if not names:
-                        return
-                    # (1) precise: text physically under the link rectangle
-                    m1 = await asyncio.to_thread(
-                        extract_named_item_links_from_pdf, file_path, names, section_key
-                    ) or {}
-                    norm1 = {_normalize_key(k): v for k, v in m1.items()}
-                    # (2) recovery: nearest entry-title above the link (single-column safe)
-                    norm2 = {}
-                    if use_above:
-                        m2 = await asyncio.to_thread(
-                            extract_project_links_from_pdf, file_path, names, section_key
-                        ) or {}
-                        for k, pairs in m2.items():
-                            bucket = norm2.setdefault(_normalize_key(k), [])
-                            for _lab, uri in pairs:
-                                bucket.append(uri)
-                    for it in items:
-                        cur = str(it.get(field, "") or "").strip()
-                        if _real(cur):
-                            section_used.add(cur.lower())
-                            continue
-                        keys = [_normalize_key(it.get(f, "")) for f in id_fields if str(it.get(f, "")).strip()]
-                        chosen = None
-                        for k in keys:
-                            u = norm1.get(k)
-                            if u and u.lower() not in section_used:
-                                chosen = u
-                                break
-                        if not chosen:
-                            for k in keys:
-                                for u in norm2.get(k, []):
-                                    if u and u.lower() not in section_used:
-                                        chosen = u
-                                        break
-                                if chosen:
-                                    break
-                        if chosen:
-                            it[field] = chosen
-                            section_used.add(chosen.lower())
-
-                # Certifications use text-under-rect only (2-column safe). Experience and
-                # education also use nearest-title-above to recover icon-style links.
-                await _match_entry_links("certifications", ("name",), "url", use_above=False)
-                await _match_entry_links("experience", ("company", "title"), "url", use_above=True)
-                await _match_entry_links("education", ("school", "degree"), "links", use_above=True)
-
-                # Unambiguous-only position fallback for experience/education: fill a
-                # leftover section link ONLY when there is exactly one empty entry and
-                # exactly one unused link. Guarantees a link never lands on the wrong
-                # sub-section (these sections are often only partially linked).
-                for section_key, field in (
-                    ("education", "links"),
-                    ("experience", "url"),
-                ):
-                    items = [i for i in (parsed.get(section_key) or []) if isinstance(i, dict)]
-                    if not items:
-                        continue
-                    empties = [i for i in items if not _real(str(i.get(field, "") or ""))]
-                    if len(empties) != 1:
-                        continue
-                    section_urls = await asyncio.to_thread(
-                        extract_section_annotation_links, file_path, section_key
-                    )
-                    avail = [u for u in (section_urls or []) if u and u.lower() not in section_used]
-                    if len(avail) == 1:
-                        empties[0][field] = avail[0]
-                        section_used.add(avail[0].lower())
-
-                # Certifications: a flat list that is typically FULLY linked (each cert
-                # name is the clickable link). Section links now arrive in true reading
-                # order (row band, then column) — the same order the AI reads the PDF —
-                # so assign any remaining links to remaining certs 1:1 in order. This
-                # recovers every cert link even in dense 2-column layouts (e.g. ~20 certs)
-                # where per-name matching misses some, without sub-section exchange.
-                cert_dbg = {"names": [], "section_links": [], "assigned": []}
-                try:
-                    cert_items = [i for i in (parsed.get("certifications") or []) if isinstance(i, dict)]
-                    cert_dbg["names"] = [str(i.get("name", "")).strip() for i in cert_items]
-                    if cert_items:
-                        cert_urls = await asyncio.to_thread(
-                            extract_section_annotation_links, file_path, "certifications"
-                        ) or []
-                        cert_dbg["section_links"] = list(cert_urls)
-                        avail = [u for u in cert_urls if u and u.lower() not in section_used]
-                        empties = [i for i in cert_items if not _real(str(i.get("url", "") or ""))]
-                        for it, uri in zip(empties, avail):
-                            it["url"] = uri
-                            section_used.add(uri.lower())
-                            cert_dbg["assigned"].append((str(it.get("name", "")).strip(), uri))
-                except Exception:
-                    pass
-                # Persisted diagnostics (file is uploaded resume's sibling, survives cleanup).
-                try:
-                    import json as _json
-                    dbg_path = os.path.join(BASE_DIR, "cert_debug.txt")
-                    with open(dbg_path, "w", encoding="utf-8") as _df:
-                        _df.write("=== CERT NAMES (from AI) ===\n")
-                        for n in cert_dbg["names"]:
-                            _df.write(f"  - {n}\n")
-                        _df.write(f"\n=== CERT SECTION LINKS (reading order) [{len(cert_dbg['section_links'])}] ===\n")
-                        for u in cert_dbg["section_links"]:
-                            _df.write(f"  - {u}\n")
-                        _df.write(f"\n=== FINAL cert.url PER ENTRY ===\n")
-                        for it in (parsed.get("certifications") or []):
-                            if isinstance(it, dict):
-                                _df.write(f"  - {str(it.get('name','')).strip()}  ->  {it.get('url','')}\n")
-                        _df.write(f"\n=== READING-ORDER FILL ASSIGNED [{len(cert_dbg['assigned'])}] ===\n")
-                        for n, u in cert_dbg["assigned"]:
-                            _df.write(f"  - {n}  ->  {u}\n")
-                except Exception:
-                    pass
-            except Exception:
-                pass
-
-            # Final safety net: clean the optimized data (balance parens, dedupe
-            # skills, strip stray bullets) so malformed AI/post-processing output
-            # never reaches the rendered resume. Must run after all injection.
-            parsed = sanitize_resume_data(parsed)
-
-            use_default_template = template_id == 0
-            template_content = None
-
-            # OPTIMIZATION: Use cached templates to avoid repeated file I/O
-            if not use_default_template:
-                template_filename = f"template{template_id}.html"
-                if template_filename in _template_cache:
-                    template_content = _template_cache[template_filename]
-                else:
-                    template_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "html", template_filename)
-                    try:
-                        with open(template_path, 'r', encoding='utf-8') as f:
-                            template_content = f.read()
-                            _template_cache[template_filename] = template_content  # Cache it
-                    except FileNotFoundError:
-                        try:
-                            template = templates.env.get_template('resume_template.html')
-                            use_default_template = True
-                        except Exception:
-                            raise HTTPException(status_code=500, detail=f"Template {template_filename} not found")
-            else:
-                template = templates.env.get_template('resume_template.html')
-
-            if template_id == 6:
-                style_filename = "style3.css"
-            elif template_id < 7:
-                style_filename = f"style{style_id}.css"
-            else:
-                style_filename = ""
-
-            css_content = ""
-            # OPTIMIZATION: Use cached CSS to avoid repeated file I/O
-            if style_filename:
-                if style_filename in _css_cache:
-                    css_content = _css_cache[style_filename]
-                else:
-                    style_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "css", style_filename)
-                    try:
-                        with open(style_path, 'r', encoding='utf-8') as f:
-                            css_content = f.read()
-                            _css_cache[style_filename] = css_content  # Cache it
-                    except FileNotFoundError:
-                        default_style_path = os.path.join(BASE_DIR, 'resumes', 'style.css')
-                        try:
-                            with open(default_style_path, 'r', encoding='utf-8') as f:
-                                css_content = f.read()
-                                _css_cache[style_filename] = css_content
-                        except FileNotFoundError:
-                            pass
-
-            context = build_resume_context(parsed, jd_string)
-            if not use_default_template and template_content:
-                from jinja2 import Template as Jinja2Template
-                jinja_template = Jinja2Template(template_content)
-                html_content = jinja_template.render(**context)
-                html_content = html_content.replace('href="STYLESHEET_PLACEHOLDER"', '')
-                if css_content:
-                    html_content = html_content.replace('</head>', f'<style>{css_content}</style></head>')
-            else:
-                template = templates.env.get_template('resume_template.html')
-                html_content = template.render(**context)
+            parsed = await _optimize_resume_core(file_path, jd_string)
+            html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
 
             # NOTE: we intentionally do NOT auto-save here. Saving to My Resumes
             # is now an explicit user choice made in the editor ("Save to My
@@ -8112,26 +8337,8 @@ async def upload_resume(
                     ),
                 })
 
-            pdf_path = os.path.join(resumes_dir, f"optimized_resume_{uuid.uuid4()}.pdf")
-
-            def _render_pdf():
-                from weasyprint import HTML
-                # OPTIMIZATION: Use faster WeasyPrint rendering options
-                if not use_default_template and template_content:
-                    HTML(string=html_content, base_url=BASE_DIR).write_pdf(
-                        pdf_path,
-                        optimize_size=('fonts',)  # Skip font subsetting for speed
-                    )
-                else:
-                    css_path = os.path.join(resumes_dir, 'style.css')
-                    HTML(string=html_content, base_url=BASE_DIR).write_pdf(
-                        pdf_path,
-                        stylesheets=[css_path],
-                        optimize_size=('fonts',)
-                    )
-
             try:
-                await asyncio.to_thread(_render_pdf)
+                pdf_path = await asyncio.to_thread(_render_resume_pdf_sync, html_content, use_default_template)
             except Exception as e:
                 logger.exception("PDF render failed")
                 raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")

@@ -119,6 +119,32 @@
         .navbar .nav-links { min-width: auto; flex-wrap: nowrap; gap: 2px; }
         .navbar .nav-links a { font-size: 12px; padding: 22px 12px; letter-spacing: 0; white-space: nowrap; }
         @media (max-width: 1100px) { .navbar .nav-links a { font-size: 11px; padding: 20px 8px; } }
+
+        .base-resume-card {
+            background: linear-gradient(160deg, rgba(30,41,69,.65), rgba(17,24,42,.85));
+            border: 1px solid rgba(99,130,200,.22);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 28px;
+        }
+        .base-resume-card h2 { font-size: 1.1rem; font-weight: 700; color: #eaf1ff; margin: 0 0 4px; }
+        .base-resume-card p { font-size: .85rem; color: #9fb0cc; margin: 0 0 16px; }
+        .base-resume-status { font-size: .85rem; color: #6ee7b7; margin-bottom: 14px; }
+        .base-resume-status.unset { color: #9fb0cc; }
+        .base-resume-form { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .base-resume-form input[type="file"] {
+            color: #cbd5e1; font-size: .82rem; flex: 1; min-width: 180px;
+        }
+        .base-resume-form select.tracker-select { min-width: 140px; }
+        .base-resume-save {
+            background: linear-gradient(135deg, #3392ff, #4c1d95); color: #fff; border: none;
+            border-radius: 9px; padding: 9px 18px; font-size: .85rem; font-weight: 700; cursor: pointer;
+        }
+        .base-resume-save:hover { filter: brightness(1.08); }
+        .base-resume-save:disabled { opacity: .6; cursor: default; }
+        .base-resume-msg { font-size: .8rem; margin-top: 10px; }
+        .base-resume-msg.error { color: #fca5a5; }
+        .base-resume-msg.ok { color: #6ee7b7; }
     </style>
 </head>
 <body>
@@ -129,6 +155,29 @@
             <h1>My Resumes</h1>
             <p>Every resume you've optimized is saved here. Re-download anytime — no need to start over.</p>
         </div>
+
+        <section class="base-resume-card">
+            <h2>Base Resume for Chrome Extension</h2>
+            <p>The TailorCV Chrome extension tailors this resume + template against job descriptions on LinkedIn and downloads the result automatically.</p>
+            <div class="base-resume-status {% if not base_resume.has_base_resume %}unset{% endif %}" id="baseResumeStatus">
+                {% if base_resume.has_base_resume %}
+                    ✓ Using "{{ base_resume.filename }}" · Template {{ base_resume.template_id }}
+                {% else %}
+                    No base resume set yet — the extension can't tailor anything until you upload one.
+                {% endif %}
+            </div>
+            <form class="base-resume-form" id="baseResumeForm">
+                <input type="file" name="file" accept="application/pdf" required>
+                <select name="template_id" class="tracker-select" id="baseTemplateSelect" aria-label="Template"></select>
+                <select name="style_id" class="tracker-select" aria-label="Style">
+                    {% for s in range(1, 5) %}
+                    <option value="{{ s }}">Style {{ s }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="base-resume-save">Save as Extension Base Resume</button>
+            </form>
+            <div class="base-resume-msg" id="baseResumeMsg"></div>
+        </section>
 
         {% if resumes %}
         <section class="resume-grid">
@@ -187,6 +236,53 @@
     <script src="/static/auth_nav.js?v=13" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script>
+    (function () {
+        var select = document.getElementById('baseTemplateSelect');
+        fetch('/api/resume-templates').then(function (res) { return res.json(); }).then(function (data) {
+            (data.templates || []).forEach(function (t) {
+                var opt = document.createElement('option');
+                opt.value = t.id;
+                opt.textContent = t.name;
+                {% if base_resume.template_id %}
+                if (t.id === {{ base_resume.template_id }}) opt.selected = true;
+                {% endif %}
+                select.appendChild(opt);
+            });
+        }).catch(function () {});
+
+        var form = document.getElementById('baseResumeForm');
+        var msg = document.getElementById('baseResumeMsg');
+        var statusEl = document.getElementById('baseResumeStatus');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var btn = form.querySelector('.base-resume-save');
+            var origText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Saving…';
+            msg.textContent = '';
+            msg.className = 'base-resume-msg';
+            fetch('/api/extension/base-resume', {
+                method: 'POST',
+                body: new FormData(form),
+            }).then(function (res) {
+                if (!res.ok) throw new Error('Upload failed');
+                return res.json();
+            }).then(function () {
+                msg.textContent = 'Saved. The extension will use this resume from now on.';
+                msg.className = 'base-resume-msg ok';
+                var fileInput = form.querySelector('input[type="file"]');
+                statusEl.textContent = '✓ Using "' + (fileInput.files[0] ? fileInput.files[0].name : 'your resume') + '" · Template ' + select.value;
+                statusEl.className = 'base-resume-status';
+            }).catch(function () {
+                msg.textContent = 'Could not save your base resume. Please try again.';
+                msg.className = 'base-resume-msg error';
+            }).finally(function () {
+                btn.disabled = false;
+                btn.textContent = origText;
+            });
+        });
+    })();
+
     function dlResume(id, btn) {
         var orig = btn.textContent;
         btn.disabled = true;
