@@ -215,3 +215,39 @@
   line-height: 1.5 !important;
 }
 .tcv-job-info b { color: #eaf1ff !important; }
+
+/* Where the job description came from, and the way back out of a bad guess. */
+.tcv-source {
+  font-size: 10px !important;
+  color: #64748b !important;
+  margin: -4px 0 10px !important;
+}
+.tcv-source a {
+  color: #93c5fd !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+
+/* Manual fallback: the user hands us the job description themselves. */
+.tcv-textarea {
+  width: 100% !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  color: #f1f5f9 !important;
+  border-radius: 6px !important;
+  padding: 8px 10px !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  font-family: inherit !important;
+  resize: vertical !important;
+  margin-bottom: 8px !important;
+  box-sizing: border-box !important;
+}
+.tcv-textarea:focus { outline: none !important; border-color: #4f7fff !important; }
+
+.tcv-btn-ghost {
+  background: rgba(255,255,255,0.06) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+}
+.tcv-btn-ghost:hover:not(:disabled) { background: rgba(255,255,255,0.11) !important; }
