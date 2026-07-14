@@ -11,6 +11,10 @@
   let tcvBusy = false;
   let currentJob = null;
   let sb, body, launcher;
+  // Cached once login + base-resume checks succeed, so switching between job
+  // postings only re-extracts the JD instead of re-hitting the server for
+  // things that don't change mid-session.
+  let sessionReady = false;
 
   // ── Utilities ────────────────────────────────────────
 
@@ -88,7 +92,7 @@
       launcher.classList.remove('tcv-visible');
     });
 
-    refresh();
+    refreshFull();
   }
 
   function togglePanel() {
@@ -127,7 +131,7 @@
         body.querySelector('#tcvLoginError').textContent = res.error;
         return;
       }
-      refresh();
+      refreshFull();
     });
   }
 
@@ -143,7 +147,7 @@
       <div class="tcv-msg">Could not find a job description on this page.</div>
       <button class="tcv-btn tcv-btn-start" id="tcvRetryBtn">Retry</button>
     `;
-    body.querySelector('#tcvRetryBtn').addEventListener('click', refresh);
+    body.querySelector('#tcvRetryBtn').addEventListener('click', renderJobFromPage);
   }
 
   function renderReady(job) {
@@ -180,9 +184,23 @@
   }
 
   // ── State machine ────────────────────────────────────
+  // refreshFull() re-verifies login + base-resume with the server — used on
+  // first injection, after logging in, and whenever those checks last failed.
+  // renderJobFromPage() only re-reads the DOM for the job currently on screen
+  // — used when switching between job postings once the session is known good.
 
-  async function refresh() {
+  function renderJobFromPage() {
+    const jd_string = extractJobDescription();
+    if (!jd_string || jd_string.length < 80) {
+      renderNoJobDescription();
+      return;
+    }
+    renderReady({ jd_string, role: extractJobTitle(), company: extractCompany() });
+  }
+
+  async function refreshFull() {
     renderLoading();
+    sessionReady = false;
 
     const profileRes = await sendMessage({ type: 'GET_PROFILE' });
     if (profileRes.error || !profileRes.data) {
@@ -196,13 +214,13 @@
       return;
     }
 
-    const jd_string = extractJobDescription();
-    if (!jd_string || jd_string.length < 80) {
-      renderNoJobDescription();
-      return;
-    }
+    sessionReady = true;
+    renderJobFromPage();
+  }
 
-    renderReady({ jd_string, role: extractJobTitle(), company: extractCompany() });
+  function refreshOnNavigation() {
+    if (sessionReady) renderJobFromPage();
+    else refreshFull();
   }
 
   // ── Init: only inject on job pages ───────────────────
@@ -223,7 +241,7 @@
       lastUrl = location.href;
       setTimeout(() => {
         if (!isJobPage()) return;
-        if (document.getElementById('tailorcv-sidebar')) refresh();
+        if (document.getElementById('tailorcv-sidebar')) refreshOnNavigation();
         else createPanel();
       }, 1200);
     }
