@@ -30,6 +30,9 @@ class User(Base):
     base_template_id = Column(Integer, nullable=True)
     base_style_id = Column(Integer, nullable=True)
     base_resume_uploaded_at = Column(DateTime, nullable=True)
+    # Extracted once at upload time so the extension's skill-match score never
+    # needs to re-parse the PDF on every job the user looks at.
+    base_resume_text = Column(Text, nullable=True)
 
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")

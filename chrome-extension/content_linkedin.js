@@ -80,7 +80,10 @@
     sb.id = 'tailorcv-sidebar';
     sb.innerHTML = `
       <div class="tcv-header">
-        <span class="tcv-logo">TailorCV</span>
+        <div class="tcv-brand">
+          <img class="tcv-logo-icon" src="${chrome.runtime.getURL('icons/icon48.png')}" alt="">
+          <span class="tcv-logo">TailorCV</span>
+        </div>
         <button class="tcv-toggle" title="Minimize">✕</button>
       </div>
       <div id="tcvBody"></div>
@@ -213,7 +216,8 @@
     currentJob = job;
     const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
     body.innerHTML = `
-      <div class="tcv-job-info">Tailoring for: <b>${job.role || 'this job'}</b>${job.company ? ' at ' + job.company : ''}</div>
+      <div class="tcv-job-info">Job Title: <b>${job.role || 'this job'}</b>${job.company ? ' at ' + job.company : ''}</div>
+      <div class="tcv-match-row">Skill match: <span class="tcv-match-value" id="tcvMatchBefore">…</span></div>
       <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
         ${tcvBusy ? 'Tailoring  job…' : '✦ Tailor & Download Resume'}
       </button>
@@ -224,6 +228,24 @@
     } else {
       btn.addEventListener('click', () => runTailor(job, label));
     }
+    loadBeforeScore(job);
+  }
+
+  // Fires immediately whenever a job is detected — deterministic and LLM-free
+  // server-side, so this should resolve within a second or two, well before
+  // the user has decided whether to click "Tailor & Download."
+  function loadBeforeScore(job) {
+    const matchEl = body.querySelector('#tcvMatchBefore');
+    sendMessage({ type: 'GET_SKILL_MATCH', jd_string: job.jd_string }).then((res) => {
+      if (!matchEl.isConnected) return; // user already moved to a different job/state
+      const score = res.data && typeof res.data.score === 'number' ? res.data.score : null;
+      if (score === null) {
+        matchEl.textContent = '—';
+        return;
+      }
+      job.beforeScore = score;
+      matchEl.textContent = score + '%';
+    });
   }
 
   // The backend gives no incremental progress events for a single tailor
@@ -303,8 +325,17 @@
       return;
     }
 
-    globalStatus.className = res.error ? 'tcv-status-text tcv-error' : 'tcv-status-text tcv-ok';
-    globalStatus.textContent = res.error ? `✗ ${label}: ${res.error}` : `✓ Downloaded resume for "${label}"`;
+    if (res.error) {
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = `✗ ${label}: ${res.error}`;
+    } else {
+      const before = job.beforeScore;
+      const after = res.data && typeof res.data.afterScore === 'number' ? res.data.afterScore : null;
+      const matchText = after === null ? '' :
+        (typeof before === 'number' ? ` — Match: ${before}% → ${after}%` : ` — Match: ${after}%`);
+      globalStatus.className = 'tcv-status-text tcv-ok';
+      globalStatus.textContent = `✓ Downloaded resume for "${label}"${matchText}`;
+    }
 
     // Refresh whichever job is on screen now that we're free to tailor again.
     if (sessionReady) renderJobFromPage();
