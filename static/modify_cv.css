@@ -548,6 +548,13 @@ header.navbar {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+/* Force white text on the dark builder UI, but never on the logged-out
+   marketing landing: it has its own palette (blue accents, and dark text
+   inside the white resume mockups) that this would otherwise wipe out. */
+html:not([data-guest-landing="1"]) *,
+html:not([data-guest-landing="1"]) *::before,
+html:not([data-guest-landing="1"]) *::after {
     color: #ffffff !important; /* Force white text, override any black */
 }
 

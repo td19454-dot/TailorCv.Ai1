@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Margins, Spacing and Layout - The Complete Format Guide for 2026
 description: The definitive guide to resume margins, line spacing, white space, and page layout. Learn the exact measurements for a professional, ATS-compatible resume that is easy to read.
 date: 2026-06-06
@@ -17,6 +17,13 @@ This guide covers the exact measurements and formatting rules for a polished, re
 Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that has these settings pre-configured, then use this guide to understand and adjust them. Check your final resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
 ---
+
+## Key Takeaways
+
+- Use standard margins of 0.75-1 inch for a professional appearance; avoid going below 0.5 inch to maintain readability.
+- Line spacing should be set between 1.0-1.15 for paragraphs and bullets, with 6-12pt space between sections for clarity.
+- Utilize white space effectively to enhance document scan-ability and prevent a cluttered look.
+- A single-column layout is recommended for ATS compatibility and recruiter preference, while two-column formats should generally be avoided.
 
 ## Resume Margins: The Exact Numbers
 

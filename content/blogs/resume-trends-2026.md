@@ -14,6 +14,14 @@ Resume conventions shift every year, but 2026 has produced a sharper split than 
 
 ---
 
+## Key Takeaways
+
+- Tailoring resumes to specific job descriptions is crucial in 2026, as ATS engines have become more precise and recruiters expect customized applications.
+- AI tools enable faster resume tailoring, allowing candidates to adjust their resumes for each application without starting from scratch.
+- Emphasizing skills and evidence of capabilities is now more important than traditional qualifications like titles and degrees.
+- Portfolios are becoming standard in resumes, moving from optional to essential for showcasing relevant work.
+- Cosmetic trends, such as video resumes and frequent visual redesigns, are less impactful and should be approached with skepticism.
+
 ## The Signal-vs-Noise Problem With "Resume Trends" Articles
 
 Trend pieces have a built-in incentive problem: "ten brand-new rules for your resume" is more shareable than "most of this hasn't actually changed." Worth naming upfront, so you can calibrate how much weight to put on the rest of this article.

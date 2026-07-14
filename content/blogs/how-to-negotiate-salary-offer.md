@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Negotiate a Salary Offer in 2026 - Tactics That Actually Work
 description: Learn how to negotiate your salary offer in 2026 with scripts, tactics, research methods, and real examples for tech, business, and healthcare roles.
 date: 2026-06-01
@@ -22,6 +22,14 @@ Before negotiating, your resume needs to demonstrate the value you are asking fo
 
 ---
 
+## Key Takeaways
+
+- Most candidates accept the first salary offer, often leaving significant money on the table; negotiation can yield a 10-20% increase.
+- Always negotiate unless in fixed pay roles, hourly positions with collective agreements, or if you're already at the top of your market range.
+- The best time to negotiate is after receiving a written or verbal offer, not during initial interviews.
+- Research your market value using multiple sources to establish a target salary range and understand your negotiation leverage.
+- Use a structured negotiation script: express enthusiasm, clearly state your desired salary, and then remain silent to create pressure on the employer.
+
 ## Should You Always Negotiate?
 
 Almost always, yes. Here are the exceptions where you might not:
@@ -36,7 +44,7 @@ For all other roles - corporate, startup, tech, finance, healthcare, consulting 
 
 ## When to Negotiate
 
-The right time to negotiate is after you have a written or verbal offer. Not during the first [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Not when asked "what are your salary expectations" early in the process.
+The right time to negotiate is after you have a written or verbal offer. Not during the first [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Not when asked "what are your [salary expectations](https://thetailorcv.com/blog/salary-expectation-answer-guide)" early in the process.
 
 If asked early about salary expectations, defer:
 
@@ -99,7 +107,7 @@ Done. Do not push again unless you have a specific reason to - you have already 
 
 ### Scenario 2: They say they cannot move on base salary
 
-"I understand. Is there flexibility in other parts of the package - signing bonus, equity, additional PTO, remote work flexibility, or professional development budget?"
+"I understand. Is there flexibility in other parts of the package - signing bonus, equity, additional PTO, remote work flexibility, or [professional development budget](https://thetailorcv.com/blog/how-to-decline-job-offer)?"
 
 Benefits and bonuses often have more flexibility than base salary because they are classified differently in budget planning.
 

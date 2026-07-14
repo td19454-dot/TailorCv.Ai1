@@ -3700,7 +3700,7 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
 @app.get("/interview-prep", response_class=HTMLResponse)
 async def interview_prep_page(request: Request):
     """Interview Question Generator page"""
-    return templates.TemplateResponse(request, "interview_prep.html", {"request": request})
+    return templates.TemplateResponse(request, "interview_prep.html", {"request": request, "is_logged_in": bool(request.session.get("user_id"))})
 
 
 @app.get("/mock-interview", response_class=HTMLResponse)
@@ -4187,17 +4187,60 @@ AUTHOR_PROFILE = {
     ],
 }
 
+# Real bylines shown on blog posts. Drop the photos at the `image` paths below
+# (JPG/PNG) and they render automatically; until then initials show instead.
+BLOG_AUTHORS = [
+    {
+        "type": "Person",
+        "name": "Trisha Debnath",
+        "initials": "TD",
+        "title": "Co-founder, theTailorCV",
+        "image": "/static/user_imges/Trisha.png",
+        "bio": (
+            "Trisha is a co-founder of theTailorCV. She writes about resumes, ATS "
+            "optimization, and modern job search, turning what actually works for "
+            "job seekers into practical, step-by-step guides."
+        ),
+        "url": "https://thetailorcv.com/about",
+        "linkedin": "https://www.linkedin.com/company/thetailorcv/",
+        "sameAs": ["https://www.linkedin.com/company/thetailorcv/"],
+    },
+    {
+        "type": "Person",
+        "name": "Shubham Sarkar",
+        "initials": "SS",
+        "title": "Co-founder, theTailorCV",
+        "image": "/static/user_imges/Shubham.jpg",
+        "bio": (
+            "Shubham is a co-founder of theTailorCV. He focuses on ATS scoring, "
+            "resume-to-job matching, and the product behind the guides, so the advice "
+            "here reflects how hiring systems really read a resume."
+        ),
+        "url": "https://thetailorcv.com/about",
+        "linkedin": "https://www.linkedin.com/company/thetailorcv/",
+        "sameAs": ["https://www.linkedin.com/company/thetailorcv/"],
+    },
+]
 
-def build_blogposting_schema(post, canonical_url: str) -> str:
+
+def pick_author(post) -> dict:
+    """Stable per-post byline so each article keeps the same author across
+    reloads while both founders appear across the blog."""
+    idx = sum(ord(c) for c in post.slug) % len(BLOG_AUTHORS)
+    return BLOG_AUTHORS[idx]
+
+
+def build_blogposting_schema(post, canonical_url: str, author_profile: dict | None = None) -> str:
+    ap = author_profile or AUTHOR_PROFILE
     image_url = post.image if str(post.image).startswith("http") else build_absolute_url(post.image or "/static/logo.png")
     author = {
-        "@type": AUTHOR_PROFILE["type"],
-        "name": AUTHOR_PROFILE["name"],
-        "url": AUTHOR_PROFILE["url"],
-        "sameAs": AUTHOR_PROFILE["sameAs"],
+        "@type": ap["type"],
+        "name": ap["name"],
+        "url": ap["url"],
+        "sameAs": ap["sameAs"],
     }
-    if AUTHOR_PROFILE["type"] == "Person":
-        author["jobTitle"] = AUTHOR_PROFILE["title"]
+    if ap["type"] == "Person":
+        author["jobTitle"] = ap["title"]
     schema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
@@ -4434,6 +4477,7 @@ async def solutions_page(request: Request):
         "solutions.html",
         {
             "request": request,
+            "is_logged_in": bool(request.session.get("user_id")),
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
             "canonical_url": build_absolute_url("/solutions"),
             "software_schema_json": build_software_app_schema(),
@@ -4451,6 +4495,9 @@ async def optimize_page(request: Request):
         "solutions.html",
         {
             "request": request,
+            # Without this the template sees is_logged_in as undefined (falsy) and
+            # serves the logged-out landing to signed-in users.
+            "is_logged_in": bool(request.session.get("user_id")),
             "show_optimized_editor_entry": SHOW_OPTIMIZED_EDITOR or is_localhost,
             # Alias of /solutions — canonical points to the primary URL to avoid
             # duplicate-content indexing.
@@ -4744,6 +4791,7 @@ async def templates_page(request: Request):
         "templates.html",
         {
             "request": request,
+            "is_logged_in": bool(request.session.get("user_id")),
             "canonical_url": build_absolute_url("/templates"),
             "software_schema_json": build_software_app_schema(),
             "page_schema_json": build_page_breadcrumb("Resume Templates", "/templates"),
@@ -4792,16 +4840,23 @@ async def modify_cv_page(request: Request):
     return templates.TemplateResponse(
         request,
         "modify_cv.html",
-        {"request": request},
+        {"request": request, "is_logged_in": bool(request.session.get("user_id"))},
     )
 
 
 @app.get("/my-resumes", response_class=HTMLResponse)
 async def my_resumes_page(request: Request):
-    """Dashboard of the logged-in user's saved (optimized) resumes."""
+    """Dashboard of the logged-in user's saved (optimized) resumes.
+
+    Logged-out visitors get the marketing landing instead of a login redirect,
+    so the page works as a public entry point (signup capture)."""
     user_id = request.session.get("user_id")
     if not user_id:
-        return RedirectResponse(url="/login?next=/my-resumes", status_code=302)
+        return templates.TemplateResponse(
+            request,
+            "my_resumes.html",
+            {"request": request, "resumes": [], "is_logged_in": False},
+        )
     db = get_db()
     try:
         resumes = (
@@ -4823,7 +4878,7 @@ async def my_resumes_page(request: Request):
     return templates.TemplateResponse(
         request,
         "my_resumes.html",
-        {"request": request, "resumes": resumes, "base_resume": base_resume},
+        {"request": request, "resumes": resumes, "base_resume": base_resume, "is_logged_in": True},
     )
 
 
@@ -4955,6 +5010,7 @@ async def cover_letter_page(request: Request):
         "cover_letter.html",
         {
             "request": request,
+            "is_logged_in": bool(request.session.get("user_id")),
             "canonical_url": build_absolute_url("/cover-letter"),
             "software_schema_json": build_software_app_schema(),
             "page_schema_json": build_page_breadcrumb("AI Cover Letter Generator", "/cover-letter"),
@@ -6646,6 +6702,7 @@ async def portfolio_builder_page(request: Request):
         "themes": PORTFOLIO_THEMES,
         "theme_media": PORTFOLIO_THEME_MEDIA,
         "logged_in": logged_in,
+        "is_logged_in": logged_in,
         "portfolio_domain": PORTFOLIO_DOMAIN,
         "subdomains_enabled": PORTFOLIO_SUBDOMAINS_ENABLED,
         "canonical_url": build_absolute_url("/portfolio"),
@@ -7374,6 +7431,24 @@ _BLOG_TO_ROLE = {
 }
 
 
+def blog_cta(post) -> dict:
+    """Pick a topic-aware hero CTA (label + destination) from the post's
+    category/slug/title so each blog points to the most relevant tool."""
+    hay = f"{post.category} {post.slug} {post.title} {' '.join(post.tags)}".lower()
+    if "cover letter" in hay or "cover-letter" in hay:
+        return {"label": "Generate a Cover Letter", "url": "/cover-letter"}
+    if "portfolio" in hay:
+        return {"label": "Build Your Portfolio", "url": "/portfolio"}
+    if "interview" in hay or "mock" in hay:
+        return {"label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
+    if "template" in hay:
+        return {"label": "Browse Resume Templates", "url": "/templates"}
+    if "ats score" in hay or "ats-score" in hay:
+        return {"label": "Check My ATS Score", "url": "/solutions"}
+    # Everything else (incl. general ATS, resume, career, job-search) -> tailoring tool.
+    return {"label": "Tailor Your Resume", "url": "/solutions"}
+
+
 @app.get("/blog/{slug}", response_class=HTMLResponse)
 async def blog_post_page(request: Request, slug: str):
     # Consolidate merged duplicates: permanent-redirect old slugs to their pillar.
@@ -7386,6 +7461,7 @@ async def blog_post_page(request: Request, slug: str):
     related_posts = blog_service.related_posts(post, limit=8)
     canonical_url = build_absolute_url(f"/blog/{post.slug}")
     og_image = post.image if str(post.image).startswith("http") else build_absolute_url(post.image or "/static/logo.png")
+    author_profile = pick_author(post)
     return templates.TemplateResponse(
         request,
         "blog_post.html",
@@ -7399,11 +7475,12 @@ async def blog_post_page(request: Request, slug: str):
             "meta_keywords": post.keywords or ", ".join(post.tags),
             "og_image": og_image,
             "codehilite_css": codehilite_css(),
-            "blog_schema_json": build_blogposting_schema(post, canonical_url),
+            "blog_schema_json": build_blogposting_schema(post, canonical_url, author_profile),
             "breadcrumb_schema_json": build_breadcrumb_schema(post, canonical_url),
             "faq_schema_json": build_faq_schema(post),
-            "author_profile": AUTHOR_PROFILE,
+            "author_profile": author_profile,
             "related_resume_example": _BLOG_TO_ROLE.get(post.slug),
+            "hero_cta": blog_cta(post),
         },
     )
 

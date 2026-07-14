@@ -19,7 +19,7 @@
     <meta name="description"
         content="Check your ATS score, optimize your resume with AI, and practice mock interviews — all in one place. Used by 6800+ job seekers. Free to start.">
     <link rel="stylesheet" href="/static/style3.css">
-    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/header-footer.css?v=2">
     {% include "_seo_head.html" %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -605,6 +605,45 @@
                 box-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
             }
         }
+
+        /* Hero feature list: green ticks, pure white, two per line */
+        .hero-features {
+            list-style: none;
+            margin: 34px 0 42px;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, max-content);
+            gap: 20px 44px;
+            justify-content: start;
+        }
+        .hero-features li {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+        .hero-features .feat-tick {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            font-size: 13px;
+            font-weight: 800;
+            flex: none;
+        }
+        @media (max-width: 640px) {
+            .hero-features {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
     </style>
 
 
@@ -615,14 +654,17 @@
             <div class="hero-content hero-split">
                 <div class="hero-copy">
                     <h1 class="hero-title">
-                        We get you hired. <span class="gradient-text">Fast</span>
+                        Your <span class="gradient-text">dream job</span> starts here
                     </h1>
-                    <p class="hero-subtitle">
-                        Accurate Resume Optimizations. Free Portfolio Website. ATS score check. Mock Interviews and more.
-                    </p>
+                    <ul class="hero-features">
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Accurate Resume Optimizations</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Free Portfolio Website</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> ATS Score Check</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Mock Interviews &amp; More</li>
+                    </ul>
                     <div class="hero-cta">
                         <a href="/solutions" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
-                            ><span class="cta-label-full">Optimize My Resume — Free</span><span class="cta-label-short">Optimize for Free</span></a>
+                            ><span class="cta-label-full">Optimize My Resume for Free</span><span class="cta-label-short">Optimize for Free</span></a>
                         <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span><span class="hero-cta-meta-text">Takes 2 minutes &bull; No credit card needed &bull; Free to start</span></p>
                     </div>
                     <div class="hero-quickstart" aria-label="Quick start steps">
@@ -642,7 +684,7 @@
                             <img src="/static/user_imges/85.jpg" alt="User" class="avatar-hero">
                             <span class="avatar-live-dot" aria-hidden="true"></span>
                         </div>
-                        <p class="social-proof-text-hero"><strong>1200+</strong> resumes optimized this month</p>
+                        <p class="social-proof-text-hero">&ldquo;Landed 3 interviews in my first week.&rdquo; <span class="sp-author">&mdash; Jessica M., Chicago, USA</span></p>
                     </div>
                     <div class="hero-testimonials" aria-label="User testimonials">
                         <article class="hero-t-card">
@@ -744,8 +786,23 @@
                         }
 
                         .social-proof-text-hero {
-                            font-size: 30px;
-                            margin-top: 20px;
+                            font-size: 27px;
+                            font-weight: 500;
+                            line-height: 1.4;
+                            white-space: normal;
+                            max-width: 480px;
+                            margin: 0;
+                            font-style: italic;
+                            text-align: left;
+                            color: #ffffff;
+                        }
+                        .social-proof-text-hero .sp-author {
+                            display: block;
+                            margin-top: 4px;
+                            font-size: 15px;
+                            font-style: normal;
+                            font-weight: 600;
+                            color: #9fb2d6;
                         }
 
                         .hero-testimonials {

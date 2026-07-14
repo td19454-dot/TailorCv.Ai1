@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Download free ATS friendly resume templates including Jake's Resume. Paste your existing resume and convert it to ATS format in 30 seconds.">
-    <title>Free ATS Friendly Resume Templates — Jake's Resume & More | TailorCV</title>
+    <title>Free ATS Friendly Resume Templates, Jake's Resume & More | TailorCV</title>
     {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/header-footer.css?v=2">
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="stylesheet" href="/static/templates.css?v=6">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,8 +46,377 @@
     </style>
 </head>
 <body>
+{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
     {% include "_nav.html" %}
 
+    {% if not is_logged_in %}
+    <link rel="stylesheet" href="/static/feature_landing.css?v=36">
+    <div class="solx">
+        <div class="solx-wrap">
+            <div class="solx-hero">
+                <div>
+                    <span class="solx-eyebrow">Resume Templates</span>
+                    <h1>Recruiter-approved templates <span class="g">that pass the ATS.</span></h1>
+                    <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
+                        <span>ATS-safe, single-column layouts that parse cleanly</span>
+                        <span>Designed for every industry and experience level</span>
+                        <span>Fully editable, download as a polished PDF</span>
+                    </div>
+                    <a href="/signup?next=/templates" class="solx-btn">Browse Templates, Free</a>
+                    <p class="micro">Instant preview &bull; No credit card &bull; <b>Free to start</b></p>
+                </div>
+                <div class="rez">
+                    <div class="rez-tag">&#128196; ATS-Safe Template</div>
+                    <div class="rez-name">Alex Mitchell</div>
+                    <div class="rez-role">Marketing Manager</div>
+                    <div class="rez-h">Summary</div>
+                    <div class="rez-line l"></div><div class="rez-line m"></div>
+                    <div class="rez-h">Experience</div>
+                    <div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                    <div class="rez-h">Skills</div>
+                    <div class="rez-line m"></div>
+                    <div class="rez-insights">
+                        <div class="t">&#10024; Template picker</div>
+                        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px">
+                            <div class="rez-line l" style="height:34px;border-radius:6px"></div>
+                            <div class="rez-line l" style="height:34px;border-radius:6px;background:#dbe4ff"></div>
+                            <div class="rez-line l" style="height:34px;border-radius:6px"></div>
+                        </div>
+                        <div class="rez-btn">Use This Template</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-marquee">
+            <div class="solx-wrap"><p class="cap">Trusted by job seekers <span class="g">hired at</span></p></div>
+            <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
+        </div>
+        <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Template gallery</div>
+                <h2 class="solx-h2">Find the perfect resume template <span class="g">for your career goals</span></h2>
+                <p class="solx-lead">Every design here is ATS-safe and recruiter-approved. Pick the one that fits your field, drop in your details, and download a polished PDF.</p>
+                <div class="solx-carousel">
+                    <button type="button" class="solx-car-btn solx-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+                    <div class="solx-car-track">
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic20.webp?v=9" alt="ATS Friendly resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">ATS Friendly</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic4.webp?v=9" alt="Executive Edge resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Executive Edge</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic13.webp?v=9" alt="Tech Specialist resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Tech Specialist</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic1.webp?v=9" alt="ATS Friendly Classic resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">ATS Friendly Classic</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic17.webp?v=9" alt="Modern ATS Plus resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Modern ATS Plus</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic8.webp?v=9" alt="Skill Spotlight resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Skill Spotlight</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic22.webp?v=9" alt="Academic Serif resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Academic Serif</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic11.webp?v=9" alt="Elegant Serif resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Elegant Serif</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic3.webp?v=9" alt="Professional Clean resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Professional Clean</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic15.webp?v=9" alt="Product Manager Fit resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Product Manager Fit</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic6.webp?v=9" alt="Compact One-Page resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Compact One-Page</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic19.webp?v=9" alt="LaTeX Academic resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">LaTeX Academic</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic2.webp?v=9" alt="Modern Minimal resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Modern Minimal</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic12.webp?v=9" alt="Impact Resume resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Impact Resume</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic9.webp?v=9" alt="Chronological Pro resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Chronological Pro</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic21.webp?v=9" alt="Modern Tech resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Modern Tech</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic5.webp?v=9" alt="Corporate Blue resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Corporate Blue</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic16.webp?v=9" alt="Marketing Highlight resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Marketing Highlight</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic10.webp?v=9" alt="Creative Balanced resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Creative Balanced</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic18.webp?v=9" alt="Premium Executive resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Premium Executive</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic7.webp?v=9" alt="Fresh Graduate resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Fresh Graduate</div>
+                        </div>
+                        <div class="solx-car-item">
+                            <div class="solx-car-shot"><img src="/static/pic14.webp?v=9" alt="Data Analyst Pro resume template preview" loading="lazy" decoding="async"></div>
+                            <div class="solx-car-name">Data Analyst Pro</div>
+                        </div>
+                    </div>
+                    <button type="button" class="solx-car-btn solx-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+                    <div class="solx-car-dots"></div>
+                </div>
+                <div style="text-align:center;margin-top:34px"><a href="/signup?next=/templates" class="solx-btn">Browse All Templates, Free</a></div>
+            </div>
+        </div>
+
+        <script>
+        (function(){
+          function init(car){
+            var track = car.querySelector('.solx-car-track');
+            var prev  = car.querySelector('.solx-car-prev');
+            var next  = car.querySelector('.solx-car-next');
+            var dots  = car.querySelector('.solx-car-dots');
+            if(!track) return;
+            function pageW(){ return track.clientWidth || 1; }
+            function pageCount(){ return Math.max(1, Math.round(track.scrollWidth / pageW())); }
+            function current(){ return Math.round(track.scrollLeft / pageW()); }
+            function sync(){
+              var c = current();
+              if (dots) Array.prototype.forEach.call(dots.children, function(d,i){ d.classList.toggle('on', i === c); });
+              if (prev) prev.disabled = track.scrollLeft <= 4;
+              if (next) next.disabled = track.scrollLeft + pageW() >= track.scrollWidth - 4;
+            }
+            function buildDots(){
+              if (!dots) return;
+              dots.innerHTML = '';
+              var n = pageCount();
+              for (var i = 0; i < n; i++){
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.className = 'solx-car-dot';
+                b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                (function(idx){ b.addEventListener('click', function(){ track.scrollTo({ left: idx * pageW(), behavior: 'smooth' }); }); })(i);
+                dots.appendChild(b);
+              }
+            }
+            if (prev) prev.addEventListener('click', function(){ track.scrollBy({ left: -pageW(), behavior: 'smooth' }); });
+            if (next) next.addEventListener('click', function(){ track.scrollBy({ left:  pageW(), behavior: 'smooth' }); });
+            track.addEventListener('scroll', function(){ window.requestAnimationFrame(sync); });
+            window.addEventListener('resize', function(){ buildDots(); sync(); });
+            buildDots(); sync();
+          }
+          document.querySelectorAll('.solx-carousel').forEach(init);
+        })();
+        </script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">Templates that look great, <span class="g">and actually parse</span></h2>
+                <p class="solx-lead">A beautiful resume is useless if the ATS can't read it. Every TailorCV template is designed to look sharp to recruiters and parse cleanly through the software.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-badge">&#10003; ATS Friendly</div>
+                            <div class="rez-h" style="margin-top:12px">Experience</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#9733; Parses cleanly</div>
+                        </div>
+                        <h3>ATS-safe by design</h3>
+                        <p>Single-column, no tables or graphics that break parsers, so your resume reaches a human instead of getting filtered out.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div style="margin-top:4px"><span class="rez-pill g">Tech</span><span class="rez-pill y">Finance</span><span class="rez-pill b">Design</span></div>
+                            <div style="margin-top:6px"><span class="rez-pill b">Student</span><span class="rez-pill g">Executive</span></div>
+                            <div class="rez-line m" style="margin-top:10px"></div>
+                        </div>
+                        <h3>For every industry &amp; level</h3>
+                        <p>From first internship to senior leadership, pick a template built for your field and career stage, not a one-size-fits-all form.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-tag">&#9999;&#65039; Fully editable</div>
+                            <div class="rez-h" style="margin-top:10px">Your content</div><div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-btn" style="margin-top:10px">&#11015; Download PDF</div>
+                        </div>
+                        <h3>Editable &amp; ready to download</h3>
+                        <p>Edit every line in the builder, then export a clean, recruiter-ready PDF you can submit in one click.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">How it works</div>
+                <h2 class="solx-h2">A simple 4-step process to a <span class="g">standout resume</span></h2>
+                <div style="margin-top:26px">
+                    <div class="solx-step">
+                        <div><div class="n">Step 1</div><h3>Pick a <span class="g">template</span></h3><p>Browse ATS-safe templates for your industry and experience level, and preview each one live.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#127912; Choose template</div><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:6px"><div class="rez-line l" style="height:44px;border-radius:6px"></div><div class="rez-line l" style="height:44px;border-radius:6px;background:#dbe4ff"></div><div class="rez-line l" style="height:44px;border-radius:6px"></div></div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 2</div><h3>Add your <span class="g">content</span></h3><p>Type it in or import an existing resume and your details flow straight into the template.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128228; Import resume</div><div class="rez-h">Alex Mitchell</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:8px">&#10003; Auto-filled</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 3</div><h3>Customize the <span class="g">details</span></h3><p>Adjust sections, fonts, and spacing to fit your story, while the layout stays ATS-safe.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#9999;&#65039; Customize</div><div class="rez-h">Experience</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-h">Skills</div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:8px">&#10003; Still ATS-safe</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 4</div><h3>Download your <span class="g">PDF</span></h3><p>Export a clean, recruiter-ready PDF you can send to any application in one click.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128196; Ready resume</div><div class="rez-name" style="font-size:16px;text-align:left">Alex Mitchell</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-btn" style="margin-top:12px">&#11015; Download PDF</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Loved by job seekers</div>
+                <h2 class="solx-h2">A resume that finally <span class="g">gets read</span></h2>
+                <div class="solx-quotes">
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"My old template was quietly breaking in the ATS. I switched, kept the same content, and my callbacks doubled."</p><div class="who"><img src="/static/user_imges/12.jpg" alt=""><span><b>Sarah J.</b> <span>Atlassian</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Clean, professional, and it actually looked like me. I had a polished PDF ready in under ten minutes."</p><div class="who"><img src="/static/user_imges/79.jpg" alt=""><span><b>Emily G.</b> <span>PwC</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Finally a template built for my industry, not a generic form. Recruiters told me my resume stood out."</p><div class="who"><img src="/static/user_imges/85.jpg" alt=""><span><b>Michael R.</b> <span>Amazon</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I finally found a template that fit my field instead of a generic form. It looked sharp and parsed clean."</p><div class="who"><img src="/static/user_imges/26.jpg" alt=""><span><b>Priya S.</b> <span>Google</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Swapped my messy resume into a clean template and my callbacks went up almost immediately."</p><div class="who"><img src="/static/user_imges/13.jpg" alt=""><span><b>Vicki B.</b> <span>PayPal</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Editable, ATS safe, and downloaded as a crisp PDF. Exactly what I needed with zero fuss."</p><div class="who"><img src="/static/user_imges/22.jpg" alt=""><span><b>James W.</b> <span>Apple</span></span></div></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "_feature_more.html" %}
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Pricing</div>
+                <h2 class="solx-h2">Simple pricing, <span class="g">powerful features</span></h2>
+                <p class="solx-lead">Start free, upgrade only when you want unlimited access.</p>
+                <div class="pricing-preview-grid cols-3">
+                    <article class="pricing-preview-card basic">
+                        <p class="pricing-plan-name">Free</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
+                        <p class="pricing-plan-note">Always free, no card needed.</p>
+                        <ul class="pricing-feature-list">
+                            <li>ATS score, unlimited</li>
+                            <li>1 free resume optimization</li>
+                            <li>1 free cover letter + mock interview</li>
+                            <li>All templates &amp; downloads</li>
+                        </ul>
+                        <a href="/signup?next=/templates" class="pricing-plan-btn">Start free</a>
+                    </article>
+
+                    <article class="pricing-preview-card">
+                        <p class="pricing-badge pricing-badge-pass">One-time</p>
+                        <p class="pricing-plan-name">7-Day Pass</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppPassSym">&#8377;</span><span id="ppPassAmt">149</span></p>
+                        <p class="pricing-plan-note">7 days of full Pro access, no auto-renew.</p>
+                        <ul class="pricing-feature-list">
+                            <li>Everything in Pro</li>
+                            <li>Unlimited optimize &amp; cover letters</li>
+                            <li>Unlimited mock interviews</li>
+                            <li>No subscription</li>
+                        </ul>
+                        <a href="/pricing" class="pricing-plan-btn">Get 7-day pass</a>
+                    </article>
+
+                    <article class="pricing-preview-card featured">
+                        <p class="pricing-badge">Most Popular</p>
+                        <p class="pricing-plan-name">Pro</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppProSym">&#8377;</span><span id="ppProAmt">167</span><span>/mo</span></p>
+                        <p class="pricing-plan-note" id="ppProNote">Billed yearly, save 44%, cancel any time.</p>
+                        <ul class="pricing-feature-list">
+                            <li>Unlimited resume optimizations</li>
+                            <li>Unlimited cover letters &amp; mock interviews</li>
+                            <li>LinkedIn import unlimited</li>
+                            <li>Priority AI processing</li>
+                        </ul>
+                        <a href="/pricing" class="pricing-plan-btn pricing-plan-btn-primary">Get Pro</a>
+                    </article>
+                </div>
+                <p class="pricing-preview-all"><a href="/pricing">See full pricing &amp; FAQ</a></p>
+            </div>
+        </div>
+        <script>
+        // Region-aware prices, mirrors the homepage preview and /pricing.
+        (function () {
+            var PP = {
+                india:  { sym: '\u20b9', pass: '149',  pro: '167',  note: 'Billed yearly, save 44%, cancel any time.' },
+                lic:    { sym: '$',       pass: '1.99', pro: '2.08', note: 'Billed yearly, save 44%, cancel any time.' },
+                global: { sym: '$',       pass: '4.99', pro: '5',    note: 'Billed yearly, save 44%, cancel any time.' }
+            };
+            function set(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+            function apply(region) {
+                var p = PP[region] || PP.india;
+                set('ppFreeSym', p.sym); set('ppPassSym', p.sym); set('ppProSym', p.sym);
+                set('ppPassAmt', p.pass); set('ppProAmt', p.pro); set('ppProNote', p.note);
+            }
+            fetch('/api/billing/region')
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (d) { if (d && d.region) apply(d.region); })
+                .catch(function () { /* keep default india pricing */ });
+        })();
+        </script>
+
+        <div class="solx-band">
+            <div class="solx-band-inner">
+                <div class="solx-band-kicker">First impressions count</div>
+                <h2>A clean template that <span class="ga">gets you read</span>.</h2>
+                <p>Start from a recruiter-approved, ATS-safe design, add your details, and download a resume that reaches a human instead of a filter.</p>
+                <a href="/signup?next=/templates" class="solx-btn">Browse Templates, Free</a>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">FAQ</div>
+                <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
+                <div class="solx-faq" style="margin-top:32px">
+                    <details open><summary>Are these resume templates really ATS-friendly?</summary><p>Yes. Every template uses a clean, single-column layout with no tables or graphics that break parsers, so your resume is read correctly by the software and by recruiters.</p></details>
+                    <details><summary>Can I edit the templates?</summary><p>Yes, every section, font, and spacing is editable in the builder, and the layout stays ATS-safe while you customize.</p></details>
+                    <details><summary>Do you have templates for my industry?</summary><p>Yes. There are templates for a range of industries and experience levels, from students and first jobs to senior and executive roles.</p></details>
+                    <details><summary>Can I import my existing resume?</summary><p>Yes. Import your current resume and your details flow straight into the template you choose, no retyping.</p></details>
+                    <details><summary>Is it free to start?</summary><p>Yes. Browse and preview templates for free. A quick free account saves your resume and lets you download the PDF.</p></details>
+                </div>
+                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/templates" class="solx-btn">Browse Templates, Free</a></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+
+    {% if is_logged_in %}
     <main class="templates-page">
         <section class="templates-header">
             <h1 class="templates-title">ATS-Friendly <span class="templates-title-accent">Resume Templates</span></h1>
@@ -91,11 +460,13 @@
             <p id="templates-upload-status" class="templates-upload-status" aria-live="polite"></p>
         </section>
     </main>
+    {% endif %}
 
-            {% include "_footer.html" %}
+    {% include "_footer.html" %}
 
     <script src="/static/auth_nav.js?v=13"></script>
     <script src="/static/mobile_nav.js"></script>
+    {% if is_logged_in %}
     <script>
         (function () {
             const OPTIMIZED_EDITOR_PAYLOAD_KEY = "tailorcv_optimized_editor_payload";
@@ -274,7 +645,7 @@
                     });
                     renderGrid();
                     showUploadSection();
-                    setUploadStatus("You're back! Your template is selected — just re-choose your PDF to continue.", "is-success");
+                    setUploadStatus("You're back! Your template is selected, just re-choose your PDF to continue.", "is-success");
                     updateStepState();
                 } catch (e) {}
             }
@@ -560,6 +931,52 @@
         })();
     </script>
     <script src="/static/resume_store.js?v=1"></script>
+    {% endif %}
+{% if not is_logged_in %}
+<script>
+(function(){
+  const canvas = document.getElementById('wave-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  const waves = [
+    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
+    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
+    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
+    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
+    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
+    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
+  ];
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now();
+    waves.forEach(wv => {
+      ctx.beginPath();
+      for(let x = 0; x <= W; x += 2){
+        const y = H * wv.yf
+          + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
+          + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
+          + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const [r,g,b] = wv.color;
+      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+      gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
+      gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
+      gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
+      ctx.fillStyle = gr;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+{% endif %}
 </body>
 </html>
 

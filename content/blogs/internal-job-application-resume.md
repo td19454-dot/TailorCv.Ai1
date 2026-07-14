@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Tailor Your Resume for an Internal Job Application (2026 Guide)
 description: Applying for a job at your current company requires a very different resume strategy. Learn how to tailor your resume for internal roles without creating awkward politics or getting overlooked.
 date: 2026-06-29
@@ -26,6 +26,13 @@ Internal job applications are loaded with nuance that no one talks about.
 This guide covers all of it - the resume strategy, the politics, and how to tailor your application to win the role you want inside your own company.
 
 ---
+
+## Key Takeaways
+
+- Internal job applications require a tailored resume, just like external ones, to effectively convey your qualifications and fit for the role.
+- Consider your relationship with your manager before applying; transparency can build trust, but it may be wise to wait if your manager is unsupportive.
+- Use insider knowledge of the company’s language and priorities to enhance your resume and demonstrate your qualifications.
+- Quantify your contributions to the company to showcase your impact and relevance to the new role.
 
 ## Why Internal Applications Are Different
 

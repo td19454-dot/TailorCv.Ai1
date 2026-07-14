@@ -1,4 +1,4 @@
-﻿---
+---
 title: Video Resume Guide 2026 - When to Use One and What to Say
 description: Learn when a video resume helps, when it hurts, and how to script a short professional video for modern job applications.
 date: 2026-07-07
@@ -13,6 +13,14 @@ keywords: video resume guide, video resume 2026, video resume script, should I m
 A video resume can help for roles where communication, presentation, teaching, sales, or client-facing confidence matters. It is not a replacement for a written resume, and it should never be long.
 
 ---
+
+## Key Takeaways
+
+- A video resume is beneficial for roles requiring strong communication and client-facing skills, such as sales and teaching, but should not replace a written resume.
+- Keep the video resume under 60 seconds, introducing yourself, your skills, a specific achievement, and your interest in the role or company.
+- Avoid reading your resume verbatim, using casual backgrounds, and including lengthy personal stories or unsubstantiated claims; focus on clear audio quality.
+- Optimize your application materials for specific job descriptions by incorporating relevant keywords and demonstrating measurable results that align with the role.
+- Review your application against a checklist to ensure clarity, keyword inclusion, and alignment across all materials before submission.
 
 ## When a Video Resume Helps
 

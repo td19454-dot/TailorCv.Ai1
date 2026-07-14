@@ -2,6 +2,9 @@
    Shown for logged-in and guest users on known tool pages so navigation stays
    consistent. Guests get Log in / Get Started instead of the profile menu. */
 (function () {
+    // Logged-out feature landings opt out of the app shell so they keep the
+    // normal marketing header + footer (set server-side via the <html> attr).
+    if (document.documentElement.getAttribute("data-guest-landing") === "1") return;
     // /dashboard already has its own sidebar, so it's intentionally excluded.
     var APP_PREFIXES = [
         "/solutions", "/ats-analysis", "/optimize", "/modify-cv", "/cover-letter",

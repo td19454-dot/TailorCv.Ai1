@@ -1,4 +1,4 @@
-﻿---
+---
 title: What Not to Put on a Resume in 2026 - 25 Things to Remove Immediately
 description: Learn what to remove from your resume in 2026. 25 specific things that hurt your chances - from outdated info to ATS killers to red flags that cost you interviews.
 date: 2026-06-01
@@ -17,6 +17,14 @@ If your resume has any of the following 25 things, remove them before your next 
 Start with the right foundation. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to see if your resume is well-matched to the job description, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the complete picture. For the opposite view - what to add - read the [guide to best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume) and [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
 ---
+
+## Key Takeaways
+
+- Remove personal information such as photos, date of birth, marital status, and full home addresses to avoid bias and protect privacy.
+- Avoid generic objective statements; instead, provide a specific summary that highlights your skills and goals.
+- Do not list basic skills like Microsoft Office; focus on advanced competencies relevant to the job.
+- Eliminate vague personality traits and instead demonstrate your abilities through specific examples or achievements.
+- Only include hobbies if they are directly relevant to the role or showcase unique accomplishments.
 
 ## Personal Information to Remove
 

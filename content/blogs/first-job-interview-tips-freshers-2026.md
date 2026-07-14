@@ -18,11 +18,18 @@ Practice before the real thing with [TailorCV's AI mock interview](https://theta
 
 ---
 
+## Key Takeaways
+
+- Companies hiring freshers expect little to no professional experience; they focus on your ability to learn and communicate effectively.
+- Preparation is crucial; your resume should clearly highlight projects, internships, and relevant skills to support your interview responses.
+- Understand the typical interview process, which includes a screening call, aptitude test, HR round, and technical round, to better prepare for each stage.
+- Practice with mock interviews to build confidence and improve your communication skills before the actual interview.
+
 ## Before the Interview: Resume and Application
 
 Your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) actually starts with your resume, because every question in the room will trace back to it. If the interviewer asks about a line on your resume and you cannot explain it clearly, that is a bigger problem than any "trick question" they might ask. For freshers:
 
-- Highlight projects, internships, and coursework - [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume)
+- Highlight [projects, internships, and coursework](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) - [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume)
 - List technical skills clearly, and only list what you can actually discuss - [technical skills guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - Use ATS-friendly formatting so your resume is not filtered out before a human sees it - [ATS-friendly resume guide](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - Avoid fresher mistakes like generic objectives and unverifiable claims - [resume mistakes every fresher makes](https://thetailorcv.com/blog/resume-mistakes-freshers)
@@ -125,7 +132,7 @@ For tech roles, add [coding interview prep](https://thetailorcv.com/blog/coding-
 
 1. **Research the company** - even ten minutes on their website and recent news changes how you sound. [Company research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview).
 2. **Prepare five STAR stories** from projects and internships that you can adapt to multiple questions - [behavioral guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
-3. **Practice with AI mock interviews** so your first time answering out loud is not during the real interview - [practice at home guide](https://thetailorcv.com/blog/how-to-practice-interviews-at-home)
+3. **Practice with AI [mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)s** so your first time answering out loud is not during the real interview - [practice at home guide](https://thetailorcv.com/blog/how-to-practice-interviews-at-home)
 4. **Dress professionally** - even for [virtual interviews](https://thetailorcv.com/blog/virtual-interview-tips), where it still affects how seriously you come across on camera
 5. **Manage nerves** deliberately rather than hoping they disappear on their own - [interview anxiety tips](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips)
 6. **Arrive early** - 15 minutes for in-person, 5 minutes early for video, logged in and tested, not scrambling to fix your webcam
@@ -168,7 +175,7 @@ Some mistakes are specific to first-timers who have never done this before:
 - **Rambling without structure.** Freshers often try to include everything they have ever done in one answer. Pick the one or two most relevant points and stop.
 - **Not researching the company at all.** Being unable to name what the company does, beyond the job title you applied for, is one of the fastest ways to lose a fresher role to someone equally qualified who did five minutes of homework.
 - **Forgetting to ask any questions at the end.** Saying "no, I think you covered everything" wastes a genuine opportunity to show interest and gather information that helps you decide too.
-- **Not knowing your own resume and project details.** If it is on your resume, you must be able to explain it in detail - vague answers about your own work are an immediate red flag.
+- **Not knowing [your own resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and project details.** If it is on your resume, you must be able to explain it in detail - vague answers about your own work are an immediate red flag.
 - **Badmouthing college, professors, or a previous internship.** Even valid frustration reads as a lack of professionalism to someone who has not seen that context.
 - **Overclaiming skills you cannot demonstrate.** Listing a technology you used once in a tutorial as a core skill invites a follow-up question you cannot answer.
 - **Not practicing out loud at all.** Reading advice like this is necessary but not sufficient - see the [common interview mistakes guide](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) for a broader list, and pair it with actual spoken practice.

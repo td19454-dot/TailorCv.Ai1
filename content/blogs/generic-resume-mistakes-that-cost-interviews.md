@@ -1,4 +1,4 @@
-﻿---
+---
 title: 10 Generic Resume Mistakes That Are Costing You Interviews in 2026
 description: These are the most common generic resume mistakes that quietly filter you out before a recruiter reads your name. Learn each mistake and the specific fix.
 date: 2026-06-11
@@ -15,6 +15,14 @@ Generic resume mistakes are not obvious - that is what makes them dangerous. The
 Run your resume through the [free ATS checker](/solutions) to see your specific gaps before you apply.
 
 ---
+
+## Key Takeaways
+
+- Replace outdated objective statements with a concise professional summary that highlights relevant skills and outcomes.
+- Use the exact job title from the posting as your resume headline to improve ATS alignment and recruiter categorization.
+- Focus on achievements rather than responsibilities; quantify results to differentiate your impact.
+- Include specific hard skills and tools in your skills section instead of generic soft skills that do not add value.
+- Mirror the language of the job description in your resume to ensure ATS scoring and clear connections for recruiters.
 
 ## Mistake 1 - Objective Statements
 

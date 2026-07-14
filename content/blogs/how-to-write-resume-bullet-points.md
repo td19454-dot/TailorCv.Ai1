@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write Resume Bullet Points That Get Noticed (With Examples)
 description: Master the formula for resume bullet points that impress recruiters and pass ATS. Includes real before-and-after examples, the best structures, and common bullet point mistakes to avoid.
 date: 2026-06-06
@@ -17,6 +17,13 @@ This guide gives you the formula, real before-and-after examples, and the rules 
 Before polishing your bullets, make sure your overall resume scores well with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) and is built on an [ATS-friendly template](https://www.thetailorcv.com/templates).
 
 ---
+
+## Key Takeaways
+
+- Resume bullet points should focus on accomplishments rather than just job duties to stand out to recruiters.
+- A strong bullet point includes an action, method or skill, and the impact or result, ideally quantified.
+- Use specific formulas for crafting bullet points: Action + Result, Action + Method + Result, or Action + Scale + Result for senior roles.
+- Transform weak bullet points into strong ones by adding measurable outcomes and specific actions taken.
 
 ## Why Bullet Points Matter So Much
 

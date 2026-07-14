@@ -1,4 +1,4 @@
-﻿---
+---
 title: Soft Skills for Resume in 2026 - How to Show Them (Not Just List Them)
 description: Learn which soft skills matter on a resume in 2026 and how to prove them with evidence instead of just listing them. Includes examples for every major skill.
 date: 2026-06-01
@@ -17,6 +17,13 @@ The right approach is to prove [soft skills](https://thetailorcv.com/blog/soft-s
 Before optimizing your soft skills presentation, make sure your hard skills and keywords match the job. Use the [ATS score checker](https://www.thetailorcv.com/solutions) and read [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) - generic soft skill lists are often the first thing to cut.
 
 ---
+
+## Key Takeaways
+
+- Simply listing soft skills on a resume is ineffective; employers seek evidence of these skills through accomplishments.
+- Demonstrate soft skills by providing specific examples of past experiences rather than generic statements.
+- Key soft skills to highlight include communication, leadership, teamwork, problem-solving, adaptability, time management, conflict resolution, and attention to detail.
+- Place evidence of soft skills primarily in experience bullets and reference them in the summary only if supported by context.
 
 ## Why Listing Soft Skills Doesn't Work
 

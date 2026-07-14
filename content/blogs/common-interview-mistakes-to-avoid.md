@@ -1,4 +1,4 @@
-﻿---
+---
 title: 20 Common Interview Mistakes to Avoid in 2026
 description: Avoid the 20 most common job interview mistakes in 2026. Learn what trips up candidates in preparation, delivery, and follow-up - and how to fix each one.
 date: 2026-06-01
@@ -17,6 +17,14 @@ This guide covers the 20 most common [interview](https://thetailorcv.com/blog/ho
 Avoid these mistakes by preparing thoroughly with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), and the [mock interview tool](https://thetailorcv.com/mock-interview). And make sure your resume got you there for the right reasons with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
 ---
+
+## Key Takeaways
+
+- Research the company thoroughly to demonstrate interest and knowledge during the interview.
+- Prepare for common interview questions and know your resume inside and out to maintain credibility.
+- Use the STAR method for structured responses to behavioral questions and avoid vague answers.
+- Maintain positive body language and listen carefully to the interviewer's questions to foster a good rapport.
+- Arrive early for in-person interviews and ensure a professional setup for virtual interviews to make a strong first impression.
 
 ## Preparation Mistakes
 
@@ -58,7 +66,7 @@ For behavioral questions, unstructured stories confuse interviewers. Use Situati
 
 ### 9. Badmouthing Previous Employers
 
-Speaking negatively about past employers, managers, or colleagues is a major red flag. Stay positive even about negative experiences.
+Speaking negatively about past employers, managers, or colleagues is a major red flag. [Stay positive](https://thetailorcv.com/blog/how-to-explain-getting-fired-in-an-interview) even about negative experiences.
 
 ### 10. Lying or Exaggerating
 

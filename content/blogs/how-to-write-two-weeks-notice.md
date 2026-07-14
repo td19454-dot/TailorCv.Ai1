@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write a Two Weeks Notice in 2026 - Templates and Examples
 description: Learn how to write a professional two weeks notice letter in 2026. Includes templates, examples, what to include, and how to resign gracefully while protecting your reputation.
 date: 2026-06-01
@@ -14,9 +14,17 @@ A two weeks notice is the standard professional courtesy when leaving a job - a 
 
 This guide gives you templates, examples, and the rules for writing a professional two weeks notice.
 
-This complements the broader [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally). If your resignation is part of a job move, make sure your next step is secure first - optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
+This complements the broader [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally). If your resignation is part of a job move, make sure your next step is secure first - optimize your [resume](https://www.thetailorcv.com/templates) with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
 ---
+
+## Key Takeaways
+
+- A two weeks notice is a formal resignation letter given at least two weeks before your last working day to maintain professionalism.
+- It is best practice to inform your manager in person before submitting the written notice to formalize the conversation.
+- A professional two weeks notice should include the date, a clear resignation statement, last working day, gratitude, and an offer to assist with the transition.
+- Avoid including complaints, detailed reasons for leaving, or any negativity in your notice to protect your professional reputation.
+- Use one of the provided templates to ensure your letter is concise, positive, and professional.
 
 ## What Is a Two Weeks Notice?
 
@@ -192,7 +200,7 @@ A two weeks notice is brief. A few sentences is enough - do not write an essay.
 
 ## Make This Practical
 
-Turn the career advice into a stronger application system. Start by checking your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), align it with the role using [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job), and keep your profile consistent with [LinkedIn Resume Tailoring Sync](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync).
+Turn the career advice into a stronger application system. Start by checking your [resume](https://www.thetailorcv.com/templates) with the [free ATS score checker](https://www.thetailorcv.com/solutions), align it with the role using [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job), and keep your profile consistent with [LinkedIn Resume Tailoring Sync](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync).
 
 When you are ready to apply, build the supporting pieces around the resume. Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) for targeted outreach, practice with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and review [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) if applications are not converting.
 

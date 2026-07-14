@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Tailor Your Resume for Emerging Job Titles - AI Engineer, Prompt Engineer, and More (2026)
 description: Emerging roles like AI Engineer, Prompt Engineer, and Climate Tech Analyst have no standard job description. Learn how to tailor your resume for roles that are still being defined - and win them.
 date: 2026-06-29
@@ -34,6 +34,13 @@ And they are almost impossible to tailor a resume for using traditional advice -
 This guide gives you the strategy for breaking into emerging roles before the market catches up to them. For context on what makes these roles challenging to apply for, see also [how to tailor your resume when you're underqualified](https://thetailorcv.com/blog/resume-tailoring-underqualified) - the same principles of reframing transferable experience apply here.
 
 ---
+
+## Key Takeaways
+
+- Emerging job titles like "AI Engineer" and "Prompt Engineer" lack standardized job descriptions and skill sets, making resume tailoring challenging.
+- To tailor your resume effectively, analyze 10-15 job descriptions to identify common skills and responsibilities across postings.
+- Research LinkedIn profiles of individuals in your target roles to understand their backgrounds, emphasized skills, and daily work descriptions.
+- Investigate the specific AI stack used by companies before applying, as context is crucial for emerging roles.
 
 ## The Challenge With Emerging Roles
 

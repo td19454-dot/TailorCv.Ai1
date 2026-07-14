@@ -1,4 +1,4 @@
-﻿---
+---
 title: Remote vs. Hybrid vs. On-Site - How to Tailor Your Resume for Each Work Model (2026)
 description: Your work model preference changes what recruiters look for - and what your resume should show. Learn how to tailor your resume differently for remote, hybrid, and on-site job applications in 2026.
 date: 2026-06-29
@@ -25,6 +25,13 @@ If you are applying to remote roles with the same resume you use for on-site app
 This guide breaks down exactly what changes, and how to tailor your resume for each work model. For a broader look at how targeting the right type of employer changes your resume strategy, see also [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise).
 
 ---
+
+## Key Takeaways
+
+- Tailor your resume for each work model—remote, hybrid, or on-site—since each attracts different candidates and requires distinct signals.
+- For remote roles, emphasize demonstrated remote work experience, async communication skills, and self-direction in your accomplishments.
+- Include relevant tools for distributed work, such as Slack, Jira, and Google Docs, to showcase your fluency in remote collaboration.
+- Your professional summary should explicitly mention remote work experience and highlight skills in async communication and team coordination.
 
 ## Why Work Model Changes What Recruiters Look For
 
