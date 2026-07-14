@@ -23,6 +23,13 @@ class User(Base):
     netlify_site_id = Column(String(64), nullable=True)
     netlify_url = Column(String(255), nullable=True)
     netlify_portfolio_id = Column(Integer, nullable=True)
+    # A single reusable "base resume" the Chrome extension tailors against on
+    # LinkedIn job pages, distinct from the tailored outputs saved to SavedResume.
+    base_resume_path = Column(String(500), nullable=True)
+    base_resume_filename = Column(String(255), nullable=True)
+    base_template_id = Column(Integer, nullable=True)
+    base_style_id = Column(Integer, nullable=True)
+    base_resume_uploaded_at = Column(DateTime, nullable=True)
 
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
