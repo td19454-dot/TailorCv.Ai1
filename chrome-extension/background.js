@@ -1,4 +1,4 @@
-// TailorCV Resume Tailor for LinkedIn — Background Service Worker
+// TailorCV Resume Tailor — Background Service Worker
 // Switch to 'https://thetailorcv.com' when deploying to production
 const BASE_URL = 'http://127.0.0.1:8005';
 
@@ -20,11 +20,33 @@ function arrayBufferToBase64(buffer) {
   return btoa(binary);
 }
 
-// Clicking the toolbar icon toggles the sidebar on the active LinkedIn tab
-// (no popup — the sidebar is the extension's only UI surface).
-chrome.action.onClicked.addListener((tab) => {
-  if (tab && tab.id) {
-    chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' }).catch(() => {});
+// Clicking the toolbar icon toggles the sidebar (no popup — the sidebar is the
+// extension's only UI surface). On the job boards we declare in the manifest the
+// content script is already there, so we just toggle it. On ANY other site —
+// Mercor, Outlier, Alignerr, a company careers page — nothing is loaded yet, so
+// the click itself grants us that one tab via activeTab and we inject on demand.
+// That is what lets the extension work everywhere without asking every user for
+// "read your data on all websites" at install time.
+chrome.action.onClicked.addListener(async (tab) => {
+  if (!tab || !tab.id) return;
+
+  try {
+    await chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' });
+    return;   // content script was already running — toggled it
+  } catch (_) {
+    // No listener on that tab: not a declared site, so inject now.
+  }
+
+  try {
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: () => { window.__tailorcvFromToolbar = true; },
+    });
+    await chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ['sidebar.css'] });
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content.js'] });
+  } catch (e) {
+    // chrome:// pages, the Web Store and PDF viewers can never be injected into.
+    console.warn('TailorCV: cannot run on this page —', e.message);
   }
 });
 
@@ -87,7 +109,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
               const data = await res.json();
               if (res.status === 401) detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
               else if (res.status === 402 || data.error === 'upgrade_required') detail = 'Free tailoring limit reached. Upgrade to Pro at thetailorcv.com.';
-              else if (res.status === 404) detail = 'No base resume set. Set one up at thetailorcv.com/my-resumes.';
+              else if (res.status === 404) detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
               else if (data.detail) detail = data.detail;
             } catch (_) { /* ignore parse errors, use default detail */ }
             sendResponse({ error: detail });
