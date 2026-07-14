@@ -413,7 +413,9 @@
                     <span class="status-badge status-{{ st }}">{{ st }}</span>
                 </div>
                 <div class="resume-card-meta">
-                    <span>{{ r.created_at.strftime('%b %d, %Y') }}</span>
+                    {# created_at can be null on older rows; calling .strftime() on it
+                       raised UndefinedError and 500'd the whole page. #}
+                    {% if r.created_at %}<span>{{ r.created_at.strftime('%b %d, %Y') }}</span>{% endif %}
                     {% if r.company %}<span>· {{ r.company }}</span>{% endif %}
                     {% if r.candidate_name %}<span>· {{ r.candidate_name }}</span>{% endif %}
                 </div>
