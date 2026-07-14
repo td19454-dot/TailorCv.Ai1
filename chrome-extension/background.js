@@ -1,4 +1,4 @@
-// TailorCV Auto Apply — Background Service Worker
+// TailorCV Resume Tailor for LinkedIn — Background Service Worker
 // Switch to 'https://thetailorcv.com' when deploying to production
 const BASE_URL = 'http://127.0.0.1:8005';
 
@@ -20,6 +20,14 @@ function arrayBufferToBase64(buffer) {
   return btoa(binary);
 }
 
+// Clicking the toolbar icon toggles the sidebar on the active LinkedIn tab
+// (no popup — the sidebar is the extension's only UI surface).
+chrome.action.onClicked.addListener((tab) => {
+  if (tab && tab.id) {
+    chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' }).catch(() => {});
+  }
+});
+
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   (async () => {
     try {
@@ -28,23 +36,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           credentials: 'include',
         });
         if (!res.ok) {
-          sendResponse({ error: 'Not logged in to TailorCV. Please log in at thetailorcv.com first.' });
+          sendResponse({ error: 'Not logged in to TailorCV.' });
           return;
         }
         sendResponse({ data: await res.json() });
-
-      } else if (msg.type === 'LOG_APPLICATION') {
-        try {
-          const res = await fetch(`${BASE_URL}/api/extension/log-application`, {
-            method: 'POST',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(msg.payload),
-          });
-          sendResponse({ data: await res.json() });
-        } catch (e) {
-          sendResponse({ error: e.message });
-        }
 
       } else if (msg.type === 'LOGIN') {
         try {
@@ -90,7 +85,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             let detail = 'Could not tailor your resume.';
             try {
               const data = await res.json();
-              if (res.status === 401) detail = 'Not logged in to TailorCV. Open the extension popup to log in.';
+              if (res.status === 401) detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
               else if (res.status === 402 || data.error === 'upgrade_required') detail = 'Free tailoring limit reached. Upgrade to Pro at thetailorcv.com.';
               else if (res.status === 404) detail = 'No base resume set. Set one up at thetailorcv.com/my-resumes.';
               else if (data.detail) detail = data.detail;

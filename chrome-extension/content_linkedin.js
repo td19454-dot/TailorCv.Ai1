@@ -1,15 +1,18 @@
 // ═══════════════════════════════════════════════════════
-// TailorCV Auto Apply  —  LinkedIn Jobs Content Script
+// TailorCV Resume Tailor — LinkedIn Jobs Content Script
+// The injected sidebar is the extension's only UI surface: it handles the
+// login check, the base-resume check, and the Tailor & Download action.
 // ═══════════════════════════════════════════════════════
 
 (function () {
   'use strict';
 
+  const BASE_URL = 'http://127.0.0.1:8005';
   let tcvBusy = false;
+  let currentJob = null;
+  let sb, body, launcher;
 
   // ── Utilities ────────────────────────────────────────
-
-  const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   function textOf(selectors, root = document) {
     for (const sel of selectors) {
@@ -19,16 +22,13 @@
     return '';
   }
 
-  function tailorAndDownload(payload) {
-    return new Promise(resolve => {
-      chrome.runtime.sendMessage({ type: 'TAILOR_AND_DOWNLOAD', payload }, res => resolve(res || {}));
-    });
+  function sendMessage(msg) {
+    return new Promise(resolve => chrome.runtime.sendMessage(msg, res => resolve(res || {})));
   }
 
   // ── JD extraction ─────────────────────────────────────
   // LinkedIn's class names shift periodically, so fall back through a few
-  // known selectors for the description panel, same defensive approach as
-  // the Naukri job-card collector.
+  // known selectors for the description panel.
 
   function extractJobDescription() {
     return textOf([
@@ -56,31 +56,29 @@
     ]);
   }
 
-  // ── Panel ────────────────────────────────────────────
+  // ── Panel shell ──────────────────────────────────────
 
   function createPanel() {
     if (document.getElementById('tailorcv-sidebar')) return;
 
-    const launcher = document.createElement('button');
+    launcher = document.createElement('button');
     launcher.id = 'tailorcv-launcher';
     launcher.title = 'Open TailorCV';
     launcher.innerHTML = `<img src="${chrome.runtime.getURL('icons/icon48.png')}" alt="TailorCV">`;
     document.body.appendChild(launcher);
 
-    const sb = document.createElement('div');
+    sb = document.createElement('div');
     sb.id = 'tailorcv-sidebar';
     sb.innerHTML = `
       <div class="tcv-header">
         <span class="tcv-logo">TailorCV</span>
         <button class="tcv-toggle" title="Minimize">✕</button>
       </div>
-      <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">✦ Tailor &amp; Download Resume</button>
-      <div class="tcv-status-text" id="tcvStatus">Ready · LinkedIn</div>
-      <div class="tcv-log" id="tcvLog"></div>
+      <div id="tcvBody"></div>
     `;
     document.body.appendChild(sb);
+    body = sb.querySelector('#tcvBody');
 
-    document.getElementById('tcvTailorBtn').addEventListener('click', runTailor);
     sb.querySelector('.tcv-toggle').addEventListener('click', () => {
       sb.classList.add('tcv-collapsed');
       launcher.classList.add('tcv-visible');
@@ -89,56 +87,122 @@
       sb.classList.remove('tcv-collapsed');
       launcher.classList.remove('tcv-visible');
     });
+
+    refresh();
   }
 
-  function setStatus(txt) {
-    const el = document.getElementById('tcvStatus');
-    if (el) el.textContent = txt;
+  function togglePanel() {
+    if (!document.getElementById('tailorcv-sidebar')) { createPanel(); return; }
+    sb.classList.toggle('tcv-collapsed');
+    launcher.classList.toggle('tcv-visible');
   }
 
-  function addLog(type, text) {
-    const log = document.getElementById('tcvLog');
-    if (!log) return;
-    const div = document.createElement('div');
-    div.className = `tcv-log-item tcv-${type}`;
-    div.textContent = `${{ success: '✓', fail: '✗', info: '·' }[type] || '·'} ${text}`;
-    log.prepend(div);
-    while (log.children.length > 10) log.removeChild(log.lastChild);
+  // ── State renderers ──────────────────────────────────
+
+  function renderLoading() {
+    body.innerHTML = `<div class="tcv-status-text">Checking login…</div>`;
   }
 
-  // ── Main action ──────────────────────────────────────
+  function renderLogin(errorMsg) {
+    body.innerHTML = `
+      <div class="tcv-msg">Log in to TailorCV to tailor your resume.</div>
+      <form id="tcvLoginForm">
+        <input type="email" id="tcvEmail" class="tcv-input" placeholder="Email" required autocomplete="username">
+        <input type="password" id="tcvPassword" class="tcv-input" placeholder="Password" required autocomplete="current-password">
+        <button type="submit" class="tcv-btn tcv-btn-start" id="tcvLoginBtn">Log in</button>
+        <div class="tcv-error" id="tcvLoginError">${errorMsg || ''}</div>
+      </form>
+    `;
+    body.querySelector('#tcvLoginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = body.querySelector('#tcvEmail').value.trim();
+      const password = body.querySelector('#tcvPassword').value;
+      const btn = body.querySelector('#tcvLoginBtn');
+      btn.disabled = true;
+      btn.textContent = 'Logging in…';
+      const res = await sendMessage({ type: 'LOGIN', email, password });
+      if (res.error) {
+        btn.disabled = false;
+        btn.textContent = 'Log in';
+        body.querySelector('#tcvLoginError').textContent = res.error;
+        return;
+      }
+      refresh();
+    });
+  }
+
+  function renderNoBaseResume() {
+    body.innerHTML = `
+      <div class="tcv-msg">No base resume set yet.</div>
+      <a class="tcv-link" href="${BASE_URL}/my-resumes" target="_blank">Set one up on TailorCV →</a>
+    `;
+  }
+
+  function renderNoJobDescription() {
+    body.innerHTML = `
+      <div class="tcv-msg">Could not find a job description on this page.</div>
+      <button class="tcv-btn tcv-btn-start" id="tcvRetryBtn">Retry</button>
+    `;
+    body.querySelector('#tcvRetryBtn').addEventListener('click', refresh);
+  }
+
+  function renderReady(job) {
+    currentJob = job;
+    body.innerHTML = `
+      <div class="tcv-job-info">Tailoring for: <b>${job.role || 'this job'}</b>${job.company ? ' at ' + job.company : ''}</div>
+      <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">✦ Tailor &amp; Download Resume</button>
+      <div class="tcv-status-text" id="tcvStatus"></div>
+    `;
+    body.querySelector('#tcvTailorBtn').addEventListener('click', runTailor);
+  }
 
   async function runTailor() {
-    if (tcvBusy) return;
-    const btn = document.getElementById('tcvTailorBtn');
-
-    const jd_string = extractJobDescription();
-    if (!jd_string || jd_string.length < 80) {
-      addLog('fail', 'Could not find a job description on this page.');
-      setStatus('No job description found');
-      return;
-    }
-
-    const role = extractJobTitle() || 'Job';
-    const company = extractCompany() || '';
-
+    if (tcvBusy || !currentJob) return;
+    const btn = body.querySelector('#tcvTailorBtn');
+    const statusEl = body.querySelector('#tcvStatus');
     tcvBusy = true;
     btn.disabled = true;
-    setStatus('Tailoring…');
-    addLog('info', `${role}${company ? ' @ ' + company : ''}`);
+    statusEl.textContent = 'Tailoring… this can take up to a minute.';
 
-    const res = await tailorAndDownload({ jd_string, role, company, url: window.location.href });
+    const res = await sendMessage({
+      type: 'TAILOR_AND_DOWNLOAD',
+      payload: {
+        jd_string: currentJob.jd_string,
+        role: currentJob.role,
+        company: currentJob.company,
+        url: window.location.href,
+      },
+    });
 
     tcvBusy = false;
     btn.disabled = false;
+    statusEl.textContent = res.error ? res.error : '✓ Downloaded tailored resume';
+  }
 
-    if (res.error) {
-      addLog('fail', res.error);
-      setStatus('Failed');
-    } else {
-      addLog('success', 'Downloaded tailored resume');
-      setStatus('Done');
+  // ── State machine ────────────────────────────────────
+
+  async function refresh() {
+    renderLoading();
+
+    const profileRes = await sendMessage({ type: 'GET_PROFILE' });
+    if (profileRes.error || !profileRes.data) {
+      renderLogin();
+      return;
     }
+
+    const baseRes = await sendMessage({ type: 'GET_BASE_RESUME' });
+    if (baseRes.error || !baseRes.data || !baseRes.data.has_base_resume) {
+      renderNoBaseResume();
+      return;
+    }
+
+    const jd_string = extractJobDescription();
+    if (!jd_string || jd_string.length < 80) {
+      renderNoJobDescription();
+      return;
+    }
+
+    renderReady({ jd_string, role: extractJobTitle(), company: extractCompany() });
   }
 
   // ── Init: only inject on job pages ───────────────────
@@ -157,8 +221,16 @@
   new MutationObserver(() => {
     if (location.href !== lastUrl) {
       lastUrl = location.href;
-      maybeInject();
+      setTimeout(() => {
+        if (!isJobPage()) return;
+        if (document.getElementById('tailorcv-sidebar')) refresh();
+        else createPanel();
+      }, 1200);
     }
   }).observe(document.body, { childList: true, subtree: true });
+
+  chrome.runtime.onMessage.addListener((msg) => {
+    if (msg.type === 'TOGGLE_PANEL') togglePanel();
+  });
 
 })();
