@@ -1,0 +1,258 @@
+    <div class="solx">
+        <div class="solx-wrap">
+            <div class="solx-hero">
+                <div>
+                    <span class="solx-eyebrow">ATS Score Checker</span>
+                    <h1>See exactly why the ATS <span class="g">screens you out.</span></h1>
+                    <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
+                        <span>Your real ATS score against the exact job</span>
+                        <span>Every keyword you are missing, listed</span>
+                        <span>The formatting issues that break parsers</span>
+                    </div>
+                    <a href="#ats-free" class="solx-btn">Check My ATS Score, Free</a>
+                    <p class="micro">One free scan &bull; No signup &bull; <b>No credit card</b></p>
+                </div>
+                <div class="rez">
+                    <div class="rez-tag">&#128202; ATS Report</div>
+                    <div class="rez-ring" style="--p:62"><b>62</b></div>
+                    <div class="rez-h">Match level</div>
+                    <div class="rez-line l"></div>
+                    <div class="rez-h">Missing keywords</div>
+                    <div style="margin:4px 0"><span class="rez-pill y">Kubernetes</span><span class="rez-pill y">CI/CD</span><span class="rez-pill y">Airflow</span></div>
+                    <div class="rez-h">Formatting</div>
+                    <div class="rez-line l" style="background:#fecaca"></div>
+                    <div class="rez-line m" style="background:#bbf7d0"></div>
+                    <div class="rez-insights">
+                        <div class="t">&#10024; Priority fixes</div>
+                        <div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                        <div class="rez-btn">See Full Report</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-marquee">
+            <div class="solx-wrap"><p class="cap">Our users have been <span class="g">hired at</span></p></div>
+            <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
+        </div>
+        <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec" id="ats-free">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Free ATS check</div>
+                <h2 class="solx-h2">Get your ATS score now, <span class="g">zero signup</span></h2>
+                <p class="solx-lead">Upload your resume, paste the job, get a real ATS score in 30 seconds. No account, no card.</p>
+
+                <div class="solx-ats">
+                    <div class="solx-ats-panel">
+                        <h3>Run your free scan</h3>
+                        <p class="hint">Your resume is scored against the job, then deleted. We do not post it anywhere.</p>
+
+                        <label class="solx-ats-drop" id="atsDrop">
+                            <input type="file" id="atsFile" accept="application/pdf,.pdf">
+                            <b>Upload your resume</b>
+                            <small>PDF, click to choose or drop it here</small>
+                            <div class="solx-ats-file" id="atsFileName" hidden></div>
+                        </label>
+
+                        <div class="solx-ats-jdrow">
+                            <span class="solx-ats-jdlabel">Use sample JD:</span>
+                            <div data-jd-picker data-target="atsJd"></div>
+                        </div>
+                        <textarea id="atsJd" placeholder="Paste the job description here, or pick a sample role above."></textarea>
+
+                        <button type="button" class="solx-btn" id="atsGo">Get My Free ATS Score</button>
+                        <div class="solx-ats-err" id="atsErr" hidden></div>
+
+                        <div class="solx-ats-badges">
+                            <span>&#10003; No signup</span>
+                            <span>&#10003; No credit card</span>
+                            <span>&#10003; Result in ~30 seconds</span>
+                        </div>
+                    </div>
+
+                    <div class="solx-ats-panel solx-ats-out" id="atsOut">
+                        <div class="solx-ats-idle" id="atsIdle">
+                            Your score, your match level, and the exact keywords you are missing will show up here.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">A real audit, <span class="g">not a vanity number</span></h2>
+                <p class="solx-lead">Most checkers hand you a score and leave. TailorCV shows you the exact keywords, sections, and formatting faults costing you the interview, and what to fix first.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-ring"><b>62%</b></div><div class="rez-h">Match score</div><div class="rez-line l"></div>
+                            <div class="rez-h" style="margin-top:10px">Scored against the job</div><div class="rez-line m"></div>
+                        </div>
+                        <h3>Scored against the actual job</h3>
+                        <p>Not a generic grade. Your resume is scored against the exact job description you paste, the way a real ATS reads it.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">Missing keywords</div>
+                            <div style="margin-top:6px"><span class="rez-pill y">Kubernetes</span><span class="rez-pill y">CI/CD</span></div>
+                            <div class="rez-h" style="margin-top:10px">Matched</div>
+                            <div style="margin-top:4px"><span class="rez-pill g">Python</span><span class="rez-pill g">AWS</span></div>
+                        </div>
+                        <h3>Every missing keyword, named</h3>
+                        <p>See exactly which hard skills, soft skills, and terms the job asks for that your resume never mentions.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-badge">&#10003; Single column</div>
+                            <div class="rez-line l" style="background:#fecaca;margin-top:10px"></div>
+                            <div class="rez-h" style="margin-top:8px">Parser faults</div>
+                            <div class="rez-line m"></div><div class="rez-line s"></div>
+                        </div>
+                        <h3>The faults that break parsers</h3>
+                        <p>Two-column layouts, missing sections, unreadable dates. We catch the formatting problems that quietly get you filtered out.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">How it works</div>
+                <h2 class="solx-h2">A simple 4-step process to a <span class="g">full ATS report</span></h2>
+                <div style="margin-top:26px">
+                    <div class="solx-step">
+                        <div><div class="n">Step 1</div><h3>Upload your <span class="g">resume</span></h3><p>Drop in your PDF. No account, no card, and your first scan is free.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128228; Upload resume</div><div class="rez-h">Alex_Mitchell_CV.pdf</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:8px">&#10003; Parsed in seconds</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 2</div><h3>Paste the <span class="g">job description</span></h3><p>The score is only meaningful against a real job, so we compare your resume to that exact posting.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128188; Job description</div><div class="rez-h">Senior Data Scientist</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div><div class="rez-line s"></div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 3</div><h3>Get your <span class="g">ATS score</span></h3><p>See your match score and match level in about 30 seconds, scored the way the software scores you.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-ring" style="--p:62"><b>62</b></div><div class="rez-tag">&#128202; ATS score</div><div class="rez-h">Match level</div><div class="rez-line l"></div><div class="rez-line m"></div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 4</div><h3>Fix the <span class="g">priority issues</span></h3><p>Work through the missing keywords, weak sections, and formatting faults, ranked by what will move your score most.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#10024; Priority fixes</div><div class="rez-h">Add these keywords</div><span class="rez-pill y">Kubernetes</span><span class="rez-pill y">CI/CD</span><div class="rez-h" style="margin-top:8px">Fix formatting</div><div class="rez-line l" style="background:#bbf7d0"></div><div class="rez-btn" style="margin-top:12px">See Full Report</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Loved by job seekers</div>
+                <h2 class="solx-h2">From filtered out to <span class="g">shortlisted</span></h2>
+                <div class="solx-quotes">
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I scored 48 and had no idea why. The report listed nine keywords I was missing. I added the real ones and jumped to 87."</p><div class="who"><img src="/static/user_imges/12.jpg" alt=""><span><b>Sarah J.</b> <span>Atlassian</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"It caught that my two-column layout was scrambling in the ATS. That one fix changed everything."</p><div class="who"><img src="/static/user_imges/85.jpg" alt=""><span><b>Michael R.</b> <span>Amazon</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Other checkers just gave me a number. This one told me what to actually change, in priority order."</p><div class="who"><img src="/static/user_imges/26.jpg" alt=""><span><b>Priya S.</b> <span>Google</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Free, no signup, and it gave me a full audit. I did not expect that much detail without paying."</p><div class="who"><img src="/static/user_imges/79.jpg" alt=""><span><b>Emily G.</b> <span>PwC</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I ran the same resume against three jobs and got three very different scores. That is when it clicked for me."</p><div class="who"><img src="/static/user_imges/13.jpg" alt=""><span><b>Vicki B.</b> <span>PayPal</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"The section-by-section breakdown showed my experience bullets were far too vague. Fixed them and got callbacks."</p><div class="who"><img src="/static/user_imges/22.jpg" alt=""><span><b>James W.</b> <span>Apple</span></span></div></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "_feature_more.html" %}
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Pricing</div>
+                <h2 class="solx-h2">Simple pricing, <span class="g">powerful features</span></h2>
+                <p class="solx-lead">Your ATS score is free forever. Upgrade only when you want unlimited access.</p>
+                <div class="pricing-preview-grid cols-3">
+                    <article class="pricing-preview-card basic">
+                        <p class="pricing-plan-name">Free</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
+                        <p class="pricing-plan-note">Always free, no card needed.</p>
+                        <ul class="pricing-feature-list">
+                            <li>ATS score, unlimited</li>
+                            <li>1 free resume optimization</li>
+                            <li>1 free cover letter + mock interview</li>
+                            <li>All templates &amp; downloads</li>
+                        </ul>
+                        <a href="/signup?next=/solutions" class="pricing-plan-btn">Start free</a>
+                    </article>
+
+                    <article class="pricing-preview-card">
+                        <p class="pricing-badge pricing-badge-pass">One-time</p>
+                        <p class="pricing-plan-name">7-Day Pass</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppPassSym">&#8377;</span><span id="ppPassAmt">149</span></p>
+                        <p class="pricing-plan-note">7 days of full Pro access, no auto-renew.</p>
+                        <ul class="pricing-feature-list">
+                            <li>Everything in Pro</li>
+                            <li>Unlimited optimize &amp; cover letters</li>
+                            <li>Unlimited mock interviews</li>
+                            <li>No subscription</li>
+                        </ul>
+                        <a href="/pricing" class="pricing-plan-btn">Get 7-day pass</a>
+                    </article>
+
+                    <article class="pricing-preview-card featured">
+                        <p class="pricing-badge">Most Popular</p>
+                        <p class="pricing-plan-name">Pro</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppProSym">&#8377;</span><span id="ppProAmt">167</span><span>/mo</span></p>
+                        <p class="pricing-plan-note" id="ppProNote">Billed yearly, save 44%, cancel any time.</p>
+                        <ul class="pricing-feature-list">
+                            <li>Unlimited resume optimizations</li>
+                            <li>Unlimited cover letters &amp; mock interviews</li>
+                            <li>LinkedIn import unlimited</li>
+                            <li>Priority AI processing</li>
+                        </ul>
+                        <a href="/pricing" class="pricing-plan-btn pricing-plan-btn-primary">Get Pro</a>
+                    </article>
+                </div>
+                <p class="pricing-preview-all"><a href="/pricing">See full pricing &amp; FAQ</a></p>
+            </div>
+        </div>
+        <script>
+        // Region-aware prices, mirrors the homepage preview and /pricing.
+        (function () {
+            var PP = {
+                india:  { sym: '\u20b9', pass: '149',  pro: '167',  note: 'Billed yearly, save 44%, cancel any time.' },
+                lic:    { sym: '$',       pass: '1.99', pro: '2.08', note: 'Billed yearly, save 44%, cancel any time.' },
+                global: { sym: '$',       pass: '4.99', pro: '5',    note: 'Billed yearly, save 44%, cancel any time.' }
+            };
+            function set(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+            function apply(region) {
+                var p = PP[region] || PP.india;
+                set('ppFreeSym', p.sym); set('ppPassSym', p.sym); set('ppProSym', p.sym);
+                set('ppPassAmt', p.pass); set('ppProAmt', p.pro); set('ppProNote', p.note);
+            }
+            fetch('/api/billing/region')
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (d) { if (d && d.region) apply(d.region); })
+                .catch(function () { /* keep default india pricing */ });
+        })();
+        </script>
+
+        <div class="solx-band">
+            <div class="solx-band-inner">
+                <div class="solx-band-kicker">Getting filtered out?</div>
+                <h2>Know your ATS score <span class="ga">before you apply</span>.</h2>
+                <p>Most resumes are rejected by software before a human ever opens them. Find out where yours stands, and exactly what to fix.</p>
+                <a href="#ats-free" class="solx-btn">Check My ATS Score, Free</a>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">FAQ</div>
+                <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
+                <div class="solx-faq" style="margin-top:32px">
+                    <details open><summary>What is an ATS score?</summary><p>It is how well your resume matches a specific job in the eyes of the applicant tracking software that screens it. We score your resume against the exact job description you paste, then show you what is dragging the score down.</p></details>
+                    <details><summary>Is it really free with no signup?</summary><p>Yes. You get one full ATS report with no account and no card. Create a free account and your ATS score stays free.</p></details>
+                    <details><summary>How is this different from the resume optimizer?</summary><p>This checker audits your resume and tells you what is wrong. The resume optimizer goes further and rewrites your resume to fix it, then rescores it.</p></details>
+                    <details><summary>What does the report include?</summary><p>Your match score and level, matched and missing hard and soft skills, a section-by-section breakdown, formatting and parser faults, and a priority list of fixes.</p></details>
+                    <details><summary>Is my resume stored?</summary><p>Your resume is used to produce your report and is not posted anywhere. A free account lets you save your reports if you want them kept.</p></details>
+                </div>
+                <div style="text-align:center; margin-top:34px"><a href="#ats-free" class="solx-btn">Check My ATS Score, Free</a></div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/jd_picker.js"></script>
