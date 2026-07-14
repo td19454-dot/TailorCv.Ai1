@@ -1,9 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "TailorCV — AI Resume Tailor for Any Job",
-  "version": "3.0.0",
-  "description": "Tailor your resume to any job posting and download it in one click — LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday, and any other job page.",
-  "permissions": ["storage", "tabs", "activeTab", "scripting", "cookies", "downloads"],
+  "name": "TailorCV \u2014 AI Resume Tailor for Any Job",
+  "version": "3.1.0",
+  "description": "Tailor your resume to any job posting and write a matching cover letter, then download both as ATS-ready PDFs in one click, on every major job board.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "cookies",
+    "downloads"
+  ],
   "host_permissions": [
     "*://*.linkedin.com/*",
     "*://*.indeed.com/*",
@@ -24,7 +31,9 @@
     "http://127.0.0.1:8005/*",
     "http://localhost:8005/*"
   ],
-  "optional_host_permissions": ["*://*/*"],
+  "optional_host_permissions": [
+    "*://*/*"
+  ],
   "background": {
     "service_worker": "background.js"
   },
@@ -47,23 +56,31 @@
         "*://*.dice.com/*",
         "*://*.wellfound.com/*"
       ],
-      "js": ["content.js"],
-      "css": ["sidebar.css"],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "sidebar.css"
+      ],
       "run_at": "document_idle"
     }
   ],
   "action": {
     "default_title": "Tailor my resume to this job",
     "default_icon": {
-      "16":  "icons/icon16.png",
-      "48":  "icons/icon48.png",
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     }
   },
   "web_accessible_resources": [
     {
-      "resources": ["icons/*.png"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "icons/*.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }
