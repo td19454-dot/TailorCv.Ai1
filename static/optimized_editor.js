@@ -49,9 +49,11 @@
     /* ─────────────────────────────────────────────────────────────────────────
        HELPERS – STATUS / BADGE
     ───────────────────────────────────────────────────────────────────────── */
+    /* One status line only. This used to write the same text into #fit-guidance and
+       #editor-status, so every message rendered twice in the sidebar (and two
+       aria-live regions announced it twice). */
     function setStatus(msg) {
-        if (fitGuidance) fitGuidance.textContent = msg || "";
-        if (statusEl)    statusEl.textContent    = msg || "";
+        if (statusEl) statusEl.textContent = msg || "";
     }
 
     function updateFontSizeBadge() {
@@ -236,6 +238,293 @@ document.addEventListener("DOMContentLoaded", function () {
         return "#" + m.slice(0, 3).map(n => parseInt(n).toString(16).padStart(2, "0")).join("");
     }
 
+    /* A "band" is an element that ALREADY has a solid, non-white background — a real
+       sidebar or header block. Templates 1-6 are black-and-white: their .resume-header
+       is just the name on white, so flood-filling it hid the name (same colour as its
+       own background) and made the contact line unreadable. Only genuine bands get
+       painted; everything else just takes the accent on text and rules. */
+    const BAND_SELECTOR = [
+        ".sidebar", ".cv-sidebar", ".left-col", ".left-panel",
+        '[class*="sidebar"]', '[class*="side-col"]',
+        ".resume-header", ".cv-header", ".header-band",
+        ".header-left", ".top-band", ".top-header",
+        ".section-header", ".name-band"
+    ].join(",");
+
+    function isSolidNonWhite(bg) {
+        if (!bg) return false;
+        const m = bg.match(/rgba?\(([^)]+)\)/);
+        if (!m) return false;
+        const p = m[1].split(",").map(s => parseFloat(s));
+        if (p.length < 3) return false;
+        const alpha = p.length > 3 ? p[3] : 1;
+        if (alpha < 0.5) return false;                             // transparent
+        if (p[0] > 240 && p[1] > 240 && p[2] > 240) return false;  // white / near-white
+        return true;
+    }
+
+    function markAccentBands(doc) {
+        const win = doc.defaultView;
+        doc.querySelectorAll(".tc-accent-band").forEach(el => el.classList.remove("tc-accent-band"));
+        if (!win) return;
+        doc.querySelectorAll(BAND_SELECTOR).forEach(el => {
+            // Read the background BEFORE our override applies, so we judge the
+            // template's own design rather than a colour we just painted on.
+            if (isSolidNonWhite(win.getComputedStyle(el).backgroundColor)) {
+                el.classList.add("tc-accent-band");
+            }
+        });
+    }
+
+    function darkenHex(hex, amount) {
+        const num = parseInt(hex.replace("#", ""), 16);
+        const r   = Math.max(0, (num >> 16) - amount);
+        const g   = Math.max(0, ((num >> 8) & 0xff) - amount);
+        const b   = Math.max(0, (num & 0xff) - amount);
+        return "#" + [r, g, b].map(v => v.toString(16).padStart(2, "0")).join("");
+    }
+
+
+    /* -- Generic palette re-tinting -------------------------------------------
+       Every template names its palette differently (--accent, --green, --teal,
+       --blue, --primary, --pill, --teal-link, ...) and some colours are hardcoded
+       rather than held in a variable. Enumerating names never scaled: each new
+       template broke it. Instead we read the template's OWN stylesheet, work out
+       its accent, and retint every colour in that accent's hue family, wherever it
+       lives -- variables and hardcoded values alike.
+
+       These names carry the page/body colours and are never recoloured, or the
+       paper itself would change hue. */
+    const NEUTRAL_VAR = /^--(paper|bg|background|page|surface|shell|side|ink|text|muted|sidebar-ink)$/i;
+
+    function toHex(val) {
+        if (!val) return null;
+        val = String(val).trim();
+        if (val.startsWith("#")) {
+            if (val.length === 4) return "#" + val.slice(1).split("").map(c => c + c).join("");
+            return val.length === 7 ? val.toLowerCase() : null;
+        }
+        const m = val.match(/\d+/g);
+        if (!m || m.length < 3) return null;
+        return "#" + m.slice(0, 3).map(n => parseInt(n).toString(16).padStart(2, "0")).join("");
+    }
+
+    function hexToHsl(hex) {
+        const n = parseInt(hex.replace("#", ""), 16);
+        const r = (n >> 16) / 255, g = ((n >> 8) & 0xff) / 255, b = (n & 0xff) / 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        const l = (max + min) / 2;
+        const d = max - min;
+        let h = 0, s = 0;
+        if (d) {
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            if      (max === r) h = ((g - b) / d) % 6;
+            else if (max === g) h = (b - r) / d + 2;
+            else                h = (r - g) / d + 4;
+            h *= 60;
+            if (h < 0) h += 360;
+        }
+        return { h, s, l };
+    }
+
+    function hslToHex(h, s, l) {
+        h = ((h % 360) + 360) % 360;
+        s = Math.min(1, Math.max(0, s));
+        l = Math.min(1, Math.max(0, l));
+        const c = (1 - Math.abs(2 * l - 1)) * s;
+        const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+        const m = l - c / 2;
+        let r = 0, g = 0, b = 0;
+        if      (h <  60) { r = c; g = x; }
+        else if (h < 120) { r = x; g = c; }
+        else if (h < 180) { g = c; b = x; }
+        else if (h < 240) { g = x; b = c; }
+        else if (h < 300) { r = x; b = c; }
+        else              { r = c; b = x; }
+        return "#" + [r, g, b]
+            .map(v => Math.round((v + m) * 255).toString(16).padStart(2, "0"))
+            .join("");
+    }
+
+    function hueDistance(a, b) {
+        const d = Math.abs(a - b) % 360;
+        return d > 180 ? 360 - d : d;
+    }
+
+    /* Every style rule in the resume document (skipping our own override sheet). */
+    function collectStyleRules(doc, skipNode) {
+        const out = [];
+        const push = (rules) => {
+            for (const r of rules) {
+                if (r.style && r.selectorText) out.push(r);
+                else if (r.cssRules) push(r.cssRules);          // @media, @supports
+            }
+        };
+        for (const sheet of Array.from(doc.styleSheets || [])) {
+            if (skipNode && sheet.ownerNode === skipNode) continue;
+            let rules;
+            try { rules = sheet.cssRules; } catch (e) { continue; }   // cross-origin
+            if (rules) push(rules);
+        }
+        return out;
+    }
+
+    /* Custom properties declared on :root / html. */
+    function paletteVarNames(doc, skipNode) {
+        const names = new Set();
+        collectStyleRules(doc, skipNode).forEach((rule) => {
+            const sel = rule.selectorText.trim().toLowerCase();
+            if (sel !== ":root" && sel !== "html" && sel !== "*") return;
+            for (let i = 0; i < rule.style.length; i++) {
+                const prop = rule.style[i];
+                if (prop.startsWith("--")) names.add(prop);
+            }
+        });
+        return Array.from(names);
+    }
+
+    /* --accent-dark is usually MORE saturated than --accent, so "most saturated" alone
+       picks the dark variant as the base and every derived shade lands too light.
+       Prefer a plain name (no -dark/-light/-soft/-deep/-2 suffix), then saturation. */
+    const MODIFIER_SUFFIX = /-(dark|darker|light|lighter|soft|deep|deeper|pale|tint|muted|hover|2)$/i;
+
+    function findBaseAccent(doc, skipNode) {
+        const win = doc.defaultView;
+        if (!win) return null;
+        const cs = win.getComputedStyle(doc.documentElement);
+
+        const candidates = [];
+        paletteVarNames(doc, skipNode).forEach((name) => {
+            if (NEUTRAL_VAR.test(name)) return;
+            const hx = toHex(cs.getPropertyValue(name));
+            if (!hx) return;
+            const c = hexToHsl(hx);
+            if (c.s < 0.12 || c.l > 0.92 || c.l < 0.06) return;   // grey / near-white / near-black
+            candidates.push({ name: name, hex: hx, hsl: c, plain: !MODIFIER_SUFFIX.test(name) });
+        });
+        if (candidates.length) {
+            const plain = candidates.filter(c => c.plain);
+            const pool  = plain.length ? plain : candidates;
+            const best  = pool.reduce((a, b) => (b.hsl.s > a.hsl.s ? b : a));
+            best.mono = false;
+            return best;
+        }
+
+        /* Greyscale template (e.g. 13: --header #8d8d90, --accent #3a3d43). Nothing is
+           saturated, so the hue-family test has nothing to match on. Treat it as
+           monochrome: its non-neutral vars ARE the accent roles (header band, headings,
+           rules), so map each onto the chosen hue at its own lightness. */
+        const greys = [];
+        paletteVarNames(doc, skipNode).forEach((name) => {
+            if (NEUTRAL_VAR.test(name)) return;
+            const hx = toHex(cs.getPropertyValue(name));
+            if (!hx) return;
+            const c = hexToHsl(hx);
+            if (c.l > 0.95) return;                 // leave near-white alone
+            greys.push({ name: name, hex: hx, hsl: c });
+        });
+        if (!greys.length) return null;
+
+        const darkest = greys.reduce((a, b) => (b.hsl.l < a.hsl.l ? b : a));
+        darkest.mono = true;
+        return darkest;
+    }
+
+    /* Move a colour onto the new hue, keeping its own lightness/saturation offset so
+       darks stay dark and pale tints stay pale. Returns null when the colour is NOT in
+       the accent family (a grey, or a different hue) -- template 10's slate header and
+       teal contact strip land here, so they keep the colours the designer chose. */
+    function retintColor(hex, base, target) {
+        const c = hexToHsl(hex);
+
+        if (base.mono) {
+            // Monochrome template: keep each grey's own lightness, take the new hue.
+            // Lighter tones get less saturation so rules stay as subtle as the greys were.
+            if (c.l > 0.95) return null;
+            const s = target.s * (0.35 + 0.65 * (1 - c.l));
+            return hslToHex(target.h, s, c.l);
+        }
+
+        if (c.s < 0.06) return null;                            // achromatic
+        if (hueDistance(c.h, base.hsl.h) > 32) return null;     // different family
+        return hslToHex(target.h,
+                        target.s + (c.s - base.hsl.s),
+                        target.l + (c.l - base.hsl.l));
+    }
+
+    const COLOR_TOKEN = /#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b|rgba?\([^)]*\)/g;
+
+    /* Retint the colours inside a declaration value (gradients keep every stop).
+       Alpha is preserved, so soft shadows stay soft. */
+    function retintValue(val, base, target) {
+        if (!val || val.indexOf("var(") !== -1) return null;    // vars handled separately
+        let changed = false;
+        const out = val.replace(COLOR_TOKEN, (tok) => {
+            let alpha = null;
+            if (/^rgba\(/i.test(tok)) {
+                const parts = tok.slice(tok.indexOf("(") + 1, -1).split(",").map(x => x.trim());
+                if (parts.length === 4) alpha = parts[3];
+            }
+            const hx = toHex(tok);
+            if (!hx) return tok;
+            const next = retintColor(hx, base, target);
+            if (!next) return tok;
+            changed = true;
+            if (alpha !== null) {
+                const n = parseInt(next.slice(1), 16);
+                return "rgba(" + (n >> 16) + ", " + ((n >> 8) & 0xff) + ", " + (n & 0xff) + ", " + alpha + ")";
+            }
+            return next;
+        });
+        return changed ? out : null;
+    }
+
+    const COLOR_PROPS = [
+        "background", "background-color", "background-image", "color",
+        "border", "border-color", "border-top", "border-right", "border-bottom", "border-left",
+        "border-top-color", "border-right-color", "border-bottom-color", "border-left-color",
+        "outline-color", "fill", "stroke", "box-shadow", "text-decoration-color"
+    ];
+
+    /* The full override: retinted variables + retinted hardcoded declarations. */
+    function buildThemedCss(doc, styleNode, base, hex) {
+        const cs     = doc.defaultView.getComputedStyle(doc.documentElement);
+        const target = hexToHsl(hex);
+
+        const varDecls = [];
+        paletteVarNames(doc, styleNode).forEach((name) => {
+            if (NEUTRAL_VAR.test(name)) return;
+            const hx = toHex(cs.getPropertyValue(name));
+            if (!hx) return;
+            const next = retintColor(hx, base, target);
+            if (next) varDecls.push("    " + name + ": " + next + " !important;");
+        });
+
+        /* On a monochrome template only the VARIABLES are recoloured. Its hardcoded greys
+           are body copy (template 13 sets contact/body text to #40454f), and tinting
+           those would colour the reading text. Its accent roles all go through vars. */
+        const ruleDecls = [];
+        if (!base.mono) {
+            collectStyleRules(doc, styleNode).forEach((rule) => {
+                const parts = [];
+                COLOR_PROPS.forEach((prop) => {
+                    const next = retintValue(rule.style.getPropertyValue(prop), base, target);
+                    if (next) parts.push(prop + ": " + next + " !important;");
+                });
+                if (parts.length) ruleDecls.push(rule.selectorText + " { " + parts.join(" ") + " }");
+            });
+        }
+
+        return "/* TailorCV Accent Override - retinted from the template's own palette */\n"
+             + (varDecls.length ? ":root {\n" + varDecls.join("\n") + "\n}\n" : "")
+             + ruleDecls.join("\n") + "\n";
+    }
+
+    /* Templates 7+ ship their own palette (--accent, --accent-dark, --sidebar,
+       --sidebar-deep, --line, ...). Templates 1-6 use style1.css, which is pure
+       black-and-white with no palette at all. So we recolour them differently:
+       a themed template gets its OWN variables driven (its design keeps all of its
+       hierarchy), while a plain one only gets accent on text and rules. */
     function applyAccentColor(doc, hex) {
         if (!doc || !doc.body || !hex) return;
 
@@ -246,7 +535,22 @@ document.addEventListener("DOMContentLoaded", function () {
             doc.head.appendChild(style);
         }
 
-        const tint = lightenHex(hex, 40);
+        // Clear first so detection sees the template's real design, not our own paint.
+        style.textContent = "";
+        doc.querySelectorAll(".tc-accent-band").forEach(el => el.classList.remove("tc-accent-band"));
+
+        // A themed template carries its own palette: retint every colour in its accent's
+        // hue family (variables AND hardcoded values), wherever they live. Works for any
+        // template without knowing its variable names.
+        const base = findBaseAccent(doc, style);
+        if (base) {
+            style.textContent = buildThemedCss(doc, style, base, hex);
+            return;
+        }
+
+        // Plain black-and-white template (1-6): no palette at all, so just put the accent
+        // on text and rules, and only fill elements that genuinely had a solid band.
+        markAccentBands(doc);
 
         style.textContent = `
 /* TailorCV Accent Override */
@@ -260,16 +564,14 @@ document.addEventListener("DOMContentLoaded", function () {
     --header-bg: ${hex} !important;
 }
 
-.sidebar, .cv-sidebar, .left-col, .left-panel,
-[class*="sidebar"], [class*="side-col"],
-.resume-header, .cv-header, .header-band,
-.header-left, .top-band, .top-header,
-.section-header, .name-band { background-color: ${hex} !important; }
-
+/* Text + rules take the accent (works on plain black-and-white templates). */
 h1, h2, h3,
 .section-title, .section-heading,
 [class*="section-title"], [class*="section-heading"],
-.job-title, .cv-section-title { color: ${hex} !important; }
+.cv-section-title { color: ${hex} !important; }
+
+h2, .section-title, .section-heading,
+[class*="section-title"], [class*="section-heading"] { border-color: ${hex} !important; }
 
 hr, .divider, [class*="divider"],
 .section-rule, .separator { border-color: ${hex} !important; background: ${hex} !important; }
@@ -277,8 +579,15 @@ hr, .divider, [class*="divider"],
 .timeline-dot, .bullet-dot,
 [class*="accent-border"] { background: ${hex} !important; border-color: ${hex} !important; }
 
-.sidebar *, .cv-sidebar *, .left-col *,
-.left-panel *, .header-left * { color: #fff !important; }
+/* Only elements that genuinely had a solid band get filled, and their contents
+   go white so they stay readable on the accent. */
+.tc-accent-band { background-color: ${hex} !important; }
+.tc-accent-band, .tc-accent-band * { color: #fff !important; }
+.tc-accent-band a { color: #fff !important; }
+.tc-accent-band hr, .tc-accent-band .divider, .tc-accent-band .separator {
+    border-color: rgba(255,255,255,0.55) !important;
+    background: rgba(255,255,255,0.55) !important;
+}
 `;
     }
 
