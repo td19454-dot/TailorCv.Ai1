@@ -1,6 +1,5 @@
-// TailorCV Resume Tailor for LinkedIn — Background Service Worker
-// Switch to 'https://thetailorcv.com' when deploying to production
-const BASE_URL = 'http://127.0.0.1:8005';
+// TailorCV — AI Resume Optimizer — Background Service Worker
+const BASE_URL = 'https://thetailorcv.com';
 
 async function getCsrfToken() {
   // Make sure a csrftoken cookie exists (the server sets one on every response),
@@ -22,9 +21,21 @@ function arrayBufferToBase64(buffer) {
 
 // Clicking the toolbar icon toggles the sidebar on the active LinkedIn tab
 // (no popup — the sidebar is the extension's only UI surface).
-chrome.action.onClicked.addListener((tab) => {
-  if (tab && tab.id) {
-    chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' }).catch(() => {});
+chrome.action.onClicked.addListener(async (tab) => {
+  if (!tab || !tab.id) return;
+  try {
+    await chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' });
+  } catch (e) {
+    // No content script listening in this tab yet — typically because the
+    // tab was already open before the extension was installed/reloaded, so
+    // it never got the normal manifest content-script injection. Inject it
+    // now instead of silently doing nothing.
+    try {
+      await chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ['sidebar.css'] });
+      await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content_linkedin.js'] });
+    } catch (_) {
+      // Not a linkedin.com/jobs/* tab, or injection not permitted — nothing to do.
+    }
   }
 });
 
@@ -83,14 +94,23 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
           if (!res.ok) {
             let detail = 'Could not tailor your resume.';
+            let code = null;
             try {
               const data = await res.json();
-              if (res.status === 401) detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
-              else if (res.status === 402 || data.error === 'upgrade_required') detail = 'Free tailoring limit reached. Upgrade to Pro at thetailorcv.com.';
-              else if (res.status === 404) detail = 'No base resume set. Set one up at thetailorcv.com/my-resumes.';
-              else if (data.detail) detail = data.detail;
+              if (res.status === 401) {
+                detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
+                code = 'not_logged_in';
+              } else if (res.status === 402 || data.error === 'upgrade_required') {
+                detail = 'Free tailoring limit reached.';
+                code = 'upgrade_required';
+              } else if (res.status === 404) {
+                detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
+                code = 'no_base_resume';
+              } else if (data.detail) {
+                detail = data.detail;
+              }
             } catch (_) { /* ignore parse errors, use default detail */ }
-            sendResponse({ error: detail });
+            sendResponse({ error: detail, code });
             return;
           }
 
