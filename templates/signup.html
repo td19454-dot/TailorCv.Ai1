@@ -7,7 +7,7 @@
   <meta name="description" content="Create your free theTailorCV account and start tailoring resumes with AI, checking ATS scores, and practicing mock interviews today.">
   <title>Sign Up - theTailorCV</title>
   {% include "_seo_head.html" %}
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -111,20 +111,20 @@
       color: inherit;
     }
 
-    .brand-icon {
-      width: 36px; height: 36px;
-      background: linear-gradient(135deg, var(--accent), var(--sky));
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; font-weight: 700;
-      color: white;
+    /* Real brand lockup: the purple mark + blue wordmark, same as the site nav. */
+    .brand-mark {
+      height: 34px;
+      width: auto;
+      display: block;
     }
 
     .brand-name {
-      font-family: 'Fraunces', serif;
-      font-size: 20px;
-      font-weight: 400;
-      letter-spacing: -0.3px;
+      font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: #3392ff;
     }
 
     .hero-content {
@@ -196,15 +196,14 @@
     }
 
     .avatar {
-      width: 28px; height: 28px;
+      width: 34px; height: 34px;
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px;
-      font-weight: 500;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.28);
     }
-
-    .av-purple { background: rgba(108,99,255,0.3); color: #a99fff; }
-    .av-sky    { background: rgba(93,175,219,0.3); color: #89ccee; }
 
     .author-info .name {
       font-size: 12px;
@@ -464,9 +463,9 @@
       <div class="orb orb-3"></div>
 
       <div class="brand">
-        <a href="/" class="brand-link" aria-label="TailorCV home">
-          <div class="brand-icon">T</div>
-          <span class="brand-name">TailorCV</span>
+        <a href="/" class="brand-link" aria-label="theTailorCV home">
+          <img class="brand-mark" src="/static/logo-mark.webp" alt="">
+          <span class="brand-name">thetailorcv</span>
         </a>
       </div>
 
@@ -484,10 +483,10 @@
           <div class="testimonial">
             <p class="testimonial-text">"Landed 3 interviews in my first week. The tailored resume made an immediate difference."</p>
             <div class="testimonial-author">
-              <div class="avatar av-purple">PM</div>
+              <img class="avatar" src="/static/user_imges/12.jpg" alt="" loading="lazy">
               <div class="author-info">
-                <div class="name">Priya M.</div>
-                <div class="role">Product Manager, Bangalore</div>
+                <div class="name">Sarah J.</div>
+                <div class="role">Software Engineer, Atlassian</div>
               </div>
               <div class="stars">
                 <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
@@ -498,10 +497,10 @@
           <div class="testimonial">
             <p class="testimonial-text">"Used to spend hours rewriting my CV. Now it takes 2 minutes and the results are better."</p>
             <div class="testimonial-author">
-              <div class="avatar av-sky">RK</div>
+              <img class="avatar" src="/static/user_imges/85.jpg" alt="" loading="lazy">
               <div class="author-info">
-                <div class="name">Rahul K.</div>
-                <div class="role">Software Engineer, Mumbai</div>
+                <div class="name">Michael R.</div>
+                <div class="role">Software Engineer, Amazon</div>
               </div>
               <div class="stars">
                 <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
