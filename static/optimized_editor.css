@@ -69,13 +69,13 @@ header.navbar .nav-links a {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    position: sticky;
-    top: 1rem;
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(148,163,184,0.2) transparent;
-    padding-right: 2px;
+    /* No height cap and no inner scrollbar: the cap used to clip the lower cards,
+       so the panel looked half-hidden. It now runs its full length and the page
+       scrolls instead. */
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -122,7 +122,7 @@ header.navbar .nav-links a {
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #64748b;
+    color: #ffffff;
     margin-bottom: 0.1rem;
 }
 
@@ -612,4 +612,126 @@ header.navbar .nav-links a {
 #download-edited-btn:active {
     transform: translateY(0) scale(0.98);
     box-shadow: 0 0 18px rgba(139,92,246,0.6);
+}
+/* ── Sidebar polish: white copy instead of low-contrast grey, and the accent
+      colour panel styled to sit with the other controls. ───────────────────── */
+.editor-top h1 { color: #ffffff; }
+.editor-top p { color: #ffffff; opacity: 0.86; }
+#spacing-guidance,
+#save-resume-hint,
+.fit-guidance,
+.editor-status { color: #ffffff !important; opacity: 0.78; }
+
+/* Accent colour panel (mounted by buildAccentPanel) */
+#tc-accent-panel-container { margin-top: 0.15rem; }
+#tc-accent-panel-container .tc-accent-presets { gap: 0.5rem; }
+#tc-accent-panel-container .tc-accent-swatch {
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+#tc-accent-panel-container .tc-accent-swatch:hover {
+    border-color: rgba(255, 255, 255, 0.55);
+}
+#tc-accent-panel-container .tc-accent-swatch.active {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.55);
+}
+#tc-accent-panel-container .tc-accent-custom-row {
+    margin-top: 0.15rem;
+    justify-content: space-between;
+}
+#tc-accent-panel-container .tc-accent-custom-label {
+    color: #ffffff;
+    opacity: 0.78;
+    font-size: 0.8rem;
+}
+#tc-accent-panel-container .tc-accent-custom-input {
+    width: 44px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.06);
+}
+#tc-accent-panel-container .tc-accent-reset {
+    color: #93c5fd;
+    font-weight: 600;
+    text-decoration: none;
+}
+#tc-accent-panel-container .tc-accent-reset:hover { text-decoration: underline; }
+
+/* ── De-crowd the actions card: one status line, tighter rhythm ───────────── */
+.actions-card { gap: 0.45rem; padding: 0.85rem 0.9rem; }
+.actions-card .top-actions { gap: 0.45rem; }
+.editor-status {
+    margin-top: 0.35rem;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+.editor-status:empty { display: none; }   /* no empty box when there is no message */
+
+/* ── Hierarchy in the actions card ─────────────────────────────────────────────
+   Save / Back / hint / status were all the same weight, so the block read as one
+   crowded stack and the eye slid off it. Save is now the clear secondary action,
+   Back recedes to a quiet link, and the helper copy is de-emphasised. */
+
+/* Premium secondary action */
+#save-resume-btn {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(37, 99, 235, 0.14));
+    border: 1px solid rgba(125, 211, 252, 0.42);
+    color: #eaf4ff;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 0.62rem 0.9rem;
+    border-radius: 11px;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+#save-resume-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(125, 211, 252, 0.85);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.26), rgba(37, 99, 235, 0.22));
+    box-shadow: 0 12px 26px rgba(37, 99, 235, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+#save-resume-btn:active { transform: translateY(0); }
+
+/* Quiet tertiary: a link, not another boxed button competing with Save */
+.desktop-only-back,
+.mobile-only-back {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: #93c5fd;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.4rem;
+    margin-top: 0.15rem;
+    opacity: 0.82;
+}
+.desktop-only-back:hover,
+.mobile-only-back:hover {
+    background: none;
+    color: #ffffff;
+    opacity: 1;
+    text-decoration: underline;
+}
+
+/* Helper copy sits under Save, not beside it */
+#save-resume-hint {
+    color: #ffffff !important;
+    opacity: 0.55;
+    font-size: 0.74rem;
+}
+
+/* Status/tip: a soft note, not a fourth boxed element */
+.editor-status {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    color: #ffffff !important;
+    opacity: 0.72;
+    font-size: 0.8rem;
 }
