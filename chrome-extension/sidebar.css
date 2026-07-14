@@ -187,6 +187,50 @@
 .tcv-status-text.tcv-ok    { color: #86efac !important; }
 .tcv-status-text.tcv-error { color: #fca5a5 !important; }
 
+.tcv-progress-wrap {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 14px 0 4px !important;
+}
+.tcv-progress-wrap.tcv-visible {
+  display: flex !important;
+}
+
+.tcv-progress-circle {
+  position: relative !important;
+  width: 88px !important;
+  height: 88px !important;
+}
+
+.tcv-progress-ring {
+  transform: rotate(-90deg) !important;
+}
+
+.tcv-progress-track {
+  fill: none !important;
+  stroke: rgba(255,255,255,0.08) !important;
+  stroke-width: 6 !important;
+}
+
+.tcv-progress-bar {
+  fill: none !important;
+  stroke: url(#tcvProgressGradient) !important;
+  stroke-width: 6 !important;
+  stroke-linecap: round !important;
+}
+
+.tcv-progress-pct {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #eaf1ff !important;
+}
+
 .tcv-log {
   max-height: 220px !important;
   overflow-y: auto !important;

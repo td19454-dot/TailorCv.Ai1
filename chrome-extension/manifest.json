@@ -6,7 +6,9 @@
   "permissions": ["activeTab", "cookies", "downloads", "scripting"],
   "host_permissions": [
     "*://*.linkedin.com/*",
-    "https://thetailorcv.com/*"
+    "https://thetailorcv.com/*",
+    "http://127.0.0.1:8005/*",
+    "http://localhost:8005/*"
   ],
   "background": {
     "service_worker": "background.js"

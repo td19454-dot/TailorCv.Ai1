@@ -7,10 +7,12 @@
 (function () {
   'use strict';
 
-  const BASE_URL = 'https://thetailorcv.com';
+  // Switch to 'https://thetailorcv.com' before publishing/updating the store listing.
+  const BASE_URL = 'http://127.0.0.1:8005';
+  const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 30; // r=30 in the SVG below
   let tcvBusy = false;
   let currentJob = null;
-  let sb, body, launcher, globalStatus;
+  let sb, body, launcher, globalStatus, progressWrap, progressBar, progressPct, progressTimer;
   // Cached once login + base-resume checks succeed, so switching between job
   // postings only re-extracts the JD instead of re-hitting the server for
   // things that don't change mid-session.
@@ -82,13 +84,33 @@
         <button class="tcv-toggle" title="Minimize">✕</button>
       </div>
       <div id="tcvBody"></div>
+      <div class="tcv-progress-wrap" id="tcvProgressWrap">
+        <div class="tcv-progress-circle">
+          <svg class="tcv-progress-ring" width="88" height="88" viewBox="0 0 88 88">
+            <defs>
+              <linearGradient id="tcvProgressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4f7fff"></stop>
+                <stop offset="100%" stop-color="#c9b8ff"></stop>
+              </linearGradient>
+            </defs>
+            <circle class="tcv-progress-track" cx="44" cy="44" r="30"></circle>
+            <circle class="tcv-progress-bar" id="tcvProgressBar" cx="44" cy="44" r="30"></circle>
+          </svg>
+          <span class="tcv-progress-pct" id="tcvProgressPct">0%</span>
+        </div>
+      </div>
       <div class="tcv-status-text" id="tcvGlobalStatus"></div>
     `;
     document.body.appendChild(sb);
     body = sb.querySelector('#tcvBody');
-    // Lives outside #tcvBody so it survives per-job re-renders — an in-flight
-    // tailor request stays visible even after switching to a different job.
+    // These live outside #tcvBody so they survive per-job re-renders — an
+    // in-flight tailor request stays visible even after switching jobs.
     globalStatus = sb.querySelector('#tcvGlobalStatus');
+    progressWrap = sb.querySelector('#tcvProgressWrap');
+    progressBar = sb.querySelector('#tcvProgressBar');
+    progressPct = sb.querySelector('#tcvProgressPct');
+    progressBar.style.strokeDasharray = String(PROGRESS_CIRCUMFERENCE);
+    progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE);
 
     sb.querySelector('.tcv-toggle').addEventListener('click', () => {
       sb.classList.add('tcv-collapsed');
@@ -199,6 +221,36 @@
     }
   }
 
+  // The backend gives no incremental progress events for a single tailor
+  // request, so this eases toward ~92% over the typical request duration and
+  // snaps to 100% the moment the response actually comes back — reads as
+  // real progress (ring + live number) without lying about a completion
+  // time we can't know in advance.
+  function setProgress(pct) {
+    const clamped = Math.max(0, Math.min(100, pct));
+    progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE * (1 - clamped / 100));
+    progressPct.textContent = Math.round(clamped) + '%';
+  }
+
+  function startProgress() {
+    progressWrap.classList.add('tcv-visible');
+    progressBar.style.transition = 'stroke-dashoffset 0.2s linear';
+    setProgress(0);
+    const startedAt = performance.now();
+    clearInterval(progressTimer);
+    progressTimer = setInterval(() => {
+      const elapsedSeconds = (performance.now() - startedAt) / 1000;
+      setProgress(92 * (1 - Math.exp(-elapsedSeconds / 15))); // eases toward 92%, never quite reaches it
+    }, 150);
+  }
+
+  function finishProgress() {
+    clearInterval(progressTimer);
+    progressBar.style.transition = 'stroke-dashoffset 0.4s ease';
+    setProgress(100);
+    setTimeout(() => progressWrap.classList.remove('tcv-visible'), 700);
+  }
+
   async function runTailor(job, label) {
     if (tcvBusy || !job) return;
     const jobUrl = window.location.href; // snapshot now — navigation shouldn't retag this request
@@ -206,6 +258,7 @@
     renderJobFromPage(); // re-render current button as disabled/"busy"
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Tailoring "${label}"… this can take up to a minute.`;
+    startProgress();
 
     const res = await sendMessage({
       type: 'TAILOR_AND_DOWNLOAD',
@@ -217,6 +270,7 @@
       },
     });
 
+    finishProgress();
     tcvBusy = false;
 
     if (res.code === 'upgrade_required') {
