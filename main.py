@@ -3703,6 +3703,28 @@ async def interview_prep_page(request: Request):
     return templates.TemplateResponse(request, "interview_prep.html", {"request": request, "is_logged_in": bool(request.session.get("user_id"))})
 
 
+# Chrome Web Store listing. Until the extension is published, the CTAs fall back to
+# signup so they are never dead links; set CHROME_STORE_URL to point them at the store.
+CHROME_STORE_URL = os.getenv("CHROME_STORE_URL", "").strip()
+
+
+@app.get("/extension", response_class=HTMLResponse)
+async def extension_page(request: Request):
+    """Marketing landing for the LinkedIn Chrome extension."""
+    return templates.TemplateResponse(
+        request,
+        "extension.html",
+        {
+            "request": request,
+            "is_logged_in": bool(request.session.get("user_id")),
+            "chrome_store_url": CHROME_STORE_URL,
+            "canonical_url": build_absolute_url("/extension"),
+            "software_schema_json": build_software_app_schema(),
+            "page_schema_json": build_page_breadcrumb("Chrome Extension", "/extension"),
+        },
+    )
+
+
 @app.get("/mock-interview", response_class=HTMLResponse)
 async def mock_interview_page(request: Request):
     """Real-time mock interview room."""
