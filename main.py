@@ -3722,6 +3722,7 @@ async def extension_page(request: Request):
         "filename": None,
         "template_id": None,
         "style_id": None,
+        "cover_template": "classic",
     }
     if user_id:
         db = get_db()
@@ -3733,6 +3734,9 @@ async def extension_page(request: Request):
                 "filename": user.base_resume_filename if has_base else None,
                 "template_id": user.base_template_id if has_base else None,
                 "style_id": user.base_style_id if has_base else None,
+                # Without this the picker always paints Classic as selected on load,
+                # so a saved Modern/Monogram choice looks like it never took.
+                "cover_template": (user.base_cover_template or "classic") if user else "classic",
             }
         finally:
             db.close()
@@ -5492,39 +5496,59 @@ async def extension_log_application(request: Request):
 
 
 @app.post("/api/extension/base-resume")
-async def set_extension_base_resume(
-    request: Request,
-    file: UploadFile = File(...),
-    template_id: int = Form(1),
-    style_id: int = Form(1),
-    cover_template: str = Form("classic"),
-):
-    """Save the resume PDF + template/style the Chrome extension will tailor
-    against on job pages. Called from the web app (My Resumes), so it keeps
-    normal CSRF protection — not in EXEMPT_PATHS."""
+async def set_extension_base_resume(request: Request):
+    """Save the resume PDF + the templates the Chrome extension renders with.
+
+    The form is parsed by hand rather than through File()/Form() parameters: an
+    untouched <input type="file"> still posts an empty part, which FastAPI coerces
+    to "" and then 422s against an UploadFile annotation. Reading the form directly
+    lets "save my template choice, keep my resume" work with no upload at all.
+
+    Called from the web app, so it keeps normal CSRF protection — not in EXEMPT_PATHS."""
     user_id = request.session.get("user_id")
     if not user_id:
         raise HTTPException(status_code=401, detail="Not logged in")
 
-    new_path = save_uploaded_pdf(file)
-    with open(new_path, "wb") as f:
-        content = await file.read()
-        f.write(content)
+    form = await request.form()
+    upload = form.get("file")
+    has_upload = bool(getattr(upload, "filename", ""))
+
+    def _as_int(value, fallback):
+        try:
+            return int(str(value).strip())
+        except (TypeError, ValueError):
+            return fallback
+
+    template_id = _as_int(form.get("template_id"), 1)
+    style_id = _as_int(form.get("style_id"), 1)
+    cover_template = str(form.get("cover_template") or "classic").strip().lower()
+
+    new_path = None
+    if has_upload:
+        new_path = save_uploaded_pdf(upload)
+        with open(new_path, "wb") as f:
+            content = await upload.read()
+            f.write(content)
 
     db = get_db()
     try:
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
+
+        if not has_upload and not user.base_resume_path:
+            raise HTTPException(status_code=400, detail="Upload a base resume PDF first.")
+
         old_path = user.base_resume_path
-        user.base_resume_path = new_path
-        user.base_resume_filename = (file.filename or "resume.pdf")[:255]
+        if has_upload:
+            user.base_resume_path = new_path
+            user.base_resume_filename = (upload.filename or "resume.pdf")[:255]
+            user.base_resume_uploaded_at = datetime.utcnow()
         user.base_template_id = template_id
         user.base_style_id = style_id
         user.base_cover_template = cover_template if cover_template in COVER_TEMPLATES else "classic"
-        user.base_resume_uploaded_at = datetime.utcnow()
         db.commit()
-        if old_path and old_path != new_path and os.path.exists(old_path):
+        if has_upload and old_path and old_path != new_path and os.path.exists(old_path):
             os.remove(old_path)
     finally:
         db.close()

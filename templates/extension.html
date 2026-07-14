@@ -397,10 +397,13 @@
                 </div>
 
                 <form id="baseResumeForm">
+                    {# Once a base resume exists the file is optional — changing a template
+                       must not force the user to re-upload the same PDF. #}
                     <label class="ext-drop" id="extDrop">
-                        <input type="file" name="file" id="extFile" accept="application/pdf" required>
-                        <b>Upload your resume</b>
-                        <small>PDF, click to choose or drop it here</small>
+                        <input type="file" name="file" id="extFile" accept="application/pdf"
+                               {% if not br.get('has_base_resume') %}required{% endif %}>
+                        <b>{% if br.get('has_base_resume') %}Replace your resume{% else %}Upload your resume{% endif %}</b>
+                        <small>{% if br.get('has_base_resume') %}Optional &mdash; drop a new PDF here only if you want to change it{% else %}PDF, click to choose or drop it here{% endif %}</small>
                         <div class="ext-file" id="extFileName" hidden></div>
                     </label>
 
@@ -543,15 +546,27 @@
         });
 
         function renderStatus(d) {
-            if (d && d.has_base_resume) {
+            var hasBase = !!(d && d.has_base_resume);
+            if (hasBase) {
+                // Do NOT default this to "classic": if the API sends no cover_template
+                // the server is out of date, and quietly printing "classic" hides that.
+                var cover = d.cover_template
+                    ? ' · ' + d.cover_template + ' cover letter'
+                    : ' · cover letter design NOT SAVED — restart the server';
                 statusEl.textContent = '✓ Using “' + (d.filename || 'your resume') +
-                                       '” · Template ' + (d.template_id || 1) +
-                                       ' · ' + (d.cover_template || 'classic') + ' cover letter';
+                                       '” · Template ' + (d.template_id || 1) + cover;
                 statusEl.className = 'ext-status';
             } else {
                 statusEl.textContent = 'No base resume yet. The extension cannot tailor anything until you upload one.';
                 statusEl.className = 'ext-status unset';
             }
+            // With a resume already on file, the upload is optional — otherwise the
+            // browser blocks the submit and a template change can never be saved.
+            fileEl.required = !hasBase;
+            dropEl.querySelector('b').textContent = hasBase ? 'Replace your resume' : 'Upload your resume';
+            dropEl.querySelector('small').textContent = hasBase
+                ? 'Optional — drop a new PDF here only if you want to change it'
+                : 'PDF, click to choose or drop it here';
         }
 
         function refreshStatus() {
@@ -613,9 +628,25 @@
             msg.textContent = '';
             msg.className = 'ext-msg';
 
+            // An empty file input still sends an empty multipart part, which the API
+            // would reject — drop it so "save my template choice" works on its own.
+            var fd = new FormData(form);
+            if (!(fileEl.files && fileEl.files.length)) fd.delete('file');
+
+            // Read the design straight off the highlighted card rather than trusting the
+            // hidden field to have been updated.
+            var chosen = coverGrid.querySelector('.ext-cl.on');
+            fd.set('cover_template', chosen ? chosen.dataset.cl : 'classic');
+            fd.set('template_id', tplInput.value || '1');
+            console.log('[TailorCV] saving →', {
+                cover_template: fd.get('cover_template'),
+                template_id: fd.get('template_id'),
+                file: fd.get('file') ? 'new upload' : 'keeping existing'
+            });
+
             fetch('/api/extension/base-resume', {
                 method: 'POST',
-                body: new FormData(form),
+                body: fd,
                 credentials: 'same-origin'
             })
                 .then(function (res) {
