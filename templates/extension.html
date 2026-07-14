@@ -396,6 +396,7 @@
         var form     = document.getElementById('baseResumeForm');
         var msg      = document.getElementById('baseResumeMsg');
         var statusEl = document.getElementById('baseResumeStatus');
+        var styleEl  = document.getElementById('extStyleId');
         if (!form) return;
 
         /* Show the real template previews, same assets the templates gallery uses,
@@ -405,6 +406,34 @@
             grid.querySelectorAll('.ext-tpl').forEach(function (c) {
                 c.classList.toggle('on', String(c.dataset.id) === String(id));
             });
+        }
+
+        /* The banner reads the same endpoint the extension itself reads, so what you
+           see here is exactly what the extension will use. */
+        function renderStatus(d) {
+            if (d && d.has_base_resume) {
+                statusEl.textContent = '✓ Using “' + (d.filename || 'your resume') +
+                                       '” · Template ' + (d.template_id || 1);
+                statusEl.className = 'ext-status';
+            } else {
+                statusEl.textContent = 'No base resume yet. The extension cannot tailor anything until you upload one.';
+                statusEl.className = 'ext-status unset';
+            }
+        }
+
+        function refreshStatus() {
+            return fetch('/api/extension/base-resume', { credentials: 'same-origin' })
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (d) {
+                    if (!d) return null;
+                    renderStatus(d);
+                    if (d.has_base_resume) {
+                        if (d.template_id) select(d.template_id);
+                        if (d.style_id) styleEl.value = d.style_id;
+                    }
+                    return d;
+                })
+                .catch(function () { return null; });
         }
 
         fetch('/api/resume-templates')
@@ -422,8 +451,9 @@
                     grid.appendChild(card);
                 });
                 select(tplInput.value || 1);
+                refreshStatus();
             })
-            .catch(function () {});
+            .catch(function () { refreshStatus(); });
 
         fileEl.addEventListener('change', function () {
             var f = fileEl.files && fileEl.files[0];
@@ -449,20 +479,30 @@
             msg.textContent = '';
             msg.className = 'ext-msg';
 
-            fetch('/api/extension/base-resume', { method: 'POST', body: new FormData(form) })
+            fetch('/api/extension/base-resume', {
+                method: 'POST',
+                body: new FormData(form),
+                credentials: 'same-origin'
+            })
                 .then(function (res) {
-                    if (!res.ok) throw new Error('Upload failed');
+                    if (res.status === 401) throw new Error('Your session expired. Please log in again.');
+                    if (!res.ok) throw new Error('Could not save your base resume (error ' + res.status + '). Please try again.');
                     return res.json();
                 })
-                .then(function () {
-                    var f = fileEl.files[0];
-                    msg.textContent = 'Saved. The extension will tailor this resume from now on.';
-                    msg.className = 'ext-msg ok';
-                    statusEl.textContent = '\u2713 Using \u201c' + (f ? f.name : 'your resume') + '\u201d \u00b7 Template ' + tplInput.value;
-                    statusEl.className = 'ext-status';
+                /* Re-read the saved state instead of trusting the form: the banner then
+                   shows what is actually stored, never an optimistic guess. */
+                .then(function () { return refreshStatus(); })
+                .then(function (d) {
+                    if (d && d.has_base_resume) {
+                        msg.textContent = 'Saved. The extension will tailor this resume from now on.';
+                        msg.className = 'ext-msg ok';
+                    } else {
+                        msg.textContent = 'Saved, but the resume did not come back. Please reload and try again.';
+                        msg.className = 'ext-msg error';
+                    }
                 })
-                .catch(function () {
-                    msg.textContent = 'Could not save your base resume. Please try again.';
+                .catch(function (err) {
+                    msg.textContent = err.message || 'Could not save your base resume. Please try again.';
                     msg.className = 'ext-msg error';
                 })
                 .finally(function () {
