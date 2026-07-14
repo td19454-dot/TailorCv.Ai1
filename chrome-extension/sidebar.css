@@ -229,6 +229,36 @@
   font-size: 18px !important;
   font-weight: 700 !important;
   color: #eaf1ff !important;
+  transition: opacity 0.25s ease !important;
+}
+.tcv-progress-pct.tcv-hidden {
+  opacity: 0 !important;
+}
+
+.tcv-progress-bar.tcv-success {
+  stroke: #4ade80 !important;
+  transition: stroke 0.3s ease !important;
+}
+
+.tcv-check-icon {
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0 !important;
+  transform: scale(0.7) !important;
+  transition: opacity 0.3s ease, transform 0.3s ease !important;
+}
+.tcv-check-icon.tcv-visible {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+.tcv-check-icon #tcvCheckPath {
+  stroke-dasharray: 60 !important;
+  stroke-dashoffset: 60 !important;
+  transition: none !important;
+}
+.tcv-check-icon.tcv-visible #tcvCheckPath {
+  stroke-dashoffset: 0 !important;
+  transition: stroke-dashoffset 0.4s ease 0.1s !important;
 }
 
 .tcv-log {

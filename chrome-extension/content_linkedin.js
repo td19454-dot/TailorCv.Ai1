@@ -12,7 +12,7 @@
   const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 30; // r=30 in the SVG below
   let tcvBusy = false;
   let currentJob = null;
-  let sb, body, launcher, globalStatus, progressWrap, progressBar, progressPct, progressTimer;
+  let sb, body, launcher, globalStatus, progressWrap, progressBar, progressPct, progressTimer, checkIcon;
   // Cached once login + base-resume checks succeed, so switching between job
   // postings only re-extracts the JD instead of re-hitting the server for
   // things that don't change mid-session.
@@ -97,6 +97,10 @@
             <circle class="tcv-progress-bar" id="tcvProgressBar" cx="44" cy="44" r="30"></circle>
           </svg>
           <span class="tcv-progress-pct" id="tcvProgressPct">0%</span>
+          <svg class="tcv-check-icon" id="tcvCheckIcon" width="88" height="88" viewBox="0 0 88 88">
+            <path id="tcvCheckPath" d="M27 45 L39 57 L61 32" fill="none" stroke="#4ade80"
+                  stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
         </div>
       </div>
       <div class="tcv-status-text" id="tcvGlobalStatus"></div>
@@ -109,6 +113,7 @@
     progressWrap = sb.querySelector('#tcvProgressWrap');
     progressBar = sb.querySelector('#tcvProgressBar');
     progressPct = sb.querySelector('#tcvProgressPct');
+    checkIcon = sb.querySelector('#tcvCheckIcon');
     progressBar.style.strokeDasharray = String(PROGRESS_CIRCUMFERENCE);
     progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE);
 
@@ -244,11 +249,28 @@
     }, 150);
   }
 
-  function finishProgress() {
+  function finishProgress(success) {
     clearInterval(progressTimer);
     progressBar.style.transition = 'stroke-dashoffset 0.4s ease';
     setProgress(100);
-    setTimeout(() => progressWrap.classList.remove('tcv-visible'), 700);
+
+    if (!success) {
+      setTimeout(() => progressWrap.classList.remove('tcv-visible'), 700);
+      return;
+    }
+
+    // Let the ring visibly finish filling, then morph it into a drawn checkmark.
+    setTimeout(() => {
+      progressBar.classList.add('tcv-success');
+      progressPct.classList.add('tcv-hidden');
+      checkIcon.classList.add('tcv-visible');
+    }, 350);
+    setTimeout(() => {
+      progressWrap.classList.remove('tcv-visible');
+      progressBar.classList.remove('tcv-success');
+      progressPct.classList.remove('tcv-hidden');
+      checkIcon.classList.remove('tcv-visible');
+    }, 1750);
   }
 
   async function runTailor(job, label) {
@@ -270,7 +292,7 @@
       },
     });
 
-    finishProgress();
+    finishProgress(!res.error);
     tcvBusy = false;
 
     if (res.code === 'upgrade_required') {
