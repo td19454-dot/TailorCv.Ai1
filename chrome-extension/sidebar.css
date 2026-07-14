@@ -19,7 +19,40 @@
 }
 
 #tailorcv-sidebar.tcv-collapsed {
-  transform: translateX(230px) !important;
+  /* 120% of the panel's own width guarantees it clears fully off-screen
+     (including box-shadow) instead of leaving a text sliver visible. */
+  transform: translateX(120%) !important;
+}
+
+/* Small icon-only launcher shown in place of the panel while collapsed. */
+#tailorcv-launcher {
+  position: fixed !important;
+  top: 80px !important;
+  right: 0 !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;
+  border: 1px solid rgba(79, 127, 255, 0.3) !important;
+  border-right: none !important;
+  border-radius: 10px 0 0 10px !important;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.45) !important;
+  z-index: 2147483647 !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+
+#tailorcv-launcher.tcv-visible {
+  display: flex !important;
+}
+
+#tailorcv-launcher img {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 6px !important;
+  pointer-events: none !important;
 }
 
 #tailorcv-sidebar * {
