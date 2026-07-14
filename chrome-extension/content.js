@@ -464,7 +464,10 @@
       <div class="tcv-job-info">Tailoring for: <b>${esc(job.role || 'this job')}</b>${job.company ? ' at ' + esc(job.company) : ''}</div>
       <div class="tcv-source">${SOURCE_LABEL[job.source] || ''} · <a href="#" id="tcvEditJd">not right?</a></div>
       <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
-        ${tcvBusy ? 'Tailoring another job…' : '✦ Tailor & Download Resume'}
+        ${tcvBusy ? 'Working on another job…' : '✦ Tailor & Download Resume'}
+      </button>
+      <button class="tcv-btn tcv-btn-ghost" id="tcvCoverBtn">
+        ✉ Write a Cover Letter
       </button>
     `;
 
@@ -473,9 +476,43 @@
       renderManual(job.jd_string);
     });
 
+    // Both actions run off the same JD and the same stored base resume, so the cover
+    // letter costs the user nothing extra to set up — it is the same click, once more.
     const btn = body.querySelector('#tcvTailorBtn');
-    if (tcvBusy) btn.disabled = true;
-    else btn.addEventListener('click', () => runTailor(job, label));
+    const coverBtn = body.querySelector('#tcvCoverBtn');
+    if (tcvBusy) {
+      btn.disabled = true;
+      coverBtn.disabled = true;
+    } else {
+      btn.addEventListener('click', () => runTailor(job, label));
+      coverBtn.addEventListener('click', () => runCoverLetter(job, label));
+    }
+  }
+
+  async function runCoverLetter(job, label) {
+    if (tcvBusy || !job) return;
+    tcvBusy = true;
+    renderJobFromPage();
+    globalStatus.className = 'tcv-status-text';
+    globalStatus.textContent = `Writing a cover letter for "${label}"…`;
+
+    const res = await sendMessage({
+      type: 'COVER_LETTER',
+      payload: {
+        jd_string: job.jd_string,
+        role: job.role,
+        company: job.company,
+        url: window.location.href,
+      },
+    });
+
+    tcvBusy = false;
+    globalStatus.className = res.error ? 'tcv-status-text tcv-error' : 'tcv-status-text tcv-ok';
+    globalStatus.textContent = res.error
+      ? `✗ ${label}: ${res.error}`
+      : `✓ Downloaded cover letter for "${label}"`;
+
+    if (sessionReady) renderJobFromPage();
   }
 
   async function runTailor(job, label) {

@@ -4,7 +4,7 @@
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tailor your resume to any job posting without leaving the page. The free TailorCV Chrome extension works on LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday and any other job page, and downloads an ATS-ready PDF in one click.">
+    <meta name="description" content="Tailor your resume to any job posting without leaving the page. The free TailorCV Chrome extension works on every major job board and any other job page, and downloads an ATS-ready PDF in one click.">
     <title>Chrome Extension, Tailor Your Resume on Any Job Board | theTailorCV</title>
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/header-footer.css?v=2">
@@ -54,15 +54,37 @@
         .ext-tpl-name { display: block; margin-top: 8px; font-size: .84rem; color: #cbd4e6; }
         .ext-tpl.on .ext-tpl-name { color: #fff; font-weight: 600; }
 
+        /* Cover letter designs — tiny renderings of the three real layouts, so the
+           choice is made by looking rather than by reading three words. */
+        .ext-cl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+        .ext-cl { padding: 0; background: none; border: 0; cursor: pointer; text-align: center; font: inherit; }
+        .ext-cl-shot { display: block; aspect-ratio: 3 / 4; border-radius: 12px; overflow: hidden; background: #fff; border: 2px solid rgba(96,165,250,.25); transition: border-color .2s ease, transform .2s ease; }
+        .ext-cl:hover .ext-cl-shot { transform: translateY(-3px); border-color: rgba(96,165,250,.7); }
+        .ext-cl.on .ext-cl-shot { border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96,165,250,.35); }
+        .ext-cl-name { display: block; margin-top: 8px; font-size: .84rem; color: #cbd4e6; }
+        .ext-cl.on .ext-cl-name { color: #fff; font-weight: 600; }
+
+        .clm { display: block; height: 100%; padding: 12px 13px; text-align: left; }
+        .clm-name { display: block; font-size: 9px; font-weight: 700; color: #111; letter-spacing: .3px; }
+        .clm-name.teal { color: #0e7c7c; }
+        .clm-rule { display: block; height: 1px; background: #111; margin: 3px 0 4px; }
+        .clm-meta { display: block; font-size: 5.5px; color: #666; margin-bottom: 8px; }
+        .clm-line { display: block; height: 3px; border-radius: 2px; background: #d7dce4; margin-bottom: 4px; }
+        .clm-line.s { width: 62%; }
+        .clm-sig { display: block; margin-top: 8px; font-family: 'Brush Script MT', cursive; font-size: 12px; color: #111; }
+        .clm-sig.teal { color: #0e7c7c; }
+        .clm-classic { text-align: right; }
+        .clm-classic .clm-line { text-align: left; }
+        .clm-mono { display: flex; gap: 8px; }
+        .clm-side { flex: none; width: 38%; }
+        .clm-badge { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 3px; background: #1f2937; color: #34d399; font-size: 11px; font-weight: 800; }
+        .clm-sname { display: block; margin-top: 6px; font-size: 7px; font-weight: 800; color: #0e7c7c; line-height: 1.2; }
+        .clm-main { flex: 1; padding-top: 4px; }
+
         .ext-save { width: 100%; margin-top: 22px; }
         .ext-msg { margin-top: 12px; font-size: .93rem; text-align: center; }
         .ext-msg.ok { color: #4ade80; }
         .ext-msg.error { color: #fca5a5; }
-        .ext-boards { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; margin-top: 22px; }
-        .ext-board { display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); color: #dbe3f2; font-size: .9rem; font-weight: 500; }
-        .ext-board .dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; flex: none; }
-        .ext-board.any { background: rgba(59,130,246,.12); border-color: rgba(96,165,250,.4); color: #bfd7ff; }
-        .ext-board.any .dot { background: #60a5fa; }
         .ext-boards-note { text-align: center; color: #c2ccde; font-size: .95rem; margin: 16px auto 0; max-width: 620px; line-height: 1.6; }
         .ext-boards-note b { color: #e8edf6; }
         .ext-links { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -74,7 +96,7 @@
 <canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
     {% include "_nav.html" %}
 
-    <link rel="stylesheet" href="/static/feature_landing.css?v=109">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=110">
 
     {% if not is_logged_in %}
     <div class="solx">
@@ -86,15 +108,15 @@
                     <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
                         <span>Open any job posting and click once</span>
                         <span>Your resume is rewritten for that exact job</span>
-                        <span>Download the ATS-ready PDF and apply</span>
+                        <span>Download the ATS-ready PDF, and a matching cover letter</span>
                     </div>
                     <a href="{{ chrome_store_url or '/signup?next=/extension' }}" class="solx-btn"{% if chrome_store_url %} target="_blank" rel="noopener"{% endif %}>Add to Chrome, Free</a>
-                    <p class="micro">LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday &amp; more &bull; No credit card &bull; <b>Free to start</b></p>
+                    <p class="micro">Works on every major job board &bull; No credit card &bull; <b>Free to start</b></p>
                 </div>
                 <div class="rez">
                     <div class="rez-tag">&#128188; Job posting</div>
                     <div class="rez-name" style="font-size:16px;text-align:left">Senior Data Scientist</div>
-                    <div class="rez-role" style="text-align:left">Google &bull; Bengaluru</div>
+                    <div class="rez-role" style="text-align:left">Bengaluru, India &bull; Remote</div>
                     <div class="rez-h">Job description</div>
                     <div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
                     <div class="rez-insights">
@@ -118,18 +140,76 @@
             <div class="solx-wrap">
                 <div class="solx-kicker">Works where you already apply</div>
                 <h2 class="solx-h2">One extension, <span class="g">every job board</span></h2>
-                <div class="ext-boards">
-                    <span class="ext-board"><span class="dot"></span>LinkedIn</span>
-                    <span class="ext-board"><span class="dot"></span>Indeed</span>
-                    <span class="ext-board"><span class="dot"></span>Naukri</span>
-                    <span class="ext-board"><span class="dot"></span>Greenhouse</span>
-                    <span class="ext-board"><span class="dot"></span>Lever</span>
-                    <span class="ext-board"><span class="dot"></span>Workday</span>
-                    <span class="ext-board"><span class="dot"></span>Glassdoor</span>
-                    <span class="ext-board any"><span class="dot"></span>and any other job page</span>
+                <p class="solx-lead">You should not have to change where you job hunt to use this. The panel meets you on the posting you already opened, whatever site it lives on.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-tag">&#128188; Job posting</div>
+                            <div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#10003; TailorCV panel opened</div>
+                        </div>
+                        <h3>It is already there</h3>
+                        <p>Open a posting on a job board, a company careers page or an ATS portal and the panel appears on its own. Nothing to set up, nothing to click first.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">Chrome toolbar</div>
+                            <div style="margin-top:8px"><span class="rez-pill b">&#9679; TailorCV</span></div>
+                            <div class="rez-line s" style="margin-top:10px"></div>
+                            <div class="rez-btn" style="margin-top:10px">Open the panel</div>
+                        </div>
+                        <h3>One click anywhere else</h3>
+                        <p>On a gig platform or any site we have not seen before, click the TailorCV icon in your toolbar and the panel opens right there.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">Job description</div>
+                            <div class="rez-line l"></div><div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#10003; Pasted by you</div>
+                        </div>
+                        <h3>Never a dead end</h3>
+                        <p>If a page is too unusual to read automatically, paste or highlight the job description yourself and tailor from that. It works everywhere, always.</p>
+                    </div>
                 </div>
-                <p class="ext-boards-note">The panel opens by itself on these. Anywhere else, click the <b>TailorCV icon</b> in your toolbar.</p>
             </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">Apply in minutes, <span class="g">not evenings</span></h2>
+                <p class="solx-lead">Most people send the same resume everywhere because tailoring each one is tedious. The extension puts TailorCV inside the posting, so the tailored version becomes the easy option.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-tag">&#128188; On the job page</div>
+                            <div class="rez-h" style="margin-top:10px">Senior Data Scientist</div>
+                            <div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-btn" style="margin-top:10px">&#11015; Tailor &amp; Download</div>
+                        </div>
+                        <h3>One click, one tailored PDF</h3>
+                        <p>Your resume is rewritten for that exact role and downloaded as a clean, ATS-ready PDF. No copying the description, no switching tabs.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">Base resume</div>
+                            <div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#10003; Saved once, reused forever</div>
+                        </div>
+                        <h3>Set your resume once</h3>
+                        <p>Upload your base resume a single time. Every job you open afterwards is tailored from it automatically, so there is nothing to re-upload.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">Applied</div>
+                            <div class="rez-line m"></div>
+                            <div style="margin-top:6px"><span class="rez-pill g">Tailored</span><span class="rez-pill b">Downloaded</span><span class="rez-pill y">Logged</span></div>
+                            <div class="rez-line s" style="margin-top:8px"></div>
+                        </div>
+                        <h3>Every application, tracked</h3>
+                        <p>Each job you apply to through the extension is logged to your account, so you always know where you applied and with which resume.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -148,7 +228,7 @@
                     </div>
                     <div class="solx-step">
                         <div><div class="n">Step 3</div><h3>Open <span class="g">any job</span></h3><p>The panel reads the job description for you and scores your resume against it, right there on the page.</p></div>
-                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128188; Indeed job</div><div class="rez-h">Senior Data Scientist, Google</div><div class="rez-line l"></div><div class="rez-line m"></div><span class="rez-pill g">Python</span><span class="rez-pill b">SQL</span><span class="rez-pill y">AWS</span></div></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128188; Job posting</div><div class="rez-h">Senior Data Scientist</div><div class="rez-line l"></div><div class="rez-line m"></div><span class="rez-pill g">Python</span><span class="rez-pill b">SQL</span><span class="rez-pill y">AWS</span></div></div>
                     </div>
                     <div class="solx-step">
                         <div><div class="n">Step 4</div><h3>Tailor and <span class="g">download</span></h3><p>One click rewrites your resume for that job and downloads a clean, ATS-ready PDF. Then just apply.</p></div>
@@ -260,8 +340,8 @@
                 <div class="solx-kicker">FAQ</div>
                 <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
                 <div class="solx-faq" style="margin-top:32px">
-                    <details open><summary>What does the extension actually do?</summary><p>On a job posting it reads the job description, scores your saved resume against it, then rewrites your resume for that exact role and downloads an ATS-ready PDF, without you leaving the page.</p></details>
-                    <details><summary>Which sites does it work on?</summary><p>The panel opens by itself on LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday, Ashby, Glassdoor and other big boards. On any other job page, a company careers site or a gig platform, click the TailorCV icon in your toolbar and the panel opens there too. If a page is unusual enough that we cannot read it, you can paste or highlight the job description yourself and tailor from that.</p></details>
+                    <details open><summary>What does the extension actually do?</summary><p>On a job posting it reads the job description, then rewrites your saved resume for that exact role and downloads an ATS-ready PDF, without you leaving the page. The same panel will also write you a cover letter for that job, from the same resume.</p></details>
+                    <details><summary>Which sites does it work on?</summary><p>Every major job board, plus company careers pages and ATS portals. The panel opens there by itself. On any other job page, click the TailorCV icon in your toolbar and it opens there too. If a page is unusual enough that we cannot read it, paste or highlight the job description yourself and tailor from that.</p></details>
                     <details><summary>Do I have to upload my resume every time?</summary><p>No. You save a base resume once and every job you open afterwards is tailored from it automatically.</p></details>
                     <details><summary>Does it track where I applied?</summary><p>Yes. Jobs you apply to through the extension are logged to your account, so you can see every application and the resume you sent.</p></details>
                     <details><summary>Is it free?</summary><p>Yes, the extension is free and a free account gets you started. Upgrade to Pro only when you want unlimited tailoring.</p></details>
@@ -289,7 +369,7 @@
                     <span class="ext-num">1</span>
                     <div>
                         <h2>Add the extension to Chrome</h2>
-                        <p>It opens itself on the big job boards. Anywhere else, click the TailorCV icon in your toolbar.</p>
+                        <p>It opens itself on the major job boards. Anywhere else, click the TailorCV icon in your toolbar.</p>
                     </div>
                 </div>
                 <a href="{{ chrome_store_url or '/extension' }}" class="solx-btn ext-install-btn"{% if chrome_store_url %} target="_blank" rel="noopener"{% endif %}>
@@ -342,6 +422,58 @@
                     <input type="hidden" name="style_id" id="extStyleId" value="{{ br.get('style_id') or 1 }}">
                     <div class="ext-tpl-grid" id="extTemplateGrid"></div>
 
+                    <!-- 4. Cover letter design — the same three offered on /cover-letter -->
+                    <div class="ext-tpl-head">
+                        <span class="ext-num small">4</span>
+                        <div>
+                            <h2>Pick your cover letter design</h2>
+                            <p>The panel can also write a cover letter for the job you are on. It comes out in this design.</p>
+                        </div>
+                    </div>
+
+                    {% set cl = br.get('cover_template') or 'classic' %}
+                    <input type="hidden" name="cover_template" id="extCoverTemplate" value="{{ cl }}">
+                    <div class="ext-cl-grid" id="extCoverGrid">
+                        <button type="button" class="ext-cl{% if cl == 'classic' %} on{% endif %}" data-cl="classic">
+                            <span class="ext-cl-shot">
+                                <span class="clm clm-classic">
+                                    <span class="clm-name">Alex Mitchell</span>
+                                    <span class="clm-rule"></span>
+                                    <span class="clm-meta">Bengaluru | alex@mail.com</span>
+                                    <span class="clm-line"></span><span class="clm-line"></span><span class="clm-line s"></span>
+                                    <span class="clm-sig">Alex</span>
+                                </span>
+                            </span>
+                            <span class="ext-cl-name">Classic</span>
+                        </button>
+                        <button type="button" class="ext-cl{% if cl == 'modern' %} on{% endif %}" data-cl="modern">
+                            <span class="ext-cl-shot">
+                                <span class="clm clm-modern">
+                                    <span class="clm-name teal">ALEX MITCHELL</span>
+                                    <span class="clm-meta">Bengaluru | alex@mail.com</span>
+                                    <span class="clm-line"></span><span class="clm-line"></span><span class="clm-line s"></span>
+                                    <span class="clm-sig teal">Alex</span>
+                                </span>
+                            </span>
+                            <span class="ext-cl-name">Modern</span>
+                        </button>
+                        <button type="button" class="ext-cl{% if cl == 'monogram' %} on{% endif %}" data-cl="monogram">
+                            <span class="ext-cl-shot">
+                                <span class="clm clm-mono">
+                                    <span class="clm-side">
+                                        <span class="clm-badge">A</span>
+                                        <span class="clm-sname">Alex<br>Mitchell</span>
+                                    </span>
+                                    <span class="clm-main">
+                                        <span class="clm-line"></span><span class="clm-line"></span>
+                                        <span class="clm-line"></span><span class="clm-line s"></span>
+                                    </span>
+                                </span>
+                            </span>
+                            <span class="ext-cl-name">Monogram</span>
+                        </button>
+                    </div>
+
                     <button type="submit" class="solx-btn ext-save">Save Extension Settings</button>
                     <div class="ext-msg" id="baseResumeMsg"></div>
                 </form>
@@ -353,25 +485,11 @@
                     <span class="ext-num">4</span>
                     <div>
                         <h2>Open any job posting</h2>
-                        <p>The panel appears on the posting itself. One click tailors your resume to that job, downloads the ATS-ready PDF, and logs the application to your account.</p>
+                        <p>One click tailors your resume to that job and downloads the PDF. A second button writes a cover letter for the same job. Both are logged to your account.</p>
                     </div>
                 </div>
-
-                <div class="ext-boards" style="justify-content:flex-start">
-                    <span class="ext-board"><span class="dot"></span>LinkedIn</span>
-                    <span class="ext-board"><span class="dot"></span>Indeed</span>
-                    <span class="ext-board"><span class="dot"></span>Naukri</span>
-                    <span class="ext-board"><span class="dot"></span>Greenhouse</span>
-                    <span class="ext-board"><span class="dot"></span>Lever</span>
-                    <span class="ext-board"><span class="dot"></span>Workday</span>
-                    <span class="ext-board any"><span class="dot"></span>any other job page</span>
-                </div>
-                <p class="ext-boards-note" style="text-align:left; margin-left:0">The panel opens by itself on these. Anywhere else, click the <b>TailorCV icon</b> in your toolbar.</p>
-
-                <div class="ext-links" style="margin-top:20px">
-                    <a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener" class="solx-btn">LinkedIn Jobs</a>
-                    <a href="https://www.indeed.com/" target="_blank" rel="noopener" class="solx-btn ghost">Indeed</a>
-                    <a href="https://www.naukri.com/" target="_blank" rel="noopener" class="solx-btn ghost">Naukri</a>
+                <p class="ext-boards-note" style="text-align:left; margin:0 0 16px">The panel opens by itself on the major job boards. Anywhere else, click the <b>TailorCV icon</b> in your toolbar.</p>
+                <div class="ext-links">
                     <a href="/my-resumes" class="solx-btn ghost">My applications</a>
                 </div>
             </section>
@@ -411,10 +529,24 @@
 
         /* The banner reads the same endpoint the extension itself reads, so what you
            see here is exactly what the extension will use. */
+        var coverGrid  = document.getElementById('extCoverGrid');
+        var coverInput = document.getElementById('extCoverTemplate');
+
+        function selectCover(name) {
+            coverInput.value = name;
+            coverGrid.querySelectorAll('.ext-cl').forEach(function (c) {
+                c.classList.toggle('on', c.dataset.cl === name);
+            });
+        }
+        coverGrid.querySelectorAll('.ext-cl').forEach(function (c) {
+            c.addEventListener('click', function () { selectCover(c.dataset.cl); });
+        });
+
         function renderStatus(d) {
             if (d && d.has_base_resume) {
                 statusEl.textContent = '✓ Using “' + (d.filename || 'your resume') +
-                                       '” · Template ' + (d.template_id || 1);
+                                       '” · Template ' + (d.template_id || 1) +
+                                       ' · ' + (d.cover_template || 'classic') + ' cover letter';
                 statusEl.className = 'ext-status';
             } else {
                 statusEl.textContent = 'No base resume yet. The extension cannot tailor anything until you upload one.';
@@ -431,6 +563,7 @@
                     if (d.has_base_resume) {
                         if (d.template_id) select(d.template_id);
                         if (d.style_id) styleEl.value = d.style_id;
+                        if (d.cover_template) selectCover(d.cover_template);
                     }
                     return d;
                 })

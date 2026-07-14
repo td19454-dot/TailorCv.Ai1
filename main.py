@@ -135,6 +135,7 @@ async def csrf_middleware(request: Request, call_next):
         "/api/linkedin/oauth/callback",
         "/api/extension/log-application",
         "/api/extension/tailor-resume",
+        "/api/extension/cover-letter",
         "/api/billing/razorpay/webhook",
         "/api/billing/polar/webhook",
     }
@@ -459,6 +460,8 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN base_style_id INTEGER")
     if "base_resume_uploaded_at" not in cols:
         to_add.append("ADD COLUMN base_resume_uploaded_at TIMESTAMP" if is_pg else "ADD COLUMN base_resume_uploaded_at TEXT")
+    if "base_cover_template" not in cols:
+        to_add.append("ADD COLUMN base_cover_template VARCHAR(20)" if is_pg else "ADD COLUMN base_cover_template TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -5064,6 +5067,143 @@ async def cover_letter_page(request: Request):
     )
 
 
+COVER_TEMPLATES = ("classic", "modern", "monogram")
+
+
+def _render_cover_letter_html(template: str, name: str, email: str, location: str, body: str) -> str:
+    """Render a cover letter in one of the three designs offered on /cover-letter.
+
+    Ported from the client-side renderers in cover_letter.html (classic / modern /
+    monogram) so a letter the extension writes on a job page is identical to one
+    built on the website."""
+    from html import escape as e
+
+    template = (template or "classic").lower()
+    if template not in COVER_TEMPLATES:
+        template = "classic"
+
+    date = datetime.utcnow().strftime("%B %d, %Y")
+    contact = " | ".join(x for x in [location, email] if x)
+
+    blocks = [b.strip() for b in re.split(r"\n\s*\n", body or "") if b.strip()]
+    if len(blocks) <= 1:
+        blocks = [b.strip() for b in (body or "").split("\n") if b.strip()]
+
+    def paras(align):
+        return "".join(
+            '<p style="margin:0 0 12px;text-align:{};">{}</p>'.format(align, e(b).replace("\n", "<br>"))
+            for b in blocks
+        )
+
+    # The model is told not to add a sign-off, but it sometimes does anyway — don't
+    # print a second "Sincerely" underneath one it already wrote.
+    has_closing = bool(
+        re.search(r"(sincerely|regards|best regards|yours (sincerely|truly)|thank you)[\s,]*$",
+                  (body or "").strip(), re.I)
+    )
+
+    def sig(color):
+        out = "" if has_closing else '<div style="margin-top:24px;">Sincerely,</div>'
+        if name:
+            out += (
+                '<div style="font-family:\'Brush Script MT\',\'Segoe Script\',cursive;'
+                'font-size:24px;margin-top:8px;color:{};">{}</div>'.format(color, e(name))
+            )
+        return out
+
+    def doc(inner):
+        return (
+            '<!doctype html><html><head><meta charset="utf-8"><style>@page{margin:0}'
+            'html,body{margin:0;padding:0;background:#fff;}*{box-sizing:border-box;}'
+            '</style></head><body>' + inner + '</body></html>'
+        )
+
+    display_name = name or "First Name Last Name"
+    parts = display_name.split()
+    first = e(parts[0] if parts else "")
+    last = e(" ".join(parts[1:]))
+
+    if template == "modern":
+        contact_html = (
+            '<div style="font-size:10.5px;color:#777;margin-top:6px;">{}</div>'.format(e(contact))
+            if contact else ""
+        )
+        return doc(
+            '<div style="font-family:Arial,Helvetica,sans-serif;color:#222;font-size:12.5px;'
+            'line-height:1.6;padding:50px 58px;">'
+            '<div style="font-size:26px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">'
+            '<span style="color:#1aa3a3;font-weight:500;">{}</span> '
+            '<span style="color:#0e7c7c;">{}</span></div>'
+            '{}<div style="margin:22px 0;color:#444;">{}</div>{}{}</div>'.format(
+                first, last, contact_html, e(date), paras("left"), sig("#0e7c7c")
+            )
+        )
+
+    if template == "monogram":
+        initial = e((display_name.strip()[:1] or "L").upper())
+        stacked = "<br>".join(e(x) for x in [location, email] if x)
+        stacked_html = (
+            '<div style="font-size:10.5px;color:#555;margin-top:12px;line-height:1.55;">{}</div>'.format(stacked)
+            if stacked else ""
+        )
+        return doc(
+            '<div style="font-family:Arial,Helvetica,sans-serif;color:#222;font-size:12px;'
+            'line-height:1.6;padding:46px 50px;">'
+            '<table style="width:100%;border-collapse:collapse;"><tr>'
+            '<td style="width:158px;vertical-align:top;padding-right:24px;">'
+            '<div style="width:54px;height:54px;background:#1f2937;color:#34d399;font-size:30px;'
+            'font-weight:800;text-align:center;line-height:54px;border-radius:4px;">{}</div>'
+            '<div style="color:#0e7c7c;font-weight:800;font-size:15px;margin-top:14px;'
+            'line-height:1.25;">{}<br>{}</div>{}'
+            '</td><td style="vertical-align:top;">'
+            '<div style="margin:0 0 18px;">{}</div>{}{}</td></tr></table></div>'.format(
+                initial, first, last, stacked_html, e(date), paras("left"), sig("#111")
+            )
+        )
+
+    contact_html = (
+        '<div style="text-align:right;font-size:10.5px;color:#444;margin-top:5px;'
+        'letter-spacing:.3px;">{}</div>'.format(e(contact))
+        if contact else ""
+    )
+    return doc(
+        '<div style="font-family:Georgia,\'Times New Roman\',serif;color:#111;font-size:12.5px;'
+        'line-height:1.55;padding:54px 60px;">'
+        '<div style="border-bottom:2px solid #111;padding-bottom:8px;text-align:right;">'
+        '<span style="font-size:22px;font-weight:700;letter-spacing:.5px;">{}</span></div>'
+        '{}<div style="text-align:right;margin:20px 0 22px;">{}</div>{}{}</div>'.format(
+            e(display_name), contact_html, e(date), paras("justify"), sig("#111")
+        )
+    )
+
+
+def _build_cover_letter_prompt(resume_text: str, job_description: str, tone: str) -> str:
+    """The cover-letter prompt, shared by the website form and the Chrome extension
+    so a letter written from a job page reads exactly like one written on the site."""
+    return (
+        "You are an expert career writer. Write a tailored cover letter for the candidate "
+        "below, matching the job description.\n\n"
+        f"Tone: {tone}.\n"
+        "Rules:\n"
+        "- 3 to 4 short paragraphs, under 300 words total.\n"
+        "- Open with genuine interest in the specific role; avoid clichés like "
+        "\"I am writing to apply\".\n"
+        "- Use concrete, relevant achievements and skills FROM THE RESUME that match the "
+        "job description. Never invent experience that is not in the resume.\n"
+        "- Close with a confident call to action. No markdown, no placeholder brackets, "
+        "no sign-off name line.\n\n"
+        "Also extract the candidate's contact details FROM THE RESUME (never invent them; "
+        "use an empty string if a field is not present).\n"
+        "Return ONLY a JSON object of the form "
+        "{\"cover_letter\": \"<the full letter as plain text, with \\n between paragraphs>\", "
+        "\"name\": \"<candidate full name>\", "
+        "\"email\": \"<candidate email address>\", "
+        "\"location\": \"<candidate city, state/country>\"}.\n\n"
+        f"=== RESUME ===\n{resume_text}\n\n"
+        f"=== JOB DESCRIPTION ===\n{job_description}\n"
+    )
+
+
 COVER_LETTER_TONES = {
     "professional": "professional and confident",
     "warm": "warm and personable",
@@ -5137,28 +5277,7 @@ async def generate_cover_letter(request: Request):
     finally:
         db.close()
 
-    prompt = (
-        "You are an expert career writer. Write a tailored cover letter for the candidate "
-        "below, matching the job description.\n\n"
-        f"Tone: {tone}.\n"
-        "Rules:\n"
-        "- 3 to 4 short paragraphs, under 300 words total.\n"
-        "- Open with genuine interest in the specific role; avoid clichés like "
-        "\"I am writing to apply\".\n"
-        "- Use concrete, relevant achievements and skills FROM THE RESUME that match the "
-        "job description. Never invent experience that is not in the resume.\n"
-        "- Close with a confident call to action. No markdown, no placeholder brackets, "
-        "no sign-off name line.\n\n"
-        "Also extract the candidate's contact details FROM THE RESUME (never invent them; "
-        "use an empty string if a field is not present).\n"
-        "Return ONLY a JSON object of the form "
-        "{\"cover_letter\": \"<the full letter as plain text, with \\n between paragraphs>\", "
-        "\"name\": \"<candidate full name>\", "
-        "\"email\": \"<candidate email address>\", "
-        "\"location\": \"<candidate city, state/country>\"}.\n\n"
-        f"=== RESUME ===\n{resume_text}\n\n"
-        f"=== JOB DESCRIPTION ===\n{job_description}\n"
-    )
+    prompt = _build_cover_letter_prompt(resume_text, job_description, tone)
 
     try:
         raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
@@ -5209,6 +5328,104 @@ async def auto_apply_page(request: Request):
         request,
         "auto_apply.html",
         {"request": request, "applications": applications, "logged_in": bool(user_id)},
+    )
+
+
+@app.post("/api/extension/cover-letter")
+async def extension_cover_letter(request: Request):
+    """Write a cover letter for the job the extension is looking at, using the same
+    stored base resume it tailors from, and return it as a PDF.
+
+    The panel already holds the JD and the user already has a base resume on file, so
+    the user never re-uploads anything. CSRF-exempt (see EXEMPT_PATHS) because it is
+    called from background.js, which carries no page token — the session cookie is
+    still required."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+
+    jd_string = str(payload.get("jd_string") or "").strip()
+    if len(jd_string) < 30:
+        raise HTTPException(status_code=400, detail="Missing job description")
+    role = (payload.get("role") or "").strip()[:200]
+    company = (payload.get("company") or "").strip()[:200]
+    tone_key = str(payload.get("tone") or "professional").strip().lower()
+    tone = COVER_LETTER_TONES.get(tone_key, COVER_LETTER_TONES["professional"])
+    requested_template = str(payload.get("cover_template") or "").strip().lower()
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+            raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/extension first.")
+        base_resume_path = user.base_resume_path
+        cover_template = user.base_cover_template or "classic"
+        # Same lifetime free-use gate the website's cover-letter form enforces; raises 402.
+        enforce_quota(db, user, "cover_letters")
+    finally:
+        db.close()
+
+    resume_text = (await asyncio.to_thread(extract_pdf_text, base_resume_path) or "").strip()
+    if len(resume_text) < 50:
+        db2 = get_db()
+        try:
+            refund_quota(db2, user_id, "cover_letters")
+        finally:
+            db2.close()
+        raise HTTPException(
+            status_code=400,
+            detail="Could not read your base resume. Re-upload a text-based PDF at thetailorcv.com/extension.",
+        )
+
+    prompt = _build_cover_letter_prompt(resume_text[:8000], jd_string[:6000], tone)
+    try:
+        async with request_semaphore:
+            raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+        parsed = parse_ai_json_response(raw)
+        if not isinstance(parsed, dict):
+            parsed = {}
+        letter = str(parsed.get("cover_letter") or "").strip()
+        if not letter:
+            raise ValueError("Empty cover letter returned")
+    except Exception:
+        logger.exception("Extension cover letter generation failed")
+        db2 = get_db()
+        try:
+            refund_quota(db2, user_id, "cover_letters")
+        finally:
+            db2.close()
+        raise HTTPException(status_code=502, detail="Could not write the cover letter. Please try again.")
+
+    template = requested_template if requested_template in COVER_TEMPLATES else cover_template
+    letter_html = _render_cover_letter_html(
+        template,
+        str(parsed.get("name") or "").strip(),
+        str(parsed.get("email") or "").strip(),
+        str(parsed.get("location") or "").strip(),
+        letter,
+    )
+
+    pdf_path = os.path.join(resumes_dir, f"cover_letter_{uuid.uuid4()}.pdf")
+    try:
+        from weasyprint import HTML
+        await asyncio.to_thread(lambda: HTML(string=letter_html, base_url=BASE_DIR).write_pdf(pdf_path))
+    except Exception:
+        logger.exception("Cover letter PDF render failed")
+        if os.path.exists(pdf_path):
+            os.remove(pdf_path)
+        raise HTTPException(status_code=500, detail="Failed to render the cover letter PDF.")
+
+    return FileResponse(
+        pdf_path,
+        media_type="application/pdf",
+        filename="cover_letter.pdf",
+        background=BackgroundTask(_cleanup_files, [pdf_path]),
     )
 
 
@@ -5280,6 +5497,7 @@ async def set_extension_base_resume(
     file: UploadFile = File(...),
     template_id: int = Form(1),
     style_id: int = Form(1),
+    cover_template: str = Form("classic"),
 ):
     """Save the resume PDF + template/style the Chrome extension will tailor
     against on job pages. Called from the web app (My Resumes), so it keeps
@@ -5303,6 +5521,7 @@ async def set_extension_base_resume(
         user.base_resume_filename = (file.filename or "resume.pdf")[:255]
         user.base_template_id = template_id
         user.base_style_id = style_id
+        user.base_cover_template = cover_template if cover_template in COVER_TEMPLATES else "classic"
         user.base_resume_uploaded_at = datetime.utcnow()
         db.commit()
         if old_path and old_path != new_path and os.path.exists(old_path):
@@ -5330,6 +5549,7 @@ async def get_extension_base_resume(request: Request):
             "filename": user.base_resume_filename if has_base_resume else None,
             "template_id": user.base_template_id if has_base_resume else None,
             "style_id": user.base_style_id if has_base_resume else None,
+            "cover_template": (user.base_cover_template or "classic") if has_base_resume else None,
             "uploaded_at": user.base_resume_uploaded_at.isoformat() if (has_base_resume and user.base_resume_uploaded_at) else None,
         })
     finally:
