@@ -167,11 +167,14 @@
 .solx-ats-panel { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:26px; }
 .solx-ats-panel h3 { margin:0 0 4px; font-size:1.12rem; font-weight:600; color:#e8edf6; }
 .solx-ats-panel .hint { color:#8a93a6; font-size:.88rem; margin:0 0 16px; }
-.solx-ats-drop { display:block; cursor:pointer; border:1.5px dashed rgba(96,165,250,.45); background:rgba(59,130,246,.07); border-radius:14px; padding:24px; text-align:center; transition:border-color .2s ease, background .2s ease; }
+.solx-ats-drop { position:relative; display:block; cursor:pointer; border:1.5px dashed rgba(96,165,250,.45); background:rgba(59,130,246,.07); border-radius:14px; padding:24px; text-align:center; transition:border-color .2s ease, background .2s ease; }
 .solx-ats-drop:hover, .solx-ats-drop.over { border-color:rgba(96,165,250,.95); background:rgba(59,130,246,.14); }
 .solx-ats-drop b { display:block; color:#e8edf6; font-weight:600; margin-bottom:4px; }
 .solx-ats-drop small { color:#8a93a6; }
-.solx-ats-drop input { display:none; }
+/* The input covers the whole zone instead of display:none, so a click always
+   opens the picker and the browser handles drag-and-drop onto it natively. */
+.solx-ats-drop input { position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer; z-index:2; }
+.solx-ats-drop b, .solx-ats-drop small, .solx-ats-drop .solx-ats-file { position:relative; z-index:1; pointer-events:none; }
 .solx-ats-file { margin-top:10px; font-size:.9rem; color:#4ade80; font-weight:600; }
 .solx-ats-jdrow { display:flex; align-items:center; gap:12px; margin-top:18px; flex-wrap:wrap; }
 .solx-ats-jdlabel { font-size:.9rem; font-weight:600; color:#a78bfa; white-space:nowrap; }
