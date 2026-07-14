@@ -255,4 +255,79 @@
             </div>
         </div>
     </div>
+
+        <script>
+        (function(){
+            var fileEl = document.getElementById('atsFile');
+            var dropEl = document.getElementById('atsDrop');
+            var nameEl = document.getElementById('atsFileName');
+            var jdEl   = document.getElementById('atsJd');
+            var goEl   = document.getElementById('atsGo');
+            var errEl  = document.getElementById('atsErr');
+            var outEl  = document.getElementById('atsOut');
+            if (!fileEl || !goEl || !outEl) return;
+
+            // Same contract the main ATS tool uses: stash the full audit, then hand
+            // off to /ats-analysis so the guest sees the complete report.
+            var ATS_PAYLOAD_KEY = 'atsAnalysisPayload';
+            var ATS_PAYLOAD_LOCAL_KEY = 'tailorcv_ats_payload_guest';
+
+            function showErr(msg){ errEl.textContent = msg; errEl.hidden = false; }
+            function clearErr(){ errEl.hidden = true; errEl.textContent = ''; }
+            function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+            function setName(f){ nameEl.textContent = '✓ ' + f.name; nameEl.hidden = false; clearErr(); }
+
+            fileEl.addEventListener('change', function(){
+                var f = fileEl.files && fileEl.files[0];
+                if (f) setName(f);
+            });
+            ['dragenter','dragover'].forEach(function(ev){
+                dropEl.addEventListener(ev, function(e){ e.preventDefault(); dropEl.classList.add('over'); });
+            });
+            ['dragleave','drop'].forEach(function(ev){
+                dropEl.addEventListener(ev, function(e){ e.preventDefault(); dropEl.classList.remove('over'); });
+            });
+            dropEl.addEventListener('drop', function(e){
+                var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+                if (f) { fileEl.files = e.dataTransfer.files; setName(f); }
+            });
+
+            goEl.addEventListener('click', function(){
+                clearErr();
+                var f  = fileEl.files && fileEl.files[0];
+                var jd = (jdEl.value || '').trim();
+                if (!f)  { showErr('Add your resume as a PDF first.'); return; }
+                if (jd.length < 40) { showErr('Paste a job description, or pick a sample role above.'); return; }
+
+                goEl.disabled = true;
+                goEl.textContent = 'Scoring your resume…';
+                outEl.innerHTML = '<div class="solx-ats-spin"></div><p class="solx-ats-note">Reading your resume and matching it to the job…</p>';
+
+                var fd = new FormData();
+                fd.append('file', f);
+
+                fetch('/get-ats-score?jd_string=' + encodeURIComponent(jd), { method: 'POST', body: fd })
+                    .then(function(res){
+                        return res.json().catch(function(){ return {}; }).then(function(body){
+                            if (!res.ok) throw new Error(body.detail || body.error || 'That scan did not go through. Please try again.');
+                            return body;
+                        });
+                    })
+                    .then(function(data){
+                        var payload = JSON.stringify(data);
+                        try { sessionStorage.setItem(ATS_PAYLOAD_KEY, payload); } catch (e) {}
+                        try { localStorage.setItem(ATS_PAYLOAD_LOCAL_KEY, payload); } catch (e) {}
+                        outEl.innerHTML = '<div class="solx-ats-spin"></div><p class="solx-ats-note">Score ready. Opening your full report…</p>';
+                        window.location.href = '/ats-analysis';
+                    })
+                    .catch(function(e){
+                        outEl.innerHTML = '<div class="solx-ats-idle">' + esc(e.message) + '</div>'
+                            + '<a href="/signup?next=/solutions" class="solx-btn" style="width:auto;margin-top:20px">Create My Free Account</a>';
+                        goEl.disabled = false;
+                        goEl.textContent = 'Get My Free ATS Score';
+                    });
+            });
+        })();
+        </script>
     <script src="/static/jd_picker.js"></script>
