@@ -1,14 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "TailorCV Resume Tailor for LinkedIn",
-  "version": "2.0.0",
+  "name": "TailorCV — AI Resume Optimizer",
+  "version": "2.1.0",
   "description": "Automatically tailor your resume to any LinkedIn job posting and download it in one click",
-  "permissions": ["storage", "tabs", "activeTab", "cookies", "downloads"],
+  "permissions": ["activeTab", "cookies", "downloads", "scripting"],
   "host_permissions": [
     "*://*.linkedin.com/*",
-    "https://thetailorcv.com/*",
-    "http://127.0.0.1:8005/*",
-    "http://localhost:8005/*"
+    "https://thetailorcv.com/*"
   ],
   "background": {
     "service_worker": "background.js"
