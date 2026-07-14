@@ -171,3 +171,45 @@
 .tcv-log-item.tcv-success { color: #86efac !important; }
 .tcv-log-item.tcv-fail    { color: #fca5a5 !important; }
 .tcv-log-item.tcv-info    { color: #94a3b8 !important; }
+
+.tcv-msg {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  color: #94a3b8 !important;
+  margin-bottom: 10px !important;
+}
+
+.tcv-input {
+  width: 100% !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  color: #f1f5f9 !important;
+  border-radius: 6px !important;
+  padding: 8px 10px !important;
+  font-size: 12px !important;
+  margin-bottom: 8px !important;
+}
+.tcv-input:focus { outline: none !important; border-color: #4f7fff !important; }
+
+.tcv-error {
+  font-size: 11px !important;
+  color: #f87171 !important;
+  min-height: 14px !important;
+  margin-top: 6px !important;
+}
+
+.tcv-link {
+  display: inline-block !important;
+  color: #93c5fd !important;
+  text-decoration: underline !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+}
+
+.tcv-job-info {
+  font-size: 11px !important;
+  color: #94a3b8 !important;
+  margin-bottom: 10px !important;
+  line-height: 1.5 !important;
+}
+.tcv-job-info b { color: #eaf1ff !important; }
