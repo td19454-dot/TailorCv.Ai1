@@ -11,7 +11,7 @@
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="stylesheet" href="/static/header-footer.css?v=2">
-    <link rel="stylesheet" href="/static/optimized_editor.css?v=17">
+    <link rel="stylesheet" href="/static/optimized_editor.css?v=5">
 </head>
 
 <body>
@@ -64,7 +64,14 @@
                                 title="Loosen spacing">S+</button>
                             <span class="font-size-badge" id="spacing-badge">100%</span>
                         </div>
-                        <p id="spacing-guidance" style="font-size:0.8rem;color:#64748b;margin:0;">Default spacing.</p>
+                        <p id="spacing-guidance" style="font-size:0.8rem;margin:0;">Default spacing.</p>
+                    </section>
+
+                    <!-- Accent Colour. buildAccentPanel() in optimized_editor.js mounts the
+                         swatches, custom picker and reset into this container. -->
+                    <section class="editor-controls">
+                        <div class="control-title">Accent Colour</div>
+                        <div id="tc-accent-panel-container"></div>
                     </section>
 
                 </div><!-- /.mobile-controls-panel -->
@@ -79,7 +86,7 @@
                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <polyline points="18 15 12 9 6 15" />
                         </svg>
-                        Adjust Size &amp; Spacing
+                        Adjust Size, Spacing &amp; Colour
                     </button>
                     <div class="top-actions">
                         <span class="page-count-badge" id="page-index-badge">
@@ -92,14 +99,13 @@
                     </div>
 
                     <button id="save-resume-btn" class="secondary-btn" type="button"
-                        style="width:100%;margin-top:10px;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
+                        style="width:100%;margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
                         💾 Save to My Resumes
                     </button>
-                    <p id="save-resume-hint" style="font-size:0.78rem;color:#64748b;margin:6px 0 0;text-align:center;">
+                    <p id="save-resume-hint" style="font-size:0.78rem;margin:4px 0 0;text-align:center;">
                         Not saved until you click save.
                     </p>
 
-                    <p id="fit-guidance" class="fit-guidance" aria-live="polite"></p>
                     <a href="/solutions" class="secondary-btn desktop-only-back">← Back to Solutions</a>
             </div>
             </section>
@@ -125,7 +131,7 @@
     <script src="/static/toast.js"></script>
     <script>window.IS_PRO = {{ 'true' if is_pro else 'false' }};</script>
     <script>window.QUOTA_EXHAUSTED = {{ 'true' if quota_exhausted_flag else 'false' }};</script>
-    <script src="/static/optimized_editor.js?v=99"></script>
+    <script src="/static/optimized_editor.js?v=109"></script>
     <script>
         (function () {
             var btn = document.getElementById('mobile-controls-toggle');
