@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "TailorCV Auto Apply",
-  "version": "1.0.0",
-  "description": "Auto-apply to jobs on Naukri & Internshala using your TailorCV profile",
-  "permissions": ["storage", "tabs", "activeTab", "cookies"],
+  "version": "1.1.0",
+  "description": "Auto-apply to jobs on Naukri & Internshala, and auto-tailor + download your resume on LinkedIn job pages",
+  "permissions": ["storage", "tabs", "activeTab", "cookies", "downloads"],
   "host_permissions": [
     "*://*.naukri.com/*",
     "*://*.internshala.com/*",
+    "*://*.linkedin.com/*",
     "https://thetailorcv.com/*",
     "http://127.0.0.1:8005/*",
     "http://localhost:8005/*"
@@ -24,6 +25,12 @@
     {
       "matches": ["*://*.internshala.com/*"],
       "js": ["content_internshala.js"],
+      "css": ["sidebar.css"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://*.linkedin.com/jobs/*"],
+      "js": ["content_linkedin.js"],
       "css": ["sidebar.css"],
       "run_at": "document_idle"
     }
