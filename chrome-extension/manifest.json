@@ -1,15 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "TailorCV \u2014 AI Resume Tailor for Any Job",
+  "name": "TailorCV \u2014 AI Resume Optimizer",
   "version": "3.1.0",
   "description": "Tailor your resume to any job posting and write a matching cover letter, then download both as ATS-ready PDFs in one click, on every major job board.",
   "permissions": [
-    "storage",
-    "tabs",
     "activeTab",
-    "scripting",
     "cookies",
-    "downloads"
+    "downloads",
+    "scripting"
   ],
   "host_permissions": [
     "*://*.linkedin.com/*",

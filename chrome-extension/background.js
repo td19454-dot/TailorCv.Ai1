@@ -105,14 +105,23 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
           if (!res.ok) {
             let detail = 'Could not write your cover letter.';
+            let code = null;
             try {
               const data = await res.json();
-              if (res.status === 401) detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
-              else if (res.status === 402 || data.error === 'upgrade_required') detail = 'Free cover letter used. Upgrade to Pro at thetailorcv.com.';
-              else if (res.status === 404) detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
-              else if (data.detail) detail = data.detail;
+              if (res.status === 401) {
+                detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
+                code = 'not_logged_in';
+              } else if (res.status === 402 || data.error === 'upgrade_required') {
+                detail = 'Free cover letter used.';
+                code = 'upgrade_required';
+              } else if (res.status === 404) {
+                detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
+                code = 'no_base_resume';
+              } else if (data.detail) {
+                detail = data.detail;
+              }
             } catch (_) { /* keep the default */ }
-            sendResponse({ error: detail });
+            sendResponse({ error: detail, code });
             return;
           }
 
@@ -139,14 +148,23 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
           if (!res.ok) {
             let detail = 'Could not tailor your resume.';
+            let code = null;
             try {
               const data = await res.json();
-              if (res.status === 401) detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
-              else if (res.status === 402 || data.error === 'upgrade_required') detail = 'Free tailoring limit reached. Upgrade to Pro at thetailorcv.com.';
-              else if (res.status === 404) detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
-              else if (data.detail) detail = data.detail;
+              if (res.status === 401) {
+                detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
+                code = 'not_logged_in';
+              } else if (res.status === 402 || data.error === 'upgrade_required') {
+                detail = 'Free tailoring limit reached.';
+                code = 'upgrade_required';
+              } else if (res.status === 404) {
+                detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
+                code = 'no_base_resume';
+              } else if (data.detail) {
+                detail = data.detail;
+              }
             } catch (_) { /* ignore parse errors, use default detail */ }
-            sendResponse({ error: detail });
+            sendResponse({ error: detail, code });
             return;
           }
 

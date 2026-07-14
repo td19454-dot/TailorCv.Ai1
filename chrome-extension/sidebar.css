@@ -4,17 +4,17 @@
   position: fixed !important;
   top: 80px !important;
   right: 0 !important;
-  width: 260px !important;
+  width: 340px !important;
   background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;
   border: 1px solid rgba(79, 127, 255, 0.3) !important;
   border-right: none !important;
-  border-radius: 12px 0 0 12px !important;
+  border-radius: 14px 0 0 14px !important;
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.45) !important;
   z-index: 2147483647 !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-  font-size: 13px !important;
+  font-size: 15px !important;
   color: #f1f5f9 !important;
-  padding: 14px !important;
+  padding: 20px !important;
   transition: transform 0.25s ease !important;
 }
 
@@ -29,15 +29,15 @@
   position: fixed !important;
   top: 80px !important;
   right: 0 !important;
-  width: 44px !important;
-  height: 44px !important;
+  width: 56px !important;
+  height: 56px !important;
   display: none !important;
   align-items: center !important;
   justify-content: center !important;
   background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;
   border: 1px solid rgba(79, 127, 255, 0.3) !important;
   border-right: none !important;
-  border-radius: 10px 0 0 10px !important;
+  border-radius: 12px 0 0 12px !important;
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.45) !important;
   z-index: 2147483647 !important;
   cursor: pointer !important;
@@ -49,9 +49,9 @@
 }
 
 #tailorcv-launcher img {
-  width: 26px !important;
-  height: 26px !important;
-  border-radius: 6px !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 8px !important;
   pointer-events: none !important;
 }
 
@@ -65,11 +65,11 @@
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  margin-bottom: 12px !important;
+  margin-bottom: 16px !important;
 }
 
 .tcv-logo {
-  font-size: 14px !important;
+  font-size: 18px !important;
   font-weight: 700 !important;
   background: linear-gradient(135deg, #4f7fff, #c9b8ff) !important;
   -webkit-background-clip: text !important;
@@ -80,31 +80,31 @@
 .tcv-toggle {
   cursor: pointer !important;
   color: #64748b !important;
-  font-size: 14px !important;
+  font-size: 18px !important;
   background: none !important;
   border: none !important;
-  padding: 2px 4px !important;
-  border-radius: 4px !important;
+  padding: 4px 6px !important;
+  border-radius: 6px !important;
   line-height: 1 !important;
 }
 .tcv-toggle:hover { background: rgba(255,255,255,0.08) !important; }
 
 .tcv-stats {
   display: flex !important;
-  gap: 6px !important;
-  margin-bottom: 12px !important;
+  gap: 8px !important;
+  margin-bottom: 16px !important;
 }
 
 .tcv-stat {
   flex: 1 !important;
   text-align: center !important;
-  padding: 7px 4px !important;
-  border-radius: 8px !important;
+  padding: 10px 6px !important;
+  border-radius: 10px !important;
   background: rgba(255,255,255,0.05) !important;
 }
 
 .tcv-stat-num {
-  font-size: 18px !important;
+  font-size: 22px !important;
   font-weight: 700 !important;
   display: block !important;
 }
@@ -113,7 +113,7 @@
 .tcv-stat-num.tcv-red   { color: #f87171 !important; }
 
 .tcv-stat-label {
-  font-size: 9px !important;
+  font-size: 10px !important;
   color: #64748b !important;
   text-transform: uppercase !important;
   letter-spacing: 0.06em !important;
@@ -121,13 +121,13 @@
 
 .tcv-btn {
   width: 100% !important;
-  padding: 9px 12px !important;
+  padding: 13px 16px !important;
   border: none !important;
-  border-radius: 8px !important;
-  font-size: 13px !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
-  margin-bottom: 6px !important;
+  margin-bottom: 8px !important;
   transition: opacity 0.2s !important;
 }
 .tcv-btn:disabled { opacity: 0.45 !important; cursor: not-allowed !important; }
@@ -145,28 +145,134 @@
 }
 .tcv-btn-stop:hover { background: rgba(239,68,68,0.28) !important; }
 
-.tcv-status-text {
+.tcv-btn-outline {
+  background: rgba(255,255,255,0.04) !important;
+  color: #eaf1ff !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+}
+.tcv-btn-outline:hover { background: rgba(255,255,255,0.09) !important; }
+
+.tcv-divider {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin: 14px 0 !important;
+  color: #64748b !important;
   font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+.tcv-divider::before, .tcv-divider::after {
+  content: '' !important;
+  flex: 1 !important;
+  height: 1px !important;
+  background: rgba(255,255,255,0.08) !important;
+}
+
+.tcv-login-links {
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-top: 10px !important;
+  gap: 10px !important;
+}
+.tcv-login-links .tcv-link { font-size: 13px !important; }
+
+.tcv-status-text {
+  font-size: 13px !important;
   color: #64748b !important;
   text-align: center !important;
-  margin: 4px 0 8px !important;
-  min-height: 16px !important;
+  margin: 6px 0 10px !important;
+  min-height: 18px !important;
 }
 .tcv-status-text.tcv-ok    { color: #86efac !important; }
 .tcv-status-text.tcv-error { color: #fca5a5 !important; }
 
+.tcv-progress-wrap {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 14px 0 4px !important;
+}
+.tcv-progress-wrap.tcv-visible {
+  display: flex !important;
+}
+
+.tcv-progress-circle {
+  position: relative !important;
+  width: 88px !important;
+  height: 88px !important;
+}
+
+.tcv-progress-ring {
+  transform: rotate(-90deg) !important;
+}
+
+.tcv-progress-track {
+  fill: none !important;
+  stroke: rgba(255,255,255,0.08) !important;
+  stroke-width: 6 !important;
+}
+
+.tcv-progress-bar {
+  fill: none !important;
+  stroke: url(#tcvProgressGradient) !important;
+  stroke-width: 6 !important;
+  stroke-linecap: round !important;
+}
+
+.tcv-progress-pct {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #eaf1ff !important;
+  transition: opacity 0.25s ease !important;
+}
+.tcv-progress-pct.tcv-hidden {
+  opacity: 0 !important;
+}
+
+.tcv-progress-bar.tcv-success {
+  stroke: #4ade80 !important;
+  transition: stroke 0.3s ease !important;
+}
+
+.tcv-check-icon {
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0 !important;
+  transform: scale(0.7) !important;
+  transition: opacity 0.3s ease, transform 0.3s ease !important;
+}
+.tcv-check-icon.tcv-visible {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+.tcv-check-icon #tcvCheckPath {
+  stroke-dasharray: 60 !important;
+  stroke-dashoffset: 60 !important;
+  transition: none !important;
+}
+.tcv-check-icon.tcv-visible #tcvCheckPath {
+  stroke-dashoffset: 0 !important;
+  transition: stroke-dashoffset 0.4s ease 0.1s !important;
+}
+
 .tcv-log {
-  max-height: 190px !important;
+  max-height: 220px !important;
   overflow-y: auto !important;
   border-top: 1px solid rgba(255,255,255,0.07) !important;
-  padding-top: 8px !important;
+  padding-top: 10px !important;
   scrollbar-width: thin !important;
   scrollbar-color: rgba(255,255,255,0.1) transparent !important;
 }
 
 .tcv-log-item {
-  font-size: 11px !important;
-  padding: 3px 0 !important;
+  font-size: 12px !important;
+  padding: 4px 0 !important;
   border-bottom: 1px solid rgba(255,255,255,0.04) !important;
   word-break: break-word !important;
 }
@@ -175,10 +281,10 @@
 .tcv-log-item.tcv-info    { color: #94a3b8 !important; }
 
 .tcv-msg {
-  font-size: 12px !important;
+  font-size: 14px !important;
   line-height: 1.5 !important;
   color: #94a3b8 !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 14px !important;
 }
 
 .tcv-input {
@@ -186,17 +292,17 @@
   background: rgba(255,255,255,0.06) !important;
   border: 1px solid rgba(255,255,255,0.12) !important;
   color: #f1f5f9 !important;
-  border-radius: 6px !important;
-  padding: 8px 10px !important;
-  font-size: 12px !important;
-  margin-bottom: 8px !important;
+  border-radius: 8px !important;
+  padding: 11px 13px !important;
+  font-size: 14px !important;
+  margin-bottom: 10px !important;
 }
 .tcv-input:focus { outline: none !important; border-color: #4f7fff !important; }
 
 .tcv-error {
-  font-size: 11px !important;
+  font-size: 12px !important;
   color: #f87171 !important;
-  min-height: 14px !important;
+  min-height: 15px !important;
   margin-top: 6px !important;
 }
 
@@ -204,23 +310,49 @@
   display: inline-block !important;
   color: #93c5fd !important;
   text-decoration: underline !important;
-  font-size: 12px !important;
+  font-size: 13px !important;
   cursor: pointer !important;
 }
 
 .tcv-job-info {
-  font-size: 11px !important;
+  font-size: 13px !important;
   color: #94a3b8 !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 14px !important;
   line-height: 1.5 !important;
 }
 .tcv-job-info b { color: #eaf1ff !important; }
 
-/* Where the job description came from, and the way back out of a bad guess. */
+.tcv-upgrade-box {
+  text-align: center !important;
+  padding: 18px 14px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(160deg, rgba(79,127,255,0.14), rgba(124,58,237,0.14)) !important;
+  border: 1px solid rgba(79,127,255,0.35) !important;
+}
+.tcv-upgrade-box .tcv-msg { margin-bottom: 14px !important; }
+
+.tcv-btn-link {
+  display: block !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+}
+
+.tcv-retry-link {
+  display: block !important;
+  text-align: center !important;
+  margin-top: 12px !important;
+  font-size: 12px !important;
+}
+
+/* ── Multi-site panel: manual JD entry + the "where did this come from" line ──
+   Added on top of the polished base: on a page we cannot parse (a gig platform, an
+   odd careers page) the user hands us the job description themselves. */
+
 .tcv-source {
-  font-size: 10px !important;
+  font-size: 11px !important;
   color: #64748b !important;
-  margin: -4px 0 10px !important;
+  margin: -2px 0 10px !important;
 }
 .tcv-source a {
   color: #93c5fd !important;
@@ -228,15 +360,14 @@
   cursor: pointer !important;
 }
 
-/* Manual fallback: the user hands us the job description themselves. */
 .tcv-textarea {
   width: 100% !important;
   background: rgba(255,255,255,0.06) !important;
   border: 1px solid rgba(255,255,255,0.12) !important;
   color: #f1f5f9 !important;
-  border-radius: 6px !important;
-  padding: 8px 10px !important;
-  font-size: 12px !important;
+  border-radius: 8px !important;
+  padding: 9px 11px !important;
+  font-size: 13px !important;
   line-height: 1.45 !important;
   font-family: inherit !important;
   resize: vertical !important;
@@ -244,10 +375,3 @@
   box-sizing: border-box !important;
 }
 .tcv-textarea:focus { outline: none !important; border-color: #4f7fff !important; }
-
-.tcv-btn-ghost {
-  background: rgba(255,255,255,0.06) !important;
-  color: #cbd5e1 !important;
-  border: 1px solid rgba(255,255,255,0.14) !important;
-}
-.tcv-btn-ghost:hover:not(:disabled) { background: rgba(255,255,255,0.11) !important; }
