@@ -1,4 +1,4 @@
-﻿---
+---
 title: First 90 Days at a New Job in 2026 - How to Succeed and Stand Out
 description: Learn how to succeed in your first 90 days at a new job in 2026. Covers onboarding, building relationships, early wins, and setting yourself up for long-term success.
 date: 2026-06-01
@@ -17,6 +17,14 @@ This guide gives you a practical framework for your first 90 days - how to learn
 You earned this role with a strong application - keep your resume updated with your new accomplishments using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). For ongoing growth, read the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion).
 
 ---
+
+## Key Takeaways
+
+- Focus on learning and absorbing information in the first 30 days rather than trying to prove yourself.
+- In the second month, start contributing by taking ownership of small projects and deepening relationships with colleagues.
+- By the third month, aim to deliver visible work and establish yourself as a reliable team member while setting goals for the next 90 days.
+- Build strong relationships intentionally by scheduling one-on-one meetings and offering help to colleagues.
+- Avoid common mistakes such as trying to implement changes too quickly, not asking questions, and isolating yourself from the team.
 
 ## The 30-60-90 Day Framework
 
@@ -92,7 +100,7 @@ Early wins build credibility and momentum. Look for:
 - A task you can complete excellently and visibly
 - A way to make your manager's or team's job easier
 
-Early wins do not need to be massive. A reliable, well-executed small contribution in your first month signals that the hiring decision was right.
+Early wins do not need to be massive. A reliable, well-executed small contribution in [your first month](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026) signals that the hiring decision was right.
 
 ---
 

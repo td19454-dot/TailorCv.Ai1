@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Check your ATS score instantly. Paste your resume and get a detailed breakdown of what passed and what failed. 25 checks. Completely free. Just sign in.">
-    <title>Free ATS Resume Score Checker — See Your Score in 30 Seconds | TailorCV</title>
+    <title>Free ATS Resume Score Checker, See Your Score in 30 Seconds | TailorCV</title>
     {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/header-footer.css?v=2">
     <link rel="stylesheet" href="/static/style2.css?v=7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -625,7 +625,14 @@
 <canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
     {% include "_nav.html" %}
 
-    <section class="solutions-section cv2-solutions">
+    {% if not is_logged_in %}
+    <!-- ================= Logged-out marketing landing (Careerflow-style) ================= -->
+    <link rel="stylesheet" href="/static/feature_landing.css?v=36">
+    {% if request.url.path == '/optimize' %}{% include "_landing_optimize.html" %}{% else %}{% include "_landing_ats.html" %}{% endif %}
+    {% endif %}
+
+    {% if is_logged_in %}
+    <section id="ats-tool" class="solutions-section cv2-solutions">
         <div class="cv2-shell">
             <div class="cv2-hero">
                 <div class="cv2-hero-left">
@@ -758,6 +765,7 @@
             </div>
         </div>
     </section>
+    {% endif %}
 
             {% include "_footer.html" %}
 
@@ -867,7 +875,7 @@ Nice to have:
 
         "ml-engineer": `Machine Learning Engineer
 
-We are seeking an ML Engineer to bridge research and production — building reliable, scalable ML systems.
+We are seeking an ML Engineer to bridge research and production, building reliable, scalable ML systems.
 
 Responsibilities:
 - Design, train, and deploy machine learning models into production
@@ -897,7 +905,7 @@ Responsibilities:
 - Design and manage cloud infrastructure on AWS / GCP using Terraform or CDK
 - Build and maintain CI/CD pipelines (GitHub Actions, Jenkins, GitLab CI)
 - Manage Kubernetes clusters and containerised workloads
-- Implement observability stack — logging, metrics, and alerting (Datadog, Prometheus, Grafana)
+- Implement observability stack, logging, metrics, and alerting (Datadog, Prometheus, Grafana)
 - Automate security hardening, patching, and compliance checks
 - Collaborate with engineering teams to improve deployment velocity and reliability
 
@@ -1019,7 +1027,7 @@ Responsibilities:
 - Perform API testing with Postman and write automated API tests
 - Identify, document, and track bugs through to resolution
 - Collaborate with developers and product managers during sprint planning
-- Drive quality metrics — test coverage, defect escape rate, and automation rate
+- Drive quality metrics, test coverage, defect escape rate, and automation rate
 
 Requirements:
 - 2+ years of QA or test engineering experience
@@ -1281,7 +1289,7 @@ Nice to have:
 We are seeking a motivated Science or Mathematics Teacher to deliver challenging and engaging STEM lessons.
 
 Responsibilities:
-- Teach Science (Physics, Chemistry, Biology) or Mathematics to students in grades 6–12
+- Teach Science (Physics, Chemistry, Biology) or Mathematics to students in grades 6,12
 - Develop lesson plans, lab activities, and assessments aligned to curriculum standards
 - Conduct safe and effective laboratory sessions, demonstrating experimental procedures
 - Use data-driven instruction to identify learning gaps and adjust teaching strategies
@@ -1394,7 +1402,7 @@ Requirements:
 - 3+ years of product management experience in a software or technology company
 - Strong ability to translate customer problems into clear product requirements
 - Experience working in agile/scrum environments with cross-functional teams
-- Data-driven mindset — comfortable with SQL, analytics tools (Mixpanel, Amplitude, Looker)
+- Data-driven mindset, comfortable with SQL, analytics tools (Mixpanel, Amplitude, Looker)
 - Excellent written and verbal communication skills; ability to influence without authority
 - Experience conducting user research and synthesising insights into actionable decisions
 
@@ -2068,7 +2076,7 @@ Nice to have:
         btn.type = "button";
         btn.id = "jd-picker-btn";
         btn.innerHTML = `
-            <span id="jd-picker-label" style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; color:white">— pick a role —</span>
+            <span id="jd-picker-label" style="flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; color:white">, pick a role,</span>
             <svg id="jd-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;transition:transform .25s ease;"><polyline points="6 9 12 15 18 9"/></svg>
         `;
         Object.assign(btn.style, {
@@ -2179,7 +2187,7 @@ Nice to have:
                 const prev = panel.querySelector(`.jd-opt[data-value="${currentValue}"]`);
                 if (prev) { prev.style.background = ""; prev.style.color = "#c8d7fb"; prev.style.fontWeight = ""; }
                 currentValue = "";
-                document.getElementById("jd-picker-label").textContent = "— pick a role —";
+                document.getElementById("jd-picker-label").textContent = ", pick a role,";
             }
         });
     });

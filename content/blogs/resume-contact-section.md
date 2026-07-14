@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Contact Section - What to Include and What to Leave Out (2026)
 description: A complete guide to the resume contact section. Learn exactly what information to include, what to exclude, how to format your contact details, and common mistakes to avoid.
 date: 2026-06-06
@@ -15,6 +15,14 @@ The contact section of your resume is the first thing a recruiter sees and the l
 For complete resume structure, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that formats the contact section correctly, and test your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
 
 ---
+
+## Key Takeaways
+
+- Include your full name prominently, using the same version across all professional platforms.
+- Use a professional email address and avoid outdated or unprofessional options.
+- List only your city and state/province for location, omitting your full address for privacy reasons.
+- Provide a LinkedIn profile link if it is up to date, and ensure consistency with your resume.
+- Include GitHub or portfolio links only if they are active and representative of your work, while avoiding outdated personal websites.
 
 ## What to Include in Your Resume Contact Section
 

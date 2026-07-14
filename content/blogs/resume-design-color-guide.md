@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Design and Color Guide for 2026 - What's Professional and What Isn't
 description: Should you use color on your resume? Which colors are professional? This guide covers resume design rules for 2026 - what works, what to avoid, and how to balance visual appeal with ATS compatibility.
 date: 2026-06-06
@@ -17,6 +17,14 @@ This guide breaks down exactly when and how to use color and design elements on 
 Start with an [ATS-friendly template](https://www.thetailorcv.com/templates) that has the right design baked in. Test your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to confirm your design choices are not breaking parsing.
 
 ---
+
+## Key Takeaways
+
+- The effectiveness of resume design and color largely depends on the industry; simpler, ATS-compatible designs generally perform better.
+- Prioritize substance over style; a well-written, keyword-optimized resume is more valuable than a visually appealing one that fails ATS.
+- Use minimal and strategic color to enhance visual hierarchy, but avoid bright or multiple colors that can distract from content.
+- Creative industries can afford more design latitude, but resumes must remain legible and professional while being ATS-compatible.
+- Conservative industries prefer clean, black-and-white resumes, as excessive design may signal a lack of cultural awareness.
 
 ## The Core Rule: Substance Over Style
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Quantify Resume Achievements - With 50 Examples
 description: Learn how to add numbers and metrics to your resume achievements. Includes 50 examples across software engineering, data, marketing, sales, and operations roles.
 date: 2026-06-01
@@ -18,9 +18,17 @@ Numbers make your resume scannable, credible, and memorable. They transform vagu
 
 This guide shows you exactly how to [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) your achievements - even when you think you have no numbers - across every major role type.
 
-Before adding your quantified bullets, make sure your resume format passes ATS. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to compare it against the job description and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for keyword matching. If you are still setting up your resume, the [ATS-friendly templates](https://www.thetailorcv.com/templates) provide the right structure.
+Before adding your [quantified bullets](https://thetailorcv.com/blog/how-to-write-resume-bullet-points), make sure your [resume format](https://thetailorcv.com/blog/resume-section-order-guide) passes ATS. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to compare it against the [job description](https://thetailorcv.com/blog/resume-keyword-map-template) and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for keyword matching. If you are still setting up your resume, the [ATS-friendly templates](https://www.thetailorcv.com/templates) provide the right structure.
 
 ---
+
+## Key Takeaways
+
+- Quantifying achievements on a resume makes it more memorable and credible, helping candidates stand out to recruiters.
+- Use five types of numbers: scale, impact, speed, efficiency, and volume to showcase your contributions effectively.
+- Recruiters typically spend only 6-10 seconds scanning resumes, so numbers help grab their attention and provide evidence of your capabilities.
+- If you think you have no metrics, consider various aspects of your work, such as user base, project timelines, or team size to find quantifiable data.
+- Honest approximations can be used when exact numbers are unavailable, as they still provide valuable context to your achievements.
 
 ## Why Numbers Matter on a Resume
 
@@ -150,7 +158,7 @@ An honest approximation is better than no number.
 - Grew organic search traffic from 12K to 48K monthly sessions through a content SEO strategy across 40 published articles.
 - Reduced cost per lead from $84 to $31 by restructuring Google Ads campaigns and improving landing page conversion.
 - Managed a $450K annual digital marketing budget across Google, Meta, and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) with 4.2x blended ROAS.
-- Built email automation sequences that increased trial-to-paid conversion from 18% to 27% for 3K+ monthly trial signups.
+- Built [email automation sequences](https://thetailorcv.com/blog/volunteer-work-on-resume) that increased trial-to-paid conversion from 18% to 27% for 3K+ monthly trial signups.
 - Launched a referral program that generated 1,200 new customers in 90 days at $8 CAC versus $62 average CAC.
 
 ### Sales
@@ -165,7 +173,7 @@ An honest approximation is better than no number.
 
 - Maintained 96% CSAT score across 1,200+ monthly support tickets over 18 months.
 - Reduced average first response time from 9 hours to 2.4 hours by building a ticket triage process and macro library.
-- Created a self-service knowledge base of 80+ articles that deflected 28% of incoming support volume.
+- Created a [self-service knowledge base](https://thetailorcv.com/blog/portfolio-website-vs-resume) of 80+ articles that deflected 28% of incoming support volume.
 - Resolved 94% of tickets at first contact, above team average of 78%.
 - Onboarded and trained 5 new support agents, reducing their ramp time from 6 weeks to 3 weeks.
 
@@ -232,7 +240,20 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 ## Conclusion
 Quantifying your resume achievements is not about exaggerating - it is about being specific. Every vague claim has a number behind it. Your job is to find it, estimate it honestly, and use it.
 
-Once your bullets are strong, run your full resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to make sure your keywords also match the job description. Use the [resume templates](https://www.thetailorcv.com/templates) to ensure your format is clean. If you are still building your resume from scratch, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full structure.
+Once your bullets are strong, run your full resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to make sure your keywords also match the [job description](https://thetailorcv.com/blog/resume-keyword-map-template). Use the [resume templates](https://www.thetailorcv.com/templates) to ensure your format is clean. If you are still building your resume from scratch, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full structure.
+
+
+## Weak vs Strong Resume Achievements
+
+Transforming vague achievements into quantified statements can significantly enhance the impact of your resume. 
+
+| Weak Achievement                     | Strong Achievement                             |
+|--------------------------------------|------------------------------------------------|
+| Improved sales                       | Increased sales by 25% in Q2 2023            |
+| Managed a team                       | Led a team of 10 marketing professionals      |
+| Developed a new software feature     | Developed a new software feature that reduced user onboarding time by 30% |
+| Increased customer satisfaction       | Improved customer satisfaction scores from 75% to 90% over 6 months |
+| Organized company events              | Organized 5 successful company-wide events attracting over 300 participants each |
 
 ## Frequently Asked Questions
 
@@ -246,7 +267,7 @@ You should consider including various types of numbers such as scale numbers (e.
 If you feel you lack quantifiable achievements, start by reviewing your past roles and responsibilities. Consider aspects like project timelines, budget management, and team sizes. You can also think about the results of your work in terms of efficiency or revenue. For more guidance, explore our article on [how to list education on a resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) for inspiration on structuring your accomplishments.
 
 ### Can quantifying achievements help with ATS optimization?  
-Yes, quantifying your achievements can enhance your resume's ATS (Applicant Tracking System) optimization. Including specific numbers and metrics can help your resume align with job descriptions that use similar language. To ensure your resume format is ATS-friendly, use our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate and improve your document.
+Yes, quantifying your achievements can enhance your resume's ATS (Applicant Tracking System) optimization. Including specific numbers and metrics can help your resume align with job descriptions that use similar language. To ensure your [resume format](https://thetailorcv.com/blog/resume-section-order-guide) is ATS-friendly, use our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate and improve your document.
 
 ### What are some examples of quantified achievements for different roles?  
 In our blog post, we provide 50 examples of quantified achievements tailored for various roles, including software engineering, marketing, and sales. These examples illustrate how to effectively incorporate metrics into your resume to increase its impact. For additional strategies on summarizing your skills, check out our guide on [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-a-resume-summary).

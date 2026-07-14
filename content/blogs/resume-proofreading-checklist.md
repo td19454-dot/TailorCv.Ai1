@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Proofreading Checklist - 25 Things to Check Before You Apply
 description: The complete resume proofreading checklist for 2026. 25 specific things to verify - spelling, formatting, ATS compatibility, content quality, links, and more - before submitting any job application.
 date: 2026-06-06
@@ -15,6 +15,14 @@ Most resume mistakes are caught only after you have already submitted. A single 
 After completing this checklist, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) for a full scoring and keyword analysis. Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) to reduce formatting issues from the start.
 
 ---
+
+## Key Takeaways
+
+- Use strong action verbs at the start of each bullet point and quantify achievements to enhance impact.
+- Tailor your resume summary and skills section to match the specific job description for better ATS compatibility.
+- Ensure consistency in date formats, bullet styles, and font throughout the resume to maintain a professional appearance.
+- Avoid including irrelevant content, such as outdated roles or the phrase "References available upon request."
+- Stick to a single-column layout and keep the resume length appropriate based on your experience level.
 
 ## How to Use This Checklist
 

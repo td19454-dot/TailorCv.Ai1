@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume vs CV - What's the Difference and Which One Do You Need?
 description: Understand the key differences between a resume and a CV, when to use each, and how geography, industry, and job type affect which document to submit.
 date: 2026-06-06
@@ -17,6 +17,13 @@ This guide explains the key differences, when each is appropriate, and what to i
 Before you send either, check your document against the job with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and start from an [ATS-compatible template](https://www.thetailorcv.com/templates).
 
 ---
+
+## Key Takeaways
+
+- A resume is a concise document (1-2 pages) tailored for specific job applications, while a CV is a comprehensive record of your entire academic and professional history (2-20+ pages).
+- Resumes are commonly used in the US, Canada, and Australia for industry jobs, whereas CVs are standard for academic positions and in many countries in Europe, the Middle East, and Africa.
+- The content of a resume focuses on skills and achievements relevant to the job, while a CV includes all professional details such as publications, research, and teaching experience.
+- Geographic differences in terminology can lead to confusion; for instance, in the UK, "CV" is equivalent to a US resume, while "CV" in the US refers specifically to academic documents.
 
 ## The Core Difference
 

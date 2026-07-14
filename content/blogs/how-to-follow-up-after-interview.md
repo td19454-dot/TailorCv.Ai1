@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Follow Up After a Job Interview in 2026 - What to Send and When
 description: Learn how to follow up after a job interview in 2026. Includes thank you email templates, follow-up timing, what to say, and how to handle silence.
 date: 2026-06-01
@@ -10,13 +10,21 @@ slug: how-to-follow-up-after-interview
 keywords: how to follow up after interview, thank you email after interview, interview follow up email, interview follow up timing, when to follow up after interview
 ---
 
-Following up after a job [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most underused tools in the job search process. A well-timed, well-written thank-you email can reinforce your candidacy, address something you said poorly, and demonstrate professionalism. Not sending one is a missed opportunity. Sending a bad one can hurt you.
+Following up after a job [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most underused tools in the job search process. A well-timed, well-written [thank-you email](https://thetailorcv.com/blog/how-to-decline-job-offer) can reinforce your candidacy, address something you said poorly, and demonstrate professionalism. Not sending one is a missed opportunity. Sending a bad one can hurt you.
 
-This guide covers when to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview), what to say, how to handle silence, and the thank-you email templates you can adapt for any role.
+This guide covers when to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview), what to say, how to handle silence, and the [thank-you email](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) templates you can adapt for any role.
 
-Before your interview, make sure your resume is strong - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it. Then prepare your answers with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+Before your interview, make sure your [resume](https://www.thetailorcv.com/templates) is strong - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it. Then prepare your answers with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ---
+
+## Key Takeaways
+
+- Following up after a job interview demonstrates professionalism and enthusiasm, reinforcing your candidacy.
+- Send a thank-you email within 24 hours of the interview, personalizing it for each interviewer if applicable.
+- Keep the thank-you email concise, under 150 words, including a genuine thank-you, a specific discussion point, and a brief restatement of interest.
+- Avoid asking about the hiring timeline or seeking feedback in your initial thank-you email.
+- A thoughtful thank-you note can positively influence hiring managers' perceptions of candidates.
 
 ## Why Follow Up After an Interview?
 
@@ -121,7 +129,7 @@ If you still hear nothing after 5 more business days, one more brief note is acc
 
 "Hi [Name], I hope you're well. I'm following up once more regarding the [Role] position. I remain very interested and would love to discuss any next steps. If the timing has shifted, I understand - please do keep me in mind."
 
-After two follow-ups with no response, move on. Continue applying elsewhere. Do not send a third message - it crosses from professional follow-through to pressure.
+After two [follow-up](https://thetailorcv.com/blog/recruiter-ghosting-after-interview)s with no response, move on. Continue applying elsewhere. Do not send a third message - it crosses from professional follow-through to pressure.
 
 ---
 

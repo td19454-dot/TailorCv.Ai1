@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Customization Checklist - 15 Things to Check Before Every Application
 description: A step-by-step resume customization checklist you can run in under 10 minutes before every job application to maximize your ATS score and recruiter impact.
 date: 2026-06-11
@@ -15,6 +15,14 @@ Most candidates submit a resume they are "pretty confident" about. The candidate
 After the checklist, verify your score automatically with the [free ATS checker](/solutions).
 
 ---
+
+## Key Takeaways
+
+- Always ensure your resume headline matches the exact job title from the job posting to catch the recruiter's attention.
+- Incorporate keywords from the job description into your summary and emphasize what you deliver rather than just listing your past roles.
+- Include all required and preferred skills from the job posting in your skills section, using both acronyms and full terms for key skills.
+- Prioritize the most relevant experience and ensure your bullet points highlight results rather than just tasks, embedding key keywords from the posting.
+- Regularly check your resume against the job description to ensure alignment and increase your chances of passing ATS screenings.
 
 ## Before You Start: Pull Up the Job Description
 

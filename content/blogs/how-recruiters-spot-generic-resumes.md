@@ -1,9 +1,9 @@
-﻿---
+---
 title: How Recruiters Spot Generic Resumes - And Reject Them in 6 Seconds
 description: Recruiters spend an average of 6 seconds on a resume. Learn the exact signals that flag a resume as generic and what to do instead to get shortlisted.
 date: 2026-06-11
 author: TailorCV Team
-tags: [resume, recruiters, generic resume, job search, resume tailoring]
+tags: resume, recruiters, [generic resume, job search, resume tailoring]
 category: Resume Writing
 image: public/blog-images/how-recruiters-spot-generic-resumes.webp
 slug: how-recruiters-spot-generic-resumes
@@ -15,6 +15,14 @@ Recruiters review hundreds of resumes per week. In that volume, they develop a n
 Scan your own resume for generic signals instantly with the [free ATS and resume checker](/solutions).
 
 ---
+
+## Key Takeaways
+
+- Recruiters spend only 6-10 seconds initially scanning resumes, focusing on pattern-matching rather than reading in detail.
+- Use a tailored professional summary instead of an outdated objective statement to reflect the job's language and context.
+- Highlight achievements with specific metrics rather than listing generic responsibilities to stand out to recruiters.
+- Mirror the job description's language and include relevant skills to avoid being flagged as generic by ATS systems.
+- Avoid using the same resume for multiple applications, as it signals low interest and effort to recruiters.
 
 ## The 6-Second Rule Is Real
 
@@ -130,7 +138,7 @@ Yes, immediately. Recruiters who review hundreds of resumes develop a near-autom
 
 ### Can ATS software also detect a generic resume?
 
-Yes. ATS systems score resumes based on keyword match, job title fit, and skill alignment. A generic resume that wasn't tailored to the posting will score low and may never reach a human recruiter. See [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
+Yes. ATS systems score resumes based on keyword match, job title fit, and skill alignment. A [generic resume](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews) that wasn't tailored to the posting will score low and may never reach a human recruiter. See [how ATS detects a generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
 
 ### How different should each version of my resume be?
 

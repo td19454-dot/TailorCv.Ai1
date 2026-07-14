@@ -1,4 +1,4 @@
-﻿---
+---
 title: UX Designer Portfolio Guide: Case Studies That Get Interviews
 description: Build a UX portfolio that wins interviews - case study structure, the metrics to include, platforms, and the mistakes that get designers rejected.
 date: 2026-06-24
@@ -11,6 +11,14 @@ keywords: ux designer portfolio, ux case study, design portfolio, product design
 ---
 
 A UX portfolio is judged on **thinking**, not just visuals. Pretty screens get scrolled past; case studies that show how you framed a problem and drove an outcome get interviews. Hiring managers are evaluating your judgment, and the only way to show judgment is to narrate your decisions. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the full template in [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).
+
+## Key Takeaways
+
+- A UX portfolio should focus on case studies that demonstrate problem framing and decision-making rather than just visual appeal.
+- Each case study should follow a structured arc: Context, Problem, Research, Process, Solution, and Outcome, showcasing the decision-making process.
+- Include real metrics to illustrate the impact of your work, such as task completion rates and usability test scores.
+- Curate your portfolio to feature three to five strong case studies, prioritizing quality over quantity and ensuring they reflect your design process.
+- Ensure your resume, LinkedIn, and portfolio are aligned in messaging to avoid confusion for recruiters.
 
 ## The Case Study Structure That Works
 Every case study should follow this arc:
@@ -57,6 +65,69 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Add a 30-second summary at the top for skimmers, details below for deep readers.
 - Generate your portfolio shell from your resume with the [portfolio builder](https://thetailorcv.com/portfolio) and drop your case studies in.
 
+## Step-by-Step Guide to Creating a Compelling Case Study
+
+1. **Choose Your Project Wisely**: Select a project that showcases your skills and aligns with the type of UX design work you want to pursue. Look for projects with clear challenges and measurable outcomes.
+
+2. **Define the Problem**: Start by clearly stating the problem your project aimed to address. Use straightforward language to ensure even non-designers can grasp the issue.
+
+3. **Outline Your Process**: Detail the steps you took to solve the problem. This could include user research, wireframing, prototyping, user testing, and iterations. Use visuals like diagrams or flowcharts to illustrate your process.
+
+4. **Highlight Your Role**: Make it clear what your specific contributions were. If you collaborated with a team, define your responsibilities to avoid ambiguity.
+
+5. **Showcase the Final Product**: Include high-quality images or interactive prototypes of your final design. Use annotations to explain key features and decisions.
+
+6. **Present Results**: Share quantitative data that demonstrates the impact of your design. For instance, mention increases in user engagement, conversion rates, or customer satisfaction scores.
+
+7. **Reflect on the Project**: Conclude with a brief reflection on what you learned from the project and how it has influenced your design philosophy.
+
+## Common Mistakes to Avoid When Crafting Your Portfolio
+
+- **Overloading with Information**: Avoid cramming too many projects into your portfolio. Focus on quality over quantity. A few well-documented case studies are more impactful than a dozen mediocre ones.
+
+- **Neglecting User Feedback**: Failing to incorporate user feedback into your case studies can weaken your credibility. Always include insights gained from user testing and how they influenced your design decisions.
+
+- **Ignoring Visual Hierarchy**: Ensure your portfolio has a clear visual hierarchy. Use headings, subheadings, and bullet points to guide the reader through each case study seamlessly.
+
+- **Forgetting About Accessibility**: Ensure your portfolio is accessible to all users. This includes providing text descriptions for images and ensuring navigability for screen readers.
+
+## Do's and Don'ts for an Effective UX Designer Portfolio
+
+### Do's
+
+- **Do Keep It Updated**: Regularly update your portfolio with new projects and skills to reflect your growth as a designer.
+
+- **Do Tailor for Your Audience**: Customize your portfolio for specific job applications. Highlight relevant skills and projects that align with the company's needs.
+
+- **Do Include Testimonials**: Add quotes or testimonials from colleagues, clients, or users that speak to your design abilities and work ethic.
+
+### Don'ts
+
+- **Don't Use Stock Photos**: Authenticity is key; using stock images can undermine the credibility of your work. Instead, use real project visuals.
+
+- **Don't Skimp on Details**: While brevity is essential, don’t leave out critical information. Ensure your case studies are thorough yet concise.
+
+- **Don't Ignore SEO**: Optimize your portfolio for search engines by using relevant keywords in your project descriptions and titles.
+
+## Mini Checklist for Your UX Portfolio
+
+- [ ] **Select 3-5 Key Projects**: Choose projects that best showcase your skills and expertise.
+- [ ] **Define Clear Objectives**: Ensure each case study has a well-defined problem statement and objectives.
+- [ ] **Visualize Your Process**: Include process visuals like user flows or wireframes.
+- [ ] **Quantify Results**: Present metrics that highlight the success of your designs.
+- [ ] **Reflect on Learnings**: Add a section on what you learned from each project.
+- [ ] **Ensure Mobile Responsiveness**: Check that your portfolio looks great on all devices.
+- [ ] **Test for Accessibility**: Use tools to ensure your portfolio is accessible to all users.
+
+## Scenarios to Illustrate Effective Case Studies
+
+- **Scenario 1**: A user-centric redesign of a mobile app led to a 30% increase in user retention. In your case study, present user personas and how their feedback shaped the design.
+
+- **Scenario 2**: You worked on a collaborative project where you facilitated a design sprint. Document how this approach led to rapid prototyping and user testing, resulting in a 25% improvement in task completion time.
+
+- **Scenario 3**: For an e-commerce website, you implemented a new checkout process. Include a side-by-side comparison of the old and new designs, showcasing a 15% increase in conversion rates.
+
+By implementing these steps, avoiding common pitfalls, and following the do's and don'ts, you can create a standout UX portfolio that not only showcases your skills but also attracts the attention of potential employers. For additional resources, check out our guide on [how to write a portfolio case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) and see how to [put your portfolio on a custom domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide) to enhance your professional presence.
 
 ## Frequently Asked Questions
 

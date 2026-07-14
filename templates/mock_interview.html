@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Stop practicing generic interview questions. Our AI reads your resume and asks about YOUR projects, YOUR experience. Free mock interview practice online.">
-    <title>AI Mock Interview Practice — Questions Based on YOUR Resume | TailorCV</title>
+    <title>AI Mock Interview Practice, Questions Based on YOUR Resume | TailorCV</title>
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/style3.css">
-    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/header-footer.css?v=2">
     <link rel="stylesheet" href="/static/style2.css?v=7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,6 +100,7 @@
     </style>
 </head>
 <body>
+{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
 <div id="prepOverlay">
     <div class="prep-card">
         <h3 class="prep-title">Your interview session is preparing...</h3>
@@ -109,7 +110,7 @@
 <div id="loginOverlay" class="overlay">
     <div class="overlay-card">
         <h2>Login required to start</h2>
-        <p>Only login is required — no payment, no plan, and no worry. You will be redirected to login automatically.</p>
+        <p>Only login is required, no payment, no plan, and no worry. You will be redirected to login automatically.</p>
         <div class="progress-track"><div id="loginProgressFill" class="progress-fill"></div></div>
         <div class="action-row">
             <a href="/login?next=/mock-interview" class="btn" id="loginNowBtn">Login Now</a>
@@ -117,8 +118,223 @@
     </div>
 </div>
 {% include "_nav.html" %}
+
+    {% if not is_logged_in %}
+    <link rel="stylesheet" href="/static/feature_landing.css?v=36">
+    <div class="solx">
+        <div class="solx-wrap">
+            <div class="solx-hero">
+                <div>
+                    <span class="solx-eyebrow">AI Mock Interviews</span>
+                    <h1>Practice interviews with an <span class="g">AI coach that never judges.</span></h1>
+                    <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
+                        <span>Real, role-specific questions for your target job</span>
+                        <span>Answer out loud, get instant, honest feedback</span>
+                        <span>Walk into the real interview calm and prepared</span>
+                    </div>
+                    <a href="/signup?next=/mock-interview" class="solx-btn">Start a Mock Interview, Free</a>
+                    <p class="micro">Takes ~5 minutes &bull; No credit card &bull; <b>Free to start</b></p>
+                </div>
+                <div class="rez">
+                    <div class="rez-tag">&#127908; Mock Interview &bull; Live</div>
+                    <div class="rez-h">Question 3 of 8</div>
+                    <div class="rez-line l"></div><div class="rez-line m"></div>
+                    <div class="rez-badge" style="margin-top:8px">&#127908; Recording your answer&hellip;</div>
+                    <div class="rez-insights">
+                        <div class="t">&#10024; AI Feedback</div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span class="rez-h" style="margin:0">Answer score</span><span class="rez-badge">8.4 / 10</span></div>
+                        <div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-line l"></div>
+                        <div class="rez-btn">Next Question</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-marquee">
+            <div class="solx-wrap"><p class="cap">Our users have <span class="g">interviewed at</span></p></div>
+            <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
+        </div>
+        <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">Rehearse the real thing, <span class="g">before it counts</span></h2>
+                <p class="solx-lead">TailorCV runs a realistic interview for your exact role, listens to your answers, and tells you exactly how to improve, as many times as you need.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">Interview for</div><div class="rez-line l"></div>
+                            <div style="margin-top:8px"><span class="rez-pill g">Product Manager</span><span class="rez-pill y">Behavioral</span><span class="rez-pill b">System Design</span></div>
+                            <div class="rez-line m" style="margin-top:8px"></div>
+                        </div>
+                        <h3>Questions tailored to the role</h3>
+                        <p>Pick a job or paste a description and the AI asks the exact questions that role gets, behavioral, technical, and role-specific.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-badge">&#10024; Instant feedback</div>
+                            <div class="rez-h" style="margin-top:12px">What went well</div><div class="rez-line l" style="background:#bbf7d0"></div>
+                            <div class="rez-h" style="margin-top:8px">Fix this next time</div><div class="rez-line m" style="background:#fecaca"></div>
+                        </div>
+                        <h3>Honest feedback on every answer</h3>
+                        <p>Get a score plus specific notes on structure, clarity, and content, so you know exactly what to say better next time.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-ring"><b>8.4</b></div><div class="rez-h">Average answer score</div><div class="rez-line l"></div>
+                            <div class="rez-h" style="margin-top:10px">Attempts today</div><div class="rez-line m"></div><div class="rez-line s"></div>
+                        </div>
+                        <h3>Practice until you're confident</h3>
+                        <p>Run the interview as many times as you want. Watch your scores climb and walk in calm, prepared, and ready.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">How it works</div>
+                <h2 class="solx-h2">A simple 4-step process to a <span class="g">confident interview</span></h2>
+                <div style="margin-top:26px">
+                    <div class="solx-step">
+                        <div><div class="n">Step 1</div><h3>Pick the <span class="g">role you're interviewing for</span></h3><p>Choose a job title or paste the job description so the questions match the exact role and seniority.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128188; Target role</div><div class="rez-h">Senior Product Manager</div><div class="rez-line l"></div><div class="rez-line m"></div><span class="rez-pill g">Behavioral</span><span class="rez-pill b">System Design</span><span class="rez-pill y">Metrics</span></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 2</div><h3>AI asks <span class="g">real questions</span></h3><p>A private AI interviewer asks the questions this role actually gets, one at a time, just like a live panel.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#127908; Question 3 of 8</div><div class="rez-h">"Tell me about a time you shipped under a tight deadline."</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:8px">&#9203; 2:00 to answer</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 3</div><h3>Answer <span class="g">out loud</span></h3><p>Speak your answer naturally. The AI listens the way a real interviewer would, no scripts, no pressure.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#127908; Recording&hellip;</div><div class="rez-h">Your answer</div><div class="rez-line l"></div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:10px">&#10003; Transcribed live</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 4</div><h3>Get <span class="g">scored feedback</span></h3><p>See a score with specific, judgment-free notes on what worked and what to sharpen, then try again.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-ring" style="--p:84"><b>8.4</b></div><div class="rez-tag">&#10024; Feedback</div><div class="rez-h">Strengths</div><div class="rez-line l" style="background:#bbf7d0"></div><div class="rez-h">Improve</div><div class="rez-line m" style="background:#fecaca"></div><div class="rez-btn" style="margin-top:12px">Try Again</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Loved by job seekers</div>
+                <h2 class="solx-h2">From nervous to <span class="g">offer letter</span></h2>
+                <div class="solx-quotes">
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I did five mock rounds the night before my Amazon loop. The real questions felt familiar and I finally stayed calm."</p><div class="who"><img src="/static/user_imges/85.jpg" alt=""><span><b>Michael R.</b> <span>Amazon</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"The feedback was brutally honest in the best way. It caught that I was rambling and my answers got tighter fast."</p><div class="who"><img src="/static/user_imges/26.jpg" alt=""><span><b>Priya S.</b> <span>Google</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Practicing out loud made all the difference. By interview day the questions felt like ones I'd already answered."</p><div class="who"><img src="/static/user_imges/79.jpg" alt=""><span><b>Emily G.</b> <span>PwC</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"By my third practice round I stopped freezing on the tell me about yourself question. Total game changer."</p><div class="who"><img src="/static/user_imges/12.jpg" alt=""><span><b>Sarah J.</b> <span>Atlassian</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"It caught my filler words and weak endings. My answers got noticeably tighter."</p><div class="who"><img src="/static/user_imges/13.jpg" alt=""><span><b>Vicki B.</b> <span>PayPal</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Rehearsing out loud with real questions made the actual interview feel like a repeat."</p><div class="who"><img src="/static/user_imges/22.jpg" alt=""><span><b>James W.</b> <span>Apple</span></span></div></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "_feature_more.html" %}
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Pricing</div>
+                <h2 class="solx-h2">Simple pricing, <span class="g">powerful features</span></h2>
+                <p class="solx-lead">Start free, upgrade only when you want unlimited access.</p>
+                <div class="pricing-preview-grid cols-3">
+                    <article class="pricing-preview-card basic">
+                        <p class="pricing-plan-name">Free</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
+                        <p class="pricing-plan-note">Always free, no card needed.</p>
+                        <ul class="pricing-feature-list">
+                            <li>ATS score, unlimited</li>
+                            <li>1 free resume optimization</li>
+                            <li>1 free cover letter + mock interview</li>
+                            <li>All templates &amp; downloads</li>
+                        </ul>
+                        <a href="/signup?next=/mock-interview" class="pricing-plan-btn">Start free</a>
+                    </article>
+
+                    <article class="pricing-preview-card">
+                        <p class="pricing-badge pricing-badge-pass">One-time</p>
+                        <p class="pricing-plan-name">7-Day Pass</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppPassSym">&#8377;</span><span id="ppPassAmt">149</span></p>
+                        <p class="pricing-plan-note">7 days of full Pro access, no auto-renew.</p>
+                        <ul class="pricing-feature-list">
+                            <li>Everything in Pro</li>
+                            <li>Unlimited optimize &amp; cover letters</li>
+                            <li>Unlimited mock interviews</li>
+                            <li>No subscription</li>
+                        </ul>
+                        <a href="/pricing" class="pricing-plan-btn">Get 7-day pass</a>
+                    </article>
+
+                    <article class="pricing-preview-card featured">
+                        <p class="pricing-badge">Most Popular</p>
+                        <p class="pricing-plan-name">Pro</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppProSym">&#8377;</span><span id="ppProAmt">167</span><span>/mo</span></p>
+                        <p class="pricing-plan-note" id="ppProNote">Billed yearly, save 44%, cancel any time.</p>
+                        <ul class="pricing-feature-list">
+                            <li>Unlimited resume optimizations</li>
+                            <li>Unlimited cover letters &amp; mock interviews</li>
+                            <li>LinkedIn import unlimited</li>
+                            <li>Priority AI processing</li>
+                        </ul>
+                        <a href="/pricing" class="pricing-plan-btn pricing-plan-btn-primary">Get Pro</a>
+                    </article>
+                </div>
+                <p class="pricing-preview-all"><a href="/pricing">See full pricing &amp; FAQ</a></p>
+            </div>
+        </div>
+        <script>
+        // Region-aware prices, mirrors the homepage preview and /pricing.
+        (function () {
+            var PP = {
+                india:  { sym: '\u20b9', pass: '149',  pro: '167',  note: 'Billed yearly, save 44%, cancel any time.' },
+                lic:    { sym: '$',       pass: '1.99', pro: '2.08', note: 'Billed yearly, save 44%, cancel any time.' },
+                global: { sym: '$',       pass: '4.99', pro: '5',    note: 'Billed yearly, save 44%, cancel any time.' }
+            };
+            function set(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+            function apply(region) {
+                var p = PP[region] || PP.india;
+                set('ppFreeSym', p.sym); set('ppPassSym', p.sym); set('ppProSym', p.sym);
+                set('ppPassAmt', p.pass); set('ppProAmt', p.pro); set('ppProNote', p.note);
+            }
+            fetch('/api/billing/region')
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (d) { if (d && d.region) apply(d.region); })
+                .catch(function () { /* keep default india pricing */ });
+        })();
+        </script>
+
+        <div class="solx-band">
+            <div class="solx-band-inner">
+                <div class="solx-band-kicker">Nervous about interviews?</div>
+                <h2>Rehearse before it <span class="ga">actually counts</span>.</h2>
+                <p>Run a realistic, role-specific interview as many times as you need, and get honest feedback that turns nerves into offers.</p>
+                <a href="/signup?next=/mock-interview" class="solx-btn">Start a Mock Interview, Free</a>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">FAQ</div>
+                <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
+                <div class="solx-faq" style="margin-top:32px">
+                    <details open><summary>What does the AI mock interview actually do?</summary><p>It runs a realistic interview for your target role, asks real questions one at a time, listens to your spoken answers, and gives you a score with specific feedback on how to improve.</p></details>
+                    <details><summary>Are the questions specific to my job?</summary><p>Yes. Pick a role or paste the job description and the questions match that exact role and seniority, behavioral, technical, and role-specific.</p></details>
+                    <details><summary>How is my answer scored?</summary><p>You get a score plus judgment-free notes on structure, clarity, and content, so you know exactly what to say better next time.</p></details>
+                    <details><summary>Can I practice more than once?</summary><p>Yes, run the interview as many times as you like and watch your scores improve with each attempt.</p></details>
+                    <details><summary>Is it really free to start?</summary><p>Yes. You can run a mock interview for free. A quick free account saves your sessions and feedback so you can track progress.</p></details>
+                </div>
+                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/mock-interview" class="solx-btn">Start a Mock Interview, Free</a></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if is_logged_in %}
+
 <style>
-    /* Slim typography — lighter weights across page content
+    /* Slim typography, lighter weights across page content
        (shared .navbar / .site-footer excluded so they match the rest of the site) */
     body > *:not(.navbar):not(.site-footer),
     body > *:not(.navbar):not(.site-footer) * {
@@ -141,7 +357,7 @@
         header.navbar { height: 64px !important; }
     }
     /* Mobile (<=768px) the navbar is position:relative (in flow), so the 78px
-       top padding would create a huge empty gap — reset it. */
+       top padding would create a huge empty gap, reset it. */
     @media (max-width: 768px) {
         #zaraIntroPage { padding-top: 14px !important; }
         .wrap { padding-top: 14px !important; }
@@ -175,7 +391,7 @@
         </div>
         <div style="background:#141f4a;border:1px solid rgba(80,110,200,.3);border-radius:10px;padding:14px;">
           <div style="color:#facc15;font-size:13px;margin-bottom:8px;">★★★★★</div>
-          <div style="color:#d6e8ff;font-size:13px;line-height:1.5;margin-bottom:8px;">"The questions were based on MY resume — not generic ones. That's what makes this completely different."</div>
+          <div style="color:#d6e8ff;font-size:13px;line-height:1.5;margin-bottom:8px;">"The questions were based on MY resume, not generic ones. That's what makes this completely different."</div>
           <div style="display:flex;align-items:center;gap:10px;margin-top:8px;">
             <img src="https://i.pravatar.cc/72?img=8" style="width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid rgba(108,99,255,0.4);" alt="Arjun">
             <div><div style="color:#fff;font-size:12px;font-weight:600;">Arjun M.</div><div style="color:#9bb0d8;font-size:11px;">Backend Dev · hired at Wipro 🇮🇳</div></div>
@@ -292,7 +508,7 @@
 
 <main class="wrap">
     <h1>Mock Interview Practice Online</h1>
-    <p class="muted">Real-time AI mock interview with follow-ups, speech recognition, and a scorecard — practice technical and behavioral questions before the real thing.</p>
+    <p class="muted">Real-time AI mock interview with follow-ups, speech recognition, and a scorecard, practice technical and behavioral questions before the real thing.</p>
 
     <section class="panel" id="setupPanel">
         <div class="stepbar">
@@ -327,7 +543,7 @@
                     </div>
                     <input type="hidden" id="numQuestions" value="10">
                 </div>
-                <div style="grid-column:1/-1; color:#c7d1ff; font-size:.9rem; font-weight:600;">Almost there — just two more things</div>
+                <div style="grid-column:1/-1; color:#c7d1ff; font-size:.9rem; font-weight:600;">Almost there, just two more things</div>
                 <div style="grid-column:1/-1">
                     <label>Resume PDF (required)</label>
                     <input id="resumeFile" type="file" accept=".pdf,application/pdf" required>
@@ -411,9 +627,12 @@
     </section>
 </main>
 
-        {% include "_footer.html" %}
+        {% endif %}
+
+    {% include "_footer.html" %}
 <script src="/static/auth_nav.js?v=13"></script>
 <script src="/static/mobile_nav.js"></script>
+{% if is_logged_in %}
 <script>
 const STATE = { userName:'', role:'', type:'mixed', numQuestions:10, resumeText:'', jobDesc:'', questionIndex:0, currentQuestion:'', conversation_history:[], qa_log:[], currentTranscript:'', liveInterim:'', fillerCount:0, totalWords:0, speechRec:null, isRecording:false, timerSec:60, timerId:null, camStream:null, isCameraOn:false, screenStream:null, isScreenSharing:false, isRejected:false, isInterviewEnded:false, faceDetector:null, camMonTimer:null, camSamples:0, camGoodSamples:0, ttsAudio:null, ttsCtx:null, ttsSrc:null };
 const FILLERS = ['um','uh','like','you know','basically','literally','actually','sort of','kind of','i mean'];
@@ -549,7 +768,7 @@ function _playBoosted(blobUrl, onDone, onFallback){
     audio.play().catch(() => { STATE.ttsAudio=null; if(onFallback) onFallback(); else if(onDone) onDone(); });
   }
 }
-// Play audio from a base64 string (bundled in API response — no second TTS fetch needed)
+// Play audio from a base64 string (bundled in API response, no second TTS fetch needed)
 function playB64Audio(b64, text, onDone){
   if(STATE.isInterviewEnded) return;
   _stopTts();
@@ -974,7 +1193,7 @@ function renderScoreCard(s){
   ${(s.completion_rate !== undefined && s.completion_rate < 100) ? `
   <div style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.35);border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;">
     <span style="font-size:18px;">⚠️</span>
-    <span style="color:#fbbf24;font-size:13px;">Interview incomplete — you answered <strong>${s.completion_rate}%</strong> of questions. Scores are penalised accordingly.</span>
+    <span style="color:#fbbf24;font-size:13px;">Interview incomplete, you answered <strong>${s.completion_rate}%</strong> of questions. Scores are penalised accordingly.</span>
   </div>` : ''}
 
   <div class="score-grid">
@@ -987,7 +1206,7 @@ function renderScoreCard(s){
     <div class="score-metric">
       <div class="k">Completion</div>
       <div class="v" style="color:${(s.completion_rate>=100)?'#34d399':(s.completion_rate>=60)?'#f59e0b':'#ef4444'}">
-        ${safe(s.completion_rate,'–')}${s.completion_rate!==undefined?'%':''}
+        ${safe(s.completion_rate,',')}${s.completion_rate!==undefined?'%':''}
       </div>
     </div>
     <div class="score-metric">
@@ -1076,7 +1295,7 @@ function renderScoreCard(s){
   ${qa.map(x=>`
     <div class="qa-item">
       <div class="q">
-        Q${safe(x.index)} — Score ${safe(x.score)}/10
+        Q${safe(x.index)}, Score ${safe(x.score)}/10
       </div>
       <div>${safe(x.feedback,'No feedback')}</div>
     </div>
@@ -1186,7 +1405,7 @@ const _GREET_TEXT = (function(){
   }
 })();
 // Pre-load greeting audio in background; _greetFetchPromise lets zaraSpeak wait on it if needed
-let _greetAudio = null;          // {el, url} — set when fully buffered
+let _greetAudio = null;          // {el, url}, set when fully buffered
 let _greetFetchPromise = null;   // the in-progress fetch Promise
 (function _prefetchGreeting(){
   _greetFetchPromise = fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:_GREET_TEXT})})
@@ -1235,13 +1454,13 @@ function zaraSpeak(){
   }
 
   if(_greetAudio){
-    // Audio already buffered — plays instantly
+    // Audio already buffered, plays instantly
     const {el, url} = _greetAudio; _greetAudio = null;
     _playEl(el, url);
     return;
   }
 
-  // Pre-fetch still in progress — wait on the same promise (no second fetch)
+  // Pre-fetch still in progress, wait on the same promise (no second fetch)
   if(_greetFetchPromise){
     _greetFetchPromise.then(result => {
       _greetAudio = null;
@@ -1251,7 +1470,7 @@ function zaraSpeak(){
     return;
   }
 
-  // Nothing in flight — last resort
+  // Nothing in flight, last resort
   _browserGreet();
 }
 
@@ -1578,5 +1797,51 @@ document.addEventListener('DOMContentLoaded',
 // ── End localStorage ──────────────────────
 </script>
 <script src="/static/resume_store.js?v=1"></script>
+{% endif %}
+{% if not is_logged_in %}
+<script>
+(function(){
+  const canvas = document.getElementById('wave-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  const waves = [
+    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
+    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
+    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
+    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
+    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
+    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
+  ];
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now();
+    waves.forEach(wv => {
+      ctx.beginPath();
+      for(let x = 0; x <= W; x += 2){
+        const y = H * wv.yf
+          + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
+          + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
+          + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const [r,g,b] = wv.color;
+      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+      gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
+      gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
+      gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
+      ctx.fillStyle = gr;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+{% endif %}
 </body>
 </html>

@@ -754,6 +754,11 @@ header.navbar .logo .logo-word {
 }
 .navbar .nav-mega-ic svg { width: 23px; height: 23px; }
 .navbar .nav-mega-tx { display: flex; flex-direction: column; line-height: 1.35; min-width: 0; }
+/* Mega-menu copy must wrap inside its card. A nowrap rule on the plain dropdown
+   items was leaking in and pushing these descriptions past the card edge. */
+.navbar .nav-mega-item { min-width: 0; white-space: normal !important; }
+.navbar .nav-mega-tx strong,
+.navbar .nav-mega-tx small { white-space: normal !important; overflow-wrap: anywhere; }
 .navbar .nav-mega-tx strong {
     display: inline-flex;
     align-items: center;

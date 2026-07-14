@@ -1,4 +1,4 @@
-﻿---
+---
 title: How Recruiters Read Resumes in Under 10 Seconds (And How to Win That Scan)
 description: Eye-tracking research reveals where recruiters look first on a resume. Learn exactly what gets attention, what gets ignored, and how to optimize your resume to survive the 10-second scan.
 date: 2026-06-06
@@ -17,6 +17,14 @@ Understanding how recruiters scan resumes lets you put the right information in 
 Before optimizing your layout, make sure your content passes ATS first with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then use an [ATS-friendly template](https://www.thetailorcv.com/templates) that is designed for the scan pattern described in this guide.
 
 ---
+
+## Key Takeaways
+
+- Recruiters spend an average of 6-7 seconds on an initial resume scan, focusing on specific patterns of information.
+- The top third of the resume is crucial; include your name, current job title, and a concise professional summary prominently.
+- Use a single-column layout to ensure all key information is easily visible, as the right side of the resume is often ignored.
+- Ensure job titles and company names are clear and left-aligned, with consistent date formatting to avoid confusion about employment history.
+- A resume that passes the initial scan can earn a longer review, where bullet point quality and relevance to the job description become critical.
 
 ## What Eye-Tracking Research Shows
 
@@ -190,7 +198,7 @@ To optimize your resume for the 10-second scan, focus on placing key information
 
 ### What should I include in the contact section of my resume?
 
-In your resume contact section, include your full name, phone number, email address, and LinkedIn profile link if applicable. Avoid unnecessary details like your full address or personal information that can lead to bias. For more guidance on formatting this section, check out our article on the [resume contact section](https://thetailorcv.com/blog/resume-contact-section).
+In your [resume contact section](https://thetailorcv.com/blog/resume-contact-section), include your full name, phone number, email address, and LinkedIn profile link if applicable. Avoid unnecessary details like your full address or personal information that can lead to bias. For more guidance on formatting this section, check out our article on the [resume contact section](https://thetailorcv.com/blog/resume-contact-section).
 
 ### Why is the F-pattern important for resume writing?
 

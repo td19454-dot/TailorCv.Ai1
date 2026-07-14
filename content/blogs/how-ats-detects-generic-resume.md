@@ -1,20 +1,27 @@
-﻿---
+---
 title: How ATS Detects a Generic Resume - And Why It Filters You Out
 description: ATS systems don't just scan for keywords - they score your resume on multiple dimensions. Learn exactly how ATS identifies generic, untailored resumes and get filtered before any human sees your application.
 date: 2026-06-11
 author: TailorCV Team
-tags: [ATS, generic resume, ATS score, resume, job search]
+tags: ATS, generic resume, [ATS score, resume, job search]
 category: ATS Optimization
 image: public/blog-images/how-ats-detects-generic-resume-2.webp
 slug: how-ats-detects-generic-resume
 keywords: how ats detects generic resume, ats generic resume, ats resume filtering, ats resume score low, ats reject resume reasons
 ---
 
-Most job seekers think [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems are simple keyword matchers. The reality is more sophisticated - and more unforgiving for generic resumes. Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms score your resume on multiple signals simultaneously, and a resume that hasn't been tailored to the specific role will fail on several of them at once. Here is exactly how it happens.
+Most job seekers think [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems are simple keyword matchers. The reality is more sophisticated - and more unforgiving for [generic resume](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews)s. Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms score your resume on multiple signals simultaneously, and a resume that hasn't been tailored to the specific role will fail on several of them at once. Here is exactly how it happens.
 
 See how your resume scores right now with the [free ATS checker](/solutions).
 
 ---
+
+## Key Takeaways
+
+- ATS systems evaluate resumes through parsing, keyword matching, section weighting, job title alignment, and contextual scoring.
+- Generic resumes often fail to match critical keywords specific to job postings, resulting in low keyword match scores.
+- Job title alignment is crucial; using vague or internal titles can lead to significant mismatches and low ATS scores.
+- Non-standard section names in generic resumes can confuse ATS parsers, negatively impacting the overall score.
 
 ## What ATS Actually Does When It Receives Your Resume
 
@@ -56,7 +63,7 @@ For a complete guide to matching keywords, see [how to match resume keywords to 
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems place significant weight on job title alignment - both your most recent title and the title you are applying for. A generic resume often uses vague or internally-specific titles that don't map cleanly.
 
-| What You Have | What the ATS Wants | Impact |
+| What You Have | What the [ATS](https://thetailorcv.com/blog/ats-score-vs-resume-score) Wants | Impact |
 |---|---|---|
 | "Marketing Associate" | "Digital Marketing Specialist" | Moderate mismatch - partial credit |
 | "Technology Consultant" | "Cloud Solutions Architect" | High mismatch - low score |
@@ -140,7 +147,7 @@ Over 90% of large companies and a growing number of mid-sized companies use ATS.
 
 ### How do I know my ATS score?
 
-Use the [free ATS checker at TailorCV](https://www.thetailorcv.com/solutions). Upload your resume and paste the job description to see your score in about 60 seconds.
+Use the [free ATS checker at TailorCV](https://www.thetailorcv.com/solutions). Upload your resume and paste the [job description](https://thetailorcv.com/blog/resume-matcher-tool-job-description) to see your score in about 60 seconds.
 
 ### What is a good ATS score?
 

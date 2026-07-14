@@ -1,4 +1,4 @@
-﻿---
+---
 title: Resume Objective vs Summary - Which One Should You Use in 2026?
 description: The objective statement is mostly dead. The professional summary has replaced it for most candidates. Learn the difference, when each still applies, and how to write the one that fits your situation.
 date: 2026-06-06
@@ -15,6 +15,14 @@ The resume objective was standard advice for decades: a brief statement at the t
 After choosing your approach, build your resume on an [ATS-friendly template](https://www.thetailorcv.com/templates) and check your score with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
 
 ---
+
+## Key Takeaways
+
+- The resume objective has largely fallen out of favor, as it focuses on what the candidate wants rather than what they can offer to employers.
+- A professional summary is preferred, highlighting relevant experience, key strengths, and accomplishments in a way that answers the employer's needs.
+- Use a summary if you have any relevant experience, including internships or projects; it is more effective for most candidates.
+- An objective may be appropriate for first-time job seekers with no relevant experience, during major career changes, or in specific traditional industries.
+- A well-crafted professional summary should include your title, years of experience, core strengths, and a specific, quantified accomplishment.
 
 ## What Is a Resume Objective?
 
