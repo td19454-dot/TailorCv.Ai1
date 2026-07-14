@@ -22,9 +22,13 @@
   const BASE_URL = 'http://127.0.0.1:8005';  // switch to https://thetailorcv.com to ship
   const MIN_JD_LENGTH = 200;
 
+  const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 30; // r=30 in the SVG below
+
   let tcvBusy = false;
   let sb, body, launcher, globalStatus;
+  let progressWrap, progressBar, progressPct, progressTimer, checkIcon;
   let sessionReady = false;
+  let quotaExceeded = false;
   let manualJd = '';   // set when the user pastes or selects the JD themselves
 
   // ── Utilities ────────────────────────────────────────
@@ -355,13 +359,38 @@
         <button class="tcv-toggle" title="Minimize">✕</button>
       </div>
       <div id="tcvBody"></div>
+      <div class="tcv-progress-wrap" id="tcvProgressWrap">
+        <div class="tcv-progress-circle">
+          <svg class="tcv-progress-ring" width="88" height="88" viewBox="0 0 88 88">
+            <defs>
+              <linearGradient id="tcvProgressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4f7fff"></stop>
+                <stop offset="100%" stop-color="#c9b8ff"></stop>
+              </linearGradient>
+            </defs>
+            <circle class="tcv-progress-track" cx="44" cy="44" r="30"></circle>
+            <circle class="tcv-progress-bar" id="tcvProgressBar" cx="44" cy="44" r="30"></circle>
+          </svg>
+          <span class="tcv-progress-pct" id="tcvProgressPct">0%</span>
+          <svg class="tcv-check-icon" id="tcvCheckIcon" width="88" height="88" viewBox="0 0 88 88">
+            <path id="tcvCheckPath" d="M27 45 L39 57 L61 32" fill="none" stroke="#4ade80"
+                  stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+      </div>
       <div class="tcv-status-text" id="tcvGlobalStatus"></div>
     `;
     document.body.appendChild(sb);
     body = sb.querySelector('#tcvBody');
-    // Lives outside #tcvBody so it survives per-job re-renders — an in-flight
-    // tailor request stays visible even after switching to a different job.
+    // These live outside #tcvBody so they survive per-job re-renders — an in-flight
+    // request stays visible even after switching to a different job.
     globalStatus = sb.querySelector('#tcvGlobalStatus');
+    progressWrap = sb.querySelector('#tcvProgressWrap');
+    progressBar = sb.querySelector('#tcvProgressBar');
+    progressPct = sb.querySelector('#tcvProgressPct');
+    checkIcon = sb.querySelector('#tcvCheckIcon');
+    progressBar.style.strokeDasharray = String(PROGRESS_CIRCUMFERENCE);
+    progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE);
 
     sb.querySelector('.tcv-toggle').addEventListener('click', () => {
       sb.classList.add('tcv-collapsed');
@@ -429,7 +458,7 @@
       <div class="tcv-msg">Paste the job description, or select it on the page and click Use&nbsp;selection.</div>
       <textarea id="tcvManualJd" class="tcv-textarea" rows="7"
                 placeholder="Paste the job description here…">${esc(prefill || '')}</textarea>
-      <button class="tcv-btn tcv-btn-ghost" id="tcvUseSelection">Use selection from page</button>
+      <button class="tcv-btn tcv-btn-outline" id="tcvUseSelection">Use selection from page</button>
       <button class="tcv-btn tcv-btn-start" id="tcvManualGo">Use this description</button>
       <div class="tcv-error" id="tcvManualError"></div>
     `;
@@ -458,6 +487,67 @@
     });
   }
 
+  // ── Progress ring & upgrade prompt ───────────────────
+  // From the LinkedIn panel: a ring that eases toward 92% while the model works,
+  // then fills and draws a checkmark on success.
+
+  function setProgress(pct) {
+    const clamped = Math.max(0, Math.min(100, pct));
+    progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE * (1 - clamped / 100));
+    progressPct.textContent = Math.round(clamped) + '%';
+  }
+
+  function startProgress() {
+    progressWrap.classList.add('tcv-visible');
+    progressBar.style.transition = 'stroke-dashoffset 0.2s linear';
+    setProgress(0);
+    const startedAt = performance.now();
+    clearInterval(progressTimer);
+    progressTimer = setInterval(() => {
+      const elapsedSeconds = (performance.now() - startedAt) / 1000;
+      setProgress(92 * (1 - Math.exp(-elapsedSeconds / 15))); // eases toward 92%, never quite reaches it
+    }, 150);
+  }
+
+  function finishProgress(success) {
+    clearInterval(progressTimer);
+    progressBar.style.transition = 'stroke-dashoffset 0.4s ease';
+    setProgress(100);
+
+    if (!success) {
+      setTimeout(() => progressWrap.classList.remove('tcv-visible'), 700);
+      return;
+    }
+
+    // Let the ring visibly finish filling, then morph it into a drawn checkmark.
+    setTimeout(() => {
+      progressBar.classList.add('tcv-success');
+      progressPct.classList.add('tcv-hidden');
+      checkIcon.classList.add('tcv-visible');
+    }, 350);
+    setTimeout(() => {
+      progressWrap.classList.remove('tcv-visible');
+      progressBar.classList.remove('tcv-success');
+      progressPct.classList.remove('tcv-hidden');
+      checkIcon.classList.remove('tcv-visible');
+    }, 1750);
+  }
+
+  function renderUpgradePrompt() {
+    body.innerHTML = `
+      <div class="tcv-upgrade-box">
+        <div class="tcv-msg">You have used all your free tailors for this month.</div>
+        <a class="tcv-btn tcv-btn-start tcv-btn-link" href="${BASE_URL}/pricing" target="_blank">⚡ Upgrade to Pro →</a>
+        <a class="tcv-link tcv-retry-link" id="tcvRetryAfterUpgrade" href="#">Already upgraded? Retry</a>
+      </div>
+    `;
+    body.querySelector('#tcvRetryAfterUpgrade').addEventListener('click', (e) => {
+      e.preventDefault();
+      quotaExceeded = false;
+      renderJobFromPage();
+    });
+  }
+
   function renderReady(job) {
     const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
     body.innerHTML = `
@@ -466,7 +556,7 @@
       <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
         ${tcvBusy ? 'Working on another job…' : '✦ Tailor & Download Resume'}
       </button>
-      <button class="tcv-btn tcv-btn-ghost" id="tcvCoverBtn">
+      <button class="tcv-btn tcv-btn-outline" id="tcvCoverBtn">
         ✉ Write a Cover Letter
       </button>
     `;
@@ -495,6 +585,7 @@
     renderJobFromPage();
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Writing a cover letter for "${label}"…`;
+    startProgress();
 
     const res = await sendMessage({
       type: 'COVER_LETTER',
@@ -507,10 +598,13 @@
     });
 
     tcvBusy = false;
+    finishProgress(!res.error);
     globalStatus.className = res.error ? 'tcv-status-text tcv-error' : 'tcv-status-text tcv-ok';
     globalStatus.textContent = res.error
       ? `✗ ${label}: ${res.error}`
       : `✓ Downloaded cover letter for "${label}"`;
+
+    if (res.code === 'upgrade_required') quotaExceeded = true;
 
     if (sessionReady) renderJobFromPage();
   }
@@ -521,7 +615,8 @@
     tcvBusy = true;
     renderJobFromPage(); // re-render current button as disabled/"busy"
     globalStatus.className = 'tcv-status-text';
-    globalStatus.textContent = `Tailoring "${label}"… this can take up to a minute.`;
+    globalStatus.textContent = `Tailoring "${label}"…`;
+    startProgress();
 
     const res = await sendMessage({
       type: 'TAILOR_AND_DOWNLOAD',
@@ -534,9 +629,13 @@
     });
 
     tcvBusy = false;
+    finishProgress(!res.error);
     globalStatus.className = res.error ? 'tcv-status-text tcv-error' : 'tcv-status-text tcv-ok';
     globalStatus.textContent = res.error ? `✗ ${label}: ${res.error}` : `✓ Downloaded resume for "${label}"`;
 
+    if (res.code === 'upgrade_required') quotaExceeded = true;
+
+    // Refresh whichever job is on screen now that we're free to tailor again.
     if (sessionReady) renderJobFromPage();
   }
 
@@ -553,6 +652,7 @@
 
   function renderJobFromPage(attempt = 0, gen = ++extractGen) {
     if (gen !== extractGen) return;   // a newer page took over
+    if (quotaExceeded) { renderUpgradePrompt(); return; }
 
     const job = extractJob();
     if (job) {
