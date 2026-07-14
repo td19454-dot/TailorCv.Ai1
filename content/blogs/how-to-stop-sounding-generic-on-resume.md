@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Stop Sounding Generic on Your Resume - Practical Rewrites
 description: If your resume could belong to anyone, it is generic. Learn how to replace vague, overused language with specific, high-impact writing that makes recruiters stop and read.
 date: 2026-06-11
@@ -15,6 +15,13 @@ Read your current resume and ask: could this sentence describe anyone who has he
 See how your resume reads to ATS systems with the [free scanner](/solutions).
 
 ---
+
+## Key Takeaways
+
+- Generic language on resumes can hurt your chances by failing to match ATS keywords and losing recruiters' attention.
+- Replace vague phrases with specific achievements that include results, scale, timeline, and methods to stand out.
+- Use strong action verbs and quantify your contributions to demonstrate ownership and impact in your roles.
+- Avoid unprovable claims like "passionate about" and instead provide concrete examples of your skills and experiences.
 
 ## Why Generic Language Hurts More Than You Think
 

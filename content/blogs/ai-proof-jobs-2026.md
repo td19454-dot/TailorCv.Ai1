@@ -14,6 +14,14 @@ Every few months another headline claims a language model is about to replace yo
 
 ---
 
+## Key Takeaways
+
+- "AI-proof" jobs are largely a myth; most roles will be affected by AI in some capacity.
+- "AI-resistant" jobs require human judgment, accountability, and physical presence, making them harder to automate.
+- "AI-augmented" jobs involve AI handling routine tasks, allowing humans to focus on oversight and complex decision-making.
+- Key factors that make jobs resistant to automation include high-stakes judgment calls, physical dexterity in unpredictable environments, and deep interpersonal trust.
+- Understanding the underlying skills needed for resilience against AI is more important than memorizing specific job titles.
+
 ## "AI-Proof" vs. "AI-Resistant" - Why the Framing Matters
 
 "AI-proof" is a marketing phrase more than a real category. Almost no job is completely untouched by AI tools at this point - even surgeons use AI-assisted imaging, even electricians use AI-generated diagnostics, even skilled trades increasingly quote and schedule jobs through automated systems. Claiming any job is fully immune sets you up for a false sense of security.

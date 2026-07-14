@@ -1,4 +1,4 @@
-﻿---
+---
 title: Salary Negotiation Guide — How to Negotiate Pay With Confidence (2026)
 description: A complete salary negotiation guide covering research, timing, scripts, and common mistakes — for job offers, raises, and everything in between.
 date: 2026-07-05
@@ -15,6 +15,13 @@ Most people leave money on the table not because they asked for too much, but be
 This guide covers the full picture: how to research a fair number, when and how to raise it, what to say, and the mistakes that quietly undercut candidates who otherwise negotiate well.
 
 ---
+
+## Key Takeaways
+
+- Many candidates miss out on better salaries due to discomfort with negotiation rather than asking for too much.
+- Researching salary benchmarks, total compensation packages, and personal leverage is crucial for confident negotiation.
+- Timing is important; negotiate after receiving a written offer, during annual reviews, or after promotions for the best results.
+- When making your ask, express enthusiasm for the role and provide a specific, research-backed number to facilitate the conversation.
 
 ## Why So Many People Don't Negotiate
 

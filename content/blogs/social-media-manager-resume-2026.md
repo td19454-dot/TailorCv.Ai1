@@ -1,4 +1,4 @@
-﻿---
+---
 title: Social Media Manager Resume 2026 - Complete Guide with Examples
 description: Write a social media manager resume in 2026 with the right ATS keywords, platform skills, and bullet points that prove follower growth, engagement, and conversion impact.
 date: 2026-06-01
@@ -15,6 +15,14 @@ A social media manager resume in 2026 must prove that you grow audiences and dri
 Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For broader marketing context, read the [digital marketing resume guide](https://thetailorcv.com/blog/digital-marketing-resume-2026) and [marketing manager resume guide](https://thetailorcv.com/blog/marketing-manager-resume-2026).
 
 ---
+
+## Key Takeaways
+
+- A social media manager resume in 2026 should focus on measurable results like follower growth, engagement rates, and revenue attribution.
+- Use an ATS-friendly format that includes a header with portfolio links, a summary with key metrics, skills, work experience, and education.
+- Strong resume summaries should highlight specific achievements, such as follower increases and revenue generated through social media campaigns.
+- Include relevant skills across platforms, content creation, paid social, analytics, and community management to enhance your resume.
+- Use action-oriented bullet points to describe past experiences, emphasizing growth and engagement metrics achieved through specific strategies.
 
 ## Best Social Media Manager Resume Format
 

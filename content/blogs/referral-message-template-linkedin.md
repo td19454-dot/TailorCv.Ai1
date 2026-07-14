@@ -1,4 +1,4 @@
-﻿---
+---
 title: LinkedIn Referral Message Template - Ask Without Sounding Awkward
 description: Use these LinkedIn referral message templates to contact employees, alumni, and weak connections professionally.
 date: 2026-07-07
@@ -13,6 +13,14 @@ keywords: LinkedIn referral message template, how to ask for referral, referral 
 Referrals work best when your message is specific and low-pressure. Do not ask a stranger to "refer me please" with no context. Make it easy for them to understand your fit.
 
 ---
+
+## Key Takeaways
+
+- Craft specific and low-pressure referral messages to make it easy for contacts to understand your fit for the role.
+- Use the provided template to ask for guidance rather than a direct referral, which encourages a more comfortable response.
+- Include a job link, one-page resume, fit summary, and relevant portfolio or LinkedIn link if your contact agrees to help.
+- Avoid common mistakes such as sending long messages, attaching resumes prematurely, or sounding entitled.
+- Optimize your application materials by aligning them closely with the specific job description to demonstrate your relevant skills and experiences.
 
 ## Best [referral](https://thetailorcv.com/blog/networking-tips-for-job-search) Message Template
 

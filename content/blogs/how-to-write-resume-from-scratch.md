@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Write a Resume from Scratch - Step-by-Step Guide for 2026
 description: A complete step-by-step guide to writing your first resume or rebuilding one from scratch in 2026. From gathering information to final ATS testing - every step covered.
 date: 2026-06-06
@@ -17,6 +17,14 @@ Follow these steps whether you are writing your first resume, rebuilding after y
 For shortcuts, start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that gives you the correct structure automatically. Test your finished resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) before applying.
 
 ---
+
+## Key Takeaways
+
+- Gather all relevant information, including job history, education, projects, certifications, skills, achievements, and the target job description before starting your resume.
+- Choose the right format for your resume, such as reverse chronological or combination, based on your experience and career goals.
+- Include a clear contact section at the top of your resume with your name, professional email, phone number, and relevant links, avoiding unnecessary personal details.
+- Write a concise professional summary that highlights your experience, strengths, and how you can contribute to the prospective employer.
+- Build a skills section by matching your skills to those listed in the job description, using exact wording to enhance ATS compatibility.
 
 ## Before You Write: Gather Everything
 
@@ -40,7 +48,7 @@ This preparation phase prevents you from writing generic content that applies to
 Before writing content, decide on your structure:
 
 - **Reverse chronological** - most recent job first. Right for most people.
-- **Combination** - [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) prominent, followed by chronological experience. Right for career changers.
+- **Combination** - [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) prominent, followed by chronological experience. Right for [career change](https://thetailorcv.com/blog/career-change-from-non-tech-to-data-analyst)rs.
 
 Read [chronological vs functional resume](https://thetailorcv.com/blog/chronological-vs-functional-resume) for the full comparison. Then open an [ATS-friendly template](https://www.thetailorcv.com/templates) that uses your chosen format.
 
@@ -121,7 +129,7 @@ If you are a fresh graduate with limited experience, move Education above Work E
 
 Based on your background, add:
 
-**Projects** - Essential for freshers, career changers, and engineers. Show what you built, what you used, and what it achieved. Read [how to add projects to your resume](https://thetailorcv.com/blog/projects-in-resume).
+**Projects** - Essential for freshers, [career change](https://thetailorcv.com/blog/career-change-from-non-tech-to-data-analyst)rs, and engineers. Show what you built, what you used, and what it achieved. Read [how to add projects to your resume](https://thetailorcv.com/blog/projects-in-resume).
 
 **Certifications** - List name, issuer, and date. Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
 

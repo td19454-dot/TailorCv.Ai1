@@ -1,4 +1,4 @@
-﻿---
+---
 title: Pharmacist Resume 2026 - Complete Guide with Examples
 description: Write a pharmacist resume in 2026 with the right ATS keywords, clinical skills, licensure, and bullet points that prove patient safety and pharmacy operations impact.
 date: 2026-06-01
@@ -15,6 +15,14 @@ A pharmacist resume in 2026 must show clinical competence, licensure, medication
 Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For other healthcare roles, read the [nursing resume guide](https://thetailorcv.com/blog/nursing-resume-2026).
 
 ---
+
+## Key Takeaways
+
+- A pharmacist resume in 2026 should highlight clinical competence, licensure, and medication safety records relevant to the specific pharmacy setting.
+- Use an ATS-friendly format that includes a header with licensure, a summary, skills, work experience, and education within one to two pages.
+- Strong bullet points should quantify achievements and demonstrate clinical or operational impact, using action verbs and specific outcomes.
+- Incorporate relevant ATS keywords such as "medication therapy management," "patient counseling," and "controlled substances" to enhance visibility to employers.
+- Tailor your resume summary to reflect your experience level, emphasizing key skills and certifications that align with the desired pharmacy role.
 
 ## Best Pharmacist Resume Format
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Get a Promotion in 2026 - A Practical Career Growth Guide
 description: Learn how to get promoted in 2026. Covers how to demonstrate readiness, build visibility, get sponsorship, and make the case for advancement at your company.
 date: 2026-06-01
@@ -17,6 +17,14 @@ This guide covers the practical strategy for getting promoted in 2026 - what to 
 This pairs with the [how to ask for a raise guide](https://thetailorcv.com/blog/how-to-ask-for-a-raise) and the [skills to add to your resume guide](https://thetailorcv.com/blog/skills-to-add-to-resume-2026). Keep your resume updated with your achievements using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) - documenting accomplishments as they happen builds your promotion case.
 
 ---
+
+## Key Takeaways
+
+- To get promoted, demonstrate that you are already operating at the next level before the promotion is granted.
+- Understand the requirements for the next level by studying your company's framework or asking your manager directly.
+- Deliver results that showcase next-level impact by taking on high-visibility projects and mentoring others.
+- Build visibility by sharing your contributions in team settings and engaging in cross-functional projects with leadership.
+- Secure a sponsor who can advocate for you and have a clear conversation with your manager about your promotion ambitions and roadmap.
 
 ## The Core Principle: Operate at the Next Level First
 
@@ -197,4 +205,4 @@ Sponsorship is crucial as it involves having an advocate within your organizatio
 When making the case for your promotion, prepare a clear and concise presentation of your achievements, contributions, and how they align with the company's goals. Use data and specific examples to support your claims, and be ready to discuss how you can add even more value in the new role. Documentation of your accomplishments will strengthen your case, so keep your resume updated using our [free ATS score checker](https://www.thetailorcv.com/solutions).
 
 ### What should I do if I don’t have a formal promotion framework at my company?  
-If your company lacks a formal promotion framework, take the initiative to ask your manager directly what you need to demonstrate for a promotion. Pay attention to the behaviors and skills of those who are already in the role you aspire to, and actively seek feedback on your performance. Additionally, exploring the specific job description for the next level can provide clarity on expectations. For guidance on internal applications, check our post on [how to tailor your resume for an internal job application](https://thetailorcv.com/blog/internal-job-application-resume).
+If your company lacks a formal promotion framework, take the initiative to ask your manager directly what you need to demonstrate for a promotion. Pay attention to the behaviors and skills of those who are already in the role you aspire to, and actively seek feedback on your performance. Additionally, exploring the specific [job description](https://thetailorcv.com/blog/internal-job-application-resume) for the next level can provide clarity on expectations. For guidance on internal applications, check our post on [how to tailor your resume for an internal job application](https://thetailorcv.com/blog/internal-job-application-resume).

@@ -1,4 +1,4 @@
-﻿---
+---
 title: International Resume Tailoring - How Resume Rules Differ by Country (2026 Guide)
 description: What works on a US resume can disqualify you in Germany. Learn how resume conventions differ by country - format, length, photo, personal details, and language - and how to tailor yours for international jobs.
 date: 2026-06-29
@@ -14,7 +14,7 @@ You are a strong candidate.
 
 Your experience is real.
 Your results are impressive.
-Your resume - built to US standards - is clean, one page, keyword-optimized.
+Your [resume](https://thetailorcv.com/blog/what-is-a-resume) - built to US standards - is clean, one page, keyword-optimized.
 
 You apply to a role in Germany.
 You hear nothing.
@@ -32,13 +32,20 @@ International job searching is one area where resume advice almost universally f
 Every guide assumes you are applying in one country.
 Most assume that country is the United States.
 
-The reality is that resume conventions - format, length, photo, personal details, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) expectations - differ significantly between countries.
+The reality is that resume conventions - format, length, photo, [personal details](https://thetailorcv.com/blog/resume-references-guide), [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) expectations - differ significantly between countries.
 
 Applying with a US-style resume to a German, UK, or Australian employer signals that you did not bother to understand the market you are entering.
 
 This guide gives you the country-specific knowledge you need. For federal government applications in the US specifically, see the [federal government resume guide](https://thetailorcv.com/blog/federal-government-resume-guide) - that is another major context where standard resume advice fails candidates.
 
 ---
+
+## Key Takeaways
+
+- Resume conventions vary significantly by country, affecting format, length, and personal details included.
+- In the US, resumes should be one page, without photos or personal information like date of birth or nationality.
+- The UK typically uses a two-page CV format, includes a personal statement, and also avoids photos to minimize bias.
+- Understanding and adhering to country-specific resume norms is crucial for job applicants to demonstrate market knowledge and professionalism.
 
 ## Why Country-Specific Resume Conventions Exist
 
@@ -144,7 +151,7 @@ Germany has some of the most specific resume conventions in the world.
 
 **Format:** Extremely similar to US. [ATS optimization](https://thetailorcv.com/blog/ats-score-guide) is important. Many Canadian employers use the same ATS platforms as US companies.
 
-**Key difference:** Volunteer work and community involvement carry more cultural weight in Canadian hiring than in US applications. If you have strong community involvement, [include it on your resume](https://thetailorcv.com/blog/volunteer-work-on-resume).
+**Key difference:** Volunteer work and [community involvement](https://thetailorcv.com/blog/volunteer-work-on-resume) carry more cultural weight in Canadian hiring than in US applications. If you have strong community involvement, [include it on your resume](https://thetailorcv.com/blog/volunteer-work-on-resume).
 
 ---
 
@@ -160,7 +167,7 @@ Germany has some of the most specific resume conventions in the world.
 
 **[cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026):** Expected and taken seriously. Personalized, specific, and professional.
 
-**Key difference:** Australian job applications often include a "selection criteria" response - a separate document addressing specific stated criteria for the role. This is especially common for government and healthcare roles. Failure to include it can result in automatic disqualification.
+**Key difference:** Australian job applications often include a "[selection criteria](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description)" response - a separate document addressing specific stated criteria for the role. This is especially common for government and healthcare roles. Failure to include it can result in automatic disqualification.
 
 ---
 
@@ -232,6 +239,20 @@ Use a professional translator or a native speaker for review - machine translati
 Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+
+
+## Key Resume Differences by Country
+
+Understanding the key differences in resume conventions can help you tailor your application effectively for different job markets.
+
+| Feature                  | United States                          | Germany                                | Australia                             |
+|-------------------------|---------------------------------------|----------------------------------------|---------------------------------------|
+| Length                  | 1 page (2 pages for senior roles)    | 1-2 pages, typically longer            | 2-3 pages, more detail encouraged     |
+| Photo                   | Never included                        | Required, professional presentation    | Optional, but can enhance appeal      |
+| Personal Details        | Minimal (no age, marital status)     | Full address, date of birth, marital status | Full address, but no date of birth   |
+| Language                | English (American)                    | German (or English for international roles) | English (Australian)                  |
+| Work Experience Format  | Bullet points, concise descriptions    | Detailed descriptions with responsibilities | Bullet points, but can include personal achievements |
+| References              | Generally not included, "Available upon request" | Often included directly in the resume   | Typically provided separately          |
 
 ## FAQ
 ### Should I use a CV or a resume for international applications?

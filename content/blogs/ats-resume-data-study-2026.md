@@ -1,4 +1,4 @@
-﻿---
+---
 title: "What Actually Kills Your ATS Score: A Data-Backed Breakdown (2026)"
 description: A data-backed look at what really lowers resume ATS scores in 2026 - missing keywords, formatting, and tailoring - plus the fixes that move the number most.
 date: 2026-06-29
@@ -14,9 +14,17 @@ Most resumes never reach a human. They are scored, ranked, and filtered by an Ap
 
 This is not a controlled lab experiment - it's an observational look at what tends to separate a low-scoring resume from a strong one. Here is what the pattern shows, why it happens, and exactly how to fix each issue on your own resume.
 
+## Key Takeaways
+
+- Most resumes are filtered by an Applicant Tracking System (ATS) before reaching a human, making small, fixable issues critical for success.
+- Low ATS scores typically result from multiple minor problems rather than a single major flaw.
+- The most common issues affecting scores include missing keywords, unparseable formatting, generic resumes, and lack of measurable impact.
+- Keyword matching is the primary factor in ATS scoring; resumes must align closely with the specific language used in job descriptions.
+- Tailoring your resume to each job description is more important than overall presentation or design.
+
 ## How we looked at this
 
-When someone runs a resume through the ATS score checker, the tool compares it against a specific job description and returns a match score along with the gaps driving that score down: missing keywords, parsing problems, weak relevance, and thin evidence of impact. Looking across a large number of these comparisons - rather than any single resume - makes it possible to see which categories of problems show up again and again, and roughly how much each one tends to matter relative to the others.
+When someone runs a resume through the [ATS score checker](https://www.thetailorcv.com/solutions), the tool compares it against a specific job description and returns a match score along with the gaps driving that score down: missing keywords, parsing problems, weak relevance, and thin evidence of impact. Looking across a large number of these comparisons - rather than any single resume - makes it possible to see which categories of problems show up again and again, and roughly how much each one tends to matter relative to the others.
 
 That is the scope of what follows: a pattern read across many resume-to-job-description comparisons, not a peer-reviewed study and not a promise about your specific outcome. We are intentionally not attaching invented percentages or sample sizes to these observations - the point of this piece is to explain the *why* behind the pattern and the *what to do about it*, not to dress up a blog post with numbers that would not hold up to scrutiny.
 
@@ -154,7 +162,7 @@ It is worth being upfront about what this kind of pattern-reading can and cannot
 
 - **This is observational, not experimental.** We are describing patterns across resumes people chose to run through a scoring tool, not a randomized study where identical resumes were varied one factor at a time and outcomes were tracked.
 - **Outcomes are not fully tracked.** A score checker measures match quality against a job description; it does not know whether a given resume ultimately led to an interview or an offer. The link between "higher score" and "better outcome" is a reasonable inference, not a directly measured one here.
-- **The people who use an ATS score checker are self-selected.** They are, by definition, more engaged with optimizing their job search than the average applicant, which can shape which problems show up most often in the pattern.
+- **The people who use an [ATS score checker](https://thetailorcv.com/blog/ats-score-checker-free) are self-selected.** They are, by definition, more engaged with optimizing their job search than the average applicant, which can shape which problems show up most often in the pattern.
 - **Industry and seniority vary.** What counts as a "generic" versus "tailored" resume, and how much formatting matters, can shift by field - a designer's portfolio-adjacent resume is a different case than an accountant's.
 - **Job market conditions shift.** Hiring volume, the aggressiveness of ATS filtering, and even which platforms employers use all change over time and by season, which can shift how much weight any single factor carries.
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Nursing Resume 2026 - Complete Guide with Examples for RN and New Grad Nurses
 description: Write a nursing resume in 2026 with the right ATS keywords, clinical skills, certifications, and bullet points that get interviews at hospitals and clinics.
 date: 2026-06-01
@@ -17,6 +17,14 @@ The nursing job market remains one of the strongest in healthcare worldwide, but
 Before submitting, test your resume against the job description using the [ATS score checker](https://www.thetailorcv.com/solutions). Hospital HR systems use ATS software that filters resumes before a human nurse manager sees them. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) to ensure your format is parseable.
 
 ---
+
+## Key Takeaways
+
+- A nursing resume in 2026 should highlight clinical competencies, patient care outcomes, and relevant certifications clearly and quickly.
+- Use an ATS-friendly format to ensure your resume passes through hospital HR systems effectively.
+- The recommended structure includes a header with licensure, a professional summary, certifications, clinical skills, work experience, education, and additional training or awards.
+- New graduates should aim for a one-page resume, while experienced nurses may use up to two pages to detail their qualifications and experiences.
+- List certifications and licensure prominently to immediately convey your qualifications to hiring managers.
 
 ## Best Nursing Resume Format for 2026
 

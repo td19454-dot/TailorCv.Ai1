@@ -209,7 +209,19 @@ class BlogService:
             return None
         frontmatter, body = self._split_frontmatter(raw)
 
-        title = str(frontmatter.get("title") or self._title_from_file(file_path)).strip()
+        # A leading "# H1" / "## H2" at the very top of the body is usually the
+        # article's real (fuller) title, duplicated from the hero heading. When it
+        # matches or extends the frontmatter title, adopt it as the title and strip
+        # it from the content so the heading isn't shown twice. A leading heading
+        # that is unrelated to the title (a genuine section) is left untouched.
+        fm_title = str(frontmatter.get("title") or "").strip()
+        lead = re.match(r"\s*#{1,2}(?!#)[ \t]+(.+?)[ \t]*(?:\n|$)", body)
+        if lead:
+            heading = lead.group(1).strip()
+            if not fm_title or heading == fm_title or (heading.startswith(fm_title) and len(heading) > len(fm_title)):
+                fm_title = heading
+                body = body[lead.end():].lstrip("\n")
+        title = (fm_title or self._title_from_file(file_path)).strip()
         description = str(frontmatter.get("description") or "").strip()
         slug = self._slugify(str(frontmatter.get("slug") or os.path.splitext(os.path.basename(file_path))[0]))
         author = str(frontmatter.get("author") or self.default_author).strip()
@@ -233,6 +245,7 @@ class BlogService:
         if not description:
             plain = re.sub(r"<[^>]+>", "", content_html)
             description = (plain[:157] + "...") if len(plain) > 160 else plain
+        description = self._strip_markdown(description)
 
         return BlogPost(
             source_path=file_path,
@@ -331,6 +344,17 @@ class BlogService:
             except ValueError:
                 continue
         return None
+
+    @staticmethod
+    def _strip_markdown(text: str) -> str:
+        """Turn inline markdown into clean plain text for excerpts/meta:
+        [anchor](url) -> anchor, and drop emphasis/heading/code markers."""
+        if not text:
+            return ""
+        text = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", text)  # links -> anchor text
+        text = re.sub(r"[*_`>#]", "", text)                    # emphasis / heading marks
+        text = re.sub(r"\s+", " ", text).strip()
+        return text
 
     @staticmethod
     def _normalize_image_path(value: str) -> str:

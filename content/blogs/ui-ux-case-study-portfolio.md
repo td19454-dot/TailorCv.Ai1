@@ -1,4 +1,4 @@
-﻿---
+---
 title: UI UX Case Study Portfolio - Structure Recruiters Actually Read
 description: Create a UI UX case study portfolio that shows user problem, research, design decisions, prototypes, metrics, and reflection.
 date: 2026-07-07
@@ -13,6 +13,14 @@ keywords: UI UX case study portfolio, UX portfolio case study, UI UX designer po
 A UI UX case study [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) should not be a gallery of screens. Recruiters and design leads want to understand the problem, your process, your trade-offs, and the outcome.
 
 ---
+
+## Key Takeaways
+
+- A strong UI UX case study portfolio should focus on the problem, process, trade-offs, and outcomes rather than just polished visuals.
+- The ideal structure for a case study includes project context, user problem, research methods, key insights, design goals, wireframes, final solutions, impact, and reflection.
+- Common mistakes to avoid include excessive mockups without process explanation, lack of user evidence, and using generic design language.
+- Tailor your resume to highlight measurable results and align with specific job descriptions to demonstrate relevant experience.
+- Use a practical checklist to ensure your application clearly matches the target role and includes relevant keywords and measurable outcomes.
 
 ## Best UX [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) Structure
 

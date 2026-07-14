@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Tailor Your Resume When There's No Job Description (2026 Guide)
 description: Applying through a referral, cold outreach, or a vague job posting? Learn how to tailor your resume without a full job description - using company signals, role patterns, and insider research.
 date: 2026-06-29
@@ -33,6 +33,14 @@ These are real situations that millions of job seekers face - and almost every t
 This guide does not.
 
 ---
+
+## Key Takeaways
+
+- Tailoring your resume without a job description requires gathering indirect signals about the role and company needs.
+- Utilize referrals to gain insights about the team’s current projects, hiring manager's priorities, and specific resume preferences.
+- Research current employees in similar roles to identify common skills, backgrounds, and industry-specific language to incorporate into your resume.
+- Align your professional summary with the company's mission, using relevant terminology to demonstrate your understanding of their goals.
+- Match your skills to industry standards by inferring required competencies based on the role and sector you are targeting.
 
 ## Why No Job Description Makes Tailoring Harder (But Not Impossible)
 

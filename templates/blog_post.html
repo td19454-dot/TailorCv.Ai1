@@ -22,12 +22,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon.png">
     {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
     <link rel="stylesheet" href="/static/style3.css">
-    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/header-footer.css?v=2">
     <link rel="stylesheet" href="/static/style2.css?v=7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css?v=3">
+    <link rel="stylesheet" href="/static/blog.css?v=13">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -56,38 +56,68 @@
     <script type="application/ld+json">{{ breadcrumb_schema_json | safe }}</script>
     {% if faq_schema_json %}<script type="application/ld+json">{{ faq_schema_json | safe }}</script>{% endif %}
 </head>
-<body>
+<body class="blog-detail-page">
 <div class="progress" id="readingProgress"></div>
 {% include "_nav.html" %}
 <main class="blog-post-wrap">
     <article class="blog-post">
         <header class="post-header">
+            <nav class="post-breadcrumb" aria-label="Breadcrumb">
+                <a href="/" class="crumb-home" aria-label="Home" title="Home">
+                    <svg class="home-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+                        <path fill="currentColor" d="M12 3.172 2.5 11.05l1.06 1.28L5 11.14V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-8.86l1.44 1.19 1.06-1.28L12 3.172z"/>
+                    </svg>
+                </a>
+                <span class="crumb-sep">/</span>
+                <a href="/blog">Blog</a>
+                {% if post.category %}<span class="crumb-sep">/</span><span class="crumb-cat">{{ post.category }}</span>{% endif %}
+                <span class="crumb-sep">/</span>
+                <span class="crumb-current">{{ post.title }}</span>
+            </nav>
             <div class="post-hero">
-                {% if post.image %}
-                <img class="post-cover" src="{{ post.image }}" alt="{{ post.title }}" loading="eager" decoding="async" fetchpriority="high">
-                {% endif %}
-                <div class="post-hero-overlay"></div>
                 <div class="post-hero-content">
-                    <h1 class="post-hero-title">{{ post.title }}</h1>
-                    <p class="lead">{{ post.description }}</p>
-                    <div class="post-hero-meta-row">
-                        <div class="author-chip">
-                            <span class="author-badge">TC</span>
-                            <span class="author"> {{ author_profile.name if author_profile else post.author }}</span>
-                        </div>
-                        <div class="meta-pills">
-                            <span class="meta-pill">{{ post.date_display }}</span>
-                            <span class="meta-pill">{{ post.read_time }} min read</span>
-                        </div>
+                    <div class="post-hero-tags">
+                        {% if post.category %}<span class="cat-chip">{{ post.category }}</span>{% endif %}
+                        <span class="hero-date">{{ post.date_display }}</span>
+                        <span class="hero-dot">·</span>
+                        <span class="hero-date">{{ post.read_time }} min read</span>
                     </div>
+                    <h1 class="post-hero-title">{{ post.title }}</h1>
+                    <div class="author-chip">
+                        <span class="author-badge">
+                            {% if author_profile and author_profile.image %}<img class="author-photo" src="{{ author_profile.image }}" alt="{{ author_profile.name }}" loading="lazy" onerror="this.remove()">{% endif %}
+                            {{ (author_profile.initials if author_profile and author_profile.initials else 'TC') }}
+                        </span>
+                        <span class="author-info">
+                            <span class="author-label">Author</span>
+                            {% if author_profile and author_profile.linkedin %}
+                            <a class="author" href="{{ author_profile.linkedin }}" target="_blank" rel="noopener">{{ author_profile.name }}</a>
+                            {% else %}
+                            <span class="author">{{ author_profile.name if author_profile else post.author }}</span>
+                            {% endif %}
+                        </span>
+                    </div>
+                    <a href="{{ hero_cta.url }}" class="hero-cta-btn">{{ hero_cta.label }}</a>
                 </div>
+                {% if post.image %}
+                <div class="post-hero-media">
+                    <img class="post-cover" src="{{ post.image }}" alt="{{ post.title }}" loading="eager" decoding="async" fetchpriority="high">
+                </div>
+                {% endif %}
             </div>
         </header>
 
         <div class="post-layout">
-            <aside class="toc">
-                <h2>Table of contents</h2>
-                {{ post.toc_html | safe }}
+            <aside class="toc-col">
+                <div class="toc">
+                    <h2>Table of contents</h2>
+                    {{ post.toc_html | safe }}
+                </div>
+                <div class="toc-cta">
+                    <p class="toc-cta-title">Boost your resume in minutes</p>
+                    <p class="toc-cta-text">Scan your resume against any job with the free ATS score checker.</p>
+                    <a class="toc-cta-btn" href="{{ hero_cta.url }}">{{ hero_cta.label }}</a>
+                </div>
             </aside>
 
             <section class="post-content">{{ post.content_html | safe }}</section>
@@ -100,28 +130,6 @@
         </aside>
         {% endif %}
 
-        <section class="cta">
-            <h2>Want a stronger resume to land your next role?</h2>
-            <p>Use TailorCV to optimize for ATS and recruiter keywords in minutes.</p>
-            <a href="/solutions" class="cta-btn">Optimize My Resume</a>
-        </section>
-
-        <section class="share-row">
-            <button id="copyLinkBtn" type="button">Copy link</button>
-            <a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url={{ canonical_url }}">Share on LinkedIn</a>
-            <a target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url={{ canonical_url }}&text={{ post.title }}">Share on X</a>
-        </section>
-
-        {% if author_profile %}
-        <section class="author-box">
-            <span class="author-box-badge">TC</span>
-            <div class="author-box-body">
-                <p class="author-box-name">{{ author_profile.name }}<span class="author-box-title"> · {{ author_profile.title }}</span></p>
-                <p class="author-box-bio">{{ author_profile.bio }}</p>
-                <a class="author-box-link" href="{{ author_profile.url }}">More about theTailorCV →</a>
-            </div>
-        </section>
-        {% endif %}
     </article>
 
     <section class="related">
@@ -139,8 +147,9 @@
         </div>
     </section>
 </main>
+<button id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
         {% include "_footer.html" %}
-<script src="/static/blog.js" defer></script>
+<script src="/static/blog.js?v=4" defer></script>
 <script src="/static/auth_nav.js?v=13"></script>
 <script src="/static/mobile_nav.js"></script>
 </body>

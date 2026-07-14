@@ -78,10 +78,78 @@
     syncTocPin();
   };
 
+  const initTocSpy = () => {
+    const links = Array.from(
+      document.querySelectorAll('.post-layout .toc a[href^="#"]')
+    );
+    if (!links.length) return;
+    const map = links
+      .map((a) => {
+        let id = "";
+        try { id = decodeURIComponent(a.getAttribute("href").slice(1)); } catch (_) {}
+        return { a, el: id ? document.getElementById(id) : null };
+      })
+      .filter((x) => x.el);
+    if (!map.length) return;
+
+    const scroller = links[0].closest(".toc");
+    let lastActive = null;
+    const keepVisible = (a) => {
+      if (!scroller || a === lastActive) return;
+      lastActive = a;
+      const c = a.getBoundingClientRect();
+      const s = scroller.getBoundingClientRect();
+      // Only nudge the sidebar's own scroll, never the page.
+      if (c.top < s.top) scroller.scrollTop -= s.top - c.top + 12;
+      else if (c.bottom > s.bottom) scroller.scrollTop += c.bottom - s.bottom + 12;
+    };
+
+    const onScroll = () => {
+      let current = map[0].a;
+      for (const { a, el } of map) {
+        if (el.getBoundingClientRect().top <= 140) current = a;
+      }
+      links.forEach((a) => a.classList.toggle("active", a === current));
+      keepVisible(current);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  };
+
+  const initHeadingAnchors = () => {
+    document
+      .querySelectorAll(".post-content h2[id], .post-content h3[id]")
+      .forEach((h) => {
+        if (h.querySelector(".anchor-link")) return;
+        const a = document.createElement("a");
+        a.className = "anchor-link";
+        a.href = "#" + h.id;
+        a.setAttribute("aria-label", "Link to this section");
+        a.textContent = "#";
+        h.prepend(a);
+      });
+  };
+
+  const initBackToTop = () => {
+    const btn = document.getElementById("backToTop");
+    if (!btn) return;
+    window.addEventListener(
+      "scroll",
+      () => btn.classList.toggle("show", window.scrollY > 600),
+      { passive: true }
+    );
+    btn.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    );
+  };
+
   const init = () => {
     buildToc();
     setTimeout(buildToc, 180);
     initTocPinning();
+    setTimeout(initTocSpy, 220);
+    initHeadingAnchors();
+    initBackToTop();
 
   const progress = document.getElementById('readingProgress');
   if (progress) {

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"{% if not is_logged_in %} data-guest-landing="1"{% endif %}>
 <head>
     {% include "_google_analytics.html" %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Turn your resume into a portfolio website in minutes. Convert your resume to a portfolio site — pick a template, upload your resume, edit the details, and publish a shareable link. Free resume-to-portfolio builder from theTailorCV.">
+    <meta name="description" content="Turn your resume into a portfolio website in minutes. Convert your resume to a portfolio site, pick a template, upload your resume, edit the details, and publish a shareable link. Free resume-to-portfolio builder from theTailorCV.">
     <meta name="keywords" content="resume to portfolio, resume to portfolio website, convert resume to portfolio, turn resume into portfolio, resume to portfolio builder, portfolio from resume, resume portfolio maker">
-    <title>Resume to Portfolio Website — Convert Your Resume in Minutes | theTailorCV</title>
+    <title>Resume to Portfolio Website, Convert Your Resume in Minutes | theTailorCV</title>
     {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/header-footer.css">
+    <link rel="stylesheet" href="/static/header-footer.css?v=2">
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -45,7 +45,7 @@
         .pb-tpl-prev .mini-avatar { width: 64px; height: 64px; border-radius: 50%; display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff; }
         .pb-tpl-prev .mini-lines { position:absolute; left:18px; bottom:18px; }
         .pb-tpl-prev .mini-lines span { display:block; height:7px; border-radius:4px; margin-bottom:5px; }
-        /* editor — VS Code style */
+        /* editor, VS Code style */
         .prev-editor { background:#0e0f1a; position:relative; }
         .prev-editor::before { content:"● ● ●"; position:absolute; top:8px; left:12px; color:#ff5f57; font-size:8px; letter-spacing:3px; text-shadow:14px 0 #febc2e, 28px 0 #28c840; }
         .prev-editor .mini-avatar { display:none; }
@@ -53,7 +53,7 @@
         .prev-editor .mini-lines span:nth-child(1){width:60px;background:#4ade80;height:6px;}
         .prev-editor .mini-lines span:nth-child(2){width:120px;background:linear-gradient(90deg,#fff 40%,#ff4fb0 40%);height:14px;border-radius:3px;}
         .prev-editor .pb-tpl-prev::after { content:""; position:absolute; left:0; top:0; bottom:0; width:34px; background:#0a0b14; border-right:1px solid #23263a; }
-        /* panels — light, purple hero tabbed card */
+        /* panels, light, purple hero tabbed card */
         .prev-panels { background:#f5f6fb; position:relative; overflow:hidden; }
         .prev-panels::before { content:""; position:absolute; top:0; left:0; right:0; height:46px; background:linear-gradient(135deg,#2a1d5e,#6b4bb8); }
         .prev-panels::after { content:""; position:absolute; left:18px; top:34px; width:46px; bottom:14px; background:#2f6bff; border-radius:8px; }
@@ -61,7 +61,7 @@
         .prev-panels .mini-lines { left:74px; bottom:auto; top:58px; }
         .prev-panels .mini-lines span:nth-child(1){width:110px;background:#1a1f2e;}
         .prev-panels .mini-lines span:nth-child(2){width:70px;background:#8a93a6;}
-        /* nova — teal particles on navy */
+        /* nova, teal particles on navy */
         .prev-nova { background:#0a1622; position:relative; overflow:hidden; }
         .prev-nova::before { content:""; position:absolute; inset:0;
             background-image:radial-gradient(2px 2px at 20% 30%, #2dd4bf 50%, transparent), radial-gradient(2px 2px at 70% 50%, #2dd4bf 50%, transparent), radial-gradient(2px 2px at 45% 75%, #38bdf8 50%, transparent), radial-gradient(2px 2px at 85% 25%, #2dd4bf 50%, transparent);
@@ -71,7 +71,7 @@
         .prev-nova .mini-lines span { margin:0 auto 5px; }
         .prev-nova .mini-lines span:nth-child(1){width:120px;background:linear-gradient(90deg,#fff,#2dd4bf);}
         .prev-nova .mini-lines span:nth-child(2){width:70px;background:rgba(147,167,181,.5);}
-        /* codeflow — blue, scroll progress */
+        /* codeflow, blue, scroll progress */
         .prev-codeflow { background:#0a0f1e; position:relative; }
         .prev-codeflow::before { content:"→ 42%"; position:absolute; top:8px; left:12px; color:#34d399; font-family:monospace; font-size:8px; }
         .prev-codeflow::after { content:""; position:absolute; top:20px; left:12px; right:12px; height:6px; border-radius:3px; background:linear-gradient(90deg,#3b82f6 42%, rgba(255,255,255,.08) 42%); }
@@ -79,7 +79,7 @@
         .prev-codeflow .mini-lines { left:16px; bottom:auto; top:46px; }
         .prev-codeflow .mini-lines span:nth-child(1){width:120px;background:linear-gradient(90deg,#3b82f6,#38bdf8);height:14px;border-radius:3px;}
         .prev-codeflow .mini-lines span:nth-child(2){width:80px;background:rgba(159,176,207,.5);}
-        /* wave — emerald neon lines on black */
+        /* wave, emerald neon lines on black */
         .prev-wave { background:#000; position:relative; overflow:hidden; }
         .prev-wave::before { content:""; position:absolute; inset:0;
             background:repeating-linear-gradient(115deg, transparent 0 7px, rgba(46,230,166,.5) 7px 8px);
@@ -88,12 +88,12 @@
         .prev-wave .mini-lines { left:16px; bottom:auto; top:48px; }
         .prev-wave .mini-lines span:nth-child(1){width:110px;background:transparent;height:16px;border:1.5px solid rgba(255,255,255,.55);border-radius:2px;}
         .prev-wave .mini-lines span:nth-child(2){width:70px;background:#2ee6a6;box-shadow:0 0 10px #2ee6a6;}
-        /* bold — dark, lime */
+        /* bold, dark, lime */
         .prev-bold { background:#0b0b0d; }
         .prev-bold .mini-avatar { border-radius:12px; background:rgba(198,251,80,.14); border:1px solid rgba(198,251,80,.5); color:#c6fb50; }
         .prev-bold .mini-lines span:nth-child(1){width:130px;background:#fafafa;}
         .prev-bold .mini-lines span:nth-child(2){width:70px;background:#c6fb50;}
-        /* terminal — near-black, green mono */
+        /* terminal, near-black, green mono */
         .prev-terminal { background:#06080d; background-image:linear-gradient(rgba(61,220,132,.06) 1px,transparent 1px); background-size:100% 12px; }
         .prev-terminal .mini-avatar { border-radius:8px; background:rgba(61,220,132,.08); border:1px solid rgba(61,220,132,.5); color:#3ddc84; font-family:monospace; }
         .prev-terminal .mini-lines span:nth-child(1){width:120px;background:#3ddc84;}
@@ -138,7 +138,7 @@
         .prev-snowcard .mini-lines { left:20px; bottom:64px; z-index:1; }
         .prev-snowcard .mini-lines span:nth-child(1){width:108px;height:14px;background:#000;border-radius:2px;}
         .prev-snowcard .mini-lines span:nth-child(2){width:78px;background:#222;border-radius:2px;}
-        /* github — dark profile + contribution graph */
+        /* github, dark profile + contribution graph */
         .prev-github { background:#0d1117; position:relative; overflow:hidden; }
         .prev-github::before { content:""; position:absolute; left:14px; top:18px; width:34px; height:34px; border-radius:50%; background:#21262d; border:1px solid #30363d; }
         .prev-github::after { content:""; position:absolute; left:14px; right:14px; bottom:16px; height:24px;
@@ -147,7 +147,7 @@
         .prev-github .mini-lines { left:56px; top:20px; bottom:auto; }
         .prev-github .mini-lines span:nth-child(1){width:90px;background:#e6edf3;}
         .prev-github .mini-lines span:nth-child(2){width:60px;background:#2f81f7;}
-        /* assistant — ChatGPT-style chat UI */
+        /* assistant, ChatGPT-style chat UI */
         .prev-assistant { background:#212121; position:relative; overflow:hidden; }
         .prev-assistant::before { content:""; position:absolute; left:0; top:0; bottom:0; width:38px; background:#171717; border-right:1px solid #2a2a2a; }
         .prev-assistant::after { content:""; position:absolute; left:50px; right:40px; bottom:14px; height:22px; border-radius:11px; background:#2f2f2f; border:1px solid #3a3a3a; }
@@ -155,7 +155,7 @@
         .prev-assistant .mini-lines { left:84px; top:24px; bottom:auto; z-index:1; }
         .prev-assistant .mini-lines span:nth-child(1){width:120px;background:#ececec;height:9px;}
         .prev-assistant .mini-lines span:nth-child(2){width:88px;background:#8e8ea0;}
-        /* cloud — friendly dev landing, sky + clouds */
+        /* cloud, friendly dev landing, sky + clouds */
         .prev-cloud { background:linear-gradient(180deg,#bfe3ff,#eaf6ff 70%); position:relative; overflow:hidden; }
         .prev-cloud::before { content:""; position:absolute; left:0; right:0; bottom:0; height:42px;
             background:radial-gradient(circle 22px at 20% 100%, #fff 60%, transparent 62%), radial-gradient(circle 26px at 45% 100%, #fff 60%, transparent 62%), radial-gradient(circle 22px at 72% 100%, #fff 60%, transparent 62%), radial-gradient(circle 24px at 95% 100%, #fff 60%, transparent 62%), #eaf6ff; }
@@ -164,17 +164,17 @@
         .prev-cloud .mini-lines { left:16px; top:24px; bottom:auto; z-index:1; }
         .prev-cloud .mini-lines span:nth-child(1){width:120px;background:#0b1626;height:14px;border-radius:3px;}
         .prev-cloud .mini-lines span:nth-child(2){width:88px;background:#3f6bf6;height:12px;border-radius:3px;}
-        /* clean — light, violet */
+        /* clean, light, violet */
         .prev-clean { background:#f4f4f0; }
         .prev-clean .mini-avatar { border-radius:18px; background:#fff; border:1px solid rgba(0,0,0,.1); color:#6d28d9; box-shadow:0 8px 18px -10px rgba(0,0,0,.4); }
         .prev-clean .mini-lines span:nth-child(1){width:120px;background:#18181b;}
         .prev-clean .mini-lines span:nth-child(2){width:80px;background:#6d28d9;}
-        /* editorial — cream, serif */
+        /* editorial, cream, serif */
         .prev-editorial { background:#f7f2e9; }
         .prev-editorial .mini-avatar { border-radius:50%; background:#fffdf8; border:1px solid rgba(31,26,20,.2); color:#a8421f; font-family:Georgia,serif; }
         .prev-editorial .mini-lines span:nth-child(1){width:130px;background:#1f1a14;}
         .prev-editorial .mini-lines span:nth-child(2){width:70px;background:#a8421f;}
-        /* vibrant — colorful gradient */
+        /* vibrant, colorful gradient */
         .prev-vibrant { background:radial-gradient(120% 90% at 85% -10%, #ffd9f0, #fef7ff 60%); }
         .prev-vibrant .mini-avatar { border-radius:18px; background:#fff; border:2px solid #ec4899; color:#d6308b; }
         .prev-vibrant .mini-lines span:nth-child(1){width:120px;background:linear-gradient(90deg,#ec4899,#8b5cf6);}
@@ -334,12 +334,307 @@
     </style>
 </head>
 <body>
+{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
     {% include "_nav.html" %}
+
+    {% if not is_logged_in %}
+    <link rel="stylesheet" href="/static/feature_landing.css?v=36">
+    <div class="solx">
+        <div class="solx-wrap">
+            <div class="solx-hero">
+                <div>
+                    <span class="solx-eyebrow">Resume &rarr; Portfolio</span>
+                    <h1>Turn your resume into a <span class="g">portfolio website in one click.</span></h1>
+                    <div class="checks" style="flex-direction:column;align-items:flex-start;gap:13px;margin:0 0 26px">
+                        <span>Upload your resume, we build the whole site</span>
+                        <span>Pick a design, publish, and share one link</span>
+                        <span>No coding and no design skills needed</span>
+                    </div>
+                    <a href="/signup?next=/portfolio" class="solx-btn">Build My Portfolio, Free</a>
+                    <p class="micro">Takes ~2 minutes &bull; No credit card &bull; <b>Free to build</b></p>
+                </div>
+                <div class="rez">
+                    <div class="rez-tag">&#127760; yoursite.thetailorcv.com</div>
+                    <div class="rez-name">Alex Mitchell</div>
+                    <div class="rez-role">Senior Product Designer</div>
+                    <div class="rez-h">Selected Work</div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0">
+                        <div class="rez-line l" style="height:34px;border-radius:8px"></div>
+                        <div class="rez-line l" style="height:34px;border-radius:8px"></div>
+                    </div>
+                    <div class="rez-h">About</div><div class="rez-line l"></div><div class="rez-line m"></div>
+                    <div class="rez-insights">
+                        <div class="t">&#10024; Live &amp; shareable</div>
+                        <div class="rez-line l"></div><div class="rez-line m"></div>
+                        <div class="rez-btn">Publish Website</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-marquee">
+            <div class="solx-wrap"><p class="cap">Our users have been <span class="g">hired at</span></p></div>
+            <div class="marquee-wrapper"><div class="marquee-container"><div class="marquee-track" id="solxMarqueeTrack"></div></div></div>
+        </div>
+        <script>(function(){var f=['amazon.png','mckinsey.png','goldmansachs.png','databricks.png','microsoft.png','google.webp','apple_logo_black.svg','meta.jpg','atlssain.png'];var t=document.getElementById('solxMarqueeTrack');if(!t)return;f.concat(f).forEach(function(n){var d=document.createElement('div');d.className='logo-item';var im=document.createElement('img');im.src='/static/company_logos/'+n;im.alt=n.split('.')[0];im.loading='lazy';d.appendChild(im);t.appendChild(d);});})();</script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Design gallery</div>
+                <h2 class="solx-h2">Find the perfect portfolio design <span class="g">for your career goals</span></h2>
+                <p class="solx-lead">Click any design to see it live. Publish free on <b>yourname.thetailorcv.com</b>, or go Pro for <b>yourname.netlify.app</b>.</p>
+                <div class="solx-carousel wide big">
+                    <button type="button" class="solx-car-btn solx-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+                    <div class="solx-car-track">
+                        {% for _k, _label in themes.items() %}{% set _m = theme_media.get(_k) %}{% if _m and _m.image %}
+                        <div class="solx-car-item">
+                            {% set _nm = _label.replace('—', '-').split('-')[0].strip() %}
+                            {% if _m.demo %}
+                            <a class="solx-car-shot" href="{{ _m.demo }}" target="_blank" rel="noopener" aria-label="Open the {{ _nm }} portfolio demo in a new tab">
+                                <img src="{{ _m.image }}" alt="{{ _nm }} portfolio design preview" loading="lazy" decoding="async">
+                                <span class="solx-car-demo">View live demo &#8599;</span>
+                            </a>
+                            {% else %}
+                            <div class="solx-car-shot"><img src="{{ _m.image }}" alt="{{ _nm }} portfolio design preview" loading="lazy" decoding="async"></div>
+                            {% endif %}
+                            <div class="solx-car-name">{{ _nm }}</div>
+                        </div>
+                        {% endif %}{% endfor %}
+                    </div>
+                    <button type="button" class="solx-car-btn solx-car-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+                    <div class="solx-car-dots"></div>
+                </div>
+                <div style="text-align:center;margin-top:34px"><a href="/signup?next=/portfolio" class="solx-btn">Build My Portfolio, Free</a></div>
+            </div>
+        </div>
+
+        <script>
+        (function(){
+          function init(car){
+            var track = car.querySelector('.solx-car-track');
+            var prev  = car.querySelector('.solx-car-prev');
+            var next  = car.querySelector('.solx-car-next');
+            var dots  = car.querySelector('.solx-car-dots');
+            if(!track) return;
+            function pageW(){ return track.clientWidth || 1; }
+            function pageCount(){ return Math.max(1, Math.round(track.scrollWidth / pageW())); }
+            function current(){ return Math.round(track.scrollLeft / pageW()); }
+            function sync(){
+              var c = current();
+              if (dots) Array.prototype.forEach.call(dots.children, function(d,i){ d.classList.toggle('on', i === c); });
+              if (prev) prev.disabled = track.scrollLeft <= 4;
+              if (next) next.disabled = track.scrollLeft + pageW() >= track.scrollWidth - 4;
+            }
+            function buildDots(){
+              if (!dots) return;
+              dots.innerHTML = '';
+              var n = pageCount();
+              for (var i = 0; i < n; i++){
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.className = 'solx-car-dot';
+                b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                (function(idx){ b.addEventListener('click', function(){ track.scrollTo({ left: idx * pageW(), behavior: 'smooth' }); }); })(i);
+                dots.appendChild(b);
+              }
+            }
+            if (prev) prev.addEventListener('click', function(){ track.scrollBy({ left: -pageW(), behavior: 'smooth' }); });
+            if (next) next.addEventListener('click', function(){ track.scrollBy({ left:  pageW(), behavior: 'smooth' }); });
+            track.addEventListener('scroll', function(){ window.requestAnimationFrame(sync); });
+            window.addEventListener('resize', function(){ buildDots(); sync(); });
+            buildDots(); sync();
+          }
+          document.querySelectorAll('.solx-carousel').forEach(init);
+        })();
+        </script>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Why job seekers love it</div>
+                <h2 class="solx-h2">More than a PDF, <span class="g">a site recruiters remember</span></h2>
+                <p class="solx-lead">TailorCV reads your resume and builds a clean, professional portfolio site for you, your work, experience, and skills on one shareable link.</p>
+                <div class="solx-grid3">
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-h">From your resume</div><div class="rez-line l"></div><div class="rez-line m"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#10003; Auto-filled</div>
+                            <div class="rez-line m" style="margin-top:8px"></div>
+                        </div>
+                        <h3>Built from your resume</h3>
+                        <p>Upload your resume once and we turn your experience, projects, and skills into a full website, no blank pages to fill in.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                                <div class="rez-line l" style="height:30px;border-radius:8px"></div>
+                                <div class="rez-line l" style="height:30px;border-radius:8px;background:#dbe4ff"></div>
+                                <div class="rez-line l" style="height:30px;border-radius:8px;background:#dbe4ff"></div>
+                                <div class="rez-line l" style="height:30px;border-radius:8px"></div>
+                            </div>
+                            <div class="rez-badge" style="margin-top:10px">&#9733; Designer templates</div>
+                        </div>
+                        <h3>Designs that look hand-built</h3>
+                        <p>Choose from polished, modern templates made for job seekers, each one responsive and ready on desktop and mobile.</p>
+                    </div>
+                    <div class="solx-card">
+                        <div class="mini">
+                            <div class="rez-tag">&#127760; one link</div>
+                            <div class="rez-h" style="margin-top:10px">Share anywhere</div><div class="rez-line l"></div>
+                            <div class="rez-badge" style="margin-top:10px">&#10003; LinkedIn &bull; Resume &bull; Email</div>
+                        </div>
+                        <h3>Share one simple link</h3>
+                        <p>Publish and get a single link to drop in your resume, LinkedIn, or an email, so recruiters see your work, not just a file.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">How it works</div>
+                <h2 class="solx-h2">A simple 4-step process to a <span class="g">live portfolio site</span></h2>
+                <div style="margin-top:26px">
+                    <div class="solx-step">
+                        <div><div class="n">Step 1</div><h3>Upload your <span class="g">resume</span></h3><p>Drop in your existing resume and we read your experience, projects, and skills automatically.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#128228; Upload resume</div><div class="rez-h">Alex_Mitchell_CV.pdf</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-badge" style="margin-top:8px">&#10003; Parsed in seconds</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 2</div><h3>Pick a <span class="g">design</span></h3><p>Choose from clean, modern templates. Preview them live and switch any time, no design skills needed.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#127912; Choose template</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px"><div class="rez-line l" style="height:40px;border-radius:8px"></div><div class="rez-line l" style="height:40px;border-radius:8px;background:#dbe4ff"></div><div class="rez-line l" style="height:40px;border-radius:8px;background:#dbe4ff"></div><div class="rez-line l" style="height:40px;border-radius:8px"></div></div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 3</div><h3>Edit <span class="g">anything you like</span></h3><p>Tweak your bio, reorder sections, add projects or links, everything is editable in a simple visual editor.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#9999;&#65039; Edit content</div><div class="rez-h">About</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-h">Projects</div><div class="rez-line l"></div><div class="rez-badge" style="margin-top:8px">&#10003; Live preview</div></div></div>
+                    </div>
+                    <div class="solx-step">
+                        <div><div class="n">Step 4</div><h3>Publish &amp; <span class="g">share your link</span></h3><p>Hit publish and get a live URL to share in your resume, LinkedIn, and applications in one click.</p></div>
+                        <div class="solx-step-viz"><div class="rez"><div class="rez-tag">&#127760; Live site</div><div class="rez-name" style="font-size:16px;text-align:left">Alex Mitchell</div><div class="rez-line l"></div><div class="rez-line m"></div><div class="rez-btn" style="margin-top:12px">&#128279; Copy link</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Loved by job seekers</div>
+                <h2 class="solx-h2">From a file to a <span class="g">real presence</span></h2>
+                <div class="solx-quotes">
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I had a live portfolio in two minutes from my resume. Recruiters actually clicked the link and mentioned my projects."</p><div class="who"><img src="/static/user_imges/13.jpg" alt=""><span><b>Vicki B.</b> <span>PayPal</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"No coding, no Squarespace fees. It looked like something a designer built for me and I just shared one link."</p><div class="who"><img src="/static/user_imges/26.jpg" alt=""><span><b>Priya S.</b> <span>Google</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Adding my portfolio link to applications made me stand out. I got replies from roles that had ghosted me before."</p><div class="who"><img src="/static/user_imges/22.jpg" alt=""><span><b>James W.</b> <span>Apple</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"I sent one link instead of attaching a PDF. It instantly made me look more serious than other candidates."</p><div class="who"><img src="/static/user_imges/12.jpg" alt=""><span><b>Sarah J.</b> <span>Atlassian</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Built from my resume in minutes and it looked designer made. I did not touch a line of code."</p><div class="who"><img src="/static/user_imges/85.jpg" alt=""><span><b>Michael R.</b> <span>Amazon</span></span></div></div>
+                    <div class="solx-quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Recruiters clicked through my projects and mentioned them in the call. That never happened with a plain resume."</p><div class="who"><img src="/static/user_imges/79.jpg" alt=""><span><b>Emily G.</b> <span>PwC</span></span></div></div>
+                </div>
+            </div>
+        </div>
+
+        {% include "_feature_more.html" %}
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">Pricing</div>
+                <h2 class="solx-h2">Simple pricing, <span class="g">powerful features</span></h2>
+                <p class="solx-lead">Start free, upgrade only when you want unlimited access.</p>
+                <div class="pricing-preview-grid cols-3">
+                    <article class="pricing-preview-card basic">
+                        <p class="pricing-plan-name">Free</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
+                        <p class="pricing-plan-note">Always free, no card needed.</p>
+                        <ul class="pricing-feature-list">
+                            <li>ATS score, unlimited</li>
+                            <li>1 free resume optimization</li>
+                            <li>1 free cover letter + mock interview</li>
+                            <li>All templates &amp; downloads</li>
+                        </ul>
+                        <a href="/signup?next=/portfolio" class="pricing-plan-btn">Start free</a>
+                    </article>
+
+                    <article class="pricing-preview-card">
+                        <p class="pricing-badge pricing-badge-pass">One-time</p>
+                        <p class="pricing-plan-name">7-Day Pass</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppPassSym">&#8377;</span><span id="ppPassAmt">149</span></p>
+                        <p class="pricing-plan-note">7 days of full Pro access, no auto-renew.</p>
+                        <ul class="pricing-feature-list">
+                            <li>Everything in Pro</li>
+                            <li>Unlimited optimize &amp; cover letters</li>
+                            <li>Unlimited mock interviews</li>
+                            <li>No subscription</li>
+                        </ul>
+                        <a href="/pricing" class="pricing-plan-btn">Get 7-day pass</a>
+                    </article>
+
+                    <article class="pricing-preview-card featured">
+                        <p class="pricing-badge">Most Popular</p>
+                        <p class="pricing-plan-name">Pro</p>
+                        <p class="pricing-plan-price"><span class="pp-sym" id="ppProSym">&#8377;</span><span id="ppProAmt">167</span><span>/mo</span></p>
+                        <p class="pricing-plan-note" id="ppProNote">Billed yearly, save 44%, cancel any time.</p>
+                        <ul class="pricing-feature-list">
+                            <li>Unlimited resume optimizations</li>
+                            <li>Unlimited cover letters &amp; mock interviews</li>
+                            <li>LinkedIn import unlimited</li>
+                            <li>Priority AI processing</li>
+                        </ul>
+                        <a href="/pricing" class="pricing-plan-btn pricing-plan-btn-primary">Get Pro</a>
+                    </article>
+                </div>
+                <p class="pricing-preview-all"><a href="/pricing">See full pricing &amp; FAQ</a></p>
+            </div>
+        </div>
+        <script>
+        // Region-aware prices, mirrors the homepage preview and /pricing.
+        (function () {
+            var PP = {
+                india:  { sym: '\u20b9', pass: '149',  pro: '167',  note: 'Billed yearly, save 44%, cancel any time.' },
+                lic:    { sym: '$',       pass: '1.99', pro: '2.08', note: 'Billed yearly, save 44%, cancel any time.' },
+                global: { sym: '$',       pass: '4.99', pro: '5',    note: 'Billed yearly, save 44%, cancel any time.' }
+            };
+            function set(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+            function apply(region) {
+                var p = PP[region] || PP.india;
+                set('ppFreeSym', p.sym); set('ppPassSym', p.sym); set('ppProSym', p.sym);
+                set('ppPassAmt', p.pass); set('ppProAmt', p.pro); set('ppProNote', p.note);
+            }
+            fetch('/api/billing/region')
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (d) { if (d && d.region) apply(d.region); })
+                .catch(function () { /* keep default india pricing */ });
+        })();
+        </script>
+
+        <div class="solx-band">
+            <div class="solx-band-inner">
+                <div class="solx-band-kicker">Recruiters google you</div>
+                <h2>Give them a <span class="ga">portfolio, not a PDF</span>.</h2>
+                <p>Turn your resume into a clean, shareable website in minutes, and give recruiters something they'll actually remember.</p>
+                <a href="/signup?next=/portfolio" class="solx-btn">Build My Portfolio, Free</a>
+            </div>
+        </div>
+
+        <div class="solx-sec">
+            <div class="solx-wrap">
+                <div class="solx-kicker">FAQ</div>
+                <h2 class="solx-h2">Have more <span class="g">questions?</span></h2>
+                <div class="solx-faq" style="margin-top:32px">
+                    <details open><summary>How does the resume-to-portfolio builder work?</summary><p>You upload your resume, we read your experience and projects, and you get a full portfolio website you can style, edit, and publish, all without writing code.</p></details>
+                    <details><summary>Do I need any design or coding skills?</summary><p>No. Pick a template, tweak content in a visual editor, and publish. Everything is drag-simple and mobile-ready out of the box.</p></details>
+                    <details><summary>Can I use my own content and projects?</summary><p>Yes. Edit your bio, reorder sections, and add projects, links, and images, the resume is just a starting point.</p></details>
+                    <details><summary>How do I share my portfolio?</summary><p>Publish and you get a single live link to add to your resume, LinkedIn, and job applications.</p></details>
+                    <details><summary>Is it free to build?</summary><p>Yes, you can build and preview your portfolio for free. A quick free account saves it and lets you publish your live link.</p></details>
+                </div>
+                <div style="text-align:center; margin-top:34px"><a href="/signup?next=/portfolio" class="solx-btn">Build My Portfolio, Free</a></div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if is_logged_in %}
+
 
     <main class="pb" data-logged-in="{{ 'yes' if logged_in else 'no' }}">
         <div class="pb-head">
             <h1>Turn your resume into a portfolio website</h1>
-            <p>Convert your resume to a portfolio site in minutes — pick a design, upload your resume, tweak the details, and publish a link you can share anywhere.</p>
+            <p>Convert your resume to a portfolio site in minutes, pick a design, upload your resume, tweak the details, and publish a link you can share anywhere.</p>
         </div>
 
         <div class="pb-steps">
@@ -405,7 +700,7 @@
                 <div class="pb-import-row">
                     <div class="pb-import-text">
                         <strong>Have a resume already?</strong>
-                        <span>Upload it and we'll fill everything below for you — then just tweak it.</span>
+                        <span>Upload it and we'll fill everything below for you, then just tweak it.</span>
                     </div>
                     <label class="pb-import-btn" for="pb-file">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
@@ -551,8 +846,11 @@
         </section>
     </main>
 
+    {% endif %}
+
     {% include "_footer.html" %}
 
+    {% if is_logged_in %}
     <script>
     (function () {
         const KEY = "tailorcv_portfolio_builder";
@@ -676,7 +974,7 @@
             const paste = document.getElementById("pb-paste").value.trim();
             if (!file && !paste) { msg("pb-upload-msg", "Choose a PDF or paste your resume text first.", "err"); return; }
             if (importBtn) importBtn.classList.add("loading");
-            msg("pb-upload-msg", "Reading your resume — this can take a few seconds…", "");
+            msg("pb-upload-msg", "Reading your resume, this can take a few seconds…", "");
             try {
                 let res;
                 if (file) {
@@ -693,8 +991,8 @@
                 state.cv = (data && data.cvData) ? data.cvData : data;
                 save();
                 pbResetLists();        // rebuild form rows from the new data
-                populateForm();        // fill the fields IN PLACE — no navigation
-                msg("pb-upload-msg", "Done! Your details are filled in below — review and edit anything.", "ok");
+                populateForm();        // fill the fields IN PLACE, no navigation
+                msg("pb-upload-msg", "Done! Your details are filled in below, review and edit anything.", "ok");
             } catch (e) {
                 msg("pb-upload-msg", e.message || "Something went wrong. Try pasting the text instead.", "err");
             } finally {
@@ -886,7 +1184,7 @@
             if (!loggedIn) {
                 save();
                 try { sessionStorage.setItem("pb_resume", "1"); } catch (e) {}  // resume at the form after login
-                msg("pb-publish-msg", "Log in to publish — your work is saved and will be here when you return.", "");
+                msg("pb-publish-msg", "Log in to publish, your work is saved and will be here when you return.", "");
                 setTimeout(() => { window.location.href = "/login?next=/portfolio"; }, 900);
                 return;
             }
@@ -949,7 +1247,7 @@
         if (!document.querySelector(".pb-tpl.selected")) {
             const first = document.querySelector(".pb-tpl"); if (first) { first.classList.add("selected"); state.theme = first.dataset.theme; }
         }
-        // Always start fresh at the template gallery (step 1) on a normal visit —
+        // Always start fresh at the template gallery (step 1) on a normal visit,
         // EXCEPT right after the login round-trip, where we resume at the details
         // form (step 2) so saved data + photo repopulate. The login redirect sets
         // a one-shot "pb_resume" flag in sessionStorage to mark that round-trip.
@@ -1032,7 +1330,7 @@
                     '<div class="tcv-pro-dl-lock">🔒</div>' +
                     '<h2 class="tcv-pro-dl-title">Publish your live site</h2>' +
                     '<p class="tcv-pro-dl-sub">Publishing a live site is a <strong>Pro</strong> feature.<br>' +
-                    'Your free thetailorcv.com link is already live — upgrade to publish your own live site.</p>' +
+                    'Your free thetailorcv.com link is already live, upgrade to publish your own live site.</p>' +
                     '<div class="tcv-pro-dl-perks">' +
                         '<div class="tcv-pro-dl-perk">Your own live portfolio site</div>' +
                         '<div class="tcv-pro-dl-perk">Unlimited resume downloads</div>' +
@@ -1048,8 +1346,54 @@
             overlay.addEventListener('click', function (e) { if (e.target === overlay) closePopup(); });
         }
     </script>
+    {% endif %}
     <script src="/static/auth_nav.js?v=13" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script src="/static/resume_store.js?v=1"></script>
+{% if not is_logged_in %}
+<script>
+(function(){
+  const canvas = document.getElementById('wave-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  const waves = [
+    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
+    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
+    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
+    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
+    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
+    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
+  ];
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now();
+    waves.forEach(wv => {
+      ctx.beginPath();
+      for(let x = 0; x <= W; x += 2){
+        const y = H * wv.yf
+          + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
+          + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
+          + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const [r,g,b] = wv.color;
+      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+      gr.addColorStop(0, `rgba(${r},${g},${b},${wv.alpha})`);
+      gr.addColorStop(0.5, `rgba(${r},${g},${b},${wv.alpha * 0.4})`);
+      gr.addColorStop(1, `rgba(${r},${g},${b},0)`);
+      ctx.fillStyle = gr;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+{% endif %}
 </body>
 </html>

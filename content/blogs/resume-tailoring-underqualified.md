@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to Tailor Your Resume When You're Underqualified - And Still Get Interviews (2026)
 description: Missing some job requirements shouldn't stop you from applying. Learn how to tailor your resume when you're underqualified to close the gap, reframe your experience, and get interviews anyway.
 date: 2026-06-29
@@ -33,6 +33,14 @@ The result: the more hesitant candidates often miss roles they could have won.
 This guide shows you how to tailor your resume when you are underqualified - honestly, specifically, and in a way that gets real interviews. Understanding [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) often comes back to not applying at all, or applying with a [generic resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) when tailoring would have made the difference.
 
 ---
+
+## Key Takeaways
+
+- Job descriptions are often wishlists, and most candidates do not need to meet every requirement to be considered.
+- Apply for roles when you meet at least 60-70% of qualifications, especially if missing skills are learnable and you have strong transferable experience.
+- Create a side-by-side comparison of job requirements and your qualifications to identify strengths, areas for growth, and skills to omit.
+- Lead your resume with your strengths and relevant achievements rather than focusing on what you lack. 
+- Highlight your ability to learn and grow, as hiring managers often seek candidates who can develop into the role.
 
 ## The Truth About "Required" Qualifications
 
