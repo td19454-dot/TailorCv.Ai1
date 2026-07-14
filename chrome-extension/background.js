@@ -94,6 +94,40 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         }
         sendResponse({ data: await res.json() });
 
+      } else if (msg.type === 'COVER_LETTER') {
+        try {
+          const res = await fetch(`${BASE_URL}/api/extension/cover-letter`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(msg.payload),
+          });
+
+          if (!res.ok) {
+            let detail = 'Could not write your cover letter.';
+            try {
+              const data = await res.json();
+              if (res.status === 401) detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
+              else if (res.status === 402 || data.error === 'upgrade_required') detail = 'Free cover letter used. Upgrade to Pro at thetailorcv.com.';
+              else if (res.status === 404) detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
+              else if (data.detail) detail = data.detail;
+            } catch (_) { /* keep the default */ }
+            sendResponse({ error: detail });
+            return;
+          }
+
+          const buffer = await res.arrayBuffer();
+          const dataUrl = `data:application/pdf;base64,${arrayBufferToBase64(buffer)}`;
+          await chrome.downloads.download({
+            url: dataUrl,
+            filename: 'cover_letter.pdf',
+            saveAs: false,
+          });
+          sendResponse({ data: { success: true } });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
       } else if (msg.type === 'TAILOR_AND_DOWNLOAD') {
         try {
           const res = await fetch(`${BASE_URL}/api/extension/tailor-resume`, {
