@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════
-// TailorCV Resume Tailor — LinkedIn Jobs Content Script
+// TailorCV — AI Resume Optimizer — LinkedIn Jobs Content Script
 // The injected sidebar is the extension's only UI surface: it handles the
 // login check, the base-resume check, and the Tailor & Download action.
 // ═══════════════════════════════════════════════════════
@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  const BASE_URL = 'http://127.0.0.1:8005';
+  const BASE_URL = 'https://thetailorcv.com';
   let tcvBusy = false;
   let currentJob = null;
   let sb, body, launcher, globalStatus;
@@ -15,6 +15,9 @@
   // postings only re-extracts the JD instead of re-hitting the server for
   // things that don't change mid-session.
   let sessionReady = false;
+  // Once the free quota is hit, every job switch shows the upgrade prompt
+  // directly instead of a tailor button that's guaranteed to 402 again.
+  let quotaExceeded = false;
 
   // ── Utilities ────────────────────────────────────────
 
@@ -120,6 +123,12 @@
         <button type="submit" class="tcv-btn tcv-btn-start" id="tcvLoginBtn">Log in</button>
         <div class="tcv-error" id="tcvLoginError">${errorMsg || ''}</div>
       </form>
+      <div class="tcv-divider"><span>or</span></div>
+      <a class="tcv-btn tcv-btn-outline tcv-btn-link" href="${BASE_URL}/login" target="_blank">Continue with Google</a>
+      <div class="tcv-login-links">
+        <a class="tcv-link" href="${BASE_URL}/login" target="_blank">Forgot password?</a>
+        <a class="tcv-link" href="#" id="tcvLoginRetry">Already logged in? Retry</a>
+      </div>
     `;
     body.querySelector('#tcvLoginForm').addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -137,12 +146,16 @@
       }
       refreshFull();
     });
+    body.querySelector('#tcvLoginRetry').addEventListener('click', (e) => {
+      e.preventDefault();
+      refreshFull();
+    });
   }
 
   function renderNoBaseResume() {
     body.innerHTML = `
       <div class="tcv-msg">No base resume set yet.</div>
-      <a class="tcv-link" href="${BASE_URL}/my-resumes" target="_blank">Set one up on TailorCV →</a>
+      <a class="tcv-link" href="${BASE_URL}/extension" target="_blank">Set one up on TailorCV →</a>
     `;
   }
 
@@ -154,13 +167,28 @@
     body.querySelector('#tcvRetryBtn').addEventListener('click', renderJobFromPage);
   }
 
+  function renderUpgradePrompt() {
+    body.innerHTML = `
+      <div class="tcv-upgrade-box">
+        <div class="tcv-msg">You've used all your free resume tailors for this month.</div>
+        <a class="tcv-btn tcv-btn-start tcv-btn-link" href="${BASE_URL}/pricing" target="_blank">⚡ Upgrade to Pro →</a>
+        <a class="tcv-link tcv-retry-link" id="tcvRetryAfterUpgrade" href="#">Already upgraded? Retry</a>
+      </div>
+    `;
+    body.querySelector('#tcvRetryAfterUpgrade').addEventListener('click', (e) => {
+      e.preventDefault();
+      quotaExceeded = false;
+      renderJobFromPage();
+    });
+  }
+
   function renderReady(job) {
     currentJob = job;
     const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
     body.innerHTML = `
       <div class="tcv-job-info">Tailoring for: <b>${job.role || 'this job'}</b>${job.company ? ' at ' + job.company : ''}</div>
       <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
-        ${tcvBusy ? 'Tailoring another job…' : '✦ Tailor & Download Resume'}
+        ${tcvBusy ? 'Tailoring  job…' : '✦ Tailor & Download Resume'}
       </button>
     `;
     const btn = body.querySelector('#tcvTailorBtn');
@@ -190,6 +218,15 @@
     });
 
     tcvBusy = false;
+
+    if (res.code === 'upgrade_required') {
+      quotaExceeded = true;
+      globalStatus.className = 'tcv-status-text';
+      globalStatus.textContent = '';
+      renderUpgradePrompt();
+      return;
+    }
+
     globalStatus.className = res.error ? 'tcv-status-text tcv-error' : 'tcv-status-text tcv-ok';
     globalStatus.textContent = res.error ? `✗ ${label}: ${res.error}` : `✓ Downloaded resume for "${label}"`;
 
@@ -204,6 +241,7 @@
   // — used when switching between job postings once the session is known good.
 
   function renderJobFromPage() {
+    if (quotaExceeded) { renderUpgradePrompt(); return; }
     const jd_string = extractJobDescription();
     if (!jd_string || jd_string.length < 80) {
       renderNoJobDescription();
