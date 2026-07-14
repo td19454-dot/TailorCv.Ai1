@@ -1,12 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "TailorCV Auto Apply",
-  "version": "1.1.0",
-  "description": "Auto-apply to jobs on Naukri & Internshala, and auto-tailor + download your resume on LinkedIn job pages",
+  "name": "TailorCV Resume Tailor for LinkedIn",
+  "version": "2.0.0",
+  "description": "Automatically tailor your resume to any LinkedIn job posting and download it in one click",
   "permissions": ["storage", "tabs", "activeTab", "cookies", "downloads"],
   "host_permissions": [
-    "*://*.naukri.com/*",
-    "*://*.internshala.com/*",
     "*://*.linkedin.com/*",
     "https://thetailorcv.com/*",
     "http://127.0.0.1:8005/*",
@@ -17,18 +15,6 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.naukri.com/*"],
-      "js": ["content_naukri.js"],
-      "css": ["sidebar.css"],
-      "run_at": "document_idle"
-    },
-    {
-      "matches": ["*://*.internshala.com/*"],
-      "js": ["content_internshala.js"],
-      "css": ["sidebar.css"],
-      "run_at": "document_idle"
-    },
-    {
       "matches": ["*://*.linkedin.com/jobs/*"],
       "js": ["content_linkedin.js"],
       "css": ["sidebar.css"],
@@ -36,7 +22,6 @@
     }
   ],
   "action": {
-    "default_popup": "popup.html",
     "default_icon": {
       "16":  "icons/icon16.png",
       "48":  "icons/icon48.png",
@@ -46,7 +31,7 @@
   "web_accessible_resources": [
     {
       "resources": ["icons/*.png"],
-      "matches": ["<all_urls>"]
+      "matches": ["*://*.linkedin.com/*"]
     }
   ]
 }
