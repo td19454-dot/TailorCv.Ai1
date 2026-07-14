@@ -67,12 +67,18 @@
   function createSidebar() {
     if (document.getElementById('tailorcv-sidebar')) return;
 
+    const launcher = document.createElement('button');
+    launcher.id = 'tailorcv-launcher';
+    launcher.title = 'Open TailorCV';
+    launcher.innerHTML = `<img src="${chrome.runtime.getURL('icons/icon48.png')}" alt="TailorCV">`;
+    document.body.appendChild(launcher);
+
     const sb = document.createElement('div');
     sb.id = 'tailorcv-sidebar';
     sb.innerHTML = `
       <div class="tcv-header">
         <span class="tcv-logo">TailorCV</span>
-        <button class="tcv-toggle" title="Collapse">◀</button>
+        <button class="tcv-toggle" title="Minimize">✕</button>
       </div>
       <div class="tcv-stats">
         <div class="tcv-stat">
@@ -98,8 +104,12 @@
     document.getElementById('tcvStartBtn').addEventListener('click', startAutoApply);
     document.getElementById('tcvStopBtn').addEventListener('click', stopAutoApply);
     sb.querySelector('.tcv-toggle').addEventListener('click', () => {
-      sb.classList.toggle('tcv-collapsed');
-      sb.querySelector('.tcv-toggle').textContent = sb.classList.contains('tcv-collapsed') ? '▶' : '◀';
+      sb.classList.add('tcv-collapsed');
+      launcher.classList.add('tcv-visible');
+    });
+    launcher.addEventListener('click', () => {
+      sb.classList.remove('tcv-collapsed');
+      launcher.classList.remove('tcv-visible');
     });
   }
 
