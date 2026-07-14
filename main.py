@@ -36,6 +36,7 @@ from functions import (
     extract_links,
     inject_links,
     inject_jd_hard_skills,
+    compute_skill_match_score,
     sanitize_resume_data,
     _is_atomic_hard_skill,
     map_demo_links,
@@ -136,6 +137,7 @@ async def csrf_middleware(request: Request, call_next):
         "/api/extension/log-application",
         "/api/extension/tailor-resume",
         "/api/extension/cover-letter",
+        "/api/extension/skill-match",
         "/api/billing/razorpay/webhook",
         "/api/billing/polar/webhook",
     }
@@ -234,6 +236,9 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*", "X-CSRFToken", "X-Requested-With"],
+    # Custom response headers are invisible to cross-origin JS (e.g. the Chrome
+    # extension's background fetch) unless explicitly exposed here.
+    expose_headers=["X-Skill-Match-After"],
 )
 
 # Get the base directory (where main.py is located)
@@ -462,6 +467,8 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN base_resume_uploaded_at TIMESTAMP" if is_pg else "ADD COLUMN base_resume_uploaded_at TEXT")
     if "base_cover_template" not in cols:
         to_add.append("ADD COLUMN base_cover_template VARCHAR(20)" if is_pg else "ADD COLUMN base_cover_template TEXT")
+    if "base_resume_text" not in cols:
+        to_add.append("ADD COLUMN base_resume_text TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -5530,6 +5537,15 @@ async def set_extension_base_resume(request: Request):
             content = await upload.read()
             f.write(content)
 
+    # Extracted once here so the extension's skill-match score never needs to
+    # re-parse the PDF on every job the user looks at.
+    extracted_text = None
+    if has_upload:
+        try:
+            extracted_text = await asyncio.to_thread(extract_pdf_text, new_path)
+        except Exception:
+            logger.exception("Failed to extract text from uploaded base resume")
+
     db = get_db()
     try:
         user = db.query(User).filter(User.id == user_id).first()
@@ -5547,6 +5563,10 @@ async def set_extension_base_resume(request: Request):
         user.base_template_id = template_id
         user.base_style_id = style_id
         user.base_cover_template = cover_template if cover_template in COVER_TEMPLATES else "classic"
+        if has_upload:
+            # Only on a real upload: a template-only save must not blank the text the
+            # skill-match score reads.
+            user.base_resume_text = extracted_text
         db.commit()
         if has_upload and old_path and old_path != new_path and os.path.exists(old_path):
             os.remove(old_path)
@@ -5576,6 +5596,46 @@ async def get_extension_base_resume(request: Request):
             "cover_template": (user.base_cover_template or "classic") if has_base_resume else None,
             "uploaded_at": user.base_resume_uploaded_at.isoformat() if (has_base_resume and user.base_resume_uploaded_at) else None,
         })
+    finally:
+        db.close()
+
+
+@app.post("/api/extension/skill-match")
+async def extension_skill_match(request: Request):
+    """Deterministic, LLM-free skill-match score between the user's base resume
+    and a JD scraped by the extension (CSRF-exempt; see EXEMPT_PATHS — invoked
+    from background.js). No request_semaphore needed: this never calls the AI,
+    it's pure regex work, so it stays fast enough to refire on every job the
+    user scrolls to."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+
+    jd_string = str(payload.get("jd_string") or "").strip()
+    if not jd_string:
+        raise HTTPException(status_code=400, detail="Missing job description")
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+            raise HTTPException(status_code=404, detail="No base resume set.")
+
+        resume_text = user.base_resume_text
+        if not resume_text:
+            # Backfill for base resumes uploaded before this column existed.
+            resume_text = await asyncio.to_thread(extract_pdf_text, user.base_resume_path)
+            user.base_resume_text = resume_text
+            db.commit()
+
+        result = compute_skill_match_score(resume_text, jd_string)
+        return JSONResponse(result)
     finally:
         db.close()
 
@@ -5641,6 +5701,10 @@ async def extension_tailor_resume(request: Request):
     try:
         async with request_semaphore:
             parsed = await _optimize_resume_core(base_resume_path, jd_string)
+            # Same deterministic scorer as /api/extension/skill-match, applied to the
+            # tailored output — the JSON-serialized resume is a fine text blob for the
+            # word-boundary keyword search, no separate flattening needed.
+            after_match = compute_skill_match_score(json.dumps(parsed) if isinstance(parsed, dict) else "", jd_string)
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
             try:
                 pdf_path = await asyncio.to_thread(_render_resume_pdf_sync, html_content, use_default_template)
@@ -5674,6 +5738,9 @@ async def extension_tailor_resume(request: Request):
                 media_type="application/pdf",
                 filename="tailored_resume.pdf",
                 background=BackgroundTask(_cleanup_files, [pdf_path]),
+                headers={
+                    "X-Skill-Match-After": str(after_match["score"]) if after_match["score"] is not None else "",
+                },
             )
     except HTTPException:
         if pdf_path and os.path.exists(pdf_path):

@@ -29,6 +29,7 @@
   let progressWrap, progressBar, progressPct, progressTimer, checkIcon;
   let sessionReady = false;
   let quotaExceeded = false;
+  let lastBeforeScore = null;   // survives the re-render runTailor does while busy
   let manualJd = '';   // set when the user pastes or selects the JD themselves
 
   // ── Utilities ────────────────────────────────────────
@@ -552,6 +553,7 @@
     const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
     body.innerHTML = `
       <div class="tcv-job-info">Tailoring for: <b>${esc(job.role || 'this job')}</b>${job.company ? ' at ' + esc(job.company) : ''}</div>
+      <div class="tcv-match-row">Skill match: <span class="tcv-match-value" id="tcvMatchBefore">…</span></div>
       <div class="tcv-source">${SOURCE_LABEL[job.source] || ''} · <a href="#" id="tcvEditJd">not right?</a></div>
       <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
         ${tcvBusy ? 'Working on another job…' : '✦ Tailor & Download Resume'}
@@ -577,6 +579,27 @@
       btn.addEventListener('click', () => runTailor(job, label));
       coverBtn.addEventListener('click', () => runCoverLetter(job, label));
     }
+
+    loadBeforeScore(job);
+  }
+
+  // Fires whenever a job is detected. The score is deterministic and LLM-free on
+  // the server, so it lands within a second or two — well before the user has
+  // decided whether to click Tailor.
+  function loadBeforeScore(job) {
+    const matchEl = body.querySelector('#tcvMatchBefore');
+    if (!matchEl) return;
+    sendMessage({ type: 'GET_SKILL_MATCH', jd_string: job.jd_string }).then((res) => {
+      if (!matchEl.isConnected) return;   // user already moved to another job/state
+      const score = res.data && typeof res.data.score === 'number' ? res.data.score : null;
+      if (score === null) {
+        matchEl.textContent = '—';
+        return;
+      }
+      job.beforeScore = score;
+      lastBeforeScore = score;
+      matchEl.textContent = score + '%';
+    });
   }
 
   async function runCoverLetter(job, label) {
@@ -630,8 +653,20 @@
 
     tcvBusy = false;
     finishProgress(!res.error);
-    globalStatus.className = res.error ? 'tcv-status-text tcv-error' : 'tcv-status-text tcv-ok';
-    globalStatus.textContent = res.error ? `✗ ${label}: ${res.error}` : `✓ Downloaded resume for "${label}"`;
+
+    if (res.error) {
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = `✗ ${label}: ${res.error}`;
+    } else {
+      // The tailor response carries the post-tailor score in a header, so we can show
+      // what the rewrite actually bought: "64% → 89%".
+      const before = typeof job.beforeScore === 'number' ? job.beforeScore : lastBeforeScore;
+      const after = res.data && typeof res.data.afterScore === 'number' ? res.data.afterScore : null;
+      const matchText = after === null ? ''
+        : (typeof before === 'number' ? ` — Match: ${before}% → ${after}%` : ` — Match: ${after}%`);
+      globalStatus.className = 'tcv-status-text tcv-ok';
+      globalStatus.textContent = `✓ Downloaded resume for "${label}"${matchText}`;
+    }
 
     if (res.code === 'upgrade_required') quotaExceeded = true;
 

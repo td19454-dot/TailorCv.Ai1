@@ -133,6 +133,19 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             saveAs: false,
           });
           sendResponse({ data: { success: true } });
+      } else if (msg.type === 'GET_SKILL_MATCH') {
+        try {
+          const res = await fetch(`${BASE_URL}/api/extension/skill-match`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ jd_string: msg.jd_string }),
+          });
+          if (!res.ok) {
+            sendResponse({ error: 'Could not compute match score.' });
+            return;
+          }
+          sendResponse({ data: await res.json() });
         } catch (e) {
           sendResponse({ error: e.message });
         }
@@ -168,6 +181,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             return;
           }
 
+          const afterScoreHeader = res.headers.get('X-Skill-Match-After');
+          const afterScore = afterScoreHeader ? parseInt(afterScoreHeader, 10) : null;
+
           const buffer = await res.arrayBuffer();
           // Service workers have no DOM (no URL.createObjectURL), so build a data URL.
           const dataUrl = `data:application/pdf;base64,${arrayBufferToBase64(buffer)}`;
@@ -176,7 +192,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             filename: 'tailored_resume.pdf',
             saveAs: false,
           });
-          sendResponse({ data: { success: true } });
+          sendResponse({ data: { success: true, afterScore } });
         } catch (e) {
           sendResponse({ error: e.message });
         }
