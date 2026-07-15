@@ -384,10 +384,12 @@
       node = node.parentElement;
     }
 
-    const meta = document.querySelector('meta[property="og:site_name"]');
-    if (meta && meta.content) return meta.content.trim();
-    const parts = location.hostname.replace(/^www\./, '').split('.');
-    return parts[0] ? parts[0].charAt(0).toUpperCase() + parts[0].slice(1) : '';
+    // No reliable signal found. Guessing from meta[og:site_name] or the hostname
+    // used to fill this in, but both name the *site* (e.g. "LinkedIn"), not
+    // necessarily the hiring company — a wrong guess is worse than no company
+    // name at all, since renderReady()/label building already treat an empty
+    // company as "omit the 'at <company>' part" rather than showing a blank.
+    return '';
   }
 
   // ── The pipeline ─────────────────────────────────────
