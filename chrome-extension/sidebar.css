@@ -270,15 +270,15 @@
   align-items: center !important;
   justify-content: center !important;
   width: 100% !important;
-  height: 110px !important;
+  height: 170px !important;
 }
 .tcv-success-tick.tcv-visible {
   display: flex !important;
 }
 .tcv-success-tick svg,
 .tcv-success-tick img {
-  width: 110px !important;
-  height: 110px !important;
+  width: 170px !important;
+  height: 170px !important;
   display: block !important;
 }
 
