@@ -223,6 +223,21 @@
     /^who you are$/i, /^your role$/i,
   ];
 
+  // Some LinkedIn layouts (e.g. the jobs/collections views) render the
+  // description collapsed behind a "…see more" toggle, so the text actually in
+  // the DOM at read time can be too short/thin to pass as a JD. Expand it before
+  // reading. Scoped to a container we've already matched via a real section
+  // label, and to button-like elements only (never <a>, so this can't trigger
+  // an actual navigation) — not safe to run this broadly across the whole page.
+  function expandTruncatedText(container) {
+    for (const el of container.querySelectorAll('button, [role="button"]')) {
+      const label = (el.textContent || '').trim().toLowerCase();
+      if (/^(see|show)\s+more$/.test(label)) {
+        try { el.click(); } catch (_) { /* best effort */ }
+      }
+    }
+  }
+
   function fromHeadingLabel() {
     // Real <h1-h5>/<strong>/<b> tags are the exception, not the rule — most job
     // boards (LinkedIn included) render section labels as a plain, CSS-bolded
@@ -241,9 +256,10 @@
       let container = el.closest('section, article, div') || el;
       for (let i = 0; i < 6 && container; i++) {
         if (container === document.body || container === document.documentElement) break;
+        expandTruncatedText(container);
         const text = (container.innerText || '').trim();
         if (text.length >= MIN_JD_LENGTH && text.length <= 25000 && jdScore(text) >= 3) {
-          return { jd_string: clean(text), role: clean(guessRole()), company: clean(guessCompany()), source: 'heading' };
+          return { jd_string: clean(text), role: clean(guessRole()), company: clean(guessCompany(container)), source: 'heading' };
         }
         container = container.parentElement;
       }
@@ -299,6 +315,7 @@
     const budget = shortlist.slice(0, 150);
 
     let best = null;
+    let bestEl = null;
     let bestScore = 0;
 
     for (const el of budget) {
@@ -312,6 +329,7 @@
       // well as its parent is the description itself, not the page around it.
       if (score > bestScore || (score === bestScore && best && text.length < best.length)) {
         best = text;
+        bestEl = el;
         bestScore = score;
       }
     }
@@ -320,7 +338,7 @@
     return {
       jd_string: clean(best),
       role: clean(guessRole()),
-      company: clean(guessCompany()),
+      company: clean(guessCompany(bestEl)),
       source: 'heuristic',
     };
   }
@@ -331,7 +349,28 @@
     return (document.title || '').split(/[|–—-]/)[0].trim();
   }
 
-  function guessCompany() {
+  // A link to /company/... is LinkedIn's own URL-routing convention for "this is
+  // the hiring company," not a CSS class — far more stable than guessing at
+  // selectors. scopeEl (when given) is the JD container we already matched, so
+  // walking up from it keeps the search inside the selected job's own detail
+  // pane instead of finding some *other* job card's company link.
+  function guessCompany(scopeEl) {
+    const pickLink = (root) => {
+      for (const a of root.querySelectorAll('a[href*="/company/"]')) {
+        if (a.closest('#tailorcv-sidebar')) continue;
+        const text = (a.textContent || '').trim();
+        if (text && text.length <= 80) return text;
+      }
+      return null;
+    };
+
+    let node = scopeEl || null;
+    for (let i = 0; i < 6 && node; i++) {
+      const found = pickLink(node);
+      if (found) return found;
+      node = node.parentElement;
+    }
+
     const meta = document.querySelector('meta[property="og:site_name"]');
     if (meta && meta.content) return meta.content.trim();
     const parts = location.hostname.replace(/^www\./, '').split('.');
@@ -905,6 +944,29 @@
   const EXTRACT_TRIES = 10;      // ~8s of watching before we ask the user
   const EXTRACT_EVERY = 800;
 
+  // Some LinkedIn views (e.g. jobs/collections) hydrate slower than our ~8s
+  // watch window on a first navigation, but a hard reload reliably lands on a
+  // warmer cache/render and succeeds — confirmed by hand before wiring this up.
+  // Only ever fires once per exact URL (tracked in sessionStorage, which
+  // survives the reload) so a page that's genuinely broken falls through to
+  // the manual-paste screen instead of reloading forever.
+  function tryAutoRefreshOnce() {
+    // Only safe on the boards declared in the manifest's content_scripts — those
+    // auto-reinject on any reload. On a toolbar-opened arbitrary site (activeTab,
+    // no declared match) a reload would strand the tab with no panel at all,
+    // since nothing would re-inject us there.
+    if (!adapterForHost()) return false;
+    const key = 'tailorcv_auto_refreshed:' + location.href;
+    try {
+      if (sessionStorage.getItem(key)) return false;
+      sessionStorage.setItem(key, '1');
+    } catch (_) {
+      return false;   // sessionStorage unavailable — don't reload blind
+    }
+    location.reload();
+    return true;
+  }
+
   function renderJobFromPage(attempt = 0, gen = ++extractGen) {
     if (gen !== extractGen) return;   // a newer page took over
     if (quotaExceeded) { renderUpgradePrompt(); return; }
@@ -917,6 +979,7 @@
     }
 
     if (attempt >= EXTRACT_TRIES) {
+      if (tryAutoRefreshOnce()) return;   // page is reloading — nothing left to render
       logDiagnostics();
       renderManual();
       return;
