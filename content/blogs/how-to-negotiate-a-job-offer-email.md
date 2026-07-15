@@ -53,6 +53,57 @@ If base is capped, other levers often have room: signing bonus, equity, remote f
 
 Accept gracefully and stay positive: "Completely understand — I'm still very happy to accept, and I look forward to starting." A firm no on money is not a reason to sour the relationship you are about to build.
 
+## Do Your Research First
+
+You cannot anchor to market data you do not have. Before you counter, spend an hour gathering numbers:
+
+- **Salary databases and levels sites** for the role, level, and location.
+- **The posting itself** — many now list a range; if yours does, aim for the upper half if your experience justifies it.
+- **Your network** — a discreet question to a peer in a similar role is often the most accurate data of all.
+- **Recruiter signals** — if they asked your expectations early and the offer matches, there may be less room; if they came in low, there is usually room to move.
+
+Walk into the negotiation with a specific target number and a specific "walk-comfortably" floor. Vague hopes lose to prepared numbers.
+
+## Know Your Leverage
+
+Your negotiating power comes from a few sources, and knowing which you have shapes how hard you push:
+
+- **A competing offer** is the strongest leverage. You do not have to name the company; "I'm weighing another offer" is enough.
+- **Scarce, in-demand skills** give you room even without a competing offer.
+- **Being their clear top choice** — if they moved fast and chased you, they are invested and less likely to walk over a reasonable ask.
+- **Market data** that shows the offer is below range for the role.
+
+If you have none of these and the offer is already fair, one polite ask is still reasonable — but calibrate your expectations accordingly.
+
+## Beyond Base Salary: The Full List of Levers
+
+When base is capped, these often have room, and asking about them signals sophistication rather than greed:
+
+- **Signing bonus** — a one-time lever that does not affect the company's salary bands.
+- **Equity or stock** — meaningful at startups and larger tech firms.
+- **Annual bonus target** — worth clarifying and sometimes negotiable.
+- **Start date** — a later start to rest, or an earlier one for cash flow.
+- **Remote or hybrid flexibility** — sometimes worth more than money.
+- **Extra PTO** — a few extra days is a common, low-friction win.
+- **A signing-on review** — an agreed salary review at six months instead of twelve.
+- **Professional development budget** — courses, conferences, certifications.
+- **Title** — a better title can pay off at your *next* job search.
+
+Ask which pieces are flexible: "If the base is fixed, is there room on the signing bonus, equity, or start date?"
+
+## Common Negotiation Mistakes
+
+- **Not negotiating at all.** The most common and most expensive mistake. Most offers have room.
+- **Anchoring to personal need.** Rent and loans are not the employer's lever; market value is.
+- **Giving a range instead of a number.** Employers hear the bottom of your range. Give one clear number, slightly above target.
+- **Negotiating before you have the written offer.** Get the offer in hand first.
+- **Being adversarial.** You are about to join these people. Stay warm and collaborative throughout.
+- **Accepting on the spot out of excitement.** It is fine to say, "Thank you — I'm thrilled. Can I take a day to review and get back to you?"
+
+## After You Agree: Get It in Writing
+
+Once you settle on terms, confirm them in writing before you resign anywhere. A quick email — "Just confirming the base of [X], signing bonus of [Y], and start date of [Z]; excited to join!" — protects you and creates a clean record. Only after the final offer is documented should you [decline any other offers](https://thetailorcv.com/blog/how-to-decline-a-job-offer) and give notice at your current role.
+
 ## Frequently Asked Questions
 
 ### Will negotiating make them rescind the offer?
@@ -64,8 +115,22 @@ Aim 5–15% above the offer, anchored to real market data, so there is room to s
 ### Should I negotiate if the offer is already great?
 You can still ask once, warmly. If it is genuinely strong and you are thrilled, it is also fine to accept — trust your read of the situation.
 
+### What if they ask my current salary?
+You can redirect to your target range: "I'd rather focus on the value I'd bring to this role — I'm targeting [X to Y] based on the market." In many places employers can no longer require salary history, and anchoring to your target is smarter regardless.
+
+### How long should I take to respond to an offer?
+It is reasonable to ask for one to three days to review. Say thank you, express enthusiasm, and give a specific date you will respond by. A short, respectful pause is normal and expected.
+
+### Can I negotiate a job offer over the phone instead?
+You can, but email lets you word things carefully and creates a record. If they call to negotiate live, it is fine to listen and then say you will send your thoughts in writing shortly.
+
+## Putting It All Together
+
+Almost every offer has room, and the cost of a polite, well-reasoned ask is far smaller than the compounding cost of leaving money on the table. Do your research, anchor to market value rather than personal need, give one clear number, and negotiate the full package — not just base — while staying warm throughout. Get the final terms in writing before you resign or decline elsewhere. Handle it this way and you start the new job on better terms and with a relationship that is stronger, not strained.
+
 ## Related Guides
 
 - [How to Decline a Job Offer](https://thetailorcv.com/blog/how-to-decline-a-job-offer)
+- [How to Write a Two Weeks' Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
 - [Second Interview Questions and Answers](https://thetailorcv.com/blog/second-interview-questions-and-answers)
 - [How to Follow Up After a Job Application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application)

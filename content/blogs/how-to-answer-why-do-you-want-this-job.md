@@ -49,6 +49,49 @@ All three matter. Role-only sounds like you would take the same job anywhere; co
 
 Read the company's recent blog, product updates, or news, and the full job posting. One genuinely specific detail — a feature, a value they wrote down, a recent launch — is what turns a generic answer into a memorable one. Practice it in a [mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) so it sounds natural, not recited.
 
+## The Research Checklist
+
+You cannot give a specific answer without a specific fact, and you can gather several in ten minutes:
+
+1. **The full job posting.** The problems it describes are the problems you should say you want to solve. Reference them directly.
+2. **The company's recent blog or changelog.** A launch, a decision, or a point of view you genuinely find interesting.
+3. **Recent news or funding.** A new market, a milestone, a strategic shift.
+4. **The product itself.** If you can try it, one honest observation from real use is the strongest hook of all.
+5. **Your interviewers' public work.** A talk, an article, a project — something that tells you what the team values.
+
+Turn any one of these into a sentence, and your answer instantly separates you from every candidate who said "you're a leader in the industry."
+
+## Full Sample Answers, Annotated
+
+**Backend engineer at a fintech:**
+> "Two things. The role is squarely on the payment-reliability work I want to specialize in — that's the *role* fit. And I read your engineering blog's post-mortem on last quarter's outage, and the fact that you publish those instead of hiding them tells me a lot about the culture — that's the *company* fit. I want to grow into a senior reliability role, and I'd rather do it somewhere that treats failure as something to learn from."
+
+Notice all three parts: role, company, and direction, each anchored to a specific fact.
+
+**Marketing manager at a consumer app:**
+> "I've actually recommended your app to three friends this year, so I come at this as a genuine user first. Professionally, the role owns exactly the organic-growth engine I've spent my career building, and I'd love to build it somewhere that already values content over paid shortcuts — which your last year of work clearly shows."
+
+**Analyst switching from operations:**
+> "I've spent four years in operations, and the part I kept gravitating toward was the data behind the decisions. This role sits right at that intersection — analytics applied to operational problems I already understand deeply. Your team's focus on decisions over dashboards is exactly the practical approach I was hoping to find."
+
+## How This Connects to Other Common Questions
+
+"Why do you want this job?" rarely arrives alone. It sits alongside "Why are you leaving your current role?", "Where do you see yourself in five years?", and "Why should we hire you?" — and your answers should form one coherent story. If you say you want this role for its architectural ownership, your five-year answer should point in the same direction. Interviewers notice when the threads connect, and they notice when they contradict. Prepare these as a set, and rehearse them together in an [AI mock interview](https://thetailorcv.com/mock-interview) so the whole narrative sounds consistent and natural. Our [interview prep](https://thetailorcv.com/interview-prep) tool can generate the exact questions you are likely to face for a specific role, so you are never caught flat.
+
+## Tailor Your Whole Application, Not Just the Answer
+
+A specific answer to "why this job" is far easier to give when your entire application is already pointed at the role. If you have [tailored your resume](https://thetailorcv.com/optimize) to the posting — mirroring its language and emphasizing the relevant work — you have already done most of the thinking this question requires. The reasons you are a fit on paper are the same reasons you can articulate out loud. Candidates who spray generic applications struggle with this question precisely because they never engaged with what makes each role different.
+
+## Mistakes That Quietly Cost You the Offer, Revisited
+
+Beyond the obvious flubs, these subtler ones do real damage:
+
+- **A rehearsed monologue.** Memorized word-for-word, it sounds hollow. Know your three beats; let the exact words vary.
+- **Praising the company but not the role.** It sounds like you would take any job there, not this one.
+- **Praising the role but not the company.** It sounds like you would take this job anywhere.
+- **All ambition, no contribution.** "This role will help me grow" centers you. Balance it with what you will give.
+- **Contradicting your other answers.** If "why leaving" and "why this job" tell different stories, the interviewer trusts neither.
+
 ## Frequently Asked Questions
 
 ### What if I mostly want the job for the money?
@@ -60,8 +103,23 @@ Almost everyone needs the income; interviewers know that. Find a genuine seconda
 ### What if I don't know much about the company?
 Then research before the interview. Ten minutes on their site and recent news is the difference between a specific answer and a forgettable one.
 
+### How do I answer if it's genuinely just a stepping-stone role?
+Find the true part of your interest and lead with that — a specific skill you will build, a problem you will get to solve, a team you respect. You do not have to pretend it is your dream job, but you do have to show genuine, specific interest in *something* about it.
+
+### Is it okay to say I want the job for career growth?
+Yes, as one part of the answer, framed around what you will contribute while you grow. "I want to deepen my backend skills, and I can help you scale your payments system while I do" balances your growth with their gain.
+
+### How long should the answer be?
+Thirty to sixty seconds. Long enough to hit role, company, and direction; short enough to stay sharp. If you are still talking after a minute, you have drifted into rambling.
+
+## Putting It All Together
+
+"Why do you want this job?" is one of the most predictable interview questions and one of the most commonly fumbled. Connect three things — something specific about the role, something specific about the company, and how it fits your direction — and anchor each to a real fact you gathered in ten minutes of research. Keep your answer consistent with your other responses, and rehearse the whole set together. Do that and you turn a throwaway question into clear proof that you did your homework and genuinely want *this* role, not just any role.
+
 ## Related Guides
 
 - [Phone Screen Interview Tips](https://thetailorcv.com/blog/phone-screen-interview-tips)
 - [Second Interview Questions and Answers](https://thetailorcv.com/blog/second-interview-questions-and-answers)
+- [Video Interview Tips for 2026](https://thetailorcv.com/blog/video-interview-tips-2026)
+- [Thank-You Email After an Interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates)
 - [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
