@@ -120,6 +120,21 @@ Yes, as one part of the answer, framed around what you will contribute while you
 ### How long should the answer be?
 Thirty to sixty seconds. Long enough to hit role, company, and direction; short enough to stay sharp. If you are still talking after a minute, you have drifted into rambling.
 
+### What if I'm interviewing at several similar companies?
+Then the *company* half of your answer matters most — it is what differentiates otherwise similar roles. Find the specific thing that makes each company distinct (their culture, a product decision, a value they wrote down) so your answer could not be swapped between them.
+
+### Should I mention the specific team or product?
+Yes, when you can. Referencing the actual team, product, or problem you would work on shows you read the posting closely and thought about the day-to-day, not just the company name. Specificity is always more convincing than generality.
+
+### Is enthusiasm enough, or do I need substance?
+You need both, but substance carries more weight. Genuine energy is attractive, yet without a specific reason behind it, it reads as generic. Pair your enthusiasm with a concrete detail about the role and company, and it becomes credible rather than performed.
+
+### How is this different from "why should we hire you?"
+"Why do you want this job?" is about your motivation and fit — what draws *you* to the role. "Why should we hire you?" is about your value — what *you* bring to them. Prepare them as a pair: one points at the company, the other at your contribution, and together they tell a consistent story.
+
+### What if the interviewer seems unconvinced by my answer?
+Add a specific, concrete detail. Vague answers get lukewarm reactions; naming an actual project, value, or problem you would work on usually shifts the energy. If you sense doubt, it is a signal to get more specific, not more enthusiastic.
+
 ## Putting It All Together
 
 "Why do you want this job?" is one of the most predictable interview questions and one of the most commonly fumbled. Connect three things — something specific about the role, something specific about the company, and how it fits your direction — and anchor each to a real fact you gathered in ten minutes of research. Keep your answer consistent with your other responses, and rehearse the whole set together. Do that and you turn a throwaway question into clear proof that you did your homework and genuinely want *this* role, not just any role.

@@ -136,6 +136,20 @@ Neither, ideally — write it in implied first person without the pronoun: "Cont
 ### Can I reuse the same summary on LinkedIn?
 Adapt it, do not copy it. Your resume summary is tight and role-targeted; your [LinkedIn About section](https://thetailorcv.com/blog/linkedin-summary-examples-2026) is longer, first-person, and warmer. Same facts, different voice.
 
+### Should the summary change for every job I apply to?
+Ideally yes, at least lightly. Swap the role title to match the posting, lead with the most relevant metric, and mirror two or three of the job's keywords. A summary tuned to the specific role reads as written for it — because it was — and scores better with the ATS.
+
+### What tense should I write it in?
+Present tense, implied first person, no pronouns: "Backend engineer who builds reliable payment systems," not "I build" or "Built." It reads cleanly, saves space, and keeps the focus on your current, ongoing value.
+
+## When to Skip the Summary Entirely
+
+A summary is not mandatory, and a weak one is worse than none. If you cannot write a summary that says something specific and true — a real metric, a genuine specialty, a clear direction — leave it off and let a strong experience section lead instead. This is often the right call for a straightforward early-career resume where the projects and skills speak for themselves, or for a candidate whose most recent role obviously matches the target. The summary earns its space only when it *frames* something the reader might otherwise miss: a career change, a mix of experiences that needs a through-line, or a senior story that benefits from a headline. If your resume is already clear and targeted without it, three lines of generic self-description at the top only push your real evidence further down the page.
+
+## Common Words to Cut From Your Summary
+
+The fastest way to strengthen a summary is to delete the words that appear on everyone else's. Cut "hardworking," "motivated," "detail-oriented," "results-driven," "passionate," "team player," "go-getter," "self-starter," and "dynamic." None of them are provable, all of them are claimed by thousands of other candidates, and each one you delete makes room for something real — a number, a named skill, a specific outcome. Read your summary and highlight every adjective; for each one, ask whether it is a testable fact or an empty claim. Replace the empty claims with evidence. "Results-driven marketer" becomes "marketer who grew organic traffic 140%." "Detail-oriented analyst" becomes "analyst whose reporting overhaul cut monthly close errors to near zero." The specific version is always shorter on adjectives and longer on proof — which is exactly the trade that makes a recruiter believe you.
+
 ## Putting It All Together
 
 A resume summary is three lines of prime real estate at the top of your resume, and most people waste them on adjectives. Use the formula — identity, quantified proof, focus — mirror the target posting's language, and lead with a real number. Tailor it to every job, whether by hand or with a [resume optimizer](https://thetailorcv.com/optimize) that matches it to the description automatically. Get those three lines right and you earn the one thing a summary exists to win: the recruiter's attention for the rest of the page.

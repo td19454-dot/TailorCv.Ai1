@@ -163,6 +163,20 @@ Apply anyway if you meet most of the other criteria. "Years required" is often a
 ### Is a skills-based (functional) layout better when I have no experience?
 No — use a standard layout that leads with skills and projects but keeps a clear, dated structure. Pure functional resumes confuse the ATS and worry recruiters. Projects-first-but-still-chronological is the sweet spot.
 
+### Should I include hobbies and interests?
+Only if they are genuinely relevant or reveal a transferable skill — a coding hobby for a tech role, a competitive sport that shows discipline. A generic list of hobbies wastes space that a project or skill would use better.
+
+### How do I make my resume stand out without experience?
+Specificity and tailoring. A described project with a real result, skills that mirror the exact posting, and a resume clearly customized to the role beat a generic template every time. Effort is the one advantage you fully control, and it shows.
+
+## Handling the Experience Section When It's Nearly Empty
+
+Even with little formal work history, an experience section should rarely be blank — the trick is knowing what legitimately belongs there. Part-time and summer jobs count, and should be framed around transferable results rather than duties. Internships, however short, count. Significant volunteering counts, especially if you held a role with responsibility. Paid freelance or gig work counts, even a one-off logo or a website you built for a friend's business. If you genuinely have none of these, promote your projects and coursework to carry the resume, and consider taking on one small real thing this month — a volunteer stint, a freelance micro-project, an open-source contribution — that gives you a single honest line. The goal is not to inflate; it is to recognize that "experience" is broader than "full-time jobs," and to present the real experience you have in professional terms.
+
+## Beating the Confidence Problem
+
+Many career starters undersell themselves out of a belief that they have nothing worth listing, and that belief quietly produces a weak, apologetic resume. The fix is partly practical and partly mindset. Practically, walk through every course, project, job, and activity and extract the concrete thing you did and the result — you will almost always find more than you expected. In terms of mindset, remember what entry-level employers are actually buying: not a long track record, but evidence of trajectory, initiative, and the ability to learn fast. A candidate who describes a class project with the same specificity and pride as a professional would describe a work project reads as someone ready for the real thing. Confidence on the page is not arrogance; it is simply presenting your genuine work as though it matters — because to the employer deciding whether to bet on you, it does.
+
 ## Putting It All Together
 
 "No experience" is a framing problem, not a dead end. Lead with skills, treat your best projects like jobs, turn part-time work into outcome-focused bullets, keep it to one tailored page, and back it with a cover letter that tells your story. Do that and you stop competing as "the candidate with no experience" and start competing as "the candidate who clearly builds things" — which is exactly who gets the first interview.

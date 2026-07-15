@@ -138,6 +138,20 @@ Lead with genuine, specific admiration plus a clear reason you are reaching out:
 ### Is humor okay in a cover letter opener?
 A light, genuine touch can work if it fits the company's tone and never comes at the reader's expense. When unsure, warmth beats jokes — being specific and human lands more reliably than being funny.
 
+### Should the opener be different for a formal industry versus a startup?
+Yes. Mirror the tone you see in the company's own writing — crisp and professional for a bank or law firm, warmer and more personal for an early-stage startup. A hook that fits the culture feels native; one that clashes with it feels off, no matter how clever.
+
+### How many times can I reuse a good opener?
+Reuse the *structure* freely, but never the exact sentence — the specific detail that makes an opener work has to be true for each company. A hook that could be pasted, unchanged, into another application has failed the specificity test and will not land.
+
+## Openers to Avoid at All Costs
+
+Just as important as knowing what works is recognizing the openers that quietly sink a cover letter. "I am writing to apply for the [position] I saw on [job board]" restates what the reader already knows and wastes the one line most likely to be read. "To whom it may concern" signals you did not bother to find a name. "My name is [Name] and I am a [job title]" is information already on your resume. "I believe I would be a great fit for this role" asserts the very thing you are supposed to prove. "I am the perfect candidate for this position" is empty confidence with nothing behind it. And any opener that could be pasted, unchanged, into an application for a completely different company has failed the specificity test by definition. If your first line survives a find-and-replace of the company name without becoming false, it is too generic to earn attention.
+
+## Testing Your Opener Before You Send
+
+Before you commit to an opening line, run it through three quick checks. First, the **swap test**: could this exact sentence open a letter to a different company? If yes, add the specific, true detail that makes it yours. Second, the **so-what test**: does the line give the reader a reason to keep reading, or does it merely announce that you are applying? Third, the **honesty test**: is every claim in it genuinely true — the metric real, the admiration sincere, the connection actual? An opener that passes all three is specific, compelling, and credible, which is exactly the combination that buys you the next thirty seconds. If you drafted the letter with an [AI cover letter generator](https://thetailorcv.com/cover-letter), this is the moment to rewrite the machine's competent-but-generic opener into one only you could have written.
+
 ## Putting It All Together
 
 The opening line is the most valuable sentence in your cover letter, and most people waste it on "I am writing to apply." Spend ten minutes finding one true, specific detail about the role or company, pair it with one credential that proves you can deliver, and match the company's tone. Do that, and you buy the next thirty seconds of the recruiter's attention — which is all a cover letter is really trying to win.

@@ -132,6 +132,20 @@ Try to find the hiring manager or recruiter on LinkedIn first. If you genuinely 
 ### How is a cover letter different from my resume?
 The resume is a structured list of skills and evidence; the cover letter is a short, first-person story that explains who you are, why you want the role, and what a project or experience taught you. Same facts, different job.
 
+### Should I mention my GPA or grades in the cover letter?
+Only if they are strong and relevant, and even then a brief mention is enough — the resume is the place for grades. The letter is better spent on a specific project, your genuine interest, and what you bring beyond a number.
+
+### What if I'm applying to a field unrelated to my degree?
+Lead with transferable skills and genuine motivation. Explain, briefly and positively, why you are drawn to this field, and prove capability with any relevant project, course, or self-taught skill. A career-curious candidate with a clear reason and real initiative is compelling, degree match or not.
+
+## Connecting Your Cover Letter to Your Resume
+
+Your cover letter and resume are a matched pair, and they should tell one coherent story rather than repeat each other. The resume lists your projects, skills, and any experience in structured form; the cover letter picks the single most relevant item from that list and tells the story behind it — what you built, what you learned, why it matters for this role. If your resume shows a capstone project, your cover letter is where you bring it to life. This division of labor is especially powerful when you have little experience, because the resume can look thin on its own, while the letter adds the context, motivation, and voice that turn a short list of projects into a compelling case. Make sure the two agree — the same projects, the same skills, the same direction — so a reader moving from one to the other sees a consistent, deliberate candidate. If you are still assembling the resume itself, the [resume builder](https://thetailorcv.com/modify-cv) gives you a clean structure to pair with the letter.
+
+## The Confidence to Apply Before You Feel Ready
+
+The biggest obstacle for career starters is not writing ability — it is the belief that they should not apply until they have "enough" experience. That belief keeps strong candidates on the sidelines while less qualified but bolder ones get the interviews. Job postings that list "2+ years required" are usually wish lists, not hard filters, especially for junior roles, and a specific, genuine cover letter can outweigh a missing year on paper. The entire purpose of the letter, when you are early in your career, is to make the case that potential and demonstrated initiative are worth more than a longer track record — and for the right employer, they are. Apply to the roles you *want*, make your case with a specific story and real enthusiasm, and let the employer decide. The candidate who applies with a thoughtful letter and a genuine project beats the one who waited another year to feel ready.
+
 ## Putting It All Together
 
 With little work history, the cover letter is your most powerful document — it is where drive, fit, and a real project can outweigh a thin resume. Open with a specific reason you want the role, prove your ability with one concrete story instead of asserting traits, keep it to three tight paragraphs, and tailor it to each company. Do that and you compete not as "the candidate with no experience," but as the one who clearly wants it most and has already started building.

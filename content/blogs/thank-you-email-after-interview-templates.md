@@ -142,6 +142,23 @@ Yes, once and genuinely. "This is my top choice and I'm confident I'd contribute
 ### Should I mention salary or logistics in the thank-you?
 No. Keep the thank-you about the conversation and your fit. Save compensation and logistics for the recruiter and the offer stage, where they belong.
 
+### What if I interviewed with someone very senior, like a founder or VP?
+Send them a note too, kept slightly more concise and focused on the strategic or vision-level topics you discussed. Senior leaders appreciate brevity and a sharp, specific point over a long message.
+
+### Can a thank-you email actually change the decision?
+It rarely overturns a clear no, but in a close race between similar candidates it genuinely tips decisions — and a missing one can cost you. Its real power is reinforcing a good impression and keeping you top of mind during the deliberation.
+
+### Should I connect on LinkedIn after the interview too?
+It is fine to send a connection request with a brief, warm note after your thank-you, especially to the hiring manager. Keep it professional and low-pressure; the email is the priority, and the connection is a nice supplement.
+
+## How to Write One Fast Without Sounding Generic
+
+The excuse for not sending a thank-you is usually time, but a genuine one takes five minutes if you prepare during the interview itself. As you talk, mentally note one moment worth referencing — a problem the interviewer described, a point you connected on, a topic that lit them up. The instant the interview ends, jot that note down before it fades. Then your email writes itself: thank them, reference that exact moment, add one sentence reinforcing your fit, and close warmly. The whole thing is four to six sentences. The preparation is not extra work; it is just paying attention during a conversation you are already having. Candidates who treat the thank-you as an afterthought scramble for something generic; candidates who capture one specific detail in the moment send a note that proves they were genuinely present.
+
+## The Rejection Thank-You (Yes, Really)
+
+Almost nobody sends a thank-you after being rejected, which is exactly why doing so is powerful. A brief, gracious note — "Thank you for the opportunity and the thoughtful process; I really enjoyed meeting the team, and I'd welcome being considered for future roles" — leaves a lasting impression on a hiring manager who is used to candidates going cold or bitter after a no. Roles reopen, chosen candidates decline, and hiring managers move to new companies with their impressions intact. More than one person has been called back weeks or months later precisely because they handled a rejection with grace. It costs two minutes and it keeps a door open that most people slam. In a job search, the relationships you maintain after a "no" are often worth as much as the ones you build during a "yes."
+
 ## Putting It All Together
 
 A thank-you email rarely wins a job outright, but a thoughtful one can tip a close decision and a missing one can quietly cost you. Send it within 24 hours, reference something real from the conversation, reinforce one reason you fit, and keep it short. Do that after every round — individually to each interviewer — and you leave a final impression of someone engaged, professional, and easy to say yes to.

@@ -132,6 +132,20 @@ No, and they can get you rejected. Parsers read hidden text, and any recruiter w
 ### How many keywords should I include?
 Enough to cover the posting's core hard skills and title, used naturally in context. There is no magic count — relevance and natural placement matter far more than volume, and stuffing lowers your quality signal.
 
+### Does the file name of my resume matter?
+It is a small touch, but a clean, professional file name like "Firstname-Lastname-Resume.pdf" looks more polished than "resume-final-v3.pdf" and is easier for a recruiter to file. It does not affect parsing, but it affects the human impression.
+
+### Will using a template from a design tool hurt my ATS chances?
+It can, if the template uses columns, tables, text boxes, or graphics to look striking — those often scramble when parsed. Choose a clean, single-column template exported as a text-based file, and you keep the polish without the parsing risk.
+
+## How Different ATS Platforms Behave
+
+Not all applicant tracking systems are equal, and you rarely know which one a company uses — which is exactly why you build for the strictest common denominator. Some platforms are sophisticated, handling modern layouts and understanding related terms; others are older and more literal, matching keywords narrowly and choking on anything but a plain single-column structure. A few power the "easy apply" flows on major job boards and parse your resume into their own fields, where any formatting cleverness is stripped away entirely. Because you cannot detect which one stands between you and the recruiter, the safe strategy is universal: a clean single-column layout, standard headings, a text-based file, and exact-match keywords in real sentences. Build for the least capable parser and you pass all of them; build for the most capable and you gamble on which one you drew.
+
+## The Balance Between ATS and Human Readers
+
+The trap many candidates fall into is optimizing so hard for the software that they forget a person reads next. A resume stuffed with keywords and stripped of personality clears the parse and then bores or annoys the recruiter it reaches. The opposite trap — a beautiful, design-forward resume with no keyword discipline — never reaches a human at all. The resume that wins does both at once: it is cleanly parseable *and* genuinely compelling, with exact-match keywords living inside strong, quantified bullets that a person actually enjoys reading. "Rebuilt the checkout API in Python, cutting p95 latency 40%" carries the keyword for the machine and the achievement for the human in a single line. Aim for every important bullet to serve both audiences, and you stop choosing between passing the filter and impressing the reader — you do both. A [resume optimizer](https://thetailorcv.com/optimize) is built around exactly this balance, matching the posting's language while keeping your bullets human.
+
 ## Putting It All Together
 
 Passing an ATS in 2026 is not about tricks; it is about being readable and relevant. Use a single-column layout with standard headings, export a text-based file, and mirror the posting's exact keywords inside real, results-driven bullets. Run the 60-second copy-paste test before every submission, and tailor each application to the specific role. Do that and you clear the software filter reliably — and reach the human who actually makes the decision.
