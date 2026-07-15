@@ -651,7 +651,7 @@
     clearInterval(progressTimer);
     progressTimer = setInterval(() => {
       const elapsedSeconds = (performance.now() - startedAt) / 1000;
-      setProgress(92 * (1 - Math.exp(-elapsedSeconds / 15))); // eases toward 92%, never quite reaches it
+      setProgress(92 * (1 - Math.exp(-elapsedSeconds / 7.5))); // eases toward 92% (2x speed), never quite reaches it
     }, 150);
   }
 
