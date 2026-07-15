@@ -1199,6 +1199,71 @@ def compute_skill_match_score(resume_text: str, jd_string: str) -> dict:
     return {"score": score, "matched": matched, "missing": missing, "total_skills": total}
 
 
+def compute_skill_match_score_structured(parsed: dict, jd_string: str) -> dict:
+    """Deterministic skill-match score for a TAILORED resume's structured JSON
+    output (as opposed to compute_skill_match_score() above, which matches
+    against one flat text blob — the only thing available for an unstructured
+    base-resume PDF).
+
+    A flat-text match on a tailored resume is misleading: inject_jd_hard_skills()
+    guarantees every JD hard skill lands in the `skills` array regardless of
+    whether the candidate actually has it, so scoring the whole resume as one
+    blob makes that guaranteed injection count the same as a skill genuinely
+    demonstrated in the candidate's own experience — the score comes out near
+    100% almost by construction, which is not a meaningful signal.
+
+    This checks two sources independently and blends them:
+      - the `skills` array (force-injected, ~100% after tailoring by design)
+      - bullet/summary text — experience bullets, project bullets, and the
+        summary — never force-injected, so bounded by what the resume's own
+        content actually supports.
+
+    Averaging the two means a resume can't reach 100% on the skills section
+    alone; the bullets have to genuinely back it up too."""
+    jd_skills = _extract_hard_skills_from_jd(jd_string)
+    total = len(jd_skills)
+    if not total:
+        return {"score": None, "matched": [], "missing": [], "total_skills": 0}
+
+    data = parsed if isinstance(parsed, dict) else {}
+    skills_text = " ".join(str(s) for s in (data.get("skills") or []) if s)
+
+    bullet_parts: list[str] = [str(data.get("summary") or "")]
+    for exp in (data.get("experience") or []):
+        if isinstance(exp, dict):
+            bullet_parts.extend(str(b) for b in (exp.get("bullets") or []))
+    for proj in (data.get("projects") or []):
+        if isinstance(proj, dict):
+            bullet_parts.extend(str(b) for b in (proj.get("bullets") or []))
+    bullets_text = " ".join(bullet_parts)
+
+    matched: list[str] = []
+    missing: list[str] = []
+    skills_hits = 0
+    bullets_hits = 0
+    for skill in jd_skills:
+        in_skills = _contains_skill(skills_text, skill)
+        in_bullets = _contains_skill(bullets_text, skill)
+        if in_skills:
+            skills_hits += 1
+        if in_bullets:
+            bullets_hits += 1
+        (matched if (in_skills or in_bullets) else missing).append(skill)
+
+    skills_fraction = skills_hits / total
+    bullets_fraction = bullets_hits / total
+    score = round((skills_fraction + bullets_fraction) / 2 * 100)
+
+    return {
+        "score": score,
+        "matched": matched,
+        "missing": missing,
+        "total_skills": total,
+        "skills_section_pct": round(skills_fraction * 100),
+        "bullets_pct": round(bullets_fraction * 100),
+    }
+
+
 # Bullet / list-marker characters that sometimes leak into AI output values.
 _BULLET_CHARS = "•‣▪◦●·*–—-"
 
