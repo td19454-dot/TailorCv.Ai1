@@ -140,7 +140,7 @@ Simple and clear: "Thank you — [Role] interview" or "Great speaking with you t
 Yes, once and genuinely. "This is my top choice and I'm confident I'd contribute quickly" is fine if true. Just avoid repeating it in every sentence, which tips from confident into anxious.
 
 ### Should I mention salary or logistics in the thank-you?
-No. Keep the thank-you about the conversation and your fit. Save compensation and logistics for the recruiter and the offer stage, where they belong.
+No. Keep the thank-you about the conversation and your fit. Save compensation and logistics for the recruiter and the [offer and negotiation stage](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email), where they belong.
 
 ### What if I interviewed with someone very senior, like a founder or VP?
 Send them a note too, kept slightly more concise and focused on the strategic or vision-level topics you discussed. Senior leaders appreciate brevity and a sharp, specific point over a long message.
