@@ -265,34 +265,67 @@
   color: #eaf1ff !important;
   transition: opacity 0.25s ease !important;
 }
-.tcv-progress-pct.tcv-hidden {
-  opacity: 0 !important;
+.tcv-success-tick {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 110px !important;
+}
+.tcv-success-tick.tcv-visible {
+  display: flex !important;
+}
+.tcv-success-tick svg,
+.tcv-success-tick img {
+  width: 110px !important;
+  height: 110px !important;
+  display: block !important;
 }
 
-.tcv-progress-bar.tcv-success {
-  stroke: #4ade80 !important;
-  transition: stroke 0.3s ease !important;
+.tcv-score-card {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  padding: 16px 12px !important;
+  margin: 4px 0 !important;
+  border-radius: 12px !important;
+  background: linear-gradient(160deg, rgba(79,127,255,0.12), rgba(74,222,128,0.12)) !important;
+  border: 1px solid rgba(74,222,128,0.3) !important;
+}
+.tcv-score-card.tcv-visible {
+  display: flex !important;
 }
 
-.tcv-check-icon {
-  position: absolute !important;
-  inset: 0 !important;
-  opacity: 0 !important;
-  transform: scale(0.7) !important;
-  transition: opacity 0.3s ease, transform 0.3s ease !important;
+.tcv-score-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 2px !important;
 }
-.tcv-check-icon.tcv-visible {
-  opacity: 1 !important;
-  transform: scale(1) !important;
+
+.tcv-score-num {
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #cbd5e1 !important;
+  line-height: 1 !important;
 }
-.tcv-check-icon #tcvCheckPath {
-  stroke-dasharray: 60 !important;
-  stroke-dashoffset: 60 !important;
-  transition: none !important;
+.tcv-score-num.tcv-score-after {
+  color: #4ade80 !important;
 }
-.tcv-check-icon.tcv-visible #tcvCheckPath {
-  stroke-dashoffset: 0 !important;
-  transition: stroke-dashoffset 0.4s ease 0.1s !important;
+
+.tcv-score-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.tcv-score-arrow {
+  font-size: 20px !important;
+  color: #4f7fff !important;
+  font-weight: 700 !important;
 }
 
 .tcv-log {
