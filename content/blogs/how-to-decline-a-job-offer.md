@@ -122,6 +122,23 @@ No. A warm, general reason ("a closer fit for my goals right now") is standard a
 ### Should I tell them which company I chose instead?
 You do not have to, and usually should not volunteer it. If asked directly and you are comfortable sharing, a brief answer is fine — but keep the focus on gratitude, not comparison.
 
+### How quickly should I decline once I've decided?
+As soon as you have confirmed the offer you are accepting, in writing. The company you are declining is holding a spot and often a runner-up, so a prompt no is a professional courtesy that lets everyone move forward.
+
+### Is it okay to decline by email, or should I call?
+Email is professional, standard, and gives you a clear record — it is completely acceptable. A brief call is a thoughtful touch for a role you were very close on or where you built a real rapport, but it is never required.
+
+### What if they counter my decline with a better offer?
+It happens. Take it seriously if the improved offer genuinely changes your decision, but be honest with yourself about why you were declining. If the original issue was fit or direction rather than money, a higher number may not fix it — and reversing course requires real conviction, not just flattery.
+
+## What to Do If You Have Second Thoughts After Declining
+
+Occasionally you decline an offer and then wonder if you made a mistake — the role you chose sours, or the one you turned down starts to look better in hindsight. Because you declined graciously, you have options. A warm, honest note can sometimes reopen a door: "I know I withdrew, and I completely understand if the moment has passed, but my circumstances have changed and I remain genuinely excited about the role — is there any chance it's still open?" This works precisely *because* your original decline was respectful; a company remembers a gracious candidate fondly and may welcome you back, especially if their search is still ongoing. It will not always succeed — the role may be filled — but the fact that it is even possible is the dividend of declining well. A burned bridge offers no path back; a well-tended one sometimes does.
+
+## Declining Recruiter Outreach You're Not Interested In
+
+Not every decline is about a formal offer — recruiters will approach you about roles you do not want, and how you handle those messages also shapes your reputation. Rather than ignoring them, a brief, warm reply pays off: "Thanks for reaching out! I'm happy where I am right now and not exploring, but I appreciate you thinking of me — feel free to keep me in mind down the road." This takes fifteen seconds, keeps the recruiter in your corner, and means that when you *are* looking, you have a warm contact instead of a cold inbox. Recruiters have long memories and move between companies; the ones who feel treated respectfully when you said no are the ones who champion you when you eventually say yes. Treat every decline, from a full offer to a casual message, as an investment in a network you will draw on for the rest of your career.
+
 ## Putting It All Together
 
 Declining an offer well is a small act with a long shadow. Respond promptly and in writing, address a real person warmly, keep it brief, and never trash the offer or the team — even when pay drove your decision. Keep the door open with a genuine "I hope our paths cross again," because the industry is smaller than it looks and today's decline can be tomorrow's opportunity. Five gracious minutes now protects relationships worth far more later.

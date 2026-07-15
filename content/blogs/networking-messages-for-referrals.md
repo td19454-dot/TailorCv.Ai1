@@ -113,6 +113,9 @@ Sometimes a contact offers a quick chat before referring you — treat it as a m
 
 ## Frequently Asked Questions
 
+### How many people should I ask?
+Focus on a warm few rather than a cold many. Five thoughtful, personalized requests to people who know your work will beat fifty generic ones to strangers. Quality of relationship drives referral outcomes far more than volume.
+
 ### Is it rude to ask a stranger for a referral?
 Not if you are respectful, specific, and offer an easy out. Most people remember being job seekers and are happy to help when the ask is low-effort.
 
@@ -130,6 +133,20 @@ Yes. Most referral systems require an application on file so the referrer can at
 
 ### How long should I wait before following up on a referral ask?
 Give it about a week. People are busy and a referral is a favor, not an obligation. One gentle nudge is fine; after that, move on warmly.
+
+### What if I don't have a network yet?
+Start building one now, even mid-search: reconnect with former colleagues and classmates, engage genuinely with people's work online, and join communities in your field. You do not need thousands of contacts — a handful of genuine relationships can produce the referral that changes everything.
+
+### Should I offer something in return for a referral?
+You do not owe anyone a transaction, but a spirit of reciprocity strengthens every relationship. Offer help where you can — an introduction, a share, your own referral someday. People help those who they sense would help them back, and generosity compounds over a career.
+
+## Handling the Awkwardness
+
+The reason people avoid asking for referrals is emotional, not logical — it feels like imposing, like admitting you need help, like risking a no. Naming that feeling is the first step past it. The reality is that most people genuinely like helping, especially when the ask is easy and low-pressure, and especially when their company pays a referral bonus for a good hire. You are not begging; you are offering someone a chance to help fill a role their team needs with a candidate they can vouch for. Reframe it that way and the message gets easier to write. It also helps to remember that you will be on the other side someday — people will ask *you* for referrals, and you will mostly be glad to help. Asking well, and thanking sincerely, is simply participating in the normal give-and-take of a professional community.
+
+## When a Referral Isn't the Right Ask
+
+Sometimes the person you are reaching out to cannot or should not refer you — they are too new, they do not know your work well enough to vouch honestly, or the role is outside their orbit. In those cases, do not push for a referral they are not comfortable giving; a lukewarm referral can hurt more than none. Instead, ask for something smaller and genuinely useful: a bit of perspective on the team, an introduction to the right person, or feedback on how your background fits. These lighter asks keep the relationship warm, respect the other person's position, and often lead to a real referral later once they know you better. The goal is not to extract a referral from everyone — it is to build a network of people who think well of you, some of whom will advocate for you when the timing and fit are right.
 
 ## Putting It All Together
 

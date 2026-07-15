@@ -108,6 +108,23 @@ Whatever structure you choose, these rules keep it parseable and readable:
 
 Get the format and these fundamentals right, and you have cleared the mechanical hurdles before a human ever reads a word — which frees your content to do its job.
 
+## Building a Reverse-Chronological Resume Section by Section
+
+Since this is the format almost everyone should use, here is how to structure it well from top to bottom:
+
+1. **Contact block.** Name, phone, email, city, and links (LinkedIn, portfolio, GitHub) — in the body, never in a header or footer a parser might skip.
+2. **Summary.** Two or three lines stating who you are, your strongest quantified proof, and your target — tuned to the specific role.
+3. **Experience.** Newest job first. For each: title, company, location, dates, then three to five bullets led by strong verbs and quantified results. Lead each role with its most impressive, relevant bullet.
+4. **Skills.** A clean, grouped list of genuine hard skills that mirror the posting's language.
+5. **Education.** Degree, institution, graduation year, and relevant honors or coursework if early-career.
+6. **Optional sections.** Certifications, projects, or publications, if they strengthen your case for this role.
+
+The order can flex slightly — technical and early-career candidates often move skills or projects higher — but the reverse-chronological experience section stays the backbone, because it is what recruiters and parsers both expect.
+
+## Common Questions About Ordering and Emphasis
+
+Within the reverse-chronological format, a few ordering decisions come up repeatedly. If your most recent role is *less* relevant than an older one, you still keep the chronological order but lead the relevant role with stronger, fuller bullets so it draws the eye. If you have a standout project or a prestigious certification, it is fine to surface a "Selected Projects" or "Certifications" section above older experience. And if your education is your strongest asset — a fresh graduate from a strong program — education can sit near the top until your work history outgrows it. The principle underneath all of these: keep the honest chronological structure, but use section placement and bullet emphasis to guide attention toward your most relevant, most impressive material. That is the entire art of the format — clarity of timeline, with your best foot deliberately forward.
+
 ## Frequently Asked Questions
 
 ### I'm changing careers — should I use a functional resume?
@@ -130,6 +147,15 @@ Better to use a standard layout that leads with skills and projects but keeps cl
 
 ### Does the format change for senior roles?
 The format stays reverse-chronological, but the emphasis shifts: a senior resume leads with a strong summary and lets recent, high-impact roles dominate, with early-career jobs compressed to a line or two.
+
+### How do I handle many short contract roles?
+Keep reverse-chronological order, but consider grouping related short contracts under one heading like "Contract & Freelance Work" with an overall date range, then listing each engagement beneath. This preserves the timeline while preventing a fragmented, job-hopping appearance.
+
+### Should a two-page resume repeat my name on page two?
+Yes — add your name and "page 2" in the body of the second page (not a header/footer that a parser skips), so if the pages are separated, the second is still identifiable. Keep the format identical across both pages.
+
+### Is a one-page resume always better?
+Not always. One page is right for early-career candidates; experienced professionals with a decade of relevant work can use two. The rule is relevance, not length — every line should earn its place, whether you fill one page or two.
 
 ## Putting It All Together
 

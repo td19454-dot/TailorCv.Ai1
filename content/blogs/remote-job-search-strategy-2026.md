@@ -125,6 +125,20 @@ Not inherently, but you have to be more intentional — over-communicate your wi
 ### What's the fastest way to stand out for a remote role?
 A tailored application plus a referral. Tailoring gets you past the ATS and the sheer volume; a referral gets a human to actually look. Together they beat any amount of mass applying.
 
+### How do I show I can work independently if I've never worked remotely?
+Point to any self-directed work you have done — projects you drove without close supervision, deadlines you owned, or situations where you figured things out alone. Independence and clear communication are the traits that transfer; frame your existing experience around them.
+
+### Are remote roles more competitive than in-office ones?
+Generally yes, because a single remote posting is open to an entire country or region and can draw thousands of applicants. That is precisely why selectivity, tailoring, and referrals matter more for remote roles than the mass-application approach that sometimes works locally.
+
+## Hybrid and Region-Locked "Remote" Roles
+
+Not every job labeled "remote" is fully or globally remote, and understanding the variations saves you wasted applications. Many "remote" roles are actually **hybrid** — remote most days but requiring occasional office visits — so check whether you are within commuting range of any listed hub. Others are **region-locked**: remote, but only for candidates in a specific country or set of countries, usually for tax, legal, and payroll reasons. A role that says "remote (US)" genuinely cannot hire someone in another country, no matter how strong. And some are **time-zone-locked**, requiring substantial overlap with a particular region's working hours. Read the fine print before investing effort, and when you apply, address the relevant dimension head-on — confirm your eligibility, your location, or your overlap — so the recruiter's biggest unspoken concern is answered before they have to ask.
+
+## The Remote Interview Process
+
+Remote roles almost always mean a fully remote hiring process, which has its own rhythm. Expect more asynchronous steps — a written exercise, a recorded video answer, or a take-home task — alongside live video rounds. Each of these is also testing your remote-readiness: your written exercise samples the clear communication the job demands, and your [video interview](https://thetailorcv.com/blog/video-interview-tips-2026) demonstrates whether you present well over a screen. Treat the whole process as a preview of the job itself. Communicate promptly and clearly at every step, handle any technical hiccups with grace, and show that you can operate professionally without an office around you. Candidates who are polished, responsive, and self-directed throughout a remote process reassure a hiring manager that they will be the same once hired — which is the core thing a remote employer is trying to find out.
+
 ## Putting It All Together
 
 Remote roles are abundant but fiercely competitive, so the winning strategy is the opposite of spraying applications. Target selectively, build a resume that proves you can thrive in a distributed team, tailor every application to the posting, and lean on referrals for your top choices. Prove your remote competence in a polished video interview, and verify every employer before sharing personal details. Do that and you rise above the flood of generic applicants — which is exactly where a remote offer is won.

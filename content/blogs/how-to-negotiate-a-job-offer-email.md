@@ -145,6 +145,16 @@ It is reasonable to ask for one to three days to review. Say thank you, express 
 ### Can I negotiate a job offer over the phone instead?
 You can, but email lets you word things carefully and creates a record. If they call to negotiate live, it is fine to listen and then say you will send your thoughts in writing shortly.
 
+### What if there's no room on salary at all?
+Pivot to the rest of the package: signing bonus, equity, extra PTO, remote flexibility, an earlier review date, or a title bump. Ask directly which elements are flexible. Many companies with rigid salary bands have real room on these other levers.
+
+### Should I get the final offer in writing before resigning?
+Always. Confirm every agreed term — base, bonus, equity, start date — in writing and have the formal offer in hand before you resign from your current role or decline any other offers. Verbal agreements occasionally fall through, and you never want to be left with nothing.
+
+## Negotiating as a New Graduate or Career Starter
+
+Early-career candidates often assume they have no room to negotiate, and so they accept the first number without a word — leaving money on the table that compounds across every future raise. Even at entry level, a polite, well-reasoned ask is usually appropriate and rarely costs you the offer. The framing shifts slightly: with less experience to anchor to, lean harder on market data for the role and location, on any competing offers, and on the specific skills or projects you bring. Keep the ask modest and gracious — "Based on my research for this kind of role, I was hoping we could get the base a little closer to [X]; is there any flexibility?" If the base is truly fixed, as it sometimes is for standardized new-grad programs, pivot to a signing bonus or an earlier review date. And remember that your starting salary sets the baseline for years of percentage raises, so a small increase now is worth far more than it appears. The worst outcome of a respectful ask is almost always just "no," and a graceful "understood, I'm still thrilled to accept" keeps everything warm.
+
 ## Putting It All Together
 
 Almost every offer has room, and the cost of a polite, well-reasoned ask is far smaller than the compounding cost of leaving money on the table. Do your research, anchor to market value rather than personal need, give one clear number, and negotiate the full package — not just base — while staying warm throughout. Get the final terms in writing before you resign or decline elsewhere. Handle it this way and you start the new job on better terms and with a relationship that is stronger, not strained.

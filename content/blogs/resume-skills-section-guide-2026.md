@@ -143,6 +143,20 @@ Give certifications their own short section rather than mixing them into skills.
 ### How often should I update my skills section?
 Every time you tailor the resume to a new posting, and whenever you learn a genuinely new tool. Your skills section should reflect the role you are applying for, not a frozen snapshot of everything you have ever touched.
 
+### Should I list programming languages I only used once?
+Only if you can genuinely speak to them and they are relevant. Listing a language you touched once in a tutorial invites a question you cannot answer. If it matters to the role and you have real (if limited) exposure, list it honestly and be ready to describe that exposure.
+
+### Where should the skills section sit on the page?
+For technical and early-career roles, near the top so it is scanned first. For senior roles where experience leads the story, it can sit lower. Either way, keep it easy to find — recruiters and parsers both look for it.
+
+## Transferable Skills When Changing Careers
+
+Career changers face a specific skills-section challenge: your strongest hard skills may be from a field you are leaving. The move is not to hide them but to bridge them. Lead with the hard skills that transfer directly — a teacher moving into UX genuinely has research, communication, and workshop-facilitation skills; an accountant moving into data analysis genuinely has Excel, SQL-adjacent thinking, and rigor. Name the tools and methods that carry across, add the new ones you have deliberately built (a certification, a bootcamp, self-taught software), and let the combination tell the story of someone deliberately re-skilling rather than starting from zero. Mirror the target field's exact terminology, even when your experience with it is recent, so the [ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) and the recruiter both see the match. The skills section is where a career change either reads as a credible pivot or a random leap — precision in which skills you surface makes the difference.
+
+## Tailoring Skills to Each Application
+
+The single most effective habit for a skills section is to treat it as adjustable, not fixed. Different postings for the "same" role weight different tools, and the skills you list — and their order — should shift to match. Before each application, read the posting, note the hard skills it names, and reorder your section so the ones it cares about appear first and most prominently. Add any genuine skill you have that it emphasizes; drop or demote ones irrelevant to this particular job. This takes two minutes and meaningfully raises your relevance to both the parser and the human. A [resume optimizer](https://thetailorcv.com/optimize) automates the matching by reading the description and surfacing the exact skills to feature, and a quick [ATS score](https://thetailorcv.com/solutions) confirms the posting's key terms are actually present before you submit. A tailored skills section is one of the highest-return, lowest-effort edits in the entire job search.
+
 ## Putting It All Together
 
 Your skills section is a fast, scannable proof of relevance: list hard skills only, mirror the posting's exact terms, group them for readability, and cap the list at what you can actually defend. Push soft skills into your bullets where a result can prove them. Done right, the section takes a recruiter two seconds to read and tells both them and the ATS the same thing — this candidate has what the role needs.

@@ -126,6 +126,40 @@ Not always, but many do before an offer, and some use automated reference-check 
 ### Can I put "references available on request" to save an awkward gap?
 No — the line adds nothing and dates your resume. Everyone knows references are available on request. Use that space for a stronger bullet.
 
+### How far in advance should I contact my references?
+Reach out as soon as you are actively interviewing, not the moment an employer asks. Giving your references a heads-up early means they are ready and briefed when a call comes, rather than caught off guard, and it lets you confirm they will speak positively before you list them.
+
+### What if a reference gives a lukewarm review?
+That is exactly why you choose and brief references carefully. Only list people you are confident will advocate for you enthusiastically, and prepare them with the specifics of the role. If you have any doubt about how someone will speak of you, choose someone else.
+
+### Do references matter for internal transfers or promotions?
+Less formally, but reputation matters even more — your future manager can simply ask around internally. The same principle applies: do consistently good work and maintain good relationships, because in an internal move, everyone is effectively a reference.
+
+### Can I use a professor as a reference?
+Yes, especially early in your career or as a recent graduate. A professor who supervised a substantial project or capstone can speak credibly to your ability, work ethic, and how you handle challenges. Choose one who knew your work closely, not just a name from a large lecture, and brief them like any other reference.
+
+## What Recruiters Notice About Your References
+
+The references you choose quietly say something about you before they even speak. A candidate whose references are all recent direct managers signals a track record of good relationships with the people who supervised them — the strongest possible signal. A candidate who offers only peers, or only contacts from many years ago, or who cannot produce a recent manager, prompts quiet questions. This does not mean you must have a perfect roster; plenty of good candidates have complicated situations, from a current employer they cannot alert to a former manager who has left the industry. But it does mean you should think about the *story* your references tell, and fill obvious gaps thoughtfully — a senior peer who led projects with you, a skip-level who knew your work, a client who can speak to your delivery. Curate references the way you curate the rest of your application: deliberately, with an eye to what a thoughtful reader will infer.
+
+## A Reference Sheet Template You Can Reuse
+
+Keep a ready-to-send document, matching your resume's header, that you can produce the moment an employer asks:
+
+> **[Your Name] — References**
+> [same contact header as your resume]
+>
+> **Priya Sharma** — Engineering Manager, Acme Corp (former direct manager)
+> priya.sharma@email.com · (555) 123-4567 · Can speak to: backend architecture, on-call ownership, mentoring.
+>
+> **David Okoro** — Senior Product Manager, Acme Corp (cross-functional partner)
+> david.okoro@email.com · (555) 234-5678 · Can speak to: collaboration, delivery under deadline.
+>
+> **Lena Fischer** — Founder, Freelance client (2023–2024)
+> lena@studio.com · (555) 345-6789 · Can speak to: independent delivery, communication.
+
+Three to four references in this format, each with a "can speak to" line steering them toward a relevant strength, is all you need — and having it ready means you never scramble at the offer stage.
+
 ## Putting It All Together
 
 Keep references off your resume and skip the "available on request" line entirely — both waste space that a strong achievement could fill. Instead, prepare a separate, well-formatted reference sheet of three to four people who can speak to specific results, ask each of them first, and brief them on the role before any call. Handled this way, your references become a closing asset at the offer stage rather than clutter at the top of the funnel.
