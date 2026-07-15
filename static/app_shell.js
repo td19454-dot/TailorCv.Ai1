@@ -50,7 +50,7 @@
         mic: svg('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>'),
         grid: svg('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>'),
         portfolio: svg('<rect x="2.5" y="3" width="19" height="18" rx="3"/><circle cx="12" cy="9" r="2.6"/><path d="M7 18a5 5 0 0 1 10 0"/>'),
-        puzzle: svg('<path d="M10 3.5a1.5 1.5 0 0 1 3 0V5h2.5A1.5 1.5 0 0 1 17 6.5V9h1.5a1.5 1.5 0 0 1 0 3H17v2.5a1.5 1.5 0 0 1-1.5 1.5H13v1.5a1.5 1.5 0 0 1-3 0V16H7.5A1.5 1.5 0 0 1 6 14.5V12H4.5a1.5 1.5 0 0 1 0-3H6V6.5A1.5 1.5 0 0 1 7.5 5H10z"/>'),
+        chrome: svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 8.6h8.4M9.1 13.7l-4.2 7.2M14.9 13.7l-4.2 7.2"/>'),
         out: svg('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/>')
     };
     var LINKS = [
@@ -64,7 +64,7 @@
         ["/templates", IC.grid, "Templates"],
         ["/interview-prep", IC.help, "Interview Prep"],
         ["/mock-interview", IC.mic, "Mock Interview"],
-        ["/extension", IC.puzzle, "Chrome Extension"]
+        ["/extension", IC.chrome, "Chrome Extension"]
     ];
 
     function build() {

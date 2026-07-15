@@ -1,37 +1,88 @@
 {
   "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxwk66E5J6RqP0UukLk8gj8S4dgXOdAyTiO7f5LI7+iQkSh07S+hpkoyc7s4y2z46+RvoIayWJeRoRK19Rpfkru+WJp0RYc8EgWhLH9gNEtYDGNXtTCsIkefDnB5pkSVYIlRwJlvuhNT/xM/RN9eA5AvdpLaerSejjwUKSIViTTdYWNdAtyqazZuFfiww0ln7VrxtqHilte6yIbEPdSxOnzMJEU1/7ypylRSwMz7pm+H7HxJaieh2fB99gl+K5jhOcj3I9xE6BmLs9tlPmYchtERsXsdGwGQvbrH6vTQsQ/l6tRBwBUAvGJD4JVmw4Q6+glYJboi2qpkWrRm3N7GOLwIDAQAB",
   "name": "TailorCV — AI Resume Optimizer",
-  "version": "2.1.0",
-  "description": "Automatically tailor your resume to any LinkedIn job posting and download it in one click",
+  "version": "3.1.0",
+  "description": "Tailor your resume to any job posting and write a matching cover letter, then download both as ATS-ready PDFs in one click, on every major job board.",
   "permissions": ["activeTab", "cookies", "downloads", "scripting"],
   "host_permissions": [
     "*://*.linkedin.com/*",
+    "*://*.indeed.com/*",
+    "*://*.naukri.com/*",
+    "*://*.greenhouse.io/*",
+    "*://*.lever.co/*",
+    "*://*.myworkdayjobs.com/*",
+    "*://*.myworkdaysite.com/*",
+    "*://*.ashbyhq.com/*",
+    "*://*.glassdoor.com/*",
+    "*://*.glassdoor.co.in/*",
+    "*://*.ziprecruiter.com/*",
+    "*://*.monster.com/*",
+    "*://*.simplyhired.com/*",
+    "*://*.dice.com/*",
+    "*://*.wellfound.com/*",
     "https://thetailorcv.com/*",
     "http://127.0.0.1:8005/*",
     "http://localhost:8005/*"
   ],
+  "optional_host_permissions": [
+    "*://*/*"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "https://thetailorcv.com/*",
+      "http://127.0.0.1:8005/*",
+      "http://localhost:8005/*"
+    ]
+  },
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["*://*.linkedin.com/jobs/*"],
-      "js": ["content_linkedin.js"],
-      "css": ["sidebar.css"],
+      "matches": [
+        "*://*.linkedin.com/jobs/*",
+        "*://*.indeed.com/*",
+        "*://*.naukri.com/*",
+        "*://*.greenhouse.io/*",
+        "*://*.lever.co/*",
+        "*://*.myworkdayjobs.com/*",
+        "*://*.myworkdaysite.com/*",
+        "*://*.ashbyhq.com/*",
+        "*://*.glassdoor.com/*",
+        "*://*.glassdoor.co.in/*",
+        "*://*.ziprecruiter.com/*",
+        "*://*.monster.com/*",
+        "*://*.simplyhired.com/*",
+        "*://*.dice.com/*",
+        "*://*.wellfound.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "sidebar.css"
+      ],
       "run_at": "document_idle"
     }
   ],
   "action": {
+    "default_title": "Tailor my resume to this job",
     "default_icon": {
-      "16":  "icons/icon16.png",
-      "48":  "icons/icon48.png",
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     }
   },
   "web_accessible_resources": [
     {
-      "resources": ["icons/*.png"],
-      "matches": ["*://*.linkedin.com/*"]
+      "resources": [
+        "icons/*.png",
+        "icons/*.svg"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }
