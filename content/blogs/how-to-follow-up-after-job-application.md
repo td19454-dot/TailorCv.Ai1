@@ -138,6 +138,20 @@ A single, gracious "still interested if the role is open" note is fine even afte
 ### Should I call instead of message?
 Usually not, unless the posting invites it. A written message respects the recruiter's time and lets them respond when they can. Cold calls tend to interrupt and rarely help.
 
+### Does following up actually improve my chances?
+A good follow-up can help at the margin — it keeps you visible and signals genuine interest — but it cannot rescue a weak application. Its real value shows up in close calls and in building a warm contact for the future. Tailoring the underlying resume matters far more.
+
+### What tone should a follow-up strike?
+Warm, brief, and confident — never anxious or entitled. You are a strong candidate reaffirming interest, not someone pleading for attention. Assume good intent, skip any hint of guilt, and make it easy and pleasant for the recruiter to reply.
+
+## Following Up Without a Contact Name
+
+The hardest follow-up is the one where you applied through a portal and have no idea who to reach. Do not let that stop you — a little detective work usually surfaces a person. Search LinkedIn for the company plus "recruiter," "talent," or "people," and for the hiring manager, search the relevant team or department. Look at who posted the job; often their name is attached. Company email formats are usually predictable (`first.last@company.com`), so once you have a name you can often reach them directly. If every avenue genuinely dead-ends, a short message through the application portal's "contact" feature, or a note to a general recruiting address that names the specific role and requisition number, is still better than silence. The effort of finding a real person is itself a signal — most applicants never bother, so the ones who do stand out before they have said a word.
+
+## Turning a Follow-Up Into a Relationship
+
+The best outcome of a follow-up is not always an immediate reply about this one role — it is a warm contact for the future. Even when a recruiter tells you the position is filled, a gracious response ("Thanks for letting me know — I really admire what your team is building, so please keep me in mind if something opens up") plants a seed. Recruiters remember candidates who were pleasant and professional through a no, and they often reach back out when the next role appears. This is why the tone of every follow-up matters so much: you are not just chasing one job, you are building a reputation with people who hire for a living and move between companies. Treat each interaction, including the disappointing ones, as an investment in a network that will still be paying off years from now.
+
 ## Putting It All Together
 
 Following up well is a small, high-leverage habit: wait a week, reach a real person, keep it to three specific sentences, and stop after two tries. Pair that with a steady pipeline of tailored applications so no single silence rattles you, and you will convert more applications into conversations than the candidate who either pesters or disappears.

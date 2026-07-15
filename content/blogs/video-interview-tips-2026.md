@@ -124,6 +124,20 @@ A subtle, static virtual background is fine if your real space is distracting, b
 ### How early should I join the call?
 Two to three minutes early. It shows punctuality without leaving the interviewer waiting on you. Have the link open and your setup tested well before that, so joining is a single click.
 
+### What should I do if I lose internet mid-interview?
+Reconnect calmly and, if it persists, offer to switch to a phone dial-in or reschedule. Have the meeting number and your phone ready as a backup. Interviewers do not penalize a glitch you handle gracefully — composure under a real problem is itself a good signal.
+
+### Is it okay to have notes taped near the camera?
+Yes — brief bullet points near the lens are a smart use of the format's flexibility, and they keep your eyes close to the camera. Just use them as prompts, not a script to read from, since reading verbatim is obvious on video.
+
+## Answering Tough Questions on Camera
+
+Video adds a layer of difficulty to hard questions because the usual in-person cues — a reassuring nod, a shared laugh, reading the room — are muted or delayed. When you hit a curveball, the temptation is to fill the silence by rushing, which reads as flustered on camera. Resist it. A deliberate two-second pause before answering looks thoughtful on video, not slow, and it gives you time to structure a real answer. If you genuinely need a moment, say so plainly: "That's a good question — let me think about it for a second." Composure under a hard question is itself a signal interviewers are reading, and on video, calm reads even louder than it does in person. Keep your answers slightly more structured than you would face-to-face — signpost with "there are two things I'd point to" — because the audio-only feedback loop makes rambling easier to fall into and harder for the interviewer to follow.
+
+## Following Up After a Video Interview
+
+The interview does not end when the call disconnects. Send a thank-you within 24 hours, exactly as you would after an in-person round, and use it to reference something specific from the conversation. A video interview is often part of a remote or distributed hiring process, where written follow-up carries even more weight — it is another sample of the clear, prompt communication the role will require. Reference a moment you discussed, reinforce one reason you fit, and keep it short. If the technology glitched at any point, a light, gracious acknowledgment ("thanks for your patience with my connection at the start") shows you handle small hiccups with grace. For the full wording, see our guide on the [thank-you email after an interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) — the principles are identical whether the interview happened across a table or across a screen.
+
 ## Putting It All Together
 
 A video interview rewards preparation you can see: a camera at eye level, front lighting, a tested platform, and calm body language that projects a little extra energy to survive the flatness of a screen. Look at the lens, keep short notes nearby without reading them, and prepare your answers exactly as you would for an in-person round. Get the mechanics right and they disappear, leaving the interviewer free to focus on the only thing that should matter — what you actually say.

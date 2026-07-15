@@ -121,6 +121,30 @@ Ask for clarification — it is better than guessing. "Just to make sure I answe
 ### How do I recover if the call is going badly?
 Reset with a strong, concrete answer and re-engage with a good question. One clear win late in a short call can shift the recruiter's overall impression. Stay calm; a composed recovery is itself a positive signal.
 
+### Is a phone screen usually with a recruiter or the hiring manager?
+Most often a recruiter, whose job is to filter for basic fit, interest, and compensation before passing you to the hiring manager. Occasionally a hiring manager runs a light first call themselves. Either way, the fundamentals — clarity, energy, and specific interest — are the same.
+
+### Should I take notes during the call?
+Yes, briefly. Jot down the interviewer's name, key points about the role, next steps, and the timeline. Notes help you write a specific thank-you and prepare for later rounds. Just do not let note-taking pull you out of the conversation.
+
+### What if I need to reschedule a phone screen?
+Reschedule as early as possible with a brief, apologetic, professional message offering alternative times. Recruiters understand that life happens; a prompt, polite reschedule is far better than taking the call from a noisy street or while distracted.
+
+## Common Phone Screen Mistakes
+
+Even well-qualified candidates trip on the phone screen, almost always for avoidable reasons:
+
+- **Taking the call somewhere noisy.** A crackly line or background chatter undercuts everything you say. If your quiet space falls through, ask to reschedule rather than push through a bad connection.
+- **Rambling on "tell me about yourself."** Without a prepared 60-second arc, this opener sprawls and sets a scattered tone. Script it.
+- **Sounding low-energy.** On audio, your voice is the entire impression. Stand up, smile, and project a little more warmth than feels natural.
+- **Dodging the salary question.** Total evasion frustrates recruiters and can stall you. Give a researched range framed as flexible.
+- **Not knowing which role you applied for.** If you are applying widely, keep notes so you are never caught flat when they name the company.
+- **Having no questions.** "No, I think you covered everything" reads as disinterest. Always have two ready.
+
+## Preparing in Under an Hour
+
+You do not need days to prepare for a phone screen — a focused hour covers it. Spend fifteen minutes re-reading the job description and your own resume so you can speak fluently to both. Spend fifteen more researching the company: what they do, a recent update, and why you genuinely want the role. Draft and rehearse your three staples — your 60-second intro, your "why this role" answer, and your salary range — out loud until they are smooth. Write down two questions to ask. Finally, set up your logistics: a quiet room, strong signal, your resume and notes in front of you, and water within reach. That single hour is the difference between a screen that feels like an ambush and one that feels like a conversation you are steering — and it is a fraction of the effort you already spent finding and applying to the role.
+
 ## Putting It All Together
 
 A phone screen is a filter, not a formality — it decides whether the company invests a manager's time in you. Treat it as open-book: keep your resume, the job description, and your notes in front of you, nail the three staples (tell me about yourself, why this role, salary range), and bring genuine energy and a couple of real questions. Clear that bar and you advance to the rounds where the job is actually won.

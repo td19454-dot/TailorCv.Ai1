@@ -134,6 +134,20 @@ Yes, increasingly so. Team-fit conversations and "meet the team" segments are co
 ### How soon should I expect a decision after a second interview?
 Often within one to two weeks, but it varies. Ask about the timeline before you leave, and send a thank-you within 24 hours to stay top of mind during the decision.
 
+### Is it okay to reuse a story from the first interview?
+Avoid retelling the exact same anecdote — interviewers compare notes, and repetition suggests a thin repertoire. Prepare a fresh set of examples for the second round that show different strengths, so each conversation reveals something new about you.
+
+### What if I'm asked a question I can't answer?
+Stay composed and reason out loud rather than bluffing. Say what you do know, describe how you would find the answer, or ask a clarifying question. Interviewers often care more about your thinking process than a perfect answer, and honesty under pressure reads far better than a fabricated response.
+
+## Turning the Tables: Questions That Impress
+
+By the second round, the questions you ask carry as much weight as the answers you give, because thoughtful questions signal that you are seriously evaluating the role rather than just hoping to be chosen. Move past the basics and ask things that reveal genuine engagement: "What does success in this role look like in the first 90 days, and how is it measured?", "What's the biggest challenge the team is facing right now?", "How do you and the team prefer to give and receive feedback?", "What's something about working here that surprised you when you joined?", and "What would make you excited about the person who fills this role?" These questions do three things at once — they give you real information to decide with, they demonstrate that you think like a future team member, and they subtly shift the dynamic from you being evaluated to a mutual fit conversation. Avoid questions whose answers are on the company website; those signal you did not do your homework. The best questions are specific to something you learned during the interview process itself.
+
+## Reading the Signals That You're Doing Well
+
+Second interviews often give off signals about how you are being received, and learning to read them helps you calibrate in real time. Positive signs include interviewers spending more time selling you on the role, introducing you to additional team members on the spot, discussing specifics like start dates or logistics, and asking when you would be available. When an interviewer shifts from probing your qualifications to describing what your first projects would be, they are picturing you in the seat — a strong buying signal. Less encouraging signs include a rushed, checkbox-style interview or a lack of engagement with your answers. None of these are definitive, and you should give your best regardless, but noticing them helps you decide where to lean in — if they are clearly interested, it is a good moment to express your genuine enthusiasm and ask about next steps directly.
+
 ## Putting It All Together
 
 A second interview is not a repeat of the first — it is a deeper test of fit, depth, and seriousness, usually with more senior people. Debrief round one, research harder, prepare fresh stories, and read what each interviewer is really assessing. Come with thoughtful questions of your own and a concrete sense of your first 90 days. Do that and you show up as someone the team can already picture working alongside — which is exactly the impression that turns a second interview into an offer.

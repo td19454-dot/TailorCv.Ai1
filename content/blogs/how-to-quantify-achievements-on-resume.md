@@ -169,6 +169,10 @@ Use relative figures and scope. "Managed a portfolio in the low eight figures" o
 ### How many quantified bullets should a resume have overall?
 Aim for a number in the top two or three bullets of each recent role. Across a one-page resume that is roughly six to nine metrics — enough to prove a pattern of impact without turning the page into a data dump.
 
+## The Rule You Can Never Break: Honesty
+
+Everything about quantifying achievements rests on one non-negotiable foundation: the numbers must be true. A fabricated statistic is a liability that detonates at the worst possible moment — in an interview, when a sharp interviewer asks "how did you measure that 40% improvement?" and you have no answer, or later, when a reference contradicts a claim. Invented metrics also tend to sound invented; a suspiciously precise "increased efficiency by 37.2%" from a role with no analytics reads as fiction to an experienced hiring manager. The good news is you never need to lie, because honest estimation covers every real situation: reconstruct a defensible figure from what you know, use ranges and qualifiers when you lack precision, quantify scope when you cannot quantify outcome, and convert confidential absolutes into percentages. A resume built on true numbers survives every interview probe and every reference check — which is the entire point of putting numbers on it in the first place. Impressive-but-false loses to modest-but-true every time it is tested, and in a serious hiring process, it will be tested.
+
 ## Putting It All Together
 
 Quantifying achievements is the single highest-return edit you can make to a resume. Walk each role through the eight-prompt worksheet, rewrite your top bullets with the X-Y-Z formula, front-load the number, and keep every figure honest. The result is a resume that a recruiter believes in seconds and an ATS scores as real experience — the two audiences you have to win to get the interview.

@@ -146,6 +146,19 @@ Refresh your headline and About section whenever your focus shifts or you comple
 ### Can I use AI to write my LinkedIn About section?
 Use it for a first draft, then rewrite it in your own voice. The hook and the specific details — your real numbers, your genuine reasons — are what make it work, and those have to be yours.
 
+### Should my About section be different from my resume summary?
+Yes. Same facts, different voice: the resume summary is tight, formal, and tailored per application; the LinkedIn About is longer, warmer, and written in the first person for a human browsing your profile. Adapt the story, do not copy-paste it.
+
+### How do I write an About section if I'm a student with little experience?
+Lead with what you are building and learning rather than a job history. A hook about your genuine interest, one or two real projects, and a clear line about what you are looking for beats an empty or generic section every time.
+
+### Do hashtags or emojis help in the About section?
+Used sparingly, a single emoji or a couple of relevant terms can add personality and scannability, but do not overdo it. Clarity and specificity matter far more than decoration; a wall of emojis or hashtags reads as noise.
+
+## Tailoring Your Profile When You're Actively Searching
+
+When you shift from passive to active job-seeking, your profile should shift with you. Reorient your headline toward the role you *want*, not just the one you have, packing in the keywords recruiters will search for that target role. Update your About section's closing line to make your availability clear ("Open to senior backend roles"), and turn on LinkedIn's "Open to Work" setting — using the recruiter-only visibility option if you need to keep your search discreet from a current employer. Make sure your Skills section lists the exact tools and abilities the roles you want ask for, since recruiters filter searches by those terms. And refresh your recent experience so it emphasizes the accomplishments most relevant to your target, mirroring the language those postings use. An actively maintained, keyword-rich, clearly-available profile is what turns LinkedIn from a static résumé into an inbound channel — recruiters find you, and when they click, your first two lines make them reach out.
+
 ## Putting It All Together
 
 Your LinkedIn About section is a 24/7 pitch working while you sleep, and most people leave it blank or fill it with buzzwords. Front-load a specific hook in the first two lines, prove your value with real numbers, write in a warm first person, and end with a clear call to action. Weave in the keywords recruiters search for, keep it consistent with your resume, and link to real work. Do that and your profile stops being a passive record and starts generating the inbound conversations that lead to your next role.
