@@ -224,15 +224,22 @@
   ];
 
   function fromHeadingLabel() {
-    const candidates = document.querySelectorAll('h1, h2, h3, h4, h5, strong, b, [role="heading"]');
+    // Real <h1-h5>/<strong>/<b> tags are the exception, not the rule — most job
+    // boards (LinkedIn included) render section labels as a plain, CSS-bolded
+    // span/div/p with no semantic tag at all. So the candidate pool is "any leaf
+    // element with short text," filtered on the cheap `children.length` check
+    // before we ever touch `textContent`, to keep this affordable on a page with
+    // thousands of nodes.
+    const candidates = document.querySelectorAll('h1, h2, h3, h4, h5, strong, b, p, span, div, li, [role="heading"]');
     for (const el of candidates) {
+      if (el.children.length > 0) continue;   // only leaf nodes carry just the label text
       if (el.closest('#tailorcv-sidebar')) continue;   // never match our own panel
       const label = (el.textContent || '').trim();
       if (!label || label.length > 60) continue;
       if (!HEADING_LABEL_PATTERNS.some(p => p.test(label))) continue;
 
-      let container = el.closest('section, article, div');
-      for (let i = 0; i < 4 && container; i++) {
+      let container = el.closest('section, article, div') || el;
+      for (let i = 0; i < 6 && container; i++) {
         if (container === document.body || container === document.documentElement) break;
         const text = (container.innerText || '').trim();
         if (text.length >= MIN_JD_LENGTH && text.length <= 25000 && jdScore(text) >= 3) {
@@ -473,8 +480,20 @@
 
   function togglePanel() {
     if (!document.getElementById('tailorcv-sidebar')) { createPanel(); return; }
+    const wasCollapsed = sb.classList.contains('tcv-collapsed');
     sb.classList.toggle('tcv-collapsed');
     launcher.classList.toggle('tcv-visible');
+
+    // The auto-injected panel starts its ~8s auto-detect window right on page
+    // load, often before LinkedIn (and similar SPAs) have finished painting the
+    // job pane — so it can land on the manual-paste fallback before the user
+    // has even looked at the panel. Opening it is a natural moment to give
+    // detection another shot, as long as we're not stomping on text the user
+    // already typed into that same box.
+    if (wasCollapsed && sessionReady && !tcvBusy) {
+      const ta = body.querySelector('#tcvManualJd');
+      if (ta && !ta.value.trim()) renderJobFromPage();
+    }
   }
 
   // ── State renderers ──────────────────────────────────
@@ -593,6 +612,11 @@
   // Layer 4. The page beat every extractor, so let the user hand us the text —
   // this is what keeps the extension useful on login-gated SPAs and odd career pages.
   function renderManual(prefill) {
+    // No prefill means this is the auto-fallback (every extractor missed), not
+    // the user deliberately opening "not right? edit" on an already-found job —
+    // only that case gets a retry link, so we don't offer to overwrite an
+    // in-progress edit of a job that WAS detected.
+    const showRetry = !prefill;
     body.innerHTML = `
       <div class="tcv-msg">Paste the job description, or select it on the page and click Use&nbsp;selection.</div>
       <textarea id="tcvManualJd" class="tcv-textarea" rows="7"
@@ -600,6 +624,7 @@
       <button class="tcv-btn tcv-btn-ghost" id="tcvUseSelection">Use selection from page</button>
       <button class="tcv-btn tcv-btn-start" id="tcvManualGo">Use this description</button>
       <div class="tcv-error" id="tcvManualError"></div>
+      ${showRetry ? '<a class="tcv-link tcv-retry-link" id="tcvRetryDetect" href="#">Job description visible now? Retry detection</a>' : ''}
     `;
 
     const ta = body.querySelector('#tcvManualJd');
@@ -624,6 +649,13 @@
       manualJd = text;
       renderJobFromPage();
     });
+
+    if (showRetry) {
+      body.querySelector('#tcvRetryDetect').addEventListener('click', (e) => {
+        e.preventDefault();
+        renderJobFromPage();
+      });
+    }
   }
 
   function renderReady(job) {
