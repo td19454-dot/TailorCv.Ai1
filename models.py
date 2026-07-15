@@ -23,8 +23,8 @@ class User(Base):
     netlify_site_id = Column(String(64), nullable=True)
     netlify_url = Column(String(255), nullable=True)
     netlify_portfolio_id = Column(Integer, nullable=True)
-    # A single reusable "base resume" the Chrome extension tailors against on
-    # LinkedIn job pages, distinct from the tailored outputs saved to SavedResume.
+    # A single reusable "base resume" the Chrome extension tailors against on any
+    # job page, distinct from the tailored outputs saved to SavedResume.
     base_resume_path = Column(String(500), nullable=True)
     base_resume_filename = Column(String(255), nullable=True)
     base_template_id = Column(Integer, nullable=True)
@@ -33,6 +33,9 @@ class User(Base):
     # Extracted once at upload time so the extension's skill-match score never
     # needs to re-parse the PDF on every job the user looks at.
     base_resume_text = Column(Text, nullable=True)
+    # Which of the cover-letter designs (classic / modern / monogram) the extension
+    # renders when it writes a letter from a job page.
+    base_cover_template = Column(String(20), nullable=True)
 
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")

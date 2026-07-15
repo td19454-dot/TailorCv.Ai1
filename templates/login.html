@@ -749,6 +749,45 @@
       return next;
     }
 
+    // The Chrome extension opens /login?ext=1 in a new tab (from a job page,
+    // since it can't run its own Google sign-in there). On success, tell the
+    // extension directly and close this tab so focus returns to the job page,
+    // instead of stranding the user on /dashboard in a tab they didn't ask to
+    // open. Gated on the ext=1 marker so this never fires for a normal visitor
+    // who just happens to have opened /login in a new tab some other way.
+    //
+    // This intentionally does NOT use window.opener + postMessage — Google's
+    // Identity Services script severs window.opener as a side effect of its
+    // own COOP/popup handling (confirmed via testing: it goes null even for a
+    // plain email/password login, just from GSI being loaded on the page), so
+    // that channel can't be relied on here. chrome.runtime.sendMessage to the
+    // extension's own ID via "externally_connectable" doesn't depend on any
+    // window relationship at all, so it isn't affected by that.
+    var TAILORCV_EXTENSION_ID = 'gpoaaejaeomchnhiedigehkjcjadpcmh';
+
+    function tailorCvFinishLogin() {
+      if (new URLSearchParams(window.location.search).get('ext') !== '1') {
+        console.log('[TailorCV] finishLogin: no ?ext=1, treating as a normal login');
+        return false;
+      }
+      if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.sendMessage) {
+        console.log('[TailorCV] finishLogin: ext=1 present but chrome.runtime is unavailable — falling back to normal redirect');
+        return false;
+      }
+      console.log('[TailorCV] finishLogin: notifying the extension, closing this tab in 600ms');
+      setTimeout(() => {
+        try {
+          chrome.runtime.sendMessage(TAILORCV_EXTENSION_ID, { type: 'tailorcv-login-success' }, function () {
+            void chrome.runtime.lastError; // nothing actionable from this tab either way
+          });
+        } catch (e) {
+          console.error('[TailorCV] finishLogin: sendMessage threw', e);
+        }
+        window.close();
+      }, 600);
+      return true;
+    }
+
     window.addEventListener('load', tailorCvInitGoogleSignIn);
 
     (function tailorCvPollGsi() {
@@ -801,7 +840,9 @@
 
         statusMessage.textContent = `Welcome back, ${data.user.name}!`;
         statusMessage.className = 'status success';
-        setTimeout(() => { window.location.href = getPostLoginRedirect(); }, 900);
+        if (!tailorCvFinishLogin()) {
+          setTimeout(() => { window.location.href = getPostLoginRedirect(); }, 900);
+        }
       } catch (error) {
         statusMessage.textContent = error.message;
         statusMessage.className = 'status error';
@@ -835,7 +876,9 @@
 
         statusMessage.textContent = `Welcome, ${data.user.name}!`;
         statusMessage.className = 'status success';
-        setTimeout(() => { window.location.href = getPostLoginRedirect(); }, 700);
+        if (!tailorCvFinishLogin()) {
+          setTimeout(() => { window.location.href = getPostLoginRedirect(); }, 700);
+        }
       } catch (error) {
         statusMessage.textContent = error.message;
         statusMessage.className = 'status error';
