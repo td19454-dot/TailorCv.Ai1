@@ -37,6 +37,7 @@ from functions import (
     inject_links,
     inject_jd_hard_skills,
     compute_skill_match_score,
+    compute_skill_match_score_structured,
     sanitize_resume_data,
     _is_atomic_hard_skill,
     map_demo_links,
@@ -5538,13 +5539,16 @@ async def set_extension_base_resume(request: Request):
             f.write(content)
 
     # Extracted once here so the extension's skill-match score never needs to
-    # re-parse the PDF on every job the user looks at.
+    # re-parse the PDF on every job the user looks at. Only when a new file was
+    # actually uploaded — a template-only change must not clobber the cached
+    # text of the resume already on file with a null re-extraction.
     extracted_text = None
     if has_upload:
         try:
             extracted_text = await asyncio.to_thread(extract_pdf_text, new_path)
         except Exception:
             logger.exception("Failed to extract text from uploaded base resume")
+            extracted_text = None
 
     db = get_db()
     try:
@@ -5560,13 +5564,10 @@ async def set_extension_base_resume(request: Request):
             user.base_resume_path = new_path
             user.base_resume_filename = (upload.filename or "resume.pdf")[:255]
             user.base_resume_uploaded_at = datetime.utcnow()
+            user.base_resume_text = extracted_text
         user.base_template_id = template_id
         user.base_style_id = style_id
         user.base_cover_template = cover_template if cover_template in COVER_TEMPLATES else "classic"
-        if has_upload:
-            # Only on a real upload: a template-only save must not blank the text the
-            # skill-match score reads.
-            user.base_resume_text = extracted_text
         db.commit()
         if has_upload and old_path and old_path != new_path and os.path.exists(old_path):
             os.remove(old_path)
@@ -5701,10 +5702,13 @@ async def extension_tailor_resume(request: Request):
     try:
         async with request_semaphore:
             parsed = await _optimize_resume_core(base_resume_path, jd_string)
-            # Same deterministic scorer as /api/extension/skill-match, applied to the
-            # tailored output — the JSON-serialized resume is a fine text blob for the
-            # word-boundary keyword search, no separate flattening needed.
-            after_match = compute_skill_match_score(json.dumps(parsed) if isinstance(parsed, dict) else "", jd_string)
+            # Structured scorer, not the flat-text one /api/extension/skill-match uses
+            # for the base resume: a flat match on the tailored output would count the
+            # guaranteed skills-array injection the same as a skill actually evidenced
+            # in the candidate's own bullets, which is misleading (see the function's
+            # docstring). This blends skills-array coverage with bullet/summary
+            # coverage so the score can't hit 100% on the skills section alone.
+            after_match = compute_skill_match_score_structured(parsed if isinstance(parsed, dict) else {}, jd_string)
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
             try:
                 pdf_path = await asyncio.to_thread(_render_resume_pdf_sync, html_content, use_default_template)

@@ -1,5 +1,6 @@
 {
   "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxwk66E5J6RqP0UukLk8gj8S4dgXOdAyTiO7f5LI7+iQkSh07S+hpkoyc7s4y2z46+RvoIayWJeRoRK19Rpfkru+WJp0RYc8EgWhLH9gNEtYDGNXtTCsIkefDnB5pkSVYIlRwJlvuhNT/xM/RN9eA5AvdpLaerSejjwUKSIViTTdYWNdAtyqazZuFfiww0ln7VrxtqHilte6yIbEPdSxOnzMJEU1/7ypylRSwMz7pm+H7HxJaieh2fB99gl+K5jhOcj3I9xE6BmLs9tlPmYchtERsXsdGwGQvbrH6vTQsQ/l6tRBwBUAvGJD4JVmw4Q6+glYJboi2qpkWrRm3N7GOLwIDAQAB",
   "name": "TailorCV \u2014 AI Resume Optimizer",
   "version": "3.1.0",
   "description": "Tailor your resume to any job posting and write a matching cover letter, then download both as ATS-ready PDFs in one click, on every major job board.",
@@ -74,7 +75,8 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "icons/*.png"
+        "icons/*.png",
+        "icons/*.svg"
       ],
       "matches": [
         "<all_urls>"
