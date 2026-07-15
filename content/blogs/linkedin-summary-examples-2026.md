@@ -114,6 +114,18 @@ For many roles, especially creative and technical ones, proof beats description.
 - **Burying the hook.** Only the first two lines show before "see more" — front-load the most interesting thing.
 - **No call to action.** End with what you are open to and how to reach you.
 
+## Writing the All-Important First Two Lines
+
+LinkedIn truncates your About section after roughly two lines, hiding the rest behind a "see more" that most people never click. That makes your opening lines the entire game — they have to be interesting enough to earn the click. The weakest openers restate your job title ("I am a marketing professional with X years of experience"); the strongest lead with a hook that makes a reader curious. Try opening with a bold claim about your work ("I turn content nobody reads into content that ranks"), a surprising origin ("I spent five years teaching algebra, which turns out to be perfect training for UX"), or a specific point of view ("I believe reliability is a feature, not a chore"). Whatever you choose, front-load the single most compelling thing about you. If someone read only those two lines, would they want to know more? If not, rewrite until they would.
+
+## Matching Your Headline to Your Goal
+
+Your headline is the most-seen text you own on LinkedIn — it appears in search results, next to every comment, and in every message and connection request. The default ("Job Title at Company") wastes it. A strong headline packs in the keywords recruiters search and signals your direction: "Backend Engineer | Python & Go | Payments & Reliability" or "Product Manager | B2B SaaS | 0-to-1 & Growth." If you are actively looking, orient the headline toward the role you *want*, not just the one you have. Those few characters are prime keyword real estate and the first impression every recruiter forms — spend them deliberately.
+
+## Keeping the Profile Alive
+
+A LinkedIn profile is not a set-and-forget document; the algorithm and recruiters both favor active, current profiles. Refresh your headline and About section whenever your focus shifts or you finish a notable project. Post occasionally about what you are building or learning — it keeps you visible in your network's feed and quietly demonstrates competence. Add new skills as you gain them, and keep your experience current and consistent with your [resume](https://thetailorcv.com/blog/resume-summary-examples-2026), since recruiters cross-check the two. A profile that shows recent activity signals momentum; one frozen for three years signals the opposite. You do not need to become an influencer — just to look like someone who is present and moving.
+
 ## Frequently Asked Questions
 
 ### How long should a LinkedIn About section be?

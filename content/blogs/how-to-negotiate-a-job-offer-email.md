@@ -104,6 +104,27 @@ Ask which pieces are flexible: "If the base is fixed, is there room on the signi
 
 Once you settle on terms, confirm them in writing before you resign anywhere. A quick email — "Just confirming the base of [X], signing bonus of [Y], and start date of [Z]; excited to join!" — protects you and creates a clean record. Only after the final offer is documented should you [decline any other offers](https://thetailorcv.com/blog/how-to-decline-a-job-offer) and give notice at your current role.
 
+## The Psychology of the Ask
+
+The reason most people do not negotiate is fear — fear of seeming greedy, fear of the offer being pulled, fear of an awkward conversation. Understanding what is actually happening on the other side dissolves most of it. Employers expect a counter; many deliberately leave room for one, and a candidate who negotiates reasonably is often respected *more*, not less, because it signals they know their value and will advocate well on the job too. The company has already chosen you — they invested hours interviewing, they do not want to restart the search, and they are not going to torch that over a polite, well-reasoned ask. Reframe the negotiation not as a confrontation but as the first collaborative problem you and your future employer solve together: how do we structure this so you start motivated and fairly paid? Framed that way, it is not adversarial at all.
+
+## A Full Negotiation, Start to Finish
+
+Here is how a clean negotiation actually unfolds:
+
+1. **Receive the verbal offer** and respond with genuine enthusiasm — "I'm thrilled" — without committing to the number.
+2. **Ask for the written offer** and a day or two to review. This is normal and expected.
+3. **Do your research:** market data for the role, level, and location, plus any competing-offer leverage.
+4. **Send the counter in writing** — warm, specific, one clear number anchored to market value, with a note that you are flexible on the mix.
+5. **Expect a response**, which may be a yes, a partial yes, or "the base is fixed but here's room on the bonus." Engage collaboratively.
+6. **Confirm the final terms in writing** before you accept, decline elsewhere, or resign.
+
+The whole exchange is usually two or three emails over a few days, conducted warmly throughout. It is not a battle; it is a short, respectful conversation with a predictable shape.
+
+## When Not to Push
+
+Negotiation is almost always worth one polite ask, but reading the situation keeps you from overplaying it. If the offer already came in strong — at or above your target and the market range — one gracious ask is fine, but do not grind for marginal gains at the cost of goodwill. If the recruiter has signaled the number is truly firm (a rigid public band, a strict internal-equity policy), accept that gracefully rather than pushing a fourth time. And once you have agreed to a number, honor it — reopening a settled negotiation, or continuing to squeeze after a fair yes, is the one thing that can genuinely sour the relationship you are about to start. Know your value, make your case once clearly, and know when a good outcome is good enough.
+
 ## Frequently Asked Questions
 
 ### Will negotiating make them rescind the offer?

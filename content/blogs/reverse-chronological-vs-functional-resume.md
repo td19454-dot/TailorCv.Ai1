@@ -78,6 +78,39 @@ A combination format handles this cleanly. Lead with a summary that states your 
 - **Inconsistent date formats.** "Jan 2024" in one place and "2024/01" in another looks careless and can confuse parsers.
 - **Burying recent, relevant work.** Even in chronological format, lead each role with its most impressive, relevant bullet.
 - **A five-page history.** Length is not depth. Two pages maximum for most, one for early-career.
+
+## How the ATS Reads Each Format
+
+Format is not just an aesthetic choice — it directly affects whether an [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) can read you at all. A parser tries to attach your accomplishments to employers and dates so it can build a structured work history. Reverse-chronological hands it exactly that: title, company, dates, bullets, in a predictable order. The parser succeeds, your experience is scored, and you advance.
+
+A functional resume actively breaks this. When your accomplishments float under skill headings with employers relegated to a bare list at the bottom, the parser often cannot tell *where* you did anything. Your carefully described leadership and analysis end up disconnected from any job, and the system may score you as having little real experience — the opposite of what you intended. This is the hidden cost of the functional format: even when a human might forgive it, the software frequently does not.
+
+## Choosing Your Format: A Decision Guide
+
+- **Steady career in one field?** Reverse-chronological, without question. It shows your progression and parses perfectly.
+- **A few short gaps?** Still reverse-chronological — use year-only dates or a brief [dated bridge entry](https://thetailorcv.com/blog/how-to-explain-employment-gap-on-resume-2026) rather than hiding the timeline.
+- **Genuine career change?** Combination — lead with a skills-and-projects section that surfaces your transferable work, then keep a dated history underneath.
+- **First job, no experience?** A [standard layout that leads with skills and projects](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) but keeps clear structure and dates.
+- **Frequent job-hopping you want to downplay?** Reverse-chronological still, but consider grouping short contract roles under one "Contract & Freelance Work" heading with a date range.
+
+Notice that in almost every case, the answer is reverse-chronological or combination — never pure functional.
+
+## Formatting Rules That Apply to Every Format
+
+Whatever structure you choose, these rules keep it parseable and readable:
+
+- **One column.** Two-column layouts scramble in many parsers.
+- **Standard section headings** the software recognizes: Experience, Education, Skills.
+- **Consistent date formatting** throughout — pick one style and hold it.
+- **Contact details in the body,** not in a header or footer that parsers skip.
+- **Real text, not images or text boxes.** A resume saved as an image cannot be parsed at all.
+- **A common font** and simple bullets, so nothing gets mangled in translation.
+
+Get the format and these fundamentals right, and you have cleared the mechanical hurdles before a human ever reads a word — which frees your content to do its job.
+
+## Frequently Asked Questions
+
+### I'm changing careers — should I use a functional resume?
 No — use a combination format. Lead with relevant skills and projects, but keep a dated work history so the timeline stays visible.
 
 ### Does the format affect my ATS score?

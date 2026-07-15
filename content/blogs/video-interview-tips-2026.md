@@ -83,6 +83,30 @@ All the setup in the world does not substitute for good answers. The advantage o
 
 Have a backup plan and state it calmly if things break: "It looks like my connection is struggling — would it help if I dialed in by phone?" Keep the meeting number and your phone handy. Interviewers do not penalize a technical glitch you handle gracefully; they notice how you respond under a small, real-time problem — which is itself a useful signal about how you would handle one on the job.
 
+## Platform-Specific Quirks to Know
+
+Each video platform behaves a little differently, and a two-minute test on the right one saves you a fumbling first impression:
+
+- **Zoom:** Check "Touch up my appearance" if you like it, and know where mute and "raise hand" are. Test screen-share if you might present.
+- **Google Meet:** Runs in the browser — close other tabs to free memory, and make sure the browser has camera and mic permission.
+- **Microsoft Teams:** Notorious for occasional audio-device confusion. Confirm the right mic and speaker are selected before you join.
+- **Platform-specific tools** (HireVue-style one-way recordings): often let you re-record or do a practice question. Use the practice run, and treat the recording like a live interview — energy and eye contact still matter.
+
+Whatever the platform, join two to three minutes early so any permission prompt or update happens before the interviewer arrives, not during your introduction.
+
+## One-Way (Recorded) Video Interviews
+
+A growing number of companies use asynchronous, recorded interviews where you answer preset questions to a camera with no human on the other end. They feel awkward — you are talking to yourself — but the fundamentals still apply, with a few tweaks:
+
+- **Look at the lens, not the screen.** With no human to react to, this is even easier to forget.
+- **Bring energy.** Without a listener nodding along, your delivery can go flat. Slightly over-project warmth.
+- **Use the prep time.** Most give you a moment to think before recording — jot a two-line structure so you do not ramble.
+- **Do not aim for perfect.** A natural, confident take beats a stiff, over-rehearsed one. If the platform allows a re-record, use it once, then move on.
+
+## Turning Nerves Into Preparation
+
+Most video-interview anxiety comes from the unknowns — will the tech work, will I freeze, how do I look? Every one of those is preparable, which means nerves are largely a signal to prepare more, not a fixed trait. Do a full dress rehearsal: same outfit, same lighting, same platform, answering real questions out loud on camera. Watching one recording of yourself is uncomfortable but enormously useful — you will catch the "ums," the flat delivery, or the bad angle before an interviewer does. A few reps in an [AI mock interview](https://thetailorcv.com/mock-interview) build the muscle memory that turns a nerve-wracking call into a routine one, and our [interview prep](https://thetailorcv.com/interview-prep) tool can generate the exact questions you are likely to face so nothing catches you cold.
+
 ## Frequently Asked Questions
 
 ### Should I dress fully professionally even from home?

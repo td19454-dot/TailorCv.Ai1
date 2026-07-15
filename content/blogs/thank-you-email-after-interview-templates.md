@@ -100,6 +100,25 @@ The decision conversation often happens within a day or two of your interview, w
 - **Restating your entire resume** — the note should add warmth and one sharp point, not repeat your pitch.
 - **Waiting "to seem less eager"** — promptness reads as professional, not desperate.
 
+## The Difference Between a Note That Helps and One That's Ignored
+
+Send two thank-you emails to the same interviewer and one advances you while the other vanishes — the difference is always specificity. "Thank you for your time today, I'm very interested in the role" is polite and instantly forgettable; it could have been sent to any company for any job. "I keep thinking about the migration challenge you described — I've actually led exactly that kind of move, and I'd love to dig into it" proves you were present, engaged, and can already picture yourself in the work. The specific callback is what makes the reader remember you. Before you hit send, ask: could I have sent this exact email to a different company? If yes, it is too generic — add the detail only *this* conversation produced.
+
+## A Follow-Up Timeline for the Whole Process
+
+The thank-you email is one moment in a longer sequence of staying appropriately visible:
+
+- **Within 24 hours of each interview:** an individual thank-you referencing that conversation.
+- **If a stated decision date passes:** a brief, warm check-in a day or two later.
+- **After a final round with no word for a week:** one polite status-and-interest note.
+- **After a rejection:** a gracious thank-you asking to be kept in mind — genuinely underused, and it has reopened doors months later.
+
+Two touches beyond the thank-yous is the ceiling; past that, redirect your energy. The [full follow-up guide](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) covers the cadence in detail.
+
+## Sending to a Panel Without Sounding Copy-Pasted
+
+When five people interviewed you, five identical notes are worse than none — the moment two of them compare inboxes, the thank-you reads as a form letter. The fix is to anchor each note to what *that* person actually discussed: the engineer who gave you a systems question gets a note about that problem; the manager who probed team fit gets one about collaboration; the skip-level who asked about your long-term goals gets one about direction. Same warmth, same structure, genuinely different middle. If you cannot get everyone's email, send to those you have and ask the recruiter to pass your thanks to the rest, naming each person so it lands as personal rather than generic.
+
 ## Frequently Asked Questions
 
 ### Email or handwritten note?

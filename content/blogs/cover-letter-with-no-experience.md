@@ -80,6 +80,38 @@ The specific moment proves the trait far more convincingly than the adjective, a
 
 Your biggest advantage as a beginner is effort — and most beginners send the same generic letter everywhere. Change the specifics for each application: the reason you want *this* company, the project most relevant to *this* role, the skills *this* posting names. A tailored letter from a career starter often beats a generic one from a more experienced candidate, because it signals exactly the initiative employers are betting on.
 
+## A Complete Worked Example
+
+Here is a full cover letter for a marketing-assistant role, written by someone with only a degree, a club role, and a part-time job — and it works because every line is specific.
+
+> Dear Ms. Okafor,
+>
+> I have recommended [Company]'s newsletter to half my journalism cohort this year — it is the rare brand email people actually forward. So when I saw you were hiring a Marketing Assistant, I applied before I finished reading the posting.
+>
+> I do not have a full-time marketing role yet, but I have been doing the work. As social lead for my 200-member university media society, I grew our Instagram from 400 to 2,600 followers in a semester by testing posting times and leaning into short video — the same organic-first approach your team clearly favors. I also spent two years in a customer-facing café job, where I learned to read people fast and stay calm when everything is busy at once.
+>
+> What I bring is genuine drive and a habit of learning by doing. I would love to help with the content and community work your posting describes, and I am confident I would get up to speed quickly. Thank you for considering my application.
+>
+> Sincerely,
+> Amara Nwosu
+
+Notice there is not a single marketing *job* on this candidate's history — yet the letter reads as capable, specific, and eager. The club result carries the proof, the café job proves composure, and the opener proves genuine interest.
+
+## Researching the Company for a Specific Hook
+
+The difference between a forgettable letter and a memorable one is usually one specific, true detail about the company. With no experience to lean on, this specificity matters even more — it proves initiative. Spend ten minutes before you write:
+
+- Read the company's most recent blog post, product update, or announcement.
+- Try their product or service if you can, and note one honest reaction.
+- Read the full job posting twice; the problems it describes are what you should speak to.
+- Look at how they write on their site, and match that tone.
+
+One real observation — "your onboarding flow is the smoothest I've used" or "your posting's emphasis on writing is exactly why I applied" — turns a generic letter into one that could only have been sent to them.
+
+## How Long It Should Take (and Why It's Worth It)
+
+A strong entry-level cover letter takes 30 to 45 minutes: ten minutes of research, twenty of writing, and ten of ruthless cutting. That feels like a lot when you are applying to many roles, which is exactly why most beginners skip it or send a generic one — and exactly why yours stands out when you do not. For the roles you genuinely want, this is the highest-leverage 40 minutes in your entire application. You can use an [AI cover letter generator](https://thetailorcv.com/cover-letter) to produce a first draft from the job description in seconds, but always rewrite the opener and the proof paragraph by hand — those are where the specific, only-you details live.
+
 ## Frequently Asked Questions
 
 ### Should I admit I have no experience?

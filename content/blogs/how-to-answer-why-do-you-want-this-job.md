@@ -92,6 +92,14 @@ Beyond the obvious flubs, these subtler ones do real damage:
 - **All ambition, no contribution.** "This role will help me grow" centers you. Balance it with what you will give.
 - **Contradicting your other answers.** If "why leaving" and "why this job" tell different stories, the interviewer trusts neither.
 
+## Adapting the Answer to Company Size and Stage
+
+The same three-part structure works everywhere, but the emphasis shifts with the kind of company you are talking to. At an early-stage startup, lean into impact, breadth, and mission — they want people energized by ambiguity and ownership: "I want to work somewhere my decisions visibly move the product, and being early enough to shape how things are built is exactly what excites me." At a large, established company, emphasize depth, craft, and scale — the chance to work on hard problems at a size few places offer: "I want to go deep on reliability, and doing it on a system that serves millions is a problem I can't get anywhere smaller." Reading the company's stage and tailoring which of your genuine reasons you lead with makes the answer feel native rather than generic — the same instinct that makes a [tailored resume](https://thetailorcv.com/optimize) outperform a one-size-fits-all one.
+
+## Practicing Until It Sounds Natural
+
+The paradox of this question is that a memorized answer sounds worse than an unprepared one — recited word-for-word, it goes flat and hollow. The goal is not to memorize a script but to internalize your three beats (the role reason, the company reason, your direction) so well that you can say them freshly each time, in slightly different words. The way to get there is to practice out loud, not in your head. Say it a dozen times, varying the phrasing, until the ideas are automatic but the delivery stays alive. Running it in an [AI mock interview](https://thetailorcv.com/mock-interview) alongside the other common questions helps you hear whether your whole narrative hangs together — because "why do you want this job" should rhyme with your answers to "why are you leaving" and "where do you see yourself," not contradict them. When all your answers point the same direction, you come across as someone who knows exactly what they want and why this role is it.
+
 ## Frequently Asked Questions
 
 ### What if I mostly want the job for the money?
