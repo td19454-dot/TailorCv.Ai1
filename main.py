@@ -8077,19 +8077,7 @@ async def login_user(request: Request):
     db = get_db()
     try:
         user = db.query(User).filter(User.email == payload.email.lower()).first()
-        if not user:
-            # Auto-provision user on first login attempt so new users are persisted in DB.
-            inferred_name = payload.email.split("@", 1)[0].replace(".", " ").replace("_", " ").strip()
-            inferred_name = " ".join(part.capitalize() for part in inferred_name.split()) or "User"
-            user = User(
-                name=inferred_name[:120],
-                email=payload.email.lower(),
-                hashed_password=hash_password(payload.password),
-            )
-            db.add(user)
-            db.commit()
-            db.refresh(user)
-        elif not verify_password(payload.password, user.hashed_password):
+        if not user or not verify_password(payload.password, user.hashed_password):
             raise HTTPException(status_code=401, detail="Invalid email or password")
 
         try:
