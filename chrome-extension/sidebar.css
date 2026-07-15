@@ -453,6 +453,13 @@
 .tcv-match.tcv-low  .tcv-match-value { color: #fca5a5 !important; }
 .tcv-match.tcv-mid  .tcv-match-value { color: #fcd34d !important; }
 .tcv-match.tcv-high .tcv-match-value { color: #86efac !important; }
+/* No named skills in the JD — nothing to score, so explain rather than show a blank bar. */
+.tcv-match.tcv-na .tcv-match-value { font-size: 15px !important; color: #94a3b8 !important; }
+.tcv-match-note {
+  font-size: 11px !important;
+  line-height: 1.45 !important;
+  color: #8a93a6 !important;
+}
 
 .tcv-upgrade-box {
   text-align: center !important;
