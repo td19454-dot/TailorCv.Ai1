@@ -738,6 +738,9 @@
     globalStatus.textContent = res.error
       ? `✗ ${label}: ${res.error}`
       : `✓ Downloaded cover letter for "${label}"`;
+    // No skill-match score for a cover letter — showSuccessTick() with no
+    // afterScore plays the tick and simply skips the score card afterward.
+    if (!res.error) showSuccessTick();
 
     if (sessionReady) renderJobFromPage();
   }
