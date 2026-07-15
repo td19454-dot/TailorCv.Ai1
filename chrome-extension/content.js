@@ -208,6 +208,42 @@
     };
   }
 
+  // ── Layer 2.5: heading-label scan ────────────────────
+  // Sites redesign their markup constantly, but the human-visible section
+  // labels barely change. Find one of these labels and walk up to whichever
+  // ancestor actually holds the JD-sized text — resilient to class/id
+  // renames in a way no hardcoded selector list can be (see the Naukri
+  // adapter note above: guessing another brittle selector just rots again).
+
+  const HEADING_LABEL_PATTERNS = [
+    /^about the job$/i, /^about this role$/i, /^about the role$/i,
+    /^role description$/i, /^job description$/i, /^position summary$/i,
+    /^job summary$/i, /^the role$/i, /^what you.ll do$/i, /^what you.ll be doing$/i,
+    /^responsibilit(y|ies)\s*:?$/i, /^requirements?\s*:?$/i, /^qualifications?\s*:?$/i,
+    /^who you are$/i, /^your role$/i,
+  ];
+
+  function fromHeadingLabel() {
+    const candidates = document.querySelectorAll('h1, h2, h3, h4, h5, strong, b, [role="heading"]');
+    for (const el of candidates) {
+      if (el.closest('#tailorcv-sidebar')) continue;   // never match our own panel
+      const label = (el.textContent || '').trim();
+      if (!label || label.length > 60) continue;
+      if (!HEADING_LABEL_PATTERNS.some(p => p.test(label))) continue;
+
+      let container = el.closest('section, article, div');
+      for (let i = 0; i < 4 && container; i++) {
+        if (container === document.body || container === document.documentElement) break;
+        const text = (container.innerText || '').trim();
+        if (text.length >= MIN_JD_LENGTH && text.length <= 25000 && jdScore(text) >= 3) {
+          return { jd_string: clean(text), role: clean(guessRole()), company: clean(guessCompany()), source: 'heading' };
+        }
+        container = container.parentElement;
+      }
+    }
+    return null;
+  }
+
   // ── Layer 3: generic heuristic ───────────────────────
   // Score every sizeable text block by how much it reads like a job description,
   // and take the tightest-fitting winner. Catches company career pages and the
@@ -301,7 +337,7 @@
     if (manualJd && manualJd.length >= MIN_JD_LENGTH) {
       return { jd_string: manualJd, role: guessRole(), company: guessCompany(), source: 'manual' };
     }
-    for (const layer of [fromJsonLd, fromAdapter, fromHeuristic]) {
+    for (const layer of [fromJsonLd, fromAdapter, fromHeadingLabel, fromHeuristic]) {
       let job = null;
       try { job = layer(); } catch (_) { /* a broken layer must not kill the panel */ }
       if (job && job.jd_string && job.jd_string.length >= MIN_JD_LENGTH) return job;
@@ -328,6 +364,7 @@
         console.log(`   jd selector ${sel} →`, el ? `${(el.innerText || '').trim().length} chars` : 'no match');
       });
     }
+    console.log('layer 2.5 — heading-label scan: found match:', !!fromHeadingLabel());
 
     const top = [...document.querySelectorAll('div, section, article')]
       .filter(el => {
@@ -351,6 +388,7 @@
   const SOURCE_LABEL = {
     jsonld: 'Read from the job posting',
     adapter: 'Read from this page',
+    heading: 'Detected on this page',
     heuristic: 'Detected on this page',
     manual: 'Using the text you provided',
   };
