@@ -763,7 +763,7 @@
     // that channel can't be relied on here. chrome.runtime.sendMessage to the
     // extension's own ID via "externally_connectable" doesn't depend on any
     // window relationship at all, so it isn't affected by that.
-    var TAILORCV_EXTENSION_ID = 'gpoaaejaeomchnhiedigehkjcjadpcmh';
+    var TAILORCV_EXTENSION_ID = 'lnkplncemohgcdjlgccgmbcgiokcgmno';
 
     function tailorCvFinishLogin() {
       if (new URLSearchParams(window.location.search).get('ext') !== '1') {
@@ -816,7 +816,6 @@
       if (!email.includes('@') || password.length < 6) return;
 
       statusMessage.className = 'status';
-      statusMessage.style.display = 'none';
       loginBtn.disabled = true;
       loginBtn.textContent = 'Signing in…';
 

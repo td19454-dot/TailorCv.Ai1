@@ -19,7 +19,7 @@
   if (window.__tailorcvInjected) return;   // toolbar click on an auto-injected page
   window.__tailorcvInjected = true;
 
-  const BASE_URL = 'http://127.0.0.1:8005';  // switch to https://thetailorcv.com to ship
+  const BASE_URL = 'https://thetailorcv.com';
   const MIN_JD_LENGTH = 200;
   const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 30; // r=30 in the SVG below
   // The lock-check.svg loop is 4.7s at 30fps (141 frames). Frame 74 is the last
