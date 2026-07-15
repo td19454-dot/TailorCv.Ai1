@@ -1,10 +1,10 @@
 // ═══════════════════════════════════════════════════════
-// TailorCV Resume Tailor — job page content script
+// TailorCV — AI Resume Optimizer — job page content script
 //
 // Runs automatically on the job boards declared in the manifest, and on demand
 // (via the toolbar button + activeTab) on any other site. The injected sidebar
-// is the extension's only UI surface: login check, base-resume check, and the
-// Tailor & Download action.
+// is the extension's only UI surface: login check, base-resume check, skill
+// match score, and the Tailor & Download / Cover Letter actions.
 //
 // The job description is read in four layers, cheapest and most reliable first:
 //   1. schema.org JobPosting JSON-LD  — a spec, so it survives redesigns
@@ -21,17 +21,30 @@
 
   const BASE_URL = 'http://127.0.0.1:8005';  // switch to https://thetailorcv.com to ship
   const MIN_JD_LENGTH = 200;
-
   const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 30; // r=30 in the SVG below
+  // The lock-check.svg loop is 4.7s at 30fps (141 frames). Frame 74 is the last
+  // moment before it starts turning green / drawing the checkmark, so looping
+  // [0, 74) reads as a pure "spinning lock" — the tick only plays once we know
+  // login actually succeeded.
+  const LOCK_FPS = 30;
+  const LOCK_LOOP_END = 74 / LOCK_FPS;   // seconds
+  const LOCK_TOTAL_DUR = 4.7;            // seconds, matches the SVG's dur="4.7s"
+  // The icon itself is scaled to 0 at t=0 and only reaches full size around
+  // t≈0.33s (baked into the SVG's own animation) — resetting the loop to a
+  // point just past that instead of literal 0 keeps the icon visible on every
+  // lap instead of periodically flashing blank on each restart.
+  const LOCK_LOOP_START = 0.35;          // seconds
 
   let tcvBusy = false;
-  let sb, body, launcher, globalStatus;
-  let progressWrap, progressBar, progressPct, progressTimer, checkIcon;
+  let sb, body, launcher, globalStatus, progressWrap, progressBar, progressPct, progressTimer;
+  let successTick, scoreCard, scoreBeforeEl, scoreAfterEl, successTickTimer;
   let sessionReady = false;
-  let quotaExceeded = false;
-  let lastBeforeScore = null;   // survives the re-render runTailor does while busy
-  let lastAfterScore = null;    // set once tailored, so the re-render keeps showing the gain
   let manualJd = '';   // set when the user pastes or selects the JD themselves
+  let lockSvgEl = null;
+  let lockLoopTimer = null;
+  // Once the free quota is hit, every job switch shows the upgrade prompt
+  // directly instead of a tailor button that's guaranteed to 402 again.
+  let quotaExceeded = false;
 
   // ── Utilities ────────────────────────────────────────
 
@@ -357,10 +370,10 @@
     sb.id = 'tailorcv-sidebar';
     sb.innerHTML = `
       <div class="tcv-header">
-        <span class="tcv-brand">
+        <div class="tcv-brand">
           <img class="tcv-logo-icon" src="${chrome.runtime.getURL('icons/icon48.png')}" alt="">
           <span class="tcv-logo">TailorCV</span>
-        </span>
+        </div>
         <button class="tcv-toggle" title="Minimize">✕</button>
       </div>
       <div id="tcvBody"></div>
@@ -377,23 +390,34 @@
             <circle class="tcv-progress-bar" id="tcvProgressBar" cx="44" cy="44" r="30"></circle>
           </svg>
           <span class="tcv-progress-pct" id="tcvProgressPct">0%</span>
-          <svg class="tcv-check-icon" id="tcvCheckIcon" width="88" height="88" viewBox="0 0 88 88">
-            <path id="tcvCheckPath" d="M27 45 L39 57 L61 32" fill="none" stroke="#4ade80"
-                  stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
+        </div>
+      </div>
+      <div class="tcv-success-tick" id="tcvSuccessTick"></div>
+      <div class="tcv-score-card" id="tcvScoreCard">
+        <div class="tcv-score-item">
+          <span class="tcv-score-num" id="tcvScoreBefore">--%</span>
+          <span class="tcv-score-label">Before</span>
+        </div>
+        <span class="tcv-score-arrow">→</span>
+        <div class="tcv-score-item">
+          <span class="tcv-score-num tcv-score-after" id="tcvScoreAfter">--%</span>
+          <span class="tcv-score-label">After</span>
         </div>
       </div>
       <div class="tcv-status-text" id="tcvGlobalStatus"></div>
     `;
     document.body.appendChild(sb);
     body = sb.querySelector('#tcvBody');
-    // These live outside #tcvBody so they survive per-job re-renders — an in-flight
-    // request stays visible even after switching to a different job.
+    // These live outside #tcvBody so they survive per-job re-renders — an
+    // in-flight tailor request stays visible even after switching jobs.
     globalStatus = sb.querySelector('#tcvGlobalStatus');
     progressWrap = sb.querySelector('#tcvProgressWrap');
     progressBar = sb.querySelector('#tcvProgressBar');
     progressPct = sb.querySelector('#tcvProgressPct');
-    checkIcon = sb.querySelector('#tcvCheckIcon');
+    successTick = sb.querySelector('#tcvSuccessTick');
+    scoreCard = sb.querySelector('#tcvScoreCard');
+    scoreBeforeEl = sb.querySelector('#tcvScoreBefore');
+    scoreAfterEl = sb.querySelector('#tcvScoreAfter');
     progressBar.style.strokeDasharray = String(PROGRESS_CIRCUMFERENCE);
     progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE);
 
@@ -417,19 +441,72 @@
 
   // ── State renderers ──────────────────────────────────
 
-  function renderLoading() {
-    body.innerHTML = `<div class="tcv-status-text">Checking login…</div>`;
+  // An <img>-loaded SVG can't be scripted (isolated rendering context), so to
+  // control playback — loop only the spinning-lock portion while we wait, then
+  // let the green-tick ending play once login is confirmed — the SVG has to be
+  // inlined into the page DOM instead.
+  async function renderLoading() {
+    body.innerHTML = `
+      <div class="tcv-loading-anim" id="tcvLoadingAnim"></div>
+      <div class="tcv-loading-label">Authenticating</div>
+    `;
+    const container = body.querySelector('#tcvLoadingAnim');
+    lockSvgEl = null;
+    clearInterval(lockLoopTimer);
+    const svgUrl = chrome.runtime.getURL('icons/lock-check.svg');
+    try {
+      const res = await fetch(svgUrl);
+      if (!res.ok) throw new Error(`fetch ${svgUrl} → HTTP ${res.status}`);
+      const svgText = await res.text();
+      if (!container.isConnected) return; // state already moved on while we were fetching
+      container.innerHTML = svgText;
+      const svgEl = container.querySelector('svg');
+      if (!svgEl || typeof svgEl.setCurrentTime !== 'function') {
+        throw new Error('lock-check.svg did not parse into a scriptable <svg> root');
+      }
+      lockSvgEl = svgEl;
+      svgEl.setCurrentTime(0); // play the one-time scale-up intro on first show
+      lockLoopTimer = setInterval(() => {
+        if (svgEl.getCurrentTime() >= LOCK_LOOP_END) svgEl.setCurrentTime(LOCK_LOOP_START);
+      }, 50);
+    } catch (e) {
+      // Frame-accurate looping needs the inline, scriptable SVG above. If that
+      // failed for any reason, fall back to a plain <img> so the loading state
+      // still animates — it just can't be cut off at frame 74 this way.
+      console.warn('[TailorCV] lock animation fallback (frame control unavailable):', e);
+      if (container.isConnected) {
+        container.innerHTML = `<img src="${svgUrl}" alt="">`;
+      }
+    }
+  }
+
+  // Stops re-looping the lock so the SVG's own timeline keeps playing forward
+  // into the unlock + green-tick ending. Returns how much longer that takes,
+  // so the caller can let a real network call run in parallel instead of
+  // tacking the wait on afterward.
+  function finishLockAnimation() {
+    clearInterval(lockLoopTimer);
+    if (!lockSvgEl) return 0;
+    return Math.max(0, (LOCK_TOTAL_DUR - lockSvgEl.getCurrentTime()) * 1000);
   }
 
   function renderLogin(errorMsg) {
     body.innerHTML = `
       <div class="tcv-msg">Log in to TailorCV to tailor your resume.</div>
       <form id="tcvLoginForm">
-        <input type="email" id="tcvEmail" class="tcv-input" placeholder="Email" required autocomplete="username">
-        <input type="password" id="tcvPassword" class="tcv-input" placeholder="Password" required autocomplete="current-password">
+        <label class="tcv-field-label" for="tcvEmail">Email</label>
+        <input type="email" id="tcvEmail" class="tcv-input" placeholder="you@example.com" required autocomplete="username">
+        <label class="tcv-field-label" for="tcvPassword">Password</label>
+        <input type="password" id="tcvPassword" class="tcv-input" placeholder="Your password" required autocomplete="current-password">
         <button type="submit" class="tcv-btn tcv-btn-start" id="tcvLoginBtn">Log in</button>
         <div class="tcv-error" id="tcvLoginError">${esc(errorMsg || '')}</div>
       </form>
+      <div class="tcv-divider"><span>or</span></div>
+      <a class="tcv-btn tcv-btn-outline tcv-btn-link" href="${BASE_URL}/login?ext=1" target="_blank">Continue with Google →</a>
+      <div class="tcv-login-links">
+        <a class="tcv-link" href="${BASE_URL}/login?ext=1" target="_blank">Forgot password?</a>
+        <a class="tcv-link" href="#" id="tcvLoginRetry">Already logged in? Retry</a>
+      </div>
     `;
     body.querySelector('#tcvLoginForm').addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -447,6 +524,10 @@
       }
       refreshFull();
     });
+    body.querySelector('#tcvLoginRetry').addEventListener('click', (e) => {
+      e.preventDefault();
+      refreshFull();
+    });
   }
 
   function renderNoBaseResume() {
@@ -456,6 +537,21 @@
     `;
   }
 
+  function renderUpgradePrompt() {
+    body.innerHTML = `
+      <div class="tcv-upgrade-box">
+        <div class="tcv-msg">You've used all your free resume tailors for this month.</div>
+        <a class="tcv-btn tcv-btn-start tcv-btn-link" href="${BASE_URL}/pricing" target="_blank">⚡ Upgrade to Pro →</a>
+        <a class="tcv-link tcv-retry-link" id="tcvRetryAfterUpgrade" href="#">Already upgraded? Retry</a>
+      </div>
+    `;
+    body.querySelector('#tcvRetryAfterUpgrade').addEventListener('click', (e) => {
+      e.preventDefault();
+      quotaExceeded = false;
+      renderJobFromPage();
+    });
+  }
+
   // Layer 4. The page beat every extractor, so let the user hand us the text —
   // this is what keeps the extension useful on login-gated SPAs and odd career pages.
   function renderManual(prefill) {
@@ -463,7 +559,7 @@
       <div class="tcv-msg">Paste the job description, or select it on the page and click Use&nbsp;selection.</div>
       <textarea id="tcvManualJd" class="tcv-textarea" rows="7"
                 placeholder="Paste the job description here…">${esc(prefill || '')}</textarea>
-      <button class="tcv-btn tcv-btn-outline" id="tcvUseSelection">Use selection from page</button>
+      <button class="tcv-btn tcv-btn-ghost" id="tcvUseSelection">Use selection from page</button>
       <button class="tcv-btn tcv-btn-start" id="tcvManualGo">Use this description</button>
       <div class="tcv-error" id="tcvManualError"></div>
     `;
@@ -492,86 +588,23 @@
     });
   }
 
-  // ── Progress ring & upgrade prompt ───────────────────
-  // From the LinkedIn panel: a ring that eases toward 92% while the model works,
-  // then fills and draws a checkmark on success.
-
-  function setProgress(pct) {
-    const clamped = Math.max(0, Math.min(100, pct));
-    progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE * (1 - clamped / 100));
-    progressPct.textContent = Math.round(clamped) + '%';
-  }
-
-  function startProgress() {
-    progressWrap.classList.add('tcv-visible');
-    progressBar.style.transition = 'stroke-dashoffset 0.2s linear';
-    setProgress(0);
-    const startedAt = performance.now();
-    clearInterval(progressTimer);
-    progressTimer = setInterval(() => {
-      const elapsedSeconds = (performance.now() - startedAt) / 1000;
-      setProgress(92 * (1 - Math.exp(-elapsedSeconds / 15))); // eases toward 92%, never quite reaches it
-    }, 150);
-  }
-
-  function finishProgress(success) {
-    clearInterval(progressTimer);
-    progressBar.style.transition = 'stroke-dashoffset 0.4s ease';
-    setProgress(100);
-
-    if (!success) {
-      setTimeout(() => progressWrap.classList.remove('tcv-visible'), 700);
-      return;
-    }
-
-    // Let the ring visibly finish filling, then morph it into a drawn checkmark.
-    setTimeout(() => {
-      progressBar.classList.add('tcv-success');
-      progressPct.classList.add('tcv-hidden');
-      checkIcon.classList.add('tcv-visible');
-    }, 350);
-    setTimeout(() => {
-      progressWrap.classList.remove('tcv-visible');
-      progressBar.classList.remove('tcv-success');
-      progressPct.classList.remove('tcv-hidden');
-      checkIcon.classList.remove('tcv-visible');
-    }, 1750);
-  }
-
-  function renderUpgradePrompt() {
-    body.innerHTML = `
-      <div class="tcv-upgrade-box">
-        <div class="tcv-msg">You have used all your free tailors for this month.</div>
-        <a class="tcv-btn tcv-btn-start tcv-btn-link" href="${BASE_URL}/pricing" target="_blank">⚡ Upgrade to Pro →</a>
-        <a class="tcv-link tcv-retry-link" id="tcvRetryAfterUpgrade" href="#">Already upgraded? Retry</a>
-      </div>
-    `;
-    body.querySelector('#tcvRetryAfterUpgrade').addEventListener('click', (e) => {
-      e.preventDefault();
-      quotaExceeded = false;
-      renderJobFromPage();
-    });
-  }
-
   function renderReady(job) {
+    if (quotaExceeded) { renderUpgradePrompt(); return; }
     const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
     body.innerHTML = `
-      <div class="tcv-job-info">Tailoring for<b>${esc(job.role || 'this job')}</b>${job.company ? esc(job.company) : ''}</div>
-
+      <div class="tcv-job-info">Job Title: <b>${esc(job.role || 'this job')}</b>${job.company ? ' at ' + esc(job.company) : ''}</div>
+      <div class="tcv-source">${SOURCE_LABEL[job.source] || ''} · <a href="#" id="tcvEditJd">not right?</a></div>
       <div class="tcv-match" id="tcvMatch">
         <div class="tcv-match-head">
           <span class="tcv-match-label">Skill match</span>
           <span class="tcv-match-value" id="tcvMatchBefore">…</span>
         </div>
         <div class="tcv-match-bar"><span class="tcv-match-fill" id="tcvMatchFill"></span></div>
-        <div id="tcvMatchDeltaSlot"></div>
       </div>
-
-      <div class="tcv-source">${SOURCE_LABEL[job.source] || ''} · <a href="#" id="tcvEditJd">not right?</a></div>
       <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
         ${tcvBusy ? 'Working on another job…' : '✦ Tailor & Download Resume'}
       </button>
-      <button class="tcv-btn tcv-btn-outline" id="tcvCoverBtn">
+      <button class="tcv-btn tcv-btn-ghost" id="tcvCoverBtn">
         ✉ Write a Cover Letter
       </button>
     `;
@@ -592,55 +625,112 @@
       btn.addEventListener('click', () => runTailor(job, label));
       coverBtn.addEventListener('click', () => runCoverLetter(job, label));
     }
-
     loadBeforeScore(job);
   }
 
-  // Fires whenever a job is detected. The score is deterministic and LLM-free on
-  // the server, so it lands within a second or two — well before the user has
-  // decided whether to click Tailor.
+  // Fires immediately whenever a job is detected — deterministic and LLM-free
+  // server-side, so this should resolve within a second or two, well before
+  // the user has decided whether to click "Tailor & Download."
   function loadBeforeScore(job) {
     const matchEl = body.querySelector('#tcvMatchBefore');
-    if (!matchEl) return;
     sendMessage({ type: 'GET_SKILL_MATCH', jd_string: job.jd_string }).then((res) => {
-      if (!matchEl.isConnected) return;   // user already moved to another job/state
+      if (!matchEl.isConnected) return; // user already moved to a different job/state
       const score = res.data && typeof res.data.score === 'number' ? res.data.score : null;
       if (score === null) {
         matchEl.textContent = '—';
         return;
       }
       job.beforeScore = score;
-      lastBeforeScore = score;
-      if (lastAfterScore !== null) paintMatchAfter(score, lastAfterScore);
-      else paintMatch(score);
+      paintMatch(score);
     });
   }
 
   // The bar and its colour carry the verdict, so the number does not have to: a bare
-  // "38%" leaves the user guessing whether that is bad.
+  // "38%" leaves the user guessing whether that is bad. Red < 40, amber < 70, green up.
   function paintMatch(score) {
     const wrap = body.querySelector('#tcvMatch');
     const valueEl = body.querySelector('#tcvMatchBefore');
     const fillEl = body.querySelector('#tcvMatchFill');
     if (!wrap || !valueEl || !fillEl) return;
-
     valueEl.textContent = score + '%';
     wrap.classList.remove('tcv-low', 'tcv-mid', 'tcv-high');
     wrap.classList.add(score < 40 ? 'tcv-low' : score < 70 ? 'tcv-mid' : 'tcv-high');
-    // Next frame, so the width transition actually animates from 0 instead of
-    // being painted at its final value on first render.
     requestAnimationFrame(() => { fillEl.style.width = Math.max(2, Math.min(100, score)) + '%'; });
   }
 
-  // After a tailor: move the bar to the new score and show what the rewrite bought.
-  function paintMatchAfter(before, after) {
-    if (typeof after !== 'number') return;
-    paintMatch(after);
-    const slot = body.querySelector('#tcvMatchDeltaSlot');
-    if (!slot) return;
-    slot.innerHTML = typeof before === 'number'
-      ? `<span class="tcv-match-delta">↑ ${before}% → ${after}% after tailoring</span>`
-      : `<span class="tcv-match-delta">↑ ${after}% after tailoring</span>`;
+  // The backend gives no incremental progress events for a single tailor
+  // request, so this eases toward ~92% over the typical request duration and
+  // snaps to 100% the moment the response actually comes back — reads as
+  // real progress (ring + live number) without lying about a completion
+  // time we can't know in advance.
+  function setProgress(pct) {
+    const clamped = Math.max(0, Math.min(100, pct));
+    progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE * (1 - clamped / 100));
+    progressPct.textContent = Math.round(clamped) + '%';
+  }
+
+  // Clears whatever the previous run left showing (tick / score card), so a
+  // fresh tailor request starts from a clean slate.
+  function hideSuccessExtras() {
+    clearTimeout(successTickTimer);
+    successTick.classList.remove('tcv-visible');
+    scoreCard.classList.remove('tcv-visible');
+  }
+
+  function startProgress() {
+    hideSuccessExtras();
+    progressWrap.classList.add('tcv-visible');
+    progressBar.style.transition = 'stroke-dashoffset 0.2s linear';
+    setProgress(0);
+    const startedAt = performance.now();
+    clearInterval(progressTimer);
+    progressTimer = setInterval(() => {
+      const elapsedSeconds = (performance.now() - startedAt) / 1000;
+      setProgress(92 * (1 - Math.exp(-elapsedSeconds / 7.5))); // eases toward 92% (2x speed), never quite reaches it
+    }, 150);
+  }
+
+  function finishProgress(success) {
+    clearInterval(progressTimer);
+    progressBar.style.transition = 'stroke-dashoffset 0.4s ease';
+    setProgress(100);
+    // Let the ring visibly finish filling, then fade it out — the success tick
+    // (if any) takes over from here; runTailor() triggers that separately once
+    // it knows the before/after scores.
+    setTimeout(() => progressWrap.classList.remove('tcv-visible'), success ? 500 : 700);
+  }
+
+  // An <img>-loaded SVG can't be scripted, but we don't need to control this
+  // one's playback frame-by-frame like the lock — it just needs to play once
+  // and go away, so inlining is only needed for the fallback-detection pattern
+  // shared with the other icons in this file (fetch, fall back to <img> on
+  // any failure rather than showing nothing).
+  async function showSuccessTick(beforeScore, afterScore) {
+    successTick.classList.add('tcv-visible');
+    successTick.innerHTML = '';
+    const svgUrl = chrome.runtime.getURL('icons/success-check.svg');
+    try {
+      const res = await fetch(svgUrl);
+      if (!res.ok) throw new Error(`fetch ${svgUrl} → HTTP ${res.status}`);
+      const svgText = await res.text();
+      if (!successTick.isConnected) return;
+      successTick.innerHTML = svgText;
+    } catch (e) {
+      console.warn('[TailorCV] success tick fallback:', e);
+      if (successTick.isConnected) successTick.innerHTML = `<img src="${svgUrl}" alt="">`;
+    }
+    clearTimeout(successTickTimer);
+    successTickTimer = setTimeout(() => {
+      successTick.classList.remove('tcv-visible');
+      showScoreCard(beforeScore, afterScore);
+    }, 2200);
+  }
+
+  function showScoreCard(beforeScore, afterScore) {
+    if (typeof afterScore !== 'number') return; // nothing meaningful to show
+    scoreBeforeEl.textContent = typeof beforeScore === 'number' ? beforeScore + '%' : '—';
+    scoreAfterEl.textContent = afterScore + '%';
+    scoreCard.classList.add('tcv-visible');
   }
 
   async function runCoverLetter(job, label) {
@@ -661,14 +751,12 @@
       },
     });
 
-    tcvBusy = false;
     finishProgress(!res.error);
+    tcvBusy = false;
     globalStatus.className = res.error ? 'tcv-status-text tcv-error' : 'tcv-status-text tcv-ok';
     globalStatus.textContent = res.error
       ? `✗ ${label}: ${res.error}`
       : `✓ Downloaded cover letter for "${label}"`;
-
-    if (res.code === 'upgrade_required') quotaExceeded = true;
 
     if (sessionReady) renderJobFromPage();
   }
@@ -679,7 +767,7 @@
     tcvBusy = true;
     renderJobFromPage(); // re-render current button as disabled/"busy"
     globalStatus.className = 'tcv-status-text';
-    globalStatus.textContent = `Tailoring "${label}"…`;
+    globalStatus.textContent = `Tailoring "${label}"… this can take up to a minute.`;
     startProgress();
 
     const res = await sendMessage({
@@ -692,25 +780,26 @@
       },
     });
 
-    tcvBusy = false;
     finishProgress(!res.error);
+    tcvBusy = false;
+
+    if (res.code === 'upgrade_required') {
+      quotaExceeded = true;
+      globalStatus.className = 'tcv-status-text';
+      globalStatus.textContent = '';
+      renderUpgradePrompt();
+      return;
+    }
 
     if (res.error) {
       globalStatus.className = 'tcv-status-text tcv-error';
       globalStatus.textContent = `✗ ${label}: ${res.error}`;
     } else {
-      // The tailor response carries the post-tailor score in a header, so we can show
-      // what the rewrite actually bought: "64% → 89%".
-      const before = typeof job.beforeScore === 'number' ? job.beforeScore : lastBeforeScore;
-      const after = res.data && typeof res.data.afterScore === 'number' ? res.data.afterScore : null;
-      if (after !== null) lastAfterScore = after;
-      const matchText = after === null ? ''
-        : (typeof before === 'number' ? ` — Match: ${before}% → ${after}%` : ` — Match: ${after}%`);
       globalStatus.className = 'tcv-status-text tcv-ok';
-      globalStatus.textContent = `✓ Downloaded resume for "${label}"${matchText}`;
+      globalStatus.textContent = `✓ Downloaded resume for "${label}"`;
+      const after = res.data && typeof res.data.afterScore === 'number' ? res.data.afterScore : null;
+      showSuccessTick(job.beforeScore, after);
     }
-
-    if (res.code === 'upgrade_required') quotaExceeded = true;
 
     // Refresh whichever job is on screen now that we're free to tailor again.
     if (sessionReady) renderJobFromPage();
@@ -749,13 +838,24 @@
   }
 
   async function refreshFull() {
-    renderLoading();
+    await renderLoading();
     sessionReady = false;
 
     const profileRes = await sendMessage({ type: 'GET_PROFILE' });
-    if (profileRes.error || !profileRes.data) { renderLogin(); return; }
+    if (profileRes.error || !profileRes.data) {
+      clearInterval(lockLoopTimer); // not authenticated — cut the loop, no unlock flourish
+      renderLogin();
+      return;
+    }
 
-    const baseRes = await sendMessage({ type: 'GET_BASE_RESUME' });
+    // Login confirmed: let the lock finish unlocking (green tick) while the
+    // base-resume check runs at the same time, so the flourish adds no extra
+    // wait beyond whichever of the two actually takes longer.
+    const remainingMs = finishLockAnimation();
+    const [baseRes] = await Promise.all([
+      sendMessage({ type: 'GET_BASE_RESUME' }),
+      new Promise((resolve) => setTimeout(resolve, remainingMs)),
+    ]);
     if (baseRes.error || !baseRes.data || !baseRes.data.has_base_resume) { renderNoBaseResume(); return; }
 
     sessionReady = true;
@@ -769,13 +869,8 @@
 
   const JOB_URL_HINT = /(job|career|opening|position|vacanc|posting|gig|apply)/i;
 
-  // The URL must actually look like a posting. Matching merely because we have an
-  // adapter for the host was wrong: it popped the panel open on naukri.com's logged-in
-  // homepage, on Indeed's search page, on every page of a board the user was browsing.
-  // The hostname counts too, so jobs.lever.co/<company>/<uuid> — whose path says nothing
-  // — is still recognised.
   function looksLikeJobPage() {
-    return JOB_URL_HINT.test(location.hostname + location.pathname + location.search);
+    return JOB_URL_HINT.test(location.pathname + location.search) || !!adapterForHost();
   }
 
   const openedFromToolbar = window.__tailorcvFromToolbar === true;
@@ -788,9 +883,7 @@
   new MutationObserver(() => {
     if (location.href === lastUrl) return;
     lastUrl = location.href;
-    manualJd = '';        // a new posting: never carry the last one's text over
-    lastBeforeScore = null;
-    lastAfterScore = null; // nor its match score, or the next job shows the last one's gain
+    manualJd = '';   // a new posting: never carry the last one's text over
     setTimeout(() => {
       if (!document.getElementById('tailorcv-sidebar')) {
         if (looksLikeJobPage()) createPanel();
@@ -802,7 +895,16 @@
   }).observe(document.body, { childList: true, subtree: true });
 
   chrome.runtime.onMessage.addListener((msg) => {
-    if (msg.type === 'TOGGLE_PANEL') togglePanel();
+    if (msg.type === 'TOGGLE_PANEL') {
+      togglePanel();
+    } else if (msg.type === 'REFRESH_AUTH') {
+      // The login tab we opened (Continue with Google / Forgot password, both
+      // carry ?ext=1) told background.js it succeeded via externally_connectable
+      // — see tailorCvFinishLogin() in login.html — which broadcasts this to
+      // every open tab. Re-check auth so the panel updates itself instead of
+      // the user having to click "Already logged in? Retry".
+      if (document.getElementById('tailorcv-sidebar')) refreshFull();
+    }
   });
 
 })();
