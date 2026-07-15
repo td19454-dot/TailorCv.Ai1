@@ -1,5 +1,5 @@
-// TailorCV Resume Tailor — Background Service Worker
-// Switch to 'https://thetailorcv.com' when deploying to production
+// TailorCV — AI Resume Optimizer — Background Service Worker
+// Switch to 'https://thetailorcv.com' before publishing/updating the store listing.
 const BASE_URL = 'http://127.0.0.1:8005';
 
 async function getCsrfToken() {
@@ -50,6 +50,27 @@ chrome.action.onClicked.addListener(async (tab) => {
   }
 });
 
+// The login page (opened with ?ext=1 — see content.js) calls
+// chrome.runtime.sendMessage(EXTENSION_ID, ...) directly once login succeeds,
+// via the "externally_connectable" channel declared in the manifest. This is
+// deliberately NOT window.opener + postMessage: that approach broke because
+// Google's Identity Services script severs window.opener as a side effect of
+// its own COOP/popup handling, regardless of which login method was used.
+// externally_connectable doesn't depend on any window relationship at all, so
+// it isn't affected by that. We don't know which tab originally opened the
+// login flow (there's no window reference here), so broadcast to every open
+// tab the extension runs on — content.js only acts on it if its own sidebar
+// is actually showing the logged-out state.
+chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {
+  if (!msg || msg.type !== 'tailorcv-login-success') return;
+  chrome.tabs.query({}, (tabs) => {
+    for (const tab of tabs) {
+      if (tab.id) chrome.tabs.sendMessage(tab.id, { type: 'REFRESH_AUTH' }).catch(() => {});
+    }
+  });
+  sendResponse({ ok: true });
+});
+
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   (async () => {
     try {
@@ -94,49 +115,6 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         }
         sendResponse({ data: await res.json() });
 
-      } else if (msg.type === 'COVER_LETTER') {
-        try {
-          const res = await fetch(`${BASE_URL}/api/extension/cover-letter`, {
-            method: 'POST',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(msg.payload),
-          });
-
-          if (!res.ok) {
-            let detail = 'Could not write your cover letter.';
-            let code = null;
-            try {
-              const data = await res.json();
-              if (res.status === 401) {
-                detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
-                code = 'not_logged_in';
-              } else if (res.status === 402 || data.error === 'upgrade_required') {
-                detail = 'Free cover letter used.';
-                code = 'upgrade_required';
-              } else if (res.status === 404) {
-                detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
-                code = 'no_base_resume';
-              } else if (data.detail) {
-                detail = data.detail;
-              }
-            } catch (_) { /* keep the default */ }
-            sendResponse({ error: detail, code });
-            return;
-          }
-
-          const buffer = await res.arrayBuffer();
-          const dataUrl = `data:application/pdf;base64,${arrayBufferToBase64(buffer)}`;
-          await chrome.downloads.download({
-            url: dataUrl,
-            filename: 'cover_letter.pdf',
-            saveAs: false,
-          });
-          sendResponse({ data: { success: true } });
-        } catch (e) {
-          sendResponse({ error: e.message });
-        }
-
       } else if (msg.type === 'GET_SKILL_MATCH') {
         try {
           const res = await fetch(`${BASE_URL}/api/extension/skill-match`, {
@@ -150,6 +128,40 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             return;
           }
           sendResponse({ data: await res.json() });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
+      } else if (msg.type === 'COVER_LETTER') {
+        try {
+          const res = await fetch(`${BASE_URL}/api/extension/cover-letter`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(msg.payload),
+          });
+
+          if (!res.ok) {
+            let detail = 'Could not write your cover letter.';
+            try {
+              const data = await res.json();
+              if (res.status === 401) detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
+              else if (res.status === 402 || data.error === 'upgrade_required') detail = 'Free cover letter used. Upgrade to Pro at thetailorcv.com.';
+              else if (res.status === 404) detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
+              else if (data.detail) detail = data.detail;
+            } catch (_) { /* keep the default */ }
+            sendResponse({ error: detail });
+            return;
+          }
+
+          const buffer = await res.arrayBuffer();
+          const dataUrl = `data:application/pdf;base64,${arrayBufferToBase64(buffer)}`;
+          await chrome.downloads.download({
+            url: dataUrl,
+            filename: 'cover_letter.pdf',
+            saveAs: false,
+          });
+          sendResponse({ data: { success: true } });
         } catch (e) {
           sendResponse({ error: e.message });
         }

@@ -2,26 +2,20 @@
 
 #tailorcv-sidebar {
   position: fixed !important;
-  top: 76px !important;
-  right: 16px !important;
-  width: 348px !important;
-  /* A lit top-left corner reads as a raised surface, which keeps the panel from
-     looking like part of whatever site it is sitting on. */
-  background:
-    radial-gradient(120% 80% at 0% 0%, rgba(79,127,255,0.16), transparent 58%),
-    linear-gradient(165deg, #111a30 0%, #0b1120 100%) !important;
-  border: 1px solid rgba(148,163,255,0.16) !important;
-  border-radius: 16px !important;
-  box-shadow:
-    0 24px 60px rgba(2, 6, 23, 0.55),
-    0 2px 8px rgba(2, 6, 23, 0.4),
-    inset 0 1px 0 rgba(255,255,255,0.06) !important;
+  top: 80px !important;
+  right: 0 !important;
+  width: 340px !important;
+  background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;
+  border: 1px solid rgba(79, 127, 255, 0.3) !important;
+  border-right: none !important;
+  border-radius: 14px 0 0 14px !important;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.45) !important;
   z-index: 2147483647 !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
   font-size: 15px !important;
   color: #f1f5f9 !important;
-  padding: 18px !important;
-  transition: transform 0.28s cubic-bezier(.22,.61,.36,1), opacity 0.2s ease !important;
+  padding: 20px !important;
+  transition: transform 0.25s ease !important;
 }
 
 #tailorcv-sidebar.tcv-collapsed {
@@ -72,8 +66,6 @@
   align-items: center !important;
   justify-content: space-between !important;
   margin-bottom: 16px !important;
-  padding-bottom: 12px !important;
-  border-bottom: 1px solid rgba(255,255,255,0.07) !important;
 }
 
 .tcv-brand {
@@ -90,9 +82,8 @@
 }
 
 .tcv-logo {
-  font-size: 16px !important;
-  font-weight: 750 !important;
-  letter-spacing: -0.01em !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
   background: linear-gradient(135deg, #4f7fff, #c9b8ff) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
@@ -142,33 +133,23 @@
 }
 
 .tcv-btn {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
   width: 100% !important;
-  padding: 12px 16px !important;
+  padding: 13px 16px !important;
   border: none !important;
-  border-radius: 11px !important;
-  font-size: 14px !important;
-  font-weight: 650 !important;
-  letter-spacing: -0.005em !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
   cursor: pointer !important;
   margin-bottom: 8px !important;
-  transition: transform 0.16s ease, box-shadow 0.2s ease, background 0.2s ease, opacity 0.2s ease !important;
+  transition: opacity 0.2s !important;
 }
-.tcv-btn:disabled { opacity: 0.42 !important; cursor: not-allowed !important; transform: none !important; box-shadow: none !important; }
-.tcv-btn:active:not(:disabled) { transform: translateY(1px) !important; }
+.tcv-btn:disabled { opacity: 0.45 !important; cursor: not-allowed !important; }
 
 .tcv-btn-start {
-  background: linear-gradient(135deg, #5b86ff, #7c3aed) !important;
+  background: linear-gradient(135deg, #4f7fff, #7c3aed) !important;
   color: #fff !important;
-  box-shadow: 0 6px 18px rgba(79,127,255,0.35) !important;
 }
-.tcv-btn-start:hover:not(:disabled) {
-  transform: translateY(-1px) !important;
-  box-shadow: 0 10px 26px rgba(79,127,255,0.48) !important;
-}
+.tcv-btn-start:hover:not(:disabled) { opacity: 0.88 !important; }
 
 .tcv-btn-stop {
   background: rgba(239,68,68,0.18) !important;
@@ -178,15 +159,11 @@
 .tcv-btn-stop:hover { background: rgba(239,68,68,0.28) !important; }
 
 .tcv-btn-outline {
-  background: rgba(255,255,255,0.05) !important;
-  color: #dbe4f5 !important;
-  border: 1px solid rgba(255,255,255,0.14) !important;
+  background: rgba(255,255,255,0.04) !important;
+  color: #eaf1ff !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
 }
-.tcv-btn-outline:hover:not(:disabled) {
-  background: rgba(255,255,255,0.10) !important;
-  border-color: rgba(255,255,255,0.24) !important;
-  transform: translateY(-1px) !important;
-}
+.tcv-btn-outline:hover { background: rgba(255,255,255,0.09) !important; }
 
 .tcv-divider {
   display: flex !important;
@@ -214,28 +191,34 @@
 .tcv-login-links .tcv-link { font-size: 13px !important; }
 
 .tcv-status-text {
-  font-size: 12px !important;
-  line-height: 1.45 !important;
-  color: #7c8aa5 !important;
+  font-size: 13px !important;
+  color: #64748b !important;
   text-align: center !important;
-  margin: 8px 0 2px !important;
-  min-height: 16px !important;
+  margin: 6px 0 10px !important;
+  min-height: 18px !important;
 }
-.tcv-status-text.tcv-ok,
-.tcv-status-text.tcv-error {
-  padding: 9px 11px !important;
-  border-radius: 10px !important;
-  text-align: left !important;
+.tcv-status-text.tcv-ok    { color: #86efac !important; }
+.tcv-status-text.tcv-error { color: #fca5a5 !important; }
+
+.tcv-loading-anim {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 28px 0 4px !important;
 }
-.tcv-status-text.tcv-ok {
-  color: #86efac !important;
-  background: rgba(52,211,153,0.10) !important;
-  border: 1px solid rgba(52,211,153,0.22) !important;
+.tcv-loading-anim svg,
+.tcv-loading-anim img {
+  width: 84px !important;
+  height: 84px !important;
+  display: block !important;
 }
-.tcv-status-text.tcv-error {
-  color: #fca5a5 !important;
-  background: rgba(248,113,113,0.10) !important;
-  border: 1px solid rgba(248,113,113,0.24) !important;
+
+.tcv-loading-label {
+  text-align: center !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #4ade80 !important;
+  padding-bottom: 24px !important;
 }
 
 .tcv-progress-wrap {
@@ -282,34 +265,67 @@
   color: #eaf1ff !important;
   transition: opacity 0.25s ease !important;
 }
-.tcv-progress-pct.tcv-hidden {
-  opacity: 0 !important;
+.tcv-success-tick {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 110px !important;
+}
+.tcv-success-tick.tcv-visible {
+  display: flex !important;
+}
+.tcv-success-tick svg,
+.tcv-success-tick img {
+  width: 110px !important;
+  height: 110px !important;
+  display: block !important;
 }
 
-.tcv-progress-bar.tcv-success {
-  stroke: #4ade80 !important;
-  transition: stroke 0.3s ease !important;
+.tcv-score-card {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  padding: 16px 12px !important;
+  margin: 4px 0 !important;
+  border-radius: 12px !important;
+  background: linear-gradient(160deg, rgba(79,127,255,0.12), rgba(74,222,128,0.12)) !important;
+  border: 1px solid rgba(74,222,128,0.3) !important;
+}
+.tcv-score-card.tcv-visible {
+  display: flex !important;
 }
 
-.tcv-check-icon {
-  position: absolute !important;
-  inset: 0 !important;
-  opacity: 0 !important;
-  transform: scale(0.7) !important;
-  transition: opacity 0.3s ease, transform 0.3s ease !important;
+.tcv-score-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 2px !important;
 }
-.tcv-check-icon.tcv-visible {
-  opacity: 1 !important;
-  transform: scale(1) !important;
+
+.tcv-score-num {
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #cbd5e1 !important;
+  line-height: 1 !important;
 }
-.tcv-check-icon #tcvCheckPath {
-  stroke-dasharray: 60 !important;
-  stroke-dashoffset: 60 !important;
-  transition: none !important;
+.tcv-score-num.tcv-score-after {
+  color: #4ade80 !important;
 }
-.tcv-check-icon.tcv-visible #tcvCheckPath {
-  stroke-dashoffset: 0 !important;
-  transition: stroke-dashoffset 0.4s ease 0.1s !important;
+
+.tcv-score-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.tcv-score-arrow {
+  font-size: 20px !important;
+  color: #4f7fff !important;
+  font-weight: 700 !important;
 }
 
 .tcv-log {
@@ -336,6 +352,16 @@
   line-height: 1.5 !important;
   color: #94a3b8 !important;
   margin-bottom: 14px !important;
+}
+
+.tcv-field-label {
+  display: block !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #8da3c6 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  margin: 0 0 5px !important;
 }
 
 .tcv-input {
@@ -366,24 +392,19 @@
 }
 
 .tcv-job-info {
-  font-size: 12px !important;
-  color: #7c8aa5 !important;
-  margin-bottom: 12px !important;
-  line-height: 1.45 !important;
-  letter-spacing: 0.01em !important;
+  font-size: 19px !important;
+  color: #94a3b8 !important;
+  margin-bottom: 14px !important;
+  line-height: 1.4 !important;
 }
 .tcv-job-info b {
-  display: block !important;
-  font-size: 17px !important;
-  font-weight: 650 !important;
-  color: #f2f6ff !important;
-  letter-spacing: -0.01em !important;
-  margin-top: 2px !important;
+  color: #eaf1ff !important;
 }
 
-/* ── Skill match: the panel's most valuable moment, so give it a meter ──
-   A bare "38%" tells the user nothing about whether that is bad. A bar they can
-   read at a glance, in a colour that means something, does. */
+/* ── Skill match: a meter, not a line of text ──
+   The bar's colour carries the verdict so the number doesn't have to. This is the
+   before-tailor browsing signal; the animated success tick + score card handle the
+   after-tailor moment. */
 .tcv-match {
   padding: 12px 14px !important;
   margin-bottom: 14px !important;
@@ -426,29 +447,12 @@
   background: linear-gradient(90deg, #4f7fff, #c9b8ff) !important;
   transition: width 0.7s cubic-bezier(.22,.61,.36,1), background 0.4s ease !important;
 }
-/* The colour carries the verdict, so the number does not have to. */
 .tcv-match.tcv-low  .tcv-match-fill  { background: linear-gradient(90deg, #f87171, #fb923c) !important; }
 .tcv-match.tcv-mid  .tcv-match-fill  { background: linear-gradient(90deg, #fbbf24, #facc15) !important; }
 .tcv-match.tcv-high .tcv-match-fill  { background: linear-gradient(90deg, #34d399, #4ade80) !important; }
 .tcv-match.tcv-low  .tcv-match-value { color: #fca5a5 !important; }
 .tcv-match.tcv-mid  .tcv-match-value { color: #fcd34d !important; }
 .tcv-match.tcv-high .tcv-match-value { color: #86efac !important; }
-
-/* After tailoring: show what the rewrite actually bought. */
-.tcv-match-delta {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 5px !important;
-  margin-top: 9px !important;
-  padding: 3px 9px !important;
-  border-radius: 99px !important;
-  font-size: 11px !important;
-  font-weight: 650 !important;
-  color: #86efac !important;
-  background: rgba(52,211,153,0.13) !important;
-  border: 1px solid rgba(52,211,153,0.28) !important;
-  font-variant-numeric: tabular-nums !important;
-}
 
 .tcv-upgrade-box {
   text-align: center !important;
@@ -473,14 +477,11 @@
   font-size: 12px !important;
 }
 
-/* ── Multi-site panel: manual JD entry + the "where did this come from" line ──
-   Added on top of the polished base: on a page we cannot parse (a gig platform, an
-   odd careers page) the user hands us the job description themselves. */
-
+/* Where the job description came from, and the way back out of a bad guess. */
 .tcv-source {
-  font-size: 11px !important;
+  font-size: 10px !important;
   color: #64748b !important;
-  margin: -2px 0 10px !important;
+  margin: -4px 0 10px !important;
 }
 .tcv-source a {
   color: #93c5fd !important;
@@ -488,14 +489,15 @@
   cursor: pointer !important;
 }
 
+/* Manual fallback: the user hands us the job description themselves. */
 .tcv-textarea {
   width: 100% !important;
   background: rgba(255,255,255,0.06) !important;
   border: 1px solid rgba(255,255,255,0.12) !important;
   color: #f1f5f9 !important;
-  border-radius: 8px !important;
-  padding: 9px 11px !important;
-  font-size: 13px !important;
+  border-radius: 6px !important;
+  padding: 8px 10px !important;
+  font-size: 12px !important;
   line-height: 1.45 !important;
   font-family: inherit !important;
   resize: vertical !important;
@@ -503,3 +505,10 @@
   box-sizing: border-box !important;
 }
 .tcv-textarea:focus { outline: none !important; border-color: #4f7fff !important; }
+
+.tcv-btn-ghost {
+  background: rgba(255,255,255,0.06) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+}
+.tcv-btn-ghost:hover:not(:disabled) { background: rgba(255,255,255,0.11) !important; }
