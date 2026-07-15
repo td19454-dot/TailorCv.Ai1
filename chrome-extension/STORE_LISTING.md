@@ -4,15 +4,15 @@ Reference only — not used by the extension itself. Not for deployment.
 
 ## Short description (≤132 characters)
 
-Tailor your resume to any LinkedIn job posting and download it in one click.
+Tailor your resume to any job posting and download it in one click.
 
 ## Full description
 
-TailorCV — AI Resume Optimizer rewrites your resume to match a specific LinkedIn job posting — automatically — without leaving the job page.
+TailorCV — AI Resume Optimizer rewrites your resume to match a specific job posting — automatically — without leaving the job page. It works on the major job boards, and on any other job page you open it on.
 
 How it works:
 1. Set up your base resume and preferred template once at thetailorcv.com/extension.
-2. Open any job posting on LinkedIn.
+2. Open any job posting on a supported job board, or click the toolbar icon on any other job page.
 3. Click the TailorCV panel that appears on the page (or click the toolbar icon).
 4. Click "Tailor & Download Resume" — your resume is rewritten to match that job's description and downloaded as a PDF, ready to submit.
 
@@ -20,7 +20,7 @@ Every resume you tailor is also saved to your TailorCV account, so you can find 
 
 A TailorCV account is required (free tier included — sign up or log in directly from the extension panel, including "Continue with Google"). Free accounts include a limited number of tailored resumes per month; TailorCV Pro removes that limit.
 
-This extension only reads the job title, company, and description text from the LinkedIn job page you have open — it does not access your LinkedIn profile, connections, or messages.
+This extension only reads the job title, company, and description text from the job page you have open — it does not read your profile, connections, messages, or any other page you browse.
 
 ## Category
 
@@ -39,7 +39,7 @@ This is exactly the set of fields the dashboard is currently blocking on. Copy e
 ### Single purpose description
 
 ```
-Tailor and download a resume for the LinkedIn job posting currently open in the browser, using the user's TailorCV account.
+Tailor and download a resume for the job posting currently open in the browser, using the user's TailorCV account.
 ```
 
 ### activeTab justification
@@ -77,7 +77,7 @@ This extension does not use remote code. All JavaScript executed by the extensio
 ### scripting justification
 
 ```
-The scripting permission is used only as a fallback recovery path: if a LinkedIn tab was already open before the extension was installed or last updated, that tab never received the normal automatic content-script injection defined in the manifest. This permission lets the extension inject its existing bundled panel script into that already-open tab on demand when the user clicks the toolbar icon, instead of silently failing and requiring the user to manually refresh the page. It injects only the extension's own bundled files (content_linkedin.js, sidebar.css) — no remote or dynamically generated code.
+The scripting permission is used for two things: (1) if a job tab was already open before the extension was installed or last updated, that tab never received the normal automatic content-script injection defined in the manifest; and (2) on a job page outside the boards declared in the manifest, the user clicks the toolbar icon and the panel is injected into that one tab under activeTab. This permission lets the extension inject its existing bundled panel script into that already-open tab on demand when the user clicks the toolbar icon, instead of silently failing and requiring the user to manually refresh the page. It injects only the extension's own bundled files (content.js, sidebar.css) — no remote or dynamically generated code.
 ```
 
 ### Data usage certification

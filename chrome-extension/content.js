@@ -664,7 +664,13 @@
     body.innerHTML = `
       <div class="tcv-job-info">Job Title: <b>${esc(job.role || 'this job')}</b>${job.company ? ' at ' + esc(job.company) : ''}</div>
       <div class="tcv-source">${SOURCE_LABEL[job.source] || ''} · <a href="#" id="tcvEditJd">not right?</a></div>
-      <div class="tcv-match-row">Skill match: <span class="tcv-match-value" id="tcvMatchBefore">…</span></div>
+      <div class="tcv-match" id="tcvMatch">
+        <div class="tcv-match-head">
+          <span class="tcv-match-label">Skill match</span>
+          <span class="tcv-match-value" id="tcvMatchBefore">…</span>
+        </div>
+        <div class="tcv-match-bar"><span class="tcv-match-fill" id="tcvMatchFill"></span></div>
+      </div>
       <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
         ${tcvBusy ? 'Working on another job…' : '✦ Tailor & Download Resume'}
       </button>
@@ -701,12 +707,41 @@
       if (!matchEl.isConnected) return; // user already moved to a different job/state
       const score = res.data && typeof res.data.score === 'number' ? res.data.score : null;
       if (score === null) {
-        matchEl.textContent = '—';
+        // The scorer found no named hard skills in this posting (common on
+        // founder / generalist / "culture" JDs), so there is nothing to match
+        // against. Say so plainly instead of leaving a broken-looking empty bar.
+        paintMatchUnavailable();
         return;
       }
       job.beforeScore = score;
-      matchEl.textContent = score + '%';
+      paintMatch(score);
     });
+  }
+
+  // The bar and its colour carry the verdict, so the number does not have to: a bare
+  // "38%" leaves the user guessing whether that is bad. Red < 40, amber < 70, green up.
+  function paintMatch(score) {
+    const wrap = body.querySelector('#tcvMatch');
+    const valueEl = body.querySelector('#tcvMatchBefore');
+    const fillEl = body.querySelector('#tcvMatchFill');
+    if (!wrap || !valueEl || !fillEl) return;
+    wrap.classList.remove('tcv-na');
+    valueEl.textContent = score + '%';
+    wrap.classList.remove('tcv-low', 'tcv-mid', 'tcv-high');
+    wrap.classList.add(score < 40 ? 'tcv-low' : score < 70 ? 'tcv-mid' : 'tcv-high');
+    requestAnimationFrame(() => { fillEl.style.width = Math.max(2, Math.min(100, score)) + '%'; });
+  }
+
+  function paintMatchUnavailable() {
+    const wrap = body.querySelector('#tcvMatch');
+    const valueEl = body.querySelector('#tcvMatchBefore');
+    if (!wrap || !valueEl) return;
+    wrap.classList.remove('tcv-low', 'tcv-mid', 'tcv-high');
+    wrap.classList.add('tcv-na');
+    valueEl.textContent = 'N/A';
+    // Swap the bar for a one-line explanation so the box does not read as a bug.
+    const bar = wrap.querySelector('.tcv-match-bar');
+    if (bar) bar.outerHTML = '<div class="tcv-match-note">This posting lists no specific skills to match — you can still tailor to it.</div>';
   }
 
   // The backend gives no incremental progress events for a single tailor
