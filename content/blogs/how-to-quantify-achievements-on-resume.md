@@ -121,6 +121,31 @@ Lead with the strong verb, land the number early, and end with the "how." The [a
 
 Numbers do double duty. To a human, they are proof. To an [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works), they sit inside real, keyword-rich bullets that the parser reads as genuine experience rather than a bare skills list. A bullet like "Automated invoice reconciliation in Python, cutting processing time 40%" carries the keyword ("Python"), the context, and the metric all at once — which is exactly the kind of line that scores well and survives the scan.
 
+## Estimating Honestly When You Have No Hard Data
+
+Many real achievements were never formally measured, and that is fine — you can estimate responsibly without inventing precision. The key is to reconstruct a defensible number rather than fabricate a specific one.
+
+- **Reconstruct from what you know.** If you handled "most" support tickets on a two-person team that saw about 500 a week, "~250 tickets weekly" is a fair estimate.
+- **Use ranges and qualifiers.** "Roughly 30 clients," "a mid-six-figure budget," "cut turnaround by about a third." These read as honest, not vague.
+- **Quantify scope instead of outcome.** If you cannot measure impact, measure size: team of 8, audience of 5,000, 12 stakeholders, three regions.
+- **Anchor to a comparison.** "The largest project on the team," "our fastest onboarding to date." These convey scale without a precise figure.
+
+An interviewer can tell the difference between a thoughtful estimate and a fabricated statistic. The first shows you think in terms of impact; the second collapses the moment they probe it.
+
+## Quantifying Across Different Career Levels
+
+The kind of number that impresses shifts as you advance:
+
+- **Entry level:** scope and effort. "Analyzed 800 survey responses," "handled 100+ transactions per shift," "built a tool used by 40 classmates." You are proving you can execute.
+- **Mid level:** outcomes you drove. "Cut churn 15%," "shipped 3 features that lifted conversion 9%," "reduced processing time from 10 days to 3." You are proving impact.
+- **Senior and leadership:** scale and strategic results. "Owned a $2M budget," "led a 15-person org," "grew ARR from $4M to $11M in two years." You are proving you move the business.
+
+Match your metrics to your level, and lead each role with the number that best proves the value expected at that stage.
+
+## Building Quantified Bullets Into a Tailored Resume
+
+Numbers do their best work when they are also relevant to the specific job. A metric that matters to one role may be noise to another — a growth number dazzles a startup and means less to a compliance-heavy enterprise that cares about accuracy and risk reduction. When you [tailor your resume](https://thetailorcv.com/optimize) to a posting, you are not just matching keywords; you are choosing *which* of your quantified wins to feature. Lead with the metrics that map to what this employer values, and your resume reads as though it was written for them — because it was. A resume that pairs the right keywords with the right numbers is what convinces both the [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) and the hiring manager in the same read.
+
 ## Frequently Asked Questions
 
 ### What if my company treats numbers as confidential?

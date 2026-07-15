@@ -80,6 +80,40 @@ The gap between the first and second interview is a gift — use it deliberately
 
 Second rounds often introduce more senior people, and each interviewer is evaluating something different. The engineer probes depth; the manager probes collaboration and reliability; the skip-level or executive probes judgment and fit with the bigger picture. Tailor your emphasis to who is in front of you: go technical with the engineer, talk teamwork with the manager, and think out loud about trade-offs and impact with leadership. Recognizing what each person is really assessing lets you give the answer they are actually looking for.
 
+## Using the STAR Method in Second Rounds
+
+Second interviews lean heavily on behavioral questions — "tell me about a time when..." — and the candidates who answer them well almost always use a structure, whether they name it or not. The STAR method keeps a story tight and complete:
+
+- **Situation:** briefly set the scene. One or two sentences.
+- **Task:** what you specifically needed to do.
+- **Action:** what *you* did — the heart of the answer, in the first person.
+- **Result:** how it turned out, quantified if possible.
+
+Without structure, behavioral answers ramble: candidates over-explain the setup, bury their own role, and forget the result entirely. With STAR, a two-minute answer lands cleanly and the interviewer remembers the point. Prepare five or six flexible STAR stories covering leadership, conflict, failure, a big win, and problem-solving — most behavioral questions are just different doors into the same handful of stories.
+
+## Handling the Questions You Fear Most
+
+**"Tell me about your biggest weakness."** The trap is a fake weakness ("I work too hard") or a disqualifying one ("I miss deadlines"). The answer is a real, non-fatal weakness plus concrete action: "I used to hold onto work too long trying to perfect it. I've learned to ship at 90% and iterate, and I set my own internal deadlines to enforce it."
+
+**"Why are you leaving your current job?"** Never criticize your employer. Frame it as moving toward something: growth, scope, a mission, a specific kind of work. Bitterness in this answer is one of the fastest ways to lose a second round.
+
+**"What's your salary expectation?"** By the second round this is fair game. Give a researched range framed as flexible, and treat it as the opening of a conversation, not a final number. If it has not come up and you are deep in the process, it is reasonable to ask about the band.
+
+**"Do you have any concerns about the role?"** Be honest but constructive. Raising a thoughtful question ("I'd want to understand how the team handles on-call") shows you are seriously evaluating the fit, which senior interviewers respect.
+
+## What Interviewers Are Really Evaluating
+
+By the second round, competence is largely assumed — you cleared that bar in round one. Now the panel is weighing subtler things: Will you fit the team's working style? Do you communicate clearly under a harder question? Are you self-aware about your weaknesses? Are you actually going to accept, or are you using this to leverage another offer? Every answer you give is read through those lenses. This is why enthusiasm, consistency across your answers, and thoughtful questions matter as much as the technical content — they are the signals that decide a close call between two qualified people.
+
+## The Day Before: A Preparation Routine
+
+- **Re-read the job description** and your own resume, so you can speak fluently to both.
+- **Review your round-one answers** and sharpen any you fumbled.
+- **Prepare fresh STAR stories** you did not use in round one.
+- **Research your interviewers** on LinkedIn to anticipate their angle.
+- **Write down three genuine questions** to ask, tuned to who you will meet.
+- **Do one full spoken rehearsal**, ideally in an [AI mock interview](https://thetailorcv.com/mock-interview), so your delivery is warm and unhurried.
+
 ## Frequently Asked Questions
 
 ### How is a second interview different from the first?

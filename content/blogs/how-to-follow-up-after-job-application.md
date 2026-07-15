@@ -90,6 +90,31 @@ The healthiest follow-up strategy is to make each individual application matter 
 
 Follow-ups after an interview are different: send a thank-you within 24 hours. See our dedicated guide below for wording that references the actual conversation.
 
+## What to Do Before You Even Need to Follow Up
+
+The best follow-up strategy starts at the moment you apply. Two habits make every later follow-up more effective:
+
+- **Log every application.** Keep a simple tracker — company, role, date applied, contact, and status. When you follow up a week later, you know exactly which role and which person, and you never send the awkward "which position was this again?" message. Your [My Resumes tracker](https://thetailorcv.com/my-resumes) can hold your applications and the resume you sent to each, so nothing gets lost.
+- **Apply with a tailored resume.** A follow-up only helps if the underlying application is strong. If you sent a generic resume that did not match the posting, a nudge will not save it. [Tailoring the resume](https://thetailorcv.com/optimize) to each role is what makes the application worth following up on in the first place.
+
+## Following Up at Each Stage
+
+Follow-ups look different depending on where you are in the process:
+
+- **After applying:** A short reaffirmation of interest plus one relevant result, sent to a real person after a week.
+- **After a recruiter screen:** A quick thank-you the same day, then patience — they told you the timeline; respect it.
+- **After an interview:** A [thank-you email within 24 hours](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) referencing the actual conversation.
+- **After being told "we'll decide by Friday" and Friday passes:** A brief, warm check-in on Monday. Deadlines slip constantly; a gentle nudge is completely appropriate.
+- **After a rejection:** A gracious note thanking them and asking to be kept in mind for future roles. This is underused and can genuinely lead to a callback months later.
+
+## The Psychology of a Good Follow-Up
+
+Recruiters are busy, overwhelmed, and juggling many roles at once. Your follow-up succeeds when it makes their life easier, not harder. That means it is short enough to read in ten seconds, specific enough that they instantly know which role you mean, and warm enough that responding feels pleasant rather than obligatory. It fails when it is long, vague, or laced with guilt. Think of it less as "chasing" and more as "making it easy for a busy person to remember you favorably." A recruiter who feels gently reminded is far more likely to act than one who feels pressured.
+
+## When Silence Really Means No
+
+Sometimes no reply is information. If you have followed up twice over two to three weeks with total silence, the role is very likely filled, paused, or moving with other candidates. That is not a personal rejection — it is the ordinary noise of hiring, where budgets freeze, priorities shift, and internal candidates appear. The healthy response is to close that loop mentally and redirect your energy to fresh, tailored applications and warm referrals. Candidates who keep a full pipeline never hinge their hopes on any single silent application, and they interview better for it because they are not desperate.
+
 ## Frequently Asked Questions
 
 ### Is it okay to follow up if the posting says "no calls"?

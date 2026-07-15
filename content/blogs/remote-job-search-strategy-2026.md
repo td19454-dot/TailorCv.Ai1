@@ -85,6 +85,26 @@ When in doubt, slow down and verify. A real opportunity survives a day of due di
 6. **Prepare for polished video interviews** as proof of remote competence.
 7. **Verify every employer** before sharing personal details.
 
+## Where Remote Roles Actually Hide
+
+The crowded aggregators are where everyone looks, which is exactly why they are the hardest place to stand out. Spread your search across channels with less competition:
+
+- **Company career pages directly.** The least crowded channel, because it predates the aggregators. Make a shortlist of companies known to hire remotely and check their pages regularly.
+- **Remote-specific job boards.** Curated for genuinely remote roles, with less noise than the giant boards.
+- **Niche community boards.** Many professional communities, newsletters, and Slack or Discord groups post remote roles to members before they hit the big boards.
+- **Your network.** The single best channel — a [referral](https://thetailorcv.com/blog/networking-messages-for-referrals) cuts through the applicant flood that makes remote roles so hard to win cold.
+- **LinkedIn with the Remote filter**, but move fast — popular remote posts hit their applicant quota within days.
+
+The pattern: the less crowded the channel, the higher your odds. Trade the comfort of one giant search box for the edge of several quieter ones.
+
+## Managing a Remote Job Search Across Time Zones
+
+Time zone is one of the silent filters that quietly eliminates remote candidates, so address it head-on. If a role wants overlap with a particular region, state your working hours and overlap explicitly on your resume and in your application: "Remote (GMT+5:30, 4-hour daily overlap with US Eastern)." This removes the recruiter's biggest unspoken worry — that you will be asleep when the team needs you. If you are genuinely flexible on hours, say so. And be realistic: a role demanding full overlap with a time zone twelve hours from yours is a hard sell no matter how strong you are, so weight your effort toward roles where your hours actually work.
+
+## Staying Motivated and Organized
+
+A remote job search is often longer and more competitive than a local one, which makes organization and morale part of the strategy. Keep a simple tracker of every application, its status, and your contacts, so nothing slips and follow-ups are effortless. Set a weekly target for tailored applications rather than chasing a giant daily number, because ten well-targeted applications beat a hundred generic ones. And protect your energy: the volume of competition for remote roles means more silence and more rejection, none of it personal. Candidates who keep a steady pipeline and treat the search as a process — not a referendum on their worth — interview better and last longer than those who burn out spraying applications.
+
 ## Frequently Asked Questions
 
 ### Are remote jobs still common in 2026?

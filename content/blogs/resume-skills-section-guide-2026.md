@@ -90,6 +90,36 @@ The goal is a skills section that mirrors the posting's language closely enough 
 - **Near-synonyms instead of the exact term.** If the posting says "PostgreSQL," write "PostgreSQL," not just "SQL databases."
 - **Burying the section.** For technical and early-career roles, the skills list should be easy to find near the top.
 
+## Hard Skills vs Soft Skills: The Full Breakdown
+
+The single most common skills-section mistake is mixing the two types, so it is worth being precise about the line between them.
+
+**Hard skills** are teachable, testable, and specific: programming languages (Python, Java), tools (Figma, Excel, Salesforce), platforms (AWS, Google Cloud), databases (PostgreSQL, MongoDB), frameworks (React, Django), certifications, and languages you speak. You can prove you have them, and an interviewer can test them. These belong in your skills section.
+
+**Soft skills** are behavioral traits: communication, leadership, teamwork, adaptability, problem-solving, time management. They are genuinely valuable — often the deciding factor between two technically qualified candidates — but *listing* them is worthless because anyone can claim them. "Excellent communicator" in a skills list carries exactly zero evidence. These belong in your experience bullets, proven by a specific result.
+
+The test is simple: if you could be tested on it, it is a hard skill and goes in the list. If it is a personality trait, it is a soft skill and must be shown, not stated.
+
+## Where Soft Skills Actually Belong
+
+Since soft skills cannot be proven in a list, the strongest resumes fold them into achievement bullets where a result makes them credible:
+
+- **Communication:** "Presented quarterly analytics to a 30-person leadership team, translating technical risk into plain-language recommendations."
+- **Leadership:** "Led a team of 5 engineers through a six-month platform migration delivered on schedule."
+- **Problem-solving:** "Diagnosed and fixed a data pipeline failure that had corrupted three months of reporting, restoring accuracy within two days."
+- **Adaptability:** "Took over an at-risk project mid-stream and shipped it two weeks later after re-scoping with stakeholders."
+
+Each of these proves a soft skill far more convincingly than the adjective ever could — and gives an interviewer a real story to ask about.
+
+## Keeping Your Skills Current and Honest
+
+A skills section is a living part of your resume, not a fixed list. Two disciplines keep it effective:
+
+- **Prune the outdated.** Tools nobody uses anymore quietly date you. Remove software and versions that signal you have not kept up, and add the current tools your field has moved to.
+- **Stay honest about depth.** Only list what you can genuinely defend. The fastest way to lose credibility in an interview is to list a skill and then fumble a basic question about it. If you are still learning something, either show it through a project or leave it off until you can speak to it.
+
+Update the section every time you tailor the resume to a new posting — reordering and adjusting so the skills the specific job cares about appear first and most prominently. A quick [ATS score](https://thetailorcv.com/solutions) against the posting tells you instantly whether the keywords it wants are actually present in your skills and bullets.
+
 ## Frequently Asked Questions
 
 ### Should I list my proficiency level (beginner/expert)?

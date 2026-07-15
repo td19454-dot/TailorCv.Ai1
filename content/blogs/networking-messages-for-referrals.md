@@ -86,6 +86,31 @@ Making the referrer's job trivial is the single biggest factor in whether they f
 - **No follow-through thanks** — a referrer who feels taken for granted will not help twice.
 - **Asking a hundred strangers** instead of a focused, warm few. Quality of relationship beats volume every time.
 
+## Building the Network Before You Need It
+
+The most powerful referrals come from relationships that already exist, which means the real work happens long before your job search. You do not need thousands of connections — you need a few dozen genuine ones. Build them by being useful and visible over time:
+
+- **Engage with people's work.** A thoughtful comment on a post, a share of a genuinely good article, a question that shows you actually read it.
+- **Keep in touch with former colleagues.** A quick "saw your team shipped X, congrats" keeps a relationship warm at almost no cost.
+- **Help without keeping score.** Make an introduction, answer a question, refer someone else. Generosity compounds.
+- **Show your own work.** Post about what you are building or learning. People refer those whose competence they have seen.
+
+When your job search arrives, you are not cold-emailing strangers — you are reaching out to people who already know you exist and think well of you. That is the difference between a 5% response rate and a 50% one.
+
+## Turning a Conversation Into a Referral
+
+Sometimes the right move is not to ask for a referral immediately, but to start a conversation and let the referral emerge. This works especially well with people you do not know well:
+
+1. **Open with genuine interest** in their work or the company, no ask attached.
+2. **If they respond warmly, ask for perspective**, not a favor: "What's it actually like on the team?"
+3. **Only then, if it feels natural, mention the role** and ask whether they would be comfortable referring you.
+
+This sequence respects the relationship and dramatically raises your odds, because by the time you ask, you are no longer a stranger — you are someone they have already had a pleasant exchange with. Rushing straight to "can you refer me?" skips the trust-building that makes a yes easy.
+
+## The Referral Meeting or Call
+
+Sometimes a contact offers a quick chat before referring you — treat it as a mini-interview, because it effectively is. They are deciding whether to attach their name to you. Come prepared: know the role, have a crisp two-minute summary of your background, and bring one or two thoughtful questions about the team. Be warm, be concise, and make it easy for them to picture advocating for you internally. And whatever happens, follow up with a genuine thank-you — a contact who enjoyed the conversation becomes a lasting ally, not just a one-time referral.
+
 ## Frequently Asked Questions
 
 ### Is it rude to ask a stranger for a referral?

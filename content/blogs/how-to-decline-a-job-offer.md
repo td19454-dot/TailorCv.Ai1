@@ -90,6 +90,18 @@ The person you decline today may be your hiring manager, client, or colleague in
 
 Declining one offer usually means you are accepting another — which means it is also time to [negotiate the offer you are taking](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) if you have not already, and to [give notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice) at your current role gracefully. Handle all three the same way — promptly, warmly, and in writing — and you close this chapter with every bridge intact.
 
+## Deciding Whether to Decline in the First Place
+
+Before you write the decline, make sure it is the right call — a graceful no to the wrong offer is only valuable if it is genuinely the wrong offer. Weigh the decision against the things that actually predict job satisfaction: the work itself, the manager and team, growth opportunity, compensation, and life fit like location and flexibility. Money is real but rarely the whole story; a slightly higher offer with a bad manager often turns out worse than the alternative. If your hesitation is really about compensation, the right move may be to [negotiate](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) rather than decline — many offers have room, and asking is far cheaper than walking away. Decline when the role is genuinely wrong for you; negotiate when it is close but the terms are off.
+
+## Timing and Sequence Matter
+
+The order in which you handle competing offers protects your relationships. Never decline one offer until the one you are accepting is fully confirmed in writing — verbal offers occasionally fall through, and you do not want to be left with neither. Once your chosen offer is documented, decline the others promptly, because each company you turn down is likely holding a spot and possibly a runner-up. A fast, gracious no lets them move immediately to their next candidate, which is itself a professional courtesy they will remember. Then, and only then, give notice at your current role. Handled in this sequence — confirm, decline, resign — you close every door gently and leave no one waiting on you longer than necessary.
+
+## The Long Game of a Graceful No
+
+It is worth restating why any of this matters, because in the moment a decline feels like a formality you want to rush. The person reading your no today may resurface as your future manager, a client, a colleague, or the connector who mentions your name for a role you would love. Recruiters move between companies and carry their impressions with them. A warm, prompt, specific decline plants a seed: "this person handled themselves well." A ghosted or graceless one plants the opposite. You are not just closing a door — you are deciding what these people say about you when your name comes up in a room you are not in. Five minutes of genuine warmth is one of the highest-return investments in a career, precisely because you can never predict which relationship will matter later.
+
 ## Frequently Asked Questions
 
 ### Do I have to give a reason for declining?

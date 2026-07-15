@@ -81,6 +81,34 @@ Candidates imagine the ATS as a ruthless gatekeeper rejecting people for sport. 
 
 There is no format hack that substitutes for relevance. The same resume submitted to two different postings will score differently, because each job weights different keywords and requirements. This is why tailoring — adjusting your skills and bullets to each specific posting — is the highest-leverage move in the entire process. A tool like TailorCV reads the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), compares it against your resume, and shows you the exact keywords you are missing before you hit submit — turning "hope it passes" into "know it matches."
 
+## Myths About the ATS That Waste Your Time
+
+A lot of resume advice is built on outdated fears. Clearing these up saves you effort:
+
+- **Myth: "The ATS auto-rejects resumes below a score."** Most systems rank and surface candidates for a human recruiter; they rarely hard-reject on a score alone. Your real goal is to rank well and be readable, not to beat a mythical cutoff.
+- **Myth: "Keyword stuffing tricks the system."** Modern parsers weight context and flag unnatural repetition. Stuffing lowers your quality signal and looks terrible to the human who reads next.
+- **Myth: "You need a plain, ugly text resume."** You need a *clean, single-column* resume — it can still look professional. Ugly is not the requirement; parseable is.
+- **Myth: "PDFs don't work with ATS."** Text-based PDFs parse fine in modern systems. Only scanned-image PDFs fail.
+- **Myth: "More keywords is always better."** Relevance beats volume. Ten well-placed, genuinely relevant keywords outperform forty crammed ones.
+
+## Keyword Matching, Done Right
+
+The heart of passing an ATS is matching the posting's language — but there is a craft to doing it naturally. Pull the hard skills, tools, and the job title from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), then place them where they belong:
+
+- **In your skills section** for the named technologies you genuinely have.
+- **Inside real experience bullets**, showing the skill in action: "Built REST APIs in Python backed by PostgreSQL," not a bare keyword list.
+- **In your summary**, mirroring the exact role title where it fits.
+
+Use the posting's exact terms, not near-synonyms — "REST APIs" if that is what it says, not "web services." And never claim a skill in a bullet that you do not actually have; list it in skills for matching if you must, but keep your experience honest.
+
+## The Human on the Other Side
+
+It is easy to obsess over the software and forget that the software's whole job is to hand a shortlist to a person. Once you pass the parse and rank well on relevance, a human recruiter reads your resume — and now formatting-for-machines and writing-for-humans have to coexist. This is why the winning resume is both cleanly parseable *and* genuinely compelling: strong action verbs, quantified results, and clear structure. Optimizing only for the ATS gets you read by a human who is then unimpressed; writing only for the human gets you filtered before they ever see it. You need both, and a good [resume optimizer](https://thetailorcv.com/optimize) helps you hit both at once by matching keywords while keeping your bullets readable.
+
+## Test Before Every Submission
+
+Before you hit apply, run the [free ATS score](https://thetailorcv.com/solutions) or the 60-second copy-paste test on your tailored resume against the specific posting. It takes a minute and it converts "I hope this passes" into "I know this matches." Given how much effort goes into finding and applying to roles, skipping this final check is a false economy — it is the cheapest insurance in your entire job search.
+
 ## Frequently Asked Questions
 
 ### Do all companies use an ATS?

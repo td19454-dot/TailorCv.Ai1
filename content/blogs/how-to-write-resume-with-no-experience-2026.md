@@ -111,6 +111,35 @@ If your projects section feels thin, you likely have more material than you real
 
 Any of these, described with a result, becomes a legitimate entry. Do one small new project this month if you truly have nothing — a weekend build gives you a bullet no template can fake.
 
+## The Mindset Shift That Changes Everything
+
+The phrase "no experience" quietly frames you as lacking something, and that framing leaks into weak resumes full of apology and filler. Reframe it. Employers hiring for entry-level roles are not expecting a long history — they are betting on *trajectory*: can this person learn fast, do they take initiative, will they figure things out? Every choice on your resume should answer those questions. A described project answers "can they build?" A club leadership role answers "do they take initiative?" A self-taught skill answers "do they learn independently?" Once you see the resume as evidence of trajectory rather than a record of jobs you have not had, it becomes obvious what to include and how to frame it.
+
+## Formatting a No-Experience Resume
+
+Structure signals professionalism even when your history is thin. Keep it clean and standard:
+
+- **One page.** With limited history, a second page reads as padding. A tight, full one page reads as confident.
+- **Standard, single-column layout** that an [ATS can parse](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) — no graphics, columns, or text boxes.
+- **Clear section order:** contact and summary, skills, projects, education, then any experience.
+- **Consistent formatting** — one font, one date style, aligned bullets. Sloppiness is one of the few things that actively hurts an early-career resume.
+- **A real email address** and a link to your work — GitHub, portfolio, or LinkedIn.
+
+The goal is a resume that looks like it belongs to someone who takes the process seriously, because that impression is part of what you are selling.
+
+## From First Draft to Ready: A Checklist
+
+Before you send a no-experience resume, run it through these checks:
+
+- Does every project and job bullet describe a **result**, not just a duty?
+- Do your **skills mirror the posting's** exact terms?
+- Is there **at least one concrete, ownable thing** you built or led?
+- Have you **cut every generic soft-skill claim** in favor of showing it in a bullet?
+- Is it **one clean page** that parses cleanly?
+- Have you **tailored it** to this specific role, not sent the same file everywhere?
+
+If you are starting from a blank page, the [resume builder](https://thetailorcv.com/modify-cv) gives you an ATS-friendly structure to fill in, and a quick [ATS score](https://thetailorcv.com/solutions) against the posting shows whether the keywords it wants are actually present before you apply. For a career starter, that final check is the difference between disappearing into the pile and landing the first interview.
+
 ## Frequently Asked Questions
 
 ### Should I use an objective statement?
