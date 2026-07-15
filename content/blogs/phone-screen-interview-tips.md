@@ -74,6 +74,33 @@ A phone screen is a filter, and recruiters are listening for reasons to *not* ad
 
 Even on a 20-minute screen, have two or three genuine questions ready. Good ones for a recruiter: "What does the interview process look like from here?", "What's the team's biggest priority this quarter?", and "What are you personally hoping to see in the person who fills this role?" Thoughtful questions signal seriousness and give you real information to decide with. Rehearsing the whole call once in an [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) makes your answers tighter and your nerves quieter.
 
+## What the Recruiter Is Actually Screening For
+
+A recruiter's phone screen is a filter with four quiet checkboxes, and knowing them lets you clear each on purpose:
+
+1. **Genuine interest.** Do you actually want *this* role, or are you applying to everything? A specific answer to "why this job" checks this box.
+2. **Compensation fit.** Are your expectations in the company's range? This is why they raise salary early — to avoid investing in a candidate they cannot afford.
+3. **Basic qualification and logistics.** Eligibility, location or time zone, availability, notice period. Boring but disqualifying if there is a mismatch.
+4. **Communication.** Can you explain your experience clearly and warmly? On a call with no visuals, your voice and clarity are the entire impression.
+
+Everything else in the call is secondary. If you clear those four, you almost always advance.
+
+## Reading the Recruiter's Signals
+
+A phone screen is a two-way read. Pay attention to what the recruiter emphasizes, because it tells you what the team values and what your later rounds will probe. If they spend time on collaboration, expect team-fit questions ahead. If they dig into a specific technology, brush up on it. If they mention the timeline and next steps enthusiastically, that is a strong buying signal. And if they raise salary early and specifically, they are trying to confirm fit before advancing you — answer with a confident range to keep momentum.
+
+## Turning a Phone Screen Into the Next Round
+
+The screen is not just a filter to survive; it is your chance to actively advance. Three moves make a recruiter want to push you forward:
+
+- **Match your language to the posting.** When you describe your experience in the exact terms the job description uses, the recruiter can easily "sell" you to the hiring manager.
+- **Show low-friction enthusiasm.** Recruiters are also assessing whether you will accept an offer. Genuine, specific interest makes you a safer bet to advance.
+- **Ask about the process.** "What do the next rounds look like?" signals you are serious and helps you prepare. It also subtly moves the conversation toward next steps.
+
+## A Sample Phone Screen, Start to Finish
+
+A typical 25-minute screen follows a predictable arc: a warm opener and small talk, "tell me about yourself," a walk through your recent experience, "why are you interested in this role," a couple of logistics and salary questions, your questions, and a wrap-up on next steps. Because it is so predictable, you can prepare nearly all of it in advance. Rehearse your 60-second intro, your "why this role" answer, and your salary range until they are smooth, keep your resume and notes in front of you, and have two questions ready. Do that and the call stops being a nerve-wracking gate and becomes a conversation you are steering. A single [mock interview](https://thetailorcv.com/mock-interview) run-through the day before makes the real thing feel routine.
+
 ## Frequently Asked Questions
 
 ### How long does a phone screen last?

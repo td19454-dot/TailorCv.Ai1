@@ -75,6 +75,37 @@ The best reference is a recent manager or close colleague who can describe speci
 
 References are almost always a late-stage step, requested at or near the offer. That is exactly why they do not belong on your resume — they are irrelevant to getting the interview and only matter once the employer is seriously considering you. Keep your sheet ready so you can send it the moment it is asked for, but keep it off the resume itself, where the space is better spent on a result that helps you [stand out](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 
+## How Reference Checks Actually Work
+
+Understanding what happens on the other end helps you prepare the right people. When an employer reaches the reference stage, they are rarely looking for dirt — they are looking to confirm what they already believe and to fill in any gaps. A typical reference call covers a handful of predictable questions:
+
+- "In what capacity did you work with the candidate, and for how long?"
+- "What were their main responsibilities?"
+- "What are their biggest strengths?"
+- "Where could they still grow?"
+- "How did they handle pressure or conflict?"
+- "Would you hire or work with them again?"
+
+That last question carries the most weight. A reference who answers "absolutely, in a heartbeat" moves you forward; one who pauses and says "I think so" quietly hurts you. This is exactly why you choose references who genuinely rate your work — and why you brief them, so their specific examples line up with what the role needs.
+
+Some companies now use automated reference-checking platforms that email your references a short survey instead of calling. These still benefit from a heads-up from you, since a reference who is expecting the request responds faster and more thoughtfully than one who assumes it is spam.
+
+## A Reference Strategy for Every Stage of Your Career
+
+**Early career.** You may not have former managers yet. Professors who supervised a project, internship mentors, a part-time job supervisor, or a client from freelance work all make legitimate references. Choose the person who saw you actually *do* something, not just the most senior name you can find.
+
+**Mid career.** Aim for a mix: a former direct manager, a senior peer, and ideally someone who can speak to a specific, relevant strength. Avoid using your current manager unless you are comfortable with your job search being known — most employers understand and will accept "available once we're further along."
+
+**Senior and executive.** References are often more thorough at this level, sometimes including skip-level leaders, board members, or major clients. Curate references who can speak to strategic impact and leadership, not just competence, and brief them carefully on the narrative you want reinforced.
+
+## Managing References Discreetly While Employed
+
+The trickiest situation is job-searching while employed, when you cannot use your current manager without revealing your search. The solution is a tiered approach: use former managers and senior colleagues from previous roles as your primary references, and if an employer specifically wants a current-employer reference, offer it "once we're at the offer stage." Most reasonable employers accept this — they have hired people who were quietly looking before. Never list your current manager without permission, and never assume a colleague will keep your search confidential unless you have explicitly asked.
+
+## Keeping Your References Warm
+
+A reference relationship is not a one-time transaction. The people who vouch for you are part of your professional network, and they deserve to be maintained like any other relationship. Check in occasionally, congratulate them on their own moves, and always close the loop after they help — "I got the offer, thank you so much for speaking with them" costs nothing and keeps them glad to help again next time. A reference who feels used once will be lukewarm the second time you ask; one who feels appreciated becomes a lifelong advocate.
+
 ## Frequently Asked Questions
 
 ### What if the application form has a references field?

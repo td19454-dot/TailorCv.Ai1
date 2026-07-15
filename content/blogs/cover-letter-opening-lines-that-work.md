@@ -97,6 +97,24 @@ Read the room. A cover letter to a formal financial institution should open with
 
 Adapt, never copy — the power is in the specific truth you attach to the pattern.
 
+## What to Do After the Opener
+
+A great opening line buys attention; the rest of the letter has to keep it. Once your hook lands, the body should do three things across two short paragraphs: prove you can do the work with one specific, relevant achievement; connect that achievement to what the posting actually needs; and close with genuine, confident interest. The opener promises; the body delivers. A brilliant first line followed by three paragraphs of generic filler is worse than a plain opener followed by a specific, well-argued case — so treat the hook as the door, not the whole house.
+
+## How the Opener Fits the Whole Letter
+
+Think of the cover letter as a three-part arc:
+
+1. **The hook (opening line):** earns the next thirty seconds with a specific, true detail about the role or company.
+2. **The proof (middle):** one concrete achievement that maps directly to the posting, showing rather than asserting your fit.
+3. **The close:** reaffirms interest, signals you understand what the role needs, and invites a conversation.
+
+Each part sets up the next. A hook that mentions the company's retention problem sets up a proof paragraph about the churn work you did; a close that references the same theme ties the whole letter together. When the three parts echo one clear idea, the letter reads as deliberate and memorable instead of a list of disconnected claims.
+
+## Draft With AI, Then Own the Opener
+
+The fastest way to a strong letter is to let an [AI cover letter generator](https://thetailorcv.com/cover-letter) produce a first draft from the job description — it will give you a solid structure and a competent body in seconds. But the opener is the one part you should always rewrite by hand, because AI does not know the specific, true detail that makes your hook land: the friend who uses the product, the exact metric from your last role, the real reason this company caught your eye. Let the tool handle the scaffolding; you supply the sentence only you could write. That division of labor gives you a polished letter with a genuinely human opening — the combination that actually gets read.
+
 ## Frequently Asked Questions
 
 ### How long should the opening paragraph be?
