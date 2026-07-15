@@ -200,6 +200,27 @@
 .tcv-status-text.tcv-ok    { color: #86efac !important; }
 .tcv-status-text.tcv-error { color: #fca5a5 !important; }
 
+.tcv-loading-anim {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 28px 0 4px !important;
+}
+.tcv-loading-anim svg,
+.tcv-loading-anim img {
+  width: 84px !important;
+  height: 84px !important;
+  display: block !important;
+}
+
+.tcv-loading-label {
+  text-align: center !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #4ade80 !important;
+  padding-bottom: 24px !important;
+}
+
 .tcv-progress-wrap {
   display: none !important;
   align-items: center !important;
@@ -300,6 +321,16 @@
   margin-bottom: 14px !important;
 }
 
+.tcv-field-label {
+  display: block !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #8da3c6 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  margin: 0 0 5px !important;
+}
+
 .tcv-input {
   width: 100% !important;
   background: rgba(255,255,255,0.06) !important;
@@ -369,3 +400,39 @@
   margin-top: 12px !important;
   font-size: 12px !important;
 }
+
+/* Where the job description came from, and the way back out of a bad guess. */
+.tcv-source {
+  font-size: 10px !important;
+  color: #64748b !important;
+  margin: -4px 0 10px !important;
+}
+.tcv-source a {
+  color: #93c5fd !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+
+/* Manual fallback: the user hands us the job description themselves. */
+.tcv-textarea {
+  width: 100% !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  color: #f1f5f9 !important;
+  border-radius: 6px !important;
+  padding: 8px 10px !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  font-family: inherit !important;
+  resize: vertical !important;
+  margin-bottom: 8px !important;
+  box-sizing: border-box !important;
+}
+.tcv-textarea:focus { outline: none !important; border-color: #4f7fff !important; }
+
+.tcv-btn-ghost {
+  background: rgba(255,255,255,0.06) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+}
+.tcv-btn-ghost:hover:not(:disabled) { background: rgba(255,255,255,0.11) !important; }

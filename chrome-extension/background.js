@@ -20,24 +20,55 @@ function arrayBufferToBase64(buffer) {
   return btoa(binary);
 }
 
-// Clicking the toolbar icon toggles the sidebar on the active LinkedIn tab
-// (no popup — the sidebar is the extension's only UI surface).
+// Clicking the toolbar icon toggles the sidebar (no popup — the sidebar is the
+// extension's only UI surface). On the job boards we declare in the manifest the
+// content script is already there, so we just toggle it. On ANY other site —
+// Mercor, Outlier, Alignerr, a company careers page — nothing is loaded yet, so
+// the click itself grants us that one tab via activeTab and we inject on demand.
+// That is what lets the extension work everywhere without asking every user for
+// "read your data on all websites" at install time.
 chrome.action.onClicked.addListener(async (tab) => {
   if (!tab || !tab.id) return;
+
   try {
     await chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' });
-  } catch (e) {
-    // No content script listening in this tab yet — typically because the
-    // tab was already open before the extension was installed/reloaded, so
-    // it never got the normal manifest content-script injection. Inject it
-    // now instead of silently doing nothing.
-    try {
-      await chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ['sidebar.css'] });
-      await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content_linkedin.js'] });
-    } catch (_) {
-      // Not a linkedin.com/jobs/* tab, or injection not permitted — nothing to do.
-    }
+    return;   // content script was already running — toggled it
+  } catch (_) {
+    // No listener on that tab: not a declared site, so inject now.
   }
+
+  try {
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: () => { window.__tailorcvFromToolbar = true; },
+    });
+    await chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ['sidebar.css'] });
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content.js'] });
+  } catch (e) {
+    // chrome:// pages, the Web Store and PDF viewers can never be injected into.
+    console.warn('TailorCV: cannot run on this page —', e.message);
+  }
+});
+
+// The login page (opened with ?ext=1 — see content.js) calls
+// chrome.runtime.sendMessage(EXTENSION_ID, ...) directly once login succeeds,
+// via the "externally_connectable" channel declared in the manifest. This is
+// deliberately NOT window.opener + postMessage: that approach broke because
+// Google's Identity Services script severs window.opener as a side effect of
+// its own COOP/popup handling, regardless of which login method was used.
+// externally_connectable doesn't depend on any window relationship at all, so
+// it isn't affected by that. We don't know which tab originally opened the
+// login flow (there's no window reference here), so broadcast to every open
+// tab the extension runs on — content.js only acts on it if its own sidebar
+// is actually showing the logged-out state.
+chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {
+  if (!msg || msg.type !== 'tailorcv-login-success') return;
+  chrome.tabs.query({}, (tabs) => {
+    for (const tab of tabs) {
+      if (tab.id) chrome.tabs.sendMessage(tab.id, { type: 'REFRESH_AUTH' }).catch(() => {});
+    }
+  });
+  sendResponse({ ok: true });
 });
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
@@ -97,6 +128,40 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             return;
           }
           sendResponse({ data: await res.json() });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
+      } else if (msg.type === 'COVER_LETTER') {
+        try {
+          const res = await fetch(`${BASE_URL}/api/extension/cover-letter`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(msg.payload),
+          });
+
+          if (!res.ok) {
+            let detail = 'Could not write your cover letter.';
+            try {
+              const data = await res.json();
+              if (res.status === 401) detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
+              else if (res.status === 402 || data.error === 'upgrade_required') detail = 'Free cover letter used. Upgrade to Pro at thetailorcv.com.';
+              else if (res.status === 404) detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
+              else if (data.detail) detail = data.detail;
+            } catch (_) { /* keep the default */ }
+            sendResponse({ error: detail });
+            return;
+          }
+
+          const buffer = await res.arrayBuffer();
+          const dataUrl = `data:application/pdf;base64,${arrayBufferToBase64(buffer)}`;
+          await chrome.downloads.download({
+            url: dataUrl,
+            filename: 'cover_letter.pdf',
+            saveAs: false,
+          });
+          sendResponse({ data: { success: true } });
         } catch (e) {
           sendResponse({ error: e.message });
         }
