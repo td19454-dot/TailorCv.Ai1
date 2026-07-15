@@ -442,7 +442,7 @@
 .tcv-match-fill {
   display: block !important;
   height: 100% !important;
-  width: 0 !important;
+  width: 0;   /* not !important — paintMatch() sets the real width via inline style */
   border-radius: 99px !important;
   background: linear-gradient(90deg, #4f7fff, #c9b8ff) !important;
   transition: width 0.7s cubic-bezier(.22,.61,.36,1), background 0.4s ease !important;
