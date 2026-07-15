@@ -36,7 +36,8 @@
   const LOCK_LOOP_START = 0.35;          // seconds
 
   let tcvBusy = false;
-  let sb, body, launcher, globalStatus, progressWrap, progressBar, progressPct, progressTimer, checkIcon;
+  let sb, body, launcher, globalStatus, progressWrap, progressBar, progressPct, progressTimer;
+  let successTick, scoreCard, scoreBeforeEl, scoreAfterEl, successTickTimer;
   let sessionReady = false;
   let manualJd = '';   // set when the user pastes or selects the JD themselves
   let lockSvgEl = null;
@@ -389,10 +390,18 @@
             <circle class="tcv-progress-bar" id="tcvProgressBar" cx="44" cy="44" r="30"></circle>
           </svg>
           <span class="tcv-progress-pct" id="tcvProgressPct">0%</span>
-          <svg class="tcv-check-icon" id="tcvCheckIcon" width="88" height="88" viewBox="0 0 88 88">
-            <path id="tcvCheckPath" d="M27 45 L39 57 L61 32" fill="none" stroke="#4ade80"
-                  stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
+        </div>
+      </div>
+      <div class="tcv-success-tick" id="tcvSuccessTick"></div>
+      <div class="tcv-score-card" id="tcvScoreCard">
+        <div class="tcv-score-item">
+          <span class="tcv-score-num" id="tcvScoreBefore">--%</span>
+          <span class="tcv-score-label">Before</span>
+        </div>
+        <span class="tcv-score-arrow">→</span>
+        <div class="tcv-score-item">
+          <span class="tcv-score-num tcv-score-after" id="tcvScoreAfter">--%</span>
+          <span class="tcv-score-label">After</span>
         </div>
       </div>
       <div class="tcv-status-text" id="tcvGlobalStatus"></div>
@@ -405,7 +414,10 @@
     progressWrap = sb.querySelector('#tcvProgressWrap');
     progressBar = sb.querySelector('#tcvProgressBar');
     progressPct = sb.querySelector('#tcvProgressPct');
-    checkIcon = sb.querySelector('#tcvCheckIcon');
+    successTick = sb.querySelector('#tcvSuccessTick');
+    scoreCard = sb.querySelector('#tcvScoreCard');
+    scoreBeforeEl = sb.querySelector('#tcvScoreBefore');
+    scoreAfterEl = sb.querySelector('#tcvScoreAfter');
     progressBar.style.strokeDasharray = String(PROGRESS_CIRCUMFERENCE);
     progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE);
 
@@ -638,12 +650,16 @@
     progressPct.textContent = Math.round(clamped) + '%';
   }
 
-  function startProgress() {
-    // Reset any leftover success state from a previous run before starting the new one.
-    checkIcon.classList.remove('tcv-visible');
-    progressBar.classList.remove('tcv-success');
-    progressPct.classList.remove('tcv-hidden');
+  // Clears whatever the previous run left showing (tick / score card), so a
+  // fresh tailor request starts from a clean slate.
+  function hideSuccessExtras() {
+    clearTimeout(successTickTimer);
+    successTick.classList.remove('tcv-visible');
+    scoreCard.classList.remove('tcv-visible');
+  }
 
+  function startProgress() {
+    hideSuccessExtras();
     progressWrap.classList.add('tcv-visible');
     progressBar.style.transition = 'stroke-dashoffset 0.2s linear';
     setProgress(0);
@@ -659,20 +675,43 @@
     clearInterval(progressTimer);
     progressBar.style.transition = 'stroke-dashoffset 0.4s ease';
     setProgress(100);
+    // Let the ring visibly finish filling, then fade it out — the success tick
+    // (if any) takes over from here; runTailor() triggers that separately once
+    // it knows the before/after scores.
+    setTimeout(() => progressWrap.classList.remove('tcv-visible'), success ? 500 : 700);
+  }
 
-    if (!success) {
-      setTimeout(() => progressWrap.classList.remove('tcv-visible'), 700);
-      return;
+  // An <img>-loaded SVG can't be scripted, but we don't need to control this
+  // one's playback frame-by-frame like the lock — it just needs to play once
+  // and go away, so inlining is only needed for the fallback-detection pattern
+  // shared with the other icons in this file (fetch, fall back to <img> on
+  // any failure rather than showing nothing).
+  async function showSuccessTick(beforeScore, afterScore) {
+    successTick.classList.add('tcv-visible');
+    successTick.innerHTML = '';
+    const svgUrl = chrome.runtime.getURL('icons/success-check.svg');
+    try {
+      const res = await fetch(svgUrl);
+      if (!res.ok) throw new Error(`fetch ${svgUrl} → HTTP ${res.status}`);
+      const svgText = await res.text();
+      if (!successTick.isConnected) return;
+      successTick.innerHTML = svgText;
+    } catch (e) {
+      console.warn('[TailorCV] success tick fallback:', e);
+      if (successTick.isConnected) successTick.innerHTML = `<img src="${svgUrl}" alt="">`;
     }
+    clearTimeout(successTickTimer);
+    successTickTimer = setTimeout(() => {
+      successTick.classList.remove('tcv-visible');
+      showScoreCard(beforeScore, afterScore);
+    }, 2200);
+  }
 
-    // Let the ring visibly finish filling, then morph it into a drawn checkmark
-    // and leave it showing — cleared only when the next tailor request starts
-    // (startProgress resets it), same as how the status text below it persists.
-    setTimeout(() => {
-      progressBar.classList.add('tcv-success');
-      progressPct.classList.add('tcv-hidden');
-      checkIcon.classList.add('tcv-visible');
-    }, 350);
+  function showScoreCard(beforeScore, afterScore) {
+    if (typeof afterScore !== 'number') return; // nothing meaningful to show
+    scoreBeforeEl.textContent = typeof beforeScore === 'number' ? beforeScore + '%' : '—';
+    scoreAfterEl.textContent = afterScore + '%';
+    scoreCard.classList.add('tcv-visible');
   }
 
   async function runCoverLetter(job, label) {
@@ -737,12 +776,10 @@
       globalStatus.className = 'tcv-status-text tcv-error';
       globalStatus.textContent = `✗ ${label}: ${res.error}`;
     } else {
-      const before = job.beforeScore;
-      const after = res.data && typeof res.data.afterScore === 'number' ? res.data.afterScore : null;
-      const matchText = after === null ? '' :
-        (typeof before === 'number' ? ` — Match: ${before}% → ${after}%` : ` — Match: ${after}%`);
       globalStatus.className = 'tcv-status-text tcv-ok';
-      globalStatus.textContent = `✓ Downloaded resume for "${label}"${matchText}`;
+      globalStatus.textContent = `✓ Downloaded resume for "${label}"`;
+      const after = res.data && typeof res.data.afterScore === 'number' ? res.data.afterScore : null;
+      showSuccessTick(job.beforeScore, after);
     }
 
     // Refresh whichever job is on screen now that we're free to tailor again.
