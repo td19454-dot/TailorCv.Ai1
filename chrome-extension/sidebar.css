@@ -401,14 +401,64 @@
   color: #eaf1ff !important;
 }
 
-.tcv-match-row {
-  font-size: 13px !important;
-  color: #94a3b8 !important;
+/* ── Skill match: a meter, not a line of text ──
+   The bar's colour carries the verdict so the number doesn't have to. This is the
+   before-tailor browsing signal; the animated success tick + score card handle the
+   after-tailor moment. */
+.tcv-match {
+  padding: 12px 14px !important;
   margin-bottom: 14px !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+}
+.tcv-match-head {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  margin-bottom: 9px !important;
+}
+.tcv-match-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.09em !important;
+  color: #7c8aa5 !important;
 }
 .tcv-match-value {
-  font-weight: 700 !important;
-  color: #c9b8ff !important;
+  font-size: 20px !important;
+  font-weight: 750 !important;
+  color: #eaf1ff !important;
+  font-variant-numeric: tabular-nums !important;
+  line-height: 1 !important;
+}
+.tcv-match-bar {
+  position: relative !important;
+  height: 6px !important;
+  border-radius: 99px !important;
+  background: rgba(255,255,255,0.08) !important;
+  overflow: hidden !important;
+}
+.tcv-match-fill {
+  display: block !important;
+  height: 100% !important;
+  width: 0 !important;
+  border-radius: 99px !important;
+  background: linear-gradient(90deg, #4f7fff, #c9b8ff) !important;
+  transition: width 0.7s cubic-bezier(.22,.61,.36,1), background 0.4s ease !important;
+}
+.tcv-match.tcv-low  .tcv-match-fill  { background: linear-gradient(90deg, #f87171, #fb923c) !important; }
+.tcv-match.tcv-mid  .tcv-match-fill  { background: linear-gradient(90deg, #fbbf24, #facc15) !important; }
+.tcv-match.tcv-high .tcv-match-fill  { background: linear-gradient(90deg, #34d399, #4ade80) !important; }
+.tcv-match.tcv-low  .tcv-match-value { color: #fca5a5 !important; }
+.tcv-match.tcv-mid  .tcv-match-value { color: #fcd34d !important; }
+.tcv-match.tcv-high .tcv-match-value { color: #86efac !important; }
+/* No named skills in the JD — nothing to score, so explain rather than show a blank bar. */
+.tcv-match.tcv-na .tcv-match-value { font-size: 15px !important; color: #94a3b8 !important; }
+.tcv-match-note {
+  font-size: 11px !important;
+  line-height: 1.45 !important;
+  color: #8a93a6 !important;
 }
 
 .tcv-upgrade-box {

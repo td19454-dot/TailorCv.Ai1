@@ -137,8 +137,8 @@ async def csrf_middleware(request: Request, call_next):
         "/api/linkedin/oauth/callback",
         "/api/extension/log-application",
         "/api/extension/tailor-resume",
-        "/api/extension/skill-match",
         "/api/extension/cover-letter",
+        "/api/extension/skill-match",
         "/api/billing/razorpay/webhook",
         "/api/billing/polar/webhook",
     }
@@ -466,10 +466,10 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN base_style_id INTEGER")
     if "base_resume_uploaded_at" not in cols:
         to_add.append("ADD COLUMN base_resume_uploaded_at TIMESTAMP" if is_pg else "ADD COLUMN base_resume_uploaded_at TEXT")
-    if "base_resume_text" not in cols:
-        to_add.append("ADD COLUMN base_resume_text TEXT")
     if "base_cover_template" not in cols:
         to_add.append("ADD COLUMN base_cover_template VARCHAR(20)" if is_pg else "ADD COLUMN base_cover_template TEXT")
+    if "base_resume_text" not in cols:
+        to_add.append("ADD COLUMN base_resume_text TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
