@@ -593,7 +593,6 @@
     const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
     body.innerHTML = `
       <div class="tcv-job-info">Job Title: <b>${esc(job.role || 'this job')}</b>${job.company ? ' at ' + esc(job.company) : ''}</div>
-      <div class="tcv-source">${SOURCE_LABEL[job.source] || ''} · <a href="#" id="tcvEditJd">not right?</a></div>
       <div class="tcv-match" id="tcvMatch">
         <div class="tcv-match-head">
           <span class="tcv-match-label">Skill match</span>
@@ -608,11 +607,6 @@
         ✉ Write a Cover Letter
       </button>
     `;
-
-    body.querySelector('#tcvEditJd').addEventListener('click', (e) => {
-      e.preventDefault();
-      renderManual(job.jd_string);
-    });
 
     // Both actions run off the same JD and the same stored base resume, so the cover
     // letter costs the user nothing extra to set up — it is the same click, once more.
