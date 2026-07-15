@@ -145,7 +145,7 @@ In every case the entry has a title, dates, and one line of verifiable substance
 
 ## The Cover Letter Angle
 
-For a long or unusual gap, a single sentence in the cover letter pre-empts the question before the recruiter can turn it into a doubt. Place it near the end, framed forward:
+For a long or unusual gap, a single sentence in the [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work) pre-empts the question before the recruiter can turn it into a doubt. Place it near the end, framed forward:
 
 > "You may notice a break in my timeline through 2024 — I stepped away to care for a family member and used part of that time to complete a data analytics certification. I am now fully focused on returning to an analyst role, and everything I learned has only sharpened that goal."
 
