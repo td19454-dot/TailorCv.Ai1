@@ -29,6 +29,11 @@
   const LOCK_FPS = 30;
   const LOCK_LOOP_END = 74 / LOCK_FPS;   // seconds
   const LOCK_TOTAL_DUR = 4.7;            // seconds, matches the SVG's dur="4.7s"
+  // The icon itself is scaled to 0 at t=0 and only reaches full size around
+  // t≈0.33s (baked into the SVG's own animation) — resetting the loop to a
+  // point just past that instead of literal 0 keeps the icon visible on every
+  // lap instead of periodically flashing blank on each restart.
+  const LOCK_LOOP_START = 0.35;          // seconds
 
   let tcvBusy = false;
   let sb, body, launcher, globalStatus, progressWrap, progressBar, progressPct, progressTimer, checkIcon;
@@ -448,9 +453,9 @@
         throw new Error('lock-check.svg did not parse into a scriptable <svg> root');
       }
       lockSvgEl = svgEl;
-      svgEl.setCurrentTime(0);
+      svgEl.setCurrentTime(0); // play the one-time scale-up intro on first show
       lockLoopTimer = setInterval(() => {
-        if (svgEl.getCurrentTime() >= LOCK_LOOP_END) svgEl.setCurrentTime(0);
+        if (svgEl.getCurrentTime() >= LOCK_LOOP_END) svgEl.setCurrentTime(LOCK_LOOP_START);
       }, 50);
     } catch (e) {
       // Frame-accurate looping needs the inline, scriptable SVG above. If that

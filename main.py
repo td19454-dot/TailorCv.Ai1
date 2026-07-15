@@ -37,6 +37,7 @@ from functions import (
     inject_links,
     inject_jd_hard_skills,
     compute_skill_match_score,
+    compute_skill_match_score_structured,
     sanitize_resume_data,
     _is_atomic_hard_skill,
     map_demo_links,
@@ -5701,10 +5702,13 @@ async def extension_tailor_resume(request: Request):
     try:
         async with request_semaphore:
             parsed = await _optimize_resume_core(base_resume_path, jd_string)
-            # Same deterministic scorer as /api/extension/skill-match, applied to the
-            # tailored output — the JSON-serialized resume is a fine text blob for the
-            # word-boundary keyword search, no separate flattening needed.
-            after_match = compute_skill_match_score(json.dumps(parsed) if isinstance(parsed, dict) else "", jd_string)
+            # Structured scorer, not the flat-text one /api/extension/skill-match uses
+            # for the base resume: a flat match on the tailored output would count the
+            # guaranteed skills-array injection the same as a skill actually evidenced
+            # in the candidate's own bullets, which is misleading (see the function's
+            # docstring). This blends skills-array coverage with bullet/summary
+            # coverage so the score can't hit 100% on the skills section alone.
+            after_match = compute_skill_match_score_structured(parsed if isinstance(parsed, dict) else {}, jd_string)
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
             try:
                 pdf_path = await asyncio.to_thread(_render_resume_pdf_sync, html_content, use_default_template)
