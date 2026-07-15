@@ -46,6 +46,40 @@ When your resume is light on jobs, the cover letter carries more weight. It is t
 
 Part-time jobs count. Retail teaches customer handling and composure under pressure; tutoring teaches communication; a sports team teaches discipline and collaboration. Frame these as evidence of the traits the role needs, tied to a concrete moment.
 
+## What to Write About When You Have "Nothing"
+
+Almost every career starter has more material than they think. Any of these becomes the "proof" paragraph of your letter:
+
+- **A course project** you built, especially the capstone.
+- **A hackathon or competition** you entered, even if you did not win.
+- **Volunteering** — an event you organized, a cause you helped.
+- **A club or society role** — treasurer, organizer, captain.
+- **A side project** — an app, a blog, a small business, a design you made.
+- **A part-time job** — reframed around the transferable trait it proves.
+
+Pick the one most relevant to the role, and describe it the way you would describe real work: what you did, and what resulted. One concrete story beats three paragraphs of "I am eager and hardworking."
+
+## Turning a Trait Into a Story
+
+The mistake beginners make is *asserting* traits: "I have excellent communication skills." The fix is to *show* them with a specific moment.
+
+- Instead of "I'm a great team player," write: "When our group project stalled two days before the deadline, I split the remaining work into clear owners and we shipped on time."
+- Instead of "I learn quickly," write: "I taught myself enough SQL over a weekend to build the reporting feature our club needed."
+
+The specific moment proves the trait far more convincingly than the adjective, and it gives the interviewer something real to ask you about.
+
+## Common Mistakes in a No-Experience Cover Letter
+
+- **Apologizing for your inexperience.** Acknowledge it once, then spend your words on what you *have* done.
+- **Repeating your resume.** The letter should add a story and a voice, not restate bullets.
+- **Generic enthusiasm.** "I'd love the opportunity to grow" says nothing. Be specific about *this* role and company. (See [cover letter opening lines](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work).)
+- **Making it too long.** Half a page, three short paragraphs. Brevity keeps your best points visible.
+- **Focusing on what you want to get** instead of what you bring. Even early-career, you bring drive, fresh skills, and a habit of learning by building.
+
+## Tailor It to Each Role
+
+Your biggest advantage as a beginner is effort — and most beginners send the same generic letter everywhere. Change the specifics for each application: the reason you want *this* company, the project most relevant to *this* role, the skills *this* posting names. A tailored letter from a career starter often beats a generic one from a more experienced candidate, because it signals exactly the initiative employers are betting on.
+
 ## Frequently Asked Questions
 
 ### Should I admit I have no experience?
@@ -57,8 +91,22 @@ Half a page, three short paragraphs. Brevity keeps your strongest points visible
 ### Can I use AI to write it?
 Use it for a first draft from the job description, then rewrite the specifics in your own voice — the project, the reason you applied, the detail only you know.
 
+### Do I even need a cover letter for an entry-level job?
+When you have little work history, yes — it is where you turn potential into a story a resume cannot tell. If an application makes it optional, include one anyway; it is often the tiebreaker between similar junior candidates.
+
+### Who do I address it to if there's no name?
+Try to find the hiring manager or recruiter on LinkedIn first. If you genuinely cannot, "Dear Hiring Manager" is acceptable — but avoid the dated "To Whom It May Concern."
+
+### How is a cover letter different from my resume?
+The resume is a structured list of skills and evidence; the cover letter is a short, first-person story that explains who you are, why you want the role, and what a project or experience taught you. Same facts, different job.
+
+## Putting It All Together
+
+With little work history, the cover letter is your most powerful document — it is where drive, fit, and a real project can outweigh a thin resume. Open with a specific reason you want the role, prove your ability with one concrete story instead of asserting traits, keep it to three tight paragraphs, and tailor it to each company. Do that and you compete not as "the candidate with no experience," but as the one who clearly wants it most and has already started building.
+
 ## Related Guides
 
 - [Cover Letter Opening Lines That Work](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work)
 - [How to Write a Resume With No Experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
+- [How to Quantify Achievements on a Resume](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume)
 - [AI Cover Letter Generator From a Job Description](https://thetailorcv.com/blog/ai-cover-letter-generator-job-description)

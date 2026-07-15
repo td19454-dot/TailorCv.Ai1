@@ -47,6 +47,39 @@ Interviewers compare notes between rounds. If you tell the panel the exact same 
 
 These show you are already thinking like a member of the team, and they give you real information to decide with.
 
+## More Questions You Should Prepare
+
+Beyond the staples above, second rounds often probe these areas. Have a real, specific answer for each.
+
+**"What's your biggest weakness — and what are you doing about it?"**
+Name a genuine, non-fatal weakness and, more importantly, the concrete steps you are taking. The growth story matters more than the flaw.
+
+**"Tell me about a project that failed."**
+They want ownership and learning, not a humblebrag disguised as a failure. Describe a real setback, your role in it, and exactly what you changed afterward.
+
+**"How do you prioritize when everything is urgent?"**
+Show a real method — impact vs effort, deadlines, stakeholder alignment — with an example of using it under pressure.
+
+**"What would your first 90 days look like?"**
+This tests whether you have thought concretely about the role. Sketch a plan: learn the systems and people, find quick wins, then take on bigger ownership.
+
+**"Why are you leaving your current role?"**
+Stay positive. Frame it as moving *toward* something (growth, scope, a mission) rather than fleeing something. Never trash a current employer.
+
+## How to Prepare Between Rounds
+
+The gap between the first and second interview is a gift — use it deliberately.
+
+- **Debrief round one.** Write down every question you were asked and grade your own answers. Fix the weak ones.
+- **Research deeper.** Read the company's recent news, product updates, and the LinkedIn profiles of your upcoming interviewers.
+- **Prepare fresh stories.** Interviewers compare notes; new examples show range. (Reusing round-one anecdotes verbatim falls flat.)
+- **Rehearse out loud.** A few reps in an [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) turn rambling answers into crisp ones.
+- **Prepare your own questions.** Round two is when thoughtful questions carry the most weight.
+
+## Reading the Panel
+
+Second rounds often introduce more senior people, and each interviewer is evaluating something different. The engineer probes depth; the manager probes collaboration and reliability; the skip-level or executive probes judgment and fit with the bigger picture. Tailor your emphasis to who is in front of you: go technical with the engineer, talk teamwork with the manager, and think out loud about trade-offs and impact with leadership. Recognizing what each person is really assessing lets you give the answer they are actually looking for.
+
 ## Frequently Asked Questions
 
 ### How is a second interview different from the first?
@@ -58,8 +91,23 @@ It is increasingly acceptable, especially if the recruiter opened the door. If c
 ### How many rounds are normal?
 Two to four is common. If you are in a second round, treat it as a real shot — companies do not spend senior time on candidates they are not seriously considering.
 
+### Should I bring anything to a second interview?
+Bring fresh copies of your resume, a notepad with your prepared questions, and if relevant, a short portfolio or work sample. For a final round, some candidates bring a brief 30-60-90 day plan — a strong signal of seriousness.
+
+### Is it normal to meet the whole team in a second round?
+Yes, increasingly so. Team-fit conversations and "meet the team" segments are common in later rounds. Treat everyone you meet as an evaluator, including peers who seem casual.
+
+### How soon should I expect a decision after a second interview?
+Often within one to two weeks, but it varies. Ask about the timeline before you leave, and send a thank-you within 24 hours to stay top of mind during the decision.
+
+## Putting It All Together
+
+A second interview is not a repeat of the first — it is a deeper test of fit, depth, and seriousness, usually with more senior people. Debrief round one, research harder, prepare fresh stories, and read what each interviewer is really assessing. Come with thoughtful questions of your own and a concrete sense of your first 90 days. Do that and you show up as someone the team can already picture working alongside — which is exactly the impression that turns a second interview into an offer.
+
 ## Related Guides
 
-- [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
-- [Thank-You Email After an Interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates)
+- [Phone Screen Interview Tips](https://thetailorcv.com/blog/phone-screen-interview-tips)
+- [Video Interview Tips for 2026](https://thetailorcv.com/blog/video-interview-tips-2026)
 - [How to Answer "Why Do You Want This Job?"](https://thetailorcv.com/blog/how-to-answer-why-do-you-want-this-job)
+- [Thank-You Email After an Interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates)
+- [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)

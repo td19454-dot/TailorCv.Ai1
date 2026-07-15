@@ -48,6 +48,41 @@ You can keep a small sticky note or a short doc just off-camera with your three 
 
 Answers that feel clear in your head often ramble out loud. Run a few [mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) reps on camera so you hear your own pacing and see your own body language before it counts.
 
+## The 30-Minute Pre-Interview Checklist
+
+Run this in the half hour before the call so nothing technical surprises you.
+
+- **Restart your computer** an hour before, so no lingering process hogs bandwidth or your camera.
+- **Close every other app**, especially anything syncing or streaming.
+- **Open the meeting link early** and confirm camera and mic in the platform's settings.
+- **Silence your phone** and turn off desktop notifications — a Slack popup mid-answer is distracting and can expose private messages if you share your screen.
+- **Have water within reach**, off-camera, for the inevitable dry mouth.
+- **Put your resume, the job description, and three key stories** where you can glance at them near the lens.
+- **Tell housemates** you are in an interview and post a note on the door.
+- **Do a final light check** — is your face lit from the front and clearly visible?
+
+## Body Language on Camera
+
+Video flattens your presence, so you have to project a little more energy than feels natural. Sit up straight, keep your shoulders back, and let your hands gesture within frame occasionally — stillness reads as stiffness on camera. Nod while the interviewer speaks to show you are listening, since the usual small verbal cues get muddied by audio lag. And smile genuinely at the start and end; the first and last few seconds shape the interviewer's overall impression more than any single answer.
+
+## Your Answers Still Matter Most
+
+All the setup in the world does not substitute for good answers. The advantage of video is that you can keep brief notes nearby; the risk is leaning on them. Prepare your core stories the same way you would for an in-person interview — a crisp "tell me about yourself," two or three achievement stories in [STAR form](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and thoughtful questions to ask. Then practice them out loud on camera so your delivery is natural and your eyes are not glued to a script.
+
+## Common Video Interview Mistakes
+
+- **Looking at yourself** in the self-view instead of at the camera. Hide or shrink your self-view if it distracts you.
+- **A backlit silhouette** from a window behind you. Face the light instead.
+- **Reading answers verbatim** — obvious on video and it flattens your voice.
+- **Talking over lag.** Pause a half-second after the interviewer finishes to avoid collisions.
+- **A chaotic or distracting background.** Tidy and plain wins; fake blur that flickers around your head does not.
+- **Not testing the specific platform**, then losing the first three minutes to "can you hear me?"
+- **Forgetting it is still an interview** — dressing down, slouching, or treating it casually because it is from home.
+
+## If the Technology Fails Completely
+
+Have a backup plan and state it calmly if things break: "It looks like my connection is struggling — would it help if I dialed in by phone?" Keep the meeting number and your phone handy. Interviewers do not penalize a technical glitch you handle gracefully; they notice how you respond under a small, real-time problem — which is itself a useful signal about how you would handle one on the job.
+
 ## Frequently Asked Questions
 
 ### Should I dress fully professionally even from home?
@@ -59,8 +94,20 @@ Brief glances at bullet points are fine and normal. Reading full answers word-fo
 ### What if my kid or pet interrupts?
 Handle it with brief good humor and move on. Interviewers are human; a calm recovery can actually work in your favor.
 
+### Should I use a virtual background?
+A subtle, static virtual background is fine if your real space is distracting, but a real tidy background is better — fake backgrounds can flicker and cut off parts of your head when you move. Whatever you choose, test it on the actual platform first.
+
+### How early should I join the call?
+Two to three minutes early. It shows punctuality without leaving the interviewer waiting on you. Have the link open and your setup tested well before that, so joining is a single click.
+
+## Putting It All Together
+
+A video interview rewards preparation you can see: a camera at eye level, front lighting, a tested platform, and calm body language that projects a little extra energy to survive the flatness of a screen. Look at the lens, keep short notes nearby without reading them, and prepare your answers exactly as you would for an in-person round. Get the mechanics right and they disappear, leaving the interviewer free to focus on the only thing that should matter — what you actually say.
+
 ## Related Guides
 
-- [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
 - [Phone Screen Interview Tips](https://thetailorcv.com/blog/phone-screen-interview-tips)
+- [Second Interview Questions and Answers](https://thetailorcv.com/blog/second-interview-questions-and-answers)
+- [How to Answer "Why Do You Want This Job?"](https://thetailorcv.com/blog/how-to-answer-why-do-you-want-this-job)
 - [Thank-You Email After an Interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates)
+- [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
