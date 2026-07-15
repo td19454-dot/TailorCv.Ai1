@@ -68,6 +68,19 @@
     return (s || '').replace(/\s+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
   }
 
+  // LinkedIn (and similar boards) sometimes render the follower/employee/connection
+  // count right next to the company name with no separating space in the DOM text,
+  // so a naive innerText read glues them into one string, e.g.
+  // "Tata Consultancy Services19,209,861 followers". Strip that suffix off rather
+  // than pass it to the tailoring backend as part of the company name.
+  function cleanCompany(s) {
+    if (!s) return s;
+    return s
+      .replace(/[\d][\d,.]*\s*[KkMm]?\+?\s*(followers?|connections?|employees?)\b[\s\S]*$/i, '')
+      .replace(/[·•|,-]\s*$/, '')
+      .trim();
+  }
+
   function sendMessage(msg) {
     return new Promise(resolve => chrome.runtime.sendMessage(msg, res => resolve(res || {})));
   }
@@ -116,7 +129,7 @@
       return {
         jd_string: clean(htmlToText(job.description)),
         role: clean(job.title || ''),
-        company: clean(typeof org === 'string' ? org : (org && org.name) || ''),
+        company: cleanCompany(clean(typeof org === 'string' ? org : (org && org.name) || '')),
         source: 'jsonld',
       };
     }
@@ -203,7 +216,7 @@
     return {
       jd_string: clean(jd),
       role: clean(textOf(a.role)),
-      company: clean(textOf(a.company)),
+      company: cleanCompany(clean(textOf(a.company))),
       source: 'adapter',
     };
   }
@@ -259,7 +272,7 @@
         expandTruncatedText(container);
         const text = (container.innerText || '').trim();
         if (text.length >= MIN_JD_LENGTH && text.length <= 25000 && jdScore(text) >= 3) {
-          return { jd_string: clean(text), role: clean(guessRole()), company: clean(guessCompany(container)), source: 'heading' };
+          return { jd_string: clean(text), role: clean(guessRole()), company: cleanCompany(clean(guessCompany(container))), source: 'heading' };
         }
         container = container.parentElement;
       }
@@ -338,7 +351,7 @@
     return {
       jd_string: clean(best),
       role: clean(guessRole()),
-      company: clean(guessCompany(bestEl)),
+      company: cleanCompany(clean(guessCompany(bestEl))),
       source: 'heuristic',
     };
   }
@@ -381,7 +394,7 @@
 
   function extractJob() {
     if (manualJd && manualJd.length >= MIN_JD_LENGTH) {
-      return { jd_string: manualJd, role: guessRole(), company: guessCompany(), source: 'manual' };
+      return { jd_string: manualJd, role: guessRole(), company: cleanCompany(guessCompany()), source: 'manual' };
     }
     for (const layer of [fromJsonLd, fromAdapter, fromHeadingLabel, fromHeuristic]) {
       let job = null;
