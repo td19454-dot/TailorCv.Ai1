@@ -65,11 +65,11 @@ The right skills section looks different across fields. A few patterns:
 
 **Marketer** — a mix of platforms and named methods: Google Analytics, HubSpot, SEO, SEMrush, A/B testing, email automation. Avoid vague terms like "digital marketing" in favor of the specific tools.
 
-**[Project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) / Product Manager** — methodologies and tools: Agile, Scrum, Jira, roadmapping, stakeholder management (as a named competency, backed by bullets). Here the [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) section carries more weight, so keep skills tight.
+**[Project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) / Product [Manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)** — methodologies and tools: Agile, Scrum, Jira, roadmapping, stakeholder management (as a named competency, backed by bullets). Here the [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) section carries more weight, so keep skills tight.
 
 **Designer** — tools plus specializations: Figma, Adobe Creative Suite, prototyping, design systems, user research. Your [portfolio](https://thetailorcv.com/portfolio) does the deep proving; the skills list is a quick index.
 
-**Data Analyst** — the tool stack is everything: SQL, Python or R, Excel, Tableau or Power BI, statistics. Recruiters filter hard on these exact terms.
+**Data Analyst** — the tool stack is everything: SQL, Python or R, Excel, Tableau or Power BI, statistics. [Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) filter hard on these exact terms.
 
 ## Reading the Job Description for Skills
 
@@ -159,4 +159,4 @@ The single most effective habit for a skills section is to treat it as adjustabl
 
 ## Putting It All Together
 
-Your skills section is a fast, scannable proof of relevance: list hard skills only, mirror the posting's exact terms, group them for readability, and cap the list at what you can actually defend. Push soft skills into your bullets where a result can prove them. Done right, the section takes a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) two seconds to read and tells both them and the [ATS](https://thetailorcv.com/blog/how-to-pass-ats-in-2026) the same thing — this [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) has what the role needs.
+Your skills section is a fast, scannable proof of relevance: list hard skills only, mirror the posting's exact terms, group them for readability, and cap the list at what you can actually defend. Push soft skills into your bullets where a result can prove them. Done right, the section takes a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) two seconds to read and tells both them and the [ATS](https://thetailorcv.com/blog/how-to-pass-ats-in-2026) the same thing — this [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) has what the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) needs.

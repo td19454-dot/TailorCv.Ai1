@@ -19,7 +19,7 @@ keywords: resume with no experience, entry level resume, student resume 2026, fi
 
 ## Reframe What "Experience" Means
 
-Employers [hiring](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) for entry-level [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) expect a short [work history](https://thetailorcv.com/blog/reverse-chronological-vs-functional-resume). What they are really screening for is evidence you can do the work: can you write, build, analyze, or organize? That evidence can come from a class [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), a hackathon, a club, a part-time job, or a side [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) — none of which require a prior full-time [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
+[Employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) [hiring](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) for entry-level [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) expect a short [work history](https://thetailorcv.com/blog/reverse-chronological-vs-functional-resume). What they are really screening for is evidence you can do the work: can you write, build, analyze, or organize? That evidence can come from a class [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), a hackathon, a club, a part-time job, or a side [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) — none of which require a prior full-time [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
 ## The Structure to Use
 
@@ -76,7 +76,7 @@ Here is what a genuinely strong no-experience [resume](https://thetailorcv.com/b
 **[Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)**
 > **Barista, [Café]** (2024 – 2025) — Handled 100+ transactions per shift; trained two new hires.
 
-Notice there is not a single "professional" data job on it, yet it reads as a capable candidate. The projects carry the weight, the [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) mirror the posting, and even the café job proves reliability and training ability.
+Notice there is not a single "professional" data job on it, yet it reads as a capable candidate. The [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) carry the weight, the [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) mirror the posting, and even the café job proves reliability and training ability.
 
 ## Turn a Part-Time Job Into Real Bullets
 
