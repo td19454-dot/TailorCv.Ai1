@@ -208,7 +208,6 @@ class BlogService:
         groups = [
             (f"More {post.category} guides" if post.category else "More guides", take(rotate(same_cat, 3))),
             ("Related topics", take(tag_adj)),
-            ("Latest guides", take(recent)),
             ("Explore more", take(rotate(ring, 11))),
         ]
         return [{"title": t, "posts": ps} for t, ps in groups if ps]

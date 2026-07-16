@@ -136,7 +136,7 @@ An interviewer can tell the difference between a thoughtful estimate and a fabri
 
 The kind of number that impresses shifts as you advance:
 
-- **Entry level:** scope and effort. "Analyzed 800 survey responses," "handled 100+ transactions per shift," "built a tool used by 40 classmates." You are proving you can execute.
+- **[Entry level](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026):** scope and effort. "Analyzed 800 survey responses," "handled 100+ transactions per shift," "built a tool used by 40 classmates." You are proving you can execute.
 - **Mid level:** outcomes you drove. "Cut churn 15%," "shipped 3 features that lifted conversion 9%," "reduced processing time from 10 days to 3." You are proving impact.
 - **Senior and leadership:** scale and strategic results. "Owned a $2M budget," "led a 15-person org," "grew ARR from $4M to $11M in two years." You are proving you move the business.
 

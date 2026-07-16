@@ -7819,10 +7819,10 @@ async def blog_post_page(request: Request, slug: str):
     post = blog_service.get_post(slug)
     if post is None:
         raise HTTPException(status_code=404, detail="Blog post not found")
-    related_posts = blog_service.related_posts(post, limit=12)
-    # Rich internal-link hub (dozens of curated links) shown as compact text lists,
-    # so every post carries strong internal linking site-wide without prose spam.
-    link_hub = blog_service.link_hub(post, exclude=related_posts, per_group=20)
+    related_posts = blog_service.related_posts(post, limit=6)
+    # Compact internal-link hub under each post. Kept small on purpose — the bulk of
+    # internal linking lives inline in the body; this is just a tidy "explore more".
+    link_hub = blog_service.link_hub(post, exclude=related_posts, per_group=6)
     canonical_url = build_absolute_url(f"/blog/{post.slug}")
     og_image = post.image if str(post.image).startswith("http") else build_absolute_url(post.image or "/static/logo.png")
     author_profile = pick_author(post)

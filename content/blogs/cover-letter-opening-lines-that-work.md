@@ -38,13 +38,13 @@ The hook shows you did your homework; the credential shows you can back it up.
 **Lead with a shared mission:**
 > "Your posting says you want engineers who care about accessibility. I rebuilt my last team's design system to WCAG AA, and it changed who could use the product."
 
-**Lead with a referral:**
+**Lead with a [referral](https://thetailorcv.com/blog/networking-messages-for-referrals):**
 > "[Name] on your data team suggested I reach out — she thought my work on churn modeling would fit what your Analytics role needs."
 
 **[Career changer](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026):**
 > "After five years in teaching, I moved into UX because the problems rhymed: understand the person, then design something they can actually use."
 
-**Entry level:**
+**[Entry level](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026):**
 > "I built and shipped three side projects before I graduated, because I would rather learn by building than wait for permission — which is why your junior developer role caught my eye."
 
 ## What to Avoid
