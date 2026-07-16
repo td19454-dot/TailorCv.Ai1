@@ -82,14 +82,14 @@ Second rounds often introduce more senior people, and each interviewer is evalua
 
 ## Using the STAR Method in Second Rounds
 
-Second [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) lean heavily on [behavioral questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) — "tell me about a time when..." — and the candidates who answer them well almost always use a structure, whether they name it or not. The [STAR method](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) keeps a story tight and complete:
+Second [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) lean heavily on [behavioral questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) — "tell me about a time when..." — and the [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who answer them well almost always use a structure, whether they name it or not. The [STAR method](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) keeps a story tight and complete:
 
 - **Situation:** briefly set the scene. One or two sentences.
 - **Task:** what you specifically needed to do.
 - **Action:** what *you* did — the heart of the answer, in the first person.
 - **Result:** how it turned out, [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) if possible.
 
-Without structure, behavioral answers ramble: candidates over-explain the setup, bury their own role, and forget the result entirely. With STAR, a two-minute answer lands cleanly and the interviewer remembers the point. Prepare five or six flexible STAR stories covering leadership, conflict, failure, a big win, and problem-solving — most [behavioral questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) are just different doors into the same handful of stories.
+Without structure, behavioral answers ramble: [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) over-explain the setup, bury their own role, and forget the result entirely. With STAR, a two-minute answer lands cleanly and the interviewer remembers the point. Prepare five or six flexible STAR stories covering leadership, conflict, failure, a big win, and problem-solving — most [behavioral questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) are just different doors into the same handful of stories.
 
 ## Handling the Questions You Fear Most
 
@@ -123,10 +123,10 @@ The first screens for qualification; the second probes fit, depth, and seriousne
 It is increasingly acceptable, especially if the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) opened the door. If compensation has not come up at all, it is reasonable to ask about the range now.
 
 ### How many rounds are normal?
-Two to four is common. If you are in a second round, treat it as a real shot — companies do not spend senior time on candidates they are not seriously considering.
+Two to four is common. If you are in a second round, treat it as a real shot — companies do not spend senior time on [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) they are not seriously considering.
 
 ### Should I bring anything to a second interview?
-Bring fresh copies of your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), a notepad with your prepared questions, and if relevant, a short [portfolio](https://thetailorcv.com/portfolio) or work sample. For a final round, some candidates bring a brief 30-60-90 day plan — a strong signal of seriousness.
+Bring fresh copies of your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), a notepad with your prepared questions, and if relevant, a short [portfolio](https://thetailorcv.com/portfolio) or work sample. For a final round, some [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) bring a brief 30-60-90 day plan — a strong signal of seriousness.
 
 ### Is it normal to meet the whole team in a second round?
 Yes, increasingly so. Team-fit conversations and "meet the team" segments are common in later rounds. Treat everyone you meet as an evaluator, including peers who seem casual.
@@ -146,8 +146,8 @@ By the second round, the questions you ask carry as much weight as the answers y
 
 ## Reading the Signals That You're Doing Well
 
-Second interviews often give off signals about how you are being received, and learning to read them helps you calibrate in real time. Positive signs include interviewers spending more time selling you on the role, introducing you to additional team members on the spot, discussing specifics like start dates or logistics, and asking when you would be available. When an interviewer shifts from probing your qualifications to describing what your first [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) would be, they are picturing you in the seat — a strong buying signal. Less encouraging signs include a rushed, checkbox-style interview or a lack of engagement with your answers. None of these are definitive, and you should give your best regardless, but noticing them helps you decide where to lean in — if they are clearly interested, it is a good moment to express your genuine enthusiasm and ask about next steps directly.
+Second [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) often give off signals about how you are being received, and learning to read them helps you calibrate in real time. Positive signs include interviewers spending more time selling you on the role, introducing you to additional team members on the spot, discussing specifics like start dates or logistics, and asking when you would be available. When an interviewer shifts from probing your qualifications to describing what your first [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) would be, they are picturing you in the seat — a strong buying signal. Less encouraging signs include a rushed, checkbox-style [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) or a lack of engagement with your answers. None of these are definitive, and you should give your best regardless, but noticing them helps you decide where to lean in — if they are clearly interested, it is a good moment to express your genuine enthusiasm and ask about next steps directly.
 
 ## Putting It All Together
 
-A second interview is not a repeat of the first — it is a deeper test of fit, depth, and seriousness, usually with more senior people. Debrief round one, research harder, prepare fresh stories, and read what each interviewer is really assessing. Come with thoughtful questions of your own and a concrete sense of your first 90 days. Do that and you show up as someone the team can already picture working alongside — which is exactly the impression that turns a second interview into an offer.
+A second [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) is not a repeat of the first — it is a deeper test of fit, depth, and seriousness, usually with more senior people. Debrief round one, research harder, prepare fresh stories, and read what each interviewer is really assessing. Come with thoughtful questions of your own and a concrete sense of your first 90 days. Do that and you show up as someone the team can already picture working alongside — which is exactly the impression that turns a second [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) into an offer.

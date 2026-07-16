@@ -83,7 +83,7 @@ The transformation looks a little different in every field. Here is what turning
 - After: "Exceeded quota by an average of 118% across six quarters, closing $1.2M in new business in the last fiscal year."
 
 **Software Engineering**
-- Before: "Worked on improving application performance."
+- Before: "Worked on improving [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) performance."
 - After: "Cut API p95 latency from 850ms to 240ms by adding caching and query indexing, improving checkout completion 9%."
 
 **Marketing**
@@ -119,7 +119,7 @@ Lead with the strong verb, land the number early, and end with the "how." The [a
 
 ## How This Interacts With the ATS
 
-Numbers do double duty. To a human, they are proof. To an [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works), they sit inside real, keyword-rich bullets that the parser reads as genuine experience rather than a bare skills list. A bullet like "Automated invoice reconciliation in Python, cutting processing time 40%" carries the [keyword](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) ("Python"), the context, and the metric all at once — which is exactly the kind of line that scores well and survives the scan.
+Numbers do double duty. To a human, they are proof. To an [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works), they sit inside real, keyword-rich bullets that the parser reads as genuine [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) rather than a bare [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) list. A bullet like "Automated invoice reconciliation in Python, cutting processing time 40%" carries the [keyword](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) ("Python"), the context, and the metric all at once — which is exactly the kind of line that scores well and survives the scan.
 
 ## Estimating Honestly When You Have No Hard Data
 
@@ -152,13 +152,13 @@ Numbers do their best work when they are also relevant to the specific job. A me
 Use relative figures instead of absolutes: "grew revenue 30%" rather than the dollar amount. Percentages and multiples are rarely confidential.
 
 ### Should every bullet have a number?
-No. Aim for a number in your top two or three bullets per role. A resume where every line has a statistic starts to feel padded.
+No. Aim for a number in your top two or three bullets per role. A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) where every line has a statistic starts to feel padded.
 
 ### Can I quantify soft skills?
 Indirectly. "Mentored 4 junior designers, two of whom were promoted within a year" proves leadership with a number without claiming "great mentor."
 
 ### What if my results were a team effort?
-Claim your real contribution honestly. "Contributed to a team that grew revenue 30%" is fine; so is "Owned the analytics workstream of a project that grew revenue 30%." Do not claim the whole outcome as solely yours, but do not erase yourself either.
+Claim your real contribution honestly. "Contributed to a team that grew revenue 30%" is fine; so is "Owned the analytics workstream of a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that grew revenue 30%." Do not claim the whole outcome as solely yours, but do not erase yourself either.
 
 ### Should I use exact numbers or rounded ones?
 Round sensibly. "Cut costs by about 20%" is more credible than "by 19.7%" unless you genuinely have precise data. Precision implies measurement; only claim it if you measured it.
@@ -167,12 +167,12 @@ Round sensibly. "Cut costs by about 20%" is more credible than "by 19.7%" unless
 Use relative figures and scope. "Managed a [portfolio](https://thetailorcv.com/portfolio) in the low eight figures" or "improved retention double digits" conveys scale without disclosing protected numbers. Percentages and ranges are almost never confidential.
 
 ### How many quantified bullets should a resume have overall?
-Aim for a number in the top two or three bullets of each recent role. Across a one-page resume that is roughly six to nine metrics — enough to prove a pattern of impact without turning the page into a data dump.
+Aim for a number in the top two or three bullets of each recent role. Across a one-page [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that is roughly six to nine metrics — enough to prove a pattern of impact without turning the page into a data dump.
 
 ## The Rule You Can Never Break: Honesty
 
-Everything about quantifying achievements rests on one non-negotiable foundation: the numbers must be true. A fabricated statistic is a liability that detonates at the worst possible moment — in an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), when a sharp interviewer asks "how did you measure that 40% improvement?" and you have no answer, or later, when a [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) contradicts a claim. Invented metrics also tend to sound invented; a suspiciously precise "increased efficiency by 37.2%" from a role with no analytics reads as fiction to an experienced [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid). The good news is you never need to lie, because honest estimation covers every real situation: reconstruct a defensible figure from what you know, use ranges and qualifiers when you lack precision, quantify scope when you cannot quantify outcome, and convert confidential absolutes into percentages. A resume built on true numbers survives every [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) probe and every [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) check — which is the entire point of putting numbers on it in the first place. Impressive-but-false loses to modest-but-true every time it is tested, and in a serious hiring process, it will be tested.
+Everything about quantifying achievements rests on one non-negotiable foundation: the numbers must be true. A fabricated statistic is a liability that detonates at the worst possible moment — in an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), when a sharp interviewer asks "how did you measure that 40% improvement?" and you have no answer, or later, when a [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) contradicts a claim. Invented metrics also tend to sound invented; a suspiciously precise "increased efficiency by 37.2%" from a role with no analytics reads as fiction to an experienced [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid). The good news is you never need to lie, because honest estimation covers every real situation: reconstruct a defensible figure from what you know, use ranges and qualifiers when you lack precision, quantify scope when you cannot quantify outcome, and convert confidential absolutes into percentages. A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) built on true numbers survives every [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) probe and every [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) check — which is the entire point of putting numbers on it in the first place. Impressive-but-false loses to modest-but-true every time it is tested, and in a serious hiring process, it will be tested.
 
 ## Putting It All Together
 
-Quantifying achievements is the single highest-return edit you can make to a resume. Walk each role through the eight-prompt worksheet, rewrite your top bullets with the X-Y-Z formula, front-load the number, and keep every figure honest. The result is a resume that a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) believes in seconds and an [ATS scores](https://thetailorcv.com/solutions) as real experience — the two audiences you have to win to get the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).
+Quantifying achievements is the single highest-return edit you can make to a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Walk each role through the eight-prompt worksheet, rewrite your top bullets with the X-Y-Z formula, front-load the number, and keep every figure honest. The result is a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) believes in seconds and an [ATS scores](https://thetailorcv.com/solutions) as real [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) — the two audiences you have to win to get the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).

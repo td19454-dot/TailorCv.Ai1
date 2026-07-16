@@ -46,7 +46,7 @@ Skip "hardworking team player." Every line should be something only *you* could 
 ## How to Adapt These
 
 1. Match the **job title** in the posting.
-2. Swap in **your real metric** — the summary lives or dies on a specific, true number.
+2. Swap in **your real [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume)** — the summary lives or dies on a specific, true number.
 3. Mirror the posting's **[keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)** so it reads relevant to both the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) and the [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works).
 
 ## More Examples by Role and Stage
@@ -80,7 +80,7 @@ The formula flexes across every field. Here are more you can adapt — always sw
 ## How to Write Your Own, Step by Step
 
 1. **State your identity.** Your role or target role, in the posting's words. "Backend engineer," not "coding professional."
-2. **Add your strongest proof.** One [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) achievement that maps to this job. This is the line that makes the summary believable.
+2. **Add your strongest proof.** One [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) that maps to this job. This is the line that makes the summary believable.
 3. **Name your focus or value.** What you are especially good at, or what you care about, tied to what the role needs.
 4. **Point it at the target.** A short phrase on what you want next, aligned with the posting.
 5. **Cut every filler word.** Delete "hardworking," "detail-oriented," "team player," and any sentence that could appear on anyone's [resume](https://thetailorcv.com/blog/anatomy-of-a-resume).
@@ -90,7 +90,7 @@ Read it back and ask: could someone else truthfully have written this exact summ
 ## What Makes a Summary Weak
 
 - **Adjective soup.** "Motivated, hardworking, results-driven professional" says nothing and wastes your best real estate.
-- **No numbers.** A summary without a single metric is a claim without evidence.
+- **No numbers.** A summary without a single [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) is a claim without evidence.
 - **Copy-paste generic.** A summary that fits any job fits none. Tailor it.
 - **Too long.** Five lines is a paragraph, not a summary. Two to three lines, tops.
 - **All about your wants.** "Seeking a role where I can grow" centers you. Center your value to the employer instead.
@@ -98,13 +98,13 @@ Read it back and ask: could someone else truthfully have written this exact summ
 
 ## Where the Summary Goes and How Long It Should Be
 
-Place the summary at the very top, directly under your contact details, so it is the first thing read. Keep it to two or three lines — long enough to land your identity, proof, and focus; short enough that a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) actually reads it before scanning your experience. On a tight one-page [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) for an early-career candidate, a strong summary is a nice-to-have; for experienced professionals and [career changers](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026), it is the frame that makes everything below it make sense.
+Place the summary at the very top, directly under your contact details, so it is the first thing read. Keep it to two or three lines — long enough to land your identity, proof, and focus; short enough that a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) actually reads it before scanning your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience). On a tight one-page [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) for an early-career [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), a strong summary is a nice-to-have; for experienced professionals and [career changers](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026), it is the frame that makes everything below it make sense.
 
 ## Tailor the Summary to Every Job
 
-The single biggest upgrade to a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) summary is not better wording — it is a fresh version for each application. A summary that name-drops the exact role title and mirrors the posting's language reads as written *for this job*, because it was. That is also what an [ATS score](https://thetailorcv.com/solutions) rewards: the closer your summary's terms match the posting, the higher your relevance.
+The single biggest upgrade to a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) summary is not better wording — it is a fresh version for each [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application). A summary that name-drops the exact role title and mirrors the posting's language reads as written *for this job*, because it was. That is also what an [ATS score](https://thetailorcv.com/solutions) rewards: the closer your summary's terms match the posting, the higher your relevance.
 
-You do not have to rewrite it from scratch each time. Keep one strong base summary, then adjust the role title, swap the lead metric to the most relevant one, and mirror two or three [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) from the posting. If you use the [TailorCV resume optimizer](https://thetailorcv.com/optimize), it reads the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and rewrites your summary and bullets to match the exact role — turning a generic profile into a targeted one in a couple of minutes. And if you are starting from scratch, the [resume builder](https://thetailorcv.com/modify-cv) gives you a clean, [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) structure to drop your summary into.
+You do not have to rewrite it from scratch each time. Keep one strong base summary, then adjust the role title, swap the lead [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) to the most relevant one, and mirror two or three [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) from the posting. If you use the [TailorCV resume optimizer](https://thetailorcv.com/optimize), it reads the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and rewrites your summary and bullets to match the exact role — turning a generic profile into a targeted one in a couple of minutes. And if you are starting from scratch, the [resume builder](https://thetailorcv.com/modify-cv) gives you a clean, [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) structure to drop your summary into.
 
 ## Before and After: Weak Summary to Strong
 
@@ -119,7 +119,7 @@ The "before" could belong to anyone and says nothing measurable. The "after" nam
 ## Frequently Asked Questions
 
 ### Do I even need a summary?
-It helps most for experienced candidates and [career changers](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) who need to frame their story. For a straightforward early-career [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), a strong one is a bonus, not a requirement.
+It helps most for experienced [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [career changers](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) who need to frame their story. For a straightforward early-career [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), a strong one is a bonus, not a requirement.
 
 ### How long should a resume summary be?
 Two to three lines. Longer and it stops being a summary; shorter and it says nothing.
@@ -128,7 +128,7 @@ Two to three lines. Longer and it stops being a summary; shorter and it says not
 Summary. Objectives ("seeking a role where I can grow") center your wants; summaries center your value to the employer.
 
 ### Where do I get the metric if my role isn't obviously measurable?
-Almost every role hides a number — scale, time saved, volume handled, or a percentage change. Walk your experience through those lenses and you will find one. Our guide on [quantifying achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) has a full worksheet.
+Almost every role hides a number — scale, time saved, volume handled, or a percentage change. Walk your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) through those lenses and you will find one. Our guide on [quantifying achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) has a full worksheet.
 
 ### Should the summary use "I" or third person?
 Neither, ideally — write it in implied first person without the pronoun: "Content marketer who grew traffic 140%," not "I am a content marketer" or "He is a content marketer." It reads cleaner and saves space.
@@ -144,12 +144,12 @@ Present tense, implied first person, no pronouns: "Backend engineer who builds r
 
 ## When to Skip the Summary Entirely
 
-A summary is not mandatory, and a weak one is worse than none. If you cannot write a summary that says something specific and true — a real metric, a genuine specialty, a clear direction — leave it off and let a strong experience section lead instead. This is often the right call for a straightforward early-career resume where the [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and skills speak for themselves, or for a candidate whose most recent role obviously matches the target. The summary earns its space only when it *frames* something the reader might otherwise miss: a career change, a mix of experiences that needs a through-line, or a senior story that benefits from a headline. If your resume is already clear and targeted without it, three lines of generic self-description at the top only push your real evidence further down the page.
+A summary is not mandatory, and a weak one is worse than none. If you cannot write a summary that says something specific and true — a real metric, a genuine specialty, a clear direction — leave it off and let a strong [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) section lead instead. This is often the right call for a straightforward early-career [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) where the [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) speak for themselves, or for a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) whose most recent role obviously matches the target. The summary earns its space only when it *frames* something the reader might otherwise miss: a [career change](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026), a mix of experiences that needs a through-line, or a senior story that benefits from a headline. If your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) is already clear and targeted without it, three lines of generic self-description at the top only push your real evidence further down the page.
 
 ## Common Words to Cut From Your Summary
 
-The fastest way to strengthen a summary is to delete the words that appear on everyone else's. Cut "hardworking," "motivated," "detail-oriented," "results-driven," "passionate," "team player," "go-getter," "self-starter," and "dynamic." None of them are provable, all of them are claimed by thousands of other candidates, and each one you delete makes room for something real — a number, a named skill, a specific outcome. Read your summary and highlight every adjective; for each one, ask whether it is a testable fact or an empty claim. Replace the empty claims with evidence. "Results-driven marketer" becomes "marketer who grew organic traffic 140%." "Detail-oriented analyst" becomes "analyst whose reporting overhaul cut monthly close errors to near zero." The specific version is always shorter on adjectives and longer on proof — which is exactly the trade that makes a recruiter believe you.
+The fastest way to strengthen a summary is to delete the words that appear on everyone else's. Cut "hardworking," "motivated," "detail-oriented," "results-driven," "passionate," "team player," "go-getter," "self-starter," and "dynamic." None of them are provable, all of them are claimed by thousands of other [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), and each one you delete makes room for something real — a number, a named [skill](https://thetailorcv.com/blog/resume-skills-section-guide-2026), a specific outcome. Read your summary and highlight every adjective; for each one, ask whether it is a testable fact or an empty claim. Replace the empty claims with evidence. "Results-driven marketer" becomes "marketer who grew organic traffic 140%." "Detail-oriented analyst" becomes "analyst whose reporting overhaul cut monthly close errors to near zero." The specific version is always shorter on adjectives and longer on proof — which is exactly the trade that makes a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) believe you.
 
 ## Putting It All Together
 
-A resume summary is three lines of prime real estate at the top of your resume, and most people waste them on adjectives. Use the formula — identity, [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) proof, focus — mirror the target posting's language, and lead with a real number. Tailor it to every job, whether by hand or with a [resume optimizer](https://thetailorcv.com/optimize) that matches it to the description automatically. Get those three lines right and you earn the one thing a summary exists to win: the recruiter's attention for the rest of the page.
+A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) summary is three lines of prime real estate at the top of your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), and most people waste them on adjectives. Use the formula — identity, [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) proof, focus — mirror the target posting's language, and lead with a real number. Tailor it to every job, whether by hand or with a [resume optimizer](https://thetailorcv.com/optimize) that matches it to the description automatically. Get those three lines right and you earn the one thing a summary exists to win: the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s attention for the rest of the page.
