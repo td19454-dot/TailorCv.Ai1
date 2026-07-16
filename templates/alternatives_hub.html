@@ -40,23 +40,23 @@
 
     <main class="rh-wrap">
         <section class="rh-hero">
-            <h1>Free <span class="hl">Resume Examples</span> by Job Role</h1>
-            <p>Real resume examples with the right ATS keywords, skills, and bullet points for your role — plus the mistakes to avoid.</p>
+            <h1>How TheTailorCV <span class="hl">compares</span></h1>
+            <p>An honest look at how TheTailorCV stacks up against the other resume and ATS tools — features, pricing, and who each one actually suits.</p>
         </section>
 
         <div class="rh-grid">
-            {% for slug, r in roles.items() %}
-            <a class="rh-card" href="/resume-examples/{{ slug }}">
-                <h3>{{ r.role }}</h3>
-                <p>{{ r.intro }}</p>
-                <span class="go">View example →</span>
+            {% for slug, c in pages.items() %}
+            <a class="rh-card" href="/{{ slug }}">
+                <h3>TheTailorCV vs {{ c.competitor }}</h3>
+                <p>{{ c.hero }}</p>
+                <span class="go">Compare &rarr;</span>
             </a>
             {% endfor %}
         </div>
 
         <section class="rh-band">
-            <h2>Don't just copy — tailor it</h2>
-            <p>Paste your resume and a job description to see your ATS score and the keywords to add — free.</p>
+            <h2>See for yourself, free</h2>
+            <p>Paste your resume and a job description to see your ATS score and the keywords to add — no card needed.</p>
             <a class="rh-btn" href="/solutions">Get your free ATS score</a>
         </section>
     </main>
