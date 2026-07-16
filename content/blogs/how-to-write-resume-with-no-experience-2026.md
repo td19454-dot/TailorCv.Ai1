@@ -15,7 +15,7 @@ keywords: resume with no experience, entry level resume, student resume 2026, fi
 - "No experience" almost never means "nothing to show." Projects, coursework, and volunteering all count.
 - Lead with a skills-forward layout, not a bare, one-line work history.
 - Every bullet still needs a result — what you built, learned, or improved.
-- Tailor the resume to each posting; a generic fresher resume is the easiest to ignore.
+- Tailor the resume to each posting; a generic [fresher](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) resume is the easiest to ignore.
 
 ## Reframe What "Experience" Means
 
@@ -93,7 +93,7 @@ The trait the employer cares about — reliability, communication, problem-solvi
 ## Mistakes That Sink a Fresher Resume
 
 - **Listing coursework with no outcome.** "Took a database course" is weak; "Built a normalized SQL database as a course project" is strong.
-- **A wall of soft skills.** "Hardworking, motivated, team player" proves nothing. Show these traits in your project and job bullets instead.
+- **A wall of [soft skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026).** "Hardworking, motivated, team player" proves nothing. Show these traits in your project and job bullets instead.
 - **Going over one page.** With little history, a second page signals padding. Keep it tight.
 - **A generic [objective](https://thetailorcv.com/blog/resume-objective-vs-summary).** "Seeking a challenging role to grow my skills" says nothing. Use a specific summary instead.
 - **Sending the same resume everywhere.** The one thing you fully control is effort. Tailoring beats a fancier template every time.

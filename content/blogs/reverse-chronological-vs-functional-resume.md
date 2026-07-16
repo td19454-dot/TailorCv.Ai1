@@ -115,7 +115,7 @@ Since this is the format almost everyone should use, here is how to structure it
 1. **Contact block.** Name, phone, email, city, and links (LinkedIn, [portfolio](https://thetailorcv.com/portfolio), GitHub) — in the body, never in a header or footer a parser might skip.
 2. **Summary.** Two or three lines stating who you are, your strongest [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) proof, and your target — tuned to the specific role.
 3. **Experience.** Newest job first. For each: title, company, location, dates, then three to five bullets led by strong verbs and quantified results. Lead each role with its most impressive, relevant bullet.
-4. **Skills.** A clean, grouped list of genuine hard skills that mirror the posting's language.
+4. **Skills.** A clean, grouped list of genuine [hard skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) that mirror the posting's language.
 5. **Education.** Degree, institution, graduation year, and relevant honors or coursework if early-career.
 6. **Optional sections.** [Certifications](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026), projects, or publications, if they strengthen your case for this role.
 
