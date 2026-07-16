@@ -19,7 +19,7 @@
   if (window.__tailorcvInjected) return;   // toolbar click on an auto-injected page
   window.__tailorcvInjected = true;
 
-  const BASE_URL = 'https://thetailorcv.com';
+  const BASE_URL = 'http://127.0.0.1:8005';
   const MIN_JD_LENGTH = 200;
   const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 30; // r=30 in the SVG below
   // The lock-check.svg loop is 4.7s at 30fps (141 frames). Frame 74 is the last
@@ -37,6 +37,7 @@
 
   let tcvBusy = false;
   let sb, body, launcher, globalStatus, progressWrap, progressBar, progressPct, progressTimer;
+  let accountBtn, accountMenu, accountEmailEl;
   let successTick, scoreCard, scoreBeforeEl, scoreAfterEl, successTickTimer;
   let sessionReady = false;
   let manualJd = '';   // set when the user pastes or selects the JD themselves
@@ -473,7 +474,15 @@
           <img class="tcv-logo-icon" src="${chrome.runtime.getURL('icons/icon48.png')}" alt="">
           <span class="tcv-logo">TailorCV</span>
         </div>
-        <button class="tcv-toggle" title="Minimize">✕</button>
+        <div class="tcv-header-actions">
+          <button class="tcv-account-btn" id="tcvAccountBtn" title="Account"></button>
+          <button class="tcv-toggle" title="Minimize">✕</button>
+        </div>
+        <div class="tcv-account-menu" id="tcvAccountMenu">
+          <div class="tcv-account-email" id="tcvAccountEmail"></div>
+          <a class="tcv-account-item" href="${BASE_URL}/extension" target="_blank">Extension settings</a>
+          <button class="tcv-account-item tcv-account-logout" id="tcvAccountLogout" type="button">Log out</button>
+        </div>
       </div>
       <div id="tcvBody"></div>
       <div class="tcv-progress-wrap" id="tcvProgressWrap">
@@ -517,16 +526,41 @@
     scoreCard = sb.querySelector('#tcvScoreCard');
     scoreBeforeEl = sb.querySelector('#tcvScoreBefore');
     scoreAfterEl = sb.querySelector('#tcvScoreAfter');
+    accountBtn = sb.querySelector('#tcvAccountBtn');
+    accountMenu = sb.querySelector('#tcvAccountMenu');
+    accountEmailEl = sb.querySelector('#tcvAccountEmail');
     progressBar.style.strokeDasharray = String(PROGRESS_CIRCUMFERENCE);
     progressBar.style.strokeDashoffset = String(PROGRESS_CIRCUMFERENCE);
 
     sb.querySelector('.tcv-toggle').addEventListener('click', () => {
       sb.classList.add('tcv-collapsed');
       launcher.classList.add('tcv-visible');
+      accountMenu.classList.remove('tcv-visible');
     });
     launcher.addEventListener('click', () => {
       sb.classList.remove('tcv-collapsed');
       launcher.classList.remove('tcv-visible');
+    });
+
+    accountBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      accountMenu.classList.toggle('tcv-visible');
+    });
+    document.addEventListener('click', (e) => {
+      if (accountMenu.classList.contains('tcv-visible') && !accountMenu.contains(e.target) && e.target !== accountBtn) {
+        accountMenu.classList.remove('tcv-visible');
+      }
+    });
+    sb.querySelector('#tcvAccountLogout').addEventListener('click', async () => {
+      const logoutBtn = sb.querySelector('#tcvAccountLogout');
+      accountMenu.classList.remove('tcv-visible');
+      logoutBtn.disabled = true;
+      logoutBtn.textContent = 'Logging out…';
+      await sendMessage({ type: 'LOGOUT' });
+      logoutBtn.disabled = false;
+      logoutBtn.textContent = 'Log out';
+      accountBtn.classList.remove('tcv-visible');
+      refreshFull();
     });
 
     refreshFull();
@@ -643,8 +677,31 @@
 
   function renderNoBaseResume() {
     body.innerHTML = `
-      <div class="tcv-msg">No base resume set yet.</div>
-      <a class="tcv-link" href="${BASE_URL}/extension" target="_blank">Set one up on TailorCV →</a>
+      <div class="tcv-empty-state">
+        <div class="tcv-doc-wrap">
+          <svg viewBox="0 0 120 140" width="130" height="152" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="8" width="82" height="104" rx="7" fill="#E8ECF4" stroke="#B8C3D8" stroke-width="2.5" />
+            <path d="M72 8 L92 28 L72 28 Z" fill="#B8C3D8" />
+            <path d="M72 8 L72 28 L92 28" stroke="#B8C3D8" stroke-width="2.5" stroke-linejoin="round" />
+            <rect x="22" y="42" width="46" height="5" rx="2.5" fill="#C8D0E4" />
+            <rect x="22" y="55" width="38" height="5" rx="2.5" fill="#C8D0E4" />
+            <rect x="22" y="68" width="42" height="5" rx="2.5" fill="#C8D0E4" />
+            <g class="tcv-doc-badge" style="transform-origin: 82px 98px;">
+              <circle cx="82" cy="98" r="22" fill="url(#tcvBadgeGrad)" />
+              <text x="82" y="106" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+                    font-weight="700" font-size="28" fill="white" letter-spacing="-1">?</text>
+            </g>
+            <defs>
+              <radialGradient id="tcvBadgeGrad" cx="38%" cy="32%" r="68%">
+                <stop offset="0%" stop-color="#E82040" />
+                <stop offset="100%" stop-color="#A00820" />
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <div class="tcv-msg tcv-empty-msg">No base resume set yet.</div>
+      <a class="tcv-btn tcv-btn-start tcv-btn-link" href="${BASE_URL}/extension" target="_blank">Set one up on TailorCV →</a>
     `;
   }
 
@@ -1011,9 +1068,15 @@
     const profileRes = await sendMessage({ type: 'GET_PROFILE' });
     if (profileRes.error || !profileRes.data) {
       clearInterval(lockLoopTimer); // not authenticated — cut the loop, no unlock flourish
+      accountBtn.classList.remove('tcv-visible');
       renderLogin();
       return;
     }
+
+    const email = profileRes.data.email || '';
+    accountEmailEl.textContent = email;
+    accountBtn.textContent = email.trim().charAt(0).toUpperCase() || '?';
+    accountBtn.classList.add('tcv-visible');
 
     // Login confirmed: let the lock finish unlocking (green tick) while the
     // base-resume check runs at the same time, so the flourish adds no extra
