@@ -5601,6 +5601,31 @@ async def get_extension_base_resume(request: Request):
         db.close()
 
 
+@app.delete("/api/extension/base-resume")
+async def delete_extension_base_resume(request: Request):
+    """Remove the base resume the extension tailors from. Called from the web
+    settings page — not in EXEMPT_PATHS, so it keeps normal CSRF protection."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        old_path = user.base_resume_path
+        user.base_resume_path = None
+        user.base_resume_filename = None
+        user.base_resume_uploaded_at = None
+        user.base_resume_text = None
+        db.commit()
+        if old_path and os.path.exists(old_path):
+            os.remove(old_path)
+    finally:
+        db.close()
+    return JSONResponse({"success": True})
+
+
 @app.post("/api/extension/skill-match")
 async def extension_skill_match(request: Request):
     """Deterministic, LLM-free skill-match score between the user's base resume
