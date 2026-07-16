@@ -168,6 +168,50 @@
         }
     }
 
+    // Rebuilds the shell from scratch against the current `user` value — used
+    // when the session turns out to disagree with the cached localStorage copy.
+    function rebuild() {
+        var oldTop = document.querySelector(".tcv-top");
+        var oldRail = document.getElementById("tcvRail");
+        var oldBackdrop = document.getElementById("tcvSideBackdrop");
+        if (oldTop) oldTop.remove();
+        if (oldRail) oldRail.remove();
+        if (oldBackdrop) oldBackdrop.remove();
+        build();
+        if (user) fetchProStatus();
+    }
+
+    // The localStorage cache is only ever written by the normal /login and
+    // /signup pages. A session can exist without it — logging in through the
+    // Chrome extension's own form sets the session cookie directly and never
+    // touches this page's localStorage — so always check the real session
+    // once and reconcile instead of trusting the cache alone.
+    function syncAuthState() {
+        fetch("/api/auth/me", { headers: { "X-Requested-With": "XMLHttpRequest" } })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (data) {
+                if (data) {
+                    var fresh = { name: data.name, email: data.email, is_pro: data.is_pro, pro_until: data.pro_until };
+                    var wasGuest = !user;
+                    var stale = user && (user.email !== fresh.email || !!user.is_pro !== !!fresh.is_pro);
+                    try { localStorage.setItem("tailorcv_user", JSON.stringify(fresh)); } catch (e) {}
+                    if (wasGuest || stale) {
+                        user = fresh;
+                        document.documentElement.classList.remove("tcv-app-guest");
+                        rebuild();
+                    }
+                } else if (user) {
+                    // Cached as logged in, but the session disagrees (expired, or
+                    // logged out elsewhere) — fall back to the guest shell.
+                    try { localStorage.removeItem("tailorcv_user"); } catch (e) {}
+                    user = null;
+                    document.documentElement.classList.add("tcv-app-guest");
+                    rebuild();
+                }
+            })
+            .catch(function () {});
+    }
+
     function applyProStatus(isPro) {
         // Avatar badge
         var btn = document.getElementById("tcvAvatarBtn");
@@ -210,6 +254,6 @@
             .catch(function () {});
     }
 
-    if (document.body) { build(); if (user) fetchProStatus(); }
-    else document.addEventListener("DOMContentLoaded", function () { build(); if (user) fetchProStatus(); });
+    if (document.body) { build(); if (user) fetchProStatus(); syncAuthState(); }
+    else document.addEventListener("DOMContentLoaded", function () { build(); if (user) fetchProStatus(); syncAuthState(); });
 })();
