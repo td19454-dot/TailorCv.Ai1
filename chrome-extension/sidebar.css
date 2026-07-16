@@ -62,10 +62,17 @@
 }
 
 .tcv-header {
+  position: relative !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   margin-bottom: 16px !important;
+}
+
+.tcv-header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
 }
 
 .tcv-brand {
@@ -101,6 +108,75 @@
   line-height: 1 !important;
 }
 .tcv-toggle:hover { background: rgba(255,255,255,0.08) !important; }
+
+/* Account menu: only shown once GET_PROFILE confirms a logged-in session.
+   The trigger is a round avatar carrying the user's initial, so it reads as
+   an account icon rather than another toolbar action. */
+.tcv-account-btn {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  cursor: pointer !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  background: linear-gradient(135deg, #4f7fff, #7c3aed) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+.tcv-account-btn.tcv-visible { display: inline-flex !important; }
+.tcv-account-btn:hover { opacity: 0.85 !important; }
+
+.tcv-account-menu {
+  display: none !important;
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  margin-top: 8px !important;
+  width: 210px !important;
+  background: #101a30 !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+  padding: 8px !important;
+  z-index: 10 !important;
+}
+.tcv-account-menu.tcv-visible { display: block !important; }
+
+.tcv-account-email {
+  font-size: 12px !important;
+  color: #8da3c6 !important;
+  padding: 4px 8px 8px !important;
+  margin-bottom: 4px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  word-break: break-all !important;
+}
+
+.tcv-account-item {
+  display: block !important;
+  width: 100% !important;
+  text-align: left !important;
+  background: none !important;
+  border: none !important;
+  color: #eaf1ff !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  text-decoration: none !important;
+  padding: 8px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+}
+.tcv-account-item:hover:not(:disabled) { background: rgba(255,255,255,0.08) !important; }
+
+.tcv-account-logout {
+  color: #fca5a5 !important;
+}
+.tcv-account-logout:disabled { opacity: 0.6 !important; cursor: not-allowed !important; }
 
 .tcv-stats {
   display: flex !important;
@@ -352,6 +428,53 @@
   line-height: 1.5 !important;
   color: #94a3b8 !important;
   margin-bottom: 14px !important;
+}
+
+.tcv-empty-msg {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+}
+
+/* Empty base-resume state: a document that shakes to grab attention, then
+   settles while its "?" badge pulses, on an endless 3.2s loop. */
+.tcv-empty-state {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 10px 0 6px !important;
+}
+
+.tcv-doc-wrap {
+  display: inline-block !important;
+  transform-origin: 50% 60% !important;
+  animation: tcvDocCycle 3.2s ease-in-out infinite !important;
+}
+
+.tcv-doc-badge {
+  animation: tcvBadgeCycle 3.2s ease-in-out infinite !important;
+}
+
+@keyframes tcvDocCycle {
+  0%     { transform: rotate(0deg) translateY(0px); }
+  2.8%   { transform: rotate(-6deg) translateY(-3px); }
+  5.6%   { transform: rotate(5deg) translateY(-5px); }
+  8.4%   { transform: rotate(-4deg) translateY(-3px); }
+  11.25% { transform: rotate(3deg) translateY(-1px); }
+  14.1%  { transform: rotate(-2deg) translateY(0px); }
+  18.75% { transform: rotate(0deg) translateY(0px); }
+  43.75% { transform: rotate(0deg) translateY(0px); }
+  71.9%  { transform: rotate(0deg) translateY(-6px); }
+  100%   { transform: rotate(0deg) translateY(0px); }
+}
+
+@keyframes tcvBadgeCycle {
+  0%     { transform: scale(1); opacity: 1; }
+  18.75% { transform: scale(1); opacity: 1; }
+  28.75% { transform: scale(1.18); opacity: 0.85; }
+  36.25% { transform: scale(0.94); opacity: 1; }
+  43.75% { transform: scale(1); opacity: 1; }
+  100%   { transform: scale(1); opacity: 1; }
 }
 
 .tcv-field-label {

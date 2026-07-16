@@ -85,6 +85,10 @@
         .ext-msg { margin-top: 12px; font-size: .93rem; text-align: center; }
         .ext-msg.ok { color: #4ade80; }
         .ext-msg.error { color: #fca5a5; }
+        .ext-delete-wrap { margin-top: 14px; text-align: center; }
+        .ext-delete-btn { background: none; border: 1px solid rgba(239,68,68,.35); color: #fca5a5; font: inherit; font-size: .88rem; font-weight: 600; padding: 9px 16px; border-radius: 10px; cursor: pointer; transition: background .2s ease; }
+        .ext-delete-btn:hover:not(:disabled) { background: rgba(239,68,68,.12); }
+        .ext-delete-btn:disabled { opacity: .55; cursor: not-allowed; }
         .ext-boards-note { text-align: center; color: #c2ccde; font-size: .95rem; margin: 16px auto 0; max-width: 620px; line-height: 1.6; }
         .ext-boards-note b { color: #e8edf6; }
         .ext-links { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -480,6 +484,9 @@
                     <button type="submit" class="solx-btn ext-save">Save Extension Settings</button>
                     <div class="ext-msg" id="baseResumeMsg"></div>
                 </form>
+                <div class="ext-delete-wrap" id="extDeleteWrap"{% if not br.get('has_base_resume') %} hidden{% endif %}>
+                    <button type="button" class="ext-delete-btn" id="extDeleteBtn">Delete base resume</button>
+                </div>
             </section>
 
             <!-- 4. Ready -->
@@ -519,6 +526,8 @@
         var msg      = document.getElementById('baseResumeMsg');
         var statusEl = document.getElementById('baseResumeStatus');
         var styleEl  = document.getElementById('extStyleId');
+        var deleteWrap = document.getElementById('extDeleteWrap');
+        var deleteBtn  = document.getElementById('extDeleteBtn');
         if (!form) return;
 
         /* Show the real template previews, same assets the templates gallery uses,
@@ -547,6 +556,7 @@
 
         function renderStatus(d) {
             var hasBase = !!(d && d.has_base_resume);
+            deleteWrap.hidden = !hasBase;
             if (hasBase) {
                 // Do NOT default this to "classic": if the API sends no cover_template
                 // the server is out of date, and quietly printing "classic" hides that.
@@ -673,6 +683,33 @@
                 .finally(function () {
                     btn.disabled = false;
                     btn.textContent = orig;
+                });
+        });
+
+        deleteBtn.addEventListener('click', function () {
+            if (!window.confirm('Delete your base resume? The extension cannot tailor anything until you upload a new one.')) return;
+            var orig = deleteBtn.textContent;
+            deleteBtn.disabled = true;
+            deleteBtn.textContent = 'Deleting…';
+            fetch('/api/extension/base-resume', { method: 'DELETE', credentials: 'same-origin' })
+                .then(function (res) {
+                    if (res.status === 401) throw new Error('Your session expired. Please log in again.');
+                    if (!res.ok) throw new Error('Could not delete your base resume. Please try again.');
+                    return refreshStatus();
+                })
+                .then(function () {
+                    fileEl.value = '';
+                    nameEl.hidden = true;
+                    msg.textContent = 'Base resume deleted.';
+                    msg.className = 'ext-msg ok';
+                })
+                .catch(function (err) {
+                    msg.textContent = err.message || 'Could not delete your base resume. Please try again.';
+                    msg.className = 'ext-msg error';
+                })
+                .finally(function () {
+                    deleteBtn.disabled = false;
+                    deleteBtn.textContent = orig;
                 });
         });
     })();
