@@ -19,7 +19,7 @@ keywords: employment gap resume, how to explain gap in resume, career break resu
 
 ## Why Recruiters Care About Gaps
 
-Recruiters do not reject gaps. They reject *uncertainty*. An unexplained six-month hole makes a [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) invent the worst-case story. A single factual line replaces that story with a real one, and the objection disappears. The goal is never to hide the gap; it is to control the sentence a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) reads.
+[Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) do not reject gaps. They reject *uncertainty*. An unexplained six-month hole makes a [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) invent the worst-case story. A single factual line replaces that story with a real one, and the objection disappears. The goal is never to hide the gap; it is to control the sentence a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) reads.
 
 ## Where to Put the Explanation
 
@@ -68,7 +68,7 @@ This is the easiest gap to explain because the cause was external. Restructuring
 
 ### The Caregiving Break
 
-Whether you cared for a child, a parent, or a partner, this gap is nothing to hide — millions of strong [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) have one. Give it a real title on the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) ("Career Break — Family Caregiving") so the timeline stays intact, and if you did anything to stay current (a course, freelance work, volunteering), add one line. Employers in 2026 are far more comfortable with caregiving breaks than they were a decade ago, and many have explicit returnship programs.
+Whether you cared for a child, a parent, or a partner, this gap is nothing to hide — millions of strong [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) have one. Give it a real title on the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) ("Career Break — Family Caregiving") so the timeline stays intact, and if you did anything to stay current (a course, freelance work, volunteering), add one line. [Employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) in 2026 are far more comfortable with caregiving breaks than they were a decade ago, and many have explicit returnship programs.
 
 ### The Health Break
 
@@ -106,7 +106,7 @@ The pattern is clear: honesty plus framing wins, concealment loses.
 
 ## Update Your LinkedIn to Match
 
-Recruiters cross-check your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) against [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and a mismatch in dates is a genuine red flag. [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) now supports "Career Break" as a formal entry type with categories like caregiving, health, and layoff. Use it. A gap that is openly labeled on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and matched on your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) reads as transparent; a gap that appears on one and is hidden on the other reads as evasive.
+[Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) cross-check your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) against [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and a mismatch in dates is a genuine red flag. [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) now supports "Career Break" as a formal entry type with categories like caregiving, health, and layoff. Use it. A gap that is openly labeled on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and matched on your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) reads as transparent; a gap that appears on one and is hidden on the other reads as evasive.
 
 ## Step by Step: Reworking Your Timeline
 

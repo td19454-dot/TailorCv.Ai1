@@ -27,7 +27,7 @@ keywords: reverse chronological resume, functional resume, resume format, combin
 
 ## Why Reverse-Chronological Wins
 
-Recruiters read hundreds of [resumes](https://thetailorcv.com/blog/anatomy-of-a-resume) and have a mental template: where did you work, when, and doing what. Reverse-chronological [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) all three instantly. An [ATS also parses it best](https://thetailorcv.com/blog/ats-resume-parser-friendly-format), because dates and titles sit in the structure the parser expects. For maybe 85% of [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), this is simply the correct format.
+[Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) read hundreds of [resumes](https://thetailorcv.com/blog/anatomy-of-a-resume) and have a mental template: where did you work, when, and doing what. Reverse-chronological [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) all three instantly. An [ATS also parses it best](https://thetailorcv.com/blog/ats-resume-parser-friendly-format), because dates and titles sit in the structure the parser expects. For maybe 85% of [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), this is simply the correct format.
 
 ## Why Functional Resumes Backfire
 

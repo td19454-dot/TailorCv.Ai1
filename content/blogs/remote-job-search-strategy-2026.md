@@ -24,13 +24,13 @@ A remote posting is open to a whole country or continent, so a single listing ca
 ## Where the Real Listings Are
 
 - **Remote-specific boards** for curated [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
-- **Company career pages** directly — the least crowded channel, since they predate the aggregators.
+- **[Company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) career pages** directly — the least crowded channel, since they predate the aggregators.
 - **[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) with the "Remote" filter,** but move fast; popular remote posts fill their applicant quota within days.
 - **Your network.** A [referral](https://thetailorcv.com/blog/networking-messages-for-referrals) cuts through the applicant flood better than any board.
 
 ## Prove You Can Work Remotely
 
-Hiring managers worry about trust and communication with someone they will rarely see. Defuse that directly:
+[Hiring managers](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) worry about trust and communication with someone they will rarely see. Defuse that directly:
 
 - Add remote results to your bullets: "Led a fully distributed team across three time zones to ship on schedule."
 - Show async communication [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) — clear writing is the remote worker's core competency.
@@ -77,9 +77,9 @@ When in doubt, slow down and verify. A real opportunity survives a day of due di
 
 ## A Realistic Remote Job Search Plan
 
-1. **Define your targets.** Role, seniority, and the time zones you can genuinely cover.
+1. **Define your targets.** [Role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), seniority, and the time zones you can genuinely cover.
 2. **Build a remote-ready [resume](https://thetailorcv.com/blog/anatomy-of-a-resume)** with distributed-work results and clear communication.
-3. **Find roles on [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) career pages and remote-specific boards**, not just the crowded aggregators.
+3. **Find [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) on [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) career pages and remote-specific boards**, not just the crowded aggregators.
 4. **Tailor every [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application)** to the posting's exact language.
 5. **Pursue [referrals](https://thetailorcv.com/blog/networking-messages-for-referrals)** for your top targets — they cut through the applicant flood best.
 6. **Prepare for polished [video interviews](https://thetailorcv.com/blog/video-interview-tips-2026)** as proof of remote competence.

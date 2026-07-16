@@ -19,7 +19,7 @@ keywords: negotiate job offer email, salary negotiation script, how to counterof
 
 ## You Can Almost Always Ask
 
-Employers expect a counter and usually build in room for one. A polite, well-reasoned ask rarely costs you an offer that was genuinely coming — [companies](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) do not rescind over a respectful negotiation. The downside is small; the upside compounds over every future raise, which is calculated from your starting number.
+[Employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) expect a counter and usually build in room for one. A polite, well-reasoned ask rarely costs you an offer that was genuinely coming — [companies](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) do not rescind over a respectful negotiation. The downside is small; the upside compounds over every future raise, which is calculated from your starting number.
 
 ## Why Email Works
 
@@ -60,7 +60,7 @@ You cannot anchor to market data you do not have. Before you counter, spend an h
 - **Salary databases and levels sites** for the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), level, and location.
 - **The posting itself** — many now list a range; if yours does, aim for the upper half if your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) justifies it.
 - **Your network** — a discreet [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) to a peer in a similar [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is often the most accurate data of all.
-- **Recruiter signals** — if they asked your expectations early and the offer matches, there may be less room; if they came in low, there is usually room to move.
+- **[Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) signals** — if they asked your expectations early and the offer matches, there may be less room; if they came in low, there is usually room to move.
 
 Walk into the negotiation with a specific target number and a specific "walk-comfortably" floor. Vague hopes lose to prepared numbers.
 
@@ -95,7 +95,7 @@ Ask which pieces are flexible: "If the base is fixed, is there room on the signi
 
 - **Not negotiating at all.** The most common and most expensive mistake. Most offers have room.
 - **Anchoring to personal need.** Rent and loans are not the [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s lever; market value is.
-- **Giving a range instead of a number.** Employers hear the bottom of your range. Give one clear number, slightly above target.
+- **Giving a range instead of a number.** [Employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) hear the bottom of your range. Give one clear number, slightly above target.
 - **Negotiating before you have the written offer.** Get the offer in hand first.
 - **Being adversarial.** You are about to join these people. Stay warm and collaborative throughout.
 - **Accepting on the spot out of excitement.** It is fine to say, "Thank you — I'm thrilled. Can I take a day to review and get back to you?"
@@ -106,7 +106,7 @@ Once you settle on terms, confirm them in writing before you resign anywhere. A 
 
 ## The Psychology of the Ask
 
-The reason most people do not negotiate is fear — fear of seeming greedy, fear of the offer being pulled, fear of an awkward conversation. Understanding what is actually happening on the other side dissolves most of it. Employers expect a counter; many deliberately leave room for one, and a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who negotiates reasonably is often respected *more*, not less, because it signals they know their value and will advocate well on the job too. The [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) has already chosen you — they invested hours interviewing, they do not want to restart the search, and they are not going to torch that over a polite, well-reasoned ask. Reframe the negotiation not as a confrontation but as the first collaborative problem you and your future [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) solve together: how do we structure this so you start motivated and fairly paid? Framed that way, it is not adversarial at all.
+The reason most people do not negotiate is fear — fear of seeming greedy, fear of the offer being pulled, fear of an awkward conversation. Understanding what is actually happening on the other side dissolves most of it. [Employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) expect a counter; many deliberately leave room for one, and a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who negotiates reasonably is often respected *more*, not less, because it signals they know their value and will advocate well on the job too. The [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) has already chosen you — they invested hours interviewing, they do not want to restart the search, and they are not going to torch that over a polite, well-reasoned ask. Reframe the negotiation not as a confrontation but as the first collaborative problem you and your future [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) solve together: how do we structure this so you start motivated and fairly paid? Framed that way, it is not adversarial at all.
 
 ## A Full Negotiation, Start to Finish
 
@@ -128,7 +128,7 @@ Negotiation is almost always worth one polite ask, but reading the situation kee
 ## Frequently Asked Questions
 
 ### Will negotiating make them rescind the offer?
-Very rarely, if you are respectful and reasonable. Companies expect a counter; a polite ask is normal and professional.
+Very rarely, if you are respectful and reasonable. [Companies](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) expect a counter; a polite ask is normal and professional.
 
 ### How much higher should I counter?
 Aim 5–15% above the offer, anchored to real market data, so there is room to settle near your actual target.
