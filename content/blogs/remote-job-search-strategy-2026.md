@@ -58,7 +58,7 @@ A hiring manager for a remote role is quietly asking one extra question: *can I 
 - **Show self-direction.** Projects you drove without close supervision signal you will not need hand-holding.
 - **State your time zone and availability.** A line like "Remote (GMT+5:30, 4-hour daily overlap with US Eastern)" removes a silent filter.
 
-If you are building from scratch, the [resume builder](https://thetailorcv.com/modify-cv) gives you a clean, ATS-friendly base, and a quick [ATS score](https://thetailorcv.com/solutions) tells you whether a remote posting's keywords are actually present in your resume before you apply.
+If you are building from scratch, the [resume builder](https://thetailorcv.com/modify-cv) gives you a clean, [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) base, and a quick [ATS score](https://thetailorcv.com/solutions) tells you whether a remote posting's keywords are actually present in your resume before you apply.
 
 ## Proving Remote Skills in the Interview
 
@@ -66,7 +66,7 @@ The remote interview is itself a test of remote-readiness. A crisp, well-lit, te
 
 ## Watch for Remote Job Scams
 
-The remote market attracts scammers, and a job search is a vulnerable moment. Be cautious of:
+The remote market attracts scammers, and a [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is a vulnerable moment. Be cautious of:
 
 - **Offers with no interview.** Legitimate employers interview before hiring.
 - **Requests for money or bank details upfront.** Never pay to get a job or share banking info before a real offer.

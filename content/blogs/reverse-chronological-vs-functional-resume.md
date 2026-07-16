@@ -90,7 +90,7 @@ A functional resume actively breaks this. When your accomplishments float under 
 - **Steady career in one field?** Reverse-chronological, without question. It shows your progression and parses perfectly.
 - **A few short gaps?** Still reverse-chronological — use year-only dates or a brief [dated bridge entry](https://thetailorcv.com/blog/how-to-explain-employment-gap-on-resume-2026) rather than hiding the timeline.
 - **Genuine career change?** Combination — lead with a skills-and-projects section that surfaces your transferable work, then keep a dated history underneath.
-- **First job, no experience?** A [standard layout that leads with skills and projects](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) but keeps clear structure and dates.
+- **[First job](https://thetailorcv.com/blog/first-time-resume-with-no-experience), no experience?** A [standard layout that leads with skills and projects](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) but keeps clear structure and dates.
 - **Frequent job-hopping you want to downplay?** Reverse-chronological still, but consider grouping short contract roles under one "Contract & Freelance Work" heading with a date range.
 
 Notice that in almost every case, the answer is reverse-chronological or combination — never pure functional.

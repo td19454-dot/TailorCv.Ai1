@@ -113,7 +113,7 @@ Most video-interview anxiety comes from the unknowns — will the tech work, wil
 Yes, top and bottom — both because it affects how you carry yourself and in case you need to stand up. Dress as you would for an in-person interview.
 
 ### Is it okay to look at notes during a video interview?
-Brief glances at bullet points are fine and normal. Reading full answers word-for-word is not — it is visible and it flattens your delivery.
+Brief glances at [bullet points](https://thetailorcv.com/blog/best-action-verbs-for-resume) are fine and normal. Reading full answers word-for-word is not — it is visible and it flattens your delivery.
 
 ### What if my kid or pet interrupts?
 Handle it with brief good humor and move on. Interviewers are human; a calm recovery can actually work in your favor.

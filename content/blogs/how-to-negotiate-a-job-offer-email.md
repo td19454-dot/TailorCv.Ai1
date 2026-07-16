@@ -87,7 +87,7 @@ When base is capped, these often have room, and asking about them signals sophis
 - **Extra PTO** — a few extra days is a common, low-friction win.
 - **A signing-on review** — an agreed salary review at six months instead of twelve.
 - **Professional development budget** — courses, conferences, [certifications](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026).
-- **Title** — a better title can pay off at your *next* job search.
+- **Title** — a better title can pay off at your *next* [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
 Ask which pieces are flexible: "If the base is fixed, is there room on the signing bonus, equity, or start date?"
 
