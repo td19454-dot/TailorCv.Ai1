@@ -14,7 +14,7 @@ keywords: resume skills section, hard skills vs soft skills, what skills to put 
 
 - Your skills section is for **hard skills** — named tools, languages, and technologies.
 - Soft skills belong in your bullets, proven by a result, not listed as adjectives.
-- Mirror the exact wording from the job description so the ATS matches you.
+- Mirror the exact wording from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) so the ATS matches you.
 - Cut skills you cannot speak to for ten minutes in an interview.
 
 ## Hard Skills vs Soft Skills
@@ -67,7 +67,7 @@ The right skills section looks different across fields. A few patterns:
 
 **Project / Product Manager** — methodologies and tools: Agile, Scrum, Jira, roadmapping, stakeholder management (as a named competency, backed by bullets). Here the experience section carries more weight, so keep skills tight.
 
-**Designer** — tools plus specializations: Figma, Adobe Creative Suite, prototyping, design systems, user research. Your portfolio does the deep proving; the skills list is a quick index.
+**Designer** — tools plus specializations: Figma, Adobe Creative Suite, prototyping, design systems, user research. Your [portfolio](https://thetailorcv.com/portfolio) does the deep proving; the skills list is a quick index.
 
 **Data Analyst** — the tool stack is everything: SQL, Python or R, Excel, Tableau or Power BI, statistics. Recruiters filter hard on these exact terms.
 
@@ -94,7 +94,7 @@ The goal is a skills section that mirrors the posting's language closely enough 
 
 The single most common skills-section mistake is mixing the two types, so it is worth being precise about the line between them.
 
-**Hard skills** are teachable, testable, and specific: programming languages (Python, Java), tools (Figma, Excel, Salesforce), platforms (AWS, Google Cloud), databases (PostgreSQL, MongoDB), frameworks (React, Django), certifications, and languages you speak. You can prove you have them, and an interviewer can test them. These belong in your skills section.
+**Hard skills** are teachable, testable, and specific: programming languages (Python, Java), tools (Figma, Excel, Salesforce), platforms (AWS, Google Cloud), databases (PostgreSQL, MongoDB), frameworks (React, Django), [certifications](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026), and languages you speak. You can prove you have them, and an interviewer can test them. These belong in your skills section.
 
 **Soft skills** are behavioral traits: communication, leadership, teamwork, adaptability, problem-solving, time management. They are genuinely valuable — often the deciding factor between two technically qualified candidates — but *listing* them is worthless because anyone can claim them. "Excellent communicator" in a skills list carries exactly zero evidence. These belong in your experience bullets, proven by a specific result.
 
@@ -118,7 +118,7 @@ A skills section is a living part of your resume, not a fixed list. Two discipli
 - **Prune the outdated.** Tools nobody uses anymore quietly date you. Remove software and versions that signal you have not kept up, and add the current tools your field has moved to.
 - **Stay honest about depth.** Only list what you can genuinely defend. The fastest way to lose credibility in an interview is to list a skill and then fumble a basic question about it. If you are still learning something, either show it through a project or leave it off until you can speak to it.
 
-Update the section every time you tailor the resume to a new posting — reordering and adjusting so the skills the specific job cares about appear first and most prominently. A quick [ATS score](https://thetailorcv.com/solutions) against the posting tells you instantly whether the keywords it wants are actually present in your skills and bullets.
+Update the section every time you tailor the resume to a new posting — reordering and adjusting so the skills the specific job cares about appear first and most prominently. A quick [ATS score](https://thetailorcv.com/solutions) against the posting tells you instantly whether the [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) it wants are actually present in your skills and bullets.
 
 ## Frequently Asked Questions
 
@@ -151,7 +151,7 @@ For technical and early-career roles, near the top so it is scanned first. For s
 
 ## Transferable Skills When Changing Careers
 
-Career changers face a specific skills-section challenge: your strongest hard skills may be from a field you are leaving. The move is not to hide them but to bridge them. Lead with the hard skills that transfer directly — a teacher moving into UX genuinely has research, communication, and workshop-facilitation skills; an accountant moving into data analysis genuinely has Excel, SQL-adjacent thinking, and rigor. Name the tools and methods that carry across, add the new ones you have deliberately built (a certification, a bootcamp, self-taught software), and let the combination tell the story of someone deliberately re-skilling rather than starting from zero. Mirror the target field's exact terminology, even when your experience with it is recent, so the [ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) and the recruiter both see the match. The skills section is where a career change either reads as a credible pivot or a random leap — precision in which skills you surface makes the difference.
+Career changers face a specific skills-section challenge: your strongest hard skills may be from a field you are leaving. The move is not to hide them but to bridge them. Lead with the hard skills that transfer directly — a teacher moving into UX genuinely has research, communication, and workshop-facilitation skills; an accountant moving into data analysis genuinely has Excel, SQL-adjacent thinking, and rigor. Name the tools and methods that carry across, add the new ones you have deliberately built (a certification, a bootcamp, self-taught software), and let the combination tell the story of someone deliberately re-skilling rather than starting from zero. Mirror the target field's exact terminology, even when your experience with it is recent, so the [ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) and the recruiter both see the match. The skills section is where a [career change](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) either reads as a credible pivot or a random leap — precision in which skills you surface makes the difference.
 
 ## Tailoring Skills to Each Application
 

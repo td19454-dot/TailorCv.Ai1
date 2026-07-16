@@ -43,7 +43,7 @@ Keep it short, specific, and low-pressure:
 
 ## Make It Easy to Say Yes
 
-- **Attach a tailored resume** so they can forward it in one click.
+- **Attach a [tailored resume](https://thetailorcv.com/optimize)** so they can forward it in one click.
 - **Include the exact job link and req number.**
 - **Give an explicit out** ("no worries if not") — it paradoxically makes people more likely to help.
 - **Send a tailored version** for their specific opening, not a generic resume — it makes the referrer look good too.
@@ -109,7 +109,7 @@ This sequence respects the relationship and dramatically raises your odds, becau
 
 ## The Referral Meeting or Call
 
-Sometimes a contact offers a quick chat before referring you — treat it as a mini-interview, because it effectively is. They are deciding whether to attach their name to you. Come prepared: know the role, have a crisp two-minute summary of your background, and bring one or two thoughtful questions about the team. Be warm, be concise, and make it easy for them to picture advocating for you internally. And whatever happens, follow up with a genuine thank-you — a contact who enjoyed the conversation becomes a lasting ally, not just a one-time referral.
+Sometimes a contact offers a quick chat before referring you — treat it as a mini-interview, because it effectively is. They are deciding whether to attach their name to you. Come prepared: know the role, have a crisp two-minute summary of your background, and bring one or two thoughtful questions about the team. Be warm, be concise, and make it easy for them to picture advocating for you internally. And whatever happens, [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) with a genuine thank-you — a contact who enjoyed the conversation becomes a lasting ally, not just a one-time referral.
 
 ## Frequently Asked Questions
 

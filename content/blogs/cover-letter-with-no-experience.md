@@ -12,7 +12,7 @@ keywords: cover letter no experience, entry level cover letter, cover letter for
 
 ## Key Takeaways
 
-- With no work history, the cover letter is where you turn potential into a story.
+- With no work history, the [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work) is where you turn potential into a story.
 - Lead with genuine enthusiasm and a specific reason you want *this* role.
 - Use projects, coursework, and transferable experiences as your evidence.
 - Keep it to three short paragraphs; a wall of text hides your best points.
@@ -110,7 +110,7 @@ One real observation — "your onboarding flow is the smoothest I've used" or "y
 
 ## How Long It Should Take (and Why It's Worth It)
 
-A strong entry-level cover letter takes 30 to 45 minutes: ten minutes of research, twenty of writing, and ten of ruthless cutting. That feels like a lot when you are applying to many roles, which is exactly why most beginners skip it or send a generic one — and exactly why yours stands out when you do not. For the roles you genuinely want, this is the highest-leverage 40 minutes in your entire application. You can use an [AI cover letter generator](https://thetailorcv.com/cover-letter) to produce a first draft from the job description in seconds, but always rewrite the opener and the proof paragraph by hand — those are where the specific, only-you details live.
+A strong entry-level cover letter takes 30 to 45 minutes: ten minutes of research, twenty of writing, and ten of ruthless cutting. That feels like a lot when you are applying to many roles, which is exactly why most beginners skip it or send a generic one — and exactly why yours stands out when you do not. For the roles you genuinely want, this is the highest-leverage 40 minutes in your entire application. You can use an [AI cover letter generator](https://thetailorcv.com/cover-letter) to produce a first draft from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in seconds, but always rewrite the opener and the proof paragraph by hand — those are where the specific, only-you details live.
 
 ## Frequently Asked Questions
 

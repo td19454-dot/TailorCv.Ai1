@@ -111,7 +111,7 @@ The thank-you email is one moment in a longer sequence of staying appropriately 
 - **Within 24 hours of each interview:** an individual thank-you referencing that conversation.
 - **If a stated decision date passes:** a brief, warm check-in a day or two later.
 - **After a final round with no word for a week:** one polite status-and-interest note.
-- **After a rejection:** a gracious thank-you asking to be kept in mind — genuinely underused, and it has reopened doors months later.
+- **After a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection):** a gracious thank-you asking to be kept in mind — genuinely underused, and it has reopened doors months later.
 
 Two touches beyond the thank-yous is the ceiling; past that, redirect your energy. The [full follow-up guide](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) covers the cadence in detail.
 

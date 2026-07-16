@@ -15,7 +15,7 @@ keywords: employment gap resume, how to explain gap in resume, career break resu
 - A gap is only a problem if you leave it unexplained. One honest line usually closes it.
 - Use years, not months, in your date formatting when a short gap would otherwise stand out.
 - Frame the gap around what you did or learned, not an apology.
-- Put the explanation on the resume only if the gap is long (12+ months); short gaps belong in the cover letter or interview.
+- Put the explanation on the resume only if the gap is long (12+ months); short gaps belong in the [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work) or interview.
 
 ## Why Recruiters Care About Gaps
 
@@ -46,7 +46,7 @@ For **health or personal reasons**, you owe no medical detail:
 
 ## Fill the Gap Retroactively
 
-If the break is still recent, you can add genuine, verifiable activity: freelance work, a certification, open-source contributions, volunteering, or a course. One real line of upskilling turns "did nothing" into "stayed sharp."
+If the break is still recent, you can add genuine, verifiable activity: freelance work, a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026), open-source contributions, volunteering, or a course. One real line of upskilling turns "did nothing" into "stayed sharp."
 
 ## What Not to Do
 
@@ -170,7 +170,7 @@ When you run your resume through TailorCV, the [ATS scan](https://thetailorcv.co
 ## Frequently Asked Questions
 
 ### Does a gap hurt my ATS score?
-No. Applicant tracking systems parse keywords and dates, not the emotional weight of a gap. A gap only matters to the human who reads the parsed result, which is why the wording matters more than the gap itself.
+No. Applicant tracking systems parse [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) and dates, not the emotional weight of a gap. A gap only matters to the human who reads the parsed result, which is why the wording matters more than the gap itself.
 
 ### Should I explain a gap from years ago?
 Usually not. A gap from five years and two jobs ago is rarely asked about. Focus your explanation on the most recent gap.

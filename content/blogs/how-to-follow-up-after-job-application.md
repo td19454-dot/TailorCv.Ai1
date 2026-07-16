@@ -54,7 +54,7 @@ A message to `careers@company.com` rarely gets read. Instead, search LinkedIn fo
 
 Most candidates either follow up too much or not at all. Here is a calm, professional cadence that keeps you visible without becoming a nuisance.
 
-- **Day 0 — Apply.** Submit a tailored resume through the official channel.
+- **Day 0 — Apply.** Submit a [tailored resume](https://thetailorcv.com/optimize) through the official channel.
 - **Day 1 — Connect quietly.** Find the recruiter or hiring manager on LinkedIn and send a connection request with no ask attached. You are just getting on the radar.
 - **Day 5–7 — First follow-up.** A short, specific message reaffirming interest and adding one relevant result.
 - **Day 12–14 — Second and final follow-up.** One more brief nudge if there has been no reply at all.
@@ -88,7 +88,7 @@ The healthiest follow-up strategy is to make each individual application matter 
 
 ## After the Interview
 
-Follow-ups after an interview are different: send a thank-you within 24 hours. See our dedicated guide below for wording that references the actual conversation.
+Follow-ups after an interview are different: send a thank-you within 24 hours. See our dedicated guide below for wording that [references](https://thetailorcv.com/blog/should-you-put-references-on-resume) the actual conversation.
 
 ## What to Do Before You Even Need to Follow Up
 
@@ -105,7 +105,7 @@ Follow-ups look different depending on where you are in the process:
 - **After a recruiter screen:** A quick thank-you the same day, then patience — they told you the timeline; respect it.
 - **After an interview:** A [thank-you email within 24 hours](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) referencing the actual conversation.
 - **After being told "we'll decide by Friday" and Friday passes:** A brief, warm check-in on Monday. Deadlines slip constantly; a gentle nudge is completely appropriate.
-- **After a rejection:** A gracious note thanking them and asking to be kept in mind for future roles. This is underused and can genuinely lead to a callback months later.
+- **After a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection):** A gracious note thanking them and asking to be kept in mind for future roles. This is underused and can genuinely lead to a callback months later.
 
 ## The Psychology of a Good Follow-Up
 

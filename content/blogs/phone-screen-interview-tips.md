@@ -12,9 +12,9 @@ keywords: phone screen interview, recruiter phone screen, phone interview tips, 
 
 ## Key Takeaways
 
-- The phone screen filters out mismatches on salary, logistics, and basic fit.
+- The phone screen filters out mismatches on [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email), logistics, and basic fit.
 - Nail the three staples: "tell me about yourself," "why this role," and "salary expectations."
-- Have your resume and the job description in front of you — this is an open-book call.
+- Have your resume and the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in front of you — this is an open-book call.
 - Confirm mutual fit and next steps before you hang up.
 
 ## What a Phone Screen Is For

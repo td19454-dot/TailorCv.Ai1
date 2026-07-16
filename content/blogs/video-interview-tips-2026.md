@@ -57,7 +57,7 @@ Run this in the half hour before the call so nothing technical surprises you.
 - **Open the meeting link early** and confirm camera and mic in the platform's settings.
 - **Silence your phone** and turn off desktop notifications — a Slack popup mid-answer is distracting and can expose private messages if you share your screen.
 - **Have water within reach**, off-camera, for the inevitable dry mouth.
-- **Put your resume, the job description, and three key stories** where you can glance at them near the lens.
+- **Put your resume, the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), and three key stories** where you can glance at them near the lens.
 - **Tell housemates** you are in an interview and post a note on the door.
 - **Do a final light check** — is your face lit from the front and clearly visible?
 
@@ -136,7 +136,7 @@ Video adds a layer of difficulty to hard questions because the usual in-person c
 
 ## Following Up After a Video Interview
 
-The interview does not end when the call disconnects. Send a thank-you within 24 hours, exactly as you would after an in-person round, and use it to reference something specific from the conversation. A video interview is often part of a remote or distributed hiring process, where written follow-up carries even more weight — it is another sample of the clear, prompt communication the role will require. Reference a moment you discussed, reinforce one reason you fit, and keep it short. If the technology glitched at any point, a light, gracious acknowledgment ("thanks for your patience with my connection at the start") shows you handle small hiccups with grace. For the full wording, see our guide on the [thank-you email after an interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) — the principles are identical whether the interview happened across a table or across a screen.
+The interview does not end when the call disconnects. Send a thank-you within 24 hours, exactly as you would after an in-person round, and use it to reference something specific from the conversation. A video interview is often part of a remote or distributed hiring process, where written [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) carries even more weight — it is another sample of the clear, prompt communication the role will require. Reference a moment you discussed, reinforce one reason you fit, and keep it short. If the technology glitched at any point, a light, gracious acknowledgment ("thanks for your patience with my connection at the start") shows you handle small hiccups with grace. For the full wording, see our guide on the [thank-you email after an interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) — the principles are identical whether the interview happened across a table or across a screen.
 
 ## Putting It All Together
 

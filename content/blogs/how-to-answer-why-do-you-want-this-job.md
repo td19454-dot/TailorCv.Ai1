@@ -35,7 +35,7 @@ All three matter. Role-only sounds like you would take the same job anywhere; co
 **Marketer:**
 > "I've watched your content go from good to genuinely category-defining this past year, and this role owns the strategy behind that. I want to build that kind of organic engine, and doing it somewhere that already values content over paid shortcuts is the right environment for me."
 
-**Career changer:**
+**[Career changer](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026):**
 > "After years in operations, I want to move into data analysis, and this role sits right at that intersection — analytics applied to the operational problems I already understand. Your team's focus on decisions over dashboards is exactly the practical approach I was hoping to find."
 
 ## Mistakes That Cost You

@@ -87,7 +87,7 @@ Second interviews lean heavily on behavioral questions — "tell me about a time
 - **Situation:** briefly set the scene. One or two sentences.
 - **Task:** what you specifically needed to do.
 - **Action:** what *you* did — the heart of the answer, in the first person.
-- **Result:** how it turned out, quantified if possible.
+- **Result:** how it turned out, [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) if possible.
 
 Without structure, behavioral answers ramble: candidates over-explain the setup, bury their own role, and forget the result entirely. With STAR, a two-minute answer lands cleanly and the interviewer remembers the point. Prepare five or six flexible STAR stories covering leadership, conflict, failure, a big win, and problem-solving — most behavioral questions are just different doors into the same handful of stories.
 
@@ -97,7 +97,7 @@ Without structure, behavioral answers ramble: candidates over-explain the setup,
 
 **"Why are you leaving your current job?"** Never criticize your employer. Frame it as moving toward something: growth, scope, a mission, a specific kind of work. Bitterness in this answer is one of the fastest ways to lose a second round.
 
-**"What's your salary expectation?"** By the second round this is fair game. Give a researched range framed as flexible, and treat it as the opening of a conversation, not a final number. If it has not come up and you are deep in the process, it is reasonable to ask about the band.
+**"What's your [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) expectation?"** By the second round this is fair game. Give a researched range framed as flexible, and treat it as the opening of a conversation, not a final number. If it has not come up and you are deep in the process, it is reasonable to ask about the band.
 
 **"Do you have any concerns about the role?"** Be honest but constructive. Raising a thoughtful question ("I'd want to understand how the team handles on-call") shows you are seriously evaluating the fit, which senior interviewers respect.
 
@@ -107,7 +107,7 @@ By the second round, competence is largely assumed — you cleared that bar in r
 
 ## The Day Before: A Preparation Routine
 
-- **Re-read the job description** and your own resume, so you can speak fluently to both.
+- **Re-read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)** and your own resume, so you can speak fluently to both.
 - **Review your round-one answers** and sharpen any you fumbled.
 - **Prepare fresh STAR stories** you did not use in round one.
 - **Research your interviewers** on LinkedIn to anticipate their angle.
@@ -126,7 +126,7 @@ It is increasingly acceptable, especially if the recruiter opened the door. If c
 Two to four is common. If you are in a second round, treat it as a real shot — companies do not spend senior time on candidates they are not seriously considering.
 
 ### Should I bring anything to a second interview?
-Bring fresh copies of your resume, a notepad with your prepared questions, and if relevant, a short portfolio or work sample. For a final round, some candidates bring a brief 30-60-90 day plan — a strong signal of seriousness.
+Bring fresh copies of your resume, a notepad with your prepared questions, and if relevant, a short [portfolio](https://thetailorcv.com/portfolio) or work sample. For a final round, some candidates bring a brief 30-60-90 day plan — a strong signal of seriousness.
 
 ### Is it normal to meet the whole team in a second round?
 Yes, increasingly so. Team-fit conversations and "meet the team" segments are common in later rounds. Treat everyone you meet as an evaluator, including peers who seem casual.

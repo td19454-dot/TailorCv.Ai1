@@ -79,7 +79,7 @@ When a colleague referred you, protect that relationship explicitly — they spe
 - **Respond promptly.** The company is holding a spot and often a runner-up. A fast, kind no lets everyone move on.
 - **Decline to a person, warmly.** Address the recruiter or hiring manager by name; do not just ignore the offer.
 - **Keep it short.** A paragraph is plenty. Over-explaining helps no one.
-- **Never negotiate through a decline.** If you actually want more money, negotiate honestly; do not use a fake decline as a tactic.
+- **Never [negotiate](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) through a decline.** If you actually want more money, negotiate honestly; do not use a fake decline as a tactic.
 - **Stay reachable.** "I hope our paths cross again" is not just polite — it keeps a real door open.
 
 ## Why This Matters More Than It Seems

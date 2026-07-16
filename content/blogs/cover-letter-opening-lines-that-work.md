@@ -41,7 +41,7 @@ The hook shows you did your homework; the credential shows you can back it up.
 **Lead with a referral:**
 > "[Name] on your data team suggested I reach out — she thought my work on churn modeling would fit what your Analytics role needs."
 
-**Career changer:**
+**[Career changer](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026):**
 > "After five years in teaching, I moved into UX because the problems rhymed: understand the person, then design something they can actually use."
 
 **Entry level:**
@@ -55,7 +55,7 @@ The hook shows you did your homework; the credential shows you can back it up.
 
 ## Let AI Draft, Then Make It Yours
 
-An [AI cover letter generator](https://thetailorcv.com/blog/ai-cover-letter-generator-job-description) can produce a solid first draft from the job description in seconds — but the opener is where you should always edit by hand. Add the specific detail only you know: the friend who uses the product, the exact metric, the real reason you applied.
+An [AI cover letter generator](https://thetailorcv.com/blog/ai-cover-letter-generator-job-description) can produce a solid first draft from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in seconds — but the opener is where you should always edit by hand. Add the specific detail only you know: the friend who uses the product, the exact metric, the real reason you applied.
 
 ## The Anatomy of a Weak Opener vs a Strong One
 
@@ -74,7 +74,7 @@ A specific opener requires one specific, true detail. You can find one in under 
 2. **Check recent news or funding.** A new market, a milestone, a pivot.
 3. **Read the full job posting twice.** The problems they describe are the problems you should speak to.
 4. **Try the product if you can.** One honest observation from actually using it is gold.
-5. **Look at the team's public writing.** An engineer's talk, a founder's thread, a designer's portfolio.
+5. **Look at the team's public writing.** An engineer's talk, a founder's thread, a designer's [portfolio](https://thetailorcv.com/portfolio).
 
 One real detail from any of these turns a generic hook into a specific one.
 
@@ -109,7 +109,7 @@ Think of the cover letter as a three-part arc:
 2. **The proof (middle):** one concrete achievement that maps directly to the posting, showing rather than asserting your fit.
 3. **The close:** reaffirms interest, signals you understand what the role needs, and invites a conversation.
 
-Each part sets up the next. A hook that mentions the company's retention problem sets up a proof paragraph about the churn work you did; a close that references the same theme ties the whole letter together. When the three parts echo one clear idea, the letter reads as deliberate and memorable instead of a list of disconnected claims.
+Each part sets up the next. A hook that mentions the company's retention problem sets up a proof paragraph about the churn work you did; a close that [references](https://thetailorcv.com/blog/should-you-put-references-on-resume) the same theme ties the whole letter together. When the three parts echo one clear idea, the letter reads as deliberate and memorable instead of a list of disconnected claims.
 
 ## Draft With AI, Then Own the Opener
 
