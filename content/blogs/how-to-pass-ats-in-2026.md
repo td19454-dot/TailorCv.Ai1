@@ -59,7 +59,7 @@ Before you submit, run your [resume](https://thetailorcv.com/blog/anatomy-of-a-r
 
 ## The Real Reasons Resumes Get Filtered
 
-Candidates imagine the ATS as a ruthless gatekeeper rejecting people for sport. In reality, most filtering comes down to three fixable causes:
+[Candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) imagine the ATS as a ruthless gatekeeper rejecting people for sport. In reality, most filtering comes down to three fixable causes:
 
 - **Unparseable layout.** Multi-column templates, tables, text boxes, and graphics look great to humans and confuse the parser. When the software cannot tell where your job titles end and your [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) begin, it scores you low or drops content entirely.
 - **Missing [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).** If the posting wants "Kubernetes" and your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) says "container orchestration," a keyword-matching system may not connect them. Mirror the exact terms.

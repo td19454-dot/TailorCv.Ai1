@@ -7855,7 +7855,6 @@ async def blog_post_page(request: Request, slug: str):
             "request": request,
             "post": post,
             "related_posts": related_posts,
-            "link_hub": link_hub,
             "canonical_url": canonical_url,
             "meta_title": f"{post.title} | TailorCV Blog",
             "meta_description": post.description,

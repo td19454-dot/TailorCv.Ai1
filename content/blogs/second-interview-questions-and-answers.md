@@ -89,13 +89,13 @@ Second [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guid
 - **Action:** what *you* did — the heart of the [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), in the first person.
 - **Result:** how it turned out, [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) if possible.
 
-Without structure, behavioral answers ramble: [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) over-explain the setup, bury their own [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and forget the result entirely. With STAR, a two-minute answer lands cleanly and the interviewer remembers the point. Prepare five or six flexible STAR stories covering leadership, conflict, failure, a big win, and problem-solving — most [behavioral questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) are just different doors into the same handful of stories.
+Without structure, behavioral [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) ramble: [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) over-explain the setup, bury their own [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and forget the result entirely. With STAR, a two-minute [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) lands cleanly and the interviewer remembers the point. Prepare five or six flexible STAR stories covering leadership, conflict, failure, a big win, and problem-solving — most [behavioral questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) are just different doors into the same handful of stories.
 
 ## Handling the Questions You Fear Most
 
-**"Tell me about your biggest weakness."** The trap is a fake weakness ("I work too hard") or a disqualifying one ("I miss deadlines"). The answer is a real, non-fatal weakness plus concrete action: "I used to hold onto work too long trying to perfect it. I've learned to ship at 90% and iterate, and I set my own internal deadlines to enforce it."
+**"Tell me about your biggest weakness."** The trap is a fake weakness ("I work too hard") or a disqualifying one ("I miss deadlines"). The [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) is a real, non-fatal weakness plus concrete action: "I used to hold onto work too long trying to perfect it. I've learned to ship at 90% and iterate, and I set my own internal deadlines to enforce it."
 
-**"Why are you leaving your current job?"** Never criticize your [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter). Frame it as moving toward something: growth, scope, a mission, a specific kind of work. Bitterness in this answer is one of the fastest ways to lose a second round.
+**"Why are you leaving your current job?"** Never criticize your [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter). Frame it as moving toward something: growth, scope, a mission, a specific kind of work. Bitterness in this [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) is one of the fastest ways to lose a second round.
 
 **"What's your [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) expectation?"** By the second round this is fair game. Give a researched range framed as flexible, and treat it as the opening of a conversation, not a final number. If it has not come up and you are deep in the process, it is reasonable to ask about the band.
 
@@ -103,21 +103,21 @@ Without structure, behavioral answers ramble: [candidates](https://thetailorcv.c
 
 ## What Interviewers Are Really Evaluating
 
-By the second round, competence is largely assumed — you cleared that bar in round one. Now the panel is weighing subtler things: Will you fit the team's working style? Do you communicate clearly under a harder question? Are you self-aware about your weaknesses? Are you actually going to accept, or are you using this to leverage another offer? Every answer you give is read through those lenses. This is why enthusiasm, consistency across your answers, and thoughtful questions matter as much as the technical content — they are the signals that decide a close call between two qualified people.
+By the second round, competence is largely assumed — you cleared that bar in round one. Now the panel is weighing subtler things: Will you fit the team's working style? Do you communicate clearly under a harder [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)? Are you self-aware about your weaknesses? Are you actually going to accept, or are you using this to leverage another offer? Every [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) you give is read through those lenses. This is why enthusiasm, consistency across your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and thoughtful [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) matter as much as the technical content — they are the signals that decide a close call between two qualified people.
 
 ## The Day Before: A Preparation Routine
 
 - **Re-read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)** and your own [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), so you can speak fluently to both.
-- **Review your round-one answers** and sharpen any you fumbled.
+- **Review your round-one [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)** and sharpen any you fumbled.
 - **Prepare fresh STAR stories** you did not use in round one.
 - **Research your interviewers** on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) to anticipate their angle.
-- **Write down three genuine questions** to ask, tuned to who you will meet.
+- **Write down three genuine [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)** to ask, tuned to who you will meet.
 - **Do one full spoken rehearsal**, ideally in an [AI mock interview](https://thetailorcv.com/mock-interview), so your delivery is warm and unhurried.
 
 ## Frequently Asked Questions
 
 ### How is a second interview different from the first?
-The first screens for qualification; the second probes fit, depth, and seriousness. Interviewers are usually more senior and questions are more specific.
+The first screens for qualification; the second probes fit, depth, and seriousness. Interviewers are usually more senior and [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) are more specific.
 
 ### Should I ask about salary in the second round?
 It is increasingly acceptable, especially if the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) opened the door. If compensation has not come up at all, it is reasonable to ask about the range now.
