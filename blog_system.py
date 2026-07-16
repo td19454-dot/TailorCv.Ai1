@@ -159,6 +159,60 @@ class BlogService:
             add(p)
         return picked[:limit]
 
+    def link_hub(self, post: BlogPost, exclude: list[BlogPost] | None = None,
+                 per_group: int = 20) -> list[dict]:
+        """Curated groups of internal links shown as compact text lists under a
+        post, so every article carries a rich set of internal links (dozens) the
+        way large content sites do — via a browse hub, NOT keyword-stuffed prose.
+
+        Returns an ordered list of {"title", "posts"} groups:
+          1) More in the post's own category (relevance + spreads link equity),
+          2) posts sharing the post's tags but not its category (adjacent topics),
+          3) newest guides (freshness),
+          4) an alphabetical ring slice (coverage: guarantees no orphan pages).
+        Each group is rotated by a slug-derived seed so different posts surface
+        different neighbours, spreading inbound links across the whole blog.
+        """
+        all_posts = self.load_posts()
+        seen = {post.slug} | {p.slug for p in (exclude or [])}
+        seed = sum(ord(ch) for ch in post.slug)
+
+        def rotate(items: list[BlogPost], salt: int) -> list[BlogPost]:
+            if not items:
+                return items
+            k = (seed * salt + 1) % len(items)
+            return items[k:] + items[:k]
+
+        def take(items: list[BlogPost]) -> list[BlogPost]:
+            out = []
+            for p in items:
+                if p.slug in seen:
+                    continue
+                out.append(p)
+                seen.add(p.slug)
+                if len(out) >= per_group:
+                    break
+            return out
+
+        others = [p for p in all_posts if p.slug != post.slug]
+        post_tags = set(post.tags)
+
+        same_cat = [p for p in others if post.category and p.category == post.category]
+        tag_adj = sorted(
+            (p for p in others if post_tags & set(p.tags) and p.category != post.category),
+            key=lambda p: (len(post_tags & set(p.tags)), p.date_iso), reverse=True,
+        )
+        recent = sorted(others, key=lambda p: p.date_iso, reverse=True)
+        ring = sorted(others, key=lambda p: p.slug)
+
+        groups = [
+            (f"More {post.category} guides" if post.category else "More guides", take(rotate(same_cat, 3))),
+            ("Related topics", take(tag_adj)),
+            ("Latest guides", take(recent)),
+            ("Explore more", take(rotate(ring, 11))),
+        ]
+        return [{"title": t, "posts": ps} for t, ps in groups if ps]
+
     def list_filters(self) -> dict[str, list[str]]:
         posts = self.load_posts()
         tags = sorted({tag for p in posts for tag in p.tags})
