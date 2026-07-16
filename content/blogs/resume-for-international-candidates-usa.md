@@ -105,7 +105,7 @@ Networking is crucial in the U.S. job market. Here are some strategies to enhanc
 
 - **Informational Interviews**: Reach out to professionals in your desired industry for informational interviews. This can provide insights into the job market and help you build valuable connections.
 
-For more details on optimizing your LinkedIn presence, check out our guide on [LinkedIn for job search](https://thetailorcv.com/blog/linkedin-for-job-search).
+For more details on optimizing your LinkedIn presence, check out our guide on [LinkedIn for job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
 ## Preparing for Interviews
 
@@ -148,7 +148,7 @@ While not always required, a well-crafted cover letter can enhance your applicat
 
 ### How can I improve my ATS score?
 
-To improve your ATS score, focus on using relevant keywords, maintaining a simple format, and ensuring that your resume matches the job description closely. For more insights, check out our guide on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly).
+To improve your ATS score, focus on using relevant keywords, maintaining a simple format, and ensuring that your resume matches the job description closely. For more insights, check out our guide on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ### What should I do if I don’t have U.S. work experience?
 

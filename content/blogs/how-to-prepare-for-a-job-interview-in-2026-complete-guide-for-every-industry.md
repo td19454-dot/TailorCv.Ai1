@@ -40,7 +40,7 @@ This is the same logic behind [tailoring your resume to every job](https://theta
 
 ### Turn Requirements Into Questions
 
-If the description says "manage cross-functional [projects](https://thetailorcv.com/blog/projects-in-resume)," prepare for:
+If the description says "manage cross-functional [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)," prepare for:
 
 "Tell me about a time you managed a project with multiple stakeholders."
 

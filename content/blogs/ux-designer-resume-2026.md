@@ -32,7 +32,7 @@ Before applying, use the [ATS score checker](https://www.thetailorcv.com/solutio
 2. Summary
 3. Skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume) or case studies (if freelance or entry-level)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or case studies (if freelance or entry-level)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 

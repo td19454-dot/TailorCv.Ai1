@@ -21,10 +21,10 @@ A portfolio is a student's single biggest edge, because most of your peers will 
 - Tailor your portfolio to fit the expectations of your specific field, emphasizing relevant skills and examples.
 
 ## What to Include
-- 2-4 academic or personal **[projects](https://thetailorcv.com/blog/projects-in-resume)** with outcomes
+- 2-4 academic or personal **[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)** with outcomes
 - Any **internship** or part-time work (even small contributions)
-- **Hackathon** [projects](https://thetailorcv.com/blog/projects-in-resume) and competition results
-- **Relevant coursework** reframed as [projects](https://thetailorcv.com/blog/projects-in-resume)
+- **Hackathon** [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and competition results
+- **Relevant coursework** reframed as [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 
 ## Reframe Coursework as Projects
 A class assignment becomes a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) project the moment you add a problem statement, your specific role, and a result - then deploy it or publish the code/notebook. This single move turns a transcript into evidence.
@@ -48,7 +48,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ## Common Mistakes
 - Waiting until final year to start
-- Listing coursework without framing it as [projects](https://thetailorcv.com/blog/projects-in-resume)
+- Listing coursework without framing it as [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - No deployed/published proof
 - See more in [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 

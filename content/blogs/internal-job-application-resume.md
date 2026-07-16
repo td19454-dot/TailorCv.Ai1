@@ -97,7 +97,7 @@ Yes - internal roles at large companies often go through [ATS](https://thetailor
 
 You have an advantage here.
 You know the actual language the team uses.
-You know what [projects](https://thetailorcv.com/blog/projects-in-resume) they call priorities.
+You know what [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) they call priorities.
 You know which metrics the hiring manager tracks every week.
 
 Use that insider knowledge in your resume language.
@@ -155,7 +155,7 @@ Your internal resume should follow the same [anatomy of a strong resume](https:/
 3. **Work experience** - company roles with quantified results; lead with most relevant bullets
 4. **Education & [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)** - same as any application
 
-One addition for internal resumes: if there are company-specific [projects](https://thetailorcv.com/blog/projects-in-resume), initiatives, or milestones you led or contributed to, name them explicitly. External candidates cannot do this.
+One addition for internal resumes: if there are company-specific [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), initiatives, or milestones you led or contributed to, name them explicitly. External candidates cannot do this.
 
 ---
 
@@ -235,11 +235,11 @@ Only if you handle it poorly. Most managers respect employees who communicate am
 
 ### Should I update my LinkedIn before applying internally?
 
-Not necessarily. Focus on your resume and the formal application. Updating [LinkedIn](https://thetailorcv.com/blog/how-to-sync-your-linkedin-profile-with-your-tailored-resume) mid-process can create unnecessary noise internally.
+Not necessarily. Focus on your resume and the formal application. Updating [LinkedIn](https://thetailorcv.com/blog/linkedin-resume-tailoring-sync) mid-process can create unnecessary noise internally.
 
 ### What if I am competing against an external candidate?
 
-You have insider knowledge of the company, culture, and needs. That is a real advantage - if your resume and [interview](https://thetailorcv.com/blog/how-to-use-ai-to-tailor-your-resume-without-sounding-like-a-robot-2026-guide) reflect it. Do not assume it is enough on its own. Consider also how to get a [promotion](https://thetailorcv.com/blog/how-to-get-a-promotion) to enhance your chances.
+You have insider knowledge of the company, culture, and needs. That is a real advantage - if your resume and [interview](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice) reflect it. Do not assume it is enough on its own. Consider also how to get a [promotion](https://thetailorcv.com/blog/how-to-get-a-promotion) to enhance your chances.
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

@@ -284,8 +284,8 @@ Read [resume matching for career changers](https://thetailorcv.com/blog/resume-m
 
 ### Entry-Level Candidates
 
-With [no experience](https://thetailorcv.com/blog/resume-with-no-experience), the matching challenge is different.
-You are matching skills, coursework, and [projects](https://thetailorcv.com/blog/projects-in-resume) rather than job titles.
+With [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience), the matching challenge is different.
+You are matching skills, coursework, and [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) rather than job titles.
 
 Read [resume matching with no experience](https://thetailorcv.com/blog/resume-matching-no-experience) for strategies.
 

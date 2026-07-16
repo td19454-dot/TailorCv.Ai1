@@ -36,7 +36,7 @@ Check your resume right now using [TailorCV's ATS score checker](https://www.the
 
 **The Problem:**
 You wrote "client support" but the JD says "customer success."
-You wrote "managed [projects](https://thetailorcv.com/blog/projects-in-resume)" but the JD says "project delivery."
+You wrote "managed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)" but the JD says "project delivery."
 You wrote "web development" but the JD says "full stack engineering."
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems do not always connect synonyms.

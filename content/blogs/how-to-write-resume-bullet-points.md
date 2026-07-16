@@ -84,7 +84,7 @@ A weak bullet only does one of these - usually the first, without any depth.
 **After:** "Resolved an average of 85 customer inquiries daily with a 96% satisfaction rating, consistently ranking in the top 5% of the service team"
 
 ### 6. Project Management
-**Before:** "Managed multiple [projects](https://thetailorcv.com/blog/projects-in-resume) simultaneously"  
+**Before:** "Managed multiple [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) simultaneously"  
 **After:** "Managed 4 concurrent product launches worth $2.3M, delivering all on schedule and under budget by an average of 8%"
 
 ### 7. HR/Recruiting

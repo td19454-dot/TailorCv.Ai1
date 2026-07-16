@@ -41,7 +41,7 @@ Since you have limited work history, your [ATS score](https://thetailorcv.com/bl
 | Certifications | Validates abilities, adds keywords |
 | Education | Degree, coursework, achievements |
 
-For project tips, read [how to add projects in your resume](https://thetailorcv.com/blog/projects-in-resume) and [technical skills for freshers with no experience](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience).
+For project tips, read [how to add projects in your resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and [technical skills for freshers with no experience](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide).
 
 ---
 
@@ -59,7 +59,7 @@ List the skills and tools in the posting and include the ones you have - from co
 
 ### 3. Build a Strong Projects Section
 
-Treat academic and personal [projects](https://thetailorcv.com/blog/projects-in-resume) like experience:
+Treat academic and personal [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) like experience:
 
 - Project name and your role
 - Tools and technologies used (keywords!)
@@ -78,7 +78,7 @@ Include technical skills, tools, and a few relevant [soft skills](https://thetai
 
 ### 5. List Certifications
 
-Free and low-cost certifications add keywords and credibility. See [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume). 
+Free and low-cost certifications add keywords and credibility. See [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026). 
 
 **Examples of Useful Certifications:**
 - Google Analytics for beginners
@@ -108,7 +108,7 @@ Freshers often make several mistakes that can hinder their [ATS score](https://t
 - **Sending the same resume to every job:** Customize your resume for each application.
 - **Burying contact info in the header:** Keep it at the top for easy access.
 
-More on this in [resume mistakes freshers make](https://thetailorcv.com/blog/resume-mistakes-freshers) and [how to write a resume with no experience](https://thetailorcv.com/blog/resume-with-no-experience).
+More on this in [resume mistakes freshers make](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) and [how to write a resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience).
 
 ---
 
@@ -177,7 +177,7 @@ Yes. One clean, single-column page is ideal for freshers and parses well in [ATS
 
 ### How do I add keywords without lying?
 
-Pull keywords from your real coursework, [projects](https://thetailorcv.com/blog/projects-in-resume), certifications, and internships. Use the exact terms from the posting where they genuinely apply.
+Pull keywords from your real coursework, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), certifications, and internships. Use the exact terms from the posting where they genuinely apply.
 
 ---
 
@@ -185,9 +185,9 @@ Pull keywords from your real coursework, [projects](https://thetailorcv.com/blog
 
 - [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free)
 - [How to Increase Your ATS Score](https://thetailorcv.com/blog/how-to-increase-ats-score)
-- [Technical Skills in Resume for Freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
-- [How to Write a Resume With No Experience](https://thetailorcv.com/blog/resume-with-no-experience)
-- [Resume Templates for Beginners](https://thetailorcv.com/blog/resume-templates-for-beginners)
+- [Technical Skills in Resume for Freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [How to Write a Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [Resume Templates for Beginners](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
 - [ATS Resume Checker - How It Works and How to Pass (2026)](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)
 - [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
 

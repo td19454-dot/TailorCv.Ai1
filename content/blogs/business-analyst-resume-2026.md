@@ -32,7 +32,7 @@ Before submitting your application, compare your resume against the job descript
 2. Summary
 3. Core competencies
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -48,7 +48,7 @@ Formula:
 
 ### Example for Experienced BA
 
-Business Analyst with 5 years of experience in financial services and healthcare domains. Skilled in requirements elicitation, BRD and FRD documentation, process modeling with BPMN, UAT coordination, and SQL-based data validation. Led 3 ERP migration [projects](https://thetailorcv.com/blog/projects-in-resume) and reduced manual reporting time by 40% through process automation initiatives.
+Business Analyst with 5 years of experience in financial services and healthcare domains. Skilled in requirements elicitation, BRD and FRD documentation, process modeling with BPMN, UAT coordination, and SQL-based data validation. Led 3 ERP migration [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and reduced manual reporting time by 40% through process automation initiatives.
 
 ### Example for Entry-Level BA
 
@@ -181,7 +181,7 @@ Most BA roles in 2026 work in Agile environments. If you have Scrum, JIRA, or sp
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 
 ## Make This Practical
 

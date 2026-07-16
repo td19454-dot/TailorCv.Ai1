@@ -38,7 +38,7 @@ Your resume is often the first impression you make on potential employers, so it
 - **Use Quantified Achievements**: Instead of saying you “managed a team,” specify that you “led a remote team of 5, increasing productivity by 20% over six months.”
 - **Include Keywords**: Align your resume with the job description to improve your ATS score. Utilize tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume meets the necessary criteria.
 
-For a more detailed approach, check out our [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) and learn how to [make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly).
+For a more detailed approach, check out our [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) and learn how to [make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ## Craft a Compelling Cover Letter
 

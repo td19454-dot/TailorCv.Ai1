@@ -82,7 +82,7 @@ Content is how you demonstrate expertise at scale. You do not need to go viral -
 ### Content Types That Build Authority
 
 - **How-to posts**: Teach something specific you know well
-- **Lessons learned**: Share insights from your [projects](https://thetailorcv.com/blog/projects-in-resume) and mistakes
+- **Lessons learned**: Share insights from your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and mistakes
 - **Industry commentary**: Add your perspective on news and trends
 - **Behind-the-scenes**: Show your real work and process
 - **Frameworks and tips**: Distill your expertise into actionable advice

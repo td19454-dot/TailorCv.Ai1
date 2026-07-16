@@ -86,7 +86,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 ## Common Mistakes
 
 - A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) still anchored in the old field.
-- No new-field [projects](https://thetailorcv.com/blog/projects-in-resume), only courses.
+- No new-field [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), only courses.
 - Apologizing for the switch instead of owning it.
 - In[consistent messaging](https://thetailorcv.com/blog/resume-review-checklist-before-applying) across your resume, LinkedIn, and portfolio.
 
@@ -112,7 +112,7 @@ By following these steps and avoiding common pitfalls, you can create a compelli
 
 ### Can a portfolio really overcome no experience in the new field?
 
-Often yes - concrete [projects](https://thetailorcv.com/blog/projects-in-resume) in the target field are exactly the proof employers need to take a chance on a switcher. Consider using an [AI portfolio builder](https://www.thetailorcv.com/portfolio) to showcase your work effectively.
+Often yes - concrete [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) in the target field are exactly the proof employers need to take a chance on a switcher. Consider using an [AI portfolio builder](https://www.thetailorcv.com/portfolio) to showcase your work effectively.
 
 ### How many new-field projects do I need?
 

@@ -39,7 +39,7 @@ Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/b
 
 ## Prove Production Readiness
 
-This is what separates hobby [projects](https://thetailorcv.com/blog/projects-in-resume) from hireable ones:
+This is what separates hobby [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) from hireable ones:
 
 - **Unit and integration tests** plus CI: Use tools like Jest, Mocha, or JUnit to demonstrate your testing process.
 - **Auth**, input validation, rate limiting, and error handling: Detail how you handle security and user input.

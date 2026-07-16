@@ -65,7 +65,7 @@ Many Canadian employers use ATS to filter resumes before they reach hiring manag
 - **Include Keywords**: Incorporate relevant keywords from the job description throughout your resume to improve your ATS score. To check your ATS compatibility, use our [free ATS score checker](https://www.thetailorcv.com/solutions).
 - **Consistent Formatting**: Use a clean, professional font and consistent formatting throughout your document.
 
-If you want to learn more about making your resume ATS-friendly, check out our article on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly).
+If you want to learn more about making your resume ATS-friendly, check out our article on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ## Highlighting Soft Skills
 
