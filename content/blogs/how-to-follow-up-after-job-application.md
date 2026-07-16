@@ -60,7 +60,7 @@ Most candidates either follow up too much or not at all. Here is a calm, profess
 - **Day 12–14 — Second and final follow-up.** One more brief nudge if there has been no reply at all.
 - **After that — Redirect.** Two touches is the ceiling. Put your energy into new applications and, ideally, into finding a referral for the roles you want most.
 
-The discipline of this timeline is as much about protecting your own momentum as it is about etiquette. Refreshing your inbox for a reply to a single application is the fastest way to stall a job search.
+The discipline of this timeline is as much about protecting your own momentum as it is about etiquette. Refreshing your inbox for a reply to a single application is the fastest way to stall a [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
 ## Why Most Follow-Ups Get Ignored
 

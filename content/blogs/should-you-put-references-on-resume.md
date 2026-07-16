@@ -92,9 +92,9 @@ Some companies now use automated reference-checking platforms that email your re
 
 ## A Reference Strategy for Every Stage of Your Career
 
-**Early career.** You may not have former managers yet. Professors who supervised a project, internship mentors, a part-time job supervisor, or a client from freelance work all make legitimate references. Choose the person who saw you actually *do* something, not just the most senior name you can find.
+**Early career.** You may not have former managers yet. Professors who supervised a project, [internship](https://thetailorcv.com/blog/resume-for-internship-with-no-experience) mentors, a part-time job supervisor, or a client from freelance work all make legitimate references. Choose the person who saw you actually *do* something, not just the most senior name you can find.
 
-**Mid career.** Aim for a mix: a former direct manager, a senior peer, and ideally someone who can speak to a specific, relevant strength. Avoid using your current manager unless you are comfortable with your job search being known — most employers understand and will accept "available once we're further along."
+**Mid career.** Aim for a mix: a former direct manager, a senior peer, and ideally someone who can speak to a specific, relevant strength. Avoid using your current manager unless you are comfortable with your [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) being known — most employers understand and will accept "available once we're further along."
 
 **Senior and executive.** References are often more thorough at this level, sometimes including skip-level leaders, board members, or major clients. Curate references who can speak to strategic impact and leadership, not just competence, and brief them carefully on the narrative you want reinforced.
 

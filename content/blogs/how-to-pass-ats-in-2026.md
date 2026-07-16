@@ -107,7 +107,7 @@ It is easy to obsess over the software and forget that the software's whole job 
 
 ## Test Before Every Submission
 
-Before you hit apply, run the [free ATS score](https://thetailorcv.com/solutions) or the 60-second copy-paste test on your [tailored resume](https://thetailorcv.com/optimize) against the specific posting. It takes a minute and it converts "I hope this passes" into "I know this matches." Given how much effort goes into finding and applying to roles, skipping this final check is a false economy — it is the cheapest insurance in your entire job search.
+Before you hit apply, run the [free ATS score](https://thetailorcv.com/solutions) or the 60-second copy-paste test on your [tailored resume](https://thetailorcv.com/optimize) against the specific posting. It takes a minute and it converts "I hope this passes" into "I know this matches." Given how much effort goes into finding and applying to roles, skipping this final check is a false economy — it is the cheapest insurance in your entire [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
 ## Frequently Asked Questions
 
@@ -118,7 +118,7 @@ Most mid-size and large employers do, and many small ones use one through their 
 Both work with modern systems if they are text-based. Follow the posting's instruction; if none is given, a text-based PDF is safe.
 
 ### Does a fancy template hurt my chances?
-Often yes. Graphics, columns, and text boxes look good to humans but confuse parsers. Choose a clean, single-column, ATS-friendly template.
+Often yes. Graphics, columns, and text boxes look good to humans but confuse parsers. Choose a clean, single-column, [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) template.
 
 ### Can an ATS read a two-column resume at all?
 Some modern ones handle simple two-column layouts, but many still read across the page and scramble the content. Since you cannot know which system a company uses, a single column is the safe default that always parses.
