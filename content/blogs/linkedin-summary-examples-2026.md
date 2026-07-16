@@ -14,7 +14,7 @@ keywords: linkedin summary examples, linkedin about section, linkedin profile su
 
 - Only the first two lines show before "see more" — front-load your hook there.
 - Write in the first person; LinkedIn is a conversation, not a resume.
-- Include the keywords recruiters search for, in natural sentences.
+- Include the [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) recruiters search for, in natural sentences.
 - End with a clear line on what you are open to and how to reach you.
 
 ## Why the About Section Matters
@@ -96,7 +96,7 @@ Recruiters find candidates by searching keywords — job titles, skills, tools. 
 
 - **Put your key skills in your headline, About section, and experience** — naturally, in real sentences.
 - **Use the exact terms recruiters search**, not clever synonyms. "Product Manager," not "Product Ninja."
-- **Fill the Skills section** with the tools and abilities you want to be found for, and get a few endorsements.
+- **Fill the [Skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026)** with the tools and abilities you want to be found for, and get a few endorsements.
 - **Set your headline to your target role**, not just your current title, if you are actively looking.
 
 The goal is simple: when a recruiter searches for someone like you, you appear — and when they click, your first two lines make them stay.
@@ -147,7 +147,7 @@ Refresh your headline and About section whenever your focus shifts or you comple
 Use it for a first draft, then rewrite it in your own voice. The hook and the specific details — your real numbers, your genuine reasons — are what make it work, and those have to be yours.
 
 ### Should my About section be different from my resume summary?
-Yes. Same facts, different voice: the resume summary is tight, formal, and tailored per application; the LinkedIn About is longer, warmer, and written in the first person for a human browsing your profile. Adapt the story, do not copy-paste it.
+Yes. Same facts, different voice: the [resume summary](https://thetailorcv.com/blog/resume-summary-examples-2026) is tight, formal, and tailored per application; the LinkedIn About is longer, warmer, and written in the first person for a human browsing your profile. Adapt the story, do not copy-paste it.
 
 ### How do I write an About section if I'm a student with little experience?
 Lead with what you are building and learning rather than a job history. A hook about your genuine interest, one or two real projects, and a clear line about what you are looking for beats an empty or generic section every time.

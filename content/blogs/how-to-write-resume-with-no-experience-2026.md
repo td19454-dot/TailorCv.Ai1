@@ -49,7 +49,7 @@ That reads like real engineering work, because it is.
 
 ## Tailor It Every Time
 
-A career starter's biggest advantage is effort. Most freshers send one identical resume everywhere. When you [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) to each posting — matching the exact skills and keywords it lists — you jump ahead of the pile, and you pass the [ATS scan](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) that filters most generic resumes out.
+A career starter's biggest advantage is effort. Most freshers send one identical resume everywhere. When you [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) to each posting — matching the exact skills and [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) it lists — you jump ahead of the pile, and you pass the [ATS scan](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) that filters most generic resumes out.
 
 ## A Full Example: From Blank to Strong
 
@@ -123,7 +123,7 @@ Structure signals professionalism even when your history is thin. Keep it clean 
 - **Standard, single-column layout** that an [ATS can parse](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) — no graphics, columns, or text boxes.
 - **Clear section order:** contact and summary, skills, projects, education, then any experience.
 - **Consistent formatting** — one font, one date style, aligned bullets. Sloppiness is one of the few things that actively hurts an early-career resume.
-- **A real email address** and a link to your work — GitHub, portfolio, or LinkedIn.
+- **A real email address** and a link to your work — GitHub, [portfolio](https://thetailorcv.com/portfolio), or LinkedIn.
 
 The goal is a resume that looks like it belongs to someone who takes the process seriously, because that impression is part of what you are selling.
 
@@ -138,7 +138,7 @@ Before you send a no-experience resume, run it through these checks:
 - Is it **one clean page** that parses cleanly?
 - Have you **tailored it** to this specific role, not sent the same file everywhere?
 
-If you are starting from a blank page, the [resume builder](https://thetailorcv.com/modify-cv) gives you an ATS-friendly structure to fill in, and a quick [ATS score](https://thetailorcv.com/solutions) against the posting shows whether the keywords it wants are actually present before you apply. For a career starter, that final check is the difference between disappearing into the pile and landing the first interview.
+If you are starting from a blank page, the [resume builder](https://thetailorcv.com/modify-cv) gives you an ATS-friendly structure to fill in, and a quick [ATS score](https://thetailorcv.com/solutions) against the posting shows whether the keywords it wants are actually present before you apply. For a career starter, that final check is the difference between disappearing into the pile and landing the [first interview](https://thetailorcv.com/blog/phone-screen-interview-tips).
 
 ## Frequently Asked Questions
 
@@ -149,7 +149,7 @@ Use a short summary, not a dated "objective." One line: "Computer science gradua
 One page. You do not have enough history to justify two, and a tight page reads as confident.
 
 ### Do I need a cover letter with no experience?
-Yes — it is where you turn potential into a story. See our guide on writing a cover letter with no experience below.
+Yes — it is where you turn potential into a story. See our guide on writing a [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work) with no experience below.
 
 ### What if I have no projects either?
 Then build one this month. A single weekend project — an app, a data analysis, a small website — gives you a concrete, ownable bullet that beats any amount of "eager to learn." It is the fastest way to go from empty to credible.
@@ -158,7 +158,7 @@ Then build one this month. A single weekend project — an app, a data analysis,
 Include it if it is strong (roughly 3.3+ / first-class) or if the posting asks. If it is lower, leave it off and let your projects and skills carry the resume.
 
 ### How do I handle the "years of experience" requirement on postings?
-Apply anyway if you meet most of the other criteria. "Years required" is often a wish list, not a filter, especially for junior roles. A tailored resume and a strong project section can outweigh the exact number.
+Apply anyway if you meet most of the other criteria. "Years required" is often a wish list, not a filter, especially for junior roles. A [tailored resume](https://thetailorcv.com/optimize) and a strong project section can outweigh the exact number.
 
 ### Is a skills-based (functional) layout better when I have no experience?
 No — use a standard layout that leads with skills and projects but keeps a clear, dated structure. Pure functional resumes confuse the ATS and worry recruiters. Projects-first-but-still-chronological is the sweet spot.
