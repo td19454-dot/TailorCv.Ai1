@@ -40,6 +40,9 @@
   let accountBtn, accountMenu, accountEmailEl;
   let successTick, scoreCard, scoreBeforeEl, scoreAfterEl, successTickTimer;
   let sessionReady = false;
+  // True only while renderNoBaseResume() is on screen — lets reopening the
+  // panel (togglePanel) recheck without disturbing an in-progress login form.
+  let noBaseResumeShown = false;
   let manualJd = '';   // set when the user pastes or selects the JD themselves
   let lockSvgEl = null;
   let lockLoopTimer = null;
@@ -581,6 +584,11 @@
     if (wasCollapsed && sessionReady && !tcvBusy) {
       const ta = body.querySelector('#tcvManualJd');
       if (ta && !ta.value.trim()) renderJobFromPage();
+    } else if (wasCollapsed && noBaseResumeShown && !tcvBusy) {
+      // Reopening is also a natural moment to recheck a base resume that may
+      // have been set up (in another tab) since this state was last shown —
+      // a cheap fallback alongside the push notification and retry link.
+      refreshFull();
     }
   }
 
@@ -702,7 +710,13 @@
       </div>
       <div class="tcv-msg tcv-empty-msg">No base resume set yet.</div>
       <a class="tcv-btn tcv-btn-start tcv-btn-link" href="${BASE_URL}/extension" target="_blank">Set one up on TailorCV →</a>
+      <a class="tcv-link tcv-retry-link" href="#" id="tcvNoResumeRetry">Already set one up? Retry</a>
     `;
+    noBaseResumeShown = true;
+    body.querySelector('#tcvNoResumeRetry').addEventListener('click', (e) => {
+      e.preventDefault();
+      refreshFull();
+    });
   }
 
   function renderUpgradePrompt() {
@@ -816,6 +830,15 @@
     const matchEl = body.querySelector('#tcvMatchBefore');
     sendMessage({ type: 'GET_SKILL_MATCH', jd_string: job.jd_string }).then((res) => {
       if (!matchEl.isConnected) return; // user already moved to a different job/state
+      if (res.code === 'no_base_resume') {
+        // The base resume was there when the panel loaded but has since been
+        // deleted (e.g. from the website in another tab) — the Tailor/Cover
+        // Letter buttons on screen would just fail, so send the user straight
+        // to the real "set one up" page instead of a stale, broken job view.
+        sessionReady = false;
+        renderNoBaseResume();
+        return;
+      }
       const score = res.data && typeof res.data.score === 'number' ? res.data.score : null;
       if (score === null) {
         // The scorer found no named hard skills in this posting (common on
@@ -950,6 +973,15 @@
 
     finishProgress(!res.error);
     tcvBusy = false;
+
+    if (res.code === 'no_base_resume') {
+      sessionReady = false;
+      globalStatus.className = 'tcv-status-text';
+      globalStatus.textContent = '';
+      renderNoBaseResume();
+      return;
+    }
+
     globalStatus.className = res.error ? 'tcv-status-text tcv-error' : 'tcv-status-text tcv-ok';
     globalStatus.textContent = res.error
       ? `✗ ${label}: ${res.error}`
@@ -988,6 +1020,14 @@
       globalStatus.className = 'tcv-status-text';
       globalStatus.textContent = '';
       renderUpgradePrompt();
+      return;
+    }
+
+    if (res.code === 'no_base_resume') {
+      sessionReady = false;
+      globalStatus.className = 'tcv-status-text';
+      globalStatus.textContent = '';
+      renderNoBaseResume();
       return;
     }
 
@@ -1064,6 +1104,7 @@
   async function refreshFull() {
     await renderLoading();
     sessionReady = false;
+    noBaseResumeShown = false;
 
     const profileRes = await sendMessage({ type: 'GET_PROFILE' });
     if (profileRes.error || !profileRes.data) {
