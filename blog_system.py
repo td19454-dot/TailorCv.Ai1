@@ -160,7 +160,7 @@ class BlogService:
         return picked[:limit]
 
     def link_hub(self, post: BlogPost, exclude: list[BlogPost] | None = None,
-                 per_group: int = 20) -> list[dict]:
+                 per_group: int = 20, min_total: int = 100) -> list[dict]:
         """Curated groups of internal links shown as compact text lists under a
         post, so every article carries a rich set of internal links (dozens) the
         way large content sites do — via a browse hub, NOT keyword-stuffed prose.
@@ -206,12 +206,22 @@ class BlogService:
         ring = sorted(others, key=lambda p: p.slug)
 
         groups = [
-            (f"More {post.category} guides" if post.category else "More guides", take(rotate(same_cat, 3))),
-            ("Related topics", take(tag_adj)),
-            ("Latest guides", take(recent)),
-            ("Explore more", take(rotate(ring, 11))),
-            ("Popular reads", take(rotate(ring, 29))),
+            [f"More {post.category} guides" if post.category else "More guides", take(rotate(same_cat, 3))],
+            ["Related topics", take(tag_adj)],
+            ["Latest guides", take(recent)],
+            ["Explore more", take(rotate(ring, 11))],
+            ["Popular reads", take(rotate(ring, 29))],
         ]
+        # Guarantee a floor: posts with no category or few tag matches would otherwise
+        # come up short. Top up "Explore more" from the ring (405 others, so always
+        # possible) until the whole hub reaches min_total links, plus the reserved
+        # excludes (related cards shown separately). No page ends up light.
+        target = min_total - len(exclude or [])
+        total = sum(len(ps) for _, ps in groups)
+        if total < target:
+            needed = target - total
+            pool = [p for p in rotate(ring, 7) if p.slug not in seen]
+            groups[3][1] = groups[3][1] + pool[:needed]
         return [{"title": t, "posts": ps} for t, ps in groups if ps]
 
     def list_filters(self) -> dict[str, list[str]]:
