@@ -40,7 +40,7 @@ Email lets you choose your words carefully, cite numbers precisely, and avoid be
 
 ## Anchor to Value, Not Need
 
-- **Do:** cite market rates, your relevant experience, and specific results you will deliver.
+- **Do:** cite market rates, your relevant [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience), and specific results you will deliver.
 - **Do not:** mention rent, loans, or another job's cost of living. Personal need is not the employer's lever, and it weakens your position.
 
 Give one clear number, slightly above your target, so there is room to meet in the middle.
@@ -58,7 +58,7 @@ Accept gracefully and stay positive: "Completely understand — I'm still very h
 You cannot anchor to market data you do not have. Before you counter, spend an hour gathering numbers:
 
 - **Salary databases and levels sites** for the role, level, and location.
-- **The posting itself** — many now list a range; if yours does, aim for the upper half if your experience justifies it.
+- **The posting itself** — many now list a range; if yours does, aim for the upper half if your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) justifies it.
 - **Your network** — a discreet question to a peer in a similar role is often the most accurate data of all.
 - **[Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) signals** — if they asked your expectations early and the offer matches, there may be less room; if they came in low, there is usually room to move.
 
@@ -69,7 +69,7 @@ Walk into the negotiation with a specific target number and a specific "walk-com
 Your negotiating power comes from a few sources, and knowing which you have shapes how hard you push:
 
 - **A competing offer** is the strongest leverage. You do not have to name the company; "I'm weighing another offer" is enough.
-- **Scarce, in-demand skills** give you room even without a competing offer.
+- **Scarce, in-demand [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026)** give you room even without a competing offer.
 - **Being their clear top choice** — if they moved fast and chased you, they are invested and less likely to walk over a reasonable ask.
 - **Market data** that shows the offer is below range for the role.
 
@@ -106,7 +106,7 @@ Once you settle on terms, confirm them in writing before you resign anywhere. A 
 
 ## The Psychology of the Ask
 
-The reason most people do not negotiate is fear — fear of seeming greedy, fear of the offer being pulled, fear of an awkward conversation. Understanding what is actually happening on the other side dissolves most of it. Employers expect a counter; many deliberately leave room for one, and a candidate who negotiates reasonably is often respected *more*, not less, because it signals they know their value and will advocate well on the job too. The company has already chosen you — they invested hours interviewing, they do not want to restart the search, and they are not going to torch that over a polite, well-reasoned ask. Reframe the negotiation not as a confrontation but as the first collaborative problem you and your future employer solve together: how do we structure this so you start motivated and fairly paid? Framed that way, it is not adversarial at all.
+The reason most people do not negotiate is fear — fear of seeming greedy, fear of the offer being pulled, fear of an awkward conversation. Understanding what is actually happening on the other side dissolves most of it. Employers expect a counter; many deliberately leave room for one, and a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who negotiates reasonably is often respected *more*, not less, because it signals they know their value and will advocate well on the job too. The company has already chosen you — they invested hours interviewing, they do not want to restart the search, and they are not going to torch that over a polite, well-reasoned ask. Reframe the negotiation not as a confrontation but as the first collaborative problem you and your future employer solve together: how do we structure this so you start motivated and fairly paid? Framed that way, it is not adversarial at all.
 
 ## A Full Negotiation, Start to Finish
 
@@ -153,7 +153,7 @@ Always. Confirm every agreed term — base, bonus, equity, start date — in wri
 
 ## Negotiating as a New Graduate or Career Starter
 
-Early-career candidates often assume they have no room to negotiate, and so they accept the first number without a word — leaving money on the table that compounds across every future raise. Even at [entry level](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), a polite, well-reasoned ask is usually appropriate and rarely costs you the offer. The framing shifts slightly: with less experience to anchor to, lean harder on market data for the role and location, on any competing offers, and on the specific skills or [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you bring. Keep the ask modest and gracious — "Based on my research for this kind of role, I was hoping we could get the base a little closer to [X]; is there any flexibility?" If the base is truly fixed, as it sometimes is for standardized new-grad programs, pivot to a signing bonus or an earlier review date. And remember that your starting salary sets the baseline for years of percentage raises, so a small increase now is worth far more than it appears. The worst outcome of a respectful ask is almost always just "no," and a graceful "understood, I'm still thrilled to accept" keeps everything warm.
+Early-career [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) often assume they have no room to negotiate, and so they accept the first number without a word — leaving money on the table that compounds across every future raise. Even at [entry level](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), a polite, well-reasoned ask is usually appropriate and rarely costs you the offer. The framing shifts slightly: with less [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) to anchor to, lean harder on market data for the role and location, on any competing offers, and on the specific [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) or [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you bring. Keep the ask modest and gracious — "Based on my research for this kind of role, I was hoping we could get the base a little closer to [X]; is there any flexibility?" If the base is truly fixed, as it sometimes is for standardized new-grad programs, pivot to a signing bonus or an earlier review date. And remember that your starting salary sets the baseline for years of percentage raises, so a small increase now is worth far more than it appears. The worst outcome of a respectful ask is almost always just "no," and a graceful "understood, I'm still thrilled to accept" keeps everything warm.
 
 ## Putting It All Together
 

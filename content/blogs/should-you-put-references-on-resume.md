@@ -27,7 +27,7 @@ This line is a relic. Everyone knows you will provide references if asked, so th
 
 ## Keep a Separate Reference Sheet
 
-When an employer asks — usually near an offer — send a clean, separate document that matches your resume's header. For each reference include:
+When an employer asks — usually near an offer — send a clean, separate document that matches your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume)'s header. For each reference include:
 
 - Name and job title
 - Company
@@ -45,7 +45,7 @@ Never surprise a reference. Ask permission, then set them up to help you: send t
 
 ## What a Reference Sheet Looks Like
 
-When an employer asks, send a clean document whose header matches your resume, so the two look like a set. For each reference:
+When an employer asks, send a clean document whose header matches your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), so the two look like a set. For each reference:
 
 > **Priya Sharma**
 > Engineering Manager, Acme Corp (former direct manager)
@@ -73,13 +73,13 @@ The best reference is a recent manager or close colleague who can describe speci
 
 ## Timing: When References Actually Come Up
 
-References are almost always a late-stage step, requested at or near the offer. That is exactly why they do not belong on your resume — they are irrelevant to getting the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) and only matter once the employer is seriously considering you. Keep your sheet ready so you can send it the moment it is asked for, but keep it off the resume itself, where the space is better spent on a result that helps you [stand out](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
+References are almost always a late-stage step, requested at or near the offer. That is exactly why they do not belong on your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) — they are irrelevant to getting the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) and only matter once the employer is seriously considering you. Keep your sheet ready so you can send it the moment it is asked for, but keep it off the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) itself, where the space is better spent on a result that helps you [stand out](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 
 ## How Reference Checks Actually Work
 
 Understanding what happens on the other end helps you prepare the right people. When an employer reaches the reference stage, they are rarely looking for dirt — they are looking to confirm what they already believe and to fill in any gaps. A typical reference call covers a handful of predictable questions:
 
-- "In what capacity did you work with the candidate, and for how long?"
+- "In what capacity did you work with the [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), and for how long?"
 - "What were their main responsibilities?"
 - "What are their biggest strengths?"
 - "Where could they still grow?"
@@ -109,7 +109,7 @@ A reference relationship is not a one-time transaction. The people who vouch for
 ## Frequently Asked Questions
 
 ### What if the application form has a references field?
-Fill it in there — that is a request. The rule is only about not volunteering references on the resume itself.
+Fill it in there — that is a request. The rule is only about not volunteering references on the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) itself.
 
 ### Can I use a peer or a client as a reference?
 Yes, if a manager reference is not available. A client who can speak to your delivery, or a senior peer who led [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with you, both work well.
@@ -124,7 +124,7 @@ That is common and expected — you may not want your current employer to know y
 Not always, but many do before an offer, and some use automated reference-check services. Assume they will, and prepare accordingly — a strong, briefed reference can seal a decision.
 
 ### Can I put "references available on request" to save an awkward gap?
-No — the line adds nothing and dates your resume. Everyone knows references are available on request. Use that space for a stronger bullet.
+No — the line adds nothing and dates your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Everyone knows references are available on request. Use that space for a stronger bullet.
 
 ### How far in advance should I contact my references?
 Reach out as soon as you are actively interviewing, not the moment an employer asks. Giving your references a heads-up early means they are ready and briefed when a call comes, rather than caught off guard, and it lets you confirm they will speak positively before you list them.
@@ -140,11 +140,11 @@ Yes, especially early in your career or as a recent graduate. A professor who su
 
 ## What Recruiters Notice About Your References
 
-The references you choose quietly say something about you before they even speak. A candidate whose references are all recent direct managers signals a track record of good relationships with the people who supervised them — the strongest possible signal. A candidate who offers only peers, or only contacts from many years ago, or who cannot produce a recent manager, prompts quiet questions. This does not mean you must have a perfect roster; plenty of good candidates have complicated situations, from a current employer they cannot alert to a former manager who has left the industry. But it does mean you should think about the *story* your references tell, and fill obvious gaps thoughtfully — a senior peer who led projects with you, a skip-level who knew your work, a client who can speak to your delivery. Curate references the way you curate the rest of your application: deliberately, with an eye to what a thoughtful reader will infer.
+The references you choose quietly say something about you before they even speak. A [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) whose references are all recent direct managers signals a track record of good relationships with the people who supervised them — the strongest possible signal. A [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who offers only peers, or only contacts from many years ago, or who cannot produce a recent manager, prompts quiet questions. This does not mean you must have a perfect roster; plenty of good [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) have complicated situations, from a current employer they cannot alert to a former manager who has left the industry. But it does mean you should think about the *story* your references tell, and fill obvious gaps thoughtfully — a senior peer who led [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with you, a skip-level who knew your work, a client who can speak to your delivery. Curate references the way you curate the rest of your [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application): deliberately, with an eye to what a thoughtful reader will infer.
 
 ## A Reference Sheet Template You Can Reuse
 
-Keep a ready-to-send document, matching your resume's header, that you can produce the moment an employer asks:
+Keep a ready-to-send document, matching your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume)'s header, that you can produce the moment an employer asks:
 
 > **[Your Name] — References**
 > [same contact header as your resume]
@@ -162,4 +162,4 @@ Three to four references in this format, each with a "can speak to" line steerin
 
 ## Putting It All Together
 
-Keep references off your resume and skip the "available on request" line entirely — both waste space that a strong achievement could fill. Instead, prepare a separate, well-formatted reference sheet of three to four people who can speak to specific results, ask each of them first, and brief them on the role before any call. Handled this way, your references become a closing asset at the offer stage rather than clutter at the top of the funnel.
+Keep references off your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and skip the "available on request" line entirely — both waste space that a strong [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) could fill. Instead, prepare a separate, well-formatted reference sheet of three to four people who can speak to specific results, ask each of them first, and brief them on the role before any call. Handled this way, your references become a closing asset at the offer stage rather than clutter at the top of the funnel.

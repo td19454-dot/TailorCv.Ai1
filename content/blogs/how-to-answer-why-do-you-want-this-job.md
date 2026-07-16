@@ -19,13 +19,13 @@ keywords: why do you want this job, interview answer why this role, why this com
 
 ## Why Interviewers Ask It
 
-This question tests whether you actually researched them or are firing off applications at random. A specific, genuine answer signals you will be motivated and are likely to accept and stay. A vague one signals a filler application. It is one of the easiest questions to prepare and one of the most commonly fumbled.
+This question tests whether you actually researched them or are firing off [applications](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) at random. A specific, genuine answer signals you will be motivated and are likely to accept and stay. A vague one signals a filler [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application). It is one of the easiest questions to prepare and one of the most commonly fumbled.
 
 ## The Three-Part Framework
 
 > **[Something specific about the role] + [something specific about the company] + [how it fits where you're heading].**
 
-All three matter. Role-only sounds like you would take the same job anywhere; company-only sounds like a fan, not a candidate; direction-only centers you instead of them.
+All three matter. Role-only sounds like you would take the same job anywhere; company-only sounds like a fan, not a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026); direction-only centers you instead of them.
 
 ## Example Answers
 
@@ -47,19 +47,19 @@ All three matter. Role-only sounds like you would take the same job anywhere; co
 
 ## Do Ten Minutes of Homework
 
-Read the company's recent blog, product updates, or news, and the full job posting. One genuinely specific detail — a feature, a value they wrote down, a recent launch — is what turns a generic answer into a memorable one. Practice it in a [mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) so it sounds natural, not recited.
+Read the company's recent blog, product updates, or news, and the full [job posting](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). One genuinely specific detail — a feature, a value they wrote down, a recent launch — is what turns a generic answer into a memorable one. Practice it in a [mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) so it sounds natural, not recited.
 
 ## The Research Checklist
 
 You cannot give a specific answer without a specific fact, and you can gather several in ten minutes:
 
-1. **The full job posting.** The problems it describes are the problems you should say you want to solve. [Reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) them directly.
+1. **The full [job posting](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).** The problems it describes are the problems you should say you want to solve. [Reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) them directly.
 2. **The company's recent blog or changelog.** A launch, a decision, or a point of view you genuinely find interesting.
 3. **Recent news or funding.** A new market, a milestone, a strategic shift.
 4. **The product itself.** If you can try it, one honest observation from real use is the strongest hook of all.
 5. **Your interviewers' public work.** A talk, an article, a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) — something that tells you what the team values.
 
-Turn any one of these into a sentence, and your answer instantly separates you from every candidate who said "you're a leader in the industry."
+Turn any one of these into a sentence, and your answer instantly separates you from every [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who said "you're a leader in the industry."
 
 ## Full Sample Answers, Annotated
 
@@ -80,7 +80,7 @@ Notice all three parts: role, company, and direction, each anchored to a specifi
 
 ## Tailor Your Whole Application, Not Just the Answer
 
-A specific answer to "why this job" is far easier to give when your entire application is already pointed at the role. If you have [tailored your resume](https://thetailorcv.com/optimize) to the posting — mirroring its language and emphasizing the relevant work — you have already done most of the thinking this question requires. The reasons you are a fit on paper are the same reasons you can articulate out loud. Candidates who spray generic applications struggle with this question precisely because they never engaged with what makes each role different.
+A specific answer to "why this job" is far easier to give when your entire [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) is already pointed at the role. If you have [tailored your resume](https://thetailorcv.com/optimize) to the posting — mirroring its language and emphasizing the relevant work — you have already done most of the thinking this question requires. The reasons you are a fit on paper are the same reasons you can articulate out loud. [Candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who spray generic [applications](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) struggle with this question precisely because they never engaged with what makes each role different.
 
 ## Mistakes That Quietly Cost You the Offer, Revisited
 
@@ -112,10 +112,10 @@ Almost everyone needs the income; interviewers know that. Find a genuine seconda
 Then research before the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Ten minutes on their site and recent news is the difference between a specific answer and a forgettable one.
 
 ### How do I answer if it's genuinely just a stepping-stone role?
-Find the true part of your interest and lead with that — a specific skill you will build, a problem you will get to solve, a team you respect. You do not have to pretend it is your dream job, but you do have to show genuine, specific interest in *something* about it.
+Find the true part of your interest and lead with that — a specific [skill](https://thetailorcv.com/blog/resume-skills-section-guide-2026) you will build, a problem you will get to solve, a team you respect. You do not have to pretend it is your dream job, but you do have to show genuine, specific interest in *something* about it.
 
 ### Is it okay to say I want the job for career growth?
-Yes, as one part of the answer, framed around what you will contribute while you grow. "I want to deepen my backend skills, and I can help you scale your payments system while I do" balances your growth with their gain.
+Yes, as one part of the answer, framed around what you will contribute while you grow. "I want to deepen my backend [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026), and I can help you scale your payments system while I do" balances your growth with their gain.
 
 ### How long should the answer be?
 Thirty to sixty seconds. Long enough to hit role, company, and direction; short enough to stay sharp. If you are still talking after a minute, you have drifted into rambling.

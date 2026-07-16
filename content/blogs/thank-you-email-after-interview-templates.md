@@ -89,14 +89,14 @@ The decision conversation often happens within a day or two of your [interview](
 **After a technical [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026):**
 > "Thank you for the technical discussion, [Name]. I enjoyed working through the [specific problem] — it's the kind of problem I like most. One follow-up thought: [brief, sharp addition]. Happy to go deeper anytime."
 
-**After a hiring-manager interview:**
+**After a hiring-manager [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026):**
 > "Thank you for the conversation, [Name]. Hearing how you think about [team goal] confirmed this is where I want to do my next few years of work. I'm confident I could help with [specific challenge] and would be glad to share more."
 
 ## Mistakes to Avoid
 
 - **Sending one group email** to a panel — it reads as low-effort and impersonal.
 - **Copy-pasting identical notes** that get exposed the moment interviewers compare inboxes.
-- **Over-apologizing** for the interview — it draws attention to a weakness the interviewer may not have weighted heavily.
+- **Over-apologizing** for the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) — it draws attention to a weakness the interviewer may not have weighted heavily.
 - **Restating your entire [resume](https://thetailorcv.com/blog/anatomy-of-a-resume)** — the note should add warmth and one sharp point, not repeat your pitch.
 - **Waiting "to seem less eager"** — promptness reads as professional, not desperate.
 
@@ -108,7 +108,7 @@ Send two thank-you emails to the same interviewer and one advances you while the
 
 The thank-you email is one moment in a longer sequence of staying appropriately visible:
 
-- **Within 24 hours of each interview:** an individual thank-you referencing that conversation.
+- **Within 24 hours of each [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026):** an individual thank-you referencing that conversation.
 - **If a stated decision date passes:** a brief, warm check-in a day or two later.
 - **After a final round with no word for a week:** one polite status-and-interest note.
 - **After a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection):** a gracious thank-you asking to be kept in mind — genuinely underused, and it has reopened doors months later.
@@ -125,40 +125,40 @@ When five people interviewed you, five identical notes are worse than none — t
 Email, almost always. It arrives inside the 24-hour window that matters; a mailed card arrives after the decision.
 
 ### What if I don't have their email?
-Ask the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) to pass along your thanks, or send it through the recruiter and mention each interviewer by name.
+Ask the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) to pass along your thanks, or send it through the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) and mention each interviewer by name.
 
 ### Is it too late to send one two days later?
 Send it anyway — a late thank-you beats none. But aim for 24 hours next time; the sooner it lands, the more it helps.
 
 ### Should I send a thank-you after every round?
-Yes, after each interview with a new person or panel. Each is a fresh impression and a fresh decision conversation. Keep later notes short so they do not feel repetitive.
+Yes, after each [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) with a new person or panel. Each is a fresh impression and a fresh decision conversation. Keep later notes short so they do not feel repetitive.
 
 ### What subject line should I use?
-Simple and clear: "Thank you — [Role] interview" or "Great speaking with you today." Avoid anything cute; the subject line's job is to get opened and filed correctly.
+Simple and clear: "Thank you — [Role] [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)" or "Great speaking with you today." Avoid anything cute; the subject line's job is to get opened and filed correctly.
 
 ### Is it okay to reiterate my interest strongly?
 Yes, once and genuinely. "This is my top choice and I'm confident I'd contribute quickly" is fine if true. Just avoid repeating it in every sentence, which tips from confident into anxious.
 
 ### Should I mention salary or logistics in the thank-you?
-No. Keep the thank-you about the conversation and your fit. Save compensation and logistics for the recruiter and the [offer and negotiation stage](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email), where they belong.
+No. Keep the thank-you about the conversation and your fit. Save compensation and logistics for the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) and the [offer and negotiation stage](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email), where they belong.
 
 ### What if I interviewed with someone very senior, like a founder or VP?
 Send them a note too, kept slightly more concise and focused on the strategic or vision-level topics you discussed. Senior leaders appreciate brevity and a sharp, specific point over a long message.
 
 ### Can a thank-you email actually change the decision?
-It rarely overturns a clear no, but in a close race between similar candidates it genuinely tips decisions — and a missing one can cost you. Its real power is reinforcing a good impression and keeping you top of mind during the deliberation.
+It rarely overturns a clear no, but in a close race between similar [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) it genuinely tips decisions — and a missing one can cost you. Its real power is reinforcing a good impression and keeping you top of mind during the deliberation.
 
 ### Should I connect on LinkedIn after the interview too?
 It is fine to send a connection request with a brief, warm note after your thank-you, especially to the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid). Keep it professional and low-pressure; the email is the priority, and the connection is a nice supplement.
 
 ## How to Write One Fast Without Sounding Generic
 
-The excuse for not sending a thank-you is usually time, but a genuine one takes five minutes if you prepare during the interview itself. As you talk, mentally note one moment worth referencing — a problem the interviewer described, a point you connected on, a topic that lit them up. The instant the interview ends, jot that note down before it fades. Then your email writes itself: thank them, reference that exact moment, add one sentence reinforcing your fit, and close warmly. The whole thing is four to six sentences. The preparation is not extra work; it is just paying attention during a conversation you are already having. Candidates who treat the thank-you as an afterthought scramble for something generic; candidates who capture one specific detail in the moment send a note that proves they were genuinely present.
+The excuse for not sending a thank-you is usually time, but a genuine one takes five minutes if you prepare during the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) itself. As you talk, mentally note one moment worth referencing — a problem the interviewer described, a point you connected on, a topic that lit them up. The instant the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) ends, jot that note down before it fades. Then your email writes itself: thank them, [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) that exact moment, add one sentence reinforcing your fit, and close warmly. The whole thing is four to six sentences. The preparation is not extra work; it is just paying attention during a conversation you are already having. [Candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who treat the thank-you as an afterthought scramble for something generic; [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who capture one specific detail in the moment send a note that proves they were genuinely present.
 
 ## The Rejection Thank-You (Yes, Really)
 
-Almost nobody sends a thank-you after being rejected, which is exactly why doing so is powerful. A brief, gracious note — "Thank you for the opportunity and the thoughtful process; I really enjoyed meeting the team, and I'd welcome being considered for future roles" — leaves a lasting impression on a [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) who is used to candidates going cold or bitter after a no. Roles reopen, chosen candidates decline, and [hiring managers](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) move to new companies with their impressions intact. More than one person has been called back weeks or months later precisely because they handled a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) with grace. It costs two minutes and it keeps a door open that most people slam. In a [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), the relationships you maintain after a "no" are often worth as much as the ones you build during a "yes."
+Almost nobody sends a thank-you after being rejected, which is exactly why doing so is powerful. A brief, gracious note — "Thank you for the opportunity and the thoughtful process; I really enjoyed meeting the team, and I'd welcome being considered for future roles" — leaves a lasting impression on a [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) who is used to [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) going cold or bitter after a no. Roles reopen, chosen [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) decline, and [hiring managers](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) move to new companies with their impressions intact. More than one person has been called back weeks or months later precisely because they handled a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) with grace. It costs two minutes and it keeps a door open that most people slam. In a [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), the relationships you maintain after a "no" are often worth as much as the ones you build during a "yes."
 
 ## Putting It All Together
 
-A thank-you email rarely wins a job outright, but a thoughtful one can tip a close decision and a missing one can quietly cost you. Send it within 24 hours, reference something real from the conversation, reinforce one reason you fit, and keep it short. Do that after every round — individually to each interviewer — and you leave a final impression of someone engaged, professional, and easy to say yes to.
+A thank-you email rarely wins a job outright, but a thoughtful one can tip a close decision and a missing one can quietly cost you. Send it within 24 hours, [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) something real from the conversation, reinforce one reason you fit, and keep it short. Do that after every round — individually to each interviewer — and you leave a final impression of someone engaged, professional, and easy to say yes to.
