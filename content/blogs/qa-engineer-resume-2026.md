@@ -30,7 +30,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 One page for engineers with under 8 years of experience.
@@ -132,7 +132,7 @@ SaaS Platform | Jan 2022 - Present
 
 ### Mistake 1: Manual-only focus
 
-In 2026, automation is the standard. A QA resume with no automation experience is at a major disadvantage. Learn Selenium, Cypress, or Playwright and add automation [projects](https://thetailorcv.com/blog/projects-in-resume).
+In 2026, automation is the standard. A QA resume with no automation experience is at a major disadvantage. Learn Selenium, Cypress, or Playwright and add automation [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 
 ### Mistake 2: No quality metrics
 

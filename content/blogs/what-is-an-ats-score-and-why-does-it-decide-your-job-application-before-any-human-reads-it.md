@@ -188,7 +188,7 @@ If formatting is the problem, choose one of the [ATS-friendly resume templates](
 
 You can also use the [ATS score checker](https://www.thetailorcv.com/solutions) before applying to see how closely your resume matches the job description.
 
-If you are starting with little experience, the guide on [writing a resume with no experience](https://thetailorcv.com/blog/resume-with-no-experience) explains how to show projects, certifications, and transferable skills in an ATS-friendly way.
+If you are starting with little experience, the guide on [writing a resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) explains how to show projects, certifications, and transferable skills in an ATS-friendly way.
 
 ## ATS Score Myths
 
@@ -243,7 +243,7 @@ In 2026, the strongest applicants are not always the people with the fanciest re
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
 - [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)

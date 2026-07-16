@@ -32,7 +32,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary with certification highlight
 3. Technical skills by cloud and category
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 7. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
@@ -52,7 +52,7 @@ Cloud Engineer with 6 years of experience architecting multi-region AWS infrastr
 
 ### Example for Entry-Level Cloud Engineer
 
-Cloud Engineer with hands-on experience in AWS, Terraform, and Docker. Built 3 cloud infrastructure [projects](https://thetailorcv.com/blog/projects-in-resume) including a multi-environment VPC setup, serverless API with Lambda, and containerized workload on ECS. AWS Cloud Practitioner and Solutions Architect - Associate certified. Seeking a junior cloud or infrastructure engineering role.
+Cloud Engineer with hands-on experience in AWS, Terraform, and Docker. Built 3 cloud infrastructure [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) including a multi-environment VPC setup, serverless API with Lambda, and containerized workload on ECS. AWS Cloud Practitioner and Solutions Architect - Associate certified. Seeking a junior cloud or infrastructure engineering role.
 
 ---
 

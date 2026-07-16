@@ -143,7 +143,7 @@ Your professional summary should include a brief overview of your experience, ke
 
 ### How can I make my resume ATS-friendly?
 
-To make your resume ATS-friendly, use standard formatting, include relevant keywords from the job description, and stick to conventional section headings. Learn more about creating an ATS-friendly resume in our guide on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly).
+To make your resume ATS-friendly, use standard formatting, include relevant keywords from the job description, and stick to conventional section headings. Learn more about creating an ATS-friendly resume in our guide on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ### Should I mention my visa status on my resume?
 

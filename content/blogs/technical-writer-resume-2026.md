@@ -30,7 +30,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Skills
 4. Work experience
-5. Writing samples / [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. Writing samples / [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One to two pages. A documentation [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is essential.

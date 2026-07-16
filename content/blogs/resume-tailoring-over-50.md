@@ -294,7 +294,7 @@ You do not need to unless it comes up. If it does, pivot to your value: "I bring
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [How to Update Your Resume](https://thetailorcv.com/blog/how-to-update-your-resume)
 - [Skills to Add to Your Resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume)
+- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [ATS Mistakes Experienced Professionals Make](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 - [Executive Resume Tailoring Guide](https://thetailorcv.com/blog/executive-resume-tailoring-guide)

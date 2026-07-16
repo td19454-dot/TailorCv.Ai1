@@ -16,7 +16,7 @@ If you've ever stared at your inbox wondering:
 
 You're not alone.
 
-Thousands of students, [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), and even experienced professionals apply to hundreds of jobs every month and hear... absolutely nothing back.
+Thousands of students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), and even experienced professionals apply to hundreds of jobs every month and hear... absolutely nothing back.
 
 No [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) calls.  
 No [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) response.  
@@ -216,7 +216,7 @@ A [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) resume s
 While a [software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) resume should focus on:
 
 - [system design](https://thetailorcv.com/blog/system-design-interview-guide)
-- development [projects](https://thetailorcv.com/blog/projects-in-resume)
+- development [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - backend/frontend technologies
 - deployment experience
 
@@ -226,7 +226,7 @@ Completely different positioning.
 
 ## 3. Your Projects Don't Show Real Impact
 
-This is extremely common among students and [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers).
+This is extremely common among students and [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes).
 
 Most project descriptions sound like this:
 
@@ -268,7 +268,7 @@ They care less about:
 
 - certificates
 - random tutorials
-- copied [projects](https://thetailorcv.com/blog/projects-in-resume)
+- copied [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 
 And more about:
 
@@ -482,7 +482,7 @@ Top candidates usually have:
 - optimized resumes
 - referrals
 - portfolios
-- measurable [projects](https://thetailorcv.com/blog/projects-in-resume)
+- measurable [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - strong [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) presence
 - [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) strategy
 - [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) preparation
@@ -550,7 +550,7 @@ Before applying to any job, ask yourself:
  Are keywords aligned?  
  Did I [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) impact?  
  Is my [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) optimized?  
- Do my [projects](https://thetailorcv.com/blog/projects-in-resume) solve real problems?  
+ Do my [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) solve real problems?  
  Am I applying strategically?  
  Have I practiced interviews recently?
 
@@ -562,8 +562,8 @@ If not, fix those first.
 
 You may also find these guides useful:
 
-- [First-Time Resume With No Experience](https://thetailorcv.com/blog/resume-with-no-experience)
-- [Technical Skills in Resume for Freshers (No Experience)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [First-Time Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [Technical Skills in Resume for Freshers (No Experience)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide)
 - [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
 
@@ -604,7 +604,7 @@ Use [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) for
 
 ### Step 2: Improve LinkedIn
 
-Optimize your headline, About section, and [projects](https://thetailorcv.com/blog/projects-in-resume).
+Optimize your headline, About section, and [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 
 ### Step 3: Apply Strategically
 

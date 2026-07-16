@@ -55,7 +55,7 @@ A raise request is a business case. Gather:
 ### Your Accomplishments
 
 Document specific achievements since your last raise:
-- [projects](https://thetailorcv.com/blog/projects-in-resume) delivered and their business impact
+- [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) delivered and their business impact
 - Revenue generated or costs saved
 - Process improvements with [measurable results](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - Additional responsibilities you have taken on

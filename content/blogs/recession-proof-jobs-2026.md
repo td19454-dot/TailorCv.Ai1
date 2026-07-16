@@ -41,7 +41,7 @@ When you're sizing up a role or industry, ask which of these four buckets it fal
 
 Healthcare is the clearest example of non-discretionary demand. People get sick, age, and need care regardless of GDP growth, and most healthcare spending is either insurance-backed or government-funded rather than tied directly to consumer discretionary budgets.
 
-- **Nursing and allied health** - staffing shortages in many regions mean demand rarely evaporates even when hospital systems trim budgets elsewhere. See the [nursing resume guide](https://thetailorcv.com/blog/nursing-resume-2026) and, if you want to showcase clinical work visually, the [healthcare and nurse portfolio guide](https://thetailorcv.com/blog/healthcare-nurse-portfolio-guide).
+- **Nursing and allied health** - staffing shortages in many regions mean demand rarely evaporates even when hospital systems trim budgets elsewhere. See the [nursing resume guide](https://thetailorcv.com/blog/nursing-resume-2026) and, if you want to showcase clinical work visually, the [healthcare and nurse portfolio guide](https://thetailorcv.com/blog/nursing-resume-2026).
 - **Pharmacy** - prescription demand is inelastic; people don't stop taking maintenance medications because of a downturn. See the [pharmacist resume guide](https://thetailorcv.com/blog/pharmacist-resume-2026).
 - **Caveat:** elective procedures, cosmetic specialties, and some private-pay wellness services are more discretionary and do get squeezed. "Healthcare" isn't uniformly safe - the closer a role is to essential, insurance-covered, or regulatory-required care, the more resilient it tends to be.
 

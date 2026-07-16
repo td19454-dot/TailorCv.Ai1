@@ -32,7 +32,7 @@ Before applying, test your resume against the job description with the [ATS scor
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. Publications or [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -141,7 +141,7 @@ Health-Tech Company | Aug 2023 - Present
 
 ## Data Science Project Ideas for Freshers
 
-Projects are how [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) prove applied ability. Good project topics:
+Projects are how [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) prove applied ability. Good project topics:
 
 - Churn prediction model
 - Sentiment analysis on product reviews
@@ -164,7 +164,7 @@ Customer Churn Prediction | Python, scikit-learn, XGBoost, SQL, Tableau
 - Created a Tableau dashboard showing high-risk customer segments by region, plan type, and contract length.
 - Documented findings in a write-up with actionable retention recommendations.
 
-Read [how to add projects in resume](https://thetailorcv.com/blog/projects-in-resume) for formatting tips.
+Read [how to add projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for formatting tips.
 
 ---
 
@@ -176,7 +176,7 @@ Employers do not care that you used TensorFlow. They care what it predicted, how
 
 ### Mistake 2: Only academic projects
 
-[projects](https://thetailorcv.com/blog/projects-in-resume) on MNIST, Iris, or Titanic datasets are overused. Build something on a real or novel dataset relevant to an industry.
+[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) on MNIST, Iris, or Titanic datasets are overused. Build something on a real or novel dataset relevant to an industry.
 
 ### Mistake 3: No deployment experience
 

@@ -30,7 +30,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience with project highlights
-5. Projects (for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers))
+5. Projects (for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes))
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and professional memberships
 
@@ -98,7 +98,7 @@ Designed / Optimized / Reduced / Led + [process, equipment, or system] + [indust
 
 ### Weak Bullet Points
 
-- Worked on process optimization [projects](https://thetailorcv.com/blog/projects-in-resume)
+- Worked on process optimization [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Used Aspen Plus for simulation
 - Participated in HAZOP studies
 - Managed plant turnarounds

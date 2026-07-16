@@ -43,7 +43,7 @@ What it likely means:
 What to do:
 - Run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) against that specific job description
 - Check the job posting for keywords your resume missed
-- Add any missing certifications or [projects](https://thetailorcv.com/blog/projects-in-resume) that would address experience gaps
+- Add any missing certifications or [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that would address experience gaps
 
 ### Phone Screen Rejection
 

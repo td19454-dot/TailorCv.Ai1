@@ -143,7 +143,7 @@ Third line = one specific result or distinctive value
 - "Managed $1.2M marketing budget with 3.4x average ROAS across digital channels."
 
 If you do not have a result yet (entry-level), use a relevant project or context:
-- "Completed AWS Solutions Architect certification and led 3 capstone [projects](https://thetailorcv.com/blog/projects-in-resume) in cloud migration."
+- "Completed AWS Solutions Architect certification and led 3 capstone [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) in cloud migration."
 
 ### Step 6: Read It Back Against the JD
 

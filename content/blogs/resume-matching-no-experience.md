@@ -40,16 +40,16 @@ Use [TailorCV's resume optimizer](https://www.thetailorcv.com/solutions) to find
 When you have work experience, matching is about translating professional history into [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) language.
 
 When you have no work experience, matching is about organizing everything else you have done:
-- Academic [projects](https://thetailorcv.com/blog/projects-in-resume)
+- Academic [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Coursework and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Internships (even unpaid or brief)
 - Extracurricular activities
 - Volunteer work
-- Personal [projects](https://thetailorcv.com/blog/projects-in-resume)
+- Personal [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Freelance or contract work
 - Competitions and hackathons
 
-None of these are "[no experience](https://thetailorcv.com/blog/resume-with-no-experience)."
+None of these are "[no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)."
 They are all evidence of skill.
 The challenge is presenting them in the JD's language.
 
@@ -96,7 +96,7 @@ For each keyword, ask:
 - "Did I complete a certification that covers this?"
 
 Do not dismiss coursework.
-Do not dismiss [projects](https://thetailorcv.com/blog/projects-in-resume).
+Do not dismiss [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 Do not dismiss extracurriculars.
 
 If the answer is yes, that experience counts.
@@ -137,7 +137,7 @@ When you have no work experience, the traditional resume order does not serve yo
 
 Rearrange your sections to lead with your strongest match:
 
-**If you have relevant [projects](https://thetailorcv.com/blog/projects-in-resume):**
+**If you have relevant [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers):**
 ```
 Education
 Projects (pinned to top)
@@ -161,7 +161,7 @@ So do recruiters.
 
 ### Step 5: Build a Keyword-Rich Projects Section
 
-[projects](https://thetailorcv.com/blog/projects-in-resume) are your primary experience evidence.
+[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are your primary experience evidence.
 
 For each relevant project, include:
 - Project title (use JD-relevant language in the title)
@@ -190,7 +190,7 @@ Many top [certifications](https://thetailorcv.com/blog/how-to-list-certification
 - SQL via DataCamp, Mode, or Khan Academy (free)
 - Python via Codecademy or CS50 (free)
 
-Read [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) for a full list.
+Read [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026) for a full list.
 
 ### Step 7: Write a Summary That Sells Your Potential
 
@@ -201,7 +201,7 @@ Without work experience, your summary must emphasize:
 
 **Example for Marketing Analyst Role:**
 
-> "Marketing graduate with hands-on experience in Google Analytics, HubSpot, and Excel-based campaign tracking through coursework and personal [projects](https://thetailorcv.com/blog/projects-in-resume). Completed Google Analytics certification and built a 3-part content funnel project that generated 2,000+ organic visits over 3 months. Ready to contribute data-driven marketing analysis from day one."
+> "Marketing graduate with hands-on experience in Google Analytics, HubSpot, and Excel-based campaign tracking through coursework and personal [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Completed Google Analytics certification and built a 3-part content funnel project that generated 2,000+ organic visits over 3 months. Ready to contribute data-driven marketing analysis from day one."
 
 Read [how to match your resume summary to a job description](https://thetailorcv.com/blog/resume-summary-match-job-description).
 
@@ -241,7 +241,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Can I get interviews with no work experience?
 
-Yes, absolutely. Especially if your [projects](https://thetailorcv.com/blog/projects-in-resume), certifications, and coursework demonstrate the skills the employer needs.
+Yes, absolutely. Especially if your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), certifications, and coursework demonstrate the skills the employer needs.
 
 ### Should I list academic projects on my resume?
 
@@ -257,7 +257,7 @@ List it under Education or [certifications](https://thetailorcv.com/blog/how-to-
 
 ### What if the job requires "2 years of experience" and I have none?
 
-Apply anyway if you match the technical skills. Many "required years" are aspirational. Your [projects](https://thetailorcv.com/blog/projects-in-resume) and certifications can substitute.
+Apply anyway if you match the technical skills. Many "required years" are aspirational. Your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and certifications can substitute.
 
 ### Is a cover letter important for entry-level applicants?
 
@@ -269,19 +269,19 @@ Very. For entry-level candidates, a targeted cover letter explains why you are a
 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [How to Write a Resume With No Experience](https://thetailorcv.com/blog/resume-with-no-experience)
-- [How to Add Projects to Resume for Freshers](https://thetailorcv.com/blog/projects-in-resume)
-- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume)
+- [How to Write a Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [How to Add Projects to Resume for Freshers](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
-- [Technical Skills in Resume for Freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [Technical Skills in Resume for Freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
 - [Resume Matching for Career Changers - How to Bridge the Gap in 2026](https://thetailorcv.com/blog/resume-matching-for-career-changers)
 - [How to Match Your Resume to a Remote Job Description in 2026](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description)
 - [How to Match Resume Keywords to Job Description - 2026 Guide](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
 - [How to Match Your Resume When You're Overqualified for the Job (2026 Guide)](https://thetailorcv.com/blog/overqualified-resume-match-job-description)
 - [Resume Matching for Experienced Professionals - How to Stay Relevant in 2026](https://thetailorcv.com/blog/resume-matching-experienced-professionals)
-- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
 
 ---
 
@@ -291,7 +291,7 @@ No work experience does not mean no match.
 
 It means you need to be more intentional about where you find your evidence and how you describe it.
 
-[projects](https://thetailorcv.com/blog/projects-in-resume), coursework, certifications, volunteer work - all of these are legitimate experience.
+[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), coursework, certifications, volunteer work - all of these are legitimate experience.
 Describe them in [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) language and they become keyword matches.
 
 Steps:
@@ -299,7 +299,7 @@ Steps:
 2. Map each keyword to something you have done
 3. Rewrite your experience in JD language
 4. Lead with your strongest section
-5. Build a strong [projects](https://thetailorcv.com/blog/projects-in-resume) section with JD keywords
+5. Build a strong [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) section with JD keywords
 6. Get [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for key skill gaps
 7. Check your score at [TailorCV](https://www.thetailorcv.com/solutions)
 

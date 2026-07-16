@@ -129,7 +129,7 @@ Academic awards carry significant weight. List them prominently:
 - Club/society leadership awards
 - Internship performance recognition
 
-Read [resume with no experience guide](https://thetailorcv.com/blog/resume-with-no-experience) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) for fresher-specific advice.
+Read [resume with no experience guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) for fresher-specific advice.
 
 ### Mid-Career Professionals (3-8 Years)
 Transition away from academic awards toward professional ones. Remove high school and minor college awards. Keep any continuing [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), industry certification honors, or competition wins.
@@ -189,7 +189,7 @@ Test your resume's full ATS score with the [TailorCV checker](https://www.thetai
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [Resume with No Experience Guide](https://thetailorcv.com/blog/resume-with-no-experience)
+- [Resume with No Experience Guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
