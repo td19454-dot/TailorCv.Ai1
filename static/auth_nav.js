@@ -385,8 +385,24 @@ function showUpgradeModal(feature) {
     }
 
     if (!user) {
-      // Sync session cookie with localStorage — clear stale cache after logout/expiry.
+      // A session can exist without a cached user — logging in through the
+      // Chrome extension's own form sets the session cookie directly and never
+      // calls TailorCVAuth.saveUser() here — so check the real session once and
+      // adopt it instead of leaving the header stuck on "Login" forever.
       fetch("/api/auth/me", { headers: { "X-Requested-With": "XMLHttpRequest" } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (!data) return;
+          const fresh = { name: data.name, email: data.email, is_pro: data.is_pro, pro_until: data.pro_until };
+          try { localStorage.setItem("tailorcv_user", JSON.stringify(fresh)); } catch (e) {}
+          slot.innerHTML = createAuthWidget(fresh, fresh.is_pro);
+          if (getStartedBtn) getStartedBtn.style.display = "none";
+          injectAuthStyles();
+          showMyResumesHint();
+          const link = document.querySelector(".tc-myresumes-link");
+          if (link) link.addEventListener("click", markHintSeen);
+          wireDropdown();
+        })
         .catch(function () {});
       return;
     }
