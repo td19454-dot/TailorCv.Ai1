@@ -53,11 +53,11 @@ Read the company's recent blog, product updates, or news, and the full job posti
 
 You cannot give a specific answer without a specific fact, and you can gather several in ten minutes:
 
-1. **The full job posting.** The problems it describes are the problems you should say you want to solve. Reference them directly.
+1. **The full job posting.** The problems it describes are the problems you should say you want to solve. [Reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) them directly.
 2. **The company's recent blog or changelog.** A launch, a decision, or a point of view you genuinely find interesting.
 3. **Recent news or funding.** A new market, a milestone, a strategic shift.
 4. **The product itself.** If you can try it, one honest observation from real use is the strongest hook of all.
-5. **Your interviewers' public work.** A talk, an article, a project — something that tells you what the team values.
+5. **Your interviewers' public work.** A talk, an article, a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) — something that tells you what the team values.
 
 Turn any one of these into a sentence, and your answer instantly separates you from every candidate who said "you're a leader in the industry."
 
@@ -109,7 +109,7 @@ Almost everyone needs the income; interviewers know that. Find a genuine seconda
 30–60 seconds. Long enough for all three parts, short enough to stay sharp.
 
 ### What if I don't know much about the company?
-Then research before the interview. Ten minutes on their site and recent news is the difference between a specific answer and a forgettable one.
+Then research before the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Ten minutes on their site and recent news is the difference between a specific answer and a forgettable one.
 
 ### How do I answer if it's genuinely just a stepping-stone role?
 Find the true part of your interest and lead with that — a specific skill you will build, a problem you will get to solve, a team you respect. You do not have to pretend it is your dream job, but you do have to show genuine, specific interest in *something* about it.
@@ -133,16 +133,8 @@ You need both, but substance carries more weight. Genuine energy is attractive, 
 "Why do you want this job?" is about your motivation and fit — what draws *you* to the role. "Why should we hire you?" is about your value — what *you* bring to them. Prepare them as a pair: one points at the company, the other at your contribution, and together they tell a consistent story.
 
 ### What if the interviewer seems unconvinced by my answer?
-Add a specific, concrete detail. Vague answers get lukewarm reactions; naming an actual project, value, or problem you would work on usually shifts the energy. If you sense doubt, it is a signal to get more specific, not more enthusiastic.
+Add a specific, concrete detail. Vague answers get lukewarm reactions; naming an actual [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), value, or problem you would work on usually shifts the energy. If you sense doubt, it is a signal to get more specific, not more enthusiastic.
 
 ## Putting It All Together
 
-"Why do you want this job?" is one of the most predictable interview questions and one of the most commonly fumbled. Connect three things — something specific about the role, something specific about the company, and how it fits your direction — and anchor each to a real fact you gathered in ten minutes of research. Keep your answer consistent with your other responses, and rehearse the whole set together. Do that and you turn a throwaway question into clear proof that you did your homework and genuinely want *this* role, not just any role.
-
-## Related Guides
-
-- [Phone Screen Interview Tips](https://thetailorcv.com/blog/phone-screen-interview-tips)
-- [Second Interview Questions and Answers](https://thetailorcv.com/blog/second-interview-questions-and-answers)
-- [Video Interview Tips for 2026](https://thetailorcv.com/blog/video-interview-tips-2026)
-- [Thank-You Email After an Interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates)
-- [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
+"Why do you want this job?" is one of the most predictable [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) questions and one of the most commonly fumbled. Connect three things — something specific about the role, something specific about the company, and how it fits your direction — and anchor each to a real fact you gathered in ten minutes of research. Keep your answer consistent with your other responses, and rehearse the whole set together. Do that and you turn a throwaway question into clear proof that you did your homework and genuinely want *this* role, not just any role.

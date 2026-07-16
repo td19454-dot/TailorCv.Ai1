@@ -60,7 +60,7 @@ You cannot anchor to market data you do not have. Before you counter, spend an h
 - **Salary databases and levels sites** for the role, level, and location.
 - **The posting itself** — many now list a range; if yours does, aim for the upper half if your experience justifies it.
 - **Your network** — a discreet question to a peer in a similar role is often the most accurate data of all.
-- **Recruiter signals** — if they asked your expectations early and the offer matches, there may be less room; if they came in low, there is usually room to move.
+- **[Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) signals** — if they asked your expectations early and the offer matches, there may be less room; if they came in low, there is usually room to move.
 
 Walk into the negotiation with a specific target number and a specific "walk-comfortably" floor. Vague hopes lose to prepared numbers.
 
@@ -123,7 +123,7 @@ The whole exchange is usually two or three emails over a few days, conducted war
 
 ## When Not to Push
 
-Negotiation is almost always worth one polite ask, but reading the situation keeps you from overplaying it. If the offer already came in strong — at or above your target and the market range — one gracious ask is fine, but do not grind for marginal gains at the cost of goodwill. If the recruiter has signaled the number is truly firm (a rigid public band, a strict internal-equity policy), accept that gracefully rather than pushing a fourth time. And once you have agreed to a number, honor it — reopening a settled negotiation, or continuing to squeeze after a fair yes, is the one thing that can genuinely sour the relationship you are about to start. Know your value, make your case once clearly, and know when a good outcome is good enough.
+Negotiation is almost always worth one polite ask, but reading the situation keeps you from overplaying it. If the offer already came in strong — at or above your target and the market range — one gracious ask is fine, but do not grind for marginal gains at the cost of goodwill. If the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) has signaled the number is truly firm (a rigid public band, a strict internal-equity policy), accept that gracefully rather than pushing a fourth time. And once you have agreed to a number, honor it — reopening a settled negotiation, or continuing to squeeze after a fair yes, is the one thing that can genuinely sour the relationship you are about to start. Know your value, make your case once clearly, and know when a good outcome is good enough.
 
 ## Frequently Asked Questions
 
@@ -153,15 +153,8 @@ Always. Confirm every agreed term — base, bonus, equity, start date — in wri
 
 ## Negotiating as a New Graduate or Career Starter
 
-Early-career candidates often assume they have no room to negotiate, and so they accept the first number without a word — leaving money on the table that compounds across every future raise. Even at [entry level](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), a polite, well-reasoned ask is usually appropriate and rarely costs you the offer. The framing shifts slightly: with less experience to anchor to, lean harder on market data for the role and location, on any competing offers, and on the specific skills or projects you bring. Keep the ask modest and gracious — "Based on my research for this kind of role, I was hoping we could get the base a little closer to [X]; is there any flexibility?" If the base is truly fixed, as it sometimes is for standardized new-grad programs, pivot to a signing bonus or an earlier review date. And remember that your starting salary sets the baseline for years of percentage raises, so a small increase now is worth far more than it appears. The worst outcome of a respectful ask is almost always just "no," and a graceful "understood, I'm still thrilled to accept" keeps everything warm.
+Early-career candidates often assume they have no room to negotiate, and so they accept the first number without a word — leaving money on the table that compounds across every future raise. Even at [entry level](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), a polite, well-reasoned ask is usually appropriate and rarely costs you the offer. The framing shifts slightly: with less experience to anchor to, lean harder on market data for the role and location, on any competing offers, and on the specific skills or [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you bring. Keep the ask modest and gracious — "Based on my research for this kind of role, I was hoping we could get the base a little closer to [X]; is there any flexibility?" If the base is truly fixed, as it sometimes is for standardized new-grad programs, pivot to a signing bonus or an earlier review date. And remember that your starting salary sets the baseline for years of percentage raises, so a small increase now is worth far more than it appears. The worst outcome of a respectful ask is almost always just "no," and a graceful "understood, I'm still thrilled to accept" keeps everything warm.
 
 ## Putting It All Together
 
 Almost every offer has room, and the cost of a polite, well-reasoned ask is far smaller than the compounding cost of leaving money on the table. Do your research, anchor to market value rather than personal need, give one clear number, and negotiate the full package — not just base — while staying warm throughout. Get the final terms in writing before you resign or decline elsewhere. Handle it this way and you start the new job on better terms and with a relationship that is stronger, not strained.
-
-## Related Guides
-
-- [How to Decline a Job Offer](https://thetailorcv.com/blog/how-to-decline-a-job-offer)
-- [How to Write a Two Weeks' Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
-- [Second Interview Questions and Answers](https://thetailorcv.com/blog/second-interview-questions-and-answers)
-- [How to Follow Up After a Job Application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application)
