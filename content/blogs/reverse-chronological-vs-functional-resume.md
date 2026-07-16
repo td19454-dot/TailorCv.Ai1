@@ -35,7 +35,7 @@ A functional resume removes the one thing a recruiter looks for first: the timel
 
 ## When a Combination Format Fits
 
-The one strong case for moving away from pure chronological is a **genuine career change**, where your most relevant experience is not your most recent. A combination format lets you lead with a skills summary and relevant projects, then still show a dated history — so you get the framing benefit without triggering the "what are they hiding" reflex.
+The one strong case for moving away from pure chronological is a **genuine [career change](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)**, where your most relevant experience is not your most recent. A combination format lets you lead with a skills summary and relevant projects, then still show a dated history — so you get the framing benefit without triggering the "what are they hiding" reflex.
 
 ## The Layout Rules That Apply to All Three
 
@@ -112,12 +112,12 @@ Get the format and these fundamentals right, and you have cleared the mechanical
 
 Since this is the format almost everyone should use, here is how to structure it well from top to bottom:
 
-1. **Contact block.** Name, phone, email, city, and links (LinkedIn, portfolio, GitHub) — in the body, never in a header or footer a parser might skip.
-2. **Summary.** Two or three lines stating who you are, your strongest quantified proof, and your target — tuned to the specific role.
+1. **Contact block.** Name, phone, email, city, and links (LinkedIn, [portfolio](https://thetailorcv.com/portfolio), GitHub) — in the body, never in a header or footer a parser might skip.
+2. **Summary.** Two or three lines stating who you are, your strongest [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) proof, and your target — tuned to the specific role.
 3. **Experience.** Newest job first. For each: title, company, location, dates, then three to five bullets led by strong verbs and quantified results. Lead each role with its most impressive, relevant bullet.
 4. **Skills.** A clean, grouped list of genuine hard skills that mirror the posting's language.
 5. **Education.** Degree, institution, graduation year, and relevant honors or coursework if early-career.
-6. **Optional sections.** Certifications, projects, or publications, if they strengthen your case for this role.
+6. **Optional sections.** [Certifications](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026), projects, or publications, if they strengthen your case for this role.
 
 The order can flex slightly — technical and early-career candidates often move skills or projects higher — but the reverse-chronological experience section stays the backbone, because it is what recruiters and parsers both expect.
 

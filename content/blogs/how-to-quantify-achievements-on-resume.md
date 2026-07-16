@@ -144,7 +144,7 @@ Match your metrics to your level, and lead each role with the number that best p
 
 ## Building Quantified Bullets Into a Tailored Resume
 
-Numbers do their best work when they are also relevant to the specific job. A metric that matters to one role may be noise to another — a growth number dazzles a startup and means less to a compliance-heavy enterprise that cares about accuracy and risk reduction. When you [tailor your resume](https://thetailorcv.com/optimize) to a posting, you are not just matching keywords; you are choosing *which* of your quantified wins to feature. Lead with the metrics that map to what this employer values, and your resume reads as though it was written for them — because it was. A resume that pairs the right keywords with the right numbers is what convinces both the [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) and the hiring manager in the same read.
+Numbers do their best work when they are also relevant to the specific job. A metric that matters to one role may be noise to another — a growth number dazzles a startup and means less to a compliance-heavy enterprise that cares about accuracy and risk reduction. When you [tailor your resume](https://thetailorcv.com/optimize) to a posting, you are not just matching [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats); you are choosing *which* of your quantified wins to feature. Lead with the metrics that map to what this employer values, and your resume reads as though it was written for them — because it was. A resume that pairs the right keywords with the right numbers is what convinces both the [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) and the hiring manager in the same read.
 
 ## Frequently Asked Questions
 
@@ -164,7 +164,7 @@ Claim your real contribution honestly. "Contributed to a team that grew revenue 
 Round sensibly. "Cut costs by about 20%" is more credible than "by 19.7%" unless you genuinely have precise data. Precision implies measurement; only claim it if you measured it.
 
 ### My last job had strict confidentiality — how do I show impact?
-Use relative figures and scope. "Managed a portfolio in the low eight figures" or "improved retention double digits" conveys scale without disclosing protected numbers. Percentages and ranges are almost never confidential.
+Use relative figures and scope. "Managed a [portfolio](https://thetailorcv.com/portfolio) in the low eight figures" or "improved retention double digits" conveys scale without disclosing protected numbers. Percentages and ranges are almost never confidential.
 
 ### How many quantified bullets should a resume have overall?
 Aim for a number in the top two or three bullets of each recent role. Across a one-page resume that is roughly six to nine metrics — enough to prove a pattern of impact without turning the page into a data dump.

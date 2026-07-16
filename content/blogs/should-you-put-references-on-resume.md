@@ -41,7 +41,7 @@ The best reference is someone who directly supervised or worked closely with you
 
 ## Always Ask First — and Brief Them
 
-Never surprise a reference. Ask permission, then set them up to help you: send them the job description, remind them of a couple of your relevant wins, and tell them what the role emphasizes. A briefed reference gives a specific, glowing answer instead of a generic "yes, they were fine."
+Never surprise a reference. Ask permission, then set them up to help you: send them the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), remind them of a couple of your relevant wins, and tell them what the role emphasizes. A briefed reference gives a specific, glowing answer instead of a generic "yes, they were fine."
 
 ## What a Reference Sheet Looks Like
 

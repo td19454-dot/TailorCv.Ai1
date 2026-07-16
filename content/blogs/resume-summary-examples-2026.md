@@ -47,7 +47,7 @@ Skip "hardworking team player." Every line should be something only *you* could 
 
 1. Match the **job title** in the posting.
 2. Swap in **your real metric** — the summary lives or dies on a specific, true number.
-3. Mirror the posting's **keywords** so it reads relevant to both the recruiter and the [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works).
+3. Mirror the posting's **[keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)** so it reads relevant to both the recruiter and the [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works).
 
 ## More Examples by Role and Stage
 
@@ -74,13 +74,13 @@ The formula flexes across every field. Here are more you can adapt — always sw
 **Recent Graduate (Engineering)**
 > Computer science graduate with three shipped side projects in React and Node, including an app used by 200+ classmates. I learn fastest by building, and I am eager to grow into a full-stack role on a team that ships often.
 
-**Career Changer (into Marketing)**
+**[Career Changer](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) (into Marketing)**
 > Former journalist moving into content marketing, bringing five years of turning complex topics into stories people actually read. Completed a content-strategy certification and grew a personal newsletter to 3,000 subscribers in six months.
 
 ## How to Write Your Own, Step by Step
 
 1. **State your identity.** Your role or target role, in the posting's words. "Backend engineer," not "coding professional."
-2. **Add your strongest proof.** One quantified achievement that maps to this job. This is the line that makes the summary believable.
+2. **Add your strongest proof.** One [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) achievement that maps to this job. This is the line that makes the summary believable.
 3. **Name your focus or value.** What you are especially good at, or what you care about, tied to what the role needs.
 4. **Point it at the target.** A short phrase on what you want next, aligned with the posting.
 5. **Cut every filler word.** Delete "hardworking," "detail-oriented," "team player," and any sentence that could appear on anyone's resume.
@@ -104,7 +104,7 @@ Place the summary at the very top, directly under your contact details, so it is
 
 The single biggest upgrade to a resume summary is not better wording — it is a fresh version for each application. A summary that name-drops the exact role title and mirrors the posting's language reads as written *for this job*, because it was. That is also what an [ATS score](https://thetailorcv.com/solutions) rewards: the closer your summary's terms match the posting, the higher your relevance.
 
-You do not have to rewrite it from scratch each time. Keep one strong base summary, then adjust the role title, swap the lead metric to the most relevant one, and mirror two or three keywords from the posting. If you use the [TailorCV resume optimizer](https://thetailorcv.com/optimize), it reads the job description and rewrites your summary and bullets to match the exact role — turning a generic profile into a targeted one in a couple of minutes. And if you are starting from scratch, the [resume builder](https://thetailorcv.com/modify-cv) gives you a clean, ATS-friendly structure to drop your summary into.
+You do not have to rewrite it from scratch each time. Keep one strong base summary, then adjust the role title, swap the lead metric to the most relevant one, and mirror two or three keywords from the posting. If you use the [TailorCV resume optimizer](https://thetailorcv.com/optimize), it reads the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and rewrites your summary and bullets to match the exact role — turning a generic profile into a targeted one in a couple of minutes. And if you are starting from scratch, the [resume builder](https://thetailorcv.com/modify-cv) gives you a clean, ATS-friendly structure to drop your summary into.
 
 ## Before and After: Weak Summary to Strong
 

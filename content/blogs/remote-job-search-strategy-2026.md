@@ -43,7 +43,7 @@ Hiring managers worry about trust and communication with someone they will rarel
 
 ## Tailor Every Application
 
-Because remote roles are so competitive, a tailored resume is the highest-leverage move. Match the posting's exact keywords, mirror its language, and make sure your remote-relevant strengths are visible. Tailoring each application — rather than sending one resume everywhere — is what separates the interview pile from the [no-response pile](https://thetailorcv.com/blog/why-your-resume-gets-no-responses). A [resume optimizer](https://thetailorcv.com/optimize) reads each posting and adjusts your resume to match it, which matters far more for a remote role drawing a thousand applicants than for a local one drawing thirty.
+Because remote roles are so competitive, a tailored resume is the highest-leverage move. Match the posting's exact [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats), mirror its language, and make sure your remote-relevant strengths are visible. Tailoring each application — rather than sending one resume everywhere — is what separates the interview pile from the [no-response pile](https://thetailorcv.com/blog/why-your-resume-gets-no-responses). A [resume optimizer](https://thetailorcv.com/optimize) reads each posting and adjusts your resume to match it, which matters far more for a remote role drawing a thousand applicants than for a local one drawing thirty.
 
 ## Why Volume Alone Fails for Remote Roles
 
@@ -54,7 +54,7 @@ The instinct in a competitive market is to apply to more jobs faster. For remote
 A hiring manager for a remote role is quietly asking one extra question: *can I trust this person to work well without me watching?* Answer it before they ask.
 
 - **Put remote results in your bullets.** "Led a fully distributed team across three time zones to ship on schedule" says more than "remote-friendly."
-- **Foreground written communication.** Clear writing is the core competency of remote work; your resume and cover letter are the first sample of it. Sloppy writing is disqualifying for a remote role in a way it is not for an in-office one.
+- **Foreground written communication.** Clear writing is the core competency of remote work; your resume and [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work) are the first sample of it. Sloppy writing is disqualifying for a remote role in a way it is not for an in-office one.
 - **Show self-direction.** Projects you drove without close supervision signal you will not need hand-holding.
 - **State your time zone and availability.** A line like "Remote (GMT+5:30, 4-hour daily overlap with US Eastern)" removes a silent filter.
 
@@ -103,7 +103,7 @@ Time zone is one of the silent filters that quietly eliminates remote candidates
 
 ## Staying Motivated and Organized
 
-A remote job search is often longer and more competitive than a local one, which makes organization and morale part of the strategy. Keep a simple tracker of every application, its status, and your contacts, so nothing slips and follow-ups are effortless. Set a weekly target for tailored applications rather than chasing a giant daily number, because ten well-targeted applications beat a hundred generic ones. And protect your energy: the volume of competition for remote roles means more silence and more rejection, none of it personal. Candidates who keep a steady pipeline and treat the search as a process — not a referendum on their worth — interview better and last longer than those who burn out spraying applications.
+A remote job search is often longer and more competitive than a local one, which makes organization and morale part of the strategy. Keep a simple tracker of every application, its status, and your contacts, so nothing slips and follow-ups are effortless. Set a weekly target for tailored applications rather than chasing a giant daily number, because ten well-targeted applications beat a hundred generic ones. And protect your energy: the volume of competition for remote roles means more silence and more [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection), none of it personal. Candidates who keep a steady pipeline and treat the search as a process — not a referendum on their worth — interview better and last longer than those who burn out spraying applications.
 
 ## Frequently Asked Questions
 
@@ -141,7 +141,7 @@ Remote roles almost always mean a fully remote hiring process, which has its own
 
 ## Putting It All Together
 
-Remote roles are abundant but fiercely competitive, so the winning strategy is the opposite of spraying applications. Target selectively, build a resume that proves you can thrive in a distributed team, tailor every application to the posting, and lean on referrals for your top choices. Prove your remote competence in a polished video interview, and verify every employer before sharing personal details. Do that and you rise above the flood of generic applicants — which is exactly where a remote offer is won.
+Remote roles are abundant but fiercely competitive, so the winning strategy is the opposite of spraying applications. Target selectively, build a resume that proves you can thrive in a distributed team, tailor every application to the posting, and lean on referrals for your top choices. Prove your remote competence in a polished [video interview](https://thetailorcv.com/blog/video-interview-tips-2026), and verify every employer before sharing personal details. Do that and you rise above the flood of generic applicants — which is exactly where a remote offer is won.
 
 ## Related Guides
 
