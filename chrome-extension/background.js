@@ -60,8 +60,12 @@ chrome.action.onClicked.addListener(async (tab) => {
 // login flow (there's no window reference here), so broadcast to every open
 // tab the extension runs on — content.js only acts on it if its own sidebar
 // is actually showing the logged-out state.
+// Same channel as the login flow above, fired instead by the "Set up your
+// extension" page (see templates/extension.html) once a base resume is
+// actually saved — so a panel stuck on "no base resume set" catches up on
+// its own instead of the user having to notice and refresh it by hand.
 chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {
-  if (!msg || msg.type !== 'tailorcv-login-success') return;
+  if (!msg || (msg.type !== 'tailorcv-login-success' && msg.type !== 'tailorcv-base-resume-updated')) return;
   chrome.tabs.query({}, (tabs) => {
     for (const tab of tabs) {
       if (tab.id) chrome.tabs.sendMessage(tab.id, { type: 'REFRESH_AUTH' }).catch(() => {});
@@ -139,7 +143,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             body: JSON.stringify({ jd_string: msg.jd_string }),
           });
           if (!res.ok) {
-            sendResponse({ error: 'Could not compute match score.' });
+            const code = res.status === 404 ? 'no_base_resume' : res.status === 401 ? 'not_logged_in' : null;
+            sendResponse({ error: 'Could not compute match score.', code });
             return;
           }
           sendResponse({ data: await res.json() });
@@ -158,14 +163,23 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
           if (!res.ok) {
             let detail = 'Could not write your cover letter.';
+            let code = null;
             try {
               const data = await res.json();
-              if (res.status === 401) detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
-              else if (res.status === 402 || data.error === 'upgrade_required') detail = 'Free cover letter used. Upgrade to Pro at thetailorcv.com.';
-              else if (res.status === 404) detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
-              else if (data.detail) detail = data.detail;
+              if (res.status === 401) {
+                detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
+                code = 'not_logged_in';
+              } else if (res.status === 402 || data.error === 'upgrade_required') {
+                detail = 'Free cover letter used. Upgrade to Pro at thetailorcv.com.';
+                code = 'upgrade_required';
+              } else if (res.status === 404) {
+                detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
+                code = 'no_base_resume';
+              } else if (data.detail) {
+                detail = data.detail;
+              }
             } catch (_) { /* keep the default */ }
-            sendResponse({ error: detail });
+            sendResponse({ error: detail, code });
             return;
           }
 
