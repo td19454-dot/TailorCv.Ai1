@@ -33,13 +33,20 @@
         .ext-status { border-radius: 12px; padding: 12px 15px; font-size: .93rem; font-weight: 600; color: #4ade80; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); margin-bottom: 16px; }
         .ext-status.unset { color: #fca5a5; background: rgba(239,68,68,.1); border-color: rgba(239,68,68,.28); }
 
-        .ext-drop { position: relative; display: block; cursor: pointer; border: 1.5px dashed rgba(96,165,250,.45); background: rgba(59,130,246,.07); border-radius: 14px; padding: 24px; text-align: center; transition: border-color .2s ease, background .2s ease; }
-        .ext-drop:hover, .ext-drop.over { border-color: rgba(96,165,250,.95); background: rgba(59,130,246,.14); }
+        .ext-drop { position: relative; display: flex; flex-direction: column; align-items: center; cursor: pointer; border: 1.5px dashed rgba(139,92,246,.5); background: rgba(124,58,237,.06); border-radius: 14px; padding: 34px 24px; text-align: center; transition: border-color .2s ease, background .2s ease; }
+        .ext-drop:hover, .ext-drop.over { border-color: rgba(139,92,246,.95); background: rgba(124,58,237,.12); }
         .ext-drop input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 2; }
-        .ext-drop b, .ext-drop small, .ext-drop .ext-file { position: relative; z-index: 1; pointer-events: none; }
-        .ext-drop b { display: block; color: #e8edf6; font-weight: 600; margin-bottom: 4px; }
+        .ext-drop-icon, .ext-drop-text, .ext-drop small, .ext-drop .ext-file { position: relative; z-index: 1; pointer-events: none; }
+        .ext-drop-icon { color: #a78bfa; margin-bottom: 14px; }
+        .ext-drop-text { display: block; color: #cbd4e6; font-size: .98rem; font-weight: 500; margin-bottom: 6px; }
+        .ext-drop-text b { color: #a78bfa; font-weight: 700; }
         .ext-drop small { color: #8a93a6; }
         .ext-file { margin-top: 10px; font-size: .9rem; color: #4ade80; font-weight: 600; }
+        .ext-actions-row { display: flex; gap: 12px; margin-top: 22px; }
+        .ext-actions-row .ext-save { margin-top: 0; }
+        .ext-cancel-btn { flex: 1; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.16); color: #cbd5e1; font: inherit; font-size: .95rem; font-weight: 600; border-radius: 10px; cursor: pointer; transition: background .2s ease; }
+        .ext-cancel-btn:hover:not(:disabled) { background: rgba(255,255,255,.1); }
+        .ext-cancel-btn:disabled { opacity: .55; cursor: not-allowed; }
 
         .ext-nores { margin: 14px 0 0; font-size: .93rem; color: #c2ccde; text-align: center; }
         .ext-nores a { color: #60a5fa; font-weight: 600; text-decoration: none; }
@@ -85,6 +92,13 @@
         .ext-msg { margin-top: 12px; font-size: .93rem; text-align: center; }
         .ext-msg.ok { color: #4ade80; }
         .ext-msg.error { color: #fca5a5; }
+        .ext-autosave { margin-top: 10px; min-height: 18px; font-size: .87rem; text-align: center; color: #8a93a6; }
+        .ext-autosave.ok { color: #4ade80; }
+        .ext-autosave.error { color: #fca5a5; }
+
+        .ext-toast { position: fixed; top: 24px; left: 50%; z-index: 999999; display: flex; align-items: center; gap: 9px; padding: 13px 20px; border-radius: 12px; background: #16a34a; color: #fff; font-size: .92rem; font-weight: 600; box-shadow: 0 14px 32px rgba(0,0,0,.35); transform: translate(-50%, -16px); opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+        .ext-toast.show { opacity: 1; transform: translate(-50%, 0); }
+        .ext-toast svg { flex: none; width: 18px; height: 18px; }
         .ext-delete-wrap { margin-top: 14px; text-align: center; }
         .ext-delete-btn { background: none; border: 1px solid rgba(239,68,68,.35); color: #fca5a5; font: inherit; font-size: .88rem; font-weight: 600; padding: 9px 16px; border-radius: 10px; cursor: pointer; transition: background .2s ease; }
         .ext-delete-btn:hover:not(:disabled) { background: rgba(239,68,68,.12); }
@@ -406,8 +420,15 @@
                     <label class="ext-drop" id="extDrop">
                         <input type="file" name="file" id="extFile" accept="application/pdf"
                                {% if not br.get('has_base_resume') %}required{% endif %}>
-                        <b>{% if br.get('has_base_resume') %}Replace your resume{% else %}Upload your resume{% endif %}</b>
-                        <small>{% if br.get('has_base_resume') %}Optional &mdash; drop a new PDF here only if you want to change it{% else %}PDF, click to choose or drop it here{% endif %}</small>
+                        <svg class="ext-drop-icon" viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M7 18a4.5 4.5 0 0 1-.7-8.94A6 6 0 0 1 18 8.5a4 4 0 0 1-1 7.9"/>
+                            <path d="M12 11v8"/>
+                            <path d="M9 14l3-3 3 3"/>
+                        </svg>
+                        <span class="ext-drop-text" id="extDropText">
+                            <b>{% if br.get('has_base_resume') %}Click to replace{% else %}Click to upload{% endif %}</b> or drag and drop
+                        </span>
+                        <small id="extDropHint">{% if br.get('has_base_resume') %}Optional &mdash; only if you want to change it{% else %}PDF only (max. 10MB){% endif %}</small>
                         <div class="ext-file" id="extFileName" hidden></div>
                     </label>
 
@@ -415,6 +436,11 @@
                         Don&rsquo;t have a resume yet?
                         <a href="/modify-cv">Build one free in the Resume Builder &rarr;</a>
                     </p>
+
+                    <div class="ext-actions-row">
+                        <button type="button" class="ext-cancel-btn" id="extCancelBtn">Cancel</button>
+                        <button type="submit" class="solx-btn ext-save">Save changes</button>
+                    </div>
 
                     <!-- 3. Template, chosen visually from the real previews -->
                     <div class="ext-tpl-head">
@@ -428,6 +454,7 @@
                     <input type="hidden" name="template_id" id="extTemplateId" value="{{ br.get('template_id') or 1 }}">
                     <input type="hidden" name="style_id" id="extStyleId" value="{{ br.get('style_id') or 1 }}">
                     <div class="ext-tpl-grid" id="extTemplateGrid"></div>
+                    <div class="ext-autosave" id="extTplNote"></div>
 
                     <!-- 4. Cover letter design — the same three offered on /cover-letter -->
                     <div class="ext-tpl-head">
@@ -480,8 +507,8 @@
                             <span class="ext-cl-name">Monogram</span>
                         </button>
                     </div>
+                    <div class="ext-autosave" id="extCoverNote"></div>
 
-                    <button type="submit" class="solx-btn ext-save">Save Extension Settings</button>
                     <div class="ext-msg" id="baseResumeMsg"></div>
                 </form>
                 <div class="ext-delete-wrap" id="extDeleteWrap"{% if not br.get('has_base_resume') %} hidden{% endif %}>
@@ -528,7 +555,73 @@
         var styleEl  = document.getElementById('extStyleId');
         var deleteWrap = document.getElementById('extDeleteWrap');
         var deleteBtn  = document.getElementById('extDeleteBtn');
+        var tplNote    = document.getElementById('extTplNote');
+        var coverNote  = document.getElementById('extCoverNote');
         if (!form) return;
+
+        var coverGrid  = document.getElementById('extCoverGrid');
+        var coverInput = document.getElementById('extCoverTemplate');
+
+        /* Shared by the explicit "Save changes" button (upload section) and the
+           template/cover-letter autosave below — the API always saves all three
+           fields together, so every save just sends the form's current snapshot,
+           optionally with a new file. */
+        function saveSettings(fileOverride) {
+            var fd = new FormData();
+            fd.set('template_id', tplInput.value || '1');
+            fd.set('style_id', styleEl.value || '1');
+            var chosen = coverGrid.querySelector('.ext-cl.on');
+            fd.set('cover_template', chosen ? chosen.dataset.cl : 'classic');
+            if (fileOverride) fd.set('file', fileOverride);
+            return fetch('/api/extension/base-resume', {
+                method: 'POST',
+                body: fd,
+                credentials: 'same-origin'
+            }).then(function (res) {
+                if (res.ok) return refreshStatus();
+                if (res.status === 401) throw new Error('Your session expired. Please log in again.');
+                return res.json().catch(function () { return {}; }).then(function (data) {
+                    throw new Error(data.detail || 'Could not save. Please try again.');
+                });
+            });
+        }
+
+        var toastTimer;
+        function showToast(text) {
+            var toast = document.getElementById('extToast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'extToast';
+                toast.className = 'ext-toast';
+                toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span></span>';
+                document.body.appendChild(toast);
+            }
+            toast.querySelector('span').textContent = text;
+            clearTimeout(toastTimer);
+            // Restart the transition even if a toast is already showing.
+            toast.classList.remove('show');
+            void toast.offsetWidth;
+            toast.classList.add('show');
+            toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+        }
+
+        /* Template and cover-letter picks already look instantly "selected" when
+           clicked, so requiring a separate Save button on top of that felt like an
+           extra step — autosave them right away instead. */
+        function autosave(noteEl, successText) {
+            noteEl.textContent = 'Saving...';
+            noteEl.className = 'ext-autosave';
+            saveSettings(null)
+                .then(function () {
+                    noteEl.textContent = '';
+                    noteEl.className = 'ext-autosave';
+                    showToast(successText);
+                })
+                .catch(function (err) {
+                    noteEl.textContent = err.message || 'Could not save. Please try again.';
+                    noteEl.className = 'ext-autosave error';
+                });
+        }
 
         /* Show the real template previews, same assets the templates gallery uses,
            so the user sees what their resume will actually look like. */
@@ -539,11 +632,6 @@
             });
         }
 
-        /* The banner reads the same endpoint the extension itself reads, so what you
-           see here is exactly what the extension will use. */
-        var coverGrid  = document.getElementById('extCoverGrid');
-        var coverInput = document.getElementById('extCoverTemplate');
-
         function selectCover(name) {
             coverInput.value = name;
             coverGrid.querySelectorAll('.ext-cl').forEach(function (c) {
@@ -551,7 +639,10 @@
             });
         }
         coverGrid.querySelectorAll('.ext-cl').forEach(function (c) {
-            c.addEventListener('click', function () { selectCover(c.dataset.cl); });
+            c.addEventListener('click', function () {
+                selectCover(c.dataset.cl);
+                autosave(coverNote, 'Cover letter template changed successfully');
+            });
         });
 
         function renderStatus(d) {
@@ -573,10 +664,10 @@
             // With a resume already on file, the upload is optional — otherwise the
             // browser blocks the submit and a template change can never be saved.
             fileEl.required = !hasBase;
-            dropEl.querySelector('b').textContent = hasBase ? 'Replace your resume' : 'Upload your resume';
-            dropEl.querySelector('small').textContent = hasBase
-                ? 'Optional — drop a new PDF here only if you want to change it'
-                : 'PDF, click to choose or drop it here';
+            dropEl.querySelector('#extDropText b').textContent = hasBase ? 'Click to replace' : 'Click to upload';
+            dropEl.querySelector('#extDropHint').textContent = hasBase
+                ? 'Optional — only if you want to change it'
+                : 'PDF only (max. 10MB)';
         }
 
         function refreshStatus() {
@@ -606,7 +697,10 @@
                     card.innerHTML =
                         '<span class="ext-tpl-shot"><img src="/static/pic' + t.id + '.webp?v=9" alt="" loading="lazy" decoding="async"></span>' +
                         '<span class="ext-tpl-name">' + (NAMES[t.id] || t.name) + '</span>';
-                    card.addEventListener('click', function () { select(t.id); });
+                    card.addEventListener('click', function () {
+                        select(t.id);
+                        autosave(tplNote, 'Template changed successfully');
+                    });
                     grid.appendChild(card);
                 });
                 select(tplInput.value || 1);
@@ -614,9 +708,24 @@
             })
             .catch(function () { refreshStatus(); });
 
+        var MAX_RESUME_BYTES = 10 * 1024 * 1024;
+
+        function acceptFile(f, files) {
+            if (!f) return;
+            if (f.size > MAX_RESUME_BYTES) {
+                fileEl.value = '';
+                nameEl.hidden = true;
+                msg.textContent = 'That PDF is over 10MB — please upload a smaller file.';
+                msg.className = 'ext-msg error';
+                return;
+            }
+            if (files) fileEl.files = files;
+            nameEl.textContent = '✓ ' + f.name;
+            nameEl.hidden = false;
+        }
+
         fileEl.addEventListener('change', function () {
-            var f = fileEl.files && fileEl.files[0];
-            if (f) { nameEl.textContent = '\u2713 ' + f.name; nameEl.hidden = false; }
+            acceptFile(fileEl.files && fileEl.files[0]);
         });
         ['dragenter','dragover'].forEach(function (ev) {
             dropEl.addEventListener(ev, function (e) { e.preventDefault(); dropEl.classList.add('over'); });
@@ -626,7 +735,15 @@
         });
         dropEl.addEventListener('drop', function (e) {
             var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
-            if (f) { fileEl.files = e.dataTransfer.files; nameEl.textContent = '\u2713 ' + f.name; nameEl.hidden = false; }
+            acceptFile(f, e.dataTransfer.files);
+        });
+
+        var cancelBtn = document.getElementById('extCancelBtn');
+        cancelBtn.addEventListener('click', function () {
+            fileEl.value = '';
+            nameEl.hidden = true;
+            msg.textContent = '';
+            msg.className = 'ext-msg';
         });
 
         form.addEventListener('submit', function (e) {
@@ -634,39 +751,12 @@
             var btn = form.querySelector('.ext-save');
             var orig = btn.textContent;
             btn.disabled = true;
-            btn.textContent = 'Saving\u2026';
+            btn.textContent = 'Saving...';
             msg.textContent = '';
             msg.className = 'ext-msg';
 
-            // An empty file input still sends an empty multipart part, which the API
-            // would reject — drop it so "save my template choice" works on its own.
-            var fd = new FormData(form);
-            if (!(fileEl.files && fileEl.files.length)) fd.delete('file');
-
-            // Read the design straight off the highlighted card rather than trusting the
-            // hidden field to have been updated.
-            var chosen = coverGrid.querySelector('.ext-cl.on');
-            fd.set('cover_template', chosen ? chosen.dataset.cl : 'classic');
-            fd.set('template_id', tplInput.value || '1');
-            console.log('[TailorCV] saving →', {
-                cover_template: fd.get('cover_template'),
-                template_id: fd.get('template_id'),
-                file: fd.get('file') ? 'new upload' : 'keeping existing'
-            });
-
-            fetch('/api/extension/base-resume', {
-                method: 'POST',
-                body: fd,
-                credentials: 'same-origin'
-            })
-                .then(function (res) {
-                    if (res.status === 401) throw new Error('Your session expired. Please log in again.');
-                    if (!res.ok) throw new Error('Could not save your base resume (error ' + res.status + '). Please try again.');
-                    return res.json();
-                })
-                /* Re-read the saved state instead of trusting the form: the banner then
-                   shows what is actually stored, never an optimistic guess. */
-                .then(function () { return refreshStatus(); })
+            var file = (fileEl.files && fileEl.files[0]) || null;
+            saveSettings(file)
                 .then(function (d) {
                     if (d && d.has_base_resume) {
                         msg.textContent = 'Saved. The extension will tailor this resume from now on.';
@@ -690,7 +780,7 @@
             if (!window.confirm('Delete your base resume? The extension cannot tailor anything until you upload a new one.')) return;
             var orig = deleteBtn.textContent;
             deleteBtn.disabled = true;
-            deleteBtn.textContent = 'Deleting…';
+            deleteBtn.textContent = 'Deleting...';
             fetch('/api/extension/base-resume', { method: 'DELETE', credentials: 'same-origin' })
                 .then(function (res) {
                     if (res.status === 401) throw new Error('Your session expired. Please log in again.');
