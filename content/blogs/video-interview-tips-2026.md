@@ -57,17 +57,17 @@ Run this in the half hour before the call so nothing technical surprises you.
 - **Open the meeting link early** and confirm camera and mic in the platform's settings.
 - **Silence your phone** and turn off desktop notifications — a Slack popup mid-answer is distracting and can expose private messages if you share your screen.
 - **Have water within reach**, off-camera, for the inevitable dry mouth.
-- **Put your resume, the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), and three key stories** where you can glance at them near the lens.
-- **Tell housemates** you are in an interview and post a note on the door.
+- **Put your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), and three key stories** where you can glance at them near the lens.
+- **Tell housemates** you are in an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) and post a note on the door.
 - **Do a final light check** — is your face lit from the front and clearly visible?
 
 ## Body Language on Camera
 
-Video flattens your presence, so you have to project a little more energy than feels natural. Sit up straight, keep your shoulders back, and let your hands gesture within frame occasionally — stillness reads as stiffness on camera. Nod while the interviewer speaks to show you are listening, since the usual small verbal cues get muddied by audio lag. And smile genuinely at the start and end; the first and last few seconds shape the interviewer's overall impression more than any single answer.
+Video flattens your presence, so you have to [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a little more energy than feels natural. Sit up straight, keep your shoulders back, and let your hands gesture within frame occasionally — stillness reads as stiffness on camera. Nod while the interviewer speaks to show you are listening, since the usual small verbal cues get muddied by audio lag. And smile genuinely at the start and end; the first and last few seconds shape the interviewer's overall impression more than any single answer.
 
 ## Your Answers Still Matter Most
 
-All the setup in the world does not substitute for good answers. The advantage of video is that you can keep brief notes nearby; the risk is leaning on them. Prepare your core stories the same way you would for an in-person interview — a crisp "tell me about yourself," two or three achievement stories in [STAR form](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and thoughtful questions to ask. Then practice them out loud on camera so your delivery is natural and your eyes are not glued to a script.
+All the setup in the world does not substitute for good answers. The advantage of video is that you can keep brief notes nearby; the risk is leaning on them. Prepare your core stories the same way you would for an in-person [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) — a crisp "tell me about yourself," two or three achievement stories in [STAR form](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and thoughtful questions to ask. Then practice them out loud on camera so your delivery is natural and your eyes are not glued to a script.
 
 ## Common Video Interview Mistakes
 
@@ -77,7 +77,7 @@ All the setup in the world does not substitute for good answers. The advantage o
 - **Talking over lag.** Pause a half-second after the interviewer finishes to avoid collisions.
 - **A chaotic or distracting background.** Tidy and plain wins; fake blur that flickers around your head does not.
 - **Not testing the specific platform**, then losing the first three minutes to "can you hear me?"
-- **Forgetting it is still an interview** — dressing down, slouching, or treating it casually because it is from home.
+- **Forgetting it is still an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)** — dressing down, slouching, or treating it casually because it is from home.
 
 ## If the Technology Fails Completely
 
@@ -90,7 +90,7 @@ Each video platform behaves a little differently, and a two-minute test on the r
 - **Zoom:** Check "Touch up my appearance" if you like it, and know where mute and "raise hand" are. Test screen-share if you might present.
 - **Google Meet:** Runs in the browser — close other tabs to free memory, and make sure the browser has camera and mic permission.
 - **Microsoft Teams:** Notorious for occasional audio-device confusion. Confirm the right mic and speaker are selected before you join.
-- **Platform-specific tools** (HireVue-style one-way recordings): often let you re-record or do a practice question. Use the practice run, and treat the recording like a live interview — energy and eye contact still matter.
+- **Platform-specific tools** (HireVue-style one-way recordings): often let you re-record or do a practice question. Use the practice run, and treat the recording like a live [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) — energy and eye contact still matter.
 
 Whatever the platform, join two to three minutes early so any permission prompt or update happens before the interviewer arrives, not during your introduction.
 
@@ -128,7 +128,7 @@ Two to three minutes early. It shows punctuality without leaving the interviewer
 Reconnect calmly and, if it persists, offer to switch to a phone dial-in or reschedule. Have the meeting number and your phone ready as a backup. Interviewers do not penalize a glitch you handle gracefully — composure under a real problem is itself a good signal.
 
 ### Is it okay to have notes taped near the camera?
-Yes — brief bullet points near the lens are a smart use of the format's flexibility, and they keep your eyes close to the camera. Just use them as prompts, not a script to read from, since reading verbatim is obvious on video.
+Yes — brief [bullet points](https://thetailorcv.com/blog/best-action-verbs-for-resume) near the lens are a smart use of the format's flexibility, and they keep your eyes close to the camera. Just use them as prompts, not a script to read from, since reading verbatim is obvious on video.
 
 ## Answering Tough Questions on Camera
 
@@ -136,16 +136,8 @@ Video adds a layer of difficulty to hard questions because the usual in-person c
 
 ## Following Up After a Video Interview
 
-The interview does not end when the call disconnects. Send a thank-you within 24 hours, exactly as you would after an in-person round, and use it to reference something specific from the conversation. A video interview is often part of a remote or distributed hiring process, where written [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) carries even more weight — it is another sample of the clear, prompt communication the role will require. Reference a moment you discussed, reinforce one reason you fit, and keep it short. If the technology glitched at any point, a light, gracious acknowledgment ("thanks for your patience with my connection at the start") shows you handle small hiccups with grace. For the full wording, see our guide on the [thank-you email after an interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) — the principles are identical whether the interview happened across a table or across a screen.
+The interview does not end when the call disconnects. Send a thank-you within 24 hours, exactly as you would after an in-person round, and use it to [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) something specific from the conversation. A video interview is often part of a remote or distributed hiring process, where written [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) carries even more weight — it is another sample of the clear, prompt communication the role will require. [Reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) a moment you discussed, reinforce one reason you fit, and keep it short. If the technology glitched at any point, a light, gracious acknowledgment ("thanks for your patience with my connection at the start") shows you handle small hiccups with grace. For the full wording, see our guide on the [thank-you email after an interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) — the principles are identical whether the interview happened across a table or across a screen.
 
 ## Putting It All Together
 
-A video interview rewards preparation you can see: a camera at eye level, front lighting, a tested platform, and calm body language that projects a little extra energy to survive the flatness of a screen. Look at the lens, keep short notes nearby without reading them, and prepare your answers exactly as you would for an in-person round. Get the mechanics right and they disappear, leaving the interviewer free to focus on the only thing that should matter — what you actually say.
-
-## Related Guides
-
-- [Phone Screen Interview Tips](https://thetailorcv.com/blog/phone-screen-interview-tips)
-- [Second Interview Questions and Answers](https://thetailorcv.com/blog/second-interview-questions-and-answers)
-- [How to Answer "Why Do You Want This Job?"](https://thetailorcv.com/blog/how-to-answer-why-do-you-want-this-job)
-- [Thank-You Email After an Interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates)
-- [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
+A video interview rewards preparation you can see: a camera at eye level, front lighting, a tested platform, and calm body language that [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a little extra energy to survive the flatness of a screen. Look at the lens, keep short notes nearby without reading them, and prepare your answers exactly as you would for an in-person round. Get the mechanics right and they disappear, leaving the interviewer free to focus on the only thing that should matter — what you actually say.

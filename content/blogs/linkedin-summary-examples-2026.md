@@ -13,13 +13,13 @@ keywords: linkedin summary examples, linkedin about section, linkedin profile su
 ## Key Takeaways
 
 - Only the first two lines show before "see more" — front-load your hook there.
-- Write in the first person; LinkedIn is a conversation, not a resume.
-- Include the [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) recruiters search for, in natural sentences.
+- Write in the first person; [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is a conversation, not a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume).
+- Include the [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) search for, in natural sentences.
 - End with a clear line on what you are open to and how to reach you.
 
 ## Why the About Section Matters
 
-Recruiters search LinkedIn by keyword and skim profiles fast. Your headline and the first two lines of your About section decide whether they keep reading or move on. A strong About section turns a passive profile into an inbound lead machine — it is the closest thing to a 24/7 pitch working while you sleep.
+[Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) search [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) by [keyword](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) and skim profiles fast. Your headline and the first two lines of your About section decide whether they keep reading or move on. A strong About section turns a passive profile into an inbound lead machine — it is the closest thing to a 24/7 pitch working while you sleep.
 
 ## The Structure
 
@@ -54,7 +54,7 @@ Recruiters search LinkedIn by keyword and skim profiles fast. Your headline and 
 
 ## Don't Forget the Headline
 
-Your headline appears everywhere — in search, comments, and messages. Make it specific: "Backend Engineer | Python & Go | Payments & Reliability" beats the default "Software Engineer at [Company]." It is prime keyword real estate.
+Your headline appears everywhere — in search, comments, and messages. Make it specific: "Backend Engineer | Python & Go | Payments & Reliability" beats the default "Software Engineer at [Company]." It is prime [keyword](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) real estate.
 
 ## More About-Section Examples
 
@@ -88,11 +88,11 @@ Your headline appears everywhere — in search, comments, and messages. Make it 
 
 ## How Your LinkedIn and Resume Work Together
 
-Your resume and LinkedIn are a matched pair with different jobs. The resume is formal, tailored to each application, and scanned by an [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works); LinkedIn is first-person, broader, and read by humans who found you in search. Keep the facts consistent — especially dates and titles, since recruiters cross-check — but let the voice differ. If you have already written a strong [resume summary](https://thetailorcv.com/blog/resume-summary-examples-2026), your LinkedIn About section is a warmer, expanded version of the same story. And when you turn your resume into an application, a [tailored resume](https://thetailorcv.com/optimize) is what you send; your LinkedIn is what convinces a recruiter to reach out in the first place.
+Your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) are a matched pair with different jobs. The [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) is formal, tailored to each application, and scanned by an [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works); LinkedIn is first-person, broader, and read by humans who found you in search. Keep the facts consistent — especially dates and titles, since [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) cross-check — but let the voice differ. If you have already written a strong [resume summary](https://thetailorcv.com/blog/resume-summary-examples-2026), your LinkedIn About section is a warmer, expanded version of the same story. And when you turn your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) into an application, a [tailored resume](https://thetailorcv.com/optimize) is what you send; your LinkedIn is what convinces a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) to reach out in the first place.
 
 ## Optimizing for Recruiter Search
 
-Recruiters find candidates by searching keywords — job titles, skills, tools. If those terms are not in your profile, you are invisible to those searches, no matter how strong you are. So:
+Recruiters find candidates by searching [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) — job titles, skills, tools. If those terms are not in your profile, you are invisible to those searches, no matter how strong you are. So:
 
 - **Put your key skills in your headline, About section, and experience** — naturally, in real sentences.
 - **Use the exact terms recruiters search**, not clever synonyms. "Product Manager," not "Product Ninja."
@@ -103,14 +103,14 @@ The goal is simple: when a recruiter searches for someone like you, you appear �
 
 ## Turn Your Profile Into a Portfolio
 
-For many roles, especially creative and technical ones, proof beats description. Link to real work: a GitHub, a design portfolio, published writing, or a live [portfolio website](https://thetailorcv.com/portfolio) that turns your experience into a shareable page. A profile that says "I build things" and then shows the things is far more persuasive than one that only tells.
+For many roles, especially creative and technical ones, proof beats description. Link to real work: a GitHub, a design [portfolio](https://thetailorcv.com/portfolio), published writing, or a live [portfolio website](https://thetailorcv.com/portfolio) that turns your experience into a shareable page. A profile that says "I build things" and then shows the things is far more persuasive than one that only tells.
 
 ## Common LinkedIn About Mistakes
 
 - **Leaving it blank.** An empty About section wastes your single best inbound-marketing asset.
 - **Writing it in third person** as if someone else wrote it. First person is warmer and standard.
 - **A wall of buzzwords.** "Passionate, dynamic, results-oriented synergist" says nothing.
-- **Copy-pasting your resume.** Same facts, but the resume's formal voice reads as cold on LinkedIn.
+- **Copy-pasting your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume).** Same facts, but the resume's formal voice reads as cold on LinkedIn.
 - **Burying the hook.** Only the first two lines show before "see more" — front-load the most interesting thing.
 - **No call to action.** End with what you are open to and how to reach you.
 
@@ -124,7 +124,7 @@ Your headline is the most-seen text you own on LinkedIn — it appears in search
 
 ## Keeping the Profile Alive
 
-A LinkedIn profile is not a set-and-forget document; the algorithm and recruiters both favor active, current profiles. Refresh your headline and About section whenever your focus shifts or you finish a notable project. Post occasionally about what you are building or learning — it keeps you visible in your network's feed and quietly demonstrates competence. Add new skills as you gain them, and keep your experience current and consistent with your [resume](https://thetailorcv.com/blog/resume-summary-examples-2026), since recruiters cross-check the two. A profile that shows recent activity signals momentum; one frozen for three years signals the opposite. You do not need to become an influencer — just to look like someone who is present and moving.
+A LinkedIn profile is not a set-and-forget document; the algorithm and recruiters both favor active, current profiles. Refresh your headline and About section whenever your focus shifts or you finish a notable [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Post occasionally about what you are building or learning — it keeps you visible in your network's feed and quietly demonstrates competence. Add new skills as you gain them, and keep your experience current and consistent with your [resume](https://thetailorcv.com/blog/resume-summary-examples-2026), since recruiters cross-check the two. A profile that shows recent activity signals momentum; one frozen for three years signals the opposite. You do not need to become an influencer — just to look like someone who is present and moving.
 
 ## Frequently Asked Questions
 
@@ -141,7 +141,7 @@ Yes. Recruiters search by skill and title, so weave the terms you want to be fou
 If you are actively looking, yes — a clear closing line ("Open to senior backend roles") plus LinkedIn's "Open to Work" setting helps recruiters find you. If you are employed and discreet, use the recruiter-only visibility option instead.
 
 ### How often should I update my LinkedIn?
-Refresh your headline and About section whenever your focus shifts or you complete a notable project. An actively maintained profile ranks better in search and signals momentum to anyone who lands on it.
+Refresh your headline and About section whenever your focus shifts or you complete a notable [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). An actively maintained profile ranks better in search and signals momentum to anyone who lands on it.
 
 ### Can I use AI to write my LinkedIn About section?
 Use it for a first draft, then rewrite it in your own voice. The hook and the specific details — your real numbers, your genuine reasons — are what make it work, and those have to be yours.
@@ -150,23 +150,15 @@ Use it for a first draft, then rewrite it in your own voice. The hook and the sp
 Yes. Same facts, different voice: the [resume summary](https://thetailorcv.com/blog/resume-summary-examples-2026) is tight, formal, and tailored per application; the LinkedIn About is longer, warmer, and written in the first person for a human browsing your profile. Adapt the story, do not copy-paste it.
 
 ### How do I write an About section if I'm a student with little experience?
-Lead with what you are building and learning rather than a job history. A hook about your genuine interest, one or two real projects, and a clear line about what you are looking for beats an empty or generic section every time.
+Lead with what you are building and learning rather than a job history. A hook about your genuine interest, one or two real [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), and a clear line about what you are looking for beats an empty or generic section every time.
 
 ### Do hashtags or emojis help in the About section?
 Used sparingly, a single emoji or a couple of relevant terms can add personality and scannability, but do not overdo it. Clarity and specificity matter far more than decoration; a wall of emojis or hashtags reads as noise.
 
 ## Tailoring Your Profile When You're Actively Searching
 
-When you shift from passive to active job-seeking, your profile should shift with you. Reorient your headline toward the role you *want*, not just the one you have, packing in the keywords recruiters will search for that target role. Update your About section's closing line to make your availability clear ("Open to senior backend roles"), and turn on LinkedIn's "Open to Work" setting — using the recruiter-only visibility option if you need to keep your search discreet from a current employer. Make sure your Skills section lists the exact tools and abilities the roles you want ask for, since recruiters filter searches by those terms. And refresh your recent experience so it emphasizes the accomplishments most relevant to your target, mirroring the language those postings use. An actively maintained, keyword-rich, clearly-available profile is what turns LinkedIn from a static résumé into an inbound channel — recruiters find you, and when they click, your first two lines make them reach out.
+When you shift from passive to active job-seeking, your profile should shift with you. Reorient your headline toward the role you *want*, not just the one you have, packing in the keywords recruiters will search for that target role. Update your About section's closing line to make your availability clear ("Open to senior backend roles"), and turn on LinkedIn's "Open to Work" setting — using the recruiter-only visibility option if you need to keep your search discreet from a current employer. Make sure your [Skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026) lists the exact tools and abilities the roles you want ask for, since recruiters filter searches by those terms. And refresh your recent experience so it emphasizes the accomplishments most relevant to your target, mirroring the language those postings use. An actively maintained, keyword-rich, clearly-available profile is what turns LinkedIn from a static résumé into an inbound channel — recruiters find you, and when they click, your first two lines make them reach out.
 
 ## Putting It All Together
 
 Your LinkedIn About section is a 24/7 pitch working while you sleep, and most people leave it blank or fill it with buzzwords. Front-load a specific hook in the first two lines, prove your value with real numbers, write in a warm first person, and end with a clear call to action. Weave in the keywords recruiters search for, keep it consistent with your resume, and link to real work. Do that and your profile stops being a passive record and starts generating the inbound conversations that lead to your next role.
-
-## Related Guides
-
-- [Resume Summary Examples for 2026](https://thetailorcv.com/blog/resume-summary-examples-2026)
-- [Networking Messages That Get You Referrals](https://thetailorcv.com/blog/networking-messages-for-referrals)
-- [Remote Job Search Strategy That Works](https://thetailorcv.com/blog/remote-job-search-strategy-2026)
-- [How to Follow Up After a Job Application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application)
-- [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
