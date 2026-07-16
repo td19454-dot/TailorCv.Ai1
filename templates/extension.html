@@ -667,6 +667,21 @@
            template/cover-letter autosave below — the API always saves all three
            fields together, so every save just sends the form's current snapshot,
            optionally with a new file. */
+        // Same externally_connectable channel the login flow uses (see
+        // tailorCvFinishLogin() in login.html) — lets a Chrome extension panel
+        // stuck on "no base resume set" catch up on its own the moment a
+        // resume is actually saved here, instead of the user having to notice
+        // and refresh it by hand.
+        var TAILORCV_EXTENSION_ID = 'lnkplncemohgcdjlgccgmbcgiokcgmno';
+        function notifyExtensionBaseResumeUpdated() {
+            if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.sendMessage) return;
+            try {
+                chrome.runtime.sendMessage(TAILORCV_EXTENSION_ID, { type: 'tailorcv-base-resume-updated' }, function () {
+                    void chrome.runtime.lastError; // nothing actionable here either way
+                });
+            } catch (e) { /* extension not installed / not reachable */ }
+        }
+
         function saveSettings(fileOverride) {
             var fd = new FormData();
             fd.set('template_id', tplInput.value || '1');
@@ -684,6 +699,10 @@
                     // (modal close, toast) doesn't need to wait on this second
                     // round trip just to know the save itself worked.
                     refreshStatus();
+                    // Only the actual resume file matters to a waiting extension
+                    // panel — a template/cover-only autosave changes nothing it
+                    // cares about.
+                    if (fileOverride) notifyExtensionBaseResumeUpdated();
                     return;
                 }
                 if (res.status === 401) throw new Error('Your session expired. Please log in again.');
