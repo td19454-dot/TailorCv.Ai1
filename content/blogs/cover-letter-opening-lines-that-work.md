@@ -55,7 +55,7 @@ The hook shows you did your homework; the credential shows you can back it up.
 
 ## Let AI Draft, Then Make It Yours
 
-An [AI cover letter generator](https://thetailorcv.com/blog/ai-cover-letter-generator-job-description) can produce a solid first draft from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in seconds — but the opener is where you should always edit by hand. Add the specific detail only you know: the friend who uses the product, the exact metric, the real reason you applied.
+An [AI cover letter generator](https://thetailorcv.com/blog/ai-cover-letter-generator-job-description) can produce a solid first draft from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in seconds — but the opener is where you should always edit by hand. Add the specific detail only you know: the friend who uses the product, the exact [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), the real reason you applied.
 
 ## The Anatomy of a Weak Opener vs a Strong One
 
@@ -72,7 +72,7 @@ A specific opener requires one specific, true detail. You can find one in under 
 
 1. **Read their most recent blog or changelog.** [Reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) a launch, a decision, or a point of view.
 2. **Check recent news or funding.** A new market, a milestone, a pivot.
-3. **Read the full job posting twice.** The problems they describe are the problems you should speak to.
+3. **Read the full [job posting](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) twice.** The problems they describe are the problems you should speak to.
 4. **Try the product if you can.** One honest observation from actually using it is gold.
 5. **Look at the team's public writing.** An engineer's talk, a founder's thread, a designer's [portfolio](https://thetailorcv.com/portfolio).
 
@@ -85,10 +85,10 @@ Read the room. A cover letter to a formal financial institution should open with
 ## Ten More Opening Lines to Adapt
 
 - "I have opened your app almost every morning for two years — applying to help build it feels overdue."
-- "Your job posting describes a retention problem I spent all of last year solving; here is what I learned."
+- "Your [job posting](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) describes a retention problem I spent all of last year solving; here is what I learned."
 - "I do not usually apply to roles this senior, but the specific work you described is exactly what I want to be doing for the next five years."
 - "Three of my last four side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) were attempts to build something like what your team ships — so I would rather build the real thing."
-- "The line in your posting about 'engineers who write' is why I am applying; I believe the two skills are the same skill."
+- "The line in your posting about 'engineers who write' is why I am applying; I believe the two [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) are the same [skill](https://thetailorcv.com/blog/resume-skills-section-guide-2026)."
 - "I switched careers into data because of a problem that looks a lot like the one your Analytics role owns."
 - "A former colleague described your engineering culture to me two years ago, and I have quietly wanted to work here since."
 - "I read your entire documentation site before applying — partly to prepare, mostly because it was genuinely good."
@@ -99,21 +99,21 @@ Adapt, never copy — the power is in the specific truth you attach to the patte
 
 ## What to Do After the Opener
 
-A great opening line buys attention; the rest of the letter has to keep it. Once your hook lands, the body should do three things across two short paragraphs: prove you can do the work with one specific, relevant achievement; connect that achievement to what the posting actually needs; and close with genuine, confident interest. The opener promises; the body delivers. A brilliant first line followed by three paragraphs of generic filler is worse than a plain opener followed by a specific, well-argued case — so treat the hook as the door, not the whole house.
+A great opening line buys attention; the rest of the letter has to keep it. Once your hook lands, the body should do three things across two short paragraphs: prove you can do the work with one specific, relevant [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume); connect that [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) to what the posting actually needs; and close with genuine, confident interest. The opener promises; the body delivers. A brilliant first line followed by three paragraphs of generic filler is worse than a plain opener followed by a specific, well-argued case — so treat the hook as the door, not the whole house.
 
 ## How the Opener Fits the Whole Letter
 
 Think of the cover letter as a three-part arc:
 
 1. **The hook (opening line):** earns the next thirty seconds with a specific, true detail about the role or company.
-2. **The proof (middle):** one concrete achievement that maps directly to the posting, showing rather than asserting your fit.
+2. **The proof (middle):** one concrete [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) that maps directly to the posting, showing rather than asserting your fit.
 3. **The close:** reaffirms interest, signals you understand what the role needs, and invites a conversation.
 
 Each part sets up the next. A hook that mentions the company's retention problem sets up a proof paragraph about the churn work you did; a close that [references](https://thetailorcv.com/blog/should-you-put-references-on-resume) the same theme ties the whole letter together. When the three parts echo one clear idea, the letter reads as deliberate and memorable instead of a list of disconnected claims.
 
 ## Draft With AI, Then Own the Opener
 
-The fastest way to a strong letter is to let an [AI cover letter generator](https://thetailorcv.com/cover-letter) produce a first draft from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) — it will give you a solid structure and a competent body in seconds. But the opener is the one part you should always rewrite by hand, because AI does not know the specific, true detail that makes your hook land: the friend who uses the product, the exact metric from your last role, the real reason this company caught your eye. Let the tool handle the scaffolding; you supply the sentence only you could write. That division of labor gives you a polished letter with a genuinely human opening — the combination that actually gets read.
+The fastest way to a strong letter is to let an [AI cover letter generator](https://thetailorcv.com/cover-letter) produce a first draft from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) — it will give you a solid structure and a competent body in seconds. But the opener is the one part you should always rewrite by hand, because AI does not know the specific, true detail that makes your hook land: the friend who uses the product, the exact [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) from your last role, the real reason this company caught your eye. Let the tool handle the scaffolding; you supply the sentence only you could write. That division of labor gives you a polished letter with a genuinely human opening — the combination that actually gets read.
 
 ## Frequently Asked Questions
 
@@ -127,7 +127,7 @@ Whenever you can do it specifically. Naming the company is good; naming somethin
 Yes, if it is honest and relevant. A confident, specific opener beats a safe, generic one nearly every time.
 
 ### What if I can't find anything specific about the company?
-Then lead with a specific result of your own that maps to the role. A concrete achievement ("cut churn from 38% to 12%") is a strong hook even without a company detail — it proves you can do the work.
+Then lead with a specific result of your own that maps to the role. A concrete [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) ("cut churn from 38% to 12%") is a strong hook even without a company detail — it proves you can do the work.
 
 ### Should the opener mention the job title?
 Yes, somewhere early, so a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) juggling many roles knows which one you mean. Just do not let the title be the *entire* first sentence, which wastes the hook.
@@ -142,15 +142,15 @@ A light, genuine touch can work if it fits the company's tone and never comes at
 Yes. Mirror the tone you see in the company's own writing — crisp and professional for a bank or law firm, warmer and more personal for an early-stage startup. A hook that fits the culture feels native; one that clashes with it feels off, no matter how clever.
 
 ### How many times can I reuse a good opener?
-Reuse the *structure* freely, but never the exact sentence — the specific detail that makes an opener work has to be true for each company. A hook that could be pasted, unchanged, into another application has failed the specificity test and will not land.
+Reuse the *structure* freely, but never the exact sentence — the specific detail that makes an opener work has to be true for each company. A hook that could be pasted, unchanged, into another [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) has failed the specificity test and will not land.
 
 ## Openers to Avoid at All Costs
 
-Just as important as knowing what works is recognizing the openers that quietly sink a cover letter. "I am writing to apply for the [position] I saw on [job board]" restates what the reader already knows and wastes the one line most likely to be read. "To whom it may concern" signals you did not bother to find a name. "My name is [Name] and I am a [job title]" is information already on your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume). "I believe I would be a great fit for this role" asserts the very thing you are supposed to prove. "I am the perfect candidate for this position" is empty confidence with nothing behind it. And any opener that could be pasted, unchanged, into an application for a completely different company has failed the specificity test by definition. If your first line survives a find-and-replace of the company name without becoming false, it is too generic to earn attention.
+Just as important as knowing what works is recognizing the openers that quietly sink a cover letter. "I am writing to apply for the [position] I saw on [job board]" restates what the reader already knows and wastes the one line most likely to be read. "To whom it may concern" signals you did not bother to find a name. "My name is [Name] and I am a [job title]" is information already on your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume). "I believe I would be a great fit for this role" asserts the very thing you are supposed to prove. "I am the perfect [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) for this position" is empty confidence with nothing behind it. And any opener that could be pasted, unchanged, into an [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) for a completely different company has failed the specificity test by definition. If your first line survives a find-and-replace of the company name without becoming false, it is too generic to earn attention.
 
 ## Testing Your Opener Before You Send
 
-Before you commit to an opening line, run it through three quick checks. First, the **swap test**: could this exact sentence open a letter to a different company? If yes, add the specific, true detail that makes it yours. Second, the **so-what test**: does the line give the reader a reason to keep reading, or does it merely announce that you are applying? Third, the **honesty test**: is every claim in it genuinely true — the metric real, the admiration sincere, the connection actual? An opener that passes all three is specific, compelling, and credible, which is exactly the combination that buys you the next thirty seconds. If you drafted the letter with an [AI cover letter generator](https://thetailorcv.com/cover-letter), this is the moment to rewrite the machine's competent-but-generic opener into one only you could have written.
+Before you commit to an opening line, run it through three quick checks. First, the **swap test**: could this exact sentence open a letter to a different company? If yes, add the specific, true detail that makes it yours. Second, the **so-what test**: does the line give the reader a reason to keep reading, or does it merely announce that you are applying? Third, the **honesty test**: is every claim in it genuinely true — the [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) real, the admiration sincere, the connection actual? An opener that passes all three is specific, compelling, and credible, which is exactly the combination that buys you the next thirty seconds. If you drafted the letter with an [AI cover letter generator](https://thetailorcv.com/cover-letter), this is the moment to rewrite the machine's competent-but-generic opener into one only you could have written.
 
 ## Putting It All Together
 

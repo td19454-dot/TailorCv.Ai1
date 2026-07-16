@@ -23,7 +23,7 @@ keywords: resume skills section, hard skills vs soft skills, what skills to put 
 
 **Soft skills** are traits: communication, leadership, teamwork, adaptability. They are real and valuable, but *listing* them proves nothing — anyone can type "great communicator."
 
-The rule: hard skills go in the skills section; soft skills get demonstrated in your experience bullets.
+The rule: hard skills go in the skills section; soft skills get demonstrated in your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) bullets.
 
 ## Why Soft Skills Don't Belong in the List
 
@@ -65,7 +65,7 @@ The right skills section looks different across fields. A few patterns:
 
 **Marketer** — a mix of platforms and named methods: Google Analytics, HubSpot, SEO, SEMrush, A/B testing, email automation. Avoid vague terms like "digital marketing" in favor of the specific tools.
 
-**[Project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) / Product Manager** — methodologies and tools: Agile, Scrum, Jira, roadmapping, stakeholder management (as a named competency, backed by bullets). Here the experience section carries more weight, so keep skills tight.
+**[Project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) / Product Manager** — methodologies and tools: Agile, Scrum, Jira, roadmapping, stakeholder management (as a named competency, backed by bullets). Here the [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) section carries more weight, so keep skills tight.
 
 **Designer** — tools plus specializations: Figma, Adobe Creative Suite, prototyping, design systems, user research. Your [portfolio](https://thetailorcv.com/portfolio) does the deep proving; the skills list is a quick index.
 
@@ -73,20 +73,20 @@ The right skills section looks different across fields. A few patterns:
 
 ## Reading the Job Description for Skills
 
-The posting is your keyword source. Work through it and pull out every named tool, language, framework, platform, and method. Then map them against what you genuinely have:
+The posting is your [keyword](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) source. Work through it and pull out every named tool, language, framework, platform, and method. Then map them against what you genuinely have:
 
 - **Have it and used it recently?** List it, and make sure a bullet shows it in action.
 - **Have it but rusty?** List it if the posting names it; be ready to speak to it honestly.
-- **Do not have it?** For a critical hard skill, you may still list it in the skills section for ATS matching, but never claim it in a bullet — and be honest if asked. For skills central to the role that you truly lack, the better long-term move is to build them.
+- **Do not have it?** For a critical hard skill, you may still list it in the skills section for [ATS](https://thetailorcv.com/blog/how-to-pass-ats-in-2026) matching, but never claim it in a bullet — and be honest if asked. For skills central to the role that you truly lack, the better long-term move is to build them.
 
 The goal is a skills section that mirrors the posting's language closely enough that both the [ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) and the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) see an obvious match.
 
 ## Common Skills-Section Mistakes
 
-- **Soft skills as a list.** "Communication, teamwork, leadership" adds no keyword and no proof. Move them into bullets.
+- **Soft skills as a list.** "Communication, teamwork, leadership" adds no [keyword](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) and no proof. Move them into bullets.
 - **Outdated or irrelevant tools.** Listing software nobody uses anymore dates you. Prune ruthlessly.
-- **Proficiency bars and star ratings.** Self-assessed "90% Python" is subjective and invites doubt. Let experience show depth.
-- **Keyword stuffing.** Thirty skills, half of which you have barely touched, reads as spam to modern parsers and to humans.
+- **Proficiency bars and star ratings.** Self-assessed "90% Python" is subjective and invites doubt. Let [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) show depth.
+- **[Keyword](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) stuffing.** Thirty skills, half of which you have barely touched, reads as spam to modern parsers and to humans.
 - **Near-synonyms instead of the exact term.** If the posting says "PostgreSQL," write "PostgreSQL," not just "SQL databases."
 - **Burying the section.** For technical and early-career roles, the skills list should be easy to find near the top.
 
@@ -96,13 +96,13 @@ The single most common skills-section mistake is mixing the two types, so it is 
 
 **Hard skills** are teachable, testable, and specific: programming languages (Python, Java), tools (Figma, Excel, Salesforce), platforms (AWS, Google Cloud), databases (PostgreSQL, MongoDB), frameworks (React, Django), [certifications](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026), and languages you speak. You can prove you have them, and an interviewer can test them. These belong in your skills section.
 
-**Soft skills** are behavioral traits: communication, leadership, teamwork, adaptability, problem-solving, time management. They are genuinely valuable — often the deciding factor between two technically qualified candidates — but *listing* them is worthless because anyone can claim them. "Excellent communicator" in a skills list carries exactly zero evidence. These belong in your experience bullets, proven by a specific result.
+**Soft skills** are behavioral traits: communication, leadership, teamwork, adaptability, problem-solving, time management. They are genuinely valuable — often the deciding factor between two technically qualified [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) — but *listing* them is worthless because anyone can claim them. "Excellent communicator" in a skills list carries exactly zero evidence. These belong in your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) bullets, proven by a specific result.
 
 The test is simple: if you could be tested on it, it is a hard skill and goes in the list. If it is a personality trait, it is a soft skill and must be shown, not stated.
 
 ## Where Soft Skills Actually Belong
 
-Since soft skills cannot be proven in a list, the strongest [resumes](https://thetailorcv.com/blog/anatomy-of-a-resume) fold them into achievement bullets where a result makes them credible:
+Since soft skills cannot be proven in a list, the strongest [resumes](https://thetailorcv.com/blog/anatomy-of-a-resume) fold them into [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) bullets where a result makes them credible:
 
 - **Communication:** "Presented quarterly analytics to a 30-person leadership team, translating technical risk into plain-language recommendations."
 - **Leadership:** "Led a team of 5 engineers through a six-month platform migration delivered on schedule."
@@ -123,7 +123,7 @@ Update the section every time you [tailor the resume](https://thetailorcv.com/op
 ## Frequently Asked Questions
 
 ### Should I list my proficiency level (beginner/expert)?
-Usually no — self-rated levels are subjective and invite skepticism. Let your experience bullets show depth instead.
+Usually no — self-rated levels are subjective and invite skepticism. Let your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) bullets show depth instead.
 
 ### Where should the skills section go?
 For technical and early-career roles, near the top so it is scanned first. For senior roles where experience leads, it can sit lower.
@@ -132,7 +132,7 @@ For technical and early-career roles, near the top so it is scanned first. For s
 List one or two only if the posting explicitly names them, but always back the important ones with evidence in your bullets.
 
 ### Should I list a skill I'm still learning?
-Only if you can speak to it honestly. "Familiar with" or listing it without overclaiming is fine; presenting a beginner skill as expertise backfires the moment an interviewer probes. When in doubt, prove depth through a project rather than a label.
+Only if you can speak to it honestly. "Familiar with" or listing it without overclaiming is fine; presenting a beginner skill as expertise backfires the moment an interviewer probes. When in doubt, prove depth through a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) rather than a label.
 
 ### How do I handle a skill the ATS wants but I don't have?
 For a genuinely critical hard skill, you can list the exact term for keyword matching, but never fabricate experience with it in your bullets, and be honest if asked. If the role centers on a skill you lack entirely, the durable fix is to build it before applying.
@@ -151,12 +151,12 @@ For technical and early-career roles, near the top so it is scanned first. For s
 
 ## Transferable Skills When Changing Careers
 
-[Career changers](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) face a specific skills-section challenge: your strongest hard skills may be from a field you are leaving. The move is not to hide them but to bridge them. Lead with the hard skills that transfer directly — a teacher moving into UX genuinely has research, communication, and workshop-facilitation skills; an accountant moving into data analysis genuinely has Excel, SQL-adjacent thinking, and rigor. Name the tools and methods that carry across, add the new ones you have deliberately built (a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026), a bootcamp, self-taught software), and let the combination tell the story of someone deliberately re-skilling rather than starting from zero. Mirror the target field's exact terminology, even when your experience with it is recent, so the [ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) and the recruiter both see the match. The skills section is where a [career change](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) either reads as a credible pivot or a random leap — precision in which skills you surface makes the difference.
+[Career changers](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) face a specific skills-section challenge: your strongest hard skills may be from a field you are leaving. The move is not to hide them but to bridge them. Lead with the hard skills that transfer directly — a teacher moving into UX genuinely has research, communication, and workshop-facilitation skills; an accountant moving into data analysis genuinely has Excel, SQL-adjacent thinking, and rigor. Name the tools and methods that carry across, add the new ones you have deliberately built (a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026), a bootcamp, self-taught software), and let the combination tell the story of someone deliberately re-skilling rather than starting from zero. Mirror the target field's exact terminology, even when your experience with it is recent, so the [ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) and the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) both see the match. The skills section is where a [career change](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) either reads as a credible pivot or a random leap — precision in which skills you surface makes the difference.
 
 ## Tailoring Skills to Each Application
 
-The single most effective habit for a skills section is to treat it as adjustable, not fixed. Different postings for the "same" role weight different tools, and the skills you list — and their order — should shift to match. Before each application, read the posting, note the hard skills it names, and reorder your section so the ones it cares about appear first and most prominently. Add any genuine skill you have that it emphasizes; drop or demote ones irrelevant to this particular job. This takes two minutes and meaningfully raises your relevance to both the parser and the human. A [resume optimizer](https://thetailorcv.com/optimize) automates the matching by reading the description and surfacing the exact skills to feature, and a quick [ATS score](https://thetailorcv.com/solutions) confirms the posting's key terms are actually present before you submit. A tailored skills section is one of the highest-return, lowest-effort edits in the entire [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
+The single most effective habit for a skills section is to treat it as adjustable, not fixed. Different postings for the "same" role weight different tools, and the skills you list — and their order — should shift to match. Before each [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application), read the posting, note the hard skills it names, and reorder your section so the ones it cares about appear first and most prominently. Add any genuine skill you have that it emphasizes; drop or demote ones irrelevant to this particular job. This takes two minutes and meaningfully raises your relevance to both the parser and the human. A [resume optimizer](https://thetailorcv.com/optimize) automates the matching by reading the description and surfacing the exact skills to feature, and a quick [ATS score](https://thetailorcv.com/solutions) confirms the posting's key terms are actually present before you submit. A tailored skills section is one of the highest-return, lowest-effort edits in the entire [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
 ## Putting It All Together
 
-Your skills section is a fast, scannable proof of relevance: list hard skills only, mirror the posting's exact terms, group them for readability, and cap the list at what you can actually defend. Push soft skills into your bullets where a result can prove them. Done right, the section takes a recruiter two seconds to read and tells both them and the ATS the same thing — this candidate has what the role needs.
+Your skills section is a fast, scannable proof of relevance: list hard skills only, mirror the posting's exact terms, group them for readability, and cap the list at what you can actually defend. Push soft skills into your bullets where a result can prove them. Done right, the section takes a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) two seconds to read and tells both them and the [ATS](https://thetailorcv.com/blog/how-to-pass-ats-in-2026) the same thing — this [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) has what the role needs.
