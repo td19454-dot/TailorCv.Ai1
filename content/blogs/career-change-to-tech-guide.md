@@ -78,7 +78,7 @@ Do not try to learn everything. Pick one role and go deep.
 This is non-negotiable. Theory alone does not get you hired. Build 2-3 real projects in your target skill. Read [how to build a professional portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 For developers: build apps and put them on [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization).
-For data analysts: build dashboards and analysis [projects](https://thetailorcv.com/blog/projects-in-resume).
+For data analysts: build dashboards and analysis [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 For designers: build case studies.
 
 ### Get a Certification (Where It Helps)
@@ -93,7 +93,7 @@ Some entry-level transitions benefit from recognized [certifications](https://th
 
 ## Step 3: Write a Career-Change Resume
 
-The challenge: your work history is in a different field. The solution: emphasize transferable skills, new technical skills, and [projects](https://thetailorcv.com/blog/projects-in-resume).
+The challenge: your work history is in a different field. The solution: emphasize transferable skills, new technical skills, and [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 
 ### Resume Structure for Career Changers
 
@@ -101,7 +101,7 @@ The challenge: your work history is in a different field. The solution: emphasiz
 
 2. **Skills** - Lead with your new technical skills prominently.
 
-3. **[projects](https://thetailorcv.com/blog/projects-in-resume)** - Place [projects](https://thetailorcv.com/blog/projects-in-resume) high on the resume, since they prove your new skills. This is often more important than your work history for career changers.
+3. **[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)** - Place [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) high on the resume, since they prove your new skills. This is often more important than your work history for career changers.
 
 4. **Experience** - Reframe your past experience to highlight transferable skills (analytical thinking, stakeholder management, problem-solving, project delivery).
 
@@ -160,7 +160,7 @@ You bring domain knowledge that pure-tech candidates lack, plus your new technic
 
 ### Mistake 1: Learning without building
 
-Courses and certificates without [projects](https://thetailorcv.com/blog/projects-in-resume) do not prove ability. Build real things.
+Courses and certificates without [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) do not prove ability. Build real things.
 
 ### Mistake 2: Hiding the career change
 
@@ -198,7 +198,7 @@ Turn the career advice into a stronger application system. Start by checking you
 When you are ready to apply, build the supporting pieces around the resume. Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) for targeted outreach, practice with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and review [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) if applications are not converting.
 
 ## Conclusion
-Changing careers into tech in 2026 is achievable with the right strategy: choose an accessible role, build real skills and [projects](https://thetailorcv.com/blog/projects-in-resume), write a resume that bridges your past and future, and leverage your domain expertise.
+Changing careers into tech in 2026 is achievable with the right strategy: choose an accessible role, build real skills and [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), write a resume that bridges your past and future, and leverage your domain expertise.
 
 Optimize your career-change resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), read the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026), build your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and follow the [first tech job guide](https://thetailorcv.com/blog/how-to-get-first-tech-job).
 

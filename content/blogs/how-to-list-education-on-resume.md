@@ -10,7 +10,7 @@ slug: how-to-list-education-on-resume
 keywords: how to list education on resume, education on resume 2026, resume education section, where to put education resume, GPA on resume, resume education format
 ---
 
-The education section seems simple, but candidates make surprisingly common mistakes - including the wrong details, placing it incorrectly, or including (or omitting) GPA at the wrong times. How you list education matters more for some candidates (students, [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers)) than others (experienced professionals), but everyone should get it right.
+The education section seems simple, but candidates make surprisingly common mistakes - including the wrong details, placing it incorrectly, or including (or omitting) GPA at the wrong times. How you list education matters more for some candidates (students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)) than others (experienced professionals), but everyone should get it right.
 
 This guide covers exactly how to list [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) on your resume for every situation.
 
@@ -34,7 +34,7 @@ Core elements:
 - Location (city, or city and country)
 - Graduation year (or expected graduation)
 - GPA / CGPA (if strong - see below)
-- Relevant coursework (for students and [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers))
+- Relevant coursework (for students and [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes))
 - Honors, awards, or distinctions (if applicable)
 
 ---
@@ -217,7 +217,7 @@ Use this guide as part of a complete job-search workflow. Check your resume with
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
-List your education clearly: degree, institution, year, and GPA only if strong. Students and [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) should place education near the top with [relevant coursework](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description); experienced professionals should keep it concise at the bottom. Remove high school once you have a degree, and omit a weak GPA.
+List your education clearly: degree, institution, year, and GPA only if strong. Students and [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) should place education near the top with [relevant coursework](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description); experienced professionals should keep it concise at the bottom. Remove high school once you have a degree, and omit a weak GPA.
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read [how to list certifications on resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete guidance.
 

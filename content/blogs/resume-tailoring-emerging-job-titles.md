@@ -129,7 +129,7 @@ Nobody does.
 Your job is to show how your existing background makes you uniquely suited for this emerging role.
 
 **If you are a [software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang):**
-Show Python proficiency, API integration experience, and any LLM or ML project work - even hobby [projects](https://thetailorcv.com/blog/projects-in-resume).
+Show Python proficiency, API integration experience, and any LLM or ML project work - even hobby [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 
 **If you are a [data scientist](https://thetailorcv.com/blog/data-scientist-resume-2026):**
 Show NLP work, text processing, and any generative AI experimentation.
@@ -147,7 +147,7 @@ For a deeper framework on this kind of bridging, see the [career change resume g
 
 ### 2. Show Projects More Prominently Than Job History
 
-For emerging roles, personal and side [projects](https://thetailorcv.com/blog/projects-in-resume) often carry more weight than prior job titles.
+For emerging roles, personal and side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) often carry more weight than prior job titles.
 
 If you have:
 - Built a RAG pipeline as a side project
@@ -158,7 +158,7 @@ If you have:
 
 - these belong in a prominent section on your resume.
 
-Read [how to list projects in a resume](https://thetailorcv.com/blog/projects-in-resume) for the best format and placement.
+Read [how to list projects in a resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for the best format and placement.
 
 For emerging roles, what you have built matters more than where you worked. Pair this with a strong [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) where you can showcase live work.
 
@@ -202,7 +202,7 @@ Learn [how to write resume bullet points](https://thetailorcv.com/blog/how-to-wr
 ### AI Engineer (2026)
 Core skills: Python, LangChain or LlamaIndex, OpenAI/Anthropic API, vector databases, API integration, [system design](https://thetailorcv.com/blog/system-design-interview-guide)  
 Background: Software engineering + AI curiosity  
-Key resume signals: Live AI [projects](https://thetailorcv.com/blog/projects-in-resume), API integrations, production deployments
+Key resume signals: Live AI [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), API integrations, production deployments
 
 ### Prompt Engineer
 Core skills: Prompt design, evaluation frameworks, LLM behavior understanding, Python (often), technical writing  
@@ -251,7 +251,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 ## FAQ
 ### Do I need a certification for emerging AI roles?
 
-Formal certifications are less important than demonstrated project work in AI. A completed Coursera ML course plus a live [project](https://thetailorcv.com/blog/projects-in-resume) on [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) beats a certification with no applied work.
+Formal certifications are less important than demonstrated project work in AI. A completed Coursera ML course plus a live [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) on [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) beats a certification with no applied work.
 
 ### What if I apply and get rejected for lacking "required" experience?
 
@@ -263,7 +263,7 @@ Absolutely. For emerging roles, personal projects are primary evidence. They sho
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [Projects in Resume for Freshers](https://thetailorcv.com/blog/projects-in-resume)
+- [Projects in Resume for Freshers](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [Machine Learning Engineer Resume 2026](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
 - [Data Scientist Resume 2026](https://thetailorcv.com/blog/data-scientist-resume-2026)
 - [Resume Tailoring When Underqualified](https://thetailorcv.com/blog/resume-tailoring-underqualified)
@@ -285,7 +285,7 @@ They are the ones who research what each company actually needs, show specific w
 
 Reverse-engineer the role from 15 job descriptions.
 Study people who already have the title.
-Build and show relevant [projects](https://thetailorcv.com/blog/projects-in-resume).
+Build and show relevant [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 Match the specific company's language.
 Check your [keyword match](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) before applying.
 

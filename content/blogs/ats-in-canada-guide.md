@@ -196,7 +196,7 @@ You can also [check your resume's ATS score for free](https://www.thetailorcv.co
 ## Frequently Asked Questions
 
 ### 1. What is an ATS-friendly resume?
-An [ATS-friendly resume](https://thetailorcv.com/blog/how-to-increase-ats-score) is formatted and structured to be easily read by Applicant Tracking Systems. It avoids complex formatting, uses standard fonts, and includes relevant keywords from the job description. For more tips, check our [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly).
+An [ATS-friendly resume](https://thetailorcv.com/blog/how-to-increase-ats-score) is formatted and structured to be easily read by Applicant Tracking Systems. It avoids complex formatting, uses standard fonts, and includes relevant keywords from the job description. For more tips, check our [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ### 2. How can I improve my ATS score?
 To improve your [ATS score](https://thetailorcv.com/blog/ats-score-vs-resume-score), tailor your resume for each job application by incorporating relevant keywords, using standard formatting, and including a skills section. For detailed guidance, refer to our [what is a good ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score).

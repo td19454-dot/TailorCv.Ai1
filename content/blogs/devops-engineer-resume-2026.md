@@ -14,7 +14,7 @@ A [DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026) engineer [r
 
 If your resume only lists tools without showing outcomes - uptime improved, deployment frequency increased, costs reduced - it will not stand out. Recruiters for [DevOps](https://thetailorcv.com/blog/devops-engineer-portfolio-guide) roles read dozens of resumes that all mention AWS, Docker, and Kubernetes. What they cannot find easily is a candidate who can [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) what those tools achieved.
 
-Check your resume against your target job description using the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) and read the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience) for help organizing your skills section. If you are targeting SRE roles specifically, the [site reliability engineer resume guide](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026) is also worth reading.
+Check your resume against your target job description using the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) and read the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide) for help organizing your skills section. If you are targeting SRE roles specifically, the [site reliability engineer resume guide](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026) is also worth reading.
 
 ---
 
@@ -32,7 +32,7 @@ Check your resume against your target job description using the [ATS score check
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume) or certifications
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or certifications
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One page for engineers with under 8 years of experience. Two pages are fine for senior or staff-level engineers with deep cloud architecture or platform leadership.
@@ -201,13 +201,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to c
 ## Frequently Asked Questions
 
 ### What are the key elements of a DevOps Engineer resume in 2026?
-A strong DevOps Engineer resume in 2026 should include a clear header, a compelling summary, a well-organized technical skills section, and detailed work experience. It’s also beneficial to showcase relevant [projects](https://thetailorcv.com/blog/projects-in-resume) or certifications and education. Tailoring these elements to highlight your impact on infrastructure and automation will make your resume stand out.
+A strong DevOps Engineer resume in 2026 should include a clear header, a compelling summary, a well-organized technical skills section, and detailed work experience. It’s also beneficial to showcase relevant [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or certifications and education. Tailoring these elements to highlight your impact on infrastructure and automation will make your resume stand out.
 
 ### How can I quantify my achievements on a DevOps resume?
 To effectively quantify your achievements, focus on metrics that reflect your impact, such as uptime improvements, deployment frequency increases, or cost reductions. Use specific examples and figures in your bullet points to demonstrate your contributions. For more insights on quantifying achievements, check out our guide on [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
 ### What should I include in the technical skills section of my DevOps resume?
-In the technical skills section, list relevant tools, technologies, and methodologies that align with the job description. Focus on cloud skills, CI/CD practices, and any specific programming languages you are proficient in. For a deeper dive into organizing your skills, refer to our [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience).
+In the technical skills section, list relevant tools, technologies, and methodologies that align with the job description. Focus on cloud skills, CI/CD practices, and any specific programming languages you are proficient in. For a deeper dive into organizing your skills, refer to our [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide).
 
 ### How do I ensure my resume passes ATS screening?
 To ensure your resume passes ATS screening, use an [ATS-friendly resume template](https://www.thetailorcv.com/templates) and incorporate keywords from the job description. Regularly check your resume against your target job description using the [free ATS score checker](https://www.thetailorcv.com/solutions) to optimize its chances of getting noticed by recruiters.

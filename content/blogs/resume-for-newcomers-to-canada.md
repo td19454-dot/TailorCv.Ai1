@@ -83,7 +83,7 @@ Relevant Coursework: Marketing Strategies, Business Analytics
 
 ### 5. Skills
 
-In this section, list both hard and soft skills relevant to the position. Hard skills might include technical abilities, while soft skills may encompass communication and teamwork. Tailor this section to the job description to improve your chances of passing ATS filters. For tips on optimizing your resume for ATS, refer to our [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly) guide.
+In this section, list both hard and soft skills relevant to the position. Hard skills might include technical abilities, while soft skills may encompass communication and teamwork. Tailor this section to the job description to improve your chances of passing ATS filters. For tips on optimizing your resume for ATS, refer to our [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) guide.
 
 #### Skills Checklist
 

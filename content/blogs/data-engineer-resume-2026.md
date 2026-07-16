@@ -32,7 +32,7 @@ Before applying, test your resume against the job description using the [ATS sco
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -52,7 +52,7 @@ Data Engineer with 5 years of experience designing ELT pipelines and cloud [data
 
 ### Example for Entry-Level Data Engineer
 
-Data Engineer with strong Python, SQL, and [data pipeline](https://thetailorcv.com/blog/job-description-analysis-checklist) skills. Built ELT pipelines using Python, Airflow, and PostgreSQL for 3 personal and academic [projects](https://thetailorcv.com/blog/projects-in-resume). Experienced with dbt, Snowflake, and PySpark basics. Completed Google Cloud Professional Data Engineer certification. Seeking a junior data engineering role with a team focused on scalable analytics infrastructure.
+Data Engineer with strong Python, SQL, and [data pipeline](https://thetailorcv.com/blog/job-description-analysis-checklist) skills. Built ELT pipelines using Python, Airflow, and PostgreSQL for 3 personal and academic [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Experienced with dbt, Snowflake, and PySpark basics. Completed Google Cloud Professional Data Engineer certification. Seeking a junior data engineering role with a team focused on scalable analytics infrastructure.
 
 ---
 
@@ -156,7 +156,7 @@ E-commerce Analytics Pipeline | Python, Airflow, dbt, BigQuery, Looker Studio
 
 ### Mistake 1: ETL tools only, no modern stack
 
-In 2026, dbt, Airflow, and Snowflake/BigQuery are the modern standard. If your resume only shows legacy ETL tools (Informatica, Talend, SSIS), add modern stack [projects](https://thetailorcv.com/blog/projects-in-resume) before applying.
+In 2026, dbt, Airflow, and Snowflake/BigQuery are the modern standard. If your resume only shows legacy ETL tools (Informatica, Talend, SSIS), add modern stack [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) before applying.
 
 ### Mistake 2: No data volume or scale
 

@@ -52,7 +52,7 @@ If your company has no formal framework:
 
 Promotions require evidence. Take on work that demonstrates next-level impact:
 
-- Volunteer for high-visibility, high-impact [projects](https://thetailorcv.com/blog/projects-in-resume)
+- Volunteer for high-visibility, high-impact [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Solve problems that matter to the business, not just your immediate team
 - Take ownership of outcomes, not just tasks
 - Mentor others (a key signal of seniority)
@@ -72,7 +72,7 @@ Doing great work that nobody sees does not get you promoted. You need decision-m
 - Write clear updates that show impact, not just activity
 - Share wins appropriately (without arrogance) in team channels
 - Contribute in cross-functional settings where senior people are present
-- Take on [projects](https://thetailorcv.com/blog/projects-in-resume) that interface with leadership
+- Take on [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that interface with leadership
 
 Visibility is not bragging - it is making your real contributions known so they can be evaluated fairly.
 

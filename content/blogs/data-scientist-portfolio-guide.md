@@ -51,7 +51,7 @@ Quality bar for "does this project belong in the portfolio":
 - Does it use a dataset or problem you chose or meaningfully modified, rather than a stock Kaggle dataset run through a stock notebook template?
 - Does the README or write-up explain *why*, not just *what*?
 
-If a project fails more than one of those, cut it or rework it. Three tight, well-explained projects beat ten shallow ones every time. For ideas on scoping projects that map to what employers screen for, see [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas) and [Projects in Resume](https://thetailorcv.com/blog/projects-in-resume) for how to summarize the same work in resume bullet form.
+If a project fails more than one of those, cut it or rework it. Three tight, well-explained projects beat ten shallow ones every time. For ideas on scoping projects that map to what employers screen for, see [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas) and [Projects in Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for how to summarize the same work in resume bullet form.
 
 ## What a Strong Project Write-Up Actually Includes
 
@@ -174,7 +174,7 @@ Understanding the distinctions between a data scientist and a data analyst portf
 
 ### Do I need Kaggle medals?
 
-No. A few well-explained, reproducible [projects](https://thetailorcv.com/blog/projects-in-resume) - ideally one deployed - beat medals with no narrative. A hiring manager can't interview your leaderboard rank; they can interview your reasoning.
+No. A few well-explained, reproducible [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) - ideally one deployed - beat medals with no narrative. A hiring manager can't interview your leaderboard rank; they can interview your reasoning.
 
 ### How many projects should be in a data science portfolio?
 

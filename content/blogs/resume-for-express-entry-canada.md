@@ -191,7 +191,7 @@ You can also [check your resume's ATS score for free](https://www.thetailorcv.co
 The best format for a Canadian resume is a clean, structured layout with clearly defined sections such as contact information, summary, work experience, education, and skills. For more details, see our [Canadian Resume Format Guide (2026)](https://thetailorcv.com/blog/canadian-resume-format-guide-2026).
 
 ### 2. How can I improve my ATS score?
-To improve your ATS score, ensure you use relevant keywords from the job description, avoid graphics, and stick to standard headings. For a detailed approach, refer to our guide on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly).
+To improve your ATS score, ensure you use relevant keywords from the job description, avoid graphics, and stick to standard headings. For a detailed approach, refer to our guide on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ### 3. Should I include volunteering experience on my resume?
 Yes, including relevant volunteering experience can showcase your skills and commitment, especially if you are new to the Canadian job market. Highlight any transferable skills acquired during your volunteer work.

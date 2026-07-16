@@ -31,7 +31,7 @@ Before worrying about length, make sure your content is right. Run your resume t
 - **0-10 years of experience**: One page
 - **10+ years of experience**: One to two pages
 - **Senior leadership, academia, or specialized fields**: Two pages (sometimes more for CVs)
-- **Students, [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), internships**: One page, always
+- **Students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), internships**: One page, always
 
 When in doubt, shorter is better. A tight one-page resume almost always beats a padded two-page resume.
 
@@ -108,16 +108,16 @@ Read [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-
 
 ## How to Expand a Resume That's Too Short
 
-If your resume is too sparse (common for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers)):
+If your resume is too sparse (common for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)):
 
-1. **Add a [projects](https://thetailorcv.com/blog/projects-in-resume) section** - For students and career changers, [projects](https://thetailorcv.com/blog/projects-in-resume) are essential and fill space with real value.
+1. **Add a [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) section** - For students and career changers, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are essential and fill space with real value.
 2. **Expand on achievements** - Add quantified results to thin bullets.
-3. **Add relevant coursework** - For [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), list relevant courses under education.
+3. **Add relevant coursework** - For [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), list relevant courses under education.
 4. **Add [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)** - Free [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (Google, AWS, Meta) add credibility and content.
 5. **Include volunteer or extracurricular leadership** - Especially relevant for entry-level.
 6. **Add a [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)** - Organized by category.
 
-Do not pad with fluff. An honest, focused half-page is better than a page filled with meaningless filler. Read the [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) and [first resume with no experience guide](https://thetailorcv.com/blog/resume-with-no-experience) for fresher-specific advice.
+Do not pad with fluff. An honest, focused half-page is better than a page filled with meaningless filler. Read the [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) and [first resume with no experience guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience) for fresher-specific advice.
 
 ---
 
@@ -163,10 +163,10 @@ Relevance beats completeness. Your resume is a marketing document, not a complet
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/resume-with-no-experience)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
 - [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)

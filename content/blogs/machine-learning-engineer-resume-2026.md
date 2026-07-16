@@ -32,7 +32,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. Publications or open-source contributions
 
@@ -137,7 +137,7 @@ E-commerce Platform | Jan 2023 - Present
 
 ## Projects for Entry-Level ML Engineer
 
-Good ML engineering [projects](https://thetailorcv.com/blog/projects-in-resume) to add:
+Good ML engineering [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) to add:
 
 - End-to-end ML pipeline with retraining
 - Model serving API with FastAPI and Docker

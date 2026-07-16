@@ -32,7 +32,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One to two pages. SRE roles are senior-leaning - two pages are acceptable for candidates with significant reliability improvement history.

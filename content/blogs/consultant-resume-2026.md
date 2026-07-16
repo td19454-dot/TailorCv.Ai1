@@ -50,7 +50,7 @@ Management Consultant with 5 years of experience advising Fortune 500 clients on
 
 ### Example for IT / Tech Consultant
 
-Technology Consultant with 4 years of experience leading digital transformation and systems implementation [projects](https://thetailorcv.com/blog/projects-in-resume) for enterprise clients. Delivered 8 ERP and cloud migration engagements on time and within budget. Skilled in requirements analysis, solution design, and change management.
+Technology Consultant with 4 years of experience leading digital transformation and systems implementation [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for enterprise clients. Delivered 8 ERP and cloud migration engagements on time and within budget. Skilled in requirements analysis, solution design, and change management.
 
 ---
 
