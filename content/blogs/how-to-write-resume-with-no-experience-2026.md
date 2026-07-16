@@ -27,7 +27,7 @@ Employers hiring for entry-level roles expect a short work history. What they ar
 2. **Skills** — the tools and abilities the posting names, that you genuinely have.
 3. **Projects** — your most powerful section; treat each project like a job.
 4. **Education** — degree, relevant coursework, honors.
-5. **Experience** — any part-time work, internships, volunteering.
+5. **Experience** — any part-time work, [internships](https://thetailorcv.com/blog/resume-for-internship-with-no-experience), volunteering.
 
 Projects sit above experience on purpose: for a career starter, a well-described project is stronger proof than a summer retail job.
 
@@ -95,12 +95,12 @@ The trait the employer cares about — reliability, communication, problem-solvi
 - **Listing coursework with no outcome.** "Took a database course" is weak; "Built a normalized SQL database as a course project" is strong.
 - **A wall of soft skills.** "Hardworking, motivated, team player" proves nothing. Show these traits in your project and job bullets instead.
 - **Going over one page.** With little history, a second page signals padding. Keep it tight.
-- **A generic objective.** "Seeking a challenging role to grow my skills" says nothing. Use a specific summary instead.
+- **A generic [objective](https://thetailorcv.com/blog/resume-objective-vs-summary).** "Seeking a challenging role to grow my skills" says nothing. Use a specific summary instead.
 - **Sending the same resume everywhere.** The one thing you fully control is effort. Tailoring beats a fancier template every time.
 
 ## Where to Find "Experience" You Already Have
 
-If your projects section feels thin, you likely have more material than you realize:
+If your [projects section](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) feels thin, you likely have more material than you realize:
 
 - **Course capstones and group projects** — treat the best one like a job.
 - **Hackathons or competitions** — even an unfinished entry shows initiative.
@@ -138,7 +138,7 @@ Before you send a no-experience resume, run it through these checks:
 - Is it **one clean page** that parses cleanly?
 - Have you **tailored it** to this specific role, not sent the same file everywhere?
 
-If you are starting from a blank page, the [resume builder](https://thetailorcv.com/modify-cv) gives you an ATS-friendly structure to fill in, and a quick [ATS score](https://thetailorcv.com/solutions) against the posting shows whether the keywords it wants are actually present before you apply. For a career starter, that final check is the difference between disappearing into the pile and landing the [first interview](https://thetailorcv.com/blog/phone-screen-interview-tips).
+If you are starting from a blank page, the [resume builder](https://thetailorcv.com/modify-cv) gives you an [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) structure to fill in, and a quick [ATS score](https://thetailorcv.com/solutions) against the posting shows whether the keywords it wants are actually present before you apply. For a career starter, that final check is the difference between disappearing into the pile and landing the [first interview](https://thetailorcv.com/blog/phone-screen-interview-tips).
 
 ## Frequently Asked Questions
 

@@ -54,7 +54,7 @@ Thank them when they agree, and again after — whatever the outcome. A referrer
 
 ## Give Before You Ask
 
-The strongest referrals come from warm relationships, and warm relationships are built by giving first. Long before you need anything, you can engage genuinely with people's work: a thoughtful comment on their post, sharing their article, an introduction that helps them, or a small favor. When you eventually reach out about a role, you are not a stranger with an ask — you are someone who has already been in their corner. This is why the best time to build your network is *before* you need it, not during a panicked job search.
+The strongest referrals come from warm relationships, and warm relationships are built by giving first. Long before you need anything, you can engage genuinely with people's work: a thoughtful comment on their post, sharing their article, an introduction that helps them, or a small favor. When you eventually reach out about a role, you are not a stranger with an ask — you are someone who has already been in their corner. This is why the best time to build your network is *before* you need it, not during a panicked [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
 ## The Anatomy of a Referral Message That Converts
 
