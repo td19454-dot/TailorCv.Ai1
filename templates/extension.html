@@ -28,18 +28,44 @@
         .ext-num.small { width: 30px; height: 30px; font-size: .85rem; }
         .ext-card h2, .ext-tpl-head h2 { margin: 4px 0 4px; font-size: 1.18rem; font-weight: 600; color: #e8edf6; }
         .ext-card-head p, .ext-tpl-head p { margin: 0; color: #c2ccde; font-size: .96rem; line-height: 1.55; }
+
+        /* Just the base-resume / template / cover-letter section headings — larger
+           and centered, unlike the plain left-aligned numbered headers elsewhere. */
+        .ext-head-lg { flex-direction: column; align-items: center; text-align: center; }
+        .ext-head-lg h2 { font-size: 2.1rem; }
         .ext-install-btn { display: inline-flex; align-items: center; gap: 9px; }
 
-        .ext-status { border-radius: 12px; padding: 12px 15px; font-size: .93rem; font-weight: 600; color: #4ade80; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); margin-bottom: 16px; }
-        .ext-status.unset { color: #fca5a5; background: rgba(239,68,68,.1); border-color: rgba(239,68,68,.28); }
+        .ext-status { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; border-radius: 12px; padding: 15px 22px; font-size: .93rem; font-weight: 600; color: #ffffff; background: linear-gradient(135deg, #050505, #1c1c1c); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 10px 26px rgba(0,0,0,.4); margin-bottom: 16px; }
+        .ext-status.unset { color: #fca5a5; border-color: rgba(239,68,68,.32); }
+        .ext-status-seg { white-space: nowrap; }
+        .ext-status-dot { color: rgba(255,255,255,.35); font-size: .7rem; }
 
-        .ext-drop { position: relative; display: block; cursor: pointer; border: 1.5px dashed rgba(96,165,250,.45); background: rgba(59,130,246,.07); border-radius: 14px; padding: 24px; text-align: center; transition: border-color .2s ease, background .2s ease; }
-        .ext-drop:hover, .ext-drop.over { border-color: rgba(96,165,250,.95); background: rgba(59,130,246,.14); }
+        .ext-drop { position: relative; display: flex; flex-direction: column; align-items: center; cursor: pointer; border: 1.5px dashed rgba(139,92,246,.5); background: #ffffff; border-radius: 14px; padding: 34px 24px; text-align: center; transition: border-color .2s ease, background .2s ease; }
+        .ext-drop:hover, .ext-drop.over { border-color: rgba(139,92,246,.95); background: #f8f7ff; }
         .ext-drop input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 2; }
-        .ext-drop b, .ext-drop small, .ext-drop .ext-file { position: relative; z-index: 1; pointer-events: none; }
-        .ext-drop b { display: block; color: #e8edf6; font-weight: 600; margin-bottom: 4px; }
-        .ext-drop small { color: #8a93a6; }
-        .ext-file { margin-top: 10px; font-size: .9rem; color: #4ade80; font-weight: 600; }
+        .ext-drop-icon, .ext-drop-text, .ext-drop small, .ext-drop .ext-file { position: relative; z-index: 1; pointer-events: none; }
+        .ext-drop-icon { color: #7c3aed; margin-bottom: 14px; }
+        .ext-drop-text { display: block; color: #1e293b; font-size: .98rem; font-weight: 500; margin-bottom: 6px; }
+        .ext-drop-text b { color: #7c3aed; font-weight: 700; }
+        .ext-drop small { color: #64748b; }
+        .ext-file { margin-top: 10px; font-size: .9rem; color: #16a34a; font-weight: 600; }
+
+        /* Centered confirm dialog shown right after a resume file is picked —
+           the actual save (or a redraw of the previous file) only happens once
+           the user acts on it here, so a drag-drop never silently overwrites
+           the base resume the extension is already tailoring from. */
+        .ext-confirm-overlay { position: fixed; inset: 0; z-index: 999998; background: rgba(2,8,28,.72); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; }
+        .ext-confirm-overlay.show { display: flex; }
+        .ext-confirm-modal { position: relative; background: #ffffff; border-radius: 18px; padding: 32px 28px 26px; max-width: 380px; width: 100%; text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,.5); transform: scale(.95); opacity: 0; transition: transform .18s ease, opacity .18s ease; }
+        .ext-confirm-overlay.show .ext-confirm-modal { transform: scale(1); opacity: 1; }
+        .ext-confirm-icon { width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 50%; background: rgba(124,58,237,.12); display: flex; align-items: center; justify-content: center; color: #7c3aed; }
+        .ext-confirm-modal h3 { margin: 0 0 8px; font-size: 1.2rem; font-weight: 700; color: #1e293b; }
+        .ext-confirm-modal p { margin: 0 0 22px; font-size: .92rem; color: #475569; word-break: break-word; }
+        .ext-confirm-actions { display: flex; gap: 12px; }
+        .ext-confirm-actions button { flex: 1; margin-top: 0; }
+        .ext-confirm-cancel { background: #fff; border: 1px solid #d8dee8; color: #334155; font: inherit; font-size: .95rem; font-weight: 600; border-radius: 10px; cursor: pointer; padding: 13px 16px; transition: background .15s ease; }
+        .ext-confirm-cancel:hover:not(:disabled) { background: #f1f5f9; }
+        .ext-confirm-cancel:disabled { opacity: .55; cursor: not-allowed; }
 
         .ext-nores { margin: 14px 0 0; font-size: .93rem; color: #c2ccde; text-align: center; }
         .ext-nores a { color: #60a5fa; font-weight: 600; text-decoration: none; }
@@ -85,14 +111,54 @@
         .ext-msg { margin-top: 12px; font-size: .93rem; text-align: center; }
         .ext-msg.ok { color: #4ade80; }
         .ext-msg.error { color: #fca5a5; }
-        .ext-delete-wrap { margin-top: 14px; text-align: center; }
-        .ext-delete-btn { background: none; border: 1px solid rgba(239,68,68,.35); color: #fca5a5; font: inherit; font-size: .88rem; font-weight: 600; padding: 9px 16px; border-radius: 10px; cursor: pointer; transition: background .2s ease; }
-        .ext-delete-btn:hover:not(:disabled) { background: rgba(239,68,68,.12); }
-        .ext-delete-btn:disabled { opacity: .55; cursor: not-allowed; }
+        .ext-autosave { margin-top: 10px; min-height: 18px; font-size: .87rem; text-align: center; color: #8a93a6; }
+        .ext-autosave.ok { color: #4ade80; }
+        .ext-autosave.error { color: #fca5a5; }
+
+        .ext-toast { position: fixed; top: 24px; left: 50%; z-index: 999999; display: flex; align-items: center; gap: 9px; padding: 13px 20px; border-radius: 12px; background: #16a34a; color: #fff; font-size: .92rem; font-weight: 600; box-shadow: 0 14px 32px rgba(0,0,0,.35); transform: translate(-50%, -16px); opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+        .ext-toast.show { opacity: 1; transform: translate(-50%, 0); }
+        .ext-toast svg { flex: none; width: 18px; height: 18px; }
+        .ext-manage-row { display: flex; gap: 12px; margin-top: 14px; justify-content: center; }
+        .ext-manage-row button { flex: 0 0 auto; font: inherit; font-size: 1.2rem; font-weight: 600; padding: 10px 20px; border-radius: 10px; cursor: pointer; transition: background .2s ease; margin-left: 20px; margin-right:20px  }
+        .ext-change-btn { background: #7c3aed; border: 1px solid #7c3aed; color: #ffffff; transition: transform .2s ease, box-shadow .2s ease; }
+        .ext-change-btn:hover:not(:disabled) { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(124,58,237,.45); }
+        .ext-delete-btn { background: #000000; border: 1px solid rgba(239,68,68,.5); color: #ef4444; transition: background .2s ease, color .2s ease; }
+        .ext-delete-btn:hover:not(:disabled) { background: #ef4444; color: #000000; }
+        .ext-manage-row button:disabled { opacity: .55; cursor: not-allowed; }
         .ext-boards-note { text-align: center; color: #c2ccde; font-size: .95rem; margin: 16px auto 0; max-width: 620px; line-height: 1.6; }
         .ext-boards-note b { color: #e8edf6; }
         .ext-links { display: flex; gap: 12px; flex-wrap: wrap; }
         @media (max-width: 620px) { .ext-links .solx-btn { width: 100%; } }
+
+        /* "Open any job posting" section: copy on the left, a small floating
+           preview of the job tracker's saved cards on the right. */
+        .ext-ready-grid { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+        .ext-ready-copy { flex: 1 1 320px; }
+        .ext-tracker-btn { display: inline-block; margin-top: 6px; padding: 13px 24px; border-radius: 10px; background: linear-gradient(135deg,#4f7fff,#7c3aed); color: #fff; font-weight: 700; font-size: .95rem; text-decoration: none; box-shadow: 0 10px 24px rgba(79,127,255,.35); transition: transform .2s ease, box-shadow .2s ease; }
+        .ext-tracker-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(79,127,255,.45); }
+
+        .ext-ready-viz { position: relative; flex: 1 1 300px; min-width: 300px; height: 300px; }
+        .ext-job-card { position: absolute; background: linear-gradient(160deg,#131b33,#0c1226); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; box-shadow: 0 16px 32px rgba(0,0,0,.4); animation: extCardFloat 4.5s ease-in-out infinite; }
+        .ext-job-card-back { top: 0; left: 95px; width: 200px; padding: 14px 16px; opacity: .55; animation-delay: -2.2s; z-index: 0; }
+        .ext-job-card-front { top: 40px; left: 0; width: 250px; padding: 16px 18px; z-index: 1; }
+        .ext-jc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+        .ext-jc-title { flex: 1; min-width: 0; font-size: .92rem; font-weight: 700; color: #f1f5f9; line-height: 1.3; }
+        .ext-jc-badge { flex: none; font-size: .68rem; font-weight: 700; color: #cbd5e1; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 2px 9px; }
+        .ext-jc-meta { font-size: .72rem; color: #8a93a6; margin-bottom: 8px; }
+        .ext-jc-tpl { display: inline-block; font-size: .72rem; font-weight: 600; color: #93c5fd; background: rgba(59,130,246,.14); border: 1px solid rgba(59,130,246,.3); border-radius: 999px; padding: 3px 10px; margin-bottom: 10px; }
+        .ext-jc-jd { font-size: .72rem; font-weight: 600; color: #93c5fd; margin-bottom: 10px; }
+        .ext-jc-divider { height: 1px; background: rgba(255,255,255,.09); margin-bottom: 10px; }
+        .ext-jc-row { display: flex; gap: 8px; margin-bottom: 10px; }
+        .ext-jc-input, .ext-jc-select { flex: 1; font-size: .7rem; color: #cbd5e1; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); border-radius: 7px; padding: 6px 9px; }
+        .ext-jc-update { display: inline-block; font-size: .72rem; font-weight: 700; color: #dbeafe; background: rgba(59,130,246,.18); border: 1px solid rgba(59,130,246,.4); border-radius: 7px; padding: 6px 14px; margin-bottom: 12px; }
+        .ext-jc-btns { display: flex; gap: 8px; }
+        .ext-jc-dl { flex: 1; text-align: center; font-size: .74rem; font-weight: 700; color: #fff; background: linear-gradient(135deg,#4f7fff,#7c3aed); border-radius: 8px; padding: 7px 0; }
+        .ext-jc-del { flex: none; font-size: .74rem; font-weight: 700; color: #f87171; border: 1px solid rgba(248,113,113,.4); border-radius: 8px; padding: 7px 14px; }
+
+        @keyframes extCardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-9px); }
+        }
         body { background: linear-gradient(135deg,#0a0012,#0d0033,#0a0a2e,#150025,#0a0012); }
     </style>
 </head>
@@ -370,7 +436,6 @@
             <!-- 1. Install -->
             <section class="ext-card">
                 <div class="ext-card-head">
-                    <span class="ext-num">1</span>
                     <div>
                         <h2>Add the extension to Chrome</h2>
                         <p>It opens itself on the major job boards. Anywhere else, click the TailorCV icon in your toolbar.</p>
@@ -384,8 +449,7 @@
 
             <!-- 2. Base resume -->
             <section class="ext-card">
-                <div class="ext-card-head">
-                    <span class="ext-num">2</span>
+                <div class="ext-card-head ext-head-lg">
                     <div>
                         <h2>Upload your base resume</h2>
                         <p>This is the resume the extension rewrites for every job you open. Upload it once.</p>
@@ -406,8 +470,15 @@
                     <label class="ext-drop" id="extDrop">
                         <input type="file" name="file" id="extFile" accept="application/pdf"
                                {% if not br.get('has_base_resume') %}required{% endif %}>
-                        <b>{% if br.get('has_base_resume') %}Replace your resume{% else %}Upload your resume{% endif %}</b>
-                        <small>{% if br.get('has_base_resume') %}Optional &mdash; drop a new PDF here only if you want to change it{% else %}PDF, click to choose or drop it here{% endif %}</small>
+                        <svg class="ext-drop-icon" viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M7 18a4.5 4.5 0 0 1-.7-8.94A6 6 0 0 1 18 8.5a4 4 0 0 1-1 7.9"/>
+                            <path d="M12 11v8"/>
+                            <path d="M9 14l3-3 3 3"/>
+                        </svg>
+                        <span class="ext-drop-text" id="extDropText">
+                            <b>{% if br.get('has_base_resume') %}Click to replace{% else %}Click to upload{% endif %}</b> or drag and drop
+                        </span>
+                        <small id="extDropHint">{% if br.get('has_base_resume') %}Optional &mdash; only if you want to change it{% else %}PDF only (max. 10MB){% endif %}</small>
                         <div class="ext-file" id="extFileName" hidden></div>
                     </label>
 
@@ -416,9 +487,13 @@
                         <a href="/modify-cv">Build one free in the Resume Builder &rarr;</a>
                     </p>
 
+                    <div class="ext-manage-row" id="extDeleteWrap"{% if not br.get('has_base_resume') %} hidden{% endif %}>
+                        <button type="button" class="ext-change-btn" id="extChangeBtn">Change base resume</button>
+                        <button type="button" class="ext-delete-btn" id="extDeleteBtn">Delete base resume</button>
+                    </div>
+
                     <!-- 3. Template, chosen visually from the real previews -->
-                    <div class="ext-tpl-head">
-                        <span class="ext-num small">3</span>
+                    <div class="ext-tpl-head ext-head-lg">
                         <div>
                             <h2>Pick the template it downloads in</h2>
                             <p>Your tailored resume comes out in this design every time.</p>
@@ -428,10 +503,10 @@
                     <input type="hidden" name="template_id" id="extTemplateId" value="{{ br.get('template_id') or 1 }}">
                     <input type="hidden" name="style_id" id="extStyleId" value="{{ br.get('style_id') or 1 }}">
                     <div class="ext-tpl-grid" id="extTemplateGrid"></div>
+                    <div class="ext-autosave" id="extTplNote"></div>
 
                     <!-- 4. Cover letter design — the same three offered on /cover-letter -->
-                    <div class="ext-tpl-head">
-                        <span class="ext-num small">4</span>
+                    <div class="ext-tpl-head ext-head-lg">
                         <div>
                             <h2>Pick your cover letter design</h2>
                             <p>The panel can also write a cover letter for the job you are on. It comes out in this design.</p>
@@ -480,27 +555,79 @@
                             <span class="ext-cl-name">Monogram</span>
                         </button>
                     </div>
+                    <div class="ext-autosave" id="extCoverNote"></div>
 
-                    <button type="submit" class="solx-btn ext-save">Save Extension Settings</button>
                     <div class="ext-msg" id="baseResumeMsg"></div>
                 </form>
-                <div class="ext-delete-wrap" id="extDeleteWrap"{% if not br.get('has_base_resume') %} hidden{% endif %}>
-                    <button type="button" class="ext-delete-btn" id="extDeleteBtn">Delete base resume</button>
+
+                <div class="ext-confirm-overlay" id="extConfirmOverlay">
+                    <div class="ext-confirm-modal">
+                        <div class="ext-confirm-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+                        </div>
+                        <h3>Save this resume?</h3>
+                        <p id="extConfirmFilename"></p>
+                        <div class="ext-confirm-actions">
+                            <button type="button" class="ext-confirm-cancel" id="extConfirmCancel">Cancel</button>
+                            <button type="button" class="solx-btn ext-save" id="extConfirmSave">Save changes</button>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- 4. Ready -->
             <section class="ext-card">
-                <div class="ext-card-head">
-                    <span class="ext-num">4</span>
-                    <div>
-                        <h2>Open any job posting</h2>
-                        <p>One click tailors your resume to that job and downloads the PDF. A second button writes a cover letter for the same job. Both are logged to your account.</p>
+                <div class="ext-ready-grid">
+                    <div class="ext-ready-copy">
+                        <div class="ext-card-head">
+                            <div>
+                                <h2>Open any job posting</h2>
+                                <p>One click tailors your resume to that job and downloads the PDF. A second button writes a cover letter for the same job.</p>
+                            </div>
+                        </div>
+                        <p class="ext-boards-note" style="text-align:left; margin:0 0 20px">Every resume you tailor is automatically stored in your job tracker &mdash; nothing to save by hand.</p>
+                        <a href="/my-resumes" class="ext-tracker-btn">My applications</a>
                     </div>
-                </div>
-                <p class="ext-boards-note" style="text-align:left; margin:0 0 16px">The panel opens by itself on the major job boards. Anywhere else, click the <b>TailorCV icon</b> in your toolbar.</p>
-                <div class="ext-links">
-                    <a href="/my-resumes" class="solx-btn ghost">My applications</a>
+                    <div class="ext-ready-viz" aria-hidden="true">
+                        <div class="ext-job-card ext-job-card-back">
+                            <div class="ext-jc-head">
+                                <span class="ext-jc-title">Lead Engineer &ndash; AI/ML</span>
+                                <span class="ext-jc-badge">Saved</span>
+                            </div>
+                            <div class="ext-jc-meta">Jul 15, 2026 &middot; Prospus &middot; Shubham Sarkar</div>
+                            <span class="ext-jc-tpl">Template 1</span>
+                            <div class="ext-jc-jd">&#9656; View job description</div>
+                            <div class="ext-jc-divider"></div>
+                            <div class="ext-jc-row">
+                                <span class="ext-jc-input">Prospus</span>
+                                <span class="ext-jc-select">Saved &#9662;</span>
+                            </div>
+                            <span class="ext-jc-update">Update</span>
+                            <div class="ext-jc-btns">
+                                <span class="ext-jc-dl">Download PDF</span>
+                                <span class="ext-jc-del">Delete</span>
+                            </div>
+                        </div>
+                        <div class="ext-job-card ext-job-card-front">
+                            <div class="ext-jc-head">
+                                <span class="ext-jc-title">GCP Data Engineer</span>
+                                <span class="ext-jc-badge">Saved</span>
+                            </div>
+                            <div class="ext-jc-meta">Jul 15, 2026 &middot; Zorba AI &middot; Shubham Sarkar</div>
+                            <span class="ext-jc-tpl">Template 1</span>
+                            <div class="ext-jc-jd">&#9656; View job description</div>
+                            <div class="ext-jc-divider"></div>
+                            <div class="ext-jc-row">
+                                <span class="ext-jc-input">Zorba AI</span>
+                                <span class="ext-jc-select">Saved &#9662;</span>
+                            </div>
+                            <span class="ext-jc-update">Update</span>
+                            <div class="ext-jc-btns">
+                                <span class="ext-jc-dl">Download PDF</span>
+                                <span class="ext-jc-del">Delete</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -528,7 +655,80 @@
         var styleEl  = document.getElementById('extStyleId');
         var deleteWrap = document.getElementById('extDeleteWrap');
         var deleteBtn  = document.getElementById('extDeleteBtn');
+        var changeBtn  = document.getElementById('extChangeBtn');
+        var tplNote    = document.getElementById('extTplNote');
+        var coverNote  = document.getElementById('extCoverNote');
         if (!form) return;
+
+        var coverGrid  = document.getElementById('extCoverGrid');
+        var coverInput = document.getElementById('extCoverTemplate');
+
+        /* Shared by the explicit "Save changes" button (upload section) and the
+           template/cover-letter autosave below — the API always saves all three
+           fields together, so every save just sends the form's current snapshot,
+           optionally with a new file. */
+        function saveSettings(fileOverride) {
+            var fd = new FormData();
+            fd.set('template_id', tplInput.value || '1');
+            fd.set('style_id', styleEl.value || '1');
+            var chosen = coverGrid.querySelector('.ext-cl.on');
+            fd.set('cover_template', chosen ? chosen.dataset.cl : 'classic');
+            if (fileOverride) fd.set('file', fileOverride);
+            return fetch('/api/extension/base-resume', {
+                method: 'POST',
+                body: fd,
+                credentials: 'same-origin'
+            }).then(function (res) {
+                if (res.ok) {
+                    // Re-sync the status banner in the background — the caller
+                    // (modal close, toast) doesn't need to wait on this second
+                    // round trip just to know the save itself worked.
+                    refreshStatus();
+                    return;
+                }
+                if (res.status === 401) throw new Error('Your session expired. Please log in again.');
+                return res.json().catch(function () { return {}; }).then(function (data) {
+                    throw new Error(data.detail || 'Could not save. Please try again.');
+                });
+            });
+        }
+
+        var toastTimer;
+        function showToast(text) {
+            var toast = document.getElementById('extToast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'extToast';
+                toast.className = 'ext-toast';
+                toast.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg><span></span>';
+                document.body.appendChild(toast);
+            }
+            toast.querySelector('span').textContent = text;
+            clearTimeout(toastTimer);
+            // Restart the transition even if a toast is already showing.
+            toast.classList.remove('show');
+            void toast.offsetWidth;
+            toast.classList.add('show');
+            toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+        }
+
+        /* Template and cover-letter picks already look instantly "selected" when
+           clicked, so requiring a separate Save button on top of that felt like an
+           extra step — autosave them right away instead. */
+        function autosave(noteEl, successText) {
+            noteEl.textContent = 'Saving...';
+            noteEl.className = 'ext-autosave';
+            saveSettings(null)
+                .then(function () {
+                    noteEl.textContent = '';
+                    noteEl.className = 'ext-autosave';
+                    showToast(successText);
+                })
+                .catch(function (err) {
+                    noteEl.textContent = err.message || 'Could not save. Please try again.';
+                    noteEl.className = 'ext-autosave error';
+                });
+        }
 
         /* Show the real template previews, same assets the templates gallery uses,
            so the user sees what their resume will actually look like. */
@@ -539,11 +739,6 @@
             });
         }
 
-        /* The banner reads the same endpoint the extension itself reads, so what you
-           see here is exactly what the extension will use. */
-        var coverGrid  = document.getElementById('extCoverGrid');
-        var coverInput = document.getElementById('extCoverTemplate');
-
         function selectCover(name) {
             coverInput.value = name;
             coverGrid.querySelectorAll('.ext-cl').forEach(function (c) {
@@ -551,7 +746,10 @@
             });
         }
         coverGrid.querySelectorAll('.ext-cl').forEach(function (c) {
-            c.addEventListener('click', function () { selectCover(c.dataset.cl); });
+            c.addEventListener('click', function () {
+                selectCover(c.dataset.cl);
+                autosave(coverNote, 'Cover letter template changed successfully');
+            });
         });
 
         function renderStatus(d) {
@@ -560,11 +758,23 @@
             if (hasBase) {
                 // Do NOT default this to "classic": if the API sends no cover_template
                 // the server is out of date, and quietly printing "classic" hides that.
-                var cover = d.cover_template
-                    ? ' · ' + d.cover_template + ' cover letter'
-                    : ' · cover letter design NOT SAVED — restart the server';
-                statusEl.textContent = '✓ Using “' + (d.filename || 'your resume') +
-                                       '” · Template ' + (d.template_id || 1) + cover;
+                var coverText = d.cover_template
+                    ? d.cover_template + ' cover letter'
+                    : 'cover letter design NOT SAVED — restart the server';
+                statusEl.innerHTML = '';
+                ['✓ Using “' + (d.filename || 'your resume') + '”', 'Template ' + (d.template_id || 1), coverText]
+                    .forEach(function (text, i) {
+                        if (i > 0) {
+                            var dot = document.createElement('span');
+                            dot.className = 'ext-status-dot';
+                            dot.textContent = '•';
+                            statusEl.appendChild(dot);
+                        }
+                        var seg = document.createElement('span');
+                        seg.className = 'ext-status-seg';
+                        seg.textContent = text;
+                        statusEl.appendChild(seg);
+                    });
                 statusEl.className = 'ext-status';
             } else {
                 statusEl.textContent = 'No base resume yet. The extension cannot tailor anything until you upload one.';
@@ -573,10 +783,10 @@
             // With a resume already on file, the upload is optional — otherwise the
             // browser blocks the submit and a template change can never be saved.
             fileEl.required = !hasBase;
-            dropEl.querySelector('b').textContent = hasBase ? 'Replace your resume' : 'Upload your resume';
-            dropEl.querySelector('small').textContent = hasBase
-                ? 'Optional — drop a new PDF here only if you want to change it'
-                : 'PDF, click to choose or drop it here';
+            dropEl.querySelector('#extDropText b').textContent = hasBase ? 'Click to replace' : 'Click to upload';
+            dropEl.querySelector('#extDropHint').textContent = hasBase
+                ? 'Optional — only if you want to change it'
+                : 'PDF only (max. 10MB)';
         }
 
         function refreshStatus() {
@@ -606,7 +816,10 @@
                     card.innerHTML =
                         '<span class="ext-tpl-shot"><img src="/static/pic' + t.id + '.webp?v=9" alt="" loading="lazy" decoding="async"></span>' +
                         '<span class="ext-tpl-name">' + (NAMES[t.id] || t.name) + '</span>';
-                    card.addEventListener('click', function () { select(t.id); });
+                    card.addEventListener('click', function () {
+                        select(t.id);
+                        autosave(tplNote, 'Template changed successfully');
+                    });
                     grid.appendChild(card);
                 });
                 select(tplInput.value || 1);
@@ -614,9 +827,46 @@
             })
             .catch(function () { refreshStatus(); });
 
+        var MAX_RESUME_BYTES = 10 * 1024 * 1024;
+
+        var confirmOverlay  = document.getElementById('extConfirmOverlay');
+        var confirmFilename = document.getElementById('extConfirmFilename');
+        var confirmCancelBtn = document.getElementById('extConfirmCancel');
+        var confirmSaveBtn  = document.getElementById('extConfirmSave');
+        var pendingFile = null;
+
+        function openConfirm(f) {
+            pendingFile = f;
+            confirmFilename.textContent = f.name;
+            confirmOverlay.classList.add('show');
+        }
+        function closeConfirm() {
+            confirmOverlay.classList.remove('show');
+            pendingFile = null;
+        }
+        function discardPendingFile() {
+            fileEl.value = '';
+            nameEl.hidden = true;
+            closeConfirm();
+        }
+
+        function acceptFile(f, files) {
+            if (!f) return;
+            if (f.size > MAX_RESUME_BYTES) {
+                fileEl.value = '';
+                nameEl.hidden = true;
+                msg.textContent = 'That PDF is over 10MB — please upload a smaller file.';
+                msg.className = 'ext-msg error';
+                return;
+            }
+            if (files) fileEl.files = files;
+            nameEl.textContent = '✓ ' + f.name;
+            nameEl.hidden = false;
+            openConfirm(f);
+        }
+
         fileEl.addEventListener('change', function () {
-            var f = fileEl.files && fileEl.files[0];
-            if (f) { nameEl.textContent = '\u2713 ' + f.name; nameEl.hidden = false; }
+            acceptFile(fileEl.files && fileEl.files[0]);
         });
         ['dragenter','dragover'].forEach(function (ev) {
             dropEl.addEventListener(ev, function (e) { e.preventDefault(); dropEl.classList.add('over'); });
@@ -626,71 +876,42 @@
         });
         dropEl.addEventListener('drop', function (e) {
             var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
-            if (f) { fileEl.files = e.dataTransfer.files; nameEl.textContent = '\u2713 ' + f.name; nameEl.hidden = false; }
+            acceptFile(f, e.dataTransfer.files);
         });
 
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            var btn = form.querySelector('.ext-save');
-            var orig = btn.textContent;
-            btn.disabled = true;
-            btn.textContent = 'Saving\u2026';
-            msg.textContent = '';
-            msg.className = 'ext-msg';
+        confirmOverlay.addEventListener('click', function (e) {
+            if (e.target === confirmOverlay) discardPendingFile();
+        });
+        confirmCancelBtn.addEventListener('click', discardPendingFile);
+        confirmSaveBtn.addEventListener('click', function () {
+            if (!pendingFile) { closeConfirm(); return; }
+            // Close right away and let the upload finish in the background —
+            // the toast (or the inline error below) reports the outcome once
+            // the request actually completes.
+            var file = pendingFile;
+            closeConfirm();
 
-            // An empty file input still sends an empty multipart part, which the API
-            // would reject — drop it so "save my template choice" works on its own.
-            var fd = new FormData(form);
-            if (!(fileEl.files && fileEl.files.length)) fd.delete('file');
-
-            // Read the design straight off the highlighted card rather than trusting the
-            // hidden field to have been updated.
-            var chosen = coverGrid.querySelector('.ext-cl.on');
-            fd.set('cover_template', chosen ? chosen.dataset.cl : 'classic');
-            fd.set('template_id', tplInput.value || '1');
-            console.log('[TailorCV] saving →', {
-                cover_template: fd.get('cover_template'),
-                template_id: fd.get('template_id'),
-                file: fd.get('file') ? 'new upload' : 'keeping existing'
-            });
-
-            fetch('/api/extension/base-resume', {
-                method: 'POST',
-                body: fd,
-                credentials: 'same-origin'
-            })
-                .then(function (res) {
-                    if (res.status === 401) throw new Error('Your session expired. Please log in again.');
-                    if (!res.ok) throw new Error('Could not save your base resume (error ' + res.status + '). Please try again.');
-                    return res.json();
-                })
-                /* Re-read the saved state instead of trusting the form: the banner then
-                   shows what is actually stored, never an optimistic guess. */
-                .then(function () { return refreshStatus(); })
-                .then(function (d) {
-                    if (d && d.has_base_resume) {
-                        msg.textContent = 'Saved. The extension will tailor this resume from now on.';
-                        msg.className = 'ext-msg ok';
-                    } else {
-                        msg.textContent = 'Saved, but the resume did not come back. Please reload and try again.';
-                        msg.className = 'ext-msg error';
-                    }
+            saveSettings(file)
+                .then(function () {
+                    showToast('Resume changed successfully');
                 })
                 .catch(function (err) {
+                    fileEl.value = '';
+                    nameEl.hidden = true;
                     msg.textContent = err.message || 'Could not save your base resume. Please try again.';
                     msg.className = 'ext-msg error';
-                })
-                .finally(function () {
-                    btn.disabled = false;
-                    btn.textContent = orig;
                 });
+        });
+
+        changeBtn.addEventListener('click', function () {
+            fileEl.click();
         });
 
         deleteBtn.addEventListener('click', function () {
             if (!window.confirm('Delete your base resume? The extension cannot tailor anything until you upload a new one.')) return;
             var orig = deleteBtn.textContent;
             deleteBtn.disabled = true;
-            deleteBtn.textContent = 'Deleting…';
+            deleteBtn.textContent = 'Deleting...';
             fetch('/api/extension/base-resume', { method: 'DELETE', credentials: 'same-origin' })
                 .then(function (res) {
                     if (res.status === 401) throw new Error('Your session expired. Please log in again.');
