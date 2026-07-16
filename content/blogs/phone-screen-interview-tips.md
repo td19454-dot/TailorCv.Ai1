@@ -13,17 +13,17 @@ keywords: phone screen interview, recruiter phone screen, phone interview tips, 
 ## Key Takeaways
 
 - The phone screen filters out mismatches on [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email), logistics, and basic fit.
-- Nail the three staples: "tell me about yourself," "why this role," and "salary expectations."
-- Have your resume and the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in front of you — this is an open-book call.
+- Nail the three staples: "tell me about yourself," "why this role," and "[salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) expectations."
+- Have your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in front of you — this is an open-book call.
 - Confirm mutual fit and next steps before you hang up.
 
 ## What a Phone Screen Is For
 
-A recruiter's phone screen is usually 20–30 minutes and is not deeply technical. It exists to confirm the basics before the company spends a manager's time: Are you actually interested? Are your salary expectations in range? Are you eligible and available? Do you communicate clearly? Clear most of those, and you advance.
+A [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s phone screen is usually 20–30 minutes and is not deeply technical. It exists to confirm the basics before the company spends a manager's time: Are you actually interested? Are your [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) expectations in range? Are you eligible and available? Do you communicate clearly? Clear most of those, and you advance.
 
 ## Prepare Like It's Open Book
 
-Unlike a live video round, the recruiter cannot see your desk. Keep your resume, the job description, your salary research, and a short list of questions right in front of you. Glance freely — just do not sound like you are reading.
+Unlike a live video round, the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) cannot see your desk. Keep your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), your [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) research, and a short list of questions right in front of you. Glance freely — just do not sound like you are reading.
 
 ## The Three Questions to Nail
 
@@ -62,17 +62,17 @@ Anchor to market data, not to what you currently make or personally need. If the
 
 ## Red Flags Recruiters Listen For
 
-A phone screen is a filter, and recruiters are listening for reasons to *not* advance you as much as reasons to. Avoid these:
+A phone screen is a filter, and [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) are listening for reasons to *not* advance you as much as reasons to. Avoid these:
 
 - **Badmouthing a current or former employer.** It signals you will do the same to them.
 - **Not knowing what role you applied for.** If you are applying widely, keep notes so you are never caught flat.
-- **Vague salary evasion.** A confident range keeps things moving; total deflection frustrates recruiters.
+- **Vague salary evasion.** A confident range keeps things moving; total deflection frustrates [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter).
 - **Low energy or distraction.** Background noise, obvious multitasking, or one-word answers read as disinterest.
 - **No questions at the end.** It suggests you have not thought seriously about the role.
 
 ## Prepare Your Own Questions
 
-Even on a 20-minute screen, have two or three genuine questions ready. Good ones for a recruiter: "What does the interview process look like from here?", "What's the team's biggest priority this quarter?", and "What are you personally hoping to see in the person who fills this role?" Thoughtful questions signal seriousness and give you real information to decide with. Rehearsing the whole call once in an [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) makes your answers tighter and your nerves quieter.
+Even on a 20-minute screen, have two or three genuine questions ready. Good ones for a recruiter: "What does the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) process look like from here?", "What's the team's biggest priority this quarter?", and "What are you personally hoping to see in the person who fills this role?" Thoughtful questions signal seriousness and give you real information to decide with. Rehearsing the whole call once in an [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) makes your answers tighter and your nerves quieter.
 
 ## What the Recruiter Is Actually Screening For
 
@@ -93,13 +93,13 @@ A phone screen is a two-way read. Pay attention to what the recruiter emphasizes
 
 The screen is not just a filter to survive; it is your chance to actively advance. Three moves make a recruiter want to push you forward:
 
-- **Match your language to the posting.** When you describe your experience in the exact terms the job description uses, the recruiter can easily "sell" you to the hiring manager.
+- **Match your language to the posting.** When you describe your experience in the exact terms the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) uses, the recruiter can easily "sell" you to the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
 - **Show low-friction enthusiasm.** Recruiters are also assessing whether you will accept an offer. Genuine, specific interest makes you a safer bet to advance.
 - **Ask about the process.** "What do the next rounds look like?" signals you are serious and helps you prepare. It also subtly moves the conversation toward next steps.
 
 ## A Sample Phone Screen, Start to Finish
 
-A typical 25-minute screen follows a predictable arc: a warm opener and small talk, "tell me about yourself," a walk through your recent experience, "why are you interested in this role," a couple of logistics and salary questions, your questions, and a wrap-up on next steps. Because it is so predictable, you can prepare nearly all of it in advance. Rehearse your 60-second intro, your "why this role" answer, and your salary range until they are smooth, keep your resume and notes in front of you, and have two questions ready. Do that and the call stops being a nerve-wracking gate and becomes a conversation you are steering. A single [mock interview](https://thetailorcv.com/mock-interview) run-through the day before makes the real thing feel routine.
+A typical 25-minute screen follows a predictable arc: a warm opener and small talk, "tell me about yourself," a walk through your recent experience, "why are you interested in this role," a couple of logistics and salary questions, your questions, and a wrap-up on next steps. Because it is so predictable, you can prepare nearly all of it in advance. Rehearse your 60-second intro, your "why this role" answer, and your salary range until they are smooth, keep your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and notes in front of you, and have two questions ready. Do that and the call stops being a nerve-wracking gate and becomes a conversation you are steering. A single [mock interview](https://thetailorcv.com/mock-interview) run-through the day before makes the real thing feel routine.
 
 ## Frequently Asked Questions
 
@@ -113,7 +113,7 @@ It is often the ideal time. Recruiters frequently raise it themselves to avoid w
 Some screens include a light one. Answer clearly and honestly; if you do not know, say how you would find out rather than bluffing.
 
 ### Can I have notes in front of me on a phone screen?
-Absolutely — that is one of the phone screen's advantages. Keep your resume, the job description, your salary range, and your questions in view. Just stay conversational rather than reading answers word for word.
+Absolutely — that is one of the phone screen's advantages. Keep your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), your salary range, and your questions in view. Just stay conversational rather than reading answers word for word.
 
 ### What should I do if I don't understand a question?
 Ask for clarification — it is better than guessing. "Just to make sure I answer what you're after, do you mean X or Y?" reads as thoughtful, not unprepared.
@@ -122,7 +122,7 @@ Ask for clarification — it is better than guessing. "Just to make sure I answe
 Reset with a strong, concrete answer and re-engage with a good question. One clear win late in a short call can shift the recruiter's overall impression. Stay calm; a composed recovery is itself a positive signal.
 
 ### Is a phone screen usually with a recruiter or the hiring manager?
-Most often a recruiter, whose job is to filter for basic fit, interest, and compensation before passing you to the hiring manager. Occasionally a hiring manager runs a light first call themselves. Either way, the fundamentals — clarity, energy, and specific interest — are the same.
+Most often a recruiter, whose job is to filter for basic fit, interest, and compensation before passing you to the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid). Occasionally a [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) runs a light first call themselves. Either way, the fundamentals — clarity, energy, and specific interest — are the same.
 
 ### Should I take notes during the call?
 Yes, briefly. Jot down the interviewer's name, key points about the role, next steps, and the timeline. Notes help you write a specific thank-you and prepare for later rounds. Just do not let note-taking pull you out of the conversation.
@@ -136,23 +136,15 @@ Even well-qualified candidates trip on the phone screen, almost always for avoid
 
 - **Taking the call somewhere noisy.** A crackly line or background chatter undercuts everything you say. If your quiet space falls through, ask to reschedule rather than push through a bad connection.
 - **Rambling on "tell me about yourself."** Without a prepared 60-second arc, this opener sprawls and sets a scattered tone. Script it.
-- **Sounding low-energy.** On audio, your voice is the entire impression. Stand up, smile, and project a little more warmth than feels natural.
+- **Sounding low-energy.** On audio, your voice is the entire impression. Stand up, smile, and [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a little more warmth than feels natural.
 - **Dodging the salary question.** Total evasion frustrates recruiters and can stall you. Give a researched range framed as flexible.
 - **Not knowing which role you applied for.** If you are applying widely, keep notes so you are never caught flat when they name the company.
 - **Having no questions.** "No, I think you covered everything" reads as disinterest. Always have two ready.
 
 ## Preparing in Under an Hour
 
-You do not need days to prepare for a phone screen — a focused hour covers it. Spend fifteen minutes re-reading the job description and your own resume so you can speak fluently to both. Spend fifteen more researching the company: what they do, a recent update, and why you genuinely want the role. Draft and rehearse your three staples — your 60-second intro, your "why this role" answer, and your salary range — out loud until they are smooth. Write down two questions to ask. Finally, set up your logistics: a quiet room, strong signal, your resume and notes in front of you, and water within reach. That single hour is the difference between a screen that feels like an ambush and one that feels like a conversation you are steering — and it is a fraction of the effort you already spent finding and applying to the role.
+You do not need days to prepare for a phone screen — a focused hour covers it. Spend fifteen minutes re-reading the job description and your own [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) so you can speak fluently to both. Spend fifteen more researching the company: what they do, a recent update, and why you genuinely want the role. Draft and rehearse your three staples — your 60-second intro, your "why this role" answer, and your salary range — out loud until they are smooth. Write down two questions to ask. Finally, set up your logistics: a quiet room, strong signal, your resume and notes in front of you, and water within reach. That single hour is the difference between a screen that feels like an ambush and one that feels like a conversation you are steering — and it is a fraction of the effort you already spent finding and applying to the role.
 
 ## Putting It All Together
 
 A phone screen is a filter, not a formality — it decides whether the company invests a manager's time in you. Treat it as open-book: keep your resume, the job description, and your notes in front of you, nail the three staples (tell me about yourself, why this role, salary range), and bring genuine energy and a couple of real questions. Clear that bar and you advance to the rounds where the job is actually won.
-
-## Related Guides
-
-- [How to Answer "Why Do You Want This Job?"](https://thetailorcv.com/blog/how-to-answer-why-do-you-want-this-job)
-- [Video Interview Tips for 2026](https://thetailorcv.com/blog/video-interview-tips-2026)
-- [Second Interview Questions and Answers](https://thetailorcv.com/blog/second-interview-questions-and-answers)
-- [How to Negotiate a Job Offer Over Email](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email)
-- [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
