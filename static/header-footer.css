@@ -36,6 +36,28 @@
     font-weight: 800;
     letter-spacing: -0.01em;
 }
+/* Footer logo — same mark + "thetailorcv" wordmark as the header navbar. */
+.site-footer .sf-logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 14px;
+    text-decoration: none;
+}
+.site-footer .sf-logo-mark {
+    height: 38px;
+    width: auto;
+    display: block;
+}
+.site-footer .sf-logo-word {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 500;
+    font-size: 1.55rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+    color: #3392ff;
+}
 .site-footer .sf-text {
     margin: 0 0 18px;
     max-width: 320px;
