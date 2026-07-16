@@ -129,6 +129,36 @@
         .ext-boards-note b { color: #e8edf6; }
         .ext-links { display: flex; gap: 12px; flex-wrap: wrap; }
         @media (max-width: 620px) { .ext-links .solx-btn { width: 100%; } }
+
+        /* "Open any job posting" section: copy on the left, a small floating
+           preview of the job tracker's saved cards on the right. */
+        .ext-ready-grid { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+        .ext-ready-copy { flex: 1 1 320px; }
+        .ext-tracker-btn { display: inline-block; margin-top: 6px; padding: 13px 24px; border-radius: 10px; background: linear-gradient(135deg,#4f7fff,#7c3aed); color: #fff; font-weight: 700; font-size: .95rem; text-decoration: none; box-shadow: 0 10px 24px rgba(79,127,255,.35); transition: transform .2s ease, box-shadow .2s ease; }
+        .ext-tracker-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(79,127,255,.45); }
+
+        .ext-ready-viz { position: relative; flex: 1 1 300px; min-width: 300px; height: 300px; }
+        .ext-job-card { position: absolute; background: linear-gradient(160deg,#131b33,#0c1226); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; box-shadow: 0 16px 32px rgba(0,0,0,.4); animation: extCardFloat 4.5s ease-in-out infinite; }
+        .ext-job-card-back { top: 0; left: 95px; width: 200px; padding: 14px 16px; opacity: .55; animation-delay: -2.2s; z-index: 0; }
+        .ext-job-card-front { top: 40px; left: 0; width: 250px; padding: 16px 18px; z-index: 1; }
+        .ext-jc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+        .ext-jc-title { flex: 1; min-width: 0; font-size: .92rem; font-weight: 700; color: #f1f5f9; line-height: 1.3; }
+        .ext-jc-badge { flex: none; font-size: .68rem; font-weight: 700; color: #cbd5e1; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 2px 9px; }
+        .ext-jc-meta { font-size: .72rem; color: #8a93a6; margin-bottom: 8px; }
+        .ext-jc-tpl { display: inline-block; font-size: .72rem; font-weight: 600; color: #93c5fd; background: rgba(59,130,246,.14); border: 1px solid rgba(59,130,246,.3); border-radius: 999px; padding: 3px 10px; margin-bottom: 10px; }
+        .ext-jc-jd { font-size: .72rem; font-weight: 600; color: #93c5fd; margin-bottom: 10px; }
+        .ext-jc-divider { height: 1px; background: rgba(255,255,255,.09); margin-bottom: 10px; }
+        .ext-jc-row { display: flex; gap: 8px; margin-bottom: 10px; }
+        .ext-jc-input, .ext-jc-select { flex: 1; font-size: .7rem; color: #cbd5e1; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); border-radius: 7px; padding: 6px 9px; }
+        .ext-jc-update { display: inline-block; font-size: .72rem; font-weight: 700; color: #dbeafe; background: rgba(59,130,246,.18); border: 1px solid rgba(59,130,246,.4); border-radius: 7px; padding: 6px 14px; margin-bottom: 12px; }
+        .ext-jc-btns { display: flex; gap: 8px; }
+        .ext-jc-dl { flex: 1; text-align: center; font-size: .74rem; font-weight: 700; color: #fff; background: linear-gradient(135deg,#4f7fff,#7c3aed); border-radius: 8px; padding: 7px 0; }
+        .ext-jc-del { flex: none; font-size: .74rem; font-weight: 700; color: #f87171; border: 1px solid rgba(248,113,113,.4); border-radius: 8px; padding: 7px 14px; }
+
+        @keyframes extCardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-9px); }
+        }
         body { background: linear-gradient(135deg,#0a0012,#0d0033,#0a0a2e,#150025,#0a0012); }
     </style>
 </head>
@@ -547,15 +577,57 @@
 
             <!-- 4. Ready -->
             <section class="ext-card">
-                <div class="ext-card-head">
-                    <div>
-                        <h2>Open any job posting</h2>
-                        <p>One click tailors your resume to that job and downloads the PDF. A second button writes a cover letter for the same job. Both are logged to your account.</p>
+                <div class="ext-ready-grid">
+                    <div class="ext-ready-copy">
+                        <div class="ext-card-head">
+                            <div>
+                                <h2>Open any job posting</h2>
+                                <p>One click tailors your resume to that job and downloads the PDF. A second button writes a cover letter for the same job.</p>
+                            </div>
+                        </div>
+                        <p class="ext-boards-note" style="text-align:left; margin:0 0 20px">Every resume you tailor is automatically stored in your job tracker &mdash; nothing to save by hand.</p>
+                        <a href="/my-resumes" class="ext-tracker-btn">My applications</a>
                     </div>
-                </div>
-                <p class="ext-boards-note" style="text-align:left; margin:0 0 16px">The panel opens by itself on the major job boards. Anywhere else, click the <b>TailorCV icon</b> in your toolbar.</p>
-                <div class="ext-links">
-                    <a href="/my-resumes" class="solx-btn ghost">My applications</a>
+                    <div class="ext-ready-viz" aria-hidden="true">
+                        <div class="ext-job-card ext-job-card-back">
+                            <div class="ext-jc-head">
+                                <span class="ext-jc-title">Lead Engineer &ndash; AI/ML</span>
+                                <span class="ext-jc-badge">Saved</span>
+                            </div>
+                            <div class="ext-jc-meta">Jul 15, 2026 &middot; Prospus &middot; Shubham Sarkar</div>
+                            <span class="ext-jc-tpl">Template 1</span>
+                            <div class="ext-jc-jd">&#9656; View job description</div>
+                            <div class="ext-jc-divider"></div>
+                            <div class="ext-jc-row">
+                                <span class="ext-jc-input">Prospus</span>
+                                <span class="ext-jc-select">Saved &#9662;</span>
+                            </div>
+                            <span class="ext-jc-update">Update</span>
+                            <div class="ext-jc-btns">
+                                <span class="ext-jc-dl">Download PDF</span>
+                                <span class="ext-jc-del">Delete</span>
+                            </div>
+                        </div>
+                        <div class="ext-job-card ext-job-card-front">
+                            <div class="ext-jc-head">
+                                <span class="ext-jc-title">GCP Data Engineer</span>
+                                <span class="ext-jc-badge">Saved</span>
+                            </div>
+                            <div class="ext-jc-meta">Jul 15, 2026 &middot; Zorba AI &middot; Shubham Sarkar</div>
+                            <span class="ext-jc-tpl">Template 1</span>
+                            <div class="ext-jc-jd">&#9656; View job description</div>
+                            <div class="ext-jc-divider"></div>
+                            <div class="ext-jc-row">
+                                <span class="ext-jc-input">Zorba AI</span>
+                                <span class="ext-jc-select">Saved &#9662;</span>
+                            </div>
+                            <span class="ext-jc-update">Update</span>
+                            <div class="ext-jc-btns">
+                                <span class="ext-jc-dl">Download PDF</span>
+                                <span class="ext-jc-del">Delete</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
