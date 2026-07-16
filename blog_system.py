@@ -208,20 +208,16 @@ class BlogService:
         groups = [
             [f"More {post.category} guides" if post.category else "More guides", take(rotate(same_cat, 3))],
             ["Related topics", take(tag_adj)],
-            ["Latest guides", take(recent)],
             ["Explore more", take(rotate(ring, 11))],
-            ["Popular reads", take(rotate(ring, 29))],
         ]
-        # Guarantee a floor: posts with no category or few tag matches would otherwise
-        # come up short. Top up "Explore more" from the ring (405 others, so always
-        # possible) until the whole hub reaches min_total links, plus the reserved
-        # excludes (related cards shown separately). No page ends up light.
+        # Modest floor so a no-category post still shows a couple of links, without
+        # turning into a wall. Top up "Explore more" from the ring if a page is light.
         target = min_total - len(exclude or [])
         total = sum(len(ps) for _, ps in groups)
         if total < target:
             needed = target - total
             pool = [p for p in rotate(ring, 7) if p.slug not in seen]
-            groups[3][1] = groups[3][1] + pool[:needed]
+            groups[-1][1] = groups[-1][1] + pool[:needed]
         return [{"title": t, "posts": ps} for t, ps in groups if ps]
 
     def list_filters(self) -> dict[str, list[str]]:
