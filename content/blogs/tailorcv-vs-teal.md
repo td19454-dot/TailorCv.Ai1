@@ -176,7 +176,7 @@ But the board measures **activity, not outcomes.** It cannot tell you that all f
 
 This is the specific failure mode we watch people fall into: they get more organised, they apply to more roles, they hear nothing, and they conclude the market is brutal. Sometimes it is. But often the market never saw them. Our piece on [tailored vs generic resumes](/blog/tailored-vs-generic-resume) puts numbers on the difference.
 
-The mechanics are worth understanding. When you apply through a portal — Workday, Greenhouse, Taleo, Naukri — your PDF is parsed into structured data. A recruiter then filters that data, usually using the exact terms from the job description. And here is the part that catches people: **the filter matches language, not meaning.** If the posting says "stakeholder management" and your resume says "worked with clients and teams", a human would call those identical. The filter will not. It is string matching, not comprehension.
+The mechanics are worth understanding. When you apply through a portal — Workday, Greenhouse, Taleo, Naukri — your PDF is parsed into structured data. A recruiter then filters that data, usually using the exact terms from the job description. And here is the part that catches people: **the filter matches language, not meaning.** If the posting says "stakeholder management" and your resume says "worked with clients and teams", a human would call those identical. The filter will not. It is string matching, not comprehension — and [the keyword mistakes people make](/blog/ats-keyword-mistakes) usually come from assuming otherwise.
 
 So the tidy board and the empty inbox are not a contradiction. They are the same story told from two ends.
 
@@ -188,7 +188,7 @@ You do not have to take our word for any of this. Find out instead.
 
 **Step 1: Pick a job you genuinely want.** Copy the full description, requirements included.
 
-**Step 2: Score your current resume against it** with a [free ATS score](/ats-analysis). Unlimited, no card. Read the number, then read the missing keywords list — that list is the real information.
+**Step 2: Score your current resume against it** with a [free ATS score](/ats-analysis). Unlimited, no card. Read the number, then read the missing [keywords](/blog/best-resume-keywords-to-beat-ats) list — that list is the real information.
 
 **Step 3: Be honest about what comes back.**
 
@@ -229,5 +229,8 @@ If your problem is **"I have applied to forty things and heard nothing"** — a 
 And the two are not mutually exclusive: Teal free for the board, TailorCV free for the score. Zero rupees, both halves covered.
 
 The way to find out which problem you have takes ten minutes and costs nothing. Run a [free ATS score](/ats-analysis) against a job you genuinely want. If it comes back at 85%, your resume is fine and organisation really is your bottleneck — Teal is your answer. If it comes back at 58%, you have just found where your search has been dying, and no tracker in the world was ever going to fix it.
+
+
+**Comparing other tools?** We have honest breakdowns of [TailorCV vs Jobscan](/blog/tailorcv-vs-jobscan), [vs Careerflow](/blog/tailorcv-vs-careerflow), [vs Zety](/blog/tailorcv-vs-zety) and [vs Enhancv](/blog/tailorcv-vs-enhancv) — plus a [four-way roundup](/blog/tailorcv-vs-rezi-vs-teal-vs-jobscan) and the [best free ATS checkers compared](/blog/best-free-ats-resume-checkers-compared).
 
 **Sources:** Teal pricing and free plan features verified July 2026 from [Teal's pricing page](https://www.tealhq.com/pricing) and independent 2026 reviews including [Teal HQ Review](https://blog.loopcv.pro/teal-hq-review/). Teal+ figures vary slightly by source and billing period. TailorCV pricing from our own [pricing page](/pricing). Prices change — check current pages before subscribing.

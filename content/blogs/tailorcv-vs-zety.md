@@ -187,7 +187,7 @@ Two things follow, and Zety only addresses one of them.
 
 **Second, the filter matches language, not meaning.** This is the one Zety does not touch. If the posting says "stakeholder management" and your resume says "worked with clients and teams", a human calls those the same thing. The parser does not. It is doing string matching, not comprehension. It will not infer that your "led a team of four" satisfies their "team leadership", or that "built dashboards in Tableau" answers "data visualisation experience".
 
-So you can have a perfectly parseable, professionally built, beautifully templated resume that gets rejected in forty seconds — and no email will ever tell you why. That is the gap between a builder and a tailoring tool, and it is the whole reason we exist. Our [ATS keywords guide](/blog/ats-keywords-to-boost-score) goes deeper on which terms actually carry weight.
+So you can have a perfectly parseable, professionally built, beautifully templated resume that gets rejected in forty seconds — and no email will ever tell you why. That is the gap between a builder and a tailoring tool, and it is the whole reason we exist. If you are weighing builders generally, [online CV maker vs resume builder](/blog/online-cv-maker-vs-resume-builder) is worth a read. Our [ATS keywords guide](/blog/ats-keywords-to-boost-score) goes deeper on which terms actually carry weight.
 
 ## Frequently Asked Questions
 
@@ -223,5 +223,8 @@ If you are missing **replies** — you have a resume, it looks fine, you have se
 The difference costs nothing to find out. Run a [free ATS score](/ats-analysis) against a job you actually want. Real PDF, no .txt, no card, no five-scan ceiling, no trial that quietly becomes $25.95 every four weeks. If it comes back at 85%, you did not need either of us. If it comes back at 55%, you have just found where your search has been dying.
 
 You can also compare us against the rest of the field on our [comparisons hub](/alternatives).
+
+
+**Comparing other tools?** We have honest breakdowns of [TailorCV vs Jobscan](/blog/tailorcv-vs-jobscan), [vs Teal](/blog/tailorcv-vs-teal), [vs Careerflow](/blog/tailorcv-vs-careerflow) and [vs Enhancv](/blog/tailorcv-vs-enhancv) — plus a [four-way roundup](/blog/tailorcv-vs-rezi-vs-teal-vs-jobscan) and the [best free ATS checkers compared](/blog/best-free-ats-resume-checkers-compared).
 
 **Sources:** Zety pricing and free-plan limits verified July 2026 from [Zety's pricing page](https://zety.com/pricing) and independent 2026 reviews including [Zety Resume Builder Pricing & PDF Download Costs (PitchMeAI)](https://pitchmeai.com/blog/zety-resume-builder-pricing-pdf-download-costs) and [Zety Review 2026 (ResuFit)](https://resufit.com/blog/zety-review-pricing-is-it-worth-it/). TailorCV pricing from our own [pricing page](/pricing). Prices change — check current pages before subscribing.
