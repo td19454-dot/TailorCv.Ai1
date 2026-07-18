@@ -179,7 +179,7 @@ So the honest answer is not "design bad". It is **know your channel**. And the p
 
 If you are going to pick one, pick based on where the majority of your applications go. For most people reading this — applying broadly through portals — that means matched first, beautiful second. For a designer with a referral network, the opposite.
 
-And if what you want is a place for visual flair with no parser to fight, that is what a [portfolio website](/portfolio) is for. A site has no ATS. Nothing strips your layout. You can be as distinctive as you like, and you send it as a link alongside a plain resume that survives the filter. That combination gets you both, and it is what we would actually recommend over agonising about resume templates.
+And if what you want is a place for visual flair with no parser to fight, that is what a [portfolio website](/portfolio) is for — and [linking it from your resume](/blog/add-portfolio-link-to-resume) is how people find it. A site has no ATS. Nothing strips your layout. You can be as distinctive as you like, and you send it as a link alongside a plain resume that survives the filter. That combination gets you both, and it is what we would actually recommend over agonising about resume templates.
 
 ## What Actually Happens When You Apply
 
@@ -233,5 +233,8 @@ Ask who reads yours first. If it is a person, go make it beautiful — and pay f
 Finding out costs nothing: run a [free ATS score](/ats-analysis) against a job you actually want. No trial clock, no card, no branding on your document. Then you will know which of us you actually need.
 
 You can also compare us against the rest of the field on our [comparisons hub](/alternatives).
+
+
+**Comparing other tools?** We have honest breakdowns of [TailorCV vs Jobscan](/blog/tailorcv-vs-jobscan), [vs Teal](/blog/tailorcv-vs-teal), [vs Careerflow](/blog/tailorcv-vs-careerflow) and [vs Zety](/blog/tailorcv-vs-zety) — plus a [four-way roundup](/blog/tailorcv-vs-rezi-vs-teal-vs-jobscan) and the [best free ATS checkers compared](/blog/best-free-ats-resume-checkers-compared).
 
 **Sources:** Enhancv pricing and free-tier limits verified July 2026 from [Enhancv's pricing page](https://enhancv.com/pricing/), their [help centre on free versions](https://help.enhancv.com/en/articles/1208865-what-is-included-in-the-free-version), and independent 2026 reviews including [Enhancv Pricing Breakdown (PitchMeAI)](https://pitchmeai.com/blog/enhancv-pricing-plans-cost). TailorCV pricing from our own [pricing page](/pricing). Prices change — check current pages before subscribing.
