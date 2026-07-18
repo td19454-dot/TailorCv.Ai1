@@ -3716,7 +3716,14 @@ async def interview_prep_page(request: Request):
 
 # Chrome Web Store listing. Until the extension is published, the CTAs fall back to
 # signup so they are never dead links; set CHROME_STORE_URL to point them at the store.
-CHROME_STORE_URL = os.getenv("CHROME_STORE_URL", "").strip()
+# Live Chrome Web Store listing. Kept as the default (not just an env var) so the
+# install buttons work on deploy without extra Render config; override via
+# CHROME_STORE_URL if the listing ever moves. The personal ?authuser/&hl params
+# from the share link are intentionally left off — they'd break for other users.
+CHROME_STORE_URL = os.getenv(
+    "CHROME_STORE_URL",
+    "https://chromewebstore.google.com/detail/tailorcv-%E2%80%94-ai-resume-opti/lnkplncemohgcdjlgccgmbcgiokcgmno",
+).strip()
 
 
 @app.get("/extension", response_class=HTMLResponse)
@@ -8000,21 +8007,39 @@ _BLOG_TO_ROLE = {
 
 
 def blog_cta(post) -> dict:
-    """Pick a topic-aware hero CTA (label + destination) from the post's
-    category/slug/title so each blog points to the most relevant tool."""
+    """Pick a topic-aware hero CTA from the post's category/slug/title so each
+    blog points to the most relevant tool. Returns title + text as well as the
+    button, so the whole card stays consistent — a cover-letter post must not
+    show ATS-score copy above a 'Generate a Cover Letter' button."""
     hay = f"{post.category} {post.slug} {post.title} {' '.join(post.tags)}".lower()
+    if "chrome extension" in hay or "chrome-extension" in hay or "browser extension" in hay:
+        return {"title": "Tailor on the job page",
+                "text": "Add the free TailorCV extension and tailor your resume on any posting in one click.",
+                "label": "Add to Chrome — Free", "url": "/extension"}
     if "cover letter" in hay or "cover-letter" in hay:
-        return {"label": "Generate a Cover Letter", "url": "/cover-letter"}
+        return {"title": "Write a standout cover letter",
+                "text": "Generate a cover letter matched to any job in seconds.",
+                "label": "Generate a Cover Letter", "url": "/cover-letter"}
     if "portfolio" in hay:
-        return {"label": "Build Your Portfolio", "url": "/portfolio"}
+        return {"title": "Turn your resume into a website",
+                "text": "Build a live portfolio site from your resume — no code needed.",
+                "label": "Build Your Portfolio", "url": "/portfolio"}
     if "interview" in hay or "mock" in hay:
-        return {"label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
+        return {"title": "Practice before it counts",
+                "text": "Run a free AI mock interview and get instant feedback.",
+                "label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
     if "template" in hay:
-        return {"label": "Browse Resume Templates", "url": "/templates"}
+        return {"title": "Pick a template that passes ATS",
+                "text": "Browse clean, recruiter-ready resume templates.",
+                "label": "Browse Resume Templates", "url": "/templates"}
     if "ats score" in hay or "ats-score" in hay:
-        return {"label": "Check My ATS Score", "url": "/solutions"}
+        return {"title": "Boost your resume in minutes",
+                "text": "Scan your resume against any job with the free ATS score checker.",
+                "label": "Check My ATS Score", "url": "/solutions"}
     # Everything else (incl. general ATS, resume, career, job-search) -> tailoring tool.
-    return {"label": "Tailor Your Resume", "url": "/solutions"}
+    return {"title": "Boost your resume in minutes",
+            "text": "Tailor your resume to any job and beat the ATS — free to start.",
+            "label": "Tailor Your Resume", "url": "/solutions"}
 
 
 @app.get("/blog/{slug}", response_class=HTMLResponse)
