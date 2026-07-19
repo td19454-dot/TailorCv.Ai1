@@ -21,6 +21,12 @@
 
   const BASE_URL = 'http://127.0.0.1:8005';
   const MIN_JD_LENGTH = 200;
+
+  // analytics.bundle.js (loaded before this file, see manifest.json) installs
+  // these globals — guarded in case it failed to load on some page.
+  function track(event, props) {
+    if (typeof window.__tcvTrack === 'function') window.__tcvTrack(event, props);
+  }
   const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 30; // r=30 in the SVG below
   // The lock-check.svg loop is 4.7s at 30fps (141 frames). Frame 74 is the last
   // moment before it starts turning green / drawing the checkmark, so looping
@@ -460,8 +466,34 @@
 
   // ── Panel shell ──────────────────────────────────────
 
-  function createPanel() {
+  // sidebar.css is bundled into styles.bundle.js (loaded before this file —
+  // see manifest.json) and inserted here as a real <style> node, rather than
+  // declared in manifest.json's content_scripts.css (or chrome.scripting.
+  // insertCSS): those inject rules straight into the render engine with no
+  // backing DOM node, which session-replay tools like rrweb/PostHog can't
+  // discover, so the panel recorded as unstyled markup (see
+  // https://github.com/PostHog/posthog/issues/23765). A runtime fetch of
+  // sidebar.css was tried instead, but content-script fetches to
+  // chrome-extension:// origins are subject to the host page's CSP
+  // connect-src, and LinkedIn's blocks it — hence bundling the CSS in ahead
+  // of time instead of fetching it live.
+  let stylesReady = null;
+  function ensureStyles() {
+    if (stylesReady) return stylesReady;
+    if (!document.getElementById('tailorcv-styles') && window.__tcvSidebarCss) {
+      const style = document.createElement('style');
+      style.id = 'tailorcv-styles';
+      style.textContent = window.__tcvSidebarCss;
+      document.head.appendChild(style);
+    }
+    stylesReady = Promise.resolve();
+    return stylesReady;
+  }
+
+  async function createPanel() {
     if (document.getElementById('tailorcv-sidebar')) return;
+    await ensureStyles();
+    if (document.getElementById('tailorcv-sidebar')) return;   // re-check: async gap may race a second call
 
     launcher = document.createElement('button');
     launcher.id = 'tailorcv-launcher';
@@ -483,6 +515,9 @@
         </div>
         <div class="tcv-account-menu" id="tcvAccountMenu">
           <div class="tcv-account-email" id="tcvAccountEmail"></div>
+          <a class="tcv-account-item" href="${BASE_URL}/extension#ext-base-resume" target="_blank">Change base resume</a>
+          <a class="tcv-account-item" href="${BASE_URL}/extension#ext-resume-template" target="_blank">Change resume template</a>
+          <a class="tcv-account-item" href="${BASE_URL}/extension#ext-cover-template" target="_blank">Change cover letter template</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension" target="_blank">Extension settings</a>
           <button class="tcv-account-item tcv-account-logout" id="tcvAccountLogout" type="button">Log out</button>
         </div>
@@ -518,6 +553,7 @@
       <div class="tcv-status-text" id="tcvGlobalStatus"></div>
     `;
     document.body.appendChild(sb);
+    track('panel_opened', { host: location.hostname });
     body = sb.querySelector('#tcvBody');
     // These live outside #tcvBody so they survive per-job re-renders — an
     // in-flight tailor request stays visible even after switching jobs.
@@ -709,7 +745,7 @@
         </div>
       </div>
       <div class="tcv-msg tcv-empty-msg">No base resume set yet.</div>
-      <a class="tcv-btn tcv-btn-start tcv-btn-link" href="${BASE_URL}/extension" target="_blank">Set one up on TailorCV →</a>
+      <a class="tcv-btn tcv-btn-start tcv-btn-link" href="${BASE_URL}/extension#ext-base-resume" target="_blank">Set one up on TailorCV →</a>
       <a class="tcv-link tcv-retry-link" href="#" id="tcvNoResumeRetry">Already set one up? Retry</a>
     `;
     noBaseResumeShown = true;
@@ -960,6 +996,7 @@
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Writing a cover letter for "${label}"…`;
     startProgress();
+    track('cover_letter_started', { source: job.source });
 
     const res = await sendMessage({
       type: 'COVER_LETTER',
@@ -973,6 +1010,15 @@
 
     finishProgress(!res.error);
     tcvBusy = false;
+
+    if (res.code === 'upgrade_required') {
+      quotaExceeded = true;
+      globalStatus.className = 'tcv-status-text';
+      globalStatus.textContent = '';
+      track('cover_letter_upgrade_required');
+      renderUpgradePrompt();
+      return;
+    }
 
     if (res.code === 'no_base_resume') {
       sessionReady = false;
@@ -989,6 +1035,7 @@
     // No skill-match score for a cover letter — showSuccessTick() with no
     // afterScore plays the tick and simply skips the score card afterward.
     if (!res.error) showSuccessTick();
+    track(res.error ? 'cover_letter_failed' : 'cover_letter_downloaded', { error: res.error });
 
     if (sessionReady) renderJobFromPage();
   }
@@ -1001,6 +1048,7 @@
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Tailoring "${label}"… this can take up to a minute.`;
     startProgress();
+    track('tailor_started', { source: job.source });
 
     const res = await sendMessage({
       type: 'TAILOR_AND_DOWNLOAD',
@@ -1019,6 +1067,7 @@
       quotaExceeded = true;
       globalStatus.className = 'tcv-status-text';
       globalStatus.textContent = '';
+      track('tailor_upgrade_required');
       renderUpgradePrompt();
       return;
     }
@@ -1034,11 +1083,13 @@
     if (res.error) {
       globalStatus.className = 'tcv-status-text tcv-error';
       globalStatus.textContent = `✗ ${label}: ${res.error}`;
+      track('tailor_failed', { error: res.error });
     } else {
       globalStatus.className = 'tcv-status-text tcv-ok';
       globalStatus.textContent = `✓ Downloaded resume for "${label}"`;
       const after = res.data && typeof res.data.afterScore === 'number' ? res.data.afterScore : null;
       showSuccessTick(job.beforeScore, after);
+      track('tailor_downloaded', { before_score: job.beforeScore, after_score: after });
     }
 
     // Refresh whichever job is on screen now that we're free to tailor again.
@@ -1105,6 +1156,7 @@
     await renderLoading();
     sessionReady = false;
     noBaseResumeShown = false;
+    quotaExceeded = false;
 
     const profileRes = await sendMessage({ type: 'GET_PROFILE' });
     if (profileRes.error || !profileRes.data) {
@@ -1118,6 +1170,7 @@
     accountEmailEl.textContent = email;
     accountBtn.textContent = email.trim().charAt(0).toUpperCase() || '?';
     accountBtn.classList.add('tcv-visible');
+    if (typeof window.__tcvIdentify === 'function') window.__tcvIdentify(email);
 
     // Login confirmed: let the lock finish unlocking (green tick) while the
     // base-resume check runs at the same time, so the flourish adds no extra
