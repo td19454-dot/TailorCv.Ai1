@@ -553,7 +553,21 @@
       <div class="tcv-status-text" id="tcvGlobalStatus"></div>
     `;
     document.body.appendChild(sb);
-    track('panel_opened', { host: location.hostname });
+
+    // Auto-injected on a declared job board (page load, no explicit user
+    // action yet): start icon-only. Auth + base-resume + JD detection still
+    // run immediately in the background (refreshFull() below doesn't check
+    // collapse state), so by the time the user clicks the icon the panel is
+    // usually already sitting on the ready state. A toolbar click is an
+    // explicit "open it now" request, so that path starts expanded instead.
+    const openedFromToolbar = window.__tailorcvFromToolbar === true;
+    if (!openedFromToolbar) {
+      sb.classList.add('tcv-collapsed');
+      launcher.classList.add('tcv-visible');
+    } else {
+      track('panel_opened', { host: location.hostname, via: 'toolbar' });
+    }
+
     body = sb.querySelector('#tcvBody');
     // These live outside #tcvBody so they survive per-job re-renders — an
     // in-flight tailor request stays visible even after switching jobs.
@@ -579,6 +593,7 @@
     launcher.addEventListener('click', () => {
       sb.classList.remove('tcv-collapsed');
       launcher.classList.remove('tcv-visible');
+      track('panel_opened', { host: location.hostname, via: 'launcher' });
     });
 
     accountBtn.addEventListener('click', (e) => {
@@ -1107,29 +1122,6 @@
   const EXTRACT_TRIES = 10;      // ~8s of watching before we ask the user
   const EXTRACT_EVERY = 800;
 
-  // Some LinkedIn views (e.g. jobs/collections) hydrate slower than our ~8s
-  // watch window on a first navigation, but a hard reload reliably lands on a
-  // warmer cache/render and succeeds — confirmed by hand before wiring this up.
-  // Only ever fires once per exact URL (tracked in sessionStorage, which
-  // survives the reload) so a page that's genuinely broken falls through to
-  // the manual-paste screen instead of reloading forever.
-  function tryAutoRefreshOnce() {
-    // Only safe on the boards declared in the manifest's content_scripts — those
-    // auto-reinject on any reload. On a toolbar-opened arbitrary site (activeTab,
-    // no declared match) a reload would strand the tab with no panel at all,
-    // since nothing would re-inject us there.
-    if (!adapterForHost()) return false;
-    const key = 'tailorcv_auto_refreshed:' + location.href;
-    try {
-      if (sessionStorage.getItem(key)) return false;
-      sessionStorage.setItem(key, '1');
-    } catch (_) {
-      return false;   // sessionStorage unavailable — don't reload blind
-    }
-    location.reload();
-    return true;
-  }
-
   function renderJobFromPage(attempt = 0, gen = ++extractGen) {
     if (gen !== extractGen) return;   // a newer page took over
     if (quotaExceeded) { renderUpgradePrompt(); return; }
@@ -1142,7 +1134,15 @@
     }
 
     if (attempt >= EXTRACT_TRIES) {
-      if (tryAutoRefreshOnce()) return;   // page is reloading — nothing left to render
+      // No auto-reload here: this used to trigger location.reload() once per
+      // URL, meant to recover slow-hydrating LinkedIn views — but every other
+      // declared board matches its ENTIRE domain (manifest.json), not just
+      // single-posting pages, so it also silently reloaded Workday application
+      // forms mid-fill (wiping answers) and Wellfound-style job LIST pages
+      // (disruptive mid-browse reload) whenever there was nothing to find. The
+      // panel is icon-only until the user opens it (see createPanel()), and
+      // renderManual()'s "Retry detection" link already gives a safe, explicit
+      // way to try again — no code path should ever reload the page for them.
       logDiagnostics();
       renderManual();
       return;
