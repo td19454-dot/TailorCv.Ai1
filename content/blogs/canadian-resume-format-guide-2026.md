@@ -7,7 +7,7 @@ tags: [Canadian resume, resume format Canada, resume for Canadian jobs]
 category: Resume Writing
 slug: canadian-resume-format-guide-2026
 keywords: canadian resume format, resume for canada, how to write a canadian resume, canada resume 2026
-image: public/blog-images/canadian-resume-format-guide-2026.png
+image: public/blog-images/canadian-resume-format-guide-2026.webp
 ---
 
 Navigating the Canadian job market can be daunting, especially for newcomers and international students. A well-crafted resume is crucial to making a strong first impression on potential employers. In Canada, the resume format has its unique norms and expectations, which differ from other countries. This guide will walk you through everything you need to know about writing a resume for Canada in 2026, ensuring that you stand out in a competitive job landscape.

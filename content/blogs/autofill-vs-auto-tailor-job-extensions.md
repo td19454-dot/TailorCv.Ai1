@@ -7,7 +7,7 @@ tags: [Chrome Extension, Job Search, Resume Tailoring, Application Autofill, Pro
 category: Job Search
 slug: autofill-vs-auto-tailor-job-extensions
 keywords: autofill vs auto tailor, job application autofill, auto tailor resume extension, job search extension comparison, resume autofill
-image: public/blog-images/autofill-vs-auto-tailor-job-extensions.png
+image: public/blog-images/autofill-vs-auto-tailor-job-extensions.webp
 ---
 
 Job-search extensions fall into two camps that sound similar and do completely different things: **autofill** fills out application forms for you, and **auto-tailor** rewrites your resume to match the job. People install one thinking they got the other, then wonder why their results did not change. This guide draws the line clearly, so you install the tool that fixes your actual problem.

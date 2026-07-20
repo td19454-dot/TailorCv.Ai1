@@ -7,7 +7,7 @@ tags: [international candidates USA, work in America, foreign resume US]
 category: Job Search
 slug: resume-for-international-candidates-usa
 keywords: resume for international candidates usa, foreign candidate us resume, work in usa resume
-image: public/blog-images/resume-for-international-candidates-usa.png
+image: public/blog-images/resume-for-international-candidates-usa.webp
 ---
 
 When you're an international candidate seeking employment in the United States, crafting a resume that meets U.S. norms is crucial. The U.S. job market is competitive, and employers often rely on Applicant Tracking Systems (ATS) to screen resumes before they even reach human eyes. Understanding the nuances of U.S. resume expectations, coupled with strategic job search techniques, will significantly enhance your chances of landing interviews and job offers. This guide will provide you with the essential steps to create a compelling resume tailored for U.S. employers, whether you're a new graduate, an experienced professional, or seeking visa sponsorship.

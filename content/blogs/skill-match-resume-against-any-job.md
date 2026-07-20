@@ -7,7 +7,7 @@ tags: [Skill Match, ATS Resume Checker, Chrome Extension, Resume Tailoring, Job 
 category: ATS Optimization
 slug: skill-match-resume-against-any-job
 keywords: skill match resume, resume skill match score, match resume skills to job, skill gap resume, resume skills matching tool
-image: public/blog-images/skill-match-resume-against-any-job.png
+image: public/blog-images/skill-match-resume-against-any-job.webp
 ---
 
 Before you spend twenty minutes on an application, it helps to know one thing in seconds: do your skills actually match this job? A skill-match score answers exactly that — how well your resume's skills line up with what the posting requires, and which ones you are missing. This guide explains what skill-matching is, how to read it, and how to check it against any posting in seconds.

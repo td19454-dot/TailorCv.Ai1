@@ -4,10 +4,10 @@ description: What one-click resume tailoring really does under the hood in 2026 
 date: 2026-07-16
 author: TailorCV Team
 tags: [Resume Tailoring, Chrome Extension, AI Resume, ATS Resume Checker, Job Search]
-category: Resume Tips
+category: Resume Writing
 slug: one-click-resume-tailoring-how-it-works
 keywords: one click resume tailoring, how ai tailors resume, ai resume tailoring how it works, automatic resume tailoring, tailor resume to job description ai
-image: public/blog-images/one-click-resume-tailoring-how-it-works.png
+image: public/blog-images/one-click-resume-tailoring-how-it-works.webp
 ---
 
 "Tailor your resume in one click" sounds like marketing until you understand what is actually happening in that click — and once you do, you can judge whether it produces a resume worth sending or just a keyword-stuffed mess. This is an honest look under the hood: what one-click tailoring reads, what it changes, what it deliberately will not do, and why the good version genuinely works.

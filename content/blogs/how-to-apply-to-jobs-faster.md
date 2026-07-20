@@ -7,7 +7,7 @@ tags: [Job Search, Resume Tailoring, Chrome Extension, ATS Resume Checker, Produ
 category: Job Search
 slug: how-to-apply-to-jobs-faster
 keywords: how to apply to jobs faster, apply to more jobs, fast job applications, tailor resume quickly, job application workflow 2026
-image: public/blog-images/how-to-apply-to-jobs-faster.png
+image: public/blog-images/how-to-apply-to-jobs-faster.webp
 ---
 
 There is a trap at the centre of every job search: the two things you want — to apply *faster* and to apply *better* — feel like opposites. Speed pushes you toward one generic resume you can fire everywhere; quality pushes you toward slow, careful tailoring. Most people pick speed, send generic resumes, and wonder why nothing lands.

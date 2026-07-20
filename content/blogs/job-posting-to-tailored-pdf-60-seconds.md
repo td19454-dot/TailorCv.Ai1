@@ -4,10 +4,10 @@ description: How to go from a job posting to a tailored, ATS-ready resume PDF in
 date: 2026-07-16
 author: TailorCV Team
 tags: [Resume Tailoring, Chrome Extension, ATS Resume Checker, Job Search, Productivity]
-category: Resume Tips
+category: Resume Writing
 slug: job-posting-to-tailored-pdf-60-seconds
 keywords: tailored resume in 60 seconds, fast resume tailoring, job posting to resume pdf, quick tailored resume, one minute resume tailoring
-image: public/blog-images/job-posting-to-tailored-pdf-60-seconds.png
+image: public/blog-images/job-posting-to-tailored-pdf-60-seconds.webp
 ---
 
 Ten minutes to tailor a resume is why most people stop tailoring. So the interesting question is not whether tailoring works — it does — but how far you can compress it without wrecking the quality. The honest answer in 2026 is about sixty seconds, from open posting to downloaded PDF, and this guide walks the exact flow, what happens in each second, and where the quality actually comes from.

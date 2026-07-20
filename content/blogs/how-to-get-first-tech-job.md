@@ -4,7 +4,7 @@ description: A complete guide to landing your first software engineering, data s
 date: 2026-06-01
 author: TailorCV Team
 tags: [First Tech Job, Tech Career, Software Engineer Fresher, Career Advice, Job Search 2026]
-category: Career Growth
+category: Career Advice
 image: public/blog-images/first tech job.webp
 slug: how-to-get-first-tech-job
 keywords: how to get first tech job, first software engineering job, fresher tech job 2026, entry level developer job, how to get job in software engineering, tech job no experience

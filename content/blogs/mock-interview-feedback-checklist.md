@@ -4,7 +4,7 @@ description: Use this mock interview feedback checklist to review clarity, struc
 date: 2026-07-07
 author: TailorCV Team
 tags: [Mock Interview, Interview Prep, Feedback, Career Tips, Behavioral Interview]
-category: Interview Prep
+category: Interview Preparation
 image: public/blog-images/mock-interview-feedback-checklist.webp
 slug: mock-interview-feedback-checklist
 keywords: mock interview feedback checklist, interview practice checklist, mock interview tips, interview feedback template

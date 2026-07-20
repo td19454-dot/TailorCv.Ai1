@@ -7,7 +7,7 @@ tags: [Wellfound, Startups, Resume Tailoring, Chrome Extension, Job Search]
 category: Job Search
 slug: tailor-resume-on-wellfound-startup-jobs
 keywords: tailor resume wellfound, wellfound resume tips, startup job resume, angellist resume, resume for startup jobs, wellfound application
-image: public/blog-images/tailor-resume-on-wellfound-startup-jobs.png
+image: public/blog-images/tailor-resume-on-wellfound-startup-jobs.webp
 ---
 
 Wellfound (formerly AngelList Talent) is where a huge share of startup hiring happens, and startups do not read resumes the way big companies do. Applying there with the same resume you would send to an enterprise is a mismatch — not because startups are less rigorous, but because they are looking for different things. This guide covers what startups actually want, how tailoring for Wellfound differs, and how to do it in one click.

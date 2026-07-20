@@ -7,7 +7,7 @@ tags: [Students, Freshers, Chrome Extension, Resume Tailoring, ATS Resume Checke
 category: Job Search
 slug: best-chrome-extension-for-students-job-hunting
 keywords: best chrome extension for students, student job search extension, fresher resume extension, chrome extension for freshers, student job hunting tools
-image: public/blog-images/best-chrome-extension-for-students-job-hunting.png
+image: public/blog-images/best-chrome-extension-for-students-job-hunting.webp
 ---
 
 Students and freshers face a specific version of the job-search problem: you are applying to *more* roles than an experienced candidate, with a *thinner* resume, and often with no idea why your applications vanish. The right browser extension helps disproportionately here — more than it does for a mid-career applicant — precisely because your situation demands more tailoring over less material. This guide covers what actually helps a student job hunt, and what to skip.

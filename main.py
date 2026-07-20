@@ -273,6 +273,15 @@ os.makedirs(static_dir, exist_ok=True)
 os.makedirs(public_dir, exist_ok=True)
 os.makedirs(BLOG_CONTENT_DIR, exist_ok=True)
 
+# Ensure WebP (and other modern image types) are served with the correct
+# Content-Type. On some platforms these are not in the default mimetypes table,
+# which makes StaticFiles fall back to text/plain — browsers still render it, but
+# a correct image/* type caches better and is what CDNs/SEO expect.
+import mimetypes as _mimetypes
+_mimetypes.add_type("image/webp", ".webp")
+_mimetypes.add_type("image/avif", ".avif")
+_mimetypes.add_type("image/svg+xml", ".svg")
+
 # Mount static files and configure templates with absolute paths
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 app.mount("/public", StaticFiles(directory=public_dir), name="public")
@@ -8006,40 +8015,56 @@ _BLOG_TO_ROLE = {
 }
 
 
-def blog_cta(post) -> dict:
+def blog_cta(post, is_logged_in: bool = False) -> dict:
     """Pick a topic-aware hero CTA from the post's category/slug/title so each
     blog points to the most relevant tool. Returns title + text as well as the
     button, so the whole card stays consistent — a cover-letter post must not
-    show ATS-score copy above a 'Generate a Cover Letter' button."""
+    show ATS-score copy above a 'Generate a Cover Letter' button.
+
+    Blog readers are (usually) logged out, so the CTA routes them through /login
+    with a `next` back to the tool — landing them on the logged-in view rather
+    than the marketing page. Already-logged-in readers go straight to the tool."""
     hay = f"{post.category} {post.slug} {post.title} {' '.join(post.tags)}".lower()
-    if "chrome extension" in hay or "chrome-extension" in hay or "browser extension" in hay:
-        return {"title": "Tailor on the job page",
-                "text": "Add the free TailorCV extension and tailor your resume on any posting in one click.",
-                "label": "Add to Chrome — Free", "url": "/extension"}
-    if "cover letter" in hay or "cover-letter" in hay:
-        return {"title": "Write a standout cover letter",
-                "text": "Generate a cover letter matched to any job in seconds.",
-                "label": "Generate a Cover Letter", "url": "/cover-letter"}
-    if "portfolio" in hay:
-        return {"title": "Turn your resume into a website",
-                "text": "Build a live portfolio site from your resume — no code needed.",
-                "label": "Build Your Portfolio", "url": "/portfolio"}
-    if "interview" in hay or "mock" in hay:
-        return {"title": "Practice before it counts",
-                "text": "Run a free AI mock interview and get instant feedback.",
-                "label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
-    if "template" in hay:
-        return {"title": "Pick a template that passes ATS",
-                "text": "Browse clean, recruiter-ready resume templates.",
-                "label": "Browse Resume Templates", "url": "/templates"}
-    if "ats score" in hay or "ats-score" in hay:
-        return {"title": "Boost your resume in minutes",
-                "text": "Scan your resume against any job with the free ATS score checker.",
-                "label": "Check My ATS Score", "url": "/solutions"}
-    # Everything else (incl. general ATS, resume, career, job-search) -> tailoring tool.
-    return {"title": "Boost your resume in minutes",
-            "text": "Tailor your resume to any job and beat the ATS — free to start.",
-            "label": "Tailor Your Resume", "url": "/solutions"}
+    # Extension CTA only when the extension is the post's actual SUBJECT (title/slug),
+    # not merely a tag. Otherwise broad how-to posts (e.g. "apply to jobs faster")
+    # that just mention the extension would wrongly push "Add to Chrome" instead of
+    # the core tool their reader actually wants.
+    subject = f"{post.slug} {post.title}".lower()
+    if "extension" in subject or "chrome" in subject or "add to chrome" in subject:
+        cta = {"title": "Tailor on the job page",
+               "text": "Add the free TailorCV extension and tailor your resume on any posting in one click.",
+               "label": "Add to Chrome — Free", "url": "/extension"}
+    elif "cover letter" in hay or "cover-letter" in hay:
+        cta = {"title": "Write a standout cover letter",
+               "text": "Generate a cover letter matched to any job in seconds.",
+               "label": "Generate a Cover Letter", "url": "/cover-letter"}
+    elif "portfolio" in hay:
+        cta = {"title": "Turn your resume into a website",
+               "text": "Build a live portfolio site from your resume — no code needed.",
+               "label": "Build Your Portfolio", "url": "/portfolio"}
+    elif "interview" in hay or "mock" in hay:
+        cta = {"title": "Practice before it counts",
+               "text": "Run a free AI mock interview and get instant feedback.",
+               "label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
+    elif "template" in hay:
+        cta = {"title": "Pick a template that passes ATS",
+               "text": "Browse clean, recruiter-ready resume templates.",
+               "label": "Browse Resume Templates", "url": "/templates"}
+    elif "ats score" in hay or "ats-score" in hay:
+        cta = {"title": "Boost your resume in minutes",
+               "text": "Scan your resume against any job with the free ATS score checker.",
+               "label": "Check My ATS Score", "url": "/solutions"}
+    else:
+        # Everything else (incl. general ATS, resume, career, job-search) -> tailoring tool.
+        cta = {"title": "Boost your resume in minutes",
+               "text": "Tailor your resume to any job and beat the ATS — free to start.",
+               "label": "Tailor Your Resume", "url": "/solutions"}
+
+    # Logged-out readers: go through login first, then land on the tool logged in.
+    # (The login page reads ?next and redirects there after sign-in.)
+    if not is_logged_in and cta["url"].startswith("/"):
+        cta["url"] = "/login?next=" + cta["url"]
+    return cta
 
 
 @app.get("/blog/{slug}", response_class=HTMLResponse)
@@ -8073,7 +8098,7 @@ async def blog_post_page(request: Request, slug: str):
             "faq_schema_json": build_faq_schema(post),
             "author_profile": author_profile,
             "related_resume_example": _BLOG_TO_ROLE.get(post.slug),
-            "hero_cta": blog_cta(post),
+            "hero_cta": blog_cta(post, is_logged_in=bool(request.session.get("user_id"))),
         },
     )
 

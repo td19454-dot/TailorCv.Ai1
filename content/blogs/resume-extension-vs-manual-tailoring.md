@@ -4,10 +4,10 @@ description: An honest comparison of tailoring your resume by hand versus using 
 date: 2026-07-16
 author: TailorCV Team
 tags: [Resume Tailoring, Chrome Extension, Job Search, ATS Resume Checker, Productivity]
-category: Resume Tips
+category: Resume Writing
 slug: resume-extension-vs-manual-tailoring
 keywords: resume extension vs manual, tailor resume by hand vs tool, manual resume tailoring, resume tailoring tool worth it, ai resume tailoring vs manual
-image: public/blog-images/resume-extension-vs-manual-tailoring.png
+image: public/blog-images/resume-extension-vs-manual-tailoring.webp
 ---
 
 You do not strictly need a tool to tailor your resume. You can do the whole thing by hand — plenty of people do, and done carefully it works. So the honest question is not "can I tailor manually" but "what does a Chrome extension actually save me, and is it worth it?" This guide answers that directly, including the cases where manual tailoring is genuinely the better choice.

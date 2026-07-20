@@ -7,7 +7,7 @@ tags: [Job Scam, Fake Job Postings, Job Search Safety, Recruiter Scam, Job Searc
 category: Job Search
 slug: how-to-spot-a-job-scam
 keywords: how to spot a job scam, fake job posting red flags, recruiter scam warning signs, is this job offer real
-image: public/blog-images/how-to-spot-a-job-scam.png
+image: public/blog-images/how-to-spot-a-job-scam.webp
 ---
 
 Job scams have gotten more sophisticated as remote hiring has grown - fake recruiters now use real company branding, cloned LinkedIn profiles, and convincing interview processes to steal personal information or money from job seekers. Knowing the specific red flags can save you from a scam that looks, at first glance, exactly like a real opportunity.

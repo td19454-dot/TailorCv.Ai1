@@ -4,10 +4,10 @@ description: More companies are hiring for skills instead of job titles or degre
 date: 2026-06-23
 author: TailorCV Team
 tags: [Skills-Based Hiring, Resume Matching, Job Description, Job Search 2026]
-category: Job Description Analysis
+category: ATS Optimization
 slug: resume-matching-skills-based-hiring
 keywords: skills-based hiring resume, skills based job description matching, resume without degree matching skills, skills first hiring 2026
-image: public/blog-images/resume-matching-skills-based-hiring.png
+image: public/blog-images/resume-matching-skills-based-hiring.webp
 ---
 
 A growing number of companies have dropped degree requirements and rigid title-matching in favor of skills-based hiring, evaluating candidates on what they can actually do rather than the credentials or job titles on their resume. This shift changes how [job descriptions](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) are written, and it changes how you should [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) to them.

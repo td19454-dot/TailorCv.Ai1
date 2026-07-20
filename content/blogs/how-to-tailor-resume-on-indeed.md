@@ -7,7 +7,7 @@ tags: [Indeed, Resume Tailoring, Chrome Extension, ATS Resume Checker, Job Searc
 category: Job Search
 slug: how-to-tailor-resume-on-indeed
 keywords: how to tailor resume on indeed, tailor resume indeed, resume for indeed jobs, indeed resume tips, tailor resume to job description indeed
-image: public/blog-images/how-to-tailor-resume-on-indeed.png
+image: public/blog-images/how-to-tailor-resume-on-indeed.webp
 ---
 
 Indeed is the biggest job board in the world, and that scale is exactly why applying there feels like shouting into a void. A popular posting can pull thousands of applicants, almost all of whom uploaded the same generic resume they use everywhere. The ones who get called are rarely the most qualified — they are the ones whose resume actually matched the posting.

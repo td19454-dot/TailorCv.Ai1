@@ -4,7 +4,7 @@ description: Real Reasons Qualified Candidates Get Rejected and How to Finally S
 date: 2026-05-23
 author: TailorCV Team
 tags: [ATS Resume, Resume Optimization, Job Search, Interview Preparation, LinkedIn, Career Advice]
-category: Career Growth
+category: Career Advice
 image: public/blog-images/not-getting-interviews.webp
 slug: why-am-i-not-getting-interviews
 keywords: not getting interviews, why no interview calls, resume rejected, ATS resume, qualified but no interviews

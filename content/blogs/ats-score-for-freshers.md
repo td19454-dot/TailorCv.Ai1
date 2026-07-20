@@ -3,7 +3,7 @@ title: ATS Score for Freshers
 date: 2026-07-12
 author: TailorCV Team
 slug: ats-score-for-freshers
-image: public/blog-images/ats-score-for-freshers.png
+image: public/blog-images/ats-score-for-freshers.webp
 ---
 
 ## ATS Score for Freshers - How to Pass With No Experience (2026)

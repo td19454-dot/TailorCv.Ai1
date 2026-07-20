@@ -4,7 +4,7 @@ description: Use this resume keyword map template to find required skills, missi
 date: 2026-07-07
 author: TailorCV Team
 tags: [Resume Keywords, ATS Resume, Job Description, Resume Matching, Resume Tips]
-category: ATS
+category: ATS Optimization
 image: public/blog-images/resume-keyword-map-template.webp
 slug: resume-keyword-map-template
 keywords: resume keyword map template, resume keywords, ATS keyword mapping, match resume to job description, job description keywords

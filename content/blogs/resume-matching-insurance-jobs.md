@@ -4,10 +4,10 @@ description: Learn how to match your resume to insurance job descriptions, inclu
 date: 2026-06-21
 author: TailorCV Team
 tags: [Insurance Resume, Resume Matching, Job Description, Underwriting, Claims]
-category: Industry Resume Matching
+category: ATS Optimization
 slug: resume-matching-insurance-jobs
 keywords: insurance resume matching, underwriter resume keywords, claims adjuster resume job description, insurance sales resume, insurance licensing resume
-image: public/blog-images/resume-matching-insurance-jobs.png
+image: public/blog-images/resume-matching-insurance-jobs.webp
 ---
 
 Insurance job descriptions are dense with regulatory and licensing requirements that most other industries do not have to deal with. A [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) for an underwriter, a claims adjuster, and an insurance sales agent will each specify different licenses, software systems, and lines of business, and a resume that does not reflect these specifics precisely can be filtered out before a human ever reads it.

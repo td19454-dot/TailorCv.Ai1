@@ -3,7 +3,7 @@ title: Product Manager Portfolio Guide
 date: 2026-07-12
 author: TailorCV Team
 slug: product-manager-portfolio-guide
-image: public/blog-images/product-manager-portfolio-guide.png
+image: public/blog-images/product-manager-portfolio-guide.webp
 ---
 
 ## Product Manager Portfolio Guide: Prove You Can Ship
