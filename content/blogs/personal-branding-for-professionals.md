@@ -4,7 +4,7 @@ description: Build a strong personal brand in 2026 to advance your career. Cover
 date: 2026-06-01
 author: TailorCV Team
 tags: [Personal Branding, Career Growth, LinkedIn, Professional Development, Career Advice]
-category: Career Growth
+category: Career Advice
 image: public/blog-images/personal-branding.webp
 slug: personal-branding-for-professionals
 keywords: personal branding, personal brand 2026, professional branding, build personal brand, LinkedIn personal brand, personal branding for career, thought leadership

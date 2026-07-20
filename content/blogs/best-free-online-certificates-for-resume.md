@@ -4,7 +4,7 @@ description: Discover the best free online certificates that actually look good 
 date: 2026-05-28
 author: TailorCV Team
 tags: [best free online certificates,free online certifications for resume,certifications that look good on resume,free certificates for freshers,ATS friendly certifications]
-category: Career Development
+category: Career Advice
 image: public/blog-images/best-free-online-certificates-for-resume-2026.webp
 slug: best-free-online-certificates-for-resume-2026
 keywords: best free online certificates, free online certifications for resume, certifications that look good on resume, best certifications for freshers, ATS friendly certifications, free certificates for job seekers, online certifications for resume

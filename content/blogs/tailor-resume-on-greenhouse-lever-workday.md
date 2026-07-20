@@ -7,7 +7,7 @@ tags: [Greenhouse, Workday, Lever, Chrome Extension, ATS Resume Checker]
 category: Job Search
 slug: tailor-resume-on-greenhouse-lever-workday
 keywords: tailor resume greenhouse, workday resume tips, lever ats resume, ashby resume, ats board resume, company career page resume
-image: public/blog-images/tailor-resume-on-greenhouse-lever-workday.png
+image: public/blog-images/tailor-resume-on-greenhouse-lever-workday.webp
 ---
 
 Everyone obsesses over LinkedIn and Indeed, but some of the best jobs never really live there. They live on company career pages, powered by applicant tracking systems like Greenhouse, Lever, Ashby and Workday. And these are the pages where tailoring matters *most*, because you are applying directly into the ATS with nothing in between.

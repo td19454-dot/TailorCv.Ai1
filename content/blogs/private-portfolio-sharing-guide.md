@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Privacy, Job Search Strategy]
 category: Portfolio
-image: public/blog-images/private-portfolio-sharing-guide.png
+image: public/blog-images/private-portfolio-sharing-guide.webp
 slug: private-portfolio-sharing-guide
 keywords: private portfolio link, unlisted portfolio, share portfolio with recruiter, confidential portfolio, portfolio privacy
 ---

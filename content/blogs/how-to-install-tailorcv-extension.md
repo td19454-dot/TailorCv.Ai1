@@ -4,10 +4,10 @@ description: A simple guide to installing and setting up the TailorCV Chrome ext
 date: 2026-07-16
 author: TailorCV Team
 tags: [Chrome Extension, Setup Guide, Resume Tailoring, TailorCV, Job Search]
-category: Guides
+category: Job Search
 slug: how-to-install-tailorcv-extension
 keywords: install tailorcv extension, tailorcv chrome extension setup, how to set up resume extension, add tailorcv to chrome, resume tailoring extension guide
-image: public/blog-images/how-to-install-tailorcv-extension.png
+image: public/blog-images/how-to-install-tailorcv-extension.webp
 ---
 
 Setting up the [TailorCV Chrome extension](/extension) takes about two minutes and two steps: install it, and tell it which resume to tailor from. After that, tailoring your resume to any job is one click on the posting itself. This guide walks through the whole thing, plus what to do if something does not work.

@@ -4,7 +4,7 @@ description: Learn how to answer salary expectation questions with research, ran
 date: 2026-07-07
 author: TailorCV Team
 tags: [Salary Negotiation, Interview Prep, Job Offer, Career Tips, HR Interview]
-category: Interview Prep
+category: Interview Preparation
 image: public/blog-images/salary-expectation-answer-guide.webp
 slug: salary-expectation-answer-guide
 keywords: salary expectation answer, how to answer salary expectations, expected salary interview answer, salary negotiation

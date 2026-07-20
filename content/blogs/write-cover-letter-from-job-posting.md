@@ -7,7 +7,7 @@ tags: [Cover Letter, Chrome Extension, Job Search, Resume Tailoring, AI Cover Le
 category: Cover Letters
 slug: write-cover-letter-from-job-posting
 keywords: cover letter from job posting, write cover letter from job description, ai cover letter generator, tailored cover letter, cover letter for a specific job
-image: public/blog-images/write-cover-letter-from-job-posting.png
+image: public/blog-images/write-cover-letter-from-job-posting.webp
 ---
 
 Most cover letters are written once, saved as "Cover Letter Final.docx", and pasted into every application with the company name swapped out — and recruiters can smell it instantly. A cover letter is only worth writing if it is built from the specific posting in front of you. The good news is that doing it properly no longer means starting from a blank page every time.

@@ -7,7 +7,7 @@ tags: [Express Entry, Canadian PR, immigrant job search]
 category: Job Search
 slug: resume-for-express-entry-canada
 keywords: resume for express entry, canada pr resume, resume for permanent residents canada
-image: public/blog-images/resume-for-express-entry-canada.png
+image: public/blog-images/resume-for-express-entry-canada.webp
 ---
 
 When applying for Express Entry and Permanent Residency (PR) in Canada, your resume is not just a summary of your work history; it’s a critical tool that can influence your immigration journey and job search. In a competitive job market, especially for newcomers and international students, understanding the nuances of Canadian resume standards is essential. In this article, we will provide specific, practical advice tailored to help you craft a resume that meets Canadian expectations and maximizes your chances of securing a job.

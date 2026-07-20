@@ -7,7 +7,7 @@ tags: [Job Search Strategy, Job Applications, Job Search Tips, Career Advice, Jo
 category: Job Search
 slug: how-many-jobs-should-you-apply-to-per-day
 keywords: how many jobs should i apply to per day, how many jobs to apply for per week, job application numbers, job search strategy 2026
-image: public/blog-images/how-many-jobs-should-you-apply-to-per-day.png
+image: public/blog-images/how-many-jobs-should-you-apply-to-per-day.webp
 ---
 
 There's no universal magic number, but the range most experienced job seekers and recruiters converge on is somewhere between 3 and 8 genuinely tailored applications per day, not 50 mass-submitted ones. The question "how many jobs should I apply to" is really two questions people conflate: how many can you physically submit, and how many can you submit *well*. Before you scale up your daily count, it's worth checking whether your current resume is even passing automated screening with the [free ATS score checker](https://www.thetailorcv.com/solutions), because a low score means every extra application just compounds the same problem instead of fixing it.

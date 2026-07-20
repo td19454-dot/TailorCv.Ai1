@@ -7,7 +7,7 @@ tags: [TailorCV vs Jobscan, Jobscan Alternative, ATS Resume Checker, Jobscan Pri
 category: Comparisons
 slug: tailorcv-vs-jobscan
 keywords: tailorcv vs jobscan, jobscan alternative, jobscan review 2026, jobscan pricing, free ats score checker, ats resume checker
-image: public/blog-images/tailorcv-vs-jobscan.png
+image: public/blog-images/tailorcv-vs-jobscan.webp
 ---
 
 Jobscan is the most recognised name in ATS resume scanning, and it earned that. If you have searched "will my resume pass the ATS" in the last five years, you have seen it. It more or less defined the category.

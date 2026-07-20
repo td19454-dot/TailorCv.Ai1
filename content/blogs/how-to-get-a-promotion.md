@@ -4,7 +4,7 @@ description: Learn how to get promoted in 2026. Covers how to demonstrate readin
 date: 2026-06-01
 author: TailorCV Team
 tags: [Promotion, Career Growth, Career Advice, Workplace Success, Professional Development]
-category: Career Growth
+category: Career Advice
 image: public/blog-images/how to get a promotion.webp
 slug: how-to-get-a-promotion
 keywords: how to get a promotion, get promoted 2026, career advancement, promotion at work, how to get promoted faster, career growth strategy

@@ -5,7 +5,7 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [First Resume, Gen Z Resume, Entry Level Resume, Resume for Students, Resume Tips 2026]
 category: Resume Writing
-image: public/blog-images/first-resume-for-gen-z-2026.png
+image: public/blog-images/first-resume-for-gen-z-2026.webp
 slug: first-resume-for-gen-z-2026
 keywords: first resume for gen z, gen z resume tips 2026, first job resume, entry level resume examples 2026
 ---

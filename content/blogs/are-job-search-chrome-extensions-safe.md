@@ -4,10 +4,10 @@ description: Whether job search Chrome extensions are safe in 2026 - what permis
 date: 2026-07-16
 author: TailorCV Team
 tags: [Chrome Extension, Privacy, Job Search, Security, Resume Tailoring]
-category: Guides
+category: Job Search
 slug: are-job-search-chrome-extensions-safe
 keywords: are job search extensions safe, chrome extension privacy, resume extension safe, job extension permissions, safe chrome extensions job search
-image: public/blog-images/are-job-search-chrome-extensions-safe.png
+image: public/blog-images/are-job-search-chrome-extensions-safe.webp
 ---
 
 A job-search extension can, by its nature, see the pages you open — that is how it reads a job description to help you. Which raises a fair question before you install one: is it safe, and what is it actually doing with what it sees? This guide gives you a clear, non-paranoid answer: what these extensions can and cannot access, the red flags that separate trustworthy tools from data harvesters, and how to check before you install.

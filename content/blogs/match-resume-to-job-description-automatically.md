@@ -7,7 +7,7 @@ tags: [Resume Tailoring, Chrome Extension, ATS Resume Checker, Keyword Matching,
 category: ATS Optimization
 slug: match-resume-to-job-description-automatically
 keywords: match resume to job description automatically, automatic resume matching, resume job description matcher, ai match resume to job, resume keyword matching tool
-image: public/blog-images/match-resume-to-job-description-automatically.png
+image: public/blog-images/match-resume-to-job-description-automatically.webp
 ---
 
 "Match your resume to the job description" is the most repeated advice in job hunting, and the least followed — because doing it by hand for every posting is slow and fiddly. Automatic matching removes that friction. This guide explains what automatic resume-to-JD matching actually does under the hood, how to read what it tells you, and how to do it in one click on any posting.

@@ -7,7 +7,7 @@ tags: [tech jobs Canada, IT resume Canada, software developer Canada]
 category: Resume Writing
 slug: tech-jobs-in-canada-resume
 keywords: tech jobs in canada resume, it resume canada, software developer resume canada
-image: public/blog-images/tech-jobs-in-canada-resume.png
+image: public/blog-images/tech-jobs-in-canada-resume.webp
 ---
 
 In the competitive landscape of Canada’s tech job market, crafting a stellar resume is essential for job seekers, especially for newcomers and international students. The right resume can be the difference between landing an interview and being overlooked. Understanding Canadian resume norms, the intricacies of Applicant Tracking Systems (ATS), and how to effectively showcase your skills can significantly enhance your chances of success. This guide will provide actionable insights tailored to the Canadian context, ensuring your resume not only meets standards but stands out to employers.
