@@ -7,7 +7,7 @@ tags: [ATS Canada, applicant tracking system Canada, Canadian ATS]
 category: ATS Optimization
 slug: ats-in-canada-guide
 keywords: ats in canada, canadian ats systems, ats resume canada, beat ats canada
-image: public/blog-images/ats-in-canada-guide.png
+image: public/blog-images/ats-in-canada-guide.webp
 ---
 
 Navigating the Canadian job market can be challenging, especially for newcomers and international students. One of the key hurdles many job seekers face is the Applicant Tracking System (ATS), a software that many employers use to filter resumes before they even reach human eyes. Understanding how ATS works in Canada is crucial for crafting a resume that not only gets noticed but also passes through this digital gatekeeper. In this article, we will explore practical steps you can take to optimize your resume for ATS, ensuring you stand out in the competitive Canadian job landscape.

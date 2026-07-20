@@ -5,7 +5,7 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Remote Job Cover Letter, Remote Work, Cover Letter Template, Remote Job Search, Work From Home]
 category: Cover Letters
-image: public/blog-images/cover-letter-for-remote-jobs.png
+image: public/blog-images/cover-letter-for-remote-jobs.webp
 slug: cover-letter-for-remote-jobs
 keywords: cover letter for remote jobs, remote job cover letter example, work from home cover letter, remote job application tips
 ---

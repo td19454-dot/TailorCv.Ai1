@@ -4,8 +4,8 @@ description: 15 practical ChatGPT prompts for improving your resume - summaries,
 date: 2026-07-08
 author: TailorCV Team
 tags: [ChatGPT Resume Prompts, AI Resume Writing, Resume Tips, AI Job Search, Resume Optimization]
-category: AI & Resume Trends
-image: public/blog-images/chatgpt-resume-prompts.png
+category: Resume Writing
+image: public/blog-images/chatgpt-resume-prompts.webp
 slug: chatgpt-resume-prompts
 keywords: chatgpt resume prompts, ai prompts for resume writing, chatgpt resume examples, best ai prompts for job search
 ---

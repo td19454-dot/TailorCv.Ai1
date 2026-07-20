@@ -4,7 +4,7 @@ description: Learn how to succeed in your first 90 days at a new job in 2026. Co
 date: 2026-06-01
 author: TailorCV Team
 tags: [New Job, Onboarding, Career Advice, Career Growth, Professional Development]
-category: Career Growth
+category: Career Advice
 image: public/blog-images/day90.webp
 slug: first-90-days-at-new-job
 keywords: first 90 days at new job, new job tips 2026, how to succeed at a new job, onboarding tips, first month new job, 30 60 90 day plan, new job success

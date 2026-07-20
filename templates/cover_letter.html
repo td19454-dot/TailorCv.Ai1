@@ -591,7 +591,10 @@
             statusEl.className = 'cl-status' + (cls ? ' ' + cls : '');
         }
 
-        resumeFile.addEventListener('change', function () {
+        // Guard: the upload input is absent for logged-in users on a stored base
+        // resume, so resumeFile can be null here — attaching without a check threw
+        // "Cannot read properties of null (reading 'addEventListener')".
+        if (resumeFile) resumeFile.addEventListener('change', function () {
             if (resumeFile.files && resumeFile.files[0]) setStatus('');
         });
 

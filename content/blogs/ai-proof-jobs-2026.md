@@ -5,7 +5,7 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [AI Proof Jobs, Future of Work, Career Advice, AI and Jobs, In-Demand Skills 2026]
 category: Career Advice
-image: public/blog-images/ai-proof-jobs-2026.png
+image: public/blog-images/ai-proof-jobs-2026.webp
 slug: ai-proof-jobs-2026
 keywords: ai proof jobs, jobs ai cannot replace, careers safe from ai, future proof career 2026
 ---

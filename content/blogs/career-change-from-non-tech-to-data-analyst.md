@@ -4,7 +4,7 @@ description: Move from a non-tech background to data analyst roles with a focuse
 date: 2026-07-07
 author: TailorCV Team
 tags: [Career Change, Data Analyst, Resume Writing, Portfolio, Job Search]
-category: Career Change
+category: Career Advice
 image: public/blog-images/career-change-from-non-tech-to-data-analyst.webp
 slug: career-change-from-non-tech-to-data-analyst
 keywords: career change to data analyst, non tech to data analyst, data analyst resume career change, data analyst portfolio beginner

@@ -4,10 +4,10 @@ description: Learn how to match your resume to real estate job descriptions, inc
 date: 2026-06-21
 author: TailorCV Team
 tags: [Real Estate Resume, Resume Matching, Job Description, Property Management]
-category: Industry Resume Matching
+category: ATS Optimization
 slug: resume-matching-real-estate
 keywords: real estate resume matching, real estate agent resume keywords, property manager resume job description, commercial real estate resume
-image: public/blog-images/resume-matching-real-estate.png
+image: public/blog-images/resume-matching-real-estate.webp
 ---
 
 Real estate hiring spans a wide range of roles, from commission-based sales agents to salaried property managers to commercial real estate analysts, and each type of [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) rewards a different resume strategy. A resume built for a leasing agent role rarely matches well against a commercial real estate analyst posting, even though both fall under "real estate."

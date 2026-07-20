@@ -7,7 +7,7 @@ tags: [Naukri, Resume Tailoring, Chrome Extension, ATS Resume Checker, India Job
 category: Job Search
 slug: how-to-tailor-resume-on-naukri
 keywords: how to tailor resume on naukri, naukri resume tips, tailor resume naukri, resume for naukri jobs, naukri ats resume
-image: public/blog-images/how-to-tailor-resume-on-naukri.png
+image: public/blog-images/how-to-tailor-resume-on-naukri.webp
 ---
 
 Naukri is where most of India's job search happens, and it runs on a scale that makes the applicant tracking system unavoidable. A single posting for a common role — analyst, developer, sales, operations — can pull hundreds or thousands of applications. Recruiters do not read them all. They search and filter, and the resumes that surface are the ones that matched the posting's language. Everyone else is invisible.

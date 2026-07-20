@@ -5,7 +5,7 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Jobs Without a Degree, High Paying Careers, Career Advice, No Degree Required, Skills Based Hiring]
 category: Career Advice
-image: public/blog-images/highest-paying-jobs-without-a-degree-2026.png
+image: public/blog-images/highest-paying-jobs-without-a-degree-2026.webp
 slug: highest-paying-jobs-without-a-degree-2026
 keywords: highest paying jobs without a degree, jobs that don't require a degree 2026, no degree high paying careers, skills based hiring 2026
 ---

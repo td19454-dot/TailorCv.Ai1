@@ -7,7 +7,7 @@ tags: [US resume, American resume format, resume for US jobs]
 category: Resume Writing
 slug: us-resume-format-guide-2026
 keywords: us resume format, american resume format, resume for usa jobs, us resume 2026
-image: public/blog-images/us-resume-format-guide-2026.png
+image: public/blog-images/us-resume-format-guide-2026.webp
 ---
 
 Writing a resume for the American job market can be a daunting task, especially for new graduates, international candidates, and those seeking visa sponsorships. The U.S. has specific resume norms that differ significantly from practices in other countries. Understanding these norms is crucial for crafting a compelling resume that stands out to hiring managers and passes through Applicant Tracking Systems (ATS). This guide will walk you through the essential components of a U.S. resume, providing practical tips and examples to help you create a document that effectively showcases your skills and experiences.

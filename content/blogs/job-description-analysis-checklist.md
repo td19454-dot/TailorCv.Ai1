@@ -4,7 +4,7 @@ description: Use this checklist to analyze a job description for must-have skill
 date: 2026-07-07
 author: TailorCV Team
 tags: [Job Description, Resume Matching, ATS Resume, Job Search, Resume Keywords]
-category: ATS
+category: ATS Optimization
 image: public/blog-images/job-description-analysis-checklist.webp
 slug: job-description-analysis-checklist
 keywords: job description analysis checklist, analyze job description, resume matching checklist, job description keywords

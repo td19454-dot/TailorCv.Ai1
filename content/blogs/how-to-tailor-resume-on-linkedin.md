@@ -7,7 +7,7 @@ tags: [LinkedIn, Resume Tailoring, Chrome Extension, ATS Resume Checker, LinkedI
 category: Job Search
 slug: how-to-tailor-resume-on-linkedin
 keywords: how to tailor resume on linkedin, tailor resume linkedin, linkedin easy apply resume, resume for linkedin jobs, tailor resume to job description linkedin
-image: public/blog-images/how-to-tailor-resume-on-linkedin.png
+image: public/blog-images/how-to-tailor-resume-on-linkedin.webp
 ---
 
 Most people apply to LinkedIn jobs the same way: find a role, hit Easy Apply, upload the one resume they always use, done. It feels productive — you can fire off ten applications in twenty minutes. And it is almost completely useless, because that one resume was not written for any of those ten jobs.

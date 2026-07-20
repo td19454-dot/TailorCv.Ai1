@@ -7,7 +7,7 @@ tags: [ATS Resume Checker, Chrome Extension, Resume Tailoring, ATS Score, Job Se
 category: ATS Optimization
 slug: check-ats-score-on-any-job-posting
 keywords: check ats score on job posting, ats score checker extension, resume match score, ats score for a job, check resume against job description
-image: public/blog-images/check-ats-score-on-any-job-posting.png
+image: public/blog-images/check-ats-score-on-any-job-posting.webp
 ---
 
 Most people find out their resume failed the same way every time: silence. No rejection reason, no feedback, just an application that vanished. The single most useful thing you can do to break that pattern is to see, before you apply, how well your resume actually matches the posting — a number, plus the specific words you are missing.

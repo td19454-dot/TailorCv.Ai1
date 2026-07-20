@@ -4,7 +4,7 @@ description: Build an interview story bank with STAR examples for leadership, co
 date: 2026-07-07
 author: TailorCV Team
 tags: [Interview Prep, STAR Method, Behavioral Interview, Career Tips, Mock Interview]
-category: Interview Prep
+category: Interview Preparation
 image: public/blog-images/interview-story-bank-star-method.webp
 slug: interview-story-bank-star-method
 keywords: interview story bank, STAR method examples, behavioral interview stories, interview preparation template

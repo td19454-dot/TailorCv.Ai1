@@ -7,7 +7,7 @@ tags: [Greenhouse, ATS, Resume Matching, Job Description, Startup Hiring]
 category: ATS Optimization
 slug: greenhouse-ats-resume-tips
 keywords: greenhouse ats resume, greenhouse resume tips, greenhouse job application, match resume to greenhouse, greenhouse recruiting resume format
-image: public/blog-images/greenhouse-ats-resume-tips.png
+image: public/blog-images/greenhouse-ats-resume-tips.webp
 ---
 
 Greenhouse is the [ATS](https://thetailorcv.com/blog/ats-score-guide) behind hiring at thousands of startups and tech companies, from seed-stage teams to public companies. If you have applied through a "powered by Greenhouse" application page, your resume was parsed, scored, and ranked before a recruiter ever opened it.

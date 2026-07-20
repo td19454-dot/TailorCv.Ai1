@@ -7,7 +7,7 @@ tags: [iCIMS, Taleo, ATS, Resume Formatting, Enterprise Hiring]
 category: ATS Optimization
 slug: icims-taleo-resume-formatting-guide
 keywords: icims resume format, taleo resume tips, icims ats resume, taleo ats resume, legacy ats resume formatting
-image: public/blog-images/icims-taleo-resume-formatting-guide.png
+image: public/blog-images/icims-taleo-resume-formatting-guide.webp
 ---
 
 iCIMS and Taleo are two of the oldest, most widely deployed [ATS](https://thetailorcv.com/blog/ats-score-guide) platforms still in use today. Large enterprises, healthcare systems, retailers, and government-adjacent employers often run their hiring through one of these two systems. If you have applied to a large, established company and the application process felt slower and more form-heavy than a typical startup posting, there is a good chance it was iCIMS or Taleo.

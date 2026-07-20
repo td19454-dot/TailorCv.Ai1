@@ -67,9 +67,9 @@
             <button type="submit">Search</button>
         </form>
         <div class="tags-row">
-            <a class="tag {% if not selected_category %}active{% endif %}" href="/blog?q={{ q }}&category=">All</a>
+            <a class="tag {% if not selected_category %}active{% endif %}" href="/blog?q={{ q | urlencode }}&category=">All</a>
             {% for c in categories %}
-            <a class="tag {% if c == selected_category %}active{% endif %}" href="/blog?q={{ q }}&category={{ c }}">{{ c }}</a>
+            <a class="tag {% if c == selected_category %}active{% endif %}" href="/blog?q={{ q | urlencode }}&category={{ c | urlencode }}">{{ c }}</a>
             {% endfor %}
         </div>
     </section>
@@ -91,6 +91,11 @@
                 </div>
             </div>
         </article>
+        {% else %}
+        <div class="blog-empty" style="grid-column:1/-1;text-align:center;padding:56px 20px;color:#9fb0cc">
+            <p style="font-size:1.1rem;margin:0 0 14px">No articles here yet{% if selected_category %} in <strong>{{ selected_category }}</strong>{% elif q %} for “{{ q }}”{% endif %}.</p>
+            <a href="/blog" style="color:#7dd3fc;font-weight:600;text-decoration:underline">Browse all guides &rarr;</a>
+        </div>
         {% endfor %}
     </section>
 
@@ -98,7 +103,7 @@
        39-deep Prev/Next chain). Shows first, a window around the current page, and
        last — so page 1 and the final page are always one hop away. #}
     <nav class="pagination" aria-label="Blog pagination">
-        {% set qs = "&q=" ~ q ~ "&tag=" ~ selected_tag ~ "&category=" ~ selected_category %}
+        {% set qs = "&q=" ~ (q | urlencode) ~ "&tag=" ~ (selected_tag | urlencode) ~ "&category=" ~ (selected_category | urlencode) %}
         {% if page > 1 %}
         <a href="/blog?page={{ page - 1 }}{{ qs }}" rel="prev">Previous</a>
         {% endif %}

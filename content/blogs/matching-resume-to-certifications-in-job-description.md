@@ -4,10 +4,10 @@ description: Learn how to handle a job description that requires certifications 
 date: 2026-06-22
 author: TailorCV Team
 tags: [Certifications, Resume Matching, Job Description, Career Development]
-category: Job Description Analysis
+category: ATS Optimization
 slug: matching-resume-to-certifications-in-job-description
 keywords: job description requires certification I don't have, resume matching missing certification, applying without required certification, certifications resume job description
-image: public/blog-images/matching-resume-to-certifications-in-job-description.png
+image: public/blog-images/matching-resume-to-certifications-in-job-description.webp
 ---
 
 You find a role that fits everything else, the responsibilities, the seniority level, the industry, but the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) lists a certification you do not have yet. A PMP for a project manager role. An AWS certification for a cloud role. A CPA for a senior accounting position. Do you apply anyway, and if you do, how do you handle it on your resume?
