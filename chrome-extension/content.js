@@ -1122,6 +1122,33 @@
   const EXTRACT_TRIES = 10;      // ~8s of watching before we ask the user
   const EXTRACT_EVERY = 800;
 
+  // LinkedIn's /jobs/collections view (list + detail panel) sometimes hasn't
+  // finished hydrating the detail panel within our ~8s watch window on first
+  // navigation to it, but a hard reload reliably lands on a warmer render —
+  // confirmed by hand. Deliberately scoped to just this one path: every other
+  // declared board (manifest.json) matches its entire domain, not just
+  // single-posting pages, so a broader gate here (e.g. "any declared adapter
+  // host") previously also reloaded Workday application forms mid-fill
+  // (wiping answers) and Wellfound-style job LIST pages (disruptive
+  // mid-browse reload) whenever there was nothing to find. Only ever fires
+  // once per exact URL (sessionStorage, survives the reload) so a job that's
+  // genuinely unreadable falls through to the manual-paste screen instead of
+  // reloading forever.
+  const LINKEDIN_COLLECTIONS_RELOAD = /^\/jobs\/collections(\/|$)/;
+  function tryAutoRefreshOnce() {
+    if (!/(^|\.)linkedin\.com$/i.test(location.hostname)) return false;
+    if (!LINKEDIN_COLLECTIONS_RELOAD.test(location.pathname)) return false;
+    const key = 'tailorcv_auto_refreshed:' + location.href;
+    try {
+      if (sessionStorage.getItem(key)) return false;
+      sessionStorage.setItem(key, '1');
+    } catch (_) {
+      return false;   // sessionStorage unavailable — don't reload blind
+    }
+    location.reload();
+    return true;
+  }
+
   function renderJobFromPage(attempt = 0, gen = ++extractGen) {
     if (gen !== extractGen) return;   // a newer page took over
     if (quotaExceeded) { renderUpgradePrompt(); return; }
@@ -1134,15 +1161,7 @@
     }
 
     if (attempt >= EXTRACT_TRIES) {
-      // No auto-reload here: this used to trigger location.reload() once per
-      // URL, meant to recover slow-hydrating LinkedIn views — but every other
-      // declared board matches its ENTIRE domain (manifest.json), not just
-      // single-posting pages, so it also silently reloaded Workday application
-      // forms mid-fill (wiping answers) and Wellfound-style job LIST pages
-      // (disruptive mid-browse reload) whenever there was nothing to find. The
-      // panel is icon-only until the user opens it (see createPanel()), and
-      // renderManual()'s "Retry detection" link already gives a safe, explicit
-      // way to try again — no code path should ever reload the page for them.
+      if (tryAutoRefreshOnce()) return;   // page is reloading — nothing left to render
       logDiagnostics();
       renderManual();
       return;
@@ -1193,7 +1212,19 @@
 
   const JOB_URL_HINT = /(job|career|opening|position|vacanc|posting|gig|apply)/i;
 
+  // LinkedIn's whole /jobs/* tree matches the manifest (needed for both the
+  // classic single-posting view and the collections/search list-with-detail
+  // view), but the bare /jobs/ home and a search/collections list with no job
+  // picked yet aren't actually showing a job — nothing to detect, so the panel
+  // shouldn't fire there at all. A specific job is only genuinely on screen at
+  // /jobs/view/<id>, or once the user picks one from a list view, which
+  // LinkedIn signals by adding ?currentJobId=<id> to the URL (no full nav).
+  const LINKEDIN_JOB_VIEW = /^\/jobs\/view\/\d+/;
+
   function looksLikeJobPage() {
+    if (/(^|\.)linkedin\.com$/i.test(location.hostname)) {
+      return LINKEDIN_JOB_VIEW.test(location.pathname) || /[?&]currentJobId=/.test(location.search);
+    }
     return JOB_URL_HINT.test(location.pathname + location.search) || !!adapterForHost();
   }
 
@@ -1213,6 +1244,7 @@
         if (looksLikeJobPage()) createPanel();
         return;
       }
+      if (!looksLikeJobPage()) return;   // e.g. LinkedIn nav'd back to a list with no job picked — nothing to (re-)detect
       if (sessionReady) renderJobFromPage();
       else refreshFull();
     }, 1200);
