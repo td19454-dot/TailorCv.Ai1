@@ -417,6 +417,48 @@
     <script src="/static/mobile_nav.js" defer></script>
     {% if is_logged_in %}
     <script>
+    /* Download a saved resume from its card. The card button calls this; the server
+       re-renders the stored HTML to PDF at /my-resumes/<id>/download. Handles the
+       quota redirect (free users out of optimizations get sent to /pricing) and
+       surfaces a clear message instead of failing silently. */
+    async function dlResume(id, btn) {
+        const original = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Preparing…'; }
+        try {
+            const res = await fetch('/my-resumes/' + id + '/download', { credentials: 'same-origin' });
+
+            // Out of free optimizations → server redirects to the pricing page.
+            if (res.redirected && res.url.indexOf('/pricing') !== -1) {
+                window.location.href = res.url;
+                return;
+            }
+            if (!res.ok) {
+                let msg = 'Could not download this resume. Please try again.';
+                if (res.status === 401)      msg = 'Your session expired — please log in again.';
+                else if (res.status === 404) msg = 'This resume could not be found.';
+                else if (res.status === 410) msg = 'This saved resume has no stored file to download.';
+                throw new Error(msg);
+            }
+
+            const blob = await res.blob();
+            const url  = URL.createObjectURL(blob);
+            const a    = document.createElement('a');
+            a.href = url;
+            a.download = 'resume.pdf';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+
+            if (btn) {
+                btn.textContent = 'Downloaded ✓';
+                setTimeout(function () { btn.textContent = original; btn.disabled = false; }, 1800);
+            }
+        } catch (err) {
+            alert(err.message || 'Download failed. Please try again.');
+            if (btn) { btn.textContent = original; btn.disabled = false; }
+        }
+    }
     </script>
     {% endif %}
 {% if not is_logged_in %}
