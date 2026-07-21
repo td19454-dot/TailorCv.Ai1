@@ -430,24 +430,10 @@
             <div class="ext-head">
                 <span class="solx-eyebrow">Chrome Extension</span>
                 <h1>Set up your extension</h1>
-                <p>Two things and you are done: install it, then tell it which resume to tailor from.</p>
+                <p>Two things and you are done: upload the resume to tailor from, then install it.</p>
             </div>
 
-            <!-- 1. Install -->
-            <section class="ext-card">
-                <div class="ext-card-head">
-                    <div>
-                        <h2>Add the extension to Chrome</h2>
-                        <p>It opens itself on the major job boards. Anywhere else, click the TailorCV icon in your toolbar.</p>
-                    </div>
-                </div>
-                <a href="{{ chrome_store_url or '/extension' }}" class="solx-btn ext-install-btn"{% if chrome_store_url %} target="_blank" rel="noopener"{% endif %}>
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 8.6h8.4M9.1 13.7l-4.2 7.2M14.9 13.7l-4.2 7.2"/></svg>
-                    Add to Chrome, Free
-                </a>
-            </section>
-
-            <!-- 2. Base resume -->
+            <!-- 1. Base resume (first: the extension needs a resume to tailor from) -->
             <section class="ext-card">
                 <div class="ext-card-head ext-head-lg">
                     <div>
@@ -573,6 +559,20 @@
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <!-- 2. Install (after the resume is set, so the extension has something to tailor) -->
+            <section class="ext-card">
+                <div class="ext-card-head">
+                    <div>
+                        <h2>Add the extension to Chrome</h2>
+                        <p>It opens itself on the major job boards. Anywhere else, click the TailorCV icon in your toolbar.</p>
+                    </div>
+                </div>
+                <a href="{{ chrome_store_url or '/extension' }}" class="solx-btn ext-install-btn"{% if chrome_store_url %} target="_blank" rel="noopener"{% endif %}>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 8.6h8.4M9.1 13.7l-4.2 7.2M14.9 13.7l-4.2 7.2"/></svg>
+                    Add to Chrome, Free
+                </a>
             </section>
 
             <!-- 4. Ready -->
