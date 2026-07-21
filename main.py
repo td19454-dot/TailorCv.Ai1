@@ -5174,10 +5174,30 @@ async def download_saved_resume(request: Request, resume_id: int):
             .first()
         )
         html_content = record.html_content if record else None
+        # Older saved resumes predate html_content being stored, but they still have
+        # the structured resume_json. Read the fields needed to re-render while the
+        # session is open, so the fallback below can rebuild the HTML instead of 410ing.
+        fallback_json = record.resume_json if record else None
+        fallback_template = (record.template_id if record else None) or 1
+        fallback_style = (record.style_id if record else None) or 0
+        fallback_jd = (record.jd_snippet if record else None) or ""
+        record_found = record is not None
     finally:
         db.close()
-    if not record:
+    if not record_found:
         raise HTTPException(status_code=404, detail="Resume not found")
+
+    # Rebuild the HTML from the stored structured data when it wasn't saved.
+    if not html_content and fallback_json:
+        try:
+            _parsed = json.loads(fallback_json) if isinstance(fallback_json, str) else fallback_json
+            if isinstance(_parsed, dict) and _parsed:
+                html_content, _ = _render_resume_html(
+                    _parsed, fallback_jd, fallback_template, fallback_style
+                )
+        except Exception:
+            logger.exception("Saved-resume HTML rebuild from resume_json failed")
+
     if not html_content:
         raise HTTPException(status_code=410, detail="This saved resume has no stored content to download.")
 
