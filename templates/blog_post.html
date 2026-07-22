@@ -22,12 +22,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon.png">
     {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
     <link rel="stylesheet" href="/static/style3.css">
-    <link rel="stylesheet" href="/static/header-footer.css?v=2">
+    <link rel="stylesheet" href="/static/header-footer.css?v=8">
     <link rel="stylesheet" href="/static/style2.css?v=7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css?v=13">
+    <link rel="stylesheet" href="/static/blog.css?v=14">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -114,8 +114,8 @@
                     {{ post.toc_html | safe }}
                 </div>
                 <div class="toc-cta">
-                    <p class="toc-cta-title">Boost your resume in minutes</p>
-                    <p class="toc-cta-text">Scan your resume against any job with the free ATS score checker.</p>
+                    <p class="toc-cta-title">{{ hero_cta.title }}</p>
+                    <p class="toc-cta-text">{{ hero_cta.text }}</p>
                     <a class="toc-cta-btn" href="{{ hero_cta.url }}">{{ hero_cta.label }}</a>
                 </div>
             </aside>
@@ -146,6 +146,7 @@
             {% endfor %}
         </div>
     </section>
+
 </main>
 <button id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
         {% include "_footer.html" %}

@@ -105,7 +105,7 @@ Why it works: clear role, level, specialization, key skills, and domain - all sc
 15. [business analyst](https://thetailorcv.com/blog/business-analyst-resume-2026) | Requirements · Process Design · SQL | CBAP Certified
 16. Management Consultant | Strategy · Operations | $40M+ Client Impact
 17. Account Executive | B2B SaaS Sales | 120%+ Quota Attainment
-18. Project Manager | PMP · Agile | 22 [projects](https://thetailorcv.com/blog/projects-in-resume) Delivered On Time
+18. Project Manager | PMP · Agile | 22 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) Delivered On Time
 
 ### Healthcare
 
@@ -126,7 +126,7 @@ Why it works: clear role, level, specialization, key skills, and domain - all sc
 
 ### Entry-Level / Fresher
 
-27. Computer Science Graduate | Python · React · 4 Full-Stack [projects](https://thetailorcv.com/blog/projects-in-resume)
+27. Computer Science Graduate | Python · React · 4 Full-Stack [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 28. Aspiring [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) | SQL · Excel · Power BI | Google Certified
 29. Junior [frontend developer](https://thetailorcv.com/blog/frontend-developer-resume-2026) | React · JavaScript · Responsive Design
 
@@ -184,10 +184,10 @@ A headline that does not match the target job creates an immediate mismatch impr
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/resume-with-no-experience)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)

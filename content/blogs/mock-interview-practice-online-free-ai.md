@@ -14,7 +14,7 @@ keywords: mock interview practice online free AI, free AI mock interview, AI int
 
 For a complete preparation flow, combine this with the [job interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), the [interview preparation tool](https://thetailorcv.com/interview-prep), and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide). For role-specific preparation, use the [software engineer resume for FAANG](https://thetailorcv.com/blog/software-engineer-resume-faang) and [data analyst resume 2026](https://thetailorcv.com/blog/data-analyst-resume-2026) guides to identify the projects and metrics you should practice explaining.
 
-Job interviews can feel intimidating, especially for students, [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), and people returning to the job market after a break. Even candidates with strong technical skills often struggle to answer questions confidently under pressure.
+Job interviews can feel intimidating, especially for students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), and people returning to the job market after a break. Even candidates with strong technical skills often struggle to answer questions confidently under pressure.
 
 That's where **[mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) practice online free AI** tools are changing the game.
 
@@ -156,7 +156,7 @@ The AI interviewer asks role-specific questions based on:
 For example:
 - Software engineering candidates may get coding or debugging questions
 - Marketing candidates may get campaign strategy questions
-- [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) may receive HR and communication-focused questions
+- [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) may receive HR and communication-focused questions
 
 A good example is [The Tailor CV Mock Interview Platform](https://thetailorcv.com/mock-interview), which allows users to practice realistic interviews online with AI-driven feedback.
 
@@ -310,7 +310,7 @@ Below are some common [mock interview](https://thetailorcv.com/blog/mock-intervi
 
 #### Better Answer
 
-> "I recently completed my computer science degree, where I worked on several web development [projects](https://thetailorcv.com/blog/projects-in-resume) using React and Node.js. I enjoy solving practical problems and recently built a task management application as part of a team project. I'm now looking for an opportunity where I can apply my technical skills while continuing to grow as a developer."
+> "I recently completed my computer science degree, where I worked on several web development [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) using React and Node.js. I enjoy solving practical problems and recently built a task management application as part of a team project. I'm now looking for an opportunity where I can apply my technical skills while continuing to grow as a developer."
 
 Why it works:
 - Structured
@@ -332,7 +332,7 @@ Focus on:
 
 #### Example
 
-> "I learn quickly, communicate well, and enjoy solving problems collaboratively. During college [projects](https://thetailorcv.com/blog/projects-in-resume), I often took responsibility for organizing tasks and debugging issues. I believe those skills would help me contribute effectively to your team."
+> "I learn quickly, communicate well, and enjoy solving problems collaboratively. During college [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), I often took responsibility for organizing tasks and debugging issues. I believe those skills would help me contribute effectively to your team."
 
 ---
 
@@ -408,8 +408,8 @@ Before practicing interviews, ensure your resume is optimized properly.
 
 Useful resources:
 - [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [Resume Mistakes Every Fresher Makes](https://thetailorcv.com/blog/resume-mistakes-freshers)
-- [Technical Skills in Resume for Freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [Resume Mistakes Every Fresher Makes](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
+- [Technical Skills in Resume for Freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 
 ---
 
@@ -610,9 +610,9 @@ Students should:
 
 - [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide)
 - [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [Resume Mistakes Every Fresher Makes](https://thetailorcv.com/blog/resume-mistakes-freshers)
+- [Resume Mistakes Every Fresher Makes](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
 - [Why Am I Not Getting Interviews?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [First-Time Resume With No Experience](https://thetailorcv.com/blog/resume-with-no-experience)
+- [First-Time Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 
 ---
 

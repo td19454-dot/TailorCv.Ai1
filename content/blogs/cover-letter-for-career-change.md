@@ -5,7 +5,7 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Career Change Cover Letter, Cover Letter Template, Career Change, Transferable Skills, Job Search]
 category: Cover Letters
-image: public/blog-images/cover-letter-for-career-change.png
+image: public/blog-images/cover-letter-for-career-change.webp
 slug: cover-letter-for-career-change
 keywords: cover letter for career change, career change cover letter example, cover letter for switching careers, transferable skills cover letter
 ---

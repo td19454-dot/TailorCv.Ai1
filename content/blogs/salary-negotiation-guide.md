@@ -94,7 +94,7 @@ Sometimes the answer is a firm no, or a smaller adjustment than hoped. A few pat
 - **Ask for a defined timeline for a [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) conversation** — e.g., a compensation review in six months tied to specific goals.
 - **Decline professionally if the gap is too large** — see [how to decline a job offer](https://thetailorcv.com/blog/how-to-decline-job-offer) for how to do this without burning the relationship, since the same recruiter or hiring manager may resurface at a future point in your career.
 
-If the rejection is about the role itself rather than compensation, it's worth understanding [why you might be getting rejected](https://thetailorcv.com/blog/why-getting-rejected) more broadly, and how to [handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) without it affecting your approach to the next opportunity.
+If the rejection is about the role itself rather than compensation, it's worth understanding [why you might be getting rejected](https://thetailorcv.com/blog/how-to-handle-job-rejection) more broadly, and how to [handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) without it affecting your approach to the next opportunity.
 
 ---
 

@@ -7,7 +7,7 @@ tags: [newcomers to Canada, immigrant resume, first job in Canada]
 category: Job Search
 slug: resume-for-newcomers-to-canada
 keywords: resume for newcomers to canada, immigrant resume canada, first canadian job resume
-image: public/blog-images/resume-for-newcomers-to-canada.png
+image: public/blog-images/resume-for-newcomers-to-canada.webp
 ---
 
 Landing your first job in Canada can be a daunting task, especially for newcomers and international students unfamiliar with local hiring practices. A well-crafted resume is your key to making a strong first impression. In Canada, resumes have specific norms and expectations that differ from those in other countries. This article will guide you through the essentials of creating a standout resume that aligns with Canadian standards, enhances your chances of passing Applicant Tracking Systems (ATS), and ultimately helps you secure that all-important first job.
@@ -83,7 +83,7 @@ Relevant Coursework: Marketing Strategies, Business Analytics
 
 ### 5. Skills
 
-In this section, list both hard and soft skills relevant to the position. Hard skills might include technical abilities, while soft skills may encompass communication and teamwork. Tailor this section to the job description to improve your chances of passing ATS filters. For tips on optimizing your resume for ATS, refer to our [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly) guide.
+In this section, list both hard and soft skills relevant to the position. Hard skills might include technical abilities, while soft skills may encompass communication and teamwork. Tailor this section to the job description to improve your chances of passing ATS filters. For tips on optimizing your resume for ATS, refer to our [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) guide.
 
 #### Skills Checklist
 

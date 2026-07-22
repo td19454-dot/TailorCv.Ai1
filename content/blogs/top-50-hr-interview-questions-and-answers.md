@@ -250,7 +250,7 @@ Reading this list is step one. Saying the answers out loud, under time pressure,
 
 ## What If You Get Rejected Anyway?
 
-Even a well-prepared HR round doesn't guarantee an offer — sometimes it's fit, budget, or an internal candidate, not your answers. If that happens, it's worth understanding [why you might be getting rejected](https://thetailorcv.com/blog/why-getting-rejected) and how to [handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) constructively so the next round goes better. Before your next application, double check your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) is aligned with your resume — recruiters check both, and a mismatch raises questions before you even get to the interview.
+Even a well-prepared HR round doesn't guarantee an offer — sometimes it's fit, budget, or an internal candidate, not your answers. If that happens, it's worth understanding [why you might be getting rejected](https://thetailorcv.com/blog/how-to-handle-job-rejection) and how to [handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) constructively so the next round goes better. Before your next application, double check your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) is aligned with your resume — recruiters check both, and a mismatch raises questions before you even get to the interview.
 
 ---
 

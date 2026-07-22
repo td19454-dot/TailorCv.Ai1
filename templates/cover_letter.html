@@ -7,7 +7,7 @@
     <meta name="description" content="Generate a tailored, ATS-friendly cover letter in seconds. Upload your resume PDF and the job description, theTailorCV's AI writes a cover letter matched to the role.">
     <title>AI Cover Letter Generator | theTailorCV</title>
     {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/header-footer.css?v=2">
+    <link rel="stylesheet" href="/static/header-footer.css?v=8">
     <link rel="stylesheet" href="/static/style2.css?v=7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -591,7 +591,10 @@
             statusEl.className = 'cl-status' + (cls ? ' ' + cls : '');
         }
 
-        resumeFile.addEventListener('change', function () {
+        // Guard: the upload input is absent for logged-in users on a stored base
+        // resume, so resumeFile can be null here — attaching without a check threw
+        // "Cannot read properties of null (reading 'addEventListener')".
+        if (resumeFile) resumeFile.addEventListener('change', function () {
             if (resumeFile.files && resumeFile.files[0]) setStatus('');
         });
 

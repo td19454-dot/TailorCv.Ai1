@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Privacy, Job Search Strategy]
 category: Portfolio
-image: public/blog-images/private-portfolio-sharing-guide.png
+image: public/blog-images/private-portfolio-sharing-guide.webp
 slug: private-portfolio-sharing-guide
 keywords: private portfolio link, unlisted portfolio, share portfolio with recruiter, confidential portfolio, portfolio privacy
 ---
@@ -128,7 +128,7 @@ Completing this checklist will help you present your portfolio in the best light
 It is not indexed or publicly discoverable, but anyone who receives the direct link can view and forward it - treat it as "share with intention," not fully secured.
 
 ### Should nurses, finance professionals, or others with confidential work use a private portfolio?
-Often yes - see [Nurse and Healthcare Professional Portfolio Guide](https://thetailorcv.com/blog/healthcare-nurse-portfolio-guide) and [Finance and Accounting Portfolio Guide](https://thetailorcv.com/blog/finance-accounting-portfolio-guide) for field-specific guidance on what is safe to share even privately.
+Often yes - see [Nurse and Healthcare Professional Portfolio Guide](https://thetailorcv.com/blog/nursing-resume-2026) and [Finance and Accounting Portfolio Guide](https://thetailorcv.com/blog/finance-accounting-portfolio-guide) for field-specific guidance on what is safe to share even privately.
 
 ### When should I switch from private to public?
 Once you are openly and actively job searching and no longer worried about a current employer finding it, switching to public unlocks organic search traffic and broader [recruiter discovery](https://thetailorcv.com/blog/resume-portfolio-mock-interview-system). Additionally, consider using [portfolio analytics](https://thetailorcv.com/blog/portfolio-analytics-view-tracking) to gauge interest before making the switch.
@@ -142,7 +142,7 @@ You do not need to code a site or manage separate hosting for a private page. Tu
 - [Portfolio Analytics and View Tracking](https://thetailorcv.com/blog/portfolio-analytics-view-tracking)
 - [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
 - [Career Change Portfolio](https://thetailorcv.com/blog/career-change-portfolio)
-- [Nurse and Healthcare Professional Portfolio Guide](https://thetailorcv.com/blog/healthcare-nurse-portfolio-guide)
+- [Nurse and Healthcare Professional Portfolio Guide](https://thetailorcv.com/blog/nursing-resume-2026)
 - [Finance and Accounting Portfolio Guide](https://thetailorcv.com/blog/finance-accounting-portfolio-guide)
 - [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide)
 - [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)

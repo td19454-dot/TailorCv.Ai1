@@ -19,15 +19,24 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 .site-footer .sf-inner {
-    max-width: 1200px;
+    max-width: 1320px;
     margin: 0 auto;
 }
+/* Brand sits on the left with the link columns beside it, all on one row. The
+   columns are deliberately narrow (~150px) and long labels wrap to two lines
+   rather than widening the track — that keeps the row compact as sections are
+   added. `auto` on the first track lets the brand size to its own max-width
+   instead of stealing space from the links. */
 .site-footer .sf-grid {
     display: grid;
-    grid-template-columns: 1.7fr 1fr 1.2fr 1fr 1fr;
-    gap: 30px 28px;
+    grid-template-columns: auto repeat(6, 1fr);
+    gap: 30px 22px;
     padding-bottom: 36px;
     border-bottom: 1px solid rgba(99, 130, 200, 0.16);
+}
+.site-footer .sf-brand {
+    width: 260px;
+    padding-right: 18px;
 }
 .site-footer .sf-title {
     margin: 0 0 12px;
@@ -35,6 +44,28 @@
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: -0.01em;
+}
+/* Footer logo — same mark + "thetailorcv" wordmark as the header navbar. */
+.site-footer .sf-logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 14px;
+    text-decoration: none;
+}
+.site-footer .sf-logo-mark {
+    height: 38px;
+    width: auto;
+    display: block;
+}
+.site-footer .sf-logo-word {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-weight: 500;
+    font-size: 1.55rem;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+    color: #3392ff;
 }
 .site-footer .sf-text {
     margin: 0 0 18px;
@@ -138,7 +169,9 @@
 }
 @media (max-width: 1080px) {
     .site-footer .sf-grid { grid-template-columns: repeat(3, 1fr); }
-    .site-footer .sf-brand { grid-column: 1 / -1; }
+    /* Drop the desktop fixed width, or the brand stays a 260px sliver once it
+       spans the full row. */
+    .site-footer .sf-brand { grid-column: 1 / -1; width: auto; padding-right: 0; }
     .site-footer .sf-text { max-width: 520px; }
 }
 @media (max-width: 640px) {

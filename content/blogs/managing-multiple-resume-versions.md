@@ -78,7 +78,7 @@ Include:
 - Every job, with full dates and all [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) (including the ones too long for a one-page resume)
 - Every skill you have, including ones you rarely lead with
 - Every certification, course, or training program
-- Every project, even side [projects](https://thetailorcv.com/blog/projects-in-resume)
+- Every project, even side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Every award, publication, or notable achievement
 - Volunteer work, board memberships, extracurriculars
 

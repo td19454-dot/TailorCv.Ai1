@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Mobile Development, iOS, Android, Job Search]
 category: Portfolio
-image: public/blog-images/mobile-app-developer-portfolio.png
+image: public/blog-images/mobile-app-developer-portfolio.webp
 slug: mobile-app-developer-portfolio
 keywords: mobile developer portfolio, ios developer portfolio, android developer portfolio, app portfolio website, flutter portfolio
 ---

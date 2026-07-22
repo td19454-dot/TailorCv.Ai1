@@ -12,7 +12,7 @@ keywords: computer science oversaturated, is computer science worth it in 2026, 
 
 ## The CS Degree Bubble Is Real - But Not for the Reason You Think
 
-If you are still trying to stand out in tech hiring, build stronger proof with [resume projects](https://thetailorcv.com/blog/projects-in-resume), sharpen your [technical skills section](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience), and check your resume with the [ATS resume tool](https://www.thetailorcv.com/solutions). For a role-specific example, use the [FAANG software engineer resume guide](https://thetailorcv.com/blog/software-engineer-resume-faang) to see how to turn CS skills into stronger software engineering bullets.
+If you are still trying to stand out in tech hiring, build stronger proof with [resume projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), sharpen your [technical skills section](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide), and check your resume with the [ATS resume tool](https://www.thetailorcv.com/solutions). For a role-specific example, use the [FAANG software engineer resume guide](https://thetailorcv.com/blog/software-engineer-resume-faang) to see how to turn CS skills into stronger software engineering bullets.
 
 A few years ago, computer science seemed like the safest career decision anyone could make.
 
@@ -297,7 +297,7 @@ Many applicants unknowingly weaken their chances through:
 Additional resources that can help include:
 - [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide)
 - [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [Resume Mistakes Every Fresher Makes](https://thetailorcv.com/blog/resume-mistakes-freshers)
+- [Resume Mistakes Every Fresher Makes](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
 - [Why Am I Not Getting Interviews](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 
 ---
@@ -327,7 +327,7 @@ The internet fundamentally changed professional credentialing.
 Today, developers can publicly demonstrate competence through:
 - [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization)
 - technical blogs
-- side [projects](https://thetailorcv.com/blog/projects-in-resume)
+- side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - open source communities
 - product launches
 
@@ -396,9 +396,9 @@ Instead of panicking about the market, students should focus on adaptation.
 
 ### Build Meaningful Projects
 
-Generic tutorial [projects](https://thetailorcv.com/blog/projects-in-resume) are no longer sufficient.
+Generic tutorial [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are no longer sufficient.
 
-Develop [projects](https://thetailorcv.com/blog/projects-in-resume) that:
+Develop [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that:
 - solve real problems
 - demonstrate technical depth
 - showcase product thinking
@@ -428,8 +428,8 @@ Resume quality can significantly influence [interview](https://thetailorcv.com/b
 Useful resources include:
 - [ATS Resume Solutions](https://www.thetailorcv.com/solutions)
 - [Modify CV](https://thetailorcv.com/modify-cv)
-- [First-Time Resume With No Experience](https://thetailorcv.com/blog/resume-with-no-experience)
-- [Technical Skills in Resume for Freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [First-Time Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [Technical Skills in Resume for Freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 
 ---
 
@@ -511,7 +511,7 @@ Computer Science is not dying.
 ## Frequently Asked Questions
 
 ### Why does it feel like there are too many computer science graduates in 2026?  
-The rapid expansion of computer science programs and bootcamps has led to a significant increase in graduates, creating a saturated job market. Many new graduates are finding it challenging to secure entry-level positions due to the competition. To improve your chances, consider enhancing your resume with [resume projects](https://thetailorcv.com/blog/projects-in-resume) that showcase your skills and practical experience.
+The rapid expansion of computer science programs and bootcamps has led to a significant increase in graduates, creating a saturated job market. Many new graduates are finding it challenging to secure entry-level positions due to the competition. To improve your chances, consider enhancing your resume with [resume projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that showcase your skills and practical experience.
 
 ### How can I stand out in a competitive software engineering job market?  
 To distinguish yourself in a crowded field, focus on building a strong portfolio that highlights your [technical skills](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and real-world projects. Utilize resources like our [portfolio website builder](https://www.thetailorcv.com/portfolio) to create an impressive online presence that potential employers can easily review.

@@ -170,11 +170,11 @@ Replace every instance of these with a specific ownership verb.
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
 - [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
 - [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
@@ -196,7 +196,7 @@ After updating your verb choices, run your complete resume through the [TailorCV
 ## Frequently Asked Questions
 
 ### Why should I use action verbs in my resume?
-Using action verbs is essential because they make your contributions clear, specific, and impactful. Instead of vague phrases like "responsible for," strong verbs such as "designed" or "implemented" demonstrate ownership and drive home the significance of your achievements. For a deeper understanding of how to structure your resume effectively, check out our guide on [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-a-resume-summary).
+Using action verbs is essential because they make your contributions clear, specific, and impactful. Instead of vague phrases like "responsible for," strong verbs such as "designed" or "implemented" demonstrate ownership and drive home the significance of your achievements. For a deeper understanding of how to structure your resume effectively, check out our guide on [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary).
 
 ### How do I choose the right action verb for my resume?
 Selecting the right action verb depends on the specific role and achievements you want to highlight. Our list categorizes verbs by function and role type, allowing you to pick the most accurate and impressive word for your experiences. To enhance your resume further, consider how to [list certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that complement your skills.

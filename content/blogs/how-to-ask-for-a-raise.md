@@ -4,7 +4,7 @@ description: Learn how to ask for a raise in 2026 with proven scripts, the right
 date: 2026-06-01
 author: TailorCV Team
 tags: [Ask for a Raise, Salary Increase, Career Advice, Negotiation, Career Growth]
-category: Career Growth
+category: Career Advice
 image: public/blog-images/how to ask for  a raise .webp
 slug: how-to-ask-for-a-raise
 keywords: how to ask for a raise, asking for a raise 2026, salary increase request, raise negotiation script, how to get a pay raise, request salary increase
@@ -55,7 +55,7 @@ A raise request is a business case. Gather:
 ### Your Accomplishments
 
 Document specific achievements since your last raise:
-- [projects](https://thetailorcv.com/blog/projects-in-resume) delivered and their business impact
+- [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) delivered and their business impact
 - Revenue generated or costs saved
 - Process improvements with [measurable results](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - Additional responsibilities you have taken on
