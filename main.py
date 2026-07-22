@@ -234,6 +234,11 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
+    # The Chrome extension's background service worker fetches with an Origin of
+    # chrome-extension://<id> — an unpacked dev build's id differs from the
+    # published Web Store one, so allow the scheme generally rather than
+    # hardcoding either.
+    allow_origin_regex=r"^chrome-extension://.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*", "X-CSRFToken", "X-Requested-With"],
