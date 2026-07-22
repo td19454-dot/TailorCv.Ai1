@@ -19,7 +19,7 @@
   if (window.__tailorcvInjected) return;   // toolbar click on an auto-injected page
   window.__tailorcvInjected = true;
 
-  const BASE_URL = 'http://127.0.0.1:8005';
+  const BASE_URL = 'https://thetailorcv.com';
   const MIN_JD_LENGTH = 200;
 
   // analytics.bundle.js (loaded before this file, see manifest.json) installs
