@@ -4,7 +4,7 @@ description: Use this resume review checklist before applying to catch ATS issue
 date: 2026-07-05
 author: TailorCV Team
 tags: [resume checklist, resume review, job application]
-category: Resume Review
+category: Resume Writing
 image: public/blog-images/resume-review-checklist-before-applying.webp
 slug: resume-review-checklist-before-applying
 keywords: resume review checklist, resume checklist before applying, resume proofreading checklist, ATS resume review

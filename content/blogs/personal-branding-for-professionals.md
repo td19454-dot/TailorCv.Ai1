@@ -4,7 +4,7 @@ description: Build a strong personal brand in 2026 to advance your career. Cover
 date: 2026-06-01
 author: TailorCV Team
 tags: [Personal Branding, Career Growth, LinkedIn, Professional Development, Career Advice]
-category: Career Growth
+category: Career Advice
 image: public/blog-images/personal-branding.webp
 slug: personal-branding-for-professionals
 keywords: personal branding, personal brand 2026, professional branding, build personal brand, LinkedIn personal brand, personal branding for career, thought leadership
@@ -82,7 +82,7 @@ Content is how you demonstrate expertise at scale. You do not need to go viral -
 ### Content Types That Build Authority
 
 - **How-to posts**: Teach something specific you know well
-- **Lessons learned**: Share insights from your [projects](https://thetailorcv.com/blog/projects-in-resume) and mistakes
+- **Lessons learned**: Share insights from your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and mistakes
 - **Industry commentary**: Add your perspective on news and trends
 - **Behind-the-scenes**: Show your real work and process
 - **Frameworks and tips**: Distill your expertise into actionable advice

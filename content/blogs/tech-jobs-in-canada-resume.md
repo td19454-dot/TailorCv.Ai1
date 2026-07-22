@@ -7,7 +7,7 @@ tags: [tech jobs Canada, IT resume Canada, software developer Canada]
 category: Resume Writing
 slug: tech-jobs-in-canada-resume
 keywords: tech jobs in canada resume, it resume canada, software developer resume canada
-image: public/blog-images/tech-jobs-in-canada-resume.png
+image: public/blog-images/tech-jobs-in-canada-resume.webp
 ---
 
 In the competitive landscape of Canada’s tech job market, crafting a stellar resume is essential for job seekers, especially for newcomers and international students. The right resume can be the difference between landing an interview and being overlooked. Understanding Canadian resume norms, the intricacies of Applicant Tracking Systems (ATS), and how to effectively showcase your skills can significantly enhance your chances of success. This guide will provide actionable insights tailored to the Canadian context, ensuring your resume not only meets standards but stands out to employers.
@@ -65,7 +65,7 @@ Many Canadian employers use ATS to filter resumes before they reach hiring manag
 - **Include Keywords**: Incorporate relevant keywords from the job description throughout your resume to improve your ATS score. To check your ATS compatibility, use our [free ATS score checker](https://www.thetailorcv.com/solutions).
 - **Consistent Formatting**: Use a clean, professional font and consistent formatting throughout your document.
 
-If you want to learn more about making your resume ATS-friendly, check out our article on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly).
+If you want to learn more about making your resume ATS-friendly, check out our article on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ## Highlighting Soft Skills
 

@@ -30,7 +30,7 @@ Before applying, run your [resume](https://thetailorcv.com/blog/job-description-
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume) (with App Store links)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) (with App Store links)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One page for engineers with under 8 years of experience.
@@ -49,7 +49,7 @@ iOS Developer with 5 years of experience building consumer and enterprise apps i
 
 ### Example for Entry-Level iOS Developer
 
-iOS Developer with strong Swift and SwiftUI skills. Built 3 personal iOS apps published to the App Store with a combined 500+ downloads. Experienced with MVVM architecture, URLSession, Core Data, and SwiftUI navigation. Familiar with [TestFlight](https://thetailorcv.com/blog/fresher-resumehttpsthetailorcvcomblogbest-action-verbs-for-resume-projects-that-get-interviews), Instruments, and [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions for iOS CI.
+iOS Developer with strong Swift and SwiftUI skills. Built 3 personal iOS apps published to the App Store with a combined 500+ downloads. Experienced with MVVM architecture, URLSession, Core Data, and SwiftUI navigation. Familiar with [TestFlight](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), Instruments, and [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions for iOS CI.
 
 ---
 
@@ -158,7 +158,7 @@ If you have apps on the App Store, include download counts, ratings, or crash ra
 
 ### Mistake 2: UIKit only
 
-In 2026, SwiftUI is increasingly expected alongside UIKit. If you only show UIKit, add SwiftUI [projects](https://thetailorcv.com/blog/projects-in-resume) before applying to modern iOS roles.
+In 2026, SwiftUI is increasingly expected alongside UIKit. If you only show UIKit, add SwiftUI [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) before applying to modern iOS roles.
 
 ### Mistake 3: No architecture pattern
 

@@ -4,10 +4,10 @@ description: Learn how to handle a job description that requires certifications 
 date: 2026-06-22
 author: TailorCV Team
 tags: [Certifications, Resume Matching, Job Description, Career Development]
-category: Job Description Analysis
+category: ATS Optimization
 slug: matching-resume-to-certifications-in-job-description
 keywords: job description requires certification I don't have, resume matching missing certification, applying without required certification, certifications resume job description
-image: public/blog-images/matching-resume-to-certifications-in-job-description.png
+image: public/blog-images/matching-resume-to-certifications-in-job-description.webp
 ---
 
 You find a role that fits everything else, the responsibilities, the seniority level, the industry, but the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) lists a certification you do not have yet. A PMP for a project manager role. An AWS certification for a cloud role. A CPA for a senior accounting position. Do you apply anyway, and if you do, how do you handle it on your resume?
@@ -70,7 +70,7 @@ Read [resume tailoring for underqualified candidates](https://thetailorcv.com/bl
 If a certification keeps appearing across postings you want to apply to, it is worth prioritizing:
 
 - Check if a compressed or online certification path exists for a faster completion timeline
-- Look at [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) for lower-cost or free alternatives that can still strengthen your resume
+- Look at [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026) for lower-cost or free alternatives that can still strengthen your resume
 - Once earned or in progress, update your resume immediately using [how to list certifications on your resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 ---
@@ -177,7 +177,7 @@ Track which certifications repeatedly appear across job descriptions in your tar
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications)
 - [How to List Certifications on Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume)
+- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
 - [Resume Tailoring for Underqualified Candidates](https://thetailorcv.com/blog/resume-tailoring-underqualified)
 - [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
 - [Resume Matching for Security-Clearance and Government-Contractor Job Descriptions](https://thetailorcv.com/blog/matching-resume-security-clearance-jobs)

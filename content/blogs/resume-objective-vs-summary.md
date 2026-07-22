@@ -61,18 +61,18 @@ A professional summary is 2-4 sentences at the top of your resume that highlight
 
 ### Use a Summary (Almost Always)
 
-If you have any relevant experience - including internships, [projects](https://thetailorcv.com/blog/projects-in-resume), or academic work - use a summary. This includes:
+If you have any relevant experience - including internships, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), or academic work - use a summary. This includes:
 - Experienced professionals (any level)
-- Recent graduates with relevant [projects](https://thetailorcv.com/blog/projects-in-resume) or internships
+- Recent graduates with relevant [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or internships
 - Career changers who want to frame their transferable skills
 - Anyone with more than 6 months of relevant experience
 
 ### Use an Objective (In These Specific Cases)
 
 **1. True first-time job seeker with zero relevant experience**  
-If you are genuinely applying for your first job and have no internships, [projects](https://thetailorcv.com/blog/projects-in-resume), coursework, or freelance work to reference, an objective is acceptable because you have nothing to summarize yet.
+If you are genuinely applying for your first job and have no internships, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), coursework, or freelance work to reference, an objective is acceptable because you have nothing to summarize yet.
 
-Even here, pivot the objective slightly toward value: "First-year computer science student with demonstrated skills in Python and data structures through coursework and independent [projects](https://thetailorcv.com/blog/projects-in-resume), seeking a junior engineering internship" is better than a pure aspiration statement.
+Even here, pivot the objective slightly toward value: "First-year computer science student with demonstrated skills in Python and data structures through coursework and independent [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), seeking a junior engineering internship" is better than a pure aspiration statement.
 
 **2. Major [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) where your current experience is unrelated**  
 When your entire background is in a different field and you are starting over, an objective can acknowledge the change and frame why you are making it.
@@ -90,7 +90,7 @@ A few traditional industries and geographies still expect an objective. When in 
 **Examples by Level:**
 
 **Early career (1-3 years):**
-> "Marketing analyst with 2 years of experience supporting digital campaigns at a D2C e-commerce brand. Contributed to email automation [projects](https://thetailorcv.com/blog/projects-in-resume) that increased open rates by 34%. Bringing strong analytical skills and HubSpot experience to a demand generation role."
+> "Marketing analyst with 2 years of experience supporting digital campaigns at a D2C e-commerce brand. Contributed to email automation [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that increased open rates by 34%. Bringing strong analytical skills and HubSpot experience to a demand generation role."
 
 **Mid-career (5-8 years):**
 > "[product manager](https://thetailorcv.com/blog/product-manager-resume-2026) with 6 years building B2B SaaS products. Launched 3 product lines that collectively generated $8M in ARR. Known for deeply cross-functional communication and data-driven roadmap prioritization."

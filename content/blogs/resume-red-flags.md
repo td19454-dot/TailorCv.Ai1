@@ -169,7 +169,7 @@ A resume from `partyguy88@hotmail.com` or `xX_gamemaster_Xx@gmail.com` signals i
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [Why Is My ATS Score Low?](https://thetailorcv.com/blog/why-is-my-ats-score-low)
 - [Resume Contact Section Guide](https://thetailorcv.com/blog/resume-contact-section)
-- [Resume Mistakes That Freshers Make](https://thetailorcv.com/blog/resume-mistakes-freshers)
+- [Resume Mistakes That Freshers Make](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
 
 ---
 

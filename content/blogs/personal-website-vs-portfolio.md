@@ -17,7 +17,7 @@ People use "personal website" and "portfolio" interchangeably, but they serve sl
 - The ideal solution for most is a combined site with a strong landing page, portfolio section, and contact information, optimized for SEO.
 
 ## What a Portfolio Is
-A focused showcase of your **work** - [projects](https://thetailorcv.com/blog/projects-in-resume), case studies, and outcomes - built to win jobs or clients. The work is the star; everything else is supporting cast.
+A focused showcase of your **work** - [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), case studies, and outcomes - built to win jobs or clients. The work is the star; everything else is supporting cast.
 
 ### Key Elements of a Strong Portfolio
 - **Diverse Projects**: Include a variety of work that demonstrates your skills and versatility.

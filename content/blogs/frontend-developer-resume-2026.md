@@ -32,7 +32,7 @@ Start by testing your current resume against the job description with the [ATS s
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One page for engineers with under 8 years of experience. Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) link is extremely important for frontend roles - always include it.
@@ -132,7 +132,7 @@ SaaS Analytics Company | Sep 2023 - Present
 
 ## Frontend Project Ideas
 
-Strong frontend [projects](https://thetailorcv.com/blog/projects-in-resume):
+Strong frontend [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers):
 
 - Personal [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site
 - E-commerce product UI

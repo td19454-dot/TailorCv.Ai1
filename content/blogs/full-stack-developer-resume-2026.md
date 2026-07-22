@@ -14,7 +14,7 @@ A full stack developer resume in 2026 needs to show that you can own features fr
 
 The challenge is making your resume specific. "Full stack developer" is one of the most overused titles in tech. Your resume must prove full stack through concrete examples - a feature you designed the API for, built the React UI for, wrote the database queries for, and deployed yourself.
 
-Test your resume against the job description with the [ATS score checker](https://www.thetailorcv.com/solutions). Use [resume templates](https://www.thetailorcv.com/templates) that are ATS-compatible and read the [FAANG software engineer resume guide](https://thetailorcv.com/blog/software-engineer-resume-faang) for bullet point inspiration. If you are still early in your career, check the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience) for a strong skills section structure.
+Test your resume against the job description with the [ATS score checker](https://www.thetailorcv.com/solutions). Use [resume templates](https://www.thetailorcv.com/templates) that are ATS-compatible and read the [FAANG software engineer resume guide](https://thetailorcv.com/blog/software-engineer-resume-faang) for bullet point inspiration. If you are still early in your career, check the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide) for a strong skills section structure.
 
 ---
 
@@ -32,7 +32,7 @@ Test your resume against the job description with the [ATS score checker](https:
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -131,7 +131,7 @@ EdTech Startup | Apr 2023 - Present
 
 ## Full Stack Project Ideas
 
-Strong full stack [projects](https://thetailorcv.com/blog/projects-in-resume) to add to your resume:
+Strong full stack [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) to add to your resume:
 
 - E-commerce store with authentication, cart, payments
 - Real-time chat application
@@ -153,7 +153,7 @@ Job Board Application | React, Node.js, Express, PostgreSQL, JWT, AWS S3
 - Added search, filter, and pagination for 500+ job listings with full-text PostgreSQL search.
 - Deployed to AWS EC2 with [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions CI/CD and Nginx reverse proxy.
 
-Read [how to add projects in resume](https://thetailorcv.com/blog/projects-in-resume) for project formatting help.
+Read [how to add projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for project formatting help.
 
 ---
 

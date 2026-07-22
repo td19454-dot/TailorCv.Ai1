@@ -256,7 +256,7 @@ Match what the JD states explicitly. If the JD does not mention a tool, do not a
 
 ### What if the JD requires a language I know but have not used professionally?
 
-List it with context: "Python (personal [projects](https://thetailorcv.com/blog/projects-in-resume), 2 years)" or list it and be ready to discuss it. For required languages at a professional experience level, be honest about your depth.
+List it with context: "Python (personal [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), 2 years)" or list it and be ready to discuss it. For required languages at a professional experience level, be honest about your depth.
 
 ### How important is Agile/Scrum as a keyword for SWE roles?
 

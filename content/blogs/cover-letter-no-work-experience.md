@@ -5,7 +5,7 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Cover Letter No Experience, Student Cover Letter, First Job Cover Letter, Entry Level Cover Letter, Cover Letter Template]
 category: Cover Letters
-image: public/blog-images/cover-letter-no-work-experience.png
+image: public/blog-images/cover-letter-no-work-experience.webp
 slug: cover-letter-no-work-experience
 keywords: cover letter no work experience, cover letter for students, first job cover letter, entry level cover letter examples
 ---
