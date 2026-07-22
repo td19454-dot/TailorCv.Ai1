@@ -41,7 +41,8 @@ chrome.action.onClicked.addListener(async (tab) => {
       target: { tabId: tab.id },
       func: () => { window.__tailorcvFromToolbar = true; },
     });
-    await chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: ['sidebar.css'] });
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['analytics.bundle.js'] });
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['styles.bundle.js'] });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content.js'] });
   } catch (e) {
     // chrome:// pages, the Web Store and PDF viewers can never be injected into.
@@ -77,7 +78,19 @@ chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   (async () => {
     try {
-      if (msg.type === 'GET_PROFILE') {
+      if (msg.type === 'GET_ANALYTICS_ID') {
+        // One stable id per install, shared across every tab/site the content
+        // script runs on — chrome.storage.local (not localStorage, which is
+        // partitioned per-site and would fragment identity across job boards).
+        const stored = await chrome.storage.local.get('tcv_distinct_id');
+        let id = stored.tcv_distinct_id;
+        if (!id) {
+          id = crypto.randomUUID();
+          await chrome.storage.local.set({ tcv_distinct_id: id });
+        }
+        sendResponse({ id });
+
+      } else if (msg.type === 'GET_PROFILE') {
         const res = await fetch(`${BASE_URL}/api/extension/profile`, {
           credentials: 'include',
         });
