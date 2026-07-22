@@ -32,7 +32,7 @@ Before applying, compare your resume to the job description with the [ATS score 
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume) or CTF highlights
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or CTF highlights
 6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 7. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 

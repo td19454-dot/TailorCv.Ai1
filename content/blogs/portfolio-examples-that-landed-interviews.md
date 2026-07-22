@@ -7,7 +7,7 @@ tags: [Portfolio Examples, Portfolio Website, Developer Portfolio, Design Portfo
 category: Portfolio
 slug: portfolio-examples-that-landed-interviews
 keywords: portfolio examples that get interviews, developer portfolio examples, design portfolio examples, data analyst portfolio examples
-image: public/blog-images/portfolio-examples-that-landed-interviews.png
+image: public/blog-images/portfolio-examples-that-landed-interviews.webp
 ---
 
 A resume tells a recruiter what you claim you can do. A portfolio shows them. Across every field we've reviewed - design, development, data, and marketing - the portfolios that consistently land interviews share the same traits: a handful of focused projects, clear context on your role, and measurable results, not just screenshots.

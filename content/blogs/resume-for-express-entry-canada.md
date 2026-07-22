@@ -7,7 +7,7 @@ tags: [Express Entry, Canadian PR, immigrant job search]
 category: Job Search
 slug: resume-for-express-entry-canada
 keywords: resume for express entry, canada pr resume, resume for permanent residents canada
-image: public/blog-images/resume-for-express-entry-canada.png
+image: public/blog-images/resume-for-express-entry-canada.webp
 ---
 
 When applying for Express Entry and Permanent Residency (PR) in Canada, your resume is not just a summary of your work history; it’s a critical tool that can influence your immigration journey and job search. In a competitive job market, especially for newcomers and international students, understanding the nuances of Canadian resume standards is essential. In this article, we will provide specific, practical advice tailored to help you craft a resume that meets Canadian expectations and maximizes your chances of securing a job.
@@ -191,7 +191,7 @@ You can also [check your resume's ATS score for free](https://www.thetailorcv.co
 The best format for a Canadian resume is a clean, structured layout with clearly defined sections such as contact information, summary, work experience, education, and skills. For more details, see our [Canadian Resume Format Guide (2026)](https://thetailorcv.com/blog/canadian-resume-format-guide-2026).
 
 ### 2. How can I improve my ATS score?
-To improve your ATS score, ensure you use relevant keywords from the job description, avoid graphics, and stick to standard headings. For a detailed approach, refer to our guide on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly).
+To improve your ATS score, ensure you use relevant keywords from the job description, avoid graphics, and stick to standard headings. For a detailed approach, refer to our guide on [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ### 3. Should I include volunteering experience on my resume?
 Yes, including relevant volunteering experience can showcase your skills and commitment, especially if you are new to the Canadian job market. Highlight any transferable skills acquired during your volunteer work.

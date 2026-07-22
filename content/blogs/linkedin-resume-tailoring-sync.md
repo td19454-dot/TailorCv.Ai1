@@ -201,10 +201,10 @@ If you post or write about your industry on [LinkedIn](https://thetailorcv.com/b
 You do not need to post every day.
 Even monthly sharing of relevant articles or brief commentary builds credibility over time.
 
-**[projects](https://thetailorcv.com/blog/projects-in-resume) and Publications**
+**[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and Publications**
 If you have published work, open-source contributions, or notable projects - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) lets you list these with links.
 For technical and creative roles, this section adds substantial credibility.
-Read [how to list projects in a resume](https://thetailorcv.com/blog/projects-in-resume) - the same principles of how to describe a project apply to LinkedIn.
+Read [how to list projects in a resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) - the same principles of how to describe a project apply to LinkedIn.
 
 Read the [LinkedIn profile optimization guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) for a full breakdown of every LinkedIn section.
 

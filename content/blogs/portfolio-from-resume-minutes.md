@@ -141,7 +141,7 @@ None. The [builder](https://www.thetailorcv.com/portfolio) generates and hosts t
 
 ### How long does it really take?
 
-About five minutes to publish, another 20 to polish [projects](https://thetailorcv.com/blog/projects-in-resume), About Me, and contact.
+About five minutes to publish, another 20 to polish [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), About Me, and contact.
 
 ### Will it look generic?
 

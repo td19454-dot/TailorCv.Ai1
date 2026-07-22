@@ -8,7 +8,7 @@ image: public/blog-images/developer-portfolio-project-ideas.webp
 
 Recruiters have seen a thousand to-do apps. What they have *not* seen is [your version of a project](https://thetailorcv.com/blog/content-writer-portfolio-guide) that solves a real problem, ships to production, and is documented like you actually care. The difference between a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) that gets ignored and one that gets interviews is almost never the language - it is the **project choice and the polish**.
 
-Below are 15 project ideas grouped by level, plus exactly what turns each one into a hireable portfolio piece. For how to present them, pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Projects on a Resume](https://thetailorcv.com/blog/projects-in-resume).
+Below are 15 project ideas grouped by level, plus exactly what turns each one into a hireable portfolio piece. For how to present them, pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 
 ## Key Takeaways
 
@@ -142,7 +142,7 @@ By focusing on meaningful projects and polishing your presentation, you can crea
 
 ### How many projects should a developer portfolio have?
 
-Three to five strong, deployed, documented [projects](https://thetailorcv.com/blog/projects-in-resume). Quality and proof of shipping beat quantity every time.
+Three to five strong, deployed, documented [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Quality and proof of shipping beat quantity every time.
 
 ### Are tutorial projects okay?
 
@@ -159,7 +159,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
-- [Projects on a Resume](https://thetailorcv.com/blog/projects-in-resume)
+- [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio)
 - [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio)
 - [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide)

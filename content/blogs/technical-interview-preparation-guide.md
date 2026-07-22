@@ -113,7 +113,7 @@ Read the dedicated [system design interview guide](https://thetailorcv.com/blog/
 
 ## Project / Technical Deep-Dive Preparation
 
-Interviewers will ask about [projects](https://thetailorcv.com/blog/projects-in-resume) on your resume. Be ready to discuss:
+Interviewers will ask about [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) on your resume. Be ready to discuss:
 
 - What problem the project solved
 - The architecture and tech stack choices (and why)

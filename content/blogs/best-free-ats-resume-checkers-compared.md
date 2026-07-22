@@ -5,7 +5,7 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Free ATS Checker, Jobscan Alternative, ATS Score, Resume Scanner, ATS Resume Checker]
 category: Comparisons
-image: public/blog-images/best-free-ats-resume-checkers-compared.png
+image: public/blog-images/best-free-ats-resume-checkers-compared.webp
 slug: best-free-ats-resume-checkers-compared
 keywords: free ats resume checker, jobscan alternative free, best ats checker 2026, ats score checker free, resume scanner free
 ---

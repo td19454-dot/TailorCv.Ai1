@@ -82,7 +82,7 @@ Show it:
 Don't write: "Excellent time management."
 
 Show it:
-- "Managed 3 concurrent client [projects](https://thetailorcv.com/blog/projects-in-resume) with competing deadlines, delivering all on time by implementing a structured prioritization framework."
+- "Managed 3 concurrent client [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with competing deadlines, delivering all on time by implementing a structured prioritization framework."
 
 ### Conflict Resolution
 
@@ -134,7 +134,7 @@ The trick: include the keyword AND prove it. "Stakeholder management: led monthl
 
 ### Entry-Level / Fresher
 
-Focus on: learning ability, teamwork, communication, time management. Prove through group [projects](https://thetailorcv.com/blog/projects-in-resume), internships, and academic leadership.
+Focus on: learning ability, teamwork, communication, time management. Prove through group [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), internships, and academic leadership.
 
 "Coordinated a 5-person team for a final-year capstone project, managing task allocation and weekly progress reviews to deliver on time."
 
@@ -174,7 +174,7 @@ If you have real achievements, they demonstrate [soft skills](https://thetailorc
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
 - [MBA Resume](https://thetailorcv.com/blog/mba-resume-2026)

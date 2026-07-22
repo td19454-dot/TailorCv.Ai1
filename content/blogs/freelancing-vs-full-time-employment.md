@@ -46,7 +46,7 @@ A mid-level [software engineer](https://thetailorcv.com/blog/software-engineer-r
 - Income can be $0 in a slow month or $30K+ in a busy one
 - Top freelancers in tech earn $150K-300K+ annually, but most earn significantly less
 
-**The catch:** Freelancers must set aside 25-35% of income for taxes (in most countries), pay for their own health insurance and software tools, and factor in unpaid time (client hunting, admin, gaps between [projects](https://thetailorcv.com/blog/projects-in-resume)). A freelancer charging $100/hour is not earning $100/hour net.
+**The catch:** Freelancers must set aside 25-35% of income for taxes (in most countries), pay for their own health insurance and software tools, and factor in unpaid time (client hunting, admin, gaps between [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)). A freelancer charging $100/hour is not earning $100/hour net.
 
 **Rule of thumb:** A successful freelancer should charge 1.5-2x their equivalent full-time hourly rate to break even on benefits and downtime. A developer earning $90K FTE ($45/hr) should charge $80-100/hr as a freelancer to be economically equivalent.
 
@@ -80,7 +80,7 @@ A mid-level [software engineer](https://thetailorcv.com/blog/software-engineer-r
 
 - Clear mentorship structure (if at a good company)
 - Company-funded training and conference budgets
-- Complex, large-scale [projects](https://thetailorcv.com/blog/projects-in-resume) often only accessible at established companies
+- Complex, large-scale [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) often only accessible at established companies
 - Promotion path with objective milestones
 - Exposure to cross-functional teams, enterprise processes, and advanced problems
 

@@ -144,12 +144,12 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide)
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
-- [Projects on a Resume](https://thetailorcv.com/blog/projects-in-resume)
+- [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
 - [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
 - [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
 - [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
-- [Resume With No Experience](https://thetailorcv.com/blog/resume-with-no-experience)
+- [Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 
 ## Make This Practical

@@ -7,7 +7,7 @@ tags: [Lever, ATS, Resume Matching, Job Description, Recruiting Software]
 category: ATS Optimization
 slug: lever-ats-resume-guide
 keywords: lever ats resume, lever resume tips, lever job application, match resume to lever, lever recruiting software resume
-image: public/blog-images/lever-ats-resume-guide.png
+image: public/blog-images/lever-ats-resume-guide.webp
 ---
 
 Lever is a widely used [ATS](https://thetailorcv.com/blog/ats-score-guide) and recruiting CRM, popular with mid-size and growth-stage companies. If a job posting redirects you to a "jobs.lever.co" application page, your resume is about to be parsed into Lever's candidate database and evaluated against the role's requirements.

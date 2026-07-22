@@ -30,7 +30,7 @@ Before applying, compare your resume with the job description using the [ATS sco
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 One page for engineers with under 8 years of experience. Senior engineers with microservices architecture experience or significant [system design](https://thetailorcv.com/blog/system-design-interview-guide) ownership may use two pages.
@@ -128,7 +128,7 @@ Logistics Platform | Jun 2023 - Present
 
 ## Backend Project Ideas
 
-Strong backend [projects](https://thetailorcv.com/blog/projects-in-resume):
+Strong backend [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers):
 
 - REST API with authentication and authorization
 - URL shortener with analytics

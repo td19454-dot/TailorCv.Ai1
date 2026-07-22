@@ -36,7 +36,7 @@ I am Aisha, a [data analyst](https://thetailorcv.com/blog/data-analyst-resume-20
 
 ## Developer Example
 
-Full-stack developer building fast, accessible web apps with React, Node.js, and PostgreSQL. My [projects](https://thetailorcv.com/blog/projects-in-resume) include SaaS dashboards, API integrations, and authentication systems.
+Full-stack developer building fast, accessible web apps with React, Node.js, and PostgreSQL. My [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) include SaaS dashboards, API integrations, and authentication systems.
 
 ---
 
@@ -58,7 +58,7 @@ Avoid:
 
 - Welcome to my [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - Passionate and creative professional
-- Long paragraphs before [projects](https://thetailorcv.com/blog/projects-in-resume)
+- Long paragraphs before [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - No clear target role
 - Hidden contact button
 
@@ -168,7 +168,7 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/projects-in-resume); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 
