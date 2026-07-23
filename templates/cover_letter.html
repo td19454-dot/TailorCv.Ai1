@@ -239,6 +239,7 @@
 
     {% if not is_logged_in %}
     <link rel="stylesheet" href="/static/feature_landing.css?v=110">
+    {% include "_extension_promo_bar.html" %}
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -452,6 +453,8 @@
                 <div style="text-align:center; margin-top:34px"><a href="/signup?next=/cover-letter" class="solx-btn">Generate My Cover Letter, Free</a></div>
             </div>
         </div>
+
+        {% include "_extension_promo_section.html" %}
     </div>
 
     {% endif %}
