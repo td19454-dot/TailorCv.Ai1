@@ -838,7 +838,7 @@ def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
     resend.Emails.send({
         "from": from_addr,
         "to": [recipient_email],
-        "subject": "Welcome to TailorCV",
+        "subject": "Did we help you?",
         "text": (
             f"Hi {recipient_name or 'there'},\n\n"
             "I'm Shubham, Co-Founder of TailorCV.\n\n"
@@ -859,9 +859,12 @@ def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
             "\U0001F4CA ATS Resume Analysis\n"
             "\U0001F310 Portfolio Builder\n"
             "\U0001F3A4 Mock Interviews\n"
-            "❓ Interview Question Generator\n\n"
+            "❓ Interview Question Generator\n"
+            "\U0001F9E9 Chrome Extension - Tailor your Resume without leaving job page(Linkedin, Wellfound, Greenhouse, etc.) in seconds\n"
+            "https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb\n\n"
             "Every feature is being built with one goal in mind: making the job application process less stressful and more effective.\n\n"
-            "\U0001F4E9 Just reply to this email with your thoughts. I personally read every reply, and every piece of feedback helps shape what we build next.\n\n"
+            "\U0001F4E9 Just reply to this email with your thoughts. I personally read every reply, and every piece of feedback helps shape what we build next.\n"
+            "\U0001F4DE You can also reach me directly at +91 8240044652(Whatsapp,Text or call).\n\n"
             "Thank you for your time and support! \U0001F64F\n\n"
             "Best,\n"
             "Shubham\n"
