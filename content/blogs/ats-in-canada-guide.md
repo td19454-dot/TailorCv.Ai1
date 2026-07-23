@@ -7,7 +7,7 @@ tags: [ATS Canada, applicant tracking system Canada, Canadian ATS]
 category: ATS Optimization
 slug: ats-in-canada-guide
 keywords: ats in canada, canadian ats systems, ats resume canada, beat ats canada
-image: public/blog-images/ats-in-canada-guide.png
+image: public/blog-images/ats-in-canada-guide.webp
 ---
 
 Navigating the Canadian job market can be challenging, especially for newcomers and international students. One of the key hurdles many job seekers face is the Applicant Tracking System (ATS), a software that many employers use to filter resumes before they even reach human eyes. Understanding how ATS works in Canada is crucial for crafting a resume that not only gets noticed but also passes through this digital gatekeeper. In this article, we will explore practical steps you can take to optimize your resume for ATS, ensuring you stand out in the competitive Canadian job landscape.
@@ -196,7 +196,7 @@ You can also [check your resume's ATS score for free](https://www.thetailorcv.co
 ## Frequently Asked Questions
 
 ### 1. What is an ATS-friendly resume?
-An [ATS-friendly resume](https://thetailorcv.com/blog/how-to-increase-ats-score) is formatted and structured to be easily read by Applicant Tracking Systems. It avoids complex formatting, uses standard fonts, and includes relevant keywords from the job description. For more tips, check our [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-a-resume-ats-friendly).
+An [ATS-friendly resume](https://thetailorcv.com/blog/how-to-increase-ats-score) is formatted and structured to be easily read by Applicant Tracking Systems. It avoids complex formatting, uses standard fonts, and includes relevant keywords from the job description. For more tips, check our [how to make a resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ### 2. How can I improve my ATS score?
 To improve your [ATS score](https://thetailorcv.com/blog/ats-score-vs-resume-score), tailor your resume for each job application by incorporating relevant keywords, using standard formatting, and including a skills section. For detailed guidance, refer to our [what is a good ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score).

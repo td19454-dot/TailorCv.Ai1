@@ -129,7 +129,7 @@ Many candidates only negotiate base salary. The full compensation package includ
 
 - **Signing bonus** - Often has more flexibility than base salary. Companies can call it "non-recurring" which is easier to approve.
 - **Equity / Stock Options / RSUs** - For tech and startup roles, the equity cliff and vesting schedule matter enormously.
-- **Start date** - More time to mentally transition, finish freelance [projects](https://thetailorcv.com/blog/projects-in-resume), or take a break.
+- **Start date** - More time to mentally transition, finish freelance [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), or take a break.
 - **Remote work flexibility** - Fewer commute days = thousands of dollars in time and transport saved.
 - **Title** - Sometimes easier to move than salary, and impacts future offers.
 - **Annual review timing** - Ask if you can have a performance and salary review at 6 months rather than 12.

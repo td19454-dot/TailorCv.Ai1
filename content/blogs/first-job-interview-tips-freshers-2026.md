@@ -14,7 +14,7 @@ Your first job [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job
 
 The good news: companies that hire freshers already expect you to have zero professional experience - that is the whole point of a fresher role. What they are actually evaluating is whether you can learn fast, communicate clearly, and talk honestly about what you have done so far. **Preparation matters more than experience.** This guide walks through exactly what a first interview looks like, what to say when you feel like you have "nothing to talk about," and how to walk in calmer than you thought possible.
 
-Practice before the real thing with [TailorCV's AI mock interview](https://thetailorcv.com/mock-interview). Also read [campus placement preparation](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement), [first resume with no experience](https://thetailorcv.com/blog/resume-with-no-experience), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+Practice before the real thing with [TailorCV's AI mock interview](https://thetailorcv.com/mock-interview). Also read [campus placement preparation](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement), [first resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ---
 
@@ -29,10 +29,10 @@ Practice before the real thing with [TailorCV's AI mock interview](https://theta
 
 Your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) actually starts with your resume, because every question in the room will trace back to it. If the interviewer asks about a line on your resume and you cannot explain it clearly, that is a bigger problem than any "trick question" they might ask. For freshers:
 
-- Highlight [projects, internships, and coursework](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) - [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume)
-- List technical skills clearly, and only list what you can actually discuss - [technical skills guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- Highlight [projects, internships, and coursework](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) - [projects in resume guide](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- List technical skills clearly, and only list what you can actually discuss - [technical skills guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - Use ATS-friendly formatting so your resume is not filtered out before a human sees it - [ATS-friendly resume guide](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- Avoid fresher mistakes like generic objectives and unverifiable claims - [resume mistakes every fresher makes](https://thetailorcv.com/blog/resume-mistakes-freshers)
+- Avoid fresher mistakes like generic objectives and unverifiable claims - [resume mistakes every fresher makes](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
 - Check your score before you apply - [TailorCV ATS checker](https://www.thetailorcv.com/solutions)
 
 Print or save a copy of the exact resume version you applied with. Interviewers often have it open in front of them, and if your "updated" version has different project details, that mismatch creates confusion you do not need.
@@ -205,7 +205,7 @@ Before the interview, make sure the resume that earned the call is still aligned
 
 ### How do I prepare for a fresher interview with no internship?
 
-Use academic projects, personal projects, open source contributions, and hackathons as your experience base - interviewers evaluate what you have built and learned, not your job title. See the [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume) for how to describe them clearly.
+Use academic projects, personal projects, open source contributions, and hackathons as your experience base - interviewers evaluate what you have built and learned, not your job title. See the [projects in resume guide](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for how to describe them clearly.
 
 ### Can AI mock interviews actually help freshers?
 

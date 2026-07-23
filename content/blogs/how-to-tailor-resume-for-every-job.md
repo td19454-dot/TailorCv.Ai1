@@ -423,7 +423,7 @@ But [tools](https://www.thetailorcv.com/templates) save time and improve keyword
 - [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 - [ATS Score Guide for](https://thetailorcv.com/blog/ats-score-guide)
 - [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)

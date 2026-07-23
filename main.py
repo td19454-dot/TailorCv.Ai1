@@ -278,6 +278,15 @@ os.makedirs(static_dir, exist_ok=True)
 os.makedirs(public_dir, exist_ok=True)
 os.makedirs(BLOG_CONTENT_DIR, exist_ok=True)
 
+# Ensure WebP (and other modern image types) are served with the correct
+# Content-Type. On some platforms these are not in the default mimetypes table,
+# which makes StaticFiles fall back to text/plain — browsers still render it, but
+# a correct image/* type caches better and is what CDNs/SEO expect.
+import mimetypes as _mimetypes
+_mimetypes.add_type("image/webp", ".webp")
+_mimetypes.add_type("image/avif", ".avif")
+_mimetypes.add_type("image/svg+xml", ".svg")
+
 # Mount static files and configure templates with absolute paths
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 app.mount("/public", StaticFiles(directory=public_dir), name="public")
@@ -829,7 +838,7 @@ def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
     resend.Emails.send({
         "from": from_addr,
         "to": [recipient_email],
-        "subject": "Welcome to TailorCV",
+        "subject": "Did we help you?",
         "text": (
             f"Hi {recipient_name or 'there'},\n\n"
             "I'm Shubham, Co-Founder of TailorCV.\n\n"
@@ -850,9 +859,12 @@ def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
             "\U0001F4CA ATS Resume Analysis\n"
             "\U0001F310 Portfolio Builder\n"
             "\U0001F3A4 Mock Interviews\n"
-            "❓ Interview Question Generator\n\n"
+            "❓ Interview Question Generator\n"
+            "\U0001F9E9 Chrome Extension - Tailor your Resume without leaving job page(Linkedin, Wellfound, Greenhouse, etc.) in seconds\n"
+            "https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb\n\n"
             "Every feature is being built with one goal in mind: making the job application process less stressful and more effective.\n\n"
-            "\U0001F4E9 Just reply to this email with your thoughts. I personally read every reply, and every piece of feedback helps shape what we build next.\n\n"
+            "\U0001F4E9 Just reply to this email with your thoughts. I personally read every reply, and every piece of feedback helps shape what we build next.\n"
+            "\U0001F4DE You can also reach me directly at +91 8240044652(Whatsapp,Text or call).\n\n"
             "Thank you for your time and support! \U0001F64F\n\n"
             "Best,\n"
             "Shubham\n"
@@ -3721,7 +3733,14 @@ async def interview_prep_page(request: Request):
 
 # Chrome Web Store listing. Until the extension is published, the CTAs fall back to
 # signup so they are never dead links; set CHROME_STORE_URL to point them at the store.
-CHROME_STORE_URL = os.getenv("CHROME_STORE_URL", "").strip()
+# Live Chrome Web Store listing. Kept as the default (not just an env var) so the
+# install buttons work on deploy without extra Render config; override via
+# CHROME_STORE_URL if the listing ever moves. The personal ?authuser/&hl params
+# from the share link are intentionally left off — they'd break for other users.
+CHROME_STORE_URL = os.getenv(
+    "CHROME_STORE_URL",
+    "https://chromewebstore.google.com/detail/tailorcv-%E2%80%94-ai-resume-opti/lnkplncemohgcdjlgccgmbcgiokcgmno",
+).strip()
 
 
 @app.get("/extension", response_class=HTMLResponse)
@@ -4579,24 +4598,53 @@ async def optimize_page(request: Request):
 # template (comparison_alternative.html) rendered from this data, per slug.
 _COMPARISON_PAGES = {
     "jobscan-alternative": {
+        "blog": {"slug": "tailorcv-vs-jobscan", "title": "TailorCV vs Jobscan: Free ATS Score vs $49.95 a Month"},
         "competitor": "Jobscan",
-        "audience": "students, freshers & job seekers",
+        "audience": "students, freshers & first-time job seekers",
         "title": "Best Jobscan Alternative (2026) — Free ATS Score & Resume Optimizer",
         "description": "Looking for a Jobscan alternative? TheTailorCV gives you a free ATS score, AI resume tailoring, a built-in portfolio website builder, and affordable pricing.",
         "hero": "Get an instant ATS score, tailor your resume to any job description with AI, and even publish a live portfolio website — at a fraction of Jobscan's price.",
+        "intro": [
+            "Jobscan built its reputation on one thing and did it well: comparing your resume against a job description and giving you a match rate. If that single number is all you want, it is a capable tool and we are not going to pretend otherwise.",
+            "The problem most students run into is what happens next. You get a score, you learn you are missing eight keywords, and then you still have to rewrite the resume yourself, write the cover letter yourself, and prepare for the interview yourself. The score tells you what is wrong; it does not fix it.",
+            "TheTailorCV is built around the fix. The same ATS match score is free and unlimited to start, but the AI then rewrites your bullets to carry those keywords honestly, drafts a matching cover letter, runs mock interviews for the role, and can publish your resume as a live portfolio site. It is priced in rupees, for people who are job hunting rather than staffing a recruitment desk.",
+        ],
         "props": [
             {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Check how your resume scores against any job description before you pay anything."},
             {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Turn your resume into a live portfolio site — something Jobscan doesn't offer."},
             {"icon": "price", "title": "Student friendly pricing", "link": "/pricing", "text": "Affordable plans built for freshers and students, not enterprise budgets."},
             {"icon": "ai", "title": "AI tailoring and interviews", "link": "/solutions", "text": "Rewrite bullets, match keywords, and practice AI mock interviews in one place."},
+            {"icon": "doc", "title": "It rewrites, not just reports", "link": "/optimize", "text": "A score tells you what's missing. TheTailorCV rewrites the bullets to fix it."},
+            {"icon": "chrome", "title": "Works on the job board", "link": "/extension", "text": "Tailor your resume on LinkedIn, Indeed or Naukri without leaving the posting."},
         ],
         "rows": [
-            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited free scans"},
-            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
-            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
-            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "ATS match score against a JD", "us": "<span class='yes'>✓</span> Free to start", "them": "Limited free scans"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Full rewrite", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Missing keyword report", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
             {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "Add-on"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Interview question prep", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Saved resume library & job tracker", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Browser extension", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Resume templates included", "us": "<span class='yes'>✓</span> 20+", "them": "Limited"},
             {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "Premium / USD pricing"},
+        ],
+        "them_good": [
+            "A long track record specifically in ATS keyword matching, with a large body of published guidance behind it.",
+            "LinkedIn profile optimization tooling alongside the resume scanner.",
+            "Recruiter-facing and enterprise features that most individual job seekers will never need — but which exist if you do.",
+        ],
+        "pick_us": [
+            "You want the resume actually rewritten, not just scored.",
+            "You are a student or fresher and USD subscription pricing is genuinely hard to justify.",
+            "You want the cover letter, interview prep and portfolio in the same place as the score.",
+            "You apply on LinkedIn, Indeed or Naukri and want to tailor without leaving the posting.",
+        ],
+        "pick_them": [
+            "You only want a match rate and already rewrite your own resume confidently.",
+            "You need recruiter or enterprise-side features rather than job-seeker ones.",
+            "Your budget is in USD and price isn't a deciding factor.",
         ],
         "faq": [
             {"q": "Is TheTailorCV a good Jobscan alternative?", "a": "Yes. TheTailorCV offers a free ATS score, AI resume tailoring to a job description, a cover letter generator, AI mock interviews, and a portfolio website builder — at a more affordable price point than Jobscan."},
@@ -4610,24 +4658,52 @@ _COMPARISON_PAGES = {
         ],
     },
     "careerflow-alternative": {
+        "blog": {"slug": "tailorcv-vs-careerflow", "title": "TailorCV vs Careerflow: Which AI Job Search Tool Is Right for You?"},
         "competitor": "Careerflow",
-        "audience": "students, freshers & job seekers",
+        "audience": "job seekers who care more about offers than profiles",
         "title": "Best Careerflow Alternative (2026) — ATS Resume Optimizer & Portfolio Builder",
         "description": "A Careerflow alternative focused on getting your resume past the ATS: free ATS score, AI resume tailoring, cover letters, mock interviews, and a portfolio website builder.",
         "hero": "Go beyond LinkedIn tweaks. TheTailorCV scores your resume against the ATS, tailors it to each job with AI, and turns it into a live portfolio website.",
+        "intro": [
+            "Careerflow's centre of gravity is your LinkedIn presence — profile optimization, personal branding, and a spread of job-search utilities around it. If your problem is that recruiters aren't finding you, that focus makes sense.",
+            "But most rejections don't happen because your LinkedIn headline was weak. They happen because your resume was filtered out by software before a person ever opened it. That's a different problem, and it needs a tool pointed at the resume rather than the profile.",
+            "TheTailorCV is pointed at exactly that. Paste a job description, get a match score, let the AI rewrite your bullets to carry the keywords the posting actually asks for, generate the matching cover letter, then practise the interview for that role. Your resume can also become a live portfolio site — a link you own, rather than a profile on someone else's platform.",
+        ],
         "props": [
             {"icon": "target", "title": "ATS first", "link": "/solutions", "text": "Built around beating applicant tracking systems, not just polishing your LinkedIn."},
             {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Publish a real portfolio site from your resume in minutes."},
             {"icon": "ai", "title": "AI mock interviews", "link": "/mock-interview", "text": "Practice role-specific interviews with instant AI feedback."},
             {"icon": "doc", "title": "Tailored resumes and cover letters", "link": "/cover-letter", "text": "Match every application to its job description automatically."},
+            {"icon": "price", "title": "Priced for job hunting", "link": "/pricing", "text": "Start free, and pay in rupees if you upgrade — not a USD subscription."},
+            {"icon": "chrome", "title": "Tailor on the job board", "link": "/extension", "text": "Score and tailor against any posting on LinkedIn, Indeed or Naukri in one click."},
         ],
         "rows": [
-            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited"},
-            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
-            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
-            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "Varies"},
+            {"feature": "ATS match score against a JD", "us": "<span class='yes'>✓</span> Free to start", "them": "Limited"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Full rewrite", "them": "<span class='yes'>✓</span> Yes"},
             {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "Varies"},
+            {"feature": "Interview question prep", "us": "<span class='yes'>✓</span> Yes", "them": "Varies"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "LinkedIn profile optimization", "us": "Import only", "them": "<span class='yes'>✓</span> Core focus"},
+            {"feature": "Job tracker", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Browser extension", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
             {"feature": "Focus", "us": "ATS + resume + portfolio", "them": "LinkedIn optimization"},
+        ],
+        "them_good": [
+            "Genuinely strong LinkedIn profile optimization — the part of the job hunt TheTailorCV deliberately doesn't try to own.",
+            "A broad spread of free utilities and a large community around them.",
+            "Personal branding tooling, if being discovered by recruiters is your bottleneck.",
+        ],
+        "pick_us": [
+            "Your applications are being filtered out before a human reads them.",
+            "You want the resume rewritten per job, not just advice about your profile.",
+            "You want mock interviews and a portfolio site in the same place.",
+            "You want to own the link you send people, not rent a profile page.",
+        ],
+        "pick_them": [
+            "LinkedIn presence and recruiter discovery are your actual problem.",
+            "You want personal-branding help more than resume rewriting.",
+            "You're already happy with how your resume performs.",
         ],
         "faq": [
             {"q": "Is TheTailorCV a good Careerflow alternative?", "a": "Yes, especially if your priority is passing the ATS. TheTailorCV scores your resume against a job description, tailors it with AI, writes cover letters, runs mock interviews, and builds a portfolio website."},
@@ -4642,83 +4718,182 @@ _COMPARISON_PAGES = {
     },
     "resume-worded-alternative": {
         "competitor": "Resume Worded",
-        "audience": "students, freshers & job seekers",
+        "audience": "job seekers who want the rewrite, not just the feedback",
         "title": "Best Resume Worded Alternative (2026) — Free ATS Score, Resumes & Portfolio",
         "description": "A Resume Worded alternative with a free ATS score, AI resume tailoring to any job description, cover letters, mock interviews, and a portfolio website builder.",
         "hero": "Score and tailor your resume to each job, write cover letters, practice interviews, and publish a portfolio website — all in one place.",
+        "intro": [
+            "Resume Worded is good at what it set out to do: read your resume line by line and tell you what's weak. Bullets that don't quantify anything, passive phrasing, missing impact — it flags them clearly, and the feedback is often fair.",
+            "The catch is that the feedback is largely generic. It grades your resume as a document, not against the job you're applying to tomorrow. Two very different postings can want very different things from the same experience, and line-by-line advice can't tell you which one you're currently failing.",
+            "TheTailorCV starts from the job description. Paste your resume and the posting, and you get a match score for that specific role, the exact keywords you're missing, and — the part that matters — an AI rewrite that works them into your bullets without inventing experience you don't have. Then the cover letter, the interview practice, and a portfolio site if you want one.",
+        ],
         "props": [
             {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Check your resume against a real job description before you pay anything."},
             {"icon": "doc", "title": "AI tailoring to a JD", "link": "/solutions", "text": "Rewrites bullets and adds missing keywords for the exact role you're applying to."},
             {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Turn your resume into a live, shareable site — Resume Worded doesn't."},
             {"icon": "ai", "title": "Mock interviews", "link": "/mock-interview", "text": "Practice role-specific AI interviews with instant feedback."},
+            {"icon": "price", "title": "Rupee pricing", "link": "/pricing", "text": "Start free; upgrade at student-friendly prices rather than a USD subscription."},
+            {"icon": "chrome", "title": "Score any posting", "link": "/extension", "text": "Check your match on LinkedIn, Indeed or Naukri without copy-pasting."},
         ],
         "rows": [
-            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited free credits"},
-            {"feature": "Tailor resume to a job description", "us": "<span class='yes'>✓</span> Yes", "them": "Line-by-line tips"},
-            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
-            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "ATS match score against a JD", "us": "<span class='yes'>✓</span> Free to start", "them": "Limited free credits"},
+            {"feature": "Scored against a specific job", "us": "<span class='yes'>✓</span> Yes", "them": "Mostly generic grading"},
+            {"feature": "Line-by-line resume feedback", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Core focus"},
+            {"feature": "AI rewrites the bullets for you", "us": "<span class='yes'>✓</span> Yes", "them": "Suggestions only"},
             {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Interview question prep", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "LinkedIn profile review", "us": "Import only", "them": "<span class='yes'>✓</span> Yes"},
             {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "USD pricing"},
+        ],
+        "them_good": [
+            "Clear, specific line-by-line writing feedback — genuinely useful for learning what a strong bullet looks like.",
+            "A well-regarded LinkedIn profile review tool alongside the resume scorer.",
+            "Good for improving your resume in general, before you have a particular job in mind.",
+        ],
+        "pick_us": [
+            "You want the rewrite done, not a list of things to fix yourself.",
+            "You're applying to a specific job and want to know if this resume passes for that role.",
+            "You want cover letters and interview practice in the same place.",
+            "USD pricing is hard to justify on a student budget.",
+        ],
+        "pick_them": [
+            "You want to learn to write better bullets yourself rather than have AI do it.",
+            "You want general resume feedback with no particular job in mind.",
+            "A LinkedIn profile review is the main thing you're after.",
         ],
         "faq": [
             {"q": "Is TheTailorCV a good Resume Worded alternative?", "a": "Yes. TheTailorCV gives you a free ATS score, tailors your whole resume to a job description with AI, writes cover letters, runs mock interviews, and builds a portfolio site — broader than line-by-line scoring."},
-            {"q": "Does TheTailorCV score my resume like Resume Worded?", "a": "Yes — paste your resume and a job description and you get a match score plus the missing keywords and fixes to raise it."},
+            {"q": "Does TheTailorCV score my resume like Resume Worded?", "a": "Yes — paste your resume and a job description and you get a match score plus the missing keywords and fixes to raise it. The difference is that the score is against a specific job, not a general grade."},
             {"q": "Is it free?", "a": "You can check your ATS score and build a portfolio for free; Pro unlocks unlimited optimizations, cover letters and mock interviews."},
             {"q": "What does TheTailorCV add over Resume Worded?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job — not just scoring suggestions."},
+            {"q": "Does TheTailorCV rewrite my resume, or just tell me what's wrong?", "a": "It rewrites. The AI reworks your bullets so they carry the keywords and phrasing the job description asks for, while keeping every claim grounded in what you actually did — it will not invent experience for you."},
+            {"q": "Will the AI make up experience I don't have?", "a": "No. The tailoring is explicitly constrained to your real history: it rephrases and re-emphasises what's already on your resume to match the role, rather than fabricating projects, employers or skills."},
+            {"q": "Can I use TheTailorCV without any work experience?", "a": "Yes. It's built with students and freshers in mind — it works from projects, coursework, internships and volunteering, and the portfolio builder helps you show work when your resume is still short."},
+            {"q": "Do I have to re-tailor for every job?", "a": "It takes about a minute per job, and it's the whole point — a resume tuned to one posting will not score the same against a different one. Each tailored version is saved to your Job Tracker so you always know what you sent where."},
         ],
     },
     "teal-alternative": {
+        "blog": {"slug": "tailorcv-vs-teal", "title": "TailorCV vs Teal: The Tracker That Files vs the One That Fills Itself In"},
         "competitor": "Teal",
-        "audience": "students, freshers & job seekers",
+        "audience": "job seekers who want the resume fixed, not just tracked",
         "title": "Best Teal Alternative (2026) — ATS Resume Optimizer & Portfolio Builder",
         "description": "A Teal alternative for getting past the ATS: free ATS score, AI resume tailoring to a job description, cover letters, mock interviews, and a live portfolio website.",
         "hero": "Tailor your resume to each job, beat the ATS, practice interviews, and publish a portfolio site — affordable and built for first-time job seekers.",
+        "intro": [
+            "Teal is a well-built product with a popular job tracker. But its tracker is a filing cabinet: you find a job, you click save, and you get a link and a status column. The work of actually applying still happens somewhere else, and the tracker never knows how it went.",
+            "TheTailorCV's tracker fills itself in. Tailor your resume to a posting — from the job board itself, via the Chrome extension — and the role, the company, your ATS match score and the exact tailored PDF you sent are all recorded, automatically, as a byproduct of doing the work. You're not maintaining a list; the list maintains itself.",
+            "That difference matters more than it sounds. Six weeks into a search, Teal can tell you that you applied to forty jobs. TheTailorCV can tell you which resume you sent to each one, what it scored, and let you re-download it before the interview. On top of that you get cover letters, mock interviews for the role, and a live portfolio site — none of which Teal does.",
+        ],
         "props": [
             {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Instant match score against any job description, free."},
             {"icon": "doc", "title": "AI resume tailoring", "link": "/solutions", "text": "Rewrites and aligns your resume to the role automatically."},
             {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Publish a shareable portfolio site from your resume in minutes."},
             {"icon": "ai", "title": "AI mock interviews", "link": "/mock-interview", "text": "Role-specific practice with instant feedback."},
+            {"icon": "price", "title": "Rupee pricing", "link": "/pricing", "text": "Start free, then pay student-friendly prices instead of a USD subscription."},
+            {"icon": "chrome", "title": "Tailor from the posting", "link": "/extension", "text": "Score and rewrite against any job on LinkedIn, Indeed or Naukri in one click."},
         ],
         "rows": [
-            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited"},
-            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "Keyword matching"},
-            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "ATS match score against a JD", "us": "<span class='yes'>✓</span> Free to start", "them": "Limited"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Full rewrite", "them": "Keyword matching"},
+            {"feature": "Missing keyword report", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
             {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
-            {"feature": "Job tracker", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Interview question prep", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Job tracker", "us": "<span class='yes'>✓</span> Fills itself in", "them": "<span class='yes'>✓</span> Manual save"},
+            {"feature": "Tailored resume saved with each job", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "ATS score stored per application", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Browser extension", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Resume templates included", "us": "<span class='yes'>✓</span> 20+", "them": "<span class='yes'>✓</span> Yes"},
             {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "USD subscription"},
+        ],
+        "them_good": [
+            "A polished, mature product with a generous free tier and a strong browser extension.",
+            "Its tracker holds a very large number of roles, with notes and reminders — useful if you're running a long, high-volume search.",
+            "Deep LinkedIn and job-board integrations built up over years.",
+        ],
+        "pick_us": [
+            "You want your tracker to fill itself in, with the tailored resume and ATS score attached to every job.",
+            "Your resume is getting filtered out and you want it rewritten per job, not just filed.",
+            "You want mock interviews and interview prep in the same tool.",
+            "You want a live portfolio site you can send as a link.",
+            "You're paying in rupees and a USD subscription is a real cost.",
+        ],
+        "pick_them": [
+            "You're tracking a very high volume of roles and need notes and reminders on each.",
+            "You want to save jobs you have no intention of tailoring for.",
+            "You're already confident your resume performs well.",
         ],
         "faq": [
             {"q": "Is TheTailorCV a good Teal alternative?", "a": "Yes, especially for ATS-first job seekers. TheTailorCV scores and rewrites your resume for each job, writes cover letters, runs mock interviews, and builds a portfolio website."},
-            {"q": "What does TheTailorCV offer that Teal doesn't?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job description."},
+            {"q": "What does TheTailorCV offer that Teal doesn't?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job description rather than keyword matching alone."},
             {"q": "Is TheTailorCV cheaper than Teal?", "a": "Yes — it's priced affordably for students and freshers, and you can start for free."},
             {"q": "Does it work for freshers?", "a": "Yes — it's built for first-time job seekers, helping you present projects and skills even with little experience."},
+            {"q": "Does TheTailorCV have a job tracker like Teal?", "a": "Yes. Every resume you tailor is saved to your Job Tracker automatically, along with its ATS score and the job it was written for, so you always know which version you sent where."},
+            {"q": "Is Teal better than TheTailorCV?", "a": "For tracking a large job search, Teal's tracker is excellent and we'd say so plainly. For getting the resume itself past the ATS — scoring it against a posting, rewriting the bullets, and preparing for the interview — that's what TheTailorCV is built to do."},
+            {"q": "Can I use both?", "a": "Yes, and some people do — track in one, tailor in the other. Most find it simpler to keep the tailored resume and the job record in the same place, which is why the Job Tracker exists."},
+            {"q": "Does TheTailorCV work on LinkedIn like Teal's extension?", "a": "Yes. The Chrome extension reads the job description straight from the posting on LinkedIn, Indeed, Naukri, Greenhouse, Workday and more, then scores and tailors your resume without leaving the page."},
         ],
     },
     "rezi-alternative": {
         "competitor": "Rezi",
-        "audience": "students, freshers & job seekers",
+        "audience": "job seekers who already have a resume and need it to land",
         "title": "Best Rezi Alternative (2026) — Free ATS Score, AI Resumes & Portfolio",
         "description": "A Rezi alternative with a free ATS score, AI resume tailoring to a job description, cover letters, mock interviews, and a portfolio website builder.",
         "hero": "Get an ATS score, tailor your resume to each job with AI, write cover letters, practice interviews, and publish a portfolio website.",
+        "intro": [
+            "Rezi is a solid AI resume builder. If you're starting from a blank page, its templates and guided writing get you to a clean, ATS-safe document quickly, and the output looks the part.",
+            "But most people aren't starting from nothing. They have a resume already — it's just not getting replies. The question isn't 'how do I build a resume', it's 'why is this one being rejected, and what exactly do I change for this job'. A builder doesn't answer that.",
+            "TheTailorCV starts from the resume you already have. Upload it, paste the posting, and you get a match score for that role, the keywords you're missing, and an AI rewrite that works them in without inventing anything. Then the cover letter, mock interviews, and a live portfolio site — and every version saved to your Job Tracker with the job it was written for.",
+        ],
         "props": [
             {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "See your match score against any job description for free."},
             {"icon": "doc", "title": "AI tailoring to a JD", "link": "/solutions", "text": "Aligns your resume to the exact role you're targeting."},
             {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Turn your resume into a live portfolio site — Rezi doesn't."},
             {"icon": "ai", "title": "AI mock interviews", "link": "/mock-interview", "text": "Practice and get instant feedback before the real thing."},
+            {"icon": "price", "title": "Rupee pricing", "link": "/pricing", "text": "Start free; upgrade at student prices rather than a USD plan."},
+            {"icon": "chrome", "title": "Works where you apply", "link": "/extension", "text": "Tailor against any posting on LinkedIn, Indeed or Naukri without copy-pasting."},
         ],
         "rows": [
-            {"feature": "Free ATS score", "us": "<span class='yes'>✓</span> Yes", "them": "Limited free plan"},
-            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
-            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
-            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "ATS match score against a JD", "us": "<span class='yes'>✓</span> Free to start", "them": "Limited free plan"},
+            {"feature": "AI resume tailoring to a JD", "us": "<span class='yes'>✓</span> Full rewrite", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "Works from your existing resume", "us": "<span class='yes'>✓</span> Upload & tailor", "them": "Builder-first"},
+            {"feature": "Resume builder from scratch", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Core strength"},
             {"feature": "Cover letter generator", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='yes'>✓</span> Yes"},
+            {"feature": "AI mock interviews", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Interview question prep", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Portfolio website builder", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
+            {"feature": "Saved resume library & job tracker", "us": "<span class='yes'>✓</span> Yes", "them": "Limited"},
+            {"feature": "Browser extension", "us": "<span class='yes'>✓</span> Yes", "them": "<span class='no'>✗</span> No"},
             {"feature": "Pricing", "us": "Affordable (₹ plans)", "them": "USD pricing"},
+        ],
+        "them_good": [
+            "A genuinely good resume builder if you're starting from a blank page — clean templates and guided writing.",
+            "ATS-safe formatting baked into the output, so the document itself rarely breaks parsers.",
+            "Well suited to producing one polished master resume.",
+        ],
+        "pick_us": [
+            "You already have a resume and need to know why it isn't landing.",
+            "You want it re-tailored per job rather than one master version.",
+            "You want interview practice and a portfolio site alongside the resume.",
+            "USD pricing is hard to justify on a student budget.",
+        ],
+        "pick_them": [
+            "You're starting from nothing and want a builder to walk you through it.",
+            "One well-formatted master resume is all you need.",
+            "You don't want per-job tailoring at all.",
         ],
         "faq": [
             {"q": "Is TheTailorCV a good Rezi alternative?", "a": "Yes. TheTailorCV offers a free ATS score, AI resume tailoring to a job description, cover letters, AI mock interviews, and a portfolio website builder at an affordable price."},
-            {"q": "Does TheTailorCV build resumes like Rezi?", "a": "Yes — it tailors and rewrites your resume to each job and gives you an ATS match score with the missing keywords."},
-            {"q": "What's different from Rezi?", "a": "TheTailorCV adds a portfolio website builder and AI mock interviews, and is priced affordably for students and freshers."},
+            {"q": "Does TheTailorCV build resumes like Rezi?", "a": "Yes — it tailors and rewrites your resume to each job and gives you an ATS match score with the missing keywords. It also has a resume builder if you're starting from scratch."},
+            {"q": "What's different from Rezi?", "a": "Rezi is builder-first: it's strongest when you're writing a resume from a blank page. TheTailorCV is tailoring-first: it starts from the resume you already have and adapts it to each specific job, then adds mock interviews and a portfolio site."},
             {"q": "Is there a free option?", "a": "Yes — get a free ATS score and build a portfolio for free, then upgrade to Pro for unlimited use."},
+            {"q": "Can I upload my existing resume instead of rebuilding it?", "a": "Yes. Upload the PDF you already have and TheTailorCV works from that — you never need to retype your history into a builder to get a score or a tailored version."},
+            {"q": "Will the AI invent experience I don't have?", "a": "No. Tailoring is constrained to what's genuinely on your resume — it rephrases and re-emphasises your real work to match the posting, rather than fabricating employers, projects or skills."},
+            {"q": "How long does tailoring take per job?", "a": "About a minute. Paste the job description, get your score and the missing keywords, and download the tailored PDF — or do it directly on the job posting with the Chrome extension."},
+            {"q": "Does TheTailorCV keep my old versions?", "a": "Yes. Every tailored resume is saved to your Job Tracker with its ATS score and the role it was written for, so you can re-download any version later without starting over."},
         ],
     },
 }
@@ -4769,6 +4944,32 @@ async def teal_alternative_page(request: Request):
 @app.get("/rezi-alternative", response_class=HTMLResponse)
 async def rezi_alternative_page(request: Request):
     return _render_comparison_page(request, "rezi-alternative")
+
+
+@app.get("/alternatives", response_class=HTMLResponse)
+async def alternatives_hub(request: Request):
+    """Index of the competitor comparison pages.
+
+    Until this existed the comparison pages were orphaned — in the sitemap but
+    linked from nowhere on the site, so they were crawled rarely and ranked worse
+    than the hand-written content deserved. This hub plus the footer column is
+    what connects them.
+    """
+    breadcrumb = json.dumps({
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": build_absolute_url("/")},
+            {"@type": "ListItem", "position": 2, "name": "Comparisons", "item": build_absolute_url("/alternatives")},
+        ],
+    })
+    return templates.TemplateResponse(request, "alternatives_hub.html", {
+        "request": request,
+        "pages": _COMPARISON_PAGES,
+        "seo_og_title": "TheTailorCV vs Jobscan, Teal, Rezi & More — Compare (2026) | theTailorCV",
+        "seo_og_description": "Compare TheTailorCV with Jobscan, Teal, Rezi, Resume Worded and Careerflow — features, pricing, and which resume tool is right for you.",
+        "canonical_url": build_absolute_url("/alternatives"),
+        "page_schema_json": breadcrumb,
+    })
 
 
 # ── Programmatic resume-examples hub ─────────────────────────────────────────
@@ -4981,10 +5182,30 @@ async def download_saved_resume(request: Request, resume_id: int):
             .first()
         )
         html_content = record.html_content if record else None
+        # Older saved resumes predate html_content being stored, but they still have
+        # the structured resume_json. Read the fields needed to re-render while the
+        # session is open, so the fallback below can rebuild the HTML instead of 410ing.
+        fallback_json = record.resume_json if record else None
+        fallback_template = (record.template_id if record else None) or 1
+        fallback_style = (record.style_id if record else None) or 0
+        fallback_jd = (record.jd_snippet if record else None) or ""
+        record_found = record is not None
     finally:
         db.close()
-    if not record:
+    if not record_found:
         raise HTTPException(status_code=404, detail="Resume not found")
+
+    # Rebuild the HTML from the stored structured data when it wasn't saved.
+    if not html_content and fallback_json:
+        try:
+            _parsed = json.loads(fallback_json) if isinstance(fallback_json, str) else fallback_json
+            if isinstance(_parsed, dict) and _parsed:
+                html_content, _ = _render_resume_html(
+                    _parsed, fallback_jd, fallback_template, fallback_style
+                )
+        except Exception:
+            logger.exception("Saved-resume HTML rebuild from resume_json failed")
+
     if not html_content:
         raise HTTPException(status_code=410, detail="This saved resume has no stored content to download.")
 
@@ -7822,22 +8043,56 @@ _BLOG_TO_ROLE = {
 }
 
 
-def blog_cta(post) -> dict:
-    """Pick a topic-aware hero CTA (label + destination) from the post's
-    category/slug/title so each blog points to the most relevant tool."""
+def blog_cta(post, is_logged_in: bool = False) -> dict:
+    """Pick a topic-aware hero CTA from the post's category/slug/title so each
+    blog points to the most relevant tool. Returns title + text as well as the
+    button, so the whole card stays consistent — a cover-letter post must not
+    show ATS-score copy above a 'Generate a Cover Letter' button.
+
+    Blog readers are (usually) logged out, so the CTA routes them through /login
+    with a `next` back to the tool — landing them on the logged-in view rather
+    than the marketing page. Already-logged-in readers go straight to the tool."""
     hay = f"{post.category} {post.slug} {post.title} {' '.join(post.tags)}".lower()
-    if "cover letter" in hay or "cover-letter" in hay:
-        return {"label": "Generate a Cover Letter", "url": "/cover-letter"}
-    if "portfolio" in hay:
-        return {"label": "Build Your Portfolio", "url": "/portfolio"}
-    if "interview" in hay or "mock" in hay:
-        return {"label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
-    if "template" in hay:
-        return {"label": "Browse Resume Templates", "url": "/templates"}
-    if "ats score" in hay or "ats-score" in hay:
-        return {"label": "Check My ATS Score", "url": "/solutions"}
-    # Everything else (incl. general ATS, resume, career, job-search) -> tailoring tool.
-    return {"label": "Tailor Your Resume", "url": "/solutions"}
+    # Extension CTA only when the extension is the post's actual SUBJECT (title/slug),
+    # not merely a tag. Otherwise broad how-to posts (e.g. "apply to jobs faster")
+    # that just mention the extension would wrongly push "Add to Chrome" instead of
+    # the core tool their reader actually wants.
+    subject = f"{post.slug} {post.title}".lower()
+    if "extension" in subject or "chrome" in subject or "add to chrome" in subject:
+        cta = {"title": "Tailor on the job page",
+               "text": "Add the free TailorCV extension and tailor your resume on any posting in one click.",
+               "label": "Add to Chrome — Free", "url": "/extension"}
+    elif "cover letter" in hay or "cover-letter" in hay:
+        cta = {"title": "Write a standout cover letter",
+               "text": "Generate a cover letter matched to any job in seconds.",
+               "label": "Generate a Cover Letter", "url": "/cover-letter"}
+    elif "portfolio" in hay:
+        cta = {"title": "Turn your resume into a website",
+               "text": "Build a live portfolio site from your resume — no code needed.",
+               "label": "Build Your Portfolio", "url": "/portfolio"}
+    elif "interview" in hay or "mock" in hay:
+        cta = {"title": "Practice before it counts",
+               "text": "Run a free AI mock interview and get instant feedback.",
+               "label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
+    elif "template" in hay:
+        cta = {"title": "Pick a template that passes ATS",
+               "text": "Browse clean, recruiter-ready resume templates.",
+               "label": "Browse Resume Templates", "url": "/templates"}
+    elif "ats score" in hay or "ats-score" in hay:
+        cta = {"title": "Boost your resume in minutes",
+               "text": "Scan your resume against any job with the free ATS score checker.",
+               "label": "Check My ATS Score", "url": "/solutions"}
+    else:
+        # Everything else (incl. general ATS, resume, career, job-search) -> tailoring tool.
+        cta = {"title": "Boost your resume in minutes",
+               "text": "Tailor your resume to any job and beat the ATS — free to start.",
+               "label": "Tailor Your Resume", "url": "/solutions"}
+
+    # Logged-out readers: go through login first, then land on the tool logged in.
+    # (The login page reads ?next and redirects there after sign-in.)
+    if not is_logged_in and cta["url"].startswith("/"):
+        cta["url"] = "/login?next=" + cta["url"]
+    return cta
 
 
 @app.get("/blog/{slug}", response_class=HTMLResponse)
@@ -7849,7 +8104,7 @@ async def blog_post_page(request: Request, slug: str):
     post = blog_service.get_post(slug)
     if post is None:
         raise HTTPException(status_code=404, detail="Blog post not found")
-    related_posts = blog_service.related_posts(post, limit=8)
+    related_posts = blog_service.related_posts(post, limit=6)
     canonical_url = build_absolute_url(f"/blog/{post.slug}")
     og_image = post.image if str(post.image).startswith("http") else build_absolute_url(post.image or "/static/logo.png")
     author_profile = pick_author(post)
@@ -7871,7 +8126,7 @@ async def blog_post_page(request: Request, slug: str):
             "faq_schema_json": build_faq_schema(post),
             "author_profile": author_profile,
             "related_resume_example": _BLOG_TO_ROLE.get(post.slug),
-            "hero_cta": blog_cta(post),
+            "hero_cta": blog_cta(post, is_logged_in=bool(request.session.get("user_id"))),
         },
     )
 
@@ -7887,11 +8142,7 @@ async def sitemap_xml():
         ("/templates", "weekly", "0.8"),
         ("/cover-letter", "weekly", "0.8"),
         ("/portfolio", "weekly", "0.8"),
-        ("/jobscan-alternative", "monthly", "0.7"),
-        ("/careerflow-alternative", "monthly", "0.7"),
-        ("/resume-worded-alternative", "monthly", "0.7"),
-        ("/teal-alternative", "monthly", "0.7"),
-        ("/rezi-alternative", "monthly", "0.7"),
+        ("/alternatives", "weekly", "0.8"),
         ("/resume-examples", "weekly", "0.8"),
         ("/mock-interview", "weekly", "0.8"),
         ("/interview-prep", "weekly", "0.7"),
@@ -7908,6 +8159,8 @@ async def sitemap_xml():
         if p.slug not in BLOG_REDIRECTS  # merged duplicates 301 elsewhere; keep them out of the index
     ]
     role_urls = [(f"/resume-examples/{slug}", today, "monthly", "0.6") for slug in ROLE_SEO]
+    # Derived from the page data itself, so a new competitor never needs a second edit here.
+    comparison_urls = [(f"/{slug}", today, "monthly", "0.7") for slug in _COMPARISON_PAGES]
     # Published portfolios become indexable URLs — but only quality ones (has real
     # projects/experience) so we never feed Google thin/boilerplate pages.
     portfolio_urls = []
@@ -7924,7 +8177,7 @@ async def sitemap_xml():
                 portfolio_urls.append((loc, lastmod, "monthly", "0.5"))
     finally:
         _pf_db.close()
-    all_urls = static_urls + post_urls + role_urls
+    all_urls = static_urls + post_urls + role_urls + comparison_urls
 
     entries = []
     for path, lastmod, changefreq, priority in all_urls:

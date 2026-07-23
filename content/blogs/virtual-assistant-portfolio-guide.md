@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Virtual Assistant, Freelancing, Job Search]
 category: Portfolio
-image: public/blog-images/virtual-assistant-portfolio-guide.png
+image: public/blog-images/virtual-assistant-portfolio-guide.webp
 slug: virtual-assistant-portfolio-guide
 keywords: virtual assistant portfolio, freelancer portfolio website, va portfolio examples, freelance support portfolio, client portfolio
 ---

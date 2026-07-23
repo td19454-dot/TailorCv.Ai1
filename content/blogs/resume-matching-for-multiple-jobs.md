@@ -61,7 +61,7 @@ Create a master document that contains:
 - Your complete skills list (every tool, language, methodology you know)
 - All [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and credentials
 - [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) history
-- Optional sections: [projects](https://thetailorcv.com/blog/projects-in-resume), publications, volunteer work
+- Optional sections: [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), publications, volunteer work
 
 This document is not submitted anywhere.
 It is your source of truth.

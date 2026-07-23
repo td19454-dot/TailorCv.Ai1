@@ -149,7 +149,7 @@ The three-part formula:
 2. Describe what you did during the gap (productive framing)
 3. Pivot to why you are ready and excited now
 
-"I took 10 months off after a difficult year professionally and personally. I used the time to recharge, complete my AWS Solutions Architect certification, and work on two personal software [projects](https://thetailorcv.com/blog/projects-in-resume). I am now fully ready to commit to a new role and I'm excited about this opportunity in particular because [specific reason]."
+"I took 10 months off after a difficult year professionally and personally. I used the time to recharge, complete my AWS Solutions Architect certification, and work on two personal software [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). I am now fully ready to commit to a new role and I'm excited about this opportunity in particular because [specific reason]."
 
 Avoid:
 - Sounding apologetic or defensive
@@ -227,7 +227,7 @@ How you choose to explain your resume gap can significantly impact how potential
 When discussing a gap in your resume during an interview, focus on being honest and concise. Briefly explain the reason for the gap, such as caregiving or upskilling, and emphasize what you learned or how you stayed engaged during that time. This proactive approach shows your potential employer that you are forward-looking and resilient. For more tips on handling interview questions, check out our guide on [how to explain job hopping](https://thetailorcv.com/blog/how-to-explain-job-hopping-in-interview).
 
 ### Is it necessary to mention short gaps (under 3 months) on my resume?
-In most cases, short gaps of under three months go unnoticed and do not require explanation on your resume. However, if you feel it might raise questions, a brief mention in your [cover letter](https://www.thetailorcv.com/cover-letter) can be helpful. Focus on your skills and experiences, ensuring that your resume remains strong. For more insights on resume concerns, visit our post on [resume red flags](https://thetailorcv.com/blog/15-resume-red-flags).
+In most cases, short gaps of under three months go unnoticed and do not require explanation on your resume. However, if you feel it might raise questions, a brief mention in your [cover letter](https://www.thetailorcv.com/cover-letter) can be helpful. Focus on your skills and experiences, ensuring that your resume remains strong. For more insights on resume concerns, visit our post on [resume red flags](https://thetailorcv.com/blog/resume-red-flags).
 
 ### What if my employment gap was due to a layoff?
 If your gap was due to a layoff, it's essential to address it clearly and honestly. Mention the layoff in your resume or cover letter, and highlight any relevant activities you engaged in during that period, such as upskilling or freelance work. This demonstrates that you remained proactive, which is crucial for potential employers. You can also explore our [how to get a job with no experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026) strategies for further guidance.

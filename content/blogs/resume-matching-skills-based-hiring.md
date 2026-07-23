@@ -4,10 +4,10 @@ description: More companies are hiring for skills instead of job titles or degre
 date: 2026-06-23
 author: TailorCV Team
 tags: [Skills-Based Hiring, Resume Matching, Job Description, Job Search 2026]
-category: Job Description Analysis
+category: ATS Optimization
 slug: resume-matching-skills-based-hiring
 keywords: skills-based hiring resume, skills based job description matching, resume without degree matching skills, skills first hiring 2026
-image: public/blog-images/resume-matching-skills-based-hiring.png
+image: public/blog-images/resume-matching-skills-based-hiring.webp
 ---
 
 A growing number of companies have dropped degree requirements and rigid title-matching in favor of skills-based hiring, evaluating candidates on what they can actually do rather than the credentials or job titles on their resume. This shift changes how [job descriptions](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) are written, and it changes how you should [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) to them.
@@ -68,7 +68,7 @@ Consider leading with a strong skills section near the top of your resume, direc
 
 ### Step 4: Include Projects and Non-Traditional Experience Prominently
 
-If your strongest evidence for a required skill comes from a personal project, freelance work, or coursework rather than a formal job, include it clearly rather than omitting it for looking "less official." Read [projects in resume](https://thetailorcv.com/blog/projects-in-resume) for how to present this effectively.
+If your strongest evidence for a required skill comes from a personal project, freelance work, or coursework rather than a formal job, include it clearly rather than omitting it for looking "less official." Read [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for how to present this effectively.
 
 ### Step 5: Check Your Match Score
 
@@ -218,7 +218,7 @@ Use the [TailorCV ATS score checker](/solutions) to see how well your resume dem
 - [How to Match Your Resume to an AI-Generated Job Description](https://thetailorcv.com/blog/matching-resume-ai-generated-job-descriptions)
 - [Highest Paying Jobs Without a Degree 2026](https://thetailorcv.com/blog/highest-paying-jobs-without-a-degree-2026)
 - [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
-- [Projects in Resume](https://thetailorcv.com/blog/projects-in-resume)
+- [Projects in Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
 - [Skills to Add to Resume 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)

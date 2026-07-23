@@ -43,7 +43,7 @@ Even if your industry has not traditionally required a [portfolio](https://theta
 
 ### What to Include
 
-- 3-5 complete, deployed [projects](https://thetailorcv.com/blog/projects-in-resume)
+- 3-5 complete, deployed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - A clean [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) profile with pinned repos and good READMEs
 - Brief write-ups explaining what each project does and why you built it
 - Live demo links where possible
@@ -51,7 +51,7 @@ Even if your industry has not traditionally required a [portfolio](https://theta
 
 ### Project Quality vs Quantity
 
-Three polished [projects](https://thetailorcv.com/blog/projects-in-resume) beat ten half-finished ones. A [strong project](https://thetailorcv.com/blog/business-analyst-portfolio-guide) has:
+Three polished [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) beat ten half-finished ones. A [strong project](https://thetailorcv.com/blog/business-analyst-portfolio-guide) has:
 
 - A real use case (not a tutorial clone)
 - A working demo or deployment
@@ -64,7 +64,7 @@ Three polished [projects](https://thetailorcv.com/blog/projects-in-resume) beat 
 - Fill in your bio, location, and website/[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - Pin your 6 best repositories
 - Commit consistently - a green contribution graph signals active development
-- Star [projects](https://thetailorcv.com/blog/projects-in-resume) you use and admire (signals technical taste)
+- Star [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you use and admire (signals technical taste)
 - Contribute to at least one open-source project - even small fixes show community engagement
 
 ### Portfolio Website
@@ -101,7 +101,7 @@ Read [how to get your first tech job](https://thetailorcv.com/blog/how-to-get-fi
 
 ### Portfolio Platforms for Designers
 
-- **Figma Community** - Showcase Figma [projects](https://thetailorcv.com/blog/projects-in-resume) publicly
+- **Figma Community** - Showcase Figma [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) publicly
 - **Behance** - Adobe's creative community
 - **Dribbble** - Visual design showcase
 - **Personal website** - Custom [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) via Webflow, Squarespace, or Framer
@@ -145,7 +145,7 @@ If your results are under NDA, describe the outcome without naming the client: "
 
 ### What to Include
 
-- 3-5 analysis [projects](https://thetailorcv.com/blog/projects-in-resume) with real datasets
+- 3-5 analysis [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with real datasets
 - Jupyter notebooks or Deepnote notebooks (published publicly)
 - Tableau or Power BI dashboards (published to Tableau Public or Power BI Web)
 - A brief description of the business question, dataset, method, and insight
@@ -211,7 +211,7 @@ Group by format or industry:
 A PDF portfolio or [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) featured section works well for traditional engineering. Include:
 
 - Brief intro paragraph
-- 3-5 [projects](https://thetailorcv.com/blog/projects-in-resume) with description, your role, key technical work, and outcome
+- 3-5 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with description, your role, key technical work, and outcome
 - Technical images where permitted by your employer's IP policy
 
 ---
@@ -220,7 +220,7 @@ A PDF portfolio or [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-f
 
 ### Mistake 1: Quantity over quality
 
-10 weak [projects](https://thetailorcv.com/blog/projects-in-resume) are worse than 3 strong ones. Edit ruthlessly.
+10 weak [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are worse than 3 strong ones. Edit ruthlessly.
 
 ### Mistake 2: No outcomes
 
