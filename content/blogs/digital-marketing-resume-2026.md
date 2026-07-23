@@ -32,7 +32,7 @@ Before applying, compare your resume to the job description with the [ATS score 
 2. Summary with a key result
 3. Skills by channel
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume) or campaigns
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or campaigns
 6. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 One to two pages depending on experience.

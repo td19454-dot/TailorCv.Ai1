@@ -11,12 +11,12 @@ keywords: resume summary with no experience, resume summary for freshers, resume
 ---
 
 The [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) is the first thing a recruiter reads.
-Most [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) either leave it blank or write something generic that kills their chances.
+Most [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) either leave it blank or write something generic that kills their chances.
 This is the section that decides whether the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) reads further.
 In this post you will learn exactly how to write a [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) with no experience.
 You will also get 10 [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) examples for freshers and a proven formula to write your own.
 
-For the rest of your resume, use the [first-time resume guide](https://thetailorcv.com/blog/resume-with-no-experience), browse [beginner resume templates](https://thetailorcv.com/blog/resume-templates-for-beginners), and check your resume with the [ATS score checker](https://www.thetailorcv.com/solutions).
+For the rest of your resume, use the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience), browse [beginner resume templates](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience), and check your resume with the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 ![How to Write a Resume Summary With No Experience](public/blog-images/How%20to%20Write%20a%20Resume%20Summary%20With%20No%20Experience%20(10%20Real%20Examples%20for%202026).png)
 
@@ -50,7 +50,7 @@ This is about making the [recruiter](https://thetailorcv.com/blog/how-recruiters
 
 ## Why Freshers Skip the Summary (And Why That's a Big Mistake)
 
-Many [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) leave the summary blank because they think they have nothing to say.
+Many [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) leave the summary blank because they think they have nothing to say.
 Others write weak statements like "hardworking and dedicated".
 Some believe the summary is optional.
 Some think they must wait until they have work experience.
@@ -89,7 +89,7 @@ This formula makes your [resume summary](https://thetailorcv.com/blog/how-to-wri
   - Focus on measurable value, even if it is [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) based
 
 #### Pro Tip
-Even internships, college [projects](https://thetailorcv.com/blog/projects-in-resume), or freelance work counts as experience.
+Even internships, college [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), or freelance work counts as experience.
 If you built something, you have experience.
 If you earned a certificate, you have experience.
 If you led a project in a student club, that counts too.
@@ -179,7 +179,7 @@ If you want a quick [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resu
 
 Bad writing is vague.
 Good writing is specific.
-Replace generic phrases with role-focused skills, [projects](https://thetailorcv.com/blog/projects-in-resume), and goals.
+Replace generic phrases with role-focused skills, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), and goals.
 
 ---
 
@@ -248,22 +248,22 @@ A strong summary improves your [ATS](https://thetailorcv.com/blog/what-is-an-ats
 
 ### How do I make my resume summary stand out?
 Be specific.
-Use real skills, [projects](https://thetailorcv.com/blog/projects-in-resume), and target role language.
+Use real skills, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), and target role language.
 Show the value you bring instead of generic buzzwords.
 
 ---
 
 ## Related Guides
 
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/resume-with-no-experience)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
-- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/projects-in-resume)
-- [Resume Mistakes Every Fresher Makes (And How to Fix Them](https://thetailorcv.com/blog/resume-mistakes-freshers)
-- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners)
+- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [Resume Mistakes Every Fresher Makes (And How to Fix Them](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
@@ -275,7 +275,7 @@ Show the value you bring instead of generic buzzwords.
 ## Conclusion
 
 Your [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) is 3-4 lines that can make or break your application.
-[freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) CAN write a strong summary using skills, projects, and career goals.
+[freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) CAN write a strong summary using skills, projects, and career goals.
 Use the 10 examples above as starting points, then personalize.
 
 [Let TailorCV Optimize Your Resume for Free](/solutions)

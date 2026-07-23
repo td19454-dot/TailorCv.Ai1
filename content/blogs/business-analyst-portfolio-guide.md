@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Business Analyst, Job Search]
 category: Portfolio
-image: public/blog-images/business-analyst-portfolio-guide.png
+image: public/blog-images/business-analyst-portfolio-guide.webp
 slug: business-analyst-portfolio-guide
 keywords: business analyst portfolio, ba portfolio website, requirements documentation portfolio, process mapping portfolio, business analyst case study
 ---

@@ -12,11 +12,11 @@ keywords: data analyst resume 2026, data analyst resume, entry level data analys
 
 A [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) resume in 2026 needs to prove more than "I know Excel and SQL." Employers want analysts who can clean messy data, write accurate queries, build dashboards, explain insights, and connect analysis to business decisions.
 
-The data job market is still strong, but it is also more competitive. The U.S. Bureau of Labor Statistics [projects](https://thetailorcv.com/blog/projects-in-resume) fast growth for data-heavy roles such as data scientists and operations research analysts from 2024 to 2034. That demand is good news, but it also means your resume needs to show practical ability, not just course certificates.
+The data job market is still strong, but it is also more competitive. The U.S. Bureau of Labor Statistics [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) fast growth for data-heavy roles such as data scientists and operations research analysts from 2024 to 2034. That demand is good news, but it also means your resume needs to show practical ability, not just course certificates.
 
 Use this guide to write a data analyst resume that is clear for recruiters, readable for [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software, and strong enough to earn interviews.
 
-If you are new to ATS, start with the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), then test your resume with the [ATS score checker](https://www.thetailorcv.com/solutions). You can also use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) if your current format is hard to scan. If you are applying as a beginner, pair this guide with [how to get a job with no experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026) and the [first-time resume guide](https://thetailorcv.com/blog/resume-with-no-experience).
+If you are new to ATS, start with the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), then test your resume with the [ATS score checker](https://www.thetailorcv.com/solutions). You can also use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) if your current format is hard to scan. If you are applying as a beginner, pair this guide with [how to get a job with no experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026) and the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience).
 
 ---
 
@@ -38,11 +38,11 @@ Best structure:
 2. [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 3. Skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
-If you do not have full-time data experience, move [projects](https://thetailorcv.com/blog/projects-in-resume) above work experience. For data analyst roles, strong [projects](https://thetailorcv.com/blog/projects-in-resume) can carry a lot of weight because they prove you can work with real datasets.
+If you do not have full-time data experience, move [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) above work experience. For data analyst roles, strong [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) can carry a lot of weight because they prove you can work with real datasets.
 
 ---
 
@@ -72,11 +72,11 @@ Your summary should be short, specific, and keyword-rich.
 
 Use this formula:
 
-Data Analyst with experience in [tools] and [type of analysis]. Skilled in [SQL/dashboarding/statistics/data cleaning] with [projects](https://thetailorcv.com/blog/projects-in-resume) or experience improving [business metric].
+Data Analyst with experience in [tools] and [type of analysis]. Skilled in [SQL/dashboarding/statistics/data cleaning] with [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or experience improving [business metric].
 
 ### Example for Entry-Level Data Analyst
 
-Entry-level Data Analyst skilled in SQL, Excel, Python, Power BI, and data visualization. Built analytics [projects](https://thetailorcv.com/blog/projects-in-resume) using sales, marketing, and customer datasets to identify trends, create dashboards, and recommend business actions. Strong foundation in statistics, data cleaning, and reporting.
+Entry-level Data Analyst skilled in SQL, Excel, Python, Power BI, and data visualization. Built analytics [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) using sales, marketing, and customer datasets to identify trends, create dashboards, and recommend business actions. Strong foundation in statistics, data cleaning, and reporting.
 
 ### Example for Experienced Data Analyst
 
@@ -107,7 +107,7 @@ Business Tools: Jira, Salesforce, Google Analytics, Mixpanel
 
 Only include tools you can discuss in an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). If you list Python, be ready to explain how you used Pandas for cleaning, grouping, joining, filtering, and visualization.
 
-For more role-based skill examples, read the [technical skills in resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience), then choose the data analytics skills that match your target job.
+For more role-based skill examples, read the [technical skills in resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide), then choose the data analytics skills that match your target job.
 
 ---
 
@@ -199,7 +199,7 @@ This example works because it shows business understanding, not just technical t
 
 ## Data Analyst Project Ideas for Freshers
 
-If you do not have data analyst experience, [projects](https://thetailorcv.com/blog/projects-in-resume) are your proof.
+If you do not have data analyst experience, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are your proof.
 
 Good project topics:
 
@@ -232,15 +232,15 @@ Sales Performance Dashboard | Excel, Power Query, Tableau
 - Built Tableau views for executive summary, region performance, product trends, and sales rep ranking.
 - Identified underperforming regions and recommended inventory changes based on demand trends.
 
-Read [how to add projects in resume](https://thetailorcv.com/blog/projects-in-resume) if you want more examples.
+Read [how to add projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) if you want more examples.
 
-If you also want certificates to support these projects, review the [best free online certificates for resumes](https://thetailorcv.com/blog/best-free-online-certificates-for-resume), especially analytics, SQL, Excel, Power BI, and Tableau options.
+If you also want certificates to support these projects, review the [best free online certificates for resumes](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026), especially analytics, SQL, Excel, Power BI, and Tableau options.
 
 ---
 
 ## Certifications for Data Analyst Resume
 
-Certifications can help, especially for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), but they should not replace projects.
+Certifications can help, especially for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), but they should not replace projects.
 
 Useful [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) include:
 
@@ -256,23 +256,23 @@ How to list them:
 Google Data Analytics Professional Certificate | Coursera | 2026
 Microsoft Power BI [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) Associate | Microsoft | 2026
 
-If you completed a certification project, add it under [projects](https://thetailorcv.com/blog/projects-in-resume) with details.
+If you completed a certification project, add it under [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with details.
 
 ---
 
 ## Data Analyst Resume for Freshers
 
-[freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) should use this order:
+[freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) should use this order:
 
 1. Header
 2. Summary
 3. Skills
-4. [projects](https://thetailorcv.com/blog/projects-in-resume)
+4. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 5. Internship or work experience
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
-Your [projects](https://thetailorcv.com/blog/projects-in-resume) should show:
+Your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) should show:
 
 - Real dataset
 - Business question
@@ -321,7 +321,7 @@ Tools matter, but employers hire analysts for insights. Show what you discovered
 
 ### Mistake 2: No SQL proof
 
-SQL is one of the most important data analyst skills. Add SQL [projects](https://thetailorcv.com/blog/projects-in-resume), SQL reporting, joins, CTEs, window functions, and database experience where relevant.
+SQL is one of the most important data analyst skills. Add SQL [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), SQL reporting, joins, CTEs, window functions, and database experience where relevant.
 
 ### Mistake 3: Weak project descriptions
 
@@ -359,7 +359,7 @@ Job Title | Company | Dates
 - Built [dashboard/report/model] for [stakeholders] tracking [KPIs].
 - Automated [workflow] reducing [time/errors/cost].
 
-[projects](https://thetailorcv.com/blog/projects-in-resume)
+[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 Project Name | Tools
 - Cleaned and analyzed [dataset] to answer [business question].
 - Built [dashboard/report] showing [KPIs].

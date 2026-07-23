@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, AI Portfolio Builder, No-Code, Job Search]
 category: Portfolio
-image: public/blog-images/ai-portfolio-builder-no-code-guide.png
+image: public/blog-images/ai-portfolio-builder-no-code-guide.webp
 slug: ai-portfolio-builder-no-code-guide
 keywords: ai portfolio builder, no code portfolio website, build portfolio from resume, ai website builder for resume, portfolio generator
 ---

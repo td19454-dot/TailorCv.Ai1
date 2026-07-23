@@ -4,8 +4,8 @@ description: The resume trends shaping 2026 hiring - from AI-assisted tailoring 
 date: 2026-07-08
 author: TailorCV Team
 tags: [Resume Trends 2026, Resume Writing, ATS Optimization, Job Search Trends, Resume Tips]
-category: AI & Resume Trends
-image: public/blog-images/resume-trends-2026.png
+category: Resume Writing
+image: public/blog-images/resume-trends-2026.webp
 slug: resume-trends-2026
 keywords: resume trends 2026, what to put on a resume 2026, resume format 2026, modern resume tips
 ---

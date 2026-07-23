@@ -155,7 +155,7 @@ The [5-minute checklist](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How Much Should You Change Your Resume for Every Job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job)
-- [Resume Mistakes Freshers Make](https://thetailorcv.com/blog/resume-mistakes-freshers)
+- [Resume Mistakes Freshers Make](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
 - [ATS Mistakes Experienced Professionals Make](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 
 ---

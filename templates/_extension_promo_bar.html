@@ -1,0 +1,53 @@
+<!-- White Chrome-extension promo bar, same as the home page. Sits flush under
+     the fixed navbar. Included at the top of the guest landing on the optimize /
+     ATS / cover-letter pages. Clearance margin is measured to clear the 72px
+     desktop / 100px mobile fixed nav on these pages. -->
+<div class="ext-promo-bar epbar-landing">
+    <div class="ext-promo-inner">
+        <span class="ext-promo-text">
+            <span class="ext-promo-chip">New</span>
+            <span>Tailor your resume on <b>any job posting</b> &mdash; without leaving the page.</span>
+        </span>
+        <a href="/extension" class="ext-promo-btn">
+            <span aria-hidden="true">&#129513;</span> Add to Chrome &mdash; Free
+        </a>
+    </div>
+</div>
+<style>
+    .ext-promo-bar.epbar-landing {
+        background: #ffffff;
+        border-bottom: 1px solid #e6e9f2;
+        width: 100%;
+        /* 72px desktop nav minus the constant 26px whitespace line-box before the
+           bar (measured identical on all 3 landing pages) = 46px so the bar's top
+           meets the nav's bottom flush. */
+        margin-top: 46px;
+        margin-bottom: 0;
+    }
+    .epbar-landing .ext-promo-inner {
+        max-width: 1180px; margin: 0 auto; padding: 12px 24px;
+        display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+    }
+    .epbar-landing .ext-promo-text {
+        display: inline-flex; align-items: center; gap: 10px;
+        font-size: 15px; color: #1a2340; font-weight: 500; line-height: 1.4;
+    }
+    .epbar-landing .ext-promo-chip {
+        flex: none; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+        color: #4a6aff; background: #eef1ff; border: 1px solid #dbe1ff; border-radius: 999px; padding: 3px 9px;
+    }
+    .epbar-landing .ext-promo-text b { font-weight: 700; color: #0e1633; }
+    .epbar-landing .ext-promo-btn {
+        flex: none; display: inline-flex; align-items: center; gap: 8px;
+        background: #4a6aff; color: #ffffff; font-size: 14px; font-weight: 600; text-decoration: none;
+        padding: 9px 18px; border-radius: 8px; transition: background .15s ease, transform .15s ease; white-space: nowrap;
+    }
+    .epbar-landing .ext-promo-btn:hover { background: #3a56e0; transform: translateY(-1px); }
+    .epbar-landing .ext-promo-btn:focus-visible { outline: 3px solid #b9c4ff; outline-offset: 2px; }
+    @media (max-width: 768px) { .ext-promo-bar.epbar-landing { margin-top: 74px; } }
+    @media (max-width: 640px) {
+        .epbar-landing .ext-promo-inner { padding: 10px 16px; gap: 10px; }
+        .epbar-landing .ext-promo-text { font-size: 13.5px; }
+        .epbar-landing .ext-promo-btn { padding: 8px 15px; font-size: 13px; }
+    }
+</style>

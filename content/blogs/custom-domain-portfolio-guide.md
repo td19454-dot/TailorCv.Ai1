@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Custom Domain, Portfolio Hosting, Job Search]
 category: Portfolio
-image: public/blog-images/custom-domain-portfolio-guide.png
+image: public/blog-images/custom-domain-portfolio-guide.webp
 slug: custom-domain-portfolio-guide
 keywords: custom domain portfolio, portfolio website domain, how to buy a domain for portfolio, portfolio netlify deploy, personal domain name
 ---

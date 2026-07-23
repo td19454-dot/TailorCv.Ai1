@@ -17,7 +17,7 @@ If you are applying to companies like Google, Amazon, Meta, Apple, Netflix, Micr
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software that scans for role-specific keywords
 - Recruiters and hiring managers who want evidence of engineering judgment
 
-Before applying, compare your resume against the job description with the [ATS score checker](https://www.thetailorcv.com/solutions), then improve your matching with the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide). If your format is messy, start with an [ATS-friendly resume template](https://www.thetailorcv.com/templates). If you are still deciding how to stand out in tech hiring, also read [is a CS degree worth it in 2026](https://thetailorcv.com/blog/cs-degree-worth-it) and the guide to [technical skills in a fresher resume](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience).
+Before applying, compare your resume against the job description with the [ATS score checker](https://www.thetailorcv.com/solutions), then improve your matching with the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide). If your format is messy, start with an [ATS-friendly resume template](https://www.thetailorcv.com/templates). If you are still deciding how to stand out in tech hiring, also read [is a CS degree worth it in 2026](https://thetailorcv.com/blog/cs-degree-bubble-oversaturated-2026) and the guide to [technical skills in a fresher resume](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide).
 
 ---
 
@@ -60,7 +60,7 @@ For most candidates, use this structure:
 2. Summary or target headline
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) or achievements
 
@@ -122,7 +122,7 @@ CS Fundamentals: Data Structures, Algorithms, [system design](https://thetailorc
 
 Do not add every tool you have touched once. A FAANG resume is stronger when it shows depth.
 
-For a broader skills list, use the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience) and then keep only the skills that match your target software engineering job description.
+For a broader skills list, use the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide) and then keep only the skills that match your target software engineering job description.
 
 ---
 
@@ -214,7 +214,7 @@ This works because it shows stack, scope, scale, reliability, collaboration, and
 
 ## Project Section for FAANG Software Engineer Resumes
 
-Projects matter a lot for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), students, and career switchers. A strong project section can prove practical engineering ability even without big-company experience.
+Projects matter a lot for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), students, and career switchers. A strong project section can prove practical engineering ability even without big-company experience.
 
 Include:
 
@@ -247,9 +247,9 @@ Good FAANG-style project ideas:
 - Recommendation system
 - Compiler or interpreter project
 
-For more project help, read [how to add projects in resume for freshers](https://thetailorcv.com/blog/projects-in-resume).
+For more project help, read [how to add projects in resume for freshers](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 
-If you are applying with little or no full-time experience, combine this FAANG resume structure with the [first-time resume guide](https://thetailorcv.com/blog/resume-with-no-experience) so your projects, skills, and education section do more of the heavy lifting.
+If you are applying with little or no full-time experience, combine this FAANG resume structure with the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience) so your projects, skills, and education section do more of the heavy lifting.
 
 ---
 
@@ -331,7 +331,7 @@ Job Title | Company | Dates
 - Action + technical work + scale + result.
 - Action + technical work + scale + result.
 
-[projects](https://thetailorcv.com/blog/projects-in-resume)
+[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 Project Name | Stack | Link
 - Action + technical detail + result.
 - Action + technical detail + result.

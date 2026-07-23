@@ -32,7 +32,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Core marketing skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume) or campaigns
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or campaigns
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -167,7 +167,7 @@ In 2026, marketing managers are expected to be proficient with HubSpot, Salesfor
 - [Financial Analyst Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/financial-analyst-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [How to Match Your Resume to a Marketing Job Description in 2026](https://thetailorcv.com/blog/resume-matching-marketing)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 
 ## Make This Practical
 

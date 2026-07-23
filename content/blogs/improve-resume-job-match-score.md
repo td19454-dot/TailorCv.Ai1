@@ -191,7 +191,7 @@ Each listed certification that matches a JD requirement adds keyword credit.
 
 If you do not have a relevant certification but it is listed as "preferred":
 Consider completing a free or low-cost certification.
-Read [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume).
+Read [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026).
 
 ---
 

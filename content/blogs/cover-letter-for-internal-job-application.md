@@ -5,7 +5,7 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Internal Job Application, Internal Cover Letter, Internal Promotion, Career Advice, Cover Letter Template]
 category: Cover Letters
-image: public/blog-images/cover-letter-for-internal-job-application.png
+image: public/blog-images/cover-letter-for-internal-job-application.webp
 slug: cover-letter-for-internal-job-application
 keywords: cover letter for internal job application, internal promotion cover letter, applying for internal position letter, internal transfer cover letter
 ---
