@@ -6065,16 +6065,6 @@ async def dashboard_page(request: Request):
     return templates.TemplateResponse(request, "dashboard.html", ctx)
 
 
-@app.get("/__dash_preview", include_in_schema=False)
-async def _dash_preview(request: Request):
-    from types import SimpleNamespace as _NS
-    ctx = {"request": request, "user_name": "Trisha", "user_email": "t@e.com", "is_pro_user": False,
-        "resume_count": 16, "recent_resumes": [_NS(title="Resume", created_at=datetime.utcnow(), ats_score=None, status="saved", template_id=1)],
-        "latest_ats": None, "application_count": 0, "recent_applications": [],
-        "pipeline": {"saved": 9, "applied": 3, "interview": 2, "selected": 1, "rejected": 1}, "usage": None}
-    return templates.TemplateResponse(request, "dashboard.html", ctx)
-
-
 # ---------------------------------------------------------------------------
 # Legal pages (Terms, Privacy, Refund). Written to satisfy payment-processor
 # (Paddle) onboarding requirements: clear identity & contact, data handling,
