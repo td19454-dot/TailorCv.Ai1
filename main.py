@@ -6040,6 +6040,13 @@ async def dashboard_page(request: Request):
         )
         # Most recent resume that actually has an ATS score.
         latest_ats = next((r.ats_score for r in resumes if r.ats_score is not None), None)
+        # Job Tracker pipeline: count saved resumes by their tracked status
+        # (SavedResume.status: saved, applied, interview, selected, rejected).
+        pipeline = {"saved": 0, "applied": 0, "interview": 0, "selected": 0, "rejected": 0}
+        for r in resumes:
+            s = (r.status or "saved").strip().lower()
+            if s in pipeline:
+                pipeline[s] += 1
         ctx = {
             "request": request,
             "user_name": user.name,
@@ -6050,10 +6057,21 @@ async def dashboard_page(request: Request):
             "latest_ats": latest_ats,
             "application_count": len(applications),
             "recent_applications": applications[:5],
+            "pipeline": pipeline,
             "usage": usage,
         }
     finally:
         db.close()
+    return templates.TemplateResponse(request, "dashboard.html", ctx)
+
+
+@app.get("/__dash_preview", include_in_schema=False)
+async def _dash_preview(request: Request):
+    from types import SimpleNamespace as _NS
+    ctx = {"request": request, "user_name": "Trisha", "user_email": "t@e.com", "is_pro_user": False,
+        "resume_count": 16, "recent_resumes": [_NS(title="Resume", created_at=datetime.utcnow(), ats_score=None, status="saved", template_id=1)],
+        "latest_ats": None, "application_count": 0, "recent_applications": [],
+        "pipeline": {"saved": 9, "applied": 3, "interview": 2, "selected": 1, "rejected": 1}, "usage": None}
     return templates.TemplateResponse(request, "dashboard.html", ctx)
 
 
