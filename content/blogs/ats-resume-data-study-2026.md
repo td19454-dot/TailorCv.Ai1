@@ -4,7 +4,7 @@ description: A data-backed look at what really lowers resume ATS scores in 2026 
 date: 2026-06-29
 author: TailorCV Team
 tags: [ATS Score, Resume Data, ATS Keywords, Resume Tips, Job Search]
-category: ATS Guides
+category: ATS Optimization
 image: public/blog-images/ats.webp
 slug: ats-resume-data-study-2026
 keywords: ats score data, what lowers ats score, ats resume study, ats keywords data, resume rejection reasons, ats score statistics

@@ -32,7 +32,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Skills by category
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume) or freelance work
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or freelance work
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -52,7 +52,7 @@ Brand and Marketing Designer with 5 years of experience creating visual identiti
 
 ### Example for Entry-Level Graphic Designer
 
-Junior Graphic Designer with [strong skills](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) in Adobe Illustrator, Photoshop, InDesign, and Canva. Designed branding, social media content, posters, and digital ads for 4 clients during freelance work and university [projects](https://thetailorcv.com/blog/projects-in-resume). Strong foundation in typography, color theory, layout design, and print production.
+Junior Graphic Designer with [strong skills](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) in Adobe Illustrator, Photoshop, InDesign, and Canva. Designed branding, social media content, posters, and digital ads for 4 clients during freelance work and university [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Strong foundation in typography, color theory, layout design, and print production.
 
 ---
 
@@ -132,7 +132,7 @@ Consumer Lifestyle Company | Mar 2023 - Present
 
 Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is more important than your resume in graphic design. Key rules:
 
-- Curate ruthlessly - 6-10 strong [projects](https://thetailorcv.com/blog/projects-in-resume), not 30 average ones
+- Curate ruthlessly - 6-10 strong [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), not 30 average ones
 - Show the process, not just the final output - sketches, iterations, client briefs
 - Include context - who the client was, what the brief was, what constraints you worked with
 - Show variety - identity, digital, print, motion if you have it

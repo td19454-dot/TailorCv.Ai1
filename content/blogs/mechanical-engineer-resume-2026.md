@@ -32,7 +32,7 @@ Before applying, compare your resume to the job description with the [ATS score 
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -102,7 +102,7 @@ Designed / Analyzed / Reduced / Improved + [component or system] + [manufacturin
 ### Weak Bullet Points
 
 - Designed parts using SolidWorks
-- Worked on product development [projects](https://thetailorcv.com/blog/projects-in-resume)
+- Worked on product development [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Performed FEA analysis
 - Worked with manufacturing teams
 

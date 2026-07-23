@@ -5,7 +5,7 @@ date: 2026-07-10
 author: TailorCV Team
 tags: [Portfolio Guide, Teaching, Education, Job Search]
 category: Portfolio
-image: public/blog-images/teacher-educator-portfolio-guide.png
+image: public/blog-images/teacher-educator-portfolio-guide.webp
 slug: teacher-educator-portfolio-guide
 keywords: teacher portfolio, educator portfolio website, teaching portfolio examples, digital teaching portfolio, education portfolio
 ---

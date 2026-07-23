@@ -4,10 +4,10 @@ description: Learn how to match your resume to legal job descriptions, from para
 date: 2026-06-21
 author: TailorCV Team
 tags: [Legal Resume, Resume Matching, Job Description, Paralegal, Associate Attorney]
-category: Industry Resume Matching
+category: ATS Optimization
 slug: resume-matching-legal-jobs
 keywords: legal resume matching, paralegal resume job description, associate attorney resume, law firm resume keywords, legal job description match
-image: public/blog-images/resume-matching-legal-jobs.png
+image: public/blog-images/resume-matching-legal-jobs.webp
 ---
 
 Legal hiring is unusually precise about language. A [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) for a litigation paralegal and one for a corporate paralegal can look similar at a glance, but the practice-area terminology, required software, and even the phrasing of responsibilities differ enough that a mismatched resume gets filtered out fast, whether by an [ATS](https://thetailorcv.com/blog/ats-score-guide) or a hiring partner skimming a stack of applications.

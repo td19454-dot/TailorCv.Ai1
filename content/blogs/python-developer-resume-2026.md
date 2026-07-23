@@ -30,7 +30,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 One page for engineers with under 8 years of experience.
@@ -49,7 +49,7 @@ Python Developer with 5 years of experience building scalable web backends and d
 
 ### Example for Entry-Level Python Developer
 
-Python Developer with strong skills in FastAPI, Django, SQL, and pandas. Built 4 backend and automation [projects](https://thetailorcv.com/blog/projects-in-resume) including a REST API, a web scraper, and a data processing pipeline. Familiar with Docker, pytest, Git, and PostgreSQL. Seeking a junior Python developer role.
+Python Developer with strong skills in FastAPI, Django, SQL, and pandas. Built 4 backend and automation [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) including a REST API, a web scraper, and a data processing pipeline. Familiar with Docker, pytest, Git, and PostgreSQL. Seeking a junior Python developer role.
 
 ---
 
@@ -129,7 +129,7 @@ Python is used for web, data, ML, and automation. Make clear which kind of devel
 
 ### Mistake 2: No framework depth
 
-"Python" alone is not enough. Show depth in Django, FastAPI, or Flask with real [projects](https://thetailorcv.com/blog/projects-in-resume).
+"Python" alone is not enough. Show depth in Django, FastAPI, or Flask with real [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 
 ### Mistake 3: No scale or performance metrics
 

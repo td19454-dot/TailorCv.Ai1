@@ -3444,7 +3444,13 @@ html, body { overflow-x: hidden !important; }
 /* How-it-works replacement: alternating feature showcase */
 .feature-showcase-list {
     display: grid;
-    gap: 34px;
+    gap: 90px;
+}
+
+@media (max-width: 768px) {
+    .feature-showcase-list {
+        gap: 52px;
+    }
 }
 
 .feature-showcase-item {

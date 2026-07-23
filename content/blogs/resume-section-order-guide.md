@@ -29,7 +29,7 @@ keywords: resume section order, best resume order, resume format 2026, what sect
 3. Summary
 4. Skills
 5. Work experience
-6. [projects](https://thetailorcv.com/blog/projects-in-resume)
+6. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 7. Education
 8. Certifications
 
@@ -37,18 +37,18 @@ Work experience should usually come before education.
 
 ---
 
-## Best Order for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers)
+## Best Order for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
 
 1. Header
 2. Objective or headline
 3. Education
 4. Skills
-5. [projects](https://thetailorcv.com/blog/projects-in-resume)
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. Internship
 7. Certifications
 8. Achievements
 
-If your [projects](https://thetailorcv.com/blog/projects-in-resume) are stronger than coursework, move them higher.
+If your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are stronger than coursework, move them higher.
 
 ---
 
@@ -58,7 +58,7 @@ If your [projects](https://thetailorcv.com/blog/projects-in-resume) are stronger
 2. Target headline
 3. Transferable summary
 4. Relevant skills
-5. [projects](https://thetailorcv.com/blog/projects-in-resume) or certifications
+5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or certifications
 6. Work experience
 7. Education
 
@@ -73,7 +73,7 @@ Use standard section names:
 - Experience
 - Education
 - Skills
-- [projects](https://thetailorcv.com/blog/projects-in-resume)
+- [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Certifications
 
 Creative headings can confuse parsers.
@@ -184,7 +184,7 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/projects-in-resume); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 

@@ -145,7 +145,7 @@ Whatever the format, always come prepared with your own [questions to ask the in
 
 ## What If the Interview Doesn't Go Your Way?
 
-Even a well-structured STAR answer doesn't guarantee an offer — sometimes it comes down to fit or budget, not your delivery. If that happens, it's worth understanding [why you might be getting rejected](https://thetailorcv.com/blog/why-getting-rejected) and how to [handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) constructively, and always [follow up after the interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) regardless of how it felt in the room — a good follow-up has changed outcomes even after a shaky answer.
+Even a well-structured STAR answer doesn't guarantee an offer — sometimes it comes down to fit or budget, not your delivery. If that happens, it's worth understanding [why you might be getting rejected](https://thetailorcv.com/blog/how-to-handle-job-rejection) and how to [handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) constructively, and always [follow up after the interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) regardless of how it felt in the room — a good follow-up has changed outcomes even after a shaky answer.
 
 ---
 

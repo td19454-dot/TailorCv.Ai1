@@ -4,7 +4,7 @@ description: Build an interview story bank with STAR examples for leadership, co
 date: 2026-07-07
 author: TailorCV Team
 tags: [Interview Prep, STAR Method, Behavioral Interview, Career Tips, Mock Interview]
-category: Interview Prep
+category: Interview Preparation
 image: public/blog-images/interview-story-bank-star-method.webp
 slug: interview-story-bank-star-method
 keywords: interview story bank, STAR method examples, behavioral interview stories, interview preparation template
@@ -173,7 +173,7 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/projects-in-resume); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 

@@ -4,8 +4,8 @@ description: Whether recruiters and ATS systems can detect an AI-written resume,
 date: 2026-07-08
 author: TailorCV Team
 tags: [AI Written Resume, ATS Detection, Resume Writing, AI Resume Tools, Recruiter Insights]
-category: AI & Resume Trends
-image: public/blog-images/can-recruiters-tell-if-resume-was-written-by-ai.png
+category: Resume Writing
+image: public/blog-images/can-recruiters-tell-if-resume-was-written-by-ai.webp
 slug: can-recruiters-tell-if-resume-was-written-by-ai
 keywords: can recruiters tell if resume is ai written, ai detection resume, does ats detect ai resume, chatgpt resume detection
 ---

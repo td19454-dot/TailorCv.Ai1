@@ -7,7 +7,7 @@ tags: [Job Search Strategy, Job Applications, Job Search Tips, Career Advice, Jo
 category: Job Search
 slug: how-many-jobs-should-you-apply-to-per-day
 keywords: how many jobs should i apply to per day, how many jobs to apply for per week, job application numbers, job search strategy 2026
-image: public/blog-images/how-many-jobs-should-you-apply-to-per-day.png
+image: public/blog-images/how-many-jobs-should-you-apply-to-per-day.webp
 ---
 
 There's no universal magic number, but the range most experienced job seekers and recruiters converge on is somewhere between 3 and 8 genuinely tailored applications per day, not 50 mass-submitted ones. The question "how many jobs should I apply to" is really two questions people conflate: how many can you physically submit, and how many can you submit *well*. Before you scale up your daily count, it's worth checking whether your current resume is even passing automated screening with the [free ATS score checker](https://www.thetailorcv.com/solutions), because a low score means every extra application just compounds the same problem instead of fixing it.
@@ -104,7 +104,7 @@ Your target number isn't fixed for the whole search - there are legitimate signa
 - You've been searching for 3-4 weeks with a genuinely tailored process and are getting some interviews, but need a larger pipeline to convert more offers
 - Your timeline has become more urgent - a lease ending, savings running low, a hard deadline from a visa or relocation situation
 - You've built enough efficiency in your process (per the systems above) that more applications no longer means less tailoring per application
-- You're targeting a high-volume field where more open roles exist and lighter tailoring is genuinely appropriate, as covered in [resume for candidates with no experience](https://thetailorcv.com/blog/resume-with-no-experience)
+- You're targeting a high-volume field where more open roles exist and lighter tailoring is genuinely appropriate, as covered in [resume for candidates with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 
 **Reasons to slow down and diagnose instead:**
 

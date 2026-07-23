@@ -4,10 +4,10 @@ description: Learn how to match your resume to non-profit and NGO job descriptio
 date: 2026-06-21
 author: TailorCV Team
 tags: [Non-Profit Resume, NGO Resume, Resume Matching, Job Description, Fundraising]
-category: Industry Resume Matching
+category: ATS Optimization
 slug: resume-matching-nonprofit-ngo
 keywords: non-profit resume matching, ngo job description resume, fundraising resume keywords, grant writing resume, program manager nonprofit resume
-image: public/blog-images/resume-matching-nonprofit-ngo.png
+image: public/blog-images/resume-matching-nonprofit-ngo.webp
 ---
 
 Non-profit and NGO [job descriptions](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) read differently than corporate ones. They emphasize mission alignment, impact metrics, and funding relationships alongside standard operational skills. A resume built for the private sector, heavy on revenue and profit language, often misses the mark here, even when the underlying experience transfers well.

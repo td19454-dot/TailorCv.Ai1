@@ -18,8 +18,8 @@
     <title>TailorCV - Everything You Need to Get Hired</title>
     <meta name="description"
         content="Check your ATS score, optimize your resume with AI, and practice mock interviews — all in one place. Used by 6800+ job seekers. Free to start.">
-    <link rel="stylesheet" href="/static/style3.css">
-    <link rel="stylesheet" href="/static/header-footer.css?v=2">
+    <link rel="stylesheet" href="/static/style3.css?v=2">
+    <link rel="stylesheet" href="/static/header-footer.css?v=8">
     {% include "_seo_head.html" %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,6 +246,15 @@
             line-height: 1.1;
         }
 
+        /* Career Move gradient accent for the last word of every section header */
+        .section-title .st-hl,
+        .section-title .resources-accent {
+            background: linear-gradient(90deg, #5b8cff, #8a8cff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
         .section-header .section-subtitle {
             font-size: 15px;
             color: var(--text-sub);
@@ -448,9 +457,103 @@
     <!-- Navigation -->
     {% include "_nav.html" %}
 
-    <!-- Spacer: receives `header.navbar + *{padding-top:100px}` to clear the fixed nav
-         (previously the trust-banner did this; it was removed). -->
-    <div class="nav-clear-spacer" aria-hidden="true"></div>
+    <!-- Chrome extension promo bar. It sits directly after </header> and
+         provides its OWN clearance for the fixed navbar, so its top edge meets
+         the nav's bottom with no gap. The old empty .nav-clear-spacer div was
+         removed because competing clearance rules on it (72px vs 88px vs 100px)
+         left a dark gap under the nav. See the header.navbar + .ext-promo-bar
+         rule below for the clearance. -->
+    <div class="ext-promo-bar">
+        <div class="ext-promo-inner">
+            <span class="ext-promo-text">
+                <span class="ext-promo-chip">New</span>
+                <span>Tailor your resume on <b>any job posting</b> &mdash; without leaving the page.</span>
+            </span>
+            <a href="/extension" class="ext-promo-btn" id="home_promo_bar_extension">
+                <span aria-hidden="true">&#129513;</span> Add to Chrome &mdash; Free
+            </a>
+        </div>
+    </div>
+    <style>
+        .ext-promo-bar {
+            background: #ffffff;
+            border-bottom: 1px solid #e6e9f2;
+            width: 100%;
+        }
+        .ext-promo-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .ext-promo-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+            color: #1a2340;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        .ext-promo-chip {
+            flex: none;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            color: #4a6aff;
+            background: #eef1ff;
+            border: 1px solid #dbe1ff;
+            border-radius: 999px;
+            padding: 3px 9px;
+        }
+        .ext-promo-text b { font-weight: 700; color: #0e1633; }
+        .ext-promo-btn {
+            flex: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #4a6aff;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            transition: background .15s ease, transform .15s ease;
+            white-space: nowrap;
+        }
+        .ext-promo-btn:hover { background: #3a56e0; transform: translateY(-1px); }
+        .ext-promo-btn:focus-visible { outline: 3px solid #b9c4ff; outline-offset: 2px; }
+        @media (max-width: 640px) {
+            .ext-promo-inner { padding: 10px 16px; gap: 10px; }
+            .ext-promo-text { font-size: 13.5px; }
+            .ext-promo-btn { padding: 8px 15px; font-size: 13px; }
+        }
+
+        /* Clearance for the fixed navbar, owned by the bar. Measured with a
+           real browser: the nav is fixed at 72px on desktop and 100px on
+           mobile (it never leaves position:fixed). There is also a constant
+           26px anonymous line-box before the bar (whitespace text nodes at the
+           top of <body>) — invisible on the original dark page, but it shows as
+           a dark strip under the white bar. So the bar's top = 26 + margin-top;
+           to land it exactly on the nav's bottom: desktop 26+46=72, mobile
+           26+74=100. The selector (0,2,1) outranks the competing
+           header.navbar + * clearance rules (0,1,1). Verified gap = 0 across
+           widths with Playwright. */
+        header.navbar + .ext-promo-bar {
+            margin-top: 46px !important;
+            margin-bottom: 22px !important;
+            padding-top: 0 !important;
+        }
+        @media (max-width: 768px) {
+            header.navbar + .ext-promo-bar { margin-top: 74px !important; }
+        }
+    </style>
 
 
     <style>
@@ -663,7 +766,7 @@
                         <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Mock Interviews &amp; More</li>
                     </ul>
                     <div class="hero-cta">
-                        <a href="/solutions" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
+                        <a href="/optimize" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
                             ><span class="cta-label-full">Optimize My Resume for Free</span><span class="cta-label-short">Optimize for Free</span></a>
                         <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span><span class="hero-cta-meta-text">Takes 2 minutes &bull; No credit card needed &bull; Free to start</span></p>
                     </div>
@@ -1089,7 +1192,7 @@
     <section class="logo-marquee-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Our users got hired at</h2>
+                <h2 class="section-title">Our users have been <span class="marquee-hl">hired at</span></h2>
             </div>
             <div class="marquee-wrapper">
                 <div class="marquee-container">
@@ -1105,17 +1208,22 @@
         /* Logo Marquee Styles */
         .logo-marquee-section {
             width: 100%;
-            padding: 72px 0;
+            padding: 26px 0;
             position: relative;
             z-index: 1;
         }
 
         .logo-marquee-section .section-header {
-            margin-bottom: 48px;
+            margin-bottom: 18px;
         }
 
         .logo-marquee-section .section-title {
-            font-size: clamp(38px, 4vw, 62px);
+            font-size: clamp(38px, 5.2vw, 62px);
+            color: #ffffff;
+        }
+
+        .logo-marquee-section .section-title .marquee-hl {
+            color: #4a6aff;
         }
 
         .marquee-wrapper {
@@ -1171,7 +1279,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 140px;
+            height: 96px;
             padding: 0 60px;
             flex-shrink: 0;
             border-right: 1px solid rgba(255, 255, 255, 0.08);
@@ -1189,7 +1297,7 @@
         }
 
         .logo-item img {
-            height: 100px;
+            height: 64px;
             width: auto;
             object-fit: contain;
             max-width: 280px;
@@ -1309,7 +1417,7 @@
     <section id="features" class="features">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">From Job Search Stress to Interview Momentum</h2>
+                <h2 class="section-title">From Job Search Stress to Interview <span class="st-hl">Momentum</span></h2>
                 <p class="section-subtitle">See how TailorCV transforms the way you apply.</p>
             </div>
             <div class="career-compare">
@@ -1366,23 +1474,136 @@
     <section class="how-it-works">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Powerful AI Features, Built for Job Seekers</h2>
+                <h2 class="section-title">Powerful AI Features, Built for Job <span class="st-hl">Seekers</span></h2>
                 <p class="section-subtitle">From ATS scoring to interview prep, everything works together in one flow.
                 </p>
             </div>
 
             <div class="feature-showcase-list">
+                <style>
+                    /* Light, clean visual containers (Careerflow style) — one soft colour per card */
+                    .feature-showcase-visual.fv-light {
+                        border: 1px solid rgba(255, 255, 255, 0.65) !important;
+                        box-shadow: 0 22px 55px rgba(8, 24, 55, 0.28) !important;
+                        padding: 30px !important;
+                    }
+                    .fv-green  { background: linear-gradient(150deg, #e3f5ea 0%, #eaf3ff 100%) !important; }
+                    .fv-blue   { background: linear-gradient(150deg, #e4eefc 0%, #eef5ff 100%) !important; }
+                    .fv-violet { background: linear-gradient(150deg, #ece6fb 0%, #f4efff 100%) !important; }
+                    .fv-amber  { background: linear-gradient(150deg, #fdf0df 0%, #fff6ec 100%) !important; }
+                    .fv-rose   { background: linear-gradient(150deg, #fce6ef 0%, #fff0f6 100%) !important; }
+
+                    /* Smaller, lighter card headings + a little inner spacing in both halves */
+                    /* Hierarchy like the reference: small kicker (with icon) → big colourful
+                       title → smaller description. */
+                    .how-it-works .feature-showcase-kicker {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 9px;
+                        font-size: 14px !important;
+                    }
+                    .how-it-works .feature-showcase-kicker svg {
+                        width: 18px; height: 18px; flex: 0 0 18px;
+                    }
+                    .how-it-works .feature-showcase-title {
+                        font-size: clamp(28px, 2.9vw, 42px) !important;
+                        font-weight: 700 !important;
+                        line-height: 1.15;
+                    }
+                    .how-it-works .feature-showcase-title .st-hl {
+                        background: linear-gradient(90deg, #5b8cff, #8a8cff) !important;
+                        -webkit-background-clip: text !important;
+                        background-clip: text !important;
+                        color: transparent !important;
+                    }
+                    .how-it-works .feature-showcase-text {
+                        font-size: clamp(16px, 1.25vw, 18px) !important;
+                    }
+                    .how-it-works .feature-showcase-copy { padding: 14px 12px !important; }
+                    .mock-card { padding: 24px !important; }
+
+                    /* Space between the image half and the text half of each card */
+                    .how-it-works .feature-showcase-item { column-gap: 64px !important; }
+
+                    /* Generous whitespace around and between the feature cards (Careerflow-style) */
+                    .how-it-works { padding-top: 10rem !important; padding-bottom: 12rem !important; }
+                    .how-it-works .section-header { margin-bottom: 120px !important; }
+                    .how-it-works .feature-showcase-list { gap: 150px !important; }
+
+                    .ext-visual { position: relative; }
+                    .ext-mock { background: #ffffff; min-height: 300px; box-shadow: 0 10px 30px rgba(20, 50, 90, 0.10); }
+                    .ext-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; margin-top: 4px; }
+                    .ext-col-2 { grid-column: 1 / -1; }
+                    .ext-field { display: flex; flex-direction: column; gap: 7px; }
+                    .ext-flabel { font-size: 12px; font-weight: 700; color: #5a6b86; }
+                    .ext-input { position: relative; height: 36px; border-radius: 9px; background: #f2fbf6;
+                        border: 1px solid #c6e6d3; display: flex; align-items: center; padding: 0 36px 0 12px; }
+                    .ext-input .ext-fill { height: 9px; border-radius: 999px;
+                        background: linear-gradient(90deg, #44c7ff, #307dff); }
+                    .ext-check { position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+                        width: 20px; height: 20px; border-radius: 50%; background: #1faf60; color: #fff;
+                        font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+                    .ext-success-badge { position: absolute; top: 6px; right: 6px; display: inline-flex;
+                        align-items: center; gap: 9px; background: #ffffff; border: 1px solid #d9e6f2;
+                        box-shadow: 0 12px 30px rgba(2, 8, 40, 0.30); border-radius: 13px; padding: 11px 15px;
+                        font-size: 13px; font-weight: 800; color: #10233f; }
+                    .ext-success-ic { width: 24px; height: 24px; border-radius: 50%; background: #1faf60; color: #fff;
+                        display: flex; align-items: center; justify-content: center; font-size: 13px; }
+                </style>
+                <article class="feature-showcase-item reverse">
+                    <div class="feature-showcase-copy">
+                        <p class="feature-showcase-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4a2 2 0 0 0-2 2v3.8h1.5a2.2 2.2 0 1 1 0 4.4H2V19a2 2 0 0 0 2 2h3.8v-1.5a2.2 2.2 0 1 1 4.4 0V21H17a2 2 0 0 0 2-2v-4h1.5a2.5 2.5 0 0 0 0-5z"/></svg> Chrome Extension</p>
+                        <h3 class="feature-showcase-title">Tailor and apply on <span class="st-hl">any job page</span></h3>
+                        <p class="feature-showcase-text">
+                            Add TailorCV to Chrome and tailor your resume, check your ATS score, and auto-fill
+                            applications right on the job posting &mdash; without ever switching tabs.
+                        </p>
+                        <a href="/signup" class="feature-showcase-btn" id="features_chrome_extension"><span aria-hidden="true">&#129513;</span>&nbsp; Add to Chrome &mdash; Free</a>
+                    </div>
+                    <div class="feature-showcase-visual ext-visual fv-light fv-green" aria-hidden="true">
+                        <div class="mock-card ext-mock">
+                            <p class="mock-title">Job Application</p>
+                            <div class="ext-grid">
+                                <div class="ext-field">
+                                    <span class="ext-flabel">First Name</span>
+                                    <div class="ext-input"><i class="ext-fill" style="width:72%"></i><span class="ext-check">&#10003;</span></div>
+                                </div>
+                                <div class="ext-field">
+                                    <span class="ext-flabel">Last Name</span>
+                                    <div class="ext-input"><i class="ext-fill" style="width:58%"></i><span class="ext-check">&#10003;</span></div>
+                                </div>
+                                <div class="ext-field">
+                                    <span class="ext-flabel">Email</span>
+                                    <div class="ext-input"><i class="ext-fill" style="width:86%"></i><span class="ext-check">&#10003;</span></div>
+                                </div>
+                                <div class="ext-field">
+                                    <span class="ext-flabel">Phone</span>
+                                    <div class="ext-input"><i class="ext-fill" style="width:54%"></i><span class="ext-check">&#10003;</span></div>
+                                </div>
+                                <div class="ext-field ext-col-2">
+                                    <span class="ext-flabel">Resume / CV</span>
+                                    <div class="ext-input"><i class="ext-fill" style="width:44%"></i><span class="ext-check">&#10003;</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ext-success-badge">
+                            <span class="ext-success-ic">&#10003;</span>
+                            <span>Auto-filled successfully</span>
+                        </div>
+                    </div>
+                </article>
+
                 <article class="feature-showcase-item">
                     <div class="feature-showcase-copy">
-                        <p class="feature-showcase-kicker">ATS Score Analyzer</p>
-                        <h3 class="feature-showcase-title">Know exactly why your resume gets rejected</h3>
+                        <p class="feature-showcase-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="7"/><rect x="12" y="7" width="3" height="11"/><rect x="17" y="4" width="3" height="14"/></svg> ATS Score Analyzer</p>
+                        <h3 class="feature-showcase-title">Know exactly why your resume <span class="st-hl">gets rejected</span></h3>
                         <p class="feature-showcase-text">
                             Upload your resume and get an instant ATS breakdown with keyword match, formatting issues,
                             and actionable fixes to boost shortlist chances.
                         </p>
-                        <a href="/solutions#ats-start" class="feature-showcase-btn" id="features_check_ats_score">Check ATS Score</a>
+                        <a href="/signup" class="feature-showcase-btn" id="features_check_ats_score">Check ATS Score</a>
                     </div>
-                    <div class="feature-showcase-visual tone-blue" aria-hidden="true">
+                    <div class="feature-showcase-visual fv-light fv-blue" aria-hidden="true">
                         <div class="mock-card">
                             <p class="mock-title">ATS Report</p>
                             <div class="mock-row"><span>Keyword Match</span><strong>84%</strong></div>
@@ -1397,15 +1618,15 @@
 
                 <article class="feature-showcase-item reverse">
                     <div class="feature-showcase-copy">
-                        <p class="feature-showcase-kicker" id="optimize-cta-nav">Optimize CV with AI</p>
-                        <h3 class="feature-showcase-title">Tailor every resume to the job in minutes</h3>
+                        <p class="feature-showcase-kicker" id="optimize-cta-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.9 4.8L18.7 9.7 13.9 11.6 12 16.4 10.1 11.6 5.3 9.7 10.1 7.8z"/><path d="M19 14.5l.5 1.5 1.5.5-1.5.5-.5 1.5-.5-1.5L17 16.5l1.5-.5z"/></svg> Optimize CV with AI</p>
+                        <h3 class="feature-showcase-title">Tailor every resume to the job <span class="st-hl">in minutes</span></h3>
                         <p class="feature-showcase-text">
                             Paste any job description and TailorCV rewrites bullets, upgrades wording, and aligns skills
                             so your resume matches what recruiters are searching for.
                         </p>
-                        <a href="/solutions" class="feature-showcase-btn" id="features_optimize_my_resume">Optimize My Resume</a>
+                        <a href="/signup" class="feature-showcase-btn" id="features_optimize_my_resume">Optimize My Resume</a>
                     </div>
-                    <div class="feature-showcase-visual tone-violet" aria-hidden="true">
+                    <div class="feature-showcase-visual fv-light fv-violet" aria-hidden="true">
                         <div class="mock-card">
                             <p class="mock-title">Generate Optimized CV</p>
                             <div class="mock-form-box">
@@ -1423,15 +1644,15 @@
 
                 <article class="feature-showcase-item">
                     <div class="feature-showcase-copy">
-                        <p class="feature-showcase-kicker">AI Mock Interview</p>
-                        <h3 class="feature-showcase-title">Practice real interview questions with feedback</h3>
+                        <p class="feature-showcase-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg> AI Mock Interview</p>
+                        <h3 class="feature-showcase-title">Practice real interview questions <span class="st-hl">with feedback</span></h3>
                         <p class="feature-showcase-text">
                             Run role-specific mock interviews, improve your answers with AI coaching, and build
                             confidence before the real interview.
                         </p>
-                        <a href="/mock-interview" class="feature-showcase-btn">Start Mock Interview</a>
+                        <a href="/signup" class="feature-showcase-btn">Start Mock Interview</a>
                     </div>
-                    <div class="feature-showcase-visual tone-green" aria-hidden="true">
+                    <div class="feature-showcase-visual fv-light fv-amber" aria-hidden="true">
                         <div class="mock-card">
                             <p class="mock-title">AI Mock Interview</p>
                             <div class="mock-form-box">
@@ -1449,15 +1670,15 @@
 
                 <article class="feature-showcase-item reverse">
                     <div class="feature-showcase-copy">
-                        <p class="feature-showcase-kicker">Portfolio Builder</p>
-                        <h3 class="feature-showcase-title">Turn your resume into a live portfolio website</h3>
+                        <p class="feature-showcase-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg> Portfolio Builder</p>
+                        <h3 class="feature-showcase-title">Turn your resume into a <span class="st-hl">live portfolio website</span></h3>
                         <p class="feature-showcase-text">
                             Pick a template, edit your details, and publish a shareable portfolio site in minutes &mdash;
                             no coding. Stand out with a personal link you can put on every application.
                         </p>
-                        <a href="/portfolio" class="feature-showcase-btn">Build My Portfolio</a>
+                        <a href="/signup" class="feature-showcase-btn">Build My Portfolio</a>
                     </div>
-                    <div class="feature-showcase-visual tone-purple" aria-hidden="true">
+                    <div class="feature-showcase-visual fv-light fv-rose" aria-hidden="true">
                         <div class="mock-card">
                             <div class="mock-browser-bar">
                                 <span class="mock-browser-dots"><i></i><i></i><i></i></span>
@@ -1544,7 +1765,7 @@
     <section class="ats-templates">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">ATS-Friendly Resume Templates</h2>
+                <h2 class="section-title">ATS-Friendly Resume <span class="st-hl">Templates</span></h2>
                 <p class="section-subtitle">Recruiter-ready, ATS-safe designs. Pick one and build or reformat your resume in minutes.</p>
             </div>
             <div class="ats-tmpl-grid">
@@ -1617,7 +1838,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="pf-tmpl-badge">NEW</span>
-                <h2 class="section-title">Portfolio Website Templates</h2>
+                <h2 class="section-title">Portfolio Website <span class="st-hl">Templates</span></h2>
                 <p class="section-subtitle">Turn your resume into a live, shareable portfolio website. Pick a design, edit, and publish in minutes &mdash; no coding.</p>
             </div>
             <div class="pf-tmpl-grid">
@@ -1690,7 +1911,7 @@
     <section class="testimonials-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">What People Say</h2>
+                <h2 class="section-title">What People <span class="st-hl">Say</span></h2>
                 <p class="section-subtitle">Real success stories from professionals who improved their resume and
                     interview flow.</p>
             </div>
@@ -1723,7 +1944,7 @@
     <section class="results-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Real Outcomes for Job Seekers</h2>
+                <h2 class="section-title">Real Outcomes for Job <span class="st-hl">Seekers</span></h2>
                 <p class="section-subtitle">More interviews, faster responses, and stronger applications.</p>
             </div>
 
@@ -1837,7 +2058,7 @@
         </style>
         <div class="container">
             <div class="section-header" style="margin-bottom: 48px;">
-                <h2 class="section-title">Built by Job Seekers, for Job Seekers</h2>
+                <h2 class="section-title">Built by Job Seekers, for Job <span class="st-hl">Seekers</span></h2>
                 <p class="section-subtitle">We didn't build TailorCV in a boardroom. We built it after going through the exact same frustration you're feeling right now.</p>
             </div>
             <div style="display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;">
@@ -2015,7 +2236,7 @@
     <section class="pricing-preview-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Simple, honest pricing</h2>
+                <h2 class="section-title">Simple, honest <span class="st-hl">pricing</span></h2>
                 <p class="section-subtitle">ATS scoring is free forever. Upgrade for unlimited AI power — cancel any time.</p>
             </div>
 
@@ -2092,7 +2313,7 @@
     <section class="faq-section" style="padding: 80px 0;">
         <div class="container">
             <div class="section-header" style="margin-bottom: 48px;">
-                <h2 class="section-title">Frequently Asked Questions</h2>
+                <h2 class="section-title">Frequently Asked <span class="st-hl">Questions</span></h2>
                 <p class="section-subtitle">Everything you need to know before getting started.</p>
             </div>
             <div style="max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">

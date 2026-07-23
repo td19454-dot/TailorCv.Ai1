@@ -5,14 +5,14 @@ date: 2026-07-08
 author: TailorCV Team
 tags: [Remote Job Cover Letter, Remote Work, Cover Letter Template, Remote Job Search, Work From Home]
 category: Cover Letters
-image: public/blog-images/cover-letter-for-remote-jobs.png
+image: public/blog-images/cover-letter-for-remote-jobs.webp
 slug: cover-letter-for-remote-jobs
 keywords: cover letter for remote jobs, remote job cover letter example, work from home cover letter, remote job application tips
 ---
 
 Remote hiring managers are screening for something office-based hiring often takes for granted: proof you can work independently, communicate clearly without face-to-face check-ins, and stay accountable with no one watching. A generic cover letter that never addresses "remote" specifically misses the entire point of the application.
 
-Start by making sure your resume already signals remote readiness - see [resume for remote developer jobs](https://thetailorcv.com/blog/resume-for-remote-developer-jobs) and [how to match your resume to a remote job description](https://thetailorcv.com/blog/how-to-match-resume-to-a-remote-job-description) - then draft your letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter).
+Start by making sure your resume already signals remote readiness - see [resume for remote developer jobs](https://thetailorcv.com/blog/resume-for-remote-developer-jobs) and [how to match your resume to a remote job description](https://thetailorcv.com/blog/remote-job-search-strategy-2026) - then draft your letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter).
 
 ## Key Takeaways
 
