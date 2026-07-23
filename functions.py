@@ -1202,25 +1202,112 @@ def inject_jd_hard_skills(data: dict, jd_string: str) -> dict:
     return data
 
 
+_SKILLS_SECTION_HEADER_RE = re.compile(
+    r'^\s*(?:[-•*]\s*)?(?:technical\s+skills|core\s+competenc(?:y|ies)|key\s+skills|'
+    r'skills?(?:\s*(?:&|and)\s*(?:abilities|expertise))?|technologies|'
+    r'tools\s*(?:&|and)?\s*technologies|areas\s+of\s+expertise|expertise)\s*:?\s*$',
+    re.IGNORECASE,
+)
+
+_EDUCATION_SECTION_HEADER_RE = re.compile(
+    r'^\s*(?:[-•*]\s*)?education(?:al\s+background)?\s*:?\s*$',
+    re.IGNORECASE,
+)
+
+_OTHER_SECTION_HEADER_RE = re.compile(
+    r'^\s*(?:[-•*]\s*)?(?:experience|work\s+experience|professional\s+experience|'
+    r'employment(?:\s+history)?|projects?|summary|profile|objective|certifications?|'
+    r'achievements?|awards?|publications?|extracurriculars?|activities|leadership|'
+    r'volunteer(?:ing)?|references?|interests?|hobbies)\s*:?\s*$',
+    re.IGNORECASE,
+)
+
+
+def _split_resume_skills_section(resume_text: str) -> tuple[str, str]:
+    """Best-effort split of a flat resume-text blob into a 'skills section' region
+    and an 'evidence' region (experience/projects/summary/etc — mirroring the
+    bullets text compute_skill_match_score_structured() builds from structured
+    JSON), via cheap section-header line detection. The education section is
+    dropped from both: a course name isn't evidence of a demonstrated skill.
+
+    Falls back to returning the whole text for both regions when no skills
+    header is found, so a resume we can't structurally split scores the same
+    as before rather than being penalized for an unusual layout."""
+    lines = str(resume_text or "").splitlines()
+    skills_lines: list[str] = []
+    evidence_lines: list[str] = []
+    bucket = "evidence"
+    saw_skills_header = False
+    for line in lines:
+        if _SKILLS_SECTION_HEADER_RE.match(line):
+            bucket = "skills"
+            saw_skills_header = True
+            continue
+        if _EDUCATION_SECTION_HEADER_RE.match(line):
+            bucket = "education"
+            continue
+        if _OTHER_SECTION_HEADER_RE.match(line):
+            bucket = "evidence"
+            continue
+        if bucket == "skills":
+            skills_lines.append(line)
+        elif bucket == "evidence":
+            evidence_lines.append(line)
+        # "education" bucket lines are dropped entirely
+
+    if not saw_skills_header:
+        whole = str(resume_text or "")
+        return whole, whole
+
+    return "\n".join(skills_lines), "\n".join(evidence_lines)
+
+
 def compute_skill_match_score(resume_text: str, jd_string: str) -> dict:
     """Deterministic, LLM-free skill-match score: what fraction of the JD's
     identifiable hard skills already appear in the resume. Reuses the same
     keyword extraction/matching primitives the tailoring pipeline already
     relies on (see inject_jd_hard_skills above), so this is fast — regex-only,
     no network/LLM call — and reproducible: identical inputs always produce
-    identical output."""
+    identical output.
+
+    Splits the flat text into a skills-section region and an evidence region
+    (see _split_resume_skills_section) and averages the two, the same way
+    compute_skill_match_score_structured() does for a tailored resume. This
+    keeps the before/after scores on the same scale: without it, the after
+    score's stricter bullets requirement makes tailoring look like it hurts
+    skill match even when nothing actually regressed."""
     jd_skills = _extract_hard_skills_from_jd(jd_string)
-    text = str(resume_text or "")
+    total = len(jd_skills)
+    if not total:
+        return {"score": None, "matched": [], "missing": [], "total_skills": 0}
+
+    skills_text, evidence_text = _split_resume_skills_section(resume_text)
 
     matched: list[str] = []
     missing: list[str] = []
+    skills_hits = 0
+    evidence_hits = 0
     for skill in jd_skills:
-        (matched if _contains_skill(text, skill) else missing).append(skill)
+        in_skills = _contains_skill(skills_text, skill)
+        in_evidence = _contains_skill(evidence_text, skill)
+        if in_skills:
+            skills_hits += 1
+        if in_evidence:
+            evidence_hits += 1
+        (matched if (in_skills or in_evidence) else missing).append(skill)
 
-    total = len(jd_skills)
-    score = round(len(matched) / total * 100) if total else None
+    skills_fraction = skills_hits / total
+    evidence_fraction = evidence_hits / total
+    score = round((skills_fraction + evidence_fraction) / 2 * 100)
 
-    return {"score": score, "matched": matched, "missing": missing, "total_skills": total}
+    return {
+        "score": score,
+        "matched": matched,
+        "missing": missing,
+        "total_skills": total,
+        "skills_section_pct": round(skills_fraction * 100),
+        "bullets_pct": round(evidence_fraction * 100),
+    }
 
 
 def compute_skill_match_score_structured(parsed: dict, jd_string: str) -> dict:

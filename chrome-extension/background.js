@@ -1,5 +1,5 @@
 // TailorCV — AI Resume Optimizer — Background Service Worker
-const BASE_URL = 'http://127.0.0.1:8005';
+const BASE_URL = 'https://thetailorcv.com';
 
 async function getCsrfToken() {
   // Make sure a csrftoken cookie exists (the server sets one on every response),
