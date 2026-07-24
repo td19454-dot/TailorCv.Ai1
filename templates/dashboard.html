@@ -1705,12 +1705,93 @@ Nice to have:
             ]},
         ];
 
+        function buildLeveledJD(base, level) {
+            if (!base) return base;
+            const nl = base.indexOf("\n");
+            let title = nl === -1 ? base : base.slice(0, nl);
+            let rest = nl === -1 ? "" : base.slice(nl);
+
+            if (!/^\s*(Junior|Senior)\b/i.test(title)) {
+                title = (level === "junior" ? "Junior " : "Senior ") + title;
+            }
+
+            rest = rest.replace(/(\d+)\+(\s*years?)/gi, function (m, num) {
+                const n = parseInt(num, 10);
+                if (level === "senior") {
+                    return Math.min(n + 3, 12) + "+ years";
+                }
+                const lo = Math.max(n - 2, 0);
+                return lo === 0 ? "0-1 years" : (lo + "+ years");
+            });
+
+            const respBullet = level === "senior"
+                ? "- Mentor and provide technical guidance to junior team members"
+                : "- Work closely with senior team members and apply feedback to grow your skills quickly";
+            const reqBullet = level === "senior"
+                ? "- Demonstrated experience owning projects end-to-end and influencing technical decisions"
+                : "- Eagerness to learn and grow — recent graduates and career-changers are welcome to apply";
+
+            if (level !== "senior" || !/mentor/i.test(rest)) {
+                rest = /\n\nRequirements:/.test(rest)
+                    ? rest.replace(/\n\nRequirements:/, "\n" + respBullet + "\n\nRequirements:")
+                    : rest + "\n" + respBullet;
+            }
+
+            rest = /\n\nNice to have:/.test(rest)
+                ? rest.replace(/\n\nNice to have:/, "\n" + reqBullet + "\n\nNice to have:")
+                : rest + "\n" + reqBullet;
+
+            return title + rest;
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
             const wrapper = document.getElementById("jd-picker-wrapper");
             const textarea = document.getElementById("ns-jd");
             if (!wrapper || !textarea) return;
 
             let currentValue = "";
+            let currentLevel = "senior";
+
+            // Build seniority toggle
+            wrapper.style.display = "flex";
+            wrapper.style.alignItems = "center";
+            wrapper.style.gap = "8px";
+
+            const levelToggle = document.createElement("div");
+            Object.assign(levelToggle.style, {
+                display: "flex", alignItems: "center", gap: "2px", flexShrink: "0",
+                background: "rgba(3,17,41,0.95)", border: "1.5px solid rgba(74,222,128,0.45)",
+                borderRadius: "10px", padding: "3px",
+            });
+            const levelBtns = {};
+            ["junior", "senior"].forEach(function (lvKey) {
+                const b = document.createElement("button");
+                b.type = "button";
+                b.textContent = lvKey === "junior" ? "Junior" : "Senior";
+                Object.assign(b.style, {
+                    border: "none", borderRadius: "7px", padding: "5px 11px",
+                    fontSize: "12px", fontWeight: "700", cursor: "pointer",
+                    background: lvKey === currentLevel ? "rgba(74,222,128,0.18)" : "transparent",
+                    color: lvKey === currentLevel ? "#4ade80" : "#8ca3c9",
+                    transition: "background .15s,color .15s",
+                });
+                b.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    if (currentLevel === lvKey) return;
+                    currentLevel = lvKey;
+                    Object.keys(levelBtns).forEach(function (k) {
+                        levelBtns[k].style.background = k === currentLevel ? "rgba(74,222,128,0.18)" : "transparent";
+                        levelBtns[k].style.color = k === currentLevel ? "#4ade80" : "#8ca3c9";
+                    });
+                    if (currentValue) {
+                        textarea.value = buildLeveledJD(NS_JDS[currentValue], currentLevel);
+                        textarea.dispatchEvent(new Event("input", { bubbles: true }));
+                    }
+                });
+                levelBtns[lvKey] = b;
+                levelToggle.appendChild(b);
+            });
+            wrapper.appendChild(levelToggle);
 
             // Build button
             const btn = document.createElement("button");
@@ -1790,7 +1871,7 @@ Nice to have:
                         opt.style.background = "rgba(74,222,128,0.12)";
                         opt.style.color = cat.color;
                         opt.style.fontWeight = "700";
-                        textarea.value = jd;
+                        textarea.value = buildLeveledJD(jd, currentLevel);
                         textarea.dispatchEvent(new Event("input", { bubbles: true }));
                         closePanel();
                     });
@@ -1824,7 +1905,7 @@ Nice to have:
 
             // Reset when user edits textarea manually
             textarea.addEventListener("input", function () {
-                if (currentValue && textarea.value !== NS_JDS[currentValue]) {
+                if (currentValue && textarea.value !== buildLeveledJD(NS_JDS[currentValue], currentLevel)) {
                     const prev = panel.querySelector(`.jd-opt[data-value="${currentValue}"]`);
                     if (prev) { prev.style.background = ""; prev.style.color = "#c8d7fb"; prev.style.fontWeight = ""; }
                     currentValue = "";
