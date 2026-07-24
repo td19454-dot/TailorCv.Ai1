@@ -1973,9 +1973,13 @@ EDUCATION MATCH RULES
 
 Pass if the resume satisfies educational requirements explicitly stated in the job description.
 
-Fail otherwise.
+If the job description does NOT explicitly state a degree, major, or educational requirement, this check MUST pass automatically — do not infer, assume, or guess an educational requirement that is not written in the job description, and do not fail this based on generic assumptions about what employers "often" or "typically" require.
 
-Explain exactly which requirement is missing.
+An in-progress / currently pursuing degree counts as satisfying a stated requirement for that degree level. Never treat an in-progress degree as a weakness or partial failure — only fail if the job description explicitly requires a degree that is completed/conferred (e.g. "must have completed a Bachelor's degree") and the resume shows no evidence of one in progress or completed.
+
+Fail otherwise, and only for a requirement that is explicitly present in the job description text.
+
+Explain exactly which requirement, quoted or closely paraphrased from the job description, is missing.
 
 ==================================================
 EXPERIENCE MATCH RULES
@@ -2727,9 +2731,13 @@ EDUCATION MATCH RULES
 
 Pass if the resume satisfies educational requirements explicitly stated in the job description.
 
-Fail otherwise.
+If the job description does NOT explicitly state a degree, major, or educational requirement, this check MUST pass automatically — do not infer, assume, or guess an educational requirement that is not written in the job description, and do not fail this based on generic assumptions about what employers "often" or "typically" require.
 
-Explain exactly which requirement is missing.
+An in-progress / currently pursuing degree counts as satisfying a stated requirement for that degree level. Never treat an in-progress degree as a weakness or partial failure — only fail if the job description explicitly requires a degree that is completed/conferred (e.g. "must have completed a Bachelor's degree") and the resume shows no evidence of one in progress or completed.
+
+Fail otherwise, and only for a requirement that is explicitly present in the job description text.
+
+Explain exactly which requirement, quoted or closely paraphrased from the job description, is missing.
 
 ==================================================
 EXPERIENCE MATCH RULES
