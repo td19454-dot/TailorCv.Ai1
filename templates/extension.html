@@ -129,6 +129,10 @@
         .ext-boards-note b { color: #e8edf6; }
         .ext-links { display: flex; gap: 12px; flex-wrap: wrap; }
         @media (max-width: 620px) { .ext-links .solx-btn { width: 100%; } }
+        @media (max-width: 480px) {
+            .ext-manage-row { flex-direction: column; align-items: stretch; }
+            .ext-manage-row button { width: 100%; margin-left: 0; margin-right: 0; box-sizing: border-box; }
+        }
 
         /* "Open any job posting" section: copy on the left, a small floating
            preview of the job tracker's saved cards on the right. */
