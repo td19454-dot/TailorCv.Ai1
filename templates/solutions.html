@@ -618,6 +618,25 @@
                 width: 100%;
                 justify-content: flex-start;
             }
+            .jd-sample-row {
+                flex-wrap: wrap;
+                width: 100%;
+                gap: 8px !important;
+            }
+            #jd-picker-wrapper {
+                min-width: 0 !important;
+                width: 100%;
+                flex-basis: 100%;
+            }
+            #jd-picker-btn {
+                min-width: 0 !important;
+            }
+            #jd-picker-panel {
+                left: 0 !important;
+                right: 0 !important;
+                min-width: 0 !important;
+                width: 100% !important;
+            }
         }
     </style>
 </head>
@@ -692,7 +711,7 @@
                                 <div class="form-group">
                                     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:0.55rem;">
                                         <label for="job-description" class="cv2-label" style="margin-bottom:0;">Job Description</label>
-                                        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+                                        <div class="jd-sample-row" style="display:flex;align-items:center;gap:10px;flex-shrink:0;max-width:100%;">
                                             <span style="color:#7b48f0;font-size:15px;font-weight:700;white-space:nowrap;letter-spacing:0.01em;">Use sample JD:</span>
                                             <div id="jd-picker-wrapper" style="position:relative;min-width:210px;"></div>
                                         </div>
