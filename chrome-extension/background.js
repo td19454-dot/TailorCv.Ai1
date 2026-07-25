@@ -29,6 +29,23 @@ function arrayBufferToBase64(buffer) {
 chrome.action.onClicked.addListener(async (tab) => {
   if (!tab || !tab.id) return;
 
+  // chrome.permissions is not exposed to content scripts at all, and a
+  // request() relayed through this service worker via runtime messaging does
+  // not reliably count as user-gesture-triggered — Chrome silently denies it
+  // with no visible prompt (see requestBroadPermission() in content.js,
+  // where a "please click the toolbar icon" flag is set instead of calling
+  // request() directly). A native toolbar click IS a trusted gesture, so
+  // this is where the actual prompt fires.
+  const { tcv_permission_pending } = await chrome.storage.local.get('tcv_permission_pending');
+  if (tcv_permission_pending) {
+    try {
+      await chrome.permissions.request({ origins: ['*://*/*'] });
+    } catch (e) {
+      console.warn('TailorCV: permission request failed —', e.message);
+    }
+    await chrome.storage.local.remove('tcv_permission_pending');
+  }
+
   try {
     await chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' });
     return;   // content script was already running — toggled it
@@ -43,6 +60,7 @@ chrome.action.onClicked.addListener(async (tab) => {
     });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['analytics.bundle.js'] });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['styles.bundle.js'] });
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['autofill.js'] });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content.js'] });
   } catch (e) {
     // chrome:// pages, the Web Store and PDF viewers can never be injected into.
@@ -244,15 +262,89 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
           const buffer = await res.arrayBuffer();
           // Service workers have no DOM (no URL.createObjectURL), so build a data URL.
-          const dataUrl = `data:application/pdf;base64,${arrayBufferToBase64(buffer)}`;
+          const pdfBase64 = arrayBufferToBase64(buffer);
           await chrome.downloads.download({
-            url: dataUrl,
+            url: `data:application/pdf;base64,${pdfBase64}`,
             filename: 'tailored_resume.pdf',
             saveAs: false,
           });
-          sendResponse({ data: { success: true, afterScore } });
+          // pdfBase64 rides along so the apply-autofill flow can drop the exact
+          // same PDF into the ATS's resume upload field via a DataTransfer, with
+          // no second request — existing callers that only read afterScore are
+          // unaffected by the extra field.
+          sendResponse({ data: { success: true, afterScore, pdfBase64 } });
         } catch (e) {
           sendResponse({ error: e.message });
+        }
+
+      } else if (msg.type === 'GET_APPLY_PROFILE') {
+        const res = await fetch(`${BASE_URL}/api/extension/apply-profile`, { credentials: 'include' });
+        if (!res.ok) {
+          sendResponse({ error: 'Not logged in to TailorCV.' });
+          return;
+        }
+        sendResponse({ data: await res.json() });
+
+      } else if (msg.type === 'SAVE_APPLY_PROFILE') {
+        try {
+          const csrfToken = await getCsrfToken();
+          const res = await fetch(`${BASE_URL}/api/extension/apply-profile`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrfToken,
+              'X-Requested-With': 'XMLHttpRequest',
+            },
+            body: JSON.stringify(msg.profile || {}),
+          });
+          if (!res.ok) {
+            sendResponse({ error: 'Could not save your application details.' });
+            return;
+          }
+          sendResponse({ data: await res.json() });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
+      } else if (msg.type === 'GET_APPLY_ANSWERS') {
+        try {
+          const res = await fetch(`${BASE_URL}/api/extension/apply-answers`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(msg.payload),
+          });
+          if (!res.ok) {
+            let detail = 'Could not generate answers for this form.';
+            let code = null;
+            try {
+              const data = await res.json();
+              if (res.status === 401) {
+                detail = 'Not logged in to TailorCV. Open the TailorCV panel to log in.';
+                code = 'not_logged_in';
+              } else if (res.status === 404) {
+                detail = 'No base resume set. Set one up at thetailorcv.com/extension.';
+                code = 'no_base_resume';
+              } else if (data.detail) {
+                detail = data.detail;
+              }
+            } catch (_) { /* ignore parse errors, use default detail */ }
+            sendResponse({ error: detail, code });
+            return;
+          }
+          sendResponse({ data: await res.json() });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
+      } else if (msg.type === 'CHECK_BROAD_PERMISSION') {
+        // Read-only — no gesture requirement, safe to relay (unlike request()).
+        try {
+          const granted = await chrome.permissions.contains({ origins: ['*://*/*'] });
+          sendResponse({ granted });
+        } catch (e) {
+          sendResponse({ granted: false, error: e.message });
         }
 
       } else {
@@ -263,4 +355,33 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     }
   })();
   return true; // keep channel open for async response
+});
+
+// Picks up a pending apply-chain (see autofill.js's startChain/tryResumeChain)
+// on whatever tab it lands on next — a LinkedIn Apply click commonly opens a
+// new tab, and a click-through interstitial navigates the current one, so
+// this listens on every tab rather than tracking a specific tab id. Content
+// scripts only auto-inject via manifest declarations on the 4 named ATS
+// hosts; everywhere else (an arbitrary company careers page) needs this
+// explicit injection, gated on actually holding permission for that host —
+// wrapped in try/catch since injection legitimately fails for chrome://
+// pages, the Web Store, PDF viewers, and any host we were never granted.
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+  if (changeInfo.status !== 'complete' || !tab.url || !/^https?:/i.test(tab.url)) return;
+  let hostname;
+  try { hostname = new URL(tab.url).hostname; } catch (_) { return; }
+  if (/(^|\.)linkedin\.com$/i.test(hostname)) return; // chain resume never re-enters linkedin.com
+
+  const stored = await chrome.storage.local.get('tcv_apply_chain');
+  if (!stored.tcv_apply_chain) return;
+
+  try {
+    await chrome.scripting.executeScript({ target: { tabId }, files: ['analytics.bundle.js'] });
+    await chrome.scripting.executeScript({ target: { tabId }, files: ['styles.bundle.js'] });
+    await chrome.scripting.executeScript({ target: { tabId }, files: ['autofill.js'] });
+    await chrome.scripting.executeScript({ target: { tabId }, files: ['content.js'] });
+  } catch (_) {
+    // No permission for this host, or a page we can't inject into — the chain
+    // will time out via its own TTL/hop cap in autofill.js rather than hang.
+  }
 });

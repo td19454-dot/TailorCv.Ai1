@@ -61,6 +61,7 @@
       "js": [
         "analytics.bundle.js",
         "styles.bundle.js",
+        "autofill.js",
         "content.js"
       ],
       "run_at": "document_idle"

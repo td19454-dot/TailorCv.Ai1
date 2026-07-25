@@ -139,6 +139,8 @@ async def csrf_middleware(request: Request, call_next):
         "/api/extension/tailor-resume",
         "/api/extension/cover-letter",
         "/api/extension/skill-match",
+        "/api/extension/apply-profile",
+        "/api/extension/apply-answers",
         "/api/billing/razorpay/webhook",
         "/api/billing/polar/webhook",
     }
@@ -484,6 +486,8 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN base_cover_template VARCHAR(20)" if is_pg else "ADD COLUMN base_cover_template TEXT")
     if "base_resume_text" not in cols:
         to_add.append("ADD COLUMN base_resume_text TEXT")
+    if "application_profile_json" not in cols:
+        to_add.append("ADD COLUMN application_profile_json TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -5696,6 +5700,102 @@ async def extension_profile(request: Request):
     return JSONResponse(profile)
 
 
+# Whitelisted keys + simple type/length caps for the application-profile JSON blob.
+# Anything outside this shape is dropped rather than stored — the field is filled
+# from a form the extension controls, but the endpoint itself must not trust an
+# arbitrary JSON body blindly (still just a POST body from the browser).
+APPLY_PROFILE_STRING_FIELDS = {
+    "phone": 40, "city": 100, "state": 100, "country": 100,
+    "linkedin_url": 300, "portfolio_url": 300, "github_url": 300,
+    "notice_period": 100, "desired_salary": 100,
+    "gender": 60, "veteran_status": 60, "disability_status": 60,
+}
+APPLY_PROFILE_BOOL_FIELDS = {"work_authorized", "needs_sponsorship", "willing_to_relocate"}
+APPLY_PROFILE_EDUCATION_FIELDS = {"degree": 150, "field_of_study": 150, "school": 200, "start": 20, "end": 20, "gpa": 20}
+MAX_EDUCATION_ENTRIES = 5
+
+
+def _sanitize_apply_profile(raw: dict) -> dict:
+    """Keep only known fields, coerced to the expected type and length-capped.
+    Booleans are tri-state (True/False/None) since "unknown" must stay
+    distinguishable from "no" for legally sensitive fields like sponsorship."""
+    if not isinstance(raw, dict):
+        return {}
+    out: dict = {}
+    for key, max_len in APPLY_PROFILE_STRING_FIELDS.items():
+        val = raw.get(key)
+        if val is None:
+            continue
+        out[key] = str(val).strip()[:max_len]
+    for key in APPLY_PROFILE_BOOL_FIELDS:
+        val = raw.get(key)
+        out[key] = bool(val) if isinstance(val, bool) else None
+    education = raw.get("education")
+    cleaned_edu = []
+    if isinstance(education, list):
+        for entry in education[:MAX_EDUCATION_ENTRIES]:
+            if not isinstance(entry, dict):
+                continue
+            cleaned_entry = {
+                k: str(entry.get(k) or "").strip()[:max_len]
+                for k, max_len in APPLY_PROFILE_EDUCATION_FIELDS.items()
+            }
+            if any(cleaned_entry.values()):
+                cleaned_edu.append(cleaned_entry)
+    out["education"] = cleaned_edu
+    return out
+
+
+@app.get("/api/extension/apply-profile")
+async def get_extension_apply_profile(request: Request):
+    """The stored 'easy' application-form fields (phone, education, work
+    authorization, links, ...) the extension's autofill fills deterministically,
+    plus name/email so the extension's local cache is a single fetch."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        try:
+            saved = json.loads(user.application_profile_json) if user.application_profile_json else {}
+        except Exception:
+            saved = {}
+        profile = _sanitize_apply_profile(saved)
+        profile["name"] = user.name
+        profile["email"] = user.email
+    finally:
+        db.close()
+    return JSONResponse(profile)
+
+
+@app.post("/api/extension/apply-profile")
+async def set_extension_apply_profile(request: Request):
+    """Save the application-form fields from the extension's 'Application details'
+    panel. CSRF-exempt (see EXEMPT_PATHS) — invoked from background.js."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+
+    cleaned = _sanitize_apply_profile(payload)
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        user.application_profile_json = json.dumps(cleaned)
+        db.commit()
+    finally:
+        db.close()
+    return JSONResponse({"success": True})
+
+
 @app.post("/api/extension/log-application")
 async def extension_log_application(request: Request):
     """Record a job the extension auto-applied to (CSRF-exempt; see EXEMPT_PATHS)."""
@@ -6006,6 +6106,158 @@ async def extension_tailor_resume(request: Request):
         if pdf_path and os.path.exists(pdf_path):
             os.remove(pdf_path)
         raise HTTPException(status_code=500, detail="Could not tailor the resume. Please try again.")
+
+
+MAX_APPLY_QUESTIONS = 40
+
+
+def _build_apply_answers_prompt(resume_text: str, job_description: str, role: str, company: str, questions: list) -> str:
+    """Prompt for the extension's apply-autofill: answer a batch of application-form
+    questions the deterministic filler couldn't handle (free text, ambiguous
+    selects), grounded only in the candidate's resume and the JD. Mirrors
+    _build_cover_letter_prompt's never-invent rule, extended to legal/demographic/
+    compensation fields where a wrong guess can auto-reject or misrepresent the
+    candidate — those must come back skipped, never fabricated."""
+    lines = []
+    for q in questions:
+        line = f"- id: {q['id']} | type: {q['field_type']} | question: \"{q['label']}\""
+        if q.get("options"):
+            line += f" | options: {json.dumps(q['options'])}"
+        if q.get("limit"):
+            line += f" | max length: {q['limit']} characters"
+        lines.append(line)
+    questions_block = "\n".join(lines)
+
+    return (
+        "You are helping a candidate fill out a job application form. Answer each "
+        "question below using ONLY facts present in their resume or the job "
+        "description. Never invent employers, dates, degrees, skills, salary "
+        "figures, visa/work-authorization status, or any personal/legal/demographic "
+        "fact that is not explicitly stated in the resume.\n\n"
+        "Rules:\n"
+        "- For a \"select\"-type question, the answer MUST be exactly one of the "
+        "given options (verbatim), or empty if none fit.\n"
+        "- For visa/work-authorization, sponsorship, disability, veteran status, "
+        "gender/race self-identification, or salary-expectation questions: if the "
+        "resume/JD does not state the answer, set \"skip\": true and leave answer "
+        "empty — DO NOT guess.\n"
+        "- Free-text answers: concise, first person, grounded in real resume "
+        "content, respecting any max length given.\n"
+        "- If a question cannot be answered from the given material at all, set "
+        "\"skip\": true.\n\n"
+        f"Role: {role or 'unknown'}\nCompany: {company or 'unknown'}\n\n"
+        f"=== RESUME ===\n{resume_text}\n\n"
+        f"=== JOB DESCRIPTION ===\n{job_description}\n\n"
+        f"=== QUESTIONS ===\n{questions_block}\n\n"
+        "Return ONLY a JSON object: {\"answers\": [{\"id\": \"<id>\", \"answer\": "
+        "\"<answer or empty string>\", \"skip\": <true|false>}, ...]} — one entry "
+        "per question id above, in the same order."
+    )
+
+
+@app.post("/api/extension/apply-answers")
+async def extension_apply_answers(request: Request):
+    """Batch-answer the application-form questions the extension's deterministic
+    autofill couldn't handle (free text, ambiguous selects), grounded in the
+    user's stored base resume + the JD on screen. Never fabricates legal/visa/
+    demographic/salary facts not present in the source material (see prompt).
+    Ungated (no quota) but request-shape capped. CSRF-exempt (see
+    EXEMPT_PATHS) — invoked from background.js."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+
+    jd_string = str(payload.get("jd_string") or "").strip()
+    if len(jd_string) < 30:
+        raise HTTPException(status_code=400, detail="Missing job description")
+    role = (payload.get("role") or "").strip()[:200]
+    company = (payload.get("company") or "").strip()[:200]
+
+    raw_questions = payload.get("questions")
+    if not isinstance(raw_questions, list) or not raw_questions:
+        raise HTTPException(status_code=400, detail="No questions provided")
+
+    questions = []
+    seen_ids = set()
+    for q in raw_questions[:MAX_APPLY_QUESTIONS]:
+        if not isinstance(q, dict):
+            continue
+        qid = str(q.get("id") or "").strip()[:64]
+        label = str(q.get("label") or "").strip()[:300]
+        if not qid or not label or qid in seen_ids:
+            continue
+        seen_ids.add(qid)
+        field_type = str(q.get("field_type") or "text").strip().lower()[:20]
+        options = q.get("options")
+        options = [str(o).strip()[:120] for o in options][:20] if isinstance(options, list) else None
+        limit = q.get("limit")
+        limit = max(1, min(int(limit), 4000)) if isinstance(limit, (int, float)) and limit else None
+        questions.append({"id": qid, "label": label, "field_type": field_type, "options": options, "limit": limit})
+
+    if not questions:
+        raise HTTPException(status_code=400, detail="No valid questions provided")
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+            raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/extension first.")
+        base_resume_path = user.base_resume_path
+        resume_text = user.base_resume_text
+    finally:
+        db.close()
+
+    if not resume_text:
+        resume_text = (await asyncio.to_thread(extract_pdf_text, base_resume_path) or "").strip()
+    if len(resume_text) < 50:
+        raise HTTPException(
+            status_code=400,
+            detail="Could not read your base resume. Re-upload a text-based PDF at thetailorcv.com/extension.",
+        )
+
+    prompt = _build_apply_answers_prompt(resume_text[:8000], jd_string[:6000], role, company, questions)
+    try:
+        async with request_semaphore:
+            raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.2)
+        parsed = parse_ai_json_response(raw)
+        raw_answers = parsed.get("answers") if isinstance(parsed, dict) else None
+        if not isinstance(raw_answers, list):
+            raise ValueError("Malformed answers array")
+    except Exception:
+        logger.exception("Extension apply-answers generation failed")
+        raise HTTPException(status_code=502, detail="Could not generate answers. Please try again.")
+
+    by_id = {q["id"]: q for q in questions}
+    answers_by_id = {}
+    for a in raw_answers:
+        if not isinstance(a, dict):
+            continue
+        aid = str(a.get("id") or "").strip()
+        if aid not in by_id or aid in answers_by_id:
+            continue
+        q = by_id[aid]
+        skip = bool(a.get("skip"))
+        answer = str(a.get("answer") or "").strip()
+        if q["field_type"] == "select" and q["options"]:
+            if answer not in q["options"]:
+                answer = ""
+                skip = True
+        elif q["limit"] and len(answer) > q["limit"]:
+            answer = answer[: q["limit"]]
+        if not answer:
+            skip = True
+        answers_by_id[aid] = {"id": aid, "answer": answer, "skip": skip}
+
+    # Preserve input order; any question the model dropped comes back skipped
+    # rather than silently vanishing from the extension's field list.
+    answers = [answers_by_id.get(q["id"], {"id": q["id"], "answer": "", "skip": True}) for q in questions]
+    return JSONResponse({"answers": answers})
 
 
 # ══════════════════════════════════════════════════════════════════════════════

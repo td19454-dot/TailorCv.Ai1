@@ -36,6 +36,12 @@ class User(Base):
     # Extracted once at upload time so the extension's skill-match score never
     # needs to re-parse the PDF on every job the user looks at.
     base_resume_text = Column(Text, nullable=True)
+    # JSON blob of the "easy" application-form fields the Chrome extension's
+    # autofill can answer deterministically (phone, education, work
+    # authorization, links, etc.) — a single column rather than many so new
+    # fields never need another migration. Edited from the extension's
+    # "Application details" panel; cached client-side in chrome.storage.local.
+    application_profile_json = Column(Text, nullable=True)
 
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
