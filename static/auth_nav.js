@@ -193,6 +193,48 @@ function showUpgradeModal(feature) {
     localStorage.removeItem("tailorcv_user");
   }
 
+  // Logged-in users should never be bounced through /login. Any CTA that points
+  // at "/login?next=<dest>" is rewritten to send them straight to <dest>.
+  // Safe even if the cache is stale: the "next" targets (e.g. /solutions) are
+  // guest-accessible, so a rewrite never locks anyone out.
+  function rewriteLoginCtasForUser() {
+    var ctas = document.querySelectorAll('a[href*="/login?next="]');
+    for (var i = 0; i < ctas.length; i++) {
+      var a = ctas[i];
+      try {
+        var query = (a.getAttribute("href") || "").split("?")[1] || "";
+        var next = new URLSearchParams(query).get("next");
+        if (!next) continue;
+        a.setAttribute("href", next);
+        // "Login to Start Free" reads wrong once you're logged in → "Start Free".
+        var text = (a.textContent || "").trim();
+        if (/^log\s*in to\s+/i.test(text)) {
+          a.textContent = text.replace(/^log\s*in to\s+/i, "");
+        }
+      } catch (e) {}
+    }
+  }
+
+  // Feature CTAs hard-code href="/signup" so guests are captured. Once logged
+  // in, that's just a wall between the user and the feature — so each CTA also
+  // declares data-auth-href="<real destination>", and we swap href → that here.
+  // External destinations (the Chrome Web Store) open in a new tab.
+  function rewriteAuthCtasForUser() {
+    var ctas = document.querySelectorAll("[data-auth-href]");
+    for (var i = 0; i < ctas.length; i++) {
+      var a = ctas[i];
+      try {
+        var dest = a.getAttribute("data-auth-href");
+        if (!dest) continue;
+        a.setAttribute("href", dest);
+        if (/^https?:\/\//i.test(dest)) {
+          a.setAttribute("target", "_blank");
+          a.setAttribute("rel", "noopener noreferrer");
+        }
+      } catch (e) {}
+    }
+  }
+
   function createAuthWidget(user, isPro) {
     if (!user) {
       return '<a class="login" href="/login">Login</a>';
@@ -373,6 +415,7 @@ function showUpgradeModal(feature) {
 
     // Render immediately from cache (fast, no flash)
     slot.innerHTML = createAuthWidget(user, user && user.is_pro);
+    if (user) { rewriteLoginCtasForUser(); rewriteAuthCtasForUser(); }
 
     // "Get Started" CTA shows only on marketing pages when logged out
     const getStartedBtn = document.querySelector(".nav-getstarted");
@@ -396,6 +439,8 @@ function showUpgradeModal(feature) {
           const fresh = { name: data.name, email: data.email, is_pro: data.is_pro, pro_until: data.pro_until };
           try { localStorage.setItem("tailorcv_user", JSON.stringify(fresh)); } catch (e) {}
           slot.innerHTML = createAuthWidget(fresh, fresh.is_pro);
+          rewriteLoginCtasForUser();
+          rewriteAuthCtasForUser();
           if (getStartedBtn) getStartedBtn.style.display = "none";
           injectAuthStyles();
           showMyResumesHint();
