@@ -5,6 +5,9 @@
   "scripts": {
     "build": "esbuild src/analytics.js --bundle --format=iife --outfile=analytics.bundle.js && esbuild src/styles.js --bundle --format=iife --loader:.css=text --outfile=styles.bundle.js"
   },
+  "dependencies": {
+    "posthog-js": "^1.407.2"
+  },
   "devDependencies": {
     "esbuild": "^0.24.0"
   }
