@@ -801,7 +801,7 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=15"></script>
+    <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
 
     {% if is_logged_in %}
@@ -1196,6 +1196,55 @@
     requestAnimationFrame(draw);
   }
   draw();
+})();
+</script>
+
+<!-- Interview Prep motion (scoped to /interview-prep): reveal hero/steps/cards,
+     stagger the steps, and stagger generated question items in. Reduced-motion safe. -->
+<style>
+@media (prefers-reduced-motion: no-preference) {
+  body.tcx-ip .tc-reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1);
+    will-change: opacity, transform;
+  }
+  body.tcx-ip .tc-reveal.tc-in { opacity: 1; transform: none; will-change: auto; }
+  body.tcx-ip .iq-question-item { opacity: 0; transform: translateY(10px); animation: tcIpItem .4s ease forwards; }
+  @keyframes tcIpItem { to { opacity: 1; transform: none; } }
+}
+</style>
+<script>
+(function () {
+  var path = (location.pathname || '/').replace(/\/+$/, '') || '/';
+  if (path !== '/interview-prep') return;
+  document.body.classList.add('tcx-ip');
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Reveal hero + section cards + steps (staggered).
+  var els = [];
+  document.querySelectorAll('.solx-hero, .solx-h2, .solx-card, .solx-step, .solx-more-card').forEach(function (el) {
+    el.classList.add('tc-reveal'); els.push(el);
+  });
+  document.querySelectorAll('.solx-step.tc-reveal').forEach(function (el, i) {
+    el.style.transitionDelay = (i * 90) + 'ms';
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('tc-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (el) { io.observe(el); });
+  setTimeout(function () { els.forEach(function (el) { el.classList.add('tc-in'); }); }, 2500);
+
+  // Stagger generated question items as they render (observe the container).
+  var stagger = function (root) {
+    var items = (root || document).querySelectorAll('.iq-question-item:not([data-tcx])');
+    items.forEach(function (el, i) { el.setAttribute('data-tcx', '1'); el.style.animationDelay = Math.min(i, 12) * 50 + 'ms'; });
+  };
+  stagger();
+  var qWrap = document.querySelector('.iq-questions');
+  if (qWrap && window.MutationObserver) {
+    new MutationObserver(function () { stagger(qWrap); }).observe(qWrap, { childList: true, subtree: true });
+  }
 })();
 </script>
 {% endif %}

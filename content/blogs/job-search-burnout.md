@@ -7,7 +7,7 @@ tags: [Job Search, Career Advice, Mental Health, Rejection, Application Process]
 category: Career Advice
 slug: job-search-burnout
 keywords: job search burnout, job hunting burnout, exhausted from job searching, job search depression, how to stay motivated job search
-image: public/blog-images/job-search-burnout.png
+image: public/blog-images/job-search-burnout.webp
 ---
 
 There's a particular kind of tiredness that comes from job searching, and it doesn't match the effort involved. You've sent forty applications, which is maybe fifteen hours of work, and you feel wrecked in a way that fifteen hours of actual work never does.

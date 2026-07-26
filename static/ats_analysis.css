@@ -40,6 +40,18 @@
 /* ─── Reset / Base ───────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Dark root so re-renders / overscroll never flash white behind the body
+   gradient on this dark app page (bug #1). Body keeps its own background. */
+html { background-color: #030014; }
+
+/* Empty state ("No analysis found"): soft fade-in + gentle icon float. */
+@media (prefers-reduced-motion: no-preference) {
+  .tcx-empty { animation: tcxEmptyIn .5s cubic-bezier(.22,.61,.36,1) both; }
+  .tcx-empty-ic { animation: tcxEmptyFloat 3.2s ease-in-out infinite; }
+  @keyframes tcxEmptyIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @keyframes tcxEmptyFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+}
+
 body {
   font-family: "DM Sans", "Inter", system-ui, sans-serif;
   font-size: 18px;
@@ -49,7 +61,14 @@ body {
 /* ─── Page layout ────────────────────────────────────────────────────────────── */
 .analysis-page {
   padding-top: var(--navbar-h);
+  /* Reserve a safe zone at the bottom so the fixed "tailor my resume" nudge
+     (#ats-band-popup) overlays empty space, never the check cards/actions (#5). */
+  padding-bottom: 132px;
   min-height: 100vh;
+}
+@media (max-width: 768px) {
+  /* Mobile nudge spans full width at the bottom — reserve more room. */
+  .analysis-page { padding-bottom: 168px; }
 }
 
 .analysis-layout {

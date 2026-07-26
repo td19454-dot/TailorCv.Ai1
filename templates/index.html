@@ -2055,6 +2055,12 @@
                 transform: translateY(-2px);
                 box-shadow: 0 8px 28px rgba(79,127,255,0.5);
             }
+            /* #7: never cover interactive content. On phones the full-width
+               sticky "Optimize" CTA owns the bottom, so hide the floating pill
+               there; on desktop it sits clear in the corner below any modal. */
+            @media (max-width: 768px) {
+                .feedback-float-btn { display: none; }
+            }
         </style>
         <div class="container">
             <div class="section-header" style="margin-bottom: 48px;">
@@ -2442,7 +2448,7 @@
     <!-- Footer -->
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=15" defer></script>
+    <script src="/static/auth_nav.js?v=16" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script src="/static/main.js" defer></script>
 
@@ -3043,11 +3049,43 @@ details[open] .faq-chevron svg {
 @media (prefers-reduced-motion: no-preference) {
     .tc-reveal {
         opacity: 0;
-        transform: translateY(30px);
-        transition: opacity .75s cubic-bezier(.22,.61,.36,1), transform .75s cubic-bezier(.22,.61,.36,1);
+        transform: translateY(24px);
+        transition: opacity .55s cubic-bezier(.22,.61,.36,1), transform .55s cubic-bezier(.22,.61,.36,1);
         will-change: opacity, transform;
     }
-    .tc-reveal.tc-in { opacity: 1; transform: none; }
+    .tc-reveal.tc-in { opacity: 1; transform: none; will-change: auto; }
+
+    /* FAQ answer: smooth expand/collapse (JS drives max-height + opacity).
+       Spacing moved from margin to padding so it's clipped by overflow. */
+    .faq-section details > p {
+        overflow: hidden;
+        margin-top: 0 !important;
+        padding-top: 12px;
+        transition: max-height .28s ease, opacity .28s ease;
+    }
+
+    /* Subtle scale on primary CTAs. */
+    .btn-primary, .feature-showcase-btn, .prefooter-primary-btn,
+    .home-resources-cta, .results-login-btn, .pricing-plan-btn {
+        transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .btn-primary:hover, .feature-showcase-btn:hover, .prefooter-primary-btn:hover,
+    .home-resources-cta:hover, .results-login-btn:hover, .pricing-plan-btn:hover {
+        transform: scale(1.02);
+    }
+
+    /* Blog/resource cards: lift on hover (template & pricing cards already do). */
+    .home-resource-card { transition: transform .22s ease, box-shadow .22s ease; }
+    .home-resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 18px 42px rgba(10, 20, 60, .35);
+    }
+}
+
+/* Reduced motion: kill movement on the toast + FAQ chevron (fades only). */
+@media (prefers-reduced-motion: reduce) {
+    .sales-pop { transition: opacity .2s ease !important; transform: none !important; }
+    .faq-chevron { transition: none !important; }
 }
 .result-card, .founder-card, .mock-card {
     transition: transform .3s ease, box-shadow .3s ease;
@@ -3143,7 +3181,7 @@ details[open] .faq-chevron svg {
     if (!('IntersectionObserver' in window)) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var selectors = ['.section-title', '.career-item', '.result-card', '.founder-card', '.mock-card', '.feature-showcase-title'];
+    var selectors = ['.section-title', '.career-col-before', '.career-col-after', '.result-card', '.founder-card', '.mock-card', '.feature-showcase-title', '.pricing-preview-card', '.pf-tmpl-card', '.home-resource-card', '.faq-section details', '.site-footer .sf-col'];
     var els = [];
     document.querySelectorAll(selectors.join(',')).forEach(function (el) {
         if (el.closest('.hero')) return; // leave the hero's own animations alone
@@ -3152,12 +3190,12 @@ details[open] .faq-chevron svg {
     });
 
     // Subtle stagger for cards that sit side-by-side in the same row.
-    document.querySelectorAll('.result-card.tc-reveal, .founder-card.tc-reveal, .career-item.tc-reveal').forEach(function (el) {
+    document.querySelectorAll('.result-card.tc-reveal, .founder-card.tc-reveal, .career-item.tc-reveal, .pricing-preview-card.tc-reveal, .pf-tmpl-card.tc-reveal, .home-resource-card.tc-reveal, .faq-section details.tc-reveal, .site-footer .sf-col.tc-reveal').forEach(function (el) {
         var sibs = Array.prototype.filter.call(el.parentElement.children, function (c) {
             return c.classList && c.classList.contains('tc-reveal');
         });
         var idx = sibs.indexOf(el);
-        if (idx > 0) el.style.transitionDelay = (idx * 80) + 'ms';
+        if (idx > 0) el.style.transitionDelay = (Math.min(idx, 5) * 80) + 'ms';
     });
 
     var io = new IntersectionObserver(function (entries) {
@@ -3169,6 +3207,192 @@ details[open] .faq-chevron svg {
 
     // Safety net: never leave content hidden if the observer misbehaves.
     setTimeout(function () { els.forEach(function (el) { el.classList.add('tc-in'); }); }, 2500);
+
+    // ── Count-up + ATS bar fills + FAQ smooth toggle ─────────────────────────
+    // Only reached when motion is allowed (the guards at the top return first
+    // under reduced motion, leaving the static numbers/bars/native FAQ as-is).
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+    function parseNum(raw) {
+        var m = String(raw).match(/^(\D*)([\d,]*\.?\d+)(.*)$/);
+        if (!m) return null;
+        return { pre: m[1] || '', post: m[3] || '', val: parseFloat(m[2].replace(/,/g, '')),
+                 dec: m[2].indexOf('.') > -1 ? 1 : 0, comma: m[2].indexOf(',') > -1 };
+    }
+    function fmtNum(v, p) {
+        var s = p.dec ? v.toFixed(1) : String(Math.round(v));
+        if (p.comma) s = Number(s).toLocaleString('en-US');
+        return p.pre + s + p.post;
+    }
+    function countUp(el, p, dur) {
+        var start = null;
+        (function step(ts) {
+            if (ts === undefined) { requestAnimationFrame(step); return; }
+            if (start === null) start = ts;
+            var t = Math.min((ts - start) / dur, 1);
+            el.textContent = fmtNum(p.val * easeOutCubic(t), p);
+            if (t < 1) requestAnimationFrame(step);
+            else el.textContent = fmtNum(p.val, p);
+        })();
+    }
+    function onceInView(el, cb) {
+        var o = new IntersectionObserver(function (es) {
+            es.forEach(function (e) { if (e.isIntersecting) { cb(); o.unobserve(e.target); } });
+        }, { threshold: 0.35 });
+        o.observe(el);
+    }
+
+    // Stats: 10K+, 60%, 2x — count up from 0 when the row scrolls in.
+    document.querySelectorAll('.results-grid .result-metric').forEach(function (el) {
+        var p = parseNum(el.textContent.trim());
+        if (!p) return;
+        el.textContent = fmtNum(0, p);
+        onceInView(el, function () { countUp(el, p, 1000); });
+    });
+
+    // ATS report card: fill each bar 0 → target width, with its % label counting up.
+    document.querySelectorAll('.mock-card').forEach(function (card) {
+        var bars = card.querySelectorAll('.mock-bar > i');
+        if (!bars.length) return;
+        var labels = card.querySelectorAll('.mock-row strong');
+        bars.forEach(function (bar) {
+            bar.setAttribute('data-w', bar.style.width || '0');
+            bar.style.width = '0';
+            bar.style.transition = 'width .8s cubic-bezier(.22,.61,.36,1)';
+        });
+        onceInView(card, function () {
+            bars.forEach(function (bar) { bar.style.width = bar.getAttribute('data-w'); });
+            labels.forEach(function (l) {
+                var p = parseNum(l.textContent.trim());
+                if (!p) return;
+                l.textContent = fmtNum(0, p);
+                countUp(l, p, 800);
+            });
+        });
+    });
+
+    // FAQ: smooth expand/collapse of the answer paragraph (native <details>
+    // otherwise snaps). Chevron rotation is already handled by CSS on [open].
+    document.querySelectorAll('.faq-section details').forEach(function (d) {
+        var summary = d.querySelector('summary');
+        var panel = d.querySelector('p');
+        if (!summary || !panel) return;
+        summary.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (d.open) {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+                panel.style.opacity = '1';
+                requestAnimationFrame(function () { panel.style.maxHeight = '0px'; panel.style.opacity = '0'; });
+                panel.addEventListener('transitionend', function te() {
+                    d.open = false; panel.style.maxHeight = ''; panel.style.opacity = '';
+                    panel.removeEventListener('transitionend', te);
+                }, { once: true });
+            } else {
+                d.open = true;
+                panel.style.maxHeight = '0px'; panel.style.opacity = '0';
+                var target = panel.scrollHeight;
+                requestAnimationFrame(function () { panel.style.maxHeight = target + 'px'; panel.style.opacity = '1'; });
+                panel.addEventListener('transitionend', function te() {
+                    panel.style.maxHeight = ''; panel.removeEventListener('transitionend', te);
+                }, { once: true });
+            }
+        });
+    });
+})();
+</script>
+
+<!-- ── Landing polish: hero entrance, preview slide+tilt, before/after slide,
+     arrow pulse, pricing scale-in, hover states, nav shadow, smooth scroll,
+     button micro-interactions. All movement is reduced-motion gated. ────────── -->
+<style>
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero staggered entrance (headline, checklist cascade, preview slide-in). */
+  .hero-title { opacity: 0; animation: tcHeroUp .6s cubic-bezier(.22,.61,.36,1) .05s forwards; }
+  .hero-features li { opacity: 0; animation: tcHeroUp .55s cubic-bezier(.22,.61,.36,1) forwards; }
+  .hero-features li:nth-child(1) { animation-delay: .18s; }
+  .hero-features li:nth-child(2) { animation-delay: .27s; }
+  .hero-features li:nth-child(3) { animation-delay: .36s; }
+  .hero-features li:nth-child(4) { animation-delay: .45s; }
+  .hero-visual { opacity: 0; animation: tcHeroRight .7s cubic-bezier(.22,.61,.36,1) .15s forwards; }
+  .hero-visual .resume-card { transition: box-shadow .3s ease, transform .12s ease-out; }
+
+  /* Before/After columns slide in from their sides (they reuse tc-reveal). */
+  .career-col-before.tc-reveal { transform: translateX(-44px); }
+  .career-col-after.tc-reveal  { transform: translateX(44px); }
+  /* Center arrow: continuous left-right nudge. */
+  .career-shift-dot { display: inline-block; animation: tcArrow 1.4s ease-in-out infinite; }
+
+  /* Pricing cards: fade + scale-in (overrides the base translateY reveal). */
+  .pricing-preview-card.tc-reveal { transform: scale(.95); }
+
+  /* Settle these directional/scale reveals to final once revealed (this block
+     is later in source than the base .tc-reveal.tc-in rule, so restate it). */
+  .career-col-before.tc-in, .career-col-after.tc-in, .pricing-preview-card.tc-in { transform: none; }
+
+  /* Template cards: hover lift + subtle grow. */
+  .pf-tmpl-card { transition: transform .2s ease-out, border-color .2s ease, box-shadow .2s ease; }
+  .pf-tmpl-card:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 22px 46px rgba(10,20,60,.42); }
+
+  /* Smooth anchor scrolling. */
+  html { scroll-behavior: smooth; }
+
+  /* Button micro-interactions: press-in + smooth colour/shadow transitions. */
+  .btn, .btn-primary, .btn-secondary, .btn-large {
+    transition: transform .12s ease, background-color .22s ease, box-shadow .22s ease, color .22s ease, filter .22s ease;
+  }
+  .btn:active, .btn-primary:active, .btn-secondary:active, .btn-large:active { transform: scale(.97); }
+}
+
+/* "Most Popular" Pro card: elevated shadow + border glow on hover (any motion pref). */
+.pricing-preview-card.featured { transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+.pricing-preview-card.featured:hover {
+  box-shadow: 0 34px 66px rgba(0,20,50,.62), 0 0 0 1px rgba(56,189,248,.7), 0 0 42px rgba(56,189,248,.34);
+  border-color: rgba(56,189,248,.85);
+}
+
+/* Nav gains a soft shadow once the user scrolls past the hero. */
+.navbar { transition: box-shadow .25s ease, background-color .25s ease; }
+.navbar.tcx-nav-scrolled { box-shadow: 0 6px 26px rgba(2,8,30,.38); }
+
+@keyframes tcHeroUp    { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes tcHeroRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: none; } }
+@keyframes tcArrow     { 0%,100% { transform: translateX(-4px); } 50% { transform: translateX(5px); } }
+</style>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Nav shadow after scrolling past (most of) the hero. Not motion — runs always.
+  var nav = document.querySelector('.navbar');
+  var hero = document.querySelector('.hero');
+  if (nav) {
+    var threshold = hero ? Math.max(120, hero.offsetHeight * 0.6) : 200;
+    var onScroll = function () {
+      nav.classList.toggle('tcx-nav-scrolled', (window.pageYOffset || document.documentElement.scrollTop) > threshold);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // Mouse-responsive parallax tilt on the hero resume preview card.
+  if (!reduce) {
+    var card = document.getElementById('heroResumeCard');
+    var scope = document.querySelector('.hero-visual');
+    if (card && scope) {
+      var raf = null, tx = 0, ty = 0;
+      scope.addEventListener('mousemove', function (e) {
+        var r = scope.getBoundingClientRect();
+        ty = ((e.clientX - r.left) / r.width - 0.5) * 7;    // rotateY
+        tx = (0.5 - (e.clientY - r.top) / r.height) * 6;    // rotateX
+        if (!raf) raf = requestAnimationFrame(function () {
+          raf = null;
+          card.style.transform = 'perspective(900px) rotateX(' + tx.toFixed(2) + 'deg) rotateY(' + ty.toFixed(2) + 'deg)';
+        });
+      });
+      scope.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+      });
+    }
+  }
 })();
 </script>
 </body>

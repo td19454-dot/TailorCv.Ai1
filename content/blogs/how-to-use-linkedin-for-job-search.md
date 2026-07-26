@@ -12,7 +12,7 @@ keywords: how to use LinkedIn for job search, LinkedIn job search tips 2026, Lin
 
 LinkedIn is the most important professional platform for job seekers in 2026. Over 90% of recruiters use LinkedIn to find and evaluate candidates. Having a weak [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) while applying for jobs is like submitting a great [resume](https://thetailorcv.com/blog/resume-optimization-linkedin-easy-apply) but leaving your contact information blank.
 
-![How to Use LinkedIn](public/blog-images/how-to-use-linkedin.png)
+![How to Use LinkedIn](public/blog-images/how-to-use-linkedin.webp)
 
 This guide covers every major lever: optimizing your profile for recruiter search, using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Jobs effectively, networking with intention, sending cold messages that get replies, and using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) signals to get found without actively applying.
 

@@ -413,7 +413,7 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=15" defer></script>
+    <script src="/static/auth_nav.js?v=16" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     {% if is_logged_in %}
     <script>
@@ -498,6 +498,78 @@
     requestAnimationFrame(draw);
   }
   draw();
+})();
+</script>
+
+<!-- Delete resume: keep the confirm step, but remove the card with an animated
+     fade+collapse via AJAX instead of a full-page reload / instant vanish (#9).
+     Falls back to the native form POST if fetch fails or CSRF is rejected. -->
+<script>
+(function () {
+  if (!window.fetch) return; // native form submit (with its confirm) still works
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('form[action$="/delete"]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      // The inline onsubmit confirm has already run; reaching here means confirmed.
+      e.preventDefault();
+      var card = form.closest('.resume-card');
+      var btn = form.querySelector('button');
+      if (btn) { btn.disabled = true; btn.textContent = 'Deleting…'; }
+      fetch(form.action, { method: 'POST', headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error('delete failed');
+          if (!card) { window.location.reload(); return; }
+          if (reduce) { card.remove(); return; }
+          card.style.overflow = 'hidden';
+          card.style.height = card.offsetHeight + 'px';
+          card.style.transition = 'opacity .25s ease, transform .25s ease, height .3s ease, margin .3s ease, padding .3s ease';
+          requestAnimationFrame(function () {
+            card.style.opacity = '0';
+            card.style.transform = 'scale(.96)';
+            card.style.height = '0';
+            card.style.marginTop = '0'; card.style.marginBottom = '0';
+            card.style.paddingTop = '0'; card.style.paddingBottom = '0';
+          });
+          setTimeout(function () { card.remove(); }, 340);
+        })
+        .catch(function () { form.submit(); }); // fallback: native delete + reload
+    });
+  });
+})();
+</script>
+
+<!-- My Resumes motion (scoped to /my-resumes): stagger the card grid in on load.
+     Reduced-motion safe. Delete animation is handled above. -->
+<style>
+@media (prefers-reduced-motion: no-preference) {
+  body.tcx-mr .tc-reveal {
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .45s cubic-bezier(.22,.61,.36,1), transform .45s cubic-bezier(.22,.61,.36,1);
+    will-change: opacity, transform;
+  }
+  body.tcx-mr .tc-reveal.tc-in { opacity: 1; transform: none; will-change: auto; }
+  body.tcx-mr .resume-card { transition: transform .2s ease, box-shadow .2s ease; }
+  body.tcx-mr .resume-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(2,8,30,.4); }
+}
+</style>
+<script>
+(function () {
+  var path = (location.pathname || '/').replace(/\/+$/, '') || '/';
+  if (path !== '/my-resumes') return;
+  document.body.classList.add('tcx-mr');
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var cards = [].slice.call(document.querySelectorAll('.resume-card'));
+  cards.forEach(function (el, i) {
+    el.classList.add('tc-reveal');
+    el.style.transitionDelay = (Math.min(i, 8) * 60) + 'ms';
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('tc-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+  cards.forEach(function (el) { io.observe(el); });
+  setTimeout(function () { cards.forEach(function (el) { el.classList.add('tc-in'); }); }, 2000);
 })();
 </script>
 {% endif %}

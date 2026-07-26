@@ -7,7 +7,7 @@ tags: [Interview Preparation, Interview Questions, Career Advice, Job Search, Ca
 category: Interview Preparation
 slug: where-do-you-see-yourself-in-5-years
 keywords: where do you see yourself in 5 years, 5 year plan interview answer, where do you see yourself in five years, career goals interview question, 5 year goals interview
-image: public/blog-images/where-do-you-see-yourself-in-5-years.png
+image: public/blog-images/where-do-you-see-yourself-in-5-years.webp
 ---
 
 Nobody knows where they'll be in five years. The interviewer doesn't either, and they know you don't. So the question feels dishonest to answer sincerely and risky to answer honestly, which is why so many people produce something vague and forgettable.

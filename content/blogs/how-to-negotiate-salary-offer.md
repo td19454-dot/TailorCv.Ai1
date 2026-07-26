@@ -12,7 +12,7 @@ keywords: how to negotiate salary, salary negotiation tactics, salary negotiatio
 
 Most people accept the first salary offer they receive. Most of those people leave money on the table. Studies consistently show that [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-guide) works - employers expect candidates to negotiate, and the vast majority of initial offers have room.
 
-![How to Negotiate a Salary](public/blog-images/how-to-negotiate-a-salary.png)
+![How to Negotiate a Salary](public/blog-images/how-to-negotiate-a-salary.webp)
 
 A 10-20% increase from negotiation is common. For a mid-level role paying $80,000, that is $8,000-$16,000 per year - more than most people would save by switching to a cheaper coffee. And that difference compounds over years as future raises and offers are often percentages of your current salary.
 

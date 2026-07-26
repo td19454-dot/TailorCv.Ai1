@@ -12,7 +12,7 @@ keywords: how to research company before interview, company research interview 2
 
 Company research before an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most impactful things you can do - and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, [recent product launches](https://thetailorcv.com/blog/negotiating-multiple-job-offers), competitive position, [engineering culture](https://thetailorcv.com/blog/ai-proof-jobs-2026), and [specific team challenges](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day) is research.
 
-![How to Research a Company](public/blog-images/how-to-research-a-company.png)
+![How to Research a Company](public/blog-images/how-to-research-a-company.webp)
 
 Interviewers ask "What do you know about us?" and "Why do you want to work here?" - and the answers that get job offers are specific, demonstrating genuine understanding of the company's situation. This guide tells you exactly what to research, where to find it, and how to use it.
 

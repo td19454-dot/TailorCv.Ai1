@@ -7,7 +7,7 @@ tags: [Interview Preparation, Interview Questions, Career Advice, Job Search, ST
 category: Interview Preparation
 slug: how-to-answer-what-are-your-strengths
 keywords: what are your strengths, what are your strengths interview answer, greatest strength interview question, how to answer strengths question, strengths interview examples
-image: public/blog-images/how-to-answer-what-are-your-strengths.png
+image: public/blog-images/how-to-answer-what-are-your-strengths.webp
 ---
 
 "What are your strengths?" sounds like the easy one. It isn't — it's just the one people under-prepare, because it feels like it can be improvised. It can't, and the reason is that the question is not really asking what you're good at.

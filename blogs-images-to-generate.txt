@@ -1,0 +1,33 @@
+Images to generate for the 30 new blogs.
+Save each PNG into: public/blog-images/  (exact filename = blog slug + .png)
+
+veteran-to-civilian-resume-2026.png            | Veteran to Civilian Resume Guide 2026
+dental-hygienist-resume-2026.png               | Dental Hygienist Resume Guide 2026
+attorney-lawyer-resume-2026.png                | Attorney & Lawyer Resume Guide 2026
+architect-resume-2026.png                      | Architect Resume Guide 2026
+chef-culinary-resume-2026.png                  | Chef & Culinary Resume Guide 2026
+flight-attendant-resume-2026.png               | Flight Attendant Resume Guide 2026
+retail-manager-resume-2026.png                 | Retail Manager Resume Guide 2026
+event-planner-resume-2026.png                  | Event Planner Resume Guide 2026
+interior-designer-resume-2026.png              | Interior Designer Resume Guide 2026
+journalist-resume-2026.png                     | Journalist Resume Guide 2026
+product-designer-resume-2026.png               | Product Designer Resume Guide 2026
+salesforce-developer-resume-2026.png           | Salesforce Developer Resume Guide 2026
+seo-specialist-resume-2026.png                 | SEO Specialist Resume Guide 2026
+paralegal-resume-2026.png                      | Paralegal Resume Guide 2026
+hobbies-and-interests-on-resume.png            | Hobbies and Interests on Your Resume
+bilingual-language-skills-on-resume.png        | How to List Language Skills on Your Resume
+how-to-list-publications-on-resume.png         | How to List Publications on Your Resume
+resume-for-first-job-teenager.png              | First Job Resume for a Teenager
+email-subject-line-for-job-application.png     | Best Email Subject Line for a Job Application
+take-home-assignment-interview-tips.png        | How to Ace a Take-Home Assignment
+whiteboard-interview-tips.png                  | How to Pass a Whiteboard Interview
+how-to-reschedule-an-interview.png             | How to Reschedule an Interview
+what-to-bring-to-an-interview.png              | What to Bring to a Job Interview
+background-check-what-to-expect.png            | Job Background Check: What to Expect
+reference-check-process-guide.png              | The Job Reference Check Process Explained
+aptitude-psychometric-test-tips.png            | How to Pass Aptitude and Psychometric Tests
+how-to-work-with-recruitment-agencies.png      | How to Work With Recruitment Agencies
+best-job-search-websites-2026.png              | Best Job Search Websites in 2026
+ats-resume-checklist-2026.png                  | The 2026 ATS Resume Checklist
+resume-tips-for-working-students.png           | Resume Tips for Working Students

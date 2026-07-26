@@ -7,7 +7,7 @@ tags: [Interview Preparation, Interview Questions, Career Advice, Job Search, Em
 category: Interview Preparation
 slug: why-did-you-leave-your-last-job
 keywords: why did you leave your last job, why did you leave your previous job answer, reason for leaving job interview, how to explain being fired, laid off interview answer
-image: public/blog-images/why-did-you-leave-your-last-job.png
+image: public/blog-images/why-did-you-leave-your-last-job.webp
 ---
 
 This is the question people most often over-explain. The instinct is understandable — if the reason was difficult, silence feels like concealment, so you fill it. But length reads as discomfort, and discomfort invites more questions.

@@ -7,7 +7,7 @@ tags: [Interview Preparation, Career Advice, Job Search, Video Interview, Interv
 category: Interview Preparation
 slug: what-to-wear-to-an-interview
 keywords: what to wear to an interview, interview outfit, job interview dress code, what to wear to a video interview, interview attire 2026
-image: public/blog-images/what-to-wear-to-an-interview.png
+image: public/blog-images/what-to-wear-to-an-interview.webp
 ---
 
 Nobody gets hired for their outfit. But people do get quietly marked down for one, and the mechanism is simple: anything that makes the interviewer notice your clothes is attention not spent on your answers.

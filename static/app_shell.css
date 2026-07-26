@@ -113,12 +113,22 @@ html.tcv-app header.navbar + * { padding-top: 16px !important; margin-top: 0 !im
     transition: background .15s, color .15s;
 }
 .tcv-rail-link:hover { background: rgba(99, 132, 255, .14); color: #fff; }
-.tcv-rail-link.active { background: rgba(51, 146, 255, .2); color: #fff; }
-.tcv-rail-ic { display: inline-flex; align-items: center; justify-content: center; }
+.tcv-rail-link:hover .tcv-rail-ic { transform: scale(1.08); }
+.tcv-rail-link.active {
+    background: linear-gradient(135deg, rgba(51, 146, 255, .26), rgba(124, 58, 237, .20));
+    color: #fff;
+}
+.tcv-rail-ic { display: inline-flex; align-items: center; justify-content: center; transition: transform .15s ease; }
 .tcv-rail-ic svg { width: 20px; height: 20px; }
 .tcv-rail-link.active::before {
     content: ""; position: absolute; left: -12px; top: 50%; transform: translateY(-50%);
-    width: 3px; height: 22px; border-radius: 0 3px 3px 0; background: #3392ff;
+    width: 3px; height: 22px; border-radius: 0 3px 3px 0;
+    background: linear-gradient(180deg, #3392ff, #7c3aed);
+}
+@media (prefers-reduced-motion: no-preference) {
+    /* Accent bar grows in when an item becomes active. */
+    .tcv-rail-link.active::before { animation: tcvRailBarIn .28s cubic-bezier(.22,.61,.36,1); transform-origin: center; }
+    @keyframes tcvRailBarIn { from { transform: translateY(-50%) scaleY(0); } to { transform: translateY(-50%) scaleY(1); } }
 }
 /* Hover tooltip label */
 .tcv-rail-tip {

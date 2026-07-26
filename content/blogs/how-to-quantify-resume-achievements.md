@@ -12,7 +12,7 @@ keywords: how to quantify resume achievements, resume metrics, resume numbers ex
 
 The single biggest difference between a forgettable resume and one that earns interviews is quantification. Recruiters read hundreds of resumes that all say "improved performance," "led a team," and "managed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)." The candidates who advance are the ones who say "improved page load time from 4.8s to 1.1s," "led a team of 7 engineers," and "delivered a project 3 weeks ahead of schedule."
 
-![How to Quantify Resume Achievements](public/blog-images/how-to-quantify-resume-achievements.png)
+![How to Quantify Resume Achievements](public/blog-images/how-to-quantify-resume-achievements.webp)
 
 Numbers make your resume scannable, credible, and memorable. They transform vague claims into proof.
 

@@ -7,7 +7,7 @@ tags: [Resume Writing, Career Advice, Job Search, Interview Preparation, Resume 
 category: Career Advice
 slug: should-you-lie-on-your-resume
 keywords: should you lie on your resume, lying on resume consequences, resume lies caught, exaggerating on resume, is lying on a resume illegal
-image: public/blog-images/should-you-lie-on-your-resume.png
+image: public/blog-images/should-you-lie-on-your-resume.webp
 ---
 
 The honest reason people consider it is not dishonesty. It's desperation. You've sent eighty applications, heard nothing, and the postings all demand five years of something you have two years of. Adding three years feels less like fraud and more like correcting an unfair filter.
