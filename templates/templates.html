@@ -422,6 +422,18 @@
             <h1 class="templates-title">ATS-Friendly <span class="templates-title-accent">Resume Templates</span></h1>
         </section>
 
+        <style>
+          .tpl-skeleton {
+            min-height: 320px;
+            border-radius: 12px;
+            border: 1px solid rgba(99,130,200,.14);
+            background: linear-gradient(100deg, rgba(255,255,255,.04) 30%, rgba(255,255,255,.10) 50%, rgba(255,255,255,.04) 70%);
+            background-size: 200% 100%;
+            animation: tplSkel 1.3s ease-in-out infinite;
+          }
+          @keyframes tplSkel { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+          @media (prefers-reduced-motion: reduce) { .tpl-skeleton { animation: none; } }
+        </style>
         <section id="templates-grid" class="templates-grid" aria-live="polite"></section>
         <p id="templates-grid-status" class="templates-grid-status" aria-live="polite"></p>
         <section id="template-action-chooser" class="template-action-chooser" hidden>
@@ -464,7 +476,7 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=15"></script>
+    <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
     {% if is_logged_in %}
     <script>
@@ -855,7 +867,18 @@
                 updateStepState();
             }
 
+            // Fill the grid with dark skeleton cards immediately so there's no
+            // empty void while /api/resume-templates loads (#2). renderGrid()
+            // replaces them once the real templates arrive.
+            function renderSkeletons() {
+                if (!gridEl || gridEl.children.length) return;
+                var html = "";
+                for (var i = 0; i < 8; i++) html += '<div class="tpl-skeleton" aria-hidden="true"></div>';
+                gridEl.innerHTML = html;
+            }
+
             async function initialize() {
+                renderSkeletons();
                 try {
                     const response = await fetch("/api/resume-templates");
                     const data = await response.json();

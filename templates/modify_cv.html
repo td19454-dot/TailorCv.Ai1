@@ -448,7 +448,7 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=15"></script>
+    <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
     {% if is_logged_in %}<script src="/static/js/modify_cv.js?v=28"></script>{% endif %}
 <script>
@@ -496,5 +496,119 @@
 })();
 </script>
 <script src="/static/resume_store.js?v=1"></script>
+
+<!-- ── Scroll-reveal + conic-gauge + FAQ motion (scoped to /modify-cv only) ──
+     Reuses the home page's tc-reveal / tc-in convention. CSS gated on
+     body.tcx-anim (added by JS only on /modify-cv). Reduced motion off-switch. -->
+<style>
+@media (prefers-reduced-motion: no-preference) {
+  body.tcx-anim .tc-reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .55s cubic-bezier(.22,.61,.36,1), transform .55s cubic-bezier(.22,.61,.36,1);
+    will-change: opacity, transform;
+  }
+  body.tcx-anim .tc-reveal.tc-in { opacity: 1; transform: none; will-change: auto; }
+  body.tcx-anim .solx-faq details > p { overflow: hidden; transition: max-height .28s ease, opacity .28s ease; }
+  body.tcx-anim .solx-card, body.tcx-anim .solx-more-card, body.tcx-anim .pricing-preview-card {
+    transition: transform .22s ease, box-shadow .22s ease;
+  }
+  body.tcx-anim .solx-card:hover, body.tcx-anim .solx-more-card:hover, body.tcx-anim .pricing-preview-card:hover {
+    transform: translateY(-5px); box-shadow: 0 18px 42px rgba(10,20,60,.28);
+  }
+  body.tcx-anim .solx-btn, body.tcx-anim .pricing-plan-btn {
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  body.tcx-anim .solx-btn:hover, body.tcx-anim .pricing-plan-btn:hover { transform: scale(1.02); }
+}
+</style>
+<script>
+(function () {
+  var path = (location.pathname || '/').replace(/\/+$/, '') || '/';
+  if (path !== '/modify-cv') return;
+  document.body.classList.add('tcx-anim');
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function parseNum(raw) {
+    var m = String(raw).match(/^(\D*)([\d,]*\.?\d+)(.*)$/);
+    if (!m) return null;
+    return { pre: m[1] || '', post: m[3] || '', val: parseFloat(m[2].replace(/,/g, '')),
+             dec: m[2].indexOf('.') > -1 ? 1 : 0, comma: m[2].indexOf(',') > -1 };
+  }
+  function fmtNum(v, p) {
+    var s = p.dec ? v.toFixed(1) : String(Math.round(v));
+    if (p.comma) s = Number(s).toLocaleString('en-US');
+    return p.pre + s + p.post;
+  }
+  function onceInView(el, cb) {
+    var o = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { cb(); o.unobserve(e.target); } });
+    }, { threshold: 0.3 });
+    o.observe(el);
+  }
+
+  var selectors = ['.solx-hero', '.solx-h2', '.solx-lead', '.solx-kicker', '.solx-step',
+    '.solx-quote', '.solx-card', '.solx-more-card', '.pricing-preview-card',
+    '.solx-faq details', '.site-footer .sf-col'];
+  var els = [];
+  document.querySelectorAll(selectors.join(',')).forEach(function (el) {
+    if (el.classList.contains('tc-reveal')) return;
+    el.classList.add('tc-reveal'); els.push(el);
+  });
+  document.querySelectorAll('.solx-step.tc-reveal, .solx-quote.tc-reveal, .solx-card.tc-reveal, .solx-more-card.tc-reveal, .pricing-preview-card.tc-reveal, .solx-faq details.tc-reveal, .site-footer .sf-col.tc-reveal').forEach(function (el) {
+    var sibs = Array.prototype.filter.call(el.parentElement.children, function (c) {
+      return c.classList && c.classList.contains('tc-reveal');
+    });
+    var idx = sibs.indexOf(el);
+    if (idx > 0) el.style.transitionDelay = (Math.min(idx, 5) * 100) + 'ms';
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('tc-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function (el) { io.observe(el); });
+  setTimeout(function () { els.forEach(function (el) { el.classList.add('tc-in'); }); }, 2500);
+
+  // Conic score rings (.rez-ring), if any: animate --p 0 → target, count <b>.
+  document.querySelectorAll('.rez-ring').forEach(function (ring) {
+    var target = parseFloat(getComputedStyle(ring).getPropertyValue('--p')) || 0;
+    var b = ring.querySelector('b');
+    var bp = b ? parseNum(b.textContent.trim()) : null;
+    ring.style.setProperty('--p', '0');
+    if (bp) b.textContent = fmtNum(0, bp);
+    onceInView(ring, function () {
+      var dur = 1000, start = null;
+      (function step(ts) {
+        if (ts === undefined) { requestAnimationFrame(step); return; }
+        if (start === null) start = ts;
+        var t = Math.min((ts - start) / dur, 1), e = easeOutCubic(t);
+        ring.style.setProperty('--p', (target * e).toFixed(2));
+        if (bp) b.textContent = fmtNum(bp.val * e, bp);
+        if (t < 1) requestAnimationFrame(step);
+        else { ring.style.setProperty('--p', String(target)); if (bp) b.textContent = fmtNum(bp.val, bp); }
+      })();
+    });
+  });
+
+  // FAQ smooth expand/collapse.
+  document.querySelectorAll('.solx-faq details').forEach(function (d) {
+    var summary = d.querySelector('summary'), panel = d.querySelector('p');
+    if (!summary || !panel) return;
+    summary.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (d.open) {
+        panel.style.maxHeight = panel.scrollHeight + 'px'; panel.style.opacity = '1';
+        requestAnimationFrame(function () { panel.style.maxHeight = '0px'; panel.style.opacity = '0'; });
+        panel.addEventListener('transitionend', function te() { d.open = false; panel.style.maxHeight = ''; panel.style.opacity = ''; panel.removeEventListener('transitionend', te); }, { once: true });
+      } else {
+        d.open = true; panel.style.maxHeight = '0px'; panel.style.opacity = '0';
+        var target = panel.scrollHeight;
+        requestAnimationFrame(function () { panel.style.maxHeight = target + 'px'; panel.style.opacity = '1'; });
+        panel.addEventListener('transitionend', function te() { panel.style.maxHeight = ''; panel.removeEventListener('transitionend', te); }, { once: true });
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>

@@ -395,7 +395,7 @@
         </main>
     </div>
 
-    <script src="/static/auth_nav.js?v=15"></script>
+    <script src="/static/auth_nav.js?v=16"></script>
     <script>
     (function () {
         function doLogout(e) {
@@ -2031,5 +2031,68 @@ Nice to have:
     })();
     </script>
     <script src="/static/resume_store.js?v=1"></script>
+
+<!-- Dashboard motion (scoped to /dashboard): welcome + banner + cards stagger
+     in, Job Tracker numbers count up once, card hover lift. Reduced-motion safe. -->
+<style>
+@media (prefers-reduced-motion: no-preference) {
+  body.tcx-dash .tc-reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1);
+    will-change: opacity, transform;
+  }
+  body.tcx-dash .tc-reveal.tc-in { opacity: 1; transform: none; will-change: auto; }
+  body.tcx-dash .card { transition: transform .2s ease, box-shadow .2s ease; }
+  body.tcx-dash .card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(2,8,30,.4); }
+}
+</style>
+<script>
+(function () {
+  var path = (location.pathname || '/').replace(/\/+$/, '') || '/';
+  if (path !== '/dashboard') return;
+  document.body.classList.add('tcx-dash');
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function onceInView(el, cb) {
+    var o = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { cb(); o.unobserve(e.target); } });
+    }, { threshold: 0.25 });
+    o.observe(el);
+  }
+
+  // Reveal welcome header, banner, cards (staggered), new-scan panel.
+  var els = [];
+  document.querySelectorAll('.greet, .feat-banner, .cards .card, .newscan').forEach(function (el) {
+    el.classList.add('tc-reveal'); els.push(el);
+  });
+  document.querySelectorAll('.cards .card.tc-reveal').forEach(function (el, i) {
+    el.style.transitionDelay = (i * 70) + 'ms';
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('tc-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (el) { io.observe(el); });
+  setTimeout(function () { els.forEach(function (el) { el.classList.add('tc-in'); }); }, 2500);
+
+  // Job Tracker numbers count up once when the card scrolls in.
+  document.querySelectorAll('.jt-list li b').forEach(function (el) {
+    var target = parseInt((el.textContent || '').trim(), 10);
+    if (isNaN(target)) return;
+    el.textContent = '0';
+    onceInView(el, function () {
+      var dur = 900, start = null;
+      (function step(ts) {
+        if (ts === undefined) { requestAnimationFrame(step); return; }
+        if (start === null) start = ts;
+        var t = Math.min((ts - start) / dur, 1);
+        el.textContent = String(Math.round(target * easeOutCubic(t)));
+        if (t < 1) requestAnimationFrame(step); else el.textContent = String(target);
+      })();
+    });
+  });
+})();
+</script>
 </body>
 </html>

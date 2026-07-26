@@ -7,7 +7,7 @@ tags: [Networking, Job Search, Career Advice, Career Change, Interview Preparati
 category: Job Search
 slug: informational-interview-guide
 keywords: informational interview, how to ask for an informational interview, informational interview questions, informational interview email, coffee chat career
-image: public/blog-images/informational-interview-guide.png
+image: public/blog-images/informational-interview-guide.webp
 ---
 
 An informational interview is a short conversation with someone doing work you're interested in, where you ask about their field and they answer. That's it. No job is on the table, and that absence is the entire reason it works.
