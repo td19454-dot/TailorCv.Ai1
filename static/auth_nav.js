@@ -294,9 +294,13 @@ function showUpgradeModal(feature) {
       .tc-nav-dropdown {
         position: absolute; right: 0; top: calc(100% + 12px); min-width: 250px;
         background: #0b1430; border: 1px solid rgba(99,130,200,.3); border-radius: 14px;
-        overflow: hidden; display: none; z-index: 99999;
-        box-shadow: 0 18px 48px rgba(0,0,0,.55); }
-      .tc-nav-profile.open .tc-nav-dropdown { display: block; }
+        overflow: hidden; z-index: 99999;
+        box-shadow: 0 18px 48px rgba(0,0,0,.55);
+        opacity: 0; visibility: hidden; transform: translateY(-8px);
+        transition: opacity .16s ease, transform .16s ease, visibility .16s; }
+      .tc-nav-profile.open .tc-nav-dropdown { opacity: 1; visibility: visible; transform: none; }
+      @media (prefers-reduced-motion: reduce) {
+        .tc-nav-dropdown { transition: none; transform: none; } }
       .tc-nav-head {
         display: flex; align-items: center; gap: 10px; padding: 12px 14px 10px;
         border-bottom: 1px solid rgba(99,130,200,.2); }
@@ -394,6 +398,14 @@ function showUpgradeModal(feature) {
         if (!menu.contains(event.target)) {
           menu.classList.remove("open");
           trigger.setAttribute("aria-expanded", "false");
+        }
+      });
+      // Esc closes the menu and returns focus to the trigger (keyboard a11y).
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && menu.classList.contains("open")) {
+          menu.classList.remove("open");
+          trigger.setAttribute("aria-expanded", "false");
+          trigger.focus();
         }
       });
     }

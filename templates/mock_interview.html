@@ -630,7 +630,7 @@
         {% endif %}
 
     {% include "_footer.html" %}
-<script src="/static/auth_nav.js?v=15"></script>
+<script src="/static/auth_nav.js?v=16"></script>
 <script src="/static/mobile_nav.js"></script>
 {% if is_logged_in %}
 <script>
@@ -1842,6 +1842,27 @@ document.addEventListener('DOMContentLoaded',
   draw();
 })();
 </script>
+
+<!-- Mock interview (Zara) motion: subtle idle pulse-ring on Zara's avatar and a
+     gentle fade-in for the intro, testimonials, and greeting. Reduced-motion safe. -->
+<style>
+@media (prefers-reduced-motion: no-preference) {
+  #zaraAvatar { position: relative; }
+  #zaraAvatar::after {
+    content: ''; position: absolute; inset: -8px; border-radius: 50%;
+    border: 2px solid rgba(124,58,237,.4); pointer-events: none;
+    animation: zaraPulseRing 2.6s ease-out infinite;
+  }
+  @keyframes zaraPulseRing { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.28); opacity: 0; } }
+  #zaraTestimonials, #zaraGreeting { animation: zaraFadeIn .6s cubic-bezier(.22,.61,.36,1) both; }
+  #zaraGreeting { animation-delay: .15s; }
+  @keyframes zaraFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Stop the existing floating animation for users who opt out. */
+  #zaraAvatar { animation: none !important; }
+}
+</style>
 {% endif %}
 </body>
 </html>

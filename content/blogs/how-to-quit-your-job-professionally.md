@@ -12,7 +12,7 @@ keywords: how to quit your job, resignation guide 2026, how to resign profession
 
 How you leave a job matters almost as much as how you perform in it. The world is smaller than it seems - former managers become references, ex-colleagues become future hiring managers, and industries have long memories. Quitting professionally protects your reputation and your network. Quitting badly can follow you for years.
 
-![How to Quit Your Job](public/blog-images/how-to-quit-job.png)
+![How to Quit Your Job](public/blog-images/how-to-quit-job.webp)
 
 This guide covers exactly how to resign professionally: timing, the conversation, the resignation letter, notice periods, and handling counteroffers.
 

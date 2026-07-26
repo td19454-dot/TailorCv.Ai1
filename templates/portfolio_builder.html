@@ -1347,7 +1347,7 @@
         }
     </script>
     {% endif %}
-    <script src="/static/auth_nav.js?v=15" defer></script>
+    <script src="/static/auth_nav.js?v=16" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script src="/static/resume_store.js?v=1"></script>
 {% if not is_logged_in %}
@@ -1392,6 +1392,39 @@
     requestAnimationFrame(draw);
   }
   draw();
+})();
+</script>
+
+<!-- Portfolio builder motion: animate the 3-step wizard state changes, lift
+     template cards, and reveal them in. Reduced-motion safe. -->
+<style>
+@media (prefers-reduced-motion: no-preference) {
+  .pb-step, .pb-step .n { transition: color .3s ease, background .3s ease, border-color .3s ease, transform .3s ease, box-shadow .3s ease; }
+  .pb-step.active .n { transform: scale(1.1); box-shadow: 0 0 0 5px rgba(124,58,237,.15); }
+  .pb-tpl { transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+  .pb-tpl:hover { transform: translateY(-4px) scale(1.02); }
+  .pbx-reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1); will-change: opacity, transform; }
+  .pbx-reveal.pbx-in { opacity: 1; transform: none; will-change: auto; }
+}
+</style>
+<script>
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  function armCards() {
+    var cards = [].slice.call(document.querySelectorAll('.pb-tpl:not(.pbx-reveal)'));
+    if (!cards.length) return;
+    cards.forEach(function (el, i) { el.classList.add('pbx-reveal'); el.style.transitionDelay = (Math.min(i, 8) * 50) + 'ms'; });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('pbx-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    cards.forEach(function (el) { io.observe(el); });
+    setTimeout(function () { cards.forEach(function (el) { el.classList.add('pbx-in'); }); }, 2000);
+  }
+  armCards();
+  // Template cards may render after the gallery loads — re-arm on DOM changes.
+  var grid = document.querySelector('.pb-tpl-grid') || document.body;
+  if (window.MutationObserver) new MutationObserver(armCards).observe(grid, { childList: true, subtree: true });
 })();
 </script>
 {% endif %}

@@ -7,7 +7,7 @@ tags: [Job Search, Career Advice, Follow Up, Interview Preparation, Application 
 category: Job Search
 slug: how-long-to-hear-back-after-applying
 keywords: how long to hear back after applying, how long does it take to hear back from a job, no response after applying, when to follow up job application, job application response time
-image: public/blog-images/how-long-to-hear-back-after-applying.png
+image: public/blog-images/how-long-to-hear-back-after-applying.webp
 ---
 
 You applied on a Tuesday. By Thursday you're checking your email before you're fully awake. By the following week you're re-reading the posting wondering whether you misread something. By week three you've decided you didn't get it, and you're still checking.

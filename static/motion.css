@@ -1,0 +1,108 @@
+/* ============================================================================
+   motion.css — theTailorCV shared motion layer ("subtle & premium")
+   Loaded site-wide on product pages via _nav.html. Pairs with motion.js.
+
+   Rules this layer obeys:
+   - Animate ONLY transform + opacity (GPU-friendly, no layout thrash).
+   - One house easing + duration scale (custom props below).
+   - prefers-reduced-motion is a hard global off-switch (block at the bottom).
+   - Content is never left hidden by CSS alone: the reveal/meter start states
+     are applied by motion.js (progressive enhancement), so no-JS users and
+     reduced-motion users see everything immediately.
+   ========================================================================== */
+
+:root {
+  --tc-ease: cubic-bezier(.22, .61, .36, 1);   /* existing house curve */
+  --tc-dur: .7s;
+  --tc-dur-fast: .45s;
+  --tc-stagger: 80ms;                          /* per-item row stagger (JS) */
+  --tc-rise: 30px;                             /* reveal travel distance */
+}
+
+/* ── Scroll reveal ─────────────────────────────────────────────────────────
+   motion.js adds .tc-reveal (start) then .tc-in (settled) on scroll-in. */
+.tc-reveal {
+  opacity: 0;
+  transform: translateY(var(--tc-rise));
+  transition: opacity var(--tc-dur) var(--tc-ease),
+              transform var(--tc-dur) var(--tc-ease);
+  will-change: opacity, transform;
+}
+.tc-reveal-left  { transform: translateX(calc(-1 * var(--tc-rise))); }
+.tc-reveal-right { transform: translateX(var(--tc-rise)); }
+.tc-reveal-scale { transform: scale(.96); }
+
+.tc-reveal.tc-in { opacity: 1; transform: none; }
+
+/* Drop will-change once settled so we don't hold GPU layers forever. */
+.tc-reveal.tc-in { will-change: auto; }
+
+/* ── Meter / bar fill ──────────────────────────────────────────────────────
+   Wrap a fill bar as: <div class="tc-meter"><i style="width:84%"></i></div>
+   motion.js sets the start scaleX(0); we just define the transition + origin.
+   Using scaleX (not width) keeps it off the layout path. */
+.tc-meter { overflow: hidden; }
+.tc-meter > i {
+  display: block;
+  height: 100%;
+  transform-origin: left center;
+  transition: transform .9s var(--tc-ease);
+}
+
+/* ── Count-up ──────────────────────────────────────────────────────────────
+   No CSS needed; motion.js drives [data-countup] text. Kept here as a marker
+   so the intent is discoverable from the stylesheet. */
+
+/* ── Loading states (real async waits: optimize / ATS scan) ────────────────*/
+.tc-shimmer {
+  position: relative;
+  background: linear-gradient(100deg,
+      rgba(255, 255, 255, .05) 30%,
+      rgba(255, 255, 255, .14) 50%,
+      rgba(255, 255, 255, .05) 70%);
+  background-size: 200% 100%;
+  animation: tcShimmer 1.3s ease-in-out infinite;
+  border-radius: 8px;
+}
+@keyframes tcShimmer {
+  from { background-position: 200% 0; }
+  to   { background-position: -200% 0; }
+}
+
+.tc-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(125, 211, 252, .25);
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  animation: tcSpin .7s linear infinite;
+}
+@keyframes tcSpin { to { transform: rotate(360deg); } }
+
+/* ── Page-in ───────────────────────────────────────────────────────────────
+   Whisper-subtle fade on first paint. Pure CSS animation with `both` so it
+   ALWAYS lands at opacity:1 even if JS never runs. */
+body {
+  animation: tcPageIn var(--tc-dur-fast) var(--tc-ease) both;
+}
+@keyframes tcPageIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Hard global off-switch for reduced motion ─────────────────────────────*/
+@media (prefers-reduced-motion: reduce) {
+  .tc-reveal,
+  .tc-reveal-left,
+  .tc-reveal-right,
+  .tc-reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .tc-meter > i {
+    transform: none !important;
+    transition: none !important;
+  }
+  .tc-shimmer { animation: none !important; }
+  .tc-spinner { animation: none !important; }
+  body { animation: none !important; }
+}

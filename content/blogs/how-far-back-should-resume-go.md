@@ -7,7 +7,7 @@ tags: [Resume Writing, Work Experience, Resume Tips, ATS Optimization, Career Ad
 category: Resume Writing
 slug: how-far-back-should-resume-go
 keywords: how far back should a resume go, how many years on resume, resume work history length, how far back resume experience, old jobs on resume
-image: public/blog-images/how-far-back-should-resume-go.png
+image: public/blog-images/how-far-back-should-resume-go.webp
 ---
 
 Almost every resume carries at least one job that should not be there. A role from 2004 that has nothing to do with what you do now, a summer job listed for completeness, an early position kept because deleting it feels like erasing history. Meanwhile the roles that actually decide the hire are compressed into three thin bullets because there was no room left.

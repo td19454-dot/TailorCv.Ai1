@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motion preview — theTailorCV</title>
+  <link rel="stylesheet" href="./motion.css?v=1">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #dbe6fb;
+      background:
+        radial-gradient(120% 80% at 50% -10%, rgba(56,189,248,.14), transparent 55%),
+        linear-gradient(180deg, #05102b, #030b1f 60%, #020817);
+      background-attachment: fixed;
+      line-height: 1.55;
+    }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    .hint {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(4,12,32,.82); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(99,130,200,.22);
+      font-size: 13px; color: #9db4de; text-align: center; padding: 9px 16px;
+    }
+    .hint b { color: #7dd3fc; }
+    section { padding: 90px 0; border-bottom: 1px solid rgba(99,130,200,.10); }
+    .kicker { text-transform: uppercase; letter-spacing: .14em; font-size: 12px;
+      font-weight: 700; color: #67b3ff; margin: 0 0 10px; }
+    h1 { font-size: clamp(34px, 6vw, 60px); line-height: 1.05; margin: 0 0 16px;
+      letter-spacing: -.02em; font-weight: 800; color: #f2f7ff; }
+    h2 { font-size: clamp(26px, 3.6vw, 38px); margin: 0 0 10px; letter-spacing: -.01em;
+      font-weight: 700; color: #eef4ff; }
+    .st-hl { color: #7dd3fc; }
+    p.sub { color: #93a7cc; font-size: 17px; max-width: 620px; margin: 0 0 26px; }
+    .spacer { height: 8vh; }
+
+    /* stat row (count-up) */
+    .stat-row { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 30px; }
+    .result-card {
+      flex: 1 1 200px; background: linear-gradient(180deg, rgba(15,32,74,.7), rgba(8,18,46,.7));
+      border: 1px solid rgba(99,130,200,.24); border-radius: 18px; padding: 28px 24px;
+      box-shadow: 0 20px 44px rgba(1,10,40,.4);
+    }
+    .result-metric { font-size: 46px; font-weight: 800; color: #7dd3fc; margin: 0;
+      letter-spacing: -.02em; }
+    .result-label { color: #9db4de; font-size: 14px; margin: 6px 0 0; }
+
+    /* cards grid */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 30px; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .founder-card {
+      background: linear-gradient(180deg, rgba(15,32,74,.55), rgba(8,18,46,.55));
+      border: 1px solid rgba(99,130,200,.22); border-radius: 18px; padding: 26px;
+    }
+    .founder-card h3 { margin: 0 0 8px; color: #eef4ff; font-size: 18px; }
+    .founder-card p { margin: 0; color: #93a7cc; font-size: 14px; }
+
+    /* meters */
+    .mock-card {
+      background: linear-gradient(180deg, rgba(15,32,74,.6), rgba(8,18,46,.6));
+      border: 1px solid rgba(99,130,200,.22); border-radius: 18px; padding: 28px; max-width: 520px;
+    }
+    .mock-row { display: flex; justify-content: space-between; font-size: 14px;
+      color: #cdd9f0; margin: 18px 0 8px; }
+    .mock-row strong { color: #7dd3fc; }
+    .tc-meter { height: 9px; background: rgba(99,130,200,.16); border-radius: 999px; }
+    .tc-meter > i { background: linear-gradient(90deg, #2563eb, #38bdf8); border-radius: 999px; }
+
+    /* loading demo */
+    .skel-card { background: rgba(10,22,50,.5); border: 1px solid rgba(99,130,200,.18);
+      border-radius: 16px; padding: 24px; max-width: 520px; }
+    .tc-shimmer.line { height: 14px; margin: 12px 0; border-radius: 6px; }
+    .tc-shimmer.w70 { width: 70%; } .tc-shimmer.w90 { width: 90%; } .tc-shimmer.w50 { width: 50%; }
+    .spin-row { display: flex; align-items: center; gap: 12px; margin-top: 22px; color: #9db4de; font-size: 14px; }
+
+    .reveal-demos { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; margin-top: 26px; }
+    @media (max-width: 620px) { .reveal-demos { grid-template-columns: 1fr; } }
+    .demo-box { background: rgba(12,26,58,.55); border: 1px solid rgba(99,130,200,.22);
+      border-radius: 14px; padding: 22px; font-weight: 600; color: #cfe0ff; }
+    .demo-box span { display: block; font-size: 12px; color: #7d93b8; font-weight: 500; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="hint">
+    Motion preview &mdash; scroll slowly. Watch things <b>fade &amp; rise</b>, numbers <b>count up</b>,
+    bars <b>sweep in</b>. Turn on OS &ldquo;reduce motion&rdquo; and reload &rarr; everything should appear instantly.
+  </div>
+
+  <div class="wrap">
+
+    <!-- HERO: staggered load-in via data-reveal -->
+    <section style="border:none;">
+      <p class="kicker" data-reveal>Subtle &amp; premium</p>
+      <h1 data-reveal>Motion that feels <span class="st-hl">expensive</span>, never busy</h1>
+      <p class="sub" data-reveal>This is the shared motion system. Everything below uses the same
+        easing and timing so the whole product moves as one.</p>
+      <div class="stat-row">
+        <div class="result-card">
+          <p class="result-metric" data-countup="60%">60%</p>
+          <p class="result-label">Faster interview calls</p>
+        </div>
+        <div class="result-card">
+          <p class="result-metric" data-countup="2x">2x</p>
+          <p class="result-label">Higher shortlist rate</p>
+        </div>
+        <div class="result-card">
+          <p class="result-metric" data-countup="1,240+">1,240+</p>
+          <p class="result-label">Resumes tailored</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <!-- REVEAL VARIANTS -->
+    <section>
+      <p class="kicker">Scroll reveal</p>
+      <h2>Sections <span class="st-hl">rise into place</span></h2>
+      <p class="sub">Cards in a row stagger by a beat. Four directions available for variety.</p>
+      <div class="reveal-demos">
+        <div class="demo-box" data-reveal>Rise up<span>default</span></div>
+        <div class="demo-box tc-reveal-scale" data-reveal>Scale in<span>tc-reveal-scale</span></div>
+        <div class="demo-box tc-reveal-left" data-reveal>From left<span>tc-reveal-left</span></div>
+        <div class="demo-box tc-reveal-right" data-reveal>From right<span>tc-reveal-right</span></div>
+      </div>
+    </section>
+
+    <!-- STAGGER GRID -->
+    <section>
+      <p class="kicker">Stagger</p>
+      <h2>A grid that <span class="st-hl">cascades</span></h2>
+      <div class="grid">
+        <div class="founder-card"><h3>Card one</h3><p>Staggered 0ms.</p></div>
+        <div class="founder-card"><h3>Card two</h3><p>Staggered 80ms.</p></div>
+        <div class="founder-card"><h3>Card three</h3><p>Staggered 160ms.</p></div>
+      </div>
+    </section>
+
+    <!-- METERS -->
+    <section>
+      <p class="kicker">Meter fill</p>
+      <h2>ATS bars <span class="st-hl">sweep in</span></h2>
+      <p class="sub">Perfect for the ATS report. Animates on the GPU (scaleX), not layout.</p>
+      <div class="mock-card">
+        <div class="mock-row"><span>Keyword match</span><strong>84%</strong></div>
+        <div class="tc-meter"><i style="width:84%"></i></div>
+        <div class="mock-row"><span>Format compliance</span><strong>92%</strong></div>
+        <div class="tc-meter"><i style="width:92%"></i></div>
+        <div class="mock-row"><span>Role relevance</span><strong>79%</strong></div>
+        <div class="tc-meter"><i style="width:79%"></i></div>
+      </div>
+    </section>
+
+    <!-- LOADING -->
+    <section style="border:none;">
+      <p class="kicker">Loading states</p>
+      <h2>Waits that feel <span class="st-hl">shorter</span></h2>
+      <p class="sub">For real async waits (resume optimize, ATS scan). Skeleton shimmer + spinner.</p>
+      <div class="skel-card">
+        <div class="tc-shimmer line w90"></div>
+        <div class="tc-shimmer line w70"></div>
+        <div class="tc-shimmer line w50"></div>
+        <div class="spin-row"><span class="tc-spinner"></span> Optimizing your resume&hellip;</div>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+  </div>
+
+  <script defer src="./motion.js?v=1"></script>
+</body>
+</html>

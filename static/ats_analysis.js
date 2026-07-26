@@ -267,13 +267,40 @@
     const numEl   = document.getElementById("score-number");
     const ringEl  = document.getElementById("ring-fill");
     const titleEl = document.getElementById("match-badge");
+    const reduce  = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const target  = Math.round(score);
 
-    if (numEl)  numEl.textContent = Math.round(score);
     if (ringEl) {
-      ringEl.style.stroke = style.stroke;
-      ringEl.style.strokeDasharray  = circ;
-      ringEl.style.strokeDashoffset = circ;
-      requestAnimationFrame(() => { ringEl.style.strokeDashoffset = offset; });
+      ringEl.style.strokeDasharray = circ;
+      if (reduce) {
+        ringEl.style.stroke = style.stroke;               // final color, no animation
+        ringEl.style.strokeDashoffset = offset;
+      } else {
+        ringEl.style.stroke = scoreColor(0).stroke;       // start in the red zone
+        ringEl.style.strokeDashoffset = circ;             // start empty
+        requestAnimationFrame(() => { ringEl.style.strokeDashoffset = offset; }); // CSS 1.2s fill
+      }
+    }
+    if (numEl) {
+      if (reduce) {
+        numEl.textContent = target;                        // final value instantly
+      } else {
+        // Count 0 → score in sync with the 1.2s ring fill, sweeping the ring
+        // color red → amber → green through the same thresholds as the badge.
+        let start = null;
+        const dur = 1200;
+        const step = (ts) => {
+          if (ts === undefined) { requestAnimationFrame(step); return; }
+          if (start === null) start = ts;
+          const t = Math.min((ts - start) / dur, 1);
+          const cur = target * (1 - Math.pow(1 - t, 3));
+          numEl.textContent = Math.round(cur);
+          if (ringEl) ringEl.style.stroke = scoreColor(cur).stroke;
+          if (t < 1) requestAnimationFrame(step);
+          else { numEl.textContent = String(target); if (ringEl) ringEl.style.stroke = style.stroke; }
+        };
+        step();
+      }
     }
     if (titleEl) {
       titleEl.textContent = style.label;
@@ -679,9 +706,9 @@
     const layout = document.querySelector(".analysis-layout");
     if (!layout) return;
     layout.innerHTML = `
-      <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:80px 20px;text-align:center;">
+      <div class="tcx-empty" style="flex:1;display:flex;align-items:center;justify-content:center;padding:80px 20px;text-align:center;">
         <div>
-          <div style="font-size:48px;margin-bottom:16px;">📄</div>
+          <div class="tcx-empty-ic" style="font-size:48px;margin-bottom:16px;">📄</div>
           <h2 style="margin-bottom:8px;color:var(--text);">No analysis found</h2>
           <p style="color:var(--muted);margin-bottom:24px;">Run an ATS analysis first from the Solutions page.</p>
           <a href="/solutions" class="btn-primary"

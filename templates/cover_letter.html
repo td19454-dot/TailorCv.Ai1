@@ -561,7 +561,7 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=15"></script>
+    <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
     <script>
     (function () {
@@ -2353,6 +2353,53 @@ Nice to have:
     requestAnimationFrame(draw);
   }
   draw();
+})();
+</script>
+
+<!-- Cover Letter motion (scoped to /cover-letter): reveal hero/steps/cards,
+     stagger the 3 steps, and cross-fade the live preview on template switch.
+     Reduced-motion safe. -->
+<style>
+@media (prefers-reduced-motion: no-preference) {
+  body.tcx-cl .tc-reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1);
+    will-change: opacity, transform;
+  }
+  body.tcx-cl .tc-reveal.tc-in { opacity: 1; transform: none; will-change: auto; }
+  body.tcx-cl #cl-preview { transition: opacity .28s ease; }
+  body.tcx-cl #cl-preview.tcx-fading { opacity: 0; }
+}
+</style>
+<script>
+(function () {
+  var path = (location.pathname || '/').replace(/\/+$/, '') || '/';
+  if (path !== '/cover-letter') return;
+  document.body.classList.add('tcx-cl');
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Reveal hero, step cards, and form cards (staggered).
+  var els = [];
+  document.querySelectorAll('.cl-hero-card, .cl-step, .cl-card, .cl-templates').forEach(function (el) {
+    el.classList.add('tc-reveal'); els.push(el);
+  });
+  document.querySelectorAll('.cl-steps .cl-step.tc-reveal').forEach(function (el, i) {
+    el.style.transitionDelay = (i * 90) + 'ms';
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('tc-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (el) { io.observe(el); });
+  setTimeout(function () { els.forEach(function (el) { el.classList.add('tc-in'); }); }, 2500);
+
+  // Cross-fade the live preview when a template is switched or it reloads.
+  var preview = document.getElementById('cl-preview');
+  var templates = document.querySelector('.cl-templates');
+  if (preview && templates) {
+    templates.addEventListener('click', function () { preview.classList.add('tcx-fading'); });
+    preview.addEventListener('load', function () { preview.classList.remove('tcx-fading'); });
+  }
 })();
 </script>
 {% endif %}
