@@ -128,16 +128,30 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: transparent;
-            border: none;
+            background: #f4f6fb;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            box-shadow: 0 8px 18px rgba(2, 6, 23, 0.28);
             overflow: hidden;
             flex-shrink: 0;
+            padding: 22px;
+            box-sizing: border-box;
         }
         .hired-logo-box img {
-            width: 128px;
-            height: 128px;
+            width: 100%;
+            height: 100%;
+            max-width: 96px;
+            max-height: 96px;
             object-fit: contain;
             display: block;
+        }
+        /* A few brand logos (TCS, Rubrik, Atlassian) ship with an opaque
+           black background baked into the image itself — there's no
+           transparent asset to fall back to, so give those a matching dark
+           chip instead of letting the raw black square clash with the light
+           ones. Same radius/padding/shadow as the light variant. */
+        .hired-logo-box.dark {
+            background: #0f1b2e;
+            border-color: rgba(255,255,255,0.08);
         }
         .hired-company-name {
             font-size: 0.75rem;
@@ -210,13 +224,14 @@
                 padding: 1rem 1.4rem;
             }
             .hired-logo-box {
-                width: 110px;
-                height: 110px;
-                border-radius: 20px;
-            }
-            .hired-logo-box img {
                 width: 100px;
                 height: 100px;
+                border-radius: 18px;
+                padding: 16px;
+            }
+            .hired-logo-box img {
+                max-width: 68px;
+                max-height: 68px;
             }
             .hired-company-name { max-width: 110px; font-size: 0.68rem; }
         }
@@ -419,68 +434,89 @@
         #ats-start {
             scroll-margin-top: 130px;
         }
+        /* "Get ATS Score" / "Optimize Resume" — plane-style launch button
+           (Uiverse.io by marcelodolza), simplified to a single stable state:
+           the real click handler (main_new.js) already swaps .btn-text's
+           textContent to "Analyzing…"/"Optimizing…" and toggles .btn-loader
+           directly, so this keeps those two elements instead of the recipe's
+           own default/sent letter-animation states, which would conflict. */
         .cv2-actions .btn.cv2-uiverse-btn {
-            outline: none;
+            --primary: #93c5fd;
+            --neutral-1: #12213f;
+            --neutral-2: #0a1730;
+            --radius: 500px;
+            all: unset;
+            box-sizing: border-box;
             cursor: pointer;
+            border-radius: var(--radius);
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,.3);
             border: none;
+            box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.15), 0 6px 18px rgba(2,6,23,.4);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all .3s ease;
             padding: 0.9rem 2rem;
-            margin: 0;
+            min-height: 60px;
             font-family: inherit;
             font-size: 17px;
-            position: relative;
-            display: inline-block;
-            letter-spacing: 0.05rem;
             font-weight: 700;
-            border-radius: 500px;
-            overflow: hidden;
-            background: #66ff66;
-            color: ghostwhite;
-            min-height: 60px;
-            height: 60px;
-            transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease, transform 0.28s ease;
+            letter-spacing: 0.02rem;
+        }
+        .cv2-actions .btn.btn-primary.cv2-uiverse-btn {
+            --neutral-1: #3b82f6;
+            --neutral-2: #1d4ed8;
+        }
+        .cv2-actions .btn.cv2-uiverse-btn:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 0 1px 2px rgba(255,255,255,.25), 0 10px 24px rgba(2,6,23,.5);
+        }
+        .cv2-actions .btn.cv2-uiverse-btn:active { transform: scale(1); }
+        .cv2-actions .btn.cv2-uiverse-btn::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius);
+            border: 2px solid transparent;
+            background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+                linear-gradient(to bottom, rgba(255,255,255,.08), rgba(0,0,0,.4)) border-box;
+            z-index: 0;
+            transition: all .4s ease;
+        }
+        .cv2-actions .btn.cv2-uiverse-btn:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,.6); }
+        .cv2-actions .btn.cv2-uiverse-btn::before {
+            content: "";
+            inset: 3px;
+            position: absolute;
+            background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+            border-radius: var(--radius);
+            filter: blur(0.5px);
+            z-index: 1;
         }
         .cv2-actions .btn.cv2-uiverse-btn .btn-text,
         .cv2-actions .btn.cv2-uiverse-btn .btn-loader {
             position: relative;
-            z-index: 10;
-            transition: color 0.4s;
+            z-index: 2;
         }
-        .cv2-actions .btn.cv2-uiverse-btn:hover .btn-text,
-        .cv2-actions .btn.cv2-uiverse-btn:hover .btn-loader {
-            color: #0b1020;
+        .cv2-launch-outline {
+            position: absolute; border-radius: inherit; overflow: hidden; z-index: 1;
+            opacity: 0; transition: opacity .4s ease; inset: -2px -3px;
+            pointer-events: none;
         }
-        .cv2-actions .btn.cv2-uiverse-btn::before,
-        .cv2-actions .btn.cv2-uiverse-btn::after {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+        .cv2-launch-outline::before {
+            content: ""; position: absolute; inset: -100%;
+            background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
+            animation: cv2-launch-spin 2s linear infinite;
+            animation-play-state: paused;
         }
-        .cv2-actions .btn.cv2-uiverse-btn::before {
-            content: "";
-            
-            width: 120%;
-            left: -10%;
-            transform: skew(30deg);
-            transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
-        }
-        .cv2-actions .btn.cv2-uiverse-btn:hover::before {
-            transform: translate3d(100%, 0, 0);
-        }
-        .cv2-actions .btn.btn-secondary.cv2-uiverse-btn:hover {
-            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-            border-color: rgba(191, 219, 254, 0.95);
-            color: #0b1020;
-        }
-        .cv2-actions .btn.btn-primary.cv2-uiverse-btn:hover {
-            background: linear-gradient(135deg, #a78bfa 0%, #7a09f4 100%);
-            border-color: rgba(165, 243, 252, 0.95);
-            color: #0b1020;
-        }
-        .cv2-actions .btn.cv2-uiverse-btn:hover::after {
-            background: linear-gradient(135deg, #a78bfa 0%, #7a09f4  100%) !important;
+        .cv2-actions .btn.cv2-uiverse-btn:hover .cv2-launch-outline { opacity: 1; }
+        .cv2-actions .btn.cv2-uiverse-btn:hover .cv2-launch-outline::before { animation-play-state: running; }
+        @keyframes cv2-launch-spin { to { transform: rotate(360deg); } }
+        @media (prefers-reduced-motion: reduce) {
+            .cv2-actions .btn.cv2-uiverse-btn, .cv2-actions .btn.cv2-uiverse-btn *,
+            .cv2-launch-outline::before { animation: none !important; transition: none !important; }
         }
         #job-description.form-textarea {
             min-height: 206px;
@@ -696,6 +732,16 @@
                 width: 100% !important;
             }
         }
+
+        /* Lighter font weights across the solutions/ATS-tool page content. */
+        .cv2-solutions, .cv2-solutions * {
+            font-weight: 400 !important;
+        }
+        .cv2-solutions h1, .cv2-solutions h2, .cv2-solutions h3,
+        .cv2-solutions button, .cv2-solutions .btn,
+        .cv2-solutions strong, .cv2-solutions b {
+            font-weight: 500 !important;
+        }
     </style>
 </head>
 <body>
@@ -787,12 +833,14 @@
 
                             <div id="ats-start" class="form-actions cv2-actions">
                                 <button type="button" id="analyze-btn" class="btn btn-secondary cv2-uiverse-btn">
+                                    <div class="cv2-launch-outline"></div>
                                     <span class="btn-text">Get ATS Score</span>
                                     <span class="btn-loader" style="display: none;">?</span>
                                 </button>
-                               
+
 
                                 <button type="button" id="optimize-btn" class="btn btn-primary cv2-uiverse-btn">
+                                    <div class="cv2-launch-outline"></div>
                                     <span class="btn-text">Optimize Resume</span>
                                     <span class="btn-loader" style="display: none;">?</span>
                                 </button>
@@ -2422,9 +2470,9 @@ Nice to have:
     // All logos interleaved: big-name and niche/consulting alternate
     var COMPANIES = [
         { name: 'Netflix',       img: '/static/company_logos/netflix.png'          },
-        { name: 'TCS',           img: '/static/company_logos/tcs.png'              },
+        { name: 'TCS',           img: '/static/company_logos/tcs.png',       dark: true },
         { name: 'Google',        img: '/static/company_logos/google.webp'          },
-        { name: 'Rubrik',        img: '/static/company_logos/rubrik.png'           },
+        { name: 'Rubrik',        img: '/static/company_logos/rubrik.png',    dark: true },
         { name: 'Microsoft',     img: '/static/company_logos/microsoft.png'        },
         { name: 'Goldman Sachs', img: '/static/company_logos/goldmansachs.png'     },
         { name: 'Amazon',        img: '/static/company_logos/amazon.png'           },
@@ -2432,10 +2480,10 @@ Nice to have:
         { name: 'Meta',          img: '/static/company_logos/meta.jpg'             },
         { name: 'McKinsey',      img: '/static/company_logos/mckinsey.png'         },
         { name: 'Databricks',    img: '/static/company_logos/databricks.png'       },
-        { name: 'Atlassian',     img: '/static/company_logos/atlssain.png'         },
+        { name: 'Atlassian',     img: '/static/company_logos/atlssain.png',  dark: true },
         { name: 'Oracle',        img: '/static/company_logos/oracle.png'           },
         { name: 'Uber',          img: '/static/company_logos/uber.png'             },
-        { name: 'Apple',         img: '/static/company_logos/apple_logo_black.svg', filter: 'brightness(0) invert(1)' },
+        { name: 'Apple',         img: '/static/company_logos/apple_logo_black.svg' },
     ];
 
     // Fisher-Yates shuffle so the mix is different on every page load
@@ -2460,7 +2508,7 @@ Nice to have:
         card.dataset.slot = slotIdx;
 
         var box = document.createElement('div');
-        box.className = 'hired-logo-box';
+        box.className = 'hired-logo-box' + (co.dark ? ' dark' : '');
 
         var img = document.createElement('img');
         img.src = co.img;
