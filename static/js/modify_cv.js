@@ -569,7 +569,6 @@
     }
 
     function setupActionButtons() {
-        const saveBtn = document.getElementById("save-draft-btn");
         const downloadBtn = document.getElementById("download-pdf-btn");
         const reoptBtn = document.getElementById("reoptimize-btn");
 
@@ -578,16 +577,8 @@
             window.location.href = `/login?next=${nextUrl}`;
         }
 
-        if (saveBtn) {
-            saveBtn.textContent = "Saved automatically";
-            saveBtn.addEventListener("click", () => {
-                persistDraft();
-                alert("Your CV is already auto-saved while you type.");
-            });
-        }
-
         if (downloadBtn) {
-            const downloadBtnLabel = downloadBtn.textContent;
+            const downloadBtnLabel = downloadBtn.innerHTML;
             function setDownloadLoading(on) {
                 downloadBtn.disabled = on;
                 downloadBtn.innerHTML = on

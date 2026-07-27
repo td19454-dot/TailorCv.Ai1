@@ -8,7 +8,7 @@
     <title>ATS-Friendly Resume Builder, Free Resume Maker | TailorCV</title>
     {% include "_seo_head.html" %}
 <link rel="stylesheet" href="/static/header-footer.css?v=8">
-    <link rel="stylesheet" href="/static/modify_cv.css?v=28">
+    <link rel="stylesheet" href="/static/modify_cv.css?v=30">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -312,12 +312,40 @@
 <button
                                 id="cv-upload-import-btn"
                                 type="button"
-                                style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;border:1px solid rgba(16,185,129,0.5);background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(16,185,129,0.06));color:#6ee7b7;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:border-color .2s,box-shadow .2s;"
-                                onmouseover="this.style.borderColor='rgba(16,185,129,0.85)';this.style.boxShadow='0 4px 14px rgba(16,185,129,0.22)';"
-                                onmouseout="this.style.borderColor='rgba(16,185,129,0.5)';this.style.boxShadow='';"
+                                class="mcv-upload-btn"
                             >
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-                                Upload Existing CV
+                                <div class="mcv-upload-outline"></div>
+                                <div class="mcv-upload-state mcv-upload-state--default">
+                                    <div class="mcv-upload-icon">
+                                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g style="filter:url(#mcv-upload-shadow)">
+                                                <path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="currentColor"></path>
+                                                <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="currentColor"></path>
+                                            </g>
+                                            <defs>
+                                                <filter id="mcv-upload-shadow">
+                                                    <feDropShadow dx="0" dy="1" stdDeviation="0.6" flood-opacity="0.5"></feDropShadow>
+                                                </filter>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        <span style="--i:0">U</span><span style="--i:1">p</span><span style="--i:2">l</span><span style="--i:3">o</span><span style="--i:4">a</span><span style="--i:5">d</span><span style="--i:6">&nbsp;</span><span style="--i:7">E</span><span style="--i:8">x</span><span style="--i:9">i</span><span style="--i:10">s</span><span style="--i:11">t</span><span style="--i:12">i</span><span style="--i:13">n</span><span style="--i:14">g</span><span style="--i:15">&nbsp;</span><span style="--i:16">C</span><span style="--i:17">V</span>
+                                    </p>
+                                </div>
+                                <div class="mcv-upload-state mcv-upload-state--sent">
+                                    <div class="mcv-upload-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                                            <g style="filter:url(#mcv-upload-shadow)">
+                                                <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                                <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <p>
+                                        <span style="--i:8">O</span><span style="--i:9">p</span><span style="--i:10">e</span><span style="--i:11">n</span><span style="--i:12">i</span><span style="--i:13">n</span><span style="--i:14">g</span>
+                                    </p>
+                                </div>
                             </button>
                             <button
                                 id="linkedin-import-btn"
@@ -331,28 +359,59 @@
                             </button>
                         </div>
                     </div>
-                    <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;">
-                        <span style="display:flex;align-items:center;gap:6px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);border-radius:999px;padding:6px 14px;font-size:13px;color:#93c5fd;font-weight:500;">
-                            <span style="background:#3b82f6;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">1</span>
-                            Fill in your details
-                        </span>
-                        <span style="display:flex;align-items:center;gap:6px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);border-radius:999px;padding:6px 14px;font-size:13px;color:#93c5fd;font-weight:500;">
-                            <span style="background:#3b82f6;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">2</span>
-                            Pick a template from the sidebar
-                        </span>
-                        <span style="display:flex;align-items:center;gap:6px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);border-radius:999px;padding:6px 14px;font-size:13px;color:#93c5fd;font-weight:500;">
-                            <span style="background:#3b82f6;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;">3</span>
-                            Download your PDF
-                        </span>
-                    </div>
                 </div>
 
                 <div id="sections-container" class="sections-container" style="pointer-events: auto;"></div>
 
                 <div class="modify-cv-actions form-card">
-                    <button id="save-draft-btn" class="btn btn-secondary" type="button">Save Draft</button>
-                    <button id="download-pdf-btn" class="btn btn-primary" type="button">Download PDF</button>
-                    <button id="reoptimize-btn" class="btn btn-primary" type="button">Re-optimize with AI</button>
+                    <button id="download-pdf-btn" class="btn btn-primary mcv-dl-btn" type="button">
+                        <div class="mcv-dl-outline"></div>
+                        <div class="mcv-dl-state mcv-dl-state--default">
+                            <div class="mcv-dl-icon">
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path>
+                                </svg>
+                            </div>
+                            <p>
+                                <span style="--i:0">D</span><span style="--i:1">o</span><span style="--i:2">w</span><span style="--i:3">n</span><span style="--i:4">l</span><span style="--i:5">o</span><span style="--i:6">a</span><span style="--i:7">d</span><span style="--i:8">&nbsp;</span><span style="--i:9">P</span><span style="--i:10">D</span><span style="--i:11">F</span>
+                            </p>
+                        </div>
+                        <div class="mcv-dl-state mcv-dl-state--sent">
+                            <div class="mcv-dl-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                                    <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                    <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                                </svg>
+                            </div>
+                            <p>
+                                <span style="--i:8">D</span><span style="--i:9">o</span><span style="--i:10">w</span><span style="--i:11">n</span><span style="--i:12">l</span><span style="--i:13">o</span><span style="--i:14">a</span><span style="--i:15">d</span><span style="--i:16">i</span><span style="--i:17">n</span><span style="--i:18">g</span>
+                            </p>
+                        </div>
+                    </button>
+                    <button id="reoptimize-btn" class="btn btn-primary mcv-reopt-btn" type="button">
+                        <div class="mcv-reopt-outline"></div>
+                        <div class="mcv-reopt-state mcv-reopt-state--default">
+                            <div class="mcv-reopt-icon">
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                                </svg>
+                            </div>
+                            <p>
+                                <span style="--i:0">R</span><span style="--i:1">e</span><span style="--i:2">-</span><span style="--i:3">o</span><span style="--i:4">p</span><span style="--i:5">t</span><span style="--i:6">i</span><span style="--i:7">m</span><span style="--i:8">i</span><span style="--i:9">z</span><span style="--i:10">e</span><span style="--i:11">&nbsp;</span><span style="--i:12">w</span><span style="--i:13">i</span><span style="--i:14">t</span><span style="--i:15">h</span><span style="--i:16">&nbsp;</span><span style="--i:17">A</span><span style="--i:18">I</span>
+                            </p>
+                        </div>
+                        <div class="mcv-reopt-state mcv-reopt-state--sent">
+                            <div class="mcv-reopt-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                                    <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                    <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                                </svg>
+                            </div>
+                            <p>
+                                <span style="--i:8">G</span><span style="--i:9">o</span><span style="--i:10">i</span><span style="--i:11">n</span><span style="--i:12">g</span>
+                            </p>
+                        </div>
+                    </button>
                 </div>
             </main>
 
@@ -450,7 +509,7 @@
 
     <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
-    {% if is_logged_in %}<script src="/static/js/modify_cv.js?v=29"></script>{% endif %}
+    {% if is_logged_in %}<script src="/static/js/modify_cv.js?v=31"></script>{% endif %}
 <script>
 (function(){
   const canvas = document.getElementById('wave-canvas');
@@ -534,6 +593,294 @@
 @keyframes dlPulseSuccess {
   0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
   50%      { box-shadow: 0 0 0 8px rgba(34,197,94,.3); }
+}
+
+/* Global app-shell rule (header.navbar + * { padding-top:16px !important })
+   still leaves visible clearance below the fixed top bar on this page.
+   Override scoped to just this page's section, not the shared rule. */
+html.tcv-app header.navbar + .modify-cv-section { padding-top: 0 !important; }
+
+/* "Upload Existing CV" — plane-style launch button (Uiverse.io by
+   marcelodolza), recolored to this button's existing emerald accent.
+   Classes prefixed mcv-upload- to stay scoped to this button only. */
+.mcv-upload-btn {
+  --primary: #6ee7b7;
+  --neutral-1: #10b981;
+  --neutral-2: #047857;
+  --radius: 12px;
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: var(--radius);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  border: none;
+  box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 6px 18px rgba(16,185,129,.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all .3s ease;
+  padding: 14px 24px;
+  min-height: 50px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.mcv-upload-btn:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 10px 24px rgba(16,185,129,.5);
+}
+.mcv-upload-btn:active { transform: scale(1); }
+.mcv-upload-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+    linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+  z-index: 0;
+  transition: all .4s ease;
+}
+.mcv-upload-btn:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,1); }
+.mcv-upload-btn::before {
+  content: "";
+  inset: 4px;
+  position: absolute;
+  background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+  border-radius: 18px;
+  filter: blur(0.5px);
+  z-index: 2;
+}
+.mcv-upload-state p { display: flex; align-items: center; justify-content: center; }
+.mcv-upload-icon {
+  position: absolute; left: 0; top: 0; bottom: 0; margin: auto;
+  transform: scale(1);
+  transition: all .3s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.mcv-upload-icon svg { overflow: visible; width: 19px; height: 19px; }
+.mcv-upload-outline {
+  position: absolute; border-radius: inherit; overflow: hidden; z-index: 1;
+  opacity: 0; transition: opacity .4s ease; inset: -2px -3px;
+}
+.mcv-upload-outline::before {
+  content: ""; position: absolute; inset: -100%;
+  background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
+  animation: mcv-upload-spin 2s linear infinite;
+  animation-play-state: paused;
+}
+.mcv-upload-btn:hover .mcv-upload-outline { opacity: 1; }
+.mcv-upload-btn:hover .mcv-upload-outline::before { animation-play-state: running; }
+.mcv-upload-state p span {
+  display: block; opacity: 0;
+  animation: mcv-upload-slideDown .8s ease forwards calc(var(--i) * .025s);
+}
+.mcv-upload-btn:hover p span {
+  opacity: 1;
+  animation: mcv-upload-wave .5s ease forwards calc(var(--i) * .015s);
+}
+.mcv-upload-btn:focus p span {
+  opacity: 1;
+  animation: mcv-upload-disapear .6s ease forwards calc(var(--i) * .02s);
+}
+.mcv-upload-state--default .mcv-upload-icon svg { animation: mcv-upload-land .6s ease forwards; }
+.mcv-upload-btn:hover .mcv-upload-state--default .mcv-upload-icon { transform: rotate(45deg); }
+.mcv-upload-btn:focus .mcv-upload-state--default svg { animation: mcv-upload-takeOff .8s linear forwards; }
+.mcv-upload-btn:focus .mcv-upload-state--default .mcv-upload-icon { transform: rotate(0); }
+.mcv-upload-state {
+  padding-left: 26px; z-index: 2; display: flex; position: relative;
+}
+.mcv-upload-state--sent { display: none; }
+.mcv-upload-state--sent svg { transform: scale(1); margin-right: 6px; }
+.mcv-upload-btn:focus .mcv-upload-state--default { position: absolute; }
+.mcv-upload-btn:focus .mcv-upload-state--sent { display: flex; }
+.mcv-upload-btn:focus .mcv-upload-state--sent span {
+  opacity: 0;
+  animation: mcv-upload-slideDown .8s ease forwards calc(var(--i) * .15s);
+}
+.mcv-upload-btn:focus .mcv-upload-state--sent .mcv-upload-icon svg {
+  opacity: 0;
+  animation: mcv-upload-appear 1.2s ease forwards .8s;
+}
+@keyframes mcv-upload-spin { to { transform: rotate(360deg); } }
+@keyframes mcv-upload-wave {
+  30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); }
+  50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: var(--primary); }
+  100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+}
+@keyframes mcv-upload-slideDown {
+  0% { opacity: 0; transform: translateY(-14px) translateX(4px) rotate(-90deg); color: #fff; filter: blur(4px); }
+  30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); filter: blur(0); color: #fff; }
+  50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: #fff; }
+  100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+}
+@keyframes mcv-upload-disapear {
+  from { opacity: 1; }
+  to { opacity: 0; transform: translateX(4px) translateY(14px); color: var(--primary); filter: blur(4px); }
+}
+@keyframes mcv-upload-takeOff {
+  0% { opacity: 1; }
+  60% { opacity: 1; transform: translateX(46px) rotate(45deg) scale(1.6); }
+  100% { opacity: 0; transform: translateX(100px) rotate(45deg) scale(0); }
+}
+@keyframes mcv-upload-land {
+  0% { transform: translateX(-36px) translateY(18px) rotate(-50deg) scale(1.6); opacity: 0; filter: blur(2px); }
+  100% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; filter: blur(0); }
+}
+@keyframes mcv-upload-appear {
+  0% { opacity: 0; transform: scale(3) rotate(-40deg); color: var(--primary); filter: blur(3px); }
+  30% { opacity: 1; transform: scale(.6); filter: blur(1px); }
+  50% { opacity: 1; transform: scale(1.2); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mcv-upload-btn, .mcv-upload-btn *, .mcv-upload-outline::before { animation: none !important; transition: none !important; }
+  .mcv-upload-state p span { opacity: 1 !important; }
+}
+
+/* "Download PDF" and "Re-optimize with AI" — same plane-style launch button
+   as Upload Existing CV, recolored to these buttons' existing blue/violet
+   gradient. Classes prefixed mcv-dl- / mcv-reopt- to stay scoped. */
+.mcv-dl-btn, .mcv-reopt-btn {
+  --primary: #a9c3ff;
+  --neutral-1: #2563eb;
+  --neutral-2: #7c3aed;
+  --radius: 12px;
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: var(--radius);
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  border: none;
+  box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 6px 18px rgba(37,99,235,.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all .3s ease;
+  padding: 22px 36px;
+  min-height: 66px;
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.mcv-dl-btn:hover, .mcv-reopt-btn:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 10px 24px rgba(37,99,235,.5);
+}
+.mcv-dl-btn:active, .mcv-reopt-btn:active { transform: scale(1); }
+.mcv-dl-btn::after, .mcv-reopt-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+    linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+  z-index: 0;
+  transition: all .4s ease;
+}
+.mcv-dl-btn:hover::after, .mcv-reopt-btn:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,1); }
+.mcv-dl-btn::before, .mcv-reopt-btn::before {
+  content: "";
+  inset: 4px;
+  position: absolute;
+  background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+  border-radius: 18px;
+  filter: blur(0.5px);
+  z-index: 2;
+}
+.mcv-dl-state p, .mcv-reopt-state p { display: flex; align-items: center; justify-content: center; }
+.mcv-dl-icon, .mcv-reopt-icon {
+  position: absolute; left: 0; top: 0; bottom: 0; margin: auto;
+  transform: scale(1);
+  transition: all .3s ease;
+  display: flex; align-items: center; justify-content: center;
+}
+.mcv-dl-icon svg, .mcv-reopt-icon svg { overflow: visible; width: 27px; height: 27px; }
+.mcv-dl-outline, .mcv-reopt-outline {
+  position: absolute; border-radius: inherit; overflow: hidden; z-index: 1;
+  opacity: 0; transition: opacity .4s ease; inset: -2px -3px;
+}
+.mcv-dl-outline::before, .mcv-reopt-outline::before {
+  content: ""; position: absolute; inset: -100%;
+  background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
+  animation: mcv-dl-spin 2s linear infinite;
+  animation-play-state: paused;
+}
+.mcv-dl-btn:hover .mcv-dl-outline, .mcv-reopt-btn:hover .mcv-reopt-outline { opacity: 1; }
+.mcv-dl-btn:hover .mcv-dl-outline::before, .mcv-reopt-btn:hover .mcv-reopt-outline::before { animation-play-state: running; }
+.mcv-dl-state p span, .mcv-reopt-state p span {
+  display: block; opacity: 0;
+  animation: mcv-dl-slideDown .8s ease forwards calc(var(--i) * .025s);
+}
+.mcv-dl-btn:hover p span, .mcv-reopt-btn:hover p span {
+  opacity: 1;
+  animation: mcv-dl-wave .5s ease forwards calc(var(--i) * .015s);
+}
+.mcv-dl-btn:focus p span, .mcv-reopt-btn:focus p span {
+  opacity: 1;
+  animation: mcv-dl-disapear .6s ease forwards calc(var(--i) * .02s);
+}
+.mcv-dl-state--default .mcv-dl-icon svg, .mcv-reopt-state--default .mcv-reopt-icon svg { animation: mcv-dl-land .6s ease forwards; }
+.mcv-dl-btn:hover .mcv-dl-state--default .mcv-dl-icon, .mcv-reopt-btn:hover .mcv-reopt-state--default .mcv-reopt-icon { transform: rotate(45deg); }
+.mcv-dl-btn:focus .mcv-dl-state--default svg, .mcv-reopt-btn:focus .mcv-reopt-state--default svg { animation: mcv-dl-takeOff .8s linear forwards; }
+.mcv-dl-btn:focus .mcv-dl-state--default .mcv-dl-icon, .mcv-reopt-btn:focus .mcv-reopt-state--default .mcv-reopt-icon { transform: rotate(0); }
+.mcv-dl-state, .mcv-reopt-state {
+  padding-left: 38px; z-index: 2; display: flex; position: relative;
+}
+.mcv-dl-state--sent, .mcv-reopt-state--sent { display: none; }
+.mcv-dl-state--sent svg, .mcv-reopt-state--sent svg { transform: scale(1); margin-right: 6px; }
+.mcv-dl-btn:focus .mcv-dl-state--default, .mcv-reopt-btn:focus .mcv-reopt-state--default { position: absolute; }
+.mcv-dl-btn:focus .mcv-dl-state--sent, .mcv-reopt-btn:focus .mcv-reopt-state--sent { display: flex; }
+.mcv-dl-btn:focus .mcv-dl-state--sent span, .mcv-reopt-btn:focus .mcv-reopt-state--sent span {
+  opacity: 0;
+  animation: mcv-dl-slideDown .8s ease forwards calc(var(--i) * .15s);
+}
+.mcv-dl-btn:focus .mcv-dl-state--sent .mcv-dl-icon svg, .mcv-reopt-btn:focus .mcv-reopt-state--sent .mcv-reopt-icon svg {
+  opacity: 0;
+  animation: mcv-dl-appear 1.2s ease forwards .8s;
+}
+@keyframes mcv-dl-spin { to { transform: rotate(360deg); } }
+@keyframes mcv-dl-wave {
+  30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); }
+  50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: var(--primary); }
+  100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+}
+@keyframes mcv-dl-slideDown {
+  0% { opacity: 0; transform: translateY(-14px) translateX(4px) rotate(-90deg); color: #fff; filter: blur(4px); }
+  30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); filter: blur(0); color: #fff; }
+  50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: #fff; }
+  100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+}
+@keyframes mcv-dl-disapear {
+  from { opacity: 1; }
+  to { opacity: 0; transform: translateX(4px) translateY(14px); color: var(--primary); filter: blur(4px); }
+}
+@keyframes mcv-dl-takeOff {
+  0% { opacity: 1; }
+  60% { opacity: 1; transform: translateX(46px) rotate(45deg) scale(1.6); }
+  100% { opacity: 0; transform: translateX(100px) rotate(45deg) scale(0); }
+}
+@keyframes mcv-dl-land {
+  0% { transform: translateX(-36px) translateY(18px) rotate(-50deg) scale(1.6); opacity: 0; filter: blur(2px); }
+  100% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; filter: blur(0); }
+}
+@keyframes mcv-dl-appear {
+  0% { opacity: 0; transform: scale(3) rotate(-40deg); color: var(--primary); filter: blur(3px); }
+  30% { opacity: 1; transform: scale(.6); filter: blur(1px); }
+  50% { opacity: 1; transform: scale(1.2); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mcv-dl-btn, .mcv-dl-btn *, .mcv-dl-outline::before,
+  .mcv-reopt-btn, .mcv-reopt-btn *, .mcv-reopt-outline::before { animation: none !important; transition: none !important; }
+  .mcv-dl-state p span, .mcv-reopt-state p span { opacity: 1 !important; }
 }
 </style>
 <script>
