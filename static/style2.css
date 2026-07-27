@@ -2606,7 +2606,7 @@ header.navbar + * {
 
 .optimize-progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #3B82F6, #22D3EE, #3B82F6);
+    background: linear-gradient(90deg, #3B82F6, #8B5CF6, #3B82F6);
     border-radius: 10px;
     transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;

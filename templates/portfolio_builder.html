@@ -290,6 +290,14 @@
         /* Success */
         .pb-success { text-align:center; padding: 30px 10px; }
         .pb-success .big { font-size:2.6rem; }
+        /* Celebratory reveal when the portfolio goes live: the card scales/fades
+           in and the emoji does a small check-burst pop. Reduced-motion safe. */
+        @media (prefers-reduced-motion: no-preference) {
+            .pb-success.tcx-reveal { animation: pbSuccessIn .45s cubic-bezier(.22,1,.36,1) both; }
+            @keyframes pbSuccessIn { 0% { opacity: 0; transform: scale(.92) translateY(10px); } 100% { opacity: 1; transform: none; } }
+            .pb-success.tcx-reveal .big { animation: pbBigPop .55s cubic-bezier(.22,1,.36,1) .1s both; }
+            @keyframes pbBigPop { 0% { transform: scale(0) rotate(-15deg); } 60% { transform: scale(1.25) rotate(6deg); } 100% { transform: scale(1) rotate(0); } }
+        }
         .pb-link-box { display:flex; gap:8px; max-width:520px; margin:18px auto; }
         .pb-link-box input { flex:1; }
 
@@ -1200,7 +1208,9 @@
                 const data = await res.json();
                 if (!data.success) { msg("pb-publish-msg", data.error || "Could not publish.", "err"); btn.disabled = false; btn.innerHTML = "🚀 Publish my portfolio"; return; }
                 document.getElementById("pb-publish-pre").style.display = "none";
-                const succ = document.getElementById("pb-success"); succ.style.display = "block";
+                const succ = document.getElementById("pb-success");
+                succ.style.display = "block";
+                succ.classList.add("tcx-reveal");
                 $("pb-share-url").value = data.share_url;
                 document.getElementById("pb-view-link").href = data.view_url;
                 state.portfolioId = data.id;

@@ -407,7 +407,7 @@
             <span style="color:#fff;font-size:13px;font-weight:600;">Score Card</span>
             <span style="background:rgba(108,99,255,0.2);border:0.5px solid rgba(108,99,255,0.4);color:#8b83ff;font-size:9px;padding:2px 8px;border-radius:20px;">SAMPLE</span>
           </div>
-          <div class="score-grid" style="margin:0 0 10px;">
+          <div class="score-grid" id="zaraScoreGrid" style="margin:0 0 10px;">
             <div class="score-metric"><div class="k">Overall</div><div class="v" style="color:#34d399">78%</div></div>
             <div class="score-metric"><div class="k">Communication</div><div class="v" style="color:#34d399">85%</div></div>
             <div class="score-metric"><div class="k">Depth</div><div class="v" style="color:#6c63ff">72%</div></div>
@@ -415,10 +415,10 @@
             <div class="score-metric"><div class="k">Confidence</div><div class="v" style="color:#6c63ff">70%</div></div>
             <div class="score-metric"><div class="k">Keywords Hit</div><div class="v" style="color:#6c63ff">65%</div></div>
           </div>
-          <div style="color:#9bb0d8;font-size:11px;margin-bottom:8px;"><strong style="color:#fff">Grade:</strong> Good Job 👍</div>
+          <div id="zaraGrade" style="color:#9bb0d8;font-size:11px;margin-bottom:8px;"><strong style="color:#fff">Grade:</strong> Good Job 👍</div>
           <div style="color:rgba(255,255,255,0.3);font-size:10px;text-align:center;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);">Your real scorecard generated after interview</div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;">
+        <div id="zaraStats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;">
           <div style="text-align:center;background:#141f4a;border-radius:10px;padding:10px 6px;"><div style="color:#6c63ff;font-size:18px;font-weight:700;">10K+</div><div style="color:#9bb0d8;font-size:10px;">Interviews</div></div>
           <div style="text-align:center;background:#141f4a;border-radius:10px;padding:10px 6px;"><div style="color:#34d399;font-size:18px;font-weight:700;">89%</div><div style="color:#9bb0d8;font-size:10px;">Improvement</div></div>
           <div style="text-align:center;background:#141f4a;border-radius:10px;padding:10px 6px;"><div style="color:#facc15;font-size:18px;font-weight:700;">4.9★</div><div style="color:#9bb0d8;font-size:10px;">User Rating</div></div>
@@ -467,8 +467,8 @@
 
 <style>
 @keyframes floatZara {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.03); }
 }
 @keyframes speakPulse {
   0%, 100% {
@@ -1857,12 +1857,90 @@ document.addEventListener('DOMContentLoaded',
   #zaraTestimonials, #zaraGreeting { animation: zaraFadeIn .6s cubic-bezier(.22,.61,.36,1) both; }
   #zaraGreeting { animation-delay: .15s; }
   @keyframes zaraFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* Sample scorecard: thin brand-gradient bar under each metric (fills to its %),
+     hover lift, and the Grade badge pops in last. */
+  #zaraScoreGrid .sm-bar {
+    display: block; height: 3px; border-radius: 3px; margin-top: 6px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .9s cubic-bezier(.22,.61,.36,1);
+  }
+  #zaraScoreGrid .score-metric { transition: transform .18s ease, box-shadow .18s ease; }
+  #zaraScoreGrid .score-metric:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(2,8,30,.4); }
+  #zaraGrade.tcx-pop { animation: zaraGradePop .5s cubic-bezier(.22,1,.36,1) both; }
+  @keyframes zaraGradePop { 0% { transform: scale(.85); opacity: 0; } 60% { transform: scale(1.08); } 100% { transform: scale(1); opacity: 1; } }
+
+  /* Stepper: the active step scales up + glows; smooth transition on advance. */
+  .step-chip { transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease; }
+  .step-chip.active { transform: scale(1.06); box-shadow: 0 6px 18px rgba(124,58,237,.4); }
 }
 @media (prefers-reduced-motion: reduce) {
   /* Stop the existing floating animation for users who opt out. */
   #zaraAvatar { animation: none !important; }
 }
 </style>
+<script>
+/* Mock-interview scorecard + stat counters: count up on scroll-in, bars fill to %,
+   Grade badge pops last. Reduced-motion / no-IO safe (values stay at final). */
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+  function parseNum(raw) {
+    var m = String(raw).match(/^(\D*)([\d,]*\.?\d+)(.*)$/);
+    if (!m) return null;
+    return { pre: m[1] || '', post: m[3] || '', val: parseFloat(m[2].replace(/,/g, '')), dec: m[2].indexOf('.') > -1 ? 1 : 0 };
+  }
+  function fmt(v, p) { return p.pre + (p.dec ? v.toFixed(1) : String(Math.round(v))) + p.post; }
+  function countUp(el, dur) {
+    var p = el.__p; if (!p) return; var start = null; dur = dur || 1100;
+    (function step(ts) {
+      if (ts === undefined) { requestAnimationFrame(step); return; }
+      if (start === null) start = ts;
+      var t = Math.min((ts - start) / dur, 1);
+      el.textContent = fmt(p.val * easeOut(t), p);
+      if (t < 1) requestAnimationFrame(step); else el.textContent = fmt(p.val, p);
+    })();
+  }
+  function onView(el, cb) {
+    var o = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { cb(); o.unobserve(e.target); } });
+    }, { threshold: .3 });
+    o.observe(el);
+  }
+
+  var grid = document.getElementById('zaraScoreGrid');
+  if (grid) {
+    var metrics = [].slice.call(grid.querySelectorAll('.score-metric'));
+    metrics.forEach(function (m) {
+      var v = m.querySelector('.v'); if (!v) return;
+      v.__p = parseNum(v.textContent.trim());
+      var bar = document.createElement('span'); bar.className = 'sm-bar'; m.appendChild(bar);
+      m.__bar = bar; if (v.__p) v.textContent = fmt(0, v.__p);
+    });
+    onView(grid, function () {
+      metrics.forEach(function (m, i) {
+        var v = m.querySelector('.v');
+        setTimeout(function () {
+          countUp(v, 1100);
+          if (m.__bar && v.__p) m.__bar.style.transform = 'scaleX(' + Math.min(1, v.__p.val / 100) + ')';
+        }, i * 90);
+      });
+      var grade = document.getElementById('zaraGrade');
+      if (grade) setTimeout(function () { grade.classList.add('tcx-pop'); }, metrics.length * 90 + 400);
+    });
+  }
+
+  var stats = document.getElementById('zaraStats');
+  if (stats) {
+    var vals = [].slice.call(stats.querySelectorAll(':scope > div > div:first-child'));
+    vals.forEach(function (el) { el.__p = parseNum(el.textContent.trim()); if (el.__p) el.textContent = fmt(0, el.__p); });
+    onView(stats, function () { vals.forEach(function (el) { countUp(el, 1200); }); });
+  }
+})();
+</script>
 {% endif %}
 </body>
 </html>

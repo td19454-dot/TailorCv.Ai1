@@ -410,6 +410,14 @@
     }
 
     .btn:disabled { opacity: 0.7; cursor: wait; transform: none; }
+    .btn-spinner {
+      display: inline-block; width: 15px; height: 15px; vertical-align: -2px;
+      margin-right: 8px; border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff; border-radius: 50%;
+      animation: btnSpin 0.7s linear infinite;
+    }
+    @keyframes btnSpin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .btn-spinner { animation: none; } }
 
     .error {
       color: #f87171;
@@ -640,7 +648,7 @@
       statusMessage.className = 'status';
       statusMessage.style.display = 'none';
       sendCodeBtn.disabled = true;
-      sendCodeBtn.textContent = 'Sending code...';
+      sendCodeBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>Sending code...';
 
       try {
         const response = await fetch('/api/signup/request-code', {
@@ -696,7 +704,7 @@
       statusMessage.className = 'status';
       statusMessage.style.display = 'none';
       signupBtn.disabled = true;
-      signupBtn.textContent = 'Verifying...';
+      signupBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>Verifying...';
 
       try {
         const response = await fetch('/api/signup', {

@@ -4474,6 +4474,50 @@ HOMEPAGE_FAQS = [
     ),
 ]
 
+# The FAQ actually rendered on the landing page (index.html). Kept in sync with
+# the visible <details> block so the FAQPage rich result matches on-page content
+# (Google requires structured data to mirror what the user sees).
+LANDING_PAGE_FAQS = [
+    (
+        "Is there a free plan?",
+        "Yes — you can start completely free, no credit card needed. The free plan "
+        "covers the essentials so you can try TailorCV end to end. When you need "
+        "more, Pro unlocks unlimited use, and the one-time 7-Day Pass is perfect "
+        "for an active job hunt.",
+    ),
+    (
+        "Will recruiters or ATS detect that my resume was AI-optimized?",
+        "No. TailorCV doesn't add fake skills or fabricate experience. It rewrites "
+        "your existing experience using the exact keywords and language from the "
+        "job description — so your real skills finally get seen. It's your resume, "
+        "just better phrased.",
+    ),
+    (
+        "Is my resume data safe and private?",
+        "Yes. Your resume is used only to generate your optimized output and is not "
+        "stored permanently or shared with anyone. We take privacy seriously.",
+    ),
+    (
+        "What file formats does TailorCV support?",
+        "You can upload your resume as a PDF. The optimized output can be downloaded "
+        "as a PDF as well — clean, ATS-friendly, and ready to submit.",
+    ),
+    (
+        "Do I need to create an account?",
+        "Yes — a quick free account lets us securely save your resumes and ATS "
+        "scores so you can pick up right where you left off. It takes under a "
+        "minute and never needs a credit card.",
+    ),
+    (
+        "How is TailorCV different from ChatGPT for resume writing?",
+        "ChatGPT is a general tool — you'd need to manually copy-paste your resume "
+        "and job description and craft the right prompts. TailorCV is purpose-built "
+        "for this exact task. It analyzes both documents, gives you an ATS score, "
+        "shows exactly what's missing, and outputs a formatted ready-to-download "
+        "resume — all in one flow.",
+    ),
+]
+
 
 def build_faq_page_schema(faqs=HOMEPAGE_FAQS) -> str:
     """FAQPage JSON-LD from a list of (question, answer) tuples."""
@@ -4548,7 +4592,7 @@ async def landing_page(request: Request):
             "home_posts": home_posts,
             "canonical_url": build_absolute_url("/"),
             "software_schema_json": build_software_app_schema(),
-            "faq_schema_json": build_faq_page_schema(),
+            "faq_schema_json": build_faq_page_schema(LANDING_PAGE_FAQS),
         },
     )
 

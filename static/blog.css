@@ -92,6 +92,13 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--border);
   border-radius: 18px;
   color: var(--muted);
+  transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.tag:hover {
+  color: #cfe3ff;
+  border-color: #3a6bb0;
+  transform: translateY(-1px);
 }
 
 .tag.active {
@@ -120,12 +127,34 @@ a:hover { text-decoration: underline; }
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
+.blog-cover-wrap { display: block; overflow: hidden; }
+
 .blog-cover {
   width: 100%;
   aspect-ratio: 3/2;
   object-fit: contain;
   background: #0a1024;
   display: block;
+}
+
+/* Cover zoom on hover + staggered card reveal on scroll (motion pass).
+   The reveal classes are removed by blog list JS once revealed, so hover
+   reverts to the crisp base .blog-card transition. */
+@media (prefers-reduced-motion: no-preference) {
+  .blog-cover { transition: transform .45s cubic-bezier(.22, 1, .36, 1); }
+  .blog-card:hover .blog-cover { transform: scale(1.05); }
+  .blog-card.tcx-blog-reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .5s cubic-bezier(.22, .61, .36, 1), transform .5s cubic-bezier(.22, .61, .36, 1);
+  }
+  .blog-card.tcx-blog-reveal.tcx-in { opacity: 1; transform: none; }
+
+  /* Article page: fade-up images + section headings once on scroll-in. */
+  .post-content .tcx-art-reveal {
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .55s cubic-bezier(.22, .61, .36, 1), transform .55s cubic-bezier(.22, .61, .36, 1);
+  }
+  .post-content .tcx-art-reveal.tcx-in { opacity: 1; transform: none; }
 }
 
 .blog-card-body { padding: 14px; }

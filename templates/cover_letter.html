@@ -231,6 +231,16 @@
         /* Upload zone, slim */
         .cl-upload { border-radius: 10px; }
         .cl-upload-label { font-weight: 500; }
+        /* Generate / Download buttons: spinner during the async request. */
+        .cl-btn .btn-spinner {
+            display: inline-block; width: 14px; height: 14px;
+            border: 2px solid rgba(255,255,255,.4); border-top-color: #fff;
+            border-radius: 50%;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .cl-btn .btn-spinner { animation: clBtnSpin .7s linear infinite; }
+        }
+        @keyframes clBtnSpin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -2098,7 +2108,7 @@ Nice to have:
 
             genBtn.disabled = true;
             var orig = genBtn.textContent;
-            genBtn.textContent = 'Generating…';
+            genBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>Generating…';
             setStatus(file ? 'Reading your PDF and writing your cover letter…' : 'Writing your cover letter…');
 
             fetch('/api/generate-cover-letter', {
@@ -2277,6 +2287,8 @@ Nice to have:
             if (!output.value.trim()) { setStatus('Generate a letter first.', 'error'); return; }
             setStatus('Preparing PDF…');
             pdfBtn.disabled = true;
+            var pdfOrig = pdfBtn.innerHTML;
+            pdfBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>Preparing…';
             fetch('/api/download-html-pdf', {
                 method: 'POST', credentials: 'include',
                 headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf() },
@@ -2309,7 +2321,7 @@ Nice to have:
                 }
                 setStatus(e.message || 'Could not generate PDF. Please try again.', 'error');
             })
-            .finally(function () { pdfBtn.disabled = false; });
+            .finally(function () { pdfBtn.disabled = false; pdfBtn.innerHTML = pdfOrig; });
         });
 
         renderPreview();

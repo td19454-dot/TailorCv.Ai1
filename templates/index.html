@@ -723,10 +723,11 @@
             display: flex;
             align-items: center;
             gap: 9px;
-            color: #ffffff;
+            color: #f4f6fb;
             font-size: 18px;
-            font-weight: 500;
+            font-weight: 700;
             line-height: 1.3;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
         }
         .hero-features .feat-tick {
             display: inline-flex;
@@ -769,6 +770,7 @@
                         <a href="/optimize" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
                             ><span class="cta-label-full">Optimize My Resume for Free</span><span class="cta-label-short">Optimize for Free</span></a>
                         <p class="hero-cta-meta"><span class="hero-cta-meta-icon" aria-hidden="true">&#10003;</span><span class="hero-cta-meta-text">Takes 2 minutes &bull; No credit card needed &bull; Free to start</span></p>
+                        <p class="hero-cta-trust"><span class="hero-cta-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>Trusted by <strong>10,000+</strong> job seekers</p>
                     </div>
                     <div class="hero-quickstart" aria-label="Quick start steps">
                         <p class="hero-quickstart-title">Start in 3 quick steps</p>
@@ -867,6 +869,18 @@
                             color: #d8e6ff;
                             line-height: 1.2;
                         }
+
+                        .hero-cta-trust {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            margin: 2px 0 4px;
+                            font-size: 14px;
+                            font-weight: 600;
+                            color: #aebfe0;
+                        }
+                        .hero-cta-trust strong { color: #ffffff; }
+                        .hero-cta-stars { color: #fbbf24; letter-spacing: 1px; font-size: 13px; }
 
                         .hero-cta-meta-text {
                             flex: 1 1 auto;
@@ -1558,7 +1572,7 @@
                             Add TailorCV to Chrome and tailor your resume, check your ATS score, and auto-fill
                             applications right on the job posting &mdash; without ever switching tabs.
                         </p>
-                        <a href="/signup" data-auth-href="https://chromewebstore.google.com/detail/tailorcv-%E2%80%94-ai-resume-opti/lnkplncemohgcdjlgccgmbcgiokcgmno" class="feature-showcase-btn" id="features_chrome_extension"><span aria-hidden="true">&#129513;</span>&nbsp; Add to Chrome &mdash; Free</a>
+                        <a href="/signup" data-auth-href="https://chromewebstore.google.com/detail/tailorcv-%E2%80%94-ai-resume-opti/lnkplncemohgcdjlgccgmbcgiokcgmno" class="feature-showcase-btn" id="features_chrome_extension"><span class="fsb-text"><span aria-hidden="true">&#129513;</span>&nbsp; Add to Chrome &mdash; Free</span><span class="fsb-arrow" aria-hidden="true"><svg width="26" height="17" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path class="fsb-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path></g></svg></span></a>
                     </div>
                     <div class="feature-showcase-visual ext-visual fv-light fv-green" aria-hidden="true">
                         <div class="mock-card ext-mock">
@@ -1601,7 +1615,7 @@
                             Upload your resume and get an instant ATS breakdown with keyword match, formatting issues,
                             and actionable fixes to boost shortlist chances.
                         </p>
-                        <a href="/signup" data-auth-href="/solutions" class="feature-showcase-btn" id="features_check_ats_score">Check ATS Score</a>
+                        <a href="/signup" data-auth-href="/solutions" class="feature-showcase-btn" id="features_check_ats_score"><span class="fsb-text">Check ATS Score</span><span class="fsb-arrow" aria-hidden="true"><svg width="26" height="17" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path class="fsb-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path></g></svg></span></a>
                     </div>
                     <div class="feature-showcase-visual fv-light fv-blue" aria-hidden="true">
                         <div class="mock-card">
@@ -1624,7 +1638,7 @@
                             Paste any job description and TailorCV rewrites bullets, upgrades wording, and aligns skills
                             so your resume matches what recruiters are searching for.
                         </p>
-                        <a href="/signup" data-auth-href="/optimize" class="feature-showcase-btn" id="features_optimize_my_resume">Optimize My Resume</a>
+                        <a href="/signup" data-auth-href="/optimize" class="feature-showcase-btn" id="features_optimize_my_resume"><span class="fsb-text">Optimize My Resume</span><span class="fsb-arrow" aria-hidden="true"><svg width="26" height="17" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path class="fsb-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path></g></svg></span></a>
                     </div>
                     <div class="feature-showcase-visual fv-light fv-violet" aria-hidden="true">
                         <div class="mock-card">
@@ -1650,7 +1664,7 @@
                             Run role-specific mock interviews, improve your answers with AI coaching, and build
                             confidence before the real interview.
                         </p>
-                        <a href="/signup" data-auth-href="/mock-interview" class="feature-showcase-btn">Start Mock Interview</a>
+                        <a href="/signup" data-auth-href="/mock-interview" class="feature-showcase-btn"><span class="fsb-text">Start Mock Interview</span><span class="fsb-arrow" aria-hidden="true"><svg width="26" height="17" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path class="fsb-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path></g></svg></span></a>
                     </div>
                     <div class="feature-showcase-visual fv-light fv-amber" aria-hidden="true">
                         <div class="mock-card">
@@ -1676,7 +1690,7 @@
                             Pick a template, edit your details, and publish a shareable portfolio site in minutes &mdash;
                             no coding. Stand out with a personal link you can put on every application.
                         </p>
-                        <a href="/signup" data-auth-href="/portfolio" class="feature-showcase-btn">Build My Portfolio</a>
+                        <a href="/signup" data-auth-href="/portfolio" class="feature-showcase-btn"><span class="fsb-text">Build My Portfolio</span><span class="fsb-arrow" aria-hidden="true"><svg width="26" height="17" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path class="fsb-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path><path class="fsb-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path></g></svg></span></a>
                     </div>
                     <div class="feature-showcase-visual fv-light fv-rose" aria-hidden="true">
                         <div class="mock-card">
@@ -1760,6 +1774,36 @@
         .ats-tmpl-all a:hover { text-decoration: underline; }
         @media (max-width: 860px) {
             .ats-tmpl-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+        }
+
+        /* Template card polish (section C): scroll-reveal, hover glow ring, a
+           "Use template →" overlay that slides up, and a skeleton shimmer behind
+           the thumbnail so it never flashes empty. Reduced-motion safe. */
+        .ats-tmpl-shot { position: relative; }
+        .ats-tmpl-shot::before {
+            content: ""; position: absolute; inset: 14px; border-radius: 8px; z-index: 0;
+            background: linear-gradient(100deg, rgba(120,140,190,.10) 30%, rgba(120,140,190,.22) 50%, rgba(120,140,190,.10) 70%);
+            background-size: 200% 100%;
+        }
+        .ats-tmpl-shot img { position: relative; z-index: 1; }
+        .ats-tmpl-shot::after {
+            content: "Use template \2192"; position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+            padding: 30px 12px 12px; text-align: center; color: #fff; font-weight: 700; font-size: .9rem;
+            background: linear-gradient(to top, rgba(9,14,30,.92), transparent);
+            opacity: 0; pointer-events: none;
+        }
+        .ats-tmpl-card:hover .ats-tmpl-shot::after { opacity: 1; }
+        @media (prefers-reduced-motion: no-preference) {
+            .ats-tmpl-shot::before { animation: tmplSkeleton 1.4s ease-in-out infinite; }
+            @keyframes tmplSkeleton { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+            .ats-tmpl-shot::after { transform: translateY(10px); transition: opacity .28s ease, transform .28s ease; }
+            .ats-tmpl-card:hover .ats-tmpl-shot::after { transform: translateY(0); }
+            .ats-tmpl-card:hover { transform: translateY(-6px) scale(1.015); }
+            .ats-tmpl-card:hover, .pf-tmpl-card:hover { box-shadow: 0 22px 48px rgba(3,10,36,.55), 0 0 0 1px rgba(139,92,246,.45); }
+            /* one-time staggered reveal */
+            .tcx-tmpl-reveal { opacity: 0; transform: translateY(20px);
+                transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1); }
+            .tcx-tmpl-reveal.tcx-in { opacity: 1; transform: none; }
         }
     </style>
     <section class="ats-templates">
@@ -2482,9 +2526,11 @@
             let running = false;
             let autoLoop = null;
 
+            // Global pace for the hero tailoring animation. Lower = faster.
+            const HERO_SPEED = 0.5;   // 2x faster than the original timings
             function sleep(ms) {
                 return new Promise(function (resolve) {
-                    setTimeout(resolve, ms);
+                    setTimeout(resolve, ms * HERO_SPEED);
                 });
             }
 
@@ -2626,7 +2672,7 @@
                 document.getElementById("heroBarFmt").style.width = "96%";
                 document.getElementById("heroBarRel").style.width = "82%";
 
-                await animateCount(48, 91, 1150, document.getElementById("heroAtsNum"));
+                await animateCount(48, 91, 1150 * HERO_SPEED, document.getElementById("heroAtsNum"));
                 document.getElementById("heroAtsNum").style.color = "#1e6b3c";
                 document.getElementById("heroBadge").style.opacity = "1";
                 status.textContent = "Resume optimized: ATS score 48 -> 91";
@@ -2862,6 +2908,9 @@
         (() => {
             const pop = document.getElementById("salesPop");
             if (!pop) return;
+            // Respect a dismissal for the rest of the browser session.
+            const DISMISS_KEY = "tc_salespop_dismissed";
+            try { if (sessionStorage.getItem(DISMISS_KEY)) { pop.remove(); return; } } catch (e) {}
 
             const nameEl = document.getElementById("salesPopName");
             const countryEl = document.getElementById("salesPopCountry");
@@ -2934,6 +2983,20 @@
                 pop.classList.remove("visible");
                 clearTimeout(hideTimer);
                 clearTimeout(nextTimer);
+                try { sessionStorage.setItem(DISMISS_KEY, "1"); } catch (e) {}
+            });
+
+            // Pause the cadence while the tab is backgrounded; resume when visible.
+            document.addEventListener("visibilitychange", () => {
+                if (stopped) return;
+                if (document.hidden) {
+                    clearTimeout(hideTimer);
+                    clearTimeout(nextTimer);
+                    pop.classList.remove("visible");
+                } else {
+                    clearTimeout(nextTimer);
+                    nextTimer = setTimeout(cycle, 2500);
+                }
             });
 
             setTimeout(cycle, 8000);
@@ -3086,6 +3149,10 @@ details[open] .faq-chevron svg {
 @media (prefers-reduced-motion: reduce) {
     .sales-pop { transition: opacity .2s ease !important; transform: none !important; }
     .faq-chevron { transition: none !important; }
+    /* No autoplay for the testimonials marquee when the user asks for reduced
+       motion — the cards stay put and readable instead of scrolling. */
+    .row-forward .carousel-track,
+    .row-backward .carousel-track { animation: none !important; }
 }
 .result-card, .founder-card, .mock-card {
     transition: transform .3s ease, box-shadow .3s ease;
@@ -3395,6 +3462,114 @@ details[open] .faq-chevron svg {
   }
 })();
 </script>
+<script>
+/* Template cards (section C): one-time staggered reveal on scroll-in for both the
+   ATS and portfolio template grids. Reduced-motion / no-IO safe; cleans up so the
+   CSS hover transforms stay crisp. */
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var cards = [].slice.call(document.querySelectorAll('.ats-tmpl-card, .pf-tmpl-card'));
+  if (!cards.length) return;
+  cards.forEach(function (c) { c.classList.add('tcx-tmpl-reveal'); });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var card = e.target;
+      var sibs = card.parentElement ? [].slice.call(card.parentElement.children).filter(function (n) { return n.classList && n.classList.contains('tcx-tmpl-reveal'); }) : [card];
+      card.style.transitionDelay = (Math.max(0, sibs.indexOf(card)) * 80) + 'ms';
+      card.classList.add('tcx-in');
+      io.unobserve(card);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  cards.forEach(function (c) { io.observe(c); });
+  document.addEventListener('transitionend', function (e) {
+    if (e.propertyName === 'opacity' && e.target.classList && e.target.classList.contains('tcx-in') && e.target.classList.contains('tcx-tmpl-reveal')) {
+      e.target.classList.remove('tcx-tmpl-reveal', 'tcx-in');
+      e.target.style.transitionDelay = '';
+    }
+  });
+  setTimeout(function () { cards.forEach(function (c) { c.classList.add('tcx-in'); }); }, 2600);
+})();
+</script>
+<style>
+  /* Soft gradient glow behind the hero resume card so it never looks static
+     (section B). Base glow is always on; the gentle pulse is reduced-motion gated.
+     isolation keeps the -1 layer behind the card but above the page background. */
+  .hero-visual { position: relative; isolation: isolate; }
+  .hero-visual::before {
+    content: ""; position: absolute; inset: -36px -26px -26px; z-index: -1;
+    border-radius: 42px; pointer-events: none;
+    background: radial-gradient(58% 55% at 62% 38%, rgba(124, 58, 237, .30), transparent 70%),
+                radial-gradient(48% 48% at 38% 72%, rgba(59, 130, 246, .24), transparent 72%);
+    filter: blur(34px);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-visual::before { animation: heroCardGlow 6.5s ease-in-out infinite; }
+    @keyframes heroCardGlow { 0%, 100% { opacity: .68; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+    /* The resume card gently sways + floats on its own — the tilt motion now
+       plays automatically without needing to hover, and just keeps going. */
+    #heroResumeCard { animation: heroCardSway 8s ease-in-out infinite; }
+    @keyframes heroCardSway {
+      0%, 100% { transform: perspective(1000px) rotateY(-1.5deg) translateY(0); }
+      50%      { transform: perspective(1000px) rotateY(1.5deg) translateY(-7px); }
+    }
+  }
+
+  /* Hero "Optimize My Resume for Free" — shiny 3D-tilt bevel button (same
+     recipe as #open-share-modal-btn): fake bevel via text-shadow, a sweeping
+     shine on hover, slight perspective tilt that flips on hover/focus. Scoped
+     tightly via its ID so the shared .btn/.btn-primary/.btn-large classes
+     elsewhere are untouched. color/text-shadow inherit into the existing
+     .cta-label-full/.cta-label-short spans automatically. */
+  #hero_optimize_my_resume_free {
+    all: unset;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative !important;
+    overflow: visible !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: clamp(16px, 1.9vw, 22px) !important;
+    padding: 1.1em 2em !important;
+    border-radius: 10px;
+    border: none;
+    /* Solid, crisp white text — the earlier fake-transparent + blurred
+       bevel-shadow trick read as fuzzy/hard to see, so this button just uses
+       real solid color plus one small, non-blurred drop-shadow for depth. */
+    color: #ffffff;
+    background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat, linear-gradient(135deg, #8b5cf6, #22d3ee);
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+    transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
+    outline-offset: .1em;
+    transition: 0.3s;
+    text-decoration: none !important;
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+  /* Kill the shared .btn-primary shimmer pseudo-element — it was left active
+     underneath this button (leftover from the site-wide button style) and,
+     combined with `all: unset` resetting position/overflow, was rendering
+     as a stray misplaced white stripe. This button has its own effect. */
+  #hero_optimize_my_resume_free::before,
+  #hero_optimize_my_resume_free::after {
+    content: none !important;
+    display: none !important;
+  }
+  #hero_optimize_my_resume_free:hover,
+  #hero_optimize_my_resume_free:focus-visible {
+    --_p: 0%;
+    --_i: 1;
+  }
+  #hero_optimize_my_resume_free:active {
+    box-shadow: inset 0 0 9e9q #0005;
+    transition: 0s;
+  }
+</style>
 </body>
 
 </html>

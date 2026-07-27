@@ -156,6 +156,45 @@
             border-radius: 8px;
             background: rgba(15, 23, 42, 0.56);
             padding: 18px;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .contact-option:hover {
+            transform: translateY(-3px);
+            border-color: rgba(96, 165, 250, 0.5);
+            box-shadow: 0 14px 34px rgba(2, 8, 30, 0.4);
+        }
+
+        /* Email row + copy-to-clipboard button */
+        .email-row { display: flex; align-items: stretch; gap: 8px; }
+        .email-row .email-link { width: auto; flex: 1 1 auto; }
+        .email-copy {
+            flex: 0 0 auto; min-width: 76px;
+            border: 1px solid rgba(94, 234, 212, 0.4);
+            border-radius: 8px;
+            background: rgba(13, 148, 136, 0.10);
+            color: #9df0e4; font-weight: 700; font-size: 0.85rem;
+            cursor: pointer;
+            transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+        }
+        .email-copy:hover {
+            transform: translateY(-2px);
+            background: rgba(13, 148, 136, 0.22);
+            border-color: rgba(94, 234, 212, 0.8);
+            color: #eafff9;
+        }
+        .email-copy.copied {
+            background: rgba(34, 197, 94, 0.20);
+            border-color: rgba(34, 197, 94, 0.6);
+            color: #86efac;
+        }
+
+        /* Scroll-reveal (JS-driven; removes classes once shown so hover stays crisp) */
+        @media (prefers-reduced-motion: no-preference) {
+            .contact-page .tcx-reveal {
+                opacity: 0; transform: translateY(18px);
+                transition: opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+            }
+            .contact-page .tcx-reveal.tcx-in { opacity: 1; transform: none; }
         }
 
         .contact-option h2 {
@@ -221,24 +260,34 @@
                 <h2 class="contact-card-title">Email us directly</h2>
                 <p class="contact-card-text">We read every message and try to reply as soon as possible.</p>
                 <div class="email-list">
-                    <a class="email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=td19454@gmail.com&su=TailorCV%20Contact" target="_blank" rel="noopener">
-                        <span class="email-icon" aria-hidden="true">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                <path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                                <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
-                        td19454@gmail.com
-                    </a>
-                    <a class="email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=shubhamsarkarthe1@gmail.com&su=TailorCV%20Contact" target="_blank" rel="noopener">
-                        <span class="email-icon" aria-hidden="true">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                <path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                                <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
-                        shubhamsarkarthe1@gmail.com
-                    </a>
+                    <div class="email-row">
+                        <a class="email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=td19454@gmail.com&su=TailorCV%20Contact" target="_blank" rel="noopener">
+                            <span class="email-icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                    <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            td19454@gmail.com
+                        </a>
+                        <button class="email-copy" type="button" data-email="td19454@gmail.com" aria-label="Copy td19454@gmail.com to clipboard">
+                            <span class="ec-label">Copy</span>
+                        </button>
+                    </div>
+                    <div class="email-row">
+                        <a class="email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=shubhamsarkarthe1@gmail.com&su=TailorCV%20Contact" target="_blank" rel="noopener">
+                            <span class="email-icon" aria-hidden="true">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                    <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            shubhamsarkarthe1@gmail.com
+                        </a>
+                        <button class="email-copy" type="button" data-email="shubhamsarkarthe1@gmail.com" aria-label="Copy shubhamsarkarthe1@gmail.com to clipboard">
+                            <span class="ec-label">Copy</span>
+                        </button>
+                    </div>
                 </div>
             </aside>
         </section>
@@ -262,5 +311,53 @@
     {% include "_footer.html" %}
     <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
+    <script>
+    /* Copy-to-clipboard on email cards + scroll-reveal of sections. */
+    (function () {
+      // Copy buttons
+      document.querySelectorAll('.email-copy').forEach(function (btn) {
+        var label = btn.querySelector('.ec-label');
+        function done(ok) {
+          btn.classList.toggle('copied', ok);
+          if (label) label.textContent = ok ? 'Copied!' : 'Failed';
+          setTimeout(function () { btn.classList.remove('copied'); if (label) label.textContent = 'Copy'; }, 1500);
+        }
+        function fallbackCopy(text) {
+          var ta = document.createElement('textarea');
+          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.focus(); ta.select();
+          var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(ta); done(ok);
+        }
+        btn.addEventListener('click', function () {
+          var email = btn.getAttribute('data-email') || '';
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(function () { done(true); }).catch(function () { fallbackCopy(email); });
+          } else { fallbackCopy(email); }
+        });
+      });
+
+      // Scroll-reveal
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!('IntersectionObserver' in window)) return;
+      var page = document.querySelector('.contact-page');
+      var els = page ? [].slice.call(page.querySelectorAll('.contact-intro, .contact-panel, .contact-option')) : [];
+      if (!els.length) return;
+      els.forEach(function (el) { el.classList.add('tcx-reveal'); });
+      page.querySelectorAll('.contact-option.tcx-reveal').forEach(function (el, i) {
+        el.style.transitionDelay = (i * 70) + 'ms';
+      });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('tcx-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+      els.forEach(function (el) { io.observe(el); });
+      page.addEventListener('transitionend', function (e) {
+        if (e.propertyName === 'opacity' && e.target.classList.contains('tcx-in')) {
+          e.target.classList.remove('tcx-reveal', 'tcx-in'); e.target.style.transitionDelay = '';
+        }
+      });
+      setTimeout(function () { els.forEach(function (el) { el.classList.add('tcx-in'); }); }, 2500);
+    })();
+    </script>
 </body>
 </html>

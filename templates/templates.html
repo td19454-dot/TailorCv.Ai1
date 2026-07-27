@@ -9,7 +9,7 @@
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/header-footer.css?v=8">
     <link rel="stylesheet" href="/static/style2.css">
-    <link rel="stylesheet" href="/static/templates.css?v=6">
+    <link rel="stylesheet" href="/static/templates.css?v=7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1000,6 +1000,48 @@
 })();
 </script>
 {% endif %}
+<script>
+/* Templates grid: one-time staggered reveal on first render (P3).
+   No-ops for guests (no grid) and under reduced motion. Cleans up inline
+   styles afterwards so the CSS hover transitions stay crisp. */
+(function () {
+  var grid = document.getElementById('templates-grid');
+  if (!grid) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var done = false;
+  function reveal(cards) {
+    done = true;
+    cards.forEach(function (c, i) {
+      c.style.opacity = '0';
+      c.style.transform = 'translateY(16px)';
+      c.style.transition = 'opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1)';
+      c.style.transitionDelay = (Math.min(i, 8) * 55) + 'ms';
+    });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        cards.forEach(function (c) { c.style.opacity = '1'; c.style.transform = 'none'; });
+      });
+    });
+    setTimeout(function () {
+      cards.forEach(function (c) {
+        c.style.transition = ''; c.style.transitionDelay = '';
+        c.style.opacity = ''; c.style.transform = '';
+      });
+    }, 1200);
+  }
+
+  var mo = new MutationObserver(function () {
+    if (done) { mo.disconnect(); return; }
+    var cards = grid.querySelectorAll('.template-card');
+    if (cards.length) { mo.disconnect(); reveal([].slice.call(cards)); }
+  });
+  mo.observe(grid, { childList: true });
+
+  var existing = grid.querySelectorAll('.template-card');   // already-present fallback
+  if (existing.length) { mo.disconnect(); reveal([].slice.call(existing)); }
+})();
+</script>
 </body>
 </html>
 

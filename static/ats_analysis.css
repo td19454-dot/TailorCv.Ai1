@@ -330,6 +330,29 @@ body {
 .ov-check-label    { font-size: 16px; color: var(--text); font-weight: 600; }
 .ov-check-row.pass .ov-check-label { color: var(--pass); }
 .ov-check-row.fail .ov-check-label { color: var(--fail); }
+
+/* Tab switch fade (#3) + staggered check-row entry with status-dot cue (#4).
+   Runs whenever a panel becomes .active (incl. Overview on load). */
+@media (prefers-reduced-motion: no-preference) {
+  .tab-panel.active { animation: tabFade .28s ease-out; }
+  @keyframes tabFade { from { opacity: 0; } to { opacity: 1; } }
+
+  .tab-panel.active .ov-check-row { animation: checkRowIn .42s ease-out both; }
+  @keyframes checkRowIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .tab-panel.active .ov-check-row:nth-child(2) { animation-delay: .05s; }
+  .tab-panel.active .ov-check-row:nth-child(3) { animation-delay: .10s; }
+  .tab-panel.active .ov-check-row:nth-child(4) { animation-delay: .15s; }
+  .tab-panel.active .ov-check-row:nth-child(5) { animation-delay: .20s; }
+  .tab-panel.active .ov-check-row:nth-child(6) { animation-delay: .25s; }
+  .tab-panel.active .ov-check-row:nth-child(n+7) { animation-delay: .30s; }
+
+  /* Pass dots pop in; fail/warn dots pulse a couple of times to flag action. */
+  .tab-panel.active .ov-dot.pass { animation: dotPop .4s cubic-bezier(.22, 1, .36, 1) both; }
+  .tab-panel.active .ov-dot.fail,
+  .tab-panel.active .ov-dot.warn { animation: dotPulse 1.6s ease-in-out 2; }
+  @keyframes dotPop   { 0% { transform: scale(0); } 60% { transform: scale(1.3); } 100% { transform: scale(1); } }
+  @keyframes dotPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+}
 .ov-check-explanation { font-size: 15px; color: var(--muted); margin-top: 3px; line-height: 1.55; }
 .ov-check-why      { font-size: 15px; color: var(--muted); margin-top: 4px; line-height: 1.55; }
 .ov-check-fix {
@@ -454,6 +477,14 @@ body {
 }
 .pill.matched { background: var(--pass-bg); border-color: var(--pass-border); color: var(--pass); }
 .pill.missing { background: var(--fail-bg); border-color: var(--fail-border); color: var(--fail); }
+/* Matched skills read as satisfied at a glance; missing read as to-do. */
+.pill.matched::before { content: "\2713"; margin-right: 5px; font-weight: 800; }
+@media (prefers-reduced-motion: no-preference) {
+  .pill.matched { animation: chipPop .42s cubic-bezier(.22, 1, .36, 1) both; }
+  .pill.missing { animation: chipFade .42s ease-out both; }
+  @keyframes chipPop  { 0% { opacity: 0; transform: scale(.72); } 60% { transform: scale(1.08); } 100% { opacity: 1; transform: none; } }
+  @keyframes chipFade { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+}
 .pill.neutral { background: var(--blue-bg); border-color: var(--blue-border);  color: var(--blue-light); }
 .pill.empty   { background: var(--surface); border-color: var(--border); color: var(--muted); font-style: italic; font-size: 13px; }
 
@@ -750,43 +781,64 @@ body {
   .sidebar-btn-icon  { width: 22px; height: 22px; }
 }
 
-/* ─── AI rewrite button (preserved) ─────────────────────────────────────────── */
+/* ─── AI rewrite button ──────────────────────────────────────────────────────── */
+/* Skewed "cta" button with an animated triple-chevron arrow (adapted from a
+   Uiverse.io recipe): scoped classes (arb-*), kept existing .btn-text/.btn-loader,
+   brand-purple base with a gold hard-shadow flip on hover. */
 .ai-rewrite-btn.btn.cv2-uiverse-btn {
     outline: none; cursor: pointer; border: none;
-    padding: .9rem 2rem; font-family: inherit; font-size: 17px;
-    position: relative; display: inline-block;
-    letter-spacing: .05rem; font-weight: 700;
-    border-radius: 500px; overflow: hidden;
-    background: #66ff66; color: ghostwhite;
-    min-height: 56px; height: 56px;
-    transition: background .28s,color .28s,border-color .28s,transform .28s;
-}
-.ai-rewrite-btn.btn.cv2-uiverse-btn:hover {
+    padding: 11px 28px; font-family: inherit; font-size: 1.15rem;
+    position: relative; display: inline-flex; align-items: center;
+    font-weight: 700; color: #ffffff;
+    border-radius: 0; overflow: visible;
+    background: #6225e6;
+    min-height: auto; height: auto;
+    box-shadow: 6px 6px 0 #000;
+    transform: skewX(-15deg);
+    transition: box-shadow .5s, background .3s;
     animation: none;
 }
-.ai-rewrite-btn.cv2-uiverse-btn .btn-text,
-.ai-rewrite-btn.cv2-uiverse-btn .btn-loader { position: relative; z-index: 10; transition: color .4s; }
-.ai-rewrite-btn.cv2-uiverse-btn::before,
-.ai-rewrite-btn.cv2-uiverse-btn::after { position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; }
-.ai-rewrite-btn.cv2-uiverse-btn::before {
-    content:""; width:120%; left:-10%;
-    transform:skew(30deg);
-    transition:transform .4s cubic-bezier(.3,1,.8,1);
-    background:rgba(255,255,255,.15);
+.ai-rewrite-btn.btn.cv2-uiverse-btn::before,
+.ai-rewrite-btn.btn.cv2-uiverse-btn::after { content: none; }
+.ai-rewrite-btn.cv2-uiverse-btn:focus { outline: none; }
+.ai-rewrite-btn.cv2-uiverse-btn .btn-text {
+    position: relative; z-index: 10; display: inline-block;
+    transform: skewX(15deg);
 }
-.ai-rewrite-btn.cv2-uiverse-btn::after {
-    content:""; border-radius:inherit;
-    background:linear-gradient(135deg,#0f4ea3 0%,#132c7a 55%,#3c1361 100%);
-}
-.ai-rewrite-btn.cv2-uiverse-btn:hover::before { transform:translate3d(100%,0,0); }
-.ai-rewrite-btn.cv2-uiverse-btn:hover .btn-text,
-.ai-rewrite-btn.cv2-uiverse-btn:hover .btn-loader { color:#0b1020; }
+.ai-rewrite-btn.cv2-uiverse-btn .btn-loader { position: relative; z-index: 10; }
+.ai-rewrite-btn.btn.cv2-uiverse-btn:hover,
 .ai-rewrite-btn.btn.btn-primary.cv2-uiverse-btn:hover {
-    background:linear-gradient(135deg,#a78bfa 0%,#7a09f4 100%);
-    border-color:rgba(165,243,252,.95); color:#0b1020;
+    background: #6225e6;
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 10px 10px 0 #fbc638;
 }
-.ai-rewrite-btn.cv2-uiverse-btn:hover::after {
-    background:linear-gradient(135deg,#a78bfa 0%,#7a09f4 100%) !important;
+.ai-rewrite-btn.cv2-uiverse-btn:hover .btn-text,
+.ai-rewrite-btn.cv2-uiverse-btn:hover .btn-loader { color: #ffffff; }
+
+/* Animated triple-chevron arrow */
+.ai-rewrite-btn.cv2-uiverse-btn .arb-arrow {
+    display: inline-flex; width: 22px; margin-left: 16px;
+    position: relative; top: 1px; transition: margin-right .5s;
+}
+.ai-rewrite-btn.cv2-uiverse-btn:hover .arb-arrow { margin-right: 30px; }
+.ai-rewrite-btn.cv2-uiverse-btn .arb-one { transition: .4s; transform: translateX(-60%); }
+.ai-rewrite-btn.cv2-uiverse-btn .arb-two { transition: .5s; transform: translateX(-30%); }
+.ai-rewrite-btn.cv2-uiverse-btn:hover .arb-three { animation: arbColorAnim 1s infinite .2s; }
+.ai-rewrite-btn.cv2-uiverse-btn:hover .arb-one { transform: translateX(0%); animation: arbColorAnim 1s infinite .6s; }
+.ai-rewrite-btn.cv2-uiverse-btn:hover .arb-two { transform: translateX(0%); animation: arbColorAnim 1s infinite .4s; }
+@keyframes arbColorAnim { 0% { fill: #fff; } 50% { fill: #fbc638; } 100% { fill: #fff; } }
+@media (prefers-reduced-motion: reduce) {
+    .ai-rewrite-btn.cv2-uiverse-btn:hover .arb-one,
+    .ai-rewrite-btn.cv2-uiverse-btn:hover .arb-two,
+    .ai-rewrite-btn.cv2-uiverse-btn:hover .arb-three { animation: none; }
+    .ai-rewrite-btn.cv2-uiverse-btn .arb-arrow,
+    .ai-rewrite-btn.cv2-uiverse-btn .arb-one,
+    .ai-rewrite-btn.cv2-uiverse-btn .arb-two { transition: none; }
+}
+.ai-rewrite-btn.btn.cv2-uiverse-btn:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.55);
 }
 /* ─── Mobile typography & layout (consolidated) ──────────────────────────────── */
 @media (max-width: 760px) {
