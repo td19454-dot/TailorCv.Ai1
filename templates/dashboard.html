@@ -44,6 +44,55 @@
         .promo p { color: var(--muted); font-size: .9rem; }
         .promo .go { margin-left: auto; background: linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:600; font-size:.85rem; padding:10px 18px; border-radius:10px; white-space:nowrap; }
 
+        /* "Optimize a resume" promo link — shiny 3D-tilt bevel (Uiverse.io by
+           AqFox), recolored to this button's existing blue/violet gradient.
+           Scoped via .dash-optimize-btn so the shared .go class (also used by
+           .scan-actions .go elsewhere on this page) is untouched. */
+        .promo .go.dash-optimize-btn {
+            all: unset;
+            box-sizing: border-box;
+            cursor: pointer;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: .9rem;
+            padding: 12px 22px;
+            border-radius: 10px;
+            border: none;
+            color: #fff;
+            background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat, linear-gradient(135deg,#3392ff,#6d28d9);
+            text-shadow: 0 2px 0 rgba(0,0,0,.35);
+            transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
+            outline-offset: .1em;
+            transition: .3s, box-shadow .3s ease;
+            text-decoration: none;
+            white-space: nowrap;
+            box-shadow: 0 0 14px 2px rgba(99,140,255,.55), 0 0 28px 4px rgba(124,58,237,.35);
+            animation: dashOptimizeGlow 2.4s ease-in-out infinite;
+        }
+        .dash-optimize-btn:hover,
+        .dash-optimize-btn:focus-visible {
+            --_p: 0%;
+            --_i: 1;
+            box-shadow: 0 0 20px 4px rgba(99,140,255,.75), 0 0 40px 8px rgba(124,58,237,.5);
+        }
+        .dash-optimize-btn:active {
+            box-shadow: inset 0 0 9e9q #0005;
+            transition: 0s;
+            animation: none;
+        }
+        @keyframes dashOptimizeGlow {
+            0%, 100% { box-shadow: 0 0 14px 2px rgba(99,140,255,.55), 0 0 28px 4px rgba(124,58,237,.35); }
+            50%      { box-shadow: 0 0 20px 5px rgba(99,140,255,.8), 0 0 38px 9px rgba(124,58,237,.55); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .dash-optimize-btn { transition: none; animation: none; }
+        }
+
         /* "NEW feature" announcement banner (dismissible) */
         .feat-banner { display: flex; align-items: center; gap: 16px; background: linear-gradient(110deg, #e8f1ff, #e7f7ef); border: 1px solid rgba(99,130,200,.25); border-radius: 16px; padding: 18px 48px 18px 22px; margin-bottom: 22px; position: relative; }
         .feat-banner.hide { display: none; }
@@ -93,6 +142,207 @@
         .greet { text-transform: capitalize; }
         .empty { color: var(--muted); font-size: .9rem; margin-top: 10px; }
         .card .cta { display:inline-block; margin-top:16px; background:linear-gradient(135deg,#3392ff,#6d28d9); color:#fff; font-weight:600; font-size:.84rem; padding:9px 16px; border-radius:9px; }
+
+        /* "Build My Portfolio" / "Start Mock Interview" — skewed arrow cta
+           (Uiverse.io by mobinkakei), recolored to these cards' existing
+           blue/violet gradient. Scoped via .dash-cta-arrow so the shared
+           .cta/.cta-block classes elsewhere are untouched. */
+        .card .cta.cta-block.dash-cta-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 11px 18px;
+            text-decoration: none;
+            font-size: .9rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg,#3392ff,#6d28d9);
+            transition: box-shadow .5s, background .3s;
+            box-shadow: 5px 5px 0 #000;
+            transform: skewX(-15deg);
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+        }
+        .dash-cta-arrow:focus { outline: none; }
+        .dash-cta-arrow .dash-cta-text { display: inline-block; transform: skewX(15deg); }
+        .dash-cta-arrow .dash-cta-ico {
+            transition: .5s;
+            margin-right: 0;
+            width: 20px;
+            margin-left: 20px;
+            position: relative;
+            top: 12%;
+            transform: skewX(15deg);
+        }
+        .dash-cta-arrow:hover {
+            transition: .5s;
+            box-shadow: 9px 9px 0 #fbc638;
+        }
+        .dash-cta-arrow:hover .dash-cta-ico { margin-right: 30px; }
+        .dash-cta-one { transition: .4s; transform: translateX(-60%); }
+        .dash-cta-two { transition: .5s; transform: translateX(-30%); }
+        .dash-cta-arrow:hover .dash-cta-three { animation: dashCtaColorAnim 1s infinite .2s; }
+        .dash-cta-arrow:hover .dash-cta-one { transform: translateX(0%); animation: dashCtaColorAnim 1s infinite .6s; }
+        .dash-cta-arrow:hover .dash-cta-two { transform: translateX(0%); animation: dashCtaColorAnim 1s infinite .4s; }
+        @keyframes dashCtaColorAnim {
+            0% { fill: #fff; }
+            50% { fill: #fbc638; }
+            100% { fill: #fff; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .dash-cta-arrow, .dash-cta-arrow * { animation: none !important; transition: none !important; }
+        }
+
+        /* "Get ATS score" — plane-style launch button (Uiverse.io by
+           marcelodolza), recolored to the dashboard's blue/violet accent.
+           Classes prefixed dash-ats- to stay scoped to this button only. */
+        .go.dash-ats-launch {
+            --primary: #a9c3ff;
+            --neutral-1: #3392ff;
+            --neutral-2: #7c3aed;
+            --radius: 11px;
+            all: unset;
+            box-sizing: border-box;
+            cursor: pointer;
+            border-radius: var(--radius);
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,.3);
+            border: none;
+            box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 6px 18px rgba(51,146,255,.35);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all .3s ease;
+            padding: 13px 26px;
+            min-height: 46px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .dash-ats-launch:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 10px 24px rgba(51,146,255,.5);
+        }
+        .dash-ats-launch:active { transform: scale(1); }
+        .dash-ats-launch::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius);
+            border: 2px solid transparent;
+            background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+                linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+            z-index: 0;
+            transition: all .4s ease;
+        }
+        .dash-ats-launch:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,1); }
+        .dash-ats-launch::before {
+            content: "";
+            inset: 4px;
+            position: absolute;
+            background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+            border-radius: 18px;
+            filter: blur(0.5px);
+            z-index: 2;
+        }
+        .dash-ats-state p { display: flex; align-items: center; justify-content: center; }
+        .dash-ats-icon {
+            position: absolute; left: 0; top: 0; bottom: 0; margin: auto;
+            transform: scale(1);
+            transition: all .3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .dash-ats-icon svg { overflow: visible; width: 17px; height: 17px; }
+        .dash-ats-outline {
+            position: absolute; border-radius: inherit; overflow: hidden; z-index: 1;
+            opacity: 0; transition: opacity .4s ease; inset: -2px -3px;
+        }
+        .dash-ats-outline::before {
+            content: ""; position: absolute; inset: -100%;
+            background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
+            animation: dash-ats-spin 2s linear infinite;
+            animation-play-state: paused;
+        }
+        .dash-ats-launch:hover .dash-ats-outline { opacity: 1; }
+        .dash-ats-launch:hover .dash-ats-outline::before { animation-play-state: running; }
+        .dash-ats-state p span {
+            display: block; opacity: 0;
+            animation: dash-ats-slideDown .8s ease forwards calc(var(--i) * .025s);
+        }
+        .dash-ats-launch:hover p span {
+            opacity: 1;
+            animation: dash-ats-wave .5s ease forwards calc(var(--i) * .015s);
+        }
+        .dash-ats-launch:focus p span {
+            opacity: 1;
+            animation: dash-ats-disapear .6s ease forwards calc(var(--i) * .02s);
+        }
+        .dash-ats-state--default .dash-ats-icon svg { animation: dash-ats-land .6s ease forwards; }
+        .dash-ats-launch:hover .dash-ats-state--default .dash-ats-icon { transform: rotate(45deg); }
+        .dash-ats-launch:focus .dash-ats-state--default svg { animation: dash-ats-takeOff .8s linear forwards; }
+        .dash-ats-launch:focus .dash-ats-state--default .dash-ats-icon { transform: rotate(0); }
+        .dash-ats-state {
+            padding-left: 22px; z-index: 2; display: flex; position: relative;
+        }
+        .dash-ats-state--sent { display: none; }
+        .dash-ats-state--sent svg { transform: scale(1); margin-right: 6px; }
+        .dash-ats-launch:focus .dash-ats-state--default { position: absolute; }
+        .dash-ats-launch:focus .dash-ats-state--sent { display: flex; }
+        .dash-ats-launch:focus .dash-ats-state--sent span {
+            opacity: 0;
+            animation: dash-ats-slideDown .8s ease forwards calc(var(--i) * .15s);
+        }
+        .dash-ats-launch:focus .dash-ats-state--sent .dash-ats-icon svg {
+            opacity: 0;
+            animation: dash-ats-appear 1.2s ease forwards .8s;
+        }
+        .dash-ats-launch:disabled { opacity: .6; cursor: not-allowed; }
+        .dash-ats-launch .btn-spinner {
+            display: inline-block; width: 13px; height: 13px; vertical-align: -2px;
+            margin-right: 7px; border: 2px solid rgba(255,255,255,.4);
+            border-top-color: #fff; border-radius: 50%;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .dash-ats-launch .btn-spinner { animation: dash-ats-spin .7s linear infinite; }
+        }
+        @keyframes dash-ats-spin { to { transform: rotate(360deg); } }
+        @keyframes dash-ats-wave {
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: var(--primary); }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes dash-ats-slideDown {
+            0% { opacity: 0; transform: translateY(-14px) translateX(4px) rotate(-90deg); color: #fff; filter: blur(4px); }
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); filter: blur(0); color: #fff; }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: #fff; }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes dash-ats-disapear {
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateX(4px) translateY(14px); color: var(--primary); filter: blur(4px); }
+        }
+        @keyframes dash-ats-takeOff {
+            0% { opacity: 1; }
+            60% { opacity: 1; transform: translateX(46px) rotate(45deg) scale(1.6); }
+            100% { opacity: 0; transform: translateX(100px) rotate(45deg) scale(0); }
+        }
+        @keyframes dash-ats-land {
+            0% { transform: translateX(-36px) translateY(18px) rotate(-50deg) scale(1.6); opacity: 0; filter: blur(2px); }
+            100% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; filter: blur(0); }
+        }
+        @keyframes dash-ats-appear {
+            0% { opacity: 0; transform: scale(3) rotate(-40deg); color: var(--primary); filter: blur(3px); }
+            30% { opacity: 1; transform: scale(.6); filter: blur(1px); }
+            50% { opacity: 1; transform: scale(1.2); filter: blur(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .dash-ats-launch, .dash-ats-launch *, .dash-ats-outline::before { animation: none !important; transition: none !important; }
+            .dash-ats-state p span { opacity: 1 !important; }
+        }
 
         /* New scan box */
         .newscan { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 26px; }
@@ -214,6 +464,7 @@
     </style>
 </head>
 <body>
+    <canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;"></canvas>
     {% set initial = (user_name or user_email or 'U')[0]|upper %}
     <!-- Top app bar (matches the other pages) -->
     <header class="tcv-top">
@@ -290,7 +541,7 @@
                     <h3><span class="tag">TIP</span> Tailor every application</h3>
                     <p>Optimize your resume for each job description to boost your ATS score and get more callbacks.</p>
                 </div>
-                <a class="go" href="/optimize">Optimize a resume</a>
+                <a class="go dash-optimize-btn" href="/optimize">Optimize a resume</a>
             </div>
 
             <!-- Cards -->
@@ -301,7 +552,18 @@
                         <a href="/portfolio" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
                     </div>
                     <p class="empty">Turn your resume into a live, shareable portfolio website — no coding, publish in minutes.</p>
-                    <a class="cta cta-block" href="/portfolio">Build My Portfolio</a>
+                    <a class="cta cta-block dash-cta-arrow" href="/portfolio">
+                        <span class="dash-cta-text">Build My Portfolio</span>
+                        <span class="dash-cta-ico" aria-hidden="true">
+                            <svg width="50px" height="20px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                <g id="dash-cta-arrow-portfolio" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <path class="dash-cta-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                                    <path class="dash-cta-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                                    <path class="dash-cta-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </a>
                     <svg class="empty-art" viewBox="0 0 220 132" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <defs><linearGradient id="eaRing" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3392ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
                         <rect x="24" y="14" width="172" height="104" rx="12" fill="#0e1c40" stroke="#31427a" stroke-width="2"/>
@@ -339,7 +601,18 @@
                         <a href="/mock-interview" aria-label="Open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
                     </div>
                     <p class="empty">Practice real interview questions and get instant AI feedback to build your confidence.</p>
-                    <a class="cta cta-block" href="/mock-interview">Start Mock Interview</a>
+                    <a class="cta cta-block dash-cta-arrow" href="/mock-interview">
+                        <span class="dash-cta-text">Start Mock Interview</span>
+                        <span class="dash-cta-ico" aria-hidden="true">
+                            <svg width="50px" height="20px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                <g id="dash-cta-arrow-mock" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <path class="dash-cta-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                                    <path class="dash-cta-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                                    <path class="dash-cta-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </a>
                     <svg class="empty-art" viewBox="0 0 220 132" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <defs><linearGradient id="miGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3392ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
                         <rect x="24" y="14" width="172" height="104" rx="12" fill="#0e1c40" stroke="#31427a" stroke-width="2"/>
@@ -383,8 +656,30 @@
                     </div>
                 </div>
                 <div class="scan-actions">
-                    <button class="go" id="ns-go" type="button">Get ATS score</button>
-                    <span class="ghost">Scores your resume against the JD instantly</span>
+                    <button class="go dash-ats-launch" id="ns-go" type="button">
+                        <div class="dash-ats-outline"></div>
+                        <div class="dash-ats-state dash-ats-state--default">
+                            <div class="dash-ats-icon">
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 20h18"></path><path d="M6 20V11"></path><path d="M12 20V5"></path><path d="M18 20v-6"></path>
+                                </svg>
+                            </div>
+                            <p>
+                                <span style="--i:0">G</span><span style="--i:1">e</span><span style="--i:2">t</span><span style="--i:3">&nbsp;</span><span style="--i:4">A</span><span style="--i:5">T</span><span style="--i:6">S</span><span style="--i:7">&nbsp;</span><span style="--i:8">s</span><span style="--i:9">c</span><span style="--i:10">o</span><span style="--i:11">r</span><span style="--i:12">e</span>
+                            </p>
+                        </div>
+                        <div class="dash-ats-state dash-ats-state--sent">
+                            <div class="dash-ats-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                                    <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                    <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                                </svg>
+                            </div>
+                            <p>
+                                <span style="--i:8">S</span><span style="--i:9">c</span><span style="--i:10">o</span><span style="--i:11">r</span><span style="--i:12">i</span><span style="--i:13">n</span><span style="--i:14">g</span>
+                            </p>
+                        </div>
+                    </button>
                     <span class="scan-msg" id="ns-msg"></span>
                 </div>
                 <div class="ns-progress" id="ns-progress">
@@ -1982,7 +2277,14 @@ Nice to have:
 
         // New scan: score the uploaded resume against the JD, then open the report.
         var go = document.getElementById('ns-go');
-        var nsGoOriginalText = go ? go.textContent : 'Get ATS score';
+        var nsGoOriginalHtml = go ? go.innerHTML : '';
+        function setGoLoading(on) {
+            if (!go) return;
+            go.disabled = on;
+            go.innerHTML = on
+                ? '<span class="btn-spinner" aria-hidden="true"></span>Scoring…'
+                : nsGoOriginalHtml;
+        }
 
         // If the user navigates back (e.g. from /ats-analysis), the browser may restore
         // this page from bfcache with the button/message stuck in their "in progress" state.
@@ -1990,7 +2292,7 @@ Nice to have:
             var nav = window.performance && performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
             var isBackForward = event.persisted || (nav && nav.type === 'back_forward');
             if (!isBackForward) return;
-            if (go) { go.disabled = false; go.textContent = nsGoOriginalText; }
+            setGoLoading(false);
             var msgEl = document.getElementById('ns-msg');
             if (msgEl) { msgEl.textContent = ''; }
             stopNSProgress();
@@ -2005,8 +2307,7 @@ Nice to have:
             if (!f) { msg.textContent = 'Upload your resume PDF.'; return; }
             try { sessionStorage.setItem('tcv_prefill_jd', jd); localStorage.setItem('tailorcv_jobDescription', jd); } catch (e) {}
 
-            var original = go.textContent;
-            go.disabled = true; go.textContent = 'Scoring…';
+            setGoLoading(true);
             msg.style.color = '#9fb6d6'; msg.textContent = 'Analyzing your resume…';
             startNSProgress();
 
@@ -2026,7 +2327,7 @@ Nice to have:
                     setTimeout(function () { window.location.href = '/ats-analysis'; }, 250);
                 })
                 .catch(function (err) { if (err.message !== 'login') { msg.style.color = '#fca5a5'; msg.textContent = err.message || 'Something went wrong. Try again.'; stopNSProgress(); } })
-                .finally(function () { if (!window.location.href.includes('/ats-analysis')) { go.disabled = false; go.textContent = original; } });
+                .finally(function () { if (!window.location.href.includes('/ats-analysis')) { setGoLoading(false); } });
         });
     })();
     </script>
@@ -2113,6 +2414,44 @@ Nice to have:
       })();
     });
   });
+})();
+</script>
+<script>
+(function(){
+  const canvas = document.getElementById('wave-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const waves = [
+    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
+    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
+    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
+    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
+    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
+    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
+  ];
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now();
+    waves.forEach(function(wv){
+      ctx.beginPath();
+      for(let x = 0; x <= W; x += 2){
+        const y = H * wv.yf + Math.sin(x * wv.freq + t * wv.speed) * wv.amp + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45 + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const r = wv.color[0], g = wv.color[1], b = wv.color[2];
+      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+      gr.addColorStop(0, 'rgba('+r+','+g+','+b+','+wv.alpha+')');
+      gr.addColorStop(0.5, 'rgba('+r+','+g+','+b+','+(wv.alpha*0.4)+')');
+      gr.addColorStop(1, 'rgba('+r+','+g+','+b+',0)');
+      ctx.fillStyle = gr; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
 })();
 </script>
 </body>

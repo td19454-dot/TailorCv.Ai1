@@ -856,7 +856,7 @@ html:not([data-guest-landing="1"]) *::after {
 }
 /* ===== LAYOUT ===== */
 .modify-cv-section {
-    padding: 2rem 1rem 4rem;
+    padding: 0.25rem 1rem 4rem;
 }
 
 .modify-cv-layout {
@@ -876,10 +876,10 @@ html:not([data-guest-landing="1"]) *::after {
 
 .modify-cv-sidebar {
     position: fixed;
-    top: 115px;
+    top: 104px;
     left: max(0.5rem, calc((100vw - 1800px) / 2));
     width: 220px;
-    height: calc(100vh - 125px);
+    height: calc(100vh - 114px);
     overflow-y: auto;
     z-index: 99;
     padding: 1rem;
@@ -1042,10 +1042,10 @@ html:not([data-guest-landing="1"]) *::after {
 
 .preview-panel {
     position: fixed;
-    top: 115px;
+    top: 104px;
     right: max(0.5rem, calc((100vw - 1800px) / 2));
     width: 480px;
-    height: calc(100vh - 125px);
+    height: calc(100vh - 114px);
     overflow-y: auto;
     z-index: 99;
     padding: 1rem;
@@ -1210,10 +1210,10 @@ html:not([data-guest-landing="1"]) *::after {
 
 .preview-panel {
     position: fixed;
-    top: 115px;
+    top: 104px;
     right: max(0.5rem, calc((100vw - 1800px) / 2));
     width: 480px;
-    height: calc(100vh - 125px);
+    height: calc(100vh - 114px);
     overflow-y: auto;
     z-index: 99;
     display: flex;
@@ -1302,8 +1302,8 @@ html:not([data-guest-landing="1"]) *::after {
     cursor: pointer;
     transition: all 0.3s ease;
     display: block;
-    height: 300px;
-    width: 200px;
+    height: 390px;
+    width: 260px;
     overflow: hidden;
     margin: 0.5rem;
 }
@@ -1321,8 +1321,8 @@ html:not([data-guest-landing="1"]) *::after {
 
 .template-thumb {
     flex: 1 1 auto;
-    min-height: 280px;
-    max-height: 320px;
+    min-height: 364px;
+    max-height: 416px;
     aspect-ratio: 3/5;
     position: relative;
     overflow: hidden;
