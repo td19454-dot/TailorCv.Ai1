@@ -43,10 +43,12 @@
             box-shadow: 0 10px 24px rgba(30, 64, 175, 0.3);
         }
         html, body { overflow-x: hidden; }
+        /* Dark fallback so the fixed wave canvas never flashes white before it paints. */
+        html { background-color: #030014; }
     </style>
 </head>
 <body>
-{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
+<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;"></canvas>
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
@@ -433,15 +435,242 @@
           }
           @keyframes tplSkel { from { background-position: 200% 0; } to { background-position: -200% 0; } }
           @media (prefers-reduced-motion: reduce) { .tpl-skeleton { animation: none; } }
+
+          /* Action-chooser buttons ("Change Template" / "Modify CV" /
+             "Optimize Resume") — plane-flies-off "send" button (Uiverse.io by
+             marcelodolza), recolored to the same blue→violet gradient these
+             buttons already used. Classes prefixed tpl-launch- to stay scoped
+             to this page. Text spans reset color at every keyframe step so it
+             can never get stuck on an in-between hue. */
+          .tpl-launch-btn {
+            all: unset;
+            box-sizing: border-box;
+            cursor: pointer;
+            border-radius: 70px;
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,.3);
+            border: none;
+            box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 10px 20px rgba(0,0,0,.2), 0 4px 5px 0px rgba(0,0,0,.05);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all .3s ease;
+            min-width: 180px;
+            padding: .84rem 1.4rem;
+            font-family: inherit;
+            font-size: .95rem;
+            font-weight: 700;
+            letter-spacing: .02em;
+          }
+          .tpl-launch-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 15px 30px rgba(0,0,0,.3), 0 10px 3px -3px rgba(0,0,0,.04);
+          }
+          .tpl-launch-btn:active { transform: scale(1); }
+          .tpl-launch-btn::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: 2.5px solid transparent;
+            background: linear-gradient(#3c78e0, #12266b) padding-box,
+              linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+            z-index: 0;
+            transition: all .4s ease;
+          }
+          .tpl-launch-btn:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,1); }
+          .tpl-launch-btn::before {
+            content: "";
+            inset: 6px 6px 6px 6px;
+            position: absolute;
+            background: linear-gradient(135deg, #0f4ea3 0%, #132c7a 55%, #3c1361 100%);
+            border-radius: 30px;
+            filter: blur(0.5px);
+            z-index: 2;
+          }
+          .tpl-launch-state p { display: flex; align-items: center; justify-content: center; }
+          .tpl-launch-icon {
+            position: absolute; left: 0; top: 0; bottom: 0; margin: auto;
+            transform: scale(1.1);
+            transition: all .3s ease;
+            display: flex; align-items: center; justify-content: center;
+          }
+          .tpl-launch-icon svg { overflow: visible; width: 18px; height: 18px; }
+          .tpl-launch-outline {
+            position: absolute; border-radius: inherit; overflow: hidden; z-index: 1;
+            opacity: 0; transition: opacity .4s ease; inset: -2px -3px;
+          }
+          .tpl-launch-outline::before {
+            content: ""; position: absolute; inset: -100%;
+            background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
+            animation: tplLaunchSpin 2s linear infinite;
+            animation-play-state: paused;
+          }
+          .tpl-launch-btn:hover .tpl-launch-outline { opacity: 1; }
+          .tpl-launch-btn:hover .tpl-launch-outline::before { animation-play-state: running; }
+          .tpl-launch-state p span {
+            display: block; opacity: 0;
+            animation: tplLaunchSlideDown .8s ease forwards calc(var(--i) * .03s);
+          }
+          .tpl-launch-btn:hover p span {
+            opacity: 1;
+            animation: tplLaunchWave .5s ease forwards calc(var(--i) * .02s);
+          }
+          .tpl-launch-btn:focus p span {
+            opacity: 1;
+            animation: tplLaunchDisapear .6s ease forwards calc(var(--i) * .03s);
+          }
+          .tpl-launch-state--default .tpl-launch-icon svg { animation: tplLaunchLand .6s ease forwards; }
+          .tpl-launch-btn:hover .tpl-launch-state--default .tpl-launch-icon { transform: rotate(45deg) scale(1.1); }
+          .tpl-launch-btn:focus .tpl-launch-state--default svg { animation: tplLaunchTakeOff .8s linear forwards; }
+          .tpl-launch-btn:focus .tpl-launch-state--default .tpl-launch-icon { transform: rotate(0) scale(1.1); }
+          .tpl-launch-state {
+            padding-left: 26px; z-index: 2; display: flex; position: relative;
+          }
+          .tpl-launch-state--sent { display: none; }
+          .tpl-launch-state--sent svg { transform: scale(1.1); margin-right: 7px; }
+          .tpl-launch-btn:focus .tpl-launch-state--default { position: absolute; }
+          .tpl-launch-btn:focus .tpl-launch-state--sent { display: flex; }
+          .tpl-launch-btn:focus .tpl-launch-state--sent span {
+            opacity: 0;
+            animation: tplLaunchSlideDown .8s ease forwards calc(var(--i) * .15s);
+          }
+          .tpl-launch-btn:focus .tpl-launch-state--sent .tpl-launch-icon svg {
+            opacity: 0;
+            animation: tplLaunchAppear 1.2s ease forwards .8s;
+          }
+          @keyframes tplLaunchSpin { to { transform: rotate(360deg); } }
+          @keyframes tplLaunchWave {
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: #8b5cf6; }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+          }
+          @keyframes tplLaunchSlideDown {
+            0% { opacity: 0; transform: translateY(-14px) translateX(4px) rotate(-90deg); color: #8b5cf6; filter: blur(4px); }
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); filter: blur(0); color: #fff; }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: #fff; }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+          }
+          @keyframes tplLaunchDisapear {
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateX(4px) translateY(14px); color: #8b5cf6; filter: blur(4px); }
+          }
+          @keyframes tplLaunchTakeOff {
+            0% { opacity: 1; }
+            60% { opacity: 1; transform: translateX(55px) rotate(45deg) scale(1.7); }
+            100% { opacity: 0; transform: translateX(120px) rotate(45deg) scale(0); }
+          }
+          @keyframes tplLaunchLand {
+            0% { transform: translateX(-45px) translateY(22px) rotate(-50deg) scale(1.7); opacity: 0; filter: blur(3px); }
+            100% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; filter: blur(0); }
+          }
+          @keyframes tplLaunchAppear {
+            0% { opacity: 0; transform: scale(3.5) rotate(-40deg); color: #8b5cf6; filter: blur(4px); }
+            30% { opacity: 1; transform: scale(.6); filter: blur(1px); }
+            50% { opacity: 1; transform: scale(1.2); filter: blur(0); }
+            100% { opacity: 1; transform: scale(1); }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .tpl-launch-btn, .tpl-launch-btn *, .tpl-launch-outline::before { animation: none !important; transition: none !important; }
+            .tpl-launch-state p span { opacity: 1 !important; }
+          }
         </style>
         <section id="templates-grid" class="templates-grid" aria-live="polite"></section>
         <p id="templates-grid-status" class="templates-grid-status" aria-live="polite"></p>
         <section id="template-action-chooser" class="template-action-chooser" hidden>
             <h3>What do you want to do with your resume?</h3>
             <div class="template-action-chooser-buttons">
-                <button id="choose-reformat-btn" type="button" class="templates-btn templates-btn-secondary">Change Template</button>
-                <button id="choose-build-btn" type="button" class="templates-btn templates-btn-secondary">Modify CV</button>
-                <button id="choose-optimize-btn" type="button" class="templates-btn templates-btn-primary">Optimize Resume</button>
+                <button id="choose-reformat-btn" type="button" class="templates-btn templates-btn-secondary tpl-launch-btn">
+                    <div class="tpl-launch-outline"></div>
+                    <div class="tpl-launch-state tpl-launch-state--default">
+                        <div class="tpl-launch-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g style="filter:url(#tpl-launch-shadow)">
+                            <path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="currentColor"></path>
+                            <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="currentColor"></path>
+                        </g>
+                        <defs>
+                            <filter id="tpl-launch-shadow">
+                                <feDropShadow dx="0" dy="1" stdDeviation="0.6" flood-opacity="0.5"></feDropShadow>
+                            </filter>
+                        </defs>
+                    </svg>
+                        </div>
+                        <p><span style="--i:0">C</span><span style="--i:1">h</span><span style="--i:2">a</span><span style="--i:3">n</span><span style="--i:4">g</span><span style="--i:5">e</span><span style="--i:6">&nbsp;</span><span style="--i:7">T</span><span style="--i:8">e</span><span style="--i:9">m</span><span style="--i:10">p</span><span style="--i:11">l</span><span style="--i:12">a</span><span style="--i:13">t</span><span style="--i:14">e</span></p>
+                    </div>
+                    <div class="tpl-launch-state tpl-launch-state--sent">
+                        <div class="tpl-launch-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                        <g style="filter:url(#tpl-launch-shadow)">
+                            <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                            <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                        </g>
+                    </svg>
+                        </div>
+                        <p><span style="--i:8">O</span><span style="--i:9">p</span><span style="--i:10">e</span><span style="--i:11">n</span><span style="--i:12">i</span><span style="--i:13">n</span><span style="--i:14">g</span></p>
+                    </div>
+                </button>
+                <button id="choose-build-btn" type="button" class="templates-btn templates-btn-secondary tpl-launch-btn">
+                    <div class="tpl-launch-outline"></div>
+                    <div class="tpl-launch-state tpl-launch-state--default">
+                        <div class="tpl-launch-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g style="filter:url(#tpl-launch-shadow)">
+                            <path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="currentColor"></path>
+                            <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="currentColor"></path>
+                        </g>
+                        <defs>
+                            <filter id="tpl-launch-shadow">
+                                <feDropShadow dx="0" dy="1" stdDeviation="0.6" flood-opacity="0.5"></feDropShadow>
+                            </filter>
+                        </defs>
+                    </svg>
+                        </div>
+                        <p><span style="--i:0">M</span><span style="--i:1">o</span><span style="--i:2">d</span><span style="--i:3">i</span><span style="--i:4">f</span><span style="--i:5">y</span><span style="--i:6">&nbsp;</span><span style="--i:7">C</span><span style="--i:8">V</span></p>
+                    </div>
+                    <div class="tpl-launch-state tpl-launch-state--sent">
+                        <div class="tpl-launch-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                        <g style="filter:url(#tpl-launch-shadow)">
+                            <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                            <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                        </g>
+                    </svg>
+                        </div>
+                        <p><span style="--i:2">O</span><span style="--i:3">p</span><span style="--i:4">e</span><span style="--i:5">n</span><span style="--i:6">i</span><span style="--i:7">n</span><span style="--i:8">g</span></p>
+                    </div>
+                </button>
+                <button id="choose-optimize-btn" type="button" class="templates-btn templates-btn-primary tpl-launch-btn">
+                    <div class="tpl-launch-outline"></div>
+                    <div class="tpl-launch-state tpl-launch-state--default">
+                        <div class="tpl-launch-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g style="filter:url(#tpl-launch-shadow)">
+                            <path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="currentColor"></path>
+                            <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="currentColor"></path>
+                        </g>
+                        <defs>
+                            <filter id="tpl-launch-shadow">
+                                <feDropShadow dx="0" dy="1" stdDeviation="0.6" flood-opacity="0.5"></feDropShadow>
+                            </filter>
+                        </defs>
+                    </svg>
+                        </div>
+                        <p><span style="--i:0">O</span><span style="--i:1">p</span><span style="--i:2">t</span><span style="--i:3">i</span><span style="--i:4">m</span><span style="--i:5">i</span><span style="--i:6">z</span><span style="--i:7">e</span><span style="--i:8">&nbsp;</span><span style="--i:9">R</span><span style="--i:10">e</span><span style="--i:11">s</span><span style="--i:12">u</span><span style="--i:13">m</span><span style="--i:14">e</span></p>
+                    </div>
+                    <div class="tpl-launch-state tpl-launch-state--sent">
+                        <div class="tpl-launch-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                        <g style="filter:url(#tpl-launch-shadow)">
+                            <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                            <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                        </g>
+                    </svg>
+                        </div>
+                        <p><span style="--i:8">O</span><span style="--i:9">p</span><span style="--i:10">e</span><span style="--i:11">n</span><span style="--i:12">i</span><span style="--i:13">n</span><span style="--i:14">g</span></p>
+                    </div>
+                </button>
             </div>
         </section>
         <section id="template-confirm-card" class="template-confirm-card" hidden>
@@ -955,7 +1184,6 @@
     </script>
     <script src="/static/resume_store.js?v=1"></script>
     {% endif %}
-{% if not is_logged_in %}
 <script>
 (function(){
   const canvas = document.getElementById('wave-canvas');
@@ -999,7 +1227,6 @@
   draw();
 })();
 </script>
-{% endif %}
 <script>
 /* Templates grid: one-time staggered reveal on first render (P3).
    No-ops for guests (no grid) and under reduced motion. Cleans up inline
