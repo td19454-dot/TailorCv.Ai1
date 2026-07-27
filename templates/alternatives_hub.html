@@ -40,14 +40,14 @@
 
     <main class="rh-wrap">
         <section class="rh-hero">
-            <h1>How TheTailorCV <span class="hl">compares</span></h1>
-            <p>An honest look at how TheTailorCV stacks up against the other resume and ATS tools — features, pricing, and who each one actually suits.</p>
+            <h1>How TailorCV <span class="hl">compares</span></h1>
+            <p>An honest look at how TailorCV stacks up against the other resume and ATS tools — features, pricing, and who each one actually suits.</p>
         </section>
 
         <div class="rh-grid">
             {% for slug, c in pages.items() %}
             <a class="rh-card" href="/{{ slug }}">
-                <h3>TheTailorCV vs {{ c.competitor }}</h3>
+                <h3>TailorCV vs {{ c.competitor }}</h3>
                 <p>{{ c.hero }}</p>
                 <span class="go">Compare &rarr;</span>
             </a>
