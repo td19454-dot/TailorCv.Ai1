@@ -1,5 +1,5 @@
 /* ============================================================================
-   motion.js — theTailorCV shared motion layer. Pairs with motion.css.
+   motion.js — TailorCV shared motion layer. Pairs with motion.css.
 
    Does three things, all reduced-motion-safe and no-JS-safe:
      1. Scroll reveal  — fade + rise common sections/cards as they enter view.
