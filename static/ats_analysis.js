@@ -519,7 +519,11 @@
       container.innerHTML = "";
       container.appendChild(el("div", "pill-group-label", label));
       const list = el("div", "pill-list");
-      if (items.length) items.forEach(s => list.appendChild(pill(s, kind)));
+      if (items.length) items.forEach((s, i) => {
+        const p = pill(s, kind);
+        p.style.animationDelay = (Math.min(i, 12) * 45) + "ms";   // staggered reveal
+        list.appendChild(p);
+      });
       else              list.appendChild(pill("None detected", "empty"));
       container.appendChild(list);
     });

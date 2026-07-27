@@ -587,11 +587,19 @@
         }
 
         if (downloadBtn) {
+            const downloadBtnLabel = downloadBtn.textContent;
+            function setDownloadLoading(on) {
+                downloadBtn.disabled = on;
+                downloadBtn.innerHTML = on
+                    ? '<span class="btn-spinner" aria-hidden="true"></span>Generating…'
+                    : downloadBtnLabel;
+            }
             downloadBtn.addEventListener("click", async () => {
                 if (!selectedTemplate) {
                     alert("Select a template first.");
                     return;
                 }
+                setDownloadLoading(true);
                 try {
                     const response = await fetch("/api/download-cv-pdf", {
                         method: "POST",
@@ -617,6 +625,9 @@
                     link.click();
                     link.remove();
                     setTimeout(() => window.URL.revokeObjectURL(url), 2000);
+                    setDownloadLoading(false);
+                    downloadBtn.classList.add("pulse-success");
+                    setTimeout(() => downloadBtn.classList.remove("pulse-success"), 1000);
                     return;
                 } catch (error) {
                     const message = (error?.message || "").toLowerCase();
@@ -628,6 +639,7 @@
                     console.warn("Primary download failed, using fallback.", error);
                 }
 
+                setDownloadLoading(false);
                 const form = document.createElement("form");
                 form.method = "POST";
                 form.action = "/api/download-cv-pdf-browser";

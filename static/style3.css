@@ -3496,26 +3496,52 @@ html, body { overflow-x: hidden !important; }
     max-width: 620px;
 }
 
+/* Skewed "cta" button with an animated triple-chevron arrow (adapted from a
+   Uiverse.io recipe by mobinkakei) — applied to the 5 feature-section CTAs. */
 .feature-showcase-btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-height: 50px;
-    padding: 0 28px;
-    border-radius: 999px;
-    border: 1px solid rgba(132, 196, 255, 0.55);
-    background: rgba(7, 24, 62, 0.65);
-    color: #dff2ff;
+    min-height: 0;
+    padding: 11px 28px;
+    border-radius: 0;
+    border: none;
+    background: #6225e6;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 700;
     font-size: 16px;
-    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    box-shadow: 6px 6px 0 #000;
+    transform: skewX(-15deg);
+    transition: box-shadow .5s, background .3s;
 }
-
+.feature-showcase-btn:focus { outline: none; }
+.feature-showcase-btn .fsb-text {
+    display: inline-block;
+    transform: skewX(15deg);
+}
 .feature-showcase-btn:hover {
-    transform: translateY(-2px);
-    border-color: rgba(157, 220, 255, 0.85);
-    background: rgba(10, 34, 84, 0.8);
+    background: #6225e6;
+    color: #ffffff;
+    box-shadow: 10px 10px 0 #fbc638;
+}
+.feature-showcase-btn .fsb-arrow {
+    display: inline-flex; width: 22px; margin-left: 16px;
+    position: relative; top: 1px; transition: margin-right .5s;
+}
+.feature-showcase-btn:hover .fsb-arrow { margin-right: 30px; }
+.feature-showcase-btn .fsb-one { transition: .4s; transform: translateX(-60%); }
+.feature-showcase-btn .fsb-two { transition: .5s; transform: translateX(-30%); }
+.feature-showcase-btn:hover .fsb-three { animation: fsbColorAnim 1s infinite .2s; }
+.feature-showcase-btn:hover .fsb-one { transform: translateX(0%); animation: fsbColorAnim 1s infinite .6s; }
+.feature-showcase-btn:hover .fsb-two { transform: translateX(0%); animation: fsbColorAnim 1s infinite .4s; }
+@keyframes fsbColorAnim { 0% { fill: #fff; } 50% { fill: #fbc638; } 100% { fill: #fff; } }
+@media (prefers-reduced-motion: reduce) {
+    .feature-showcase-btn:hover .fsb-one,
+    .feature-showcase-btn:hover .fsb-two,
+    .feature-showcase-btn:hover .fsb-three { animation: none; }
+    .feature-showcase-btn .fsb-arrow,
+    .feature-showcase-btn .fsb-one,
+    .feature-showcase-btn .fsb-two { transition: none; }
 }
 
 .feature-showcase-visual {
@@ -4121,7 +4147,9 @@ html, body { overflow-x: hidden !important; }
 @media (max-width: 768px) {
     .sales-pop {
         left: 10px;
-        bottom: 12px;
+        /* Clear the .mobile-sticky-cta (fixed, ~52px tall at bottom:12px) so the
+           toast never covers the primary Optimize button a user is about to tap. */
+        bottom: calc(78px + env(safe-area-inset-bottom));
         width: calc(100vw - 20px);
         grid-template-columns: 60px 1fr auto;
         gap: 10px;

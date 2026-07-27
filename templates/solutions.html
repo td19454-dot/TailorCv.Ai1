@@ -8,7 +8,7 @@
     <title>Free ATS Resume Score Checker, See Your Score in 30 Seconds | TailorCV</title>
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/header-footer.css?v=8">
-    <link rel="stylesheet" href="/static/style2.css?v=7">
+    <link rel="stylesheet" href="/static/style2.css?v=8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -275,6 +275,20 @@
         .cv2-chip span {
             color: white;
         }
+        /* Hero chip hover lift + glow, and a subtle staggered fade-in on load
+           (opacity-only so it never fights the hover transform). */
+        @media (prefers-reduced-motion: no-preference) {
+            .cv2-chip { transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+            .cv2-chip:hover {
+                transform: translateY(-2px);
+                border-color: rgba(96, 165, 250, .7);
+                box-shadow: 0 8px 22px rgba(37, 99, 235, .30);
+            }
+            .cv2-chips .cv2-chip { animation: cv2ChipFade .5s ease-out both; }
+            .cv2-chips .cv2-chip:nth-child(2) { animation-delay: .1s; }
+            .cv2-chips .cv2-chip:nth-child(3) { animation-delay: .2s; }
+            @keyframes cv2ChipFade { from { opacity: 0; } to { opacity: 1; } }
+        }
         .cv2-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -474,6 +488,12 @@
             color: #d8e8ff;
             border: 1px solid rgba(30, 100, 220, 0.45);
             border-radius: 10px;
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+        #job-description.form-textarea:focus {
+            outline: none;
+            border-color: rgba(96, 165, 250, 0.85);
+            box-shadow: 0 0 0 3px rgba(96, 130, 250, 0.18), 0 0 22px rgba(59, 130, 246, 0.22);
         }
         #job-description.form-textarea::placeholder {
             color: #6b94c8;
@@ -831,7 +851,7 @@
     <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/toast.js"></script>
-    <script src="/static/main_new.js?v=34"></script>
+    <script src="/static/main_new.js?v=35"></script>
 <script>
 (function () {
     const DEFAULT_JDS = {

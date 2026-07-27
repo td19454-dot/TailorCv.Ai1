@@ -519,10 +519,10 @@ async function handleATSAnalysis() {
 }
 
 const atsStepsData = [
-    { step: 1, text: 'Uploading resume...', percent: 20 },
-    { step: 2, text: 'Scanning keyword match...', percent: 45 },
-    { step: 3, text: 'Checking ATS compatibility...', percent: 70 },
-    { step: 4, text: 'Preparing score report...', percent: 92 }
+    { step: 1, text: 'Parsing your resume...', percent: 20 },
+    { step: 2, text: 'Matching keywords to the job...', percent: 45 },
+    { step: 3, text: 'Scoring against the job description...', percent: 70 },
+    { step: 4, text: 'Generating your report...', percent: 92 }
 ];
 
 function displayATSLoading() {

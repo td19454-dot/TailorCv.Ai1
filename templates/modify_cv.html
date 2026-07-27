@@ -450,7 +450,7 @@
 
     <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
-    {% if is_logged_in %}<script src="/static/js/modify_cv.js?v=28"></script>{% endif %}
+    {% if is_logged_in %}<script src="/static/js/modify_cv.js?v=29"></script>{% endif %}
 <script>
 (function(){
   const canvas = document.getElementById('wave-canvas');
@@ -519,6 +519,21 @@
     transition: transform .2s ease, box-shadow .2s ease;
   }
   body.tcx-anim .solx-btn:hover, body.tcx-anim .pricing-plan-btn:hover { transform: scale(1.02); }
+}
+/* Download-PDF loading state + success pulse (reduced-motion safe). */
+#download-pdf-btn .btn-spinner {
+  display: inline-block; width: 14px; height: 14px; vertical-align: -2px;
+  margin-right: 7px; border: 2px solid rgba(255,255,255,.4);
+  border-top-color: #fff; border-radius: 50%;
+}
+#download-pdf-btn.pulse-success { animation: dlPulseSuccess 1s ease 1; }
+@media (prefers-reduced-motion: no-preference) {
+  #download-pdf-btn .btn-spinner { animation: dlSpin .7s linear infinite; }
+}
+@keyframes dlSpin { to { transform: rotate(360deg); } }
+@keyframes dlPulseSuccess {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+  50%      { box-shadow: 0 0 0 8px rgba(34,197,94,.3); }
 }
 </style>
 <script>

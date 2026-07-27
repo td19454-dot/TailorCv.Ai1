@@ -39,6 +39,14 @@
         .ext-status.unset { color: #fca5a5; border-color: rgba(239,68,68,.32); }
         .ext-status-seg { white-space: nowrap; }
         .ext-status-dot { color: rgba(255,255,255,.35); font-size: .7rem; }
+        /* Status segments pop in left→right as the resume detail is confirmed (the
+           leading "✓ Using …" check pops with the first segment). Reduced-motion safe. */
+        @media (prefers-reduced-motion: no-preference) {
+            .ext-status-seg.tcx-seg-in, .ext-status-dot.tcx-seg-in {
+                animation: extSegIn .4s cubic-bezier(.22,1,.36,1) both;
+            }
+            @keyframes extSegIn { 0% { opacity: 0; transform: translateY(6px) scale(.9); } 100% { opacity: 1; transform: none; } }
+        }
 
         .ext-drop { position: relative; display: flex; flex-direction: column; align-items: center; cursor: pointer; border: 1.5px dashed rgba(139,92,246,.5); background: #ffffff; border-radius: 14px; padding: 34px 24px; text-align: center; transition: border-color .2s ease, background .2s ease; }
         .ext-drop:hover, .ext-drop.over { border-color: rgba(139,92,246,.95); background: #f8f7ff; }
@@ -79,6 +87,23 @@
         .ext-tpl.on .ext-tpl-shot { border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96,165,250,.35); }
         .ext-tpl-name { display: block; margin-top: 8px; font-size: .84rem; color: #cbd4e6; }
         .ext-tpl.on .ext-tpl-name { color: #fff; font-weight: 600; }
+        /* Install-CTA idle shimmer + selected pop + staggered thumbnail reveal.
+           Reveal transform is on the button; hover/selected transforms are on the
+           child .ext-tpl-shot, so they never conflict. Reduced-motion gated. */
+        .ext-install-btn { position: relative; overflow: hidden; }
+        @media (prefers-reduced-motion: no-preference) {
+            .ext-install-btn::after {
+                content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%;
+                background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent);
+                transform: skewX(-18deg); pointer-events: none;
+                animation: extBtnShimmer 4.5s ease-in-out infinite;
+            }
+            @keyframes extBtnShimmer { 0%, 68% { left: -60%; } 100% { left: 150%; } }
+            .ext-tpl.on .ext-tpl-shot { transform: scale(1.05); }
+            .ext-tpl.on:hover .ext-tpl-shot { transform: translateY(-3px) scale(1.05); }
+            .ext-tpl.tcx-in-armed { opacity: 0; transform: translateY(14px); transition: opacity .45s ease-out, transform .45s ease-out; }
+            .ext-tpl.tcx-in-armed.tcx-in { opacity: 1; transform: none; }
+        }
 
         /* Cover letter designs — tiny renderings of the three real layouts, so the
            choice is made by looking rather than by reading three words. */
@@ -167,7 +192,7 @@
     </style>
 </head>
 <body>
-<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;"></canvas>
     {% include "_nav.html" %}
 
     <link rel="stylesheet" href="/static/feature_landing.css?v=110">
@@ -803,12 +828,14 @@
                     .forEach(function (text, i) {
                         if (i > 0) {
                             var dot = document.createElement('span');
-                            dot.className = 'ext-status-dot';
+                            dot.className = 'ext-status-dot tcx-seg-in';
+                            dot.style.animationDelay = ((i * 2 - 1) * 90) + 'ms';
                             dot.textContent = '•';
                             statusEl.appendChild(dot);
                         }
                         var seg = document.createElement('span');
-                        seg.className = 'ext-status-seg';
+                        seg.className = 'ext-status-seg tcx-seg-in';
+                        seg.style.animationDelay = (i * 2 * 90) + 'ms';   // segments pop in left→right
                         seg.textContent = text;
                         statusEl.appendChild(seg);
                     });
@@ -1127,6 +1154,35 @@
         panel.addEventListener('transitionend', function te() { panel.style.maxHeight = ''; panel.removeEventListener('transitionend', te); }, { once: true });
       }
     });
+  });
+})();
+</script>
+<script>
+/* Template + cover-letter picker: staggered reveal once the grids populate
+   (thumbnails inject dynamically). Reduced-motion / no-IO safe. */
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  [].slice.call(document.querySelectorAll('.ext-tpl-grid')).forEach(function (grid) {
+    var done = false;
+    var mo = new MutationObserver(reveal);
+    function reveal() {
+      if (done) return;
+      var tpls = [].slice.call(grid.querySelectorAll('.ext-tpl'));
+      if (!tpls.length) return;
+      done = true; mo.disconnect();
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('tcx-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+      tpls.forEach(function (t, i) {
+        t.classList.add('tcx-in-armed');
+        t.style.transitionDelay = (Math.min(i, 8) * 55) + 'ms';
+        io.observe(t);
+      });
+      setTimeout(function () { tpls.forEach(function (t) { t.classList.add('tcx-in'); }); }, 2600);
+    }
+    mo.observe(grid, { childList: true });
+    reveal();
   });
 })();
 </script>

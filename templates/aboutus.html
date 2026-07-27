@@ -158,6 +158,21 @@
             box-shadow: 0 16px 40px rgba(26, 46, 120, 0.28);
         }
 
+        /* Scroll-reveal of story sections + "draw-in" of the section divider.
+           Start states are added by JS (.tcx-reveal), so no-JS / reduced-motion
+           users see everything with the divider at full width. */
+        @media (prefers-reduced-motion: no-preference) {
+            .about-content .story-block.tcx-reveal {
+                opacity: 0; transform: translateY(22px);
+                transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+            }
+            .about-content .story-block.tcx-reveal.tcx-in { opacity: 1; transform: none; }
+            .about-content .story-block.tcx-reveal .section-title::after {
+                width: 0; transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+            }
+            .about-content .story-block.tcx-reveal.tcx-in .section-title::after { width: 56px; }
+        }
+
         .founder-avatar {
             width: 120px;
             height: 120px;
@@ -386,6 +401,21 @@
             }
             draw();
         })();
+    </script>
+    <script>
+    /* About: reveal story sections on scroll; the divider draws in with each. */
+    (function () {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!('IntersectionObserver' in window)) return;
+      var blocks = [].slice.call(document.querySelectorAll('.about-content .story-block'));
+      if (!blocks.length) return;
+      blocks.forEach(function (b) { b.classList.add('tcx-reveal'); });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('tcx-in'); io.unobserve(e.target); } });
+      }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+      blocks.forEach(function (b) { io.observe(b); });
+      setTimeout(function () { blocks.forEach(function (b) { b.classList.add('tcx-in'); }); }, 2500);
+    })();
     </script>
 </body>
 </html>
