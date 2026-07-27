@@ -2058,6 +2058,8 @@ Responsible for
 Involved in
 Contributed to
 
+A bullet point that begins with a word from the Strong action verbs list above MUST be counted as strong, even if the rest of the sentence sounds generic or technical. Never cite a word from the Strong action verbs list (e.g. "Developed") as an example of weak wording in an explanation. Only words from the Weak verbs list (or synonyms of them) may be cited as weak.
+
 Pass if at least 4 of bullets begin with strong action verbs.
 
 Fail otherwise and give proper explanation.
@@ -2815,6 +2817,8 @@ Participated
 Responsible for
 Involved in
 Contributed to
+
+A bullet point that begins with a word from the Strong action verbs list above MUST be counted as strong, even if the rest of the sentence sounds generic or technical. Never cite a word from the Strong action verbs list (e.g. "Developed") as an example of weak wording in an explanation. Only words from the Weak verbs list (or synonyms of them) may be cited as weak.
 
 Pass if at least 70% of bullets begin with strong action verbs.
 
