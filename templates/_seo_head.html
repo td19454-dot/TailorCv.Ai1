@@ -13,7 +13,7 @@
      page_schema_json     - any extra JSON-LD string (raw)
 --------------------------------------------------------------------------- #}
 {%- set _seo_canonical = canonical_url if canonical_url is defined and canonical_url else 'https://thetailorcv.com' ~ request.url.path -%}
-{%- set _seo_og_title = seo_og_title if seo_og_title is defined and seo_og_title else 'theTailorCV — AI Resume Optimizer & Free ATS Score Checker' -%}
+{%- set _seo_og_title = seo_og_title if seo_og_title is defined and seo_og_title else 'TailorCV — AI Resume Optimizer & Free ATS Score Checker' -%}
 {%- set _seo_og_description = seo_og_description if seo_og_description is defined and seo_og_description else 'Optimize your resume with AI, check your ATS score for free, build ATS-friendly resumes, and practice mock interviews. Built for CS students and software engineers.' -%}
 {%- set _seo_og_image = seo_og_image if seo_og_image is defined and seo_og_image else 'https://thetailorcv.com/static/logo.png' -%}
 {%- set _seo_og_type = seo_og_type if seo_og_type is defined and seo_og_type else 'website' -%}
@@ -27,7 +27,7 @@
 
 <link rel="canonical" href="{{ _seo_canonical }}">
 
-<meta property="og:site_name" content="theTailorCV">
+<meta property="og:site_name" content="TailorCV">
 <meta property="og:type" content="{{ _seo_og_type }}">
 <meta property="og:title" content="{{ _seo_og_title }}">
 <meta property="og:description" content="{{ _seo_og_description }}">
@@ -43,7 +43,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "theTailorCV",
+  "name": "TailorCV",
   "url": "https://thetailorcv.com",
   "logo": "https://thetailorcv.com/logo.png",
   "description": "AI-powered resume optimizer and free ATS score checker that helps job seekers tailor their resumes to any job description and pass applicant tracking systems.",
@@ -58,7 +58,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "theTailorCV",
+  "name": "TailorCV",
   "url": "https://thetailorcv.com",
   "potentialAction": {
     "@type": "SearchAction",
