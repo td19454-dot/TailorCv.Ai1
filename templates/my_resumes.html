@@ -45,7 +45,7 @@
             gap: 10px;
         }
         .resume-card-title {
-            font-size: 1.05rem; font-weight: 700; color: #eaf1ff; line-height: 1.3;
+            font-size: 1.05rem; font-weight: 400; color: #eaf1ff; line-height: 1.3;
         }
         .resume-card-meta { font-size: .82rem; color: #8da3c6; display: flex; flex-wrap: wrap; gap: 10px; }
         .resume-card-jd {
@@ -54,13 +54,13 @@
         }
         .resume-card-badges { display: flex; gap: 8px; flex-wrap: wrap; }
         .badge {
-            font-size: .72rem; font-weight: 600; padding: 3px 9px; border-radius: 999px;
+            font-size: .72rem; font-weight: 400; padding: 3px 9px; border-radius: 999px;
             background: rgba(59,130,246,.16); color: #9cc2ff; border: 1px solid rgba(59,130,246,.28);
         }
         .badge.score { background: rgba(16,185,129,.16); color: #6ee7b7; border-color: rgba(16,185,129,.3); }
         .resume-card-actions { display: flex; gap: 10px; margin-top: auto; padding-top: 6px; }
         .btn-dl, .btn-del {
-            flex: 1; text-align: center; font-size: .85rem; font-weight: 600; padding: 9px 12px;
+            flex: 1; text-align: center; font-size: .85rem; font-weight: 400; padding: 9px 12px;
             border-radius: 9px; cursor: pointer; border: 1px solid transparent; text-decoration: none;
         }
         .btn-dl {
@@ -76,10 +76,92 @@
             .btn-dl .btn-spinner, .btn-del .btn-spinner { animation: mrBtnSpin .7s linear infinite; }
         }
         @keyframes mrBtnSpin { to { transform: rotate(360deg); } }
+        .btn-dl.mr-dl-btn {
+            position: relative;
+            overflow: visible;
+            height: 40px;
+            padding: 0;
+            transition: background .3s, filter .2s;
+        }
+        .mr-dl-btn::before {
+            position: absolute;
+            content: attr(data-tooltip);
+            width: 100px;
+            height: 30px;
+            background-color: #fff;
+            font-size: .72rem;
+            font-weight: 600;
+            color: #111;
+            border-radius: .3em;
+            line-height: 30px;
+            bottom: calc(100% + 18px);
+            left: calc(50% - 50px);
+            pointer-events: none;
+        }
+        .mr-dl-btn::after {
+            position: absolute;
+            content: '';
+            width: 0; height: 0;
+            border: 8px solid transparent;
+            border-top-color: #fff;
+            left: calc(50% - 8px);
+            bottom: calc(100% + 8px);
+            pointer-events: none;
+        }
+        .mr-dl-btn::before, .mr-dl-btn::after {
+            opacity: 0;
+            visibility: hidden;
+            transition: all .35s;
+        }
+        .mr-dl-btn:hover::before, .mr-dl-btn:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mr-dl-btn:hover::after { bottom: calc(100% - 2px); }
+        .mr-dl-btn:hover::before { bottom: calc(100% + 8px); }
+        .mr-dl-wrap, .mr-dl-text, .mr-dl-icon {
+            overflow: hidden;
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            color: #fff;
+        }
+        .mr-dl-text { top: 0; display: flex; align-items: center; justify-content: center; }
+        .mr-dl-text, .mr-dl-icon { transition: top .35s; }
+        .mr-dl-icon { top: 100%; display: flex; align-items: center; justify-content: center; }
+        .mr-dl-icon svg { width: 18px; height: 18px; }
+        .mr-dl-btn:hover .mr-dl-text { top: -100%; }
+        .mr-dl-btn:hover .mr-dl-icon { top: 0; }
+        @media (prefers-reduced-motion: reduce) {
+            .mr-dl-text, .mr-dl-icon { transition: none; }
+        }
         .btn-del {
             background: transparent; color: #ff9a9a; border-color: rgba(239,68,68,.35);
         }
         .btn-del:hover { background: rgba(239,68,68,.12); }
+        .btn-del.mr-del-btn {
+            font-weight: 700;
+            color: #fff;
+            background-color: #ff5252;
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: all .25s ease;
+        }
+        .btn-del.mr-del-btn:hover {
+            background: #fff;
+            color: #ff5252;
+            border-color: #ff5252;
+            box-shadow: 4px 4px 0px #ff5252;
+        }
+        .btn-del.mr-del-btn:active {
+            background: #fcf414;
+            color: #111;
+            box-shadow: none;
+            transform: translateY(4px);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .btn-del.mr-del-btn { transition: none; }
+        }
         .resume-empty {
             text-align: center; padding: 64px 20px;
             border: 1px dashed rgba(99,130,200,.28); border-radius: 16px;
@@ -93,7 +175,7 @@
         }
         .resume-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
         .status-badge {
-            font-size: .72rem; font-weight: 700; padding: 4px 10px; border-radius: 999px;
+            font-size: .72rem; font-weight: 400; padding: 4px 10px; border-radius: 999px;
             text-transform: capitalize; white-space: nowrap; flex-shrink: 0;
         }
         .status-saved    { background: rgba(148,163,184,.18); color: #cbd5e1; border: 1px solid rgba(148,163,184,.35); }
@@ -103,7 +185,7 @@
         .status-rejected { background: rgba(239,68,68,.18);   color: #fca5a5; border: 1px solid rgba(239,68,68,.4); }
         .resume-card-jd-wrap { font-size: .82rem; }
         .resume-card-jd-wrap summary {
-            cursor: pointer; color: #9cc2ff; font-weight: 600; font-size: .8rem; padding: 4px 0; user-select: none;
+            cursor: pointer; color: #9cc2ff; font-weight: 400; font-size: .8rem; padding: 4px 0; user-select: none;
         }
         .resume-card-jd-wrap .resume-card-jd {
             margin-top: 6px; max-height: 160px; overflow-y: auto;
@@ -121,17 +203,139 @@
         .tracker-select option { background: #16203c; color: #eaf1ff; }
         .tracker-save {
             background: rgba(59,130,246,.2); color: #cfe0ff; border: 1px solid rgba(59,130,246,.4);
-            border-radius: 8px; padding: 8px 14px; font-size: .82rem; font-weight: 700; cursor: pointer;
+            border-radius: 8px; padding: 8px 14px; font-size: .82rem; font-weight: 400; cursor: pointer;
         }
         .tracker-save:hover { background: rgba(59,130,246,.32); }
+        .tracker-save.mr-upd-btn {
+            --round: 8px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: all .25s ease;
+            background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(223,113,255,.8) 0%, rgba(223,113,255,0) 100%),
+                        linear-gradient(0deg, #7a5af8, #7a5af8);
+            border-radius: var(--round);
+            border: none;
+            outline: none;
+            padding: 8px 14px;
+            color: #fff;
+        }
+        .tracker-save.mr-upd-btn:hover {
+            background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(223,113,255,.8) 0%, rgba(223,113,255,0) 100%),
+                        linear-gradient(0deg, #7a5af8, #7a5af8);
+        }
+        .mr-upd-btn::before, .mr-upd-btn::after {
+            content: "";
+            position: absolute;
+            inset: var(--space);
+            transition: all .5s ease-in-out;
+            border-radius: calc(var(--round) - var(--space));
+            z-index: 0;
+        }
+        .mr-upd-btn::before {
+            --space: 1px;
+            background: linear-gradient(177.95deg, rgba(255,255,255,.19) 0%, rgba(255,255,255,0) 100%);
+        }
+        .mr-upd-btn::after {
+            --space: 2px;
+            background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(223,113,255,.8) 0%, rgba(223,113,255,0) 100%),
+                        linear-gradient(0deg, #7a5af8, #7a5af8);
+        }
+        .mr-upd-btn:active { transform: scale(.95); }
+        .mr-upd-fold {
+            z-index: 1;
+            position: absolute;
+            top: 0; right: 0;
+            height: .65rem; width: .65rem;
+            display: inline-block;
+            transition: all .5s ease-in-out;
+            background: radial-gradient(100% 75% at 55%, rgba(223,113,255,.8) 0%, rgba(223,113,255,0) 100%);
+            box-shadow: 0 0 3px #000;
+            border-bottom-left-radius: .4rem;
+            border-top-right-radius: var(--round);
+        }
+        .mr-upd-fold::after {
+            content: "";
+            position: absolute;
+            top: 0; right: 0;
+            width: 150%; height: 150%;
+            transform: rotate(45deg) translateX(0%) translateY(-12px);
+            background-color: #e8e8e8;
+            pointer-events: none;
+        }
+        .mr-upd-btn:hover .mr-upd-fold { margin-top: -.65rem; margin-right: -.65rem; }
+        .mr-upd-points {
+            overflow: hidden;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            position: absolute;
+            z-index: 1;
+        }
+        .mr-upd-points .mr-upd-point {
+            bottom: -10px;
+            position: absolute;
+            animation: mrUpdFloat infinite ease-in-out;
+            pointer-events: none;
+            width: 2px; height: 2px;
+            background-color: #fff;
+            border-radius: 9999px;
+        }
+        @keyframes mrUpdFloat {
+            0% { transform: translateY(0); }
+            85% { opacity: 0; }
+            100% { transform: translateY(-36px); opacity: 0; }
+        }
+        .mr-upd-points .mr-upd-point:nth-child(1) { left: 10%; opacity: 1; animation-duration: 2.35s; animation-delay: .2s; }
+        .mr-upd-points .mr-upd-point:nth-child(2) { left: 30%; opacity: .7; animation-duration: 2.5s; animation-delay: .5s; }
+        .mr-upd-points .mr-upd-point:nth-child(3) { left: 25%; opacity: .8; animation-duration: 2.2s; animation-delay: .1s; }
+        .mr-upd-points .mr-upd-point:nth-child(4) { left: 44%; opacity: .6; animation-duration: 2.05s; }
+        .mr-upd-points .mr-upd-point:nth-child(5) { left: 50%; opacity: 1; animation-duration: 1.9s; }
+        .mr-upd-points .mr-upd-point:nth-child(6) { left: 75%; opacity: .5; animation-duration: 1.5s; animation-delay: 1.5s; }
+        .mr-upd-points .mr-upd-point:nth-child(7) { left: 88%; opacity: .9; animation-duration: 2.2s; animation-delay: .2s; }
+        .mr-upd-points .mr-upd-point:nth-child(8) { left: 58%; opacity: .8; animation-duration: 2.25s; animation-delay: .2s; }
+        .mr-upd-points .mr-upd-point:nth-child(9) { left: 98%; opacity: .6; animation-duration: 2.6s; animation-delay: .1s; }
+        .mr-upd-points .mr-upd-point:nth-child(10) { left: 65%; opacity: 1; animation-duration: 2.5s; animation-delay: .2s; }
+        .mr-upd-inner {
+            z-index: 2;
+            gap: 5px;
+            position: relative;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .82rem;
+            font-weight: 500;
+            line-height: 1.4;
+            transition: color .2s ease-in-out;
+        }
+        .mr-upd-inner svg.mr-upd-icon {
+            width: 14px; height: 14px;
+            transition: fill .1s linear;
+        }
+        .mr-upd-btn:focus svg.mr-upd-icon { fill: #fff; }
+        .mr-upd-btn:hover svg.mr-upd-icon {
+            fill: transparent;
+            animation: mrUpdDasharray 1s linear forwards, mrUpdFilled .1s linear forwards .95s;
+        }
+        @keyframes mrUpdDasharray { from { stroke-dasharray: 0 0 0 0; } to { stroke-dasharray: 68 68 0 0; } }
+        @keyframes mrUpdFilled { to { fill: #fff; } }
+        @media (prefers-reduced-motion: reduce) {
+            .mr-upd-btn, .mr-upd-btn::before, .mr-upd-btn::after, .mr-upd-fold { transition: none; }
+            .mr-upd-points .mr-upd-point { animation: none; opacity: 0; }
+            .mr-upd-btn:hover svg.mr-upd-icon { animation: none; fill: #fff; }
+        }
         /* Keep the nav on one line (base .nav-links a is 18px/large padding). */
         .navbar .nav-links { min-width: auto; flex-wrap: nowrap; gap: 2px; }
         .navbar .nav-links a { font-size: 12px; padding: 22px 12px; letter-spacing: 0; white-space: nowrap; }
         @media (max-width: 1100px) { .navbar .nav-links a { font-size: 11px; padding: 20px 8px; } }
+        /* Dark fallback so the fixed wave canvas never flashes white before it paints. */
+        html { background-color: #030014; }
     </style>
 </head>
 <body>
-{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
+<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;"></canvas>
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
@@ -397,13 +601,39 @@
                         <option value="{{ s }}" {% if st == s %}selected{% endif %}>{{ s|capitalize }}</option>
                         {% endfor %}
                     </select>
-                    <button type="submit" class="tracker-save">Update</button>
+                    <button type="submit" class="tracker-save mr-upd-btn">
+                        <span class="mr-upd-fold"></span>
+                        <span class="mr-upd-points">
+                            <i class="mr-upd-point"></i>
+                            <i class="mr-upd-point"></i>
+                            <i class="mr-upd-point"></i>
+                            <i class="mr-upd-point"></i>
+                            <i class="mr-upd-point"></i>
+                            <i class="mr-upd-point"></i>
+                            <i class="mr-upd-point"></i>
+                            <i class="mr-upd-point"></i>
+                            <i class="mr-upd-point"></i>
+                            <i class="mr-upd-point"></i>
+                        </span>
+                        <span class="mr-upd-inner">
+                            <svg class="mr-upd-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+                                <polyline points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"></polyline>
+                            </svg>Update
+                        </span>
+                    </button>
                 </form>
                 <div class="resume-card-actions">
-                    <button class="btn-dl" onclick="dlResume({{ r.id }}, this)">Download PDF</button>
+                    <button class="btn-dl mr-dl-btn" onclick="dlResume({{ r.id }}, this)" data-tooltip="PDF file">
+                        <span class="mr-dl-wrap">
+                            <span class="mr-dl-text">Download PDF</span>
+                            <span class="mr-dl-icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
+                            </span>
+                        </span>
+                    </button>
                     <form method="post" action="/my-resumes/{{ r.id }}/delete" style="flex:1;margin:0;"
                           onsubmit="return confirm('Delete this resume? This cannot be undone.');">
-                        <button type="submit" class="btn-del" style="width:100%;">Delete</button>
+                        <button type="submit" class="btn-del mr-del-btn" style="width:100%;">Delete</button>
                     </form>
                 </div>
             </article>
@@ -431,7 +661,7 @@
        quota redirect (free users out of optimizations get sent to /pricing) and
        surfaces a clear message instead of failing silently. */
     async function dlResume(id, btn) {
-        const original = btn ? btn.textContent : '';
+        const original = btn ? btn.innerHTML : '';
         if (btn) { btn.disabled = true; btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>Preparing…'; }
         try {
             const res = await fetch('/my-resumes/' + id + '/download', { credentials: 'same-origin' });
@@ -461,16 +691,15 @@
 
             if (btn) {
                 btn.textContent = 'Downloaded ✓';
-                setTimeout(function () { btn.textContent = original; btn.disabled = false; }, 1800);
+                setTimeout(function () { btn.innerHTML = original; btn.disabled = false; }, 1800);
             }
         } catch (err) {
             alert(err.message || 'Download failed. Please try again.');
-            if (btn) { btn.textContent = original; btn.disabled = false; }
+            if (btn) { btn.innerHTML = original; btn.disabled = false; }
         }
     }
     </script>
     {% endif %}
-{% if not is_logged_in %}
 <script>
 (function(){
   const canvas = document.getElementById('wave-canvas');
@@ -581,6 +810,5 @@
   setTimeout(function () { cards.forEach(function (el) { el.classList.add('tc-in'); }); }, 2000);
 })();
 </script>
-{% endif %}
 </body>
 </html>
