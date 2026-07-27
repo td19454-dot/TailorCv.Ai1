@@ -434,17 +434,15 @@
         #ats-start {
             scroll-margin-top: 130px;
         }
-        /* "Get ATS Score" / "Optimize Resume" — plane-style launch button
-           (Uiverse.io by marcelodolza), simplified to a single stable state:
-           the real click handler (main_new.js) already swaps .btn-text's
-           textContent to "Analyzing…"/"Optimizing…" and toggles .btn-loader
-           directly, so this keeps those two elements instead of the recipe's
-           own default/sent letter-animation states, which would conflict. */
-        .cv2-actions .btn.cv2-uiverse-btn {
-            --primary: #93c5fd;
-            --neutral-1: #12213f;
-            --neutral-2: #0a1730;
-            --radius: 500px;
+        /* "Get ATS Score" / "Optimize Resume" — EXACT copy of the dashboard's
+           "Get ATS score" button (#ns-go / .dash-ats-launch on dashboard.html),
+           same property values, just renamed sol-ats-launch to avoid clashing
+           with the dashboard's own scoped classes. */
+        .cv2-actions .btn.sol-ats-launch {
+            --primary: #a9c3ff;
+            --neutral-1: #3392ff;
+            --neutral-2: #7c3aed;
+            --radius: 14px;
             all: unset;
             box-sizing: border-box;
             cursor: pointer;
@@ -452,71 +450,140 @@
             color: #fff;
             text-shadow: 0 1px 1px rgba(0,0,0,.3);
             border: none;
-            box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.15), 0 6px 18px rgba(2,6,23,.4);
+            box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 6px 18px rgba(51,146,255,.35);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             position: relative;
             transition: all .3s ease;
-            padding: 0.9rem 2rem;
-            min-height: 60px;
+            padding: 20px 60px;
+            min-height: 64px;
+            min-width: 300px;
             font-family: inherit;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 700;
-            letter-spacing: 0.02rem;
+            justify-self: center;
         }
-        .cv2-actions .btn.btn-primary.cv2-uiverse-btn {
-            --neutral-1: #3b82f6;
-            --neutral-2: #1d4ed8;
-        }
-        .cv2-actions .btn.cv2-uiverse-btn:hover {
+        .sol-ats-launch:hover {
             transform: translateY(-1px) scale(1.02);
-            box-shadow: 0 0 1px 2px rgba(255,255,255,.25), 0 10px 24px rgba(2,6,23,.5);
+            box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 10px 24px rgba(51,146,255,.5);
         }
-        .cv2-actions .btn.cv2-uiverse-btn:active { transform: scale(1); }
-        .cv2-actions .btn.cv2-uiverse-btn::after {
+        .sol-ats-launch:active { transform: scale(1); }
+        .cv2-actions .btn.sol-ats-launch::after {
             content: "";
             position: absolute;
             inset: 0;
             border-radius: var(--radius);
             border: 2px solid transparent;
             background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
-                linear-gradient(to bottom, rgba(255,255,255,.08), rgba(0,0,0,.4)) border-box;
+                linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
             z-index: 0;
             transition: all .4s ease;
         }
-        .cv2-actions .btn.cv2-uiverse-btn:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,.6); }
-        .cv2-actions .btn.cv2-uiverse-btn::before {
+        .sol-ats-launch:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,1); }
+        .cv2-actions .btn.sol-ats-launch::before {
             content: "";
-            inset: 3px;
+            inset: 7px 6px 6px 6px;
             position: absolute;
-            background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
-            border-radius: var(--radius);
+            background: linear-gradient(to top, var(--neutral-1), var(--neutral-2)) !important;
+            border-radius: 30px;
             filter: blur(0.5px);
-            z-index: 1;
-        }
-        .cv2-actions .btn.cv2-uiverse-btn .btn-text,
-        .cv2-actions .btn.cv2-uiverse-btn .btn-loader {
-            position: relative;
             z-index: 2;
         }
-        .cv2-launch-outline {
+        .sol-ats-state p { display: flex; align-items: center; justify-content: center; }
+        .sol-ats-icon {
+            position: absolute; left: 0; top: 0; bottom: 0; margin: auto;
+            transform: scale(1.25);
+            transition: all .3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .sol-ats-icon svg { overflow: visible; width: 18px; height: 18px; }
+        .sol-ats-outline {
             position: absolute; border-radius: inherit; overflow: hidden; z-index: 1;
             opacity: 0; transition: opacity .4s ease; inset: -2px -3px;
-            pointer-events: none;
         }
-        .cv2-launch-outline::before {
+        .sol-ats-outline::before {
             content: ""; position: absolute; inset: -100%;
             background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
-            animation: cv2-launch-spin 2s linear infinite;
+            animation: sol-ats-spin 2s linear infinite;
             animation-play-state: paused;
         }
-        .cv2-actions .btn.cv2-uiverse-btn:hover .cv2-launch-outline { opacity: 1; }
-        .cv2-actions .btn.cv2-uiverse-btn:hover .cv2-launch-outline::before { animation-play-state: running; }
-        @keyframes cv2-launch-spin { to { transform: rotate(360deg); } }
+        .sol-ats-launch:hover .sol-ats-outline { opacity: 1; }
+        .sol-ats-launch:hover .sol-ats-outline::before { animation-play-state: running; }
+        .sol-ats-state p span {
+            display: block; opacity: 0;
+            animation: sol-ats-slideDown .8s ease forwards calc(var(--i) * .025s);
+        }
+        .sol-ats-launch:hover p span {
+            opacity: 1;
+            animation: sol-ats-wave .5s ease forwards calc(var(--i) * .015s);
+        }
+        .sol-ats-launch:focus p span {
+            opacity: 1;
+            animation: sol-ats-disapear .6s ease forwards calc(var(--i) * .02s);
+        }
+        .sol-ats-state--default .sol-ats-icon svg { animation: sol-ats-land .6s ease forwards; }
+        .sol-ats-launch:hover .sol-ats-state--default .sol-ats-icon { transform: rotate(45deg) scale(1.25); }
+        .sol-ats-launch:focus .sol-ats-state--default svg { animation: sol-ats-takeOff .8s linear forwards; }
+        .sol-ats-launch:focus .sol-ats-state--default .sol-ats-icon { transform: rotate(0) scale(1.25); }
+        .sol-ats-state {
+            padding-left: 29px; z-index: 2; display: flex; position: relative;
+        }
+        .sol-ats-state--sent { display: none; }
+        .sol-ats-state--sent svg { transform: scale(1.25); margin-right: 8px; }
+        .sol-ats-launch:focus .sol-ats-state--default { position: absolute; }
+        .sol-ats-launch:focus .sol-ats-state--sent { display: flex; }
+        .sol-ats-launch:focus .sol-ats-state--sent span {
+            opacity: 0;
+            animation: sol-ats-slideDown .8s ease forwards calc(var(--i) * .15s);
+        }
+        .sol-ats-launch:focus .sol-ats-state--sent .sol-ats-icon svg {
+            opacity: 0;
+            animation: sol-ats-appear 1.2s ease forwards .8s;
+        }
+        .sol-ats-launch:disabled { opacity: .6; cursor: not-allowed; }
+        .sol-ats-launch .btn-spinner {
+            display: inline-block; width: 13px; height: 13px; vertical-align: -2px;
+            margin-right: 7px; border: 2px solid rgba(255,255,255,.4);
+            border-top-color: #fff; border-radius: 50%;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .sol-ats-launch .btn-spinner { animation: sol-ats-spin .7s linear infinite; }
+        }
+        @keyframes sol-ats-spin { to { transform: rotate(360deg); } }
+        @keyframes sol-ats-wave {
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: var(--primary); }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes sol-ats-slideDown {
+            0% { opacity: 0; transform: translateY(-14px) translateX(4px) rotate(-90deg); color: #fff; filter: blur(4px); }
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); filter: blur(0); color: #fff; }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: #fff; }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes sol-ats-disapear {
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateX(4px) translateY(14px); color: var(--primary); filter: blur(4px); }
+        }
+        @keyframes sol-ats-takeOff {
+            0% { opacity: 1; }
+            60% { opacity: 1; transform: translateX(46px) rotate(45deg) scale(1.6); }
+            100% { opacity: 0; transform: translateX(100px) rotate(45deg) scale(0); }
+        }
+        @keyframes sol-ats-land {
+            0% { transform: translateX(-36px) translateY(18px) rotate(-50deg) scale(1.6); opacity: 0; filter: blur(2px); }
+            100% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; filter: blur(0); }
+        }
+        @keyframes sol-ats-appear {
+            0% { opacity: 0; transform: scale(3) rotate(-40deg); color: var(--primary); filter: blur(3px); }
+            30% { opacity: 1; transform: scale(.6); filter: blur(1px); }
+            50% { opacity: 1; transform: scale(1.2); filter: blur(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
         @media (prefers-reduced-motion: reduce) {
-            .cv2-actions .btn.cv2-uiverse-btn, .cv2-actions .btn.cv2-uiverse-btn *,
-            .cv2-launch-outline::before { animation: none !important; transition: none !important; }
+            .sol-ats-launch, .sol-ats-launch *, .sol-ats-outline::before { animation: none !important; transition: none !important; }
+            .sol-ats-state p span { opacity: 1 !important; }
         }
         #job-description.form-textarea {
             min-height: 206px;
@@ -832,16 +899,56 @@
                             </div>
 
                             <div id="ats-start" class="form-actions cv2-actions">
-                                <button type="button" id="analyze-btn" class="btn btn-secondary cv2-uiverse-btn">
-                                    <div class="cv2-launch-outline"></div>
-                                    <span class="btn-text">Get ATS Score</span>
+                                <button type="button" id="analyze-btn" class="btn sol-ats-launch">
+                                    <div class="sol-ats-outline"></div>
+                                    <div class="sol-ats-state sol-ats-state--default">
+                                        <div class="sol-ats-icon">
+                                            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M3 20h18"></path><path d="M6 20V11"></path><path d="M12 20V5"></path><path d="M18 20v-6"></path>
+                                            </svg>
+                                        </div>
+                                        <p class="btn-text">
+                                            <span style="--i:0">G</span><span style="--i:1">e</span><span style="--i:2">t</span><span style="--i:3">&nbsp;</span><span style="--i:4">A</span><span style="--i:5">T</span><span style="--i:6">S</span><span style="--i:7">&nbsp;</span><span style="--i:8">S</span><span style="--i:9">c</span><span style="--i:10">o</span><span style="--i:11">r</span><span style="--i:12">e</span>
+                                        </p>
+                                    </div>
+                                    <div class="sol-ats-state sol-ats-state--sent">
+                                        <div class="sol-ats-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                                                <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                                <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                                            </svg>
+                                        </div>
+                                        <p>
+                                            <span style="--i:8">S</span><span style="--i:9">c</span><span style="--i:10">o</span><span style="--i:11">r</span><span style="--i:12">i</span><span style="--i:13">n</span><span style="--i:14">g</span>
+                                        </p>
+                                    </div>
                                     <span class="btn-loader" style="display: none;">?</span>
                                 </button>
 
 
-                                <button type="button" id="optimize-btn" class="btn btn-primary cv2-uiverse-btn">
-                                    <div class="cv2-launch-outline"></div>
-                                    <span class="btn-text">Optimize Resume</span>
+                                <button type="button" id="optimize-btn" class="btn sol-ats-launch">
+                                    <div class="sol-ats-outline"></div>
+                                    <div class="sol-ats-state sol-ats-state--default">
+                                        <div class="sol-ats-icon">
+                                            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M3 20h18"></path><path d="M6 20V11"></path><path d="M12 20V5"></path><path d="M18 20v-6"></path>
+                                            </svg>
+                                        </div>
+                                        <p class="btn-text">
+                                            <span style="--i:0">O</span><span style="--i:1">p</span><span style="--i:2">t</span><span style="--i:3">i</span><span style="--i:4">m</span><span style="--i:5">i</span><span style="--i:6">z</span><span style="--i:7">e</span><span style="--i:8">&nbsp;</span><span style="--i:9">R</span><span style="--i:10">e</span><span style="--i:11">s</span><span style="--i:12">u</span><span style="--i:13">m</span><span style="--i:14">e</span>
+                                        </p>
+                                    </div>
+                                    <div class="sol-ats-state sol-ats-state--sent">
+                                        <div class="sol-ats-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                                                <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                                <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                                            </svg>
+                                        </div>
+                                        <p>
+                                            <span style="--i:9">R</span><span style="--i:10">e</span><span style="--i:11">a</span><span style="--i:12">d</span><span style="--i:13">y</span>
+                                        </p>
+                                    </div>
                                     <span class="btn-loader" style="display: none;">?</span>
                                 </button>
                             </div>

@@ -156,6 +156,7 @@ async function handleATSAnalysis() {
     }
 
     // Show loading state
+    const analyzeBtnTextOrig = analyzeBtn.querySelector('.btn-text').innerHTML;
     analyzeBtn.disabled = true;
     analyzeBtn.querySelector('.btn-text').textContent = 'Analyzing...';
     analyzeBtn.querySelector('.btn-loader').style.display = 'inline-block';
@@ -206,7 +207,7 @@ async function handleATSAnalysis() {
     } finally {
         // Reset button state
         analyzeBtn.disabled = false;
-        analyzeBtn.querySelector('.btn-text').textContent = 'Get ATS Score';
+        analyzeBtn.querySelector('.btn-text').innerHTML = analyzeBtnTextOrig;
         analyzeBtn.querySelector('.btn-loader').style.display = 'none';
     }
 }
@@ -507,6 +508,7 @@ async function handleResumeOptimization() {
     }
 
     // Show loading state
+    const optimizeBtnTextOrig = optimizeBtn.querySelector('.btn-text').innerHTML;
     optimizeBtn.disabled = true;
     optimizeBtn.querySelector('.btn-text').textContent = 'Optimizing...';
     optimizeBtn.querySelector('.btn-loader').style.display = 'inline-block';
@@ -543,7 +545,7 @@ async function handleResumeOptimization() {
         alert(`Optimization failed: ${error.message}`);
     } finally {
         optimizeBtn.disabled = false;
-        optimizeBtn.querySelector('.btn-text').textContent = 'Optimize Resume';
+        optimizeBtn.querySelector('.btn-text').innerHTML = optimizeBtnTextOrig;
         optimizeBtn.querySelector('.btn-loader').style.display = 'none';
     }
 }
