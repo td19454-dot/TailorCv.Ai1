@@ -100,6 +100,149 @@
             }
             @keyframes extBtnShimmer { 0%, 68% { left: -60%; } 100% { left: 150%; } }
             .ext-tpl.on .ext-tpl-shot { transform: scale(1.05); }
+        }
+
+        /* "Add to Chrome, Free" — plane-style launch button (Uiverse.io by
+           marcelodolza), recolored to the site's blue accent. */
+        .solx-btn.ext-install-btn {
+            --primary: #93c5fd;
+            --neutral-1: #3b82f6;
+            --neutral-2: #1d4ed8;
+            --radius: 100em;
+            all: unset;
+            box-sizing: border-box;
+            cursor: pointer;
+            border-radius: var(--radius);
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,.3);
+            border: none;
+            box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 6px 18px rgba(37,99,235,.35);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all .3s ease;
+            padding: 14px 28px;
+            min-height: 48px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ext-install-btn:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 10px 24px rgba(37,99,235,.5);
+        }
+        .ext-install-btn:active { transform: scale(1); }
+        .ext-install-btn::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius);
+            border: 2px solid transparent;
+            background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+                linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+            z-index: 0;
+            transition: all .4s ease;
+            animation: none;
+            transform: none;
+        }
+        .ext-install-btn:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,1); }
+        .ext-install-btn::before {
+            content: "";
+            inset: 4px;
+            position: absolute;
+            background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+            border-radius: 100em;
+            filter: blur(0.5px);
+            z-index: 2;
+        }
+        .ext-install-state p { display: flex; align-items: center; justify-content: center; }
+        .ext-install-icon {
+            position: absolute; left: 0; top: 0; bottom: 0; margin: auto;
+            transform: scale(1);
+            transition: all .3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .ext-install-icon svg { overflow: visible; width: 17px; height: 17px; }
+        .ext-install-outline {
+            position: absolute; border-radius: inherit; overflow: hidden; z-index: 1;
+            opacity: 0; transition: opacity .4s ease; inset: -2px -3px;
+        }
+        .ext-install-outline::before {
+            content: ""; position: absolute; inset: -100%;
+            background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
+            animation: ext-install-spin 2s linear infinite;
+            animation-play-state: paused;
+        }
+        .ext-install-btn:hover .ext-install-outline { opacity: 1; }
+        .ext-install-btn:hover .ext-install-outline::before { animation-play-state: running; }
+        .ext-install-state p span {
+            display: block; opacity: 0;
+            animation: ext-install-slideDown .8s ease forwards calc(var(--i) * .025s);
+        }
+        .ext-install-btn:hover p span {
+            opacity: 1;
+            animation: ext-install-wave .5s ease forwards calc(var(--i) * .015s);
+        }
+        .ext-install-btn:focus p span {
+            opacity: 1;
+            animation: ext-install-disapear .6s ease forwards calc(var(--i) * .02s);
+        }
+        .ext-install-state--default .ext-install-icon svg { animation: ext-install-land .6s ease forwards; }
+        .ext-install-btn:hover .ext-install-state--default .ext-install-icon { transform: rotate(45deg); }
+        .ext-install-btn:focus .ext-install-state--default svg { animation: ext-install-takeOff .8s linear forwards; }
+        .ext-install-btn:focus .ext-install-state--default .ext-install-icon { transform: rotate(0); }
+        .ext-install-state {
+            padding-left: 22px; z-index: 2; display: flex; position: relative;
+        }
+        .ext-install-state--sent { display: none; }
+        .ext-install-state--sent svg { transform: scale(1); margin-right: 6px; }
+        .ext-install-btn:focus .ext-install-state--default { position: absolute; }
+        .ext-install-btn:focus .ext-install-state--sent { display: flex; }
+        .ext-install-btn:focus .ext-install-state--sent span {
+            opacity: 0;
+            animation: ext-install-slideDown .8s ease forwards calc(var(--i) * .15s);
+        }
+        .ext-install-btn:focus .ext-install-state--sent .ext-install-icon svg {
+            opacity: 0;
+            animation: ext-install-appear 1.2s ease forwards .8s;
+        }
+        @keyframes ext-install-spin { to { transform: rotate(360deg); } }
+        @keyframes ext-install-wave {
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: var(--primary); }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes ext-install-slideDown {
+            0% { opacity: 0; transform: translateY(-14px) translateX(4px) rotate(-90deg); color: #fff; filter: blur(4px); }
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); filter: blur(0); color: #fff; }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: #fff; }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes ext-install-disapear {
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateX(4px) translateY(14px); color: var(--primary); filter: blur(4px); }
+        }
+        @keyframes ext-install-takeOff {
+            0% { opacity: 1; }
+            60% { opacity: 1; transform: translateX(46px) rotate(45deg) scale(1.6); }
+            100% { opacity: 0; transform: translateX(100px) rotate(45deg) scale(0); }
+        }
+        @keyframes ext-install-land {
+            0% { transform: translateX(-36px) translateY(18px) rotate(-50deg) scale(1.6); opacity: 0; filter: blur(2px); }
+            100% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; filter: blur(0); }
+        }
+        @keyframes ext-install-appear {
+            0% { opacity: 0; transform: scale(3) rotate(-40deg); color: var(--primary); filter: blur(3px); }
+            30% { opacity: 1; transform: scale(.6); filter: blur(1px); }
+            50% { opacity: 1; transform: scale(1.2); filter: blur(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ext-install-btn, .ext-install-btn *, .ext-install-outline::before { animation: none !important; transition: none !important; }
+            .ext-install-state p span { opacity: 1 !important; }
             .ext-tpl.on:hover .ext-tpl-shot { transform: translateY(-3px) scale(1.05); }
             .ext-tpl.tcx-in-armed { opacity: 0; transform: translateY(14px); transition: opacity .45s ease-out, transform .45s ease-out; }
             .ext-tpl.tcx-in-armed.tcx-in { opacity: 1; transform: none; }
@@ -147,8 +290,172 @@
         .ext-manage-row button { flex: 0 0 auto; font: inherit; font-size: 1.2rem; font-weight: 600; padding: 10px 20px; border-radius: 10px; cursor: pointer; transition: background .2s ease; margin-left: 20px; margin-right:20px  }
         .ext-change-btn { background: #7c3aed; border: 1px solid #7c3aed; color: #ffffff; transition: transform .2s ease, box-shadow .2s ease; }
         .ext-change-btn:hover:not(:disabled) { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(124,58,237,.45); }
-        .ext-delete-btn { background: #000000; border: 1px solid rgba(239,68,68,.5); color: #ef4444; transition: background .2s ease, color .2s ease; }
-        .ext-delete-btn:hover:not(:disabled) { background: #ef4444; color: #000000; }
+
+        /* "Change base resume" — plane-style launch button (Uiverse.io by
+           marcelodolza), recolored to this button's existing violet. Classes
+           prefixed ext-change- to stay scoped to this button only. */
+        .ext-manage-row button.ext-change-btn.ext-change-launch {
+            --primary: #c4b5fd;
+            --neutral-1: #8b5cf6;
+            --neutral-2: #5b21b6;
+            --radius: 12px;
+            all: unset;
+            box-sizing: border-box;
+            cursor: pointer;
+            border-radius: var(--radius);
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,.3);
+            border: none;
+            box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 6px 18px rgba(124,58,237,.35);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all .3s ease;
+            padding: 12px 22px;
+            min-height: 46px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .ext-change-launch:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 10px 24px rgba(124,58,237,.5);
+        }
+        .ext-change-launch:active { transform: scale(1); }
+        .ext-change-launch::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius);
+            border: 2px solid transparent;
+            background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+                linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+            z-index: 0;
+            transition: all .4s ease;
+        }
+        .ext-change-launch:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,1); }
+        .ext-change-launch::before {
+            content: "";
+            inset: 4px;
+            position: absolute;
+            background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+            border-radius: 18px;
+            filter: blur(0.5px);
+            z-index: 2;
+        }
+        .ext-change-state p { display: flex; align-items: center; justify-content: center; }
+        .ext-change-icon {
+            position: absolute; left: 0; top: 0; bottom: 0; margin: auto;
+            transform: scale(1);
+            transition: all .3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .ext-change-icon svg { overflow: visible; width: 16px; height: 16px; }
+        .ext-change-outline {
+            position: absolute; border-radius: inherit; overflow: hidden; z-index: 1;
+            opacity: 0; transition: opacity .4s ease; inset: -2px -3px;
+        }
+        .ext-change-outline::before {
+            content: ""; position: absolute; inset: -100%;
+            background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
+            animation: ext-change-spin 2s linear infinite;
+            animation-play-state: paused;
+        }
+        .ext-change-launch:hover .ext-change-outline { opacity: 1; }
+        .ext-change-launch:hover .ext-change-outline::before { animation-play-state: running; }
+        .ext-change-state p span {
+            display: block; opacity: 0;
+            animation: ext-change-slideDown .8s ease forwards calc(var(--i) * .025s);
+        }
+        .ext-change-launch:hover p span {
+            opacity: 1;
+            animation: ext-change-wave .5s ease forwards calc(var(--i) * .015s);
+        }
+        .ext-change-launch:focus p span {
+            opacity: 1;
+            animation: ext-change-disapear .6s ease forwards calc(var(--i) * .02s);
+        }
+        .ext-change-state--default .ext-change-icon svg { animation: ext-change-land .6s ease forwards; }
+        .ext-change-launch:hover .ext-change-state--default .ext-change-icon { transform: rotate(45deg); }
+        .ext-change-launch:focus .ext-change-state--default svg { animation: ext-change-takeOff .8s linear forwards; }
+        .ext-change-launch:focus .ext-change-state--default .ext-change-icon { transform: rotate(0); }
+        .ext-change-state {
+            padding-left: 20px; z-index: 2; display: flex; position: relative;
+        }
+        .ext-change-state--sent { display: none; }
+        .ext-change-state--sent svg { transform: scale(1); margin-right: 6px; }
+        .ext-change-launch:focus .ext-change-state--default { position: absolute; }
+        .ext-change-launch:focus .ext-change-state--sent { display: flex; }
+        .ext-change-launch:focus .ext-change-state--sent span {
+            opacity: 0;
+            animation: ext-change-slideDown .8s ease forwards calc(var(--i) * .15s);
+        }
+        .ext-change-launch:focus .ext-change-state--sent .ext-change-icon svg {
+            opacity: 0;
+            animation: ext-change-appear 1.2s ease forwards .8s;
+        }
+        @keyframes ext-change-spin { to { transform: rotate(360deg); } }
+        @keyframes ext-change-wave {
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: var(--primary); }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes ext-change-slideDown {
+            0% { opacity: 0; transform: translateY(-14px) translateX(4px) rotate(-90deg); color: #fff; filter: blur(4px); }
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); filter: blur(0); color: #fff; }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: #fff; }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes ext-change-disapear {
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateX(4px) translateY(14px); color: var(--primary); filter: blur(4px); }
+        }
+        @keyframes ext-change-takeOff {
+            0% { opacity: 1; }
+            60% { opacity: 1; transform: translateX(46px) rotate(45deg) scale(1.6); }
+            100% { opacity: 0; transform: translateX(100px) rotate(45deg) scale(0); }
+        }
+        @keyframes ext-change-land {
+            0% { transform: translateX(-36px) translateY(18px) rotate(-50deg) scale(1.6); opacity: 0; filter: blur(2px); }
+            100% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; filter: blur(0); }
+        }
+        @keyframes ext-change-appear {
+            0% { opacity: 0; transform: scale(3) rotate(-40deg); color: var(--primary); filter: blur(3px); }
+            30% { opacity: 1; transform: scale(.6); filter: blur(1px); }
+            50% { opacity: 1; transform: scale(1.2); filter: blur(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ext-change-launch, .ext-change-launch *, .ext-change-outline::before { animation: none !important; transition: none !important; }
+            .ext-change-state p span { opacity: 1 !important; }
+        }
+        /* "Delete base resume" — comic-button style (Uiverse.io by
+           Gautammsharma), kept as-given since red/black already fits a
+           destructive action. */
+        .ext-manage-row button.ext-delete-btn {
+            font-weight: 700;
+            color: #fff;
+            background-color: #ff5252;
+            border: 2px solid #000;
+            box-shadow: 5px 5px 0px #000;
+            transition: all .3s ease;
+        }
+        .ext-manage-row button.ext-delete-btn:hover:not(:disabled) {
+            background-color: #fff;
+            color: #ff5252;
+            border-color: #ff5252;
+            box-shadow: 5px 5px 0px #ff5252;
+        }
+        .ext-manage-row button.ext-delete-btn:active:not(:disabled) {
+            background-color: #fcf414;
+            color: #111;
+            box-shadow: none;
+            transform: translateY(4px);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ext-manage-row button.ext-delete-btn { transition: none; }
+        }
         .ext-manage-row button:disabled { opacity: .55; cursor: not-allowed; }
         .ext-boards-note { text-align: center; color: #c2ccde; font-size: .95rem; margin: 16px auto 0; max-width: 620px; line-height: 1.6; }
         .ext-boards-note b { color: #e8edf6; }
@@ -165,6 +472,57 @@
         .ext-ready-copy { flex: 1 1 320px; }
         .ext-tracker-btn { display: inline-block; margin-top: 6px; padding: 13px 24px; border-radius: 10px; background: linear-gradient(135deg,#4f7fff,#7c3aed); color: #fff; font-weight: 700; font-size: .95rem; text-decoration: none; box-shadow: 0 10px 24px rgba(79,127,255,.35); transition: transform .2s ease, box-shadow .2s ease; }
         .ext-tracker-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(79,127,255,.45); }
+
+        /* "My applications" — skewed arrow cta (Uiverse.io by mobinkakei),
+           recolored to this button's existing blue/violet gradient. Classes
+           prefixed ext-tracker-arrow to stay scoped to this button only. */
+        .ext-tracker-btn.ext-tracker-arrow {
+            margin-top: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 24px;
+            text-decoration: none;
+            font-size: .95rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg,#4f7fff,#7c3aed);
+            transition: box-shadow .5s, background .3s;
+            box-shadow: 6px 6px 0 #000;
+            transform: skewX(-15deg);
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+        }
+        .ext-tracker-arrow:focus { outline: none; }
+        .ext-tracker-arrow .ext-tracker-arrow-text { display: inline-block; transform: skewX(15deg); }
+        .ext-tracker-arrow .ext-tracker-arrow-ico {
+            transition: .5s;
+            margin-right: 0;
+            width: 20px;
+            margin-left: 20px;
+            position: relative;
+            top: 12%;
+            transform: skewX(15deg);
+        }
+        .ext-tracker-arrow:hover {
+            transition: .5s;
+            box-shadow: 10px 10px 0 #fbc638;
+        }
+        .ext-tracker-arrow:hover .ext-tracker-arrow-ico { margin-right: 45px; }
+        .ext-tracker-arr-one { transition: .4s; transform: translateX(-60%); }
+        .ext-tracker-arr-two { transition: .5s; transform: translateX(-30%); }
+        .ext-tracker-arrow:hover .ext-tracker-arr-three { animation: extTrackerColorAnim 1s infinite .2s; }
+        .ext-tracker-arrow:hover .ext-tracker-arr-one { transform: translateX(0%); animation: extTrackerColorAnim 1s infinite .6s; }
+        .ext-tracker-arrow:hover .ext-tracker-arr-two { transform: translateX(0%); animation: extTrackerColorAnim 1s infinite .4s; }
+        @keyframes extTrackerColorAnim {
+            0% { fill: #fff; }
+            50% { fill: #fbc638; }
+            100% { fill: #fff; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ext-tracker-arrow, .ext-tracker-arrow * { animation: none !important; transition: none !important; }
+        }
 
         .ext-ready-viz { position: relative; flex: 1 1 300px; min-width: 300px; height: 300px; }
         .ext-job-card { position: absolute; background: linear-gradient(160deg,#131b33,#0c1226); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; box-shadow: 0 16px 32px rgba(0,0,0,.4); animation: extCardFloat 4.5s ease-in-out infinite; }
@@ -462,21 +820,7 @@
                 <p>Two things and you are done: upload the resume to tailor from, then install it.</p>
             </div>
 
-            <!-- 1. Install -->
-            <section class="ext-card">
-                <div class="ext-card-head">
-                    <div>
-                        <h2>Add the extension to Chrome</h2>
-                        <p>It opens itself on the major job boards. Anywhere else, click the TailorCV icon in your toolbar.</p>
-                    </div>
-                </div>
-                <a href="{{ chrome_store_url or '/extension' }}" class="solx-btn ext-install-btn"{% if chrome_store_url %} target="_blank" rel="noopener"{% endif %}>
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 8.6h8.4M9.1 13.7l-4.2 7.2M14.9 13.7l-4.2 7.2"/></svg>
-                    Add to Chrome, Free
-                </a>
-            </section>
-
-            <!-- 2. Base resume -->
+            <!-- 1. Base resume -->
             <section class="ext-card" id="ext-base-resume">
                 <div class="ext-card-head ext-head-lg">
                     <div>
@@ -517,7 +861,40 @@
                     </p>
 
                     <div class="ext-manage-row" id="extDeleteWrap"{% if not br.get('has_base_resume') %} hidden{% endif %}>
-                        <button type="button" class="ext-change-btn" id="extChangeBtn">Change base resume</button>
+                        <button type="button" class="ext-change-btn ext-change-launch" id="extChangeBtn">
+                            <div class="ext-change-outline"></div>
+                            <div class="ext-change-state ext-change-state--default">
+                                <div class="ext-change-icon">
+                                    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g style="filter:url(#ext-change-shadow)">
+                                            <path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="currentColor"></path>
+                                            <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="currentColor"></path>
+                                        </g>
+                                        <defs>
+                                            <filter id="ext-change-shadow">
+                                                <feDropShadow dx="0" dy="1" stdDeviation="0.6" flood-opacity="0.5"></feDropShadow>
+                                            </filter>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <p>
+                                    <span style="--i:0">C</span><span style="--i:1">h</span><span style="--i:2">a</span><span style="--i:3">n</span><span style="--i:4">g</span><span style="--i:5">e</span><span style="--i:6">&nbsp;</span><span style="--i:7">b</span><span style="--i:8">a</span><span style="--i:9">s</span><span style="--i:10">e</span><span style="--i:11">&nbsp;</span><span style="--i:12">r</span><span style="--i:13">e</span><span style="--i:14">s</span><span style="--i:15">u</span><span style="--i:16">m</span><span style="--i:17">e</span>
+                                </p>
+                            </div>
+                            <div class="ext-change-state ext-change-state--sent">
+                                <div class="ext-change-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                                        <g style="filter:url(#ext-change-shadow)">
+                                            <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                            <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+                                <p>
+                                    <span style="--i:8">C</span><span style="--i:9">h</span><span style="--i:10">o</span><span style="--i:11">o</span><span style="--i:12">s</span><span style="--i:13">i</span><span style="--i:14">n</span><span style="--i:15">g</span>
+                                </p>
+                            </div>
+                        </button>
                         <button type="button" class="ext-delete-btn" id="extDeleteBtn">Delete base resume</button>
                     </div>
 
@@ -613,8 +990,38 @@
                     </div>
                 </div>
                 <a href="{{ chrome_store_url or '/extension' }}" class="solx-btn ext-install-btn"{% if chrome_store_url %} target="_blank" rel="noopener"{% endif %}>
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 8.6h8.4M9.1 13.7l-4.2 7.2M14.9 13.7l-4.2 7.2"/></svg>
-                    Add to Chrome, Free
+                    <div class="ext-install-outline"></div>
+                    <div class="ext-install-state ext-install-state--default">
+                        <div class="ext-install-icon">
+                            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g style="filter:url(#ext-install-shadow)">
+                                    <path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="currentColor"></path>
+                                    <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="currentColor"></path>
+                                </g>
+                                <defs>
+                                    <filter id="ext-install-shadow">
+                                        <feDropShadow dx="0" dy="1" stdDeviation="0.6" flood-opacity="0.5"></feDropShadow>
+                                    </filter>
+                                </defs>
+                            </svg>
+                        </div>
+                        <p>
+                            <span style="--i:0">A</span><span style="--i:1">d</span><span style="--i:2">d</span><span style="--i:3">&nbsp;</span><span style="--i:4">t</span><span style="--i:5">o</span><span style="--i:6">&nbsp;</span><span style="--i:7">C</span><span style="--i:8">h</span><span style="--i:9">r</span><span style="--i:10">o</span><span style="--i:11">m</span><span style="--i:12">e</span><span style="--i:13">,</span><span style="--i:14">&nbsp;</span><span style="--i:15">F</span><span style="--i:16">r</span><span style="--i:17">e</span><span style="--i:18">e</span>
+                        </p>
+                    </div>
+                    <div class="ext-install-state ext-install-state--sent">
+                        <div class="ext-install-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                                <g style="filter:url(#ext-install-shadow)">
+                                    <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                    <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <p>
+                            <span style="--i:8">O</span><span style="--i:9">p</span><span style="--i:10">e</span><span style="--i:11">n</span><span style="--i:12">i</span><span style="--i:13">n</span><span style="--i:14">g</span>
+                        </p>
+                    </div>
                 </a>
             </section>
 
@@ -629,7 +1036,18 @@
                             </div>
                         </div>
                         <p class="ext-boards-note" style="text-align:left; margin:0 0 20px">Every resume you tailor is automatically stored in your job tracker &mdash; nothing to save by hand.</p>
-                        <a href="/my-resumes" class="ext-tracker-btn">My applications</a>
+                        <a href="/my-resumes" class="ext-tracker-btn ext-tracker-arrow">
+                            <span class="ext-tracker-arrow-text">My applications</span>
+                            <span class="ext-tracker-arrow-ico" aria-hidden="true">
+                                <svg width="50px" height="20px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="ext-tracker-arrow-g" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <path class="ext-tracker-arr-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                                        <path class="ext-tracker-arr-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                                        <path class="ext-tracker-arr-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                        </a>
                     </div>
                     <div class="ext-ready-viz" aria-hidden="true">
                         <div class="ext-job-card ext-job-card-back">

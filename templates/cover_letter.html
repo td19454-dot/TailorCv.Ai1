@@ -241,10 +241,194 @@
             .cl-btn .btn-spinner { animation: clBtnSpin .7s linear infinite; }
         }
         @keyframes clBtnSpin { to { transform: rotate(360deg); } }
+
+        /* "Generate Cover Letter" — skewed arrow cta (Uiverse.io by
+           mobinkakei), recolored to this page's violet accent. */
+        .cl-btn.cl-btn-primary.cl-gen-btn {
+            width: 100%;
+            padding: 12px 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #6225e6;
+            color: #fff;
+            font-size: 0.88rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            box-shadow: 5px 5px 0 #000;
+            transform: skewX(-15deg);
+            transition: box-shadow .5s, background .3s, opacity .2s;
+        }
+        .cl-gen-btn:focus { outline: none; }
+        .cl-gen-btn .cl-gen-text { display: inline-block; transform: skewX(15deg); }
+        .cl-gen-btn .cl-gen-arrow {
+            display: inline-flex; width: 18px; margin-left: 12px;
+            position: relative; top: 1px; transition: margin-right .5s;
+            transform: skewX(15deg);
+        }
+        .cl-gen-btn:hover:not(:disabled) {
+            background: #6225e6;
+            box-shadow: 8px 8px 0 #fbc638;
+        }
+        .cl-gen-btn:hover:not(:disabled) .cl-gen-arrow { margin-right: 22px; }
+        .cl-gen-arr-one { transition: .4s; transform: translateX(-60%); }
+        .cl-gen-arr-two { transition: .5s; transform: translateX(-30%); }
+        .cl-gen-btn:hover:not(:disabled) .cl-gen-arr-three { animation: clGenArrColor 1s infinite .2s; }
+        .cl-gen-btn:hover:not(:disabled) .cl-gen-arr-one { transform: translateX(0%); animation: clGenArrColor 1s infinite .6s; }
+        .cl-gen-btn:hover:not(:disabled) .cl-gen-arr-two { transform: translateX(0%); animation: clGenArrColor 1s infinite .4s; }
+        @keyframes clGenArrColor { 0% { fill: #fff; } 50% { fill: #fbc638; } 100% { fill: #fff; } }
+        .cl-gen-btn:disabled { opacity: .65; cursor: not-allowed; box-shadow: 5px 5px 0 rgba(0,0,0,.5); }
+        @media (prefers-reduced-motion: reduce) {
+            .cl-gen-btn, .cl-gen-btn * { animation: none !important; transition: none !important; }
+        }
+
+        /* "Download PDF" — plane-style launch button (Uiverse.io by
+           marcelodolza), recolored to this page's blue/violet gradient and
+           re-iconed for a download action. Classes prefixed cl-pdf- to stay
+           scoped to this button only. */
+        .cl-btn.cl-btn-primary.cl-pdf-btn {
+            --primary: #a9c3ff;
+            --neutral-1: #4f7fff;
+            --neutral-2: #8d5cf7;
+            --radius: 14px;
+            all: unset;
+            box-sizing: border-box;
+            cursor: pointer;
+            border-radius: var(--radius);
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,.3);
+            border: none;
+            box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 8px 20px rgba(79,127,255,.3);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all .3s ease;
+            width: 100%;
+            padding: 12px 20px;
+            min-height: 46px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .cl-pdf-btn:hover {
+            transform: translateY(-1px) scale(1.01);
+            box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 12px 26px rgba(79,127,255,.4);
+        }
+        .cl-pdf-btn:active { transform: scale(1); }
+        .cl-pdf-btn::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius);
+            border: 2px solid transparent;
+            background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+                linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+            z-index: 0;
+            transition: all .4s ease;
+        }
+        .cl-pdf-btn:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,1); }
+        .cl-pdf-btn::before {
+            content: "";
+            inset: 5px;
+            position: absolute;
+            background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+            border-radius: calc(var(--radius) - 3px);
+            filter: blur(0.5px);
+            z-index: 2;
+        }
+        .cl-pdf-state p { display: flex; align-items: center; justify-content: center; }
+        .cl-pdf-icon {
+            position: absolute; left: 0; top: 0; bottom: 0; margin: auto;
+            transform: scale(1);
+            transition: all .3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .cl-pdf-icon svg { overflow: visible; width: 17px; height: 17px; }
+        .cl-pdf-outline {
+            position: absolute; border-radius: inherit; overflow: hidden; z-index: 1;
+            opacity: 0; transition: opacity .4s ease; inset: -2px -3px;
+        }
+        .cl-pdf-outline::before {
+            content: ""; position: absolute; inset: -100%;
+            background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
+            animation: cl-pdf-spin 2s linear infinite;
+            animation-play-state: paused;
+        }
+        .cl-pdf-btn:hover .cl-pdf-outline { opacity: 1; }
+        .cl-pdf-btn:hover .cl-pdf-outline::before { animation-play-state: running; }
+        .cl-pdf-state p span {
+            display: block; opacity: 0;
+            animation: cl-pdf-slideDown .8s ease forwards calc(var(--i) * .025s);
+        }
+        .cl-pdf-btn:hover p span {
+            opacity: 1;
+            animation: cl-pdf-wave .5s ease forwards calc(var(--i) * .015s);
+        }
+        .cl-pdf-btn:focus p span {
+            opacity: 1;
+            animation: cl-pdf-disapear .6s ease forwards calc(var(--i) * .02s);
+        }
+        .cl-pdf-state--default .cl-pdf-icon svg { animation: cl-pdf-land .6s ease forwards; }
+        .cl-pdf-btn:hover .cl-pdf-state--default .cl-pdf-icon { transform: translateY(2px); }
+        .cl-pdf-btn:focus .cl-pdf-state--default svg { animation: cl-pdf-takeOff .8s linear forwards; }
+        .cl-pdf-btn:focus .cl-pdf-state--default .cl-pdf-icon { transform: translateY(0); }
+        .cl-pdf-state {
+            padding-left: 24px; z-index: 2; display: flex; position: relative;
+        }
+        .cl-pdf-state--sent { display: none; }
+        .cl-pdf-state--sent svg { transform: scale(1); margin-right: 6px; }
+        .cl-pdf-btn:focus .cl-pdf-state--default { position: absolute; }
+        .cl-pdf-btn:focus .cl-pdf-state--sent { display: flex; }
+        .cl-pdf-btn:focus .cl-pdf-state--sent span {
+            opacity: 0;
+            animation: cl-pdf-slideDown .8s ease forwards calc(var(--i) * .15s);
+        }
+        .cl-pdf-btn:focus .cl-pdf-state--sent .cl-pdf-icon svg {
+            opacity: 0;
+            animation: cl-pdf-appear 1.2s ease forwards .8s;
+        }
+        @keyframes cl-pdf-spin { to { transform: rotate(360deg); } }
+        @keyframes cl-pdf-wave {
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: var(--primary); }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes cl-pdf-slideDown {
+            0% { opacity: 0; transform: translateY(-14px) translateX(4px) rotate(-90deg); color: #fff; filter: blur(4px); }
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); filter: blur(0); color: #fff; }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: #fff; }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes cl-pdf-disapear {
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateX(4px) translateY(14px); color: var(--primary); filter: blur(4px); }
+        }
+        @keyframes cl-pdf-takeOff {
+            0% { opacity: 1; transform: translateY(0); }
+            60% { opacity: 1; transform: translateY(10px) scale(1.3); }
+            100% { opacity: 0; transform: translateY(26px) scale(0); }
+        }
+        @keyframes cl-pdf-land {
+            0% { transform: translateY(-14px) scale(1.4); opacity: 0; filter: blur(2px); }
+            100% { transform: translateY(0) scale(1); opacity: 1; filter: blur(0); }
+        }
+        @keyframes cl-pdf-appear {
+            0% { opacity: 0; transform: scale(3) rotate(-40deg); color: var(--primary); filter: blur(3px); }
+            30% { opacity: 1; transform: scale(.6); filter: blur(1px); }
+            50% { opacity: 1; transform: scale(1.2); filter: blur(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cl-pdf-btn, .cl-pdf-btn *, .cl-pdf-outline::before { animation: none !important; transition: none !important; }
+            .cl-pdf-state p span { opacity: 1 !important; }
+        }
     </style>
 </head>
 <body>
-{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
+<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;"></canvas>
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
@@ -531,7 +715,18 @@
                     </select>
                 </div>
 
-                <button id="generate-btn" class="cl-btn cl-btn-primary" type="button">Generate Cover Letter</button>
+                <button id="generate-btn" class="cl-btn cl-btn-primary cl-gen-btn" type="button">
+                    <span class="cl-gen-text">Generate Cover Letter</span>
+                    <span class="cl-gen-arrow" aria-hidden="true">
+                        <svg width="50px" height="20px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <g id="cl-gen-arrow-g" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <path class="cl-gen-arr-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                                <path class="cl-gen-arr-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                                <path class="cl-gen-arr-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
+                            </g>
+                        </svg>
+                    </span>
+                </button>
                 <div id="status" class="cl-status"></div>
             </div>
         </div>
@@ -562,7 +757,30 @@
 
                 <div class="cl-actions" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
                     <button id="copy-btn" class="cl-btn cl-btn-ghost" type="button">📋 Copy text</button>
-                    <button id="download-pdf-btn" class="cl-btn cl-btn-primary" type="button">⬇ Download PDF</button>
+                    <button id="download-pdf-btn" class="cl-btn cl-btn-primary cl-pdf-btn" type="button">
+                        <div class="cl-pdf-outline"></div>
+                        <div class="cl-pdf-state cl-pdf-state--default">
+                            <div class="cl-pdf-icon">
+                                <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path>
+                                </svg>
+                            </div>
+                            <p>
+                                <span style="--i:0">D</span><span style="--i:1">o</span><span style="--i:2">w</span><span style="--i:3">n</span><span style="--i:4">l</span><span style="--i:5">o</span><span style="--i:6">a</span><span style="--i:7">d</span><span style="--i:8">&nbsp;</span><span style="--i:9">P</span><span style="--i:10">D</span><span style="--i:11">F</span>
+                            </p>
+                        </div>
+                        <div class="cl-pdf-state cl-pdf-state--sent">
+                            <div class="cl-pdf-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                                    <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                    <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                                </svg>
+                            </div>
+                            <p>
+                                <span style="--i:0">D</span><span style="--i:1">o</span><span style="--i:2">w</span><span style="--i:3">n</span><span style="--i:4">l</span><span style="--i:5">o</span><span style="--i:6">a</span><span style="--i:7">d</span><span style="--i:8">e</span><span style="--i:9">d</span>
+                            </p>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
@@ -2107,7 +2325,7 @@ Nice to have:
             fd.append('resume_pdf', file);
 
             genBtn.disabled = true;
-            var orig = genBtn.textContent;
+            var orig = genBtn.innerHTML;
             genBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>Generating…';
             setStatus(file ? 'Reading your PDF and writing your cover letter…' : 'Writing your cover letter…');
 
@@ -2143,7 +2361,7 @@ Nice to have:
                 setStatus('Done, details filled from your resume. Pick a template, then download.', 'ok');
             })
             .catch(function (e) { setStatus(e.message || 'Something went wrong.', 'error'); })
-            .finally(function () { genBtn.disabled = false; genBtn.textContent = orig; });
+            .finally(function () { genBtn.disabled = false; genBtn.innerHTML = orig; });
         });
 
         copyBtn.addEventListener('click', function () {
@@ -2328,7 +2546,6 @@ Nice to have:
     })();
     </script>
     <script src="/static/resume_store.js?v=1"></script>
-{% if not is_logged_in %}
 <script>
 (function(){
   const canvas = document.getElementById('wave-canvas');
@@ -2414,6 +2631,5 @@ Nice to have:
   }
 })();
 </script>
-{% endif %}
 </body>
 </html>
