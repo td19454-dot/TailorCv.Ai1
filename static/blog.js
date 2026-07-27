@@ -175,6 +175,24 @@
       }
     });
   }
+
+  // Smooth reveal of in-article images + section headings on scroll.
+  (function initContentReveal() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    const content = document.querySelector('.post-content');
+    if (!content) return;
+    const els = [].slice.call(content.querySelectorAll('img, h2'));
+    if (!els.length) return;
+    els.forEach((el) => el.classList.add('tcx-art-reveal'));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('tcx-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+    els.forEach((el) => io.observe(el));
+    setTimeout(() => els.forEach((el) => el.classList.add('tcx-in')), 2500);
+  })();
   };
 
   if (document.readyState === "loading") {

@@ -1374,8 +1374,32 @@ Nice to have:
                     opt.style.background = "rgba(74,222,128,0.12)";
                     opt.style.color = cat.color;
                     opt.style.fontWeight = "700";
-                    textarea.value = jd;
-                    textarea.dispatchEvent(new Event("input", { bubbles: true }));
+                    // Stream the sample JD in (fast chunked "type-in") instead of
+                    // snapping it. Fire `input` once at the end so dependent UI
+                    // (char count, auto-resume) sees the final value. Reduced-motion
+                    // and short text fill instantly.
+                    (function typeIn() {
+                        var reduce = window.matchMedia &&
+                            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                        if (reduce || jd.length < 40) {
+                            textarea.value = jd;
+                            textarea.dispatchEvent(new Event("input", { bubbles: true }));
+                            return;
+                        }
+                        var steps = 24, i = 0, chunk = Math.ceil(jd.length / steps);
+                        textarea.value = "";
+                        (function tick() {
+                            i += chunk;
+                            textarea.value = jd.slice(0, i);
+                            textarea.scrollTop = textarea.scrollHeight;
+                            if (i < jd.length) {
+                                setTimeout(tick, 22);
+                            } else {
+                                textarea.value = jd;
+                                textarea.dispatchEvent(new Event("input", { bubbles: true }));
+                            }
+                        })();
+                    })();
                     closePanel();
                 });
                 panel.appendChild(opt);

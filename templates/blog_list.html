@@ -46,7 +46,7 @@
             box-shadow: 0 10px 24px rgba(30, 64, 175, 0.3);
         }
     </style>
-    <link rel="stylesheet" href="/static/blog.css?v=3">
+    <link rel="stylesheet" href="/static/blog.css?v=15">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
 </head>
@@ -134,6 +134,38 @@
         {% include "_footer.html" %}
 <script src="/static/auth_nav.js?v=16"></script>
 <script src="/static/mobile_nav.js"></script>
+<script>
+/* Blog list: staggered card reveal on scroll. Reduced-motion + no-IO safe.
+   Removes the reveal classes once shown so hover uses the base transition. */
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  var grid = document.querySelector('.blog-grid');
+  var cards = grid ? [].slice.call(grid.querySelectorAll('.blog-card')) : [];
+  if (!cards.length) return;
+
+  cards.forEach(function (c, i) {
+    c.classList.add('tcx-blog-reveal');
+    c.style.transitionDelay = ((i % 3) * 70) + 'ms';   // stagger within each row of 3
+  });
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('tcx-in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  cards.forEach(function (c) { io.observe(c); });
+
+  grid.addEventListener('transitionend', function (e) {
+    if (e.propertyName === 'opacity' && e.target.classList.contains('tcx-in')) {
+      e.target.classList.remove('tcx-blog-reveal', 'tcx-in');
+      e.target.style.transitionDelay = '';
+    }
+  });
+
+  setTimeout(function () { cards.forEach(function (c) { c.classList.add('tcx-in'); }); }, 2500);
+})();
+</script>
 </body>
 </html>
 

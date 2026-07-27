@@ -479,6 +479,15 @@
       transition: transform 0.15s, box-shadow 0.2s, opacity 0.15s;
       animation: fadeUp 0.5s 0.46s both;
     }
+    .submit-btn:disabled { cursor: default; opacity: 0.85; }
+    .btn-spinner {
+      display: inline-block; width: 15px; height: 15px; vertical-align: -2px;
+      margin-right: 8px; border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff; border-radius: 50%;
+      animation: btnSpin 0.7s linear infinite;
+    }
+    @keyframes btnSpin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .btn-spinner { animation: none; } }
     .submit-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 32px rgba(108,99,255,0.45);
@@ -817,7 +826,7 @@
 
       statusMessage.className = 'status';
       loginBtn.disabled = true;
-      loginBtn.textContent = 'Signing in…';
+      loginBtn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>Signing in…';
 
       try {
         const response = await fetch('/api/login', {

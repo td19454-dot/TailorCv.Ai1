@@ -11,7 +11,7 @@
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="stylesheet" href="/static/header-footer.css?v=8">
-    <link rel="stylesheet" href="/static/optimized_editor.css?v=5">
+    <link rel="stylesheet" href="/static/optimized_editor.css?v=7">
 </head>
 
 <body>
@@ -132,6 +132,21 @@
     <script>window.IS_PRO = {{ 'true' if is_pro else 'false' }};</script>
     <script>window.QUOTA_EXHAUSTED = {{ 'true' if quota_exhausted_flag else 'false' }};</script>
     <script src="/static/optimized_editor.js?v=109"></script>
+    <script>
+    /* Page entrance: stagger control cards up, slide preview in. Start states are
+       applied here (progressive enhancement) so no-JS users see everything. */
+    (function () {
+      var page = document.querySelector('.editor-page');
+      if (!page) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      page.classList.add('tcx-armed');
+      var cards = [].slice.call(page.querySelectorAll('.editor-top, .editor-controls'));
+      cards.forEach(function (c, i) { c.style.transitionDelay = (i * 70) + 'ms'; });
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { page.classList.add('tcx-in'); });
+      });
+    })();
+    </script>
     <script>
         (function () {
             var btn = document.getElementById('mobile-controls-toggle');

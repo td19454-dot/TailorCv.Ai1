@@ -5,6 +5,16 @@
    Get Started in the top bar instead of the profile avatar.
    ─────────────────────────────────────────────────────────────────────────── */
 
+/* Promote the fixed decorative background canvas to its own GPU layer so it is
+   never repainted on the main thread during scroll. Without this, the fixed
+   full-viewport canvas repaints every scroll frame, which made the main content
+   flash blank mid-scroll on /extension, /ats-analysis and other wave-bg pages. */
+#wave-canvas, .wave-bg {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
 html.tcv-app .navbar { display: none !important; }
 html.tcv-app .footer,
 html.tcv-app .site-footer { display: none !important; }

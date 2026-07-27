@@ -67,6 +67,15 @@
             background: linear-gradient(135deg, #3392ff, #4c1d95); color: #fff;
         }
         .btn-dl:hover { filter: brightness(1.08); }
+        .btn-dl .btn-spinner, .btn-del .btn-spinner {
+            display: inline-block; width: 11px; height: 11px; vertical-align: -1px;
+            margin-right: 5px; border: 2px solid rgba(255,255,255,.4);
+            border-top-color: currentColor; border-radius: 50%;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .btn-dl .btn-spinner, .btn-del .btn-spinner { animation: mrBtnSpin .7s linear infinite; }
+        }
+        @keyframes mrBtnSpin { to { transform: rotate(360deg); } }
         .btn-del {
             background: transparent; color: #ff9a9a; border-color: rgba(239,68,68,.35);
         }
@@ -423,7 +432,7 @@
        surfaces a clear message instead of failing silently. */
     async function dlResume(id, btn) {
         const original = btn ? btn.textContent : '';
-        if (btn) { btn.disabled = true; btn.textContent = 'Preparing…'; }
+        if (btn) { btn.disabled = true; btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>Preparing…'; }
         try {
             const res = await fetch('/my-resumes/' + id + '/download', { credentials: 'same-origin' });
 
@@ -514,7 +523,7 @@
       e.preventDefault();
       var card = form.closest('.resume-card');
       var btn = form.querySelector('button');
-      if (btn) { btn.disabled = true; btn.textContent = 'Deleting…'; }
+      if (btn) { btn.disabled = true; btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>Deleting…'; }
       fetch(form.action, { method: 'POST', headers: { 'X-Requested-With': 'XMLHttpRequest' } })
         .then(function (r) {
           if (!r.ok) throw new Error('delete failed');
