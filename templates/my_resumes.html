@@ -207,124 +207,15 @@
         }
         .tracker-save:hover { background: rgba(59,130,246,.32); }
         .tracker-save.mr-upd-btn {
-            --round: 8px;
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            transition: all .25s ease;
-            background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(223,113,255,.8) 0%, rgba(223,113,255,0) 100%),
-                        linear-gradient(0deg, #7a5af8, #7a5af8);
-            border-radius: var(--round);
+            background: linear-gradient(135deg, #8b5cf6, #7a5af8);
+            color: #fff;
             border: none;
-            outline: none;
-            padding: 8px 14px;
-            color: #fff;
+            transition: filter .2s ease, transform .1s ease;
         }
-        .tracker-save.mr-upd-btn:hover {
-            background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(223,113,255,.8) 0%, rgba(223,113,255,0) 100%),
-                        linear-gradient(0deg, #7a5af8, #7a5af8);
-        }
-        .mr-upd-btn::before, .mr-upd-btn::after {
-            content: "";
-            position: absolute;
-            inset: var(--space);
-            transition: all .5s ease-in-out;
-            border-radius: calc(var(--round) - var(--space));
-            z-index: 0;
-        }
-        .mr-upd-btn::before {
-            --space: 1px;
-            background: linear-gradient(177.95deg, rgba(255,255,255,.19) 0%, rgba(255,255,255,0) 100%);
-        }
-        .mr-upd-btn::after {
-            --space: 2px;
-            background: radial-gradient(65.28% 65.28% at 50% 100%, rgba(223,113,255,.8) 0%, rgba(223,113,255,0) 100%),
-                        linear-gradient(0deg, #7a5af8, #7a5af8);
-        }
-        .mr-upd-btn:active { transform: scale(.95); }
-        .mr-upd-fold {
-            z-index: 1;
-            position: absolute;
-            top: 0; right: 0;
-            height: .65rem; width: .65rem;
-            display: inline-block;
-            transition: all .5s ease-in-out;
-            background: radial-gradient(100% 75% at 55%, rgba(223,113,255,.8) 0%, rgba(223,113,255,0) 100%);
-            box-shadow: 0 0 3px #000;
-            border-bottom-left-radius: .4rem;
-            border-top-right-radius: var(--round);
-        }
-        .mr-upd-fold::after {
-            content: "";
-            position: absolute;
-            top: 0; right: 0;
-            width: 150%; height: 150%;
-            transform: rotate(45deg) translateX(0%) translateY(-12px);
-            background-color: #e8e8e8;
-            pointer-events: none;
-        }
-        .mr-upd-btn:hover .mr-upd-fold { margin-top: -.65rem; margin-right: -.65rem; }
-        .mr-upd-points {
-            overflow: hidden;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            position: absolute;
-            z-index: 1;
-        }
-        .mr-upd-points .mr-upd-point {
-            bottom: -10px;
-            position: absolute;
-            animation: mrUpdFloat infinite ease-in-out;
-            pointer-events: none;
-            width: 2px; height: 2px;
-            background-color: #fff;
-            border-radius: 9999px;
-        }
-        @keyframes mrUpdFloat {
-            0% { transform: translateY(0); }
-            85% { opacity: 0; }
-            100% { transform: translateY(-36px); opacity: 0; }
-        }
-        .mr-upd-points .mr-upd-point:nth-child(1) { left: 10%; opacity: 1; animation-duration: 2.35s; animation-delay: .2s; }
-        .mr-upd-points .mr-upd-point:nth-child(2) { left: 30%; opacity: .7; animation-duration: 2.5s; animation-delay: .5s; }
-        .mr-upd-points .mr-upd-point:nth-child(3) { left: 25%; opacity: .8; animation-duration: 2.2s; animation-delay: .1s; }
-        .mr-upd-points .mr-upd-point:nth-child(4) { left: 44%; opacity: .6; animation-duration: 2.05s; }
-        .mr-upd-points .mr-upd-point:nth-child(5) { left: 50%; opacity: 1; animation-duration: 1.9s; }
-        .mr-upd-points .mr-upd-point:nth-child(6) { left: 75%; opacity: .5; animation-duration: 1.5s; animation-delay: 1.5s; }
-        .mr-upd-points .mr-upd-point:nth-child(7) { left: 88%; opacity: .9; animation-duration: 2.2s; animation-delay: .2s; }
-        .mr-upd-points .mr-upd-point:nth-child(8) { left: 58%; opacity: .8; animation-duration: 2.25s; animation-delay: .2s; }
-        .mr-upd-points .mr-upd-point:nth-child(9) { left: 98%; opacity: .6; animation-duration: 2.6s; animation-delay: .1s; }
-        .mr-upd-points .mr-upd-point:nth-child(10) { left: 65%; opacity: 1; animation-duration: 2.5s; animation-delay: .2s; }
-        .mr-upd-inner {
-            z-index: 2;
-            gap: 5px;
-            position: relative;
-            color: #fff;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: .82rem;
-            font-weight: 500;
-            line-height: 1.4;
-            transition: color .2s ease-in-out;
-        }
-        .mr-upd-inner svg.mr-upd-icon {
-            width: 14px; height: 14px;
-            transition: fill .1s linear;
-        }
-        .mr-upd-btn:focus svg.mr-upd-icon { fill: #fff; }
-        .mr-upd-btn:hover svg.mr-upd-icon {
-            fill: transparent;
-            animation: mrUpdDasharray 1s linear forwards, mrUpdFilled .1s linear forwards .95s;
-        }
-        @keyframes mrUpdDasharray { from { stroke-dasharray: 0 0 0 0; } to { stroke-dasharray: 68 68 0 0; } }
-        @keyframes mrUpdFilled { to { fill: #fff; } }
+        .tracker-save.mr-upd-btn:hover { filter: brightness(1.1); }
+        .tracker-save.mr-upd-btn:active { transform: scale(.96); }
         @media (prefers-reduced-motion: reduce) {
-            .mr-upd-btn, .mr-upd-btn::before, .mr-upd-btn::after, .mr-upd-fold { transition: none; }
-            .mr-upd-points .mr-upd-point { animation: none; opacity: 0; }
-            .mr-upd-btn:hover svg.mr-upd-icon { animation: none; fill: #fff; }
+            .tracker-save.mr-upd-btn { transition: none; }
         }
         /* Keep the nav on one line (base .nav-links a is 18px/large padding). */
         .navbar .nav-links { min-width: auto; flex-wrap: nowrap; gap: 2px; }
@@ -601,26 +492,7 @@
                         <option value="{{ s }}" {% if st == s %}selected{% endif %}>{{ s|capitalize }}</option>
                         {% endfor %}
                     </select>
-                    <button type="submit" class="tracker-save mr-upd-btn">
-                        <span class="mr-upd-fold"></span>
-                        <span class="mr-upd-points">
-                            <i class="mr-upd-point"></i>
-                            <i class="mr-upd-point"></i>
-                            <i class="mr-upd-point"></i>
-                            <i class="mr-upd-point"></i>
-                            <i class="mr-upd-point"></i>
-                            <i class="mr-upd-point"></i>
-                            <i class="mr-upd-point"></i>
-                            <i class="mr-upd-point"></i>
-                            <i class="mr-upd-point"></i>
-                            <i class="mr-upd-point"></i>
-                        </span>
-                        <span class="mr-upd-inner">
-                            <svg class="mr-upd-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
-                                <polyline points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"></polyline>
-                            </svg>Update
-                        </span>
-                    </button>
+                    <button type="submit" class="tracker-save mr-upd-btn">Update</button>
                 </form>
                 <div class="resume-card-actions">
                     <button class="btn-dl mr-dl-btn" onclick="dlResume({{ r.id }}, this)" data-tooltip="PDF file">
