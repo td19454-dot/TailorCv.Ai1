@@ -181,10 +181,32 @@
         .prev-vibrant .mini-lines span:nth-child(2){width:80px;background:rgba(91,77,115,.5);}
         .pb-tpl-foot { padding: 14px 16px; display:flex; align-items:center; justify-content:space-between; }
         .pb-tpl-foot strong { font-size: .95rem; }
-        .pb-tpl-demo { font-size:.95rem; font-weight:700; margin-left:auto; margin-right:12px; white-space:nowrap;
-            padding:8px 16px; border-radius:8px; color:#fff; text-decoration:none;
-            background:linear-gradient(135deg,#2dd4bf,#0ea5e9); box-shadow:0 2px 10px rgba(14,165,233,.35); transition:transform .12s ease, box-shadow .12s ease; }
-        .pb-tpl-demo:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(14,165,233,.5); }
+        /* "View demo" — shiny 3D-tilt bevel button (Uiverse.io by AqFox),
+           recolored to this link's existing teal/sky-blue gradient. */
+        .pb-tpl-demo {
+            all: unset;
+            box-sizing: border-box;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto; margin-right: 12px; white-space: nowrap;
+            font-family: inherit;
+            font-size: .9rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: #0000;
+            background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat, linear-gradient(135deg, #2dd4bf, #0ea5e9);
+            text-shadow: calc(var(--_i,-1)* 0.08em) -.01em 0 #fff, calc(var(--_i,-1)*-0.08em) .01em 2px #0004;
+            transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
+            outline-offset: .1em;
+            transition: 0.3s;
+            box-shadow: 0 2px 10px rgba(14,165,233,.35);
+        }
+        .pb-tpl-demo:hover, .pb-tpl-demo:focus-visible { --_p: 0%; --_i: 1; }
+        .pb-tpl-demo:active { text-shadow: none; color: #fff; box-shadow: inset 0 0 9e9q #0005; transition: 0s; }
+        @media (prefers-reduced-motion: reduce) { .pb-tpl-demo { transition: none; } }
         .pb-tpl-foot .tick { width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(99,130,200,.4); display:flex;align-items:center;justify-content:center; }
         .pb-tpl.selected .tick { background:#8b5cf6;border-color:#8b5cf6; }
         .pb-tpl.selected .tick::after { content:"✓"; color:#fff; font-size:.8rem; }
@@ -333,16 +355,36 @@
         .pb-btn-next { box-shadow:0 12px 28px -12px rgba(124,58,237,.85); }
         .pb-btn-next:hover { transform:translateY(-2px); }
         .pb-btn-back:hover { border-color:rgba(139,92,246,.5); color:#c4b5fd; }
+        /* "Continue →" (step 1→2) — hard-shadow grow/shrink press effect
+           (Uiverse.io by sekaiking), scoped to this one button only since
+           .pb-btn-next is shared by several other wizard buttons. Keeps the
+           existing violet gradient/border instead of the recipe's white/black. */
+        #btn-to-2 {
+            border: 1px solid rgba(139,92,246,.6);
+            box-shadow: 0 0 0 0 rgba(76,29,149,.9);
+            transition: transform .2s ease-in-out, box-shadow .2s ease-in-out, filter .15s;
+        }
+        #btn-to-2:hover {
+            transform: translateY(-4px) translateX(-2px);
+            box-shadow: 3px 6px 0 0 rgba(76,29,149,.9);
+        }
+        #btn-to-2:active {
+            transform: translateY(2px) translateX(1px);
+            box-shadow: 0 0 0 0 rgba(76,29,149,.9);
+        }
+        @media (prefers-reduced-motion: reduce) { #btn-to-2 { transition: none; } }
         /* form sections */
         .pb-sec-title { border-top:1px solid rgba(99,130,200,.14); padding-top:20px; margin-top:28px; }
         .pb-card { border-radius:14px; }
         .pb-input:focus, .pb-textarea:focus, .pb-paste:focus { box-shadow:0 0 0 3px rgba(139,92,246,.18); }
         /* success */
         .pb-success .big { filter:drop-shadow(0 6px 18px rgba(139,92,246,.5)); }
+        /* Dark fallback so the fixed wave canvas never flashes white before it paints. */
+        html { background-color: #030014; }
     </style>
 </head>
 <body>
-{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
+<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;"></canvas>
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
@@ -1360,7 +1402,6 @@
     <script src="/static/auth_nav.js?v=16" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script src="/static/resume_store.js?v=1"></script>
-{% if not is_logged_in %}
 <script>
 (function(){
   const canvas = document.getElementById('wave-canvas');
@@ -1437,6 +1478,5 @@
   if (window.MutationObserver) new MutationObserver(armCards).observe(grid, { childList: true, subtree: true });
 })();
 </script>
-{% endif %}
 </body>
 </html>

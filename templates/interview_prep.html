@@ -155,22 +155,52 @@
         .iq-two-col .iq-textarea { flex: 1; min-height: 280px; margin-bottom: 0; }
         @media (max-width: 760px) { .iq-two-col { grid-template-columns: 1fr; } }
 
+        /* Skewed "cta" button with an animated triple-chevron arrow (adapted
+           from a Uiverse.io recipe by mobinkakei), reused site-wide — brand
+           blue base with a gold hard-shadow flip on hover. */
         .iq-btn {
             margin-top: 1.4rem;
             width: 100%;
-            padding: .9rem 1.5rem;
-            background: linear-gradient(135deg, #1a6aff, #0d4fcf);
+            padding: 15px 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a6aff;
             color: #fff;
             font-size: 1rem;
             font-weight: 700;
             border: none;
-            border-radius: 10px;
+            border-radius: 0;
             cursor: pointer;
-            transition: opacity .2s, transform .1s;
             letter-spacing: .02em;
+            box-shadow: 6px 6px 0 #000;
+            transform: skewX(-15deg);
+            transition: box-shadow .5s, background .3s, opacity .2s;
         }
-        .iq-btn:hover:not(:disabled) { opacity: .9; transform: translateY(-1px); }
-        .iq-btn:disabled { opacity: .5; cursor: not-allowed; }
+        .iq-btn:focus { outline: none; }
+        .iq-btn .iq-btn-text { display: inline-block; transform: skewX(15deg); }
+        .iq-btn .iq-btn-arrow {
+            display: inline-flex; width: 20px; margin-left: 14px;
+            position: relative; top: 1px; transition: margin-right .5s;
+            transform: skewX(15deg);
+        }
+        .iq-btn:hover:not(:disabled) {
+            background: #1a6aff;
+            box-shadow: 10px 10px 0 #fbc638;
+        }
+        .iq-btn:hover:not(:disabled) .iq-btn-arrow { margin-right: 26px; }
+        .iq-btn .iq-arr-one { transition: .4s; transform: translateX(-60%); }
+        .iq-btn .iq-arr-two { transition: .5s; transform: translateX(-30%); }
+        .iq-btn:hover:not(:disabled) .iq-arr-three { animation: iqArrColor 1s infinite .2s; }
+        .iq-btn:hover:not(:disabled) .iq-arr-one { transform: translateX(0%); animation: iqArrColor 1s infinite .6s; }
+        .iq-btn:hover:not(:disabled) .iq-arr-two { transform: translateX(0%); animation: iqArrColor 1s infinite .4s; }
+        @keyframes iqArrColor { 0% { fill: #fff; } 50% { fill: #fbc638; } 100% { fill: #fff; } }
+        .iq-btn:disabled {
+            opacity: .5; cursor: not-allowed; box-shadow: 6px 6px 0 rgba(0,0,0,.5);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .iq-btn, .iq-btn * { animation: none !important; transition: none !important; }
+        }
 
         /* LOADER */
         .iq-loader {
@@ -479,7 +509,7 @@
     </style>
 </head>
 <body>
-{% if not is_logged_in %}<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>{% endif %}
+<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;"></canvas>
 
     <!-- NAV -->
     {% include "_nav.html" %}
@@ -720,18 +750,282 @@
         body > *:not(.navbar):not(.site-footer) b {
             font-weight: 500 !important;
         }
+
+        /* "Step 1, Generate your questions here" — glassy 3D pill (Uiverse.io
+           by FColombati), recolored blue to match its previous background.
+           Non-interactive (informational label, not a link/button) — the
+           hover/active states still apply visually but nothing is clickable. */
+        .s1-glass-btn {
+            position: relative;
+            display: inline-block;
+            border-radius: 100em;
+            background-color: #0f2d63;
+            box-shadow: -0.15em -0.15em 0.15em -0.075em rgba(5,5,5,.25), 0.0375em 0.0375em 0.0675em 0 rgba(5,5,5,.1);
+        }
+        .s1-glass-btn::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            width: calc(100% + 0.3em);
+            height: calc(100% + 0.3em);
+            top: -0.15em; left: -0.15em;
+            border-radius: inherit;
+            background: linear-gradient(-135deg, rgba(5,5,5,.5), transparent 20%, transparent 100%);
+            filter: blur(0.0125em);
+            opacity: .25;
+            mix-blend-mode: multiply;
+        }
+        .s1-glass-outer {
+            position: relative;
+            display: block;
+            z-index: 1;
+            border-radius: inherit;
+            transition: box-shadow 300ms ease;
+            box-shadow: 0 0.05em 0.05em -0.01em rgba(5,5,5,1), 0 0.01em 0.01em -0.01em rgba(5,5,5,.5), 0.15em 0.3em 0.1em -0.01em rgba(5,5,5,.25);
+        }
+        .s1-glass-btn:hover .s1-glass-outer {
+            box-shadow: 0 0 0 0 rgba(5,5,5,1), 0 0 0 0 rgba(5,5,5,.5), 0 0 0 0 rgba(5,5,5,.25);
+        }
+        .s1-glass-inner {
+            position: relative;
+            display: block;
+            z-index: 1;
+            border-radius: inherit;
+            padding: 1.25em 1.5em;
+            background-image: linear-gradient(135deg, #2f6fe0, #0f3a9e);
+            transition: box-shadow 300ms ease, clip-path 250ms ease, background-image 250ms ease, transform 250ms ease;
+            overflow: clip;
+            clip-path: inset(0 0 0 0 round 100em);
+            box-shadow:
+                0 0 0 0 inset rgba(5,5,5,.1),
+                -0.05em -0.05em 0.05em 0 inset rgba(5,5,5,.25),
+                0 0 0 0 inset rgba(5,5,5,.1),
+                0 0 0.05em 0.2em inset rgba(255,255,255,.25),
+                0.025em 0.05em 0.1em 0 inset rgba(255,255,255,1),
+                0.12em 0.12em 0.12em inset rgba(255,255,255,.25),
+                -0.075em -0.25em 0.25em 0.1em inset rgba(5,5,5,.25);
+        }
+        .s1-glass-btn:hover .s1-glass-inner {
+            clip-path: inset(clamp(1px,0.0625em,2px) clamp(1px,0.0625em,2px) clamp(1px,0.0625em,2px) clamp(1px,0.0625em,2px) round 100em);
+            box-shadow:
+                0.1em 0.15em 0.05em 0 inset rgba(5,5,5,.75),
+                -0.025em -0.03em 0.05em 0.025em inset rgba(5,5,5,.5),
+                0.25em 0.25em 0.2em 0 inset rgba(5,5,5,.5),
+                0 0 0.05em 0.5em inset rgba(255,255,255,.15),
+                0 0 0 0 inset rgba(255,255,255,1),
+                0.12em 0.12em 0.12em inset rgba(255,255,255,.25),
+                -0.075em -0.12em 0.2em 0.1em inset rgba(5,5,5,.25);
+        }
+        .s1-glass-inner span {
+            position: relative;
+            z-index: 4;
+            font-family: inherit;
+            font-size: 15px;
+            letter-spacing: -0.02em;
+            font-weight: 600;
+            color: rgba(0,0,0,0);
+            background-image: linear-gradient(135deg, #ffffff, #cfe0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            transition: transform 250ms ease;
+            display: block;
+            text-shadow: rgba(0,0,0,.15) 0 0 0.1em;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .s1-glass-btn:hover .s1-glass-inner span { transform: scale(0.975); }
+        .s1-glass-btn:active .s1-glass-inner { transform: scale(0.975); }
+        @media (prefers-reduced-motion: reduce) {
+            .s1-glass-btn, .s1-glass-btn * { transition: none !important; }
+        }
+
+        /* "Step 2, Practice with Zara" — plane-flies-off "send" button
+           (Uiverse.io by marcelodolza), recolored to this button's existing
+           violet gradient. Classes prefixed ipl-launch- to stay scoped to
+           this page/button only. */
+        .ipl-launch-btn {
+            --primary: #c4b5fd;
+            --neutral-1: #7c3aed;
+            --neutral-2: #4c1d95;
+            --radius: 12px;
+            all: unset;
+            box-sizing: border-box;
+            cursor: pointer;
+            border-radius: var(--radius);
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0,0,0,.3);
+            border: none;
+            box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 6px 18px rgba(124,58,237,.35);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all .3s ease;
+            padding: 12px 26px;
+            min-height: 46px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .ipl-launch-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 10px 26px rgba(124,58,237,.5);
+        }
+        .ipl-launch-btn:active { transform: scale(1); }
+        .ipl-launch-btn::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius);
+            border: 2px solid transparent;
+            background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+                linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+            z-index: 0;
+            transition: all .4s ease;
+        }
+        .ipl-launch-btn:hover::after { box-shadow: inset 0 -1px 3px 0 rgba(255,255,255,1); }
+        .ipl-launch-btn::before {
+            content: "";
+            inset: 5px 5px 5px 5px;
+            position: absolute;
+            background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+            border-radius: 22px;
+            filter: blur(0.5px);
+            z-index: 2;
+        }
+        .ipl-launch-state p { display: flex; align-items: center; justify-content: center; }
+        .ipl-launch-icon {
+            position: absolute; left: 0; top: 0; bottom: 0; margin: auto;
+            transform: scale(1);
+            transition: all .3s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .ipl-launch-icon svg { overflow: visible; width: 16px; height: 16px; }
+        .ipl-launch-outline {
+            position: absolute; border-radius: inherit; overflow: hidden; z-index: 1;
+            opacity: 0; transition: opacity .4s ease; inset: -2px -3px;
+        }
+        .ipl-launch-outline::before {
+            content: ""; position: absolute; inset: -100%;
+            background: conic-gradient(from 180deg, transparent 60%, white 80%, transparent 100%);
+            animation: ipl-launch-spin 2s linear infinite;
+            animation-play-state: paused;
+        }
+        .ipl-launch-btn:hover .ipl-launch-outline { opacity: 1; }
+        .ipl-launch-btn:hover .ipl-launch-outline::before { animation-play-state: running; }
+        .ipl-launch-state p span {
+            display: block; opacity: 0;
+            animation: ipl-launch-slideDown .8s ease forwards calc(var(--i) * .025s);
+        }
+        .ipl-launch-btn:hover p span {
+            opacity: 1;
+            animation: ipl-launch-wave .5s ease forwards calc(var(--i) * .015s);
+        }
+        .ipl-launch-btn:focus p span {
+            opacity: 1;
+            animation: ipl-launch-disapear .6s ease forwards calc(var(--i) * .02s);
+        }
+        .ipl-launch-state--default .ipl-launch-icon svg { animation: ipl-launch-land .6s ease forwards; }
+        .ipl-launch-btn:hover .ipl-launch-state--default .ipl-launch-icon { transform: rotate(45deg); }
+        .ipl-launch-btn:focus .ipl-launch-state--default svg { animation: ipl-launch-takeOff .8s linear forwards; }
+        .ipl-launch-btn:focus .ipl-launch-state--default .ipl-launch-icon { transform: rotate(0); }
+        .ipl-launch-state {
+            padding-left: 22px; z-index: 2; display: flex; position: relative;
+        }
+        .ipl-launch-state--sent { display: none; }
+        .ipl-launch-state--sent svg { transform: scale(1); margin-right: 6px; }
+        .ipl-launch-btn:focus .ipl-launch-state--default { position: absolute; }
+        .ipl-launch-btn:focus .ipl-launch-state--sent { display: flex; }
+        .ipl-launch-btn:focus .ipl-launch-state--sent span {
+            opacity: 0;
+            animation: ipl-launch-slideDown .8s ease forwards calc(var(--i) * .15s);
+        }
+        .ipl-launch-btn:focus .ipl-launch-state--sent .ipl-launch-icon svg {
+            opacity: 0;
+            animation: ipl-launch-appear 1.2s ease forwards .8s;
+        }
+        @keyframes ipl-launch-spin { to { transform: rotate(360deg); } }
+        @keyframes ipl-launch-wave {
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: var(--primary); }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes ipl-launch-slideDown {
+            0% { opacity: 0; transform: translateY(-14px) translateX(4px) rotate(-90deg); color: #fff; filter: blur(4px); }
+            30% { opacity: 1; transform: translateY(3px) translateX(0) rotate(0); filter: blur(0); color: #fff; }
+            50% { opacity: 1; transform: translateY(-2px) translateX(0) rotate(0); color: #fff; }
+            100% { opacity: 1; transform: translateY(0) translateX(0) rotate(0); color: #fff; }
+        }
+        @keyframes ipl-launch-disapear {
+            from { opacity: 1; }
+            to { opacity: 0; transform: translateX(4px) translateY(14px); color: var(--primary); filter: blur(4px); }
+        }
+        @keyframes ipl-launch-takeOff {
+            0% { opacity: 1; }
+            60% { opacity: 1; transform: translateX(50px) rotate(45deg) scale(1.6); }
+            100% { opacity: 0; transform: translateX(110px) rotate(45deg) scale(0); }
+        }
+        @keyframes ipl-launch-land {
+            0% { transform: translateX(-40px) translateY(20px) rotate(-50deg) scale(1.6); opacity: 0; filter: blur(2px); }
+            100% { transform: translateX(0) translateY(0) rotate(0); opacity: 1; filter: blur(0); }
+        }
+        @keyframes ipl-launch-appear {
+            0% { opacity: 0; transform: scale(3) rotate(-40deg); color: var(--primary); filter: blur(3px); }
+            30% { opacity: 1; transform: scale(.6); filter: blur(1px); }
+            50% { opacity: 1; transform: scale(1.2); filter: blur(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ipl-launch-btn, .ipl-launch-btn *, .ipl-launch-outline::before { animation: none !important; transition: none !important; }
+            .ipl-launch-state p span { opacity: 1 !important; }
+        }
     </style>
 
     <!-- HERO -->
     <div class="iq-hero">
         <h1>Know What They'll <span>Ask You</span> Before You Walk In</h1>
         <div style="display:flex;align-items:center;gap:14px;margin-top:20px;flex-wrap:wrap;justify-content:center;">
-            <span style="display:inline-flex;align-items:center;background:linear-gradient(135deg,#3392ff,#4a6aff);border:none;border-radius:12px;padding:12px 22px;font-size:14px;color:#fff;font-weight:600 !important;box-shadow:0 6px 18px rgba(51,146,255,0.35);">
-                Step 1, Generate your questions here
+            <span class="s1-glass-btn">
+                <span class="s1-glass-outer">
+                    <span class="s1-glass-inner">
+                        <span>Step 1, Generate your questions here</span>
+                    </span>
+                </span>
             </span>
             <span style="color:#5a7aa0;font-size:16px;">→</span>
-            <a href="/mock-interview" style="display:inline-flex;align-items:center;background:linear-gradient(135deg,#7c3aed,#9b6cff);border:none;border-radius:12px;padding:12px 22px;font-size:14px;color:#fff;font-weight:600 !important;text-decoration:none;box-shadow:0 6px 18px rgba(124,58,237,0.35);transition:transform .18s ease,box-shadow .18s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 26px rgba(124,58,237,0.5)';" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 18px rgba(124,58,237,0.35)';">
-                Step 2, Practice live with Zara →
+            <a href="/mock-interview" class="ipl-launch-btn">
+                <div class="ipl-launch-outline"></div>
+                <div class="ipl-launch-state ipl-launch-state--default">
+                    <div class="ipl-launch-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g style="filter:url(#ipl-launch-shadow)">
+                                <path d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z" fill="currentColor"></path>
+                                <path d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z" fill="currentColor"></path>
+                            </g>
+                            <defs>
+                                <filter id="ipl-launch-shadow">
+                                    <feDropShadow dx="0" dy="1" stdDeviation="0.6" flood-opacity="0.5"></feDropShadow>
+                                </filter>
+                            </defs>
+                        </svg>
+                    </div>
+                    <p>
+                        <span style="--i:0">S</span><span style="--i:1">t</span><span style="--i:2">e</span><span style="--i:3">p</span><span style="--i:4">&nbsp;</span><span style="--i:5">2</span><span style="--i:6">,</span><span style="--i:7">&nbsp;</span><span style="--i:8">P</span><span style="--i:9">r</span><span style="--i:10">a</span><span style="--i:11">c</span><span style="--i:12">t</span><span style="--i:13">i</span><span style="--i:14">c</span><span style="--i:15">e</span><span style="--i:16">&nbsp;</span><span style="--i:17">w</span><span style="--i:18">i</span><span style="--i:19">t</span><span style="--i:20">h</span><span style="--i:21">&nbsp;</span><span style="--i:22">Z</span><span style="--i:23">a</span><span style="--i:24">r</span><span style="--i:25">a</span>
+                    </p>
+                </div>
+                <div class="ipl-launch-state ipl-launch-state--sent">
+                    <div class="ipl-launch-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="1em" width="1em">
+                            <g style="filter:url(#ipl-launch-shadow)">
+                                <path fill="currentColor" d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"></path>
+                                <path fill="currentColor" d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"></path>
+                            </g>
+                        </svg>
+                    </div>
+                    <p>
+                        <span style="--i:8">G</span><span style="--i:9">o</span><span style="--i:10">i</span><span style="--i:11">n</span><span style="--i:12">g</span>
+                    </p>
+                </div>
             </a>
         </div>
     </div>
@@ -754,7 +1048,18 @@
             </div>
         </div>
 
-        <button class="iq-btn" id="generate-btn" disabled>Generate My Interview Questions</button>
+        <button class="iq-btn" id="generate-btn" disabled>
+            <span class="iq-btn-text">Generate My Interview Questions</span>
+            <span class="iq-btn-arrow" aria-hidden="true">
+                <svg width="24" height="16" viewBox="0 0 66 43" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="none" fill-rule="evenodd">
+                        <path class="iq-arr-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                        <path class="iq-arr-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#FFFFFF"></path>
+                        <path class="iq-arr-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#FFFFFF"></path>
+                    </g>
+                </svg>
+            </span>
+        </button>
     </div>
 
     <!-- LOADER -->
@@ -1159,7 +1464,6 @@
     </script>
     <script src="/static/resume_store.js?v=1"></script>
     {% endif %}
-{% if not is_logged_in %}
 <script>
 (function(){
   const canvas = document.getElementById('wave-canvas');
@@ -1247,6 +1551,5 @@
   }
 })();
 </script>
-{% endif %}
 </body>
 </html>
