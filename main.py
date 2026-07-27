@@ -4257,10 +4257,10 @@ Resume data:
 # ---------------------------------------------------------------------------
 AUTHOR_PROFILE = {
     "type": "Organization",
-    "name": "theTailorCV Team",
+    "name": "TailorCV Team",
     "title": "Resume & ATS Specialists",
     "bio": (
-        "The theTailorCV team builds an AI-powered resume optimizer and free ATS "
+        "The TailorCV team builds an AI-powered resume optimizer and free ATS "
         "score checker used by job seekers worldwide. Our guides are written and "
         "reviewed by specialists in resume writing, ATS optimization, and job search."
     ),
@@ -4279,10 +4279,10 @@ BLOG_AUTHORS = [
         "type": "Person",
         "name": "Trisha Debnath",
         "initials": "TD",
-        "title": "Co-founder, theTailorCV",
+        "title": "Co-founder, TailorCV",
         "image": "/static/user_imges/Trisha.png",
         "bio": (
-            "Trisha is a co-founder of theTailorCV. She writes about resumes, ATS "
+            "Trisha is a co-founder of TailorCV. She writes about resumes, ATS "
             "optimization, and modern job search, turning what actually works for "
             "job seekers into practical, step-by-step guides."
         ),
@@ -4294,10 +4294,10 @@ BLOG_AUTHORS = [
         "type": "Person",
         "name": "Shubham Sarkar",
         "initials": "SS",
-        "title": "Co-founder, theTailorCV",
+        "title": "Co-founder, TailorCV",
         "image": "/static/user_imges/Shubham.jpg",
         "bio": (
-            "Shubham is a co-founder of theTailorCV. He focuses on ATS scoring, "
+            "Shubham is a co-founder of TailorCV. He focuses on ATS scoring, "
             "resume-to-job matching, and the product behind the guides, so the advice "
             "here reflects how hiring systems really read a resume."
         ),
@@ -4335,7 +4335,7 @@ def build_blogposting_schema(post, canonical_url: str, author_profile: dict | No
         "author": author,
         "publisher": {
             "@type": "Organization",
-            "name": "theTailorCV",
+            "name": "TailorCV",
             "url": SITE_URL,
             "logo": {"@type": "ImageObject", "url": build_absolute_url("/static/logo.png")},
         },
@@ -4418,7 +4418,7 @@ def build_software_app_schema() -> str:
     schema = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "theTailorCV ATS Score Checker & Resume Optimizer",
+        "name": "TailorCV ATS Score Checker & Resume Optimizer",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "url": build_absolute_url("/solutions"),
@@ -4428,7 +4428,7 @@ def build_software_app_schema() -> str:
             "keywords, and optimization tips."
         ),
         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-        "publisher": {"@type": "Organization", "name": "theTailorCV", "url": SITE_URL},
+        "publisher": {"@type": "Organization", "name": "TailorCV", "url": SITE_URL},
     }
     return json.dumps(schema, separators=(",", ":"))
 
@@ -4449,7 +4449,7 @@ def build_page_breadcrumb(name: str, path: str) -> str:
 HOMEPAGE_FAQS = [
     (
         "Is the ATS score checker free?",
-        "Yes. theTailorCV's ATS score checker is completely free. Upload your "
+        "Yes. TailorCV's ATS score checker is completely free. Upload your "
         "resume and paste a job description to get an instant ATS score, missing "
         "keywords, and optimization tips at no cost.",
     ),
@@ -4463,12 +4463,12 @@ HOMEPAGE_FAQS = [
         "What is an ATS-friendly resume?",
         "An ATS-friendly resume uses a clean, single-column layout, standard section "
         "headings, and keywords from the job description so applicant tracking "
-        "systems can parse it correctly. theTailorCV's templates, including Jake's "
+        "systems can parse it correctly. TailorCV's templates, including Jake's "
         "Resume template, are built to be ATS-friendly.",
     ),
     (
         "Can I practice mock interviews online?",
-        "Yes. theTailorCV includes an AI mock interview tool that asks role-specific "
+        "Yes. TailorCV includes an AI mock interview tool that asks role-specific "
         "technical and behavioral questions, then gives real-time feedback and a "
         "scorecard so you can practice before your real interview.",
     ),
@@ -4602,19 +4602,19 @@ _COMPARISON_PAGES = {
         "competitor": "Jobscan",
         "audience": "students, freshers & first-time job seekers",
         "title": "Best Jobscan Alternative (2026) — Free ATS Score & Resume Optimizer",
-        "description": "Looking for a Jobscan alternative? TheTailorCV gives you a free ATS score, AI resume tailoring, a built-in portfolio website builder, and affordable pricing.",
+        "description": "Looking for a Jobscan alternative? TailorCV gives you a free ATS score, AI resume tailoring, a built-in portfolio website builder, and affordable pricing.",
         "hero": "Get an instant ATS score, tailor your resume to any job description with AI, and even publish a live portfolio website — at a fraction of Jobscan's price.",
         "intro": [
             "Jobscan built its reputation on one thing and did it well: comparing your resume against a job description and giving you a match rate. If that single number is all you want, it is a capable tool and we are not going to pretend otherwise.",
             "The problem most students run into is what happens next. You get a score, you learn you are missing eight keywords, and then you still have to rewrite the resume yourself, write the cover letter yourself, and prepare for the interview yourself. The score tells you what is wrong; it does not fix it.",
-            "TheTailorCV is built around the fix. The same ATS match score is free and unlimited to start, but the AI then rewrites your bullets to carry those keywords honestly, drafts a matching cover letter, runs mock interviews for the role, and can publish your resume as a live portfolio site. It is priced in rupees, for people who are job hunting rather than staffing a recruitment desk.",
+            "TailorCV is built around the fix. The same ATS match score is free and unlimited to start, but the AI then rewrites your bullets to carry those keywords honestly, drafts a matching cover letter, runs mock interviews for the role, and can publish your resume as a live portfolio site. It is priced in rupees, for people who are job hunting rather than staffing a recruitment desk.",
         ],
         "props": [
             {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Check how your resume scores against any job description before you pay anything."},
             {"icon": "globe", "title": "Portfolio website builder", "link": "/portfolio", "text": "Turn your resume into a live portfolio site — something Jobscan doesn't offer."},
             {"icon": "price", "title": "Student friendly pricing", "link": "/pricing", "text": "Affordable plans built for freshers and students, not enterprise budgets."},
             {"icon": "ai", "title": "AI tailoring and interviews", "link": "/solutions", "text": "Rewrite bullets, match keywords, and practice AI mock interviews in one place."},
-            {"icon": "doc", "title": "It rewrites, not just reports", "link": "/optimize", "text": "A score tells you what's missing. TheTailorCV rewrites the bullets to fix it."},
+            {"icon": "doc", "title": "It rewrites, not just reports", "link": "/optimize", "text": "A score tells you what's missing. TailorCV rewrites the bullets to fix it."},
             {"icon": "chrome", "title": "Works on the job board", "link": "/extension", "text": "Tailor your resume on LinkedIn, Indeed or Naukri without leaving the posting."},
         ],
         "rows": [
@@ -4647,14 +4647,14 @@ _COMPARISON_PAGES = {
             "Your budget is in USD and price isn't a deciding factor.",
         ],
         "faq": [
-            {"q": "Is TheTailorCV a good Jobscan alternative?", "a": "Yes. TheTailorCV offers a free ATS score, AI resume tailoring to a job description, a cover letter generator, AI mock interviews, and a portfolio website builder — at a more affordable price point than Jobscan."},
-            {"q": "Is TheTailorCV free?", "a": "You can check your ATS score and build a portfolio for free. Pro unlocks unlimited optimizations, cover letters, mock interviews and a custom live site."},
-            {"q": "Does TheTailorCV check my resume against the ATS like Jobscan?", "a": "Yes — paste your resume and a job description and you get a match score plus the missing keywords and fixes to raise it."},
-            {"q": "Is TheTailorCV cheaper than Jobscan?", "a": "Yes. TheTailorCV is built to be affordable for students and freshers, with plans priced well below typical USD-based resume tools — and you can start for free."},
-            {"q": "Can TheTailorCV build a portfolio website?", "a": "Yes. TheTailorCV turns your resume into a live, shareable portfolio website in minutes — no coding — which Jobscan does not offer."},
-            {"q": "Does TheTailorCV write cover letters?", "a": "Yes. It generates personalized cover letters matched to each job description, so every application is tailored without starting from scratch."},
-            {"q": "Is TheTailorCV good for freshers and students?", "a": "Absolutely. It's designed for first-time job seekers — get an ATS score, tailor your resume, add projects, and build a portfolio even with little or no experience."},
-            {"q": "Can I practice interviews on TheTailorCV?", "a": "Yes. You get AI mock interviews with role-specific questions and instant feedback to help you prepare."},
+            {"q": "Is TailorCV a good Jobscan alternative?", "a": "Yes. TailorCV offers a free ATS score, AI resume tailoring to a job description, a cover letter generator, AI mock interviews, and a portfolio website builder — at a more affordable price point than Jobscan."},
+            {"q": "Is TailorCV free?", "a": "You can check your ATS score and build a portfolio for free. Pro unlocks unlimited optimizations, cover letters, mock interviews and a custom live site."},
+            {"q": "Does TailorCV check my resume against the ATS like Jobscan?", "a": "Yes — paste your resume and a job description and you get a match score plus the missing keywords and fixes to raise it."},
+            {"q": "Is TailorCV cheaper than Jobscan?", "a": "Yes. TailorCV is built to be affordable for students and freshers, with plans priced well below typical USD-based resume tools — and you can start for free."},
+            {"q": "Can TailorCV build a portfolio website?", "a": "Yes. TailorCV turns your resume into a live, shareable portfolio website in minutes — no coding — which Jobscan does not offer."},
+            {"q": "Does TailorCV write cover letters?", "a": "Yes. It generates personalized cover letters matched to each job description, so every application is tailored without starting from scratch."},
+            {"q": "Is TailorCV good for freshers and students?", "a": "Absolutely. It's designed for first-time job seekers — get an ATS score, tailor your resume, add projects, and build a portfolio even with little or no experience."},
+            {"q": "Can I practice interviews on TailorCV?", "a": "Yes. You get AI mock interviews with role-specific questions and instant feedback to help you prepare."},
         ],
     },
     "careerflow-alternative": {
@@ -4663,11 +4663,11 @@ _COMPARISON_PAGES = {
         "audience": "job seekers who care more about offers than profiles",
         "title": "Best Careerflow Alternative (2026) — ATS Resume Optimizer & Portfolio Builder",
         "description": "A Careerflow alternative focused on getting your resume past the ATS: free ATS score, AI resume tailoring, cover letters, mock interviews, and a portfolio website builder.",
-        "hero": "Go beyond LinkedIn tweaks. TheTailorCV scores your resume against the ATS, tailors it to each job with AI, and turns it into a live portfolio website.",
+        "hero": "Go beyond LinkedIn tweaks. TailorCV scores your resume against the ATS, tailors it to each job with AI, and turns it into a live portfolio website.",
         "intro": [
             "Careerflow's centre of gravity is your LinkedIn presence — profile optimization, personal branding, and a spread of job-search utilities around it. If your problem is that recruiters aren't finding you, that focus makes sense.",
             "But most rejections don't happen because your LinkedIn headline was weak. They happen because your resume was filtered out by software before a person ever opened it. That's a different problem, and it needs a tool pointed at the resume rather than the profile.",
-            "TheTailorCV is pointed at exactly that. Paste a job description, get a match score, let the AI rewrite your bullets to carry the keywords the posting actually asks for, generate the matching cover letter, then practise the interview for that role. Your resume can also become a live portfolio site — a link you own, rather than a profile on someone else's platform.",
+            "TailorCV is pointed at exactly that. Paste a job description, get a match score, let the AI rewrite your bullets to carry the keywords the posting actually asks for, generate the matching cover letter, then practise the interview for that role. Your resume can also become a live portfolio site — a link you own, rather than a profile on someone else's platform.",
         ],
         "props": [
             {"icon": "target", "title": "ATS first", "link": "/solutions", "text": "Built around beating applicant tracking systems, not just polishing your LinkedIn."},
@@ -4690,7 +4690,7 @@ _COMPARISON_PAGES = {
             {"feature": "Focus", "us": "ATS + resume + portfolio", "them": "LinkedIn optimization"},
         ],
         "them_good": [
-            "Genuinely strong LinkedIn profile optimization — the part of the job hunt TheTailorCV deliberately doesn't try to own.",
+            "Genuinely strong LinkedIn profile optimization — the part of the job hunt TailorCV deliberately doesn't try to own.",
             "A broad spread of free utilities and a large community around them.",
             "Personal branding tooling, if being discovered by recruiters is your bottleneck.",
         ],
@@ -4706,14 +4706,14 @@ _COMPARISON_PAGES = {
             "You're already happy with how your resume performs.",
         ],
         "faq": [
-            {"q": "Is TheTailorCV a good Careerflow alternative?", "a": "Yes, especially if your priority is passing the ATS. TheTailorCV scores your resume against a job description, tailors it with AI, writes cover letters, runs mock interviews, and builds a portfolio website."},
-            {"q": "What does TheTailorCV do that Careerflow doesn't?", "a": "TheTailorCV includes a portfolio website builder that turns your resume into a shareable live site, plus a dedicated ATS match score for every job description."},
+            {"q": "Is TailorCV a good Careerflow alternative?", "a": "Yes, especially if your priority is passing the ATS. TailorCV scores your resume against a job description, tailors it with AI, writes cover letters, runs mock interviews, and builds a portfolio website."},
+            {"q": "What does TailorCV do that Careerflow doesn't?", "a": "TailorCV includes a portfolio website builder that turns your resume into a shareable live site, plus a dedicated ATS match score for every job description."},
             {"q": "Is there a free plan?", "a": "Yes — get a free ATS score and build a portfolio for free, then upgrade to Pro for unlimited use."},
-            {"q": "Does TheTailorCV have an ATS score checker?", "a": "Yes. Paste your resume and a job description and you get a match score with the missing keywords and concrete fixes — the core focus of TheTailorCV."},
-            {"q": "Can I build a portfolio website with TheTailorCV?", "a": "Yes. Turn your resume into a live, shareable portfolio site in minutes, with no coding required."},
-            {"q": "Is TheTailorCV good for freshers and students?", "a": "Yes — it's designed for first-time job seekers, with affordable pricing and tools to present projects and skills even without much experience."},
-            {"q": "How much does TheTailorCV cost?", "a": "You can start for free. Pro plans are affordable and unlock unlimited optimizations, cover letters, mock interviews and a custom live portfolio site."},
-            {"q": "Can I practice mock interviews on TheTailorCV?", "a": "Yes. Practice role-specific AI mock interviews and get instant feedback to improve before the real thing."},
+            {"q": "Does TailorCV have an ATS score checker?", "a": "Yes. Paste your resume and a job description and you get a match score with the missing keywords and concrete fixes — the core focus of TailorCV."},
+            {"q": "Can I build a portfolio website with TailorCV?", "a": "Yes. Turn your resume into a live, shareable portfolio site in minutes, with no coding required."},
+            {"q": "Is TailorCV good for freshers and students?", "a": "Yes — it's designed for first-time job seekers, with affordable pricing and tools to present projects and skills even without much experience."},
+            {"q": "How much does TailorCV cost?", "a": "You can start for free. Pro plans are affordable and unlock unlimited optimizations, cover letters, mock interviews and a custom live portfolio site."},
+            {"q": "Can I practice mock interviews on TailorCV?", "a": "Yes. Practice role-specific AI mock interviews and get instant feedback to improve before the real thing."},
         ],
     },
     "resume-worded-alternative": {
@@ -4725,7 +4725,7 @@ _COMPARISON_PAGES = {
         "intro": [
             "Resume Worded is good at what it set out to do: read your resume line by line and tell you what's weak. Bullets that don't quantify anything, passive phrasing, missing impact — it flags them clearly, and the feedback is often fair.",
             "The catch is that the feedback is largely generic. It grades your resume as a document, not against the job you're applying to tomorrow. Two very different postings can want very different things from the same experience, and line-by-line advice can't tell you which one you're currently failing.",
-            "TheTailorCV starts from the job description. Paste your resume and the posting, and you get a match score for that specific role, the exact keywords you're missing, and — the part that matters — an AI rewrite that works them into your bullets without inventing experience you don't have. Then the cover letter, the interview practice, and a portfolio site if you want one.",
+            "TailorCV starts from the job description. Paste your resume and the posting, and you get a match score for that specific role, the exact keywords you're missing, and — the part that matters — an AI rewrite that works them into your bullets without inventing experience you don't have. Then the cover letter, the interview practice, and a portfolio site if you want one.",
         ],
         "props": [
             {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Check your resume against a real job description before you pay anything."},
@@ -4764,13 +4764,13 @@ _COMPARISON_PAGES = {
             "A LinkedIn profile review is the main thing you're after.",
         ],
         "faq": [
-            {"q": "Is TheTailorCV a good Resume Worded alternative?", "a": "Yes. TheTailorCV gives you a free ATS score, tailors your whole resume to a job description with AI, writes cover letters, runs mock interviews, and builds a portfolio site — broader than line-by-line scoring."},
-            {"q": "Does TheTailorCV score my resume like Resume Worded?", "a": "Yes — paste your resume and a job description and you get a match score plus the missing keywords and fixes to raise it. The difference is that the score is against a specific job, not a general grade."},
+            {"q": "Is TailorCV a good Resume Worded alternative?", "a": "Yes. TailorCV gives you a free ATS score, tailors your whole resume to a job description with AI, writes cover letters, runs mock interviews, and builds a portfolio site — broader than line-by-line scoring."},
+            {"q": "Does TailorCV score my resume like Resume Worded?", "a": "Yes — paste your resume and a job description and you get a match score plus the missing keywords and fixes to raise it. The difference is that the score is against a specific job, not a general grade."},
             {"q": "Is it free?", "a": "You can check your ATS score and build a portfolio for free; Pro unlocks unlimited optimizations, cover letters and mock interviews."},
-            {"q": "What does TheTailorCV add over Resume Worded?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job — not just scoring suggestions."},
-            {"q": "Does TheTailorCV rewrite my resume, or just tell me what's wrong?", "a": "It rewrites. The AI reworks your bullets so they carry the keywords and phrasing the job description asks for, while keeping every claim grounded in what you actually did — it will not invent experience for you."},
+            {"q": "What does TailorCV add over Resume Worded?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job — not just scoring suggestions."},
+            {"q": "Does TailorCV rewrite my resume, or just tell me what's wrong?", "a": "It rewrites. The AI reworks your bullets so they carry the keywords and phrasing the job description asks for, while keeping every claim grounded in what you actually did — it will not invent experience for you."},
             {"q": "Will the AI make up experience I don't have?", "a": "No. The tailoring is explicitly constrained to your real history: it rephrases and re-emphasises what's already on your resume to match the role, rather than fabricating projects, employers or skills."},
-            {"q": "Can I use TheTailorCV without any work experience?", "a": "Yes. It's built with students and freshers in mind — it works from projects, coursework, internships and volunteering, and the portfolio builder helps you show work when your resume is still short."},
+            {"q": "Can I use TailorCV without any work experience?", "a": "Yes. It's built with students and freshers in mind — it works from projects, coursework, internships and volunteering, and the portfolio builder helps you show work when your resume is still short."},
             {"q": "Do I have to re-tailor for every job?", "a": "It takes about a minute per job, and it's the whole point — a resume tuned to one posting will not score the same against a different one. Each tailored version is saved to your Job Tracker so you always know what you sent where."},
         ],
     },
@@ -4783,8 +4783,8 @@ _COMPARISON_PAGES = {
         "hero": "Tailor your resume to each job, beat the ATS, practice interviews, and publish a portfolio site — affordable and built for first-time job seekers.",
         "intro": [
             "Teal is a well-built product with a popular job tracker. But its tracker is a filing cabinet: you find a job, you click save, and you get a link and a status column. The work of actually applying still happens somewhere else, and the tracker never knows how it went.",
-            "TheTailorCV's tracker fills itself in. Tailor your resume to a posting — from the job board itself, via the Chrome extension — and the role, the company, your ATS match score and the exact tailored PDF you sent are all recorded, automatically, as a byproduct of doing the work. You're not maintaining a list; the list maintains itself.",
-            "That difference matters more than it sounds. Six weeks into a search, Teal can tell you that you applied to forty jobs. TheTailorCV can tell you which resume you sent to each one, what it scored, and let you re-download it before the interview. On top of that you get cover letters, mock interviews for the role, and a live portfolio site — none of which Teal does.",
+            "TailorCV's tracker fills itself in. Tailor your resume to a posting — from the job board itself, via the Chrome extension — and the role, the company, your ATS match score and the exact tailored PDF you sent are all recorded, automatically, as a byproduct of doing the work. You're not maintaining a list; the list maintains itself.",
+            "That difference matters more than it sounds. Six weeks into a search, Teal can tell you that you applied to forty jobs. TailorCV can tell you which resume you sent to each one, what it scored, and let you re-download it before the interview. On top of that you get cover letters, mock interviews for the role, and a live portfolio site — none of which Teal does.",
         ],
         "props": [
             {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "Instant match score against any job description, free."},
@@ -4827,14 +4827,14 @@ _COMPARISON_PAGES = {
             "You're already confident your resume performs well.",
         ],
         "faq": [
-            {"q": "Is TheTailorCV a good Teal alternative?", "a": "Yes, especially for ATS-first job seekers. TheTailorCV scores and rewrites your resume for each job, writes cover letters, runs mock interviews, and builds a portfolio website."},
-            {"q": "What does TheTailorCV offer that Teal doesn't?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job description rather than keyword matching alone."},
-            {"q": "Is TheTailorCV cheaper than Teal?", "a": "Yes — it's priced affordably for students and freshers, and you can start for free."},
+            {"q": "Is TailorCV a good Teal alternative?", "a": "Yes, especially for ATS-first job seekers. TailorCV scores and rewrites your resume for each job, writes cover letters, runs mock interviews, and builds a portfolio website."},
+            {"q": "What does TailorCV offer that Teal doesn't?", "a": "A portfolio website builder and AI mock interviews, plus full AI rewriting tailored to each job description rather than keyword matching alone."},
+            {"q": "Is TailorCV cheaper than Teal?", "a": "Yes — it's priced affordably for students and freshers, and you can start for free."},
             {"q": "Does it work for freshers?", "a": "Yes — it's built for first-time job seekers, helping you present projects and skills even with little experience."},
-            {"q": "Does TheTailorCV have a job tracker like Teal?", "a": "Yes. Every resume you tailor is saved to your Job Tracker automatically, along with its ATS score and the job it was written for, so you always know which version you sent where."},
-            {"q": "Is Teal better than TheTailorCV?", "a": "For tracking a large job search, Teal's tracker is excellent and we'd say so plainly. For getting the resume itself past the ATS — scoring it against a posting, rewriting the bullets, and preparing for the interview — that's what TheTailorCV is built to do."},
+            {"q": "Does TailorCV have a job tracker like Teal?", "a": "Yes. Every resume you tailor is saved to your Job Tracker automatically, along with its ATS score and the job it was written for, so you always know which version you sent where."},
+            {"q": "Is Teal better than TailorCV?", "a": "For tracking a large job search, Teal's tracker is excellent and we'd say so plainly. For getting the resume itself past the ATS — scoring it against a posting, rewriting the bullets, and preparing for the interview — that's what TailorCV is built to do."},
             {"q": "Can I use both?", "a": "Yes, and some people do — track in one, tailor in the other. Most find it simpler to keep the tailored resume and the job record in the same place, which is why the Job Tracker exists."},
-            {"q": "Does TheTailorCV work on LinkedIn like Teal's extension?", "a": "Yes. The Chrome extension reads the job description straight from the posting on LinkedIn, Indeed, Naukri, Greenhouse, Workday and more, then scores and tailors your resume without leaving the page."},
+            {"q": "Does TailorCV work on LinkedIn like Teal's extension?", "a": "Yes. The Chrome extension reads the job description straight from the posting on LinkedIn, Indeed, Naukri, Greenhouse, Workday and more, then scores and tailors your resume without leaving the page."},
         ],
     },
     "rezi-alternative": {
@@ -4846,7 +4846,7 @@ _COMPARISON_PAGES = {
         "intro": [
             "Rezi is a solid AI resume builder. If you're starting from a blank page, its templates and guided writing get you to a clean, ATS-safe document quickly, and the output looks the part.",
             "But most people aren't starting from nothing. They have a resume already — it's just not getting replies. The question isn't 'how do I build a resume', it's 'why is this one being rejected, and what exactly do I change for this job'. A builder doesn't answer that.",
-            "TheTailorCV starts from the resume you already have. Upload it, paste the posting, and you get a match score for that role, the keywords you're missing, and an AI rewrite that works them in without inventing anything. Then the cover letter, mock interviews, and a live portfolio site — and every version saved to your Job Tracker with the job it was written for.",
+            "TailorCV starts from the resume you already have. Upload it, paste the posting, and you get a match score for that role, the keywords you're missing, and an AI rewrite that works them in without inventing anything. Then the cover letter, mock interviews, and a live portfolio site — and every version saved to your Job Tracker with the job it was written for.",
         ],
         "props": [
             {"icon": "target", "title": "Free ATS score", "link": "/ats-analysis", "text": "See your match score against any job description for free."},
@@ -4886,14 +4886,14 @@ _COMPARISON_PAGES = {
             "You don't want per-job tailoring at all.",
         ],
         "faq": [
-            {"q": "Is TheTailorCV a good Rezi alternative?", "a": "Yes. TheTailorCV offers a free ATS score, AI resume tailoring to a job description, cover letters, AI mock interviews, and a portfolio website builder at an affordable price."},
-            {"q": "Does TheTailorCV build resumes like Rezi?", "a": "Yes — it tailors and rewrites your resume to each job and gives you an ATS match score with the missing keywords. It also has a resume builder if you're starting from scratch."},
-            {"q": "What's different from Rezi?", "a": "Rezi is builder-first: it's strongest when you're writing a resume from a blank page. TheTailorCV is tailoring-first: it starts from the resume you already have and adapts it to each specific job, then adds mock interviews and a portfolio site."},
+            {"q": "Is TailorCV a good Rezi alternative?", "a": "Yes. TailorCV offers a free ATS score, AI resume tailoring to a job description, cover letters, AI mock interviews, and a portfolio website builder at an affordable price."},
+            {"q": "Does TailorCV build resumes like Rezi?", "a": "Yes — it tailors and rewrites your resume to each job and gives you an ATS match score with the missing keywords. It also has a resume builder if you're starting from scratch."},
+            {"q": "What's different from Rezi?", "a": "Rezi is builder-first: it's strongest when you're writing a resume from a blank page. TailorCV is tailoring-first: it starts from the resume you already have and adapts it to each specific job, then adds mock interviews and a portfolio site."},
             {"q": "Is there a free option?", "a": "Yes — get a free ATS score and build a portfolio for free, then upgrade to Pro for unlimited use."},
-            {"q": "Can I upload my existing resume instead of rebuilding it?", "a": "Yes. Upload the PDF you already have and TheTailorCV works from that — you never need to retype your history into a builder to get a score or a tailored version."},
+            {"q": "Can I upload my existing resume instead of rebuilding it?", "a": "Yes. Upload the PDF you already have and TailorCV works from that — you never need to retype your history into a builder to get a score or a tailored version."},
             {"q": "Will the AI invent experience I don't have?", "a": "No. Tailoring is constrained to what's genuinely on your resume — it rephrases and re-emphasises your real work to match the posting, rather than fabricating employers, projects or skills."},
             {"q": "How long does tailoring take per job?", "a": "About a minute. Paste the job description, get your score and the missing keywords, and download the tailored PDF — or do it directly on the job posting with the Chrome extension."},
-            {"q": "Does TheTailorCV keep my old versions?", "a": "Yes. Every tailored resume is saved to your Job Tracker with its ATS score and the role it was written for, so you can re-download any version later without starting over."},
+            {"q": "Does TailorCV keep my old versions?", "a": "Yes. Every tailored resume is saved to your Job Tracker with its ATS score and the role it was written for, so you can re-download any version later without starting over."},
         ],
     },
 }
@@ -4965,8 +4965,8 @@ async def alternatives_hub(request: Request):
     return templates.TemplateResponse(request, "alternatives_hub.html", {
         "request": request,
         "pages": _COMPARISON_PAGES,
-        "seo_og_title": "TheTailorCV vs Jobscan, Teal, Rezi & More — Compare (2026) | theTailorCV",
-        "seo_og_description": "Compare TheTailorCV with Jobscan, Teal, Rezi, Resume Worded and Careerflow — features, pricing, and which resume tool is right for you.",
+        "seo_og_title": "TailorCV vs Jobscan, Teal, Rezi & More — Compare (2026) | TailorCV",
+        "seo_og_description": "Compare TailorCV with Jobscan, Teal, Rezi, Resume Worded and Careerflow — features, pricing, and which resume tool is right for you.",
         "canonical_url": build_absolute_url("/alternatives"),
         "page_schema_json": breadcrumb,
     })
@@ -4986,7 +4986,7 @@ async def resume_examples_hub(request: Request):
     return templates.TemplateResponse(request, "resume_examples_hub.html", {
         "request": request,
         "roles": ROLE_SEO,
-        "seo_og_title": "Free Resume Examples by Job Role (2026) | theTailorCV",
+        "seo_og_title": "Free Resume Examples by Job Role (2026) | TailorCV",
         "seo_og_description": "Free resume examples by job role — the right ATS keywords, skills, and bullet points for your role, plus the mistakes to avoid.",
         "canonical_url": build_absolute_url("/resume-examples"),
         "page_schema_json": breadcrumb,
@@ -5008,7 +5008,7 @@ async def resume_example_detail(request: Request, role: str):
          "a": f"Recruiters and ATS scan for keywords like {', '.join(r['keywords'][:8])}. Match these to the exact wording in the job description."},
         {"q": f"What is a common {role_name} resume mistake?",
          "a": r["mistakes"][0]},
-        {"q": f"Is theTailorCV's ATS checker free for a {role_name} resume?",
+        {"q": f"Is TailorCV's ATS checker free for a {role_name} resume?",
          "a": "Yes. Paste your resume and a job description to get a free ATS score with the missing keywords and fixes before you apply."},
     ]
     article_schema = json.dumps({
@@ -5018,8 +5018,8 @@ async def resume_example_detail(request: Request, role: str):
                 "@type": "Article",
                 "headline": f"{role_name} Resume Example & Guide",
                 "description": r["description"],
-                "author": {"@type": "Organization", "name": "theTailorCV"},
-                "publisher": {"@type": "Organization", "name": "theTailorCV"},
+                "author": {"@type": "Organization", "name": "TailorCV"},
+                "publisher": {"@type": "Organization", "name": "TailorCV"},
                 "mainEntityOfPage": build_absolute_url(f"/resume-examples/{role}"),
             },
             {
@@ -6080,8 +6080,8 @@ LEGAL_LAST_UPDATED = "May 1, 2026"
 _LEGAL_PAGE = (
     "<!doctype html><html lang='en'><head><meta charset='utf-8'>"
     "<meta name='viewport' content='width=device-width, initial-scale=1'>"
-    "<meta name='robots' content='index,follow'><title>{title} | theTailorCV</title>"
-    "<meta name='description' content='{title} for theTailorCV — AI resume optimization and ATS scoring.'>"
+    "<meta name='robots' content='index,follow'><title>{title} | TailorCV</title>"
+    "<meta name='description' content='{title} for TailorCV — AI resume optimization and ATS scoring.'>"
     "<style>"
     ":root{{--bg:#070f24;--panel:#0d1730;--ink:#e8eefc;--muted:#9fb0cc;--accent:#7db9ff;--border:rgba(255,255,255,.08);}}"
     "*{{box-sizing:border-box;}}"
@@ -6100,7 +6100,7 @@ _LEGAL_PAGE = (
     ".legal-nav{{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 8px;border-top:1px solid var(--border);padding-top:22px;}}"
     ".legal-nav a{{font-size:.9rem;color:var(--muted);}}.legal-nav a:hover{{color:var(--accent);}}"
     "</style></head>"
-    "<body><div class='legal-top'><a href='/'>&larr; Back to theTailorCV</a></div>"
+    "<body><div class='legal-top'><a href='/'>&larr; Back to TailorCV</a></div>"
     "<div class='wrap'><h1>{title}</h1><p class='updated'>Last updated: {updated}</p>{body}"
     "<div class='legal-nav'><a href='/terms'>Terms of Service</a><a href='/privacy'>Privacy Policy</a>"
     "<a href='/refund'>Refund Policy</a><a href='/contact'>Contact</a></div></div></body></html>"
@@ -6112,14 +6112,14 @@ def _render_legal(title, body):
 
 
 _PRIVACY_BODY = (
-    "<div class='legal-card'><p>theTailorCV (\"theTailorCV\", \"we\", \"us\" or \"our\") operates the "
+    "<div class='legal-card'><p>TailorCV (\"TailorCV\", \"we\", \"us\" or \"our\") operates the "
     "website <strong>www.thetailorcv.com</strong> and the related AI resume tools (the \"Service\"). "
     "This Privacy Policy explains what personal data we collect, why we collect it, how we use and "
     "share it, and the rights you have over it. By using the Service you agree to the practices "
     "described here.</p></div>"
 
     "<h2>1. Who we are</h2>"
-    "<p>theTailorCV is an AI-powered resume optimization and ATS (Applicant Tracking System) scoring "
+    "<p>TailorCV is an AI-powered resume optimization and ATS (Applicant Tracking System) scoring "
     "platform. For any privacy question, or to exercise your rights, contact us at "
     "<a href='mailto:" + LEGAL_CONTACT_EMAIL + "'>" + LEGAL_CONTACT_EMAIL + "</a>. We are the data "
     "controller for the personal data described below.</p>"
@@ -6233,12 +6233,12 @@ _PRIVACY_BODY = (
 
 _TERMS_BODY = (
     "<div class='legal-card'><p>These Terms of Service (\"Terms\") govern your access to and use of "
-    "theTailorCV website at <strong>www.thetailorcv.com</strong> and its AI resume tools (the "
-    "\"Service\"), operated by theTailorCV (\"we\", \"us\" or \"our\"). By creating an account or "
+    "TailorCV website at <strong>www.thetailorcv.com</strong> and its AI resume tools (the "
+    "\"Service\"), operated by TailorCV (\"we\", \"us\" or \"our\"). By creating an account or "
     "using the Service, you agree to these Terms. If you do not agree, do not use the Service.</p></div>"
 
     "<h2>1. The Service</h2>"
-    "<p>theTailorCV provides AI-assisted resume optimization, ATS scoring, cover-letter generation, "
+    "<p>TailorCV provides AI-assisted resume optimization, ATS scoring, cover-letter generation, "
     "LinkedIn import, interview preparation and related career tools. Features and limits may change "
     "as we improve the Service.</p>"
 
@@ -6264,7 +6264,7 @@ _TERMS_BODY = (
     "subscriptions). Current prices and inclusions are shown on our <a href='/pricing'>pricing page</a>.</p>"
     "<ul>"
     "<li><strong>Merchant of Record:</strong> Payments are processed by <strong>Paddle</strong> "
-    "(Paddle.com Market Limited), which acts as the Merchant of Record for purchases on theTailorCV. "
+    "(Paddle.com Market Limited), which acts as the Merchant of Record for purchases on TailorCV. "
     "Paddle handles payment, invoicing and applicable taxes. Your purchase is also subject to Paddle's "
     "buyer terms.</li>"
     "<li><strong>Recurring subscriptions:</strong> Monthly and yearly plans renew automatically at the "
@@ -6295,7 +6295,7 @@ _TERMS_BODY = (
 
     "<h2>8. Intellectual property</h2>"
     "<p>The Service, including its software, design, branding and content (excluding Your Content), is "
-    "owned by theTailorCV and protected by intellectual-property laws. We grant you a limited, "
+    "owned by TailorCV and protected by intellectual-property laws. We grant you a limited, "
     "revocable, non-transferable license to use the Service for its intended purpose. You may not copy "
     "or exploit it beyond that license.</p>"
 
@@ -6305,7 +6305,7 @@ _TERMS_BODY = (
     "non-infringement. We do not warrant that the Service will be uninterrupted, secure or error-free.</p>"
 
     "<h2>10. Limitation of liability</h2>"
-    "<p>To the maximum extent permitted by law, theTailorCV and its team will not be liable for any "
+    "<p>To the maximum extent permitted by law, TailorCV and its team will not be liable for any "
     "indirect, incidental, special, consequential or punitive damages, or loss of profits, data or "
     "opportunities, arising from your use of the Service. Our total liability for any claim will not "
     "exceed the amount you paid us in the three (3) months before the claim arose.</p>"
@@ -6334,7 +6334,7 @@ _TERMS_BODY = (
 
 _REFUND_BODY = (
     "<div class='legal-card'><p>This Refund Policy explains how refunds and cancellations work for "
-    "paid plans on theTailorCV (<strong>www.thetailorcv.com</strong>). Payments are processed by "
+    "paid plans on TailorCV (<strong>www.thetailorcv.com</strong>). Payments are processed by "
     "<strong>Paddle</strong> (Paddle.com Market Limited), our Merchant of Record. We want you to be "
     "satisfied — if something isn't right, contact us and we'll help.</p></div>"
 
