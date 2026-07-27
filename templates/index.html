@@ -470,7 +470,12 @@
                 <span>Tailor your resume on <b>any job posting</b> &mdash; without leaving the page.</span>
             </span>
             <a href="/extension" class="ext-promo-btn" id="home_promo_bar_extension">
-                <span aria-hidden="true">&#129513;</span> Add to Chrome &mdash; Free
+                <span class="epb-outer">
+                    <span class="epb-inner">
+                        <span aria-hidden="true">&#129513;</span>
+                        <span class="epb-label">Add to Chrome &mdash; Free</span>
+                    </span>
+                </span>
             </a>
         </div>
     </div>
@@ -529,6 +534,116 @@
         }
         .ext-promo-btn:hover { background: #3a56e0; transform: translateY(-1px); }
         .ext-promo-btn:focus-visible { outline: 3px solid #b9c4ff; outline-offset: 2px; }
+
+        /* Glassy 3D pill button (adapted from a Uiverse.io recipe by
+           FColombati): layered box-shadows fake depth/glass, the label uses a
+           metallic gradient text-clip, and it visually "presses" on hover/click.
+           Scoped tightly to this one homepage promo button via its ID; the
+           emoji sits OUTSIDE the gradient-text-clip span since color-emoji
+           glyphs don't respect background-clip:text reliably. */
+        #home_promo_bar_extension {
+            all: unset;
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            position: relative;
+            display: inline-block;
+            border-radius: 100em;
+            background-color: rgba(0, 0, 0, 0.75);
+            box-shadow:
+                -0.15em -0.15em 0.15em -0.075em rgba(5, 5, 5, 0.25),
+                0.0375em 0.0375em 0.0675em 0 rgba(5, 5, 5, 0.1);
+        }
+        #home_promo_bar_extension::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            width: calc(100% + 0.3em);
+            height: calc(100% + 0.3em);
+            top: -0.15em;
+            left: -0.15em;
+            border-radius: inherit;
+            background: linear-gradient(-135deg, rgba(5, 5, 5, 0.5), transparent 20%, transparent 100%);
+            filter: blur(0.0125em);
+            opacity: 0.25;
+            mix-blend-mode: multiply;
+        }
+        #home_promo_bar_extension .epb-outer {
+            position: relative;
+            z-index: 1;
+            display: block;
+            border-radius: inherit;
+            transition: box-shadow 300ms ease;
+            will-change: box-shadow;
+            box-shadow:
+                0 0.05em 0.05em -0.01em rgba(5, 5, 5, 1),
+                0 0.01em 0.01em -0.01em rgba(5, 5, 5, 0.5),
+                0.15em 0.3em 0.1em -0.01em rgba(5, 5, 5, 0.25);
+        }
+        #home_promo_bar_extension:hover .epb-outer {
+            box-shadow:
+                0 0 0 0 rgba(5, 5, 5, 1),
+                0 0 0 0 rgba(5, 5, 5, 0.5),
+                0 0 0 0 rgba(5, 5, 5, 0.25);
+        }
+        #home_promo_bar_extension .epb-inner {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: inherit;
+            padding: 0.7em 1.3em;
+            background-image: linear-gradient(135deg, rgba(230, 230, 230, 1), rgba(180, 180, 180, 1));
+            transition: box-shadow 300ms ease, clip-path 250ms ease, background-image 250ms ease, transform 250ms ease;
+            will-change: box-shadow, clip-path, background-image, transform;
+            overflow: clip;
+            clip-path: inset(0 0 0 0 round 100em);
+            box-shadow:
+                0 0 0 0 inset rgba(5, 5, 5, 0.1),
+                -0.05em -0.05em 0.05em 0 inset rgba(5, 5, 5, 0.25),
+                0 0 0 0 inset rgba(5, 5, 5, 0.1),
+                0 0 0.05em 0.2em inset rgba(255, 255, 255, 0.25),
+                0.025em 0.05em 0.1em 0 inset rgba(255, 255, 255, 1),
+                0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
+                -0.075em -0.25em 0.25em 0.1em inset rgba(5, 5, 5, 0.25);
+        }
+        #home_promo_bar_extension:hover .epb-inner {
+            clip-path: inset(clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 100em);
+            box-shadow:
+                0.1em 0.15em 0.05em 0 inset rgba(5, 5, 5, 0.75),
+                -0.025em -0.03em 0.05em 0.025em inset rgba(5, 5, 5, 0.5),
+                0.25em 0.25em 0.2em 0 inset rgba(5, 5, 5, 0.5),
+                0 0 0.05em 0.5em inset rgba(255, 255, 255, 0.15),
+                0 0 0 0 inset rgba(255, 255, 255, 1),
+                0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
+                -0.075em -0.12em 0.2em 0.1em inset rgba(5, 5, 5, 0.25);
+        }
+        #home_promo_bar_extension .epb-label {
+            position: relative;
+            z-index: 4;
+            font-family: inherit;
+            letter-spacing: -0.02em;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0);
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(135deg, rgba(25, 25, 25, 1), rgba(75, 75, 75, 1));
+            -webkit-background-clip: text;
+            background-clip: text;
+            transition: transform 250ms ease;
+            display: inline-block;
+            will-change: transform;
+            text-shadow: rgba(0, 0, 0, 0.1) 0 0 0.1em;
+            -webkit-user-select: none;
+            user-select: none;
+            white-space: nowrap;
+        }
+        #home_promo_bar_extension:hover .epb-label { transform: scale(0.975); }
+        #home_promo_bar_extension:active .epb-inner { transform: scale(0.975); }
+        @media (prefers-reduced-motion: reduce) {
+            #home_promo_bar_extension .epb-outer,
+            #home_promo_bar_extension .epb-inner,
+            #home_promo_bar_extension .epb-label { transition: none; }
+        }
         @media (max-width: 640px) {
             .ext-promo-inner { padding: 10px 16px; gap: 10px; }
             .ext-promo-text { font-size: 13.5px; }
