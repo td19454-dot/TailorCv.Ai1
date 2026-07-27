@@ -23,7 +23,7 @@ Shape:
 ROLE_SEO: dict[str, dict] = {
     "backend-developer": {
         "role": "Backend Developer",
-        "title": "Backend Developer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Backend Developer Resume Example & Guide (2026) | TailorCV",
         "description": "A backend developer resume example with ATS keywords, the right skills, and example bullet points that prove API, database, and system-design impact.",
         "intro": "A strong backend developer resume proves you can design reliable APIs, model data well, and build systems that handle real production load — with specifics, not buzzwords.",
         "skills": ["Python", "Node.js", "Java", "Go", "REST & GraphQL APIs", "PostgreSQL", "Redis", "Docker", "Kubernetes", "AWS"],
@@ -43,7 +43,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "frontend-developer": {
         "role": "Frontend Developer",
-        "title": "Frontend Developer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Frontend Developer Resume Example & Guide (2026) | TailorCV",
         "description": "A frontend developer resume example with React/TypeScript keywords, key skills, and bullet points that show UI craft, performance, and accessibility.",
         "intro": "A frontend resume should prove you build fast, accessible, polished interfaces — and that you understand the product, not just the pixels.",
         "skills": ["React", "TypeScript", "Next.js", "JavaScript", "HTML & CSS", "Tailwind", "Redux", "Jest", "Web performance", "Accessibility (a11y)"],
@@ -63,7 +63,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "full-stack-developer": {
         "role": "Full Stack Developer",
-        "title": "Full Stack Developer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Full Stack Developer Resume Example & Guide (2026) | TailorCV",
         "description": "A full stack developer resume example showing end-to-end skill — frontend, backend, and deployed apps — with ATS keywords and strong bullet points.",
         "intro": "A full stack resume must prove range AND depth: polished UI, solid backend, and shipped, working products you can point to.",
         "skills": ["React", "Node.js", "TypeScript", "Python", "PostgreSQL", "MongoDB", "REST & GraphQL", "Docker", "AWS", "CI/CD"],
@@ -83,7 +83,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "data-analyst": {
         "role": "Data Analyst",
-        "title": "Data Analyst Resume Example & Guide (2026) | theTailorCV",
+        "title": "Data Analyst Resume Example & Guide (2026) | TailorCV",
         "description": "A data analyst resume example with SQL, Python, and dashboard keywords, key skills, and bullet points framed around business impact — not just tools.",
         "intro": "A data analyst resume should show you turn data into decisions: clean analysis, clear dashboards, and recommendations the business actually used.",
         "skills": ["SQL", "Python", "Excel", "Tableau", "Power BI", "Pandas", "Statistics", "A/B testing", "Data visualization", "ETL"],
@@ -103,7 +103,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "data-scientist": {
         "role": "Data Scientist",
-        "title": "Data Scientist Resume Example & Guide (2026) | theTailorCV",
+        "title": "Data Scientist Resume Example & Guide (2026) | TailorCV",
         "description": "A data scientist resume example with ML keywords, core skills, and bullet points framed around business impact and deployed models — not just accuracy.",
         "intro": "A data scientist resume should prove business impact: models that shipped, decisions they changed, and the metrics that moved — not just notebooks and accuracy scores.",
         "skills": ["Python", "SQL", "scikit-learn", "PyTorch", "Pandas", "Statistics", "Machine Learning", "MLflow", "Feature engineering", "A/B testing"],
@@ -123,7 +123,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "data-engineer": {
         "role": "Data Engineer",
-        "title": "Data Engineer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Data Engineer Resume Example & Guide (2026) | TailorCV",
         "description": "A data engineer resume example with pipeline, warehouse, and cloud keywords, plus bullet points that show reliable, scalable data infrastructure.",
         "intro": "A data engineer resume should prove you build reliable, scalable pipelines and data platforms the whole company depends on.",
         "skills": ["Python", "SQL", "Spark", "Airflow", "dbt", "Kafka", "Snowflake", "AWS", "ETL/ELT", "Data modeling"],
@@ -143,7 +143,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "devops-engineer": {
         "role": "DevOps Engineer",
-        "title": "DevOps Engineer Resume Example & Guide (2026) | theTailorCV",
+        "title": "DevOps Engineer Resume Example & Guide (2026) | TailorCV",
         "description": "A DevOps engineer resume example with CI/CD, Kubernetes, and cloud keywords, plus bullet points that show reliability, automation, and cost wins.",
         "intro": "A DevOps resume should prove you make shipping fast and systems reliable: automation, CI/CD, observability, and measurable uptime and cost wins.",
         "skills": ["Kubernetes", "Docker", "Terraform", "AWS", "CI/CD", "Linux", "Prometheus", "Ansible", "Python", "GitOps"],
@@ -163,7 +163,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "cloud-engineer": {
         "role": "Cloud Engineer",
-        "title": "Cloud Engineer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Cloud Engineer Resume Example & Guide (2026) | TailorCV",
         "description": "A cloud engineer resume example with AWS/Azure keywords, core skills, and bullet points showing scalable, secure, cost-efficient cloud architecture.",
         "intro": "A cloud engineer resume should show you design secure, scalable, cost-efficient cloud architecture — with the certifications and metrics to back it.",
         "skills": ["AWS", "Azure", "Terraform", "Kubernetes", "Docker", "Networking", "IAM & security", "CloudFormation", "Python", "Cost optimization"],
@@ -183,7 +183,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "cybersecurity-engineer": {
         "role": "Cybersecurity Engineer",
-        "title": "Cybersecurity Engineer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Cybersecurity Engineer Resume Example & Guide (2026) | TailorCV",
         "description": "A cybersecurity engineer resume example with security keywords, certifications, and bullet points that show real risk reduction and incident response.",
         "intro": "A cybersecurity resume should prove you reduce real risk: vulnerabilities closed, incidents handled, and controls that passed audits.",
         "skills": ["SIEM", "Penetration testing", "Incident response", "Network security", "Python", "Vulnerability management", "IAM", "Cloud security", "Threat detection", "Compliance"],
@@ -203,7 +203,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "android-developer": {
         "role": "Android Developer",
-        "title": "Android Developer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Android Developer Resume Example & Guide (2026) | TailorCV",
         "description": "An Android developer resume example with Kotlin/Jetpack keywords, key skills, and bullet points that show shipped apps, performance, and ratings.",
         "intro": "An Android resume should prove you ship polished apps users keep: Kotlin, Jetpack, performance, and Play Store results.",
         "skills": ["Kotlin", "Java", "Jetpack Compose", "Android SDK", "MVVM", "Coroutines", "Retrofit", "Room", "Unit testing", "CI/CD"],
@@ -223,7 +223,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "business-analyst": {
         "role": "Business Analyst",
-        "title": "Business Analyst Resume Example & Guide (2026) | theTailorCV",
+        "title": "Business Analyst Resume Example & Guide (2026) | TailorCV",
         "description": "A business analyst resume example with requirements, SQL, and stakeholder keywords, plus bullet points framed around measurable business outcomes.",
         "intro": "A business analyst resume should show you bridge business and tech: clear requirements, data-backed recommendations, and decisions that moved metrics.",
         "skills": ["Requirements gathering", "SQL", "Excel", "Power BI", "Stakeholder management", "Process mapping", "Agile", "JIRA", "Data analysis", "Documentation"],
@@ -243,7 +243,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "product-manager": {
         "role": "Product Manager",
-        "title": "Product Manager Resume Example & Guide (2026) | theTailorCV",
+        "title": "Product Manager Resume Example & Guide (2026) | TailorCV",
         "description": "A product manager resume example with PM keywords, core skills, and bullet points framed around outcomes — adoption, retention, and revenue — not features.",
         "intro": "A product manager resume should lead with outcomes, not features: what you shipped, who it helped, and the metric it moved.",
         "skills": ["Product strategy", "Roadmapping", "User research", "A/B testing", "SQL", "Analytics", "Agile/Scrum", "Stakeholder management", "Prioritization", "Go-to-market"],
@@ -263,7 +263,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "digital-marketing": {
         "role": "Digital Marketing Specialist",
-        "title": "Digital Marketing Resume Example & Guide (2026) | theTailorCV",
+        "title": "Digital Marketing Resume Example & Guide (2026) | TailorCV",
         "description": "A digital marketing resume example with SEO, paid ads, and analytics keywords, plus bullet points tied to traffic, leads, and ROI.",
         "intro": "A digital marketing resume should be all about results: traffic, leads, conversions, and ROI — with the channels and tools that delivered them.",
         "skills": ["SEO", "Google Ads", "Meta Ads", "Google Analytics", "Content marketing", "Email marketing", "SEM", "Conversion optimization", "Social media", "HubSpot"],
@@ -283,7 +283,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "financial-analyst": {
         "role": "Financial Analyst",
-        "title": "Financial Analyst Resume Example & Guide (2026) | theTailorCV",
+        "title": "Financial Analyst Resume Example & Guide (2026) | TailorCV",
         "description": "A financial analyst resume example with modeling, Excel, and forecasting keywords, plus bullet points that show analysis driving real decisions.",
         "intro": "A financial analyst resume should show rigor and impact: models you built, forecasts you sharpened, and the decisions your analysis informed.",
         "skills": ["Financial modeling", "Excel", "SQL", "Forecasting", "Valuation", "Power BI", "Budgeting", "Variance analysis", "Accounting", "Data analysis"],
@@ -303,7 +303,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "graphic-designer": {
         "role": "Graphic Designer",
-        "title": "Graphic Designer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Graphic Designer Resume Example & Guide (2026) | TailorCV",
         "description": "A graphic designer resume example with design-tool keywords, key skills, and bullet points that show business impact and a link to your portfolio.",
         "intro": "A graphic designer resume should pair a strong portfolio link with bullets that show your work drove real results — not just 'designed assets'.",
         "skills": ["Adobe Photoshop", "Illustrator", "Figma", "InDesign", "Branding", "Typography", "Layout design", "UI design", "Motion graphics", "Brand identity"],
@@ -323,7 +323,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "accountant": {
         "role": "Accountant",
-        "title": "Accountant Resume Example & Guide (2026) | theTailorCV",
+        "title": "Accountant Resume Example & Guide (2026) | TailorCV",
         "description": "An accountant resume example with accounting, reconciliation, and compliance keywords, plus bullet points that show accuracy, savings, and efficiency.",
         "intro": "An accountant resume should signal accuracy, compliance, and efficiency: clean books, faster closes, and savings or errors caught.",
         "skills": ["Accounts payable/receivable", "Reconciliation", "GST & tax", "Excel", "Tally", "QuickBooks", "Financial reporting", "Auditing", "Payroll", "GAAP"],
@@ -343,7 +343,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "fresher-first-job": {
         "role": "Fresher / First Job (No Experience)",
-        "title": "Resume Examples for First Job & Freshers (2026) | theTailorCV",
+        "title": "Resume Examples for First Job & Freshers (2026) | TailorCV",
         "description": "Resume examples for your first job with no experience — what to put in skills, projects, and bullet points, plus the ATS keywords and mistakes to avoid.",
         "intro": "No experience? Your first-job resume wins on projects, internships, coursework, and skills — framed with real outcomes, not just a list of subjects.",
         "skills": ["Projects", "Internships", "Relevant coursework", "Technical skills", "Tools you've used", "Certifications", "Teamwork", "Communication", "Problem solving", "Portfolio link"],
@@ -363,7 +363,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "software-engineer": {
         "role": "Software Engineer",
-        "title": "Software Engineer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Software Engineer Resume Example & Guide (2026) | TailorCV",
         "description": "A software engineer resume example with the right ATS keywords, skills, and bullet points that prove engineering impact — for new grads to senior roles.",
         "intro": "A software engineer resume should prove impact: systems you built, problems you solved, and the metrics that moved — not just a list of languages.",
         "skills": ["Data structures & algorithms", "Python", "Java", "JavaScript", "System design", "SQL", "Git", "REST APIs", "Testing", "CI/CD"],
@@ -383,7 +383,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "react-developer": {
         "role": "React Developer",
-        "title": "React Developer Resume Example & Guide (2026) | theTailorCV",
+        "title": "React Developer Resume Example & Guide (2026) | TailorCV",
         "description": "A React developer resume example with React/TypeScript keywords, key skills, and bullet points that show component architecture and performance wins.",
         "intro": "A React resume should show strong component architecture, state management, and performance — with shipped, clickable UIs.",
         "skills": ["React", "TypeScript", "Next.js", "Redux", "React Query", "Hooks", "Jest", "Tailwind", "Web performance", "REST & GraphQL"],
@@ -403,7 +403,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "ux-designer": {
         "role": "UX Designer",
-        "title": "UX Designer Resume Example & Guide (2026) | theTailorCV",
+        "title": "UX Designer Resume Example & Guide (2026) | TailorCV",
         "description": "A UX designer resume example with design keywords, core skills, and bullet points framed around user outcomes and metrics — plus a portfolio link.",
         "intro": "A UX resume should pair a strong portfolio with bullets that show research-driven design and measurable user outcomes.",
         "skills": ["Figma", "User research", "Wireframing", "Prototyping", "Usability testing", "Design systems", "Interaction design", "Information architecture", "Accessibility", "A/B testing"],
@@ -423,7 +423,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "java-developer": {
         "role": "Java Developer",
-        "title": "Java Developer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Java Developer Resume Example & Guide (2026) | TailorCV",
         "description": "A Java developer resume example with Spring, microservices, and ATS keywords, plus bullet points that show backend scale and reliability.",
         "intro": "A Java resume should prove enterprise-grade backend skill: Spring services, clean data modeling, and systems that scale reliably.",
         "skills": ["Java", "Spring Boot", "Hibernate", "REST APIs", "Microservices", "SQL", "Kafka", "JUnit", "Maven", "Docker"],
@@ -443,7 +443,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "python-developer": {
         "role": "Python Developer",
-        "title": "Python Developer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Python Developer Resume Example & Guide (2026) | TailorCV",
         "description": "A Python developer resume example with Django/FastAPI keywords, key skills, and bullet points that show real backend and automation impact.",
         "intro": "A Python resume should show you ship real services and automation — clean APIs, solid data work, and measurable impact.",
         "skills": ["Python", "Django", "FastAPI", "Flask", "SQL", "REST APIs", "Pandas", "Celery", "Docker", "AWS"],
@@ -463,7 +463,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "machine-learning-engineer": {
         "role": "Machine Learning Engineer",
-        "title": "Machine Learning Engineer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Machine Learning Engineer Resume Example & Guide (2026) | TailorCV",
         "description": "An ML engineer resume example with model-deployment and MLOps keywords, plus bullet points framed around shipped models and business impact.",
         "intro": "An ML engineer resume should prove you ship models to production — not just train them — with the MLOps and impact to back it.",
         "skills": ["Python", "PyTorch", "TensorFlow", "scikit-learn", "MLflow", "Docker", "Kubernetes", "SQL", "Feature engineering", "Model deployment"],
@@ -483,7 +483,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "qa-engineer": {
         "role": "QA Engineer",
-        "title": "QA Engineer Resume Example & Guide (2026) | theTailorCV",
+        "title": "QA Engineer Resume Example & Guide (2026) | TailorCV",
         "description": "A QA / SDET resume example with automation and testing keywords, plus bullet points that show quality outcomes and faster, safer releases.",
         "intro": "A QA resume should prove you raise quality and ship faster: automation coverage, bugs caught early, and stable releases.",
         "skills": ["Selenium", "Cypress", "Playwright", "Python", "Java", "API testing", "CI/CD", "Postman", "JIRA", "Test automation"],
@@ -503,7 +503,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "site-reliability-engineer": {
         "role": "Site Reliability Engineer",
-        "title": "Site Reliability Engineer (SRE) Resume Example & Guide (2026) | theTailorCV",
+        "title": "Site Reliability Engineer (SRE) Resume Example & Guide (2026) | TailorCV",
         "description": "An SRE resume example with reliability, observability, and cloud keywords, plus bullet points that show uptime, automation, and incident response.",
         "intro": "An SRE resume should prove you keep systems reliable at scale: SLOs met, toil automated, and incidents handled fast.",
         "skills": ["Kubernetes", "Terraform", "Prometheus", "Grafana", "AWS", "Linux", "Python", "Go", "CI/CD", "Incident response"],
@@ -523,7 +523,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "ios-developer": {
         "role": "iOS Developer",
-        "title": "iOS Developer Resume Example & Guide (2026) | theTailorCV",
+        "title": "iOS Developer Resume Example & Guide (2026) | TailorCV",
         "description": "An iOS developer resume example with Swift/SwiftUI keywords, key skills, and bullet points that show shipped apps, performance, and ratings.",
         "intro": "An iOS resume should prove you ship polished, performant apps users love — Swift, SwiftUI, and App Store results.",
         "skills": ["Swift", "SwiftUI", "UIKit", "Combine", "Core Data", "REST APIs", "XCTest", "MVVM", "CI/CD", "App Store"],
@@ -543,7 +543,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "flutter-developer": {
         "role": "Flutter Developer",
-        "title": "Flutter Developer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Flutter Developer Resume Example & Guide (2026) | TailorCV",
         "description": "A Flutter developer resume example with Dart and cross-platform keywords, plus bullet points that show shipped apps and performance.",
         "intro": "A Flutter resume should prove you ship one codebase to both stores with native-quality performance and polish.",
         "skills": ["Flutter", "Dart", "Provider/Riverpod", "Bloc", "REST APIs", "Firebase", "SQLite", "CI/CD", "Unit testing", "Material Design"],
@@ -563,7 +563,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "game-developer": {
         "role": "Game Developer",
-        "title": "Game Developer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Game Developer Resume Example & Guide (2026) | TailorCV",
         "description": "A game developer resume example with Unity/Unreal keywords, core skills, and bullet points that show shipped games and gameplay impact.",
         "intro": "A game dev resume should prove you ship playable, polished games — engine skill, gameplay systems, and titles people played.",
         "skills": ["Unity", "Unreal Engine", "C#", "C++", "Gameplay programming", "Physics", "Shaders", "Multiplayer", "Optimization", "Git"],
@@ -583,7 +583,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "project-manager": {
         "role": "Project Manager",
-        "title": "Project Manager Resume Example & Guide (2026) | theTailorCV",
+        "title": "Project Manager Resume Example & Guide (2026) | TailorCV",
         "description": "A project manager resume example with delivery and stakeholder keywords, plus bullet points framed around on-time, on-budget outcomes.",
         "intro": "A project manager resume should lead with delivery: scope managed, risks handled, and projects shipped on time and on budget.",
         "skills": ["Agile", "Scrum", "JIRA", "Stakeholder management", "Risk management", "Budgeting", "Roadmapping", "Confluence", "Reporting", "Communication"],
@@ -603,7 +603,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "hr-recruiter": {
         "role": "HR / Recruiter",
-        "title": "HR & Recruiter Resume Example & Guide (2026) | theTailorCV",
+        "title": "HR & Recruiter Resume Example & Guide (2026) | TailorCV",
         "description": "An HR / recruiter resume example with hiring and people-ops keywords, plus bullet points framed around hires, retention, and time-to-fill.",
         "intro": "An HR resume should show people impact: faster hiring, better retention, and programs that improved the employee experience.",
         "skills": ["Recruiting", "ATS (Greenhouse/Lever)", "Onboarding", "Employee relations", "HRIS", "Sourcing", "Interviewing", "Compensation", "Compliance", "People analytics"],
@@ -623,7 +623,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "sales-representative": {
         "role": "Sales Representative",
-        "title": "Sales Representative Resume Example & Guide (2026) | theTailorCV",
+        "title": "Sales Representative Resume Example & Guide (2026) | TailorCV",
         "description": "A sales resume example with quota and pipeline keywords, plus bullet points framed around revenue, quota attainment, and deals closed.",
         "intro": "A sales resume is all about numbers: quota attainment, revenue closed, and pipeline built — lead with results.",
         "skills": ["B2B sales", "CRM (Salesforce)", "Prospecting", "Negotiation", "Pipeline management", "Cold outreach", "Account management", "Forecasting", "Closing", "Lead generation"],
@@ -643,7 +643,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "customer-service": {
         "role": "Customer Service Representative",
-        "title": "Customer Service Resume Example & Guide (2026) | theTailorCV",
+        "title": "Customer Service Resume Example & Guide (2026) | TailorCV",
         "description": "A customer service resume example with support keywords, key skills, and bullet points framed around satisfaction, resolution, and retention.",
         "intro": "A customer service resume should show impact on customers: high satisfaction, fast resolution, and retained accounts.",
         "skills": ["Customer support", "CRM (Zendesk)", "Conflict resolution", "Communication", "Ticketing", "Live chat", "Product knowledge", "CSAT", "Escalation", "Empathy"],
@@ -663,7 +663,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "content-writer": {
         "role": "Content Writer",
-        "title": "Content Writer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Content Writer Resume Example & Guide (2026) | TailorCV",
         "description": "A content writer resume example with SEO and content keywords, plus bullet points tied to traffic, rankings, and engagement.",
         "intro": "A content writer resume should show results, not just output: traffic grown, rankings won, and engagement lifted.",
         "skills": ["SEO writing", "Content strategy", "Copywriting", "Editing", "WordPress", "Google Analytics", "Keyword research", "CMS", "Research", "Storytelling"],
@@ -683,7 +683,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "civil-engineer": {
         "role": "Civil Engineer",
-        "title": "Civil Engineer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Civil Engineer Resume Example & Guide (2026) | TailorCV",
         "description": "A civil engineer resume example with design, site, and project keywords, plus bullet points that show delivered projects and savings.",
         "intro": "A civil engineering resume should show delivered projects: designs executed, sites managed, and budgets and timelines met.",
         "skills": ["AutoCAD", "STAAD Pro", "Project management", "Structural design", "Surveying", "Estimation", "Site supervision", "Quality control", "Revit", "Safety compliance"],
@@ -703,7 +703,7 @@ ROLE_SEO: dict[str, dict] = {
     },
     "mechanical-engineer": {
         "role": "Mechanical Engineer",
-        "title": "Mechanical Engineer Resume Example & Guide (2026) | theTailorCV",
+        "title": "Mechanical Engineer Resume Example & Guide (2026) | TailorCV",
         "description": "A mechanical engineer resume example with CAD, design, and manufacturing keywords, plus bullet points that show designs and cost savings.",
         "intro": "A mechanical engineering resume should show real outcomes: designs that shipped, processes improved, and costs cut.",
         "skills": ["SolidWorks", "AutoCAD", "CATIA", "GD&T", "FEA", "Manufacturing", "Product design", "DFM", "Project management", "Quality control"],

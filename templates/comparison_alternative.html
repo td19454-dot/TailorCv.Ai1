@@ -111,7 +111,7 @@
         {% endif %}
 
         <section class="cmp-section">
-            <h2>Why job seekers switch to TheTailorCV</h2>
+            <h2>Why job seekers switch to TailorCV</h2>
             <div class="cmp-props">
                 {% for p in cmp.props %}
                 <a class="cmp-prop" href="{{ p.link }}"><div class="ic">{{ picon(p.icon) }}</div><h3>{{ p.title }}</h3><p>{{ p.text }}</p></a>
@@ -120,14 +120,14 @@
         </section>
 
         <section class="cmp-section">
-            <h2><span class="hl">TheTailorCV</span> vs {{ cmp.competitor }}</h2>
+            <h2><span class="hl">TailorCV</span> vs {{ cmp.competitor }}</h2>
             <table class="cmp-table">
-                <thead><tr><th>Feature</th><th class="us">TheTailorCV</th><th>{{ cmp.competitor }}</th></tr></thead>
+                <thead><tr><th>Feature</th><th class="us">TailorCV</th><th>{{ cmp.competitor }}</th></tr></thead>
                 <tbody>
                 {% for row in cmp.rows %}
                     <tr>
                         <td data-l="Feature">{{ row.feature }}</td>
-                        <td class="us" data-l="TheTailorCV">{{ row.us | safe }}</td>
+                        <td class="us" data-l="TailorCV">{{ row.us | safe }}</td>
                         <td class="them" data-l="{{ cmp.competitor }}">{{ row.them | safe }}</td>
                     </tr>
                 {% endfor %}
@@ -140,7 +140,7 @@
             <h2>Which one is right for you?</h2>
             <div class="cmp-split">
                 <div class="cmp-pick us">
-                    <h3>Choose TheTailorCV if&hellip;</h3>
+                    <h3>Choose TailorCV if&hellip;</h3>
                     <ul>{% for i in cmp.pick_us %}<li>{{ i }}</li>{% endfor %}</ul>
                 </div>
                 <div class="cmp-pick them">
@@ -181,7 +181,7 @@
         </section>
 
         <section class="cmp-band">
-            <h2>Try TheTailorCV free</h2>
+            <h2>Try TailorCV free</h2>
             <p>Check your ATS score, tailor your resume, and build a live portfolio — no card needed.</p>
             <a class="cmp-btn p" href="/solutions">Start free</a>
         </section>
