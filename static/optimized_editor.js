@@ -2159,14 +2159,14 @@ body {
         const shareText =
             `Just found out I'm in the top ${rarityPct}% of professionals with this career archetype 👀\n\n` +
             `${card.archetype} — only 1 in ${Math.round(100 / rarityPct)} people get this.\n\n` +
-            `What archetype are YOU? 👇\n${card.share_url}\n\n#CareerDNA #CareerPersonality #TailorCvAI`;
+            `What archetype are YOU? 👇\n${card.share_url}\n\n#CareerDNA #CareerPersonality #TailorCV`;
 
         bodyEl.innerHTML = `
             <div class="pc-card-inner" id="pc-capturable-card">
                 <div class="pc-card-shimmer-inner"></div>
                 <div class="pc-card-content" id="pc-card-content">
                     <div class="pc-brand-row">
-                        <div class="pc-brand">TailorCv.AI &middot; Career DNA</div>
+                        <div class="pc-brand">TailorCV &middot; Career DNA</div>
                         <div class="pc-brand-right">
                             ${card.candidate_name ? `<div class="pc-cand">${_escHtml(card.candidate_name)}</div>` : ""}
                             <div class="pc-brand-date">${dateStamp}</div>
