@@ -585,6 +585,89 @@
             .sol-ats-launch, .sol-ats-launch *, .sol-ats-outline::before { animation: none !important; transition: none !important; }
             .sol-ats-state p span { opacity: 1 !important; }
         }
+
+        /* "Confirm & Generate PDF" — neon angled-corner border button
+           (Uiverse.io by kleenpulse), recolored to the site's blue/violet/
+           cyan accent instead of orange-purple-cyan. !important on ::before
+           is needed to beat style2.css's .btn-primary::before !important
+           shimmer rule, same conflict hit earlier on the ATS/Optimize buttons. */
+        #confirm-optimize-btn.confirm-pdf-btn {
+            --border-color: linear-gradient(-45deg, #3392ff, #7c3aed, #22d3ee);
+            --border-width: 0.125em;
+            --curve-size: 0.5em;
+            --bg: #0a0f2e;
+            --color: #d6ecff;
+            color: var(--color);
+            cursor: pointer;
+            position: relative;
+            isolation: isolate;
+            display: inline-grid;
+            place-content: center;
+            padding: 0.9em 2em;
+            font-size: 17px;
+            font-weight: 700;
+            border: 0;
+            text-transform: uppercase;
+            box-shadow: 10px 10px 20px rgba(0,0,0,.6);
+            clip-path: polygon(
+                0% var(--curve-size),
+                var(--curve-size) 0,
+                100% 0,
+                100% calc(100% - var(--curve-size)),
+                calc(100% - var(--curve-size)) 100%,
+                0 100%
+            );
+            transition: color 250ms;
+            background: none;
+        }
+        #confirm-optimize-btn.confirm-pdf-btn::after,
+        #confirm-optimize-btn.confirm-pdf-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+        }
+        #confirm-optimize-btn.confirm-pdf-btn::before {
+            background: var(--border-color) !important;
+            background-size: 300% 300%;
+            animation: confirmPdfMoveBg 5s ease infinite;
+            z-index: -2;
+        }
+        @keyframes confirmPdfMoveBg {
+            0% { background-position: 31% 0%; }
+            50% { background-position: 70% 100%; }
+            100% { background-position: 31% 0%; }
+        }
+        #confirm-optimize-btn.confirm-pdf-btn::after {
+            background: var(--bg) !important;
+            z-index: -1;
+            clip-path: polygon(
+                var(--border-width) calc(var(--curve-size) + var(--border-width) * 0.5),
+                calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+                calc(100% - var(--border-width)) var(--border-width),
+                calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+                calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+                var(--border-width) calc(100% - var(--border-width))
+            );
+            transition: clip-path 500ms;
+        }
+        #confirm-optimize-btn.confirm-pdf-btn:where(:hover, :focus)::after {
+            clip-path: polygon(
+                calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+                calc(100% - var(--border-width)) var(--border-width),
+                calc(100% - var(--border-width)) var(--border-width),
+                calc(100% - var(--border-width)) calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+                calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width)),
+                calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)) calc(100% - var(--border-width))
+            );
+            transition: 200ms;
+        }
+        #confirm-optimize-btn.confirm-pdf-btn:where(:hover, :focus) {
+            color: #fff;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #confirm-optimize-btn.confirm-pdf-btn::before { animation: none; }
+            #confirm-optimize-btn.confirm-pdf-btn::after { transition: none; }
+        }
         #job-description.form-textarea {
             min-height: 206px;
             background: rgba(3, 17, 41, 0.92);
@@ -971,8 +1054,8 @@
                         <div class="templates-grid" id="templates-grid"></div>
 
                         <div style="text-align: center; margin-top: 30px;">
-                            <button id="confirm-optimize-btn" class="btn btn-primary" style="max-width: 300px;">
-                                Confirm & Generate PDF
+                            <button id="confirm-optimize-btn" class="btn btn-primary confirm-pdf-btn" style="max-width: 300px;">
+                                Confirm &amp; Generate PDF
                             </button>
                         </div>
 
