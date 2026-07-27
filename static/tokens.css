@@ -1,5 +1,5 @@
 /* ============================================================================
-   tokens.css — theTailorCV design tokens (SINGLE SOURCE OF TRUTH)
+   tokens.css — TailorCV design tokens (SINGLE SOURCE OF TRUTH)
    Loaded site-wide via _seo_head.html. Defining variables is inert until used,
    so this file changes nothing on its own — components opt in by switching a
    hard-coded value to the matching var(). Roll out incrementally & verified.
