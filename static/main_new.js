@@ -2,6 +2,14 @@
 let selectedTemplate = null;
 let selectedStyle = 1; // Default to style 1 (Modern)
 
+// Captured once on load: the analyze/optimize buttons' original .btn-text
+// innerHTML (letter-span markup for the wave-in animation). Loading states
+// flatten this to plain text via textContent, so restores must use these
+// captured values via innerHTML instead of re-typing the label as a string,
+// or the animated markup is destroyed permanently after the first use.
+let analyzeBtnOrigHtml = null;
+let optimizeBtnOrigHtml = null;
+
 // Template and Style Options
 const templates = [
     { id: 1, name: 'Modern Professional', image: 'pic1.webp' },
@@ -163,13 +171,13 @@ function resetATSProgressUI() {
         analyzeBtn.classList.remove('loading', 'animate-shimmer');
         const btnText = analyzeBtn.querySelector('.btn-text');
         const loader = analyzeBtn.querySelector('.btn-loader');
-        if (btnText) btnText.textContent = 'Get ATS Score';
+        if (btnText) btnText.innerHTML = analyzeBtnOrigHtml != null ? analyzeBtnOrigHtml : 'Get ATS Score';
         if (loader) loader.style.display = 'none';
     }
     if (optimizeBtn) {
         optimizeBtn.disabled = false;
         const btnText = optimizeBtn.querySelector('.btn-text');
-        if (btnText) btnText.textContent = 'Optimize Resume';
+        if (btnText) btnText.innerHTML = optimizeBtnOrigHtml != null ? optimizeBtnOrigHtml : 'Optimize Resume';
     }
 }
 
@@ -227,6 +235,14 @@ function applyTemplateFromNavigation() {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    (function captureOrigBtnHtml() {
+        const ab = document.getElementById('analyze-btn');
+        const ob = document.getElementById('optimize-btn');
+        const abText = ab && ab.querySelector('.btn-text');
+        const obText = ob && ob.querySelector('.btn-text');
+        if (abText) analyzeBtnOrigHtml = abText.innerHTML;
+        if (obText) optimizeBtnOrigHtml = obText.innerHTML;
+    })();
     resetATSProgressUI();
 // File upload handler
     const fileInput = document.getElementById('resume-file');
@@ -512,8 +528,8 @@ async function handleATSAnalysis() {
         analyzeBtn.disabled = false;
         optimizeBtn.disabled = false;
         analyzeBtn.classList.remove('loading', 'animate-shimmer');
-        analyzeBtn.querySelector('.btn-text').textContent = 'Get ATS Score';
-        optimizeBtn.querySelector('.btn-text').textContent = 'Optimize Resume';
+        analyzeBtn.querySelector('.btn-text').innerHTML = analyzeBtnOrigHtml != null ? analyzeBtnOrigHtml : 'Get ATS Score';
+        optimizeBtn.querySelector('.btn-text').innerHTML = optimizeBtnOrigHtml != null ? optimizeBtnOrigHtml : 'Optimize Resume';
         analyzeBtn.querySelector('.btn-loader').style.display = 'none';
     }
 }
@@ -1067,7 +1083,7 @@ async function handleResumeOptimization() {
         confirmBtn.classList.remove('loading', 'animate-shimmer');
         confirmBtn.disabled = false;
         analyzeBtn.disabled = false;
-        analyzeBtn.querySelector('.btn-text').textContent = 'Get ATS Score';
+        analyzeBtn.querySelector('.btn-text').innerHTML = analyzeBtnOrigHtml != null ? analyzeBtnOrigHtml : 'Get ATS Score';
         confirmBtn.textContent = 'Confirm & Generate PDF';
     }
 }
