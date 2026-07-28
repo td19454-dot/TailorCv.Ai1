@@ -509,6 +509,7 @@
       height: 300px;
       filter: blur(0px);
       opacity: 1;
+      pointer-events: auto;
     }
 
     .input-orb:checked ~ .orb {
@@ -516,31 +517,26 @@
         drop-shadow(0 0 5px rgba(255, 0, 0, 0.3));
       transform-origin: center center;
       transform: translate(-50%, 110px);
-
-      & .icons .svg {
-        opacity: 1;
-        filter: drop-shadow(0 0 4px #ffffff);
-      }
-
-      &:hover {
-        transform: translate(-50%, 110px) scale(1.1);
-
-        & .icons .svg .mic {
-          opacity: 0;
-          transform: scale(1.1);
-          filter: drop-shadow(0 0 4px #ffffff);
-        }
-
-        & .icons .svg .close {
-          transform: scale(1.1);
-          filter: drop-shadow(0 0 4px #ffffff);
-          opacity: 1;
-        }
-      }
-
-      &:active {
-        transform: translate(-50%, 110px) scale(0.9);
-      }
+    }
+    .input-orb:checked ~ .orb .icons .svg {
+      opacity: 1;
+      filter: drop-shadow(0 0 4px #ffffff);
+    }
+    .input-orb:checked ~ .orb:hover {
+      transform: translate(-50%, 110px) scale(1.1);
+    }
+    .input-orb:checked ~ .orb:hover .icons .svg .mic {
+      opacity: 0;
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 4px #ffffff);
+    }
+    .input-orb:checked ~ .orb:hover .icons .svg .close {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 4px #ffffff);
+      opacity: 1;
+    }
+    .input-orb:checked ~ .orb:active {
+      transform: translate(-50%, 110px) scale(0.9);
     }
 
     .input-orb:not(:checked) ~ .container-chat-ia * {
@@ -548,43 +544,38 @@
     }
 
     .input-orb:not(:checked) ~ .orb {
+      filter: drop-shadow(0 0 3px rgba(255, 255, 255))
+        drop-shadow(0 0 8px rgba(255, 255, 255))
+        drop-shadow(0 0 8px rgba(145, 71, 255, 0.3))
+        drop-shadow(0 0 4px rgba(255, 0, 0, 0.3));
+      transform: scale(1.05) translate(-50%, -50%);
+    }
+    .input-orb:not(:checked) ~ .orb .ball {
+      animation: circle2 4.2s ease-in-out infinite;
+    }
+    .input-orb:not(:checked) ~ .orb:hover {
+      transform: scale(1.4) translate(-50%, -50%);
       filter: drop-shadow(0 0 4px rgba(255, 255, 255))
+        drop-shadow(0 0 8px rgba(255, 255, 255))
         drop-shadow(0 0 12px rgba(255, 255, 255))
-        drop-shadow(0 0 12px rgba(145, 71, 255, 0.3))
-        drop-shadow(0 0 5px rgba(255, 0, 0, 0.3));
+        drop-shadow(0 0 10px rgba(145, 71, 255, 0.3))
+        drop-shadow(0 6px 26px rgba(255, 0, 0, 0.3));
+    }
+    .input-orb:not(:checked) ~ .orb:hover .icons .svg {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 4px #ffffff);
+      opacity: 1;
+    }
+    .input-orb:not(:checked) ~ .orb:active {
       transform: scale(1.2) translate(-50%, -50%);
-
-      & .ball {
-        animation: circle2 4.2s ease-in-out infinite;
-      }
-
-      &:hover {
-        transform: scale(1.4) translate(-50%, -50%);
-        filter: drop-shadow(0 0 4px rgba(255, 255, 255))
-          drop-shadow(0 0 8px rgba(255, 255, 255))
-          drop-shadow(0 0 12px rgba(255, 255, 255))
-          drop-shadow(0 0 10px rgba(145, 71, 255, 0.3))
-          drop-shadow(0 6px 26px rgba(255, 0, 0, 0.3));
-
-        & .icons .svg {
-          transform: scale(1.1);
-          filter: drop-shadow(0 0 4px #ffffff);
-          opacity: 1;
-        }
-      }
-
-      &:active {
-        transform: scale(1.2) translate(-50%, -50%);
-        filter: drop-shadow(0 0 4px rgba(255, 255, 255))
-          drop-shadow(0 0 8px rgba(255, 255, 255))
-          drop-shadow(0 0 12px rgba(255, 255, 255))
-          drop-shadow(0 0 10px rgba(145, 71, 255, 0.3))
-          drop-shadow(0 6px 26px rgba(255, 0, 0, 0.3));
-      }
-
-      & * {
-        animation: none;
-      }
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255))
+        drop-shadow(0 0 8px rgba(255, 255, 255))
+        drop-shadow(0 0 12px rgba(255, 255, 255))
+        drop-shadow(0 0 10px rgba(145, 71, 255, 0.3))
+        drop-shadow(0 6px 26px rgba(255, 0, 0, 0.3));
+    }
+    .input-orb:not(:checked) ~ .orb * {
+      animation: none;
     }
 
     @keyframes circle2 {
@@ -615,10 +606,7 @@
         6px 6px 12px rgba(255, 0, 2, 0.1),
         -6px 6px 12px rgba(59, 130, 246, 0.1);
       gap: 6px;
-      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    }
-    .input-orb:checked ~ .container-chat-ia {
-      pointer-events: auto;
+      transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
 
     .container-title {
@@ -627,27 +615,25 @@
       justify-content: center;
       padding: 0.5rem;
       gap: 6px;
-
-      & svg {
-        color: #ff0002;
-        animation: animation-color-svg 8s 1s infinite both;
-      }
-
-      & .text-title {
-        font-size: 14px;
-        font-weight: 500;
-        background-image: linear-gradient(
-          to left,
-          #ff0002 0% 20%,
-          #3b82f6 50%,
-          #ff0002 80% 100%
-        );
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        background-size: 800px;
-        animation: animation-color-text 8s infinite linear;
-      }
+    }
+    .container-title svg {
+      color: #ff0002;
+      animation: animation-color-svg 8s 1s infinite both;
+    }
+    .container-title .text-title {
+      font-size: 14px;
+      font-weight: 500;
+      background-image: linear-gradient(
+        to left,
+        #ff0002 0% 20%,
+        #3b82f6 50%,
+        #ff0002 80% 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      background-size: 800px;
+      animation: animation-color-text 8s infinite linear;
     }
 
     @keyframes animation-color-svg {
@@ -679,17 +665,16 @@
       );
       border-radius: 1.5rem;
       overflow: hidden;
-
-      &::after {
-        position: absolute;
-        content: "";
-        inset: 0;
-        background: repeating-conic-gradient(
-            rgba(255, 255, 255, 0.2) 0.0000001%,
-            rgb(232, 232, 232, 0.8) 0.000104%
-          )
-          60% 60%/600% 600%;
-      }
+    }
+    .container-chat::after {
+      position: absolute;
+      content: "";
+      inset: 0;
+      background: repeating-conic-gradient(
+          rgba(255, 255, 255, 0.2) 0.0000001%,
+          rgb(232, 232, 232, 0.8) 0.000104%
+        )
+        60% 60%/600% 600%;
     }
 
     .container-chat-limit {
@@ -710,57 +695,53 @@
     .chat-user {
       display: flex;
       justify-content: end;
-
-      & p {
-        opacity: 0;
-        transform: translateY(10px);
-        width: 85%;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.25rem;
-        line-height: 1;
-        padding: 0.625rem;
-        color: #898989;
-        border-radius: 0.625rem 0.625rem 0 0.625rem;
-        background-color: rgba(255, 255, 255, 0.5);
-        animation: animation-chat 1s calc(var(--delay) * 1s) both
-          cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-        & span {
-          opacity: 0;
-          transform: translateY(10px);
-          display: block;
-          animation: animation-chat 1s calc(var(--delay) * 1s + var(--word) * 0.1s)
-            both cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-      }
+    }
+    .chat-user p {
+      opacity: 0;
+      transform: translateY(10px);
+      width: 85%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      line-height: 1;
+      padding: 0.625rem;
+      color: #898989;
+      border-radius: 0.625rem 0.625rem 0 0.625rem;
+      background-color: rgba(255, 255, 255, 0.5);
+      animation: animation-chat 1s calc(var(--delay) * 1s) both
+        cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .chat-user p span {
+      opacity: 0;
+      transform: translateY(10px);
+      display: block;
+      animation: animation-chat 1s calc(var(--delay) * 1s + var(--word) * 0.1s)
+        both cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .chat-ia {
       display: flex;
-
-      & p {
-        opacity: 0;
-        transform: translateY(10px);
-        width: 85%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.25rem;
-        line-height: 1;
-        padding: 0.625rem 0;
-        color: #393754;
-        animation: animation-chat 1s calc(var(--delay) * 1s) both
-          cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-        & span {
-          opacity: 0;
-          transform: translateY(10px);
-          display: block;
-          animation: animation-chat 1s calc(var(--delay) * 1s + var(--word) * 0.1s)
-            both cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-      }
+    }
+    .chat-ia p {
+      opacity: 0;
+      transform: translateY(10px);
+      width: 85%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      line-height: 1;
+      padding: 0.625rem 0;
+      color: #393754;
+      animation: animation-chat 1s calc(var(--delay) * 1s) both
+        cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .chat-ia p span {
+      opacity: 0;
+      transform: translateY(10px);
+      display: block;
+      animation: animation-chat 1s calc(var(--delay) * 1s + var(--word) * 0.1s)
+        both cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     @keyframes animation-chat {
@@ -774,6 +755,11 @@
     }
 
     .orb {
+      /* style3.css has an unrelated pre-existing .orb class (decorative
+         floating background blobs) that also sets a 9s infinite float
+         animation on anything named .orb. Cancel it explicitly here so it
+         doesn't leak into this widget. */
+      animation: none !important;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -782,13 +768,12 @@
       width: 64px;
       height: 64px;
       display: flex;
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 1.1s cubic-bezier(0.22, 0.61, 0.36, 1);
       cursor: pointer;
       z-index: 999999;
-
-      & .icons .svg .close {
-        opacity: 0;
-      }
+    }
+    .orb .icons .svg .close {
+      opacity: 0;
     }
 
     .icons {
@@ -801,14 +786,13 @@
       flex-direction: column;
       transition: all 0.3s ease-in-out;
       z-index: 999;
-
-      & .svg {
-        width: 24px;
-        height: 24px;
-        flex-shrink: 0;
-        opacity: 0.5;
-        transition: all 0.3s ease-in-out;
-      }
+    }
+    .icons .svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      opacity: 0.5;
+      transition: all 0.3s ease-in-out;
     }
 
     .ball {
@@ -826,8 +810,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 100px;
-      height: 100px;
+      width: 68px;
+      height: 68px;
       background-image: radial-gradient(
         ellipse at center,
         rgba(255, 255, 255, 0.75) 15%,
@@ -879,21 +863,20 @@
       position: absolute;
       inset: 0;
       perspective: 11rem;
-
-      &:before, &:after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 0, 0, 1);
-        border-radius: 50%;
-        border: 6px solid transparent;
-        mask:
-          linear-gradient(#fff 0 0) padding-box,
-          linear-gradient(#fff 0 0);
-        background: linear-gradient(white, blue, magenta, violet, lightyellow)
-          border-box;
-        mask-composite: exclude;
-      }
+    }
+    .container-rings:before, .container-rings:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 0, 0, 1);
+      border-radius: 50%;
+      border: 6px solid transparent;
+      mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+      background: linear-gradient(white, blue, magenta, violet, lightyellow)
+        border-box;
+      mask-composite: exclude;
     }
 
     .container-rings::before { animation: ring180 10s linear infinite; }
@@ -954,7 +937,7 @@
         <span style="color:#8b83ff;font-size:13px;">Zara is introducing herself...</span>
       </div>
 
-      <button id="letBeginBtn" class="zi-in zi-6 zi-launch-btn" onclick="zaraSpeak()">
+      <button id="letBeginBtn" class="zi-in zi-6 zi-launch-btn" onclick="showMainContent()">
         <div class="zi-launch-outline"></div>
         <div class="zi-launch-state zi-launch-state--default">
           <div class="zi-launch-icon">
@@ -1187,17 +1170,12 @@
   .zi-6 { animation-delay: .55s; }
   .zi-7 { animation-delay: .65s; }
   @keyframes ziFadeUp { to { opacity: 1; transform: none; } }
-  /* #zaraAvatar needs BOTH the one-time entrance fade AND the continuous
-     float — combined here (higher specificity than .zi-in/.zi-1) since a
-     single element can't cleanly split one animation between two rules. */
+  /* #zaraAvatar is now the Cobp orb widget, which has its own built-in
+     breathing/hover/click motion — just the one-time entrance fade here,
+     no extra continuous float layered on top of it. */
   #zaraAvatar.zi-in {
-    animation: ziFadeUp .6s cubic-bezier(.22,.61,.36,1) .05s both,
-               floatZara 3s ease-in-out .65s infinite;
+    animation: ziFadeUp .6s cubic-bezier(.22,.61,.36,1) .05s both;
   }
-}
-@keyframes floatZara {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-8px) scale(1.03); }
 }
 @keyframes speakPulse {
   0%, 100% {
@@ -2203,6 +2181,86 @@ function zaraSpeak(){
   _browserGreet();
 }
 
+let _zaraIntroPlaying = false;
+function zaraHoverIntro(){
+  if(_zaraIntroPlaying) return;
+  _zaraIntroPlaying = true;
+  const speakingEl = document.getElementById('zaraSpeaking');
+  if(speakingEl) speakingEl.style.display = 'flex';
+
+  function done(){
+    _zaraIntroPlaying = false;
+    if(speakingEl) speakingEl.style.display = 'none';
+  }
+
+  function _browserGreet(){
+    if(!('speechSynthesis' in window)){ done(); return; }
+    const u = new SpeechSynthesisUtterance(_GREET_TEXT);
+    const applyVoice = () => {
+      const voices = speechSynthesis.getVoices();
+      const pick = voices.find(v => /samantha|victoria|karen|zira|google uk english female/i.test(v.name))
+                || voices.find(v => v.lang.startsWith('en'));
+      if(pick) u.voice = pick;
+      u.rate = 0.90; u.pitch = 1.1; u.volume = 1.0;
+      u.onend = done;
+      speechSynthesis.speak(u);
+    };
+    if(speechSynthesis.getVoices().length > 0) applyVoice();
+    else speechSynthesis.onvoiceschanged = applyVoice;
+  }
+
+  function _playEl(el, url){
+    el.volume  = 1.0;
+    el.onended = () => { URL.revokeObjectURL(url); done(); };
+    el.onerror = () => { URL.revokeObjectURL(url); _browserGreet(); };
+    el.play().catch(() => { URL.revokeObjectURL(url); _browserGreet(); });
+  }
+
+  if(_greetAudio){
+    const {el, url} = _greetAudio; _greetAudio = null;
+    _playEl(el, url);
+    return;
+  }
+  if(_greetFetchPromise){
+    _greetFetchPromise.then(result => {
+      _greetAudio = null;
+      if(result){ _playEl(result.el, result.url); }
+      else { _browserGreet(); }
+    });
+    return;
+  }
+  _browserGreet();
+}
+(function _bindZaraHoverIntro(){
+  const orbEl = document.querySelector('#zaraAvatar .orb');
+  if(orbEl) orbEl.addEventListener('mouseenter', zaraHoverIntro);
+})();
+// Browsers block audio (and often speechSynthesis) from playing until the
+// page has seen a real user gesture — hover doesn't count. Prime both on
+// the first click/keydown/touch anywhere so the hover-triggered greeting
+// above actually plays instead of silently failing.
+(function _unlockAudioOnFirstGesture(){
+  let unlocked = false;
+  function unlock(){
+    if(unlocked) return;
+    unlocked = true;
+    try { const a = new Audio(); a.play().catch(()=>{}); a.pause(); } catch(e) {}
+    if('speechSynthesis' in window){
+      try {
+        const u = new SpeechSynthesisUtterance('');
+        u.volume = 0;
+        speechSynthesis.speak(u);
+      } catch(e) {}
+    }
+    document.removeEventListener('click', unlock);
+    document.removeEventListener('keydown', unlock);
+    document.removeEventListener('touchstart', unlock);
+  }
+  document.addEventListener('click', unlock);
+  document.addEventListener('keydown', unlock);
+  document.addEventListener('touchstart', unlock);
+})();
+
 function showMainContent(){
   const intro = document.getElementById('zaraIntroPage');
   if(intro){
@@ -2575,13 +2633,6 @@ document.addEventListener('DOMContentLoaded',
      gentle fade-in for the intro, testimonials, and greeting. Reduced-motion safe. -->
 <style>
 @media (prefers-reduced-motion: no-preference) {
-  #zaraAvatar { position: relative; }
-  #zaraAvatar::after {
-    content: ''; position: absolute; inset: -8px; border-radius: 50%;
-    border: 2px solid rgba(124,58,237,.4); pointer-events: none;
-    animation: zaraPulseRing 2.6s ease-out infinite;
-  }
-  @keyframes zaraPulseRing { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.28); opacity: 0; } }
   #zaraGreeting { animation: zaraFadeIn .6s cubic-bezier(.22,.61,.36,1) both; animation-delay: .15s; }
   @keyframes zaraFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
