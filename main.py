@@ -52,6 +52,7 @@ from functions import (
     generate_mock_interview_next_question,
     score_mock_interview,
     generate_tts_audio,
+    agent_chat_reply,
 )
 
 from extraction import process_resume
@@ -3946,6 +3947,103 @@ async def api_tts(payload: dict):
     except Exception as exc:
         logger.exception("Unhandled error in request")
         raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
+
+
+# Site-wide "Tailor" assistant. Guests get a small free allowance per session
+# (lead-gen); signed-in users get a generous cap. Returns a friendly, capped
+# reply so a public widget can't run up unbounded model cost.
+AGENT_GUEST_LIMIT = 6
+AGENT_USER_LIMIT = 60
+
+_AGENT_STOPWORDS = set(
+    "a an the of to for on in at is are be was were do does did how can could would should "
+    "i you me my your our we us it its this that these those with without and or but so if "
+    "what which who whom whose when where why about into over under out up down off no not "
+    "any some all more most any give show tell suggest recommend find help please thanks "
+    "resume resumes cv blog blogs article articles post posts read topic topics".split()
+)
+
+
+def _agent_blog_line(p) -> str:
+    desc = (p.description or "").strip().replace("\n", " ")
+    if len(desc) > 120:
+        desc = desc[:117].rstrip() + "..."
+    return f"- {p.title} (/blog/{p.slug})" + (f": {desc}" if desc else "")
+
+
+def _retrieve_agent_blogs(message: str, limit: int = 10) -> str:
+    """Rank ALL blog posts against the user's question by keyword overlap and
+    return a compact catalog of just the most relevant ones. Beats a static
+    top-N list because the right article for the topic is actually included."""
+    try:
+        posts = blog_service.load_posts()
+    except Exception:
+        return ""
+    words = {
+        w for w in re.findall(r"[a-z0-9]+", (message or "").lower())
+        if len(w) > 2 and w not in _AGENT_STOPWORDS
+    }
+    if not words:
+        return ""
+    scored = []
+    for p in posts:
+        title_l = (p.title or "").lower()
+        body_l = " ".join([(p.description or ""), " ".join(p.tags or []), (p.category or "")]).lower()
+        score = 0
+        for w in words:
+            if w in title_l:
+                score += 3
+            elif w in body_l:
+                score += 1
+        if score:
+            scored.append((score, p))
+    if not scored:
+        return ""
+    scored.sort(key=lambda sp: -sp[0])
+    return "\n".join(_agent_blog_line(p) for _, p in scored[:limit])
+
+
+@app.post("/api/agent/chat")
+async def api_agent_chat(request: Request, payload: dict):
+    message = (payload.get("message") or "").strip()
+    if not message:
+        raise HTTPException(status_code=400, detail="Message required")
+    if len(message) > 2000:
+        message = message[:2000]
+
+    is_logged_in = bool(request.session.get("user_id"))
+    limit = AGENT_USER_LIMIT if is_logged_in else AGENT_GUEST_LIMIT
+    key = "agent_msgs_user" if is_logged_in else "agent_msgs_guest"
+    used = int(request.session.get(key, 0))
+    if used >= limit:
+        if is_logged_in:
+            return {"reply": "You've hit the chat limit for now — please try again a little later.", "limited": True}
+        return {
+            "reply": "That's all I can answer without an account. Create a free account and I can keep helping "
+                     "— plus you unlock the resume tools, ATS scoring, and more.",
+            "limited": True,
+            "signup": True,
+        }
+
+    history = payload.get("history") or []
+    if not isinstance(history, list):
+        history = []
+    page_path = (payload.get("page") or "/")
+
+    try:
+        reply = await agent_chat_reply(
+            user_message=message,
+            history=history,
+            page_path=page_path,
+            is_logged_in=is_logged_in,
+            blog_catalog=_retrieve_agent_blogs(message),
+        )
+    except Exception:
+        logger.exception("Agent chat failed")
+        raise HTTPException(status_code=500, detail="The assistant is unavailable right now. Please try again.")
+
+    request.session[key] = used + 1
+    return {"reply": reply, "remaining": max(0, limit - (used + 1))}
 
 
 @app.post("/api/generate-interview-questions")
