@@ -13,6 +13,30 @@
 .solx-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 38px rgba(37, 99, 235, .45); }
 .solx-btn.ghost { background: transparent; color: #cdd8ee; border: 1px solid rgba(255,255,255,.16); box-shadow: none; }
 
+/* Primary landing CTAs get the shiny 3D-tilt bevel (Uiverse.io by AqFox — same
+   recipe as the homepage hero, for consistency). Pure CSS, so it applies to
+   every .solx-btn text link with no markup change. .ghost is left untouched. */
+.solx-btn:not(.ghost) {
+  font-weight: 700;
+  text-shadow: 0 2px 0 rgba(0,0,0,.32);
+  background:
+    linear-gradient(90deg, #0000 33%, rgba(255,255,255,.33), #0000 67%) var(--_p,100%)/300% no-repeat,
+    linear-gradient(135deg, #3b82f6, #1d4ed8);
+  transform: perspective(500px) rotateY(-18deg);
+  transition: .35s ease;
+}
+.solx-btn:not(.ghost):hover,
+.solx-btn:not(.ghost):focus-visible {
+  --_p: 0%;
+  transform: perspective(500px) rotateY(18deg) translateY(-2px);
+  box-shadow: 0 16px 38px rgba(37, 99, 235, .45);
+}
+.solx-btn:not(.ghost):active { transform: perspective(500px) rotateY(0deg) scale(.98); }
+@media (prefers-reduced-motion: reduce) {
+  .solx-btn:not(.ghost) { transform: none; transition: none; }
+  .solx-btn:not(.ghost):hover, .solx-btn:not(.ghost):focus-visible { transform: none; }
+}
+
 .solx-eyebrow { display: block; font-size: 14px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #60a5fa; margin: 0 0 16px; }
 .solx-kicker { text-align:center; font-size:14px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#60a5fa; }
 .solx-h2 { text-align:center; text-wrap:balance; font-family:'DM Serif Display', serif; font-size: clamp(36px,5vw,56px); font-weight: 400; letter-spacing:-.02em; line-height:1.14; margin:10px 0 14px; color:#f2f6ff; }
