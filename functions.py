@@ -3515,6 +3515,108 @@ async def generate_tts_audio(text: str) -> bytes:
     return response.content
 
 
+# ── Site-wide AI assistant ("Tailor") ────────────────────────────────────────
+# A friendly product guide + general career assistant that lives on every page.
+# Knows theTailorCV's features so it can explain them and nudge signup, but also
+# helps with general resume/interview/career questions.
+
+AGENT_FEATURE_KNOWLEDGE = """theTailorCV is an AI career toolkit. Its features:
+- ATS Score (/solutions): scores a resume against a job description and shows what's missing. Guests get one free scan.
+- AI Optimize (/optimize): rewrites a resume to match a specific job, ATS-friendly.
+- Resume Builder (/modify-cv): build a resume from guided sections, pick a template, live preview, export PDF.
+- Cover Letter (/cover-letter): generates a tailored cover letter from a resume + job description.
+- My Resumes (/my-resumes): every optimized resume is saved with its ATS score and job, re-download anytime.
+- Portfolio Website (/portfolio): turn a resume into a live shareable portfolio site, no coding.
+- Templates (/templates): clean, ATS-safe resume templates.
+- Interview Prep (/interview-prep): generate likely interview questions from a resume + role.
+- Mock Interview (/mock-interview): practice with Zara, an AI interviewer that asks about YOUR projects and gives feedback.
+- Chrome Extension (/extension): tailor resumes and check ATS score right on any job posting.
+- Pricing (/pricing): free account to start; Pro unlocks unlimited tailoring."""
+
+AGENT_COMPANY_INFO = """About theTailorCV (see /about):
+- Co-founders: Shubham Sarkar (Co-Founder & Head of Technology) and Trisha Debnath (Co-Founder & Head of Strategy). They're a couple who built theTailorCV together while finishing their Chemical Engineering degrees — Shubham taught himself to code through tough circumstances and sketched the first version; Trisha learned frontend and FastAPI and turned it into production software.
+- Contact / support: email support@thetailorcv.com.
+- Social: X/Twitter @sarkar53765, LinkedIn linkedin.com/company/thetailorcv, Instagram @thetailorcv, YouTube @thetailorcv.
+If someone asks who made theTailorCV, who the founders are, or how to get in touch, share this."""
+
+PAGE_CONTEXT = {
+    "/solutions":       "the ATS Score checker",
+    "/optimize":        "the AI resume optimizer",
+    "/modify-cv":       "the resume builder",
+    "/cover-letter":    "the AI cover letter generator",
+    "/my-resumes":      "the saved resumes library",
+    "/portfolio":       "the portfolio website builder",
+    "/templates":       "the resume templates gallery",
+    "/interview-prep":  "the interview question generator",
+    "/mock-interview":  "the AI mock interview (Zara)",
+    "/extension":       "the Chrome extension",
+    "/pricing":         "the pricing page",
+}
+
+
+def build_agent_system_prompt(page_path: str, is_logged_in: bool, blog_catalog: str = "") -> str:
+    page_path = (page_path or "/").rstrip("/") or "/"
+    here = PAGE_CONTEXT.get(page_path)
+    where = f"The user is currently on {here}. " if here else ""
+    audience = (
+        "The user is signed in — be helpful and practical, point them to the right feature. "
+        if is_logged_in else
+        "The user is NOT signed in. Be genuinely helpful first, then, when it fits naturally, "
+        "encourage them to create a free account to save their work and unlock the tools — never pushy. "
+    )
+    blog_block = ""
+    if blog_catalog:
+        blog_block = (
+            "\n\nteTailorCV also has a blog with career articles. When a user's question is "
+            "answered by one of these, recommend it by title and link (e.g. /blog/<slug>). "
+            "Only recommend articles from this list; never invent a title or link:\n"
+            f"{blog_catalog}"
+        )
+    return (
+        "You are Tailor, the friendly AI assistant for theTailorCV. You help with two things: "
+        "(1) explaining and guiding people to theTailorCV's features, and (2) general career help "
+        "— resumes, cover letters, interviews, job search, ATS tips.\n\n"
+        f"{AGENT_FEATURE_KNOWLEDGE}\n\n"
+        f"{AGENT_COMPANY_INFO}"
+        f"{blog_block}\n\n"
+        f"{where}{audience}\n"
+        "Style: warm, concise, conversational — 2-4 short sentences unless asked for detail. "
+        "Use plain text (no markdown headings). When a theTailorCV feature or blog article solves "
+        "the user's need, name it and give its full link (e.g. /cover-letter or /blog/some-slug) so "
+        "it's clickable. Share support@thetailorcv.com or the full social URL when relevant. "
+        "Stay honest; if you don't know, say so."
+    )
+
+
+async def agent_chat_reply(
+    user_message: str,
+    history: list | None = None,
+    page_path: str = "/",
+    is_logged_in: bool = False,
+    blog_catalog: str = "",
+    model: str = "gpt-4o-mini",
+) -> str:
+    """One assistant turn for the site-wide 'Tailor' agent."""
+    client = await _build_openai_client()
+    messages = [{"role": "system", "content": build_agent_system_prompt(page_path, is_logged_in, blog_catalog)}]
+    # Carry a short rolling window of prior turns for context.
+    for turn in (history or [])[-8:]:
+        role = turn.get("role")
+        content = (turn.get("content") or "").strip()
+        if role in ("user", "assistant") and content:
+            messages.append({"role": role, "content": content[:2000]})
+    messages.append({"role": "user", "content": user_message[:2000]})
+    response = await client.chat.completions.create(
+        model=model,
+        messages=messages,
+        temperature=0.5,
+        max_tokens=400,
+    )
+    choice = response.choices[0] if response.choices else None
+    return (choice.message.content if choice else "").strip() or \
+        "Sorry, I couldn't come up with a reply just now — mind trying again?"
+
+
 async def generate_mock_interview_first_question(
     resume_text: str,
     role: str,

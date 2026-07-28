@@ -488,6 +488,11 @@
         </div>
       </div>
 
+      <!-- Hover the orb triggers a click on this real button, whose click
+           makes Zara speak. Visually hidden but focusable/clickable. -->
+      <button id="zaraSpeakBtn" type="button" aria-label="Play Zara's introduction"
+              style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);border:0;"></button>
+
       <div id="zaraGreeting" class="zi-in zi-2" style="color:#8b93c9;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;"></div>
       <h1 class="zi-in zi-3" style="font-size:2.2rem;font-weight:800;margin:0 0 28px;color:#fff;letter-spacing:-0.01em;">Hi, I'm Zara.</h1>
     </div>
@@ -937,7 +942,36 @@
         <span style="color:#8b83ff;font-size:13px;">Zara is introducing herself...</span>
       </div>
 
-      <button id="letBeginBtn" class="zi-in zi-6 zi-launch-btn" onclick="showMainContent()">
+      <div class="zi-btn-row zi-in zi-6">
+      <button id="zaraIntroBtn" type="button" class="zi-launch-btn zi-intro-btn" onclick="zaraHoverIntro()">
+        <div class="zi-launch-outline"></div>
+        <div class="zi-launch-state zi-launch-state--default">
+          <div class="zi-launch-icon">
+            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="2" width="6" height="12" rx="3"></rect>
+              <path d="M5 10a7 7 0 0 0 14 0"></path>
+              <path d="M12 19v3"></path>
+            </svg>
+          </div>
+          <p>
+            <span style="--i:0">I</span><span style="--i:1">n</span><span style="--i:2">t</span><span style="--i:3">r</span><span style="--i:4">o</span><span style="--i:5">d</span><span style="--i:6">u</span><span style="--i:7">c</span><span style="--i:8">t</span><span style="--i:9">i</span><span style="--i:10">o</span><span style="--i:11">n</span>
+          </p>
+        </div>
+        <div class="zi-launch-state zi-launch-state--sent">
+          <div class="zi-launch-icon">
+            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <rect x="9" y="2" width="6" height="12" rx="3"></rect>
+              <path d="M5 10a7 7 0 0 0 14 0"></path>
+              <path d="M12 19v3"></path>
+            </svg>
+          </div>
+          <p>
+            <span style="--i:5">S</span><span style="--i:6">p</span><span style="--i:7">e</span><span style="--i:8">a</span><span style="--i:9">k</span><span style="--i:10">i</span><span style="--i:11">n</span><span style="--i:12">g</span>
+          </p>
+        </div>
+      </button>
+
+      <button id="letBeginBtn" class="zi-launch-btn" onclick="showMainContent()">
         <div class="zi-launch-outline"></div>
         <div class="zi-launch-state zi-launch-state--default">
           <div class="zi-launch-icon">
@@ -971,6 +1005,7 @@
           </p>
         </div>
       </button>
+      </div>
 
       <p class="zi-in zi-7" style="margin:34px 0 0;color:rgba(255,255,255,.55);font-size:13px;font-weight:500;"><span style="color:#facc15;letter-spacing:1px;">★★★★★</span>&nbsp; 10,000+ mock interviews run &middot; 4.9 rating</p>
     </div>
@@ -1017,6 +1052,28 @@
   font-style: normal;
   font-size: 18px;
   font-weight: 700;
+}
+/* "Introduction" — same launch button, violet instead of blue. */
+.zi-launch-btn.zi-intro-btn {
+  --primary: #d8b4fe;
+  --neutral-1: #a855f7;
+  --neutral-2: #7c3aed;
+}
+/* Put the two CTAs side by side; let each size to the row instead of 100%. */
+.zi-btn-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.zi-btn-row .zi-launch-btn {
+  width: auto;
+  max-width: none;
+  flex: 1 1 200px;
+  margin: 0;
 }
 .zi-launch-btn:hover {
   transform: scale(1.02);
@@ -1341,6 +1398,12 @@
 <script src="/static/mobile_nav.js"></script>
 {% if is_logged_in %}
 <script>
+// Read the csrftoken cookie the CSRF middleware sets — every JSON POST (e.g.
+// /api/tts) must echo it back in the X-CSRFToken header or it 403s.
+function _csrf(){
+  const m = document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/);
+  return m ? decodeURIComponent(m[1]) : '';
+}
 const STATE = { userName:'', role:'', type:'mixed', numQuestions:10, resumeText:'', jobDesc:'', questionIndex:0, currentQuestion:'', conversation_history:[], qa_log:[], currentTranscript:'', liveInterim:'', fillerCount:0, totalWords:0, speechRec:null, isRecording:false, timerSec:60, timerId:null, camStream:null, isCameraOn:false, screenStream:null, isScreenSharing:false, isRejected:false, isInterviewEnded:false, faceDetector:null, camMonTimer:null, camSamples:0, camGoodSamples:0, ttsAudio:null, ttsCtx:null, ttsSrc:null };
 const FILLERS = ['um','uh','like','you know','basically','literally','actually','sort of','kind of','i mean'];
 
@@ -1496,7 +1559,7 @@ async function speakQuestion(text, onDone){
   if(STATE.isInterviewEnded) return;
   _stopTts();
   try{
-    const resp = await fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})});
+    const resp = await fetch('/api/tts',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-CSRFToken':_csrf()},body:JSON.stringify({text})});
     if(!resp.ok) throw new Error('TTS HTTP '+resp.status);
     const blob = await resp.blob();
     const url  = URL.createObjectURL(blob);
@@ -2115,7 +2178,7 @@ const _GREET_TEXT = (function(){
 let _greetAudio = null;          // {el, url}, set when fully buffered
 let _greetFetchPromise = null;   // the in-progress fetch Promise
 (function _prefetchGreeting(){
-  _greetFetchPromise = fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:_GREET_TEXT})})
+  _greetFetchPromise = fetch('/api/tts',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-CSRFToken':_csrf()},body:JSON.stringify({text:_GREET_TEXT})})
     .then(r => r.ok ? r.blob() : Promise.reject())
     .then(blob => new Promise(resolve => {
       const url = URL.createObjectURL(blob);
@@ -2231,34 +2294,38 @@ function zaraHoverIntro(){
   }
   _browserGreet();
 }
-(function _bindZaraHoverIntro(){
-  const orbEl = document.querySelector('#zaraAvatar .orb');
-  if(orbEl) orbEl.addEventListener('mouseenter', zaraHoverIntro);
-})();
-// Browsers block audio (and often speechSynthesis) from playing until the
-// page has seen a real user gesture — hover doesn't count. Prime both on
-// the first click/keydown/touch anywhere so the hover-triggered greeting
-// above actually plays instead of silently failing.
+// Browsers block audio until the page has seen a REAL user gesture (a hover is
+// not one). So on the very first real gesture anywhere on the page, we play a
+// short silent clip — that genuinely unlocks HTML5 audio for the whole session,
+// after which the hover-triggered greeting is allowed to play.
+let _zaraAudioUnlocked = false;
+const _SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
 (function _unlockAudioOnFirstGesture(){
-  let unlocked = false;
   function unlock(){
-    if(unlocked) return;
-    unlocked = true;
-    try { const a = new Audio(); a.play().catch(()=>{}); a.pause(); } catch(e) {}
+    if(_zaraAudioUnlocked) return;
+    _zaraAudioUnlocked = true;
+    try { const a = new Audio(_SILENT_WAV); a.volume = 0; a.play().catch(()=>{}); } catch(e) {}
     if('speechSynthesis' in window){
-      try {
-        const u = new SpeechSynthesisUtterance('');
-        u.volume = 0;
-        speechSynthesis.speak(u);
-      } catch(e) {}
+      try { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; speechSynthesis.speak(u); } catch(e) {}
     }
-    document.removeEventListener('click', unlock);
-    document.removeEventListener('keydown', unlock);
-    document.removeEventListener('touchstart', unlock);
+    document.removeEventListener('pointerdown', unlock, true);
+    document.removeEventListener('keydown', unlock, true);
   }
-  document.addEventListener('click', unlock);
-  document.addEventListener('keydown', unlock);
-  document.addEventListener('touchstart', unlock);
+  document.addEventListener('pointerdown', unlock, true);
+  document.addEventListener('keydown', unlock, true);
+})();
+
+// Hover-the-orb → click the real speak button → its click makes Zara talk.
+// A real CLICK on the orb also fires it and carries a trusted gesture, so that
+// path plays audio even on a fresh page load with no prior interaction.
+(function _bindZaraHoverIntro(){
+  const orbEl    = document.querySelector('#zaraAvatar .orb');
+  const speakBtn = document.getElementById('zaraSpeakBtn');
+  if(speakBtn) speakBtn.addEventListener('click', zaraHoverIntro);
+  if(orbEl && speakBtn){
+    orbEl.addEventListener('mouseenter', function(){ speakBtn.click(); });
+    orbEl.addEventListener('click',      function(){ speakBtn.click(); });
+  }
 })();
 
 function showMainContent(){
@@ -2486,7 +2553,7 @@ function startNewInterview(){
     }
     // Silently re-pre-fetch greeting for next session
     _greetAudio = null;
-    _greetFetchPromise = fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:_GREET_TEXT})})
+    _greetFetchPromise = fetch('/api/tts',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-CSRFToken':_csrf()},body:JSON.stringify({text:_GREET_TEXT})})
       .then(r => r.ok ? r.blob() : Promise.reject())
       .then(blob => new Promise(resolve => {
         const url = URL.createObjectURL(blob);
