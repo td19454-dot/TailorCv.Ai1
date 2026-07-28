@@ -41,6 +41,30 @@
 .solx-kicker { text-align:center; font-size:14px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#60a5fa; }
 .solx-h2 { text-align:center; text-wrap:balance; font-family:'DM Serif Display', serif; font-size: clamp(36px,5vw,56px); font-weight: 400; letter-spacing:-.02em; line-height:1.14; margin:10px 0 14px; color:#f2f6ff; }
 .solx-h2 .g, .solx-hero h1 .g { color: #4f9bff; }
+
+/* Blue highlight words "write themselves in" left→right on load. A masked
+   text-reveal (background-clip:text with a growing colored band) — reads like
+   the phrase is being typed. Guarded by reduced-motion so the text is always
+   fully visible if animation is off/unsupported. */
+@media (prefers-reduced-motion: no-preference) {
+  .solx-hero h1 .g,
+  .solx-h2 .g,
+  .solx-step h3 .g {
+    background: linear-gradient(90deg, #4f9bff 0%, #4f9bff 100%) left center / 0% 100% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: solxWriteLoop 3s .2s infinite;
+  }
+  /* type in → hold → backspace-erase → pause → repeat */
+  @keyframes solxWriteLoop {
+    0%   { background-size: 0% 100%;   animation-timing-function: steps(24, end); }
+    35%  { background-size: 100% 100%; animation-timing-function: linear; }
+    62%  { background-size: 100% 100%; animation-timing-function: steps(18, end); }
+    88%  { background-size: 0% 100%;   animation-timing-function: linear; }
+    100% { background-size: 0% 100%; }
+  }
+}
 .solx-lead { text-align:center; color:#cbd4e6; max-width:60ch; margin:0 auto 44px; font-size:1.06rem; line-height:1.6; }
 .solx-sec { padding: clamp(46px,5.5vw,84px) 0; background: transparent; }
 
