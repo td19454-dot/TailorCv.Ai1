@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verified Freelance & AI Gigs | TailorCV</title>
+    <meta name="description" content="Browse verified, apply-now freelance and AI-training gigs from Mercor, Outlier, Alignerr, Scale and more — all in one trusted place. See which gigs match your resume.">
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="stylesheet" href="/static/header-footer.css?v=8">
+    <link rel="stylesheet" href="/static/style2.css?v=7">
+    <link rel="stylesheet" href="/static/gigs.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style> html { background-color: #030014; } </style>
+</head>
+<body>
+<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;"></canvas>
+    {% include "_nav.html" %}
+
+    <main class="gg-page">
+        <div class="gg-head">
+            <span class="gg-eyebrow">TailorCV Gigs</span>
+            <h1>Verified freelance &amp; AI gigs — apply now</h1>
+            <p>Real, currently-open gigs from Mercor, Outlier, Alignerr, Scale, DataAnnotation and more — gathered in one place and checked so you can trust every listing. Sign in to see which ones match your resume.</p>
+        </div>
+
+        <div class="gg-trust">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Every gig verified legit</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Only apply-now roles</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> No upfront fees, ever</span>
+        </div>
+
+        {% if not is_logged_in %}
+        <div class="gg-nudge">
+            <p><strong>Want to see which gigs you can get right now?</strong> Sign in and add your resume — we'll match each gig to your skills.</p>
+            <a href="/signup?next=/gigs">Sign in to match</a>
+        </div>
+        {% elif not has_resume %}
+        <div class="gg-nudge">
+            <p><strong>Add your resume to unlock matching.</strong> We'll show which gigs your skills already qualify you for.</p>
+            <a href="/extension">Add my resume</a>
+        </div>
+        {% endif %}
+
+        <div class="gg-filters">
+            <form method="get" action="/gigs">
+                <input class="gg-input" type="text" name="q" value="{{ q }}" placeholder="Search gigs (e.g. writing, python, annotation)…">
+                <select class="gg-select" name="source" onchange="this.form.submit()">
+                    <option value="">All sources</option>
+                    {% for s in sources %}<option value="{{ s }}" {% if s == sel_source %}selected{% endif %}>{{ s|capitalize }}</option>{% endfor %}
+                </select>
+                <select class="gg-select" name="category" onchange="this.form.submit()">
+                    <option value="">All categories</option>
+                    {% for c in categories %}<option value="{{ c }}" {% if c == sel_category %}selected{% endif %}>{{ c }}</option>{% endfor %}
+                </select>
+                <select class="gg-select" name="remote" onchange="this.form.submit()">
+                    <option value="">Any location</option>
+                    <option value="1" {% if sel_remote %}selected{% endif %}>Remote only</option>
+                </select>
+                <button class="gg-btn" type="submit">Search</button>
+                {% if is_logged_in and has_resume %}
+                <span class="gg-viewtabs">
+                    <a href="/gigs" class="{% if not matched_view %}on{% endif %}">All gigs</a>
+                    <a href="/gigs?view=matched" class="{% if matched_view %}on{% endif %}">Matched for you</a>
+                </span>
+                {% endif %}
+            </form>
+        </div>
+
+        {% if gigs %}
+        <div class="gg-grid">
+            {% for g in gigs %}
+            <a class="gg-card" href="/gigs/{{ g.slug }}">
+                <div class="gg-card-top">
+                    <span class="gg-badge-verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Verified</span>
+                    {% if g.accepting_now %}<span class="gg-badge-open"><i></i> Apply now</span>{% endif %}
+                    <span class="gg-source">{{ g.source }}</span>
+                </div>
+                <h3>{{ g.title }}</h3>
+                {% if g.company %}<div class="gg-company">{{ g.company }}</div>{% endif %}
+                <div class="gg-meta">
+                    {% if g.category %}<span>{{ g.category }}</span>{% endif %}
+                    {% if g.is_remote %}<span>Remote</span>{% elif g.location %}<span>{{ g.location }}</span>{% endif %}
+                    {% if g.pay_text %}<span class="gg-pay">{{ g.pay_text }}</span>{% endif %}
+                </div>
+                {% if g.match_label %}
+                <div class="gg-match">
+                    <span class="gg-match-chip {% if g.match_score >= 75 %}good{% elif g.match_score >= 45 %}mid{% else %}low{% endif %}">{{ g.match_label }}</span>
+                    {% if g.match_score is not none %}<span class="gg-match-pct">{{ g.match_score }}% skills match</span>{% endif %}
+                </div>
+                {% endif %}
+            </a>
+            {% endfor %}
+        </div>
+
+        {% if total_pages > 1 %}
+        <div class="gg-pager">
+            <a class="{% if page <= 1 %}disabled{% endif %}" href="?page={{ page - 1 }}{% if q %}&q={{ q }}{% endif %}{% if sel_source %}&source={{ sel_source }}{% endif %}{% if sel_category %}&category={{ sel_category }}{% endif %}{% if matched_view %}&view=matched{% endif %}">‹ Prev</a>
+            <span class="cur">{{ page }} / {{ total_pages }}</span>
+            <a class="{% if page >= total_pages %}disabled{% endif %}" href="?page={{ page + 1 }}{% if q %}&q={{ q }}{% endif %}{% if sel_source %}&source={{ sel_source }}{% endif %}{% if sel_category %}&category={{ sel_category }}{% endif %}{% if matched_view %}&view=matched{% endif %}">Next ›</a>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <div class="gg-empty">
+            <h2>No gigs match your filters right now</h2>
+            <p>Try clearing filters or checking back soon — we refresh listings regularly.</p>
+        </div>
+        {% endif %}
+    </main>
+
+    {% include "_footer.html" %}
+
+    <script src="/static/auth_nav.js?v=16" defer></script>
+    <script src="/static/mobile_nav.js" defer></script>
+<script>
+(function(){
+  const canvas = document.getElementById('wave-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const waves = [
+    {amp:100, freq:0.0016, speed:0.00035, color:[59,130,246],  yf:0.38, alpha:0.14},
+    {amp: 80, freq:0.0022, speed:0.00028, color:[79,70,229],   yf:0.50, alpha:0.11},
+    {amp: 90, freq:0.0014, speed:0.00042, color:[99,102,241],  yf:0.60, alpha:0.10},
+    {amp: 60, freq:0.0026, speed:0.00050, color:[37,99,235],   yf:0.44, alpha:0.09},
+    {amp: 65, freq:0.0012, speed:0.00022, color:[124,58,237],  yf:0.70, alpha:0.09},
+    {amp: 40, freq:0.0030, speed:0.00055, color:[6,182,212],   yf:0.54, alpha:0.07},
+  ];
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now();
+    waves.forEach(function(wv){
+      ctx.beginPath();
+      for(let x = 0; x <= W; x += 2){
+        const y = H * wv.yf + Math.sin(x * wv.freq + t * wv.speed) * wv.amp + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45 + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const r = wv.color[0], g = wv.color[1], b = wv.color[2];
+      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+      gr.addColorStop(0, 'rgba('+r+','+g+','+b+','+wv.alpha+')');
+      gr.addColorStop(0.5, 'rgba('+r+','+g+','+b+','+(wv.alpha*0.4)+')');
+      gr.addColorStop(1, 'rgba('+r+','+g+','+b+',0)');
+      ctx.fillStyle = gr; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
