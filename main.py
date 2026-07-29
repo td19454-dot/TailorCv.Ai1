@@ -62,6 +62,8 @@ from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeReque
 from routers.linkedin import router as linkedin_router
 from routers.billing import router as billing_router
 from routers.feedback import router as feedback_router
+# Gigs feature disabled — import kept out so the route isn't registered.
+# from routers.jobs import router as jobs_router
 from blog_system import BlogService, codehilite_css, xml_escape
 
 
@@ -375,6 +377,8 @@ templates.env.globals["google_site_verification"] = GOOGLE_SITE_VERIFICATION
 app.include_router(linkedin_router)
 app.include_router(billing_router)
 app.include_router(feedback_router)
+# Gigs feature hidden/disabled — route intentionally not registered (files kept dormant on disk).
+# app.include_router(jobs_router)
 blog_service = BlogService(BLOG_CONTENT_DIR)
 
 

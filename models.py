@@ -244,3 +244,46 @@ class UsageRecord(Base):
     __table_args__ = (UniqueConstraint("user_id", "month", name="uq_user_month"),)
 
     user = relationship("User", back_populates="usage_records")
+
+
+class JobListing(Base):
+    """An aggregated freelance / AI-training gig (Mercor, Outlier, Alignerr, Fleet,
+    Scale/Remotasks, DataAnnotation, and similar). Pulled from external sources,
+    marked verified-legit, and shown on the public /gigs board. Candidates apply
+    on the source site via `apply_url` — we are the trusted discovery + matching
+    layer. Global (not per-user); matching is computed per-request against a
+    signed-in user's resume."""
+    __tablename__ = "job_listings"
+
+    id = Column(Integer, primary_key=True, index=True)
+    source = Column(String(40), nullable=False, index=True)        # mercor, outlier, alignerr, fleet, scale, ...
+    source_job_id = Column(String(200), nullable=False)            # stable id from the source, for dedupe
+    slug = Column(String(220), unique=True, index=True, nullable=False)  # our detail-page path /gigs/<slug>
+
+    title = Column(String(300), nullable=False)
+    company = Column(String(200), nullable=True)
+    description = Column(Text, nullable=True)
+    category = Column(String(80), nullable=True, index=True)       # e.g. AI Training, Data Labeling, Writing
+    tags = Column(Text, nullable=True)                             # JSON-encoded list
+    required_skills = Column(Text, nullable=True)                  # JSON-encoded list, used for matching
+    min_experience = Column(String(40), nullable=True)             # entry, 1-3y, senior, ...
+    pay_text = Column(String(160), nullable=True)                  # free-text pay/rate as shown by source
+    location = Column(String(160), nullable=True)
+    is_remote = Column(Boolean, default=True, nullable=False)
+    apply_url = Column(String(600), nullable=False)                # external apply link (source site)
+
+    posted_at = Column(DateTime, nullable=True)
+    fetched_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    last_seen_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+
+    accepting_now = Column(Boolean, default=True, nullable=False, index=True)  # currently open to apply
+    is_verified = Column(Boolean, default=False, nullable=False, index=True)   # passed verify-legit rule
+    verification_note = Column(String(240), nullable=True)
+    is_active = Column(Boolean, default=True, nullable=False, index=True)      # not stale / withdrawn
+
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+    __table_args__ = (
+        UniqueConstraint("source", "source_job_id", name="uq_source_jobid"),
+    )
