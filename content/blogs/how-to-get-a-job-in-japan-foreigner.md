@@ -49,7 +49,7 @@ Because sponsorship is an effort for employers, your job is to make your value �
 
 - **Technology / IT:** strong and growing demand for software engineers, data specialists, and IT professionals — often with English-friendly environments.
 - **English teaching:** a well-established route (language schools, the JET Programme, universities); typically requires a degree, and native/fluent English.
-- **Finance and international business:** global firms in Tokyo hire bilingual and specialist professionals.
+- **Finance and international business:** global firms in Tokyo hire [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) and specialist professionals.
 - **Engineering and manufacturing:** Japan's industrial base recruits skilled engineers.
 - **Tourism, hospitality, and translation:** roles that value foreign language skills and international perspective.
 
@@ -76,7 +76,7 @@ Build a polished English resume with the [TailorCV resume builder](https://theta
 
 ## Step 2: Search in the Right Places
 
-- **Foreigner-focused job sites** (e.g. sites specialising in bilingual and international roles in Japan) are the best starting point.
+- **Foreigner-focused [job sites](https://thetailorcv.com/blog/best-job-search-websites-2026)** (e.g. sites specialising in bilingual and international roles in Japan) are the best starting point.
 - **LinkedIn** — used by global companies and recruiters hiring foreigners.
 - **Recruitment agencies** that place foreigners — they know which employers sponsor and often guide you through the process.
 - **Company career pages** — global firms and English-friendly employers.

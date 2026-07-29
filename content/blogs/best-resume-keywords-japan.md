@@ -42,7 +42,7 @@ These credentials and terms carry special weight in the Japanese market:
 
 - **JLPT (Japanese Language Proficiency Test):** state your level explicitly — "JLPT N2", "JLPT N1". This is one of the most valuable signals for any role touching Japanese business.
 - **TOEIC:** widely used to certify English ability in Japan — include your score (e.g. "TOEIC 900").
-- **Bilingual / Business-level Japanese / Native English** — clear language-level descriptors.
+- **[Bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) / Business-level Japanese / Native English** — clear language-level descriptors.
 - **Japan / APAC market experience** — where relevant.
 - **Visa status** — noting eligibility can help (confirm details separately).
 
@@ -75,7 +75,7 @@ Use these as prompts — always match them to the specific job and your real exp
 ### English Teaching / Education
 
 - ESL/EFL, curriculum, lesson planning
-- TEFL/TESOL certification
+- TEFL/TESOL [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume)
 - Classroom management
 
 ### Sales, Marketing, and International Business
@@ -109,9 +109,9 @@ Keyword **stuffing** — cramming irrelevant terms or repeating them unnaturally
 
 ## Put It All Together
 
-1. Build a clean, ATS-friendly resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
+1. Build a clean, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
 2. For each job, tailor keywords and check your match with the [resume optimizer](https://thetailorcv.com/solutions).
-3. Ensure the format is parser-friendly — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
+3. Ensure the format is [parser-friendly](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
 4. Mirror your keywords on LinkedIn, which global recruiters in Japan search.
 5. Add a targeted cover letter — see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide).
 
@@ -129,10 +129,10 @@ Very — they're trusted, concrete credentials in the Japanese market. State you
 Read the job description for its repeated skills and terms, or use the [TailorCV resume optimizer](https://thetailorcv.com/solutions) to compare your resume to the posting and reveal missing keywords.
 
 **Can I use too many keywords?**
-Yes — keyword stuffing backfires with ATS and recruiters. Use relevant terms naturally and honestly within real achievements.
+Yes — [keyword stuffing](https://thetailorcv.com/blog/ats-keyword-mistakes) backfires with ATS and recruiters. Use relevant terms naturally and honestly within real achievements.
 
 ## Final Thoughts
 
-The best resume keywords for jobs in Japan are the ones that match each job description — plus the Japan-specific credentials, especially your JLPT and TOEIC scores, that employers here trust. Mirror the posting's language honestly, weave keywords into quantified achievements, and keep the format ATS-friendly.
+The best resume keywords for jobs in Japan are the ones that match each job description — plus the Japan-specific credentials, especially your JLPT and TOEIC scores, that employers here trust. Mirror the posting's language honestly, weave keywords into [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), and keep the format ATS-friendly.
 
 Build your resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), and let the [resume optimizer](https://thetailorcv.com/solutions) show you exactly which keywords each Japanese job is looking for. The right words, used honestly, get you found — and get you interviews.

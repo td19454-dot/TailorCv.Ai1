@@ -20,7 +20,7 @@ This guide compares the rirekisho and the Western resume in 2026: their key diff
 - The **Western resume** is a flexible, achievement-focused marketing document that emphasises standing out.
 - **Traditional Japanese companies** expect a rirekisho (plus a *shokumu-keirekisho*); **global/English-language roles** usually accept a Western resume.
 - Know **which type of employer** you're applying to, and match your document accordingly.
-- For global roles, an **ATS-friendly Western resume** is your main tool.
+- For global roles, an **[ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) Western resume** is your main tool.
 
 ## The Two Philosophies
 
@@ -50,7 +50,7 @@ Understanding this explains every specific difference below.
 
 ### Work History Detail
 
-- **Rirekisho:** a concise chronological listing; detailed accomplishments go in the separate ***shokumu-keirekisho*** (work-history document).
+- **Rirekisho:** a concise [chronological](https://thetailorcv.com/blog/chronological-vs-functional-resume) listing; detailed accomplishments go in the separate ***shokumu-keirekisho*** (work-history document).
 - **Western resume:** the resume itself carries detailed achievement bullets.
 
 ### Tone and Differentiation

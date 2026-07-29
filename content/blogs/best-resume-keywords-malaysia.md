@@ -10,7 +10,7 @@ keywords: resume keywords malaysia, ats keywords malaysia, best resume keywords,
 image: public/blog-images/best-resume-keywords-malaysia.png
 ---
 
-Keywords are what get your resume noticed — first by the Applicant Tracking System (ATS) that most Malaysian employers use, and then by the recruiter skimming it. Use the right terms, matched to the job you're applying for, and you rise to the top of the shortlist. Use the wrong ones (or none), and even a strong candidate gets filtered out.
+Keywords are what get your resume noticed — first by the [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) that most Malaysian employers use, and then by the recruiter skimming it. Use the right terms, matched to the job you're applying for, and you rise to the top of the shortlist. Use the wrong ones (or none), and even a strong candidate gets filtered out.
 
 This guide gives you the best resume keywords for Malaysian jobs in 2026, organised by industry and role, plus the crucial part most people miss: how to use them naturally so you pass both the software and the human.
 
@@ -18,13 +18,13 @@ This guide gives you the best resume keywords for Malaysian jobs in 2026, organi
 
 - Resume keywords are the specific skills, tools, and phrases a job description uses — and the ATS scans for.
 - The best keywords are always **the ones in the specific job posting you're applying to**; this list is your starting palette.
-- Use keywords **truthfully and in context** — keyword stuffing is detected and penalised.
+- Use keywords **truthfully and in context** — [keyword stuffing](https://thetailorcv.com/blog/ats-keyword-mistakes) is detected and penalised.
 - Include a dedicated skills section plus keywords woven into your experience bullets.
 - Test your resume against each posting with an [ATS score checker](https://thetailorcv.com/solutions) to see which keywords you're missing.
 
 ## How Resume Keywords Actually Work
 
-When you apply to a Malaysian role, the ATS parses your resume and compares it against the job description, looking for the presence (and sometimes frequency) of relevant terms: job titles, hard skills, tools, certifications, and industry phrases. The closer the match, the higher you rank in the recruiter's queue.
+When you apply to a Malaysian role, the ATS parses your resume and compares it against the job description, looking for the presence (and sometimes frequency) of relevant terms: job titles, hard skills, tools, [certifications](https://thetailorcv.com/blog/best-free-online-certificates-for-resume), and industry phrases. The closer the match, the higher you rank in the recruiter's queue.
 
 That means your goal is not to include *every* keyword below — it's to include the ones that appear in the specific posting you're targeting, used naturally. We explain the full mechanics in [how ATS works in Malaysia](https://thetailorcv.com/blog/ats-in-malaysia-guide).
 
@@ -132,6 +132,27 @@ For tech and creative candidates, a portfolio strengthens your keywords with pro
 - Nursing, pharmacy, allied health, infection control
 - Electronic medical records (EMR), compliance, quality of care
 
+### Legal & Compliance
+
+- Legal research, drafting, contract review, due diligence
+- Corporate law, litigation, conveyancing, intellectual property
+- Regulatory compliance, AML/KYC, risk assessment
+- Malaysian Bar admission, legal advisory, negotiation
+
+### Hospitality, Tourism & F&B
+
+- Guest service, front office, food and beverage operations
+- Reservations, event management, banquet, housekeeping
+- Upselling, occupancy, RevPAR, customer satisfaction
+- Multilingual service (Bahasa Malaysia, English, Mandarin)
+
+### Administration & Executive Support
+
+- Office administration, calendar and diary management, travel coordination
+- Minute-taking, document control, filing systems
+- Vendor liaison, expense management, event coordination
+- Microsoft Office (Word, Excel, PowerPoint, Outlook)
+
 ### Data & Analytics
 
 - Data analysis, data visualisation, business intelligence, dashboards
@@ -183,7 +204,7 @@ Use these where they apply to you and the role; they help both the ATS and a Mal
 
 ## Pair Keywords With Strong Action Verbs
 
-A keyword lands harder when it is attached to a powerful action verb and a result. Instead of a flat "responsible for sales," lead your bullets with verbs that convey ownership and impact:
+A keyword lands harder when it is attached to a powerful [action verb](https://thetailorcv.com/blog/best-action-verbs-for-resume) and a result. Instead of a flat "responsible for sales," lead your bullets with verbs that convey ownership and impact:
 
 - **Achievement:** achieved, delivered, exceeded, generated, increased, reduced, improved
 - **Leadership:** led, managed, directed, coordinated, mentored, spearheaded
@@ -224,6 +245,56 @@ Distribute keywords across three areas so both the ATS and the recruiter see the
 
 Spell out acronyms once — "Association of Chartered Certified Accountants (ACCA)" — so you match whether the ATS searches for the abbreviation or the full term. For the full resume structure, see [how to write a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs).
 
+## Keywords for Remote and Hybrid Roles
+
+As [remote and hybrid work](https://thetailorcv.com/blog/cover-letter-for-remote-jobs) has become common in Malaysia — especially in tech, GBS, and MNCs — a distinct set of keywords signals you can thrive without constant supervision. Where genuinely true of you, include:
+
+- Remote collaboration, distributed teams, asynchronous communication
+- Self-management, time management, autonomy, accountability
+- Collaboration tools: Slack, Microsoft Teams, Zoom, Asana, Trello, Jira, Notion
+- Documentation, written communication, virtual presentation
+- Cross-time-zone coordination (valuable for regional roles)
+
+Employers hiring for remote positions actively screen for evidence of self-direction, so pair these terms with a result: "Coordinated a distributed five-person team across three time zones to ship on schedule."
+
+## Certifications as High-Value Keywords
+
+Certifications are among the most powerful keywords you can add, because they're concrete, verifiable, and often listed as requirements. They matter especially for career changers and fresh graduates who need to demonstrate current, in-demand skills:
+
+- **Tech:** AWS, Azure, Google Cloud certifications; CompTIA; Cisco; scrum/Agile certifications.
+- **Data:** Google Data Analytics, Microsoft Power BI, Tableau certifications.
+- **Finance:** ACCA, CIMA, CFA, CPA (and MIA membership).
+- **Marketing:** Google Ads, Google Analytics (GA4), Meta certifications, HubSpot.
+- **Project management:** PMP, PRINCE2, CAPM.
+- **HR:** HRDF-recognised programmes and professional HR certifications.
+
+List certifications explicitly, spelled out with their acronym, and place the most relevant ones prominently. A recent, relevant certification can be the keyword that lifts you over the shortlist line.
+
+## A Worked Example: Tailoring Keywords in Action
+
+Abstract advice is easy to nod at; here's what tailoring actually looks like. Suppose a KL posting for a Marketing Executive emphasises: *"paid social, Google Ads, content marketing, SEO, and campaign reporting."*
+
+**A generic bullet (weak match):**
+
+> *Ran marketing campaigns and managed the company's social media.*
+
+**The same experience, tailored to the posting:**
+
+> *Managed paid social and Google Ads campaigns and produced SEO-optimised content that grew organic traffic 40%, reporting campaign performance and ROI monthly.*
+
+The second version is truthful and contains five of the exact phrases the role screens for — a far stronger ATS match and a more convincing read for the recruiter. This is the entire discipline: say what you genuinely did, in the language the posting uses. The [resume optimizer](https://thetailorcv.com/solutions) performs this tailoring against any job description automatically.
+
+## Adapting Keywords When Changing Careers
+
+If you're switching fields, the keyword challenge is real — your history may not contain the target role's exact terms. Bridge the gap honestly:
+
+- **Identify transferable keywords.** Skills like project management, stakeholder management, data analysis, and communication travel across fields.
+- **Foreground new, relevant skills** from certifications, courses, or side projects using the target role's language.
+- **Lead with a skills-based summary** so the ATS and recruiter see the relevant capabilities immediately, even if your job titles are from another industry.
+- **Reframe past achievements** in terms the new field values.
+
+For the full career-change approach within the Malaysian market, see [how to get a job in Malaysia](https://thetailorcv.com/blog/how-to-get-a-job-in-malaysia).
+
 ## Keyword Mistakes That Get You Rejected
 
 - **Keyword stuffing.** Cramming or hiding keywords is detected by modern systems and recruiters and backfires.
@@ -231,6 +302,10 @@ Spell out acronyms once — "Association of Chartered Certified Accountants (ACC
 - **Listing skills you can't back up.** You'll be caught in the interview; keep it honest.
 - **Ignoring the skills section.** Without one, the ATS has fewer clean keywords to match.
 - **Not tailoring per job.** The single biggest miss — different postings need different keywords.
+
+## Keywords Recruiters Search on LinkedIn
+
+The keyword game doesn't end with your resume — recruiters in Malaysia search LinkedIn using the same terms. To appear in their results, mirror your resume keywords across your LinkedIn headline, About, and Experience. If a recruiter searches "data analyst Kuala Lumpur SQL," your profile needs those exact terms to surface. This is why a keyword-aligned resume and LinkedIn profile work as a pair — see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia). The principle is identical to beating the ATS: use the language of the roles you want, honestly, everywhere a recruiter or algorithm might look.
 
 ## Don't Forget the Cover Letter and LinkedIn
 
@@ -240,6 +315,19 @@ Keywords matter beyond the resume:
 - Your **LinkedIn profile** is keyword-searched by recruiters — optimise it using [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia).
 
 Together with a tailored resume, this gives you keyword coverage across every place a recruiter or algorithm might look.
+
+## A Simple Keyword Workflow to Apply Every Time
+
+Bringing it all together, here's the repeatable routine that keeps your keywords sharp for every Malaysian application:
+
+1. **Read the job description twice** and highlight every skill, tool, certification, and repeated phrase.
+2. **Match honestly** — for each term genuinely true of you, ensure it appears in your resume.
+3. **Place strategically** — in your summary, your skills section, and evidenced in an experience bullet with a result.
+4. **Spell out acronyms once**, and use the posting's exact wording.
+5. **Test the match** with the [ATS score checker](https://thetailorcv.com/solutions) and add any legitimate missing terms.
+6. **Mirror on LinkedIn and your cover letter** so you're covered everywhere a recruiter looks.
+
+Done consistently, this takes only a few minutes per application and dramatically improves how often you're shortlisted. Keywords aren't about gaming a system — they're about clearly, honestly speaking the language of the role you want.
 
 ## Frequently Asked Questions
 
@@ -258,7 +346,7 @@ Run your resume and the job description through a free [ATS score checker](https
 **Should I spell out acronyms or use the short form?**
 Do both at least once — for example, "Association of Chartered Certified Accountants (ACCA)." That way you match whether the ATS searches for the abbreviation or the full phrase.
 
-**Do keywords matter if I have no work experience?**
+**Do keywords matter if I have [no work experience](https://thetailorcv.com/blog/cover-letter-no-work-experience)?**
 Yes. Pull genuine keywords from your coursework, internships, final-year projects, certifications, and co-curricular leadership. Match the role's language truthfully — a keyword backed by a project result still counts.
 
 **Can the same resume work for every job?**

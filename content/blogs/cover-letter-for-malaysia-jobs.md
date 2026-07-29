@@ -16,7 +16,7 @@ This guide shows you exactly how to write a cover letter for Malaysia jobs in 20
 
 ## Key Takeaways
 
-- A Malaysian cover letter should be **concise (half a page to one page)**, professional, and tailored to the specific role.
+- A Malaysian cover letter should be **concise (half a page to [one page](https://thetailorcv.com/blog/anatomy-of-a-resume))**, professional, and tailored to the specific role.
 - Its job is to connect your strongest, most relevant achievements to what *this* employer needs — not to repeat your resume.
 - **Tailoring to each job description** is essential; a generic template is easy to spot and easy to reject.
 - English is standard for private-sector and MNC roles; consider Bahasa Malaysia for GLCs and some local SMEs.
@@ -27,7 +27,7 @@ This guide shows you exactly how to write a cover letter for Malaysia jobs in 20
 Yes — more often than you might think. Even when a portal makes it "optional," a targeted cover letter:
 
 - Signals genuine interest in *this* company, not just any job.
-- Explains context a resume can't (a career switch, a relocation to Malaysia, a gap year).
+- Explains context a resume can't (a [career switch](https://thetailorcv.com/blog/cover-letter-for-career-change), a relocation to Malaysia, a gap year).
 - Gives you a place to show communication skills — which Malaysian employers value highly.
 
 For competitive graduate schemes and professional roles, skipping the cover letter can quietly cost you. When in doubt, include a strong one.
@@ -146,7 +146,7 @@ Write every letter as if the reader is busy and slightly skeptical — because t
 
 Cover letters are especially valuable when your resume raises a question the recruiter will otherwise answer with a guess. Two common situations:
 
-**Career change.** If you are moving into a new field, the cover letter is where you connect the dots that your resume can't. Acknowledge the switch briefly and confidently, then focus on transferable skills and any steps you've taken to bridge the gap (a certification, a side project, relevant coursework). Frame the move as a deliberate, well-reasoned decision, not a retreat. For example: "After three years in operations, I've deliberately built data-analysis skills — completing a Google Data Analytics certificate and rebuilding my team's reporting in Power BI — and I'm now seeking to move fully into analytics."
+**Career change.** If you are moving into a new field, the cover letter is where you connect the dots that your resume can't. Acknowledge the switch briefly and confidently, then focus on transferable skills and any steps you've taken to bridge the gap (a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume), a side project, relevant coursework). Frame the move as a deliberate, well-reasoned decision, not a retreat. For example: "After three years in operations, I've deliberately built data-analysis skills — completing a Google Data Analytics certificate and rebuilding my team's reporting in Power BI — and I'm now seeking to move fully into analytics."
 
 **Employment gap.** If you have a gap — for study, caregiving, health, or a difficult job market — a short, matter-of-fact sentence defuses it far better than silence. Note what you did to stay sharp (freelancing, upskilling, volunteering) and pivot quickly back to your value. You do not owe a detailed explanation; you owe reassurance and a forward focus.
 
@@ -159,6 +159,37 @@ If you are applying from abroad or as an expatriate, your cover letter carries e
 - **How your international experience adds value** — regional exposure, language skills, or specialist expertise the local market needs.
 
 Keep it confident and concise, and pair it with the guidance in [getting a job in Malaysia as a foreigner](https://thetailorcv.com/blog/job-in-malaysia-as-foreigner).
+
+## Complete Example: Internship Application
+
+Students and fresh graduates applying for internships benefit enormously from a cover letter, since experience is thin and enthusiasm and potential carry the day:
+
+```
+Tan Mei Ling
+Cheras, Kuala Lumpur | +60 11-2233 4455 | meiling.tan@email.com
+
+28 July 2026
+
+Dear Ms Fatimah,
+
+I am a second-year Computer Science student at Universiti Malaya writing to apply
+for the Software Engineering Internship at TechStart. Your work on Malaysian
+e-commerce tools is exactly the kind of real-world engineering I want to learn from.
+
+Through my coursework and personal projects, I have built web applications using
+Python and JavaScript, including a class-project inventory system that my team
+deployed for a campus society. I am eager, quick to learn, and comfortable working
+in a team — and I would bring genuine enthusiasm and a strong work ethic to your
+engineering team.
+
+I would be grateful for the opportunity to contribute and learn at TechStart. Thank
+you for considering my application.
+
+Yours sincerely,
+Tan Mei Ling
+```
+
+Notice how it leads with genuine interest in the company, translates coursework and projects into relevant ability, and emphasises attitude and willingness to learn — exactly what employers want from an intern.
 
 ## Complete Example: Career Switcher
 
@@ -220,6 +251,36 @@ If you haven't heard back within one to two weeks, a brief, polite follow-up (by
 - **Typos and wrong company names.** A single careless error (especially the wrong employer's name) is an easy rejection.
 - **Focusing on what you want.** Lead with what you can do *for them*, not what the job does for you.
 - **Weak opening.** "I am writing to apply for…" with no hook wastes your best line.
+
+## Words and Phrases That Strengthen Your Letter
+
+The language you choose shapes how confident and capable you sound. A few practical swaps:
+
+- **Lead with strong verbs:** "delivered," "led," "grew," "launched," "improved," "achieved" — not "was responsible for" or "helped with."
+- **Be specific, not vague:** "increased engagement by 45%" beats "improved engagement significantly."
+- **Sound confident, not arrogant:** "I'm confident I can contribute to…" rather than "I would be the best candidate you'll ever find."
+- **Show, don't just tell:** instead of "I'm a great communicator," demonstrate it through a clear, well-written letter and a concrete example.
+- **Avoid filler and clichés:** phrases like "hardworking team player" and "thinking outside the box" add nothing — replace them with evidence.
+
+Keep the tone professional and warm. In Malaysia's courteous business culture, politeness and sincerity land well, but they should sit on top of genuine substance.
+
+## A Formatting and Proofreading Checklist
+
+Before you send any cover letter, run through this quick check:
+
+- [ ] Correct company name and role title (double-check — the wrong company name is an instant rejection)
+- [ ] Addressed to a named person where possible
+- [ ] One page, three to four short paragraphs
+- [ ] A strong opening hook, not "I am writing to apply for…"
+- [ ] Two or three quantified, relevant achievements
+- [ ] A specific reason you want *this* company
+- [ ] A warm, confident closing with a call to action
+- [ ] Consistent fonts and header matching your resume
+- [ ] Zero typos or grammatical errors (read it aloud, and ideally have someone else check)
+- [ ] Saved as a professionally named PDF
+- [ ] Language appropriate to the employer (English or Bahasa Malaysia)
+
+A single careless error can undo an otherwise strong letter, so this final pass is worth the two minutes it takes.
 
 ## How the Cover Letter Fits Your Whole Application
 
