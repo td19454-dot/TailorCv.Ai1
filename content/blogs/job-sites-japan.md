@@ -1,5 +1,5 @@
 ---
-title: Best Job Sites for Finding Work in Japan (2026 Guide for Foreigners)
+title: Best [Job Sites](https://thetailorcv.com/blog/best-job-search-websites-2026) for Finding Work in Japan (2026 Guide for Foreigners)
 description: The best job sites and channels for finding work in Japan in 2026 — foreigner-focused job boards, LinkedIn, recruitment agencies, and teaching routes, plus how to use each effectively as a foreign job seeker.
 date: 2026-08-11
 author: TailorCV Team
@@ -14,7 +14,7 @@ Knowing *where* to look is half the battle when job-hunting in Japan. The right 
 
 ## Key Takeaways
 
-- **Foreigner-focused job sites** (bilingual/international roles) are the best starting point for most foreigners.
+- **Foreigner-focused job sites** ([bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume)/international roles) are the best starting point for most foreigners.
 - **LinkedIn** is heavily used by global companies and recruiters hiring foreigners in Japan.
 - **Recruitment agencies that place foreigners** are invaluable — they know which employers sponsor and guide you through the process.
 - For **English teaching**, the JET Programme, language schools, and international schools are dedicated routes.
@@ -59,7 +59,7 @@ Global firms and English-friendly employers post roles directly on their own sit
 
 - Target **multinationals, tech companies, and startups** with a presence in Japan.
 - Check the **careers pages** of companies you admire.
-- Applying directly often means facing an **ATS**, so make your resume ATS-friendly — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
+- Applying directly often means facing an **ATS**, so make your resume [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
 
 ## Category 5: English Teaching Routes
 

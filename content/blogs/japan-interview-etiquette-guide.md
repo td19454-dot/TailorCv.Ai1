@@ -4,7 +4,7 @@ description: A complete 2026 guide to Japanese job interview etiquette — bowin
 date: 2026-08-08
 author: TailorCV Team
 tags: [Japan interview etiquette, Japanese job interview, interview tips Japan, work in Japan]
-category: Interview Prep
+category: [Interview Prep](https://thetailorcv.com/interview-prep)
 slug: japan-interview-etiquette-guide
 keywords: japanese interview etiquette, japan job interview tips, interview in japan, japanese business manners interview
 image: public/blog-images/japan-interview-etiquette-guide.png
@@ -109,6 +109,10 @@ For the wider picture, see [how to get a job in Japan as a foreigner](https://th
 - **Poor manners.** Neglecting bowing, greetings, or polite language.
 - **Under-dressing.** Wear conservative, formal attire.
 - **Not researching the company.** Signals a lack of genuine interest.
+
+## Your Interview Is One Stage of a Strong Application
+
+Interview etiquette is decisive in Japan, but it sits within a complete application, and each part should reinforce the others. Match your documents to the employer — a [Japanese rirekisho](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) for traditional firms, or an [ATS-friendly English resume](https://thetailorcv.com/blog/ats-english-resume-japan) for global roles (see also [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume)) — feature the right terms with [the best resume keywords for Japan](https://thetailorcv.com/blog/best-resume-keywords-japan), and add a sincere [Japanese cover letter](https://thetailorcv.com/blog/japanese-cover-letter-guide) where expected. To reach the interview stage, find the right roles through the [best job sites for Japan](https://thetailorcv.com/blog/job-sites-japan), and for the bigger picture see [how to get a job in Japan as a foreigner](https://thetailorcv.com/blog/how-to-get-a-job-in-japan-foreigner). Preparing your documents and your interview manners together — showing the same diligence and respect throughout — is what wins offers in Japan.
 
 ## Frequently Asked Questions
 

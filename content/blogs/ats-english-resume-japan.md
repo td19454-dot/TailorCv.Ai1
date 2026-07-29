@@ -1,16 +1,16 @@
 ---
 title: ATS and English Resumes for Jobs in Japan (2026 Guide)
-description: How applicant tracking systems and English resumes work for jobs in Japan in 2026 — when to use an English resume, how global companies in Japan screen applications, and how to build an ATS-friendly resume that passes the filters.
+description: How applicant tracking systems and English resumes work for jobs in Japan in 2026 — when to use an English resume, how global companies in Japan screen applications, and how to build an [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resume that passes the filters.
 date: 2026-08-08
 author: TailorCV Team
-tags: [ATS Japan, English resume Japan, resume for global companies Japan, applicant tracking system]
+tags: [ATS Japan, English resume Japan, resume for global companies Japan, [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)]
 category: Resume Writing
 slug: ats-english-resume-japan
 keywords: ats english resume japan, english resume for jobs in japan, applicant tracking system japan, resume for global companies japan
 image: public/blog-images/ats-english-resume-japan.png
 ---
 
-Not every job in Japan requires a handwritten *rirekisho* and fluent Japanese. A growing share of roles — at global companies, tech firms, startups, and international teams — hire in English and screen applications with **applicant tracking systems (ATS)**, exactly like employers in the US, UK, or Singapore. For foreigners and bilingual professionals, these are often the most accessible roles in Japan, and the key to landing them is a strong, ATS-friendly English resume.
+Not every job in Japan requires a handwritten *rirekisho* and fluent Japanese. A growing share of roles — at global companies, tech firms, startups, and international teams — hire in English and screen applications with **applicant tracking systems (ATS)**, exactly like employers in the US, UK, or [Singapore](https://thetailorcv.com/blog/ats-in-singapore-guide). For foreigners and [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) professionals, these are often the most accessible roles in Japan, and the key to landing them is a strong, ATS-friendly English resume.
 
 This guide explains how ATS and English resumes work for jobs in Japan in 2026: when an English resume is the right tool, how these employers screen, and how to build a resume that passes the filters and reaches a human.
 
@@ -49,7 +49,7 @@ If the ATS can't read your resume, or it lacks the keywords the role calls for, 
 - **No photo:** unlike a rirekisho, an English ATS resume should not include a photo, age, or personal details.
 - **Standard file type:** submit a clean PDF or Word file as specified.
 
-Build a clean, parser-friendly resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), which is designed to be ATS-compatible.
+Build a clean, [parser-friendly](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), which is designed to be ATS-compatible.
 
 ## Step 2: Match Keywords to Each Job
 
@@ -65,7 +65,7 @@ Tailoring keywords per job dramatically improves your ranking. Use the [TailorCV
 
 Passing the ATS gets you to a human — strong content gets you the interview:
 
-- **Achievement bullets** with action verbs and measurable results ("Increased X by Y%").
+- **Achievement bullets** with [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume) and [measurable results](https://thetailorcv.com/blog/awards-achievements-on-resume) ("Increased X by Y%").
 - A concise **summary** aligned to the role.
 - A clear **skills section** listing your core competencies and tools.
 
@@ -91,7 +91,7 @@ To find these English-friendly employers, see the [best job sites for finding wo
 - **Fancy formatting.** Tables, columns, and graphics break parsers — keep it clean.
 - **Including a photo.** Standard on a rirekisho, but not on an English ATS resume.
 - **Ignoring keywords.** A generic resume ranks poorly; tailor to each job.
-- **Keyword stuffing.** Cramming irrelevant terms backfires with recruiters — keep it honest and readable.
+- **[Keyword stuffing](https://thetailorcv.com/blog/ats-keyword-mistakes).** Cramming irrelevant terms backfires with recruiters — keep it honest and readable.
 - **Wrong document for the employer.** Sending an English resume to a traditional firm that wants a rirekisho (or vice versa).
 
 ## Frequently Asked Questions

@@ -30,7 +30,7 @@ The rirekisho is a standardised form (available as templates and increasingly fi
 
 - **Personal details:** name (with furigana reading), date of birth, address, contact, and a formal photo.
 - **Education and work history:** listed chronologically in a prescribed format.
-- **Qualifications and licences:** certifications, language tests (e.g. JLPT for Japanese, TOEIC for English), driving licence.
+- **Qualifications and licences:** [certifications](https://thetailorcv.com/blog/best-free-online-certificates-for-resume), language tests (e.g. JLPT for Japanese, TOEIC for English), driving licence.
 - **Personal section:** motivation for applying, commuting time, and sometimes personal requests.
 
 Because it's standardised, the rirekisho is less about standing out and more about completeness, neatness, and correctness.

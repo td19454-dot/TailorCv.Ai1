@@ -20,7 +20,7 @@ This guide gives you a realistic 2026 picture of working in Japan without Japane
 - **Tokyo** has by far the most English-friendly opportunities.
 - Japanese ability **significantly widens your options**, especially at traditional firms — even basic Japanese helps.
 - Feature your **English credentials (e.g. TOEIC)** and any Japanese level (JLPT), even elementary.
-- A strong, ATS-friendly **English resume** is your main tool for these roles.
+- A strong, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) **English resume** is your main tool for these roles.
 
 ## The Honest Answer
 
@@ -43,7 +43,7 @@ A classic entry point: language schools, the JET Programme, and international sc
 
 ### Global Companies and International Business
 
-Multinational firms, regional HQs, and international divisions in Japan (especially in Tokyo) run much of their work in English and hire bilingual and English-speaking professionals in finance, consulting, sales, marketing, and more.
+Multinational firms, regional HQs, and international divisions in Japan (especially in Tokyo) run much of their work in English and hire [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) and English-speaking professionals in finance, consulting, sales, marketing, and more.
 
 ### Other Roles
 
@@ -81,7 +81,7 @@ For English-friendly employers:
 
 ## Where to Search
 
-- **Foreigner-focused job sites** for bilingual/English roles in Japan.
+- **Foreigner-focused [job sites](https://thetailorcv.com/blog/best-job-search-websites-2026)** for bilingual/English roles in Japan.
 - **LinkedIn** and recruitment agencies that place foreigners.
 - **The JET Programme and language schools** for teaching.
 

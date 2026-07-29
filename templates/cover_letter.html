@@ -13,8 +13,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .navbar .nav-links { min-width: 560px; gap: 2px; }
-        .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
+        /* Desktop only — on mobile (≤768px) the nav collapses into the hamburger
+           drawer, and a 560px min-width here forced the whole page wider than the
+           screen (horizontal scroll / broken layout). Scoped to ≥769px to match
+           the rest of the codebase's nav overrides. */
+        @media (min-width: 769px) {
+            .navbar .nav-links { min-width: 560px; gap: 2px; }
+            .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
+        }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', sans-serif; background: radial-gradient(circle at top left, rgba(79, 150, 255, 0.18), transparent 28%), radial-gradient(circle at top right, rgba(182, 128, 255, 0.12), transparent 22%), linear-gradient(180deg, #040812 0%, #08122a 100%); color: #eef2ff; min-height: 100vh; }
         a { color: inherit; }
@@ -424,6 +430,38 @@
         @media (prefers-reduced-motion: reduce) {
             .cl-pdf-btn, .cl-pdf-btn *, .cl-pdf-outline::before { animation: none !important; transition: none !important; }
             .cl-pdf-state p span { opacity: 1 !important; }
+        }
+
+        /* ── Mobile fixes for the logged-in generator tool ───────────────────
+           The whole tool overflowed the phone screen (card content chopped off
+           on the right, a sliver of page background showing). Root cause: grid/
+           flex children default to `min-width:auto` and refuse to shrink below
+           their content, so the JD-picker pills/dropdown and the skewed CTA
+           forced each card wider than the viewport. Fix: let every descendant
+           shrink (min-width:0), cap widths at 100%, wrap the picker, stack the
+           actions (beating the inline 2-col style), and drop the CTA's skew on
+           mobile so its transformed corners don't spill. */
+        @media (max-width: 768px) {
+            html, body { overflow-x: hidden; max-width: 100%; }
+            .cl-wrap { grid-template-columns: 1fr !important; padding-left: 1rem; padding-right: 1rem; max-width: 100%; }
+            .cl-wrap > div, .cl-card { min-width: 0; max-width: 100%; }
+            .cl-card *, .cl-page-header * { min-width: 0; }
+            .cl-jd-head { flex-direction: column; align-items: stretch; gap: 8px; }
+            .cl-jd-picker-row { white-space: normal; flex-wrap: wrap; width: 100%; }
+            .cl-jd-picker { width: 100%; max-width: 100%; }
+            .cl-jd-picker > *, .cl-jd-picker select { max-width: 100%; }
+            /* The picker's dropdown button gets an inline `min-width:210px` from
+               JS (buildSampleJdPicker), and the Junior/Senior toggle is
+               flex-shrink:0 — together ~330px, wider than the phone card. Only
+               !important can override the inline min-width. Let the row wrap and
+               the button shrink to fit. */
+            #jd-picker-wrapper { flex-wrap: wrap; width: 100%; }
+            #jd-picker-btn { min-width: 0 !important; width: 100% !important; }
+            #jd-picker-panel { min-width: 0 !important; max-width: 100% !important; }
+            .cl-actions { grid-template-columns: 1fr !important; }
+            .cl-preview-wrap, #cl-preview, .cl-templates { max-width: 100%; }
+            .cl-gen-btn { transform: none; border-radius: 10px; box-shadow: 4px 4px 0 #000; }
+            .cl-gen-btn .cl-gen-text, .cl-gen-btn .cl-gen-arrow { transform: none; }
         }
     </style>
 </head>
