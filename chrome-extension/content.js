@@ -1122,22 +1122,31 @@
   const EXTRACT_TRIES = 10;      // ~8s of watching before we ask the user
   const EXTRACT_EVERY = 800;
 
-  // LinkedIn's /jobs/collections view (list + detail panel) sometimes hasn't
-  // finished hydrating the detail panel within our ~8s watch window on first
-  // navigation to it, but a hard reload reliably lands on a warmer render —
-  // confirmed by hand. Deliberately scoped to just this one path: every other
-  // declared board (manifest.json) matches its entire domain, not just
-  // single-posting pages, so a broader gate here (e.g. "any declared adapter
-  // host") previously also reloaded Workday application forms mid-fill
-  // (wiping answers) and Wellfound-style job LIST pages (disruptive
-  // mid-browse reload) whenever there was nothing to find. Only ever fires
-  // once per exact URL (sessionStorage, survives the reload) so a job that's
-  // genuinely unreadable falls through to the manual-paste screen instead of
-  // reloading forever.
+  // LinkedIn's /jobs/collections view (list + detail panel) never renders the
+  // detail pane's JD on this soft nav — confirmed by diagnostic logging (every
+  // extractor layer still misses after a full 32s watch), so unlike every other
+  // board here, waiting longer buys nothing on this one path. A hard reload
+  // reliably lands on a warmer render instead — confirmed by hand. Given a
+  // reload after only a couple of tries (~2.4s, past LinkedIn's own
+  // pushState/currentJobId routing settle time — see the 1200ms debounce on
+  // the URL-change observer below) rather than the normal EXTRACT_TRIES budget,
+  // since sitting through the full ~8s here would just be a longer wait for
+  // the same, already-known outcome. Deliberately scoped to just this one
+  // path: every other declared board (manifest.json) matches its entire
+  // domain, not just single-posting pages, so a broader gate here (e.g. "any
+  // declared adapter host") previously also reloaded Workday application
+  // forms mid-fill (wiping answers) and Wellfound-style job LIST pages
+  // (disruptive mid-browse reload) whenever there was nothing to find. Only
+  // ever fires once per exact URL (sessionStorage, survives the reload) so a
+  // job that's genuinely unreadable falls through to the manual-paste screen
+  // instead of reloading forever.
   const LINKEDIN_COLLECTIONS_RELOAD = /^\/jobs\/collections(\/|$)/;
+  const LINKEDIN_COLLECTIONS_TRIES = 3;   // ~2.4s, vs the normal ~8s
+  function isLinkedInCollectionsPage() {
+    return /(^|\.)linkedin\.com$/i.test(location.hostname) && LINKEDIN_COLLECTIONS_RELOAD.test(location.pathname);
+  }
   function tryAutoRefreshOnce() {
-    if (!/(^|\.)linkedin\.com$/i.test(location.hostname)) return false;
-    if (!LINKEDIN_COLLECTIONS_RELOAD.test(location.pathname)) return false;
+    if (!isLinkedInCollectionsPage()) return false;
     const key = 'tailorcv_auto_refreshed:' + location.href;
     try {
       if (sessionStorage.getItem(key)) return false;
@@ -1160,7 +1169,8 @@
       return;
     }
 
-    if (attempt >= EXTRACT_TRIES) {
+    const maxTries = isLinkedInCollectionsPage() ? LINKEDIN_COLLECTIONS_TRIES : EXTRACT_TRIES;
+    if (attempt >= maxTries) {
       if (tryAutoRefreshOnce()) return;   // page is reloading — nothing left to render
       logDiagnostics();
       renderManual();
