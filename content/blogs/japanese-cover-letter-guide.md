@@ -65,7 +65,7 @@ The crucial element: explain *why this company*. Reference its philosophy, produ
 
 A respectful, forward-looking close — thank them for their consideration, express hope for the opportunity to contribute, and sign off politely.
 
-Keep it to one page, polished and specific.
+Keep it to [one page](https://thetailorcv.com/blog/anatomy-of-a-resume), polished and specific.
 
 ## Writing the Motivation (*Shibō Dōki*)
 

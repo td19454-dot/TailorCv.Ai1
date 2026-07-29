@@ -19,7 +19,7 @@ This guide walks you through the entire process: understanding the Malaysian job
 - Malaysia's strongest hiring is in tech, finance, shared services, engineering, sales, and healthcare — concentrated in the Klang Valley, Penang, and Johor.
 - **Tailoring every application** to the specific job description is the single biggest factor separating candidates who get interviews from those who don't.
 - Fresh graduates win by translating internships, projects, and co-curricular leadership into evidence of real, job-ready skills.
-- Networking and referrals quietly fill a large share of roles — do not rely on job portals alone.
+- Networking and referrals quietly fill a large share of roles — do not rely on [job portals](https://thetailorcv.com/blog/best-job-search-websites-2026) alone.
 - Preparation for the interview (and, increasingly, online assessments) is what turns a shortlist into an offer.
 
 ## Understanding the Malaysian Job Market
@@ -40,7 +40,7 @@ Malaysian employers look for candidates who are job-ready, communicate well (oft
 
 ## Step 1: Get Your Resume Right First
 
-Nothing else matters if your resume does not get you shortlisted. In Malaysia, most mid-to-large employers screen applications with an Applicant Tracking System (ATS) before a human sees them, so your resume must be both machine-readable and genuinely persuasive.
+Nothing else matters if your resume does not get you shortlisted. In Malaysia, most mid-to-large employers screen applications with an [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) before a human sees them, so your resume must be both [machine-readable](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) and genuinely persuasive.
 
 Before you apply to a single role:
 
@@ -93,7 +93,7 @@ Treat each of these like a mini job, described with an action-and-result bullet:
 
 ### Close Skill Gaps Fast
 
-A short, relevant certification (Google, Microsoft, AWS, or an HRDF-funded course) gives you real keywords and genuine capability. For tech and creative roles, a portfolio is powerful — you can turn your resume into a live portfolio site with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
+A short, relevant [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) (Google, Microsoft, AWS, or an HRDF-funded course) gives you real keywords and genuine capability. For tech and creative roles, a portfolio is powerful — you can turn your resume into a live portfolio site with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
 
 ### Apply Early and Widely
 
@@ -218,7 +218,7 @@ Repeat and adjust monthly. Consistency plus tailoring reliably produces intervie
 - **Generic applications.** Not tailoring is the top reason strong candidates get filtered out.
 - **Ignoring the ATS.** A beautiful resume that can't be parsed never gets read.
 - **Relying only on portals.** Skipping networking leaves a big share of roles untapped.
-- **Weak interview prep.** Turning up unprepared wastes a hard-won shortlist.
+- **Weak [interview prep](https://thetailorcv.com/interview-prep).** Turning up unprepared wastes a hard-won shortlist.
 - **No follow-up.** Silence after an interview is a missed, easy advantage.
 
 ## Frequently Asked Questions
@@ -232,7 +232,7 @@ Not for most roles, but multilingual ability (Bahasa Malaysia, English, and ofte
 **What's the best job site in Malaysia?**
 JobStreet has the widest reach; LinkedIn is essential for professional and MNC roles. Use several channels plus networking rather than relying on one.
 
-**How can I stand out as a fresh graduate with no experience?**
+**How can I stand out as a fresh graduate with [no experience](https://thetailorcv.com/blog/cover-letter-no-work-experience)?**
 Translate internships, projects, and leadership into evidence of skills, add a relevant certification, build a portfolio, and tailor every application. Preparation beats raw credentials.
 
 **Are online assessments common in Malaysia?**
