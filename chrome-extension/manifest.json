@@ -26,14 +26,18 @@
     "*://*.simplyhired.com/*",
     "*://*.dice.com/*",
     "*://*.wellfound.com/*",
-    "https://thetailorcv.com/*"
+    "https://thetailorcv.com/*",
+    "http://127.0.0.1:8005/*",
+    "http://localhost:8005/*"
   ],
   "optional_host_permissions": [
     "*://*/*"
   ],
   "externally_connectable": {
     "matches": [
-      "https://thetailorcv.com/*"
+      "https://thetailorcv.com/*",
+      "http://127.0.0.1:8005/*",
+      "http://localhost:8005/*"
     ]
   },
   "background": {

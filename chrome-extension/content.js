@@ -19,7 +19,7 @@
   if (window.__tailorcvInjected) return;   // toolbar click on an auto-injected page
   window.__tailorcvInjected = true;
 
-  const BASE_URL = 'https://thetailorcv.com';
+  const BASE_URL = 'http://127.0.0.1:8005';
   const MIN_JD_LENGTH = 200;
 
   // analytics.bundle.js (loaded before this file, see manifest.json) installs
@@ -522,7 +522,7 @@
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-base-resume" target="_blank">Change base resume</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-resume-template" target="_blank">Change resume template</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-cover-template" target="_blank">Change cover letter template</a>
-          <button class="tcv-account-item" id="tcvApplyDetailsBtn" type="button">Application details</button>
+          <a class="tcv-account-item" href="${BASE_URL}/profile" target="_blank">Application details</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension" target="_blank">Extension settings</a>
           <button class="tcv-account-item tcv-account-logout" id="tcvAccountLogout" type="button">Log out</button>
         </div>
@@ -609,10 +609,6 @@
       if (accountMenu.classList.contains('tcv-visible') && !accountMenu.contains(e.target) && e.target !== accountBtn) {
         accountMenu.classList.remove('tcv-visible');
       }
-    });
-    sb.querySelector('#tcvApplyDetailsBtn').addEventListener('click', () => {
-      accountMenu.classList.remove('tcv-visible');
-      renderApplyProfileForm();
     });
     sb.querySelector('#tcvAccountLogout').addEventListener('click', async () => {
       const logoutBtn = sb.querySelector('#tcvAccountLogout');
@@ -844,22 +840,13 @@
   }
 
   // ── Application details (deterministic autofill profile) ──
-
-  // Tri-state (Yes/No/Unknown) rather than a plain checkbox: for a field like
-  // "needs visa sponsorship", "unanswered" and "No" must stay distinguishable
-  // — autofill.js only ever fills what's explicitly Yes/No here, never guesses.
-  function triStateOptionsHtml(v) {
-    return `
-      <option value="unknown" ${v === null || v === undefined ? 'selected' : ''}>Prefer not to say / Unknown</option>
-      <option value="yes" ${v === true ? 'selected' : ''}>Yes</option>
-      <option value="no" ${v === false ? 'selected' : ''}>No</option>
-    `;
-  }
-  function triStateValue(v) {
-    if (v === 'yes') return true;
-    if (v === 'no') return false;
-    return null;
-  }
+  // Editing lives on the website's /profile page now (see templates/
+  // profile.html) — a full page has room this sidebar never did, and it's
+  // reachable both from the site's own account menu and from the "Application
+  // details" link above. This just keeps the fetched profile cached locally
+  // so autofill.js has it on hand without a round trip on every apply click;
+  // REFRESH_AUTH (fired by profile.html on save, see background.js) re-runs
+  // this to pick up edits made in that other tab.
 
   async function loadApplyProfile() {
     const res = await sendMessage({ type: 'GET_APPLY_PROFILE' });
@@ -871,91 +858,6 @@
       applyProfile = cached.tcv_apply_profile || null;
     }
     return applyProfile;
-  }
-
-  function renderApplyProfileForm() {
-    const p = applyProfile || {};
-    const edu = (p.education && p.education[0]) || {};
-    body.innerHTML = `
-      <div class="tcv-msg">These fill your job applications automatically — only what you save here is ever used, nothing is invented.</div>
-      <label class="tcv-field-label" for="tcvApPhone">Phone</label>
-      <input type="tel" id="tcvApPhone" class="tcv-input" value="${esc(p.phone || '')}">
-      <label class="tcv-field-label" for="tcvApCity">City</label>
-      <input type="text" id="tcvApCity" class="tcv-input" value="${esc(p.city || '')}">
-      <label class="tcv-field-label" for="tcvApState">State / Province</label>
-      <input type="text" id="tcvApState" class="tcv-input" value="${esc(p.state || '')}">
-      <label class="tcv-field-label" for="tcvApCountry">Country</label>
-      <input type="text" id="tcvApCountry" class="tcv-input" value="${esc(p.country || '')}">
-      <label class="tcv-field-label" for="tcvApLinkedin">LinkedIn URL</label>
-      <input type="text" id="tcvApLinkedin" class="tcv-input" value="${esc(p.linkedin_url || '')}">
-      <label class="tcv-field-label" for="tcvApPortfolio">Portfolio / website URL</label>
-      <input type="text" id="tcvApPortfolio" class="tcv-input" value="${esc(p.portfolio_url || '')}">
-      <label class="tcv-field-label" for="tcvApGithub">GitHub URL</label>
-      <input type="text" id="tcvApGithub" class="tcv-input" value="${esc(p.github_url || '')}">
-      <label class="tcv-field-label" for="tcvApNotice">Notice period</label>
-      <input type="text" id="tcvApNotice" class="tcv-input" placeholder="e.g. Immediate, 30 days" value="${esc(p.notice_period || '')}">
-      <label class="tcv-field-label" for="tcvApSalary">Desired salary</label>
-      <input type="text" id="tcvApSalary" class="tcv-input" value="${esc(p.desired_salary || '')}">
-      <label class="tcv-field-label" for="tcvApWorkAuth">Authorized to work in your target country?</label>
-      <select id="tcvApWorkAuth" class="tcv-input">${triStateOptionsHtml(p.work_authorized)}</select>
-      <label class="tcv-field-label" for="tcvApSponsor">Need visa sponsorship?</label>
-      <select id="tcvApSponsor" class="tcv-input">${triStateOptionsHtml(p.needs_sponsorship)}</select>
-      <label class="tcv-field-label" for="tcvApRelocate">Willing to relocate?</label>
-      <select id="tcvApRelocate" class="tcv-input">${triStateOptionsHtml(p.willing_to_relocate)}</select>
-      <label class="tcv-field-label" for="tcvApDegree">Degree</label>
-      <input type="text" id="tcvApDegree" class="tcv-input" value="${esc(edu.degree || '')}">
-      <label class="tcv-field-label" for="tcvApField">Field of study</label>
-      <input type="text" id="tcvApField" class="tcv-input" value="${esc(edu.field_of_study || '')}">
-      <label class="tcv-field-label" for="tcvApSchool">School</label>
-      <input type="text" id="tcvApSchool" class="tcv-input" value="${esc(edu.school || '')}">
-      <label class="tcv-field-label" for="tcvApGradYear">Graduation year</label>
-      <input type="text" id="tcvApGradYear" class="tcv-input" value="${esc(edu.end || '')}">
-      <button class="tcv-btn tcv-btn-start" id="tcvApSave">Save</button>
-      <div class="tcv-error" id="tcvApError"></div>
-      <a class="tcv-link tcv-retry-link" href="#" id="tcvApBack">← Back</a>
-    `;
-
-    body.querySelector('#tcvApBack').addEventListener('click', (e) => {
-      e.preventDefault();
-      if (sessionReady) renderJobFromPage(); else refreshFull();
-    });
-
-    body.querySelector('#tcvApSave').addEventListener('click', async () => {
-      const btn = body.querySelector('#tcvApSave');
-      const err = body.querySelector('#tcvApError');
-      btn.disabled = true;
-      btn.textContent = 'Saving…';
-      const profile = {
-        phone: body.querySelector('#tcvApPhone').value.trim(),
-        city: body.querySelector('#tcvApCity').value.trim(),
-        state: body.querySelector('#tcvApState').value.trim(),
-        country: body.querySelector('#tcvApCountry').value.trim(),
-        linkedin_url: body.querySelector('#tcvApLinkedin').value.trim(),
-        portfolio_url: body.querySelector('#tcvApPortfolio').value.trim(),
-        github_url: body.querySelector('#tcvApGithub').value.trim(),
-        notice_period: body.querySelector('#tcvApNotice').value.trim(),
-        desired_salary: body.querySelector('#tcvApSalary').value.trim(),
-        work_authorized: triStateValue(body.querySelector('#tcvApWorkAuth').value),
-        needs_sponsorship: triStateValue(body.querySelector('#tcvApSponsor').value),
-        willing_to_relocate: triStateValue(body.querySelector('#tcvApRelocate').value),
-        education: [{
-          degree: body.querySelector('#tcvApDegree').value.trim(),
-          field_of_study: body.querySelector('#tcvApField').value.trim(),
-          school: body.querySelector('#tcvApSchool').value.trim(),
-          end: body.querySelector('#tcvApGradYear').value.trim(),
-        }],
-      };
-      const res = await sendMessage({ type: 'SAVE_APPLY_PROFILE', profile });
-      btn.disabled = false;
-      btn.textContent = 'Save';
-      if (res.error) {
-        err.textContent = res.error;
-        return;
-      }
-      applyProfile = { ...applyProfile, ...profile };
-      chrome.storage.local.set({ tcv_apply_profile: applyProfile });
-      if (sessionReady) renderJobFromPage(); else refreshFull();
-    });
   }
 
   function renderReady(job) {
@@ -974,6 +876,9 @@
       <button class="tcv-btn tcv-btn-start" id="tcvApplyBtn">
         ${tcvBusy ? 'Working on another job…' : '⚡ Apply with Tailored Resume'}
       </button>
+      <button class="tcv-btn tcv-btn-ghost" id="tcvApplyBaseBtn">
+        📄 Apply with Base Resume
+      </button>
       <button class="tcv-btn tcv-btn-ghost" id="tcvTailorBtn">
         ✦ Tailor & Download Resume
       </button>
@@ -987,18 +892,21 @@
       renderManual(job.jd_string);
     });
 
-    // All three actions run off the same JD and the same stored base resume, so
+    // All four actions run off the same JD and the same stored base resume, so
     // none of them cost the user anything extra to set up — it's the same click,
     // just aimed at a different outcome.
     const applyBtn = body.querySelector('#tcvApplyBtn');
+    const applyBaseBtn = body.querySelector('#tcvApplyBaseBtn');
     const btn = body.querySelector('#tcvTailorBtn');
     const coverBtn = body.querySelector('#tcvCoverBtn');
     if (tcvBusy) {
       applyBtn.disabled = true;
+      applyBaseBtn.disabled = true;
       btn.disabled = true;
       coverBtn.disabled = true;
     } else {
       applyBtn.addEventListener('click', () => runApply(job, label));
+      applyBaseBtn.addEventListener('click', () => runApplyBase(job, label));
       btn.addEventListener('click', () => runTailor(job, label));
       coverBtn.addEventListener('click', () => runCoverLetter(job, label));
     }
@@ -1272,8 +1180,14 @@
     // for. See requestBroadPermission() above for why that can't just be
     // requested outright from here. Skipped entirely when the form is already
     // on this page (the declared ATS hosts, or a page an earlier chain hop
-    // already landed on), since nothing here needs to navigate anywhere.
-    const alreadyHasForm = !!(window.__tcvAutofill
+    // already landed on), since nothing here needs to navigate anywhere — and
+    // likewise skipped for a LinkedIn Easy Apply job specifically, since that
+    // whole flow stays on linkedin.com (already a standing permission) and
+    // never hops to an external ATS host.
+    const isLinkedInEasyApply = isLinkedIn && !!(window.__tcvAutofill
+      && typeof window.__tcvAutofill.linkedInApplyKind === 'function'
+      && window.__tcvAutofill.linkedInApplyKind() === 'easy');
+    const alreadyHasForm = isLinkedInEasyApply || !!(window.__tcvAutofill
       && typeof window.__tcvAutofill.looksLikeApplicationForm === 'function'
       && window.__tcvAutofill.looksLikeApplicationForm());
     if (!alreadyHasForm) {
@@ -1353,12 +1267,112 @@
         isLinkedIn,
         getApplyAnswers: (payload) => sendMessage({ type: 'GET_APPLY_ANSWERS', payload }),
       });
-      globalStatus.textContent = `✓ On its way for "${label}" — TailorCV will keep going on the application page and stop before Submit.`;
+      // LinkedIn Easy Apply fills through to Submit itself (see autofill.js);
+      // every other ATS still stops for the user to review and submit by
+      // hand — the on-page banner is the accurate source of truth either way.
+      globalStatus.textContent = isLinkedIn
+        ? `✓ Working on "${label}" — check the banner on the page for progress.`
+        : `✓ On its way for "${label}" — TailorCV will keep going on the application page and stop before Submit.`;
       track('apply_autofill_completed');
     } catch (e) {
       globalStatus.className = 'tcv-status-text tcv-error';
       globalStatus.textContent = `✗ Autofill hit an error — the resume was downloaded, fill the rest manually.`;
       track('apply_autofill_failed', { error: e.message });
+    }
+
+    if (sessionReady) renderJobFromPage();
+  }
+
+  // Same click-through/autofill flow as runApply(), but skips the AI tailoring
+  // step entirely — fetches the base resume PDF exactly as stored and hands
+  // that to autofill.js instead. No tailor credit spent, no wait for the AI;
+  // trades away the JD-matched rewrite for speed and unlimited use.
+  async function runApplyBase(job, label) {
+    if (tcvBusy || !job) return;
+    const jobUrl = window.location.href;
+    const isLinkedIn = /(^|\.)linkedin\.com$/i.test(location.hostname);
+    // See the matching comment in runApply() above — a LinkedIn Easy Apply job
+    // never leaves linkedin.com, so it doesn't need the broad host permission
+    // an external-ATS click-through would.
+    const isLinkedInEasyApply = isLinkedIn && !!(window.__tcvAutofill
+      && typeof window.__tcvAutofill.linkedInApplyKind === 'function'
+      && window.__tcvAutofill.linkedInApplyKind() === 'easy');
+    const alreadyHasForm = isLinkedInEasyApply || !!(window.__tcvAutofill
+      && typeof window.__tcvAutofill.looksLikeApplicationForm === 'function'
+      && window.__tcvAutofill.looksLikeApplicationForm());
+    if (!alreadyHasForm) {
+      const granted = await requestBroadPermission();
+      if (!granted) {
+        globalStatus.className = 'tcv-status-text tcv-error';
+        globalStatus.textContent = 'One-time setup: click the TailorCV icon in your toolbar to allow it, then click Apply again.';
+        track('apply_base_permission_pending');
+        return;
+      }
+    }
+
+    tcvBusy = true;
+    renderJobFromPage();
+    globalStatus.className = 'tcv-status-text';
+    globalStatus.textContent = `Fetching your base resume for "${label}"…`;
+    startProgress();
+    track('apply_base_started', { source: job.source });
+
+    const res = await sendMessage({ type: 'GET_BASE_RESUME_FILE' });
+
+    finishProgress(!res.error);
+    tcvBusy = false;
+
+    if (res.code === 'no_base_resume') {
+      sessionReady = false;
+      globalStatus.className = 'tcv-status-text';
+      globalStatus.textContent = '';
+      renderNoBaseResume();
+      return;
+    }
+
+    if (res.error) {
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = `✗ ${label}: ${res.error}`;
+      track('apply_base_fetch_failed', { error: res.error });
+      if (sessionReady) renderJobFromPage();
+      return;
+    }
+
+    if (!applyProfile) await loadApplyProfile();
+
+    if (!window.__tcvAutofill || typeof window.__tcvAutofill.startChain !== 'function') {
+      globalStatus.className = 'tcv-status-text tcv-ok';
+      globalStatus.textContent = `✓ Downloaded your base resume for "${label}" — fill the form manually.`;
+      track('apply_base_autofill_unavailable');
+      if (sessionReady) renderJobFromPage();
+      return;
+    }
+
+    globalStatus.className = 'tcv-status-text tcv-ok';
+    globalStatus.textContent = `Filling the application for "${label}" with your base resume…`;
+    track('apply_base_autofill_started', { is_linkedin: isLinkedIn });
+
+    try {
+      await window.__tcvAutofill.startChain({
+        jdText: job.jd_string,
+        role: job.role,
+        company: job.company,
+        tailoredPdfBase64: res.data && res.data.pdfBase64,
+        profile: applyProfile,
+        isLinkedIn,
+        getApplyAnswers: (payload) => sendMessage({ type: 'GET_APPLY_ANSWERS', payload }),
+      });
+      // LinkedIn Easy Apply fills through to Submit itself (see autofill.js);
+      // every other ATS still stops for the user to review and submit by
+      // hand — the on-page banner is the accurate source of truth either way.
+      globalStatus.textContent = isLinkedIn
+        ? `✓ Working on "${label}" — check the banner on the page for progress.`
+        : `✓ On its way for "${label}" — TailorCV will keep going on the application page and stop before Submit.`;
+      track('apply_base_autofill_completed');
+    } catch (e) {
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = `✗ Autofill hit an error — the resume was downloaded, fill the rest manually.`;
+      track('apply_base_autofill_failed', { error: e.message });
     }
 
     if (sessionReady) renderJobFromPage();

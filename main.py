@@ -5796,6 +5796,34 @@ async def set_extension_apply_profile(request: Request):
     return JSONResponse({"success": True})
 
 
+@app.get("/profile", response_class=HTMLResponse)
+async def profile_page(request: Request):
+    """The website home for the same application-profile data the extension's
+    autofill uses (see /api/extension/apply-profile above) — persistent,
+    per-user, editable from a full page instead of the extension's cramped
+    sidebar. The page's own save button POSTs straight to that existing
+    endpoint (already CSRF-exempt and session-authed), so there's nothing new
+    to write server-side beyond rendering the current values."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        return RedirectResponse(url="/login?next=/profile", status_code=302)
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            return RedirectResponse(url="/login?next=/profile", status_code=302)
+        try:
+            saved = json.loads(user.application_profile_json) if user.application_profile_json else {}
+        except Exception:
+            saved = {}
+        profile = _sanitize_apply_profile(saved)
+        profile["name"] = user.name
+        profile["email"] = user.email
+    finally:
+        db.close()
+    return templates.TemplateResponse(request, "profile.html", {"request": request, "is_logged_in": True, "profile": profile})
+
+
 @app.post("/api/extension/log-application")
 async def extension_log_application(request: Request):
     """Record a job the extension auto-applied to (CSRF-exempt; see EXEMPT_PATHS)."""
@@ -5925,6 +5953,28 @@ async def get_extension_base_resume(request: Request):
         })
     finally:
         db.close()
+
+
+@app.get("/api/extension/base-resume/file")
+async def get_extension_base_resume_file(request: Request):
+    """Raw base resume PDF, unmodified — no AI, no quota. Backs the extension's
+    "Apply with Base Resume" path for when a job doesn't need (or the user
+    doesn't want to spend a tailor credit on) a JD-tailored version."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+            raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/extension.")
+        path = user.base_resume_path
+        filename = user.base_resume_filename or "resume.pdf"
+    finally:
+        db.close()
+    return FileResponse(path, media_type="application/pdf", filename=filename)
 
 
 @app.delete("/api/extension/base-resume")
@@ -6135,8 +6185,8 @@ def _build_apply_answers_prompt(resume_text: str, job_description: str, role: st
         "figures, visa/work-authorization status, or any personal/legal/demographic "
         "fact that is not explicitly stated in the resume.\n\n"
         "Rules:\n"
-        "- For a \"select\"-type question, the answer MUST be exactly one of the "
-        "given options (verbatim), or empty if none fit.\n"
+        "- For a \"select\" or \"radio\"-type question, the answer MUST be exactly "
+        "one of the given options (verbatim), or empty if none fit.\n"
         "- For visa/work-authorization, sponsorship, disability, veteran status, "
         "gender/race self-identification, or salary-expectation questions: if the "
         "resume/JD does not state the answer, set \"skip\": true and leave answer "

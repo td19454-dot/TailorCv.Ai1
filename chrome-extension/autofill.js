@@ -10,8 +10,11 @@
 // until the user clicks Resume (never auto-detected/auto-solved).
 //
 // Exposed as window.__tcvAutofill = { run(opts) } for content.js to call.
-// Deliberately never runs on linkedin.com — see manifest.json's content_script
-// matches; this file only ever executes on the ATS/company-page side.
+// The generic run() (any ATS/company-career page) never clicks Submit — the
+// run always ends on a review banner. LinkedIn's own in-page Easy Apply modal
+// is the one documented exception: runLinkedInEasyApply() below fills every
+// step AND clicks the final Submit application button, only pausing if a
+// required question can't be confidently answered (see startChain()).
 // ═══════════════════════════════════════════════════════
 
 (function () {
@@ -149,14 +152,22 @@
     return type === 'email' || type === 'tel' || type === 'number' ? type : 'text';
   }
 
-  function scanFields() {
+  // `root` scopes the scan to a container (e.g. the Easy Apply modal) instead
+  // of the whole document — needed so a LinkedIn step-by-step scan doesn't
+  // pick up fields from underneath the modal. `skipChoices` omits
+  // checkbox/radio inputs, which the Easy Apply flow scans and fills
+  // separately via scanRadioGroups()/scanCheckboxes() (fillField() below has
+  // no real effect on them — see those functions for why radios/checkboxes
+  // need their own click-based fill path).
+  function scanFields(root = document, { skipChoices = false } = {}) {
     const fields = [];
-    for (const el of document.querySelectorAll(FIELD_SELECTOR)) {
+    for (const el of root.querySelectorAll(FIELD_SELECTOR)) {
       if (!visible(el)) continue;
       if (el.closest('#tailorcv-sidebar') || el.closest('#tcv-af-banner')) continue;
       if (el.disabled || el.readOnly) continue;
 
       const fieldType = classifyType(el);
+      if (skipChoices && (fieldType === 'checkbox' || fieldType === 'radio')) continue;
       const label = nearestLabelText(el).replace(/\s+/g, ' ').trim().slice(0, 300);
       const required = el.required || el.getAttribute('aria-required') === 'true';
       const options = fieldType === 'select'
@@ -353,6 +364,107 @@
     setNativeValue(el, String(value));
     focusBlur(el);
     return true;
+  }
+
+  // ── Radio groups & checkboxes (LinkedIn Easy Apply only) ─
+  // The generic run() above leaves every checkbox/radio for the user by
+  // design — but LinkedIn's Easy Apply modal gates its own Next/Submit button
+  // on required radios (work authorization, sponsorship, EEO questions) and
+  // required consent checkboxes, so skipping them there just means the flow
+  // can never advance. setNativeValue()'s React-property-setter trick (used
+  // for text inputs) has no equivalent for radios/checkboxes — the only way
+  // to select one that both the DOM and any React listener agree on is a
+  // real .click(), which is what these use instead of fillField().
+
+  function radioOptionLabel(radioEl) {
+    if (radioEl.id) {
+      const lbl = document.querySelector(`label[for="${CSS.escape(radioEl.id)}"]`);
+      if (lbl) {
+        const t = (lbl.innerText || lbl.textContent || '').trim();
+        if (t) return t;
+      }
+    }
+    const wrapping = radioEl.closest('label');
+    if (wrapping) {
+      const clone = wrapping.cloneNode(true);
+      clone.querySelectorAll('input').forEach((n) => n.remove());
+      const t = (clone.innerText || clone.textContent || '').trim();
+      if (t) return t;
+    }
+    return '';
+  }
+
+  function scanRadioGroups(root) {
+    const seen = new Set();
+    const groups = [];
+    for (const el of root.querySelectorAll('input[type=radio]')) {
+      if (!visible(el)) continue;
+      if (el.closest('#tailorcv-sidebar') || el.closest('#tcv-af-banner')) continue;
+      const key = el.name || 'unnamed';
+      if (seen.has(key)) continue;
+      seen.add(key);
+
+      const fieldset = el.closest('fieldset') || el.closest('[role="radiogroup"]') || root;
+      const radios = Array.from(el.name
+        ? fieldset.querySelectorAll(`input[type=radio][name="${CSS.escape(el.name)}"]`)
+        : [el]).filter(visible);
+      if (!radios.length) continue;
+
+      const legend = fieldset.querySelector('legend, [data-test-form-builder-radio-button-form-component__title]');
+      let label = legend ? (legend.innerText || legend.textContent || '').trim() : '';
+      if (!label) label = nearestLabelText(el);
+      label = label.replace(/\s+/g, ' ').trim().slice(0, 300);
+
+      const options = radios.map((r) => ({ el: r, label: radioOptionLabel(r) || r.value || '' }))
+        .filter((o) => o.label);
+      if (!label || !options.length) continue;
+
+      const required = radios.some((r) => r.required || r.getAttribute('aria-required') === 'true')
+        || fieldset.getAttribute('aria-required') === 'true';
+      groups.push({ fieldType: 'radio', label, options: options.map((o) => o.label), radios: options, required, id: `r${groups.length}` });
+    }
+    return groups;
+  }
+
+  // Standalone checkboxes only — a checkbox that's part of a radio-style
+  // "select all that apply" question isn't something Easy Apply asks, so no
+  // grouping logic is needed here the way scanRadioGroups() needs one for radios.
+  function scanCheckboxes(root) {
+    const boxes = [];
+    for (const el of root.querySelectorAll('input[type=checkbox]')) {
+      if (!visible(el)) continue;
+      if (el.closest('#tailorcv-sidebar') || el.closest('#tcv-af-banner')) continue;
+      if (el.disabled) continue;
+      const label = nearestLabelText(el).replace(/\s+/g, ' ').trim().slice(0, 300);
+      const required = el.required || el.getAttribute('aria-required') === 'true';
+      boxes.push({ fieldType: 'checkbox', label, el, required, id: `c${boxes.length}` });
+    }
+    return boxes;
+  }
+
+  // Exact match first, then a "decline / prefer not to say" phrase fallback —
+  // EEO-style options are rarely worded identically to our own "Decline".
+  const DECLINE_PHRASES = ['decline', 'prefer not', 'not wish', 'not want', "don't wish"];
+
+  function clickRadioOption(radioGroup, optionLabelText) {
+    if (!optionLabelText) return false;
+    const lower = String(optionLabelText).trim().toLowerCase();
+    let match = radioGroup.radios.find((o) => o.label.toLowerCase() === lower)
+      || radioGroup.radios.find((o) => o.label.toLowerCase().includes(lower) || lower.includes(o.label.toLowerCase()));
+    if (!match && DECLINE_PHRASES.some((p) => lower.includes(p))) {
+      match = radioGroup.radios.find((o) => DECLINE_PHRASES.some((p) => o.label.toLowerCase().includes(p)));
+    }
+    if (!match) return false;
+    const target = match.el.closest('label') || match.el;
+    target.click();
+    return match.el.checked;
+  }
+
+  function clickCheckbox(field, shouldCheck) {
+    if (field.el.checked === shouldCheck) return true;
+    const target = field.el.closest('label') || field.el;
+    target.click();
+    return field.el.checked === shouldCheck;
   }
 
   // ── Resume file injection ────────────────────────────
@@ -589,20 +701,56 @@
     return null;
   }
 
-  // LinkedIn-specific: distinguishes Easy Apply (an in-page modal this
-  // feature never touches) from an external Apply that hands off to the
-  // real employer application. Exact-text matches only — LinkedIn's job page
-  // has many other buttons ("Save", "Share", ...) that a looser regex could
-  // misfire on.
+  // LinkedIn-specific: distinguishes Easy Apply (an in-page modal
+  // runLinkedInEasyApply() drives directly) from an external Apply that
+  // hands off to the real employer application. Prefers aria-label — LinkedIn
+  // sets it to "Easy Apply to <job> at <company>"/"Apply to <job> at
+  // <company>", which is more stable than the visible text (which can carry
+  // extra whitespace or a nested icon's own accessible name). Prefix match
+  // (not exact) so trailing text in either source doesn't cause a miss; the
+  // job page's other buttons ("Save", "Share", ...) don't start with either
+  // phrase, so this doesn't need to be an exact match to stay safe.
+  function controlLabel(el) {
+    const aria = (el.getAttribute('aria-label') || '').trim();
+    const text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    return (aria || text).toLowerCase();
+  }
+
+  // The search-results page's "Easy Apply" filter pill (a role="radio" toggle,
+  // id="searchFilter_applyWithLinkedin") has aria-label "Easy Apply filter." —
+  // that also matches a naive /^easy apply/ text test, and it comes BEFORE the
+  // real per-job Easy Apply button in DOM order, so it wins a plain textual
+  // scan. It's a filter toggle, never an apply action, so exclude anything
+  // that looks like one by role rather than by wording (wording alone isn't a
+  // safe enough signal here).
+  function isFilterOrToggleControl(el) {
+    const role = (el.getAttribute('role') || '').toLowerCase();
+    if (role === 'radio' || role === 'checkbox' || role === 'switch') return true;
+    if (el.hasAttribute('aria-checked')) return true;
+    if (el.id && /^searchFilter/i.test(el.id)) return true;
+    return false;
+  }
+
   function findLinkedInApplyControl() {
+    // LinkedIn ships a dedicated test hook on the real per-job Apply/Easy
+    // Apply CTA (data-live-test-job-apply-button) — unambiguous in a way text
+    // scanning across every <button> on the page isn't (that scan is also how
+    // the search-results "Easy Apply" FILTER pill got clicked instead of the
+    // real button — see isFilterOrToggleControl). Prefer it when present,
+    // fall back to the text scan for any layout that doesn't carry it.
+    const testHooked = document.querySelector('button[data-live-test-job-apply-button]');
+    if (testHooked && visible(testHooked) && !isFilterOrToggleControl(testHooked)) {
+      return { el: testHooked, easyApply: /^easy apply\b/.test(controlLabel(testHooked)) };
+    }
+
     const buttons = document.querySelectorAll('button');
     for (const el of buttons) {
-      if (!visible(el)) continue;
-      if (/^easy apply$/i.test((el.textContent || '').trim())) return { el, easyApply: true };
+      if (!visible(el) || isFilterOrToggleControl(el)) continue;
+      if (/^easy apply\b/.test(controlLabel(el))) return { el, easyApply: true };
     }
     for (const el of buttons) {
-      if (!visible(el)) continue;
-      if (/^apply$/i.test((el.textContent || '').trim())) return { el, easyApply: false };
+      if (!visible(el) || isFilterOrToggleControl(el)) continue;
+      if (/^apply\b/.test(controlLabel(el))) return { el, easyApply: false };
     }
     return null;
   }
@@ -614,6 +762,278 @@
       <button id="tcvAfDismiss">Got it</button>
     `);
     banner.querySelector('#tcvAfDismiss').addEventListener('click', removeBanner, { once: true });
+  }
+
+  // ── LinkedIn Easy Apply ───────────────────────────────
+  // A multi-step in-page modal (contact info → resume → questions → review →
+  // submit), each step gated on its own required fields before LinkedIn will
+  // even render the next one. Unlike run() above, this fills radios/checkboxes
+  // (see clickRadioOption/clickCheckbox) and DOES click the final "Submit
+  // application" button — a deliberate, narrower exception to the "never
+  // submit" rule, scoped to this one flow. If a required question can't be
+  // confidently answered, the loop pauses on that step and highlights it
+  // rather than guessing (see pauseForReview) — it does not skip to Submit
+  // with an unanswered required field.
+
+  const EASY_APPLY_MAX_STEPS = 12;
+
+  // Temporary while this flow is still being verified against LinkedIn's live
+  // DOM (which can't be tested outside a real browser session) — lets a
+  // failure be diagnosed from the console instead of guessing blind.
+  function easyApplyLog(...args) {
+    console.log('[TailorCV EasyApply]', ...args);
+  }
+
+  function easyApplyModal() {
+    const candidates = document.querySelectorAll(
+      '.jobs-easy-apply-modal, [data-test-modal-id="easy-apply-modal"], .artdeco-modal--layer-default[role="dialog"]'
+    );
+    for (const el of candidates) if (visible(el)) return el;
+    return null;
+  }
+
+  async function waitForEasyApplyModal(timeoutMs = 10000) {
+    const start = Date.now();
+    let attempts = 0;
+    while (Date.now() - start < timeoutMs) {
+      attempts += 1;
+      const modal = easyApplyModal();
+      if (modal) {
+        easyApplyLog('modal found after', Date.now() - start, 'ms,', attempts, 'polls');
+        return modal;
+      }
+      await sleep(200);
+    }
+    easyApplyLog('modal NOT found within', timeoutMs, 'ms —',
+      'raw candidate count right now:', document.querySelectorAll('.artdeco-modal, [role="dialog"]').length);
+    return null;
+  }
+
+  // The advancing button's text/aria-label changes per step ("Next" mid-flow,
+  // "Review"/"Review your application" on the second-to-last, "Submit
+  // application" on the last) — exact-match only, since the same footer also
+  // has "Back", "Save", and "Discard" buttons a looser match could catch.
+  const EASY_APPLY_ADVANCE_RE = /^(next|review|review your application|continue to next step)$/i;
+  const EASY_APPLY_SUBMIT_RE = /^submit application$/i;
+
+  function findEasyApplyAdvanceButton(modal) {
+    const buttons = modal.querySelectorAll('button');
+    for (const el of buttons) {
+      if (!visible(el) || el.disabled) continue;
+      const label = (el.getAttribute('aria-label') || el.textContent || '').trim();
+      if (EASY_APPLY_SUBMIT_RE.test(label)) return { el, submit: true };
+    }
+    for (const el of buttons) {
+      if (!visible(el) || el.disabled) continue;
+      const label = (el.getAttribute('aria-label') || el.textContent || '').trim();
+      if (EASY_APPLY_ADVANCE_RE.test(label)) return { el, submit: false };
+    }
+    return null;
+  }
+
+  function easyApplyErrorText(modal) {
+    const err = modal.querySelector('[role="alert"], .artdeco-inline-feedback--error');
+    if (err && visible(err)) return (err.innerText || err.textContent || '').trim();
+    return '';
+  }
+
+  function dismissEasyApplySuccessModal() {
+    const dismiss = document.querySelector(
+      '.artdeco-modal button[aria-label="Dismiss"], .artdeco-modal button[aria-label="Done"]'
+    );
+    if (dismiss && visible(dismiss)) dismiss.click();
+  }
+
+  // LinkedIn frequently pre-fills contact fields (phone, country code, ...)
+  // from the user's own LinkedIn profile before our script ever touches the
+  // step — that's an already-correct answer, not a gap. Skip anything that's
+  // already answered instead of overwriting it or flagging it for review.
+  function looksLikePlaceholderOption(text) {
+    return !text || /^(select|choose|please select|--|select an option)/i.test(text.trim());
+  }
+
+  function fieldAlreadyAnswered(field) {
+    if (field.fieldType === 'select') {
+      const opt = field.el.selectedOptions && field.el.selectedOptions[0];
+      return !!(field.el.value && opt && !looksLikePlaceholderOption(opt.textContent));
+    }
+    return !!(field.el.value && String(field.el.value).trim());
+  }
+
+  function radioGroupAlreadyAnswered(group) {
+    return group.radios.some((r) => r.el.checked);
+  }
+
+  // Fills one visible step of the modal: deterministic profile matches first
+  // (reusing the same MATCHERS/YES_NO_MATCHERS as run()), then a single
+  // batched AI call for whatever's left, exactly like run()'s unresolved-field
+  // pass. Required consent checkboxes are checked outright — LinkedIn Easy
+  // Apply's required checkboxes are near-universally "I have read/understood
+  // the above" boilerplate, not a factual claim an AI needs to ground, so
+  // sending them to the AI would just cost a round trip for a guaranteed skip.
+  async function fillEasyApplyStep(root, opts) {
+    const { profile, jdText, role, company, getApplyAnswers } = opts;
+    const textFields = scanFields(root, { skipChoices: true }).filter((f) => !fieldAlreadyAnswered(f));
+    const radioGroups = scanRadioGroups(root).filter((g) => !radioGroupAlreadyAnswered(g));
+    const checkboxes = scanCheckboxes(root);
+
+    let filledCount = 0;
+    const needsReview = [];
+
+    for (const field of textFields) {
+      if (!field.label) { if (field.required) needsReview.push(field); continue; }
+      let matched = false;
+      for (const m of YES_NO_MATCHERS) {
+        if (!m.re.test(field.label)) continue;
+        matched = true;
+        const text = boolToYesNo(m.get(profile), field.options);
+        if (text && await fillField(field, text)) filledCount += 1;
+        else if (field.required) needsReview.push(field);
+        break;
+      }
+      if (matched) continue;
+      for (const m of MATCHERS) {
+        if (!m.re.test(field.label)) continue;
+        matched = true;
+        const value = m.get(profile);
+        if (value && await fillField(field, value)) filledCount += 1;
+        else if (field.required) needsReview.push(field);
+        break;
+      }
+      if (!matched) field._unresolved = true;
+    }
+
+    for (const group of radioGroups) {
+      let matched = false;
+      for (const m of YES_NO_MATCHERS) {
+        if (!m.re.test(group.label)) continue;
+        matched = true;
+        const text = boolToYesNo(m.get(profile), group.options);
+        if (text && clickRadioOption(group, text)) filledCount += 1;
+        else if (group.required) needsReview.push(group);
+        break;
+      }
+      if (!matched) group._unresolved = true;
+    }
+
+    for (const box of checkboxes) {
+      if (!box.required) continue;
+      if (clickCheckbox(box, true)) filledCount += 1;
+      else needsReview.push(box);
+    }
+
+    const unresolvedText = textFields.filter((f) => f._unresolved && f.label);
+    const unresolvedRadios = radioGroups.filter((g) => g._unresolved && g.label);
+
+    if ((unresolvedText.length || unresolvedRadios.length) && typeof getApplyAnswers === 'function') {
+      const questions = [
+        ...unresolvedText.map((f) => ({ id: f.id, label: f.label, field_type: f.fieldType, options: f.options || undefined, limit: f.limit || undefined })),
+        ...unresolvedRadios.map((g) => ({ id: g.id, label: g.label, field_type: 'radio', options: g.options })),
+      ];
+      let res;
+      try { res = await getApplyAnswers({ jd_string: jdText, role, company, questions }); } catch (e) { res = null; }
+      const byId = new Map(((res && res.answers) || []).map((a) => [a.id, a]));
+
+      for (const f of unresolvedText) {
+        const ans = byId.get(f.id);
+        if (ans && !ans.skip && ans.answer && await fillField(f, ans.answer)) filledCount += 1;
+        else if (f.required) needsReview.push(f);
+      }
+      for (const g of unresolvedRadios) {
+        const ans = byId.get(g.id);
+        if (ans && !ans.skip && ans.answer && clickRadioOption(g, ans.answer)) filledCount += 1;
+        else if (g.required) needsReview.push(g);
+      }
+    } else {
+      for (const f of unresolvedText) if (f.required) needsReview.push(f);
+      for (const g of unresolvedRadios) if (g.required) needsReview.push(g);
+    }
+
+    return { filledCount, needsReview };
+  }
+
+  async function pauseForReview(items) {
+    for (const item of items) highlight(item.el || (item.radios && item.radios[0] && item.radios[0].el));
+    const labels = items.map((i) => i.label || 'a question').slice(0, 6);
+    const banner = showBanner(`
+      <div class="tcv-af-title">✋ Needs your input</div>
+      <div>TailorCV couldn't confidently answer the highlighted required question${items.length > 1 ? 's' : ''} on this step.</div>
+      <ul>${labels.map((l) => `<li>${escapeHtml(l)}</li>`).join('')}</ul>
+      <div>Answer them, then click Resume to let TailorCV continue.</div>
+      <button id="tcvAfEasyApplyResume">Resume</button>
+    `);
+    await new Promise((resolve) => {
+      banner.querySelector('#tcvAfEasyApplyResume').addEventListener('click', resolve, { once: true });
+    });
+    removeBanner();
+  }
+
+  async function runLinkedInEasyApply(opts, easyApplyBtnEl) {
+    ensureBannerStyles();
+    showSimpleBanner('Opening Easy Apply…', 'TailorCV will fill each step automatically.');
+    easyApplyLog('clicking Easy Apply button', { label: controlLabel(easyApplyBtnEl), connected: easyApplyBtnEl.isConnected });
+    easyApplyBtnEl.click();
+
+    const modal = await waitForEasyApplyModal();
+    if (!modal) {
+      showSimpleBanner('Couldn’t open Easy Apply', 'Please open it and apply manually.');
+      return;
+    }
+
+    let totalFilled = 0;
+    for (let step = 0; step < EASY_APPLY_MAX_STEPS; step++) {
+      easyApplyLog('step', step, 'start');
+      if (captchaVisible()) await pauseForCaptcha();
+
+      const currentModal = easyApplyModal();
+      if (!currentModal) {
+        easyApplyLog('modal gone at start of step', step, '— stopping');
+        return;
+      }
+
+      tryFillResumeFile(opts.tailoredPdfBase64);
+
+      const { filledCount, needsReview } = await fillEasyApplyStep(currentModal, opts);
+      totalFilled += filledCount;
+      easyApplyLog('step', step, 'filled', filledCount, 'needsReview', needsReview.map((i) => i.label));
+
+      if (needsReview.length) {
+        await pauseForReview(needsReview);
+        continue; // re-scan this same step now that the user has filled it in
+      }
+
+      const control = findEasyApplyAdvanceButton(currentModal);
+      if (!control) {
+        easyApplyLog('step', step, 'no advance button found — modal buttons were:',
+          Array.from(currentModal.querySelectorAll('button')).map((b) => b.getAttribute('aria-label') || b.textContent.trim()));
+        showSimpleBanner('Stuck on an Easy Apply step', 'TailorCV filled what it could — please finish this step manually.');
+        return;
+      }
+
+      easyApplyLog('step', step, 'clicking', control.submit ? 'Submit application' : 'advance button');
+      control.el.click();
+      await sleep(700); // let the SPA render the next step before the loop re-scans
+
+      const afterModal = easyApplyModal();
+      const errText = afterModal ? easyApplyErrorText(afterModal) : '';
+      if (errText) {
+        // LinkedIn's own validation caught something our scan missed — pause
+        // here instead of retrying Next against a step it just rejected.
+        easyApplyLog('step', step, 'LinkedIn validation error:', errText);
+        showSimpleBanner('Easy Apply flagged an issue', errText);
+        return;
+      }
+
+      if (control.submit) {
+        await sleep(1200); // let LinkedIn's "Application sent" confirmation render
+        dismissEasyApplySuccessModal();
+        showSimpleBanner('✅ Applied via Easy Apply', `Filled ${totalFilled} field${totalFilled === 1 ? '' : 's'} and submitted your application.`);
+        return;
+      }
+    }
+
+    easyApplyLog('hit EASY_APPLY_MAX_STEPS without finishing');
+    showSimpleBanner('Couldn’t finish Easy Apply automatically', 'TailorCV filled what it could — please finish and submit manually.');
   }
 
   // Entry point for "Apply with Tailored Resume": fills the current page
@@ -633,8 +1053,7 @@
         return;
       }
       if (found.easyApply) {
-        showSimpleBanner('This posting uses LinkedIn Easy Apply', 'That in-page flow isn’t automated — please complete it manually.');
-        return;
+        return runLinkedInEasyApply(opts, found.el);
       }
       await setChainSession({ ...opts, hops: 0, startedAt: Date.now() });
       showSimpleBanner('Opening the application…', 'TailorCV will keep going once it loads.');
@@ -688,5 +1107,15 @@
     return true;
   }
 
-  window.__tcvAutofill = { run, startChain, tryResumeChain, looksLikeApplicationForm };
+  // Lets content.js tell Easy Apply (stays on linkedin.com, no extra host
+  // permission needed) apart from an external Apply (hops to an unknown ATS
+  // host, which does need it) BEFORE deciding whether to gate on that
+  // permission — see requestBroadPermission() in content.js.
+  function linkedInApplyKind() {
+    const found = findLinkedInApplyControl();
+    if (!found) return null;
+    return found.easyApply ? 'easy' : 'external';
+  }
+
+  window.__tcvAutofill = { run, startChain, tryResumeChain, looksLikeApplicationForm, linkedInApplyKind };
 })();

@@ -7,6 +7,14 @@
   top: 80px !important;\r
   right: 0 !important;\r
   width: 340px !important;\r
+  /* No height constraint here used to mean a tall panel (e.g. the\r
+     Application details form's ~18 fields) just grew past the bottom of the\r
+     viewport with nothing to scroll \u2014 the fixed positioning doesn't clip or\r
+     scroll on its own. Capping to the viewport (minus the 80px top offset\r
+     and a bottom margin) and scrolling internally keeps every state,\r
+     including that form, fully reachable. */\r
+  max-height: calc(100vh - 100px) !important;\r
+  overflow-y: auto !important;\r
   background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;\r
   border: 1px solid rgba(79, 127, 255, 0.3) !important;\r
   border-right: none !important;\r

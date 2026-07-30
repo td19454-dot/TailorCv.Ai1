@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your TailorCV profile — the application details (contact info, work authorization, links) used to auto-fill job applications from the Chrome extension.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Your Profile | theTailorCV</title>
+    {% include "_seo_head.html" %}
+    <link rel="stylesheet" href="/static/header-footer.css?v=8">
+    <link rel="stylesheet" href="/static/style2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .profile-page {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 20px 80px;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .profile-head { margin-bottom: 8px; }
+        .profile-head h1 { font-size: 2rem; font-weight: 800; color: #eaf1ff; margin: 0 0 6px; }
+        .profile-head p { color: #9fb0cc; font-size: 1rem; margin: 0 0 28px; }
+        .profile-card {
+            background: linear-gradient(160deg, rgba(30,41,69,.65), rgba(17,24,42,.85));
+            border: 1px solid rgba(99,130,200,.22);
+            border-radius: 14px;
+            padding: 26px;
+            margin-bottom: 20px;
+        }
+        .profile-card h2 {
+            font-size: 1.05rem; font-weight: 700; color: #eaf1ff; margin: 0 0 16px;
+            padding-bottom: 10px; border-bottom: 1px solid rgba(99,130,200,.18);
+        }
+        .profile-identity { display: flex; align-items: center; gap: 14px; margin-bottom: 4px; }
+        .profile-avatar {
+            width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+            background: linear-gradient(135deg, #3392ff, #4c1d95); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.2rem;
+        }
+        .profile-identity strong { color: #eaf1ff; font-size: 1.05rem; display: block; }
+        .profile-identity span { color: #9fb0cc; font-size: .88rem; }
+        .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .profile-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+        @media (max-width: 640px) {
+            .profile-page { padding: 30px 14px 60px; }
+            .profile-head h1 { font-size: 1.5rem; }
+            .profile-grid, .profile-grid.cols-3 { grid-template-columns: 1fr; }
+        }
+        .pf-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+        .pf-field label { color: #aab9d6; font-size: .82rem; font-weight: 600; }
+        .pf-field input, .pf-field select {
+            background: rgba(255,255,255,.04); border: 1px solid rgba(99,130,200,.28);
+            border-radius: 9px; padding: 10px 12px; color: #eaf1ff; font-size: .92rem;
+            font-family: inherit;
+        }
+        .pf-field input:focus, .pf-field select:focus {
+            outline: none; border-color: #3392ff; background: rgba(255,255,255,.06);
+        }
+        .pf-note { color: #7d8fb3; font-size: .82rem; margin: -6px 0 18px; }
+        .pf-save-row { display: flex; align-items: center; gap: 14px; margin-top: 4px; }
+        .pf-save-btn {
+            background: linear-gradient(135deg, #3392ff, #4c1d95); color: #fff; border: none;
+            font-weight: 700; font-size: .92rem; padding: 12px 28px; border-radius: 10px; cursor: pointer;
+        }
+        .pf-save-btn:hover { filter: brightness(1.08); }
+        .pf-save-btn:disabled { opacity: .6; cursor: default; }
+        .pf-status { font-size: .86rem; color: #6ee7b7; }
+        .pf-status.err { color: #ff9a9a; }
+    </style>
+</head>
+<body>
+    {% include "_nav.html" %}
+
+    <main class="profile-page">
+        <div class="profile-head">
+            <h1>Your Profile</h1>
+            <p>The application details TailorCV's Chrome extension uses to auto-fill job applications — saved once, reused on every job.</p>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-identity">
+                <span class="profile-avatar">{{ (profile.name or profile.email or "U")[0]|upper }}</span>
+                <div>
+                    <strong>{{ profile.name or "You" }}</strong>
+                    <span>{{ profile.email or "" }}</span>
+                </div>
+            </div>
+        </div>
+
+        <form class="profile-card" id="pfForm">
+            <h2>Contact &amp; links</h2>
+            <div class="profile-grid">
+                <div class="pf-field">
+                    <label for="pfPhone">Phone</label>
+                    <input type="tel" id="pfPhone" value="{{ profile.phone or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfCity">City</label>
+                    <input type="text" id="pfCity" value="{{ profile.city or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfState">State / Province</label>
+                    <input type="text" id="pfState" value="{{ profile.state or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfCountry">Country</label>
+                    <input type="text" id="pfCountry" value="{{ profile.country or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfLinkedin">LinkedIn URL</label>
+                    <input type="text" id="pfLinkedin" value="{{ profile.linkedin_url or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfPortfolio">Portfolio / website URL</label>
+                    <input type="text" id="pfPortfolio" value="{{ profile.portfolio_url or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfGithub">GitHub URL</label>
+                    <input type="text" id="pfGithub" value="{{ profile.github_url or '' }}">
+                </div>
+            </div>
+
+            <h2>Work preferences</h2>
+            <div class="profile-grid cols-3">
+                <div class="pf-field">
+                    <label for="pfNotice">Notice period</label>
+                    <input type="text" id="pfNotice" placeholder="e.g. Immediate, 30 days" value="{{ profile.notice_period or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfSalary">Desired salary</label>
+                    <input type="text" id="pfSalary" value="{{ profile.desired_salary or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfRelocate">Willing to relocate?</label>
+                    <select id="pfRelocate">
+                        <option value="unknown" {% if profile.willing_to_relocate is none %}selected{% endif %}>Prefer not to say / Unknown</option>
+                        <option value="yes" {% if profile.willing_to_relocate == true %}selected{% endif %}>Yes</option>
+                        <option value="no" {% if profile.willing_to_relocate == false %}selected{% endif %}>No</option>
+                    </select>
+                </div>
+                <div class="pf-field">
+                    <label for="pfWorkAuth">Authorized to work in your target country?</label>
+                    <select id="pfWorkAuth">
+                        <option value="unknown" {% if profile.work_authorized is none %}selected{% endif %}>Prefer not to say / Unknown</option>
+                        <option value="yes" {% if profile.work_authorized == true %}selected{% endif %}>Yes</option>
+                        <option value="no" {% if profile.work_authorized == false %}selected{% endif %}>No</option>
+                    </select>
+                </div>
+                <div class="pf-field">
+                    <label for="pfSponsor">Need visa sponsorship?</label>
+                    <select id="pfSponsor">
+                        <option value="unknown" {% if profile.needs_sponsorship is none %}selected{% endif %}>Prefer not to say / Unknown</option>
+                        <option value="yes" {% if profile.needs_sponsorship == true %}selected{% endif %}>Yes</option>
+                        <option value="no" {% if profile.needs_sponsorship == false %}selected{% endif %}>No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="pf-note">These are only ever filled in with exactly what you enter here — the extension never guesses or invents an answer to a legally sensitive question.</div>
+
+            <h2>Education</h2>
+            {% set edu = (profile.education or [{}])[0] %}
+            <div class="profile-grid">
+                <div class="pf-field">
+                    <label for="pfDegree">Degree</label>
+                    <input type="text" id="pfDegree" value="{{ edu.degree or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfField">Field of study</label>
+                    <input type="text" id="pfField" value="{{ edu.field_of_study or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfSchool">School</label>
+                    <input type="text" id="pfSchool" value="{{ edu.school or '' }}">
+                </div>
+                <div class="pf-field">
+                    <label for="pfGradYear">Graduation year</label>
+                    <input type="text" id="pfGradYear" value="{{ edu.end or '' }}">
+                </div>
+            </div>
+
+            <div class="pf-save-row">
+                <button type="submit" class="pf-save-btn" id="pfSaveBtn">Save</button>
+                <span class="pf-status" id="pfStatus"></span>
+            </div>
+        </form>
+    </main>
+
+    {% include "_footer.html" %}
+
+    <script src="/static/auth_nav.js?v=13" defer></script>
+    <script src="/static/mobile_nav.js" defer></script>
+    <script>
+        (function () {
+            // Same channel templates/extension.html uses for base-resume updates —
+            // lets a TailorCV sidebar already open on a job page (which caches this
+            // profile in chrome.storage.local) pick up the change immediately
+            // instead of the user having to notice and refresh that tab by hand.
+            var TAILORCV_EXTENSION_ID = 'lnkplncemohgcdjlgccgmbcgiokcgmno';
+            function notifyExtensionProfileUpdated() {
+                if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.sendMessage) return;
+                try {
+                    chrome.runtime.sendMessage(TAILORCV_EXTENSION_ID, { type: 'tailorcv-apply-profile-updated' }, function () {
+                        void chrome.runtime.lastError; // nothing actionable here either way
+                    });
+                } catch (e) { /* extension not installed / not reachable */ }
+            }
+
+            function triVal(id) {
+                var v = document.getElementById(id).value;
+                if (v === 'yes') return true;
+                if (v === 'no') return false;
+                return null;
+            }
+            document.getElementById('pfForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                var btn = document.getElementById('pfSaveBtn');
+                var status = document.getElementById('pfStatus');
+                btn.disabled = true;
+                btn.textContent = 'Saving…';
+                status.textContent = '';
+                status.className = 'pf-status';
+
+                var profile = {
+                    phone: document.getElementById('pfPhone').value.trim(),
+                    city: document.getElementById('pfCity').value.trim(),
+                    state: document.getElementById('pfState').value.trim(),
+                    country: document.getElementById('pfCountry').value.trim(),
+                    linkedin_url: document.getElementById('pfLinkedin').value.trim(),
+                    portfolio_url: document.getElementById('pfPortfolio').value.trim(),
+                    github_url: document.getElementById('pfGithub').value.trim(),
+                    notice_period: document.getElementById('pfNotice').value.trim(),
+                    desired_salary: document.getElementById('pfSalary').value.trim(),
+                    work_authorized: triVal('pfWorkAuth'),
+                    needs_sponsorship: triVal('pfSponsor'),
+                    willing_to_relocate: triVal('pfRelocate'),
+                    education: [{
+                        degree: document.getElementById('pfDegree').value.trim(),
+                        field_of_study: document.getElementById('pfField').value.trim(),
+                        school: document.getElementById('pfSchool').value.trim(),
+                        end: document.getElementById('pfGradYear').value.trim(),
+                    }],
+                };
+
+                fetch('/api/extension/apply-profile', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(profile),
+                }).then(function (r) {
+                    if (!r.ok) throw new Error('save failed');
+                    return r.json();
+                }).then(function () {
+                    status.textContent = 'Saved.';
+                    notifyExtensionProfileUpdated();
+                }).catch(function () {
+                    status.textContent = 'Could not save — please try again.';
+                    status.className = 'pf-status err';
+                }).finally(function () {
+                    btn.disabled = false;
+                    btn.textContent = 'Save';
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

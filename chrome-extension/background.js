@@ -1,5 +1,5 @@
 // TailorCV — AI Resume Optimizer — Background Service Worker
-const BASE_URL = 'https://thetailorcv.com';
+const BASE_URL = 'http://127.0.0.1:8005';
 
 async function getCsrfToken() {
   // Make sure a csrftoken cookie exists (the server sets one on every response),
@@ -81,10 +81,14 @@ chrome.action.onClicked.addListener(async (tab) => {
 // is actually showing the logged-out state.
 // Same channel as the login flow above, fired instead by the "Set up your
 // extension" page (see templates/extension.html) once a base resume is
-// actually saved — so a panel stuck on "no base resume set" catches up on
-// its own instead of the user having to notice and refresh it by hand.
+// actually saved, or by the website's /profile page (see templates/
+// profile.html) once application details are saved there — so a panel stuck
+// on "no base resume set", or a sidebar still holding a stale cached
+// profile, catches up on its own instead of the user having to notice and
+// refresh it by hand.
 chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {
-  if (!msg || (msg.type !== 'tailorcv-login-success' && msg.type !== 'tailorcv-base-resume-updated')) return;
+  const KNOWN_TYPES = ['tailorcv-login-success', 'tailorcv-base-resume-updated', 'tailorcv-apply-profile-updated'];
+  if (!msg || !KNOWN_TYPES.includes(msg.type)) return;
   chrome.tabs.query({}, (tabs) => {
     for (const tab of tabs) {
       if (tab.id) chrome.tabs.sendMessage(tab.id, { type: 'REFRESH_AUTH' }).catch(() => {});
@@ -277,6 +281,26 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           sendResponse({ error: e.message });
         }
 
+      } else if (msg.type === 'GET_BASE_RESUME_FILE') {
+        try {
+          const res = await fetch(`${BASE_URL}/api/extension/base-resume/file`, { credentials: 'include' });
+          if (!res.ok) {
+            const code = res.status === 404 ? 'no_base_resume' : res.status === 401 ? 'not_logged_in' : null;
+            sendResponse({ error: 'Could not fetch your base resume.', code });
+            return;
+          }
+          const buffer = await res.arrayBuffer();
+          const pdfBase64 = arrayBufferToBase64(buffer);
+          await chrome.downloads.download({
+            url: `data:application/pdf;base64,${pdfBase64}`,
+            filename: 'resume.pdf',
+            saveAs: false,
+          });
+          sendResponse({ data: { success: true, pdfBase64 } });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
       } else if (msg.type === 'GET_APPLY_PROFILE') {
         const res = await fetch(`${BASE_URL}/api/extension/apply-profile`, { credentials: 'include' });
         if (!res.ok) {
@@ -284,28 +308,6 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           return;
         }
         sendResponse({ data: await res.json() });
-
-      } else if (msg.type === 'SAVE_APPLY_PROFILE') {
-        try {
-          const csrfToken = await getCsrfToken();
-          const res = await fetch(`${BASE_URL}/api/extension/apply-profile`, {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-CSRFToken': csrfToken,
-              'X-Requested-With': 'XMLHttpRequest',
-            },
-            body: JSON.stringify(msg.profile || {}),
-          });
-          if (!res.ok) {
-            sendResponse({ error: 'Could not save your application details.' });
-            return;
-          }
-          sendResponse({ data: await res.json() });
-        } catch (e) {
-          sendResponse({ error: e.message });
-        }
 
       } else if (msg.type === 'GET_APPLY_ANSWERS') {
         try {

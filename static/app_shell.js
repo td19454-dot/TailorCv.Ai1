@@ -10,7 +10,7 @@
         "/solutions", "/ats-analysis", "/optimize", "/modify-cv", "/cover-letter",
         "/auto-apply", "/my-resumes", "/interview-prep", "/mock-interview",
         "/optimized-editor", "/templates", "/portfolio", "/portfolio-builder",
-        "/my-portfolios", "/extension"
+        "/my-portfolios", "/extension", "/profile"
     ];
 
     function getUser() {
@@ -84,6 +84,7 @@
             +     '<div class="tcv-profile-head"><span class="tcv-pf-av">' + initial + '</span>'
             +       '<div class="tcv-pf-id"><strong>' + esc(user.name || "User") + '</strong><small>' + esc(user.email || "") + '</small></div></div>'
             +     '<div id="tcvProLinks"></div>'
+            +     '<a class="tcv-pf-link" href="/profile">Profile</a>'
             +     '<a class="tcv-pf-link" href="/pricing">Get free scans</a>'
             +     '<a class="tcv-pf-link" href="/pricing">Account Settings</a>'
             +     '<a class="tcv-pf-link" href="/privacy">Privacy Policy</a>'
