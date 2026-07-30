@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TailorCV \u2014 AI Resume Optimizer",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "description": "Tailor your resume to any job posting and write a matching cover letter — download both as ATS-ready PDFs in one click.",
   "permissions": [
     "activeTab",
