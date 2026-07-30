@@ -305,17 +305,28 @@
     { re: /country/i, get: (p) => p.country },
     { re: /notice\s*period/i, get: (p) => p.notice_period },
     // "CTC" (Cost to Company) is the standard Indian-job-posting term for
-    // salary — "expected/desired CTC" is the same question as desired_salary,
-    // just regional wording. Deliberately NOT matching bare "ctc" or "current
-    // ctc": that profile has no current-salary field, and reusing
-    // desired_salary there would misrepresent a different fact — better to
-    // fall through to the AI (which will correctly skip, ungrounded) and pause
-    // for the user than answer a factual question with the wrong number.
+    // salary — "expected/desired CTC" is desired_salary, "current CTC" is
+    // current_salary, just regional wording either way. Deliberately NOT
+    // matching a bare "ctc" with no desired/expected/current qualifier: an
+    // unqualified salary question is ambiguous between the two, and guessing
+    // which one risks answering with the wrong figure — better to fall
+    // through to the AI (which will correctly skip, ungrounded) and pause for
+    // the user than answer a factual question with the wrong number.
     { re: /(desired|expected)\s*(salary|ctc)|salary\s*expect/i, get: (p) => p.desired_salary },
+    { re: /current\s*(salary|ctc)|present\s*(salary|ctc)/i, get: (p) => p.current_salary },
     { re: /university|college|\bschool\b/i, get: (p) => firstEdu(p, 'school') },
     { re: /degree/i, get: (p) => firstEdu(p, 'degree') },
     { re: /field\s*of\s*study|major/i, get: (p) => firstEdu(p, 'field_of_study') },
     { re: /gpa/i, get: (p) => firstEdu(p, 'gpa') },
+    // EEO (Equal Employment Opportunity) fields — always self-identified and
+    // voluntary, so these only ever fill in with the exact string the user
+    // chose on their profile page (see templates/profile.html); an unset
+    // profile value is "" (falsy), which correctly leaves the question
+    // unanswered here rather than defaulting to any particular option.
+    { re: /\bgender\b/i, get: (p) => p.gender },
+    { re: /ethnicity|\brace\b/i, get: (p) => p.ethnicity },
+    { re: /veteran/i, get: (p) => p.veteran_status },
+    { re: /disab(led|ility)/i, get: (p) => p.disability_status },
   ];
 
   function firstEdu(profile, key) {
@@ -949,6 +960,20 @@
         matched = true;
         const text = boolToYesNo(m.get(profile), group.options);
         if (text && clickRadioOption(group, text)) filledCount += 1;
+        else if (group.required) needsReview.push(group);
+        break;
+      }
+      if (matched) continue;
+      // String-valued profile fields (EEO questions especially — gender,
+      // ethnicity, veteran/disability status — are near-universally rendered
+      // as radio groups rather than selects on real ATS forms) need the same
+      // MATCHERS pass the text-field loop above already gets, just filled via
+      // clickRadioOption()'s fuzzy option match instead of fillField().
+      for (const m of MATCHERS) {
+        if (!m.re.test(group.label)) continue;
+        matched = true;
+        const value = m.get(profile);
+        if (value && clickRadioOption(group, value)) filledCount += 1;
         else if (group.required) needsReview.push(group);
         break;
       }

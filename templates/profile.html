@@ -135,6 +135,10 @@
                     <input type="text" id="pfSalary" value="{{ profile.desired_salary or '' }}">
                 </div>
                 <div class="pf-field">
+                    <label for="pfCurrentSalary">Current salary</label>
+                    <input type="text" id="pfCurrentSalary" value="{{ profile.current_salary or '' }}">
+                </div>
+                <div class="pf-field">
                     <label for="pfRelocate">Willing to relocate?</label>
                     <select id="pfRelocate">
                         <option value="unknown" {% if profile.willing_to_relocate is none %}selected{% endif %}>Prefer not to say / Unknown</option>
@@ -181,6 +185,53 @@
                     <input type="text" id="pfGradYear" value="{{ edu.end or '' }}">
                 </div>
             </div>
+
+            <h2>Equal Employment Opportunity (optional)</h2>
+            <div class="profile-grid cols-3">
+                <div class="pf-field">
+                    <label for="pfGender">Gender</label>
+                    <select id="pfGender">
+                        <option value="" {% if not profile.gender %}selected{% endif %}>Prefer not to say / Unknown</option>
+                        <option value="Male" {% if profile.gender == 'Male' %}selected{% endif %}>Male</option>
+                        <option value="Female" {% if profile.gender == 'Female' %}selected{% endif %}>Female</option>
+                        <option value="Non-binary" {% if profile.gender == 'Non-binary' %}selected{% endif %}>Non-binary</option>
+                        <option value="Decline to self-identify" {% if profile.gender == 'Decline to self-identify' %}selected{% endif %}>Decline to self-identify</option>
+                    </select>
+                </div>
+                <div class="pf-field">
+                    <label for="pfEthnicity">Race / ethnicity</label>
+                    <select id="pfEthnicity">
+                        <option value="" {% if not profile.ethnicity %}selected{% endif %}>Prefer not to say / Unknown</option>
+                        <option value="Hispanic or Latino" {% if profile.ethnicity == 'Hispanic or Latino' %}selected{% endif %}>Hispanic or Latino</option>
+                        <option value="American Indian or Alaska Native" {% if profile.ethnicity == 'American Indian or Alaska Native' %}selected{% endif %}>American Indian or Alaska Native</option>
+                        <option value="Asian" {% if profile.ethnicity == 'Asian' %}selected{% endif %}>Asian</option>
+                        <option value="Black or African American" {% if profile.ethnicity == 'Black or African American' %}selected{% endif %}>Black or African American</option>
+                        <option value="Native Hawaiian or Other Pacific Islander" {% if profile.ethnicity == 'Native Hawaiian or Other Pacific Islander' %}selected{% endif %}>Native Hawaiian or Other Pacific Islander</option>
+                        <option value="White" {% if profile.ethnicity == 'White' %}selected{% endif %}>White</option>
+                        <option value="Two or more races" {% if profile.ethnicity == 'Two or more races' %}selected{% endif %}>Two or more races</option>
+                        <option value="Decline to self-identify" {% if profile.ethnicity == 'Decline to self-identify' %}selected{% endif %}>Decline to self-identify</option>
+                    </select>
+                </div>
+                <div class="pf-field">
+                    <label for="pfVeteran">Veteran status</label>
+                    <select id="pfVeteran">
+                        <option value="" {% if not profile.veteran_status %}selected{% endif %}>Prefer not to say / Unknown</option>
+                        <option value="I am a veteran" {% if profile.veteran_status == 'I am a veteran' %}selected{% endif %}>I am a veteran</option>
+                        <option value="I am not a veteran" {% if profile.veteran_status == 'I am not a veteran' %}selected{% endif %}>I am not a veteran</option>
+                        <option value="Decline to self-identify" {% if profile.veteran_status == 'Decline to self-identify' %}selected{% endif %}>Decline to self-identify</option>
+                    </select>
+                </div>
+                <div class="pf-field">
+                    <label for="pfDisability">Disability status</label>
+                    <select id="pfDisability">
+                        <option value="" {% if not profile.disability_status %}selected{% endif %}>Prefer not to say / Unknown</option>
+                        <option value="Yes, I have a disability" {% if profile.disability_status == 'Yes, I have a disability' %}selected{% endif %}>Yes, I have a disability</option>
+                        <option value="No, I do not have a disability" {% if profile.disability_status == 'No, I do not have a disability' %}selected{% endif %}>No, I do not have a disability</option>
+                        <option value="Decline to self-identify" {% if profile.disability_status == 'Decline to self-identify' %}selected{% endif %}>Decline to self-identify</option>
+                    </select>
+                </div>
+            </div>
+            <div class="pf-note">Voluntary self-identification, same as on any job application — used only to fill in this exact question when it appears, never inferred or assumed for anything else.</div>
 
             <div class="pf-save-row">
                 <button type="submit" class="pf-save-btn" id="pfSaveBtn">Save</button>
@@ -234,9 +285,14 @@
                     github_url: document.getElementById('pfGithub').value.trim(),
                     notice_period: document.getElementById('pfNotice').value.trim(),
                     desired_salary: document.getElementById('pfSalary').value.trim(),
+                    current_salary: document.getElementById('pfCurrentSalary').value.trim(),
                     work_authorized: triVal('pfWorkAuth'),
                     needs_sponsorship: triVal('pfSponsor'),
                     willing_to_relocate: triVal('pfRelocate'),
+                    gender: document.getElementById('pfGender').value,
+                    ethnicity: document.getElementById('pfEthnicity').value,
+                    veteran_status: document.getElementById('pfVeteran').value,
+                    disability_status: document.getElementById('pfDisability').value,
                     education: [{
                         degree: document.getElementById('pfDegree').value.trim(),
                         field_of_study: document.getElementById('pfField').value.trim(),

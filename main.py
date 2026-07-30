@@ -5707,8 +5707,8 @@ async def extension_profile(request: Request):
 APPLY_PROFILE_STRING_FIELDS = {
     "phone": 40, "city": 100, "state": 100, "country": 100,
     "linkedin_url": 300, "portfolio_url": 300, "github_url": 300,
-    "notice_period": 100, "desired_salary": 100,
-    "gender": 60, "veteran_status": 60, "disability_status": 60,
+    "notice_period": 100, "desired_salary": 100, "current_salary": 100,
+    "gender": 60, "veteran_status": 60, "disability_status": 60, "ethnicity": 60,
 }
 APPLY_PROFILE_BOOL_FIELDS = {"work_authorized", "needs_sponsorship", "willing_to_relocate"}
 APPLY_PROFILE_EDUCATION_FIELDS = {"degree": 150, "field_of_study": 150, "school": 200, "start": 20, "end": 20, "gpa": 20}
