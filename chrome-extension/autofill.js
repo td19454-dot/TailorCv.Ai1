@@ -152,6 +152,16 @@
     return type === 'email' || type === 'tel' || type === 'number' ? type : 'text';
   }
 
+  // LinkedIn's Easy Apply form marks a required question with a trailing "*"
+  // in the visible label text alone — no `required` attribute, no
+  // `aria-required` — so relying on either of those DOM signals silently
+  // treats a required, empty field as optional and skips it with no fill and
+  // no review flag. The generic ATS matchers in run() rarely rely on this
+  // (most set the real attribute), so this is additive, not a replacement.
+  function labelLooksRequired(label) {
+    return /\*\s*$/.test(label || '');
+  }
+
   // `root` scopes the scan to a container (e.g. the Easy Apply modal) instead
   // of the whole document — needed so a LinkedIn step-by-step scan doesn't
   // pick up fields from underneath the modal. `skipChoices` omits
@@ -169,7 +179,7 @@
       const fieldType = classifyType(el);
       if (skipChoices && (fieldType === 'checkbox' || fieldType === 'radio')) continue;
       const label = nearestLabelText(el).replace(/\s+/g, ' ').trim().slice(0, 300);
-      const required = el.required || el.getAttribute('aria-required') === 'true';
+      const required = el.required || el.getAttribute('aria-required') === 'true' || labelLooksRequired(label);
       const options = fieldType === 'select'
         ? Array.from(el.options).map((o) => o.textContent.trim()).filter(Boolean)
         : null;
@@ -294,7 +304,14 @@
     { re: /state|province/i, get: (p) => p.state },
     { re: /country/i, get: (p) => p.country },
     { re: /notice\s*period/i, get: (p) => p.notice_period },
-    { re: /(desired|expected)\s*salary|salary\s*expect/i, get: (p) => p.desired_salary },
+    // "CTC" (Cost to Company) is the standard Indian-job-posting term for
+    // salary — "expected/desired CTC" is the same question as desired_salary,
+    // just regional wording. Deliberately NOT matching bare "ctc" or "current
+    // ctc": that profile has no current-salary field, and reusing
+    // desired_salary there would misrepresent a different fact — better to
+    // fall through to the AI (which will correctly skip, ungrounded) and pause
+    // for the user than answer a factual question with the wrong number.
+    { re: /(desired|expected)\s*(salary|ctc)|salary\s*expect/i, get: (p) => p.desired_salary },
     { re: /university|college|\bschool\b/i, get: (p) => firstEdu(p, 'school') },
     { re: /degree/i, get: (p) => firstEdu(p, 'degree') },
     { re: /field\s*of\s*study|major/i, get: (p) => firstEdu(p, 'field_of_study') },
@@ -420,7 +437,8 @@
       if (!label || !options.length) continue;
 
       const required = radios.some((r) => r.required || r.getAttribute('aria-required') === 'true')
-        || fieldset.getAttribute('aria-required') === 'true';
+        || fieldset.getAttribute('aria-required') === 'true'
+        || labelLooksRequired(label);
       groups.push({ fieldType: 'radio', label, options: options.map((o) => o.label), radios: options, required, id: `r${groups.length}` });
     }
     return groups;
@@ -436,7 +454,7 @@
       if (el.closest('#tailorcv-sidebar') || el.closest('#tcv-af-banner')) continue;
       if (el.disabled) continue;
       const label = nearestLabelText(el).replace(/\s+/g, ' ').trim().slice(0, 300);
-      const required = el.required || el.getAttribute('aria-required') === 'true';
+      const required = el.required || el.getAttribute('aria-required') === 'true' || labelLooksRequired(label);
       boxes.push({ fieldType: 'checkbox', label, el, required, id: `c${boxes.length}` });
     }
     return boxes;
@@ -775,7 +793,11 @@
   // rather than guessing (see pauseForReview) — it does not skip to Submit
   // with an unanswered required field.
 
-  const EASY_APPLY_MAX_STEPS = 12;
+  // A pause (needs-your-input or a LinkedIn validation error) re-scans the
+  // same visual step via `continue`, which still consumes a loop slot without
+  // actually advancing — so this needs headroom beyond the real step count
+  // for a flow with a couple of pauses in it, not just one-slot-per-step.
+  const EASY_APPLY_MAX_STEPS = 20;
 
   // Temporary while this flow is still being verified against LinkedIn's live
   // DOM (which can't be tested outside a real browser session) — lets a
@@ -817,6 +839,19 @@
   const EASY_APPLY_SUBMIT_RE = /^submit application$/i;
 
   function findEasyApplyAdvanceButton(modal) {
+    // LinkedIn ships dedicated test hooks on these footer buttons — confirmed
+    // data-live-test-easy-apply-review-button on a real Review button that
+    // had NO aria-label at all (its name comes only from a nested <span>,
+    // which is exactly the kind of structure a pure text/aria scan can miss).
+    // "next"/"submit" siblings are inferred from the same naming convention,
+    // not independently confirmed, so this is tried first but the text scan
+    // below still runs as a fallback if no attribute matches.
+    const hooked = Array.from(modal.querySelectorAll('button'))
+      .filter((el) => visible(el) && !el.disabled)
+      .map((el) => ({ el, attr: Array.from(el.attributes).find((a) => /^data-live-test-easy-apply-.*-button$/.test(a.name)) }))
+      .find((x) => x.attr);
+    if (hooked) return { el: hooked.el, submit: /submit/i.test(hooked.attr.name) };
+
     const buttons = modal.querySelectorAll('button');
     for (const el of buttons) {
       if (!visible(el) || el.disabled) continue;
@@ -871,6 +906,10 @@
   // Apply's required checkboxes are near-universally "I have read/understood
   // the above" boilerplate, not a factual claim an AI needs to ground, so
   // sending them to the AI would just cost a round trip for a guaranteed skip.
+  function countScannableCandidates(root) {
+    return scanFields(root, { skipChoices: true }).length + scanRadioGroups(root).length + scanCheckboxes(root).length;
+  }
+
   async function fillEasyApplyStep(root, opts) {
     const { profile, jdText, role, company, getApplyAnswers } = opts;
     const textFields = scanFields(root, { skipChoices: true }).filter((f) => !fieldAlreadyAnswered(f));
@@ -971,7 +1010,7 @@
   async function runLinkedInEasyApply(opts, easyApplyBtnEl) {
     ensureBannerStyles();
     showSimpleBanner('Opening Easy Apply…', 'TailorCV will fill each step automatically.');
-    easyApplyLog('clicking Easy Apply button', { label: controlLabel(easyApplyBtnEl), connected: easyApplyBtnEl.isConnected });
+    easyApplyLog('clicking Easy Apply button — label:', controlLabel(easyApplyBtnEl), '| connected:', easyApplyBtnEl.isConnected);
     easyApplyBtnEl.click();
 
     const modal = await waitForEasyApplyModal();
@@ -993,19 +1032,48 @@
 
       tryFillResumeFile(opts.tailoredPdfBase64);
 
-      const { filledCount, needsReview } = await fillEasyApplyStep(currentModal, opts);
+      // A step can scan as empty for two very different reasons: it
+      // genuinely has no fields (e.g. the resume-picker step, which uses
+      // custom controls this scan doesn't look at), or LinkedIn just hasn't
+      // finished mounting this step's form yet — the same SPA-timing race the
+      // advance-button poll below exists for. A scan that runs too early
+      // can't tell the difference, so it silently treats a not-yet-rendered
+      // required field as "nothing to do" and walks straight to Review,
+      // which is exactly what happened to the CTC/notice-period fields
+      // before this retry existed — LinkedIn's own validation caught it
+      // after the fact instead of this scan catching it before.
+      let scanModal = currentModal;
+      for (let attempt = 0; attempt < 3 && countScannableCandidates(scanModal) === 0; attempt++) {
+        await sleep(500);
+        scanModal = easyApplyModal() || scanModal;
+      }
+
+      const { filledCount, needsReview } = await fillEasyApplyStep(scanModal, opts);
       totalFilled += filledCount;
-      easyApplyLog('step', step, 'filled', filledCount, 'needsReview', needsReview.map((i) => i.label));
+      easyApplyLog('step', step, 'filled', filledCount, 'needsReview:', needsReview.map((i) => `"${i.label}"(required=${i.required})`).join(' | ') || '(none)');
 
       if (needsReview.length) {
         await pauseForReview(needsReview);
         continue; // re-scan this same step now that the user has filled it in
       }
 
-      const control = findEasyApplyAdvanceButton(currentModal);
+      // findEasyApplyAdvanceButton() only ever returns an ENABLED button (it
+      // skips disabled ones outright) — so a single check right after landing
+      // on a step can race LinkedIn's own async validation (e.g. "a resume is
+      // selected, now enable Next"), which can take a beat longer than the
+      // fixed 700ms sleep below. Poll briefly instead of giving up on one miss.
+      let control = findEasyApplyAdvanceButton(currentModal);
+      const advanceWaitStart = Date.now();
+      while (!control && Date.now() - advanceWaitStart < 4000) {
+        await sleep(300);
+        control = findEasyApplyAdvanceButton(easyApplyModal() || currentModal);
+      }
       if (!control) {
+        const liveModal = easyApplyModal() || currentModal;
         easyApplyLog('step', step, 'no advance button found — modal buttons were:',
-          Array.from(currentModal.querySelectorAll('button')).map((b) => b.getAttribute('aria-label') || b.textContent.trim()));
+          Array.from(liveModal.querySelectorAll('button'))
+            .map((b) => `"${(b.getAttribute('aria-label') || b.textContent.trim())}"(visible=${visible(b)},disabled=${b.disabled})`)
+            .join(' | '));
         showSimpleBanner('Stuck on an Easy Apply step', 'TailorCV filled what it could — please finish this step manually.');
         return;
       }
@@ -1018,10 +1086,13 @@
       const errText = afterModal ? easyApplyErrorText(afterModal) : '';
       if (errText) {
         // LinkedIn's own validation caught something our scan missed — pause
-        // here instead of retrying Next against a step it just rejected.
+        // and let the user fix it in place, then re-scan the same step,
+        // rather than dead-ending the run here. The scan-retry above should
+        // make this rare now, but it's the same safety net either way: never
+        // guess an answer just to get past a rejected step.
         easyApplyLog('step', step, 'LinkedIn validation error:', errText);
-        showSimpleBanner('Easy Apply flagged an issue', errText);
-        return;
+        await pauseForReview([{ label: errText }]);
+        continue;
       }
 
       if (control.submit) {
