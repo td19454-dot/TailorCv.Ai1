@@ -19,6 +19,39 @@ function arrayBufferToBase64(buffer) {
   return btoa(binary);
 }
 
+// Session-scoped cache for GET_PROFILE / GET_BASE_RESUME — every content-script
+// injection (new tab, hard reload) used to redo both real network calls even
+// though the answer rarely changes within a browsing session. chrome.storage.
+// session (not .local) survives this service worker being killed/restarted
+// between messages, but is wiped the moment the browser fully closes — that
+// caps worst-case staleness to "one browser session" for free. Explicit
+// invalidation (login, logout, base-resume-save, and a live 401/404 from any
+// uncached call) keeps it correct sooner than that; AUTH_CACHE_TTL_MS is only
+// a backstop for a session cookie silently expiring with none of those firing.
+const AUTH_CACHE_KEY = 'tcv_auth_cache';
+const AUTH_CACHE_TTL_MS = 5 * 60 * 1000;
+
+async function readAuthCache() {
+  const stored = await chrome.storage.session.get(AUTH_CACHE_KEY);
+  const cache = stored[AUTH_CACHE_KEY];
+  if (!cache || (Date.now() - cache.cachedAt) > AUTH_CACHE_TTL_MS) return null;
+  return cache;
+}
+
+async function writeAuthCacheField(field, value) {
+  const stored = await chrome.storage.session.get(AUTH_CACHE_KEY);
+  const existing = stored[AUTH_CACHE_KEY];
+  const cache = (existing && (Date.now() - existing.cachedAt) <= AUTH_CACHE_TTL_MS)
+    ? { ...existing } : { cachedAt: Date.now() };
+  cache[field] = value;
+  cache.cachedAt = Date.now();
+  await chrome.storage.session.set({ [AUTH_CACHE_KEY]: cache });
+}
+
+async function clearAuthCache() {
+  await chrome.storage.session.remove(AUTH_CACHE_KEY);
+}
+
 // Clicking the toolbar icon toggles the sidebar (no popup — the sidebar is the
 // extension's only UI surface). On the job boards we declare in the manifest the
 // content script is already there, so we just toggle it. On ANY other site —
@@ -67,12 +100,18 @@ chrome.action.onClicked.addListener(async (tab) => {
 // its own instead of the user having to notice and refresh it by hand.
 chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {
   if (!msg || (msg.type !== 'tailorcv-login-success' && msg.type !== 'tailorcv-base-resume-updated')) return;
-  chrome.tabs.query({}, (tabs) => {
+  (async () => {
+    // Clear before broadcasting so every tab that reacts to REFRESH_AUTH is
+    // guaranteed a fresh fetch instead of racing a cache write that hasn't
+    // landed yet.
+    await clearAuthCache();
+    const tabs = await chrome.tabs.query({});
     for (const tab of tabs) {
       if (tab.id) chrome.tabs.sendMessage(tab.id, { type: 'REFRESH_AUTH' }).catch(() => {});
     }
-  });
-  sendResponse({ ok: true });
+    sendResponse({ ok: true });
+  })();
+  return true; // keep the message channel open for the async response
 });
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
@@ -91,14 +130,23 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         sendResponse({ id });
 
       } else if (msg.type === 'GET_PROFILE') {
+        const cached = await readAuthCache();
+        if (cached && cached.profile) {
+          sendResponse(cached.profile);
+          return;
+        }
         const res = await fetch(`${BASE_URL}/api/extension/profile`, {
           credentials: 'include',
         });
         if (!res.ok) {
-          sendResponse({ error: 'Not logged in to TailorCV.' });
+          const result = { error: 'Not logged in to TailorCV.' };
+          await writeAuthCacheField('profile', result);
+          sendResponse(result);
           return;
         }
-        sendResponse({ data: await res.json() });
+        const result = { data: await res.json() };
+        await writeAuthCacheField('profile', result);
+        sendResponse(result);
 
       } else if (msg.type === 'LOGIN') {
         try {
@@ -118,6 +166,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             sendResponse({ error: data.detail || 'Login failed. Check your email and password.' });
             return;
           }
+          await clearAuthCache();
           sendResponse({ data });
         } catch (e) {
           sendResponse({ error: e.message });
@@ -125,6 +174,11 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
       } else if (msg.type === 'LOGOUT') {
         try {
+          // Clear unconditionally, even if the fetch below throws — content.js
+          // calls refreshFull() right after LOGOUT regardless of outcome, and a
+          // stale "logged in" cache in *other* open tabs is the main new risk
+          // this caching layer introduces.
+          await clearAuthCache();
           const csrfToken = await getCsrfToken();
           await fetch(`${BASE_URL}/logout`, {
             method: 'POST',
@@ -140,12 +194,21 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         }
 
       } else if (msg.type === 'GET_BASE_RESUME') {
-        const res = await fetch(`${BASE_URL}/api/extension/base-resume`, { credentials: 'include' });
-        if (!res.ok) {
-          sendResponse({ error: 'Not logged in to TailorCV.' });
+        const cached = await readAuthCache();
+        if (cached && cached.baseResume) {
+          sendResponse(cached.baseResume);
           return;
         }
-        sendResponse({ data: await res.json() });
+        const res = await fetch(`${BASE_URL}/api/extension/base-resume`, { credentials: 'include' });
+        if (!res.ok) {
+          const result = { error: 'Not logged in to TailorCV.' };
+          await writeAuthCacheField('baseResume', result);
+          sendResponse(result);
+          return;
+        }
+        const result = { data: await res.json() };
+        await writeAuthCacheField('baseResume', result);
+        sendResponse(result);
 
       } else if (msg.type === 'GET_SKILL_MATCH') {
         try {
@@ -157,6 +220,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           });
           if (!res.ok) {
             const code = res.status === 404 ? 'no_base_resume' : res.status === 401 ? 'not_logged_in' : null;
+            if (code) await clearAuthCache();   // live call disproved the cached auth/base-resume state
             sendResponse({ error: 'Could not compute match score.', code });
             return;
           }
@@ -192,6 +256,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
                 detail = data.detail;
               }
             } catch (_) { /* keep the default */ }
+            if (code) await clearAuthCache();   // live call disproved the cached auth/base-resume state
             sendResponse({ error: detail, code });
             return;
           }
@@ -235,6 +300,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
                 detail = data.detail;
               }
             } catch (_) { /* ignore parse errors, use default detail */ }
+            if (code) await clearAuthCache();   // live call disproved the cached auth/base-resume state
             sendResponse({ error: detail, code });
             return;
           }
