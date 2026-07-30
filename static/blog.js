@@ -130,6 +130,125 @@
       });
   };
 
+  const normalizeText = (el) =>
+    (el && el.textContent ? el.textContent : "")
+      .replace("#", "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+
+  const collectUntilNextHeading = (heading, stopTags) => {
+    const nodes = [];
+    let next = heading.nextElementSibling;
+    while (next && !stopTags.includes(next.tagName)) {
+      nodes.push(next);
+      next = next.nextElementSibling;
+    }
+    return nodes;
+  };
+
+  const enhanceCallouts = () => {
+    const rules = [
+      { re: /^(warning|important|caution)\b/i, cls: "callout-warning" },
+      { re: /^(tip|pro tip|recommendation)\b/i, cls: "callout-tip" },
+      { re: /^(note|short answer)\b/i, cls: "callout-note" },
+    ];
+
+    document.querySelectorAll(".post-content blockquote").forEach((bq) => {
+      const lead = bq.querySelector("strong, b");
+      const text = (lead ? lead.textContent : bq.textContent || "").trim();
+      const match = rules.find(({ re }) => re.test(text));
+      if (match) bq.classList.add(match.cls);
+    });
+
+    document.querySelectorAll(".post-content p").forEach((p) => {
+      const text = (p.textContent || "").trim();
+      if (/^short answer\s*:/i.test(text)) p.classList.add("answer-box");
+    });
+  };
+
+  const enhanceKeyTakeaways = () => {
+    document.querySelectorAll(".post-content h2").forEach((h2) => {
+      if (!/^(key takeaways|quick takeaways|summary)$/.test(normalizeText(h2))) return;
+      if (h2.closest(".key-takeaways-box")) return;
+      const nodes = collectUntilNextHeading(h2, ["H2"]);
+      if (!nodes.length) return;
+
+      const box = document.createElement("aside");
+      box.className = "key-takeaways-box";
+      const head = document.createElement("div");
+      head.className = "key-takeaways-head";
+      h2.before(box);
+      box.appendChild(head);
+      head.appendChild(h2);
+      nodes.forEach((node) => box.appendChild(node));
+    });
+  };
+
+  const enhanceStepCards = () => {
+    document.querySelectorAll(".post-content h2, .post-content h3").forEach((h) => {
+      const match = (h.textContent || "").trim().match(/^Step\s+(\d+)\s*[:.\-–]?\s*/i);
+      if (!match || h.closest(".faq-box")) return;
+
+      h.classList.add("step-card-head");
+      if (!h.querySelector(".step-card-num")) {
+        const badge = document.createElement("span");
+        badge.className = "step-card-num";
+        badge.textContent = match[1];
+        h.prepend(badge);
+      }
+
+      const card = document.createElement("section");
+      card.className = "step-card";
+      h.before(card);
+      card.appendChild(h);
+      let next = card.nextElementSibling;
+      while (next && !["H2", "H3"].includes(next.tagName)) {
+        const current = next;
+        next = next.nextElementSibling;
+        card.appendChild(current);
+      }
+    });
+  };
+
+  const enhanceFaqSection = () => {
+    document.querySelectorAll(".post-content h2").forEach((h2) => {
+      if (!/^(frequently asked questions|faqs?|common questions)$/.test(normalizeText(h2))) return;
+      if (h2.closest(".faq-box")) return;
+      const nodes = collectUntilNextHeading(h2, ["H2"]);
+      if (!nodes.length) return;
+
+      const box = document.createElement("section");
+      box.className = "faq-box";
+      h2.before(box);
+      box.appendChild(h2);
+
+      let currentItem = null;
+      nodes.forEach((node) => {
+        if (node.tagName === "H3") {
+          currentItem = document.createElement("div");
+          currentItem.className = "faq-item";
+          box.appendChild(currentItem);
+          currentItem.appendChild(node);
+        } else if (currentItem) {
+          currentItem.appendChild(node);
+        } else {
+          box.appendChild(node);
+        }
+      });
+    });
+  };
+
+  const enhanceTables = () => {
+    document.querySelectorAll(".post-content table").forEach((table) => {
+      if (table.closest(".table-wrap")) return;
+      const wrap = document.createElement("div");
+      wrap.className = "table-wrap";
+      table.parentNode.insertBefore(wrap, table);
+      wrap.appendChild(table);
+    });
+  };
+
   const initBackToTop = () => {
     const btn = document.getElementById("backToTop");
     if (!btn) return;
@@ -148,6 +267,11 @@
     setTimeout(buildToc, 180);
     initTocPinning();
     setTimeout(initTocSpy, 220);
+    enhanceCallouts();
+    enhanceKeyTakeaways();
+    enhanceStepCards();
+    enhanceFaqSection();
+    enhanceTables();
     initHeadingAnchors();
     initBackToTop();
 
