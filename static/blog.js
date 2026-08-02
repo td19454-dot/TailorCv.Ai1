@@ -553,6 +553,12 @@
     const box = document.createElement("aside");
     box.className = "end-cta";
     box.innerHTML = `
+      <svg class="end-cta-arc" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M-40 250C160 120 340 300 520 170 700 40 860 150 1040 60"
+              fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="2"/>
+        <path d="M-40 300C180 190 320 340 540 230 760 120 880 210 1040 130"
+              fill="none" stroke="#ffffff" stroke-opacity=".14" stroke-width="2"/>
+      </svg>
       <svg class="end-cta-swirl end-cta-swirl-l" viewBox="0 0 120 90" aria-hidden="true" focusable="false">
         <path d="M6 78c26 10 44-4 40-22C42 40 24 42 24 58c0 18 24 26 46 18 20-7 30-24 26-44"
               fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round"/>
@@ -561,6 +567,39 @@
         <path d="M114 12c-26-10-44 4-40 22 4 16 22 14 22-2 0-18-24-26-46-18C30 21 20 38 24 58"
               fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
+
+      <svg class="end-cta-face end-cta-face-l" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+        <defs><clipPath id="tcxFaceA"><circle cx="60" cy="60" r="58"/></clipPath></defs>
+        <circle cx="60" cy="60" r="58" fill="#F7C860"/>
+        <g clip-path="url(#tcxFaceA)">
+          <path d="M14 122c0-24 20-36 46-36s46 12 46 36z" fill="#ffffff"/>
+          <path d="M50 76h20v16H50z" fill="#EFC09A"/>
+          <ellipse cx="60" cy="57" rx="23" ry="26" fill="#F8D2AE"/>
+          <path d="M36 54c0-17 11-28 24-28s24 11 24 28c0-7-6-11-13-12-8-1-14 2-22 1-7-1-13 4-13 11z" fill="#6E3A5C"/>
+          <circle cx="50" cy="59" r="8.4" fill="#ffffff" fill-opacity=".55" stroke="#33283f" stroke-width="2.4"/>
+          <circle cx="70" cy="59" r="8.4" fill="#ffffff" fill-opacity=".55" stroke="#33283f" stroke-width="2.4"/>
+          <path d="M58.4 59h3.2" stroke="#33283f" stroke-width="2.4"/>
+          <path d="M54 73q6 5 12 0" fill="none" stroke="#9a6242" stroke-width="2.2" stroke-linecap="round"/>
+        </g>
+      </svg>
+
+      <svg class="end-cta-face end-cta-face-r" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+        <defs><clipPath id="tcxFaceB"><circle cx="60" cy="60" r="58"/></clipPath></defs>
+        <circle cx="60" cy="60" r="58" fill="#8E7CF0"/>
+        <g clip-path="url(#tcxFaceB)">
+          <path d="M14 122c0-24 20-36 46-36s46 12 46 36z" fill="#5B42F3"/>
+          <path d="M52 76h16v16H52z" fill="#C2865E"/>
+          <ellipse cx="60" cy="57" rx="22" ry="25" fill="#D69A70"/>
+          <circle cx="60" cy="25" r="10" fill="#5C3049"/>
+          <path d="M38 55c0-17 10-28 22-28s22 11 22 28c0-8-8-12-22-12s-22 4-22 12z" fill="#5C3049"/>
+          <circle cx="51" cy="56" r="2.7" fill="#33283f"/>
+          <circle cx="69" cy="56" r="2.7" fill="#33283f"/>
+          <path d="M53 67q7 9 14 0z" fill="#ffffff" stroke="#33283f" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="44" cy="64" r="3.6" fill="#E9A184" opacity=".65"/>
+          <circle cx="76" cy="64" r="3.6" fill="#E9A184" opacity=".65"/>
+        </g>
+      </svg>
+
       <p class="end-cta-title">Make your move.</p>
       <p class="end-cta-text">Your resume is an extension of yourself. Make one that is truly you.</p>
       <a class="end-cta-btn" href="${href}"><span class="tcx-btn-label">${label}</span></a>
@@ -596,7 +635,14 @@
     document.querySelectorAll(".post-content h2").forEach((h2) => {
       if (!/^(final thoughts|bottom line|the bottom line|conclusion)$/.test(normalizeText(h2))) return;
       if (h2.closest(".article-bottomline")) return;
-      const nodes = collectUntilNextHeading(h2, ["H2"]);
+      // Stop at already-boxed blocks too. A "Conclusion" that sits before the
+      // FAQ would otherwise swallow the whole .faq-box (its H2 is no longer a
+      // sibling once wrapped), nesting one card inside another.
+      const nodes = collectUntilNextHeading(h2, ["H2"]).filter((n, i, all) => {
+        const stopAt = all.findIndex((x) =>
+          x.matches && x.matches(".faq-box, .key-takeaways-box, .step-card, .article-cta-strip, .end-cta"));
+        return stopAt === -1 || i < stopAt;
+      });
       const box = document.createElement("section");
       box.className = "article-bottomline";
       h2.before(box);
