@@ -1361,6 +1361,15 @@ header.navbar {
   }
   .blog-detail-page .end-cta-swirl { animation: tcx-swirl-drift 9s ease-in-out infinite; }
   .blog-detail-page .end-cta-swirl-r { animation-delay: -4.5s; }
+
+  /* Avatars bob gently, out of phase with each other. */
+  @keyframes tcx-face-bob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-10px) rotate(-2deg); }
+  }
+  .blog-detail-page .end-cta-face { animation: tcx-face-bob 4.6s ease-in-out infinite; }
+  .blog-detail-page .end-cta-face-r { animation-delay: -2.3s; }
+  .blog-detail-page .end-cta:hover .end-cta-face { animation-duration: 2.6s; }
 }
 
 /* ---- Closing CTA card at the very end of the article body ---- */
@@ -1389,6 +1398,38 @@ header.navbar {
 }
 .blog-detail-page .end-cta-swirl-l { left: 14px; bottom: 12px; }
 .blog-detail-page .end-cta-swirl-r { right: 14px; top: 12px; }
+
+/* Sweeping background arcs (Enhancv reference) */
+.blog-detail-page .end-cta-arc {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Character avatars flanking the copy */
+.blog-detail-page .end-cta-face {
+  position: absolute;
+  width: clamp(72px, 8.5vw, 104px);
+  height: auto;
+  filter: drop-shadow(0 8px 16px rgba(20, 20, 60, .22));
+  pointer-events: none;
+}
+.blog-detail-page .end-cta-face-l { left: clamp(18px, 4.5vw, 58px); bottom: 14px; }
+.blog-detail-page .end-cta-face-r { right: clamp(18px, 4.5vw, 58px); top: 34%; }
+
+/* Reserve room so the centred copy never collides with the avatars. */
+@media (min-width: 901px) {
+  .blog-detail-page .end-cta {
+    padding-left: clamp(150px, 17vw, 210px);
+    padding-right: clamp(150px, 17vw, 210px);
+  }
+}
+
+@media (max-width: 900px) {
+  .blog-detail-page .end-cta-face { display: none; }
+}
 
 .blog-detail-page .post-content .end-cta-title {
   position: relative;
