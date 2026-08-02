@@ -1,0 +1,55 @@
+{# Inline ATS scanner embedded in ATS-topic blog posts.
+
+   Funnel: guests already get one free scan (enforced server-side by
+   enforce_guest_ats_allowed in main.py), so a reader can score a resume
+   without an account, then gets pushed to signup for the next one.
+
+   Reuses POST /get-ats-score and the same sessionStorage/localStorage
+   handoff keys the landing widget uses, so the full report renders on
+   /ats-analysis exactly as it does from the homepage. #}
+<section class="blog-ats" id="blog-ats-scanner" aria-labelledby="blog-ats-heading">
+  <div class="blog-ats-head">
+    <span class="blog-ats-chip">Free &middot; No account needed</span>
+    <h2 id="blog-ats-heading">Is your resume good enough?</h2>
+    <p>Scan your resume against a job description and get your ATS match score in about a minute.</p>
+  </div>
+
+  <div class="blog-ats-grid">
+    <div>
+      <label class="blog-ats-label" for="blog-ats-file">Your resume</label>
+      <div class="blog-ats-drop" id="blog-ats-drop" tabindex="0" role="button"
+           aria-controls="blog-ats-file" aria-label="Choose a PDF resume to upload">
+        <svg viewBox="0 0 48 48" class="blog-ats-drop-ico" aria-hidden="true" focusable="false">
+          <path d="M27 6H14a4 4 0 0 0-4 4v28a4 4 0 0 0 4 4h20a4 4 0 0 0 4-4V17z"
+                fill="#efe9fd" stroke="#5B42F3" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M27 6v11h11" fill="none" stroke="#5B42F3" stroke-width="2.2" stroke-linejoin="round"/>
+          <path d="M24 34V22m0 0-5 5m5-5 5 5" fill="none" stroke="#5B42F3"
+                stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="blog-ats-drop-title">Drop your resume here or <span>choose a file</span></p>
+        <p class="blog-ats-drop-sub">PDF only. Max 2&nbsp;MB.</p>
+        <p class="blog-ats-file" id="blog-ats-file-name" hidden></p>
+      </div>
+      <input type="file" id="blog-ats-file" accept="application/pdf,.pdf" hidden>
+      <p class="blog-ats-privacy">
+        <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false">
+          <path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5z" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        We never share your data or use it to train AI models.
+      </p>
+    </div>
+
+    <div>
+      <label class="blog-ats-label" for="blog-ats-jd">Job description</label>
+      <textarea id="blog-ats-jd" class="blog-ats-jd" rows="8"
+                placeholder="Paste the full job description you are applying to…"></textarea>
+    </div>
+  </div>
+
+  <button type="button" class="blog-ats-go" id="blog-ats-go">
+    <span class="tcx-btn-label">Get my free ATS score</span>
+  </button>
+
+  <div class="blog-ats-out" id="blog-ats-out" role="status" aria-live="polite"></div>
+</section>
