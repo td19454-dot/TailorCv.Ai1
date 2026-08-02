@@ -360,24 +360,102 @@ h1.post-hero-title {
 .author-label { color: #7b8496; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
 .blog-post .author { color: #e6ebf4; font-weight: 600; margin: 0; }
 
-.hero-cta-btn {
+/* ---- Signature TailorCV glow button ----
+   Ported from .sol-ats-launch in solutions.html (the "Get ATS Score" /
+   "Optimize Resume" button). Three layers make the glow:
+     ::after  - outer gradient panel with a dark gradient border
+     ::before - inset glossy panel, slightly blurred
+     .tcx-btn-label - the text, lifted above both
+   The label MUST be wrapped in .tcx-btn-label, or the pseudo-element panels
+   paint over it (bare text nodes cannot be z-indexed). */
+.hero-cta-btn,
+.toc-cta-btn,
+.blog-detail-page .post-content .article-cta-button,
+.blog-detail-page .post-content .end-cta-btn {
+  --neutral-1: #3392ff;
+  --neutral-2: #7c3aed;
+  --radius: 14px;
+  box-sizing: border-box;
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 28px;
-  border-radius: 12px;
-  background: var(--brand-grad);
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
   color: #ffffff;
-  font-weight: 700;
-  font-size: 1rem;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
   text-decoration: none;
-  box-shadow: 0 12px 30px rgba(91, 66, 243, 0.35);
-  transition: transform .18s ease, box-shadow .18s ease, background .25s ease;
+  font-weight: 700;
+  box-shadow: 0 0.5px 0.5px 1px rgba(255, 255, 255, .2),
+              0 6px 18px rgba(51, 146, 255, .35);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
-.hero-cta-btn:hover {
-  transform: translateY(-2px);
-  background: var(--brand-grad-hover);
-  box-shadow: 0 16px 38px rgba(91, 66, 243, 0.5);
+
+.hero-cta-btn::after,
+.toc-cta-btn::after,
+.blog-detail-page .post-content .article-cta-button::after,
+.blog-detail-page .post-content .end-cta-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+              linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .45)) border-box;
+  z-index: 0;
+  transition: box-shadow .4s ease;
+}
+
+.hero-cta-btn::before,
+.toc-cta-btn::before,
+.blog-detail-page .post-content .article-cta-button::before,
+.blog-detail-page .post-content .end-cta-btn::before {
+  content: "";
+  position: absolute;
+  inset: 7px 6px 6px 6px;
+  background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+  border-radius: 30px;
+  filter: blur(0.5px);
+  z-index: 1;
+}
+
+.tcx-btn-label {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-cta-btn:hover,
+.toc-cta-btn:hover,
+.blog-detail-page .post-content .article-cta-button:hover,
+.blog-detail-page .post-content .end-cta-btn:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 1px 2px rgba(255, 255, 255, .3),
+              0 10px 24px rgba(51, 146, 255, .5);
+  text-decoration: none;
+}
+
+.hero-cta-btn:hover::after,
+.toc-cta-btn:hover::after,
+.blog-detail-page .post-content .article-cta-button:hover::after,
+.blog-detail-page .post-content .end-cta-btn:hover::after {
+  box-shadow: inset 0 -1px 3px 0 rgba(255, 255, 255, 1);
+}
+
+.hero-cta-btn:active,
+.toc-cta-btn:active,
+.blog-detail-page .post-content .article-cta-button:active,
+.blog-detail-page .post-content .end-cta-btn:active {
+  transform: scale(1);
+}
+
+.hero-cta-btn {
+  padding: 18px 40px;
+  min-height: 58px;
+  font-size: 1rem;
 }
 
 .post-hero-media {
@@ -535,23 +613,11 @@ body.blog-detail-page { overflow-x: clip !important; }
   color: #334155;
 }
 .toc-cta-btn {
-  display: block;
+  display: flex;
   width: 100%;
-  box-sizing: border-box;
-  padding: 12px 16px;
-  border-radius: 10px;
-  background: var(--brand-grad);
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.98rem;
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(91, 66, 243, 0.35);
-  transition: transform .18s ease, box-shadow .18s ease, background .25s ease;
-}
-.toc-cta-btn:hover {
-  transform: translateY(-1px);
-  background: var(--brand-grad-hover);
-  box-shadow: 0 12px 26px rgba(0, 221, 235, 0.4);
+  padding: 15px 18px;
+  min-height: 52px;
+  font-size: 0.96rem;
 }
 
 .post-content {
@@ -1005,7 +1071,9 @@ header.navbar {
 .blog-detail-page .step-card {
   position: relative;
   max-width: 1000px;
-  margin: 18px 0 24px;
+  /* Adjacent cards collapse to the larger margin, so this is the gap between
+     two stacked step cards - keep it roomy enough that they read as separate. */
+  margin: 26px 0 36px;
   padding: 26px 32px;
   border: 1px solid #c8dcf6;
   border-radius: 8px;
@@ -1020,14 +1088,20 @@ header.navbar {
   background: linear-gradient(180deg, #cfe3ff 0%, #b9d7ff 100%);
 }
 
+/* Tones 4-5 are the "inverted" (white-text) cards. Kept light enough to feel
+   like the brand blue rather than navy, but still dark enough that white body
+   text clears WCAG AA contrast. */
+/* Tones 4-5 are the "inverted" (white-text) cards. Much lighter than the old
+   navy, but held at >=4.5:1 contrast with white so body text stays readable -
+   going any lighter fails WCAG AA. */
 .blog-detail-page .step-card.step-tone-4 {
-  background: linear-gradient(180deg, #4f8ee7 0%, #3c7edf 100%);
-  border-color: #3c7edf;
+  background: linear-gradient(180deg, #4b7ed2 0%, #4074c4 100%);
+  border-color: #4074c4;
 }
 
 .blog-detail-page .step-card.step-tone-5 {
-  background: linear-gradient(180deg, #1f4f99 0%, #173f82 100%);
-  border-color: #173f82;
+  background: linear-gradient(180deg, #4074c4 0%, #3d70c2 100%);
+  border-color: #3d70c2;
 }
 
 .blog-detail-page .step-card.step-tone-4,
@@ -1170,18 +1244,25 @@ header.navbar {
 }
 
 .blog-detail-page .article-cta-strip {
-  max-width: 1284px;
+  /* Same 1000px cap as the takeaways/FAQ/step boxes so every block in the
+     article body lines up on the left AND right edge. */
+  max-width: 1000px;
   display: grid;
   grid-template-columns: minmax(200px, 292px) minmax(0, 1fr);
   gap: 34px;
   align-items: center;
   margin: 30px 0 38px;
   padding: clamp(22px, 2.4vw, 30px) clamp(26px, 3vw, 40px);
-  border-radius: 12px;
-  background: var(--brand-grad);
+  border-radius: 14px;
+  /* Lighter blue surface (not near-black): keeps the brand blue family used by
+     the step cards, while still being dark enough for the glow button to read. */
+  background:
+    radial-gradient(120% 150% at 100% 0%, rgba(139, 92, 246, .3), rgba(139, 92, 246, 0) 62%),
+    linear-gradient(135deg, #6373e8 0%, #6b80ee 46%, #5590e6 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   color: #ffffff;
   overflow: hidden;
-  box-shadow: 0 16px 36px rgba(91, 66, 243, 0.22);
+  box-shadow: 0 16px 34px rgba(70, 90, 190, 0.26);
 }
 
 /* No frame around the art - the illustration sits straight on the gradient.
@@ -1215,29 +1296,128 @@ header.navbar {
 }
 
 .blog-detail-page .post-content .article-cta-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 220px;
-  min-height: 46px;
-  padding: 11px 24px;
-  /* Outlined-on-gradient, matching the Jobscan reference: the white fill is
-     reserved for the illustration so the button reads as secondary to it. */
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  min-width: 260px;
+  min-height: 58px;
+  padding: 18px 40px;
   font-size: 1rem;
-  font-weight: 800;
-  text-decoration: none;
-  transition: background .16s ease, transform .16s ease, border-color .16s ease;
 }
 
-.blog-detail-page .post-content .article-cta-button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: #ffffff;
-  transform: translateY(-1px);
-  text-decoration: none;
+/* ---- CTA motion ----
+   Three cooperating effects, all disabled under prefers-reduced-motion:
+     1. the card lifts + fades in when it scrolls into view,
+     2. the illustration floats gently so the block never looks static,
+     3. the button's glow breathes to draw the eye to the click target.
+   Hovering the card pauses the float and lifts the whole card slightly. */
+@media (prefers-reduced-motion: no-preference) {
+  .blog-detail-page .article-cta-strip,
+  .blog-detail-page .end-cta {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .65s cubic-bezier(.22, .61, .36, 1),
+                transform .65s cubic-bezier(.22, .61, .36, 1),
+                box-shadow .3s ease;
+  }
+  .blog-detail-page .article-cta-strip.tcx-cta-in,
+  .blog-detail-page .end-cta.tcx-cta-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .blog-detail-page .article-cta-strip.tcx-cta-in:hover,
+  .blog-detail-page .end-cta.tcx-cta-in:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 48px rgba(70, 90, 190, 0.38);
+  }
+
+  @keyframes tcx-cta-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-9px); }
+  }
+  .blog-detail-page .article-cta-visual svg {
+    animation: tcx-cta-float 5s ease-in-out infinite;
+    will-change: transform;
+  }
+  .blog-detail-page .article-cta-strip:hover .article-cta-visual svg {
+    animation-play-state: paused;
+  }
+
+  @keyframes tcx-cta-glow {
+    0%, 100% { box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 6px 18px rgba(51,146,255,.35); }
+    50%      { box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.3), 0 10px 26px rgba(51,146,255,.62); }
+  }
+  .blog-detail-page .post-content .article-cta-button,
+  .blog-detail-page .post-content .end-cta-btn {
+    animation: tcx-cta-glow 2.8s ease-in-out infinite;
+  }
+  .blog-detail-page .post-content .article-cta-button:hover,
+  .blog-detail-page .post-content .end-cta-btn:hover {
+    animation-play-state: paused;
+  }
+
+  /* Closing-card swirls drift slowly, like the Enhancv reference. */
+  @keyframes tcx-swirl-drift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50%      { transform: translate(4px, -6px) rotate(3deg); }
+  }
+  .blog-detail-page .end-cta-swirl { animation: tcx-swirl-drift 9s ease-in-out infinite; }
+  .blog-detail-page .end-cta-swirl-r { animation-delay: -4.5s; }
+}
+
+/* ---- Closing CTA card at the very end of the article body ---- */
+.blog-detail-page .end-cta {
+  position: relative;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 46px 0 8px;
+  padding: clamp(38px, 4.6vw, 56px) clamp(26px, 5vw, 60px);
+  border-radius: 16px;
+  background:
+    radial-gradient(110% 150% at 0% 0%, rgba(175, 64, 255, .26), rgba(175, 64, 255, 0) 58%),
+    radial-gradient(110% 150% at 100% 100%, rgba(0, 221, 235, .22), rgba(0, 221, 235, 0) 58%),
+    linear-gradient(135deg, #6373e8 0%, #6b80ee 48%, #5590e6 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  text-align: center;
+  box-shadow: 0 18px 38px rgba(70, 90, 190, 0.28);
+}
+
+.blog-detail-page .end-cta-swirl {
+  position: absolute;
+  width: clamp(80px, 11vw, 130px);
+  height: auto;
+  opacity: .75;
+  pointer-events: none;
+}
+.blog-detail-page .end-cta-swirl-l { left: 14px; bottom: 12px; }
+.blog-detail-page .end-cta-swirl-r { right: 14px; top: 12px; }
+
+.blog-detail-page .post-content .end-cta-title {
+  position: relative;
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1.18;
+}
+
+.blog-detail-page .post-content .end-cta-text {
+  position: relative;
+  max-width: 46ch;
+  margin: 0 auto 26px;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(1rem, 1.3vw, 1.16rem);
+  line-height: 1.55;
+}
+
+.blog-detail-page .post-content .end-cta-btn {
+  min-width: 280px;
+  min-height: 62px;
+  padding: 20px 46px;
+  font-size: 1.04rem;
+}
+
+@media (max-width: 680px) {
+  .blog-detail-page .end-cta-swirl { display: none; }
+  .blog-detail-page .post-content .end-cta-btn { width: 100%; min-width: 0; }
 }
 
 .blog-detail-page .article-bottomline {
