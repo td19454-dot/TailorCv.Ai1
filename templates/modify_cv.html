@@ -46,6 +46,29 @@
         }
         html, body { overflow-x: hidden; }
         .modify-cv-section { padding-top: 100px; }
+
+        /* Stack "Upload Existing CV" and "Import from LinkedIn" on mobile
+           instead of side-by-side, so the LinkedIn button doesn't get
+           clipped off the edge of the screen. Desktop (>768px) unchanged. */
+        @media (max-width: 768px) {
+            .mcv-header-actions {
+                flex-direction: column !important;
+                width: 100% !important;
+            }
+            .mcv-header-actions .mcv-upload-btn,
+            .mcv-header-actions .mcv-linkedin-btn {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+        }
+
+        /* The floating "Preview" button (mobile live-preview FAB) sits in the
+           same bottom-right corner as the AI chat widget bubble and gets
+           overlapped by it. Nudge it upward so the two don't collide.
+           Adjust the bottom value below if it still overlaps on your device. */
+        .mobile-preview-fab {
+            bottom: 96px !important;
+        }
     </style>
 </head>
 <body>
@@ -308,7 +331,7 @@
                             <h1 class="modify-cv-title">Make Your CV</h1>
                             <p class="modify-cv-subtitle">Edit each section, pick a template, and preview the final resume in real time.</p>
                         </div>
-                        <div style="display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0;">
+                        <div class="mcv-header-actions" style="display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0;">
 <button
                                 id="cv-upload-import-btn"
                                 type="button"
@@ -350,6 +373,7 @@
                             <button
                                 id="linkedin-import-btn"
                                 type="button"
+                                class="mcv-linkedin-btn"
                                 style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;border:1px solid rgba(59,130,246,0.5);background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(59,130,246,0.06));color:#93c5fd;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:border-color .2s,box-shadow .2s;"
                                 onmouseover="this.style.borderColor='rgba(59,130,246,0.85)';this.style.boxShadow='0 4px 14px rgba(59,130,246,0.22)';"
                                 onmouseout="this.style.borderColor='rgba(59,130,246,0.5)';this.style.boxShadow='';"
