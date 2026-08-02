@@ -512,103 +512,20 @@
       text: "Check the match before you send it, then tune the words, sections, and formatting for the role.",
       label: "Try a free resume scan",
       fallback: "/solutions",
+      art: "resume",
     };
     const ctaHref = preferredAnchor ? preferredAnchor.href : profile.fallback;
 
     const cta = document.createElement("aside");
-    cta.className = "article-cta-strip full-bleed";
+    cta.className = "article-cta-strip";
     cta.innerHTML = `
       <div class="article-cta-visual" aria-hidden="true">
-        <svg viewBox="0 0 300 210" role="img" focusable="false">
-          <defs>
-            <linearGradient id="tcxCtaHead" x1="42" y1="14" x2="258" y2="58" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#AF40FF"/>
-              <stop offset="1" stop-color="#5B42F3"/>
-            </linearGradient>
-            <filter id="tcxCtaShadow" x="-20%" y="-20%" width="150%" height="150%" color-interpolation-filters="sRGB">
-              <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#20074d" flood-opacity=".28"/>
-            </filter>
-          </defs>
-
-          <g fill="none" stroke="#ffffff" stroke-opacity=".16" stroke-width="7">
-            <circle cx="24" cy="150" r="19"/>
-            <circle cx="279" cy="120" r="12"/>
-          </g>
-
-          <g filter="url(#tcxCtaShadow)">
-            <rect x="42" y="14" width="216" height="182" rx="7" fill="#ffffff"/>
-            <path d="M49 14h202a7 7 0 0 1 7 7v37H42V21a7 7 0 0 1 7-7Z" fill="url(#tcxCtaHead)"/>
-            <circle cx="68" cy="36" r="14" fill="#ffffff" fill-opacity=".28"/>
-            <circle cx="68" cy="31.5" r="4.6" fill="#ffffff" fill-opacity=".92"/>
-            <path d="M59.5 45a8.5 8.5 0 0 1 17 0Z" fill="#ffffff" fill-opacity=".92"/>
-            <rect x="92" y="27" width="80" height="7" rx="3.5" fill="#ffffff" fill-opacity=".95"/>
-            <rect x="92" y="39" width="52" height="5" rx="2.5" fill="#ffffff" fill-opacity=".62"/>
-
-            <path d="M118 66v124" stroke="#efecf9" stroke-width="1.5"/>
-
-            <rect x="52" y="70" width="38" height="5" rx="2.5" fill="#5B42F3"/>
-            <g fill="#ded8f4">
-              <circle cx="55" cy="84" r="2.6"/><rect x="62" y="81.6" width="42" height="4.2" rx="2.1"/>
-              <circle cx="55" cy="95" r="2.6"/><rect x="62" y="92.6" width="36" height="4.2" rx="2.1"/>
-              <circle cx="55" cy="106" r="2.6"/><rect x="62" y="103.6" width="40" height="4.2" rx="2.1"/>
-            </g>
-
-            <rect x="52" y="122" width="44" height="5" rx="2.5" fill="#5B42F3"/>
-            <g fill="#e7e3f7">
-              <rect x="52" y="135" width="52" height="4.2" rx="2.1"/>
-              <rect x="52" y="144" width="38" height="4.2" rx="2.1"/>
-            </g>
-
-            <rect x="52" y="158" width="32" height="5" rx="2.5" fill="#5B42F3"/>
-            <g>
-              <rect x="52" y="170" width="52" height="4.6" rx="2.3" fill="#efecf9"/>
-              <rect x="52" y="170" width="42" height="4.6" rx="2.3" fill="#5B42F3"/>
-              <rect x="52" y="179" width="52" height="4.6" rx="2.3" fill="#efecf9"/>
-              <rect x="52" y="179" width="34" height="4.6" rx="2.3" fill="#AF40FF"/>
-              <rect x="52" y="188" width="52" height="4.6" rx="2.3" fill="#efecf9"/>
-              <rect x="52" y="188" width="26" height="4.6" rx="2.3" fill="#00DDEB"/>
-            </g>
-
-            <rect x="128" y="70" width="74" height="5" rx="2.5" fill="#5B42F3"/>
-            <g fill="#e7e3f7">
-              <rect x="128" y="83" width="118" height="4.2" rx="2.1"/>
-              <rect x="128" y="92" width="118" height="4.2" rx="2.1"/>
-              <rect x="128" y="101" width="84" height="4.2" rx="2.1"/>
-            </g>
-
-            <rect x="128" y="118" width="64" height="5" rx="2.5" fill="#5B42F3"/>
-            <rect x="128" y="131" width="62" height="5" rx="2.5" fill="#4b3a86"/>
-            <rect x="216" y="131" width="30" height="5" rx="2.5" fill="#ded8f4"/>
-            <g fill="#eeeaf8">
-              <rect x="128" y="142" width="118" height="3.8" rx="1.9"/>
-              <rect x="128" y="150" width="98" height="3.8" rx="1.9"/>
-            </g>
-            <rect x="128" y="163" width="56" height="5" rx="2.5" fill="#4b3a86"/>
-            <rect x="216" y="163" width="30" height="5" rx="2.5" fill="#ded8f4"/>
-            <g fill="#eeeaf8">
-              <rect x="128" y="174" width="118" height="3.8" rx="1.9"/>
-              <rect x="128" y="182" width="92" height="3.8" rx="1.9"/>
-            </g>
-          </g>
-
-          <g filter="url(#tcxCtaShadow)">
-            <circle cx="252" cy="30" r="25" fill="#ffffff"/>
-            <circle cx="252" cy="30" r="18" fill="none" stroke="#efecf9" stroke-width="6"/>
-            <path d="M252 12a18 18 0 1 1-16 26" fill="none" stroke="#7bd444" stroke-width="6" stroke-linecap="round"/>
-            <path d="M236 38a18 18 0 0 1 6-21" fill="none" stroke="#00DDEB" stroke-width="6" stroke-linecap="round"/>
-            <text x="240" y="35" fill="#4b1fa8" font-size="13" font-weight="850">87%</text>
-          </g>
-
-          <g filter="url(#tcxCtaShadow)">
-            <circle cx="250" cy="182" r="17" fill="#5B42F3"/>
-            <path d="m242.5 182 5 5 11-12" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </g>
-        </svg>
+        ${buildArt(profile.art)}
       </div>
       <div class="article-cta-copy">
         <p class="article-cta-title">${profile.title}</p>
         <p class="article-cta-text">${profile.text}</p>
-        <a class="article-cta-button" href="${ctaHref}">${profile.label}</a>
+        <a class="article-cta-button" href="${ctaHref}"><span class="tcx-btn-label">${profile.label}</span></a>
       </div>
     `;
 
@@ -620,6 +537,59 @@
 
     const secondHeading = content.querySelectorAll("h2")[1];
     if (secondHeading) secondHeading.before(cta);
+  };
+
+  /* Enhancv-style closing card: the last thing in the article body, centred,
+     with the same topic-aware destination the mid-article strip uses. */
+  const addEndOfArticleCta = () => {
+    const content = document.querySelector(".post-content");
+    if (!content || content.querySelector(".end-cta")) return;
+
+    const strip = content.querySelector(".article-cta-strip");
+    const stripLink = strip ? strip.querySelector(".article-cta-button") : null;
+    const href = stripLink ? stripLink.getAttribute("href") : "/solutions";
+    const label = stripLink ? (stripLink.textContent || "").trim() : "Try a free resume scan";
+
+    const box = document.createElement("aside");
+    box.className = "end-cta";
+    box.innerHTML = `
+      <svg class="end-cta-swirl end-cta-swirl-l" viewBox="0 0 120 90" aria-hidden="true" focusable="false">
+        <path d="M6 78c26 10 44-4 40-22C42 40 24 42 24 58c0 18 24 26 46 18 20-7 30-24 26-44"
+              fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <svg class="end-cta-swirl end-cta-swirl-r" viewBox="0 0 120 90" aria-hidden="true" focusable="false">
+        <path d="M114 12c-26-10-44 4-40 22 4 16 22 14 22-2 0-18-24-26-46-18C30 21 20 38 24 58"
+              fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <p class="end-cta-title">Make your move.</p>
+      <p class="end-cta-text">Your resume is an extension of yourself. Make one that is truly you.</p>
+      <a class="end-cta-btn" href="${href}"><span class="tcx-btn-label">${label}</span></a>
+    `;
+    content.appendChild(box);
+  };
+
+  /* Reveal the CTA cards when they scroll into view. The CSS holds them at
+     opacity 0 only under prefers-reduced-motion: no-preference, so if motion
+     is reduced (or IntersectionObserver is missing) they are already visible
+     and this is a no-op - the cards can never end up permanently hidden. */
+  const initCtaReveal = () => {
+    const cards = document.querySelectorAll(".article-cta-strip, .end-cta");
+    if (!cards.length) return;
+    if (!("IntersectionObserver" in window)) {
+      cards.forEach((c) => c.classList.add("tcx-cta-in"));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("tcx-cta-in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    cards.forEach((c) => io.observe(c));
+    // Safety net: never leave a card faded out if the observer never fires.
+    setTimeout(() => cards.forEach((c) => c.classList.add("tcx-cta-in")), 2500);
   };
 
   const enhanceBottomLine = () => {
@@ -698,6 +668,8 @@
     enhanceTables();
     enhanceArticleCtas();
     enhanceBottomLine();
+    addEndOfArticleCta();
+    initCtaReveal();
     initHeadingAnchors();
     initBackToTop();
 
