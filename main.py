@@ -8249,6 +8249,21 @@ def blog_cta(post, is_logged_in: bool = False) -> dict:
     return cta
 
 
+def blog_shows_ats_widget(post) -> bool:
+    """Whether to embed the inline ATS scanner in this post.
+
+    Only ATS/resume-scoring posts get it - the widget is the strongest
+    funnel we have (guests get one free scan), but it only makes sense
+    where the reader has just been told their ATS score matters. Posts
+    about cover letters, portfolios or interviews are excluded so the
+    widget never feels bolted on."""
+    hay = f"{post.category} {post.slug} {post.title} {' '.join(post.tags)}".lower()
+    off_topic = ("cover letter", "cover-letter", "portfolio", "interview", "extension", "chrome")
+    if any(term in f"{post.slug} {post.title}".lower() for term in off_topic):
+        return False
+    return "ats" in hay or "applicant tracking" in hay or "resume score" in hay
+
+
 @app.get("/blog/{slug}", response_class=HTMLResponse)
 async def blog_post_page(request: Request, slug: str):
     # Consolidate merged duplicates: permanent-redirect old slugs to their pillar.
@@ -8281,6 +8296,7 @@ async def blog_post_page(request: Request, slug: str):
             "author_profile": author_profile,
             "related_resume_example": _BLOG_TO_ROLE.get(post.slug),
             "hero_cta": blog_cta(post, is_logged_in=bool(request.session.get("user_id"))),
+            "show_ats_widget": blog_shows_ats_widget(post),
         },
     )
 
