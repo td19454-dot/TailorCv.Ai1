@@ -219,6 +219,218 @@
     });
   };
 
+  /* Shared chrome for every CTA illustration: soft drop shadow + the two
+     decorative rings that sit behind the artwork on the gradient. Keeping one
+     visual system means the art changes per topic but still looks like one
+     product. All art uses the same 300x210 canvas. */
+  const ART_DEFS = `
+    <defs>
+      <linearGradient id="tcxArtHead" x1="42" y1="14" x2="258" y2="58" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#AF40FF"/><stop offset="1" stop-color="#5B42F3"/>
+      </linearGradient>
+      <filter id="tcxArtShadow" x="-20%" y="-20%" width="150%" height="150%" color-interpolation-filters="sRGB">
+        <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#20074d" flood-opacity=".28"/>
+      </filter>
+    </defs>
+    <g fill="none" stroke="#ffffff" stroke-opacity=".16" stroke-width="7">
+      <circle cx="24" cy="150" r="19"/><circle cx="279" cy="120" r="12"/>
+    </g>`;
+
+  const ART = {
+    /* Resume / ATS scan: a full resume page with an ATS score badge. */
+    resume: `
+      <g filter="url(#tcxArtShadow)">
+        <rect x="42" y="14" width="216" height="182" rx="7" fill="#ffffff"/>
+        <path d="M49 14h202a7 7 0 0 1 7 7v37H42V21a7 7 0 0 1 7-7Z" fill="url(#tcxArtHead)"/>
+        <circle cx="68" cy="36" r="14" fill="#ffffff" fill-opacity=".28"/>
+        <circle cx="68" cy="31.5" r="4.6" fill="#ffffff" fill-opacity=".92"/>
+        <path d="M59.5 45a8.5 8.5 0 0 1 17 0Z" fill="#ffffff" fill-opacity=".92"/>
+        <rect x="92" y="27" width="80" height="7" rx="3.5" fill="#ffffff" fill-opacity=".95"/>
+        <rect x="92" y="39" width="52" height="5" rx="2.5" fill="#ffffff" fill-opacity=".62"/>
+        <path d="M118 66v124" stroke="#efecf9" stroke-width="1.5"/>
+        <rect x="52" y="70" width="38" height="5" rx="2.5" fill="#5B42F3"/>
+        <g fill="#ded8f4">
+          <circle cx="55" cy="84" r="2.6"/><rect x="62" y="81.6" width="42" height="4.2" rx="2.1"/>
+          <circle cx="55" cy="95" r="2.6"/><rect x="62" y="92.6" width="36" height="4.2" rx="2.1"/>
+          <circle cx="55" cy="106" r="2.6"/><rect x="62" y="103.6" width="40" height="4.2" rx="2.1"/>
+        </g>
+        <rect x="52" y="122" width="44" height="5" rx="2.5" fill="#5B42F3"/>
+        <g fill="#e7e3f7">
+          <rect x="52" y="135" width="52" height="4.2" rx="2.1"/>
+          <rect x="52" y="144" width="38" height="4.2" rx="2.1"/>
+        </g>
+        <rect x="52" y="158" width="32" height="5" rx="2.5" fill="#5B42F3"/>
+        <rect x="52" y="170" width="52" height="4.6" rx="2.3" fill="#efecf9"/>
+        <rect x="52" y="170" width="42" height="4.6" rx="2.3" fill="#5B42F3"/>
+        <rect x="52" y="179" width="52" height="4.6" rx="2.3" fill="#efecf9"/>
+        <rect x="52" y="179" width="34" height="4.6" rx="2.3" fill="#AF40FF"/>
+        <rect x="52" y="188" width="52" height="4.6" rx="2.3" fill="#efecf9"/>
+        <rect x="52" y="188" width="26" height="4.6" rx="2.3" fill="#00DDEB"/>
+        <rect x="128" y="70" width="74" height="5" rx="2.5" fill="#5B42F3"/>
+        <g fill="#e7e3f7">
+          <rect x="128" y="83" width="118" height="4.2" rx="2.1"/>
+          <rect x="128" y="92" width="118" height="4.2" rx="2.1"/>
+          <rect x="128" y="101" width="84" height="4.2" rx="2.1"/>
+        </g>
+        <rect x="128" y="118" width="64" height="5" rx="2.5" fill="#5B42F3"/>
+        <rect x="128" y="131" width="62" height="5" rx="2.5" fill="#4b3a86"/>
+        <rect x="216" y="131" width="30" height="5" rx="2.5" fill="#ded8f4"/>
+        <g fill="#eeeaf8">
+          <rect x="128" y="142" width="118" height="3.8" rx="1.9"/>
+          <rect x="128" y="150" width="98" height="3.8" rx="1.9"/>
+        </g>
+        <rect x="128" y="163" width="56" height="5" rx="2.5" fill="#4b3a86"/>
+        <rect x="216" y="163" width="30" height="5" rx="2.5" fill="#ded8f4"/>
+        <g fill="#eeeaf8">
+          <rect x="128" y="174" width="118" height="3.8" rx="1.9"/>
+          <rect x="128" y="182" width="92" height="3.8" rx="1.9"/>
+        </g>
+      </g>
+      <g filter="url(#tcxArtShadow)">
+        <circle cx="252" cy="30" r="25" fill="#ffffff"/>
+        <circle cx="252" cy="30" r="18" fill="none" stroke="#efecf9" stroke-width="6"/>
+        <path d="M252 12a18 18 0 1 1-16 26" fill="none" stroke="#7bd444" stroke-width="6" stroke-linecap="round"/>
+        <path d="M236 38a18 18 0 0 1 6-21" fill="none" stroke="#00DDEB" stroke-width="6" stroke-linecap="round"/>
+        <text x="240" y="35" fill="#4b1fa8" font-size="13" font-weight="850">87%</text>
+      </g>
+      <g filter="url(#tcxArtShadow)">
+        <circle cx="250" cy="182" r="17" fill="#5B42F3"/>
+        <path d="m242.5 182 5 5 11-12" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>`,
+
+    /* Cover letter: a letter sheet with an envelope badge. */
+    letter: `
+      <g filter="url(#tcxArtShadow)">
+        <rect x="58" y="16" width="184" height="178" rx="7" fill="#ffffff"/>
+        <rect x="78" y="38" width="72" height="7" rx="3.5" fill="#4b3a86"/>
+        <rect x="78" y="53" width="48" height="5" rx="2.5" fill="#ded8f4"/>
+        <rect x="78" y="76" width="144" height="5" rx="2.5" fill="#5B42F3"/>
+        <g fill="#e7e3f7">
+          <rect x="78" y="92" width="144" height="4.4" rx="2.2"/>
+          <rect x="78" y="102" width="144" height="4.4" rx="2.2"/>
+          <rect x="78" y="112" width="116" height="4.4" rx="2.2"/>
+          <rect x="78" y="126" width="144" height="4.4" rx="2.2"/>
+          <rect x="78" y="136" width="144" height="4.4" rx="2.2"/>
+          <rect x="78" y="146" width="92" height="4.4" rx="2.2"/>
+        </g>
+        <path d="M78 170h44" stroke="#AF40FF" stroke-width="3" stroke-linecap="round"/>
+        <rect x="78" y="178" width="34" height="4" rx="2" fill="#ded8f4"/>
+      </g>
+      <g filter="url(#tcxArtShadow)">
+        <rect x="186" y="128" width="76" height="54" rx="8" fill="url(#tcxArtHead)"/>
+        <path d="M194 138l30 22 30-22" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>`,
+
+    /* Templates: a fanned stack of resume cards. */
+    templates: `
+      <g filter="url(#tcxArtShadow)">
+        <rect x="44" y="42" width="120" height="150" rx="8" fill="#ffffff" opacity=".55" transform="rotate(-8 104 117)"/>
+      </g>
+      <g filter="url(#tcxArtShadow)">
+        <rect x="76" y="30" width="128" height="162" rx="8" fill="#ffffff" opacity=".8"/>
+      </g>
+      <g filter="url(#tcxArtShadow)">
+        <rect x="112" y="18" width="140" height="176" rx="8" fill="#ffffff"/>
+        <path d="M119 18h126a7 7 0 0 1 7 7v27H112V25a7 7 0 0 1 7-7Z" fill="url(#tcxArtHead)"/>
+        <rect x="126" y="28" width="62" height="6" rx="3" fill="#ffffff" fill-opacity=".95"/>
+        <rect x="126" y="39" width="40" height="4" rx="2" fill="#ffffff" fill-opacity=".6"/>
+        <rect x="126" y="66" width="44" height="5" rx="2.5" fill="#5B42F3"/>
+        <g fill="#e7e3f7">
+          <rect x="126" y="80" width="112" height="4.4" rx="2.2"/>
+          <rect x="126" y="90" width="112" height="4.4" rx="2.2"/>
+          <rect x="126" y="100" width="80" height="4.4" rx="2.2"/>
+        </g>
+        <rect x="126" y="118" width="52" height="5" rx="2.5" fill="#5B42F3"/>
+        <g fill="#e7e3f7">
+          <rect x="126" y="132" width="112" height="4.4" rx="2.2"/>
+          <rect x="126" y="142" width="96" height="4.4" rx="2.2"/>
+          <rect x="126" y="152" width="112" height="4.4" rx="2.2"/>
+          <rect x="126" y="162" width="70" height="4.4" rx="2.2"/>
+        </g>
+        <rect x="126" y="176" width="36" height="5" rx="2.5" fill="#00DDEB"/>
+      </g>`,
+
+    /* Portfolio: a browser window with a project grid. */
+    portfolio: `
+      <g filter="url(#tcxArtShadow)">
+        <rect x="34" y="26" width="232" height="158" rx="9" fill="#ffffff"/>
+        <path d="M43 26h214a9 9 0 0 1 9 9v17H34V35a9 9 0 0 1 9-9Z" fill="url(#tcxArtHead)"/>
+        <circle cx="50" cy="39" r="4" fill="#ffffff" fill-opacity=".9"/>
+        <circle cx="63" cy="39" r="4" fill="#ffffff" fill-opacity=".65"/>
+        <circle cx="76" cy="39" r="4" fill="#ffffff" fill-opacity=".45"/>
+        <rect x="94" y="34" width="150" height="10" rx="5" fill="#ffffff" fill-opacity=".28"/>
+        <circle cx="62" cy="80" r="16" fill="#efe9fd"/>
+        <circle cx="62" cy="75.5" r="5.4" fill="#5B42F3"/>
+        <path d="M52 90a10 10 0 0 1 20 0Z" fill="#5B42F3"/>
+        <rect x="88" y="70" width="86" height="6" rx="3" fill="#4b3a86"/>
+        <rect x="88" y="82" width="60" height="5" rx="2.5" fill="#ded8f4"/>
+        <g>
+          <rect x="46" y="112" width="62" height="46" rx="6" fill="#f2eefe"/>
+          <rect x="54" y="120" width="46" height="18" rx="4" fill="#AF40FF" opacity=".85"/>
+          <rect x="54" y="144" width="36" height="5" rx="2.5" fill="#ded8f4"/>
+          <rect x="119" y="112" width="62" height="46" rx="6" fill="#f2eefe"/>
+          <rect x="127" y="120" width="46" height="18" rx="4" fill="#5B42F3" opacity=".85"/>
+          <rect x="127" y="144" width="36" height="5" rx="2.5" fill="#ded8f4"/>
+          <rect x="192" y="112" width="62" height="46" rx="6" fill="#f2eefe"/>
+          <rect x="200" y="120" width="46" height="18" rx="4" fill="#00DDEB" opacity=".85"/>
+          <rect x="200" y="144" width="36" height="5" rx="2.5" fill="#ded8f4"/>
+        </g>
+      </g>`,
+
+    /* Interview: two chat bubbles with a mic badge. */
+    interview: `
+      <g filter="url(#tcxArtShadow)">
+        <path d="M46 34h150a10 10 0 0 1 10 10v52a10 10 0 0 1-10 10H92l-24 20v-20H46a10 10 0 0 1-10-10V44a10 10 0 0 1 10-10Z" fill="#ffffff"/>
+        <g fill="#e7e3f7">
+          <rect x="56" y="52" width="122" height="5.4" rx="2.7"/>
+          <rect x="56" y="65" width="122" height="5.4" rx="2.7"/>
+          <rect x="56" y="78" width="80" height="5.4" rx="2.7"/>
+        </g>
+      </g>
+      <g filter="url(#tcxArtShadow)">
+        <path d="M118 118h128a10 10 0 0 1 10 10v42a10 10 0 0 1-10 10H162l-20 18v-18h-24a10 10 0 0 1-10-10v-42a10 10 0 0 1 10-10Z" fill="url(#tcxArtHead)"/>
+        <g fill="#ffffff" fill-opacity=".9">
+          <rect x="130" y="134" width="104" height="5.4" rx="2.7"/>
+          <rect x="130" y="147" width="104" height="5.4" rx="2.7"/>
+          <rect x="130" y="160" width="66" height="5.4" rx="2.7"/>
+        </g>
+      </g>
+      <g filter="url(#tcxArtShadow)">
+        <circle cx="66" cy="150" r="24" fill="#ffffff"/>
+        <rect x="59" y="136" width="14" height="22" rx="7" fill="#5B42F3"/>
+        <path d="M53 152a13 13 0 0 0 26 0" fill="none" stroke="#5B42F3" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M66 165v6" stroke="#5B42F3" stroke-width="3.4" stroke-linecap="round"/>
+      </g>`,
+
+    /* Extension: a browser bar with a job card and the tailor badge. */
+    extension: `
+      <g filter="url(#tcxArtShadow)">
+        <rect x="34" y="30" width="232" height="150" rx="9" fill="#ffffff"/>
+        <path d="M43 30h214a9 9 0 0 1 9 9v19H34V39a9 9 0 0 1 9-9Z" fill="url(#tcxArtHead)"/>
+        <rect x="48" y="38" width="132" height="12" rx="6" fill="#ffffff" fill-opacity=".28"/>
+        <rect x="196" y="37" width="26" height="14" rx="5" fill="#ffffff" fill-opacity=".92"/>
+        <path d="M203 44h12M209 40v8" stroke="#5B42F3" stroke-width="2.6" stroke-linecap="round"/>
+        <rect x="50" y="74" width="88" height="6" rx="3" fill="#4b3a86"/>
+        <rect x="50" y="88" width="58" height="5" rx="2.5" fill="#ded8f4"/>
+        <g fill="#e7e3f7">
+          <rect x="50" y="108" width="164" height="4.6" rx="2.3"/>
+          <rect x="50" y="119" width="164" height="4.6" rx="2.3"/>
+          <rect x="50" y="130" width="120" height="4.6" rx="2.3"/>
+        </g>
+        <rect x="50" y="150" width="74" height="16" rx="6" fill="#5B42F3"/>
+        <rect x="132" y="150" width="52" height="16" rx="6" fill="#efe9fd"/>
+      </g>
+      <g filter="url(#tcxArtShadow)">
+        <circle cx="242" cy="150" r="26" fill="#ffffff"/>
+        <circle cx="242" cy="150" r="18" fill="none" stroke="#efecf9" stroke-width="6"/>
+        <path d="M242 132a18 18 0 1 1-16 26" fill="none" stroke="#7bd444" stroke-width="6" stroke-linecap="round"/>
+        <path d="M234 150l5 5 11-12" fill="none" stroke="#5B42F3" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>`,
+  };
+
+  const buildArt = (name) =>
+    `<svg viewBox="0 0 300 210" role="img" focusable="false">${ART_DEFS}${ART[name] || ART.resume}</svg>`;
+
   const enhanceArticleCtas = () => {
     const content = document.querySelector(".post-content");
     if (!content || content.querySelector(".article-cta-strip")) return;
@@ -230,6 +442,7 @@
         text: "Match the role, reuse the right evidence from your resume, and send a sharper application.",
         label: "Write a cover letter",
         fallback: "/cover-letter",
+        art: "letter",
       },
       {
         test: (href, text) => href.includes("/templates") || text.includes("template"),
@@ -237,6 +450,7 @@
         text: "Choose a clean template, keep the structure simple, and make every section easier to scan.",
         label: "Browse resume templates",
         fallback: "/templates",
+        art: "templates",
       },
       {
         test: (href, text) => href.includes("/portfolio") || text.includes("portfolio"),
@@ -244,6 +458,7 @@
         text: "Show projects, proof, and results in a polished page that supports your application.",
         label: "Build your portfolio",
         fallback: "/portfolio",
+        art: "portfolio",
       },
       {
         test: (href, text) => href.includes("/mock-interview") || text.includes("interview"),
@@ -251,6 +466,7 @@
         text: "Turn your resume into realistic questions, rehearse stronger answers, and walk in prepared.",
         label: "Practice an interview",
         fallback: "/mock-interview",
+        art: "interview",
       },
       {
         test: (href, text) => href.includes("/modify-cv") || text.includes("resume builder"),
@@ -258,6 +474,7 @@
         text: "Create a structured, ATS-friendly resume that is easy for both software and recruiters to read.",
         label: "Open resume builder",
         fallback: "/modify-cv",
+        art: "resume",
       },
       {
         test: (href, text) => href.includes("/extension") || text.includes("chrome extension"),
@@ -265,6 +482,7 @@
         text: "Use TailorCV on job pages, check fit quickly, and adapt your resume without breaking your flow.",
         label: "Get the extension",
         fallback: "/extension",
+        art: "extension",
       },
     ];
 
@@ -301,68 +519,90 @@
     cta.className = "article-cta-strip full-bleed";
     cta.innerHTML = `
       <div class="article-cta-visual" aria-hidden="true">
-        <svg viewBox="0 0 360 170" role="img" focusable="false">
+        <svg viewBox="0 0 300 210" role="img" focusable="false">
           <defs>
-            <linearGradient id="tcxCtaDoc" x1="64" y1="32" x2="254" y2="136" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#ffffff"/>
-              <stop offset="1" stop-color="#eef6ff"/>
+            <linearGradient id="tcxCtaHead" x1="42" y1="14" x2="258" y2="58" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#AF40FF"/>
+              <stop offset="1" stop-color="#5B42F3"/>
             </linearGradient>
-            <linearGradient id="tcxCtaBlue" x1="166" y1="66" x2="265" y2="97" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#38bdf8"/>
-              <stop offset="1" stop-color="#0878df"/>
-            </linearGradient>
-            <linearGradient id="tcxCtaPencil" x1="256" y1="82" x2="315" y2="140" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#fbbf24"/>
-              <stop offset="1" stop-color="#fb7185"/>
-            </linearGradient>
-            <filter id="tcxCtaShadow" x="0" y="0" width="360" height="170" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-              <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#075985" flood-opacity=".16"/>
+            <filter id="tcxCtaShadow" x="-20%" y="-20%" width="150%" height="150%" color-interpolation-filters="sRGB">
+              <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#20074d" flood-opacity=".28"/>
             </filter>
           </defs>
-          <rect x="20" y="18" width="320" height="134" rx="8" fill="#ffffff" opacity=".1"/>
-          <rect x="20.5" y="18.5" width="319" height="133" rx="7.5" fill="none" stroke="#ffffff" stroke-opacity=".32"/>
 
-          <g filter="url(#tcxCtaShadow)">
-            <rect x="84" y="43" width="190" height="93" rx="14" fill="url(#tcxCtaDoc)"/>
-            <rect x="84" y="43" width="190" height="25" rx="14" fill="#e6eefb"/>
-            <rect x="84" y="63" width="190" height="5" fill="#c9d7f0"/>
-            <circle cx="103" cy="55.5" r="4.5" fill="#f8b545"/>
-            <circle cx="120" cy="55.5" r="4.5" fill="#70c95d"/>
-            <circle cx="137" cy="55.5" r="4.5" fill="#42a5f5"/>
-
-            <rect x="167" y="83" width="92" height="24" rx="5" fill="url(#tcxCtaBlue)"/>
-            <rect x="167" y="117" width="78" height="8" rx="4" fill="#d7e6f5"/>
-            <rect x="167" y="131" width="62" height="7" rx="3.5" fill="#e3edf8"/>
+          <g fill="none" stroke="#ffffff" stroke-opacity=".16" stroke-width="7">
+            <circle cx="24" cy="150" r="19"/>
+            <circle cx="279" cy="120" r="12"/>
           </g>
 
           <g filter="url(#tcxCtaShadow)">
-            <circle cx="92" cy="103" r="42" fill="#ffffff"/>
-            <circle cx="92" cy="103" r="34" fill="none" stroke="#dbeafe" stroke-width="9"/>
-            <path d="M92 69a34 34 0 1 1-30 50" fill="none" stroke="#7bd444" stroke-width="9" stroke-linecap="round"/>
-            <path d="M62 119a34 34 0 0 1 10-38" fill="none" stroke="#38bdf8" stroke-width="9" stroke-linecap="round"/>
-            <text x="74" y="111" fill="#55b72e" font-size="18" font-weight="850">87%</text>
+            <rect x="42" y="14" width="216" height="182" rx="7" fill="#ffffff"/>
+            <path d="M49 14h202a7 7 0 0 1 7 7v37H42V21a7 7 0 0 1 7-7Z" fill="url(#tcxCtaHead)"/>
+            <circle cx="68" cy="36" r="14" fill="#ffffff" fill-opacity=".28"/>
+            <circle cx="68" cy="31.5" r="4.6" fill="#ffffff" fill-opacity=".92"/>
+            <path d="M59.5 45a8.5 8.5 0 0 1 17 0Z" fill="#ffffff" fill-opacity=".92"/>
+            <rect x="92" y="27" width="80" height="7" rx="3.5" fill="#ffffff" fill-opacity=".95"/>
+            <rect x="92" y="39" width="52" height="5" rx="2.5" fill="#ffffff" fill-opacity=".62"/>
+
+            <path d="M118 66v124" stroke="#efecf9" stroke-width="1.5"/>
+
+            <rect x="52" y="70" width="38" height="5" rx="2.5" fill="#5B42F3"/>
+            <g fill="#ded8f4">
+              <circle cx="55" cy="84" r="2.6"/><rect x="62" y="81.6" width="42" height="4.2" rx="2.1"/>
+              <circle cx="55" cy="95" r="2.6"/><rect x="62" y="92.6" width="36" height="4.2" rx="2.1"/>
+              <circle cx="55" cy="106" r="2.6"/><rect x="62" y="103.6" width="40" height="4.2" rx="2.1"/>
+            </g>
+
+            <rect x="52" y="122" width="44" height="5" rx="2.5" fill="#5B42F3"/>
+            <g fill="#e7e3f7">
+              <rect x="52" y="135" width="52" height="4.2" rx="2.1"/>
+              <rect x="52" y="144" width="38" height="4.2" rx="2.1"/>
+            </g>
+
+            <rect x="52" y="158" width="32" height="5" rx="2.5" fill="#5B42F3"/>
+            <g>
+              <rect x="52" y="170" width="52" height="4.6" rx="2.3" fill="#efecf9"/>
+              <rect x="52" y="170" width="42" height="4.6" rx="2.3" fill="#5B42F3"/>
+              <rect x="52" y="179" width="52" height="4.6" rx="2.3" fill="#efecf9"/>
+              <rect x="52" y="179" width="34" height="4.6" rx="2.3" fill="#AF40FF"/>
+              <rect x="52" y="188" width="52" height="4.6" rx="2.3" fill="#efecf9"/>
+              <rect x="52" y="188" width="26" height="4.6" rx="2.3" fill="#00DDEB"/>
+            </g>
+
+            <rect x="128" y="70" width="74" height="5" rx="2.5" fill="#5B42F3"/>
+            <g fill="#e7e3f7">
+              <rect x="128" y="83" width="118" height="4.2" rx="2.1"/>
+              <rect x="128" y="92" width="118" height="4.2" rx="2.1"/>
+              <rect x="128" y="101" width="84" height="4.2" rx="2.1"/>
+            </g>
+
+            <rect x="128" y="118" width="64" height="5" rx="2.5" fill="#5B42F3"/>
+            <rect x="128" y="131" width="62" height="5" rx="2.5" fill="#4b3a86"/>
+            <rect x="216" y="131" width="30" height="5" rx="2.5" fill="#ded8f4"/>
+            <g fill="#eeeaf8">
+              <rect x="128" y="142" width="118" height="3.8" rx="1.9"/>
+              <rect x="128" y="150" width="98" height="3.8" rx="1.9"/>
+            </g>
+            <rect x="128" y="163" width="56" height="5" rx="2.5" fill="#4b3a86"/>
+            <rect x="216" y="163" width="30" height="5" rx="2.5" fill="#ded8f4"/>
+            <g fill="#eeeaf8">
+              <rect x="128" y="174" width="118" height="3.8" rx="1.9"/>
+              <rect x="128" y="182" width="92" height="3.8" rx="1.9"/>
+            </g>
           </g>
 
-          <g>
-            <circle cx="143" cy="107" r="12" fill="#0878df"/>
-            <path d="m137.5 107 3.8 3.8 8.4-9.4" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="143" cy="130" r="12" fill="#0878df"/>
-            <path d="m137.5 130 3.8 3.8 8.4-9.4" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <g filter="url(#tcxCtaShadow)">
+            <circle cx="252" cy="30" r="25" fill="#ffffff"/>
+            <circle cx="252" cy="30" r="18" fill="none" stroke="#efecf9" stroke-width="6"/>
+            <path d="M252 12a18 18 0 1 1-16 26" fill="none" stroke="#7bd444" stroke-width="6" stroke-linecap="round"/>
+            <path d="M236 38a18 18 0 0 1 6-21" fill="none" stroke="#00DDEB" stroke-width="6" stroke-linecap="round"/>
+            <text x="240" y="35" fill="#4b1fa8" font-size="13" font-weight="850">87%</text>
           </g>
 
-          <g>
-            <path d="M263 124l39-64 15 9-39 64-19 11 4-20Z" fill="url(#tcxCtaPencil)"/>
-            <path d="M302 60l15 9" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".75"/>
-            <rect x="240" y="108" width="76" height="38" rx="7" fill="#ffffff" stroke="#d6e4f2" stroke-width="3"/>
-            <path d="M253 127l5 5 11-13" fill="none" stroke="#22c55e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="272" y="134" fill="#0878df" font-size="18" font-weight="850">Aa</text>
-            <rect x="240" y="141" width="76" height="5" rx="2.5" fill="#a855f7" opacity=".58"/>
+          <g filter="url(#tcxCtaShadow)">
+            <circle cx="250" cy="182" r="17" fill="#5B42F3"/>
+            <path d="m242.5 182 5 5 11-12" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
           </g>
-
-          <circle cx="287" cy="52" r="20" fill="#ffffff"/>
-          <path d="M287 39v26M274 52h26" stroke="#0878df" stroke-width="5" stroke-linecap="round"/>
-          <circle cx="317" cy="79" r="7" fill="#90e05c"/>
-          <circle cx="327" cy="54" r="6" fill="#fbbf24"/>
         </svg>
       </div>
       <div class="article-cta-copy">
