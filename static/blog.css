@@ -10,6 +10,10 @@
   --paper: #efeee9;
   --ink: #0d1420;
   --ink-soft: #2c3748;
+  /* Real app brand gradient - matches .getstarted / .fix-resume-btn / .btn-primary
+     in style3.css. Blog CTAs should look like they came from the same product. */
+  --brand-grad: linear-gradient(144deg, #AF40FF 0%, #5B42F3 50%, #00DDEB 100%);
+  --brand-grad-hover: linear-gradient(144deg, #00DDEB 0%, #5B42F3 50%, #AF40FF 100%);
 }
 
 * { box-sizing: border-box; }
@@ -362,17 +366,18 @@ h1.post-hero-title {
   justify-content: center;
   padding: 14px 28px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #6405fc, #7d2bff);
+  background: var(--brand-grad);
   color: #ffffff;
   font-weight: 700;
   font-size: 1rem;
   text-decoration: none;
-  box-shadow: 0 12px 30px rgba(100, 5, 252, 0.35);
-  transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 12px 30px rgba(91, 66, 243, 0.35);
+  transition: transform .18s ease, box-shadow .18s ease, background .25s ease;
 }
 .hero-cta-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 38px rgba(100, 5, 252, 0.5);
+  background: var(--brand-grad-hover);
+  box-shadow: 0 16px 38px rgba(91, 66, 243, 0.5);
 }
 
 .post-hero-media {
@@ -512,8 +517,8 @@ body.blog-detail-page { overflow-x: clip !important; }
   margin: 12px 22px 22px;
   padding: 20px 18px;
   border-radius: 16px;
-  background: linear-gradient(160deg, #e0f2fe 0%, #bae6fd 100%);
-  border: 1px solid #7dd3fc;
+  background: linear-gradient(160deg, #f2ecff 0%, #e4f8ff 100%);
+  border: 1px solid #c9b3ff;
   text-align: center;
 }
 .toc-cta-title {
@@ -535,17 +540,18 @@ body.blog-detail-page { overflow-x: clip !important; }
   box-sizing: border-box;
   padding: 12px 16px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
+  background: var(--brand-grad);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.98rem;
   text-decoration: none;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
-  transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 8px 20px rgba(91, 66, 243, 0.35);
+  transition: transform .18s ease, box-shadow .18s ease, background .25s ease;
 }
 .toc-cta-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 26px rgba(56, 189, 248, 0.5);
+  background: var(--brand-grad-hover);
+  box-shadow: 0 12px 26px rgba(0, 221, 235, 0.4);
 }
 
 .post-content {
@@ -631,6 +637,12 @@ body.blog-detail-page { overflow-x: clip !important; }
 .post-content li { margin: 0 0 0.5em; line-height: 1.65; }
 .post-content ul,
 .post-content ol { margin: 0 0 1.2em; padding-left: 24px; }
+
+/* Markdown "---" separators render as <hr>. Section separation is already
+   handled by the border-top on each H2, so a second rule is redundant - and
+   when an <hr> lands inside an enhanced box (step card, FAQ, takeaways) it
+   shows up as a stray line across the card. Hide them. */
+.blog-detail-page .post-content hr { display: none; }
 
 /* a thin rule above each H2 visually separates sections */
 .post-content h2 {
@@ -940,11 +952,12 @@ header.navbar {
   max-width: 1000px;
   margin: 18px 0 38px;
   padding: 28px 34px 30px;
-  border: 1px solid #35a8ff;
+  border: 1px solid #b9a3ff;
   border-radius: 8px;
-  background: #f4f9ff;
+  background: linear-gradient(160deg, #f5f0ff 0%, #eef8ff 100%);
   box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
 }
+.blog-detail-page .key-takeaways-box li::marker { color: #5B42F3; }
 
 .blog-detail-page .key-takeaways-box h2 {
   margin: 0 0 14px;
@@ -1134,7 +1147,7 @@ header.navbar {
   max-width: 1000px;
   margin: 36px 0 30px;
   padding: 28px 34px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #d9cbff;
   border-radius: 8px;
   background: #ffffff;
 }
@@ -1159,73 +1172,71 @@ header.navbar {
 .blog-detail-page .article-cta-strip {
   max-width: 1284px;
   display: grid;
-  grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
-  gap: 36px;
+  grid-template-columns: minmax(200px, 292px) minmax(0, 1fr);
+  gap: 34px;
   align-items: center;
   margin: 30px 0 38px;
-  padding: clamp(26px, 3vw, 38px) clamp(30px, 4vw, 46px);
-  border-radius: 8px;
-  background: #0878df;
+  padding: clamp(22px, 2.4vw, 30px) clamp(26px, 3vw, 40px);
+  border-radius: 12px;
+  background: var(--brand-grad);
   color: #ffffff;
   overflow: hidden;
-  box-shadow: 0 16px 36px rgba(8, 120, 223, 0.16);
+  box-shadow: 0 16px 36px rgba(91, 66, 243, 0.22);
 }
 
+/* No frame around the art - the illustration sits straight on the gradient.
+   A bordered panel here reads as a box-inside-a-box. */
 .blog-detail-page .article-cta-visual {
-  min-height: 170px;
-  border-radius: 6px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.07));
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.38);
 }
 
 .blog-detail-page .article-cta-visual svg {
-  width: min(100%, 350px);
+  width: min(100%, 292px);
   height: auto;
   display: block;
 }
 
 .blog-detail-page .post-content .article-cta-title {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   color: #ffffff;
-  font-size: clamp(1.85rem, 2.75vw, 2.35rem);
+  font-size: clamp(1.35rem, 1.9vw, 1.7rem);
   font-weight: 750;
-  line-height: 1.18;
+  line-height: 1.22;
 }
 
 .blog-detail-page .post-content .article-cta-text {
-  max-width: 700px;
-  margin: 0 0 22px;
+  max-width: 640px;
+  margin: 0 0 16px;
   color: rgba(255, 255, 255, 0.92);
-  font-size: clamp(1.06rem, 1.7vw, 1.3rem);
-  line-height: 1.6;
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  line-height: 1.5;
 }
 
 .blog-detail-page .post-content .article-cta-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 268px;
-  min-height: 56px;
-  padding: 14px 28px;
-  border: 1px solid rgba(255, 255, 255, 0.82);
+  min-width: 220px;
+  min-height: 46px;
+  padding: 11px 24px;
+  /* Outlined-on-gradient, matching the Jobscan reference: the white fill is
+     reserved for the illustration so the button reads as secondary to it. */
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
-  font-size: 1.12rem;
+  font-size: 1rem;
   font-weight: 800;
   text-decoration: none;
-  box-shadow: 0 10px 22px rgba(0, 31, 84, 0.18);
-  transition: background .16s ease, transform .16s ease, box-shadow .16s ease;
+  transition: background .16s ease, transform .16s ease, border-color .16s ease;
 }
 
 .blog-detail-page .post-content .article-cta-button:hover {
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 14px 26px rgba(0, 31, 84, 0.22);
   text-decoration: none;
 }
 
