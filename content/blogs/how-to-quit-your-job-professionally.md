@@ -12,9 +12,6 @@ keywords: how to quit your job, resignation guide 2026, how to resign profession
 
 How you leave a job matters almost as much as how you perform in it. The world is smaller than it seems - former managers become references, ex-colleagues become future hiring managers, and industries have long memories. Quitting professionally protects your reputation and your network. Quitting badly can follow you for years.
 
-![How to Quit Your Job](public/blog-images/how-to-quit-job.webp)
-
-This guide covers exactly how to resign professionally: timing, the conversation, the resignation letter, notice periods, and handling counteroffers.
 
 Before you quit, make sure your next step is secure. If you are [job searching](https://thetailorcv.com/blog/survived-a-layoff-30-day-plan-to-rebuild-your-resume), optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) to ensure your [new offer](https://thetailorcv.com/blog/negotiating-multiple-job-offers) is solid.
 
@@ -139,6 +136,11 @@ In your final days:
 - Return company property
 - Complete the exit [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) professionally (be constructive, not bitter)
 - Leave your contact information for those who want to stay in touch
+
+![How to Quit Your Job](public/blog-images/how-to-quit-job.webp)
+
+This guide covers exactly how to resign professionally: timing, the conversation, the resignation letter, notice periods, and handling counteroffers.
+
 
 Your network is one of your most valuable [career assets](https://thetailorcv.com/blog/portfolio-checklist-before-applying). Leave it stronger than you found it.
 

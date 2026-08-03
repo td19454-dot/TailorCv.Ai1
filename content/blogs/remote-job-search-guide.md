@@ -132,6 +132,13 @@ Strong answers share specific systems you use - morning routines, time-blocking,
 
 Remote salaries can vary enormously based on where the employer is headquartered and your location. There are three common approaches:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 **Location-based pay** - Employer pays based on your local market cost of living. Living in a lower-cost area earns less than the US-based team.
 
 **Location-agnostic pay** - Employer pays all employees at the same role level the same salary regardless of location. Companies like Basecamp and Buffer publish their salary formulas publicly.

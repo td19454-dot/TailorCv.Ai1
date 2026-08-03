@@ -178,6 +178,13 @@ You can produce a polished version of this in minutes with the [resume builder](
 
 A great resume gets you the interview, but it is one piece of the puzzle. To give yourself the best shot at Malaysian roles:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Write a targeted cover letter — see [how to write a cover letter for Malaysia jobs](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs).
 - Optimise your LinkedIn so recruiters find you — see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia).
 - Prepare for local interview norms with our [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia), and practise with a realistic [AI mock interview](https://thetailorcv.com/mock-interview).

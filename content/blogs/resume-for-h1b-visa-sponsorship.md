@@ -96,6 +96,13 @@ For more tips on optimizing your resume for ATS, check out our [resume optimizat
 
 When applying for H-1B visa sponsorship jobs, it's crucial to demonstrate not only your skills but also your understanding of U.S. work culture and your ability to contribute to the company. Here are specific strategies:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ### Highlight Relevant Experience
 
 If you have previous experience in the U.S. or with U.S. companies, make sure to emphasize this. Employers may prefer candidates familiar with the local work environment.

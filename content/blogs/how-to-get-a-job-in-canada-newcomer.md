@@ -139,6 +139,13 @@ Canadian interviews often use [behavioural questions](https://thetailorcv.com/bl
 - **Be patient but persistent:** a first Canadian role often takes time; each interview and application improves your approach.
 - **Use free resources:** settlement services, libraries, and newcomer programs offer resume help, workshops, and connections at no cost.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 ## Understanding Credential Assessment in Detail
 
 Credential recognition is one of the biggest and most misunderstood hurdles newcomers face, so it's worth understanding clearly. There are two distinct things:

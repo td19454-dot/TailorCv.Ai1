@@ -124,6 +124,13 @@ To further enhance your job application process, consider using the following re
 
 The Canadian job market is diverse, with opportunities across various sectors. Here are some insights to keep in mind:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - **Networking is Key**: Building connections can significantly enhance your job search. Utilize platforms like LinkedIn to network with industry professionals. Attend networking events and informational interviews to expand your reach.
 - **In-Demand Jobs**: Familiarize yourself with the in-demand jobs in Canada for 2026. This can help you tailor your resume to highlight relevant skills. For more information, read our guide on [in-demand jobs in Canada for 2026](https://thetailorcv.com/blog/in-demand-jobs-canada-2026).
 - **Cultural Fit**: Canadian employers often look for candidates who fit their organizational culture. Research potential employers to align your resume with their values and mission. 

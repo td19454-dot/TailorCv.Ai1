@@ -135,6 +135,13 @@ When targeting in-demand jobs in the USA for 2026, avoiding common pitfalls can 
 
 Tailoring your resume is essential for standing out in competitive job markets. Here’s a step-by-step guide to help you customize your resume effectively:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 ### Step 1: Analyze the Job Description
 - **Highlight Key Skills:** Identify the main skills and qualifications listed in the job description.
 - **Note the Language:** Pay attention to specific terminology or phrases the employer uses.

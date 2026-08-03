@@ -118,6 +118,13 @@ Networking is not one-and-done. After a good conversation, [follow up](https://t
 
 ## Networking Scripts
 
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
 ### Reconnecting
 "Hi [Name], great to see your update about [their news]! I've been meaning to reconnect. I'm currently exploring [field] roles - would love to catch up and hear how things are going with you."
 

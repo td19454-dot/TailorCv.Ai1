@@ -99,6 +99,13 @@ Networking is a powerful tool for job seekers. Here are effective strategies for
 
 Once you secure an interview, preparation is key. Here are some tips:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - **Research the Company**: Understand the company’s mission, values, and recent developments. This knowledge will help you tailor your responses.
 - **Practice Common Questions**: Prepare answers to common interview questions and rehearse them. Our [interview preparation guide](https://www.thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) can help you with this.
 - **Mock Interviews**: Consider using our [AI mock interview](https://www.thetailorcv.com/mock-interview) tool for practice.

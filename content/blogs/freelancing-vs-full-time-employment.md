@@ -141,6 +141,13 @@ A mid-level [software engineer](https://thetailorcv.com/blog/software-engineer-r
 **1. Do you have 6-12 months of expenses saved?**
 Freelancing without a financial runway is extremely stressful. You need money to weather slow months while building your client base.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 **2. Do you have an existing client network?**
 Successful freelancers usually have relationships before going freelance. Starting freelance with zero contacts is the hardest path.
 

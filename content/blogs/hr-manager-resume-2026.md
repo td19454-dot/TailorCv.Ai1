@@ -130,6 +130,13 @@ Tech Startup (Series B, 380 employees) | Jan 2022 - Present
 
 ## Common HR Manager Resume Mistakes
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 ### Mistake 1: No people metrics
 
 HR manages the most important asset - people. Yet many HR resumes have no numbers at all. Add time-to-fill, attrition rate, retention, engagement scores, or headcount managed.

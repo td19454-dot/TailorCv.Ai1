@@ -41,6 +41,13 @@ When paid experience is thin, academic and extracurricular work fills the gap co
 
 Include the practical skills that make you useful: software, tools, languages (listed honestly, per [how to list language skills](https://thetailorcv.com/blog/bilingual-language-skills-on-resume)), and any [certifications](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) you've earned. Mirror the [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) in the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) where they're genuinely true for you, and confirm the match with the [ATS score checker](https://www.thetailorcv.com/solutions). For campus placement in particular, the [campus placement resume guide](https://thetailorcv.com/blog/resume-for-campus-placement-cse) and [how to prepare for campus placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement) go deeper.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## Keep it one page and tailored
 
 At this stage, one clean page is ideal — you don't need more, and a tight page respects the reader's time. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) so the most relevant experience is up top, use a [readable font](https://thetailorcv.com/blog/resume-fonts-guide), and [proofread carefully](https://thetailorcv.com/blog/resume-proofreading-checklist). Whether you're applying for an internship or your first full-time role, the [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) and [first resume for Gen Z](https://thetailorcv.com/blog/first-resume-for-gen-z-2026) offer more targeted advice.

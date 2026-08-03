@@ -51,6 +51,13 @@ Professionalism in the subject sets the tone for the whole application, the same
 
 The subject gets you opened; a short, tailored body does the rest. Keep it to a few lines: a warm greeting, one or two sentences on why you're a strong fit for *this* role, a mention of your attached [resume](https://www.thetailorcv.com/modify-cv) (and [cover letter](https://www.thetailorcv.com/cover-letter) if included), and a polite close. Mirror the priorities in the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist), and don't paste your whole [resume](https://www.thetailorcv.com/modify-cv) into the body. For cold outreach to a recruiter you don't know, the [cold email to a recruiter guide](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) goes deeper.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 ## Attach the resume the right way
 
 A few practical rules for the attachment itself:

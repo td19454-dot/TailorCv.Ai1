@@ -150,6 +150,13 @@ Focus on: leadership, strategic thinking, stakeholder management, influence. Pro
 
 ## Common Soft Skills Mistakes
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 ### Mistake 1: A long list of adjectives
 
 "Hardworking, dedicated, passionate, motivated, detail-oriented, team player" - delete this entire line. It adds nothing.

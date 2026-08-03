@@ -101,6 +101,13 @@ Paste the job description into [TailorCV's resume optimizer](/solutions) to quic
 
 When tailoring your resume for a referral, it's easy to make missteps that can undermine your chances, even with the advantage of a referral. Here are some common mistakes to watch out for:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 1. **Overlooking Key Skills**: Failing to highlight the most relevant skills mentioned in the job description can be detrimental. Use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) to identify which skills are crucial.
 
 2. **Ignoring Company Culture**: Tailoring your resume isn’t just about matching skills; it’s also about aligning with the company’s culture. If your referrer can provide insights into the company’s values, make sure to reflect those in your resume.

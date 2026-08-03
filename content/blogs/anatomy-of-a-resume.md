@@ -176,6 +176,13 @@ Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-t
 
 If you have notable awards - academic, professional, or competitive - a dedicated section or inclusion within experience can strengthen your case. Read [how to list awards and achievements on a resume](https://thetailorcv.com/blog/awards-achievements-on-resume) for placement advice.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ---
 
 ## Section 9: Volunteer Work (Optional)

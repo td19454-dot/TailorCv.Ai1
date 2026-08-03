@@ -161,6 +161,13 @@ This works because it shows ownership, scope, data, and business impact - the fo
 
 If you do not have formal PM experience, build and document products.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 Strong project example:
 
 Task Management App | Figma, React, Firebase

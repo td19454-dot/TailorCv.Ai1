@@ -63,6 +63,13 @@ Use a clean, [ATS-friendly template](https://www.thetailorcv.com/templates), a [
 
 If you're transitioning in, lead with self-directed projects — a site you grew, a blog you ranked, a technical audit you ran — and any certifications. The [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) and [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume) show how to present these as real experience. A [portfolio](https://www.thetailorcv.com/portfolio) with one real ranking case study can outweigh a thin work history.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Tailor to each role
 
 A technical-SEO role, a content-SEO role, and an agency generalist role want different emphases. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) with the [resume optimizer](https://www.thetailorcv.com/solutions) so your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) match, and see [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job).

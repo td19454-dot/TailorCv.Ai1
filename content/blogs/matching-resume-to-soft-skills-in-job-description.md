@@ -136,6 +136,13 @@ By using specific examples, candidates can effectively demonstrate their soft sk
 ## Step-by-Step How to Analyze Soft Skills in Job Descriptions
 
 1. **Highlight Key Terms:** Read the job description thoroughly and underline soft skill phrases. Look for words like “team player,” “adaptability,” and “leadership.”
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
    
 2. **Categorize Skills:** Organize the identified soft skills into categories such as communication, leadership, teamwork, and problem-solving to visualize your matches better.
 

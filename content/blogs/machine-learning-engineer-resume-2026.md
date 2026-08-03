@@ -139,6 +139,13 @@ E-commerce Platform | Jan 2023 - Present
 
 Good ML engineering [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) to add:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - End-to-end ML pipeline with retraining
 - Model serving API with FastAPI and Docker
 - Fine-tuned language model

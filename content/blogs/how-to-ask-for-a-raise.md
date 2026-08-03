@@ -147,6 +147,13 @@ Also ask: "What specifically would I need to demonstrate to justify this raise w
 
 A no is not the end. Your options:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 1. **Get a roadmap**: Ask exactly what you need to achieve for a yes, and a timeline.
 2. **Negotiate non-salary benefits**: PTO, flexibility, development budget, title.
 3. **Set a [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) date**: Lock in a specific revisit date (e.g., 3 months).

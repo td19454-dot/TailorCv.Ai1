@@ -97,6 +97,13 @@ Recruiters read "responsible for" and immediately know the resume is generic. Ev
 
 Sometimes the silence is signal - you may be applying for roles where there is a genuine gap in your qualifications or experience level. If you're consistently scoring below 60% on [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) for a particular role type, that is a data point worth examining.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 **The fix:** Use the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) checker on 3-5 similar postings and see if a consistent keyword gap emerges. If you keep missing the same skills, that's your development roadmap.
 
 ---

@@ -8357,6 +8357,20 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
         if item not in ordered:
             ordered.append(item)
 
+    # pic1-pic5 are withdrawn from the blog gallery; anything that lands on one
+    # falls back to pic6 (Compact One-Page).
+    _retired = {"/static/pic1.webp", "/static/pic2.webp", "/static/pic3.webp",
+                "/static/pic4.webp", "/static/pic5.webp"}
+    _fallback = ("/static/pic6.webp", "Compact One-Page")
+    swapped, seen_img = [], set()
+    for img, name in ordered:
+        img, name = _fallback if img in _retired else (img, name)
+        if img in seen_img:
+            continue
+        seen_img.add(img)
+        swapped.append((img, name))
+    ordered = swapped
+
     # Topic-matched heading, so an extension post and a keywords post do not
     # open the same block with the same generic line.
     if "extension" in subject or "chrome" in subject:

@@ -68,6 +68,13 @@ The remote [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-g
 
 The remote market attracts scammers, and a [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is a vulnerable moment. Be cautious of:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - **Offers with no [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).** Legitimate [employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) before [hiring](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
 - **Requests for money or bank details upfront.** Never pay to get a job or share banking info before a real offer.
 - **Vague [companies](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) with no web presence.** Verify the [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) exists and the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) works there.

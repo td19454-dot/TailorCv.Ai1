@@ -77,6 +77,13 @@ With your resume and online presence ready, it's time to start applying:
 
 Once you’ve secured an interview, preparation is key:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 - **Research the Company:** Understand the company’s mission, values, and recent developments. This knowledge will help you tailor your responses and demonstrate your interest.
 
 - **Practice Common Questions:** Use our [AI mock interview](https://www.thetailorcv.com/mock-interview) tool to practice answering common interview questions. This can help you feel more confident and prepared.

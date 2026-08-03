@@ -94,6 +94,13 @@ Your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and [LinkedIn](h
 
 [Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) find [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) by searching [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) — job titles, [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026), tools. If those terms are not in your profile, you are invisible to those searches, no matter how strong you are. So:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - **Put your key [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) in your headline, About section, and [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)** — naturally, in real sentences.
 - **Use the exact terms [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) search**, not clever synonyms. "Product [Manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)," not "Product Ninja."
 - **Fill the [Skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026)** with the tools and abilities you want to be found for, and get a few endorsements.

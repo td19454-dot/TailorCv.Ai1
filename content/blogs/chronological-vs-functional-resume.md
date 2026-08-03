@@ -159,6 +159,13 @@ Read the [how to explain resume gaps guide](https://thetailorcv.com/blog/how-to-
 - **Combination**: Good [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility (if work experience has clear dates)
 - **Functional**: Poor [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility (often loses or scatters experience data)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 Whichever format you choose, verify it with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) by checking that your experience parses correctly.
 
 ---

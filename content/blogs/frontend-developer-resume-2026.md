@@ -134,6 +134,13 @@ SaaS Analytics Company | Sep 2023 - Present
 
 Strong frontend [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers):
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Personal [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site
 - E-commerce product UI
 - Dashboard or analytics UI

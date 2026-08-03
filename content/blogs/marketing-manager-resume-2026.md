@@ -122,6 +122,13 @@ Managed / Launched / Grew / Reduced + [campaign or channel] + [budget or audienc
 Growth Marketing Manager
 B2B SaaS Company | Feb 2023 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - Owned a $1.1M annual marketing budget across paid search, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), email, and content channels.
 - Grew monthly MQL volume from 280 to 940 in 18 months through campaign optimization, new channel testing, and landing page CRO.
 - Reduced customer acquisition cost from $1,240 to $760 by improving lead quality scoring and reducing paid spend on low-intent channels.

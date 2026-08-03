@@ -110,6 +110,13 @@ If your phone number is missing, your email is wrong, or your [LinkedIn](https:/
 
 Your part-time job from college, a skill from 15 years ago, an expired certification, or five [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) about a role from 2008 - these fill space with content that actively dilutes your relevance.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 **Fix:** Remove roles older than 10-15 years unless they are exceptional. Update or remove expired [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume). Ruthlessly edit for relevance to the target role.
 
 ---

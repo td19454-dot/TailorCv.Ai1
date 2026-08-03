@@ -10,11 +10,6 @@ image: public/blog-images/github-portfolio-optimization.webp
 
 For developers, GitHub is a portfolio recruiters already know how to read - which means a few hours of cleanup pays off more than almost anything else you can do. Most candidates leave it a mess; optimize yours and you instantly look more senior. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
 
 
 ## Key Takeaways
@@ -117,6 +112,13 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Archive or hide abandoned junk repos so your good work stands out.
 - Add topics to repos so they are searchable.
 - Star and follow [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you admire - it signals technical taste.
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+
 
 ### Additional Optimizations
 - Consider using a [custom domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide) for your portfolio to enhance professionalism.

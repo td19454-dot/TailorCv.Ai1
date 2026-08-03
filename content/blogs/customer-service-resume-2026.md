@@ -118,6 +118,13 @@ Maintained / Reduced / Created / Managed + [support metric or process] + [ticket
 Senior Support Specialist - SaaS Platform
 Tech Company | Feb 2022 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - Managed 80-100 support tickets daily across email, chat, and phone channels using Zendesk and Intercom for a B2B SaaS product with 6K+ active customers.
 - Maintained 96% CSAT and 91% FCR across 18 months - both above team targets of 90% and 85% respectively.
 - Identified the top 10 recurring support issues through ticket categorization analysis and worked with product team to fix 6 of them through in-app UX improvements - reducing related ticket volume by 34%.

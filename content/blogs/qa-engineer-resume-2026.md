@@ -120,6 +120,13 @@ Built / Reduced / Automated / Tested + [test framework or coverage] + [applicati
 Senior QA Automation Engineer
 SaaS Platform | Jan 2022 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - Owned test automation strategy for a B2B SaaS product with 5K+ customers, building and maintaining 700+ automated tests across UI and API layers.
 - Built a Playwright + TypeScript end-to-end automation framework that reduced regression testing from 4 days to 3 hours and ran on every pull request via [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions.
 - Reduced production defect escape rate from 14% to 4% by implementing a comprehensive shift-left testing strategy and risk-based test coverage analysis.

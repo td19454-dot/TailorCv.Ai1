@@ -134,6 +134,13 @@ HealthTech Platform | Jan 2023 - Present
 
 Each [portfolio case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) should cover:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. Problem statement - what user problem were you solving?
 2. Research - how did you understand users and the problem?
 3. Insights - what did you learn?

@@ -136,6 +136,13 @@ The biggest formatting mistake is inconsistency. Small inconsistencies signal ca
 
 Before submitting your resume, verify:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - [ ] Margins are 0.5-1 inch on all sides
 - [ ] Body font is 10-11pt (never below 10pt)
 - [ ] Line spacing is 1.0-1.15

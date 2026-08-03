@@ -137,6 +137,13 @@ The safest way to use this trend is as an optional add-on referenced from your r
 
 Three older tactics are firmly out in 2026, and none of them are close calls anymore.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 **Keyword stuffing.** Early ATS advice pushed candidates to cram keywords anywhere they'd fit, including in white text or hidden sections. Modern ATS parsing and human reviewers both catch this quickly, and it now reads as a red flag rather than a clever workaround. See [ATS keyword mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes) for what natural keyword usage looks like instead.
 
 **Objective statements.** "Seeking a challenging position that utilizes my skills and allows for growth" tells a recruiter nothing they can act on. 2026 resumes lead with a short, specific summary that states who you are and what you bring, not what you're hoping to get out of the job. See [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary).

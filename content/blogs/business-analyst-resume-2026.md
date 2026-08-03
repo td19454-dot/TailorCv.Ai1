@@ -133,6 +133,13 @@ Banking and Financial Services | Apr 2022 - Present
 
 Useful BA [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume):
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - CBAP (Certified Business Analysis Professional) - IIBA
 - CCBA (Certification of Competency in Business Analysis) - IIBA
 - PMI-PBA (Professional in Business Analysis) - PMI

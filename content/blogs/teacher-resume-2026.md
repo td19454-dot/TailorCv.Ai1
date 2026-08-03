@@ -140,6 +140,13 @@ Taught / Designed / Developed / Led + [curriculum, activity, or initiative] + [s
 English Teacher - Grades 9 to 12
 Green Valley International School | June 2021 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - Teach IB English A Language and Literature to 120 students across 4 classes, achieving a 91% pass rate on IB examinations with an average grade of 5.3 of 7.
 - Design all lesson plans, unit assessments, and culminating tasks aligned to IB learning outcomes and Theory of Knowledge integration.
 - Differentiated instruction for 8 ELL students and 4 students with IEPs, all achieving at or above grade-level proficiency by year end.

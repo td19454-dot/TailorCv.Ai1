@@ -109,6 +109,13 @@ Sourced / Filled / Reduced / Improved + [hiring activity] + [role type and volum
 Senior Technical [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes)
 High-Growth SaaS Startup | Mar 2022 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Owned full-cycle recruiting for engineering and data roles during a scale-up from 200 to 420 employees in 18 months.
 - Filled 90+ technical roles annually with an average time-to-fill of 30 days and 88% offer acceptance rate.
 - Generated 65% of hires through proactive sourcing using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Recruiter, GitHub, and SeekOut, reducing dependence on agency spend by $180K annually.

@@ -80,6 +80,13 @@ Present yourself as diligent, respectful, and genuinely interested, and you alig
 - **TOEIC:** widely used to certify English ability, valued at many Japanese firms.
 - List these clearly — they're concrete, trusted credentials in the Japanese market.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## Building Your Application
 
 - For **global/English roles**, focus on a strong Western-style resume and tailor it to each posting with the [resume optimizer](https://thetailorcv.com/solutions); many international employers in Japan use applicant tracking systems — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).

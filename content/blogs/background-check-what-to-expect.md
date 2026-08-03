@@ -39,6 +39,13 @@ Most background checks take a few days to about two weeks, depending on the dept
 
 You can smooth the process considerably:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - **Make sure your resume dates and titles are accurate.** The number-one cause of delays is a mismatch between your [resume](https://www.thetailorcv.com/modify-cv) and what a former employer's HR reports. If you rounded dates or used a slightly different title, correct it — see [should you lie on your resume](https://thetailorcv.com/blog/should-you-lie-on-your-resume).
 - **Give your references a heads-up** so they respond quickly, as the [reference check guide](https://thetailorcv.com/blog/reference-check-process-guide) explains.
 - **Gather documents in advance** — IDs, diplomas, and any certifications.

@@ -86,6 +86,13 @@ When a colleague referred you, protect that relationship explicitly — they spe
 
 The person you decline today may be your [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), client, or colleague in three years. [Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) move between [companies](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and remember how they were treated. Industries are smaller than they feel, and reputations travel through back channels you never see. A gracious decline costs you five minutes; a ghosted offer or a smug one can quietly cost you an opportunity years later. Treat every decline as an investment in a relationship you may need again — because often, you will.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 ## What Comes Next
 
 Declining one offer usually means you are accepting another — which means it is also time to [negotiate the offer you are taking](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) if you have not already, and to [give notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice) at your current [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) gracefully. Handle all three the same way — promptly, warmly, and in writing — and you close this chapter with every bridge intact.

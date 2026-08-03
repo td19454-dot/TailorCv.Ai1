@@ -129,6 +129,13 @@ IoT Device Company | Feb 2022 - Present
 - IoT device with cloud connectivity (MQTT)
 - Custom bootloader
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ### Strong Project Example
 
 BLE Environmental Sensor | STM32, Embedded C, FreeRTOS, BLE

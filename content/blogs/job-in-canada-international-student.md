@@ -121,6 +121,13 @@ Because PGWP eligibility and duration rules have changed and depend on your prog
 
 With (or while applying for) your PGWP, treat the graduate job search like the newcomer search — because in the labour market, you largely are one:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 1. **Target your field**, using the Canadian experience and references you built during studies.
 2. **Tailor every application** — resume and cover letter — to each posting. See the [Canadian cover letter guide](https://thetailorcv.com/blog/canadian-cover-letter-guide).
 3. **Leverage co-op employers** — many hire their co-op students into full-time roles.

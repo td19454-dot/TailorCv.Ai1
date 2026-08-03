@@ -36,6 +36,13 @@ Never list someone as a reference without permission. Reach out ahead of time, c
 
 Once someone agrees, set them up to give the best possible reference. Send them:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 - **The role you're applying for** and a link to the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
 - **A few strengths** you'd love them to highlight, ideally aligned to the role's [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 - **A copy of your current [resume](https://www.thetailorcv.com/modify-cv)** so their memory is fresh and their answers align with your story.

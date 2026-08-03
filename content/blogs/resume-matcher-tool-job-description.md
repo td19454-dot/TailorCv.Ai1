@@ -123,6 +123,13 @@ This loop usually takes two or three passes, not one. If the score barely moves 
 
 There are two very different ways to respond to a missing-keyword list, and only one of them works past the resume stage.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 **Reframing real experience (honest, and effective).** You did the work, but described it vaguely. "Helped with reports" becomes "Built weekly SQL-driven reports used by the sales team to track pipeline." Nothing here is invented - it is the same work, described precisely, using the employer's vocabulary.
 
 **Claiming skills you do not have (dishonest, and it backfires).** Adding "Python" or "stakeholder management" to your skills list because the posting mentioned it, with no experience behind it, might bump your score. It will not survive a follow-up question in an interview, a technical screen, or your first week on the job. Recruiters and hiring managers routinely ask candidates to walk through the exact bullet that raised a flag - if there is nothing real underneath it, that conversation goes badly fast, and it damages trust for the rest of the interview.

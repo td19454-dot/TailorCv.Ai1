@@ -120,6 +120,13 @@ Whatever the medium, the same principle applies: tailored, relevant, and easy to
 
 **Do:**
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - Send a concise 1–2 page resume for any company role, whatever the posting calls it.
 - Tailor it to each specific job.
 - Keep formatting clean and [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder).

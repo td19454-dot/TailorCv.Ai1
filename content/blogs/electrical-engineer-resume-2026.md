@@ -135,6 +135,13 @@ EV Startup | May 2022 - Present
 
 Strong project ideas:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - DC-DC power converter design and simulation
 - Wireless sensor node with BLE or Wi-Fi
 - Motor speed control with PID

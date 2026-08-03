@@ -117,6 +117,13 @@ Lead with the strong verb, land the number early, and end with the "how." The [a
 - **Confidential leaks.** Do not publish revenue figures your [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) treats as private. Convert to percentages or multiples.
 - **Context-free numbers.** "$2M" means nothing without a frame. "$2M annual budget across four teams" tells the story.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## How This Interacts With the ATS
 
 Numbers do double duty. To a human, they are proof. To an [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works), they sit inside real, keyword-rich bullets that the parser reads as genuine [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) rather than a bare [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) list. A bullet like "Automated invoice reconciliation in Python, cutting processing time 40%" carries the [keyword](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) ("Python"), the context, and the metric all at once — which is exactly the kind of line that scores well and survives the scan.

@@ -128,6 +128,13 @@ Navigating the job market as a new graduate can be daunting. Here are some commo
 
 A well-crafted cover letter can set you apart from other candidates. Follow these steps to create a powerful cover letter:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 1. **Research the Company**: Before you start writing, learn about the company’s mission, values, and culture. This will help you tailor your letter effectively.
 
 2. **Use a Strong Opening**: Start with a compelling introduction that captures attention. Mention the position you are applying for and a brief summary of why you are a good fit.

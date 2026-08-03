@@ -102,6 +102,13 @@ Notice it is three sentences, ends on the future, and never apologizes. Rehearse
 | Dated "Career Break" entry | An honest, accounted-for period | Neutral to positive |
 | Explain + show upskilling | A candidate who stayed sharp | Often a net positive |
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 The pattern is clear: honesty plus framing wins, concealment loses.
 
 ## Update Your LinkedIn to Match

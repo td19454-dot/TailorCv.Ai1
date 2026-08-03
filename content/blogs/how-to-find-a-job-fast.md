@@ -92,6 +92,13 @@ That last diagnostic is the most valuable part of the system: it tells you which
 
 **No experience:** lean hard on [projects](/blog/fresher-resume-projects-that-get-interviews), a [portfolio](/blog/how-to-build-professional-portfolio), and referrals — [getting a job with no experience](/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026) and [first tech job](/blog/how-to-get-first-tech-job) cover the route, and [ATS scores for freshers](/blog/ats-score-for-freshers) set expectations.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 **Career change:** speed comes from translation, not from starting over — [career-change resumes](/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026), [moving into tech](/blog/career-change-to-tech-guide), [non-tech to data](/blog/career-change-from-non-tech-to-data-analyst), and a [career-change portfolio](/blog/career-change-portfolio).
 
 **A gap in your history:** address it briefly and move on — [explaining an employment gap](/blog/how-to-explain-employment-gap-on-resume-2026).
