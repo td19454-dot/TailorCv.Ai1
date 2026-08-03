@@ -8333,7 +8333,9 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
         "resume" in hay or "cv" in hay or "ats" in hay
         or "applicant tracking" in hay or "tailor" in hay
     )
-    off_topic = ("cover letter", "cover-letter", "interview", "extension", "chrome", "linkedin")
+    # Extension posts DO get a template: the extension's output is a tailored
+    # resume, so showing what that resume can look like is on-topic.
+    off_topic = ("cover letter", "cover-letter", "interview", "linkedin")
     if not is_resume_topic or any(t in subject for t in off_topic):
         return None
 
@@ -8355,14 +8357,61 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
         if item not in ordered:
             ordered.append(item)
 
+    # Topic-matched heading, so an extension post and a keywords post do not
+    # open the same block with the same generic line.
+    if "extension" in subject or "chrome" in subject:
+        title, text = ("What the tailored resume looks like",
+                       "This is the format the extension exports to — ATS-tested, so the match score you saw survives the parser.")
+    elif "keyword" in subject:
+        title, text = ("Where those keywords actually go",
+                       "A layout with a real skills section gives the parser somewhere clean to find every term you just added.")
+    elif "format" in subject or "parse" in subject:
+        title, text = ("A layout that parses cleanly",
+                       "Single column, standard headings, no text boxes — the formatting rules in this guide, already applied.")
+    elif "fresher" in subject or "no experience" in subject or "student" in subject or "intern" in subject:
+        title, text = ("A layout that works with a short history",
+                       "Leads with skills and projects instead of years of experience you do not have yet.")
+    elif "tailor" in subject:
+        title, text = ("Start from a template that tailors well",
+                       "Clean structure means swapping keywords per job takes minutes, not a re-layout every time.")
+    else:
+        title, text = ("Templates that keep this structure intact",
+                       "This template is ATS-tested — start from it and the formatting rules in this guide are already handled.")
+
     return {
         "kind": "resume",
-        "title": "Templates that keep this structure intact",
-        "text": "This template is ATS-tested — start from it and the formatting rules in this guide are already handled.",
+        "title": title,
+        "text": text,
         "cta_url": "/templates",
         "cta_label": "Browse all templates",
         "cards": [{"image": img, "name": name, "demo": None} for img, name in ordered[:limit]],
     }
+
+
+def blog_ats_widget_copy(post) -> dict:
+    """Topic-matched heading for the inline scanner, so an extension post and
+    a keywords post do not open with the same generic line."""
+    subject = f"{post.slug} {post.title}".lower()
+    if "extension" in subject or "chrome" in subject:
+        return {"title": "Check your match before you install anything",
+                "text": "Same score the extension shows on a job page - run it here on any resume and job description."}
+    if "keyword" in subject:
+        return {"title": "See which keywords you are missing",
+                "text": "Scan your resume against the posting and get the exact terms it did not find."}
+    if "tailor" in subject:
+        return {"title": "See what tailoring is worth on your resume",
+                "text": "Score your current resume against a real job description before you change a word."}
+    if "format" in subject or "parse" in subject or "template" in subject:
+        return {"title": "Does your formatting survive the parser?",
+                "text": "Upload your resume and see what an ATS actually reads back."}
+    if "fresher" in subject or "no experience" in subject or "student" in subject or "intern" in subject:
+        return {"title": "Find out where a fresher resume stands",
+                "text": "Score yours against a real posting - no account, no cost."}
+    if "low" in subject or "reject" in subject or "fail" in subject:
+        return {"title": "Find out why your score is low",
+                "text": "Scan your resume against the job description and see exactly which checks fail."}
+    return {"title": "What is your resume scoring right now?",
+            "text": "Scan it against a job description and get your ATS match score in about a minute."}
 
 
 def blog_shows_ats_widget(post) -> bool:
@@ -8374,9 +8423,17 @@ def blog_shows_ats_widget(post) -> bool:
     about cover letters, portfolios or interviews are excluded so the
     widget never feels bolted on."""
     hay = f"{post.category} {post.slug} {post.title} {' '.join(post.tags)}".lower()
-    off_topic = ("cover letter", "cover-letter", "portfolio", "interview", "extension", "chrome")
-    if any(term in f"{post.slug} {post.title}".lower() for term in off_topic):
+    subject = f"{post.slug} {post.title}".lower()
+    # Extension posts are about checking your ATS match on a job posting, so
+    # letting the reader actually run that check is the most relevant thing
+    # on the page - not an interruption.
+    off_topic = ("cover letter", "cover-letter", "portfolio", "interview")
+    if any(term in subject for term in off_topic):
         return False
+    # The extension's headline feature is the live match score, so every
+    # extension post gets the scanner even when the copy never says "ATS".
+    if "extension" in subject or "chrome" in subject:
+        return True
     return "ats" in hay or "applicant tracking" in hay or "resume score" in hay
 
 
@@ -8413,6 +8470,7 @@ async def blog_post_page(request: Request, slug: str):
             "related_resume_example": _BLOG_TO_ROLE.get(post.slug),
             "hero_cta": blog_cta(post, is_logged_in=bool(request.session.get("user_id"))),
             "show_ats_widget": blog_shows_ats_widget(post),
+            "ats_widget_copy": blog_ats_widget_copy(post),
             "template_showcase": blog_template_showcase(post),
         },
     )
