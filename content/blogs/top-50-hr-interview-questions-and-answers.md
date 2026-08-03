@@ -30,6 +30,13 @@ This guide walks through the top 50 HR [interview questions](https://thetailorcv
 
 HR interviewers reuse the same core question set across industries and levels because the underlying signals never change: communication, self-awareness, motivation, and reliability. Once you understand the *category* a question belongs to, you can answer almost any variation of it.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
+
+
 That is also why [generic answers cost interviews](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews) — the questions are predictable, but a good answer is not generic. It should be built from your actual resume, not a template. If your resume itself is vague, your answers will be too, so it is worth [checking your ATS score and tailoring your resume](https://thetailorcv.com/solutions) before you start rehearsing.
 
 ---
@@ -129,9 +136,6 @@ For "why are you leaving," always frame it forward — toward what you're moving
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
 
 ## Category 6: Team, Culture & Collaboration
 

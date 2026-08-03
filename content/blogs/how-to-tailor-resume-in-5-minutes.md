@@ -115,13 +115,17 @@ This takes another 60 seconds and removes guesswork. See [how to check your ATS 
 
 ---
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Once the content is right, the editor is where you make it fit - font size, spacing, accent colour and template, with a live page counter.
 
 ## What NOT to Change Every Time
 
 You do not need to rewrite:
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Once the content is right, the editor is where you make it fit - font size, spacing, accent colour and template, with a live page counter.
+
 
 - Your work experience bullets (unless you want to reorder them)
 - Your [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) section

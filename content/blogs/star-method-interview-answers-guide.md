@@ -87,6 +87,13 @@ For more on framing failures, see [how to answer greatest weakness](https://thet
 4. **Practice with AI** - run [mock interview sessions](https://thetailorcv.com/blog/how-to-practice-interviews-at-home) until answers feel natural, not memorized.
 5. **Watch your delivery** - read [interview body language tips](https://thetailorcv.com/blog/interview-body-language-communication-tips) and manage [interview nerves](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips).
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
+
 ---
 
 ## Common STAR Mistakes to Avoid
@@ -113,9 +120,6 @@ Avoid these and more in the [20 common interview mistakes guide](https://thetail
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Crafting Compelling STAR Stories: A Step-by-Step Approach
 

@@ -45,6 +45,13 @@ This tone applies whether you're writing a separate cover letter or the *shibō 
 
 For global and English-language roles, use a clean, professional structure:
 
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
+
+
 ### 1. Header and Greeting
 
 Your contact details, the date, and the company details, then a polite greeting (address a named person where possible; otherwise a respectful general greeting).
@@ -86,9 +93,6 @@ Never send a generic letter. For each application:
 
 A tailored letter shows exactly the diligence and sincerity Japanese employers reward.
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
 
 ## Feature Your Language Credentials
 

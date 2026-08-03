@@ -11,3 +11,15 @@ out, never moves out.
 
 Formats: PNG/JPG/WebP all fine. Converted at quality 95, max 1800px
 wide, which keeps UI text sharp in the ~800px article column.
+
+RESUME TEMPLATE RE-EXPORTS (wanted)
+-----------------------------------
+The 22 template previews (static/pic1.webp ... pic22.webp) are only
+487-649px wide, so they blur when shown large in a blog post. If you
+re-export them at ~1200-1600px wide and drop them here named
+pic1.png, pic2.png ... (matching the existing numbers), Claude will
+convert them at quality 95 and swap them in - then the preview can be
+shown big AND stay sharp.
+
+Until then the CSS caps each preview at its own natural width, so it is
+smaller but never blurry.

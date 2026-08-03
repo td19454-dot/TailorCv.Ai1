@@ -97,6 +97,13 @@ Panelists may jump in with follow-ups. Pause, listen, and respond directly. Mana
 - Where do you see yourself in 5 years?
 - Do you have questions for us?
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
+
 For HR-specific versions, see [HR round interview questions](https://thetailorcv.com/blog/hr-round-interview-questions-answers). For manager-specific depth, see [manager round guide](https://thetailorcv.com/blog/manager-interview-round-questions-guide).
 
 ---
@@ -122,9 +129,6 @@ If you advance to offer stage, read [salary negotiation guide](https://thetailor
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Common Mistakes to Avoid in Panel Interviews
 

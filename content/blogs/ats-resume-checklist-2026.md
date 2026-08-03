@@ -18,6 +18,13 @@ If you want the background first, read the [ATS score guide](https://thetailorcv
 
 Formatting is where most [resumes](https://www.thetailorcv.com/modify-cv) silently break. Confirm each of these:
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
+
+
 - [ ] **Single-column layout** — no tables or text boxes for key content. Multi-column and table-based layouts are the number-one parsing killer, as covered in [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
 - [ ] **Standard section headings** — "Experience," "Education," "Skills," not creative labels.
 - [ ] **A safe, [readable font](https://thetailorcv.com/blog/resume-fonts-guide)** at 10.5–12pt.
@@ -56,9 +63,6 @@ Keyword alignment is the single biggest driver of your [ATS](https://thetailorcv
 - [ ] **Portfolio link** included if relevant — see [add a portfolio link to your resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume).
 - [ ] **[File name](https://thetailorcv.com/blog/resume-file-format-guide)** is professional (e.g., `Firstname-Lastname-Resume.pdf`).
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
 
 ## Length and structure checklist
 

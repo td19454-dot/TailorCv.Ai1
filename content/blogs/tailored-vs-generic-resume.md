@@ -115,14 +115,18 @@ Read [how to tailor a resume in 5 minutes](https://thetailorcv.com/blog/how-to-t
 
 ---
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Once the content is right, the editor is where you make it fit - font size, spacing, accent colour and template, with a live page counter.
 
 ## The Recruiter Experience: Generic vs Tailored
 
 **Reading a [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume):**
 > "Another marketing resume. Nothing specifically relevant to our growth role. Vague. Move on."
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Once the content is right, the editor is where you make it fit - font size, spacing, accent colour and template, with a live page counter.
+
 
 **Reading a [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume):**
 > "This person has B2B SaaS demand gen experience, used HubSpot and Google Ads, and has the MQL-to-SQL conversion metric we care about. This one goes in the yes pile."

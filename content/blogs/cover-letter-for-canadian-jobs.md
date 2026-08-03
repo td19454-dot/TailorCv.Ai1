@@ -114,13 +114,17 @@ Creating a standout cover letter requires careful attention to detail. Here are 
 - **Overly Long Letters**: Stick to the point; hiring managers appreciate brevity. A concise cover letter is more likely to be read in full.
 - **Lack of Specific Examples**: Failing to provide concrete examples of your achievements can weaken your application. Use metrics and outcomes to demonstrate your impact.
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
 
 ## Enhancing Your Cover Letter with Data Points
 
 Incorporating relevant data points can bolster your cover letter. Here are some statistics to consider:
+
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
+
 
 - **Hiring Trends**: According to a recent survey, 70% of employers consider a well-crafted cover letter an essential part of the application process.
 - **Impact of Personalization**: Research shows that personalized cover letters can increase your chances of landing an interview by 50%.

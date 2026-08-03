@@ -78,6 +78,13 @@ The skill here is not inventing experience you do not have - it is *reframing* t
 
 These questions come up in almost every fresher interview in some form. Below are realistic example answers built from typical student material - use them as a structure to adapt, not a script to memorize word for word.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
+
 ### 1. Tell me about yourself
 
 Keep it under two minutes. Focus on education, one or two standout projects, and what you are looking for next - not your entire life story. [Full guide](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself).
@@ -139,9 +146,6 @@ For tech roles, add [coding interview prep](https://thetailorcv.com/blog/coding-
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Nerves Are Normal - Here Is How to Actually Manage Them
 

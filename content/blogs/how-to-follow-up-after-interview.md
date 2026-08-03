@@ -121,6 +121,13 @@ Do not be defensive or over-explain. One short paragraph is enough.
 
 They said they would respond in one week. It has been 10 days. What do you do?
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
+
+
 One [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) is appropriate. Send it 2-3 business days after the stated timeline.
 
 "Hi [Name], I wanted to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) on our conversation from [date]. I'm still very interested in the [Role] and would welcome any update on the timeline. I'm happy to provide any additional information if helpful. Thank you for your time."
@@ -133,9 +140,6 @@ After two [follow-up](https://thetailorcv.com/blog/recruiter-ghosting-after-inte
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
 
 ## What Not to Do
 

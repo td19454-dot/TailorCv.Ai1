@@ -30,9 +30,6 @@ This is where most candidates go wrong. If they say "a few hours," respect it. O
 
 Reviewers care about *how* you work as much as the final artifact. Include a short note — a README, a summary section, or a few comments — explaining your assumptions, the trade-offs you made, and what you'd do next with more time. This narrative often matters more than perfection, because it shows judgment and self-awareness. It's the same principle as [quantifying achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) on your [resume](https://www.thetailorcv.com/modify-cv): don't just do the work, make the value visible.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
 
 ## Polish the presentation
 
@@ -41,6 +38,13 @@ Clean formatting, a clear structure, and zero typos make your work easy to evalu
 ## Prepare for the follow-up discussion
 
 Many assignments lead to a review conversation where you walk through your solution. Be ready to defend your choices, explain what you'd improve, and respond to challenges calmly — this is often where the offer is decided. Rehearse talking through your work out loud with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and review the [technical interview guide](https://thetailorcv.com/blog/technical-interview-preparation-guide) if it's an engineering role or the [case interview guide](https://thetailorcv.com/blog/case-interview-preparation-guide-2026) for consulting-style tasks. Product designers should also review the [product designer resume guide](https://thetailorcv.com/blog/product-designer-resume-2026), since design take-homes are common.
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
+
 
 ## When a take-home feels unreasonable
 

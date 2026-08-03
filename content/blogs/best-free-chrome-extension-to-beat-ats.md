@@ -16,11 +16,25 @@ If you are searching for a free Chrome extension to beat the ATS, you already un
 
 First, a reframe, because the phrase is slightly misleading. You do not beat an [applicant tracking system](/blog/ats-resume-checker-how-it-works) by tricking it — the old tricks (white keyword text, stuffing) get you rejected by the human on the other side, and modern systems flag them. You beat it by genuinely matching the job.
 
+### The same check running on Greenhouse
+
+![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+The same check on Greenhouse, one of the ATS platforms you are actually applying through. A 67% match tells you where you stand before you submit - and, more usefully, that there is room to close the gap first.
+
+
 Here is the mechanism. Your resume is parsed into structured data and matched, by exact language, against the job description. If the posting asks for "stakeholder management" and your resume says "worked with teams", [the filter does not connect them](/blog/how-to-match-resume-keywords-to-job-description) — it matches language, not meaning — and you are dropped. So "beating the ATS" means two honest things: your resume must [parse cleanly](/blog/ats-resume-parser-friendly-format), and it must [carry the posting's actual language](/blog/how-to-pass-ats-in-2026) where your real experience supports it. That is it. A good extension helps with exactly those two, and our [ATS score guide](/blog/ats-score-guide) covers the fundamentals.
 
 ## What a Genuinely Useful Extension Does
 
 Not all "ATS extensions" do the same thing. The useful ones cover some or all of four jobs.
+
+### What it looks like on a LinkedIn job post
+
+![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
+
 
 **1. Scores your match against the posting.** It reads the job description off the page and shows how well your resume matches — a [skill-match score](/ats-analysis) — plus the keywords you are missing. This is the diagnosis, and it should be [free and unlimited](/blog/how-to-check-ats-score-free), because a tool that rations the diagnostic trains you out of checking.
 
@@ -30,9 +44,6 @@ Not all "ATS extensions" do the same thing. The useful ones cover some or all of
 
 **4. Works where you apply.** [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed), [Naukri](/blog/how-to-tailor-resume-on-naukri), and the [ATS boards](/blog/tailor-resume-on-greenhouse-lever-workday) behind company career pages — ideally with a fallback for any site.
 
-![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-The same check on Greenhouse, one of the ATS platforms you are actually applying through. A 67% match tells you where you stand before you submit - and, more usefully, that there is room to close the gap first.
 
 ## The Catch With "Free"
 
@@ -68,9 +79,6 @@ Search "beat the ATS" and you will find a lot of bad advice that actively hurts 
 
 A genuinely useful free extension is built to avoid all four myths: it helps you match honestly, keep the format clean, and tailor per job. If a tool encourages any of these tricks, uninstall it.
 
-![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
 
 ## After You Get Past the Filter
 

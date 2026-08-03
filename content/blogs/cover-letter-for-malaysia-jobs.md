@@ -160,9 +160,6 @@ If you are applying from abroad or as an expatriate, your cover letter carries e
 
 Keep it confident and concise, and pair it with the guidance in [getting a job in Malaysia as a foreigner](https://thetailorcv.com/blog/job-in-malaysia-as-foreigner).
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
 
 ## Complete Example: Internship Application
 
@@ -237,6 +234,13 @@ If your written Bahasa Malaysia isn't strong, either apply in English (acceptabl
 ## How to Send Your Cover Letter
 
 The mechanics matter more than people think:
+
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
+
 
 - **When applying by email**, you have a choice: put a short version in the email body and attach the full letter, or make the email body itself your cover letter. Either works — just don't leave the email blank with a bare attachment. Use a clear subject line ("Application for Digital Marketing Executive – Nur Aisyah").
 - **When a portal has a cover-letter field**, paste a clean, well-formatted version; check that line breaks survive.

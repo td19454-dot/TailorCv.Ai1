@@ -93,9 +93,6 @@ Cybersecurity candidates who documented CTF writeups or personal security resear
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
 
 ## What Every Strong Portfolio Has in Common
 
@@ -170,6 +167,13 @@ Use this checklist to ensure your portfolio is comprehensive and effectively sho
 ## Scenarios: How to Use Your Portfolio in Interviews
 
 Understanding how to effectively present your portfolio during an interview can greatly enhance your chances of success. Here are a few scenarios to consider:
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
+
 
 1. **Scenario 1: The Portfolio Walkthrough**  
    When asked about your experience, take the opportunity to guide the interviewer through your portfolio. Highlight specific projects that align with the role. Use your narrative to engage them and demonstrate your thought process.

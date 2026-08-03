@@ -38,9 +38,6 @@ This structure signals seniority and prevents the panic of an unplanned start. I
 
 A working brute-force solution beats an elegant one you never finish. Get something correct on the board first, confirm it works on your example, then discuss how you'd improve it — better time complexity, cleaner structure, edge-case handling. Interviewers would much rather see a complete simple solution plus a thoughtful optimization discussion than a half-finished clever one. This "make it work, then make it better" instinct is exactly what strong engineers show, and it's worth reflecting on your [resume](https://www.thetailorcv.com/modify-cv) too — see the relevant [developer resume guides](https://thetailorcv.com/blog/full-stack-developer-resume-2026).
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Manage the space, the time, and your nerves
 
@@ -53,6 +50,13 @@ Sometimes you'll get a problem you can't immediately crack. Don't pretend — in
 ## Practice the format, not just the content
 
 Whiteboarding is a performance skill, and you get better by rehearsing it out loud, ideally in front of someone or a recording. Practice narrating your thinking, managing time, and staying calm — the content knowledge you already have. Run repeated sessions with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and for engineering roles prep fundamentals with the [coding interview guide](https://thetailorcv.com/blog/coding-interview-preparation-guide) and [system design interview guide](https://thetailorcv.com/blog/system-design-interview-guide).
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 
 ## Whiteboard interview checklist
 

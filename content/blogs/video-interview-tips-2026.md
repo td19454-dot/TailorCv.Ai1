@@ -48,6 +48,13 @@ You can keep a small sticky note or a short doc just off-camera with your three 
 
 [Answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) that feel clear in your head often ramble out loud. Run a few [mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) reps on camera so you hear your own pacing and see your own body language before it counts.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
+
 ## The 30-Minute Pre-Interview Checklist
 
 Run this in the half hour before the call so nothing technical surprises you.
@@ -65,9 +72,6 @@ Run this in the half hour before the call so nothing technical surprises you.
 
 Video flattens your presence, so you have to [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a little more energy than feels natural. Sit up straight, keep your shoulders back, and let your hands gesture within frame occasionally — stillness reads as stiffness on camera. Nod while the interviewer speaks to show you are listening, since the usual small verbal cues get muddied by audio lag. And smile genuinely at the start and end; the first and last few seconds shape the interviewer's overall impression more than any single [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
 
 ## Your Answers Still Matter Most
 

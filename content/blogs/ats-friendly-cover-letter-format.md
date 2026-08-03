@@ -26,6 +26,13 @@ An [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) [cov
 
 Use this format:
 
+### A cover letter format that parses cleanly
+
+![A classic ATS-friendly cover letter template: single column, standard headings, no graphics or columns](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly: one column, standard headings, real text rather than a graphic. Everything the parser needs is where it expects to find it.
+
+
 1. Greeting
 2. Target role and reason for applying
 3. Relevant experience proof
@@ -158,9 +165,6 @@ Use the [AI cover letter generator](/cover-letter) after checking your resume wi
 
 ---
 
-![A classic ATS-friendly cover letter template: single column, standard headings, no graphics or columns](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
-
-A format like this parses cleanly: one column, standard headings, real text rather than a graphic. Everything the parser needs is where it expects to find it.
 
 ## Frequently Asked Questions
 

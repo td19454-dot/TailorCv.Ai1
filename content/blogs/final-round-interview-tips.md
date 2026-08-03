@@ -41,6 +41,13 @@ By this stage, the company likes you. Your job is to confirm their decision and 
 
 ## How to Prepare for the Final Round
 
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ### Deepen Your Company Research
 
 You should now know the company even better than in earlier rounds. Understand their strategy, challenges, competitors, and recent developments. Read the [company research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview).
@@ -116,9 +123,6 @@ A powerful closing question: "Is there anything about my background or our conve
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## After the Final Round
 

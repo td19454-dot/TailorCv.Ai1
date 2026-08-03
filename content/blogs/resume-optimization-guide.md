@@ -48,6 +48,13 @@ Once you understand how ATS systems work, resume optimization becomes much easie
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) resume optimization is the process of improving your resume so it performs better in Applicant Tracking Systems ([ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)).
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+
+
 An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scans resumes to determine whether candidates match a job description.
 
 The software analyzes:
@@ -376,9 +383,6 @@ That means relevance matters immediately.
 
 ---
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
 
 ## How AI Resume Optimization Tools Help
 

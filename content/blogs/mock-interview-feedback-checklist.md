@@ -69,15 +69,19 @@ If technical answers are confusing, explain the problem before the tool.
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) improvement loop because small wording choices can change how recruiters and ATS systems understand your fit.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
+
+
 Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your [resume](https://www.thetailorcv.com/templates), LinkedIn profile, portfolio, [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
 
 ## Practical Upgrade Checklist
 

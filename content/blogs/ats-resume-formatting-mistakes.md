@@ -120,9 +120,6 @@ For the complete list of recommended sections and order, see [how to make your r
 
 ---
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
 
 ## Mistake 8: Submitting a Scanned or Image-Based PDF
 
@@ -155,6 +152,13 @@ This is easy to overlook, but some [ATS](https://thetailorcv.com/blog/what-is-an
 ---
 
 ## How to Test Your Resume for Formatting Issues
+
+
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
 
 ### The Copy-Paste Test
 

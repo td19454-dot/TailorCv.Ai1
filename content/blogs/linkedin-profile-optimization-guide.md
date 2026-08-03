@@ -148,9 +148,6 @@ A strong recommendation is specific: names a project, describes your contributio
 
 ---
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
 
 ## Open to Work Setting
 
@@ -171,6 +168,13 @@ Choose **"Recruiters only"** to keep it invisible to your current employer. Choo
 ## LinkedIn Keyword Optimization
 
 [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) uses a keyword-matching algorithm for recruiter search. The fields that matter most for keyword ranking:
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+
 
 1. Headline - highest weight
 2. About section

@@ -138,9 +138,6 @@ Solid colors - navy, grey, black, pastel tones - work best on video.
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
 
 ## If Technical Problems Happen
 
@@ -221,6 +218,13 @@ Virtual interviews are a skill. Candidates who nail the technical setup, maintai
 Start with a strong resume - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it. Then prepare your answers with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and practice delivery using the [free AI mock interview tool](https://thetailorcv.com/mock-interview). Read the complete [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) for all interview stages.
 
 ## Frequently Asked Questions
+
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
 
 ### What are the key technical aspects to check before a virtual interview?  
 Before your virtual interview, ensure your camera is positioned at eye level or slightly above for a professional appearance. Test your microphone and speakers to avoid audio issues during the interview, and check your internet connection for stability. For additional preparation, consider using the [free AI mock interview](https://www.thetailorcv.com/mock-interview) tool to practice your delivery.

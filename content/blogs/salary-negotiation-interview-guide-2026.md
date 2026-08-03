@@ -44,6 +44,13 @@ Do not negotiate before you have a written offer unless you are clarifying a ran
 
 Before negotiating, know your number:
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
+
 1. **Check Salary Data:** Use platforms like Glassdoor, Levels.fyi, and Payscale for your role and location.
 2. **Talk to Peers:** Engage with colleagues or professionals in similar roles to gauge current market conditions.
 3. **Factor in Total Compensation:** Consider base salary, bonuses, equity, and benefits, including remote stipends.
@@ -143,9 +150,6 @@ A marketing professional had two offers. One was for $80,000 with minimal benefi
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
 
 ## Step-by-Step Salary Negotiation Checklist
 

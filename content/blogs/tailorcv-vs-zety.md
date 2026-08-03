@@ -38,6 +38,13 @@ We build TailorCV, so this is not a neutral review. But that fact is not our opi
 
 Let us deal with this properly, because it is the single most common complaint about Zety and it catches people at the worst possible moment.
 
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
+
 Zety's free plan lets you use the builder and all the templates. You invest real time — an hour, maybe two — getting your resume right. Then you click download, and you discover that free means **plain text only**. Every bit of the formatting you just spent an hour on is gone. The template you chose is irrelevant. What you get is a wall of unformatted text you could have written in Notepad.
 
 To get the PDF or Word file — the thing you actually came for — you pay.
@@ -107,9 +114,6 @@ But "ATS-friendly formatting" and "ATS match score" are completely different thi
 
 Zety solves the first problem. It does not touch the second. Ours does both — the score, the missing keywords, and the rewrite. Our [ATS score guide](/blog/ats-score-guide) explains the difference properly, and [how to make your resume ATS-friendly](/blog/how-to-make-resume-ats-friendly) covers the formatting side.
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 ## Round 5: The Chrome Extension
 

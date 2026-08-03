@@ -39,6 +39,13 @@ Keep that second point in mind. It matters more than anything else in this artic
 
 Ranked roughly by how often they showed up and how much they tended to drag the score down, four categories accounted for the overwhelming majority of low-scoring resumes:
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
+
+
 1. **Missing keywords** - the resume simply does not contain the language the job description uses.
 2. **Formatting the ATS cannot parse** - the content exists, but the system cannot read it correctly.
 3. **Generic, untailored resumes** - the resume was clearly written once and sent everywhere.
@@ -108,9 +115,6 @@ This is also where missing keywords and missing metrics compound each other. A b
 - If you genuinely do not have a hard number, use scope instead ("supported a 12-person team across three markets") rather than leaving the sentence generic.
 - See role-specific example bullet points in the [resume examples library](https://thetailorcv.com/resume-examples) for a sense of how much detail is appropriate.
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
 
 ## Which fix moves the score the most
 

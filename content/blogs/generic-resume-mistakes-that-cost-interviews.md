@@ -90,9 +90,6 @@ Two-column layouts, text boxes, tables for section content, icons, graphics, and
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Mistake 7 - No Numbers Anywhere in the Resume
 
@@ -135,6 +132,13 @@ See [how to check your ATS score for free](https://thetailorcv.com/blog/how-to-c
 ---
 
 ## Frequently Asked Questions
+
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ### How do I know if my resume is generic?
 

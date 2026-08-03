@@ -26,6 +26,13 @@ By the second round, the [company](https://thetailorcv.com/blog/how-to-use-linke
 **"Walk me through how you'd approach [a real problem the team faces]."**
 They want your thinking, not a perfect [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Talk through your reasoning out loud, state your assumptions, and ask clarifying [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) the way you would on the job.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
+
+
 **"Tell me about a time you disagreed with a [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) or teammate."**
 Use a real example. Show that you can hold a view, listen, and land on what is best for the work — not that you always win or always fold.
 
@@ -80,9 +87,6 @@ The gap between the first and second [interview](https://thetailorcv.com/blog/ai
 
 Second rounds often introduce more senior people, and each interviewer is evaluating something different. The engineer probes depth; the [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) probes collaboration and reliability; the skip-level or executive probes judgment and fit with the bigger picture. Tailor your emphasis to who is in front of you: go technical with the engineer, talk teamwork with the [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and think out loud about trade-offs and impact with leadership. Recognizing what each person is really assessing lets you give the [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) they are actually looking for.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
 
 ## Using the STAR Method in Second Rounds
 

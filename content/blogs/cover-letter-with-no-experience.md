@@ -42,6 +42,13 @@ When your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) is light on
 > Sincerely,
 > [Your Name]
 
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
+
+
 ## Use Transferable Experience
 
 Part-time jobs count. Retail teaches customer handling and composure under pressure; tutoring teaches communication; a sports team teaches discipline and collaboration. Frame these as evidence of the traits the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) needs, tied to a concrete moment.
@@ -76,9 +83,6 @@ The specific moment proves the trait far more convincingly than the adjective, a
 - **Making it too long.** Half a page, three short paragraphs. Brevity keeps your best points visible.
 - **Focusing on what you want to get** instead of what you bring. Even early-career, you bring drive, fresh [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026), and a habit of learning by building.
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
 
 ## Tailor It to Each Role
 

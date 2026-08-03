@@ -87,6 +87,13 @@ If you apply to more than one role at a Lever-powered company, recruiters may se
 5. Simplify your resume formatting for clean parsing.
 6. Check your [ATS match score](https://thetailorcv.com/blog/ats-score-guide) before applying.
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
+
 ---
 
 ## How TailorCV Helps With Lever Applications
@@ -109,9 +116,6 @@ Paste the Lever job posting into [TailorCV's resume optimizer](/solutions) to in
 
 6. **Proofread and Optimize**: Before submitting, proofread your resume for spelling and grammatical errors. Use an ATS checker to ensure your resume is optimized for Lever’s system.
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
 
 ## Common Mistakes to Avoid When Applying to Lever
 

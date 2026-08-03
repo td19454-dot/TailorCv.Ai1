@@ -24,6 +24,13 @@ So the question for each tool is: **does this do something on every job, or just
 
 This is the one that changes outcomes, not just convenience, so it goes first.
 
+### What it looks like on a LinkedIn job post
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+This is what "highest-leverage" looks like on a real posting. The extension reads the job off the page you are already on, scores your resume against it (33% here - worth knowing before you apply), and lets you tailor or write the cover letter without leaving LinkedIn.
+
+
 The single biggest reason applications fail is that the resume was not tailored to the posting. When you apply through a portal, software [parses your resume](/blog/ats-resume-checker-how-it-works) and matches it — by exact language — against the job description. A generic resume that says "worked with clients and teams" simply does not match a posting that asks for "stakeholder management", even though a human would call them the same thing. Our [tailored vs generic resume](/blog/tailored-vs-generic-resume) piece shows what that gap costs, and [how to stop sounding generic](/blog/how-to-stop-sounding-generic-on-resume) covers the fix. The whole game is [matching your resume's keywords to the job description](/blog/how-to-match-resume-keywords-to-job-description) so you [pass the ATS in 2026](/blog/how-to-pass-ats-in-2026).
 
 The problem is that tailoring by hand is miserable. Open the resume, duplicate it, rewrite the bullets, re-export, rename the file — ten minutes a job, so nobody does it past week two. And it is easy to do badly: stuffing keywords in without context is one of the most common [ATS keyword mistakes](/blog/ats-keyword-mistakes), and it reads as obviously robotic to the human who eventually sees it. Good tailoring keeps [your own voice](/blog/ai-resume-tailoring-human-voice) while carrying the posting's language, [quantifying your achievements](/blog/how-to-quantify-achievements-on-resume) rather than padding — which is harder than it sounds at 11pm. It also has to survive the parser, so [ATS formatting mistakes](/blog/ats-resume-formatting-mistakes) will sink even well-written bullets. If you have never done it, [how to tailor a resume for every job](/blog/how-to-tailor-resume-for-every-job) walks through the manual version, and [doing it in five minutes](/blog/how-to-tailor-resume-in-5-minutes) is the faster route.
@@ -36,13 +43,17 @@ Our bias, stated plainly: this is our product, so treat the pitch as a pitch. Bu
 <a href="/extension" style="display:inline-block;background:linear-gradient(135deg,#5b78ff,#16c5b0);color:#fff;font-weight:600;font-size:16px;line-height:1;text-decoration:none;padding:16px 36px;border-radius:14px;box-shadow:0 8px 24px rgba(74,106,255,.28)">Add TailorCV to Chrome — Free</a>
 </p>
 
-![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-This is what "highest-leverage" looks like on a real posting. The extension reads the job off the page you are already on, scores your resume against it (33% here - worth knowing before you apply), and lets you tailor or write the cover letter without leaving LinkedIn.
 
 ## 2. ATS Score Checkers
 
 Before you tailor, it helps to know how bad the gap is. An ATS-scoring extension pulls the job description off the page and scores your resume against it, showing the keywords you are missing.
+
+### The same check running on Greenhouse
+
+![The TailorCV extension on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+On Greenhouse - an ATS you actually submit through - the same check runs inline and tells you where you stand before you apply.
+
 
 Several tools do a version of this. Ours folds it into the tailoring panel — you see the [skill-match score](/ats-analysis) before you tailor, and again after — so you are not guessing whether the rewrite helped. If you only want the diagnosis and prefer to rewrite by hand, a standalone ATS checker is a reasonable single-purpose install. You can also just [check your ATS score for free](/blog/how-to-check-ats-score-free) without an extension at all. Just know that a score alone leaves you with the hard part still to do. Our [ATS score guide](/blog/ats-score-guide) covers what the number does and does not tell you, [ATS score vs resume score](/blog/ats-score-vs-resume-score) clears up a common confusion, and [making your resume parser-friendly](/blog/ats-resume-parser-friendly-format) is the formatting groundwork that a score alone will not fix.
 
@@ -72,9 +83,6 @@ That is the moment tailoring dies. Not because anyone believes generic resumes a
 
 An on-page tool collapses that ten minutes to about one. It does not just make you faster; it makes the good habit *survivable* for the length of a real search. That is the entire argument for the category, and it is why we put resume tailoring at the top of the list rather than autofill, which merely makes a bad approach quicker.
 
-![The TailorCV extension on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-On Greenhouse - an ATS you actually submit through - the same check runs inline and tells you where you stand before you apply.
 
 ## Do You Even Need One? A 60-Second Check
 

@@ -41,9 +41,6 @@ Make rescheduling easy for them by proposing two or three specific new time slot
 
 Keep the tone warm, appreciative, and confident — not apologetic to the point of sounding like you expect to be dropped.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Special case: rescheduling for a competing offer
 
@@ -52,6 +49,13 @@ If you're rescheduling because you're juggling another opportunity, never say so
 ## After you reschedule: prepare and reconfirm
 
 Rescheduling gives you extra time — use it well. [Research the company](https://thetailorcv.com/blog/how-to-research-company-before-interview) more deeply, refine your [STAR stories](https://thetailorcv.com/blog/interview-story-bank-star-method), run a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and plan [what to bring](https://thetailorcv.com/blog/what-to-bring-to-an-interview) and [what to wear](https://thetailorcv.com/blog/what-to-wear-to-an-interview). Send a brief confirmation once the new time is set, and treat the rescheduled interview with extra care — arrive early (or test your tech for a [video interview](https://thetailorcv.com/blog/video-interview-tips-2026)) and bring your best. Afterward, a prompt [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) reinforces your professionalism.
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 
 ## What not to do
 

@@ -41,6 +41,13 @@ This baseline tells you which steps below will move the needle most.
 
 If the parser cannot read your resume, nothing else matters. Replace complex layouts with a clean structure.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+
+
 - Use a **single-column** layout
 - Remove tables, text boxes, columns, icons, and images
 - Use **[standard headings](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)**: Summary, Skills, Experience, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
@@ -114,9 +121,6 @@ Run the [ATS score checker](/solutions) again. Compare to your baseline, apply a
 
 ---
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
 
 ## A Realistic Before-and-After
 

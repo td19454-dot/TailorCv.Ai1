@@ -30,6 +30,13 @@ An [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-h
 - **A `.pdf` or `.docx`** exported from a text-based tool, never a scanned image.
 - **Real bullet characters,** not tables or text boxes to fake columns.
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
+
+
 ## The Keyword Checklist
 
 - Pull the [hard skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) and tools straight from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
@@ -77,9 +84,6 @@ Before you submit, run your [resume](https://thetailorcv.com/blog/anatomy-of-a-r
 | Contact info in the body | Contact info only in the header/footer |
 | Exact keywords from the posting | Hidden white-text keyword blocks |
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
 
 ## Why Tailoring Beats Every Other Trick
 

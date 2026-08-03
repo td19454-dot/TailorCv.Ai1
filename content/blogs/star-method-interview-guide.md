@@ -111,6 +111,13 @@ These examples work because each one is specific enough to sound real. If you wa
 
 Don't try to write a new STAR story on the spot for every possible question — prepare a small set of flexible stories in advance and adapt them to whatever's asked.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
+
 1. **Pull 5–6 stories from your resume**, not from memory alone. Look at your strongest bullet points and ask "what's the story behind this number?" — this is also a good gut check on whether your resume bullets are [written strongly enough](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) in the first place.
 2. **Cover the common categories**: a conflict story, a failure story, an initiative story, a pressure/deadline story, and a leadership or persuasion story. Most behavioral questions map to one of these five.
 3. **Write each one as a few [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)**, not a full script — Situation in one line, Task in one line, 2–3 Action bullets, one Result with a number.
@@ -120,9 +127,6 @@ Don't try to write a new STAR story on the spot for every possible question — 
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## STAR Method in Different Interview Formats
 

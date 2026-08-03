@@ -39,6 +39,13 @@ The fix is practice that is personal, spoken out loud, and followed by honest fe
 
 Resume-based [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) practice flips the script. Instead of random questions, an AI interviewer reads your actual resume and asks about *your* experience: the projects you built, the tools you used, the results you claim, and the decisions you made.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
+
+
 This is powerful because it mirrors what real interviews feel like. If your resume says you "built a recommendation engine that improved click-through by 18%," a good interviewer - human or AI - will ask you to explain how. Practicing those exact questions ahead of time means you walk in ready.
 
 You can try this directly with [TailorCV's AI mock interview](https://thetailorcv.com/mock-interview), which generates questions from your resume and gives feedback on each answer. It is the difference between rehearsing trivia and rehearsing *your story*.
@@ -77,9 +84,6 @@ To make your **free [mock interview](https://thetailorcv.com/blog/mock-interview
 - **Tie it back to your resume.** Every claim on your resume is a potential question - rehearse explaining each one. If a project is hard to explain, consider strengthening how it is written using [resume tailoring tools](https://thetailorcv.com/solutions).
 - **Look the part too.** Even online, treat practice like the real thing and start from a polished, [ATS friendly resume](https://thetailorcv.com/templates) that matches your story.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
 
 ## Final Thoughts
 Generic interview prep teaches you to recite. **Free [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) practice** with AI teaches you to perform - on the exact questions a recruiter will ask based on your resume. Get your resume right, practice out loud, use the feedback, and repeat until your answers feel natural.

@@ -95,6 +95,13 @@ See more pitfalls in [common interview mistakes](https://thetailorcv.com/blog/co
 
 [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) can discuss:
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
+
+
 - Limited professional experience (offset with [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and internships)
 - Over-researching before acting (show you are learning to decide faster)
 - Difficulty with [technical communication](https://thetailorcv.com/blog/technical-interview-preparation-guide)
@@ -103,9 +110,6 @@ Read [first job interview tips for freshers](https://thetailorcv.com/blog/first-
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
 
 ## How to Practice
 

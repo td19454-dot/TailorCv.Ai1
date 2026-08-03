@@ -30,6 +30,13 @@ Check your own resume's match score against any job description with the [Tailor
 
 Before diving into the data, it is worth being precise about what a match score actually measures: how well your resume's keywords, skills, and language align with a specific [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). It does not measure your qualifications directly, your interview performance, or factors outside your resume entirely (referrals, timing, market competition).
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
+
+
 That said, match score is one of the few resume-quality signals a candidate can measure and improve before applying, which is exactly why it is worth understanding closely.
 
 ---
@@ -94,9 +101,6 @@ Aim for a match score in the 75-85% range as a strong general target before appl
 
 ---
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
 
 ## How TailorCV Helps You Act on This Data
 

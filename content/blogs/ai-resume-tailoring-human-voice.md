@@ -194,13 +194,17 @@ Avoid these signals:
 
 ---
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 ## Balancing ATS and Human
 
 Here is the tension:
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) needs keywords, structured format, and matching terminology.
 Humans need authenticity, specific results, and clear communication.
