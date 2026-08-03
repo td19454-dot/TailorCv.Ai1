@@ -129,6 +129,7 @@ Academics applying to industry roles must compress their CV into a resume - tran
 
 Follow the job posting's language:
 
+
 1. **Posting says "resume"** - Submit a resume (1-2 pages, targeted)
 2. **Posting says "CV"** - In the US, usually means a resume; in academia, submit a full CV
 3. **Posting says "CV or resume"** - Submit whichever is appropriate for the industry and country

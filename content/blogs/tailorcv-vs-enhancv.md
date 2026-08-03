@@ -127,6 +127,13 @@ TailorCV starts from the posting. [Free ATS match score](/ats-analysis), exact m
 
 **TailorCV wins — Enhancv does not have one.**
 
+### What the extension looks like on a real posting
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+This is the panel described above, open beside a live listing: it reads the description off the page, scores your resume against that role, and tailors in one click without a second tab.
+
+
 Ours opens beside the job. LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday, Ashby, Glassdoor, ZipRecruiter, Monster, SimplyHired, Dice, Wellfound — the panel reads the description straight off the page and shows your skill match against that role before you click anything. One click tailors your resume and downloads the PDF; another writes the matching cover letter. Both save to your [Job Tracker](/my-resumes) automatically.
 
 Fifteen boards work out of the box, and it opens on **any** site from the toolbar, because plenty of good roles sit on company career pages nobody has an adapter for.

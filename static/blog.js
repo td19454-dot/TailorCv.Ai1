@@ -970,9 +970,50 @@
     nodes.forEach((n) => box.appendChild(n));
   };
 
+  // Before/after pairs: the corpus writes these as "Weak Bullet Points" then
+  // "Strong Bullet Points". Require the keyword to START the heading and the
+  // heading to be short, so questions ("How do I know if the final version is
+  // strong enough?") and section titles are not caught.
+  const WEAK = /^(weak|before|bad|poor|generic|wrong)/i;
+  const STRONG = /^(strong|after|better|good|improved|fixed)/i;
+
   Array.from(content.querySelectorAll("h2, h3")).forEach((h) => {
     const text = (h.textContent || "").replace("#", "").trim();
     if (MISTAKE.test(text)) wrap(h, "mistake");
     else if (h.tagName === "H3" && EXAMPLE.test(text) && text.length < 60) wrap(h, "example");
+    else if (h.tagName === "H3" && text.length < 40 && WEAK.test(text)) wrap(h, "weak");
+    else if (h.tagName === "H3" && text.length < 40 && STRONG.test(text)) wrap(h, "strong");
+  });
+
+  /* "Before (generic resume)" / "After (Matched Resume)" followed by a code
+     block. These are the strongest proof in the article but rendered as two
+     identical grey boxes, so the contrast was invisible. Pair the label with
+     its block and colour them. */
+  Array.from(content.querySelectorAll("p")).forEach((p) => {
+    const lead = p.querySelector("strong, b");
+    if (!lead) return;
+    const m = /^(before|after)/i.exec((lead.textContent || "").trim());
+    if (!m) return;
+    const block = p.nextElementSibling;
+    if (!block || !/^(PRE|DIV|TABLE|UL|OL)$/.test(block.tagName)) return;
+    if (p.closest(".ba-block")) return;
+
+    const kind = m[1].toLowerCase() === "before" ? "before" : "after";
+    const box = document.createElement("section");
+    box.className = "ba-block ba-" + kind;
+    p.before(box);
+    p.classList.add("ba-label");
+    box.appendChild(p);
+    box.appendChild(block);
+  });
+
+  // Short lead-in labels that carry the point of the paragraph.
+  const LABEL = /^(pro tip|tip|note|important|remember|why it works|why this works|bottom line|key point|takeaway)\s*[:—-]/i;
+  content.querySelectorAll("p").forEach((p) => {
+    if (p.closest(".callout-box, .step-card, .faq-box, .key-takeaways-box, .blog-ats, .blog-tpl")) return;
+    const lead = p.querySelector("strong, b");
+    if (!lead) return;
+    if (!LABEL.test(((lead.textContent || "") + ":").trim())) return;
+    p.classList.add("callout-note-inline");
   });
 })();

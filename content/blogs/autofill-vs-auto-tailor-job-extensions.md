@@ -62,19 +62,6 @@ Most people, though, do not need both. If forms are not your bottleneck — many
 
 Sixty-second diagnosis. Ask two questions.
 
-### The same check on a job board you already use
-
-![The TailorCV extension open on a Simplify job listing, showing a 50% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-simplify-job-board.webp)
-
-The extension works on the job boards you already use rather than asking you to paste listings somewhere else.
-
-
-### The same check running on Greenhouse
-
-![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-A 67% match on the real posting tells you where you stand before you submit, and that there is room to close the gap.
-
 
 **"Am I spending real time filling long forms?"** If yes — lots of Workday and enterprise applications — autofill will save you meaningful time. If most of your applying is quick-apply, autofill barely helps.
 

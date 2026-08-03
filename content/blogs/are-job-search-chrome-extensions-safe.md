@@ -59,19 +59,6 @@ Safety is necessary but not sufficient — a private extension that produces bad
 
 Let us be balanced, because a privacy guide that ends "install nothing" is useless. Every extension is a trade: you grant some access in exchange for some help. The question is never "zero risk or risk" — it is "is the help worth the access, and is the tool trustworthy with it?"
 
-### The same check on a job board you already use
-
-![The TailorCV extension open on a Simplify job listing, showing a 50% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-simplify-job-board.webp)
-
-The extension works on the job boards you already use rather than asking you to paste listings somewhere else.
-
-
-### The same check running on Greenhouse
-
-![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-A 67% match on the real posting tells you where you stand before you submit, and that there is room to close the gap.
-
 
 ### What it looks like on a LinkedIn job post
 

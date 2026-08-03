@@ -123,6 +123,7 @@ Read [how to tailor a resume in 5 minutes](https://thetailorcv.com/blog/how-to-t
 **Reading a [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume):**
 > "Another marketing resume. Nothing specifically relevant to our growth role. Vague. Move on."
 
+
 ### Your resume after optimization
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)

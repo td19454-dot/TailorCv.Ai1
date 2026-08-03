@@ -156,6 +156,13 @@ Careerflow has no equivalent.
 
 This deserves its own section, because it is the part of TailorCV that changes the daily experience of job hunting more than anything else.
 
+### What the extension looks like on a real posting
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+Rather than duplicating a resume in a builder and hand-editing it per job, the panel does the match check and the tailoring on the posting itself.
+
+
 Every tool in this category has a browser extension, but they do different jobs. **Careerflow's autofills application forms.** Jobscan's fetches a job description so you can scan it. Teal's saves the job to a tracker. All useful. All stop short.
 
 **Ours tailors the resume on the posting itself.**

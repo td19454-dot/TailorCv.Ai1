@@ -119,6 +119,13 @@ Zety solves the first problem. It does not touch the second. Ours does both — 
 
 **TailorCV wins — Zety does not have a meaningful one.**
 
+### What the extension looks like on a real posting
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+Rather than duplicating a resume in a builder and hand-editing it per job, the panel does the match check and the tailoring on the posting itself.
+
+
 Ours opens beside the job. LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday, Ashby, Glassdoor, ZipRecruiter, Monster, SimplyHired, Dice, Wellfound — the panel reads the description straight off the page and shows your skill match against that role before you click anything. One click tailors your resume and downloads the PDF. Another writes the matching cover letter. Both save to your [Job Tracker](/my-resumes) automatically, with the score and the job attached.
 
 Fifteen boards work out of the box, and the panel opens on **any** site from the toolbar, because plenty of good roles live on company career pages nobody has built an adapter for.

@@ -60,19 +60,6 @@ An honest comparison has to include this: sometimes you should do it by hand.
 
 And the flip side, honestly:
 
-### The same check on a job board you already use
-
-![The TailorCV extension open on a Simplify job listing, showing a 50% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-simplify-job-board.webp)
-
-It reads the posting off whatever board you are browsing - Simplify here - and scores your resume against it before you apply, so you find the gap while you can still close it.
-
-
-### The same check running on Greenhouse
-
-![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-The same check running on Greenhouse - one of the ATS platforms you are actually submitting through, not a preview of one.
-
 
 **At volume.** This is the decisive case. Across a real search, the tool's consistency wins, full stop.
 

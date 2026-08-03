@@ -82,6 +82,13 @@ Teal's job application tracker is genuinely useful, but tailoring your resume to
 
 Jobscan popularized the "match rate" score, but it only checks keywords - it doesn't rewrite your resume, doesn't do interview prep, and free scans are capped monthly. If you want the scoring without the scan limit, compare it directly on the [Jobscan alternative page](https://www.thetailorcv.com/jobscan-alternative) or read [best free ATS resume checkers compared](https://thetailorcv.com/blog/best-free-ats-resume-checkers-compared).
 
+### What the extension looks like on a real posting
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+Rather than duplicating a resume in a builder and hand-editing it per job, the panel does the match check and the tailoring on the posting itself.
+
+
 ### Your resume after optimization
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)

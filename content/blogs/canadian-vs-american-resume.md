@@ -118,6 +118,7 @@ The practical approach: set your word processor's language to English (Canada) o
 
 When you apply in the other country, create a dedicated version:
 
+
 ### Your resume after optimization
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)

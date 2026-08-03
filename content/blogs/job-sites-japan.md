@@ -75,6 +75,13 @@ Teaching typically requires a degree and native/fluent English, but not Japanese
 
 Not every opportunity is advertised. In Japan, connections and referrals matter:
 
+### Tailoring without leaving the job board
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+This is what tailoring per posting looks like in practice: the panel reads the job off the page you are already browsing and rewrites against it, instead of you copying the description into another tab.
+
+
 ### What optimizing actually does to your resume
 
 ![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
