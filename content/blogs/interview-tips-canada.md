@@ -4,7 +4,7 @@ description: Ace your Canadian job interview in 2026 — master the STAR method 
 date: 2026-08-04
 author: TailorCV Team
 tags: [interview tips Canada, Canadian interview questions, STAR method, job interview Canada]
-category: [Interview Prep](https://thetailorcv.com/interview-prep)
+category: Interview Preparation
 slug: interview-tips-canada
 keywords: interview tips canada, canadian interview questions and answers, star method interview, how to prepare for interview canada
 image: public/blog-images/interview-tips-canada.png
