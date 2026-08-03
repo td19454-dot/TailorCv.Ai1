@@ -178,11 +178,13 @@ Creating an effective internal cover letter involves knowing what to do—and wh
 - **Do Keep It Concise**: Aim for a one-page cover letter that gets straight to the point.
 
 ### Don'ts
-- **Don’t Be Overly Familiar**: Maintain professionalism and avoid being too casual, even if you know the team well.
-- **Don’t Focus on Salary or Benefits**: Your cover letter should emphasize your skills and fit for the role, not compensation.
-- **Don’t Use Jargon**: Avoid industry jargon that may not be universally understood, especially if it might alienate some readers.
-- **Don’t Ignore Your Career Goals**: Make sure to articulate how this position fits into your broader career aspirations.
-- **Don’t Rush the Process**: Take your time to craft a thoughtful letter rather than submitting a generic one.
+| Step | What to do |
+|---|---|
+| **Don’t Be Overly Familiar** | Maintain professionalism and avoid being too casual, even if you know the team well |
+| **Don’t Focus on Salary or Benefits** | Your cover letter should emphasize your skills and fit for the role, not compensation |
+| **Don’t Use Jargon** | Avoid industry jargon that may not be universally understood, especially if it might alienate some readers |
+| **Don’t Ignore Your Career Goals** | Make sure to articulate how this position fits into your broader career aspirations |
+| **Don’t Rush the Process** | Take your time to craft a thoughtful letter rather than submitting a generic one |
 
 ## Step-by-Step Guide to Tailoring Your Internal Cover Letter
 

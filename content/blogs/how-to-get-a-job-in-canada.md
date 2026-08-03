@@ -24,10 +24,12 @@ Finding a job in Canada in 2026 requires a strategic approach that aligns with l
 
 Before diving into the [job application process](https://thetailorcv.com/blog/international-student-jobs-canada), it's crucial to understand the current job market landscape in Canada. In 2026, certain industries are projected to experience significant growth. These include:
 
-- **Technology**: Software development, cybersecurity, and data analysis.
-- **Healthcare**: Nursing, personal support workers, and telehealth services.
-- **Construction**: Skilled trades, project management, and engineering roles.
-- **Green Jobs**: Renewable energy, environmental consulting, and sustainability roles.
+| Where | What changes there |
+|---|---|
+| **Technology** | Software development, cybersecurity, and data analysis |
+| **Healthcare** | Nursing, personal support workers, and telehealth services |
+| **Construction** | Skilled trades, project management, and engineering roles |
+| **Green Jobs** | Renewable energy, environmental consulting, and sustainability roles |
 
 ### Key Labor Market Statistics
 
@@ -41,11 +43,13 @@ Researching these sectors will help you tailor your [job search](https://thetail
 
 A well-structured resume is your ticket to getting noticed by potential employers. Canadian resume norms differ from those in other countries, so it’s essential to follow local guidelines:
 
-- **Length**: Keep your resume to two pages maximum.
-- **Format**: Use a professional format with clear headings and bullet points.
-- **Content**: Focus on achievements rather than just duties.
-- **Personal Information**: Do not include a photo, age, or marital status.
-- **References**: State "References available upon request."
+| Section | What goes in it |
+|---|---|
+| **Length** | Keep your resume to two pages maximum |
+| **Format** | Use a professional format with clear headings and bullet points |
+| **Content** | Focus on achievements rather than just duties |
+| **Personal Information** | Do not include a photo, age, or marital status |
+| **References** | State "References available upon request." |
 
 ### Common Resume Mistakes to Avoid
 

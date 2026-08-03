@@ -21,11 +21,13 @@ HR and recruiting work is judgment-heavy and mostly invisible on a resume. A [po
 - Avoid common mistakes such as listing tasks instead of outcomes and failing to provide before-and-after metrics to illustrate improvements.
 
 ## What to Include
-- **Hiring metrics** - time-to-fill, offer-acceptance rate, quality-of-hire, cost-per-hire, before and after a change you made
-- **Program case studies** - onboarding redesign, DEI initiative, employer branding campaign, performance review overhaul
-- **Sourcing and pipeline work** - a sanitized example of a search strategy for a hard-to-fill role
-- **Sample artifacts** - a job description you wrote, an interview scorecard you built, an onboarding checklist (with any confidential details removed)
-- **Certifications** - SHRM-CP, PHR, or platform certifications (LinkedIn Recruiter, Greenhouse, Workday)
+| What to include | Why |
+|---|---|
+| **Hiring metrics** | time-to-fill, offer-acceptance rate, quality-of-hire, cost-per-hire, before and after a change you made |
+| **Program case studies** | onboarding redesign, DEI initiative, employer branding campaign, performance review overhaul |
+| **Sourcing and pipeline work** | a sanitized example of a search strategy for a hard-to-fill role |
+| **Sample artifacts** | a job description you wrote, an interview scorecard you built, an onboarding checklist (with any confidential details removed) |
+| **Certifications** | SHRM-CP, PHR, or platform certifications (LinkedIn Recruiter, Greenhouse, Workday) |
 
 ## Frame Programs, Not Just Tasks
 A hiring manager scanning your portfolio wants to see: what was broken, what you changed, and what moved. For each case study:

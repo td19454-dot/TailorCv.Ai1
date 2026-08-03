@@ -160,10 +160,12 @@ Once you start landing interviews, preparation is key. Utilize tools like our [A
 
 ### Interview Preparation Checklist
 
-- **Research the Company**: Understand their mission, values, and recent news.
-- **Review Common Questions**: Prepare answers to frequently asked questions in your field.
-- **Prepare Your Questions**: Have insightful questions ready to ask the interviewer.
-- **Practice Your Responses**: Use mock interviews to refine your delivery.
+| Check | What to look for |
+|---|---|
+| **Research the Company** | Understand their mission, values, and recent news |
+| **Review Common Questions** | Prepare answers to frequently asked questions in your field |
+| **Prepare Your Questions** | Have insightful questions ready to ask the interviewer |
+| **Practice Your Responses** | Use mock interviews to refine your delivery |
 
 ## Final Thoughts
 

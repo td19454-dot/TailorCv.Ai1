@@ -1990,3 +1990,37 @@ header.navbar {
 /* Stars showing the community average (reader has not voted yet) are filled
    but slightly muted, so an average is not mistaken for your own rating. */
 .blog-detail-page .blog-rate.is-avg .blog-rate-star.is-on svg { fill: #f7c46a; }
+
+/* ---- Data bars inside article tables ----
+   A visual read of the percentage already printed in the cell (see blog.js).
+   The number stays as text, so the table is still readable without CSS and
+   to a screen reader; the bar is decorative. */
+.blog-detail-page .post-content td.tcx-bar-cell {
+  min-width: 132px;
+  white-space: nowrap;
+}
+.blog-detail-page .post-content .tcx-bar-val {
+  display: block;
+  font-weight: 700;
+  color: #10203c;
+  margin-bottom: 6px;
+}
+.blog-detail-page .post-content .tcx-bar {
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background: #e6ebf5;
+  overflow: hidden;
+}
+.blog-detail-page .post-content .tcx-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #AF40FF 0%, #5B42F3 55%, #00DDEB 100%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .blog-detail-page .post-content .tcx-bar-fill {
+    animation: tcx-bar-grow .9s cubic-bezier(.22,.61,.36,1) both;
+  }
+  @keyframes tcx-bar-grow { from { transform: scaleX(0); transform-origin: left; } to { transform: scaleX(1); } }
+}

@@ -97,10 +97,12 @@ Cybersecurity candidates who documented CTF writeups or personal security resear
 ## What Every Strong Portfolio Has in Common
 
 - **3-6 focused projects**, not a dumping ground of everything you've touched - see [portfolio checklist before applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- **Context before code or visuals** - the problem, your role, and the outcome
-- **A clear About Me and contact section** - see [portfolio about me section](https://thetailorcv.com/blog/portfolio-about-me-section) and [portfolio contact section](https://thetailorcv.com/blog/portfolio-contact-section)
-- **Fast load times and mobile-friendly layout** - see [portfolio SEO - get found](https://thetailorcv.com/blog/portfolio-seo-get-found)
-- **A direct link from the resume itself** - see [add a portfolio link to your resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+| Tool | What it does |
+|---|---|
+| **Context before code or visuals** | the problem, your role, and the outcome |
+| **A clear About Me and contact section** | see [portfolio about me section](https://thetailorcv.com/blog/portfolio-about-me-section) and [portfolio contact section](https://thetailorcv.com/blog/portfolio-contact-section) |
+| **Fast load times and mobile-friendly layout** | see [portfolio SEO - get found](https://thetailorcv.com/blog/portfolio-seo-get-found) |
+| **A direct link from the resume itself** | see [add a portfolio link to your resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) |
 
 ---
 

@@ -69,10 +69,12 @@ That is the whole loop. Each re-scan takes seconds, so you can iterate fast.
 
 ### Step-by-Step Checklist
 
-- **Job Description**: Ensure you have the latest version of the job description.
-- **Resume Format**: Use a clean, simple format that is easy to read.
-- **Keyword Integration**: Actively incorporate keywords from the job description into your resume.
-- **Review and Iterate**: After each scan, note areas for improvement and make adjustments.
+| Step | What to do |
+|---|---|
+| **Job Description** | Ensure you have the latest version of the job description |
+| **Resume Format** | Use a clean, simple format that is easy to read |
+| **Keyword Integration** | Actively incorporate keywords from the job description into your resume |
+| **Review and Iterate** | After each scan, note areas for improvement and make adjustments |
 
 ---
 

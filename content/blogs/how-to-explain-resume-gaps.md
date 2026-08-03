@@ -30,10 +30,12 @@ Before addressing gaps, make sure the rest of your [resume](https://thetailorcv.
 
 There is no universal rule, but general guidance:
 
-- **Under 3 months** - Usually not noticed or asked about. No explanation typically needed.
-- **3-6 months** - May come up. One-sentence explanation on resume or in [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) is helpful.
-- **6-12 months** - Should be addressed proactively on resume, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or LinkedIn.
-- **Over 12 months** - Needs an honest, clear explanation with evidence of what you did during the time. Upskilling, freelancing, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), or caregiving context helps significantly.
+| Rule | What it means |
+|---|---|
+| **Under 3 months** | Usually not noticed or asked about. No explanation typically needed |
+| **3-6 months** | May come up. One-sentence explanation on resume or in [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) is helpful |
+| **6-12 months** | Should be addressed proactively on resume, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or LinkedIn |
+| **Over 12 months** | Needs an honest, clear explanation with evidence of what you did during the time. Upskilling, freelancing, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), or caregiving context helps significantly |
 
 ---
 

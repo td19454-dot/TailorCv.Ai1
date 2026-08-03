@@ -45,10 +45,12 @@ Activation, retention, conversion, revenue, NPS, or time saved. Tie each metric 
 
 ### Examples of Measurable Outcomes
 
-- **Activation Rate**: "After implementing a new onboarding process, activation rates increased by 25% within three months."
-- **Retention Rate**: "By introducing a feature based on user feedback, we improved retention by 15% year-over-year."
-- **Revenue Growth**: "Our latest product launch contributed to a 30% increase in quarterly revenue."
-- **NPS Improvement**: "Customer satisfaction scores improved from 60 to 75 after addressing key user pain points."
+| What | Details |
+|---|---|
+| **Activation Rate** | "After implementing a new onboarding process, activation rates increased by 25% within three months." |
+| **Retention Rate** | "By introducing a feature based on user feedback, we improved retention by 15% year-over-year." |
+| **Revenue Growth** | "Our latest product launch contributed to a 30% increase in quarterly revenue." |
+| **NPS Improvement** | "Customer satisfaction scores improved from 60 to 75 after addressing key user pain points." |
 
 ## Show the Craft Artifacts
 

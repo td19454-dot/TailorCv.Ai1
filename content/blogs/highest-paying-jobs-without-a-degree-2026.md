@@ -39,13 +39,15 @@ If you're weighing whether a degree is worth pursuing at all, see [is a CS degre
 
 ## High-Paying Fields That Don't Require a Degree
 
-- **Software development** - many companies hire based on portfolio and technical screens rather than degree. See the [full-stack developer resume guide](https://thetailorcv.com/blog/full-stack-developer-resume-2026) and [full-stack portfolio guide](https://thetailorcv.com/blog/full-stack-portfolio-guide).
-- **Cloud and DevOps engineering** - certifications often carry more weight than a degree here. See the [DevOps engineer resume guide](https://thetailorcv.com/blog/devops-engineer-resume-2026) and [cloud engineer resume guide](https://thetailorcv.com/blog/cloud-engineer-resume-2026).
-- **Sales and account management** - performance-based fields where results speak louder than education. See the [sales executive resume guide](https://thetailorcv.com/blog/sales-executive-resume-2026).
-- **UX/UI and product design** - a strong portfolio can outweigh formal education entirely. See the [UX designer resume guide](https://thetailorcv.com/blog/ux-designer-resume-2026) and [UX designer portfolio guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide).
-- **Digital marketing** - measurable campaign results matter more than credentials. See the [digital marketing resume guide](https://thetailorcv.com/blog/digital-marketing-resume-2026).
-- **Scrum mastering and project coordination** - certifications like CSM can substitute for a degree entirely. See the [scrum master resume guide](https://thetailorcv.com/blog/scrum-master-resume-2026).
-- **QA and automation testing** - a strong project portfolio can open doors without a CS degree. See the [QA automation resume guide](https://thetailorcv.com/blog/qa-automation-resume-2026).
+| Tool | What it does |
+|---|---|
+| **Software development** | many companies hire based on portfolio and technical screens rather than degree. See the [full-stack developer resume guide](https://thetailorcv.com/blog/full-stack-developer-resume-2026) and [full-stack portfolio guide](https://thetailorcv.com/blog/full-stack-portfolio-guide) |
+| **Cloud and DevOps engineering** | certifications often carry more weight than a degree here. See the [DevOps engineer resume guide](https://thetailorcv.com/blog/devops-engineer-resume-2026) and [cloud engineer resume guide](https://thetailorcv.com/blog/cloud-engineer-resume-2026) |
+| **Sales and account management** | performance-based fields where results speak louder than education. See the [sales executive resume guide](https://thetailorcv.com/blog/sales-executive-resume-2026) |
+| **UX/UI and product design** | a strong portfolio can outweigh formal education entirely. See the [UX designer resume guide](https://thetailorcv.com/blog/ux-designer-resume-2026) and [UX designer portfolio guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide) |
+| **Digital marketing** | measurable campaign results matter more than credentials. See the [digital marketing resume guide](https://thetailorcv.com/blog/digital-marketing-resume-2026) |
+| **Scrum mastering and project coordination** | certifications like CSM can substitute for a degree entirely. See the [scrum master resume guide](https://thetailorcv.com/blog/scrum-master-resume-2026) |
+| **QA and automation testing** | a strong project portfolio can open doors without a CS degree. See the [QA automation resume guide](https://thetailorcv.com/blog/qa-automation-resume-2026) |
 
 ---
 

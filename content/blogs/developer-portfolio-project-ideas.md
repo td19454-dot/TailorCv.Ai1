@@ -21,16 +21,20 @@ Below are 15 project ideas grouped by level, plus exactly what turns each one in
 ## Beginner Projects (Prove the Fundamentals)
 
 ### 1. API Dashboard
-- **Overview**: Create a dashboard that pulls live data from APIs, such as weather, cryptocurrency prices, or sports statistics.
-- **Skills Demonstrated**: Shows your ability to fetch data, manage state, and create a user interface.
-- **Common Mistakes**: Failing to handle errors gracefully or not providing a clear user experience. Always include loading states and error messages for a polished feel.
-- **Example**: Use the OpenWeatherMap API to display current weather conditions and a weekly forecast. 
+| Tool | What it does |
+|---|---|
+| **Overview** | Create a dashboard that pulls live data from APIs, such as weather, cryptocurrency prices, or sports statistics |
+| **Skills Demonstrated** | Shows your ability to fetch data, manage state, and create a user interface |
+| **Common Mistakes** | Failing to handle errors gracefully or not providing a clear user experience. Always include loading states and error messages for a polished feel |
+| **Example** | Use the OpenWeatherMap API to display current weather conditions and a weekly forecast |
 
 ### 2. Personal Portfolio Site
-- **Overview**: Build a personal website to showcase your work. This site should be responsive, fast, and visually appealing.
-- **Skills Demonstrated**: Your design sensibility, front-end skills, and ability to deploy a live application.
-- **Common Mistakes**: Overcomplicating the design or neglecting mobile optimization. Keep it simple and focus on showcasing your projects.
-- **Example**: Refer to the [Frontend Developer Portfolio Guide (2026)](https://thetailorcv.com/blog/frontend-developer-portfolio) for design inspiration and best practices.
+| Tool | What it does |
+|---|---|
+| **Overview** | Build a personal website to showcase your work. This site should be responsive, fast, and visually appealing |
+| **Skills Demonstrated** | Your design sensibility, front-end skills, and ability to deploy a live application |
+| **Common Mistakes** | Overcomplicating the design or neglecting mobile optimization. Keep it simple and focus on showcasing your projects |
+| **Example** | Refer to the [Frontend Developer Portfolio Guide (2026)](https://thetailorcv.com/blog/frontend-developer-portfolio) for design inspiration and best practices |
 
 ### 3. CLI Automation Tool
 - **Overview**: Develop a command-line interface tool that automates a repetitive task you often perform.

@@ -21,11 +21,13 @@ A resume tells a recruiter you hit 130% of quota. A [portfolio](https://thetailo
 - Avoid common mistakes like lacking context in quota numbers, not providing deal narratives, and sharing confidential information.
 
 ## What to Include
-- **Quota attainment history** - a simple chart or table by quarter or year
-- **2-4 deal case studies** - the account, the problem, your approach, the outcome
-- **Pipeline and process evidence** - how you prospect, qualify, and forecast (frameworks like MEDDIC, SPIN, or your own)
-- **Testimonials** - a line or two from a manager or client, with permission
-- **Tools and stack** - CRM (Salesforce, HubSpot), sales engagement tools, and any certifications
+| What to include | Why |
+|---|---|
+| **Quota attainment history** | a simple chart or table by quarter or year |
+| **2-4 deal case studies** | the account, the problem, your approach, the outcome |
+| **Pipeline and process evidence** | how you prospect, qualify, and forecast (frameworks like MEDDIC, SPIN, or your own) |
+| **Testimonials** | a line or two from a manager or client, with permission |
+| **Tools and stack** | CRM (Salesforce, HubSpot), sales engagement tools, and any certifications |
 
 ## Frame Every Deal as a Story
 Recruiters and sales leaders do not want a list of closed-won deals - they want to see judgment. For each case study, cover:
@@ -64,10 +66,12 @@ One of the most impactful ways to demonstrate your revenue impact in a sales por
 1. **Choose the Right Projects**: Select projects that had significant revenue implications. Look for examples where you played a crucial role in closing deals or turning around difficult client relationships.
 
 2. **Structure Your Case Study**:
-   - **Background**: Briefly describe the client’s business and the challenges they faced.
-   - **Your Role**: Clearly define your responsibilities and the strategies you employed.
-   - **Outcome**: Quantify the results. Use metrics such as revenue growth, percentage increases in sales, or improvements in client retention.
-   - **Client Testimonial**: If possible, include a quote from the client that highlights your contribution.
+| Section | What goes in it |
+|---|---|
+| **Background** | Briefly describe the client’s business and the challenges they faced |
+| **Your Role** | Clearly define your responsibilities and the strategies you employed |
+| **Outcome** | Quantify the results. Use metrics such as revenue growth, percentage increases in sales, or improvements in client retention |
+| **Client Testimonial** | If possible, include a quote from the client that highlights your contribution |
 
 3. **Visual Elements**: Utilize graphs, charts, and other visual aids to make the data more digestible. Visual storytelling can enhance the impact of your case study.
 

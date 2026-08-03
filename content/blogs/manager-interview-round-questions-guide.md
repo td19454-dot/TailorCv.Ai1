@@ -170,10 +170,12 @@ Use "I" for your contributions. Managers want people who take responsibility.
 | [Final round with director](https://thetailorcv.com/blog/final-round-interview-tips) | More strategic, less tactical |
 
 ### Tips for Each Format:
-- **1:1**: Focus on building personal rapport and understanding the manager's expectations.
-- **Panel**: Be mindful of group dynamics; engage each member by directing your answers to them.
-- **Virtual**: Ensure your technology works smoothly; dress as you would for an in-person interview.
-- **Final Round**: Prepare to discuss long-term visions and strategies rather than just tactical execution.
+| Type | What it involves |
+|---|---|
+| **1:1** | Focus on building personal rapport and understanding the manager's expectations |
+| **Panel** | Be mindful of group dynamics; engage each member by directing your answers to them |
+| **Virtual** | Ensure your technology works smoothly; dress as you would for an in-person interview |
+| **Final Round** | Prepare to discuss long-term visions and strategies rather than just tactical execution |
 
 ---
 

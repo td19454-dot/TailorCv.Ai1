@@ -16,10 +16,12 @@ Singapore has become one of Asia's leading tech hubs — the regional base for g
 
 Tech hiring in Singapore rewards a few things consistently:
 
-- **Concrete, current skills** — the exact languages, frameworks, cloud platforms, and tools the role names. Vague "familiar with programming" loses to specific, matched keywords.
-- **Shipped impact** — projects and systems you built and their measurable outcomes (latency cut, users served, cost saved).
-- **Regional and cross-functional experience** — many Singapore roles are APAC hubs, so working across teams and markets is valued.
-- **Fundamentals** — data structures, system design, and problem-solving for engineering roles.
+| Skill | Why it matters |
+|---|---|
+| **Concrete, current skills** | the exact languages, frameworks, cloud platforms, and tools the role names. Vague "familiar with programming" loses to specific, matched keywords |
+| **Shipped impact** | projects and systems you built and their measurable outcomes (latency cut, users served, cost saved) |
+| **Regional and cross-functional experience** | many Singapore roles are APAC hubs, so working across teams and markets is valued |
+| **Fundamentals** | data structures, system design, and problem-solving for engineering roles |
 
 The resume has to surface these in a way [both the ATS and the hiring manager](/blog/how-to-pass-ats-in-2026) can read — parseable structure, matched keywords, quantified results.
 

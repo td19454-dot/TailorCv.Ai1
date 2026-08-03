@@ -84,11 +84,13 @@ Applying to small local SMEs that rarely sponsor is usually a poor use of effort
 
 ## Step 3: Search in the Right Places
 
-- **LinkedIn** — the most important channel for professional expat roles; recruiters for MNCs source here directly.
-- **JobStreet** — Malaysia's largest portal; filter for roles open to foreigners where possible.
-- **Company career pages** — MNCs and GLCs list roles and their sponsorship policies.
-- **Specialist recruiters** — agencies that place international professionals in tech, finance, and engineering.
-- **Your network** — referrals matter everywhere; connect with expats and professionals already in Malaysia.
+| Step | What to do |
+|---|---|
+| **LinkedIn** | the most important channel for professional expat roles; recruiters for MNCs source here directly |
+| **JobStreet** | Malaysia's largest portal; filter for roles open to foreigners where possible |
+| **Company career pages** | MNCs and GLCs list roles and their sponsorship policies |
+| **Specialist recruiters** | agencies that place international professionals in tech, finance, and engineering |
+| **Your network** | referrals matter everywhere; connect with expats and professionals already in Malaysia |
 
 Optimise your LinkedIn so recruiters find you — see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia).
 

@@ -21,11 +21,13 @@ Hiring committees for teaching roles often review dozens of nearly identical res
 - Avoid common mistakes such as sharing identifiable student information, lacking a clear philosophy statement, and including outdated materials.
 
 ## What to Include
-- **A teaching philosophy statement** - one page on how you approach learning, differentiation, and classroom culture
-- **2-3 lesson or unit plans** - with objectives, materials, and how you adapted for different learners
-- **Student outcome evidence** - test score growth, reading level improvement, or project examples (with all student names and identifying details removed)
-- **Classroom management approach** - a brief description of your systems and routines
-- **Certifications and professional development** - licensure, endorsements, workshops, and any specialized training
+| What to include | Why |
+|---|---|
+| **A teaching philosophy statement** | one page on how you approach learning, differentiation, and classroom culture |
+| **2-3 lesson or unit plans** | with objectives, materials, and how you adapted for different learners |
+| **Student outcome evidence** | test score growth, reading level improvement, or project examples (with all student names and identifying details removed) |
+| **Classroom management approach** | a brief description of your systems and routines |
+| **Certifications and professional development** | licensure, endorsements, workshops, and any specialized training |
 
 ## Frame Growth, Not Just Activities
 A strong teaching portfolio does not just list what you did - it shows the effect on students. For each artifact:

@@ -21,10 +21,12 @@ A resume gives you no feedback after you hit send. A [portfolio](https://thetail
 - For targeted tracking, use private links for specific applications and analyze trends over time to refine your job search strategy.
 
 ## Why Portfolio Analytics Matter in a Job Search
-- **Confirmation your link works** - if an application says "portfolio attached" and you see zero views a week later, something is broken - a dead link, a typo, or a spam-filtered email
-- **Timing signals** - a spike in views the day after you submit an application, or right before a scheduled interview, tells you someone is doing their homework
-- **Where interest concentrates** - if you have multiple portfolios or project pages, view counts show which work actually gets attention
-- **A gut-check on your outreach** - if you are cold-emailing recruiters with your portfolio link and seeing no views at all, your emails may not be getting opened
+| Reason | What it gets you |
+|---|---|
+| **Confirmation your link works** | if an application says "portfolio attached" and you see zero views a week later, something is broken - a dead link, a typo, or a spam-filtered email |
+| **Timing signals** | a spike in views the day after you submit an application, or right before a scheduled interview, tells you someone is doing their homework |
+| **Where interest concentrates** | if you have multiple portfolios or project pages, view counts show which work actually gets attention |
+| **A gut-check on your outreach** | if you are cold-emailing recruiters with your portfolio link and seeing no views at all, your emails may not be getting opened |
 
 ## What the TailorCV Portfolio Builder Tracks
 Every portfolio published with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) includes a built-in view counter, visible from your **My Portfolios** dashboard. This gives you a simple, no-setup way to see total views without installing separate analytics tools.

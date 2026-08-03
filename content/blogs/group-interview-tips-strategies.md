@@ -153,16 +153,20 @@ Practicing in a simulated environment can significantly boost your confidence an
 Navigating a group interview can be tricky. Here’s a concise list of do's and don'ts to help you shine:
 
 ### Do's:
-- **Engage with Everyone**: Make eye contact with all interviewers and acknowledge your fellow candidates. It shows you’re a [team player](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026).
-- **Listen Actively**: Pay attention to others' responses. This will help you build on their ideas and demonstrate your collaborative skills.
-- **Be Concise**: Keep your answers clear and to the point. Avoid rambling to maintain the interest of the interviewers.
-- **Ask Questions**: Show your interest by asking insightful questions related to the role or company. This can set you apart from other candidates.
+| Question | What they are checking |
+|---|---|
+| **Engage with Everyone** | Make eye contact with all interviewers and acknowledge your fellow candidates. It shows you’re a [team player](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026) |
+| **Listen Actively** | Pay attention to others' responses. This will help you build on their ideas and demonstrate your collaborative skills |
+| **Be Concise** | Keep your answers clear and to the point. Avoid rambling to maintain the interest of the interviewers |
+| **Ask Questions** | Show your interest by asking insightful questions related to the role or company. This can set you apart from other candidates |
 
 ### Don'ts:
-- **Dominate the Conversation**: While it’s important to assert yourself, make sure you’re not overshadowing others. Collaboration is key.
-- **Interrupt Others**: Allow your peers to finish their thoughts before you jump in. This demonstrates respect and good listening skills.
-- **Be Negative**: Avoid speaking poorly about past employers or experiences. Keep the conversation positive and focused on your strengths.
-- **Lose Focus**: Stay engaged throughout the interview. It's easy to zone out when others are speaking, but your attention matters.
+| What | Details |
+|---|---|
+| **Dominate the Conversation** | While it’s important to assert yourself, make sure you’re not overshadowing others. Collaboration is key |
+| **Interrupt Others** | Allow your peers to finish their thoughts before you jump in. This demonstrates respect and good listening skills |
+| **Be Negative** | Avoid speaking poorly about past employers or experiences. Keep the conversation positive and focused on your strengths |
+| **Lose Focus** | Stay engaged throughout the interview. It's easy to zone out when others are speaking, but your attention matters |
 
 ## Common Group Interview Scenarios and Responses
 

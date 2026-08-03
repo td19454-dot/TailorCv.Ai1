@@ -110,10 +110,12 @@ Your resume, LinkedIn, and portfolio should tell the **same** story—same name,
 For tips on incorporating your portfolio link into your resume, see [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume).
 
 ## Common Mistakes to Avoid
-- **Forgetting HTTPS**: Browsers flag "not secure," which can deter visitors.
-- **Using Huge, Unoptimized Images**: Slow loading times can frustrate users.
-- **Blocking the Site from Google**: Accidental settings in robots.txt can prevent indexing.
-- **Dead Links After Deploy**: Always run the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying) to ensure everything is functional.
+| Mistake | Why it costs you |
+|---|---|
+| **Forgetting HTTPS** | Browsers flag "not secure," which can deter visitors |
+| **Using Huge, Unoptimized Images** | Slow loading times can frustrate users |
+| **Blocking the Site from Google** | Accidental settings in robots.txt can prevent indexing |
+| **Dead Links After Deploy** | Always run the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying) to ensure everything is functional |
 
 ## Conclusion
 Hosting your portfolio website for free in 2026 is entirely feasible with the available tools and platforms. By following the steps outlined above, you can create a professional online presence that effectively showcases your skills and projects. Whether you're a backend developer, frontend developer, or a full-stack developer, having a well-structured portfolio can significantly enhance your job prospects. For project ideas to include in your portfolio, check out our list of [15 Developer Portfolio Project Ideas That Get You Hired in 2026](https://thetailorcv.com/blog/developer-portfolio-project-ideas).

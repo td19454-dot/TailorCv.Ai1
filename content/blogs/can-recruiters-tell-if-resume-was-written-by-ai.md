@@ -88,10 +88,12 @@ By providing specific details and outcomes, you create a more compelling narrati
 
 Even with AI's assistance, it's easy to make mistakes that can hurt your chances. Here are some common pitfalls to avoid:
 
-- **Over-reliance on AI**: Trusting AI to create your resume without any personal input can result in a lack of authenticity.
-- **Ignoring Formatting Guidelines**: Ensure your resume follows ATS-friendly formatting rules. This includes using standard fonts, avoiding graphics, and keeping it concise.
-- **Failing to Update Regularly**: As you gain new experiences, ensure your resume reflects your most current skills and achievements.
-- **Neglecting Soft Skills**: While hard skills are crucial, soft skills are equally important. See how [matching your resume to the soft skills buried in a job description](https://thetailorcv.com/blog/matching-resume-to-soft-skills-in-job-description) can enhance your application.
+| Mistake | Why it costs you |
+|---|---|
+| **Over-reliance on AI** | Trusting AI to create your resume without any personal input can result in a lack of authenticity |
+| **Ignoring Formatting Guidelines** | Ensure your resume follows ATS-friendly formatting rules. This includes using standard fonts, avoiding graphics, and keeping it concise |
+| **Failing to Update Regularly** | As you gain new experiences, ensure your resume reflects your most current skills and achievements |
+| **Neglecting Soft Skills** | While hard skills are crucial, soft skills are equally important. See how [matching your resume to the soft skills buried in a job description](https://thetailorcv.com/blog/matching-resume-to-soft-skills-in-job-description) can enhance your application |
 
 ---
 

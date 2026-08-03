@@ -205,12 +205,14 @@ Run it through a free [ATS score checker](https://thetailorcv.com/solutions) aga
 
 Understanding where your resume ends up helps you format it correctly. The main channels in Malaysia are:
 
-- **JobStreet by SEEK** — the dominant [job portal](https://thetailorcv.com/blog/best-job-search-websites-2026) in Malaysia. Its system parses your uploaded resume and your profile, so both need to be complete and keyword-aligned.
-- **LinkedIn** — increasingly important for professional, MNC, and tech roles. Many recruiters source candidates directly here, which is why a strong profile matters; see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia).
-- **Hiredly (formerly WOBB)** — popular with younger professionals and startups.
-- **Maukerja and Ricebowl** — strong for non-executive, retail, F&B, and Bahasa-Malaysia-first roles.
-- **Indeed Malaysia** — aggregates listings across the market.
-- **Company career pages and GLC portals** — banks, Petronas, Khazanah-linked companies, and MNCs often run their own ATS-driven portals.
+| Reason | What it gets you |
+|---|---|
+| **JobStreet by SEEK** | the dominant [job portal](https://thetailorcv.com/blog/best-job-search-websites-2026) in Malaysia. Its system parses your uploaded resume and your profile, so both need to be complete and keyword-aligned |
+| **LinkedIn** | increasingly important for professional, MNC, and tech roles. Many recruiters source candidates directly here, which is why a strong profile matters; see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia) |
+| **Hiredly (formerly WOBB)** | popular with younger professionals and startups |
+| **Maukerja and Ricebowl** | strong for non-executive, retail, F&B, and Bahasa-Malaysia-first roles |
+| **Indeed Malaysia** | aggregates listings across the market |
+| **Company career pages and GLC portals** | banks, Petronas, Khazanah-linked companies, and MNCs often run their own ATS-driven portals |
 
 On every one of these, an ATS or a matching algorithm reads your resume first. That is why the formatting and keyword advice above is not optional — it is the difference between being surfaced and being buried. Run your resume through the [ATS checker](https://thetailorcv.com/solutions) before uploading it anywhere.
 

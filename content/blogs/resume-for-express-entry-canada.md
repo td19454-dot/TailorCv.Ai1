@@ -24,11 +24,13 @@ When applying for Express Entry and Permanent Residency (PR) in Canada, your res
 
 Before diving into writing your resume, familiarize yourself with the specific norms and expectations in Canada. Here are key elements to keep in mind:
 
-- **No Personal Details**: Canadian resumes do not typically include personal details such as photos, age, or marital status. This practice helps avoid bias in the hiring process.
-- **Length**: While many countries prefer a one-page resume, Canadian employers often accept resumes that are two pages long, especially for candidates with extensive experience.
-- **Spelling and Language**: Use Canadian English spelling (e.g., "colour" instead of "color") and ensure your language is clear and professional.
-- **Contact Information**: Format your phone number and address correctly. For instance, use (123) 456-7890 for phone numbers and follow the Canadian address format.
-- **References**: It’s customary to state "References available upon request" rather than listing them directly on your resume.
+| Rule | What it means |
+|---|---|
+| **No Personal Details** | Canadian resumes do not typically include personal details such as photos, age, or marital status. This practice helps avoid bias in the hiring process |
+| **Length** | While many countries prefer a one-page resume, Canadian employers often accept resumes that are two pages long, especially for candidates with extensive experience |
+| **Spelling and Language** | Use Canadian English spelling (e.g., "colour" instead of "color") and ensure your language is clear and professional |
+| **Contact Information** | Format your phone number and address correctly. For instance, use (123) 456-7890 for phone numbers and follow the Canadian address format |
+| **References** | It’s customary to state "References available upon request" rather than listing them directly on your resume |
 
 For more in-depth guidance, check out our [Canadian Resume Format Guide (2026)](https://thetailorcv.com/blog/canadian-resume-format-guide-2026).
 

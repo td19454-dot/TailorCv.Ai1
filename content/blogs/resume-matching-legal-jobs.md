@@ -146,10 +146,12 @@ When tailoring your resume, be mindful of these common mistakes:
 
 ### Don’ts
 
-- **Don’t Use Jargon**: Avoid overly technical language that may not be understood by HR professionals. Use clear and concise language.
-- **Don’t Include Irrelevant Experience**: Focus on experiences that relate directly to the job description. Remove unrelated job history that may dilute your qualifications.
-- **Don’t Forget to Proofread**: Spelling and grammar errors can undermine your professionalism. Always proofread before submitting your resume.
-- **Don’t Ignore the Cover Letter**: A tailored cover letter can complement your resume by providing context for your experience and enthusiasm for the role. Use [TailorCV's cover letter tool](https://www.thetailorcv.com/cover-letter) to create a compelling letter.
+| What to include | Why |
+|---|---|
+| **Don’t Use Jargon** | Avoid overly technical language that may not be understood by HR professionals. Use clear and concise language |
+| **Don’t Include Irrelevant Experience** | Focus on experiences that relate directly to the job description. Remove unrelated job history that may dilute your qualifications |
+| **Don’t Forget to Proofread** | Spelling and grammar errors can undermine your professionalism. Always proofread before submitting your resume |
+| **Don’t Ignore the Cover Letter** | A tailored cover letter can complement your resume by providing context for your experience and enthusiasm for the role. Use [TailorCV's cover letter tool](https://www.thetailorcv.com/cover-letter) to create a compelling letter |
 
 ## Mini Checklist for Legal Resume Matching
 

@@ -130,10 +130,12 @@ Understanding how others successfully navigated job hopping can provide valuable
 
 Avoid the following pitfalls when discussing your job history:
 
-- **Being Defensive**: Instead of justifying each move, focus on the positive outcomes and what you learned.
-- **Over-Explaining**: Keep your answers concise. You don’t need to delve into every detail unless prompted.
-- **Neglecting to Connect**: Make sure to link your past experiences to the role you’re applying for. Show how your journey has prepared you for this opportunity.
-- **Ignoring Company Culture**: Tailor your narrative to align with the company's values and mission. Research the organization and incorporate relevant points into your discussion.
+| Mistake | Why it costs you |
+|---|---|
+| **Being Defensive** | Instead of justifying each move, focus on the positive outcomes and what you learned |
+| **Over-Explaining** | Keep your answers concise. You don’t need to delve into every detail unless prompted |
+| **Neglecting to Connect** | Make sure to link your past experiences to the role you’re applying for. Show how your journey has prepared you for this opportunity |
+| **Ignoring Company Culture** | Tailor your narrative to align with the company's values and mission. Research the organization and incorporate relevant points into your discussion |
 
 ---
 

@@ -168,10 +168,12 @@ It is worth understanding the business model here, because Zety is not unusual �
 
 Search "free resume builder" and you will get dozens of results. Almost none of them are free in the way you mean. What they mean is one of:
 
-- **Free to build, paid to download** — Zety's model. You do the work, then pay to take it with you.
-- **Free with branding** — you can download, but the tool's logo is on your resume.
-- **Free trial** — genuinely full-featured, for seven days, then it renews.
-- **Free tier with a hard cap** — one resume, or five scans, or ten tracked jobs.
+| Reason | What it gets you |
+|---|---|
+| **Free to build, paid to download** | Zety's model. You do the work, then pay to take it with you |
+| **Free with branding** | you can download, but the tool's logo is on your resume |
+| **Free trial** | genuinely full-featured, for seven days, then it renews |
+| **Free tier with a hard cap** | one resume, or five scans, or ten tracked jobs |
 
 Each of these is a legitimate business decision, and software costs money to run — we charge for things too. The issue is not that these tools want to be paid. It is that the word "free" is doing enormous marketing work in the search result, and the actual terms only surface after you are invested.
 

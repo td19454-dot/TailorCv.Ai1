@@ -141,11 +141,13 @@ Research how interviewers score responses. Many organizations use a scale (e.g.,
 
 ### Step 7: Review Common Mistakes
 
-- **Generic answers**: Avoid vague responses that don't provide specific examples.
-- **Hypothetical answers**: Stick to real experiences unless explicitly asked otherwise.
-- **Not using the STAR structure**: Ensure your answers are structured to convey your message clearly.
-- **Unclear role**: Be specific about your contributions in team scenarios.
-- **No measurable results**: Always quantify your achievements when possible. See [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+| Mistake | Why it costs you |
+|---|---|
+| **Generic answers** | Avoid vague responses that don't provide specific examples |
+| **Hypothetical answers** | Stick to real experiences unless explicitly asked otherwise |
+| **Not using the STAR structure** | Ensure your answers are structured to convey your message clearly |
+| **Unclear role** | Be specific about your contributions in team scenarios |
+| **No measurable results** | Always quantify your achievements when possible. See [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) |
 
 ---
 

@@ -124,11 +124,13 @@ Creating a compelling 30-second video pitch involves more than just reciting you
 
 While crafting your video pitch, be aware of these common pitfalls that can undermine your message:
 
-- **Reading from a Script**: This can make your delivery sound robotic. Instead, practice enough to speak naturally and confidently.
-- **Ignoring Non-Verbal Cues**: Body language is crucial. Avoid folding your arms or looking away; instead, use open gestures and maintain eye contact.
-- **Overloading with Information**: Stick to the essentials. A concise pitch is more impactful than one that tries to cover every aspect of your experience.
-- **Neglecting Technical Quality**: Poor audio or video quality can distract from your message. Use a good camera and microphone, and ensure proper lighting.
-- **Failing to Tailor Your Pitch**: Generic pitches fail to resonate. Always customize your content to reflect the specific job description.
+| Mistake | Why it costs you |
+|---|---|
+| **Reading from a Script** | This can make your delivery sound robotic. Instead, practice enough to speak naturally and confidently |
+| **Ignoring Non-Verbal Cues** | Body language is crucial. Avoid folding your arms or looking away; instead, use open gestures and maintain eye contact |
+| **Overloading with Information** | Stick to the essentials. A concise pitch is more impactful than one that tries to cover every aspect of your experience |
+| **Neglecting Technical Quality** | Poor audio or video quality can distract from your message. Use a good camera and microphone, and ensure proper lighting |
+| **Failing to Tailor Your Pitch** | Generic pitches fail to resonate. Always customize your content to reflect the specific job description |
 
 ## Do's and Don'ts for Your Video Pitch
 

@@ -21,11 +21,13 @@ Finance and accounting roles are conservative about confidentiality, which is ex
 - Craft a compelling narrative by starting with a personal statement, using case studies to present achievements, and highlighting learning experiences to demonstrate growth.
 
 ## What to Include
-- **Financial models** - a DCF, three-statement model, or budget forecast built on public or dummy data
-- **Process improvement case studies** - a close-cycle reduction, a reconciliation automation, an audit finding you resolved
-- **Dashboards** - Excel, Power BI, or Tableau dashboards summarizing variance analysis or KPI tracking
-- **Certifications** - CPA, CFA, CMA, or relevant coursework, clearly listed with status (in progress vs completed)
-- **Tools** - Excel/VBA, SQL, ERP systems (SAP, NetSuite, Oracle), and any modeling or BI tools
+| What to include | Why |
+|---|---|
+| **Financial models** | a DCF, three-statement model, or budget forecast built on public or dummy data |
+| **Process improvement case studies** | a close-cycle reduction, a reconciliation automation, an audit finding you resolved |
+| **Dashboards** | Excel, Power BI, or Tableau dashboards summarizing variance analysis or KPI tracking |
+| **Certifications** | CPA, CFA, CMA, or relevant coursework, clearly listed with status (in progress vs completed) |
+| **Tools** | Excel/VBA, SQL, ERP systems (SAP, NetSuite, Oracle), and any modeling or BI tools |
 
 ## Frame the Decision, Not Just the Spreadsheet
 A model with no context is just numbers. For every project, state:

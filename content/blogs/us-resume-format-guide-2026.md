@@ -24,11 +24,13 @@ Writing a resume for the American job market can be a daunting task, especially 
 
 In the U.S., resumes typically follow a specific format and structure. Here are some key points to keep in mind:
 
-- **Length**: Early-career professionals should aim for a one-page resume. More experienced candidates can extend to two pages if necessary.
-- **Personal Information**: Do not include a photo, age, or marital status. Just your name, phone number, email address, and LinkedIn profile link are usually sufficient.
-- **Format**: Use a clean, [professional layout](https://www.thetailorcv.com/templates) with clear headings and bullet points for easy readability.
-- **Action Verbs**: Start each bullet point with a strong action verb to convey your achievements and responsibilities effectively.
-- **Quantification**: Whenever possible, quantify your accomplishments to provide context and scale (e.g., “Increased sales by 20% in Q2”).
+| Rule | What it means |
+|---|---|
+| **Length** | Early-career professionals should aim for a one-page resume. More experienced candidates can extend to two pages if necessary |
+| **Personal Information** | Do not include a photo, age, or marital status. Just your name, phone number, email address, and LinkedIn profile link are usually sufficient |
+| **Format** | Use a clean, [professional layout](https://www.thetailorcv.com/templates) with clear headings and bullet points for easy readability |
+| **Action Verbs** | Start each bullet point with a strong action verb to convey your achievements and responsibilities effectively |
+| **Quantification** | Whenever possible, quantify your accomplishments to provide context and scale (e.g., “Increased sales by 20% in Q2”) |
 
 ## Essential Components of a U.S. Resume
 

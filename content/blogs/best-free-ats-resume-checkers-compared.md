@@ -84,19 +84,23 @@ A keyword score tells you if you'll get *past* the ATS - it says nothing about w
 
 When evaluating different ATS checkers, consider the following key features that can enhance your job application process:
 
-- **User-Friendly Interface**: A simple, intuitive interface will make it easier to navigate the tool and understand your results.
-- **Comprehensive Feedback**: Look for tools that provide actionable insights, such as specific suggestions for improving your resume.
-- **Compatibility with Different Formats**: Ensure the tool can analyze resumes in various formats (PDF, Word, etc.) to suit your needs.
-- **Industry-Specific Recommendations**: Some ATS checkers offer tailored advice based on your industry or job role, which can significantly improve your chances.
+| Check | What to look for |
+|---|---|
+| **User-Friendly Interface** | A simple, intuitive interface will make it easier to navigate the tool and understand your results |
+| **Comprehensive Feedback** | Look for tools that provide actionable insights, such as specific suggestions for improving your resume |
+| **Compatibility with Different Formats** | Ensure the tool can analyze resumes in various formats (PDF, Word, etc.) to suit your needs |
+| **Industry-Specific Recommendations** | Some ATS checkers offer tailored advice based on your industry or job role, which can significantly improve your chances |
 
 ### Common Mistakes to Avoid
 
 Even with the [best ATS checkers](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it), job seekers still make mistakes that can hinder their chances:
 
-- **Ignoring Formatting Guidelines**: Many candidates overlook the importance of formatting. Ensure your resume is simple and clear, avoiding complex layouts.
-- **Keyword Stuffing**: While keywords are crucial, overloading your resume with them can hurt readability and may raise red flags for recruiters.
-- **Neglecting to Tailor Each Application**: Sending the same resume for multiple jobs can lead to missed opportunities. Always tailor your resume to match the job description.
-- **Failing to Update Skills**: Regularly update your skills section to reflect the latest industry trends and technologies relevant to your field.
+| Mistake | Why it costs you |
+|---|---|
+| **Ignoring Formatting Guidelines** | Many candidates overlook the importance of formatting. Ensure your resume is simple and clear, avoiding complex layouts |
+| **Keyword Stuffing** | While keywords are crucial, overloading your resume with them can hurt readability and may raise red flags for recruiters |
+| **Neglecting to Tailor Each Application** | Sending the same resume for multiple jobs can lead to missed opportunities. Always tailor your resume to match the job description |
+| **Failing to Update Skills** | Regularly update your skills section to reflect the latest industry trends and technologies relevant to your field |
 
 ---
 

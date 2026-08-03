@@ -82,11 +82,13 @@ Creating a standout portfolio can feel overwhelming, but breaking it down into m
 
 When building your portfolio, it’s essential to avoid pitfalls that can detract from your professional image. Here are common mistakes to watch out for:
 
-- **Overloading with Content**: Less is often more. Focus on quality over quantity. Select your best work rather than trying to showcase everything.
-- **Neglecting Design**: A cluttered or unattractive design can turn people away. Invest time in creating an aesthetically pleasing layout.
-- **Lack of Context**: Always provide context for your work. Don’t assume the viewer will understand the significance of a project without explanation.
-- **Inconsistency**: Ensure a consistent style and tone throughout your portfolio. This includes fonts, colors, and language.
-- **Forgetting About Mobile Optimization**: Many users will view your portfolio on mobile devices. Make sure it is responsive and looks good on all screen sizes.
+| Mistake | Why it costs you |
+|---|---|
+| **Overloading with Content** | Less is often more. Focus on quality over quantity. Select your best work rather than trying to showcase everything |
+| **Neglecting Design** | A cluttered or unattractive design can turn people away. Invest time in creating an aesthetically pleasing layout |
+| **Lack of Context** | Always provide context for your work. Don’t assume the viewer will understand the significance of a project without explanation |
+| **Inconsistency** | Ensure a consistent style and tone throughout your portfolio. This includes fonts, colors, and language |
+| **Forgetting About Mobile Optimization** | Many users will view your portfolio on mobile devices. Make sure it is responsive and looks good on all screen sizes |
 
 ## Scenario: Portfolio Critique
 
@@ -109,10 +111,12 @@ Creating a student portfolio involves making strategic choices. Here are some do
 - **Do Use Analytics**: If your portfolio is online, use analytics tools to understand viewer engagement and adjust accordingly.
 
 ### Don'ts:
-- **Don’t Use Generic Templates**: Avoid using overly common templates that may make your portfolio blend in with others.
-- **Don’t Ignore SEO**: If your portfolio is online, optimize it for search engines to increase visibility.
-- **Don’t Forget to Cite Sources**: If you include collaborative work, always credit your collaborators to maintain integrity.
-- **Don’t Leave Out Soft Skills**: While technical skills are crucial, don’t forget to highlight your soft skills through examples in your projects. 
+| Skill | Why it matters |
+|---|---|
+| **Don’t Use Generic Templates** | Avoid using overly common templates that may make your portfolio blend in with others |
+| **Don’t Ignore SEO** | If your portfolio is online, optimize it for search engines to increase visibility |
+| **Don’t Forget to Cite Sources** | If you include collaborative work, always credit your collaborators to maintain integrity |
+| **Don’t Leave Out Soft Skills** | While technical skills are crucial, don’t forget to highlight your soft skills through examples in your projects |
 
 By following these guidelines and suggestions, you can create a standout portfolio that not only showcases your skills and experiences but also reflects your unique identity as a student and future professional.
 

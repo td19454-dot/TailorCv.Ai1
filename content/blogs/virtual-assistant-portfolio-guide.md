@@ -21,11 +21,13 @@ As a virtual assistant or freelance support professional, you are usually sellin
 - Specializing in a niche can help command higher rates, so clearly define your services and gather client testimonials promptly after project completion.
 
 ## What to Include
-- **Clear service packages** - calendar/inbox management, bookkeeping, customer support, project coordination, listed with what is included
-- **Client results** - hours saved per week, response time improvements, project turnaround times
-- **Testimonials** - 3-5 short client quotes, ideally with the client's role/industry (with permission)
-- **Tools you use** - project management (Asana, Trello, Notion), scheduling (Calendly), communication, and any niche software specific to your clients' industries
-- **A simple rate or engagement structure** - hourly, retainer, or project-based, so prospects self-qualify before reaching out
+| What to include | Why |
+|---|---|
+| **Clear service packages** | calendar/inbox management, bookkeeping, customer support, project coordination, listed with what is included |
+| **Client results** | hours saved per week, response time improvements, project turnaround times |
+| **Testimonials** | 3-5 short client quotes, ideally with the client's role/industry (with permission) |
+| **Tools you use** | project management (Asana, Trello, Notion), scheduling (Calendly), communication, and any niche software specific to your clients' industries |
+| **A simple rate or engagement structure** | hourly, retainer, or project-based, so prospects self-qualify before reaching out |
 
 ## Frame Reliability and Range
 Clients hiring a VA or freelance support professional want to know two things: can you handle the range of tasks they need, and can they trust you unsupervised. For each service or case study:

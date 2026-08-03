@@ -82,10 +82,12 @@ When they reinforce each other, every recruiter touchpoint pushes you forward. S
 
 Identifying and avoiding common pitfalls can greatly enhance your portfolio's effectiveness:
 
-- **Shipping code with no tests or docs**: Always include tests and documentation.
-- **No deployed endpoint to actually call**: Ensure your projects are live and accessible.
-- **Hiding everything in private repos**: Make your best work visible with [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
-- **Dead links**: Run the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying) to ensure everything works.
+| Mistake | Why it costs you |
+|---|---|
+| **Shipping code with no tests or docs** | Always include tests and documentation |
+| **No deployed endpoint to actually call** | Ensure your projects are live and accessible |
+| **Hiding everything in private repos** | Make your best work visible with [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization) |
+| **Dead links** | Run the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying) to ensure everything works |
 
 ### Additional Pitfalls to Avoid
 - Overcomplicating your projects: Focus on quality over quantity.

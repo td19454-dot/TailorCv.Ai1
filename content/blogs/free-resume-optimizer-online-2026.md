@@ -35,10 +35,12 @@ Optimizing runs in four visible stages - upload, analyze, optimize, complete - a
 
 A real optimizer works differently. It takes two inputs, your resume and a specific [job description](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job), and compares them directly. That comparison produces four types of output:
 
-- **Keyword gaps** - required or preferred skills, tools, and qualifications from the job posting that do not appear anywhere in your resume.
-- **Match strength** - how closely your existing experience, title history, and skills align with what the posting is actually asking for, not just a vague "quality" score.
-- **Formatting and parsing risk** - whether your resume's layout, file type, headers, or use of tables and columns will cause an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) to misread your work history or drop sections entirely.
-- **Bullet-level suggestions** - specific lines the tool flags as vague, unmeasured, or missing context, along with a direction for rewriting them.
+| Type | What it involves |
+|---|---|
+| **Keyword gaps** | required or preferred skills, tools, and qualifications from the job posting that do not appear anywhere in your resume |
+| **Match strength** | how closely your existing experience, title history, and skills align with what the posting is actually asking for, not just a vague "quality" score |
+| **Formatting and parsing risk** | whether your resume's layout, file type, headers, or use of tables and columns will cause an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) to misread your work history or drop sections entirely |
+| **Bullet-level suggestions** | specific lines the tool flags as vague, unmeasured, or missing context, along with a direction for rewriting them |
 
 The difference matters because the first two outputs are relative to a job, and the second two are absolute. A resume can pass every formatting check and still score poorly against a specific posting because it is missing the language that posting uses. Conversely, a resume can be a strong match for a role and still get auto-rejected because a two-column layout confused the parser. A useful optimizer checks both, and tells you which one is the problem.
 

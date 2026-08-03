@@ -143,11 +143,13 @@ Case interviews often appear in [final round](https://thetailorcv.com/blog/final
 
 ## Common Case Interview Mistakes
 
-- **Jumping to Conclusions**: Avoid making assumptions without a structured analysis. Take the time to gather data.
-- **Not Asking Clarifying Questions**: Always seek clarification to ensure you understand the problem fully.
-- **Silent Thinking**: Interviewers cannot evaluate what they cannot hear. Think aloud to demonstrate your reasoning process.
-- **Ignoring the Recommendation Step**: Always conclude with a clear recommendation based on your analysis.
-- **Getting Stuck on Math**: If you encounter a tough calculation, don’t let it derail the entire case. Make reasonable assumptions and move on.
+| Mistake | Why it costs you |
+|---|---|
+| **Jumping to Conclusions** | Avoid making assumptions without a structured analysis. Take the time to gather data |
+| **Not Asking Clarifying Questions** | Always seek clarification to ensure you understand the problem fully |
+| **Silent Thinking** | Interviewers cannot evaluate what they cannot hear. Think aloud to demonstrate your reasoning process |
+| **Ignoring the Recommendation Step** | Always conclude with a clear recommendation based on your analysis |
+| **Getting Stuck on Math** | If you encounter a tough calculation, don’t let it derail the entire case. Make reasonable assumptions and move on |
 
 ### Real-World Examples of Case Interview Mistakes
 
