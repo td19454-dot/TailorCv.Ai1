@@ -4,7 +4,7 @@ description: Ace your Malaysian job interview in 2026 with these practical tips 
 date: 2026-07-30
 author: TailorCV Team
 tags: [interview tips Malaysia, Malaysia interview questions, job interview Malaysia]
-category: [Interview Prep](https://thetailorcv.com/interview-prep)
+category: Interview Preparation
 slug: interview-tips-malaysia
 keywords: interview tips malaysia, malaysia interview questions and answers, job interview malaysia, how to prepare for interview malaysia
 image: public/blog-images/interview-tips-malaysia.png
