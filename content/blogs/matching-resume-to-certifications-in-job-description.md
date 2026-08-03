@@ -99,6 +99,13 @@ Paste the job description into [TailorCV's resume optimizer](/solutions) to see 
 
 When navigating the challenges of missing certifications, it's easy to make mistakes that can hinder your job application process. Here are some common pitfalls to watch out for:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Ignoring the Certification Requirement**: Some candidates may overlook the importance of the certification altogether. If it’s listed as a requirement, even if it's labeled as "preferred," acknowledging it in your application is crucial.
 
 2. **Overstating Your Experience**: While it's tempting to embellish skills or experiences related to the certification, honesty is key. Misrepresentation can lead to disqualification if discovered.

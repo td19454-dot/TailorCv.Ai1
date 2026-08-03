@@ -129,6 +129,13 @@ Feed whichever of these applies into the generator instead of a bare task descri
 
 Recruiters who screen resumes daily are now seeing a lot of AI-polished bullets that all sound suspiciously similar. To make sure your resume does not blend into that pile, personalize the output before it goes on the page:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - **Name your actual tools.** Replace "using project management software" with the tool you actually used - Jira, Asana, Monday, Excel, whatever it was. Specificity reads as credibility.
 - **Keep your own voice on soft skills.** If the generator adds "excellent communication skills" or similar filler, cut it - that phrase carries no information and every resume claims it.
 - **Reorder for what matters most in this job.** If you are applying to a data-heavy role, move the bullet with the strongest number higher. Do not accept the generator's default order.

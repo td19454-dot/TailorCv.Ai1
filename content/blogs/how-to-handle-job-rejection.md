@@ -160,6 +160,13 @@ Rules for managing rejection psychologically:
 
 ## Common Rejection Recovery Mistakes
 
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
 ### Mistake 1: Applying to fewer roles after rejection
 
 The temptation is to slow down after rejection. The right move is usually to maintain or increase your application rate while improving quality.

@@ -121,6 +121,13 @@ Once you've decided, decline the other offer professionally and promptly - see t
 
 ## Additional Strategies for Successful Negotiation
 
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
 ### Create a Negotiation Checklist
 
 1. **List Your Offers**: Include details like salary, benefits, and work culture.

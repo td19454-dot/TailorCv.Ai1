@@ -136,6 +136,13 @@ Manufacturing Company | Mar 2021 - Present
 - CIMA
 - Enrolled Agent (EA) - US tax
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 List format:
 CPA | State Board of Accountancy | 2024
 

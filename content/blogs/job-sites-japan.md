@@ -75,6 +75,13 @@ Teaching typically requires a degree and native/fluent English, but not Japanese
 
 Not every opportunity is advertised. In Japan, connections and referrals matter:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 - **Professional meetups and industry events** (especially in Tokyo's tech and startup scene).
 - **Expat and professional communities.**
 - **Alumni networks and informational interviews.**

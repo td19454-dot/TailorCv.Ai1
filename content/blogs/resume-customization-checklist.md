@@ -135,6 +135,13 @@ Use: Summary, Experience, Skills, Education, Certifications. Non-standard header
 
 ## Section 5 - Final Verification (1 Minute)
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 ### 15. Have you run the ATS check?
 
 This is the only step that objectively confirms whether the previous 14 steps worked. Paste your resume and the job description into [TailorCV's free ATS checker](/solutions). You'll see your keyword match score, your overall ATS score, and the specific terms you are still missing - in under 60 seconds.

@@ -133,6 +133,13 @@ After completing the checklist, read your entire resume out loud. You will catch
 - Repeated phrases across bullets
 - Inconsistencies in tone
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 This takes 3-5 minutes and consistently catches things written review misses.
 
 ---

@@ -123,6 +123,13 @@ None of these are complicated, but done consistently they're what separate the c
 
 Toronto employers rely heavily on behavioural interviews. Prepare STAR stories, research each company, and rehearse. Use [interview prep](https://thetailorcv.com/interview-prep) to generate likely questions, practise with the [AI mock interview](https://thetailorcv.com/mock-interview), and review our [interview tips for Canada](https://thetailorcv.com/blog/interview-tips-canada).
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 ## Salary and Cost of Living in Toronto (2026)
 
 Toronto salaries are among the highest in Canada, reflecting the concentration of finance and tech employers. But it's also one of Canada's most expensive cities — housing costs in particular are high. When weighing an offer:

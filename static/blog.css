@@ -1138,6 +1138,36 @@ header.navbar {
   color: #1e293b !important;
 }
 
+/* Same problem as the blockquotes: a table inside a tone-4/5 card inherits
+   color:#ffffff !important while keeping its own white/near-white cell
+   background, so the first column and every link vanished. */
+.blog-detail-page .step-card.step-tone-4 table,
+.blog-detail-page .step-card.step-tone-5 table,
+.blog-detail-page .step-card.step-tone-4 td,
+.blog-detail-page .step-card.step-tone-5 td,
+.blog-detail-page .step-card.step-tone-4 td p,
+.blog-detail-page .step-card.step-tone-5 td p,
+.blog-detail-page .step-card.step-tone-4 td li,
+.blog-detail-page .step-card.step-tone-5 td li,
+.blog-detail-page .step-card.step-tone-4 td strong,
+.blog-detail-page .step-card.step-tone-5 td strong,
+.blog-detail-page .step-card.step-tone-4 .tcx-bar-val,
+.blog-detail-page .step-card.step-tone-5 .tcx-bar-val {
+  color: #172033 !important;
+}
+
+.blog-detail-page .step-card.step-tone-4 td a,
+.blog-detail-page .step-card.step-tone-5 td a {
+  color: #5B42F3 !important;
+  text-decoration-color: currentColor;
+}
+
+/* th keeps its own blue fill + white text, which is already readable. */
+.blog-detail-page .step-card.step-tone-4 th,
+.blog-detail-page .step-card.step-tone-5 th {
+  color: #ffffff !important;
+}
+
 .blog-detail-page .step-card.step-tone-4 blockquote a,
 .blog-detail-page .step-card.step-tone-5 blockquote a,
 .blog-detail-page .step-card.step-tone-4 .answer-box a,
@@ -1887,21 +1917,25 @@ header.navbar {
    106 posts write `- [ ] item`. python-markdown has no task-list extension
    enabled, so the literal "[ ]" was printing beside the bullet; the markup is
    rewritten in BlogService._render_task_lists and styled here. */
+/* NOT display:flex - that turns every inline child (each <a>, each text
+   node) into its own flex column, which shredded any checklist item
+   containing links into narrow stacked columns. Absolute-positioned box
+   keeps the text in normal inline flow. */
 .blog-detail-page .post-content li.task-item {
   list-style: none;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  position: relative;
+  padding-left: 30px;
   margin-left: -22px;
 }
 
 .blog-detail-page .post-content li.task-item::marker { content: none; }
 
 .blog-detail-page .post-content .task-box {
-  flex: 0 0 auto;
+  position: absolute;
+  left: 0;
+  top: 4px;
   width: 19px;
   height: 19px;
-  margin-top: 3px;
   border: 2px solid #b9a3ff;
   border-radius: 5px;
   background: #ffffff;

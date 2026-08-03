@@ -138,6 +138,13 @@ The strong version names a field, references real experience, and states a direc
 
 A skills section is meant to be scannable proof, not a wish list. Two categories are worth including:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - **Technical or hard skills** - software, tools, platforms, or languages you can actually use without help: spreadsheet tools, design software, coding languages, specific platforms relevant to the role (CRM tools, analytics dashboards, POS systems).
 - **Transferable skills with backup elsewhere on the page** - things like project coordination, public speaking, or customer service, but only if a bullet somewhere in your experience or projects section actually demonstrates them. A skill with zero supporting evidence anywhere on the resume reads as filler.
 

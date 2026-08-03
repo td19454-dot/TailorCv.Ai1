@@ -125,6 +125,13 @@ FMCG Company | Apr 2021 - Present
 - CIPS (Chartered Institute of Procurement and Supply)
 - PMP (for project-heavy roles)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ---
 
 ## Common Supply Chain Resume Mistakes

@@ -16,11 +16,6 @@ If you are searching for a free Chrome extension to beat the ATS, you already un
 
 First, a reframe, because the phrase is slightly misleading. You do not beat an [applicant tracking system](/blog/ats-resume-checker-how-it-works) by tricking it — the old tricks (white keyword text, stuffing) get you rejected by the human on the other side, and modern systems flag them. You beat it by genuinely matching the job.
 
-### The same check running on Greenhouse
-
-![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-The same check on Greenhouse, one of the ATS platforms you are actually applying through. A 67% match tells you where you stand before you submit - and, more usefully, that there is room to close the gap first.
 
 
 Here is the mechanism. Your resume is parsed into structured data and matched, by exact language, against the job description. If the posting asks for "stakeholder management" and your resume says "worked with teams", [the filter does not connect them](/blog/how-to-match-resume-keywords-to-job-description) — it matches language, not meaning — and you are dropped. So "beating the ATS" means two honest things: your resume must [parse cleanly](/blog/ats-resume-parser-friendly-format), and it must [carry the posting's actual language](/blog/how-to-pass-ats-in-2026) where your real experience supports it. That is it. A good extension helps with exactly those two, and our [ATS score guide](/blog/ats-score-guide) covers the fundamentals.
@@ -64,6 +59,13 @@ Then judge the output. Install the tool, tailor against a real job, and read wha
 ## Beating the ATS Everywhere You Apply
 
 The same approach holds across boards and borders, because they all run the same kind of filter. For [remote roles](/blog/how-to-match-resume-to-remote-job-description) the competition is global so matching matters more, and a [remote cover letter](/blog/cover-letter-for-remote-jobs) helps. Conventions shift for [the USA](/blog/how-to-get-a-job-in-usa) and [Canada](/blog/how-to-get-a-job-in-canada), including whether you lead with a [resume or a CV](/blog/resume-vs-cv). And pace yourself — [fewer, matched applications](/blog/how-many-jobs-should-you-apply-to-per-day) beat volume.
+
+### The same check running on Greenhouse
+
+![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+The same check on Greenhouse, one of the ATS platforms you are actually applying through. A 67% match tells you where you stand before you submit - and, more usefully, that there is room to close the gap first.
+
 
 ## The Myths That Get People Rejected
 

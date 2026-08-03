@@ -211,6 +211,13 @@ The goal is always natural, honest usage — keywords woven into real achievemen
 
 Distribute keywords across three areas:
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+The score matters less than the breakdown beside it - each check names what passed, what failed and why, which is the list you actually work through.
+
+
 - **Professional summary:** weave in your two or three strongest, most relevant terms.
 - **Skills section:** list hard skills, tools, and certifications explicitly — clean keywords for the parser.
 - **Experience bullets:** demonstrate the keyword with a result. "Built forecasting models in Excel and SQL that improved budget accuracy by 20%" beats simply listing "Excel, SQL."

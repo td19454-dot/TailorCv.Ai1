@@ -95,6 +95,13 @@ The job market is always evolving, and staying updated is essential. Here are so
 
 1. **Neglecting Soft Skills:** Technical skills are essential, but soft skills like communication, teamwork, and problem-solving are equally important. Employers often look for well-rounded candidates who can adapt and collaborate effectively.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 2. **Underestimating the Power of Personal Projects:** Many candidates fail to showcase personal projects or side hustles that demonstrate their skills. Consider creating a project that aligns with your job target and include it in your portfolio.
 
 3. **Ignoring Job Descriptions:** Tailoring your resume and cover letter to match the job description is crucial. Many applicants use generic applications, which can lead to being filtered out by ATS systems. Refer to [how ATS detects a generic resume](https://www.thetailorcv.com/blog/how-ats-detects-generic-resume) for tips on optimizing your application.

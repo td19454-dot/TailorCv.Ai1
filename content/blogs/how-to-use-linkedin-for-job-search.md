@@ -12,9 +12,6 @@ keywords: how to use LinkedIn for job search, LinkedIn job search tips 2026, Lin
 
 LinkedIn is the most important professional platform for job seekers in 2026. Over 90% of recruiters use LinkedIn to find and evaluate candidates. Having a weak [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) while applying for jobs is like submitting a great [resume](https://thetailorcv.com/blog/resume-optimization-linkedin-easy-apply) but leaving your contact information blank.
 
-![How to Use LinkedIn](public/blog-images/how-to-use-linkedin.webp)
-
-This guide covers every major lever: optimizing your profile for recruiter search, using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Jobs effectively, networking with intention, sending cold messages that get replies, and using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) signals to get found without actively applying.
 
 Before using LinkedIn, make sure your resume is equally strong - upload it to the [ATS score checker](https://www.thetailorcv.com/solutions), optimize it with the [job description](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day), and use an [ATS-friendly template](https://www.thetailorcv.com/templates). Your LinkedIn profile and resume should tell the same story.
 
@@ -183,6 +180,11 @@ These profile actions increase your visibility in [recruiter](https://thetailorc
 ---
 
 ## Common LinkedIn Job Search Mistakes
+
+
+![How to Use LinkedIn](public/blog-images/how-to-use-linkedin.webp)
+
+This guide covers every major lever: optimizing your profile for recruiter search, using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Jobs effectively, networking with intention, sending cold messages that get replies, and using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) signals to get found without actively applying.
 
 ### Mistake 1: Applying without personalizing
 

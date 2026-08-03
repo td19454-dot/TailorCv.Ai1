@@ -90,6 +90,13 @@ The healthiest follow-up strategy is to make each individual application matter 
 
 Follow-ups after an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) are different: send a thank-you within 24 hours. See our dedicated guide below for wording that [references](https://thetailorcv.com/blog/should-you-put-references-on-resume) the actual conversation.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 ## What to Do Before You Even Need to Follow Up
 
 The best follow-up strategy starts at the moment you apply. Two habits make every later follow-up more effective:

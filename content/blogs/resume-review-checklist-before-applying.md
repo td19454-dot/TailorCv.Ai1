@@ -129,6 +129,13 @@ The base checklist covers most applications, but certain situations call for ext
 
 Some mistakes are not about the content of the resume at all. They are small, easy-to-miss details that quietly signal a lack of care, and they are exactly the kind of thing a rushed final pass skips.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - **Leftover template text.** A previous company name, a placeholder bracket, or a template's sample bullet that never got deleted. This happens more often than people expect when resumes get copied and reused across applications.
 - **File naming.** "Resume_final_v3_ACTUAL_FINAL.pdf" looks unprofessional next to "FirstName_LastName_Resume.pdf." Rename the file every time before you attach it.
 - **Tense drift mid-bullet.** Starting a bullet in past tense and finishing it in present tense within the same sentence is common when bullets get edited piecemeal over time.

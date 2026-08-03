@@ -122,6 +122,13 @@ Then prove the most important ones in your experience bullets.
 
 ## Keyword Mistakes to Avoid
 
+
+### What an ATS score report actually shows you
+
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Passed and failed checks are listed individually, so you can see which part of the resume is costing you points.
+
 ### Mistake 1: Using only synonyms, not the exact term
 
 If the job says "Kubernetes" and you write "container orchestration," you might not match. Use both - the exact term and the descriptive phrase.

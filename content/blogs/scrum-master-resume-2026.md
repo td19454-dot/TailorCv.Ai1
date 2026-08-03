@@ -126,6 +126,13 @@ Enterprise Software Company | Feb 2022 - Present
 - PMI-ACP (Agile Certified Practitioner)
 - ICP-ACC (Agile Coaching)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 List format:
 PSM II - Scrum.org | 2025
 CSM - Scrum Alliance | 2023

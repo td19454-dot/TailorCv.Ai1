@@ -219,6 +219,13 @@ Read every section.
 
 1. **Use exact phrases from the vacancy announcement.** If the posting says "program management," use that phrase - not "project oversight." This is the core principle of [matching keywords to a job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 2. **Never assume experience is implied.** If you managed a budget, say the dollar amount. If you supervised staff, give the number. Federal HR cannot infer.
 
 3. **Repeat relevant keywords throughout your experience descriptions.** Natural repetition across multiple roles reinforces your qualifications. Learn what [keyword density](https://thetailorcv.com/blog/resume-keyword-density-guide) is appropriate for federal applications.

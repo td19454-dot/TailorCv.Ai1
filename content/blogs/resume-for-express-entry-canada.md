@@ -98,6 +98,13 @@ Networking plays a vital role in the Canadian job market. Here’s how to enhanc
 
 When crafting your resume for Express Entry and PR applications in Canada, avoiding common pitfalls can significantly enhance your chances of making a positive impression. Here’s a list of frequent mistakes to watch out for:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Using Outdated Formatting**: Stick to contemporary formatting styles. Overly creative designs can confuse ATS and hiring managers alike.
    
 2. **Including Irrelevant Work Experience**: Tailor your resume by omitting jobs that do not relate to the position you’re applying for. Focus on relevant skills and accomplishments.

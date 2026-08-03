@@ -132,6 +132,13 @@ You can also run the [free ATS checker at TailorCV](/solutions) to see exactly w
 
 ## Frequently Asked Questions
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 ### Do recruiters really notice if a resume is generic?
 
 Yes, immediately. Recruiters who review hundreds of resumes develop a near-automatic detection for the signals above. Generic resumes are filed within seconds.

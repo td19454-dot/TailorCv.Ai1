@@ -180,6 +180,13 @@ Highest demand:
 - **Point-of-care ultrasound (POCUS)** - rapidly spreading skill for nurses and physicians
 - **Patient safety frameworks** - ISBAR, WHO Surgical Safety Checklist, PFMEA
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ---
 
 ## Top Education Skills for 2026

@@ -133,6 +133,13 @@ EdTech Startup | Apr 2023 - Present
 
 Strong full stack [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) to add to your resume:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - E-commerce store with authentication, cart, payments
 - Real-time chat application
 - Task or project management tool

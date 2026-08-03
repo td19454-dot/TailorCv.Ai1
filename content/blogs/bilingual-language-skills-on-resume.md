@@ -56,6 +56,13 @@ This turns a passive skill into evidence of value — exactly the kind of specif
 
 If a role serves a specific market, foreground the relevant language and connect it to the audience. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) so the language that matters to that employer is prominent — the [resume optimizer](https://www.thetailorcv.com/solutions) helps you align your [resume](https://www.thetailorcv.com/modify-cv) to the posting's requirements. If you're applying internationally, the [international resume tailoring guide](https://thetailorcv.com/blog/international-resume-tailoring-guide) covers regional expectations, and [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job) explains the light-touch approach.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## Which languages are most in demand
 
 While any additional language helps, some are especially valuable depending on your industry and region. Spanish is a major asset across the Americas and in [US roles](https://thetailorcv.com/blog/us-resume-format-guide-2026); Mandarin, Japanese, and Korean open doors in tech and trade; Arabic, French, and German are prized in international business, NGOs, and government. If you're targeting a specific country, research what's valued there — the [how to get a job in Canada guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada), [how to get a job in the USA guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa), and [how to get a job in Singapore guide](https://thetailorcv.com/blog/how-to-get-a-job-in-singapore) all touch on local expectations. Whatever languages you list, align them to the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) and confirm the match with the [resume optimizer](https://www.thetailorcv.com/solutions).

@@ -36,6 +36,13 @@ Keep the section short — a single line near the bottom is plenty — and use a
 
 These overlap but aren't identical. **Volunteering** is often stronger than a hobby because it shows commitment and real-world skills — give it its own treatment, as in [volunteer work on a resume](https://thetailorcv.com/blog/volunteer-work-on-resume). **Interests** that align with the role or company culture can support your fit. Pure **hobbies** are the lightest signal, so reserve them for when you genuinely need to round out a page or reinforce a specific, relevant trait.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Keep the focus on fit
 
 At the end of the day, hobbies are a small supporting detail. Lead with a strong [summary](https://thetailorcv.com/blog/how-to-write-resume-summary), [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) experience, and role-matched [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description). [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) so the most relevant content is front and center, and use the [resume optimizer](https://www.thetailorcv.com/solutions) to confirm your [resume](https://www.thetailorcv.com/modify-cv) matches the role. If a hobby genuinely strengthens that story, keep it; if it doesn't, cut it without a second thought.

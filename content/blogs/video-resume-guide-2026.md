@@ -97,6 +97,13 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 
 Weak version:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.
 
 Stronger version:

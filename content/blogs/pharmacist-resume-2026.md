@@ -120,6 +120,13 @@ Tertiary Care Hospital | Mar 2021 - Present
 
 ## Common Pharmacist Resume Mistakes
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 ### Mistake 1: License not prominent
 
 Pharmacy is credential-gated. Your license status and number must be clearly visible near the top.

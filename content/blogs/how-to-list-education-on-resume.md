@@ -141,6 +141,13 @@ List in reverse chronological order (most recent first). Include both, but keep 
 
 ## Special Situations
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 ### Incomplete Degree
 
 If you started but did not finish a degree, you can list it honestly:

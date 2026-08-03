@@ -12,9 +12,6 @@ keywords: how to quantify resume achievements, resume metrics, resume numbers ex
 
 The single biggest difference between a forgettable resume and one that earns interviews is quantification. Recruiters read hundreds of resumes that all say "improved performance," "led a team," and "managed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)." The candidates who advance are the ones who say "improved page load time from 4.8s to 1.1s," "led a team of 7 engineers," and "delivered a project 3 weeks ahead of schedule."
 
-![How to Quantify Resume Achievements](public/blog-images/how-to-quantify-resume-achievements.webp)
-
-Numbers make your resume scannable, credible, and memorable. They transform vague claims into proof.
 
 This guide shows you exactly how to [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) your achievements - even when you think you have no numbers - across every major role type.
 
@@ -213,6 +210,11 @@ After:
 
 ## Conclusion
 Quantifying your resume achievements is not about exaggerating - it is about being specific. Every vague claim has a number behind it. Your job is to find it, estimate it honestly, and use it.
+
+![How to Quantify Resume Achievements](public/blog-images/how-to-quantify-resume-achievements.webp)
+
+Numbers make your resume scannable, credible, and memorable. They transform vague claims into proof.
+
 
 Once your bullets are strong, run your full resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to make sure your keywords also match the [job description](https://thetailorcv.com/blog/resume-keyword-map-template). Use the [resume templates](https://www.thetailorcv.com/templates) to ensure your format is clean. If you are still building your resume from scratch, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full structure.
 

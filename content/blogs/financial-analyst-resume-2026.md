@@ -130,6 +130,13 @@ FMCG Company | Mar 2022 - Present
 
 ## Common Financial Analyst Resume Mistakes
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 ### Mistake 1: No dollar context
 
 Financial analysis is meaningless without the size of the business or deal it served. Add budget sizes, deal values, or revenue scopes wherever possible.

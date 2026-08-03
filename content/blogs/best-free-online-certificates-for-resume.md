@@ -412,6 +412,13 @@ Another useful read:
 
 If you're a student or fresher, prioritize [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) in:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 | Field     | Recommended Certification |
 | --------- | ------------------------- |
 | Marketing | Google Digital Marketing  |

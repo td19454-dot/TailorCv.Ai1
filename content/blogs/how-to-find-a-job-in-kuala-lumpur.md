@@ -133,6 +133,13 @@ For fresh graduates and in-demand fields, one to three months of focused effort 
 
 KL offers Malaysia's highest salaries, but also higher living costs than smaller states — so evaluate offers on take-home value, not just the headline number. The biggest variable is **housing**: rents range widely between city-centre condominiums and suburban homes in Petaling Jaya, Kajang, or further out. **Transport** is the next lever — living near an LRT/MRT line close to work saves both money and hours of traffic. Factor in **food** (hawker meals keep daily costs low; frequent dining out and imported goods add up), utilities, and lifestyle. A useful mental model: a job paying slightly less but fifteen minutes from home, near a rail line, can leave you better off — in money and quality of life — than a higher-paying role with a punishing commute and expensive city-centre rent.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 ## MNCs vs GLCs vs Startups: Which KL Employer Suits You?
 
 Kuala Lumpur offers three broad types of employer, each with a different culture, pace, and career trajectory. Knowing which fits you helps you target your search:

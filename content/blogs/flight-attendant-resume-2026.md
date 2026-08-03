@@ -74,6 +74,13 @@ The role is customer-facing, so a polished, error-free [resume](https://www.thet
 
 You don't need prior flying experience — airlines hire heavily from hospitality, retail, and customer service. Frame those roles around service, safety awareness, and composure, and lean on the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) if your history is light. Transferable skills from any people-facing job translate directly.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## International vs domestic carrier resumes
 
 Requirements differ between international and domestic airlines, and your [resume](https://www.thetailorcv.com/modify-cv) should reflect the target. **International carriers** weight languages, cultural awareness, and grooming heavily, and some request a photo — [tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) accordingly and see [photo on resume](https://thetailorcv.com/blog/photo-on-resume) and the [international resume tailoring guide](https://thetailorcv.com/blog/international-resume-tailoring-guide). **Domestic carriers** emphasize service consistency, safety, and reliability, and generally don't want a photo. In both cases, lead with the traits that carrier prizes and mirror the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) so the [ATS](https://thetailorcv.com/blog/ats-score-guide) and recruiter see the fit. Confirm your keyword match with the [resume optimizer](https://www.thetailorcv.com/solutions) before every application.

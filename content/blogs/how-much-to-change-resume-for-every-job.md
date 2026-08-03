@@ -124,6 +124,13 @@ Read [career change resume guide](https://thetailorcv.com/blog/career-change-res
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) doesn't care whether you changed 5% or 50% of your resume - it only cares whether the result matches the job posting. You could make one sentence change that adds three critical keywords and jump 20 points. You could rewrite 80% of your resume and still miss the key terms.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 That is why the right approach is:
 
 1. Identify the specific keywords and title match the posting requires

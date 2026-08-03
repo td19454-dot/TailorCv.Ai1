@@ -10,11 +10,6 @@ image: public/blog-images/case-interview-preparation-guide-2026.webp
 
 Case interviews - where you solve a business problem live with an interviewer - are standard at consulting firms, increasingly common at tech companies for product and strategy roles, and used anywhere employers want to test **[structured thinking under pressure](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)**.
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
 
 
 Unlike [behavioral interviews](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), case interviews evaluate how you think, not what you have done. This guide covers case interview preparation for 2026.
@@ -167,6 +162,13 @@ See [common interview mistakes](https://thetailorcv.com/blog/common-interview-mi
 2. **Develop a Structured Thinking Habit**: Regularly practice breaking down complex problems into manageable parts in your daily life.
 3. **Use Real-Life Business Cases**: Analyze recent business news or case studies to apply frameworks and practice your problem-solving skills.
 4. **Seek Feedback**: After practice sessions, ask peers or mentors for constructive criticism to refine your approach.
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
+
 
 ---
 

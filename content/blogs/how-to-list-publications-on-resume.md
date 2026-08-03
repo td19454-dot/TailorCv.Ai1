@@ -59,6 +59,13 @@ A long, complex publications list can trip the [ATS](https://thetailorcv.com/blo
 
 If you don't have formal publications but do have relevant output, related sections can serve the same purpose. **Projects** show applied work — see [projects in resume](https://thetailorcv.com/blog/projects-in-resume). **Presentations, talks, and conference appearances** demonstrate thought leadership. **Patents and technical reports** count in engineering and science. Choose the section that best proves your credibility for the target role, and treat it with the same consistent formatting.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## Use Google Scholar, ORCID, and a portfolio
 
 For anyone with a substantial body of work, maintaining an external profile is smarter than cramming everything onto your [resume](https://www.thetailorcv.com/modify-cv). A **Google Scholar** profile shows citation counts and an h-index at a glance; **ORCID** gives you a permanent researcher ID; and a personal [portfolio website](https://www.thetailorcv.com/portfolio) lets you present publications alongside projects, talks, and context. Link one of these from your header so a curious reviewer can see your full record without you sacrificing [resume](https://www.thetailorcv.com/modify-cv) space — the same logic behind [adding a portfolio link to your resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume). For guidance on building that presence, see [how to write a portfolio case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).

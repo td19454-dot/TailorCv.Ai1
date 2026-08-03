@@ -129,6 +129,13 @@ Once your resume secures you an interview, preparation is key. Consider using ou
 
 Avoiding common pitfalls can significantly enhance your resume's effectiveness. Here are some key mistakes to steer clear of:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Using a One-Size-Fits-All Approach**: Many applicants submit the same resume for multiple positions. This generic approach can lead to rejection. Tailor your resume to each specific job by incorporating relevant keywords and experiences. For more insights, check out [How Recruiters Spot Generic Resumes - And Reject Them in 6 Seconds](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes).
 
 2. **Ignoring Formatting Guidelines**: A cluttered or overly complex format can distract from your qualifications. Stick to standard fonts like Arial or Times New Roman, use bullet points for clarity, and ensure consistent formatting throughout. 

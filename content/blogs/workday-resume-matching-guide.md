@@ -142,6 +142,13 @@ To better understand how to tailor your resume for Workday, let’s look at a co
 
 To ensure your resume passes through the Workday ATS effectively, follow this checklist:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Analyze the Job Description:**
    - Highlight required and preferred qualifications.
    - Identify key skills and keywords.

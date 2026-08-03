@@ -109,6 +109,13 @@ Paste any paralegal or associate attorney job posting into [TailorCV's resume op
 
 To effectively match your resume to a legal job description, follow this systematic approach:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Identify Key Responsibilities**: Start by listing the main tasks and responsibilities outlined in the job description. Look for verbs like "draft," "analyze," and "research." These action words can guide you in framing your experience.
 
 2. **Highlight Required Skills**: Note the essential skills mentioned, such as legal research, communication, or case management. Compare these with your own skill set.

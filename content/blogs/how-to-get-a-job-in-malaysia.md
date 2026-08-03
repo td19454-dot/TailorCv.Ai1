@@ -146,6 +146,13 @@ Your **alumni network** is just as powerful. Graduates who came before you are n
 
 Beyond role-specific qualifications, Malaysian employers consistently prize a set of transferable skills that make you effective from day one. Weave evidence of these into your resume and interview answers:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 - **Communication across languages.** The ability to work in Bahasa Malaysia and English — and often Mandarin — is a real asset in Malaysia's multicultural, regionally connected economy.
 - **Digital fluency.** Comfort with data, common software, and digital tools is expected in almost every field now, not just tech roles.
 - **Adaptability and learning agility.** Employers value people who pick things up quickly and stay calm through change.

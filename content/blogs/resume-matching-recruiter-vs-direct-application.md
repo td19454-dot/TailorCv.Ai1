@@ -110,6 +110,13 @@ Paste the job description your recruiter shares into [TailorCV's resume optimize
 
 Navigating the job market with the assistance of a recruiter can be beneficial, but there are common pitfalls that candidates should avoid. Here’s a list of mistakes that can hinder your chances of success:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Neglecting to Customize Your Resume**: Even when working with a recruiter, failing to tailor your resume to the specific role can lead to missed opportunities. Recruiters appreciate candidates who make an effort to reflect the job description in their resumes.
 
 2. **Ignoring Recruiter Feedback**: If a recruiter suggests changes to your resume or approach, it’s essential to consider this feedback seriously. They have insight into what companies are looking for and can help you present yourself in the best light.

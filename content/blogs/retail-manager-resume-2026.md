@@ -67,6 +67,13 @@ If you're stepping up from assistant manager or supervisor, emphasize the leader
 
 A big-box store, a boutique, and a fast-fashion chain weight skills differently. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) with the [resume optimizer](https://www.thetailorcv.com/solutions) so your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) match, and see [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Common retail manager resume mistakes
 
 The errors that cost retail leaders interviews:

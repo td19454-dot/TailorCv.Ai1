@@ -14,11 +14,6 @@ keywords: cover letter for internal job application, internal promotion cover le
 
 Applying for a role inside your own company feels like it shouldn't need a cover letter - everyone already knows you. But that familiarity can work against you if you don't put your case in writing: hiring panels often include people from other teams who don't know your track record, and a lazy or missing letter can read as a lack of seriousness about the move.
 
-### What the finished letter looks like
-
-![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
-
-The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
 
 
 ### Generating the letter from a job description
@@ -155,6 +150,13 @@ Best regards,
 ## Common Mistakes to Avoid in Your Internal Cover Letter
 
 When crafting your internal cover letter, it’s essential to avoid some common pitfalls that could undermine your application. Here are key mistakes to watch out for:
+
+### What the finished letter looks like
+
+![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
+
+The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
+
 
 1. **Neglecting Company Culture**: Failing to align your language and tone with the company culture can create a disconnect. Make sure your cover letter reflects the values and ethos of your organization.
 

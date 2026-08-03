@@ -124,6 +124,13 @@ Paste any front desk, guest services, or hotel management job posting into [Tail
 
 1. **Using a Generic Resume**: One of the biggest mistakes is submitting a one-size-fits-all resume. Tailor your resume for each application by focusing on the specific job description.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 2. **Ignoring Keywords**: Failing to incorporate relevant keywords can lead your resume to be overlooked by Applicant Tracking Systems (ATS). Always align your resume with the job description keywords.
 
 3. **Overloading with Irrelevant Experience**: Including too much unrelated experience can dilute your resume's impact. Focus on relevant roles and achievements that demonstrate your suitability for the hospitality position.

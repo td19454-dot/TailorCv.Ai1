@@ -143,6 +143,13 @@ Health-Tech Company | Aug 2023 - Present
 
 Projects are how [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) prove applied ability. Good project topics:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Churn prediction model
 - Sentiment analysis on product reviews
 - Recommendation system

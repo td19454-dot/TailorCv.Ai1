@@ -94,6 +94,13 @@ TailorCV's [resume optimizer](/solutions) reads the full job description and ide
 
 To effectively tailor your resume for AI-generated job descriptions, follow this structured approach:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Identify Core Requirements**: After extracting key elements from the job description, categorize them into must-have qualifications and preferred qualifications. This will help you prioritize what to highlight in your resume. For a deeper understanding, refer to our guide on [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications).
 
 2. **Create a Keyword Map**: Utilize a [Resume Keyword Map Template](https://thetailorcv.com/blog/resume-keyword-map-template) to align your existing skills and experiences with the keywords found in the job description. This visual tool helps ensure that you cover all necessary areas without losing focus.

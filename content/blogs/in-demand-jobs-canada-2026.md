@@ -169,6 +169,13 @@ While tailoring your resume is essential, there are pitfalls to avoid. Here’s 
 
 Use this handy checklist to ensure your resume is tailored effectively:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - [ ] Reviewed the job description thoroughly.
 - [ ] Highlighted relevant skills and experiences.
 - [ ] Customized the professional summary to fit the job.

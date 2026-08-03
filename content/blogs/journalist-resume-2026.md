@@ -63,6 +63,13 @@ Front-load impact, keep it to [one page](https://thetailorcv.com/blog/ideal-resu
 
 If you're freelance or building your first clips, treat published work, student journalism, and internships as real experience — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) shows how. Group freelance clients cleanly, and read the [freelancing vs full-time guide](https://thetailorcv.com/blog/freelancing-vs-full-time-employment) if you're weighing the path. A steady stream of bylines on a [portfolio](https://www.thetailorcv.com/portfolio) can outweigh a thin staff history.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Tailor to each outlet
 
 A national daily, a trade publication, and a digital-first startup want different emphases. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) with the [resume optimizer](https://www.thetailorcv.com/solutions) so your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) match, and see [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job).

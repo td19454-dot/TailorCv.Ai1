@@ -117,6 +117,13 @@ Wrote / Grew / Created / Produced + [content type and volume] + [topic or audien
 Senior Content Writer
 B2B SaaS Marketing Team | Mar 2023 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Lead content production for a SaaS product blog, writing and editing 16+ SEO articles monthly across product, industry, and how-to topics.
 - Grew organic blog traffic from 18K to 61K monthly sessions in 14 months through search-intent-driven content strategy and systematic content refreshing.
 - Wrote conversion copy for 12 landing pages, contributing to a 24% improvement in demo request conversion rate after iterative testing.

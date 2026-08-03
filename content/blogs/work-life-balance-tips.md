@@ -140,6 +140,13 @@ Work-life balance is partly individual habits and partly company culture. When j
 - Meeting culture
 - Whether leadership models healthy boundaries
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 Ask about culture in interviews using the [questions to ask in an interview guide](https://thetailorcv.com/blog/questions-to-ask-in-an-interview), and research with the [company research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview).
 
 ---

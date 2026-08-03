@@ -130,6 +130,13 @@ Consumer App Company | Feb 2022 - Present
 
 Strong iOS project ideas:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - Personal finance or budgeting app
 - Recipe or meal planning app
 - Habit tracker with HealthKit

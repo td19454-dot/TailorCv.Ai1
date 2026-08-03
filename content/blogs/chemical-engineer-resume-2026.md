@@ -130,6 +130,13 @@ Refinery Complex | Sep 2021 - Present
 
 Strong project topics:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - Distillation column design and simulation in Aspen Plus
 - Biodiesel or bioethanol [process design](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - Reactor design for a specific chemical process

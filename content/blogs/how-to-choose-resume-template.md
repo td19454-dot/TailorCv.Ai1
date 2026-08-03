@@ -145,6 +145,13 @@ The built-in templates are generally [ATS](https://thetailorcv.com/blog/what-is-
 
 Spending hours comparing templates is procrastination. The template matters - but it matters far less than the quality of your content. A mediocre template with excellent, tailored, quantified content beats a beautiful template with generic, duty-based bullets every single time.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 Choose a professional, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible template, then put 90% of your effort into writing strong content.
 
 Read [how to write a resume from scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch) for the complete content-writing guide.

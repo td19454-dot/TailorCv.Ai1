@@ -10,11 +10,6 @@ image: public/blog-images/manager-interview-round-questions-guide.webp
 
 After HR screens you for fit, the **hiring manager** evaluates whether you can actually do the job - and do it well on their team. Manager round interviews go deeper than HR: they test technical judgment, problem-solving, leadership, collaboration, and how you handle real workplace scenarios.
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 
 This guide covers what hiring managers ask in 2026 and how to prepare with [AI mock interviews](https://thetailorcv.com/mock-interview).
@@ -205,6 +200,13 @@ Preparing for a manager round interview requires a strategic approach that empha
 ## Common Manager Interview Mistakes to Avoid
 
 When preparing for a manager interview, candidates often make several common mistakes that can hinder their chances of success. Here are some pitfalls to avoid:
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 
 1. **Lack of Research**: Failing to understand the company’s mission, values, and recent developments can lead to vague answers. Always research the company and tailor your responses accordingly.
 

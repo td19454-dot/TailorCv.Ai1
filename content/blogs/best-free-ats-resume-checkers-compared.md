@@ -14,11 +14,6 @@ keywords: free ats resume checker, jobscan alternative free, best ats checker 20
 
 "Free ATS checker" is one of the most searched job-search phrases in 2026 - and one of the most misleading. Most tools that promise a free scan cap you at one or two checks a month, then lock the detailed feedback behind a paywall. This guide compares what's actually free, what you get for it, and how to read the results correctly.
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
 
 
 Skip the guesswork and run your own resume through the [TailorCV free ATS score checker](https://www.thetailorcv.com/solutions) first - it's unlimited on the first scan tier, no credit card required.
@@ -107,6 +102,13 @@ Even with the [best ATS checkers](https://thetailorcv.com/blog/what-is-an-ats-sc
 ## Real Examples of ATS Score Improvement
 
 To illustrate how effective an ATS checker can be, consider the following before-and-after scenarios based on real user experiences:
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
+
 
 ### Example 1: Marketing Manager Resume
 - **Initial ATS Score**: 65%

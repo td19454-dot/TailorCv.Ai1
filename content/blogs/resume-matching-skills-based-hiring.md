@@ -131,6 +131,13 @@ By mirroring the job description's language and structure, the candidate clearly
 
 To ensure your resume aligns with a skills-based job description, follow this step-by-step process:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Thoroughly Analyze the Job Description:**
    - Highlight all skills and responsibilities that stand out. Use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) for a structured approach.
 

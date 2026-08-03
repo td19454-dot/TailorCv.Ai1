@@ -118,6 +118,13 @@ The practical approach: set your word processor's language to English (Canada) o
 
 When you apply in the other country, create a dedicated version:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Switch spelling** to match the target country.
 2. **Adjust terminology** (grades, credentials, "resume" conventions).
 3. **Localise details** (location format, phone number, metric/imperial where relevant).

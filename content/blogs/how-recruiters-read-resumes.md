@@ -147,6 +147,13 @@ A single typo can end a review. Inconsistent date formats, varying font sizes, a
 6. **Single-column layout only** - Two-column breaks the scan and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 7. **White space matters** - A dense, cramped resume is harder to scan than one with breathing room
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ---
 
 ## The 10-Second Test: Do It Yourself

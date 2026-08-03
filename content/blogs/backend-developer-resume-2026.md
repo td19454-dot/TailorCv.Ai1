@@ -130,6 +130,13 @@ Logistics Platform | Jun 2023 - Present
 
 Strong backend [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers):
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - REST API with authentication and authorization
 - URL shortener with analytics
 - Job queue system with workers

@@ -63,6 +63,13 @@ Keep it to one page, [ATS-friendly](https://www.thetailorcv.com/templates), and 
 
 If you're transitioning from UX, graphic design, or another field, lead with transferable skills and self-directed projects — the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) and [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume) show how. A [portfolio](https://www.thetailorcv.com/portfolio) of even one strong end-to-end case study can outweigh a thin work history — see [portfolio with no experience](https://thetailorcv.com/blog/portfolio-with-no-experience).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Where product designers find roles
 
 Product-design roles are concentrated in tech companies, startups, agencies, and increasingly non-tech companies building digital products. Beyond job boards, designers find work through design communities, [portfolio](https://www.thetailorcv.com/portfolio) discovery, referrals, and direct outreach — a strong portfolio link in a [cold email](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) can start a conversation. [Networking](https://thetailorcv.com/blog/networking-tips-for-job-search) and a polished [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) matter, and the [best job search websites guide](https://thetailorcv.com/blog/best-job-search-websites-2026) covers where to look. Because design hiring is portfolio-first, investing in one or two exceptional [case studies](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) often opens more doors than another round of applications.

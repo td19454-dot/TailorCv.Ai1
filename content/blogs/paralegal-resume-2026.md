@@ -66,6 +66,13 @@ Use a conservative, [ATS-friendly template](https://www.thetailorcv.com/template
 
 If you're a recent certificate graduate or moving in from another field, lead with your certification, coursework, internships, and transferable skills like research, writing, and organization — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) show how. Volunteer or pro bono legal work counts — see [volunteer work on a resume](https://thetailorcv.com/blog/volunteer-work-on-resume).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Tailor to each firm
 
 A litigation boutique, a corporate legal department, and an immigration practice want different experience. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) with the [resume optimizer](https://www.thetailorcv.com/solutions) so your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) match, and see [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job).

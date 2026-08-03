@@ -85,6 +85,13 @@ The formula flexes across every field. Here are more you can adapt — always sw
 4. **Point it at the target.** A short phrase on what you want next, aligned with the posting.
 5. **Cut every filler word.** Delete "hardworking," "detail-oriented," "team player," and any sentence that could appear on anyone's [resume](https://thetailorcv.com/blog/anatomy-of-a-resume).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 Read it back and ask: could someone else truthfully have written this exact summary? If yes, it is too generic — add the specific number or detail that only you can claim.
 
 ## What Makes a Summary Weak

@@ -87,6 +87,13 @@ A warm introduction or referral carries weight in Japan and can open doors that 
 
 As a foreigner, you generally need an employer-sponsored work visa matched to your role and qualifications — you secure the job first, then the employer sponsors. Factor visa processing (including the Certificate of Eligibility) into your timeline, and always confirm current rules with official Japanese authorities. See [how to get a job in Japan as a foreigner](https://thetailorcv.com/blog/how-to-get-a-job-in-japan-foreigner) for context.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 > **Note:** Visa rules change and depend on your situation — always verify with the Japanese Immigration Services Agency, an embassy/consulate, or your employer.
 
 ## Step 5: Prepare for Tokyo Interviews

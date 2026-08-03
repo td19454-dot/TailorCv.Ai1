@@ -18,9 +18,6 @@ You will also get 10 [resume summary](https://thetailorcv.com/blog/how-to-write-
 
 For the rest of your resume, use the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience), browse [beginner resume templates](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience), and check your resume with the [ATS score checker](https://www.thetailorcv.com/solutions).
 
-![How to Write a Resume Summary With No Experience](public/blog-images/resume-summary-no-experience.webp)
-
----
 
 ## Key Takeaways
 
@@ -187,6 +184,11 @@ Replace generic phrases with role-focused skills, [projects](https://thetailorcv
 
 One summary does not fit all jobs.
 Every role has different keywords and expectations.
+
+![How to Write a Resume Summary With No Experience](public/blog-images/resume-summary-no-experience.webp)
+
+---
+
 
 Use the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) to swap one or two phrases.
 Keep the structure. Change the details.

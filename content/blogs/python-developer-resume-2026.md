@@ -113,6 +113,13 @@ Built / Designed / Automated / Optimized + [API, pipeline, or system] in Python 
 Senior Python Developer
 SaaS Analytics Company | Mar 2022 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Built and maintained FastAPI microservices powering a B2B analytics platform serving 8K+ customers with 2M+ daily API requests.
 - Designed an async data ingestion pipeline using FastAPI, Celery, and Redis processing 4M events daily with automatic retry and dead-letter handling.
 - Reduced report generation time from 45 seconds to 6 seconds by optimizing pandas operations, adding database indexing, and implementing result caching.

@@ -184,6 +184,13 @@ Practice with the [free AI mock interview tool](https://thetailorcv.com/mock-int
 
 Rejection is the default in tech hiring for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes). Most strong candidates apply to 30-80 companies before landing their first offer. This is normal.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 What helps:
 
 - Keep a pipeline of applications at different stages - never put all hope on one company

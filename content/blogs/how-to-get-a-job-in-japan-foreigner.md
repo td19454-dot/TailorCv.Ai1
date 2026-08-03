@@ -88,6 +88,13 @@ See our guide to the [best job sites for finding work in Japan](https://thetailo
 
 Employers sponsoring a foreigner need a clear reason. In your resume, cover letter, and interviews:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - Lead with **in-demand skills** and relevant qualifications (a degree matters for many visa categories).
 - Show **respect for and interest in Japan** — cultural fit is genuinely valued.
 - Feature **language credentials** (JLPT, TOEIC).

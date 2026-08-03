@@ -65,6 +65,13 @@ If you're a recent graduate or transitioning into interior design, lead with you
 
 Interior design roles span studios, architecture firms, retail and hospitality brands, real-estate developers, and freelance work, so search broadly. Beyond job boards, designers find work through industry networks, [design-focused recruitment agencies](https://thetailorcv.com/blog/how-to-work-with-recruitment-agencies), showroom and vendor relationships, and direct outreach — a thoughtful [cold email](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) with a link to your [portfolio](https://www.thetailorcv.com/portfolio) can open a door before a role is posted. The [best job search websites guide](https://thetailorcv.com/blog/best-job-search-websites-2026) covers where to look, and [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) is powerful in a relationship-driven field. Keep your [resume](https://www.thetailorcv.com/modify-cv) current and [ATS-ready](https://www.thetailorcv.com/solutions) so you can apply the moment the right role appears.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## Tailor to each firm
 
 A high-end residential studio, a corporate workplace-design firm, and a hospitality group all want different emphases. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) with the [resume optimizer](https://www.thetailorcv.com/solutions) so your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) match the exact role, and see [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job).

@@ -126,6 +126,13 @@ For a version of this that's actually resume-aware and interactive rather than a
 - **No built-in tailoring workflow.** You have to manually copy suggestions back into your resume every time - see [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) for a faster, structured alternative.
 - **Risk of sounding generic.** Left unedited, AI-generated phrasing has recognizable patterns - see [AI resume tailoring without losing your voice](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ---
 
 ## Common Mistakes to Avoid

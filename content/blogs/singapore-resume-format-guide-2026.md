@@ -80,6 +80,13 @@ The reason this matters so much: the [filter matches language, not meaning](/blo
 - **A generic resume for every role.** The single biggest reason applications vanish — [tailor each one](/blog/how-to-match-resume-keywords-to-job-description).
 - **No quantified results.** "Responsible for sales" loses to "Grew regional sales 23% in FY2025." [Quantify everything](/blog/how-to-quantify-resume-achievements).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## For Freshers and Recent Grads
 
 If you are graduating from NUS, NTU, SMU, or a polytechnic, your resume leans on projects, internships, and coursework rather than years of work. Your [ATS score as a fresher](/blog/ats-score-for-freshers) reflects that, so [projects that get interviews](/blog/fresher-resume-projects-that-get-interviews) do heavy lifting, as does a [portfolio site](/blog/how-to-build-professional-portfolio) that shows real work a one-page resume cannot. If you are chasing a [first tech job](/blog/how-to-get-first-tech-job), demonstrated ability often beats pedigree. And if you have a [gap to explain](/blog/how-to-explain-employment-gap-on-resume-2026), address it briefly and honestly.

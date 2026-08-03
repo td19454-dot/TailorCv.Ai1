@@ -90,6 +90,13 @@ The goal is a skills section that mirrors the posting's language closely enough 
 - **Near-synonyms instead of the exact term.** If the posting says "PostgreSQL," write "PostgreSQL," not just "SQL databases."
 - **Burying the section.** For technical and early-career [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), the skills list should be easy to find near the top.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Hard Skills vs Soft Skills: The Full Breakdown
 
 The single most common skills-section mistake is mixing the two types, so it is worth being precise about the line between them.

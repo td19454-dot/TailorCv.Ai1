@@ -130,6 +130,13 @@ Beyond [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-searc
 
 The strongest personal brands are authentic. Do not copy someone else's voice or pretend to be something you are not. Your [genuine perspective](https://thetailorcv.com/blog/why-am-i-not-getting-interviews), experience, and personality are what differentiate you.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 Consistency matters across:
 - Your message and positioning
 - Your visual identity (photo, colors, style)

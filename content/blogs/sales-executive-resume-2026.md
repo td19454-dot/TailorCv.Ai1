@@ -120,6 +120,13 @@ Closed / Generated / Exceeded / Grew + [deal type or pipeline] + [territory, seg
 Senior Account Executive - Mid-Market
 SaaS HR Platform | Mar 2023 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Closed $2.4M in net new ARR in FY2025, 126% of quota, across 28 accounts in the financial services and professional services verticals.
 - Managed a pipeline of $9.2M across 65 active opportunities, conducting weekly deal reviews with VP of Sales and presenting accurate quarterly forecasts within 5% of actual.
 - Closed 3 deals over $150K including a 7-month enterprise deal with a 2,000-employee financial firm involving 4 executive stakeholders and a competitive displacement of the incumbent vendor.
