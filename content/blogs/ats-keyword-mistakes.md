@@ -29,6 +29,13 @@ The fastest way to catch your keyword gaps is to run your resume against a speci
 
 When you submit a resume, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it):
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
+
 1. Parses your document into structured text
 2. Extracts skills, titles, tools, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), and qualifications
 3. Compares your resume against the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) using keyword matching
@@ -139,9 +146,6 @@ Including skills on your resume that you cannot actually discuss in an [intervie
 
 ---
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
 
 ## Keyword Mistake 7: Ignoring Soft Skill Keywords
 

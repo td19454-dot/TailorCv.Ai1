@@ -30,6 +30,13 @@ Start practicing today with [TailorCV's free AI mock interview tool](https://the
 
 An AI [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) is a simulated job interview powered by artificial intelligence. Instead of waiting for a friend or paying for coaching, you practice with an AI interviewer that:
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: Zara reads your resume, asks resume-based questions and role-specific follow-ups, then returns a detailed scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+This is the setup in practice. The interviewer reads your resume first, so the questions are grounded in what you have actually done rather than a generic bank, then follows up on your target role the way a real panel would. The scorecard afterwards is the part that matters most - an honest score plus the specific things to fix before the real interview.
+
+
 - Asks realistic questions based on your role and experience
 - Evaluates your answers for clarity, structure, and relevance
 - Gives instant feedback you can act on immediately
@@ -92,9 +99,6 @@ After each session, rewrite weak answers. Practice [body language and communicat
 
 ---
 
-![TailorCV AI mock interview: Zara reads your resume, asks resume-based questions and role-specific follow-ups, then returns a detailed scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-This is the setup in practice. The interviewer reads your resume first, so the questions are grounded in what you have actually done rather than a generic bank, then follows up on your target role the way a real panel would. The scorecard afterwards is the part that matters most - an honest score plus the specific things to fix before the real interview.
 
 ## AI Mock Interview vs. Other Preparation Methods
 

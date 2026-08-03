@@ -28,6 +28,13 @@ This guide organizes the questions you're most likely to be asked into the categ
 
 Most ML [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) loops draw from five distinct buckets:
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
+
+
 1. **ML fundamentals** — core concepts every ML role expects you to know cold.
 2. **Statistics & probability** — the mathematical foundation under every model.
 3. **Model evaluation & tradeoffs** — how you judge whether a model is actually good.
@@ -98,9 +105,6 @@ Treating these as one undifferentiated "ML [interview](https://thetailorcv.com/b
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
 
 ## Category 5: Behavioral & Communication Questions
 

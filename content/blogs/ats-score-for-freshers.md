@@ -47,6 +47,13 @@ For project tips, read [how to add projects in your resume](https://thetailorcv.
 
 ## Step-by-Step: Raise Your Fresher ATS Score
 
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+
 ### 1. Start With an ATS-Friendly Template
 
 Use a clean, single-column [ATS-friendly template](https://www.thetailorcv.com/templates). Avoid the flashy designs that break parsing.
@@ -112,9 +119,6 @@ More on this in [resume mistakes freshers make](https://thetailorcv.com/blog/res
 
 ---
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
 
 ## Real-Life Examples of Successful Fresher Resumes
 

@@ -39,6 +39,13 @@ That makes keyword optimisation the foundation of everything below.
 
 ## Step 1: Nail the Profile Basics
 
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
 ### Professional Photo
 
 Profiles with a clear, professional headshot get far more views and messages. Use a friendly, well-lit photo with a clean background — the same standard you'd use for a Malaysian resume photo.
@@ -148,9 +155,6 @@ Before you consider your profile "done," confirm you have:
 
 Hitting every item gets you to "All-Star" completeness, which LinkedIn rewards with more visibility.
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-This is the step most people skip - checking against the real job description rather than optimising in the abstract.
 
 ## Building a Personal Brand in Your Field
 

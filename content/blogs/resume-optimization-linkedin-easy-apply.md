@@ -68,6 +68,13 @@ Understanding [how recruiters read resumes](https://thetailorcv.com/blog/how-rec
 
 Easy Apply pulls data from both your uploaded resume and your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide).
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
+
 Your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) must:
 
 **Match the language of the roles you are applying for**
@@ -210,9 +217,6 @@ For your high-volume layer, use the [remote job search guide](https://thetailorc
 
 ---
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-This is the step most people skip - checking against the real job description rather than optimising in the abstract.
 
 ## Part 6: After You Apply - The Follow-Up That Most People Skip
 

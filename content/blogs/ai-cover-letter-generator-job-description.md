@@ -87,13 +87,17 @@ You do not need to relearn cover letter structure here. The [Cover Letter Guide 
 
 What changes when you generate from a real job description is not the shape of the letter, it is how much real content fills that shape. If your structure is right but the sentences are generic, the problem is almost always the input you gave the generator, not the template.
 
-![TailorCV cover letter generator: resume and job description on the left, a live cover letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-The whole flow sits on one screen: your resume and the job description on the left, the finished letter on the right. Details are pulled from the resume so you are editing rather than starting from a blank page, and the tone control decides how formal it reads before you download.
 
 ## Why AI-Generated Letters Still Need a Human Editing Pass
 
 A generated draft is a first draft, not a final one. Even with a strong job description as input, three problems show up consistently and need a human to catch them.
+
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live cover letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+The whole flow sits on one screen: your resume and the job description on the left, the finished letter on the right. Details are pulled from the resume so you are editing rather than starting from a blank page, and the tone control decides how formal it reads before you download.
+
 
 **Fact-check every company-specific claim.** If the generator references something about the company (a product name, a stated mission, a recent milestone), verify it is accurate before you send it. Generators can restate what you gave them incorrectly, or infer details that were not actually in the posting.
 

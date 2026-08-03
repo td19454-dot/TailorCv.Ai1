@@ -170,6 +170,13 @@ It also does not invite mental math about when this happened.
 Old resume formats signal old-era job searching.
 Review [resume fonts and formatting](https://thetailorcv.com/blog/resume-fonts-guide) to make sure your document looks contemporary.
 
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
+
 **Replace:**
 - Two-column layouts that some [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) cannot parse
 - Serif fonts like Times New Roman or Courier
@@ -190,9 +197,6 @@ They are designed for modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-s
 
 ---
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
 
 ## Step 6: Update Your Email and Digital Presence
 

@@ -43,6 +43,13 @@ A [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) 
 
 Every job posting is tied to a keyword profile inside the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). That profile is built from:
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
+
 - The required and preferred skills in the posting
 - Skills common to the role category
 - Tools and technologies specified by the hiring team
@@ -99,9 +106,6 @@ See [ATS keywords to boost your score](https://thetailorcv.com/blog/ats-keywords
 
 ---
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
 
 ## Signal 5 - Sparse or Vague Experience Descriptions
 

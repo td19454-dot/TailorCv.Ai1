@@ -197,9 +197,6 @@ The keywords at executive level are different - "P&L ownership," "organizational
 
 ---
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 ## What to Leave Off an Executive Resume
 
@@ -209,6 +206,13 @@ This is usually how a spilling two-page draft gets back onto one page without de
 - Adjectives that are not backed by evidence ("dynamic," "passionate," "innovative")
 - Technical skills that are no longer your core differentiator (unless directly relevant)
 - References to references ("available upon request" - no executive resume includes this)
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 
 **Reduce:**
 - [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) detail for established executives (institution + degree is usually sufficient)

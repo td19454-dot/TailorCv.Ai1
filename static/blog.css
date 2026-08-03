@@ -1783,10 +1783,16 @@ header.navbar {
 /* Shown whole at natural ratio. The thin dark scrollbar strips some
    screenshots carried have been trimmed from the source files instead of
    cropped here - a blanket CSS crop cut real margin off the clean ones. */
+/* width:auto (not 100%) means an image is never scaled ABOVE its own pixel
+   width - the previews are 487-649px at source, and stretching them to the
+   780px frame is what made them look hazy. Drop in 2x exports and they will
+   fill the frame sharply on their own, with no CSS change needed. */
 .blog-detail-page .blog-tpl-shot img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  margin: 0 auto;
 }
 
 .blog-detail-page .blog-tpl-shot:hover {

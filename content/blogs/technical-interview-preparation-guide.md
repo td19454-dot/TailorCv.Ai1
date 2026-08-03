@@ -139,9 +139,6 @@ Read the [behavioral interview questions and answers guide](https://thetailorcv.
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
 
 ## 8-Week Technical Interview Prep Plan
 
@@ -197,6 +194,13 @@ Before the interview, make sure the resume that earned the call is still aligned
 Start with a resume that gets you interviews - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then work through the [coding interview guide](https://thetailorcv.com/blog/coding-interview-preparation-guide), [system design guide](https://thetailorcv.com/blog/system-design-interview-guide), and [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers). Practice delivery with the [mock interview tool](https://thetailorcv.com/mock-interview).
 
 ## Frequently Asked Questions
+
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
 
 ### What are the key components of a technical interview in 2026?  
 The technical interview process typically consists of four main components: the Coding/DSA Round, System Design Round, Project/Technical Deep-Dive, and Behavioral Round. Each component assesses different skills, from problem-solving in data structures and algorithms to evaluating your ability to communicate and fit within a team. For more detailed insights, check out our [Software Engineer Interview Preparation](https://thetailorcv.com/blog/software-engineer-interview-preparation) guide. 

@@ -26,6 +26,13 @@ If you want the fastest path, start with the [free ATS score checker](https://ww
 
 A resume optimizer is not the same thing as a generic resume checker. A generic checker usually gives you a single quality score and a handful of stock tips like "use more action verbs" or "keep it to one page." That feedback is not wrong, but it is not specific to any job, and it will not tell you why you are not getting callbacks for a particular role.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in four visible stages - upload, analyze, optimize, complete - against the specific job description you paste in. The point of showing the stages is that the tool is parsing your resume the way an ATS would before it rewrites anything.
+
+
 A real optimizer works differently. It takes two inputs, your resume and a specific [job description](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job), and compares them directly. That comparison produces four types of output:
 
 - **Keyword gaps** - required or preferred skills, tools, and qualifications from the job posting that do not appear anywhere in your resume.
@@ -91,9 +98,6 @@ Rewritten bullet, assuming the candidate genuinely did this work:
 
 The rewrite works because it addresses the flag directly: it names the platform, includes the two techniques the posting called out by name, states a measurable before-and-after result, and mirrors the reporting cadence language from the posting. Nothing in the rewrite invents an achievement that was not there. It surfaces detail that was missing from the first draft, which is the actual job of the rewrite step, not the job of the tool.
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimizing runs in four visible stages - upload, analyze, optimize, complete - against the specific job description you paste in. The point of showing the stages is that the tool is parsing your resume the way an ATS would before it rewrites anything.
 
 ## What an Optimizer Cannot Do for You
 

@@ -58,13 +58,17 @@ Open any Indeed job. A panel opens beside it, reads the description straight off
 
 A minute instead of ten — and because it lives on the page, tailoring survives the length of a real search instead of dying in week three. The same panel works on LinkedIn, Naukri, Greenhouse, Lever, Workday, Ashby, Glassdoor and more, plus any site from the toolbar.
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 ## Step by Step
 
 **Step 1 — Set your base resume once.** Upload the resume you normally send; it becomes the starting point the tool rewrites from every time. If you are unsure it is even solid, run a [free ATS score](/blog/how-to-check-ats-score-free) on it first.
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 
 **Step 2 — Open an Indeed job you actually want.** Not a stretch, not a safety. Load the full posting.
 

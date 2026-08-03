@@ -26,6 +26,13 @@ The rule works because it's relative. A suit is correct at a law firm and wrong 
 
 Five reliable methods, in rough order of usefulness:
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
+
 **Ask the recruiter.** The most direct and least used. "Is there a dress code I should know about?" is a completely normal question that recruiters answer readily, and asking it signals care rather than ignorance.
 
 **Look at the company's own photos.** Team pages, careers pages, and recent posts on their [LinkedIn](/blog/how-to-use-linkedin-for-job-search) show how people actually dress. This is better evidence than any industry generalisation.
@@ -82,9 +89,6 @@ The rules differ enough to need their own treatment, and this is where preparati
 
 **Carry something sensible.** A tidy bag or folder with copies of your resume. Which is a good moment to check your [file format and naming](/blog/resume-file-format-guide) are right on the version you bring.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Mistakes to Avoid
 

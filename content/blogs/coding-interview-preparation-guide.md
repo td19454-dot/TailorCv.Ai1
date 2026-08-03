@@ -81,6 +81,13 @@ When you receive a problem, follow this:
 
 ## How to Practice Effectively
 
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
+
 ### Quality Over Quantity
 
 Solving 500 problems mindlessly is less effective than solving 150 problems while truly understanding each pattern.
@@ -123,9 +130,6 @@ Total: ~130 problems across all patterns.
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
 
 ## Time and Space Complexity
 

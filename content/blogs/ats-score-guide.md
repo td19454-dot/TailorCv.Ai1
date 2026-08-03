@@ -454,9 +454,6 @@ Aim for at least 80 whenever possible.
 
 ---
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-This is the step most people skip - checking against the real job description rather than optimising in the abstract.
 
 ## How to Check Your ATS Score
 
@@ -496,6 +493,13 @@ This saves hours of manual editing and guesswork.
 ## Resume Optimization Tools That Actually Help
 
 Modern AI tools can dramatically improve resume performance.
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
 
 The Resume Optimizer from The Tailor CV helps tailor resumes for specific jobs automatically.
 

@@ -117,13 +117,17 @@ Full list: [common interview mistakes](https://thetailorcv.com/blog/common-inter
 5. **Manage nerves** - [interview anxiety tips](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips)
 6. **Optimize resume** - [TailorCV ATS checker](https://www.thetailorcv.com/solutions)
 
-Freshers often face group interviews in campus drives - see [campus placement prep](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement) and [first job interview tips](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026).
-
----
+### See it in action: a resume-based mock interview
 
 ![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
 
 The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
+
+Freshers often face group interviews in campus drives - see [campus placement prep](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement) and [first job interview tips](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026).
+
+---
+
 
 ## Scenario-Based Group Interview Practice
 

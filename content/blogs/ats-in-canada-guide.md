@@ -24,6 +24,13 @@ Navigating the Canadian job market can be challenging, especially for newcomers 
 
 Applicant Tracking Systems are designed to streamline the hiring process by automating the collection and sorting of resumes. They parse information from your resume and match it against job descriptions to determine which candidates best fit the role. Given that many Canadian employers, especially larger companies, utilize ATS, understanding how to optimize your resume for these systems is essential. 
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
+
 ### Key Features of ATS
 
 - **Keyword Matching**: ATS scans for specific keywords related to the job description. 
@@ -105,9 +112,6 @@ While your resume is crucial, a well-crafted cover letter can complement your ap
 
 Once your resume gets you an interview, preparation is key. Utilizing TailorCV’s [AI mock interview](https://www.thetailorcv.com/mock-interview) can help you practice common interview questions and improve your confidence.
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
 
 ## Building Your Online Presence
 

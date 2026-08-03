@@ -10,6 +10,13 @@ image: public/blog-images/competency-based-interview-questions-guide.webp
 
 Competency-based interviews - also called skills-based or structured interviews - assess whether you demonstrate specific competencies required for the role. Instead of casual conversation, interviewers score your answers against predefined criteria: leadership, communication, problem-solving, adaptability, and more.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
+
+
 Used by Fortune 500 companies, government agencies, and structured hiring programs, competency interviews require **[prepared, evidence-based answers](https://www.thetailorcv.com/cover-letter)**. This guide covers how to prepare in 2026.
 
 Practice competency answers with [AI mock interviews](https://thetailorcv.com/mock-interview). Also read [behavioral interview questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), [STAR method guide](https://thetailorcv.com/blog/star-method-interview-answers-guide), [situational questions](https://thetailorcv.com/blog/situational-interview-questions-answers), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
@@ -176,9 +183,6 @@ Manage pressure with [interview anxiety tips](https://thetailorcv.com/blog/inter
 
 This expanded guide aims to provide you with thorough preparation strategies and insights into competency-based interviews, ensuring you approach your next interview with confidence and clarity.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
 
 ## Effective STAR Method Application in Interviews
 

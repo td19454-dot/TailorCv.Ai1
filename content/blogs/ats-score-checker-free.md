@@ -46,6 +46,13 @@ When you **check your [ATS score](https://thetailorcv.com/blog/ats-score-guide)*
 
 You do not need expensive software to test your resume. Here is the simple process:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The four stages matter: the tool reads and analyses the resume first, so the changes it suggests are grounded in the actual posting.
+
+
 1. **Open a free ATS score checker.** You can [check your ATS score on TailorCV](https://thetailorcv.com/solutions) in seconds.
 2. **Paste your resume** (or upload it) and add the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) you are targeting.
 3. **Run the scan.** The tool parses your resume just like an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) would.
@@ -64,9 +71,6 @@ A common question is: *what is a good [ATS score](https://thetailorcv.com/blog/a
 
 Keep in mind that your score is partly relative to the specific [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). A resume that scores 90 for one role may score 65 for another, which is exactly why you should tailor and re-check your resume for each application.
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The four stages matter: the tool reads and analyses the resume first, so the changes it suggests are grounded in the actual posting.
 
 ## How to Improve Your ATS Score
 

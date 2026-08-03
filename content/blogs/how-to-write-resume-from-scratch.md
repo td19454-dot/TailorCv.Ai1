@@ -64,6 +64,13 @@ Add at the top:
 - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) URL (customized)
 - GitHub or [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) (if relevant)
 
+### Building the resume section by section
+
+![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
+
+You fill one section at a time - personal info, education, experience, projects, skills - and the preview on the right re-renders as you type, so the layout is never a surprise at export.
+
+
 Keep it clean. No full address, no photo (in the US/UK), no date of birth. Read the [resume contact section guide](https://thetailorcv.com/blog/resume-contact-section) for exact formatting rules.
 
 ---
@@ -139,9 +146,6 @@ Based on your background, add:
 
 ---
 
-![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
-
-You fill one section at a time - personal info, education, experience, projects, skills - and the preview on the right re-renders as you type, so the layout is never a surprise at export.
 
 ## Step 8: Tailor for the Specific Role
 

@@ -38,19 +38,30 @@ While you are there, you can also pick your preferred resume template and cover-
 
 Now the payoff. Open any job posting — [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed), [Naukri](/blog/how-to-tailor-resume-on-naukri), [Greenhouse, Lever, Workday](/blog/tailor-resume-on-greenhouse-lever-workday), Ashby, Glassdoor and more — and the panel opens beside it.
 
+### What it looks like on a LinkedIn job post
+
+![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
+
+
 It [reads the job description](/blog/ats-resume-checker-how-it-works) off the page and shows your [skill-match score](/ats-analysis) against that role. One click tailors your base resume to the posting — working in the [missing keywords](/blog/how-to-match-resume-keywords-to-job-description) from your real experience, in [your own voice](/blog/how-to-stop-sounding-generic-on-resume) — and downloads the [tailored PDF](/blog/job-posting-to-tailored-pdf-60-seconds). A second click writes a [matching cover letter](/blog/write-cover-letter-from-job-posting). Read the output, adjust anything you want, and apply. That is the whole loop, and it is [about a minute](/blog/one-click-resume-tailoring-how-it-works) start to finish.
 
 ## Using It on Any Site
 
 The extension supports fifteen major job boards out of the box, but plenty of good jobs live on company career pages nobody has built a specific adapter for. For those, click the TailorCV toolbar icon while you are on the posting, and the panel opens and reads the description anyway. So you are never stuck: declared boards work automatically, everything else works from the toolbar. This is how [tailoring stays possible everywhere you apply](/blog/how-to-apply-to-jobs-faster), not just on the big aggregators.
 
-![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-A 67% match on the real posting tells you where you stand before you submit, and that there is room to close the gap.
 
 ## Troubleshooting
 
 A few common hiccups and their fixes.
+
+### The same check running on Greenhouse
+
+![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+A 67% match on the real posting tells you where you stand before you submit, and that there is room to close the gap.
+
 
 **The panel says "checking login" and does nothing.** You are not signed in, or your session expired. Open the [extension page](/extension), sign in, and reopen the panel. If you just installed it, make sure you completed the account step.
 
@@ -66,9 +77,6 @@ With the extension set up, your per-application workflow is: open the job, check
 
 Freshers: your [ATS score as a fresher](/blog/ats-score-for-freshers), [projects that get interviews](/blog/fresher-resume-projects-that-get-interviews), [your first tech job](/blog/how-to-get-first-tech-job), [a job with no experience](/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026), [campus placement](/blog/how-to-prepare-for-campus-placement), a [portfolio site](/blog/how-to-build-professional-portfolio), and the [right template](/blog/how-to-choose-resume-template). And pace yourself — [fewer, tailored applications](/blog/how-many-jobs-should-you-apply-to-per-day) beat volume.
 
-![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
 
 ## Getting the Most Out of It After Setup
 

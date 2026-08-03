@@ -52,6 +52,13 @@ The most useful way to think about your LinkedIn profile is as a living, searcha
 - **Custom URL:** set linkedin.com/in/yourname and add it to your resume.
 - **Location:** set your Canadian city (or target city) so local recruiters find you.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
+
 ## Step 2: Write a Keyword-Rich Headline
 
 Your headline is the most important searchable field after your name. Combine your role, key skills, and value:
@@ -110,9 +117,6 @@ LinkedIn's skills section feeds directly into how you're matched to recruiter se
 
 Optimising LinkedIn isn't a one-off task. Check your search appearances and profile views (LinkedIn shows these) to gauge whether your keywords and activity are landing — rising numbers are a good sign. Update your headline and About whenever your target role shifts, refresh your Experience with new quantified achievements, keep your network growing in your field and region, and stay lightly but consistently active. Think of your profile as a living asset: a little maintenance each month keeps you visible to recruiters and ready the moment the right opportunity appears.
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-This is the step most people skip - checking against the real job description rather than optimising in the abstract.
 
 ## Turning Profile Views Into Conversations
 

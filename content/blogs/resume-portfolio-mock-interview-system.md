@@ -50,9 +50,6 @@ Building interview answers before your resume and portfolio are settled means yo
 - Before an interview, re-read your own portfolio - it is the fastest way to refresh the specific numbers and details you will be asked about
 - Run at least one full [mock interview](https://www.thetailorcv.com/mock-interview) session per week during an active search, focused specifically on your portfolio's featured projects
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
 
 ## Step-by-Step Guide to Crafting Your Resume
 
@@ -91,6 +88,13 @@ Your portfolio is a visual representation of your skills and accomplishments. Us
 ## Mock Interview Prep: Do's and Don'ts
 
 Mock interviews are a crucial step in your job search system. Here’s how to maximize their effectiveness.
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
+
 
 ### Do’s:
 - **Practice Common Questions**: Prepare answers for frequently asked questions related to your field. Tailor your responses to reflect your experiences and skills.

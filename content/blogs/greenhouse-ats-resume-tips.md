@@ -95,9 +95,6 @@ Startups move fast, and so should your application. Paste the Greenhouse job pos
 
 ---
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs in visible stages against the specific job description you paste in.
 
 ## Scenario-Based Resume Matching
 
@@ -151,6 +148,13 @@ Understanding how to tailor your resume for a Greenhouse ATS can be greatly enha
 ## Step-by-Step Guide to Creating a Keyword Map
 
 Creating a [keyword map](https://thetailorcv.com/blog/resume-keyword-map-template) can significantly improve your chances of passing through the Greenhouse ATS. Here’s how to do it:
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs in visible stages against the specific job description you paste in.
+
 
 1. **Collect Job Descriptions:** Gather several job postings for the role you’re interested in. Look for patterns in the language used.
 

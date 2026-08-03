@@ -62,6 +62,13 @@ Close by connecting the lesson to why you're a stronger fit today.
 3. Practice out loud with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), which can simulate this exact question based on your resume.
 4. If the gap it created is visible on your resume, also review [how to explain resume gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps) so your written story and spoken story match.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
+
 ---
 
 ## What to Expect in the Interview
@@ -120,9 +127,6 @@ Be consistent. What you tell the interviewer should match what a former employer
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
 
 ## Additional Strategies for Long-Term Success
 

@@ -10,6 +10,13 @@ image: public/blog-images/github-portfolio-optimization.webp
 
 For developers, GitHub is a portfolio recruiters already know how to read - which means a few hours of cleanup pays off more than almost anything else you can do. Most candidates leave it a mess; optimize yours and you instantly look more senior. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+
+
 ## Key Takeaways
 
 - Optimize your GitHub profile by creating a README in a repository named after your username, including a bio, tech stack, featured projects, and contact information.
@@ -93,9 +100,6 @@ GitHub shows the code; a portfolio site frames the story. Generate one from your
 - **Testimonials**: If applicable, add recommendations from colleagues or clients.
 - **Blog Section**: Writing about your projects or tech topics can attract more visitors.
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
 
 ## Keep Your Resume and Portfolio in Sync
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.

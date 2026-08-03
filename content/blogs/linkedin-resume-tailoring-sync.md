@@ -210,13 +210,17 @@ Read the [LinkedIn profile optimization guide](https://thetailorcv.com/blog/link
 
 ---
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 ## The Recruiter Consistency Check
 
 Before applying to any role, do this 3-minute check:
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 
 1. Open your [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)
 2. Open your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) in another tab

@@ -79,6 +79,13 @@ For early-career candidates, a one-page resume is often preferred. Focus on rele
 
 To further enhance your resume and job search strategy, consider leveraging tools available on [TailorCV](https://www.thetailorcv.com):
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
+
+
 - **[Free ATS Score Checker](https://www.thetailorcv.com/solutions)**: Assess how well your resume performs against ATS criteria.
 - **[Resume Templates](https://www.thetailorcv.com/templates)**: Use professionally designed templates that are ATS-friendly.
 - **[Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide)**: Learn more about optimizing your resume for ATS.
@@ -96,9 +103,6 @@ For more detailed information on this topic, check out our guide on [Resume for 
 
 A well-crafted cover letter can complement your resume and give you an edge over other candidates. Use the [AI Cover Letter Generator](https://www.thetailorcv.com/cover-letter) to create a compelling cover letter tailored to your target job.
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
 
 ## Preparing for Interviews
 

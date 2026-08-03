@@ -41,6 +41,13 @@ Keep each answer to about two minutes. Prepare a handful of STAR stories that ea
 
 ## Common Canadian Interview Questions (and How to Answer)
 
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ### "Tell me about yourself."
 
 A 60–90 second professional summary — who you are professionally, a key strength or two with evidence, and why you're excited about this role. Not your life story.
@@ -179,9 +186,6 @@ If you're new to Canada, interviews are also where you address "Canadian experie
 
 Our [newcomer job guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada-newcomer) covers this in depth.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Phone Screens: The First Gate
 

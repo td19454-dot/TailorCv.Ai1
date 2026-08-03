@@ -34,6 +34,13 @@ This means your resume has two audiences, in this order: **the software, then th
 
 Understanding the pipeline helps you optimise each stage.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, which is why the suggestions are grounded in the posting.
+
+
 ### Step 1: Parsing
 
 The ATS reads your resume file and tries to break it into structured fields: name, contact details, work history (company, title, dates), education, and skills. This is where formatting matters enormously. If your job titles are inside a table, your dates are in a text box, or your name is in the header, the parser can misread or drop them entirely.
@@ -135,9 +142,6 @@ Before submitting any Malaysian application, confirm:
 - [ ] Dedicated skills section with tools and languages
 - [ ] Tested against the posting with an [ATS checker](https://thetailorcv.com/solutions)
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, which is why the suggestions are grounded in the posting.
 
 ## Keyword Optimisation in Practice: Before and After
 

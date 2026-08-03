@@ -10,6 +10,13 @@ image: public/blog-images/manager-interview-round-questions-guide.webp
 
 After HR screens you for fit, the **hiring manager** evaluates whether you can actually do the job - and do it well on their team. Manager round interviews go deeper than HR: they test technical judgment, problem-solving, leadership, collaboration, and how you handle real workplace scenarios.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
+
 This guide covers what hiring managers ask in 2026 and how to prepare with [AI mock interviews](https://thetailorcv.com/mock-interview).
 
 Start with the [HR round guide](https://thetailorcv.com/blog/hr-round-interview-questions-answers), [behavioral interview questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), and [complete interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Tailor your resume to the role with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
@@ -192,9 +199,6 @@ Avoid [common interview mistakes](https://thetailorcv.com/blog/common-interview-
 
 Preparing for a manager round interview requires a strategic approach that emphasizes your skills, experience, and fit within the team. By understanding the key questions, showcasing your impact, and practicing effectively, you can position yourself as a strong candidate who stands out in a competitive job market.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Common Manager Interview Mistakes to Avoid
 

@@ -145,9 +145,6 @@ See all 20 mistakes in [20 Common Interview Mistakes to Avoid in 2026](https://t
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Body Language by Interview Type
 
@@ -170,6 +167,13 @@ You can rehearse this before the real thing. The interviewer reads your resume f
 3. Practice with [AI mock interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
 4. Get feedback from a friend or mentor
 5. Do one full dress rehearsal 24 hours before
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 
 **Checklist for Dress Rehearsal:**
 - Choose your interview outfit in advance.

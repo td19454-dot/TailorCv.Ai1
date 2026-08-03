@@ -102,13 +102,17 @@ A resume that has actually been matched against the target job description also 
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
 
 ## A Realistic Prep Timeline
 
 Trying to prepare all four rounds equally in the final 48 hours is how most candidates burn out before the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) even starts. A more realistic split, assuming roughly two to three weeks of runway:
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
+
 
 **Weeks 1–2: Coding foundation**
 Work through problems by pattern daily, in shorter, focused sessions rather than long cram sessions. Consistency beats intensity here.

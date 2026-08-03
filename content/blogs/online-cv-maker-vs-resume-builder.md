@@ -48,6 +48,13 @@ This is genuinely useful when your goal is to produce a clean, presentable docum
 
 A resume builder, in the sense that matters for job applications, includes everything a CV maker does, plus a layer aimed at getting past screening and matching a specific role. That typically means:
 
+### Building the resume section by section
+
+![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
+
+You fill one section at a time - personal info, education, experience, projects, skills - and the preview on the right re-renders as you type, so the layout is never a surprise at export.
+
+
 - [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) layouts that avoid parsing traps like tables, columns, and text boxes
 - A resume score or readability score you can act on
 - Keyword suggestions pulled from your target role
@@ -105,9 +112,6 @@ Not every job search needs a fully tailored, ATS-optimized workflow. A basic CV 
 
 In these cases, spending time evaluating ATS scoring features or job-description matching is probably overkill. Get a clean, readable document out the door and move on.
 
-![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
-
-You fill one section at a time - personal info, education, experience, projects, skills - and the preview on the right re-renders as you type, so the layout is never a surprise at export.
 
 ## When You Need More Than a Template Tool
 

@@ -103,9 +103,6 @@ The opposite problem - cramming in keywords unnaturally - can be flagged and als
 
 ---
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-This is the step most people skip - checking against the real job description rather than optimising in the abstract.
 
 ## 11. Spelling Variations and Acronyms
 
@@ -139,6 +136,13 @@ Run the [ATS score checker](/solutions), apply the fixes above, and re-scan. Mos
 ## Common Mistakes to Avoid When Optimizing for ATS
 
 When working to improve your ATS score, it's essential to avoid common pitfalls that can undermine your efforts. Here’s a list of mistakes to steer clear of:
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
 
 1. **Overusing Jargon**: While industry-specific terms can be beneficial, excessive jargon may confuse ATS algorithms. Use clear language that's easily understood, focusing on keywords that are relevant to the job description.
   

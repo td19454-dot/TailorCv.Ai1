@@ -52,6 +52,13 @@ A reliable way to catch these before applying is to [run your resume through an 
 
 You do not need design skills to build a resume that passes. Follow this process:
 
+### Building the resume section by section
+
+![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
+
+You edit one section at a time - personal info, education, experience, projects, skills - and the live preview on the right re-renders as you type, so you can see exactly how each change lands on the page before you export. You can also start from an existing CV or import straight from LinkedIn instead of typing everything again.
+
+
 1. **Start from an ATS-safe structure.** Use [free ATS friendly resume templates](https://thetailorcv.com/templates) - including the popular Jake's Resume layout - instead of a decorative design.
 2. **Add clear, standard sections.** Contact, Summary, Skills, Experience, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), Education.
 3. **Mirror the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).** Pull the exact skills and terms from the posting and weave them in naturally.
@@ -66,9 +73,6 @@ Not every "resume builder" is [ATS](https://thetailorcv.com/blog/what-is-an-ats-
 
 TailorCV is built around exactly this workflow. You can [build and tailor your resume](https://thetailorcv.com/solutions), start from [ATS friendly templates](https://thetailorcv.com/templates), and immediately check your ATS score to confirm the result is parseable and well matched - all free to start. Because it tests as well as builds, you are never guessing whether your resume will pass.
 
-![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
-
-You edit one section at a time - personal info, education, experience, projects, skills - and the live preview on the right re-renders as you type, so you can see exactly how each change lands on the page before you export. You can also start from an existing CV or import straight from LinkedIn instead of typing everything again.
 
 ## ATS Friendly Resume Templates That Work
 

@@ -35,6 +35,13 @@ If you're targeting the English-friendly segment — which is where many foreign
 
 An applicant tracking system is software employers use to collect, parse, and rank applications. When you apply online at a global company, your resume often goes into an ATS first. It:
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
+
+
 - **Parses** your resume into structured data (contact, experience, skills, education).
 - **Screens and ranks** candidates, often by how well the resume matches the job's keywords.
 - Lets recruiters **search** the database by skills and titles.
@@ -61,9 +68,6 @@ The ATS ranks you largely on keyword relevance. For every application:
 
 Tailoring keywords per job dramatically improves your ranking. Use the [TailorCV resume optimizer](https://thetailorcv.com/solutions) to compare your resume against a specific job description, get a match score, and see the keywords you're missing — the same approach that beats the ATS anywhere. For a starting palette of high-value terms, see [best resume keywords for jobs in Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
 
 ## Step 3: Write Strong, Quantified Content
 

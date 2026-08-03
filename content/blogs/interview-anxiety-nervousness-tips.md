@@ -106,9 +106,6 @@ For [panel interviews](https://thetailorcv.com/blog/panel-interview-tips-strateg
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
 
 ## When Anxiety Is Severe
 
@@ -181,6 +178,13 @@ Use this checklist to ensure you’re fully prepared for your interview and to h
 By following these practical steps and avoiding common mistakes, you can significantly reduce your interview anxiety and present your best self. For additional resources on interview preparation, check out our complete guide on [How to Prepare for a Job Interview in 2026 - Complete Guide for Every Industry](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ## Frequently Asked Questions
+
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
 
 ### Is it okay to admit I'm nervous in an interview?
 
