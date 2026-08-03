@@ -195,6 +195,26 @@ class GuestAtsScan(Base):
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
 
 
+class BlogRating(Base):
+    """A single 1-5 star rating for one blog post.
+
+    One row per rater per post, deduped on (slug, voter_hash) so a refresh
+    or a second click updates the existing vote instead of stuffing the
+    average. voter_hash is a salted hash of the client IP - readers are
+    almost always logged out, so there is no user id to key on, and we do
+    not want to store raw IPs.
+    """
+    __tablename__ = "blog_ratings"
+    __table_args__ = (UniqueConstraint("slug", "voter_hash", name="uq_blog_rating_voter"),)
+
+    id = Column(Integer, primary_key=True, index=True)
+    slug = Column(String(255), nullable=False, index=True)
+    rating = Column(Integer, nullable=False)
+    voter_hash = Column(String(64), nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+
 class FeedbackSubmission(Base):
     """Survey submitted from email campaign links (/feedback?reason=...).
 
