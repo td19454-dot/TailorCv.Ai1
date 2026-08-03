@@ -63,6 +63,13 @@ A minute instead of ten — and because it lives on the page, tailoring survives
 
 **Step 1 — Set your base resume once.** Upload the resume you normally send; it becomes the starting point the tool rewrites from every time. If you are unsure it is even solid, run a [free ATS score](/blog/how-to-check-ats-score-free) on it first.
 
+### Tailoring straight from an Indeed listing
+
+![The TailorCV extension open on an Indeed job posting, reading the role and company and showing a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
+
+On Indeed the panel reads the posting off the page and shows the match before you hit Apply - 17% here, which is the kind of gap worth closing first rather than discovering through silence.
+
+
 ### Your resume after optimization
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)

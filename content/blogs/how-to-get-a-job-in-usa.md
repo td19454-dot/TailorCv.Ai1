@@ -77,6 +77,13 @@ With your resume and online presence ready, it's time to start applying:
 
 Once you’ve secured an interview, preparation is key:
 
+### Tailoring without leaving Glassdoor
+
+![The TailorCV extension open on a Glassdoor job posting, showing a 27% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-glassdoor.webp)
+
+Glassdoor tells you which qualifications it thinks you are missing; the panel beside it scores the whole resume against the role and rewrites it to close that gap.
+
+
 ### What optimizing actually does to your resume
 
 ![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
