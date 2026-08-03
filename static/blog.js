@@ -753,6 +753,11 @@
     enhanceBottomLine();
     placeInlineBlocks();
     addEndOfArticleCta();
+    // Rating goes last, after the closing CTA - it is the final thing we ask
+    // of the reader, not something that interrupts the sign-off.
+    const rateBox = document.getElementById("blog-rate");
+    const contentEl = document.querySelector(".post-content");
+    if (rateBox && contentEl) contentEl.appendChild(rateBox);
     initCtaReveal();
     initHeadingAnchors();
     initBackToTop();
@@ -824,21 +829,34 @@
     s.setAttribute("aria-checked", String(i + 1 === n));
   });
 
-  const summarise = (avg, count) => {
+  const summarise = (a, c) => {
+    avg = Number(a); count = Number(c);
     if (!count) { sub.textContent = "Be the first to rate it."; return; }
-    sub.innerHTML = "Average <strong>" + Number(avg).toFixed(2) + "</strong> / 5.00 &middot; " +
+    sub.innerHTML = "Average <strong>" + avg.toFixed(2) + "</strong> / 5.00 &middot; " +
       count + " rating" + (count === 1 ? "" : "s");
   };
 
+  // What the stars show when nobody is hovering: your own rating if you have
+  // one, otherwise the community average rounded to the nearest star. Without
+  // this a post with a 4.00 average showed five empty stars to every new
+  // reader, which reads as "unrated" and contradicts the text beside it.
+  let avg = parseFloat(box.dataset.average || "0") || 0;
+  let count = parseInt(box.dataset.count || "0", 10) || 0;
   let mine = 0;
   try { mine = parseInt(localStorage.getItem(KEY) || "0", 10) || 0; } catch (_) {}
-  if (mine) { paint(mine); box.classList.add("is-done"); }
+
+  const resting = () => mine || (count ? Math.round(avg) : 0);
+  paint(resting());
+  if (mine) box.classList.add("is-done");
+  else if (count) box.classList.add("is-avg");
 
   stars.forEach((star) => {
     star.addEventListener("mouseenter", () => { if (!box.classList.contains("is-done")) paint(Number(star.dataset.value)); });
     star.addEventListener("click", () => {
       const value = Number(star.dataset.value);
+      mine = value;                     // keep, or mouseleave repaints back to 0
       paint(value);
+      box.classList.remove("is-avg");
       box.classList.add("is-done");
       try { localStorage.setItem(KEY, String(value)); } catch (_) {}
       // Double-submit CSRF: the cookie is set on every response, and the
@@ -854,9 +872,15 @@
       })
         .then((r) => (r.ok ? r.json() : Promise.reject(new Error("rate failed"))))
         .then((d) => { summarise(d.average, d.count); sub.textContent += " \u2014 thanks!"; })
-        .catch(() => { sub.textContent = "Could not save that rating. Please try again."; box.classList.remove("is-done"); });
+        .catch(() => {
+          sub.textContent = "Could not save that rating. Please try again.";
+          box.classList.remove("is-done");
+          mine = 0;
+          paint(resting());
+          try { localStorage.removeItem(KEY); } catch (_) {}
+        });
     });
   });
 
-  box.querySelector(".blog-rate-stars").addEventListener("mouseleave", () => paint(mine));
+  box.querySelector(".blog-rate-stars").addEventListener("mouseleave", () => paint(resting()));
 })();
