@@ -7,7 +7,8 @@ tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
 image: public/blog-images/how-to-increase-ats-score.webp
 slug: how-to-increase-ats-score
-keywords: how to increase ats score, improve ats score, boost ats resume score, raise ats score---
+keywords: how to increase ats score, improve ats score, boost ats resume score, raise ats score
+---
 
 If your resume is scoring in the 50s or 60s, you can usually reach the competitive 80-90 range in a single focused editing session. This is a practical, step-by-step playbook to **increase your [ATS score](https://thetailorcv.com/blog/ats-score-guide)** - no guesswork.
 

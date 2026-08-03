@@ -297,6 +297,8 @@ class BlogService:
 
         md = markdown.Markdown(extensions=["extra", "toc", "fenced_code", "codehilite", "tables", "sane_lists"])
         content_html = md.convert(body)
+        content_html = self._normalize_content_images(content_html)
+        content_html = self._render_task_lists(content_html)
         toc_html = getattr(md, "toc", "") or ""
 
         word_count = len(re.findall(r"\w+", body))
@@ -326,6 +328,45 @@ class BlogService:
             word_count=word_count,
             lastmod_iso=lastmod_iso,
         )
+
+    @staticmethod
+    def _render_task_lists(content_html: str) -> str:
+        """Turn markdown task-list syntax into real checkbox rows.
+
+        106 posts use `- [ ] item` for checklists, but python-markdown has no
+        task-list extension enabled, so the literal "[ ]" was being printed as
+        text next to the bullet. Replace it with a styled box and tag the <li>
+        so CSS can drop the bullet.
+        """
+        def repl(m: re.Match) -> str:
+            attrs, mark, rest = m.group(1), m.group(2), m.group(3)
+            done = mark.lower() == "x"
+            cls = "task-item task-done" if done else "task-item"
+            box = '<span class="task-box" aria-hidden="true">' + ("&#10003;" if done else "") + "</span>"
+            label = "checked" if done else "unchecked"
+            return f'<li{attrs} class="{cls}"><span class="sr-only">{label}: </span>{box}{rest}'
+
+        return re.sub(r'<li([^>]*)>\s*\[([ xX])\]\s*(.*)', repl, content_html)
+
+    @staticmethod
+    def _normalize_content_images(content_html: str) -> str:
+        """Make in-article image paths root-relative, and lazy-load them.
+
+        Posts write images as `![alt](public/blog-images/x.webp)`, matching
+        the frontmatter convention. The frontmatter `image` gets fixed up by
+        _normalize_image_path, but body images went through untouched - so on
+        /blog/<slug> the browser resolved them against the post URL and asked
+        for /blog/public/blog-images/x.webp, which 404s. Every inline image
+        in the blog was silently broken.
+        """
+        def fix(m: re.Match) -> str:
+            before, src, after = m.group(1), m.group(2), m.group(3)
+            if not src.startswith(("http://", "https://", "//", "/", "data:")):
+                src = "/" + src.lstrip("./")
+            extra = "" if "loading=" in (before + after) else ' loading="lazy" decoding="async"'
+            return f'<img{before}src="{src}"{after}{extra}>'
+
+        return re.sub(r'<img([^>]*?)src="([^"]+)"([^>]*?)>', fix, content_html)
 
     @staticmethod
     def _read_file(path: str) -> str:

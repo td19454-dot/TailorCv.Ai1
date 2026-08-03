@@ -8307,6 +8307,13 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
     hay = f"{post.category} {post.slug} {post.title} {' '.join(post.tags)}".lower()
     subject = f"{post.slug} {post.title}".lower()
 
+    # Interview-practice posts get nothing. This has to be checked BEFORE the
+    # portfolio branch below: a post like "resume-portfolio-mock-interview-system"
+    # matches "portfolio" too, and was showing a portfolio template gallery on
+    # what is really a mock-interview article.
+    if "mock interview" in subject or "mock-interview" in subject:
+        return None
+
     if "portfolio" in subject:
         themes = [(slug, PORTFOLIO_THEMES.get(slug, slug).split("—")[0].split("-")[0].strip(), media)
                   for slug, media in PORTFOLIO_THEME_MEDIA.items() if media.get("image")]
