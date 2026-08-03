@@ -3,12 +3,11 @@ title: ATS Resume Checker - How It Works and How to Pass (2026)
 description: Understand exactly how an ATS resume checker works, what it analyzes in your resume, and how to use one to pass automated screening and land more interviews.
 date: 2026-06-02
 author: TailorCV Team
-tags: ATS, resume, job search, [ATS score]
+tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
 image: public/blog-images/ats-resume-checker-how-it-works.webp
 slug: ats-resume-checker-how-it-works
-keywords: ats resume checker, how ats works, resume scanner, ats checker tool
----
+keywords: ats resume checker, how ats works, resume scanner, ats checker tool---
 
 An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) resume checker tells you how your resume will perform against the software that screens applications before a human sees them. This guide explains **how an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) resume checker works**, what it looks at, and how to use one to consistently pass screening.
 

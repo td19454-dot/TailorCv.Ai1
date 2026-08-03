@@ -3,12 +3,11 @@ title: ATS Keywords - How to Find and Add Them to Boost Your Score (2026)
 description: Keywords are the biggest ATS ranking factor. Learn how to find the right keywords from any job description and add them naturally to boost your ATS score.
 date: 2026-05-31
 author: TailorCV Team
-tags: ATS, resume, keywords, [ATS score]
+tags: [ATS, resume, keywords, ATS score]
 category: ATS Optimization
 image: public/blog-images/ats-keywords-to-boost-score.webp
 slug: ats-keywords-to-boost-score
-keywords: ats keywords, resume keywords for ats, how to add keywords resume, boost ats score keywords
----
+keywords: ats keywords, resume keywords for ats, how to add keywords resume, boost ats score keywords---
 
 Keywords are the single biggest factor in your [ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score). Get them right and your resume rises to the top of the ranking; get them wrong and even a qualified resume gets filtered out. This guide shows you how to **find the right [ATS keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score)** and add them naturally to boost your score.
 

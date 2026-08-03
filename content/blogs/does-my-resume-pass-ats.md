@@ -3,12 +3,11 @@ title: Does My Resume Pass ATS? A 12-Point Checklist (2026)
 description: Use this 12-point checklist to find out if your resume will pass ATS screening, then scan it for free to confirm your score before you apply.
 date: 2026-06-02
 author: TailorCV Team
-tags: ATS, resume, job search, [ATS score]
+tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
 image: public/blog-images/does-my-resume-pass-ats.webp
 slug: does-my-resume-pass-ats
-keywords: does my resume pass ats, ats resume checklist, will my resume pass ats, ats test resume
----
+keywords: does my resume pass ats, ats resume checklist, will my resume pass ats, ats test resume---
 
 Wondering whether your resume will make it past the software and reach a real person? Use this **12-point ATS checklist** to find out. Tick off each item, then confirm with the [free ATS score checker](/solutions).
 
