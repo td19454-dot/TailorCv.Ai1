@@ -60,6 +60,13 @@ Do not let speed push you into [keyword-stuffing](/blog/ats-keyword-mistakes) or
 
 The workflow travels. It is the same on every board because they all feed the same filter, and it holds for [remote roles](/blog/how-to-match-resume-to-remote-job-description) — where a [remote cover letter](/blog/cover-letter-for-remote-jobs) helps and competition is global — and for applying abroad, where [the USA](/blog/how-to-get-a-job-in-usa) and [Canada](/blog/how-to-get-a-job-in-canada) differ, including whether you need a [resume or a CV](/blog/resume-vs-cv). Watch for [job scams](/blog/how-to-spot-a-job-scam) when moving fast — speed is exactly when people skip the checks. And note the [startup vs enterprise](/blog/resume-tailoring-startup-vs-enterprise) difference in emphasis.
 
+### Tailoring without leaving the job board
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+Whichever board you are on, the extension opens beside the listing, reads the description off the page and scores your resume against that role - so "tailor each application" takes a click rather than a detour.
+
+
 ### Keeping every tailored resume with its job
 
 ![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)

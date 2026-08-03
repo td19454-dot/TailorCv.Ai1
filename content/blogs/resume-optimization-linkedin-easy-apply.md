@@ -222,6 +222,13 @@ For your high-volume layer, use the [remote job search guide](https://thetailorc
 
 Easy Apply does not mean "apply and forget."
 
+### Tailoring without leaving the job board
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+Whichever board you are on, the extension opens beside the listing, reads the description off the page and scores your resume against that role - so "tailor each application" takes a click rather than a detour.
+
+
 After submitting a priority application:
 
 1. **Find the hiring manager on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)** - Use the company's [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) page, job posting details, or [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) search

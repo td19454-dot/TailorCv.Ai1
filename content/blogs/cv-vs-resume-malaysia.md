@@ -120,6 +120,7 @@ Whatever the medium, the same principle applies: tailored, relevant, and easy to
 
 **Do:**
 
+
 ### Your resume after optimization
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)

@@ -56,19 +56,6 @@ The extension supports fifteen major job boards out of the box, but plenty of go
 
 A few common hiccups and their fixes.
 
-### The same check on a job board you already use
-
-![The TailorCV extension open on a Simplify job listing, showing a 50% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-simplify-job-board.webp)
-
-The extension works on the job boards you already use rather than asking you to paste listings somewhere else.
-
-
-### The same check running on Greenhouse
-
-![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-A 67% match on the real posting tells you where you stand before you submit, and that there is room to close the gap.
-
 
 **The panel says "checking login" and does nothing.** You are not signed in, or your session expired. Open the [extension page](/extension), sign in, and reopen the panel. If you just installed it, make sure you completed the account step.
 

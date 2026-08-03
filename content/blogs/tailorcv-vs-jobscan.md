@@ -137,6 +137,13 @@ Jobscan offers no mock interviews and no portfolio builder. If you want those, t
 
 **TailorCV wins, and this is where the two products feel most different day to day.**
 
+### What the extension looks like on a real posting
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+Rather than duplicating a resume in a builder and hand-editing it per job, the panel does the match check and the tailoring on the posting itself.
+
+
 Both have an extension. **Jobscan's fetches the job description so you can scan it** — a real convenience, and it saves copy-pasting into their site.
 
 **Ours tailors the resume on the posting itself.**

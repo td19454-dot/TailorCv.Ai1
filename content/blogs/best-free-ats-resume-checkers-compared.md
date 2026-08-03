@@ -79,6 +79,13 @@ A keyword score tells you if you'll get *past* the ATS - it says nothing about w
 
 When evaluating different ATS checkers, consider the following key features that can enhance your job application process:
 
+### What the extension looks like on a real posting
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+Rather than duplicating a resume in a builder and hand-editing it per job, the panel does the match check and the tailoring on the posting itself.
+
+
 | Check | What to look for |
 |---|---|
 | **User-Friendly Interface** | A simple, intuitive interface will make it easier to navigate the tool and understand your results |

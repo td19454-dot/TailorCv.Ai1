@@ -119,6 +119,7 @@ Both a summary and an objective sit in the same position at the top of your resu
 - It includes skill keywords ("Python," "SQL," "HubSpot")
 - It contains accomplishment language that signals quality
 
+
 An objective rarely includes keywords beyond the job title. Run your resume summary through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to see how well it matches each job description.
 
 ---

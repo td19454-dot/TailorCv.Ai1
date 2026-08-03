@@ -69,6 +69,7 @@ The table makes the decision easy: unless you are a true [career changer](https:
 
 The reason functional [resumes](https://thetailorcv.com/blog/anatomy-of-a-resume) exist is a real problem: when your most relevant [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) is not your most recent, a pure timeline buries your best material under your current, unrelated job. But the solution is not to hide the timeline — it is to add a framing layer above it.
 
+
 A combination format handles this cleanly. Lead with a summary that states your target direction, add a "Relevant [Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)" or "Selected [Projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)" section that surfaces the transferable work, and *then* show your full dated history. The [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) sees your relevance first and your honesty right after. For more on this, see our [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ## Format Mistakes That Cost Interviews

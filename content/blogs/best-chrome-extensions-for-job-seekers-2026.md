@@ -48,12 +48,6 @@ Our bias, stated plainly: this is our product, so treat the pitch as a pitch. Bu
 
 Before you tailor, it helps to know how bad the gap is. An ATS-scoring extension pulls the job description off the page and scores your resume against it, showing the keywords you are missing.
 
-### The same check running on Greenhouse
-
-![The TailorCV extension on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-On Greenhouse - an ATS you actually submit through - the same check runs inline and tells you where you stand before you apply.
-
 
 Several tools do a version of this. Ours folds it into the tailoring panel — you see the [skill-match score](/ats-analysis) before you tailor, and again after — so you are not guessing whether the rewrite helped. If you only want the diagnosis and prefer to rewrite by hand, a standalone ATS checker is a reasonable single-purpose install. You can also just [check your ATS score for free](/blog/how-to-check-ats-score-free) without an extension at all. Just know that a score alone leaves you with the hard part still to do. Our [ATS score guide](/blog/ats-score-guide) covers what the number does and does not tell you, [ATS score vs resume score](/blog/ats-score-vs-resume-score) clears up a common confusion, and [making your resume parser-friendly](/blog/ats-resume-parser-friendly-format) is the formatting groundwork that a score alone will not fix.
 
@@ -87,12 +81,6 @@ An on-page tool collapses that ten minutes to about one. It does not just make y
 ## Do You Even Need One? A 60-Second Check
 
 Before installing anything, find out whether the resume is your actual bottleneck, because if it is not, no extension will help.
-
-### The same check on a job board you already use
-
-![The TailorCV extension open on a Simplify job listing, showing a 50% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-simplify-job-board.webp)
-
-It reads the posting off whatever board you are browsing - Simplify here - and scores your resume against it before you apply, so you find the gap while you can still close it.
 
 
 Pick a job you genuinely want, copy the full description, and run it against a [free ATS score](/ats-analysis) with your current resume. Read the number and the missing-keywords list:
