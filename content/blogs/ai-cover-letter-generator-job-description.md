@@ -52,6 +52,13 @@ This is also why a cover letter generator works best as a companion to [resume t
 
 Here is a short, realistic excerpt from a job posting for a customer success role:
 
+### What the finished letter looks like
+
+![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
+
+
 > "We're looking for a Customer Success Manager to own renewals and expansion for our mid-market accounts. You'll work directly with our Head of Sales to reduce churn, and you'll need to be comfortable presenting usage data to skeptical stakeholders. This is a newly created role reporting into a five-person CS team."
 
 Now compare two possible opening paragraphs. First, what a generic, title-only prompt produces:

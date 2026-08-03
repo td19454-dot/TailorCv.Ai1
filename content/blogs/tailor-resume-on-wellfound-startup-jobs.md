@@ -49,11 +49,11 @@ That last part matters on Wellfound: use the tool to get a tailored, matched dra
 
 **Step 1 — Set your base resume once.** Upload your resume; make sure it is solid with a [free ATS score](/blog/how-to-check-ats-score-free) first, keep it [ATS-friendly](/blog/how-to-make-resume-ats-friendly) and [parseable](/blog/ats-resume-parser-friendly-format), and lean toward impact and breadth if you are targeting startups. Do it fast with a [one-click tailor](/blog/one-click-resume-tailoring-how-it-works) rather than the [ten-minute manual grind](/blog/how-to-tailor-resume-in-5-minutes).
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 
 **Step 2 — Open the Wellfound role** you actually want. Read it closely — the stack, the stage, the range.

@@ -113,6 +113,13 @@ A great opening line buys attention; the rest of the letter has to keep it. Once
 
 Think of the cover letter as a three-part arc:
 
+### What the finished letter looks like
+
+![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
+
+The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
+
+
 1. **The hook (opening line):** earns the next thirty seconds with a specific, true detail about the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) or [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 2. **The proof (middle):** one concrete [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) that maps directly to the posting, showing rather than asserting your fit.
 3. **The close:** reaffirms interest, signals you understand what the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) needs, and invites a conversation.

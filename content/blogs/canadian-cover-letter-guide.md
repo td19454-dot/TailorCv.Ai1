@@ -44,6 +44,13 @@ It's worth being clear on *why* the cover letter matters, because that shapes ho
 
 Keep it to one page, three to four short paragraphs.
 
+### What the finished letter looks like
+
+![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
+
+The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
+
+
 ### 1. Header and Greeting
 
 Your contact details and the date, then address a specific person where possible ("Dear Ms. Chen"). If no name is available, "Dear Hiring Manager" works. Avoid "To Whom It May Concern."

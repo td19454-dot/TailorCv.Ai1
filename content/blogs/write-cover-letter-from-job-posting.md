@@ -50,6 +50,13 @@ That combination — tailored *and* effortless — is what a generic saved lette
 
 Whatever you use to draft it, a strong letter follows a simple shape.
 
+### What the finished letter looks like
+
+![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
+
+
 **Opening (1–2 sentences):** a specific hook — why this role, why this company — not "I am writing to apply for". **Body paragraph one:** your strongest match to the posting's top requirement, with a concrete, [quantified](/blog/how-to-quantify-resume-achievements) example. **Body paragraph two:** a second relevant proof point, or why you are drawn to the company specifically. **Close (1–2 sentences):** a confident, brief sign-off. Keep the whole thing under a page — three to four short paragraphs. Recruiters skim; a wall of text loses them.
 
 Keep it [ATS-friendly](/blog/how-to-make-resume-ats-friendly) in format if it is going through a portal — plain text, no fancy layout — since the same [parser rules](/blog/ats-resume-parser-friendly-format) and [formatting mistakes](/blog/ats-resume-formatting-mistakes) can apply to letters too.

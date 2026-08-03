@@ -214,11 +214,11 @@ That is your [keyword guide](https://thetailorcv.com/blog/resume-keywords-guide)
 
 Whether you have a referral, are doing cold outreach, or are facing a vague posting - these principles apply:
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 
 **1. Tailor to the company, not just the role**

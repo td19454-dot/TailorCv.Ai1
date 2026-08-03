@@ -46,6 +46,13 @@ The full method is in the [cover letter guide for 2026](/blog/cover-letter-guide
 
 **Opening (1–2 sentences):** a specific hook tied to the role or company. **Body paragraph one:** your strongest match to the posting's top requirement, with a concrete, [quantified](/blog/how-to-quantify-resume-achievements) example. **Body paragraph two:** a second proof point, or why you're drawn to this company specifically (and, for foreigners, a brief note on pass eligibility). **Close (1–2 sentences):** confident, brief, professional. Keep the whole thing to three or four short paragraphs — Singapore recruiters skim.
 
+### What the finished letter looks like
+
+![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
+
+
 
 ## Tailoring: Why Generic Letters Fail
 

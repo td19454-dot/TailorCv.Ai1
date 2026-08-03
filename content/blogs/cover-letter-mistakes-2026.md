@@ -98,6 +98,13 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 
 Weak version:
 
+### What the finished letter looks like
+
+![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
+
+The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
+
+
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.
 
 Stronger version:

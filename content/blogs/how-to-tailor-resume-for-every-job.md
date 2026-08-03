@@ -329,11 +329,11 @@ That is how you [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-
 - Copying the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) verbatim
 - Forgetting to update your summary
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor after optimization, with controls for font size, line spacing and accent colour beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-After tailoring, the editor is where you make it fit. Font size, line spacing, accent colour and template are all adjustable, with a live page counter - which is usually how you get a spilling two-page draft back onto one page without deleting anything worth keeping.
+This is the resume after tailoring. The content is already matched to the posting; these controls are how you fit it onto one page - font size, line spacing, accent colour and template, with a live page counter.
 
 
 ---
