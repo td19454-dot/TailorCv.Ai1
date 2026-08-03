@@ -1701,3 +1701,126 @@ header.navbar {
 @media (max-width: 760px) {
   .blog-detail-page .blog-ats-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- Inline template gallery (resume + portfolio topics) ---- */
+.blog-detail-page .blog-tpl {
+  max-width: 1000px;
+  margin: 40px 0;
+  padding: clamp(24px, 3.2vw, 38px) clamp(20px, 3.2vw, 36px);
+  border: 1px solid #dfe6f3;
+  border-radius: 16px;
+  background: linear-gradient(170deg, #f7f9fe 0%, #eef4ff 100%);
+}
+
+.blog-detail-page .blog-tpl-head { text-align: center; margin-bottom: 22px; }
+
+.blog-detail-page .post-content .blog-tpl h2 {
+  margin: 0 0 8px;
+  padding: 0;
+  border: 0;
+  font-size: clamp(1.4rem, 2.1vw, 1.9rem);
+  color: #10203c;
+}
+
+.blog-detail-page .post-content .blog-tpl-head p {
+  margin: 0 auto;
+  max-width: 58ch;
+  color: #43506b;
+  font-size: 1rem;
+}
+
+.blog-detail-page .blog-tpl-grid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* One preview, shown whole. Resume shots are portrait pages and portfolio
+   shots are landscape screenshots, so the image keeps its natural ratio -
+   no aspect-ratio + object-fit:cover, which cropped the page edges off. */
+.blog-detail-page .blog-tpl-card { margin: 0; width: 100%; max-width: 430px; }
+.blog-detail-page .blog-tpl--portfolio .blog-tpl-card { max-width: 640px; }
+
+.blog-detail-page .blog-tpl-shot {
+  display: block;
+  padding: 10px;
+  border: 1px solid #d8e0ee;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(16, 32, 60, 0.1);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.blog-detail-page .blog-tpl-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.blog-detail-page .blog-tpl-shot:hover {
+  transform: translateY(-4px);
+  border-color: #5B42F3;
+  box-shadow: 0 14px 30px rgba(91, 66, 243, 0.2);
+  text-decoration: none;
+}
+
+.blog-detail-page .post-content .blog-tpl-name {
+  margin: 10px 2px 0;
+  color: #10203c;
+  font-size: 0.94rem;
+  font-weight: 700;
+  text-align: center;
+}
+.blog-detail-page .post-content .blog-tpl-demo {
+  display: block;
+  margin-top: 2px;
+  color: #5B42F3;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+/* Same layered glow button as the other blog CTAs. */
+.blog-detail-page .post-content .blog-tpl-cta {
+  --neutral-1: #3392ff;
+  --neutral-2: #7c3aed;
+  --radius: 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 58px;
+  padding: 18px 32px;
+  border: none;
+  border-radius: var(--radius);
+  background: transparent;
+  color: #ffffff;
+  font-size: 1.02rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+  box-shadow: 0 0.5px 0.5px 1px rgba(255,255,255,.2), 0 6px 18px rgba(51,146,255,.35);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.blog-detail-page .post-content .blog-tpl-cta::after {
+  content: ""; position: absolute; inset: 0; border-radius: var(--radius);
+  border: 2px solid transparent;
+  background: linear-gradient(var(--neutral-1), var(--neutral-2)) padding-box,
+              linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0,.45)) border-box;
+  z-index: 0;
+}
+.blog-detail-page .post-content .blog-tpl-cta::before {
+  content: ""; position: absolute; inset: 7px 6px 6px 6px;
+  background: linear-gradient(to top, var(--neutral-1), var(--neutral-2));
+  border-radius: 30px; filter: blur(0.5px); z-index: 1;
+}
+.blog-detail-page .post-content .blog-tpl-cta:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 0 1px 2px rgba(255,255,255,.3), 0 10px 24px rgba(51,146,255,.5);
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .blog-detail-page .blog-tpl-card { max-width: 100%; }
+}

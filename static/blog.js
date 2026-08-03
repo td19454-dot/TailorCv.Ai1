@@ -607,6 +607,34 @@
     content.appendChild(box);
   };
 
+  /* The ATS scanner and template gallery are rendered at the end of
+     .post-content (that is the only place the template can inject them), but
+     they convert far better partway through the read. Move them onto H2
+     boundaries at roughly 45% and 72% of the article.
+
+     Only top-level H2s count - headings already swallowed into a step card,
+     FAQ or takeaways box are skipped, so a block never lands inside another
+     card. Short articles keep them at the end rather than crowding the intro. */
+  const placeInlineBlocks = () => {
+    const content = document.querySelector(".post-content");
+    if (!content) return;
+
+    const headings = Array.from(content.children).filter((el) => el.tagName === "H2");
+    const move = (sel, ratio) => {
+      const block = content.querySelector(sel);
+      if (!block || headings.length < 5) return;
+      const target = headings[Math.floor(headings.length * ratio)];
+      // Never place it directly against another promo block.
+      if (!target || target.previousElementSibling === block) return;
+      if (target.previousElementSibling &&
+          target.previousElementSibling.matches(".article-cta-strip, .blog-ats, .blog-tpl")) return;
+      target.before(block);
+    };
+
+    move("#blog-ats-scanner", 0.45);
+    move("#blog-template-showcase", 0.72);
+  };
+
   /* Reveal the CTA cards when they scroll into view. The CSS holds them at
      opacity 0 only under prefers-reduced-motion: no-preference, so if motion
      is reduced (or IntersectionObserver is missing) they are already visible
@@ -714,6 +742,7 @@
     enhanceTables();
     enhanceArticleCtas();
     enhanceBottomLine();
+    placeInlineBlocks();
     addEndOfArticleCta();
     initCtaReveal();
     initHeadingAnchors();
