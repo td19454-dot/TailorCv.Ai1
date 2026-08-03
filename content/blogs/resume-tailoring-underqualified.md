@@ -186,6 +186,10 @@ Completely different impression.
 
 ---
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## The Cover Letter Is Your Secret Weapon
 
 When you are underqualified, a strong [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) can bridge the gap your resume cannot.

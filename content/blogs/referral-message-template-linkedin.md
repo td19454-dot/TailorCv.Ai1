@@ -66,12 +66,6 @@ Avoid:
 
 ---
 
-## Conclusion
-
-Referral messages should feel human and easy to answer. Before sending your resume, check it against the role with the [ATS score checker](/solutions) so the referral has a strong application behind it.
-
----
-
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) referral request because small wording choices can change how recruiters and ATS systems understand your fit.
@@ -155,6 +149,12 @@ If you want to keep improving this topic, these closely related guides are worth
 - [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
 
 Use these links as a practical cluster: first fix the resume and ATS alignment, then improve the supporting proof such as portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or interview examples. That gives search engines clearer topical connections and gives readers a useful next step instead of a dead end.
+
+---
+
+## Conclusion
+
+Referral messages should feel human and easy to answer. Before sending your resume, check it against the role with the [ATS score checker](/solutions) so the referral has a strong application behind it.
 
 ---
 

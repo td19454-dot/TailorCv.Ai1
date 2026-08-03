@@ -151,6 +151,10 @@ See [common interview mistakes](https://thetailorcv.com/blog/common-interview-mi
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
+
 ## Tips for Enhancing Your Case Interview Skills
 
 1. **Stay Updated on Industry Trends**: Understanding current market dynamics can provide context for case scenarios.
@@ -159,12 +163,6 @@ See [common interview mistakes](https://thetailorcv.com/blog/common-interview-mi
 4. **Seek Feedback**: After practice sessions, ask peers or mentors for constructive criticism to refine your approach.
 
 ---
-
-## Conclusion
-
-Preparing for a case interview requires a blend of strategic thinking, effective communication, and structured problem-solving skills. By understanding the case interview process, practicing with various resources, and learning from your mistakes, you can significantly enhance your performance. Remember, the key is to articulate your thought process clearly and confidently while demonstrating your analytical capabilities.
-
-For additional resources on interview preparation, check out our guides on [remote job interview preparation](https://thetailorcv.com/blog/remote-job-interview-preparation-2026) and [group interview tips](https://thetailorcv.com/blog/group-interview-tips-strategies). Good luck with your case interviews!
 
 ## Worked Example: Analyzing a Case Scenario
 
@@ -237,6 +235,12 @@ To further refine your case interview skills, consider leveraging various resour
 - Explore [cover letter](https://www.thetailorcv.com/cover-letter) templates to complement your applications.
 
 By incorporating these strategies and resources, you can significantly improve your case interview performance and increase your chances of success in landing a consulting role.
+
+## Conclusion
+
+Preparing for a case interview requires a blend of strategic thinking, effective communication, and structured problem-solving skills. By understanding the case interview process, practicing with various resources, and learning from your mistakes, you can significantly enhance your performance. Remember, the key is to articulate your thought process clearly and confidently while demonstrating your analytical capabilities.
+
+For additional resources on interview preparation, check out our guides on [remote job interview preparation](https://thetailorcv.com/blog/remote-job-interview-preparation-2026) and [group interview tips](https://thetailorcv.com/blog/group-interview-tips-strategies). Good luck with your case interviews!
 
 ## Frequently Asked Questions
 

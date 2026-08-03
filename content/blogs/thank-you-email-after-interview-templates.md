@@ -71,6 +71,10 @@ The difference between a note that helps and one that is instantly forgotten is 
 
 The decision conversation often happens within a day or two of your [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), while impressions are fresh. A thank-you that arrives the same evening or the next morning lands *inside* that window and can nudge a close call your way. One that arrives three days later shows up after the discussion has happened and the momentum has passed. If you interviewed in the morning, aim to send it that afternoon; if late in the day, that evening or first thing the next morning.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Handling Special Situations
 
 **You forgot to mention something important.** The thank-you is your second chance: "I realized I didn't mention that I've led exactly this kind of migration before — happy to walk through it if useful."

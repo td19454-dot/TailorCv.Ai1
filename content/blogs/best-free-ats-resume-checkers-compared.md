@@ -72,6 +72,10 @@ A keyword score tells you if you'll get *past* the ATS - it says nothing about w
 
 ---
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
+
 ## Key Features to Look for in an ATS Checker
 
 When evaluating different ATS checkers, consider the following key features that can enhance your job application process:

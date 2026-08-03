@@ -139,6 +139,10 @@ Including skills on your resume that you cannot actually discuss in an [intervie
 
 ---
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
 ## Keyword Mistake 7: Ignoring Soft Skill Keywords
 
 Most candidates focus entirely on hard skill keywords and neglect the soft skill keywords that many job descriptions explicitly require. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems increasingly evaluate soft skill keywords when they appear in job description requirements.

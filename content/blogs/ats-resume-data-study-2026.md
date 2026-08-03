@@ -108,6 +108,10 @@ This is also where missing keywords and missing metrics compound each other. A b
 - If you genuinely do not have a hard number, use scope instead ("supported a 12-person team across three markets") rather than leaving the sentence generic.
 - See role-specific example bullet points in the [resume examples library](https://thetailorcv.com/resume-examples) for a sense of how much detail is appropriate.
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
+
 ## Which fix moves the score the most
 
 Based on how consistently each category showed up across the comparisons, this is the order most people should work through when improving a low-scoring resume:

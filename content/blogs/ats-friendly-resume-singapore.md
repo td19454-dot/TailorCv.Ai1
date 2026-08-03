@@ -48,6 +48,10 @@ So tailoring isn't optional — it's the difference between getting read and get
 
 The most useful thing you can do in a Singapore job search is stop applying blind. Before you submit, run your resume against the posting with a [free ATS score](/blog/how-to-check-ats-score-free) and read the number plus the missing keywords. If you land at 80%+, you're well matched; in the [55–75% middle](/blog/ats-score-vs-resume-score), you're losing to better-matched candidates; below 55%, you're being filtered out. The [ATS score guide](/blog/ats-score-guide) explains what the number can and can't tell you, and [how to increase your ATS score](/blog/how-to-increase-ats-score) covers closing the gap. This is faster than guessing — and understanding [how the ATS reads your resume](/blog/ats-resume-checker-how-it-works) makes every fix obvious.
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
+
 ## Singapore-Specific Notes
 
 A few things unique to Singapore that affect how your resume is screened:

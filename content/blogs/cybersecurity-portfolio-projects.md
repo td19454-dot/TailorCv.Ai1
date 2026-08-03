@@ -62,12 +62,6 @@ Security hiring managers value documentation because real security work is share
 
 ---
 
-## Conclusion
-
-Your cybersecurity portfolio should prove investigation and communication, not just tool usage. Add the portfolio link to your resume, then test the resume with the [ATS score checker](/solutions).
-
----
-
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your cybersecurity project [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) because small wording choices can change how recruiters and ATS systems understand your fit.
@@ -151,6 +145,12 @@ If you want to keep improving this topic, these closely related guides are worth
 - [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
 
 Use these links as a practical cluster: first fix the resume and ATS alignment, then improve the supporting proof such as portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or interview examples. That gives search engines clearer topical connections and gives readers a useful next step instead of a dead end.
+
+---
+
+## Conclusion
+
+Your cybersecurity portfolio should prove investigation and communication, not just tool usage. Add the portfolio link to your resume, then test the resume with the [ATS score checker](/solutions).
 
 ---
 

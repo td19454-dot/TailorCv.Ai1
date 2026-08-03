@@ -51,6 +51,10 @@ Three moves, in order.
 
 **3. Check before you apply.** Run a [free ATS score](/blog/how-to-check-ats-score-free) against the posting and read the missing keywords — the difference between an [ATS score and a resume score](/blog/ats-score-vs-resume-score) matters, [checking it free](/blog/how-to-check-ats-score-free) is fast, and [increasing your ATS score](/blog/how-to-increase-ats-score) is the follow-through. This turns a blind application into an informed one.
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
+
 ## The Recruitment-Agency Layer
 
 Singapore's reliance on recruitment agencies deserves special attention, because it changes strategy. When an agency has your resume, it sits in their database, searched by keyword for *current and future* roles. So:

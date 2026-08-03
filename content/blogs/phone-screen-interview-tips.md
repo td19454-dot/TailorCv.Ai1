@@ -70,6 +70,10 @@ A phone screen is a filter, and [recruiters](https://thetailorcv.com/blog/how-to
 - **Low energy or distraction.** Background noise, obvious multitasking, or one-word [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) read as disinterest.
 - **No [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) at the end.** It suggests you have not thought seriously about the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
 ## Prepare Your Own Questions
 
 Even on a 20-minute screen, have two or three genuine [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) ready. Good ones for a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter): "What does the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) process look like from here?", "What's the team's biggest priority this quarter?", and "What are you personally hoping to see in the person who fills this [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)?" Thoughtful [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) signal seriousness and give you real information to decide with. Rehearsing the whole call once in an [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) makes your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) tighter and your nerves quieter.

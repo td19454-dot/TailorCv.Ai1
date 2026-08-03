@@ -103,6 +103,10 @@ Before hitting "send," use this checklist to ensure your cover letter is ready f
 - [ ] Is my time zone and availability clearly stated?
 - [ ] Have I proofread for any grammatical errors or typos?
 
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
+
 ## Tailoring Your Cover Letter for Different Remote Roles
 
 ### For Tech Positions

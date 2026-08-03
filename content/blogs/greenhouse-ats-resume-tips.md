@@ -95,6 +95,10 @@ Startups move fast, and so should your application. Paste the Greenhouse job pos
 
 ---
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs in visible stages against the specific job description you paste in.
+
 ## Scenario-Based Resume Matching
 
 Understanding how to tailor your resume for a Greenhouse ATS can be greatly enhanced by considering various scenarios. Here are three hypothetical job postings and how to adapt your resume accordingly:

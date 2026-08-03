@@ -113,6 +113,10 @@ Avoid these and more in the [20 common interview mistakes guide](https://thetail
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Crafting Compelling STAR Stories: A Step-by-Step Approach
 
 To effectively utilize the STAR method in interviews, you need to develop well-structured stories that clearly illustrate your skills and experiences. Follow this step-by-step approach to create compelling STAR stories:

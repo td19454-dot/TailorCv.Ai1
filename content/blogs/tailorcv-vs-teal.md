@@ -113,6 +113,10 @@ Their builder is genuinely pleasant — clean templates, sensible editing, easy 
 
 We have [a builder](/modify-cv) and [20+ templates](/templates) too, and they are good, but our centre of gravity is tailoring an existing resume rather than authoring a new one. Upload the PDF you already have and we work from that.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## Round 6: The Chrome Extension — Save the Job, or Solve It?
 
 **Both are good. They do genuinely different things.**

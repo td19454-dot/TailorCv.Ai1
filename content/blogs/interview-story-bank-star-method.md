@@ -69,12 +69,6 @@ Result: Reporting time dropped from 6 hours to 90 minutes, and error corrections
 
 ---
 
-## Conclusion
-
-Build your story bank before interviews, then practice aloud. Use the [AI mock interview tool](/mock-interview) to test whether your answers are clear, specific, and role-relevant.
-
----
-
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your [STAR interview story bank](https://thetailorcv.com/blog/star-method-interview-answers-guide) because small wording choices can change how recruiters and ATS systems understand your fit.
@@ -101,6 +95,10 @@ Before you send the application, review this checklist:
 If the answer is no for any item, fix that before applying. Most candidates do not need a complete rewrite. They need sharper alignment.
 
 ---
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
 
 ## Example Before and After
 
@@ -158,6 +156,12 @@ If you want to keep improving this topic, these closely related guides are worth
 - [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
 
 Use these links as a practical cluster: first fix the resume and ATS alignment, then improve the supporting proof such as portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or interview examples. That gives search engines clearer topical connections and gives readers a useful next step instead of a dead end.
+
+---
+
+## Conclusion
+
+Build your story bank before interviews, then practice aloud. Use the [AI mock interview tool](/mock-interview) to test whether your answers are clear, specific, and role-relevant.
 
 ---
 

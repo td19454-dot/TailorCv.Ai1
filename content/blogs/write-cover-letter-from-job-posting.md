@@ -54,6 +54,10 @@ Whatever you use to draft it, a strong letter follows a simple shape.
 
 Keep it [ATS-friendly](/blog/how-to-make-resume-ats-friendly) in format if it is going through a portal — plain text, no fancy layout — since the same [parser rules](/blog/ats-resume-parser-friendly-format) and [formatting mistakes](/blog/ats-resume-formatting-mistakes) can apply to letters too.
 
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
+
 ## Cover Letters for Different Situations
 
 The approach adapts to the situation, and the posting is still the anchor in every case.

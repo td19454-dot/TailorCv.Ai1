@@ -76,6 +76,10 @@ The specific moment proves the trait far more convincingly than the adjective, a
 - **Making it too long.** Half a page, three short paragraphs. Brevity keeps your best points visible.
 - **Focusing on what you want to get** instead of what you bring. Even early-career, you bring drive, fresh [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026), and a habit of learning by building.
 
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
+
 ## Tailor It to Each Role
 
 Your biggest advantage as a beginner is effort — and most beginners send the same generic letter everywhere. Change the specifics for each [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application): the reason you want *this* [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), the [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) most relevant to *this* [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), the [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) *this* posting names. A tailored letter from a career starter often beats a generic one from a more experienced [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), because it signals exactly the initiative [employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) are betting on.

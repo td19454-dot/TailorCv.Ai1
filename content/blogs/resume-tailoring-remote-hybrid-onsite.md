@@ -183,6 +183,10 @@ These keywords are often missed because people focus only on technical skill key
 
 ---
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## What Happens When Your Preference Conflicts With the Role
 
 Sometimes you want remote work but a great opportunity is hybrid or on-site.

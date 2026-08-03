@@ -129,6 +129,10 @@ Keep formatting simple and linear:
 
 Every one of these rules exists for the same reason: it reduces the number of decisions the parser has to make about where text belongs. The fewer ambiguous layout choices you introduce, the fewer chances there are for something to be misread.
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
 ## Contact Details
 
 Write contact details as plain text on their own line near the top of the page, outside of any header or footer region:

@@ -113,6 +113,10 @@ A resume-driven practice session generally follows five steps:
 
 Repeat this cycle across multiple sessions rather than doing it once. The value compounds: the second and third pass through a tough project usually produces a noticeably sharper answer than the first attempt.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
+
 ## Practice Explaining Every Project on Your Resume
 
 For each project on your resume, prepare a short explanation covering:

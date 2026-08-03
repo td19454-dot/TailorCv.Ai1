@@ -99,6 +99,10 @@ See [ATS keywords to boost your score](https://thetailorcv.com/blog/ats-keywords
 
 ---
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
 ## Signal 5 - Sparse or Vague Experience Descriptions
 
 Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms - especially those using AI scoring - don't just check for the presence of a keyword. They check whether it appears in a meaningful context. "Managed projects" scores lower than "Managed cross-functional teams of 8-12 people to deliver software projects on schedule and within budget."

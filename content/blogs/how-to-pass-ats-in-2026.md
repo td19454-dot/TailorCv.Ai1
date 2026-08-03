@@ -77,6 +77,10 @@ Before you submit, run your [resume](https://thetailorcv.com/blog/anatomy-of-a-r
 | Contact info in the body | Contact info only in the header/footer |
 | Exact keywords from the posting | Hidden white-text keyword blocks |
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
+
 ## Why Tailoring Beats Every Other Trick
 
 There is no format hack that substitutes for relevance. The same [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) submitted to two different postings will score differently, because each job weights different keywords and requirements. This is why tailoring — adjusting your [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) and bullets to each specific posting — is the highest-leverage move in the entire process. A tool like TailorCV reads the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), compares it against your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), and shows you the exact keywords you are missing before you hit submit — turning "hope it passes" into "know it matches."

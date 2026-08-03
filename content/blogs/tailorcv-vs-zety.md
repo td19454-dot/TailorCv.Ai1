@@ -107,6 +107,10 @@ But "ATS-friendly formatting" and "ATS match score" are completely different thi
 
 Zety solves the first problem. It does not touch the second. Ours does both — the score, the missing keywords, and the rewrite. Our [ATS score guide](/blog/ats-score-guide) explains the difference properly, and [how to make your resume ATS-friendly](/blog/how-to-make-resume-ats-friendly) covers the formatting side.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 ## Round 5: The Chrome Extension
 
 **TailorCV wins — Zety does not have a meaningful one.**

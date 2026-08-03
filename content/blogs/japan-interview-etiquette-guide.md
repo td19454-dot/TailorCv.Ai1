@@ -74,6 +74,10 @@ Even in an English-language interview at a Japanese company, this calm, respectf
 
 Prepare clear, sincere answers, and rehearse them so you're calm and fluent. Practise with the [AI mock interview](https://thetailorcv.com/mock-interview) to build confidence.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
 ## Demonstrating the Right Qualities
 
 Japanese employers particularly value:

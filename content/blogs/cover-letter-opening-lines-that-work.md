@@ -78,6 +78,10 @@ A specific opener requires one specific, true detail. You can find one in under 
 
 One real detail from any of these turns a generic hook into a specific one.
 
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
+
 ## Matching the Opener to the Company's Tone
 
 Read the room. A cover letter to a formal financial institution should open with a crisp, professional hook; a letter to an early-stage startup can be warmer and more personal. The BJAK-style startup that writes casually on its careers page is inviting a human opener; a large enterprise expects polish. Mirror the voice you see in their own writing, and your opener will feel native rather than imported.

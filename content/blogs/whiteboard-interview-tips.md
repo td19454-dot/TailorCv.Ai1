@@ -38,6 +38,10 @@ This structure signals seniority and prevents the panic of an unplanned start. I
 
 A working brute-force solution beats an elegant one you never finish. Get something correct on the board first, confirm it works on your example, then discuss how you'd improve it — better time complexity, cleaner structure, edge-case handling. Interviewers would much rather see a complete simple solution plus a thoughtful optimization discussion than a half-finished clever one. This "make it work, then make it better" instinct is exactly what strong engineers show, and it's worth reflecting on your [resume](https://www.thetailorcv.com/modify-cv) too — see the relevant [developer resume guides](https://thetailorcv.com/blog/full-stack-developer-resume-2026).
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Manage the space, the time, and your nerves
 
 Practical execution matters. Write legibly, leave room to insert changes, and keep an eye on the clock. If you're stuck, say what you're considering out loud rather than freezing — interviewers frequently offer a hint at that moment. If nerves hit, slow your breathing and return to your structure; the process is your anchor. For managing anxiety, the [interview anxiety tips](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips) and [how to practice interviews at home](https://thetailorcv.com/blog/how-to-practice-interviews-at-home) guides help.

@@ -101,6 +101,10 @@ Peer practice adds human [follow-up](https://thetailorcv.com/blog/how-to-follow-
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
 ## What to Practice at Home by Interview Type
 
 - **Behavioral:** [STAR method](https://thetailorcv.com/blog/star-method-interview-answers-guide)

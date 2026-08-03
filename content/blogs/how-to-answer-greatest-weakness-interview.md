@@ -103,6 +103,10 @@ Read [first job interview tips for freshers](https://thetailorcv.com/blog/first-
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
+
 ## How to Practice
 
 1. Write 2-3 weakness answers for different role types

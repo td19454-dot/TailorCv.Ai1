@@ -103,6 +103,10 @@ The opposite problem - cramming in keywords unnaturally - can be flagged and als
 
 ---
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
 ## 11. Spelling Variations and Acronyms
 
 If the posting says "Search Engine Optimization" and you only write "SEO" (or vice versa), you can miss a match.

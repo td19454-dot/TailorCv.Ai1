@@ -52,6 +52,10 @@ Most job-search tools only support the big aggregators and leave you on your own
 
 Open the posting, the panel reads the job description off the page, and shows your [skill-match score](/ats-analysis) against that role before you start the long application. One click tailors your resume to close the gap and downloads the ATS-ready PDF; a second writes a [matching cover letter](/blog/cover-letter-guide-2026). You still fill Workday's forms by hand — nobody can automate those safely — but at least the resume going into them is matched, not generic. It works the same on [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed) and [Naukri](/blog/how-to-tailor-resume-on-naukri) too.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## Step by Step
 
 **Step 1 — Set your base resume once.** Upload the resume you normally send; run a [free ATS score](/blog/how-to-check-ats-score-free) on it first if you are unsure it is solid.

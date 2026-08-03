@@ -114,6 +114,10 @@ Run the [ATS score checker](/solutions) again. Compare to your baseline, apply a
 
 ---
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+
 ## A Realistic Before-and-After
 
 A typical journey from 52 to 88:

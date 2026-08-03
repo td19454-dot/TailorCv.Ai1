@@ -77,16 +77,20 @@ To make your **free [mock interview](https://thetailorcv.com/blog/mock-interview
 - **Tie it back to your resume.** Every claim on your resume is a potential question - rehearse explaining each one. If a project is hard to explain, consider strengthening how it is written using [resume tailoring tools](https://thetailorcv.com/solutions).
 - **Look the part too.** Even online, treat practice like the real thing and start from a polished, [ATS friendly resume](https://thetailorcv.com/templates) that matches your story.
 
-## Make This Practical
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
 
-Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).
-
-Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
+Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
 
 ## Final Thoughts
 Generic interview prep teaches you to recite. **Free [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) practice** with AI teaches you to perform - on the exact questions a recruiter will ask based on your resume. Get your resume right, practice out loud, use the feedback, and repeat until your answers feel natural.
 
 Start by [checking and tailoring your resume](https://thetailorcv.com/solutions), pick a clean [ATS friendly template](https://thetailorcv.com/templates) if you need one, and then [run a free AI mock interview](https://thetailorcv.com/mock-interview) built around your own experience. That combination - a strong resume plus rehearsed, personalized answers - is what turns interviews into offers.
+
+## Make This Practical
+
+Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).
+
+Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
 
 ## Common Mistakes to Avoid During Mock Interview Practice
 
