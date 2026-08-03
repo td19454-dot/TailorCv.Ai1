@@ -125,6 +125,13 @@ That answer is specific, practical, and easy to follow.
 
 You cannot predict every question, but you can prepare for the ones that appear in almost every industry.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
+
 ### Tell Me About Yourself
 
 This is not an invitation to tell your life story. Give a short professional summary.
@@ -208,9 +215,6 @@ You do not need to act like a motivational speaker. Calm, prepared, and present 
 
 A small smile at the start and end of answers can make you seem warmer and more approachable.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
 
 ## Decide What to Wear
 

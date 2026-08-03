@@ -56,6 +56,13 @@ Keep it short, confident, and specific about next steps. “I am available for a
 
 Dear [Hiring Manager's Name],
 
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
+
+
 I'm excited to apply for the [Role] position at [Company]. As a [year/major/recent graduate] at [School], I've spent the last [X months/years] building skills directly relevant to this role through [coursework/project/internship/campus job].
 
 In my [specific project or role], I [specific action and result - use a number if possible]. That experience taught me [skill relevant to the job description], which I understand is central to this position.
@@ -74,9 +81,6 @@ Sincerely,
 - **Neglecting Company Research**: Failing to understand the company’s culture or values can lead to a generic cover letter. See [how to research a company before an interview](https://thetailorcv.com/blog/how-to-research-company-before-interview).
 - **Making the Letter Longer than the Resume**: Aim for a concise letter; ideally, it should not exceed one page.
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
 
 ## Additional Tips for Writing an Effective Cover Letter
 

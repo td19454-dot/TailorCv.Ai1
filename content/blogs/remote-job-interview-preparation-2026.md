@@ -67,6 +67,13 @@ Full body language guide: [interview body language tips](https://thetailorcv.com
 
 Remote interviews make chemistry harder to establish. Counter this by:
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
+
+
 - **Smiling during introductions** - warmth translates on camera and can set a positive tone.
 - **Using the interviewer's name** - "That's a great question, Sarah" personalizes the interaction.
 - **Showing you researched the company** - refer to specifics from your research using the [company research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview).
@@ -118,9 +125,6 @@ See [common interview mistakes](https://thetailorcv.com/blog/common-interview-mi
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
 
 ## How to Practice Remote Interviews at Home
 

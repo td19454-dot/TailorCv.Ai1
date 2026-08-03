@@ -62,6 +62,13 @@ Certifications, a portfolio project, freelance work, or coursework all signal th
 
 Dear [Hiring Manager's Name],
 
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
+
+
 For the past [X years], I've worked in [current field], where I [one strong, specific achievement with a number]. That work built skills in [2-3 transferable skills] that map directly onto what [Company] needs for this [Target Role] position.
 
 I'm making an intentional move into [target field] because [genuine, specific reason - not generic]. I've already started building toward it: [certification / project / freelance work / relevant coursework].
@@ -85,9 +92,6 @@ Sincerely,
 
 ---
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
 
 ## Concrete Steps for Crafting Your Cover Letter
 

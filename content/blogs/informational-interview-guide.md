@@ -104,9 +104,6 @@ If a job comes up, they will raise it. Frequently they do.
 
 **Don't pitch yourself.** The temptation is strong and it's the main failure mode. If they ask what you're looking for, answer briefly and honestly, then return to their experience.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 ## Following Up
 
@@ -168,6 +165,13 @@ One caution regardless of situation: be alert to anyone who turns an advice conv
 
 **What is an informational interview?**
 A short, informal conversation — usually twenty to thirty minutes — with someone working in a field or role you're interested in, where you ask about their experience. No job is being discussed, which is exactly why people agree to it.
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 
 **How do I ask for an informational interview?**
 A short message stating a genuine connection, a specific reason you're contacting that person, a bounded twenty-minute ask, and an explicit note that you're not job hunting at them. Under 150 words, with all scheduling flexibility on your side.

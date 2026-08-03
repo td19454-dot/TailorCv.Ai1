@@ -52,9 +52,6 @@ Most job-search tools only support the big aggregators and leave you on your own
 
 Open the posting, the panel reads the job description off the page, and shows your [skill-match score](/ats-analysis) against that role before you start the long application. One click tailors your resume to close the gap and downloads the ATS-ready PDF; a second writes a [matching cover letter](/blog/cover-letter-guide-2026). You still fill Workday's forms by hand — nobody can automate those safely — but at least the resume going into them is matched, not generic. It works the same on [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed) and [Naukri](/blog/how-to-tailor-resume-on-naukri) too.
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
 
 ## Step by Step
 
@@ -89,6 +86,13 @@ There is also a compounding benefit. Because these systems store your structured
 ## A Note on Formatting for Strict Parsers
 
 Because Workday and, to a lesser extent, the others are literal parsers, formatting is not a cosmetic concern on these boards — it is a pass/fail gate. A resume that renders beautifully in your PDF viewer can arrive as scrambled fragments if it fights the parser.
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 
 The safe rules are boring and they work: a single column, standard section headings ("Experience", "Education", "Skills"), no tables, no text boxes, no images or icons carrying information, and contact details in the body rather than the header. Dates in a consistent format. A common, embeddable font. This is the groundwork covered in [making your resume ATS-friendly](/blog/how-to-make-resume-ats-friendly) and the [parser-friendly format](/blog/ats-resume-parser-friendly-format) guide, and it matters doubly here because there is no human to notice that the machine mangled you.
 

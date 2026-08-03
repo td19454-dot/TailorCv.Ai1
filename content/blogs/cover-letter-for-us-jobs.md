@@ -100,13 +100,17 @@ Sincerely,
 - **Quantify Achievements:** Whenever possible, use numbers to quantify your accomplishments, making your impact clearer to employers.
 - **Proofread:** Spelling and grammatical errors can undermine your professionalism. Always [proofread your cover letter](https://thetailorcv.com/blog/cover-letter-mistakes-2026) or use tools like the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) for assistance.
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
 
 ## Example Cover Letter
 
 Here’s a complete example of a cover letter tailored for a marketing position:
+
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
+
 
 ```
 Jane Doe  

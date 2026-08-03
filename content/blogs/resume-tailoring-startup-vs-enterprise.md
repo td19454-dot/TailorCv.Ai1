@@ -203,15 +203,19 @@ The language is tuned for the audience.
 
 ---
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Once the content is right, the editor is where you make it fit - font size, spacing, accent colour and template, with a live page counter.
 
 ## Common Mistakes
 
 **Sending a startup resume to an [enterprise ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)**
 It will likely fail keyword matching.
 Informal language, missing certifications, unconventional formatting - all hurt your enterprise [ATS match score](https://thetailorcv.com/blog/improve-resume-job-match-score).
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Once the content is right, the editor is where you make it fit - font size, spacing, accent colour and template, with a live page counter.
+
 
 **Sending an enterprise resume to a startup**
 It reads as slow, bureaucratic, and overly formal.

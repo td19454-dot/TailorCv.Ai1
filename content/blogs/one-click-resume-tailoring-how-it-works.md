@@ -44,13 +44,17 @@ The result is not a new resume. It is your resume, re-emphasised and re-worded t
 
 A rewrite is useless if the output does not parse. Good tailoring produces a resume in a [parser-friendly format](/blog/ats-resume-parser-friendly-format) — single column, standard headings, no tables or text boxes that scramble in an ATS. This is the [ATS-friendly formatting](/blog/how-to-make-resume-ats-friendly) baseline, and it avoids the [formatting mistakes](/blog/ats-resume-formatting-mistakes) that sink otherwise-strong resumes. The PDF you download is ready to submit, not something you have to reformat.
 
-## Step 5: The Cover Letter and the Record
-
-The better tools do not stop at the resume. In the same flow you can generate a [matching cover letter](/blog/cover-letter-guide-2026) built from the same posting and the same base resume, with a [strong opening line](/blog/cover-letter-opening-lines-that-work) and without the usual [mistakes](/blog/cover-letter-mistakes-2026). And each tailored version is saved automatically with its score and the job it was written for, so you have a record of exactly what you sent where — useful weeks later when a recruiter calls about a role you barely remember applying to.
+### Fitting the tailored resume onto one page
 
 ![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
 Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
+
+## Step 5: The Cover Letter and the Record
+
+The better tools do not stop at the resume. In the same flow you can generate a [matching cover letter](/blog/cover-letter-guide-2026) built from the same posting and the same base resume, with a [strong opening line](/blog/cover-letter-opening-lines-that-work) and without the usual [mistakes](/blog/cover-letter-mistakes-2026). And each tailored version is saved automatically with its score and the job it was written for, so you have a record of exactly what you sent where — useful weeks later when a recruiter calls about a role you barely remember applying to.
+
 
 ## Why It Works Better Than Manual — Even at the Same Quality
 

@@ -42,15 +42,19 @@ The honest version: the *diagnosis* should be free and unlimited, because you sh
 
 Here is the flow that works when you are early-career and applying broadly.
 
+### What it looks like on a LinkedIn job post
+
+![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
+
+
 **Get your base resume solid once.** With a thin resume, every word counts — [quantify your projects](/blog/how-to-quantify-achievements-on-resume), keep it [ATS-friendly](/blog/how-to-make-resume-ats-friendly) and [parseable](/blog/ats-resume-parser-friendly-format), and lean on [fresher projects that get interviews](/blog/fresher-resume-projects-that-get-interviews). Do not sound [generic](/blog/how-to-stop-sounding-generic-on-resume).
 
 **Tailor every application on the page.** Open the job on [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed), [Naukri](/blog/how-to-tailor-resume-on-naukri) or a [campus/company portal](/blog/tailor-resume-on-greenhouse-lever-workday), see your [match score](/ats-analysis), tailor in one click, add a [cover letter](/blog/write-cover-letter-from-job-posting). The [best keywords](/blog/best-resume-keywords-to-beat-ats) matter as much for you as anyone, and matching is [a translation of your real experience](/blog/how-to-match-resume-keywords-to-job-description), not invention.
 
 **Prepare for the specific interviews.** As a fresher you will get asked predictable questions — practice them.
 
-![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-The same check running on Greenhouse - one of the ATS platforms you are actually submitting through, not a preview of one.
 
 ## Special Cases for Students
 
@@ -60,9 +64,13 @@ A few student-specific situations deserve their own approach. **Campus placement
 
 Getting past the filter is the start. Send a [follow-up after applying](/blog/how-to-follow-up-after-job-application) and [after the interview](/blog/how-to-follow-up-after-interview) — few students do, so it stands out. Before the interview, [research the company](/blog/how-to-research-company-before-interview), rehearse [behavioural questions](/blog/behavioral-interview-questions-and-answers), [tell me about yourself](/blog/how-to-answer-tell-me-about-yourself) and [why do you want this job](/blog/how-to-answer-why-do-you-want-this-job), and run a [mock interview](/blog/ai-mock-interview-complete-guide-2026); the [full interview prep guide](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) covers more. When one does not land — and some will not — [handle the rejection](/blog/how-to-handle-job-rejection); early-career searches involve a lot of it, and resilience matters. Pace yourself: [how many jobs to apply to per day](/blog/how-many-jobs-should-you-apply-to-per-day) is about quality, and the [difference between a tailored and generic resume](/blog/tailored-vs-generic-resume) is the whole game.
 
-![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+### The same check running on Greenhouse
 
-And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
+![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+The same check running on Greenhouse - one of the ATS platforms you are actually submitting through, not a preview of one.
+
+
 
 ## The Mistake Most Students Make
 

@@ -14,6 +14,13 @@ keywords: cover letter for internal job application, internal promotion cover le
 
 Applying for a role inside your own company feels like it shouldn't need a cover letter - everyone already knows you. But that familiarity can work against you if you don't put your case in writing: hiring panels often include people from other teams who don't know your track record, and a lazy or missing letter can read as a lack of seriousness about the move.
 
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
+
+
 Before writing, pair this with the [internal job application resume](https://thetailorcv.com/blog/internal-job-application-resume) guide, and check your fit against the posted role using the [free ATS score checker](https://www.thetailorcv.com/solutions) - internal postings get scored the same way external ones do.
 
 ---
@@ -125,9 +132,6 @@ Best regards,
 
 ---
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
 
 ## Checklist for Your Internal Cover Letter
 

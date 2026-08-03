@@ -129,9 +129,6 @@ Keep formatting simple and linear:
 
 Every one of these rules exists for the same reason: it reduces the number of decisions the parser has to make about where text belongs. The fewer ambiguous layout choices you introduce, the fewer chances there are for something to be misread.
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
 
 ## Contact Details
 
@@ -181,6 +178,13 @@ Nothing here relies on position on the page. Every fact is expressed as plain te
 ## How to Test If Your Resume Parses Cleanly
 
 You do not need special software to catch most parsing problems. Run this quick check before you submit anywhere:
+
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
 
 1. Open your resume file and select all the text (Ctrl+A), then copy it.
 2. Paste the copied text into a plain text editor, like Notepad, or a blank Google Doc with formatting stripped.

@@ -34,6 +34,13 @@ Also study [behavioral interview questions](https://thetailorcv.com/blog/behavio
 | Situational | "What would you do if..." | Judgment, values, process |
 | [Competency-based](https://thetailorcv.com/blog/competency-based-interview-questions-guide) | Either format | Specific competencies |
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
+
+
 If you have a relevant past example, bridge to it: "I haven't faced that exact situation, but something similar happened when..."
 
 ---
@@ -112,9 +119,6 @@ Avoid [common interview mistakes](https://thetailorcv.com/blog/common-interview-
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
 
 ## Common Mistakes When Answering Situational Questions
 

@@ -10,6 +10,13 @@ image: public/blog-images/case-interview-preparation-guide-2026.webp
 
 Case interviews - where you solve a business problem live with an interviewer - are standard at consulting firms, increasingly common at tech companies for product and strategy roles, and used anywhere employers want to test **[structured thinking under pressure](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)**.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
+
+
 Unlike [behavioral interviews](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), case interviews evaluate how you think, not what you have done. This guide covers case interview preparation for 2026.
 
 Practice structured communication with [AI mock interviews](https://thetailorcv.com/mock-interview) - clear thinking aloud is half the battle. Also read [situational interview questions](https://thetailorcv.com/blog/situational-interview-questions-answers), [technical interview prep](https://thetailorcv.com/blog/technical-interview-preparation-guide), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
@@ -151,9 +158,6 @@ See [common interview mistakes](https://thetailorcv.com/blog/common-interview-mi
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
 
 ## Tips for Enhancing Your Case Interview Skills
 

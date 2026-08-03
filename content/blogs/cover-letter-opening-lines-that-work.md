@@ -57,6 +57,13 @@ The hook shows you did your homework; the credential shows you can back it up.
 
 An [AI cover letter generator](https://thetailorcv.com/blog/ai-cover-letter-generator-job-description) can produce a solid first draft from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in seconds — but the opener is where you should always edit by hand. Add the specific detail only you know: the friend who uses the product, the exact [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), the real reason you applied.
 
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
+
+
 ## The Anatomy of a Weak Opener vs a Strong One
 
 Put two openers side by side and the difference is obvious.
@@ -78,9 +85,6 @@ A specific opener requires one specific, true detail. You can find one in under 
 
 One real detail from any of these turns a generic hook into a specific one.
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
 
 ## Matching the Opener to the Company's Tone
 

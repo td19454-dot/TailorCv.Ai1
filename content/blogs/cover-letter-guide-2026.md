@@ -103,6 +103,13 @@ Then sign off: "Best regards, [Your Name]."
 [Email] | [[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)]
 [Date]
 
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
+
+
 [Hiring Manager Name or "Hiring Team"]
 [Company Name]
 
@@ -119,9 +126,6 @@ Best regards,
 
 ---
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
 
 ## Cover Letter Examples by Role
 

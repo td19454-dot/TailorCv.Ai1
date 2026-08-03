@@ -26,6 +26,13 @@ Try the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) and
 
 Generic interview prep tools pull from a fixed list: "Tell me about a time you failed," "What's your biggest weakness," and so on. Resume-based [mock interview](https://thetailorcv.com/blog/mock-interview-practice-free) tools work differently. They read your actual bullets, job titles, tools, and metrics, then generate questions that only make sense because of what you wrote.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
+
+
 The process usually looks like this:
 
 - The AI parses your resume into structured pieces: roles, dates, bullet points, tools mentioned, and numbers claimed.
@@ -113,9 +120,6 @@ A resume-driven practice session generally follows five steps:
 
 Repeat this cycle across multiple sessions rather than doing it once. The value compounds: the second and third pass through a tough project usually produces a noticeably sharper answer than the first attempt.
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
 
 ## Practice Explaining Every Project on Your Resume
 

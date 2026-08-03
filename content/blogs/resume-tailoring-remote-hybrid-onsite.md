@@ -183,9 +183,6 @@ These keywords are often missed because people focus only on technical skill key
 
 ---
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
 
 ## What Happens When Your Preference Conflicts With the Role
 
@@ -211,6 +208,13 @@ If you are applying for a remote role but have never worked remotely, address it
 ## The Contact Information Signal
 
 One underrated detail: where you list your location.
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 
 For **remote roles:** List your city and state but do not over-emphasize. Many remote employers are open to any location.
 For **on-site roles:** List your city explicitly, especially if it is the same city as the office.

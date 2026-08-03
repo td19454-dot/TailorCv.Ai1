@@ -56,13 +56,17 @@ First, close the honest keyword gaps: work in the terms you genuinely have, in t
 
 If the score stays low even after honest tailoring, that is real information too: you may be reaching for roles a step beyond your current experience, which is worth knowing before you spend a week applying to them.
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-This is the step most people skip - checking against the real job description rather than optimising in the abstract.
 
 ## Checking Scores Across Boards
 
 The check works the same wherever you apply, because every board feeds the same kind of filter — [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed), [Naukri](/blog/how-to-tailor-resume-on-naukri), and the ATS boards behind company career pages. For [remote roles](/blog/how-to-match-resume-to-remote-job-description) the competition is global so the score matters even more, and a [remote cover letter](/blog/cover-letter-for-remote-jobs) helps. Applying abroad shifts conventions — [a job in the USA](/blog/how-to-get-a-job-in-usa), [in Canada](/blog/how-to-get-a-job-in-canada), and whether you need a [resume or a CV](/blog/resume-vs-cv). Mind the [startup vs enterprise](/blog/resume-tailoring-startup-vs-enterprise) difference, and if you have wondered [how many jobs to apply to per day](/blog/how-many-jobs-should-you-apply-to-per-day), the answer is fewer, matched.
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
 
 ## After the Score: The Rest of the Search
 

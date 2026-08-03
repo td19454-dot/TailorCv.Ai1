@@ -214,9 +214,6 @@ For each bullet, follow the [resume bullet points formula](https://thetailorcv.c
 
 ---
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 ## The Rates and Availability Question (Contract Roles)
 
@@ -225,6 +222,13 @@ For contract applications, be prepared - not necessarily on your resume, but in 
 - Your availability date
 - Whether you are open to on-site, hybrid, or remote arrangements - read [resume tailoring for remote vs hybrid vs on-site](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite) to tailor your language accordingly
 - Whether you require specific contract terms (project-based vs. hourly, payment schedule)
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 
 You do not put rates on your resume.
 But having these numbers ready speeds up the contract conversation significantly.

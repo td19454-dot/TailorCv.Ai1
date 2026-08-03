@@ -66,13 +66,17 @@ Open any Naukri job. A panel opens beside it, reads the JD off the page, and sho
 
 A minute instead of ten — and because it lives on the page, the habit survives the whole search. The same panel works on LinkedIn, Indeed, Greenhouse, Lever, Workday, Glassdoor and more.
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 ## Step by Step
 
 **Step 1 — Set your base resume once.** Upload the resume you normally send. Unsure it is solid? Run a [free ATS score](/blog/how-to-check-ats-score-free) first.
+
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 
 **Step 2 — Open a Naukri job you actually want.** Load the full posting.
 

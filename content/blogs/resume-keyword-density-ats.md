@@ -93,6 +93,13 @@ Between the skills line and these two bullets, SQL appears twice, Power BI appea
 
 Chasing keyword count past the point of natural language creates two separate problems, and only one of them is about the ATS.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
+
+
 **The parser problem.** Some ATS platforms and resume screening tools flag or discount resumes where a term repeats far beyond what a normal document would contain. It is not a guaranteed penalty on every system, but unnaturally dense keyword clusters are a known pattern that automated tools are built to catch, especially when the same phrase repeats back to back with no supporting language around it.
 
 **The human problem.** This is the bigger risk in practice. Once your resume clears the initial screen, a recruiter or hiring manager reads it. Bullets like this are the giveaway:
@@ -110,9 +117,6 @@ Watch for these warning signs while editing:
 
 If you are unsure whether your resume has crossed the line, [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes) covers the most common stuffing patterns recruiters and parsers both react badly to, and [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) explains how repetition without specificity gets flagged as low-effort even when every required word is technically present.
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
 
 ## Synonyms and Variant Forms: Why Exact-Match Isn't Enough
 

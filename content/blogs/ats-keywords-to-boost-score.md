@@ -28,6 +28,13 @@ See your keyword gaps instantly with the [free ATS score checker](/solutions).
 
 When an employer sets up a role, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) is configured to look for specific skills, tools, and qualifications. Your resume is scored on how many of those it contains - and in what context. Keyword and skills match typically accounts for **30-40%** of the total score, the largest single factor.
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
+
+
 That is why two equally qualified candidates can score very differently: one mirrored the job's language, the other didn't.
 
 ---
@@ -111,9 +118,6 @@ Same experience - the second version mirrors the job's keywords and quantifies i
 
 ---
 
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
 
 ## Common ATS Keyword Pitfalls: What to Avoid
 

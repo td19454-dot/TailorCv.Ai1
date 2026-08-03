@@ -51,6 +51,13 @@ Remote hiring managers often screen out candidates over time-zone mismatch alone
 
 Dear [Hiring Manager's Name],
 
+### Generating the letter from a job description
+
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
+
+
 I'm applying for the [Role] position at [Company], drawn specifically by the fully remote structure of the team. Remote work isn't new to me - in my current role, I [specific example of independent, asynchronous work with a measurable result].
 
 I'm comfortable owning my schedule and communicating proactively rather than waiting to be asked for updates. I regularly use [relevant tools] to keep distributed teams aligned, and I default to over-communicating status rather than under-communicating it.
@@ -103,9 +110,6 @@ Before hitting "send," use this checklist to ensure your cover letter is ready f
 - [ ] Is my time zone and availability clearly stated?
 - [ ] Have I proofread for any grammatical errors or typos?
 
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
 
 ## Tailoring Your Cover Letter for Different Remote Roles
 

@@ -85,6 +85,13 @@ And our ATS score stays free and unlimited in every region — because the thing
 
 **Enhancv wins, decisively and without qualification.**
 
+### Fitting the tailored resume onto one page
+
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
+
 They are the best in this category at this and it is not close. The layouts are distinctive, the typography is considered, and the unusual sections — strengths with context, "my time", passions — let you say things a conventional resume has no room for. Thousands of design options, real craft.
 
 We have [20+ templates](/templates) and they are clean, professional and parseable. They are not as beautiful as Enhancv's, and we are not going to claim otherwise.
@@ -113,9 +120,6 @@ So the most beautiful resume in the world, sent to a portal, gets filtered out j
 
 TailorCV starts from the posting. [Free ATS match score](/ats-analysis), exact missing keywords, and the AI **rewrites your bullets** to carry that language honestly — without inventing anything you did not do. About a minute per job.
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 ## Round 5: The Chrome Extension
 

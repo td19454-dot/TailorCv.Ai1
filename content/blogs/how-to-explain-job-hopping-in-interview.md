@@ -100,9 +100,6 @@ See [common interview mistakes](https://thetailorcv.com/blog/common-interview-mi
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
 
 ## Job Hopping by Interview Round
 
@@ -165,6 +162,13 @@ To further assist you in preparing for interviews and addressing job hopping, co
 By following these strategies and utilizing the resources available, you can navigate job hopping in interviews with confidence and clarity.
 
 ## Frequently Asked Questions
+
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
 
 ### How many jobs in 5 years is too many?
 

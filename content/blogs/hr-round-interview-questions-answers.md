@@ -41,6 +41,13 @@ After HR, you typically advance to [manager round interviews](https://thetailorc
 
 ## Top HR Round Questions and How to Answer
 
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
+
 ### 1. Tell me about yourself
 
 Use Present-Past-Future. Keep it under 2 minutes. Full guide: [how to answer tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself).
@@ -121,9 +128,6 @@ See [first job interview tips for freshers](https://thetailorcv.com/blog/first-j
 
 ---
 
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
 
 ## Mistakes to Avoid in HR Round
 
