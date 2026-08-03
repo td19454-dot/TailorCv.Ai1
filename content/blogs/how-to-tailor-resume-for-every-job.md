@@ -319,6 +319,10 @@ That is how you [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-
 
 ---
 
+![The TailorCV resume editor after optimization, with controls for font size, line spacing and accent colour beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+After tailoring, the editor is where you make it fit. Font size, line spacing, accent colour and template are all adjustable, with a live page counter - which is usually how you get a spilling two-page draft back onto one page without deleting anything worth keeping.
+
 ## Common Mistakes When Tailoring a Resume
 
 - Sending one resume to every job

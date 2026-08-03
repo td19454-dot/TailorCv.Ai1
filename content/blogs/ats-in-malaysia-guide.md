@@ -7,7 +7,8 @@ tags: [ATS Malaysia, applicant tracking system Malaysia, Malaysian ATS, beat ATS
 category: ATS Optimization
 slug: ats-in-malaysia-guide
 keywords: ats in malaysia, malaysia applicant tracking system, beat ats malaysia, ats resume malaysia, jobstreet ats
-image: public/blog-images/ats-in-malaysia-guide.png---
+image: public/blog-images/ats-in-malaysia-guide.png
+---
 
 If you have applied to dozens of jobs in Malaysia and heard nothing back, the problem may not be your qualifications — it may be that a machine rejected your resume before any human read it. That machine is the Applicant Tracking System (ATS), and it is used by the majority of mid-sized and large Malaysian employers, from banks and GLCs to MNCs and the country's biggest [job portals](https://thetailorcv.com/blog/best-job-search-websites-2026).
 

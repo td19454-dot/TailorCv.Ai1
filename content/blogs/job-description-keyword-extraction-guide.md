@@ -7,7 +7,8 @@ tags: [Job Description Keywords, Keyword Extraction, Resume Keywords, ATS Optimi
 category: Resume Optimization
 image: public/blog-images/job-description-keyword-extraction-guide.webp
 slug: job-description-keyword-extraction-guide
-keywords: job description keyword extraction, how to extract keywords from job description, job description keywords for resume, find keywords in job description, resume keyword extraction 2026---
+keywords: job description keyword extraction, how to extract keywords from job description, job description keywords for resume, find keywords in job description, resume keyword extraction 2026
+---
 
 The [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is not just a list of requirements.
 It is a cheat sheet.

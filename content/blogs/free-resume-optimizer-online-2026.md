@@ -91,6 +91,10 @@ Rewritten bullet, assuming the candidate genuinely did this work:
 
 The rewrite works because it addresses the flag directly: it names the platform, includes the two techniques the posting called out by name, states a measurable before-and-after result, and mirrors the reporting cadence language from the posting. Nothing in the rewrite invents an achievement that was not there. It surfaces detail that was missing from the first draft, which is the actual job of the rewrite step, not the job of the tool.
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in four visible stages - upload, analyze, optimize, complete - against the specific job description you paste in. The point of showing the stages is that the tool is parsing your resume the way an ATS would before it rewrites anything.
+
 ## What an Optimizer Cannot Do for You
 
 It is worth being direct about the limits here, because over-trusting a tool is as much of a risk as ignoring it. An optimizer is good at pattern-matching: keyword presence, formatting risk, bullet structure. It is not good at judgment calls that require understanding your actual career.

@@ -7,7 +7,8 @@ tags: [LinkedIn Profile, Resume Tailoring, LinkedIn Optimization, Job Search 202
 category: Resume Optimization
 image: public/blog-images/linkedin-resume-tailoring-sync.webp
 slug: linkedin-resume-tailoring-sync
-keywords: LinkedIn resume sync, LinkedIn profile tailoring, align LinkedIn with resume, LinkedIn job search 2026, resume and LinkedIn consistency---
+keywords: LinkedIn resume sync, LinkedIn profile tailoring, align LinkedIn with resume, LinkedIn job search 2026, resume and LinkedIn consistency
+---
 
 You spent two hours [tailoring your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) for a senior marketing role.
 

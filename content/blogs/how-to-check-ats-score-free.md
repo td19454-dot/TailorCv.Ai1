@@ -7,7 +7,8 @@ tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
 image: public/blog-images/how-to-check-ats-score-free.webp
 slug: how-to-check-ats-score-free
-keywords: check ats score free, ats score checker, free ats resume scan, ats resume score---
+keywords: check ats score free, ats score checker, free ats resume scan, ats resume score
+---
 
 If you have been applying to jobs and hearing nothing back, there is a good chance your resume is being filtered out by software before a recruiter ever opens it. The fastest way to find out is to **check your [ATS score](https://thetailorcv.com/blog/ats-score-guide)**.
 
