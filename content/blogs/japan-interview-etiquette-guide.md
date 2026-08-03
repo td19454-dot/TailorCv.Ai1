@@ -4,7 +4,7 @@ description: A complete 2026 guide to Japanese job interview etiquette — bowin
 date: 2026-08-08
 author: TailorCV Team
 tags: [Japan interview etiquette, Japanese job interview, interview tips Japan, work in Japan]
-category: [Interview Prep](https://thetailorcv.com/interview-prep)
+category: Interview Preparation
 slug: japan-interview-etiquette-guide
 keywords: japanese interview etiquette, japan job interview tips, interview in japan, japanese business manners interview
 image: public/blog-images/japan-interview-etiquette-guide.png
