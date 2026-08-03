@@ -49,6 +49,13 @@ Practical reality: most employers must justify hiring a foreigner over a local, 
 | **LinkedIn** | heavily used by Singapore recruiters. Keep your [profile optimised](/blog/how-to-use-linkedin-for-job-search) with a [strong headline](/blog/linkedin-headline-examples-job-seekers), and be careful on [Easy Apply](/blog/resume-optimization-linkedin-easy-apply) not to fire off generic applications |
 | **Job boards** | MyCareersFuture (which prioritises locals under the Fair Consideration Framework), plus regional boards |
 
+### Tailoring without leaving Glassdoor
+
+![The TailorCV extension open on a Glassdoor job posting, showing a 27% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-glassdoor.webp)
+
+Glassdoor tells you which qualifications it thinks you are missing; the panel beside it scores the whole resume against the role and rewrites it to close that gap.
+
+
 ### What optimizing actually does to your resume
 
 ![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)

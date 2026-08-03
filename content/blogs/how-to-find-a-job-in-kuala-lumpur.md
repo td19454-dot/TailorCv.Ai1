@@ -133,6 +133,13 @@ For fresh graduates and in-demand fields, one to three months of focused effort 
 
 KL offers Malaysia's highest salaries, but also higher living costs than smaller states — so evaluate offers on take-home value, not just the headline number. The biggest variable is **housing**: rents range widely between city-centre condominiums and suburban homes in Petaling Jaya, Kajang, or further out. **Transport** is the next lever — living near an LRT/MRT line close to work saves both money and hours of traffic. Factor in **food** (hawker meals keep daily costs low; frequent dining out and imported goods add up), utilities, and lifestyle. A useful mental model: a job paying slightly less but fifteen minutes from home, near a rail line, can leave you better off — in money and quality of life — than a higher-paying role with a punishing commute and expensive city-centre rent.
 
+### Tailoring without leaving Indeed
+
+![The TailorCV extension open on an Indeed job posting, showing the role, company and a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
+
+On Indeed the panel reads the posting off the page and shows the match before you hit Apply - the kind of gap worth closing first rather than discovering through silence.
+
+
 ### What optimizing actually does to your resume
 
 ![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)

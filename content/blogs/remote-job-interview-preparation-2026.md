@@ -151,6 +151,7 @@ For [HR round](https://thetailorcv.com/blog/hr-round-interview-questions-answers
 - **Note any tech issues** - if there were connection problems, briefly mention them in your thank-you email to show awareness.
 - **If an offer comes, negotiate remotely too** - familiarize yourself with the [salary negotiation guide](https://thetailorcv.com/blog/salary-negotiation-interview-guide-2026) to approach discussions confidently.
 
+
 ### Building Long-Term Relationships
 
 - **Connect on LinkedIn**: After the interview, consider connecting on LinkedIn to maintain the relationship, which can be beneficial for future opportunities.
