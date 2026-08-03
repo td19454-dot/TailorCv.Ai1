@@ -113,6 +113,13 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Add topics to repos so they are searchable.
 - Star and follow [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you admire - it signals technical taste.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ### What optimizing actually does to your resume
 
 ![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)

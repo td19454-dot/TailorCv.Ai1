@@ -103,6 +103,13 @@ For more in-depth strategies, refer to our guide on [Portfolio SEO: Get Found](h
 ## Keep Your Resume and Portfolio in Sync
 Your resume, LinkedIn, and portfolio should tell the **same** story—same name, same headline, same top projects—just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. 
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 1. **Lock the Resume Down First**: Use the [ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume is optimized.
 2. **Mirror Your Positioning**: Ensure your portfolio matches the narrative of your resume.
 3. **Reinforce Each Touchpoint**: Every interaction should push your candidacy forward.

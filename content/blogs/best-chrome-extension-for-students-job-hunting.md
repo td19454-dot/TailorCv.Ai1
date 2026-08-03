@@ -60,6 +60,13 @@ And the same on LinkedIn: the extension reads the posting off the page you are a
 
 A few student-specific situations deserve their own approach. **Campus placement** compresses many applications into a short window — [preparing for campus placement](/blog/how-to-prepare-for-campus-placement) covers it, and tailoring fast is exactly what a placement season demands. **First tech job** with no professional experience — [strategies that actually work](/blog/how-to-get-first-tech-job) and [getting a job with no experience](/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026). **Internships** are your resume-builders — treat them like real roles. And if you are applying abroad after graduation, conventions differ for [the USA](/blog/how-to-get-a-job-in-usa) and [Canada](/blog/how-to-get-a-job-in-canada), including whether you need a [resume or a CV](/blog/resume-vs-cv). Students are also targeted by [job scams](/blog/how-to-spot-a-job-scam) more than most — know the signs.
 
+### The same check on a job board you already use
+
+![The TailorCV extension open on a Simplify job listing, showing a 50% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-simplify-job-board.webp)
+
+It reads the posting off whatever board you are browsing - Simplify here - and scores your resume against it before you apply, so you find the gap while you can still close it.
+
+
 ## After You Apply
 
 Getting past the filter is the start. Send a [follow-up after applying](/blog/how-to-follow-up-after-job-application) and [after the interview](/blog/how-to-follow-up-after-interview) — few students do, so it stands out. Before the interview, [research the company](/blog/how-to-research-company-before-interview), rehearse [behavioural questions](/blog/behavioral-interview-questions-and-answers), [tell me about yourself](/blog/how-to-answer-tell-me-about-yourself) and [why do you want this job](/blog/how-to-answer-why-do-you-want-this-job), and run a [mock interview](/blog/ai-mock-interview-complete-guide-2026); the [full interview prep guide](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) covers more. When one does not land — and some will not — [handle the rejection](/blog/how-to-handle-job-rejection); early-career searches involve a lot of it, and resilience matters. Pace yourself: [how many jobs to apply to per day](/blog/how-many-jobs-should-you-apply-to-per-day) is about quality, and the [difference between a tailored and generic resume](/blog/tailored-vs-generic-resume) is the whole game.

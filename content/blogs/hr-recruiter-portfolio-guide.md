@@ -82,6 +82,13 @@ To ensure your HR portfolio is comprehensive and effective, follow this checklis
 
 ## Do’s and Don’ts for Crafting an HR Portfolio
 
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
 ### Do’s
 
 - **Do Highlight Collaborative Efforts**: Showcase teamwork and collaboration with other departments to underline your ability to work cross-functionally.

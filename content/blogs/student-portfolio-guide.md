@@ -68,6 +68,13 @@ Different industries have unique expectations when it comes to student portfolio
 
 Creating a standout portfolio can feel overwhelming, but breaking it down into manageable steps can simplify the process. Use this checklist to guide you through building your portfolio:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 1. **Define Your Purpose**: Determine what you want to achieve with your portfolio (e.g., internships, job applications).
 2. **Select Your Platform**: Choose a portfolio platform that suits your needs. Consider ease of use, design options, and professional appeal.
 3. **Gather Your Work**: Collect projects, coursework, and experiences that align with your goals.

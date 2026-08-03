@@ -74,6 +74,13 @@ Creating a compelling case study involves a systematic approach. Follow these st
 
 While crafting your case studies, be mindful of these common pitfalls that can undermine your efforts:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - **Being Vague**: Avoid general statements. Instead of saying “I improved the project,” specify how you did it and what the impact was.
   
 - **Overloading with Jargon**: Use clear language that your audience can understand. Technical jargon can alienate readers who may not be familiar with industry terms.

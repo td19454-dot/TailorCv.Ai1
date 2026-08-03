@@ -79,6 +79,13 @@ One of the best ways to showcase your skills as a mobile app developer is throug
 
 Building a portfolio website can seem daunting, but breaking it down into manageable steps can simplify the process. Follow this guide to get your portfolio online:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 1. **Choose Your Platform**: Decide whether you want to use a website builder (like Wix or Squarespace) or a content management system (like WordPress). For a custom approach, consider using GitHub Pages or a static site generator like Jekyll.
 
 2. **Select a Domain Name**: A custom domain name (like yourname.com) enhances your professionalism. Refer to our guide on [How to Put Your Portfolio on a Custom Domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide) for tips on registering and setting up your domain.

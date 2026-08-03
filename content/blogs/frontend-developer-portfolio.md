@@ -67,6 +67,13 @@ See the full list in [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/
 
 Creating a standout frontend developer portfolio involves more than just showcasing your projects. Follow this step-by-step guide to ensure your portfolio is comprehensive and effective.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 1. **Choose a [Domain Name](https://thetailorcv.com/blog/custom-domain-portfolio-guide)**: Select a domain name that reflects your personal brand. Ideally, it should be your name or something closely related to your work. Check availability and purchase it from a reputable registrar.
 
 2. **Select a Hosting Provider**: Choose a reliable hosting service that fits your budget and technical needs. Look for options that offer easy deployment for frontend frameworks like React or Vue.js.

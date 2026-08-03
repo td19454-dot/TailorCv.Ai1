@@ -96,6 +96,13 @@ When creating your teacher portfolio, be mindful of these common pitfalls to ens
 
 Use this checklist to ensure your portfolio is comprehensive and well-organized:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - [ ] **Purpose Defined**: Have you clearly defined the purpose of your portfolio?
 - [ ] **Evidence Collected**: Do you have a variety of work samples and evidence of your teaching?
 - [ ] **Sections Organized**: Is your content organized into clear and logical sections?

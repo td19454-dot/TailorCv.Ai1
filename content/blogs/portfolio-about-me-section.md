@@ -104,6 +104,13 @@ Your resume, LinkedIn, and portfolio should tell the **same** story - same name,
 - **Optimize for SEO:** Include your specialty in the first six words to enhance visibility for search engines and skimmers. Learn more in [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found).
 - **Use a Portfolio Builder:** Publish your About Me on a site built with the [portfolio builder](https://www.thetailorcv.com/portfolio) to ensure a professional presentation.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ## Enhancing Your About Me with Analytics
 To continuously improve your About Me section, consider using analytics tools to gauge interest. Using [Portfolio Analytics to Gauge Recruiter Interest](https://thetailorcv.com/blog/portfolio-analytics-view-tracking) can provide insights into how visitors are interacting with your portfolio, allowing you to make informed adjustments.
 

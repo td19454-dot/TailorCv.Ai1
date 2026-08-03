@@ -97,6 +97,13 @@ By following this checklist, you can create a compelling portfolio that effectiv
 
 Creating a sales portfolio requires careful consideration. Here are some important do’s and don’ts to keep in mind:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ### Do’s:
 - **Do Tailor Your Content**: Customize your portfolio for different job applications or industries.
 - **Do Focus on Outcomes**: Highlight results and how your contributions led to revenue growth.

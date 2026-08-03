@@ -49,6 +49,13 @@ That last part matters on Wellfound: use the tool to get a tailored, matched dra
 
 **Step 1 — Set your base resume once.** Upload your resume; make sure it is solid with a [free ATS score](/blog/how-to-check-ats-score-free) first, keep it [ATS-friendly](/blog/how-to-make-resume-ats-friendly) and [parseable](/blog/ats-resume-parser-friendly-format), and lean toward impact and breadth if you are targeting startups. Do it fast with a [one-click tailor](/blog/one-click-resume-tailoring-how-it-works) rather than the [ten-minute manual grind](/blog/how-to-tailor-resume-in-5-minutes).
 
+### Tailoring straight from a Wellfound listing
+
+![The TailorCV extension open on a Wellfound job posting, showing the match and offering to tailor the resume without leaving the page](public/blog-images/extension-on-wellfound.webp)
+
+Startup boards work the same way - the extension reads the Wellfound listing you are already on, so the match check happens before you apply rather than after a rejection.
+
+
 ### Your resume after optimization
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)

@@ -73,6 +73,13 @@ Creating a compelling resume is an art that combines clarity, brevity, and impac
 
 Your portfolio is a visual representation of your skills and accomplishments. Use this checklist to ensure it’s comprehensive and impactful.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 - **Select Your Best Work**: Choose 5-10 pieces that showcase your skills and versatility. Include a mix of projects that demonstrate your ability to solve problems and meet client needs.
 
 - **Provide Context**: For each portfolio item, include a brief description that explains the project’s goal, your role, and the outcome. This contextualizes your work for potential employers.

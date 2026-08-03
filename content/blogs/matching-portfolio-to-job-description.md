@@ -112,6 +112,13 @@ A well-matched portfolio only helps if the hiring manager finds it. Read [how to
 
 To streamline the process of tailoring your portfolio, consider creating a checklist that aligns with the job description. This checklist should focus on specific elements that the employer values. Here’s how to build it:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 1. **Identify Key Requirements**: From the job description, list out the essential skills and experiences required for the role.
 2. **Match Your Projects**: For each requirement, identify which projects from your portfolio demonstrate that skill or experience.
 3. **Visual Appeal**: Note any visual or design preferences mentioned in the job description. This could include color schemes, layout styles, or specific formats.

@@ -76,6 +76,13 @@ One of the most effective ways to demonstrate your capabilities as a full stack 
 
 To ensure your projects are comprehensive and impactful, create a mini checklist that covers the essential elements. Here’s a practical example:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - **Project Name**: 
 - **Technologies Used**: (e.g., React, Node.js, MongoDB)
 - **Link to Live Demo**: 

@@ -96,6 +96,13 @@ Include examples of how you’ve used these tools in your projects within your p
 
 Creating a portfolio can be a daunting task, but following these do’s and don’ts can streamline the process and enhance your presentation.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ### Do’s:
 
 - **Do Personalize Your Portfolio**: Tailor your portfolio to reflect your unique experiences and skills. Use a consistent style and tone that represents your professional brand.

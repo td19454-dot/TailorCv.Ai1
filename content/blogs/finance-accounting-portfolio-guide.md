@@ -90,6 +90,13 @@ Creating a finance and accounting portfolio can seem daunting. Follow these step
 
 To ensure your finance and accounting portfolio stands out for the right reasons, avoid these common pitfalls:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - **Overloading with Information**: While it’s important to showcase your skills, avoid overwhelming the reader with too much detail. Focus on key achievements that align with your career goals.
 
 - **Neglecting Design**: A cluttered or unprofessional layout can detract from your content. Use clean, professional templates that enhance readability.
