@@ -807,3 +807,56 @@
     init();
   }
 })();
+
+/* Article star rating. Posts to /api/blog/<slug>/rate; the server upserts on
+   (slug, voter_hash), so re-rating replaces the previous vote rather than
+   adding a second one. Remembers locally only to show the chosen state. */
+(() => {
+  const box = document.getElementById("blog-rate");
+  if (!box) return;
+  const stars = Array.from(box.querySelectorAll(".blog-rate-star"));
+  const sub = document.getElementById("blog-rate-sub");
+  const slug = box.dataset.slug;
+  const KEY = "tcx_blog_rating_" + slug;
+
+  const paint = (n) => stars.forEach((s, i) => {
+    s.classList.toggle("is-on", i < n);
+    s.setAttribute("aria-checked", String(i + 1 === n));
+  });
+
+  const summarise = (avg, count) => {
+    if (!count) { sub.textContent = "Be the first to rate it."; return; }
+    sub.innerHTML = "Average <strong>" + Number(avg).toFixed(2) + "</strong> / 5.00 &middot; " +
+      count + " rating" + (count === 1 ? "" : "s");
+  };
+
+  let mine = 0;
+  try { mine = parseInt(localStorage.getItem(KEY) || "0", 10) || 0; } catch (_) {}
+  if (mine) { paint(mine); box.classList.add("is-done"); }
+
+  stars.forEach((star) => {
+    star.addEventListener("mouseenter", () => { if (!box.classList.contains("is-done")) paint(Number(star.dataset.value)); });
+    star.addEventListener("click", () => {
+      const value = Number(star.dataset.value);
+      paint(value);
+      box.classList.add("is-done");
+      try { localStorage.setItem(KEY, String(value)); } catch (_) {}
+      // Double-submit CSRF: the cookie is set on every response, and the
+      // matching header has to go with any JSON POST or the middleware 403s.
+      const csrf = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1];
+      fetch("/api/blog/" + encodeURIComponent(slug) + "/rate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrf ? decodeURIComponent(csrf) : "",
+        },
+        body: JSON.stringify({ rating: value }),
+      })
+        .then((r) => (r.ok ? r.json() : Promise.reject(new Error("rate failed"))))
+        .then((d) => { summarise(d.average, d.count); sub.textContent += " \u2014 thanks!"; })
+        .catch(() => { sub.textContent = "Could not save that rating. Please try again."; box.classList.remove("is-done"); });
+    });
+  });
+
+  box.querySelector(".blog-rate-stars").addEventListener("mouseleave", () => paint(mine));
+})();

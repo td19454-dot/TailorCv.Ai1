@@ -56,7 +56,7 @@ from functions import (
 )
 
 from extraction import process_resume
-from models import GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
+from models import BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
 from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
@@ -8437,6 +8437,69 @@ def blog_shows_ats_widget(post) -> bool:
     return "ats" in hay or "applicant tracking" in hay or "resume score" in hay
 
 
+def _blog_voter_hash(request: Request) -> str:
+    """Salted hash of the client IP - readers are logged out, so there is no
+    user id to key a vote on, and raw IPs should not be stored."""
+    return _guest_ats_ip_hash(_client_ip(request))
+
+
+def blog_rating_summary(db: Session, slug: str) -> dict:
+    """Average + count for a post. Shown next to the stars."""
+    from sqlalchemy import func as _func
+    row = db.query(
+        _func.avg(BlogRating.rating), _func.count(BlogRating.id)
+    ).filter(BlogRating.slug == slug).one()
+    avg, count = row[0], row[1] or 0
+    return {"average": round(float(avg), 2) if avg else 0.0, "count": int(count)}
+
+
+def _blog_rating_ctx(slug: str) -> dict:
+    db = get_db()
+    try:
+        return blog_rating_summary(db, slug)
+    except Exception:
+        logger.exception("blog rating summary failed")
+        return {"average": 0.0, "count": 0}
+    finally:
+        db.close()
+
+
+@app.post("/api/blog/{slug}/rate")
+async def rate_blog_post(request: Request, slug: str):
+    """Record a 1-5 star rating for a post.
+
+    Upserts on (slug, voter_hash) so re-rating changes the existing vote
+    rather than adding another - one refresh should not move the average.
+    """
+    if blog_service.get_post(slug) is None:
+        raise HTTPException(status_code=404, detail="Blog post not found")
+    try:
+        body = await request.json()
+        rating = int(body.get("rating", 0))
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid rating")
+    if not 1 <= rating <= 5:
+        raise HTTPException(status_code=400, detail="Rating must be between 1 and 5")
+
+    voter = _blog_voter_hash(request)
+    db = get_db()
+    try:
+        existing = (
+            db.query(BlogRating)
+            .filter(BlogRating.slug == slug, BlogRating.voter_hash == voter)
+            .first()
+        )
+        if existing:
+            existing.rating = rating
+        else:
+            db.add(BlogRating(slug=slug, rating=rating, voter_hash=voter))
+        db.commit()
+        summary = blog_rating_summary(db, slug)
+    finally:
+        db.close()
+    return {"ok": True, "your_rating": rating, **summary}
+
+
 @app.get("/blog/{slug}", response_class=HTMLResponse)
 async def blog_post_page(request: Request, slug: str):
     # Consolidate merged duplicates: permanent-redirect old slugs to their pillar.
@@ -8471,6 +8534,7 @@ async def blog_post_page(request: Request, slug: str):
             "hero_cta": blog_cta(post, is_logged_in=bool(request.session.get("user_id"))),
             "show_ats_widget": blog_shows_ats_widget(post),
             "ats_widget_copy": blog_ats_widget_copy(post),
+            "rating_summary": _blog_rating_ctx(post.slug),
             "template_showcase": blog_template_showcase(post),
         },
     )
