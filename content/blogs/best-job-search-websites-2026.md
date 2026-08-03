@@ -40,6 +40,13 @@ Don't overlook applying directly on company websites. Many roles are posted ther
 
 A large share of roles are filled through referrals and networking before they're ever advertised — the so-called hidden job market. That's why boards should be one part of your strategy, alongside [networking](https://thetailorcv.com/blog/networking-tips-for-job-search), [recruitment agencies](https://thetailorcv.com/blog/how-to-work-with-recruitment-agencies), and direct outreach. A [referral](https://thetailorcv.com/blog/referral-message-template-linkedin) dramatically improves your odds, so investing in relationships often beats submitting one more application into the void.
 
+### Tailoring without leaving the job board
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+This is what tailoring per posting looks like in practice: the panel reads the job off the page you are already browsing and rewrites against it, instead of you copying the description into another tab.
+
+
 ### What optimizing actually does to your resume
 
 ![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)

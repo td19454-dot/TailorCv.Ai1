@@ -60,19 +60,6 @@ Then judge the output. Install the tool, tailor against a real job, and read wha
 
 The same approach holds across boards and borders, because they all run the same kind of filter. For [remote roles](/blog/how-to-match-resume-to-remote-job-description) the competition is global so matching matters more, and a [remote cover letter](/blog/cover-letter-for-remote-jobs) helps. Conventions shift for [the USA](/blog/how-to-get-a-job-in-usa) and [Canada](/blog/how-to-get-a-job-in-canada), including whether you lead with a [resume or a CV](/blog/resume-vs-cv). And pace yourself — [fewer, matched applications](/blog/how-many-jobs-should-you-apply-to-per-day) beat volume.
 
-### The same check on a job board you already use
-
-![The TailorCV extension open on a Simplify job listing, showing a 50% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-simplify-job-board.webp)
-
-It reads the posting off whatever board you are browsing - Simplify here - and scores your resume against it before you apply, so you find the gap while you can still close it.
-
-
-### The same check running on Greenhouse
-
-![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
-
-The same check on Greenhouse, one of the ATS platforms you are actually applying through. A 67% match tells you where you stand before you submit - and, more usefully, that there is room to close the gap first.
-
 
 ## The Myths That Get People Rejected
 

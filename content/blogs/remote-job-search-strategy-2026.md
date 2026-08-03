@@ -68,6 +68,13 @@ The remote [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-g
 
 The remote market attracts scammers, and a [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is a vulnerable moment. Be cautious of:
 
+### Tailoring without leaving the job board
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+Whichever board you are on, the extension opens beside the listing, reads the description off the page and scores your resume against that role - so "tailor each application" takes a click rather than a detour.
+
+
 ### What optimizing actually does to your resume
 
 ![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)

@@ -90,6 +90,7 @@ These employers value a clear, achievement-focused, ATS-friendly resume. This is
 3. **Ask your recruiter.** Agencies that place foreigners will tell you exactly what each employer wants — and some help prepare both.
 4. **Consider language.** Japanese-language roles expect Japanese documents; English roles accept English resumes.
 
+
 ### Your resume after optimization
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)

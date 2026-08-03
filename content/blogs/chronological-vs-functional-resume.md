@@ -145,6 +145,7 @@ Notice that reverse chronological or combination covers almost every situation. 
 
 Many people choose functional format to hide gaps. But there are better ways:
 
+
 - Use year-only dates to compress short gaps
 - Add a brief line explaining longer gaps (caregiving, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), etc.)
 - Address gaps directly and confidently

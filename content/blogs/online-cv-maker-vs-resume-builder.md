@@ -117,6 +117,13 @@ In these cases, spending time evaluating ATS scoring features or job-description
 
 On the other end, a handful of situations call for a builder with real tailoring and scoring capability, not just a template:
 
+### What the extension looks like on a real posting
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+This is the panel described above, open beside a live listing: it reads the description off the page, scores your resume against that role, and tailors in one click without a second tab.
+
+
 - **Career changes**, where your existing bullet points do not obviously map to the language of your target role and you need help reframing transferable experience. See the [Career Change Resume Guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) for the reframing side of this problem.
 - **Senior or specialized roles**, where a generic resume signals a lack of seniority and recruiters expect language specific to the function and level.
 - **High-volume, ATS-heavy applications**, such as large tech companies or enterprise career portals, where your resume is parsed by software before any person sees it.

@@ -2116,3 +2116,74 @@ header.navbar {
 @media (max-width: 680px) {
   .blog-detail-page .post-content .callout-box { padding: 18px 18px 4px; }
 }
+
+/* Before/after pairs - weak reads as the problem, strong as the fix. */
+.blog-detail-page .post-content .callout-weak {
+  border-top-color: #f97316;
+  background: #fffbf5;
+}
+.blog-detail-page .post-content .callout-weak .callout-ico svg circle { fill: #f97316; }
+.blog-detail-page .post-content .callout-weak .callout-head h2,
+.blog-detail-page .post-content .callout-weak .callout-head h3 { color: #c2410c !important; }
+
+.blog-detail-page .post-content .callout-strong {
+  border-top-color: #16a34a;
+  background: #f8fdfa;
+}
+.blog-detail-page .post-content .callout-strong .callout-ico svg circle { fill: #16a34a; }
+.blog-detail-page .post-content .callout-strong .callout-head h2,
+.blog-detail-page .post-content .callout-strong .callout-head h3 { color: #15803d !important; }
+
+/* Inline lead-in note: "Pro tip: ...", "Why it works: ..." */
+.blog-detail-page .post-content p.callout-note-inline {
+  margin: 22px 0;
+  padding: 14px 18px 14px 16px;
+  border-left: 4px solid #5B42F3;
+  border-radius: 0 8px 8px 0;
+  background: #f5f3ff;
+  color: #1f2937;
+}
+.blog-detail-page .post-content p.callout-note-inline strong:first-child { color: #4b1fa8; }
+
+/* ---- "Before (generic)" / "After (matched)" pairs ----
+   The label and its code block are joined into one card so the contrast is
+   visible at a glance instead of two identical grey boxes. */
+.blog-detail-page .post-content .ba-block {
+  max-width: 1000px;
+  margin: 20px 0;
+  border: 1px solid #e4e9f2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.blog-detail-page .post-content .ba-block .ba-label {
+  margin: 0;
+  padding: 11px 18px;
+  font-size: 0.94rem;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+.blog-detail-page .post-content .ba-block .ba-label strong { color: inherit; }
+.blog-detail-page .post-content .ba-block pre,
+.blog-detail-page .post-content .ba-block .codehilite {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: #ffffff;
+}
+.blog-detail-page .post-content .ba-block > :not(.ba-label) { margin: 0; }
+
+.blog-detail-page .post-content .ba-before { border-color: #fbd5b5; }
+.blog-detail-page .post-content .ba-before .ba-label {
+  background: #fff4e8;
+  color: #b45309;
+  border-bottom: 1px solid #fbd5b5;
+}
+.blog-detail-page .post-content .ba-before .ba-label::before { content: "\2715  "; font-weight: 900; }
+
+.blog-detail-page .post-content .ba-after { border-color: #bbf7d0; }
+.blog-detail-page .post-content .ba-after .ba-label {
+  background: #effdf4;
+  color: #15803d;
+  border-bottom: 1px solid #bbf7d0;
+}
+.blog-detail-page .post-content .ba-after .ba-label::before { content: "\2713  "; font-weight: 900; }

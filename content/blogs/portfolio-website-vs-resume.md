@@ -65,6 +65,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 4. Link individual resume projects to live demos in your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 5. In interviews, walk the interviewer through a portfolio case study - see [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).
 
+
 ## Pro Tips
 - One strong portfolio link beats three weak ones; curate ruthlessly ([Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)).
 - Make the [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) load fast and look great on mobile - most first views are on phones.
