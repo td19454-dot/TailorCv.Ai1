@@ -8315,8 +8315,11 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
         return None
 
     if "portfolio" in subject:
+        # Themes withdrawn from the blog gallery (still available in the app).
+        _blog_hidden_themes = {"particle"}
         themes = [(slug, PORTFOLIO_THEMES.get(slug, slug).split("—")[0].split("-")[0].strip(), media)
-                  for slug, media in PORTFOLIO_THEME_MEDIA.items() if media.get("image")]
+                  for slug, media in PORTFOLIO_THEME_MEDIA.items()
+                  if media.get("image") and slug not in _blog_hidden_themes]
         picked = _blog_rotate(themes, post.slug)[:limit]
         if not picked:
             return None
