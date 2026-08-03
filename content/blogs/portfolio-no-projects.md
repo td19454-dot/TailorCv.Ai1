@@ -78,6 +78,13 @@ By structuring your case studies in this way, you can effectively demonstrate yo
 
 Another strategy to strengthen your portfolio is to create a blog around your field of expertise. This not only showcases your knowledge but also establishes you as a thought leader. Here’s how to get started:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 1. **Choose a Niche**: Focus on a specific area within your field. For instance, if you’re a frontend developer, consider writing about the latest trends in web development or tutorials on CSS frameworks.
 
 2. **Create Quality Content**: Aim for informative, engaging posts that provide value to your readers. Use visuals, infographics, or code snippets to enhance your articles.

@@ -92,6 +92,13 @@ If any of these steps takes more than a couple of seconds, most recruiters will 
 
 Because the click is short, put your strongest, most relevant proof where it can be seen without scrolling. A homepage that requires digging to find real work will lose most of the value of having a portfolio at all.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ### Keeping every tailored resume with its job
 
 ![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)

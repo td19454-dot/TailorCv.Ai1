@@ -70,6 +70,13 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Make the [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) load fast and look great on mobile - most first views are on phones.
 - Audit every link before each application with the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 
 ## Frequently Asked Questions
 

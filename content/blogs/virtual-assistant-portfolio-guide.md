@@ -76,6 +76,13 @@ Creating a compelling portfolio can be a straightforward process if you follow t
 
 Understanding how to navigate common situations can improve your portfolio's effectiveness. Here are a few scenarios with practical solutions:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - **Scenario 1**: You lack client work samples because you are just starting.
   - **Solution**: Create mock projects or offer your services to friends or local businesses at a discounted rate in exchange for permission to showcase the work.
 

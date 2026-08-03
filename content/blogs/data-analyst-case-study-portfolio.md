@@ -96,6 +96,13 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 
 Weak version:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.
 
 Stronger version:

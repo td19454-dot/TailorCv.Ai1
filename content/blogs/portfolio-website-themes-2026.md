@@ -95,6 +95,13 @@ When selecting a portfolio theme, avoiding common pitfalls can save you time and
 
 Before you launch your portfolio, use this checklist to ensure everything is in order:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - [ ] **All Links Work**: Double-check that all internal and external links are functional.
 - [ ] **Content is Proofread**: Ensure that your text is free of typos and grammatical errors.
 - [ ] **Images are Optimized**: Compress images to reduce load times without sacrificing quality.

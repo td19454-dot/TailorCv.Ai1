@@ -77,6 +77,13 @@ Creating a standout portfolio is a crucial step in your job application process,
 
 Follow these steps to create a polished and professional portfolio:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 1. **Define Your Purpose**: Determine what you want to achieve with your portfolio. Are you looking for a job, freelance work, or simply showcasing your skills?
 
 2. **Select Your Best Work**: Choose 5-10 pieces that represent your skills and experience. For each project, consider including:

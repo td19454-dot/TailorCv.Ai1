@@ -95,6 +95,13 @@ The [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) supports
 - [ ] Regularly update your portfolio with new content.
 - [ ] Secure your domain with an SSL certificate.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ## Scenarios to Consider
 
 - **Scenario 1**: You’re a business analyst creating a portfolio. You choose a domain like "YourNameAnalytics.com". After registering, you connect it with a WordPress site. You include case studies and data visualization projects to showcase your skills. 

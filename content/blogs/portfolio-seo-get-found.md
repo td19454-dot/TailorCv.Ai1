@@ -89,6 +89,13 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Slow, image-heavy pages.
 - Blocking indexing by accident - see the broader [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid).
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ### Avoiding SEO Pitfalls
 
 - **Neglecting Alt Text**: Always provide descriptive alt text for images to improve accessibility and SEO.

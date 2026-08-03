@@ -82,6 +82,13 @@ Creating a standout project for your portfolio doesn't have to be overwhelming. 
 
 While building your portfolio, be mindful of these common mistakes that can undermine your efforts:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 - **Overcomplicating Projects**: Focus on quality over quantity. Instead of trying to showcase every tool and technique you know, select a few well-executed projects that demonstrate your skills effectively.
 
 - **Neglecting Soft Skills**: Data analysis isn't just about numbers; communication is key. Highlight projects that demonstrate your ability to convey insights clearly, whether through visualizations or presentations.

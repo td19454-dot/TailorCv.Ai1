@@ -85,6 +85,13 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 - **Overloading with Information**: Avoid cramming too many projects into your portfolio. Focus on quality over quantity. A few well-documented case studies are more impactful than a dozen mediocre ones.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 - **Neglecting User Feedback**: Failing to incorporate user feedback into your case studies can weaken your credibility. Always include insights gained from user testing and how they influenced your design decisions.
 
 - **Ignoring Visual Hierarchy**: Ensure your portfolio has a clear visual hierarchy. Use headings, subheadings, and bullet points to guide the reader through each case study seamlessly.

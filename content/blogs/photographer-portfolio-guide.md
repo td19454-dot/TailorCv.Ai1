@@ -88,6 +88,13 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Add a short About with your style and a friendly photo of you ([Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)).
 - Generate a simple, fast site from your bio with the [portfolio builder](https://thetailorcv.com/portfolio).
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ### Additional Enhancements
 - **Testimonials**: Include positive feedback from past clients to build trust.
 - **Blog Section**: Consider adding a blog to showcase your insights and experiences, which can also help with SEO.

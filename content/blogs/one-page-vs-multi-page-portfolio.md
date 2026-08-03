@@ -85,6 +85,13 @@ Understanding when to use a one-page or multi-page portfolio can often be the di
 
 Creating a portfolio that converts requires careful planning and execution. Follow this checklist to ensure you cover all bases, whether you choose a one-page or multi-page format:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 1. **Define Your Goals**
    - What do you want to achieve with your portfolio? (e.g., job applications, freelance clients)
 

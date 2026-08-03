@@ -110,6 +110,13 @@ Cybersecurity candidates who documented CTF writeups or personal security resear
 
 Creating a portfolio can be an exciting but daunting task. Many candidates make avoidable mistakes that can undermine their chances of landing interviews. Here are some common pitfalls and how to steer clear of them:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 1. **Neglecting to Tailor Your Portfolio**  
    Failing to customize your portfolio for specific job applications can lead to missed opportunities. Always align your showcased projects and skills with the job description.
 

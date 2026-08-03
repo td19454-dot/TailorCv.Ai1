@@ -85,6 +85,13 @@ Understanding portfolio analytics is crucial, but many job seekers fall into com
 
 Use this mini checklist to ensure your portfolio is effectively leveraging analytics data for maximum recruiter interest:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ### Keeping every tailored resume with its job
 
 ![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)

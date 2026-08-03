@@ -72,6 +72,13 @@ Regularly update your portfolio to reflect new projects or skills. If you change
 - If freelancing, add a one-line "what I help with" so inquiries are qualified.
 - Build a portfolio with a built-in contact section using the [portfolio builder](https://thetailorcv.com/portfolio).
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ### Examples of Effective Contact Sections
 1. **Simple and Direct**: A contact section that includes a bold header, "Get in Touch," with a short form and a clickable email. This creates a straightforward approach.
    

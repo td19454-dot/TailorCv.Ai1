@@ -90,6 +90,13 @@ Choosing the right domain name can also impact your SEO. Here are some tips to o
 - **Keep It Short**: Shorter domains are easier to remember and share.
 - **Avoid Numbers and Hyphens**: These can confuse users and affect SEO negatively.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ## How to Promote Your Domain
 Once you’ve secured your domain, it’s crucial to promote it effectively. Here are some strategies:
 - **Link from Your Social Media Profiles**: Ensure your portfolio link is in your bios.

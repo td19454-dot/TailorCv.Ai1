@@ -113,6 +113,13 @@ What does not work is an unlabeled grid mixing a logo, an app screen, an illustr
 
 Different platforms serve different jobs in your search - use them together rather than picking one.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - **Behance and Dribbble** are best for discovery and reach. Recruiters and art directors browse these platforms directly, and strong pieces can get pulled into curated collections that put you in front of people who were not looking for you specifically.
 - **A custom site** (Framer, Webflow, Adobe Portfolio, or a purpose-built site like the [TailorCV portfolio builder](https://thetailorcv.com/portfolio)) gives you full control over narrative, case study depth, and first impression - this is the link you put on your resume and LinkedIn. See [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026) for a comparison and [Custom Domain for Your Portfolio](https://thetailorcv.com/blog/custom-domain-portfolio-guide) for making it look established rather than like a free subdomain demo.
 - **Instagram** works as a discovery funnel and a way to show work-in-progress, but it should point back to your main site, not replace it - a feed cannot hold case study depth.

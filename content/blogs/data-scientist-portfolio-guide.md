@@ -109,6 +109,13 @@ The goal is not to add these for their own sake. Include one only if it genuinel
 
 Hosting choices for data science portfolios differ a little from a typical developer portfolio, because the "demo" is often a model rather than a UI.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 - **GitHub** for code, notebooks, and the README-driven story of each project (see the repo structure section above).
 - **A deployed model or small app** - even a minimal one - is a large differentiator. A tiny API endpoint, a Streamlit or Gradio app, or a Hugging Face Space where someone can enter an input and see a live prediction, beats a static notebook every time. It proves the model works outside your own machine and that you understand the basics of serving it.
 - **Kaggle**, used selectively, for notebooks or competitions that show a specific technique well - not as your primary hosting location.

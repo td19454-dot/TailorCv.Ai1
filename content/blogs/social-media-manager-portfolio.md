@@ -76,6 +76,13 @@ By following this structure, you can create engaging case studies that will capt
 
 Creating a standout portfolio doesn’t have to be daunting. Use this step-by-step guide to build yours effectively:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 1. **Define Your Niche**: Identify the specific niche of social media management you want to focus on, whether it's content creation, strategy development, or analytics.
 
 2. **Gather Your Work Samples**: Collect examples of your best work, including posts, campaigns, and analytics reports. Ensure that you have permission to share any work that was done for clients.
