@@ -221,6 +221,13 @@ If you need affordable options, review the list of [free online certificates for
 
 Career changers often get filtered out because their resumes use language from the old industry, not the new one.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 This is where ATS optimization matters. [TailorCV.ai](https://www.thetailorcv.com) can compare your resume to a target job description and show missing keywords, weak alignment, and sections that need rewriting. That helps you translate your experience faster and more accurately.
 
 You can start with the [resume optimization tool](https://www.thetailorcv.com/solutions) to check whether your career change resume fits the new role.

@@ -103,6 +103,13 @@ Back these with evidence rather than listing them as empty adjectives.
 - **Use exact terms and sensible variations** (e.g. spell out and abbreviate: "Search Engine Optimization (SEO)").
 - **Stay honest** — only claim skills you have; you'll be tested in interviews.
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+The score matters less than the breakdown beside it - each check names what passed, what failed and why, which is the list you actually work through.
+
+
 ## Don't Overdo It
 
 Keyword **stuffing** — cramming irrelevant terms or repeating them unnaturally — hurts you. Modern ATS and recruiters flag it, and it makes your resume unreadable. Aim for natural, relevant, honest usage. Quality and fit beat volume.

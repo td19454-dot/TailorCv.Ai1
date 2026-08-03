@@ -134,6 +134,13 @@ For templates and examples, check out our article on [Follow-Up Email After Job 
 
 With the rise of remote work, many Canadian employers are now open to hiring remote employees. If you’re interested in remote positions:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - **Broaden Your Search**: Look for remote-specific job boards and listings.
 - **Tailor Your Resume**: Highlight relevant remote work experience and skills.
 - **Showcase Adaptability**: Emphasize your ability to work independently and manage time effectively.

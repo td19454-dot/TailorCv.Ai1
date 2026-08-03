@@ -113,6 +113,13 @@ Built / Designed / Optimized + [service or system] in Java/Spring + [scale or co
 Senior Java Developer
 FinTech Company | Feb 2022 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Led backend development for a payment settlement platform processing $420M in annual transaction volume using Java 17 and Spring Boot.
 - Designed and built 14 microservices with Spring Cloud, service discovery, and Resilience4j circuit breakers for fault tolerance.
 - Reduced settlement processing time by 38% by parallelizing batch jobs and optimizing database transaction boundaries.

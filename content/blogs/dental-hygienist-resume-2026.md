@@ -80,6 +80,13 @@ A pediatric office, a periodontal specialist, and a general family practice all 
 
 If you're a recent hygiene-school graduate, you still have plenty to show: clinical rotations, patient counts, externships, and any specialty exposure. Lead with those instead of a thin work history — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [technical skills for freshers guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience) show how to present training as real experience. A short list of [projects or clinical highlights](https://thetailorcv.com/blog/projects-in-resume) can carry an early-career [resume](https://www.thetailorcv.com/modify-cv).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Prepare for the interview, too
 
 Once your [resume](https://www.thetailorcv.com/modify-cv) lands the interview, prepare like a professional. Build a [STAR story bank](https://thetailorcv.com/blog/interview-story-bank-star-method) of patient and teamwork examples, practice with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and use the [interview prep tool](https://www.thetailorcv.com/interview-prep). Know [what to bring to the interview](https://thetailorcv.com/blog/what-to-bring-to-an-interview) and [what to wear](https://thetailorcv.com/blog/what-to-wear-to-an-interview). Afterward, send a [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) and [follow up on the right timeline](https://thetailorcv.com/blog/how-to-follow-up-after-interview). If the role asks for one, generate a tailored [cover letter](https://www.thetailorcv.com/cover-letter).

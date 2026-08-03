@@ -103,6 +103,13 @@ Check it directly: run your resume against a specific posting with a [free ATS s
 
 Two cases.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 **You haven't been hired yet.** Correct it. Send an updated resume, or raise it in the interview plainly: "I want to correct something on my resume." Some processes end there. Many don't, and the ones that continue now involve someone who trusts you more than they did before.
 
 **You're already in the job.** Harder, and worth real thought. The exposure doesn't decay — background re-screens, promotions, and internal transfers all re-verify. Weigh proactive disclosure to someone you trust against continued exposure. Consider whether your actual performance now demonstrates the capability the claim was about, since that changes the conversation substantially. Get professional advice if a licensed credential is involved, because that category carries consequences the others don't.

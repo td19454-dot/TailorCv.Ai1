@@ -86,6 +86,13 @@ Hiring chefs skim, and applicant systems parse. A [clean one-page resume](https:
 
 If you're early in your career, lead with culinary school, stages (unpaid trials), apprenticeships, and any station experience — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [first job resume for a teenager](https://thetailorcv.com/blog/resume-for-first-job-teenager) show how to frame limited experience. Even a part-time kitchen job becomes strong with the right [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume) and numbers.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## Moving up to executive chef
 
 For head- or executive-chef roles, add menu development, P&L ownership, purchasing, staffing, and food-cost percentages. Show leadership scale and business impact, and read [how to get a promotion](https://thetailorcv.com/blog/how-to-get-a-promotion) for framing your rise. A [portfolio](https://www.thetailorcv.com/portfolio) or link to menus and press can strengthen a senior application.

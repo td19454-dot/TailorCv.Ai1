@@ -132,6 +132,13 @@ SaaS Productivity Tool | Apr 2023 - Present
 
 Valuable [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume):
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Google Ads [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (Search, Display, Shopping, Video)
 - Google Analytics Certification
 - HubSpot Marketing [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)

@@ -12,9 +12,6 @@ keywords: how to research company before interview, company research interview 2
 
 Company research before an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most impactful things you can do - and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, [recent product launches](https://thetailorcv.com/blog/negotiating-multiple-job-offers), competitive position, [engineering culture](https://thetailorcv.com/blog/ai-proof-jobs-2026), and [specific team challenges](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day) is research.
 
-![How to Research a Company](public/blog-images/how-to-research-a-company.webp)
-
-Interviewers ask "What do you know about us?" and "Why do you want to work here?" - and the answers that get job offers are specific, demonstrating genuine understanding of the company's situation. This guide tells you exactly what to research, where to find it, and how to use it.
 
 Prepare your research in parallel with your interview answers. Read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and practice with the [free AI mock interview tool](https://thetailorcv.com/mock-interview). Make sure your [resume](https://www.thetailorcv.com/templates) is optimized with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) before the interview even starts.
 
@@ -176,6 +173,11 @@ Connect your past examples to their specific context. "At [Company], I solved a 
 
 ## Conclusion
 Company research is not a performance - it is genuine preparation that makes every [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) answer more specific, more credible, and more compelling. Candidates who have done real research stand out visibly from those who have not.
+
+![How to Research a Company](public/blog-images/how-to-research-a-company.webp)
+
+Interviewers ask "What do you know about us?" and "Why do you want to work here?" - and the answers that get job offers are specific, demonstrating genuine understanding of the company's situation. This guide tells you exactly what to research, where to find it, and how to use it.
+
 
 Spend 60-90 minutes per company on research before a final round [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). For first screens, 30 minutes is sufficient.
 

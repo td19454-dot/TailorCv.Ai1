@@ -104,6 +104,13 @@ Use [TailorCV's resume optimizer](/solutions) to quickly identify a job descript
 
 Creating a compelling 30-second video pitch involves more than just reciting your qualifications. Here’s a step-by-step approach to ensure your pitch aligns perfectly with the job description:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Analyze the Job Description Thoroughly**: Use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) to identify key responsibilities and requirements. Highlight any specific skills or experiences that are mentioned.
 
 2. **Identify Core Qualities**: Look for adjectives that describe the ideal candidate (e.g., "innovative," "collaborative"). These qualities should guide your tone and delivery style.

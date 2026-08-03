@@ -343,6 +343,13 @@ Matching keywords improves [ATS](https://thetailorcv.com/blog/what-is-an-ats-sco
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software scans resumes before recruiters read them.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 An [ATS-friendly resume](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly):
 - Uses proper headings
 - Includes job-related keywords

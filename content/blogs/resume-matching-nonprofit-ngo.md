@@ -116,6 +116,13 @@ Paste any non-profit or NGO job posting into [TailorCV's resume optimizer](/solu
 
 1. **Analyze the Job Description**: Start by thoroughly reviewing the job description. Identify key responsibilities and qualifications. Use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) to ensure you capture all relevant details.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 2. **Highlight Relevant Experience**: List your previous roles and identify experiences that align with the non-profit sector. Focus on volunteer work, internships, or projects that demonstrate your commitment to social causes.
 
 3. **Create a Keyword Map**: Use the [Resume Keyword Map Template - Match Your Resume to Any Job Description](https://thetailorcv.com/blog/resume-keyword-map-template) to map out keywords from the job description and match them with your past experiences. This will help you integrate essential terms into your resume naturally.

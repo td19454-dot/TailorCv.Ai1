@@ -86,6 +86,13 @@ Architects often ask whether to include drawings or renders directly on the [res
 
 If you're a recent graduate or intern architect, lead with your degree, studio projects, internships, and software proficiency — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume) show how to present academic and personal work as real experience. Your [portfolio](https://www.thetailorcv.com/portfolio) does a lot of heavy lifting at this stage.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Presenting academic, competition, and international work
 
 Early-career architects and those relocating can lean on academic and competition work to fill out a [resume](https://www.thetailorcv.com/modify-cv). Design-studio projects, thesis work, and competition entries all demonstrate capability — present them like real projects with your role, tools, and outcome, as the [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume) suggests, and showcase them in your [portfolio](https://www.thetailorcv.com/portfolio). If you trained or worked abroad, note it clearly and read the [international resume tailoring guide](https://thetailorcv.com/blog/international-resume-tailoring-guide) for regional expectations. Internships and part-time studio roles count too — frame them with strong [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume) and any [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) contribution, the same approach as the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026).

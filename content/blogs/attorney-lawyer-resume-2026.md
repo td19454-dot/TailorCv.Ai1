@@ -74,6 +74,13 @@ If you're a recent law graduate, lead with your JD, honors, journal, clerkships,
 
 Different firms and legal departments weight practice areas and skills differently, so [tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes). Paste the posting into the [resume optimizer](https://www.thetailorcv.com/solutions) to align your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description), then re-check your [ATS](https://thetailorcv.com/blog/ats-score-guide) match. See [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Prepare for legal interviews
 
 Legal interviews probe judgment and communication. Build a [STAR story bank](https://thetailorcv.com/blog/interview-story-bank-star-method) of matters and challenges, practice with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and use the [interview prep tool](https://www.thetailorcv.com/interview-prep). Prepare for [behavioral questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and know [what to bring to the interview](https://thetailorcv.com/blog/what-to-bring-to-an-interview). Afterward, send a [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) and [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview). If a cover letter is required, generate a tailored one with the [AI cover letter tool](https://www.thetailorcv.com/cover-letter).

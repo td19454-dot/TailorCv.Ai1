@@ -30,6 +30,13 @@ Recruiters place candidates who are easy to work with. Tell them exactly what yo
 
 Recruiters often submit your [resume](https://www.thetailorcv.com/modify-cv) directly to employers, sometimes reformatted onto their letterhead, so make it excellent. Use an [ATS-friendly template](https://www.thetailorcv.com/templates), lead with [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), and [tailor it](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) to the kinds of roles they pitch you. A recruiter can only sell what's on the page — a sharp, results-driven [resume](https://www.thetailorcv.com/modify-cv) makes their job easy and your placement more likely. Ask whether they'll tweak keywords for specific submissions, and provide a version aligned to each [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 ## Manage the relationship over time
 
 Treat recruiters as long-term relationships, not one-off transactions. Keep in touch periodically even when you're not actively looking, update them on your situation, and be gracious when a role doesn't work out. A recruiter who knows and trusts you will think of you first when the right opening appears. This is really a form of [professional networking](https://thetailorcv.com/blog/networking-tips-for-job-search) — the more genuine the relationship, the more it pays off over a career. If a recruiter goes quiet, a polite check-in is fine; if one behaves unprofessionally, simply focus your energy elsewhere.

@@ -114,6 +114,13 @@ By incorporating AI thoughtfully into your resume writing process, you can creat
 
 Before you submit your resume, it's essential to assess whether any sections may appear AI-generated. Here’s a step-by-step guide to help you identify potential red flags:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **Analyze Sentence Structure**: AI often generates sentences that are overly complex or too uniform in structure. Read your resume aloud. If the sentences sound robotic or lack natural variation, consider rephrasing them.
 
 2. **Check for Clichés**: AI tools tend to rely on common phrases and buzzwords. Look for clichés like "hardworking," "team player," or "go-getter." Replace them with specific examples that demonstrate your unique contributions.

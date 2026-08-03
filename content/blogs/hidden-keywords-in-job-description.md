@@ -212,6 +212,13 @@ You addressed the real problem. Not just the listed requirement.
 
 [TailorCV's keyword analyzer](https://www.thetailorcv.com/solutions) handles the Layer 1 and Layer 2 work efficiently.
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+The score matters less than the breakdown beside it - each check names what passed, what failed and why, which is the list you actually work through.
+
+
 Paste the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 Upload your resume.
 Get an instant gap analysis: which required and preferred keywords are missing from your resume, and where to add them.

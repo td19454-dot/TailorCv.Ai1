@@ -115,6 +115,13 @@ Paste any underwriting, claims, or insurance sales job posting into [TailorCV's 
 
 To successfully tailor your resume for an insurance job, follow this structured approach:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 1. **Analyze the Job Description**: Start by thoroughly reading the job description. Highlight key responsibilities and required skills. For a comprehensive breakdown, refer to our [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist).
 
 2. **Create a Keyword Map**: Identify specific keywords and phrases that appear frequently in the job description. Use our [Resume Keyword Map Template - Match Your Resume to Any Job Description](https://thetailorcv.com/blog/resume-keyword-map-template) to organize these terms.

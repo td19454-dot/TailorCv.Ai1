@@ -184,6 +184,13 @@ Also search by skill, not only title. For example, search "Excel reporting assis
 
 [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) does not mean begging strangers for jobs. It means starting conversations, learning from people, and becoming visible.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 Message alumni, former classmates, community members, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) creators, recruiters, or people in roles you admire. Keep messages short and specific.
 
 ### Simple Networking Message

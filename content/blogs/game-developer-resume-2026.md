@@ -129,6 +129,13 @@ Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfoli
 - Description of your specific contributions on team [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Technical breakdowns of interesting systems you built
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 Read the [portfolio building guide](https://thetailorcv.com/blog/how-to-build-professional-portfolio) for structure.
 
 ---

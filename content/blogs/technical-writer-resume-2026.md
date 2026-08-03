@@ -110,6 +110,13 @@ Wrote / Built / Restructured / Reduced + [documentation] + [product or audience 
 Senior Technical Writer
 Developer Tools Company | Apr 2022 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Own the developer documentation for a developer-tools platform used by 30K+ developers, including API reference, guides, and tutorials.
 - Migrated legacy documentation to a docs-as-code workflow (Markdown, Git, Docusaurus), enabling 15 engineers to contribute and reducing publishing time to same-day.
 - Rewrote the API reference for 120 endpoints with consistent structure, code samples in 4 languages, and interactive examples - reducing API-related support tickets by 34%.

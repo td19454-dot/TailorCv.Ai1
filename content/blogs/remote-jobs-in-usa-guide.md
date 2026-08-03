@@ -64,6 +64,13 @@ To maximize your chances, consider utilizing our [remote job search guide](https
 
 Networking is a powerful tool for finding remote job opportunities. Here’s how to make connections:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - **Use LinkedIn**: Optimize your profile and connect with industry professionals. Engage with their posts and share relevant content to increase your visibility. For tips, check out our guide on [LinkedIn for job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 - **Attend Virtual Events**: Participate in webinars, workshops, and conferences related to your field. These events often provide networking opportunities and job leads.
 - **Join Online Communities**: Platforms like Slack, Discord, and Facebook groups often have communities dedicated to remote work.

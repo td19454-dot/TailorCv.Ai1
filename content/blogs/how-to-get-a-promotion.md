@@ -113,6 +113,13 @@ Then, periodically check in: "I've now done [X, Y, Z] that we discussed. Where d
 
 When you are ready, help your manager build the promotion case. Provide them with:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 - A document of your accomplishments with quantified impact
 - Evidence that you are operating at the next level
 - Examples of leadership, ownership, and business impact

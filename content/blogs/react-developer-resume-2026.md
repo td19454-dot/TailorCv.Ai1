@@ -129,6 +129,13 @@ SaaS Analytics Company | Mar 2022 - Present
 - Movie/recipe search app with API integration
 - Component library with Storybook
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ### Strong Project Example
 
 Real-Time Kanban Board | React, TypeScript, Zustand, React DnD, Firebase

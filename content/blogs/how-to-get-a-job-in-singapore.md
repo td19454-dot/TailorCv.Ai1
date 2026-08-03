@@ -49,6 +49,13 @@ Practical reality: most employers must justify hiring a foreigner over a local, 
 | **LinkedIn** | heavily used by Singapore recruiters. Keep your [profile optimised](/blog/how-to-use-linkedin-for-job-search) with a [strong headline](/blog/linkedin-headline-examples-job-seekers), and be careful on [Easy Apply](/blog/resume-optimization-linkedin-easy-apply) not to fire off generic applications |
 | **Job boards** | MyCareersFuture (which prioritises locals under the Fair Consideration Framework), plus regional boards |
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 Whichever channel, the same rule holds: matched beats generic, and being *found* by recruiter search beats waiting to be discovered. And always watch for [job scams](/blog/how-to-spot-a-job-scam) — fake "recruiters" asking for money or documents up front are a red flag.
 
 ## Step 5: Interviews and Offers

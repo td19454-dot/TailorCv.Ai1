@@ -146,6 +146,13 @@ Note how this newcomer resume drops all personal identifiers, uses Canadian form
 
 Most Canadian resumes use one of three structures, and picking the right one matters:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - **Reverse-chronological** (the default and most recommended): lists your work history from most recent backward. Canadian employers and ATS parse it easily, and it works best when you have a steady, relevant work history.
 - **Functional (skills-based):** groups your experience by skill rather than timeline. It can help hide gaps or a [career change](https://thetailorcv.com/blog/cover-letter-for-career-change), but many Canadian recruiters are wary of it because it obscures your history, and ATS parse it poorly. Use sparingly.
 - **Hybrid (combination):** leads with a strong skills/summary section, then follows with a reverse-chronological history. This is often the best choice for newcomers and career changers — it foregrounds relevant skills while still giving the clear timeline employers want.

@@ -147,6 +147,13 @@ No. Using AI to improve your writing is no different from using spellcheck, a th
 - The final resume authentically represents you
 - You can discuss everything on it in an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 
+### Building the resume section by section
+
+![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
+
+You fill one section at a time and the preview re-renders as you type, so the layout is never a surprise at export.
+
+
 AI is a tool. Use it to communicate your real value more effectively - not to fabricate value you do not have.
 
 ---

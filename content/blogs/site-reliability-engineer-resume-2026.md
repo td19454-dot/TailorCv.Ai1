@@ -116,6 +116,13 @@ Reduced / Built / Defined / Led + [reliability system or process] + [service sca
 Senior Site Reliability Engineer
 Fintech Platform | Jan 2022 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - Maintained 99.97% availability for a payment processing platform handling $420M in annual transaction volume across 3 production regions.
 - Defined SLO/SLI framework and error budget policy for 12 critical payment services, enabling data-driven reliability investment decisions versus reactive firefighting.
 - Reduced on-call alert volume by 68% through systematic alert tuning, deduplication, and routing optimization - reducing on-call burden from 6 wakeups/week to 1.9.

@@ -79,6 +79,13 @@ A combination format handles this cleanly. Lead with a summary that states your 
 - **Burying recent, relevant work.** Even in chronological format, lead each [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) with its most impressive, relevant bullet.
 - **A five-page history.** Length is not depth. Two pages maximum for most, one for early-career.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## How the ATS Reads Each Format
 
 Format is not just an aesthetic choice — it directly affects whether an [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) can read you at all. A parser tries to attach your accomplishments to [employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) and dates so it can build a structured work history. Reverse-chronological hands it exactly that: title, [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), dates, bullets, in a predictable order. The parser succeeds, your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) is scored, and you advance.

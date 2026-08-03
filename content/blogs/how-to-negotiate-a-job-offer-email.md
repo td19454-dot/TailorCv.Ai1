@@ -79,6 +79,13 @@ If you have none of these and the offer is already fair, one polite ask is still
 
 When base is capped, these often have room, and asking about them signals sophistication rather than greed:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 - **Signing bonus** — a one-time lever that does not affect the [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)'s salary bands.
 - **Equity or stock** — meaningful at startups and larger tech firms.
 - **Annual bonus target** — worth clarifying and sometimes negotiable.

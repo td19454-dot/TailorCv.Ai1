@@ -129,6 +129,13 @@ To fit content cleanly:
 - Line spacing: 1.0-1.15
 - Standard fonts: Calibri, Arial, Garamond, Georgia
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 Do not shrink your font below 10pt or your margins below 0.5 inch to force a one-pager - it becomes unreadable and signals poor judgment. If you genuinely cannot fit on one page at readable sizes, a clean two-page resume is better.
 
 ---

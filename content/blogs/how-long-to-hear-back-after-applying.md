@@ -75,6 +75,13 @@ But volume alone is a trap, and this is where many people go wrong. Sending fift
 
 Concrete things worth doing instead of refreshing:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 **Diagnose, don't guess.** If you're getting silence at high volume, the problem is usually upstream of the wait. Run your resume against one of the postings you applied to with a [free ATS score](/blog/how-to-check-ats-score-free). A low match on roles you're genuinely qualified for means your resume isn't being read at all — fix that and every future application improves. [How to increase your ATS score](/blog/how-to-increase-ats-score), [keyword matching](/blog/how-to-match-resume-keywords-to-job-description), [the keywords that matter](/blog/best-resume-keywords-to-beat-ats), and [formatting mistakes that break parsing](/blog/ats-resume-formatting-mistakes) are where the fixes live.
 
 **Strengthen the resume itself.** [Quantify your achievements](/blog/how-to-quantify-achievements-on-resume), use [better action verbs](/blog/best-action-verbs-for-resume), sharpen your [summary](/blog/how-to-write-resume-summary), check the [structure](/blog/anatomy-of-a-resume) and [length](/blog/ideal-resume-length-guide), trim [old roles](/blog/how-far-back-should-resume-go), and make sure [soft skills are evidenced](/blog/soft-skills-for-resume) rather than listed.

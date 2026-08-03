@@ -120,6 +120,13 @@ Paste any cleared or government-contractor job posting into [TailorCV's resume o
 
 1. **Analyze the Job Description**: Start by thoroughly reading the job description. Highlight key phrases and requirements, especially those related to security clearance and specific skills. Use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) to ensure you don't miss any critical elements.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 2. **Create a Keyword Map**: Once you've identified the keywords, create a keyword map. This visual representation will help you see how your experience matches the job requirements. Use our [Resume Keyword Map Template - Match Your Resume to Any Job Description](https://thetailorcv.com/blog/resume-keyword-map-template) to efficiently organize your thoughts.
 
 3. **Match Your Experience**: For each highlighted keyword, find a corresponding experience in your work history that demonstrates your qualifications. Be specific about your achievements and how they relate to the security-cleared role you’re applying for.

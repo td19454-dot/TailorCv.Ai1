@@ -127,6 +127,13 @@ Infrastructure Consultancy | Aug 2021 - Present
 
 ## Common Civil Engineer Resume Mistakes
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 ### Mistake 1: No project values or scales
 
 "Managed construction [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)" tells nothing. Add project value, structure size (sqm or floors), or infrastructure length.

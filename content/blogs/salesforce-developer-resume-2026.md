@@ -66,6 +66,13 @@ If you're transitioning in via Trailhead and certifications, lead with your cert
 
 The Salesforce ecosystem is one of the best-paid corners of tech, and demand for certified developers, admins, and architects stays high. When an offer comes, research market rates and negotiate professionally with [how to negotiate a salary offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) and the [salary negotiation guide](https://thetailorcv.com/blog/salary-negotiation-guide). Beyond general job boards, Salesforce roles surface through the Trailblazer community, ecosystem-focused [recruitment agencies](https://thetailorcv.com/blog/how-to-work-with-recruitment-agencies), consulting partners, and [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) — the [best job search websites guide](https://thetailorcv.com/blog/best-job-search-websites-2026) covers the rest. Keep earning certifications to stay competitive, and keep your [resume](https://www.thetailorcv.com/modify-cv) current and [ATS-ready](https://www.thetailorcv.com/solutions) so you can move quickly when the right role appears.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## Tailor to each role
 
 An admin-heavy role, a pure dev role, and an architect role want very different [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description). [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) with the [resume optimizer](https://www.thetailorcv.com/solutions), and see [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job).

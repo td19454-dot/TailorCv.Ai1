@@ -119,6 +119,13 @@ Emphasize: strategic initiatives, business impact, leadership, analytical skills
 
 PROFESSIONAL EXPERIENCE
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 Operations Manager
 Manufacturing Company | 2021-2025 (Pre-MBA)
 - Led a 40-person operations team across 2 facilities, managing a $25M annual budget.

@@ -113,6 +113,13 @@ Paste any real estate job posting into [TailorCV's resume optimizer](/solutions)
 
 When preparing your resume for a real estate position, analyzing the job description is crucial. Here’s a step-by-step approach to ensure you capture all relevant details:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 1. **Read the Job Description Thoroughly**: Begin by reading the entire job description carefully. Highlight key responsibilities, required skills, and qualifications.
 
 2. **Identify Keywords and Phrases**: As you read, make a note of specific keywords or phrases that stand out, especially those related to skills, software, and industry terminology. These are often indicators of what the employer values most.

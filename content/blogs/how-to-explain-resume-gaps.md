@@ -163,6 +163,13 @@ Avoid:
 
 ## Common Resume Gap Mistakes
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 ### Mistake 1: Trying to hide gaps with fake dates
 
 Do not overlap employment dates to cover a gap. This is dishonest and background checks often reveal it. Being caught in a lie is far worse than any gap.

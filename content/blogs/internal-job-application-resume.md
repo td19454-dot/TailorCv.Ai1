@@ -181,6 +181,13 @@ The after version:
 The hiring team does not all know you.
 Even those who do want to see you take the role seriously.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 **Skipping the tailoring**
 Your resume should [match the job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) as closely as possible.
 Use the same keywords. Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide).

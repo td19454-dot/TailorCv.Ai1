@@ -84,6 +84,13 @@ Rebuilding your resume after a layoff can be daunting, and it's easy to make mis
 
 Networking is a critical component of your job search, especially after a layoff. Here are some effective do’s and don’ts to guide you:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ### Do’s:
 - **Do Reach Out to Former Colleagues**: They can provide valuable insights about job openings or refer you to potential employers.
 - **Do Attend Industry Events**: Networking events, webinars, and conferences can help you meet new contacts and learn about job opportunities.

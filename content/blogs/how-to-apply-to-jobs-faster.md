@@ -60,6 +60,13 @@ Do not let speed push you into [keyword-stuffing](/blog/ats-keyword-mistakes) or
 
 The workflow travels. It is the same on every board because they all feed the same filter, and it holds for [remote roles](/blog/how-to-match-resume-to-remote-job-description) — where a [remote cover letter](/blog/cover-letter-for-remote-jobs) helps and competition is global — and for applying abroad, where [the USA](/blog/how-to-get-a-job-in-usa) and [Canada](/blog/how-to-get-a-job-in-canada) differ, including whether you need a [resume or a CV](/blog/resume-vs-cv). Watch for [job scams](/blog/how-to-spot-a-job-scam) when moving fast — speed is exactly when people skip the checks. And note the [startup vs enterprise](/blog/resume-tailoring-startup-vs-enterprise) difference in emphasis.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 ## After the Applications
 
 Speed getting you *seen* is only half the job. Before interviews, [research the company](/blog/how-to-research-company-before-interview), rehearse [behavioural questions](/blog/behavioral-interview-questions-and-answers), [tell me about yourself](/blog/how-to-answer-tell-me-about-yourself) and [why do you want this job](/blog/how-to-answer-why-do-you-want-this-job), and run a [mock interview](/blog/ai-mock-interview-complete-guide-2026); the [full interview prep guide](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) covers the rest. When an offer comes, [negotiate the salary](/blog/how-to-negotiate-salary-offer). When one does not land, [handle the rejection](/blog/how-to-handle-job-rejection).

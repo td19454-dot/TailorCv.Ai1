@@ -110,6 +110,13 @@ Grew / Created / Managed / Launched + [platform or campaign] + [content or audie
 Social Media Manager
 DTC Lifestyle Brand | Apr 2023 - Present
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - Own organic and paid social strategy across Instagram, TikTok, and Pinterest for a DTC brand with 1.2M combined followers.
 - Grew TikTok from 40K to 220K followers in 14 months, driving a 32% increase in website traffic from social.
 - Managed a $200K annual paid social budget with 4.1x average ROAS, contributing $820K in attributed revenue.

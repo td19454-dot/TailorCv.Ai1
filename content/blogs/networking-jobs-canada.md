@@ -112,6 +112,13 @@ Once you've built genuine relationships:
 
 For newcomers to Canada, networking is often *the* deciding factor in landing that first role — and yet it's the hardest to do when you arrive without an existing network. The good news is that Canada has an unusually well-developed support system to help:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - **Immigrant-serving and settlement agencies** run mentorship programs that pair you with a professional in your field — an instant, valuable connection who offers advice, referrals, and cultural insight.
 - **Bridging programs** for internationally trained professionals build both skills and networks.
 - **Newcomer-focused networking events** create a welcoming setting to meet employers and peers.
