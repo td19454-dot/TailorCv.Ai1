@@ -36,6 +36,13 @@ For competitive graduate schemes and professional roles, skipping the cover lett
 
 Keep it to three to four short paragraphs on a single page.
 
+### What the finished letter looks like
+
+![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
+
+The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
+
+
 ### 1. Header and Greeting
 
 Include your contact details, the date, and — where possible — the hiring manager's name ("Dear Ms Tan"). If you can't find a name, "Dear Hiring Manager" is acceptable; avoid "To Whom It May Concern," which feels dated.

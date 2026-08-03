@@ -26,6 +26,13 @@ An [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) [cov
 
 Use this format:
 
+### What the finished letter looks like
+
+![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
+
+The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
+
+
 ### A cover letter format that parses cleanly
 
 ![A classic ATS-friendly cover letter template: single column, standard headings, no graphics or columns](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)

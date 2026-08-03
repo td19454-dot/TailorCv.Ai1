@@ -87,11 +87,11 @@ There is also a compounding benefit. Because these systems store your structured
 
 Because Workday and, to a lesser extent, the others are literal parsers, formatting is not a cosmetic concern on these boards — it is a pass/fail gate. A resume that renders beautifully in your PDF viewer can arrive as scrambled fragments if it fights the parser.
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 
 The safe rules are boring and they work: a single column, standard section headings ("Experience", "Education", "Skills"), no tables, no text boxes, no images or icons carrying information, and contact details in the body rather than the header. Dates in a consistent format. A common, embeddable font. This is the groundwork covered in [making your resume ATS-friendly](/blog/how-to-make-resume-ats-friendly) and the [parser-friendly format](/blog/ats-resume-parser-friendly-format) guide, and it matters doubly here because there is no human to notice that the machine mangled you.

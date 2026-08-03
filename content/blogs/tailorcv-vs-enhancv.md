@@ -85,11 +85,11 @@ And our ATS score stays free and unlimited in every region — because the thing
 
 **Enhancv wins, decisively and without qualification.**
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 They are the best in this category at this and it is not close. The layouts are distinctive, the typography is considered, and the unusual sections — strengths with context, "my time", passions — let you say things a conventional resume has no room for. Thousands of design options, real craft.

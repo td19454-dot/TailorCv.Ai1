@@ -207,11 +207,11 @@ The keywords at executive level are different - "P&L ownership," "organizational
 - Technical skills that are no longer your core differentiator (unless directly relevant)
 - References to references ("available upon request" - no executive resume includes this)
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 **Reduce:**

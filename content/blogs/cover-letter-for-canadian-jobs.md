@@ -32,6 +32,13 @@ A cover letter serves as your introduction to potential employers, allowing you 
 
 A well-structured cover letter typically includes the following sections:
 
+### What the finished letter looks like
+
+![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
+
+The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
+
+
 ### 1. Header
 
 Include your contact information at the top, formatted as follows:

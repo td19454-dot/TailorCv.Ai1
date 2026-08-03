@@ -44,11 +44,11 @@ The result is not a new resume. It is your resume, re-emphasised and re-worded t
 
 A rewrite is useless if the output does not parse. Good tailoring produces a resume in a [parser-friendly format](/blog/ats-resume-parser-friendly-format) — single column, standard headings, no tables or text boxes that scramble in an ATS. This is the [ATS-friendly formatting](/blog/how-to-make-resume-ats-friendly) baseline, and it avoids the [formatting mistakes](/blog/ats-resume-formatting-mistakes) that sink otherwise-strong resumes. The PDF you download is ready to submit, not something you have to reformat.
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 
 ## Step 5: The Cover Letter and the Record

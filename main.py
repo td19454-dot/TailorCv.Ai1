@@ -8434,6 +8434,15 @@ def blog_shows_ats_widget(post) -> bool:
     # extension post gets the scanner even when the copy never says "ATS".
     if "extension" in subject or "chrome" in subject:
         return True
+    # Career-advice / job-search posts end on "now go apply". A free scan is
+    # the most useful next step we can hand that reader, so they get it too.
+    career = ("career", "job search", "job-search", "get a job", "get hired",
+              "first job", "job hunt", "apply", "application", "layoff",
+              "salary", "promotion", "rejected", "recruiter", "fresher", "graduate")
+    if any(t in subject for t in career):
+        return True
+    if (post.category or "").strip().lower() in ("career advice", "job search"):
+        return True
     return "ats" in hay or "applicant tracking" in hay or "resume score" in hay
 
 

@@ -25,6 +25,13 @@ When your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) is light on
 
 **Paragraph 1 — the hook.** Open with a specific reason you want this [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), plus your strongest credential. (See our guide on [cover letter opening lines](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work).)
 
+### What the finished letter looks like
+
+![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
+
+
 **Paragraph 2 — the proof.** Use a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), class, or activity as evidence you can do the work. Describe what you built and the result, exactly as you would a job.
 
 **Paragraph 3 — the close.** Reaffirm interest, show you understand what the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) needs, and invite a conversation.

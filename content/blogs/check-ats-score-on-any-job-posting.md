@@ -61,11 +61,11 @@ If the score stays low even after honest tailoring, that is real information too
 
 The check works the same wherever you apply, because every board feeds the same kind of filter — [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed), [Naukri](/blog/how-to-tailor-resume-on-naukri), and the ATS boards behind company career pages. For [remote roles](/blog/how-to-match-resume-to-remote-job-description) the competition is global so the score matters even more, and a [remote cover letter](/blog/cover-letter-for-remote-jobs) helps. Applying abroad shifts conventions — [a job in the USA](/blog/how-to-get-a-job-in-usa), [in Canada](/blog/how-to-get-a-job-in-canada), and whether you need a [resume or a CV](/blog/resume-vs-cv). Mind the [startup vs enterprise](/blog/resume-tailoring-startup-vs-enterprise) difference, and if you have wondered [how many jobs to apply to per day](/blog/how-many-jobs-should-you-apply-to-per-day), the answer is fewer, matched.
 
-### What optimizing actually does to your resume
+### What an ATS score report actually shows you
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
 
-This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+The score itself matters less than the breakdown beside it: each check names what passed, what failed, and why it matters - which is the list you actually work through.
 
 
 ## After the Score: The Rest of the Search

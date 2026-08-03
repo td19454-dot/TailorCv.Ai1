@@ -209,11 +209,11 @@ If you are applying for a remote role but have never worked remotely, address it
 
 One underrated detail: where you list your location.
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 
 For **remote roles:** List your city and state but do not over-emphasize. Many remote employers are open to any location.

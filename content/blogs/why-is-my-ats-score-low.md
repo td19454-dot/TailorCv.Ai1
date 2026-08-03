@@ -137,11 +137,11 @@ Run the [ATS score checker](/solutions), apply the fixes above, and re-scan. Mos
 
 When working to improve your ATS score, it's essential to avoid common pitfalls that can undermine your efforts. Here’s a list of mistakes to steer clear of:
 
-### What optimizing actually does to your resume
+### What an ATS score report actually shows you
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
 
-This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+The score itself matters less than the breakdown beside it: each check names what passed, what failed, and why it matters - which is the list you actually work through.
 
 
 1. **Overusing Jargon**: While industry-specific terms can be beneficial, excessive jargon may confuse ATS algorithms. Use clear language that's easily understood, focusing on keywords that are relevant to the job description.

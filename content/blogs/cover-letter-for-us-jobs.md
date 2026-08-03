@@ -32,6 +32,13 @@ A cover letter serves several vital functions:
 
 A typical cover letter for U.S. jobs follows a standard format, which includes the following sections:
 
+### What the finished letter looks like
+
+![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
+
+
 ### 1. Header
 
 Your cover letter should start with your contact information, followed by the date and the employer's contact information. Here’s how to format it:
