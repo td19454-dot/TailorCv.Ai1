@@ -1980,3 +1980,7 @@ header.navbar {
 @media (max-width: 560px) {
   .blog-detail-page .blog-rate { flex-direction: column; align-items: flex-start; }
 }
+
+/* Stars showing the community average (reader has not voted yet) are filled
+   but slightly muted, so an average is not mistaken for your own rating. */
+.blog-detail-page .blog-rate.is-avg .blog-rate-star.is-on svg { fill: #f7c46a; }
