@@ -8249,6 +8249,115 @@ def blog_cta(post, is_logged_in: bool = False) -> dict:
     return cta
 
 
+# Resume template previews, same assets the /templates page serves.
+_BLOG_RESUME_TEMPLATES = [
+    ("/static/pic1.webp", "ATS Friendly Classic"), ("/static/pic2.webp", "Modern Minimal"),
+    ("/static/pic3.webp", "Professional Clean"), ("/static/pic4.webp", "Executive Edge"),
+    ("/static/pic5.webp", "Corporate Blue"), ("/static/pic6.webp", "Compact One-Page"),
+    ("/static/pic7.webp", "Fresh Graduate"), ("/static/pic8.webp", "Skill Spotlight"),
+    ("/static/pic9.webp", "Chronological Pro"), ("/static/pic10.webp", "Creative Balanced"),
+    ("/static/pic11.webp", "Elegant Serif"), ("/static/pic12.webp", "Impact Resume"),
+    ("/static/pic13.webp", "Tech Specialist"), ("/static/pic14.webp", "Data Analyst Pro"),
+    ("/static/pic15.webp", "Product Manager Fit"), ("/static/pic16.webp", "Marketing Highlight"),
+    ("/static/pic17.webp", "Modern ATS Plus"), ("/static/pic18.webp", "Premium Executive"),
+    ("/static/pic19.webp", "LaTeX Academic"), ("/static/pic20.webp", "ATS Friendly"),
+    ("/static/pic21.webp", "Modern Tech"), ("/static/pic22.webp", "Academic Serif"),
+]
+
+# Topic -> template names to lead with, so a fresher guide opens on the fresher
+# template and a data-role guide on the analyst one. Anything not matched falls
+# through to the slug-seeded rotation below.
+_BLOG_TEMPLATE_AFFINITY = [
+    (("fresher", "graduate", "student", "entry level", "entry-level", "no experience", "internship", "campus"),
+     ["Fresh Graduate", "Compact One-Page", "Skill Spotlight"]),
+    (("software", "developer", "engineer", "tech", "it ", "devops", "backend", "frontend", "full stack", "faang", "coding"),
+     ["Tech Specialist", "Modern Tech", "Modern ATS Plus"]),
+    (("data", "analyst", "analytics", "machine learning", "scientist"),
+     ["Data Analyst Pro", "Skill Spotlight", "Modern ATS Plus"]),
+    (("product manager", "product-manager", " pm ", "scrum", "agile"),
+     ["Product Manager Fit", "Impact Resume", "Modern Minimal"]),
+    (("marketing", "sales", "seo", "content", "brand", "social media"),
+     ["Marketing Highlight", "Creative Balanced", "Impact Resume"]),
+    (("executive", "senior", "director", "manager", "leadership", "vp ", "c-suite", "cxo"),
+     ["Premium Executive", "Executive Edge", "Chronological Pro"]),
+    (("academic", "research", "phd", "professor", "scholar", "cv format", "latex"),
+     ["LaTeX Academic", "Academic Serif", "Elegant Serif"]),
+    (("career change", "career-change", "switch", "transition", "gap"),
+     ["Skill Spotlight", "Creative Balanced", "Modern Minimal"]),
+    (("ats", "applicant tracking", "keyword", "parse", "scan", "score"),
+     ["ATS Friendly Classic", "Modern ATS Plus", "ATS Friendly"]),
+]
+
+
+def _blog_rotate(items: list, seed_text: str) -> list:
+    """Deterministic per-post rotation, so different articles surface different
+    templates instead of every post showing the same three."""
+    if not items:
+        return items
+    k = sum(ord(ch) for ch in seed_text) % len(items)
+    return items[k:] + items[:k]
+
+
+def blog_template_showcase(post, limit: int = 1) -> dict | None:
+    """Pick a small gallery of real templates to embed in a post.
+
+    Portfolio guides get portfolio themes; resume/ATS/tailoring guides get
+    resume templates. Returns None for every other topic so the block never
+    shows up where it has nothing to do with the article."""
+    hay = f"{post.category} {post.slug} {post.title} {' '.join(post.tags)}".lower()
+    subject = f"{post.slug} {post.title}".lower()
+
+    if "portfolio" in subject:
+        themes = [(slug, PORTFOLIO_THEMES.get(slug, slug).split("—")[0].split("-")[0].strip(), media)
+                  for slug, media in PORTFOLIO_THEME_MEDIA.items() if media.get("image")]
+        picked = _blog_rotate(themes, post.slug)[:limit]
+        if not picked:
+            return None
+        return {
+            "kind": "portfolio",
+            "title": "See what your portfolio could look like",
+            "text": "This theme is built straight from your resume — pick one and your portfolio is live in minutes.",
+            "cta_url": "/portfolio",
+            "cta_label": "Build my portfolio",
+            "cards": [{"image": m["image"], "name": name, "demo": m.get("demo")} for _s, name, m in picked],
+        }
+
+    is_resume_topic = (
+        "resume" in hay or "cv" in hay or "ats" in hay
+        or "applicant tracking" in hay or "tailor" in hay
+    )
+    off_topic = ("cover letter", "cover-letter", "interview", "extension", "chrome", "linkedin")
+    if not is_resume_topic or any(t in subject for t in off_topic):
+        return None
+
+    by_name = {name: (img, name) for img, name in _BLOG_RESUME_TEMPLATES}
+    ordered: list = []
+    for terms, names in _BLOG_TEMPLATE_AFFINITY:
+        if any(t in hay for t in terms):
+            # Only the LEAD card comes from the affinity list, rotated by slug.
+            # Taking all three would give every "ats"-ish post (the majority)
+            # the identical trio; one topical lead plus rotated fill keeps the
+            # match meaningful while the gallery still differs post to post.
+            matched = [by_name[n] for n in names if n in by_name]
+            ordered.extend(_blog_rotate(matched, post.slug)[:1])
+            break
+    # Top up (and de-dupe) from the rotated full set so every post differs.
+    for item in _blog_rotate(_BLOG_RESUME_TEMPLATES, post.slug + post.title):
+        if len(ordered) >= limit:
+            break
+        if item not in ordered:
+            ordered.append(item)
+
+    return {
+        "kind": "resume",
+        "title": "Templates that keep this structure intact",
+        "text": "This template is ATS-tested — start from it and the formatting rules in this guide are already handled.",
+        "cta_url": "/templates",
+        "cta_label": "Browse all templates",
+        "cards": [{"image": img, "name": name, "demo": None} for img, name in ordered[:limit]],
+    }
+
+
 def blog_shows_ats_widget(post) -> bool:
     """Whether to embed the inline ATS scanner in this post.
 
@@ -8297,6 +8406,7 @@ async def blog_post_page(request: Request, slug: str):
             "related_resume_example": _BLOG_TO_ROLE.get(post.slug),
             "hero_cta": blog_cta(post, is_logged_in=bool(request.session.get("user_id"))),
             "show_ats_widget": blog_shows_ats_widget(post),
+            "template_showcase": blog_template_showcase(post),
         },
     )
 
