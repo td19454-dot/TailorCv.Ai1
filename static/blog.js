@@ -921,3 +921,58 @@
     }
   });
 })();
+
+/* Highlighted sections: red for "common mistakes", green for examples.
+   Mirrors the reference layouts - a coloured rule, an icon, and a tinted
+   panel - so the reader can tell at a glance whether a block is a warning
+   or a worked example. Runs after the other enhancers so it never grabs a
+   heading already inside a step card, FAQ or takeaways box. */
+(() => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+
+  // "Mistake 3: Using Tables..." is the dominant form in the corpus, so match a
+  // leading "Mistake" as well as the phrase variants.
+  const MISTAKE = /^mistakes?\b|common mistakes|mistakes to avoid|what not to do|avoid these|red flags?|pitfalls/i;
+  // Only short, self-contained example headings - not "20 Resume Summary
+  // Examples", which is a whole section and would become a wall of green.
+  const EXAMPLE = /^(good |better |strong |weak |bad )?(worked )?examples?\b|\bexample\b\s*[:—-]/i;
+  const INSIDE = ".step-card, .faq-box, .key-takeaways-box, .article-bottomline, .blog-ats, .blog-tpl, .end-cta";
+
+  const ICON = {
+    mistake: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>',
+    example: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.6 2.6L16 9.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>',
+  };
+
+  const wrap = (heading, kind) => {
+    if (heading.closest(INSIDE) || heading.closest(".callout-box")) return;
+    const nodes = [];
+    let next = heading.nextElementSibling;
+    // stop at the next heading of the same or higher rank
+    const rank = Number(heading.tagName[1]);
+    while (next) {
+      const t = next.tagName;
+      if (/^H[1-6]$/.test(t) && Number(t[1]) <= rank) break;
+      if (next.matches && next.matches(INSIDE)) break;
+      nodes.push(next);
+      next = next.nextElementSibling;
+    }
+    if (!nodes.length) return;
+
+    const box = document.createElement("section");
+    box.className = "callout-box callout-" + kind;
+    heading.before(box);
+    const head = document.createElement("div");
+    head.className = "callout-head";
+    head.innerHTML = '<span class="callout-ico">' + ICON[kind] + "</span>";
+    box.appendChild(head);
+    head.appendChild(heading);
+    nodes.forEach((n) => box.appendChild(n));
+  };
+
+  Array.from(content.querySelectorAll("h2, h3")).forEach((h) => {
+    const text = (h.textContent || "").replace("#", "").trim();
+    if (MISTAKE.test(text)) wrap(h, "mistake");
+    else if (h.tagName === "H3" && EXAMPLE.test(text) && text.length < 60) wrap(h, "example");
+  });
+})();
