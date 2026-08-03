@@ -184,6 +184,13 @@ Also search by skill, not only title. For example, search "Excel reporting assis
 
 [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) does not mean begging strangers for jobs. It means starting conversations, learning from people, and becoming visible.
 
+### Tailoring without leaving Indeed
+
+![The TailorCV extension open on an Indeed job posting, showing the role, company and a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
+
+On Indeed the panel reads the posting off the page and shows the match before you hit Apply - the kind of gap worth closing first rather than discovering through silence.
+
+
 ### What optimizing actually does to your resume
 
 ![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)

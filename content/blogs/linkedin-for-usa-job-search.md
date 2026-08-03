@@ -107,6 +107,13 @@ The job market is always evolving. To stay competitive, consider:
 
 When optimizing your LinkedIn profile for a US job search, it's crucial to steer clear of common pitfalls that could hinder your visibility and appeal to recruiters. Here are some frequent mistakes to avoid:
 
+### Tailoring without leaving LinkedIn
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
+
+
 1. **Neglecting the Profile Photo**: A professional photo is essential. Avoid using casual or unprofessional images. A clear headshot in professional attire helps establish credibility.
 
 2. **Using Jargon or Buzzwords**: While it’s important to showcase your skills, overusing industry jargon can alienate some recruiters. Aim for clarity and simplicity without sacrificing professionalism.

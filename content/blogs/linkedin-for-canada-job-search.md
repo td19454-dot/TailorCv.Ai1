@@ -158,6 +158,13 @@ Participate in webinars and online events that LinkedIn offers. These can provid
 
 Once you start landing interviews, preparation is key. Utilize tools like our [AI mock interview](https://www.thetailorcv.com/mock-interview) to practice common interview questions. This will help you build confidence and articulate your thoughts effectively.
 
+### Tailoring without leaving Indeed
+
+![The TailorCV extension open on an Indeed job posting, showing the role, company and a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
+
+On Indeed the panel reads the posting off the page and shows the match before you hit Apply - the kind of gap worth closing first rather than discovering through silence.
+
+
 ### Interview Preparation Checklist
 
 | Check | What to look for |
