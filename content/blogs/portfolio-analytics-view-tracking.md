@@ -85,6 +85,13 @@ Understanding portfolio analytics is crucial, but many job seekers fall into com
 
 Use this mini checklist to ensure your portfolio is effectively leveraging analytics data for maximum recruiter interest:
 
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
+
 - [ ] Have I regularly reviewed my portfolio analytics?
 - [ ] Am I tracking the right metrics relevant to my goals?
 - [ ] Have I identified which projects are performing best?

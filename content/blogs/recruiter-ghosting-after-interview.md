@@ -146,6 +146,13 @@ If the emotional weight of this particular process is compounding with rejection
 
 One silent recruiter is just an unfortunate data point. But if you notice a pattern - the same company ghosting you across multiple roles, or a particular type of company (large-volume tech, agencies, certain industries) consistently going quiet - that's information worth acting on.
 
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
+
 - **Note company-specific behavior.** If a company ghosted you after a strong interview once, factor that into whether it's worth reapplying there later, or at minimum, set your expectations accordingly the second time around.
 - **Watch for patterns in your own process, not just theirs.** If ghosting seems to cluster after a specific interview stage (say, always after the panel round but before an offer), that might be worth examining alongside your interview performance, separate from the ghosting itself - the [final round interview tips](https://thetailorcv.com/blog/final-round-interview-tips) guide is useful if that stage keeps being where things stall.
 - **Use a structured tracker instead of relying on memory.** A spreadsheet or dedicated tool makes patterns visible that are easy to miss when each application feels like an isolated event. The [job application tracker template](https://thetailorcv.com/blog/job-application-tracker-template) is built for exactly this - logging stage, dates, and follow-up cadence per application so you can spot trends across your whole search.

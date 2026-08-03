@@ -71,6 +71,13 @@ A minute instead of ten — and because it lives on the page, the habit survives
 
 **Step 1 — Set your base resume once.** Upload the resume you normally send. Unsure it is solid? Run a [free ATS score](/blog/how-to-check-ats-score-free) first.
 
+### Tailoring straight from a Naukri listing
+
+![The TailorCV extension open on a Naukri job posting, reading the role and offering to tailor the resume without leaving the page](public/blog-images/how-to-tailor-resume-on-naukri-extension.webp)
+
+The extension reads the posting off the Naukri page you are already on, so you can check the match and tailor without copying the description into another tab.
+
+
 ### Your resume after optimization
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
