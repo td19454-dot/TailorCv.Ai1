@@ -95,6 +95,13 @@ Creating case studies is an effective way to showcase your work. Follow these st
 
 When creating your DevOps portfolio, be mindful of these common pitfalls:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 - **Overloading with Technical Jargon**: While it's important to demonstrate your technical knowledge, avoid excessive jargon that may alienate non-technical viewers. Aim for clarity and accessibility.
 
 - **Neglecting Soft Skills**: DevOps is not just about technical prowess; soft skills like communication and teamwork are equally important. Include examples showcasing how you collaborated with cross-functional teams.

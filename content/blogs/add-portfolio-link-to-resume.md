@@ -70,6 +70,13 @@ The format of your portfolio can significantly impact how recruiters perceive yo
 ## Examples of Well-Formatted Portfolio Links
 Here are a few examples of how to format your portfolio link effectively on your resume:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 - **Example 1**:  
   **Portfolio**: Design Projects & Case Studies → [yourname.com](https://yourname.com)
 

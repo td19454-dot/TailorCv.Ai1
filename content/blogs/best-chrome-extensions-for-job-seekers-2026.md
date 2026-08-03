@@ -88,6 +88,13 @@ An on-page tool collapses that ten minutes to about one. It does not just make y
 
 Before installing anything, find out whether the resume is your actual bottleneck, because if it is not, no extension will help.
 
+### The same check on a job board you already use
+
+![The TailorCV extension open on a Simplify job listing, showing a 50% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-simplify-job-board.webp)
+
+It reads the posting off whatever board you are browsing - Simplify here - and scores your resume against it before you apply, so you find the gap while you can still close it.
+
+
 Pick a job you genuinely want, copy the full description, and run it against a [free ATS score](/ats-analysis) with your current resume. Read the number and the missing-keywords list:
 
 - **80% or above** — your resume is well matched. Your bottleneck is elsewhere (visibility, or the roles you are targeting), and a tailoring tool will not move much. Look at [LinkedIn optimization](/blog/linkedin-profile-optimization-guide) instead.

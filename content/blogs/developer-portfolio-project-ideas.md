@@ -140,6 +140,13 @@ Three polished projects beat ten clones every time. Avoid the traps in [Portfoli
 - **Use a Custom Domain**: A custom domain makes your portfolio look more professional. Learn how to set this up in [How to Put Your Portfolio on a Custom Domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide).
 - **Keep Learning**: Stay updated with the latest technologies and trends in development. Explore guides like the [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide) or the [DevOps Engineer Portfolio Guide](https://thetailorcv.com/blog/devops-engineer-portfolio-guide) to expand your skill set.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 By focusing on meaningful projects and polishing your presentation, you can create a portfolio that not only showcases your skills but also stands out to recruiters in 2026 and beyond.
 
 ## Frequently Asked Questions

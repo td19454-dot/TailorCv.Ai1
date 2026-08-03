@@ -89,6 +89,13 @@ By customizing your presentation for each scenario, you can make a stronger impr
 
 Use this checklist to ensure your video portfolio is comprehensive and compelling:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 - [ ] **Diverse Content**: Include a range of projects that showcase different styles and techniques.
 - [ ] **High-Quality Visuals**: Ensure all videos are high-resolution and professionally edited.
 - [ ] **Clear Branding**: Consistently use logos, fonts, and colors that represent your brand.

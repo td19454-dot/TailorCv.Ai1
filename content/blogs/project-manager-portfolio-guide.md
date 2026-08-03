@@ -84,6 +84,13 @@ Creating a project manager portfolio can seem daunting, but breaking it down int
 
 While assembling your portfolio, it's easy to fall into certain traps. Here are common mistakes to steer clear of:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 - **Overloading with Information**: Avoid cluttering your portfolio with excessive details. Stick to relevant information that showcases your skills effectively.
   
 - **Neglecting Visual Appeal**: A well-designed portfolio is crucial. Poor design can distract from your content. Invest time in choosing an attractive layout that enhances readability.

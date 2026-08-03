@@ -198,6 +198,13 @@ Group by format or industry:
 
 ## Engineering Portfolio (Mechanical, Civil, Electrical)
 
+
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
 ### What to Include
 
 - Project descriptions with your specific role and contribution

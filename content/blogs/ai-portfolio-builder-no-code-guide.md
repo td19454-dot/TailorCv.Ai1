@@ -87,6 +87,13 @@ Building your portfolio with AI doesn't have to be a daunting task. Follow this 
 
 Creating a portfolio using AI can streamline the process, but there are pitfalls to look out for. Here are common mistakes to avoid:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - **Neglecting Personalization**  
   Relying too heavily on AI-generated content can make your portfolio feel generic. Always infuse your personality and unique insights into the projects you showcase.
 

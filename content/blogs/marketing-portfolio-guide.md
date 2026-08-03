@@ -76,6 +76,13 @@ In marketing, visuals can often communicate complex ideas more effectively than 
 
 Creating a case study is a powerful way to demonstrate your skills and the impact of your work. Here’s a step-by-step guide to crafting an effective case study:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 1. **Choose Your Project**: Select a project that had a significant impact on your company or client. Ideally, it should showcase a variety of skills and strategies.
 
 2. **Define the Problem**: Clearly articulate the problem or challenge you faced at the start of the project. Use data or quotes to highlight the situation.

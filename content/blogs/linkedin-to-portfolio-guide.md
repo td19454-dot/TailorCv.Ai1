@@ -87,6 +87,13 @@ Transforming [your LinkedIn profile](https://thetailorcv.com/blog/linkedin-headl
 
 Creating a portfolio can be an exciting process, but there are pitfalls to watch out for. Here are some common mistakes to avoid:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - **Neglecting Mobile Optimization**: Ensure your portfolio is [mobile-friendly](https://thetailorcv.com/blog/mobile-app-developer-portfolio). Many recruiters review portfolios on their smartphones, and a poorly designed mobile site can deter potential opportunities.
 
 - **Overloading with Information**: Avoid cluttering your portfolio with excessive text or too many projects. Keep it concise and focused on your best work.

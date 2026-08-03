@@ -78,6 +78,13 @@ By following these steps, you can create compelling project showcases that will 
 
 When designing your portfolio website, aesthetics play a significant role in how your work is perceived. Here are some do's and don’ts to keep in mind:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ### Do's
 | What | Details |
 |---|---|

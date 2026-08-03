@@ -210,6 +210,13 @@ The language is tuned for the audience.
 It will likely fail keyword matching.
 Informal language, missing certifications, unconventional formatting - all hurt your enterprise [ATS match score](https://thetailorcv.com/blog/improve-resume-job-match-score).
 
+### Tailoring straight from a Wellfound listing
+
+![The TailorCV extension open on a Wellfound job posting, showing the match and offering to tailor the resume without leaving the page](public/blog-images/extension-on-wellfound.webp)
+
+Startup boards work the same way - the extension reads the Wellfound listing you are already on, so the match check happens before you apply rather than after a rejection.
+
+
 ### Your resume after optimization
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
