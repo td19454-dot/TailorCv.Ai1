@@ -23,3 +23,19 @@ shown big AND stay sharp.
 
 Until then the CSS caps each preview at its own natural width, so it is
 smaller but never blurry.
+
+PENDING RE-CAPTURE
+------------------
+AFTERINTERVIEWSCORECARD.png - the version supplied shows 0% on every
+metric with "Interview incomplete, you answered 0% of questions".
+Publishing that would make the feature look broken, so it is converted
+(public/blog-images/mock-interview-scorecard.webp) but NOT placed in any
+post yet. Run one mock interview to the end, screenshot the real
+scorecard, drop it here under the same name, and it gets swapped in and
+published across the interview posts.
+
+STILL WANTED
+------------
+A portfolio screenshot - the builder, or a published portfolio page.
+40 portfolio posts currently have no product screenshot at all, the
+biggest remaining gap.
