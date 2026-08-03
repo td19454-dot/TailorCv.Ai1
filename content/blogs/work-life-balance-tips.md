@@ -77,10 +77,12 @@ Overcommitment is a leading cause of poor balance. Politely decline or renegotia
 Remote work offers flexibility but creates specific balance challenges:
 
 - **Always-on pressure**: Set notification boundaries and clear hours
-- **No separation**: Create physical and ritual boundaries
-- **Isolation**: Maintain social connection with colleagues and outside work
-- **Overwork**: Remote workers often work more, not less - track and limit your hours
-- **Meeting overload**: Block focus time and decline unnecessary meetings
+| Mistake | Why it costs you |
+|---|---|
+| **No separation** | Create physical and ritual boundaries |
+| **Isolation** | Maintain social connection with colleagues and outside work |
+| **Overwork** | Remote workers often work more, not less - track and limit your hours |
+| **Meeting overload** | Block focus time and decline unnecessary meetings |
 
 ---
 
@@ -106,11 +108,13 @@ If your job consistently demands unsustainable hours and the culture won't chang
 
 ## Build Sustainable Daily Habits
 
-- **Sleep**: Prioritize 7-8 hours. Sleep is the foundation of performance and well-being.
-- **Movement**: Regular exercise reduces stress and improves focus.
-- **Disconnect**: Schedule daily time fully off screens and work.
-- **Boundaries on weekends**: Protect at least one full non-work day.
-- **Hobbies and relationships**: Invest in life outside work - it makes you better at work too.
+| What | Details |
+|---|---|
+| **Sleep** | Prioritize 7-8 hours. Sleep is the foundation of performance and well-being |
+| **Movement** | Regular exercise reduces stress and improves focus |
+| **Disconnect** | Schedule daily time fully off screens and work |
+| **Boundaries on weekends** | Protect at least one full non-work day |
+| **Hobbies and relationships** | Invest in life outside work - it makes you better at work too |
 
 ---
 

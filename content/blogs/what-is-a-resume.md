@@ -74,12 +74,14 @@ Only candidates whose resumes survive all three stages receive [interview](https
 
 A high-performing resume has these qualities:
 
-- **Targeted**: Written for the specific role and company, not generic
-- **Keyword-optimized**: Contains the key terms from the job description so [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems match it correctly
-- **Achievement-focused**: Uses quantified accomplishments, not just job duties
-- **Clean formatting**: Readable, scannable, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible
-- **Concise**: One page for under 10 years of experience, two pages maximum for senior professionals
-- **Error-free**: No typos, no inconsistencies, no formatting glitches
+| Mistake | Why it costs you |
+|---|---|
+| **Targeted** | Written for the specific role and company, not generic |
+| **Keyword-optimized** | Contains the key terms from the job description so [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems match it correctly |
+| **Achievement-focused** | Uses quantified accomplishments, not just job duties |
+| **Clean formatting** | Readable, scannable, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible |
+| **Concise** | One page for under 10 years of experience, two pages maximum for senior professionals |
+| **Error-free** | No typos, no inconsistencies, no formatting glitches |
 
 ---
 

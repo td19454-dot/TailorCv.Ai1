@@ -27,10 +27,12 @@ A lot of job seekers still picture ATS scoring the way early SEO tools scored we
 
 Modern applicant tracking systems and the resume parsers built into hiring platforms are not counting a ratio. They are checking for a mix of:
 
-- **Presence** - is the term there at all, in any form?
-- **Context** - does it appear near a verb, a result, or a tool, or is it just sitting in a list?
-- **Section placement** - does it show up in skills, experience, and summary, or only once in a footer?
-- **Relevance** - does the surrounding text support that you actually used the skill, not just mentioned it?
+| Term | Why it matters |
+|---|---|
+| **Presence** | is the term there at all, in any form? |
+| **Context** | does it appear near a verb, a result, or a tool, or is it just sitting in a list? |
+| **Section placement** | does it show up in skills, experience, and summary, or only once in a footer? |
+| **Relevance** | does the surrounding text support that you actually used the skill, not just mentioned it? |
 
 A resume that mentions "SQL" once in a strong bullet with a real outcome will often score and read better than one that repeats "SQL" eight times with no context. Density in the old sense (raw repetition count divided by word count) is a weak signal on its own. What matters is whether the keyword shows up in the right places with enough supporting detail that both a parser and a human reader recognize it as a genuine skill.
 
@@ -124,10 +126,12 @@ Keyword density is not just about how many times you say the exact phrase from t
 
 Common patterns worth handling deliberately:
 
-- **Abbreviation vs. full term** - "Project Management" vs. "PM," or "Search Engine Optimization" vs. "SEO." Use the full term at least once (often in the skills section or summary) and the abbreviation where it reads naturally in a bullet.
-- **Noun vs. verb form** - "Project Management" as a skill line vs. "Managed cross-functional projects" as a bullet. Both signal the same competency to a reader, and many parsers match on the root term either way.
-- **Tool vs. category** - "Google Analytics" is specific; "web analytics" or "digital analytics" is the category. If the posting uses the category term, include it once even if your bullets name the specific tool.
-- **US vs. regional spelling or phrasing** - "Optimization" vs. "Optimisation," "Program Manager" vs. "Programme Manager," depending on the market you are applying in.
+| Reason | What it gets you |
+|---|---|
+| **Abbreviation vs. full term** | "Project Management" vs. "PM," or "Search Engine Optimization" vs. "SEO." Use the full term at least once (often in the skills section or summary) and the abbreviation where it reads naturally in a bullet |
+| **Noun vs. verb form** | "Project Management" as a skill line vs. "Managed cross-functional projects" as a bullet. Both signal the same competency to a reader, and many parsers match on the root term either way |
+| **Tool vs. category** | "Google Analytics" is specific; "web analytics" or "digital analytics" is the category. If the posting uses the category term, include it once even if your bullets name the specific tool |
+| **US vs. regional spelling or phrasing** | "Optimization" vs. "Optimisation," "Program Manager" vs. "Programme Manager," depending on the market you are applying in |
 
 Covering variants is not the same as repeating the same idea five times. Each variant should appear once, in the spot where it reads most naturally, rather than cramming all forms into a single sentence. This spreads your keyword coverage across more of the ways a parser or recruiter might search for that skill, without inflating the raw repeat count of any single phrase.
 

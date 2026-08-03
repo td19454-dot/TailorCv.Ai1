@@ -74,11 +74,13 @@ Remote interviews make chemistry harder to establish. Counter this by:
 The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
 
 
-- **Smiling during introductions** - warmth translates on camera and can set a positive tone.
-- **Using the interviewer's name** - "That's a great question, Sarah" personalizes the interaction.
-- **Showing you researched the company** - refer to specifics from your research using the [company research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview).
-- **Asking engaging questions** - show your interest and curiosity with thoughtful inquiries using the [questions to ask guide](https://thetailorcv.com/blog/questions-to-ask-in-an-interview).
-- **Matching energy** - be mindful of your energy level; aim for a balance that is neither flat nor overly animated.
+| Question | What they are checking |
+|---|---|
+| **Smiling during introductions** | warmth translates on camera and can set a positive tone |
+| **Using the interviewer's name** | "That's a great question, Sarah" personalizes the interaction |
+| **Showing you researched the company** | refer to specifics from your research using the [company research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview) |
+| **Asking engaging questions** | show your interest and curiosity with thoughtful inquiries using the [questions to ask guide](https://thetailorcv.com/blog/questions-to-ask-in-an-interview) |
+| **Matching energy** | be mindful of your energy level; aim for a balance that is neither flat nor overly animated |
 
 ### Example of Building Rapport
 
@@ -225,10 +227,12 @@ Use the STAR method (Situation, Task, Action, Result) to structure your response
 
 **Question**: "Tell me about a time you faced a conflict while working remotely."
 
-- **Situation**: "In my previous role, I was part of a remote team where two team members had conflicting views on a project direction."
-- **Task**: "As the project lead, it was my responsibility to mediate and find a resolution."
-- **Action**: "I scheduled a video call with both parties to discuss their viewpoints and facilitated a constructive conversation."
-- **Result**: "We reached a consensus that satisfied both parties, resulting in a successful project outcome and improved team collaboration."
+| Question | What they are checking |
+|---|---|
+| **Situation** | "In my previous role, I was part of a remote team where two team members had conflicting views on a project direction." |
+| **Task** | "As the project lead, it was my responsibility to mediate and find a resolution." |
+| **Action** | "I scheduled a video call with both parties to discuss their viewpoints and facilitated a constructive conversation." |
+| **Result** | "We reached a consensus that satisfied both parties, resulting in a successful project outcome and improved team collaboration." |
 
 By preparing for behavioral questions using this method, you can convey your experiences clearly and effectively.
 

@@ -138,10 +138,12 @@ To help you formulate a strong response, consider this handy do's and don'ts lis
 - **Do Tailor Your Answer**: Customize your response based on the job you’re applying for to show alignment with the company’s values and goals.
 
 ### Don'ts
-- **Don’t Badmouth Your Current Job**: Keep your answer professional and avoid personal grievances.
-- **Don’t Make It About Money**: Unless it’s relevant to the opportunity, avoid discussing salary as a primary motivator for leaving.
-- **Don’t Appear Indecisive**: Have a clear and confident explanation for your departure to demonstrate that you have thought through your career path.
-- **Don’t Provide Excessive Detail**: Keep your answer concise and to the point, avoiding unnecessary elaboration.
+| Tool | What it does |
+|---|---|
+| **Don’t Badmouth Your Current Job** | Keep your answer professional and avoid personal grievances |
+| **Don’t Make It About Money** | Unless it’s relevant to the opportunity, avoid discussing salary as a primary motivator for leaving |
+| **Don’t Appear Indecisive** | Have a clear and confident explanation for your departure to demonstrate that you have thought through your career path |
+| **Don’t Provide Excessive Detail** | Keep your answer concise and to the point, avoiding unnecessary elaboration |
 
 ## Step-by-Step Guide to Crafting Your Answer
 

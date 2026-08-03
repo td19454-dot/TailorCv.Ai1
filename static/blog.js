@@ -884,3 +884,40 @@
 
   box.querySelector(".blog-rate-stars").addEventListener("mouseleave", () => paint(resting()));
 })();
+
+/* Turn percentage cells in article tables into data bars.
+   Purely a visual read of numbers already printed in the cell - nothing is
+   computed or invented. Only runs when a column is mostly percentages and has
+   at least 3 of them, so a stray "40%" in prose never gets a bar. */
+(() => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+  const PCT = /^\s*(\d{1,3})(?:\s*[-\u2013]\s*(\d{1,3}))?\s*%\s*$/;
+
+  content.querySelectorAll("table").forEach((table) => {
+    const rows = Array.from(table.querySelectorAll("tbody tr"));
+    if (rows.length < 3) return;
+    const cols = rows[0] ? rows[0].children.length : 0;
+
+    for (let c = 0; c < cols; c++) {
+      const cells = rows.map((r) => r.children[c]).filter(Boolean);
+      const parsed = cells.map((cell) => PCT.exec((cell.textContent || "").trim()));
+      const hits = parsed.filter(Boolean).length;
+      // the column must be predominantly percentages, not just contain one
+      if (hits < 3 || hits < cells.length * 0.8) continue;
+
+      cells.forEach((cell, i) => {
+        const m = parsed[i];
+        if (!m || cell.querySelector(".tcx-bar")) return;
+        // for a range like 30-40%, size the bar on the upper bound
+        const value = Math.min(100, Number(m[2] || m[1]));
+        const label = (cell.textContent || "").trim();
+        cell.classList.add("tcx-bar-cell");
+        cell.innerHTML =
+          '<span class="tcx-bar-val">' + label + "</span>" +
+          '<span class="tcx-bar" aria-hidden="true"><span class="tcx-bar-fill" style="width:' + value + '%"></span></span>';
+      });
+      break;   // one bar column per table is enough
+    }
+  });
+})();

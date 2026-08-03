@@ -23,11 +23,13 @@ Navigating the Canadian job market can be daunting, especially for newcomers and
 
 Before you start writing, it's essential to familiarize yourself with the specific norms that govern Canadian resumes. Here are some key points to keep in mind:
 
-- **No Personal Photos**: Unlike some countries, Canadian employers do not expect to see a photo on your resume. This helps prevent bias based on appearance. For more details on this, refer to our guide on [should you put a photo on your resume?](https://thetailorcv.com/blog/photo-on-resume).
-- **No Age or Marital Status**: It's illegal for employers to discriminate based on age or marital status, so these details should not be included.
-- **Length**: While one-page resumes are common, two-page resumes are acceptable in Canada, especially for those with extensive experience.
-- **Contact Information**: Use the Canadian format for phone numbers (e.g., (123) 456-7890) and include your address (city and province) without the street address for privacy. For more on this, check out our guide on the [resume contact section](https://thetailorcv.com/blog/resume-contact-section).
-- **References**: Simply state "References available upon request" rather than listing them on your resume.
+| Rule | What it means |
+|---|---|
+| **No Personal Photos** | Unlike some countries, Canadian employers do not expect to see a photo on your resume. This helps prevent bias based on appearance. For more details on this, refer to our guide on [should you put a photo on your resume?](https://thetailorcv.com/blog/photo-on-resume) |
+| **No Age or Marital Status** | It's illegal for employers to discriminate based on age or marital status, so these details should not be included |
+| **Length** | While one-page resumes are common, two-page resumes are acceptable in Canada, especially for those with extensive experience |
+| **Contact Information** | Use the Canadian format for phone numbers (e.g., (123) 456-7890) and include your address (city and province) without the street address for privacy. For more on this, check out our guide on the [resume contact section](https://thetailorcv.com/blog/resume-contact-section) |
+| **References** | Simply state "References available upon request" rather than listing them on your resume |
 
 ## Structure of a Canadian Resume
 
@@ -101,11 +103,13 @@ Many Canadian employers use Applicant Tracking Systems (ATS) to filter resumes. 
 
 To ensure your resume stands out for the right reasons, avoid these common pitfalls:
 
-- **Typos and Grammatical Errors**: Always proofread your resume. Consider using tools like Grammarly or asking a friend to review it.
-- **Generic Content**: Avoid using a one-size-fits-all resume. Tailor each resume to the specific job you are applying for.
-- **Overly Complex Language**: Use clear and concise language. Avoid jargon that may not be understood by everyone.
-- **Inconsistent Formatting**: Ensure that font sizes, bullet points, and spacing are consistent throughout your resume.
-- **Including Irrelevant Information**: Focus on what’s relevant to the job. Exclude outdated or unrelated work experience.
+| Mistake | Why it costs you |
+|---|---|
+| **Typos and Grammatical Errors** | Always proofread your resume. Consider using tools like Grammarly or asking a friend to review it |
+| **Generic Content** | Avoid using a one-size-fits-all resume. Tailor each resume to the specific job you are applying for |
+| **Overly Complex Language** | Use clear and concise language. Avoid jargon that may not be understood by everyone |
+| **Inconsistent Formatting** | Ensure that font sizes, bullet points, and spacing are consistent throughout your resume |
+| **Including Irrelevant Information** | Focus on what’s relevant to the job. Exclude outdated or unrelated work experience |
 
 ## Utilizing TailorCV Resources
 

@@ -79,10 +79,12 @@ By following these steps, you can create compelling project showcases that will 
 When designing your portfolio website, aesthetics play a significant role in how your work is perceived. Here are some do's and don’ts to keep in mind:
 
 ### Do's
-- **Keep It Simple**: A clean, straightforward design helps visitors focus on your content.
-- **Use Consistent Branding**: Align your portfolio's colors, fonts, and styles with your personal brand.
-- **Make Navigation Easy**: Ensure that visitors can easily find what they're looking for with a clear menu structure.
-- **Optimize for Mobile**: Many users will visit your site on mobile devices; ensure it's responsive and looks good on all screens.
+| What | Details |
+|---|---|
+| **Keep It Simple** | A clean, straightforward design helps visitors focus on your content |
+| **Use Consistent Branding** | Align your portfolio's colors, fonts, and styles with your personal brand |
+| **Make Navigation Easy** | Ensure that visitors can easily find what they're looking for with a clear menu structure |
+| **Optimize for Mobile** | Many users will visit your site on mobile devices; ensure it's responsive and looks good on all screens |
 
 ### Don'ts
 - **Avoid Clutter**: Too much information can overwhelm visitors. Stick to essential content.
@@ -126,10 +128,12 @@ By following this checklist, you can confidently launch a polished portfolio tha
 
 Once your portfolio is live, it’s essential to keep it updated. Here are some maintenance tips to ensure it remains relevant:
 
-- **Regular Updates**: Schedule monthly reviews to add new projects and remove outdated ones.
-- **Content Refresh**: Update your case studies with new outcomes and metrics as you achieve them.
-- **Engage with Visitors**: If your portfolio allows comments or messages, respond promptly to inquiries and feedback.
-- **Stay Current**: Reflect any changes in your career, such as new skills or certifications, on your website.
+| Tip | How to apply it |
+|---|---|
+| **Regular Updates** | Schedule monthly reviews to add new projects and remove outdated ones |
+| **Content Refresh** | Update your case studies with new outcomes and metrics as you achieve them |
+| **Engage with Visitors** | If your portfolio allows comments or messages, respond promptly to inquiries and feedback |
+| **Stay Current** | Reflect any changes in your career, such as new skills or certifications, on your website |
 
 By maintaining your portfolio, you ensure it accurately reflects your current skills and experiences, helping you stay competitive in the job market.
 

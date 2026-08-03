@@ -43,11 +43,13 @@ For a full walkthrough of building one, see [How to Build a Professional Portfol
 ## Do You Actually Need Both?
 For most fields in 2026, yes. The overlap of remote hiring, AI-inflated resumes, and intense competition means **demonstrated proof matters more than ever**.
 
-- **Developers** - a live site plus a clean GitHub is close to mandatory. See [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio), and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
-- **Designers** - case studies are the whole game. See [UX Designer Portfolio Guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide) and [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide).
-- **Writers & marketers** - samples and results win clients and jobs. See [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
-- **Data professionals** - dashboards and notebooks beat bullet points. See [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide) and [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide).
-- **PMs and corporate roles** - even here, a portfolio sets you apart. See [Product Manager Portfolio Guide](https://thetailorcv.com/blog/product-manager-portfolio-guide).
+| Metric | What it tells you |
+|---|---|
+| **Developers** | a live site plus a clean GitHub is close to mandatory. See [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio), and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization) |
+| **Designers** | case studies are the whole game. See [UX Designer Portfolio Guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide) and [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide) |
+| **Writers & marketers** | samples and results win clients and jobs. See [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide) |
+| **Data professionals** | dashboards and notebooks beat bullet points. See [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide) and [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide) |
+| **PMs and corporate roles** | even here, a portfolio sets you apart. See [Product Manager Portfolio Guide](https://thetailorcv.com/blog/product-manager-portfolio-guide) |
 
 Even if your industry has never traditionally required a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), having one is a competitive advantage precisely because so few of your peers will bother.
 

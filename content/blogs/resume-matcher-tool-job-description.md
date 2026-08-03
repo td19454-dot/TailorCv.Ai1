@@ -25,11 +25,13 @@ This post is about the tool itself: what it measures, how to work with its outpu
 
 At a basic level, a resume matcher takes two documents - your resume and a job description - and evaluates how well one maps onto the other. It is not just a word-count exercise. A useful matcher looks at several layers at once:
 
-- **Hard skills and tools** - the specific technologies, platforms, certifications, or methods named in the posting.
-- **Responsibilities** - what the role actually asks you to do day to day, not just what you know.
-- **Seniority signals** - whether your bullets read like someone who owned a function versus someone who supported one.
-- **Language and phrasing** - whether you describe your work the way the employer describes the role, even if the exact words differ.
-- **Must-have versus nice-to-have qualifications** - the posting usually separates these, and a good matcher weighs them differently.
+| Tool | What it does |
+|---|---|
+| **Hard skills and tools** | the specific technologies, platforms, certifications, or methods named in the posting |
+| **Responsibilities** | what the role actually asks you to do day to day, not just what you know |
+| **Seniority signals** | whether your bullets read like someone who owned a function versus someone who supported one |
+| **Language and phrasing** | whether you describe your work the way the employer describes the role, even if the exact words differ |
+| **Must-have versus nice-to-have qualifications** | the posting usually separates these, and a good matcher weighs them differently |
 
 The output is usually a score plus a breakdown: what matched, what is missing, and what is present but weakly stated. Run yours through the [free ATS score checker](https://www.thetailorcv.com/solutions) to see this in practice before you keep reading.
 

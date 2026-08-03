@@ -66,13 +66,15 @@ Since hybrid and remote work is standard:
 ### Software Engineering
 
 Highest demand in 2026:
-- **AI/ML integration** - embedding LLMs, building AI-powered features (OpenAI API, Anthropic Claude API, LangChain)
-- **TypeScript** - now expected for most frontend and many full stack roles
-- **Kubernetes and Helm** - container orchestration is a standard expectation
-- **Rust** - growing fast for systems programming and WebAssembly
-- **WebSockets and real-time** - real-time features are standard product expectations
-- **GraphQL** - increasingly expected alongside REST
-- **Testing (Playwright, Cypress)** - testing discipline is a differentiator
+| Tool | What it does |
+|---|---|
+| **AI/ML integration** | embedding LLMs, building AI-powered features (OpenAI API, Anthropic Claude API, LangChain) |
+| **TypeScript** | now expected for most frontend and many full stack roles |
+| **Kubernetes and Helm** | container orchestration is a standard expectation |
+| **Rust** | growing fast for systems programming and WebAssembly |
+| **WebSockets and real-time** | real-time features are standard product expectations |
+| **GraphQL** | increasingly expected alongside REST |
+| **Testing (Playwright, Cypress)** | testing discipline is a differentiator |
 
 ### Data Science and ML
 
@@ -89,10 +91,12 @@ Highest demand:
 Highest demand:
 - **Kubernetes and GitOps** - ArgoCD, Flux
 - **Terraform / Pulumi** - IaC is non-negotiable
-- **FinOps** - cloud cost management is an explicit discipline
-- **Security as code** - Checkov, tfsec, OPA (Open Policy Agent)
-- **Platform engineering** - internal developer platform (IDP) building
-- **AWS / GCP / Azure** - at least one cloud certification remains a strong differentiator
+| Tool | What it does |
+|---|---|
+| **FinOps** | cloud cost management is an explicit discipline |
+| **Security as code** | Checkov, tfsec, OPA (Open Policy Agent) |
+| **Platform engineering** | internal developer platform (IDP) building |
+| **AWS / GCP / Azure** | at least one cloud certification remains a strong differentiator |
 
 ### Cybersecurity
 

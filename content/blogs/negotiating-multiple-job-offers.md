@@ -40,19 +40,23 @@ Build a simple side-by-side: base pay, bonus, equity, benefits, remote flexibili
 
 ### Additional Factors to Consider
 
-- **Company Culture**: Does the company align with your values and work style?
-- **Career Development**: What opportunities for growth and learning are available?
-- **Work-Life Balance**: Are there policies in place that support a healthy work-life balance?
-- **Job Security**: How stable is the company and its industry?
+| Factor | What it covers |
+|---|---|
+| **Company Culture** | Does the company align with your values and work style? |
+| **Career Development** | What opportunities for growth and learning are available? |
+| **Work-Life Balance** | Are there policies in place that support a healthy work-life balance? |
+| **Job Security** | How stable is the company and its industry? |
 
 ## Step 3: Decide Your Real Priority Order
 
 Know privately which offer you'd take if neither improved at all - this keeps you grounded and prevents you from over-leveraging a role you don't actually want more. Be honest with yourself about your priorities, which can include:
 
-- **Salary and Benefits**: What is your minimum acceptable salary?
-- **Role and Responsibilities**: Which position excites you the most?
-- **Location**: Is remote work or a specific location more important to you?
-- **Team and Leadership**: Who will you be working with, and how do you feel about them?
+| Step | What to do |
+|---|---|
+| **Salary and Benefits** | What is your minimum acceptable salary? |
+| **Role and Responsibilities** | Which position excites you the most? |
+| **Location** | Is remote work or a specific location more important to you? |
+| **Team and Leadership** | Who will you be working with, and how do you feel about them? |
 
 ## Step 4: Negotiate Transparently, Not Deceptively
 

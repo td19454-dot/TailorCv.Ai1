@@ -85,10 +85,12 @@ Keep it to [one page](https://thetailorcv.com/blog/anatomy-of-a-resume), polishe
 
 Whether in a cover letter or the rirekisho section, the *shibō dōki* is the heart of a Japanese application. To write a strong one:
 
-- **Research the company deeply** — its philosophy, products, and recent developments.
-- **Be specific** — generic praise ("I admire your company") is weak; cite concrete reasons.
-- **Connect to your goals** — show how this company fits your long-term aspirations.
-- **Signal commitment** — Japanese firms value candidates who want to stay and grow.
+| Section | What goes in it |
+|---|---|
+| **Research the company deeply** | its philosophy, products, and recent developments |
+| **Be specific** | generic praise ("I admire your company") is weak; cite concrete reasons |
+| **Connect to your goals** | show how this company fits your long-term aspirations |
+| **Signal commitment** | Japanese firms value candidates who want to stay and grow |
 
 ## Tailor Every Letter
 

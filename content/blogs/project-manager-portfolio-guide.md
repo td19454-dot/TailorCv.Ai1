@@ -21,11 +21,13 @@ Project management is judged on delivery - on time, on budget, on scope, with a 
 - Tailor your portfolio for your target audience and document each project with clear overviews, your role, challenges, and quantifiable results.
 
 ## What to Include
-- **2-4 project case studies** - scope, timeline, budget, team size, and what you delivered
-- **A sample project plan or Gantt chart** - shows how you structure and sequence work
-- **Risk management examples** - a risk you identified early and how you mitigated it
-- **Stakeholder communication samples** - a status report template or a sanitized steering committee update
-- **Certifications** - PMP, CAPM, PRINCE2, or Agile/Scrum certifications (CSM, PSM)
+| What to include | Why |
+|---|---|
+| **2-4 project case studies** | scope, timeline, budget, team size, and what you delivered |
+| **A sample project plan or Gantt chart** | shows how you structure and sequence work |
+| **Risk management examples** | a risk you identified early and how you mitigated it |
+| **Stakeholder communication samples** | a status report template or a sanitized steering committee update |
+| **Certifications** | PMP, CAPM, PRINCE2, or Agile/Scrum certifications (CSM, PSM) |
 
 ## Frame Delivery Under Constraint
 Anyone can manage a project with no obstacles - what proves skill is how you handled the ones that came up. For each case study:
@@ -63,10 +65,12 @@ Creating a project manager portfolio can seem daunting, but breaking it down int
 2. **Gather Your Best Projects**: Select 3-5 projects that best showcase your skills and achievements. Ensure these projects highlight diverse aspects of project management, such as planning, execution, and stakeholder communication.
 
 3. **Document Each Project**: For each project, include the following:
-   - **Project Overview**: Briefly describe the project and its objectives.
-   - **Your Role**: Clearly define your responsibilities and contributions.
-   - **Challenges and Solutions**: Highlight any obstacles faced during the project and how you overcame them.
-   - **Results**: Use metrics to quantify your success, such as budget adherence, timeline completion, and stakeholder satisfaction.
+| Step | What to do |
+|---|---|
+| **Project Overview** | Briefly describe the project and its objectives |
+| **Your Role** | Clearly define your responsibilities and contributions |
+| **Challenges and Solutions** | Highlight any obstacles faced during the project and how you overcame them |
+| **Results** | Use metrics to quantify your success, such as budget adherence, timeline completion, and stakeholder satisfaction |
 
 4. **Design Your Portfolio**: Choose a clean, professional layout that reflects your personal brand. Use visual elements like graphs and charts to present data effectively.
 

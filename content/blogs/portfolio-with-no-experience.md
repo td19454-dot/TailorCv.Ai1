@@ -130,10 +130,12 @@ Understanding how to tailor your portfolio for different industries can set you 
 
 ### Don'ts
 
-- **Don’t Overload with Text**: Keep descriptions concise and to the point. Use bullet points for clarity.
-- **Don’t Use Generic Templates**: Customize templates to reflect your style and brand.
-- **Don’t Ignore Analytics**: If your portfolio is online, use analytics tools to monitor traffic and engagement.
-- **Don’t Skip Testing**: Before launching, test your portfolio on different devices and browsers to ensure it displays correctly. 
+| Check | What to look for |
+|---|---|
+| **Don’t Overload with Text** | Keep descriptions concise and to the point. Use bullet points for clarity |
+| **Don’t Use Generic Templates** | Customize templates to reflect your style and brand |
+| **Don’t Ignore Analytics** | If your portfolio is online, use analytics tools to monitor traffic and engagement |
+| **Don’t Skip Testing** | Before launching, test your portfolio on different devices and browsers to ensure it displays correctly |
 
 By following these guidelines, you can create a portfolio that not only showcases your work but also resonates with potential employers and clients. For more tips on specific industries, check out our [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide) or the [DevOps Engineer Portfolio Guide](https://thetailorcv.com/blog/devops-engineer-portfolio-guide).
 

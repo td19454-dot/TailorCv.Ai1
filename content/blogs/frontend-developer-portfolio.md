@@ -106,10 +106,12 @@ When building your frontend developer portfolio, be wary of these common pitfall
 - **Do Add a Call to Action**: Encourage potential employers or clients to contact you with a [clear call to action](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ### Don'ts
-- **Don’t Use Stock Photos**: Authenticity is key. Use your own images or visuals that reflect your personality and work.
-- **Don’t Overcomplicate Navigation**: Ensure that visitors can easily navigate your portfolio without confusion.
-- **Don’t Skip Testing**: Test your portfolio on multiple devices and browsers to catch any issues before launch.
-- **Don’t Ignore Analytics**: Implement analytics tools like Google Analytics to track visitors and understand user behavior.
+| Check | What to look for |
+|---|---|
+| **Don’t Use Stock Photos** | Authenticity is key. Use your own images or visuals that reflect your personality and work |
+| **Don’t Overcomplicate Navigation** | Ensure that visitors can easily navigate your portfolio without confusion |
+| **Don’t Skip Testing** | Test your portfolio on multiple devices and browsers to catch any issues before launch |
+| **Don’t Ignore Analytics** | Implement analytics tools like Google Analytics to track visitors and understand user behavior |
 
 ## Mini Checklist for Your Frontend Developer Portfolio
 

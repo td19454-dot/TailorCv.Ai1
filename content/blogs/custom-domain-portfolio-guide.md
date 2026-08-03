@@ -21,10 +21,12 @@ keywords: custom domain portfolio, portfolio website domain, how to buy a domain
 - Avoid common mistakes like not linking your domain or forgetting to update your resume and online profiles.
 
 ## Why It Matters
-- **Credibility** - a custom domain reads as more established than a free subdomain
-- **Memorability** - `yourname.com` is easier for a recruiter to type from memory or a printed resume than a long generated URL
-- **Longevity** - your domain stays yours even if you switch which platform or builder hosts the site behind it
-- **Email matching** - you can pair it with a matching professional email address later if you choose
+| Reason | What it gets you |
+|---|---|
+| **Credibility** | a custom domain reads as more established than a free subdomain |
+| **Memorability** | `yourname.com` is easier for a recruiter to type from memory or a printed resume than a long generated URL |
+| **Longevity** | your domain stays yours even if you switch which platform or builder hosts the site behind it |
+| **Email matching** | you can pair it with a matching professional email address later if you choose |
 
 ## Choosing Your Domain
 1. **Use your name if it is available** - `firstlastname.com` is the safest, most professional choice

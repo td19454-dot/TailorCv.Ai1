@@ -21,11 +21,13 @@ Mobile development is one of the few disciplines where you can point a recruiter
 - Ensure your resume, GitHub, and portfolio align in terms of platforms, architecture patterns, and featured apps for a cohesive narrative.
 
 ## What to Include
-- **2-4 published apps** - App Store/Google Play links, screenshots, and a short description of your role on each
-- **Store performance** - downloads, ratings, or retention if you are allowed to share them
-- **Code samples** - [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) repos showing architecture (MVVM, Clean Architecture), state management, and testing
-- **Platform-specific skills** - Swift/SwiftUI or Kotlin/Jetpack Compose, or cross-platform (Flutter, React Native) depending on your specialty
-- **A demo video or GIF** - a 15-30 second screen recording of key app flows for anyone who will not install the app
+| What to include | Why |
+|---|---|
+| **2-4 published apps** | App Store/Google Play links, screenshots, and a short description of your role on each |
+| **Store performance** | downloads, ratings, or retention if you are allowed to share them |
+| **Code samples** | [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) repos showing architecture (MVVM, Clean Architecture), state management, and testing |
+| **Platform-specific skills** | Swift/SwiftUI or Kotlin/Jetpack Compose, or cross-platform (Flutter, React Native) depending on your specialty |
+| **A demo video or GIF** | a 15-30 second screen recording of key app flows for anyone who will not install the app |
 
 ## Frame Shipping, Not Just Code
 Anyone can show a code sample - what stands out is evidence you can ship and maintain a real product. For each app:
@@ -61,11 +63,13 @@ One of the best ways to showcase your skills as a mobile app developer is throug
 1. **Select Projects Wisely**: Choose projects that highlight a range of skills. Focus on those that had significant challenges or required innovative solutions. If you have multiple projects, consider selecting a mix of personal, freelance, and professional work.
 
 2. **Structure Your Case Study**:
-   - **Project Overview**: Briefly describe the project, including its purpose and target audience.
-   - **Your Role**: Clearly outline your responsibilities and contributions.
-   - **Challenges Faced**: Discuss any obstacles you encountered and how you addressed them.
-   - **Solutions Implemented**: Highlight the technologies, frameworks, and methodologies you used.
-   - **Results and Metrics**: Provide quantifiable outcomes (e.g., user engagement, downloads, or revenue) to demonstrate the success of your project.
+| Section | What goes in it |
+|---|---|
+| **Project Overview** | Briefly describe the project, including its purpose and target audience |
+| **Your Role** | Clearly outline your responsibilities and contributions |
+| **Challenges Faced** | Discuss any obstacles you encountered and how you addressed them |
+| **Solutions Implemented** | Highlight the technologies, frameworks, and methodologies you used |
+| **Results and Metrics** | Provide quantifiable outcomes (e.g., user engagement, downloads, or revenue) to demonstrate the success of your project |
 
 3. **Visuals and Demonstrations**: Include screenshots, videos, or links to the app (if available) to provide visual context. This not only makes your case study more engaging but also helps potential employers visualize your work.
 

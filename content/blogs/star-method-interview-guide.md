@@ -27,10 +27,12 @@ The [STAR method](https://thetailorcv.com/blog/star-method-interview-guide) exis
 
 STAR stands for **Situation, Task, Action, Result** — four parts that, together, turn a vague memory into a complete, convincing answer.
 
-- **Situation** — the context. Where were you, what was happening, why did it matter.
-- **Task** — your specific responsibility or goal in that situation.
-- **Action** — what you actually did, step by step.
-- **Result** — what happened because of your action, ideally with a number attached.
+| Option | What it involves |
+|---|---|
+| **Situation** | the context. Where were you, what was happening, why did it matter |
+| **Task** | your specific responsibility or goal in that situation |
+| **Action** | what you actually did, step by step |
+| **Result** | what happened because of your action, ideally with a number attached |
 
 Interviewers use this structure because it maps directly onto [behavioral interview questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) — questions that ask you to prove a claim about yourself with a real example, rather than just asserting it. "I'm a strong problem-solver" is an opinion. A STAR answer is evidence.
 

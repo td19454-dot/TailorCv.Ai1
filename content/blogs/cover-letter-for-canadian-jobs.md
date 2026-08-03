@@ -103,10 +103,12 @@ End with a professional closing such as "Sincerely" or "Best regards," followed 
 
 ## Tips for Writing an Effective Cover Letter
 
-- **Tailor Each Letter**: Customize your cover letter for each job application. Use keywords from the job description to increase your chances of passing Applicant Tracking Systems (ATS).
-- **Keep It Concise**: Aim for one page, ideally around 300-400 words.
-- **Use Professional Language**: Maintain a formal tone while allowing your personality to shine through.
-- **Proofread**: Always [check for grammatical errors and typos](https://www.thetailorcv.com/solutions). A polished cover letter reflects attention to detail.
+| Tip | How to apply it |
+|---|---|
+| **Tailor Each Letter** | Customize your cover letter for each job application. Use keywords from the job description to increase your chances of passing Applicant Tracking Systems (ATS) |
+| **Keep It Concise** | Aim for one page, ideally around 300-400 words |
+| **Use Professional Language** | Maintain a formal tone while allowing your personality to shine through |
+| **Proofread** | Always [check for grammatical errors and typos](https://www.thetailorcv.com/solutions). A polished cover letter reflects attention to detail |
 
 ## Leveraging Technology for Your Cover Letter
 
@@ -116,10 +118,12 @@ Consider using tools like the [AI cover letter generator](https://www.thetailorc
 
 Creating a standout cover letter requires careful attention to detail. Here are some common mistakes to avoid:
 
-- **Generic Content**: Avoid using a one-size-fits-all approach. Personalization is key. Refer to our article on [Cover Letter Mistakes to Avoid in 2026](https://thetailorcv.com/blog/cover-letter-mistakes-2026) for more insights.
-- **Ignoring ATS**: Ensure your cover letter is ATS-friendly by including relevant keywords and phrases. Familiarize yourself with the [ATS-Friendly Cover Letter Format](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) to improve your chances of being seen by hiring managers.
-- **Overly Long Letters**: Stick to the point; hiring managers appreciate brevity. A concise cover letter is more likely to be read in full.
-- **Lack of Specific Examples**: Failing to provide concrete examples of your achievements can weaken your application. Use metrics and outcomes to demonstrate your impact.
+| Mistake | Why it costs you |
+|---|---|
+| **Generic Content** | Avoid using a one-size-fits-all approach. Personalization is key. Refer to our article on [Cover Letter Mistakes to Avoid in 2026](https://thetailorcv.com/blog/cover-letter-mistakes-2026) for more insights |
+| **Ignoring ATS** | Ensure your cover letter is ATS-friendly by including relevant keywords and phrases. Familiarize yourself with the [ATS-Friendly Cover Letter Format](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) to improve your chances of being seen by hiring managers |
+| **Overly Long Letters** | Stick to the point; hiring managers appreciate brevity. A concise cover letter is more likely to be read in full |
+| **Lack of Specific Examples** | Failing to provide concrete examples of your achievements can weaken your application. Use metrics and outcomes to demonstrate your impact |
 
 
 ## Enhancing Your Cover Letter with Data Points
