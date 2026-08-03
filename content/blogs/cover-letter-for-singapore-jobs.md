@@ -46,6 +46,10 @@ The full method is in the [cover letter guide for 2026](/blog/cover-letter-guide
 
 **Opening (1–2 sentences):** a specific hook tied to the role or company. **Body paragraph one:** your strongest match to the posting's top requirement, with a concrete, [quantified](/blog/how-to-quantify-resume-achievements) example. **Body paragraph two:** a second proof point, or why you're drawn to this company specifically (and, for foreigners, a brief note on pass eligibility). **Close (1–2 sentences):** confident, brief, professional. Keep the whole thing to three or four short paragraphs — Singapore recruiters skim.
 
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
+
 ## Tailoring: Why Generic Letters Fail
 
 A generic cover letter fails for the same reason a [generic resume](/blog/tailored-vs-generic-resume) does — it carries no information. A letter's entire job is to say something the resume doesn't: why *this* role, why *this* company, how you map to *their* specific priorities. A copy-pasted letter says none of that; it's interchangeable across a hundred applications, so it adds zero signal. The recruiter reads two lines, recognises the template, and moves on.

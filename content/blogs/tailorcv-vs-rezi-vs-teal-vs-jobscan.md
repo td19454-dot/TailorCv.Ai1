@@ -77,6 +77,10 @@ Teal's job application tracker is genuinely useful, but tailoring your resume to
 2. **Customize Your Resume:** Regularly update your resume using the keyword suggestions, ensuring it aligns with each job application.
 3. **Combine Tools:** Consider using Teal alongside TailorCV for a more automated resume tailoring experience.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## Jobscan: The Original Keyword Checker
 
 Jobscan popularized the "match rate" score, but it only checks keywords - it doesn't rewrite your resume, doesn't do interview prep, and free scans are capped monthly. If you want the scoring without the scan limit, compare it directly on the [Jobscan alternative page](https://www.thetailorcv.com/jobscan-alternative) or read [best free ATS resume checkers compared](https://thetailorcv.com/blog/best-free-ats-resume-checkers-compared).

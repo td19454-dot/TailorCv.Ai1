@@ -68,6 +68,10 @@ Search "beat the ATS" and you will find a lot of bad advice that actively hurts 
 
 A genuinely useful free extension is built to avoid all four myths: it helps you match honestly, keep the format clean, and tailor per job. If a tool encourages any of these tricks, uninstall it.
 
+![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
+
 ## After You Get Past the Filter
 
 Beating the ATS gets you seen; the rest of the search still decides the outcome. Add a tailored [cover letter](/blog/cover-letter-guide-2026) with a [strong opening line](/blog/cover-letter-opening-lines-that-work). Send a [follow-up after applying](/blog/how-to-follow-up-after-job-application) and [after the interview](/blog/how-to-follow-up-after-interview). Before the interview, [research the company](/blog/how-to-research-company-before-interview), rehearse [behavioural questions](/blog/behavioral-interview-questions-and-answers) and [tell me about yourself](/blog/how-to-answer-tell-me-about-yourself), and run a [mock interview](/blog/ai-mock-interview-complete-guide-2026). When one does not land, [handle the rejection](/blog/how-to-handle-job-rejection).

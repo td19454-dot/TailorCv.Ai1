@@ -174,6 +174,10 @@ If you blank on a question, it's perfectly acceptable to ask for a moment to thi
 - **Tech/startups:** smart casual is often fine, but err slightly formal for a first interview.
 - **General rule:** dress one notch above the company's daily dress code. Clean, well-fitted, and modest always works.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Handling Online Assessments and Video Interviews
 
 - **Assessments:** practise aptitude and technical tests in advance; read instructions carefully and manage your time.

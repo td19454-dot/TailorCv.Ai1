@@ -160,6 +160,10 @@ If you are applying from abroad or as an expatriate, your cover letter carries e
 
 Keep it confident and concise, and pair it with the guidance in [getting a job in Malaysia as a foreigner](https://thetailorcv.com/blog/job-in-malaysia-as-foreigner).
 
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
+
 ## Complete Example: Internship Application
 
 Students and fresh graduates applying for internships benefit enormously from a cover letter, since experience is thin and enthusiasm and potential carry the day:

@@ -66,12 +66,6 @@ Clear audio matters more than fancy editing.
 
 ---
 
-## Conclusion
-
-Use a video resume only when it strengthens your application. Your written resume still needs to pass ATS, so check it first with the [ATS score checker](/solutions).
-
----
-
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your video resume script because small wording choices can change how recruiters and ATS systems understand your fit.
@@ -155,6 +149,12 @@ If you want to keep improving this topic, these closely related guides are worth
 - [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
 
 Use these links as a practical cluster: first fix the resume and ATS alignment, then improve the supporting proof such as portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or interview examples. That gives search engines clearer topical connections and gives readers a useful next step instead of a dead end.
+
+---
+
+## Conclusion
+
+Use a video resume only when it strengthens your application. Your written resume still needs to pass ATS, so check it first with the [ATS score checker](/solutions).
 
 ---
 

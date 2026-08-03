@@ -143,11 +143,9 @@ A marketing professional had two offers. One was for $80,000 with minimal benefi
 
 ---
 
-## Conclusion
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
 
-Effective salary negotiation is an essential skill that can significantly impact your career trajectory and earning potential. By understanding when to negotiate, researching your market value, practicing negotiation scripts, and knowing what to include in your negotiations, you can approach the conversation with confidence. Remember, successful negotiation is not just about securing a higher salary but also about creating a compensation package that reflects your worth and aligns with your career goals.
-
-Utilize tools and resources from TailorCV, such as the [mock interview](https://www.thetailorcv.com/mock-interview) tool and the [ATS checker](https://www.thetailorcv.com/solutions), to ensure you are well-prepared for your next steps in the job market.
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
 
 ## Step-by-Step Salary Negotiation Checklist
 
@@ -216,6 +214,12 @@ This calculated approach not only prepares you for negotiation but also provides
 ## Conclusion: Mastering Salary Negotiation for Success
 
 By following these detailed strategies and utilizing the resources available to you, such as our [Resume Keywords Guide 2026](https://thetailorcv.com/blog/resume-keywords-guide) and [Sales Portfolio Guide](https://thetailorcv.com/blog/sales-professional-portfolio-guide), you can enhance your confidence and effectiveness in salary negotiations. Remember, preparation and professionalism are key to achieving the compensation you deserve.
+
+## Conclusion
+
+Effective salary negotiation is an essential skill that can significantly impact your career trajectory and earning potential. By understanding when to negotiate, researching your market value, practicing negotiation scripts, and knowing what to include in your negotiations, you can approach the conversation with confidence. Remember, successful negotiation is not just about securing a higher salary but also about creating a compensation package that reflects your worth and aligns with your career goals.
+
+Utilize tools and resources from TailorCV, such as the [mock interview](https://www.thetailorcv.com/mock-interview) tool and the [ATS checker](https://www.thetailorcv.com/solutions), to ensure you are well-prepared for your next steps in the job market.
 
 ## Frequently Asked Questions
 

@@ -192,6 +192,10 @@ Avoid [common interview mistakes](https://thetailorcv.com/blog/common-interview-
 
 Preparing for a manager round interview requires a strategic approach that emphasizes your skills, experience, and fit within the team. By understanding the key questions, showcasing your impact, and practicing effectively, you can position yourself as a strong candidate who stands out in a competitive job market.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Common Manager Interview Mistakes to Avoid
 
 When preparing for a manager interview, candidates often make several common mistakes that can hinder their chances of success. Here are some pitfalls to avoid:

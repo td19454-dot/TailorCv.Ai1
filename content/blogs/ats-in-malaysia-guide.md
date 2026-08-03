@@ -135,6 +135,10 @@ Before submitting any Malaysian application, confirm:
 - [ ] Dedicated skills section with tools and languages
 - [ ] Tested against the posting with an [ATS checker](https://thetailorcv.com/solutions)
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, which is why the suggestions are grounded in the posting.
+
 ## Keyword Optimisation in Practice: Before and After
 
 Abstract advice about keywords is easy to nod along to and hard to apply. Here is what it actually looks like on the page.

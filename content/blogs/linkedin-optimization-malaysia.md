@@ -148,6 +148,10 @@ Before you consider your profile "done," confirm you have:
 
 Hitting every item gets you to "All-Star" completeness, which LinkedIn rewards with more visibility.
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
 ## Building a Personal Brand in Your Field
 
 Beyond being found, a consistent professional presence makes people *want* to work with you. You don't need to become an influencer — you need to be recognisably competent and active in your niche:

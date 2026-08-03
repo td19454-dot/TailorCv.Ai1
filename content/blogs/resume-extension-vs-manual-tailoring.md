@@ -48,6 +48,10 @@ An honest comparison has to include this: sometimes you should do it by hand.
 
 **When you distrust the output.** A tool you cannot check is worse than doing it yourself. If an extension produces bullets you have not read and cannot vouch for, do not send them. The right use of a tool is a fast first draft *you approve*, not a black box you submit blind.
 
+![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+The same check running on Greenhouse - one of the ATS platforms you are actually submitting through, not a preview of one.
+
 ## Where the Extension Is Genuinely Better
 
 And the flip side, honestly:
@@ -65,6 +69,10 @@ And the flip side, honestly:
 Do both, in sequence. Tailor a handful by hand first to learn the skill and calibrate your judgement — read [how to match your resume to a job description fast](/blog/how-to-match-resume-to-job-description-fast) and try it. Then, once you know what good looks like, use the tool for volume, reading its output because you now can tell whether it is right. That gives you the skill *and* the sustainability, which is better than either alone.
 
 The failure mode to avoid is leaning entirely on a tool you cannot evaluate. The tool is a force-multiplier on judgement you have, not a replacement for judgement you lack.
+
+![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
 
 ## Across Situations
 

@@ -148,6 +148,10 @@ A strong recommendation is specific: names a project, describes your contributio
 
 ---
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+
 ## Open to Work Setting
 
 If you are actively [job searching](https://thetailorcv.com/blog/how-to-decline-job-offer):
@@ -212,6 +216,11 @@ Even 30 minutes per week of [LinkedIn](https://thetailorcv.com/blog/how-to-use-l
 
 ---
 
+## Conclusion
+A fully optimized [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) attracts [inbound recruiter messages](https://thetailorcv.com/blog/how-to-follow-up-after-interview), increases your network-based referrals, and positions you as a credible professional in your field. A weak profile with a default headline and no skills is almost invisible in recruiter search.
+
+Spend 2-3 hours optimizing your profile fully, then maintain it with weekly activity. Pair it with a strong resume optimized using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and use the [LinkedIn job search guide](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for active job search strategy.
+
 ## Related Guides
 
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
@@ -237,12 +246,6 @@ Even 30 minutes per week of [LinkedIn](https://thetailorcv.com/blog/how-to-use-l
 Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
-
-## Conclusion
-A fully optimized [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) attracts [inbound recruiter messages](https://thetailorcv.com/blog/how-to-follow-up-after-interview), increases your network-based referrals, and positions you as a credible professional in your field. A weak profile with a default headline and no skills is almost invisible in recruiter search.
-
-Spend 2-3 hours optimizing your profile fully, then maintain it with weekly activity. Pair it with a strong resume optimized using the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), and use the [LinkedIn job search guide](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for active job search strategy.
-
 
 ## LinkedIn Profile Headline Comparison
 

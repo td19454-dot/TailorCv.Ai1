@@ -139,6 +139,10 @@ For a complete placement strategy, read [how to add ATS keywords to boost your s
 
 ---
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs in visible stages against the specific job description you paste in.
+
 ## How to Find the Right Keywords for Your Specific Job
 
 The general lists above are starting points. The keywords that matter most are the ones in the *specific posting* you're applying to.

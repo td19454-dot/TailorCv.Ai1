@@ -208,6 +208,10 @@ You do not need to act like a motivational speaker. Calm, prepared, and present 
 
 A small smile at the start and end of answers can make you seem warmer and more approachable.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
 ## Decide What to Wear
 
 What you wear depends on the company and industry. When unsure, choose one level more polished than the expected workplace style.
@@ -275,12 +279,6 @@ Before the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-int
 - Prepared questions
 - Planned your [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 
-## Make This Practical
-
-Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).
-
-Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
-
 ## Final Thoughts
 [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) preparation is not about memorizing perfect answers. It is about knowing your value and communicating it clearly.
 
@@ -291,6 +289,12 @@ Use tools like [TailorCV.ai](https://www.thetailorcv.com/solutions) to understan
 [Try TailorCV free -> thetailorcv.com](https://www.thetailorcv.com)
 
 ---
+
+## Make This Practical
+
+Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).
+
+Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
 
 ## Related Guides
 

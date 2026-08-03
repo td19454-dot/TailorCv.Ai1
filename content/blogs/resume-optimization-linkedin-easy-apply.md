@@ -210,6 +210,10 @@ For your high-volume layer, use the [remote job search guide](https://thetailorc
 
 ---
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
 ## Part 6: After You Apply - The Follow-Up That Most People Skip
 
 Easy Apply does not mean "apply and forget."

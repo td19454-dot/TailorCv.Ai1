@@ -64,6 +64,10 @@ A common question is: *what is a good [ATS score](https://thetailorcv.com/blog/a
 
 Keep in mind that your score is partly relative to the specific [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). A resume that scores 90 for one role may score 65 for another, which is exactly why you should tailor and re-check your resume for each application.
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The four stages matter: the tool reads and analyses the resume first, so the changes it suggests are grounded in the actual posting.
+
 ## How to Improve Your ATS Score
 
 Once you know your score, improving it is straightforward when you focus on the right things:

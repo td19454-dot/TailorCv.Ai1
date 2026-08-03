@@ -179,6 +179,10 @@ If you're new to Canada, interviews are also where you address "Canadian experie
 
 Our [newcomer job guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada-newcomer) covers this in depth.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Phone Screens: The First Gate
 
 Most Canadian processes begin with a phone or video screen, usually with a recruiter or HR, and it decides whether you advance — so treat it as seriously as any round. These calls confirm your background, interest, availability, and salary expectations, and gauge your communication. To do well: take the call somewhere quiet, keep your resume and the job description in front of you, smile as you speak (it carries in your voice), be concise and enthusiastic, and have a researched salary range ready in case it comes up. Prepare two or three questions of your own, and confirm the next steps before you hang up. A strong, warm screen sets the tone for everything that follows.

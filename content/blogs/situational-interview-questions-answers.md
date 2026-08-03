@@ -112,6 +112,10 @@ Avoid [common interview mistakes](https://thetailorcv.com/blog/common-interview-
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practice looks like this: the interviewer reads your resume first, so questions come from what you have actually done rather than a generic bank - then follows up the way a real panel would.
+
 ## Common Mistakes When Answering Situational Questions
 
 When preparing for situational interview questions, candidates often fall into several common traps. Avoiding these pitfalls can significantly enhance your chances of making a positive impression.

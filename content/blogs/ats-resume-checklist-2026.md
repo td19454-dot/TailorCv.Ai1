@@ -56,6 +56,10 @@ Keyword alignment is the single biggest driver of your [ATS](https://thetailorcv
 - [ ] **Portfolio link** included if relevant — see [add a portfolio link to your resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume).
 - [ ] **[File name](https://thetailorcv.com/blog/resume-file-format-guide)** is professional (e.g., `Firstname-Lastname-Resume.pdf`).
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
+
 ## Length and structure checklist
 
 - [ ] **[Right length](https://thetailorcv.com/blog/ideal-resume-length-guide)** — one page early-career, two if you have extensive relevant experience.

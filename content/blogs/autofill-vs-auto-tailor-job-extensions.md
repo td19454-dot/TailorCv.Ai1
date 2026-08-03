@@ -50,6 +50,10 @@ The ideal workflow uses both in sequence: **auto-tailor first, autofill second.*
 
 Most people, though, do not need both. If forms are not your bottleneck — many applications on [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed) and [Naukri](/blog/how-to-tailor-resume-on-naukri) have short or one-click apply flows — then autofill saves you little, and the auto-tailor is the only one earning its toolbar slot.
 
+![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+A 67% match on the real posting tells you where you stand before you submit, and that there is room to close the gap.
+
 ## How to Tell Which You Need
 
 Sixty-second diagnosis. Ask two questions.
@@ -63,6 +67,10 @@ Most people answer "a little" to the first and "yes" to the second — which poi
 ## Across Boards and Situations
 
 Both tools travel across boards, but the value shifts. Autofill matters most on long-form [ATS boards](/blog/tailor-resume-on-greenhouse-lever-workday); auto-tailoring matters everywhere, because every board runs the same filter. For [remote roles](/blog/how-to-match-resume-to-remote-job-description) matching is even more decisive and a [remote cover letter](/blog/cover-letter-for-remote-jobs) helps; conventions differ for [the USA](/blog/how-to-get-a-job-in-usa) and [Canada](/blog/how-to-get-a-job-in-canada), including [resume vs CV](/blog/resume-vs-cv). Watch for [job scams](/blog/how-to-spot-a-job-scam) — some fake "autofill" tools are just data harvesters. And note the [startup vs enterprise](/blog/resume-tailoring-startup-vs-enterprise) difference: startups rarely have the long forms autofill is for.
+
+![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
 
 ## After the Application
 

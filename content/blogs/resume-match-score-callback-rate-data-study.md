@@ -94,6 +94,10 @@ Aim for a match score in the 75-85% range as a strong general target before appl
 
 ---
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
+
 ## How TailorCV Helps You Act on This Data
 
 [TailorCV's ATS score checker](/solutions) gives you an instant, free, unlimited match score for any job description, along with a specific breakdown of exactly which keywords and requirements are missing. Once your score is in a strong range, use the [AI mock interview](/mock-interview) tool to prepare for the next stage, since match score alone stops being the deciding factor once you clear the initial filter.

@@ -214,6 +214,10 @@ For each bullet, follow the [resume bullet points formula](https://thetailorcv.c
 
 ---
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 ## The Rates and Availability Question (Contract Roles)
 
 For contract applications, be prepared - not necessarily on your resume, but in your initial outreach - to share:

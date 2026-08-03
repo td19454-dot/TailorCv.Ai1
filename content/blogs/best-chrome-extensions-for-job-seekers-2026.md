@@ -72,6 +72,10 @@ That is the moment tailoring dies. Not because anyone believes generic resumes a
 
 An on-page tool collapses that ten minutes to about one. It does not just make you faster; it makes the good habit *survivable* for the length of a real search. That is the entire argument for the category, and it is why we put resume tailoring at the top of the list rather than autofill, which merely makes a bad approach quicker.
 
+![The TailorCV extension on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+On Greenhouse - an ATS you actually submit through - the same check runs inline and tells you where you stand before you apply.
+
 ## Do You Even Need One? A 60-Second Check
 
 Before installing anything, find out whether the resume is your actual bottleneck, because if it is not, no extension will help.

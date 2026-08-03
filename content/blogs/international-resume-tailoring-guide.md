@@ -171,6 +171,10 @@ Germany has some of the most specific resume conventions in the world.
 
 ---
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Once the content is right, the editor is where you make it fit - font size, spacing, accent colour and template, with a live page counter.
+
 ## Japan
 
 **Length:** A standardized template - the Rirekisho - is the conventional format for Japanese employers. It is a structured form, not a free-format document.

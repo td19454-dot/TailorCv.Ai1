@@ -44,6 +44,10 @@ It [reads the job description](/blog/ats-resume-checker-how-it-works) off the pa
 
 The extension supports fifteen major job boards out of the box, but plenty of good jobs live on company career pages nobody has built a specific adapter for. For those, click the TailorCV toolbar icon while you are on the posting, and the panel opens and reads the description anyway. So you are never stuck: declared boards work automatically, everything else works from the toolbar. This is how [tailoring stays possible everywhere you apply](/blog/how-to-apply-to-jobs-faster), not just on the big aggregators.
 
+![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+A 67% match on the real posting tells you where you stand before you submit, and that there is room to close the gap.
+
 ## Troubleshooting
 
 A few common hiccups and their fixes.
@@ -61,6 +65,10 @@ A few common hiccups and their fixes.
 With the extension set up, your per-application workflow is: open the job, check the [match score](/blog/ats-score-vs-resume-score), tailor, read, add the [cover letter](/blog/cover-letter-guide-2026), apply, move on. Then send a [follow-up after applying](/blog/how-to-follow-up-after-job-application) and [after the interview](/blog/how-to-follow-up-after-interview). Before interviews, [research the company](/blog/how-to-research-company-before-interview), rehearse [behavioural questions](/blog/behavioral-interview-questions-and-answers) and [tell me about yourself](/blog/how-to-answer-tell-me-about-yourself), and run a [mock interview](/blog/ai-mock-interview-complete-guide-2026); the [full interview prep guide](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) covers more.
 
 Freshers: your [ATS score as a fresher](/blog/ats-score-for-freshers), [projects that get interviews](/blog/fresher-resume-projects-that-get-interviews), [your first tech job](/blog/how-to-get-first-tech-job), [a job with no experience](/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026), [campus placement](/blog/how-to-prepare-for-campus-placement), a [portfolio site](/blog/how-to-build-professional-portfolio), and the [right template](/blog/how-to-choose-resume-template). And pace yourself — [fewer, tailored applications](/blog/how-many-jobs-should-you-apply-to-per-day) beat volume.
+
+![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
 
 ## Getting the Most Out of It After Setup
 

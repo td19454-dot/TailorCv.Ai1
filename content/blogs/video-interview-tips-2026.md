@@ -65,6 +65,10 @@ Run this in the half hour before the call so nothing technical surprises you.
 
 Video flattens your presence, so you have to [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a little more energy than feels natural. Sit up straight, keep your shoulders back, and let your hands gesture within frame occasionally — stillness reads as stiffness on camera. Nod while the interviewer speaks to show you are listening, since the usual small verbal cues get muddied by audio lag. And smile genuinely at the start and end; the first and last few seconds shape the interviewer's overall impression more than any single [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
 ## Your Answers Still Matter Most
 
 All the setup in the world does not substitute for good [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). The advantage of video is that you can keep brief notes nearby; the risk is leaning on them. Prepare your core stories the same way you would for an in-person [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) — a crisp "tell me about yourself," two or three [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) stories in [STAR form](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and thoughtful [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) to ask. Then practice them out loud on camera so your delivery is natural and your eyes are not glued to a script.

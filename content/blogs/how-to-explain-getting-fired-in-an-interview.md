@@ -120,6 +120,10 @@ Be consistent. What you tell the interviewer should match what a former employer
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
 ## Additional Strategies for Long-Term Success
 
 While discussing a firing can be daunting, focusing on your overall career strategy can help mitigate the impact. Consider the following:
@@ -129,12 +133,6 @@ While discussing a firing can be daunting, focusing on your overall career strat
 - **Career Coaching**: A career coach can provide personalized strategies for navigating challenging conversations and advancing your career.
 
 ---
-
-## Conclusion
-
-Getting fired can feel like a significant setback, but how you handle the conversation about it can set you apart in an interview. By preparing a concise explanation, reflecting on lessons learned, and connecting your past to your current readiness, you can turn a potential negative into a positive narrative. Remember, everyone faces challenges, and demonstrating resilience and growth can leave a lasting impression on potential employers.
-
-For more in-depth insights into interview preparation, check out our guide on [how to prepare for a job interview in 2026](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and explore additional resources to boost your confidence in interviews.
 
 ## Crafting Your Narrative: A Step-by-Step Guide
 
@@ -197,6 +195,12 @@ Understanding how to frame your response can make a significant difference in yo
 Using these scenarios as templates, you can customize your response to your situation, showcasing resilience and a proactive approach.
 
 By incorporating these additional sections into your blog post, you can provide readers with a comprehensive toolkit for addressing the sensitive topic of termination in interviews, helping them navigate this challenging situation effectively.
+
+## Conclusion
+
+Getting fired can feel like a significant setback, but how you handle the conversation about it can set you apart in an interview. By preparing a concise explanation, reflecting on lessons learned, and connecting your past to your current readiness, you can turn a potential negative into a positive narrative. Remember, everyone faces challenges, and demonstrating resilience and growth can leave a lasting impression on potential employers.
+
+For more in-depth insights into interview preparation, check out our guide on [how to prepare for a job interview in 2026](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and explore additional resources to boost your confidence in interviews.
 
 ## Frequently Asked Questions
 

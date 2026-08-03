@@ -90,6 +90,10 @@ Two-column layouts, text boxes, tables for section content, icons, graphics, and
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Mistake 7 - No Numbers Anywhere in the Resume
 
 Resumes without quantified achievements score lower in [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and perform poorly with recruiters. Numbers provide evidence, scale, and context - all three of which a generic resume lacks.

@@ -112,6 +112,10 @@ More on this in [resume mistakes freshers make](https://thetailorcv.com/blog/res
 
 ---
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+
 ## Real-Life Examples of Successful Fresher Resumes
 
 ### Example 1: Jane Doe, Computer Science Graduate

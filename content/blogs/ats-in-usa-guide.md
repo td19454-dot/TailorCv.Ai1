@@ -96,6 +96,10 @@ For more detailed information on this topic, check out our guide on [Resume for 
 
 A well-crafted cover letter can complement your resume and give you an edge over other candidates. Use the [AI Cover Letter Generator](https://www.thetailorcv.com/cover-letter) to create a compelling cover letter tailored to your target job.
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
+
 ## Preparing for Interviews
 
 Once you’ve successfully passed the ATS stage, the next step is preparing for interviews. Utilize the [AI Mock Interview](https://www.thetailorcv.com/mock-interview) tool to practice your responses and build confidence.

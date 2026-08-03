@@ -30,6 +30,10 @@ This is where most candidates go wrong. If they say "a few hours," respect it. O
 
 Reviewers care about *how* you work as much as the final artifact. Include a short note — a README, a summary section, or a few comments — explaining your assumptions, the trade-offs you made, and what you'd do next with more time. This narrative often matters more than perfection, because it shows judgment and self-awareness. It's the same principle as [quantifying achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) on your [resume](https://www.thetailorcv.com/modify-cv): don't just do the work, make the value visible.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
+
 ## Polish the presentation
 
 Clean formatting, a clear structure, and zero typos make your work easy to evaluate — and sloppy presentation undercuts even strong work. For a coding task, that means readable code, a working setup, and clear instructions. For a written task, it means a tidy document with headings and a short summary up top. Presentation signals the care you'd bring to real work, just like a well-formatted, [ATS-friendly resume](https://www.thetailorcv.com/templates) signals professionalism. Proofread the whole thing before you send it.

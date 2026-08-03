@@ -139,6 +139,10 @@ Based on your background, add:
 
 ---
 
+![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
+
+You fill one section at a time - personal info, education, experience, projects, skills - and the preview on the right re-renders as you type, so the layout is never a surprise at export.
+
 ## Step 8: Tailor for the Specific Role
 
 Before finalizing, compare your resume against the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide):

@@ -64,12 +64,6 @@ Each project should end with a recommendation.
 
 ---
 
-## Conclusion
-
-A non-tech to data analyst [resume](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break) works when it shows transferable domain knowledge plus current analytics proof. Run it through the [ATS score checker](/solutions) against entry-level data analyst roles and fix the missing keywords.
-
----
-
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best [job seekers](https://thetailorcv.com/blog/portfolio-homepage-copy-examples) use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your non-tech to [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) transition because small wording choices can change how recruiters and ATS systems understand your fit.
@@ -153,6 +147,12 @@ If you want to keep improving this topic, these closely related guides are worth
 - [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
 
 Use these links as a practical cluster: first fix the resume and [ATS alignment](https://www.thetailorcv.com/solutions), then improve the supporting proof such as portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or interview examples. That gives search engines clearer topical connections and gives readers a useful next step instead of a dead end.
+
+---
+
+## Conclusion
+
+A non-tech to data analyst [resume](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break) works when it shows transferable domain knowledge plus current analytics proof. Run it through the [ATS score checker](/solutions) against entry-level data analyst roles and fix the missing keywords.
 
 ---
 

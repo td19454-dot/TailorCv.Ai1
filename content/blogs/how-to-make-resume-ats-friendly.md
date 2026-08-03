@@ -145,6 +145,10 @@ A skills infographic looks great but is invisible to the [ATS](https://thetailor
 
 ---
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
 ## How to Test Your Resume's ATS Compatibility
 
 1. **Copy-paste test**: Open your resume PDF, select all, copy, and paste into a plain text editor. If the text comes out jumbled, out of order, or missing - the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) will struggle too.
@@ -154,6 +158,11 @@ A skills infographic looks great but is invisible to the [ATS](https://thetailor
 3. **Read it as plain text**: If the plain text version makes sense in order and contains all your information, your resume is parseable.
 
 ---
+
+## Conclusion
+Making your resume [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) is not about gaming the system - it is about ensuring the software can read your real qualifications and match them to the job. Use a single-column layout, standard headings, no graphics, and keywords matched to each job description.
+
+Test every application with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the complete strategy. For what to remove from your resume, see [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume).
 
 ## Related Guides
 
@@ -177,12 +186,6 @@ A skills infographic looks great but is invisible to the [ATS](https://thetailor
 Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
-
-## Conclusion
-Making your resume [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) is not about gaming the system - it is about ensuring the software can read your real qualifications and match them to the job. Use a single-column layout, standard headings, no graphics, and keywords matched to each job description.
-
-Test every application with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the complete strategy. For what to remove from your resume, see [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume).
-
 
 ## Comparison of ATS-Friendly vs. ATS-Unfriendly Resume Elements
 

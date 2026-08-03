@@ -211,6 +211,11 @@ After:
 
 ---
 
+## Conclusion
+Quantifying your resume achievements is not about exaggerating - it is about being specific. Every vague claim has a number behind it. Your job is to find it, estimate it honestly, and use it.
+
+Once your bullets are strong, run your full resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to make sure your keywords also match the [job description](https://thetailorcv.com/blog/resume-keyword-map-template). Use the [resume templates](https://www.thetailorcv.com/templates) to ensure your format is clean. If you are still building your resume from scratch, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full structure.
+
 ## Related Guides
 
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
@@ -236,12 +241,6 @@ After:
 Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
 
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
-
-## Conclusion
-Quantifying your resume achievements is not about exaggerating - it is about being specific. Every vague claim has a number behind it. Your job is to find it, estimate it honestly, and use it.
-
-Once your bullets are strong, run your full resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to make sure your keywords also match the [job description](https://thetailorcv.com/blog/resume-keyword-map-template). Use the [resume templates](https://www.thetailorcv.com/templates) to ensure your format is clean. If you are still building your resume from scratch, read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the full structure.
-
 
 ## Weak vs Strong Resume Achievements
 

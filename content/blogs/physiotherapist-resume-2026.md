@@ -138,6 +138,11 @@ Orthopedic, neuro, sports, pediatric - clarify your focus so employers can match
 
 ---
 
+## Conclusion
+A strong physiotherapist resume in 2026 shows clinical specialization, assessment skills, and measurable patient recovery outcomes. Make your licensure visible and your treatment results specific.
+
+Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+
 ## Related Guides
 
 - [Nursing Resume](https://thetailorcv.com/blog/nursing-resume-2026)
@@ -160,11 +165,6 @@ Orthopedic, neuro, sports, pediatric - clarify your focus so employers can match
 Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
-
-## Conclusion
-A strong physiotherapist resume in 2026 shows clinical specialization, assessment skills, and measurable patient recovery outcomes. Make your licensure visible and your treatment results specific.
-
-Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for interviews with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ## Step-by-Step Guide to Customize Your Physiotherapist Resume
 

@@ -125,6 +125,10 @@ Best regards,
 
 ---
 
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
+
 ## Checklist for Your Internal Cover Letter
 
 - [ ] Clearly state the role and your current position.
@@ -136,12 +140,6 @@ Best regards,
 - [ ] Tailor your letter to the specific job description.
 
 ---
-
-## Conclusion
-
-Crafting an internal cover letter is an opportunity to showcase your accomplishments and aspirations while acknowledging the unique context of your current workplace. By highlighting your achievements, addressing potential concerns, and demonstrating your commitment to the team and company, you can create a compelling case for your candidacy. 
-
-For further assistance, consider exploring our [cover letter guide](https://www.thetailorcv.com/cover-letter) or using our [templates](https://www.thetailorcv.com/templates) to create a standout application. Remember, your internal application is just as important as any external one - invest the time to make it shine!
 
 ## Common Mistakes to Avoid in Your Internal Cover Letter
 
@@ -204,6 +202,12 @@ Knowing when to submit your internal cover letter can be crucial for a successfu
 - **Response to Internal Job Postings**: If your company has posted an internal job opening, use your cover letter to formally express your interest and articulate why you are the best fit for the role.
 
 By following these guidelines, you can enhance your internal cover letter and increase your chances of securing your desired position within the company. If you’re also considering a [cover letter for a career change](https://thetailorcv.com/blog/cover-letter-for-career-change), be sure to adapt your approach accordingly.
+
+## Conclusion
+
+Crafting an internal cover letter is an opportunity to showcase your accomplishments and aspirations while acknowledging the unique context of your current workplace. By highlighting your achievements, addressing potential concerns, and demonstrating your commitment to the team and company, you can create a compelling case for your candidacy. 
+
+For further assistance, consider exploring our [cover letter guide](https://www.thetailorcv.com/cover-letter) or using our [templates](https://www.thetailorcv.com/templates) to create a standout application. Remember, your internal application is just as important as any external one - invest the time to make it shine!
 
 ## Frequently Asked Questions
 

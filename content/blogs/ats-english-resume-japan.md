@@ -61,6 +61,10 @@ The ATS ranks you largely on keyword relevance. For every application:
 
 Tailoring keywords per job dramatically improves your ranking. Use the [TailorCV resume optimizer](https://thetailorcv.com/solutions) to compare your resume against a specific job description, get a match score, and see the keywords you're missing — the same approach that beats the ATS anywhere. For a starting palette of high-value terms, see [best resume keywords for jobs in Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
+
 ## Step 3: Write Strong, Quantified Content
 
 Passing the ATS gets you to a human — strong content gets you the interview:
