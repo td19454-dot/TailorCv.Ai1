@@ -30,6 +30,10 @@ Not all "ATS extensions" do the same thing. The useful ones cover some or all of
 
 **4. Works where you apply.** [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed), [Naukri](/blog/how-to-tailor-resume-on-naukri), and the [ATS boards](/blog/tailor-resume-on-greenhouse-lever-workday) behind company career pages — ideally with a fallback for any site.
 
+![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+The same check on Greenhouse, one of the ATS platforms you are actually applying through. A 67% match tells you where you stand before you submit - and, more usefully, that there is room to close the gap first.
+
 ## The Catch With "Free"
 
 "Free Chrome extension" deserves the same scrutiny as any "free" tool, because free has several meanings and only some of them are good for you.

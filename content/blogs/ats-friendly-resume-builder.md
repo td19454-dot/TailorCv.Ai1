@@ -66,6 +66,10 @@ Not every "resume builder" is [ATS](https://thetailorcv.com/blog/what-is-an-ats-
 
 TailorCV is built around exactly this workflow. You can [build and tailor your resume](https://thetailorcv.com/solutions), start from [ATS friendly templates](https://thetailorcv.com/templates), and immediately check your ATS score to confirm the result is parseable and well matched - all free to start. Because it tests as well as builds, you are never guessing whether your resume will pass.
 
+![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
+
+You edit one section at a time - personal info, education, experience, projects, skills - and the live preview on the right re-renders as you type, so you can see exactly how each change lands on the page before you export. You can also start from an existing CV or import straight from LinkedIn instead of typing everything again.
+
 ## ATS Friendly Resume Templates That Work
 
 Templates are the fastest shortcut to an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-safe resume because the hard structural decisions are already made for you. Look for templates that are single-column, use standard headings, avoid graphics, and let you paste your existing content in cleanly.

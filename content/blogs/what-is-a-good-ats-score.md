@@ -67,6 +67,10 @@ Different tools weight factors slightly differently, but the core components are
 
 This is why a generic resume rarely scores well - it is not tailored to the specific keywords and titles in the job description. Learn how to fix that in [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job).
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education, experience and projects](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Here is what that looks like in practice. The headline number (51/100 above) matters far less than the breakdown beside it: every check tells you what passed, what failed, and why it matters - a missing LinkedIn profile, a ten-skill gap against the posting, formatting the parser cannot read. That per-check list is what you actually work through, and it is the difference between knowing your score and knowing what to do about it.
+
 ---
 
 ## A "Good" Score Is Relative to the Job

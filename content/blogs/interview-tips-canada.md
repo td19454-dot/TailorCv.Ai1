@@ -7,7 +7,8 @@ tags: [interview tips Canada, Canadian interview questions, STAR method, job int
 category: Interview Preparation
 slug: interview-tips-canada
 keywords: interview tips canada, canadian interview questions and answers, star method interview, how to prepare for interview canada
-image: public/blog-images/interview-tips-canada.png---
+image: public/blog-images/interview-tips-canada.png
+---
 
 Your Canadian-style resume got you the interview — now preparation decides the offer. Canadian interviews lean heavily on **behavioural questions** ("Tell me about a time when…"), which assess how you've actually handled real situations. The candidates who succeed aren't necessarily the most experienced; they're the ones who tell clear, structured, results-focused stories and show genuine fit.
 

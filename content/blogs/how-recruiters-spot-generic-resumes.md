@@ -7,7 +7,8 @@ tags: [resume, recruiters, generic resume, job search, resume tailoring]
 category: Resume Writing
 image: public/blog-images/how-recruiters-spot-generic-resumes.webp
 slug: how-recruiters-spot-generic-resumes
-keywords: how recruiters spot generic resumes, generic resume red flags, recruiter resume review, how recruiters read resumes, resume red flags recruiters---
+keywords: how recruiters spot generic resumes, generic resume red flags, recruiter resume review, how recruiters read resumes, resume red flags recruiters
+---
 
 Recruiters review hundreds of resumes per week. In that volume, they develop a near-instant radar for the generic ones - and those resumes get passed over before a human ever reads beyond the header. This guide breaks down exactly what triggers that radar and how to make sure your resume doesn't.
 

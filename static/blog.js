@@ -663,6 +663,15 @@
     document.querySelectorAll(".post-content h2").forEach((h2) => {
       if (!/^(final thoughts|bottom line|the bottom line|conclusion)$/.test(normalizeText(h2))) return;
       if (h2.closest(".article-bottomline")) return;
+
+      // The bottom-line box reads as "the article ends here". Only style it
+      // that way when nothing substantive follows - an FAQ or a links roundup
+      // conventionally sits after a conclusion, but a real content section
+      // after it means this heading is mid-article and boxing it is wrong.
+      const TRAILING_OK = /^(frequently asked questions|faqs?|common questions|related guides?|related articles?|make this practical|sources?|references?)$/;
+      const laterHeadings = Array.from(document.querySelectorAll(".post-content h2"))
+        .filter((h) => h !== h2 && h2.compareDocumentPosition(h) & Node.DOCUMENT_POSITION_FOLLOWING);
+      if (laterHeadings.some((h) => !TRAILING_OK.test(normalizeText(h)))) return;
       // Stop at already-boxed blocks too. A "Conclusion" that sits before the
       // FAQ would otherwise swallow the whole .faq-box (its H2 is no longer a
       // sibling once wrapped), nesting one card inside another.

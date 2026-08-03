@@ -36,6 +36,10 @@ Our bias, stated plainly: this is our product, so treat the pitch as a pitch. Bu
 <a href="/extension" style="display:inline-block;background:linear-gradient(135deg,#5b78ff,#16c5b0);color:#fff;font-weight:600;font-size:16px;line-height:1;text-decoration:none;padding:16px 36px;border-radius:14px;box-shadow:0 8px 24px rgba(74,106,255,.28)">Add TailorCV to Chrome — Free</a>
 </p>
 
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+This is what "highest-leverage" looks like on a real posting. The extension reads the job off the page you are already on, scores your resume against it (33% here - worth knowing before you apply), and lets you tailor or write the cover letter without leaving LinkedIn.
+
 ## 2. ATS Score Checkers
 
 Before you tailor, it helps to know how bad the gap is. An ATS-scoring extension pulls the job description off the page and scores your resume against it, showing the keywords you are missing.

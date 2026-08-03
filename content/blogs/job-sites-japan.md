@@ -7,7 +7,8 @@ tags: [job sites Japan, jobs in Japan for foreigners, job search Japan, work in 
 category: Job Search
 slug: job-sites-japan
 keywords: best job sites japan, job sites for foreigners in japan, where to find jobs in japan, job search websites japan
-image: public/blog-images/job-sites-japan.png---
+image: public/blog-images/job-sites-japan.png
+---
 
 Knowing *where* to look is half the battle when job-hunting in Japan. The right channels — foreigner-focused job boards, LinkedIn, and recruitment agencies that specialise in placing foreigners — connect you to the English-friendly and international employers most likely to hire and sponsor you. Search in the wrong places, and you'll drown in Japanese-only listings for roles that aren't open to you. This guide maps the best job sites and channels for finding work in Japan in 2026, with practical tips for using each as a foreign job seeker.
 

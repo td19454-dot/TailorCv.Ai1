@@ -1855,3 +1855,75 @@ header.navbar {
 @media (max-width: 760px) {
   .blog-detail-page .blog-tpl-card { max-width: 100%; }
 }
+
+/* ---- In-article images ----
+   Python-Markdown wraps `![alt](src)` in a <p>, so the earlier
+   `.post-content > img` rule never matched a body image - they rendered at
+   their natural pixel width and overflowed (and were clipped by) the column.
+   Constrain every image inside the article, whatever its wrapper. */
+.blog-detail-page .post-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Screenshots of the product read better as a framed figure than as a bare
+   image sitting in a paragraph. */
+.blog-detail-page .post-content p > img {
+  display: block;
+  margin: 26px auto;
+  border: 1px solid #dfe6f3;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(16, 32, 60, 0.1);
+  background: #ffffff;
+}
+
+/* ---- Checklists ----
+   106 posts write `- [ ] item`. python-markdown has no task-list extension
+   enabled, so the literal "[ ]" was printing beside the bullet; the markup is
+   rewritten in BlogService._render_task_lists and styled here. */
+.blog-detail-page .post-content li.task-item {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-left: -22px;
+}
+
+.blog-detail-page .post-content li.task-item::marker { content: none; }
+
+.blog-detail-page .post-content .task-box {
+  flex: 0 0 auto;
+  width: 19px;
+  height: 19px;
+  margin-top: 3px;
+  border: 2px solid #b9a3ff;
+  border-radius: 5px;
+  background: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.blog-detail-page .post-content li.task-done .task-box {
+  background: #5B42F3;
+  border-color: #5B42F3;
+}
+
+.blog-detail-page .post-content li.task-done {
+  color: #4a5568;
+}
+
+/* Screen-reader-only state text (the box itself is aria-hidden). */
+.blog-detail-page .post-content .sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

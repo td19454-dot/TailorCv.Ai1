@@ -72,6 +72,10 @@ Use the [AI cover letter generator](/cover-letter) after checking your resume wi
 
 ---
 
+![A classic ATS-friendly cover letter template: single column, standard headings, no graphics or columns](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly: one column, standard headings, real text rather than a graphic. Everything the parser needs is where it expects to find it.
+
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the [target role](https://thetailorcv.com/blog/job-description-analysis-checklist), update one part of the application, test the result, then repeat. That is especially important for your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) targeting process because small wording choices can change how recruiters and ATS systems understand your fit.

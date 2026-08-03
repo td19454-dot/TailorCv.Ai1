@@ -7,7 +7,8 @@ tags: [ATS, resume, job search, ATS score]
 category: ATS Optimization
 image: public/blog-images/ats-score-vs-resume-score.webp
 slug: ats-score-vs-resume-score
-keywords: ats score vs resume score, resume score meaning, ats score meaning, resume rating---
+keywords: ats score vs resume score, resume score meaning, ats score meaning, resume rating
+---
 
 You may have seen tools report an "[ATS score](https://thetailorcv.com/blog/ats-score-guide)" and others report a "resume score." Are they the same thing? Not quite. This guide explains the **difference between an [ATS score](https://thetailorcv.com/blog/ats-score-guide) and a resume score**, how they overlap, and which to prioritize.
 
