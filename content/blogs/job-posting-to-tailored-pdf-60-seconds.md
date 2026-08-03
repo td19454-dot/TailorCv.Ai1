@@ -51,11 +51,11 @@ Twenty-five applications a month at ten minutes each is over four hours of tailo
 
 Fast anything invites suspicion, and some of it is fair. Here are the real objections and honest answers.
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-Once the content is right, the editor is where you make it fit - font size, spacing, accent colour and template, with a live page counter.
+This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
 
 
 **"Sixty seconds means it is shallow."** The depth was never in the minutes — it was in whether the resume carries the right terms and reads true. A careful human spends most of ten minutes on mechanics (copy-paste, reformatting, file naming), not on the two decisions that matter. Automating the mechanics does not make the decisions shallower; it just stops you spending nine minutes on drudgery. The [best keywords](/blog/best-resume-keywords-to-beat-ats) either land or they do not, regardless of how long it took.

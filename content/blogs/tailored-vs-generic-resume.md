@@ -121,11 +121,11 @@ Read [how to tailor a resume in 5 minutes](https://thetailorcv.com/blog/how-to-t
 **Reading a [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume):**
 > "Another marketing resume. Nothing specifically relevant to our growth role. Vague. Move on."
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-Once the content is right, the editor is where you make it fit - font size, spacing, accent colour and template, with a live page counter.
+This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
 
 
 **Reading a [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume):**

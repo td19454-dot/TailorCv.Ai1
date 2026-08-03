@@ -494,11 +494,11 @@ This saves hours of manual editing and guesswork.
 
 Modern AI tools can dramatically improve resume performance.
 
-### What optimizing actually does to your resume
+### What an ATS score report actually shows you
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
 
-This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+The score itself matters less than the breakdown beside it: each check names what passed, what failed, and why it matters - which is the list you actually work through.
 
 
 The Resume Optimizer from The Tailor CV helps tailor resumes for specific jobs automatically.

@@ -38,11 +38,11 @@ We build TailorCV, so this is not a neutral review. But that fact is not our opi
 
 Let us deal with this properly, because it is the single most common complaint about Zety and it catches people at the worst possible moment.
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 Zety's free plan lets you use the builder and all the templates. You invest real time — an hour, maybe two — getting your resume right. Then you click download, and you discover that free means **plain text only**. Every bit of the formatting you just spent an hour on is gone. The template you chose is irrelevant. What you get is a wall of unformatted text you could have written in Notepad.

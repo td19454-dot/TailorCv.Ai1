@@ -38,6 +38,13 @@ If you skip the explanation, most recruiters will assume the gap in relevance is
 
 ## The 4-Part Structure
 
+
+### What the finished letter looks like
+
+![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
+
 ### 1. Open with the connection, not the confession
 
 Don't lead with "I know I don't have direct experience." Lead with what connects your background to the role.

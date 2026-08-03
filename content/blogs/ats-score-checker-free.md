@@ -46,11 +46,11 @@ When you **check your [ATS score](https://thetailorcv.com/blog/ats-score-guide)*
 
 You do not need expensive software to test your resume. Here is the simple process:
 
-### What optimizing actually does to your resume
+### What an ATS score report actually shows you
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
 
-The four stages matter: the tool reads and analyses the resume first, so the changes it suggests are grounded in the actual posting.
+The score itself matters less than the breakdown beside it: each check names what passed, what failed, and why it matters - which is the list you actually work through.
 
 
 1. **Open a free ATS score checker.** You can [check your ATS score on TailorCV](https://thetailorcv.com/solutions) in seconds.

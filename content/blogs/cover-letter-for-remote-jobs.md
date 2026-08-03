@@ -31,6 +31,13 @@ Start by making sure your resume already signals remote readiness - see [resume 
 
 ## The Structure
 
+
+### What the finished letter looks like
+
+![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
+
 ### 1. Open by Naming the Remote Fit Directly
 
 Don't bury it. If the role is remote, say early why you thrive in that setup.

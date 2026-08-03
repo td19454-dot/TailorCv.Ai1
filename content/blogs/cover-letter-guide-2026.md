@@ -44,6 +44,13 @@ The safest approach: always write one when asked, make it strong, keep it short.
 
 Keep it to one page or fewer. Ideal length is 250-350 words.
 
+### What the finished letter looks like
+
+![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
+
+A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
+
+
 Structure:
 
 1. Opening paragraph - hook and specific role

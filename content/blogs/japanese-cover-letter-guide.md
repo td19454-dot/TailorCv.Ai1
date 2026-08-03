@@ -45,6 +45,13 @@ This tone applies whether you're writing a separate cover letter or the *shibō 
 
 For global and English-language roles, use a clean, professional structure:
 
+### What the finished letter looks like
+
+![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
+
+The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
+
+
 ### Generating the letter from a job description
 
 ![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)

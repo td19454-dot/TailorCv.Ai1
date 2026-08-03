@@ -48,11 +48,11 @@ For project tips, read [how to add projects in your resume](https://thetailorcv.
 ## Step-by-Step: Raise Your Fresher ATS Score
 
 
-### What optimizing actually does to your resume
+### What an ATS score report actually shows you
 
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
 
-Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+The score itself matters less than the breakdown beside it: each check names what passed, what failed, and why it matters - which is the list you actually work through.
 
 ### 1. Start With an ATS-Friendly Template
 

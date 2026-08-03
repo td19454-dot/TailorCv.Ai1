@@ -34,6 +34,13 @@ Employers hiring for entry-level roles expect a thin work history. What they're 
 
 ## The Structure
 
+
+### What the finished letter looks like
+
+![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
+
+The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
+
 ### 1. Open with Genuine Interest, Not a Generic Line
 
 Skip "I am writing to apply for..." Open with something specific about the role or company that connects to what you've already done. For example, if you're applying for a marketing role at a startup known for its innovative campaigns, you might say, “I was inspired by your recent campaign that utilized social media influencers to reach a younger audience, and I’m eager to contribute my skills in digital marketing to similar initiatives.”

@@ -131,11 +131,11 @@ That means six weeks in, our tracker can tell you not just *where* you applied b
 
 **Careerflow wins — we do not have this.**
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 Job Autofill fills out application forms for you, and it is on their free plan. Filling the same details into the fortieth Workday form is genuinely miserable, and if that is your pain, Careerflow addresses it directly and we do not.

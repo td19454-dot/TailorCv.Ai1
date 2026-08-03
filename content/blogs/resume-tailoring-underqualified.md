@@ -191,11 +191,11 @@ Completely different impression.
 
 When you are underqualified, a strong [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) can bridge the gap your resume cannot.
 
-### Fitting the tailored resume onto one page
+### Your resume after optimization
 
-![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 
 Use it to:
